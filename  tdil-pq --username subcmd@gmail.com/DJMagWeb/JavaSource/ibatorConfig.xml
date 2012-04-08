@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+
+<ibatorConfiguration>
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+<ibatorContext 
+  id="ibatorContext" 
+  targetRuntime="Ibatis2Java5" 
+  defaultModelType="flat">
+
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/DJMAG" userId="DJMAG_USER"
+			password="DJMAG_USER" />
+
+<javaModelGenerator targetPackage="com.tdil.djmag.model"
+  targetProject="DJMagWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="trimStrings" value="true" />
+</javaModelGenerator>
+
+<sqlMapGenerator targetPackage="com.tdil.djmag.dao.maps"
+  targetProject="DJMagWeb">
+  <property name="enableSubPackages" value="true" />
+</sqlMapGenerator>
+
+<daoGenerator type="GENERIC-CI" 
+targetPackage="com.tdil.djmag.dao"
+implementationPackage="com.tdil.djmag.dao.impl"
+targetProject="DJMagWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="methodNameCalculator" value="extended" />
+</daoGenerator>
+
+<table schema="DJMAG" tableName="SYSTEMUSER" domainObjectName="SystemUser"></table>
+<table schema="DJMAG" tableName="SYSPROPERTIES" domainObjectName="SystemProperty"></table>
+<table schema="DJMAG" tableName="NEWSLETTER" domainObjectName="Newsletter"></table>
+<!-- table schema="SIMON" tableName="COUNTRY"></table-->
+
+</ibatorContext>
+</ibatorConfiguration>
