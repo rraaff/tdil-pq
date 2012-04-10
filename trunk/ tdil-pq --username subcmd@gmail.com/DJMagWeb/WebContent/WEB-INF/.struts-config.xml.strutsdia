@@ -21,4 +21,14 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page2" PATH="/boHome.jsp" SHAPE="448,17,0,0"
   SUBTYPE="jsp" TITLE="boHome.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="ajaxReturn" NAME="forward0" PATH="/empty.jsp"
+  SHAPE="32,497,0,0" TARGET="page3" TITLE="ajaxReturn" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/empty.jsp" SHAPE="240,514,0,0"
+  SUBTYPE="jsp" TITLE="empty.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notLogged" NAME="forward1" PATH="/boLogin.jsp"
+  SHAPE="48,273,0,0" TARGET="page1" TITLE="notLogged" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="invalidAction" NAME="forward2" PATH="/boLogin.jsp"
+  SHAPE="48,385,0,0" TARGET="page1" TITLE="invalidAction" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logout" NAME="action2" PATH="/logout"
+  SHAPE="32,609,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

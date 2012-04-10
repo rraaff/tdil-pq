@@ -1,3 +1,4 @@
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <script type="text/javascript">
   jQuery(function(){ 
     jQuery('.jbar').jbar();
@@ -22,6 +23,6 @@
     </ul>
   </li>
   <li>
-    <a href="boLogout.php">Salir</a>
+    <html:link action="/logout" >Salir</html:link>
   </li>
 </ul>
