@@ -22,5 +22,10 @@
 
   <!-- List the SQL Map XML files. They can be loaded from the 
        classpath, as they are here (com.domain.data...) -->
-  <sqlMap resource="com/yourcompany/dao/ibatis/ibatis/maps/COUNTRY_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/COUNTRY_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/MENUITEM_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/NEWSLETTER_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/SECTION_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/SYSPROPERTIES_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/SYSTEMUSER_SqlMap.xml"/>
 </sqlMapConfig>

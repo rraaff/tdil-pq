@@ -6,6 +6,7 @@
 
 <html:form method="POST" action="/login">
 <html:hidden name="LoginForm" property="operation" value=""/>
+<span class="errorText"><html:errors property="general" /></span>
 <html:text name="LoginForm" property="username"/><br>
 <html:password name="LoginForm" property="password"/><br>
 <html:submit property="operation">Login</html:submit>

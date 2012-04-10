@@ -27,7 +27,7 @@ public class CryptoUtils {
 			}
 			sb.append(Integer.toHexString(v));
 		}
-		return sb.toString().toUpperCase();
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {

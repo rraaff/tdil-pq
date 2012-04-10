@@ -1,30 +1,45 @@
 <project name="MysqlCreateTable" basedir="." default="createDatabase">
 
-  <property name="sql.driver" value="com.mysql.jdbc.Driver"/>
-  <property name="root.url" value="jdbc:mysql://localhost:3306/"/>
-  <property name="root.user" value="root"/>
-  <property name="root.pass" value="root"/>
-	
-  <property name="db.url" value="jdbc:mysql://localhost:3306/DJMAG"/>
-  <property name="db.user" value="DJMAG_USER"/>
-  <property name="db.pass" value="DJMAG_USER"/>
+	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
+	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
+	<property name="root.user" value="root" />
+	<property name="root.pass" value="root" />
 
-  <target name="createDatabase">
-	  <sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}" >
-	  	<classpath>
-	  		<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar"/>
-	  	</classpath>
-	  	<transaction src="database.sql"/>
-	  </sql>
-  </target>
-	
+	<property name="db.url" value="jdbc:mysql://localhost:3306/DJMAG" />
+	<property name="db.user" value="DJMAG_USER" />
+	<property name="db.pass" value="DJMAG_USER" />
+
+	<target name="createDatabase">
+		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="database.sql" />
+		</sql>
+	</target>
+
 	<target name="createTables" depends="createDatabase">
-	  <sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}" >
-	  	<classpath>
-	  		<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar"/>
-	  	</classpath>
-	  	<transaction src="ddl.sql"/>
-	  </sql>
-  </target>
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl.sql" />
+		</sql>
+	</target>
 
+	<target name="makeWar">
+		<delete file="./DJMAG_WEB.war"></delete>
+		<war destfile="./DJMAG_WEB.war" basedir="../../DJMagWeb/" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
+			<lib></lib>
+		</war>
+		<!--unwar src="/home/mgodoy/Simon_WEB.war" dest="/home/mgodoy/Simon_WEB/" overwrite="true"/>
+		<delete file="/home/mgodoy/Simon_WEB.war"></delete>
+		<delete dir="/home/mgodoy/Simon_WEB/WEB-INF"></delete>
+		<tstamp>
+			<format property="hora" pattern="yyyyMMddHHmm"/>
+		</tstamp>
+		<zip destfile="/home/mgodoy/Simon_WEB_${hora}.zip" basedir="/home/mgodoy/" includes="Simon_WEB/**"></zip>
+		<delete dir="/home/mgodoy/Simon_WEB"></delete-->
+	</target>
+	
 </project>

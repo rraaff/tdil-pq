@@ -36,18 +36,22 @@ public abstract class AjaxAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		SystemUser user = getLoggedUser(request);
-		if (user == null) {
-			redirectToLogin(mapping, form, request, response);
-			return null;
-		}
-		if (!Role.isValid(user, this.getAllowedRoles())) {
-			getLog().fatal("Invalid action for " + this.getClass().getName() + " user " + user.toString());
-			redirectToLogin(mapping, form, request, response);
-			return null;
+		if (userMustBeLogged()) {
+			SystemUser user = getLoggedUser(request);
+			if (user == null) {
+				redirectToLogin(mapping, form, request, response);
+				return null;
+			}
+			if (!Role.isValid(user, this.getAllowedRoles())) {
+				getLog().fatal("Invalid action for " + this.getClass().getName() + " user " + user.toString());
+				redirectToLogin(mapping, form, request, response);
+				return null;
+			}
 		}
 		return this.basicExecute(mapping, form, request, response);
 	}
+	
+	public abstract boolean userMustBeLogged();
 	
 	protected final void writeJsonResponse(HashMap result, HttpServletResponse response) throws IOException {
 		JSONObject json = JSONObject.fromObject(result);
