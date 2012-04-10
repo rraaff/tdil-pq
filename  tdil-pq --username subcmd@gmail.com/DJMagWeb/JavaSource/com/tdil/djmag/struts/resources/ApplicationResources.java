@@ -6,7 +6,7 @@ public class ApplicationResources {
 	
 	private static MessageResources mResources = MessageResources.getMessageResources( "com.tdil.djmag.struts.ApplicationResources" );
 	
-	public static String getMessage(String key) {
+	public String getMessage(String key) {
 		return mResources.getMessage(key);
 	}
 }

@@ -35,8 +35,11 @@ targetProject="DJMagWeb">
 
 <table schema="DJMAG" tableName="SYSTEMUSER" domainObjectName="SystemUser"></table>
 <table schema="DJMAG" tableName="SYSPROPERTIES" domainObjectName="SystemProperty"></table>
+
+<table schema="DJMAG" tableName="COUNTRY" domainObjectName="Country"></table>
+<table schema="DJMAG" tableName="SECTION" domainObjectName="Section"></table>
+<table schema="DJMAG" tableName="MENUITEM" domainObjectName="MenuItem"></table>
 <table schema="DJMAG" tableName="NEWSLETTER" domainObjectName="Newsletter"></table>
-<!-- table schema="SIMON" tableName="COUNTRY"></table-->
 
 </ibatorContext>
 </ibatorConfiguration>

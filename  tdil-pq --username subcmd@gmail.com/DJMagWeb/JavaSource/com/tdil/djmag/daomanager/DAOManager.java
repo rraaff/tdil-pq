@@ -1,0 +1,44 @@
+package com.tdil.djmag.daomanager;
+
+import java.sql.SQLException;
+
+import com.tdil.djmag.dao.CountryDAO;
+import com.tdil.djmag.dao.MenuItemDAO;
+import com.tdil.djmag.dao.NewsletterDAO;
+import com.tdil.djmag.dao.SectionDAO;
+import com.tdil.djmag.dao.SystemPropertyDAO;
+import com.tdil.djmag.dao.SystemUserDAO;
+import com.tdil.djmag.dao.impl.CountryDAOImpl;
+import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
+import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
+import com.tdil.djmag.dao.impl.SectionDAOImpl;
+import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.djmag.dao.impl.SystemUserDAOImpl;
+import com.tdil.ibatis.IBatisManager;
+
+public class DAOManager {
+
+	public static CountryDAO getCountryDAO() throws SQLException {
+		return new CountryDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static MenuItemDAO getMenuItemDAO() throws SQLException {
+		return new MenuItemDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static NewsletterDAO getNewsletterDAO() throws SQLException {
+		return new NewsletterDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static SectionDAO getSectionDAO() throws SQLException {
+		return new SectionDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static SystemPropertyDAO getSystemPropertyDAO() throws SQLException {
+		return new SystemPropertyDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static SystemUserDAO getSystemUserDAO() throws SQLException {
+		return new SystemUserDAOImpl(IBatisManager.getClient());
+	}
+}

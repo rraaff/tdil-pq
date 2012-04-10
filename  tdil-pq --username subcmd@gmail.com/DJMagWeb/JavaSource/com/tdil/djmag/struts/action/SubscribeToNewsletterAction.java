@@ -12,6 +12,12 @@ public class SubscribeToNewsletterAction extends AjaxTransactionalAction {
 
 	private static final Role[] roles = new Role[] {Anonymous.INSTANCE};
 
+	
+	@Override
+	public boolean userMustBeLogged() {
+		return false;
+	}
+	
 	@Override
 	protected Role[] getAllowedRoles() {
 		return roles;

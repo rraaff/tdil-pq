@@ -1,7 +1,14 @@
 package com.tdil.djmag.struts.forms;
 
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 
+import com.tdil.djmag.dao.NewsletterDAO;
+import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.Newsletter;
+import com.tdil.djmag.model.NewsletterExample;
+import com.tdil.djmag.model.NewsletterExample.Criteria;
 import com.tdil.simon.actions.validations.FieldValidation;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -47,8 +54,17 @@ public class SubscribeToNewsletterForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		// TODO Auto-generated method stub
-		
+		NewsletterDAO newsletterDAO = DAOManager.getNewsletterDAO();
+		NewsletterExample newsletterExample = new NewsletterExample();
+		Criteria criteria = newsletterExample.createCriteria();
+		criteria.andEmailEqualTo(this.getEmail());
+		List<Newsletter> list = newsletterDAO.selectNewsletterByExample(newsletterExample);
+		if (list.isEmpty()) {
+			Newsletter newsletter = new Newsletter();
+			newsletter.setEmail(this.getEmail());
+			newsletter.setSubscriptiondate(new Date());
+			newsletterDAO.insertNewsletter(newsletter);
+		}
 	}
 	
 	
