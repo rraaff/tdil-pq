@@ -7,11 +7,17 @@
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.djmag.struts.forms.LoginForm"/>
  </form-beans>
  <global-exceptions/>
- <global-forwards/>
+ <global-forwards>
+ 	<forward name="ajaxReturn" path="/empty.jsp"/>
+    <forward name="notLogged" path="/boLogin.jsp"/>
+    <forward name="invalidAction" path="/boLogin.jsp"/>
+ </global-forwards>
  <action-mappings>
   <action name="LoginForm" path="/login" scope="request" type="com.tdil.djmag.struts.action.LoginAction" > 
    <forward name="failure" path="/boLogin.jsp"/>
    <forward name="success" path="/boHome.jsp" redirect="true"/>
+  </action>
+  <action path="/logout" type="com.tdil.djmag.struts.action.LogoutAction">
   </action>
   
   <action path="/subscribeToNewsletter" scope="request" type="com.tdil.djmag.struts.action.SubscribeToNewsletterAction"> 
