@@ -29,8 +29,12 @@
 
 	<target name="makeWar">
 		<delete file="./DJMAG_WEB.war"></delete>
-		<war destfile="./DJMAG_WEB.war" basedir="../../DJMagWeb/" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
-			<lib></lib>
+		<war destfile="./DJMAG_WEB.war" basedir="../../DJMagWeb/WebContent" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
+			<classes dir="../../JavaBase/bin"/>
+			<lib dir="../../EnvironmentLibraries/">
+				<include name="*.jar"/>
+				<exclude name="servlet-api.jar"/>
+			</lib>
 		</war>
 		<!--unwar src="/home/mgodoy/Simon_WEB.war" dest="/home/mgodoy/Simon_WEB/" overwrite="true"/>
 		<delete file="/home/mgodoy/Simon_WEB.war"></delete>
