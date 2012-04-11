@@ -1,25 +1,25 @@
 package com.tdil.struts.actions;
 
-import com.tdil.users.SystemUser;
+import com.tdil.users.User;
 
 
 public class UnAuthorizedAccessException extends RuntimeException {
 
 	private static final long serialVersionUID = -3711192109876620191L;
 
-	private SystemUser user;
+	private User user;
 	private Class action;
 
-	public UnAuthorizedAccessException(SystemUser user) {
+	public UnAuthorizedAccessException(User user) {
 		super();
 		this.user = user;
 	}
 	
-	public SystemUser getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(SystemUser user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

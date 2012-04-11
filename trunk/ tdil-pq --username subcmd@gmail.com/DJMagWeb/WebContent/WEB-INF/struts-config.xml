@@ -5,22 +5,30 @@
  <data-sources/>
  <form-beans>
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.djmag.struts.forms.LoginForm"/>
+  <form-bean name="CountryForm" type="com.tdil.djmag.struts.forms.CountryForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
- 	<forward name="ajaxReturn" path="/empty.jsp"/>
-    <forward name="notLogged" path="/boLogin.jsp"/>
-    <forward name="invalidAction" path="/boLogin.jsp"/>
+  <forward name="ajaxReturn" path="/empty.jsp"/>
+  <forward name="notLogged" path="/boLogin.jsp"/>
+  <forward name="invalidAction" path="/boLogin.jsp"/>
  </global-forwards>
  <action-mappings>
-  <action name="LoginForm" path="/login" scope="request" type="com.tdil.djmag.struts.action.LoginAction" > 
+  <action name="LoginForm" path="/login" scope="request" type="com.tdil.djmag.struts.action.LoginAction">
    <forward name="failure" path="/boLogin.jsp"/>
    <forward name="success" path="/boHome.jsp" redirect="true"/>
   </action>
-  <action path="/logout" type="com.tdil.djmag.struts.action.LogoutAction">
-  </action>
+  <action path="/logout" type="com.tdil.djmag.struts.action.LogoutAction"/>
+  <action path="/subscribeToNewsletter" scope="request" type="com.tdil.djmag.struts.action.SubscribeToNewsletterAction"/>
   
-  <action path="/subscribeToNewsletter" scope="request" type="com.tdil.djmag.struts.action.SubscribeToNewsletterAction"> 
+  <action name="CountryForm" path="/goToCountryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction" parameter="Admin">
+   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="CountryForm" path="/saveCountry" scope="session" type="com.tdil.struts.actions.SaveAction" parameter="Admin">
+   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+  </action>
+   <action name="CountryForm" path="/editCountry" scope="session" type="com.tdil.struts.actions.EditAction" parameter="Admin">
+   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
   </action>
   
  </action-mappings>

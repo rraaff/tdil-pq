@@ -1,5 +1,9 @@
 package com.tdil.struts.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,16 +18,16 @@ import org.apache.struts.action.ActionMessages;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.users.Role;
-import com.tdil.users.SystemUser;
+import com.tdil.users.User;
 
-public abstract class SimonAction extends Action {
+public abstract class AbstractAction extends Action {
 
-	public SystemUser getLoggedUser(HttpServletRequest request) {
+	public User getLoggedUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			return null;
 		}
-		SystemUser user = (SystemUser)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");
 		if (user == null) {
 			return null;
 		}
@@ -32,11 +36,11 @@ public abstract class SimonAction extends Action {
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		SystemUser user = getLoggedUser(request);
+		User user = getLoggedUser(request);
 		if (user == null) {
 			return mapping.findForward("notLogged");
 		}
-		if (!Role.isValid(user, this.getPermissions())) {
+		if (!Role.isValid(user, this.getPermissions(mapping))) {
 			getLog().fatal("Invalid action for " + this.getClass().getName() + " user " + user.toString());
 			return mapping.findForward("invalidAction");
 		}
@@ -55,7 +59,24 @@ public abstract class SimonAction extends Action {
 		}
 	}
 	
-	protected abstract Role[] getPermissions();
+	protected Role[] getPermissions(ActionMapping mapping) {
+		String parameter = mapping.getParameter();
+		if (parameter.indexOf(',') == -1) {
+			return new Role[] {Role.getRole(parameter)};
+		}
+		StringTokenizer tokenizer = new StringTokenizer(mapping.getParameter(),",");
+		List<String> roles = new ArrayList<String>();
+		while (tokenizer.hasMoreElements()) {
+			String role = tokenizer.nextToken();
+			roles.add(role);
+		}
+		Role result[] = new Role[roles.size()];
+		int i = 0;
+		for (String role : roles) {
+			result[i] = Role.getRole(role); 
+		}
+		return result;
+	}
 	
 	protected abstract ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
@@ -97,6 +118,6 @@ public abstract class SimonAction extends Action {
 	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(SimonAction.class);
+		return LoggerProvider.getLogger(AbstractAction.class);
 	}
 }

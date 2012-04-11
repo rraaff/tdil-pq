@@ -20,6 +20,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 
 public abstract class AjaxTransactionalAction extends AjaxAction implements TransactionalActionWithValue {
 
+	@SuppressWarnings("unchecked")
 	public ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		

@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import com.tdil.djmag.struts.forms.SubscribeToNewsletterForm;
 import com.tdil.struts.actions.AjaxTransactionalAction;
 import com.tdil.struts.forms.TransactionalValidationForm;
-import com.tdil.users.Anonymous;
+import com.tdil.users.None;
 import com.tdil.users.Role;
 
 public class SubscribeToNewsletterAction extends AjaxTransactionalAction {
 
-	private static final Role[] roles = new Role[] {Anonymous.INSTANCE};
+	private static final Role[] roles = new Role[] {None.INSTANCE};
 
 	
 	@Override

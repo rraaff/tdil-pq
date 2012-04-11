@@ -12,6 +12,7 @@
       <li><a href="boApp1Config.php">Configuracion de la applicacion</a></li>
       <li><a href="boApp1Stats.php">Estado de la applicacion</a></li>
       <li><a href="boApp1Search.php">Consultas</a></li>
+      <li><html:link action="/goToCountryABM" >goToCountryABM</html:link>
     </ul>
   </li>
   <li>

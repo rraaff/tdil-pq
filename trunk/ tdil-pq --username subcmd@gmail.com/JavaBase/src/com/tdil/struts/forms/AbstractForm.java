@@ -26,6 +26,8 @@ public abstract class AbstractForm extends ActionForm {
 	public abstract void reset() throws SQLException;
 
 	public abstract void init() throws SQLException;
+	
+	public abstract void initWith(int id) throws SQLException;
 
 	public abstract ValidationError validate();
 	
