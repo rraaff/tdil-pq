@@ -5,6 +5,7 @@
 
 <ibatorConfiguration>
 <classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/JavaBase/bin/" />
 <ibatorContext 
   id="ibatorContext" 
   targetRuntime="Ibatis2Java5" 
@@ -18,6 +19,7 @@
   targetProject="DJMagWeb">
   <property name="enableSubPackages" value="true" />
   <property name="trimStrings" value="true" />
+  <property name="rootClass" value="com.tdil.ibatis.PersistentObject" />
 </javaModelGenerator>
 
 <sqlMapGenerator targetPackage="com.tdil.djmag.dao.maps"

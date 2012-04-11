@@ -24,7 +24,17 @@ Country Administration
 <html:submit property="operation">Save</html:submit>
 </html:form>
 
-<html:link action="/editCountry.st?id=1">Edit</html:link>
+<table>
+<logic:iterate name="CountryForm" property="allCountries" id="iterCountry" indexId="iterIndex"> 
+	<tr class="<%= (iterIndex % 2 == 0) ? "d0" : "d1" %>">
+		<td <%= ((com.tdil.ibatis.PersistentObject)iterCountry).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterCountry" property="name" /></td>
+		<td><html:link action="editCountry.st?" paramName="iterCountry" paramProperty="id" paramId="id">
+			Editar
+		</html:link></td>
+		<td width="10" bgcolor="#FFFFFF"><img src="images/null.gif" width="10" height="1"></td>
+	</tr> 
+	</logic:iterate>
+</table>
 
 </body>
 </html>
