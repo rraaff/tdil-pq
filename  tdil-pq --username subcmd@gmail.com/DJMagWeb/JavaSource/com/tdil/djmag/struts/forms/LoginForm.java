@@ -1,7 +1,9 @@
 package com.tdil.djmag.struts.forms;
 
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,9 +15,10 @@ import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.SystemUser;
 import com.tdil.djmag.model.SystemUserExample;
 import com.tdil.djmag.model.SystemUserExample.Criteria;
-import com.tdil.simon.actions.validations.ValidationErrors;
+import com.tdil.djmag.roles.Administrator;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.users.User;
 import com.tdil.utils.CryptoUtils;
 
 public class LoginForm extends ActionForm {
@@ -57,7 +60,13 @@ public class LoginForm extends ActionForm {
 		if (!exists.getPassword().equals(CryptoUtils.getHashedValue(this.getPassword()))) {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
 		}
-		return exists;
+		
+		User user = new User();
+		user.setId(exists.getId());
+		Set<String> roles = new HashSet<String>();
+		roles.add(Administrator.INSTANCE.getName());
+		user.setRoles(roles);
+		return user;
 	}
 	
 }

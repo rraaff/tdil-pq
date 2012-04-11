@@ -11,12 +11,12 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 
-import com.tdil.djmag.model.SystemUser;
 import com.tdil.djmag.struts.forms.LoginForm;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithValue;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.users.User;
 
 public class LoginAction extends Action implements TransactionalActionWithValue {
 
@@ -24,7 +24,7 @@ public class LoginAction extends Action implements TransactionalActionWithValue 
 			HttpServletResponse response) throws Exception {
 		LoginForm login = (LoginForm) form;
 		try {
-			SystemUser user = (SystemUser) TransactionProvider.executeInTransaction(this, login);
+			User user = (User) TransactionProvider.executeInTransaction(this, login);
 			request.getSession().setAttribute("user", user);
 			return mapping.findForward("success");
 		} catch (ValidationException e) {

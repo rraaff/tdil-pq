@@ -16,18 +16,17 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.struts.ValidationError;
 import com.tdil.users.Role;
-import com.tdil.users.SystemUser;
+import com.tdil.users.User;
 
 public abstract class AjaxAction extends Action {
 
-	public SystemUser getLoggedUser(HttpServletRequest request) {
+	public User getLoggedUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			return null;
 		}
-		SystemUser user = (SystemUser) session.getAttribute("user");
+		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return null;
 		}
@@ -37,7 +36,7 @@ public abstract class AjaxAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		if (userMustBeLogged()) {
-			SystemUser user = getLoggedUser(request);
+			User user = getLoggedUser(request);
 			if (user == null) {
 				redirectToLogin(mapping, form, request, response);
 				return null;

@@ -51,6 +51,9 @@ public class SubscribeToNewsletterForm extends TransactionalValidationForm {
 	@Override
 	public void init() throws SQLException {
 	}
+	@Override
+	public void initWith(int id) throws SQLException {
+	}
 
 	@Override
 	public void save() throws SQLException, ValidationException {
