@@ -17,13 +17,20 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
+import com.tdil.struts.resources.ApplicationResources;
 
 public class SaveAction extends AbstractAction {
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		return this.validateAndSave((AbstractForm)form, request, mapping);
+		AbstractForm aForm = (AbstractForm)form;
+		if (com.tdil.utils.StringUtils.equalsUnescaped(aForm.getOperation(), ApplicationResources.getMessage("reset"))) {
+			aForm.reset();
+			return mapping.findForward("continue");	
+		} else {
+			return this.validateAndSave(aForm, request, mapping);
+		}
 	}
 
 	public ActionForward validateAndSave(final AbstractForm form, HttpServletRequest request, ActionMapping mapping) {

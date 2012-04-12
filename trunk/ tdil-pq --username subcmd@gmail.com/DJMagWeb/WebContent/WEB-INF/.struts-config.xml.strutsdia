@@ -59,4 +59,26 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page5" PATH="/editCountry.st" SHAPE="448,721,0,0"
   SUBTYPE="other" TITLE="editCountry.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToSectionABM" NAME="action6"
+  PATH="/goToSectionABM" SHAPE="32,1089,0,0" TITLE="SectionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="/sectionAdministration.jsp"
+  SHAPE="272,1106,0,0" SUBTYPE="jsp" TITLE="sectionAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveSection" NAME="action7" PATH="/saveSection"
+  SHAPE="32,1201,0,0" TITLE="SectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editSection" NAME="action8" PATH="/editSection"
+  SHAPE="32,1313,0,0" TITLE="SectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
