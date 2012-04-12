@@ -36,23 +36,23 @@ targetProject="DJMagWeb">
 </daoGenerator>
 
 <table schema="DJMAG" tableName="SYSTEMUSER" domainObjectName="SystemUser">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="DJMAG" tableName="SYSPROPERTIES" domainObjectName="SystemProperty">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
 <table schema="DJMAG" tableName="COUNTRY" domainObjectName="Country">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="DJMAG" tableName="SECTION" domainObjectName="Section">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="DJMAG" tableName="MENUITEM" domainObjectName="MenuItem">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="DJMAG" tableName="NEWSLETTER" domainObjectName="Newsletter">
-	<generatedKey column="id" sqlStatement="MySql"/>
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
 </ibatorContext>

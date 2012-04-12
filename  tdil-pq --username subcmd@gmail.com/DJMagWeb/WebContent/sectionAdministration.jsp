@@ -23,6 +23,12 @@
 		<br>
 		Borrado: <html:checkbox name="SectionForm" property="deleted" />
 		<br>
+		<logic:iterate id="selectedCountry" name="SectionForm" property="selectedCountries">  
+   			<bean:write name="selectedCountry" property="name" />    
+   			<html:checkbox name="selectedCountry" property="selected" indexed="true" />  
+   			<br>
+		</logic:iterate>  
+		<br>
 		<logic:equal name="SectionForm" property="id" value="0">
 			<html:submit property="operation">
 				<bean:message key="save" />
