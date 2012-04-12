@@ -7,12 +7,10 @@
 
 <ul class="jbar">
    <li>
-    <a href="#">App 10x10=17</a>
+    <a href="#">Administraci&oacute;n</a>
     <ul>
-      <li><a href="boApp1Config.php">Configuracion de la applicacion</a></li>
-      <li><a href="boApp1Stats.php">Estado de la applicacion</a></li>
-      <li><a href="boApp1Search.php">Consultas</a></li>
-      <li><html:link action="/goToCountryABM" >goToCountryABM</html:link>
+      <li><html:link action="/goToCountryABM" >Manejo de paises</html:link>
+      <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link>
     </ul>
   </li>
   <li>

@@ -13,24 +13,22 @@
 
 	<%@ include file="includes/boMenu.jsp"%>
 
-	Country Administration
+	Section Administration
 
 
-	<html:form method="POST" action="/saveCountry">
-		<span class="errorText"><html:errors property="general" />
-		</span>
+	<html:form method="POST" action="/saveSection">
+		<span class="errorText"><html:errors property="general" /> </span>
 		<br>
-		Nombre: <html:text name="CountryForm" property="name" />
+		Nombre: <html:text name="SectionForm" property="name" />
 		<br>
-		Borrado: <html:checkbox name="CountryForm" property="deleted" />
+		Borrado: <html:checkbox name="SectionForm" property="deleted" />
 		<br>
-
-		<logic:equal name="CountryForm" property="id" value="0">
+		<logic:equal name="SectionForm" property="id" value="0">
 			<html:submit property="operation">
 				<bean:message key="save" />
 			</html:submit>
 		</logic:equal>
-		<logic:notEqual name="CountryForm" property="id" value="0">
+		<logic:notEqual name="SectionForm" property="id" value="0">
 			<html:submit property="operation">
 				<bean:message key="modify" />
 			</html:submit>
@@ -41,22 +39,20 @@
 	</html:form>
 
 	<table>
-		<logic:iterate name="CountryForm" property="allCountries"
-			id="iterCountry" indexId="iterIndex">
+		<logic:iterate name="SectionForm" property="allSections"
+			id="iterSection" indexId="iterIndex">
 			<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
 				<td
-					<%=((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1 ? "class=\"notActive\""
+					<%=((com.tdil.ibatis.PersistentObject) iterSection).getDeleted() == 1 ? "class=\"notActive\""
 						: ""%>
-					align="left"><bean:write name="iterCountry" property="name" />
+					align="left"><bean:write name="iterSection" property="name" />
 				</td>
-				<td><html:link action="editCountry.st?" paramName="iterCountry"
+				<td><html:link action="editSection.st?" paramName="iterSection"
 						paramProperty="id" paramId="id">
 			Editar
-		</html:link>
-				</td>
+		</html:link></td>
 				<td width="10" bgcolor="#FFFFFF"><img src="images/null.gif"
-					width="10" height="1">
-				</td>
+					width="10" height="1"></td>
 			</tr>
 		</logic:iterate>
 	</table>

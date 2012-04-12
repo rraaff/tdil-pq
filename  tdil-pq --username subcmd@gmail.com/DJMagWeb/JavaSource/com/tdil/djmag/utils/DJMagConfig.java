@@ -35,10 +35,8 @@ public class DJMagConfig extends SystemConfig {
 				SystemPropertyCache.put(property.getPropkey(), property.getPropvalue());
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			getLog().error(e.getMessage(), e);
 		}
-		
 
 	}
 
