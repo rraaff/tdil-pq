@@ -1,6 +1,7 @@
 package com.tdil.djmag.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tdil.djmag.dao.MenuItemDAO;
@@ -30,7 +31,7 @@ public class SectionForm extends TransactionalValidationForm {
 	
 	private List<Section> allSections;
 
-	private List<CountrySelectionVO> selectedCountries;
+	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
 	private List<Country> allCountries;
 
 	@Override
@@ -85,7 +86,7 @@ public class SectionForm extends TransactionalValidationForm {
 
 	private void setCountrySelected(MenuItem menuItem) {
 		for (CountrySelectionVO countrySelectionVO : this.getSelectedCountries()) {
-			if (countrySelectionVO.getId() == menuItem.getIdCountry()) {
+			if (countrySelectionVO.getId().equals(menuItem.getIdCountry())) {
 				if (menuItem.getDeleted() == 0) {
 					countrySelectionVO.setSelected(true);
 				}
@@ -129,7 +130,11 @@ public class SectionForm extends TransactionalValidationForm {
 				menuItem.setId(countrySelectionVO.getOwnerId());
 				menuItem.setDeleted(countrySelectionVO.isSelected() ? 0 : 1);
 				menuItem.setIdSection(sectionId);
-				if(countrySelectionVO.getOwnerId() != 0) {
+				menuItem.setIdCountry(countrySelectionVO.getId());
+				// TODO arreglar
+				menuItem.setName(this.getName());
+				menuItem.setPosition(0);
+				if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
 					menuItemDAO.updateMenuItemByPrimaryKey(menuItem);
 				} else {
 					menuItemDAO.insertMenuItem(menuItem);
@@ -139,7 +144,7 @@ public class SectionForm extends TransactionalValidationForm {
 	}
 
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
-		if(countrySelectionVO.getOwnerId() != 0) {
+		if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
 			return true;
 		}
 		return countrySelectionVO.isSelected();
@@ -184,6 +189,14 @@ public class SectionForm extends TransactionalValidationForm {
 	public void setSelectedCountries(List<CountrySelectionVO> selectedCountries) {
 		this.selectedCountries = selectedCountries;
 	}
+	
+	public CountrySelectionVO getSelectedCountry(int index) {  
+	      return (CountrySelectionVO)this.selectedCountries.get(index);  
+	   }  
+	   
+	public void setSelectedCountry(int index, CountrySelectionVO countryVO) {  
+		this.selectedCountries.set(index, countryVO);  
+	 }  
 
 	public List<Country> getAllCountries() {
 		return allCountries;

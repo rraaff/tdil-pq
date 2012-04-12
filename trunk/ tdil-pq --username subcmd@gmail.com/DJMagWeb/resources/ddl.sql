@@ -51,6 +51,7 @@ CREATE TABLE MENUITEM (
   `id_section` INT NOT NULL,
   `name` VARCHAR(250) NOT NULL,
   `position` INT NOT NULL,
+  `deleted` INT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_MENUITEM_00` (`id_country` ASC, `id_section` ASC) ,
   CONSTRAINT `FK_MENUITEM_00`
@@ -69,5 +70,6 @@ CREATE TABLE NEWSLETTER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `email` VARCHAR(100) NOT NULL ,
   `subscriptiondate` DATE NOT NULL,
+  `deleted` INT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
