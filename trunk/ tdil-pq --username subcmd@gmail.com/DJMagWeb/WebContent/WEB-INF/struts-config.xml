@@ -29,6 +29,7 @@
   <action name="CountryForm" parameter="Admin" path="/saveCountry"
    scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/countryAdministration.jsp"/>
   </action>
   <action name="CountryForm" parameter="Admin" path="/editCountry"
    scope="session" type="com.tdil.struts.actions.EditAction">

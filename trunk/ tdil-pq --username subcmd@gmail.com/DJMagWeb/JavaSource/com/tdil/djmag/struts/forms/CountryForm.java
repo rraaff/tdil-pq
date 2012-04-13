@@ -7,6 +7,8 @@ import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
+import com.tdil.djmag.model.CountryExample.Criteria;
+import com.tdil.simon.actions.validations.FieldValidation;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
@@ -23,6 +25,9 @@ public class CountryForm extends TransactionalValidationForm {
 	private boolean deleted;
 	
 	private List<Country> allCountries;
+	
+	private static String name_key = "Country.name";
+	private static String name_dulicated_key = "DUPLICATED";
 
 	@Override
 	public void reset() throws SQLException {
@@ -51,12 +56,22 @@ public class CountryForm extends TransactionalValidationForm {
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO Auto-generated method stub
+		FieldValidation.validateText(this.getName(), name_key, 250, validationError);
 	}
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-		// TODO Auto-generated method stub
+		CountryDAO countryDAO = DAOManager.getCountryDAO();
+		CountryExample countryExample = new CountryExample();
+		Criteria criteria = countryExample.createCriteria();
+		criteria.andNameEqualTo(this.getName());
+		List<Country> list = countryDAO.selectCountryByExample(countryExample);
+		if (!list.isEmpty()) {
+			Country db = list.get(0);
+			if (!db.getId().equals(this.getId())) {
+				validationError.setFieldError(name_key, name_dulicated_key);
+			}
+		}
 	}
 
 	@Override

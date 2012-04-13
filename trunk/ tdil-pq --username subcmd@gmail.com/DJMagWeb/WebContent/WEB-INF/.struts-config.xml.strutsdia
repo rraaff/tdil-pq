@@ -50,6 +50,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/countryAdministration.jsp" TARGET="page4" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/countryAdministration.jsp" TARGET="page4" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#editCountry" NAME="action5" PATH="/editCountry"
   SHAPE="32,945,0,0" TITLE="CountryForm" TYPE="action" model-entity="StrutsProcessItem">
