@@ -2,7 +2,11 @@ package com.tdil.djmag.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.SectionDAO;
@@ -31,14 +35,17 @@ public class SectionForm extends TransactionalValidationForm {
 	
 	private List<Section> allSections;
 
-	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
-	private List<Country> allCountries;
+	private List<MenuItemSelectionVO> selectedCountries = new ArrayList<MenuItemSelectionVO>();
+	
+	private static List<Country> allCountries = new ArrayList<Country>();
+	private static List<MenuItem> allMenuItems = new ArrayList<MenuItem>();
 
 	@Override
 	public void reset() throws SQLException {
 		this.id = 0;
 		this.name = null;
 		this.deleted = false;
+		this.resetSelectedCountries();
 	}
 
 	@Override
@@ -49,15 +56,18 @@ public class SectionForm extends TransactionalValidationForm {
 		
 		CountryExample countryExample = new CountryExample();
 		countryExample.setOrderByClause("name");
-		this.setAllCountries(DAOManager.getCountryDAO().selectCountryByExample(countryExample));
+		setAllCountries(DAOManager.getCountryDAO().selectCountryByExample(countryExample));
+		
+		MenuItemExample menuItemExample = new MenuItemExample();
+		setAllMenuItems(DAOManager.getMenuItemDAO().selectMenuItemByExample(menuItemExample));
 		
 		this.resetSelectedCountries();
 	}
 	
 	private void resetSelectedCountries() {
 		this.getSelectedCountries().clear();
-		for (Country country : this.getAllCountries()) {
-			this.getSelectedCountries().add(new CountrySelectionVO(country));
+		for (Country country : getAllCountries()) {
+			this.getSelectedCountries().add(new MenuItemSelectionVO(country));
 		}
 		
 	}
@@ -83,14 +93,39 @@ public class SectionForm extends TransactionalValidationForm {
 			this.setCountrySelected(menuItem);
 		}
 	}
+	
+	public static List<Country> getAllCountriesForSectionId(Integer sectionId) {
+		List<Country> result = new ArrayList<Country>();
+		for (MenuItem mi : getAllMenuItems()) {
+			if (mi.getIdSection().equals(sectionId)) {
+				result.add(getCountryWithId(mi.getIdCountry()));
+			}
+		}
+		Collections.sort(result, new Comparator<Country>() {
+			public int compare(Country arg0, Country arg1) {
+				return arg0.getName().compareTo(arg1.getName());
+			}
+		});
+		return result;
+	}
+
+	private static Country getCountryWithId(Integer idCountry) {
+		for (Country c : getAllCountries()) {
+			if (c.getId().equals(idCountry)) {
+				return c;
+			}
+		}
+		return null;
+	}
 
 	private void setCountrySelected(MenuItem menuItem) {
-		for (CountrySelectionVO countrySelectionVO : this.getSelectedCountries()) {
-			if (countrySelectionVO.getId().equals(menuItem.getIdCountry())) {
+		for (MenuItemSelectionVO countrySelectionVO : this.getSelectedCountries()) {
+			if (countrySelectionVO.getCountryId().equals(menuItem.getIdCountry())) {
 				if (menuItem.getDeleted() == 0) {
 					countrySelectionVO.setSelected(true);
 				}
 				countrySelectionVO.setOwnerId(menuItem.getId());
+				countrySelectionVO.setSectionName(menuItem.getName());
 			}
 		}
 		
@@ -124,26 +159,27 @@ public class SectionForm extends TransactionalValidationForm {
 			sectionDAO.updateSectionByPrimaryKey(section);
 			sectionId = this.getId();
 		}
-		for (CountrySelectionVO countrySelectionVO : getSelectedCountries()) {
+		for (MenuItemSelectionVO countrySelectionVO : getSelectedCountries()) {
 			if (this.mustBeSaved(countrySelectionVO)) {
 				MenuItem menuItem = new MenuItem();
 				menuItem.setId(countrySelectionVO.getOwnerId());
 				menuItem.setDeleted(countrySelectionVO.isSelected() ? 0 : 1);
 				menuItem.setIdSection(sectionId);
-				menuItem.setIdCountry(countrySelectionVO.getId());
+				menuItem.setIdCountry(countrySelectionVO.getCountryId());
+				menuItem.setName(StringUtils.isEmpty(countrySelectionVO.getSectionName()) ? this.getName() : countrySelectionVO.getSectionName());
+				menuItem.setPosition(null);
 				// TODO arreglar
-				menuItem.setName(this.getName());
-				menuItem.setPosition(0);
 				if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
-					menuItemDAO.updateMenuItemByPrimaryKey(menuItem);
+					menuItemDAO.updateMenuItemByPrimaryKeySelective(menuItem);
 				} else {
+					menuItem.setPosition(0);
 					menuItemDAO.insertMenuItem(menuItem);
 				}
 			}
 		}
 	}
 
-	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
+	private boolean mustBeSaved(MenuItemSelectionVO countrySelectionVO) {
 		if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
 			return true;
 		}
@@ -182,28 +218,38 @@ public class SectionForm extends TransactionalValidationForm {
 		this.allSections = allSections;
 	}
 
-	public List<CountrySelectionVO> getSelectedCountries() {
+	public List<MenuItemSelectionVO> getSelectedCountries() {
 		return selectedCountries;
 	}
 
-	public void setSelectedCountries(List<CountrySelectionVO> selectedCountries) {
+	public void setSelectedCountries(List<MenuItemSelectionVO> selectedCountries) {
 		this.selectedCountries = selectedCountries;
 	}
 	
-	public CountrySelectionVO getSelectedCountry(int index) {  
-	      return (CountrySelectionVO)this.selectedCountries.get(index);  
+	public MenuItemSelectionVO getSelectedCountry(int index) {  
+	      return (MenuItemSelectionVO)this.selectedCountries.get(index);  
 	   }  
 	   
-	public void setSelectedCountry(int index, CountrySelectionVO countryVO) {  
+	public void setSelectedCountry(int index, MenuItemSelectionVO countryVO) {  
 		this.selectedCountries.set(index, countryVO);  
 	 }  
 
-	public List<Country> getAllCountries() {
+	// TODO Copia
+	public static synchronized List<Country> getAllCountries() {
 		return allCountries;
 	}
 
-	public void setAllCountries(List<Country> allCountries) {
-		this.allCountries = allCountries;
+	public static synchronized void setAllCountries(List<Country> newCountries) {
+		allCountries = newCountries;
+	}
+
+	// TODO Copia
+	public static synchronized List<MenuItem> getAllMenuItems() {
+		return allMenuItems;
+	}
+
+	public static synchronized void setAllMenuItems(List<MenuItem> newItems) {
+		allMenuItems = newItems;
 	}
 
 }
