@@ -7,6 +7,7 @@
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.djmag.struts.forms.LoginForm"/>
   <form-bean name="CountryForm" type="com.tdil.djmag.struts.forms.CountryForm"/>
   <form-bean name="SectionForm" type="com.tdil.djmag.struts.forms.SectionForm"/>
+  <form-bean name="ReorderMenuForm" type="com.tdil.djmag.struts.forms.ReorderMenuForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -21,7 +22,6 @@
   </action>
   <action path="/logout" type="com.tdil.djmag.struts.action.LogoutAction"/>
   <action path="/subscribeToNewsletter" scope="request" type="com.tdil.djmag.struts.action.SubscribeToNewsletterAction"/>
-  
   <action name="CountryForm" parameter="Admin" path="/goToCountryABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
@@ -34,7 +34,6 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
   </action>
-  
   <action name="SectionForm" parameter="Admin" path="/goToSectionABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
@@ -47,7 +46,14 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
   </action>
-  
+  <action name="ReorderMenuForm" parameter="Admin" path="/goToReorderMenu"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
+  </action>
+  <action name="ReorderMenuForm" parameter="Admin" path="/saveOrder"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
+  </action>
  </action-mappings>
  <controller/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
