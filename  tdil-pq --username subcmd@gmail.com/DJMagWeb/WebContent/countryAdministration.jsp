@@ -7,6 +7,36 @@
 <html>
 <head>
 <%@ include file="includes/boHead.jsp"%>
+
+<script type="text/javascript">
+$(document).ready(
+	function(){
+	
+	function generateTooltips() {
+	  //make sure tool tip is enabled for any new error label
+		$("img[id*='error']").tooltip({
+			showURL: false,
+			opacity: 0.99,
+			fade: 150,
+			positionRight: true,
+				bodyHandler: function() {
+					return $("#"+this.id).attr("hovertext");
+				}
+		});
+		//make sure tool tip is enabled for any new valid label
+		$("img[src*='tick.gif']").tooltip({
+			showURL: false,
+				bodyHandler: function() {
+					return "OK";
+				}
+		});
+	}
+	
+	$('form[name=CountryForm]').mouseover(function(){
+		      generateTooltips();
+		    });
+	});
+</script>
 </head>
 
 <body>
@@ -20,7 +50,7 @@
 		<span class="errorText"><html:errors property="general" />
 		</span>
 		<br>
-		Nombre: <html:text name="CountryForm" property="name" />
+		Nombre: <html:text name="CountryForm" property="name" /><html:errors property="Country.name.err" />
 		<br>
 		Borrado: <html:checkbox name="CountryForm" property="deleted" />
 		<br>

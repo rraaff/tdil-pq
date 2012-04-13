@@ -83,6 +83,7 @@ public class ValidationError {
 		}
 		for (Map.Entry<String, String> error : this.getFieldErrors().entrySet()) {
 			errors.add(error.getKey(), new ActionMessage("*"));
+			errors.add(error.getKey() + ".err", new ActionMessage(error.getValue()));
 		}
 		return errors;
 	}
