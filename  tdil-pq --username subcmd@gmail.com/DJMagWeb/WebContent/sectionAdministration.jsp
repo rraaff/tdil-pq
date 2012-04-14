@@ -9,19 +9,20 @@
 <html>
 <head>
 <%@ include file="includes/boHead.jsp"%>
+<%@ include file="includes/boErrorJS.jsp"%>
 </head>
 
 <body>
 
 	<%@ include file="includes/boMenu.jsp"%>
 
-	Section Administration
+	<br>Section Administration
 
 
 	<html:form method="POST" action="/saveSection">
 		<span class="errorText"><html:errors property="general" /> </span>
 		<br>
-		Nombre seccion: <html:text name="SectionForm" property="name" />
+		Nombre seccion: <html:text name="SectionForm" property="name" /><html:errors property="Section.name.err" />
 		<br>
 		Borrada: <html:checkbox name="SectionForm" property="deleted" />
 		<br>

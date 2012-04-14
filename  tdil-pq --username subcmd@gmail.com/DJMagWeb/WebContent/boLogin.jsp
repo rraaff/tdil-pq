@@ -5,14 +5,14 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <html>
 <head>
-
+<%@ include file="includes/boHead.jsp"%>
+<%@ include file="includes/boErrorJS.jsp"%>
 </head>
 
 <body>
 <html:form method="POST" action="/login">
 <html:hidden name="LoginForm" property="operation" value=""/>
-<span class="errorText"><html:errors property="general" /></span>
-<html:text name="LoginForm" property="username"/><br>
+<html:text name="LoginForm" property="username"/><span class="errorText"><html:errors property="general" /></span><br>
 <html:password name="LoginForm" property="password"/><br>
 <html:submit property="operation">Login</html:submit>
 

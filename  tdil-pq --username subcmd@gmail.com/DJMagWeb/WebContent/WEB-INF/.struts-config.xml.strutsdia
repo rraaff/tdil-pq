@@ -82,6 +82,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#editSection" NAME="action8" PATH="/editSection"
   SHAPE="32,1313,0,0" TITLE="SectionForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -105,9 +108,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/reorderMenu.jsp" TARGET="page8" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/reorderMenu.jsp" TARGET="page8" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page5" PATH="/editCountry.st" SHAPE="448,721,0,0"
-  SUBTYPE="other" TITLE="editCountry.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToReorderMenu" NAME="action9"
   PATH="/goToReorderMenu" SHAPE="32,1569,0,0" TITLE="ReorderMenuForm"
   TYPE="action" model-entity="StrutsProcessItem">
@@ -115,4 +118,43 @@
    PATH="/reorderMenu.jsp" TARGET="page8" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToNewsletterReport" NAME="action11"
+  PATH="/goToNewsletterReport" SHAPE="32,1889,0,0"
+  TITLE="NewsletterReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/newsletterReport.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="/newsletterReport.jsp"
+  SHAPE="240,1906,0,0" SUBTYPE="jsp" TITLE="newsletterReport.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="/editCountry.st" SHAPE="448,721,0,0"
+  SUBTYPE="other" TITLE="editCountry.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#newsletterReport" NAME="action12"
+  PATH="/newsletterReport" SHAPE="32,2225,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToRankingABM" NAME="action13"
+  PATH="/goToRankingABM" SHAPE="32,1521,0,0" TITLE="RankingNoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveRanking" NAME="action14" PATH="/saveRanking"
+  SHAPE="32,1633,0,0" TITLE="RankingNoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editRanking" NAME="action15" PATH="/editRanking"
+  SHAPE="32,1889,0,0" TITLE="RankingNoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="/rankingAdministration.jsp"
+  SHAPE="240,1633,0,0" SUBTYPE="jsp" TITLE="rankingAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

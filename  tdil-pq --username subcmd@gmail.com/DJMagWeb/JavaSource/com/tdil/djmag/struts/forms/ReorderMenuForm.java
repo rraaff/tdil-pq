@@ -14,6 +14,7 @@ import com.tdil.djmag.model.MenuItemExample.Criteria;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class ReorderMenuForm extends TransactionalValidationForm {
 
@@ -23,11 +24,17 @@ public class ReorderMenuForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 3196174331760319100L;
 	private int countryId;
 	private List<MenuItemPositionVO> menuItems = new ArrayList<MenuItemPositionVO>();
+	
+	private static String position_key = "MenuItem.position";
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO Auto-generated method stub
-
+		for (MenuItemPositionVO mi : getMenuItems()) {
+			FieldValidation.validateNumber(mi.getPosition(), position_key, 0, 100, validationError);
+			if (validationError.hasError()) {
+				return;
+			}
+		}
 	}
 
 	@Override
@@ -62,12 +69,12 @@ public class ReorderMenuForm extends TransactionalValidationForm {
 		MenuItemExample menuItemExample = new MenuItemExample();
 		Criteria criteria = menuItemExample.createCriteria();
 		criteria.andIdCountryEqualTo(id);
-		menuItemExample.setOrderByClause("position");
 		List<MenuItem> menuItems = menuItemDAO.selectMenuItemByExample(menuItemExample);
 		this.getMenuItems().clear();
 		for (MenuItem mi : menuItems) {
 			this.getMenuItems().add(new MenuItemPositionVO(mi));
 		}
+		this.init();
 	}
 
 	@Override

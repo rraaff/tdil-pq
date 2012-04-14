@@ -6,7 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.StringUtils;
+import org.apache.struts.action.ActionMapping;
 
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.SectionDAO;
@@ -21,6 +24,7 @@ import com.tdil.djmag.model.SectionExample;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class SectionForm extends TransactionalValidationForm {
 
@@ -39,6 +43,9 @@ public class SectionForm extends TransactionalValidationForm {
 	
 	private static List<Country> allCountries = new ArrayList<Country>();
 	private static List<MenuItem> allMenuItems = new ArrayList<MenuItem>();
+	
+	private static String name_key = "Section.name";
+	private static String name_duplicated_key = "DUPLICATED";
 
 	@Override
 	public void reset() throws SQLException {
@@ -46,6 +53,18 @@ public class SectionForm extends TransactionalValidationForm {
 		this.name = null;
 		this.deleted = false;
 		this.resetSelectedCountries();
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		this.deleted = false;
+		clearSelectedCountries();
+	}
+	
+	private void clearSelectedCountries() {
+		for (MenuItemSelectionVO countrySelectionVO : getSelectedCountries()) {
+			countrySelectionVO.setSelected(false);
+		}
 	}
 
 	@Override
@@ -97,7 +116,7 @@ public class SectionForm extends TransactionalValidationForm {
 	public static List<Country> getAllCountriesForSectionId(Integer sectionId) {
 		List<Country> result = new ArrayList<Country>();
 		for (MenuItem mi : getAllMenuItems()) {
-			if (mi.getIdSection().equals(sectionId)) {
+			if (mi.getIdSection().equals(sectionId) && mi.getDeleted() == 0) {
 				result.add(getCountryWithId(mi.getIdCountry()));
 			}
 		}
@@ -133,12 +152,22 @@ public class SectionForm extends TransactionalValidationForm {
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO Auto-generated method stub
+		FieldValidation.validateText(this.getName(), name_key, 250, validationError);
 	}
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-		// TODO Auto-generated method stub
+		SectionDAO sectionDAO = DAOManager.getSectionDAO();
+		SectionExample sectionExample = new SectionExample();
+		com.tdil.djmag.model.SectionExample.Criteria criteria = sectionExample.createCriteria();
+		criteria.andNameEqualTo(this.getName());
+		List<Section> list = sectionDAO.selectSectionByExample(sectionExample);
+		if (!list.isEmpty()) {
+			Section db = list.get(0);
+			if (!db.getId().equals(this.getId())) {
+				validationError.setFieldError(name_key, name_duplicated_key);
+			}
+		}
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
@@ -48,6 +49,12 @@ public class LoginForm extends ActionForm {
 		password = null;
 	}
 	public Object executeLogin() throws SQLException, ValidationException {
+		if (StringUtils.isEmpty(this.getUsername())) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		}
+		if (StringUtils.isEmpty(this.getPassword())) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		}
 		SystemUserDAO systemUserDAO = DAOManager.getSystemUserDAO();
 		SystemUserExample systemUserExample = new SystemUserExample();
 		Criteria criteria = systemUserExample.createCriteria();

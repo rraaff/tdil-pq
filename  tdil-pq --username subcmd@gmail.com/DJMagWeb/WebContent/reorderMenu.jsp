@@ -7,13 +7,14 @@
 <html>
 <head>
 <%@ include file="includes/boHead.jsp"%>
+<%@ include file="includes/boErrorJS.jsp"%>
 </head>
 
 <body>
 
 	<%@ include file="includes/boMenu.jsp"%>
 
-	Reorder menu
+	<br>Reorder menu
 
 	<html:form method="POST" action="/saveOrder">
 		<span class="errorText"><html:errors property="general" /> </span>
@@ -31,6 +32,7 @@
    			</tr>
 		</logic:iterate>  
 		</table>
+		<html:errors property="MenuItem.position.err" />
 		<br>
 		<html:submit property="operation">
 			<bean:message key="save" />

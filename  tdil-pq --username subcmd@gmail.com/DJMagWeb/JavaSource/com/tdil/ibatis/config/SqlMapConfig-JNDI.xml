@@ -24,4 +24,6 @@
 	<sqlMap resource="com/tdil/djmag/dao/maps/SECTION_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/SYSPROPERTIES_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/SYSTEMUSER_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/RANKING_NOTE_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/RANKING_NOTE_COUNTRY_SqlMap.xml"/>
 </sqlMapConfig>
