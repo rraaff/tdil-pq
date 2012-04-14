@@ -9,16 +9,20 @@
    <li>
     <a href="#">Administraci&oacute;n</a>
     <ul>
-      <li><html:link action="/goToCountryABM" >Manejo de paises</html:link>
-      <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link>
+      <li><html:link action="/goToCountryABM" >Manejo de paises</html:link></li>
+      <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
     </ul>
   </li>
   <li>
-    <a href="#">App de a 2</a>
+    <a href="#">Artículos</a>
     <ul>
-      <li><a href="boApp2Config.php">Configuracion de la applicacion</a></li>
-      <li><a href="boApp2Stats.php">Estado de la applicacion</a></li>
-      <li><a href="boApp2Search.php">Consultas</a></li>
+      <li><html:link action="/goToRankingABM" >Manejo de rankings</html:link></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Reportes</a>
+    <ul>
+      <li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>
     </ul>
   </li>
   <li>

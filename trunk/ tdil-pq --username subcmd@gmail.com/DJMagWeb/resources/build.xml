@@ -1,4 +1,4 @@
-<project name="MysqlCreateTable" basedir="." default="createDatabase">
+<project name="MysqlCreateTable" basedir="." default="createTables">
 
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />

@@ -8,6 +8,8 @@
   <form-bean name="CountryForm" type="com.tdil.djmag.struts.forms.CountryForm"/>
   <form-bean name="SectionForm" type="com.tdil.djmag.struts.forms.SectionForm"/>
   <form-bean name="ReorderMenuForm" type="com.tdil.djmag.struts.forms.ReorderMenuForm"/>
+  <form-bean name="NewsletterReportForm" type="com.tdil.djmag.struts.forms.NewsletterReportForm"/>
+  <form-bean name="RankingNoteForm" type="com.tdil.djmag.struts.forms.RankingNoteForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -42,18 +44,39 @@
   <action name="SectionForm" parameter="Admin" path="/saveSection"
    scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/sectionAdministration.jsp"/>
   </action>
   <action name="SectionForm" parameter="Admin" path="/editSection"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
   </action>
-  <action name="ReorderMenuForm" parameter="Admin" path="/goToReorderMenu"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="ReorderMenuForm" parameter="Admin"
+   path="/goToReorderMenu" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
   </action>
   <action name="ReorderMenuForm" parameter="Admin" path="/saveOrder"
    scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
+   <forward name="failure" path="/reorderMenu.jsp"/>
+  </action>
+  <action name="NewsletterReportForm" parameter="Admin"
+   path="/goToNewsletterReport" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/newsletterReport.jsp" redirect="true"/>
+  </action>
+  <action path="/newsletterReport" scope="request" type="com.tdil.djmag.struts.action.NewsletterReportAction"/>
+  
+  <action name="RankingNoteForm" parameter="Admin" path="/goToRankingABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/saveRanking"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/rankingAdministration.jsp"/>
+  </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/editRanking"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
  </action-mappings>
  <controller/>

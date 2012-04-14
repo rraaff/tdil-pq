@@ -9,10 +9,10 @@ import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Newsletter;
 import com.tdil.djmag.model.NewsletterExample;
 import com.tdil.djmag.model.NewsletterExample.Criteria;
-import com.tdil.simon.actions.validations.FieldValidation;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class SubscribeToNewsletterForm extends TransactionalValidationForm {
 

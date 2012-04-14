@@ -8,10 +8,10 @@ import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.CountryExample.Criteria;
-import com.tdil.simon.actions.validations.FieldValidation;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class CountryForm extends TransactionalValidationForm {
 
@@ -27,7 +27,7 @@ public class CountryForm extends TransactionalValidationForm {
 	private List<Country> allCountries;
 	
 	private static String name_key = "Country.name";
-	private static String name_dulicated_key = "DUPLICATED";
+	private static String name_duplicated_key = "DUPLICATED";
 
 	@Override
 	public void reset() throws SQLException {
@@ -69,7 +69,7 @@ public class CountryForm extends TransactionalValidationForm {
 		if (!list.isEmpty()) {
 			Country db = list.get(0);
 			if (!db.getId().equals(this.getId())) {
-				validationError.setFieldError(name_key, name_dulicated_key);
+				validationError.setFieldError(name_key, name_duplicated_key);
 			}
 		}
 	}

@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.NewsletterDAO;
+import com.tdil.djmag.dao.RankingNoteCountryDAO;
+import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.dao.SystemPropertyDAO;
 import com.tdil.djmag.dao.SystemUserDAO;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
 import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
+import com.tdil.djmag.dao.impl.RankingNoteCountryDAOImpl;
+import com.tdil.djmag.dao.impl.RankingNoteDAOImpl;
 import com.tdil.djmag.dao.impl.SectionDAOImpl;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.djmag.dao.impl.SystemUserDAOImpl;
@@ -40,5 +44,13 @@ public class DAOManager {
 	
 	public static SystemUserDAO getSystemUserDAO() throws SQLException {
 		return new SystemUserDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static RankingNoteDAO getRankingNoteDAO() throws SQLException {
+		return new RankingNoteDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static RankingNoteCountryDAO getRankingNoteCountryDAO() throws SQLException {
+		return new RankingNoteCountryDAOImpl(IBatisManager.getClient());
 	}
 }

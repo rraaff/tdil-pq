@@ -24,7 +24,7 @@
  </filter>
  <filter-mapping>
   <filter-name>UrlRewriteFilter</filter-name>
-  <url-pattern>/*</url-pattern>
+  <url-pattern>/notes/*</url-pattern>
  </filter-mapping>
  <filter-mapping>
   <filter-name>NoCachingFilter</filter-name>
