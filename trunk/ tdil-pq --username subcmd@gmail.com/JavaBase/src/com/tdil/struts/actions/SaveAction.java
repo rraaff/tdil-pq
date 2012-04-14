@@ -12,12 +12,12 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.simon.actions.validations.ValidationErrors;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.validations.ValidationErrors;
 
 public class SaveAction extends AbstractAction {
 
