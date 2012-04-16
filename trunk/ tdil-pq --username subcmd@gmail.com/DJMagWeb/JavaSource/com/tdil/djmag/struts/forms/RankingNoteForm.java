@@ -328,9 +328,13 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		this.selectedCountries = selectedCountries;
 	}
 	
-	public CountrySelectionVO getSelectedCountry(int index) {  
-	      return (CountrySelectionVO)this.selectedCountries.get(index);  
-	   }  
+	public CountrySelectionVO getSelectedCountry(int index) {
+		if (this.selectedCountries.size() > index) {
+			return (CountrySelectionVO)this.selectedCountries.get(index); 
+		} else {
+			return null;
+		}
+	  }  
 	   
 	public void setSelectedCountry(int index, CountrySelectionVO countryVO) {  
 		this.selectedCountries.set(index, countryVO);  

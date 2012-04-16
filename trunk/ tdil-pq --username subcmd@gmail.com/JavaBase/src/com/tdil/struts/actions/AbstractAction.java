@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -17,12 +18,13 @@ import org.apache.struts.action.ActionMessages;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
+import com.tdil.users.None;
 import com.tdil.users.Role;
 import com.tdil.users.User;
 
 public abstract class AbstractAction extends Action {
 
-	public User getLoggedUser(HttpServletRequest request) {
+	public static User getLoggedUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session == null) {
 			return null;
@@ -59,8 +61,11 @@ public abstract class AbstractAction extends Action {
 		}
 	}
 	
-	protected Role[] getPermissions(ActionMapping mapping) {
+	public static Role[] getPermissions(ActionMapping mapping) {
 		String parameter = mapping.getParameter();
+		if (parameter == null || StringUtils.isEmpty(parameter)) {
+			return None.INSTANCE_ARR;
+		}
 		if (parameter.indexOf(',') == -1) {
 			return new Role[] {Role.getRole(parameter)};
 		}

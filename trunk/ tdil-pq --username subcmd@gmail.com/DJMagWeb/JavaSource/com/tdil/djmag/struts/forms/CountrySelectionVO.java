@@ -15,6 +15,10 @@ public class CountrySelectionVO implements Serializable {
 	private boolean selected;
 	private Integer ownerId;
 	
+	public CountrySelectionVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public CountrySelectionVO(Country country) {
 		super();
 		this.setCountryId(country.getId());

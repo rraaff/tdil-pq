@@ -15,6 +15,7 @@
  <global-forwards>
   <forward name="ajaxReturn" path="/empty.jsp"/>
   <forward name="notLogged" path="/boLogin.jsp"/>
+  <forward name="notAuthorized" path="/boLogin.jsp"/>
   <forward name="invalidAction" path="/boLogin.jsp"/>
  </global-forwards>
  <action-mappings>
@@ -79,6 +80,6 @@
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
  </action-mappings>
- <controller/>
+ <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
 </struts-config>

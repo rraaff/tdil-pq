@@ -1,8 +1,14 @@
 package com.tdil.ibatis;
 
-public abstract class PersistentObject {
+import java.io.Serializable;
 
-    private Integer id;
+public abstract class PersistentObject implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8063622239352232658L;
+	private Integer id;
     private Integer deleted;
     
 	public Integer getId() {
