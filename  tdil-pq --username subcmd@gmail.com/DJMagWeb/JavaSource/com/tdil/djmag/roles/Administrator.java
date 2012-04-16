@@ -16,9 +16,11 @@ public class Administrator extends Role {
 		return "Admin";
 	}
 	
-	
 	@Override
 	public boolean isValid(User user) {
+		if (user == null) {
+			return false;
+		}
 		return user.hasRole(this);
 	}
 

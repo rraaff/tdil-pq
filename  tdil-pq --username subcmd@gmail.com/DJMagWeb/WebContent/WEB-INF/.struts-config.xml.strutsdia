@@ -156,5 +156,17 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page10" PATH="/rankingAdministration.jsp"
   SHAPE="240,1633,0,0" SUBTYPE="jsp" TITLE="rankingAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editRanking.st"
+   SUBTYPE="confirmed" TARGET="page11" TITLE="/editRanking.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveRanking.do"
+   SUBTYPE="confirmed" TARGET="action14" TITLE="/saveRanking.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="/editRanking.st" SHAPE="448,1633,0,0"
+  SUBTYPE="other" TITLE="editRanking.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/boLogin.jsp"
+  SHAPE="32,1521,0,0" TARGET="page1" TITLE="notAuthorized"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
 </PROCESS>
