@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.djmag.dao.RankingNoteCountryDAO;
@@ -24,6 +25,7 @@ import com.tdil.djmag.model.SectionExample;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class RankingNoteForm extends TransactionalValidationForm {
 
@@ -58,13 +60,23 @@ public class RankingNoteForm extends TransactionalValidationForm {
 	private static List<RankingNoteCountry> allRankingNoteCountries = new ArrayList<RankingNoteCountry>();
 	
 	private static String description_key = "RankingNote.description";
-	private static String position1_key = "RankingNote.position1";
+	private static String position_key = "RankingNote.position";
 
 	@Override
 	public void reset() throws SQLException {
 		this.id = 0;
 		this.description = null;
 		this.deleted = false;
+		this.position1 = "";
+		this.position2 = "";
+		this.position3 = "";
+		this.position4 = "";
+		this.position5 = "";
+		this.position6 = "";
+		this.position7 = "";
+		this.position8 = "";
+		this.position9 = "";
+		this.position10 = "";
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
 	}
@@ -133,6 +145,16 @@ public class RankingNoteForm extends TransactionalValidationForm {
 			this.sectionId = ranking.getIdSection();
 			this.description = ranking.getDescription();
 			this.deleted = ranking.getDeleted() == 1;
+			this.setPosition1(ranking.getPosition1());
+			this.setPosition2(ranking.getPosition2());
+			this.setPosition3(ranking.getPosition3());
+			this.setPosition4(ranking.getPosition4());
+			this.setPosition5(ranking.getPosition5());
+			this.setPosition6(ranking.getPosition6());
+			this.setPosition7(ranking.getPosition7());
+			this.setPosition8(ranking.getPosition8());
+			this.setPosition9(ranking.getPosition9());
+			this.setPosition10(ranking.getPosition10());
 		} 
 		// reseto las secciones
 		this.resetSelectedSections();
@@ -194,9 +216,23 @@ public class RankingNoteForm extends TransactionalValidationForm {
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		//FieldValidation.validateText(this.getDescri(), name_key, 250, validationError);
+		FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
+		String positions[] = getPositions();
+		boolean mustBeEmpty = false;
+		for (int i = 0; i < positions.length; i++) {
+			if (mustBeEmpty && !StringUtils.isEmpty(positions[i])) {
+				validationError.setFieldError(position_key + (i + 1), "MUST_BE_EMPTY");
+				return;
+			}
+			String position = FieldValidation.validateTextForLength(positions[i], position_key + (i + 1), 250, validationError);
+			mustBeEmpty = StringUtils.isEmpty(position);
+		}
 	}
 	
+	private String[] getPositions() {
+		return new String[] {position1, position2, position3, position4, position5, position6, position7, position8, position9, position10 };
+	}
+
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
 		// validacion por unico, por unico ranking por seccion por pais
@@ -209,15 +245,15 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		Integer rankingId;
 		if (this.getId() == 0) {
 			RankingNote rankingNote = new RankingNote();
-			rankingNote.setDescription(this.getDescription());
 			rankingNote.setIdSection(this.getSectionId());
 			rankingNote.setDeleted(0);
+			updateRankingNote(rankingNote);
 			rankingId = rankingNoteDAO.insertRankingNote(rankingNote);
 		} else {
 			RankingNote rankingNote = new RankingNote();
 			rankingNote.setId(this.getId());
-			rankingNote.setDescription(this.getDescription());
 			rankingNote.setIdSection(this.getSectionId());
+			updateRankingNote(rankingNote);
 			rankingNoteDAO.updateRankingNoteByPrimaryKeySelective(rankingNote);
 			rankingId = this.getId();
 		}
@@ -237,6 +273,20 @@ public class RankingNoteForm extends TransactionalValidationForm {
 			}
 		}
 		
+	}
+
+	private void updateRankingNote(RankingNote rankingNote) {
+		rankingNote.setDescription(this.getDescription());
+		rankingNote.setPosition1(this.getPosition1());
+		rankingNote.setPosition2(this.getPosition2());
+		rankingNote.setPosition3(this.getPosition3());
+		rankingNote.setPosition4(this.getPosition4());
+		rankingNote.setPosition5(this.getPosition5());
+		rankingNote.setPosition6(this.getPosition6());
+		rankingNote.setPosition7(this.getPosition7());
+		rankingNote.setPosition8(this.getPosition8());
+		rankingNote.setPosition9(this.getPosition9());
+		rankingNote.setPosition10(this.getPosition10());
 	}
 	
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
@@ -325,6 +375,86 @@ public class RankingNoteForm extends TransactionalValidationForm {
 
 	public static void setAllRankingNoteCountries(List<RankingNoteCountry> allRankingNoteCountries) {
 		RankingNoteForm.allRankingNoteCountries = allRankingNoteCountries;
+	}
+
+	public String getPosition1() {
+		return position1;
+	}
+
+	public void setPosition1(String position1) {
+		this.position1 = position1;
+	}
+
+	public String getPosition2() {
+		return position2;
+	}
+
+	public void setPosition2(String position2) {
+		this.position2 = position2;
+	}
+
+	public String getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(String position3) {
+		this.position3 = position3;
+	}
+
+	public String getPosition4() {
+		return position4;
+	}
+
+	public void setPosition4(String position4) {
+		this.position4 = position4;
+	}
+
+	public String getPosition5() {
+		return position5;
+	}
+
+	public void setPosition5(String position5) {
+		this.position5 = position5;
+	}
+
+	public String getPosition6() {
+		return position6;
+	}
+
+	public void setPosition6(String position6) {
+		this.position6 = position6;
+	}
+
+	public String getPosition7() {
+		return position7;
+	}
+
+	public void setPosition7(String position7) {
+		this.position7 = position7;
+	}
+
+	public String getPosition8() {
+		return position8;
+	}
+
+	public void setPosition8(String position8) {
+		this.position8 = position8;
+	}
+
+	public String getPosition9() {
+		return position9;
+	}
+
+	public void setPosition9(String position9) {
+		this.position9 = position9;
+	}
+
+	public String getPosition10() {
+		return position10;
+	}
+
+	public void setPosition10(String position10) {
+		this.position10 = position10;
 	}
 
 
