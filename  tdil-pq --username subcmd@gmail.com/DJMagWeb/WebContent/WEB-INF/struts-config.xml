@@ -79,6 +79,14 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/moveRankingPositionUp"
+   scope="session" type="com.tdil.djmag.struts.action.MoveRankingPositionUpAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/moveRankingPositionDown"
+   scope="session" type="com.tdil.djmag.struts.action.MoveRankingPositionDownAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+  </action>
  
  <action name="NoteForm" parameter="Admin"
    path="/goToNoteABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
