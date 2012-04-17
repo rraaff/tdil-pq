@@ -26,16 +26,25 @@
 		<br>
 		Borrada: <html:checkbox name="RankingNoteForm" property="deleted" />
 		<br>
-		Posicion1: <html:text name="RankingNoteForm" property="position1" /><html:errors property="RankingNote.position1.err" /><br>
-		Posicion2: <html:text name="RankingNoteForm" property="position2" /><html:errors property="RankingNote.position2.err" /><br>
-		Posicion3: <html:text name="RankingNoteForm" property="position3" /><html:errors property="RankingNote.position3.err" /><br>
-		Posicion4: <html:text name="RankingNoteForm" property="position4" /><html:errors property="RankingNote.position4.err" /><br>
-		Posicion5: <html:text name="RankingNoteForm" property="position5" /><html:errors property="RankingNote.position5.err" /><br>
-		Posicion6: <html:text name="RankingNoteForm" property="position6" /><html:errors property="RankingNote.position6.err" /><br>
-		Posicion7: <html:text name="RankingNoteForm" property="position7" /><html:errors property="RankingNote.position7.err" /><br>
-		Posicion8: <html:text name="RankingNoteForm" property="position8" /><html:errors property="RankingNote.position8.err" /><br>
-		Posicion9: <html:text name="RankingNoteForm" property="position9" /><html:errors property="RankingNote.position9.err" /><br>
-		Posicion10: <html:text name="RankingNoteForm" property="position10" /><html:errors property="RankingNote.position10.err" /><br>
+		Posiciones
+		<table>
+		<tr>
+			<td></td>
+			<td>Nombre</td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
+			<tr>
+				<td><%=iterIndexPositions + 1%></td>
+   				<td><html:text name="selectedPosition" property="position" indexed="true"/></td>  
+   				<td></td>
+   				<td></td>
+   			</tr>
+		</logic:iterate>
+		</table>
+		
 		Seccion: <html:select name="RankingNoteForm" property="sectionId" styleClass="textfield_effect">
 			<logic:iterate name="RankingNoteForm" property="allSections" id="iterSection"> 
 				<option <%=((SectionSelectionVO)iterSection).isSelected() ? "selected" : "" %> value="<%=((SectionSelectionVO)iterSection).getSection().getId()%>">&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO)iterSection).getSection().getName()%></option>
@@ -53,7 +62,7 @@
    				<td><html:checkbox name="selectedCountry" property="selected" indexed="true" /></td>  
    				<td><bean:write name="selectedCountry" property="countryName" /></td>
    			</tr>
-		</logic:iterate>  
+		</logic:iterate>
 		</table>
 		<br>
 		<logic:equal name="RankingNoteForm" property="id" value="0">
