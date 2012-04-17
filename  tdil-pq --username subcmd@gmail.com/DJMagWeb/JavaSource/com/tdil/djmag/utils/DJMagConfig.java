@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.SystemProperty;
 import com.tdil.djmag.model.SystemPropertyExample;
 import com.tdil.djmag.roles.Administrator;
@@ -14,6 +15,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.users.Role;
 import com.tdil.utils.SystemConfig;
 import com.tdil.utils.SystemPropertyCache;
+import com.tdil.utils.XMLUtils;
 
 public class DJMagConfig extends SystemConfig {
 
@@ -22,8 +24,17 @@ public class DJMagConfig extends SystemConfig {
 	}
 	
 	@Override
-	protected void loadProperties() {
+	protected void initXMLALias() {
+		XMLUtils.addAlias("RankingPositions", RankingPositions.class);
+	}
+	
+	@Override
+	protected void initRoles() {
 		Role.addRole(Administrator.INSTANCE);
+	}
+	
+	@Override
+	protected void loadProperties() {
 	}
 
 	@Override
