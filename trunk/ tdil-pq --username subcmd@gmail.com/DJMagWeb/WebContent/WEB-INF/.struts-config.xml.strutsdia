@@ -178,10 +178,14 @@
  <PROCESS-ITEM NAME="page12" PATH="/noteAdministration.jsp"
   SHAPE="288,2274,0,0" SUBTYPE="jsp" TITLE="noteAdministration.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editNote.st"
-   SUBTYPE="confirmed" TARGET="page13" TITLE="/editNote.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveNote.do"
    SUBTYPE="confirmed" TARGET="action17" TITLE="/saveNote.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editNote.do"
+   SUBTYPE="confirmed" TARGET="action18" TITLE="/editNote.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/moveImageUp.do"
+   SUBTYPE="confirmed" TARGET="action21" TITLE="/moveImageUp.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveNote" NAME="action17" PATH="/saveNote"
@@ -199,8 +203,6 @@
    PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page13" PATH="/editNote.st" SHAPE="496,2274,0,0"
-  SUBTYPE="other" TITLE="editNote.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#uploadImageNote" NAME="action19"
   PATH="/uploadImageNote" SHAPE="32,2625,0,0" TITLE="NoteForm"
   TYPE="action" model-entity="StrutsProcessItem">
@@ -210,4 +212,22 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewImageNote" NAME="action20" PATH="/viewImageNote"
   SHAPE="32,2625,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#moveImageUp" NAME="action21" PATH="/moveImageUp"
+  SHAPE="32,2961,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#moveImageDown" NAME="action22" PATH="/moveImageDown"
+  SHAPE="32,2657,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteImage" NAME="action23" PATH="/deleteImage"
+  SHAPE="32,2257,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

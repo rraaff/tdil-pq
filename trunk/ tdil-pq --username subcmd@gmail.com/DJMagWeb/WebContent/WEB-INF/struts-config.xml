@@ -101,6 +101,18 @@
   <action name="NoteForm" parameter="Admin" path="/viewImageNote"
    scope="session" type="com.tdil.djmag.struts.action.ViewImageNoteAction">
   </action>
+  <action name="NoteForm" parameter="Admin" path="/moveImageUp"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageUpAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
+   <action name="NoteForm" parameter="Admin" path="/moveImageDown"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageDownAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/deleteImage"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteImageAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
