@@ -60,6 +60,15 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="RANKING_NOTE_COUNTRY" domainObjectName="RankingNoteCountry">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="DJMAG" tableName="NOTE" domainObjectName="Note">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="NOTE_IMAGE" domainObjectName="NoteImage">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="NOTE_COUNTRY" domainObjectName="NoteCountry">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

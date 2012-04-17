@@ -36,18 +36,17 @@
 		Posicion8: <html:text name="RankingNoteForm" property="position8" /><html:errors property="RankingNote.position8.err" /><br>
 		Posicion9: <html:text name="RankingNoteForm" property="position9" /><html:errors property="RankingNote.position9.err" /><br>
 		Posicion10: <html:text name="RankingNoteForm" property="position10" /><html:errors property="RankingNote.position10.err" /><br>
+		Seccion: <html:select name="RankingNoteForm" property="sectionId" styleClass="textfield_effect">
+			<logic:iterate name="RankingNoteForm" property="allSections" id="iterSection"> 
+				<option <%=((SectionSelectionVO)iterSection).isSelected() ? "selected" : "" %> value="<%=((SectionSelectionVO)iterSection).getSection().getId()%>">&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO)iterSection).getSection().getName()%></option>
+			</logic:iterate>
+		</html:select><br>
 		Mostrar en
 		<table>
 		<tr>
 			<td>Activa</td>
 			<td>Pais</td>
 		</tr>
-		
-		<html:select name="RankingNoteForm" property="sectionId" styleClass="textfield_effect">
-			<logic:iterate name="RankingNoteForm" property="allSections" id="iterSection"> 
-				<option <%=((SectionSelectionVO)iterSection).isSelected() ? "selected" : "" %> value="<%=((SectionSelectionVO)iterSection).getSection().getId()%>">&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO)iterSection).getSection().getName()%></option>
-			</logic:iterate>
-		</html:select><html:errors property="refDoc.category" />
 		
 		<logic:iterate id="selectedCountry" name="RankingNoteForm" property="selectedCountries">  
 			<tr>

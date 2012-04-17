@@ -10,19 +10,6 @@ import com.tdil.users.Role;
 
 public class SubscribeToNewsletterAction extends AjaxTransactionalAction {
 
-	private static final Role[] roles = new Role[] {None.INSTANCE};
-
-	
-	@Override
-	public boolean userMustBeLogged() {
-		return false;
-	}
-	
-	@Override
-	protected Role[] getAllowedRoles() {
-		return roles;
-	}
-	
 	@Override
 	protected TransactionalValidationForm getAjaxForm(HttpServletRequest request) {
 		String email=request.getParameter("email");

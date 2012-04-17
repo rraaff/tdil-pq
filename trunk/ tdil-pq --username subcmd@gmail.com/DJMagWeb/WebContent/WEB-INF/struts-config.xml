@@ -10,6 +10,7 @@
   <form-bean name="ReorderMenuForm" type="com.tdil.djmag.struts.forms.ReorderMenuForm"/>
   <form-bean name="NewsletterReportForm" type="com.tdil.djmag.struts.forms.NewsletterReportForm"/>
   <form-bean name="RankingNoteForm" type="com.tdil.djmag.struts.forms.RankingNoteForm"/>
+  <form-bean name="NoteForm" type="com.tdil.djmag.struts.forms.NoteForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -64,10 +65,9 @@
    path="/goToNewsletterReport" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/newsletterReport.jsp" redirect="true"/>
   </action>
-  <action path="/newsletterReport" scope="request" type="com.tdil.djmag.struts.action.NewsletterReportAction"/>
-  
-  <action name="RankingNoteForm" parameter="Admin" path="/goToRankingABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action parameter="Admin" path="/newsletterReport" scope="request" type="com.tdil.djmag.struts.action.NewsletterReportAction"/>
+  <action name="RankingNoteForm" parameter="Admin"
+   path="/goToRankingABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/saveRanking"
@@ -79,7 +79,30 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
+ 
+ <action name="NoteForm" parameter="Admin"
+   path="/goToNoteABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/saveNote"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/editNote"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/uploadImageNote"
+   scope="session" type="com.tdil.djmag.struts.action.UploadImageNoteAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+  </action>
+  
+  <action name="NoteForm" parameter="Admin" path="/viewImageNote"
+   scope="session" type="com.tdil.djmag.struts.action.ViewImageNoteAction">
+  </action>
  </action-mappings>
+ 
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
 </struts-config>
