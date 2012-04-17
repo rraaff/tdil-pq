@@ -13,6 +13,7 @@ import org.apache.struts.upload.FormFile;
 
 import com.tdil.djmag.dao.NoteCountryDAO;
 import com.tdil.djmag.dao.NoteDAO;
+import com.tdil.djmag.dao.NoteImageDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
@@ -20,6 +21,9 @@ import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteCountry;
 import com.tdil.djmag.model.NoteCountryExample;
 import com.tdil.djmag.model.NoteExample;
+import com.tdil.djmag.model.NoteImage;
+import com.tdil.djmag.model.NoteImageExample;
+import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import com.tdil.struts.ValidationError;
@@ -40,7 +44,6 @@ public class NoteForm extends TransactionalValidationForm {
 	private int sectionId;
 	private boolean deleted;
 	
-	// TODO hacer esta parte
 	private int noteImageIndex = 0;
 	private FormFile noteImage;
 	private List<NoteImageBean> images = new ArrayList<NoteImageBean>();
@@ -63,6 +66,7 @@ public class NoteForm extends TransactionalValidationForm {
 		this.deleted = false;
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
+		this.setImages(new ArrayList<NoteImageBean>());
 	}
 	
 	@Override
@@ -202,6 +206,7 @@ public class NoteForm extends TransactionalValidationForm {
 	public void save() throws SQLException, ValidationException {
 		NoteDAO noteDAO = DAOManager.getNoteDAO();
 		NoteCountryDAO noteCountryDAO = DAOManager.getNoteCountryDAO();
+		NoteImageDAO noteImageDAO = DAOManager.getNoteImageDAO();
 		Integer noteId;
 		if (this.getId() == 0) {
 			Note note = new Note();
@@ -217,6 +222,22 @@ public class NoteForm extends TransactionalValidationForm {
 			noteDAO.updateNoteByPrimaryKeySelective(note);
 			noteId = this.getId();
 		}
+		// borro todas las imagenes anteriores
+		NoteImageExample noteImageExample = new NoteImageExample();
+		Criteria noCriteria = noteImageExample.createCriteria();
+		noCriteria.andIdNoteEqualTo(noteId);
+		noteImageDAO.deleteNoteImageByExample(noteImageExample);
+		// Creo todas las imagenes
+		int index = 0;
+		for (NoteImageBean noteImageBean : this.getImages()) {
+			NoteImage noteImage = new NoteImage();
+			noteImage.setIdNote(noteId);
+			noteImage.setFilename(noteImageBean.getUploadData().getFileName());
+			noteImage.setNoteimage(noteImageBean.getUploadData().getData());
+			noteImage.setOrdernumber(index++);
+			noteImageDAO.insertNoteImage(noteImage);
+		}
+		
 		for (CountrySelectionVO countrySelectionVO : getSelectedCountries()) {
 			if (this.mustBeSaved(countrySelectionVO)) {
 				NoteCountry noteCountry = new NoteCountry();
@@ -363,5 +384,29 @@ public class NoteForm extends TransactionalValidationForm {
 		return null;
 	}
 
+	public void moveImageUp(int id2) {
+		NoteImageBean noteImageBean = getNoteImage(id2);
+		int index = this.getImages().indexOf(noteImageBean);
+		if (index > 0) {
+			NoteImageBean toSwap = this.getImages().get(index - 1);
+			this.getImages().set(index - 1, noteImageBean);
+			this.getImages().set(index, toSwap);
+		}
+	}
+	
+	public void moveImageDown(int id2) {
+		NoteImageBean noteImageBean = getNoteImage(id2);
+		int index = this.getImages().indexOf(noteImageBean);
+		if (index < this.getImages().size() - 1) {
+			NoteImageBean toSwap = this.getImages().get(index + 1);
+			this.getImages().set(index + 1, noteImageBean);
+			this.getImages().set(index, toSwap);
+		}
+	}
+	
+	public void deleteImage(int id2) {
+		NoteImageBean noteImageBean = getNoteImage(id2);
+		this.getImages().remove(noteImageBean);
+	}
 
 }
