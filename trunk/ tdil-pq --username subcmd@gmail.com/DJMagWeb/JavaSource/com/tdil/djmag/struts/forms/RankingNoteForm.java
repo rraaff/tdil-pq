@@ -376,5 +376,23 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		this.getPositions().set(index, countryVO);  
 	 }
 
+	public void movePositionUp(int index) {
+		if (index > 0) {
+			RankingPositionBean prev = this.getPositions().get(index - 1);
+			RankingPositionBean act = this.getPositions().get(index);
+			this.getPositions().set(index - 1, act);
+			this.getPositions().set(index, prev);
+		}
+	}
+	
+	public void movePositionDown(int index) {
+		if (index < this.getPositions().size() - 1) {
+			RankingPositionBean next = this.getPositions().get(index + 1);
+			RankingPositionBean act = this.getPositions().get(index);
+			this.getPositions().set(index + 1, act);
+			this.getPositions().set(index, next);
+		}
+	}
+
 
 }

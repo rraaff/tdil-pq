@@ -39,8 +39,8 @@
 			<tr>
 				<td><%=iterIndexPositions + 1%></td>
    				<td><html:text name="selectedPosition" property="position" indexed="true"/></td>  
-   				<td></td>
-   				<td></td>
+   				<td><a href="./moveRankingPositionUp.do?index=<%= iterIndexPositions%>">Subir</a></td>
+				<td><a href="./moveRankingPositionDown.do?index=<%= iterIndexPositions%>">Bajar</a></td>
    			</tr>
 		</logic:iterate>
 		</table>
