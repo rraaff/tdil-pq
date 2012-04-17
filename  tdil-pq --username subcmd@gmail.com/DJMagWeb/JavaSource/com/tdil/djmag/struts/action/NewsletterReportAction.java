@@ -10,18 +10,6 @@ import com.tdil.users.Role;
 
 public class NewsletterReportAction extends AjaxReportAction {
 
-	private static final Role[] roles = new Role[] {Administrator.INSTANCE};
-	
-	@Override
-	public boolean userMustBeLogged() {
-		return true;
-	}
-	
-	@Override
-	protected Role[] getAllowedRoles() {
-		return roles;
-	}
-	
 	@Override
 	protected TransactionalValidationForm getAjaxForm(HttpServletRequest request) {
 		return new NewsletterReportForm();

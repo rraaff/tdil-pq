@@ -17,6 +17,7 @@
     <a href="#">Artículos</a>
     <ul>
       <li><html:link action="/goToRankingABM" >Manejo de rankings</html:link></li>
+      <li><html:link action="/goToNoteABM" >Manejo de notas</html:link></li>
     </ul>
   </li>
   <li>

@@ -39,10 +39,7 @@ public abstract class AbstractAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		User user = getLoggedUser(request);
-		if (user == null) {
-			return mapping.findForward("notLogged");
-		}
-		if (!Role.isValid(user, this.getPermissions(mapping))) {
+		if (!Role.isValid(user, getPermissions(mapping))) {
 			getLog().fatal("Invalid action for " + this.getClass().getName() + " user " + user.toString());
 			return mapping.findForward("invalidAction");
 		}
