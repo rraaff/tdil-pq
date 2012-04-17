@@ -38,6 +38,8 @@ public abstract class SystemConfig {
 	
 	public void init(ServletContextEvent sce) {
 		Role.addRole(None.INSTANCE);
+		initRoles();
+		initXMLALias();
 		loadPropertiesFromDB();
 		loadProperties();
 		initLogger();
@@ -94,6 +96,10 @@ public abstract class SystemConfig {
 		getLog().fatal("SystemConfig logger initialized");
 	}
 
+	protected abstract void initRoles();
+	
+	protected abstract void initXMLALias();
+	
 	protected abstract void loadProperties();
 	
 	protected abstract void loadPropertiesFromDBInTransaction();

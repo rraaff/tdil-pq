@@ -23,6 +23,8 @@
 		<br>
 		Nombre: <html:text name="CountryForm" property="name" /><html:errors property="Country.name.err" />
 		<br>
+		Iso code2: <html:text name="CountryForm" property="iso_code_2" /><html:errors property="Country.iso_code_2.err" />
+		<br>
 		Borrado: <html:checkbox name="CountryForm" property="deleted" />
 		<br>
 
