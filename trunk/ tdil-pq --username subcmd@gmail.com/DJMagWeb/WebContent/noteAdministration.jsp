@@ -11,6 +11,7 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<script type="text/javascript" src="./ckeditor.js"></script>
 <script>
 	$(function() {
 		$("input[name=fromDate]").datepicker();
@@ -168,6 +169,18 @@
 			</tr>
 		</logic:iterate>
 	</table>
-
+	<script type="text/javascript">
+		//<![CDATA[
+			// Replace the <textarea id="content"> with an CKEditor instance.
+			var editor = CKEDITOR.replace( 'content',
+				{
+					// Defines a simpler toolbar to be used in this sample.
+					// Note that we have added out "MyButton" button here.
+					toolbar : [ ['Format'] ],
+					height:"220", width:"960"
+					
+				});
+		//]]>
+		</script>
 </body>
 </html>
