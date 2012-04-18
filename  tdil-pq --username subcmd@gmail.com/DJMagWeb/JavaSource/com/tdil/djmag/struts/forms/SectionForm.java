@@ -34,6 +34,8 @@ public class SectionForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private int id;
+	
+	private int objectId;
 	private String name;
 	private boolean deleted;
 	
@@ -49,7 +51,7 @@ public class SectionForm extends TransactionalValidationForm {
 
 	@Override
 	public void reset() throws SQLException {
-		this.id = 0;
+		this.objectId = 0;
 		this.name = null;
 		this.deleted = false;
 		this.resetSelectedCountries();
@@ -96,7 +98,7 @@ public class SectionForm extends TransactionalValidationForm {
 		SectionDAO sectionDAO = DAOManager.getSectionDAO();
 		Section section = sectionDAO.selectSectionByPrimaryKey(id);
 		if (section != null) {
-			this.id = id;
+			this.objectId = id;
 			this.name = section.getName();
 			this.deleted = section.getDeleted() == 1;
 		} 
@@ -106,7 +108,7 @@ public class SectionForm extends TransactionalValidationForm {
 		MenuItemDAO menuItemDAO = DAOManager.getMenuItemDAO();
 		MenuItemExample menuItemExample = new MenuItemExample();
 		Criteria criteria = menuItemExample.createCriteria();
-		criteria.andIdSectionEqualTo(this.getId());
+		criteria.andIdSectionEqualTo(this.getObjectId());
 		List<MenuItem> menuItems = menuItemDAO.selectMenuItemByExample(menuItemExample);
 		for (MenuItem menuItem : menuItems) {
 			this.setCountrySelected(menuItem);
@@ -164,7 +166,7 @@ public class SectionForm extends TransactionalValidationForm {
 		List<Section> list = sectionDAO.selectSectionByExample(sectionExample);
 		if (!list.isEmpty()) {
 			Section db = list.get(0);
-			if (!db.getId().equals(this.getId())) {
+			if (!db.getId().equals(this.getObjectId())) {
 				validationError.setFieldError(name_key, name_duplicated_key);
 			}
 		}
@@ -175,18 +177,18 @@ public class SectionForm extends TransactionalValidationForm {
 		SectionDAO sectionDAO = DAOManager.getSectionDAO();
 		MenuItemDAO menuItemDAO = DAOManager.getMenuItemDAO();
 		Integer sectionId;
-		if (this.getId() == 0) {
+		if (this.getObjectId() == 0) {
 			Section section = new Section();
 			section.setName(this.getName());
 			section.setDeleted(this.isDeleted() ? 1 : 0);
 			sectionId = sectionDAO.insertSection(section);
 		} else {
 			Section section = new Section();
-			section.setId(this.getId());
+			section.setId(this.getObjectId());
 			section.setName(this.getName());
 			section.setDeleted(this.isDeleted() ? 1 : 0);
 			sectionDAO.updateSectionByPrimaryKey(section);
-			sectionId = this.getId();
+			sectionId = this.getObjectId();
 		}
 		for (MenuItemSelectionVO countrySelectionVO : getSelectedCountries()) {
 			if (this.mustBeSaved(countrySelectionVO)) {
@@ -215,12 +217,12 @@ public class SectionForm extends TransactionalValidationForm {
 		return countrySelectionVO.isSelected();
 	}
 
-	public int getId() {
-		return id;
+	public int getObjectId() {
+		return objectId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setObjectId(int id) {
+		this.objectId = id;
 	}
 
 	public String getName() {
@@ -279,6 +281,14 @@ public class SectionForm extends TransactionalValidationForm {
 
 	public static synchronized void setAllMenuItems(List<MenuItem> newItems) {
 		allMenuItems = newItems;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

@@ -21,6 +21,8 @@ public class CountryForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private int id;
+	
+	private int objectId;
 	private String name;
 	private String iso_code_2;
 	private boolean deleted;
@@ -34,7 +36,7 @@ public class CountryForm extends TransactionalValidationForm {
 
 	@Override
 	public void reset() throws SQLException {
-		this.id = 0;
+		this.objectId = 0;
 		this.name = null;
 		this.iso_code_2 = null;
 		this.deleted = false;
@@ -52,7 +54,7 @@ public class CountryForm extends TransactionalValidationForm {
 		CountryDAO countryDAO = DAOManager.getCountryDAO();
 		Country country = countryDAO.selectCountryByPrimaryKey(id);
 		if (country != null) {
-			this.id = id;
+			this.objectId = id;
 			this.name = country.getName();
 			this.iso_code_2 = country.getIsoCode2();
 			this.deleted = country.getDeleted() == 1;
@@ -75,7 +77,7 @@ public class CountryForm extends TransactionalValidationForm {
 			List<Country> list = countryDAO.selectCountryByExample(countryExample);
 			if (!list.isEmpty()) {
 				Country db = list.get(0);
-				if (!db.getId().equals(this.getId())) {
+				if (!db.getId().equals(this.getObjectId())) {
 					validationError.setFieldError(name_key, name_duplicated_key);
 				}
 			}
@@ -87,7 +89,7 @@ public class CountryForm extends TransactionalValidationForm {
 			List<Country> list = countryDAO.selectCountryByExample(countryExample);
 			if (!list.isEmpty()) {
 				Country db = list.get(0);
-				if (!db.getId().equals(this.getId())) {
+				if (!db.getId().equals(this.getObjectId())) {
 					validationError.setFieldError(iso_code_2_key, iso_code_2_duplicated_key);
 				}
 			}
@@ -97,7 +99,7 @@ public class CountryForm extends TransactionalValidationForm {
 	@Override
 	public void save() throws SQLException, ValidationException {
 		CountryDAO countryDAO = DAOManager.getCountryDAO();
-		if (this.getId() == 0) {
+		if (this.getObjectId() == 0) {
 			Country country = new Country();
 			country.setName(this.getName());
 			country.setIsoCode2(this.getIso_code_2());
@@ -105,7 +107,7 @@ public class CountryForm extends TransactionalValidationForm {
 			countryDAO.insertCountry(country);
 		} else {
 			Country country = new Country();
-			country.setId(this.getId());
+			country.setId(this.getObjectId());
 			country.setName(this.getName());
 			country.setIsoCode2(this.getIso_code_2());
 			country.setDeleted(this.isDeleted() ? 1 : 0);
@@ -113,12 +115,12 @@ public class CountryForm extends TransactionalValidationForm {
 		}
 	}
 
-	public int getId() {
-		return id;
+	public int getObjectId() {
+		return objectId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setObjectId(int id) {
+		this.objectId = id;
 	}
 
 	public String getName() {
@@ -151,6 +153,14 @@ public class CountryForm extends TransactionalValidationForm {
 
 	public void setIso_code_2(String iso_code_2) {
 		this.iso_code_2 = iso_code_2;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

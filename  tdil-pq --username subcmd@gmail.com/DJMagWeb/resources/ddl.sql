@@ -17,19 +17,19 @@ CREATE  TABLE SYSTEMUSER (
   `name` VARCHAR(255) NULL ,
   `email` VARCHAR(150) NULL ,
   `resetcode` VARCHAR(100) NULL ,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL,
   PRIMARY KEY (`id`) ,
   INDEX `IX_SYSTEMUSER_00` (`username` ASC),
   INDEX `IX_SYSTEMUSER_01` (`email` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO SYSTEMUSER(username,password,name,email) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com');
+INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
 
 CREATE  TABLE SYSPROPERTIES (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `propKey` VARCHAR(100) NOT NULL ,
   `propValue` VARCHAR(255) NULL ,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_SYSPROPERTIES_00` (`propKey` ASC))
 ENGINE = InnoDB;
@@ -38,7 +38,7 @@ CREATE TABLE COUNTRY (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(250) NOT NULL ,
   `iso_code_2` VARCHAR(2) NOT NULL ,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_COUNTRY_00` (`name` ASC))
 ENGINE = InnoDB;
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 CREATE TABLE SECTION (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(250) NOT NULL ,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_SECTION_00` (`name` ASC))
 ENGINE = InnoDB;
@@ -57,7 +57,7 @@ CREATE TABLE MENUITEM (
   `id_section` INT NOT NULL,
   `name` VARCHAR(250) NOT NULL,
   `position` INT NOT NULL,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_MENUITEM_00` (`id_country` ASC, `id_section` ASC) ,
   CONSTRAINT `FK_MENUITEM_00`
@@ -76,7 +76,7 @@ CREATE TABLE NEWSLETTER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `email` VARCHAR(100) NOT NULL ,
   `subscriptiondate` DATE NOT NULL,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -85,7 +85,7 @@ CREATE TABLE RANKING_NOTE (
   `description` VARCHAR(250) NOT NULL ,
   `id_section` INT NOT NULL,
   `positions` TEXT NOT NULL ,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_RANKING_NOTE_01`
     FOREIGN KEY (`id_section` )
@@ -98,7 +98,7 @@ CREATE TABLE RANKING_NOTE_COUNTRY (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_ranking_note` INT NOT NULL,
   `id_country` INT NOT NULL,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_RANKING_NOTE_COUNTRY_00` (`id_ranking_note` ASC),
   CONSTRAINT `FK_RANKING_NOTE_COUNTRY_01`
@@ -120,10 +120,11 @@ CREATE TABLE NOTE (
   `content` MEDIUMTEXT NOT NULL ,
   `id_section` INT NOT NULL,
   `web_title` VARCHAR(250) NOT NULL ,
-  `web_date` DATE NOT NULL ,
-  `frontCover` INT NULL ,
-  `leadingNote` INT NULL ,
-  `deleted` INT NULL ,
+  `from_date` DATE NOT NULL ,
+  `to_date` DATE NULL ,
+  `frontCover` INT NOT NULL ,
+  `leadingNote` INT NOT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_NOTE_01`
     FOREIGN KEY (`id_section` )
@@ -136,7 +137,7 @@ CREATE TABLE NOTE_COUNTRY (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_note` INT NOT NULL,
   `id_country` INT NOT NULL,
-  `deleted` INT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_NOTE_COUNTRY_00` (`id_note` ASC),
   CONSTRAINT `FK_NOTE_COUNTRY_01`
@@ -154,15 +155,15 @@ ENGINE = InnoDB;
 CREATE TABLE NOTE_IMAGE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_note` INT NOT NULL,
-  `title` VARCHAR(250) NOT NULL ,
-  `summary` VARCHAR(250) NOT NULL ,
-  `content` MEDIUMTEXT NOT NULL ,
+  `title` VARCHAR(250) NULL ,
+  `summary` VARCHAR(4000) NULL ,
+  `content` MEDIUMTEXT NULL ,
   `fileName` VARCHAR(100) NULL ,
   `extension` VARCHAR(10) NULL ,
   `contentType` VARCHAR(100) NULL ,
   `noteImage` MEDIUMBLOB NULL ,
-  `orderNumber` INT NULL ,
-  `deleted` INT NULL ,
+  `orderNumber` INT NOT NULL ,
+  `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_NOTE_COUNTRY_00` (`id_note` ASC),
   CONSTRAINT `FK_NOTE_IMAGE_01`

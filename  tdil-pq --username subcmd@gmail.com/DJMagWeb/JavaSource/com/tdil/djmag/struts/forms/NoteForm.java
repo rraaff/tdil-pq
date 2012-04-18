@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +39,19 @@ public class NoteForm extends TransactionalValidationForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
-	
+	// temporary
 	private int id;
+	
+	private int objectId;
 	private String title;
+	private String webTitle;
+	private String summary;
+	private String content;
+	private String fromDate;
+	private String toDate;
+	private boolean frontCover;
+	private boolean leadingNote;
+	
 	private int sectionId;
 	private boolean deleted;
 	
@@ -61,8 +72,15 @@ public class NoteForm extends TransactionalValidationForm {
 
 	@Override
 	public void reset() throws SQLException {
-		this.id = 0;
-		this.title = null;
+		this.objectId = 0;
+		this.title = "";
+		this.webTitle = "";
+		this.summary = "";
+		this.content = "";
+		this.fromDate = "";
+		this.toDate = "";
+		this.frontCover = false;
+		this.leadingNote = false;
 		this.deleted = false;
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
@@ -129,9 +147,16 @@ public class NoteForm extends TransactionalValidationForm {
 		NoteDAO rankingDAO = DAOManager.getNoteDAO();
 		Note ranking = rankingDAO.selectNoteByPrimaryKey(id);
 		if (ranking != null) {
-			this.id = id;
+			this.objectId = id;
 			this.sectionId = ranking.getIdSection();
 			this.title = ranking.getTitle();
+			this.webTitle = ranking.getWebTitle();
+			this.summary = ranking.getSummary();
+			this.content = ranking.getContent();
+			this.fromDate = ""; // TODO ranking.getFromDate();
+			this.toDate = ""; // TODO ranking.getToDate();
+			this.frontCover = ranking.getFrontcover().equals(1);
+			this.leadingNote = ranking.getLeadingnote().equals(1);
 			this.deleted = ranking.getDeleted() == 1;
 		} 
 		// reseto las secciones
@@ -147,10 +172,20 @@ public class NoteForm extends TransactionalValidationForm {
 		NoteCountryDAO noteCountryDAO = DAOManager.getNoteCountryDAO();
 		NoteCountryExample noteExample = new NoteCountryExample();
 		com.tdil.djmag.model.NoteCountryExample.Criteria criteria = noteExample.createCriteria();
-		criteria.andIdNoteEqualTo(this.getId());
+		criteria.andIdNoteEqualTo(this.getObjectId());
 		List<NoteCountry> noteCountries = noteCountryDAO.selectNoteCountryByExample(noteExample);
 		for (NoteCountry noteCountry : noteCountries) {
 			this.setCountrySelected(noteCountry);
+		}
+		// seteo las imagenes
+		this.getImages().clear();
+		NoteImageExample noteImageExample = new NoteImageExample();
+		Criteria criteria2 = noteImageExample.createCriteria();
+		criteria2.andIdNoteEqualTo(this.getObjectId());
+		noteExample.setOrderByClause("orderNumber");
+		List<NoteImage> noteImages = DAOManager.getNoteImageDAO().selectNoteImageByExampleWithBLOBs(noteImageExample);
+		for (NoteImage noteImage : noteImages) {
+			this.getImages().add(new NoteImageBean(noteImage, noteImageIndex++));
 		}
 	}
 	
@@ -208,19 +243,18 @@ public class NoteForm extends TransactionalValidationForm {
 		NoteCountryDAO noteCountryDAO = DAOManager.getNoteCountryDAO();
 		NoteImageDAO noteImageDAO = DAOManager.getNoteImageDAO();
 		Integer noteId;
-		if (this.getId() == 0) {
+		if (this.getObjectId() == 0) {
 			Note note = new Note();
 			note.setIdSection(this.getSectionId());
-			note.setDeleted(0);
 			updateNote(note);
 			noteId = noteDAO.insertNote(note);
 		} else {
 			Note note = new Note();
-			note.setId(this.getId());
+			note.setId(this.getObjectId());
 			note.setIdSection(this.getSectionId());
 			updateNote(note);
 			noteDAO.updateNoteByPrimaryKeySelective(note);
-			noteId = this.getId();
+			noteId = this.getObjectId();
 		}
 		// borro todas las imagenes anteriores
 		NoteImageExample noteImageExample = new NoteImageExample();
@@ -235,6 +269,7 @@ public class NoteForm extends TransactionalValidationForm {
 			noteImage.setFilename(noteImageBean.getUploadData().getFileName());
 			noteImage.setNoteimage(noteImageBean.getUploadData().getData());
 			noteImage.setOrdernumber(index++);
+			noteImage.setDeleted(0);
 			noteImageDAO.insertNoteImage(noteImage);
 		}
 		
@@ -258,8 +293,26 @@ public class NoteForm extends TransactionalValidationForm {
 
 	private void updateNote(Note note) {
 		note.setTitle(this.getTitle());
+		note.setWebTitle(this.getWebTitle()); // TODO URL escape...
+		note.setSummary(this.getSummary());
+		note.setContent(this.getContent());
+		note.setFromDate(this.getFromDateAsDate());
+		note.setToDate(this.getToDateAsDate());
+		note.setFrontcover(this.isFrontCover() ? 1 : 0);
+		note.setLeadingnote(this.isLeadingNote() ? 1 : 0);
+		note.setDeleted(this.isDeleted() ? 1 : 0);
 	}
 	
+	private Date getToDateAsDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Date getFromDateAsDate() {
+		// TODO Auto-generated method stub
+		return new Date();
+	}
+
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
 		if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
 			return true;
@@ -267,12 +320,12 @@ public class NoteForm extends TransactionalValidationForm {
 		return countrySelectionVO.isSelected();
 	}
 
-	public int getId() {
-		return id;
+	public int getObjectId() {
+		return objectId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setObjectId(int id) {
+		this.objectId = id;
 	}
 
 	public boolean isDeleted() {
@@ -407,6 +460,70 @@ public class NoteForm extends TransactionalValidationForm {
 	public void deleteImage(int id2) {
 		NoteImageBean noteImageBean = getNoteImage(id2);
 		this.getImages().remove(noteImageBean);
+	}
+
+	public String getWebTitle() {
+		return webTitle;
+	}
+
+	public void setWebTitle(String webTitle) {
+		this.webTitle = webTitle;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public String getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+
+	public boolean isFrontCover() {
+		return frontCover;
+	}
+
+	public void setFrontCover(boolean frontCover) {
+		this.frontCover = frontCover;
+	}
+
+	public boolean isLeadingNote() {
+		return leadingNote;
+	}
+
+	public void setLeadingNote(boolean leadingNote) {
+		this.leadingNote = leadingNote;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
