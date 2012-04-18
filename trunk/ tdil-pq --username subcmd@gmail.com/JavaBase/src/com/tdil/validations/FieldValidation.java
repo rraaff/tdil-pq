@@ -28,8 +28,12 @@ public class FieldValidation {
 	}
 	
 	public static String validateText(String text, String field, int length, ValidationError validation) {
+		return validateText(text, field, length, true, validation);
+	}
+	
+	public static String validateText(String text, String field, int length, boolean required, ValidationError validation) {
 		String result = text;
-		if (StringUtils.isEmpty(text)) {
+		if (StringUtils.isEmpty(text) && required) {
 			validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
 		} else {
 			result = text.trim();
@@ -61,21 +65,6 @@ public class FieldValidation {
 		}
 		return result;
 	}
-	
-	public static String validateTextForLength(String text, String field, int length, ValidationError validation) {
-		String result = text;
-		if (StringUtils.isEmpty(text)) {
-			return "";
-		} else {
-			result = text.trim();
-			if (result.length() > length) {
-				validation.setFieldError(field, ValidationErrors.TEXT_TOO_LONG);
-			}
-		}
-		return result;
-	}
-	
-	
 	
 	public static String validateEmail(String email, String field, ValidationError validation) {
 		String result = email;

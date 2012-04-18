@@ -124,6 +124,8 @@ CREATE TABLE NOTE (
   `to_date` DATE NULL ,
   `frontCover` INT NOT NULL ,
   `leadingNote` INT NOT NULL ,
+  `showInAgenda` INT NOT NULL ,
+  `agenda_date` DATE NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_NOTE_01`

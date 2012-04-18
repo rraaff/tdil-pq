@@ -57,9 +57,6 @@
 			Editar
 		</html:link>
 				</td>
-				<td width="10" bgcolor="#FFFFFF"><img src="images/null.gif"
-					width="10" height="1">
-				</td>
 			</tr>
 		</logic:iterate>
 	</table>
