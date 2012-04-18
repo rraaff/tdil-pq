@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.struts.forms.NoteImageBean"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionSelectionVO"%>
 <%@page import="com.tdil.djmag.model.Country"%>
 <%@ page info="index"%>
@@ -10,6 +11,14 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<script>
+	$(function() {
+		$("input[name=fromDate]").datepicker();
+		$("input[name=fromDate]").datepicker("option", "dateFormat","yy-mm-dd");
+		$("input[name=toDate]").datepicker();
+		$("input[name=toDate]").datepicker("option", "dateFormat","yy-mm-dd");
+	});
+	</script>
 </head>
 
 <body>
@@ -21,11 +30,31 @@
 
 	<html:form method="POST" action="/saveNote"
 		enctype="multipart/form-data">
+		<input type="hidden" name="id" value="">
 		<span class="errorText"><html:errors property="general" /> </span>
 		<br>
 		Titulo: <html:text name="NoteForm" property="title" />
 		<html:errors property="Note.title.err" />
 		<br>
+		Web title: <html:text name="NoteForm" property="webTitle" />
+		<html:errors property="Note.webTitle.err" />
+		<br>
+		Resumen: <html:text name="NoteForm" property="summary" />
+		<html:errors property="Note.summary.err" />
+		<br>
+		Contenido: <html:textarea name="NoteForm" property="content" />
+		<html:errors property="Note.summary.err" />
+		<br>
+		Desde: <html:text name="NoteForm" property="fromDate" /><html:errors property="Note.fromDate.err" />
+		<br>
+		Hasta: <html:text name="NoteForm" property="toDate" /><html:errors property="Note.toDate.err" />
+		<br>
+		Portada: <html:checkbox name="NoteForm" property="frontCover" />
+		<br>
+		Destacada: <html:checkbox name="NoteForm" property="leadingNote" />
+		
+		<br>
+		
 		Borrada: <html:checkbox name="NoteForm" property="deleted" />
 		<br>
 		Seccion<html:select name="NoteForm" property="sectionId"
@@ -65,9 +94,9 @@
 								</td>
 							</tr>
 						</table></td>
-					<td><html:link action="/moveImageUp.do?" paramName="currImage" paramProperty="id" paramId="id">Subir</html:link></td>
-					<td><html:link action="/moveImageDown.do?" paramName="currImage" paramProperty="id" paramId="id">Bajar</html:link></td>
-					<td><html:link action="/deleteImage.do?" paramName="currImage" paramProperty="id" paramId="id">Borrar</html:link></td>
+					<td><a href="javascript:document.NoteForm.action='./moveImageUp.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Subir</a></td>
+					<td><a href="javascript:document.NoteForm.action='./moveImageDown.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Bajar</a></td>
+					<td><a href="javascript:document.NoteForm.action='./deleteImage.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Borrar</a></td>
 				</tr>
 			</logic:iterate>
 			<tr>
@@ -86,7 +115,6 @@
 			<tr>
 				<td>Pais</td>
 			</tr>
-
 			<logic:iterate id="selectedCountry" name="NoteForm"
 				property="selectedCountries">
 				<tr>
@@ -132,10 +160,7 @@
 				<td
 					<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 					align="left"></td>
-				<td><html:link action="editNote.do?" paramName="iterNote"
-						paramProperty="id" paramId="id">
-			Editar
-		</html:link>
+				<td><html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>
 				</td>
 				<td width="10" bgcolor="#FFFFFF"><img src="images/null.gif"
 					width="10" height="1">

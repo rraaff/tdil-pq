@@ -36,6 +36,8 @@ public class RankingNoteForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private int id;
+	
+	private int objectId;
 	private String description;
 	private int sectionId;
 	private List<RankingPositionBean> positions;
@@ -55,7 +57,7 @@ public class RankingNoteForm extends TransactionalValidationForm {
 
 	@Override
 	public void reset() throws SQLException {
-		this.id = 0;
+		this.objectId = 0;
 		this.description = null;
 		this.deleted = false;
 		this.positions = createEmptyPositions();
@@ -131,7 +133,7 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		RankingNoteDAO rankingDAO = DAOManager.getRankingNoteDAO();
 		RankingNote ranking = rankingDAO.selectRankingNoteByPrimaryKey(id);
 		if (ranking != null) {
-			this.id = id;
+			this.objectId = id;
 			this.sectionId = ranking.getIdSection();
 			this.description = ranking.getDescription();
 			this.deleted = ranking.getDeleted() == 1;
@@ -150,7 +152,7 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		RankingNoteCountryDAO rankingNoteCountryDAO = DAOManager.getRankingNoteCountryDAO();
 		RankingNoteCountryExample rankingNoteExample = new RankingNoteCountryExample();
 		com.tdil.djmag.model.RankingNoteCountryExample.Criteria criteria = rankingNoteExample.createCriteria();
-		criteria.andIdRankingNoteEqualTo(this.getId());
+		criteria.andIdRankingNoteEqualTo(this.getObjectId());
 		List<RankingNoteCountry> rankingNoteCountries = rankingNoteCountryDAO.selectRankingNoteCountryByExample(rankingNoteExample);
 		for (RankingNoteCountry rankingNoteCountry : rankingNoteCountries) {
 			this.setCountrySelected(rankingNoteCountry);
@@ -227,7 +229,7 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		RankingNoteDAO rankingNoteDAO = DAOManager.getRankingNoteDAO();
 		RankingNoteCountryDAO rankingNoteCountryDAO = DAOManager.getRankingNoteCountryDAO();
 		Integer rankingId;
-		if (this.getId() == 0) {
+		if (this.getObjectId() == 0) {
 			RankingNote rankingNote = new RankingNote();
 			rankingNote.setIdSection(this.getSectionId());
 			rankingNote.setDeleted(0);
@@ -235,11 +237,11 @@ public class RankingNoteForm extends TransactionalValidationForm {
 			rankingId = rankingNoteDAO.insertRankingNote(rankingNote);
 		} else {
 			RankingNote rankingNote = new RankingNote();
-			rankingNote.setId(this.getId());
+			rankingNote.setId(this.getObjectId());
 			rankingNote.setIdSection(this.getSectionId());
 			updateRankingNote(rankingNote);
 			rankingNoteDAO.updateRankingNoteByPrimaryKeySelective(rankingNote);
-			rankingId = this.getId();
+			rankingId = this.getObjectId();
 		}
 		for (CountrySelectionVO countrySelectionVO : getSelectedCountries()) {
 			if (this.mustBeSaved(countrySelectionVO)) {
@@ -275,12 +277,12 @@ public class RankingNoteForm extends TransactionalValidationForm {
 		return countrySelectionVO.isSelected();
 	}
 
-	public int getId() {
-		return id;
+	public int getObjectId() {
+		return objectId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setObjectId(int id) {
+		this.objectId = id;
 	}
 
 	public boolean isDeleted() {
@@ -392,6 +394,14 @@ public class RankingNoteForm extends TransactionalValidationForm {
 			this.getPositions().set(index + 1, act);
 			this.getPositions().set(index, next);
 		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

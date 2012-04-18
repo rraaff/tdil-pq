@@ -1,5 +1,6 @@
 package com.tdil.djmag.struts.forms;
 
+import com.tdil.djmag.model.NoteImage;
 import com.tdil.struts.forms.UploadData;
 
 /**
@@ -14,6 +15,11 @@ public class NoteImageBean {
 	
 	public NoteImageBean(UploadData uploadData, int id) {
 		setUploadData(uploadData);
+		setId(id);
+	}
+	
+	public NoteImageBean(NoteImage noteImage, int id) {
+		setUploadData(new UploadData(noteImage.getFilename(), noteImage.getNoteimage()));
 		setId(id);
 	}
 
