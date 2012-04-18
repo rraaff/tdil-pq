@@ -1,6 +1,8 @@
 package com.tdil.djmag.struts.forms;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,6 +11,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
@@ -27,11 +31,13 @@ import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
 import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class NoteForm extends TransactionalValidationForm {
 
@@ -51,6 +57,8 @@ public class NoteForm extends TransactionalValidationForm {
 	private String toDate;
 	private boolean frontCover;
 	private boolean leadingNote;
+	private boolean showInAgenda;
+	private String agendaDate;
 	
 	private int sectionId;
 	private boolean deleted;
@@ -67,6 +75,12 @@ public class NoteForm extends TransactionalValidationForm {
 	private static List<NoteCountry> allNoteCountries = new ArrayList<NoteCountry>();
 	
 	private static String title_key = "Note.title";
+	private static String webtitle_key = "Note.webtitle";
+	private static String summary_key = "Note.summary";
+	private static String content_key = "Note.content";
+	private static String fromdate_key = "Note.fromdate";
+	private static String todate_key = "Note.todate";
+	private static String agendadate_key = "Note.agendadate";
 	private static String image_key = "Note.image";
 	
 
@@ -82,6 +96,8 @@ public class NoteForm extends TransactionalValidationForm {
 		this.frontCover = false;
 		this.leadingNote = false;
 		this.deleted = false;
+		this.showInAgenda = false;
+		this.agendaDate = "";
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
 		this.setImages(new ArrayList<NoteImageBean>());
@@ -90,6 +106,9 @@ public class NoteForm extends TransactionalValidationForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.deleted = false;
+		this.frontCover = false;
+		this.leadingNote = false;
+		this.showInAgenda = false;
 		clearSelectedCountries();
 	}
 
@@ -153,10 +172,12 @@ public class NoteForm extends TransactionalValidationForm {
 			this.webTitle = ranking.getWebTitle();
 			this.summary = ranking.getSummary();
 			this.content = ranking.getContent();
-			this.fromDate = ""; // TODO ranking.getFromDate();
-			this.toDate = ""; // TODO ranking.getToDate();
+			this.fromDate = formatDate(ranking.getFromDate());
+			this.toDate = formatDate(ranking.getToDate());
 			this.frontCover = ranking.getFrontcover().equals(1);
 			this.leadingNote = ranking.getLeadingnote().equals(1);
+			this.showInAgenda = ranking.getShowinagenda().equals(1);
+			this.agendaDate = formatDate(ranking.getAgendaDate());
 			this.deleted = ranking.getDeleted() == 1;
 		} 
 		// reseto las secciones
@@ -189,6 +210,28 @@ public class NoteForm extends TransactionalValidationForm {
 		}
 	}
 	
+	private String formatDate(Date fromDate2) {
+		if (fromDate2 == null) {
+			return "";
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return dateFormat.format(fromDate2);
+	}
+	
+	private Date parseDate(String fromDate2) {
+		try {
+			if (StringUtils.isEmpty(fromDate2)) {
+				return null;
+			}
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			return dateFormat.parse(fromDate2);
+		} catch (ParseException e) {
+			getLog().error(e.getMessage(), e);
+			//throw new RuntimeException(e);
+			return null;
+		}
+	}
+
 	public static List<Country> getAllCountriesForNoteId(Integer sectionId) {
 		List<Country> result = new ArrayList<Country>();
 		for (NoteCountry mi : getAllNoteCountries()) {
@@ -230,6 +273,29 @@ public class NoteForm extends TransactionalValidationForm {
 	@Override
 	public void basicValidate(ValidationError validationError) {
 		FieldValidation.validateText(this.getTitle(), title_key, 250, validationError);
+		if (StringUtils.isEmpty(this.getWebTitle()) && !validationError.hasError()) {
+			this.setWebTitle(com.tdil.utils.StringUtils.urlValid(this.getTitle()));
+		} else {
+			this.setWebTitle(com.tdil.utils.StringUtils.urlValid(this.getWebTitle()));
+		}
+		FieldValidation.validateText(this.getWebTitle(), webtitle_key, 250, false, validationError);
+		FieldValidation.validateText(this.getSummary(), summary_key, 4000, false, validationError);
+		FieldValidation.validateText(this.getContent(), content_key, 16000000, false, validationError);
+		Date fromDate = parseDate(this.getFromDate());
+		if (fromDate == null) {
+			validationError.setFieldError(fromdate_key, ValidationErrors.CANNOT_BE_EMPTY);
+		} else {
+			Date toDate = parseDate(this.getToDate());
+			if (toDate != null && toDate.before(fromDate)) {
+				validationError.setFieldError(fromdate_key, "INVALID_ORDER");
+			}
+		}
+		if (this.isShowInAgenda()) {
+			Date agendaDate = parseDate(this.getAgendaDate());
+			if (agendaDate == null) {
+				validationError.setFieldError(agendadate_key, ValidationErrors.CANNOT_BE_EMPTY);
+			}
+		}
 	}
 	
 	@Override
@@ -296,23 +362,15 @@ public class NoteForm extends TransactionalValidationForm {
 		note.setWebTitle(this.getWebTitle()); // TODO URL escape...
 		note.setSummary(this.getSummary());
 		note.setContent(this.getContent());
-		note.setFromDate(this.getFromDateAsDate());
-		note.setToDate(this.getToDateAsDate());
+		note.setFromDate(parseDate(this.getFromDate()));
+		note.setToDate(parseDate(this.getToDate()));
 		note.setFrontcover(this.isFrontCover() ? 1 : 0);
 		note.setLeadingnote(this.isLeadingNote() ? 1 : 0);
+		note.setShowinagenda(this.isShowInAgenda() ? 1 : 0);
+		note.setAgendaDate(parseDate(this.getAgendaDate()));
 		note.setDeleted(this.isDeleted() ? 1 : 0);
 	}
 	
-	private Date getToDateAsDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Date getFromDateAsDate() {
-		// TODO Auto-generated method stub
-		return new Date();
-	}
-
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
 		if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
 			return true;
@@ -526,4 +584,23 @@ public class NoteForm extends TransactionalValidationForm {
 		this.id = id;
 	}
 
+	public boolean isShowInAgenda() {
+		return showInAgenda;
+	}
+
+	public void setShowInAgenda(boolean showInAgenda) {
+		this.showInAgenda = showInAgenda;
+	}
+
+	public String getAgendaDate() {
+		return agendaDate;
+	}
+
+	public void setAgendaDate(String agendaDate) {
+		this.agendaDate = agendaDate;
+	}
+
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(NoteForm.class);
+	}
 }

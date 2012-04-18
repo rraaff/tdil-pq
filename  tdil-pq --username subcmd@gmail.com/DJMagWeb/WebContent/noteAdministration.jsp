@@ -14,10 +14,9 @@
 <script type="text/javascript" src="./ckeditor.js"></script>
 <script>
 	$(function() {
-		$("input[name=fromDate]").datepicker();
-		$("input[name=fromDate]").datepicker("option", "dateFormat","yy-mm-dd");
-		$("input[name=toDate]").datepicker();
-		$("input[name=toDate]").datepicker("option", "dateFormat","yy-mm-dd");
+		$("input[name=fromDate]").datepicker({dateFormat: 'yy-mm-dd'});
+		$("input[name=toDate]").datepicker({dateFormat: 'yy-mm-dd'});
+		$("input[name=agendaDate]").datepicker({dateFormat: 'yy-mm-dd'});
 	});
 	</script>
 </head>
@@ -36,26 +35,24 @@
 		<br>
 		Titulo: <html:text name="NoteForm" property="title" />
 		<html:errors property="Note.title.err" />
-		<br>
 		Web title: <html:text name="NoteForm" property="webTitle" />
-		<html:errors property="Note.webTitle.err" />
+		<html:errors property="Note.webtitle.err" />
 		<br>
 		Resumen: <html:text name="NoteForm" property="summary" />
 		<html:errors property="Note.summary.err" />
 		<br>
 		Contenido: <html:textarea name="NoteForm" property="content" />
-		<html:errors property="Note.summary.err" />
+		<html:errors property="Note.content.err" />
 		<br>
-		Desde: <html:text name="NoteForm" property="fromDate" /><html:errors property="Note.fromDate.err" />
-		<br>
-		Hasta: <html:text name="NoteForm" property="toDate" /><html:errors property="Note.toDate.err" />
+		Desde: <html:text name="NoteForm" property="fromDate" /><html:errors property="Note.fromdate.err" />
+		Hasta: <html:text name="NoteForm" property="toDate" /><html:errors property="Note.todate.err" />
 		<br>
 		Portada: <html:checkbox name="NoteForm" property="frontCover" />
-		<br>
 		Destacada: <html:checkbox name="NoteForm" property="leadingNote" />
-		
 		<br>
-		
+		Mostrar en agenda: <html:checkbox name="NoteForm" property="showInAgenda" />
+		Fecha de agenda: <html:text name="NoteForm" property="agendaDate" /><html:errors property="Note.agendadate.err" />
+		<br>
 		Borrada: <html:checkbox name="NoteForm" property="deleted" />
 		<br>
 		Seccion<html:select name="NoteForm" property="sectionId"
@@ -162,9 +159,6 @@
 					<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 					align="left"></td>
 				<td><html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>
-				</td>
-				<td width="10" bgcolor="#FFFFFF"><img src="images/null.gif"
-					width="10" height="1">
 				</td>
 			</tr>
 		</logic:iterate>
