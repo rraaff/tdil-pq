@@ -17,6 +17,17 @@ h1, h2, h3, h4 {
 	font-size: 150%;
 	color: #18A7A7;
 }
+h2 {
+	font-size: 120%;
+}
+h3 {
+	font-size: 100%;
+	font-weight:bold;
+}
+h4 {
+	font-size: 80%;
+	font-weight:bold;
+}
 a, a:hover, a:active, a:visited {
 	color: #18A7A7;
 	text-decoration:none;
@@ -89,12 +100,19 @@ a:hover {
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom:10px;
+	clear:both;
+	line-height: normal;
+	float: none;
+	overflow: hidden;
+	position: relative;
 }
 .label {
 	width:70px;
+	height:22px;
 	float:left;
 	text-align:left;
-	padding-top: 8px;
+	position:relative;
+	line-height: normal;
 }
 .comment{
 	font-size: 80%;
@@ -102,7 +120,7 @@ a:hover {
 	color: #666666;
 	float:left;
 	text-align:left;
-	padding-top: 8px;
+	line-height: normal;
 }
 /**/
 table {
@@ -137,7 +155,9 @@ td {
 }
 input[type="text"], input[type="password"] {
 	float:left;
-	width:auto;
+	margin:0;
+	padding:0;
+	line-height: normal;
 }
 input[type="button"], input[type="submit"] {
 	background-color:#18A7A7;
@@ -160,3 +180,22 @@ input[type="button"], input[type="submit"] {
 	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 }
+.width20 { width:20px; }
+.width50 { width:50px; }
+.width80 { width:80px; }
+.width100 { width:100px; }
+.width120 { width:120px; }
+.width150 { width:150px; }
+.width180 { width:180px; }
+.width200 { width:200px; }
+.width300 { width:300px; }
+.width320 { width:320px; }
+.width700 { width:700px; }
+.width740 { width:740px; }
+.width760 { width:760px; }
+.width860 { width:860px; }
+
+.height50 { height:50px; }
+.height80 { height:80px; }
+.height180 { height:180px; }
+.height250 { height:250px; }
