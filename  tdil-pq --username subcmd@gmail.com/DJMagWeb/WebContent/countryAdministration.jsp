@@ -59,10 +59,14 @@
 							align="left"><bean:write name="iterCountry" property="name" />
 						</td>
 						<td></td>
-						<td><html:link action="editCountry.st?" paramName="iterCountry"
+						<td><html:link action="/editCountry" paramName="iterCountry"
 								paramProperty="id" paramId="id">
-					Editar
-				</html:link>
+							Editar
+							</html:link>
+							<html:link action="/toggleDeletedCountry" paramName="iterCountry"
+								paramProperty="id" paramId="id">
+								Activar/Desactivar
+							</html:link>
 						</td>
 					</tr>
 				</logic:iterate>

@@ -10,10 +10,11 @@ import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.CountryExample.Criteria;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.validations.FieldValidation;
 
-public class CountryForm extends TransactionalValidationForm {
+public class CountryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -60,6 +61,20 @@ public class CountryForm extends TransactionalValidationForm {
 			this.deleted = country.getDeleted() == 1;
 		} 
 	}
+	
+	/** Used for delete */
+	public void initForDeleteWith(int userId) throws SQLException {
+		this.objectId = userId;
+	}
+	public void validateForToggleDeletedFlag(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		Country country = DAOManager.getCountryDAO().selectCountryByPrimaryKey(this.getId());
+		country.setDeleted(country.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getCountryDAO().updateCountryByPrimaryKeySelective(country);
+	}
+	
 
 	@Override
 	public void basicValidate(ValidationError validationError) {

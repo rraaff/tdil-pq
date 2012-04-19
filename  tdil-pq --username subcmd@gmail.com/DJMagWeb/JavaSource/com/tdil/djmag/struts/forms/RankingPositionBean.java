@@ -1,6 +1,13 @@
 package com.tdil.djmag.struts.forms;
 
-public class RankingPositionBean {
+import java.io.Serializable;
+
+public class RankingPositionBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5436118842744032161L;
 
 	private String position;
 	

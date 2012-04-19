@@ -39,6 +39,11 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
   </action>
+  <action name="CountryForm" parameter="Admin" path="/toggleDeletedCountry"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/countryAdministration.jsp"/>
+  </action>
   <action name="SectionForm" parameter="Admin" path="/goToSectionABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
