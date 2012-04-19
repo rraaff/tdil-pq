@@ -18,163 +18,169 @@
 		$("input[name=toDate]").datepicker({dateFormat: 'yy-mm-dd'});
 		$("input[name=agendaDate]").datepicker({dateFormat: 'yy-mm-dd'});
 	});
-	</script>
+</script>
+<style>
+.renglon {
+	width:840px;
+}
+</style>
 </head>
 
 <body>
+<div id="header"></div>
+<div id="container">
+	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
+	<div id="formulariosBase">
+		<h1>Administraci&oacute;n de notas simples</h1>
+		<div id="conteinerScrollable">
+			<html:form method="POST" action="/saveNote"
+				enctype="multipart/form-data">
+				<input type="hidden" name="id" value="">
+				<span class="errorText"><html:errors property="general" /></span>
+				<div class="renglon">
+					<div class="label width50">T&iacute;tulo</div>
+					<div class="label width320"><html:text name="NoteForm" property="title" styleClass="width300" /></div>
+					<div class="label width20"><html:errors property="Note.title.err" /></div>
+					<div class="label width100">T&iacute;tulo en URL</div>
+					<div class="label width320"><html:text name="NoteForm" property="webTitle" styleClass="width300"/></div>
+					<div class="label width50"><html:errors property="Note.webtitle.err" /></div>
+				</div>
+				<div class="renglon height80">
+					<div class="label width50">Bajada</div>
+					<div class="label width760 height80"><html:text name="NoteForm" property="summary" styleClass="width740 height80"/></div>
+					<div class="label width50"><html:errors property="Note.summary.err" /></div>
+				</div>
+				<div class="renglon height250">
+					<div class="label width100">Texto de la nota</div>
+					<div class="label width760 height250"><html:textarea name="NoteForm" property="content" styleClass="width740 height250" /></div>
+					<div class="label width50"><html:errors property="Note.content.err" /></div>
+				</div>
+				<div class="renglon">
+					<div class="label width100">Publicada desde</div>
+					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/><html:errors property="Note.fromdate.err" /></div>
+					<div class="label width100">Publicada hasta</div>
+					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><html:errors property="Note.todate.err" /></div>
+					<div class="label width100"><html:checkbox name="NoteForm" property="frontCover" />Portada</div>
+					<div class="label width100"><html:checkbox name="NoteForm" property="leadingNote" />Popular</div>
+				</div>
+				<div class="renglon">
+					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
+					<div class="label width120">Fecha de agenda</div>
+					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><html:errors property="Note.agendadate.err" /></div>
+					<div class="label width180"><html:checkbox name="NoteForm" property="deleted" />Marcar como borrada</div>
+					<div class="label width50">Secci&oacute;n</div>
+					<div class="label width150">
+						<html:select name="NoteForm" property="sectionId" styleClass="textfield_effect">
+							<logic:iterate name="NoteForm" property="allSections"
+								id="iterSection">
+								<option
+									<%=((SectionSelectionVO) iterSection).isSelected() ? "selected" : ""%>
+									value="<%=((SectionSelectionVO) iterSection).getSection().getId()%>">
+									&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO) iterSection).getSection().getName()%></option>
+							</logic:iterate>
+						</html:select>
+					</div>
+				</div>
 
-	<%@ include file="includes/boMenu.jsp"%>
-
-	<br>Note Administration
-
-
-	<html:form method="POST" action="/saveNote"
-		enctype="multipart/form-data">
-		<input type="hidden" name="id" value="">
-		<span class="errorText"><html:errors property="general" /> </span>
-		<br>
-		Titulo: <html:text name="NoteForm" property="title" />
-		<html:errors property="Note.title.err" />
-		Web title: <html:text name="NoteForm" property="webTitle" />
-		<html:errors property="Note.webtitle.err" />
-		<br>
-		Resumen: <html:text name="NoteForm" property="summary" />
-		<html:errors property="Note.summary.err" />
-		<br>
-		Contenido: <html:textarea name="NoteForm" property="content" />
-		<html:errors property="Note.content.err" />
-		<br>
-		Desde: <html:text name="NoteForm" property="fromDate" /><html:errors property="Note.fromdate.err" />
-		Hasta: <html:text name="NoteForm" property="toDate" /><html:errors property="Note.todate.err" />
-		<br>
-		Portada: <html:checkbox name="NoteForm" property="frontCover" />
-		Destacada: <html:checkbox name="NoteForm" property="leadingNote" />
-		<br>
-		Mostrar en agenda: <html:checkbox name="NoteForm" property="showInAgenda" />
-		Fecha de agenda: <html:text name="NoteForm" property="agendaDate" /><html:errors property="Note.agendadate.err" />
-		<br>
-		Borrada: <html:checkbox name="NoteForm" property="deleted" />
-		<br>
-		Seccion<html:select name="NoteForm" property="sectionId"
-			styleClass="textfield_effect">
-			<logic:iterate name="NoteForm" property="allSections"
-				id="iterSection">
-				<option
-					<%=((SectionSelectionVO) iterSection).isSelected() ? "selected" : ""%>
-					value="<%=((SectionSelectionVO) iterSection).getSection().getId()%>">
-					&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO) iterSection).getSection().getName()%></option>
-			</logic:iterate>
-		</html:select>
-		<br>
-
-		<table border="1">
-			<tr>
-				<td></td>
-				<td>Imagen</td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-			<logic:iterate id="currImage" name="NoteForm" property="images"
-				indexId="iterIndex">
+				<table>
+					<tr>
+						<td class="headerTablas" width="40">&Oacute;rden</td>
+						<td class="headerTablas" width="80%">Previsualizaci&oacute;n</td>
+						<td colspan="3" class="headerTablas" width="150">Acciones</td>
+					</tr>
+					<logic:iterate id="currImage" name="NoteForm" property="images"
+						indexId="iterIndex">
+						<tr>
+							<td><%=iterIndex%></td>
+							<td>
+								<table>
+									<tr>
+										<td><html:img action="/viewImageNote.do?" paramName="currImage" paramProperty="id" paramId="id" align="middle" width="75" height="50" alt="" /></td>
+									</tr>
+									<tr>
+										<td><bean:write name="currImage" property="uploadData.fileName" /></td>
+									</tr>
+								</table></td>
+							<td><a href="javascript:document.NoteForm.action='./moveImageUp.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Subir</a></td>
+							<td><a href="javascript:document.NoteForm.action='./moveImageDown.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Bajar</a></td>
+							<td><a href="javascript:document.NoteForm.action='./deleteImage.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Borrar</a></td>
+						</tr>
+					</logic:iterate>
+					<tr>
+						<td colspan="5">Im&aacute;gen <html:file name="NoteForm"
+								property="noteImage" /><html:button property="operation"
+								onclick="this.form.action='./uploadImageNote.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button></td>
+					</tr>
+				</table>
+				<h2>Pa&iacute;ses en los que se podr&aacute; ver</h2>
+					<!-- td>Activa</td-->
+				<table>
+					<tr>
+						<td class="headerTablas" width="40">Pa&iacute;s</td>
+						<td class="headerTablas"></td>
+					</tr>
+					<logic:iterate id="selectedCountry" name="NoteForm"
+						property="selectedCountries">
+						<tr>
+							<td><html:checkbox name="selectedCountry" property="selected" indexed="true" /></td>
+							<td><bean:write name="selectedCountry" property="countryName" /></td>
+						</tr>
+					</logic:iterate>
+				</table>
+				<br>
+				<logic:equal name="NoteForm" property="objectId" value="0">
+					<html:submit property="operation">
+						<bean:message key="save" />
+					</html:submit>
+				</logic:equal>
+				<logic:notEqual name="NoteForm" property="objectId" value="0">
+					<html:submit property="operation">
+						<bean:message key="modify" />
+					</html:submit>
+				</logic:notEqual>
+				<html:submit property="operation">
+					<bean:message key="reset" />
+				</html:submit>
+			</html:form>
+			<hr>
+			<h2>Listado de Notas</h2>
+			<table>
 				<tr>
-					<td><%=iterIndex%></td>
-					<td>
-						<table>
-							<tr>
-								<td><html:img action="/viewImageNote.do?"
-										paramName="currImage" paramProperty="id" paramId="id"
-										align="middle" width="100" height="100" alt="" /></td>
-							</tr>
-							<tr>
-								<td><bean:write name="currImage"
-										property="uploadData.fileName" />
-								</td>
-							</tr>
-						</table></td>
-					<td><a href="javascript:document.NoteForm.action='./moveImageUp.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Subir</a></td>
-					<td><a href="javascript:document.NoteForm.action='./moveImageDown.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Bajar</a></td>
-					<td><a href="javascript:document.NoteForm.action='./deleteImage.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Borrar</a></td>
+					<td class="headerTablas" width="150">T&iacute;tulo</td>
+					<td class="headerTablas" width="250">Secci&oacute;n</td>
+					<td class="headerTablas" width="200">Pa&iacute;ses</td>
+					<td class="headerTablas" width="100">Acciones</td>
 				</tr>
-			</logic:iterate>
-			<tr>
-				<td colspan="5">Imagen: <html:file name="NoteForm"
-						property="noteImage" /> <html:button property="operation"
-						onclick="this.form.action='./uploadImageNote.do';this.form.submit();">
-						<bean:message key="uploadImage" />
-					</html:button>
-				</td>
-			</tr>
-		</table>
-		
-		Mostrar en
-			<td>Activa</td>
-		<table>
-			<tr>
-				<td>Pais</td>
-			</tr>
-			<logic:iterate id="selectedCountry" name="NoteForm"
-				property="selectedCountries">
-				<tr>
-					<td><html:checkbox name="selectedCountry" property="selected"
-							indexed="true" />
-					</td>
-					<td><bean:write name="selectedCountry" property="countryName" />
-					</td>
-				</tr>
-			</logic:iterate>
-		</table>
-		<br>
-		<logic:equal name="NoteForm" property="objectId" value="0">
-			<html:submit property="operation">
-				<bean:message key="save" />
-			</html:submit>
-		</logic:equal>
-		<logic:notEqual name="NoteForm" property="objectId" value="0">
-			<html:submit property="operation">
-				<bean:message key="modify" />
-			</html:submit>
-		</logic:notEqual>
-		<html:submit property="operation">
-			<bean:message key="reset" />
-		</html:submit>
-	</html:form>
-	<hr>
-	Listado de Notas
-	<table>
-		<tr>
-			<td>Titulo</td>
-			<td>Seccion</td>
-			<td>Paises</td>
-			<td>Editar</td>
-		</tr>
-		<logic:iterate name="NoteForm" property="allNotes" id="iterNote"
-			indexId="iterIndex">
-			<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
-				<td
-					<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
-					align="left"><bean:write name="iterNote" property="title" />
-				</td>
-				<td
-					<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
-					align="left"></td>
-				<td><html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>
-				</td>
-			</tr>
-		</logic:iterate>
-	</table>
-	<script type="text/javascript">
-		//<![CDATA[
-			// Replace the <textarea id="content"> with an CKEditor instance.
-			var editor = CKEDITOR.replace( 'content',
-				{
-					// Defines a simpler toolbar to be used in this sample.
-					// Note that we have added out "MyButton" button here.
-					toolbar : [ ['Format'] ],
-					height:"220", width:"960"
-					
-				});
-		//]]>
-		</script>
+				<logic:iterate name="NoteForm" property="allNotes" id="iterNote"
+					indexId="iterIndex">
+					<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+						<td
+							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
+							align="left"><bean:write name="iterNote" property="title" /></td>
+						<td></td>
+						<td
+							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
+							align="left"></td>
+						<td><html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>						</td>
+					</tr>
+				</logic:iterate>
+			</table>
+			<script type="text/javascript">
+				//<![CDATA[
+					// Replace the <textarea id="content"> with an CKEditor instance.
+					var editor = CKEDITOR.replace( 'content',
+						{
+							// Defines a simpler toolbar to be used in this sample.
+							// Note that we have added out "MyButton" button here.
+							toolbar : [ ['Format'] ],
+							height:"150", width:"800"
+							
+						});
+				//]]>
+				</script>
+	</div>
+</div>
 </body>
 </html>
