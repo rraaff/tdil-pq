@@ -10,6 +10,8 @@ public interface ValidationErrors {
 	String INVALID_DATE = "INVALID_DATE";
 	String TEXT_TOO_LONG = "TEXT_TOO_LONG";
 	
+	String DUPLICATED = "DUPLICATED";
+	
 	String UNDER_MIN = "UNDER_MIN";
 	String OVER_MAX = "OVER_MAX";
 	

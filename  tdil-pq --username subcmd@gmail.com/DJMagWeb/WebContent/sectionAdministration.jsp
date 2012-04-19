@@ -42,12 +42,12 @@
 		</logic:iterate>  
 		</table>
 		<br>
-		<logic:equal name="SectionForm" property="id" value="0">
+		<logic:equal name="SectionForm" property="objectId" value="0">
 			<html:submit property="operation">
 				<bean:message key="save" />
 			</html:submit>
 		</logic:equal>
-		<logic:notEqual name="SectionForm" property="id" value="0">
+		<logic:notEqual name="SectionForm" property="objectId" value="0">
 			<html:submit property="operation">
 				<bean:message key="modify" />
 			</html:submit>
