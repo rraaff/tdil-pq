@@ -184,15 +184,6 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editNote.do"
    SUBTYPE="confirmed" TARGET="action18" TITLE="/editNote.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/moveImageUp.do"
-   SUBTYPE="confirmed" TARGET="action21" TITLE="/moveImageUp.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link3" PATH="/deleteImage.do"
-   SUBTYPE="confirmed" TARGET="action23" TITLE="/deleteImage.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link4" PATH="/moveImageDown.do"
-   SUBTYPE="confirmed" TARGET="action22" TITLE="/moveImageDown.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveNote" NAME="action17" PATH="/saveNote"
   SHAPE="32,2257,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -248,6 +239,16 @@
   TITLE="RankingNoteForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedCountry" NAME="action26"
+  PATH="/toggleDeletedCountry" SHAPE="32,1521,0,0" TITLE="CountryForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/countryAdministration.jsp" TARGET="page4" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/countryAdministration.jsp" TARGET="page4" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>
