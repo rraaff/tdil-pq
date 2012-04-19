@@ -11,3 +11,4 @@
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/ZeroClipboard.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/TableTools.min.js"></script>
+<link href="css/boStyle.css" rel="stylesheet" type="text/css">
