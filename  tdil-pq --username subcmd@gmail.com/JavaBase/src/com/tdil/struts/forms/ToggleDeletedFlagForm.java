@@ -13,6 +13,6 @@ public interface ToggleDeletedFlagForm {
 
 	void toggleDeletedFlag() throws SQLException, ValidationException;
 	
-	void reset() throws SQLException;
+	void resetAfterDelete() throws SQLException;
 
 }
