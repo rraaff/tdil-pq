@@ -40,31 +40,36 @@ function doSearch() {
 </head>
 
 <body>
-
-	<%@ include file="includes/boMenu.jsp"%>
-
-	<br>Reporte de subscriptos al newsletter
-	
-	<input type="button" onClick="doSearch();" value="Buscar">
-	
-	<div id="dynamic">
-		<table cellpadding="0" cellspacing="0" border="0" class="display"
-			id="reportTable">
-			<thead>
-				<tr>
-					<th width="100%">email</th>
-				</tr>
-			</thead>
-			<tbody>
-
-			</tbody>
-			<tfoot>
-				<tr>
-					<th width="100%">email</th>
-				</tr>
-			</tfoot>
-		</table>
+<div id="header"></div>
+<div id="container">
+	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
+	<div id="formulariosBase">
+		<h1>Reporte de subscriptos al newsletter</h1>
+		<div id="conteinerScrollable">
+			<div class="renglon width860 height50">
+				<div class="label width860 height50" style="text-align:center;"><input type="button" onClick="doSearch();" value="Buscar"></div>
+			</div>
+			<div class="renglon width860 height250">
+				<div class="label width860"><div id="dynamic">
+					<table class="display" id="reportTable">
+						<thead>
+							<tr>
+								<th class="headerTablas" width="100%">email</th>
+							</tr>
+						</thead>
+						<tbody>
+			
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="headerTablas" width="100%">email</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-
+</div>
 </body>
 </html>
