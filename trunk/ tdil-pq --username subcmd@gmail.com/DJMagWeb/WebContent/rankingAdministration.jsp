@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.struts.forms.RankingNoteForm"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionSelectionVO"%>
 <%@page import="com.tdil.djmag.model.Country"%>
 <%@ page info="index"%>
@@ -34,7 +35,6 @@
 			<td></td>
 			<td></td>
 		</tr>
-		
 		<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
 			<tr>
 				<td><%=iterIndexPositions + 1%></td>
@@ -44,13 +44,7 @@
    			</tr>
 		</logic:iterate>
 		</table>
-		
-		Seccion: <html:select name="RankingNoteForm" property="sectionId" styleClass="textfield_effect">
-			<logic:iterate name="RankingNoteForm" property="allSections" id="iterSection"> 
-				<option <%=((SectionSelectionVO)iterSection).isSelected() ? "selected" : "" %> value="<%=((SectionSelectionVO)iterSection).getSection().getId()%>">&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO)iterSection).getSection().getName()%></option>
-			</logic:iterate>
-		</html:select><br>
-		Mostrar en
+		Mostrar en <html:errors property="RankingNote.country.err" />
 		<table>
 		<tr>
 			<td>Activa</td>
@@ -64,13 +58,14 @@
    			</tr>
 		</logic:iterate>
 		</table>
+		
 		<br>
-		<logic:equal name="RankingNoteForm" property="id" value="0">
+		<logic:equal name="RankingNoteForm" property="objectId" value="0">
 			<html:submit property="operation">
 				<bean:message key="save" />
 			</html:submit>
 		</logic:equal>
-		<logic:notEqual name="RankingNoteForm" property="id" value="0">
+		<logic:notEqual name="RankingNoteForm" property="objectId" value="0">
 			<html:submit property="operation">
 				<bean:message key="modify" />
 			</html:submit>
@@ -84,7 +79,6 @@
 	<table>
 		<tr>
 			<td>Titulo</td>
-			<td>Seccion</td>
 			<td>Paises</td>
 			<td>Editar</td>
 		</tr>
@@ -96,11 +90,12 @@
 						: ""%>
 					align="left"><bean:write name="iterRanking" property="description" />
 				</td>
-			<td	<%=((com.tdil.ibatis.PersistentObject) iterRanking).getDeleted() == 1 ? "class=\"notActive\""
-						: ""%> align="left">
-						
-
-			</td>
+				<td	<%=((com.tdil.ibatis.PersistentObject) iterRanking).getDeleted() == 1 ? "class=\"notActive\""
+							: ""%> align="left">
+					<% for (Country country : RankingNoteForm.getAllCountriesForRankingId(((com.tdil.ibatis.PersistentObject) iterRanking).getId())) { %>
+						<%= country.getName() %>&nbsp;
+					<% } %>
+				</td>
 				<td><html:link action="editRanking.st?" paramName="iterRanking"
 						paramProperty="id" paramId="id">
 			Editar
