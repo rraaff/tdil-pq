@@ -10,10 +10,9 @@
 </head>
 
 <body>
-
-<%@ include file="includes/boMenu.jsp" %>
-
-
-
+<div id="header"></div>
+<div id="container">
+	<%@ include file="includes/boMenu.jsp" %>
+</div>
 </body>
 </html>

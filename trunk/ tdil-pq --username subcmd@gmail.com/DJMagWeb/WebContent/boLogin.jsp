@@ -7,16 +7,34 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<style>
+	.renglon{
+		width:250px;
+		height:35px;
+	}
+	.label {
+		width:80px;
+	}
+</style>
 </head>
 
 <body>
-<html:form method="POST" action="/login">
-<html:hidden name="LoginForm" property="operation" value=""/>
-<html:text name="LoginForm" property="username"/><span class="errorText"><html:errors property="general" /></span><br>
-<html:password name="LoginForm" property="password"/><br>
-<html:submit property="operation">Login</html:submit>
-
-</html:form>
-
+<div id="header"></div>
+<div id="container">
+	<div id="loginBase">
+		<h1>Ingreso al Administrador</h1>
+		<html:form method="POST" action="/login">
+		<div class="renglon">
+			<html:hidden name="LoginForm" property="operation" value=""/>
+			<div class="label">Usuario</div><html:text name="LoginForm" property="username"/><span class="errorText"><html:errors property="general" /></span>
+		</div>
+		<div class="renglon">
+			<div class="label">Contrase&ntilde;a</div><html:password name="LoginForm" property="password"/>
+		</div>
+		<html:submit property="operation">Login</html:submit>
+	
+		</html:form>
+	</div>
+</div>
 </body>
 </html>
