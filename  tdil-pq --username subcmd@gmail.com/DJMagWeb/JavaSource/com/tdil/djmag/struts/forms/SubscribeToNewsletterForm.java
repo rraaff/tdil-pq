@@ -66,6 +66,7 @@ public class SubscribeToNewsletterForm extends TransactionalValidationForm {
 			Newsletter newsletter = new Newsletter();
 			newsletter.setEmail(this.getEmail());
 			newsletter.setSubscriptiondate(new Date());
+			newsletter.setDeleted(0);
 			newsletterDAO.insertNewsletter(newsletter);
 		}
 	}
