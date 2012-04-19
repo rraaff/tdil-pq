@@ -63,6 +63,12 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 	}
 	
 	/** Used for delete */
+	public void resetAfterDelete() throws SQLException {
+		this.reset();
+		CountryExample countryExample = new CountryExample();
+		countryExample.setOrderByClause("name");
+		this.setAllCountries(DAOManager.getCountryDAO().selectCountryByExample(countryExample));
+	}
 	public void initForDeleteWith(int userId) throws SQLException {
 		this.objectId = userId;
 	}

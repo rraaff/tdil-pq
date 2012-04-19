@@ -30,7 +30,7 @@ public class ToggleDeletedAction extends AbstractAction {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
 					abstractForm.toggleDeletedFlag();
-					abstractForm.reset();
+					abstractForm.resetAfterDelete();
 				}
 			});
 			return mapping.findForward("continue");

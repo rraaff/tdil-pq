@@ -29,12 +29,12 @@
 					<div class="label"><html:checkbox name="CountryForm" property="deleted" /></div><div class="label" style="width:150px;">Marcar como borrada</div>
 				</div>
 		
-				<logic:equal name="CountryForm" property="id" value="0">
+				<logic:equal name="CountryForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="save" />
 					</html:submit>
 				</logic:equal>
-				<logic:notEqual name="CountryForm" property="id" value="0">
+				<logic:notEqual name="CountryForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="modify" />
 					</html:submit>
@@ -58,14 +58,18 @@
 								: ""%>
 							align="left"><bean:write name="iterCountry" property="name" />
 						</td>
-						<td></td>
+						<td><bean:write name="iterCountry" property="isoCode2" /></td>
 						<td><html:link action="/editCountry" paramName="iterCountry"
 								paramProperty="id" paramId="id">
 							Editar
 							</html:link>
 							<html:link action="/toggleDeletedCountry" paramName="iterCountry"
 								paramProperty="id" paramId="id">
-								Activar/Desactivar
+								<% if (((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1) { %>
+									Activar
+								<% } else { %>
+									Desactivar
+								<% } %>
 							</html:link>
 						</td>
 					</tr>
