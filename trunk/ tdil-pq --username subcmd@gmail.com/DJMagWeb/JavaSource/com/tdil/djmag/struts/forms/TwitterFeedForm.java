@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.djmag.dao.RankingNoteCountryDAO;
 import com.tdil.djmag.dao.TwitterFeedDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.RankingNoteCountry;
-import com.tdil.djmag.model.RankingNoteCountryExample;
 import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.struts.ValidationError;
@@ -116,15 +114,6 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 		} 
 		// reseteo los paises
 		resetSelectedCountries();
-		// seteto los que habia elegido
-		RankingNoteCountryDAO rankingNoteCountryDAO = DAOManager.getRankingNoteCountryDAO();
-		RankingNoteCountryExample rankingNoteExample = new RankingNoteCountryExample();
-		com.tdil.djmag.model.RankingNoteCountryExample.Criteria criteria = rankingNoteExample.createCriteria();
-		criteria.andIdRankingNoteEqualTo(this.getObjectId());
-		List<RankingNoteCountry> rankingNoteCountries = rankingNoteCountryDAO.selectRankingNoteCountryByExample(rankingNoteExample);
-		for (RankingNoteCountry rankingNoteCountry : rankingNoteCountries) {
-			this.setCountrySelected(rankingNoteCountry);
-		}
 	}
 	
 	public static Country getCountryForTwitterFeedId(Integer sectionId) {
