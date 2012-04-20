@@ -28,18 +28,21 @@ import com.tdil.djmag.model.NoteCountryExample;
 import com.tdil.djmag.model.NoteExample;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
+import com.tdil.djmag.model.RankingNote;
+import com.tdil.djmag.model.RankingNoteExample;
 import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class NoteForm extends TransactionalValidationForm {
+public class NoteForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -56,7 +59,7 @@ public class NoteForm extends TransactionalValidationForm {
 	private String fromDate;
 	private String toDate;
 	private boolean frontCover;
-	private boolean leadingNote;
+	private boolean popular;
 	private boolean showInAgenda;
 	private String agendaDate;
 	
@@ -70,6 +73,7 @@ public class NoteForm extends TransactionalValidationForm {
 	private List<Note> allNotes;
 	private List<SectionSelectionVO> allSections = new ArrayList<SectionSelectionVO>();
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
+	private static List<Section> allSections2 = new ArrayList<Section>();
 	private static List<Country> allCountries = new ArrayList<Country>();
 	
 	private static List<NoteCountry> allNoteCountries = new ArrayList<NoteCountry>();
@@ -94,7 +98,7 @@ public class NoteForm extends TransactionalValidationForm {
 		this.fromDate = "";
 		this.toDate = "";
 		this.frontCover = false;
-		this.leadingNote = false;
+		this.popular = false;
 		this.deleted = false;
 		this.showInAgenda = false;
 		this.agendaDate = "";
@@ -107,9 +111,30 @@ public class NoteForm extends TransactionalValidationForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.deleted = false;
 		this.frontCover = false;
-		this.leadingNote = false;
+		this.popular = false;
 		this.showInAgenda = false;
 		clearSelectedCountries();
+	}
+	
+	/** Used for delete */
+	public void resetAfterDelete() throws SQLException {
+		this.reset();
+		NoteExample rankingExample = new NoteExample();
+		rankingExample.setOrderByClause("title");
+		this.setAllNotes(DAOManager.getNoteDAO().selectNoteByExampleWithoutBLOBs(rankingExample));
+	}
+	public void initForDeleteWith(int userId) throws SQLException {
+		this.objectId = userId;
+	}
+	public void validateForToggleDeletedFlag(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		NoteExample example = new NoteExample();
+		example.createCriteria().andIdEqualTo(this.getObjectId());
+		Note note = DAOManager.getNoteDAO().selectNoteByExampleWithoutBLOBs(example).get(0);
+		note.setDeleted(note.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getNoteDAO().updateNoteByExampleWithoutBLOBs(note, example);
 	}
 
 	private void clearSelectedCountries() {
@@ -126,7 +151,8 @@ public class NoteForm extends TransactionalValidationForm {
 		
 		SectionExample sectionExample = new SectionExample();
 		sectionExample.setOrderByClause("name");
-		this.setAllSections(wrapSections(DAOManager.getSectionDAO().selectSectionByExample(sectionExample)));
+		allSections2 = DAOManager.getSectionDAO().selectSectionByExample(sectionExample);
+		this.setAllSections(wrapSections(allSections2));
 		
 		CountryExample countryExample = new CountryExample();
 		countryExample.setOrderByClause("name");
@@ -175,7 +201,7 @@ public class NoteForm extends TransactionalValidationForm {
 			this.fromDate = formatDate(ranking.getFromDate());
 			this.toDate = formatDate(ranking.getToDate());
 			this.frontCover = ranking.getFrontcover().equals(1);
-			this.leadingNote = ranking.getLeadingnote().equals(1);
+			this.popular = ranking.getPopular().equals(1);
 			this.showInAgenda = ranking.getShowinagenda().equals(1);
 			this.agendaDate = formatDate(ranking.getAgendaDate());
 			this.deleted = ranking.getDeleted() == 1;
@@ -235,7 +261,7 @@ public class NoteForm extends TransactionalValidationForm {
 	public static List<Country> getAllCountriesForNoteId(Integer sectionId) {
 		List<Country> result = new ArrayList<Country>();
 		for (NoteCountry mi : getAllNoteCountries()) {
-			if (mi.getIdCountry().equals(sectionId)) {
+			if (mi.getIdNote().equals(sectionId)) {
 				result.add(getCountryWithId(mi.getIdCountry()));
 			}
 		}
@@ -245,6 +271,15 @@ public class NoteForm extends TransactionalValidationForm {
 			}
 		});
 		return result;
+	}
+	
+	public static Section getSectionWithId(Integer idSection) {
+		for (Section s : allSections2) {
+			if (s.getId().equals(idSection)) {
+				return s;
+			}
+		}
+		return null;
 	}
 	
 	private static Country getCountryWithId(Integer idCountry) {
@@ -365,7 +400,7 @@ public class NoteForm extends TransactionalValidationForm {
 		note.setFromDate(parseDate(this.getFromDate()));
 		note.setToDate(parseDate(this.getToDate()));
 		note.setFrontcover(this.isFrontCover() ? 1 : 0);
-		note.setLeadingnote(this.isLeadingNote() ? 1 : 0);
+		note.setPopular(this.isPopular() ? 1 : 0);
 		note.setShowinagenda(this.isShowInAgenda() ? 1 : 0);
 		note.setAgendaDate(parseDate(this.getAgendaDate()));
 		note.setDeleted(this.isDeleted() ? 1 : 0);
@@ -568,12 +603,12 @@ public class NoteForm extends TransactionalValidationForm {
 		this.frontCover = frontCover;
 	}
 
-	public boolean isLeadingNote() {
-		return leadingNote;
+	public boolean isPopular() {
+		return popular;
 	}
 
-	public void setLeadingNote(boolean leadingNote) {
-		this.leadingNote = leadingNote;
+	public void setPopular(boolean leadingNote) {
+		this.popular = leadingNote;
 	}
 
 	public int getId() {

@@ -24,9 +24,6 @@
 				<div class="renglon">
 					<div class="label" style="width:150px;">Nombre seccion</div><html:text name="SectionForm" property="name" /><html:errors property="Section.name.err" />
 				</div>
-				<div class="renglon">
-					<div class="label"><html:checkbox name="SectionForm" property="deleted" /></div><div class="label">Borrada</div>
-				</div>
 				<h2>Secciones</h2>
 				<table>
 					<tr>
@@ -43,12 +40,12 @@
 				</logic:iterate>  
 				</table>
 				<br>
-				<logic:equal name="SectionForm" property="id" value="0">
+				<logic:equal name="SectionForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="save" />
 					</html:submit>
 				</logic:equal>
-				<logic:notEqual name="SectionForm" property="id" value="0">
+				<logic:notEqual name="SectionForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="modify" />
 					</html:submit>
@@ -80,10 +77,17 @@
 							<a href="./goToReorderMenu.do?id=<%= country.getId() %>"> <%= country.getName() %></a> &nbsp;
 						<% } %>
 					</td>
-						<td><html:link action="editSection.st?" paramName="iterSection"
+						<td>
+							<html:link action="editSection.st?" paramName="iterSection" paramProperty="id" paramId="id">Editar</html:link>
+							<html:link action="/toggleDeletedSection" paramName="iterSection"
 								paramProperty="id" paramId="id">
-					Editar
-				</html:link></td>
+								<% if (((com.tdil.ibatis.PersistentObject) iterSection).getDeleted() == 1) { %>
+									Activar
+								<% } else { %>
+									Desactivar
+								<% } %>
+							</html:link>
+						</td>
 					</tr>
 				</logic:iterate>
 			</table>

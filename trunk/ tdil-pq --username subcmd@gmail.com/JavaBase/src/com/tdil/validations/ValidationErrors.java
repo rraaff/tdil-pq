@@ -23,4 +23,8 @@ public interface ValidationErrors {
 	// New password and retype password are different
 	String PASSWORD_NOT_EQUALS = "PASSWORD_NOT_EQUALS";
 	
+	int TEXT_LENGTH = 65000;
+	int MEDIUMTEXT_LENGTH = 16000000;
+	int BLOB_LENGTH = 65000;
+	int MEDIUMBLOB_LENGTH = 16000000;
 }

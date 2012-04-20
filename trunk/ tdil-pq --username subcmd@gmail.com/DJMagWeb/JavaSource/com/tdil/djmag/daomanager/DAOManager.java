@@ -2,7 +2,9 @@ package com.tdil.djmag.daomanager;
 
 import java.sql.SQLException;
 
+import com.tdil.djmag.dao.BannerDAO;
 import com.tdil.djmag.dao.CountryDAO;
+import com.tdil.djmag.dao.FacebookFeedDAO;
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.NewsletterDAO;
 import com.tdil.djmag.dao.NoteCountryDAO;
@@ -13,7 +15,10 @@ import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.dao.SystemPropertyDAO;
 import com.tdil.djmag.dao.SystemUserDAO;
+import com.tdil.djmag.dao.TwitterFeedDAO;
+import com.tdil.djmag.dao.impl.BannerDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
+import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
 import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
 import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
 import com.tdil.djmag.dao.impl.NoteCountryDAOImpl;
@@ -24,6 +29,7 @@ import com.tdil.djmag.dao.impl.RankingNoteDAOImpl;
 import com.tdil.djmag.dao.impl.SectionDAOImpl;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.djmag.dao.impl.SystemUserDAOImpl;
+import com.tdil.djmag.dao.impl.TwitterFeedDAOImpl;
 import com.tdil.ibatis.IBatisManager;
 
 public class DAOManager {
@@ -70,5 +76,17 @@ public class DAOManager {
 	
 	public static NoteImageDAO getNoteImageDAO() throws SQLException {
 		return new NoteImageDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static BannerDAO getBannerDAO() throws SQLException {
+		return new BannerDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static TwitterFeedDAO getTwitterFeedDAO() throws SQLException {
+		return new TwitterFeedDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static FacebookFeedDAO getFacebookFeedDAO() throws SQLException {
+		return new FacebookFeedDAOImpl(IBatisManager.getClient());
 	}
 }

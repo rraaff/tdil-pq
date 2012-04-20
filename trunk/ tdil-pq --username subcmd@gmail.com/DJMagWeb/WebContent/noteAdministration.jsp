@@ -1,3 +1,6 @@
+<%@page import="com.tdil.djmag.model.Note"%>
+<%@page import="com.tdil.djmag.model.Section"%>
+<%@page import="com.tdil.djmag.struts.forms.NoteForm"%>
 <%@page import="com.tdil.djmag.struts.forms.NoteImageBean"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionSelectionVO"%>
 <%@page import="com.tdil.djmag.model.Country"%>
@@ -47,7 +50,7 @@
 				</div>
 				<div class="renglon height80">
 					<div class="label width50">Bajada</div>
-					<div class="label width760 height80"><html:text name="NoteForm" property="summary" styleClass="width740 height80"/></div>
+					<div class="label width760 height80"><html:textarea name="NoteForm" property="summary" styleClass="width740 height80"/></div>
 					<div class="label width50"><html:errors property="Note.summary.err" /></div>
 				</div>
 				<div class="renglon height250">
@@ -61,13 +64,12 @@
 					<div class="label width100">Publicada hasta</div>
 					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><html:errors property="Note.todate.err" /></div>
 					<div class="label width100"><html:checkbox name="NoteForm" property="frontCover" />Portada</div>
-					<div class="label width100"><html:checkbox name="NoteForm" property="leadingNote" />Popular</div>
+					<div class="label width100"><html:checkbox name="NoteForm" property="popular" />Popular</div>
 				</div>
 				<div class="renglon">
 					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
 					<div class="label width120">Fecha de agenda</div>
 					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><html:errors property="Note.agendadate.err" /></div>
-					<div class="label width180"><html:checkbox name="NoteForm" property="deleted" />Marcar como borrada</div>
 					<div class="label width50">Secci&oacute;n</div>
 					<div class="label width150">
 						<html:select name="NoteForm" property="sectionId" styleClass="textfield_effect">
@@ -159,11 +161,28 @@
 						<td
 							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 							align="left"><bean:write name="iterNote" property="title" /></td>
-						<td></td>
-						<td
-							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
-							align="left"></td>
-						<td><html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>						</td>
+						<td	<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\""
+									: ""%> align="left">
+							<% Section section = NoteForm.getSectionWithId(((Note) iterNote).getIdSection()); %>
+								<%= section.getName() %>
+						</td>
+						<td	<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\""
+									: ""%> align="left">
+							<% for (Country country : NoteForm.getAllCountriesForNoteId(((com.tdil.ibatis.PersistentObject) iterNote).getId())) { %>
+								<%= country.getName() %>&nbsp;
+							<% } %>
+						</td>
+						<td>
+							<html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>
+							<html:link action="/toggleDeletedNote" paramName="iterNote"
+								paramProperty="id" paramId="id">
+								<% if (((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1) { %>
+									Activar
+								<% } else { %>
+									Desactivar
+								<% } %>
+							</html:link>
+						</td>
 					</tr>
 				</logic:iterate>
 			</table>

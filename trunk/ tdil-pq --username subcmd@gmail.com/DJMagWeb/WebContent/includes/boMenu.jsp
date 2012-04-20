@@ -11,6 +11,7 @@
     <ul>
       <li><html:link action="/goToCountryABM" >Manejo de paises</html:link></li>
       <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
+      <li><html:link action="/goToBannerABM" >Manejo de banners</html:link></li>
     </ul>
   </li>
   <li>
@@ -18,6 +19,7 @@
     <ul>
       <li><html:link action="/goToRankingABM" >Manejo de rankings</html:link></li>
       <li><html:link action="/goToNoteABM" >Manejo de notas</html:link></li>
+      <li><html:link action="/goToTwitterFeedABM" >Manejo de feeds de Twitter</html:link></li>
     </ul>
   </li>
   <li>
