@@ -25,10 +25,6 @@
 				<div class="renglon">
 					<div class="label">Iso code2</div><html:text name="CountryForm" property="iso_code_2" /><html:errors property="Country.iso_code_2.err" /> <span class="comment">Ejemplo: AR (para Argentina)</span>
 				</div>
-				<div class="renglon">
-					<div class="label"><html:checkbox name="CountryForm" property="deleted" /></div><div class="label" style="width:150px;">Marcar como borrada</div>
-				</div>
-		
 				<logic:equal name="CountryForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="save" />

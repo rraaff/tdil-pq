@@ -70,5 +70,15 @@ targetProject="DJMagWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="DJMAG" tableName="BANNER" domainObjectName="Banner">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="TWITTER_FEED" domainObjectName="TwitterFeed">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="FACEBOOK_FEED" domainObjectName="FacebookFeed">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>

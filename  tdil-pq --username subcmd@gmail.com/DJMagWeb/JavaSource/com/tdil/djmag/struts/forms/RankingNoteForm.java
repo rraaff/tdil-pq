@@ -15,7 +15,6 @@ import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
-import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.RankingNoteCountryExample;
@@ -23,12 +22,13 @@ import com.tdil.djmag.model.RankingNoteExample;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.utils.XMLUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class RankingNoteForm extends TransactionalValidationForm {
+public class RankingNoteForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -74,6 +74,27 @@ public class RankingNoteForm extends TransactionalValidationForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.deleted = false;
 		clearSelectedCountries();
+	}
+	
+	/** Used for delete */
+	public void resetAfterDelete() throws SQLException {
+		this.reset();
+		RankingNoteExample rankingExample = new RankingNoteExample();
+		rankingExample.setOrderByClause("description");
+		this.setAllRankings(DAOManager.getRankingNoteDAO().selectRankingNoteByExampleWithoutBLOBs(rankingExample));
+	}
+	public void initForDeleteWith(int userId) throws SQLException {
+		this.objectId = userId;
+	}
+	public void validateForToggleDeletedFlag(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		RankingNoteExample example = new RankingNoteExample();
+		example.createCriteria().andIdEqualTo(this.getObjectId());
+		RankingNote note = DAOManager.getRankingNoteDAO().selectRankingNoteByExampleWithoutBLOBs(example).get(0);
+		note.setDeleted(note.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getRankingNoteDAO().updateRankingNoteByExampleWithoutBLOBs(note, example);
 	}
 
 	private void clearSelectedCountries() {

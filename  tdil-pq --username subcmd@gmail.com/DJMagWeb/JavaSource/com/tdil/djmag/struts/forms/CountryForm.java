@@ -76,7 +76,7 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		Country country = DAOManager.getCountryDAO().selectCountryByPrimaryKey(this.getId());
+		Country country = DAOManager.getCountryDAO().selectCountryByPrimaryKey(this.getObjectId());
 		country.setDeleted(country.getDeleted().equals(1) ? 0 : 1);
 		DAOManager.getCountryDAO().updateCountryByPrimaryKeySelective(country);
 	}

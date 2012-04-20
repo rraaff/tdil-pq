@@ -11,6 +11,8 @@
   <form-bean name="NewsletterReportForm" type="com.tdil.djmag.struts.forms.NewsletterReportForm"/>
   <form-bean name="RankingNoteForm" type="com.tdil.djmag.struts.forms.RankingNoteForm"/>
   <form-bean name="NoteForm" type="com.tdil.djmag.struts.forms.NoteForm"/>
+  <form-bean name="BannerForm" type="com.tdil.djmag.struts.forms.BannerForm"/>
+  <form-bean name="TwitterFeedForm" type="com.tdil.djmag.struts.forms.TwitterFeedForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -57,6 +59,11 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
   </action>
+  <action name="SectionForm" parameter="Admin" path="/toggleDeletedSection"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/sectionAdministration.jsp"/>
+  </action>
   <action name="ReorderMenuForm" parameter="Admin"
    path="/goToReorderMenu" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
@@ -92,6 +99,11 @@
    scope="session" type="com.tdil.djmag.struts.action.MoveRankingPositionDownAction">
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
   </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/toggleDeletedRanking"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/rankingAdministration.jsp"/>
+  </action>
  
  <action name="NoteForm" parameter="Admin"
    path="/goToNoteABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
@@ -126,8 +138,51 @@
    scope="session" type="com.tdil.djmag.struts.action.DeleteImageAction">
    <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
   </action>
- </action-mappings>
+  <action name="NoteForm" parameter="Admin" path="/toggleDeletedNote"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
  
+ <action name="BannerForm" parameter="Admin" path="/goToBannerABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="BannerForm" parameter="Admin" path="/saveBanner"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/bannerAdministration.jsp"/>
+  </action>
+  <action name="BannerForm" parameter="Admin" path="/editBanner"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="BannerForm" parameter="Admin" path="/toggleDeletedBanner"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/bannerAdministration.jsp"/>
+  </action>
+  
+  <action name="TwitterFeedForm" parameter="Admin" path="/goToTwitterFeedABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="TwitterFeedForm" parameter="Admin" path="/saveTwitterFeed"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/twitterFeedAdministration.jsp"/>
+  </action>
+  <action name="TwitterFeedForm" parameter="Admin" path="/editTwitterFeed"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="TwitterFeedForm" parameter="Admin" path="/toggleDeletedTwitterFeed"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/twitterFeedAdministration.jsp"/>
+  </action>
+ 
+ </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
 </struts-config>

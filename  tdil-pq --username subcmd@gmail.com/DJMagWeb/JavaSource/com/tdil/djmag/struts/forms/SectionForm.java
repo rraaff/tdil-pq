@@ -23,10 +23,11 @@ import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.validations.FieldValidation;
 
-public class SectionForm extends TransactionalValidationForm {
+public class SectionForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -61,6 +62,25 @@ public class SectionForm extends TransactionalValidationForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.deleted = false;
 		clearSelectedCountries();
+	}
+	
+	/** Used for delete */
+	public void resetAfterDelete() throws SQLException {
+		this.reset();
+		SectionExample sectionExample = new SectionExample();
+		sectionExample.setOrderByClause("name");
+		this.setAllSections(DAOManager.getSectionDAO().selectSectionByExample(sectionExample));
+	}
+	public void initForDeleteWith(int userId) throws SQLException {
+		this.objectId = userId;
+	}
+	public void validateForToggleDeletedFlag(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		Section section = DAOManager.getSectionDAO().selectSectionByPrimaryKey(this.getObjectId());
+		section.setDeleted(section.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getSectionDAO().updateSectionByPrimaryKeySelective(section);
 	}
 	
 	private void clearSelectedCountries() {

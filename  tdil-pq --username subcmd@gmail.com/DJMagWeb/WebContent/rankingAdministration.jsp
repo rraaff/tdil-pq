@@ -24,7 +24,6 @@
 				<span class="errorText"><html:errors property="general" /></span>
 				<div class="renglon">
 					<div class="label" style="width:100px;">T&iacute;tulo ranking</div><html:text name="RankingNoteForm" property="description" /><html:errors property="RankingNote.description.err" />
-					<div class="label" style="width:30px;"><html:checkbox name="RankingNoteForm" property="deleted" /></div><div class="label" style="width:130px;">Marcar como borrada</div>
 				</div>
 				<h2>Posiciones</h2>
 				<table>
@@ -91,10 +90,17 @@
 								<%= country.getName() %>&nbsp;
 							<% } %>
 						</td>
-						<td><html:link action="editRanking.st?" paramName="iterRanking"
+						<td>
+							<html:link action="editRanking.st?" paramName="iterRanking" paramProperty="id" paramId="id">Editar</html:link>
+							<html:link action="/toggleDeletedRanking" paramName="iterRanking"
 								paramProperty="id" paramId="id">
-					Editar
-				</html:link></td>
+								<% if (((com.tdil.ibatis.PersistentObject) iterRanking).getDeleted() == 1) { %>
+									Activar
+								<% } else { %>
+									Desactivar
+								<% } %>
+							</html:link>
+						</td>
 					</tr>
 				</logic:iterate>
 			</table>

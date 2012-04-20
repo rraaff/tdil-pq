@@ -41,9 +41,12 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveCountry.do"
    SUBTYPE="confirmed" TARGET="action4" TITLE="/saveCountry.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editCountry.st"
-   SUBTYPE="confirmed" TARGET="page5" TITLE="/editCountry.st"
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editCountry.do"
+   SUBTYPE="confirmed" TARGET="action5" TITLE="/editCountry.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedCountry.do"
+   SUBTYPE="confirmed" TARGET="action26"
+   TITLE="/toggleDeletedCountry.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveCountry" NAME="action4" PATH="/saveCountry"
   SHAPE="32,833,0,0" TITLE="CountryForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -76,6 +79,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editSection.st"
    SUBTYPE="confirmed" TARGET="page7" TITLE="/editSection.st"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedSection.do"
+   SUBTYPE="confirmed" TARGET="action35"
+   TITLE="/toggleDeletedSection.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveSection" NAME="action7" PATH="/saveSection"
   SHAPE="32,1201,0,0" TITLE="SectionForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -128,8 +134,6 @@
  <PROCESS-ITEM NAME="page9" PATH="/newsletterReport.jsp"
   SHAPE="240,1906,0,0" SUBTYPE="jsp" TITLE="newsletterReport.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM NAME="page5" PATH="/editCountry.st" SHAPE="448,721,0,0"
-  SUBTYPE="other" TITLE="editCountry.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#newsletterReport" NAME="action12"
   PATH="/newsletterReport" SHAPE="32,2225,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToRankingABM" NAME="action13"
@@ -163,6 +167,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveRanking.do"
    SUBTYPE="confirmed" TARGET="action14" TITLE="/saveRanking.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedRanking.do"
+   SUBTYPE="confirmed" TARGET="action37"
+   TITLE="/toggleDeletedRanking.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page11" PATH="/editRanking.st" SHAPE="448,1633,0,0"
   SUBTYPE="other" TITLE="editRanking.st" TYPE="page" model-entity="StrutsProcessItem"/>
@@ -249,6 +256,127 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
    PATH="/countryAdministration.jsp" TARGET="page4" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToBannerABM" NAME="action27" PATH="/goToBannerABM"
+  SHAPE="32,3329,0,0" TITLE="BannerForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page5" PATH="/bannerAdministration.jsp"
+  SHAPE="304,3346,0,0" SUBTYPE="jsp" TITLE="bannerAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedBanner.do"
+   SUBTYPE="confirmed" TARGET="action30" TITLE="/toggleDeletedBanner.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveBanner.do"
+   SUBTYPE="confirmed" TARGET="action28" TITLE="/saveBanner.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editBanner.do"
+   SUBTYPE="confirmed" TARGET="action29" TITLE="/editBanner.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveBanner" NAME="action28" PATH="/saveBanner"
+  SHAPE="32,3441,0,0" TITLE="BannerForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editBanner" NAME="action29" PATH="/editBanner"
+  SHAPE="32,3585,0,0" TITLE="BannerForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedBanner" NAME="action30"
+  PATH="/toggleDeletedBanner" SHAPE="32,3697,0,0" TITLE="BannerForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/bannerAdministration.jsp" TARGET="page5" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToTwitterFeedABM" NAME="action31"
+  PATH="/goToTwitterFeedABM" SHAPE="32,4241,0,0" TITLE="TwitterFeedForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="/twitterFeedAdministration.jsp"
+  SHAPE="304,4258,0,0" SUBTYPE="jsp"
+  TITLE="twitterFeedAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedTwitterFeed.do"
+   SUBTYPE="confirmed" TARGET="action34"
+   TITLE="/toggleDeletedTwitterFeed.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveTwitterFeed.do"
+   SUBTYPE="confirmed" TARGET="action32" TITLE="/saveTwitterFeed.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editTwitterFeed.do"
+   SUBTYPE="confirmed" TARGET="action33" TITLE="/editTwitterFeed.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveTwitterFeed" NAME="action32"
+  PATH="/saveTwitterFeed" SHAPE="32,4353,0,0" TITLE="TwitterFeedForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editTwitterFeed" NAME="action33"
+  PATH="/editTwitterFeed" SHAPE="32,4497,0,0" TITLE="TwitterFeedForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedTwitterFeed" NAME="action34"
+  PATH="/toggleDeletedTwitterFeed" SHAPE="32,4609,0,0"
+  TITLE="TwitterFeedForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/twitterFeedAdministration.jsp" TARGET="page13"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedSection" NAME="action35"
+  PATH="/toggleDeletedSection" SHAPE="32,1953,0,0" TITLE="SectionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/sectionAdministration.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedRanking" NAME="action37"
+  PATH="/toggleDeletedRanking" SHAPE="32,2385,0,0"
+  TITLE="RankingNoteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedNote" NAME="action36"
+  PATH="/toggleDeletedNote" SHAPE="32,3233,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>
