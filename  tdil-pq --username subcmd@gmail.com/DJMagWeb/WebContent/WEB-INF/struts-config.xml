@@ -13,6 +13,7 @@
   <form-bean name="NoteForm" type="com.tdil.djmag.struts.forms.NoteForm"/>
   <form-bean name="BannerForm" type="com.tdil.djmag.struts.forms.BannerForm"/>
   <form-bean name="TwitterFeedForm" type="com.tdil.djmag.struts.forms.TwitterFeedForm"/>
+  <form-bean name="FacebookFeedForm" type="com.tdil.djmag.struts.forms.FacebookFeedForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -30,7 +31,7 @@
   <action path="/subscribeToNewsletter" scope="request" type="com.tdil.djmag.struts.action.SubscribeToNewsletterAction"/>
   <action name="CountryForm" parameter="Admin" path="/goToCountryABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/countryAdministration.jsp"/>
   </action>
   <action name="CountryForm" parameter="Admin" path="/saveCountry"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -39,7 +40,7 @@
   </action>
   <action name="CountryForm" parameter="Admin" path="/editCountry"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/countryAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/countryAdministration.jsp"/>
   </action>
   <action name="CountryForm" parameter="Admin" path="/toggleDeletedCountry"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
@@ -48,7 +49,7 @@
   </action>
   <action name="SectionForm" parameter="Admin" path="/goToSectionABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/sectionAdministration.jsp"/>
   </action>
   <action name="SectionForm" parameter="Admin" path="/saveSection"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -57,7 +58,7 @@
   </action>
   <action name="SectionForm" parameter="Admin" path="/editSection"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/sectionAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/sectionAdministration.jsp"/>
   </action>
   <action name="SectionForm" parameter="Admin" path="/toggleDeletedSection"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
@@ -66,7 +67,7 @@
   </action>
   <action name="ReorderMenuForm" parameter="Admin"
    path="/goToReorderMenu" scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/reorderMenu.jsp" redirect="true"/>
+   <forward name="continue" path="/reorderMenu.jsp"/>
   </action>
   <action name="ReorderMenuForm" parameter="Admin" path="/saveOrder"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -75,12 +76,12 @@
   </action>
   <action name="NewsletterReportForm" parameter="Admin"
    path="/goToNewsletterReport" scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/newsletterReport.jsp" redirect="true"/>
+   <forward name="continue" path="/newsletterReport.jsp"/>
   </action>
   <action parameter="Admin" path="/newsletterReport" scope="request" type="com.tdil.djmag.struts.action.NewsletterReportAction"/>
   <action name="RankingNoteForm" parameter="Admin"
    path="/goToRankingABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/rankingAdministration.jsp"/>
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/saveRanking"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -89,15 +90,15 @@
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/editRanking"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/rankingAdministration.jsp"/>
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/moveRankingPositionUp"
    scope="session" type="com.tdil.djmag.struts.action.MoveRankingPositionUpAction">
-   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/rankingAdministration.jsp"/>
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/moveRankingPositionDown"
    scope="session" type="com.tdil.djmag.struts.action.MoveRankingPositionDownAction">
-   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/rankingAdministration.jsp"/>
   </action>
   <action name="RankingNoteForm" parameter="Admin" path="/toggleDeletedRanking"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
@@ -107,7 +108,7 @@
  
  <action name="NoteForm" parameter="Admin"
    path="/goToNoteABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
   <action name="NoteForm" parameter="Admin" path="/saveNote"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -116,11 +117,11 @@
   </action>
   <action name="NoteForm" parameter="Admin" path="/editNote"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
   <action name="NoteForm" parameter="Admin" path="/uploadImageNote"
    scope="session" type="com.tdil.djmag.struts.action.UploadImageNoteAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
   
   <action name="NoteForm" parameter="Admin" path="/viewImageNote"
@@ -128,15 +129,15 @@
   </action>
   <action name="NoteForm" parameter="Admin" path="/moveImageUp"
    scope="session" type="com.tdil.djmag.struts.action.MoveImageUpAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
    <action name="NoteForm" parameter="Admin" path="/moveImageDown"
    scope="session" type="com.tdil.djmag.struts.action.MoveImageDownAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
   <action name="NoteForm" parameter="Admin" path="/deleteImage"
    scope="session" type="com.tdil.djmag.struts.action.DeleteImageAction">
-   <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/noteAdministration.jsp"/>
   </action>
   <action name="NoteForm" parameter="Admin" path="/toggleDeletedNote"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
@@ -146,7 +147,7 @@
  
  <action name="BannerForm" parameter="Admin" path="/goToBannerABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/bannerAdministration.jsp"/>
   </action>
   <action name="BannerForm" parameter="Admin" path="/saveBanner"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -155,7 +156,7 @@
   </action>
   <action name="BannerForm" parameter="Admin" path="/editBanner"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/bannerAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/bannerAdministration.jsp"/>
   </action>
   <action name="BannerForm" parameter="Admin" path="/toggleDeletedBanner"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
@@ -165,7 +166,7 @@
   
   <action name="TwitterFeedForm" parameter="Admin" path="/goToTwitterFeedABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/twitterFeedAdministration.jsp"/>
   </action>
   <action name="TwitterFeedForm" parameter="Admin" path="/saveTwitterFeed"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -174,12 +175,31 @@
   </action>
   <action name="TwitterFeedForm" parameter="Admin" path="/editTwitterFeed"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/twitterFeedAdministration.jsp"/>
   </action>
   <action name="TwitterFeedForm" parameter="Admin" path="/toggleDeletedTwitterFeed"
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/twitterFeedAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/twitterFeedAdministration.jsp"/>
+  </action>
+  
+  <action name="FacebookFeedForm" parameter="Admin" path="/goToFacebookFeedABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="FacebookFeedForm" parameter="Admin" path="/saveFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="FacebookFeedForm" parameter="Admin" path="/editFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="FacebookFeedForm" parameter="Admin" path="/toggleDeletedFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
   </action>
  
  </action-mappings>

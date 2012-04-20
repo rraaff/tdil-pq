@@ -36,4 +36,5 @@
 	<sqlMap resource="com/tdil/djmag/dao/maps/BANNER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/TWITTER_FEED_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/FACEBOOK_FEED_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/MAGAZINE_SqlMap.xml"/>
 </sqlMapConfig>
