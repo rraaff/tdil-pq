@@ -14,6 +14,7 @@
   <form-bean name="BannerForm" type="com.tdil.djmag.struts.forms.BannerForm"/>
   <form-bean name="TwitterFeedForm" type="com.tdil.djmag.struts.forms.TwitterFeedForm"/>
   <form-bean name="FacebookFeedForm" type="com.tdil.djmag.struts.forms.FacebookFeedForm"/>
+  <form-bean name="MagazineForm" type="com.tdil.djmag.struts.forms.MagazineForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -201,7 +202,64 @@
    <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/facebookFeedAdministration.jsp"/>
   </action>
+  
+  <action name="MagazineForm" parameter="Admin" path="/goToFacebookFeedABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/saveFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/editFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/toggleDeletedFacebookFeed"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
+  </action>
  
+ <action name="MagazineForm" parameter="Admin" path="/goToMagazineABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/saveMagazine"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/magazineAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/editMagazine"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/toggleDeletedMagazine"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/magazineAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/uploadMagazineFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.UploadMagazineFrontCoverAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/viewMagazineFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.ViewMagazineFrontCoverAction">
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/deleteMagazineFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteMagazineFrontCoverAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+   <action name="MagazineForm" parameter="Admin" path="/uploadMagazineContent"
+   scope="session" type="com.tdil.djmag.struts.action.UploadMagazineContentAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+  <action name="MagazineForm" parameter="Admin" path="/deleteMagazineContent"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteMagazineContentAction">
+   <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+  
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>

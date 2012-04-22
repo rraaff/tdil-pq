@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.tdil.djmag.dao.BannerDAO;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FacebookFeedDAO;
+import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.NewsletterDAO;
 import com.tdil.djmag.dao.NoteCountryDAO;
@@ -19,6 +20,7 @@ import com.tdil.djmag.dao.TwitterFeedDAO;
 import com.tdil.djmag.dao.impl.BannerDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
+import com.tdil.djmag.dao.impl.MagazineDAOImpl;
 import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
 import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
 import com.tdil.djmag.dao.impl.NoteCountryDAOImpl;
@@ -88,5 +90,9 @@ public class DAOManager {
 	
 	public static FacebookFeedDAO getFacebookFeedDAO() throws SQLException {
 		return new FacebookFeedDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static MagazineDAO getMagazineDAO() throws SQLException {
+		return new MagazineDAOImpl(IBatisManager.getClient());
 	}
 }

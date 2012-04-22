@@ -27,8 +27,6 @@ CREATE  TABLE SYSTEMUSER (
   INDEX `IX_SYSTEMUSER_01` (`email` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
-
 CREATE  TABLE SYSPROPERTIES (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `propKey` VARCHAR(100) NOT NULL ,
@@ -50,6 +48,7 @@ ENGINE = InnoDB;
 CREATE TABLE SECTION (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(250) NOT NULL ,
+  `sectionType` VARCHAR(100) NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_SECTION_00` (`name` ASC))
@@ -221,3 +220,6 @@ CREATE TABLE MAGAZINE (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
+INSERT INTO SECTION (name, sectionType, deleted) VALUES('RANKING_100','RANKING_100', 0);
