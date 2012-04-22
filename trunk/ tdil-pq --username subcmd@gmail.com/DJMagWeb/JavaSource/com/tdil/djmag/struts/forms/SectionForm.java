@@ -18,6 +18,7 @@ import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.MenuItem;
 import com.tdil.djmag.model.MenuItemExample;
+import com.tdil.djmag.model.SectionType;
 import com.tdil.djmag.model.MenuItemExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
@@ -200,6 +201,7 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 		if (this.getObjectId() == 0) {
 			Section section = new Section();
 			section.setName(this.getName());
+			section.setSectiontype(SectionType.NORMAL);
 			section.setDeleted(this.isDeleted() ? 1 : 0);
 			sectionId = sectionDAO.insertSection(section);
 		} else {
@@ -207,7 +209,7 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 			section.setId(this.getObjectId());
 			section.setName(this.getName());
 			section.setDeleted(this.isDeleted() ? 1 : 0);
-			sectionDAO.updateSectionByPrimaryKey(section);
+			sectionDAO.updateSectionByPrimaryKeySelective(section);
 			sectionId = this.getObjectId();
 		}
 		for (MenuItemSelectionVO countrySelectionVO : getSelectedCountries()) {

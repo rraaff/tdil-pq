@@ -30,6 +30,7 @@ import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteExample;
+import com.tdil.djmag.model.SectionType;
 import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
@@ -150,6 +151,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		this.setAllNotes(DAOManager.getNoteDAO().selectNoteByExampleWithoutBLOBs(rankingExample));
 		
 		SectionExample sectionExample = new SectionExample();
+		sectionExample.createCriteria().andSectiontypeEqualTo(SectionType.NORMAL);
 		sectionExample.setOrderByClause("name");
 		allSections2 = DAOManager.getSectionDAO().selectSectionByExample(sectionExample);
 		this.setAllSections(wrapSections(allSections2));

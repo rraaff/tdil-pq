@@ -429,4 +429,80 @@
    PATH="/facebookFeedAdministration.jsp" TARGET="page14"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMagazineABM" NAME="action42"
+  PATH="/goToMagazineABM" SHAPE="32,6673,0,0" TITLE="MagazineForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page15" PATH="/magazineAdministration.jsp"
+  SHAPE="304,6690,0,0" SUBTYPE="jsp" TITLE="magazineAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editMagazine.do"
+   SUBTYPE="confirmed" TARGET="action44" TITLE="/editMagazine.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveMagazine.do"
+   SUBTYPE="confirmed" TARGET="action43" TITLE="/saveMagazine.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedMagazine.do"
+   SUBTYPE="confirmed" TARGET="action45"
+   TITLE="/toggleDeletedMagazine.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveMagazine" NAME="action43" PATH="/saveMagazine"
+  SHAPE="32,6785,0,0" TITLE="MagazineForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editMagazine" NAME="action44" PATH="/editMagazine"
+  SHAPE="32,6929,0,0" TITLE="MagazineForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedMagazine" NAME="action45"
+  PATH="/toggleDeletedMagazine" SHAPE="32,7041,0,0" TITLE="MagazineForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadMagazineFrontCover" NAME="action46"
+  PATH="/uploadMagazineFrontCover" SHAPE="32,7345,0,0"
+  TITLE="MagazineForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewMagazineFrontCover" NAME="action47"
+  PATH="/viewMagazineFrontCover" SHAPE="32,8369,0,0"
+  TITLE="MagazineForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deleteMagazineFrontCover" NAME="action48"
+  PATH="/deleteMagazineFrontCover" SHAPE="32,7345,0,0"
+  TITLE="MagazineForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadMagazineContent" NAME="action49"
+  PATH="/uploadMagazineContent" SHAPE="32,7345,0,0" TITLE="MagazineForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteMagazineContent" NAME="action50"
+  PATH="/deleteMagazineContent" SHAPE="32,7233,0,0" TITLE="MagazineForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
