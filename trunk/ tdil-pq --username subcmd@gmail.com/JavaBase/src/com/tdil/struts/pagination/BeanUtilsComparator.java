@@ -1,12 +1,9 @@
 package com.tdil.struts.pagination;
 
-import java.util.Comparator;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.struts.forms.TransactionalValidationForm;
 
 public class BeanUtilsComparator extends CriterionComparator {
 

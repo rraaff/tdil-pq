@@ -17,6 +17,7 @@ import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.dao.SystemPropertyDAO;
 import com.tdil.djmag.dao.SystemUserDAO;
 import com.tdil.djmag.dao.TwitterFeedDAO;
+import com.tdil.djmag.dao.VideoDAO;
 import com.tdil.djmag.dao.impl.BannerDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
@@ -32,6 +33,7 @@ import com.tdil.djmag.dao.impl.SectionDAOImpl;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.djmag.dao.impl.SystemUserDAOImpl;
 import com.tdil.djmag.dao.impl.TwitterFeedDAOImpl;
+import com.tdil.djmag.dao.impl.VideoDAOImpl;
 import com.tdil.ibatis.IBatisManager;
 
 public class DAOManager {
@@ -94,5 +96,9 @@ public class DAOManager {
 	
 	public static MagazineDAO getMagazineDAO() throws SQLException {
 		return new MagazineDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static VideoDAO getVideoDAO() throws SQLException {
+		return new VideoDAOImpl(IBatisManager.getClient());
 	}
 }
