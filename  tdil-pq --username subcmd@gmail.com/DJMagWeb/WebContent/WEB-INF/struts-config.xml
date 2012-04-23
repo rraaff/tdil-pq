@@ -15,6 +15,7 @@
   <form-bean name="TwitterFeedForm" type="com.tdil.djmag.struts.forms.TwitterFeedForm"/>
   <form-bean name="FacebookFeedForm" type="com.tdil.djmag.struts.forms.FacebookFeedForm"/>
   <form-bean name="MagazineForm" type="com.tdil.djmag.struts.forms.MagazineForm"/>
+  <form-bean name="VideoForm" type="com.tdil.djmag.struts.forms.VideoForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -258,6 +259,25 @@
   <action name="MagazineForm" parameter="Admin" path="/deleteMagazineContent"
    scope="session" type="com.tdil.djmag.struts.action.DeleteMagazineContentAction">
    <forward name="continue" path="/magazineAdministration.jsp"/>
+  </action>
+
+  <action name="VideoForm" parameter="Admin" path="/goToVideoABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/videoAdministration.jsp"/>
+  </action>
+  <action name="VideoForm" parameter="Admin" path="/saveVideo"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/videoAdministration.jsp"/>
+  </action>
+  <action name="VideoForm" parameter="Admin" path="/editVideo"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/videoAdministration.jsp"/>
+  </action>
+  <action name="VideoForm" parameter="Admin" path="/toggleDeletedVideo"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/videoAdministration.jsp"/>
   </action>
   
  </action-mappings>

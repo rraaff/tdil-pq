@@ -505,4 +505,48 @@
    PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToVideoABM" NAME="action51" PATH="/goToVideoABM"
+  SHAPE="32,8369,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page16" PATH="/videoAdministration.jsp"
+  SHAPE="304,8386,0,0" SUBTYPE="jsp" TITLE="videoAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editFacebookFeed.do"
+   SUBTYPE="confirmed" TARGET="action40" TITLE="/editFacebookFeed.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/toggleDeletedFacebookFeed.do"
+   SUBTYPE="confirmed" TARGET="action41"
+   TITLE="/toggleDeletedFacebookFeed.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveFacebookFeed.do"
+   SUBTYPE="confirmed" TARGET="action39" TITLE="/saveFacebookFeed.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVideo" NAME="action52" PATH="/saveVideo"
+  SHAPE="32,8481,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editVideo" NAME="action53" PATH="/editVideo"
+  SHAPE="32,8625,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedVideo" NAME="action54"
+  PATH="/toggleDeletedVideo" SHAPE="32,8737,0,0" TITLE="VideoForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

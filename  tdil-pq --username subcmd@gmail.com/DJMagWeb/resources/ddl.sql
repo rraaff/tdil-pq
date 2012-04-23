@@ -221,5 +221,22 @@ CREATE TABLE MAGAZINE (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+CREATE TABLE VIDEO (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `description` VARCHAR(4000) NOT NULL ,
+  `id_country` INT NOT NULL,
+  `htmlContent` TEXT NOT NULL ,
+  `frontCover` INT NOT NULL ,
+  `popular` INT NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `UQ_VIDEO_00` (`id_country` ASC),
+  CONSTRAINT `FK_VIDEO_00`
+    FOREIGN KEY (`id_country` )
+    REFERENCES COUNTRY (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
 INSERT INTO SECTION (name, sectionType, deleted) VALUES('RANKING_100','RANKING_100', 0);
