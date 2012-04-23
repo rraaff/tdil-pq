@@ -9,13 +9,6 @@ import org.apache.commons.lang.StringUtils;
 import org.displaytag.properties.SortOrderEnum;
 
 /**
- * <code>com.gorti.project.web.ui.action.PaginatedListImpl</code> implemnts
- * </code>com.gorti.project.web.ui.action.IExtendedPaginatedList</code> This
- * class can be used for pagination purpose. This class depends upon
- * HttpServletRequest object. To be used by Controllers in case of Http
- * requests.
- * 
- * @author Ram Gorti
  */
 public class PaginatedListImpl implements IExtendedPaginatedList {
 
@@ -41,6 +34,8 @@ public class PaginatedListImpl implements IExtendedPaginatedList {
 
 	/** Http servlet request **/
 	private HttpServletRequest request;
+	
+	private CriterionComparator comparator = new BeanUtilsComparator();
 
 	/** default constructor **/
 	public PaginatedListImpl(List fullList) {
@@ -64,6 +59,10 @@ public class PaginatedListImpl implements IExtendedPaginatedList {
 	 *            the page size - the total number of rows per page.
 	 */
 	public PaginatedListImpl(List fullList, HttpServletRequest request, int pageSize) {
+		this(fullList, request, pageSize, new BeanUtilsComparator());
+	}
+	
+	public PaginatedListImpl(List fullList, HttpServletRequest request, int pageSize, CriterionComparator comparator) {
 		setFullList(fullList);
 		sortCriterion = request.getParameter(IExtendedPaginatedList.IRequestParameters.SORT);
 		sortDirection = IExtendedPaginatedList.IRequestParameters.DESC.equals(request
@@ -72,17 +71,16 @@ public class PaginatedListImpl implements IExtendedPaginatedList {
 		setPageSize(pageSize != 0 ? pageSize : DEFAULT_PAGE_SIZE);
 		String page = request.getParameter(IExtendedPaginatedList.IRequestParameters.PAGE);
 		index = page == null ? 0 : Integer.parseInt(page) - 1;
+		setComparator(comparator);
 		if (!StringUtils.isEmpty(sortCriterion)) {
 			this.sortList(fullList, sortDirection);
 		}
 	}
 
 	private void sortList(List fullList2, SortOrderEnum sortDirection2) {
-		if (sortDirection2.equals(SortOrderEnum.ASCENDING)) {
-			Collections.sort(fullList2, new BeanUtilsComparator(sortCriterion, true));
-		} else {
-			Collections.sort(fullList2, new BeanUtilsComparator(sortCriterion, false));
-		}
+		this.getComparator().setCriterion(sortCriterion);
+		this.getComparator().setAsc(sortDirection2.equals(SortOrderEnum.ASCENDING));
+		Collections.sort(fullList2, this.getComparator());
 	}
 
 	/**
@@ -283,5 +281,13 @@ public class PaginatedListImpl implements IExtendedPaginatedList {
 
 	public void setFullList(List fullList) {
 		this.fullList = fullList;
+	}
+
+	public CriterionComparator getComparator() {
+		return comparator;
+	}
+
+	public void setComparator(CriterionComparator comparator) {
+		this.comparator = comparator;
 	}
 }
