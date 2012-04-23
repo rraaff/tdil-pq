@@ -39,5 +39,8 @@
 	<classpathentry exported="true" kind="lib" path="standard.jar"/>
 	<classpathentry exported="true" kind="lib" path="struts-legacy.jar"/>
 	<classpathentry exported="true" kind="lib" path="ibatis-2.3.4.726.jar"/>
+	<classpathentry exported="true" kind="lib" path="displaytag-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="displaytag-export-poi-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="displaytag-portlet-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
