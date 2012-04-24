@@ -56,6 +56,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	private static String magazine_key = "Magazine.magazine_content";
 	
 	private static final int MAX_FRONT_COVER_SIZE = 2000000;
+	private static final int MAX_MAGAZINE_SIZE = 5000000;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -128,13 +129,13 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 
 	public void uploadFrontCover(ValidationError error) {
 		UploadData uploadData = FieldValidation.validateFormFile(this.getFrontCoverFormFile(), front_cover_key, true, error);
-		int fileSize = this.getFrontCoverFormFile().getFileSize();
-		if (fileSize > MAX_FRONT_COVER_SIZE) {
-			error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
-			this.setFrontCover(null);
-			return;
-		}
 		if (uploadData != null) {
+			int fileSize = this.getFrontCoverFormFile().getFileSize();
+			if (fileSize > MAX_FRONT_COVER_SIZE) {
+				error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
+				this.setFrontCover(null);
+				return;
+			}
 			this.setFrontCover(uploadData);
 		}
 	}
@@ -142,6 +143,12 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	public void uploadMagazineContent(ValidationError error) {
 		UploadData uploadData = FieldValidation.validateFormFile(this.getMagazineContentFormFile(), magazine_key, true, error);
 		if (uploadData != null) {
+			int fileSize = this.getMagazineContentFormFile().getFileSize();
+			if (fileSize > MAX_MAGAZINE_SIZE) {
+				error.setFieldError(magazine_key, ValidationErrors.TOO_BIG);
+				this.setMagazineContent(null);
+				return;
+			}
 			this.setMagazineContent(uploadData);			
 		}
 	}

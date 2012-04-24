@@ -89,6 +89,8 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private static String image_key = "Note.image";
 	private static String section_key = "Note.section";
 	
+	private static final int MAX_NOTE_IMAGE_SIZE = 1000000;
+	
 
 	@Override
 	public void reset() throws SQLException {
@@ -521,6 +523,11 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	public void uploadImage(ValidationError error) {
 		UploadData uploadData = FieldValidation.validateFormFile(this.getNoteImage(), image_key, true, error);
 		if (uploadData != null) {
+			int fileSize = this.getNoteImage().getFileSize();
+			if (fileSize > MAX_NOTE_IMAGE_SIZE) {
+				error.setFieldError(image_key, ValidationErrors.TOO_BIG);
+				return;
+			}
 			this.getImages().add(new NoteImageBean(uploadData, noteImageIndex++));			
 		}
 	}
