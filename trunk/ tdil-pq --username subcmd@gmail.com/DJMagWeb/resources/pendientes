@@ -1,6 +1,1 @@
-	notimooErrorManager.show({
-							title: 'Error',
-							message: '<html:messages id="msg" message="true"><% if (!"*".equals(msg)) {%><%=msg%><br><% } %></html:messages>',
-							 customClass:'alert_error',
-							 sticky: true
-						});
+maxPacket size a 10MB
