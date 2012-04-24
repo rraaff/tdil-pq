@@ -319,13 +319,11 @@
       or in some other framework where the page is included via a jsp:include, you should use the requestURI attribute
       to indicate where tag generated links should point.
     </description>
-     <example>
-&lt;display:table name="someList" export="true" id="row" requestURI="MyAction.do"&gt;
+     <example>&lt;display:table name="someList" export="true" id="row" requestURI="MyAction.do"&gt;
   &lt;display:column sortable="true" title="ID"&gt; &lt;c:out value="${row.id}"/&gt; &lt;/display:column&gt;
   &lt;display:column property="email" autolink="true"/&gt;
   &lt;display:column property="description" title="Comments"/&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>name</name>
       <rtexprvalue>true</rtexprvalue>
@@ -778,11 +776,9 @@
       may create a property file that holds sitewide defaults; see the configuration documentation or the
       DisplayPropertiesLoaderServlet javadoc for information.
     </description>
-     <example>
-&lt;display:setProperty name="paging.banner.placement" value="bottom" /&gt;
+     <example>&lt;display:setProperty name="paging.banner.placement" value="bottom" /&gt;
 or
-&lt;display:setProperty name="paging.banner.placement"&gt;bottom&lt;/display:setProperty&gt;
-</example>
+&lt;display:setProperty name="paging.banner.placement"&gt;bottom&lt;/display:setProperty&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>name</name>
       <required>true</required>
@@ -806,8 +802,7 @@ or
       Tag wich should be nested into a table tag to provide a custom table footer. The body of the tag is into the tfoot
       section of the table. The totals variable, if designated, will be in pageContext in this tag.
     </description>
-     <example>
-&lt;display:table name="someList" varTotals="totals"&gt;
+     <example>&lt;display:table name="someList" varTotals="totals"&gt;
   &lt;display:column property="itemName"/&gt;
   &lt;display:column property="price" total="true"/&gt;
   &lt;display:footer&gt;
@@ -816,8 +811,7 @@ or
       &lt;td&gt;&lt;c:out value="${totals.column2}" /&gt;&lt;/td&gt;
     &lt;tr&gt;
   &lt;/display:footer&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>media</name>
       <rtexprvalue>true</rtexprvalue>
@@ -838,13 +832,11 @@ or
      <description>
       Simple tag which mimics the html caption tag. Use it inside a table tag to display a caption.
     </description>
-     <example>
-&lt;display:table name="someList"&gt;
+     <example>&lt;display:table name="someList"&gt;
   &lt;display:column property="mail"/&gt;
   &lt;display:column property="total"/&gt;
   &lt;display:caption&gt;This is the table caption&lt;/display:caption&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>style</name>
       <rtexprvalue>true</rtexprvalue>
@@ -913,13 +905,11 @@ or
       or in some other framework where the page is included via a jsp:include, you should use the requestURI attribute
       to indicate where tag generated links should point.
     </description>
-     <example>
-&lt;display:table name="someList" export="true" id="row" requestURI="MyAction.do"&gt;
+     <example>&lt;display:table name="someList" export="true" id="row" requestURI="MyAction.do"&gt;
   &lt;display:column sortable="true" title="ID"&gt; &lt;c:out value="${row.id}"/&gt; &lt;/display:column&gt;
   &lt;display:column property="email" autolink="true"/&gt;
   &lt;display:column property="description" title="Comments"/&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>list</name>
       <rtexprvalue>true</rtexprvalue>
@@ -1434,11 +1424,9 @@ or
       may create a property file that holds sitewide defaults; see the configuration documentation or the
       DisplayPropertiesLoaderServlet javadoc for information.
     </description>
-     <example>
-&lt;display:setProperty name="paging.banner.placement" value="bottom" /&gt;
+     <example>&lt;display:setProperty name="paging.banner.placement" value="bottom" /&gt;
 or
-&lt;display:setProperty name="paging.banner.placement"&gt;bottom&lt;/display:setProperty&gt;
-</example>
+&lt;display:setProperty name="paging.banner.placement"&gt;bottom&lt;/display:setProperty&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>name</name>
       <required>true</required>
@@ -1464,8 +1452,7 @@ or
       Tag wich should be nested into a table tag to provide a custom table footer. The body of the tag is into the tfoot
       section of the table. The totals variable, if designated, will be in pageContext in this tag.
     </description>
-     <example>
-&lt;display:table name="someList" varTotals="totals"&gt;
+     <example>&lt;display:table name="someList" varTotals="totals"&gt;
   &lt;display:column property="itemName"/&gt;
   &lt;display:column property="price" total="true"/&gt;
   &lt;display:footer&gt;
@@ -1474,8 +1461,7 @@ or
       &lt;td&gt;&lt;c:out value="${totals.column2}" /&gt;&lt;/td&gt;
     &lt;tr&gt;
   &lt;/display:footer&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>media</name>
       <rtexprvalue>true</rtexprvalue>
@@ -1496,13 +1482,11 @@ or
      <description>
       Simple tag which mimics the html caption tag. Use it inside a table tag to display a caption.
     </description>
-     <example>
-&lt;display:table name="someList"&gt;
+     <example>&lt;display:table name="someList"&gt;
   &lt;display:column property="mail"/&gt;
   &lt;display:column property="total"/&gt;
   &lt;display:caption&gt;This is the table caption&lt;/display:caption&gt;
-&lt;/display:table&gt;
-</example>
+&lt;/display:table&gt;</example>
      <attribute model-entity="TLDAttribute12">
       <name>style</name>
       <rtexprvalue>true</rtexprvalue>
