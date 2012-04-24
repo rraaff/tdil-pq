@@ -2,6 +2,7 @@ package com.tdil.djmag.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.SectionDAO;
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import java.sql.SQLException;
@@ -145,5 +146,11 @@ public class SectionDAOImpl implements SectionDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	/** Custom queries */
+	public List<Section> selectActiveSectionsForCountry(Country country) throws SQLException {
+		List<Section> list = sqlMapClient.queryForList("SECTION.selectActiveSectionsForCountry", country);
+		return list;
 	}
 }
