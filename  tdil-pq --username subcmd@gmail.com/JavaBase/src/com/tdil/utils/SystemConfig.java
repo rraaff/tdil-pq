@@ -43,6 +43,7 @@ public abstract class SystemConfig {
 		loadPropertiesFromDB();
 		loadProperties();
 		initLogger();
+		initBlobCache();
 	}
 	
 	public void loadPropertiesFromDB() {
@@ -104,6 +105,7 @@ public abstract class SystemConfig {
 	
 	protected abstract void loadPropertiesFromDBInTransaction();
 	
+	protected abstract void initBlobCache();
 	
 	public static String getLog4J() {
 		return SystemPropertyCache.getTempPath() + "/log/log4j.xml";
