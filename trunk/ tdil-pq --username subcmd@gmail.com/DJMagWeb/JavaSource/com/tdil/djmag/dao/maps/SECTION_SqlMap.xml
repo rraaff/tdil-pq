@@ -229,4 +229,17 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <!-- Custom queries -->
+  <select id="selectActiveSectionsForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="BaseResultMap">
+    <!--
+    -->
+    select
+    SECTION.id, SECTION.name, SECTION.sectionType, SECTION.deleted
+    from SECTION, MENUITEM
+    where SECTION.id = MENUITEM.id_section
+    and SECTION.deleted = 0
+    and MENUITEM.deleted = 0
+    and MENUITEM.id_country = #id:INTEGER#
+  </select>
 </sqlMap>

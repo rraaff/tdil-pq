@@ -1,5 +1,6 @@
 package com.tdil.djmag.dao;
 
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import java.sql.SQLException;
@@ -72,4 +73,7 @@ public interface SectionDAO {
 	 * @mbggenerated  Mon Apr 23 13:38:00 ART 2012
 	 */
 	int updateSectionByPrimaryKey(Section record) throws SQLException;
+	
+	/** Custom queries*/
+	List<Section> selectActiveSectionsForCountry(Country country) throws SQLException;
 }
