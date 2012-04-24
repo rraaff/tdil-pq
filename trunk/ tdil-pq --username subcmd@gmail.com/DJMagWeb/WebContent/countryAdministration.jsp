@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
@@ -18,12 +19,12 @@
 		<h1>Administraci&oacute;n de pa&iacute;ses</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveCountry">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
-					<div class="label">Nombre</div><html:text name="CountryForm" property="name" /><html:errors property="Country.name.err" />
+					<div class="label">Nombre</div><html:text name="CountryForm" property="name" /><%=DJMagErrorFormatter.getErrorFrom(request, "Country.name.err")%>
 				</div>
 				<div class="renglon">
-					<div class="label">Iso code2</div><html:text name="CountryForm" property="iso_code_2" /><html:errors property="Country.iso_code_2.err" /> <span class="comment">Ejemplo: AR (para Argentina)</span>
+					<div class="label">Iso code2</div><html:text name="CountryForm" property="iso_code_2" /><%=DJMagErrorFormatter.getErrorFrom(request, "Country.iso_code_2.err")%> <span class="comment">Ejemplo: AR (para Argentina)</span>
 				</div>
 				<logic:equal name="CountryForm" property="objectId" value="0">
 					<html:submit property="operation">

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.struts.forms.TwitterFeedForm"%>
 <%@page import="com.tdil.djmag.model.Country"%>
@@ -21,7 +22,7 @@
 		<h1>Administraci&oacute;n de Feeds de Twitter</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveTwitterFeed">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
 					<div class="label">Pa&iacute;s</div>
 					<html:select name="TwitterFeedForm" property="countryId" styleClass="textfield_effect">
@@ -35,7 +36,7 @@
 						</html:select>
 				</div>
 				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="TwitterFeedForm" property="htmlContent" /><html:errors property="TwitterFeed.htmlContent.err" />
+					<div class="label">HTML:</div><html:textarea name="TwitterFeedForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "TwitterFeed.htmlContent.err")%>
 				</div>
 				<logic:equal name="TwitterFeedForm" property="objectId" value="0">
 					<html:submit property="operation">

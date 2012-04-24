@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.model.Video"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.struts.forms.VideoForm"%>
@@ -22,7 +23,7 @@
 		<h1>Administraci&oacute;n de Videos</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveVideo">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
 					<div class="label">Pa&iacute;s</div>
 					<html:select name="VideoForm" property="countryId" styleClass="textfield_effect">
@@ -33,13 +34,13 @@
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select>
+						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%>
 				</div>
 				<div class="renglon">
-					<div class="label">Description:</div><html:textarea name="VideoForm" property="description" /><html:errors property="Video.description.err" />
+					<div class="label">Description:</div><html:textarea name="VideoForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.description.err")%>
 				</div>
 				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="VideoForm" property="htmlContent" /><html:errors property="Video.htmlContent.err" />
+					<div class="label">HTML:</div><html:textarea name="VideoForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.htmlContent.err")%>
 				</div>
 				<div class="label width100"><html:checkbox name="VideoForm" property="frontcover" />Portada</div>
 				<div class="label width100"><html:checkbox name="VideoForm" property="popular" />Popular</div>

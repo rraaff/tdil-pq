@@ -1,3 +1,5 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
+<%@page import="com.tdil.web.ErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
@@ -18,12 +20,12 @@
 		<h1>Administraci&oacute;n de banners</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveBanner">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
-					<div class="label">Descripci&oacute;n</div><html:text name="BannerForm" property="description" /><html:errors property="Banner.description.err" />
+					<div class="label">Descripci&oacute;n</div><html:text name="BannerForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.description.err")%>
 				</div>
 				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="BannerForm" property="htmlContent" /><html:errors property="Banner.htmlContent.err" />
+					<div class="label">HTML:</div><html:textarea name="BannerForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.htmlContent.err")%>
 				</div>
 				<logic:equal name="BannerForm" property="objectId" value="0">
 					<html:submit property="operation">

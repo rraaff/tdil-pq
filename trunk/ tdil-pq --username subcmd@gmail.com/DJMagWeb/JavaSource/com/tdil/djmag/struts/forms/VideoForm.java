@@ -43,6 +43,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
 	private static List<Country> allCountries = new ArrayList<Country>();
 	
+	private static String description_key = "Video.description";
 	private static String htmlContent_key = "Video.htmlContent";
 	private static String country_key = "Video.country";
 
@@ -163,7 +164,9 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
+		FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
 		FieldValidation.validateText(this.getHtmlContent(), htmlContent_key, ValidationErrors.TEXT_LENGTH, validationError);
+		FieldValidation.validateId(this.getCountryId(), country_key, validationError);
 	}
 	
 	@Override

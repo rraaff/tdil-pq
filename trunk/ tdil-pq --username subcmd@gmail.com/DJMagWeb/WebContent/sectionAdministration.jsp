@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.model.Country"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionForm"%>
 <%@ page info="index"%>
@@ -20,9 +21,9 @@
 		<h1>Administraci&oacute;n de secciones</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveSection">
-				<span class="errorText"><html:errors property="general" /></span>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 				<div class="renglon">
-					<div class="label" style="width:150px;">Nombre seccion</div><html:text name="SectionForm" property="name" /><html:errors property="Section.name.err" />
+					<div class="label" style="width:150px;">Nombre seccion</div><html:text name="SectionForm" property="name" /><%=DJMagErrorFormatter.getErrorFrom(request, "Section.name.err")%>
 				</div>
 				<h2>Secciones</h2>
 				<table>

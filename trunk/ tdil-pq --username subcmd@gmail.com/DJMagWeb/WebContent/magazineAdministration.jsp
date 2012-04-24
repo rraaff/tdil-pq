@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.model.Magazine"%>
 <%@page import="com.tdil.djmag.struts.forms.MagazineForm"%>
 <%@ page info="index"%>
@@ -25,12 +26,12 @@
 		<h1>Administraci&oacute;n de Magazine</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveMagazine" enctype="multipart/form-data">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
-					<div class="label">Fecha</div><html:text name="MagazineForm" property="publishDate" /><html:errors property="Magazine.publish_date.err" />
+					<div class="label">Fecha</div><html:text name="MagazineForm" property="publishDate" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.publish_date.err")%>
 				</div>
 				<div class="renglon">
-					<div class="label">Descripcion</div><html:textarea name="MagazineForm" property="description" /><html:errors property="Magazine.description.err" />
+					<div class="label">Descripcion</div><html:textarea name="MagazineForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.description.err")%>
 				</div>
 				Portada: 
 				<logic:equal name="MagazineForm" property="hasFrontCover" value="true">
@@ -44,6 +45,7 @@
 								onclick="this.form.action='./uploadMagazineFrontCover.do';this.form.submit();">
 								<bean:message key="uploadImage" />
 							</html:button>
+							<%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.front_cover.err")%>
 				<br>
 				Revista: 
 				<logic:equal name="MagazineForm" property="hasMagazineContent" value="true">

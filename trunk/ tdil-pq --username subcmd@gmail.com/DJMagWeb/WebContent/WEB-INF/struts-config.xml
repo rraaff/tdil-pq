@@ -124,6 +124,7 @@
   <action name="NoteForm" parameter="Admin" path="/uploadImageNote"
    scope="session" type="com.tdil.djmag.struts.action.UploadImageNoteAction">
    <forward name="continue" path="/noteAdministration.jsp"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
   </action>
   
   <action name="NoteForm" parameter="Admin" path="/viewImageNote"
@@ -203,25 +204,6 @@
    <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/facebookFeedAdministration.jsp"/>
   </action>
-  
-  <action name="MagazineForm" parameter="Admin" path="/goToFacebookFeedABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
-  </action>
-  <action name="MagazineForm" parameter="Admin" path="/saveFacebookFeed"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
-  </action>
-  <action name="MagazineForm" parameter="Admin" path="/editFacebookFeed"
-   scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/facebookFeedAdministration.jsp"/>
-  </action>
-  <action name="MagazineForm" parameter="Admin" path="/toggleDeletedFacebookFeed"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/facebookFeedAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/facebookFeedAdministration.jsp"/>
-  </action>
  
  <action name="MagazineForm" parameter="Admin" path="/goToMagazineABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
@@ -244,6 +226,7 @@
   <action name="MagazineForm" parameter="Admin" path="/uploadMagazineFrontCover"
    scope="session" type="com.tdil.djmag.struts.action.UploadMagazineFrontCoverAction">
    <forward name="continue" path="/magazineAdministration.jsp"/>
+   <forward name="failure" path="/magazineAdministration.jsp"/>
   </action>
   <action name="MagazineForm" parameter="Admin" path="/viewMagazineFrontCover"
    scope="session" type="com.tdil.djmag.struts.action.ViewMagazineFrontCoverAction">
@@ -255,6 +238,7 @@
    <action name="MagazineForm" parameter="Admin" path="/uploadMagazineContent"
    scope="session" type="com.tdil.djmag.struts.action.UploadMagazineContentAction">
    <forward name="continue" path="/magazineAdministration.jsp"/>
+   <forward name="failure" path="/magazineAdministration.jsp"/>
   </action>
   <action name="MagazineForm" parameter="Admin" path="/deleteMagazineContent"
    scope="session" type="com.tdil.djmag.struts.action.DeleteMagazineContentAction">

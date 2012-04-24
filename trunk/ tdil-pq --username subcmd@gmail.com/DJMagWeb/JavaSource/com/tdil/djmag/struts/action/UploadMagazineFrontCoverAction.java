@@ -9,7 +9,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.djmag.struts.forms.MagazineForm;
-import com.tdil.djmag.struts.forms.NoteForm;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;

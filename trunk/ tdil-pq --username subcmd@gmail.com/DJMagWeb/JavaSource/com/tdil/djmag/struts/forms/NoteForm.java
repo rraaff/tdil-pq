@@ -87,6 +87,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private static String todate_key = "Note.todate";
 	private static String agendadate_key = "Note.agendadate";
 	private static String image_key = "Note.image";
+	private static String section_key = "Note.section";
 	
 
 	@Override
@@ -318,6 +319,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		FieldValidation.validateText(this.getWebTitle(), webtitle_key, 250, false, validationError);
 		FieldValidation.validateText(this.getSummary(), summary_key, 4000, false, validationError);
 		FieldValidation.validateText(this.getContent(), content_key, 16000000, false, validationError);
+		FieldValidation.validateId(this.getSectionId(), section_key, validationError);
 		Date fromDate = parseDate(this.getFromDate());
 		if (fromDate == null) {
 			validationError.setFieldError(fromdate_key, ValidationErrors.CANNOT_BE_EMPTY);

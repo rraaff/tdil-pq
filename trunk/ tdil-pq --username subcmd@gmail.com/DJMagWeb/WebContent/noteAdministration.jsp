@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.model.Note"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.struts.forms.NoteForm"%>
@@ -39,37 +40,37 @@
 			<html:form method="POST" action="/saveNote"
 				enctype="multipart/form-data">
 				<input type="hidden" name="id" value="">
-				<span class="errorText"><html:errors property="general" /></span>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 				<div class="renglon">
 					<div class="label width50">T&iacute;tulo</div>
 					<div class="label width320"><html:text name="NoteForm" property="title" styleClass="width300" /></div>
-					<div class="label width20"><html:errors property="Note.title.err" /></div>
+					<div class="label width20"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.title.err")%></div>
 					<div class="label width100">T&iacute;tulo en URL</div>
 					<div class="label width320"><html:text name="NoteForm" property="webTitle" styleClass="width300"/></div>
-					<div class="label width50"><html:errors property="Note.webtitle.err" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.webtitle.err")%></div>
 				</div>
 				<div class="renglon height80">
 					<div class="label width50">Bajada</div>
 					<div class="label width760 height80"><html:textarea name="NoteForm" property="summary" styleClass="width740 height80"/></div>
-					<div class="label width50"><html:errors property="Note.summary.err" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.summary.err")%></div>
 				</div>
 				<div class="renglon height250">
 					<div class="label width100">Texto de la nota</div>
 					<div class="label width760 height250"><html:textarea name="NoteForm" property="content" styleClass="width740 height250" /></div>
-					<div class="label width50"><html:errors property="Note.content.err" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.content.err")%></div>
 				</div>
 				<div class="renglon">
 					<div class="label width100">Publicada desde</div>
-					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/><html:errors property="Note.fromdate.err" /></div>
+					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.fromdate.err")%></div>
 					<div class="label width100">Publicada hasta</div>
-					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><html:errors property="Note.todate.err" /></div>
+					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.todate.err")%></div>
 					<div class="label width100"><html:checkbox name="NoteForm" property="frontCover" />Portada</div>
 					<div class="label width100"><html:checkbox name="NoteForm" property="popular" />Popular</div>
 				</div>
 				<div class="renglon">
 					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
 					<div class="label width120">Fecha de agenda</div>
-					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><html:errors property="Note.agendadate.err" /></div>
+					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agendadate.err")%></div>
 					<div class="label width50">Secci&oacute;n</div>
 					<div class="label width150">
 						<html:select name="NoteForm" property="sectionId" styleClass="textfield_effect">
@@ -80,7 +81,7 @@
 									value="<%=((SectionSelectionVO) iterSection).getSection().getId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((SectionSelectionVO) iterSection).getSection().getName()%></option>
 							</logic:iterate>
-						</html:select>
+						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Note.section.err")%>
 					</div>
 				</div>
 
