@@ -27,53 +27,63 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveMagazine" enctype="multipart/form-data">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon">
-					<div class="label">Fecha</div><html:text name="MagazineForm" property="publishDate" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.publish_date.err")%>
+				<div class="renglon width740 height80">
+					<div class="label width50">Fecha</div>
+					<div class="label width150"><html:text name="MagazineForm" property="publishDate" styleClass="width100" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.publish_date.err")%></div>
+					<div class="label width100">Descripcion</div>
+					<div class="label width400 height80"><html:textarea name="MagazineForm" property="description" styleClass="width400 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.description.err")%></div>
 				</div>
-				<div class="renglon">
-					<div class="label">Descripcion</div><html:textarea name="MagazineForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.description.err")%>
+				<h2>Portada</h2>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<div class="label width300 height150">
+						<logic:equal name="MagazineForm" property="hasFrontCover" value="true">
+							<html:img action="/viewMagazineFrontCover" align="middle" width="112" height="150" alt="" styleClass="border1" />
+							<bean:write name="MagazineForm" property="frontCover.fileName" />
+							<a href="javascript:document.MagazineForm.action='./deleteMagazineFrontCover.do';document.MagazineForm.submit();">Borrar</a>
+						</logic:equal>
+					</div>
+					<div class="label width80">
+						<html:file name="MagazineForm" property="frontCoverFormFile" /><html:button property="operation" onclick="this.form.action='./uploadMagazineFrontCover.do';this.form.submit();">
+							<bean:message key="uploadImage" />
+						</html:button> <%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.front_cover.err")%>
+					</div>
 				</div>
-				Portada: 
-				<logic:equal name="MagazineForm" property="hasFrontCover" value="true">
-					<html:img action="/viewMagazineFrontCover" align="middle" width="75" height="50" alt="" /><br>
-					<bean:write name="MagazineForm" property="frontCover.fileName" /><br>
-					<a href="javascript:document.MagazineForm.action='./deleteMagazineFrontCover.do';document.MagazineForm.submit();">Borrar</a>
-				</logic:equal>
-				<br>
-				<html:file name="MagazineForm"
-								property="frontCoverFormFile" /><html:button property="operation"
-								onclick="this.form.action='./uploadMagazineFrontCover.do';this.form.submit();">
-								<bean:message key="uploadImage" />
-							</html:button>
-							<%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.front_cover.err")%>
-				<br>
-				Revista: 
-				<logic:equal name="MagazineForm" property="hasMagazineContent" value="true">
-					<bean:write name="MagazineForm" property="magazineContent.fileName" /><br>
-					<a href="javascript:document.MagazineForm.action='./deleteMagazineContent.do';document.MagazineForm.submit();">Borrar</a>
-				</logic:equal>
-				<br>
-				<html:file name="MagazineForm"
-								property="magazineContentFormFile" /><html:button property="operation"
-								onclick="this.form.action='./uploadMagazineContent.do';this.form.submit();">
-								<bean:message key="uploadImage" />
-							</html:button>
-							
-				<logic:equal name="MagazineForm" property="objectId" value="0">
-					<html:submit property="operation">
-						<bean:message key="save" />
-					</html:submit>
-				</logic:equal>
-				<logic:notEqual name="MagazineForm" property="objectId" value="0">
-					<html:submit property="operation">
-						<bean:message key="modify" />
-					</html:submit>
-				</logic:notEqual>
-				<html:submit property="operation">
-					<bean:message key="reset" />
-				</html:submit>
+				<h2>Revista</h2>
+				<div class="renglon width740 height150 border1 padding10">
+					<div class="label width300 height150">
+						<logic:equal name="MagazineForm" property="hasMagazineContent" value="true">
+							<bean:write name="MagazineForm" property="magazineContent.fileName" />
+							<a href="javascript:document.MagazineForm.action='./deleteMagazineContent.do';document.MagazineForm.submit();">Borrar</a>
+						</logic:equal>
+					</div>
+					<div class="label width200">
+						<html:file name="MagazineForm"
+							property="magazineContentFormFile" /><html:button property="operation"
+							onclick="this.form.action='./uploadMagazineContent.do';this.form.submit();">
+							<bean:message key="uploadImage" />
+						</html:button>
+					</div>
+					<div class="label width50">
+						<logic:equal name="MagazineForm" property="objectId" value="0">
+							<html:submit property="operation">
+								<bean:message key="save" />
+							</html:submit>
+						</logic:equal>
+					</div>
+					<div class="label width50">
+						<logic:notEqual name="MagazineForm" property="objectId" value="0">
+							<html:submit property="operation">
+								<bean:message key="modify" />
+							</html:submit>
+						</logic:notEqual>
+					</div>
+					<div class="label width50">
+						<html:submit property="operation">
+							<bean:message key="reset" />
+						</html:submit>
+					</div>
+				</div>
 			</html:form>
-		
 			<table>
 				<tr>
 					<td class="headerTablas">Fecha</td>

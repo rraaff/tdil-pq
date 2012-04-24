@@ -24,9 +24,10 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveVideo">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon">
-					<div class="label">Pa&iacute;s</div>
-					<html:select name="VideoForm" property="countryId" styleClass="textfield_effect">
+				<div class="renglon width860">
+					<div class="label width80">Pa&iacute;s</div>
+					<div class="label width300">
+						<html:select name="VideoForm" property="countryId" styleClass="textfield_effect">
 							<logic:iterate name="VideoForm" property="selectedCountries"
 								id="iterCountry">
 								<option
@@ -34,16 +35,18 @@
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%>
+						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%></div>
+					<div class="label width100"><html:checkbox name="VideoForm" property="frontcover" />Portada</div>
+					<div class="label width100"><html:checkbox name="VideoForm" property="popular" />Popular</div>
 				</div>
-				<div class="renglon">
-					<div class="label">Description:</div><html:textarea name="VideoForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.description.err")%>
+				<div class="renglon width860 height50">
+					<div class="label width80">Descripci&oacute;n</div>
+					<div class="label width700 height50"><html:textarea name="VideoForm" property="description" styleClass="width700 height50" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.description.err")%></div>
 				</div>
-				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="VideoForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.htmlContent.err")%>
+				<div class="renglon width860 height80">
+					<div class="label width80">HTML</div>
+					<div class="label width700 height80"><html:textarea name="VideoForm" property="htmlContent" styleClass="width700 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.htmlContent.err")%></div>
 				</div>
-				<div class="label width100"><html:checkbox name="VideoForm" property="frontcover" />Portada</div>
-				<div class="label width100"><html:checkbox name="VideoForm" property="popular" />Popular</div>
 				<logic:equal name="VideoForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="save" />

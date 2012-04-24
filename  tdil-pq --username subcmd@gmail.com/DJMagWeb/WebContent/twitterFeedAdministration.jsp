@@ -23,9 +23,10 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveTwitterFeed">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon">
-					<div class="label">Pa&iacute;s</div>
-					<html:select name="TwitterFeedForm" property="countryId" styleClass="textfield_effect">
+				<div class="renglon width760 height150">
+					<div class="label width50">Pa&iacute;s</div>
+					<div class="label width150">
+						<html:select name="TwitterFeedForm" property="countryId" styleClass="width100">
 							<logic:iterate name="TwitterFeedForm" property="selectedCountries"
 								id="iterCountry">
 								<option
@@ -34,9 +35,10 @@
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
 						</html:select>
-				</div>
-				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="TwitterFeedForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "TwitterFeed.htmlContent.err")%>
+					</div>
+					<div class="label width50">HTML</div>
+					<div class="label width500 height120">
+						<html:textarea name="TwitterFeedForm" property="htmlContent" styleClass="width500 height120" /><%=DJMagErrorFormatter.getErrorFrom(request, "TwitterFeed.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="TwitterFeedForm" property="objectId" value="0">
 					<html:submit property="operation">
