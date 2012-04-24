@@ -1,3 +1,18 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background-color:#000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	color: #fff;	
+}
+
+/**/
 #tooltip {
 	position: absolute;
 	z-index: 3000;
@@ -8,3 +23,55 @@
 	color: #aa0410;
 }
 #tooltip h3, #tooltip div { margin: 0; }
+/**/
+
+#BlockCoutrySelection {
+	background-image: url(../images/selector-pais.gif);
+	background-repeat: no-repeat;
+	width: 980px;
+	height: 550px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-position: center top;
+	position: relative;
+}
+#BlockCoutrySelection #labelCountrySelection {
+	line-height: 14px;
+	font-weight: bold;
+	width: 220px;
+	font-size: 10px;
+	height: 40px;
+	left: 520px;
+	top: 250px;
+	position: relative;
+}
+#BlockCoutrySelection #countryCombo {
+	left: 520px;
+	top: 250px;
+	width: 350px;
+	height: 40px;
+	position: relative;
+}
+select {
+	font-size: 10px;
+	font-weight: bold;
+	color: #333333;
+	width:187px;
+}
+#BlockCoutrySelection #countryCombo select {
+	
+}
+.okCircle, .okCircle a {
+	font-size: 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(../images/button_circle.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:40px;
+	height:40px;
+	border:none;
+	cursor:hand;
+}
