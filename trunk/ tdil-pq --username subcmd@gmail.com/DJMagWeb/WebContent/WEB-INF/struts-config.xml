@@ -265,6 +265,6 @@
   </action>
   
  </action-mappings>
- <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
+ <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
 </struts-config>
