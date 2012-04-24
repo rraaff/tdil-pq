@@ -55,6 +55,8 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	private static String front_cover_key = "Magazine.front_cover";
 	private static String magazine_key = "Magazine.magazine_content";
 	
+	private static final int MAX_FRONT_COVER_SIZE = 2000000;
+	
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
@@ -126,8 +128,14 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 
 	public void uploadFrontCover(ValidationError error) {
 		UploadData uploadData = FieldValidation.validateFormFile(this.getFrontCoverFormFile(), front_cover_key, true, error);
+		int fileSize = this.getFrontCoverFormFile().getFileSize();
+		if (fileSize > MAX_FRONT_COVER_SIZE) {
+			error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
+			this.setFrontCover(null);
+			return;
+		}
 		if (uploadData != null) {
-			this.setFrontCover(uploadData);			
+			this.setFrontCover(uploadData);
 		}
 	}
 	

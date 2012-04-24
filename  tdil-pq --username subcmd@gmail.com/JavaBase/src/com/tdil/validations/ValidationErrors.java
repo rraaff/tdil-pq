@@ -9,6 +9,7 @@ public interface ValidationErrors {
 	String INVALID_EMAIL = "INVALID_EMAIL";
 	String INVALID_DATE = "INVALID_DATE";
 	String TEXT_TOO_LONG = "TEXT_TOO_LONG";
+	String TOO_BIG = "TOO_BIG";
 	
 	String DUPLICATED = "DUPLICATED";
 	
