@@ -44,6 +44,12 @@ public class FieldValidation {
 		return result;
 	}
 	
+	public static void validateId(int id, String field, ValidationError validation) {
+		if (id <= 0) {
+			validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
+		} 
+	}
+	
 	public static String validateNumber(String text, String field, int min, int max, ValidationError validation) {
 		String result = text;
 		if (StringUtils.isEmpty(text)) {
@@ -91,6 +97,10 @@ public class FieldValidation {
 	}
 	
 	public static Date validateDate(String date, String field, boolean requiered, ValidationError validation) {
+		return validateDate(date, field, "dd/MM/yyyy", requiered, validation);
+	}
+	
+	public static Date validateDate(String date, String field, String format, boolean requiered, ValidationError validation) {
 		String result = date;
 		if (StringUtils.isEmpty(result)) {
 			if (requiered) {
@@ -99,7 +109,7 @@ public class FieldValidation {
 			return null;
 		} else {
 			result = result.trim();
-			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat dateFormat = new SimpleDateFormat(format);
 			try {
 				return dateFormat.parse(result);
 			} catch (ParseException e) {

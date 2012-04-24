@@ -24,8 +24,11 @@ import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
 import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class MagazineForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+
+	private static final String DATE_FORMAT_YYYY_MM = "yyyy-MM";
 
 	/**
 	 * 
@@ -50,7 +53,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	private static String description_key = "Magazine.description";
 	private static String publish_date_key = "Magazine.publish_date";
 	private static String front_cover_key = "Magazine.front_cover";
-	private static String magazine_key = "Magazine.front_cover";
+	private static String magazine_key = "Magazine.magazine_content";
 	
 	@Override
 	public void reset() throws SQLException {
@@ -147,7 +150,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 		if (fromDate2 == null) {
 			return "";
 		}
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_YYYY_MM);
 		return dateFormat.format(fromDate2);
 	}
 	
@@ -156,7 +159,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 			if (StringUtils.isEmpty(fromDate2)) {
 				return null;
 			}
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
+			SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_YYYY_MM);
 			return dateFormat.parse(fromDate2);
 		} catch (ParseException e) {
 			getLog().error(e.getMessage(), e);
@@ -167,7 +170,11 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	
 	@Override
 	public void basicValidate(ValidationError validationError) {
+		FieldValidation.validateDate(this.getPublishDate(), publish_date_key, DATE_FORMAT_YYYY_MM, true, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
+		if (this.getFrontCover() == null) {
+			validationError.setFieldError(front_cover_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
 	}
 	
 	@Override

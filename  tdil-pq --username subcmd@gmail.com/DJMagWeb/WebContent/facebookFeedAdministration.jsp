@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.struts.forms.FacebookFeedForm"%>
 <%@page import="com.tdil.djmag.model.Country"%>
@@ -21,7 +22,7 @@
 		<h1>Administraci&oacute;n de Feeds de Facebook</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveFacebookFeed">
-				<span class="errorText"><html:errors property="general" /></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon">
 					<div class="label">Pa&iacute;s</div>
 					<html:select name="FacebookFeedForm" property="countryId" styleClass="textfield_effect">
@@ -35,7 +36,7 @@
 						</html:select>
 				</div>
 				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="FacebookFeedForm" property="htmlContent" /><html:errors property="FacebookFeed.htmlContent.err" />
+					<div class="label">HTML:</div><html:textarea name="FacebookFeedForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "FacebookFeed.htmlContent.err")%>
 				</div>
 				<logic:equal name="FacebookFeedForm" property="objectId" value="0">
 					<html:submit property="operation">

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@ page info="boLogin"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
@@ -26,7 +27,7 @@
 		<html:form method="POST" action="/login">
 		<div class="renglon">
 			<html:hidden name="LoginForm" property="operation" value=""/>
-			<div class="label">Usuario</div><html:text name="LoginForm" property="username"/><span class="errorText"><html:errors property="general" /></span>
+			<div class="label">Usuario</div><html:text name="LoginForm" property="username"/><span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 		</div>
 		<div class="renglon">
 			<div class="label">Contrase&ntilde;a</div><html:password name="LoginForm" property="password"/>

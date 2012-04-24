@@ -216,6 +216,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewImageNote" NAME="action20" PATH="/viewImageNote"
   SHAPE="32,2625,0,0" TITLE="NoteForm" TYPE="action" model-entity="StrutsProcessItem"/>
@@ -480,6 +483,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewMagazineFrontCover" NAME="action47"
   PATH="/viewMagazineFrontCover" SHAPE="32,8369,0,0"
@@ -496,6 +502,9 @@
   TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/magazineAdministration.jsp" TARGET="page15" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#deleteMagazineContent" NAME="action50"
@@ -514,14 +523,14 @@
  <PROCESS-ITEM NAME="page16" PATH="/videoAdministration.jsp"
   SHAPE="304,8386,0,0" SUBTYPE="jsp" TITLE="videoAdministration.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editFacebookFeed.do"
-   SUBTYPE="confirmed" TARGET="action40" TITLE="/editFacebookFeed.do"
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVideo.do"
+   SUBTYPE="confirmed" TARGET="action52" TITLE="/saveVideo.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/toggleDeletedFacebookFeed.do"
-   SUBTYPE="confirmed" TARGET="action41"
-   TITLE="/toggleDeletedFacebookFeed.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveFacebookFeed.do"
-   SUBTYPE="confirmed" TARGET="action39" TITLE="/saveFacebookFeed.do"
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editVideo.do"
+   SUBTYPE="confirmed" TARGET="action53" TITLE="/editVideo.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedVideo.do"
+   SUBTYPE="confirmed" TARGET="action54" TITLE="/toggleDeletedVideo.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveVideo" NAME="action52" PATH="/saveVideo"

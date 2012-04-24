@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.RankingNoteForm"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionSelectionVO"%>
 <%@page import="com.tdil.djmag.model.Country"%>
@@ -21,9 +22,9 @@
 		<h1>Contenido tipo Ranking &quot;TOP 100&quot;</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveRanking">
-				<span class="errorText"><html:errors property="general" /></span>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 				<div class="renglon">
-					<div class="label" style="width:100px;">T&iacute;tulo ranking</div><html:text name="RankingNoteForm" property="description" /><html:errors property="RankingNote.description.err" />
+					<div class="label" style="width:100px;">T&iacute;tulo ranking</div><html:text name="RankingNoteForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.description.err")%>
 				</div>
 				<h2>Posiciones</h2>
 				<table>
@@ -41,7 +42,7 @@
 					</tr>
 				</logic:iterate>
 				</table>
-				<h2>Mostrar en</h2><html:errors property="RankingNote.country.err" />
+				<h2>Mostrar en</h2><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.country.err")%>
 				<table>
 					<tr>
 						<td class="headerTablas" width="40">Activa</td>

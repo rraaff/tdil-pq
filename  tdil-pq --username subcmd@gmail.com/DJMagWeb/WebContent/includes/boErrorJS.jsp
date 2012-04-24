@@ -8,10 +8,10 @@ $(document).ready(
 			showURL: false,
 			opacity: 0.99,
 			fade: 150,
-			positionRight: true,
-				bodyHandler: function() {
-					return $("#"+this.id).attr("hovertext");
-				}
+			positionRight: true ,
+			bodyHandler: function() {
+				return $("#"+this.id).attr("hovertext");
+			}
 		});
 		//make sure tool tip is enabled for any new valid label
 		$("img[src*='tick.gif']").tooltip({

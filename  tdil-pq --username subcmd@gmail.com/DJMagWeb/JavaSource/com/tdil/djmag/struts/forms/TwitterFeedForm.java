@@ -151,6 +151,7 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 	@Override
 	public void basicValidate(ValidationError validationError) {
 		FieldValidation.validateText(this.getHtmlContent(), htmlContent_key, ValidationErrors.TEXT_LENGTH, validationError);
+		FieldValidation.validateId(this.getCountryId(), country_key, validationError);
 	}
 	
 	@Override

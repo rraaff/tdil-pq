@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@ page info="reorderMenu"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
@@ -17,7 +18,7 @@
 	<br>Reorder menu
 
 	<html:form method="POST" action="/saveOrder">
-		<span class="errorText"><html:errors property="general" /> </span>
+		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%> </span>
 		Nombre pais: TODO<br>
 		Secciones
 		<table>
@@ -32,7 +33,7 @@
    			</tr>
 		</logic:iterate>  
 		</table>
-		<html:errors property="MenuItem.position.err" />
+		<%=DJMagErrorFormatter.getErrorFrom(request, "MenuItem.position.err")%>
 		<br>
 		<html:submit property="operation">
 			<bean:message key="save" />
