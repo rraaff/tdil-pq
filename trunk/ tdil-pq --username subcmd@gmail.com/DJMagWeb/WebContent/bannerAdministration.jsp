@@ -21,11 +21,13 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveBanner">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon">
-					<div class="label">Descripci&oacute;n</div><html:text name="BannerForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.description.err")%>
+				<div class="renglon width860">
+					<div class="label width80">Descripci&oacute;n</div>
+					<div class="label width200"><html:text name="BannerForm" property="description" styleClass="width200"/><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.description.err")%></div>
 				</div>
-				<div class="renglon">
-					<div class="label">HTML:</div><html:textarea name="BannerForm" property="htmlContent" /><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.htmlContent.err")%>
+				<div class="renglon width860 height180">
+					<div class="label width50 height180">HTML</div>
+					<div class="label width740 height180"><html:textarea name="BannerForm" property="htmlContent" styleClass="width700 height180"/><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="BannerForm" property="objectId" value="0">
 					<html:submit property="operation">

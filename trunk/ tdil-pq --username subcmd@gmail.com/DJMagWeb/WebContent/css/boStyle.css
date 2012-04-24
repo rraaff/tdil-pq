@@ -190,12 +190,25 @@ input[type="button"], input[type="submit"] {
 .width200 { width:200px; }
 .width300 { width:300px; }
 .width320 { width:320px; }
+.width400 { width:400px; }
+.width500 { width:500px; }
 .width700 { width:700px; }
 .width740 { width:740px; }
 .width760 { width:760px; }
+.width800 { width:800px; }
 .width860 { width:860px; }
 
 .height50 { height:50px; }
 .height80 { height:80px; }
+.height100 { height:100px; }
+.height120 { height:120px; }
+.height150 { height:150px; }
 .height180 { height:180px; }
 .height250 { height:250px; }
+
+.border1 { border:#999 1px solid }
+
+.padding10 { padding:10px; }
+
+.bgF2 { background-color:#F2F2F2 }
+.bgCCC { background-color:#CCCCCC }
