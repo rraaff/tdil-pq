@@ -2,12 +2,14 @@ package com.tdil.struts.forms;
 
 public class UploadData {
 
+	private boolean modified = false;
 	private String fileName;
 	private byte[] data;
 	
-	public UploadData(String fileName, byte data[]) {
+	public UploadData(String fileName, byte data[], boolean modified) {
 		this.setFileName(fileName);
 		this.setData(data);
+		this.setModified(modified);
 	}
 	
 	public String getFileName() {
@@ -22,4 +24,13 @@ public class UploadData {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
+
+	public boolean isModified() {
+		return modified;
+	}
+
+	public void setModified(boolean modified) {
+		this.modified = modified;
+	}
+
 }

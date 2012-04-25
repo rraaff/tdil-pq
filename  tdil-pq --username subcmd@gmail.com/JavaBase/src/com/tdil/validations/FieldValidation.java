@@ -133,7 +133,7 @@ public class FieldValidation {
 		InputStream io = null;
 		try {
 			io = fileItem.getInputStream();
-			return new UploadData(fileName, IOUtils.toByteArray(io));
+			return new UploadData(fileName, IOUtils.toByteArray(io), true);
 		} catch (IOException e) {
 			getLog().error(e.getMessage(), e);
 			validation.setGeneralError(e.getMessage());

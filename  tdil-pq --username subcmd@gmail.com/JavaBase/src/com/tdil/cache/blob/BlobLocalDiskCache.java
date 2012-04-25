@@ -32,11 +32,12 @@ public class BlobLocalDiskCache {
 			getLog().error("El usuario " + (user == null ? "null" : user.getId()) + "no tiene permisos acceder a los datos " + type);
 			return null;
 		}
+		// TODO sincronizar el load...
 		String localDataLocation = makeFileName(type, id, version, filename, blobResolver);
 		File local = new File(localDataLocation);
 		if (!local.exists()) {
 			try {
-				blobResolver.load(id, version, local);
+				blobResolver.load(id, type, version, local);
 			} catch (Exception e) {
 				getLog().error(e.getMessage(), e);
 				return null;

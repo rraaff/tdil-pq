@@ -214,9 +214,18 @@ CREATE TABLE MAGAZINE (
   `description` VARCHAR(4000) NOT NULL ,
   `publish_date` DATE NOT NULL ,
   `frontCoverFilename` VARCHAR(100) NOT NULL ,
-  `frontCoverContent` MEDIUMBLOB NOT NULL ,
+  `frontCover_id` INT NULL,
   `magazineContentFilename` VARCHAR(100) NOT NULL ,
-  `magazineContent` MEDIUMBLOB NOT NULL ,
+  `magazineContent_id` INT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE BLOB_DATA (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `dataType` VARCHAR(20) NOT NULL ,
+  `filename` VARCHAR(100) NOT NULL ,
+  `content` MEDIUMBLOB NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
