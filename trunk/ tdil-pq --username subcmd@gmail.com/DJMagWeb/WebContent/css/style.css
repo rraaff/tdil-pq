@@ -84,3 +84,488 @@ select {
 	border:none;
 	cursor:hand;
 }
+body {
+	background-image: url(../images/bg-main.jpg);
+	background-repeat: repeat-x;
+}
+#portaHeader {
+	background-image: url(../images/bg-headerHome.png);
+	background-repeat: repeat;
+	width: 100%;
+	clear: both;
+	height: 88px;
+}
+#portaHeader #header {
+	height: 88px;
+	width: 1010px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#portaHeader #header #logo {
+	background-image: url(../images/logoHome.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 88px;
+	width: 197px;
+}
+#portaHeader #header #menu {
+	height: 88px;
+	float: left;
+	width: 812px;
+	padding:0;
+	margin:0;
+}
+#portaHeader #header #menu ul {
+	list-style-type: none;
+	margin: auto;
+	width: 812px;
+	height:88px;
+}
+#portaHeader #header #menu li a {
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	font-family: "Doppio One";
+	text-transform: uppercase;
+	color: #FFFFFF;
+	float: left;
+	display: block;
+	line-height: 88px;
+	text-decoration: none;
+	font-size: 15px;
+	padding-right: 12px;
+	padding-left: 12px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #386061;
+}
+#portaHeader #header #menu li a:hover {
+	background-image: none;
+	background-color:#e25237;
+	padding-right: 12px;
+	padding-left: 12px;
+	display: block;
+	line-height: 88px;
+	text-decoration: none;
+	font-size: 15px;
+	color: #FFFF66;
+}
+#bannerHeader {
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 15px;
+	height: 91px;
+}
+#BlockMain {
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	height: 385px;
+	width: 1010px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow:hidden;
+}
+#BlockMain #mainContent {
+	float: left;
+	height: 385px;
+	width: 428px;
+	margin-left: 15px;
+	display:block;
+}
+#BlockMain #top100Home {
+	display:block;
+	background-image: url(../images/bg-top100Home.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 290px;
+	width: 250px;
+	margin-left: 25px;
+	padding-top: 93px;
+}
+#BlockMain #top100Home #position {
+	font-size: 12px;
+	line-height: 25px;
+	font-weight: normal;
+	color: #e25237;
+	text-align: right;
+	float: left;
+	width: 19px;
+	padding-right: 11px;
+	padding-left: 21px;
+}
+#BlockMain #top100Home #rankedHome {
+	font-size: 13px;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	float: left;
+	width: 150px;
+	overflow: hidden;
+}
+#BlockMain #top100Home #rankedHome:hover {
+	background-color:#525252;
+}
+#BlockMain #top100Home #linkMore, #BlockMain #top100Home #linkMore a {
+	color:#e25237;
+	float:left;
+	font-size: 12px;
+	position: relative;
+	width: 220px;
+	text-align: right;
+	height: 20px;
+	padding-top: 3px;
+}
+#BlockMain #BlockMainRight {
+	width:250px;
+	height: 385px;
+	margin-left: 25px;
+	float:left;
+	display:block;
+}
+#BlockMain #BlockMainRight #selectedCountry {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #000000;
+	background-color: #d7f5ff;
+	padding-right: 3px;
+	padding-left: 8px;
+	position: relative;
+	right: 0px;
+	float: right;
+}
+#BlockMain #BlockMainRight #socialAtHome {
+	height: 23px;
+	width: 250px;
+	margin-top: 5px;
+	margin-bottom: 8px;
+	position: relative;
+	overflow: hidden;
+	float: right;
+}
+#BlockMain #BlockMainRight #suscribe {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	background-color: #e25237;
+	float: right;
+	height: 51px;
+	width: 250px;
+	line-height: 51px;
+}
+#BlockMain #BlockMainRight #suscribe span {
+	padding-left:5px;
+	padding-right:8px;
+}
+#BlockMain #BlockMainRight #bannerRight {
+	margin-top:12px;
+	width:250px;
+	height:268px;
+	position:relative;
+	float: right;
+}
+.suscribeField {
+	width:119px;
+	height:24px;
+	border:solid 1px #b0b0b0;
+	margin-top:10px;
+}
+#BlockSecondaryContent {
+	height: 1170px;
+	width: 1010px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+#BlockSecondaryContent h2 {
+	font-family: "Doppio One";
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #525252;
+	padding-top: 38px;
+	padding-bottom: 8px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent {
+	float: left;
+	height: 1170px;
+	width: 635px;
+	margin-left: 15px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews {
+	width:635px;
+	height:390px;
+	position:relative;
+	overflow: hidden;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews {
+	width:310px;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews img {
+	border: solid 1px #3e3e3e;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 {
+	font-size:18px;
+	color:#fef455;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	width:310px;
+	overflow:hidden
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .bajada {
+	font-size:13px;
+	line-height:18px;
+	font-weight:700;
+	height:70px;
+	margin-top:8px;
+	margin-bottom:11px;
+	overflow:hidden;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .date {
+	width:305px;
+	font-size:11px;
+	line-height:20px;
+	background-color:#525252;
+	padding-left:5px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews {
+	width:635px;
+	height:290px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews {
+	width:202px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews img {
+	border: solid 1px #3e3e3e;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews h3 {
+	font-size:15px;
+	color:#fef455;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	width:202px;
+	overflow:hidden
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .bajada {
+	font-size:13px;
+	line-height:18px;
+	font-weight:700;
+	height:56px;
+	margin-top:8px;
+	margin-bottom:11px;
+	overflow:hidden;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .date {
+	width:197px;
+	font-size:11px;
+	line-height:20px;
+	background-color:#525252;
+	padding-left:5px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos {
+	height: 300px;
+	width: 635px;
+	position: relative;
+	margin-top: 10px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #left {
+	float: left;
+	height: 300px;
+	width: 390px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right {
+	width:202px;
+	height:293px;
+	float:right;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo {
+	width:200px;
+	height:144px;
+	border:solid 1px #525252;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base {
+	width:200px;
+	height:46px;
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	overflow: hidden;
+	margin-top: 98px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base h4 {
+	margin:5px;
+	color:#e25237;
+	font-size:13px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base span {
+	margin:5px;
+	color:#FFFFFF;
+	font-size:13px;
+}
+#BlockSecondaryContent #rightContent {
+	float: right;
+	height: 1170px;
+	width: 309px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar {
+	width:309px;
+	height:203px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent {
+/*	min-height:28px;*/
+	width:309px;
+	position:relative;
+	float:left;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-bottom:solid 1px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent:hover {
+	background-color:#525252;
+	color:#FFFF33;
+	cursor:hand;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date {
+	background-color:#e25237;
+	font-size:11px;
+	padding: 5px 8px 5px 8px;
+	margin: 0 5px 0 8px;
+	line-height:18px;
+	
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent span {
+	font-size:13px;
+	font-weight:700;
+	line-height:18px;
+	padding-left:8px;
+	border-left:solid 1px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed {
+	width:309px; 
+	height:313px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+	border-bottom:solid 7px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed #TwTitle {
+	width:309px; 
+	height:76px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed #TwFeed {
+	width:309px; 
+	height:237px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockFbFeed {
+	width:309px; 
+	height:515px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+	background-color:#525252;
+}
+#footer {
+	width:100%;
+	height:389px;
+	background-image:url(../images/bg-footer.gif);
+	background-repeat: repeat-x;
+}
+#footer #upButton {
+	width:67px;
+	height:67px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+#footer h4 {
+	font-family: "Doppio One";
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #525252;
+	padding-top: 19px;
+	padding-bottom: 8px;
+	margin-bottom:15px;
+	position:relative;
+}
+#footer #linksContainer {
+	width:1010px;
+	height:264px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#footer #linksContainer #BlockLinks {
+	width:140px;
+	height:264px;
+	margin-left:14px;
+	margin-right:14px;
+	float:left;
+	overflow:hidden;
+}
+#footer #linksContainer #BlockLinks a {
+	font-size:13px;
+	color:#FFFFFF;
+	text-decoration:none;
+	width:100%;
+	float:left;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+#footer #linksContainer #BlockLinks a:hover {
+	color:#FFFF33;
+	text-decoration:underline;
+}
+#footer #linksContainer #BlockLinks #iconLink a {
+	color:#a7a7a7;
+	text-decoration:none;
+}
+#footer #linksContainer #BlockLinks #iconLink a:hover {
+	color:#fff;
+	text-decoration:underline;
+}
+#footer #linksContainer #BlockLinks #iconLink img {
+	margin-right:9px;
+}
+#footer #copyright {
+	width:980px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
+	font-size:11px;
+	text-align:center;
+}
+#footer #copyright a {
+	color:#e25237;
+}
+#footer #copyright a:hover {
+	color:#FFFF33;
+	text-decoration:underline;
+}
