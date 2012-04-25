@@ -337,9 +337,152 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 }
+#BlockSecondaryContent #rightContent #BlockHomeCalendar {
+	width:309px;
+	height:203px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent {
+/*	min-height:28px;*/
+	width:309px;
+	position:relative;
+	float:left;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-bottom:solid 1px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent:hover {
+	background-color:#525252;
+	color:#FFFF33;
+	cursor:hand;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date {
+	background-color:#e25237;
+	font-size:11px;
+	padding: 5px 8px 5px 8px;
+	margin: 0 5px 0 8px;
+	line-height:18px;
+	
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent span {
+	font-size:13px;
+	font-weight:700;
+	line-height:18px;
+	padding-left:8px;
+	border-left:solid 1px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed {
+	width:309px; 
+	height:313px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+	border-bottom:solid 7px #525252;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed #TwTitle {
+	width:309px; 
+	height:76px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockTwFeed #TwFeed {
+	width:309px; 
+	height:237px;
+	position:relative;
+}
+#BlockSecondaryContent #rightContent #BlockFbFeed {
+	width:309px; 
+	height:515px;
+	overflow:hidden;
+	margin-top:15px;
+	position:relative;
+	background-color:#525252;
+}
+#footer {
+	width:100%;
+	height:389px;
+	background-image:url(images/bg-footer.gif);
+	background-repeat: repeat-x;
+}
+#footer #upButton {
+	width:67px;
+	height:67px;
+	margin-left:auto;
+	margin-right:auto;	
+}
+#footer h4 {
+	font-family: "Doppio One";
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #525252;
+	padding-top: 19px;
+	padding-bottom: 8px;
+	margin-bottom:15px;
+	position:relative;
+}
+#footer #linksContainer {
+	width:1010px;
+	height:264px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#footer #linksContainer #BlockLinks {
+	width:140px;
+	height:264px;
+	margin-left:14px;
+	margin-right:14px;
+	float:left;
+	overflow:hidden;
+}
+#footer #linksContainer #BlockLinks a {
+	font-size:13px;
+	color:#FFFFFF;
+	text-decoration:none;
+	width:100%;
+	float:left;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+#footer #linksContainer #BlockLinks a:hover {
+	color:#FFFF33;
+	text-decoration:underline;
+}
+#footer #linksContainer #BlockLinks #iconLink a {
+	color:#a7a7a7;
+	text-decoration:none;
+}
+#footer #linksContainer #BlockLinks #iconLink a:hover {
+	color:#fff;
+	text-decoration:underline;
+}
+#footer #linksContainer #BlockLinks #iconLink img {
+	margin-right:9px;
+}
+#footer #copyright {
+	width:980px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:15px;
+	font-size:11px;
+	text-align:center;
+}
+#footer #copyright a {
+	color:#e25237;
+}
+#footer #copyright a:hover {
+	color:#FFFF33;
+	text-decoration:underline;
+}
 </style>
 </head>
 <body>
+<a name="top"></a>
 <div id="portaHeader">
 	<div id="header">
 		<div id="logo"></div>
@@ -434,7 +577,74 @@ body {
 	</div>
 	<div id="rightContent">
 		<h2>calendario de eventos</h2>
+		<div id="BlockHomeCalendar">
+			<div id="calendarEvent">
+				<span class="date">25/04/2012</span>
+				<span>texto  texto texto texto</span>
+			</div>
+			<div id="calendarEvent">
+				<span class="date">25/04/2012</span>
+				<span>texto  texto texto texto</span>
+			</div>
+			<div id="calendarEvent">
+				<span class="date">25/04/2012</span>
+				<span>texto  texto texto texto</span>
+			</div>
+			<div id="calendarEvent">
+				<span class="date">25/04/2012</span>
+				<span>texto  texto texto texto</span>
+			</div>
+			<div id="calendarEvent">
+				<span class="date">25/04/2012</span>
+				<span>texto  texto texto texto</span>
+			</div>
+		</div>
+		<div id="BlockTwFeed">
+			<div id="TwTitle"><img src="images/blockTwHead.gif" width="309" height="76"></div>
+			<div id="TwFeed">Completar con el feed de twitter</div>
+		</div>
+		<div id="BlockFbFeed"></div>
 	</div>
+</div>
+<div id="footer">
+	<div id="upButton"><a href="#top"><img src="images/buttons/up.png" width="67" height="67"></a></div>
+	<div id="linksContainer">
+		<div id="BlockLinks" style="width:200px;">
+			<h4>LINKS</h4>
+			<a href="#">DJ Mag ES</a>
+			<a href="#">DJ Mag COM</a>
+			<a href="#">Blog DJ Magazine</a>
+		</div>
+		<div id="BlockLinks" style="width:410px;">
+			<h4>Temas populares</h4>
+			<a href="#">Red Bull Thre3Style, ¿Quién hará arder la pista?</a>
+			<a href="#">The White Passion - Club 25 Presenta: Space Ibiza Festival @ Aqualand Water Park (Mallorca)</a>
+			<a href="#">New Wave Club</a>
+			<a href="#">ECO en Matadero Madrid</a>
+			<a href="#">Wally Lopez en directo desde room mate</a>
+			<a href="#">Waldorf Towers</a>
+		</div>
+		<div id="BlockLinks">
+			<h4>secciones</h4>
+			<a href="#">Novedades</a>
+			<a href="#">Musica</a>
+			<a href="#">Top 100</a>
+			<a href="#">Tecnologia</a>
+			<a href="#">Guide</a>
+			<a href="#">Shop</a>
+			<a href="#">Forum</a>
+			<a href="#">Agencia</a>
+		</div>
+		<div id="BlockLinks">
+			<h4>SOCIALICEMOS</h4>
+			<div id="iconLink">
+				<a href="#"><img src="images/buttons/fb.gif" alt="facebook" width="35" height="35" align="absmiddle">Facebook</a>
+				<a href="#"><img src="images/buttons/tw.gif" alt="Twitter" width="35" height="35" align="absmiddle">Twitter</a>
+				<a href="#"><img src="images/buttons/yt.gif" alt="Youtube" width="35" height="35" align="absmiddle">Youtube</a>
+				<a href="#"><img src="images/buttons/feed.gif" alt="feed" width="35" height="35" align="absmiddle">feed</a>			</div>
+		</div>
+	</div>
+	<div id="copyright">DJ Mag&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Todos los derechos reservados&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Aviso Legal&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© DJ Mag - <a href="mailto:info@djmag.com.ar">info@djmag.com.ar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;+54 11 4444-6666</div>
 </div>
 </body>
 </html>
