@@ -212,3 +212,16 @@ input[type="button"], input[type="submit"] {
 
 .bgF2 { background-color:#F2F2F2 }
 .bgCCC { background-color:#CCCCCC }
+
+/**/
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #111;
+	background-color: #eee;
+	padding: 5px;
+	opacity: 0.85;
+	color: #aa0410;
+}
+#tooltip h3, #tooltip div { margin: 0; }
+/**/
