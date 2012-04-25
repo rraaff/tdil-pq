@@ -1,5 +1,6 @@
 package com.tdil.djmag.dao;
 
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteExample;
 import java.sql.SQLException;
@@ -90,4 +91,9 @@ public interface NoteDAO {
 	 * @mbggenerated  Mon Apr 23 13:38:00 ART 2012
 	 */
 	int updateNoteByPrimaryKeyWithoutBLOBs(Note record) throws SQLException;
+
+	/** Custom queries */
+	List<Note> selectActiveFrontCoversNotesForCountry(Country country) throws SQLException;
+
+	List<Note> selectActiveAgendaNotesForCountry(Country country) throws SQLException;
 }

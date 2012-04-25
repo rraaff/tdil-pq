@@ -294,4 +294,17 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <!-- Custom queries -->
+  <select id="selectActiveRankingForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="ResultMapWithBLOBs">
+    <!--
+    -->
+    select
+    rn.id, rn.description, rn.positions, rn.deleted
+    from RANKING_NOTE rn, RANKING_NOTE_COUNTRY rnc
+    where rn.id = rnc.id_ranking_note
+    and rn.deleted = 0
+    and rnc.deleted = 0
+    and rnc.id_country = #id:INTEGER#
+  </select>
 </sqlMap>
