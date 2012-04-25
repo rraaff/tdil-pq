@@ -1,0 +1,440 @@
+<html>
+<head>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<style>
+body {
+	background-image: url(images/bg-main.jpg);
+	background-repeat: repeat-x;
+}
+#portaHeader {
+	background-image: url(images/bg-headerHome.png);
+	background-repeat: repeat;
+	width: 100%;
+	clear: both;
+	height: 88px;
+}
+#portaHeader #header {
+	height: 88px;
+	width: 1010px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#portaHeader #header #logo {
+	background-image: url(images/logoHome.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 88px;
+	width: 198px;
+}
+#portaHeader #header #menu {
+	height: 88px;
+	float: left;
+	width: 812px;
+	padding:0;
+	margin:0;
+}
+#portaHeader #header #menu ul {
+	list-style-type: none;
+	margin: auto;
+	width: 812px;
+	height:88px;
+}
+#portaHeader #header #menu li a {
+	background-image: url(images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	font-family: "Doppio One";
+	text-transform: uppercase;
+	color: #FFFFFF;
+	float: left;
+	display: block;
+	line-height: 88px;
+	text-decoration: none;
+	font-size: 15px;
+	padding-right: 12px;
+	padding-left: 12px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #386061;
+}
+#portaHeader #header #menu li a:hover {
+	background-image: none;
+	background-color:#e25237;
+	padding-right: 12px;
+	padding-left: 12px;
+	display: block;
+	line-height: 88px;
+	text-decoration: none;
+	font-size: 15px;
+	color: #FFFF66;
+}
+#bannerHeader {
+	background-image: url(images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	width: 980px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 15px;
+	height: 91px;
+}
+#BlockMain {
+	background-image: url(images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	height: 385px;
+	width: 1010px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#BlockMain #mainContent {
+	float: left;
+	height: 385px;
+	width: 428px;
+	margin-left: 15px;
+	display:block;
+}
+#BlockMain #top100Home {
+	display:block;
+	background-image: url(images/bg-top100Home.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 385px;
+	width: 250px;
+	margin-left: 25px;
+}
+#BlockMain #top100Home #position {
+	font-size: 12px;
+	line-height: 25px;
+	font-weight: normal;
+	color: #e25237;
+	text-align: right;
+	float: left;
+	width: 19px;
+	padding-right: 11px;
+	padding-left: 21px;
+	padding-top: 93px;
+}
+#BlockMain #top100Home #rankedHome {
+	font-size: 13px;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	float: left;
+	padding-top: 93px;
+}
+#BlockMain #top100Home #linkMore, #BlockMain #top100Home #linkMore a {
+	color:#e25237;
+	float:right;
+	font-size: 12px;
+	position: relative;
+	top: 175px;
+	right: 15px;
+}
+#BlockMain #BlockMainRight {
+	width:250px;
+	height: 385px;
+	margin-left: 25px;
+	float:left;
+	display:block;
+}
+#BlockMain #BlockMainRight #selectedCountry {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 18px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #000000;
+	background-color: #d7f5ff;
+	padding-right: 3px;
+	padding-left: 8px;
+	position: relative;
+	right: 0px;
+	float: right;
+}
+#BlockMain #BlockMainRight #socialAtHome {
+	height: 23px;
+	width: 250px;
+	margin-top: 5px;
+	margin-bottom: 8px;
+	position: relative;
+	overflow: hidden;
+	float: right;
+}
+#BlockMain #BlockMainRight #suscribe {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	background-color: #e25237;
+	float: right;
+	height: 51px;
+	width: 250px;
+	line-height: 51px;
+}
+#BlockMain #BlockMainRight #suscribe span {
+	padding-left:5px;
+	padding-right:8px;
+}
+#BlockMain #BlockMainRight #bannerRight {
+	margin-top:12px;
+	width:250px;
+	height:268px;
+	position:relative;
+	float: right;
+}
+.suscribeField {
+	width:119px;
+	height:24px;
+	border:solid 1px #b0b0b0;
+	margin-top:10px;
+}
+#BlockSecondaryContent {
+	height: 1170px;
+	width: 1010px;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+#BlockSecondaryContent h2 {
+	font-family: "Doppio One";
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	width: 100%;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #525252;
+	padding-top: 38px;
+	padding-bottom: 8px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent {
+	float: left;
+	height: 1170px;
+	width: 635px;
+	margin-left: 15px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews {
+	width:635px;
+	height:390px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews {
+	width:310px;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews img {
+	border: solid 1px #3e3e3e;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 {
+	font-size:18px;
+	color:#fef455;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	width:310px;
+	overflow:hidden
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .bajada {
+	font-size:13px;
+	line-height:18px;
+	font-weight:700;
+	height:70px;
+	margin-top:8px;
+	margin-bottom:11px;
+	overflow:hidden;
+}
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .date {
+	width:305px;
+	font-size:11px;
+	line-height:20px;
+	background-color:#525252;
+	padding-left:5px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews {
+	width:635px;
+	height:290px;
+	position:relative;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews {
+	width:202px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews img {
+	border: solid 1px #3e3e3e;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews h3 {
+	font-size:15px;
+	color:#fef455;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	width:202px;
+	overflow:hidden
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .bajada {
+	font-size:13px;
+	line-height:18px;
+	font-weight:700;
+	height:56px;
+	margin-top:8px;
+	margin-bottom:11px;
+	overflow:hidden;
+}
+#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .date {
+	width:197px;
+	font-size:11px;
+	line-height:20px;
+	background-color:#525252;
+	padding-left:5px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos {
+	height: 300px;
+	width: 635px;
+	position: relative;
+	margin-top: 10px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #left {
+	float: left;
+	height: 300px;
+	width: 390px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right {
+	width:202px;
+	height:293px;
+	float:right;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo {
+	width:200px;
+	height:144px;
+	border:solid 1px #525252;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base {
+	width:200px;
+	height:46px;
+	background-image: url(images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+	overflow: hidden;
+	margin-top: 98px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base h4 {
+	margin:5px;
+	color:#e25237;
+	font-size:13px;
+}
+#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base span {
+	margin:5px;
+	color:#FFFFFF;
+	font-size:13px;
+}
+#BlockSecondaryContent #rightContent {
+	float: right;
+	height: 1170px;
+	width: 309px;
+	margin-right: auto;
+	margin-left: auto;
+}
+</style>
+</head>
+<body>
+<div id="portaHeader">
+	<div id="header">
+		<div id="logo"></div>
+		<div id="menu">
+			<ul>
+				<li style="border-left: 1px solid #386061;"><a href="#">Novedades</a></li>
+				<li><a href="#">m&uacute;sica</a></li>
+				<li><a href="#">top 100</a></li>
+				<li><a href="#">tecnologia</a></li>
+				<li><a href="#">calendario eventos</a></li>
+				<li><a href="#">videos</a></li>
+				<li><a href="#">top 20</a></li>
+				<li><a href="#">Shop</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="bannerHeader"><img src="images/banners/bannerHeader.gif" width="980" height="91"></div>
+<div id="BlockMain">
+	<div id="mainContent"><img src="images/demo/mainContent.jpg"></div>
+	<div id="top100Home">
+		<div id="position">1.<br>2.<br>3.<br>4.<br>5.<br>6.<br>7.<br>8.<br>9.<br>10.</div>
+		<div id="rankedHome">David Guetta<br/>Armin van Buuren<br/>TiëstoTiësto<br/>Deadmau5<br/>Above & Beyond<br/>Avicii<br/>Afrojack<br/>Dash Berlin<br/>Markus Schulz<br/>Swedish House Mafia</div>
+		<div id="linkMore"><a href="#">ver m&aacute;s</a></div>
+	</div>
+	<div id="BlockMainRight">
+		<div id="selectedCountry">argentina <a href="#"><img src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
+		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
+		<div id="suscribe">
+			<span>suscribime</span>
+			<input type="text" value="E-Mail" class="suscribeField"/>
+			<input type="button" value="ok" class="okCircleSuscribe"/>
+		</div>
+		<div id="bannerRight"><img src="images/banners/bannerRight.gif" width="250" height="268"></div>
+	</div>
+</div>
+<div id="BlockSecondaryContent">
+	<div id="leftContent">
+		<h2>ultimas noticias</h2>
+		<div id="BlockLastNews">
+			<div id="lastNews" style="float:left; margin-right:15px;">
+				<img src="images/demo/ultimasNoticias.jpg" width="308" height="222">
+				<h3>DJ Mag Top 100 party 2012</h3>
+				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
+				<div class="date">03 de mayo 2012</div>
+			</div>
+			<div id="lastNews" style="float:right;">
+				<img src="images/demo/ultimasNoticias.jpg" width="308" height="222">
+				<h3>DJ Mag Top 100 party 2012</h3>
+				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
+				<div class="date">03 de mayo 2012</div>
+			</div>
+		</div>
+		<div id="BlockPopularNews">
+			<div id="lastNews" style="float:left; margin-right:14px;">
+				<img src="images/demo/popNoticias.jpg" width="200" height="143">
+				<h3>DJ Mag Top 100 party 2012</h3>
+				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
+				<div class="date">03 de mayo 2012</div>
+			</div>
+			<div id="lastNews" style="float:left; margin-right:14px;">
+				<img src="images/demo/popNoticias.jpg" width="200" height="143">
+				<h3>DJ Mag Top 100 party 2012</h3>
+				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
+				<div class="date">03 de mayo 2012</div>
+			</div>
+			<div id="lastNews" style="float:left;">
+				<img src="images/demo/popNoticias.jpg" width="200" height="143">
+				<h3>DJ Mag Top 100 party 2012</h3>
+				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
+				<div class="date">03 de mayo 2012</div>
+			</div>
+		</div>
+		<h2>ultimos videos</h2>
+		<div id="BlockVideos">
+			<div id="left"><img src="images/demo/videoGrande.jpg" width="425" height="297"></div>
+			<div id="right">
+				<div id="thmbnVideo" style="background-image:url(images/demo/videoChico1.jpg);">
+					<div id="base">
+						<h4>Solomun</h4>
+						<span>DJ Mag Recession Sessions</span>
+					</div>
+				</div>
+				<div id="thmbnVideo" style="background-image:url(images/demo/videoChico2.jpg); margin-top:5px;">
+					<div id="base">
+						<h4>Solomun</h4>
+						<span>DJ Mag Recession Sessions</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="rightContent">
+		<h2>calendario de eventos</h2>
+	</div>
+</div>
+</body>
+</html>
