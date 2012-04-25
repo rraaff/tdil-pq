@@ -16,10 +16,14 @@ import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
+import com.tdil.djmag.model.FacebookFeed;
+import com.tdil.djmag.model.FacebookFeedExample;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.Section;
+import com.tdil.djmag.model.TwitterFeed;
+import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
@@ -39,16 +43,19 @@ public class PublicHomeBean  {
 	private RankingNote ranking;
 	private RankingPositions rankingPositions;
 	
-	private List<Note> frontCoverNotes;
+	private TwitterFeed twitterFeed;
+	private FacebookFeed facebookFeed;
 	
+	private List<Note> frontCoverNotes;
+	private List<Note> lastNotes;
 	private List<Note> agendaNotes;
 	
 	private List<Country> allCountries;
 	
 	public static final String PUBLIC_HOME_BEAN = "publicHomeBean";
-	
 	private static final int REDUCED_RANKING_SIZE = 10;
 	private static final int MAX_AGENDA_NOTES_FOR_HOME = 5;
+	private static final int MAX_LAST_NOTES_FOR_HOME = 5;
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
@@ -62,8 +69,20 @@ public class PublicHomeBean  {
 		return this.getFrontCoverNotes() != null && !this.getFrontCoverNotes().isEmpty();
 	}
 	
+	public boolean hasLastNotes() {
+		return this.getLastNotes() != null && !this.getLastNotes().isEmpty();
+	}
+	
 	public boolean hasAgenda() {
 		return this.getAgendaNotes() != null && !this.getAgendaNotes().isEmpty();
+	}
+	
+	public boolean hasTwitterFeed() {
+		return this.getTwitterFeed() != null;
+	}
+	
+	public boolean hasFacebookFeed() {
+		return this.getFacebookFeed() != null;
 	}
 	
 	public void initCountries() {
@@ -88,20 +107,46 @@ public class PublicHomeBean  {
 		try {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
+					// cargo las secciones
 					SectionDAO sectionDAO = DAOManager.getSectionDAO();
 					setSectionsForCountry(sectionDAO.selectActiveSectionsForCountry(country));
-					
+					// cargo el ranking
 					RankingNoteDAO rankingNoteDAO = DAOManager.getRankingNoteDAO();
 					List<RankingNote> rankingForCountry = rankingNoteDAO.selectActiveRankingForCountry(country);
 					if (!rankingForCountry.isEmpty()) {
 						setRanking(rankingForCountry.get(0));
 						setRankingPositions((RankingPositions)XMLUtils.fromXML(getRanking().getPositions()));
+					} else {
+						setRanking(null);
+						setRankingPositions(null);
 					}
-					
+					// cargo las notas de tapa
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
 					
+					// cargo las ultimas notas de tapa
+					setLastNotes(noteDAO.selectActiveLastNotesForCountry(country));
+					// cargo la agenda
 					setAgendaNotes(noteDAO.selectActiveAgendaNotesForCountry(country));
+					// cargo el feed de twitter
+					TwitterFeedExample twitterFeedExample = new TwitterFeedExample();
+					twitterFeedExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
+					List<TwitterFeed> twitterFeeds = DAOManager.getTwitterFeedDAO().selectTwitterFeedByExampleWithBLOBs(twitterFeedExample);
+					if (!twitterFeeds.isEmpty()) {
+						setTwitterFeed(twitterFeeds.get(0));
+					} else {
+						setTwitterFeed(null);
+					}
+					// cargo el feed de facebook
+					FacebookFeedExample facebookFeedExample = new FacebookFeedExample();
+					facebookFeedExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
+					List<FacebookFeed> facebookFeeds = DAOManager.getFacebookFeedDAO().selectFacebookFeedByExampleWithBLOBs(facebookFeedExample);
+					if (!facebookFeeds.isEmpty()) {
+						setFacebookFeed(facebookFeeds.get(0));
+					} else {
+						setFacebookFeed(null);
+					}
+					
 				}
 			});
 		} catch (Exception e) {
@@ -119,6 +164,17 @@ public class PublicHomeBean  {
 		Iterator<Note> agendaIterator = this.getAgendaNotes().iterator();
 		while (size < MAX_AGENDA_NOTES_FOR_HOME && agendaIterator.hasNext()) {
 			result.add(agendaIterator.next());
+			size = size + 1;
+		}
+		return result;
+	}
+	
+	public List<Note> getReducedLastNotes() {
+		List<Note> result = new ArrayList<Note>();
+		int size = 0;
+		Iterator<Note> lastNotesIterator = this.getLastNotes().iterator();
+		while (size < MAX_LAST_NOTES_FOR_HOME && lastNotesIterator.hasNext()) {
+			result.add(lastNotesIterator.next());
 			size = size + 1;
 		}
 		return result;
@@ -195,5 +251,29 @@ public class PublicHomeBean  {
 
 	public void setAgendaNotes(List<Note> agendaNotes) {
 		this.agendaNotes = agendaNotes;
+	}
+
+	public TwitterFeed getTwitterFeed() {
+		return twitterFeed;
+	}
+
+	public void setTwitterFeed(TwitterFeed twitterFeed) {
+		this.twitterFeed = twitterFeed;
+	}
+
+	public FacebookFeed getFacebookFeed() {
+		return facebookFeed;
+	}
+
+	public void setFacebookFeed(FacebookFeed facebookFeed) {
+		this.facebookFeed = facebookFeed;
+	}
+
+	public List<Note> getLastNotes() {
+		return lastNotes;
+	}
+
+	public void setLastNotes(List<Note> lastNotes) {
+		this.lastNotes = lastNotes;
 	}
 }

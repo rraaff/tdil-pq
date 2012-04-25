@@ -3,6 +3,7 @@ package com.tdil.djmag.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.djmag.dao.BannerDAO;
+import com.tdil.djmag.dao.BannerPositionDAO;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FacebookFeedDAO;
 import com.tdil.djmag.dao.MagazineDAO;
@@ -19,6 +20,7 @@ import com.tdil.djmag.dao.SystemUserDAO;
 import com.tdil.djmag.dao.TwitterFeedDAO;
 import com.tdil.djmag.dao.VideoDAO;
 import com.tdil.djmag.dao.impl.BannerDAOImpl;
+import com.tdil.djmag.dao.impl.BannerPositionDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
 import com.tdil.djmag.dao.impl.MagazineDAOImpl;
@@ -100,5 +102,9 @@ public class DAOManager {
 	
 	public static VideoDAO getVideoDAO() throws SQLException {
 		return new VideoDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static BannerPositionDAO getBannerPositionDAO() throws SQLException {
+		return new BannerPositionDAOImpl(IBatisManager.getClient());
 	}
 }
