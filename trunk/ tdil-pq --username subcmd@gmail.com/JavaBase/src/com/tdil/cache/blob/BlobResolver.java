@@ -28,10 +28,10 @@ public abstract class BlobResolver {
 		return Role.isValid(user, permissions);
 	}
 
-	public void load(final int id, final int version, final File local) throws SQLException, ValidationException {
+	public void load(final int id, final String type, final int version, final File local) throws SQLException, ValidationException {
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {
-				byte data[] = loadInTransaction(id, version, local);
+				byte data[] = loadInTransaction(id, type, version, local);
 				FileOutputStream fout = null;
 				try {
 					fout = new FileOutputStream(local);
@@ -52,7 +52,7 @@ public abstract class BlobResolver {
 		});
 	}
 	
-	protected abstract byte[] loadInTransaction(int id, int version, File local) throws SQLException;
+	protected abstract byte[] loadInTransaction(int id, String type, int version, File local) throws SQLException;
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(BlobResolver.class);

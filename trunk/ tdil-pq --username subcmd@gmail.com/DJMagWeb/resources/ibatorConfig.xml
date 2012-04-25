@@ -88,5 +88,10 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="BANNER_POSITION" domainObjectName="BannerPosition">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+
+<table schema="DJMAG" tableName="BLOB_DATA" domainObjectName="BlobData">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>

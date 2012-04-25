@@ -39,4 +39,5 @@
 	<sqlMap resource="com/tdil/djmag/dao/maps/MAGAZINE_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/VIDEO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/BANNER_POSITION_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/BLOB_DATA_SqlMap.xml"/>
 </sqlMapConfig>

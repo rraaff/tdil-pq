@@ -19,7 +19,8 @@ public class NoteImageBean {
 	}
 	
 	public NoteImageBean(NoteImage noteImage, int id) {
-		setUploadData(new UploadData(noteImage.getFilename(), noteImage.getNoteimage()));
+		// pongo todos como modificados, porque no puedo saber si toco el indice
+		setUploadData(new UploadData(noteImage.getFilename(), noteImage.getNoteimage(), true)); 
 		setId(id);
 	}
 

@@ -16,7 +16,7 @@ public class NoteImageResolver extends BlobResolver {
 	}
 
 	@Override
-	protected byte[] loadInTransaction(int id, int version, File local) throws SQLException {
+	protected byte[] loadInTransaction(int id, String type, int version, File local) throws SQLException {
 		NoteImageDAO noteImageDAO = DAOManager.getNoteImageDAO();
 		NoteImage noteImage = noteImageDAO.selectNoteImageByPrimaryKey(id);
 		return noteImage.getNoteimage();

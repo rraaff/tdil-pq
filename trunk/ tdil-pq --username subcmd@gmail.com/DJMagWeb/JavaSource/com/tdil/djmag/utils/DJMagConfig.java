@@ -11,7 +11,9 @@ import org.apache.log4j.Logger;
 import com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS;
 import com.tdil.cache.blob.BlobLocalDiskCache;
 import com.tdil.djmag.cache.blob.NoteImageResolver;
+import com.tdil.djmag.cache.blob.PublicBlobResolver;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.djmag.model.BlobDataType;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.SystemProperty;
 import com.tdil.djmag.model.SystemPropertyExample;
@@ -68,6 +70,7 @@ public class DJMagConfig extends SystemConfig {
 		getLog().fatal("DJMagConfig: blob cache started at " + path);
 		BlobLocalDiskCache.setDiskBlobLocation(path);
 		BlobLocalDiskCache.addBlobResolver("note", new NoteImageResolver(None.INSTANCE_ARR));
+		BlobLocalDiskCache.addBlobResolver(BlobDataType.PUBLIC, new PublicBlobResolver(None.INSTANCE_ARR));
 //	TODO EXAMPLE	BlobLocalDiskCache.getBlob("note", 1, 0, "aaa.jpg", null);
 //		BlobLocalDiskCache.getBlob("note", 1, 0, "a.jpg", null);
 	}
