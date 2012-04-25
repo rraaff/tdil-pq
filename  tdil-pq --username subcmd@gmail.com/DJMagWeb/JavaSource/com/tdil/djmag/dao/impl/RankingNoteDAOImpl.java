@@ -2,8 +2,11 @@ package com.tdil.djmag.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.RankingNoteDAO;
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteExample;
+import com.tdil.djmag.model.Section;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -175,5 +178,10 @@ public class RankingNoteDAOImpl implements RankingNoteDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<RankingNote> selectActiveRankingForCountry(Country country) throws SQLException {
+		List<RankingNote> list = sqlMapClient.queryForList("RANKING_NOTE.selectActiveRankingForCountry", country);
+		return list;
 	}
 }

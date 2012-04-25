@@ -2,8 +2,11 @@ package com.tdil.djmag.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.NoteDAO;
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteExample;
+import com.tdil.djmag.model.Section;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -174,5 +177,16 @@ public class NoteDAOImpl implements NoteDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	/** Custom queries */
+	public List<Note> selectActiveFrontCoversNotesForCountry(Country country) throws SQLException {
+		List<Note> list = sqlMapClient.queryForList("NOTE.selectActiveFrontCoversNotesForCountry", country);
+		return list;
+	}
+	
+	public List<Note> selectActiveAgendaNotesForCountry(Country country) throws SQLException {
+		List<Note> list = sqlMapClient.queryForList("NOTE.selectActiveAgendaNotesForCountry", country);
+		return list;
 	}
 }

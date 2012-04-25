@@ -1,5 +1,6 @@
 package com.tdil.djmag.dao;
 
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteExample;
 import java.sql.SQLException;
@@ -90,4 +91,7 @@ public interface RankingNoteDAO {
 	 * @mbggenerated  Mon Apr 23 13:38:00 ART 2012
 	 */
 	int updateRankingNoteByPrimaryKeyWithoutBLOBs(RankingNote record) throws SQLException;
+
+	/** Custom queries */
+	List<RankingNote> selectActiveRankingForCountry(Country country) throws SQLException;;
 }

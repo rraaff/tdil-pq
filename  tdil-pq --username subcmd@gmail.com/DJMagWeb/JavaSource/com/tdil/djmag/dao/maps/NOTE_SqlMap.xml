@@ -452,4 +452,35 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  
+  <!-- Custom queries -->
+  <select id="selectActiveFrontCoversNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="ResultMapWithBLOBs">
+    select
+    note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
+    note.showInAgenda, note.agenda_date, note.deleted, note.content
+    from NOTE note, NOTE_COUNTRY nc
+	where note.id = nc.id_note
+	and note.deleted = 0
+	and nc.deleted = 0
+	and nc.id_country = #id:INTEGER#
+	and CURDATE() >= note.from_date
+	and (note.to_date is null or note.to_date >= CURDATE())
+	and note.frontCover = 1
+	order by note.id desc
+  </select>
+  
+  <select id="selectActiveAgendaNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="ResultMapWithBLOBs">
+    select
+    note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
+    note.showInAgenda, note.agenda_date, note.deleted, note.content
+    from NOTE note, NOTE_COUNTRY nc
+	where note.id = nc.id_note
+	and note.deleted = 0
+	and nc.deleted = 0
+	and nc.id_country = #id:INTEGER#
+	and note.agenda_date >= CURDATE()
+	and note.showInAgenda = 1
+	order by note.agenda_date
+  </select>
 </sqlMap>
