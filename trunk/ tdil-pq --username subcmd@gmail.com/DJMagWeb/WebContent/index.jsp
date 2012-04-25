@@ -79,7 +79,8 @@ $(document).ready(
 	<div id="BlockCoutrySelection">
 		<div id="labelCountrySelection">Seleccione su pa&iacute;s / Selecione o Pa&iacute;s<br>Choisissez un pays / Select Country</div>
 		<div id="countryCombo"><select><option>Seleccione</option>
-			<% 	for (Country country : publicHomeBean.getAllCountries()) {%>
+			<% 	publicHomeBean.initCountries();
+				for (Country country : publicHomeBean.getAllCountries()) {%>
 					<option value="./selectCountry.st?id=<%= country.getId() %>"><%= country.getName() %></option>
 			<% } %>
 			</select>&nbsp;&nbsp;&nbsp;
