@@ -238,5 +238,26 @@ CREATE TABLE VIDEO (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+CREATE TABLE BANNER_POSITION (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_country` INT NOT NULL,
+  `id_banner` INT NOT NULL,
+  `position` VARCHAR(100) NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `UQ_BANNER_POSITION_00` (`id_country` ASC),
+  CONSTRAINT `FK_BANNER_POSITION_00`
+    FOREIGN KEY (`id_country` )
+    REFERENCES COUNTRY (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_BANNER_POSITION_01`
+    FOREIGN KEY (`id_banner` )
+    REFERENCES BANNER (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
 INSERT INTO SECTION (name, sectionType, deleted) VALUES('RANKING_100','RANKING_100', 0);
+INSERT INTO SECTION (name, sectionType, deleted) VALUES('VIDEOS','VIDEOS', 0);

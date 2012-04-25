@@ -78,16 +78,16 @@ $(document).ready(
 <% } else { %>
 	<div id="BlockCoutrySelection">
 		<div id="labelCountrySelection">Seleccione su pa&iacute;s / Selecione o Pa&iacute;s<br>Choisissez un pays / Select Country</div>
-		<div id="countryCombo"><select><option>Seleccione</option>
+		<div id="countryCombo">
+			<form action="./selectCountry.st">
+			<select name="id"><option>Seleccione</option>
 			<% 	publicHomeBean.initCountries();
 				for (Country country : publicHomeBean.getAllCountries()) {%>
-					<option value="./selectCountry.st?id=<%= country.getId() %>"><%= country.getName() %></option>
+					<option value="<%= country.getId() %>"><%= country.getName() %></option>
 			<% } %>
 			</select>&nbsp;&nbsp;&nbsp;
 			<input type="submit" value="ok" class="okCircle">
-			<% for (Country country : publicHomeBean.getAllCountries()) {%>
-				<a href="./selectCountry.st?id=<%= country.getId() %>"><%= country.getName() %></a><br>
-			<% } %>
+			</form>
 		</div>
 	</div>
 <% } %>
@@ -100,7 +100,13 @@ $(document).ready(
 
 <%@ include file="includes/homeFrontCovers.jsp" %>
 
+<%@ include file="includes/homeLastNotes.jsp" %>
+
 <%@ include file="includes/homeAgenda.jsp" %>
+
+<%@ include file="includes/homeTwitter.jsp" %>
+
+<%@ include file="includes/homeFacebook.jsp" %>
 
 <% } %>
 </body>
