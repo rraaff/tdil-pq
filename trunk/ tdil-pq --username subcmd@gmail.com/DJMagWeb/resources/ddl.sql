@@ -40,6 +40,15 @@ CREATE  TABLE SYSPROPERTIES (
   UNIQUE INDEX `UQ_SYSPROPERTIES_00` (`propKey` ASC))
 ENGINE = InnoDB;
 
+CREATE TABLE BLOB_DATA (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `dataType` VARCHAR(20) NOT NULL ,
+  `filename` VARCHAR(100) NOT NULL ,
+  `content` MEDIUMBLOB NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 CREATE TABLE COUNTRY (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(250) NOT NULL ,
@@ -128,6 +137,14 @@ CREATE TABLE NOTE (
   `popular` INT NOT NULL ,
   `showInAgenda` INT NOT NULL ,
   `agenda_date` DATE NULL ,
+  `frontCoverExt` VARCHAR(10) NOT NULL ,
+  `frontCover_id` INT NULL,
+  `agendaExt` VARCHAR(10) NOT NULL ,
+  `agenda_id` INT NULL,
+  `lastNewsCoverExt` VARCHAR(10) NOT NULL ,
+  `lastNewsCover_id` INT NULL,
+  `lastNewsThumbExt` VARCHAR(10) NOT NULL ,
+  `lastNewsThumb_id` INT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_NOTE_01`
@@ -221,15 +238,6 @@ CREATE TABLE MAGAZINE (
   `frontCover_id` INT NULL,
   `magazineContentExt` VARCHAR(10) NOT NULL ,
   `magazineContent_id` INT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-CREATE TABLE BLOB_DATA (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `dataType` VARCHAR(20) NOT NULL ,
-  `filename` VARCHAR(100) NOT NULL ,
-  `content` MEDIUMBLOB NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

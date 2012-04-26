@@ -149,6 +149,43 @@
    <forward name="continue" path="/noteAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/noteAdministration.jsp"/>
   </action>
+  
+  <action name="NoteForm" parameter="Admin" path="/deleteNoteFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteNoteFrontCoverAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/uploadNoteFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.UploadNoteFrontCoverAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/deleteNoteAgenda"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteNoteAgendaAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/uploadNoteAgenda"
+   scope="session" type="com.tdil.djmag.struts.action.UploadNoteAgendaAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/deleteNewsCover"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteNoteNewsCoverAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/uploadNewsCover"
+   scope="session" type="com.tdil.djmag.struts.action.UploadNoteNewsCoverAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
+    <action name="NoteForm" parameter="Admin" path="/deleteNewsThumb"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteNoteNewsThumbAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+  </action>
+  <action name="NoteForm" parameter="Admin" path="/uploadNewsThumb"
+   scope="session" type="com.tdil.djmag.struts.action.UploadNoteNewsThumbAction">
+   <forward name="continue" path="/noteAdministration.jsp"/>
+   <forward name="failure" path="/noteAdministration.jsp"/>
+  </action>
  
  <action name="BannerForm" parameter="Admin" path="/goToBannerABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
@@ -237,7 +274,7 @@
    scope="session" type="com.tdil.djmag.struts.action.DeleteMagazineFrontCoverAction">
    <forward name="continue" path="/magazineAdministration.jsp"/>
   </action>
-   <action name="MagazineForm" parameter="Admin" path="/uploadMagazineContent"
+  <action name="MagazineForm" parameter="Admin" path="/uploadMagazineContent"
    scope="session" type="com.tdil.djmag.struts.action.UploadMagazineContentAction">
    <forward name="continue" path="/magazineAdministration.jsp"/>
    <forward name="failure" path="/magazineAdministration.jsp"/>
@@ -303,6 +340,11 @@
    <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/footerAdministration.jsp"/>
   </action>
+  <action name="FooterForm" parameter="Admin" path="/resetFooter"
+   scope="session" type="com.tdil.djmag.struts.action.ResetFooterAction">
+   <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
+  </action>
+  
   
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
