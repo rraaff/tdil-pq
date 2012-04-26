@@ -613,7 +613,20 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page18" PATH="/footerAdministration.jsp"
   SHAPE="304,11730,0,0" SUBTYPE="jsp" TITLE="footerAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveFooter.do"
+   SUBTYPE="confirmed" TARGET="action60" TITLE="/saveFooter.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editFooter.do"
+   SUBTYPE="confirmed" TARGET="action61" TITLE="/editFooter.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedFooter.do"
+   SUBTYPE="confirmed" TARGET="action62" TITLE="/toggleDeletedFooter.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link3" PATH="/resetFooter.do"
+   SUBTYPE="confirmed" TARGET="action63" TITLE="/resetFooter.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveFooter" NAME="action60" PATH="/saveFooter"
   SHAPE="32,11825,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
@@ -637,6 +650,80 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetFooter" NAME="action63" PATH="/resetFooter"
+  SHAPE="512,11730,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteNoteFrontCover" NAME="action64"
+  PATH="/deleteNoteFrontCover" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadNoteFrontCover" NAME="action65"
+  PATH="/uploadNoteFrontCover" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteNoteAgenda" NAME="action66"
+  PATH="/deleteNoteAgenda" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadNoteAgenda" NAME="action67"
+  PATH="/uploadNoteAgenda" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteNewsCover" NAME="action68"
+  PATH="/deleteNewsCover" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadNewsCover" NAME="action69"
+  PATH="/uploadNewsCover" SHAPE="32,3521,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteNewsThumb" NAME="action70"
+  PATH="/deleteNewsThumb" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadNewsThumb" NAME="action71"
+  PATH="/uploadNewsThumb" SHAPE="32,3297,0,0" TITLE="NoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

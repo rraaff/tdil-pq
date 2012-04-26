@@ -1,11 +1,17 @@
 package com.tdil.djmag.struts.forms;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.djmag.dao.FooterDAO;
@@ -15,10 +21,14 @@ import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
+import com.tdil.djmag.struts.action.UploadImageNoteAction;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.utils.SystemConfig;
+import com.tdil.utils.SystemPropertyCache;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -245,5 +255,33 @@ public class FooterForm extends TransactionalValidationForm implements ToggleDel
 		this.countryId = countryId;
 	}
 
+	public void restoreInitial() {
+		InputStream io = null;
+		ByteArrayOutputStream out = null;
+		try {
+			io = FooterForm.class.getResourceAsStream("original_footer.html");
+			out = new ByteArrayOutputStream();
+			IOUtils.copy(io,out);
+			this.setHtmlContent(out.toString());
+		} catch (IOException e) {
+			getLog().error(e.getMessage(), e);
+		} finally {
+			if (io != null) {
+				try {
+					io.close();
+				} catch (IOException e) {
+				}
+			}
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+				}
+			}
+		}
+	}
 
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(FooterForm.class);
+	}
 }

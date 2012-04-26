@@ -35,7 +35,7 @@
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
+						</html:select><html:link action="/resetFooter">Resetear</html:link><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
 				</div>
 				<div class="renglon width860 height80">
 					<div class="label width80">HTML</div>

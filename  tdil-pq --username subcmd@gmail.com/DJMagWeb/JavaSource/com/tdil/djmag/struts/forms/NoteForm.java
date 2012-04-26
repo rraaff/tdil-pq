@@ -11,7 +11,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
@@ -63,6 +62,15 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private boolean showInAgenda;
 	private String agendaDate;
 	
+	private FormFile frontCoverImageFormFile;
+	private UploadData frontCoverImage;
+	private FormFile agendaImageFormFile;
+	private UploadData agendaImage;
+	private FormFile lastNewsCoverImageFormFile;
+	private UploadData lastNewsCoverImage;
+	private FormFile lastNewsThumbImageFormFile;
+	private UploadData lastNewsThumbImage;
+	
 	private int sectionId;
 	
 	private int noteImageIndex = 0;
@@ -86,6 +94,11 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private static String agendadate_key = "Note.agendadate";
 	private static String image_key = "Note.image";
 	private static String section_key = "Note.section";
+	
+	private static String front_cover_key = "Note.front_cover";
+	private static String agenda_key = "Note.agenda";
+	private static String last_news_cover_key = "Note.last_news_cover";
+	private static String last_news_thumb_key = "Note.last_news_thumb";
 	
 	private static final int MAX_NOTE_IMAGE_SIZE = 1000000;
 	
@@ -637,4 +650,141 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(NoteForm.class);
 	}
+
+	public UploadData getFrontCoverImage() {
+		return frontCoverImage;
+	}
+
+	public void setFrontCoverImage(UploadData frontCoverImage) {
+		this.frontCoverImage = frontCoverImage;
+	}
+
+	public UploadData getAgendaImage() {
+		return agendaImage;
+	}
+
+	public void setAgendaImage(UploadData agendaImage) {
+		this.agendaImage = agendaImage;
+	}
+
+	public UploadData getLastNewsCoverImage() {
+		return lastNewsCoverImage;
+	}
+
+	public void setLastNewsCoverImage(UploadData lastNewsCoverImage) {
+		this.lastNewsCoverImage = lastNewsCoverImage;
+	}
+
+	public FormFile getFrontCoverImageFormFile() {
+		return frontCoverImageFormFile;
+	}
+
+	public void setFrontCoverImageFormFile(FormFile frontCoverImageFormFile) {
+		this.frontCoverImageFormFile = frontCoverImageFormFile;
+	}
+
+	public FormFile getAgendaImageFormFile() {
+		return agendaImageFormFile;
+	}
+
+	public void setAgendaImageFormFile(FormFile agendaImageFormFile) {
+		this.agendaImageFormFile = agendaImageFormFile;
+	}
+
+	public FormFile getLastNewsCoverImageFormFile() {
+		return lastNewsCoverImageFormFile;
+	}
+
+	public void setLastNewsCoverImageFormFile(FormFile lastNewsCoverImageFormFile) {
+		this.lastNewsCoverImageFormFile = lastNewsCoverImageFormFile;
+	}
+
+	public FormFile getLastNewsThumbImageFormFile() {
+		return lastNewsThumbImageFormFile;
+	}
+
+	public void setLastNewsThumbImageFormFile(FormFile lastNewsThumbImageFormFile) {
+		this.lastNewsThumbImageFormFile = lastNewsThumbImageFormFile;
+	}
+
+	public UploadData getLastNewsThumbImage() {
+		return lastNewsThumbImage;
+	}
+
+	public void setLastNewsThumbImage(UploadData lastNewsThumbImage) {
+		this.lastNewsThumbImage = lastNewsThumbImage;
+	}
+
+	public void uploadFrontCover(ValidationError error) {
+		FormFile formFile = this.getFrontCoverImageFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, front_cover_key, true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > MAX_NOTE_IMAGE_SIZE) {
+				error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
+				this.setFrontCoverImage(null);
+				return;
+			}
+			this.setFrontCoverImage(uploadData);
+		}
+	}
+
+	public void uploadAgenda(ValidationError error) {
+		FormFile formFile = this.getAgendaImageFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, agenda_key, true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > MAX_NOTE_IMAGE_SIZE) {
+				error.setFieldError(agenda_key, ValidationErrors.TOO_BIG);
+				this.setAgendaImage(null);
+				return;
+			}
+			this.setAgendaImage(uploadData);
+		}
+	}
+
+	public void uploadNewsCover(ValidationError error) {
+		FormFile formFile = this.getLastNewsCoverImageFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, last_news_cover_key, true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > MAX_NOTE_IMAGE_SIZE) {
+				error.setFieldError(last_news_cover_key, ValidationErrors.TOO_BIG);
+				this.setLastNewsCoverImage(uploadData);
+				return;
+			}
+			this.setLastNewsCoverImage(uploadData);
+		}
+	}
+
+	public void uploadNewsThumb(ValidationError error) {
+		FormFile formFile = this.getLastNewsThumbImageFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, last_news_thumb_key, true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > MAX_NOTE_IMAGE_SIZE) {
+				error.setFieldError(last_news_thumb_key, ValidationErrors.TOO_BIG);
+				this.setLastNewsThumbImage(uploadData);
+				return;
+			}
+			this.setLastNewsThumbImage(uploadData);
+		}
+	}
+
+	public void deleteNoteAgenda() {
+		setAgendaImage(null);
+	}
+
+	public void deleteFrontCover() {
+		setFrontCoverImage(null);
+	}
+
+	public void deleteNewsCover() {
+		setLastNewsCoverImage(null);
+	}
+
+	public void deleteNewsThumb() {
+		setLastNewsThumbImage(null);
+	}
+
 }

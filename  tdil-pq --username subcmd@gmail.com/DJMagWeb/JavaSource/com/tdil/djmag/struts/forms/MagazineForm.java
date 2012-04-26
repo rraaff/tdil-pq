@@ -17,9 +17,9 @@ import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.BlobData;
-import com.tdil.djmag.model.BlobDataType;
 import com.tdil.djmag.model.Magazine;
 import com.tdil.djmag.model.MagazineExample;
+import com.tdil.djmag.utils.BlobHelper;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -217,11 +217,11 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 		if (this.getObjectId() == 0) {
 			Magazine magazine = new Magazine();
 			setData(magazine);
-			int frontCoverId = insertBlob(this.getFrontCover());
+			int frontCoverId = BlobHelper.insertBlob(this.getFrontCover());
 			magazine.setFrontcoverId(frontCoverId);
 			magazine.setFrontcoverext(this.getFrontCover().getExtension());
 			if (this.getMagazineContent() != null) {
-				int magazineContentId = insertBlob(this.getMagazineContent());
+				int magazineContentId = BlobHelper.insertBlob(this.getMagazineContent());
 				magazine.setMagazinecontentId(magazineContentId);
 				magazine.setMagazinecontentext(this.getMagazineContent().getExtension());
 			}
@@ -231,53 +231,30 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 		} else {
 			Magazine magazine = magazineDAO.selectMagazineByPrimaryKey(this.getObjectId());
 			setData(magazine);
-			if (shouldDeleteBlob(this.getFrontCover())) {
-				deleteBlob(magazine.getFrontcoverId());
+			if (BlobHelper.shouldDeleteBlob(this.getFrontCover())) {
+				BlobHelper.deleteBlob(magazine.getFrontcoverId());
 				magazine.setFrontcoverId(0);
 				magazine.setFrontcoverext("");
 			}
-			if (shouldDeleteBlob(this.getMagazineContent())) {
-				deleteBlob(magazine.getMagazinecontentId());
+			if (BlobHelper.shouldDeleteBlob(this.getMagazineContent())) {
+				BlobHelper.deleteBlob(magazine.getMagazinecontentId());
 				magazine.setMagazinecontentId(0);
 				magazine.setMagazinecontentext("");
 			}
-			if (shouldInsertBlob(this.getFrontCover())) {
-				int blobId = insertBlob(this.getFrontCover());
+			if (BlobHelper.shouldInsertBlob(this.getFrontCover())) {
+				int blobId = BlobHelper.insertBlob(this.getFrontCover());
 				magazine.setFrontcoverId(blobId);
 				magazine.setFrontcoverext(this.getFrontCover().getExtension());
 			}
-			if (shouldInsertBlob(this.getMagazineContent())) {
-				int blobId = insertBlob(this.getMagazineContent());
+			if (BlobHelper.shouldInsertBlob(this.getMagazineContent())) {
+				int blobId = BlobHelper.insertBlob(this.getMagazineContent());
 				magazine.setMagazinecontentId(blobId);
 				magazine.setMagazinecontentext(this.getMagazineContent().getExtension());
 			}
 			magazineDAO.updateMagazineByPrimaryKeySelective(magazine);
 		}
-		
-	}
-	private void deleteBlob(Integer magazinecontentId) throws SQLException {
-		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
-		blobDataDAO.deleteBlobDataByPrimaryKey(magazinecontentId);
-	}
-
-	private boolean shouldInsertBlob(UploadData frontCover2) {
-		return frontCover2 != null && frontCover2.isModified();
 	}
 	
-	private boolean shouldDeleteBlob(UploadData frontCover2) {
-		return frontCover2 == null || frontCover2.isModified();
-	}
-
-	public static int insertBlob(UploadData uploadData) throws SQLException {
-		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
-		BlobData blobData = new BlobData();
-		blobData.setDatatype(BlobDataType.PUBLIC);
-		blobData.setFilename(uploadData.getFileName());
-		blobData.setContent(uploadData.getData());
-		blobData.setDeleted(0);
-		return blobDataDAO.insertBlobData(blobData);
-	}
-
 	private void setData(Magazine magazine) {
 		magazine.setDescription(this.getDescription());
 		magazine.setPublishDate(parseDate(this.getPublishDate()));
