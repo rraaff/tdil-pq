@@ -66,31 +66,8 @@ $(document).ready(
 );
 </script>
 </head>
+<% if (publicHomeBean.hasCountrySelected()) { %>
 <body>
-<% if (publicHomeBean.hasCountrySelected()) { %>
-	<!-- Pais: < % = publicHomeBean.getCountry().getName() % >
-	<br>
-	Secciones<br>
-	< % for (Section section : publicHomeBean.getSectionsForCountry()) { %>
-		< %= section.getName() %><br>
-	< % 	} % -->
-<% } else { %>
-	<div id="BlockCoutrySelection">
-		<div id="labelCountrySelection">Seleccione su pa&iacute;s / Selecione o Pa&iacute;s<br>Choisissez un pays / Select Country</div>
-		<div id="countryCombo">
-			<form action="./selectCountry.st">
-			<select name="id"><option>Seleccione</option>
-			<% 	publicHomeBean.initCountries();
-				for (Country country : publicHomeBean.getAllCountries()) {%>
-					<option value="<%= country.getId() %>"><%= country.getName() %></option>
-			<% } %>
-			</select>&nbsp;&nbsp;&nbsp;
-			<input type="submit" value="ok" class="okCircle">
-			</form>
-		</div>
-	</div>
-<% } %>
-<% if (publicHomeBean.hasCountrySelected()) { %>
 <a name="top"></a>
 <div id="portaHeader">
 	<div id="header">
@@ -106,7 +83,7 @@ $(document).ready(
 </div>
 <div id="bannerHeader"><img src="images/banners/bannerHeader.gif" width="980" height="91"></div>
 <div id="BlockMain">
-<%@ include file="includes/homeLastNotes.jsp" %>
+<%@ include file="includes/homeFrontCovers.jsp" %>
 <%@ include file="includes/homeRanking.jsp" %>
 	<div id="BlockMainRight">
 		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
@@ -117,7 +94,7 @@ $(document).ready(
 </div>
 <div id="BlockSecondaryContent">
 	<div id="leftContent">
-		<%@ include file="includes/homeFrontCovers.jsp" %>
+		<%@ include file="includes/homeLastNotes.jsp" %>
 		<div id="BlockPopularNews">
 			<div id="lastNews" style="float:left; margin-right:14px;">
 				<img src="images/demo/popNoticias.jpg" width="200" height="143">
@@ -205,6 +182,22 @@ $(document).ready(
 	</div>
 	<div id="copyright">DJ Mag&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Todos los derechos reservados&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Aviso Legal&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© DJ Mag - <a href="mailto:info@djmag.com.ar">info@djmag.com.ar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;+54 11 4444-6666</div>
 </div>
+<% } else { %>
+<body style="background-image:none;">
+	<div id="BlockCoutrySelection">
+		<div id="labelCountrySelection">Seleccione su pa&iacute;s / Selecione o Pa&iacute;s<br>Choisissez un pays / Select Country</div>
+		<div id="countryCombo">
+			<form action="./selectCountry.st">
+			<select name="id"><option>Seleccione</option>
+			<% 	publicHomeBean.initCountries();
+				for (Country country : publicHomeBean.getAllCountries()) {%>
+					<option value="<%= country.getId() %>"><%= country.getName() %></option>
+			<% } %>
+			</select>&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="ok" class="okCircle">
+			</form>
+		</div>
+	</div>
 <% } %>
 </body>
 </html>
