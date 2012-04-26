@@ -41,7 +41,6 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	private int id;
 	
 	private int objectId;
-	private boolean deleted;
 	
 	private String description;
 	private String publishDate;
@@ -68,12 +67,10 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 		this.publishDate = null;
 		this.frontCover = null;
 		this.magazineContent = null;
-		this.deleted = false;
 	}
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 	}
 
 	/** Used for delete */
@@ -121,7 +118,6 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 			} else {
 				this.setMagazineContent(null);
 			}
-			this.deleted = magazine.getDeleted() == 1;
 		} 
 	}
 	
@@ -229,7 +225,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 				magazine.setMagazinecontentId(magazineContentId);
 				magazine.setMagazinecontentext(this.getMagazineContent().getExtension());
 			}
-			magazine.setDeleted(this.isDeleted() ? 1 : 0);
+			magazine.setDeleted(0);
 			magazineDAO.insertMagazine(magazine);
 			
 		} else {
@@ -293,14 +289,6 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<Magazine> getAllMagazines() {

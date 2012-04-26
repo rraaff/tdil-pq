@@ -39,7 +39,6 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 	
 	private int objectId;
 	private String name;
-	private boolean deleted;
 	
 	private List<Section> allSections;
 
@@ -55,13 +54,11 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 	public void reset() throws SQLException {
 		this.objectId = 0;
 		this.name = null;
-		this.deleted = false;
 		this.resetSelectedCountries();
 	}
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 		clearSelectedCountries();
 	}
 	
@@ -121,7 +118,6 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 		if (section != null) {
 			this.objectId = id;
 			this.name = section.getName();
-			this.deleted = section.getDeleted() == 1;
 		} 
 		// reseteo los paises
 		this.resetSelectedCountries();
@@ -202,13 +198,12 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 			Section section = new Section();
 			section.setName(this.getName());
 			section.setSectiontype(SectionType.NORMAL);
-			section.setDeleted(this.isDeleted() ? 1 : 0);
+			section.setDeleted(0);
 			sectionId = sectionDAO.insertSection(section);
 		} else {
 			Section section = new Section();
 			section.setId(this.getObjectId());
 			section.setName(this.getName());
-			section.setDeleted(this.isDeleted() ? 1 : 0);
 			sectionDAO.updateSectionByPrimaryKeySelective(section);
 			sectionId = this.getObjectId();
 		}
@@ -253,14 +248,6 @@ public class SectionForm extends TransactionalValidationForm implements ToggleDe
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<Section> getAllSections() {

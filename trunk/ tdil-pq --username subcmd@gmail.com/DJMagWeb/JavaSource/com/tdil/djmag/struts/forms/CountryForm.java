@@ -26,8 +26,6 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 	private int objectId;
 	private String name;
 	private String iso_code_2;
-	private boolean deleted;
-	
 	private List<Country> allCountries;
 	
 	private static String name_key = "Country.name";
@@ -40,7 +38,6 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 		this.objectId = 0;
 		this.name = null;
 		this.iso_code_2 = null;
-		this.deleted = false;
 	}
 
 	@Override
@@ -58,7 +55,6 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 			this.objectId = id;
 			this.name = country.getName();
 			this.iso_code_2 = country.getIsoCode2();
-			this.deleted = country.getDeleted() == 1;
 		} 
 	}
 	
@@ -124,15 +120,14 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 			Country country = new Country();
 			country.setName(this.getName());
 			country.setIsoCode2(this.getIso_code_2());
-			country.setDeleted(this.isDeleted() ? 1 : 0);
+			country.setDeleted(0);
 			countryDAO.insertCountry(country);
 		} else {
 			Country country = new Country();
 			country.setId(this.getObjectId());
 			country.setName(this.getName());
 			country.setIsoCode2(this.getIso_code_2());
-			country.setDeleted(this.isDeleted() ? 1 : 0);
-			countryDAO.updateCountryByPrimaryKey(country);
+			countryDAO.updateCountryByPrimaryKeySelective(country);
 		}
 	}
 
@@ -158,14 +153,6 @@ public class CountryForm extends TransactionalValidationForm implements ToggleDe
 
 	public void setAllCountries(List<Country> allCountries) {
 		this.allCountries = allCountries;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public String getIso_code_2() {

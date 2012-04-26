@@ -567,7 +567,17 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/bannerPositionAdministration.jsp"
   SHAPE="304,10034,0,0" SUBTYPE="jsp"
-  TITLE="bannerPositionAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="bannerPositionAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveBannerPosition.do"
+   SUBTYPE="confirmed" TARGET="action56" TITLE="/saveBannerPosition.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/toggleDeletedBannerPosition.do" SUBTYPE="confirmed"
+   TARGET="action58" TITLE="/toggleDeletedBannerPosition.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editBannerPosition.do"
+   SUBTYPE="confirmed" TARGET="action57" TITLE="/editBannerPosition.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveBannerPosition" NAME="action56"
   PATH="/saveBannerPosition" SHAPE="32,10129,0,0"
   TITLE="BannerPositionForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -594,5 +604,39 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/bannerPositionAdministration.jsp" TARGET="page17"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToFooterABM" NAME="action59" PATH="/goToFooterABM"
+  SHAPE="32,11713,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page18" PATH="/footerAdministration.jsp"
+  SHAPE="304,11730,0,0" SUBTYPE="jsp" TITLE="footerAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveFooter" NAME="action60" PATH="/saveFooter"
+  SHAPE="32,11825,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editFooter" NAME="action61" PATH="/editFooter"
+  SHAPE="32,11969,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedFooter" NAME="action62"
+  PATH="/toggleDeletedFooter" SHAPE="32,12081,0,0" TITLE="FooterForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/footerAdministration.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

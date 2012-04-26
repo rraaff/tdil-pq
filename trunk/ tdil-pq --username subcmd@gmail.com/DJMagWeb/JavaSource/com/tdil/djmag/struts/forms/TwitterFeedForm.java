@@ -34,7 +34,6 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 	private int objectId;
 	private String htmlContent;
 	private int countryId;
-	private boolean deleted;
 	
 	private List<TwitterFeed> allTwitterFeeds;
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
@@ -48,13 +47,11 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 		this.objectId = 0;
 		this.countryId = 0;
 		this.htmlContent = null;
-		this.deleted = false;
 		this.resetSelectedCountries();
 	}
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 		clearSelectedCountries();
 	}
 
@@ -110,7 +107,6 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 		if (twitterFeed != null) {
 			this.objectId = id;
 			this.htmlContent = twitterFeed.getHtmlcontent();
-			this.deleted = twitterFeed.getDeleted() == 1;
 		} 
 		// reseteo los paises
 		resetSelectedCountries();
@@ -178,7 +174,7 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 			TwitterFeed twitterFeed = new TwitterFeed();
 			twitterFeed.setIdCountry(this.getCountryId());
 			twitterFeed.setHtmlcontent(this.getHtmlContent());
-			twitterFeed.setDeleted(this.isDeleted() ? 1 : 0);
+			twitterFeed.setDeleted(0);
 			twitterFeedDAO.insertTwitterFeed(twitterFeed);
 		} else {
 			TwitterFeed twitterFeed = new TwitterFeed();
@@ -196,14 +192,6 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {

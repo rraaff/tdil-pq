@@ -24,6 +24,7 @@
       <li><html:link action="/goToMagazineABM" >Manejo de magazine</html:link></li>
       <li><html:link action="/goToTwitterFeedABM" >Manejo de feeds de Twitter</html:link></li>
       <li><html:link action="/goToFacebookFeedABM" >Manejo de feeds de Facebook</html:link></li>
+       <li><html:link action="/goToFooterABM" >Manejo de footers</html:link></li>
     </ul>
   </li>
   <li>

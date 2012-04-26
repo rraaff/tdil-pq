@@ -64,7 +64,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private String agendaDate;
 	
 	private int sectionId;
-	private boolean deleted;
 	
 	private int noteImageIndex = 0;
 	private FormFile noteImage;
@@ -102,7 +101,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		this.toDate = "";
 		this.frontCover = false;
 		this.popular = false;
-		this.deleted = false;
 		this.showInAgenda = false;
 		this.agendaDate = "";
 		this.resetSelectedSections();
@@ -112,7 +110,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 		this.frontCover = false;
 		this.popular = false;
 		this.showInAgenda = false;
@@ -208,7 +205,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			this.popular = ranking.getPopular().equals(1);
 			this.showInAgenda = ranking.getShowinagenda().equals(1);
 			this.agendaDate = formatDate(ranking.getAgendaDate());
-			this.deleted = ranking.getDeleted() == 1;
 		} 
 		// reseto las secciones
 		this.resetSelectedSections();
@@ -353,6 +349,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			Note note = new Note();
 			note.setIdSection(this.getSectionId());
 			updateNote(note);
+			note.setDeleted(0);
 			noteId = noteDAO.insertNote(note);
 		} else {
 			Note note = new Note();
@@ -409,7 +406,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		note.setPopular(this.isPopular() ? 1 : 0);
 		note.setShowinagenda(this.isShowInAgenda() ? 1 : 0);
 		note.setAgendaDate(parseDate(this.getAgendaDate()));
-		note.setDeleted(this.isDeleted() ? 1 : 0);
 	}
 	
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {
@@ -425,14 +421,6 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<SectionSelectionVO> getAllSections() {

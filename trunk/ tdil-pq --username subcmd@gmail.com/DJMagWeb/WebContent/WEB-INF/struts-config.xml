@@ -17,6 +17,7 @@
   <form-bean name="MagazineForm" type="com.tdil.djmag.struts.forms.MagazineForm"/>
   <form-bean name="VideoForm" type="com.tdil.djmag.struts.forms.VideoForm"/>
   <form-bean name="BannerPositionForm" type="com.tdil.djmag.struts.forms.BannerPositionForm"/>
+  <form-bean name="FooterForm" type="com.tdil.djmag.struts.forms.FooterForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -282,6 +283,25 @@
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/bannerPositionAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/bannerPositionAdministration.jsp"/>
+  </action>
+  
+  <action name="FooterForm" parameter="Admin" path="/goToFooterABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/footerAdministration.jsp"/>
+  </action>
+  <action name="FooterForm" parameter="Admin" path="/saveFooter"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/footerAdministration.jsp"/>
+  </action>
+  <action name="FooterForm" parameter="Admin" path="/editFooter"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/footerAdministration.jsp"/>
+  </action>
+  <action name="FooterForm" parameter="Admin" path="/toggleDeletedFooter"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/footerAdministration.jsp"/>
   </action>
   
  </action-mappings>

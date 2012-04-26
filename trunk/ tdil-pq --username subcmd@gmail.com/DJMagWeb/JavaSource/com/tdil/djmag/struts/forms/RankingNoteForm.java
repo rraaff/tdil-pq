@@ -40,7 +40,6 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	private int objectId;
 	private String description;
 	private List<RankingPositionBean> positions;
-	private boolean deleted;
 	
 	private List<RankingNote> allRankings;
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
@@ -57,7 +56,6 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	public void reset() throws SQLException {
 		this.objectId = 0;
 		this.description = null;
-		this.deleted = false;
 		this.positions = createEmptyPositions();
 		this.resetSelectedCountries();
 	}
@@ -72,7 +70,6 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 		clearSelectedCountries();
 	}
 	
@@ -133,7 +130,6 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 		if (ranking != null) {
 			this.objectId = id;
 			this.description = ranking.getDescription();
-			this.deleted = ranking.getDeleted() == 1;
 			this.setRankingPositions((RankingPositions)XMLUtils.fromXML(ranking.getPositions()));
 		} 
 		// reseteo los paises
@@ -272,14 +268,6 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {
