@@ -117,23 +117,6 @@ $(document).ready(
 		</div>
 		<h2>ultimos videos</h2>
 		<%@ include file="includes/homeVideos.jsp" %> 
-		<div id="BlockVideos">
-			<div id="left"><img src="images/demo/videoGrande.jpg" width="425" height="297"></div>
-			<div id="right">
-				<div id="thmbnVideo" style="background-image:url(images/demo/videoChico1.jpg);">
-					<div id="base">
-						<h4>Solomun</h4>
-						<span>DJ Mag Recession Sessions</span>
-					</div>
-				</div>
-				<div id="thmbnVideo" style="background-image:url(images/demo/videoChico2.jpg); margin-top:5px;">
-					<div id="base">
-						<h4>Solomun</h4>
-						<span>DJ Mag Recession Sessions</span>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<div id="rightContent">
 		<%@ include file="includes/homeAgenda.jsp" %>
