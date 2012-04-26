@@ -254,7 +254,7 @@ CREATE TABLE BANNER_POSITION (
   `position` VARCHAR(100) NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
-  INDEX `UQ_BANNER_POSITION_00` (`id_country` ASC),
+  UNIQUE INDEX `UQ_BANNER_POSITION_00` (`id_country` ASC, `position` asc),
   CONSTRAINT `FK_BANNER_POSITION_00`
     FOREIGN KEY (`id_country` )
     REFERENCES COUNTRY (`id` )

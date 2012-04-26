@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.djmag.dao.BannerPositionDAO;
-import com.tdil.djmag.dao.VideoDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Banner;
 import com.tdil.djmag.model.BannerExample;
@@ -19,8 +18,6 @@ import com.tdil.djmag.model.BannerPositionExample;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.RankingNoteCountry;
-import com.tdil.djmag.model.Video;
-import com.tdil.djmag.model.VideoExample;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
@@ -184,30 +181,24 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 		return null;
 	}
 	
-	private void setCountrySelected(RankingNoteCountry ranking) {
-		for (CountrySelectionVO countrySelectionVO : this.getSelectedCountries()) {
-			if (countrySelectionVO.getCountryId().equals(ranking.getIdCountry())) {
-				if (ranking.getDeleted() == 0) {
-					countrySelectionVO.setSelected(true);
-				} else {
-					countrySelectionVO.setSelected(false);
-				}
-				countrySelectionVO.setOwnerId(ranking.getId());
-			}
-		}
-		
-	}
-
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		/*FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
-		FieldValidation.validateText(this.getHtmlContent(), htmlContent_key, ValidationErrors.TEXT_LENGTH, validationError);
-		FieldValidation.validateId(this.getCountryId(), country_key, validationError);*/
+		FieldValidation.validateId(this.getCountryId(), countryid_key, validationError);
+		FieldValidation.validateId(this.getBannerId(), bannerid_key, validationError);
+		FieldValidation.validateText(this.getInsertPoint(), insertpoint_key, 100, validationError);
 	}
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-			
+		BannerPositionExample bannerPositionExample = new BannerPositionExample();
+		bannerPositionExample.createCriteria().andIdCountryEqualTo(this.getCountryId()).andPositionEqualTo(this.getInsertPoint());
+		List<BannerPosition> result = DAOManager.getBannerPositionDAO().selectBannerPositionByExample(bannerPositionExample);
+		if (!result.isEmpty()) {
+			BannerPosition found = result.get(0);
+			if (found.getId()!= this.getObjectId()) {
+				validationError.setFieldError(countryid_key, ValidationErrors.DUPLICATED);
+			}
+		}
 	}
 
 	@Override
