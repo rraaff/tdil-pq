@@ -71,7 +71,7 @@ $(document).ready(
 <a name="top"></a>
 <div id="portaHeader">
 	<div id="header">
-		<div id="logo" style="border-left: 1px solid #386061;"></div>
+		<div id="logo"></div>
 		<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
