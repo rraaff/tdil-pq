@@ -1,64 +1,17 @@
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.model.Note"%>
-<style>
-#BlockMain #mainContent #frontNote {
-	width:428px;
-	height:385px;
-}
-#BlockMain #mainContent #frontNote #noteContentBase {
-	width:428px;
-	height:133px;
-	background-image: url(images/bg-headerHome.png);
-	background-repeat: repeat;
-	overflow:hidden;
-	top: 252px;
-	position: relative;
-}
-#BlockMain #mainContent a:hover {
-	cursor:hand;
-}
-#BlockMain #mainContent h1 {
-	width:100%;
-	font-size:22px;
-	color:#f1e752;
-	padding-top:8px;
-	padding-left:25px;
-	padding-bottom:5px;
-	padding-right:25px;
-	text-decoration:underline;
-}
-#BlockMain #mainContent span {
-	width:100%;
-	font-size:13px;
-	line-height:16px;
-	padding-top:8px;
-	padding-left:25px;
-	padding-bottom:5px;
-	padding-right:25px;
-}
-#BlockMain #mainContent #date {
-	width:100%;
-	font-size:13px;
-	color:#8c8c8c;
-	line-height:16px;
-	padding-top:8px;
-	padding-left:25px;
-	padding-bottom:5px;
-	padding-right:25px;
-}
-</style>
-<% if (publicHomeBean.hasLastNotes()) { %>
-	<div id="mainContent">
-		<% for (NoteValueObject note : publicHomeBean.getReducedLastNotes()) { %>
-			<div id="frontNote" style="background-image:url(./download.st?id=<%=note.getNoteImages().get(0).getId()%>&type=note&ext=<%=note.getNoteImages().get(0).getExtension()%>);">
-				<div id="noteContentBase">
-					<h1><%=note.getTitle() %></h1>
-					<span><%=note.getSummary() %></span>
-					<div id="date"><%=publicHomeBean.formatDate(note.getFromDate()) %></div>
-				</div>
-			</div>
-		<% } %>
-	</div>
-<% } else { %>
-	No hay last notes
-<% } %>
+		<h2>ultimas noticias</h2>
+		<div id="BlockLastNews">
+			<% if (publicHomeBean.hasLastNotes()) { %>
+				<% for (NoteValueObject note : publicHomeBean.getReducedLastNotes()) { %>
+					<div id="lastNews" style="float:left; margin-right:15px;">
+						<img src="./download.st?id=<%=note.getNoteImages().get(0).getId()%>&type=note&ext=<%=note.getNoteImages().get(0).getExtension()%>" width="308" height="222">
+						<h3><%=note.getTitle() %></h3>
+						<div class="bajada"><%=note.getSummary() %></div>
+						<div class="date"><%=publicHomeBean.formatDate(note.getFromDate()) %></div>
+					</div>
+				<% } %>
+			<% } else { %>
+				No hay last notes
+			<% } %>
+		</div>

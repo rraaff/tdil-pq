@@ -64,8 +64,8 @@
 					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.fromdate.err")%></div>
 					<div class="label width100">Publicada hasta</div>
 					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.todate.err")%></div>
-					<div class="label width100"><html:checkbox name="NoteForm" property="frontCover" />Portada</div>
-					<div class="label width100"><html:checkbox name="NoteForm" property="popular" />Popular</div>
+					<div class="label width120"><html:checkbox name="NoteForm" property="frontCover" />Ver en Portada</div>
+					<div class="label width180"><html:checkbox name="NoteForm" property="popular" />Ver en &Uacute;ltimas noticias</div>
 				</div>
 				<div class="renglon">
 					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
@@ -84,7 +84,7 @@
 						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Note.section.err")%>
 					</div>
 				</div>
-
+				<h2>Imágenes de la nota</h2>
 				<table>
 					<tr>
 						<td class="headerTablas" width="40">&Oacute;rden</td>

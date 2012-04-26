@@ -335,6 +335,7 @@ body {
 	margin-top:8px;
 	margin-bottom:11px;
 	overflow:hidden;
+	border:dotted 1px #99FF33;
 }
 #BlockSecondaryContent #leftContent #BlockLastNews #lastNews .date {
 	width:305px;
