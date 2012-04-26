@@ -16,6 +16,7 @@
   <form-bean name="FacebookFeedForm" type="com.tdil.djmag.struts.forms.FacebookFeedForm"/>
   <form-bean name="MagazineForm" type="com.tdil.djmag.struts.forms.MagazineForm"/>
   <form-bean name="VideoForm" type="com.tdil.djmag.struts.forms.VideoForm"/>
+  <form-bean name="BannerPositionForm" type="com.tdil.djmag.struts.forms.BannerPositionForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -262,6 +263,25 @@
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/videoAdministration.jsp"/>
+  </action>
+  
+  <action name="BannerPositionForm" parameter="Admin" path="/goToBannerPositionABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/bannerPositionAdministration.jsp"/>
+  </action>
+  <action name="BannerPositionForm" parameter="Admin" path="/saveBannerPosition"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/bannerPositionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/bannerPositionAdministration.jsp"/>
+  </action>
+  <action name="BannerPositionForm" parameter="Admin" path="/editBannerPosition"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/bannerPositionAdministration.jsp"/>
+  </action>
+  <action name="BannerPositionForm" parameter="Admin" path="/toggleDeletedBannerPosition"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/bannerPositionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/bannerPositionAdministration.jsp"/>
   </action>
   
  </action-mappings>

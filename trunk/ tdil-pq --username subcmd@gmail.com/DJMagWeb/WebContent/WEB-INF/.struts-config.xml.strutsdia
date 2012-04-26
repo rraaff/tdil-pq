@@ -558,4 +558,41 @@
    PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToBannerPositionABM" NAME="action55"
+  PATH="/goToBannerPositionABM" SHAPE="32,10017,0,0"
+  TITLE="BannerPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page17" PATH="/bannerPositionAdministration.jsp"
+  SHAPE="304,10034,0,0" SUBTYPE="jsp"
+  TITLE="bannerPositionAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveBannerPosition" NAME="action56"
+  PATH="/saveBannerPosition" SHAPE="32,10129,0,0"
+  TITLE="BannerPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editBannerPosition" NAME="action57"
+  PATH="/editBannerPosition" SHAPE="32,10273,0,0"
+  TITLE="BannerPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedBannerPosition" NAME="action58"
+  PATH="/toggleDeletedBannerPosition" SHAPE="32,10385,0,0"
+  TITLE="BannerPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/bannerPositionAdministration.jsp" TARGET="page17"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

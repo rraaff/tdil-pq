@@ -20,6 +20,7 @@
       <li><html:link action="/goToRankingABM" >Manejo de rankings</html:link></li>
       <li><html:link action="/goToNoteABM" >Manejo de notas</html:link></li>
       <li><html:link action="/goToVideoABM" >Manejo de videos</html:link></li>
+      <li><html:link action="/goToBannerPositionABM" >Asignacion de banners a secciones</html:link></li>
       <li><html:link action="/goToMagazineABM" >Manejo de magazine</html:link></li>
       <li><html:link action="/goToTwitterFeedABM" >Manejo de feeds de Twitter</html:link></li>
       <li><html:link action="/goToFacebookFeedABM" >Manejo de feeds de Facebook</html:link></li>

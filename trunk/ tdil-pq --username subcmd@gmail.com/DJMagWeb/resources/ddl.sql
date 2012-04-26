@@ -213,9 +213,9 @@ CREATE TABLE MAGAZINE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `description` VARCHAR(4000) NOT NULL ,
   `publish_date` DATE NOT NULL ,
-  `frontCoverFilename` VARCHAR(100) NOT NULL ,
+  `frontCoverExt` VARCHAR(10) NOT NULL ,
   `frontCover_id` INT NULL,
-  `magazineContentFilename` VARCHAR(100) NOT NULL ,
+  `magazineContentExt` VARCHAR(10) NOT NULL ,
   `magazineContent_id` INT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))

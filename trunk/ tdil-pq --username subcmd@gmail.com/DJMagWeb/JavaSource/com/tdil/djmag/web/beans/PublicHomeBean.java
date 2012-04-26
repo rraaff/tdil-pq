@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -18,12 +20,15 @@ import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.FacebookFeed;
 import com.tdil.djmag.model.FacebookFeedExample;
-import com.tdil.djmag.model.Note;
+import com.tdil.djmag.model.NoteImage;
+import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
+import com.tdil.djmag.model.Video;
+import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
@@ -46,9 +51,11 @@ public class PublicHomeBean  {
 	private TwitterFeed twitterFeed;
 	private FacebookFeed facebookFeed;
 	
-	private List<Note> frontCoverNotes;
-	private List<Note> lastNotes;
-	private List<Note> agendaNotes;
+	private List<NoteValueObject> frontCoverNotes;
+	private List<NoteValueObject> lastNotes;
+	private List<NoteValueObject> agendaNotes;
+	
+	private List<Video> lastVideos;
 	
 	private List<Country> allCountries;
 	
@@ -83,6 +90,10 @@ public class PublicHomeBean  {
 	
 	public boolean hasFacebookFeed() {
 		return this.getFacebookFeed() != null;
+	}
+	
+	public boolean hasVideos() {
+		return this.getLastVideos() != null && !this.getLastVideos().isEmpty();
 	}
 	
 	public void initCountries() {
@@ -123,11 +134,33 @@ public class PublicHomeBean  {
 					// cargo las notas de tapa
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
-					
 					// cargo las ultimas notas de tapa
 					setLastNotes(noteDAO.selectActiveLastNotesForCountry(country));
 					// cargo la agenda
 					setAgendaNotes(noteDAO.selectActiveAgendaNotesForCountry(country));
+					
+					// cargo las imagenes de cada nota, recolecto todas para armar un solo query, luego distribuyo
+					List<NoteValueObject> allNotes = new ArrayList<NoteValueObject>();
+					allNotes.addAll(getFrontCoverNotes());
+					allNotes.addAll(getLastNotes());
+					allNotes.addAll(getAgendaNotes());
+					Set<Integer> notesIds = new HashSet<Integer>();
+					for (NoteValueObject nvo : allNotes) {
+						notesIds.add(nvo.getId());
+					}
+					List<Integer> param = new ArrayList<Integer>(notesIds);
+					NoteImageExample noteImageExample = new NoteImageExample();
+					noteImageExample.createCriteria().andIdNoteIn(param);
+					noteImageExample.setOrderByClause("id_note, orderNumber");
+					List<NoteImage> noteImages = DAOManager.getNoteImageDAO().selectNoteImageByExampleWithoutBLOBs(noteImageExample);
+					for (NoteImage ni : noteImages) {
+						for (NoteValueObject nvo : allNotes) {
+							if (ni.getIdNote().equals(nvo.getId())) {
+								nvo.addNoteImage(ni);
+							}
+						}
+					}
+					
 					// cargo el feed de twitter
 					TwitterFeedExample twitterFeedExample = new TwitterFeedExample();
 					twitterFeedExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
@@ -146,7 +179,8 @@ public class PublicHomeBean  {
 					} else {
 						setFacebookFeed(null);
 					}
-					
+				
+					setLastVideos(DAOManager.getVideoDAO().selectLastActiveVideosForCountry(country));
 				}
 			});
 		} catch (Exception e) {
@@ -158,10 +192,10 @@ public class PublicHomeBean  {
 		return this.getRankingPositions().getPositions().subList(0, REDUCED_RANKING_SIZE);
 	}
 	
-	public List<Note> getReducedAgenda() {
-		List<Note> result = new ArrayList<Note>();
+	public List<NoteValueObject> getReducedAgenda() {
+		List<NoteValueObject> result = new ArrayList<NoteValueObject>();
 		int size = 0;
-		Iterator<Note> agendaIterator = this.getAgendaNotes().iterator();
+		Iterator<NoteValueObject> agendaIterator = this.getAgendaNotes().iterator();
 		while (size < MAX_AGENDA_NOTES_FOR_HOME && agendaIterator.hasNext()) {
 			result.add(agendaIterator.next());
 			size = size + 1;
@@ -169,10 +203,10 @@ public class PublicHomeBean  {
 		return result;
 	}
 	
-	public List<Note> getReducedLastNotes() {
-		List<Note> result = new ArrayList<Note>();
+	public List<NoteValueObject> getReducedLastNotes() {
+		List<NoteValueObject> result = new ArrayList<NoteValueObject>();
 		int size = 0;
-		Iterator<Note> lastNotesIterator = this.getLastNotes().iterator();
+		Iterator<NoteValueObject> lastNotesIterator = this.getLastNotes().iterator();
 		while (size < MAX_LAST_NOTES_FOR_HOME && lastNotesIterator.hasNext()) {
 			result.add(lastNotesIterator.next());
 			size = size + 1;
@@ -181,6 +215,11 @@ public class PublicHomeBean  {
 	}
 	
 	public String formatAgendaDate(Date date) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		return simpleDateFormat.format(date);
+	}
+	
+	public String formatDate(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		return simpleDateFormat.format(date);
 	}
@@ -237,19 +276,19 @@ public class PublicHomeBean  {
 		this.rankingPositions = rankingPositions;
 	}
 
-	public List<Note> getFrontCoverNotes() {
+	public List<NoteValueObject> getFrontCoverNotes() {
 		return frontCoverNotes;
 	}
 
-	public void setFrontCoverNotes(List<Note> frontCoverNotes) {
+	public void setFrontCoverNotes(List<NoteValueObject> frontCoverNotes) {
 		this.frontCoverNotes = frontCoverNotes;
 	}
 
-	public List<Note> getAgendaNotes() {
+	public List<NoteValueObject> getAgendaNotes() {
 		return agendaNotes;
 	}
 
-	public void setAgendaNotes(List<Note> agendaNotes) {
+	public void setAgendaNotes(List<NoteValueObject> agendaNotes) {
 		this.agendaNotes = agendaNotes;
 	}
 
@@ -269,11 +308,19 @@ public class PublicHomeBean  {
 		this.facebookFeed = facebookFeed;
 	}
 
-	public List<Note> getLastNotes() {
+	public List<NoteValueObject> getLastNotes() {
 		return lastNotes;
 	}
 
-	public void setLastNotes(List<Note> lastNotes) {
+	public void setLastNotes(List<NoteValueObject> lastNotes) {
 		this.lastNotes = lastNotes;
+	}
+
+	public List<Video> getLastVideos() {
+		return lastVideos;
+	}
+
+	public void setLastVideos(List<Video> lastVideos) {
+		this.lastVideos = lastVideos;
 	}
 }

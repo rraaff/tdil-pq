@@ -1,10 +1,14 @@
 package com.tdil.struts.forms;
 
+import org.apache.commons.io.FilenameUtils;
+
 public class UploadData {
 
 	private boolean modified = false;
 	private String fileName;
 	private byte[] data;
+	
+	private static final int MAX_FILE_NAME_LENGTH = 100;
 	
 	public UploadData(String fileName, byte data[], boolean modified) {
 		this.setFileName(fileName);
@@ -12,7 +16,18 @@ public class UploadData {
 		this.setModified(modified);
 	}
 	
+	public String getExtension() {
+		return FilenameUtils.getExtension(this.getFileName());
+	}
+	
 	public String getFileName() {
+		if (fileName != null) {
+			int length = fileName.length();
+			if (length > MAX_FILE_NAME_LENGTH) {
+				int start = length - MAX_FILE_NAME_LENGTH - 1;
+				fileName = fileName.substring(start, length - 1);
+			}
+		}
 		return fileName;
 	}
 	public void setFileName(String fileName) {
