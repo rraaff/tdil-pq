@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
@@ -22,7 +21,7 @@ public class BlobLocalDiskCache {
 		typesToResolvers.put(type, blobResolver);
 	}
 	
-	public static BlobLocalData getBlob(String type, int id, int version, String filename, User user) {
+	public static BlobLocalData getBlob(String type, int id, int version, String ext, User user) {
 		BlobResolver blobResolver = typesToResolvers.get(type);
 		if (blobResolver == null) {
 			getLog().error("No se encontro un blob resolver para " + type);
@@ -33,7 +32,7 @@ public class BlobLocalDiskCache {
 			return null;
 		}
 		// TODO sincronizar el load...
-		String localDataLocation = makeFileName(type, id, version, filename, blobResolver);
+		String localDataLocation = makeFileName(type, id, version, ext, blobResolver);
 		File local = new File(localDataLocation);
 		if (!local.exists()) {
 			try {
@@ -46,18 +45,18 @@ public class BlobLocalDiskCache {
 		}
 		// TODO quizas deberia tener un margen de x bytes para mantenerlo en memoria
 		try {
-			return new BlobLocalData(filename, localDataLocation, new FileInputStream(local));
+			return new BlobLocalData(ext, localDataLocation, new FileInputStream(local));
 		} catch (FileNotFoundException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
 		}
 	}
 	
-	private static String makeFileName(String type, int id, int version, String filename, BlobResolver blobResolver) {
+	private static String makeFileName(String type, int id, int version, String ext, BlobResolver blobResolver) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(diskBlobLocation).append("/");
 		sb.append(type).append(separator);
-		sb.append(version).append('.').append(FilenameUtils.getExtension(filename));
+		sb.append(version).append('.').append(ext);
 		return sb.toString();
 	}
 

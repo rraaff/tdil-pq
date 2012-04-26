@@ -1,11 +1,8 @@
 package com.tdil.web;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.activation.MimeType;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,12 +26,12 @@ public class DownloadController extends HttpServlet {
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.setHeader("Pragma", "no-cache");
-		res.setDateHeader("Expires", 0);
+		//res.setHeader("Pragma", "no-cache");
+		//res.setDateHeader("Expires", 0);
 		String type = req.getParameter("type");
 		int id = Integer.parseInt(req.getParameter("id"));
-		String filename = req.getParameter("filename");
-		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlob(type, id, 0, filename, null); //TODO
+		String ext = req.getParameter("ext");
+		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlob(type, id, 0, ext, null); //TODO usuario
 		if (blobLocalData != null) {
 			// refactorizar a blobLocalData
 			res.setContentType(blobLocalData.getMimeType());

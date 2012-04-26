@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
@@ -372,6 +373,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			NoteImage noteImage = new NoteImage();
 			noteImage.setIdNote(noteId);
 			noteImage.setFilename(noteImageBean.getUploadData().getFileName());
+			noteImage.setExtension(noteImageBean.getUploadData().getExtension());
 			noteImage.setNoteimage(noteImageBean.getUploadData().getData());
 			noteImage.setOrdernumber(index++);
 			noteImage.setDeleted(0);

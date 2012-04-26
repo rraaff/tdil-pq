@@ -139,6 +139,7 @@ $(document).ready(
 			</div>
 		</div>
 		<h2>ultimos videos</h2>
+		<%@ include file="includes/homeVideos.jsp" %> 
 		<div id="BlockVideos">
 			<div id="left"><img src="images/demo/videoGrande.jpg" width="425" height="297"></div>
 			<div id="right">

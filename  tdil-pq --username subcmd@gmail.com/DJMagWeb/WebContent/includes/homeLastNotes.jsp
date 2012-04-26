@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.model.Note"%>
 <style>
 #BlockMain #mainContent #frontNote {
@@ -48,12 +49,12 @@
 </style>
 <% if (publicHomeBean.hasLastNotes()) { %>
 	<div id="mainContent">
-		<% for (Note note : publicHomeBean.getReducedLastNotes()) { %>
-			<div id="frontNote" style="background-image:url(images/demo/mainContentImage.jpg);"><!-- haría dinámica esta parte-->
+		<% for (NoteValueObject note : publicHomeBean.getReducedLastNotes()) { %>
+			<div id="frontNote" style="background-image:url(./download.st?id=<%=note.getNoteImages().get(0).getId()%>&type=note&ext=<%=note.getNoteImages().get(0).getExtension()%>);">
 				<div id="noteContentBase">
 					<h1><%=note.getTitle() %></h1>
-					<span>ACA VA LA BAJADA DE LA NOTA</span>
-					<div id="date">ACA VA LA FECHA</div>
+					<span><%=note.getSummary() %></span>
+					<div id="date"><%=publicHomeBean.formatDate(note.getFromDate()) %></div>
 				</div>
 			</div>
 		<% } %>
