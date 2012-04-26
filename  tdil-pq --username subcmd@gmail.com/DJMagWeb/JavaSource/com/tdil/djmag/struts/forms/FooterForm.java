@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.djmag.dao.FacebookFeedDAO;
+import com.tdil.djmag.dao.FooterDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
-import com.tdil.djmag.model.FacebookFeed;
-import com.tdil.djmag.model.FacebookFeedExample;
 import com.tdil.djmag.model.RankingNoteCountry;
+import com.tdil.djmag.model.Footer;
+import com.tdil.djmag.model.FooterExample;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
@@ -22,7 +22,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class FacebookFeedForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class FooterForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -35,12 +35,12 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	private String htmlContent;
 	private int countryId;
 	
-	private List<FacebookFeed> allFacebookFeeds;
+	private List<Footer> allFooters;
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
 	private static List<Country> allCountries = new ArrayList<Country>();
 	
-	private static String htmlContent_key = "FacebookFeed.htmlContent";
-	private static String country_key = "FacebookFeed.country";
+	private static String htmlContent_key = "Footer.htmlContent";
+	private static String country_key = "Footer.country";
 
 	@Override
 	public void reset() throws SQLException {
@@ -52,7 +52,6 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		clearSelectedCountries();
 	}
 
 	private void clearSelectedCountries() {
@@ -64,8 +63,8 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	/** Used for delete */
 	public void resetAfterDelete() throws SQLException {
 		this.reset();
-		FacebookFeedExample example = new FacebookFeedExample();
-		this.setAllFacebookFeeds(DAOManager.getFacebookFeedDAO().selectFacebookFeedByExampleWithoutBLOBs(example));
+		FooterExample example = new FooterExample();
+		this.setAllFooters(DAOManager.getFooterDAO().selectFooterByExampleWithoutBLOBs(example));
 	}
 	public void initForDeleteWith(int userId) throws SQLException {
 		this.objectId = userId;
@@ -74,17 +73,17 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		FacebookFeedExample twitterFeedExample = new FacebookFeedExample();
-		twitterFeedExample.createCriteria().andIdEqualTo(this.getObjectId());
-		FacebookFeed twitterFeed = DAOManager.getFacebookFeedDAO().selectFacebookFeedByExampleWithoutBLOBs(twitterFeedExample).get(0);
-		twitterFeed.setDeleted(twitterFeed.getDeleted().equals(1) ? 0 : 1);
-		DAOManager.getFacebookFeedDAO().updateFacebookFeedByExampleWithoutBLOBs(twitterFeed, twitterFeedExample);
+		FooterExample videoExample = new FooterExample();
+		videoExample.createCriteria().andIdEqualTo(this.getObjectId());
+		Footer video = DAOManager.getFooterDAO().selectFooterByExampleWithoutBLOBs(videoExample).get(0);
+		video.setDeleted(video.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getFooterDAO().updateFooterByExampleWithoutBLOBs(video, videoExample);
 	}
 
 	@Override
 	public void init() throws SQLException {
-		FacebookFeedExample example = new FacebookFeedExample();
-		this.setAllFacebookFeeds(DAOManager.getFacebookFeedDAO().selectFacebookFeedByExampleWithoutBLOBs(example));
+		FooterExample example = new FooterExample();
+		this.setAllFooters(DAOManager.getFooterDAO().selectFooterByExampleWithoutBLOBs(example));
 		
 		CountryExample countryExample = new CountryExample();
 		countryExample.setOrderByClause("name");
@@ -102,17 +101,17 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	
 	@Override
 	public void initWith(int id) throws SQLException {
-		FacebookFeedDAO twitterFeedDAO = DAOManager.getFacebookFeedDAO();
-		FacebookFeed twitterFeed = twitterFeedDAO.selectFacebookFeedByPrimaryKey(id);
-		if (twitterFeed != null) {
+		FooterDAO videoDAO = DAOManager.getFooterDAO();
+		Footer video = videoDAO.selectFooterByPrimaryKey(id);
+		if (video != null) {
 			this.objectId = id;
-			this.htmlContent = twitterFeed.getHtmlcontent();
+			this.htmlContent = video.getHtmlcontent();
 		} 
 		// reseteo los paises
 		resetSelectedCountries();
 	}
 	
-	public static Country getCountryForFacebookFeedId(Integer sectionId) {
+	public static Country getCountryForFooterId(Integer sectionId) {
 		for (Country c : getAllCountries()) {
 			if (c.getId().equals(sectionId)) {
 				return c;
@@ -152,38 +151,29 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-		FacebookFeedDAO twitterFeedDAO = DAOManager.getFacebookFeedDAO();
-		{// Validate duplicated name
-			FacebookFeedExample example = new FacebookFeedExample();
-			example.createCriteria().andIdCountryEqualTo(this.getCountryId());
-			List<FacebookFeed> list = twitterFeedDAO.selectFacebookFeedByExampleWithoutBLOBs(example);
-			if (!list.isEmpty()) {
-				FacebookFeed db = list.get(0);
-				if (!db.getId().equals(this.getObjectId())) {
-					validationError.setFieldError(country_key, ValidationErrors.DUPLICATED);
-				}
-			}
-		}
-		
+			
 	}
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		FacebookFeedDAO twitterFeedDAO = DAOManager.getFacebookFeedDAO();
+		FooterDAO videoDAO = DAOManager.getFooterDAO();
 		if (this.getObjectId() == 0) {
-			FacebookFeed twitterFeed = new FacebookFeed();
-			twitterFeed.setIdCountry(this.getCountryId());
-			twitterFeed.setHtmlcontent(this.getHtmlContent());
-			twitterFeed.setDeleted(0);
-			twitterFeedDAO.insertFacebookFeed(twitterFeed);
+			Footer video = new Footer();
+			updateFooter(video);
+			video.setDeleted(0);
+			videoDAO.insertFooter(video);
 		} else {
-			FacebookFeed twitterFeed = new FacebookFeed();
-			twitterFeed.setId(this.getObjectId());
-			twitterFeed.setIdCountry(this.getCountryId());
-			twitterFeed.setHtmlcontent(this.getHtmlContent());
-			twitterFeedDAO.updateFacebookFeedByPrimaryKeySelective(twitterFeed);
+			Footer video = new Footer();
+			video.setId(this.getObjectId());
+			updateFooter(video);
+			videoDAO.updateFooterByPrimaryKeySelective(video);
 		}
 		
+	}
+
+	private void updateFooter(Footer video) {
+		video.setIdCountry(this.getCountryId());
+		video.setHtmlcontent(this.getHtmlContent());
 	}
 	
 	public int getObjectId() {
@@ -231,12 +221,12 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 		this.htmlContent = htmlContent;
 	}
 
-	public List<FacebookFeed> getAllFacebookFeeds() {
-		return allFacebookFeeds;
+	public List<Footer> getAllFooters() {
+		return allFooters;
 	}
 
-	public void setAllFacebookFeeds(List<FacebookFeed> allRankings) {
-		this.allFacebookFeeds = allRankings;
+	public void setAllFooters(List<Footer> allRankings) {
+		this.allFooters = allRankings;
 	}
 
 	public int getId() {
@@ -254,5 +244,6 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 	public void setCountryId(int countryId) {
 		this.countryId = countryId;
 	}
+
 
 }

@@ -7,6 +7,7 @@ import com.tdil.djmag.dao.BannerPositionDAO;
 import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FacebookFeedDAO;
+import com.tdil.djmag.dao.FooterDAO;
 import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.NewsletterDAO;
@@ -25,6 +26,7 @@ import com.tdil.djmag.dao.impl.BannerPositionDAOImpl;
 import com.tdil.djmag.dao.impl.BlobDataDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
+import com.tdil.djmag.dao.impl.FooterDAOImpl;
 import com.tdil.djmag.dao.impl.MagazineDAOImpl;
 import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
 import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
@@ -112,5 +114,9 @@ public class DAOManager {
 	
 	public static BlobDataDAO getBlobDataDAO() throws SQLException {
 		return new BlobDataDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static FooterDAO getFooterDAO() throws SQLException {
+		return new FooterDAOImpl(IBatisManager.getClient());
 	}
 }

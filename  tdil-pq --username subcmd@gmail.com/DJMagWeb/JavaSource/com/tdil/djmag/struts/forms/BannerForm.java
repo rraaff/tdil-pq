@@ -26,7 +26,6 @@ public class BannerForm extends TransactionalValidationForm implements ToggleDel
 	private int objectId;
 	private String description;
 	private String htmlContent;
-	private boolean deleted;
 	
 	private List<Banner> allBanners;
 	
@@ -38,7 +37,6 @@ public class BannerForm extends TransactionalValidationForm implements ToggleDel
 		this.objectId = 0;
 		this.description = null;
 		this.htmlContent = null;
-		this.deleted = false;
 	}
 
 	@Override
@@ -56,7 +54,6 @@ public class BannerForm extends TransactionalValidationForm implements ToggleDel
 			this.objectId = id;
 			this.description = banner.getDescription();
 			this.htmlContent = banner.getHtmlcontent();
-			this.deleted = banner.getDeleted() == 1;
 		} 
 	}
 	
@@ -110,7 +107,7 @@ public class BannerForm extends TransactionalValidationForm implements ToggleDel
 			Banner banner = new Banner();
 			banner.setDescription(this.getDescription());
 			banner.setHtmlcontent(this.getHtmlContent());
-			banner.setDeleted(this.isDeleted() ? 1 : 0);
+			banner.setDeleted(0);
 			bannerDAO.insertBanner(banner);
 		} else {
 			Banner banner = new Banner();
@@ -127,14 +124,6 @@ public class BannerForm extends TransactionalValidationForm implements ToggleDel
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public int getId() {

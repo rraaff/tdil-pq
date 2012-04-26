@@ -37,7 +37,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	private boolean frontcover;
 	private boolean popular;
 	private int countryId;
-	private boolean deleted;
 	
 	private List<Video> allVideos;
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
@@ -55,7 +54,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		this.htmlContent = null;
 		this.frontcover = false;
 		this.popular = false;
-		this.deleted = false;
 		this.resetSelectedCountries();
 	}
 	
@@ -63,7 +61,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.frontcover = false;
 		this.popular = false;
-		this.deleted = false;
 		clearSelectedCountries();
 	}
 
@@ -124,7 +121,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 			this.htmlContent = video.getHtmlcontent();
 			this.frontcover = video.getFrontcover() == 1;
 			this.popular= video.getPopular() == 1;
-			this.deleted = video.getDeleted() == 1;
 		} 
 		// reseteo los paises
 		resetSelectedCountries();
@@ -180,6 +176,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		if (this.getObjectId() == 0) {
 			Video video = new Video();
 			updateVideo(video);
+			video.setDeleted(0);
 			videoDAO.insertVideo(video);
 		} else {
 			Video video = new Video();
@@ -196,7 +193,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		video.setHtmlcontent(this.getHtmlContent());
 		video.setFrontcover(this.isFrontcover() ? 1 : 0);
 		video.setPopular(this.isPopular() ? 1 : 0);
-		video.setDeleted(this.isDeleted() ? 1 : 0);
 	}
 	
 	public int getObjectId() {
@@ -205,14 +201,6 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {

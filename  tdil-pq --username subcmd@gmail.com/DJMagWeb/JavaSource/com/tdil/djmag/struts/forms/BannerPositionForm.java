@@ -38,7 +38,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	private int bannerId;
 	private int countryId;
 	private String insertPoint;
-	private boolean deleted;
 	
 	private List<BannerPosition> allBannerPositions;
 	
@@ -58,7 +57,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
-		this.deleted = false;
 		this.resetSelectedInsertPoints();
 		this.resetSelectedBanners();
 		this.resetSelectedCountries();
@@ -66,7 +64,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.deleted = false;
 		clearSelectedInsertPoints();
 		clearSelectedBanners();
 		clearSelectedCountries();
@@ -155,7 +152,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 			this.setBannerId(bannerPosition.getIdBanner());
 			this.countryId = bannerPosition.getIdCountry();
 			this.setInsertPoint(bannerPosition.getPosition());
-			this.deleted = bannerPosition.getDeleted() == 1;
 		} 
 		// reseteo los paises
 		resetSelectedInsertPoints();
@@ -207,6 +203,7 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 		if (this.getObjectId() == 0) {
 			BannerPosition bannerPosition = new BannerPosition();
 			updateBannerPosition(bannerPosition);
+			bannerPosition.setDeleted(0);
 			bannerPositionDAO.insertBannerPosition(bannerPosition);
 		} else {
 			BannerPosition bannerPosition = new BannerPosition();
@@ -220,7 +217,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 		position.setIdCountry(this.getCountryId());
 		position.setIdBanner(this.getBannerId());
 		position.setPosition(this.getInsertPoint());
-		position.setDeleted(this.isDeleted() ? 1 : 0);
 	}
 	
 	public int getObjectId() {
@@ -229,14 +225,6 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 
 	public void setObjectId(int id) {
 		this.objectId = id;
-	}
-
-	public boolean isDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
 	}
 
 	public CountrySelectionVO getSelectedCountry(int index) {
