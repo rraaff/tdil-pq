@@ -107,6 +107,7 @@ body {
 	float: left;
 	height: 88px;
 	width: 197px;
+	border-right: 1px solid #386061;
 }
 #portaHeader #header #menu {
 	height: 88px;
