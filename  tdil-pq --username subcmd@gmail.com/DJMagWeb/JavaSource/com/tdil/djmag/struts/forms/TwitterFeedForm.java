@@ -195,6 +195,11 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {
+		for (CountrySelectionVO csvo : selectedCountries) {
+			if (csvo.getCountryId() == this.getCountryId()) {
+				csvo.setSelected(true);
+			}
+		}
 		return selectedCountries;
 	}
 

@@ -6,19 +6,25 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
+import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.VideoDAO;
 import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.BlobData;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.Video;
 import com.tdil.djmag.model.VideoExample;
+import com.tdil.djmag.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.struts.forms.UploadData;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -36,6 +42,8 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	private String description;
 	private boolean frontcover;
 	private boolean popular;
+	private UploadData frontCover;
+	private FormFile frontCoverFormFile;
 	private int countryId;
 	
 	private List<Video> allVideos;
@@ -45,6 +53,9 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	private static String description_key = "Video.description";
 	private static String htmlContent_key = "Video.htmlContent";
 	private static String country_key = "Video.country";
+	private static String front_cover_key = "Video.front_cover";
+	
+	private static final int MAX_FRONT_COVER_SIZE = 2000000;
 
 	@Override
 	public void reset() throws SQLException {
@@ -54,20 +65,46 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		this.htmlContent = null;
 		this.frontcover = false;
 		this.popular = false;
+		this.frontCover = null;
 		this.resetSelectedCountries();
+	}
+	
+	public boolean isCountrySelected(int id) {
+		return id == this.getCountryId();
 	}
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.frontcover = false;
 		this.popular = false;
-		clearSelectedCountries();
+		//clearSelectedCountries();
 	}
 
 	private void clearSelectedCountries() {
 		for (CountrySelectionVO countrySelectionVO : getSelectedCountries()) {
 			countrySelectionVO.setSelected(false);
 		}
+	}
+	
+	public boolean getHasFrontCover() {
+		return this.getFrontCover() != null;
+	}
+
+	public void uploadFrontCover(ValidationError error) {
+		FormFile formFile = this.getFrontCoverFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, front_cover_key, true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > MAX_FRONT_COVER_SIZE) {
+				error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
+				this.setFrontCover(null);
+				return;
+			}
+			this.setFrontCover(uploadData);
+		}
+	}
+	public void deleteFrontCover() {
+		this.setFrontCover(null);			
 	}
 	
 	/** Used for delete */
@@ -114,14 +151,23 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	@Override
 	public void initWith(int id) throws SQLException {
 		VideoDAO videoDAO = DAOManager.getVideoDAO();
+		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
 		Video video = videoDAO.selectVideoByPrimaryKey(id);
 		if (video != null) {
 			this.objectId = id;
 			this.description = video.getDescription();
 			this.htmlContent = video.getHtmlcontent();
 			this.frontcover = video.getFrontcover() == 1;
-			this.popular= video.getPopular() == 1;
+			this.popular = video.getPopular() == 1;
+			this.countryId = video.getIdCountry();
+			if (!StringUtils.isEmpty(video.getFrontcoverext())) {
+				BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(video.getFrontcoverId());
+				this.setFrontCover(new UploadData(video.getFrontcoverext(), content.getContent(), false));
+			} else {
+				this.setFrontCover(null);
+			}
 		} 
+		
 		// reseteo los paises
 		resetSelectedCountries();
 	}
@@ -176,12 +222,26 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		if (this.getObjectId() == 0) {
 			Video video = new Video();
 			updateVideo(video);
+			if (this.getFrontCover() != null) {
+				int blobId = BlobHelper.insertBlob(this.getFrontCover());
+				video.setFrontcoverId(blobId);
+				video.setFrontcoverext(this.getFrontCover().getExtension());
+			}
 			video.setDeleted(0);
 			videoDAO.insertVideo(video);
 		} else {
-			Video video = new Video();
-			video.setId(this.getObjectId());
+			Video video = videoDAO.selectVideoByPrimaryKey(this.getObjectId());
 			updateVideo(video);
+			if (BlobHelper.shouldDeleteBlob(this.getFrontCover())) {
+				BlobHelper.deleteBlob(video.getFrontcoverId());
+				video.setFrontcoverId(0);
+				video.setFrontcoverext("");
+			}
+			if (this.getFrontCover() != null) {
+				int blobId = BlobHelper.insertBlob(this.getFrontCover());
+				video.setFrontcoverId(blobId);
+				video.setFrontcoverext(this.getFrontCover().getExtension());
+			}
 			videoDAO.updateVideoByPrimaryKeySelective(video);
 		}
 		
@@ -204,6 +264,11 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {
+		for (CountrySelectionVO csvo : selectedCountries) {
+			if (csvo.getCountryId() == this.getCountryId()) {
+				csvo.setSelected(true);
+			}
+		}
 		return selectedCountries;
 	}
 
@@ -286,6 +351,22 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	public void setPopular(boolean popular) {
 		this.popular = popular;
+	}
+
+	public UploadData getFrontCover() {
+		return frontCover;
+	}
+
+	public void setFrontCover(UploadData frontCover) {
+		this.frontCover = frontCover;
+	}
+
+	public FormFile getFrontCoverFormFile() {
+		return frontCoverFormFile;
+	}
+
+	public void setFrontCoverFormFile(FormFile frontCoverFormFile) {
+		this.frontCoverFormFile = frontCoverFormFile;
 	}
 
 }

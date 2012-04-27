@@ -119,6 +119,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		this.popular = false;
 		this.showInAgenda = false;
 		this.agendaDate = "";
+		this.sectionId = 0;
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
 		this.setImages(new ArrayList<NoteImageBean>());
@@ -522,6 +523,11 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	}
 
 	public List<SectionSelectionVO> getAllSections() {
+		for (SectionSelectionVO ssvo : allSections) {
+			if (ssvo.getSection().getId() == this.getSectionId()) {
+				ssvo.setSelected(true);
+			}
+		}
 		return allSections;
 	}
 

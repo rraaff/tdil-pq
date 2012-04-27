@@ -57,6 +57,8 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
+		this.countryId = 0;
+		this.bannerId = 0;
 		this.resetSelectedInsertPoints();
 		this.resetSelectedBanners();
 		this.resetSelectedCountries();
@@ -288,6 +290,11 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {
+		for (CountrySelectionVO csvo : selectedCountries) {
+			if (csvo.getCountryId() == this.getCountryId()) {
+				csvo.setSelected(true);
+			}
+		}
 		return selectedCountries;
 	}
 
@@ -296,6 +303,11 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	}
 
 	public List<BannerSelectionVO> getSelectedBanners() {
+		for (BannerSelectionVO bsvo : selectedBanners) {
+			if (bsvo.getBannerId() == this.getBannerId()) {
+				bsvo.setSelected(true);
+			}
+		}
 		return selectedBanners;
 	}
 
