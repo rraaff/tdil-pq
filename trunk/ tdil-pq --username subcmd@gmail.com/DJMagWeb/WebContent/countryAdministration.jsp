@@ -20,11 +20,14 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveCountry">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon">
-					<div class="label">Nombre</div><html:text name="CountryForm" property="name" /><%=DJMagErrorFormatter.getErrorFrom(request, "Country.name.err")%>
-				</div>
-				<div class="renglon">
-					<div class="label">Iso code2</div><html:text name="CountryForm" property="iso_code_2" /><%=DJMagErrorFormatter.getErrorFrom(request, "Country.iso_code_2.err")%> <span class="comment">Ejemplo: AR (para Argentina)</span>
+				<div class="renglon width700">
+					<div class="label width50">Nombre</div>
+					<div class="label width200"><html:text name="CountryForm" property="name" styleClass="width180"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Country.name.err")%></div>
+					<div class="label width80">Iso code2</div>
+					<div class="label width80"><html:text name="CountryForm" property="iso_code_2" styleClass="width50"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Country.iso_code_2.err")%></div>
+					<div class="label width150"><span class="comment">Ejemplo: AR (para Argentina)</span></div>
 				</div>
 				<logic:equal name="CountryForm" property="objectId" value="0">
 					<html:submit property="operation">

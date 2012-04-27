@@ -10,7 +10,10 @@ body {
 	line-height: normal;
 	font-weight: normal;
 	color: #000000;
-}
+}/*
+div {
+	border:dotted 1px #009900;
+}*/
 h1, h2, h3, h4 {
 	font-style: normal;
 	font-weight: normal;
@@ -112,7 +115,8 @@ a:hover {
 	float:left;
 	text-align:left;
 	position:relative;
-	line-height: normal;
+	font-size: 12px;
+	line-height: 20px;
 }
 .comment{
 	font-size: 80%;
@@ -153,11 +157,19 @@ td {
 	color: #333333;
 	background-color: #CCCCCC;
 }
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], select {
 	float:left;
 	margin:0;
-	padding:0;
+	padding:1px;
 	line-height: normal;
+	border:solid 1px #999999;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 }
 input[type="button"], input[type="submit"] {
 	background-color:#18A7A7;
@@ -188,22 +200,28 @@ input[type="button"], input[type="submit"] {
 .width150 { width:150px; }
 .width180 { width:180px; }
 .width200 { width:200px; }
+.width280 { width:280px; }
 .width300 { width:300px; }
 .width320 { width:320px; }
+.width350 { width:350px; }
 .width400 { width:400px; }
 .width500 { width:500px; }
 .width700 { width:700px; }
+.width720 { width:720px; }
 .width740 { width:740px; }
 .width760 { width:760px; }
 .width800 { width:800px; }
 .width860 { width:860px; }
 
+.height25 { height:25px; }
 .height50 { height:50px; }
+.height60 { height:60px; }
 .height80 { height:80px; }
 .height100 { height:100px; }
 .height120 { height:120px; }
 .height150 { height:150px; }
 .height180 { height:180px; }
+.height200 { height:200px; }
 .height250 { height:250px; }
 
 .border1 { border:#999 1px solid }

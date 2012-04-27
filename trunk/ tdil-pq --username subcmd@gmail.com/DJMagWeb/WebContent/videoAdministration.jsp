@@ -26,8 +26,8 @@
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon width860">
 					<div class="label width80">Pa&iacute;s</div>
-					<div class="label width300">
-						<html:select name="VideoForm" property="countryId" styleClass="textfield_effect">
+					<div class="label width200">
+						<html:select name="VideoForm" property="countryId" styleClass="width180">
 							<logic:iterate name="VideoForm" property="selectedCountries"
 								id="iterCountry">
 								<option
@@ -35,7 +35,9 @@
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%></div>
+						</html:select>
+					</div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%></div>
 					<div class="label width100"><html:checkbox name="VideoForm" property="frontcover" />Portada</div>
 					<div class="label width100"><html:checkbox name="VideoForm" property="popular" />Popular</div>
 				</div>

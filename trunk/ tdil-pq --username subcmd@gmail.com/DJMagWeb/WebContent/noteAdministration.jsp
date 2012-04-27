@@ -23,13 +23,7 @@
 		$("input[name=agendaDate]").datepicker({dateFormat: 'yy-mm-dd'});
 	});
 </script>
-<style>
-.renglon {
-	width:840px;
-}
-</style>
 </head>
-
 <body>
 <div id="header"></div>
 <div id="container">
@@ -37,43 +31,19 @@
 	<div id="formulariosBase">
 		<h1>Administraci&oacute;n de notas simples</h1>
 		<div id="conteinerScrollable">
-			<html:form method="POST" action="/saveNote"
-				enctype="multipart/form-data">
+			<html:form method="POST" action="/saveNote" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
-				<div class="renglon">
+				<div class="renglon width860">
 					<div class="label width50">T&iacute;tulo</div>
-					<div class="label width320"><html:text name="NoteForm" property="title" styleClass="width300" /></div>
+					<div class="label width200"><html:text name="NoteForm" property="title" styleClass="width180" /></div>
 					<div class="label width20"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.title.err")%></div>
-					<div class="label width100">T&iacute;tulo en URL</div>
-					<div class="label width320"><html:text name="NoteForm" property="webTitle" styleClass="width300"/></div>
-					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.webtitle.err")%></div>
-				</div>
-				<div class="renglon height80">
-					<div class="label width50">Bajada</div>
-					<div class="label width760 height80"><html:textarea name="NoteForm" property="summary" styleClass="width740 height80"/></div>
-					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.summary.err")%></div>
-				</div>
-				<div class="renglon height250">
-					<div class="label width100">Texto de la nota</div>
-					<div class="label width760 height250"><html:textarea name="NoteForm" property="content" styleClass="width740 height250" /></div>
-					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.content.err")%></div>
-				</div>
-				<div class="renglon">
-					<div class="label width100">Publicada desde</div>
-					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.fromdate.err")%></div>
-					<div class="label width100">Publicada hasta</div>
-					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.todate.err")%></div>
-					<div class="label width120"><html:checkbox name="NoteForm" property="frontCover" />Ver en Portada</div>
-					<div class="label width180"><html:checkbox name="NoteForm" property="popular" />Ver en &Uacute;ltimas noticias</div>
-				</div>
-				<div class="renglon">
-					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
-					<div class="label width120">Fecha de agenda</div>
-					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agendadate.err")%></div>
+					<div class="label width80">T&iacute;tulo en URL</div>
+					<div class="label width200"><html:text name="NoteForm" property="webTitle" styleClass="width180"/></div>
+					<div class="label width20"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.webtitle.err")%></div>
 					<div class="label width50">Secci&oacute;n</div>
 					<div class="label width150">
-						<html:select name="NoteForm" property="sectionId" styleClass="textfield_effect">
+						<html:select name="NoteForm" property="sectionId" styleClass="width120">
 							<logic:iterate name="NoteForm" property="allSections"
 								id="iterSection">
 								<option
@@ -84,42 +54,68 @@
 						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Note.section.err")%>
 					</div>
 				</div>
-				<h2>Portada</h2>
+				<div class="renglon width860 height60">
+					<div class="label width50">Bajada</div>
+					<div class="label width760 height60"><html:textarea name="NoteForm" property="summary" styleClass="width740 height50"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.summary.err")%></div>
+				</div>
+				<div class="renglon width860 height180">
+					<div class="label width50">Texto</div>
+					<div class="label width760 height180"><html:textarea name="NoteForm" property="content" styleClass="width740 height200" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.content.err")%></div>
+				</div>
+				<div class="renglon width860">
+					<div class="label width100">Publicada desde</div>
+					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.fromdate.err")%></div>
+					<div class="label width100">Publicada hasta</div>
+					<div class="label width120"><html:text name="NoteForm" property="toDate" styleClass="width100"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.todate.err")%></div>
+				</div>
+				<div class="renglon width860">
+					<div class="label width120"><html:checkbox name="NoteForm" property="frontCover" />Ver en Portada</div>
+					<div class="label width180"><html:checkbox name="NoteForm" property="popular" />Ver en &Uacute;ltimas noticias</div>
+					<div class="label width150"><html:checkbox name="NoteForm" property="showInAgenda" />Mostrar en agenda</div>
+					<div class="label width120">Fecha de agenda</div>
+					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agendadate.err")%></div>
+				</div>
+				<h2>Im&aacute; en Portada</h2>
 				<logic:equal name="NoteForm" property="hasFrontCoverImage" value="true">
 					<html:img action="/viewImageNote.do?type=cover" align="middle" width="75" height="50" alt="" />
 					<bean:write name="NoteForm" property="frontCoverImage.fileName" />
 					<a href="javascript:document.NoteForm.action='./deleteNoteFrontCover.do';document.NoteForm.submit();">Borrar</a>
 				</logic:equal>
-					Im&aacute;gen <html:file name="NoteForm"
-								property="frontCoverImageFormFile" /><html:button property="operation"
-								onclick="this.form.action='./uploadNoteFrontCover.do';this.form.submit();">
-								<bean:message key="uploadImage" />
-							</html:button>
-							
-				<h2>News Cover</h2>
+					Im&aacute;gen
+					<html:file name="NoteForm"
+						property="frontCoverImageFormFile" /><html:button property="operation"
+						onclick="this.form.action='./uploadNoteFrontCover.do';this.form.submit();">
+						<bean:message key="uploadImage" />
+					</html:button>
+				<h2>Im&aacute;gen en &Uacute;ltimas noticias (Destacadas)</h2>
 				<logic:equal name="NoteForm" property="hasNewsCover" value="true">
 					<html:img action="/viewImageNote.do?type=newsCover" align="middle" width="75" height="50" alt="" />
 					<bean:write name="NoteForm" property="lastNewsCoverImage.fileName" />
 					<a href="javascript:document.NoteForm.action='./deleteNewsCover.do';document.NoteForm.submit();">Borrar</a>
 				</logic:equal>
-					Im&aacute;gen <html:file name="NoteForm"
-								property="lastNewsCoverImageFormFile" /><html:button property="operation"
-								onclick="this.form.action='./uploadNewsCover.do';this.form.submit();">
-								<bean:message key="uploadImage" />
-							</html:button>
+					Im&aacute;gen
+					<html:file name="NoteForm"
+						property="lastNewsCoverImageFormFile" /><html:button property="operation"
+						onclick="this.form.action='./uploadNewsCover.do';this.form.submit();">
+						<bean:message key="uploadImage" />
+					</html:button>
 							
-				<h2>News thumb</h2>
+				<h2>Im&aacute;gen en &Uacute;ltimas noticias (chicas)</h2>
 				<logic:equal name="NoteForm" property="hasNewsThumb" value="true">
 					<html:img action="/viewImageNote.do?type=newsThumb" align="middle" width="75" height="50" alt="" />
 					<bean:write name="NoteForm" property="lastNewsThumbImage.fileName" />
 					<a href="javascript:document.NoteForm.action='./deleteNewsThumb.do';document.NoteForm.submit();">Borrar</a>
 				</logic:equal>
-					Im&aacute;gen <html:file name="NoteForm"
-								property="lastNewsThumbImageFormFile" /><html:button property="operation"
-								onclick="this.form.action='./uploadNewsThumb.do';this.form.submit();">
-								<bean:message key="uploadImage" />
-							</html:button>
-							
+					Im&aacute;gen
+					<html:file name="NoteForm"
+						property="lastNewsThumbImageFormFile" /><html:button property="operation"
+						onclick="this.form.action='./uploadNewsThumb.do';this.form.submit();">
+						<bean:message key="uploadImage" />
+					</html:button>
 				<h2>Imágenes de la nota</h2>
 				<table>
 					<tr>
@@ -231,7 +227,7 @@
 							// Defines a simpler toolbar to be used in this sample.
 							// Note that we have added out "MyButton" button here.
 							toolbar : [ ['Format'] ],
-							height:"150", width:"800"
+							height:"100", width:"740"
 							
 						});
 				//]]>

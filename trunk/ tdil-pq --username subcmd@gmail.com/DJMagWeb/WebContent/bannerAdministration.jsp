@@ -23,11 +23,13 @@
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon width860">
 					<div class="label width80">Descripci&oacute;n</div>
-					<div class="label width200"><html:text name="BannerForm" property="description" styleClass="width200"/><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.description.err")%></div>
+					<div class="label width200"><html:text name="BannerForm" property="description" styleClass="width200"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.description.err")%></div>
 				</div>
-				<div class="renglon width860 height180">
-					<div class="label width50 height180">HTML</div>
-					<div class="label width740 height180"><html:textarea name="BannerForm" property="htmlContent" styleClass="width700 height180"/><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.htmlContent.err")%></div>
+				<div class="renglon width860 height150">
+					<div class="label width50 height150">HTML</div>
+					<div class="label width740 height150"><html:textarea name="BannerForm" property="htmlContent" styleClass="width720 height120"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Banner.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="BannerForm" property="objectId" value="0">
 					<html:submit property="operation">
