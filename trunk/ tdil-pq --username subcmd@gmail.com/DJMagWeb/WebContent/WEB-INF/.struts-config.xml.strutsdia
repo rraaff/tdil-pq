@@ -726,4 +726,24 @@
    PATH="/noteAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadVideoFrontCover" NAME="action72"
+  PATH="/uploadVideoFrontCover" SHAPE="32,9249,0,0" TITLE="VideoForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewVideoFrontCover" NAME="action73"
+  PATH="/viewVideoFrontCover" SHAPE="32,13617,0,0" TITLE="VideoForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deleteVideoFrontCover" NAME="action74"
+  PATH="/deleteVideoFrontCover" SHAPE="32,9713,0,0" TITLE="VideoForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

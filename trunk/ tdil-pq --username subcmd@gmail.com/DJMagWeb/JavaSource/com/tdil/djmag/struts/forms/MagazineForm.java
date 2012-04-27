@@ -130,9 +130,10 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	}
 
 	public void uploadFrontCover(ValidationError error) {
-		UploadData uploadData = FieldValidation.validateFormFile(this.getFrontCoverFormFile(), front_cover_key, true, error);
+		FormFile formFile = this.getFrontCoverFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, front_cover_key, true, error);
 		if (uploadData != null) {
-			int fileSize = this.getFrontCoverFormFile().getFileSize();
+			int fileSize = formFile.getFileSize();
 			if (fileSize > MAX_FRONT_COVER_SIZE) {
 				error.setFieldError(front_cover_key, ValidationErrors.TOO_BIG);
 				this.setFrontCover(null);
@@ -143,9 +144,9 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 	}
 	
 	public void uploadMagazineContent(ValidationError error) {
-		UploadData uploadData = FieldValidation.validateFormFile(this.getMagazineContentFormFile(), magazine_key, true, error);
+		UploadData uploadData = FieldValidation.validateFormFile(formFile(), magazine_key, true, error);
 		if (uploadData != null) {
-			int fileSize = this.getMagazineContentFormFile().getFileSize();
+			int fileSize = formFile().getFileSize();
 			if (fileSize > MAX_MAGAZINE_SIZE) {
 				error.setFieldError(magazine_key, ValidationErrors.TOO_BIG);
 				this.setMagazineContent(null);
@@ -153,6 +154,10 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 			}
 			this.setMagazineContent(uploadData);			
 		}
+	}
+
+	private FormFile formFile() {
+		return this.getMagazineContentFormFile();
 	}
 	
 	public void deleteFrontCover() {

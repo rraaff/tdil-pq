@@ -302,6 +302,19 @@
    <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/videoAdministration.jsp"/>
   </action>
+  <action name="VideoForm" parameter="Admin" path="/uploadVideoFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.UploadVideoFrontCoverAction">
+   <forward name="continue" path="/videoAdministration.jsp"/>
+   <forward name="failure" path="/videoAdministration.jsp"/>
+  </action>
+  <action name="VideoForm" parameter="Admin" path="/viewVideoFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.ViewVideoFrontCoverAction">
+  </action>
+  <action name="VideoForm" parameter="Admin" path="/deleteVideoFrontCover"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteVideoFrontCoverAction">
+   <forward name="continue" path="/videoAdministration.jsp"/>
+  </action>
+
   
   <action name="BannerPositionForm" parameter="Admin" path="/goToBannerPositionABM"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">

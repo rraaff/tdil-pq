@@ -41,7 +41,7 @@
 							</logic:iterate>
 						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.country.err")%></div>
 					<div class="label width300">
-						<html:select name="BannerPositionForm" property="bannerId" styleClass="textfield_effect">
+						Banner<html:select name="BannerPositionForm" property="bannerId" styleClass="textfield_effect">
 							<logic:iterate name="BannerPositionForm" property="selectedBanners"
 								id="iterBanner">
 								<option

@@ -22,7 +22,7 @@
 	<div id="formulariosBase">
 		<h1>Administraci&oacute;n de Videos</h1>
 		<div id="conteinerScrollable">
-			<html:form method="POST" action="/saveVideo">
+			<html:form method="POST" action="/saveVideo" enctype="multipart/form-data">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon width860">
 					<div class="label width80">Pa&iacute;s</div>
@@ -31,13 +31,28 @@
 							<logic:iterate name="VideoForm" property="selectedCountries"
 								id="iterCountry">
 								<option
-									<%=((CountrySelectionVO) iterCountry).isSelected() ? "selected" : ""%>
+									<%=(((CountrySelectionVO) iterCountry).isSelected()) ? "selected" : ""%>
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
 						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Video.country.err")%></div>
 					<div class="label width100"><html:checkbox name="VideoForm" property="frontcover" />Portada</div>
 					<div class="label width100"><html:checkbox name="VideoForm" property="popular" />Popular</div>
+				</div>
+				<h2>Portada</h2>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<div class="label width300 height150">
+						<logic:equal name="VideoForm" property="hasFrontCover" value="true">
+							<html:img action="/viewVideoFrontCover" align="middle" width="112" height="150" alt="" styleClass="border1" />
+							<bean:write name="VideoForm" property="frontCover.fileName" />
+							<a href="javascript:document.VideoForm.action='./deleteVideoFrontCover.do';document.VideoForm.submit();">Borrar</a>
+						</logic:equal>
+					</div>
+					<div class="label width80">
+						<html:file name="VideoForm" property="frontCoverFormFile" /><html:button property="operation" onclick="this.form.action='./uploadVideoFrontCover.do';this.form.submit();">
+							<bean:message key="uploadImage" />
+						</html:button> <%=DJMagErrorFormatter.getErrorFrom(request, "Video.front_cover.err")%>
+					</div>
 				</div>
 				<div class="renglon width860 height50">
 					<div class="label width80">Descripci&oacute;n</div>
@@ -65,6 +80,7 @@
 			<table>
 				<tr>
 					<td class="headerTablas">Pais</td>
+					<td class="headerTablas">Descripcion</td>
 					<td class="headerTablas">Acciones</td>
 				</tr>
 				<logic:iterate name="VideoForm" property="allVideos"
@@ -76,6 +92,12 @@
 							align="left">
 								<% 	Country country = VideoForm.getCountryWithId(((Video) iterVideo).getIdCountry()); %>
 								<%= country.getName() %>&nbsp;
+						</td>
+						<td
+							<%=((com.tdil.ibatis.PersistentObject) iterVideo).getDeleted() == 1 ? "class=\"notActive\""
+								: ""%>
+							align="left">
+								<bean:write name="iterVideo" property="description" />
 						</td>
 						<td><html:link action="/editVideo" paramName="iterVideo"
 								paramProperty="id" paramId="id">
