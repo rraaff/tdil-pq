@@ -12,6 +12,8 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import com.tdil.djmag.dao.CountryDAO;
+import com.tdil.djmag.dao.FooterDAO;
+import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.dao.SectionDAO;
@@ -20,6 +22,10 @@ import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.FacebookFeed;
 import com.tdil.djmag.model.FacebookFeedExample;
+import com.tdil.djmag.model.Footer;
+import com.tdil.djmag.model.FooterExample;
+import com.tdil.djmag.model.Magazine;
+import com.tdil.djmag.model.MagazineExample;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
@@ -33,6 +39,7 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
+import com.tdil.utils.DateUtils;
 import com.tdil.utils.XMLUtils;
 
 
@@ -47,6 +54,10 @@ public class PublicHomeBean  {
 	
 	private RankingNote ranking;
 	private RankingPositions rankingPositions;
+	
+	private Magazine magazine;
+	
+	private Footer footer;
 	
 	private TwitterFeed twitterFeed;
 	private FacebookFeed facebookFeed;
@@ -70,6 +81,14 @@ public class PublicHomeBean  {
 	
 	public boolean hasRanking() {
 		return this.getRanking() != null;
+	}
+	
+	public boolean hasMagazine() {
+		return this.getMagazine() != null;
+	}
+	
+	public boolean hasFooter() {
+		return this.getFooter() != null;
 	}
 	
 	public boolean hasFrontCovers() {
@@ -131,6 +150,29 @@ public class PublicHomeBean  {
 						setRanking(null);
 						setRankingPositions(null);
 					}
+					// Cargo el magazine
+					MagazineDAO magazineDAO = DAOManager.getMagazineDAO();
+					MagazineExample magazineExample = new MagazineExample();
+					magazineExample.setOrderByClause("publish_date");
+					magazineExample.createCriteria().andDeletedEqualTo(0).andPublishDateGreaterThanOrEqualTo(DateUtils.date2FirstMomentOfMonth(new Date()));
+					List<Magazine> listMagazine = magazineDAO.selectMagazineByExample(magazineExample);
+					if (!listMagazine.isEmpty()) {
+						setMagazine(listMagazine.get(0));
+					} else {
+						setMagazine(null);
+					}
+					
+					// cargo el footer
+					FooterDAO footerDAO = DAOManager.getFooterDAO();
+					FooterExample footerExample = new FooterExample();
+					footerExample.createCriteria().andDeletedEqualTo(0).andIdCountryEqualTo(country.getId());
+					List<Footer> footers = footerDAO.selectFooterByExampleWithBLOBs(footerExample);
+					if (!footers.isEmpty()) {
+						setFooter(footers.get(0));
+					} else {
+						setFooter(null);
+					}
+					
 					// cargo las notas de tapa
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
@@ -148,15 +190,17 @@ public class PublicHomeBean  {
 					for (NoteValueObject nvo : allNotes) {
 						notesIds.add(nvo.getId());
 					}
-					List<Integer> param = new ArrayList<Integer>(notesIds);
-					NoteImageExample noteImageExample = new NoteImageExample();
-					noteImageExample.createCriteria().andIdNoteIn(param);
-					noteImageExample.setOrderByClause("id_note, orderNumber");
-					List<NoteImage> noteImages = DAOManager.getNoteImageDAO().selectNoteImageByExampleWithoutBLOBs(noteImageExample);
-					for (NoteImage ni : noteImages) {
-						for (NoteValueObject nvo : allNotes) {
-							if (ni.getIdNote().equals(nvo.getId())) {
-								nvo.addNoteImage(ni);
+					if (!notesIds.isEmpty()) {
+						List<Integer> param = new ArrayList<Integer>(notesIds);
+						NoteImageExample noteImageExample = new NoteImageExample();
+						noteImageExample.createCriteria().andIdNoteIn(param);
+						noteImageExample.setOrderByClause("id_note, orderNumber");
+						List<NoteImage> noteImages = DAOManager.getNoteImageDAO().selectNoteImageByExampleWithoutBLOBs(noteImageExample);
+						for (NoteImage ni : noteImages) {
+							for (NoteValueObject nvo : allNotes) {
+								if (ni.getIdNote().equals(nvo.getId())) {
+									nvo.addNoteImage(ni);
+								}
 							}
 						}
 					}
@@ -214,13 +258,18 @@ public class PublicHomeBean  {
 		return result;
 	}
 	
-	public String formatAgendaDate(Date date) {
+	public static String formatAgendaDate(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		return simpleDateFormat.format(date);
 	}
 	
-	public String formatDate(Date date) {
+	public static String formatDate(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		return simpleDateFormat.format(date);
+	}
+	
+	public static String formatMagazineDate(Date date) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yyyy");
 		return simpleDateFormat.format(date);
 	}
 	
@@ -322,5 +371,21 @@ public class PublicHomeBean  {
 
 	public void setLastVideos(List<Video> lastVideos) {
 		this.lastVideos = lastVideos;
+	}
+
+	public Magazine getMagazine() {
+		return magazine;
+	}
+
+	public void setMagazine(Magazine magazine) {
+		this.magazine = magazine;
+	}
+
+	public Footer getFooter() {
+		return footer;
+	}
+
+	public void setFooter(Footer footer) {
+		this.footer = footer;
 	}
 }

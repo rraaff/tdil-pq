@@ -92,6 +92,9 @@ $(document).ready(
 		<div id="bannerRight"><img src="images/banners/bannerRight.gif" width="250" height="268"></div>
 	</div>
 </div>
+<!-- Pablo revistar -->
+<%@ include file="includes/homeMagazine.jsp" %>
+
 <div id="BlockSecondaryContent">
 	<div id="leftContent">
 		<%@ include file="includes/homeLastNotes.jsp" %>
@@ -124,6 +127,7 @@ $(document).ready(
 		<%@ include file="includes/homeFacebook.jsp" %>
 	</div>
 </div>
+<%@ include file="includes/homeFooter.jsp" %> 
 <% } else { %>
 <body style="background-image:none;">
 	<div id="BlockCoutrySelection">
