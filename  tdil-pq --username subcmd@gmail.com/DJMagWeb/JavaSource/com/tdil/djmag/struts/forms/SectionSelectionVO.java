@@ -1,9 +1,15 @@
 package com.tdil.djmag.struts.forms;
 
+import java.io.Serializable;
+
 import com.tdil.djmag.model.Section;
 
-public class SectionSelectionVO {
+public class SectionSelectionVO implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5454047414505641108L;
 	private Section section;
 	private boolean selected;
 	

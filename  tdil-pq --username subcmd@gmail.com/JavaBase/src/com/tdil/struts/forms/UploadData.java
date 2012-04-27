@@ -1,5 +1,7 @@
 package com.tdil.struts.forms;
 
+import javax.activation.MimetypesFileTypeMap;
+
 import org.apache.commons.io.FilenameUtils;
 
 public class UploadData {
@@ -46,6 +48,10 @@ public class UploadData {
 
 	public void setModified(boolean modified) {
 		this.modified = modified;
+	}
+	
+	public String getContentType() {
+		return new MimetypesFileTypeMap().getContentType(this.getFileName());
 	}
 
 }

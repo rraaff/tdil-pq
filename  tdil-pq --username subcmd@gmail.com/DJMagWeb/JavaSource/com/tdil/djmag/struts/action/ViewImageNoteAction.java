@@ -1,6 +1,5 @@
 package com.tdil.djmag.struts.action;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,12 +16,36 @@ public class ViewImageNoteAction extends AbstractAction {
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		int id = Integer.valueOf((String)request.getParameter("id"));
+		String type = request.getParameter("type");
 		NoteForm noteForm = (NoteForm) form;
-		NoteImageBean noteImageBean = noteForm.getNoteImage(id);
-		String contentType = new MimetypesFileTypeMap().getContentType(noteImageBean.getUploadData().getFileName());
+		String contentType = null;
+		byte data[];
+		if ("cover".equals(type)) {
+			contentType = noteForm.getFrontCoverImage().getContentType();
+			data = noteForm.getFrontCoverImage().getData();
+		} else {
+			if ("agenda".equals(type)) {
+				contentType = noteForm.getAgendaImage().getContentType();
+				data = noteForm.getAgendaImage().getData();
+			} else {
+				if ("newsCover".equals(type)) {
+					contentType = noteForm.getLastNewsCoverImage().getContentType();
+					data = noteForm.getLastNewsCoverImage().getData();
+				} else {
+					if ("newsThumb".equals(type)) {
+						contentType = noteForm.getLastNewsThumbImage().getContentType();
+						data = noteForm.getLastNewsThumbImage().getData();
+					} else {
+						int id = Integer.valueOf((String)request.getParameter("id"));
+						NoteImageBean noteImageBean = noteForm.getNoteImage(id);
+						contentType = noteImageBean.getUploadData().getContentType();
+						data = noteImageBean.getUploadData().getData();
+					}
+				}
+			}
+		}
 		response.setContentType(contentType);
-		response.getOutputStream().write(noteImageBean.getUploadData().getData());
+		response.getOutputStream().write(data);
 		return null;
 	}
 

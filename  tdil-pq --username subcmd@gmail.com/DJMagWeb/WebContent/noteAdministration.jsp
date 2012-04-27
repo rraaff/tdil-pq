@@ -84,6 +84,42 @@
 						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "Note.section.err")%>
 					</div>
 				</div>
+				<h2>Portada</h2>
+				<logic:equal name="NoteForm" property="hasFrontCoverImage" value="true">
+					<html:img action="/viewImageNote.do?type=cover" align="middle" width="75" height="50" alt="" />
+					<bean:write name="NoteForm" property="frontCoverImage.fileName" />
+					<a href="javascript:document.NoteForm.action='./deleteNoteFrontCover.do';document.NoteForm.submit();">Borrar</a>
+				</logic:equal>
+					Im&aacute;gen <html:file name="NoteForm"
+								property="frontCoverImageFormFile" /><html:button property="operation"
+								onclick="this.form.action='./uploadNoteFrontCover.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button>
+							
+				<h2>News Cover</h2>
+				<logic:equal name="NoteForm" property="hasNewsCover" value="true">
+					<html:img action="/viewImageNote.do?type=newsCover" align="middle" width="75" height="50" alt="" />
+					<bean:write name="NoteForm" property="lastNewsCoverImage.fileName" />
+					<a href="javascript:document.NoteForm.action='./deleteNewsCover.do';document.NoteForm.submit();">Borrar</a>
+				</logic:equal>
+					Im&aacute;gen <html:file name="NoteForm"
+								property="lastNewsCoverImageFormFile" /><html:button property="operation"
+								onclick="this.form.action='./uploadNewsCover.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button>
+							
+				<h2>News thumb</h2>
+				<logic:equal name="NoteForm" property="hasNewsThumb" value="true">
+					<html:img action="/viewImageNote.do?type=newsThumb" align="middle" width="75" height="50" alt="" />
+					<bean:write name="NoteForm" property="lastNewsThumbImage.fileName" />
+					<a href="javascript:document.NoteForm.action='./deleteNewsThumb.do';document.NoteForm.submit();">Borrar</a>
+				</logic:equal>
+					Im&aacute;gen <html:file name="NoteForm"
+								property="lastNewsThumbImageFormFile" /><html:button property="operation"
+								onclick="this.form.action='./uploadNewsThumb.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button>
+							
 				<h2>Imágenes de la nota</h2>
 				<table>
 					<tr>
