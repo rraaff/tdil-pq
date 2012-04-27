@@ -25,9 +25,9 @@
 			<html:form method="POST" action="/saveFooter">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon width860">
-					<div class="label width80">Pa&iacute;s</div>
+					<div class="label width50">Pa&iacute;s</div>
 					<div class="label width300">
-						<html:select name="FooterForm" property="countryId" styleClass="textfield_effect">
+						<html:select name="FooterForm" property="countryId" styleClass="width280">
 							<logic:iterate name="FooterForm" property="selectedCountries"
 								id="iterCountry">
 								<option
@@ -35,10 +35,13 @@
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select><html:link action="/resetFooter">Resetear</html:link><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
+						</html:select>
+					</div>
+					<div class="label width100"><html:link action="/resetFooter">Resetear</html:link></div>
+					<div class="label width100"><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
 				</div>
 				<div class="renglon width860 height80">
-					<div class="label width80">HTML</div>
+					<div class="label width50">HTML</div>
 					<div class="label width700 height80"><html:textarea name="FooterForm" property="htmlContent" styleClass="width700 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="FooterForm" property="objectId" value="0">
