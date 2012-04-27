@@ -8,15 +8,6 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
-<style>
-	.renglon{
-		width:250px;
-		height:25px;
-	}
-	.label {
-		width:80px;
-	}
-</style>
 </head>
 
 <body>
@@ -25,15 +16,17 @@
 	<div id="loginBase">
 		<h1>Ingreso al Administrador</h1>
 		<html:form method="POST" action="/login">
-		<div class="renglon" style="margin-top:35px;">
+		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
+		<div class="renglon width230">
 			<html:hidden name="LoginForm" property="operation" value=""/>
-			<div class="label">Usuario</div><html:text name="LoginForm" property="username"/><span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
+			<div class="label width80">Usuario</div>
+			<div class="label width150"><html:text name="LoginForm" property="username" styleClass="width120"/></div>
 		</div>
-		<div class="renglon">
-			<div class="label">Contrase&ntilde;a</div><html:password name="LoginForm" property="password"/>
+		<div class="renglon width230">
+			<div class="label width80">Contrase&ntilde;a</div>
+			<div class="label width150"><html:password name="LoginForm" property="password" styleClass="width120"/></div>
 		</div>
 		<html:submit property="operation">Login</html:submit>
-	
 		</html:form>
 	</div>
 </div>
