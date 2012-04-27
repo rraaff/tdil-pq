@@ -116,6 +116,17 @@
 						onclick="this.form.action='./uploadNewsThumb.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
+				<h2>Agenda</h2>
+				<logic:equal name="NoteForm" property="hasAgendaImage" value="true">
+					<html:img action="/viewImageNote.do?type=agenda" align="middle" width="75" height="50" alt="" />
+					<bean:write name="NoteForm" property="agendaImage.fileName" />
+					<a href="javascript:document.NoteForm.action='./deleteNoteAgenda.do';document.NoteForm.submit();">Borrar</a>
+				</logic:equal>
+					Im&aacute;gen <html:file name="NoteForm"
+						property="agendaImageFormFile" /><html:button property="operation"
+						onclick="this.form.action='./uploadNoteAgenda.do';this.form.submit();">
+						<bean:message key="uploadImage" />
+					</html:button>
 				<h2>Imágenes de la nota</h2>
 				<table>
 					<tr>

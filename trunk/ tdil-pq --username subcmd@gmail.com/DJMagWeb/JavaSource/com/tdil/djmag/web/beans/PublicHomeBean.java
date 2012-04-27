@@ -63,6 +63,8 @@ public class PublicHomeBean  {
 	private FacebookFeed facebookFeed;
 	
 	private List<NoteValueObject> frontCoverNotes;
+	private NoteValueObject lastNoteFirst;
+	private NoteValueObject lastNoteSecond;
 	private List<NoteValueObject> lastNotes;
 	private List<NoteValueObject> agendaNotes;
 	
@@ -73,7 +75,8 @@ public class PublicHomeBean  {
 	public static final String PUBLIC_HOME_BEAN = "publicHomeBean";
 	private static final int REDUCED_RANKING_SIZE = 10;
 	private static final int MAX_AGENDA_NOTES_FOR_HOME = 5;
-	private static final int MAX_LAST_NOTES_FOR_HOME = 5;
+	private static final int MAX_LAST_NOTES_FOR_HOME = 3;
+	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
@@ -95,8 +98,16 @@ public class PublicHomeBean  {
 		return this.getFrontCoverNotes() != null && !this.getFrontCoverNotes().isEmpty();
 	}
 	
+	public boolean hasLastNoteFirst() {
+		return this.getLastNoteFirst() != null;
+	}
+	
+	public boolean hasLastNoteSecond() {
+		return this.getLastNoteSecond() != null;
+	}
+	
 	public boolean hasLastNotes() {
-		return this.getLastNotes() != null && !this.getLastNotes().isEmpty();
+		return this.getLastNotes() != null && this.getLastNotes().size() > 2;
 	}
 	
 	public boolean hasAgenda() {
@@ -178,6 +189,16 @@ public class PublicHomeBean  {
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
 					// cargo las ultimas notas de tapa
 					setLastNotes(noteDAO.selectActiveLastNotesForCountry(country));
+					if (getLastNotes().size() > 0) {
+						setLastNoteFirst(getLastNotes().get(0));
+					} else {
+						setLastNoteFirst(null);
+					}
+					if (getLastNotes().size() > 1) {
+						setLastNoteSecond(getLastNotes().get(1));
+					} else {
+						setLastNoteSecond(null);
+					}
 					// cargo la agenda
 					setAgendaNotes(noteDAO.selectActiveAgendaNotesForCountry(country));
 					
@@ -248,14 +269,18 @@ public class PublicHomeBean  {
 	}
 	
 	public List<NoteValueObject> getReducedLastNotes() {
-		List<NoteValueObject> result = new ArrayList<NoteValueObject>();
-		int size = 0;
-		Iterator<NoteValueObject> lastNotesIterator = this.getLastNotes().iterator();
-		while (size < MAX_LAST_NOTES_FOR_HOME && lastNotesIterator.hasNext()) {
-			result.add(lastNotesIterator.next());
-			size = size + 1;
+		if (this.getLastNotes().size() > 2) {
+			List<NoteValueObject> result = new ArrayList<NoteValueObject>();
+			int size = 0;
+			Iterator<NoteValueObject> lastNotesIterator = this.getLastNotes().subList(2, getLastNotes().size()).iterator();
+			while (size < MAX_LAST_NOTES_FOR_HOME && lastNotesIterator.hasNext()) {
+				result.add(lastNotesIterator.next());
+				size = size + 1;
+			}
+			return result;
+		} else {
+			return new ArrayList<NoteValueObject>();
 		}
-		return result;
 	}
 	
 	public static String formatAgendaDate(Date date) {
@@ -364,6 +389,10 @@ public class PublicHomeBean  {
 	public void setLastNotes(List<NoteValueObject> lastNotes) {
 		this.lastNotes = lastNotes;
 	}
+	
+	public Video getTopVideo() {
+		return getLastVideos().get(0);
+	}
 
 	public List<Video> getLastVideos() {
 		return lastVideos;
@@ -387,5 +416,21 @@ public class PublicHomeBean  {
 
 	public void setFooter(Footer footer) {
 		this.footer = footer;
+	}
+
+	public NoteValueObject getLastNoteFirst() {
+		return lastNoteFirst;
+	}
+
+	public void setLastNoteFirst(NoteValueObject lastNoteFirst) {
+		this.lastNoteFirst = lastNoteFirst;
+	}
+
+	public NoteValueObject getLastNoteSecond() {
+		return lastNoteSecond;
+	}
+
+	public void setLastNoteSecond(NoteValueObject lastNoteSecond) {
+		this.lastNoteSecond = lastNoteSecond;
 	}
 }

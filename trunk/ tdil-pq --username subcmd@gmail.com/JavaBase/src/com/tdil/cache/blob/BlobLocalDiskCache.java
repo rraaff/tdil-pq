@@ -56,7 +56,7 @@ public class BlobLocalDiskCache {
 		StringBuffer sb = new StringBuffer();
 		sb.append(diskBlobLocation).append("/");
 		sb.append(type).append(separator);
-		sb.append(version).append('.').append(ext);
+		sb.append(id).append('.').append(version).append('.').append(ext);
 		return sb.toString();
 	}
 

@@ -478,7 +478,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			note.setFrontcoverext(this.getFrontCoverImage().getExtension());
 		}
 		if (BlobHelper.shouldInsertBlob(this.getAgendaImage())) {
-			int blobId = BlobHelper.insertBlob(this.getFrontCoverImage());
+			int blobId = BlobHelper.insertBlob(this.getAgendaImage());
 			note.setAgendaId(blobId);
 			note.setAgendaext(this.getAgendaImage().getExtension());
 		}

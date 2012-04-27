@@ -53,7 +53,7 @@
 <div id="mainContent">
 	<% if (publicHomeBean.hasFrontCovers()) { %>
 		<% for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
-			<div id="frontNote" style="background-image:url(./download.st?id=<%=note.getNoteImages().get(0).getId()%>&type=note&ext=<%=note.getNoteImages().get(0).getExtension()%>);">
+			<div id="frontNote" style="background-image:url(./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>);">
 				<div id="noteContentBase">
 					<h1><%=note.getTitle() %></h1>
 					<div id="bajada"><%=note.getSummary() %></div>
