@@ -16,10 +16,12 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
+import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.NoteCountryDAO;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.NoteImageDAO;
 import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.BlobData;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.Note;
@@ -32,6 +34,7 @@ import com.tdil.djmag.model.NoteImageExample.Criteria;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionExample;
 import com.tdil.djmag.model.SectionType;
+import com.tdil.djmag.utils.BlobHelper;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -119,6 +122,10 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		this.resetSelectedSections();
 		this.resetSelectedCountries();
 		this.setImages(new ArrayList<NoteImageBean>());
+		this.setFrontCoverImage(null);
+		this.setAgendaImage(null);
+		this.setLastNewsCoverImage(null);
+		this.setLastNewsThumbImage(null);
 	}
 	
 	@Override
@@ -204,20 +211,45 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	@Override
 	public void initWith(int id) throws SQLException {
 		NoteDAO rankingDAO = DAOManager.getNoteDAO();
-		Note ranking = rankingDAO.selectNoteByPrimaryKey(id);
-		if (ranking != null) {
+		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
+		Note note = rankingDAO.selectNoteByPrimaryKey(id);
+		if (note != null) {
 			this.objectId = id;
-			this.sectionId = ranking.getIdSection();
-			this.title = ranking.getTitle();
-			this.webTitle = ranking.getWebTitle();
-			this.summary = ranking.getSummary();
-			this.content = ranking.getContent();
-			this.fromDate = formatDate(ranking.getFromDate());
-			this.toDate = formatDate(ranking.getToDate());
-			this.frontCover = ranking.getFrontcover().equals(1);
-			this.popular = ranking.getPopular().equals(1);
-			this.showInAgenda = ranking.getShowinagenda().equals(1);
-			this.agendaDate = formatDate(ranking.getAgendaDate());
+			this.sectionId = note.getIdSection();
+			this.title = note.getTitle();
+			this.webTitle = note.getWebTitle();
+			this.summary = note.getSummary();
+			this.content = note.getContent();
+			this.fromDate = formatDate(note.getFromDate());
+			this.toDate = formatDate(note.getToDate());
+			this.frontCover = note.getFrontcover().equals(1);
+			this.popular = note.getPopular().equals(1);
+			this.showInAgenda = note.getShowinagenda().equals(1);
+			this.agendaDate = formatDate(note.getAgendaDate());
+			if (!StringUtils.isEmpty(note.getFrontcoverext())) {
+				BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(note.getFrontcoverId());
+				this.setFrontCoverImage(new UploadData(content.getFilename(), content.getContent(), false));
+			} else {
+				this.setFrontCoverImage(null);
+			}
+			if (!StringUtils.isEmpty(note.getAgendaext())) {
+				BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(note.getAgendaId());
+				this.setAgendaImage(new UploadData(content.getFilename(), content.getContent(), false));
+			} else {
+				this.setAgendaImage(null);
+			}
+			if (!StringUtils.isEmpty(note.getLastnewscoverext())) {
+				BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(note.getLastnewscoverId());
+				this.setLastNewsCoverImage(new UploadData(content.getFilename(), content.getContent(), false));
+			} else {
+				this.setLastNewsCoverImage(null);
+			}
+			if (!StringUtils.isEmpty(note.getLastnewsthumbext())) {
+				BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(note.getLastnewsthumbId());
+				this.setLastNewsThumbImage(new UploadData(content.getFilename(), content.getContent(), false));
+			} else {
+				this.setLastNewsThumbImage(null);
+			}
 		} 
 		// reseto las secciones
 		this.resetSelectedSections();
@@ -363,12 +395,14 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			note.setIdSection(this.getSectionId());
 			updateNote(note);
 			note.setDeleted(0);
+			insertBlobs(note);
 			noteId = noteDAO.insertNote(note);
 		} else {
 			Note note = new Note();
 			note.setId(this.getObjectId());
 			note.setIdSection(this.getSectionId());
 			updateNote(note);
+			updateBlobs(note);
 			noteDAO.updateNoteByPrimaryKeySelective(note);
 			noteId = this.getObjectId();
 		}
@@ -406,6 +440,57 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			}
 		}
 		
+	}
+
+	private void updateBlobs(Note note) throws SQLException {
+		deleteBlobs(note);
+		insertBlobs(note);
+	}
+
+	private void deleteBlobs(Note note) throws SQLException {
+		if (BlobHelper.shouldDeleteBlob(this.getFrontCoverImage())) {
+			BlobHelper.deleteBlob(note.getFrontcoverId());
+			note.setFrontcoverId(0);
+			note.setFrontcoverext("");
+		}
+		if (BlobHelper.shouldDeleteBlob(this.getAgendaImage())) {
+			BlobHelper.deleteBlob(note.getAgendaId());
+			note.setAgendaId(0);
+			note.setAgendaext("");
+		}
+		if (BlobHelper.shouldDeleteBlob(this.getLastNewsCoverImage())) {
+			BlobHelper.deleteBlob(note.getLastnewscoverId());
+			note.setLastnewscoverId(0);
+			note.setLastnewscoverext("");
+		}
+		if (BlobHelper.shouldDeleteBlob(this.getLastNewsThumbImage())) {
+			BlobHelper.deleteBlob(note.getLastnewsthumbId());
+			note.setLastnewsthumbId(0);
+			note.setLastnewsthumbext("");
+		}
+	}
+
+	private void insertBlobs(Note note) throws SQLException {
+		if (BlobHelper.shouldInsertBlob(this.getFrontCoverImage())) {
+			int blobId = BlobHelper.insertBlob(this.getFrontCoverImage());
+			note.setFrontcoverId(blobId);
+			note.setFrontcoverext(this.getFrontCoverImage().getExtension());
+		}
+		if (BlobHelper.shouldInsertBlob(this.getAgendaImage())) {
+			int blobId = BlobHelper.insertBlob(this.getFrontCoverImage());
+			note.setAgendaId(blobId);
+			note.setAgendaext(this.getAgendaImage().getExtension());
+		}
+		if (BlobHelper.shouldInsertBlob(this.getLastNewsCoverImage())) {
+			int blobId = BlobHelper.insertBlob(this.getLastNewsCoverImage());
+			note.setLastnewscoverId(blobId);
+			note.setLastnewscoverext(this.getLastNewsCoverImage().getExtension());
+		}
+		if (BlobHelper.shouldInsertBlob(this.getLastNewsThumbImage())) {
+			int blobId = BlobHelper.insertBlob(this.getLastNewsThumbImage());
+			note.setLastnewsthumbId(blobId);
+			note.setLastnewsthumbext(this.getLastNewsThumbImage().getExtension());
+		}
 	}
 
 	private void updateNote(Note note) {
@@ -769,6 +854,22 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			}
 			this.setLastNewsThumbImage(uploadData);
 		}
+	}
+	
+	public boolean getHasAgendaImage() {
+		return this.getAgendaImage() != null;
+	}
+	
+	public boolean getHasFrontCoverImage() {
+		return this.getFrontCoverImage() != null;
+	}
+	
+	public boolean getHasNewsCover() {
+		return this.getLastNewsCoverImage() != null;
+	}
+	
+	public boolean getHasNewsThumb() {
+		return this.getLastNewsThumbImage() != null;
 	}
 
 	public void deleteNoteAgenda() {
