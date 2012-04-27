@@ -236,7 +236,7 @@ CREATE TABLE MAGAZINE (
   `publish_date` DATE NOT NULL ,
   `frontCoverExt` VARCHAR(10) NOT NULL ,
   `frontCover_id` INT NULL,
-  `magazineContentExt` VARCHAR(10) NOT NULL ,
+  `magazineContentExt` VARCHAR(10) NULL ,
   `magazineContent_id` INT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))

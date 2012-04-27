@@ -18,6 +18,33 @@ public class DateUtils {
 		}
 	}
 	
+	public static Date date2FirstMomentOfDate(Date date) {
+		if (date == null) {
+			return null;
+		}
+		try {
+			Calendar calendar = getCalendarWith(date,
+				0,0,0,0);
+			return calendar.getTime();
+		} catch (Exception e) {
+			return new Date();
+		}
+	}
+	
+	public static Date date2FirstMomentOfMonth(Date date) {
+		if (date == null) {
+			return null;
+		}
+		try {
+			Calendar calendar = getCalendarWith(date,
+				0,0,0,0);
+			calendar.set(Calendar.DAY_OF_MONTH, 1);
+			return calendar.getTime();
+		} catch (Exception e) {
+			return new Date();
+		}
+	}
+	
 	protected static Calendar getCalendarWith(Date date, int hour, int minutes, int seconds, int milliseconds) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);

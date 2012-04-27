@@ -57,6 +57,14 @@
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>
  </servlet-mapping>
+ <servlet>
+  <servlet-name>DownloadAttachmentController</servlet-name>
+  <servlet-class>com.tdil.web.DownloadAttachmentController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>DownloadAttachmentController</servlet-name>
+  <url-pattern>/downloadAttach.st</url-pattern>
+ </servlet-mapping>
  
  <!-- Action Servlet Configuration -->
  <servlet>

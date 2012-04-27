@@ -113,7 +113,7 @@ public class MagazineForm extends TransactionalValidationForm implements ToggleD
 			BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(magazine.getFrontcoverId());
 			this.setFrontCover(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
 			if (!StringUtils.isEmpty(magazine.getMagazinecontentext())) {
-				BlobData magazineContent = blobDataDAO.selectBlobDataByPrimaryKey(magazine.getFrontcoverId());
+				BlobData magazineContent = blobDataDAO.selectBlobDataByPrimaryKey(magazine.getMagazinecontentId());
 				this.setMagazineContent(new UploadData(magazineContent.getFilename(), magazineContent.getContent(), false));
 			} else {
 				this.setMagazineContent(null);
