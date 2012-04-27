@@ -12,6 +12,10 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <%@ include file="includes/head.jsp" %>
 <script>
+
+	function setAsTopVideo(divId) {
+		$("#topvideo").prop("innerHTML", $("#"+divId).prop("innerHTML"));
+	}
 $(document).ready(
 	function(){
 	
@@ -95,10 +99,12 @@ $(document).ready(
 <!-- Pablo revistar -->
 <%@ include file="includes/homeMagazine.jsp" %>
 
+<%@ include file="includes/homeLastNotesCover.jsp" %>
+
 <div id="BlockSecondaryContent">
 	<div id="leftContent">
 		<%@ include file="includes/homeLastNotes.jsp" %>
-		<div id="BlockPopularNews">
+		<!--div id="BlockPopularNews">
 			<div id="lastNews" style="float:left; margin-right:14px;">
 				<img src="images/demo/popNoticias.jpg" width="200" height="143">
 				<h3>DJ Mag Top 100 party 2012</h3>
@@ -117,7 +123,7 @@ $(document).ready(
 				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
 				<div class="date">03 de mayo 2012</div>
 			</div>
-		</div>
+		</div-->
 		<h2>ultimos videos</h2>
 		<%@ include file="includes/homeVideos.jsp" %> 
 	</div>
