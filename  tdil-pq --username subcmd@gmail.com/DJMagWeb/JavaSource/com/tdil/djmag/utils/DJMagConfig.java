@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS;
 import com.tdil.cache.blob.BlobLocalDiskCache;
 import com.tdil.djmag.cache.blob.NoteImageResolver;
 import com.tdil.djmag.cache.blob.PublicBlobResolver;
