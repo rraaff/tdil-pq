@@ -22,8 +22,11 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveSection">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
-				<div class="renglon height80">
-					<div class="label width180">Nombre secci&oacute;n por defecto</div><div class="label"><html:text name="SectionForm" property="name" /><%=DJMagErrorFormatter.getErrorFrom(request, "Section.name.err")%></div><div class="label width320 height50 comment">Es el nombre que tendrá dentro del sistema. Luego, cada país deberá tener un nombre específico para la misma sección. En caso de no completarlo para cada país, automáticamente tomará el nombre por refecto.</div>
+				<div class="renglon width500 height50">
+					<div class="label width180">Nombre secci&oacute;n por defecto</div>
+					<div class="label width200"><html:text name="SectionForm" property="name" styleClass="width180"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Section.name.err")%></div>
+					<div class="label width500 height25 comment">Es el nombre que tendrá dentro del sistema. Luego, cada país deberá tener un nombre específico para la misma sección. En caso de no completarlo para cada país, automáticamente tomará el nombre por refecto.</div>
 				</div>
 				<h2>Secciones</h2>
 				<table>

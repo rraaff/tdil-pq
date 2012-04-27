@@ -11,7 +11,7 @@
 <style>
 	.renglon{
 		width:250px;
-		height:35px;
+		height:25px;
 	}
 	.label {
 		width:80px;
@@ -25,7 +25,7 @@
 	<div id="loginBase">
 		<h1>Ingreso al Administrador</h1>
 		<html:form method="POST" action="/login">
-		<div class="renglon">
+		<div class="renglon" style="margin-top:35px;">
 			<html:hidden name="LoginForm" property="operation" value=""/>
 			<div class="label">Usuario</div><html:text name="LoginForm" property="username"/><span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 		</div>

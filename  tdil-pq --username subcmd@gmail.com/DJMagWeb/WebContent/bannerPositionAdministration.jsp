@@ -27,39 +27,44 @@
 		<h1>Asignaci&oacute;n de banners</h1>
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveBannerPosition">
-				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
+				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 				<div class="renglon width860">
-					<div class="label width80">Pa&iacute;s</div>
-					<div class="label width300">
-						<html:select name="BannerPositionForm" property="countryId" styleClass="textfield_effect">
-							<logic:iterate name="BannerPositionForm" property="selectedCountries"
-								id="iterCountry">
+					<div class="label width50">Pa&iacute;s</div>
+					<div class="label width150">
+						<html:select name="BannerPositionForm" property="countryId" styleClass="width120">
+							<logic:iterate name="BannerPositionForm" property="selectedCountries" id="iterCountry">
 								<option
 									<%=((CountrySelectionVO) iterCountry).isSelected() ? "selected" : ""%>
 									value="<%=((CountrySelectionVO) iterCountry).getCountryId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((CountrySelectionVO) iterCountry).getCountryName()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.country.err")%></div>
-					<div class="label width300">
-						Banner<html:select name="BannerPositionForm" property="bannerId" styleClass="textfield_effect">
-							<logic:iterate name="BannerPositionForm" property="selectedBanners"
-								id="iterBanner">
+						</html:select>
+					</div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.country.err")%></div>
+					<div class="label width50">Banner</div>
+					<div class="label width180">
+						<html:select name="BannerPositionForm" property="bannerId" styleClass="width150">
+							<logic:iterate name="BannerPositionForm" property="selectedBanners" id="iterBanner">
 								<option
 									<%=((BannerSelectionVO) iterBanner).isSelected() ? "selected" : ""%>
 									value="<%=((BannerSelectionVO) iterBanner).getBannerId()%>">
 									&nbsp;&nbsp;&nbsp;<%=((BannerSelectionVO) iterBanner).getDescription()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.banner.err")%></div>
-					<div class="label width300">
-						<html:select name="BannerPositionForm" property="insertPoint" styleClass="textfield_effect">
-							<logic:iterate name="BannerPositionForm" property="selectedPoints"
-								id="iterPosition">
+						</html:select>
+					</div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.banner.err")%></div>
+					<div class="label width50">posici&oacute;n</div>
+					<div class="label width180">
+						<html:select name="BannerPositionForm" property="insertPoint" styleClass="width150">
+							<logic:iterate name="BannerPositionForm" property="selectedPoints" id="iterPosition">
 								<option
 									<%=((BannerInsertPointSelectionVO) iterPosition).isSelected() ? "selected" : ""%>
 									value="<%=((BannerInsertPointSelectionVO) iterPosition).getInsertPoint()%>">
 									&nbsp;&nbsp;&nbsp;<%=((BannerInsertPointSelectionVO) iterPosition).getInsertPoint()%></option>
 							</logic:iterate>
-						</html:select><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.insertPoint.err")%></div>
+						</html:select>
+					</div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "BannerPosition.insertPoint.err")%></div>
 				</div>
 				<logic:equal name="BannerPositionForm" property="objectId" value="0">
 					<html:submit property="operation">

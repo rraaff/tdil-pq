@@ -23,25 +23,31 @@
 		<div id="conteinerScrollable">
 			<html:form method="POST" action="/saveRanking">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
-				<div class="renglon">
-					<div class="label" style="width:100px;">T&iacute;tulo ranking</div><html:text name="RankingNoteForm" property="description" /><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.description.err")%>
+				<div class="renglon width350">
+					<div class="label width50"> </div>
+					<div class="label width100">T&iacute;tulo ranking</div>
+					<div class="label width150"><html:text name="RankingNoteForm" property="description" styleClass="width120"/></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.description.err")%></div>
 				</div>
 				<h2>Posiciones</h2>
-				<table>
-					<tr>
-						<td class="headerTablas" width="40">Posici&oacute;n</td>
-						<td class="headerTablas" width="100%">Nombre</td>
-						<td colspan="2" class="headerTablas" width="100">Acciones</td>
-					</tr>
-				<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
-					<tr>
-						<td><%=iterIndexPositions + 1%></td>
-						<td><html:text name="selectedPosition" property="position" indexed="true" styleClass="width300"/></td>  
-						<td><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();">Subir</a></td>
-						<td><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();">Bajar</a></td>
-					</tr>
-				</logic:iterate>
-				</table>
+				<div class="renglon width800 height25 comment" style="text-align:center;">Complete el Ranking con las 100 posiciones. Al no estar completo, se ver&aacute;n posiciones vac&iacute;as en el el TOP 100.<br/>Una vez cargado, pordr&aacute; subir y bajar cada uno de los rankeados con los links en las acciones.</div>
+				<div class="renglon width800 height200" style="overflow:scroll;">
+					<table>
+						<tr>
+							<td class="headerTablas" width="40">Posici&oacute;n</td>
+							<td class="headerTablas" width="100%">Nombre</td>
+							<td colspan="2" class="headerTablas" width="100">Acciones</td>
+						</tr>
+					<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
+						<tr>
+							<td><%=iterIndexPositions + 1%></td>
+							<td><html:text name="selectedPosition" property="position" indexed="true" styleClass="width300"/></td>  
+							<td><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();">Subir</a></td>
+							<td><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();">Bajar</a></td>
+						</tr>
+					</logic:iterate>
+					</table>
+				</div>
 				<h2>Mostrar en</h2><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.country.err")%>
 				<table>
 					<tr>
