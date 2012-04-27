@@ -79,43 +79,48 @@
 					<div class="label width120">Fecha de agenda</div>
 					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agendadate.err")%></div>
 				</div>
-				<h2>Im&aacute; en Portada</h2>
-				<logic:equal name="NoteForm" property="hasFrontCoverImage" value="true">
-					<html:img action="/viewImageNote.do?type=cover" align="middle" width="75" height="50" alt="" />
-					<bean:write name="NoteForm" property="frontCoverImage.fileName" />
-					<a href="javascript:document.NoteForm.action='./deleteNoteFrontCover.do';document.NoteForm.submit();">Borrar</a>
-				</logic:equal>
+				<h2>Im&aacute;gen en Portada</h2>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<logic:equal name="NoteForm" property="hasFrontCoverImage" value="true">
+						<html:img action="/viewImageNote.do?type=cover" align="middle" width="75" height="50" alt="" />
+						<bean:write name="NoteForm" property="frontCoverImage.fileName" />
+						<a href="javascript:document.NoteForm.action='./deleteNoteFrontCover.do';document.NoteForm.submit();">Borrar</a>
+					</logic:equal>
 					Im&aacute;gen
 					<html:file name="NoteForm"
 						property="frontCoverImageFormFile" /><html:button property="operation"
 						onclick="this.form.action='./uploadNoteFrontCover.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
+				</div>
 				<h2>Im&aacute;gen en &Uacute;ltimas noticias (Destacadas)</h2>
-				<logic:equal name="NoteForm" property="hasNewsCover" value="true">
-					<html:img action="/viewImageNote.do?type=newsCover" align="middle" width="75" height="50" alt="" />
-					<bean:write name="NoteForm" property="lastNewsCoverImage.fileName" />
-					<a href="javascript:document.NoteForm.action='./deleteNewsCover.do';document.NoteForm.submit();">Borrar</a>
-				</logic:equal>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<logic:equal name="NoteForm" property="hasNewsCover" value="true">
+						<html:img action="/viewImageNote.do?type=newsCover" align="middle" width="75" height="50" alt="" />
+						<bean:write name="NoteForm" property="lastNewsCoverImage.fileName" />
+						<a href="javascript:document.NoteForm.action='./deleteNewsCover.do';document.NoteForm.submit();">Borrar</a>
+					</logic:equal>
 					Im&aacute;gen
 					<html:file name="NoteForm"
 						property="lastNewsCoverImageFormFile" /><html:button property="operation"
 						onclick="this.form.action='./uploadNewsCover.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
-							
+				</div>
 				<h2>Im&aacute;gen en &Uacute;ltimas noticias (chicas)</h2>
-				<logic:equal name="NoteForm" property="hasNewsThumb" value="true">
-					<html:img action="/viewImageNote.do?type=newsThumb" align="middle" width="75" height="50" alt="" />
-					<bean:write name="NoteForm" property="lastNewsThumbImage.fileName" />
-					<a href="javascript:document.NoteForm.action='./deleteNewsThumb.do';document.NoteForm.submit();">Borrar</a>
-				</logic:equal>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<logic:equal name="NoteForm" property="hasNewsThumb" value="true">
+						<html:img action="/viewImageNote.do?type=newsThumb" align="middle" width="75" height="50" alt="" />
+						<bean:write name="NoteForm" property="lastNewsThumbImage.fileName" />
+						<a href="javascript:document.NoteForm.action='./deleteNewsThumb.do';document.NoteForm.submit();">Borrar</a>
+					</logic:equal>
 					Im&aacute;gen
 					<html:file name="NoteForm"
 						property="lastNewsThumbImageFormFile" /><html:button property="operation"
 						onclick="this.form.action='./uploadNewsThumb.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
+				</div>
 				<h2>Agenda</h2>
 				<logic:equal name="NoteForm" property="hasAgendaImage" value="true">
 					<html:img action="/viewImageNote.do?type=agenda" align="middle" width="75" height="50" alt="" />
@@ -127,7 +132,7 @@
 						onclick="this.form.action='./uploadNoteAgenda.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
-				<h2>Imágenes de la nota</h2>
+				<h2>Imï¿½genes de la nota</h2>
 				<table>
 					<tr>
 						<td class="headerTablas" width="40">&Oacute;rden</td>
