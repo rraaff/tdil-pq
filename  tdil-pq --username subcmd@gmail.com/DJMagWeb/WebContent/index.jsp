@@ -93,37 +93,13 @@ $(document).ready(
 		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
 		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
-		<%@ include file="includes/homeBannerRight.jsp" %>
+		<%@ include file="includes/homeMagazine.jsp" %>
 	</div>
 </div>
-<!-- Pablo revistar -->
-<%@ include file="includes/homeMagazine.jsp" %>
-
-<%@ include file="includes/homeLastNotesCover.jsp" %>
-
 <div id="BlockSecondaryContent">
 	<div id="leftContent">
+		<%@ include file="includes/homeLastNotesCover.jsp" %>
 		<%@ include file="includes/homeLastNotes.jsp" %>
-		<!--div id="BlockPopularNews">
-			<div id="lastNews" style="float:left; margin-right:14px;">
-				<img src="images/demo/popNoticias.jpg" width="200" height="143">
-				<h3>DJ Mag Top 100 party 2012</h3>
-				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
-				<div class="date">03 de mayo 2012</div>
-			</div>
-			<div id="lastNews" style="float:left; margin-right:14px;">
-				<img src="images/demo/popNoticias.jpg" width="200" height="143">
-				<h3>DJ Mag Top 100 party 2012</h3>
-				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
-				<div class="date">03 de mayo 2012</div>
-			</div>
-			<div id="lastNews" style="float:left;">
-				<img src="images/demo/popNoticias.jpg" width="200" height="143">
-				<h3>DJ Mag Top 100 party 2012</h3>
-				<div class="bajada"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p><p>&nbsp;</p><p>sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, cov</p></div>
-				<div class="date">03 de mayo 2012</div>
-			</div>
-		</div-->
 		<h2>ultimos videos</h2>
 		<%@ include file="includes/homeVideos.jsp" %> 
 	</div>
