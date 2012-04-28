@@ -3,7 +3,7 @@
 <style>
 #BlockMain #mainContent #frontNote {
 	width:428px;
-	height:385px;
+	height:400px;
 }
 #BlockMain #mainContent #frontNote #noteContentBase {
 	width:428px;
@@ -50,18 +50,24 @@
 	padding-right:25px;
 }
 </style>
-<div id="mainContent">
-	<% if (publicHomeBean.hasFrontCovers()) { %>
-		<% for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
-			<div id="frontNote" style="background-image:url(./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>);">
-				<div id="noteContentBase">
-					<h1><%=note.getTitle() %></h1>
-					<div id="bajada"><%=note.getSummary() %></div>
-					<div id="date"><%=publicHomeBean.formatDate(note.getFromDate()) %></div>
-				</div>
-			</div>
+<% if (publicHomeBean.hasFrontCovers()) { %>
+	<div class="slider-wrapper theme-default">
+	    <div class="ribbon"></div>
+	    <div id="slider" class="nivoSlider">
+		<% /*Generacion de imagenes*/
+			for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
+	        <img src="./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>" alt="" title="#htmlcaption<%=note.getId() %>" />
 		<% } %>
-	<% } else { %>
-		NO hay front covers
-	<% } %>
-</div>
+	    </div>
+		<% /*Generacion de captions*/
+		for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
+	    <div id="htmlcaption<%=note.getId() %>" class="nivo-html-caption">
+	    		<h1><%=note.getTitle() %></h1>
+				<%=note.getSummary() %>
+				<%=publicHomeBean.formatDate(note.getFromDate()) %>
+	 	</div>
+	 	<% } %>
+	</div>
+<% } else { %>
+	NO hay front covers
+<% } %>

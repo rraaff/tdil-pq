@@ -11,6 +11,9 @@
 <head>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <%@ include file="includes/head.jsp" %>
+<script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/nivo_theme/default.css" type="text/css" media="screen" />
 <script>
 
 	function setAsTopVideo(divId) {
@@ -142,6 +145,14 @@ $(document).ready(
 			</form>
 		</div>
 	</div>
-<% } %>
+<% } %>     
+	<!-- cargo el slider -->
+	<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
+		});
+    });
+    </script>
 </body>
 </html>
