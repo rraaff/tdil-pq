@@ -141,7 +141,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	public void resetAfterDelete() throws SQLException {
 		this.reset();
 		NoteExample rankingExample = new NoteExample();
-		rankingExample.setOrderByClause("title");
+		rankingExample.setOrderByClause("from_date desc");
 		this.setAllNotes(DAOManager.getNoteDAO().selectNoteByExampleWithoutBLOBs(rankingExample));
 	}
 	public void initForDeleteWith(int userId) throws SQLException {
@@ -167,7 +167,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	@Override
 	public void init() throws SQLException {
 		NoteExample rankingExample = new NoteExample();
-		rankingExample.setOrderByClause("title");
+		rankingExample.setOrderByClause("from_date desc");
 		this.setAllNotes(DAOManager.getNoteDAO().selectNoteByExampleWithoutBLOBs(rankingExample));
 		
 		SectionExample sectionExample = new SectionExample();
@@ -282,7 +282,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		}
 	}
 	
-	private String formatDate(Date fromDate2) {
+	public static String formatDate(Date fromDate2) {
 		if (fromDate2 == null) {
 			return "";
 		}
@@ -377,6 +377,21 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			if (agendaDate == null) {
 				validationError.setFieldError(agendadate_key, ValidationErrors.CANNOT_BE_EMPTY);
 			}
+		}
+		if (this.isFrontCover() && this.getFrontCoverImage() == null) {
+			validationError.setFieldError(front_cover_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (this.isShowInAgenda() && this.getAgendaImage() == null) {
+			validationError.setFieldError(agenda_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (this.isPopular() && this.getLastNewsCoverImage() == null) {
+			validationError.setFieldError(last_news_cover_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (this.isPopular() && this.getLastNewsThumbImage() == null) {
+			validationError.setFieldError(last_news_thumb_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (this.getImages().isEmpty()) {
+			validationError.setFieldError(image_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
 	}
 	
