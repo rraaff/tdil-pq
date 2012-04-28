@@ -1,7 +1,6 @@
 package com.tdil.djmag.struts.forms;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -18,17 +17,14 @@ import com.tdil.djmag.dao.FooterDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
-import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
-import com.tdil.djmag.struts.action.UploadImageNoteAction;
+import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
-import com.tdil.utils.SystemConfig;
-import com.tdil.utils.SystemPropertyCache;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -195,6 +191,11 @@ public class FooterForm extends TransactionalValidationForm implements ToggleDel
 	}
 
 	public List<CountrySelectionVO> getSelectedCountries() {
+		for (CountrySelectionVO csvo : selectedCountries) {
+			if (csvo.getCountryId() == this.getCountryId()) {
+				csvo.setSelected(true);
+			}
+		}
 		return selectedCountries;
 	}
 
