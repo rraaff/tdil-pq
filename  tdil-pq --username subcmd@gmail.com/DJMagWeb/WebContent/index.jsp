@@ -62,8 +62,11 @@ $(document).ready(
 		});
 		
 		function postSubscrition(jsonData) {
-			alert(jsonData.result);
-			//alert("Gracias por subscribirte");
+			if (jsonData.result == 'OK') {
+				$.jGrowl('Gracias por subscribirte');
+			} else {
+				$.jGrowl('Ha ocurrido un error, intentelo nuevamente');
+			}
 		}
 	
 	}
@@ -94,7 +97,7 @@ $(document).ready(
 		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
 		<%@ include file="includes/homeMagazine.jsp" %>
-		<%@include file="includes/homeBannerRight.jsp"%>
+		<%@ include file="includes/homeBannerRight.jsp"%>
 	</div>
 </div>
 <div id="BlockSecondaryContent">
