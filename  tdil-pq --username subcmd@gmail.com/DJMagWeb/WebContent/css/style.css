@@ -263,13 +263,55 @@ body {
 #BlockMain #BlockMainRight #suscribe span {
 	padding-left:5px;
 	padding-right:8px;
-}
+}/*
 #BlockMain #BlockMainRight #bannerRight {
 	margin-top:12px;
 	width:250px;
 	height:268px;
 	position:relative;
 	float: right;
+}*/
+#BlockMain #BlockMainRight #BlockMagazine {
+	margin-top:12px;
+	width:250px;
+	height:268px;
+	position:relative;
+	float: right;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine {
+	width:250px;
+	height:268px;
+	position:relative;
+	padding-top:162px;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase {
+	width:250px;
+	height:106px;
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase a {
+	font-size:18px;
+	color:#FFFF66;
+	margin:10px;
+	margin-bottom:0px;
+	text-decoration:none;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase a:hover {
+	text-decoration:underline;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase #bajada {
+	margin:10px;
+	color:#FFFFFF;
+	font-size:12px;
+	height:45px;
+	margin-bottom:5px;
+	overflow:hidden;
+}
+#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase #date {
+	margin-left:10px;
+	color:#e25237;
+	font-size:11px;
 }
 .suscribeField {
 	width:119px;
@@ -348,9 +390,11 @@ body {
 	width:635px;
 	height:290px;
 	position:relative;
+	overflow:hidden;
 }
 #BlockSecondaryContent #leftContent #BlockPopularNews #lastNews {
 	width:202px;
+	float:left;
 }
 #BlockSecondaryContent #leftContent #BlockPopularNews #lastNews img {
 	border: solid 1px #3e3e3e;
@@ -449,16 +493,23 @@ body {
 	color:#FFFF33;
 	cursor:hand;
 }
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #renglon {
+	margin:6px;
+	float:left;
+}
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #image {
+	width:30px;
+	height:30px;
+	margin-left:8px;
+	float:left;
+}
 #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date {
 	background-color:#e25237;
 	font-size:11px;
-	padding: 5px 8px 5px 8px;
-	margin: 0 5px 0 8px;
-	line-height:18px;
-	
+	padding: 5px;
 }
 #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent span {
-	font-size:13px;
+	font-size:11px;
 	font-weight:700;
 	line-height:18px;
 	padding-left:8px;
@@ -471,16 +522,6 @@ body {
 	margin-top:15px;
 	position:relative;
 	border-bottom:solid 7px #525252;
-}
-#BlockSecondaryContent #rightContent #BlockTwFeed #TwTitle {
-	width:309px; 
-	height:76px;
-	position:relative;
-}
-#BlockSecondaryContent #rightContent #BlockTwFeed #TwFeed {
-	width:309px; 
-	height:237px;
-	position:relative;
 }
 #BlockSecondaryContent #rightContent #BlockFbFeed {
 	width:309px; 
