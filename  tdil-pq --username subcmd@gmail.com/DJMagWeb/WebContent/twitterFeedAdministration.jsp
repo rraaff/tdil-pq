@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.TwitterFeed"%>
 <%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.struts.forms.TwitterFeedForm"%>
@@ -67,7 +68,7 @@
 							<%=((com.tdil.ibatis.PersistentObject) iterTwitterFeed).getDeleted() == 1 ? "class=\"notActive\""
 								: ""%>
 							align="left">
-								<% 	Country country = TwitterFeedForm.getCountryForTwitterFeedId(((com.tdil.ibatis.PersistentObject) iterTwitterFeed).getId()); %>
+								<% 	Country country = TwitterFeedForm.getCountryWithId(((TwitterFeed) iterTwitterFeed).getIdCountry()); %>
 								<%= country.getName() %>&nbsp;
 						</td>
 						<td align="center"><html:link action="/editTwitterFeed" paramName="iterTwitterFeed" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>

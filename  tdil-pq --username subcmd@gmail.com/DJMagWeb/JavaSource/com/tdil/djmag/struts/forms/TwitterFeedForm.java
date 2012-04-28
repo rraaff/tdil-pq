@@ -112,15 +112,6 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 		resetSelectedCountries();
 	}
 	
-	public static Country getCountryForTwitterFeedId(Integer sectionId) {
-		for (Country c : getAllCountries()) {
-			if (c.getId().equals(sectionId)) {
-				return c;
-			}
-		}
-		return null;
-	}
-	
 	public static Country getCountryWithId(Integer idCountry) {
 		for (Country c : getAllCountries()) {
 			if (c.getId().equals(idCountry)) {
