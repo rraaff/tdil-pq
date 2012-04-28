@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.djmag.dao.CountryDAO;
@@ -84,6 +85,7 @@ public class PublicHomeBean  {
 	private static final int MAX_AGENDA_NOTES_FOR_HOME = 5;
 	private static final int MAX_LAST_NOTES_FOR_HOME = 3;
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
+	private static final int MAX_NOTES_FOR_FOOTER = 7;
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
@@ -147,6 +149,38 @@ public class PublicHomeBean  {
 	
 	public boolean hasNoteRightBanner() {
 		return this.getNoteRight() != null;
+	}
+	
+	
+	private String getPopulasNotesReplacement() {
+		StringBuffer result = new StringBuffer();
+		int index = 0;
+		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
+		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+			// TODO hacer link
+			NoteValueObject nvo = frontCoverIter.next();
+			result.append("<a href=\"#\">").append(nvo.getTitle()).append("</a>\n");
+			index = index + 1;
+		}
+		if (index < MAX_NOTES_FOR_FOOTER) {
+			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
+			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+				// TODO hacer link
+				NoteValueObject nvo = lastNewsIter.next();
+				result.append("<a href=\"#\">").append(nvo.getTitle()).append("</a>\n");
+				index = index + 1;
+			}
+		}
+		return result.toString();
+	}
+	
+	private String getSectionsReplacement() {
+		StringBuffer result = new StringBuffer();
+		// TODO , make link o algo asi
+		for (Section section : getSectionsForCountry()) {
+			result.append("<a href=\"#\">").append(section.getName()).append("</a>\n");
+		}
+		return result.toString();
 	}
 	
 	public void initCountries() {
@@ -214,17 +248,6 @@ public class PublicHomeBean  {
 						setMagazine(null);
 					}
 					
-					// cargo el footer
-					FooterDAO footerDAO = DAOManager.getFooterDAO();
-					FooterExample footerExample = new FooterExample();
-					footerExample.createCriteria().andDeletedEqualTo(0).andIdCountryEqualTo(country.getId());
-					List<Footer> footers = footerDAO.selectFooterByExampleWithBLOBs(footerExample);
-					if (!footers.isEmpty()) {
-						setFooter(footers.get(0));
-					} else {
-						setFooter(null);
-					}
-					
 					// cargo las notas de tapa
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
@@ -287,6 +310,17 @@ public class PublicHomeBean  {
 					}
 				
 					setLastVideos(DAOManager.getVideoDAO().selectLastActiveVideosForCountry(country));
+					
+					// cargo el footer, en ultimo lugar porque el seteo hace el reemplazo en base a otros datos
+					FooterDAO footerDAO = DAOManager.getFooterDAO();
+					FooterExample footerExample = new FooterExample();
+					footerExample.createCriteria().andDeletedEqualTo(0).andIdCountryEqualTo(country.getId());
+					List<Footer> footers = footerDAO.selectFooterByExampleWithBLOBs(footerExample);
+					if (!footers.isEmpty()) {
+						setFooter(footers.get(0));
+					} else {
+						setFooter(null);
+					}
 				}
 			});
 		} catch (Exception e) {
@@ -459,6 +493,12 @@ public class PublicHomeBean  {
 	}
 
 	public void setFooter(Footer footer) {
+		if (footer != null) {
+			String html = footer.getHtmlcontent();
+			html = StringUtils.replace(html, "[SECCIONES]", this.getSectionsReplacement());
+			html = StringUtils.replace(html, "[NOTAS_POPULARES]", this.getPopulasNotesReplacement());
+			footer.setHtmlcontent(html);
+		}
 		this.footer = footer;
 	}
 

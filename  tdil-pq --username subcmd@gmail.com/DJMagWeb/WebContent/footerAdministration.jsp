@@ -43,6 +43,7 @@
 				<div class="renglon width860 height80">
 					<div class="label width50">HTML</div>
 					<div class="label width700 height80"><html:textarea name="FooterForm" property="htmlContent" styleClass="width700 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.htmlContent.err")%></div>
+					Reemplazos: [NOTAS_POPULARES] - [SECCIONES]
 				</div>
 				<logic:equal name="FooterForm" property="objectId" value="0">
 					<html:submit property="operation">
