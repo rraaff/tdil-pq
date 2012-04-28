@@ -40,10 +40,15 @@
 					<div class="label width100"><a href="javascript:document.FooterForm.action='./resetFooter.do';document.FooterForm.submit();">Resetear</a></div>
 					<div class="label width100"><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
 				</div>
-				<div class="renglon width860 height80">
+				<div class="renglon width920 height120">
 					<div class="label width50">HTML</div>
-					<div class="label width700 height80"><html:textarea name="FooterForm" property="htmlContent" styleClass="width700 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.htmlContent.err")%></div>
-					Reemplazos: [NOTAS_POPULARES] - [SECCIONES]
+					<div class="label width800 height120"><html:textarea name="FooterForm" property="htmlContent" styleClass="width800 height120" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.htmlContent.err")%></div>
+				</div>
+				<div class="renglon width860">
+					<div class="label width100">Reemplazos:</div>
+					<div class="label width150">[NOTAS_POPULARES]</div>
+					<div class="label width150">[SECCIONES]</div>
 				</div>
 				<logic:equal name="FooterForm" property="objectId" value="0">
 					<html:submit property="operation">
@@ -63,7 +68,7 @@
 			<table>
 				<tr>
 					<td class="headerTablas">Pais</td>
-					<td class="headerTablas">Acciones</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="FooterForm" property="allFooters"
 					id="iterFooter" indexId="iterIndex">
@@ -75,16 +80,13 @@
 								<% 	Country country = FooterForm.getCountryWithId(((Footer) iterFooter).getIdCountry()); %>
 								<%= country.getName() %>&nbsp;
 						</td>
-						<td><html:link action="/editFooter" paramName="iterFooter"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
+						<td align="center"><html:link action="/editFooter" paramName="iterFooter" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedFooter" paramName="iterFooter"
 								paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterFooter).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>

@@ -17,8 +17,11 @@ div {
 h1, h2, h3, h4 {
 	font-style: normal;
 	font-weight: normal;
-	font-size: 150%;
+	font-size: 140%;
 	color: #18A7A7;
+	padding:0;
+	margin:0;
+	margin-bottom:10px;
 }
 h2 {
 	font-size: 120%;
@@ -44,10 +47,13 @@ a:hover {
 	background-repeat: no-repeat;
 	height: 89px;
 	width: 980px;
-	margin-top: 0px;
 	margin-right: auto;
-	margin-bottom: 20px;
 	margin-left: auto;
+}
+#portaMenu {
+	height:22px;
+	margin-bottom:10px; 
+	display:block;
 }
 #container {
 	width: 980px;
@@ -81,21 +87,30 @@ a:hover {
 	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-	height: 420px;
-	width: 860px;
+	height: 470px;
+	width: 950px;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #FFFFFF;
-	padding: 25px;
+	padding: 15px;
 	text-align:center;
 	position:relative;
 }
 #conteinerScrollable {
 	position:relative;
-	width:860px;
-	height:380px;
+	width:950px;
+	height:440px;
 	overflow:auto;
+}
+#fiftyfiftyLeft {
+	width:460px;
+	float:left;
+}
+#fiftyfiftyRight {
+	width:460px;
+	float:left;
+	margin-left: 20px;
 }
 .renglon {
 	margin-right: auto;
@@ -205,7 +220,11 @@ input[type="button"], input[type="submit"] {
 .width300 { width:300px; }
 .width320 { width:320px; }
 .width350 { width:350px; }
+.width380 { width:380px; }
 .width400 { width:400px; }
+.width420 { width:420px; }
+.width450 { width:450px; }
+.width475 { width:475px; }
 .width500 { width:500px; }
 .width700 { width:700px; }
 .width720 { width:720px; }
@@ -213,8 +232,11 @@ input[type="button"], input[type="submit"] {
 .width760 { width:760px; }
 .width800 { width:800px; }
 .width860 { width:860px; }
+.width920 { width:920px; }
 
 .height25 { height:25px; }
+.height30 { height:30px; }
+.height40 { height:40px; }
 .height50 { height:50px; }
 .height60 { height:60px; }
 .height80 { height:80px; }
@@ -224,6 +246,7 @@ input[type="button"], input[type="submit"] {
 .height180 { height:180px; }
 .height200 { height:200px; }
 .height250 { height:250px; }
+.height300 { height:300px; }
 
 .border1 { border:#999 1px solid }
 
@@ -236,11 +259,18 @@ input[type="button"], input[type="submit"] {
 #tooltip {
 	position: absolute;
 	z-index: 3000;
-	border: 1px solid #111;
-	background-color: #eee;
-	padding: 5px;
+	border: 1px solid #fff;
+	background-color: #000;
+	padding: 10px;
 	opacity: 0.85;
-	color: #aa0410;
+	color: #FFCCCC;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 #tooltip h3, #tooltip div { margin: 0; }
 /**/

@@ -17,7 +17,7 @@
 	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
 	<div id="formulariosBase">
 		<h1>Administraci&oacute;n de pa&iacute;ses</h1>
-		<div id="conteinerScrollable">
+		<div id="conteinerScrollable" style="overflow:hidden;">
 			<html:form method="POST" action="/saveCountry">
 				<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span><br>
 				<div class="renglon width700">
@@ -43,38 +43,36 @@
 					<bean:message key="reset" />
 				</html:submit>
 			</html:form>
-		
-			<table>
-				<tr>
-					<td class="headerTablas">Pa&iacute;s</td>
-					<td class="headerTablas">Iso code2</td>
-					<td class="headerTablas">Acciones</td>
-				</tr>
-				<logic:iterate name="CountryForm" property="allCountries"
-					id="iterCountry" indexId="iterIndex">
-					<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
-						<td
-							<%=((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1 ? "class=\"notActive\""
-								: ""%>
-							align="left"><bean:write name="iterCountry" property="name" />
-						</td>
-						<td><bean:write name="iterCountry" property="isoCode2" /></td>
-						<td><html:link action="/editCountry" paramName="iterCountry"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
-							<html:link action="/toggleDeletedCountry" paramName="iterCountry"
-								paramProperty="id" paramId="id">
-								<% if (((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1) { %>
-									Activar
-								<% } else { %>
-									Desactivar
-								<% } %>
-							</html:link>
-						</td>
+			<div class="renglon width920 height300" style="overflow:auto;">
+				<table>
+					<tr>
+						<td class="headerTablas">Pa&iacute;s</td>
+						<td class="headerTablas">Iso code2</td>
+						<td class="headerTablas" width="60">Acciones</td>
 					</tr>
-				</logic:iterate>
-			</table>
+					<logic:iterate name="CountryForm" property="allCountries"
+						id="iterCountry" indexId="iterIndex">
+						<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+							<td
+								<%=((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1 ? "class=\"notActive\""
+									: ""%>
+								align="left"><bean:write name="iterCountry" property="name" />
+							</td>
+							<td><bean:write name="iterCountry" property="isoCode2" /></td>
+							<td><html:link action="/editCountry" paramName="iterCountry" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+								<html:link action="/toggleDeletedCountry" paramName="iterCountry"
+									paramProperty="id" paramId="id">
+									<% if (((com.tdil.ibatis.PersistentObject) iterCountry).getDeleted() == 1) { %>
+										<img src="boImages/activar.png" alt="Activar">
+									<% } else { %>
+										<img src="boImages/desactivar.png" alt="Desactivar">
+									<% } %>
+								</html:link>
+							</td>
+						</tr>
+					</logic:iterate>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

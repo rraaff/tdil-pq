@@ -12,7 +12,13 @@
 <body>
 <div id="header"></div>
 <div id="container">
-	<%@ include file="includes/boMenu.jsp" %>
+	<div id="portaMenu"><%@ include file="includes/boMenu.jsp"%></div>
+	<div id="formulariosBase">
+		<h1>Administrador de contenidos DJ MAG LA</h1>
+		<div class="renglon width860 height100">
+			<div class="label width860 height100" style="text-align:center">Bienvenido al administrador de contenidos de DJ MAG LA. En el men&uacute; superior tendr&aacute; acceso a todos los contenidos editables separados en ejes tem&aacute;ticos.</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

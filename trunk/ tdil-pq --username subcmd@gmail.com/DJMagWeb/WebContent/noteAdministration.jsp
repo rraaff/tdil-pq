@@ -139,7 +139,7 @@
 					<tr>
 						<td class="headerTablas" width="40">&Oacute;rden</td>
 						<td class="headerTablas" width="80%">Previsualizaci&oacute;n</td>
-						<td colspan="3" class="headerTablas" width="150">Acciones</td>
+						<td colspan="3" class="headerTablas" width="60">Acciones</td>
 					</tr>
 					<logic:iterate id="currImage" name="NoteForm" property="images"
 						indexId="iterIndex">
@@ -154,9 +154,9 @@
 										<td><bean:write name="currImage" property="uploadData.fileName" /></td>
 									</tr>
 								</table></td>
-							<td><a href="javascript:document.NoteForm.action='./moveImageUp.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Subir</a></td>
-							<td><a href="javascript:document.NoteForm.action='./moveImageDown.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Bajar</a></td>
-							<td><a href="javascript:document.NoteForm.action='./deleteImage.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();">Borrar</a></td>
+							<td><a href="javascript:document.NoteForm.action='./moveImageUp.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a></td>
+							<td><a href="javascript:document.NoteForm.action='./moveImageDown.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();"><img src="boImages/bajar.png" alt="Bajar"></a></td>
+							<td><a href="javascript:document.NoteForm.action='./deleteImage.do?id=<%= ((NoteImageBean)currImage).getId() %>';document.NoteForm.submit();"><img src="boImages/borrar.png" alt="Borrar"></a></td>
 						</tr>
 					</logic:iterate>
 					<tr>
@@ -201,11 +201,11 @@
 			<h2>Listado de Notas</h2>
 			<table>
 				<tr>
-					<td class="headerTablas" width="150">Fecha</td>
-					<td class="headerTablas" width="150">T&iacute;tulo</td>
+					<td class="headerTablas" width="80">Fecha</td>
+					<td class="headerTablas" width="200">T&iacute;tulo</td>
 					<td class="headerTablas" width="150">Secci&oacute;n</td>
-					<td class="headerTablas" width="300">Pa&iacute;ses</td>
-					<td class="headerTablas" width="100">Acciones</td>
+					<td class="headerTablas" width="430">Pa&iacute;ses</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="NoteForm" property="allNotes" id="iterNote"
 					indexId="iterIndex">
@@ -230,14 +230,14 @@
 								<%= country.getName() %>&nbsp;
 							<% } %>
 						</td>
-						<td>
-							<html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id">Editar</html:link>
+						<td align="center">
+							<html:link action="/editNote.do" paramName="iterNote" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedNote" paramName="iterNote"
 								paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>

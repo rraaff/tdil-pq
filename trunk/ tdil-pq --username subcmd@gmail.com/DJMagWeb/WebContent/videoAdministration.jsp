@@ -61,7 +61,7 @@
 					<div class="label width700 height50"><html:textarea name="VideoForm" property="description" styleClass="width700 height50" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.description.err")%></div>
 				</div>
 				<div class="renglon width860 height80">
-					<div class="label width80">HTML</div>
+					<div class="label width80 height80">HTML<br><span class="comment">425px x 297px</span></div>
 					<div class="label width700 height80"><html:textarea name="VideoForm" property="htmlContent" styleClass="width700 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="VideoForm" property="objectId" value="0">
@@ -81,9 +81,9 @@
 		
 			<table>
 				<tr>
-					<td class="headerTablas">Pais</td>
-					<td class="headerTablas">Descripcion</td>
-					<td class="headerTablas">Acciones</td>
+					<td class="headerTablas">Pa&iacute;s</td>
+					<td class="headerTablas">Descripci&oacute;n</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="VideoForm" property="allVideos"
 					id="iterVideo" indexId="iterIndex">
@@ -101,16 +101,13 @@
 							align="left">
 								<bean:write name="iterVideo" property="description" />
 						</td>
-						<td><html:link action="/editVideo" paramName="iterVideo"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
+						<td align="center"><html:link action="/editVideo" paramName="iterVideo" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedVideo" paramName="iterVideo"
 								paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterVideo).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>
