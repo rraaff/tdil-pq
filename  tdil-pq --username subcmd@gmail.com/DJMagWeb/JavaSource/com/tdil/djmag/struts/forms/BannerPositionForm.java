@@ -209,6 +209,7 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 			bannerPositionDAO.insertBannerPosition(bannerPosition);
 		} else {
 			BannerPosition bannerPosition = new BannerPosition();
+			bannerPosition.setId(this.getObjectId());
 			updateBannerPosition(bannerPosition);
 			bannerPositionDAO.updateBannerPositionByPrimaryKeySelective(bannerPosition);
 		}

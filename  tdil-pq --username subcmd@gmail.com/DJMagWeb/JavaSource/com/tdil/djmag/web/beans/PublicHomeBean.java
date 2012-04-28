@@ -41,6 +41,7 @@ import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
 import com.tdil.utils.DateUtils;
 import com.tdil.utils.XMLUtils;
@@ -70,6 +71,8 @@ public class PublicHomeBean  {
 	private NoteValueObject lastNoteSecond;
 	private List<NoteValueObject> lastNotes;
 	private List<NoteValueObject> agendaNotes;
+	
+	private List<NoteValueObject> allNotes;
 	
 	private BannerValueObject homeTop;
 	private BannerValueObject homeRight;
@@ -151,6 +154,28 @@ public class PublicHomeBean  {
 		return this.getNoteRight() != null;
 	}
 	
+	public NoteValueObject getNoteByParams(final String isoCode2, final String datePart, final String webTitle) {
+		NoteValueObject result = null;
+		int countryId = 0;
+		Iterator<Country> countryIterator = getAllCountries().iterator();
+		while (countryId == 0 && countryIterator.hasNext()) {
+			Country country = countryIterator.next();
+			if (country.getIsoCode2().equals(isoCode2)) {
+				countryId = country.getId();
+			}
+		}
+		Iterator<NoteValueObject> noteIterator = getAllNotes().iterator();
+		while(result == null && noteIterator.hasNext()) {
+			NoteValueObject iter = noteIterator.next();
+			if (iter.getWebTitle().equals(webTitle)) {
+				String date = formatDateForUrl(iter.getFromDate());
+				if (date.equals(datePart)) {
+					result = iter;
+				}
+			}
+		}
+		return result;
+	}
 	
 	private String getPopulasNotesReplacement() {
 		StringBuffer result = new StringBuffer();
@@ -271,6 +296,7 @@ public class PublicHomeBean  {
 					allNotes.addAll(getFrontCoverNotes());
 					allNotes.addAll(getLastNotes());
 					allNotes.addAll(getAgendaNotes());
+					setAllNotes(allNotes);
 					Set<Integer> notesIds = new HashSet<Integer>();
 					for (NoteValueObject nvo : allNotes) {
 						notesIds.add(nvo.getId());
@@ -365,6 +391,11 @@ public class PublicHomeBean  {
 	
 	public static String formatDate(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		return simpleDateFormat.format(date);
+	}
+	
+	public static String formatDateForUrl(Date date) {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		return simpleDateFormat.format(date);
 	}
 	
@@ -548,5 +579,13 @@ public class PublicHomeBean  {
 
 	public void setNoteRight(BannerValueObject noteRight) {
 		this.noteRight = noteRight;
+	}
+
+	public List<NoteValueObject> getAllNotes() {
+		return allNotes;
+	}
+
+	public void setAllNotes(List<NoteValueObject> allNotes) {
+		this.allNotes = allNotes;
 	}
 }

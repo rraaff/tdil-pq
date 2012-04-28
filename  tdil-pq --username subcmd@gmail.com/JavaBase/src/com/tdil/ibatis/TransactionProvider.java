@@ -7,6 +7,7 @@ import org.apache.struts.action.ActionForm;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.TransactionalActionWithValue;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -16,12 +17,10 @@ public class TransactionProvider {
 
 	
 	public static void executeInTransaction(TransactionalAction transactionalAction) throws SQLException, com.tdil.struts.ValidationException {
-		boolean commited = false;
 		try {
 			IBatisManager.beginTransaction();
 			transactionalAction.executeInTransaction();
             IBatisManager.commitTransaction();
-            commited = true;
 		} finally {
 			try {
 				IBatisManager.endTransaction();
@@ -29,6 +28,22 @@ public class TransactionProvider {
 				getLog().error(e.getMessage(), e);
 			}
 		}
+	}
+	
+	public static Object executeInTransactionWithResult(TransactionalActionWithResult transactionalAction) throws SQLException {
+		Object result = null;
+		try {
+			IBatisManager.beginTransaction();
+			result = transactionalAction.executeInTransaction();
+            IBatisManager.commitTransaction();
+		} finally {
+			try {
+				IBatisManager.endTransaction();
+			} catch (SQLException e) {
+				getLog().error(e.getMessage(), e);
+			}
+		}
+		return result;
 	}
 	
 	private static Logger getLog() {
@@ -52,12 +67,10 @@ public class TransactionProvider {
 	}
 	
 	public static void validateInTransaction(TransactionalValidationForm form, ValidationError validationError) throws SQLException {
-		boolean commited = false;
 		try {
 			IBatisManager.beginTransaction();
 			form.validateInTransaction(validationError);
             IBatisManager.commitTransaction();
-            commited = true;
 		} finally {
 			try {
 				IBatisManager.endTransaction();
