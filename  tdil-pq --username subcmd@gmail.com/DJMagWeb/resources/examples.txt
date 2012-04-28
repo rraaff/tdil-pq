@@ -1,3 +1,7 @@
+<div id="bannerHeader"><img src="images/banners/bannerHeader.gif" width="980" height="91"></div>
+
+<div id="bannerRight"><img src="images/banners/bannerRight.gif" width="250" height="268"></div>
+
 you tube
 <iframe width="420" height="200" src="http://www.youtube.com/embed/xZ5BlmmA8Hk" frameborder="0"></iframe>
 

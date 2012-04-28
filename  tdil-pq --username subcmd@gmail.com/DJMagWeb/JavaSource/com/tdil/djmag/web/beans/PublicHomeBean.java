@@ -18,6 +18,7 @@ import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.BannerInsertPoints;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.FacebookFeed;
@@ -34,6 +35,7 @@ import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.djmag.model.Video;
+import com.tdil.djmag.model.valueobjects.BannerValueObject;
 import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
@@ -67,6 +69,11 @@ public class PublicHomeBean  {
 	private NoteValueObject lastNoteSecond;
 	private List<NoteValueObject> lastNotes;
 	private List<NoteValueObject> agendaNotes;
+	
+	private BannerValueObject homeTop;
+	private BannerValueObject homeRight;
+	private BannerValueObject noteTop;
+	private BannerValueObject noteRight;
 	
 	private List<Video> lastVideos;
 	
@@ -126,6 +133,22 @@ public class PublicHomeBean  {
 		return this.getLastVideos() != null && !this.getLastVideos().isEmpty();
 	}
 	
+	public boolean hasHomeTopBanner() {
+		return this.getHomeTop() != null;
+	}
+	
+	public boolean hasHomeRightBanner() {
+		return this.getHomeRight() != null;
+	}
+	
+	public boolean hasNoteTopBanner() {
+		return this.getNoteTop() != null;
+	}
+	
+	public boolean hasNoteRightBanner() {
+		return this.getNoteRight() != null;
+	}
+	
 	public void initCountries() {
 		if (allCountries == null || allCountries.isEmpty()) {
 			try {
@@ -151,6 +174,24 @@ public class PublicHomeBean  {
 					// cargo las secciones
 					SectionDAO sectionDAO = DAOManager.getSectionDAO();
 					setSectionsForCountry(sectionDAO.selectActiveSectionsForCountry(country));
+					
+					// cargo los banners
+					List<BannerValueObject> banners = DAOManager.getBannerDAO().getActiveBannersForCountry(country);
+					for (BannerValueObject ban : banners) {
+						if (ban.getPosition().equals(BannerInsertPoints.HOME_TOP)) {
+							setHomeTop(ban);
+						}
+						if (ban.getPosition().equals(BannerInsertPoints.HOME_RIGHT)) {
+							setHomeRight(ban);
+						}
+						if (ban.getPosition().equals(BannerInsertPoints.NOTE_TOP)) {
+							setNoteTop(ban);
+						}
+						if (ban.getPosition().equals(BannerInsertPoints.NOTE_RIGHT)) {
+							setNoteRight(ban);
+						}
+					}
+					
 					// cargo el ranking
 					RankingNoteDAO rankingNoteDAO = DAOManager.getRankingNoteDAO();
 					List<RankingNote> rankingForCountry = rankingNoteDAO.selectActiveRankingForCountry(country);
@@ -395,6 +436,9 @@ public class PublicHomeBean  {
 	}
 
 	public List<Video> getLastVideos() {
+		if (lastVideos.size() > MAX_VIDEOS_FOR_HOME) {
+			return lastVideos.subList(0, MAX_VIDEOS_FOR_HOME);
+		}
 		return lastVideos;
 	}
 
@@ -432,5 +476,37 @@ public class PublicHomeBean  {
 
 	public void setLastNoteSecond(NoteValueObject lastNoteSecond) {
 		this.lastNoteSecond = lastNoteSecond;
+	}
+
+	public BannerValueObject getHomeTop() {
+		return homeTop;
+	}
+
+	public void setHomeTop(BannerValueObject homeTop) {
+		this.homeTop = homeTop;
+	}
+
+	public BannerValueObject getHomeRight() {
+		return homeRight;
+	}
+
+	public void setHomeRight(BannerValueObject homeRight) {
+		this.homeRight = homeRight;
+	}
+
+	public BannerValueObject getNoteTop() {
+		return noteTop;
+	}
+
+	public void setNoteTop(BannerValueObject noteTop) {
+		this.noteTop = noteTop;
+	}
+
+	public BannerValueObject getNoteRight() {
+		return noteRight;
+	}
+
+	public void setNoteRight(BannerValueObject noteRight) {
+		this.noteRight = noteRight;
 	}
 }

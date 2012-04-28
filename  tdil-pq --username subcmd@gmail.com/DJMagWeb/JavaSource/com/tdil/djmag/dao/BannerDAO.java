@@ -2,6 +2,9 @@ package com.tdil.djmag.dao;
 
 import com.tdil.djmag.model.Banner;
 import com.tdil.djmag.model.BannerExample;
+import com.tdil.djmag.model.Country;
+import com.tdil.djmag.model.valueobjects.BannerValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -90,4 +93,7 @@ public interface BannerDAO {
 	 * @mbggenerated  Thu Apr 26 23:46:55 ART 2012
 	 */
 	int updateBannerByPrimaryKeyWithoutBLOBs(Banner record) throws SQLException;
+
+	/** custom queries */
+	List<BannerValueObject> getActiveBannersForCountry(Country country) throws SQLException;
 }

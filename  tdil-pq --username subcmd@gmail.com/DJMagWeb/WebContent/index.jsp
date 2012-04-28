@@ -85,7 +85,7 @@ $(document).ready(
 		</div>
 	</div>
 </div>
-<div id="bannerHeader"><img src="images/banners/bannerHeader.gif" width="980" height="91"></div>
+<%@ include file="includes/homeBannerTop.jsp" %>
 <div id="BlockMain">
 <%@ include file="includes/homeFrontCovers.jsp" %>
 <%@ include file="includes/homeRanking.jsp" %>
@@ -93,7 +93,7 @@ $(document).ready(
 		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
 		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
-		<div id="bannerRight"><img src="images/banners/bannerRight.gif" width="250" height="268"></div>
+		<%@ include file="includes/homeBannerRight.jsp" %>
 	</div>
 </div>
 <!-- Pablo revistar -->

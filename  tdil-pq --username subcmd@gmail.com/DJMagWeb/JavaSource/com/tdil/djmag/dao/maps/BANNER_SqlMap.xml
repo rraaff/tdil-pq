@@ -19,6 +19,11 @@
     -->
     <result column="htmlContent" jdbcType="LONGVARCHAR" property="htmlcontent" />
   </resultMap>
+  
+  <resultMap class="com.tdil.djmag.model.valueobjects.BannerValueObject" extends="BANNER.ResultMapWithBLOBs" id="BannerResultMapWithBLOBsAndInsertPoint">
+    <result column="position" jdbcType="VARCHAR" property="position" />
+  </resultMap>
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
@@ -294,4 +299,16 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <!-- Custom queries -->
+  <select id="selectActiveBannersForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="BannerResultMapWithBLOBsAndInsertPoint">
+    <!--
+    -->
+    select ban.id, ban.description, ban.deleted, ban.htmlContent, banpos.position
+    from BANNER ban, BANNER_POSITION banpos
+    where ban.id = banpos.id_banner
+    and banpos.id_country = #id:INTEGER#
+    and ban.deleted = 0
+    and banpos.deleted = 0
+  </select>
 </sqlMap>

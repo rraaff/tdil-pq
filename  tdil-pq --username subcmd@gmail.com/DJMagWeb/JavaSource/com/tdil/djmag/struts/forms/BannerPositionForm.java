@@ -244,6 +244,7 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	public static synchronized List<String> getAllInsertPoints() {
 		List<String> result = new ArrayList<String>();
 		result.add(BannerInsertPoints.HOME_TOP);
+		result.add(BannerInsertPoints.HOME_RIGHT);
 		result.add(BannerInsertPoints.NOTE_TOP);
 		result.add(BannerInsertPoints.NOTE_RIGHT);
 		return result;
@@ -270,6 +271,11 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 	}
 
 	public List<BannerInsertPointSelectionVO> getSelectedPoints() {
+		for (BannerInsertPointSelectionVO bvo : selectedPoints) {
+			if (bvo.getInsertPoint().equals(this.getInsertPoint())) {
+				bvo.setSelected(true);
+			}
+		}
 		return selectedPoints;
 	}
 
