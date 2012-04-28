@@ -14,6 +14,9 @@
 <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/nivo_theme/default.css" type="text/css" media="screen" />
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 <script>
 
 	function setAsTopVideo(divId) {
@@ -135,6 +138,11 @@ $(document).ready(
 			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
 		});
     });
+	  $(document).ready(function(){
+	    $("a[rel^='prettyPhoto']").prettyPhoto({
+	    	hideflash: true
+	    });
+	  });
     </script>
 <% } else { %>
 <body style="background-image:none;">
