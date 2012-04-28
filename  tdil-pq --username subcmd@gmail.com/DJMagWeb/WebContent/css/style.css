@@ -17,7 +17,10 @@ body {
 	line-height: normal;
 	font-weight: normal;
 	color: #fff;	
-}
+}/*
+div {
+	border:dotted 1px #00FF00;
+}*/
 #BlockCoutrySelection {
 	background-image: url(../images/selector-pais.gif);
 	background-repeat: no-repeat;

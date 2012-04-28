@@ -88,9 +88,9 @@
 	font-weight:bold;
 }
 .theme-default #slider {
-    margin:100px auto 0 auto;
-    width:600px; /* Make sure your images are the same size */
-    height:600px; /* Make sure your images are the same size */
+    margin:0 auto 0 auto;
+    width:428px; /* Make sure your images are the same size */
+    height:400px; /* Make sure your images are the same size */
 }
 .theme-pascal.slider-wrapper,
 .theme-orman.slider-wrapper {
