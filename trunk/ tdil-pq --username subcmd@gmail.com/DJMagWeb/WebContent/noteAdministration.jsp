@@ -121,18 +121,20 @@
 						<bean:message key="uploadImage" />
 					</html:button>
 				</div>
-				<h2>Agenda</h2>
-				<logic:equal name="NoteForm" property="hasAgendaImage" value="true">
-					<html:img action="/viewImageNote.do?type=agenda" align="middle" width="75" height="50" alt="" />
-					<bean:write name="NoteForm" property="agendaImage.fileName" />
-					<a href="javascript:document.NoteForm.action='./deleteNoteAgenda.do';document.NoteForm.submit();">Borrar</a>
-				</logic:equal>
+				<h2>Im&aacute;gen de Agenda (thumbnail)</h2>
+				<div class="renglon width740 height150 border1 padding10 bgF2">
+					<logic:equal name="NoteForm" property="hasAgendaImage" value="true">
+						<html:img action="/viewImageNote.do?type=agenda" align="middle" width="75" height="50" alt="" />
+						<bean:write name="NoteForm" property="agendaImage.fileName" />
+						<a href="javascript:document.NoteForm.action='./deleteNoteAgenda.do';document.NoteForm.submit();">Borrar</a>
+					</logic:equal>
 					Im&aacute;gen <html:file name="NoteForm"
 						property="agendaImageFormFile" /><html:button property="operation"
 						onclick="this.form.action='./uploadNoteAgenda.do';this.form.submit();">
 						<bean:message key="uploadImage" />
 					</html:button>
-				<h2>Im�genes de la nota</h2>
+				</div>
+				<h2>Im&aacute;genes de la nota</h2>
 				<table>
 					<tr>
 						<td class="headerTablas" width="40">&Oacute;rden</td>
