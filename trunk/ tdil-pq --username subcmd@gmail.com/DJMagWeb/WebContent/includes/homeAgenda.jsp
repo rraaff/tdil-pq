@@ -10,5 +10,5 @@
 	<% } %>
 	</div>
 <% } else { %>
-	<div id="BlockHomeCalendar">No hay eventos de agenda</div>
+	<%@ include file="includes/homeBannerRight.jsp" %>
 <% } %>
