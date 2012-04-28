@@ -10,5 +10,5 @@
 	<% } %>
 	</div>
 <% } else { %>
-	<%@ include file="includes/homeBannerRight.jsp" %>
+	<%@ include file="homeBannerRight.jsp" %>
 <% } %>
