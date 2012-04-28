@@ -86,7 +86,7 @@
 					<td class="headerTablas">Pais</td>
 					<td class="headerTablas">Banner</td>
 					<td class="headerTablas">Posicion</td>
-					<td class="headerTablas">Acciones</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="BannerPositionForm" property="allBannerPositions"
 					id="iterBannerPosition" indexId="iterIndex">
@@ -108,16 +108,12 @@
 						<td>
 							<bean:write name="iterBannerPosition" property="position" />
 						</td>
-						<td><html:link action="/editBannerPosition" paramName="iterBannerPosition"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
-							<html:link action="/toggleDeletedBannerPosition" paramName="iterBannerPosition"
-								paramProperty="id" paramId="id">
+						<td align="center"><html:link action="/editBannerPosition" paramName="iterBannerPosition" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+							<html:link action="/toggleDeletedBannerPosition" paramName="iterBannerPosition" paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterBannerPosition).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>

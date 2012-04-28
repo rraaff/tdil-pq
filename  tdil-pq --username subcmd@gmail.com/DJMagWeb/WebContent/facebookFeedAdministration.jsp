@@ -58,7 +58,7 @@
 			<table>
 				<tr>
 					<td class="headerTablas">Pais</td>
-					<td class="headerTablas">Acciones</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="FacebookFeedForm" property="allFacebookFeeds"
 					id="iterFacebookFeed" indexId="iterIndex">
@@ -70,16 +70,13 @@
 								<% 	Country country = FacebookFeedForm.getCountryForFacebookFeedId(((com.tdil.ibatis.PersistentObject) iterFacebookFeed).getId()); %>
 								<%= country.getName() %>&nbsp;
 						</td>
-						<td><html:link action="/editFacebookFeed" paramName="iterFacebookFeed"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
+						<td align="center"><html:link action="/editFacebookFeed" paramName="iterFacebookFeed" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedFacebookFeed" paramName="iterFacebookFeed"
 								paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterFacebookFeed).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>

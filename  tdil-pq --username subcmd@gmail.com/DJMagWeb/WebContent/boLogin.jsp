@@ -16,7 +16,9 @@
 	<div id="loginBase">
 		<h1>Ingreso al Administrador</h1>
 		<html:form method="POST" action="/login">
-		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
+		<div class="renglon width20">
+			<div class="label width20"><span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span></div>
+		</div>
 		<div class="renglon width230">
 			<html:hidden name="LoginForm" property="operation" value=""/>
 			<div class="label width80">Usuario</div>

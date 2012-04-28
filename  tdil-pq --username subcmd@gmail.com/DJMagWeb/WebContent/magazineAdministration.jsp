@@ -33,35 +33,39 @@
 					<div class="label width100">Descripcion</div>
 					<div class="label width400 height80"><html:textarea name="MagazineForm" property="description" styleClass="width400 height80" /><%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.description.err")%></div>
 				</div>
-				<h2>Portada</h2>
-				<div class="renglon width740 height150 border1 padding10 bgF2">
-					<div class="label width300 height150">
-						<logic:equal name="MagazineForm" property="hasFrontCover" value="true">
-							<html:img action="/viewMagazineFrontCover" align="middle" width="112" height="150" alt="" styleClass="border1" />
-							<bean:write name="MagazineForm" property="frontCover.fileName" />
-							<a href="javascript:document.MagazineForm.action='./deleteMagazineFrontCover.do';document.MagazineForm.submit();">Borrar</a>
-						</logic:equal>
-					</div>
-					<div class="label width80">
-						<html:file name="MagazineForm" property="frontCoverFormFile" /><html:button property="operation" onclick="this.form.action='./uploadMagazineFrontCover.do';this.form.submit();">
-							<bean:message key="uploadImage" />
-						</html:button> <%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.front_cover.err")%>
+				<div class="width450" style="float:left;">
+					<h2>Portada</h2>
+					<div class="renglon width420 height150 border1 padding10 bgF2">
+						<div class="label width200 height150">
+							<logic:equal name="MagazineForm" property="hasFrontCover" value="true">
+								<html:img action="/viewMagazineFrontCover" align="middle" width="112" height="150" alt="" styleClass="border1" />
+								<bean:write name="MagazineForm" property="frontCover.fileName" />
+								<a href="javascript:document.MagazineForm.action='./deleteMagazineFrontCover.do';document.MagazineForm.submit();">Borrar</a>
+							</logic:equal>
+						</div>
+						<div class="label width80">
+							<html:file name="MagazineForm" property="frontCoverFormFile" /><html:button property="operation" onclick="this.form.action='./uploadMagazineFrontCover.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button> <%=DJMagErrorFormatter.getErrorFrom(request, "Magazine.front_cover.err")%>
+						</div>
 					</div>
 				</div>
-				<h2>Revista</h2>
-				<div class="renglon width740 height150 border1 padding10">
-					<div class="label width300 height150">
-						<logic:equal name="MagazineForm" property="hasMagazineContent" value="true">
-							<bean:write name="MagazineForm" property="magazineContent.fileName" />
-							<a href="javascript:document.MagazineForm.action='./deleteMagazineContent.do';document.MagazineForm.submit();">Borrar</a>
-						</logic:equal>
-					</div>
-					<div class="label width200">
-						<html:file name="MagazineForm"
-							property="magazineContentFormFile" /><html:button property="operation"
-							onclick="this.form.action='./uploadMagazineContent.do';this.form.submit();">
-							<bean:message key="uploadImage" />
-						</html:button>
+				<div class="width450" style="float:left; margin-left:20px;">
+					<h2>Revista</h2>
+					<div class="renglon width420 height150 border1 padding10">
+						<div class="label width200 height150">
+							<logic:equal name="MagazineForm" property="hasMagazineContent" value="true">
+								<bean:write name="MagazineForm" property="magazineContent.fileName" />
+								<a href="javascript:document.MagazineForm.action='./deleteMagazineContent.do';document.MagazineForm.submit();">Borrar</a>
+							</logic:equal>
+						</div>
+						<div class="label width200">
+							<html:file name="MagazineForm"
+								property="magazineContentFormFile" /><html:button property="operation"
+								onclick="this.form.action='./uploadMagazineContent.do';this.form.submit();">
+								<bean:message key="uploadImage" />
+							</html:button>
+						</div>
 					</div>
 				</div>
 				<div class="renglon width200 height50">
@@ -85,7 +89,7 @@
 			<table>
 				<tr>
 					<td class="headerTablas">Fecha</td>
-					<td class="headerTablas">Acciones</td>
+					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="MagazineForm" property="allMagazines"
 					id="iterMagazine" indexId="iterIndex">
@@ -97,16 +101,13 @@
 								<% Magazine magazine = (Magazine)iterMagazine; %>
 								<%= MagazineForm.formatDate(magazine.getPublishDate())%>
 						</td>
-						<td><html:link action="/editMagazine" paramName="iterMagazine"
-								paramProperty="id" paramId="id">
-							Editar
-							</html:link>
+						<td align="center"><html:link action="/editMagazine" paramName="iterMagazine" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedMagazine" paramName="iterMagazine"
 								paramProperty="id" paramId="id">
 								<% if (((com.tdil.ibatis.PersistentObject) iterMagazine).getDeleted() == 1) { %>
-									Activar
+									<img src="boImages/activar.png" alt="Activar">
 								<% } else { %>
-									Desactivar
+									<img src="boImages/desactivar.png" alt="Desactivar">
 								<% } %>
 							</html:link>
 						</td>
