@@ -69,6 +69,18 @@ $(document).ready(
 			}
 		}
 	
+	
+		function changeCountry() {
+			<% 	publicHomeBean.initCountries();
+				StringBuffer sb = new StringBuffer();
+				for (Country country : publicHomeBean.getAllCountries()) {
+					sb.append("<a href=\"./selectCountry.st?id=").append(country.getId()).append("\">").append(country.getName()).append("</a><br>");
+				} %>
+			$.jGrowl('<%=sb.toString()%>',{ sticky: true });
+		}
+		$('#changeCountryLink').click(function(){
+		      changeCountry();
+		    });
 	}
 );
 </script>
@@ -93,7 +105,7 @@ $(document).ready(
 <%@ include file="includes/homeFrontCovers.jsp" %>
 <%@ include file="includes/homeRanking.jsp" %>
 	<div id="BlockMainRight">
-		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
+		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img id="changeCountryLink" src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
 		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
 		<%@ include file="includes/homeMagazine.jsp" %>
