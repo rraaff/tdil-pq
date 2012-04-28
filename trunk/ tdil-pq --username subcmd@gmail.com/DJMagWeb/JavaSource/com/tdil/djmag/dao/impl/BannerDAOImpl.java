@@ -4,6 +4,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.BannerDAO;
 import com.tdil.djmag.model.Banner;
 import com.tdil.djmag.model.BannerExample;
+import com.tdil.djmag.model.Country;
+import com.tdil.djmag.model.valueobjects.BannerValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -174,5 +177,10 @@ public class BannerDAOImpl implements BannerDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<BannerValueObject> getActiveBannersForCountry(Country country) throws SQLException {
+		List<BannerValueObject> list = sqlMapClient.queryForList("BANNER.selectActiveBannersForCountry", country);
+		return list;
 	}
 }
