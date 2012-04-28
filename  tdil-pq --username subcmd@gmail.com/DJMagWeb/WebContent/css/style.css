@@ -364,7 +364,7 @@ body {
 	margin-bottom:15px;
 	margin-top:15px;
 }
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 {
+#BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:hover, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:visited, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:active  {
 	font-size:18px;
 	color:#fef455;
 	font-weight:bold;
