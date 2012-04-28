@@ -154,6 +154,14 @@ public class PublicHomeBean  {
 		return this.getNoteRight() != null;
 	}
 	
+	public String getExternalLink(NoteValueObject noteValueObject) {
+		StringBuffer result = new StringBuffer();
+		result.append("./notes/").append(this.getCountry().getIsoCode2()).append("/");
+		result.append(formatDateForUrl(noteValueObject.getFromDate())).append("/");
+		result.append(noteValueObject.getWebTitle()).append(".html");
+		return result.toString();
+	}
+	
 	public NoteValueObject getNoteByParams(final String isoCode2, final String datePart, final String webTitle) {
 		NoteValueObject result = null;
 		int countryId = 0;

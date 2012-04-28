@@ -72,7 +72,6 @@ $(document).ready(
 			}
 		}
 	
-	
 		function changeCountry() {
 			<% 	publicHomeBean.initCountries();
 				StringBuffer sb = new StringBuffer();
@@ -129,6 +128,14 @@ $(document).ready(
 	</div>
 </div>
 <%@ include file="includes/homeFooter.jsp" %> 
+	<!-- cargo el slider -->
+	<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
+		});
+    });
+    </script>
 <% } else { %>
 <body style="background-image:none;">
 	<div id="BlockCoutrySelection">
@@ -146,13 +153,5 @@ $(document).ready(
 		</div>
 	</div>
 <% } %>     
-	<!-- cargo el slider -->
-	<script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider({
-			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
-		});
-    });
-    </script>
 </body>
 </html>
