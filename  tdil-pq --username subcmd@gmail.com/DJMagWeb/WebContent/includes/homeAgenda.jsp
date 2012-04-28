@@ -10,5 +10,5 @@
 	<% } %>
 	</div>
 <% } else { %>
-	<%@ include file="homeBannerRight.jsp" %>
+	<div id="BlockHomeCalendar"><%@ include file="homeBannerRight.jsp" %></div>
 <% } %>
