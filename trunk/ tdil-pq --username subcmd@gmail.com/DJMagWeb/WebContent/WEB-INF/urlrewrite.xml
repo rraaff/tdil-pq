@@ -14,8 +14,8 @@
         <note>
             Redireccion para las notas.
         </note>
-        <from>/([0-9]{4}-[0-9]{2}-[0-9]{2})/(.*).html</from>
-        <to>/getNote.jsp?date=$1&amp;note=$2</to>
+        <from>/([a-z|A-Z]{2})/([0-9]{4}-[0-9]{2}-[0-9]{2})/(.*).html</from>
+        <to>/viewNote.jsp?country=$1&amp;date=$2&amp;webTitle=$3</to>
     </rule>
 
 
