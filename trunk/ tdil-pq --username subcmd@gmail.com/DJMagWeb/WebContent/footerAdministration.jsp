@@ -37,7 +37,7 @@
 							</logic:iterate>
 						</html:select>
 					</div>
-					<div class="label width100"><html:link action="/resetFooter">Resetear</html:link></div>
+					<div class="label width100"><a href="javascript:document.FooterForm.action='./resetFooter.do';document.FooterForm.submit();">Resetear</a></div>
 					<div class="label width100"><%=DJMagErrorFormatter.getErrorFrom(request, "Footer.country.err")%></div>
 				</div>
 				<div class="renglon width860 height80">
