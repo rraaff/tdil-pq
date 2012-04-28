@@ -8,7 +8,7 @@
 		%>
 			<div id="lastNews" style="float:left; margin-right:15px;">
 				<img src="./download.st?id=<%=first.getLastnewscoverId()%>&type=PUBLIC&ext=<%=first.getLastnewscoverext()%>" width="308" height="222">
-				<h3><a href="<%=publicHomeBean.getExternalLink(first)%>"><%=first.getTitle() %></a></h3>
+				<h3><a href="<%=publicHomeBean.getExternalLink(first)%>?iframe=true&width=800&height=600" rel="prettyPhoto[news_gal]"><%=first.getTitle() %></a></h3>
 				<div class="bajada"><%=first.getSummary() %></div>
 				<div class="date"><%=PublicHomeBean.formatDate(first.getFromDate()) %></div>
 			</div>
@@ -18,7 +18,7 @@
 		%>
 		<div id="lastNews" style="float:right;">
 			<img src="./download.st?id=<%=second.getLastnewscoverId()%>&type=PUBLIC&ext=<%=second.getLastnewscoverext()%>" width="308" height="222">
-			<h3><a href="<%=publicHomeBean.getExternalLink(second)%>"><%=second.getTitle() %></a></h3>
+			<h3><a href="<%=publicHomeBean.getExternalLink(second)%>?iframe=true&width=800&height=600" rel="prettyPhoto[news_gal]"><%=second.getTitle() %></a></h3>
 			<div class="bajada"><%=second.getSummary() %></div>
 			<div class="date"><%=PublicHomeBean.formatDate(second.getFromDate()) %></div>
 		</div>
