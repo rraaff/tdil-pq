@@ -202,8 +202,8 @@
 			<table>
 				<tr>
 					<td class="headerTablas" width="150">T&iacute;tulo</td>
-					<td class="headerTablas" width="250">Secci&oacute;n</td>
-					<td class="headerTablas" width="200">Pa&iacute;ses</td>
+					<td class="headerTablas" width="150">Secci&oacute;n</td>
+					<td class="headerTablas" width="300">Pa&iacute;ses</td>
 					<td class="headerTablas" width="100">Acciones</td>
 				</tr>
 				<logic:iterate name="NoteForm" property="allNotes" id="iterNote"

@@ -37,8 +37,8 @@
 						</html:select>
 					</div>
 					<div class="label width50">HTML</div>
-					<div class="label width500 height120">
-						<html:textarea name="TwitterFeedForm" property="htmlContent" styleClass="width500 height120" /><%=DJMagErrorFormatter.getErrorFrom(request, "TwitterFeed.htmlContent.err")%></div>
+					<div class="label width500 height120"><html:textarea name="TwitterFeedForm" property="htmlContent" styleClass="width500 height120" /><br/><span class="comment">w:309px x h:261px</span></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "TwitterFeed.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="TwitterFeedForm" property="objectId" value="0">
 					<html:submit property="operation">

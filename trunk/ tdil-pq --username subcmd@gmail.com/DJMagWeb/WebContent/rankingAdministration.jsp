@@ -79,9 +79,9 @@
 			<h2>Listado de Rankings</h2>
 			<table>
 				<tr>
-					<td class="headerTablas" width="200">T&iacute;tulo</td>
-					<td class="headerTablas" width="80%">Pa&iacute;ses</td>
-					<td class="headerTablas" width="60">Acciones</td>
+					<td class="headerTablas" width="300">T&iacute;tulo</td>
+					<td class="headerTablas" width="400">Pa&iacute;ses</td>
+					<td class="headerTablas" width="160">Acciones</td>
 				</tr>
 				<logic:iterate name="RankingNoteForm" property="allRankings"
 					id="iterRanking" indexId="iterIndex">
