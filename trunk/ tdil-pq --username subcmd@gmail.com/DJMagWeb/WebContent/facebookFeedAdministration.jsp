@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.FacebookFeed"%>
 <%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.struts.forms.FacebookFeedForm"%>
@@ -67,7 +68,7 @@
 							<%=((com.tdil.ibatis.PersistentObject) iterFacebookFeed).getDeleted() == 1 ? "class=\"notActive\""
 								: ""%>
 							align="left">
-								<% 	Country country = FacebookFeedForm.getCountryForFacebookFeedId(((com.tdil.ibatis.PersistentObject) iterFacebookFeed).getId()); %>
+								<% 	Country country = FacebookFeedForm.getCountryWithId(((FacebookFeed) iterFacebookFeed).getIdCountry()); %>
 								<%= country.getName() %>&nbsp;
 						</td>
 						<td align="center"><html:link action="/editFacebookFeed" paramName="iterFacebookFeed" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
