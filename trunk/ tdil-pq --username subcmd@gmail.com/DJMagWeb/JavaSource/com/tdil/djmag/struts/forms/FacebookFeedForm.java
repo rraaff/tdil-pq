@@ -106,6 +106,7 @@ public class FacebookFeedForm extends TransactionalValidationForm implements Tog
 		FacebookFeed twitterFeed = twitterFeedDAO.selectFacebookFeedByPrimaryKey(id);
 		if (twitterFeed != null) {
 			this.objectId = id;
+			this.countryId = twitterFeed.getIdCountry();
 			this.htmlContent = twitterFeed.getHtmlcontent();
 		} 
 		// reseteo los paises
