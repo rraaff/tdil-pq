@@ -63,21 +63,19 @@
 							<bean:message key="uploadImage" />
 						</html:button>
 					</div>
-					<div class="label width50">
+				</div>
+				<div class="renglon width200 height50">
+					<div class="label width200">
 						<logic:equal name="MagazineForm" property="objectId" value="0">
 							<html:submit property="operation">
 								<bean:message key="save" />
 							</html:submit>
 						</logic:equal>
-					</div>
-					<div class="label width50">
 						<logic:notEqual name="MagazineForm" property="objectId" value="0">
 							<html:submit property="operation">
 								<bean:message key="modify" />
 							</html:submit>
 						</logic:notEqual>
-					</div>
-					<div class="label width50">
 						<html:submit property="operation">
 							<bean:message key="reset" />
 						</html:submit>
