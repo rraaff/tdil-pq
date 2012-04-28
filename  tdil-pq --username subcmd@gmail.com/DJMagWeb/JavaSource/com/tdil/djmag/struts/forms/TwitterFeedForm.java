@@ -106,6 +106,7 @@ public class TwitterFeedForm extends TransactionalValidationForm implements Togg
 		TwitterFeed twitterFeed = twitterFeedDAO.selectTwitterFeedByPrimaryKey(id);
 		if (twitterFeed != null) {
 			this.objectId = id;
+			this.countryId = twitterFeed.getIdCountry();
 			this.htmlContent = twitterFeed.getHtmlcontent();
 		} 
 		// reseteo los paises
