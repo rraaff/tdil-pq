@@ -4,9 +4,8 @@
 	<div id="BlockHomeCalendar">
 	<% for (Note note : publicHomeBean.getReducedAgenda()) { %>
 		<div id="calendarEvent">
-			<span class="date"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></span>
-			<span><%=note.getTitle() %></span>
-			<img src="./download.st?id=<%=note.getAgendaId()%>&type=PUBLIC&ext=<%=note.getAgendaext()%>" height="50" width="50">
+			<div id="image"><img src="./download.st?id=<%=note.getAgendaId()%>&type=PUBLIC&ext=<%=note.getAgendaext()%>" height="30" width="30"></div>
+			<div id="renglon"><span class="date"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></span><span><%=note.getTitle() %></span></div>
 		</div>
 	<% } %>
 	</div>
