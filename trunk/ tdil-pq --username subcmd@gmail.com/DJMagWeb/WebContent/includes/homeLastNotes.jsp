@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.model.Note"%>
 <div id="BlockPopularNews">
@@ -8,7 +9,7 @@
 				<img src="./download.st?id=<%=note.getLastnewsthumbId()%>&type=PUBLIC&ext=<%=note.getLastnewsthumbext()%>" width="200" height="143">
 				<h3><%=note.getTitle() %></h3>
 				<div class="bajada"><%=note.getSummary() %></div>
-				<div class="date"><%=publicHomeBean.formatDate(note.getFromDate()) %></div>
+				<div class="date"><%=PublicHomeBean.formatDate(note.getFromDate()) %></div>
 			</div>
 		<% index = index + 1;
 			} %>

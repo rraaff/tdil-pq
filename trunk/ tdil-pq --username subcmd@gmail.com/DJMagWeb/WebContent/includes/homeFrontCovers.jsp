@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.model.Note"%>
 <style>
@@ -64,10 +65,14 @@
 	    <div id="htmlcaption<%=note.getId() %>" class="nivo-html-caption">
 	    		<h1><%=note.getTitle() %></h1>
 				<%=note.getSummary() %>
-				<%=publicHomeBean.formatDate(note.getFromDate()) %>
+				<%=PublicHomeBean.formatDate(note.getFromDate()) %>
 	 	</div>
 	 	<% } %>
 	</div>
+	<% /*Generacion de links a las notas*/
+		for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
+		<a href="<%=publicHomeBean.getExternalLink(note)%>"><%=note.getTitle() %></a>
+	<% } %>
 <% } else { %>
 	NO hay front covers
 <% } %>
