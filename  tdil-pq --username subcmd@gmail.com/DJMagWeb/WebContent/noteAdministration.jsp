@@ -79,7 +79,7 @@
 					<div class="label width120">Fecha de agenda</div>
 					<div class="label width120"><html:text name="NoteForm" property="agendaDate" styleClass="width100"/><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agendadate.err")%></div>
 				</div>
-				<h2>Im&aacute;gen en Portada</h2>
+				<h2>Im&aacute;gen en Portada</h2><%=DJMagErrorFormatter.getErrorFrom(request, "Note.front_cover.err")%>
 				<div class="renglon width740 height150 border1 padding10 bgF2">
 					<logic:equal name="NoteForm" property="hasFrontCoverImage" value="true">
 						<html:img action="/viewImageNote.do?type=cover" align="middle" width="75" height="50" alt="" />
@@ -93,7 +93,7 @@
 						<bean:message key="uploadImage" />
 					</html:button>
 				</div>
-				<h2>Im&aacute;gen en &Uacute;ltimas noticias (Destacadas)</h2>
+				<h2>Im&aacute;gen en &Uacute;ltimas noticias (Destacadas)</h2><%=DJMagErrorFormatter.getErrorFrom(request, "Note.last_news_cover.err")%>
 				<div class="renglon width740 height150 border1 padding10 bgF2">
 					<logic:equal name="NoteForm" property="hasNewsCover" value="true">
 						<html:img action="/viewImageNote.do?type=newsCover" align="middle" width="75" height="50" alt="" />
@@ -107,7 +107,7 @@
 						<bean:message key="uploadImage" />
 					</html:button>
 				</div>
-				<h2>Im&aacute;gen en &Uacute;ltimas noticias (chicas)</h2>
+				<h2>Im&aacute;gen en &Uacute;ltimas noticias (chicas)</h2><%=DJMagErrorFormatter.getErrorFrom(request, "Note.last_news_thumb.err")%>
 				<div class="renglon width740 height150 border1 padding10 bgF2">
 					<logic:equal name="NoteForm" property="hasNewsThumb" value="true">
 						<html:img action="/viewImageNote.do?type=newsThumb" align="middle" width="75" height="50" alt="" />
@@ -121,7 +121,7 @@
 						<bean:message key="uploadImage" />
 					</html:button>
 				</div>
-				<h2>Im&aacute;gen de Agenda (thumbnail)</h2>
+				<h2>Im&aacute;gen de Agenda (thumbnail)</h2><%=DJMagErrorFormatter.getErrorFrom(request, "Note.agenda.err")%>
 				<div class="renglon width740 height150 border1 padding10 bgF2">
 					<logic:equal name="NoteForm" property="hasAgendaImage" value="true">
 						<html:img action="/viewImageNote.do?type=agenda" align="middle" width="75" height="50" alt="" />
@@ -134,7 +134,7 @@
 						<bean:message key="uploadImage" />
 					</html:button>
 				</div>
-				<h2>Im&aacute;genes de la nota</h2>
+				<h2>Im&aacute;genes de la nota</h2><%=DJMagErrorFormatter.getErrorFrom(request, "Note.image.err")%>
 				<table>
 					<tr>
 						<td class="headerTablas" width="40">&Oacute;rden</td>
@@ -201,6 +201,7 @@
 			<h2>Listado de Notas</h2>
 			<table>
 				<tr>
+					<td class="headerTablas" width="150">Fecha</td>
 					<td class="headerTablas" width="150">T&iacute;tulo</td>
 					<td class="headerTablas" width="150">Secci&oacute;n</td>
 					<td class="headerTablas" width="300">Pa&iacute;ses</td>
@@ -209,6 +210,12 @@
 				<logic:iterate name="NoteForm" property="allNotes" id="iterNote"
 					indexId="iterIndex">
 					<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+						<td
+							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
+							align="left">
+								<% Note note = (Note)iterNote; %>
+								<%= NoteForm.formatDate(note.getFromDate())%>
+						</td>
 						<td
 							<%=((com.tdil.ibatis.PersistentObject) iterNote).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 							align="left"><bean:write name="iterNote" property="title" /></td>
