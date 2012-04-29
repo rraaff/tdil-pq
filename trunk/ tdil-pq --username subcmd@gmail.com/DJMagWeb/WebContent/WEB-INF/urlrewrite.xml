@@ -24,7 +24,13 @@
         <from>/([a-z|A-Z]{2})/viewRanking.html</from>
         <to>/viewRanking.jsp?country=$1</to>
     </rule>
-
+	<rule>
+        <note>
+            Redireccion para los videos.
+        </note>
+        <from>/([a-z|A-Z]{2})/viewVideos.html</from>
+        <to>/viewVideos.jsp?country=$1</to>
+    </rule>
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
