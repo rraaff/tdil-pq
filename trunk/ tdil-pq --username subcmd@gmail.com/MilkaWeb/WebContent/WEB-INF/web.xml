@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name>MilkaWeb</display-name>
+ <context-param>
+  <param-name>application.resources</param-name>
+  <param-value>com.tdil.milka.struts.resources.ApplicationResources</param-value>
+ </context-param>
+ <context-param>
+  <param-name>system.config</param-name>
+  <param-value>com.tdil.milka.utils.MilkaConfig</param-value>
+ </context-param>
+ <filter>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  <init-param>
+   <param-name>logLevel</param-name>
+   <param-value>WARN</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <filter-name>NoCachingFilter</filter-name>
+  <filter-class>com.tdil.web.NoCacheFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <url-pattern>/notes/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>*.jsp</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>*.do</url-pattern>
+ </filter-mapping>
+ <listener>
+  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
+ </listener>
+ <!-- Action Servlet Configuration -->
+ <servlet>
+  <servlet-name>action</servlet-name>
+  <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+  <init-param>
+   <param-name>config</param-name>
+   <param-value>/WEB-INF/struts-config.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <!-- Action Servlet Mapping -->
+ <servlet-mapping>
+  <servlet-name>action</servlet-name>
+  <url-pattern>*.do</url-pattern>
+ </servlet-mapping>
+ <!-- The Usual Welcome File List -->
+ <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+ <jsp-config>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-bean</taglib-uri>
+   <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-logic</taglib-uri>
+   <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-html</taglib-uri>
+   <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-nested</taglib-uri>
+   <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+  </taglib>
+ </jsp-config>
+</web-app>

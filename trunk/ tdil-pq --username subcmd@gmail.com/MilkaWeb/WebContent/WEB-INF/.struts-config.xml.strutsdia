@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#login" NAME="action0" PATH="/login"
+  SHAPE="32,17,0,0" TITLE="LoginForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/boLogin.jsp"
+   TARGET="page1" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward1" PATH="/boHome.jsp"
+   TARGET="page2" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page1" PATH="/boLogin.jsp" SHAPE="240,129,0,0"
+  SUBTYPE="jsp" TITLE="boLogin.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/login.do" SUBTYPE="confirmed"
+   TARGET="action0" TITLE="/login.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/boHome.jsp" SHAPE="448,17,0,0"
+  SUBTYPE="jsp" TITLE="boHome.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="ajaxReturn" NAME="forward0" PATH="/empty.jsp"
+  SHAPE="32,497,0,0" TARGET="page3" TITLE="ajaxReturn" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/empty.jsp" SHAPE="240,514,0,0"
+  SUBTYPE="jsp" TITLE="empty.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notLogged" NAME="forward1" PATH="/boLogin.jsp"
+  SHAPE="48,273,0,0" TARGET="page1" TITLE="notLogged" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="invalidAction" NAME="forward2" PATH="/boLogin.jsp"
+  SHAPE="48,385,0,0" TARGET="page1" TITLE="invalidAction" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logout" NAME="action2" PATH="/logout"
+  SHAPE="32,609,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4" PATH="/countryAdministration.jsp"
+  SHAPE="240,721,0,0" SUBTYPE="jsp" TITLE="countryAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editCountry.st"
+   SUBTYPE="confirmed" TARGET="page5" TITLE="/editCountry.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveCountry.do"
+   SUBTYPE="confirmed" TARGET="action4" TITLE="/saveCountry.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="/sectionAdministration.jsp"
+  SHAPE="272,1106,0,0" SUBTYPE="jsp" TITLE="sectionAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editSection.st"
+   SUBTYPE="confirmed" TARGET="page7" TITLE="/editSection.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveSection.do"
+   SUBTYPE="confirmed" TARGET="action6" TITLE="/saveSection.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page7" PATH="/editSection.st" SHAPE="480,1106,0,0"
+  SUBTYPE="other" TITLE="editSection.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page8" PATH="/reorderMenu.jsp" SHAPE="240,1457,0,0"
+  SUBTYPE="jsp" TITLE="reorderMenu.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveOrder.do"
+   SUBTYPE="confirmed" TARGET="action1" TITLE="/saveOrder.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/goToSectionABM.do"
+   SUBTYPE="confirmed" TARGET="action5" TITLE="/goToSectionABM.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="/newsletterReport.jsp"
+  SHAPE="240,1906,0,0" SUBTYPE="jsp" TITLE="newsletterReport.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="/editCountry.st" SHAPE="448,721,0,0"
+  SUBTYPE="other" TITLE="editCountry.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page10" PATH="/rankingAdministration.jsp"
+  SHAPE="240,1633,0,0" SUBTYPE="jsp" TITLE="rankingAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editRanking.st"
+   SUBTYPE="confirmed" TARGET="page11" TITLE="/editRanking.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveRanking.do"
+   SUBTYPE="confirmed" TARGET="action8" TITLE="/saveRanking.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="/editRanking.st" SHAPE="448,1633,0,0"
+  SUBTYPE="other" TITLE="editRanking.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/boLogin.jsp"
+  SHAPE="32,1521,0,0" TARGET="page1" TITLE="notAuthorized"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page12" PATH="/noteAdministration.jsp"
+  SHAPE="288,2274,0,0" SUBTYPE="jsp" TITLE="noteAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editNote.do"
+   SUBTYPE="confirmed" TARGET="action3" TITLE="/editNote.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveNote.do"
+   SUBTYPE="confirmed" TARGET="action7" TITLE="/saveNote.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveOrder" NAME="action1" PATH="/saveOrder"
+  SHAPE="448,1457,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToSectionABM" NAME="action5"
+  PATH="/goToSectionABM" SHAPE="448,1569,0,0" SUBTYPE="unknown"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveCountry" NAME="action4" PATH="/saveCountry"
+  SHAPE="448,833,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveSection" NAME="action6" PATH="/saveSection"
+  SHAPE="480,1218,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#editNote" NAME="action3" PATH="/editNote"
+  SHAPE="496,2274,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveNote" NAME="action7" PATH="/saveNote"
+  SHAPE="496,2386,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveRanking" NAME="action8" PATH="/saveRanking"
+  SHAPE="448,1745,0,0" SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+</PROCESS>

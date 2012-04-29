@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+
+<ibatorConfiguration>
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/JavaBase/bin/" />
+<ibatorContext 
+  id="ibatorContext" 
+  targetRuntime="Ibatis2Java5" 
+  defaultModelType="flat">
+
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/MILKA" userId="MILKA_USER"
+			password="MILKA_USER" />
+
+<javaModelGenerator targetPackage="com.tdil.milka.model"
+  targetProject="MilkaWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="trimStrings" value="true" />
+  <property name="rootClass" value="com.tdil.ibatis.PersistentObject" />
+</javaModelGenerator>
+
+<sqlMapGenerator targetPackage="com.tdil.milka.dao.maps"
+  targetProject="MilkaWeb">
+  <property name="enableSubPackages" value="true" />
+</sqlMapGenerator>
+
+<daoGenerator type="GENERIC-CI" 
+targetPackage="com.tdil.milka.dao"
+implementationPackage="com.tdil.milka.dao.impl"
+targetProject="MilkaWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="methodNameCalculator" value="extended" />
+</daoGenerator>
+
+<table schema="MILKA" tableName="SYSTEMUSER" domainObjectName="SystemUser">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="SYSPROPERTIES" domainObjectName="SystemProperty">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="MILKA" tableName="BLOB_DATA" domainObjectName="BlobData">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+
+</ibatorContext>
+</ibatorConfiguration>
