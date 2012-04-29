@@ -36,14 +36,10 @@
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Finca Las Moras - Premia tu forma de disfrutar la vida - BACKOFFICE</title>
-<meta name="keywords" content="Vino, Tinto, Blanco, Finca Las Moras, Beber con moderaci�n" />
-<meta name="description" content="Finca Las Moras recompensa tu forma de disfrutar la vida" />
-<meta name="AUTHOR" content="That Day in London - Agencia Interactiva & Dise�o - para Publiquest" />
-<link rel="icon" href="./favicon.ico" type="icon"/>
+<?php include("include/title_meta.php"); ?>
 <!-- Contact Form CSS files -->
-<link type='text/css' href='css/tdil.css' rel='stylesheet' media='screen' />
+<link type='text/css' href='css/tdil_bo.css' rel='stylesheet' media='screen' />
+<?php include("include/headerBO.php"); ?>
 <style>
 	#content #page {
 	width: 850px;
@@ -51,7 +47,6 @@
 	margin-top: 20px;
 }
 </style>
-<?php include("include/headerBO.php"); ?>
 <script>
 $(document).ready(
 		function(){
@@ -153,7 +148,7 @@ $(document).ready(
 <script>
 
 function showWinner(ticketID) {
-	$.get("getTicketWinner.php?ticketID=" + ticketID, function(data){
+	$.get("getDailyWinner.php?participationID=" + ticketID, function(data){
 		// create a modal dialog with the data
 		$(data).modal({
 			overlayId: 'winner-overlay',
