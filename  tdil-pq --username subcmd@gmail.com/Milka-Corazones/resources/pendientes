@@ -1,0 +1,21 @@
+Volar la carpeta testing
+
+or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+
+Guardar las fechas de las invitaciones y no dejar hacerlas a los que se le hizo en los ultimos x dias.
+Tanto email como fb.
+
+Validar el email
+
+Volar cosas de las moras
+
+App1 cantidad de usuarios nuevos por dia?
+SELECT DATE_FORMAT(creation_date, '%Y-%m-%d'), count(1) FROM GROUP_APP1 GROUP BY DATE_FORMAT(creation_date, '%Y-%m-%d');
+
+
+App2
+Completa...
+
+Mensaje de invitaciones pendientes
+Ver tema del mensaje de error al acceder por canvas directo, quizas link al tab
+
