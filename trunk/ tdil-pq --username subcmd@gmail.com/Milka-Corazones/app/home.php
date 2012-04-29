@@ -64,12 +64,13 @@ if (isset($user_profile['username'])) {
 }
 $fbgender = $user_profile['gender'];
 
-$fbname = quote_smart($fbname, $connection);
-$fbusername = quote_smart($fbusername, $connection);
-$fbgender = quote_smart($fbgender, $connection);
 ?>
 <?php
 $connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
+
+$fbname = quote_smart($fbname, $connection);
+$fbusername = quote_smart($fbusername, $connection);
+$fbgender = quote_smart($fbgender, $connection);
 
 mysql_select_db(DB_NAME,$connection);
 
@@ -80,7 +81,12 @@ $num_rows = mysql_num_rows($result);
 if ($num_rows == 0) {
 	$SQL = "INSERT INTO FBUSER (fbid,fbname, fbusername, fbgender) VALUES($fbid, $fbname,$fbusername,$fbgender)"; // 3 is fb invitation
 	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+	$userid = mysql_insert_id($connection);
+} else {
+	$dbuser = mysql_fetch_array($result);
+	$userid = $dbuser['id'];
 }
+// Fijar todas las opciones, ya participaste hoy, hoy no esta activa, hoy ya hay un ganador
 
 // me fijo si la promo del dia esta activa
 $SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE() AND participationID is null";
@@ -151,7 +157,27 @@ form, div, table, tr, td {
 </head>
 <body>
 <?php if ($todayActive) { ?>
-		Promo activa
+		<form method="POST" action="doparticipation.php">
+			<input type="hidden" name="userid" value="<?php echo $userid;?>">
+			<div id="baseDatosDeContacto" style="margin-top:100px; height:315px;">
+				<div id="errmessage"></div>
+				<div id="acomodador">
+					<table cellpadding="5" cellspacing="0" border="0" align="left">
+						<tr>
+							<td>X: </td>
+							<td><input type="text" name="xcoord" id="xcoord" value=""></td>
+						</tr>
+						<tr>
+							<td>Y: </td>
+							<td><input type="text" name="ycoord" id="ycoord" value=""></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
 <?php } else { ?>
 		Promo del dia inactiva
 <?php } ?>
