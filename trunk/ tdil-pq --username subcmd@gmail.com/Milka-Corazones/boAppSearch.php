@@ -30,20 +30,20 @@ function doSearch() {
 	if (oTable != null) {
 		oTable.fnDestroy();
 	}
- 	var sInicial = document.getElementById('sInicial').value;
- 	var sParticipation = document.getElementById('sParticipation').value;
  	var sGender = document.getElementById('sGender').value;
- 	var sMinFans = document.getElementById('sMinFans').value;
- 	var sMaxFans = document.getElementById('sMaxFans').value;
+ 	var sMinParticipations = document.getElementById('sMinParticipations').value;
+ 	var sMaxParticipations = document.getElementById('sMaxParticipations').value;
+ 	var sMinWins = document.getElementById('sMinWins').value;
+ 	var sMaxWins = document.getElementById('sMaxWins').value;
 	oTable = $('#example').dataTable( {
 					"bProcessing": true,
-					"sAjaxSource": "doApp1Search.php",
+					"sAjaxSource": "doAppSearch.php",
 					 "fnServerParams": function ( aoData ) {
-				            aoData.push( { "name" : "sInicial","value" : sInicial },
-				            			{ "name" : "sParticipation","value" : sParticipation },
-				            			{ "name" : "sGender","value" : sGender },
-				            			{ "name" : "sMinFans","value" : sMinFans },
-				            			{ "name" : "sMaxFans","value" : sMaxFans } );
+				            aoData.push( { "name" : "sGender","value" : sGender },
+				            			{ "name" : "sMinParticipations","value" : sMinParticipations },
+				            			{ "name" : "sMaxParticipations","value" : sMaxParticipations },
+				            			{ "name" : "sMinWins","value" : sMinWins },
+				            			{ "name" : "sMaxWins","value" : sMaxWins });
 				        },
 						"sDom": 'T<"clear">lfrtip',
 						"oTableTools": {
@@ -70,31 +70,12 @@ function doSearch() {
 	<div id="header"></div>
     <div id="block">
 		<div id="promoTitle"><h1>Bienvenido al BackOffice de la promoci&oacute;n <span class="remarcado">Degustaci&oacute;n exclusiva.</span></h1></div>
-        <div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?> <?php echo($_SESSION['boApellido']);?></span></div>
+        <div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
         <div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
         <div id="page">
             <div align="center">
             	<h2>Busquedas</h2>
                 <table width="350" cellspacing="10" cellpadding="0" align="center" border="0">
-                    <tr>
-                        <td>Origen del usuario:</td>
-                        <td><select id="sInicial">
-                                <option value="-1">Todos</option>
-                                <option value="1">Base inicial</option>
-                                <option value="2">Invitados por email</option>
-                                <option value="3">Invitados por facebook</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>	
-                        <td>Fans de la pagina:</td>
-                        <td><select id="sParticipation">
-                                <option value="-1">Todos</option>
-                                <option value="1">Fans</option>
-                                <option value="0">No fans</option>
-                            </select>
-                        </td>
-                    </tr>
                     <tr>	
                         <td>Sexo:</td>
                         <td><select id="sGender">
@@ -105,12 +86,20 @@ function doSearch() {
                         </td>
                     </tr>
                     <tr>	
-                        <td>Fans recomendados (como minimo):</td>
-                        <td><input type="text" id="sMinFans"></td>
+                        <td>Participaciones (como minimo):</td>
+                        <td><input type="text" id="sMinParticipations"></td>
                     </tr>
                     <tr>	
-                        <td>Fans recomendados (como maximo):</td>
-                        <td><input type="text" id="sMaxFans"></td>
+                        <td>Participaciones (como maximo):</td>
+                        <td><input type="text" id="sMaxParticipations"></td>
+                    </tr>
+                     <tr>	
+                        <td>Ganador (como minimo):</td>
+                        <td><input type="text" id="sMinWins"></td>
+                    </tr>
+                    <tr>	
+                        <td>Ganador (como maximo):</td>
+                        <td><input type="text" id="sMaxWins"></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
@@ -128,11 +117,7 @@ function doSearch() {
                                 <th width="25%">FB nombre</th>
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
-                                <th width="25%">Email</th>
-                                <th width="25%">Origen</th>
-                                <th width="25%">Participo</th>
-                                <th width="25%">Fans</th>
-                                <th width="25%">Grupo</th>
+                                <th width="25%">Participaciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -144,20 +129,11 @@ function doSearch() {
                                 <th width="25%">FB nombre</th>
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
-                                <th width="25%">Email</th>
-                                <th width="25%">Origen</th>
-                                <th width="25%">Participo</th>
-                                <th width="25%">Fans</th>
-                                <th width="25%">Grupo</th>
+                               <th width="25%">Participaciones</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-            </div>
-            <div>
-            Origen: 1 base inicial<br>
-            Origen: 2 invitado por email<br>
-            Origen: 3 invitado por facebook<br>
             </div>
                     
         </div>

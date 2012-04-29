@@ -3,10 +3,10 @@
 	require("include/funcionesDB.php");
 	require("include/boCheckLogin.php");
 	
+	$connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
+	mysql_select_db(DB_NAME,$connection);
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		// Inicio conexion
-		$connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
-		mysql_select_db(DB_NAME,$connection);
 		
 		$xcoord = $_POST['xcoord'];
 		$ycoord = $_POST['ycoord'];
@@ -18,11 +18,9 @@
 		$prizeDate = quote_smart($prizeDate, $connection);
 		$active = quote_smart($active, $connection);
 		
-		$insertDailyPrize = "INSERT INTO DAILY_PRIZE (prizeDate, xcoord, ycoord, active) 
-			VALUES ($prizeDate, $xcoord, $ycoord, $active)";
-		$res = mysql_query($insertDailyPrize,$connection);// or die ("Error en insert ".mysql_error()."\n".$query);
-		
-		mysql_close($connection);
+		$SQL = "INSERT INTO DAILY_PRIZE (prizeDate, activationTimestamp , xcoord, ycoord, active) 
+			VALUES ($prizeDate, $prizeDate, $xcoord, $ycoord, $active)";
+		$res = mysql_query($SQL,$connection)  or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 		
 		header("Location: boDailyPrize.php");
 	} else {
@@ -32,7 +30,7 @@
 		LEFT JOIN PARTICIPATION TI ON (DP.participationID = TI.id) 		
 		LEFT JOIN FBUSER SU ON (TI.fbuserID = SU.id) 
 		ORDER BY DP.prizeDate";
-	$res = doSelect($query);
+	$res = mysql_query($query, $connection);
 ?>
 <html>
 <head>
@@ -51,18 +49,14 @@
 $(document).ready(
 		function(){
 			$("#altaIWForm").validate({
-				rules: { descripcion: {required: true},
-						mensaje: {required: true},
-						imagen: {required: true},
-						inicio: {required: true},
-						fin: {required: true}
+				rules: { prizeDate: {required: true},
+						xcoord: {required: true},
+						ycoord: {required: true}
 				},
 				messages: {
-					descripcion: {required: "Ingrese la descripcion."}, 
-					mensaje: {required: "Ingrese el mensaje."},
-					imagen: {required: "Seleccione la imagen."},
-					inicio: {required: "Ingrese la fecha inicio."},
-					fin: {required: "Ingrese la fecha fin."},
+					prizeDate: {required: "Ingrese la fecha."}, 
+					xcoord: {required: "Ingrese la coordenada x."},
+					ycoord: {required: "Seleccione la coordenada y."}
 				}
 			});
 		}
@@ -71,7 +65,7 @@ $(document).ready(
 </head>
 <body>
 <div id="content">
-	<div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?> <?php echo($_SESSION['boApellido']);?></span></div>
+	<div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
 	<div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
 	<div id="page">
 
@@ -90,6 +84,7 @@ $(document).ready(
 		<tr bgcolor="#CCCCCC">
 			<td>Id</td>
 			<td>Fecha</td>
+			<td>Activacion</td>
 			<td>Coordenada x</td>
 			<td>Coordenada y</td>
 			<td>Estado</td>
@@ -104,6 +99,7 @@ $(document).ready(
 	<tr>
 		<td><?php echo $iw['id'] ?></td>
 		<td><?php echo $iw['prizeDate'] ?></td>
+		<td><?php echo $iw['activationTimestamp'] ?></td>
 		<td><?php echo $iw['xcoord'] ?></td>
 		<td><?php echo $iw['ycoord'] ?></td>
 		<td><?php 
@@ -160,7 +156,11 @@ function showWinner(ticketID) {
 
 $(document).ready(
 		function(){
-			$('#prizeDate').datepicker({dateFormat: 'yy-mm-dd'});
+			$('#prizeDate').datetimepicker(
+					{showSecond: true,
+						showMillisec: false,
+						dateFormat: 'yy-mm-dd',
+						timeFormat: 'hh:mm:ss'});
 		}
 	);
 </script>
@@ -168,4 +168,6 @@ $(document).ready(
 </div>
 </body>
 </html>
-<?php } ?>
+<?php 
+mysql_close($connection);
+	} ?>
