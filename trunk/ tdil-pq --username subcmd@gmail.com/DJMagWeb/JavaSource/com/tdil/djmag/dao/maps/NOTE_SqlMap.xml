@@ -594,16 +594,15 @@
     where id = #id:INTEGER#
   </update>
   
-  <resultMap class="com.tdil.djmag.model.valueobjects.NoteValueObject" extends="NOTE.BaseResultMap" id="VOResultMapWithBLOBs">
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  <resultMap class="com.tdil.djmag.model.valueobjects.NoteValueObject" extends="NOTE.BaseResultMap" id="VOResultMapWithoutBLOBs">
   </resultMap>
   
   
   <!-- Custom queries -->
-  <select id="selectActiveFrontCoversNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithBLOBs">
+  <select id="selectActiveFrontCoversNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithoutBLOBs">
     select
     note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
-    note.showInAgenda, note.agenda_date, note.deleted, note.content,
+    note.showInAgenda, note.agenda_date, note.deleted, 
     note.frontCoverExt, note.frontCover_id, note.agendaExt, note.agenda_id, note.lastNewsCoverExt, note.lastNewsCover_id, note.lastNewsThumbExt, note.lastNewsThumb_id
     from NOTE note, NOTE_COUNTRY nc
 	where note.id = nc.id_note
@@ -616,10 +615,10 @@
 	order by note.id desc
   </select>
   
-  <select id="selectActiveAgendaNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithBLOBs">
+  <select id="selectActiveAgendaNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithoutBLOBs">
     select
     note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
-    note.showInAgenda, note.agenda_date, note.deleted, note.content,
+    note.showInAgenda, note.agenda_date, note.deleted, 
     note.frontCoverExt, note.frontCover_id, note.agendaExt, note.agenda_id, note.lastNewsCoverExt, note.lastNewsCover_id, note.lastNewsThumbExt, note.lastNewsThumb_id
     from NOTE note, NOTE_COUNTRY nc
 	where note.id = nc.id_note
@@ -631,10 +630,10 @@
 	order by note.agenda_date
   </select>
   
-  <select id="selectActiveLastNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithBLOBs">
+  <select id="selectActiveLastNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithoutBLOBs">
     select
     note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
-    note.showInAgenda, note.agenda_date, note.deleted, note.content,
+    note.showInAgenda, note.agenda_date, note.deleted, 
     note.frontCoverExt, note.frontCover_id, note.agendaExt, note.agenda_id, note.lastNewsCoverExt, note.lastNewsCover_id, note.lastNewsThumbExt, note.lastNewsThumb_id
     from NOTE note, NOTE_COUNTRY nc
 	where note.id = nc.id_note
