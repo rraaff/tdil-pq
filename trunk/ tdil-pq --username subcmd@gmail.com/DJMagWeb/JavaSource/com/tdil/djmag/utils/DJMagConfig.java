@@ -49,7 +49,7 @@ public class DJMagConfig extends SystemConfig {
 	protected void initBlobCache() {
 		getLog().fatal("DJMagConfig: blob cache starting ");
 		String path = SystemPropertyCache.getTempPath();
-		path = path + "/blobs/";
+		path = path + "/djmagblobs/";
 		File file = new File(path);
 		if (!file.exists()) {
 			try {
