@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Country"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <jsp:useBean id="publicHomeBean" scope="session" class="com.tdil.djmag.web.beans.PublicHomeBean"/>
@@ -98,7 +99,12 @@ $(document).ready(
 		<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
-					<li><a href="#"><%= section.getName() %></a></li>
+					<li>
+						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %><a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?iframe=true&width=800&height=600" rel="prettyPhoto[ranking_menu]"><%= section.getName() %></a>
+						<% } else { %>
+							<a href="#"><%= section.getName() %></a>
+						<% } %>
+					</li>
 				<% } %>
 			</ul>
 		</div>

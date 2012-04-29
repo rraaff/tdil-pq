@@ -241,5 +241,6 @@
     and SECTION.deleted = 0
     and MENUITEM.deleted = 0
     and MENUITEM.id_country = #id:INTEGER#
+    order by MENUITEM.position
   </select>
 </sqlMap>
