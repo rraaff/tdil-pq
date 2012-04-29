@@ -14,7 +14,7 @@ CREATE  TABLE SYSTEMUSER (
   PRIMARY KEY (`id`) ,
   INDEX `IX_SYSTEMUSER_00` (`username` ASC),
   INDEX `IX_SYSTEMUSER_01` (`email` ASC))
-ENGINE = InnoDB;
+ENGINE = MYISAM;
 
 INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
 
@@ -26,7 +26,8 @@ CREATE TABLE `FBUSER` (
   `fbusername` VARCHAR(250) NULL ,
   `fbgender` VARCHAR(100) NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fbidasc` (`fbid` ASC) );
+  INDEX `fbidasc` (`fbid` ASC) )
+ENGINE = MYISAM;
 
 CREATE  TABLE `PARTICIPATION` (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -35,7 +36,8 @@ CREATE  TABLE `PARTICIPATION` (
   `xcoord` VARCHAR(10) NOT NULL,
   `ycoord` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `IX_PARTICIPATION_00` (`fbuserID` ASC) );
+  INDEX `IX_PARTICIPATION_00` (`fbuserID` ASC) )
+ENGINE = MYISAM;
   
 CREATE  TABLE `DAILY_PRIZE` (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -44,4 +46,5 @@ CREATE  TABLE `DAILY_PRIZE` (
   `xcoord` VARCHAR(10) NOT NULL,
   `ycoord` VARCHAR(10) NOT NULL,
   `active` INT NOT NULL ,
-  PRIMARY KEY (`id`) );
+  PRIMARY KEY (`id`) )
+ENGINE = MYISAM;
