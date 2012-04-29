@@ -4,11 +4,11 @@
 	require("../include/funcionesDB.php");
 	
 	require '../include/facebook.php';
-	include("../include/app2constants.php"); 
+	include("../include/appconstants.php"); 
 	// Create our Application instance (replace this with your appId and secret).
 	$facebook = new Facebook(array(
-			'appId'  => APPLICATION2_ID,
-			'secret' => APPLICATION2_SECRET,
+			'appId'  => APPLICATION_ID,
+			'secret' => APPLICATION_SECRET,
 	));
 	
 	// Get User ID
@@ -26,7 +26,7 @@
 		include("askpermissioncanvas.php");
 		return;
 	} else {
-		$app_token = get_app_access(APPLICATION2_ID,APPLICATION2_SECRET);
+		$app_token = get_app_access(APPLICATION_ID,APPLICATION_SECRET);
 	if(isset($_REQUEST['request_ids'])) {
 		$request_ids = $_REQUEST['request_ids'];
 	} else {
@@ -153,7 +153,7 @@
 ?>
 <?php 
 if ($ok_to_procced == 1) { 
-	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION2_ID;
+	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 ?>
 <html>
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">

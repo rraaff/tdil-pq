@@ -96,8 +96,9 @@ $(document).ready(
 			<td>Ganador</td>
 			<td>Borrar</td>
 		</tr>
+	
 <?php
-	$today = time();
+	$today = strtotime(date('d.m.y', time()));
 	while ($iw = mysql_fetch_array($res)){
 ?>
 	<tr>
@@ -105,7 +106,7 @@ $(document).ready(
 		<td><?php echo $iw['prizeDate'] ?></td>
 		<td><?php 
 			if (is_null($iw['participationID'])) {
-				if ($iw['prizeDateUnix'] > $today) {
+				if ($iw['prizeDateUnix'] >= $today) {
      				echo 'Pendiente';
 				} else {
 				    echo 'Vencido';

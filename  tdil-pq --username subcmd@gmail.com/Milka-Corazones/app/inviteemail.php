@@ -4,7 +4,7 @@
 	include_once('../phpmail/class.phpmailer.php');
 	include("../include/constantes_mail.php");
 	require '../include/facebook.php';
-	include("../include/app2constants.php"); 
+	include("../include/appconstants.php"); 
 	
 	
 	$fbid = $_REQUEST['fbid']; /*id de facebook*/
@@ -67,7 +67,7 @@
 			$body             = $mail->getFile('../invitacion_app2.html');
 			$body = str_replace('{SERVER_NAME}', SERVER_NAME, $body);
 			$body = str_replace('{SENDER_NAME}', $groupownerrow["fbname"], $body);
-			$link = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION2_ID;
+			$link = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 			$link = $link . '&app_data=join_group|' . $groupownerid . '|' . $returnInsert . '|';
 			$body = str_replace('{PAGE_LINK}', $link, $body);
 			$body             = eregi_replace("[\]",'',$body);
@@ -95,7 +95,7 @@
 			$body             = $mail->getFile('../invitacion_app2.html');
 			$body = str_replace('{SERVER_NAME}', SERVER_NAME, $body);
 			$body = str_replace('{SENDER_NAME}', $groupownerrow["fbname"], $body);
-			$link = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION2_ID;
+			$link = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 			$link = $link . '&app_data=join_group|' . $groupownerid . '|' . $user_app1id . '|';
 			$body = str_replace('{PAGE_LINK}', $link, $body);
 			$body             = eregi_replace("[\]",'',$body);
@@ -150,7 +150,7 @@ if ($mail_sent) { ?>
 	<div id="title"><img src="../images/tituloErrores.png" alt="Uuuuooppsss" width="265" height="42"></div>
 	<div id="contentError">No se pudo enviar el E-mail de invitaci&oacute;n</div>
 <?php } 
-$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION2_ID;
+$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 ?>
 	<div align="center" style="margin-top:25px;"><a href="<?php echo $redirect;?>" target="_top">Volver a la p&aacute;gina de inicio de la aplicaci&oacute;n</a></div>
 </div>
