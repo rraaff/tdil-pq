@@ -28,6 +28,7 @@ import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
 import com.tdil.djmag.model.Magazine;
 import com.tdil.djmag.model.MagazineExample;
+import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
@@ -41,6 +42,7 @@ import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
 import com.tdil.utils.DateUtils;
 import com.tdil.utils.XMLUtils;
@@ -213,6 +215,21 @@ public class PublicHomeBean  {
 			result.append("<a href=\"#\">").append(section.getName()).append("</a>\n");
 		}
 		return result.toString();
+	}
+	
+	public static String getNoteContent(final NoteValueObject noteValueObject) {
+		try {
+			String content = (String)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					Note note = DAOManager.getNoteDAO().selectNoteByPrimaryKey(noteValueObject.getId());
+					return note.getContent();
+				}
+			});
+			return content;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return "";
+		}
 	}
 	
 	public void initCountries() {

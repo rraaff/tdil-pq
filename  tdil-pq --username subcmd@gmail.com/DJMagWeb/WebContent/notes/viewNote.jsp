@@ -16,6 +16,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	if (noteToShow == null) {
 		
 	} else {
+		String content = PublicHomeBean.getNoteContent(noteToShow);
 %>
 <html>
 <head>
@@ -202,7 +203,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 				<% } %>
 			    </div>
 			</div>
-			<div id="fullText"><%= noteToShow.getContent()%></div>
+			<div id="fullText"><%= content%></div>
 		</div>
 	</div>
 	<div id="right">
