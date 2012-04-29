@@ -6,8 +6,8 @@ String country = request.getParameter("country");
 String date = request.getParameter("date");
 String webTitle = request.getParameter("webTitle");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
-	// todo aca primero seteo el pais, luego redirecciones
-	String theURL = "../index.jsp?"+ "Parameter1=value1&Parameter2=value2";
+	// todo aca primero seteo el pais, luego redirecciono
+	String theURL = "../../../selectCountry.st?iso_code_2="+ country + "&action=viewNote&date=" + date + "&webTitle=" +webTitle;
 	theURL = response.encodeRedirectURL(theURL);
 	response.sendRedirect(theURL);
 } else {

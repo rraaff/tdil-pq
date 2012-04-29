@@ -100,9 +100,14 @@ $(document).ready(
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
-						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %><a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?iframe=true&width=800&height=600" rel="prettyPhoto[ranking_menu]"><%= section.getName() %></a>
+						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
+							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[ranking_menu]"><%= section.getName() %></a>
 						<% } else { %>
-							<a href="#"><%= section.getName() %></a>
+							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
+								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[videos_menu]"><%= section.getName() %></a>
+							<% } else { %>
+								<a href="#"><%= section.getName() %></a>
+							<% } %>
 						<% } %>
 					</li>
 				<% } %>
@@ -147,6 +152,20 @@ $(document).ready(
 	    $("a[rel^='prettyPhoto']").prettyPhoto({
 	    	hideflash: true
 	    });
+	    
+		<% String action = request.getParameter("action");
+		if ("viewNote".equals(action)) { %>
+			$.prettyPhoto.open('<%=publicHomeBean.getExternalLink(request.getParameter("date"), request.getParameter("webTitle"))%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>','<%=request.getParameter("webTitle")%>','<%=request.getParameter("webTitle")%>');
+		<% } else { 
+			if ("viewRanking".equals(action)) { %>
+				$.prettyPhoto.open('./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>','Ranking','Ranking');
+			<% } else { 
+				if ("viewVideos".equals(action)) { %>
+					$.prettyPhoto.open('./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>','Videos','Videos');
+				<% }
+			}
+		}
+		%>
 	  });
     </script>
 <% } else { %>

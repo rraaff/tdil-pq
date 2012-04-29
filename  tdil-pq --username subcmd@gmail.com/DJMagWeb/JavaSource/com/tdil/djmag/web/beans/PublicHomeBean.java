@@ -37,6 +37,7 @@ import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.djmag.model.Video;
+import com.tdil.djmag.model.VideoExample;
 import com.tdil.djmag.model.valueobjects.BannerValueObject;
 import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
@@ -90,6 +91,8 @@ public class PublicHomeBean  {
 	private static final int MAX_LAST_NOTES_FOR_HOME = 3;
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
+	
+	public static final String LIGTH_BOX_PARAMS = "?iframe=true&width=800&height=600";
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
@@ -155,6 +158,15 @@ public class PublicHomeBean  {
 		return this.getNoteRight() != null;
 	}
 	
+	public String getExternalLink(String date, String webTitle) {
+		NoteValueObject noteValueObject = getNoteByParams(this.getCountry().getIsoCode2(), date, webTitle);
+		StringBuffer result = new StringBuffer();
+		result.append("./notes/").append(this.getCountry().getIsoCode2()).append("/");
+		result.append(formatDateForUrl(noteValueObject.getFromDate())).append("/");
+		result.append(noteValueObject.getWebTitle()).append(".html");
+		return result.toString();
+	}
+	
 	public String getExternalLink(NoteValueObject noteValueObject) {
 		StringBuffer result = new StringBuffer();
 		result.append("./notes/").append(this.getCountry().getIsoCode2()).append("/");
@@ -215,6 +227,26 @@ public class PublicHomeBean  {
 			result.append("<a href=\"#\">").append(section.getName()).append("</a>\n");
 		}
 		return result.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Video> getAllVideosForCountry() {
+		final Country country = this.getCountry();
+		try {
+			 List<Video> result = (List<Video>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					VideoExample videoExample = new VideoExample();
+					videoExample.createCriteria().andDeletedEqualTo(0).andIdCountryEqualTo(country.getId());
+					videoExample.setOrderByClause("id desc");
+					List<Video> result = DAOManager.getVideoDAO().selectVideoByExampleWithBLOBs(videoExample);
+					return result;
+				}
+			});
+			return result;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<Video>();
+		}
 	}
 	
 	public static String getNoteContent(final NoteValueObject noteValueObject) {
@@ -443,6 +475,17 @@ public class PublicHomeBean  {
 	}
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+	
+	public void setCountryByIsoCode2(String isoCode2) {
+		this.initCountries();
+		for (Country c : getAllCountries()) {
+			if (c.getIsoCode2().equals(isoCode2)) {
+				setCountry(c);
+				initHomeForCountry(c);
+				return;
+			}
+		}
 	}
 	
 	public void setCountryById(int idcountry) {

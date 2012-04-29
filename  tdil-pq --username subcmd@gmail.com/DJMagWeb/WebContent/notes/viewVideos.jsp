@@ -1,3 +1,5 @@
+<%@page import="com.tdil.djmag.model.Video"%>
+<%@page import="java.util.List"%>
 <%@page import="com.tdil.djmag.model.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
@@ -7,16 +9,12 @@
 String country = request.getParameter("country");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
 	// todo aca primero seteo el pais, luego redirecciono
-	String theURL = "../../selectCountry.st?iso_code_2="+ country + "&action=viewRanking";
+	String theURL = "../../selectCountry.st?iso_code_2="+ country + "&action=viewVideos";
 	theURL = response.encodeRedirectURL(theURL);
 	response.sendRedirect(theURL);
 } else {
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	RankingPositions positions = publicHomeBean.getRankingPositions();
-	if (positions == null) {
-		
-	} else {
-		
+	List<Video> allVideos = publicHomeBean.getAllVideosForCountry();
 %>
 <html>
 <head>
@@ -172,11 +170,13 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
-<% int positionIndex = 1;
-for (String position : positions.getPositions()) { %>
-	<div id="position"><%=positionIndex++ %>.</div><div id="rankedHome"><%=position %></div>
+<% 
+for (Video video : allVideos) { %>
+	<img src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" height="50" width="70">
+	<%=video.getDescription() %>
+	<%=video.getHtmlcontent() %><br><br>
 <% } %>
 </body>
 </html>
-<% }
+<% 
 } %>
