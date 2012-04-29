@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Nov 30, 2011 6:16:12 PM                                                        
+
+     Package    
+     description
+                   
+     mgodoy                                                                
+     ====================================================================== -->
+<project name="Package" default="milka-corazones">
+    <description>
+            ANT file para armar el paquete de entrega de FB_MGM
+    </description>
+	
+	
+	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
+		<property name="root.url" value="jdbc:mysql://localhost:3306/" />
+		<property name="root.user" value="root" />
+		<property name="root.pass" value="root" />
+
+		<property name="db.url" value="jdbc:mysql://localhost:3306/MILKACORAZONES" />
+		<property name="db.user" value="MILKACOR_USER" />
+		<property name="db.pass" value="MILKACOR_USER" />
+
+		<target name="createDatabase">
+			<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+				<classpath>
+					<pathelement location="./mysql-connector-java-5.1.13-bin.jar" />
+				</classpath>
+				<transaction src="database.sql" />
+			</sql>
+		</target>
+
+		<target name="createTables" depends="createDatabase">
+			<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+				<classpath>
+					<pathelement location="./mysql-connector-java-5.1.13-bin.jar" />
+				</classpath>
+				<transaction src="ddl.sql" />
+			</sql>
+		</target>
+	
+    <!-- ================================= 
+          target: make_pakage              
+         ================================= -->
+    <!--target name="make_package" description="description">
+    	<delete file="fb_mgm.zip" failonerror="false"></delete>
+    	<delete dir="tmp" failonerror="false"></delete>
+    	<mkdir dir="tmp/FB"/>
+    	<copy todir="tmp" file="Instrucciones.txt"></copy>
+    	<copy todir="tmp" file="database.sql"></copy>
+    	<copy todir="tmp" file="fb_mgm.sql"></copy>
+    	<copy todir="tmp" file="create_bo_users.sql"></copy>
+    	<copy todir="tmp" file="initialize_users.sql"></copy>
+    	<copy todir="tmp" file="email_inv.sql"></copy>
+    	<copy todir="tmp/FB">
+    		<fileset dir="../" id="id">
+    			<exclude name="**/.settings/**"/>
+			    <exclude name="**/resources/**"/>
+    			<exclude name="**/testing/**"/>
+			   	<exclude name="**/deploy.sh"/>
+    			<exclude name="**/.project"/>
+    			<exclude name="**/.buildpath"/>
+    			<exclude name="**/constantes.php"/>
+    			<exclude name="**/app1constants.php"/>
+    			<exclude name="**/constantes_mail.php"/>
+    			<exclude name="**/invitacion_app1.html"/>
+			</fileset>
+    	</copy>
+        <zip destfile="fb_mgm.zip" basedir="tmp">		
+		</zip>
+    	<delete dir="tmp" failonerror="false"></delete>
+    </target-->
+	
+	<target name="milka-corazones" description="description">
+	    	<delete file="milka-corazones.zip" failonerror="false"></delete>
+	    	<delete dir="tmp" failonerror="false"></delete>
+	    	<mkdir dir="tmp/FB"/>
+	    	<copy todir="tmp" file="Instrucciones.txt"></copy>
+	    	<copy todir="tmp" file="milka_corazones.sql"></copy>
+	    	<copy todir="tmp/FB">
+	    		<fileset dir="../" id="id">
+	    			<exclude name="**/.settings/**"/>
+				    <exclude name="**/resources/**"/>
+	    			<exclude name="**/testing/**"/>
+				   	<exclude name="**/deploy.sh"/>
+	    			<exclude name="**/.project"/>
+	    			<exclude name="**/database.sql"/>
+	    			<exclude name="**/.buildpath"/>
+	    			<exclude name="**/constantes.php"/>
+	    			<exclude name="**/app1constants.php"/>
+	    			<exclude name="**/constantes_mail.php"/>
+	    			<exclude name="**/invitacion_app1.html"/>
+				</fileset>
+	    	</copy>
+	        <zip destfile="milka-corazones.zip" basedir="tmp">		
+			</zip>
+	    	<delete dir="tmp" failonerror="false"></delete>
+	    </target>
+
+</project>
