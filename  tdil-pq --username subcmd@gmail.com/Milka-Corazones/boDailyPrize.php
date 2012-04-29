@@ -104,6 +104,8 @@ $(document).ready(
 	<tr>
 		<td><?php echo $iw['id'] ?></td>
 		<td><?php echo $iw['prizeDate'] ?></td>
+		<td><?php echo $iw['xcoord'] ?></td>
+		<td><?php echo $iw['ycoord'] ?></td>
 		<td><?php 
 			if (is_null($iw['participationID'])) {
 				if ($iw['prizeDateUnix'] >= $today) {
@@ -115,8 +117,6 @@ $(document).ready(
 				echo 'Adjudicado';
 			}
 		?></td>
-		<td><?php echo $iw['xcoord'] ?></td>
-		<td><?php echo $iw['ycoord'] ?></td>
 		<td><?php 
 			if (!is_null($iw['fbname'])) { ?>
 				<a href="javascript:showWinner('<?php echo $iw['participationID'];?>')">
