@@ -24,8 +24,7 @@
 				session_start();
 				$user = mysql_fetch_array($result);
 				$_SESSION['boLogin'] = "1";
-				$_SESSION['boNombre'] = $user['nombre'];
-				$_SESSION['boApellido'] = $user['apellido'];
+				$_SESSION['boNombre'] = $user['name'];
 				header ("Location: boHome.php");
 			} else {
 				$errorMessage = "El usuario no es valido";

@@ -5,11 +5,9 @@ include("include/headers.php");
 require("include/funcionesDB.php");
 //require("include/boCheckLogin.php");
 
-$sInicial = $_REQUEST["sInicial"];
-$sParticipation = $_REQUEST["sParticipation"];
 $sGender = $_REQUEST["sGender"];
-$sMinFans = $_REQUEST["sMinFans"];
-$sMaxFans = $_REQUEST["sMaxFans"];
+$sMinParticipations = $_REQUEST["sMinParticipations"];
+$sMaxParticipations = $_REQUEST["sMaxParticipations"];
 
 $connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
 

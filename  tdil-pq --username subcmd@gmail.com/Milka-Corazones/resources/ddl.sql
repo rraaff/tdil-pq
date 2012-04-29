@@ -31,7 +31,7 @@ ENGINE = MYISAM;
 
 CREATE  TABLE `PARTICIPATION` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `creationDate` DATE NOT NULL,
+  `creationDate` DATETIME NOT NULL,
   `fbuserID` INT NOT NULL ,
   `xcoord` VARCHAR(10) NOT NULL,
   `ycoord` VARCHAR(10) NOT NULL,
@@ -42,6 +42,7 @@ ENGINE = MYISAM;
 CREATE  TABLE `DAILY_PRIZE` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `prizeDate` DATE NOT NULL,
+  `activationTimestamp` DATETIME NOT NULL,
   `participationID` INT NULL ,
   `xcoord` VARCHAR(10) NOT NULL,
   `ycoord` VARCHAR(10) NOT NULL,
