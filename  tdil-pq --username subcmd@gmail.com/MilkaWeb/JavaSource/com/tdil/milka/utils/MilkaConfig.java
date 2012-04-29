@@ -60,7 +60,7 @@ public class MilkaConfig extends SystemConfig {
 	protected void initBlobCache() {
 		getLog().fatal("MilkaConfig: blob cache starting ");
 		String path = SystemPropertyCache.getTempPath();
-		path = path + "/blobs/";
+		path = path + "/milkablobs/";
 		File file = new File(path);
 		if (!file.exists()) {
 			try {
