@@ -8,43 +8,38 @@ require("include/funcionesDB.php");
 $sGender = $_REQUEST["sGender"];
 $sMinParticipations = $_REQUEST["sMinParticipations"];
 $sMaxParticipations = $_REQUEST["sMaxParticipations"];
+$sMinWins = $_REQUEST["sMinWins"];
+$sMaxWins = $_REQUEST["sMaxWins"];
 
 $connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
 
 $sGender = quote_smart($sGender, $connection);
+$sMinParticipations = quote_smart($sMinParticipations, $connection);
+$sMaxParticipations = quote_smart($sMaxParticipations, $connection);
+
+$sMinWins = quote_smart($sMinWins, $connection);
+$sMaxWins = quote_smart($sMaxWins, $connection);
 mysql_select_db(DB_NAME,$connection);
 	
-$SQL = "SELECT * FROM (SELECT fbid, fbname, fbusername, fbgender, inv_email, origin, participation, FANS_RECOMENDADOS.CANTIDAD fans, '' groupOwner
-FROM USER_APP1, (SELECT groupowner_fbid, count(1) - 1 CANTIDAD FROM GROUP_APP1 GROUP BY groupowner_fbid) FANS_RECOMENDADOS
-WHERE USER_APP1.ORIGIN = 1
-AND USER_APP1.fbid = FANS_RECOMENDADOS.groupowner_fbid
-UNION ALL
-SELECT fbid, fbname, fbusername, fbgender, inv_email, origin, participation, 0, '' groupOwner
-FROM USER_APP1
-WHERE ORIGIN = 1
-AND PARTICIPATION = 0
-UNION ALL
-SELECT u1.fbid, u1.fbname, u1.fbusername, u1.fbgender, u1.inv_email, u1.origin, u1.participation, 0, u2.fbname groupOwner
-FROM USER_APP1 u1, GROUP_APP1 g1, USER_APP1 u2
-WHERE u1.ORIGIN != 1
-AND u1.PARTICIPATION = 1
-AND u1.fbid = g1.groupmember_fbid
-AND g1.groupowner_fbid = u2.fbid) USERS WHERE 1=1 ";
+$SQL = "SELECT *, (SELECT COUNT(1) FROM PARTICIPATION WHERE  fbuserID = fbuser.id) participations,
+	(SELECT COUNT(1) FROM DAILY_PRIZE WHERE  participationID IN (SELECT id FROM PARTICIPATION WHERE  fbuserID = fbuser.id)) wins
+FROM FBUSER fbuser WHERE 1=1 ";
 
-if ($sInicial != "-1") {
-	$SQL = $SQL . " AND USERS.origin = $sInicial";
-}
-if ($sParticipation != "-1") {
-	$SQL = $SQL . " AND USERS.participation = $sParticipation";
-}
 if ($sGender != "'all'") {
-	$SQL = $SQL . " AND USERS.fbgender = $sGender";
+	$SQL = $SQL . " AND fbuser.fbgender = $sGender";
 }
-if ($sMinFans != "" && is_numeric($sMinFans)) {
-	$SQL = $SQL . " AND USERS.fans >= $sMinFans";
+if ($sMinParticipations != "" && is_numeric($sMinParticipations)) {
+	$SQL = $SQL . " AND (SELECT COUNT(1) FROM PARTICIPATION WHERE fbuserID = fbuser.id) >= $sMinParticipations";
 }
-if ($sMaxFans != "" && is_numeric($sMaxFans)) {
-	$SQL = $SQL . " AND USERS.fans <= $sMaxFans";
+if ($sMaxParticipations != "" && is_numeric($sMaxParticipations)) {
+	$SQL = $SQL . " AND (SELECT COUNT(1) FROM PARTICIPATION WHERE fbuserID = fbuser.id) <= $sMaxParticipations";
+}
+
+if ($sMinWins != "" && is_numeric($sMinWins)) {
+	$SQL = $SQL . " AND (SELECT COUNT(1) FROM DAILY_PRIZE WHERE  participationID IN (SELECT id FROM PARTICIPATION WHERE  fbuserID = fbuser.id)) >= $sMinWins";
+}
+if ($sMaxWins != "" && is_numeric($sMaxWins)) {
+	$SQL = $SQL . " AND (SELECT COUNT(1) FROM DAILY_PRIZE WHERE  participationID IN (SELECT id FROM PARTICIPATION WHERE  fbuserID = fbuser.id)) <= $sMaxWins";
 }
 
 $result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
@@ -61,7 +56,7 @@ $output = array(
 		"iTotalDisplayRecords" => $iTotal,
 		"aaData" => array()
 );
-$aColumns = array( 'fbid', 'fbname', 'fbusername', 'fbgender', 'inv_email', 'origin', 'participation', 'fans', 'groupOwner');
+$aColumns = array( 'fbid', 'fbname', 'fbusername', 'fbgender', 'participations', 'wins');
 
 while ( $aRow = mysql_fetch_array( $result ) ) {
 	$row = array();
