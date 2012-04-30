@@ -38,7 +38,7 @@ public class SMTPServer {
 //	private static final String MESSAGE_MESSAGE_TOO_LARGE = "552 Message size exceeds fixed maximum message size.";
 
 	private static final ArrayList<Email> allEmailsReceived = new ArrayList<Email>();
-	private static SMTPServer instance = new SMTPServer();
+	private static SMTPServer instance;
 	
 	// Commands
 	private static final String COMMAND_HELO = "HELO";
@@ -70,6 +70,7 @@ public class SMTPServer {
 
 	public SMTPServer() {
 		super();
+		instance = this;
 		new Thread("SMTP Server") {
 			@Override
 			public void run() {
@@ -84,6 +85,7 @@ public class SMTPServer {
 		try {
 			this.setSocket(new ServerSocket(2525));
 			this.started = true;
+			System.out.print("SMTPServer stated at port " + 2525);
 			while (this.isStarted()) {
 				Socket s = this.getSocket().accept();
 				PrintWriter out = new PrintWriter(s.getOutputStream(), true);
