@@ -24,7 +24,7 @@ mysql_close($connection);
 <div>
 fbid: <?php echo $ticket['fbid']?><br>
 fbname: <?php echo $ticket['fbname']?><br>
-fbusernae: <?php echo $ticket['fbusername']?><br>
+fbusername: <?php echo $ticket['fbusername']?><br>
 </div>
 <?php 
 } else {
