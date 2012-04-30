@@ -64,6 +64,8 @@
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
   
+  <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
+  
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

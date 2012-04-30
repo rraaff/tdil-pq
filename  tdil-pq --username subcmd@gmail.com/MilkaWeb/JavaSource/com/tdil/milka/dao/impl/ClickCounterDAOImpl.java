@@ -173,4 +173,10 @@ public class ClickCounterDAOImpl implements ClickCounterDAO {
             return record;
         }
     }
+    
+    /** Custom queries */
+    public int incrementCounter(ClickCounter record) throws SQLException {
+    	int rows = sqlMapClient.update("CLICK_COUNTER.incrementClickCounter", record);
+        return rows;
+    }
 }

@@ -21,23 +21,33 @@
 
 (function($) {
   $.fn.meltbutton = function(settings) {
+	  var buttonType = settings.buttonType;
   	  var buttonId = settings.buttonId;
   	  var actualQuantity = settings.quantity;
-  	  var cookieName = 'meltbutton-' + buttonId;
+  	  var cookieName = 'meltbutton-' + buttonType + '-' + buttonId;
   	  var cookie = $.cookie(cookieName);
   	  var obj = $(this);
   	  if (!cookie) {
   		this.each(function() {
-            obj.prop("innerHTML", "Me derrite " + actualQuantity);
+            obj.html("Me derrite " + actualQuantity);
+    		obj.clickenabled = true;
             obj.click(function() {
-	 			$.cookie(cookieName, "set", { expires: 180, path: "/" });
-                obj.prop("innerHTML", "Te derrite " + actualQuantity);
-  				obj.click = null;
+	  			if (obj.clickenabled) {
+	  				var url='meltaction.do?buttonType=' + buttonType + '&buttonId=' + buttonId;
+				  $.getJSON(url,function(data){
+					  	if (data.result == 'OK') {
+					  		obj.html("Te derrite " + data.quantity);
+					  		$.cookie(cookieName, "set", { expires: 180, path: "/" });
+					  		obj.clickenabled = false;
+					  	}
+				    });
+	  			}
             });
   		  
         });
   	  } else {
-  		 obj.prop("innerHTML", "Te derrite " + actualQuantity);
+  		obj.clickenabled = false;
+  		 obj.html("Te derrite " + actualQuantity);
   	  }
   	  
 	  

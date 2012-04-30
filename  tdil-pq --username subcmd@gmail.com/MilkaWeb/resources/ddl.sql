@@ -72,5 +72,9 @@ CREATE TABLE CLICK_COUNTER (
   `ownerId` INT NOT NULL,
   `clicks` INT NOT NULL,
   `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `UQ_CLICK_COUNTER_00` (`ownerType` ASC, `ownerId` ASC))
 ENGINE = InnoDB;
+
+INSERT INTO CLICK_COUNTER (ownerType, ownerId, clicks, deleted) VALUES('photomilka', 2, 150, 1);
+INSERT INTO CLICK_COUNTER (ownerType, ownerId, clicks, deleted) VALUES('photomilka', 3, 75, 1);

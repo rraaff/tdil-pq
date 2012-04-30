@@ -131,4 +131,6 @@
    PATH="/notificationEmailAdministration.jsp" TARGET="page5"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#meltaction" NAME="action11" PATH="/meltaction"
+  SHAPE="32,1873,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
