@@ -44,7 +44,12 @@ public abstract class AjaxTransactionalAction extends AjaxAction implements Tran
 		TransactionalValidationForm aForm = (TransactionalValidationForm)form;
 		aForm.save();
 		result.put("result", "OK");
+		addDataToResult(aForm, result);
 		return result;
+	}
+
+	protected void addDataToResult(TransactionalValidationForm aForm, Map<String, Object> result) {
+		// TODO Auto-generated method stub
 	}
 
 }

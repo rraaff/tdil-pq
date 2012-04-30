@@ -12,7 +12,8 @@
 <script>
 $(document).ready(
 	function(){
-		$("#meltbutton").meltbutton({buttonId: 'aaa', 'quantity' : 150});
+		$("#meltbutton").meltbutton({buttonType: 'photomilka', buttonId: '2', 'quantity' : 150});
+		$("#meltbutton1").meltbutton({buttonType: 'photomilka', buttonId: '3', 'quantity' : 75});
 	}
 );
 </script>
@@ -20,6 +21,8 @@ $(document).ready(
 <body>
 
 <div id="meltbutton"></div>
+
+<div id="meltbutton1"></div>
 
 </body>
 </html>			

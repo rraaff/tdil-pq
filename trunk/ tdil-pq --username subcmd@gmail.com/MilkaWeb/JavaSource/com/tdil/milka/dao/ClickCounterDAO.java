@@ -93,4 +93,7 @@ public interface ClickCounterDAO {
      * @mbggenerated Mon Apr 30 10:56:29 ART 2012
      */
     int updateClickCounterByPrimaryKey(ClickCounter record) throws SQLException;
+    
+    /** Increment counter */
+    int incrementCounter(ClickCounter record) throws SQLException;
 }

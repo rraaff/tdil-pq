@@ -246,4 +246,12 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <!-- Custom update  -->
+   <update id="incrementClickCounter" parameterClass="com.tdil.milka.model.ClickCounter">
+    update CLICK_COUNTER
+    set clicks = clicks +1
+    where ownerType = #ownertype:VARCHAR#
+    and ownerId = #ownerid:INTEGER#
+  </update>
 </sqlMap>
