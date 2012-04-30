@@ -41,11 +41,18 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="SYSPROPERTIES" domainObjectName="SystemProperty">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-
 <table schema="MILKA" tableName="BLOB_DATA" domainObjectName="BlobData">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-
+<table schema="MILKA" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="RAW_INSERT" domainObjectName="RawInsert">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="CLICK_COUNTER" domainObjectName="ClickCounter">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

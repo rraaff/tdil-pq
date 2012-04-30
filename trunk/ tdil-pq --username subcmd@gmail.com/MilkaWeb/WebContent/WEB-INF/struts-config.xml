@@ -5,6 +5,8 @@
  <data-sources/>
  <form-beans>
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.milka.struts.forms.LoginForm"/>
+  <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.milka.struts.forms.SystemPropertyForm"/>
+  <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.milka.struts.forms.NotificationEmailForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -19,6 +21,48 @@
    <forward name="success" path="/boHome.jsp" redirect="true"/>
   </action>
   <action path="/logout" type="com.tdil.milka.struts.action.LogoutAction"/>
+ 
+  <action name="SystemPropertyForm" parameter="Admin" path="/goToSystemPropertyABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin" path="/saveSystemProperty"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin" path="/editSystemProperty"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin" path="/toggleDeletedSystemProperty"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  
+  <action name="NotificationEmailForm" parameter="Admin" path="/goToNotificationEmailABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin" path="/saveNotificationEmail"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin" path="/editNotificationEmail"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin" path="/toggleDeletedNotificationEmail"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin" path="/testEmailNotification"
+   scope="session" type="com.tdil.milka.struts.action.TestEmailNotificationAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
   
  </action-mappings>
  
