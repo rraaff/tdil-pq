@@ -86,18 +86,34 @@ if ($num_rows == 0) {
 	$dbuser = mysql_fetch_array($result);
 	$userid = $dbuser['id'];
 }
-// Fijar todas las opciones, ya participaste hoy, hoy no esta activa, hoy ya hay un ganador
+// me fijo si ya participo
+$SQL = "SELECT * FROM PARTICIPATION WHERE fbuserid = $userid AND creationDate >= CURDATE()";
+$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+$num_rows = mysql_num_rows($result);
+if ($num_rows > 0) {
+	$alreadyParticipated = 1;
+} else {
+	$alreadyParticipated = 0;
+}
 
+// Fijar todas las opciones, ya participaste hoy, hoy no esta activa, hoy ya hay un ganador
 // me fijo si la promo del dia esta activa
-$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE() AND participationID is null";
+$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE()";
 $result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 $num_rows = mysql_num_rows($result);
 if ($num_rows > 0) {
-	$todayActive = 1;
+	$promoToday = 1;
+	$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE() and participationID is null";
+	$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+	$num_rows = mysql_num_rows($result);
+	if ($num_rows > 0) {
+		$allPrizesGiven = 0;
+	} else {
+		$allPrizesGiven = 1;
+	}
 } else {
-	$todayActive = 0;
+	$promoToday = 0;
 }
-
 
 closeConnection($connection);
 ?>
@@ -156,30 +172,38 @@ form, div, table, tr, td {
 </style>
 </head>
 <body>
-<?php if ($todayActive) { ?>
-		<form method="POST" action="doparticipation.php">
-			<input type="hidden" name="userid" value="<?php echo $userid;?>">
-			<div id="baseDatosDeContacto" style="margin-top:100px; height:315px;">
-				<div id="errmessage"></div>
-				<div id="acomodador">
-					<table cellpadding="5" cellspacing="0" border="0" align="left">
-						<tr>
-							<td>X: </td>
-							<td><input type="text" name="xcoord" id="xcoord" value=""></td>
-						</tr>
-						<tr>
-							<td>Y: </td>
-							<td><input type="text" name="ycoord" id="ycoord" value=""></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</form>
-<?php } else { ?>
-		Promo del dia inactiva
+<?php if ($alreadyParticipated == 1) { ?>
+	Hoy ya participaste
+<?php } else { 
+	if ($promoToday == 1) { 
+		if ($allPrizesGiven == 1) { ?>
+				Ya se entregaron todos los premios del dia.
+			<?php } else { ?>
+				<form method="POST" action="doparticipation.php">
+					<input type="hidden" name="userid" value="<?php echo $userid;?>">
+					<div id="baseDatosDeContacto" style="margin-top:100px; height:315px;">
+						<div id="errmessage"></div>
+						<div id="acomodador">
+							<table cellpadding="5" cellspacing="0" border="0" align="left">
+								<tr>
+									<td>X: </td>
+									<td><input type="text" name="xcoord" id="xcoord" value=""></td>
+								</tr>
+								<tr>
+									<td>Y: </td>
+									<td><input type="text" name="ycoord" id="ycoord" value=""></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</form>
+		<?php } ?>
+	<?php } else { ?>
+			NO hay promo para hoy
+	<?php } ?>
 <?php } ?>
 </body>
 </html>

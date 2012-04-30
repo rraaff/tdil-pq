@@ -94,11 +94,11 @@ function doSearch() {
                         <td><input type="text" id="sMaxParticipations"></td>
                     </tr>
                      <tr>	
-                        <td>Ganador (como minimo):</td>
+                        <td>Premios ganados (como minimo):</td>
                         <td><input type="text" id="sMinWins"></td>
                     </tr>
                     <tr>	
-                        <td>Ganador (como maximo):</td>
+                        <td>Premios ganados (como maximo):</td>
                         <td><input type="text" id="sMaxWins"></td>
                     </tr>
                     <tr>
@@ -118,6 +118,7 @@ function doSearch() {
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
                                 <th width="25%">Participaciones</th>
+                                <th width="25%">Premios</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,6 +131,7 @@ function doSearch() {
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
                                <th width="25%">Participaciones</th>
+                               <th width="25%">Premios</th>
                             </tr>
                         </tfoot>
                     </table>
