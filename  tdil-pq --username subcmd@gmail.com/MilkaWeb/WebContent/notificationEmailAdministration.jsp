@@ -29,9 +29,19 @@
 					<div class="label width80"><html:textarea name="NotificationEmailForm" property="content" styleClass="width50"/></div>
 					<div class="label width50"><%=MilkaErrorFormatter.getErrorFrom(request, "NotificationEmailForm.content.err")%></div>
 				</div>
-				
-				<html:text name="NotificationEmailForm" property="email" styleClass="width50"/>
-				<a href="javascript:document.NotificationEmailForm.action='./testEmailNotification.do';document.NotificationEmailForm.submit();">Testear email</a>
+				<logic:notEqual name="NotificationEmailForm" property="objectId" value="0">
+					Testear: <html:text name="NotificationEmailForm" property="email" styleClass="width50"/>
+					<a href="javascript:document.NotificationEmailForm.action='./testEmailNotification.do';document.NotificationEmailForm.submit();">Testear email</a>
+				</logic:notEqual>
+				<logic:equal name="NotificationEmailForm" property="emailTest" value="true">
+					<logic:equal name="NotificationEmailForm" property="errorsSending" value="true">
+						El email no pudo enviarse:
+						<bean:write name="NotificationEmailForm" filter="false" property="errorText" />
+					</logic:equal>
+					<logic:equal name="NotificationEmailForm" property="errorsSending" value="false">
+						El email se envio correctamente.
+					</logic:equal>
+				</logic:equal>
 				
 				<logic:equal name="NotificationEmailForm" property="objectId" value="0">
 					<html:submit property="operation" disabled="true">
