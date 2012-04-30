@@ -1,16 +1,32 @@
 package com.tdil.milka.struts.forms;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.apache.struts.action.ActionMapping;
+
+import com.tdil.ibatis.TransactionProvider;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.NotificationEmailDAO;
+import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.NotificationEmail;
 import com.tdil.milka.model.NotificationEmailExample;
+import com.tdil.milka.model.SystemProperty;
+import com.tdil.milka.model.SystemPropertyExample;
+import com.tdil.milka.utils.SystemPropertiesKeys;
+import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.utils.EmailUtils;
 
 public class NotificationEmailForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
@@ -30,6 +46,9 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 	
 	// Para el test del email, podriamos testear con reemplazos???
 	private String email;
+	private boolean emailTest;
+	private boolean errorsSending;
+	private String errorText;
 	
 	private List<NotificationEmail> allNotificationEmails;
 	
@@ -40,6 +59,14 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 		this.replacements = null;
 		this.description = null;
 		this.content = null;
+		this.errorsSending = false;
+		this.errorText = null;
+		this.emailTest = false;
+	}
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		this.errorsSending = false;
+		this.emailTest = false;
 	}
 
 	@Override
@@ -165,9 +192,41 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 	}
 
 	public void testEmail() {
-		// TODO Auto-generated method stub
-		// asas
-		System.out.println("testing " + this.getEmail());
+		this.setEmailTest(true);
+		// TODO marcar y llenar errores...
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				public void executeInTransaction() throws SQLException, ValidationException {
+					SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
+					SystemPropertyExample smtpExample = new SystemPropertyExample();
+					smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
+					SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
+					
+					SystemPropertyExample portExample = new SystemPropertyExample();
+					portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
+					SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+					
+					try {
+						EmailUtils.sendEmail(NotificationEmailForm.this.getContent(), NotificationEmailForm.this.getEmail(), NotificationEmailForm.this.getEmail(), "Test email for type " + NotificationEmailForm.this.getNotificationtype(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
+					} catch (MessagingException e) {
+						NotificationEmailForm.this.errorsSending = true;
+						setErrorText(e);
+						getLog().error(e.getMessage(), e);
+					}
+				}
+			});
+		} catch (Exception e) {
+			this.errorsSending = true;
+			setErrorText(e);
+			getLog().error(e.getMessage(), e);
+		} 
+	}
+	
+	private void setErrorText(Throwable e) {
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		PrintStream printStream = new PrintStream(byteOut);
+		e.printStackTrace(printStream);
+		setErrorText(byteOut.toString());
 	}
 
 	public String getEmail() {
@@ -176,6 +235,32 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(NotificationEmailForm.class);
+	}
+
+	public boolean isErrorsSending() {
+		return errorsSending;
+	}
+
+	public void setErrorsSending(boolean errorsSending) {
+		this.errorsSending = errorsSending;
+	}
+
+	public String getErrorText() {
+		return errorText;
+	}
+
+	public void setErrorText(String errorText) {
+		this.errorText = errorText;
+	}
+	public boolean isEmailTest() {
+		return emailTest;
+	}
+	public void setEmailTest(boolean emailSent) {
+		this.emailTest = emailSent;
 	}
 
 }

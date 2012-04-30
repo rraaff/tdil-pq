@@ -31,19 +31,7 @@ public class SendMail {
 	// Represents the mail Session used to send mails
 	private Session mailSession = null;
 	private String mailSMTPHost = null;
-	public static String mailSMTPPORT;
-
-	public static String getMailSMTPPORT() {
-		if (mailSMTPPORT == null) {
-			String sysProp = System.getProperty("mail.smtp.port");
-			if (sysProp != null && sysProp.length() > 0) {
-				mailSMTPPORT = sysProp;
-			} else {
-				mailSMTPPORT = "25";
-			}
-		}
-		return mailSMTPPORT;
-	}
+	public String mailSMTPPORT = "25";
 
 	/**
 	 * Constructor
@@ -57,6 +45,14 @@ public class SendMail {
 		this.setMailSMTPHost(aMailSMTPHost);
 		this.initializeMailSession();
 	}
+	
+	public SendMail(String aMailSMTPHost, String port) {
+		super();
+
+		this.setMailSMTPHost(aMailSMTPHost);
+		this.setMailSMTPPORT(port);
+		this.initializeMailSession();
+	}
 
 	/**
 	 * Constructor
@@ -68,6 +64,14 @@ public class SendMail {
 		super();
 
 		this.setMailSMTPHost(aMailSMTPHost);
+		this.initializeMailSession(debug);
+	}
+	
+	public SendMail(String aMailSMTPHost, String port, boolean debug) {
+		super();
+
+		this.setMailSMTPHost(aMailSMTPHost);
+		this.setMailSMTPPORT(port);
 		this.initializeMailSession(debug);
 	}
 
@@ -499,5 +503,13 @@ public class SendMail {
 	public String toString() {
 		return super.toString() + " (SMTPHost: " + this.getMailSMTPHost() + " , Session.getProperties: "
 				+ this.getMailSession().getProperties() + ")";
+	}
+
+	private String getMailSMTPPORT() {
+		return mailSMTPPORT;
+	}
+
+	private void setMailSMTPPORT(String mailSMTPPORT) {
+		this.mailSMTPPORT = mailSMTPPORT;
 	}
 }

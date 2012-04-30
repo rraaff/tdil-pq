@@ -1,20 +1,16 @@
 package com.tdil.utils;
 
+import javax.mail.MessagingException;
+
 
 public class EmailUtils {
 
-	/*
-	 * TODO Ejemplo para los proyectos
-	public static void sendPasswordEmail(String email, String fullName, String username, String password) throws MessagingException {
-		NotificationEmail notificationEmail = SystemConfig.getMailForNewPassword();
-		String body = notificationEmail.getEmailText();
-		body = body.replace("{FULLNAME}", fullName);
-		body = body.replace("{USERNAME}", username);
-		body = body.replace("{PASSWORD}", password);
-		body = body.replace("{SERVER}", SystemConfig.getServerUrl());
-		new SendMail(SystemConfig.getMailServer()).sendCustomizedHtmlMail(notificationEmail.getEmailFrom(), email, notificationEmail.getEmailSubject(), body);
+	public static void sendEmail(String email, String to, String from, String subject, String smtpServer, String smtpPort) throws MessagingException {
+		SendMail sendMail = new SendMail(smtpServer, smtpPort);
+		sendMail.sendCustomizedHtmlMail(from, to, subject, email);
 	}
 	
+	/*
 	public static void sendAdminEmailUserRequestPasswordReset(String fullName, String username) throws MessagingException {
 		NotificationEmail notificationEmail = SystemConfig.getMailForPasswordReset();
 		String body = notificationEmail.getEmailText();
