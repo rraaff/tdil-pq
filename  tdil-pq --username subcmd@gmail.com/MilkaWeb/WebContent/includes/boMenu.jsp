@@ -26,6 +26,18 @@
       <li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>
     </ul>
   </li>
+   <li>
+    <a href="#">Notificaciones</a>
+    <ul>
+      <li><html:link action="/goToNotificationEmailABM" >Notificaciones por email</html:link></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Sistema</a>
+    <ul>
+      <li><html:link action="/goToSystemPropertyABM" >Variables de sistema</html:link></li>
+    </ul>
+  </li>
   <li>
     <html:link action="/logout" >Salir</html:link>
   </li>

@@ -25,4 +25,7 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/SYSPROPERTIES_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/SYSTEMUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/BLOB_DATA_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/NOTIFICATION_EMAIL_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/RAW_INSERT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/CLICK_COUNTER_SqlMap.xml"/>
 </sqlMapConfig>
