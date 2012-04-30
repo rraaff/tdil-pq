@@ -7,9 +7,9 @@
                    
      mgodoy                                                                
      ====================================================================== -->
-<project name="Package" default="milka-corazones">
+<project name="Package" default="make-package">
     <description>
-            ANT file para armar el paquete de entrega de FB_MGM
+            ANT file para armar el paquete de entrega de MilkaCorazones
     </description>
 	
 	
@@ -31,7 +31,7 @@
 			</sql>
 		</target>
 
-		<target name="createTables" depends="createDatabase">
+		<target name="createTables" depends="createDatabase" description="Regenera la base de datos">
 			<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 				<classpath>
 					<pathelement location="./mysql-connector-java-5.1.13-bin.jar" />
@@ -72,12 +72,13 @@
     	<delete dir="tmp" failonerror="false"></delete>
     </target-->
 	
-	<target name="milka-corazones" description="description">
+	<target name="make-package" description="Arma el zip de entrega">
 	    	<delete file="milka-corazones.zip" failonerror="false"></delete>
 	    	<delete dir="tmp" failonerror="false"></delete>
 	    	<mkdir dir="tmp/FB"/>
 	    	<copy todir="tmp" file="Instrucciones.txt"></copy>
-	    	<copy todir="tmp" file="milka_corazones.sql"></copy>
+			<copy todir="tmp" file="database.sql"></copy>
+	    	<copy todir="tmp" file="ddl.sql"></copy>
 	    	<copy todir="tmp/FB">
 	    		<fileset dir="../" id="id">
 	    			<exclude name="**/.settings/**"/>

@@ -1,14 +1,14 @@
 <?php
 // PATH TO YOUR FACEBOOK PHP-SDK
 	require '../include/facebook.php';
-	require '../include/app1constants.php';
+	require '../include/appconstants.php';
 	require("../include/funcionesDB.php");
 
 
 // REPLACE WITH YOUR APPLICATION ID AND SECRET
 $facebook = new Facebook(array(
-  'appId'  => APPLICATION1_ID,
-  'secret' => APPLICATION1_SECRET,
+  'appId'  => APPLICATION_ID,
+  'secret' => APPLICATION_SECRET,
   'cookie' => true,
 ));
 
@@ -63,7 +63,7 @@ function printTestUsers($accounts) {
 			$html .= "<td>{$arr['id']}</td>";
 			$fbid = $arr['id'];
 			$fbid = quote_smart($fbid, $connection);
-			$SQL = "SELECT * FROM USER_APP1 WHERE fbid = $fbid";
+			$SQL = "SELECT * FROM FBUSER WHERE fbid = $fbid";
 			$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 			$num_rows = mysql_num_rows($result);
 			if ($num_rows == 1) {

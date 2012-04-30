@@ -29,7 +29,7 @@ $fbid = $user;
 $signed_request = $facebook->getSignedRequest();
 if (empty($signed_request['page']['liked'])) {
 	// Si estoy en localhost
-	if (APPLICATION_URL == 'http://localhost/MilkaCorazones/app') {
+	if (APPLICATION_URL == 'http://localhost/Milka-Corazones/app') {
 		$testuser = $facebook->api('/me');
 		// Si el nombre incluye Tester entonces asumo que es fan
 		if (strpos($testuser['name'], 'Tester')) {
