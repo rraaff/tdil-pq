@@ -33,22 +33,18 @@
 	    <div id="slider" class="nivoSlider">
 		<% /*Generacion de imagenes*/
 			for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
-	        <img src="./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>" alt="" title="#htmlcaption<%=note.getId() %>" width="428" height="385" />
+	        <a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[cover_gal]"><img src="./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>" alt="" title="#htmlcaption<%=note.getId() %>" width="428" height="385" /></a>
 		<% } %>
 	    </div>
 		<% /*Generacion de captions*/
 		for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
 		    <div id="htmlcaption<%=note.getId() %>" class="nivo-html-caption">
-	    	<h1><a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[cover_gal]"><%=note.getTitle() %></a></h1>
+	    	<h1><%=note.getTitle() %></h1>
 			<div class="bajada"><%=note.getSummary() %></div>
 			<div class="date"><%=PublicHomeBean.formatDate(note.getFromDate()) %></div>
 	 	</div>
 	 	<% } %>
 	</div>
-	<% /*Generacion de links a las notas*/
-		for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
-		<!--a href="< %=publicHomeBean.getExternalLink(note)%>">< %=note.getTitle() %></a -->
-	<% } %>
 <% } else { %>
 	NO hay front covers
 <% } %>
