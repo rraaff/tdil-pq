@@ -1,15 +1,20 @@
 package com.tdil.djmag.dao.impl;
 
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.print.attribute.HashAttributeSet;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.model.Country;
+import com.tdil.djmag.model.MenuItem;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteExample;
-import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.valueobjects.NoteValueObject;
-
-import java.sql.SQLException;
-import java.util.List;
 
 public class NoteDAOImpl implements NoteDAO {
 
@@ -193,6 +198,20 @@ public class NoteDAOImpl implements NoteDAO {
 	
 	public List<NoteValueObject> selectActiveLastNotesForCountry(Country country) throws SQLException {
 		List<NoteValueObject> list = sqlMapClient.queryForList("NOTE.selectActiveLastNotesForCountry", country);
+		return list;
+	}
+	
+	public List<NoteValueObject> selectActiveNotesForMenuItem(MenuItem menuItem) throws SQLException {
+		List<NoteValueObject> list = sqlMapClient.queryForList("NOTE.selectActiveNotesForMenuItem", menuItem);
+		return list;
+	}
+	
+	public List<NoteValueObject> selectNoteByParams(Integer countryId, String webTitle, Date date) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("countryId", countryId);
+		params.put("fromDate", date);
+		params.put("webTitle", webTitle);
+		List<NoteValueObject> list = sqlMapClient.queryForList("NOTE.selectNoteByCountryDateAndWebTitle", params);
 		return list;
 	}
 }
