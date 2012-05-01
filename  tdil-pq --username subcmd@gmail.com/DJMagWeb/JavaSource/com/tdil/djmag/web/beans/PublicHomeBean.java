@@ -92,7 +92,7 @@ public class PublicHomeBean  {
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
 	
-	public static final String LIGTH_BOX_PARAMS = "?iframe=true&width=960&height=500";
+	public static final String LIGTH_BOX_PARAMS = "?iframe=true&width=960&height=700";
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
