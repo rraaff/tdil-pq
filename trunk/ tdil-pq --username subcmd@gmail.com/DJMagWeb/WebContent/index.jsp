@@ -136,10 +136,17 @@ $(document).ready(
 <% } %>
 </div>
 		
-<!-- Cambio de pais --> 
+<!-- Cambio de pais -->
+<style>
+#linkToChanche a, #linkToChanche a:hover, #linkToChanche a:active, #linkToChanche a:visited {
+	color:#FFFF33;
+	font-size:12px;
+	line-height:24px;
+}
+</style>
 <div id="changeCountryDiv" class="hide">
 	<% for (Country country : publicHomeBean.getAllCountries()) { %>
-			<a href="./selectCountry.st?id=<%=country.getId() %>")"><%=country.getName()%></a><br>
+		<div id="linkToChanche"><a href="./selectCountry.st?id=<%=country.getId() %>")"><%=country.getName()%></a></div>
 	<% } %>
 </div>
 	<!-- cargo el slider -->
@@ -155,7 +162,6 @@ $(document).ready(
 	    	social_tools: false,
 	    	theme: 'dark_rounded',
 	    	markup: '<div class="pp_pic_holder"> \
-						<div class="ppt">&nbsp;</div> \
 						<div class="pp_top"> \
 							<div class="pp_left"></div> \
 							<div class="pp_middle"></div> \
@@ -167,7 +173,7 @@ $(document).ready(
 								<p class="currentTextHolder">0/0</p> \
 								<a href="#" class="pp_arrow_next">Next</a> \
 							</div> \
-							<p class="pp_description"></p> \
+							<!--p class="pp_description"></p--> \
 							{pp_social} \
 							<a class="pp_close" href="#">Close</a> \
 						</div> \

@@ -21,6 +21,10 @@ body {
 div {
 	border:dotted 1px #00FF00;
 }*/
+h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
+	color:#fef455;
+}
+
 #BlockCoutrySelection {
 	background-image: url(../images/selector-pais.gif);
 	background-repeat: no-repeat;
@@ -430,12 +434,12 @@ body {
 	padding-left:5px;
 }
 #BlockSecondaryContent #leftContent #BlockVideos {
-	height: 300px;
+	height: 350px;
 	width: 635px;
 	position: relative;
 	margin-top: 10px;
 }
-#BlockSecondaryContent #leftContent #BlockVideos #left {
+#BlockSecondaryContent #leftContent #BlockVideos #topvideo {
 	float: left;
 	height: 300px;
 	width: 390px;
@@ -444,6 +448,7 @@ body {
 	width:202px;
 	height:293px;
 	float:right;
+	overflow:hidden;
 }
 #BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo {
 	width:200px;
@@ -506,9 +511,11 @@ body {
 	margin-left:8px;
 	float:left;
 }
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date {
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date a, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date a:hover {
 	background-color:#e25237;
+	color:#FFFF33;
 	font-size:11px;
+	text-decoration:none;
 	padding: 5px;
 }
 #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent span {
