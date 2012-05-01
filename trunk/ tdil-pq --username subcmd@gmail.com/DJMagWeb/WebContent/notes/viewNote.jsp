@@ -175,6 +175,15 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <br>
 
 <div id="fakeLiveboxWindow">
@@ -186,6 +195,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 		</div>
 		<div id="closeButton"></div>
 	</div>
+	<div class="fb-like" data-send="false" data-width="450" data-show-faces="true"></div>
 	<% if (publicHomeBean.hasNoteTopBanner()) {%>
 		<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
