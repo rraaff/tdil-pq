@@ -151,7 +151,8 @@ $(document).ready(
 	  $(document).ready(function(){
 	    $("a[rel^='prettyPhoto']").prettyPhoto({
 	    	hideflash: true,
-	    	social_tools: false
+	    	social_tools: false,
+	    	theme: 'dark_rounded'
 	    });
 	    
 		<% String action = request.getParameter("action");
