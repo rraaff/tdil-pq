@@ -74,18 +74,6 @@ $(document).ready(
 				$.jGrowl('Ha ocurrido un error, intentelo nuevamente');
 			}
 		}
-	
-		function changeCountry() {
-			<% 	publicHomeBean.initCountries();
-				StringBuffer sb = new StringBuffer();
-				for (Country country : publicHomeBean.getAllCountries()) {
-					sb.append("<a href=\"./selectCountry.st?id=").append(country.getId()).append("\">").append(country.getName()).append("</a><br>");
-				} %>
-			$.jGrowl('<%=sb.toString()%>',{ sticky: true });
-		}
-		$('#changeCountryLink').click(function(){
-		      changeCountry();
-		    });
 	}
 );
 </script>
@@ -120,7 +108,7 @@ $(document).ready(
 <%@ include file="includes/homeFrontCovers.jsp" %>
 <%@ include file="includes/homeRanking.jsp" %>
 	<div id="BlockMainRight">
-		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#"><img id="changeCountryLink" src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
+		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#changeCountryDiv" rel="prettyPhoto[change_country]"><img id="changeCountryLink" src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
 		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
 		<%@ include file="includes/homeMagazine.jsp" %>
@@ -141,6 +129,11 @@ $(document).ready(
 	</div>
 </div>
 <%@ include file="includes/homeFooter.jsp" %> 
+<div id="changeCountryDiv" class="hide">
+	<% for (Country country : publicHomeBean.getAllCountries()) { %>
+			<a href="./selectCountry.st?id=<%=country.getId() %>")"><%=country.getName()%></a><br>
+	<% } %>
+</div>
 	<!-- cargo el slider -->
 	<script type="text/javascript">
     $(window).load(function() {
