@@ -1,16 +1,20 @@
 package com.tdil.djmag.web.beans;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.log4j.nt.NTEventLogAppender;
 
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FooterDAO;
@@ -28,12 +32,14 @@ import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
 import com.tdil.djmag.model.Magazine;
 import com.tdil.djmag.model.MagazineExample;
+import com.tdil.djmag.model.MenuItem;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.Section;
+import com.tdil.djmag.model.SectionType;
 import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.djmag.model.Video;
@@ -75,6 +81,8 @@ public class PublicHomeBean  {
 	private List<NoteValueObject> agendaNotes;
 	
 	private List<NoteValueObject> allNotes;
+	
+	private Map<Section, List<NoteValueObject>> sectionsNotes;
 	
 	private BannerValueObject homeTop;
 	private BannerValueObject homeRight;
@@ -185,6 +193,7 @@ public class PublicHomeBean  {
 				countryId = country.getId();
 			}
 		}
+		final Integer countryIdFound = countryId;
 		Iterator<NoteValueObject> noteIterator = getAllNotes().iterator();
 		while(result == null && noteIterator.hasNext()) {
 			NoteValueObject iter = noteIterator.next();
@@ -193,6 +202,21 @@ public class PublicHomeBean  {
 				if (date.equals(datePart)) {
 					result = iter;
 				}
+			}
+		}
+		if (result == null) {
+			final Date date = parseDateForUrl(datePart);
+			try {
+				List<NoteValueObject> list = (List<NoteValueObject>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+					public Object executeInTransaction() throws SQLException {
+						return DAOManager.getNoteDAO().selectNoteByParams(countryIdFound, webTitle, date);
+					}
+				});
+				if (list.size() > 0) {
+					result = list.get(0);
+				}
+			} catch (SQLException e) {
+				getLog().error(e.getMessage(), e);
 			}
 		}
 		return result;
@@ -262,6 +286,10 @@ public class PublicHomeBean  {
 		}
 	}
 	
+	public NoteValueObject getFirstNoteForSection(Section section) {
+		return this.getSectionsNotes().get(section).get(0);
+	}
+	
 	public void initCountries() {
 		if (allCountries == null || allCountries.isEmpty()) {
 			try {
@@ -284,9 +312,26 @@ public class PublicHomeBean  {
 		try {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
+					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					// cargo las secciones
 					SectionDAO sectionDAO = DAOManager.getSectionDAO();
 					setSectionsForCountry(sectionDAO.selectActiveSectionsForCountry(country));
+					Map<Section, List<NoteValueObject>> sectionsGalleries = new HashMap<Section, List<NoteValueObject>>();
+					List<Section> iterator = new ArrayList<Section>(getSectionsForCountry());
+					for (Section section : iterator) {
+						if (SectionType.NORMAL.equals(section.getSectiontype())) {
+							MenuItem menuItem = new MenuItem();
+							menuItem.setIdCountry(country.getId());
+							menuItem.setIdSection(section.getId());
+							List<NoteValueObject> notesForSection = noteDAO.selectActiveNotesForMenuItem(menuItem);
+							if (notesForSection.isEmpty()) {
+								getSectionsForCountry().remove(section);
+							} else {
+								sectionsGalleries.put(section, notesForSection);
+							}
+						}
+					}
+					setSectionsNotes(sectionsGalleries);
 					
 					// cargo los banners
 					List<BannerValueObject> banners = DAOManager.getBannerDAO().getActiveBannersForCountry(country);
@@ -328,7 +373,6 @@ public class PublicHomeBean  {
 					}
 					
 					// cargo las notas de tapa
-					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					setFrontCoverNotes(noteDAO.selectActiveFrontCoversNotesForCountry(country));
 					// cargo las ultimas notas de tapa
 					setLastNotes(noteDAO.selectActiveLastNotesForCountry(country));
@@ -451,6 +495,16 @@ public class PublicHomeBean  {
 	public static String formatDateForUrl(Date date) {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		return simpleDateFormat.format(date);
+	}
+	
+	public static Date parseDateForUrl(String date) {
+		try {
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			return simpleDateFormat.parse(date);
+		} catch (ParseException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		}
 	}
 	
 	public static String formatMagazineDate(Date date) {
@@ -676,5 +730,13 @@ public class PublicHomeBean  {
 
 	public void setAllNotes(List<NoteValueObject> allNotes) {
 		this.allNotes = allNotes;
+	}
+
+	public Map<Section, List<NoteValueObject>> getSectionsNotes() {
+		return sectionsNotes;
+	}
+
+	public void setSectionsNotes(Map<Section, List<NoteValueObject>> sectionsNotes) {
+		this.sectionsNotes = sectionsNotes;
 	}
 }
