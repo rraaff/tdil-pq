@@ -597,6 +597,13 @@
   <resultMap class="com.tdil.djmag.model.valueobjects.NoteValueObject" extends="NOTE.BaseResultMap" id="VOResultMapWithoutBLOBs">
   </resultMap>
   
+  <resultMap class="com.tdil.djmag.model.valueobjects.NoteValueObject" id="NoteIdAndTitleVO">
+  	<result column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="from_date" jdbcType="DATE" property="fromDate" />
+    <result column="web_title" jdbcType="VARCHAR" property="webTitle" />
+  </resultMap>
+  
   
   <!-- Custom queries -->
   <select id="selectActiveFrontCoversNotesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="VOResultMapWithoutBLOBs">
@@ -645,6 +652,34 @@
 	and note.popular = 1
 	and note.frontCover = 0
 	order by note.to_date desc
+  </select>
+  
+  <select id="selectActiveNotesForMenuItem" parameterClass="com.tdil.djmag.model.MenuItem" resultMap="NoteIdAndTitleVO">
+    select
+    note.id, note.title, note.web_title, note.from_date
+    from NOTE note, NOTE_COUNTRY nc
+	where note.id = nc.id_note
+	and note.deleted = 0
+	and nc.deleted = 0
+	and nc.id_country = #idCountry:INTEGER#
+	and note.id_section = #idSection:INTEGER#
+	and CURDATE() &gt;= note.from_date
+	and (note.to_date is null or note.to_date &gt;= CURDATE())
+	order by note.to_date desc
+  </select>
+  
+  <select id="selectNoteByCountryDateAndWebTitle" parameterClass="java.util.Map" resultMap="VOResultMapWithoutBLOBs">
+    select
+    note.id, note.title, note.summary, note.id_section, note.web_title, note.from_date, note.to_date, note.frontCover, note.popular, 
+    note.showInAgenda, note.agenda_date, note.deleted, 
+    note.frontCoverExt, note.frontCover_id, note.agendaExt, note.agenda_id, note.lastNewsCoverExt, note.lastNewsCover_id, note.lastNewsThumbExt, note.lastNewsThumb_id
+    from NOTE note, NOTE_COUNTRY nc
+	where note.id = nc.id_note
+	and note.deleted = 0
+	and nc.deleted = 0
+	and nc.id_country = #countryId:INTEGER#
+	and note.from_date = #fromDate:DATE#
+	and note.web_title = #webTitle:VARCHAR#
   </select>
   
 </sqlMap>

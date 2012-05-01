@@ -1,9 +1,11 @@
 package com.tdil.djmag.dao;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import com.tdil.djmag.model.Country;
+import com.tdil.djmag.model.MenuItem;
 import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteExample;
 import com.tdil.djmag.model.valueobjects.NoteValueObject;
@@ -100,4 +102,8 @@ public interface NoteDAO {
 	List<NoteValueObject> selectActiveAgendaNotesForCountry(Country country) throws SQLException;
 	
 	List<NoteValueObject> selectActiveLastNotesForCountry(Country country) throws SQLException;
+	
+	List<NoteValueObject> selectActiveNotesForMenuItem(MenuItem menuItem) throws SQLException;
+	
+	List<NoteValueObject> selectNoteByParams(Integer countryId, String webTitle, Date date) throws SQLException;
 }
