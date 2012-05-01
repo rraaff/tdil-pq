@@ -45,8 +45,8 @@
 							<tr>
 								<td align="center"><%=iterIndexPositions + 1%></td>
 								<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width180"/></td>  
-								<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=< %= iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
-								<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=< %= iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
+								<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
+								<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%= iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
 							</tr>
 						</logic:iterate>
 					</table>
