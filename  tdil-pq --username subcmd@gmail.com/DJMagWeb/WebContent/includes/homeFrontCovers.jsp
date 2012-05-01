@@ -33,7 +33,7 @@
 		<% /*Generacion de captions*/
 		for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
 		    <div id="htmlcaption<%=note.getId() %>" class="nivo-html-caption">
-	    	<h1><%=note.getTitle() %></h1>
+	    	<h1><a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[cover_gal]"><%=note.getTitle() %></a></h1>
 			<div class="bajada"><%=note.getSummary() %></div>
 			<div class="date"><%=PublicHomeBean.formatDate(note.getFromDate()) %></div>
 	 	</div>
