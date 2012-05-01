@@ -26,7 +26,8 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 <link rel="stylesheet" href="../../../css/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../../../css/nivo_theme/default.css" type="text/css" media="screen" />
 <style>
-/*div {
+/*
+div {
 	border:dotted 1px #00FF00;
 }*/
 #fakeLiveboxWindow {
@@ -53,33 +54,33 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	height:28px;
 }
 #navBar #prevNext #prev {
-	background-image:url(images/buttons/navBar_prev.gif);
+	background-image:url(../../../images/buttons/navBar_prev.gif);
 	width:32px;
 	height:28px;
 	float:left;
 }
 #navBar #prevNext #prev:hover {
-	background-image:url(images/buttons/navBar_prev_over.gif);
+	background-image:url(../../../images/buttons/navBar_prev_over.gif);
 	cursor:hand;
 }
 #navBar #prevNext #next {
-	background-image:url(images/buttons/navBar_next.gif);
+	background-image:url(../../../images/buttons/navBar_next.gif);
 	width:35px;
 	height:28px;
 	float:right;
 }
 #navBar #prevNext #next:hover {
-	background-image:url(images/buttons/navBar_next_over.gif);
+	background-image:url(../../../images/buttons/navBar_next_over.gif);
 	cursor:hand;
 }
 #navBar #closeButton {
 	float:right;
-	background-image:url(images/buttons/navBar_close.gif);
+	background-image:url(../../../images/buttons/navBar_close.gif);
 	width:37px;
 	height:28px;
 }
 #navBar #closeButton:hover {
-	background-image:url(images/buttons/navBar_close_over.gif);
+	background-image:url(../../../images/buttons/navBar_close_over.gif);
 }
 #fakeLiveboxWindow #bannerHeader {
 	width:728px;
@@ -175,17 +176,6 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<br>
-
 <div id="fakeLiveboxWindow">
 	<!-- Estructura de la interface -->
 	<div id="navBar">
@@ -193,11 +183,21 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 			<div id="prev"></div>
 			<div id="next"></div>
 		</div>
+		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
+			<div id="fb-root" style="float:left;"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+			<div class="fb-like" data-send="false" data-width="450" data-show-faces="true" style="float:left;"></div>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
 		<div id="closeButton"></div>
 	</div>
-	<div class="fb-like" data-send="false" data-width="450" data-show-faces="true"></div>
-	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	<% if (publicHomeBean.hasNoteTopBanner()) {%>
 		<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>

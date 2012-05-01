@@ -20,6 +20,12 @@
 	cursor:hand;
 }
 */
+#slider h1 a {
+	color:#FFFF33;
+}
+#slider h1 a:hover {
+	text-decoration:underline;
+}
 </style>
 <% if (publicHomeBean.hasFrontCovers()) { %>
 	<div class="slider-wrapper theme-default" style="width:428px; height:400px; margin-left:15px; float:left;">
