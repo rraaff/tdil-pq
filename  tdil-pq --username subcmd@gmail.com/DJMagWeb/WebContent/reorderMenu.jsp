@@ -12,36 +12,34 @@
 </head>
 
 <body>
-
-	<%@ include file="includes/boMenu.jsp"%>
-
-	<br>Reorder menu
-
+<div id="header"></div>
+<div id="container">
+	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
+	<div id="formulariosBase">
 	<html:form method="POST" action="/saveOrder">
+	<h1>Reorder men&uacute;</h1>
+	<div id="conteinerScrollable" style="overflow:hidden;">
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%> </span>
-		Nombre pais: TODO<br>
-		Secciones
+		<div style="height:30px;">Nombre pais: TODO</div>
+		<h2>Secciones</h2><%=DJMagErrorFormatter.getErrorFrom(request, "MenuItem.position.err")%>
 		<table>
-		<tr>
-			<td>Posicion</td>
-			<td>Nombre</td>
-		</tr>
-		<logic:iterate id="menuItem" name="ReorderMenuForm" property="menuItems">  
 			<tr>
-				<td><html:text name="menuItem" property="position" indexed="true"/></td>
-   				<td><bean:write name="menuItem" property="menuItemName" /></td>
-   			</tr>
-		</logic:iterate>  
+				<td class="headerTablas" width="60">Posici&oacute;n</td>
+				<td class="headerTablas">Nombre</td>
+			</tr>
+			<logic:iterate id="menuItem" name="ReorderMenuForm" property="menuItems">  
+				<tr>
+					<td><html:text name="menuItem" property="position" indexed="true" styleClass="width50"/></td>
+					<td><bean:write name="menuItem" property="menuItemName" /></td>
+				</tr>
+			</logic:iterate>  
 		</table>
-		<%=DJMagErrorFormatter.getErrorFrom(request, "MenuItem.position.err")%>
-		<br>
+		<html:link action="/goToSectionABM" >Volver</html:link>
 		<html:submit property="operation">
 			<bean:message key="save" />
 		</html:submit>
+	</div>
 	</html:form>
-
-
-	<html:link action="/goToSectionABM" >Volver</html:link>
-
+</div>
 </body>
 </html>
