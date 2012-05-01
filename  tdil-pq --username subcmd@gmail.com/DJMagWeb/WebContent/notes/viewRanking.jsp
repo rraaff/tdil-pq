@@ -20,12 +20,13 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 %>
 <html>
 <head>
-<link href="../../../css/style.css" rel="stylesheet" type="text/css">
-<script src='../../../js/jquery-1.7.min.js' type='text/javascript'></script>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
 <style>
-/*div {
+/*
+div {
 	border:dotted 1px #00FF00;
-}*/
+}
 #fakeLiveboxWindow {
 	width:960px;
 	height:700px;
@@ -33,7 +34,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	margin-right:auto;
 	margin-top:50px;
 	border:solid 4px #545454;
-	/* redondeado */	
+	/* redondeado *	
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
@@ -168,14 +169,61 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
+}*/
+#rankingHeader {
+	width:95%;
+	height:87px;
+}
+#rankingHeader #rankingLogo {
+	width:232px;
+	height:87px;
+	float:left;
+}
+#rankingHeader #social {
+	float:right;
+}
+#top100LB {
+	font-family: Arial, Helvetica, sans-serif;
+	width:400px;
+	padding:0;
+	margin-top: 25;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+#top100LB #position {
+	font-size: 12px;
+	line-height: 25px;
+	font-weight: normal;
+	color: #e25237;
+	text-align: right;
+	float: left;
+	width: 30px;
+}
+#top100LB #ranked {
+	font-size: 13px;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	float: left;
+	width: 360px;
+	margin-left:10px;
+	overflow: hidden;
 }
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
-<% int positionIndex = 1;
-for (String position : positions.getPositions()) { %>
-	<div id="position"><%=positionIndex++ %>.</div><div id="rankedHome"><%=position %></div>
-<% } %>
+<div id="rankingHeader">
+	<div id="rankingLogo"><img src="../../images/header-top100.jpg" alt="Top 100" width="232" height="87"></div>
+	<div id="social">insertar boton compartir FB y Twitter</div>
+</div>
+<div id="top100LB">
+	<% int positionIndex = 1;
+	for (String position : positions.getPositions()) { %>
+		<div id="position"><%=positionIndex++ %>.</div><div id="ranked"><%=position %></div>
+	<% } %>
+</div>
 </body>
 </html>
 <% }
