@@ -1,0 +1,2 @@
+UPDATE SYSTEMUSER SET password = SHA1('Admin') WHERE username = 'Admin';
+COMMIT;

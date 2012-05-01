@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.MenuItem;
 import com.tdil.djmag.model.MenuItemExample;
 import com.tdil.djmag.model.MenuItemExample.Criteria;
@@ -22,6 +23,7 @@ public class ReorderMenuForm extends TransactionalValidationForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 3196174331760319100L;
+	private String countryName;
 	private int countryId;
 	private List<MenuItemPositionVO> menuItems = new ArrayList<MenuItemPositionVO>();
 	
@@ -64,6 +66,8 @@ public class ReorderMenuForm extends TransactionalValidationForm {
 
 	@Override
 	public void initWith(int id) throws SQLException {
+		Country country = DAOManager.getCountryDAO().selectCountryByPrimaryKey(id);
+		setCountryName(country.getName());
 		this.setCountryId(id);
 		MenuItemDAO menuItemDAO = DAOManager.getMenuItemDAO();
 		MenuItemExample menuItemExample = new MenuItemExample();
@@ -110,6 +114,14 @@ public class ReorderMenuForm extends TransactionalValidationForm {
 
 	public void setMenuItems(List<MenuItemPositionVO> menuItems) {
 		this.menuItems = menuItems;
+	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
 	}
 
 }
