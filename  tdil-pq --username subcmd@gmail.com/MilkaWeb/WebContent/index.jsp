@@ -1,3 +1,5 @@
+<%@page import="com.tdil.milka.model.ClickCounter"%>
+<%@page import="com.tdil.milka.web.MeltButton"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
@@ -12,17 +14,27 @@
 <script>
 $(document).ready(
 	function(){
-		$("#meltbutton").meltbutton({buttonType: 'photomilka', buttonId: '2', 'quantity' : 150});
-		$("#meltbutton1").meltbutton({buttonType: 'photomilka', buttonId: '3', 'quantity' : 75});
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
 	}
+	
 );
 </script>
 </head>
 <body>
-
-<div id="meltbutton"></div>
-
-<div id="meltbutton1"></div>
+<% ClickCounter c1 = new ClickCounter();
+	c1.setId(1);
+	c1.setOwnertype("photomilka");
+	c1.setOwnerid(2);
+	c1.setClicks(150);
+%>
+<%= MeltButton.meltButton(c1) %>
+<%	c1.setId(2);
+	c1.setOwnerid(3);
+	c1.setClicks(75);
+%>
+<%= MeltButton.meltButton(c1) %>
 
 </body>
 </html>			

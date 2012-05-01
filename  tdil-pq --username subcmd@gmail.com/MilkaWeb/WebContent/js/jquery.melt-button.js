@@ -21,12 +21,12 @@
 
 (function($) {
   $.fn.meltbutton = function(settings) {
-	  var buttonType = settings.buttonType;
-  	  var buttonId = settings.buttonId;
-  	  var actualQuantity = settings.quantity;
+	  var obj = $(this);
+	  var buttonType = obj.attr("buttonType");
+  	  var buttonId = obj.attr("buttonId");
+  	  var actualQuantity = obj.attr("quantity");
   	  var cookieName = 'meltbutton-' + buttonType + '-' + buttonId;
   	  var cookie = $.cookie(cookieName);
-  	  var obj = $(this);
   	  if (!cookie) {
   		this.each(function() {
             obj.html("Me derrite " + actualQuantity);
