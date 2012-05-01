@@ -558,6 +558,23 @@ public class PublicHomeBean  {
 	public List<NoteValueObject> getLastNotes() {
 		return lastNotes;
 	}
+	
+	public List<NoteValueObject> getLastNotesLinks() {
+		List<NoteValueObject> result = new ArrayList<NoteValueObject>();
+		if (this.getLastNotes() != null) {
+			result.addAll(this.getLastNotes());
+		}
+		if (this.getLastNoteFirst() != null) {
+			result.remove(this.getLastNoteFirst());
+		}
+		if (this.getLastNoteSecond() != null) {
+			result.remove(this.getLastNoteSecond());
+		}
+		if (this.getReducedLastNotes() != null) {
+			result.removeAll(this.getReducedLastNotes());
+		}
+		return result;
+	}
 
 	public void setLastNotes(List<NoteValueObject> lastNotes) {
 		this.lastNotes = lastNotes;

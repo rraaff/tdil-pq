@@ -128,7 +128,15 @@ $(document).ready(
 		<%@ include file="includes/homeFacebook.jsp" %>
 	</div>
 </div>
-<%@ include file="includes/homeFooter.jsp" %> 
+<%@ include file="includes/homeFooter.jsp" %>
+<!-- Galeria de ultimas noticias -->
+<div id="newsGallery" class="hide">
+<% for (NoteValueObject note : publicHomeBean.getLastNotesLinks()) { %>
+	<a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[news_gal]"><%=note.getTitle() %></a>
+<% } %>
+</div>
+		
+<!-- Cambio de pais --> 
 <div id="changeCountryDiv" class="hide">
 	<% for (Country country : publicHomeBean.getAllCountries()) { %>
 			<a href="./selectCountry.st?id=<%=country.getId() %>")"><%=country.getName()%></a><br>

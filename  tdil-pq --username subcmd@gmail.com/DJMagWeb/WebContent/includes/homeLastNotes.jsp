@@ -7,7 +7,7 @@
 		<% for (NoteValueObject note : publicHomeBean.getReducedLastNotes()) { %>
 			<div id="lastNews" style="<%= (index < 2) ? "margin-right:14px;" : ""%>">
 				<img src="./download.st?id=<%=note.getLastnewsthumbId()%>&type=PUBLIC&ext=<%=note.getLastnewsthumbext()%>" width="200" height="143">
-				<h3><%=note.getTitle() %></h3>
+				<h3><a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[news_gal]"><%=note.getTitle() %></a></h3>
 				<div class="bajada"><%=note.getSummary() %></div>
 				<div class="date"><%=PublicHomeBean.formatDate(note.getFromDate()) %></div>
 			</div>
