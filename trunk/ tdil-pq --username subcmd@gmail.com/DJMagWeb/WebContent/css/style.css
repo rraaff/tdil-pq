@@ -24,7 +24,9 @@ div {
 h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
 	color:#fef455;
 }
-
+.hide {
+	display:none;
+}
 #BlockCoutrySelection {
 	background-image: url(../images/selector-pais.gif);
 	background-repeat: no-repeat;
