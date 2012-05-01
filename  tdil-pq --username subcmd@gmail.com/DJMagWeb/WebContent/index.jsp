@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Country"%>
 <%@page import="com.tdil.djmag.model.Section"%>
@@ -16,6 +18,13 @@
 <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/nivo_theme/default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+<style>
+#linkToChanche a, #linkToChanche a:hover, #linkToChanche a:active, #linkToChanche a:visited {
+	color:#FFFF33;
+	font-size:12px;
+	line-height:24px;
+}
+</style>
 <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 <script>
 
@@ -94,7 +103,7 @@ $(document).ready(
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[videos_menu]"><%= section.getName() %></a>
 							<% } else { %>
-								<a href="#"><%= section.getName() %></a>
+								<a href="<%=publicHomeBean.getExternalLink(publicHomeBean.getFirstNoteForSection(section))%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=section.getId()%>]"><%= section.getName() %></a>
 							<% } %>
 						<% } %>
 					</li>
@@ -102,6 +111,13 @@ $(document).ready(
 			</ul>
 		</div>
 	</div>
+</div>
+<div class="hide">
+	<% for (Map.Entry<Section, List<NoteValueObject>> sections : publicHomeBean.getSectionsNotes().entrySet()) { 
+		for (NoteValueObject nvo : sections.getValue().subList(1,sections.getValue().size())) { %>
+			<a href="<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=sections.getKey().getId()%>]"><%=nvo.getTitle() %></a>
+		<% }
+	} %>
 </div>
 <%@ include file="includes/homeBannerTop.jsp" %>
 <div id="BlockMain">
@@ -137,13 +153,6 @@ $(document).ready(
 </div>
 		
 <!-- Cambio de pais -->
-<style>
-#linkToChanche a, #linkToChanche a:hover, #linkToChanche a:active, #linkToChanche a:visited {
-	color:#FFFF33;
-	font-size:12px;
-	line-height:24px;
-}
-</style>
 <div id="changeCountryDiv" class="hide">
 	<% for (Country country : publicHomeBean.getAllCountries()) { %>
 		<div id="linkToChanche"><a href="./selectCountry.st?id=<%=country.getId() %>")"><%=country.getName()%></a></div>
@@ -151,12 +160,17 @@ $(document).ready(
 </div>
 	<!-- cargo el slider -->
 	<script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider({
+	  $(document).ready(function(){
+	   $('#slider').nivoSlider({
 			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
 		});
-    });
-	  $(document).ready(function(){
+		
+		/*$("a[id^='fcover']").prettyPhoto({
+			hideflash: true,
+	    	social_tools: false,
+	    	theme: 'dark_rounded'
+	    	});*/
+	  
 	    $("a[rel^='prettyPhoto']").prettyPhoto({
 	    	hideflash: true,
 	    	social_tools: false,
