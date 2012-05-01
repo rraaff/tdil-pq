@@ -203,17 +203,15 @@ public class PublicHomeBean  {
 		int index = 0;
 		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
 		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
-			// TODO hacer link
 			NoteValueObject nvo = frontCoverIter.next();
-			result.append("<a href=\"#\">").append(nvo.getTitle()).append("</a>\n");
+			result.append("<a href=").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append(" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
 			index = index + 1;
 		}
 		if (index < MAX_NOTES_FOR_FOOTER) {
 			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
 			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
-				// TODO hacer link
 				NoteValueObject nvo = lastNewsIter.next();
-				result.append("<a href=\"#\">").append(nvo.getTitle()).append("</a>\n");
+				result.append("<a href=").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append(" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
 				index = index + 1;
 			}
 		}
