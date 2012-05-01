@@ -155,7 +155,7 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	public static List<Country> getAllCountriesForRankingId(Integer sectionId) {
 		List<Country> result = new ArrayList<Country>();
 		for (RankingNoteCountry mi : getAllRankingNoteCountries()) {
-			if (mi.getIdCountry().equals(sectionId)) {
+			if (mi.getIdRankingNote().equals(sectionId)) {
 				result.add(getCountryWithId(mi.getIdCountry()));
 			}
 		}
@@ -203,7 +203,7 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 				RankingNoteCountryExample rankingNoteCountryExample = new RankingNoteCountryExample();
 				rankingNoteCountryExample.createCriteria().andIdCountryEqualTo(countrySelectionVO.getCountryId());
 				List<RankingNoteCountry> duplicated = DAOManager.getRankingNoteCountryDAO().selectRankingNoteCountryByExample(rankingNoteCountryExample);
-				if (!duplicated.isEmpty() && !duplicated.get(0).getId().equals(this.getId())) {
+				if (!duplicated.isEmpty() && !duplicated.get(0).getId().equals(countrySelectionVO.getOwnerId())) {
 					validationError.setFieldError(country_key, ValidationErrors.DUPLICATED);
 				}
 			}
@@ -232,14 +232,17 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 			if (this.mustBeSaved(countrySelectionVO)) {
 				RankingNoteCountry rankingNoteCountry = new RankingNoteCountry();
 				rankingNoteCountry.setId(countrySelectionVO.getOwnerId());
-				rankingNoteCountry.setDeleted(countrySelectionVO.isSelected() ? 0 : 1);
 				rankingNoteCountry.setIdCountry(countrySelectionVO.getCountryId());
 				rankingNoteCountry.setIdRankingNote(rankingId);
-				// TODO arreglar
-				if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
-					rankingNoteCountryDAO.updateRankingNoteCountryByPrimaryKeySelective(rankingNoteCountry);
+				rankingNoteCountry.setDeleted(0);
+				if (countrySelectionVO.isSelected()) {
+					if(countrySelectionVO.getOwnerId() != null && countrySelectionVO.getOwnerId() != 0) {
+						rankingNoteCountryDAO.updateRankingNoteCountryByPrimaryKeySelective(rankingNoteCountry);
+					} else {
+						rankingNoteCountryDAO.insertRankingNoteCountry(rankingNoteCountry);
+					}					
 				} else {
-					rankingNoteCountryDAO.insertRankingNoteCountry(rankingNoteCountry);
+					rankingNoteCountryDAO.deleteRankingNoteCountryByPrimaryKey(rankingNoteCountry.getId());
 				}
 			}
 		}
