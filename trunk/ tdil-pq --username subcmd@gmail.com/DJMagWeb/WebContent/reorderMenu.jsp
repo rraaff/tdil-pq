@@ -20,7 +20,7 @@
 	<h1>Reorder men&uacute;</h1>
 	<div id="conteinerScrollable" style="overflow:hidden;">
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%> </span>
-		<div style="height:30px;">Nombre pais: TODO</div>
+		<div style="height:30px;">Nombre pais: <bean:write name="ReorderMenuForm" property="countryName" /></div>
 		<h2>Secciones</h2><%=DJMagErrorFormatter.getErrorFrom(request, "MenuItem.position.err")%>
 		<table>
 			<tr>
