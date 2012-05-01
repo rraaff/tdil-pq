@@ -575,6 +575,13 @@ public class PublicHomeBean  {
 		}
 		return result;
 	}
+	
+	public List<NoteValueObject> getAgendaNotesLinks() {
+		List<NoteValueObject> result = new ArrayList<NoteValueObject>();
+		result.addAll(this.getAgendaNotes());
+		result.removeAll(this.getReducedAgenda());
+		return result;
+	}
 
 	public void setLastNotes(List<NoteValueObject> lastNotes) {
 		this.lastNotes = lastNotes;
