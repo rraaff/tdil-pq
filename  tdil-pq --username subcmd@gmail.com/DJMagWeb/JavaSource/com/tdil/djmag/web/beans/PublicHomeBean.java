@@ -14,7 +14,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.log4j.nt.NTEventLogAppender;
 
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FooterDAO;
@@ -95,7 +94,7 @@ public class PublicHomeBean  {
 	
 	public static final String PUBLIC_HOME_BEAN = "publicHomeBean";
 	private static final int REDUCED_RANKING_SIZE = 10;
-	private static final int MAX_AGENDA_NOTES_FOR_HOME = 5;
+	private static final int MAX_AGENDA_NOTES_FOR_HOME = 4;
 	private static final int MAX_LAST_NOTES_FOR_HOME = 3;
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
@@ -244,9 +243,19 @@ public class PublicHomeBean  {
 	
 	private String getSectionsReplacement() {
 		StringBuffer result = new StringBuffer();
-		// TODO , make link o algo asi
 		for (Section section : getSectionsForCountry()) {
-			result.append("<a href=\"#\">").append(section.getName()).append("</a>\n");
+			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
+				result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
+				result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[ranking_footer]\">").append(section.getName()).append("</a>\n");
+			} else {
+				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
+					result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
+					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[videos_footer]\">").append(section.getName()).append("</a>\n");
+				} else {
+					result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[sectionf_").append(section.getId()).append("]\">").append(section.getName()).append("</a>\n");
+				}
+			}
 		}
 		return result.toString();
 	}

@@ -116,6 +116,7 @@ $(document).ready(
 	<% for (Map.Entry<Section, List<NoteValueObject>> sections : publicHomeBean.getSectionsNotes().entrySet()) { 
 		for (NoteValueObject nvo : sections.getValue().subList(1,sections.getValue().size())) { %>
 			<a href="<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=sections.getKey().getId()%>]"><%=nvo.getTitle() %></a>
+			<a href="<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[sectionf_<%=sections.getKey().getId()%>]"><%=nvo.getTitle() %></a>
 		<% }
 	} %>
 </div>
