@@ -209,6 +209,9 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
 		FieldValidation.validateText(this.getHtmlContent(), htmlContent_key, ValidationErrors.TEXT_LENGTH, validationError);
 		FieldValidation.validateId(this.getCountryId(), country_key, validationError);
+		if (this.getFrontCover() == null) {
+			validationError.setFieldError(front_cover_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
 	}
 	
 	@Override
