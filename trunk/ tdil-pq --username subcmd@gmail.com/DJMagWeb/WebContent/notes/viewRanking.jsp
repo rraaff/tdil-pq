@@ -216,7 +216,12 @@ div {
 <body style="background:#000000; background-image:none;">
 <div id="rankingHeader">
 	<div id="rankingLogo"><img src="../../images/header-top100.jpg" alt="Top 100" width="232" height="87"></div>
-	<div id="social">insertar boton compartir FB y Twitter</div>
+	<div id="social">
+				<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(location.href)); return false;">
+				<img src="images/buttons/tw.gif" border="0"></a>
+			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
+				<img src="images/buttons/fb.gif" border="0"></a>
+	</div>
 </div>
 <div id="top100LB">
 	<% int positionIndex = 1;

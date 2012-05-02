@@ -179,6 +179,10 @@ function setAsTopVideo(divId) {
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
+				<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(location.href)); return false;">
+				<img src="images/buttons/tw.gif" border="0"></a>
+			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
+				<img src="images/buttons/fb.gif" border="0"></a>
 <div id="topvideo">
 	<%=(first != null) ? first.getHtmlcontent() : ""%>
 </div>
