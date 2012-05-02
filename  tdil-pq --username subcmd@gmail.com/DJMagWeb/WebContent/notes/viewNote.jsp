@@ -184,23 +184,9 @@ div {
 			<div id="next"></div>
 		</div-->
 		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
-			<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('<%= noteToShow.getTitle()%>' + ' ') + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/tw.gif" border="0"></a>
-			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/fb.gif" border="0"></a>
-					
-			<div style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" url="http://www.google.com" data-lang="en">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			<div style="float:left;"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('<%= noteToShow.getTitle()%>' + ' ') + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="59" height="20"></a>
 			</div>
-			<div id="fb-root" style="float:left;"></div>
-			<script>(function(d, s, id) {
-			  var js, fjs = d.getElementsByTagName(s)[0];
-			  if (d.getElementById(id)) return;
-			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
-			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-			<div class="fb-like" data-send="false" data-width="450" data-show-faces="true" style="float:left;"></div>
+			<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/shareFb.png" border="0"></a></div>
 		</div>
 		<!--div id="closeButton"></div-->
 	</div>
