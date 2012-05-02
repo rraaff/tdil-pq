@@ -59,6 +59,7 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 		this.objectId = 0;
 		this.countryId = 0;
 		this.bannerId = 0;
+		this.insertPoint = null;
 		this.resetSelectedInsertPoints();
 		this.resetSelectedBanners();
 		this.resetSelectedCountries();
