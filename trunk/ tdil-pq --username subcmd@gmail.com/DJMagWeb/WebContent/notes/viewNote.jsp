@@ -185,6 +185,8 @@ div {
 		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
 			<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('<%= noteToShow.getTitle()%>' + ' ') + encodeURIComponent(location.href)); return false;">
 				<img src="images/buttons/tw.gif" border="0"></a>
+			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
+				<img src="images/buttons/fb.gif" border="0"></a>
 					
 			<div style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" url="http://www.google.com" data-lang="en">Tweet</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
