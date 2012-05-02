@@ -176,6 +176,7 @@ $(document).ready(
 	    	hideflash: true,
 	    	social_tools: false,
 	    	theme: 'dark_rounded',
+			allow_resize: false,
 	    	markup: '<div class="pp_pic_holder"> \
 						<div class="ppt">&nbsp;</div> \
 						<div class="pp_top"> \
