@@ -39,6 +39,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	
 	private int objectId;
 	private String htmlContent;
+	private String title;
 	private String description;
 	private boolean frontcover;
 	private boolean popular;
@@ -50,6 +51,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
 	private static List<Country> allCountries = new ArrayList<Country>();
 	
+	private static String title_key = "Video.title";
 	private static String description_key = "Video.description";
 	private static String htmlContent_key = "Video.htmlContent";
 	private static String country_key = "Video.country";
@@ -61,6 +63,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 	public void reset() throws SQLException {
 		this.objectId = 0;
 		this.countryId = 0;
+		this.title = null;
 		this.description = null;
 		this.htmlContent = null;
 		this.frontcover = false;
@@ -155,6 +158,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 		Video video = videoDAO.selectVideoByPrimaryKey(id);
 		if (video != null) {
 			this.objectId = id;
+			this.title = video.getTitle();
 			this.description = video.getDescription();
 			this.htmlContent = video.getHtmlcontent();
 			this.frontcover = video.getFrontcover() == 1;
@@ -206,7 +210,8 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
+		FieldValidation.validateText(this.getTitle(), title_key, 250, validationError);
+		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
 		FieldValidation.validateText(this.getHtmlContent(), htmlContent_key, ValidationErrors.TEXT_LENGTH, validationError);
 		FieldValidation.validateId(this.getCountryId(), country_key, validationError);
 		if (this.getFrontCover() == null) {
@@ -252,6 +257,7 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	private void updateVideo(Video video) {
 		video.setIdCountry(this.getCountryId());
+		video.setTitle(this.getTitle());
 		video.setDescription(this.getDescription());
 		video.setHtmlcontent(this.getHtmlContent());
 		video.setFrontcover(this.isFrontcover() ? 1 : 0);
@@ -370,6 +376,14 @@ public class VideoForm extends TransactionalValidationForm implements ToggleDele
 
 	public void setFrontCoverFormFile(FormFile frontCoverFormFile) {
 		this.frontCoverFormFile = frontCoverFormFile;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

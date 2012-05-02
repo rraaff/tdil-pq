@@ -57,6 +57,10 @@
 					</div>
 				</div>
 				<div class="renglon width860 height50">
+					<div class="label width80">T&iacute;tulo</div>
+					<div class="label width700 height50"><html:textarea name="VideoForm" property="title" styleClass="width700 height50" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.title.err")%></div>
+				</div>
+				<div class="renglon width860 height50">
 					<div class="label width80">Descripci&oacute;n</div>
 					<div class="label width700 height50"><html:textarea name="VideoForm" property="description" styleClass="width700 height50" /><%=DJMagErrorFormatter.getErrorFrom(request, "Video.description.err")%></div>
 				</div>
@@ -82,7 +86,7 @@
 			<table>
 				<tr>
 					<td class="headerTablas">Pa&iacute;s</td>
-					<td class="headerTablas">Descripci&oacute;n</td>
+					<td class="headerTablas">T&iacute;tulo</td>
 					<td class="headerTablas" width="60">Acciones</td>
 				</tr>
 				<logic:iterate name="VideoForm" property="allVideos"
@@ -99,7 +103,7 @@
 							<%=((com.tdil.ibatis.PersistentObject) iterVideo).getDeleted() == 1 ? "class=\"notActive\""
 								: ""%>
 							align="left">
-								<bean:write name="iterVideo" property="description" />
+								<bean:write name="iterVideo" property="title" />
 						</td>
 						<td align="center"><html:link action="/editVideo" paramName="iterVideo" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 							<html:link action="/toggleDeletedVideo" paramName="iterVideo"
