@@ -404,7 +404,7 @@
   
   <!-- Custom queries -->
   <select id="selectLastActiveVideosForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="ResultMapWithBLOBs">
-    select id, description, id_country, frontCover, popular, deleted, htmlContent, frontCoverExt, frontCover_id
+    select id, description, title, id_country, frontCover, popular, deleted, htmlContent, frontCoverExt, frontCover_id
     from VIDEO video
 	where video.deleted = 0
 	and video.id_country = #id:INTEGER#
