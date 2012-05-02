@@ -38,52 +38,12 @@ function setAsTopVideo(divId) {
 	height:700px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:50px;
-	border:solid 4px #545454;
-	/* redondeado */	
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
 }
 #navBar {
 	width:934px;
-	height:28px;
+	height:18px;
 	overflow:hidden;
 	padding:13px;
-}
-#navBar #prevNext {
-	float:left;
-	width:67px;
-	height:28px;
-}
-#navBar #prevNext #prev {
-	background-image:url(images/buttons/navBar_prev.gif);
-	width:32px;
-	height:28px;
-	float:left;
-}
-#navBar #prevNext #prev:hover {
-	background-image:url(images/buttons/navBar_prev_over.gif);
-	cursor:hand;
-}
-#navBar #prevNext #next {
-	background-image:url(images/buttons/navBar_next.gif);
-	width:35px;
-	height:28px;
-	float:right;
-}
-#navBar #prevNext #next:hover {
-	background-image:url(images/buttons/navBar_next_over.gif);
-	cursor:hand;
-}
-#navBar #closeButton {
-	float:right;
-	background-image:url(images/buttons/navBar_close.gif);
-	width:37px;
-	height:28px;
-}
-#navBar #closeButton:hover {
-	background-image:url(images/buttons/navBar_close_over.gif);
 }
 #fakeLiveboxWindow #bannerHeader {
 	width:728px;
@@ -92,12 +52,12 @@ function setAsTopVideo(divId) {
 	margin-right:auto;
 	padding:0;
 }
-#fakeLiveboxWindow #left {
+#fakeLiveboxWindow #topvideo {
 	float:left;
 	width:670px;
 	height:500px;
 }
-#fakeLiveboxWindow #left #note {
+#fakeLiveboxWindow #topvideo #note {
 	background-color:#FFFFFF;
 	width:606px;
 	height:446px;
@@ -105,14 +65,14 @@ function setAsTopVideo(divId) {
 	padding:12px;
 	overflow:scroll;
 }
-#fakeLiveboxWindow #left #note .date {
+#fakeLiveboxWindow #topvideo #note .date {
 	color:#dcdcdc;
 	font-weight:700;
 	background-color:#525252;
 	padding:4px;
 	margin-right:auto;
 }
-#fakeLiveboxWindow #left #note h1 {
+#fakeLiveboxWindow #topvideo #note h1 {
 	font-size:18px;
 	color:#e25237;
 	line-height: normal;
@@ -122,21 +82,21 @@ function setAsTopVideo(divId) {
 	margin-top:18px;
 	margin-bottom:16px;
 }
-#fakeLiveboxWindow #left #note #bajada {
+#fakeLiveboxWindow #topvideo #note #bajada {
 	color:#000000;
 	font-size: 14px;
 	line-height: normal;
 	font-weight: bold;
 	margin-bottom:20px;
 }
-#fakeLiveboxWindow #left #note #images {
+#fakeLiveboxWindow #topvideo #note #images {
 	border:solid 7px #525252;
 	width:585px;
 	height:303px;
 	margin-left:auto;
 	margin-right:auto;
 }
-#fakeLiveboxWindow #left #note #fullText {
+#fakeLiveboxWindow #topvideo #note #fullText {
 	font-size: 13px;
 	line-height: normal;
 	font-weight: 700;
@@ -147,51 +107,36 @@ function setAsTopVideo(divId) {
 	float:right;
 	width:280px;
 	height:500px;
+	overflow:auto;
 }
-#fakeLiveboxWindow #right #subContent {
-	width:252px;
-	height:200px;
+#fakeLiveboxWindow #right #thmbnVideo {
+	width:200px;
+	height:144px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-bottom:20px;
-	margin-top:20px;
-}
-#fakeLiveboxWindow #right #rightBanner {
-	width:252px;
-	height:252px;
-	margin-left:auto;
-	margin-right:auto;
-}
-#fakeLiveboxWindow #social {
-	width:920px;
-	height:20px;
-	overflow:hidden;
-	margin-left:auto;
-	margin-right:auto;
-}
-#fakeLiveboxWindow #labels {
-	width:920px;
-	height:20px;
-	overflow:hidden;
-	margin-left:auto;
-	margin-right:auto;
+	margin-top:5px;
 }
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
-				<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/tw.gif" border="0"></a>
-			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/fb.gif" border="0"></a>
-<div id="topvideo">
-	<%=(first != null) ? first.getHtmlcontent() : ""%>
-</div>
-<div id="right">
-	<% for (Video video : allVideos) { %>
-		<div id="thmbnVideo" style="margin-top:5px;"><img onclick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
-			<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+<div id="fakeLiveboxWindow">
+	<div id="navBar">
+		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
+			<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a>
+			</div>
+			<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
 		</div>
-	<% } %>
+	</div>
+	<div id="topvideo">
+		<%=(first != null) ? first.getHtmlcontent() : ""%>
+	</div>
+	<div id="right">
+		<% for (Video video : allVideos) { %>
+			<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
+				<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+			</div>
+		<% } %>
+	</div>
 </div>
 </body>
 </html>

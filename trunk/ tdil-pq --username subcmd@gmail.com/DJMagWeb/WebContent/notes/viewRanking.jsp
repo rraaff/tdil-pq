@@ -217,10 +217,11 @@ div {
 <div id="rankingHeader">
 	<div id="rankingLogo"><img src="../../images/header-top100.jpg" alt="Top 100" width="232" height="87"></div>
 	<div id="social">
-				<a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/tw.gif" border="0"></a>
-			<a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;">
-				<img src="images/buttons/fb.gif" border="0"></a>
+		<div style="width:150px; margin-top:50px; float:left; overflow:hidden;">
+			<div style="float:right; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
+						<div style="float:right;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a>
+			</div>
+	</div>
 	</div>
 </div>
 <div id="top100LB">
