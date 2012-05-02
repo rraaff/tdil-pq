@@ -63,6 +63,9 @@ public class PublicHomeBean  {
 	private Country country;
 	private List<Section> sectionsForCountry;
 	
+	private Section rankingSection;
+	private Section videoSection;
+	
 	private RankingNote ranking;
 	private RankingPositions rankingPositions;
 	
@@ -337,6 +340,14 @@ public class PublicHomeBean  {
 								getSectionsForCountry().remove(section);
 							} else {
 								sectionsGalleries.put(section, notesForSection);
+							}
+						} else {
+							if (SectionType.RANKING_100.equals(section.getSectiontype())) {
+								setRankingSection(section);
+							} else {
+								if (SectionType.VIDEOS.equals(section.getSectiontype())) {
+									setVideoSection(section);
+								}	
 							}
 						}
 					}
@@ -747,5 +758,21 @@ public class PublicHomeBean  {
 
 	public void setSectionsNotes(Map<Section, List<NoteValueObject>> sectionsNotes) {
 		this.sectionsNotes = sectionsNotes;
+	}
+
+	public Section getRankingSection() {
+		return rankingSection;
+	}
+
+	public void setRankingSection(Section rankingSection) {
+		this.rankingSection = rankingSection;
+	}
+
+	public Section getVideoSection() {
+		return videoSection;
+	}
+
+	public void setVideoSection(Section videoSection) {
+		this.videoSection = videoSection;
 	}
 }
