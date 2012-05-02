@@ -111,6 +111,7 @@ public class FooterForm extends TransactionalValidationForm implements ToggleDel
 		Footer video = videoDAO.selectFooterByPrimaryKey(id);
 		if (video != null) {
 			this.objectId = id;
+			this.countryId = video.getIdCountry();
 			this.htmlContent = video.getHtmlcontent();
 		} 
 		// reseteo los paises
