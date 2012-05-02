@@ -244,6 +244,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE VIDEO (
   `id` INT NOT NULL AUTO_INCREMENT ,
+  `title` VARCHAR(250) NOT NULL ,
   `description` VARCHAR(4000) NOT NULL ,
   `id_country` INT NOT NULL,
   `htmlContent` TEXT NOT NULL ,
