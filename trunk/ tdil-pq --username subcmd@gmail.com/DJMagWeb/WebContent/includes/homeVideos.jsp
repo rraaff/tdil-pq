@@ -7,11 +7,13 @@
 			<%=top.getHtmlcontent() %>
 		</div>
 		<div id="right">
-			<% for (Video video : publicHomeBean.getLastVideos()) { %>
-				<div id="thmbnVideo" style="margin-top:5px;"><img onclick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="./download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
+			<% 	int videoIndex = 0;
+				for (Video video : publicHomeBean.getLastVideos()) { %>
+				<div id="thmbnVideo" <%= videoIndex > 0 ? "style=\"margin-top:5px;\"" : ""%>><img onclick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="./download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
 					<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
 				</div>
-			<% } %>
+			<% 	videoIndex = videoIndex + 1;
+				} %>
 		</div>
 	<% } else { %>
 		<div>No hay videos</div>
