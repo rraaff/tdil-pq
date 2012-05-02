@@ -3,7 +3,7 @@
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
 	<property name="root.user" value="root" />
-	<property name="root.pass" value="root" />
+	<property name="root.pass" value="" />
 
 	<property name="db.url" value="jdbc:mysql://localhost:3306/MILKA" />
 	<property name="db.user" value="MILKA_USER" />
