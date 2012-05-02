@@ -78,6 +78,7 @@ $(document).ready(
 		
 		function postSubscrition(jsonData) {
 			if (jsonData.result == 'OK') {
+				$('#email').attr('value', '');
 				$.jGrowl('Gracias por subscribirte');
 			} else {
 				$.jGrowl('Ha ocurrido un error, intentelo nuevamente');
