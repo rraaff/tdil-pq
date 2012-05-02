@@ -28,6 +28,21 @@
 					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Section.name.err")%></div>
 					<div class="label width500 height25 comment">Es el nombre que tendrá dentro del sistema. Luego, cada país deberá tener un nombre específico para la misma sección. En caso de no completarlo para cada país, automáticamente tomará el nombre por refecto.</div>
 				</div>
+				<div class="renglon height40">
+					<logic:equal name="SectionForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="save" />
+						</html:submit>
+					</logic:equal>
+					<logic:notEqual name="SectionForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="modify" />
+						</html:submit>
+					</logic:notEqual>
+					<html:submit property="operation">
+						<bean:message key="reset" />
+					</html:submit>
+				</div>
 				<div id="fiftyfiftyLeft">
 					<h2>Secciones</h2>
 					<div class="renglon width450 height300" style="overflow:auto;">
@@ -87,21 +102,6 @@
 							</logic:iterate>
 						</table>
 					</div>
-				</div>
-				<div class="renglon height40">
-					<logic:equal name="SectionForm" property="objectId" value="0">
-						<html:submit property="operation">
-							<bean:message key="save" />
-						</html:submit>
-					</logic:equal>
-					<logic:notEqual name="SectionForm" property="objectId" value="0">
-						<html:submit property="operation">
-							<bean:message key="modify" />
-						</html:submit>
-					</logic:notEqual>
-					<html:submit property="operation">
-						<bean:message key="reset" />
-					</html:submit>
 				</div>
 		</html:form>
 	</div>

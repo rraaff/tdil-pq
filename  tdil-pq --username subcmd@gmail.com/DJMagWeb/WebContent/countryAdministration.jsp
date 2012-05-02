@@ -29,19 +29,21 @@
 					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Country.iso_code_2.err")%></div>
 					<div class="label width150"><span class="comment">Ejemplo: AR (para Argentina)</span></div>
 				</div>
-				<logic:equal name="CountryForm" property="objectId" value="0">
+				<div class="renglon width700 height50">
+					<logic:equal name="CountryForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="save" />
+						</html:submit>
+					</logic:equal>
+					<logic:notEqual name="CountryForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="modify" />
+						</html:submit>
+					</logic:notEqual>
 					<html:submit property="operation">
-						<bean:message key="save" />
+						<bean:message key="reset" />
 					</html:submit>
-				</logic:equal>
-				<logic:notEqual name="CountryForm" property="objectId" value="0">
-					<html:submit property="operation">
-						<bean:message key="modify" />
-					</html:submit>
-				</logic:notEqual>
-				<html:submit property="operation">
-					<bean:message key="reset" />
-				</html:submit>
+				</div>
 			</html:form>
 			<div class="renglon width920 height300" style="overflow:auto;">
 				<table>
