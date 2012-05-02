@@ -36,11 +36,6 @@ div {
 	height:700px;
 	margin-left:auto;
 	margin-right:auto;
-/*	margin-top:50px;
-	border:solid 4px #545454;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;*/
 }
 #navBar {
 	width:934px;
@@ -182,8 +177,6 @@ div {
 			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 		<% } %>
 	</div>
-	<div id="social"></div>
-	<!-- fin estructura de la interfase -->
 </div>
 <!-- cargo el slider -->
 	<script type="text/javascript">
