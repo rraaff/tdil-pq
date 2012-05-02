@@ -15,11 +15,20 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 } else {
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	List<Video> allVideos = publicHomeBean.getAllVideosForCountry();
+	Video first = null;
+	if (!allVideos.isEmpty()) {
+		first = allVideos.get(0);
+	}
 %>
 <html>
 <head>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
-<script src='../../../js/jquery-1.7.min.js' type='text/javascript'></script>
+<script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
+<script>
+function setAsTopVideo(divId) {
+		document.getElementById('topvideo').innerHTML = document.getElementById(divId).innerHTML;
+	}
+</script>
 <style>
 /*div {
 	border:dotted 1px #00FF00;
@@ -170,12 +179,16 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
-<% 
-for (Video video : allVideos) { %>
-	<img src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" height="50" width="70">
-	<%=video.getDescription() %>
-	<%=video.getHtmlcontent() %><br><br>
-<% } %>
+<div id="topvideo">
+	<%=(first != null) ? first.getHtmlcontent() : ""%>
+</div>
+<div id="right">
+	<% for (Video video : allVideos) { %>
+		<div id="thmbnVideo" style="margin-top:5px;"><img onclick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
+			<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+		</div>
+	<% } %>
+</div>
 </body>
 </html>
 <% 
