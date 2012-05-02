@@ -184,7 +184,7 @@ div {
 			<div id="next"></div>
 		</div-->
 		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
-			<div style="float:left;"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('<%= noteToShow.getTitle()%>' + ' ') + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="59" height="20"></a>
+			<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="59" height="20"></a>
 			</div>
 			<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/shareFb.png" border="0"></a></div>
 		</div>
