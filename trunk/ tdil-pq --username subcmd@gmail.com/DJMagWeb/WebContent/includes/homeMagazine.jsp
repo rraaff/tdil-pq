@@ -15,6 +15,6 @@
 		</div>
 	</div>
 <% } else { %>
-	No tiene magazine
+	
 <% } %>
 </div>

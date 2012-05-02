@@ -39,7 +39,8 @@
 					</div>
 					<div class="label width50">HTML</div>
 					<div class="label width500 height120">
-						<html:textarea name="FacebookFeedForm" property="htmlContent" styleClass="width500 height120" /><%=DJMagErrorFormatter.getErrorFrom(request, "FacebookFeed.htmlContent.err")%></div>
+						<html:textarea name="FacebookFeedForm" property="htmlContent" styleClass="width500 height120" /><br/><span class="comment">w:309px x h:515px</span></div>
+					<div class="label width50 height120"><%=DJMagErrorFormatter.getErrorFrom(request, "FacebookFeed.htmlContent.err")%></div>
 				</div>
 				<logic:equal name="FacebookFeedForm" property="objectId" value="0">
 					<html:submit property="operation">
