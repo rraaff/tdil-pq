@@ -19,53 +19,49 @@ ul.jbar {
 	letter-spacing: 0.02em;
 	clear: both;
 }
-
 ul.jbar * {
   outline: 0;
 }
-
 ul.jbar a {
   font-size: 12px;
   line-height: 16px;
 }
-
 ul.jbar li {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  text-shadow: 1px 1px 2px #292929;
-  display: inline-block;
-  float: left;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	text-shadow: 1px 1px 2px #292929;
+	display: inline-block;
+	float: left;
 }
-
 ul.jbar li a {
-  color: #cecece !important;
-  text-decoration: none;
-  padding: 3px 5px;
-  background-color: #3D3D3D !important;
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#656464), to(#3D3D3D));
-  background: -moz-linear-gradient(center top, #656464, #3D3D3D) repeat scroll 0 0 transparent;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#656464', endColorstr='#3D3D3D', GradientType=0);
-  -webkit-background-clip: padding-box;
-  text-shadow: 1px 1px 2px #292929;
-  display: inline-block;
-  line-height: 16px;
-  height: 16px;
-  vertical-align: middle;
-  border-left: 1px solid #7b7b7b;
-  border-right: 1px solid #363636;
+	/* color: #cecece !important;*/
+	text-decoration: none;
+	font-weight:normal;
+	padding: 3px 5px;
+	/* background-color: #3D3D3D !important;*/
+	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#656464), to(#3D3D3D));
+	background: -moz-linear-gradient(center top, #656464, #3D3D3D) repeat scroll 0 0 transparent;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#656464', endColorstr='#3D3D3D', GradientType=0);
+	-webkit-background-clip: padding-box;*/
+	/*text-shadow: 1px 1px 2px #292929;*/
+	text-shadow:none;
+	display: inline-block;
+	line-height: 16px;
+	height: 16px;
+	vertical-align: middle;
+	/*  border-left: 1px solid #7b7b7b;
+	border-right: 1px solid #363636;*/
 }
-
 ul.jbar li a.first {
-  -webkit-border-top-left-radius: 3px;
+ /* -webkit-border-top-left-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;
   -moz-border-radius-topleft: 3px;
   -moz-border-radius-bottomleft: 3px;
   border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;*/
   border-left: none;
 }
-
 ul.jbar li a.last,
 ul.jbar li a.last span.trigger {
   -webkit-border-top-right-radius: 3px;
@@ -76,35 +72,29 @@ ul.jbar li a.last span.trigger {
   border-bottom-right-radius: 3px;
   border-right: none;
 }
-
 ul.jbar li .triggered {
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3D3D3D), to(#656464));
+ /* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3D3D3D), to(#656464));
   background: -moz-linear-gradient(center top, #3D3D3D, #656464) repeat scroll 0 0 transparent;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3D3D3D', endColorstr='#656464', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3D3D3D', endColorstr='#656464', GradientType=0);*/
   color: #eee;
   border-left-color: transparent;
 }
-
 ul.jbar li a.has_down_arrow {
   padding-right: 16px;
 }
-
 ul.jbar li a.has_lonely_down_arrow {
   padding-right: 12px;
 }
-
 ul.jbar li a.has_trigger_down_arrow span.link_text {
   padding-right: 5px;
   border-right: 1px dotted #ccc;
 }
-
 ul.jbar li a.has_no_down_arrow:hover,
 ul.jbar li a.has_lonely_down_arrow:hover,
 ul.jbar li a.trigger:hover,
 ul.jbar li .hovered {
-  color: #fff !important;
+  color: #000 !important;
 }
-
 ul.jbar span.down_arrow {
   font-size: 9px;
   width: 16px;
@@ -115,17 +105,14 @@ ul.jbar span.down_arrow {
   right: 0;
   cursor: pointer;
 }
-
 ul.jbar span.down_arrow em {
   text-align: left;
   display: block;
   padding: 0.37em 0 0 0.36em;
 }
-
 ul.jbar.jbar_browser_IE6 a.has_lonely_down_arrow span.down_arrow em {
   padding-left: 0.4em;
 }
-
 ul.jbar div.submenu_container {
   display: none;
   position: absolute;
@@ -136,8 +123,6 @@ ul.jbar div.submenu_container {
   text-align: left;
   padding-top: 12px;
 }
-
-
 ul.jbar span.up_arrow {
   position: absolute;
   font-size: 13px !important;
@@ -146,7 +131,6 @@ ul.jbar span.up_arrow {
   text-shadow: 0px -1px 1px #3D3D3D;
   display: block;
 }
-
 ul.jbar ul {
   border: 3px solid #3D3D3D;
   -moz-border-radius: 3px; 
@@ -160,7 +144,6 @@ ul.jbar ul {
   list-style-type: none;
   display: none;
 }
-
 ul.jbar ul li {
   margin: 0;
   padding: 0;
@@ -170,7 +153,6 @@ ul.jbar ul li {
   overflow: hidden;
   width: 100%;
 }
-
 ul.jbar ul li a {
   display: block;
   overflow: hidden;
@@ -189,14 +171,12 @@ ul.jbar ul li a {
   border-left: none;
   border-right: none;
 }
-
 ul.jbar ul li a:hover {
   background-color: #fff !important;
   background-image: none;
   color: #333 !important;
   text-shadow: none;
 }
-
 div.jbar_IE_zIndex_fix {
   position: relative;
   display: inline;
