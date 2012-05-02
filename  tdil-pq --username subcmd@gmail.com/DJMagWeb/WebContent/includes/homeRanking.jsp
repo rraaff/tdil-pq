@@ -1,7 +1,4 @@
 <% if (publicHomeBean.hasRanking()) { %>
-<!-- <div id="ranking" style="border: 1px Solid Black;">
-Title< %= publicHomeBean.getRanking().getDescription()%>
-<table-->
 	<div id="top100Home">
 		<% int positionIndex = 1;
 		for (String position : publicHomeBean.getReducedRanking()) { %>

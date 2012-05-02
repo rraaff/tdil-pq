@@ -34,16 +34,15 @@ function setAsTopVideo(divId) {
 	border:dotted 1px #00FF00;
 }*/
 #fakeLiveboxWindow {
-	width:960px;
+	width:920px;
 	height:700px;
 	margin-left:auto;
 	margin-right:auto;
 }
-#navBar {
-	width:934px;
-	height:18px;
+#fakeLiveboxWindow #social {
+	width:920px;
+	height:30px;
 	overflow:hidden;
-	padding:13px;
 }
 #fakeLiveboxWindow #bannerHeader {
 	width:728px;
@@ -52,89 +51,140 @@ function setAsTopVideo(divId) {
 	margin-right:auto;
 	padding:0;
 }
-#fakeLiveboxWindow #topvideo {
+#fakeLiveboxWindow #left {
 	float:left;
-	width:670px;
-	height:500px;
-}
-#fakeLiveboxWindow #topvideo #note {
-	background-color:#FFFFFF;
-	width:606px;
-	height:446px;
+	width:570px;
+	height:530px;
 	margin:20px;
 	padding:12px;
-	overflow:scroll;
+	background-color:#FFFFFF;
 }
-#fakeLiveboxWindow #topvideo #note .date {
-	color:#dcdcdc;
-	font-weight:700;
-	background-color:#525252;
-	padding:4px;
-	margin-right:auto;
-}
-#fakeLiveboxWindow #topvideo #note h1 {
+#fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
 	color:#e25237;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
-	margin-top:18px;
 	margin-bottom:16px;
 }
-#fakeLiveboxWindow #topvideo #note #bajada {
-	color:#000000;
-	font-size: 14px;
-	line-height: normal;
-	font-weight: bold;
-	margin-bottom:20px;
+#topvideo {
+	width:425px;
+	height:297px;
+	margin-top: 10px;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
 }
-#fakeLiveboxWindow #topvideo #note #images {
-	border:solid 7px #525252;
-	width:585px;
-	height:303px;
-	margin-left:auto;
-	margin-right:auto;
+#fakeLiveboxWindow #left #note #videoList {
+	font-family: Arial, Helvetica, sans-serif;
+	width:570px;
+	height:180px;
+	padding:0;
+	overflow:auto;
 }
-#fakeLiveboxWindow #topvideo #note #fullText {
+#fakeLiveboxWindow #left #note #videoList #renglonVideo {
+	width:550px;
+	height:97px;
+	border-bottom:solid 1px #cfcfcf;
+}
+#fakeLiveboxWindow #left #note #videoList #renglonVideo #thmbnVideo {
+	width:78px;
+	height:78px;
+	background-image:url(../../images/thmbn_default.jpg);
+	border:solid 1px #5d5d5d;
+	margin:8 0 0 0px;
+	float: left;
+}
+#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked {
 	font-size: 13px;
-	line-height: normal;
-	font-weight: 700;
-	color: #333333;
-	margin-top:20px;
+	line-height: 25px;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	float: left;
+	width: 428px;
+	margin-top:8px;
+	margin-left:10px;
+	overflow: hidden;
+}
+#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked .title {
+	color:#e25237;
+	font-size:13px;
+	font-weight:bold;
+	width: 420px;
+	float: left;
+}
+#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked .description {
+	color:#000;
+	font-size:11px;
+	line-height:18px;
+	font-weight:bold;
+	width: 420px;
+	height:55px;
+	overflow:hidden;
+	float: left;
 }
 #fakeLiveboxWindow #right {
 	float:right;
 	width:280px;
-	height:500px;
-	overflow:auto;
+	height:550px;
+	overflow:hidden;
 }
-#fakeLiveboxWindow #right #thmbnVideo {
-	width:200px;
-	height:144px;
+#fakeLiveboxWindow #right #subContent {
+	width:252px;
+	height:252px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:5px;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+#fakeLiveboxWindow #right #rightBanner {
+	width:252px;
+	height:252px;
+	margin-left:auto;
+	margin-right:auto;
 }
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
 <div id="fakeLiveboxWindow">
-	<div id="navBar">
-		<div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
+	<div id="social">
+		<div style="width:135; overflow:hidden;">
 			<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a>
 			</div>
 			<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
 		</div>
 	</div>
-	<div id="topvideo">
-		<%=(first != null) ? first.getHtmlcontent() : ""%>
+	<% if (publicHomeBean.hasNoteTopBanner()) {%>
+		<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
+	<% } %>
+	<div id="left">
+		<div id="note">
+			<h1><%=publicHomeBean.getVideoSection().getName() %></h1>
+			<div id="topvideo">
+				<%=(first != null) ? first.getHtmlcontent() : ""%>
+			</div>
+			<div id="videoList">
+				<% for (Video video : allVideos) { %>
+					<div id="renglonVideo">
+						<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
+						<div id="ranked">
+							<span class="title"><%=video.getTitle() %></span>
+							<span class="description">aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción</span>
+							<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
 	</div>
 	<div id="right">
-		<% for (Video video : allVideos) { %>
-			<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="200" height="144">
-				<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
-			</div>
+		<% if (publicHomeBean.hasNoteRightBanner()) {%>
+			<div id="subContent"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+		<% } %>
+		<% if (publicHomeBean.hasNoteRightBanner()) {%>
+			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 		<% } %>
 	</div>
 </div>
