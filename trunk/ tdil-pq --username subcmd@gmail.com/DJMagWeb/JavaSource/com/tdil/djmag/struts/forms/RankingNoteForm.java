@@ -125,6 +125,7 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	
 	@Override
 	public void initWith(int id) throws SQLException {
+		
 		RankingNoteDAO rankingDAO = DAOManager.getRankingNoteDAO();
 		RankingNote ranking = rankingDAO.selectRankingNoteByPrimaryKey(id);
 		if (ranking != null) {

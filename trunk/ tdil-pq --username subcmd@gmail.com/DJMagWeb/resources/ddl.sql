@@ -298,20 +298,3 @@ ENGINE = InnoDB;
 INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
 INSERT INTO SECTION (name, sectionType, deleted) VALUES('RANKING_100','RANKING_100', 0);
 INSERT INTO SECTION (name, sectionType, deleted) VALUES('VIDEOS','VIDEOS', 0);
-
-INSERT INTO COUNTRY(name, iso_code_2, deleted) VALUES('Argentina', 'AR', 0);
-INSERT INTO COUNTRY(name, iso_code_2, deleted) VALUES('Colombia', 'CO', 0);
-INSERT INTO SECTION(name, sectionType, deleted) VALUES('MUSIC', 'NORMAL', 0);
-INSERT INTO MENUITEM(id_country,id_section, name,position,deleted)
-SELECT c.id, m.id, m.name, 0,0
-FROM COUNTRY c, SECTION m
-where c.iso_code_2 = 'AR'
-and m.name = 'MUSIC';
-
-INSERT INTO SECTION(name, sectionType, deleted) VALUES('PHOTO', 'NORMAL', 0);
-INSERT INTO MENUITEM(id_country,id_section, name,position,deleted)
-SELECT c.id, m.id, m.name, 0,0
-FROM COUNTRY c, SECTION m
-where c.iso_code_2 = 'AR'
-and m.name = 'PHOTO';
-COMMIT;

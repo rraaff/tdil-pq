@@ -68,6 +68,7 @@
 								<td><html:checkbox name="selectedCountry" property="selected" indexed="true" /></td>  
 								<td><bean:write name="selectedCountry" property="countryName" /></td>
 							</tr>
+							
 						</logic:iterate>
 					</table>
 				</div>

@@ -26,10 +26,20 @@
 			<transaction src="ddl.sql" />
 		</sql>
 	</target>
+	
+	<target name="dump-database">  
+	    <exec executable="mysqldump" output="database-dump.sql">  
+	        <arg value="--user=root" />  
+	        <arg value="--password=root" />  
+	        <arg value="--host=localhost" />  
+	        <arg value="--port=3306" />  
+	        <arg value="DJMAG" />  
+	    </exec>  
+	</target>
 
 	<target name="makeWar">
-		<delete file="./DJMAG_WEB.war"></delete>
-		<war destfile="./DJMAG_WEB.war" basedir="../../DJMagWeb/WebContent" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
+		<delete file="./DJMAG/DJMAG_WEB.war"></delete>
+		<war destfile="./DJMAG/DJMAG_WEB.war" basedir="../../DJMagWeb/WebContent" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
 			<classes dir="../../JavaBase/bin"/>
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar"/>
@@ -44,6 +54,16 @@
 		</tstamp>
 		<zip destfile="/home/mgodoy/Simon_WEB_${hora}.zip" basedir="/home/mgodoy/" includes="Simon_WEB/**"></zip>
 		<delete dir="/home/mgodoy/Simon_WEB"></delete-->
+	</target>
+	
+	<target name="makeEntregable">
+		<delete dir="DJMAG" failonerror="false"></delete>
+		<mkdir dir="DJMAG"/>
+		<antcall target="makeWar"></antcall>
+    	<copy todir="DJMAG" file="Instrucciones.txt"></copy>
+    	<copy todir="DJMAG" file="database.sql"></copy>
+    	<copy todir="DJMAG" file="ddl.sql"></copy>
+		<copy todir="DJMAG" file="DJMAG_WEB.xml"></copy>
 	</target>
 	
 </project>
