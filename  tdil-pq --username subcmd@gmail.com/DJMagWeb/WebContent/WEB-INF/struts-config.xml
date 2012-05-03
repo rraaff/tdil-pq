@@ -358,7 +358,7 @@
    <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
   </action>
   
-  
+  <action path="/ajaxUpload" scope="request" type="com.tdil.djmag.struts.action.AjaxFileUploadAction"/>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>

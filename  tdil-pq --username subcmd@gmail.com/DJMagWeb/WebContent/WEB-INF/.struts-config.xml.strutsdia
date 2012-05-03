@@ -623,9 +623,6 @@
   <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedFooter.do"
    SUBTYPE="confirmed" TARGET="action62" TITLE="/toggleDeletedFooter.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link3" PATH="/resetFooter.do"
-   SUBTYPE="confirmed" TARGET="action63" TITLE="/resetFooter.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveFooter" NAME="action60" PATH="/saveFooter"
   SHAPE="32,11825,0,0" TITLE="FooterForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -746,4 +743,6 @@
    PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ajaxUpload" NAME="action75" PATH="/ajaxUpload"
+  SHAPE="32,13585,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
