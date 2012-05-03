@@ -25,6 +25,11 @@ CREATE TABLE `FBUSER` (
   `fbname` VARCHAR(255) NULL ,
   `fbusername` VARCHAR(250) NULL ,
   `fbgender` VARCHAR(100) NULL ,
+  `hascontactdata` INT NOT NULL ,
+  `firstname` VARCHAR(4000) NULL ,
+  `lastname` VARCHAR(4000) NULL ,
+  `address` VARCHAR(4000) NULL ,
+  `phone` VARCHAR(50) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fbidasc` (`fbid` ASC) )
 ENGINE = MYISAM;

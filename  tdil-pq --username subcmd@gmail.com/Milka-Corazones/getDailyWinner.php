@@ -12,7 +12,7 @@ mysql_select_db(DB_NAME,$connection);
 
 $participationID = quote_smart($participationID, $connection);
 
-$query = "SELECT fbid, fbname, fbusername
+$query = "SELECT fbid, fbname, fbusername, firstname, lastname, address, phone
          FROM PARTICIPATION PART, FBUSER US WHERE PART.fbuserID = US.id AND PART.id = $participationID";
 
 $result_tickets = mysql_query($query);
@@ -25,6 +25,10 @@ mysql_close($connection);
 fbid: <?php echo $ticket['fbid']?><br>
 fbname: <?php echo $ticket['fbname']?><br>
 fbusername: <?php echo $ticket['fbusername']?><br>
+Nombre: <?php echo $ticket['firstname']?><br>
+Apellido: <?php echo $ticket['lastname']?><br>
+Direccion: <?php echo $ticket['address']?><br>
+Telefono: <?php echo $ticket['phone']?><br>
 </div>
 <?php 
 } else {

@@ -95,6 +95,7 @@ $(document).ready(
 <?php
 	$today = strtotime(date('d.m.y', time()));
 	while ($iw = mysql_fetch_array($res)){
+		$pdate = strtotime(date('d.m.y', $iw['prizeDateUnix']));
 ?>
 	<tr>
 		<td><?php echo $iw['id'] ?></td>
@@ -104,7 +105,7 @@ $(document).ready(
 		<td><?php echo $iw['ycoord'] ?></td>
 		<td><?php 
 			if (is_null($iw['participationID'])) {
-				if ($iw['prizeDateUnix'] >= $today) {
+				if ($pdate >= $today) {
      				echo 'Pendiente';
 				} else {
 				    echo 'Vencido';
@@ -124,7 +125,7 @@ $(document).ready(
 		?></td>
 		<td><?php 
 			if (is_null($iw['participationID'])) {
-				if ($iw['prizeDateUnix'] > $today) {
+				if ($pdate > $today) {
      				?>
      				<a href="doDeleteDailyPrize.php?id=<?php echo $iw['id'];?>">
 						Borrar 

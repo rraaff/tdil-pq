@@ -56,7 +56,7 @@ $output = array(
 		"iTotalDisplayRecords" => $iTotal,
 		"aaData" => array()
 );
-$aColumns = array( 'fbid', 'fbname', 'fbusername', 'fbgender', 'participations', 'wins');
+$aColumns = array( 'fbid', 'fbname', 'fbusername', 'fbgender', 'firstname','lastname','participations', 'wins');
 
 while ( $aRow = mysql_fetch_array( $result ) ) {
 	$row = array();
