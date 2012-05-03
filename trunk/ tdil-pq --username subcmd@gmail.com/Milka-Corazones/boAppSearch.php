@@ -117,6 +117,8 @@ function doSearch() {
                                 <th width="25%">FB nombre</th>
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
+                                <th width="25%">Nombre</th>
+                                <th width="25%">Apellido</th>
                                 <th width="25%">Participaciones</th>
                                 <th width="25%">Premios</th>
                             </tr>
@@ -130,6 +132,8 @@ function doSearch() {
                                 <th width="25%">FB nombre</th>
                                 <th width="25%">FB usuario</th>
                                 <th width="25%">FB sexo</th>
+                                <th width="25%">Nombre</th>
+                                <th width="25%">Apellido</th>
                                <th width="25%">Participaciones</th>
                                <th width="25%">Premios</th>
                             </tr>
