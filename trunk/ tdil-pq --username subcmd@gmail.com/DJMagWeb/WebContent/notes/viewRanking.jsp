@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.RankingPosition"%>
 <%@page import="com.tdil.djmag.model.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
@@ -176,13 +177,16 @@ div {
 			<h1><%=publicHomeBean.getRankingSection().getName() %></h1>
 			<div id="top100LB">
 				<% int positionIndex = 1;
-				for (String position : positions.getPositions()) { %>
+				for (RankingPosition position : positions.getPositions()) { %>
 					<div id="renglonRank">
 						<div id="position"><%=positionIndex++ %></div>
-						<div id="photo"><!-- instertar imagen acá    <img src="foto path" width="78" height="78"> --></div>
+						<div id="photo">
+							<% if (position.hasImage()) { %>
+								<img src="../../download.st?id=<%=position.getImageid()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78"></div>
+							<% } %>
 						<div id="ranked">
-							<span class="title"><%=position %></span>
-							<span class="description">Descripción no disponible<br/>Descripción no disponible</span>
+							<span class="title"><%=position.getPosition()%></span>
+							<span class="description"><%= position.getDescription() %></span>
 							<span class="vermas"><a href="#">Ver m&aacute;s</a></span>
 						</div>
 					</div>

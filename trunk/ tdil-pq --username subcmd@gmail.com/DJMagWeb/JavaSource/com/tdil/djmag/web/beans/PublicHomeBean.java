@@ -36,6 +36,7 @@ import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
+import com.tdil.djmag.model.RankingPosition;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionType;
@@ -472,7 +473,7 @@ public class PublicHomeBean  {
 		}
 	}
 	
-	public List<String> getReducedRanking() {
+	public List<RankingPosition> getReducedRanking() {
 		return this.getRankingPositions().getPositions().subList(0, REDUCED_RANKING_SIZE);
 	}
 	

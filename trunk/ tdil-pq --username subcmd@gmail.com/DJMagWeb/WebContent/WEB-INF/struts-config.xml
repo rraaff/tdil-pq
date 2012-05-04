@@ -109,6 +109,10 @@
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/rankingAdministration.jsp"/>
   </action>
+  <action parameter="Admin" path="/uploadRankingPhoto" type="com.tdil.djmag.struts.action.UploadRankingPhotoAction"/>
+  <action name="RankingNoteForm" parameter="Admin" path="/viewRankingPhoto"
+   scope="session" type="com.tdil.djmag.struts.action.ViewRankingPhotoAction">
+  </action>
  
  <action name="NoteForm" parameter="Admin"
    path="/goToNoteABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
@@ -358,7 +362,6 @@
    <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
   </action>
   
-  <action path="/ajaxUpload" scope="request" type="com.tdil.djmag.struts.action.AjaxFileUploadAction"/>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>

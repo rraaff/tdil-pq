@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -130,6 +131,37 @@ public class FieldValidation {
 			return null;
 		}
 		String fileName = fileItem.getFileName();
+		InputStream io = null;
+		try {
+			io = fileItem.getInputStream();
+			return new UploadData(fileName, IOUtils.toByteArray(io), true);
+		} catch (IOException e) {
+			getLog().error(e.getMessage(), e);
+			validation.setGeneralError(e.getMessage());
+		} finally {
+			if (io != null) {
+				try {
+					io.close();
+				} catch (IOException e) {
+					getLog().error(e.getMessage(), e);
+					validation.setGeneralError(e.getMessage());
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static UploadData validateFileItem(FileItem fileItem, String fieldName, boolean required, ValidationError validation) {
+		boolean isEmpty = fileItem.getSize() == 0;
+		if (isEmpty && required) {
+			validation.setFieldError(fieldName, ValidationErrors.CANNOT_BE_EMPTY);
+			return null;
+		}
+		if (isEmpty) {
+			return null;
+		}
+		String name = fileItem.getName();
+		String fileName = name;
 		InputStream io = null;
 		try {
 			io = fileItem.getInputStream();

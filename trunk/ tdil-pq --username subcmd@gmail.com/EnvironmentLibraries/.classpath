@@ -19,7 +19,6 @@
 	<classpathentry exported="true" kind="lib" path="commons-collections.jar"/>
 	<classpathentry exported="true" kind="lib" path="commons-digester.jar"/>
 	<classpathentry exported="true" kind="lib" path="commons-fileupload-1.2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="commons-fileupload.jar"/>
 	<classpathentry exported="true" kind="lib" path="commons-validator.jar"/>
 	<classpathentry exported="true" kind="lib" path="iText-2.0.8.jar"/>
 	<classpathentry exported="true" kind="lib" path="jakarta-oro.jar"/>
