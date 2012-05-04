@@ -171,7 +171,7 @@ function setAsTopVideo(divId) {
 						<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
 						<div id="ranked">
 							<span class="title"><%=video.getTitle() %></span>
-							<span class="description">aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción aca va la descripción</span>
+							<span class="description"><%=video.getDescription() %></span>
 							<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
 						</div>
 					</div>
@@ -180,9 +180,7 @@ function setAsTopVideo(divId) {
 		</div>
 	</div>
 	<div id="right">
-		<% if (publicHomeBean.hasNoteRightBanner()) {%>
-			<div id="subContent"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
-		<% } %>
+		<div id="subContent"></div>
 		<% if (publicHomeBean.hasNoteRightBanner()) {%>
 			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 		<% } %>

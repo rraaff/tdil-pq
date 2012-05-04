@@ -1,6 +1,22 @@
-body {
-	margin: 0px;
-	padding: 0px;
+@charset "utf-8";
+/* CSS Document */
+/*   Reseteo CSS   ***************************************************/
+
+body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td,select,input {
+	margin:0;
+	padding:0;
+	border:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
 }
 * {
 	margin: 0;
@@ -17,10 +33,13 @@ body {
 	line-height: normal;
 	font-weight: normal;
 	color: #fff;	
-}/*
+}
+/*
 div {
 	border:dotted 1px #00FF00;
-}*/
+}
+*/
+/************************************* Comienzo del country selection *************************************/
 h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
 	color:#fef455;
 }
@@ -30,14 +49,12 @@ h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
 #BlockCoutrySelection {
 	background-image: url(../images/selector-pais.gif);
 	background-repeat: no-repeat;
-	width: 980px;
-	height: 550px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	width:980px;
+	height:560px;
+	margin:0 auto;
+	position:relative;
 	background-position: center top;
-	position: relative;
+
 }
 #BlockCoutrySelection #labelCountrySelection {
 	line-height: 14px;
@@ -52,22 +69,28 @@ h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
 #BlockCoutrySelection #countryCombo {
 	left: 520px;
 	top: 250px;
-	width: 350px;
+	width: 250px;
 	height: 40px;
+	margin-top:0px;
+	float:left;
 	position: relative;
 }
 select {
 	font-size: 10px;
 	font-weight: bold;
 	color: #333333;
-	width:187px;
+	width:180px;
+}
+.specialMargin {
+	margin-top:10px;
 }
 #BlockCoutrySelection #countryCombo select {
-	
+	float:left;
 }
 .okCircle, .okCircle a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	line-height:14px;
 	color: #FFFFFF;
 	text-decoration: none;
 	background-image: url(../images/buttons/button_circle.gif);
@@ -77,7 +100,10 @@ select {
 	height:40px;
 	border:none;
 	cursor:hand;
+	margin:0;
+	padding:0;
 }
+/************************************* Comienzo del home *************************************/
 .okCircleSuscribe, .okCircleSuscribe a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
@@ -89,7 +115,6 @@ select {
 	background-position: center center;
 	width:24px;
 	height:24px;
-	margin-left:5px;
 	border:none;
 	cursor:hand;
 }
@@ -100,15 +125,17 @@ body {
 #portaHeader {
 	background-image: url(../images/bg-headerHome.png);
 	background-repeat: repeat;
-	width: 100%;
-	clear: both;
+	width: 1010px;
 	height: 88px;
+	margin:0 auto;
+	clear: both;
+	float: none;
 }
 #portaHeader #header {
 	height: 88px;
-	width: 1010px;
+/*	width: 1010px;
 	margin-right: auto;
-	margin-left: auto;
+	margin-left: auto;*/
 }
 #portaHeader #header #logo {
 	background-image: url(../images/logoHome.png);
@@ -121,15 +148,22 @@ body {
 #portaHeader #header #menu {
 	height: 88px;
 	float: left;
-	width: 812px;
+	width: 808px;
 	padding:0;
 	margin:0;
 }
 #portaHeader #header #menu ul {
 	list-style-type: none;
-	margin: auto;
+	margin: 0px;
+	padding: 0px;
 	width: 812px;
 	height:88px;
+	display: inline-block;
+}
+#portaHeader #header #menu li {
+	margin: 0px;
+	padding: 0px;
+	display: inline;
 }
 #portaHeader #header #menu li a {
 	background-image: url(../images/bg-headerHomeLight.png);
@@ -137,8 +171,7 @@ body {
 	font-family: "Doppio One";
 	text-transform: uppercase;
 	color: #FFFFFF;
-	float: left;
-	display: block;
+	float: left;	
 	line-height: 88px;
 	text-decoration: none;
 	font-size: 15px;
@@ -193,6 +226,7 @@ body {
 	width: 250px;
 	margin-left: 25px;
 	padding-top: 93px;
+	display: inline-block;
 }
 #BlockMain #top100Home #position {
 	font-size: 12px;
@@ -212,7 +246,7 @@ body {
 	font-variant: normal;
 	color: #FFFFFF;
 	float: left;
-	width: 150px;
+	width: 180px;
 	overflow: hidden;
 }
 #BlockMain #top100Home #rankedHome:hover {
@@ -250,10 +284,10 @@ body {
 	float: right;
 }
 #BlockMain #BlockMainRight #socialAtHome {
-	height: 23px;
+	height: 0px;/*23px;*/
 	width: 250px;
 	margin-top: 5px;
-	margin-bottom: 8px;
+	margin-bottom: 18px; /*8*/
 	position: relative;
 	overflow: hidden;
 	float: right;
@@ -268,18 +302,19 @@ body {
 	height: 51px;
 	width: 250px;
 	line-height: 51px;
+	margin-bottom: 13px; /*borrar cuando vuelva el socialAtHome*/
 }
 #BlockMain #BlockMainRight #suscribe span {
 	padding-left:5px;
 	padding-right:8px;
-}/*
+}
 #BlockMain #BlockMainRight #bannerRight {
 	margin-top:12px;
 	width:250px;
 	height:268px;
 	position:relative;
 	float: right;
-}*/
+}
 #BlockMain #BlockMainRight #BlockMagazine {
 	margin-top:12px;
 	width:250px;
