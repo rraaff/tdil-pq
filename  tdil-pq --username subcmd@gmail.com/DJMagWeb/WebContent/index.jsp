@@ -127,7 +127,7 @@ $(document).ready(
 <%@ include file="includes/homeRanking.jsp" %>
 	<div id="BlockMainRight">
 		<div id="selectedCountry"><%= publicHomeBean.getCountry().getName() %><a href="#changeCountryDiv" rel="prettyPhoto[change_country]"><img id="changeCountryLink" src="images/buttons/closeCountry.gif" width="18" height="18" align="absbottom"></a></div>
-		<div id="socialAtHome"><img src="images/demo/social.png" width="251" height="23"></div>
+		<div id="socialAtHome"><img src="images/null.gif" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
 		<%@ include file="includes/homeMagazine.jsp" %>
 		<%@ include file="includes/homeBannerRight.jsp"%>
