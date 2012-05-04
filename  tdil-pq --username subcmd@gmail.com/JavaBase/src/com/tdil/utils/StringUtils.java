@@ -1,7 +1,5 @@
 package com.tdil.utils;
 
-import java.net.URLEncoder;
-
 import org.apache.commons.lang.StringEscapeUtils;
 
 public class StringUtils {
@@ -25,7 +23,7 @@ public class StringUtils {
 			for (int i = 0; i < origin.length(); i++) {
 				result = result.replace(origin.charAt(i), dest.charAt(i));
 			}
-			return URLEncoder.encode(result);
+			return result.replaceAll("[^a-zA-Z0-9_aeiouAEIOUnN]", "");
 		}
 	}
 	
