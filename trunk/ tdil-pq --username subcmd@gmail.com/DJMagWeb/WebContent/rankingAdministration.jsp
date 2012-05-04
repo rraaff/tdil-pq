@@ -12,8 +12,29 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
+<script>
+$(document).ready(
+	function(){
+		<% for (int i = 0; i < 100; i++) { %>
+		$('#upload_<%=i%>').ajaxfileupload({
+		  	'action': './uploadRankingPhoto.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#ranking_<%=i%>').attr('src', './viewRankingPhoto.do?pos=<%=i%>');
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		<% } %>
+	}
+);
+</script>
 </head>
-
 <body>
 <div id="header"></div>
 <div id="container">
@@ -39,12 +60,23 @@
 						<tr>
 							<td class="headerTablas" width="50">Posici&oacute;n</td>
 							<td class="headerTablas">Nombre</td>
+							<td class="headerTablas">Descripci&oacute;n</td>
+							<td class="headerTablas">Foto</td>
 							<td class="headerTablas" width="50">Acciones</td>
 						</tr>
 						<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
 							<tr>
 								<td align="center"><%=iterIndexPositions + 1%></td>
-								<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width180"/></td>  
+								<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width180"/></td>
+								<td align="center"><html:text name="selectedPosition" property="description" indexed="true" styleClass="width180"/></td>
+								<td align="center">
+									<logic:equal name="selectedPosition" property="hasUploadData" value="true">
+										<img id="ranking_<%=iterIndexPositions%>" src="./viewRankingPhoto.do?pos=<%=iterIndexPositions%>" width="50" height="50"> 
+									</logic:equal>
+									<logic:notEqual name="selectedPosition" property="hasUploadData" value="true">
+										<img id="ranking_<%=iterIndexPositions%>" src="boImages/na.gif" width="50" height="50"> 
+									</logic:notEqual>
+									<input type="file" name="upload_<%=iterIndexPositions%>" id="upload_<%=iterIndexPositions%>"></td>
 								<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
 								<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
 							</tr>
