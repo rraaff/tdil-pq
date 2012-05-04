@@ -109,6 +109,8 @@ $(document).ready(
 						<% } %>
 					</li>
 				<% } %>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-top20.gif" width="74" height="88"></a></li>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-shop.gif" width="62" height="88"></a></li>
 			</ul>
 		</div>
 	</div>
@@ -240,17 +242,18 @@ $(document).ready(
 <body style="background-image:none;">
 	<div id="BlockCoutrySelection">
 		<div id="labelCountrySelection">Seleccione su pa&iacute;s / Selecione o Pa&iacute;s<br>Choisissez un pays / Select Country</div>
-		<div id="countryCombo">
-			<form action="./selectCountry.st">
-			<select name="id"><option>Seleccione</option>
-			<% 	publicHomeBean.initCountries();
-				for (Country country : publicHomeBean.getAllCountries()) {%>
-					<option value="<%= country.getId() %>"><%= country.getName() %></option>
-			<% } %>
-			</select>&nbsp;&nbsp;&nbsp;
-			<input type="submit" value="ok" class="okCircle">
-			</form>
-		</div>
+		<form action="./selectCountry.st">
+			<div id="countryCombo">
+				<select name="id" class="specialMargin">
+					<option>Seleccione</option>
+				<% 	publicHomeBean.initCountries();
+					for (Country country : publicHomeBean.getAllCountries()) {%>
+						<option value="<%= country.getId() %>"><%= country.getName() %></option>
+				<% } %>
+				</select>
+			<!-- /div>
+			<div id="buttonOkContainer" --><input type="submit" value="ok" class="okCircle"></div>
+		</form>
 	</div>
 <% } %>     
 </body>

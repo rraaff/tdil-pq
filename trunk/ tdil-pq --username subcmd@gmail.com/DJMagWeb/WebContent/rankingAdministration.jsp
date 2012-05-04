@@ -50,60 +50,55 @@ $(document).ready(
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.description.err")%></div>
 		</div>
 		<div id="conteinerScrollable" style="width:950px; height:400px; overflow:auto; border:#FF0000;">
-			<div class="width450" style="float:left;">
-				<h2>Posiciones</h2>
-				<div class="renglon width420 height40">
-					<div class="label width400 height40 comment">Complete el Ranking con las 100 posiciones. Al no estar completo, se ver&aacute;n posiciones vac&iacute;as en el el TOP 100. Una vez cargado, pordr&aacute; subir y bajar cada uno de los rankeados con los links en las acciones.</div>
-				</div>
-				<div class="renglon width420 height200" style="overflow:auto;">
-					<table>
-						<tr>
-							<td class="headerTablas" width="50">Posici&oacute;n</td>
-							<td class="headerTablas">Nombre</td>
-							<td class="headerTablas">Descripci&oacute;n</td>
-							<td class="headerTablas">Foto</td>
-							<td class="headerTablas" width="50">Acciones</td>
-						</tr>
-						<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
-							<tr>
-								<td align="center"><%=iterIndexPositions + 1%></td>
-								<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width180"/></td>
-								<td align="center"><html:text name="selectedPosition" property="description" indexed="true" styleClass="width180"/></td>
-								<td align="center">
-									<logic:equal name="selectedPosition" property="hasUploadData" value="true">
-										<img id="ranking_<%=iterIndexPositions%>" src="./viewRankingPhoto.do?pos=<%=iterIndexPositions%>" width="50" height="50"> 
-									</logic:equal>
-									<logic:notEqual name="selectedPosition" property="hasUploadData" value="true">
-										<img id="ranking_<%=iterIndexPositions%>" src="boImages/na.gif" width="50" height="50"> 
-									</logic:notEqual>
-									<input type="file" name="upload_<%=iterIndexPositions%>" id="upload_<%=iterIndexPositions%>"></td>
-								<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
-								<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
-							</tr>
-						</logic:iterate>
-					</table>
-				</div>
+			<h2>Posiciones</h2>
+			<div class="renglon width920">
+				<div class="label width920 comment">Complete el Ranking con las 100 posiciones. Al no estar completo, se ver&aacute;n posiciones vac&iacute;as en el el TOP 100. Una vez cargado, pordr&aacute; subir y bajar cada uno de los rankeados con los links en las acciones. Las im&aacute;genes del ranking deberan ser de 78px x 78px.</div>
 			</div>
-			<div class="width450" style="float:left; margin-left:20px;">
-				<h2>Mostrar en</h2>
-				<div class="renglon width420 height40">
-					<div class="label width400 height40 comment">Seleccione los pa&iacute;ses en los que se ver&aacute; el ranking que est&eacute; editando.<br/><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.country.err")%></div>
-				</div>
-				<div class="renglon width420 height200" style="overflow:auto;">
-					<table>
+			<div class="renglon width920 height200" style="overflow:auto;">
+				<table>
+					<tr>
+						<td class="headerTablas" width="50">Posici&oacute;n</td>
+						<td class="headerTablas" width="100">Nombre</td>
+						<td class="headerTablas" >Descripci&oacute;n</td>
+						<td class="headerTablas">Foto</td>
+						<td class="headerTablas" width="50">Acciones</td>
+					</tr>
+					<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
 						<tr>
-							<td class="headerTablas" width="40">Activa</td>
-							<td class="headerTablas">Pa&iacute;s</td>
+							<td align="center"><%=iterIndexPositions + 1%></td>
+							<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width100"/></td>
+							<td align="center"><html:text name="selectedPosition" property="description" indexed="true" styleClass="width350"/></td>
+							<td align="center" width="250">
+								<logic:equal name="selectedPosition" property="hasUploadData" value="true">
+									<img id="ranking_<%=iterIndexPositions%>" src="./viewRankingPhoto.do?pos=<%=iterIndexPositions%>" width="30" height="30" align="absmiddle"> 
+								</logic:equal>
+								<logic:notEqual name="selectedPosition" property="hasUploadData" value="true">
+									<img id="ranking_<%=iterIndexPositions%>" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
+								</logic:notEqual>
+								<input type="file" name="upload_<%=iterIndexPositions%>" id="upload_<%=iterIndexPositions%>"></td>
+							<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
+							<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
 						</tr>
-						<logic:iterate id="selectedCountry" name="RankingNoteForm" property="selectedCountries">  
-							<tr>
-								<td><html:checkbox name="selectedCountry" property="selected" indexed="true" /></td>  
-								<td><bean:write name="selectedCountry" property="countryName" /></td>
-							</tr>
-							
-						</logic:iterate>
-					</table>
-				</div>
+					</logic:iterate>
+				</table>
+			</div>
+			<h2>Mostrar en</h2>
+			<div class="renglon width920">
+				<div class="label width920 comment">Seleccione los pa&iacute;ses en los que se ver&aacute; el ranking que est&eacute; editando.<br/><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.country.err")%></div>
+			</div>
+			<div class="renglon width920 height100" style="overflow:auto;">
+				<table>
+					<tr>
+						<td class="headerTablas" width="40">Activa</td>
+						<td class="headerTablas">Pa&iacute;s</td>
+					</tr>
+					<logic:iterate id="selectedCountry" name="RankingNoteForm" property="selectedCountries">  
+						<tr>
+							<td><html:checkbox name="selectedCountry" property="selected" indexed="true" /></td>  
+							<td><bean:write name="selectedCountry" property="countryName" /></td>
+						</tr>
+					</logic:iterate>
+				</table>
 			</div>
 			<div class="renglon width860 height50">
 				<logic:equal name="RankingNoteForm" property="objectId" value="0">
@@ -121,7 +116,7 @@ $(document).ready(
 				</html:submit>
 			</div>
 			<h2>Listado de Rankings</h2>
-			<div class="renglon width860 height300" style="overflow:auto;">
+			<div class="renglon width860 height200" style="overflow:auto;">
 				<table>
 					<tr>
 						<td class="headerTablas" width="300">T&iacute;tulo</td>
