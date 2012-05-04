@@ -5,30 +5,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
+import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.RankingNoteCountryDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.daomanager.DAOManager;
+import com.tdil.djmag.model.BlobData;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.RankingNoteCountryExample;
 import com.tdil.djmag.model.RankingNoteExample;
+import com.tdil.djmag.model.RankingPosition;
 import com.tdil.djmag.model.RankingPositions;
+import com.tdil.djmag.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.actions.AjaxFileUploadAction;
+import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.struts.forms.UploadData;
 import com.tdil.utils.XMLUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class RankingNoteForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class RankingNoteForm extends TransactionalValidationForm implements ToggleDeletedFlagForm, AjaxUploadHandlerForm {
 
 	/**
 	 * 
@@ -50,7 +61,9 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	private static final String description_key = "RankingNote.description";
 	private static final String country_key = "RankingNote.country";
 	private static final String position_key = "RankingNote.position";
+	private static final String ranking_photo_key = "RankingNote.ranking_photo";
 	private static final int POSITIONS = 100; 
+	private static final int MAX_PHOTO_SIZE = 1000000;
 
 	@Override
 	public void reset() throws SQLException {
@@ -63,9 +76,28 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 	private List<RankingPositionBean> createEmptyPositions() {
 		List<RankingPositionBean> result = new ArrayList<RankingPositionBean>();
 		for(int i = 0; i < POSITIONS; i++) {
-			result.add(new RankingPositionBean(""));
+			result.add(new RankingPositionBean());
 		}
 		return result;
+	}
+	
+	public void handleAjaxFileUpload(Map<String, FileItem> fileItems, ValidationError error,
+			Map<String, Object> result) {
+		FileItem uploaded = fileItems.get(AjaxFileUploadAction.UPLOAD_NAME);
+		String index = uploaded.getFieldName();
+		index = index.substring(index.indexOf('_') + 1);
+		RankingPositionBean rankingPositionBean = this.getPositions().get(Integer.valueOf(index));
+		UploadData uploadData = FieldValidation.validateFileItem(uploaded, ranking_photo_key, true, error);
+		if (uploadData != null) {
+			long fileSize = uploaded.getSize();
+			if (fileSize > MAX_PHOTO_SIZE) {
+				error.setFieldError(ranking_photo_key, ValidationErrors.TOO_BIG);
+				rankingPositionBean.setUploadData(null);
+				return;
+			}
+			rankingPositionBean.setUploadData(uploadData);
+		}
+		result.put("result", "OK");
 	}
 
 	@Override
@@ -146,10 +178,21 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 		}
 	}
 	
-	private void setRankingPositions(RankingPositions fromXML) {
+	private void setRankingPositions(RankingPositions fromXML) throws SQLException {
+		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
 		this.getPositions().clear();
-		for (String st : fromXML.getPositions()) {
-			this.getPositions().add(new RankingPositionBean(st));
+		for (RankingPosition position : fromXML.getPositions()) {
+			if (position.getImageid() != null && !StringUtils.isEmpty(position.getImageid())) {
+				int id = Integer.valueOf(position.getImageid());
+				if (id != 0) {
+					BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(id);
+					this.getPositions().add(new RankingPositionBean(position, frontCover));
+				} else {
+					this.getPositions().add(new RankingPositionBean(position));	
+				}
+			} else {
+				this.getPositions().add(new RankingPositionBean(position));
+			}
 		}
 	}
 
@@ -250,11 +293,20 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 		
 	}
 
-	private void updateRankingNote(RankingNote rankingNote) {
+	private void updateRankingNote(RankingNote rankingNote) throws SQLException {
 		rankingNote.setDescription(this.getDescription());
 		RankingPositions rankingPositions = new RankingPositions();
 		for (RankingPositionBean rankingPositionBean : this.getPositions()) {
-			rankingPositions.getPositions().add(rankingPositionBean.getPosition());
+			if (BlobHelper.shouldDeleteBlob(rankingPositionBean.getUploadData())) {
+				BlobHelper.deleteBlob(rankingPositionBean.getBlobId());
+				rankingPositionBean.setBlobId(0);
+			}
+			if (BlobHelper.shouldInsertBlob(rankingPositionBean.getUploadData())) {
+				int blobId = BlobHelper.insertBlob(rankingPositionBean.getUploadData());
+				rankingPositionBean.setBlobId(blobId);
+			}
+			
+			rankingPositions.getPositions().add(rankingPositionBean.getAsRankingPosition());
 		}
 		rankingNote.setPositions(XMLUtils.asXML(rankingPositions));
 	}
@@ -367,6 +419,14 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean hasRankingUploadData(int pos) {
+		return this.getPositions().get(pos).getUploadData() != null;
+	}
+	
+	public UploadData getRankingUploadData(int pos) {
+		return this.getPositions().get(pos).getUploadData();
 	}
 
 

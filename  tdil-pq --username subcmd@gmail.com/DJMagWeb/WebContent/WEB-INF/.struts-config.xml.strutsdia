@@ -743,6 +743,9 @@
    PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#ajaxUpload" NAME="action75" PATH="/ajaxUpload"
-  SHAPE="32,13585,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadRankingPhoto" NAME="action76"
+  PATH="/uploadRankingPhoto" SHAPE="32,13585,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewRankingPhoto" NAME="action75"
+  PATH="/viewRankingPhoto" SHAPE="32,13585,0,0" TITLE="RankingNoteForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

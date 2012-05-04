@@ -13,6 +13,7 @@ import com.tdil.djmag.cache.blob.NoteImageResolver;
 import com.tdil.djmag.cache.blob.PublicBlobResolver;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.djmag.model.BlobDataType;
+import com.tdil.djmag.model.RankingPosition;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.model.SystemProperty;
 import com.tdil.djmag.model.SystemPropertyExample;
@@ -34,6 +35,7 @@ public class DJMagConfig extends SystemConfig {
 	@Override
 	protected void initXMLALias() {
 		XMLUtils.addAlias("RankingPositions", RankingPositions.class);
+		XMLUtils.addAlias("RankingPosition", RankingPosition.class);
 	}
 	
 	@Override

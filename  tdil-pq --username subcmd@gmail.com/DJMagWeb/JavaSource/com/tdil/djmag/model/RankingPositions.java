@@ -7,18 +7,18 @@ import com.tdil.utils.XMLUtils;
 
 public class RankingPositions {
 
-	private ArrayList<String> positions = new ArrayList<String>(100);
+	private ArrayList<RankingPosition> positions = new ArrayList<RankingPosition>(100);
 	
-	public ArrayList<String> getPositions() {
+	public ArrayList<RankingPosition> getPositions() {
 		return positions;
 	}
 
-	public void setPositions(ArrayList<String> positions) {
+	public void setPositions(ArrayList<RankingPosition> positions) {
 		this.positions = positions;
 	}
 
 	public static void main(String[] args) {
-		RankingPositions pos = new RankingPositions();
+		/*RankingPositions pos = new RankingPositions();
 		pos.getPositions().add("Arjona fuiste tu");
 		pos.getPositions().add("siete ni idea");
 		String xml = XMLUtils.asXML(pos, new ArrayList<XMLAlias>());
@@ -30,7 +30,7 @@ public class RankingPositions {
 		pos1.getPositions().set(0, "siete ni idea");
 		pos1.getPositions().set(1, "Arjona fuiste tu");
 		xml = XMLUtils.asXML(pos1, new ArrayList<XMLAlias>());
-		System.out.println(xml);
+		System.out.println(xml);*/
 	}
 	
 }

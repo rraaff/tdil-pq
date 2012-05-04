@@ -7,34 +7,41 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.DefaultFileItemFactory;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUpload;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
 
 
-public class AjaxFileUploadAction extends AjaxAction {
+public abstract class AjaxFileUploadAction extends AjaxAction {
 
-
+	public static final String UPLOAD_NAME = "upload";
+	
 	@SuppressWarnings("unchecked")
 	public ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// Create a factory for disk-based file items
-		FileItemFactory itemFactory = new DefaultFileItemFactory();
-		FileUpload fileUpload = new FileUpload(itemFactory);
-		List<FileItem> files = fileUpload.parseRequest(request);
+		
+		FileItemFactory factory = new DiskFileItemFactory();
+		// Create a new file upload handler
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		// Parse the request
+		List<FileItem> fitems = upload.parseRequest(request);
 		Map<String, FileItem> parsed = new HashMap<String, FileItem>();
-		for (FileItem fi : files) {
-			parsed.put(fi.getFieldName(), fi);
+		for (FileItem fi : fitems) {
+			if (fi.isFormField()) {
+				parsed.put(fi.getFieldName(), fi);
+			} else {
+				parsed.put(UPLOAD_NAME, fi);
+			}
 		}
 		// TODO manejo automatica del truncado y todo eso
-		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		AjaxUploadHandlerForm uploadForm = getUploadForm(request, form);
 		ValidationError error = new ValidationError();
@@ -48,7 +55,5 @@ public class AjaxFileUploadAction extends AjaxAction {
 		}
 	}
 
-	protected AjaxUploadHandlerForm getUploadForm(HttpServletRequest request, ActionForm form) {
-		return (AjaxUploadHandlerForm)form;
-	}
+	protected abstract AjaxUploadHandlerForm getUploadForm(HttpServletRequest request, ActionForm form);
 }
