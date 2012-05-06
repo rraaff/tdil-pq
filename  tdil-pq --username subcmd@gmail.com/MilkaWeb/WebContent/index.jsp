@@ -44,17 +44,8 @@ $(document).ready(
 <!-- end contenido-->
 </div>
 <!-- end content-->
-<% ClickCounter c1 = new ClickCounter();
-	c1.setId(1);
-	c1.setOwnertype("photomilka");
-	c1.setOwnerid(2);
-	c1.setClicks(150);
-%>
-<%= MeltButton.meltButton(c1) %>
-<%	c1.setId(2);
-	c1.setOwnerid(3);
-	c1.setClicks(75);
-%>
-<%= MeltButton.meltButton(c1) %>
+<%= MeltButton.meltButton(1) %>
+
+<%= MeltButton.meltButton(2) %>
 </body>
 </html>			

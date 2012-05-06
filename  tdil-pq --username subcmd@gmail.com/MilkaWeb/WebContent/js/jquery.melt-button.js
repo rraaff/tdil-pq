@@ -4,10 +4,9 @@
 (function($) {
   $.fn.meltbutton = function(settings) {
 	  var obj = $(this);
-	  var buttonType = obj.attr("buttonType");
   	  var buttonId = obj.attr("buttonId");
   	  var actualQuantity = obj.attr("quantity");
-  	  var cookieName = 'meltbutton-' + buttonType + '-' + buttonId;
+  	  var cookieName = 'meltbutton-' + buttonId;
   	  var cookie = $.cookie(cookieName);
   	  if (!cookie) {
   		this.each(function() {
@@ -15,7 +14,7 @@
     		obj.clickenabled = true;
             obj.click(function() {
 	  			if (obj.clickenabled) {
-	  				var url='meltaction.do?buttonType=' + buttonType + '&buttonId=' + buttonId;
+	  				var url='meltaction.do?buttonId=' + buttonId;
 				  $.getJSON(url,function(data){
 					  	if (data.result == 'OK') {
 					  		obj.html("Te derrite " + data.quantity);

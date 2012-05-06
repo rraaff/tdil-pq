@@ -47,7 +47,7 @@ public class MilkaConfig extends SystemConfig {
 		try {
 			List<SystemProperty> list = new SystemPropertyDAOImpl(IBatisManager.getClient()).selectSystemPropertyByExample(new SystemPropertyExample());
 			for (SystemProperty property : list) {
-				getLog().fatal("DJMagConfig: " + property.getPropkey() + "=" + property.getPropvalue());
+				getLog().fatal("MilkaConfig: " + property.getPropkey() + "=" + property.getPropvalue());
 				SystemPropertyCache.put(property.getPropkey(), property.getPropvalue());
 			}
 		} catch (SQLException e) {
@@ -77,11 +77,9 @@ public class MilkaConfig extends SystemConfig {
 			getLog().equals("No se pudo escribir en el cache de blobs " + path);
 			return;
 		}
-		getLog().fatal("DJMagConfig: blob cache started at " + path);
+		getLog().fatal("MilkaConfig: blob cache started at " + path);
 		BlobLocalDiskCache.setDiskBlobLocation(path);
 		BlobLocalDiskCache.addBlobResolver(BlobDataType.PUBLIC, new PublicBlobResolver(None.INSTANCE_ARR));
-//	TODO EXAMPLE	BlobLocalDiskCache.getBlob("note", 1, 0, "aaa.jpg", null);
-//		BlobLocalDiskCache.getBlob("note", 1, 0, "a.jpg", null);
 	}
 
 }

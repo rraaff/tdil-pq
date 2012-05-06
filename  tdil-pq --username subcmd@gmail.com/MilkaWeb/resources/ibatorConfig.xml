@@ -53,6 +53,18 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="CLICK_COUNTER" domainObjectName="ClickCounter">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="MILKA" tableName="TAG" domainObjectName="Tag">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="AUTHOR" domainObjectName="Author">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="MILKA_PHOTO" domainObjectName="MilkaPhoto">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="MILKA_PHOTO_TAG" domainObjectName="MilkaPhotoTag">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>
