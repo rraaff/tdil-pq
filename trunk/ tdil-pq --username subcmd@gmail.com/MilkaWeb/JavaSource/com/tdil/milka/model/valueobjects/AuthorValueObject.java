@@ -1,10 +1,10 @@
-package com.tdil.milka.struts.forms;
+package com.tdil.milka.model.valueobjects;
 
 import java.io.Serializable;
 
 import com.tdil.milka.model.Author;
 
-public class AuthorBean implements Serializable {
+public class AuthorValueObject implements Serializable {
 
 	/**
 	 * 

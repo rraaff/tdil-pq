@@ -17,6 +17,7 @@ import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.Author;
 import com.tdil.milka.model.ClickCounter;
 import com.tdil.milka.model.MilkaPhoto;
+import com.tdil.milka.model.valueobjects.AuthorValueObject;
 import com.tdil.milka.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -32,7 +33,7 @@ public class MilkaPhotoForm extends TransactionalValidationForm {
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
 	
-	private AuthorBean authorBean;
+	private AuthorValueObject authorBean;
 	private FormFile photoFormFile;
 	private UploadData photo;
 	
@@ -100,13 +101,13 @@ public class MilkaPhotoForm extends TransactionalValidationForm {
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(MilkaPhotoForm.class);
 	}
-	public AuthorBean getAuthorBean() {
+	public AuthorValueObject getAuthorBean() {
 		if (authorBean == null) {
-			authorBean = new AuthorBean();
+			authorBean = new AuthorValueObject();
 		}
 		return authorBean;
 	}
-	public void setAuthorBean(AuthorBean authorBean) {
+	public void setAuthorBean(AuthorValueObject authorBean) {
 		this.authorBean = authorBean;
 	}
 	public UploadData getPhoto() {
