@@ -3,18 +3,26 @@ package com.tdil.milka.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
+import com.tdil.milka.dao.AuthorDAO;
 import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.ClickCounterDAO;
+import com.tdil.milka.dao.MilkaPhotoDAO;
+import com.tdil.milka.dao.MilkaPhotoTagDAO;
 import com.tdil.milka.dao.NotificationEmailDAO;
 import com.tdil.milka.dao.RawInsertDAO;
 import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.dao.SystemUserDAO;
+import com.tdil.milka.dao.TagDAO;
+import com.tdil.milka.dao.impl.AuthorDAOImpl;
 import com.tdil.milka.dao.impl.BlobDataDAOImpl;
 import com.tdil.milka.dao.impl.ClickCounterDAOImpl;
+import com.tdil.milka.dao.impl.MilkaPhotoDAOImpl;
+import com.tdil.milka.dao.impl.MilkaPhotoTagDAOImpl;
 import com.tdil.milka.dao.impl.NotificationEmailDAOImpl;
 import com.tdil.milka.dao.impl.RawInsertDAOImpl;
 import com.tdil.milka.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.milka.dao.impl.SystemUserDAOImpl;
+import com.tdil.milka.dao.impl.TagDAOImpl;
 
 public class DAOManager {
 
@@ -42,4 +50,21 @@ public class DAOManager {
 	public static RawInsertDAO getRawInsertDAO() throws SQLException {
 		return new RawInsertDAOImpl(IBatisManager.getClient());
 	}
+	
+	public static TagDAO getTagDAO() throws SQLException {
+		return new TagDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static AuthorDAO getAuthorDAO() throws SQLException {
+		return new AuthorDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static MilkaPhotoDAO getMilkaPhotoDAO() throws SQLException {
+		return new MilkaPhotoDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static MilkaPhotoTagDAO getRawMilkaPhotoTagDAO() throws SQLException {
+		return new MilkaPhotoTagDAOImpl(IBatisManager.getClient());
+	}
+	
 }

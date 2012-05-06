@@ -12,10 +12,8 @@ public class MeltButtonAction extends AjaxTransactionalAction {
 
 	@Override
 	protected TransactionalValidationForm getAjaxForm(HttpServletRequest request) {
-		String buttonType =request.getParameter("buttonType");
 		String buttonId =request.getParameter("buttonId");
 		MeltButtonForm aForm = new MeltButtonForm();
-		aForm.setButtonType(buttonType);
 		aForm.setButtonId(buttonId);
 		return aForm;
 	}
