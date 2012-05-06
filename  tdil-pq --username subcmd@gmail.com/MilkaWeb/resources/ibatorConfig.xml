@@ -59,7 +59,7 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="AUTHOR" domainObjectName="Author">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="MILKA_PHOTO" domainObjectName="MilkaPhoto">
+<table schema="MILKA" tableName="MILKA_PHOTO" domainObjectName="MilkaPhoto" alias="mp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="MILKA" tableName="MILKA_PHOTO_TAG" domainObjectName="MilkaPhotoTag">

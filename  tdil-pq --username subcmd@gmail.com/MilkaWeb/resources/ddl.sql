@@ -107,6 +107,7 @@ CREATE TABLE MILKA_PHOTO (
   `id_blob_data` INT NULL,
   `ext_blob_data` VARCHAR(10) NULL ,
   `id_click_counter` INT NOT NULL,
+  `tags` VARCHAR(300) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_MILKA_PHOTO_00`
