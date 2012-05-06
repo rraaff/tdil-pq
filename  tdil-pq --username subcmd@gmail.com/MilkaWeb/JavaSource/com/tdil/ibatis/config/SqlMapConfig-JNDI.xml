@@ -24,4 +24,9 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/NOTIFICATION_EMAIL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/RAW_INSERT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/CLICK_COUNTER_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/milka/dao/maps/TAG_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/AUTHOR_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/MILKA_PHOTO_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/MILKA_PHOTO_TAG_SqlMap.xml"/>
 </sqlMapConfig>

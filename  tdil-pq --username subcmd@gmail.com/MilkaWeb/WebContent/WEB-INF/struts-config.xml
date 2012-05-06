@@ -7,6 +7,7 @@
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.milka.struts.forms.LoginForm"/>
   <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.milka.struts.forms.SystemPropertyForm"/>
   <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.milka.struts.forms.NotificationEmailForm"/>
+  <form-bean id="MilkaPhotoForm" name="MilkaPhotoForm" type="com.tdil.milka.struts.forms.MilkaPhotoForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -62,6 +63,13 @@
   <action name="NotificationEmailForm" parameter="Admin" path="/testEmailNotification"
    scope="session" type="com.tdil.milka.struts.action.TestEmailNotificationAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  
+  <!--  Public actions -->
+  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/index.jsp" redirect="true"/>
+   <forward name="failure" path="/index.jsp"/>
   </action>
   
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
