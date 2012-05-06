@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.AuthorDAO;
@@ -21,8 +22,10 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
+import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
-public class MilkaPhotoFormForm extends TransactionalValidationForm {
+public class MilkaPhotoForm extends TransactionalValidationForm {
 
 	/**
 	 * 
@@ -30,6 +33,7 @@ public class MilkaPhotoFormForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private AuthorBean authorBean;
+	private FormFile photoFormFile;
 	private UploadData photo;
 	
 	@Override
@@ -48,7 +52,18 @@ public class MilkaPhotoFormForm extends TransactionalValidationForm {
 	}
 	
 	@Override
-	public void basicValidate(ValidationError validationError) {
+	public void basicValidate(ValidationError error) {
+		FormFile formFile = this.getPhotoFormFile();
+		UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
+		if (uploadData != null) {
+			int fileSize = formFile.getFileSize();
+			if (fileSize > 1000000) {
+				error.setFieldError("", ValidationErrors.TOO_BIG);
+				this.setPhoto(null);
+				return;
+			}
+			this.setPhoto(uploadData);
+		}
 	}
 	
 	@Override
@@ -83,7 +98,7 @@ public class MilkaPhotoFormForm extends TransactionalValidationForm {
 
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(MilkaPhotoFormForm.class);
+		return LoggerProvider.getLogger(MilkaPhotoForm.class);
 	}
 	public AuthorBean getAuthorBean() {
 		if (authorBean == null) {
@@ -99,6 +114,12 @@ public class MilkaPhotoFormForm extends TransactionalValidationForm {
 	}
 	public void setPhoto(UploadData photo) {
 		this.photo = photo;
+	}
+	public FormFile getPhotoFormFile() {
+		return photoFormFile;
+	}
+	public void setPhotoFormFile(FormFile photoFormFile) {
+		this.photoFormFile = photoFormFile;
 	}
 
 }
