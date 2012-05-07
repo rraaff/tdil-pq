@@ -1,6 +1,9 @@
 package com.tdil.milka.model.valueobjects;
 
+import java.text.SimpleDateFormat;
+
 import com.tdil.milka.model.MilkaPhoto;
+import com.tdil.struts.resources.ApplicationResources;
 
 public class MilkaPhotoValueObject extends MilkaPhoto {
 
@@ -16,6 +19,27 @@ public class MilkaPhotoValueObject extends MilkaPhoto {
 			authorValueObject = new AuthorValueObject();
 		}
 		return authorValueObject;
+	}
+	
+	public String getStatusRB() {
+		if (this.getDeleted().equals(1)) {
+			return ApplicationResources.getMessage("milkaphoto.status.deleted");
+		} else {
+			if (this.getApproved().equals(1)) {
+				return ApplicationResources.getMessage("milkaphoto.status.approved");
+			} else {
+				return ApplicationResources.getMessage("milkaphoto.status.pending");
+			}
+		}
+	}
+	
+	public String getCreationDateAsString() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return dateFormat.format(this.getCreationdate());
+	}
+	
+	public String getAuthorname() {
+		return this.getFirstname() + " " + this.getLastname();
 	}
 
 	public void setAuthorValueObject(AuthorValueObject authorValueObject) {

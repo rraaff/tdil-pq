@@ -145,4 +145,21 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
    TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToApprovalPending" NAME="action13"
+  PATH="/goToApprovalPending" SHAPE="32,1873,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="/milkaPhotoPending.jsp"
+  SHAPE="240,1890,0,0" SUBTYPE="jsp" TITLE="milkaPhotoPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addPostIt" NAME="action14" PATH="/addPostIt"
+  SHAPE="32,1873,0,0" TITLE="PostItForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
+   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
+   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
