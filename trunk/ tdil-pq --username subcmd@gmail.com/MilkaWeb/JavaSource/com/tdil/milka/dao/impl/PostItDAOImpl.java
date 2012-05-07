@@ -4,6 +4,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.milka.dao.PostItDAO;
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.PostItExample;
+import com.tdil.milka.model.valueobjects.MilkaPhotoValueObject;
+import com.tdil.milka.model.valueobjects.PostItValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -172,5 +175,10 @@ public class PostItDAOImpl implements PostItDAO {
         public Object getRecord() {
             return record;
         }
+    }
+    
+    public List<PostItValueObject> selectPostItsToApproveWithAuthor() throws SQLException {
+    	List<PostItValueObject> list = sqlMapClient.queryForList("POST_IT.selectPostItsWithAuthorsToApprove");
+		return list;
     }
 }

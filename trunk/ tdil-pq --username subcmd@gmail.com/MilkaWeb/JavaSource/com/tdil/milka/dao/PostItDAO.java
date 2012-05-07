@@ -2,6 +2,9 @@ package com.tdil.milka.dao;
 
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.PostItExample;
+import com.tdil.milka.model.valueobjects.MilkaPhotoValueObject;
+import com.tdil.milka.model.valueobjects.PostItValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -93,4 +96,7 @@ public interface PostItDAO {
      * @mbggenerated Sun May 06 21:14:25 ART 2012
      */
     int updatePostItByPrimaryKey(PostIt record) throws SQLException;
+    
+	/** Resultado con los autores */
+	List<PostItValueObject> selectPostItsToApproveWithAuthor() throws SQLException;
 }

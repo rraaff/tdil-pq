@@ -10,6 +10,7 @@
   <form-bean id="MilkaPhotoForm" name="MilkaPhotoForm" type="com.tdil.milka.struts.forms.MilkaPhotoForm"/>
   <form-bean id="MilkaPhotoAdministrationForm" name="MilkaPhotoAdministrationForm" type="com.tdil.milka.struts.forms.MilkaPhotoAdministrationForm"/>
   <form-bean id="PostItForm" name="PostItForm" type="com.tdil.milka.struts.forms.PostItForm"/>
+  <form-bean id="PostItAdministrationForm" name="PostItAdministrationForm" type="com.tdil.milka.struts.forms.PostItAdministrationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -67,9 +68,14 @@
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
   
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToApprovalPending"
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoApprovalPending"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
+  </action>
+  
+  <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprovalPending"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/postItsPending.jsp"/>
   </action>
   
   <!--  Public actions -->
