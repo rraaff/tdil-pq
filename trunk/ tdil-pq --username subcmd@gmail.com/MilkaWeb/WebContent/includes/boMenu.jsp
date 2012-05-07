@@ -6,9 +6,9 @@
 </script>
 <div id="portaMenu">
 	<ul class="jbar">
-		<li><a href="#">Administraci&oacute;n</a>
+		<li><a href="#">Tu foto Milka</a>
 			<ul>
-				<li><html:link action="/goToCountryABM" >Manejo de paises</html:link></li>
+				<li><html:link action="/goToApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
 				<li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
 			</ul>
 		</li>

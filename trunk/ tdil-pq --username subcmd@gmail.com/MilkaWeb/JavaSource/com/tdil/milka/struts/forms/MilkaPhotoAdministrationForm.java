@@ -1,6 +1,7 @@
 package com.tdil.milka.struts.forms;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,6 +9,8 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.milka.daomanager.DAOManager;
+import com.tdil.milka.model.valueobjects.MilkaPhotoValueObject;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
@@ -18,6 +21,7 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm {
 	 * 
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
+	private List<MilkaPhotoValueObject> approvalPending;
 
 	
 	@Override
@@ -29,6 +33,7 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm {
 
 	@Override
 	public void init() throws SQLException {
+		setApprovalPending(DAOManager.getMilkaPhotoDAO().selectMilkaPhotoToApproveWithAuthor());
 	}
 
 	@Override
@@ -50,6 +55,12 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm {
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(MilkaPhotoAdministrationForm.class);
+	}
+	public List<MilkaPhotoValueObject> getApprovalPending() {
+		return approvalPending;
+	}
+	public void setApprovalPending(List<MilkaPhotoValueObject> approvalPending) {
+		this.approvalPending = approvalPending;
 	}
 
 }

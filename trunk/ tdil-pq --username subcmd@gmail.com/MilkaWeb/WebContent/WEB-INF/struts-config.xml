@@ -8,6 +8,8 @@
   <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.milka.struts.forms.SystemPropertyForm"/>
   <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.milka.struts.forms.NotificationEmailForm"/>
   <form-bean id="MilkaPhotoForm" name="MilkaPhotoForm" type="com.tdil.milka.struts.forms.MilkaPhotoForm"/>
+  <form-bean id="MilkaPhotoAdministrationForm" name="MilkaPhotoAdministrationForm" type="com.tdil.milka.struts.forms.MilkaPhotoAdministrationForm"/>
+  <form-bean id="PostItForm" name="PostItForm" type="com.tdil.milka.struts.forms.PostItForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -65,6 +67,11 @@
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
   
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToApprovalPending"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/milkaPhotoPending.jsp"/>
+  </action>
+  
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto"
    scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -72,7 +79,14 @@
    <forward name="failure" path="/index.jsp"/>
   </action>
   
+  <action name="PostItForm" path="/addPostIt"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/index.jsp" redirect="true"/>
+   <forward name="failure" path="/index.jsp"/>
+  </action>
+  
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
+  
   
  </action-mappings>
  

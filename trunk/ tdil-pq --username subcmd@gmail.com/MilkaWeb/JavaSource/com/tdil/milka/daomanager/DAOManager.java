@@ -9,6 +9,7 @@ import com.tdil.milka.dao.ClickCounterDAO;
 import com.tdil.milka.dao.MilkaPhotoDAO;
 import com.tdil.milka.dao.MilkaPhotoTagDAO;
 import com.tdil.milka.dao.NotificationEmailDAO;
+import com.tdil.milka.dao.PostItDAO;
 import com.tdil.milka.dao.RawInsertDAO;
 import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.dao.SystemUserDAO;
@@ -19,6 +20,7 @@ import com.tdil.milka.dao.impl.ClickCounterDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoTagDAOImpl;
 import com.tdil.milka.dao.impl.NotificationEmailDAOImpl;
+import com.tdil.milka.dao.impl.PostItDAOImpl;
 import com.tdil.milka.dao.impl.RawInsertDAOImpl;
 import com.tdil.milka.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.milka.dao.impl.SystemUserDAOImpl;
@@ -67,4 +69,7 @@ public class DAOManager {
 		return new MilkaPhotoTagDAOImpl(IBatisManager.getClient());
 	}
 	
+	public static PostItDAO getPostItDAO() throws SQLException {
+		return new PostItDAOImpl(IBatisManager.getClient());
+	}
 }

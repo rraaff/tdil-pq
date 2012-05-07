@@ -48,8 +48,8 @@ $(document).ready(
 
 <%= MeltButton.meltButton(2) %>
 
+Milka Photo<br>
 <html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
-
 		NOmbre:<html:text name="MilkaPhotoForm" property="authorBean.firstname" styleClass="width180"/><br>
 		Apellido:<html:text name="MilkaPhotoForm" property="authorBean.lastname" styleClass="width180"/><br>
 		email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/><br>
@@ -57,6 +57,18 @@ $(document).ready(
 		<html:file name="MilkaPhotoForm" property="photoFormFile" />
 		<html:submit property="operation">
 			Upload
+		</html:submit>
+	</html:form>
+	
+Post-It<br>
+<html:form method="POST" action="/addPostIt">
+		NOmbre:<html:text name="PostItForm" property="authorBean.firstname" styleClass="width180"/><br>
+		Apellido:<html:text name="PostItForm" property="authorBean.lastname" styleClass="width180"/><br>
+		email:<html:text name="PostItForm" property="authorBean.email" styleClass="width180"/><br>
+		Politicas:<html:checkbox name="PostItForm" property="authorBean.acceptPolitics" styleClass="width180"/><br>
+		Texto:<html:text name="PostItForm" property="text" styleClass="width180"/><br>
+		<html:submit property="operation">
+			Salvar
 		</html:submit>
 	</html:form>
 </body>

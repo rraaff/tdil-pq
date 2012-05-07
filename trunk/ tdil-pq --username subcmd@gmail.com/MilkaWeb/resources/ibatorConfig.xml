@@ -35,34 +35,37 @@ targetProject="MilkaWeb">
   <property name="methodNameCalculator" value="extended" />
 </daoGenerator>
 
-<table schema="MILKA" tableName="SYSTEMUSER" domainObjectName="SystemUser">
+<table schema="MILKA" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="SYSPROPERTIES" domainObjectName="SystemProperty">
+<table schema="MILKA" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="BLOB_DATA" domainObjectName="BlobData">
+<table schema="MILKA" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail">
+<table schema="MILKA" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="RAW_INSERT" domainObjectName="RawInsert">
+<table schema="MILKA" tableName="RAW_INSERT" domainObjectName="RawInsert" alias="ri">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="CLICK_COUNTER" domainObjectName="ClickCounter">
+<table schema="MILKA" tableName="CLICK_COUNTER" domainObjectName="ClickCounter" alias="cc">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="TAG" domainObjectName="Tag">
+<table schema="MILKA" tableName="TAG" domainObjectName="Tag" alias="ta">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="AUTHOR" domainObjectName="Author">
+<table schema="MILKA" tableName="AUTHOR" domainObjectName="Author" alias="au">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="MILKA" tableName="MILKA_PHOTO" domainObjectName="MilkaPhoto" alias="mp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="MILKA" tableName="MILKA_PHOTO_TAG" domainObjectName="MilkaPhotoTag">
+<table schema="MILKA" tableName="MILKA_PHOTO_TAG" domainObjectName="MilkaPhotoTag" alias="mpt">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="POST_IT" domainObjectName="PostIt" alias="pi">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
