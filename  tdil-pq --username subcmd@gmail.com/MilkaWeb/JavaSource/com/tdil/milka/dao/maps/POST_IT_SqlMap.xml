@@ -435,4 +435,21 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <!-- Custom queries -->
+  <resultMap class="com.tdil.milka.model.valueobjects.PostItValueObject" extends="BaseResultMap" id="ResultMapWithAuthor">
+  	<result column="firstname" jdbcType="VARCHAR" property="firstname" />
+  	<result column="lastname" jdbcType="VARCHAR" property="lastname" />
+  	<result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  
+  <select id="selectPostItsWithAuthorsToApprove" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="POST_IT.Base_Column_List" />,
+    <include refid="MILKA_PHOTO.Author_Column_List" />
+    from POST_IT pi, AUTHOR author
+    where pi.id_author = author.id
+    and pi.approved = 0
+    order by pi.id desc
+  </select>
 </sqlMap>

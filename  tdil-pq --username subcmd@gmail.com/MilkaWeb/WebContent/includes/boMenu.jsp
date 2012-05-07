@@ -8,13 +8,13 @@
 	<ul class="jbar">
 		<li><a href="#">Tu foto Milka</a>
 			<ul>
-				<li><html:link action="/goToApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToMilkaPhotoApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
 				<li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
 			</ul>
 		</li>
-		<li><a href="#">Artículos</a>
+		<li><a href="#">Post-Its</a>
 			<ul>
-				<li><html:link action="/goToRankingABM" >Manejo de rankings</html:link></li>
+				<li><html:link action="/goToPostItApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
 				<li><html:link action="/goToNoteABM" >Manejo de notas</html:link></li>
 			</ul>
 		</li>

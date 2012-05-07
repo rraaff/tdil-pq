@@ -2,10 +2,10 @@ package com.tdil.milka.model.valueobjects;
 
 import java.text.SimpleDateFormat;
 
-import com.tdil.milka.model.MilkaPhoto;
+import com.tdil.milka.model.PostIt;
 import com.tdil.struts.resources.ApplicationResources;
 
-public class MilkaPhotoValueObject extends MilkaPhoto {
+public class PostItValueObject extends PostIt {
 
 	/**
 	 * 

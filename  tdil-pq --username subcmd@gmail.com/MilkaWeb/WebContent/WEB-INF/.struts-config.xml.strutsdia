@@ -12,6 +12,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadMilkaPhoto.do"
    SUBTYPE="confirmed" TARGET="action12" TITLE="/uploadMilkaPhoto.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/addPostIt.do"
+   SUBTYPE="confirmed" TARGET="action14" TITLE="/addPostIt.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page1" PATH="/boLogin.jsp" SHAPE="240,129,0,0"
   SUBTYPE="jsp" TITLE="boLogin.jsp" TYPE="page" model-entity="StrutsProcessItem">
@@ -145,13 +148,6 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
    TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#goToApprovalPending" NAME="action13"
-  PATH="/goToApprovalPending" SHAPE="32,1873,0,0"
-  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page6" PATH="/milkaPhotoPending.jsp"
   SHAPE="240,1890,0,0" SUBTYPE="jsp" TITLE="milkaPhotoPending.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
@@ -161,5 +157,22 @@
    TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
    TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMilkaPhotoApprovalPending" NAME="action13"
+  PATH="/goToMilkaPhotoApprovalPending" SHAPE="32,2241,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page7" PATH="/postItsPending.jsp"
+  SHAPE="240,2370,0,0" SUBTYPE="jsp" TITLE="postItsPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToPostItApprovalPending" NAME="action15"
+  PATH="/goToPostItApprovalPending" SHAPE="32,2689,0,0"
+  TITLE="PostItAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/postItsPending.jsp" TARGET="page7" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>
