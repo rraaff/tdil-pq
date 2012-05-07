@@ -3,12 +3,12 @@
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
 	<property name="root.user" value="root" />
-	<property name="root.pass" value="" />
+	<property file="properties.prop"/>
 
 	<property name="db.url" value="jdbc:mysql://localhost:3306/MILKA" />
 	<property name="db.user" value="MILKA_USER" />
 	<property name="db.pass" value="MILKA_USER" />
-
+	
 	<target name="createDatabase">
 		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
 			<classpath>
@@ -36,14 +36,16 @@
 				<exclude name="servlet-api.jar"/>
 			</lib>
 		</war>
-		<!--unwar src="/home/mgodoy/Simon_WEB.war" dest="/home/mgodoy/Simon_WEB/" overwrite="true"/>
-		<delete file="/home/mgodoy/Simon_WEB.war"></delete>
-		<delete dir="/home/mgodoy/Simon_WEB/WEB-INF"></delete>
-		<tstamp>
-			<format property="hora" pattern="yyyyMMddHHmm"/>
-		</tstamp>
-		<zip destfile="/home/mgodoy/Simon_WEB_${hora}.zip" basedir="/home/mgodoy/" includes="Simon_WEB/**"></zip>
-		<delete dir="/home/mgodoy/Simon_WEB"></delete-->
+	</target>
+	
+	<target name="makeEntregable">
+		<delete dir="MILKA" failonerror="false"></delete>
+		<mkdir dir="MILKA"/>
+		<antcall target="makeWar"></antcall>
+    	<copy todir="MILKA" file="Instrucciones.txt"></copy>
+    	<copy todir="MILKA" file="database.sql"></copy>
+    	<copy todir="MILKA" file="ddl.sql"></copy>
+		<copy todir="MILKA" file="DJMAG_WEB.xml"></copy>
 	</target>
 	
 </project>

@@ -1,0 +1,22 @@
+Instalación
+===========
+
+1) Correr database.sql como root del mysql
+
+2) Correr ddl.sql MILKA_USER/MILKA_USER base MILKA
+
+3) Copiar el war al directorio webapps del tomcat (ej: apache-tomcat-6.0.32/webapps)
+
+4) Copiar el archivo MILKA_WEB.xml al directorio de contextos del tomcat (ej: apache-tomcat-6.0.32/conf/Catalina/localhost)
+
+
+Accesos
+=======
+
+Sitio público: ./index.jsp
+
+BackOffice: ./boLogin.jsp
+
+Cambio de password del Admin
+UPDATE SYSTEMUSER SET password = SHA1('Admin') WHERE username = 'Admin';
+COMMIT;
