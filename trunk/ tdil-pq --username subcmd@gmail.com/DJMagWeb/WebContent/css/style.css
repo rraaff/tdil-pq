@@ -168,7 +168,7 @@ body {
 #portaHeader #header #menu li a {
 	background-image: url(../images/bg-headerHomeLight.png);
 	background-repeat: repeat;
-	font-family: "Doppio One";
+	font-family: 'Doppio One', sans-serif;
 	text-transform: uppercase;
 	color: #FFFFFF;
 	float: left;	
@@ -371,7 +371,7 @@ body {
 	margin-left: auto;
 }
 #BlockSecondaryContent h2 {
-	font-family: "Doppio One";
+	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
 	text-transform: uppercase;
@@ -591,7 +591,7 @@ body {
 	margin-right:auto;	
 }
 #footer h4 {
-	font-family: "Doppio One";
+	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
 	text-transform: uppercase;
