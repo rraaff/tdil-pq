@@ -56,9 +56,7 @@ request.setAttribute( "test",  paginated); %>
   <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
   <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
   <display:column title="acciones">
-  	<a href="./viewMilkaPhoto.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Ver imagen</a>
-  	<a href="./publishMilkaPhoto.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Publicar</a>
-  	<a href="./editMilkaPhoto.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Editar</a>
+  	<a href="./reviewPostIt.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Review</a>
   </display:column>
 </display:table>
 </body>
