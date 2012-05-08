@@ -11,8 +11,7 @@ public class AuthorValueObject implements Serializable {
 	 */
 	private static final long serialVersionUID = -4644170064163931602L;
 	private boolean acceptPolitics = false;
-	private String firstname;
-	private String lastname;
+	private String name;
 	private String email;
 	
 	public boolean isAcceptPolitics() {
@@ -20,18 +19,6 @@ public class AuthorValueObject implements Serializable {
 	}
 	public void setAcceptPolitics(boolean acceptPolitics) {
 		this.acceptPolitics = acceptPolitics;
-	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
 	}
 	public String getEmail() {
 		return email;
@@ -41,11 +28,16 @@ public class AuthorValueObject implements Serializable {
 	}
 	public Author asAuthor() {
 		Author result = new Author();
-		result.setFirstname(this.getFirstname());
-		result.setLastname(this.getLastname());
+		result.setName(this.getName());
 		result.setEmail(this.getEmail());
 		result.setDeleted(0);
 		return result;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

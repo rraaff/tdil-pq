@@ -38,28 +38,16 @@ public class PostItValueObject extends PostIt {
 		return dateFormat.format(this.getCreationdate());
 	}
 	
-	public String getAuthorname() {
-		return this.getFirstname() + " " + this.getLastname();
-	}
-
 	public void setAuthorValueObject(AuthorValueObject authorValueObject) {
 		this.authorValueObject = authorValueObject;
 	}
 
-	public String getFirstname() {
-		return authorValueObject.getFirstname();
+	public String getName() {
+		return authorValueObject.getName();
 	}
 
-	public void setFirstname(String firstname) {
-		authorValueObject.setFirstname(firstname);
-	}
-
-	public String getLastname() {
-		return authorValueObject.getLastname();
-	}
-
-	public void setLastname(String lastname) {
-		authorValueObject.setLastname(lastname);
+	public void setName(String firstname) {
+		authorValueObject.setName(firstname);
 	}
 
 	public String getEmail() {
