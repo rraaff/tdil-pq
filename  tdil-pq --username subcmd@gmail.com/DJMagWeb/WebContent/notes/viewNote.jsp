@@ -180,9 +180,10 @@ div {
 </div>
 <!-- cargo el slider -->
 	<script type="text/javascript">
-    $(window).load(function() {
+    $(document).ready(function(){
         $('#slider').nivoSlider({
-			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
+			effect: 'fold', // Specify sets like: 'fold,fade,sliceDown');
+			pauseTime: 30000
 		});
     });
     </script>
