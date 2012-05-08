@@ -150,7 +150,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page6" PATH="/milkaPhotoPending.jsp"
   SHAPE="240,1890,0,0" SUBTYPE="jsp" TITLE="milkaPhotoPending.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveMilkaPhoto.do" SUBTYPE="confirmed"
+   TARGET="action17" TITLE="/approveDisapproveMilkaPhoto.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#addPostIt" NAME="action14" PATH="/addPostIt"
   SHAPE="32,1873,0,0" TITLE="PostItForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
@@ -175,8 +179,15 @@
    PATH="/postItsPending.jsp" TARGET="page7" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#reviewNotApproved" NAME="action16"
-  PATH="/reviewNotApproved" SHAPE="32,2241,0,0"
+ <PROCESS-ITEM ID="#reviewNotApprovedMilkaPhoto" NAME="action16"
+  PATH="/reviewNotApprovedMilkaPhoto" SHAPE="32,2241,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveMilkaPhoto" NAME="action17"
+  PATH="/approveDisapproveMilkaPhoto" SHAPE="32,1985,0,0"
   TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"

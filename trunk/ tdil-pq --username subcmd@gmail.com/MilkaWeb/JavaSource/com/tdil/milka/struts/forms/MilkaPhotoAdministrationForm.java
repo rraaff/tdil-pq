@@ -1,6 +1,7 @@
 package com.tdil.milka.struts.forms;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +16,10 @@ import com.tdil.milka.model.MilkaPhoto;
 import com.tdil.milka.model.valueobjects.MilkaPhotoValueObject;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ApproveDisapproveForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 
-public class MilkaPhotoAdministrationForm extends TransactionalValidationForm {
+public class MilkaPhotoAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm {
 
 	private int objectId;
 	private boolean frontcover;
@@ -78,6 +80,37 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm {
 	@Override
 	public void save() throws SQLException, ValidationException {
 	}	
+	
+	public void postApprove() {
+		for (MilkaPhotoValueObject mpvo : getApprovalPending()) {
+			if (mpvo.getId().equals(this.getObjectId())) {
+				mpvo.setApproved(1);
+			}
+		}
+	}
+	
+	public void postDisapprove() {
+		for (MilkaPhotoValueObject mpvo : getApprovalPending()) {
+			if (mpvo.getId().equals(this.getObjectId())) {
+				mpvo.setApproved(2);
+			}
+		}
+	}
+	
+	public void approve() throws SQLException, ValidationException {
+		MilkaPhotoDAO milkaPhotoDAO = DAOManager.getMilkaPhotoDAO();
+		MilkaPhoto milkaPhoto = milkaPhotoDAO.selectMilkaPhotoByPrimaryKey(this.getObjectId());
+		milkaPhoto.setApproved(1);
+		milkaPhoto.setPublishdate(new Date());
+		milkaPhotoDAO.updateMilkaPhotoByPrimaryKey(milkaPhoto);
+	}
+	
+	public void disapprove() throws SQLException, ValidationException {
+		MilkaPhotoDAO milkaPhotoDAO = DAOManager.getMilkaPhotoDAO();
+		MilkaPhoto milkaPhoto = milkaPhotoDAO.selectMilkaPhotoByPrimaryKey(this.getObjectId());
+		milkaPhoto.setApproved(2);
+		milkaPhotoDAO.updateMilkaPhotoByPrimaryKey(milkaPhoto);
+	}
 
 
 	private static Logger getLog() {

@@ -25,10 +25,14 @@ public class MilkaPhotoValueObject extends MilkaPhoto {
 		if (this.getDeleted().equals(1)) {
 			return ApplicationResources.getMessage("data.status.deleted");
 		} else {
-			if (this.getApproved().equals(1)) {
-				return ApplicationResources.getMessage("data.status.approved");
+			if (this.getApproved().equals(2)) {
+				return ApplicationResources.getMessage("data.status.disapproved");
 			} else {
-				return ApplicationResources.getMessage("data.status.pending");
+				if (this.getApproved().equals(1)) {
+					return ApplicationResources.getMessage("data.status.approved");
+				} else {
+					return ApplicationResources.getMessage("data.status.pending");
+				}
 			}
 		}
 	}

@@ -56,11 +56,20 @@ request.setAttribute( "test",  paginated); %>
   <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
   <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
   <display:column title="acciones">
-  	<a href="./reviewNotApproved.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
+  	<a href="./reviewNotApprovedMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
   </display:column>
 </display:table>
 <logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
 <img src="./download.st?id=<bean:write name="MilkaPhotoAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MilkaPhotoAdministrationForm" property="extBlobData"/>" alt="">
+<html:form method="POST" action="/approveDisapproveMilkaPhoto">
+	<html:submit property="operation">
+		<bean:message key="approve" />
+	</html:submit>
+	<html:submit property="operation">
+		<bean:message key="disapprove" />
+	</html:submit>
+</html:form>
 </logic:notEqual>
+
 </body>
 </html>
