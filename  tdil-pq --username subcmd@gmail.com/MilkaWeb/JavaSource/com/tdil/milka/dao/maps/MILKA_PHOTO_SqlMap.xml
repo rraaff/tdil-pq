@@ -373,7 +373,7 @@
     <include refid="MILKA_PHOTO.Author_Column_List" />
     from MILKA_PHOTO mp, AUTHOR author
     where mp.id_author = author.id
-    and mp.approved = 0
-    order by mp.id desc
+    and mp.approved != 1
+    order by mp.approved asc, mp.id desc
   </select>
 </sqlMap>
