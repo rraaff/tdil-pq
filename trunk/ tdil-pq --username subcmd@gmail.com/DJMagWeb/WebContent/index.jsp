@@ -12,7 +12,6 @@
 
 <html>
 <head>
-<link href="css/style.css" rel="stylesheet" type="text/css">
 <%@ include file="includes/head.jsp" %>
 <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
@@ -166,7 +165,8 @@ $(document).ready(
 	<script type="text/javascript">
 	  $(document).ready(function(){
 	   $('#slider').nivoSlider({
-			effect: 'fold' // Specify sets like: 'fold,fade,sliceDown');
+			effect: 'fold',  // Specify sets like: 'fold,fade,sliceDown');
+			pauseTime: 30000
 		});
 		
 		/*$("a[id^='fcover']").prettyPhoto({
