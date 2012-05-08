@@ -91,8 +91,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE AUTHOR (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `firstname` VARCHAR(100) NOT NULL ,
-  `lastname` VARCHAR(100) NOT NULL ,
+  `name` VARCHAR(150) NOT NULL ,
   `email` VARCHAR(150) NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))

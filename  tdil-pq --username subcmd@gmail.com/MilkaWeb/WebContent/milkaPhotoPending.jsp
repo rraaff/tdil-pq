@@ -52,7 +52,7 @@ request.setAttribute( "test",  paginated); %>
 <body>
 <display:table name="test" sort="external" pagesize="10" id="testit">
   <display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
-  <display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="authorname"></display:column>
+  <display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
   <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
   <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
   <display:column title="acciones">
