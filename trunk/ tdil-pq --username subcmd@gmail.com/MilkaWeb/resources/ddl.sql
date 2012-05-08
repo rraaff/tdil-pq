@@ -100,6 +100,7 @@ ENGINE = InnoDB;
 CREATE TABLE MILKA_PHOTO (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
   `id_author` INT NOT NULL ,
   `frontCover` INT NOT NULL,
   `showInHome` INT NOT NULL,
@@ -145,7 +146,9 @@ ENGINE = InnoDB;
 CREATE TABLE POST_IT (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
   `id_author` INT NOT NULL ,
+  `originalText` VARCHAR(4000) NULL ,
   `title` VARCHAR(100) NULL ,
   `description` VARCHAR(4000) NOT NULL ,
   `approved` INT NOT NULL,

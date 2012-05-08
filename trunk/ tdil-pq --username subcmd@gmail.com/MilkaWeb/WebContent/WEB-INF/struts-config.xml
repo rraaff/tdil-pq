@@ -72,6 +72,10 @@
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/reviewNotApproved"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/milkaPhotoPending.jsp"/>
+  </action>
   
   <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprovalPending"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">

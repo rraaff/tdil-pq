@@ -175,4 +175,11 @@
    PATH="/postItsPending.jsp" TARGET="page7" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewNotApproved" NAME="action16"
+  PATH="/reviewNotApproved" SHAPE="32,2241,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

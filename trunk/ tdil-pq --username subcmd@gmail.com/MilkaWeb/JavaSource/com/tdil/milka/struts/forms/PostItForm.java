@@ -69,7 +69,7 @@ public class PostItForm extends TransactionalValidationForm {
 		PostIt postIt = new PostIt();
 		postIt.setApproved(0);
 		postIt.setCreationdate(new Date());
-		postIt.setDescription(this.getText());
+		postIt.setOriginaltext(this.getText());
 		postIt.setDeleted(0);
 		postIt.setIdAuthor(authorId);
 		postIt.setIdClickCounter(clickCounterId);
