@@ -44,17 +44,25 @@
 <link type='text/css' href='css/tdil_bo.css' rel='stylesheet' media='screen' />
 </head>
 <body>
-<div id="content">
-	<div id="header"></div>
-	<div id="promoTitle"><h1>Bienvenido al BackOffice de la promoci&oacute;n <span class="remarcado">Degustaci&oacute;n exclusiva.</span></h1></div>
-  <FORM NAME ="form1" METHOD ="POST" ACTION ="boLogin.php">
-    <div id="login">
-      <div id="field1">Usuario: <INPUT TYPE = 'TEXT' Name ='usuario'  value="" maxlength="20"></div>
-        <div id="field2">Clave: <input type = 'password' name ='password'  value="" maxlength="20" AUTOCOMPLETE="off"></div>
-        <div id="errorMessage"><span class="remarcado"><?PHP print $errorMessage;?></span></div>
-        <div id="buttonAreas"><input type="submit" name="Submit1" value="Ingresar"></div>
-    </div>
-    </FORM>
+<div id="header"></div>
+<div id="container">
+	<div id="loginBase">
+		<h1 style="margin-bottom:0;">Administraci&oacute;n de la FB App &iquest;D&oacute;nde est&aacute;s bomb&oacute;n?</h1>
+		<FORM NAME="form1" METHOD="POST" ACTION="boLogin.php">
+			<div class="renglon width20">
+				<div class="label width20"><span class="errorText"><?PHP print $errorMessage;?></span></div>
+			</div>
+			<div class="renglon width230">
+				<div class="label width80">Usuario</div>
+				<div class="label width150"><INPUT TYPE='TEXT' Name='usuario' value="" maxlength="20" class="width150"/></div>
+			</div>
+			<div class="renglon width230" style="margin-bottom:20px;">
+				<div class="label width80">Contrase&ntilde;a</div>
+				<div class="label width150"><input type='password' name='password' value="" maxlength="20" class="width150" AUTOCOMPLETE="off"></div>
+			</div>
+			<input type="submit" name="Submit1" value="Ingresar">
+		</FORM>
+	</div>
 </div>
 </body>
 </html>
