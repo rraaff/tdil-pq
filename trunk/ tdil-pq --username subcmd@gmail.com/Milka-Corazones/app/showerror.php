@@ -2,42 +2,37 @@
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body {
-	background-image: url(../images/homeBaseApp2.jpg);
+#content {
+	background-image: url(../images/error.png);
 	background-repeat: no-repeat;
 	background-position: center top;
-	overflow:hidden !important;
+	width:100%;
+	height:100%;
 }
-#textContent{
-	width: 700px;
-	margin-top: 130px;
+#contentError{
+	width: 400px;
+	margin-top: 360px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
 }
-#textContent #title {
-	text-align: center;
+#boton {
+	width: 400px;
+	height:33px;
+	margin-top: 70px;
 	margin-right: auto;
-	margin-bottom: 30px;
 	margin-left: auto;
-	margin-top: 0px;
-	height: 41px;
-	width: 368px;
-}
-#contentSuccessfull {}
-#contentError {
-
+	text-align: center;
 }
 -->
 </style>
 <body>
-<div id="textContent">
-	<div id="title"><img src="../images/tituloErrores.png" alt="Uuuuooppsss!" width="265" height="42"></div>
+<div id="content">
 	<div id="contentError"><?php echo $errorMessage;?></div>
-<?php 
-$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
-?>
-	<div align="center" style="margin-top:25px;"><a href="<?php echo $redirect;?>" target="_top">Volver a la p&aacute;gina de inicio de la aplicaci&oacute;n</a></div>
+	<?php 
+	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
+	?>
+	<div id="boton"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/btn_volver.png" alt="Volver" width="122" height="33"></a></div>
 </div>
 </body>
 </html>

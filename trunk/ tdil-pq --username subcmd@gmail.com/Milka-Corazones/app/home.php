@@ -144,6 +144,8 @@ if ($num_rows > 0) {
 closeConnection($connection);
 ?>
 <html>
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="../js/AC_RunActiveContent.js" language="javascript"></script>
 <script type='text/javascript' src='../js/jquery-1.7.min.js'></script>
 
 <script>
@@ -171,52 +173,47 @@ closeConnection($connection);
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body {
-	background-image: url(../images/homeBaseApp2.jpg);
-	background-repeat: no-repeat;
-	background-position: center top;
-	overflow:hidden !important;
-}
-#baseDatosDeContacto {
-	height:318px;
-	margin-top:180px;
-	background-image: url(../images/homeData.png);
-	background-repeat: no-repeat;
-	background-position: center top;
-}
-form, div, table, tr, td {
-	font-size:12px;
-}
-#baseDatosDeContacto #acomodador {
-	margin-left:346px;
-	padding-top:100px !important;
-}
-.okButton {
-	font-size: 1px;
-	color: transparent;
-	background:transparent;
-	background-image: url(../images/button_ok.png);
-	background-repeat: no-repeat;
-	background-position: center -5px;
-	height: 69px;
-	width: 69px;
-	border-top-style: none;
-	border-right-style: none;
-	border-bottom-style: none;
-	border-left-style: none;
-	margin: 0px;
-	cursor:hand;
-}
-#invitationBlock {
-	margin-left:346px;
-}
-#buttonsLinks {
-	margin-left:346px;
-}
+
 </style>
 </head>
 <body>
-
+<script language="javascript">
+	if (AC_FL_RunContent == 0) {
+		alert("This page requires AC_RunActiveContent.js.");
+	} else {
+		AC_FL_RunContent(
+			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+			'width', '790',
+			'height', '700',
+			'src', '../swf/homeApp',
+			'quality', 'high',
+			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+			'align', 'middle',
+			'play', 'true',
+			'loop', 'true',
+			'scale', 'showall',
+			'wmode', 'window',
+			'devicefont', 'false',
+			'id', 'homeApp',
+			'bgcolor', '#ffffff',
+			'name', 'homeApp',
+			'menu', 'true',
+			'allowFullScreen', 'false',
+			'allowScriptAccess','always',
+			'FlashVars','<?php print $user; ?>',
+			'movie', '../swf/homeApp',
+			'salign', ''
+			); //end AC code
+	}
+</script>
+<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
+	<param name="allowScriptAccess" value="Always" />
+	<param name="allowFullScreen" value="false" />
+	<param name="FlashVars" value="<?php print $user; ?>"/>
+	<param name="movie" value="../swf/homeApp.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="../swf/homeApp.swf" FlashVars="<?php print $user; ?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+</noscript>
 <?php if ($hascontactdata == 0) { ?>
 	<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
 			<div id="baseDatosDeContacto">
