@@ -6,14 +6,19 @@
 <ibatorConfiguration>
 <classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 <classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/JavaBase/bin/" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/plugin.jar" />
 <ibatorContext 
   id="ibatorContext" 
   targetRuntime="Ibatis2Java5" 
   defaultModelType="flat">
 
+<ibatorPlugin type="com.tdil.ibatis.plugin.MySqlDeleteByExamplePlugin">
+</ibatorPlugin>
+
 <jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost:3306/MILKA" userId="MILKA_USER"
 			password="MILKA_USER" />
+
 
 <javaModelGenerator targetPackage="com.tdil.milka.model"
   targetProject="MilkaWeb">

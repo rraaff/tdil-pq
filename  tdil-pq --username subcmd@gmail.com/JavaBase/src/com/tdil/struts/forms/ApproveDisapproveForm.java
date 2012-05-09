@@ -8,6 +8,10 @@ public interface ApproveDisapproveForm {
 
 	public String getOperation();
 
+	void initForApprove() throws SQLException;
+	
+	void initForReview() throws SQLException;
+	
 	void approve() throws SQLException, ValidationException;
 	
 	void disapprove() throws SQLException, ValidationException;

@@ -68,8 +68,12 @@
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
   
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoApprovalPending"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoApprove"
+   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/milkaPhotoPending.jsp"/>
+  </action>
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoReview"
+   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
   <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/reviewNotApprovedMilkaPhoto"
@@ -80,6 +84,7 @@
    scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
+  <action path="/searchTags" scope="request" type="com.tdil.milka.struts.action.SearchTagsAction"/>
   
   <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprovalPending"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">

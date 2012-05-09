@@ -65,7 +65,7 @@ public class DAOManager {
 		return new MilkaPhotoDAOImpl(IBatisManager.getClient());
 	}
 	
-	public static MilkaPhotoTagDAO getRawMilkaPhotoTagDAO() throws SQLException {
+	public static MilkaPhotoTagDAO getMilkaPhotoTagDAO() throws SQLException {
 		return new MilkaPhotoTagDAOImpl(IBatisManager.getClient());
 	}
 	
