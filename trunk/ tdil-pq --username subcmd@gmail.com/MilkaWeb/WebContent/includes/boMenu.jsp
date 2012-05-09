@@ -8,8 +8,8 @@
 	<ul class="jbar">
 		<li><a href="#">Tu foto Milka</a>
 			<ul>
-				<li><html:link action="/goToMilkaPhotoApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
-				<li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
+				<li><html:link action="/goToMilkaPhotoApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToMilkaPhotoReview" >Revision de aprobados</html:link></li>
 			</ul>
 		</li>
 		<li><a href="#">Post-Its</a>

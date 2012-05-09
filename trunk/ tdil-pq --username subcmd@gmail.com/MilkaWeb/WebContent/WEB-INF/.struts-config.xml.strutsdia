@@ -162,13 +162,6 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
    TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#goToMilkaPhotoApprovalPending" NAME="action13"
-  PATH="/goToMilkaPhotoApprovalPending" SHAPE="32,2241,0,0"
-  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page7" PATH="/postItsPending.jsp"
   SHAPE="240,2370,0,0" SUBTYPE="jsp" TITLE="postItsPending.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
@@ -193,4 +186,20 @@
    PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMilkaPhotoApprove" NAME="action13"
+  PATH="/goToMilkaPhotoApprove" SHAPE="32,1985,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMilkaPhotoReview" NAME="action18"
+  PATH="/goToMilkaPhotoReview" SHAPE="32,2353,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchTags" NAME="action19" PATH="/searchTags"
+  SHAPE="32,3137,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

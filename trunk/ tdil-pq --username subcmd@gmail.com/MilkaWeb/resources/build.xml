@@ -38,8 +38,8 @@
 	</target>
 
 	<target name="makeWar">
-		<delete file="./MILKA_WEB.war"></delete>
-		<war destfile="./MILKA_WEB.war" basedir="../../MilkaWeb/WebContent" webxml="../../MilkaWeb/WebContent/WEB-INF/web.xml">
+		<delete file="./MILKA.tmp/MILKA_WEB.war"></delete>
+		<war destfile="./MILKA.tmp/MILKA_WEB.war" basedir="../../MilkaWeb/WebContent" webxml="../../MilkaWeb/WebContent/WEB-INF/web.xml">
 			<classes dir="../../JavaBase/bin"/>
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar"/>
@@ -49,13 +49,13 @@
 	</target>
 	
 	<target name="makeEntregable">
-		<delete dir="MILKA" failonerror="false"></delete>
-		<mkdir dir="MILKA"/>
+		<delete dir="MILKA.tmp" failonerror="false"></delete>
+		<mkdir dir="MILKA.tmp"/>
 		<antcall target="makeWar"></antcall>
-    	<copy todir="MILKA" file="Instrucciones.txt"></copy>
-    	<copy todir="MILKA" file="database.sql"></copy>
-    	<copy todir="MILKA" file="ddl.sql"></copy>
-		<copy todir="MILKA" file="DJMAG_WEB.xml"></copy>
+    	<copy todir="MILKA.tmp" file="Instrucciones.txt"></copy>
+    	<copy todir="MILKA.tmp" file="database.sql"></copy>
+    	<copy todir="MILKA.tmp" file="ddl.sql"></copy>
+		<copy todir="MILKA.tmp" file="DJMAG_WEB.xml"></copy>
 	</target>
 	
 </project>
