@@ -64,85 +64,67 @@ function doSearch() {
 
 </script>
 </head>
-<body id="dt_example">
-
+<body><!-- id="dt_example"-->
 <div id="content">
-	<div id="header"></div>
-    <div id="block">
-		<div id="promoTitle"><h1>Bienvenido al BackOffice de la promoci&oacute;n <span class="remarcado">Degustaci&oacute;n exclusiva.</span></h1></div>
-        <div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
-        <div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
-        <div id="page">
-            <div align="center">
-            	<h2>Busquedas</h2>
-                <table width="350" cellspacing="10" cellpadding="0" align="center" border="0">
-                    <tr>	
-                        <td>Sexo:</td>
-                        <td><select id="sGender">
-                                <option value="all">Todos</option>
-                                <option value="male">Hombre</option>
-                                <option value="female">Mujer</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>	
-                        <td>Participaciones (como minimo):</td>
-                        <td><input type="text" id="sMinParticipations"></td>
-                    </tr>
-                    <tr>	
-                        <td>Participaciones (como maximo):</td>
-                        <td><input type="text" id="sMaxParticipations"></td>
-                    </tr>
-                     <tr>	
-                        <td>Premios ganados (como minimo):</td>
-                        <td><input type="text" id="sMinWins"></td>
-                    </tr>
-                    <tr>	
-                        <td>Premios ganados (como maximo):</td>
-                        <td><input type="text" id="sMaxWins"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <input type="button" onClick="doSearch();" value="Buscar">
-                        </td>
-                    </tr>
-                </table>			
-            </div>
-            <div id="container">
-                <div id="dynamic">
-                    <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
-                        <thead>
-                            <tr>
-                                <th width="5%">FB id</th>
-                                <th width="25%">FB nombre</th>
-                                <th width="25%">FB usuario</th>
-                                <th width="25%">FB sexo</th>
-                                <th width="25%">Nombre</th>
-                                <th width="25%">Apellido</th>
-                                <th width="25%">Participaciones</th>
-                                <th width="25%">Premios</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th width="5%">FB id</th>
-                                <th width="25%">FB nombre</th>
-                                <th width="25%">FB usuario</th>
-                                <th width="25%">FB sexo</th>
-                                <th width="25%">Nombre</th>
-                                <th width="25%">Apellido</th>
-                               <th width="25%">Participaciones</th>
-                               <th width="25%">Premios</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-                    
-        </div>
+	<div id="header">
+		<div id="block">
+			<div id="portaMenu"><?php include("include/menuBO.php"); ?><div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div></div>
+		</div>
+	</div>
+	<div id="formulariosBase" class="height400" style="overflow:auto;">
+		<h1>Estado de la aplicaci&oacute;n</h1>
+		<h2>Busquedas</h2>
+		<div class="renglon width500">
+			<div class="label width50">Sexo:</div>
+			<div class="label width100"><select id="sGender" class="width100"><option value="all">Todos</option><option value="male">Hombre</option><option value="female">Mujer</option></select></div>
+		</div>
+		<div class="renglon width500">
+			<div class="label width120">Participaciones (como minimo):</div>
+			<div class="label width50"><input type="text" id="sMinParticipations" class="width50"></div>
+			<div class="label width50"></div>
+			<div class="label width120">Participaciones (como maximo):</div>
+			<div class="label width50"><input type="text" id="sMaxParticipations" class="width50"></div>
+		</div>
+		<div class="renglon width500">
+			<div class="label width120">Premios ganados (como minimo):</div>
+			<div class="label width50"><input type="text" id="sMinWins" class="width50"></div>
+			<div class="label width50"></div>
+			<div class="label width120">Premios ganados (como maximo):</div>
+			<div class="label width50"><input type="text" id="sMaxWins" class="width50"></div>
+		</div>
+		<div class="renglon width200 height50"><input type="button" onClick="doSearch();" value="Buscar"></div>
+		<div class="renglon width800 height300" style="overflow:auto;">
+			<div id="dynamic">
+				<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+					<thead>
+						<tr>
+							<th width="5%">FB id</th>
+							<th width="25%">FB nombre</th>
+							<th width="25%">FB usuario</th>
+							<th width="25%">FB sexo</th>
+							<th width="25%">Nombre</th>
+							<th width="25%">Apellido</th>
+							<th width="25%">Participaciones</th>
+							<th width="25%">Premios</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th width="5%">FB id</th>
+							<th width="25%">FB nombre</th>
+							<th width="25%">FB usuario</th>
+							<th width="25%">FB sexo</th>
+							<th width="25%">Nombre</th>
+							<th width="25%">Apellido</th>
+							<th width="25%">Participaciones</th>
+							<th width="25%">Premios</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
