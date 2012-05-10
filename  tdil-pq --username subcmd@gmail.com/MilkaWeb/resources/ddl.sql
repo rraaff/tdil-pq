@@ -58,6 +58,7 @@ CREATE TABLE NOTIFICATION_EMAIL (
 ENGINE = InnoDB;
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('yourmilkaphoto', 'Aprobacion de foto milka','contenido del email',1);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('post-it', 'Aprobacion de post it','contenido del email',1);
 
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -148,9 +149,9 @@ CREATE TABLE POST_IT (
   `creationDate` DATETIME NOT NULL ,
   `publishDate` DATETIME NULL ,
   `id_author` INT NOT NULL ,
-  `originalText` VARCHAR(4000) NULL ,
+  `originalText` VARCHAR(4000) NOT NULL ,
   `title` VARCHAR(100) NULL ,
-  `description` VARCHAR(4000) NOT NULL ,
+  `description` VARCHAR(4000) NULL ,
   `approved` INT NOT NULL,
   `id_thumb` INT NULL,
   `ext_thum` VARCHAR(10) NULL ,
@@ -158,8 +159,7 @@ CREATE TABLE POST_IT (
   `ext_image` VARCHAR(10) NULL ,
   `url_link` VARCHAR(200) NULL ,
   `url_target` VARCHAR(50) NULL ,
-  `xcoord` VARCHAR(50) NULL ,
-  `ycoord` VARCHAR(50) NULL ,
+  `position` INT NOT NULL ,
   `color` VARCHAR(50) NULL ,
   `id_click_counter` INT NOT NULL,
   `deleted` INT NOT NULL ,

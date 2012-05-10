@@ -68,6 +68,7 @@ public class PostItForm extends TransactionalValidationForm {
 		int authorId = authorDAO.insertAuthor(author);
 		PostIt postIt = new PostIt();
 		postIt.setApproved(0);
+		postIt.setPosition(0);
 		postIt.setCreationdate(new Date());
 		postIt.setOriginaltext(this.getText());
 		postIt.setDeleted(0);

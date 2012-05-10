@@ -8,9 +8,11 @@
   <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.milka.struts.forms.SystemPropertyForm"/>
   <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.milka.struts.forms.NotificationEmailForm"/>
   <form-bean id="MilkaPhotoForm" name="MilkaPhotoForm" type="com.tdil.milka.struts.forms.MilkaPhotoForm"/>
-  <form-bean id="MilkaPhotoAdministrationForm" name="MilkaPhotoAdministrationForm" type="com.tdil.milka.struts.forms.MilkaPhotoAdministrationForm"/>
+  <form-bean id="MilkaPhotoAdministrationForm"
+   name="MilkaPhotoAdministrationForm" type="com.tdil.milka.struts.forms.MilkaPhotoAdministrationForm"/>
   <form-bean id="PostItForm" name="PostItForm" type="com.tdil.milka.struts.forms.PostItForm"/>
-  <form-bean id="PostItAdministrationForm" name="PostItAdministrationForm" type="com.tdil.milka.struts.forms.PostItAdministrationForm"/>
+  <form-bean id="PostItAdministrationForm"
+   name="PostItAdministrationForm" type="com.tdil.milka.struts.forms.PostItAdministrationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -25,90 +27,100 @@
    <forward name="success" path="/boHome.jsp" redirect="true"/>
   </action>
   <action path="/logout" type="com.tdil.milka.struts.action.LogoutAction"/>
- 
-  <action name="SystemPropertyForm" parameter="Admin" path="/goToSystemPropertyABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/goToSystemPropertyABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/systemPropertyAdministration.jsp"/>
   </action>
-  <action name="SystemPropertyForm" parameter="Admin" path="/saveSystemProperty"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/saveSystemProperty" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/systemPropertyAdministration.jsp"/>
   </action>
-  <action name="SystemPropertyForm" parameter="Admin" path="/editSystemProperty"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/editSystemProperty" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/systemPropertyAdministration.jsp"/>
   </action>
-  <action name="SystemPropertyForm" parameter="Admin" path="/toggleDeletedSystemProperty"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/toggleDeletedSystemProperty" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/systemPropertyAdministration.jsp"/>
   </action>
-  
-  <action name="NotificationEmailForm" parameter="Admin" path="/goToNotificationEmailABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/goToNotificationEmailABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
-  <action name="NotificationEmailForm" parameter="Admin" path="/saveNotificationEmail"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/saveNotificationEmail" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/notificationEmailAdministration.jsp"/>
   </action>
-  <action name="NotificationEmailForm" parameter="Admin" path="/editNotificationEmail"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/editNotificationEmail" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
-  <action name="NotificationEmailForm" parameter="Admin" path="/toggleDeletedNotificationEmail"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/toggleDeletedNotificationEmail" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/notificationEmailAdministration.jsp"/>
   </action>
-  <action name="NotificationEmailForm" parameter="Admin" path="/testEmailNotification"
-   scope="session" type="com.tdil.milka.struts.action.TestEmailNotificationAction">
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/testEmailNotification" scope="session" type="com.tdil.milka.struts.action.TestEmailNotificationAction">
    <forward name="continue" path="/notificationEmailAdministration.jsp"/>
   </action>
-  
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoApprove"
-   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin"
+   path="/goToMilkaPhotoApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/goToMilkaPhotoReview"
-   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin"
+   path="/goToMilkaPhotoReview" scope="session" type="com.tdil.struts.actions.GoToReviewAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/reviewNotApprovedMilkaPhoto"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin"
+   path="/reviewMilkaPhoto" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
-  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/approveDisapproveMilkaPhoto"
-   scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin"
+   path="/approveDisapproveMilkaPhoto" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
   <action path="/searchTags" scope="request" type="com.tdil.milka.struts.action.SearchTagsAction"/>
   
-  <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprovalPending"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/postItsPending.jsp"/>
+  
+  <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprove"
+   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/postItPending.jsp"/>
+  </action>
+  <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItReview"
+   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/postItPending.jsp"/>
+  </action>
+  <action name="PostItAdministrationForm" parameter="Admin" path="/reviewPostIt"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/postItPending.jsp"/>
+  </action>
+  <action name="PostItAdministrationForm" parameter="Admin" path="/approveDisapprovePostIt"
+   scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/postItPending.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadPostItImage" type="com.tdil.milka.struts.action.UploadPostItImageAction"/>
+  <action name="PostItAdministrationForm" parameter="Admin" path="/viewPostItThumb"
+   scope="session" type="com.tdil.milka.struts.action.ViewPostItThumbAction">
+  </action>
+  <action name="PostItAdministrationForm" parameter="Admin" path="/viewPostItImage"
+   scope="session" type="com.tdil.milka.struts.action.ViewPostItImageAction">
   </action>
   
   <!--  Public actions -->
-  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/index.jsp"/>
   </action>
-  
-  <action name="PostItForm" path="/addPostIt"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/index.jsp"/>
   </action>
-  
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
-  
-  
  </action-mappings>
- 
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.milka.struts.resources.ApplicationResources"/>
 </struts-config>

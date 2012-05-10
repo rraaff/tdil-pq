@@ -6,7 +6,7 @@
 <ibatorConfiguration>
 <classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 <classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/JavaBase/bin/" />
-<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/plugin.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/pluginibator.jar" />
 <ibatorContext 
   id="ibatorContext" 
   targetRuntime="Ibatis2Java5" 
