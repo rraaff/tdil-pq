@@ -1,3 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.tdil.djmag.model.SectionType"%>
+<%@page import="com.tdil.djmag.model.Country"%>
+<%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
@@ -137,6 +142,32 @@ div {
 </style>
 </head>
 <body style="background:#000000; background-image:none;">
+
+<div id="portaHeader">
+	<div id="header">
+		<div id="logo"></div>
+		<div id="menu">
+			<ul>
+				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
+					<li>
+						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
+							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[ranking_menu]"><%= section.getName() %></a>
+						<% } else { %>
+							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
+								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[videos_menu]"><%= section.getName() %></a>
+							<% } else { %>
+								<a href="<%=publicHomeBean.getExternalLink(publicHomeBean.getFirstNoteForSection(section))%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=section.getId()%>]"><%= section.getName() %></a>
+							<% } %>
+						<% } %>
+					</li>
+				<% } %>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-top20.gif" width="74" height="88"></a></li>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-shop.gif" width="62" height="88"></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 <div id="fakeLiveboxWindow">
 	<!-- Estructura de la interface -->
 	<div id="navBar">
@@ -178,6 +209,29 @@ div {
 		<% } %>
 	</div>
 </div>
+
+<%@ include file="../includes/homeBannerTop.jsp" %>
+<div id="BlockSecondaryContent">
+	<div id="leftContent">
+		<%@ include file="../includes/noteLastNotesCover.jsp" %>
+		<%@ include file="../includes/noteLastNotes.jsp" %>
+		<h2>ultimos videos</h2>
+		<%@ include file="../includes/noteVideos.jsp" %> 
+	</div>
+	<div id="rightContent">
+		<%@ include file="../includes/noteAgenda.jsp" %>
+		<%@ include file="../includes/noteTwitter.jsp" %>
+		<%@ include file="../includes/noteFacebook.jsp" %>
+	</div>
+</div>
+<%@ include file="../includes/noteFooter.jsp" %>
+<!-- Galeria de ultimas noticias -->
+<div id="newsGallery" class="hide">
+<% for (NoteValueObject note : publicHomeBean.getLastNotesLinks()) { %>
+	<a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[news_gal]"><%=note.getTitle() %></a>
+<% } %>
+</div>
+
 <!-- cargo el slider -->
 	<script type="text/javascript">
     $(document).ready(function(){
