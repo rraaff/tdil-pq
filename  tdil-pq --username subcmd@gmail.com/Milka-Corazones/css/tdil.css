@@ -5,10 +5,10 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,bl
 	border:0;
 }
 body {
-	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 12px;
 	font-weight: normal;
-	color: #5b5b5b;
+	color: #FFFFFF;
 	margin: 0px;
 	padding: 0px;
 	overflow:hidden;

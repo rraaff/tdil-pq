@@ -173,53 +173,98 @@ closeConnection($connection);
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-
+#content {
+	margin:0;
+	padding:0;
+	width:790px;
+	height:700px;
+	overflow:hidden;
+}
+#contentDatos {
+	margin:0;
+	padding:0;
+	width:790px;
+	height:700px;
+	overflow:hidden;
+	background-image: url(../images/acertasteDatos.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+#contentDatos #acomodador {
+	width:395px;
+	margin-left:200px;
+	margin-top:250px;
+}
+#contentDatos #acomodador #renglon {
+	width:250px;
+	height:41px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+	margin-bottom:0;
+}
+#errmessage{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color: #FF9999;
+	font-size:15px;
+	text-align:center;
+	width: 380px;
+	height: 20px;
+	margin-bottom:10px;
+}
+input[type="text"], input[type="password"], select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:14px;
+	color:#5a5a5a;
+	float:left;
+	margin:0;
+	padding:2px;
+	line-height: normal;
+	width:248px;
+	height:33px;
+	border: solid 1px #999999;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+input[type="button"], input[type="submit"] {
+	background:none;
+	background-image: url(../images/btn_enviar_off.png);
+	background-repeat: repeat;
+	background-position: center center;
+	width:122px;
+	height:33px;
+	margin:0;
+	padding:0;
+}
+-->
 </style>
 </head>
 <body>
 	<?php if ($isTodayWinner == 1) { ?>
 		<?php if ($hascontactdata == 0) { ?>
 			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
-					<div id="baseDatosDeContacto">
-						<div id="errmessage"></div>
+					<div id="contentDatos">
 						<div id="acomodador">
-							<table cellpadding="5" cellspacing="0" border="0" align="left">
-								<tr>
-									<td>Nombre: </td>
-									<td><input type="text" name="firstname" id="firstname"></td>
-								</tr>
-								<tr>
-									<td>Apellido: </td>
-									<td><input type="text" name="lastname" id="lastname"></td>
-								</tr>
-								<tr>
-									<td>Direccion: </td>
-									<td><input type="text" name="address" id="address"></td>
-								</tr>
-								<tr>
-									<td>Telefono: </td>
-									<td><input type="text" name="phone" id="phone"></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
-								</tr>
-								<tr>
-									<td colspan="2"><span class="remarcado">No tenes datos de contacto.</span><br/>Dejalos para poder reclamar tu premio.</td>
-								</tr>
-							</table>
+							<div id="errmessage"></div>
+							<div id="renglon"><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
+							<!--div id="renglon"><input type="text" name="lastname" id="lastname" placeholder=" Este no va"></div-->
+							<div id="renglon"><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
+							<div id="renglon"><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
+							<div id="renglon" style="margin-top:15px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
 						</div>
 					</div>
 				</form>
 		<?php } else { ?>
-			Felicitaciones, sos el ganador del dia
+			<div id="content"><img src="../images/felicitaciones.png" width="790" height="700" border="0"></div>
 		<?php } ?>
 	<?php } else { ?>
 		<?php if ($alreadyParticipated == 1) { ?>
-			Hoy ya participaste
+			<div id="content"><img src="../images/yaParticipaste.png" width="790" height="700" border="0"></div>
 		<?php } else { 
 			if ($promoToday == 1) { 
 				if ($allPrizesGiven == 1) { ?>
-						Ya se entregaron todos los premios del dia.
+						<div id="content"><img src="../images/yaSeEntregaron.png" width="790" height="700" border="0"></div>
 					<?php } else { ?>
 						<script language="javascript">
 							if (AC_FL_RunContent == 0) {
@@ -260,7 +305,7 @@ closeConnection($connection);
 						</noscript>
 				<?php } ?>
 			<?php } else { ?>
-					NO hay promo para hoy
+					<div id="content"><img src="../images/noHayHoy.png" width="790" height="700" border="0"></div>
 			<?php } ?>
 		<?php } ?>
 	<?php } ?>
