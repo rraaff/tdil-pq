@@ -8,18 +8,16 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		// Inicio conexion
 		
-		$xcoord = $_POST['xcoord'];
-		$ycoord = $_POST['ycoord'];
+		$coord = $_POST['coord'];
 		$prizeDate = $_POST['prizeDate'];
 		$active = 1;
 		
-		$xcoord = quote_smart($xcoord, $connection);
-		$ycoord = quote_smart($ycoord, $connection);
+		$coord = quote_smart($coord, $connection);
 		$prizeDate = quote_smart($prizeDate, $connection);
 		$active = quote_smart($active, $connection);
 		
-		$SQL = "INSERT INTO DAILY_PRIZE (prizeDate, activationTimestamp , xcoord, ycoord, active) 
-			VALUES ($prizeDate, $prizeDate, $xcoord, $ycoord, $active)";
+		$SQL = "INSERT INTO DAILY_PRIZE (prizeDate, activationTimestamp , coord, active) 
+			VALUES ($prizeDate, $prizeDate, $coord, $active)";
 		$res = mysql_query($SQL,$connection)  or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 		
 		header("Location: boDailyPrize.php");
@@ -50,13 +48,11 @@ $(document).ready(
 		function(){
 			$("#altaIWForm").validate({
 				rules: { prizeDate: {required: true},
-						xcoord: {required: true},
-						ycoord: {required: true}
+						coord: {required: true}
 				},
 				messages: {
 					prizeDate: {required: "Ingrese la fecha."}, 
-					xcoord: {required: "Ingrese la coordenada x."},
-					ycoord: {required: "Seleccione la coordenada y."}
+					coord: {required: "Ingrese la coordenada ."},
 				}
 			});
 		}
@@ -73,8 +69,42 @@ $(document).ready(
 		<div align="center">
 			<table cellpadding="5" cellspacing="5" border="0" align="center">
 				<tr><td>Fecha</td><td><input type="text" name="prizeDate" id="prizeDate"></td><td class="remarcado"></td></tr>
-				<tr><td>Coordenada X</td><td><input type="text" name="xcoord"></td><td class="remarcado"></td></tr>
-				<tr><td>Coordenada Y</td><td><input type="text" name="ycoord"></td><td class="remarcado"></td></tr>
+				<tr><td>Coordenada</td><td>
+					<select name="coord" id="coord">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+						<option value="33">33</option>
+					</select>
 				<tr><td colspan="2" align="center"><input type="submit" name="submit2" value=" " class="saveButton"></td></tr>
 			</table>
 		</div>
@@ -101,8 +131,7 @@ $(document).ready(
 		<td><?php echo $iw['id'] ?></td>
 		<td><?php echo $iw['prizeDate'] ?></td>
 		<td><?php echo $iw['activationTimestamp'] ?></td>
-		<td><?php echo $iw['xcoord'] ?></td>
-		<td><?php echo $iw['ycoord'] ?></td>
+		<td><?php echo $iw['coord'] ?></td>
 		<td><?php 
 			if (is_null($iw['participationID'])) {
 				if ($pdate >= $today) {

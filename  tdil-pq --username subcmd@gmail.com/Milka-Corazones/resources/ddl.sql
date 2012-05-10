@@ -38,8 +38,7 @@ CREATE  TABLE `PARTICIPATION` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `creationDate` DATETIME NOT NULL,
   `fbuserID` INT NOT NULL ,
-  `xcoord` VARCHAR(10) NOT NULL,
-  `ycoord` VARCHAR(10) NOT NULL,
+  `coord` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `IX_PARTICIPATION_00` (`fbuserID` ASC) )
 ENGINE = MYISAM;
@@ -49,8 +48,7 @@ CREATE  TABLE `DAILY_PRIZE` (
   `prizeDate` DATE NOT NULL,
   `activationTimestamp` DATETIME NOT NULL,
   `participationID` INT NULL ,
-  `xcoord` VARCHAR(10) NOT NULL,
-  `ycoord` VARCHAR(10) NOT NULL,
+  `coord` VARCHAR(10) NOT NULL,
   `active` INT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MYISAM;

@@ -258,27 +258,6 @@ closeConnection($connection);
 							<param name="movie" value="../swf/homeApp.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="../swf/homeApp.swf" FlashVars="<?php print $user; ?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 							</object>
 						</noscript>
-					<form method="POST" action="doparticipation.php">
-							<input type="hidden" name="userid" value="<?php echo $userid;?>">
-							<div id="baseDatosDeContacto" style="margin-top:100px; height:315px;">
-								<div id="errmessage"></div>
-								<div id="acomodador">
-									<table cellpadding="5" cellspacing="0" border="0" align="left">
-										<tr>
-											<td>X: </td>
-											<td><input type="text" name="xcoord" id="xcoord" value=""></td>
-										</tr>
-										<tr>
-											<td>Y: </td>
-											<td><input type="text" name="ycoord" id="ycoord" value=""></td>
-										</tr>
-										<tr>
-											<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</form>
 				<?php } ?>
 			<?php } else { ?>
 					NO hay promo para hoy

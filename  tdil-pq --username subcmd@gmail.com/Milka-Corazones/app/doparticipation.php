@@ -19,12 +19,10 @@
 	$connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
 	mysql_select_db(DB_NAME,$connection);
 
-	$xcoord = $_REQUEST['xcoord'];
-	$ycoord = $_REQUEST['ycoord'];
+	$coord = $_REQUEST['coord'];
 	
 	$fbid = quote_smart($fbid, $connection);
-	$xcoord = quote_smart($xcoord, $connection);
-	$ycoord = quote_smart($ycoord, $connection);
+	$coord = quote_smart($coord, $connection);
 	
 	$SQL = "SELECT * FROM FBUSER where fbid = $fbid";
 	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
@@ -40,11 +38,11 @@
 		if ($num_rows > 0) {
 			$output = '0';
 		} else {	
-			$SQL = "INSERT INTO PARTICIPATION (creationDate, fbuserID,xcoord,ycoord) VALUES (NOW(), $userid,$xcoord,$ycoord)";
+			$SQL = "INSERT INTO PARTICIPATION (creationDate, fbuserID,coord) VALUES (NOW(), $userid,$coord)";
 			$res = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 			$returnInsert = mysql_insert_id($connection);
 			
-			$SQL = "UPDATE DAILY_PRIZE SET participationID = $returnInsert WHERE xcoord = $xcoord AND ycoord = $ycoord AND prizeDate = CURDATE() AND activationTimestamp <= NOW() AND participationID IS NULL LIMIT 1";
+			$SQL = "UPDATE DAILY_PRIZE SET participationID = $returnInsert WHERE coord = $coord AND prizeDate = CURDATE() AND activationTimestamp <= NOW() AND participationID IS NULL LIMIT 1";
 			mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 			// si gano
 			if (mysql_affected_rows() == 1) {
