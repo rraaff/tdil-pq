@@ -61,117 +61,84 @@ $(document).ready(
 </head>
 <body>
 <div id="content">
-	<div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
-	<div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
-	<div id="page">
-
-	<form action="boDailyPrize.php" name="altaIWForm" id="altaIWForm" method="POST">
-		<div align="center">
-			<table cellpadding="5" cellspacing="5" border="0" align="center">
-				<tr><td>Fecha</td><td><input type="text" name="prizeDate" id="prizeDate"></td><td class="remarcado"></td></tr>
-				<tr><td>Coordenada</td><td>
-					<select name="coord" id="coord">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-						<option value="13">13</option>
-						<option value="14">14</option>
-						<option value="15">15</option>
-						<option value="16">16</option>
-						<option value="17">17</option>
-						<option value="18">18</option>
-						<option value="19">19</option>
-						<option value="20">20</option>
-						<option value="21">21</option>
-						<option value="22">22</option>
-						<option value="23">23</option>
-						<option value="24">24</option>
-						<option value="25">25</option>
-						<option value="26">26</option>
-						<option value="27">27</option>
-						<option value="28">28</option>
-						<option value="29">29</option>
-						<option value="30">30</option>
-						<option value="31">31</option>
-						<option value="32">32</option>
-						<option value="33">33</option>
-					</select>
-				<tr><td colspan="2" align="center"><input type="submit" name="submit2" value=" " class="saveButton"></td></tr>
-			</table>
+	<div id="header">
+		<div id="block">
+			<div id="portaMenu"><?php include("include/menuBO.php"); ?><div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div></div>
 		</div>
+	</div>
+	<div id="formulariosBase">
+		<h1>Manejo de premios</h1>
+	<form action="boDailyPrize.php" name="altaIWForm" id="altaIWForm" method="POST">
+		<div class="renglon width450">
+			<div class="label width50">Fecha</div>
+			<div class="label width150"><input type="text" name="prizeDate" id="prizeDate"></div>
+			<div class="label width50"></div>
+			<div class="label width80">Coordenada</div>
+			<div class="label width80"><select name="coord" id="coord" class="width50"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option></select></div>
+		</div>
+		<div class="renglon width180 height50"><input type="submit" name="submit2" value="Generar Premio" class="saveButton"></div>
 	</form>
-
-	<table width="100%" cellpadding="5" cellspacing="5" border="0">
-		<tr bgcolor="#CCCCCC">
-			<td>Id</td>
-			<td>Fecha</td>
-			<td>Activacion</td>
-			<td>Coordenada x</td>
-			<td>Coordenada y</td>
-			<td>Estado</td>
-			<td>Ganador</td>
-			<td>Borrar</td>
-		</tr>
-	
-<?php
-	$today = strtotime(date('d.m.y', time()));
-	while ($iw = mysql_fetch_array($res)){
-		$pdate = strtotime(date('d.m.y', $iw['prizeDateUnix']));
-?>
-	<tr>
-		<td><?php echo $iw['id'] ?></td>
-		<td><?php echo $iw['prizeDate'] ?></td>
-		<td><?php echo $iw['activationTimestamp'] ?></td>
-		<td><?php echo $iw['coord'] ?></td>
-		<td><?php 
-			if (is_null($iw['participationID'])) {
-				if ($pdate >= $today) {
-     				echo 'Pendiente';
-				} else {
-				    echo 'Vencido';
-				}
-			} else {
-				echo 'Adjudicado';
-			}
-		?></td>
-		<td><?php 
-			if (!is_null($iw['fbname'])) { ?>
-				<a href="javascript:showWinner('<?php echo $iw['participationID'];?>')">
-				<?php echo $iw['fbname'];?>
-				</a>
-			<?php } else {
-				echo '-';
-			}
-		?></td>
-		<td><?php 
-			if (is_null($iw['participationID'])) {
-				if ($pdate > $today) {
-     				?>
-     				<a href="doDeleteDailyPrize.php?id=<?php echo $iw['id'];?>">
-						Borrar 
-					</a>
-     				<?php 
-				} else {
-				    echo '-';
-				}
-			} else {
-				echo '-';
-			}
-		?></td>
-	</tr>
-<?php 		
-	} 
-?>
-</table>
+	<div class="renglon width850 height250" style="overflow:auto;">
+		<table width="100%" cellpadding="5" cellspacing="2" border="0">
+			<tr bgcolor="#CCCCCC">
+				<td>Id</td>
+				<td>Fecha</td>
+				<td>Activacion</td>
+				<td># bombon</td>
+				<td>Estado</td>
+				<td>Ganador</td>
+				<td>Borrar</td>
+			</tr>	
+			<?php
+				$today = strtotime(date('d.m.y', time()));
+				while ($iw = mysql_fetch_array($res)){
+					$pdate = strtotime(date('d.m.y', $iw['prizeDateUnix']));
+			?>
+			<tr>
+				<td><?php echo $iw['id'] ?></td>
+				<td><?php echo $iw['prizeDate'] ?></td>
+				<td><?php echo $iw['activationTimestamp'] ?></td>
+				<td><?php echo $iw['coord'] ?></td>
+				<td><?php 
+					if (is_null($iw['participationID'])) {
+						if ($pdate >= $today) {
+							echo 'Pendiente';
+						} else {
+							echo 'Vencido';
+						}
+					} else {
+						echo 'Adjudicado';
+					}
+				?></td>
+				<td><?php 
+					if (!is_null($iw['fbname'])) { ?>
+						<a href="javascript:showWinner('<?php echo $iw['participationID'];?>')">
+						<?php echo $iw['fbname'];?>
+						</a>
+					<?php } else {
+						echo '-';
+					}
+				?></td>
+				<td><?php 
+					if (is_null($iw['participationID'])) {
+						if ($pdate > $today) {
+							?>
+							<a href="doDeleteDailyPrize.php?id=<?php echo $iw['id'];?>">
+								Borrar 
+							</a>
+							<?php 
+						} else {
+							echo '-';
+						}
+					} else {
+						echo '-';
+					}
+				?></td>
+			</tr>
+		<?php 		
+			} 
+		?>
+		</table>
 <script>
 
 function showWinner(ticketID) {
@@ -194,6 +161,7 @@ $(document).ready(
 		}
 	);
 </script>
+		</div>
 	</div>
 </div>
 </body>

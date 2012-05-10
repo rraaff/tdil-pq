@@ -38,19 +38,20 @@
 </head>
 <body>
 <div id="content">
-	<div id="header"></div>
-    <div id="block">
-		<div id="promoTitle"><h1>Bienvenido al BackOffice de la promoci&oacute;n <span class="remarcado">Degustaci&oacute;n exclusiva.</span></h1></div>
-        <div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
-        <div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
-        <div id="page">
-        	<h2>Estado de la aplicacion: 10 + 10 = 17</h2>
-            <div align="center">
-            <table width="350" cellspacing="10" cellpadding="0" align="center" border="0">
-                <?php while ( $aRow = mysql_fetch_array( $result ) ) { ?>
-                    <tr><td><?php echo $aRow["DATA_DESC"] ?></td><td><?php echo $aRow["DATA_VALUE"] ?></td></tr>
-                <?php }	?>
-            </table>
+	<div id="header">
+		<div id="block">
+			<div id="portaMenu"><?php include("include/menuBO.php"); ?><div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div></div>
+		</div>
+	</div>
+	<div id="formulariosBase">
+		<h1>Estado de la aplicaci&oacute;n</h1>
+		<div class="renglon width500 height300">
+			<div class="label width500 height300">
+				<table width="350" cellspacing="2" cellpadding="0" align="center" border="0">
+					<?php while ( $aRow = mysql_fetch_array( $result ) ) { ?>
+						<tr><td><?php echo $aRow["DATA_DESC"] ?></td><td><?php echo $aRow["DATA_VALUE"] ?></td></tr>
+					<?php }	?>
+				</table>
             </div>
 		</div>
 	</div>

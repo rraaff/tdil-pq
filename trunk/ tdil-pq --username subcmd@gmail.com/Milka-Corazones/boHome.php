@@ -12,13 +12,12 @@
 </head>
 <body>
 <div id="content">
-	<div id="header"></div>
-    <div id="block">
-		<div id="promoTitle"><h1>Bienvenido al BackOffice de la promoci&oacute;n <span class="remarcado">Degustaci&oacute;n exclusiva.</span></h1></div>
-		<div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div>
-		<div id="portaMenu"><?php include("include/menuBO.php"); ?></div>
-		<div id="page">Seleccione una acci&oacute;n</div>
+	<div id="header">
+		<div id="block">
+			<div id="portaMenu"><?php include("include/menuBO.php"); ?><div id="hello">Hola <span class="remarcado"><?php echo($_SESSION['boNombre']);?></span></div></div>
+		</div>
 	</div>
+	<div id="container" align="center">Seleccione una acci&oacute;n</div>
 </div>
 </body>
 </html>
