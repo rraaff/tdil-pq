@@ -96,9 +96,26 @@ request.setAttribute( "test",  paginated);
 
 <logic:notEqual name="PostItAdministrationForm" property="objectId" value="0">
 <html:form method="POST" action="/approveDisapprovePostIt">
-	Texto original: <bean:write name="PostItAdministrationForm" property="originaltext"/><br>
-	Titulo: <html:text name="PostItAdministrationForm" property="title" style="width: 300px;"/><br>
-
+	Texto original: <bean:write name="PostItAdministrationForm" property="originaltext"/><br><br>
+	Titulo: <html:text name="PostItAdministrationForm" property="title" style="width: 300px;"/><br><br>
+	Descripcion: <html:text name="PostItAdministrationForm" property="description" style="width: 300px;"/><br><br>
+	Color:<html:select name="PostItAdministrationForm" property="color" styleClass="width120">
+		<logic:iterate name="PostItAdministrationForm" property="allColors"
+			id="iterColor">
+			<option	<%=	((String) iterColor).equals( postItAdministrationForm.getColor()) ? "selected" : ""%>
+				value="<%=iterColor%>">
+				&nbsp;&nbsp;&nbsp;<%=iterColor%></option>
+		</logic:iterate>
+	</html:select><br><br>
+	Url: <html:text name="PostItAdministrationForm" property="urlLink" /><br><br>
+	Target:<html:select name="PostItAdministrationForm" property="urlTarget" >
+		<logic:iterate name="PostItAdministrationForm" property="allTargets"
+			id="iterTarget">
+			<option	<%=	((String) iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+				value="<%=iterTarget%>">
+				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+		</logic:iterate>
+	</html:select><br><br>
 	Miniatura	
 	<logic:equal name="PostItAdministrationForm" property="hasThumb" value="true">
 		<img id="img_thumb" src="./viewPostItThumb.do" width="30" height="30" align="absmiddle"> 

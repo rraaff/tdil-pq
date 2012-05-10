@@ -189,6 +189,11 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	}
 	
 	private void setData(PostIt postIt) throws SQLException {
+		postIt.setTitle(this.getTitle());
+		postIt.setDescription(this.getDescription());
+		postIt.setColor(this.getColor());
+		postIt.setUrlLink(this.getUrlLink());
+		postIt.setUrlTarget(this.getUrlTarget());
 		if (BlobHelper.shouldDeleteBlob(this.getCover())) {
 			BlobHelper.deleteBlob(postIt.getIdImage());
 			postIt.setIdImage(0);
