@@ -173,7 +173,7 @@ $(document).ready(
 			hideflash: true,
 	    	social_tools: false,
 	    	theme: 'dark_rounded'
-	    	});*/
+	    	});
 	  
 	    $("a[rel^='prettyPhoto']").prettyPhoto({
 	    	hideflash: true,
@@ -221,7 +221,7 @@ $(document).ready(
 						</div> \
 					</div> \
 					<div class="pp_overlay"></div>'
-	    });
+	    });*/
 	    
 		<% String action = request.getParameter("action");
 		if ("viewNote".equals(action)) { %>

@@ -73,6 +73,7 @@ public class PublicHomeBean  {
 	private Magazine magazine;
 	
 	private Footer footer;
+	private Footer footerNote;
 	
 	private TwitterFeed twitterFeed;
 	private FacebookFeed facebookFeed;
@@ -231,15 +232,54 @@ public class PublicHomeBean  {
 		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
 		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 			NoteValueObject nvo = frontCoverIter.next();
-			result.append("<a href=").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append(" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+			result.append("<a href=\"").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
 			index = index + 1;
 		}
 		if (index < MAX_NOTES_FOR_FOOTER) {
 			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
 			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 				NoteValueObject nvo = lastNewsIter.next();
-				result.append("<a href=").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append(" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+				result.append("<a href=\"").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
 				index = index + 1;
+			}
+		}
+		return result.toString();
+	}
+	
+	private String getPopulasNotesReplacementForNote() {
+		StringBuffer result = new StringBuffer();
+		int index = 0;
+		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
+		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+			NoteValueObject nvo = frontCoverIter.next();
+			result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+			index = index + 1;
+		}
+		if (index < MAX_NOTES_FOR_FOOTER) {
+			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
+			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+				NoteValueObject nvo = lastNewsIter.next();
+				result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+				index = index + 1;
+			}
+		}
+		return result.toString();
+	}
+	
+	private String getSectionsReplacementForNote() {
+		StringBuffer result = new StringBuffer();
+		for (Section section : getSectionsForCountry()) {
+			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
+				result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
+				result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[ranking_footer]\">").append(section.getName()).append("</a>\n");
+			} else {
+				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
+					result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
+					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[videos_footer]\">").append(section.getName()).append("</a>\n");
+				} else {
+					result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[sectionf_").append(section.getId()).append("]\">").append(section.getName()).append("</a>\n");
+				}
 			}
 		}
 		return result.toString();
@@ -690,9 +730,15 @@ public class PublicHomeBean  {
 	public void setFooter(Footer footer) {
 		if (footer != null) {
 			String html = footer.getHtmlcontent();
+			String htmlNote = footer.getHtmlcontent();
 			html = StringUtils.replace(html, "[SECCIONES]", this.getSectionsReplacement());
+			htmlNote = StringUtils.replace(htmlNote, "[SECCIONES]", this.getSectionsReplacementForNote());
 			html = StringUtils.replace(html, "[NOTAS_POPULARES]", this.getPopulasNotesReplacement());
+			htmlNote = StringUtils.replace(htmlNote, "[NOTAS_POPULARES]", this.getPopulasNotesReplacementForNote());
 			footer.setHtmlcontent(html);
+			Footer notefooter = new Footer();
+			notefooter.setHtmlcontent(htmlNote);
+			setFooterNote(notefooter);
 		}
 		this.footer = footer;
 	}
@@ -775,5 +821,13 @@ public class PublicHomeBean  {
 
 	public void setVideoSection(Section videoSection) {
 		this.videoSection = videoSection;
+	}
+
+	public Footer getFooterNote() {
+		return footerNote;
+	}
+
+	public void setFooterNote(Footer footerNote) {
+		this.footerNote = footerNote;
 	}
 }
