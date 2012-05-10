@@ -28,7 +28,7 @@
 	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 	$num_rows = mysql_num_rows($result);
 	if ($num_rows == 0) {
-		$output = '0';
+		$output = 'dummie=0&status=0';
 	} else {
 		$dbuser = mysql_fetch_array($result);
 		$userid = $dbuser['id'];
@@ -36,7 +36,7 @@
 		$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 		$num_rows = mysql_num_rows($result);
 		if ($num_rows > 0) {
-			$output = '0';
+			$output = 'dummie=0&status=0';
 		} else {	
 			$SQL = "INSERT INTO PARTICIPATION (creationDate, fbuserID,coord) VALUES (NOW(), $userid,$coord)";
 			$res = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
@@ -46,17 +46,14 @@
 			mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 			// si gano
 			if (mysql_affected_rows() == 1) {
-				$output = '1';
+				$output = 'dummie=0&status=1';
 			} else {
-				$output = '0';
+				$output = 'dummie=0&status=0';
 			}
-				
 		}
 	}
 	
 	// Cierre conexion
 	mysql_close($connection);
-	$output = str_replace("\r", "", $output);
-	$output = str_replace("\n", "", $output);
 	echo $output;
 ?>
