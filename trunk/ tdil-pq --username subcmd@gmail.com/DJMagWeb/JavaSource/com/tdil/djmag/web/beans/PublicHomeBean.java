@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.management.ListenerNotFoundException;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -170,12 +172,30 @@ public class PublicHomeBean  {
 		return this.getNoteRight() != null;
 	}
 	
+	public Section getSectionForId(String sectionId) {
+		int id = Integer.parseInt(sectionId);
+		for (Section s : getSectionsForCountry()) {
+			if (s.getId().equals(id)) {
+				return s;
+			}
+		}
+		return null;
+	}
+	
 	public String getExternalLink(String date, String webTitle) {
 		NoteValueObject noteValueObject = getNoteByParams(this.getCountry().getIsoCode2(), date, webTitle);
 		StringBuffer result = new StringBuffer();
 		result.append("./notes/").append(this.getCountry().getIsoCode2()).append("/");
 		result.append(formatDateForUrl(noteValueObject.getFromDate())).append("/");
 		result.append(noteValueObject.getWebTitle()).append(".html");
+		return result.toString();
+	}
+	
+	public String getExternalLink(Section section) {
+		StringBuffer result = new StringBuffer();
+		result.append("./notes/").append(this.getCountry().getIsoCode2()).append("/");
+		result.append(section.getId()).append("/");
+		result.append(section.getName()).append(".html");
 		return result.toString();
 	}
 	
@@ -270,14 +290,14 @@ public class PublicHomeBean  {
 		StringBuffer result = new StringBuffer();
 		for (Section section : getSectionsForCountry()) {
 			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
-				result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
+				result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
 				result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[ranking_footer]\">").append(section.getName()).append("</a>\n");
 			} else {
 				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
-					result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
+					result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
 					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[videos_footer]\">").append(section.getName()).append("</a>\n");
 				} else {
-					result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+					result.append("<a href=\"../../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
 					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[sectionf_").append(section.getId()).append("]\">").append(section.getName()).append("</a>\n");
 				}
 			}
@@ -801,6 +821,10 @@ public class PublicHomeBean  {
 
 	public Map<Section, List<NoteValueObject>> getSectionsNotes() {
 		return sectionsNotes;
+	}
+	
+	public List<NoteValueObject> getSectionsNotes(Section section) {
+		return getSectionsNotes().get(section);
 	}
 
 	public void setSectionsNotes(Map<Section, List<NoteValueObject>> sectionsNotes) {
