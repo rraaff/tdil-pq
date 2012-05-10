@@ -109,7 +109,7 @@ request.setAttribute( "test",  paginated);
   <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
   <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
   <display:column title="acciones">
-  	<a href="./reviewNotApprovedMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
+  	<a href="./reviewMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
   </display:column>
 </display:table>
 <logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">

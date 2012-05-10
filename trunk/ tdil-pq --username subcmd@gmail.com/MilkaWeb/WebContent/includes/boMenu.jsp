@@ -14,8 +14,8 @@
 		</li>
 		<li><a href="#">Post-Its</a>
 			<ul>
-				<li><html:link action="/goToPostItApprovalPending" >Pendientes de Aprobaci&oacute;n</html:link></li>
-				<li><html:link action="/goToNoteABM" >Manejo de notas</html:link></li>
+				<li><html:link action="/goToPostItApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToPostItReview" >Revision de aprobados</html:link></li>
 			</ul>
 		</li>
 		<li><a href="#">Reportes</a>

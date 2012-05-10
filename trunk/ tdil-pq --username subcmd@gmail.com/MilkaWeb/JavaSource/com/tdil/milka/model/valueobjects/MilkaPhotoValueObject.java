@@ -3,7 +3,6 @@ package com.tdil.milka.model.valueobjects;
 import java.text.SimpleDateFormat;
 
 import com.tdil.milka.model.MilkaPhoto;
-import com.tdil.struts.resources.ApplicationResources;
 
 public class MilkaPhotoValueObject extends MilkaPhoto {
 
@@ -22,19 +21,7 @@ public class MilkaPhotoValueObject extends MilkaPhoto {
 	}
 	
 	public String getStatusRB() {
-		if (this.getDeleted().equals(1)) {
-			return ApplicationResources.getMessage("data.status.deleted");
-		} else {
-			if (this.getApproved().equals(2)) {
-				return ApplicationResources.getMessage("data.status.disapproved");
-			} else {
-				if (this.getApproved().equals(1)) {
-					return ApplicationResources.getMessage("data.status.approved");
-				} else {
-					return ApplicationResources.getMessage("data.status.pending");
-				}
-			}
-		}
+		return StatusHelper.getStatusRB(this.getDeleted(), this.getApproved());
 	}
 	
 	public String getCreationDateAsString() {
