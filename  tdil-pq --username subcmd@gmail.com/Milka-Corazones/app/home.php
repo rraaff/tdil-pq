@@ -177,78 +177,42 @@ closeConnection($connection);
 </style>
 </head>
 <body>
-<script language="javascript">
-	if (AC_FL_RunContent == 0) {
-		alert("This page requires AC_RunActiveContent.js.");
-	} else {
-		AC_FL_RunContent(
-			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
-			'width', '790',
-			'height', '700',
-			'src', '../swf/homeApp',
-			'quality', 'high',
-			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
-			'align', 'middle',
-			'play', 'true',
-			'loop', 'true',
-			'scale', 'showall',
-			'wmode', 'window',
-			'devicefont', 'false',
-			'id', 'homeApp',
-			'bgcolor', '#ffffff',
-			'name', 'homeApp',
-			'menu', 'true',
-			'allowFullScreen', 'false',
-			'allowScriptAccess','always',
-			'FlashVars','<?php print $user; ?>',
-			'movie', '../swf/homeApp',
-			'salign', ''
-			); //end AC code
-	}
-</script>
-<noscript>
-	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
-	<param name="allowScriptAccess" value="Always" />
-	<param name="allowFullScreen" value="false" />
-	<param name="FlashVars" value="<?php print $user; ?>"/>
-	<param name="movie" value="../swf/homeApp.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="../swf/homeApp.swf" FlashVars="<?php print $user; ?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-	</object>
-</noscript>
-<?php if ($hascontactdata == 0) { ?>
-	<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
-			<div id="baseDatosDeContacto">
-				<div id="errmessage"></div>
-				<div id="acomodador">
-					<table cellpadding="5" cellspacing="0" border="0" align="left">
-						<tr>
-							<td>Nombre: </td>
-							<td><input type="text" name="firstname" id="firstname"></td>
-						</tr>
-						<tr>
-							<td>Apellido: </td>
-							<td><input type="text" name="lastname" id="lastname"></td>
-						</tr>
-						<tr>
-							<td>Direccion: </td>
-							<td><input type="text" name="address" id="address"></td>
-						</tr>
-						<tr>
-							<td>Telefono: </td>
-							<td><input type="text" name="phone" id="phone"></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
-						</tr>
-						<tr>
-							<td colspan="2"><span class="remarcado">No tenes datos de contacto.</span><br/>Para poder participa en la promo tenes que completarlos primero.</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</form>
-<?php } else { ?>
 	<?php if ($isTodayWinner == 1) { ?>
-		Felicitaciones, sos el ganador del dia
+		<?php if ($hascontactdata == 0) { ?>
+			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
+					<div id="baseDatosDeContacto">
+						<div id="errmessage"></div>
+						<div id="acomodador">
+							<table cellpadding="5" cellspacing="0" border="0" align="left">
+								<tr>
+									<td>Nombre: </td>
+									<td><input type="text" name="firstname" id="firstname"></td>
+								</tr>
+								<tr>
+									<td>Apellido: </td>
+									<td><input type="text" name="lastname" id="lastname"></td>
+								</tr>
+								<tr>
+									<td>Direccion: </td>
+									<td><input type="text" name="address" id="address"></td>
+								</tr>
+								<tr>
+									<td>Telefono: </td>
+									<td><input type="text" name="phone" id="phone"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value="Grabar datos"></td>
+								</tr>
+								<tr>
+									<td colspan="2"><span class="remarcado">No tenes datos de contacto.</span><br/>Dejalos para poder reclamar tu premio.</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</form>
+		<?php } else { ?>
+			Felicitaciones, sos el ganador del dia
+		<?php } ?>
 	<?php } else { ?>
 		<?php if ($alreadyParticipated == 1) { ?>
 			Hoy ya participaste
@@ -257,7 +221,44 @@ closeConnection($connection);
 				if ($allPrizesGiven == 1) { ?>
 						Ya se entregaron todos los premios del dia.
 					<?php } else { ?>
-						<form method="POST" action="doparticipation.php">
+						<script language="javascript">
+							if (AC_FL_RunContent == 0) {
+								alert("This page requires AC_RunActiveContent.js.");
+							} else {
+								AC_FL_RunContent(
+									'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+									'width', '790',
+									'height', '700',
+									'src', '../swf/homeApp',
+									'quality', 'high',
+									'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+									'align', 'middle',
+									'play', 'true',
+									'loop', 'true',
+									'scale', 'showall',
+									'wmode', 'window',
+									'devicefont', 'false',
+									'id', 'homeApp',
+									'bgcolor', '#ffffff',
+									'name', 'homeApp',
+									'menu', 'true',
+									'allowFullScreen', 'false',
+									'allowScriptAccess','always',
+									'FlashVars','<?php print $user; ?>',
+									'movie', '../swf/homeApp',
+									'salign', ''
+									); //end AC code
+							}
+						</script>
+						<noscript>
+							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
+							<param name="allowScriptAccess" value="Always" />
+							<param name="allowFullScreen" value="false" />
+							<param name="FlashVars" value="<?php print $user; ?>"/>
+							<param name="movie" value="../swf/homeApp.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" />	<embed src="../swf/homeApp.swf" FlashVars="<?php print $user; ?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							</object>
+						</noscript>
+					<form method="POST" action="doparticipation.php">
 							<input type="hidden" name="userid" value="<?php echo $userid;?>">
 							<div id="baseDatosDeContacto" style="margin-top:100px; height:315px;">
 								<div id="errmessage"></div>
@@ -284,6 +285,5 @@ closeConnection($connection);
 			<?php } ?>
 		<?php } ?>
 	<?php } ?>
-<?php } ?>
 </body>
 </html>
