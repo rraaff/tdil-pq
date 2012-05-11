@@ -6,7 +6,8 @@
 	$PAGEID = '';
 	define('PAGE_NAME','tdil.test.page'); // nombre de la pagina en la cual la app esta instalada
 	define('APPLICATION_URL','http://localhost/Milka-Corazones/app'); // Url de la aplicacion, debe ser https
-	
+	define('APP_URL_TO_SHARE','http://www.milkacorazones.com.ar');
+	define('APP_NAME_TO_SHARE','Donde estas bombon');
 	
 	function get_app_access($appId, $appSecret) {
 		$token_url =    "https://graph.facebook.com/oauth/access_token?" .

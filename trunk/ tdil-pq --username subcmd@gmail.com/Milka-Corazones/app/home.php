@@ -289,7 +289,7 @@ input[type="button"], input[type="submit"] {
 									'menu', 'true',
 									'allowFullScreen', 'false',
 									'allowScriptAccess','always',
-									'FlashVars','urlToShare=URL_to_SHARE&nameApp=APP_Screen_Name_o_algo_así',
+									'FlashVars','urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
 									'movie', '../swf/homeApp',
 									'salign', ''
 									); //end AC code
@@ -299,11 +299,11 @@ input[type="button"], input[type="submit"] {
 							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
 							<param name="allowScriptAccess" value="Always" />
 							<param name="allowFullScreen" value="false" />
-							<param name="FlashVars" value="urlToShare=URL_to_SHARE&nameApp=APP_Screen_Name_o_algo_así"/>
+							<param name="FlashVars" value="urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
 							<param name="movie" value="../swf/homeApp.swf" />
 							<param name="quality" value="high" />
 							<param name="bgcolor" value="#ffffff" />
-							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=urlToShare=URL_to_SHARE&nameApp=APP_Screen_Name_o_algo_así" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 							</object>
 						</noscript>
 				<?php } ?>
