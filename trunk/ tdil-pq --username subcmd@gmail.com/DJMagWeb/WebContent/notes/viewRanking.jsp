@@ -24,10 +24,10 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
 <style>
-/*
+
 div {
-	border:dotted 1px #00FF00;
-}*/
+	/*border:dotted 1px #00FF00;*/
+}
 #supercontainer {
 	width:1010px;
 	margin:0 auto;
@@ -67,7 +67,7 @@ div {
 	height:16px;
 }
 #fakeLiveboxWindow #bannerHeader {
-	width:728px;
+	width:1010px;
 	height:90px;
 	margin-left:auto;
 	margin-right:auto;
@@ -75,14 +75,12 @@ div {
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:690px;
+	width:680px;
 }
 #fakeLiveboxWindow #left #note {
 	background-color:#FFFFFF;
-	width:600px;
-	height:446px;
-	margin:20px;
-	padding:12px;
+	width:654px;
+	padding:13px;
 }
 #fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
@@ -96,15 +94,15 @@ div {
 }
 #fakeLiveboxWindow #left #note #top100LB {
 	font-family: Arial, Helvetica, sans-serif;
-	width:600px;
-	height:380px;
+	width:650px;
+	height:868px;
 	padding:0;
 	overflow:auto;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank {
-	width:570px;
-	height:97px;
+	width:630px;
 	border-bottom:solid 1px #cfcfcf;
+	float:left;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #position {
 	font-size: 15px;
@@ -151,8 +149,7 @@ div {
 	line-height:16px;
 	font-weight:bold;
 	width: 420px;
-	height:45px;
-	overflow:hidden;
+	padding-bottom:13px;
 	float: left;
 }
 .vermas, .vermas a, .vermas a:active, .vermas a:visited {
@@ -167,21 +164,13 @@ div {
 	text-decoration:underline;
 }
 #fakeLiveboxWindow #right {
-	float:right;
-	width:280px;
-	height:500px;
-}
-#fakeLiveboxWindow #right #subContent {
-	width:252px;
-	height:200px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:20px;
-	margin-top:20px;
+	float:left;
+	width:286px;
+	padding:13px;
 }
 #fakeLiveboxWindow #right #rightBanner {
-	width:252px;
-	height:252px;
+	width:286px;
+	height:868px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -218,19 +207,9 @@ div {
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle">TOP 100</div>
-		<div id="social">
-			<div style="width:135; overflow:hidden;">
-				<div style="float:right; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
-				<div style="float:right;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a></div>
-			</div>
-		</div>
-		<% if (publicHomeBean.hasNoteTopBanner()) {%>
-			<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
-		<% } %>
+		<div id="sectionTitle"><%=publicHomeBean.getRankingSection().getName() %></div>
 		<div id="left">
 			<div id="note">
-				<h1><%=publicHomeBean.getRankingSection().getName() %></h1>
 				<div id="top100LB">
 					<% int positionIndex = 1;
 					for (RankingPosition position : positions.getPositions()) { %>
@@ -252,15 +231,20 @@ div {
 					<% } %>
 				</div>
 			</div>
+			<div id="navBar">
+				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
+				</div>
+				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/compartir_facebook.gif" width="82" height="18"></a></div>
+			</div>
 		</div>
 		<div id="right">
-			<div id="subContent"></div>
 			<% if (publicHomeBean.hasNoteRightBanner()) {%>
 				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 			<% } %>
 		</div>
 	</div>
 </div>
+<%@ include file="../includes/noteFooter.jsp" %>
 </body>
 </html>
 <% 
