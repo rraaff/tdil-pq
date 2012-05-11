@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
@@ -7,6 +8,8 @@
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%
+String pageNumberParam = request.getParameter("pageNumber");
+int pageNumber = PublicHomeBean.parsePageParam(pageNumberParam);
 String country = request.getParameter("country");
 String sectionId = request.getParameter("sectionId");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
@@ -146,12 +149,12 @@ div {
 				<% for (Section sectionIter : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(sectionIter.getSectiontype())) { %>
-							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[ranking_menu]"><%= sectionIter.getName() %></a>
+							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= sectionIter.getName() %></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(sectionIter.getSectiontype())) { %>
-								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[videos_menu]"><%= sectionIter.getName() %></a>
+								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= sectionIter.getName() %></a>
 							<% } else { %>
-								<a href="../../../<%=publicHomeBean.getExternalLink(sectionIter)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=sectionIter.getId()%>]"><%= sectionIter.getName() %></a>
+								<a href="../../../<%=publicHomeBean.getExternalLink(sectionIter)%>"><%= sectionIter.getName() %></a>
 							<% } %>
 						<% } %>
 					</li>
@@ -162,9 +165,25 @@ div {
 		</div>
 	</div>
 </div>
-<% for (NoteValueObject nvo : publicHomeBean.getSectionsNotes(section)) { %>
-	<a href="../../../<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[news_gal]"><%=nvo.getTitle() %></a><br>
+<% List<NoteValueObject> currentPage = publicHomeBean.getSectionsNotes(section, pageNumber);
+	for (int i = 0; (i < PublicHomeBean.SECTION_PAGE_SIZE && currentPage.size() > i); i++) { 
+		NoteValueObject nvo = currentPage.get(i); %>
+		<img src="../../../download.st?id=<%=nvo.getNoteImages().get(0).getId()%>&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>" alt="" />
+		<a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getTitle() %></a>
+		<%=nvo.getSummary()%>
+	<br>
 <% } %>
+<% if (pageNumber == 0) { %>
+	<a href="../../../index.jsp">Volver a la home</a>
+<% } else  { %>
+	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">Pagina anterior</a>
+<% } %>
+
+<% if (currentPage.size() > PublicHomeBean.SECTION_PAGE_SIZE) { %>
+	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">Pagina siguiente</a>
+<% } %>
+
+<%@ include file="../includes/noteFooter.jsp" %>
 </body>
 </html>
 <% } %>
