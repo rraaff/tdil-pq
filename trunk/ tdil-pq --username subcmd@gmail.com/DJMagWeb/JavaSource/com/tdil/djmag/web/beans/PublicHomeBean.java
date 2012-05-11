@@ -103,9 +103,9 @@ public class PublicHomeBean  {
 	private static final int MAX_LAST_NOTES_FOR_HOME = 3;
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
-	
+
 	public static final int SECTION_PAGE_SIZE = 5;
-	public static final int SECTIONS_PAGES_SIDE = 2;
+	public static final int SECTIONS_PAGES_SIDE = 5;
 	public static final int MAX_SECTIONS_PAGES = 5;
 	
 	public static final int VIDEOS_PAGE_SIZE = 5;
