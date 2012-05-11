@@ -32,19 +32,48 @@ function setAsTopVideo(divId) {
 	}
 </script>
 <style>
-/*div {
+<style>
+/*
+div {
 	border:dotted 1px #00FF00;
 }*/
-#fakeLiveboxWindow {
-	width:920px;
-	height:700px;
-	margin-left:auto;
-	margin-right:auto;
+#supercontainer {
+	width:1010px;
+	margin:0 auto;
 }
-#fakeLiveboxWindow #social {
-	width:920px;
-	height:30px;
+#fakeLiveboxWindow {
+	width:1010px;
+	background-color: #FFFFFF;
+	float:left;
+}
+#navBar {
+	color:#5b5b5b;
+	width:660px;
+	height:18px;
 	overflow:hidden;
+	padding:13px;
+	margin-left:13px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	border-top-color: #b5b5b5;
+	border-bottom-color: #b5b5b5;
+}
+#sectionTitle {
+	background-color: #e55532;
+	font-family: 'Doppio One', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	margin:13px;
+	padding-bottom:13px;
+	padding-left:13px;
+	padding-right:13px;
+	padding-bottom:10px;
+	padding-top:10px;
+	height:16px;
 }
 #fakeLiveboxWindow #bannerHeader {
 	width:728px;
@@ -55,11 +84,20 @@ function setAsTopVideo(divId) {
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:570px;
-	height:530px;
-	margin:20px;
-	padding:12px;
+	width:690px;
+}
+#fakeLiveboxWindow #left #note {
 	background-color:#FFFFFF;
+	width:660px;
+	padding:13px;
+	overflow:hidden;
+}
+#fakeLiveboxWindow #left #note .date {
+	color:#dcdcdc;
+	font-weight:700;
+	background-color:#525252;
+	padding:4px;
+	margin-right:auto;
 }
 #fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
@@ -68,140 +106,149 @@ function setAsTopVideo(divId) {
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
+	margin-top:18px;
 	margin-bottom:16px;
 }
-#topvideo {
-	width:425px;
-	height:297px;
-	margin-top: 10px;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-left: auto;
-}
-#fakeLiveboxWindow #left #note #videoList {
-	font-family: Arial, Helvetica, sans-serif;
-	width:570px;
-	height:180px;
-	padding:0;
-	overflow:auto;
-}
-#fakeLiveboxWindow #left #note #videoList #renglonVideo {
-	width:550px;
-	height:97px;
-	border-bottom:solid 1px #cfcfcf;
-}
-#fakeLiveboxWindow #left #note #videoList #renglonVideo #thmbnVideo {
-	width:78px;
-	height:78px;
-	background-image:url(../../images/thmbn_default.jpg);
-	border:solid 1px #5d5d5d;
-	margin:8 0 0 0px;
-	float: left;
-}
-#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked {
+#fakeLiveboxWindow #left #note #bajada {
+	color:#000000;
 	font-size: 13px;
-	line-height: 25px;
+	line-height: 16px;
+	font-weight: bold;
+	margin-bottom:20px;
+	padding-right: 20px;
+}
+#fakeLiveboxWindow #left #note #images {
+	border:solid 7px #525252;
+	width:585px;
+	height:303px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#fakeLiveboxWindow #left #note #fullText {
+	font-size: 12px;
+	line-height: 18px;
 	font-weight: normal;
-	font-variant: normal;
-	color: #FFFFFF;
-	float: left;
-	width: 428px;
-	margin-top:8px;
-	margin-left:10px;
-	overflow: hidden;
+	text-align:justify;
+	color: #333333;
+	margin-top:20px;
+	padding-right: 20px;
 }
-#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked .title {
+#fakeLiveboxWindow #left #linksBottom {
+	height:50px;
+	margin-left:13px;
+	margin-right:13px;
+	padding-top:13px;
+}
+#fakeLiveboxWindow #left #linksBottom a {
 	color:#e25237;
-	font-size:13px;
-	font-weight:bold;
-	width: 420px;
-	float: left;
 }
-#fakeLiveboxWindow #left #note #videoList #renglonVideo #ranked .description {
-	color:#000;
-	font-size:11px;
-	line-height:18px;
-	font-weight:bold;
-	width: 420px;
-	height:55px;
-	overflow:hidden;
-	float: left;
+#fakeLiveboxWindow #left #linksBottom #linkHome {
+	float:left;
+}
+#fakeLiveboxWindow #left #linksBottom #linkPaging {
+	float:right;
 }
 #fakeLiveboxWindow #right {
 	float:right;
-	width:280px;
-	height:550px;
-	overflow:hidden;
-}
-#fakeLiveboxWindow #right #subContent {
-	width:252px;
-	height:252px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:20px;
-	margin-top:20px;
+	width:286px;
+	padding:13px;
 }
 #fakeLiveboxWindow #right #rightBanner {
-	width:252px;
-	height:252px;
+	width:286px;
+	height:868px;
+	margin-left:auto;
+	margin-right:auto;
+}
+#fakeLiveboxWindow #social {
+	width:920px;
+	height:20px;
+	overflow:hidden;
+	margin-left:auto;
+	margin-right:auto;
+}
+#fakeLiveboxWindow #labels {
+	width:920px;
+	height:20px;
+	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
 }
 </style>
 </head>
-<body style="background:#000000; background-image:none;">
-<div id="fakeLiveboxWindow">
-	<div id="social">
-		<div style="width:135; overflow:hidden;">
-			<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a>
+<body>
+<a name="top"></a>
+<div id="supercontainer">
+	<div id="portaHeader">
+		<div id="header">
+			<div id="logo"></div>
+			<div id="menu">
+			<ul>
+				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
+					<li>
+						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
+							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
+						<% } else { %>
+							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
+								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
+							<% } else { %>
+								<a href="../../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+							<% } %>
+						</li>
+					<% }
+						} %>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-top20.gif" width="74" height="88"></a></li>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-shop.gif" width="62" height="88"></a></li>
+				</ul>
 			</div>
-			<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
 		</div>
 	</div>
 	<% if (publicHomeBean.hasNoteTopBanner()) {%>
-		<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
+		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
-	<div id="left">
-		<div id="note">
-			<h1><%=publicHomeBean.getVideoSection().getName() %></h1>
-			<div id="topvideo">
-				<%=(first != null) ? first.getHtmlcontent() : ""%>
-			</div>
-			<div id="videoList">
-				<% for (int i = 0; (i < PublicHomeBean.VIDEOS_PAGE_SIZE && allVideos.size() > i); i++) { 
-					Video video = allVideos.get(i);%>
-					<div id="renglonVideo">
-						<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
-						<div id="ranked">
-							<span class="title"><%=video.getTitle() %></span>
-							<span class="description"><%=video.getDescription() %></span>
-							<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+	<div id="fakeLiveboxWindow">
+		<div id="sectionTitle">Videos</div>
+		<div id="left">
+			<div id="note">
+				<h1><%=publicHomeBean.getVideoSection().getName() %></h1>
+				<div id="topvideo">
+					<%=(first != null) ? first.getHtmlcontent() : ""%>
+				</div>
+				<div id="videoList">
+					<% for (int i = 0; (i < PublicHomeBean.VIDEOS_PAGE_SIZE && allVideos.size() > i); i++) { 
+						Video video = allVideos.get(i);%>
+						<div id="renglonVideo">
+							<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
+							<div id="ranked">
+								<span class="title"><%=video.getTitle() %></span>
+								<span class="description"><%=video.getDescription() %></span>
+								<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
+							</div>
 						</div>
-					</div>
-				<% } %>
+					<% } %>
+				</div>
 			</div>
-		</div>
-		<% if (pageNumber == 0) { %>
-			<a href="../../index.jsp">Volver a la home</a>
-		<% } else  { %>
-			<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a>
-		<% } %>
-		<% for (Integer pageToRender : pages) { %>
-			<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
-				<%=pageToRender + 1%>
-			<% } else { %>
-				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a>
+			<% if (pageNumber == 0) { %>
+				<a href="../../index.jsp">Volver a la home</a>
+			<% } else  { %>
+				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a>
 			<% } %>
-		<% } %>
-		<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
-			<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a>
-		<% } %>
-	</div>
-	<div id="right">
-		<div id="subContent"></div>
-		<% if (publicHomeBean.hasNoteRightBanner()) {%>
-			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
-		<% } %>
+			<% for (Integer pageToRender : pages) { %>
+				<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+					<%=pageToRender + 1%>
+				<% } else { %>
+					<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a>
+				<% } %>
+			<% } %>
+			<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
+				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a>
+			<% } %>
+		</div>
+		<div id="right">
+			<div id="subContent"></div>
+			<% if (publicHomeBean.hasNoteRightBanner()) {%>
+				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+			<% } %>
+		</div>
 	</div>
 </div>
 </body>

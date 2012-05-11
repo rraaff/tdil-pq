@@ -183,7 +183,7 @@ div {
 	<div id="portaHeader">
 		<div id="header">
 			<div id="logo"></div>
-		<div id="menu">
+			<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
