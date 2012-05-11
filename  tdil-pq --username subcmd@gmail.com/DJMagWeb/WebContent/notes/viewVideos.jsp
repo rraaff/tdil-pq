@@ -34,11 +34,9 @@ function setAsTopVideo(divId) {
 	}
 </script>
 <style>
-<style>
-/*
 div {
-	border:dotted 1px #00FF00;
-}*/
+	/*border:dotted 1px #00FF00;*/
+}
 #supercontainer {
 	width:1010px;
 	margin:0 auto;
@@ -94,30 +92,46 @@ div {
 	padding:13px;
 	overflow:hidden;
 }
-#fakeLiveboxWindow #left #note .date {
-	color:#dcdcdc;
-	font-weight:700;
-	background-color:#525252;
-	padding:4px;
+#topvideo {
+	background-color:#000;
+	margin-left:auto;
 	margin-right:auto;
 }
-#fakeLiveboxWindow #left #note h1 {
-	font-size:18px;
+#videoList {
+	width:660px;
+}
+#renglonVideo {
+	width:660px;
+	margin-top:13px;
+	float:left;
+}
+#thmbnVideo {
+	border:solid 1px #525252;
+	width:78px;
+	height:78px;
+	float:left;
+}
+#ranked {
+	width:560px;
+	float:right;
+}
+#ranked #title{
+	font-size:14px;
 	color:#e25237;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
-	margin-top:18px;
-	margin-bottom:16px;
+	padding-bottom:16px;
 }
-#fakeLiveboxWindow #left #note #bajada {
-	color:#000000;
-	font-size: 13px;
+#description {
+	color:#5b5b5b;
+	font-size: 11px;
 	line-height: 16px;
-	font-weight: bold;
+	font-weight: normal;
+	text-align:justify;
 	margin-bottom:20px;
-	padding-right: 20px;
+	padding-right:20px;
 }
 #fakeLiveboxWindow #left #note #images {
 	border:solid 7px #525252;
@@ -136,6 +150,7 @@ div {
 	padding-right: 20px;
 }
 #fakeLiveboxWindow #left #linksBottom {
+	border-top:solid 1px #e5e5e5;
 	height:50px;
 	margin-left:13px;
 	margin-right:13px;
@@ -208,11 +223,10 @@ div {
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle">Videos</div>
+		<div id="sectionTitle"><%=publicHomeBean.getVideoSection().getName() %></div>
 		<div id="left">
 			<div id="note">
-				<h1><%=publicHomeBean.getVideoSection().getName() %></h1>
-				<div id="topvideo">
+				<div id="topvideo" align="center">
 					<%=(first != null) ? first.getHtmlcontent() : ""%>
 				</div>
 				<div id="videoList">
@@ -221,37 +235,39 @@ div {
 						<div id="renglonVideo">
 							<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
 							<div id="ranked">
-								<span class="title"><%=video.getTitle() %></span>
-								<span class="description"><%=video.getDescription() %></span>
+								<div id="title"><%=video.getTitle() %></div>
+								<div id="description"><%=video.getDescription() %></div>
 								<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
 							</div>
 						</div>
 					<% } %>
 				</div>
 			</div>
-			<% if (pageNumber == 0) { %>
-				<a href="../../index.jsp">Volver a la home</a>
-			<% } else  { %>
-				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a>
-			<% } %>
-			<% for (Integer pageToRender : pages) { %>
-				<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
-					<%=pageToRender + 1%>
-				<% } else { %>
-					<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a>
+			<div id="linksBottom">
+				<% if (pageNumber == 0) { %>
+					<div id="linkHome"><a href="../../index.jsp">Volver a la home</a></div>
+				<% } else  { %>
+					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a></div>
 				<% } %>
-			<% } %>
-			<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
-				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a>
-			<% } %>
+				<% for (Integer pageToRender : pages) { %>
+					<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+						<%=pageToRender + 1%>
+					<% } else { %>
+						<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
+					<% } %>
+				<% } %>
+				<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
+					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a></div>
+				<% } %>
+			</div>
 		</div>
 		<div id="right">
-			<div id="subContent"></div>
 			<% if (publicHomeBean.hasNoteRightBanner()) {%>
 				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 			<% } %>
 		</div>
 	</div>
 </div>
+<%@ include file="../includes/noteFooter.jsp" %>
 </body>
 </html>
