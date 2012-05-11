@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.management.ListenerNotFoundException;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -106,7 +104,24 @@ public class PublicHomeBean  {
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
 	
-	public static final String LIGTH_BOX_PARAMS = "?iframe=true&width=960&height=700";
+	public static final int SECTION_PAGE_SIZE = 2;
+	
+	// 0 si no viene, sino lo que vino
+	public static int parsePageParam(String pString) {
+		if (StringUtils.isEmpty(pString)) {
+			return 0;
+		} else {
+			if (StringUtils.isNumeric(pString)) {
+				try {
+					return Integer.parseInt(pString);
+				} catch (NumberFormatException e) {
+					return 0;
+				}
+			} else {
+				return 0;
+			}
+		}
+	}
 	
 	public boolean hasCountrySelected() {
 		return this.getCountry() != null;
@@ -173,6 +188,12 @@ public class PublicHomeBean  {
 	}
 	
 	public Section getSectionForId(String sectionId) {
+		if (StringUtils.isEmpty(sectionId)) {
+			return null;
+		}
+		if (!StringUtils.isNumeric(sectionId)) {
+			return null;
+		}
 		int id = Integer.parseInt(sectionId);
 		for (Section s : getSectionsForCountry()) {
 			if (s.getId().equals(id)) {
@@ -252,14 +273,14 @@ public class PublicHomeBean  {
 		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
 		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 			NoteValueObject nvo = frontCoverIter.next();
-			result.append("<a href=\"").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+			result.append("<a href=\"").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
 			index = index + 1;
 		}
 		if (index < MAX_NOTES_FOR_FOOTER) {
 			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
 			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 				NoteValueObject nvo = lastNewsIter.next();
-				result.append("<a href=\"").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+				result.append("<a href=\"").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
 				index = index + 1;
 			}
 		}
@@ -272,14 +293,14 @@ public class PublicHomeBean  {
 		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
 		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 			NoteValueObject nvo = frontCoverIter.next();
-			result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+			result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
 			index = index + 1;
 		}
 		if (index < MAX_NOTES_FOR_FOOTER) {
 			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
 			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
 				NoteValueObject nvo = lastNewsIter.next();
-				result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[footer_gal]\">").append(nvo.getTitle()).append("</a>\n");
+				result.append("<a href=\"../../../").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
 				index = index + 1;
 			}
 		}
@@ -291,14 +312,14 @@ public class PublicHomeBean  {
 		for (Section section : getSectionsForCountry()) {
 			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
 				result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
-				result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[ranking_footer]\">").append(section.getName()).append("</a>\n");
+				result.append("\">").append(section.getName()).append("</a>\n");
 			} else {
 				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
 					result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
-					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[videos_footer]\">").append(section.getName()).append("</a>\n");
+					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
 					result.append("<a href=\"../../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
-					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[sectionf_").append(section.getId()).append("]\">").append(section.getName()).append("</a>\n");
+					result.append("\">").append(section.getName()).append("</a>\n");
 				}
 			}
 		}
@@ -310,14 +331,14 @@ public class PublicHomeBean  {
 		for (Section section : getSectionsForCountry()) {
 			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
 				result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
-				result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[ranking_footer]\">").append(section.getName()).append("</a>\n");
+				result.append("\">").append(section.getName()).append("</a>\n");
 			} else {
 				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
 					result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
-					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[videos_footer]\">").append(section.getName()).append("</a>\n");
+					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
 					result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
-					result.append(PublicHomeBean.LIGTH_BOX_PARAMS).append("\" rel=\"prettyPhoto[sectionf_").append(section.getId()).append("]\">").append(section.getName()).append("</a>\n");
+					result.append("\">").append(section.getName()).append("</a>\n");
 				}
 			}
 		}
@@ -823,8 +844,49 @@ public class PublicHomeBean  {
 		return sectionsNotes;
 	}
 	
-	public List<NoteValueObject> getSectionsNotes(Section section) {
-		return getSectionsNotes().get(section);
+	public List<NoteValueObject> getSectionsNotes(Section section, int pageNumber) {
+		List<NoteValueObject> result;
+		List<NoteValueObject> nvo = getSectionsNotes().get(section);
+		int seekAt = pageNumber * SECTION_PAGE_SIZE;
+		if (nvo.size() > seekAt) {
+			result = nvo.subList(seekAt, nvo.size());
+		} else {
+			result = new ArrayList<NoteValueObject>();
+		}
+		final List<NoteValueObject> finalResult = result;
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				public void executeInTransaction() throws SQLException, ValidationException {
+					Set<Integer> notesIds = new HashSet<Integer>();
+					for (NoteValueObject nvo : finalResult) {
+						if (nvo.getNoteImages().isEmpty()) {
+							notesIds.add(nvo.getId());
+						}
+					}
+					if (!notesIds.isEmpty()) {
+						List<Integer> param = new ArrayList<Integer>(notesIds);
+						NoteImageExample noteImageExample = new NoteImageExample();
+						noteImageExample.createCriteria().andIdNoteIn(param);
+						noteImageExample.setOrderByClause("id_note, orderNumber");
+						List<NoteImage> noteImages = DAOManager.getNoteImageDAO().selectNoteImageByExampleWithoutBLOBs(noteImageExample);
+						for (NoteImage ni : noteImages) {
+							for (NoteValueObject nvo : finalResult) {
+								if (ni.getIdNote().equals(nvo.getId())) {
+									nvo.addNoteImage(ni);
+								}
+							}
+						}
+					}
+				}
+			});
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return finalResult;
 	}
 
 	public void setSectionsNotes(Map<Section, List<NoteValueObject>> sectionsNotes) {

@@ -98,12 +98,12 @@ $(document).ready(
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
-							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[ranking_menu]"><%= section.getName() %></a>
+							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
-								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[videos_menu]"><%= section.getName() %></a>
+								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
 							<% } else { %>
-								<a href="<%=publicHomeBean.getExternalLink(section)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=section.getId()%>]"><%= section.getName() %></a>
+								<a href="<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
 							<% } %>
 						<% } %>
 					</li>
@@ -113,14 +113,6 @@ $(document).ready(
 			</ul>
 		</div>
 	</div>
-</div>
-<div class="hide">
-	<% for (Map.Entry<Section, List<NoteValueObject>> sections : publicHomeBean.getSectionsNotes().entrySet()) { 
-		for (NoteValueObject nvo : sections.getValue().subList(1,sections.getValue().size())) { %>
-			<a href="<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[section_<%=sections.getKey().getId()%>]"><%=nvo.getTitle() %></a>
-			<a href="<%=publicHomeBean.getExternalLink(nvo)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[sectionf_<%=sections.getKey().getId()%>]"><%=nvo.getTitle() %></a>
-		<% }
-	} %>
 </div>
 <%@ include file="includes/homeBannerTop.jsp" %>
 <div id="BlockMain">
@@ -148,12 +140,6 @@ $(document).ready(
 	</div>
 </div>
 <%@ include file="includes/homeFooter.jsp" %>
-<!-- Galeria de ultimas noticias -->
-<div id="newsGallery" class="hide">
-<% for (NoteValueObject note : publicHomeBean.getLastNotesLinks()) { %>
-	<a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[news_gal]"><%=note.getTitle() %></a>
-<% } %>
-</div>
 		
 <!-- Cambio de pais -->
 <div id="changeCountryDiv" class="hide">
@@ -168,74 +154,6 @@ $(document).ready(
 			effect: 'fold',  // Specify sets like: 'fold,fade,sliceDown');
 			pauseTime: 30000
 		});
-		
-		/*$("a[id^='fcover']").prettyPhoto({
-			hideflash: true,
-	    	social_tools: false,
-	    	theme: 'dark_rounded'
-	    	});
-	  
-	    $("a[rel^='prettyPhoto']").prettyPhoto({
-	    	hideflash: true,
-	    	social_tools: false,
-	    	theme: 'dark_rounded',
-			allow_resize: false,
-	    	markup: '<div class="pp_pic_holder"> \
-						<div class="ppt">&nbsp;</div> \
-						<div class="pp_top"> \
-							<div class="pp_left"></div> \
-							<div class="pp_middle"></div> \
-							<div class="pp_right"></div> \
-						</div> \
-						<div class="pp_content_container"> \
-							<div class="pp_left"> \
-							<div class="pp_right"> \
-								<div class="pp_content"> \
-									<div class="pp_loaderIcon"></div> \
-									<div class="pp_fade"> \
-										<!-- a href="#" class="pp_expand" title="Expand the image">Expand</a--> \
-										<div class="pp_hoverContainer"> \
-											<a class="pp_next" href="#">next</a> \
-											<a class="pp_previous" href="#">previous</a> \
-										</div> \
-										<div id="pp_full_res"></div> \
-										<div class="pp_details"> \
-											<div class="pp_nav"> \
-												<a href="#" class="pp_arrow_previous">Previous</a> \
-												<p class="currentTextHolder">0/0</p> \
-												<a href="#" class="pp_arrow_next">Next</a> \
-											</div> \
-											<p class="pp_description"></p> \
-											{pp_social} \
-											<a class="pp_close" href="#">Close</a> \
-										</div> \
-									</div> \
-								</div> \
-							</div> \
-							</div> \
-						</div> \
-						<div class="pp_bottom"> \
-							<div class="pp_left"></div> \
-							<div class="pp_middle"></div> \
-							<div class="pp_right"></div> \
-						</div> \
-					</div> \
-					<div class="pp_overlay"></div>'
-	    });*/
-	    
-		<% String action = request.getParameter("action");
-		if ("viewNote".equals(action)) { %>
-			$.prettyPhoto.open('<%=publicHomeBean.getExternalLink(request.getParameter("date"), request.getParameter("webTitle"))%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>','<%=request.getParameter("webTitle")%>','<%=request.getParameter("webTitle")%>');
-		<% } else { 
-			if ("viewRanking".equals(action)) { %>
-				$.prettyPhoto.open('./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>','Ranking','Ranking');
-			<% } else { 
-				if ("viewVideos".equals(action)) { %>
-					$.prettyPhoto.open('./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html<%=PublicHomeBean.LIGTH_BOX_PARAMS%>','Videos','Videos');
-				<% }
-			}
-		}
-		%>
 	  });
     </script>
 <% } else { %>

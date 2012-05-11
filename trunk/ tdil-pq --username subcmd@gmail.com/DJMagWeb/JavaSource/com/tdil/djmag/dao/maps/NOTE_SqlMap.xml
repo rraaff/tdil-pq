@@ -600,6 +600,7 @@
   <resultMap class="com.tdil.djmag.model.valueobjects.NoteValueObject" id="NoteIdAndTitleVO">
   	<result column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
     <result column="from_date" jdbcType="DATE" property="fromDate" />
     <result column="web_title" jdbcType="VARCHAR" property="webTitle" />
   </resultMap>
@@ -656,7 +657,7 @@
   
   <select id="selectActiveNotesForMenuItem" parameterClass="com.tdil.djmag.model.MenuItem" resultMap="NoteIdAndTitleVO">
     select
-    note.id, note.title, note.web_title, note.from_date
+    note.id, note.title, note.summary, note.web_title, note.from_date
     from NOTE note, NOTE_COUNTRY nc
 	where note.id = nc.id_note
 	and note.deleted = 0
