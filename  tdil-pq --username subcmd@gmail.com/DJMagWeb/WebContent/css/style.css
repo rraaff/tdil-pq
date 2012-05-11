@@ -34,11 +34,11 @@ body {
 	font-weight: normal;
 	color: #fff;	
 }
-/*
+
 div {
-	border:dotted 1px #00FF00;
+	/*border:dotted 1px #00FF00;*/
 }
-*/
+
 /************************************* Comienzo del country selection *************************************/
 h3 a, h3 a:hover, h3 a:visited, h3 a:active  {
 	color:#fef455;
@@ -539,28 +539,35 @@ body {
 	cursor:hand;
 }
 #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #renglon {
-	margin:6px;
 	float:left;
 }
 #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #image {
 	width:30px;
 	height:30px;
 	margin-left:8px;
+	margin-right:8px;
 	float:left;
 }
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date a, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent .date a:hover {
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date a, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date a:hover {
 	background-color:#e25237;
 	color:#FFFF33;
 	font-size:11px;
 	text-decoration:none;
-	padding: 5px;
+	padding: 2px;
+	margin:0;
+	margin-top:2px;
+	float:left;
 }
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent span {
+#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #titleNote {
 	font-size:11px;
 	font-weight:700;
-	line-height:18px;
+	line-height:15px;
 	padding-left:8px;
-	border-left:solid 1px #525252;
+	padding-top:7px;
+	width:170px;
+	height:15px;
+	float:left;
+	overflow:hidden;
 }
 #BlockSecondaryContent #rightContent #BlockTwFeed {
 	width:309px; 
