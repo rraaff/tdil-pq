@@ -14,6 +14,8 @@ import com.tdil.milka.dao.RawInsertDAO;
 import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.dao.SystemUserDAO;
 import com.tdil.milka.dao.TagDAO;
+import com.tdil.milka.dao.WallDAO;
+import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.dao.impl.AuthorDAOImpl;
 import com.tdil.milka.dao.impl.BlobDataDAOImpl;
 import com.tdil.milka.dao.impl.ClickCounterDAOImpl;
@@ -25,6 +27,8 @@ import com.tdil.milka.dao.impl.RawInsertDAOImpl;
 import com.tdil.milka.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.milka.dao.impl.SystemUserDAOImpl;
 import com.tdil.milka.dao.impl.TagDAOImpl;
+import com.tdil.milka.dao.impl.WallDAOImpl;
+import com.tdil.milka.dao.impl.WallWrittingDAOImpl;
 
 public class DAOManager {
 
@@ -71,5 +75,13 @@ public class DAOManager {
 	
 	public static PostItDAO getPostItDAO() throws SQLException {
 		return new PostItDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static WallDAO getWallDAO() throws SQLException {
+		return new WallDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static WallWrittingDAO getWallWrittingDAO() throws SQLException {
+		return new WallWrittingDAOImpl(IBatisManager.getClient());
 	}
 }

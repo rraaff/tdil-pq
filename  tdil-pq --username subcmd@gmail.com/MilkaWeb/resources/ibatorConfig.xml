@@ -73,6 +73,12 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="POST_IT" domainObjectName="PostIt" alias="pi">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="MILKA" tableName="WALL" domainObjectName="Wall" alias="wa">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="MILKA" tableName="WALL_WRITTING" domainObjectName="WallWritting" alias="ww">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

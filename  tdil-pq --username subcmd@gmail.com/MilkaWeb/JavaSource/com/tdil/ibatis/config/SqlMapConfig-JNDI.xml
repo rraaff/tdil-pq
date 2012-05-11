@@ -30,4 +30,6 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/MILKA_PHOTO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/MILKA_PHOTO_TAG_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/POST_IT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/WALL_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/WALL_WRITTING_SqlMap.xml"/>
 </sqlMapConfig>

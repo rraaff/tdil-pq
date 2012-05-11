@@ -1,3 +1,10 @@
+<%@page import="com.tdil.milka.model.ClickCounter"%>
+<%@page import="com.tdil.milka.web.MeltButton"%>
+<%@ page info="index"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -172,7 +179,14 @@ input[type="button"], input[type="submit"] {
 	<div id="cuerpoCentral">
 		<div id="insertContentBlock">
 			<h1>Papa es...</h1>
-			<div id="complete"><input type="text" value="" class="insertText"/><input type="button" value="Publicar" /></div>
+			<div id="complete">
+				<html:form method="POST" action="/addPapapedia">
+					<html:text name="PapapediaForm" property="text" styleClass="width180"/>
+					<html:submit property="operation">
+						Salvar
+					</html:submit>
+				</html:form>	
+			</div>
 		</div>
 		<div class="line"></div>
 		<div id="counter">358 Comentarios</div>
