@@ -26,16 +26,43 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 div {
 	border:dotted 1px #00FF00;
 }*/
-#fakeLiveboxWindow {
-	width:920px;
-	height:700px;
-	margin-left:auto;
-	margin-right:auto;
+#supercontainer {
+	width:1010px;
+	margin:0 auto;
 }
-#fakeLiveboxWindow #social {
-	width:920px;
-	height:30px;
+#fakeLiveboxWindow {
+	width:1010px;
+	background-color: #FFFFFF;
+	float:left;
+}
+#navBar {
+	color:#5b5b5b;
+	width:660px;
+	height:18px;
 	overflow:hidden;
+	padding:13px;
+	margin-left:13px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	border-top-color: #b5b5b5;
+	border-bottom-color: #b5b5b5;
+}
+#sectionTitle {
+	background-color: #e55532;
+	font-family: 'Doppio One', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	margin:13px;
+	padding-bottom:13px;
+	padding-left:13px;
+	padding-right:13px;
+	padding-bottom:10px;
+	padding-top:10px;
+	height:16px;
 }
 #fakeLiveboxWindow #bannerHeader {
 	width:728px;
@@ -46,8 +73,7 @@ div {
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:640px;
-	height:500px;
+	width:690px;
 }
 #fakeLiveboxWindow #left #note {
 	background-color:#FFFFFF;
@@ -159,47 +185,78 @@ div {
 }
 </style>
 </head>
-<body style="background:#000000; background-image:none;">
-<div id="fakeLiveboxWindow">
-	<div id="social">
-		<div style="width:135; overflow:hidden;">
-			<div style="float:right; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
-			<div style="float:right;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a></div>
-		</div>
-	</div>
-	<% if (publicHomeBean.hasNoteTopBanner()) {%>
-		<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
-	<% } %>
-	<div id="left">
-		<div id="note">
-			<h1><%=publicHomeBean.getRankingSection().getName() %></h1>
-			<div id="top100LB">
-				<% int positionIndex = 1;
-				for (RankingPosition position : positions.getPositions()) { %>
-					<div id="renglonRank">
-						<div id="position"><%=positionIndex++ %></div>
-						<div id="photo">
-							<% if (position.hasImage()) { %>
-								<img src="../../download.st?id=<%=position.getImageid()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
+<body>
+<a name="top"></a>
+<div id="supercontainer">
+	<div id="portaHeader">
+		<div id="header">
+			<div id="logo"></div>
+			<div id="menu">
+			<ul>
+				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
+					<li>
+						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
+							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
+						<% } else { %>
+							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
+								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
 							<% } else { %>
-								<img src="../../null.gif" width="78" height="78">
+								<a href="../../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
 							<% } %>
-						</div>
-						<div id="ranked">
-							<span class="title"><%=position.getPosition()%></span>
-							<span class="description"><%= position.getDescription() %></span>
-							<!--span class="vermas"><a href="#">Ver m&aacute;s</a></span-->
-						</div>
-					</div>
-				<% } %>
+						</li>
+					<% }
+						} %>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-top20.gif" width="74" height="88"></a></li>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-shop.gif" width="62" height="88"></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	<div id="right">
-		<div id="subContent"></div>
-		<% if (publicHomeBean.hasNoteRightBanner()) {%>
-			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+	<% if (publicHomeBean.hasNoteTopBanner()) {%>
+		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
+	<% } %>
+	<div id="fakeLiveboxWindow">
+		<div id="sectionTitle">TOP 100</div>
+		<div id="social">
+			<div style="width:135; overflow:hidden;">
+				<div style="float:right; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/shareFb.png" width="60" height="18"></a></div>
+				<div style="float:right;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="59" height="20"></a></div>
+			</div>
+		</div>
+		<% if (publicHomeBean.hasNoteTopBanner()) {%>
+			<div id="bannerHeader"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 		<% } %>
+		<div id="left">
+			<div id="note">
+				<h1><%=publicHomeBean.getRankingSection().getName() %></h1>
+				<div id="top100LB">
+					<% int positionIndex = 1;
+					for (RankingPosition position : positions.getPositions()) { %>
+						<div id="renglonRank">
+							<div id="position"><%=positionIndex++ %></div>
+							<div id="photo">
+								<% if (position.hasImage()) { %>
+									<img src="../../download.st?id=<%=position.getImageid()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
+								<% } else { %>
+									<img src="../../null.gif" width="78" height="78">
+								<% } %>
+							</div>
+							<div id="ranked">
+								<span class="title"><%=position.getPosition()%></span>
+								<span class="description"><%= position.getDescription() %></span>
+								<!--span class="vermas"><a href="#">Ver m&aacute;s</a></span-->
+							</div>
+						</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<div id="right">
+			<div id="subContent"></div>
+			<% if (publicHomeBean.hasNoteRightBanner()) {%>
+				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+			<% } %>
+		</div>
 	</div>
 </div>
 </body>
