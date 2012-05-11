@@ -150,7 +150,7 @@ div {
 	float:right;
 }
 #fakeLiveboxWindow #right {
-	float:right;
+	float:left;
 	width:286px;
 	padding:13px;
 }
