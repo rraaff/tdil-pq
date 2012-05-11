@@ -48,10 +48,18 @@ div {
 	float:left;
 }
 #navBar {
-	width:934px;
+	color:#5b5b5b;
+	width:660px;
 	height:18px;
 	overflow:hidden;
 	padding:13px;
+	margin-left:13px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: dotted;
+	border-bottom-style: dotted;
+	border-top-color: #b5b5b5;
+	border-bottom-color: #b5b5b5;
 }
 #sectionTitle {
 	background-color: #e55532;
@@ -60,7 +68,7 @@ div {
 	font-weight: normal;
 	text-transform: uppercase;
 	color: #FFFFFF;
-	margin-top:13px;
+	margin:13px;
 	padding-bottom:13px;
 	padding-left:13px;
 	padding-right:13px;
@@ -77,13 +85,13 @@ div {
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:620px;
+	width:690px;
 }
 #fakeLiveboxWindow #left #note {
 	background-color:#FFFFFF;
-	width:100%;
-	margin:13px;
-	padding:12px;
+	width:660px;
+	padding:13px;
+	overflow:hidden;
 }
 #fakeLiveboxWindow #left #note .date {
 	color:#dcdcdc;
@@ -118,30 +126,39 @@ div {
 	margin-right:auto;
 }
 #fakeLiveboxWindow #left #note #fullText {
-	font-size: 13px;
+	font-size: 12px;
 	line-height: 18px;
-	font-weight: 700;
+	font-weight: normal;
+	text-align:justify;
 	color: #333333;
 	margin-top:20px;
 	padding-right: 20px;
 }
+#fakeLiveboxWindow #left #linksBottom {
+	height:50px;
+	margin-left:13px;
+	margin-right:13px;
+	padding-top:13px;
+}
+#fakeLiveboxWindow #left #linksBottom a {
+	color:#e25237;
+}
+#fakeLiveboxWindow #left #linksBottom #linkHome {
+	float:left;
+}
+#fakeLiveboxWindow #left #linksBottom #linkPaging {
+	float:right;
+}
 #fakeLiveboxWindow #right {
 	float:right;
-	width:280px;
-	height:500px;
-}
-#fakeLiveboxWindow #right #subContent {
-	width:252px;
-	height:200px;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:20px;
-	margin-top:20px;
+	width:286px;
+	padding:13px;
 }
 #fakeLiveboxWindow #right #rightBanner {
-	background-color:#FFFFFF;
-	width:390;
-	text-align:center;
+	width:286px;
+	height:868px;
+	margin-left:auto;
+	margin-right:auto;
 }
 #fakeLiveboxWindow #social {
 	width:920px;
@@ -191,29 +208,16 @@ div {
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<!-- Estructura de la interface -->
-		<!-- div id="navBar">
-			<!-- div id="prevNext">
-				<div id="prev"></div>
-				<div id="next"></div>
-			</div-->
-			<!--div style="margin-left:50px; width:650px; float:left; overflow:hidden;">
-				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="59" height="20"></a>
-				</div>
-				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/shareFb.png" width="60" height="18"></a></div>
-			</div>
-			<!--div id="closeButton"></div->
-		</div-->
-		<div id="sectionTitle">Ultimas Noticias</div>
+		<div id="sectionTitle"><%= noteToShow.getTitle()%></div>
 		<div id="left">
 			<div id="note">
-				<div class="slider-wrapper theme-default">
+				<div class="slider-wrapper theme-default" style="margin-bottom:20px; background-color:#000000;">
 					<div class="ribbon"></div>
 					<div id="slider" class="nivoSlider">
-					<% /*Generacion de imagenes*/
-						for (NoteImage noteImage : noteToShow.getNoteImages()) { %>
-						<img src="../../../download.st?id=<%=noteImage.getId()%>&type=note&ext=<%=noteImage.getExtension()%>" alt="" />
-					<% } %>
+						<% /*Generacion de imagenes*/
+							for (NoteImage noteImage : noteToShow.getNoteImages()) { %>
+							<img src="../../../download.st?id=<%=noteImage.getId()%>&type=note&ext=<%=noteImage.getExtension()%>" alt="" width="654" height="400" />
+						<% } %>
 					</div>
 				</div>
 				<span class="date"><%=PublicHomeBean.formatDate(noteToShow.getFromDate()) %></span>
@@ -221,29 +225,26 @@ div {
 				<div id="bajada"><%= noteToShow.getSummary()%></div>
 				<div id="fullText"><%= content%></div>
 			</div>
-		</div>
-		<div id="right">
-			<div id="subContent">
-				<% if (publicHomeBean.hasNoteRightBanner()) {%>
-					<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+			<div id="navBar">
+				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
+				</div>
+				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/compartir_facebook.gif" width="82" height="18"></a></div>
+			</div>
+			<div id="linksBottom">
+				<% if (actualsection == null) { %>
+					<a href="../../../index.jsp">Volver a la home</a>
+				<% } else { %>
+					<a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a>
 				<% } %>
 			</div>
 		</div>
-	</div>
-	<div id="right">
-		<div id="subContent"></div>
-		<% if (publicHomeBean.hasNoteRightBanner()) {%>
-			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
-		<% } %>
+		<div id="right">
+			<% if (publicHomeBean.hasNoteRightBanner()) {%>
+				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+			<% } %>
+		</div>
 	</div>
 </div>
-</div>
-
-<% if (actualsection == null) { %>
-	<a href="../../../index.jsp">Volver a la home</a>
-<% } else { %>
-	<a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a>
-<% } %>
 
 <%@ include file="../includes/noteFooter.jsp" %>
 
