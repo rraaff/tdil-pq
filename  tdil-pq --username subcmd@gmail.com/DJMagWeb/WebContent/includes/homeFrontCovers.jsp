@@ -33,7 +33,7 @@
 	    <div id="slider" class="nivoSlider">
 		<% /*Generacion de imagenes*/
 			for (NoteValueObject note : publicHomeBean.getFrontCoverNotes()) { %>
-	        <a href="<%=publicHomeBean.getExternalLink(note)%><%=PublicHomeBean.LIGTH_BOX_PARAMS%>" rel="prettyPhoto[cover_gal]"><img src="./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>" alt="" title="#htmlcaption<%=note.getId() %>" width="428" height="385" /></a>
+	        <a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="./download.st?id=<%=note.getFrontcoverId()%>&type=PUBLIC&ext=<%=note.getFrontcoverext()%>" alt="" title="#htmlcaption<%=note.getId() %>" width="428" height="385" /></a>
 		<% } %>
 	    </div>
 		<% /*Generacion de captions*/
