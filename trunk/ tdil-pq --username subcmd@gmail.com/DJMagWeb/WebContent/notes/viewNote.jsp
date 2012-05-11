@@ -232,9 +232,9 @@ div {
 			</div>
 			<div id="linksBottom">
 				<% if (actualsection == null) { %>
-					<a href="../../../index.jsp">Volver a la home</a>
+					<div id="linkHome"><a href="../../../index.jsp">Volver a la home</a></div>
 				<% } else { %>
-					<a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a>
+					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a></div>
 				<% } %>
 			</div>
 		</div>
