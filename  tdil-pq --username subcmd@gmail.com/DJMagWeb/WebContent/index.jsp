@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
@@ -92,13 +93,13 @@ $(document).ready(
 <a name="top"></a>
 <div id="portaHeader">
 	<div id="header">
-		<div id="logo"></div>
+		<div id="logo"><img src="images/logo.gif" width="197" height="123" /></div>
 		<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
-							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
+							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html" style="padding:0; cursor:hand;"><img src="images/logoTop100.gif" width="214" height="123" /></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
@@ -108,8 +109,8 @@ $(document).ready(
 						<% } %>
 					</li>
 				<% } %>
-				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-top20.gif" width="74" height="88"></a></li>
-				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-shop.gif" width="62" height="88"></a></li>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-top20.gif" width="74"></a></li>
+				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-shop.gif" width="62"></a></li>
 			</ul>
 		</div>
 	</div>

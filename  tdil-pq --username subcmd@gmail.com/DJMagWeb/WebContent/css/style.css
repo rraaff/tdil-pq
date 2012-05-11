@@ -126,13 +126,13 @@ body {
 	background-image: url(../images/bg-headerHome.png);
 	background-repeat: repeat;
 	width: 1010px;
-	height: 88px;
+	height: 123px;
 	margin:0 auto;
 	clear: both;
 	float: none;
 }
 #portaHeader #header {
-	height: 88px;
+	height: 123px;
 /*	width: 1010px;
 	margin-right: auto;
 	margin-left: auto;*/
@@ -141,12 +141,12 @@ body {
 	background-image: url(../images/logoHome.png);
 	background-repeat: no-repeat;
 	float: left;
-	height: 88px;
+	height: 123px;
 	width: 197px;
 	border-right: 1px solid #386061;
 }
 #portaHeader #header #menu {
-	height: 88px;
+	height: 123px;
 	float: left;
 	width: 808px;
 	padding:0;
@@ -157,7 +157,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	width: 812px;
-	height:88px;
+	height:123px;
 	display: inline-block;
 }
 #portaHeader #header #menu li {
@@ -171,8 +171,8 @@ body {
 	font-family: 'Doppio One', sans-serif;
 	text-transform: uppercase;
 	color: #FFFFFF;
-	float: left;	
-	line-height: 88px;
+	float: left;
+	line-height: 123px;
 	text-decoration: none;
 	font-size: 15px;
 	padding-right: 12px;
@@ -187,7 +187,7 @@ body {
 	padding-right: 12px;
 	padding-left: 12px;
 	display: block;
-	line-height: 88px;
+	line-height: 123px;
 	text-decoration: none;
 	font-size: 15px;
 	color: #FFFF66;
