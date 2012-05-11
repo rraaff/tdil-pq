@@ -1,3 +1,5 @@
+<%@page import="com.tdil.djmag.model.SectionType"%>
+<%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="com.tdil.djmag.model.RankingPosition"%>
 <%@page import="com.tdil.djmag.model.RankingPositions"%>
@@ -196,18 +198,18 @@ div {
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
-							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
+							<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
-								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
+								<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
 							<% } else { %>
-								<a href="../../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+								<a href="../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
 							<% } %>
 						</li>
 					<% }
 						} %>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-top20.gif" width="74" height="88"></a></li>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../../images/pronto-shop.gif" width="62" height="88"></a></li>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-top20.gif" width="74" height="88"></a></li>
+					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-shop.gif" width="62" height="88"></a></li>
 				</ul>
 			</div>
 		</div>
