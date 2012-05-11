@@ -176,11 +176,17 @@ div {
 <% if (pageNumber == 0) { %>
 	<a href="../../../index.jsp">Volver a la home</a>
 <% } else  { %>
-	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">Pagina anterior</a>
+	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">&lt;</a>
 <% } %>
-
+<% for (Integer pageToRender : publicHomeBean.getPages(section, pageNumber)) { %>
+	<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+		<%=pageToRender + 1%>
+	<% } else { %>
+		<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a>
+	<% } %>
+<% } %>
 <% if (currentPage.size() > PublicHomeBean.SECTION_PAGE_SIZE) { %>
-	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">Pagina siguiente</a>
+	<a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">&gt;</a>
 <% } %>
 
 <%@ include file="../includes/noteFooter.jsp" %>

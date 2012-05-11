@@ -105,6 +105,7 @@ public class PublicHomeBean  {
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
 	
 	public static final int SECTION_PAGE_SIZE = 2;
+	public static final int MAX_SECTIONS_PAGES = 5;
 	
 	// 0 si no viene, sino lo que vino
 	public static int parsePageParam(String pString) {
@@ -842,6 +843,21 @@ public class PublicHomeBean  {
 
 	public Map<Section, List<NoteValueObject>> getSectionsNotes() {
 		return sectionsNotes;
+	}
+	
+	public List<Integer> getPages(Section section, int pageNumber) {
+		List<Integer> result = new ArrayList<Integer>();
+		int min = pageNumber - 2;
+		if (min < 0) {
+			min = 0;
+		}
+		int sectionSize = getSectionsNotes().get(section).size();
+		int pages = 0;
+		for (int i = min; (i * SECTION_PAGE_SIZE) < sectionSize && pages < MAX_SECTIONS_PAGES; i++) {
+			result.add(i);
+			pages = pages + 1;
+		}
+		return result;
 	}
 	
 	public List<NoteValueObject> getSectionsNotes(Section section, int pageNumber) {
