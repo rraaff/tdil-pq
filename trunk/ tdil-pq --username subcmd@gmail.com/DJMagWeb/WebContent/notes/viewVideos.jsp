@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.djmag.model.Video"%>
 <%@page import="java.util.List"%>
@@ -11,11 +12,8 @@ String pageNumberParam = request.getParameter("pageNumber");
 int pageNumber = PublicHomeBean.parsePageParam(pageNumberParam);
 String country = request.getParameter("country");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
-	// todo aca primero seteo el pais, luego redirecciono
-	String theURL = "../../selectCountry.st?iso_code_2="+ country + "&action=viewVideos";
-	theURL = response.encodeRedirectURL(theURL);
-	response.sendRedirect(theURL);
-} else {
+	SelectCountryServlet.initForCountry(request, country, "");
+} 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	ArrayList<Integer> pages = new ArrayList<Integer>();
 	List<Video> allVideos = publicHomeBean.getAllVideosForCountry(pageNumber, pages);
@@ -208,5 +206,3 @@ function setAsTopVideo(divId) {
 </div>
 </body>
 </html>
-<% 
-} %>

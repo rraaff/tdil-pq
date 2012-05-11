@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="com.tdil.djmag.model.RankingPosition"%>
 <%@page import="com.tdil.djmag.model.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
@@ -7,11 +8,8 @@
 <%
 String country = request.getParameter("country");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
-	// todo aca primero seteo el pais, luego redirecciono
-	String theURL = "../../selectCountry.st?iso_code_2="+ country + "&action=viewRanking";
-	theURL = response.encodeRedirectURL(theURL);
-	response.sendRedirect(theURL);
-} else {
+	SelectCountryServlet.initForCountry(request, country, "");
+} 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	RankingPositions positions = publicHomeBean.getRankingPositions();
 	if (positions == null) {
@@ -206,5 +204,5 @@ div {
 </div>
 </body>
 </html>
-<% }
+<% 
 } %>

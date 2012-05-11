@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -13,13 +14,10 @@ int pageNumber = PublicHomeBean.parsePageParam(pageNumberParam);
 String country = request.getParameter("country");
 String sectionId = request.getParameter("sectionId");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
-	// todo aca primero seteo el pais, luego redirecciono
-	String theURL = "../../../selectCountry.st?iso_code_2="+ country + "&action=section&=" + sectionId;
-	theURL = response.encodeRedirectURL(theURL);
-	response.sendRedirect(theURL);
-} else {
-	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	Section section = publicHomeBean.getSectionForId(sectionId);
+	SelectCountryServlet.initForCountry(request, country, "");
+} 
+PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
+Section section = publicHomeBean.getSectionForId(sectionId);
 %>
 <html>
 <head>
@@ -192,4 +190,3 @@ div {
 <%@ include file="../includes/noteFooter.jsp" %>
 </body>
 </html>
-<% } %>
