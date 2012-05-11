@@ -104,8 +104,13 @@ public class PublicHomeBean  {
 	private static final int MAX_VIDEOS_FOR_HOME = 3;
 	private static final int MAX_NOTES_FOR_FOOTER = 7;
 	
-	public static final int SECTION_PAGE_SIZE = 2;
+	public static final int SECTION_PAGE_SIZE = 5;
+	public static final int SECTIONS_PAGES_SIDE = 2;
 	public static final int MAX_SECTIONS_PAGES = 5;
+	
+	public static final int VIDEOS_PAGE_SIZE = 5;
+	public static final int VIDEOS_PAGES_SIDE = 2;
+	public static final int VIDEOS_MAX_SECTIONS_PAGES = 5;
 	
 	// 0 si no viene, sino lo que vino
 	public static int parsePageParam(String pString) {
@@ -347,10 +352,10 @@ public class PublicHomeBean  {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Video> getAllVideosForCountry() {
+	public List<Video> getAllVideosForCountry(int pageNumber, ArrayList<Integer> pages) {
 		final Country country = this.getCountry();
 		try {
-			 List<Video> result = (List<Video>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+			 List<Video> originalResult = (List<Video>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
 					VideoExample videoExample = new VideoExample();
 					videoExample.createCriteria().andDeletedEqualTo(0).andIdCountryEqualTo(country.getId());
@@ -359,6 +364,23 @@ public class PublicHomeBean  {
 					return result;
 				}
 			});
+			 List<Video> result;
+			 int seekAt = pageNumber * VIDEOS_PAGE_SIZE;
+			 if (originalResult.size() > seekAt) {
+				 result = originalResult.subList(seekAt, originalResult.size());
+			 } else {
+				 result = new ArrayList<Video>();
+			 }
+			int min = pageNumber - VIDEOS_PAGES_SIDE;
+			if (min < 0) {
+				min = 0;
+			}
+			int sectionSize = originalResult.size();
+			int pagesCount = 0;
+			for (int i = min; (i * VIDEOS_PAGE_SIZE) < sectionSize && pagesCount < VIDEOS_MAX_SECTIONS_PAGES; i++) {
+				pages.add(i);
+				pagesCount = pagesCount + 1;
+			}
 			return result;
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
@@ -847,7 +869,7 @@ public class PublicHomeBean  {
 	
 	public List<Integer> getPages(Section section, int pageNumber) {
 		List<Integer> result = new ArrayList<Integer>();
-		int min = pageNumber - 2;
+		int min = pageNumber - SECTIONS_PAGES_SIDE;
 		if (min < 0) {
 			min = 0;
 		}

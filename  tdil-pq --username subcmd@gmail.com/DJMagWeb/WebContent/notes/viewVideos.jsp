@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.djmag.model.Video"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.djmag.model.RankingPositions"%>
@@ -6,6 +7,8 @@
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%
+String pageNumberParam = request.getParameter("pageNumber");
+int pageNumber = PublicHomeBean.parsePageParam(pageNumberParam);
 String country = request.getParameter("country");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
 	// todo aca primero seteo el pais, luego redirecciono
@@ -14,7 +17,8 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	response.sendRedirect(theURL);
 } else {
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	List<Video> allVideos = publicHomeBean.getAllVideosForCountry();
+	ArrayList<Integer> pages = new ArrayList<Integer>();
+	List<Video> allVideos = publicHomeBean.getAllVideosForCountry(pageNumber, pages);
 	Video first = null;
 	if (!allVideos.isEmpty()) {
 		first = allVideos.get(0);
@@ -166,7 +170,8 @@ function setAsTopVideo(divId) {
 				<%=(first != null) ? first.getHtmlcontent() : ""%>
 			</div>
 			<div id="videoList">
-				<% for (Video video : allVideos) { %>
+				<% for (int i = 0; (i < PublicHomeBean.VIDEOS_PAGE_SIZE && allVideos.size() > i); i++) { 
+					Video video = allVideos.get(i);%>
 					<div id="renglonVideo">
 						<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
 						<div id="ranked">
@@ -178,6 +183,21 @@ function setAsTopVideo(divId) {
 				<% } %>
 			</div>
 		</div>
+		<% if (pageNumber == 0) { %>
+			<a href="../../index.jsp">Volver a la home</a>
+		<% } else  { %>
+			<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a>
+		<% } %>
+		<% for (Integer pageToRender : pages) { %>
+			<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+				<%=pageToRender + 1%>
+			<% } else { %>
+				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a>
+			<% } %>
+		<% } %>
+		<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
+			<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a>
+		<% } %>
 	</div>
 	<div id="right">
 		<div id="subContent"></div>
