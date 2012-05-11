@@ -30,23 +30,26 @@ public class SelectCountryServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+		String iso_code_2 = arg0.getParameter("iso_code_2");
+		String id = arg0.getParameter("id");
+		initForCountry(arg0, iso_code_2, id);
+		arg0.getRequestDispatcher("./index.jsp").forward(arg0, arg1);
+	}
+	
+	public static void initForCountry(HttpServletRequest arg0, String iso_code_2, String id) {
 		HttpSession session = arg0.getSession(true);
 		PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 		if (publicHomeBean == null) {
 			publicHomeBean = new PublicHomeBean();
 			session.setAttribute(PublicHomeBean.PUBLIC_HOME_BEAN, publicHomeBean);
 		}
-		String iso_code_2 = arg0.getParameter("iso_code_2");
 		if (!StringUtils.isEmpty(iso_code_2)) {
 			publicHomeBean.setCountryByIsoCode2(iso_code_2);
-			arg0.getRequestDispatcher("./index.jsp").forward(arg0, arg1);
 		} else {	
-			String id = arg0.getParameter("id");
 			if (StringUtils.isNumeric(id)) {
 				int idcountry = Integer.parseInt(id);
 				publicHomeBean.setCountryById(idcountry);
 			}
-			arg0.getRequestDispatcher("./index.jsp").forward(arg0, arg1);
 		}
 	}
 

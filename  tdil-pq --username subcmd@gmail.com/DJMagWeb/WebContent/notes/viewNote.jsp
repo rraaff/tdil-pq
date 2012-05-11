@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -14,11 +15,8 @@ String country = request.getParameter("country");
 String date = request.getParameter("date");
 String webTitle = request.getParameter("webTitle");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
-	// todo aca primero seteo el pais, luego redirecciono
-	String theURL = "../../../selectCountry.st?iso_code_2="+ country + "&action=viewNote&date=" + date + "&webTitle=" +webTitle;
-	theURL = response.encodeRedirectURL(theURL);
-	response.sendRedirect(theURL);
-} else {
+	SelectCountryServlet.initForCountry(request, country, "");
+} 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	Section actualsection = publicHomeBean.getSectionForId(sectionId);
 	NoteValueObject noteToShow = publicHomeBean.getNoteByParams(country, date, webTitle);
@@ -260,5 +258,5 @@ div {
     </script>
 </body>
 </html>
-<% }
+<% 
 } %>
