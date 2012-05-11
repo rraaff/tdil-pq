@@ -20,5 +20,6 @@ $url = $facebook->getLoginUrl(array(
 echo '<map name="Map"><area shape="rect" coords="335,463,456,497" href="' . $url . '"></map>';
 ?>
 </div>
+<?php echo '<a href="' . $url . '" target="_top"><img src="../images/askpermisionApp2.jpg" width="795" height="780" border="0"></a>'; ?>
 </body>
 </html>
