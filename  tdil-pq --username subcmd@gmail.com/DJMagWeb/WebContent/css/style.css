@@ -583,6 +583,7 @@ body {
 	height:389px;
 	background-image:url(../images/bg-footer.gif);
 	background-repeat: repeat-x;
+	float:left;
 }
 #footer #upButton {
 	width:67px;

@@ -3,8 +3,7 @@
 <% if (publicHomeBean.hasFooter()) { 
 	Footer footer = publicHomeBean.getFooter();
 	%>
-	<%=footer.getHtmlcontent() %></h1>
+	<%=footer.getHtmlcontent() %>
 <% } else { %>
 	No tienefooter
 <% } %>
-</div>

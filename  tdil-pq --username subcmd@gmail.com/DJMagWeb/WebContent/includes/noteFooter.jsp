@@ -3,8 +3,7 @@
 <% if (publicHomeBean.hasFooter()) { 
 	Footer footernote = publicHomeBean.getFooterNote();
 	%>
-	<%=footernote.getHtmlcontent() %></h1>
+	<%=footernote.getHtmlcontent() %>
 <% } else { %>
 	No tienefooter
 <% } %>
-</div>
