@@ -268,6 +268,6 @@ div {
 		</div>
 	</div>
 </div>
-<%@ include file="../includes/noteFooter.jsp" %>
+<%@ include file="../includes/rankingFooter.jsp" %>
 </body>
 </html>
