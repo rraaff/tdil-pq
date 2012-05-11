@@ -9,6 +9,8 @@ DROP TABLE IF EXISTS AUTHOR;
 DROP TABLE IF EXISTS MILKA_PHOTO;
 DROP TABLE IF EXISTS MILKA_PHOTO_TAG;
 DROP TABLE IF EXISTS POST_IT;
+DROP TABLE IF EXISTS WALL_WRITTING;
+DROP TABLE IF EXISTS WALL;
 
 CREATE TABLE SYSTEMUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -162,6 +164,43 @@ CREATE TABLE POST_IT (
   CONSTRAINT `FK_POST_IT_00`
     FOREIGN KEY (`id_author` )
     REFERENCES AUTHOR (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE WALL (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `description` VARCHAR(50) NOT NULL ,
+  `moderated` INT NOT NULL,
+  `profanityFilter` INT NOT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_WALL_00` (`description` ASC))
+ENGINE = InnoDB;
+
+INSERT INTO WALL (id, description, moderated, profanityFilter, deleted) VALUES(1,'papapedia', 0, 1, 0);
+INSERT INTO WALL (id, description, moderated, profanityFilter, deleted) VALUES(2,'queodias', 0, 1, 0);
+INSERT INTO WALL (id, description, moderated, profanityFilter, deleted) VALUES(3,'queamas', 0, 1, 0);
+
+CREATE TABLE WALL_WRITTING (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
+  `id_author` INT  NULL ,
+  `originalText` VARCHAR(4000) NOT NULL ,
+  `approved` INT NOT NULL,
+  `id_wall` INT NOT NULL,
+  `id_click_counter` INT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_WALL_WRITTING_00`
+    FOREIGN KEY (`id_author` )
+    REFERENCES AUTHOR (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_WALL_WRITTING_01`
+    FOREIGN KEY (`id_wall` )
+    REFERENCES WALL (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

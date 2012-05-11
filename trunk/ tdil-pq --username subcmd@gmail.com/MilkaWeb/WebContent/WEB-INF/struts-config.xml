@@ -13,6 +13,9 @@
   <form-bean id="PostItForm" name="PostItForm" type="com.tdil.milka.struts.forms.PostItForm"/>
   <form-bean id="PostItAdministrationForm"
    name="PostItAdministrationForm" type="com.tdil.milka.struts.forms.PostItAdministrationForm"/>
+   <form-bean id="PapapediaForm"
+   name="PapapediaForm" type="com.tdil.milka.struts.forms.WallWrittingForm"/>
+  
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -118,6 +121,10 @@
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/index.jsp"/>
+  </action>
+  <action name="PapapediaForm" path="/addPapapedia" scope="session" type="com.tdil.milka.struts.action.AddPapapediaAction">
+   <forward name="continue" path="/papapedia.jsp" redirect="true"/>
+   <forward name="failure" path="/papapedia.jsp"/>
   </action>
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
  </action-mappings>
