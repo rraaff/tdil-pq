@@ -799,6 +799,7 @@ public class PublicHomeBean  {
 			htmlNote = StringUtils.replace(htmlNote, "[SECCIONES]", this.getSectionsReplacementForNote());
 			html = StringUtils.replace(html, "[NOTAS_POPULARES]", this.getPopulasNotesReplacement());
 			htmlNote = StringUtils.replace(htmlNote, "[NOTAS_POPULARES]", this.getPopulasNotesReplacementForNote());
+			htmlNote = StringUtils.replace(htmlNote, "src=\"images", "src=\"../../../images");
 			footer.setHtmlcontent(html);
 			Footer notefooter = new Footer();
 			notefooter.setHtmlcontent(htmlNote);
