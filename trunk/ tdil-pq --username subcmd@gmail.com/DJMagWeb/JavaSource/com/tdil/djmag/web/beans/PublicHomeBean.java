@@ -74,6 +74,7 @@ public class PublicHomeBean  {
 	
 	private Footer footer;
 	private Footer footerNote;
+	private Footer footerRanking;
 	
 	private TwitterFeed twitterFeed;
 	private FacebookFeed facebookFeed;
@@ -313,6 +314,26 @@ public class PublicHomeBean  {
 		return result.toString();
 	}
 	
+	private String getPopulasNotesReplacementForRanking() {
+		StringBuffer result = new StringBuffer();
+		int index = 0;
+		Iterator<NoteValueObject> frontCoverIter = this.getFrontCoverNotes().iterator();
+		while (frontCoverIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+			NoteValueObject nvo = frontCoverIter.next();
+			result.append("<a href=\"../../").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
+			index = index + 1;
+		}
+		if (index < MAX_NOTES_FOR_FOOTER) {
+			Iterator<NoteValueObject> lastNewsIter = this.getLastNotes().iterator();
+			while (lastNewsIter.hasNext() && index < MAX_NOTES_FOR_FOOTER) {
+				NoteValueObject nvo = lastNewsIter.next();
+				result.append("<a href=\"../../").append(this.getExternalLink(nvo)).append("\">").append(nvo.getTitle()).append("</a>\n");
+				index = index + 1;
+			}
+		}
+		return result.toString();
+	}
+	
 	private String getSectionsReplacementForNote() {
 		StringBuffer result = new StringBuffer();
 		for (Section section : getSectionsForCountry()) {
@@ -325,6 +346,25 @@ public class PublicHomeBean  {
 					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
 					result.append("<a href=\"../../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+					result.append("\">").append(section.getName()).append("</a>\n");
+				}
+			}
+		}
+		return result.toString();
+	}
+	
+	private String getSectionsReplacementForRanking() {
+		StringBuffer result = new StringBuffer();
+		for (Section section : getSectionsForCountry()) {
+			if (SectionType.RANKING_100.equals(section.getSectiontype())) {
+				result.append("<a href=\"../../notes/").append(this.getCountry().getIsoCode2()).append("/viewRanking.html");
+				result.append("\">").append(section.getName()).append("</a>\n");
+			} else {
+				if (SectionType.VIDEOS.equals(section.getSectiontype())) {
+					result.append("<a href=\"../../notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
+					result.append("\">").append(section.getName()).append("</a>\n");
+				} else {
+					result.append("<a href=\"../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
 					result.append("\">").append(section.getName()).append("</a>\n");
 				}
 			}
@@ -795,15 +835,24 @@ public class PublicHomeBean  {
 		if (footer != null) {
 			String html = footer.getHtmlcontent();
 			String htmlNote = footer.getHtmlcontent();
+			String htmlRanking = footer.getHtmlcontent();
 			html = StringUtils.replace(html, "[SECCIONES]", this.getSectionsReplacement());
 			htmlNote = StringUtils.replace(htmlNote, "[SECCIONES]", this.getSectionsReplacementForNote());
+			htmlRanking = StringUtils.replace(htmlRanking, "[SECCIONES]", this.getSectionsReplacementForRanking());
 			html = StringUtils.replace(html, "[NOTAS_POPULARES]", this.getPopulasNotesReplacement());
 			htmlNote = StringUtils.replace(htmlNote, "[NOTAS_POPULARES]", this.getPopulasNotesReplacementForNote());
 			htmlNote = StringUtils.replace(htmlNote, "src=\"images", "src=\"../../../images");
+			
+			htmlRanking = StringUtils.replace(htmlRanking, "[NOTAS_POPULARES]", this.getPopulasNotesReplacementForRanking());
+			htmlRanking = StringUtils.replace(htmlRanking, "src=\"images", "src=\"../../images");
 			footer.setHtmlcontent(html);
 			Footer notefooter = new Footer();
 			notefooter.setHtmlcontent(htmlNote);
 			setFooterNote(notefooter);
+			
+			Footer rankingfooter = new Footer();
+			rankingfooter.setHtmlcontent(htmlRanking);
+			setFooterRanking(rankingfooter);
 		}
 		this.footer = footer;
 	}
@@ -954,5 +1003,13 @@ public class PublicHomeBean  {
 
 	public void setFooterNote(Footer footerNote) {
 		this.footerNote = footerNote;
+	}
+
+	public Footer getFooterRanking() {
+		return footerRanking;
+	}
+
+	public void setFooterRanking(Footer footerRanking) {
+		this.footerRanking = footerRanking;
 	}
 }
