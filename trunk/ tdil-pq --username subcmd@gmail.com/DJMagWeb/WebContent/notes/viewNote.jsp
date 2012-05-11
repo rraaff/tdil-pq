@@ -152,12 +152,14 @@ div {
 }
 #fakeLiveboxWindow #right {
 	float:left;
-	width:286px;
-	padding:13px;
+	width:286px;	
+	height:868px;
+	overflow:hidden;
 }
 #fakeLiveboxWindow #right #rightBanner {
 	width:286px;
 	height:868px;
+	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -189,7 +191,7 @@ div {
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
-							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html" style="padding:0; cursor:hand;"><img src="../../../images/logoTop100.gif" width="214" height="123" /></a>
+							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>

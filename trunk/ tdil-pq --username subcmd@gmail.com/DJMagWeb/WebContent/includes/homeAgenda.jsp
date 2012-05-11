@@ -6,7 +6,7 @@
 	<% for (NoteValueObject note : publicHomeBean.getReducedAgenda()) { %>
 		<div id="calendarEvent">
 			<div id="image"><img src="./download.st?id=<%=note.getAgendaId()%>&type=PUBLIC&ext=<%=note.getAgendaext()%>" height="30" width="30"></div>
-			<div id="renglon"><span class="date"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></a></span><span><%=note.getTitle() %></span></div>
+			<div id="renglon"><div id="date"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></a></div><div id="titleNote"><%=note.getTitle() %></div></div>
 		</div>
 	<% } %>
 	</div>
