@@ -3,6 +3,7 @@ package com.tdil.web;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +42,9 @@ public class DownloadController extends HttpServlet {
 		String ext = req.getParameter("ext");
 		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlob(type, id, 0, ext, null); // TODO usuario
 		long length = blobLocalData.getFileSize();
-		long lastModified = blobLocalData.lastModified();
+		Calendar cal = Calendar.getInstance();
+		cal.set(2010, 1, 1, 0, 0, 0);
+		long lastModified = cal.getTimeInMillis();
 		String eTag = type + "=" + id;
 		String ifNoneMatch = req.getHeader("If-None-Match");
 		if (ifNoneMatch != null && matches(ifNoneMatch, eTag)) {
