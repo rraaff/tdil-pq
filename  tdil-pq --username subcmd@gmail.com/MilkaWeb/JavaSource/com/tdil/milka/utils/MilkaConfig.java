@@ -5,18 +5,27 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletContextEvent;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.cache.blob.BlobLocalDiskCache;
 import com.tdil.ibatis.IBatisManager;
+import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.cache.blob.PublicBlobResolver;
 import com.tdil.milka.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.BlobDataType;
+import com.tdil.milka.model.FilteredWord;
 import com.tdil.milka.model.SystemProperty;
 import com.tdil.milka.model.SystemPropertyExample;
+import com.tdil.milka.model.WallFilter;
+import com.tdil.milka.model.WallType;
 import com.tdil.milka.roles.Administrator;
+import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.ValidationException;
 import com.tdil.users.None;
 import com.tdil.users.Role;
 import com.tdil.utils.SystemConfig;
@@ -28,6 +37,32 @@ public class MilkaConfig extends SystemConfig {
 		return LoggerProvider.getLogger(MilkaConfig.class);
 	}
 	
+	@Override
+	public void init(ServletContextEvent sce) {
+		super.init(sce);
+		this.loadFilteredWords();
+	}
+	
+	private void loadFilteredWords() {
+		getLog().fatal("MilkaConfig: loading filtered words");
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				public void executeInTransaction() throws SQLException, ValidationException {
+					WallFilter.init();
+					List<FilteredWord> list = DAOManager.getFilteredWordDAO().selectFilteredWordByExample(null);
+					for (FilteredWord word : list) {
+						WallFilter.add(word.getWord());
+					}
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(),e);
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(),e);
+		}
+		getLog().fatal("MilkaConfig: filtered words loaded");
+	}
+
 	@Override
 	protected void initXMLALias() {
 		//XMLUtils.addAlias("RankingPositions", RankingPositions.class);

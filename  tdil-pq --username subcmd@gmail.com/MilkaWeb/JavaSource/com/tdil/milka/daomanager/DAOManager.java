@@ -6,6 +6,7 @@ import com.tdil.ibatis.IBatisManager;
 import com.tdil.milka.dao.AuthorDAO;
 import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.ClickCounterDAO;
+import com.tdil.milka.dao.FilteredWordDAO;
 import com.tdil.milka.dao.MilkaPhotoDAO;
 import com.tdil.milka.dao.MilkaPhotoTagDAO;
 import com.tdil.milka.dao.NotificationEmailDAO;
@@ -19,6 +20,7 @@ import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.dao.impl.AuthorDAOImpl;
 import com.tdil.milka.dao.impl.BlobDataDAOImpl;
 import com.tdil.milka.dao.impl.ClickCounterDAOImpl;
+import com.tdil.milka.dao.impl.FilteredWordDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoTagDAOImpl;
 import com.tdil.milka.dao.impl.NotificationEmailDAOImpl;
@@ -83,5 +85,9 @@ public class DAOManager {
 	
 	public static WallWrittingDAO getWallWrittingDAO() throws SQLException {
 		return new WallWrittingDAOImpl(IBatisManager.getClient());
+	}
+
+	public static FilteredWordDAO getFilteredWordDAO() throws SQLException {
+		return new FilteredWordDAOImpl(IBatisManager.getClient());
 	}
 }

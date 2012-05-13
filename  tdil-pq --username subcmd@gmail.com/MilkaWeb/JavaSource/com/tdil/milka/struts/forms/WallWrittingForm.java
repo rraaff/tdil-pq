@@ -13,6 +13,7 @@ import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.Wall;
 import com.tdil.milka.model.WallExample;
+import com.tdil.milka.model.WallFilter;
 import com.tdil.milka.model.WallWritting;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -64,7 +65,11 @@ public class WallWrittingForm extends TransactionalValidationForm {
 		WallWrittingDAO wallWrittingDAO = DAOManager.getWallWrittingDAO();
 		WallWritting wallWritting = new WallWritting();
 		wallWritting.setIdWall(wall.getId());
-		wallWritting.setApproved(0);
+		if (WallFilter.approves(this.getText())) {
+			wallWritting.setApproved(1);
+		} else {
+			wallWritting.setApproved(0);
+		}
 		wallWritting.setCreationdate(new Date());
 		wallWritting.setOriginaltext(this.getText());
 		wallWritting.setDeleted(0);

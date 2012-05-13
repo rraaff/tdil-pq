@@ -32,4 +32,5 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/POST_IT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/WALL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/WALL_WRITTING_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/FILTERED_WORD_SqlMap.xml"/>
 </sqlMapConfig>
