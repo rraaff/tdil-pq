@@ -1,11 +1,16 @@
 package com.tdil.text;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -20,15 +25,13 @@ public class FilterProfanity {
 	private Set<String> filterList = new HashSet<String>();
 	private Pattern pattern = Pattern.compile("([a-z|A-Z]+)");
 	
-	private Pattern nonpattern = Pattern.compile("([a-z|A-Z]+)");
-	
+	private static final String PUNCTUATION = ".,;:?¡\"'()";
 	/**
 	 * Indicates if case of words should be ignored.
 	 */
 	private boolean ignoreCase = true;
 	private FilterMode filterMode = FilterMode.REPLACE_WORD;
-
-
+	
 	/**
 	 * Creates a new filter not associated with a message. This is generally
 	 * only useful for defining a template filter that other fitlers will be
@@ -36,6 +39,21 @@ public class FilterProfanity {
 	 */
 	public FilterProfanity() {
 		super();
+	}
+	
+	public static void main(String[] args) throws IOException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+		FilterProfanity filterProfanity = new FilterProfanity();
+		filterProfanity.readAll();
+		System.out.println(filterProfanity.approvesStrict("Vos sos un repu tó"));
+		System.out.println(filterProfanity.approvesStrict("Mi con ichapa para es lo mas"));
+	}
+	
+	public void readAll() throws IOException {
+		InputStream input = FilterProfanity.class.getResourceAsStream("filteredword.csv");
+		List<String> lines = (List<String>)IOUtils.readLines(input);
+		Set<String> filterList = new HashSet<String>();
+		filterList.addAll(lines);
+		setFilterList(filterList);
 	}
 
 	public void setFilterMode(FilterMode filterMode) {
@@ -84,7 +102,7 @@ public class FilterProfanity {
 	}
 	
 	/** Retorna true si ninguna palabra esta entre las filtradas y ademas las palabras no tienen caracteres especiales*/
-	public boolean aprovesStrict(String str) {
+	public boolean approvesStrict(String str) {
 		// primero remplazo los acentos
 		str = StringUtils.replace(str, "á","a");
 		str = StringUtils.replace(str, "é","e");
@@ -93,13 +111,20 @@ public class FilterProfanity {
 		str = StringUtils.replace(str, "ú","u");
 		String list[] = str.split(" ");
 		for (String st : list) {
-			if (st.length() > 2) {
-				String toCheck = st.substring(1);
-				toCheck = toCheck.substring(0, toCheck.length() - 1);
-				if (!StringUtils.isAlpha(toCheck)) {
-					return false;
+			String toCheck = st;
+			if (toCheck.length() > 0) {
+				if (PUNCTUATION.contains(String.valueOf(toCheck.charAt(0)))) {
+					toCheck = toCheck.substring(1);
 				}
-			} 
+			}
+			if (toCheck.length() > 0) {
+				if (PUNCTUATION.contains(String.valueOf(toCheck.charAt(toCheck.length() - 1)))) {
+					toCheck = toCheck.substring(0, toCheck.length() - 1);
+				}
+			}
+			if (!StringUtils.isAlpha(toCheck)) {
+				return false;
+			}
 			if (!checkStrict(st)) {
 				return false;
 			}
@@ -141,8 +166,27 @@ public class FilterProfanity {
 		}
 		return str.toString();
 	}
-
+	
 	public void setFilterList(Collection<String> list) {
+		filterList.clear();
+		for (String s : list) {
+			if (ignoreCase) {
+				this.filterList.add(s.toLowerCase());
+			} else {
+				this.filterList.add(s);
+			}
+		}
+	}
+	
+	public void addFilterList(String s) {
+		if (ignoreCase) {
+			this.filterList.add(s.toLowerCase());
+		} else {
+			this.filterList.add(s);
+		}
+	}
+
+	public void addFilterList(Collection<String> list) {
 		for (String s : list) {
 			if (ignoreCase) {
 				this.filterList.add(s.toLowerCase());
