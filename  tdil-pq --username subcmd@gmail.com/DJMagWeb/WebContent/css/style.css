@@ -222,10 +222,9 @@ body {
 	background-image: url(../images/bg-top100Home.png);
 	background-repeat: no-repeat;
 	float: left;
-	height: 290px;
+	height: 383px;
 	width: 250px;
 	margin-left: 25px;
-	padding-top: 93px;
 	display: inline-block;
 }
 #BlockMain #top100Home #position {
@@ -315,48 +314,6 @@ body {
 	position:relative;
 	float: right;
 }
-#BlockMain #BlockMainRight #BlockMagazine {
-	margin-top:12px;
-	width:250px;
-	height:268px;
-	position:relative;
-	float: right;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine {
-	width:250px;
-	height:268px;
-	position:relative;
-	padding-top:162px;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase {
-	width:250px;
-	height:106px;
-	background-image: url(../images/bg-headerHomeLight.png);
-	background-repeat: repeat;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase a {
-	font-size:18px;
-	color:#FFFF66;
-	margin:10px;
-	margin-bottom:0px;
-	text-decoration:none;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase a:hover {
-	text-decoration:underline;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase #bajada {
-	margin:10px;
-	color:#FFFFFF;
-	font-size:12px;
-	height:45px;
-	margin-bottom:5px;
-	overflow:hidden;
-}
-#BlockMain #BlockMainRight #BlockMagazine #magazine #magazineContentBase #date {
-	margin-left:10px;
-	color:#e25237;
-	font-size:11px;
-}
 .suscribeField {
 	width:119px;
 	height:24px;
@@ -391,125 +348,6 @@ body {
 	margin-left: 15px;
 	position:relative;
 }
-#BlockSecondaryContent #leftContent #BlockLastNews {
-	width:635px;
-	height:390px;
-	position:relative;
-	overflow: hidden;
-}
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews {
-	width:310px;
-}
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews img {
-	border: solid 1px #3e3e3e;
-	margin-bottom:15px;
-	margin-top:15px;
-}
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:hover, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:visited, #BlockSecondaryContent #leftContent #BlockLastNews #lastNews h3 a:active  {
-	font-size:18px;
-	color:#fef455;
-	font-weight:bold;
-	margin:0;
-	padding:0;
-	width:310px;
-	overflow:hidden
-}
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .bajada {
-	font-size:13px;
-	line-height:18px;
-	font-weight:700;
-	height:70px;
-	margin-top:8px;
-	margin-bottom:11px;
-	overflow:hidden;
-}
-#BlockSecondaryContent #leftContent #BlockLastNews #lastNews .date {
-	width:305px;
-	font-size:11px;
-	line-height:20px;
-	background-color:#525252;
-	padding-left:5px;
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews {
-	width:635px;
-	height:290px;
-	position:relative;
-	overflow:hidden;
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews {
-	width:202px;
-	float:left;
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews img {
-	border: solid 1px #3e3e3e;
-	margin-bottom:15px;
-	margin-top:15px;
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews h3 {
-	font-size:15px;
-	color:#fef455;
-	font-weight:bold;
-	margin:0;
-	padding:0;
-	width:202px;
-	overflow:hidden
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .bajada {
-	font-size:13px;
-	line-height:18px;
-	font-weight:700;
-	height:56px;
-	margin-top:8px;
-	margin-bottom:11px;
-	overflow:hidden;
-}
-#BlockSecondaryContent #leftContent #BlockPopularNews #lastNews .date {
-	width:197px;
-	font-size:11px;
-	line-height:20px;
-	background-color:#525252;
-	padding-left:5px;
-}
-#BlockSecondaryContent #leftContent #BlockVideos {
-	height: 350px;
-	width: 635px;
-	position: relative;
-	margin-top: 10px;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #topvideo {
-	float: left;
-	height: 300px;
-	width: 390px;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #right {
-	width:202px;
-	height:297px;
-	float:right;
-	overflow:hidden;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo {
-	width:200px;
-	height:144px;
-	border:solid 1px #525252;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base {
-	width:200px;
-	height:46px;
-	background-image: url(../images/bg-headerHomeLight.png);
-	background-repeat: repeat;
-	overflow: hidden;
-	margin-top: 98px;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base h4 {
-	margin:5px;
-	color:#e25237;
-	font-size:13px;
-}
-#BlockSecondaryContent #leftContent #BlockVideos #right #thmbnVideo #base span {
-	margin:5px;
-	color:#FFFFFF;
-	font-size:13px;
-}
 #BlockSecondaryContent #rightContent {
 	float: right;
 	height: 1170px;
@@ -517,73 +355,23 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 }
-#BlockSecondaryContent #rightContent #BlockHomeCalendar {
-	width:309px;
-	height:203px;
-	overflow:hidden;
-	margin-top:15px;
-	position:relative;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent {
-/*	min-height:28px;*/
-	width:309px;
-	position:relative;
-	float:left;
-	padding-bottom:10px;
-	padding-top:10px;
-	border-bottom:solid 1px #525252;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent:hover {
-	background-color:#525252;
-	color:#FFFF33;
-	cursor:hand;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #renglon {
-	float:left;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #image {
-	width:30px;
-	height:30px;
-	margin-left:8px;
-	margin-right:8px;
-	float:left;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date a, #BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #date a:hover {
-	background-color:#e25237;
-	color:#FFFF33;
-	font-size:11px;
-	text-decoration:none;
-	padding: 2px;
-	margin:0;
-	margin-top:2px;
-	float:left;
-}
-#BlockSecondaryContent #rightContent #BlockHomeCalendar #calendarEvent #titleNote {
-	font-size:11px;
-	font-weight:700;
-	line-height:15px;
-	padding-left:8px;
-	padding-top:7px;
-	width:170px;
-	height:15px;
-	float:left;
-	overflow:hidden;
-}
 #BlockSecondaryContent #rightContent #BlockTwFeed {
 	width:309px; 
-	height:313px;
+	height:330px;
 	overflow:hidden;
-	margin-top:15px;
+	margin-top:10px;
 	position:relative;
-	border-bottom:solid 7px #525252;
 }
 #BlockSecondaryContent #rightContent #BlockFbFeed {
 	width:309px; 
-	height:515px;
+	height:484px;
 	overflow:hidden;
 	margin-top:15px;
 	position:relative;
 	background-color:#525252;
+}
+#spacer {
+	height:20px;
 }
 #footer {
 	width:100%;

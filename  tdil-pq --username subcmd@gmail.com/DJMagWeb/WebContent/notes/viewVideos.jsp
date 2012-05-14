@@ -44,7 +44,7 @@ div {
 }
 #fakeLiveboxWindow {
 	width:1010px;
-	background-color: #FFFFFF;
+	background-color: #000;
 	float:left;
 }
 #navBar {
@@ -88,7 +88,6 @@ div {
 	width:690px;
 }
 #fakeLiveboxWindow #left #note {
-	background-color:#FFFFFF;
 	width:660px;
 	padding:13px;
 	overflow:hidden;
@@ -112,11 +111,14 @@ div {
 	height:78px;
 	float:left;
 }
+#thmbnVideo:hover {
+	border:solid 1px #FFFF00;
+}
 #ranked {
 	width:560px;
 	float:right;
 }
-#ranked #title{
+#ranked #title, #ranked #title a, #ranked #title a:active, #ranked #title a:visited {
 	font-size:14px;
 	color:#e25237;
 	line-height: normal;
@@ -125,14 +127,21 @@ div {
 	text-decoration: none;
 	padding-bottom:16px;
 }
-#description {
-	color:#5b5b5b;
+#ranked #title a:hover {
+	text-decoration: underline;
+}
+#description, #description a, #description a:active, #description a:visited {
+	color:#CCCCCC;
 	font-size: 11px;
 	line-height: 16px;
 	font-weight: normal;
 	text-align:justify;
+	text-decoration: none;
 	margin-bottom:20px;
 	padding-right:20px;
+}
+#description a:hover {
+	text-decoration: underline;
 }
 #fakeLiveboxWindow #left #note #images {
 	border:solid 7px #525252;
@@ -159,6 +168,7 @@ div {
 }
 #fakeLiveboxWindow #left #linksBottom a {
 	color:#e25237;
+	padding:5px;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {
 	float:left;
@@ -169,11 +179,9 @@ div {
 #fakeLiveboxWindow #right {
 	float:left;
 	width:286px;
-	padding:13px;
 }
 #fakeLiveboxWindow #right #rightBanner {
 	width:286px;
-	height:868px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -234,10 +242,10 @@ div {
 					<% for (int i = 0; (i < PublicHomeBean.VIDEOS_PAGE_SIZE && allVideos.size() > i); i++) { 
 						Video video = allVideos.get(i);%>
 						<div id="renglonVideo">
-							<div id="thmbnVideo"><img onClick="setAsTopVideo('topvideo-<%=video.getId()%>')" src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></div>
+							<div id="thmbnVideo"><a href="javascript:setAsTopVideo('topvideo-<%=video.getId()%>');"><img src="../../download.st?id=<%=video.getFrontcoverId()%>&type=PUBLIC&ext=<%=video.getFrontcoverext()%>" width="78" height="78"></a></div>
 							<div id="ranked">
-								<div id="title"><%=video.getTitle() %></div>
-								<div id="description"><%=video.getDescription() %></div>
+								<div id="title"><a href="javascript:setAsTopVideo('topvideo-<%=video.getId()%>');"><%=video.getTitle() %></a></div>
+								<div id="description"><a href="javascript:setAsTopVideo('topvideo-<%=video.getId()%>');"><%=video.getDescription() %></a></div>
 								<div id="topvideo-<%=video.getId()%>" style="display: none;"><%=video.getHtmlcontent() %></div>
 							</div>
 						</div>
@@ -248,17 +256,17 @@ div {
 				<% if (pageNumber == 0) { %>
 					<div id="linkHome"><a href="../../index.jsp">Volver a la home</a></div>
 				<% } else  { %>
-					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">&lt;</a></div>
+					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
 				<% } %>
 				<% for (Integer pageToRender : pages) { %>
 					<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
-						<%=pageToRender + 1%>
+						<div id="linkPaging"><%=pageToRender + 1%></div>
 					<% } else { %>
 						<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
 					<% } %>
 				<% } %>
 				<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
-					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">&gt;</a></div>
+					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
 				<% } %>
 			</div>
 		</div>
@@ -266,6 +274,10 @@ div {
 			<% if (publicHomeBean.hasNoteRightBanner()) {%>
 				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 			<% } %>
+			<%@ include file="../includes/homeTwitter.jsp" %>
+			<div id="spacer"></div>
+			<%@ include file="../includes/homeFacebook.jsp" %>
+			<div id="spacer"></div>
 		</div>
 	</div>
 </div>

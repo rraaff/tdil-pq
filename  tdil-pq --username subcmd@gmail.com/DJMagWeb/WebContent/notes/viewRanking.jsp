@@ -35,12 +35,12 @@ div {
 }
 #fakeLiveboxWindow {
 	width:1010px;
-	background-color: #FFFFFF;
+	background-color: #000;
 	float:left;
 }
 #navBar {
-	color:#5b5b5b;
-	width:660px;
+	color:#CCC;
+	width:620px;
 	height:18px;
 	overflow:hidden;
 	padding:13px;
@@ -49,8 +49,8 @@ div {
 	border-bottom-width: 1px;
 	border-top-style: dotted;
 	border-bottom-style: dotted;
-	border-top-color: #b5b5b5;
-	border-bottom-color: #b5b5b5;
+	border-top-color: #666;
+	border-bottom-color: #666;
 }
 #sectionTitle {
 	background-color: #e55532;
@@ -79,7 +79,6 @@ div {
 	width:680px;
 }
 #fakeLiveboxWindow #left #note {
-	background-color:#FFFFFF;
 	width:654px;
 	padding:13px;
 }
@@ -96,32 +95,32 @@ div {
 #fakeLiveboxWindow #left #note #top100LB {
 	font-family: Arial, Helvetica, sans-serif;
 	width:650px;
-	height:868px;
+	height:1630px;
 	padding:0;
 	overflow:auto;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank {
 	width:630px;
-	border-bottom:solid 1px #cfcfcf;
+	border-bottom:dotted 1px #666;
 	float:left;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #position {
 	font-size: 15px;
 	line-height: 80px;
 	font-weight: bold;
-	color: #ffea00;
+	color: #FFFFCC;
 	text-align: center;
 	float: left;
 	width: 34px;
 	height: 80px;
-	background-color:#000000;
+	background-color:#333333;
 	margin-top:8px;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #photo {
 	width:78px;
 	height:78px;
 	background-image:url(../../images/thmbn_default.jpg);
-	border:solid 1px #5d5d5d;
+	border:solid 1px #CCCCCC;
 	margin:8px;
 	float: left;
 }
@@ -145,7 +144,7 @@ div {
 	float: left;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description {
-	color:#000;
+	color:#CCC;
 	font-size:11px;
 	line-height:16px;
 	font-weight:bold;
@@ -167,11 +166,9 @@ div {
 #fakeLiveboxWindow #right {
 	float:left;
 	width:286px;
-	padding:13px;
 }
 #fakeLiveboxWindow #right #rightBanner {
 	width:286px;
-	height:868px;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -242,6 +239,10 @@ div {
 			<% if (publicHomeBean.hasNoteRightBanner()) {%>
 				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 			<% } %>
+			<%@ include file="../includes/homeTwitter.jsp" %>
+			<div id="spacer"></div>
+			<%@ include file="../includes/homeFacebook.jsp" %>
+			<div id="spacer"></div>
 		</div>
 	</div>
 </div>
