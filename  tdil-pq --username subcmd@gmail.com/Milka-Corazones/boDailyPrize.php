@@ -23,11 +23,14 @@
 		header("Location: boDailyPrize.php");
 	} else {
 	
-	$query = "SELECT DP.*, UNIX_TIMESTAMP(DP.prizeDate) prizeDateUnix, SU.fbid, SU.fbname, SU.fbusername
+	$query = "SELECT DP.*, 
+		CASE WHEN (participationID is not NULL) THEN 'Adjudicado'
+		WHEN (DP.prizeDate < CURDATE()) THEN 'Vencido'
+		ELSE 'Pendiente' END state,
+		SU.fbid, SU.fbname, SU.fbusername
 		FROM DAILY_PRIZE DP 
 		LEFT JOIN PARTICIPATION TI ON (DP.participationID = TI.id) 		
-		LEFT JOIN FBUSER SU ON (TI.fbuserID = SU.id) 
-		ORDER BY DP.prizeDate";
+		LEFT JOIN FBUSER SU ON (TI.fbuserID = SU.id) ORDER BY DP.activationTimestamp";
 	$res = mysql_query($query, $connection);
 ?>
 <html>
@@ -92,24 +95,13 @@ $(document).ready(
 			<?php
 				$today = strtotime(date('d.m.y', time()));
 				while ($iw = mysql_fetch_array($res)){
-					$pdate = strtotime(date('d.m.y', $iw['prizeDateUnix']));
 			?>
 			<tr>
 				<td><?php echo $iw['id'] ?></td>
 				<td><?php echo $iw['prizeDate'] ?></td>
 				<td><?php echo $iw['activationTimestamp'] ?></td>
 				<td><?php echo $iw['coord'] ?></td>
-				<td><?php 
-					if (is_null($iw['participationID'])) {
-						if ($pdate >= $today) {
-							echo 'Pendiente';
-						} else {
-							echo 'Vencido';
-						}
-					} else {
-						echo 'Adjudicado';
-					}
-				?></td>
+				<td><?php echo $iw['state'] ?></td>
 				<td><?php 
 					if (!is_null($iw['fbname'])) { ?>
 						<a href="javascript:showWinner('<?php echo $iw['participationID'];?>')">
@@ -121,7 +113,7 @@ $(document).ready(
 				?></td>
 				<td><?php 
 					if (is_null($iw['participationID'])) {
-						if ($pdate > $today) {
+						if ($iw['state'] == 'Pendiente') {
 							?>
 							<a href="doDeleteDailyPrize.php?id=<?php echo $iw['id'];?>">
 								Borrar 
