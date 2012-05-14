@@ -124,7 +124,6 @@ $(document).ready(
 		<div id="socialAtHome"><img src="images/null.gif" width="251" height="23"></div>
 		<%@ include file="includes/homeNewsletter.jsp" %>
 		<%@ include file="includes/homeMagazine.jsp" %>
-		<%@ include file="includes/homeBannerRight.jsp"%>
 	</div>
 </div>
 <div id="BlockSecondaryContent">

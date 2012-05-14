@@ -1,15 +1,65 @@
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.model.Note"%>
+<style>
+#BlockLastNews {
+	width:635px;
+	height:390px;
+	position:relative;
+	overflow: hidden;
+}
+#BlockLastNews #lastNews {
+	width:310px;
+}
+#BlockLastNews #lastNews img {
+	border: solid 1px #3e3e3e;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+#BlockLastNews #lastNews h3 a, #BlockLastNews #lastNews h3 a:visited, #BlockLastNews #lastNews h3 a:active {
+	font-size:18px;
+	color:#fef455;
+	font-weight:bold;
+	margin:0;
+	padding:0;
+	width:310px;
+	overflow:hidden;
+	text-decoration:none;
+}
+#BlockLastNews #lastNews h3 a:hover {
+	text-decoration:underline;
+}
+.bajada, .bajada a, .bajada a:visited, .bajada a:active {
+	color:#FFFFFF;
+	font-size:13px;
+	line-height:18px;
+	font-weight:700;
+	height:70px;
+	margin-top:8px;
+	margin-bottom:11px;
+	overflow:hidden;
+	text-decoration:none;
+}
+.bajada a:hover {
+	text-decoration:underline;
+}
+#BlockLastNews #lastNews .date {
+	width:305px;
+	font-size:11px;
+	line-height:20px;
+	background-color:#525252;
+	padding-left:5px;
+}
+</style>
 	<h2>ultimas noticias</h2>
 	<div id="BlockLastNews">
 		<% if (publicHomeBean.hasLastNoteFirst()) { 
 			NoteValueObject first = publicHomeBean.getLastNoteFirst();
 		%>
 			<div id="lastNews" style="float:left; margin-right:15px;">
-				<img src="./download.st?id=<%=first.getLastnewscoverId()%>&type=PUBLIC&ext=<%=first.getLastnewscoverext()%>" width="308" height="222">
+				<a href="<%=publicHomeBean.getExternalLink(first)%>"><img src="./download.st?id=<%=first.getLastnewscoverId()%>&type=PUBLIC&ext=<%=first.getLastnewscoverext()%>" width="308" height="222"></a>
 				<h3><a href="<%=publicHomeBean.getExternalLink(first)%>"><%=first.getTitle() %></a></h3>
-				<div class="bajada"><%=first.getSummary() %></div>
+				<div class="bajada"><a href="<%=publicHomeBean.getExternalLink(first)%>"><%=first.getSummary() %></a></div>
 				<div class="date"><%=PublicHomeBean.formatDate(first.getFromDate()) %></div>
 			</div>
 		<% } %>
@@ -17,9 +67,9 @@
 			NoteValueObject second = publicHomeBean.getLastNoteSecond();
 		%>
 		<div id="lastNews" style="float:right;">
-			<img src="./download.st?id=<%=second.getLastnewscoverId()%>&type=PUBLIC&ext=<%=second.getLastnewscoverext()%>" width="308" height="222">
+			<a href="<%=publicHomeBean.getExternalLink(second)%>"><img src="./download.st?id=<%=second.getLastnewscoverId()%>&type=PUBLIC&ext=<%=second.getLastnewscoverext()%>" width="308" height="222"></a>
 			<h3><a href="<%=publicHomeBean.getExternalLink(second)%>"><%=second.getTitle() %></a></h3>
-			<div class="bajada"><%=second.getSummary() %></div>
+			<div class="bajada"><a href="<%=publicHomeBean.getExternalLink(second)%>"><%=second.getSummary() %></a></div>
 			<div class="date"><%=PublicHomeBean.formatDate(second.getFromDate()) %></div>
 		</div>
 		<% } %>

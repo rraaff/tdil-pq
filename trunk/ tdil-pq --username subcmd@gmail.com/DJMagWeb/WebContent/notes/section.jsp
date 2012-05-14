@@ -42,7 +42,7 @@ div {
 }
 #fakeLiveboxWindow {
 	width:1010px;
-	background-color: #FFFFFF;
+	background-color: #000;
 	float:left;
 }
 #sectionTitle {
@@ -76,51 +76,56 @@ div {
 #fakeLiveboxWindow #left {
 	float:left;
 	width:690px;
+	margin-left:13px;
 }
 #fakeLiveboxWindow #left #note {
-	background-color:#FFFFFF;
 	width:660px;
 	height:142px;
 	padding:13px;
 	overflow:hidden;
 	border-top-width: 1px;
 	border-top-style: dotted;
-	border-top-color: #c5c5c5;
-}
+	border-top-color: #666666;
+}/*
 #fakeLiveboxWindow #left #note .date {
 	color:#dcdcdc;
 	font-weight:700;
 	background-color:#525252;
 	padding:4px;
 	margin-right:auto;
-}
+}*/
 #fakeLiveboxWindow #left #note #detalle {
 	width:485px;
 	height:142px;
 	overflow:hidden;
 	float:right;
 }
-#fakeLiveboxWindow #left #note #detalle #title {
-	width:420px;
-	margin-top:13px;
-	margin-bottom:13px;
-	overflow:hidden;
-}
-#fakeLiveboxWindow #left #note #detalle #title a {
+#fakeLiveboxWindow #left #note #detalle #title, #fakeLiveboxWindow #left #note #detalle #title a, #fakeLiveboxWindow #left #note #detalle #title a:active, #fakeLiveboxWindow #left #note #detalle #title a:visited {
 	font-size:13px;
 	color:#e25237;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
+	width:420px;
+	margin-top:13px;
+	margin-bottom:13px;
+	overflow:hidden;
 }
-#fakeLiveboxWindow #left #note #detalle #bajada {
-	color:#5b5b5b;
+#fakeLiveboxWindow #left #note #detalle #title a:hover {
+	text-decoration:underline;
+}
+#fakeLiveboxWindow #left #note #detalle #bajada, #fakeLiveboxWindow #left #note #detalle #bajada a , #fakeLiveboxWindow #left #note #detalle #bajada a:active, #fakeLiveboxWindow #left #note #detalle #bajada a:visited {
+	color:#CCCCCC;
 	font-size: 11px;
 	line-height: normal;
 	font-weight: normal;
 	text-align:justify;
+	text-decoration: none;
 	overflow:hidden;
+}
+#fakeLiveboxWindow #left #note #detalle #bajada a:hover {
+	text-decoration:underline;
 }
 #fakeLiveboxWindow #left #note #thmbnail {
 	border:solid 1px #525252;
@@ -140,6 +145,7 @@ div {
 }
 #fakeLiveboxWindow #left #linksBottom a {
 	color:#e25237;
+	padding:5px;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {
 	float:left;
@@ -149,14 +155,10 @@ div {
 }
 #fakeLiveboxWindow #right {
 	float:left;
-	width:286px;	
-	height:868px;
-	overflow:hidden;
+	width:286px;
 }
 #fakeLiveboxWindow #right #rightBanner {
 	width:286px;
-	height:868px;
-	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -206,10 +208,10 @@ div {
 				for (int i = 0; (i < PublicHomeBean.SECTION_PAGE_SIZE && currentPage.size() > i); i++) { 
 					NoteValueObject nvo = currentPage.get(i); %>
 				<div id="note">
-					<div id="thmbnail"><!-- style="background-image:../../../"--><img src="../../../download.st?id=<%=nvo.getNoteImages().get(0).getId()%>&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>" width="154" height="142" alt="" /></div>
+					<div id="thmbnail"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><img src="../../../download.st?id=<%=nvo.getNoteImages().get(0).getId()%>&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>" width="154" height="142" alt="" /></a></div>
 					<div id="detalle">
 						<div id="title"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getTitle() %></a></div>
-						<div id="bajada"><%=nvo.getSummary()%></div>
+						<div id="bajada"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getSummary()%></a></div>
 					</div>
 				</div>
 			<% } %>
@@ -217,7 +219,7 @@ div {
 				<% if (pageNumber == 0) { %>
 					<div id="linkHome"><a href="../../../index.jsp">Volver a la home</a></div>
 				<% } else  { %>
-					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">&lt;</a></div>
+					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
 				<% } %>
 				<% for (Integer pageToRender : publicHomeBean.getPages(section, pageNumber)) { %>
 					<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
@@ -227,14 +229,18 @@ div {
 					<% } %>
 				<% } %>
 				<% if (currentPage.size() > PublicHomeBean.SECTION_PAGE_SIZE) { %>
-					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">&gt;</a></div>
+					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
 				<% } %>
 			</div>
 		</div>
 		<div id="right">
-		<% if (publicHomeBean.hasNoteRightBanner()) {%>
-			<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
-		<% } %>
+			<% if (publicHomeBean.hasNoteRightBanner()) {%>
+				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
+			<% } %>
+			<%@ include file="../includes/homeTwitter.jsp" %>
+			<div id="spacer"></div>
+			<%@ include file="../includes/homeFacebook.jsp" %>
+			<div id="spacer"></div>
 		</div>
 	</div>
 </div>

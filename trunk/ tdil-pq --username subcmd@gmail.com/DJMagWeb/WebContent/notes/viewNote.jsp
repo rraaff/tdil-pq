@@ -50,7 +50,7 @@ div {
 }
 #navBar {
 	color:#5b5b5b;
-	width:660px;
+	width:640px;
 	height:18px;
 	overflow:hidden;
 	padding:13px;
@@ -152,14 +152,10 @@ div {
 }
 #fakeLiveboxWindow #right {
 	float:left;
-	width:286px;	
-	height:868px;
-	overflow:hidden;
+	width:286px;
 }
 #fakeLiveboxWindow #right #rightBanner {
 	width:286px;
-	height:868px;
-	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -191,7 +187,7 @@ div {
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>
 					<li>
 						<% if (SectionType.RANKING_100.equals(section.getSectiontype())) { %>
-							<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
+							<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><%= section.getName() %></a>
 						<% } else { %>
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
@@ -245,6 +241,10 @@ div {
 			<% if (publicHomeBean.hasNoteRightBanner()) {%>
 				<div id="rightBanner"><%=publicHomeBean.getNoteRight().getHtmlcontent() %></div>
 			<% } %>
+			<%@ include file="../includes/homeTwitter.jsp" %>
+			<div id="spacer"></div>
+			<%@ include file="../includes/homeFacebook.jsp" %>
+			<div id="spacer"></div>
 		</div>
 	</div>
 </div>
