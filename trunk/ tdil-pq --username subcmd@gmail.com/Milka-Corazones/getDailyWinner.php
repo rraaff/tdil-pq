@@ -26,7 +26,6 @@ fbid: <?php echo $ticket['fbid']?><br>
 fbname: <?php echo $ticket['fbname']?><br>
 fbusername: <?php echo $ticket['fbusername']?><br>
 Nombre: <?php echo $ticket['firstname']?><br>
-Apellido: <?php echo $ticket['lastname']?><br>
 Direccion: <?php echo $ticket['address']?><br>
 Telefono: <?php echo $ticket['phone']?><br>
 </div>

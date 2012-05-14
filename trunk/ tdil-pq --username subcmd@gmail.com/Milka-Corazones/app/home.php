@@ -84,10 +84,9 @@ mysql_select_db(DB_NAME,$connection);
 
 if ($savingData) {
 	$firstname = quote_smart($_POST['firstname'], $connection);
-	$lastname = quote_smart($_POST['lastname'], $connection);
 	$address = quote_smart($_POST['address'], $connection);
 	$phone = quote_smart($_POST['phone'], $connection);
-	$SQL = "UPDATE FBUSER SET hascontactdata = 1,firstname = $firstname,lastname = $lastname,address = $address,phone = $phone where fbid = $fbid";
+	$SQL = "UPDATE FBUSER SET hascontactdata = 1,firstname = $firstname,address = $address,phone = $phone where fbid = $fbid";
 	$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 }
 
