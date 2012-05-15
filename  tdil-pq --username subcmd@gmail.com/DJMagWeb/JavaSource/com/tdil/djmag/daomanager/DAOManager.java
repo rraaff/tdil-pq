@@ -8,6 +8,8 @@ import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FacebookFeedDAO;
 import com.tdil.djmag.dao.FooterDAO;
+import com.tdil.djmag.dao.ImageGalleryDAO;
+import com.tdil.djmag.dao.ImageInGalleryDAO;
 import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.MenuItemDAO;
 import com.tdil.djmag.dao.NewsletterDAO;
@@ -27,6 +29,8 @@ import com.tdil.djmag.dao.impl.BlobDataDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
 import com.tdil.djmag.dao.impl.FooterDAOImpl;
+import com.tdil.djmag.dao.impl.ImageGalleryDAOImpl;
+import com.tdil.djmag.dao.impl.ImageInGalleryDAOImpl;
 import com.tdil.djmag.dao.impl.MagazineDAOImpl;
 import com.tdil.djmag.dao.impl.MenuItemDAOImpl;
 import com.tdil.djmag.dao.impl.NewsletterDAOImpl;
@@ -118,5 +122,13 @@ public class DAOManager {
 	
 	public static FooterDAO getFooterDAO() throws SQLException {
 		return new FooterDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ImageGalleryDAO getImageGalleryDAO() throws SQLException {
+		return new ImageGalleryDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ImageInGalleryDAO getImageInGalleryDAO() throws SQLException {
+		return new ImageInGalleryDAOImpl(IBatisManager.getClient());
 	}
 }

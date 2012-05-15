@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] [%c] - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- A time/date based rolling appender -->
+	<appender name="FileAppenderAsync" class="org.apache.log4j.AsyncAppender">
+		<param name="bufferSize" value="1024" />
+		<appender-ref ref="FileAppender" />
+	</appender>
+
+	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="LOG_FILE_DIR/server.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] [%c] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="LoggerMonitorAppender" class="com.tdil.log4j.LoggerMonitorAppender" />
+
+	<category name="java.sql" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
+
+	<category name="com.tdil" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
+
+	<category name="com.ibatis" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
+
+	<root>
+		<priority value="error" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</root>
+</log4j:configuration>

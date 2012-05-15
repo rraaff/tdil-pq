@@ -39,6 +39,11 @@ public class DJMagConfig extends SystemConfig {
 	}
 	
 	@Override
+	protected String getLogDir() {
+		return "djmaglogs";
+	}
+	
+	@Override
 	protected void initRoles() {
 		Role.addRole(Administrator.INSTANCE);
 	}
