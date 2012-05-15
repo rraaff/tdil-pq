@@ -22,7 +22,6 @@ import com.tdil.milka.model.FilteredWord;
 import com.tdil.milka.model.SystemProperty;
 import com.tdil.milka.model.SystemPropertyExample;
 import com.tdil.milka.model.WallFilter;
-import com.tdil.milka.model.WallType;
 import com.tdil.milka.roles.Administrator;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
@@ -43,6 +42,11 @@ public class MilkaConfig extends SystemConfig {
 		this.loadFilteredWords();
 	}
 	
+	
+	@Override
+	protected String getLogDir() {
+		return "milkalogs";
+	}
 	private void loadFilteredWords() {
 		getLog().fatal("MilkaConfig: loading filtered words");
 		try {

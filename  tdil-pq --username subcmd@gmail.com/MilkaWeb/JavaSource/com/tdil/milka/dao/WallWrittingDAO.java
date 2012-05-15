@@ -72,4 +72,8 @@ public interface WallWrittingDAO {
 	 * @mbggenerated  Sat May 12 23:24:02 ART 2012
 	 */
 	int updateWallWrittingByPrimaryKey(WallWritting record) throws SQLException;
+
+	List<WallWritting> selectPapapediaToApprove() throws SQLException;
+
+	List<WallWritting> selectPapapediaToReview() throws SQLException;
 }

@@ -60,7 +60,6 @@ public class WallWrittingForm extends TransactionalValidationForm {
 		WallExample wallExample = new WallExample();
 		wallExample.createCriteria().andDescriptionEqualTo(walltype);
 		Wall wall = DAOManager.getWallDAO().selectWallByExample(wallExample).get(0);
-		// TODO validaciones del profanity filter
 		
 		WallWrittingDAO wallWrittingDAO = DAOManager.getWallWrittingDAO();
 		WallWritting wallWritting = new WallWritting();

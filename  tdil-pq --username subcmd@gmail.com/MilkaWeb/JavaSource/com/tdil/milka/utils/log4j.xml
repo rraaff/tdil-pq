@@ -17,7 +17,7 @@
 	</appender>
 
 	<appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="${java.io.tmpdir}/log/server.log" />
+		<param name="File" value="LOG_FILE_DIR/server.log" />
 		<param name="DatePattern" value="'.'yyyyMMdd" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d %-5p [%t] [%c] - %m%n" />
@@ -29,28 +29,24 @@
 	<category name="java.sql" additivity="false">
 		<priority value="error" />
 		<appender-ref ref="FileAppenderAsync" />
-		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
 
 	<category name="com.tdil" additivity="false">
 		<priority value="error" />
 		<appender-ref ref="FileAppenderAsync" />
-		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
 
 	<category name="com.ibatis" additivity="false">
 		<priority value="error" />
 		<appender-ref ref="FileAppenderAsync" />
-		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
 
 	<root>
-		<priority value="ERROR" />
+		<priority value="error" />
 		<appender-ref ref="FileAppenderAsync" />
-		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</root>
 </log4j:configuration>

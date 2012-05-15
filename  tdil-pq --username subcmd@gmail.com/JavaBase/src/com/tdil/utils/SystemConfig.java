@@ -12,6 +12,7 @@ import javax.servlet.ServletContextEvent;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -60,19 +61,27 @@ public abstract class SystemConfig {
 						if (!file.exists()) {
 							FileUtils.forceMkdir(file);
 						}
-						File log = new File(SystemPropertyCache.getTempPath() + "/log");
+						String logDir = SystemPropertyCache.getTempPath() + "/" + SystemConfig.this.getLogDir();
+						getLog().fatal("Using log dir " + logDir);
+						File log = new File(logDir);
 						if (!log.exists()) {
 							FileUtils.forceMkdir(log);
 						}
-						File log4j = new File(SystemPropertyCache.getTempPath() + "/log/log4j.xml");
+						File log4j = new File(logDir + "/log4j.xml");
 						if(log4j.exists() && log4j.length() < 1400) {
 							log4j.delete();
-							InputStream io = SystemConfig.class.getResourceAsStream("log4j.xml");
-							IOUtils.copy(io, new FileOutputStream(SystemPropertyCache.getTempPath() + "/log/log4j.xml"));
+							InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
+							String log4jContent = IOUtils.toString(io);
+//							replace, close streams, etc etcs
+							log4jContent = StringUtils.replace(log4jContent, "LOG_FILE_DIR", logDir);
+							IOUtils.write(log4jContent, new FileOutputStream(logDir + "/log4j.xml"));
 						} else {
 							if (!log4j.exists()) {
-								InputStream io = SystemConfig.class.getResourceAsStream("log4j.xml");
-								IOUtils.copy(io, new FileOutputStream(SystemPropertyCache.getTempPath() + "/log/log4j.xml"));
+								InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
+								String log4jContent = IOUtils.toString(io);
+//								replace, close streams, etc etcs
+								log4jContent = StringUtils.replace(log4jContent, "LOG_FILE_DIR", logDir);
+								IOUtils.write(log4jContent, new FileOutputStream(logDir + "/log4j.xml"));
 							}
 						}
 					} catch (IOException e) {
@@ -90,9 +99,11 @@ public abstract class SystemConfig {
 		getLog().fatal("SystemConfig loaded properties from db");
 	}
 
+	protected abstract String getLogDir();
+
 	private void initLogger() {
 		getLog().fatal("SystemConfig initializing logger");
-		String logFilePath = SystemPropertyCache.getTempPath() + "/log/log4j.xml";
+		String logFilePath =  SystemPropertyCache.getTempPath() + "/" + SystemConfig.this.getLogDir() +  "/log4j.xml";
 		LoggerProvider.initialize(logFilePath, LogManager.getCurrentLoggers());
 		getLog().fatal("SystemConfig logger initialized");
 	}
@@ -106,9 +117,5 @@ public abstract class SystemConfig {
 	protected abstract void loadPropertiesFromDBInTransaction();
 	
 	protected abstract void initBlobCache();
-	
-	public static String getLog4J() {
-		return SystemPropertyCache.getTempPath() + "/log/log4j.xml";
-	}
 	
 }

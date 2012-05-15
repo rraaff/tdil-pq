@@ -25,7 +25,7 @@ public class FilterProfanity {
 	private Set<String> filterList = new HashSet<String>();
 	private Pattern pattern = Pattern.compile("([a-z|A-Z]+)");
 	
-	private static final String PUNCTUATION = ".,;:?¡\"'()";
+	private static final String PUNCTUATION = ".,;:¿?¡!\"'()";
 	/**
 	 * Indicates if case of words should be ignored.
 	 */
@@ -113,14 +113,10 @@ public class FilterProfanity {
 		for (String st : list) {
 			String toCheck = st;
 			if (toCheck.length() > 0) {
-				if (PUNCTUATION.contains(String.valueOf(toCheck.charAt(0)))) {
-					toCheck = toCheck.substring(1);
-				}
+				toCheck = removePunctuationFromStart(toCheck);
 			}
 			if (toCheck.length() > 0) {
-				if (PUNCTUATION.contains(String.valueOf(toCheck.charAt(toCheck.length() - 1)))) {
-					toCheck = toCheck.substring(0, toCheck.length() - 1);
-				}
+				toCheck = removePunctuationFromEnd(toCheck);
 			}
 			if (!StringUtils.isAlpha(toCheck)) {
 				return false;
@@ -138,6 +134,22 @@ public class FilterProfanity {
 		return true;
 	}
 	
+	private String removePunctuationFromStart(String toCheck) {
+		String toAnswer = toCheck;
+		while(toAnswer.length() > 0 && PUNCTUATION.contains(String.valueOf(toAnswer.charAt(0)))) {
+			toAnswer = toAnswer.substring(1);
+		}
+		return toAnswer;
+	}
+	
+	private String removePunctuationFromEnd(String toCheck) {
+		String toAnswer = toCheck;
+		while(toAnswer.length() > 0 && PUNCTUATION.contains(String.valueOf(toAnswer.charAt(toAnswer.length() - 1)))) {
+			toAnswer = toAnswer.substring(0, toAnswer.length() - 2);
+		}
+		return toAnswer;
+	}
+
 	private boolean checkStrict(String word) {
 		String w = word.toLowerCase();
 		if (filterList.contains(w)) {
