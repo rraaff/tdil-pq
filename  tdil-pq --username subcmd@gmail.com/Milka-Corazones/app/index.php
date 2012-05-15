@@ -160,8 +160,7 @@ closeConnection($connection);
 	margin:0px auto;
 }
 #contentDatos {
-	margin:0;
-	padding:0;
+	margin:0px auto;
 	width:790px;
 	height:700px;
 	overflow:hidden;
@@ -234,15 +233,15 @@ input[type="button"], input[type="submit"] {
 				</div>
 			</form>
 	<?php } else { ?>
-		<div id="content"><img src="../images/felicitaciones.png" width="790" height="700" border="0"></div>
+		<div id="content"><img src="../images/felicitaciones.jpg" width="790" height="700" border="0"></div>
 	<?php } ?>
 <?php } else { ?>
 	<?php if ($alreadyParticipated == 1) { ?>
-		<div id="content"><img src="../images/yaParticipaste.png" width="790" height="700" border="0"></div>
+		<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
 	<?php } else { 
 		if ($promoToday == 1) { 
 			if ($allPrizesGiven == 1) { ?>
-				<div id="content"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></div>
+				<div id="content"><a href="winners.php"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></a></div>
 			<?php } else { ?>
 				<div id="content">
 					<script language="javascript">
@@ -288,7 +287,7 @@ input[type="button"], input[type="submit"] {
 				</div>
 			<?php } ?>
 		<?php } else { ?>
-				<div id="content"><img src="../images/noHayHoy.png" width="790" height="700" border="0"></div>
+				<div id="content"><a href="winners.php"><img src="../images/noHayHoy.jpg" width="790" height="700" border="0"></a></div>
 		<?php } ?>
 	<?php } ?>
 <?php } ?>
