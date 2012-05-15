@@ -94,5 +94,12 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="FOOTER" domainObjectName="Footer">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+
+<table schema="DJMAG" tableName="IMAGE_GALLERY" domainObjectName="ImageGallery">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="IMAGE_IN_GAL" domainObjectName="ImageInGallery">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 </ibatorContext>
 </ibatorConfiguration>
