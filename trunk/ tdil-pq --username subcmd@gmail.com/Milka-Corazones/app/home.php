@@ -140,6 +140,8 @@ if ($num_rows > 0) {
 	$promoToday = 0;
 }
 
+$appurlforshare = 'https://www.facebook.com/' . PAGE_NAME .'?sk=app_' . APPLICATION_ID;
+
 closeConnection($connection);
 ?>
 <html>
@@ -288,7 +290,7 @@ input[type="button"], input[type="submit"] {
 									'menu', 'true',
 									'allowFullScreen', 'false',
 									'allowScriptAccess','always',
-									'FlashVars','urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
+									'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
 									'movie', '../swf/homeApp',
 									'salign', ''
 									); //end AC code
