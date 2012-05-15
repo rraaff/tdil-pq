@@ -1,15 +1,12 @@
 Instalación
 
-1) Registrar una nueva aplicación en facebook
+1) Registrar una nueva aplicación en facebook. La aplicacion debe ser de canvas.
 2) Descomprimir el milka-corazones.zip
 3) Correr database.sql como root del mysql
 4) Correr ddl.sql como MILKACOR_USER/MILKACOR_USER base MILKACORAZONES
 5) Copiar los archivos al root del servidor
 6) Modificar constantes.php con los datos del server de la base (constante DB_SERVER)
 7) Modificar appconstants.php con los datos de la aplicación: Cambiar el protocolo a https
-8) Modificar constantes_mail.php con los datos para envió de emails
-9) Crear una pagina en Facebook
-10) Agregar la aplicación creada a la pagina
 
 Importante: El server donde este corriendo debe tener habilitado el uso de HTTPS Para pruebas se puede hacer cambiando manualmente la URL del browser cuando de algún error.
 
