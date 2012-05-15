@@ -16,7 +16,7 @@ CREATE  TABLE SYSTEMUSER (
   INDEX `IX_SYSTEMUSER_01` (`email` ASC))
 ENGINE = MYISAM;
 
-INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
+INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('b0r4z0n'), 'Admin', 'admin@admin.com', 0);
 
 CREATE TABLE `FBUSER` (
   `id` INT NOT NULL AUTO_INCREMENT ,
