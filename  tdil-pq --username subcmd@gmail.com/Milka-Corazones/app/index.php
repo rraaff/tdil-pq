@@ -119,7 +119,7 @@ if ($num_rows > 0) {
 	$promoToday = 0;
 }
 
-$appurlforshare = 'https://www.facebook.com/' . PAGE_NAME .'?sk=app_' . APPLICATION_ID;
+$appurlforshare = 'https://apps.facebook.com/' . APPLICATION_NAME;
 
 closeConnection($connection);
 ?>
