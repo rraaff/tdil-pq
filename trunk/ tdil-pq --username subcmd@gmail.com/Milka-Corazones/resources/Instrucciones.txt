@@ -13,3 +13,5 @@ Importante: El server donde este corriendo debe tener habilitado el uso de HTTPS
 Accesos
 
 BackOffice: ./boLogin.php
+
+El password del admin es b0r4z0n
