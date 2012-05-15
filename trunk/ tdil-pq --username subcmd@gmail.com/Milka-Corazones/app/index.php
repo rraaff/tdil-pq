@@ -1,184 +1,296 @@
 <?php
-/* Esta pagina se encarga de procesar las aceptaciones de app request */
-	include("../include/headers.php");
-	require("../include/funcionesDB.php");
-	
-	require '../include/facebook.php';
-	include("../include/appconstants.php"); 
-	// Create our Application instance (replace this with your appId and secret).
-	$facebook = new Facebook(array(
-			'appId'  => APPLICATION_ID,
-			'secret' => APPLICATION_SECRET,
-	));
-	
-	// Get User ID
-	$user = $facebook->getUser();
-	if(!isset($_SESSION)) {
-		session_start();
-	}
-	if(isset($_SESSION['app_data'])) { // si tiene datos de la otra pagina, entonces los desseteo
-		unset($_SESSION['app_data']);
-	}
-	if ($user == 0) {
-		if (isset($_REQUEST['request_ids'])) {
-			$_SESSION['request_ids'] = $_REQUEST['request_ids']; // meto los datos en la session y redirijo
-		}
-		include("askpermissioncanvas.php");
-		return;
-	} else {
-		$app_token = get_app_access(APPLICATION_ID,APPLICATION_SECRET);
-	if(isset($_REQUEST['request_ids'])) {
-		$request_ids = $_REQUEST['request_ids'];
-	} else {
-		$request_ids = $_SESSION['request_ids'];
-	}
-	$ok_to_procced = 0;
-	/* Si viene con request_id, es una invitacion de facebook*/
-	if(!empty($request_ids)) {
-		/*
-		 * Get the current user, you may use the PHP-SDK
-		* or your own server-side flow implementation
-		*/
-		// We may have more than one request, so it's better to loop
-		$requests = explode(',',$request_ids);
-		$first = 0;
-		$tojoin = 0;
-		foreach($requests as $request_id) {
-			// If we have an authenticated user, this would return a recipient specific request: <request_id>_<recipient_id>
-			
-			if ($tojoin == 0) {
-				$tojoin = $request_id;
-			}
-			if($user) {
-				$request_id = $request_id . "_{$user}";
-			}
-			// Get the request details using Graph API
-			$request_content = json_decode(file_get_contents("https://graph.facebook.com/$request_id?$app_token"), TRUE);
-			// An example of how to get info from the previous call
-			$request_message = $request_content['message'];
-			$from_id = $request_content['from']['id'];
-			// An easier way to extract info from the data field
-			// Now that we got the $item_id and the $item_type, process them
-			// Or if the recevier is not yet a member, encourage him to claims his item (install your application)!
-			if($user) {
-				/*
-				 * When all is done, delete the requests because Facebook will not do it for you!
-				* But first make sure we have a user (OR access_token - not used here)
-				* because you can't delete a "general" request, you can only delete a recipient specific request
-				* <request_id>_<recipient_id>
-				*/
-				$deleted = file_get_contents("https://graph.facebook.com/$request_id?$app_token&method=delete"); // Should return true on success
-			}
-			/* Lo uno solo al primer grupo*/
-			if ($first == 0) {
-				$first = 1;
-			}
-		}
-		// Esta todo ok, preparo la data para la app pendiente
-		$fbid = $user;
-		$connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
-		mysql_select_db(DB_NAME,$connection);
-		
-		// Si ya se unio a un amigo, error
-		$SQL = "SELECT * FROM GROUP_APP2 WHERE groupmember_fbid = $user";
-		$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-		$num_rows = mysql_num_rows($result);
-		if ($num_rows > 0) {
-			$errorMessage = "Ya te uniste a un amigo";
-			include("showerrorcanvas.php");
-			closeConnection($connection);
-			return;
-		}
-		$tojoin = quote_smart($tojoin, $connection);
-		$SQL = "SELECT * FROM GROUP_APP2 WHERE groupowner_fbid = $user AND groupmember_fbid = (SELECT groupowner_fbid FROM FB_INV_APP2 WHERE request_id = $tojoin AND groupmember_fbid = $fbid)";
-		$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-		$num_rows = mysql_num_rows($result);
-		if ($num_rows > 0) {
-			$errorMessage = "Ya estas en pareja con ese amigo";
-			include("showerrorcanvas.php");
-			closeConnection($connection);
-			return;
-		}
-		
-		$SQL = "SELECT * FROM GROUP_APP2 WHERE groupowner_fbid = (SELECT groupowner_fbid FROM FB_INV_APP2 WHERE request_id = $tojoin AND groupmember_fbid = $fbid)";
-		$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-		$num_rows = mysql_num_rows($result);
-		if ($num_rows > 0) {
-			$errorMessage = "Tu amigo ya tiene otro amigo";
-			include("showerrorcanvas.php");
-			closeConnection($connection);
-			return;
-		}
-		
-		$SQL = "SELECT * FROM USER_APP2 WHERE fbid = (SELECT groupowner_fbid FROM FB_INV_APP2 WHERE request_id = $tojoin AND groupmember_fbid = $fbid)";
-		$group_owner = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-		$num_rows = mysql_num_rows($group_owner);
-		if ($num_rows > 0) {
-			$user_fbid = quote_smart($user, $connection);
-			$SQL = "SELECT * FROM USER_APP2 WHERE fbid = $user_fbid";
-			$group_member = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-			$num_rows = mysql_num_rows($group_member);
-			if ($num_rows == 1) {
-				$group_ownerrow = mysql_fetch_array($group_owner);
-				$idgroup = $group_ownerrow['id'];
-				$group_memberrow = mysql_fetch_array($group_member);
-				$iduser = $group_memberrow['id'];
-				// todo ok, registro la accion pendiente y muestro el link a tab para que termine de unirse al grupo
-				$SQL = "DELETE FROM ACTION_APP2 WHERE fbid = $user_fbid";
-				$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-				// inserto la ultima
-				$SQL = "INSERT INTO ACTION_APP2(fbid, userid, action, dataid) VALUES($user_fbid, $iduser, 'join_group',$idgroup)";
-				$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-				$ok_to_procced = 1;
-			} else {
-				$errorMessage = "Usuario inexistente";
-				include("showerrorcanvas.php");
-				closeConnection($connection);
-				return;
-			}
-		} else {
-			$errorMessage = "Grupo invalido";
-			include("showerrorcanvas.php");
-			closeConnection($connection);
-			return;
-		}
-		closeConnection($connection);
-	} else {
-		$errorMessage = "La peticion ya expiro";
-		include("showerrorcanvas.php");
-		closeConnection($connection);
-		return;
-	}
-	unset($_SESSION['request_ids']);
+include("../include/headers.php");
+require("../include/funcionesDB.php");
+include_once('../phpmail/class.phpmailer.php');
+include("../include/constantes_mail.php");
+
+require '../include/facebook.php';
+include("../include/appconstants.php");
+// Create our Application instance (replace this with your appId and secret).
+$facebook = new Facebook(array(
+		'appId'  => APPLICATION_ID,
+		'secret' => APPLICATION_SECRET,
+));
+$app_token = get_app_access(APPLICATION_ID,APPLICATION_SECRET);
+// Get User ID
+$user = $facebook->getUser();
 ?>
 <?php 
-if ($ok_to_procced == 1) { 
-	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
+/* si el usuario es nulo, no lo autorizo */
+if ($user == 0) {
+	include("askpermission.php");
+	return;
+}
+$fbid = $user;
+//$page_id = $signed_request['page']['id']; /*TODO Limitar a una pagina cuanto este productivo*/
+//if ($page_id != $PAGEID) {
+//	die("No allowed");
+//}
+
+$savingData = 0;
+// Si esta salvando la contact data no chequeo el signed request
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['savecontactdata'])) {
+	$savingData = 1;
+} 
+?>
+<?php
+// en la session
+try {
+	// Proceed knowing you have a logged in user who's authenticated.
+	$user_profile = $facebook->api('/me');
+} catch (FacebookApiException $e) {
+	print_r($e);
+	error_log($e);
+	$user = null;
+}
+$fbemail = '';
+$fbname = $user_profile['name'];
+$fbusername = "";
+if (isset($user_profile['username'])) {
+	$fbusername = $user_profile['username'];
+}
+$fbgender = $user_profile['gender'];
+
+?>
+<?php
+$connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
+
+$fbname = quote_smart($fbname, $connection);
+$fbusername = quote_smart($fbusername, $connection);
+$fbgender = quote_smart($fbgender, $connection);
+
+mysql_select_db(DB_NAME,$connection);
+
+if ($savingData) {
+	$firstname = quote_smart($_POST['firstname'], $connection);
+	$address = quote_smart($_POST['address'], $connection);
+	$phone = quote_smart($_POST['phone'], $connection);
+	$SQL = "UPDATE FBUSER SET hascontactdata = 1,firstname = $firstname,address = $address,phone = $phone where fbid = $fbid";
+	$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+}
+
+// me fijo si existe
+$SQL = "SELECT * FROM FBUSER WHERE fbid = $fbid";
+$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+$num_rows = mysql_num_rows($result);
+$hascontactdata = 0;
+$alreadyParticipated = 0;
+$isTodayWinner = 0;
+if ($num_rows == 0) {
+	$SQL = "INSERT INTO FBUSER (fbid,fbname, fbusername, fbgender,hascontactdata) VALUES($fbid, $fbname,$fbusername,$fbgender,0)"; // 3 is fb invitation
+	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+	$userid = mysql_insert_id($connection);
+} else {
+	$dbuser = mysql_fetch_array($result);
+	$userid = $dbuser['id'];
+	$hascontactdata = $dbuser['hascontactdata'];
+}
+// me fijo si ya participo
+$SQL = "SELECT * FROM PARTICIPATION WHERE fbuserid = $userid AND creationDate >= CURDATE()";
+$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+$num_rows = mysql_num_rows($result);
+if ($num_rows > 0) {
+	$alreadyParticipated = 1;
+	// si participo, me fijo si gano
+	$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE() AND participationId in (SELECT id FROM PARTICIPATION WHERE fbuserid = $userid AND creationDate >= CURDATE());";
+	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+	$num_rows = mysql_num_rows($result);
+	if ($num_rows > 0) {
+		$isTodayWinner = 1;
+	}
+} 
+
+// Fijar todas las opciones, ya participaste hoy, hoy no esta activa, hoy ya hay un ganador
+// me fijo si la promo del dia esta activa
+$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE()";
+$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+$num_rows = mysql_num_rows($result);
+if ($num_rows > 0) {
+	$promoToday = 1;
+	$SQL = "SELECT * FROM DAILY_PRIZE WHERE prizeDate = CURDATE() and participationID is null";
+	$result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+	$num_rows = mysql_num_rows($result);
+	if ($num_rows > 0) {
+		$allPrizesGiven = 0;
+	} else {
+		$allPrizesGiven = 1;
+	}
+} else {
+	$promoToday = 0;
+}
+
+$appurlforshare = 'https://www.facebook.com/' . PAGE_NAME .'?sk=app_' . APPLICATION_ID;
+
+closeConnection($connection);
 ?>
 <html>
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="../js/AC_RunActiveContent.js" language="javascript"></script>
+<script type='text/javascript' src='../js/jquery-1.7.min.js'></script>
+
+<script>
+	function checkContactData() {
+		var objdiv = document.getElementById("errmessage");
+		if (document.getElementById("firstname").value == "") {
+			objdiv.innerHTML = "Debe ingresar el nombre";
+			return false;
+		}
+		if (document.getElementById("lastname").value == "") {
+			objdiv.innerHTML = "Debe ingresar el apellido";
+			return false;
+		}
+		if (document.getElementById("address").value == "") {
+			objdiv.innerHTML = "Debe ingresar la direccion";
+			return false;
+		}
+		if (document.getElementById("phone").value == "") {
+			objdiv.innerHTML = "Debe ingresar el telefono";
+			return false;
+		}
+		return true;
+	}
+</script>
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body {
-	background-image: url(../images/acceptBGApp2.jpg);
+#content {
+	margin:0;
+	padding:0;
+	width:790px;
+	height:700px;
+	overflow:hidden;
+}
+#contentDatos {
+	margin:0;
+	padding:0;
+	width:790px;
+	height:700px;
+	overflow:hidden;
+	background-image: url(../images/acertasteDatos.jpg);
 	background-repeat: no-repeat;
 	background-position: left top;
-	overflow:hidden !important;
 }
-#textContent{
-	width: 159px;
-	margin-top: 307px;
-	margin-right: 90px;
-	text-align: center;
+#contentDatos #acomodador {
+	width:395px;
+	margin-left:200px;
+	margin-top:250px;
+}
+#contentDatos #acomodador #renglon {
+	width:250px;
+	height:41px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+	margin-bottom:0;
+}
+#errmessage{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color: #FF9999;
+	font-size:15px;
+	text-align:center;
+	width: 380px;
+	height: 20px;
+	margin-bottom:10px;
+}
+input[type="text"], input[type="password"], select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size:14px;
+	color:#5a5a5a;
+	float:left;
+	margin:0;
+	padding:2px;
+	line-height: normal;
+	width:248px;
+	height:33px;
+	border: solid 1px #999999;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+input[type="button"], input[type="submit"] {
+	background:none;
+	background-image: url(../images/btn_enviar_off.png);
+	background-repeat: repeat;
+	background-position: center center;
+	width:122px;
+	height:33px;
+	margin:0;
+	padding:0;
 }
 -->
 </style>
-
+</head>
 <body>
-<div id="textContent">
-	<div id="contentSuccessfull"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/button_here.png" alt="clic ac&aacute;" width="159" height="58" border="0"></a></div>
-</div>
+	<?php if ($isTodayWinner == 1) { ?>
+		<?php if ($hascontactdata == 0) { ?>
+			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
+					<div id="contentDatos">
+						<div id="acomodador">
+							<div id="errmessage"></div>
+							<div id="renglon"><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
+							<!--div id="renglon"><input type="text" name="lastname" id="lastname" placeholder=" Este no va"></div-->
+							<div id="renglon"><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
+							<div id="renglon"><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
+							<div id="renglon" style="margin-top:15px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
+						</div>
+					</div>
+				</form>
+		<?php } else { ?>
+			<div id="content"><img src="../images/felicitaciones.png" width="790" height="700" border="0"></div>
+		<?php } ?>
+	<?php } else { ?>
+		<?php if ($alreadyParticipated == 1) { ?>
+			<div id="content"><img src="../images/yaParticipaste.png" width="790" height="700" border="0"></div>
+		<?php } else { 
+			if ($promoToday == 1) { 
+				if ($allPrizesGiven == 1) { ?>
+						<div id="content" style="z-index:0;"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></div>
+<?php } else { ?>
+						<script language="javascript">
+							if (AC_FL_RunContent == 0) {
+								alert("This page requires AC_RunActiveContent.js.");
+							} else {
+								AC_FL_RunContent(
+									'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+									'width', '790',
+									'height', '700',
+									'src', '../swf/homeApp',
+									'quality', 'Best',
+									'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+									'align', 'middle',
+									'play', 'true',
+									'loop', 'true',
+									'scale', 'showall',
+									'wmode', 'window',
+									'devicefont', 'false',
+									'id', 'homeApp',
+									'bgcolor', '#ffffff',
+									'name', 'homeApp',
+									'menu', 'true',
+									'allowFullScreen', 'false',
+									'allowScriptAccess','always',
+									'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
+									'movie', '../swf/homeApp',
+									'salign', ''
+									); //end AC code
+							}
+						</script>
+						<noscript>
+							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
+							<param name="allowScriptAccess" value="Always" />
+							<param name="allowFullScreen" value="false" />
+							<param name="FlashVars" value="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
+							<param name="movie" value="../swf/homeApp.swf" />
+							<param name="quality" value="Best" />
+							<param name="bgcolor" value="#ffffff" />
+							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							</object>
+						</noscript>
+				<?php } ?>
+			<?php } else { ?>
+					<div id="content"><img src="../images/noHayHoy.png" width="790" height="700" border="0"></div>
+			<?php } ?>
+		<?php } ?>
+	<?php } ?>
 </body>
 </html>
-<?php } 
-} ?>
