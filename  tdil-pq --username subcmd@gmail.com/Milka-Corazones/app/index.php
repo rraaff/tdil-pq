@@ -154,11 +154,10 @@ closeConnection($connection);
 <style type="text/css">
 <!--
 #content {
-	margin:0;
-	padding:0;
 	width:790px;
 	height:700px;
 	overflow:hidden;
+	margin:0px auto;
 }
 #contentDatos {
 	margin:0;
@@ -221,76 +220,77 @@ input[type="button"], input[type="submit"] {
 </style>
 </head>
 <body>
-	<?php if ($isTodayWinner == 1) { ?>
-		<?php if ($hascontactdata == 0) { ?>
-			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
-					<div id="contentDatos">
-						<div id="acomodador">
-							<div id="errmessage"></div>
-							<div id="renglon"><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
-							<!--div id="renglon"><input type="text" name="lastname" id="lastname" placeholder=" Este no va"></div-->
-							<div id="renglon"><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
-							<div id="renglon"><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
-							<div id="renglon" style="margin-top:15px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
-						</div>
+<?php if ($isTodayWinner == 1) { ?>
+	<?php if ($hascontactdata == 0) { ?>
+		<form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" onSubmit="return checkContactData();">
+				<div id="contentDatos">
+					<div id="acomodador">
+						<div id="errmessage"></div>
+						<div id="renglon"><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
+						<div id="renglon"><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
+						<div id="renglon"><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
+						<div id="renglon" style="margin-top:15px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
 					</div>
-				</form>
-		<?php } else { ?>
-			<div id="content"><img src="../images/felicitaciones.png" width="790" height="700" border="0"></div>
-		<?php } ?>
+				</div>
+			</form>
 	<?php } else { ?>
-		<?php if ($alreadyParticipated == 1) { ?>
-			<div id="content"><img src="../images/yaParticipaste.png" width="790" height="700" border="0"></div>
-		<?php } else { 
-			if ($promoToday == 1) { 
-				if ($allPrizesGiven == 1) { ?>
-						<div id="content" style="z-index:0;"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></div>
+		<div id="content"><img src="../images/felicitaciones.png" width="790" height="700" border="0"></div>
+	<?php } ?>
 <?php } else { ?>
-						<script language="javascript">
-							if (AC_FL_RunContent == 0) {
-								alert("This page requires AC_RunActiveContent.js.");
-							} else {
-								AC_FL_RunContent(
-									'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
-									'width', '790',
-									'height', '700',
-									'src', '../swf/homeApp',
-									'quality', 'Best',
-									'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
-									'align', 'middle',
-									'play', 'true',
-									'loop', 'true',
-									'scale', 'showall',
-									'wmode', 'window',
-									'devicefont', 'false',
-									'id', 'homeApp',
-									'bgcolor', '#ffffff',
-									'name', 'homeApp',
-									'menu', 'true',
-									'allowFullScreen', 'false',
-									'allowScriptAccess','always',
-									'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
-									'movie', '../swf/homeApp',
-									'salign', ''
-									); //end AC code
-							}
-						</script>
-						<noscript>
-							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
-							<param name="allowScriptAccess" value="Always" />
-							<param name="allowFullScreen" value="false" />
-							<param name="FlashVars" value="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
-							<param name="movie" value="../swf/homeApp.swf" />
-							<param name="quality" value="Best" />
-							<param name="bgcolor" value="#ffffff" />
-							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-							</object>
-						</noscript>
-				<?php } ?>
+	<?php if ($alreadyParticipated == 1) { ?>
+		<div id="content"><img src="../images/yaParticipaste.png" width="790" height="700" border="0"></div>
+	<?php } else { 
+		if ($promoToday == 1) { 
+			if ($allPrizesGiven == 1) { ?>
+				<div id="content"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></div>
 			<?php } else { ?>
-					<div id="content"><img src="../images/noHayHoy.png" width="790" height="700" border="0"></div>
+				<div id="content">
+					<script language="javascript">
+						if (AC_FL_RunContent == 0) {
+							alert("This page requires AC_RunActiveContent.js.");
+						} else {
+							AC_FL_RunContent(
+								'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+								'width', '790',
+								'height', '700',
+								'src', '../swf/homeApp',
+								'quality', 'Best',
+								'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+								'align', 'middle',
+								'play', 'true',
+								'loop', 'true',
+								'scale', 'showall',
+								'wmode', 'window',
+								'devicefont', 'false',
+								'id', 'homeApp',
+								'bgcolor', '#ffffff',
+								'name', 'homeApp',
+								'menu', 'true',
+								'allowFullScreen', 'false',
+								'allowScriptAccess','always',
+								'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
+								'movie', '../swf/homeApp',
+								'salign', ''
+								); //end AC code
+						}
+					</script>
+					<noscript>
+						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
+						<param name="allowScriptAccess" value="Always" />
+						<param name="allowFullScreen" value="false" />
+						<param name="FlashVars" value="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
+						<param name="movie" value="../swf/homeApp.swf" />
+						<param name="quality" value="Best" />
+						<param name="bgcolor" value="#ffffff" />
+						<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+						</object>
+					</noscript>
+				</div>
 			<?php } ?>
+		<?php } else { ?>
+				<div id="content"><img src="../images/noHayHoy.png" width="790" height="700" border="0"></div>
 		<?php } ?>
 	<?php } ?>
+<?php } ?>
 </body>
 </html>
