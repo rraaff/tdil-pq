@@ -72,16 +72,16 @@ public abstract class SystemConfig {
 							log4j.delete();
 							InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
 							String log4jContent = IOUtils.toString(io);
-//							replace, close streams, etc etcs
 							log4jContent = StringUtils.replace(log4jContent, "LOG_FILE_DIR", logDir);
 							IOUtils.write(log4jContent, new FileOutputStream(logDir + "/log4j.xml"));
+							io.close();
 						} else {
 							if (!log4j.exists()) {
 								InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
 								String log4jContent = IOUtils.toString(io);
-//								replace, close streams, etc etcs
 								log4jContent = StringUtils.replace(log4jContent, "LOG_FILE_DIR", logDir);
 								IOUtils.write(log4jContent, new FileOutputStream(logDir + "/log4j.xml"));
+								io.close();
 							}
 						}
 					} catch (IOException e) {
