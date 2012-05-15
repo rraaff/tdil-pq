@@ -7,28 +7,6 @@ include("../include/constantes_mail.php");
 require '../include/facebook.php';
 include("../include/appconstants.php");
 // Create our Application instance (replace this with your appId and secret).
-$facebook = new Facebook(array(
-		'appId'  => APPLICATION_ID,
-		'secret' => APPLICATION_SECRET,
-));
-$app_token = get_app_access(APPLICATION_ID,APPLICATION_SECRET);
-// Get User ID
-$user = $facebook->getUser();
-?>
-<?php 
-/* si el usuario es nulo, no lo autorizo */
-if ($user == 0) {
-	include("askpermission.php");
-	return;
-}
-$fbid = $user;
-//$page_id = $signed_request['page']['id']; /*TODO Limitar a una pagina cuanto este productivo*/
-//if ($page_id != $PAGEID) {
-//	die("No allowed");
-//}
-
-?>
-<?php
 $connection = mysql_connect(DB_SERVER,DB_USER, DB_PASS) or die ("Problemas en la conexion");
 
 mysql_select_db(DB_NAME,$connection);
