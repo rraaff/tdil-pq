@@ -24,17 +24,75 @@ $result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . 
 <html>
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script src="../js/AC_RunActiveContent.js" language="javascript"></script>
-
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
-
+<style type="text/css">
+<!--
+body {
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+	overflow:hidden !important;
+}
+#content {
+	width:790px;
+	height:700px;
+	margin:0 auto;
+	overflow:hidden;
+	background-image: url(../images/winners.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#content #tableHead {
+	margin:0 auto;
+	margin-top:150px;
+	width:400px;
+	height:28px;
+	font-weight:bold;
+}
+#content #tableHead div {
+	font-size:15px;
+	border:solid 1px #665395;
+	width:190px;
+	height:20px;
+	margin:2px;
+	float:left;
+}
+#content #tableBody {
+	margin:0 auto;
+	width:400px;
+	height:360px;
+	overflow:auto;
+}
+#content #tableRow {
+	width:400px;
+	height:28px;
+}
+#content #tableRow div {
+	font-size:15px;
+	border:solid 1px #665395;
+	width:190px;
+	height:20px;
+	margin:2px;
+	float:left;
+}
+#backButton {
+	margin:0 auto;
+	width:122px;
+	height:33px;
+	margin-top:45px;
+}
+</style>
 </head>
 <body>
-<table>
-<tr><td>fecha</td><td>ganador</td></tr>
-<?php while ( $aRow = mysql_fetch_array( $result ) ) { ?>
-						<tr><td><?php echo $aRow["prizeDate"] ?></td><td><?php echo $aRow["fbname"] ?></td></tr>
-					<?php }	?>
-</table>
+<div id="content">
+	<div id="tableHead"><div>fecha</div><div>ganador</div></div>
+	<div id="tableBody">
+		<?php while ( $aRow = mysql_fetch_array( $result ) ) { ?>
+			<div id="tableRow"><div><?php echo $aRow["prizeDate"] ?></div><div><?php echo $aRow["fbname"] ?></div></div>
+		<?php }	?>
+	</div>
+	<div id="backButton"><a href="index.php"><img src="../images/btn_volver_rosa.png" width="122" height="33"/></a></div>
+</div>
 </body>
 </html>
 <?php closeConnection($connection); ?>
