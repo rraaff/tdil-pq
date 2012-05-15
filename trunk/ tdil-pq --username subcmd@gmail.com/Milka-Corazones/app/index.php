@@ -18,7 +18,7 @@ $user = $facebook->getUser();
 <?php 
 /* si el usuario es nulo, no lo autorizo */
 if ($user == 0) {
-	include("askpermission.php");
+	include("askpermissioncanvas.php");
 	return;
 }
 $fbid = $user;
