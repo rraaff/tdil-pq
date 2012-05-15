@@ -2,6 +2,12 @@
 <head>
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
+body {
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: left top;
+	overflow:hidden !important;
+}
 #content {
 	margin:0;
 	padding:0;
