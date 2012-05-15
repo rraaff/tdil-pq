@@ -15,6 +15,8 @@
    name="PostItAdministrationForm" type="com.tdil.milka.struts.forms.PostItAdministrationForm"/>
    <form-bean id="PapapediaForm"
    name="PapapediaForm" type="com.tdil.milka.struts.forms.WallWrittingForm"/>
+  <form-bean id="PapapediaAdministrationForm"
+   name="PapapediaAdministrationForm" type="com.tdil.milka.struts.forms.PapapediaAdministrationForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -111,6 +113,23 @@
   </action>
   <action name="PostItAdministrationForm" parameter="Admin" path="/viewPostItImage"
    scope="session" type="com.tdil.milka.struts.action.ViewPostItImageAction">
+  </action>
+  
+  <action name="PapapediaAdministrationForm" parameter="Admin" path="/goToPapapediaApprove"
+   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/papapediaPending.jsp"/>
+  </action>
+  <action name="PapapediaAdministrationForm" parameter="Admin" path="/goToPapapediaReview"
+   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/papapediaPending.jsp"/>
+  </action>
+  <action name="PapapediaAdministrationForm" parameter="Admin" path="/reviewPapapedia"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/papapediaPending.jsp"/>
+  </action>
+  <action name="PapapediaAdministrationForm" parameter="Admin" path="/approveDisapprovePapapedia"
+   scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/papapediaPending.jsp"/>
   </action>
   
   <!--  Public actions -->

@@ -247,4 +247,39 @@
    SUBTYPE="confirmed" TARGET="action26" TITLE="/addPapapedia.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToPapapediaApprove" NAME="action27"
+  PATH="/goToPapapediaApprove" SHAPE="32,4065,0,0"
+  TITLE="PapapediaAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="/papapediaPending.jsp"
+  SHAPE="288,4082,0,0" SUBTYPE="jsp" TITLE="papapediaPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapprovePapapedia.do" SUBTYPE="confirmed"
+   TARGET="action30" TITLE="/approveDisapprovePapapedia.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToPapapediaReview" NAME="action28"
+  PATH="/goToPapapediaReview" SHAPE="32,4177,0,0"
+  TITLE="PapapediaAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewPapapedia" NAME="action29"
+  PATH="/reviewPapapedia" SHAPE="32,4289,0,0"
+  TITLE="PapapediaAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapprovePapapedia" NAME="action30"
+  PATH="/approveDisapprovePapapedia" SHAPE="32,4401,0,0"
+  TITLE="PapapediaAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

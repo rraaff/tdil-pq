@@ -18,6 +18,12 @@
 				<li><html:link action="/goToPostItReview" >Revision de aprobados</html:link></li>
 			</ul>
 		</li>
+		<li><a href="#">Papapedia</a>
+			<ul>
+				<li><html:link action="/goToPapapediaApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToPapapediaReview" >Revision de aprobados</html:link></li>
+			</ul>
+		</li>
 		<li><a href="#">Reportes</a>
 			<ul>
 				<li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>

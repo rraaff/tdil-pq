@@ -1,7 +1,5 @@
 package com.tdil.milka.model.valueobjects;
 
-import java.text.SimpleDateFormat;
-
 import com.tdil.milka.model.MilkaPhoto;
 
 public class MilkaPhotoValueObject extends MilkaPhoto {
@@ -25,8 +23,7 @@ public class MilkaPhotoValueObject extends MilkaPhoto {
 	}
 	
 	public String getCreationDateAsString() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		return dateFormat.format(this.getCreationdate());
+		return CreationDateHelper.getCreationDateAsString(this.getCreationdate());
 	}
 	
 	public void setAuthorValueObject(AuthorValueObject authorValueObject) {

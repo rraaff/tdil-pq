@@ -147,4 +147,12 @@ public class WallWrittingDAOImpl implements WallWrittingDAO {
 			return record;
 		}
 	}
+	
+	public List<WallWritting> selectPapapediaToApprove() throws SQLException {
+		return sqlMapClient.queryForList("WALL_WRITTING.selectPapapediaToApprove");
+	}
+	
+	public List<WallWritting> selectPapapediaToReview() throws SQLException {
+		return sqlMapClient.queryForList("WALL_WRITTING.selectPapapediaToReview");
+	}
 }
