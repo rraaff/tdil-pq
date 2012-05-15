@@ -265,8 +265,8 @@ input[type="button"], input[type="submit"] {
 		<?php } else { 
 			if ($promoToday == 1) { 
 				if ($allPrizesGiven == 1) { ?>
-						<div id="content"><img src="../images/yaSeEntregaron.png" width="790" height="700" border="0"></div>
-					<?php } else { ?>
+						<div id="content" style="z-index:0;"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></div>
+<?php } else { ?>
 						<script language="javascript">
 							if (AC_FL_RunContent == 0) {
 								alert("This page requires AC_RunActiveContent.js.");
@@ -276,7 +276,7 @@ input[type="button"], input[type="submit"] {
 									'width', '790',
 									'height', '700',
 									'src', '../swf/homeApp',
-									'quality', 'high',
+									'quality', 'Best',
 									'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
 									'align', 'middle',
 									'play', 'true',
@@ -290,7 +290,7 @@ input[type="button"], input[type="submit"] {
 									'menu', 'true',
 									'allowFullScreen', 'false',
 									'allowScriptAccess','always',
-									'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
+									'FlashVars','urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
 									'movie', '../swf/homeApp',
 									'salign', ''
 									); //end AC code
@@ -302,9 +302,9 @@ input[type="button"], input[type="submit"] {
 							<param name="allowFullScreen" value="false" />
 							<param name="FlashVars" value="urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
 							<param name="movie" value="../swf/homeApp.swf" />
-							<param name="quality" value="high" />
+							<param name="quality" value="Best" />
 							<param name="bgcolor" value="#ffffff" />
-							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="high" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo APP_URL_TO_SHARE;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 							</object>
 						</noscript>
 				<?php } ?>
