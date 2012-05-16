@@ -49,7 +49,7 @@
 	padding-left:4px;
 	padding-top:4px;
 	width:180px;
-	height:18px;
+	height:16px;
 	float:left;
 	overflow:hidden;
 	text-decoration:none;
