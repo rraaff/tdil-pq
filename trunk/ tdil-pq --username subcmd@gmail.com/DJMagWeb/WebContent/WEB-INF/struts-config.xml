@@ -18,6 +18,7 @@
   <form-bean name="VideoForm" type="com.tdil.djmag.struts.forms.VideoForm"/>
   <form-bean name="BannerPositionForm" type="com.tdil.djmag.struts.forms.BannerPositionForm"/>
   <form-bean name="FooterForm" type="com.tdil.djmag.struts.forms.FooterForm"/>
+  <form-bean name="ImageGalleryForm" type="com.tdil.djmag.struts.forms.ImageGalleryForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -362,6 +363,40 @@
    <forward name="continue" path="/footerAdministration.jsp" redirect="true"/>
   </action>
   
+  <action name="ImageGalleryForm" parameter="Admin"
+   path="/goToImageGalleryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action name="ImageGalleryForm" parameter="Admin" path="/saveImageGallery"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action name="ImageGalleryForm" parameter="Admin" path="/editImageGallery"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action name="ImageGalleryForm" parameter="Admin" path="/deleteImageFromGallery"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteImageInGalleryAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action name="ImageGalleryForm" parameter="Admin" path="/toggleDeletedImageGallery"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadImageGalleryPhoto" type="com.tdil.djmag.struts.action.UploadImageGalleryPhotoAction"/>
+  <action name="ImageGalleryForm" parameter="Admin" path="/viewImageGalleryPhoto"
+   scope="session" type="com.tdil.djmag.struts.action.ViewImageGalleryPhotoAction">
+  </action>
+    <action name="ImageGalleryForm" parameter="Admin" path="/moveImageInGalleryUp"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageInGalleryUpAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
+  <action name="ImageGalleryForm" parameter="Admin" path="/moveImageInGalleryDown"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageInGalleryDownAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
