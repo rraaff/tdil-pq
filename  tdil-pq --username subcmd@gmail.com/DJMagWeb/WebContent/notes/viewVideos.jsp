@@ -254,7 +254,7 @@ div {
 			</div>
 			<div id="linksBottom">
 				<% if (pageNumber == 0) { %>
-					<div id="linkHome"><a href="../../index.jsp">Volver a la home</a></div>
+					<div id="linkHome"><a href="../../index.jsp?r=0">Volver a la home</a></div>
 				<% } else  { %>
 					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
 				<% } %>

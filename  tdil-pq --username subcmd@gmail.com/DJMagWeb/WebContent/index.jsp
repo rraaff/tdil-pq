@@ -10,7 +10,20 @@
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-
+<% 
+	String fromSelection = (String)request.getAttribute("fromSelection");
+	String referrer = request.getHeader("referer");
+	String refresh = request.getParameter("r");
+	if (!"true".equals(fromSelection)) {
+		if (referrer != null) {
+			if (!"0".equals(refresh)) {
+				publicHomeBean.refreshHome();
+			}
+		} else {
+			publicHomeBean.refreshHome();
+		}
+	}
+%>
 <html>
 <head>
 <%@ include file="includes/head.jsp" %>

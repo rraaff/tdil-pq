@@ -61,6 +61,8 @@ public class PublicHomeBean  {
 	 * 
 	 */
 	private static final long serialVersionUID = -7859928560990002269L;
+	
+	private boolean initialized = false;
 	private Country country;
 	private List<Section> sectionsForCountry;
 	
@@ -465,10 +467,15 @@ public class PublicHomeBean  {
 		}
 	}
 	
-	private void initHomeForCountry(final Country country) {
+	public void refreshHome() {
+		initHomeForCountry(this.getCountry());
+	}
+	
+	public void initHomeForCountry(final Country country) {
 		try {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
+					PublicHomeBean.this.initialized = true;
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					// cargo las secciones
 					SectionDAO sectionDAO = DAOManager.getSectionDAO();

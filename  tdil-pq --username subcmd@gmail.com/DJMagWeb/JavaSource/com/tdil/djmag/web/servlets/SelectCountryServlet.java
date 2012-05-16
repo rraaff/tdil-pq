@@ -32,6 +32,7 @@ public class SelectCountryServlet extends HttpServlet {
 	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
 		String iso_code_2 = arg0.getParameter("iso_code_2");
 		String id = arg0.getParameter("id");
+		arg0.setAttribute("fromSelection", "true");
 		initForCountry(arg0, iso_code_2, id);
 		arg0.getRequestDispatcher("./index.jsp").forward(arg0, arg1);
 	}
