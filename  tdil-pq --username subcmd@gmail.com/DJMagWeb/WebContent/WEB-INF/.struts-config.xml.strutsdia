@@ -171,8 +171,6 @@
    SUBTYPE="confirmed" TARGET="action37"
    TITLE="/toggleDeletedRanking.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page11" PATH="/editRanking.st" SHAPE="448,1633,0,0"
-  SUBTYPE="other" TITLE="editRanking.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/boLogin.jsp"
   SHAPE="32,1521,0,0" TARGET="page1" TITLE="notAuthorized"
   TYPE="forward" model-entity="StrutsProcessItem"/>
@@ -748,4 +746,80 @@
  <PROCESS-ITEM ID="#viewRankingPhoto" NAME="action75"
   PATH="/viewRankingPhoto" SHAPE="32,13585,0,0" TITLE="RankingNoteForm"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToImageGalleryABM" NAME="action77"
+  PATH="/goToImageGalleryABM" SHAPE="32,13585,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page19" PATH="/imageGalleryAdministration.jsp"
+  SHAPE="304,13602,0,0" SUBTYPE="jsp"
+  TITLE="imageGalleryAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedImageGallery.do"
+   SUBTYPE="confirmed" TARGET="action81"
+   TITLE="/toggleDeletedImageGallery.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editImageGallery.st"
+   SUBTYPE="confirmed" TARGET="page11" TITLE="/editImageGallery.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveImageGallery.do"
+   SUBTYPE="confirmed" TARGET="action78" TITLE="/saveImageGallery.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveImageGallery" NAME="action78"
+  PATH="/saveImageGallery" SHAPE="32,13697,0,0" TITLE="ImageGalleryForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editImageGallery" NAME="action79"
+  PATH="/editImageGallery" SHAPE="32,13841,0,0" TITLE="ImageGalleryForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteImageFromGallery" NAME="action80"
+  PATH="/deleteImageFromGallery" SHAPE="32,13953,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedImageGallery" NAME="action81"
+  PATH="/toggleDeletedImageGallery" SHAPE="32,14065,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadImageGalleryPhoto" NAME="action82"
+  PATH="/uploadImageGalleryPhoto" SHAPE="32,14209,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page11" PATH="/editImageGallery.st"
+  SHAPE="512,13602,0,0" SUBTYPE="other" TITLE="editImageGallery.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewImageGalleryPhoto" NAME="action83"
+  PATH="/viewImageGalleryPhoto" SHAPE="32,13585,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#moveImageInGalleryUp" NAME="action84"
+  PATH="/moveImageInGalleryUp" SHAPE="32,14705,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#moveImageInGalleryDown" NAME="action85"
+  PATH="/moveImageInGalleryDown" SHAPE="32,14593,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
