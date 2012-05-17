@@ -192,7 +192,11 @@ div {
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
 							<% } else { %>
-								<a href="../../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+								<% if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) { %>
+									<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html"><%= section.getName() %></a>
+								<% } else { %>
+									<a href="../../../<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+								<% } %>
 							<% } %>
 						</li>
 					<% }

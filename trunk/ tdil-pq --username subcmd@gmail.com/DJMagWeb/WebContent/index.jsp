@@ -16,11 +16,13 @@
 	String refresh = request.getParameter("r");
 	if (!"true".equals(fromSelection)) {
 		if (referrer != null) {
-			if (!"0".equals(refresh)) {
+			if (!"0".equals(refresh) && publicHomeBean.hasCountrySelected()) {
 				publicHomeBean.refreshHome();
 			}
 		} else {
-			publicHomeBean.refreshHome();
+			if (publicHomeBean.hasCountrySelected()) {
+				publicHomeBean.refreshHome();
+			}
 		}
 	}
 %>
@@ -117,7 +119,11 @@ $(document).ready(
 							<% if (SectionType.VIDEOS.equals(section.getSectiontype())) { %>
 								<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html"><%= section.getName() %></a>
 							<% } else { %>
-								<a href="<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+								<% if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) { %>
+									<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html"><%= section.getName() %></a>
+								<% } else { %>
+									<a href="<%=publicHomeBean.getExternalLink(section)%>"><%= section.getName() %></a>
+								<% } %>
 							<% } %>
 						<% } %>
 					</li>

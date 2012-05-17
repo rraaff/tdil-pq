@@ -210,7 +210,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
 		// validacion por unico, por unico imageGallery por seccion por pais
-		for (CountrySelectionVO countrySelectionVO : this.getSelectedCountries()) {
+		/*for (CountrySelectionVO countrySelectionVO : this.getSelectedCountries()) {
 			if (countrySelectionVO.isSelected()) {
 				ImageGalleryExample imageGalleryNoteCountryExample = new ImageGalleryExample();
 				imageGalleryNoteCountryExample.createCriteria().andIdCountryEqualTo(countrySelectionVO.getCountryId());
@@ -219,7 +219,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 					validationError.setFieldError(country_key, ValidationErrors.DUPLICATED);
 				}
 			}
-		}
+		}*/
 		
 	}
 
