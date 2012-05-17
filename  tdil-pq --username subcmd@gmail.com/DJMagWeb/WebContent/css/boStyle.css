@@ -159,6 +159,9 @@ td {
 	border-right-color: #999999;
 	padding-right: 5px;
 	padding-left: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #999999;
 }
 .d0 {
 	background-color: #FFFFFF;
@@ -208,6 +211,7 @@ input[type="button"], input[type="submit"] {
 	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 }
 .width20 { width:20px; }
+.width40 { width:40px; }
 .width50 { width:50px; }
 .width80 { width:80px; }
 .width100 { width:100px; }
@@ -226,6 +230,7 @@ input[type="button"], input[type="submit"] {
 .width450 { width:450px; }
 .width475 { width:475px; }
 .width500 { width:500px; }
+.width580 { width:580px; }
 .width700 { width:700px; }
 .width720 { width:720px; }
 .width740 { width:740px; }
@@ -247,6 +252,7 @@ input[type="button"], input[type="submit"] {
 .height200 { height:200px; }
 .height250 { height:250px; }
 .height300 { height:300px; }
+.height600 { height:600px; }
 
 .border1 { border:#999 1px solid }
 

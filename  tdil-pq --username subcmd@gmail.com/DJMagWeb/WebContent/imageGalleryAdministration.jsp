@@ -24,10 +24,8 @@ $(document).ready(
 		  	if (response.result == 'OK') {
 		  		var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
 		  		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
-		  		var tdimg = $('<td align="center" width="250"><img id="ranking_' + maxindex + '" src="./viewImageGalleryPhoto.do?pos=' + maxindex + '" width="100" height="100" align="absmiddle"></td>').appendTo( tr );
-		  		var tdops = $('<td align="center"><a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryUp.do?index=\'' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>' +
-								'<a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryDown.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a>' +
-								'<a href="javascript:document.ImageGalleryForm.action=\'./deleteImageFromGallery.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar"></a></td>').appendTo( tr );
+		  		var tdimg = $('<td align="center"><img id="ranking_' + maxindex + '" src="./viewImageGalleryPhoto.do?pos=' + maxindex + '" width="66" height="40" align="absmiddle"></td>').appendTo( tr );
+		  		var tdops = $('<td align="center" width="100"><a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryUp.do?index=\'' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryDown.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./deleteImageFromGallery.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>').appendTo( tr );
 		  		maxindex = maxindex + 1;
 		  	} else {
 		  		alert("Ha ocurrido un error");
@@ -40,6 +38,9 @@ $(document).ready(
 	}
 );
 </script>
+<style>
+div { /*border:dotted 1px #00CCFF; */}
+</style>
 </head>
 <body>
 <div id="header"></div>
@@ -47,48 +48,45 @@ $(document).ready(
 	<html:form method="POST" action="/saveImageGallery">
 	<div id="portaMenu"><%@ include file="includes/boMenu.jsp"%></div>
 	<div id="formulariosBase">
-		<h1>Contenido tipo ImageGallery</h1>
+		<h1>Contenido tipo Galer&iacute;a de im&aacute;genes</h1>
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
-		<div class="renglon width350">
-			<div class="label width50"> </div>
-			<div class="label width100">T&iacute;tulo</div>
+		<div class="renglon width860 height50">
+			<div class="label width50">T&iacute;tulo</div>
 			<div class="label width150"><html:text name="ImageGalleryForm" property="title" styleClass="width120"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.title.err")%></div>
-			<div class="label width100">Descripci&oacute;n</div>
-			<div class="label width150"><html:text name="ImageGalleryForm" property="description" styleClass="width120"/></div>
+			<div class="label width50"></div>
+			<div class="label width80">Descripci&oacute;n</div>
+			<div class="label width420 height50"><html:text name="ImageGalleryForm" property="description" styleClass="width420 height50"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.description.err")%></div>
 		</div>
-		<div id="conteinerScrollable" style="width:950px; height:400px; overflow:auto; border:#FF0000;">
+		<div id="conteinerScrollable" style="float:left; width:950px; height:380px; overflow:auto; border:#FF0000;">
 			<h2>Fotos</h2>
 			<div class="renglon width920">
-				<div class="label width920 comment">Complete con las fotos. Una vez cargadas, pordr&aacute; subir y bajar cada una de las mismas con los links en las acciones.</div>
+				<div class="label width920 comment">Podr&aacute; crear todas las galer&iacute;as que quiera. Los usuarios accederan a la secci&oacute;n de galer&iacute;as a trav&eacute;s de men&uacute; de galer&iacute;as. Cargue todas las ftos que desee para la galer&iacute;a y una vez cargadas, pordr&aacute; subir y bajar cada una de las mismas con los links en las acciones para modificar el &oacute;rden de aparici&oacute;n. Medida ideal de las imágenes 660 pixels x 400 pixels a 72dpi de resoluci&oacute;n</div>
 			</div>
-			<div class="renglon width920 height200" style="overflow:auto;">
-				<table id="image_gal_tab">
+			<div class="width420 height250" style="float:left; overflow:auto;">
+				<table width="380" id="image_gal_tab">
 					<tr>
 						<td class="headerTablas" width="50">Posici&oacute;n</td>
 						<td class="headerTablas">Foto</td>
-						<td class="headerTablas" width="50">Acciones</td>
+						<td class="headerTablas">Acciones</td>
 					</tr>
 					<logic:iterate id="selectedPosition" name="ImageGalleryForm" property="positions" indexId="iterIndexPositions">  
 						<tr>
 							<td align="center"><%=iterIndexPositions + 1%></td>
-							<td align="center" width="250">
-								<img id="ranking_<%=iterIndexPositions%>" src="./viewImageGalleryPhoto.do?pos=<%=iterIndexPositions%>" width="100" height="100" align="absmiddle"></td> 
-								<td align="center"><a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
-								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a>
-								<a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar"></a>
-								</td>
+							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewImageGalleryPhoto.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
+							<td align="center" width="100"><a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a><a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a><a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>
 						</tr>
 					</logic:iterate>
 				</table>
 			</div>
-			<input type="file" name="upload_img" id="upload_img">
-			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
-			<div class="renglon width860">
-				<div class="label width80">Pa&iacute;s</div>
-				<div class="label width200">
-					<html:select name="ImageGalleryForm" property="countryId" styleClass="width180">
+			<div class="width500 height250" style="float:right;">
+				<div class="label width500 height25"></div>
+				<div class="label width200 height60"><input type="file" name="upload_img" id="upload_img"></div>
+				<div class="label width50 height60"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
+				<div class="label width50 height60">Pa&iacute;s</div>
+				<div class="label width100 height60">
+					<html:select name="ImageGalleryForm" property="countryId" styleClass="width100">
 						<logic:iterate name="ImageGalleryForm" property="selectedCountries"
 							id="iterCountry">
 							<option
@@ -98,22 +96,22 @@ $(document).ready(
 						</logic:iterate>
 					</html:select>
 				</div>
-				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.country.err")%></div>
-			</div>
-			<div class="renglon width860 height50">
-				<logic:equal name="ImageGalleryForm" property="objectId" value="0">
+				<div class="label width50 height60"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.country.err")%></div>
+				<div class="label width500 height50">
+					<logic:equal name="ImageGalleryForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="save" />
+						</html:submit>
+					</logic:equal>
+					<logic:notEqual name="ImageGalleryForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="modify" />
+						</html:submit>
+					</logic:notEqual>
 					<html:submit property="operation">
-						<bean:message key="save" />
+						<bean:message key="reset" />
 					</html:submit>
-				</logic:equal>
-				<logic:notEqual name="ImageGalleryForm" property="objectId" value="0">
-					<html:submit property="operation">
-						<bean:message key="modify" />
-					</html:submit>
-				</logic:notEqual>
-				<html:submit property="operation">
-					<bean:message key="reset" />
-				</html:submit>
+				</div>
 			</div>
 			<h2>Listado de ImageGallerys</h2>
 			<div class="renglon width860 height200" style="overflow:auto;">

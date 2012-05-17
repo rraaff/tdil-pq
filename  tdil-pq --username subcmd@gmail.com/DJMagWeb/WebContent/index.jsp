@@ -128,8 +128,6 @@ $(document).ready(
 						<% } %>
 					</li>
 				<% } %>
-				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-top20.gif" width="74"></a></li>
-				<li><a href="#" style="padding:0; cursor:default;"><img src="images/pronto-shop.gif" width="62"></a></li>
 			</ul>
 		</div>
 	</div>
