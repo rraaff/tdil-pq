@@ -81,69 +81,9 @@ div { /*border:dotted 1px #00FF00;*/ }
 	padding:0px;
 	overflow:hidden;
 }
-/*
-#topvideo {
-	background-color:#000;
-	margin-left:auto;
-	margin-right:auto;
-}
-#videoList {
-	width:660px;
-}
-#renglonVideo {
-	width:660px;
-	margin-top:13px;
-	float:left;
-}
-#thmbnVideo {
-	border:solid 1px #525252;
-	width:78px;
-	height:78px;
-	float:left;
-}
-#thmbnVideo:hover {
-	border:solid 1px #FFFF00;
-}
-#ranked {
-	width:560px;
-	float:right;
-}
-#ranked #title, #ranked #title a, #ranked #title a:active, #ranked #title a:visited {
-	font-size:14px;
-	color:#e25237;
-	line-height: normal;
-	font-weight: bold;
-	text-transform: uppercase;
-	text-decoration: none;
-	padding-bottom:16px;
-}
-#ranked #title a:hover {
-	text-decoration: underline;
-}
-#description, #description a, #description a:active, #description a:visited {
-	color:#CCCCCC;
-	font-size: 11px;
-	line-height: 16px;
-	font-weight: normal;
-	text-align:justify;
-	text-decoration: none;
-	margin-bottom:20px;
-	padding-right:20px;
-}
-#description a:hover {
-	text-decoration: underline;
-}
-#fakeLiveboxWindow #left #note #images {
-	border:solid 7px #525252;
-	width:585px;
-	height:303px;
-	margin-left:auto;
-	margin-right:auto;
-}*/
 #fakeLiveboxWindow #left #note #top100LB {
 	font-family: Arial, Helvetica, sans-serif;
 	width:680px;
-	height:1630px;
 	padding:0;
 	overflow:auto;
 }

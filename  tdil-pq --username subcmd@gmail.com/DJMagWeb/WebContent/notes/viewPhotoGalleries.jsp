@@ -97,7 +97,6 @@ div { /*border:dotted 1px #00FF00;*/ }
 #fakeLiveboxWindow #left #note #top100LB {
 	font-family: Arial, Helvetica, sans-serif;
 	width:650px;
-	height:1630px;
 	padding:0;
 	overflow:auto;
 }

@@ -147,9 +147,6 @@ div {
 #fakeLiveboxWindow #left #linksBottom #linkHome {
 	float:left;
 }
-#fakeLiveboxWindow #left #linksBottom #linkPaging {
-	float:right;
-}
 #fakeLiveboxWindow #right {
 	float:left;
 	width:286px;
@@ -235,7 +232,7 @@ div {
 				<% if (actualsection == null) { %>
 					<div id="linkHome"><a href="../../../index.jsp?r=0">Volver a la home</a></div>
 				<% } else { %>
-					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a></div>
+					<div id="linkHome"><a href="../../../<%=publicHomeBean.getExternalLink(actualsection)%>?pageNumber=<%=pageNumber %>">Volver a <%=actualsection.getName() %></a></div>
 				<% } %>
 			</div>
 		</div>
