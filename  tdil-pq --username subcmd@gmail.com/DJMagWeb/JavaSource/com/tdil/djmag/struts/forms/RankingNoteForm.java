@@ -17,6 +17,7 @@ import org.apache.struts.upload.FormFile;
 import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.RankingNoteCountryDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
+import com.tdil.djmag.dao.RankingNoteTextDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.BlobData;
 import com.tdil.djmag.model.Country;
@@ -25,6 +26,8 @@ import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingNoteCountry;
 import com.tdil.djmag.model.RankingNoteCountryExample;
 import com.tdil.djmag.model.RankingNoteExample;
+import com.tdil.djmag.model.RankingNoteText;
+import com.tdil.djmag.model.RankingNoteTextExample;
 import com.tdil.djmag.model.RankingPosition;
 import com.tdil.djmag.model.RankingPositions;
 import com.tdil.djmag.utils.BlobHelper;
@@ -176,8 +179,21 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 		for (RankingNoteCountry rankingNoteCountry : rankingNoteCountries) {
 			this.setCountrySelected(rankingNoteCountry);
 		}
+		RankingNoteTextDAO rankingTextDAO = DAOManager.getRankingNoteTextDAO();
+		RankingNoteTextExample rankingNoteTextExample = new RankingNoteTextExample();
+		rankingNoteTextExample.createCriteria().andIdRankingNoteEqualTo(id);
+		List<RankingNoteText> texts = rankingTextDAO.selectRankingNoteTextByExampleWithBLOBs(rankingNoteTextExample);
+		for (RankingNoteText rankingNoteText : texts) {
+			setPositionText(rankingNoteText);
+		}
 	}
 	
+	private void setPositionText(RankingNoteText rankingNoteText) {
+		RankingPositionBean rankingPositionBean = this.getPositions().get(rankingNoteText.getPosition());
+		rankingPositionBean.setContent(rankingNoteText.getContent());
+		
+	}
+
 	private void setRankingPositions(RankingPositions fromXML) throws SQLException {
 		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
 		this.getPositions().clear();
@@ -272,6 +288,7 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 			rankingNoteDAO.updateRankingNoteByPrimaryKeySelective(rankingNote);
 			rankingId = this.getObjectId();
 		}
+		updateRankingNoteTexts(rankingId);
 		for (CountrySelectionVO countrySelectionVO : getSelectedCountries()) {
 			if (this.mustBeSaved(countrySelectionVO)) {
 				RankingNoteCountry rankingNoteCountry = new RankingNoteCountry();
@@ -297,6 +314,7 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 		rankingNote.setDescription(this.getDescription());
 		RankingPositions rankingPositions = new RankingPositions();
 		for (RankingPositionBean rankingPositionBean : this.getPositions()) {
+			// Imagen
 			if (BlobHelper.shouldDeleteBlob(rankingPositionBean.getUploadData())) {
 				BlobHelper.deleteBlob(rankingPositionBean.getBlobId());
 				rankingPositionBean.setBlobId(0);
@@ -305,10 +323,33 @@ public class RankingNoteForm extends TransactionalValidationForm implements Togg
 				int blobId = BlobHelper.insertBlob(rankingPositionBean.getUploadData());
 				rankingPositionBean.setBlobId(blobId);
 			}
-			
 			rankingPositions.getPositions().add(rankingPositionBean.getAsRankingPosition());
 		}
 		rankingNote.setPositions(XMLUtils.asXML(rankingPositions));
+	}
+	
+	private void updateRankingNoteTexts(int rankingNoteId) throws SQLException {
+		RankingNoteTextDAO rankingNoteTextDAO = DAOManager.getRankingNoteTextDAO();
+		int index = 0;
+		for (RankingPositionBean rankingPositionBean : this.getPositions()) {
+			// Contenido de la nota
+			RankingNoteTextExample textExample = new RankingNoteTextExample();
+			textExample.createCriteria().andIdRankingNoteEqualTo(rankingNoteId).andPositionEqualTo(index);
+			List<RankingNoteText> noteText = rankingNoteTextDAO.selectRankingNoteTextByExampleWithBLOBs(textExample);
+			if (noteText.isEmpty()) {
+				RankingNoteText rankingNoteText = new RankingNoteText();
+				rankingNoteText.setIdRankingNote(rankingNoteId);
+				rankingNoteText.setPosition(index);
+				rankingNoteText.setContent(rankingPositionBean.getContent());
+				rankingNoteText.setDeleted(0);
+				rankingNoteTextDAO.insertRankingNoteText(rankingNoteText);
+			} else {
+				RankingNoteText rankingNoteText = noteText.get(0);
+				rankingNoteText.setContent(rankingPositionBean.getContent());
+				rankingNoteTextDAO.updateRankingNoteTextByPrimaryKeyWithBLOBs(rankingNoteText);
+			}
+			index = index + 1;
+		}
 	}
 	
 	private boolean mustBeSaved(CountrySelectionVO countrySelectionVO) {

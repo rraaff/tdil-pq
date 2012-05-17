@@ -101,5 +101,8 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="IMAGE_IN_GAL" domainObjectName="ImageInGallery">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="DJMAG" tableName="RANKING_NOTE_TEXT" domainObjectName="RankingNoteText">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 </ibatorContext>
 </ibatorConfiguration>
