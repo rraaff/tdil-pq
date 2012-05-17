@@ -419,7 +419,7 @@ public class PublicHomeBean  {
 			 return (List<ImageGallery>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
 					ImageGalleryExample imageGalleryExample = new ImageGalleryExample();
-					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId());
+					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
 					imageGalleryExample.setOrderByClause("id desc");
 					List<ImageGallery> galleries = DAOManager.getImageGalleryDAO().selectImageGalleryByExample(imageGalleryExample);
 					return galleries;
