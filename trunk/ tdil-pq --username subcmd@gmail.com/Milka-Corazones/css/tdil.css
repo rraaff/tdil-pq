@@ -12,9 +12,6 @@ body {
 	margin: 0px;
 	padding: 0px;
 	overflow:hidden;
-	background-image: url(../images/mc_background.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
 }
 h1, h2, h3, h4 {
 	color:#802444;
