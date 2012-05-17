@@ -1,5 +1,5 @@
 <?php 
-	Facebook::$CURL_OPTS[CURLOPT_CAINFO] = '/var/www/Milka-Corazones/include/fb_ca_chain_bundle.crt'; // path al certificado
+	Facebook::$CURL_OPTS[CURLOPT_CAINFO] = 'C:/xampp/htdocs/Milka-Corazones/include/fb_ca_chain_bundle.crt'; // path al certificado
 	
 	define('APPLICATION_ID','373863869313904'); // id de la app
 	define('APPLICATION_NAME','donde_estas_bombon');

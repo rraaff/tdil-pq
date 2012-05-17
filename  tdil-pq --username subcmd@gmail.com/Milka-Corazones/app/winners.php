@@ -28,9 +28,6 @@ $result = mysql_query($SQL) or die("MySQL-err.Query: " . $SQL . " - Error: (" . 
 <style type="text/css">
 <!--
 body {
-	background-image: none;
-	background-repeat: no-repeat;
-	background-position: left top;
 	overflow:hidden !important;
 }
 #content {
@@ -44,7 +41,7 @@ body {
 }
 #content #tableHead {
 	margin:0 auto;
-	margin-top:150px;
+	margin-top:180px;
 	width:400px;
 	height:28px;
 	font-weight:bold;
@@ -60,7 +57,7 @@ body {
 #content #tableBody {
 	margin:0 auto;
 	width:400px;
-	height:360px;
+	height:330px;
 	overflow:auto;
 }
 #content #tableRow {
