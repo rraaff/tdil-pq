@@ -153,6 +153,9 @@ div {
 #fakeLiveboxWindow #left #linksBottom #linkPaging {
 	float:right;
 }
+#fakeLiveboxWindow #left #linksBottom #linkPage {
+	float:left;
+}
 #fakeLiveboxWindow #right {
 	float:left;
 	width:286px;
@@ -221,18 +224,22 @@ div {
 				<% if (pageNumber == 0) { %>
 					<div id="linkHome"><a href="../../../index.jsp?r=0">Volver a la home</a></div>
 				<% } else  { %>
-					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
+					<div id="linkPaging">
+						<div id="linkPage"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
+					</div>
 				<% } %>
-				<% for (Integer pageToRender : publicHomeBean.getPages(section, pageNumber)) { %>
-					<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
-						<div id="linkPaging"><%=pageToRender + 1%></div>
-					<% } else { %>
-						<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
+				<div id="linkPaging">
+					<% for (Integer pageToRender : publicHomeBean.getPages(section, pageNumber)) { %>
+						<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+							<div id="linkPage"><%=pageToRender + 1%></div>
+						<% } else { %>
+							<div id="linkPage"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
+						<% } %>
 					<% } %>
-				<% } %>
-				<% if (currentPage.size() > PublicHomeBean.SECTION_PAGE_SIZE) { %>
-					<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
-				<% } %>
+					<% if (currentPage.size() > PublicHomeBean.SECTION_PAGE_SIZE) { %>
+						<div id="linkPaging"><a href="../../../<%=publicHomeBean.getExternalLink(section)%>?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
+					<% } %>
+				</div>
 			</div>
 		</div>
 		<div id="right">
