@@ -176,6 +176,7 @@ div {
 #fakeLiveboxWindow #left #linksBottom #linkPaging {
 	float:right;
 }
+
 #fakeLiveboxWindow #right {
 	float:left;
 	width:286px;
@@ -258,18 +259,20 @@ div {
 				<% if (pageNumber == 0) { %>
 					<div id="linkHome"><a href="../../index.jsp?r=0">Volver a la home</a></div>
 				<% } else  { %>
-					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
+					<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber - 1 %>">Anterior</a></div>
 				<% } %>
-				<% for (Integer pageToRender : pages) { %>
-					<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
-						<div id="linkPaging"><%=pageToRender + 1%></div>
-					<% } else { %>
-						<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
+				<div id="linkPaging">
+					<% for (Integer pageToRender : pages) { %>
+						<% if (pageToRender == pageNumber) { /*es la actual, no tiene link*/%>
+							<div id="linkPage"><%=pageToRender + 1%></div>
+						<% } else { %>
+							<div id="linkPage"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageToRender%>"><%=pageToRender + 1%></a></div>
+						<% } %>
 					<% } %>
-				<% } %>
-				<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
-					<div id="linkPaging"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
-				<% } %>
+					<% if (allVideos.size() > PublicHomeBean.VIDEOS_PAGE_SIZE) { %>
+						<div id="linkPage"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewVideos.html?pageNumber=<%=pageNumber + 1 %>">Siguiente</a></div>
+					<% } %>
+				</div>
 			</div>
 		</div>
 		<div id="right">
