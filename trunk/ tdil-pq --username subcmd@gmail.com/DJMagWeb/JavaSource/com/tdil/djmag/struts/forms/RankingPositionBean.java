@@ -16,6 +16,7 @@ public class RankingPositionBean implements Serializable {
 	private int blobId;
 	private String position;
 	private String description;
+	private String content;
 	private UploadData uploadData;
 	
 	public RankingPositionBean() {
@@ -85,5 +86,13 @@ public class RankingPositionBean implements Serializable {
 			rankingPosition.setImageext("");
 		}
 		return rankingPosition;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

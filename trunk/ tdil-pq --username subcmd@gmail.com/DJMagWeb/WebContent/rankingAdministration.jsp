@@ -60,6 +60,7 @@ $(document).ready(
 						<td class="headerTablas" width="50">Posici&oacute;n</td>
 						<td class="headerTablas" width="100">Nombre</td>
 						<td class="headerTablas" >Descripci&oacute;n</td>
+						<td class="headerTablas" >Contenido</td>
 						<td class="headerTablas">Foto</td>
 						<td class="headerTablas" width="50">Acciones</td>
 					</tr>
@@ -68,6 +69,7 @@ $(document).ready(
 							<td align="center"><%=iterIndexPositions + 1%></td>
 							<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width100"/></td>
 							<td align="center"><html:text name="selectedPosition" property="description" indexed="true" styleClass="width350"/></td>
+							<td align="center"><html:textarea name="selectedPosition" property="content" indexed="true" styleClass="width350"/></td>
 							<td align="center" width="250">
 								<logic:equal name="selectedPosition" property="hasUploadData" value="true">
 									<img id="ranking_<%=iterIndexPositions%>" src="./viewRankingPhoto.do?pos=<%=iterIndexPositions%>" width="30" height="30" align="absmiddle"> 
