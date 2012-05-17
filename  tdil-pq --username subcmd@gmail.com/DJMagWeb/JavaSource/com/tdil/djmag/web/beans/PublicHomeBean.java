@@ -29,6 +29,10 @@ import com.tdil.djmag.model.FacebookFeed;
 import com.tdil.djmag.model.FacebookFeedExample;
 import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
+import com.tdil.djmag.model.ImageGallery;
+import com.tdil.djmag.model.ImageGalleryExample;
+import com.tdil.djmag.model.ImageInGallery;
+import com.tdil.djmag.model.ImageInGalleryExample;
 import com.tdil.djmag.model.Magazine;
 import com.tdil.djmag.model.MagazineExample;
 import com.tdil.djmag.model.MenuItem;
@@ -62,12 +66,12 @@ public class PublicHomeBean  {
 	 */
 	private static final long serialVersionUID = -7859928560990002269L;
 	
-	private boolean initialized = false;
 	private Country country;
 	private List<Section> sectionsForCountry;
 	
 	private Section rankingSection;
 	private Section videoSection;
+	private Section imageGallerySection;
 	
 	private RankingNote ranking;
 	private RankingPositions rankingPositions;
@@ -347,8 +351,13 @@ public class PublicHomeBean  {
 					result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
 					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
-					result.append("<a href=\"../../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
-					result.append("\">").append(section.getName()).append("</a>\n");
+					if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) {
+						result.append("<a href=\"../../../notes/").append(this.getCountry().getIsoCode2()).append("/viewPhotoGalleries.html");
+						result.append("\">").append(section.getName()).append("</a>\n");
+					} else {
+						result.append("<a href=\"../../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+						result.append("\">").append(section.getName()).append("</a>\n");
+					}
 				}
 			}
 		}
@@ -366,8 +375,13 @@ public class PublicHomeBean  {
 					result.append("<a href=\"../../notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
 					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
-					result.append("<a href=\"../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
-					result.append("\">").append(section.getName()).append("</a>\n");
+					if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) {
+						result.append("<a href=\"../../notes/").append(this.getCountry().getIsoCode2()).append("/viewPhotoGalleries.html");
+						result.append("\">").append(section.getName()).append("</a>\n");
+					} else {
+						result.append("<a href=\"../../").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+						result.append("\">").append(section.getName()).append("</a>\n");
+					}
 				}
 			}
 		}
@@ -385,13 +399,77 @@ public class PublicHomeBean  {
 					result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewVideos.html");
 					result.append("\">").append(section.getName()).append("</a>\n");
 				} else {
-					result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
-					result.append("\">").append(section.getName()).append("</a>\n");
+					if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) {
+						result.append("<a href=\"./notes/").append(this.getCountry().getIsoCode2()).append("/viewPhotoGalleries.html");
+						result.append("\">").append(section.getName()).append("</a>\n");
+					} else {
+						result.append("<a href=\"").append(this.getExternalLink(this.getFirstNoteForSection(section)));
+						result.append("\">").append(section.getName()).append("</a>\n");
+					}
 				}
 			}
 		}
 		return result.toString();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ImageGallery> getGalleriesForCountry() {
+		final Country country = this.getCountry();
+		try {
+			 return (List<ImageGallery>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					ImageGalleryExample imageGalleryExample = new ImageGalleryExample();
+					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId());
+					imageGalleryExample.setOrderByClause("id desc");
+					List<ImageGallery> galleries = DAOManager.getImageGalleryDAO().selectImageGalleryByExample(imageGalleryExample);
+					return galleries;
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<ImageGallery>();
+		}
+	}
+	
+	public ImageGallery getImageGallery(String id) {
+		if (StringUtils.isEmpty(id)) {
+			return null;
+		}
+		if (!StringUtils.isNumeric(id)) {
+			return null;
+		}
+		final int gid = Integer.parseInt(id);
+		try {
+			 return (ImageGallery)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					return DAOManager.getImageGalleryDAO().selectImageGalleryByPrimaryKey(gid);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ImageInGallery> getGalleryPhotos(final ImageGallery gallery) {
+		if (gallery == null) {
+			return new ArrayList<ImageInGallery>();
+		}
+		try {
+			 return (List<ImageInGallery>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					ImageInGalleryExample example = new ImageInGalleryExample();
+					example.createCriteria().andIdGalleryEqualTo(gallery.getId());
+					return DAOManager.getImageInGalleryDAO().selectImageInGalleryByExample(example);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<ImageInGallery>();
+		}
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	public List<Video> getAllVideosForCountry(int pageNumber, ArrayList<Integer> pages) {
@@ -475,7 +553,6 @@ public class PublicHomeBean  {
 		try {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
-					PublicHomeBean.this.initialized = true;
 					NoteDAO noteDAO = DAOManager.getNoteDAO();
 					// cargo las secciones
 					SectionDAO sectionDAO = DAOManager.getSectionDAO();
@@ -496,10 +573,22 @@ public class PublicHomeBean  {
 						} else {
 							if (SectionType.RANKING_100.equals(section.getSectiontype())) {
 								setRankingSection(section);
+								// TODO ver si tengo ranking, sino que no muestre nada
 							} else {
 								if (SectionType.VIDEOS.equals(section.getSectiontype())) {
 									setVideoSection(section);
-								}	
+								} else {
+									if (SectionType.IMAGE_GALLERY.equals(section.getSectiontype())) {
+										ImageGalleryExample imageGalleryExample = new ImageGalleryExample();
+										imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
+										int count = DAOManager.getImageGalleryDAO().countImageGalleryByExample(imageGalleryExample);
+										if (count > 0) {
+											setImageGallerySection(section);
+										} else {
+											getSectionsForCountry().remove(section);
+										}
+									}
+								}
 							}
 						}
 					}
@@ -1018,5 +1107,13 @@ public class PublicHomeBean  {
 
 	public void setFooterRanking(Footer footerRanking) {
 		this.footerRanking = footerRanking;
+	}
+
+	public Section getImageGallerySection() {
+		return imageGallerySection;
+	}
+
+	public void setImageGallerySection(Section imageGallerySection) {
+		this.imageGallerySection = imageGallerySection;
 	}
 }

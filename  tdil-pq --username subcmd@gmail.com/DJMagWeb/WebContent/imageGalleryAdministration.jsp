@@ -82,8 +82,8 @@ $(document).ready(
 						</tr>
 					</logic:iterate>
 				</table>
-				<td><input type="file" name="upload_img" id="upload_img"></td>
 			</div>
+			<input type="file" name="upload_img" id="upload_img">
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
 			<div class="renglon width860">
 				<div class="label width80">Pa&iacute;s</div>

@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.tdil.djmag.model.ImageInGallery"%>
+<%@page import="java.util.List"%>
+<%@page import="com.tdil.djmag.model.ImageGallery"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
@@ -14,16 +18,17 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	SelectCountryServlet.initForCountry(request, country, "");
 } 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	RankingPositions positions = publicHomeBean.getRankingPositions();
-	if (positions == null) {
-		
+
+	List<ImageGallery> galleries = publicHomeBean.getGalleriesForCountry();
+	if (galleries == null) {
+		// TODO mando a la home
 	} else {
-		
 %>
 <html>
 <head>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
 <script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
+
 <style>
 
 div {
@@ -209,29 +214,13 @@ div {
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle"><%=publicHomeBean.getRankingSection().getName() %></div>
+		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %></div>
 		<div id="left">
 			<div id="note">
-				<div id="top100LB">
-					<% int positionIndex = 1;
-					for (RankingPosition position : positions.getPositions()) { %>
-						<div id="renglonRank">
-							<div id="position"><%=positionIndex++ %></div>
-							<div id="photo">
-								<% if (position.hasImage()) { %>
-									<img src="../../download.st?id=<%=position.getImageid()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
-								<% } else { %>
-									<img src="../../null.gif" width="78" height="78">
-								<% } %>
-							</div>
-							<div id="ranked">
-								<span class="title"><%=position.getPosition()%></span>
-								<span class="description"><%= position.getDescription() %></span>
-								<!--span class="vermas"><a href="#">Ver m&aacute;s</a></span-->
-							</div>
-						</div>
-					<% } %>
-				</div>
+				<% for (ImageGallery imageGallery : galleries) { %>
+				<a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a>
+				<%= imageGallery.getDescription()%><br>
+			<% } %>
 			</div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
@@ -253,5 +242,5 @@ div {
 <%@ include file="../includes/rankingFooter.jsp" %>
 </body>
 </html>
-<% 
-} %>
+<% }
+ %>

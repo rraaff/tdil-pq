@@ -31,6 +31,27 @@
         <from>/([a-z|A-Z]{2})/viewRanking.html</from>
         <to>/viewRanking.jsp?country=$1</to>
     </rule>
+    <rule>
+        <note>
+            Redireccion para las galerias de fotos.
+        </note>
+        <from>/([a-z|A-Z]{2})/viewPhotoGalleries.html</from>
+        <to>/viewPhotoGalleries.jsp?country=$1</to>
+    </rule>
+    <rule>
+        <note>
+            Redireccion para una galeria.
+        </note>
+        <from>/([a-z|A-Z]{2})/viewGallery([0-9]*).html</from>
+        <to>/viewGallery.jsp?country=$1&amp;g=$2</to>
+    </rule>
+    <rule>
+        <note>
+            Redireccion para los imagenes.
+        </note>
+        <from>/[a-z|A-Z]{2}/images/(.*)</from>
+        <to>/../images/$1</to>
+    </rule>    
 	<rule>
         <note>
             Redireccion para los videos.
