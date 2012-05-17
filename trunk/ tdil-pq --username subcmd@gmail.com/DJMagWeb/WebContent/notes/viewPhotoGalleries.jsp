@@ -30,10 +30,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 <script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
 
 <style>
-
-div {
-	/*border:dotted 1px #00FF00;*/
-}
+div { /*border:dotted 1px #00FF00;*/ }
 #supercontainer {
 	width:1010px;
 	margin:0 auto;
@@ -105,21 +102,9 @@ div {
 	overflow:auto;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank {
-	width:630px;
+	width:650px;
 	border-bottom:dotted 1px #666;
 	float:left;
-}
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #position {
-	font-size: 15px;
-	line-height: 80px;
-	font-weight: bold;
-	color: #FFFFCC;
-	text-align: center;
-	float: left;
-	width: 34px;
-	height: 80px;
-	background-color:#333333;
-	margin-top:8px;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #photo {
 	width:78px;
@@ -136,26 +121,36 @@ div {
 	font-variant: normal;
 	color: #FFFFFF;
 	float: left;
-	width: 428px;
+	width: 538px;
 	margin-top:8px;
 	margin-left:10px;
 	overflow: hidden;
 }
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title {
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:visited {
 	color:#e25237;
 	font-size:13px;
 	font-weight:bold;
-	width: 420px;
+	width: 520px;
 	float: left;
+	text-decoration:none;
+	overflow:hidden;
 }
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description {
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:hover {
+	text-decoration:underline;
+}
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:visited {
 	color:#CCC;
 	font-size:11px;
 	line-height:16px;
-	font-weight:bold;
-	width: 420px;
+	text-align:justify;
+	font-weight:normal;
+	width: 530px;
 	padding-bottom:13px;
 	float: left;
+	text-decoration:none;
+}
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:hover {
+	text-decoration:underline;
 }
 .vermas, .vermas a, .vermas a:active, .vermas a:visited {
 	color:#e25237;
@@ -204,8 +199,6 @@ div {
 						</li>
 					<% }
 						} %>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-top20.gif" width="74"></a></li>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-shop.gif" width="62"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -217,10 +210,17 @@ div {
 		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %></div>
 		<div id="left">
 			<div id="note">
-				<% for (ImageGallery imageGallery : galleries) { %>
-				<a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a>
-				<%= imageGallery.getDescription()%><br>
-			<% } %>
+				<div id="top100LB">
+					<% for (ImageGallery imageGallery : galleries) { %>
+						<div id="renglonRank">
+							<div id="photo"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"></a></div>
+							<div id="ranked">
+								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a></span>
+								<span class="description"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getDescription()%></a></span>
+							</div>
+						</div>
+					<% } %>
+				</div>
 			</div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>

@@ -26,9 +26,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 <script src="../../js/jquery-1.7.min.js"></script>
 <script src="../../js/lightbox.js"></script>
 <style>
-div {
-	/*border:dotted 1px #00FF00;*/
-}
+div { /*border:dotted 1px #00FF00;*/ }
 #supercontainer {
 	width:1010px;
 	margin:0 auto;
@@ -79,10 +77,11 @@ div {
 	width:690px;
 }
 #fakeLiveboxWindow #left #note {
-	width:660px;
-	padding:13px;
+	width:680px;
+	padding:0px;
 	overflow:hidden;
 }
+/*
 #topvideo {
 	background-color:#000;
 	margin-left:auto;
@@ -140,7 +139,20 @@ div {
 	height:303px;
 	margin-left:auto;
 	margin-right:auto;
+}*/
+#fakeLiveboxWindow #left #note #top100LB {
+	font-family: Arial, Helvetica, sans-serif;
+	width:680px;
+	height:1630px;
+	padding:0;
+	overflow:auto;
 }
+#fakeLiveboxWindow #left #note #top100LB #galleryThmbnail {
+	width:198px;
+	height:120px;
+	margin:12px;
+	float:left;
+}/*
 #fakeLiveboxWindow #left #note #fullText {
 	font-size: 12px;
 	line-height: 18px;
@@ -149,7 +161,7 @@ div {
 	color: #333333;
 	margin-top:20px;
 	padding-right: 20px;
-}
+}*/
 #fakeLiveboxWindow #left #linksBottom {
 	border-top:solid 1px #e5e5e5;
 	height:50px;
@@ -193,8 +205,6 @@ div {
 </style>
 </head>
 <body>
-
-
 <a name="top"></a>
 <div id="supercontainer">
 	<div id="portaHeader">
@@ -219,8 +229,6 @@ div {
 						</li>
 					<% }
 						} %>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-top20.gif" width="74"></a></li>
-					<li><a href="#" style="padding:0; cursor:default;"><img src="../../images/pronto-shop.gif" width="62"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -232,14 +240,16 @@ div {
 		<div id="sectionTitle"><%=publicHomeBean.getVideoSection().getName() %></div>
 		<div id="left">
 			<div id="note">
-				<% for (ImageInGallery gallery : photos ) { %>
-					<div >
-			  		  <a href="../../download.st?id=<%=gallery.getImageId()%>&type=PUBLIC&ext=<%=gallery.getImageext()%>" rel="lightbox[gal]" title="<%=imageGallery.getTitle()%>"><img src="../../download.st?id=<%=gallery.getImageId()%>&type=PUBLIC&ext=<%=gallery.getImageext()%>" height="100" width="100" alt="Plants: image 1 0f 4 thumb" /></a>
-			  		</div>
-				<% } %>
+				<div id="top100LB">
+					<% for (ImageInGallery gallery : photos ) { %>
+						<div id="galleryThmbnail">
+						  <a href="../../download.st?id=<%=gallery.getImageId()%>&type=PUBLIC&ext=<%=gallery.getImageext()%>" rel="lightbox[gal]" title="<%=imageGallery.getTitle()%>"><img src="../../download.st?id=<%=gallery.getImageId()%>&type=PUBLIC&ext=<%=gallery.getImageext()%>" height="120" width="198" alt="Plants: image 1 0f 4 thumb" /></a>
+						</div>
+					<% } %>
+				</div>
 			</div>
 			<div id="linksBottom">
-				<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galerías</a></div>
+				<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
 			</div>
 		</div>
 		<div id="right">
