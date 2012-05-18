@@ -246,7 +246,8 @@ body {
 	font-variant: normal;
 	color: #FFFFFF;
 	float: left;
-	width: 180px;
+	width: 170px;
+	height:25px;
 	overflow: hidden;
 }
 #BlockMain #top100Home #rankedHome:hover {

@@ -119,6 +119,7 @@ div {
 	font-weight: bold;
 	margin-bottom:20px;
 	padding-right: 20px;
+	text-align:justify;
 }
 #fakeLiveboxWindow #left #note #images {
 	border:solid 7px #525252;

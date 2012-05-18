@@ -66,7 +66,7 @@
 				</div>
 				<div class="renglon width860 height60">
 					<div class="label width50">Extra html</div>
-					<div class="label width760 height180"><html:textarea name="NoteForm" property="extraHtml" styleClass="width740 height200" /></div>
+					<div class="label width760 height60"><html:textarea name="NoteForm" property="extraHtml" styleClass="width740 height60" /></div>
 					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.extraHtml.err")%></div>
 				</div>
 				<div class="renglon width860">
