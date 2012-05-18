@@ -136,6 +136,9 @@ div {
 	margin-top:20px;
 	padding-right: 20px;
 }
+#fakeLiveboxWindow #left #note #htmlInsert {
+	padding:13px;
+}
 #fakeLiveboxWindow #left #linksBottom {
 	height:50px;
 	margin-left:13px;
@@ -224,7 +227,7 @@ div {
 				<div id="bajada"><%= noteToShow.getSummary()%></div>
 				<div id="fullText"><%= content.getContent()%></div>
 				<% if (content.getExtraHtml() != null) { %>
-					<div><%= content.getExtraHtml()%></div>
+					<div id="htmlInsert"><%= content.getExtraHtml()%></div>
 				<% } %>
 			</div>
 			<div id="navBar">
