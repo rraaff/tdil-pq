@@ -56,7 +56,7 @@ div { /*border:dotted 1px #00CCFF; */}
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.title.err")%></div>
 			<div class="label width50"></div>
 			<div class="label width80">Descripci&oacute;n</div>
-			<div class="label width420 height50"><html:text name="ImageGalleryForm" property="description" styleClass="width420 height50"/></div>
+			<div class="label width420 height50"><html:textarea name="ImageGalleryForm" property="description" styleClass="width420 height50"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.description.err")%></div>
 		</div>
 		<div id="conteinerScrollable" style="float:left; width:950px; height:380px; overflow:auto; border:#FF0000;">

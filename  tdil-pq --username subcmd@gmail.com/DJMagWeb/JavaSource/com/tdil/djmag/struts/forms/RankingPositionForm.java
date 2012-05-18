@@ -50,6 +50,9 @@ public class RankingPositionForm extends TransactionalValidationForm implements 
 	
 	private List<RankingPositionBean> positions = new ArrayList<RankingPositionBean>();
 
+	private static final String title_key = "RankingPosition.title";
+	private static final String summary_key = "RankingPosition.summary";
+	private static final String content_key = "RankingPosition.content";
 	private static final String imageGallery_photo_key = "RankingPosition.photo";
 	private static final int MAX_PHOTO_SIZE = 1000000;
 
@@ -175,7 +178,9 @@ public class RankingPositionForm extends TransactionalValidationForm implements 
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		//FieldValidation.validateText(this.getDescription(), description_key, 250, validationError);
+		FieldValidation.validateText(this.getTitle(), title_key, 250, validationError);
+		FieldValidation.validateText(this.getSummary(), summary_key, 4000, false, validationError);
+		FieldValidation.validateText(this.getContent(), content_key, ValidationErrors.MEDIUMTEXT_LENGTH, false, validationError);
 	}
 	
 	@Override
