@@ -170,6 +170,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedRanking.do"
    SUBTYPE="confirmed" TARGET="action37"
    TITLE="/toggleDeletedRanking.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link3" PATH="/editRankingPosition.st"
+   SUBTYPE="confirmed" TARGET="page20" TITLE="/editRankingPosition.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/boLogin.jsp"
   SHAPE="32,1521,0,0" TARGET="page1" TITLE="notAuthorized"
@@ -741,11 +744,6 @@
    PATH="/videoAdministration.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#uploadRankingPhoto" NAME="action76"
-  PATH="/uploadRankingPhoto" SHAPE="32,13585,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM ID="#viewRankingPhoto" NAME="action75"
-  PATH="/viewRankingPhoto" SHAPE="32,13585,0,0" TITLE="RankingNoteForm"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToImageGalleryABM" NAME="action77"
   PATH="/goToImageGalleryABM" SHAPE="32,13585,0,0"
   TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -820,6 +818,71 @@
   TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20" PATH="/editRankingPosition.st"
+  SHAPE="448,1633,0,0" SUBTYPE="other" TITLE="editRankingPosition.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveRankingPosition" NAME="action86"
+  PATH="/saveRankingPosition" SHAPE="32,13617,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/rankingPositionAdministration.jsp" TARGET="page21"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/refreshRanking.do" TARGET="action75" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page21" PATH="/rankingPositionAdministration.jsp"
+  SHAPE="272,13634,0,0" SUBTYPE="jsp"
+  TITLE="rankingPositionAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveRankingPosition.do"
+   SUBTYPE="confirmed" TARGET="action86" TITLE="/saveRankingPosition.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editRankingPosition" NAME="action87"
+  PATH="/editRankingPosition" SHAPE="32,13761,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingPositionAdministration.jsp" TARGET="page21"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadRankingPositionPhoto" NAME="action88"
+  PATH="/uploadRankingPositionPhoto" SHAPE="32,14737,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewRankingPositionGalleryPhoto" NAME="action89"
+  PATH="/viewRankingPositionGalleryPhoto" SHAPE="32,14737,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadRankingPositionCover" NAME="action90"
+  PATH="/uploadRankingPositionCover" SHAPE="32,13617,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewRankingPositionCover" NAME="action76"
+  PATH="/viewRankingPositionCover" SHAPE="32,13617,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#refreshRanking" NAME="action75"
+  PATH="/refreshRanking" SHAPE="32,2417,0,0" TITLE="RankingNoteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingAdministration.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteImageInRankingPosition" NAME="action91"
+  PATH="/deleteImageInRankingPosition" SHAPE="32,14737,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingPositionAdministration.jsp" TARGET="page21"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#moveImageInRankingPositionDown" NAME="action92"
+  PATH="/moveImageInRankingPositionDown" SHAPE="32,14737,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingPositionAdministration.jsp" TARGET="page21"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#moveImageInRankingPositionUp" NAME="action93"
+  PATH="/moveImageInRankingPositionUp" SHAPE="32,14737,0,0"
+  TITLE="RankingPositionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rankingPositionAdministration.jsp" TARGET="page21"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

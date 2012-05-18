@@ -19,6 +19,7 @@
   <form-bean name="BannerPositionForm" type="com.tdil.djmag.struts.forms.BannerPositionForm"/>
   <form-bean name="FooterForm" type="com.tdil.djmag.struts.forms.FooterForm"/>
   <form-bean name="ImageGalleryForm" type="com.tdil.djmag.struts.forms.ImageGalleryForm"/>
+  <form-bean name="RankingPositionForm" type="com.tdil.djmag.struts.forms.RankingPositionForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -109,10 +110,6 @@
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/rankingAdministration.jsp"/>
-  </action>
-  <action parameter="Admin" path="/uploadRankingPhoto" type="com.tdil.djmag.struts.action.UploadRankingPhotoAction"/>
-  <action name="RankingNoteForm" parameter="Admin" path="/viewRankingPhoto"
-   scope="session" type="com.tdil.djmag.struts.action.ViewRankingPhotoAction">
   </action>
  
  <action name="NoteForm" parameter="Admin"
@@ -389,7 +386,7 @@
   <action name="ImageGalleryForm" parameter="Admin" path="/viewImageGalleryPhoto"
    scope="session" type="com.tdil.djmag.struts.action.ViewImageGalleryPhotoAction">
   </action>
-    <action name="ImageGalleryForm" parameter="Admin" path="/moveImageInGalleryUp"
+  <action name="ImageGalleryForm" parameter="Admin" path="/moveImageInGalleryUp"
    scope="session" type="com.tdil.djmag.struts.action.MoveImageInGalleryUpAction">
    <forward name="continue" path="/imageGalleryAdministration.jsp"/>
   </action>
@@ -397,7 +394,43 @@
    scope="session" type="com.tdil.djmag.struts.action.MoveImageInGalleryDownAction">
    <forward name="continue" path="/imageGalleryAdministration.jsp"/>
   </action>
+
+  <action name="RankingPositionForm" parameter="Admin" path="/saveRankingPosition"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/refreshRanking.do"/>
+   <forward name="failure" path="/rankingPositionAdministration.jsp"/>
+  </action>
+  <action name="RankingNoteForm" parameter="Admin" path="/refreshRanking"
+   scope="session" type="com.tdil.djmag.struts.action.RefreshRankingAction">
+   <forward name="continue" path="/rankingAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="RankingPositionForm" parameter="Admin" path="/editRankingPosition"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/rankingPositionAdministration.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadRankingPositionPhoto" type="com.tdil.djmag.struts.action.UploadRankingPositionPhotoAction"/>
+  <action parameter="Admin" path="/uploadRankingPositionCover" type="com.tdil.djmag.struts.action.UploadRankingPositionCoverAction"/>
+  
+   <action name="RankingPositionForm" parameter="Admin" path="/viewRankingPositionGalleryPhoto"
+   scope="session" type="com.tdil.djmag.struts.action.ViewRankingPositionGalleryPhotoAction">
+  </action>
+    <action name="RankingPositionForm" parameter="Admin" path="/viewRankingPositionCover"
+   scope="session" type="com.tdil.djmag.struts.action.ViewRankingPositionCoverAction">
+  </action>
+  <action name="RankingPositionForm" parameter="Admin" path="/deleteImageInRankingPosition"
+   scope="session" type="com.tdil.djmag.struts.action.DeleteImageInRankingPositionAction">
+   <forward name="continue" path="/rankingPositionAdministration.jsp"/>
+  </action>
+  <action name="RankingPositionForm" parameter="Admin" path="/moveImageInRankingPositionUp"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageInRankingPositionUpAction">
+   <forward name="continue" path="/rankingPositionAdministration.jsp"/>
+  </action>
+  <action name="RankingPositionForm" parameter="Admin" path="/moveImageInRankingPositionDown"
+   scope="session" type="com.tdil.djmag.struts.action.MoveImageInRankingPositionDownAction">
+   <forward name="continue" path="/rankingPositionAdministration.jsp"/>
+  </action>
  </action-mappings>
+  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>
  <message-resources parameter="com.tdil.djmag.struts.resources.ApplicationResources"/>
 </struts-config>
