@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.djmag.model.Note"%>
 <%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.List"%>
@@ -24,7 +25,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	if (noteToShow == null) {
 		
 	} else {
-		String content = PublicHomeBean.getNoteContent(noteToShow);
+		Note content = PublicHomeBean.getNoteContent(noteToShow);
 %>
 <html>
 <head>
@@ -221,7 +222,10 @@ div {
 				<span class="date"><%=PublicHomeBean.formatDate(noteToShow.getFromDate()) %></span>
 				<h1><%= noteToShow.getTitle()%></h1>
 				<div id="bajada"><%= noteToShow.getSummary()%></div>
-				<div id="fullText"><%= content%></div>
+				<div id="fullText"><%= content.getContent()%></div>
+				<% if (content.getExtraHtml() != null) { %>
+					<div><%= content.getExtraHtml()%></div>
+				<% } %>
 			</div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>

@@ -64,6 +64,11 @@
 					<div class="label width760 height180"><html:textarea name="NoteForm" property="content" styleClass="width740 height200" /></div>
 					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.content.err")%></div>
 				</div>
+				<div class="renglon width860 height60">
+					<div class="label width50">Extra html</div>
+					<div class="label width760 height180"><html:textarea name="NoteForm" property="extraHtml" styleClass="width740 height200" /></div>
+					<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "Note.extraHtml.err")%></div>
+				</div>
 				<div class="renglon width860">
 					<div class="label width100">Publicada desde</div>
 					<div class="label width120"><html:text name="NoteForm" property="fromDate" styleClass="width100"/></div>

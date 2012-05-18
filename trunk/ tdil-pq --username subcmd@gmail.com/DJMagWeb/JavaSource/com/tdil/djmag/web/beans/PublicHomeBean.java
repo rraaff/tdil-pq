@@ -573,18 +573,18 @@ public class PublicHomeBean  {
 		}
 	}
 	
-	public static String getNoteContent(final NoteValueObject noteValueObject) {
+	public static Note getNoteContent(final NoteValueObject noteValueObject) {
 		try {
-			String content = (String)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+			Note content = (Note)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
 					Note note = DAOManager.getNoteDAO().selectNoteByPrimaryKey(noteValueObject.getId());
-					return note.getContent();
+					return note;
 				}
 			});
 			return content;
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
-			return "";
+			return null;
 		}
 	}
 	
