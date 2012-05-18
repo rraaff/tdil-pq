@@ -5,7 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.djmag.model.Video"%>
 <%@page import="java.util.List"%>
-<%@page import="com.tdil.djmag.model.RankingPositions"%>
+<%@page import="com.tdil.djmag.model.deprecated.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>

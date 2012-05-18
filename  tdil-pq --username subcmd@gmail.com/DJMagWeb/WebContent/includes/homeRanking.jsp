@@ -1,4 +1,4 @@
-<%@page import="com.tdil.djmag.model.RankingPosition"%>
+<%@page import="com.tdil.djmag.model.deprecated.RankingPosition"%>
 <% if (publicHomeBean.hasRanking()) { %>
 	<div id="top100Home">
 		<a href="./notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html"><img src="./images/null.gif" width="250" height="90" /></a>

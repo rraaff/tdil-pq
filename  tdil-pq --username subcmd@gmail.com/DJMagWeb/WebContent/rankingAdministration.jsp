@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.RankingPosition"%>
 <%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
 <%@page import="com.tdil.djmag.struts.forms.RankingNoteForm"%>
 <%@page import="com.tdil.djmag.struts.forms.SectionSelectionVO"%>
@@ -59,27 +60,26 @@ $(document).ready(
 					<tr>
 						<td class="headerTablas" width="50">Posici&oacute;n</td>
 						<td class="headerTablas" width="100">Nombre</td>
-						<td class="headerTablas" >Descripci&oacute;n</td>
-						<td class="headerTablas" >Contenido</td>
 						<td class="headerTablas">Foto</td>
 						<td class="headerTablas" width="50">Acciones</td>
 					</tr>
 					<logic:iterate id="selectedPosition" name="RankingNoteForm" property="positions" indexId="iterIndexPositions">  
+						<% RankingPosition pos = (RankingPosition) selectedPosition;%>
 						<tr>
 							<td align="center"><%=iterIndexPositions + 1%></td>
-							<td align="center"><html:text name="selectedPosition" property="position" indexed="true" styleClass="width100"/></td>
-							<td align="center"><html:text name="selectedPosition" property="description" indexed="true" styleClass="width350"/></td>
-							<td align="center"><html:textarea name="selectedPosition" property="content" indexed="true" styleClass="width350"/></td>
+							<td align="center"><bean:write name="selectedPosition" property="title" /></td>
 							<td align="center" width="250">
-								<logic:equal name="selectedPosition" property="hasUploadData" value="true">
-									<img id="ranking_<%=iterIndexPositions%>" src="./viewRankingPhoto.do?pos=<%=iterIndexPositions%>" width="30" height="30" align="absmiddle"> 
-								</logic:equal>
-								<logic:notEqual name="selectedPosition" property="hasUploadData" value="true">
-									<img id="ranking_<%=iterIndexPositions%>" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
-								</logic:notEqual>
-								<input type="file" name="upload_<%=iterIndexPositions%>" id="upload_<%=iterIndexPositions%>"></td>
-							<td align="center"><a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
-							<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Subir"></a></td>
+								<% if (pos.getImageId() != null && !pos.getImageId().equals(0)) { %>
+									<img src="./download.st?id=<%=pos.getImageId()%>&type=PUBLIC&ext=<%=pos.getImageext()%>" width="30" height="30" align="absmiddle"> 
+								<% } else { %>
+									<img src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
+								<% } %>	
+							</td>
+							<td align="center">
+							<html:link action="editRankingPosition.st?" paramName="selectedPosition" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+							<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionUp.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/subir.png" alt="Subir"></a>
+							<a href="javascript:document.RankingNoteForm.action='./moveRankingPositionDown.do?index=<%=iterIndexPositions%>';document.RankingNoteForm.submit();"><img src="boImages/bajar.png" alt="Bajar"></a>
+							</td>
 						</tr>
 					</logic:iterate>
 				</table>

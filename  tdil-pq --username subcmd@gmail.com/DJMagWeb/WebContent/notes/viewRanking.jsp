@@ -2,8 +2,8 @@
 <%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
-<%@page import="com.tdil.djmag.model.RankingPosition"%>
-<%@page import="com.tdil.djmag.model.RankingPositions"%>
+<%@page import="com.tdil.djmag.model.deprecated.RankingPosition"%>
+<%@page import="com.tdil.djmag.model.deprecated.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>

@@ -101,7 +101,10 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="IMAGE_IN_GAL" domainObjectName="ImageInGallery">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="DJMAG" tableName="RANKING_NOTE_TEXT" domainObjectName="RankingNoteText">
+<table schema="DJMAG" tableName="RANKING_POSITION" domainObjectName="RankingPosition">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="DJMAG" tableName="RANKING_POS_IMG" domainObjectName="RankingPositionImage">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 </ibatorContext>
