@@ -217,15 +217,15 @@ div {
 							<div id="position"><%=positionIndex++ %></div>
 							<div id="photo">
 								<% if (position.getImageId() != null && position.getImageId() != 0) { %>
-									<img src="../../download.st?id=<%=position.getImageId()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
+									<a href="./<%=position.getId()%>/rankingPosition.html"><img src="../../download.st?id=<%=position.getImageId()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78"></a>
 								<% } else { %>
 									<img src="../../null.gif" width="78" height="78">
 								<% } %>
 							</div>
 							<div id="ranked">
-								<span class="title"><%=position.getTitle() == null ? "" : position.getTitle()%></span>
-								<span class="description"><%= position.getSummary() == null ? "" : position.getSummary()%></span>
-								<!--span class="vermas"><a href="#">Ver m&aacute;s</a></span-->
+								<span class="title"><a href="./<%=position.getId()%>/rankingPosition.html"><%=position.getTitle() == null ? "" : position.getTitle()%></a></span>
+								<span class="description"><a href="./<%=position.getId()%>/rankingPosition.html"><%= position.getSummary() == null ? "" : position.getSummary()%></a></span>
+								<span class="vermas"><a href="./<%=position.getId()%>/rankingPosition.html"><a href="#">Ver m&aacute;s</a></span>
 							</div>
 						</div>
 					<% } %>
