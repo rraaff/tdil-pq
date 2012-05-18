@@ -16,7 +16,9 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	List<RankingPosition> positions = publicHomeBean.getRankingPositions();
 	if (positions == null || positions.isEmpty()) {
-		
+		String theURL = "../../selectCountry.st?iso_code_2=" + country;
+		theURL = response.encodeRedirectURL(theURL);
+		response.sendRedirect(theURL);
 	} else {
 		
 %>
@@ -231,9 +233,13 @@ div {
 								<% } %>
 							</div>
 							<div id="ranked">
-								<span class="title"><a href="./<%=position.getId()%>/rankingPosition.html"><%=position.getTitle() == null ? "" : position.getTitle()%></a></span>
-								<span class="description"><a href="./<%=position.getId()%>/rankingPosition.html"><%= position.getSummary() == null ? "" : position.getSummary()%></a></span>
-								<span class="vermas"><a href="./<%=position.getId()%>/rankingPosition.html">Ver m&aacute;s</a></span>
+								<span class="title"><% if (position.getTitle() != null) { %><a href="./<%=position.getId()%>/rankingPosition.html"><%=position.getTitle() == null ? "" : position.getTitle()%></a><% } %></span>
+								<span class="description"><% if (position.getTitle() != null) { %><a href="./<%=position.getId()%>/rankingPosition.html"><%= position.getSummary() == null ? "" : position.getSummary()%></a><% } %></span>
+								<span class="vermas">
+									<% if (position.getTitle() != null) { %>
+										<a href="./<%=position.getId()%>/rankingPosition.html">Ver m&aacute;s</a>
+									<% } %>
+									</span>
 							</div>
 						</div>
 					<% } %>
