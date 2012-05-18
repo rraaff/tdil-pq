@@ -58,6 +58,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private String webTitle;
 	private String summary;
 	private String content;
+	private String extraHtml;
 	private String fromDate;
 	private String toDate;
 	private boolean frontCover;
@@ -92,6 +93,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 	private static String webtitle_key = "Note.webtitle";
 	private static String summary_key = "Note.summary";
 	private static String content_key = "Note.content";
+	private static String extraHtml_key = "Note.extraHtml";
 	private static String fromdate_key = "Note.fromdate";
 	private static String todate_key = "Note.todate";
 	private static String agendadate_key = "Note.agendadate";
@@ -113,6 +115,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		this.webTitle = "";
 		this.summary = "";
 		this.content = "";
+		this.extraHtml = "";
 		this.fromDate = "";
 		this.toDate = "";
 		this.frontCover = false;
@@ -221,6 +224,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 			this.webTitle = note.getWebTitle();
 			this.summary = note.getSummary();
 			this.content = note.getContent();
+			this.extraHtml = note.getExtraHtml();
 			this.fromDate = formatDate(note.getFromDate());
 			this.toDate = formatDate(note.getToDate());
 			this.frontCover = note.getFrontcover().equals(1);
@@ -362,6 +366,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		FieldValidation.validateText(this.getWebTitle(), webtitle_key, 250, false, validationError);
 		FieldValidation.validateText(this.getSummary(), summary_key, 4000, false, validationError);
 		FieldValidation.validateText(this.getContent(), content_key, 16000000, false, validationError);
+		FieldValidation.validateText(this.getExtraHtml(), extraHtml, ValidationErrors.TEXT_LENGTH, false, validationError);
 		FieldValidation.validateId(this.getSectionId(), section_key, validationError);
 		Date fromDate = parseDate(this.getFromDate());
 		if (fromDate == null) {
@@ -514,6 +519,7 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 		note.setWebTitle(this.getWebTitle()); // TODO URL escape...
 		note.setSummary(this.getSummary());
 		note.setContent(this.getContent());
+		note.setExtraHtml(this.getExtraHtml());
 		note.setFromDate(parseDate(this.getFromDate()));
 		note.setToDate(parseDate(this.getToDate()));
 		note.setFrontcover(this.isFrontCover() ? 1 : 0);
@@ -907,6 +913,14 @@ public class NoteForm extends TransactionalValidationForm implements ToggleDelet
 
 	public void deleteNewsThumb() {
 		setLastNewsThumbImage(null);
+	}
+
+	public String getExtraHtml() {
+		return extraHtml;
+	}
+
+	public void setExtraHtml(String extraHtml) {
+		this.extraHtml = extraHtml;
 	}
 
 }
