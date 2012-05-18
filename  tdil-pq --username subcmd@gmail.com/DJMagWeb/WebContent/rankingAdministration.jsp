@@ -44,10 +44,10 @@ $(document).ready(
 	<div id="formulariosBase">
 		<h1>Contenido tipo Ranking &quot;TOP 100&quot;</h1>
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
-		<div class="renglon width350">
+		<div class="renglon width400">
 			<div class="label width50"> </div>
 			<div class="label width100">T&iacute;tulo ranking</div>
-			<div class="label width150"><html:text name="RankingNoteForm" property="description" styleClass="width120"/></div>
+			<div class="label width200"><html:text name="RankingNoteForm" property="description" styleClass="width200"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingNote.description.err")%></div>
 		</div>
 		<div id="conteinerScrollable" style="width:950px; height:400px; overflow:auto; border:#FF0000;">
