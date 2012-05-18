@@ -19,6 +19,13 @@
     </rule>
     <rule>
         <note>
+            Redireccion para las posiciones del ranking.
+        </note>
+        <from>/([a-z|A-Z]{2})/([0-9]*)/rankingPosition.html</from>
+        <to>/viewRankingPosition.jsp?country=$1&amp;id=$2</to>
+    </rule>
+    <rule>
+        <note>
             Redireccion para las secciones.
         </note>
         <from>/([a-z|A-Z]{2})/([0-9]*)/(.*).html</from>
