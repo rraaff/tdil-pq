@@ -54,7 +54,7 @@ $(document).ready(
 );
 </script>
 <style>
-div { /*border: dotted 1px #330099;*/ }
+div { /*border: dotted 1px #330099; */}
 </style>
 </head>
 <body>
@@ -81,9 +81,9 @@ div { /*border: dotted 1px #330099;*/ }
 				<div class="label width200"><input type="file" name="upload_cover" id="upload_cover"></div>
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.upload_cover.err")%></div>
 			</div>
-			<div class="renglon width860 height180">
+			<div class="renglon width860 height80">
 				<div class="label width50">Bajada</div>
-				<div class="label width760 height180"><html:textarea name="RankingPositionForm" property="summary" styleClass="width740 height200" /></div>
+				<div class="label width760 height80"><html:textarea name="RankingPositionForm" property="summary" styleClass="width740 height80" /></div>
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.summary.err")%></div>
 			</div>
 			<div class="renglon width860 height180">
@@ -92,7 +92,7 @@ div { /*border: dotted 1px #330099;*/ }
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.content.err")%></div>
 			</div>
 			<h2>Fotos</h2>
-			<div class="renglon width900">
+			<div class="renglon width920">
 				<div class="label width920 comment">Cargue todas las fotos que quiera en la nota del artista. No se mostrar&aacute; en el slider, la foto de avatar que se ve en la lista de artistas. El tama&ntilde;o ideal de las im&aacute;genes de esa galer&iacute;a es de 660 pixels x 400 pixels</div>
 			</div>
 			<div class="width450 height200" style="float:left; overflow:auto;">
@@ -111,11 +111,9 @@ div { /*border: dotted 1px #330099;*/ }
 					</logic:iterate>
 				</table>
 			</div>
-			<div class="renglon">
-				<div class="label width200"><input type="file" name="upload_img" id="upload_img"></div>
+			<div class="width450 height200" style="float:left;">
+				<div class="label width400"><input type="file" name="upload_img" id="upload_img"></div>
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.photo.err")%></div>
-			</div>
-			<div class="renglon width860 height50">
 				<logic:equal name="RankingPositionForm" property="objectId" value="0">
 					<html:submit property="operation">
 						<bean:message key="save" />
