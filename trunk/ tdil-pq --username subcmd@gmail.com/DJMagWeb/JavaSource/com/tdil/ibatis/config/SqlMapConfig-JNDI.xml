@@ -39,5 +39,6 @@
 	<sqlMap resource="com/tdil/djmag/dao/maps/FOOTER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/IMAGE_GALLERY_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/djmag/dao/maps/IMAGE_IN_GAL_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/djmag/dao/maps/RANKING_NOTE_TEXT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/RANKING_POSITION_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/djmag/dao/maps/RANKING_POS_IMG_SqlMap.xml"/>
 </sqlMapConfig>

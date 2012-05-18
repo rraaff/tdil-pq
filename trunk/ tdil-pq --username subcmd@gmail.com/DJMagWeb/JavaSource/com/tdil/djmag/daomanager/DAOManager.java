@@ -18,7 +18,8 @@ import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.NoteImageDAO;
 import com.tdil.djmag.dao.RankingNoteCountryDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
-import com.tdil.djmag.dao.RankingNoteTextDAO;
+import com.tdil.djmag.dao.RankingPositionDAO;
+import com.tdil.djmag.dao.RankingPositionImageDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.dao.SystemPropertyDAO;
 import com.tdil.djmag.dao.SystemUserDAO;
@@ -40,13 +41,13 @@ import com.tdil.djmag.dao.impl.NoteDAOImpl;
 import com.tdil.djmag.dao.impl.NoteImageDAOImpl;
 import com.tdil.djmag.dao.impl.RankingNoteCountryDAOImpl;
 import com.tdil.djmag.dao.impl.RankingNoteDAOImpl;
-import com.tdil.djmag.dao.impl.RankingNoteTextDAOImpl;
+import com.tdil.djmag.dao.impl.RankingPositionDAOImpl;
+import com.tdil.djmag.dao.impl.RankingPositionImageDAOImpl;
 import com.tdil.djmag.dao.impl.SectionDAOImpl;
 import com.tdil.djmag.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.djmag.dao.impl.SystemUserDAOImpl;
 import com.tdil.djmag.dao.impl.TwitterFeedDAOImpl;
 import com.tdil.djmag.dao.impl.VideoDAOImpl;
-import com.tdil.djmag.model.RankingNoteText;
 import com.tdil.ibatis.IBatisManager;
 
 public class DAOManager {
@@ -135,7 +136,11 @@ public class DAOManager {
 		return new ImageInGalleryDAOImpl(IBatisManager.getClient());
 	}
 	
-	public static RankingNoteTextDAO getRankingNoteTextDAO() throws SQLException {
-		return new RankingNoteTextDAOImpl(IBatisManager.getClient());
+	public static RankingPositionDAO getRankingPositionDAO() throws SQLException {
+		return new RankingPositionDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static RankingPositionImageDAO getRankingPositionImageDAO() throws SQLException {
+		return new RankingPositionImageDAOImpl(IBatisManager.getClient());
 	}
 }
