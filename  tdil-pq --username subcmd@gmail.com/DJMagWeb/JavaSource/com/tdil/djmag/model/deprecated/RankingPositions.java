@@ -1,4 +1,4 @@
-package com.tdil.djmag.model;
+package com.tdil.djmag.model.deprecated;
 
 import java.util.ArrayList;
 

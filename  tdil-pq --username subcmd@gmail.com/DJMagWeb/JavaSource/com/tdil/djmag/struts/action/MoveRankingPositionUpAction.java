@@ -7,7 +7,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.djmag.struts.forms.NoteForm;
 import com.tdil.djmag.struts.forms.RankingNoteForm;
 import com.tdil.struts.actions.AbstractAction;
 

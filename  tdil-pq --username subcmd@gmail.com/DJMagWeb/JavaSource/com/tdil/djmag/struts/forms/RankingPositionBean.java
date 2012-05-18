@@ -3,9 +3,8 @@ package com.tdil.djmag.struts.forms;
 import java.io.Serializable;
 
 import com.tdil.djmag.model.BlobData;
-import com.tdil.djmag.model.RankingPosition;
+import com.tdil.djmag.model.deprecated.RankingPosition;
 import com.tdil.struts.forms.UploadData;
-
 public class RankingPositionBean implements Serializable {
 
 	/**
