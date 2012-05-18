@@ -133,7 +133,7 @@ div {
 	font-variant: normal;
 	color: #FFFFFF;
 	float: left;
-	width: 428px;
+	width: 488px;
 	margin-top:8px;
 	margin-left:10px;
 	overflow: hidden;
@@ -142,7 +142,7 @@ div {
 	color:#e25237;
 	font-size:13px;
 	font-weight:bold;
-	width: 420px;
+	width: 480px;
 	float: left;
 	text-decoration:none;
 }
@@ -154,7 +154,8 @@ div {
 	font-size:11px;
 	line-height:16px;
 	font-weight:bold;
-	width: 420px;
+	text-align:justify;
+	width: 480px;
 	padding-bottom:13px;
 	float: left;
 	text-decoration:none;
