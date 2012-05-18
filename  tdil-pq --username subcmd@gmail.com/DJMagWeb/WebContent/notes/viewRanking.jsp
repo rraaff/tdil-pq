@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.djmag.model.RankingPosition"%>
+<%@page import="java.util.List"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.web.servlets.SelectCountryServlet"%>
-<%@page import="com.tdil.djmag.model.deprecated.RankingPosition"%>
-<%@page import="com.tdil.djmag.model.deprecated.RankingPositions"%>
 <%@page import="com.tdil.djmag.model.RankingNote"%>
 <%@page import="com.tdil.djmag.model.NoteImage"%>
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
@@ -14,8 +14,8 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	SelectCountryServlet.initForCountry(request, country, "");
 } 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	RankingPositions positions = publicHomeBean.getRankingPositions();
-	if (positions == null) {
+	List<RankingPosition> positions = publicHomeBean.getRankingPositions();
+	if (positions == null || positions.isEmpty()) {
 		
 	} else {
 		
@@ -212,19 +212,19 @@ div {
 			<div id="note">
 				<div id="top100LB">
 					<% int positionIndex = 1;
-					for (RankingPosition position : positions.getPositions()) { %>
+					for (RankingPosition position : positions) { %>
 						<div id="renglonRank">
 							<div id="position"><%=positionIndex++ %></div>
 							<div id="photo">
-								<% if (position.hasImage()) { %>
-									<img src="../../download.st?id=<%=position.getImageid()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
+								<% if (position.getImageId() != null && position.getImageId() != 0) { %>
+									<img src="../../download.st?id=<%=position.getImageId()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78">
 								<% } else { %>
 									<img src="../../null.gif" width="78" height="78">
 								<% } %>
 							</div>
 							<div id="ranked">
-								<span class="title"><%=position.getPosition()%></span>
-								<span class="description"><%= position.getDescription() %></span>
+								<span class="title"><%=position.getTitle() == null ? "" : position.getTitle()%></span>
+								<span class="description"><%= position.getSummary() == null ? "" : position.getSummary()%></span>
 								<!--span class="vermas"><a href="#">Ver m&aacute;s</a></span-->
 							</div>
 						</div>

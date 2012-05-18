@@ -82,6 +82,11 @@ div { /*border: dotted 1px #330099;*/ }
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.upload_cover.err")%></div>
 			</div>
 			<div class="renglon width860 height180">
+				<div class="label width50">Bajada</div>
+				<div class="label width760 height180"><html:textarea name="RankingPositionForm" property="summary" styleClass="width740 height200" /></div>
+				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.summary.err")%></div>
+			</div>
+			<div class="renglon width860 height180">
 				<div class="label width50">Texto</div>
 				<div class="label width760 height180"><html:textarea name="RankingPositionForm" property="content" styleClass="width740 height200" /></div>
 				<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "RankingPosition.content.err")%></div>
