@@ -55,6 +55,7 @@
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar"/>
 				<exclude name="servlet-api.jar"/>
+				<exclude name="displaytag-1.2.jar"/>
 			</lib>
 		</war>
 	</target>
