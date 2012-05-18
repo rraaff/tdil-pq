@@ -21,6 +21,7 @@ import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
 import com.tdil.djmag.dao.RankingPositionDAO;
+import com.tdil.djmag.dao.RankingPositionImageDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.BannerInsertPoints;
@@ -42,6 +43,8 @@ import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
 import com.tdil.djmag.model.RankingPositionExample;
+import com.tdil.djmag.model.RankingPositionImage;
+import com.tdil.djmag.model.RankingPositionImageExample;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionType;
 import com.tdil.djmag.model.TwitterFeed;
@@ -218,6 +221,49 @@ public class PublicHomeBean  {
 		return null;
 	}
 	
+	public com.tdil.djmag.model.RankingPosition getRankingPosition(final String id) {
+		if (StringUtils.isEmpty(id)) {
+			return null;
+		}
+		if (!StringUtils.isNumeric(id)) {
+			return null;
+		}
+		try {
+			 return (com.tdil.djmag.model.RankingPosition)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					int posId = Integer.parseInt(id);
+					return DAOManager.getRankingPositionDAO().selectRankingPositionByPrimaryKey(posId);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<RankingPositionImage> getRankingPositionImages(final com.tdil.djmag.model.RankingPosition pos) {
+		if (pos == null) {
+			return null;
+		}
+		try {
+			 return (List<RankingPositionImage>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					RankingPositionImageDAO rankingPositionImageDAO = DAOManager.getRankingPositionImageDAO();
+					RankingPositionImageExample rankingPositionImageExample = new RankingPositionImageExample();
+					rankingPositionImageExample.createCriteria().andIdRankingPosEqualTo(pos.getId());
+					rankingPositionImageExample.setOrderByClause("orderNumber");
+					List<RankingPositionImage> images = rankingPositionImageDAO.selectRankingPositionImageByExample(rankingPositionImageExample);
+					return images;
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<com.tdil.djmag.model.RankingPosition> getRankingPositionsWithBlobs() {
 		try {
 			 return (List<com.tdil.djmag.model.RankingPosition>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
