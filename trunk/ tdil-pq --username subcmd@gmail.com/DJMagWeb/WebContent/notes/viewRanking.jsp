@@ -136,14 +136,18 @@ div {
 	margin-left:10px;
 	overflow: hidden;
 }
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title {
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:visited {
 	color:#e25237;
 	font-size:13px;
 	font-weight:bold;
 	width: 420px;
 	float: left;
+	text-decoration:none;
 }
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description {
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:hover {
+	text-decoration:underline;
+}
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:visited {
 	color:#CCC;
 	font-size:11px;
 	line-height:16px;
@@ -151,6 +155,10 @@ div {
 	width: 420px;
 	padding-bottom:13px;
 	float: left;
+	text-decoration:none;
+}
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:hover {
+	text-decoration:underline;
 }
 .vermas, .vermas a, .vermas a:active, .vermas a:visited {
 	color:#e25237;
@@ -225,7 +233,7 @@ div {
 							<div id="ranked">
 								<span class="title"><a href="./<%=position.getId()%>/rankingPosition.html"><%=position.getTitle() == null ? "" : position.getTitle()%></a></span>
 								<span class="description"><a href="./<%=position.getId()%>/rankingPosition.html"><%= position.getSummary() == null ? "" : position.getSummary()%></a></span>
-								<span class="vermas"><a href="./<%=position.getId()%>/rankingPosition.html"><a href="#">Ver m&aacute;s</a></span>
+								<span class="vermas"><a href="./<%=position.getId()%>/rankingPosition.html">Ver m&aacute;s</a></span>
 							</div>
 						</div>
 					<% } %>
