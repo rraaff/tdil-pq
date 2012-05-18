@@ -20,6 +20,7 @@ import com.tdil.djmag.dao.FooterDAO;
 import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
+import com.tdil.djmag.dao.RankingPositionDAO;
 import com.tdil.djmag.dao.SectionDAO;
 import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.BannerInsertPoints;
@@ -40,6 +41,7 @@ import com.tdil.djmag.model.Note;
 import com.tdil.djmag.model.NoteImage;
 import com.tdil.djmag.model.NoteImageExample;
 import com.tdil.djmag.model.RankingNote;
+import com.tdil.djmag.model.RankingPositionExample;
 import com.tdil.djmag.model.Section;
 import com.tdil.djmag.model.SectionType;
 import com.tdil.djmag.model.TwitterFeed;
@@ -74,7 +76,7 @@ public class PublicHomeBean  {
 	private Section imageGallerySection;
 	
 	private RankingNote ranking;
-	private RankingPositions rankingPositions;
+	private List<com.tdil.djmag.model.RankingPosition> rankingPositions;
 	
 	private Magazine magazine;
 	
@@ -214,6 +216,23 @@ public class PublicHomeBean  {
 			}
 		}
 		return null;
+	}
+	
+	public List<com.tdil.djmag.model.RankingPosition> getRankingPositionsWithBlobs() {
+		try {
+			 return (List<com.tdil.djmag.model.RankingPosition>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					RankingPositionDAO rankingPositionDAO = DAOManager.getRankingPositionDAO();
+					RankingPositionExample example = new RankingPositionExample();
+					example.createCriteria().andIdRankingNoteEqualTo(PublicHomeBean.this.getRanking().getId());
+					example.setOrderByClause("orderNumber");
+					return rankingPositionDAO.selectRankingPositionByExampleWithBLOBs(example);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<com.tdil.djmag.model.RankingPosition>();
+		}
 	}
 	
 	public String getExternalLink(String date, String webTitle) {
@@ -613,10 +632,14 @@ public class PublicHomeBean  {
 					
 					// cargo el ranking
 					RankingNoteDAO rankingNoteDAO = DAOManager.getRankingNoteDAO();
+					RankingPositionDAO rankingPositionDAO = DAOManager.getRankingPositionDAO();
 					List<RankingNote> rankingForCountry = rankingNoteDAO.selectActiveRankingForCountry(country);
 					if (!rankingForCountry.isEmpty()) {
 						setRanking(rankingForCountry.get(0));
-						setRankingPositions((RankingPositions)XMLUtils.fromXML(getRanking().getPositions()));
+						RankingPositionExample example = new RankingPositionExample();
+						example.createCriteria().andIdRankingNoteEqualTo(rankingForCountry.get(0).getId());
+						example.setOrderByClause("orderNumber");
+						setRankingPositions(rankingPositionDAO.selectRankingPositionByExampleWithoutBLOBs(example));
 					} else {
 						setRanking(null);
 						setRankingPositions(null);
@@ -713,8 +736,8 @@ public class PublicHomeBean  {
 		}
 	}
 	
-	public List<RankingPosition> getReducedRanking() {
-		return this.getRankingPositions().getPositions().subList(0, REDUCED_RANKING_SIZE);
+	public List<com.tdil.djmag.model.RankingPosition> getReducedRanking() {
+		return this.getRankingPositions().subList(0, REDUCED_RANKING_SIZE);
 	}
 	
 	public List<NoteValueObject> getReducedAgenda() {
@@ -828,13 +851,6 @@ public class PublicHomeBean  {
 		this.ranking = ranking;
 	}
 
-	public RankingPositions getRankingPositions() {
-		return rankingPositions;
-	}
-
-	public void setRankingPositions(RankingPositions rankingPositions) {
-		this.rankingPositions = rankingPositions;
-	}
 
 	public List<NoteValueObject> getFrontCoverNotes() {
 		return frontCoverNotes;
@@ -1115,5 +1131,13 @@ public class PublicHomeBean  {
 
 	public void setImageGallerySection(Section imageGallerySection) {
 		this.imageGallerySection = imageGallerySection;
+	}
+
+	public List<com.tdil.djmag.model.RankingPosition> getRankingPositions() {
+		return rankingPositions;
+	}
+
+	public void setRankingPositions(List<com.tdil.djmag.model.RankingPosition> rankingPositions) {
+		this.rankingPositions = rankingPositions;
 	}
 }
