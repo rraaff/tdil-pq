@@ -1,3 +1,8 @@
+<%@page import="com.tdil.milka.web.SearchPage"%>
+<%@page import="com.tdil.milka.model.WallWritting"%>
+<%@page import="java.util.List"%>
+<%@page import="com.tdil.web.PaginationUtils"%>
+<%@page import="com.tdil.milka.web.PapapediaUtils"%>
 <%@page import="com.tdil.milka.model.ClickCounter"%>
 <%@page import="com.tdil.milka.web.MeltButton"%>
 <%@ page info="index"%>
@@ -173,7 +178,14 @@ input[type="button"], input[type="submit"] {
 </head>
 
 <body>
-
+<%
+int totalItems = PapapediaUtils.getPapapediaCount();
+int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
+List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, PapapediaUtils.PAGE_SIZE, PapapediaUtils.PAGE_SIDE);
+int first = PaginationUtils.first(list);
+int last = PaginationUtils.last(list);
+SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
+%>
 <div id="content">
 	<div id="header"></div>
 	<div id="cuerpoCentral">
@@ -189,18 +201,21 @@ input[type="button"], input[type="submit"] {
 			</div>
 		</div>
 		<div class="line"></div>
-		<div id="counter">358 Comentarios</div>
-		<div class="texto">Pap&aacute; es un arquero que de vez en cuando finge no atajar mis tiros al arco.</div>
-		<div class="texto">Pap&aacute; es guitarra vino y canci&oacute;n</div>
-		<div class="texto">Pap&aacute; es un &aacute;rbol en el que me puedo apoyar y descansar.</div>
-		<div class="texto">Pap&aacute; es un lindo d&iacute;a en la playa (Mar del Plata, obvio)</div>
-		<div class="texto">Pap&aacute; es (durante las comidas): apag&aacute; la radio, no remes, los cubiertos, trag&aacute; y despu&eacute;s habl&aacute;.</div>
-		<div class="texto">Pap&aacute; es un &aacute;rbol en el que me puedo apoyar y descansar.</div>
-		<div class="texto">Pap&aacute; es un lindo d&iacute;a en la playa (Mar del Plata, obvio)</div>
-		<div class="texto">Pap&aacute; es (durante las comidas): apag&aacute; la radio, no remes, los cubiertos, trag&aacute; y despu&eacute;s habl&aacute;.</div>
+		<div id="counter"><%=totalItems%> Comentarios</div>
+		<% for (WallWritting ww : papapediaPage.getPage()) { %>
+			<div class="texto"><%=ww.getOriginaltext()%></div>
+		<% } %>
 		<div id="paginado">
-			<div id="previuos"><a href="#">Ver los anteriores</a></div>
-			<div id="next"><a href="#">Ver m&aacute;s comentarios</a></div>
+			<div id="previuos">
+				<% if (last != pageNumber) { %>
+					<a href="papapedia.jsp?pn=<%=pageNumber + 1%>">Ver los anteriores</a>
+				<% } %>
+			</div>
+			<div id="next">
+				<% if (first != pageNumber) { %>
+					<a href="papapedia.jsp?pn=<%=first%>">Ver m&aacute;s comentarios</a>
+				<% } %>
+			</div>
 		</div>
 	</div>
 </div>
