@@ -76,6 +76,7 @@ $num_rows = mysql_num_rows($result);
 $hascontactdata = 0;
 $alreadyParticipated = 0;
 $isTodayWinner = 0;
+$alreadyWinner = 0;
 if ($num_rows == 0) {
 	$SQL = "INSERT INTO FBUSER (fbid,fbname, fbusername, fbgender,hascontactdata) VALUES($fbid, $fbname,$fbusername,$fbgender,0)"; // 3 is fb invitation
 	$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
@@ -99,6 +100,14 @@ if ($num_rows > 0) {
 		$isTodayWinner = 1;
 	}
 } 
+
+// me fijo si ya gano
+$SQL = "SELECT * FROM PARTICIPATION WHERE fbuserid = $userid AND EXISTS (select id from DAILY_PRIZE WHERE participationId IN (select id FROM PARTICIPATION where fbuserID =  $userid))";
+$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+$num_rows = mysql_num_rows($result);
+if ($num_rows > 0) {
+	$alreadyWinner = 1;
+}
 
 // Fijar todas las opciones, ya participaste hoy, hoy no esta activa, hoy ya hay un ganador
 // me fijo si la promo del dia esta activa
@@ -239,55 +248,60 @@ input[type="button"], input[type="submit"] {
 	<?php if ($alreadyParticipated == 1) { ?>
 		<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
 	<?php } else { 
-		if ($promoToday == 1) { 
-			if ($allPrizesGiven == 1) { ?>
-				<div id="content"><a href="winners.php"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></a></div>
+		if ($alreadyWinner) { ?>
+			<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
+		<?php
+		} else {
+			if ($promoToday == 1) { 
+				if ($allPrizesGiven == 1) { ?>
+					<div id="content"><a href="winners.php"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></a></div>
+				<?php } else { ?>
+					<div id="content">
+						<script language="javascript">
+							if (AC_FL_RunContent == 0) {
+								alert("This page requires AC_RunActiveContent.js.");
+							} else {
+								AC_FL_RunContent(
+									'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+									'width', '790',
+									'height', '700',
+									'src', '../swf/homeApp',
+									'quality', 'Best',
+									'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+									'align', 'middle',
+									'play', 'true',
+									'loop', 'true',
+									'scale', 'showall',
+									'wmode', 'window',
+									'devicefont', 'false',
+									'id', 'homeApp',
+									'bgcolor', '#ffffff',
+									'name', 'homeApp',
+									'menu', 'true',
+									'allowFullScreen', 'false',
+									'allowScriptAccess','always',
+									'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
+									'movie', '../swf/homeApp',
+									'salign', ''
+									); //end AC code
+							}
+						</script>
+						<noscript>
+							<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
+							<param name="allowScriptAccess" value="Always" />
+							<param name="allowFullScreen" value="false" />
+							<param name="FlashVars" value="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
+							<param name="movie" value="../swf/homeApp.swf" />
+							<param name="quality" value="Best" />
+							<param name="bgcolor" value="#ffffff" />
+							<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							</object>
+						</noscript>
+					</div>
+				<?php } ?>
 			<?php } else { ?>
-				<div id="content">
-					<script language="javascript">
-						if (AC_FL_RunContent == 0) {
-							alert("This page requires AC_RunActiveContent.js.");
-						} else {
-							AC_FL_RunContent(
-								'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
-								'width', '790',
-								'height', '700',
-								'src', '../swf/homeApp',
-								'quality', 'Best',
-								'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
-								'align', 'middle',
-								'play', 'true',
-								'loop', 'true',
-								'scale', 'showall',
-								'wmode', 'window',
-								'devicefont', 'false',
-								'id', 'homeApp',
-								'bgcolor', '#ffffff',
-								'name', 'homeApp',
-								'menu', 'true',
-								'allowFullScreen', 'false',
-								'allowScriptAccess','always',
-								'FlashVars','urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>',
-								'movie', '../swf/homeApp',
-								'salign', ''
-								); //end AC code
-						}
-					</script>
-					<noscript>
-						<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="790" height="700" id="homeApp" align="middle">
-						<param name="allowScriptAccess" value="Always" />
-						<param name="allowFullScreen" value="false" />
-						<param name="FlashVars" value="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>"/>
-						<param name="movie" value="../swf/homeApp.swf" />
-						<param name="quality" value="Best" />
-						<param name="bgcolor" value="#ffffff" />
-						<embed src="../swf/homeApp.swf" FlashVars="urlToShare=<?php echo $appurlforshare;?>&nameApp=<?php echo APP_NAME_TO_SHARE;?>" quality="Best" bgcolor="#ffffff" width="790" height="700" name="homeApp" align="middle" allowScriptAccess="Always" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-						</object>
-					</noscript>
-				</div>
+					<div id="content"><a href="winners.php"><img src="../images/noHayHoy.jpg" width="790" height="700" border="0"></a></div>
 			<?php } ?>
-		<?php } else { ?>
-				<div id="content"><a href="winners.php"><img src="../images/noHayHoy.jpg" width="790" height="700" border="0"></a></div>
 		<?php } ?>
 	<?php } ?>
 <?php } ?>

@@ -32,7 +32,10 @@
 	} else {
 		$dbuser = mysql_fetch_array($result);
 		$userid = $dbuser['id'];
-		$SQL = "SELECT * FROM PARTICIPATION WHERE fbuserid = $userid AND creationDate >= CURDATE()";
+		$SQL = "SELECT * FROM PARTICIPATION WHERE fbuserid = $userid AND (
+					(creationDate >= CURDATE()) OR 
+					EXISTS (select id from DAILY_PRIZE WHERE participationId IN (select id FROM PARTICIPATION where fbuserID =  $userid))
+				)";
 		$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 		$num_rows = mysql_num_rows($result);
 		if ($num_rows > 0) {
