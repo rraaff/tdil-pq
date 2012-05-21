@@ -15,6 +15,7 @@ mysql_select_db(DB_NAME,$connection);
 $SQL = "SELECT prizeDate, fbname
 FROM DAILY_PRIZE db, FBUSER fb, PARTICIPATION pa
 WHERE db.participationID = pa.id
+AND db.approved = 1
 AND pa.fbuserID = fb.id
 order by prizeDate desc";
 
