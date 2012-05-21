@@ -1,4 +1,4 @@
-<%@page import="com.tdil.milka.web.SearchPage"%>
+<%@page import="com.tdil.web.SearchPage"%>
 <%@page import="com.tdil.milka.model.WallWritting"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.web.PaginationUtils"%>

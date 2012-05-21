@@ -21,7 +21,7 @@ public class SearchPage<T> {
 		} else {
 			int limit = PaginationUtils.currentPageLimit(pageNumber, pageSize);
 			int size = result.size();
-			page = result.subList(pageNumber * size, Math.min(limit - 1, size));
+			page = result.subList(pageNumber * pageSize, Math.min(limit - 1, size));
 			hasNext = limit == size;
 		}
 	}
