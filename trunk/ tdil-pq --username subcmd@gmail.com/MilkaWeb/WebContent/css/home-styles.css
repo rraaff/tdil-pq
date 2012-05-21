@@ -473,19 +473,13 @@ a {color:#535353; text-decoration:none}
 	margin:0;
 	padding:3px 3px;
 }
-
-
-
 /* MENU LATERAL*/
-
 #menu-productos{
 	width:105px;
 	margin:5px 10px 0 0;
 	font-size:18px;
 	float:left;
-	
 }
-
 #menu-productos ul{
 	display:block;
 	margin:0 0 0 45px;
@@ -493,30 +487,37 @@ a {color:#535353; text-decoration:none}
 	width:105px;
 	list-style:none;
 }
-
-
-#menu-productos ul li a{
+#menu-productos ul li a {
 	color:#593ba1;
 	padding:20px 5px 5px 5px;
 	width:95px;
 	height:60px;
-	float:left;	
+	float:left;
 	font-family: 'Sue Ellen Francisco', cursive;
 	text-align:center;
 	font-size:14px;
 	line-height:16px;
 	text-transform:uppercase;
 	background:url(../images/base-boton-interna.jpg) no-repeat 0 0;
-	
 }
-
-#menu-productos ul li a:hover{
+#menu-productos ul li .selectedLi {
+	color:#FFF;
+	padding:20px 5px 5px 5px;
+	width:95px;
+	height:60px;
+	float:left;
+	font-family: 'Sue Ellen Francisco', cursive;
+	text-align:center;
+	font-size:14px;
+	line-height:16px;
+	text-transform:uppercase;
+	background:url(../images/base-boton-interna.jpg) no-repeat 0 0;
+	background-position: 0 -86px;
+}
+#menu-productos ul li a:hover {
 	color:#FFF;
 	background-position: 0 -86px;
 }
-
-
-
 /* END submenu*/
 
 
@@ -651,18 +652,26 @@ a {color:#535353; text-decoration:none}
 	margin:15px 0 0 15px;
 }
 
-
-
-
 /* DIV container slider example */
-#gallery_container2 {  width:290px ; height:176px ; margin:10px auto 5px auto; background:#FFF url(../images/base-galeria-productos.jpg) repeat-x 0 0 ; padding:0px; display:block; position:relative; }
+#gallery_container2 {
+	width:290px;
+	height:176px;
+	background:#FFF url(../images/base-galeria-productos.jpg) repeat-x 0 0;
+	padding:0px;
+	display:block;
+	position:relative;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+}
 
 /* create custom forward-backward buttons for this container */
 #gallery_container2 .addfwd { display:block; position:absolute; cursor:pointer; width:25px; height:50px; top:128px; right:0px; background:url(../images/gallery_fwd2.jpg) no-repeat center;  }
 #gallery_container2 .addbkwd { display:block; position:absolute; cursor:pointer; width:25px; height:50px; top:128px; left:0px; background:url(../images/gallery_back2.jpg) no-repeat center;  }
 
 /* the width is set to show the number of thumbnails that will be visible */
-#thumb_container2{ position:relative ; overflow:hidden ; width:442px ; height:176px ; margin:0px auto 0px; }
+#thumb_container2{ position:relative ; overflow:hidden ; width:290px ; height:176px ; margin:0px auto 0px; }
 /* the thumbnails container; set a width on it so everything will be fine */
 #thumbs2 { display:block; position:relative; width:6000px; }
 
@@ -683,12 +692,6 @@ a {color:#535353; text-decoration:none}
 #banners a img { border:none; }
 
 
-
-
-
-
-
-
 #galeria_productos{
 	background: url(../images/sombra-galeria-productos.png) no-repeat 0 0;
 	width:496px;
@@ -698,36 +701,6 @@ a {color:#535353; text-decoration:none}
 	margin:0 0 0 35px;
 }
 
-#galeria_productos #galeria_parte_1 {
-	background:url(../images/productos-bombones.jpg) no-repeat 0 0;	
-	width:488px;
-	height:423px;
-	margin:5px 0 0 5px;
-}
-#galeria_productos #galeria_parte_2 {
-	background:url(../images/productos-bombones.jpg) no-repeat 0 0;	
-	width:488px;
-	height:423px;
-	margin:5px 0 0 5px;
-}
-#galeria_productos #galeria_parte_3 {
-	background:url(../images/productos-bombones.jpg) no-repeat 0 0;	
-	width:488px;
-	height:423px;
-	margin:5px 0 0 5px;
-}
-#galeria_productos #galeria_parte_4 {
-	background:url(../images/productos-bombones.jpg) no-repeat 0 0;	
-	width:488px;
-	height:423px;
-	margin:5px 0 0 5px;
-}
-#galeria_productos #galeria_parte_5 {
-	background:url(../images/productos-bombones.jpg) no-repeat 0 0;	
-	width:488px;
-	height:423px;
-	margin:5px 0 0 5px;
-}
 
 
 
