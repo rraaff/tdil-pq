@@ -51,7 +51,7 @@ public class WallWrittingForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-		FieldValidation.validateText(this.getText(), text_key, 250, error);
+		FieldValidation.validateText(this.getText(), text_key, 4000, error);
 	}
 	
 	@Override

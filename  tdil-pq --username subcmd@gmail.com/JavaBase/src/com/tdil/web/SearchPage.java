@@ -23,6 +23,7 @@ public class SearchPage<T> {
 			int size = result.size();
 			page = result.subList(pageNumber * pageSize, Math.min(limit - 1, size));
 			hasNext = limit == size;
+			
 		}
 	}
 

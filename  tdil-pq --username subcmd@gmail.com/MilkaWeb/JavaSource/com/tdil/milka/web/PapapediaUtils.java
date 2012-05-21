@@ -38,13 +38,15 @@ public class PapapediaUtils {
 
 		public Object executeInTransaction() throws SQLException {
 			int limit = PaginationUtils.currentPageLimit(pageNumber, PAGE_SIZE);
-			List<WallWritting> result = DAOManager.getWallWrittingDAO().selectApprovedPapapedia(limit);
+			int start = pageNumber * PAGE_SIZE;
+			// List<WallWritting> result = DAOManager.getWallWrittingDAO().selectApprovedPapapedia(limit);
+			List<WallWritting> result = DAOManager.getWallWrittingDAO().selectApprovedPapapedia(start, PAGE_SIZE + 1);
 			int size = result.size();
 			if (size == 0) {
 				return new SearchPage<WallWritting>(new ArrayList<WallWritting>(), false);
 			} else {
-				return new SearchPage<WallWritting>(result, pageNumber, PAGE_SIZE);
-				//return new SearchPage<WallWritting>(result.subList(pageNumber * PAGE_SIZE, Math.min(limit - 1, size)), limit == size);
+				return new SearchPage<WallWritting>(result, 0, PAGE_SIZE);
+				//return new SearchPage<WallWritting>(result, pageNumber, PAGE_SIZE);
 			}
 		}
 	}

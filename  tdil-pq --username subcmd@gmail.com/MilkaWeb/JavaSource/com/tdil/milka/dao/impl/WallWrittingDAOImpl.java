@@ -164,6 +164,13 @@ public class WallWrittingDAOImpl implements WallWrittingDAO {
 	}
 	
 	// TODO OOOOOOOOOOOOOOOOOo
+	public List<WallWritting> selectApprovedPapapedia(int start, int limit) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("start", start);
+		params.put("limit", limit);
+		List<WallWritting> list = sqlMapClient.queryForList("WALL_WRITTING.selectApprovedPapapediaPage1", params);
+		return list;
+	}
 	public List<WallWritting> selectApprovedPapapedia(int limit) throws SQLException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("limit", limit);
