@@ -90,6 +90,7 @@ $(document).ready(
 				<td># bombon</td>
 				<td>Estado</td>
 				<td>Ganador</td>
+				<td>Aprobado</td>
 				<td>Borrar</td>
 			</tr>	
 			<?php
@@ -111,6 +112,17 @@ $(document).ready(
 						echo '-';
 					}
 				?></td>
+				<td><?php 
+					if (is_null($iw['participationID'])) {
+						echo '-';
+					} else {
+						if ($iw['approved'] == 0) { ?>
+							No <a href="doApproveDailyPrize.php?id=<?php echo $iw['id'] ?>">Aprobar</a>
+						<?php } else { ?>
+							Si
+						<?php }	
+						} ?>
+				</td>
 				<td><?php 
 					if (is_null($iw['participationID'])) {
 						if ($iw['state'] == 'Pendiente') {
