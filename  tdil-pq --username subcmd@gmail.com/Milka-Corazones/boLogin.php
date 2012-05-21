@@ -49,8 +49,8 @@
 	<div id="loginBase">
 		<h1 style="margin-bottom:0;">Administraci&oacute;n de la FB App &iquest;D&oacute;nde est&aacute;s bomb&oacute;n?</h1>
 		<FORM NAME="form1" METHOD="POST" ACTION="boLogin.php">
-			<div class="renglon width20">
-				<div class="label width20"><span class="errorText"><?PHP print $errorMessage;?></span></div>
+			<div class="renglon width230">
+				<div class="label width230" style="text-align:center;"><span class="errorText"><?PHP print $errorMessage;?></span></div>
 			</div>
 			<div class="renglon width230">
 				<div class="label width80">Usuario</div>

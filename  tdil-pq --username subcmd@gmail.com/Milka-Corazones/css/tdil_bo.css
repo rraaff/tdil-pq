@@ -156,6 +156,10 @@ a:hover {
 	text-align:left;
 	line-height: normal;
 }
+.errorText{
+	color:#FF0000;
+	text-align:center;
+}
 /**/
 table {
 	width:100%;
