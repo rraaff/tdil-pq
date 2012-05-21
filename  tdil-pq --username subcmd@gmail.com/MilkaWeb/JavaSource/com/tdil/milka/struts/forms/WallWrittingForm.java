@@ -18,6 +18,7 @@ import com.tdil.milka.model.WallWritting;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.validations.FieldValidation;
 
 public class WallWrittingForm extends TransactionalValidationForm {
 
@@ -28,6 +29,8 @@ public class WallWrittingForm extends TransactionalValidationForm {
 	
 	private String walltype;
 	private String text;
+	
+	private static final String text_key = "WallWrittingForm.text";
 	
 	@Override
 	public void reset() throws SQLException {
@@ -48,11 +51,12 @@ public class WallWrittingForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-
+		FieldValidation.validateText(this.getText(), text_key, 250, error);
 	}
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
+		// todo validar que no este entre los ultimos posts???
 	}
 
 	@Override
@@ -60,12 +64,12 @@ public class WallWrittingForm extends TransactionalValidationForm {
 		WallExample wallExample = new WallExample();
 		wallExample.createCriteria().andDescriptionEqualTo(walltype);
 		Wall wall = DAOManager.getWallDAO().selectWallByExample(wallExample).get(0);
-		
 		WallWrittingDAO wallWrittingDAO = DAOManager.getWallWrittingDAO();
 		WallWritting wallWritting = new WallWritting();
 		wallWritting.setIdWall(wall.getId());
 		if (WallFilter.approves(this.getText())) {
 			wallWritting.setApproved(1);
+			wallWritting.setPublishdate(new Date());
 		} else {
 			wallWritting.setApproved(0);
 		}
@@ -75,7 +79,6 @@ public class WallWrittingForm extends TransactionalValidationForm {
 		//postIt.setIdClickCounter(clickCounterId);
 		wallWrittingDAO.insertWallWritting(wallWritting);
 	}	
-
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(WallWrittingForm.class);

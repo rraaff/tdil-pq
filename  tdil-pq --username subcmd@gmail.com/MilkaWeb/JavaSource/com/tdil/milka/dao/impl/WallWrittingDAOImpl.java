@@ -5,7 +5,9 @@ import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.model.WallWritting;
 import com.tdil.milka.model.WallWrittingExample;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WallWrittingDAOImpl implements WallWrittingDAO {
 
@@ -154,5 +156,18 @@ public class WallWrittingDAOImpl implements WallWrittingDAO {
 	
 	public List<WallWritting> selectPapapediaToReview() throws SQLException {
 		return sqlMapClient.queryForList("WALL_WRITTING.selectPapapediaToReview");
+	}
+	
+	public Integer countApprovedPapapedia() throws SQLException {
+		Integer count = (Integer) sqlMapClient.queryForObject("WALL_WRITTING.countApprovedPapapedia");
+		return count;
+	}
+	
+	// TODO OOOOOOOOOOOOOOOOOo
+	public List<WallWritting> selectApprovedPapapedia(int limit) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("limit", limit);
+		List<WallWritting> list = sqlMapClient.queryForList("WALL_WRITTING.selectApprovedPapapediaPage", params);
+		return list;
 	}
 }

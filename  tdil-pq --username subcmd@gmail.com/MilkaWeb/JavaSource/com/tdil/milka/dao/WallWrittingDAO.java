@@ -76,4 +76,8 @@ public interface WallWrittingDAO {
 	List<WallWritting> selectPapapediaToApprove() throws SQLException;
 
 	List<WallWritting> selectPapapediaToReview() throws SQLException;
+
+	Integer countApprovedPapapedia() throws SQLException;
+
+	List<WallWritting> selectApprovedPapapedia(int limit) throws SQLException;
 }

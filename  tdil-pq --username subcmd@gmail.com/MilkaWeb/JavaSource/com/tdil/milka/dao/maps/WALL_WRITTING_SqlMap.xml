@@ -328,4 +328,20 @@
     order by ww.id desc
   </select>
 
+	<select id="countApprovedPapapedia" resultClass="java.lang.Integer">
+    select 
+    count(*)
+    from WALL_WRITTING ww
+    where ww.approved = 1
+  </select>
+  
+  <select id="selectApprovedPapapediaPage" resultMap="BaseResultMap" parameterClass="java.util.Map">
+    select 
+    <include refid="WALL_WRITTING.Base_Column_List" />
+    from WALL_WRITTING ww
+    where ww.approved = 1
+    order by ww.publishDate desc
+    LIMIT #limit:INTEGER#
+  </select>
+
 </sqlMap>

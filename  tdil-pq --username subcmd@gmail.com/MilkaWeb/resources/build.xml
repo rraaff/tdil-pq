@@ -44,6 +44,7 @@
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar"/>
 				<exclude name="servlet-api.jar"/>
+				<exclude name="displaytag-1.2.jar"/>
 			</lib>
 		</war>
 	</target>
@@ -55,7 +56,7 @@
     	<copy todir="MILKA.tmp" file="Instrucciones.txt"></copy>
     	<copy todir="MILKA.tmp" file="database.sql"></copy>
     	<copy todir="MILKA.tmp" file="ddl.sql"></copy>
-		<copy todir="MILKA.tmp" file="DJMAG_WEB.xml"></copy>
+		<copy todir="MILKA.tmp" file="MILKA_WEB.xml"></copy>
 	</target>
 	
 </project>
