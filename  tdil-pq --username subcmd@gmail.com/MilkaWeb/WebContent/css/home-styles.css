@@ -653,25 +653,14 @@ a {color:#535353; text-decoration:none}
 }
 
 /* DIV container slider example */
-#gallery_container2 {
-	width:290px;
-	height:176px;
-	background:#FFF url(../images/base-galeria-productos.jpg) repeat-x 0 0;
-	padding:0px;
-	display:block;
-	position:relative;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-}
+#gallery_container2 {  width:290px ; height:176px ; margin:10px auto 5px auto; background:#FFF url(../images/base-galeria-productos.jpg) repeat-x 0 0 ; padding:0px; display:block; position:relative; }
 
 /* create custom forward-backward buttons for this container */
 #gallery_container2 .addfwd { display:block; position:absolute; cursor:pointer; width:25px; height:50px; top:128px; right:0px; background:url(../images/gallery_fwd2.jpg) no-repeat center;  }
 #gallery_container2 .addbkwd { display:block; position:absolute; cursor:pointer; width:25px; height:50px; top:128px; left:0px; background:url(../images/gallery_back2.jpg) no-repeat center;  }
 
 /* the width is set to show the number of thumbnails that will be visible */
-#thumb_container2{ position:relative ; overflow:hidden ; width:290px ; height:176px ; margin:0px auto 0px; }
+#thumb_container2{ position:relative ; overflow:hidden; width:442px; height:176px ; margin:0px auto 0px; }
 /* the thumbnails container; set a width on it so everything will be fine */
 #thumbs2 { display:block; position:relative; width:6000px; }
 
