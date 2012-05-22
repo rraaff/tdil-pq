@@ -51,8 +51,6 @@ import com.tdil.djmag.model.TwitterFeed;
 import com.tdil.djmag.model.TwitterFeedExample;
 import com.tdil.djmag.model.Video;
 import com.tdil.djmag.model.VideoExample;
-import com.tdil.djmag.model.deprecated.RankingPosition;
-import com.tdil.djmag.model.deprecated.RankingPositions;
 import com.tdil.djmag.model.valueobjects.BannerValueObject;
 import com.tdil.djmag.model.valueobjects.NoteValueObject;
 import com.tdil.ibatis.TransactionProvider;
@@ -61,7 +59,6 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
 import com.tdil.utils.DateUtils;
-import com.tdil.utils.XMLUtils;
 
 
 public class PublicHomeBean  {
