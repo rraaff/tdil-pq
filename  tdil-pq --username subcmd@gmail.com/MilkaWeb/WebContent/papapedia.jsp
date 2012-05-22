@@ -15,7 +15,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -38,6 +37,7 @@ body {
 	background-position: center top;
 	width:950px;
 	height:248px;
+	margin:0 auto;
 }
 #content h1 {
 	font-family: Georgia, "Times New Roman", Times, serif;
