@@ -58,6 +58,17 @@ Milka Photo<br>
 			Upload
 		</html:submit>
 	</html:form>
+
+Email ending<br>
+<html:form method="POST" action="/uploadEmailEnding" enctype="multipart/form-data">
+		NOmbre:<html:text name="EmailEndingForm" property="authorBean.name" styleClass="width180"/><br>
+		email:<html:text name="EmailEndingForm" property="authorBean.email" styleClass="width180"/><br>
+		Politicas:<html:checkbox name="EmailEndingForm" property="authorBean.acceptPolitics" styleClass="width180"/><br>
+		<html:file name="EmailEndingForm" property="photoFormFile" />
+		<html:submit property="operation">
+			Upload
+		</html:submit>
+	</html:form>
 	
 Post-It<br>
 <html:form method="POST" action="/addPostIt">

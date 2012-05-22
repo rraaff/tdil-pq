@@ -17,7 +17,9 @@
    name="PapapediaForm" type="com.tdil.milka.struts.forms.WallWrittingForm"/>
   <form-bean id="PapapediaAdministrationForm"
    name="PapapediaAdministrationForm" type="com.tdil.milka.struts.forms.PapapediaAdministrationForm"/>
-  
+  <form-bean id="EmailEndingForm" name="EmailEndingForm" type="com.tdil.milka.struts.forms.EmailEndingForm"/>
+  <form-bean id="EmailEndingsAdministrationForm"
+   name="EmailEndingsAdministrationForm" type="com.tdil.milka.struts.forms.EmailEndingsAdministrationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -132,6 +134,27 @@
    <forward name="continue" path="/papapediaPending.jsp"/>
   </action>
   
+  <action name="EmailEndingsAdministrationForm" parameter="Admin"
+   path="/goToEmailEndingsApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/emailEndingsPending.jsp"/>
+  </action>
+  <action name="EmailEndingsAdministrationForm" parameter="Admin"
+   path="/goToEmailEndingsReview" scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/emailEndingsPending.jsp"/>
+  </action>
+  <action name="EmailEndingsAdministrationForm" parameter="Admin"
+   path="/reviewEmailEndings" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/emailEndingsPending.jsp"/>
+  </action>
+  <action name="EmailEndingsAdministrationForm" parameter="Admin"
+   path="/approveDisapproveEmailEndings" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/emailEndingsPending.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadEmailEndingReplacement" type="com.tdil.milka.struts.action.UploadEmailEndingReplacementAction"/>
+  <action name="EmailEndingsAdministrationForm" parameter="Admin" path="/viewEmailEndingReplacement"
+   scope="session" type="com.tdil.milka.struts.action.ViewEmailEndingReplacementAction">
+  </action>
+  
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
@@ -144,6 +167,10 @@
   <action name="PapapediaForm" path="/addPapapedia" scope="session" type="com.tdil.milka.struts.action.AddPapapediaAction">
    <forward name="continue" path="/papapedia.jsp" redirect="true"/>
    <forward name="failure" path="/papapedia.jsp"/>
+  </action>
+  <action name="EmailEndingForm" path="/uploadEmailEnding" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/index.jsp" redirect="true"/>
+   <forward name="failure" path="/index.jsp"/>
   </action>
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
  </action-mappings>

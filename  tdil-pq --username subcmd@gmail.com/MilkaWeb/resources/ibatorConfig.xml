@@ -83,6 +83,9 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="FILTERED_WORD" domainObjectName="FilteredWord" alias="ww">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="MILKA" tableName="EMAIL_ENDINGS" domainObjectName="EmailEndings" alias="ee">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>
