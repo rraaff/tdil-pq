@@ -78,7 +78,7 @@ window.addEvent('domready', function(){
 			<ul>
 				<li class="activo"><a href="#" title="Productos" class="activo">Productos</a></li>
 				<li class=""><a href="historia.html" title="Historia" class="">Historia</a></li>
-				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div> 
 		<!-- end menu -->
@@ -93,10 +93,10 @@ window.addEvent('domready', function(){
 		<div id="menu-productos">
 			<ul>
 				<li><span class="selectedLi">Alfajores</span></li>
-				<li><a href="productos_tabletas_de_chocolate_rellenas.html" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
-				<li><a href="productos_tabletas_de_chocolate_aireadas.html" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
-				<li><a href="productos_tabletas_de_chocolate_S&oacute;lidas.html" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
-				<li><a href="productos_bombones_de_Chocolate.html" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
+				<li><a href="productos_tabletas_de_chocolate_rellenas.jsp" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
+				<li><a href="productos_tabletas_de_chocolate_aireadas.jsp" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
+				<li><a href="productos_tabletas_de_chocolate_S&oacute;lidas.jsp" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
+				<li><a href="productos_bombones_de_Chocolate.jsp" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
 			</ul>
 		</div>
 		<!-- menu-productos-->
@@ -123,9 +123,9 @@ window.addEvent('domready', function(){
 						<div class="thumbnail" style="width:182px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_Milka_Mouse_Blanco.jpg" width="142" height="119" /></a>Alfajor Milka Mouse Blanco</div>
 						<div class="thumbnail" style="width:79px; margin-right:18px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Mouse_Blanco.jpg" width="79" height="119" /></a>Alfajor X3 Mouse Blanco</div>
 						<div class="thumbnail" style="width:79px; margin-right:18px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Mouse.jpg" width="79" height="119" /></a>Alfajor X3 Mouse</div>
-						<div class="thumbnail" style="width:79px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Mouse_Oreo.jpg" width="79" height="119" /></a>Alfajor X3 Mouse Oreo</div>
-						<div class="thumbnail" style="width:79px; border:solid 1px #000000;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Xtreme_Choco.jpg" width="79" height="119" /></a>Alfajor X3 Xtreme Choco</div>
-						<div class="thumbnail" style="width:79px; border:solid 1px #000000;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_con_Dulce_de_Leche.jpg" width="79" height="119" /></a>Alfajor X3 con Dulce de Leche</div>
+						<div class="thumbnail" style="width:79px; margin-right:18px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Mouse_Oreo.jpg" width="79" height="119" /></a>Alfajor X3 Mouse Oreo</div>
+						<div class="thumbnail" style="width:79px; margin-right:18px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_Xtreme_Choco.jpg" width="79" height="119" /></a>Alfajor X3 Xtreme Choco</div>
+						<div class="thumbnail" style="width:79px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Alfajor_X3_con_Dulce_de_Leche.jpg" width="79" height="119" /></a>Alfajor X3 con Dulce de Leche</div>
 					</div>
 				</div>
 			</div>

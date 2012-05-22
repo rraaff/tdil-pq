@@ -18,7 +18,7 @@
 window.addEvent('domready', function(){	
 	
 	/* thumbnails example , div containers */
-	new SlideItMoo({itemsVisible:2, // the number of thumbnails that are visible
+	new SlideItMoo({itemsVisible:1, // the number of thumbnails that are visible
 					currentElement: 0, // the current element. starts from 0. If you want to start the display with a specific thumbnail, change this
 					thumbsContainer: 'thumbs2',
 					elementScrolled: 'thumb_container2',
@@ -84,7 +84,7 @@ window.addEvent('domready', function(){
 			<ul>
 				<li class="activo"><a href="#" title="Productos" class="activo">Productos</a></li>
 				<li class=""><a href="historia.html" title="Historia" class="">Historia</a></li>
-				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div> 
 		<!-- end menu -->
@@ -98,10 +98,10 @@ window.addEvent('domready', function(){
 		<!-- end titulo-->
 		<div id="menu-productos">
 			<ul>
-				<li><a href="productos_alfajores.html" title="Alfajores" class="bt1">Alfajores</a></li>
-				<li><a href="productos_tabletas_de_chocolate_rellenas.html" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
-				<li><a href="productos_tabletas_de_chocolate_aireadas.html" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
-				<li><a href="productos_tabletas_de_chocolate_S&oacute;lidas.html" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
+				<li><a href="productos_alfajores.jsp" title="Alfajores" class="bt1">Alfajores</a></li>
+				<li><a href="productos_tabletas_de_chocolate_rellenas.jsp" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
+				<li><a href="productos_tabletas_de_chocolate_aireadas.jsp" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
+				<li><a href="productos_tabletas_de_chocolate_solidas.jsp" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
 				<li><span class="selectedLi">Bombones de Chocolate</span></li>
 			</ul>
 		</div>
@@ -122,7 +122,7 @@ window.addEvent('domready', function(){
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
-					<div class="thumbnail" style="width:177px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="177" height="119" /></a>Bombon Milka Dulce de Leche.</div>
+					<div class="thumbnail" style="width:170px; margin-right:0px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
 				</div>
 			</div>
 		</div>

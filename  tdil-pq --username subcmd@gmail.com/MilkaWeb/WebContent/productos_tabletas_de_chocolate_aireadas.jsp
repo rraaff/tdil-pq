@@ -26,6 +26,20 @@ window.addEvent('domready', function(){
 	
 });
 </script>
+<style>
+#galeria_productos #galeria_parte_1 {
+	background:url(images/productos/tabletas_aireadas_comp1.jpg) no-repeat 0 0;	
+	width:488px;
+	height:423px;
+	margin:5px 0 0 5px;
+}
+#galeria_productos #galeria_parte_2 {
+	background:url(images/productos/tabletas_aireadas_comp2.jpg) no-repeat 0 0;	
+	width:488px;
+	height:423px;
+	margin:5px 0 0 5px;
+}
+</style>
 </head>
 <body>
 <div id="content">
@@ -52,7 +66,7 @@ window.addEvent('domready', function(){
 			<ul>
 				<li class="activo"><a href="#" title="Productos" class="activo">Productos</a></li>
 				<li class=""><a href="historia.html" title="Historia" class="">Historia</a></li>
-				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div> 
 		<!-- end menu -->
@@ -66,11 +80,11 @@ window.addEvent('domready', function(){
 		<!-- end titulo-->
 		<div id="menu-productos">
 			<ul>
-				<li><a href="productos_alfajores.html" title="Alfajores" class="bt1">Alfajores</a></li>
-				<li><a href="productos_tabletas_de_chocolate_rellenas.html" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
+				<li><a href="productos_alfajores.jsp" title="Alfajores" class="bt1">Alfajores</a></li>
+				<li><a href="productos_tabletas_de_chocolate_rellenas.jsp" title="Tabletas de chocolate Rellenas" class="bt2">Tabletas de chocolate Rellenas</a></li>
 				<li><span class="selectedLi">Tabletas de chocolate Aireadas</span></li>
-				<li><a href="productos_tabletas_de_chocolate_S&oacute;lidas.html" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
-				<li><a href="productos_bombones_de_Chocolate.html" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
+				<li><a href="productos_tabletas_de_chocolate_solidas.jsp" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
+				<li><a href="productos_bombones_de_Chocolate.jsp" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
 			</ul>
 		</div>
 		<!-- menu-productos-->
@@ -81,12 +95,6 @@ window.addEvent('domready', function(){
 			<!-- end parte_1-->
 			<div id="galeria_parte_2" class="panel_galeria"></div>
 			<!-- end parte_2-->
-			<div id="galeria_parte_3" class="panel_galeria"></div>
-			<!-- end parte_3-->
-			<div id="galeria_parte_4" class="panel_galeria"></div>
-			<!-- end parte_4-->
-			<div id="galeria_parte_5" class="panel_galeria"></div>
-			<!-- end parte_5-->
 		</div>
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
@@ -95,18 +103,17 @@ window.addEvent('domready', function(){
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb1.jpg" width="56" height="119" /></a>Milka leche 170 grs.</div>
-					<!-- end thumbnail-->
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb2.jpg" width="56" height="119" /></a>Milka Almendras 170 grs.</div>
-					<!-- end thumbnail-->
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb1.jpg" width="56" height="119" /></a>Milka leche 170 grs.</div>
-					<!-- end thumbnail-->
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb2.jpg" width="56" height="119" /></a>Milka Almendras 170 grs.</div>
-					<!-- end thumbnail-->
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb2.jpg" width="56" height="119" /></a>Milka Almendras 170 grs.</div>
-					<!-- end thumbnail-->
-					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="gallery/thumb/thumb2.jpg" width="56" height="119" /></a>Milka Almendras 170 grs.</div>
-					<!-- end thumbnail-->
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Chocolate_Blanco_100_gr.jpg"		width="56" height="119" /></a>Milka Chocolate Blanco 100 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Chocolate_con_Leche_100_gr.jpg"	width="56" height="119" /></a>Milka Chocolate con Leche 100 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Combinado_100_gr.jpg"				width="56" height="119" /></a>Milka Combinado 100 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_con_Almendras_100_gr.jpg"			width="56" height="119" /></a>Milka con Almendras 100 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Combinado_45_gr.jpg"				width="56" height="119" /></a>Milka Combinado 45 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_con_Almendras_45_gr.jpg"			width="56" height="119" /></a>Milka con Almendras 45 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Chocolate_Blanco_45_gr.jpg"		width="56" height="119" /></a>Milka Chocolate Blanco 45 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Chocolate_con_Leche_45_gr.jpg"	width="56" height="119" /></a>Milka Chocolate con Leche 45 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Chocolate_con_Leche_25_gr.jpg"	width="56" height="119" /></a>Milka Chocolate con Leche 25 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Combinado_25_gr.jpg"				width="56" height="119" /></a>Milka Combinado 25 gr.</div>
+					<div class="thumbnail"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_con_Almendras_25_gr.jpg"			width="56" height="119" /></a>Milka con Almendras 25 gr.</div>
 				</div>
 			</div>
 		</div>
