@@ -5,46 +5,42 @@
 body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td {
 	margin:0;
 	padding:0;
-	}
-	
+}
 table {
 	border-collapse:collapse;
 	border-spacing:0;
-	}
+}
 fieldset,img { 
 	border:0;
-	}
+}
 address,caption,cite,code,dfn,th,var {
 	font-style:normal;
 	font-weight:normal;
-	}
+}
 ol,ul {
 	margin:0;
 	padding:0;
-	}
+}
 caption,th {
 	text-align:left;
-	}
+}
 h1,h2,h3,h4,h5,h6 {
 	font-size:100%;
 	font-weight:normal;
-	}
+}
 q:before,q:after {
 	content:'';
-	}
+}
 abbr,acronym { 
 	border:0;
-	}
-	
+}
 a img{border:0; outline:none;}
-
 a{
 	color:#c8c8c8;
 	outline:none;
 	cursor:pointer;
 	text-decoration:none;
 }
-
 a:hover{
 	color:#FFF;
 	outline:none;
@@ -53,19 +49,15 @@ a:hover{
 p, ul{
 	margin-bottom:10px;	
 }
-
 .derecha{
 	float:right;
 	width:200px;
 	text-align:right;
 	margin:40px 20px 5px 0;
 }
-
 .violeta{
 	color:#715da5;	
 }
-
-
 h2{
 	margin:0;
 	padding:0;	
@@ -75,8 +67,6 @@ h2{
 	line-height:22px;
 	width:350px;
 }
-
-
 #titulo{
 	width:900px;
 	background:url(../images/linea-titulos.png) no-repeat 0 bottom;
@@ -93,7 +83,6 @@ h2{
 	width:300px;
 	float:left;
 }
-
 #titulo h3{
 	float:right;
 	width:300px;
@@ -104,30 +93,20 @@ h2{
 	padding:0;
 	text-align:right;
 }
-
-
-
-
 #header_home h2{
 	margin:35px 0 0 20px;
 	float:left;	
 }
-
 /* END RESET */
-
 html, body {
 	height: 100%;
 }
-
-
 body {
 	margin:0;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#000;
 	font-size:12px;
 }
-
-
 #montania{
 	background:url(../images/base.gif) repeat-x center bottom;
 	position:fixed;
@@ -135,18 +114,13 @@ body {
 	height:300px;
 	bottom:0;
 }
-
-
 a {color:#535353; text-decoration:none}
-
 #content{
 	width:980px;
 	margin:0 auto;
 	position:relative;
 	z-index:20;
-	
 }
-
 #wrapper2 {
 	width:960px;
 	height:380px;
@@ -473,13 +447,19 @@ a {color:#535353; text-decoration:none}
 	margin:0;
 	padding:3px 3px;
 }
+
+
+
 /* MENU LATERAL*/
+
 #menu-productos{
 	width:105px;
 	margin:5px 10px 0 0;
 	font-size:18px;
 	float:left;
+	
 }
+
 #menu-productos ul{
 	display:block;
 	margin:0 0 0 45px;
