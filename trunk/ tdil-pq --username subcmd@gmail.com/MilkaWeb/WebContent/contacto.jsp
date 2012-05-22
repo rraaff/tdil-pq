@@ -13,10 +13,10 @@
 	<div id="header">
   		<div id="logo"><a href="index.html" title="Milka"></a></div>
     		<div id="box">            
-          		<div id="subi"><a href="#" title="SUBÃ tu foto con chocolate"></a></div>
+          		<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
             	<div id="social">
                     <ul>
-                    	<li class="faqs"><a href="faqs.html" title="FAQS"></a></li>
+                    	<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
                         
                          <li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>                                              
                         <li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>       
@@ -36,7 +36,7 @@
     	<div id="menu">
                 <ul>
                 	<li><a href="productos.html" title="Productos" class="">Productos</a></li>
-                    <li><a href="historia.html" title="Historia" class="">Historia</a></li>                   
+                    <li><a href="historia.jsp" title="Historia" class="">Historia</a></li>                   
                     <li class="fin"><a href="contacto.html" title="Contacto" class="activo">Contacto</a></li>
                 </ul>
         </div> 

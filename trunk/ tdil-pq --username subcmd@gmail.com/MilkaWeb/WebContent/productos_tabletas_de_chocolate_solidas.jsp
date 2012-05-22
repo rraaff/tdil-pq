@@ -55,7 +55,7 @@ window.addEvent('domready', function(){
 			<div id="subi"><a href="#" title="SUB&Aacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
-					<li class="faqs"><a href="faqs.html" title="FAQS"></a></li>
+					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
 					<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
 					<li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
@@ -71,7 +71,7 @@ window.addEvent('domready', function(){
 		<div id="menu">
 			<ul>
 				<li class="activo"><a href="#" title="Productos" class="activo">Productos</a></li>
-				<li class=""><a href="historia.html" title="Historia" class="">Historia</a></li>
+				<li class=""><a href="historia.jsp" title="Historia" class="">Historia</a></li>
 				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div> 
