@@ -66,7 +66,7 @@ window.addEvent('domready', function(){
 			<ul>
 				<li class="activo"><a href="#" title="Productos" class="activo">Productos</a></li>
 				<li class=""><a href="historia.html" title="Historia" class="">Historia</a></li>
-				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div> 
 		<!-- end menu -->
@@ -80,11 +80,11 @@ window.addEvent('domready', function(){
 		<!-- end titulo-->
 		<div id="menu-productos">
 			<ul>
-				<li><a href="productos_alfajores.html" title="Alfajores" class="bt1">Alfajores</a></li>
+				<li><a href="productos_alfajores.jsp" title="Alfajores" class="bt1">Alfajores</a></li>
 				<li><span class="selectedLi">Tabletas de chocolate Rellenas</span></li>
-				<li><a href="productos_tabletas_de_chocolate_aireadas.html" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
-				<li><a href="productos_tabletas_de_chocolate_S&oacute;lidas.html" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
-				<li><a href="productos_bombones_de_Chocolate.html" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
+				<li><a href="productos_tabletas_de_chocolate_aireadas.jsp" title="Tabletas de chocolate Aireadas" class="bt2">Tabletas de chocolate Aireadas</a></li>
+				<li><a href="productos_tabletas_de_chocolate_solidas.jsp" title="Tabletas de chocolate S&oacute;lidas" class="bt2">Tabletas de chocolate S&oacute;lidas</a></li>
+				<li><a href="productos_bombones_de_Chocolate.jsp" title="Bombones de Chocolate" class="bt2">Bombones de Chocolate</a></li>
 			</ul>
 		</div>
 		<!-- menu-productos-->
@@ -103,11 +103,11 @@ window.addEvent('domready', function(){
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
-					<div class="thumbnail" style="width:170px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Caramel_100_gr.jpg" width="170" height="119" /></a>Milka Caramel 100 gr.</div>
-					<div class="thumbnail" style="width:170px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Sahne_Creme_100_gr.jpg" width="170" height="119" /></a>Milka Sahne Crème 100 gr.</div>
-					<div class="thumbnail" style="width:170px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Nuss-Nougat_Creme_300_gr.jpg"	width="170" height="119" /></a>Milka Nuss-Nougat Crème 300 gr.</div>
 					<div class="thumbnail" style="width:77px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Dulce_de_Leche_Blanco_68_gr.jpg"	width="77" height="119" /></a>Milka Dulce de Leche Blanco 68 gr.</div>
 					<div class="thumbnail" style="width:77px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Dulce_de_Leche_68_gr.jpg" width="77" height="119" /></a>Milka Dulce de Leche 68 gr.</div>
+					<div class="thumbnail" style="width:200px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Caramel_100_gr.jpg" width="200" height="119" /></a>Milka Caramel 100 gr.</div>
+					<div class="thumbnail" style="width:200px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Sahne_Creme_100_gr.jpg" width="170" height="119" /></a>Milka Sahne Cr&egrave;me 100 gr.</div>
+					<div class="thumbnail" style="width:200px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Nuss-Nougat_Creme_300_gr.jpg"	width="170" height="119" /></a>Milka Nuss-Nougat Cr&egrave;me 300 gr.</div>
 					<div class="thumbnail" style="width:170px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Dessert_au_Chocolat_100_gr.jpg" width="170" height="119" /></a>Milka Dessert au Chocolat 100 gr.</div>
 					<div class="thumbnail" style="width:80px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Soft_Chocolate_150_gr.jpg" width="80" height="119" /></a>Milka Soft Chocolate 150 gr.</div>
 					<div class="thumbnail" style="width:80px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thmb_Milka_Soft_Combinado_150_gr.jpg" width="80" height="119" /></a>Milka Soft Combinado 150 gr.</div>

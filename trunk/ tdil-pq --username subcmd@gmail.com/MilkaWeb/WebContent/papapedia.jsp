@@ -186,6 +186,7 @@ int first = PaginationUtils.first(list);
 int last = PaginationUtils.last(list);
 SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
 %>
+<%@ include file="includes/barraExperiencias.jsp" %>
 <div id="content">
 	<div id="header"></div>
 	<div id="cuerpoCentral">
