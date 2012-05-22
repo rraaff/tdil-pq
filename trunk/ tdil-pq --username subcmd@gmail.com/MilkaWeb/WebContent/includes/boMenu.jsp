@@ -24,6 +24,12 @@
 				<li><html:link action="/goToPapapediaReview" >Revision de aprobados</html:link></li>
 			</ul>
 		</li>
+		<li><a href="#">Finales de email</a>
+			<ul>
+				<li><html:link action="/goToEmailEndingsApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToEmailEndingsReview" >Revision de aprobados</html:link></li>
+			</ul>
+		</li>
 		<li><a href="#">Reportes</a>
 			<ul>
 				<li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>

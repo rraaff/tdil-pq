@@ -8,14 +8,7 @@
    TARGET="page2" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
-  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadMilkaPhoto.do"
-   SUBTYPE="confirmed" TARGET="action12" TITLE="/uploadMilkaPhoto.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/addPostIt.do"
-   SUBTYPE="confirmed" TARGET="action14" TITLE="/addPostIt.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page1" PATH="/boLogin.jsp" SHAPE="240,129,0,0"
   SUBTYPE="jsp" TITLE="boLogin.jsp" TYPE="page" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/login.do" SUBTYPE="confirmed"
@@ -282,4 +275,53 @@
    PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadEmailEnding" NAME="action31"
+  PATH="/uploadEmailEnding" SHAPE="32,1873,0,0" TITLE="EmailEndingForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
+   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
+   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEmailEndingsApprove" NAME="action32"
+  PATH="/goToEmailEndingsApprove" SHAPE="32,4849,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="/emailEndingsPending.jsp"
+  SHAPE="288,4866,0,0" SUBTYPE="jsp" TITLE="emailEndingsPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveEmailEndings.do" SUBTYPE="confirmed"
+   TARGET="action35" TITLE="/approveDisapproveEmailEndings.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEmailEndingsReview" NAME="action33"
+  PATH="/goToEmailEndingsReview" SHAPE="32,4961,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewEmailEndings" NAME="action34"
+  PATH="/reviewEmailEndings" SHAPE="32,5073,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveEmailEndings" NAME="action35"
+  PATH="/approveDisapproveEmailEndings" SHAPE="32,5185,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadEmailEndingReplacement" NAME="action36"
+  PATH="/uploadEmailEndingReplacement" SHAPE="32,5633,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewEmailEndingReplacement" NAME="action37"
+  PATH="/viewEmailEndingReplacement" SHAPE="32,5633,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
