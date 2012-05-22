@@ -248,8 +248,8 @@ input[type="button"], input[type="submit"] {
 	<?php if ($alreadyParticipated == 1) { ?>
 		<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
 	<?php } else { 
-		if ($alreadyWinner) { ?>
-			<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
+		if ($alreadyWinner == 1) { ?>
+			<div id="content"><a href="winners.php"><img src="../images/yaGanaste.jpg" width="790" height="700" border="0"></a></div>
 		<?php
 		} else {
 			if ($promoToday == 1) { 
