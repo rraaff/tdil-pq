@@ -298,13 +298,6 @@ input[type="button"], input[type="submit"] {
 </style>
 </head>
 <body>
-<?php 
-echo $isTodayWinner;
-?><br>
-<?php 
-echo $prizeWinner;
-?><br>
-
 <?php if ($isTodayWinner == 1) { ?>
 	
 	<?php if ($hascontactdata == 0 && $prizePending == 1) { ?>
