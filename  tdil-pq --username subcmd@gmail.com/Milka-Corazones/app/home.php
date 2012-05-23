@@ -40,8 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['savecontactdata'])) {
 		return;
 	}
 }
-
-if ($savingData == 0 && empty($signed_request['page']['liked'])) {
+$skipFan = 0;
+if (isset($_REQUEST['isfan'])) {
+	if ($_REQUEST['isfan'] == 1) {
+		$skipFan = 1;
+	}
+}
+if ($savingData == 0 && empty($signed_request['page']['liked']) && $skipFan == 0) {
 	// Si estoy en localhost
 	if (APPLICATION_URL == 'http://localhost/Milka-Corazones/app') {
 		$testuser = $facebook->api('/me');
@@ -193,7 +198,7 @@ if ($num_rows > 0) {
 	$promoToday = 0;
 }
 
-$appurlforshare = 'https://apps.facebook.com/' . APPLICATION_NAME;
+$appurlforshare = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 
 closeConnection($connection);
 ?>
