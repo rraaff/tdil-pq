@@ -238,6 +238,11 @@ closeConnection($connection);
 	overflow:hidden;
 	margin:0px auto;
 }
+#botonera {
+	width:222px;
+	height:33px;
+	margin:465px auto;
+}
 #contentDatos {
 	margin:0px auto;
 	width:790px;
@@ -248,17 +253,23 @@ closeConnection($connection);
 	background-position: left top;
 }
 #contentDatos #acomodador {
-	width:395px;
+	width:385px;
 	margin-left:200px;
 	margin-top:250px;
 }
 #contentDatos #acomodador #renglon {
-	width:250px;
+	width:310px;
 	height:41px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:5px;
 	margin-bottom:0;
+}
+.labelForm {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	width:50px;
+	padding-top:10px;
+	float:left;
 }
 #errmessage{
 	font-family:Georgia, "Times New Roman", Times, serif;
@@ -273,7 +284,7 @@ input[type="text"], input[type="password"], select {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size:14px;
 	color:#5a5a5a;
-	float:left;
+	float:right;
 	margin:0;
 	padding:2px;
 	line-height: normal;
@@ -305,34 +316,45 @@ input[type="button"], input[type="submit"] {
 				<div id="contentDatos">
 					<div id="acomodador">
 						<div id="errmessage"></div>
-						<div id="renglon"><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
-						<div id="renglon"><input type="text" name="dni" id="dni" placeholder="DNI"></div>
-						<div id="renglon"><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
-						<div id="renglon"><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
-						<div id="renglon" style="margin-top:15px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
+						<div id="renglon"><span class="labelForm">Nombre</span><input type="text" name="firstname" id="firstname" placeholder="Nombre"></div>
+						<div id="renglon"><span class="labelForm">DNI</span><input type="text" name="dni" id="dni" placeholder="DNI"></div>
+						<div id="renglon"><span class="labelForm">E-Mail</span><input type="text" name="address" id="address" placeholder="email@domain.com"></div>
+						<div id="renglon"><span class="labelForm">Tel&eacute;fono</span><input type="text" name="phone" id="phone" placeholder="Tel&eacute;fono"></div>
+						<div id="renglon" style="margin-top:6px;" align="center"><input type="hidden" name="savecontactdata" value="true"><input type="submit" value=" "></div>
 					</div>
 				</div>
 			</form>
 	<?php } else { ?>
 		<?php if ($prizeWinner == 1) { ?>
-			<div id="content"><img src="../images/felicitaciones.jpg" width="790" height="700" border="0"></div>
+			<div id="content" style="background-image:url(../images/felicitaciones.jpg); background-repeat:no-repeat;">
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+			</div>
 		<?php } else { ?>
-			<div id="content"><a href="winners.php"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></a><!--Tardaste mucho, tu premio ya se asigno a otra persona--></div>
-		<?php } ?>
+			<!--Tardaste mucho, tu premio ya se asigno a otra persona-->
+			<div id="content" style="background-image:url(../images/yaSeEntregaron.jpg); background-repeat:no-repeat;">
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+			</div>
+<?php } ?>
 	<?php } ?>
 <?php } else { ?>
 	<?php if ($alreadyParticipated == 1) { ?>
-		<div id="content"><a href="winners.php"><img src="../images/yaParticipaste.jpg" width="790" height="700" border="0"></a></div>
+		<div id="content" style="background-image:url(../images/yaParticipaste.jpg); background-repeat:no-repeat;">
+			<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+</div>
 	<?php } else { 
 		if ($alreadyWinner) { ?>
-			<div id="content"><a href="winners.php"><img src="../images/yaGanaste.jpg" width="790" height="700" border="0"></a></div>
+			<div id="content" style="background-image:url(../images/yaGanaste.jpg); background-repeat:no-repeat;">
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+</div>
 		<?php
 		} else {
 			if ($promoToday == 1) { 
 				if ($allPrizesGiven == 1) { ?>
-					<div id="content"><a href="winners.php"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"></a></div>
+					<div id="content" style="background-image:url(../images/yaSeEntregaron.jpg); background-repeat:no-repeat;">
+						<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+					</div>
 				<?php } else { ?>
-					<div id="content">
+<div id="content">
 						<script language="javascript">
 							if (AC_FL_RunContent == 0) {
 								alert("This page requires AC_RunActiveContent.js.");
@@ -376,7 +398,9 @@ input[type="button"], input[type="submit"] {
 					</div>
 				<?php } ?>
 			<?php } else { ?>
-					<div id="content"><a href="winners.php"><img src="../images/noHayHoy.jpg" width="790" height="700" border="0"></a></div>
+<div id="content" style="background-image:url(../images/noHayHoy.jpg); background-repeat:no-repeat;">
+					<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+</div>
 			<?php } ?>
 		<?php } ?>
 	<?php } ?>
