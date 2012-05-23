@@ -29,21 +29,21 @@ $fbid = $user;
 
 $savingData = 0;
 $prizeWinner = 0;
+$skipFan = 0;
+if (isset($_REQUEST['isfan'])) {
+	if ($_REQUEST['isfan'] == 1) {
+		$skipFan = 1;
+	}
+}
 // Si esta salvando salteo el chequeo del signed request
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['savecontactdata'])) {
 	$savingData = 1;
 } else {
 	$signed_request = $facebook->getSignedRequest();
-	if (!$signed_request) {
+	if (!$signed_request && $skipFan == 0) {
 		$errorMessage = "External links no permitidos";
 		include("showerror.php");
 		return;
-	}
-}
-$skipFan = 0;
-if (isset($_REQUEST['isfan'])) {
-	if ($_REQUEST['isfan'] == 1) {
-		$skipFan = 1;
 	}
 }
 if ($savingData == 0 && empty($signed_request['page']['liked']) && $skipFan == 0) {
