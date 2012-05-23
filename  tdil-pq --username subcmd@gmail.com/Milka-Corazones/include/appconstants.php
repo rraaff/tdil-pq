@@ -1,5 +1,5 @@
 <?php 
-	Facebook::$CURL_OPTS[CURLOPT_CAINFO] = '/var/www/Milka-Corazones/include/fb_ca_chain_bundle.crt'; // path al certificado
+	Facebook::$CURL_OPTS[CURLOPT_CAINFO] = 'C:/xampp/htdocs/Milka-Corazones/include/fb_ca_chain_bundle.crt'; // path al certificado
 	
 	define('APPLICATION_ID','373863869313904'); // id de la app
 	define('APPLICATION_NAME','donde_estas_bombon');
@@ -10,7 +10,7 @@
 	define('PAGE_NAME','tdil.test.page'); // nombre de la pagina en la cual la app esta instalada
 	
 	function get_app_access($appId, $appSecret) {
-		$token_url =    "https://graph.facebook.com/oauth/access_token?" .
+		$token_url = "https://graph.facebook.com/oauth/access_token?" .
 				"client_id=" . $appId .
 				"&client_secret=" . $appSecret .
 				"&grant_type=client_credentials";
