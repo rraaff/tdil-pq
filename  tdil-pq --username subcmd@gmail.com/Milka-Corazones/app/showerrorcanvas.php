@@ -4,7 +4,7 @@
 <style type="text/css">
 <!--
 body {
-	background-image: url(../images/errorinCanvas.jpg);
+	background-image: url(../images/error.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -39,10 +39,12 @@ body {
 </style>
 </head>
 <body>
-<div id="contentError"><?php echo $errorMessage;?></div>
 <?php 
 $redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 ?>
-<div id="boton"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/btn_volver.png" alt="Volver" width="122" height="33"></a></div>
+<div id="content">
+	<div id="contentError"><?php echo $errorMessage;?></div>
+	<div id="boton"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/btn_volver.png" alt="Volver" width="122" height="33"></a></div>
+</div>
 </body>
 </html>
