@@ -324,4 +324,9 @@
  <PROCESS-ITEM ID="#viewEmailEndingReplacement" NAME="action37"
   PATH="/viewEmailEndingReplacement" SHAPE="32,5633,0,0"
   TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadMilkaPhotoReplacement" NAME="action38"
+  PATH="/uploadMilkaPhotoReplacement" SHAPE="32,5633,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewMilkaPhotoReplacement" NAME="action39"
+  PATH="/viewMilkaPhotoReplacement" SHAPE="32,5633,0,0"
+  TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

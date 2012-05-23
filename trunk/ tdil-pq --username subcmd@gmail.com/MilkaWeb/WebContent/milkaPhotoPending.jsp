@@ -46,7 +46,27 @@ th.sorted {
 	<style>
 	.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
 	</style>
-	<script>
+<script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
+<script>
+	$(document).ready(
+		function(){
+			$('#upload_email').ajaxfileupload({
+			  	'action': './uploadMilkaPhotoReplacement.do',
+			  'onComplete': function(response) {
+			  	if (response.result == 'OK') {
+			  		$('#img_to_approve').attr('src', './viewMilkaPhotoReplacement.do');
+			  		// puedo capturar el fin?
+			  	} else {
+			  		alert("Ha ocurrido un error");
+			  	}
+			  },
+			  'onCancel': function() {
+			    console.log('no file selected');
+			  }
+			});
+		}
+	);
+	
 	$(function() {
 		function split( val ) {
 			return val.split( /,\s*/ );
@@ -114,6 +134,8 @@ request.setAttribute( "test",  paginated);
 </display:table>
 <logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
 <img id="img_to_review" width="200" height="200" src="./download.st?id=<bean:write name="MilkaPhotoAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MilkaPhotoAdministrationForm" property="extBlobData"/>" alt="">
+<img id="img_to_approve" src="./viewMilkaPhotoReplacement.do" width="200" height="200" align="absmiddle"> 
+<input type="file" name="upload_email" id="upload_email">Reemplazar<br>
 <html:form method="POST" action="/approveDisapproveMilkaPhoto">
 	<html:checkbox name="MilkaPhotoAdministrationForm" property="frontcover" /> Portada<br>
 	<html:checkbox name="MilkaPhotoAdministrationForm" property="showinhome" /> Mostrar en la home<br>
@@ -136,6 +158,7 @@ $(document).ready(
 
 $(window).load(function() {
       $('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
+      $('#img_to_approve').resize({maxWidth: '200', maxHeight: '200'});
 });
 </script>
 </logic:notEqual>

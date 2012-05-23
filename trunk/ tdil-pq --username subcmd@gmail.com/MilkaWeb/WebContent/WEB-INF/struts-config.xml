@@ -91,7 +91,10 @@
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
   </action>
   <action path="/searchTags" scope="request" type="com.tdil.milka.struts.action.SearchTagsAction"/>
-  
+  <action parameter="Admin" path="/uploadMilkaPhotoReplacement" type="com.tdil.milka.struts.action.UploadMilkaPhotoReplacementAction"/>
+  <action name="MilkaPhotoAdministrationForm" parameter="Admin" path="/viewMilkaPhotoReplacement"
+   scope="session" type="com.tdil.milka.struts.action.ViewMilkaPhotoReplacementAction">
+  </action>
   
   <action name="PostItAdministrationForm" parameter="Admin" path="/goToPostItApprove"
    scope="session" type="com.tdil.struts.actions.GoToApproveAction">
