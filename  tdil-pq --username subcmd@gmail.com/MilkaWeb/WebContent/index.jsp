@@ -123,10 +123,8 @@ $(document).ready(
     </div>
     <!-- end productos-->
     <div id="box-facebook">
-    <div class="fb-like-box" data-href="http://www.facebook.com/chocolat" data-width="300" data-height="437" data-show-faces="true" data-border-color="#dbdbdb" data-stream="true" data-header="false"></div>
+    <div class="fb-like-box" data-href="http://www.facebook.com/chocolat" data-width="300" data-height="437" data-show-faces="false" data-border-color="#dbdbdb" data-stream="true" data-header="false"></div>
     </div>
-    
-    
     <div id="box-twitter">
     	<script>
 new TWTR.Widget({
@@ -166,9 +164,7 @@ new TWTR.Widget({
 <!-- end content-->
 <div id="montania"></div>	
 <%= MeltButton.meltButton(1) %>
-
 <%= MeltButton.meltButton(2) %>
-
 Milka Photo<br>
 <html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
 	NOmbre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/><br>
@@ -179,7 +175,6 @@ Milka Photo<br>
 		Upload
 	</html:submit>
 </html:form>
-	
 Post-It<br>
 <html:form method="POST" action="/addPostIt">
 	NOmbre:<html:text name="PostItForm" property="authorBean.name" styleClass="width180"/><br>

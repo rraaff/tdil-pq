@@ -6,109 +6,65 @@
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-
 <div id="content">
 	<div id="header">
-  		<div id="logo"><a href="index.html" title="Milka"></a></div>
-    		<div id="box">            
-          		<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
-            	<div id="social">
-                    <ul>
-                    	<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
-                        
-                         <li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>                                              
-                        <li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>       
-                        <li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-                        
-                         <li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>       
-                                           
-                    </ul>
-           		</div>
-          		<!-- end social-->
+		<div id="logo"><a href="index.html" title="Milka"></a></div>
+		<div id="box">
+			<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
+			<div id="social">
+				<ul>
+					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
+					<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
+					<li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
+				</ul>
 			</div>
-       		<!-- end box-->
-    </div>
-    <!-- end header-->
-	
-    <div id="menu-wrapper">
-    	<div id="menu">
-                <ul>
-                	<li><a href="productos.html" title="Productos" class="">Productos</a></li>
-                    <li><a href="historia.jsp" title="Historia" class="activo">Historia</a></li>                   
-                    <li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
-                </ul>
-        </div> 
-        <!-- end menu -->
-    </div>
-    <!-- end menu-wrapper-->
-    
-<div id="wrapper2-internas">
-	 
-    <div id="col_derecha">
-    	<h2><span class="violeta">Milka </span>en el tiempo</h2>
-        <ul>        
-            <li class=""><a href="#" title="Video 1" class="activo"><img src="images/video1.jpg" width="133" height="83" alt="Video1" /></a>
-            <h3>Jugando con chocolate</h3>
-            <a href="#" class="playlist">Playlist</a>
-            </li>
-          	<li class=""><a href="#" title="Video 2" class="activo"><img src="images/video2.jpg" width="133" height="83" alt="Video2" /></a>
-            <h3>100 preguntas para la vaca</h3>
-            <a href="#" class="playlist">Playlist</a>
-            </li>
-           <li class=""><a href="#" title="Video 3" class="activo"><img src="images/video3.jpg" width="133" height="83" alt="Video3" /></a>
-            <h3>UNboxings</h3>
-            <a href="#" class="playlist">Playlist</a>
-            </li>
-           <li class=""><a href="#" title="Video 4" class="activo"><img src="images/video4.jpg" width="133" height="83" alt="Video4" /></a>
-            <h3>Para levantarse un domingo</h3>
-            <a href="#" class="playlist">Playlist</a>
-            </li>
-            
-        </ul>
-    </div>
-    <!-- end col_derecha-->
-    
-
-	<div id="titulo-historia">
-	<h2>Historia <span class="violeta">Milka</span></h2>	
-    </div>
-    <!-- end titulo-->
-    
-    
-    <div id="destacado">
-    La historia de Milka comienza en Suiza a mediados del siglo XIX.  Es ah&Iacute;­ donde Philippe Suchard decide convertir al chocolate en un placer para todos y no para unos pocos.
-    </div>
-    <!-- end destacado-->
-    
-    <div id="contenidos">
-    <p>Es tal su &Iacute;©xito que a finales de siglo, su yerno comienza a expandir el negocio r&Iacute;¡pidamente, introduciendo nuevas t&Iacute;©cnicas de fabricaci&Iacute;³n, incluida la f&Iacute;³rmula para mezclar leche y cacao. </p>
-    <p>La idea, que luego se convertir&Iacute;­a en un slogan exitoso, era sencilla: <span class="violeta">Convertir a Milka en la m&Iacute;¡s tierna tentaci&Iacute;³n, por estar hecha con leche alpina.</span>
-Asi es como en 1901 Suchard lanza la primera tableta de chocolate con leche, llamada Suchard Milka, con un envoltorio revolucionario de color lila adornado con una vaca de color negro y blanco sobre un fondo de un paisaje alpino. </p>
-	<h2> Y por qu&Iacute;© una vaca de color lila? </h2>
-	<p>Porque Philippe Suchard cre&Iacute;­a firmemente que para llamar la atenci&Iacute;³n era necesario <strong>"familiarizarse con aquello que es extra&Iacute;±o y convertir en extra&Iacute;±o a aquello que es familiar"</strong>. Y pocas cosas llama m&Iacute;¡s la atenci&Iacute;³n que una Vaca color Lila. </p>
-    <p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&Iacute;¡s de 110 anuncios televisivos al punto tal que hoy en d&Iacute;­a representa la identidad visual de todos los productos de la marca Milka pero adem&Iacute;¡s se ha convertido de una de las m&Iacute;¡s grandes estrellas de la publicidad y est&Iacute;¡ solidamente anclada en la sociedad actual.</p>
-    </div>
-        
-</div>
-<!-- end wrapper2-->
-
-   
-    <div id="footer">
-        <div id="left">
-        <p>Â© 2012 Kraft Foods â€“ Todos los derechos reservados</p>
-        </div>
-        <div id="right">
-        <p><a href="#" title="Politicas de Privacidad">Politicas de Privacidad</a> - <a href="#" title="FAQS">FAQS</a></p>
-        </div>
-    </div>
-    <!-- end footer-->
-	
+			<!-- end social-->
+		</div>
+		<!-- end box-->
+	</div>
+	<!-- end header-->
+	<div id="menu-wrapper">
+		<div id="menu">
+			<ul>
+				<li><a href="productos.html" title="Productos" class="">Productos</a></li>
+				<li><a href="historia.jsp" title="Historia" class="activo">Historia</a></li>
+				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+			</ul>
+		</div>
+		<!-- end menu -->
+	</div>
+	<!-- end menu-wrapper-->
+	<div id="wrapper2-internas">
+		<div id="col_derecha">
+			<h2><span class="violeta">Milka </span>en el tiempo</h2>
+			<ul>
+				<li class=""><a href="#" title="Video 1" class="activo"><img src="images/video1.jpg" width="133" height="83" alt="Video1" /></a><h3>Jugando con chocolate</h3><a href="#" class="playlist">Playlist</a></li>
+				<li class=""><a href="#" title="Video 2" class="activo"><img src="images/video2.jpg" width="133" height="83" alt="Video2" /></a><h3>100 preguntas para la vaca</h3><a href="#" class="playlist">Playlist</a></li>
+				<li class=""><a href="#" title="Video 3" class="activo"><img src="images/video3.jpg" width="133" height="83" alt="Video3" /></a><h3>UNboxings</h3><a href="#" class="playlist">Playlist</a></li>
+				<li class=""><a href="#" title="Video 4" class="activo"><img src="images/video4.jpg" width="133" height="83" alt="Video4" /></a><h3>Para levantarse un domingo</h3><a href="#" class="playlist">Playlist</a></li>
+			</ul>
+		</div>
+		<!-- end col_derecha-->
+		<div id="titulo-historia">
+			<h2>Historia <span class="violeta">Milka</span></h2>	
+		</div>
+		<!-- end titulo-->
+		<div id="destacado">La historia de Milka comienza en Suiza a mediados del siglo XIX.  Es ah&iacute; donde Philippe Suchard decide convertir al chocolate en un placer para todos y no para unos pocos.</div>
+		<!-- end destacado-->
+		<div id="contenidos"><p>Es tal su &eacute;xito que a finales de siglo, su yerno comienza a expandir el negocio r&aacute;pidamente, introduciendo nuevas t&eacute;cnicas de fabricaci&oacute;n, incluida la f&oacute;rmula para mezclar leche y cacao.</p><p>La idea, que luego se convertir&iacute;a en un slogan exitoso, era sencilla: <span class="violeta">Convertir a Milka en la m&aacute;s tierna tentaci&oacute;n, por estar hecha con leche alpina.</span>As&iacute; es como en 1901 Suchard lanza la primera tableta de chocolate con leche, llamada Suchard Milka, con un envoltorio revolucionario de color lila adornado con una vaca de color negro y blanco sobre un fondo de un paisaje alpino.</p>
+		<h2>¿Y por qu&eacute; una vaca de color lila?</h2><p>Porque Philippe Suchard cre&iacute;a firmemente que para llamar la atenci&oacute;n era necesario <strong>"familiarizarse con aquello que es extra&ntilde;o y convertir en extra&ntilde;o a aquello que es familiar"</strong>. Y pocas cosas llaman m&aacute;s la atenci&oacute;n que una Vaca color Lila.</p><p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&aacute;s de 110 anuncios televisivos al punto tal que hoy en d&iacute;a representa la identidad visual de todos los productos de la marca Milka pero adem&aacute;s se ha convertido de una de las m&aacute;s grandes estrellas de la publicidad y est&aacute; solidamente anclada en la sociedad actual.</p></div>
+	</div>
+	<!-- end wrapper2-->
+	<div id="footer">
+		<div id="left"><p>&copy; 2012 Kraft Foods &reg; Todos los derechos reservados</p></div>
+		<div id="right"><p><a href="#" title="Politicas de Privacidad">Politicas de Privacidad</a> - <a href="#" title="FAQS">FAQS</a></p></div>
+	</div>
+	<!-- end footer-->
 </div>
 <!-- end content-->
-
-<div id="montania">
-</div>	
+<div id="montania"></div>	
 </body>
 </html>
