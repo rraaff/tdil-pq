@@ -1,4 +1,3 @@
-<link rel="icon" href="./favicon.ico" type="icon"/>
 <link type='text/css' href='css/jquery-ui-1.8.16.custom.css' rel='stylesheet' media='screen' />
 <!-- Contact Form CSS files -->
 <link type='text/css' href='css/sm_basic_bo.css' rel='stylesheet' media='screen' />
