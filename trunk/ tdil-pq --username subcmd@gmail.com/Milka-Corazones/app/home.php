@@ -209,16 +209,16 @@ closeConnection($connection);
 			objdiv.innerHTML = "Debe ingresar el nombre";
 			return false;
 		}
+		if (document.getElementById("dni").value == "") {
+			objdiv.innerHTML = "Debe ingresar el dni";
+			return false;
+		}
 		if (document.getElementById("address").value == "") {
-			objdiv.innerHTML = "Debe ingresar la direccion";
+			objdiv.innerHTML = "Debe ingresar el email";
 			return false;
 		}
 		if (document.getElementById("phone").value == "") {
 			objdiv.innerHTML = "Debe ingresar el telefono";
-			return false;
-		}
-		if (document.getElementById("dni").value == "") {
-			objdiv.innerHTML = "Debe ingresar el dni";
 			return false;
 		}
 		return true;
