@@ -319,7 +319,7 @@ echo $prizeWinner;
 		<?php if ($prizeWinner == 1) { ?>
 			<div id="content"><img src="../images/felicitaciones.jpg" width="790" height="700" border="0"></div>
 		<?php } else { ?>
-			<div id="content">Tardaste mucho, tu premio ya se asigno a otra persona</div>
+			<div id="content"><img src="../images/yaSeEntregaron.jpg" width="790" height="700" border="0"><!--Tardaste mucho, tu premio ya se asigno a otra persona--></div>
 		<?php } ?>
 	<?php } ?>
 <?php } else { ?>
