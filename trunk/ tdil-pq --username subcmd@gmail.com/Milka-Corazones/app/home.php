@@ -209,10 +209,6 @@ closeConnection($connection);
 			objdiv.innerHTML = "Debe ingresar el nombre";
 			return false;
 		}
-		if (document.getElementById("lastname").value == "") {
-			objdiv.innerHTML = "Debe ingresar el apellido";
-			return false;
-		}
 		if (document.getElementById("address").value == "") {
 			objdiv.innerHTML = "Debe ingresar la direccion";
 			return false;
