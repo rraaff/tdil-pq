@@ -82,6 +82,9 @@ body {
 </style>
 </head>
 <body>
+<?php 
+	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
+?>
 <div id="content">
 	<div id="tableHead"><div>fecha</div><div>ganador</div></div>
 	<div id="tableBody">
@@ -89,7 +92,7 @@ body {
 			<div id="tableRow"><div><?php echo $aRow["prizeDate"] ?></div><div><?php echo $aRow["fbname"] ?></div></div>
 		<?php }	?>
 	</div>
-	<div id="backButton"><a href="index.php"><img src="../images/btn_volver_rosa.png" width="122" height="33"/></a></div>
+	<div id="backButton"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/btn_volver_rosa.png" width="122" height="33"/></a></div>
 </div>
 </body>
 </html>
