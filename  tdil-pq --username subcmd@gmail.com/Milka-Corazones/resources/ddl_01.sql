@@ -7,5 +7,4 @@ FROM FBUSER us, PARTICIPATION pa
 where us.id = pa.fbuserID
 order by pa.creationDate;
 
-
 ALTER TABLE PARTICIPATION ADD dailyPrizeId INT;

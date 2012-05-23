@@ -85,9 +85,11 @@
 	    	<delete file="milka-corazones.zip" failonerror="false"></delete>
 	    	<delete dir="tmp" failonerror="false"></delete>
 	    	<mkdir dir="tmp/FB"/>
-	    	<copy todir="tmp" file="Instrucciones.txt"></copy>
-			<copy todir="tmp" file="database.sql"></copy>
-	    	<copy todir="tmp" file="ddl.sql"></copy>
+	    	<!--copy todir="tmp" file="Instrucciones.txt"></copy-->
+			<copy todir="tmp" file="Instrucciones_upgrade_20120522.txt"></copy>
+			<!--copy todir="tmp" file="database.sql"></copy>
+	    	<copy todir="tmp" file="ddl.sql"></copy-->
+			<copy todir="tmp" file="ddl_01.sql"></copy>
 	    	<copy todir="tmp/FB">
 	    		<fileset dir="../" id="id">
 	    			<exclude name="**/.settings/**"/>
@@ -101,6 +103,7 @@
 	    			<exclude name="**/app1constants.php"/>
 	    			<exclude name="**/constantes_mail.php"/>
 	    			<exclude name="**/invitacion_app1.html"/>
+	    			<exclude name="**/appconstants.php"/>
 				</fileset>
 	    	</copy>
 	        <zip destfile="milka-corazones.zip" basedir="tmp">		
