@@ -45,10 +45,14 @@
 			$res = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 			$returnInsert = mysql_insert_id($connection);
 			
-			$SQL = "UPDATE DAILY_PRIZE SET participationID = $returnInsert WHERE coord = $coord AND prizeDate = CURDATE() AND activationTimestamp <= NOW() AND participationID IS NULL LIMIT 1";
-			mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
-			// si gano
-			if (mysql_affected_rows() == 1) {
+			$SQL = "SELECT id FROM DAILY_PRIZE WHERE coord = $coord AND prizeDate = CURDATE() AND activationTimestamp <= NOW() AND participationID IS NULL LIMIT 1";
+			$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
+			$num_rows = mysql_num_rows($result);
+			if ($num_rows > 0) {
+				$prizeApplied = mysql_fetch_array($result);
+				$idPrizeApplied = $prizeApplied['id'];
+				$SQL = "UPDATE PARTICIPATION SET dailyPrizeId = $idPrizeApplied WHERE id = $returnInsert";
+				$result = mysql_query($SQL,$connection) or die("MySQL-err.Query: " . $SQL . " - Error: (" . mysql_errno() . ") " . mysql_error());
 				$output = 'dummie=0&status=1';
 			} else {
 				$output = 'dummie=0&status=0';
