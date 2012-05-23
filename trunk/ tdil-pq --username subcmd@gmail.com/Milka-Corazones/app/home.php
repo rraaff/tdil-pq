@@ -304,6 +304,7 @@ input[type="button"], input[type="submit"] {
 	height:33px;
 	margin:0;
 	padding:0;
+	cursor:hand;
 }
 -->
 </style>
