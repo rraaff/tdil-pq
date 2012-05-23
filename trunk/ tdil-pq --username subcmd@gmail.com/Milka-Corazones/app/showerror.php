@@ -6,8 +6,8 @@
 	background-image: url(../images/error.png);
 	background-repeat: no-repeat;
 	background-position: center top;
-	width:100%;
-	height:100%;
+	width:790px;
+	height:700px;
 }
 #contentError{
 	width: 400px;
