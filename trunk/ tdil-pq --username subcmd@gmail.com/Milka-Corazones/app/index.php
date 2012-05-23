@@ -30,24 +30,15 @@ if ($user == 0) {
 <link href="../css/tdil.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body {
-	background-image: url(../images/acceptBGApp2.jpg);
-	background-repeat: no-repeat;
-	background-position: left top;
-	overflow:hidden !important;
-}
 #textContent{
-	width: 159px;
-	margin-top: 307px;
-	margin-right: 90px;
+	width: 790px;
+	margin-top: 700px;
 	text-align: center;
 }
 -->
 </style>
 
 <body>
-<div id="textContent">
-	<div id="contentSuccessfull"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/button_here.png" alt="clic ac&aacute;" width="159" height="58" border="0"></a></div>
-</div>
+<div id="textContent"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/redirect.jpg" alt="clic ac&aacute;" width="790" height="700" border="0"></a></div>
 </body>
 </html>
