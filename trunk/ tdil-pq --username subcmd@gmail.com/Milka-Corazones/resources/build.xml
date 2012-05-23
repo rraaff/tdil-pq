@@ -40,7 +40,7 @@
 			</sql>
 		</target>
 	
-		<target name="incremental_01" depends="createDatabase" description="Regenera la base de datos">
+		<target name="incremental_01" description="Regenera la base de datos">
 			<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 				<classpath>
 					<pathelement location="./mysql-connector-java-5.1.13-bin.jar" />
