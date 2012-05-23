@@ -112,6 +112,8 @@ CREATE TABLE MILKA_PHOTO (
   `approved` INT NOT NULL,
   `id_blob_data` INT NULL,
   `ext_blob_data` VARCHAR(10) NULL ,
+  `id_approved_data` INT NULL,
+  `ext_approved_data` VARCHAR(10) NULL ,
   `id_click_counter` INT NOT NULL,
   `tags` VARCHAR(300) NULL ,
   `deleted` INT NOT NULL ,
