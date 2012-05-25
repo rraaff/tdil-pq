@@ -324,9 +324,59 @@
  <PROCESS-ITEM ID="#viewEmailEndingReplacement" NAME="action37"
   PATH="/viewEmailEndingReplacement" SHAPE="32,5633,0,0"
   TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM ID="#uploadMilkaPhotoReplacement" NAME="action38"
-  PATH="/uploadMilkaPhotoReplacement" SHAPE="32,5633,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadMailToParent" NAME="action38"
+  PATH="/uploadMailToParent" SHAPE="32,1873,0,0"
+  TITLE="MailToParentForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
+   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
+   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewMilkaPhotoReplacement" NAME="action39"
   PATH="/viewMilkaPhotoReplacement" SHAPE="32,5633,0,0"
   TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadMilkaPhotoReplacement" NAME="action40"
+  PATH="/uploadMilkaPhotoReplacement" SHAPE="240,5649,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToMailToParentApprove" NAME="action41"
+  PATH="/goToMailToParentApprove" SHAPE="32,5633,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="/mailToParentPending.jsp"
+  SHAPE="288,5650,0,0" SUBTYPE="jsp" TITLE="mailToParentPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveMailToParent.do" SUBTYPE="confirmed"
+   TARGET="action44" TITLE="/approveDisapproveMailToParent.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMailToParentReview" NAME="action42"
+  PATH="/goToMailToParentReview" SHAPE="32,5745,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewMailToParent" NAME="action43"
+  PATH="/reviewMailToParent" SHAPE="32,5857,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveMailToParent" NAME="action44"
+  PATH="/approveDisapproveMailToParent" SHAPE="32,6081,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadMailToParentReplacement" NAME="action45"
+  PATH="/uploadMailToParentReplacement" SHAPE="32,6193,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewMailToParentReplacement" NAME="action46"
+  PATH="/viewMailToParentReplacement" SHAPE="240,6209,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
