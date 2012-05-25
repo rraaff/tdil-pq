@@ -329,10 +329,12 @@
  <PROCESS-ITEM ID="#uploadMailToParent" NAME="action38"
   PATH="/uploadMailToParent" SHAPE="32,1873,0,0"
   TITLE="MailToParentForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
-   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
-   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/agregarCartaDeHijoAPadre.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/cartasDeHijosAPadres.jsp" TARGET="page17" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewMilkaPhotoReplacement" NAME="action39"
   PATH="/viewMilkaPhotoReplacement" SHAPE="32,5633,0,0"
@@ -436,4 +438,10 @@
  <PROCESS-ITEM NAME="page14" PATH="/finalesDeEmail.jsp"
   SHAPE="448,1873,0,0" SUBTYPE="jsp" TITLE="finalesDeEmail.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page17" PATH="/cartasDeHijosAPadres.jsp"
+  SHAPE="656,1873,0,0" SUBTYPE="jsp" TITLE="cartasDeHijosAPadres.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page16" PATH="/agregarCartaDeHijoAPadre.jsp"
+  SHAPE="448,1985,0,0" SUBTYPE="jsp"
+  TITLE="agregarCartaDeHijoAPadre.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

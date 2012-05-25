@@ -230,8 +230,8 @@
    <forward name="failure" path="/agregarFinalDeEmail.jsp"/>
   </action>
   <action name="MailToParentForm" path="/uploadMailToParent" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/index.jsp" redirect="true"/>
-   <forward name="failure" path="/index.jsp"/>
+   <forward name="continue" path="/cartasDeHijosAPadres.jsp" redirect="true"/>
+   <forward name="failure" path="/agregarCartaDeHijoAPadre.jsp"/>
   </action>
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
  </action-mappings>

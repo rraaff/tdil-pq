@@ -28,6 +28,8 @@ import com.tdil.validations.ValidationErrors;
 
 public class MailToParentForm extends TransactionalValidationForm {
 
+	private static final int MAX_PHOTO_SIZE = 1000000;
+
 	/**
 	 * 
 	 */
@@ -54,16 +56,19 @@ public class MailToParentForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
+		getAuthorBean().basicValidate(error);
 		FormFile formFile = this.getPhotoFormFile();
 		UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
 		if (uploadData != null) {
 			int fileSize = formFile.getFileSize();
-			if (fileSize > 1000000) {
-				error.setFieldError("", ValidationErrors.TOO_BIG);
+			if (fileSize > MAX_PHOTO_SIZE) {
+				error.setFieldError("MailToParentForm.photo", ValidationErrors.TOO_BIG);
 				this.setPhoto(null);
 				return;
 			}
 			this.setPhoto(uploadData);
+		} else {
+			error.setFieldError("MailToParentForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
 		}
 	}
 	
