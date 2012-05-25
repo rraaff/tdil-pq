@@ -17,6 +17,7 @@ import com.tdil.milka.dao.RawInsertDAO;
 import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.dao.SystemUserDAO;
 import com.tdil.milka.dao.TagDAO;
+import com.tdil.milka.dao.VideoDAO;
 import com.tdil.milka.dao.WallDAO;
 import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.dao.impl.AuthorDAOImpl;
@@ -33,6 +34,7 @@ import com.tdil.milka.dao.impl.RawInsertDAOImpl;
 import com.tdil.milka.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.milka.dao.impl.SystemUserDAOImpl;
 import com.tdil.milka.dao.impl.TagDAOImpl;
+import com.tdil.milka.dao.impl.VideoDAOImpl;
 import com.tdil.milka.dao.impl.WallDAOImpl;
 import com.tdil.milka.dao.impl.WallWrittingDAOImpl;
 
@@ -101,5 +103,9 @@ public class DAOManager {
 	
 	public static MailToParentDAO getMailToParentDAO() throws SQLException {
 		return new MailToParentDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static VideoDAO getVideoDAO() throws SQLException {
+		return new VideoDAOImpl(IBatisManager.getClient());
 	}
 }
