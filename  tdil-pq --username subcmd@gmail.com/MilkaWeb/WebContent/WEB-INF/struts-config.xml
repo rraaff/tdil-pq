@@ -226,8 +226,8 @@
    <forward name="failure" path="/papapedia.jsp"/>
   </action>
   <action name="EmailEndingForm" path="/uploadEmailEnding" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/index.jsp" redirect="true"/>
-   <forward name="failure" path="/index.jsp"/>
+   <forward name="continue" path="/finalesDeEmail.jsp" redirect="true"/>
+   <forward name="failure" path="/agregarFinalDeEmail.jsp"/>
   </action>
   <action name="MailToParentForm" path="/uploadMailToParent" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>

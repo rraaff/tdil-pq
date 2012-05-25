@@ -918,3 +918,23 @@ div.rightArrow a{
 	color:#FFF;
 	cursor:pointer;
 }
+
+/**/
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #fff;
+	background-color: #000;
+	padding: 10px;
+	opacity: 0.85;
+	color: #FFCCCC;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+#tooltip h3, #tooltip div { margin: 0; }
+/**/

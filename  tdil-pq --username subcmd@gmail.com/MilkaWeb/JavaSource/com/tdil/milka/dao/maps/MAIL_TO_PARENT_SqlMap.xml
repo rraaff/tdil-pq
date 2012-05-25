@@ -434,6 +434,6 @@
     from MAIL_TO_PARENT mtp, AUTHOR author
     where mtp.id_author = author.id
     and mtp.approved = 1
-    order by mtp.id desc
+    order by mtp.publishDate desc, mtp.id desc
   </select>
 </sqlMap>
