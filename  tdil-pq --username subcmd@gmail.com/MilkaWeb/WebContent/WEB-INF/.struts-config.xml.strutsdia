@@ -379,4 +379,31 @@
  <PROCESS-ITEM ID="#viewMailToParentReplacement" NAME="action46"
   PATH="/viewMailToParentReplacement" SHAPE="240,6209,0,0"
   TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVideoABM" NAME="action49" PATH="/goToVideoABM"
+  SHAPE="32,6529,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page12" PATH="/videoAdministration.jsp"
+  SHAPE="240,6658,0,0" SUBTYPE="jsp" TITLE="videoAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVideo.do"
+   SUBTYPE="confirmed" TARGET="action51" TITLE="/saveVideo.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVideo" NAME="action51" PATH="/saveVideo"
+  SHAPE="32,6977,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadVideoCover" NAME="action47"
+  PATH="/uploadVideoCover" SHAPE="32,7457,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewVideoCover" NAME="action48"
+  PATH="/viewVideoCover" SHAPE="32,7457,0,0" TITLE="VideoForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
