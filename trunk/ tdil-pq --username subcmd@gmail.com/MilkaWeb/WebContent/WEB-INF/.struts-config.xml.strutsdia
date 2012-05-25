@@ -278,10 +278,12 @@
  <PROCESS-ITEM ID="#uploadEmailEnding" NAME="action31"
   PATH="/uploadEmailEnding" SHAPE="32,1873,0,0" TITLE="EmailEndingForm"
   TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
-   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
-   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/agregarFinalDeEmail.jsp" TARGET="page13" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/finalesDeEmail.jsp" TARGET="page14" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToEmailEndingsApprove" NAME="action32"
   PATH="/goToEmailEndingsApprove" SHAPE="32,4849,0,0"
@@ -424,4 +426,14 @@
    PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="/agregarFinalDeEmail.jsp"
+  SHAPE="240,1985,0,0" SUBTYPE="jsp" TITLE="agregarFinalDeEmail.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadEmailEnding.do"
+   SUBTYPE="confirmed" TARGET="action31" TITLE="/uploadEmailEnding.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page14" PATH="/finalesDeEmail.jsp"
+  SHAPE="448,1873,0,0" SUBTYPE="jsp" TITLE="finalesDeEmail.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

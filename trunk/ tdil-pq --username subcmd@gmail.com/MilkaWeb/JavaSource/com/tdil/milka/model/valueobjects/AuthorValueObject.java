@@ -3,6 +3,9 @@ package com.tdil.milka.model.valueobjects;
 import java.io.Serializable;
 
 import com.tdil.milka.model.Author;
+import com.tdil.struts.ValidationError;
+import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class AuthorValueObject implements Serializable {
 
@@ -13,6 +16,19 @@ public class AuthorValueObject implements Serializable {
 	private boolean acceptPolitics = false;
 	private String name;
 	private String email;
+	
+	private static final String name_key = "Author.name";
+	private static final String email_key = "Author.email";
+	private static final String politics_key = "Author.politics";
+	
+	public void basicValidate(ValidationError error) {
+		FieldValidation.validateText(this.getName(), name_key, 150, error);
+		FieldValidation.validateEmail(this.getEmail(), email_key, error);
+		if (!acceptPolitics) {
+			error.setFieldError(politics_key, "MUST_ACCEPT_POLITICS");
+		}
+		
+	}
 	
 	public boolean isAcceptPolitics() {
 		return acceptPolitics;

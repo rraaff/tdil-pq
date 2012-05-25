@@ -434,6 +434,7 @@
     from EMAIL_ENDINGS ee, AUTHOR author
     where ee.id_author = author.id
     and ee.approved = 1
-    order by ee.id desc
+    order by ee.publishDate desc, ee.id desc
   </select>
+  
 </sqlMap>

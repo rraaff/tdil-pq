@@ -7,6 +7,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
+<head>
 <%@ include file="includes/head.jsp" %>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
@@ -20,7 +21,6 @@ $(document).ready(
 	
 );
 </script>
-<head>
 </head>
 <body>
 

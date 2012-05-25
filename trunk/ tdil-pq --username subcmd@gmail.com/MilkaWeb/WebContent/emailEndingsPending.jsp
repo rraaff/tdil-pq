@@ -94,8 +94,6 @@ request.setAttribute( "test",  paginated);
 <html:form method="POST" action="/approveDisapproveEmailEndings">
 Titulo: <html:text name="EmailEndingsAdministrationForm" property="title" style="width: 300px;"/><br><br>
 Descripcion: <html:text name="EmailEndingsAdministrationForm" property="description" style="width: 300px;"/><br><br>
-	<html:checkbox name="EmailEndingsAdministrationForm" property="frontcover" /> Portada<br>
-	<html:checkbox name="EmailEndingsAdministrationForm" property="showinhome" /> Mostrar en la home<br>
 
 	<html:submit property="operation">
 		<bean:message key="approve" />

@@ -54,6 +54,7 @@ public class EmailEndingForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
+		getAuthorBean().basicValidate(error);
 		FormFile formFile = this.getPhotoFormFile();
 		UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
 		if (uploadData != null) {

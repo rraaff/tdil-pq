@@ -476,7 +476,7 @@
     from POST_IT pi, AUTHOR author
     where pi.id_author = author.id
     and pi.approved = 1
-    order by pi.id desc
+    order by pi.publishDate desc, pi.id desc
   </select>
 
 </sqlMap>
