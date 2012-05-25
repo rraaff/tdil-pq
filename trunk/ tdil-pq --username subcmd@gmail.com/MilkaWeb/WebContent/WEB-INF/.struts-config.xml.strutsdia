@@ -406,4 +406,22 @@
  <PROCESS-ITEM ID="#viewVideoCover" NAME="action48"
   PATH="/viewVideoCover" SHAPE="32,7457,0,0" TITLE="VideoForm"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#moveVideoUp" NAME="action50" PATH="/moveVideoUp"
+  SHAPE="32,7457,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#moveVideoDown" NAME="action52" PATH="/moveVideoDown"
+  SHAPE="32,7457,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteVideo" NAME="action53" PATH="/deleteVideo"
+  SHAPE="32,6977,0,0" TITLE="VideoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/videoAdministration.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
