@@ -24,6 +24,8 @@
    name="MailToParentForm" type="com.tdil.milka.struts.forms.MailToParentForm"/>
    <form-bean id="MailToParentAdministrationForm"
    name="MailToParentAdministrationForm" type="com.tdil.milka.struts.forms.MailToParentAdministrationForm"/>
+   <form-bean id="VideoForm"
+   name="VideoForm" type="com.tdil.milka.struts.forms.VideoForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -183,6 +185,21 @@
   <action name="MailToParentAdministrationForm" parameter="Admin" path="/viewMailToParentReplacement"
    scope="session" type="com.tdil.milka.struts.action.ViewMailToParentReplacementAction">
   </action>
+  
+  <action name="VideoForm" parameter="Admin" path="/saveVideo"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/videoAdministration.jsp"/>
+  </action>
+  <action name="VideoForm" parameter="Admin"
+   path="/goToVideoABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/videoAdministration.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadVideoCover" type="com.tdil.milka.struts.action.UploadVideoCoverAction"/>
+  <action name="VideoForm" parameter="Admin" path="/viewVideoCover"
+   scope="session" type="com.tdil.milka.struts.action.ViewVideoCoverAction">
+  </action>
+  
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>

@@ -41,8 +41,9 @@
 				<li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>
 			</ul>
 		</li>
-		<li><a href="#">Notificaciones</a>
+		<li><a href="#">Administracion</a>
 			<ul>
+				<li><html:link action="/goToVideoABM" >Administracion de videos</html:link></li>
 				<li><html:link action="/goToNotificationEmailABM" >Notificaciones por email</html:link></li>
 			</ul>
 		</li>
