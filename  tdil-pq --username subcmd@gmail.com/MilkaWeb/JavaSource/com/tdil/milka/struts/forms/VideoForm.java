@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.milka.dao.VideoDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.BlobData;
 import com.tdil.milka.model.Video;
 import com.tdil.milka.model.VideoExample;
+import com.tdil.milka.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -36,7 +38,9 @@ public class VideoForm extends TransactionalValidationForm implements AjaxUpload
 	private int objectId;
 	private List<VideoDataBean> positions = new ArrayList<VideoDataBean>();
 	
-	private static final String imageGallery_photo_key = "Video.photo";
+	private static final String title_key = "Video.title";
+	private static final String url_key = "Video.url";
+	private static final String photo_key = "Video.photo";
 	private static final int MAX_PHOTO_SIZE = 1000000;
 
 	@Override
@@ -53,11 +57,11 @@ public class VideoForm extends TransactionalValidationForm implements AjaxUpload
 			Map<String, Object> result) {
 		FileItem uploaded = fileItems.get(AjaxFileUploadAction.UPLOAD_NAME);
 		VideoDataBean imageGalleryPositionBean = new VideoDataBean();
-		UploadData uploadData = FieldValidation.validateFileItem(uploaded, imageGallery_photo_key, true, error);
+		UploadData uploadData = FieldValidation.validateFileItem(uploaded, photo_key, true, error);
 		if (uploadData != null) {
 			long fileSize = uploaded.getSize();
 			if (fileSize > MAX_PHOTO_SIZE) {
-				error.setFieldError(imageGallery_photo_key, ValidationErrors.TOO_BIG);
+				error.setFieldError(photo_key, ValidationErrors.TOO_BIG);
 				return;
 			}
 			imageGalleryPositionBean.setUploadData(uploadData);
@@ -90,6 +94,8 @@ public class VideoForm extends TransactionalValidationForm implements AjaxUpload
 		BlobData blobData = DAOManager.getBlobDataDAO().selectBlobDataByPrimaryKey(video.getFrontcoverId());
 		VideoDataBean result = new VideoDataBean();
 		result.setVideoId(video.getId());
+		result.setTitle(video.getTitle());
+		result.setUrl(video.getUrl());
 		result.setUploadData(new UploadData(blobData.getFilename(), blobData.getContent(), false));
 		return result;
 	}
@@ -97,7 +103,14 @@ public class VideoForm extends TransactionalValidationForm implements AjaxUpload
 	@Override
 	public void basicValidate(ValidationError validationError) {
 		if (this.getPositions().isEmpty()) {
-			validationError.setFieldError(imageGallery_photo_key, ValidationErrors.CANNOT_BE_EMPTY);
+			validationError.setFieldError(photo_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		for (VideoDataBean videoDataBean : getPositions()) {
+			FieldValidation.validateText(videoDataBean.getTitle(), title_key, 250, validationError);
+			FieldValidation.validateText(videoDataBean.getUrl(), url_key, 4000, validationError);
+			if (validationError.hasError()) {
+				return;
+			}
 		}
 	}
 	
@@ -119,18 +132,27 @@ public class VideoForm extends TransactionalValidationForm implements AjaxUpload
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		/*for (UploadDataBean imageGalleryPositionBean : this.getPositions()) {
-			int blobId = BlobHelper.insertBlob(imageGalleryPositionBean.getUploadData());
-			imageGalleryPositionBean.setBlobId(blobId);
-			ImageInGallery imageInGallery = new ImageInGallery();
-			imageInGallery.setIdGallery(galId);
-			imageInGallery.setOrdernumber(index);
-			imageInGallery.setImageId(blobId);
-			imageInGallery.setImageext(imageGalleryPositionBean.getUploadData().getExtension());
-			imageInGallery.setDeleted(0);
-			imageInGalleryDAO.insertImageInGallery(imageInGallery);
+		int index = 0;
+		VideoDAO videoDao = DAOManager.getVideoDAO();
+		VideoExample videoExample = new VideoExample();
+		List<Video> toDelete = videoDao.selectVideoByExample(videoExample);
+		for (Video img : toDelete) {
+			BlobHelper.deleteBlob(img.getFrontcoverId());
+		}
+		videoDao.deleteVideoByExample(videoExample);
+		for (VideoDataBean videoBean : this.getPositions()) {
+			int blobId = BlobHelper.insertBlob(videoBean.getUploadData());
+			videoBean.setBlobId(blobId);
+			Video video = new Video();
+			video.setTitle(videoBean.getTitle());
+			video.setUrl(videoBean.getUrl());
+			video.setOrdernumber(index);
+			video.setFrontcoverId(blobId);
+			video.setFrontcoverext(videoBean.getUploadData().getExtension());
+			video.setDeleted(0);
+			videoDao.insertVideo(video);
 			index = index + 1;
-		}*/
+		}
 	}
 
 	

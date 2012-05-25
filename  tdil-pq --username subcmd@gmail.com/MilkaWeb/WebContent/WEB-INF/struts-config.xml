@@ -199,6 +199,18 @@
   <action name="VideoForm" parameter="Admin" path="/viewVideoCover"
    scope="session" type="com.tdil.milka.struts.action.ViewVideoCoverAction">
   </action>
+  <action name="VideoForm" parameter="Admin" path="/deleteVideo"
+   scope="session" type="com.tdil.milka.struts.action.DeleteVideoAction">
+    <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+  </action>
+   <action name="VideoForm" parameter="Admin" path="/moveVideoUp"
+   scope="session" type="com.tdil.milka.struts.action.MoveVideoUpAction">
+    <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+  </action>
+   <action name="VideoForm" parameter="Admin" path="/moveVideoDown"
+   scope="session" type="com.tdil.milka.struts.action.MoveVideoDownAction">
+    <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
+  </action>
   
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">

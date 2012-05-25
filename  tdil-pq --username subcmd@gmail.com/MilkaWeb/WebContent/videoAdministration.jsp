@@ -1,4 +1,4 @@
-<%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
+	<%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
@@ -20,6 +20,8 @@ $(document).ready(
 		  	if (response.result == 'OK') {
 		  		var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
 		  		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
+		  		var tdtitle = $('<td><input type="text" name="selectedPosition['+(maxindex)+'].title" value=""></td>').appendTo( tr );
+		  		var tdurl = $('<td><input type="text" name="selectedPosition['+(maxindex)+'].url" value=""></td>').appendTo( tr );
 		  		var tdimg = $('<td align="center"><img id="ranking_' + maxindex + '" src="./viewVideoCover.do?pos=' + maxindex + '" width="66" height="40" align="absmiddle"></td>').appendTo( tr );
 		  		var tdops = $('<td align="center" width="100"><a href="javascript:document.VideoForm.action=\'./moveVideoUp.do?index=\'' + maxindex + '\';document.VideoForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.VideoForm.action=\'./moveVideoDown.do?index=' + maxindex + '\';document.VideoForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.VideoForm.action=\'./deleteVideo.do?index=' + maxindex + '\';document.VideoForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>').appendTo( tr );
 		  		maxindex = maxindex + 1;
@@ -55,12 +57,16 @@ div { /*border:dotted 1px #00CCFF; */}
 				<table width="380" id="image_gal_tab">
 					<tr>
 						<td class="headerTablas" width="50">Posici&oacute;n</td>
+						<td class="headerTablas">Titulo <%=MilkaErrorFormatter.getErrorFrom(request, "Video.title.err")%></td>
+						<td class="headerTablas">URL <%=MilkaErrorFormatter.getErrorFrom(request, "Video.url.err")%></td>
 						<td class="headerTablas">Foto</td>
 						<td class="headerTablas">Acciones</td>
 					</tr>
 					<logic:iterate id="selectedPosition" name="VideoForm" property="positions" indexId="iterIndexPositions">  
 						<tr>
 							<td align="center"><%=iterIndexPositions + 1%></td>
+							<td><html:text name="selectedPosition" property="title" indexed="true"/></td>
+							<td><html:text name="selectedPosition" property="url" indexed="true"/></td>
 							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewVideoCover.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
 							<td align="center" width="100">
 								<a href="javascript:document.VideoForm.action='./moveVideoUp.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
