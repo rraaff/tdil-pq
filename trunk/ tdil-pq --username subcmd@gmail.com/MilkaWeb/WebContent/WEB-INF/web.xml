@@ -67,6 +67,18 @@
     <servlet-name>EmailEndingsServlet</servlet-name>
     <url-pattern>/finalesDeEmail.xml</url-pattern>
   </servlet-mapping>
+  
+ <!-- Finales de email -->
+   <servlet>
+    <servlet-name>MailToParentServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.MailToParentServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MailToParentServlet</servlet-name>
+    <url-pattern>/cartasDeHijosAPadres.xml</url-pattern>
+  </servlet-mapping>
  
  <!-- Action Servlet Configuration -->
  <servlet>

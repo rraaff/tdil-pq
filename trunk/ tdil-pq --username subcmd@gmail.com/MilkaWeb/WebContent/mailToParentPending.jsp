@@ -94,8 +94,6 @@ request.setAttribute( "test",  paginated);
 <html:form method="POST" action="/approveDisapproveMailToParent">
 Titulo: <html:text name="MailToParentAdministrationForm" property="title" style="width: 300px;"/><br><br>
 Descripcion: <html:text name="MailToParentAdministrationForm" property="description" style="width: 300px;"/><br><br>
-	<html:checkbox name="MailToParentAdministrationForm" property="frontcover" /> Portada<br>
-	<html:checkbox name="MailToParentAdministrationForm" property="showinhome" /> Mostrar en la home<br>
 
 	<html:submit property="operation">
 		<bean:message key="approve" />
