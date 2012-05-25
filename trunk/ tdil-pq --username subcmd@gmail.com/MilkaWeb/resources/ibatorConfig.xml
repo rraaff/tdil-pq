@@ -86,6 +86,9 @@ targetProject="MilkaWeb">
 <table schema="MILKA" tableName="EMAIL_ENDINGS" domainObjectName="EmailEndings" alias="ee">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="MILKA" tableName="MAIL_TO_PARENT" domainObjectName="MailToParent" alias="mtp">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

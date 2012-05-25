@@ -34,4 +34,5 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/WALL_WRITTING_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/FILTERED_WORD_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/EMAIL_ENDINGS_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/MAIL_TO_PARENT_SqlMap.xml"/>
 </sqlMapConfig>

@@ -20,6 +20,11 @@
   <form-bean id="EmailEndingForm" name="EmailEndingForm" type="com.tdil.milka.struts.forms.EmailEndingForm"/>
   <form-bean id="EmailEndingsAdministrationForm"
    name="EmailEndingsAdministrationForm" type="com.tdil.milka.struts.forms.EmailEndingsAdministrationForm"/>
+   <form-bean id="MailToParentForm"
+   name="MailToParentForm" type="com.tdil.milka.struts.forms.MailToParentForm"/>
+   <form-bean id="MailToParentAdministrationForm"
+   name="MailToParentAdministrationForm" type="com.tdil.milka.struts.forms.MailToParentAdministrationForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -158,6 +163,26 @@
    scope="session" type="com.tdil.milka.struts.action.ViewEmailEndingReplacementAction">
   </action>
   
+  <action name="MailToParentAdministrationForm" parameter="Admin"
+   path="/goToMailToParentApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/mailToParentPending.jsp"/>
+  </action>
+  <action name="MailToParentAdministrationForm" parameter="Admin"
+   path="/goToMailToParentReview" scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/mailToParentPending.jsp"/>
+  </action>
+  <action name="MailToParentAdministrationForm" parameter="Admin"
+   path="/reviewMailToParent" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/mailToParentPending.jsp"/>
+  </action>
+  <action name="MailToParentAdministrationForm" parameter="Admin"
+   path="/approveDisapproveMailToParent" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/mailToParentPending.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadMailToParentReplacement" type="com.tdil.milka.struts.action.UploadMailToParentReplacementAction"/>
+  <action name="MailToParentAdministrationForm" parameter="Admin" path="/viewMailToParentReplacement"
+   scope="session" type="com.tdil.milka.struts.action.ViewMailToParentReplacementAction">
+  </action>
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
@@ -172,6 +197,10 @@
    <forward name="failure" path="/papapedia.jsp"/>
   </action>
   <action name="EmailEndingForm" path="/uploadEmailEnding" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/index.jsp" redirect="true"/>
+   <forward name="failure" path="/index.jsp"/>
+  </action>
+  <action name="MailToParentForm" path="/uploadMailToParent" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/index.jsp"/>
   </action>

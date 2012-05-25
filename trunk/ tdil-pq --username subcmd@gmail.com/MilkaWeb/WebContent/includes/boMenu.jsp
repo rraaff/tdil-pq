@@ -30,6 +30,12 @@
 				<li><html:link action="/goToEmailEndingsReview" >Revision de aprobados</html:link></li>
 			</ul>
 		</li>
+		<li><a href="#">Cartas de hijos a padres</a>
+			<ul>
+				<li><html:link action="/goToMailToParentApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+				<li><html:link action="/goToMailToParentReview" >Revision de aprobados</html:link></li>
+			</ul>
+		</li>
 		<li><a href="#">Reportes</a>
 			<ul>
 				<li><html:link action="/goToNewsletterReport" >Subscriptos al newsletter</html:link></li>

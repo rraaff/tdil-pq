@@ -8,6 +8,7 @@ import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.ClickCounterDAO;
 import com.tdil.milka.dao.EmailEndingsDAO;
 import com.tdil.milka.dao.FilteredWordDAO;
+import com.tdil.milka.dao.MailToParentDAO;
 import com.tdil.milka.dao.MilkaPhotoDAO;
 import com.tdil.milka.dao.MilkaPhotoTagDAO;
 import com.tdil.milka.dao.NotificationEmailDAO;
@@ -23,6 +24,7 @@ import com.tdil.milka.dao.impl.BlobDataDAOImpl;
 import com.tdil.milka.dao.impl.ClickCounterDAOImpl;
 import com.tdil.milka.dao.impl.EmailEndingsDAOImpl;
 import com.tdil.milka.dao.impl.FilteredWordDAOImpl;
+import com.tdil.milka.dao.impl.MailToParentDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoDAOImpl;
 import com.tdil.milka.dao.impl.MilkaPhotoTagDAOImpl;
 import com.tdil.milka.dao.impl.NotificationEmailDAOImpl;
@@ -95,5 +97,9 @@ public class DAOManager {
 	
 	public static EmailEndingsDAO getEmailEndingsDAO() throws SQLException {
 		return new EmailEndingsDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static MailToParentDAO getMailToParentDAO() throws SQLException {
+		return new MailToParentDAOImpl(IBatisManager.getClient());
 	}
 }

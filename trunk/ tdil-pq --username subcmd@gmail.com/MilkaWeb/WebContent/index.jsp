@@ -163,27 +163,5 @@ new TWTR.Widget({
 </div>
 <!-- end content-->
 <div id="montania"></div>	
-<%= MeltButton.meltButton(1) %>
-<%= MeltButton.meltButton(2) %>
-Milka Photo<br>
-<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
-	NOmbre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/><br>
-	email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/><br>
-	Politicas:<html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics" styleClass="width180"/><br>
-	<html:file name="MilkaPhotoForm" property="photoFormFile" />
-	<html:submit property="operation">
-		Upload
-	</html:submit>
-</html:form>
-Post-It<br>
-<html:form method="POST" action="/addPostIt">
-	NOmbre:<html:text name="PostItForm" property="authorBean.name" styleClass="width180"/><br>
-	email:<html:text name="PostItForm" property="authorBean.email" styleClass="width180"/><br>
-	Politicas:<html:checkbox name="PostItForm" property="authorBean.acceptPolitics" styleClass="width180"/><br>
-	Texto:<html:text name="PostItForm" property="text" styleClass="width180"/><br>
-	<html:submit property="operation">
-		Salvar
-	</html:submit>
-</html:form>
 </body>
 </html>
