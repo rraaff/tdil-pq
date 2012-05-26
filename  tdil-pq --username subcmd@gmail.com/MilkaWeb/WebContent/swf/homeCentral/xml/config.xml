@@ -1,0 +1,54 @@
+<config>
+	<thumb>
+		<width>0</width>
+		<height>0</height>
+		<margin>0</margin>
+		<backgroundColor>0x666666</backgroundColor>
+		<backgroundAlpha>0</backgroundAlpha>
+		<coverColor>0x000000</coverColor>
+		<coverAlpha>0</coverAlpha>
+		<topPosition>no</topPosition>
+	</thumb>
+	<info>
+		<space>0</space>
+		<width>0</width>
+		<height>0</height>
+		<buttonSize>200</buttonSize>
+		<buttonHeights>60</buttonHeights>
+		<nextButton>swf/homeCentral/images/next.png</nextButton>
+		<previousButton>swf/homeCentral/images/previous.png</previousButton>
+		<playButton>swf/homeCentral/images/play.png</playButton>
+		<pauseButton>swf/homeCentral/images/pause.png</pauseButton>
+	</info>
+	<view>
+		<loaderSize>20</loaderSize>
+		<effectTime>1</effectTime>
+		<timeBarColor>0x666666</timeBarColor>
+		<timeBarAlpha>20</timeBarAlpha>
+		<timeBarHeight>4</timeBarHeight>
+		<autoPlay>yes</autoPlay>
+		<timer>10000</timer>
+	</view>
+	<items>
+		<item1>
+			<text><!--
+				<p><font face="verdana" size="13" color="#f7a453">Monks Balcony of Greek Monastery</font></p>
+				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>
+			--></text>
+			<thumb></thumb>
+			<view>swf/homeCentral/images/view/teaserPostits.jpg</view>
+			<link>postits.jsp</link>
+			<target>_self</target>
+		</item1>
+		<item2>
+			<text><!--
+				<p><font face="verdana" size="13" color="#f7a453">The old Castle</font></p>
+				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>-->
+			</text>
+			<thumb></thumb>
+			<view>swf/homeCentral/images/view/teaserPapapedia.jpg</view>
+			<link>papapedia.jsp</link>
+			<target>_self</target>
+		</item2>
+	</items>
+</config>

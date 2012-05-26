@@ -51,6 +51,7 @@ $(document).ready(
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
 </script>
+<script src="swf/homeCentral/scripts/AC_RunActiveContent.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
@@ -87,11 +88,34 @@ $(document).ready(
 		<div id="header_home">
 			<h2>Prob&aacute; vos tambi&eacute;n el sabor de la <span class="violeta">ternura</span></h2>  
 			<span class="derecha">2256 <span class="violeta">personas ya se animaron</span></span>
-			<div id="galeria_parte_1" class="panel_galeria">
-				<div class="texto_header">
-					<h1></h1>
-					<p></p>
-				</div>
+			<div id="homeSlider">
+				<script>
+					if (AC_FL_RunContent == 0) {
+						alert("This page requires AC_RunActiveContent.js.");
+					} else {
+						AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+							'width', '627', 
+							'height','309',
+							'FlashVars', 'XMLFile=swf/homeCentral/xml/config.xml',
+							'src', 'swf/homeCentral/slider', 
+							'quality', 'best', 
+							'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+							'align', 'middle', 
+							'play', 'true', 
+							'loop', 'true', 
+							'scale', 'showall', 
+							'wmode', 'transparent', 
+							'devicefont', 'true', 
+							'id', 'ACTest', 
+							'bgcolor', '#ffffff', 
+							'name', 'slider', 
+							'menu', 'true', 
+							'allowScriptAccess', 'sameDomain', 
+							'movie', 'swf/homeCentral/slider',
+							'salign', '' ); 
+							 //end AC code 
+					}
+				</script>
 			</div>
 			<!-- end parte_1-->
 		</div>
