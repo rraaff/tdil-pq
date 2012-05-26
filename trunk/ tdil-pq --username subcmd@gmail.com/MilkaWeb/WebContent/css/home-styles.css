@@ -322,11 +322,7 @@ a {color:#535353; text-decoration:none}
 	z-index:200px;
 	float:left;
 }
-
-
-
-#header_home #galeria_parte_1 {
-	background:url(../images/slider-f1.jpg) no-repeat 0 0;
+#header_home #homeSlider {
 	float:left;
 	width:627px;
 	height:309px;
