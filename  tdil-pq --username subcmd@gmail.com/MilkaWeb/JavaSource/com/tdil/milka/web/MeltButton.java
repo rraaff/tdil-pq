@@ -6,10 +6,11 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.ClickCounter;
 import com.tdil.struts.TransactionalAction;
-import com.tdil.struts.ValidationException;
 
 public class MeltButton implements TransactionalAction {
 
+	public static final int PAPAPEDIA_COUNTER = 1;
+	
 	private int id;
 	private int quantity;
 	
@@ -42,8 +43,8 @@ public class MeltButton implements TransactionalAction {
 		return result.toString();
 	}
 	
+	
 	public void executeInTransaction() throws SQLException {
-		// TODO Auto-generated method stub
 		ClickCounter c = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(this.id);
 		this.quantity = c.getClicks();
 	}

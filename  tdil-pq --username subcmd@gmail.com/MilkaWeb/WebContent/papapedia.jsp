@@ -15,7 +15,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
-<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+
+<%@ include file="includes/head.jsp" %>
+<script type='text/javascript' src='./js/jquery.cookie.js'></script>
+<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+	}
+	
+);
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -186,6 +201,7 @@ int first = PaginationUtils.first(list);
 int last = PaginationUtils.last(list);
 SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
 %>
+<% int barClickCounter = MeltButton.PAPAPEDIA_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
 <div id="content">
 	<div id="header"></div>
