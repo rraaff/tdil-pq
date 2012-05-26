@@ -134,13 +134,4 @@ window.addEvent('domready', function(){
 		<!-- end bloque-texto-->
 	</div>
 	<!-- end wrapper2-->
-	<div id="footer">
-		<div id="left"><p>&copy; 2012 Kraft Foods &reg; Todos los derechos reservados</p></div>
-		<div id="right"><p><a href="#" title="Politicas de Privacidad">Politicas de Privacidad</a> - <a href="#" title="FAQS">FAQS</a></p></div>
-	</div>
-	<!-- end footer-->
-</div>
-<!-- end content-->
-<div id="montania"></div>	
-</body>
-</html>
+	<%@ include file="includes/footer.jsp" %>
