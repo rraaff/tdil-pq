@@ -22,7 +22,15 @@ $(document).ready(
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Milka</title>
+<title>Milka.com.ar | Sitio Oficial
+</title>
+<meta name="keywords" content="Milka, chocolate, vaca, vaca lila, vaca violeta, chocolate aireado, chocolate relleno, relleno de dulce de leche, bombones, corazón, alfajor, tableta, almendras, castañas con caramelo, caramel, oreo, leger, baño maría, fondue, ternura, soft cappuccino, soft combinado, soft chocolate, bajón, regalo, amor, enamorados, avellanas, Cadbury, sabor, Shot, Tofi, Bon o bon, Cofler, golosinas, kiosco, postre, aniversario, cumpleaños, Kraft Foods, rico, sabor, cacao">
+<meta name="description" content="Bienvenidos al sitio oficial de Milka Argentina: los invitamos a deleitarse con el más rico chocolate con leche o con el Milka Dulce de Leche o con el Milka Almendras o con el Milka Oreo Blanco o Milka Castañas con Caramelo o Milka Oreo Leche o Milka Te Quiero Mucho! o Milka Feliz Cumple Atrasado! o Milka Suerte! o Milka Vos Sabés Por qué! o Milka Feliz Día! o Milka Gracias! o Milka Dulce de Leche Blanco o Milka Bombón o Milka Sahne Creme o Milka Caramel o Milka Soft Avellanas o Milka Soft Cappucciono o Milka Soft o Milka Soft Combinado o Milka Leger o Leger con Almedras o con el Leger Combinado. Los invitamos a probar el sabor de la ternura." />
+
+<!-- FB share metas >
+<meta property="og:title" content="Milka Alfajores" />
+<meta property="og:description" content="Compartir la dulzura de nuestros alfajores con tus amigos es un acto de dulzura." />
+<meta property="og:image" content="http://localhost:8180/MilkaWeb/images/productos/alfajores_comp4.jpg" /-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -33,6 +41,16 @@ $(document).ready(
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29166792-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
 </head>
 <body>
 <div id="content">
@@ -44,9 +62,9 @@ $(document).ready(
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
 					<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
-					<li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-					<li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
+					<li class="youtube"><a href="http://www.youtube.com/user/ChocolateMilkaArg" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
 				</ul>
 			</div>
 			<!-- end social-->
@@ -106,21 +124,21 @@ $(document).ready(
 			</ul>
 		</div>
 		<!-- end galeria-videos-->
-    
-   <div id="productos">
-    	<h2>NUESTROS CHOCOLATES...</h2>
-       <div id="social">
-       		<ul>
-                <li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>       			<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-            </ul>
-        </div>
-       <!-- end social-->
-       <div class="imagen"><a href="productos_alfajores.jsp"><img src="images/chocolates.jpg" alt="Chocolates" width="300" height="354" border="0" /></a></div>
-       <div id="bt-productos"><a href="productos_alfajores.jsp" title="Ver todos"></a>
-       </div>
-    
-    
-    </div>
+		<div id="productos">
+			<h2>NUESTROS CHOCOLATES...</h2>
+			<div id="social">
+				<ul>
+					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<!-- li class="facebook"><a name="fb_share" type="icon_link" share_url="http://localhost:8180/MilkaWeb/productos_alfajores.jsp"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script-->
+					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+				</ul>
+			</div>
+			<!-- end social-->
+			<div class="imagen"><a href="productos_alfajores.jsp"><img src="images/chocolates.jpg" alt="Chocolates" width="300" height="354" border="0" /></a></div>
+			<div id="bt-productos"><a href="productos_alfajores.jsp" title="Ver todos"></a>
+		</div>
+	</div>
     <!-- end productos-->
     <div id="box-facebook">
     <div class="fb-like-box" data-href="http://www.facebook.com/chocolat" data-width="300" data-height="437" data-show-faces="false" data-border-color="#dbdbdb" data-stream="true" data-header="false"></div>
@@ -155,13 +173,4 @@ new TWTR.Widget({
 </script>
 
     </div>
-	<div id="footer">
-		<div id="left"><p>&copy; 2012 Kraft Foods &reg; Todos los derechos reservados</p></div>
-		<div id="right"><p><a href="#" title="Politicas de Privacidad">Politicas de Privacidad</a> - <a href="#" title="FAQS">FAQS</a></p></div>
-	</div>
-	<!-- end footer-->
-</div>
-<!-- end content-->
-<div id="montania"></div>	
-</body>
-</html>
+	<%@ include file="includes/footer.jsp" %>

@@ -58,13 +58,4 @@
 		<h2>¿Y por qu&eacute; una vaca de color lila?</h2><p>Porque Philippe Suchard cre&iacute;a firmemente que para llamar la atenci&oacute;n era necesario <strong>"familiarizarse con aquello que es extra&ntilde;o y convertir en extra&ntilde;o a aquello que es familiar"</strong>. Y pocas cosas llaman m&aacute;s la atenci&oacute;n que una Vaca color Lila.</p><p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&aacute;s de 110 anuncios televisivos al punto tal que hoy en d&iacute;a representa la identidad visual de todos los productos de la marca Milka pero adem&aacute;s se ha convertido de una de las m&aacute;s grandes estrellas de la publicidad y est&aacute; solidamente anclada en la sociedad actual.</p></div>
 	</div>
 	<!-- end wrapper2-->
-	<div id="footer">
-		<div id="left"><p>&copy; 2012 Kraft Foods &reg; Todos los derechos reservados</p></div>
-		<div id="right"><p><a href="#" title="Politicas de Privacidad">Politicas de Privacidad</a> - <a href="#" title="FAQS">FAQS</a></p></div>
-	</div>
-	<!-- end footer-->
-</div>
-<!-- end content-->
-<div id="montania"></div>	
-</body>
-</html>
+	<%@ include file="includes/footer.jsp" %>
