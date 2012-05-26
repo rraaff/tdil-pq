@@ -10,14 +10,15 @@
   	  var cookie = $.cookie(cookieName);
   	  if (!cookie) {
   		this.each(function() {
-            obj.html("Me derrite " + actualQuantity);
+            obj.html("<div id='bm_personas'>A <span id='" + buttonId + "-qty'>" + actualQuantity + " personas</span> les derrite esto.</div>");
     		obj.clickenabled = true;
+    		var divBtn = $( "<div id='bm_me_derrite'><a href='#' title='me derrite'></a></div>" ).appendTo( obj );
             obj.click(function() {
 	  			if (obj.clickenabled) {
 	  				var url='meltaction.do?buttonId=' + buttonId;
 				  $.getJSON(url,function(data){
 					  	if (data.result == 'OK') {
-					  		obj.html("Te derrite " + data.quantity);
+					  		$('#' + buttonId + '-qty').html(data.quantity + " personas");
 					  		$.cookie(cookieName, "set", { expires: 180, path: "/" });
 					  		obj.clickenabled = false;
 					  	}
@@ -28,7 +29,8 @@
         });
   	  } else {
   		obj.clickenabled = false;
-  		 obj.html("Te derrite " + actualQuantity);
+  		obj.html("<div id='bm_personas'>A <span>" + actualQuantity + " personas</span> les derrite esto.</div>");
+  		var divBtn = $( "<div id='bm_me_derrite'><a href='#' title='me derrite'></a></div>" ).appendTo( obj );
   	  }
   	  
 	  

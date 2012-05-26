@@ -21,6 +21,26 @@ $(document).ready(
 	
 );
 </script>
+<style>
+#bm_me_derrite {
+	width:108px;
+	height:41px;
+	background:url(images/barra/me-derrite.png) no-repeat;
+	margin-right: 50px;
+}
+#bm_personas{
+	width:180px;
+	height:20px;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	top:14px;
+	left: 280px;
+}
+#bm_personas span{
+	color:#b398ff;
+}
+</style>
 </head>
 <body>
 
@@ -28,9 +48,10 @@ $(document).ready(
 
 <%= MeltButton.meltButton(2) %>
 
+<br><br><br><br><br>
 Milka Photo<br>
 <html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
-	NOmbre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/><br>
+	Nombre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/><br>
 	email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/><br>
 	Politicas:<html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics" styleClass="width180"/><br>
 	<html:file name="MilkaPhotoForm" property="photoFormFile" />

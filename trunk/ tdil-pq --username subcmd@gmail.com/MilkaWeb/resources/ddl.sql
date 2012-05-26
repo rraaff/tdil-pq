@@ -85,8 +85,26 @@ CREATE TABLE CLICK_COUNTER (
   PRIMARY KEY (`id`))
 ENGINE = MYISAM;
 
-INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(1,150, 1);
-INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(2,75, 1);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(1,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(2,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(3,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(4,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(5,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(6,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(7,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(8,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(9,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(10,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(11,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(12,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(13,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(14,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(15,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(16,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(17,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(18,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(19,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(20,0, 0);
 
 CREATE TABLE TAG (
   `id` INT NOT NULL AUTO_INCREMENT ,

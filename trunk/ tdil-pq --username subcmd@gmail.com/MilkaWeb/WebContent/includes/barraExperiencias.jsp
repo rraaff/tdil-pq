@@ -115,9 +115,7 @@ a {color:#535353; text-decoration:none}
 		<!-- end social-->
 		<div id="bm_controlador"><a href="#" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="#" class="right"></a></div>
 		<!-- end controlador-->
-		<div id="bm_personas">A <span>2356 personas</span> les derrite esto.</div>
-		<!-- end personas-->
-		<div id="bm_me_derrite"><a href="#" title="me derrite"></a></div>
+		<%= MeltButton.meltButton(barClickCounter) %>
 		<!-- end me_derrite-->
 	</div>
 	<!-- end header-->
