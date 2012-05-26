@@ -44,7 +44,7 @@ a{
 a:hover{
 	color:#FFF;
 	outline:none;
-	text-decoration:none;
+	text-decoration:underline;
 }
 p, ul{
 	margin-bottom:10px;	
