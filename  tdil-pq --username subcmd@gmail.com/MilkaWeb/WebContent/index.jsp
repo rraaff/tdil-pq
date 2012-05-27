@@ -151,7 +151,7 @@ function postUploadFotoMilka(data) {
 	<div id="header">
 		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
-			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>XXX
+			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
@@ -217,7 +217,7 @@ function postUploadFotoMilka(data) {
 		<!-- end wrapper2-->
 		<div id="galeria-videos">
 			<h2>Frecuencia <span class="violeta">Ternura</span></h2>
-			<span class="derecha-videos">2256 <span class="violeta">personas se encuentran en la misma frecuencia</span></span>
+			<span class="derecha-videos"><!--2256 <span class="violeta">personas se encuentran en la misma frecuencia</span--></span>
 			<ul>
 				<li class=""><a href="#" title="Video 1" class="activo"><img src="images/video1.jpg" width="133" height="83" alt="Video1" /></a><h3>Jugando con chocolate</h3><a href="#" class="playlist">Playlist</a></li>
 				<li class=""><a href="#" title="Video 2" class="activo"><img src="images/video2.jpg" width="133" height="83" alt="Video2" /></a><h3>100 preguntas para la vaca</h3><a href="#" class="playlist">Playlist</a></li>

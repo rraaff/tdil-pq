@@ -9,9 +9,9 @@
 <body>
 <div id="content">
 	<div id="header">
-		<div id="logo"><a href="index.html" title="Milka"></a></div>
+		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
-			<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
+			<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
@@ -29,9 +29,9 @@
 	<div id="menu-wrapper">
 		<div id="menu">
 			<ul>
-				<li><a href="productos.html" title="Productos" class="">Productos</a></li>
-				<li><a href="historia.jsp" title="Historia" class="activo">Historia</a></li>
-				<li class="fin"><a href="contacto.html" title="Contacto" class="">Contacto</a></li>
+				<li><a href="productos_alfajores.jsp" title="Productos" class="">Productos</a></li>
+				<li><a href="#" title="Historia" class="activo">Historia</a></li>
+				<li class="fin"><a href="contacto.jsp" title="Contacto" class="">Contacto</a></li>
 			</ul>
 		</div>
 		<!-- end menu -->
@@ -55,7 +55,7 @@
 		<div id="destacado">La historia de Milka comienza en Suiza a mediados del siglo XIX.  Es ah&iacute; donde Philippe Suchard decide convertir al chocolate en un placer para todos y no para unos pocos.</div>
 		<!-- end destacado-->
 		<div id="contenidos"><p>Es tal su &eacute;xito que a finales de siglo, su yerno comienza a expandir el negocio r&aacute;pidamente, introduciendo nuevas t&eacute;cnicas de fabricaci&oacute;n, incluida la f&oacute;rmula para mezclar leche y cacao.</p><p>La idea, que luego se convertir&iacute;a en un slogan exitoso, era sencilla: <span class="violeta">Convertir a Milka en la m&aacute;s tierna tentaci&oacute;n, por estar hecha con leche alpina.</span>As&iacute; es como en 1901 Suchard lanza la primera tableta de chocolate con leche, llamada Suchard Milka, con un envoltorio revolucionario de color lila adornado con una vaca de color negro y blanco sobre un fondo de un paisaje alpino.</p>
-		<h2>¿Y por qu&eacute; una vaca de color lila?</h2><p>Porque Philippe Suchard cre&iacute;a firmemente que para llamar la atenci&oacute;n era necesario <strong>"familiarizarse con aquello que es extra&ntilde;o y convertir en extra&ntilde;o a aquello que es familiar"</strong>. Y pocas cosas llaman m&aacute;s la atenci&oacute;n que una Vaca color Lila.</p><p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&aacute;s de 110 anuncios televisivos al punto tal que hoy en d&iacute;a representa la identidad visual de todos los productos de la marca Milka pero adem&aacute;s se ha convertido de una de las m&aacute;s grandes estrellas de la publicidad y est&aacute; solidamente anclada en la sociedad actual.</p></div>
+		<h2>ï¿½Y por qu&eacute; una vaca de color lila?</h2><p>Porque Philippe Suchard cre&iacute;a firmemente que para llamar la atenci&oacute;n era necesario <strong>"familiarizarse con aquello que es extra&ntilde;o y convertir en extra&ntilde;o a aquello que es familiar"</strong>. Y pocas cosas llaman m&aacute;s la atenci&oacute;n que una Vaca color Lila.</p><p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&aacute;s de 110 anuncios televisivos al punto tal que hoy en d&iacute;a representa la identidad visual de todos los productos de la marca Milka pero adem&aacute;s se ha convertido de una de las m&aacute;s grandes estrellas de la publicidad y est&aacute; solidamente anclada en la sociedad actual.</p></div>
 	</div>
 	<!-- end wrapper2-->
 	<%@ include file="includes/footer.jsp" %>

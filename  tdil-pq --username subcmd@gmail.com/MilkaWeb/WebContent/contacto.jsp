@@ -11,38 +11,34 @@
 
 <div id="content">
 	<div id="header">
-  		<div id="logo"><a href="index.html" title="Milka"></a></div>
-    		<div id="box">            
-          		<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
-            	<div id="social">
-                    <ul>
-                    	<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
-                        
-                         <li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>                                              
-                        <li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>       
-                        <li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-                        
-                         <li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>       
-                                           
-                    </ul>
-           		</div>
-          		<!-- end social-->
-			</div>
-       		<!-- end box-->
-    </div>
-    <!-- end header-->
-	
-    <div id="menu-wrapper">
-    	<div id="menu">
-                <ul>
-                	<li><a href="productos.html" title="Productos" class="">Productos</a></li>
-                    <li><a href="historia.jsp" title="Historia" class="">Historia</a></li>                   
-                    <li class="fin"><a href="contacto.html" title="Contacto" class="activo">Contacto</a></li>
-                </ul>
-        </div> 
-        <!-- end menu -->
-    </div>
-    <!-- end menu-wrapper-->
+		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
+		<div id="box">            
+		<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>
+		<div id="social">
+			<ul>
+				<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
+				<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
+				<li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+				<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+				<li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
+			</ul>
+		</div>
+		<!-- end social-->
+	</div>
+	<!-- end box-->
+</div>
+<!-- end header-->
+<div id="menu-wrapper">
+	<div id="menu">
+		<ul>
+			<li><a href="productos_alfajores.jsp" title="Productos" class="">Productos</a></li>
+			<li><a href="historia.jsp" title="Historia" class="">Historia</a></li>
+			<li class="fin"><a href="#" title="Contacto" class="activo">Contacto</a></li>
+		</ul>
+	</div>
+	<!-- end menu -->
+</div>
+<!-- end menu-wrapper-->
     
 <div id="wrapper2-internas">
 	 
