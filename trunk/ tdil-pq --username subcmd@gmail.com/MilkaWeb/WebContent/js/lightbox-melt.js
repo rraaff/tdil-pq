@@ -275,10 +275,15 @@ lightbox = new Lightbox options
         _this = this;
       $lightbox = $('#lightbox');
       if (typeof this.album[this.currentImageIndex].title !== 'undefined' && this.album[this.currentImageIndex].title !== "") {
-        $lightbox.find('.lb-caption').html(this.album[this.currentImageIndex].title).fadeIn('fast');
+    	//alert(this.album[this.currentImageIndex].title);
+    	var title = this.album[this.currentImageIndex].title.split('-');
+        //$lightbox.find('.lb-caption').html().fadeIn('fast');XXX
+        $lightbox.find('.lb-caption').html("<div id='mb-"+title[0]+"' buttonId='"+title[0]+"' quantity='"+title[1]+"'></div>").fadeIn('fast');
+        $('#mb-'+title[0]).meltbutton();
       }
       if (this.album.length > 1) {
-        $lightbox.find('.lb-number').html(this.options.labelImage + ' ' + (this.currentImageIndex + 1) + ' ' + this.options.labelOf + '  ' + this.album.length).fadeIn('fast');
+        //$lightbox.find('.lb-number').html(this.options.labelImage + ' ' + (this.currentImageIndex + 1) + ' ' + this.options.labelOf + '  ' + this.album.length).fadeIn('fast');
+    	  $lightbox.find('.lb-number').hide();
       } else {
         $lightbox.find('.lb-number').hide();
       }

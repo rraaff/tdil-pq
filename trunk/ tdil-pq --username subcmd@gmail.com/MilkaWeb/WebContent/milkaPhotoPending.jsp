@@ -138,7 +138,6 @@ request.setAttribute( "test",  paginated);
 <input type="file" name="upload_email" id="upload_email">Reemplazar<br>
 <html:form method="POST" action="/approveDisapproveMilkaPhoto">
 	<html:checkbox name="MilkaPhotoAdministrationForm" property="frontcover" /> Portada<br>
-	<html:checkbox name="MilkaPhotoAdministrationForm" property="showinhome" /> Mostrar en la home<br>
 	Tags: <html:text name="MilkaPhotoAdministrationForm" property="tags" style="width: 300px;"/><br>
 	<html:submit property="operation">
 		<bean:message key="approve" />

@@ -18,7 +18,6 @@ public class MeltButton implements TransactionalAction {
 		this.id = id;
 	}
 	
-	
 	//<div id="mb-2" buttonType="photomilka" buttonId="2" quantity="150"></div>
 	public static String meltButton(ClickCounter c) {
 		StringBuffer result = new StringBuffer();
@@ -41,6 +40,17 @@ public class MeltButton implements TransactionalAction {
 		result.append("\" buttonId=\"");
 		result.append(meltButton.id).append("\" quantity=\"").append(meltButton.quantity).append("\"></div>");
 		return result.toString();
+	}
+	
+	public static int meltButtonCount(int id) {
+		MeltButton meltButton = new MeltButton(id);
+		try {
+			TransactionProvider.executeInTransaction(meltButton);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return meltButton.quantity;
 	}
 	
 	

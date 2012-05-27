@@ -22,6 +22,7 @@ import com.tdil.milka.dao.MilkaPhotoTagDAO;
 import com.tdil.milka.dao.TagDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.MilkaPhoto;
+import com.tdil.milka.model.MilkaPhotoExample;
 import com.tdil.milka.model.MilkaPhotoTag;
 import com.tdil.milka.model.MilkaPhotoTagExample;
 import com.tdil.milka.model.Tag;
@@ -161,6 +162,18 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm im
 	
 	public void approve() throws SQLException, ValidationException {
 		MilkaPhotoDAO milkaPhotoDAO = DAOManager.getMilkaPhotoDAO();
+		if (this.isFrontcover()) {
+			MilkaPhotoExample milkaPhotoExample = new MilkaPhotoExample();
+			milkaPhotoExample.createCriteria().andFrontcoverEqualTo(1);
+			List<MilkaPhoto> frontCovers = milkaPhotoDAO.selectMilkaPhotoByExample(milkaPhotoExample);
+			if (!frontCovers.isEmpty()) {
+				MilkaPhoto milkaPhoto = frontCovers.get(0);
+				if (!milkaPhoto.getId().equals(this.getObjectId())) {
+					milkaPhoto.setFrontcover(0);
+					milkaPhotoDAO.updateMilkaPhotoByPrimaryKey(milkaPhoto);
+				}
+			}
+		}
 		MilkaPhoto milkaPhoto = milkaPhotoDAO.selectMilkaPhotoByPrimaryKey(this.getObjectId());
 		milkaPhoto.setApproved(1);
 		setData(milkaPhoto);
