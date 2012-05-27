@@ -10,6 +10,8 @@ import com.tdil.struts.TransactionalAction;
 public class MeltButton implements TransactionalAction {
 
 	public static final int PAPAPEDIA_COUNTER = 1;
+	public static final int FINALES_DE_EMAIL_COUNTER = 2;
+	public static final int CARTAS_DE_HIJOS_A_PADRES_COUNTER = 3;
 	
 	private int id;
 	private int quantity;

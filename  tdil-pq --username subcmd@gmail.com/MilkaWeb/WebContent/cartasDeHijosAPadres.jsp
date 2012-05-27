@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
-<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+<%@ include file="includes/head.jsp" %>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -23,6 +23,15 @@
 
 <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script src="swf/ExpCartasHaP/scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+	}
+);
+</script>		
 <style>
 <!-- 
 body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times, serif; padding:0; margin:0; height:100%; }
@@ -30,7 +39,8 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </style>
 </head>
 <body>
-<!-- % @ include file="includes/barraExperiencias.jsp" % -->
+<% int barClickCounter = MeltButton.CARTAS_DE_HIJOS_A_PADRES_COUNTER; %>
+<%@ include file="includes/barraExperiencias.jsp" %>
 <!-- 			'FlashVars', 'XMLFile=swf/ExpCartasHaP/xml/config.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp', -->
 <script>
 	if (AC_FL_RunContent == 0) {
