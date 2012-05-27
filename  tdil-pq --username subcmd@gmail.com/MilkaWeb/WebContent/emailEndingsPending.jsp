@@ -1,3 +1,4 @@
+<%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.struts.forms.EmailEndingsAdministrationForm"%>
 <%@page import="com.tdil.milka.model.valueobjects.EmailEndingsValueObject"%>
 <%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
@@ -94,6 +95,15 @@ request.setAttribute( "test",  paginated);
 <html:form method="POST" action="/approveDisapproveEmailEndings">
 Titulo: <html:text name="EmailEndingsAdministrationForm" property="title" style="width: 300px;"/><br><br>
 Descripcion: <html:text name="EmailEndingsAdministrationForm" property="description" style="width: 300px;"/><br><br>
+	Url: <html:text name="EmailEndingsAdministrationForm" property="urlLink" /><br><br>
+	Target:<html:select name="EmailEndingsAdministrationForm" property="urlTarget" >
+		<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+			<option	<%=	(iterTarget).equals( emailEndingsAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+				value="<%=iterTarget%>">
+				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+		<% } %>
+	</html:select><br><br>
+	
 
 	<html:submit property="operation">
 		<bean:message key="approve" />

@@ -19,7 +19,6 @@ import com.tdil.milka.dao.PostItDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.Color;
 import com.tdil.milka.model.PostIt;
-import com.tdil.milka.model.Target;
 import com.tdil.milka.model.valueobjects.PostItValueObject;
 import com.tdil.milka.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
@@ -51,7 +50,6 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	private UploadData thumb;
 	
 	private List<String> allColors;
-	private List<String> allTargets;
 	
 	private List<PostItValueObject> sourceList;
 	
@@ -299,18 +297,6 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	}
 	public void setAllColors(List<String> allColors) {
 		this.allColors = allColors;
-	}
-	public List<String> getAllTargets() {
-		if (allTargets == null) {
-			List<String> colors = new ArrayList<String>();
-			colors.add(Target.SELF);
-			colors.add(Target.BLANK);
-			allTargets = colors;
-		}
-		return allTargets;
-	}
-	public void setAllTargets(List<String> allTargets) {
-		this.allTargets = allTargets;
 	}
 
 }

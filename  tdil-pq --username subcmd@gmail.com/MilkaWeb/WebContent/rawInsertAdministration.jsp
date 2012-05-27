@@ -26,7 +26,7 @@
 					<div class="label width50">Descripcion</div>
 					<div class="label width200"><bean:write name="RawInsertForm" property="description" /></div>
 					<div class="label width80">Valor</div>
-					<div class="label width80"><html:text name="RawInsertForm" property="htmlcontent" styleClass="width50"/></div>
+					<div class="label width80"><html:textarea name="RawInsertForm" property="htmlcontent"/></div>
 					<div class="label width50"><%=MilkaErrorFormatter.getErrorFrom(request, "RawInsertForm.htmlcontent.err")%></div>
 				</div>
 				<logic:equal name="RawInsertForm" property="objectId" value="0">

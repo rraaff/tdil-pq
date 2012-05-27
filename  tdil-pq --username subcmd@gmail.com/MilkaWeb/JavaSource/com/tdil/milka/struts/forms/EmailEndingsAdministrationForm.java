@@ -39,6 +39,8 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 
 	private String title;
 	private String description;
+	private String urlLink;
+	private String urlTarget;
 	
 	private UploadData endingToApprove;
 	
@@ -60,6 +62,8 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		this.title = null;
 		this.description = null;
 		this.endingToApprove = null;
+		this.urlLink = null;
+		this.urlTarget = null;
 	}
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -108,6 +112,8 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 			this.extBlobData = emailEndings.getExtBlobData();
 			this.title = emailEndings.getTitle();
 			this.description = emailEndings.getDescription();
+			this.urlLink = emailEndings.getUrlLink();
+			this.urlTarget = emailEndings.getUrlTarget();
 			if (emailEndings.getIdApprovedData() == null || emailEndings.getIdApprovedData() == 0) {
 				com.tdil.milka.model.BlobData content = blobDataDAO.selectBlobDataByPrimaryKey(emailEndings.getIdBlobData());
 				this.setEndingToApprove(new UploadData(content.getFilename(), content.getContent(), true));
@@ -160,7 +166,8 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		emailEndings.setShowinhome(this.isShowinhome() ? 1 : 0);
 		emailEndings.setTitle(this.getTitle());
 		emailEndings.setDescription(this.getDescription());
-		
+		emailEndings.setUrlLink(this.getUrlLink());
+		emailEndings.setUrlTarget(this.getUrlTarget());
 		if (BlobHelper.shouldDeleteBlob(this.getEndingToApprove())) {
 			BlobHelper.deleteBlob(emailEndings.getIdApprovedData());
 		}
@@ -234,6 +241,18 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 	}
 	public void setEndingToApprove(UploadData endingToApprove) {
 		this.endingToApprove = endingToApprove;
+	}
+	public String getUrlLink() {
+		return urlLink;
+	}
+	public void setUrlLink(String urlLink) {
+		this.urlLink = urlLink;
+	}
+	public String getUrlTarget() {
+		return urlTarget;
+	}
+	public void setUrlTarget(String urlTarget) {
+		this.urlTarget = urlTarget;
 	}
 
 }
