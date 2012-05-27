@@ -8,8 +8,15 @@
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <%@ include file="includes/head.jsp" %>
-<script type='text/javascript' src='../js/jquery.cookie.js'></script>
-<script type='text/javascript' src='../js/jquery.melt-button.js'></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Milka.com.ar | Sitio Oficial</title>
+<meta name="keywords" content="Milka, chocolate, vaca, vaca lila, vaca violeta, chocolate aireado, chocolate relleno, relleno de dulce de leche, bombones, corazón, alfajor, tableta, almendras, castañas con caramelo, caramel, oreo, leger, baño maría, fondue, ternura, soft cappuccino, soft combinado, soft chocolate, bajón, regalo, amor, enamorados, avellanas, Cadbury, sabor, Shot, Tofi, Bon o bon, Cofler, golosinas, kiosco, postre, aniversario, cumpleaños, Kraft Foods, rico, sabor, cacao">
+<meta name="description" content="Bienvenidos al sitio oficial de Milka Argentina: los invitamos a deleitarse con el más rico chocolate con leche o con el Milka Dulce de Leche o con el Milka Almendras o con el Milka Oreo Blanco o Milka Castañas con Caramelo o Milka Oreo Leche o Milka Te Quiero Mucho! o Milka Feliz Cumple Atrasado! o Milka Suerte! o Milka Vos Sabés Por qué! o Milka Feliz Día! o Milka Gracias! o Milka Dulce de Leche Blanco o Milka Bombón o Milka Sahne Creme o Milka Caramel o Milka Soft Avellanas o Milka Soft Cappucciono o Milka Soft o Milka Soft Combinado o Milka Leger o Leger con Almedras o con el Leger Combinado. Los invitamos a probar el sabor de la ternura." />
+<script type='text/javascript' src='./js/jquery.cookie.js'></script>
+<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
+<script src="./js/lightbox-melt.js"></script>
 <script>
 $(document).ready(
 	function(){
@@ -20,12 +27,6 @@ $(document).ready(
 	
 );
 </script>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Milka.com.ar | Sitio Oficial
-</title>
-<meta name="keywords" content="Milka, chocolate, vaca, vaca lila, vaca violeta, chocolate aireado, chocolate relleno, relleno de dulce de leche, bombones, corazón, alfajor, tableta, almendras, castañas con caramelo, caramel, oreo, leger, baño maría, fondue, ternura, soft cappuccino, soft combinado, soft chocolate, bajón, regalo, amor, enamorados, avellanas, Cadbury, sabor, Shot, Tofi, Bon o bon, Cofler, golosinas, kiosco, postre, aniversario, cumpleaños, Kraft Foods, rico, sabor, cacao">
-<meta name="description" content="Bienvenidos al sitio oficial de Milka Argentina: los invitamos a deleitarse con el más rico chocolate con leche o con el Milka Dulce de Leche o con el Milka Almendras o con el Milka Oreo Blanco o Milka Castañas con Caramelo o Milka Oreo Leche o Milka Te Quiero Mucho! o Milka Feliz Cumple Atrasado! o Milka Suerte! o Milka Vos Sabés Por qué! o Milka Feliz Día! o Milka Gracias! o Milka Dulce de Leche Blanco o Milka Bombón o Milka Sahne Creme o Milka Caramel o Milka Soft Avellanas o Milka Soft Cappucciono o Milka Soft o Milka Soft Combinado o Milka Leger o Leger con Almedras o con el Leger Combinado. Los invitamos a probar el sabor de la ternura." />
 
 <!-- FB share metas >
 <meta property="og:title" content="Milka Alfajores" />
@@ -52,6 +53,30 @@ $(document).ready(
 	})();
 </script>
 <script src="swf/homeCentral/scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<style>
+ #bm_me_derrite a{
+	float:right;
+	width:108px;
+	height:41px;
+	background:url(images/barra/me-derrite.png) no-repeat;
+	position:relative;
+	margin-right: 50px;
+}
+#bm_personas{
+	float:left;
+	width:180px;
+	height:20px;
+	position:relative;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	top:14px;
+	left: 280px;
+}
+#bm_personas span{
+	color:#b398ff;
+}
+</style>
 </head>
 <body>
 <div id="content">
@@ -120,20 +145,7 @@ $(document).ready(
 			<!-- end parte_1-->
 		</div>
 		<!-- header-home-->
-		<div id="fotos">
-			<h2>TU FOTO MILKA</h2>
-				<ul>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto1.jpg" width="212" height="157" alt="foto1" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto2.jpg" width="66" height="66" alt="foto2" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto3.jpg" width="66" height="66" alt="foto3" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto4.jpg" width="66" height="66" alt="foto4" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto5.jpg" width="66" height="66" alt="foto5" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto6.jpg" width="66" height="66" alt="foto6" /></a></li>
-					<li class="f-grande"><a href="#" title="tu foto milka" class="activo"><img src="images/foto7.jpg" width="66" height="66" alt="foto7" /></a></li>
-				</ul>
-			</div>
-			<!-- end fotos-->
-		</div>
+		<%@ include file="includes/tuFotoMilka.jsp" %>
 		<!-- end wrapper2-->
 		<div id="galeria-videos">
 			<h2>Frecuencia <span class="violeta">Ternura</span></h2>

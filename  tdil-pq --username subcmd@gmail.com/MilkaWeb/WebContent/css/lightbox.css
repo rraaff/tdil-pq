@@ -179,3 +179,10 @@
 .lb-data .lb-close:hover {
   cursor: pointer;
 }
+
+.lb-melt {
+  width: 35px;
+  float: right;
+  padding-top: 0.7em;
+  outline: none;
+}

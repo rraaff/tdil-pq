@@ -448,6 +448,6 @@
     from MILKA_PHOTO mp, AUTHOR author
     where mp.id_author = author.id
     and mp.approved = 1
-    order by mp.id desc
+    order by mp.frontCover desc, mp.publishDate desc, mp.id desc
   </select>
 </sqlMap>
