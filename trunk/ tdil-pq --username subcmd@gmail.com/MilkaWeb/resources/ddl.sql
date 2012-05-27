@@ -108,6 +108,26 @@ INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(17,0, 0);
 INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(18,0, 0);
 INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(19,0, 0);
 INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(20,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(21,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(22,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(23,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(24,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(25,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(26,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(27,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(28,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(29,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(30,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(31,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(32,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(33,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(34,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(35,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(36,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(37,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(38,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(39,0, 0);
+INSERT INTO CLICK_COUNTER (id, clicks, deleted) VALUES(40,0, 0);
 
 CREATE TABLE TAG (
   `id` INT NOT NULL AUTO_INCREMENT ,
