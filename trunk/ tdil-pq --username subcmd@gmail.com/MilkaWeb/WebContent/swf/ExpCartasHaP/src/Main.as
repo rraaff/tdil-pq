@@ -116,7 +116,7 @@
 			slider.addChild(info);
 			slider.addChild(thumb);
 			slider.addChild(logo_mc);
-			//slider.addChild(btnSubi_mc);
+			slider.addChild(btnSubi_mc);
 			
 			/* Loading the data xml file */
 			var XMLDataPath:String = root.loaderInfo.parameters.XMLFile;
@@ -296,8 +296,6 @@
 			//1200x750
 			background_mc.width = slider_width;
 			background_mc.height = (750*slider_width)/1200;
-			// x' = 750*x/1200
-			//background_mc.x = (slider_width - 1200) / 2;
 
 			baseDibujos_mc.height = slider_height;
 			baseDibujos_mc.x = (slider_width - 1200) / 2
@@ -307,41 +305,20 @@
 			
 			btnSubi_mc.x = (slider_width - 130) / 2;
 			btnSubi_mc.y = slider_height - 130;
-			/*createUploadButton();*/
+			
+			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
 		}
-//			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
-//			btnSubi_mc.addEventListener(MouseEvent.MOUSE_MOVE, doRollOver);
-/*
-		private function createUploadButton():void {
-			var uploadButton:MovieClip = new MovieClip();
-				uploadButton.y = (slider_width - 130) / 2;
-				uploadButton.x = slider_height - 130;
-			info.addChild(uploadButton);
-			
-			
-			uploadGraphic.load( new URLRequest(upload_picture));
-			uploadGraphic.contentLoaderInfo.addEventListener(Event.COMPLETE,resize_exact);
-			uploadButton.addChild(uploadGraphic);
-			
-			var uploadHotspot:MovieClip = new MovieClip();
-				uploadHotspot.graphics.beginFill(0x00FFFF,0);
-				uploadHotspot.graphics.drawRect(0,0,button_size,button_size);
-				uploadHotspot.graphics.endFill();
-				uploadHotspot.buttonMode=true;
-				uploadHotspot.useHandCursor=true;
-				uploadHotspot.addEventListener(MouseEvent.CLICK,uploadURLfun);
-			uploadButton.addChild(uploadHotspot);
-		}
-		private function uploadURLfun():void {
-			var url:String = vURLtoUploads;
-			var request:URLRequest = new URLRequest(url);
+
+		private function uploadURLfun(e:Event){
+			var vurl:String = "agregarCartaDeHijoAPadre.jsp";
+			var request:URLRequest = new URLRequest(vurl);
 			try {
 				navigateToURL(request, '_self');
 			} catch (e:Error) {
 				trace("Error occurred!");
 			}
 		}
-		*/
+		
 		/* Create a view item */
 		private function show_view(nr:Number){
 			
