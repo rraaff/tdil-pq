@@ -1,3 +1,4 @@
+<%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.struts.forms.MailToParentAdministrationForm"%>
 <%@page import="com.tdil.milka.model.valueobjects.MailToParentValueObject"%>
 <%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
@@ -70,8 +71,8 @@ $(document).ready(
 </head>
 
 <%
-	MailToParentAdministrationForm emailEndingsAdministrationForm = (MailToParentAdministrationForm)session.getAttribute("MailToParentAdministrationForm");
-java.util.List source = emailEndingsAdministrationForm.getSourceList();
+	MailToParentAdministrationForm mailToParentAdministrationForm = (MailToParentAdministrationForm)session.getAttribute("MailToParentAdministrationForm");
+java.util.List source = mailToParentAdministrationForm.getSourceList();
 com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
 request.setAttribute( "test",  paginated);
 %>
@@ -94,7 +95,14 @@ request.setAttribute( "test",  paginated);
 <html:form method="POST" action="/approveDisapproveMailToParent">
 Titulo: <html:text name="MailToParentAdministrationForm" property="title" style="width: 300px;"/><br><br>
 Descripcion: <html:text name="MailToParentAdministrationForm" property="description" style="width: 300px;"/><br><br>
-
+Url: <html:text name="MailToParentAdministrationForm" property="urlLink" /><br><br>
+	Target:<html:select name="MailToParentAdministrationForm" property="urlTarget" >
+		<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+			<option	<%=	(iterTarget).equals( mailToParentAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+				value="<%=iterTarget%>">
+				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+		<% } %>
+	</html:select><br><br>
 	<html:submit property="operation">
 		<bean:message key="approve" />
 	</html:submit>

@@ -68,7 +68,7 @@ INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VAL
 
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `insertType` VARCHAR(20) NOT NULL ,
+  `insertType` VARCHAR(100) NOT NULL ,
   `description` VARCHAR(300) NOT NULL ,
   `htmlContent` TEXT NOT NULL ,
   `deleted` INT NOT NULL ,
@@ -77,6 +77,9 @@ ENGINE = InnoDB;
 
 INSERT INTO RAW_INSERT (insertType, description, htmlContent, deleted) VALUES('twitterFeed', 'Feed de Twitter', '', 1);
 INSERT INTO RAW_INSERT (insertType, description, htmlContent, deleted) VALUES('facebookFeed', 'Feed de Facebook', '', 1);
+
+INSERT INTO RAW_INSERT (insertType, description, htmlContent, deleted) VALUES('internal.finalesDeEmail', 'Flash config de finales de email', '', 1);
+INSERT INTO RAW_INSERT (insertType, description, htmlContent, deleted) VALUES('internal.cartasDeHijosAPadres', 'Flash config de finales de cartas de hijos a padres', '', 1);
 
 CREATE TABLE CLICK_COUNTER (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -136,6 +139,8 @@ CREATE TABLE MILKA_PHOTO (
   `ext_approved_data` VARCHAR(10) NULL ,
   `id_click_counter` INT NOT NULL,
   `tags` VARCHAR(300) NULL ,
+  `url_link` VARCHAR(400) NULL ,
+  `url_target` VARCHAR(50) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_MILKA_PHOTO_00`
@@ -178,7 +183,7 @@ CREATE TABLE POST_IT (
   `ext_thum` VARCHAR(10) NULL ,
   `id_image` INT NULL,
   `ext_image` VARCHAR(10) NULL ,
-  `url_link` VARCHAR(200) NULL ,
+  `url_link` VARCHAR(400) NULL ,
   `url_target` VARCHAR(50) NULL ,
   `position` INT NOT NULL ,
   `color` VARCHAR(50) NULL ,
@@ -251,6 +256,8 @@ CREATE TABLE EMAIL_ENDINGS (
   `id_approved_data` INT NULL,
   `ext_approved_data` VARCHAR(10) NULL ,
   `id_click_counter` INT NOT NULL,
+  `url_link` VARCHAR(400) NULL ,
+  `url_target` VARCHAR(50) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_EMAIL_ENDINGS_00`
@@ -275,6 +282,8 @@ CREATE TABLE MAIL_TO_PARENT (
   `id_approved_data` INT NULL,
   `ext_approved_data` VARCHAR(10) NULL ,
   `id_click_counter` INT NOT NULL,
+  `url_link` VARCHAR(400) NULL ,
+  `url_target` VARCHAR(50) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_MAIL_TO_PARENT_00`

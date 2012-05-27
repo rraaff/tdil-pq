@@ -31,7 +31,8 @@ public class MailToParentServlet extends HttpServlet {
 	}
 
 	private void doService(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		List<MailToParentValueObject> answer = MailToParentUtils.getMailToParent();
+		FlashListServletResult<MailToParentValueObject> data = MailToParentUtils.getMailToParent();
+		List<MailToParentValueObject> answer = data.getList();
 		resp.setHeader("Expires", "Mon, 26 Jul 1997 05:00:00 GMT");
 		resp.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
 		resp.setDateHeader ("Expires", -1);
@@ -39,30 +40,36 @@ public class MailToParentServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		out.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
-		out.append("<answer>");
+		out.append("<config>");
+		out.append(data.getRawInsert());
 		int i = 0;
+		out.append("<items>");
 		for (MailToParentValueObject mailToParent : answer) {
-			out.append("<emailEnding>");
-			out.append("<name>").append(CDATA_START_TAG);
-			out.append(mailToParent.getName());
-			out.append(CDATA_END_TAG).append("</name>");
-			out.append("<title>").append(CDATA_START_TAG);
-			out.append(mailToParent.getTitle());
-			out.append(CDATA_END_TAG).append("</title>");
-			out.append("<description>").append(CDATA_START_TAG);
+			out.append("<item>");
+			out.append("<text>").append(CDATA_START_TAG);
+			out.append(mailToParent.getName()).append(" - ");
+			out.append(mailToParent.getTitle()).append(" - ");
 			out.append(mailToParent.getDescription());
-			out.append(CDATA_END_TAG).append("</description>");
-			out.append("<url>").append(CDATA_START_TAG);
+			out.append(CDATA_END_TAG).append("</text>");
+			out.append("<thumb></thumb>");
+			out.append("<view>").append(CDATA_START_TAG);
 			out.append("./download.st?id=").append(String.valueOf(mailToParent.getIdApprovedData()));
 			out.append("&type=PUBLIC&ext=").append(mailToParent.getExtApprovedData());
-			out.append(CDATA_END_TAG).append("</url>");
+			out.append(CDATA_END_TAG).append("</view>");
+			out.append("<link>").append(CDATA_START_TAG);
+			out.append(mailToParent.getUrlLink());
+			out.append(CDATA_END_TAG).append("</link>");
+			out.append("<target>").append(CDATA_START_TAG);
+			out.append(mailToParent.getUrlTarget());
+			out.append(CDATA_END_TAG).append("</target>");
 			out.append("<clickCounter>");
 			out.append(String.valueOf(mailToParent.getIdClickCounter()));
 			out.append("</clickCounter>");
-			out.append("</emailEnding>");
+			out.append("</item>");
 			i = i + 1;
 		}
-		out.append("</answer>");
+		out.append("</items>");
+		out.append("</config>");
 		out.flush();
 	}
 }

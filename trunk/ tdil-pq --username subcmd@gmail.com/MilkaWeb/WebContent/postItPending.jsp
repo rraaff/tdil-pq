@@ -1,3 +1,4 @@
+<%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.model.valueobjects.PostItValueObject"%>
 <%@page import="com.tdil.milka.struts.forms.PostItAdministrationForm"%>
 <%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
@@ -109,12 +110,11 @@ request.setAttribute( "test",  paginated);
 	</html:select><br><br>
 	Url: <html:text name="PostItAdministrationForm" property="urlLink" /><br><br>
 	Target:<html:select name="PostItAdministrationForm" property="urlTarget" >
-		<logic:iterate name="PostItAdministrationForm" property="allTargets"
-			id="iterTarget">
-			<option	<%=	((String) iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+		<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+			<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
 				value="<%=iterTarget%>">
 				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-		</logic:iterate>
+		<% } %>
 	</html:select><br><br>
 	Miniatura	
 	<logic:equal name="PostItAdministrationForm" property="hasThumb" value="true">
