@@ -30,6 +30,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </style>
 </head>
 <body>
+<!-- 			'FlashVars', 'XMLFile=swf/ExpCartasHaP/xml/config.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp', -->
 <script>
 	if (AC_FL_RunContent == 0) {
 		alert("This page requires AC_RunActiveContent.js.");
@@ -37,7 +38,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 		AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
 			'width', '100%', 
 			'height','100%',
-			'FlashVars', 'XMLFile=swf/ExpCartasHaP/xml/config.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp',
+			'FlashVars', 'XMLFile=cartasDeHijosAPadres.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp',
 			'src', 'swf/ExpCartasHaP/slider', 
 			'quality', 'best', 
 			'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
@@ -57,7 +58,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 			//end AC code 
 	} 
 </script>
-<a href="cartasDeHijosAPadres.xml">Este es el servlet que te da la data</a>
+<!--a href="cartasDeHijosAPadres.xml">Este es el servlet que te da la data</a-->
 <!-- a href="agregarCartaDeHijoAPadre.jsp">Agregar una carta de hijo a padre</a-->
 </body>
 </html>
