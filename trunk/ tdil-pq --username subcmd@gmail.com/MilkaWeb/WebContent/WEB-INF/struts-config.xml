@@ -26,6 +26,8 @@
    name="MailToParentAdministrationForm" type="com.tdil.milka.struts.forms.MailToParentAdministrationForm"/>
    <form-bean id="VideoForm"
    name="VideoForm" type="com.tdil.milka.struts.forms.VideoForm"/>
+   <form-bean id="RawInsertForm"
+   name="RawInsertForm" type="com.tdil.milka.struts.forms.RawInsertForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -212,10 +214,22 @@
     <forward name="continue" path="/videoAdministration.jsp" redirect="true"/>
   </action>
   
+  <action name="RawInsertForm" parameter="Admin"
+   path="/goToRawInsertABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+  </action>
+  <action name="RawInsertForm" parameter="Admin"
+   path="/saveRawInsert" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/rawInsertAdministration.jsp"/>
+  </action>
+  <action name="RawInsertForm" parameter="Admin"
+   path="/editRawInsert" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+  </action>
+  
   <!--  Public actions -->
-  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/index.jsp" redirect="true"/>
-   <forward name="failure" path="/index.jsp"/>
+  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.milka.struts.action.UploadMilkaPhotoAction">
   </action>
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>

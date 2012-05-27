@@ -24,7 +24,7 @@ public abstract class AjaxTransactionalAction extends AjaxAction implements Tran
 	public ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		TransactionalValidationForm transactionalForm = getAjaxForm(request);
+		TransactionalValidationForm transactionalForm = getAjaxForm(request, form);
 		
 		ValidationError error = transactionalForm.validate();
 		if(error.hasError()) {
@@ -37,7 +37,7 @@ public abstract class AjaxTransactionalAction extends AjaxAction implements Tran
 		}
 	}
 
-	protected abstract TransactionalValidationForm getAjaxForm(HttpServletRequest request);
+	protected abstract TransactionalValidationForm getAjaxForm(HttpServletRequest request, ActionForm form);
 
 	public Object executeInTransaction(ActionForm form) throws SQLException, ValidationException {
 		Map<String, Object> result = new HashMap<String, Object>();
