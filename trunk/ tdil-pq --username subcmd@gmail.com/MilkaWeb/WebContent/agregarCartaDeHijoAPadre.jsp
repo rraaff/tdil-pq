@@ -23,18 +23,90 @@ $(document).ready(
 );
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
+
+<style>
+<!--
+body {
+	
+}
+#formContent {
+	background-image: url(images/experiencias/cartasDePaH/upload_bg.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:900px;
+	height:400px;
+	margin:0 auto;
+}
+#Nombre {
+	height: 25px;
+	width: 170px;
+	left: 368px;
+	top: 139px;
+	position: relative;
+}
+#E-Mail {
+	height: 25px;
+	width: 170px;
+	left: 598px;
+	top: 114px;
+	position: relative;
+}
+#Politicas {
+	height: 25px;
+	width: 160px;
+	left: 309px;
+	top: 141px;
+	position: relative;
+}
+#SubirImagen {
+	height: 25px;
+	width: 260px;
+	left: 408px;
+	top: 158px;
+	position: relative;
+}
+.normalField {
+	width:150px;
+	height:25px;
+	line-height:22px;
+	border: solid 1px #333333;
+}
+#buttonHolder {
+	height: 130px;
+	width: 130px;
+	left: 742px;
+	top: 128px;
+	position: relative;
+}
+#buttonHolder .okCircle, .okCircle a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1px;
+	line-height:14px;
+	color: #FFFFFF;
+	background:transparent;
+	text-decoration: none;
+	background-image: url(images/experiencias/cartasDePaH/upload.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:130px;
+	height:130px;
+	border:none;
+	cursor:hand;
+	margin:0;
+	padding:0;
+}
+-->
+</style>
 </head>
 <body>
-
-Agregar carta
+<div id="formContent">
 <html:form method="POST" action="/uploadMailToParent" enctype="multipart/form-data">
-	Nombre:<html:text name="MailToParentForm" property="authorBean.name" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.name.err")%><br>
-	Email:<html:text name="MailToParentForm" property="authorBean.email" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%><br>
-	Politicas:<html:checkbox name="MailToParentForm" property="authorBean.acceptPolitics" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><br>
-	<html:file name="MailToParentForm" property="photoFormFile" />
-	<html:submit property="operation">
-		Upload
-	</html:submit><%=MilkaErrorFormatter.getErrorFrom(request, "MailToParentForm.photo.err")%>
+	<div id="Nombre"><html:text name="MailToParentForm" property="authorBean.name" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.name.err")%></div>
+	<div id="E-Mail"><html:text name="MailToParentForm" property="authorBean.email" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%></div>
+	<div id="Politicas"><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><html:checkbox name="MailToParentForm" property="authorBean.acceptPolitics"/></div>
+	<div id="SubirImagen"><html:file name="MailToParentForm" property="photoFormFile" /><%=MilkaErrorFormatter.getErrorFrom(request, "MailToParentForm.photo.err")%></div>
+	<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 </html:form>
+</div>
 </body>
 </html>
