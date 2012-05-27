@@ -30,6 +30,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </style>
 </head>
 <body>
+<!-- % @ include file="includes/barraExperiencias.jsp" % -->
 <!-- 			'FlashVars', 'XMLFile=swf/ExpCartasHaP/xml/config.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp', -->
 <script>
 	if (AC_FL_RunContent == 0) {
