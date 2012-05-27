@@ -7,12 +7,12 @@
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-<%@ include file="includes/head.jsp" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka.com.ar | Sitio Oficial</title>
 <meta name="keywords" content="Milka, chocolate, vaca, vaca lila, vaca violeta, chocolate aireado, chocolate relleno, relleno de dulce de leche, bombones, corazón, alfajor, tableta, almendras, castañas con caramelo, caramel, oreo, leger, baño maría, fondue, ternura, soft cappuccino, soft combinado, soft chocolate, bajón, regalo, amor, enamorados, avellanas, Cadbury, sabor, Shot, Tofi, Bon o bon, Cofler, golosinas, kiosco, postre, aniversario, cumpleaños, Kraft Foods, rico, sabor, cacao">
 <meta name="description" content="Bienvenidos al sitio oficial de Milka Argentina: los invitamos a deleitarse con el más rico chocolate con leche o con el Milka Dulce de Leche o con el Milka Almendras o con el Milka Oreo Blanco o Milka Castañas con Caramelo o Milka Oreo Leche o Milka Te Quiero Mucho! o Milka Feliz Cumple Atrasado! o Milka Suerte! o Milka Vos Sabés Por qué! o Milka Feliz Día! o Milka Gracias! o Milka Dulce de Leche Blanco o Milka Bombón o Milka Sahne Creme o Milka Caramel o Milka Soft Avellanas o Milka Soft Cappucciono o Milka Soft o Milka Soft Combinado o Milka Leger o Leger con Almedras o con el Leger Combinado. Los invitamos a probar el sabor de la ternura." />
+<%@ include file="includes/head.jsp" %>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
@@ -23,9 +23,78 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
-	}
 	
-);
+		function generateTooltips() {
+			  //make sure tool tip is enabled for any new error label
+				$("img[id*='error']").tooltip({
+					showURL: false,
+					opacity: 0.99,
+					fade: 150,
+					positionRight: true ,
+					bodyHandler: function() {
+						return $("#"+this.id).attr("hovertext");
+					}
+				});
+				//make sure tool tip is enabled for any new valid label
+				$("img[src*='tick.gif']").tooltip({
+					showURL: false,
+						bodyHandler: function() {
+							return "OK";
+						}
+				});
+			}
+			
+			$('form').mouseover(function(){
+				      generateTooltips();
+				    });
+		
+			$("form[name='MilkaPhotoForm']").validate({
+					errorPlacement: function(error, element) {
+						error.appendTo( element.parent("td").next("td") );
+					},
+					rules: { 'authorBean.name': {required: true},
+							'authorBean.email': {required: true, email: true},
+							'authorBean.acceptPolitics': {required: true},
+							'photoFormFile': {required: true}
+					},
+					messages: {
+						'authorBean.name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+						'authorBean.email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'authorBean.acceptPolitics': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Debe aceptar las politicas.' />"},
+						'photoFormFile': {required: "<img id='photoerror' src='images/unchecked.gif' hovertext='Seleccione una foto.' />"}
+					},
+					submitHandler: function() {
+			            $("form[name='MilkaPhotoForm']").ajaxSubmit({
+			    			type: "POST",
+			    			url: "./uploadMilkaPhoto.do",
+			    			dataType: "json",
+			    			success: postUploadFotoMilka
+			    			});
+			        }
+				});
+				
+				$( "#dialog-form" ).dialog({
+					autoOpen: false,
+					height: 300,
+					width: 350,
+					modal: true
+				});
+				$( "#subifotomilka" ).click(function() {
+					$( "#dialog-form" ).dialog( "open" );
+				});
+			
+		}
+	);
+
+function postUploadFotoMilka(data) {
+	$( "#dialog-form" ).dialog("destroy" );
+	$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		$( "#dialog-modal" ).dialog({
+			height: 140,
+			modal: true
+		});
+}
 </script>
 
 <!-- FB share metas >
@@ -83,7 +152,7 @@ $(document).ready(
 	<div id="header">
 		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
-			<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
+			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>XXX
 			<div id="social">
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
@@ -209,4 +278,41 @@ new TWTR.Widget({
 </script>
 
     </div>
-	<%@ include file="includes/footer.jsp" %>
+    
+<div id="dialog-modal" title="Tu foto milka">
+	<p>
+		Gracias por subir tu foto.<br>
+		Te avisaremos cuando este aprobada.
+	</p>
+</div>
+<br>
+
+<div id="dialog-form" title="Subi tu foto con chocolate">
+	<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td>Nombre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/></td>
+				<td width="25" id="authorBean.nameerr"></td>
+			</tr>
+			<tr>
+				<td>email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/></td>
+				<td width="25" id="authorBean.emailerr"></td>
+			</tr>
+			<tr>
+				<td>Politicas:<html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics" styleClass="width180"/></td>
+				<td width="25" id="authorBean.acceptPoliticserr"></td>
+			</tr>
+			<tr>
+				<td><html:file name="MilkaPhotoForm" property="photoFormFile" /></td>
+				<td width="25" id="photoFormFileerr"></td>
+			</tr>
+			<tr>
+				<td>
+					<html:submit property="operation">Upload</html:submit>
+				</td>
+			</tr>
+		</table>	
+	</html:form>
+</div>
+    
+<%@ include file="includes/footer.jsp" %>

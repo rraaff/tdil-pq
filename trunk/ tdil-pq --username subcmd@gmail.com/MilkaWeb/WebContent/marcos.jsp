@@ -67,7 +67,7 @@ $(document).ready(
 		    			type: "POST",
 		    			url: "./uploadMilkaPhoto.do",
 		    			dataType: "json",
-		    			success: postRegisto
+		    			success: postUploadFotoMilka
 		    			});
 		        }
 			});
@@ -87,7 +87,7 @@ $(document).ready(
 	}
 );
 
-function postRegisto(data) {
+function postUploadFotoMilka(data) {
 	$( "#dialog:ui-dialog" ).dialog( "destroy" );
 		$( "#dialog-modal" ).dialog({
 			height: 140,
