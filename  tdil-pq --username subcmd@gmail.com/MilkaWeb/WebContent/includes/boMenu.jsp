@@ -43,6 +43,7 @@
 		</li>
 		<li><a href="#">Administracion</a>
 			<ul>
+				<li><html:link action="/goToRawInsertABM" >Administracion de inserts</html:link></li>
 				<li><html:link action="/goToVideoABM" >Administracion de videos</html:link></li>
 				<li><html:link action="/goToNotificationEmailABM" >Notificaciones por email</html:link></li>
 			</ul>

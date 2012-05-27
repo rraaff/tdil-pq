@@ -135,12 +135,7 @@
   SHAPE="32,1873,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#uploadMilkaPhoto" NAME="action12"
   PATH="/uploadMilkaPhoto" SHAPE="32,1185,0,0" TITLE="MilkaPhotoForm"
-  TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
-   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
-   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page6" PATH="/milkaPhotoPending.jsp"
   SHAPE="240,1890,0,0" SUBTYPE="jsp" TITLE="milkaPhotoPending.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -443,5 +438,34 @@
   TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page16" PATH="/agregarCartaDeHijoAPadre.jsp"
   SHAPE="448,1985,0,0" SUBTYPE="jsp"
-  TITLE="agregarCartaDeHijoAPadre.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="agregarCartaDeHijoAPadre.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadMailToParent.do"
+   SUBTYPE="confirmed" TARGET="action38" TITLE="/uploadMailToParent.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToRawInsertABM" NAME="action54"
+  PATH="/goToRawInsertABM" SHAPE="32,1185,0,0" TITLE="RawInsertForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rawInsertAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveRawInsert" NAME="action55" PATH="/saveRawInsert"
+  SHAPE="32,1873,0,0" TITLE="RawInsertForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/rawInsertAdministration.jsp" TARGET="page15" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/rawInsertAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editRawInsert" NAME="action56" PATH="/editRawInsert"
+  SHAPE="32,2017,0,0" TITLE="RawInsertForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/rawInsertAdministration.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page15" PATH="/rawInsertAdministration.jsp"
+  SHAPE="240,1297,0,0" SUBTYPE="jsp" TITLE="rawInsertAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
