@@ -1,0 +1,53 @@
+<config>
+	<thumb>
+		<width>700</width>
+		<height>50</height>
+		<margin>0</margin>
+		<backgroundColor>0x000000</backgroundColor>
+		<backgroundAlpha>20</backgroundAlpha>
+		<coverColor>0x000000</coverColor>
+		<coverAlpha>80</coverAlpha>
+		<topPosition>no</topPosition>
+	</thumb>
+	<info>
+		<space>5</space>
+		<width>800</width>
+		<height>25</height>
+		<buttonSize>20</buttonSize>
+		<nextButton>images/next.png</nextButton>
+		<previousButton>images/previous.png</previousButton>
+		<playButton>images/play.png</playButton>
+		<pauseButton>images/pause.png</pauseButton>
+	</info>
+	<view>
+		<loaderSize>20</loaderSize>
+		<effectTime>1</effectTime>
+		<timeBarColor>0x000000</timeBarColor>
+		<timeBarAlpha>10</timeBarAlpha>
+		<timeBarHeight>4</timeBarHeight>
+		<autoPlay>yes</autoPlay>
+		<timer>10000</timer>
+	</view>
+	<items>
+		<item>
+			<text>
+				<p><font face="verdana" size="13" color="#f7a453">Monks Balcony of Greek Monastery</font></p>
+				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>
+			</text>
+			<thumb>images/thumb/ejemplo1.jpg</thumb>
+			<view>images/view/ejemplo1.jpg</view>
+			<link>#</link>
+			<target>_self</target>
+		</item>
+		<item>
+			<text>
+				<p><font face="verdana" size="13" color="#f7a453">Monks Balcony of Greek Monastery</font></p>
+				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>
+			</text>
+			<thumb>images/thumb/ejemplo2.jpg</thumb>
+			<view>images/view/ejemplo2.jpg</view>
+			<link>#</link>
+			<target>_self</target>
+		</item>
+	</items>
+</config>
