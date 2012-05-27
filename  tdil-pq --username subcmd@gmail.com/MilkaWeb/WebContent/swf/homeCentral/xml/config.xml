@@ -30,17 +30,17 @@
 		<timer>10000</timer>
 	</view>
 	<items>
-		<item1>
+		<item>
 			<text><!--
 				<p><font face="verdana" size="13" color="#f7a453">Monks Balcony of Greek Monastery</font></p>
 				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>
 			--></text>
 			<thumb></thumb>
-			<view>swf/homeCentral/images/view/teaserPostits.jpg</view>
-			<link>postits.jsp</link>
+			<view>swf/homeCentral/images/view/teaserCartasDeHaP.jpg</view>
+			<link>cartasDeHijosAPadres.jsp</link>
 			<target>_self</target>
-		</item1>
-		<item2>
+		</item>
+		<item>
 			<text><!--
 				<p><font face="verdana" size="13" color="#f7a453">The old Castle</font></p>
 				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>-->
@@ -49,6 +49,16 @@
 			<view>swf/homeCentral/images/view/teaserPapapedia.jpg</view>
 			<link>papapedia.jsp</link>
 			<target>_self</target>
-		</item2>
+		</item>
+		<item>
+			<text><!--
+				<p><font face="verdana" size="13" color="#f7a453">Monks Balcony of Greek Monastery</font></p>
+				<p><font face="calibri" size="11" color="#000000">Photo provide by Photos8.com</font></p>
+			--></text>
+			<thumb></thumb>
+			<view>swf/homeCentral/images/view/teaserPostits.jpg</view>
+			<link>postits.jsp</link>
+			<target>_self</target>
+		</item>
 	</items>
 </config>
