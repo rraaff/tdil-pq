@@ -21,7 +21,7 @@
 	<!-- end fotos-->
 </div>
 <% List<MilkaPhotoValueObject> hiddenDisplay = MilkaPhotoUtils.getHiddenPart(milkaPhotos); %>
-<div class="hidden">
+<div class="hide">
 	<% for (MilkaPhotoValueObject mfvo : hiddenDisplay) { %>
 		<a href="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" rel="lightbox[pm]" title="<%=mfvo.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mfvo.getIdClickCounter())%>" class="activo">a</a>
 	<% } %>
