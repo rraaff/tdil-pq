@@ -230,12 +230,12 @@ SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNum
 		<div id="paginado">
 			<div id="previuos">
 				<% if (last != pageNumber) { %>
-					<a href="papapedia.jsp?pn=<%=pageNumber + 1%>">Ver los anteriores</a>
+					<a href="papapedia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Ver los anteriores</a>
 				<% } %>
 			</div>
 			<div id="next">
 				<% if (first != pageNumber) { %>
-					<a href="papapedia.jsp?pn=<%=first%>">Ver m&aacute;s comentarios</a>
+					<a href="papapedia.jsp?pn=<%=first%>&dnc=true">Ver m&aacute;s comentarios</a>
 				<% } %>
 			</div>
 		</div>
