@@ -36,6 +36,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </head>
 
 <body>
+<%@ include file="includes/barraExperiencias.jsp" %>
 <script>
 	if (AC_FL_RunContent == 0) {
 		alert("This page requires AC_RunActiveContent.js.");
