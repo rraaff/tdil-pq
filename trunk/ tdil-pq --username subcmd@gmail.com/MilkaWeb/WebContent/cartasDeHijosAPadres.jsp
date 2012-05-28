@@ -16,6 +16,10 @@
 		MeltButton.incrementCounter(MeltButton.CARTAS_DE_HIJOS_A_PADRES_RENDER);
 	}
 %>
+<%
+	String nextPage = "papapedia.jsp";
+	String prevPage = "postits.jsp";
+%>
 <%@ include file="includes/head.jsp" %>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

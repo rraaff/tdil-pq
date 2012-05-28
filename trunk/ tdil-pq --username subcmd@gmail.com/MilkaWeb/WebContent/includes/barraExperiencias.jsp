@@ -117,7 +117,7 @@ a {color:#535353; text-decoration:none}
 			<!-- end logo-->
 			<div id="bm_social"><a href="#" class="facebook" title="Facebook"><img src="images/barra/facebook.png" width="17" height="17" alt="Facebook" /></a><img src="images/barra/separador.gif" width="1" height="21" /><a href="#" class="twitter" title="Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
 			<!-- end social-->
-			<div id="bm_controlador"><a href="#" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="#" class="right"></a></div>
+			<div id="bm_controlador"><a href="<%out.println(prevPage);%>" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="<%out.println(nextPage);%>" class="right"></a></div>
 			<!-- end controlador-->
 			<%= MeltButton.meltButton(barClickCounter) %>
 			<!-- end me_derrite-->

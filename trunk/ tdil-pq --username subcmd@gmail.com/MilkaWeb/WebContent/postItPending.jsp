@@ -87,62 +87,69 @@ request.setAttribute( "test",  paginated);
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
-<display:table name="test" sort="external" pagesize="10" id="testit">
-  <display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
-  <display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
-  <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
-  <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
-  <display:column title="acciones">
-  	<a href="./reviewPostIt.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
-  </display:column>
-</display:table>
-
-<logic:notEqual name="PostItAdministrationForm" property="objectId" value="0">
-<html:form method="POST" action="/approveDisapprovePostIt">
-	Texto original: <bean:write name="PostItAdministrationForm" property="originaltext"/><br><br>
-	Titulo: <html:text name="PostItAdministrationForm" property="title" style="width: 300px;"/><br><br>
-	Descripcion: <html:text name="PostItAdministrationForm" property="description" style="width: 300px;"/><br><br>
-	Color:<html:select name="PostItAdministrationForm" property="color" styleClass="width120">
-		<logic:iterate name="PostItAdministrationForm" property="allColors"
-			id="iterColor">
-			<option	<%=	((String) iterColor).equals( postItAdministrationForm.getColor()) ? "selected" : ""%>
-				value="<%=iterColor%>">
-				&nbsp;&nbsp;&nbsp;<%=iterColor%></option>
-		</logic:iterate>
-	</html:select><br><br>
-	Url: <html:text name="PostItAdministrationForm" property="urlLink" /><br><br>
-	Target:<html:select name="PostItAdministrationForm" property="urlTarget" >
-		<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
-			<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
-				value="<%=iterTarget%>">
-				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-		<% } %>
-	</html:select><br><br>
-	Miniatura	
-	<logic:equal name="PostItAdministrationForm" property="hasThumb" value="true">
-		<img id="img_thumb" src="./viewPostItThumb.do" width="30" height="30" align="absmiddle"> 
-	</logic:equal>
-	<logic:notEqual name="PostItAdministrationForm" property="hasThumb" value="true">
-		<img id="img_thumb" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
-	</logic:notEqual>
-	<input type="file" name="upload_thumb" id="upload_thumb"><br>
-	Postit	
-	<logic:equal name="PostItAdministrationForm" property="hasCover" value="true">
-		<img id="img_cover" src="./viewPostItImage.do" width="30" height="30" align="absmiddle"> 
-	</logic:equal>
-	<logic:notEqual name="PostItAdministrationForm" property="hasCover" value="true">
-		<img id="img_cover" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
-	</logic:notEqual>
-	<input type="file" name="upload_cover" id="upload_cover"><br>
-
-	<html:submit property="operation">
-		<bean:message key="approve" />
-	</html:submit>
-	<html:submit property="operation">
-		<bean:message key="disapprove" />
-	</html:submit>
-</html:form>
-</logic:notEqual>
+	<h1 align="center">Experiancia POST ITs</h1>
+	<div class="renglon width860" style="margin-bottom:20px;">
+		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar, modificar o desaprobar los contenidos de la experiencia POST ITs.</span></div>
+	</div>
+	<div class="renglon width860">
+		<display:table name="test" sort="external" pagesize="10" id="testit">
+			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
+			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
+			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
+			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
+			<display:column title="acciones">
+			<a href="./reviewPostIt.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
+			</display:column>
+		</display:table>
+	</div>
+	<div class="renglon width860">
+		<logic:notEqual name="PostItAdministrationForm" property="objectId" value="0">
+		<html:form method="POST" action="/approveDisapprovePostIt">
+			Texto original: <bean:write name="PostItAdministrationForm" property="originaltext"/><br><br>
+			Titulo: <html:text name="PostItAdministrationForm" property="title" style="width: 300px;"/><br><br>
+			Descripcion: <html:text name="PostItAdministrationForm" property="description" style="width: 300px;"/><br><br>
+			Color:<html:select name="PostItAdministrationForm" property="color" styleClass="width120">
+				<logic:iterate name="PostItAdministrationForm" property="allColors"
+					id="iterColor">
+					<option	<%=	((String) iterColor).equals( postItAdministrationForm.getColor()) ? "selected" : ""%>
+						value="<%=iterColor%>">
+						&nbsp;&nbsp;&nbsp;<%=iterColor%></option>
+				</logic:iterate>
+			</html:select><br><br>
+			Url: <html:text name="PostItAdministrationForm" property="urlLink" /><br><br>
+			Target:<html:select name="PostItAdministrationForm" property="urlTarget" >
+				<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+					<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+						value="<%=iterTarget%>">
+						&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+				<% } %>
+			</html:select><br><br>
+			Miniatura	
+			<logic:equal name="PostItAdministrationForm" property="hasThumb" value="true">
+				<img id="img_thumb" src="./viewPostItThumb.do" width="30" height="30" align="absmiddle"> 
+			</logic:equal>
+			<logic:notEqual name="PostItAdministrationForm" property="hasThumb" value="true">
+				<img id="img_thumb" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
+			</logic:notEqual>
+			<input type="file" name="upload_thumb" id="upload_thumb"><br>
+			Postit	
+			<logic:equal name="PostItAdministrationForm" property="hasCover" value="true">
+				<img id="img_cover" src="./viewPostItImage.do" width="30" height="30" align="absmiddle"> 
+			</logic:equal>
+			<logic:notEqual name="PostItAdministrationForm" property="hasCover" value="true">
+				<img id="img_cover" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
+			</logic:notEqual>
+			<input type="file" name="upload_cover" id="upload_cover"><br>
+		
+			<html:submit property="operation">
+				<bean:message key="approve" />
+			</html:submit>
+			<html:submit property="operation">
+				<bean:message key="disapprove" />
+			</html:submit>
+		</html:form>
+		</logic:notEqual>
+	</div>
 </div>
 </body>
 </html>
