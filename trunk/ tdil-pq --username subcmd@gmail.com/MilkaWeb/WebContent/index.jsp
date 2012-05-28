@@ -115,7 +115,7 @@ $(document).ready(
 	<div id="wrapper2">
 		<div id="header_home">
 			<h2>Prob&aacute; vos tambi&eacute;n el sabor de la <span class="violeta">ternura</span></h2>  
-			<span class="derecha">2256 <span class="violeta">personas ya se animaron</span></span>
+			<span class="derecha"><%=MeltButton.countParticipants()%> <span class="violeta">personas ya se animaron</span></span>
 			<div id="homeSlider">
 				<script>
 					if (AC_FL_RunContent == 0) {
