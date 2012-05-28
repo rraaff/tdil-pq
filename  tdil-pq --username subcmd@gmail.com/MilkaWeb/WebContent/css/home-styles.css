@@ -503,6 +503,7 @@ a {color:#535353; text-decoration:none}
 	height:196px;
 	clear:both;
 	float:left;
+	overflow:hidden;
 	margin:10px 0 0 40px;
 	padding-bottom:10px;
 	background: #FFF url(../images/base-videos.png) no-repeat 0 bottom;		
@@ -543,6 +544,8 @@ a {color:#535353; text-decoration:none}
 #galeria-videos ul li h3{
 	margin:10px 0 0 0;
 	font-size:11px;
+	height:30px;
+	overflow:hidden;
 }
 
 #galeria-videos ul li a.playlist{
@@ -550,6 +553,7 @@ a {color:#535353; text-decoration:none}
 	color:#666;
 	padding:2px 5px;
 	margin-top:5px;
+	margin-bottom:10px;
 	float:left;
 	text-transform:uppercase;
 	font-size:10px;
