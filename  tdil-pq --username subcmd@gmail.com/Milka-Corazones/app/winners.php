@@ -68,9 +68,10 @@ body {
 #content #tableRow div {
 	font-size:15px;
 	border:solid 1px #665395;
-	width:190px;
+	width:290px;
 	height:20px;
 	margin:2px;
+	overflow:hidden;
 	float:left;
 }
 #backButton {
@@ -86,10 +87,10 @@ body {
 	$redirect = 'https://www.facebook.com/'. PAGE_NAME . '?sk=app_'. APPLICATION_ID;
 ?>
 <div id="content">
-	<div id="tableHead"><div>fecha</div><div>ganador</div></div>
+	<div id="tableHead"><div style="width:90px;">fecha</div><div style="width:290px;">ganador</div></div>
 	<div id="tableBody">
 		<?php while ( $aRow = mysql_fetch_array( $result ) ) { ?>
-			<div id="tableRow"><div><?php echo $aRow["prizeDate"] ?></div><div><?php echo $aRow["fbname"] ?></div></div>
+			<div id="tableRow"><div style="width:90px;"><?php echo $aRow["prizeDate"] ?></div><div><?php echo $aRow["fbname"] ?></div></div>
 		<?php }	?>
 	</div>
 	<div id="backButton"><a href="<?php echo $redirect;?>" target="_top"><img src="../images/btn_volver_rosa.png" width="122" height="33"/></a></div>
