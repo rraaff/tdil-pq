@@ -140,6 +140,9 @@ a:hover {
 	text-align:left;
 	line-height: normal;
 }
+.errorText {
+	color:#FF0000;
+}
 /**/
 table {
 	width:100%;
