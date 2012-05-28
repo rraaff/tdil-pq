@@ -34,7 +34,15 @@ $(document).ready(
 </script>		
 <style>
 <!-- 
-body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times, serif; padding:0; margin:0; height:100%; }
+body {
+	background-color:#FFFFFF;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding:0;
+	margin:0;
+	height:100%;
+	background-image: url(swf/ExpCartasHaP/taller/fondo.jpg);
+	background-repeat: repeat-x;
+}
 -->
 </style>
 </head>

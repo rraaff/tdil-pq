@@ -12,9 +12,8 @@
 </head>
 
 <body>
-<div id="header"></div>
+<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
-	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
 	<div id="formulariosBase">
 		<h1>Administraci&oacute;n de inserts</h1>
 		<div id="conteinerScrollable" style="overflow:hidden;">
