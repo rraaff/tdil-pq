@@ -23,86 +23,12 @@ $(document).ready(
 		   $(valor).meltbutton();
 		});
 	
-		function generateTooltips() {
-			  //make sure tool tip is enabled for any new error label
-				$("img[id*='error']").tooltip({
-					showURL: false,
-					opacity: 0.99,
-					fade: 150,
-					positionRight: true ,
-					bodyHandler: function() {
-						return $("#"+this.id).attr("hovertext");
-					}
-				});
-				//make sure tool tip is enabled for any new valid label
-				$("img[src*='tick.gif']").tooltip({
-					showURL: false,
-						bodyHandler: function() {
-							return "OK";
-						}
-				});
-			}
-			
-			$('form').mouseover(function(){
-				      generateTooltips();
-				    });
+		<%@ include file="includes/fotoMilkaReady.jsp" %>
 		
-			$("form[name='MilkaPhotoForm']").validate({
-					errorPlacement: function(error, element) {
-						error.appendTo( element.parent("td").next("td") );
-					},
-					rules: { 'authorBean.name': {required: true},
-							'authorBean.email': {required: true, email: true},
-							'authorBean.acceptPolitics': {required: true},
-							'photoFormFile': {required: true}
-					},
-					messages: {
-						'authorBean.name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
-						'authorBean.email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
-								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
-						'authorBean.acceptPolitics': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Debe aceptar las politicas.' />"},
-						'photoFormFile': {required: "<img id='photoerror' src='images/unchecked.gif' hovertext='Seleccione una foto.' />"}
-					},
-					submitHandler: function() {
-			            $("form[name='MilkaPhotoForm']").ajaxSubmit({
-			    			type: "POST",
-			    			url: "./uploadMilkaPhoto.do",
-			    			dataType: "json",
-			    			success: postUploadFotoMilka
-			    			});
-			        }
-				});
-				
-				$( "#dialog-form" ).dialog({
-					autoOpen: false,
-					height: 300,
-					width: 350,
-					modal: true
-				});
-				$( "#subifotomilka" ).click(function() {
-					$( "#dialog-form" ).dialog( "open" );
-				});
-			
-		}
-	);
-
-function postUploadFotoMilka(data) {
-	$( "#dialog-form" ).dialog("close" );
-	if (data.result == 'OK') {
-		$("input[name='authorBean.name']").attr('value', '');
-		$("input[name='authorBean.email']").attr('value', '');
-		$("input[name='authorBean.acceptPolitics']").attr('checked', false);
-		$( "#dialog-modal" ).dialog({
-			height: 140,
-			modal: true
-		});
-	} else {
-		$( "#dialog-modal-err" ).dialog({
-				height: 140,
-				modal: true
-			});
 	}
-}
+);
+
+<%@ include file="includes/fotoMilkaScript.jsp" %>
 </script>
 
 <!-- FB share metas >
@@ -280,42 +206,6 @@ new TWTR.Widget({
 
     </div>
     
-<div id="dialog-modal" class="hide" title="Subi tu foto con chocolate">
-	<p>
-		Gracias por subir tu foto.<br>
-		Te avisaremos cuando este aprobada.
-	</p>
-</div>
-<div id="dialog-modal-err" class="hide" title="Subi tu foto con chocolate">
-	Ha ocurrido un error, intentelo nuevamente.
-</div>
-
-<div id="dialog-form" class="hide" title="Subi tu foto con chocolate">
-	<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
-		<table>
-			<tr>
-				<td>Nombre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/></td>
-				<td width="25" id="authorBean.nameerr"></td>
-			</tr>
-			<tr>
-				<td>email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/></td>
-				<td width="25" id="authorBean.emailerr"></td>
-			</tr>
-			<tr>
-				<td>Politicas:<html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics" styleClass="width180"/></td>
-				<td width="25" id="authorBean.acceptPoliticserr"></td>
-			</tr>
-			<tr>
-				<td><html:file name="MilkaPhotoForm" property="photoFormFile" /></td>
-				<td width="25" id="photoFormFileerr"></td>
-			</tr>
-			<tr>
-				<td>
-					<html:submit property="operation">Upload</html:submit>
-				</td>
-			</tr>
-		</table>	
-	</html:form>
-</div>
+<%@ include file="includes/fotoMilkaDialogs.jsp" %>
     
 <%@ include file="includes/footer.jsp" %>

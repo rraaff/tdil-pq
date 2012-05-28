@@ -1,0 +1,59 @@
+function generateTooltips() {
+  //make sure tool tip is enabled for any new error label
+	$("img[id*='error']").tooltip({
+		showURL: false,
+		opacity: 0.99,
+		fade: 150,
+		positionRight: true ,
+		bodyHandler: function() {
+			return $("#"+this.id).attr("hovertext");
+		}
+	});
+	//make sure tool tip is enabled for any new valid label
+	$("img[src*='tick.gif']").tooltip({
+		showURL: false,
+			bodyHandler: function() {
+				return "OK";
+			}
+	});
+}
+
+$('form').mouseover(function(){
+	      generateTooltips();
+	    });
+
+$("form[name='MilkaPhotoForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent("td").next("td") );
+		},
+		rules: { 'authorBean.name': {required: true},
+				'authorBean.email': {required: true, email: true},
+				'authorBean.acceptPolitics': {required: true},
+				'photoFormFile': {required: true}
+		},
+		messages: {
+			'authorBean.name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+			'authorBean.email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+					email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+			'authorBean.acceptPolitics': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Debe aceptar las politicas.' />"},
+			'photoFormFile': {required: "<img id='photoerror' src='images/unchecked.gif' hovertext='Seleccione una foto.' />"}
+		},
+		submitHandler: function() {
+            $("form[name='MilkaPhotoForm']").ajaxSubmit({
+    			type: "POST",
+    			url: "./uploadMilkaPhoto.do",
+    			dataType: "json",
+    			success: postUploadFotoMilka
+    			});
+        }
+	});
+	
+	$( "#dialog-form" ).dialog({
+		autoOpen: false,
+		height: 300,
+		width: 350,
+		modal: true
+	});
+	$( "#subifotomilka" ).click(function() {
+		$( "#dialog-form" ).dialog( "open" );
+	});
