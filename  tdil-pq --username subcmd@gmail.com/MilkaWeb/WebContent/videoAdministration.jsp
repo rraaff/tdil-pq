@@ -43,14 +43,13 @@ div { /*border:dotted 1px #00CCFF; */}
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
+	<h1 align="center">Contenido tipo Galer&iacute;a de Playlist de Youtube</h1>
+	<div class="renglon width860" style="margin-bottom:20px;">
+		<div class="label width860"><span class="comment">Podr&aacute; crear todos los links a playlist de YOUTUBE que quiera. Cargue todas las fotos representativa del playlist a 133px x 83px. Luego cargue la URL del playlist y un t&iacute;tulo.</span></div>
+	</div>
 	<html:form method="POST" action="/saveVideo">
-	<h1>Contenido tipo Galer&iacute;a de Playlist de Youtube</h1>
 	<span class="errorText"><%=MilkaErrorFormatter.getErrorFrom(request, "general")%></span>
-	<div style="float:left; width:920px; border:#FF0000;">
-		<div class="renglon width860">
-			<div class="label width860"><span class="comment">Podr&aacute; crear todos los links a playlist de YOUTUBE que quiera. Cargue todas las fotos representativa del playlist a 133px x 83px. Luego cargue la URL del playlist y un t&iacute;tulo.</span></div>
-		</div>
-		<div class="renglon width860 height60">
+		<div class="renglon width860" style="margin-bottom:20px;">
 			<div class="label width200 height60"><input type="file" name="upload_img" id="upload_img"></div>
 			<div class="label width50 height60"><%=MilkaErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
 			<div class="label width200 height50">
@@ -66,7 +65,7 @@ div { /*border:dotted 1px #00CCFF; */}
 				</logic:notEqual>
 			</div>
 		</div>
-		<div class="width920">
+		<div class="renglon width860" style="margin-bottom:20px;">
 			<table width="920" id="image_gal_tab">
 				<tr>
 					<td class="headerTablas" width="50">Posici&oacute;n</td>
