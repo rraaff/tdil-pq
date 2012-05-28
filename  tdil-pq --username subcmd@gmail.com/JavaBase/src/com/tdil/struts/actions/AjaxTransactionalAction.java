@@ -31,9 +31,14 @@ public abstract class AjaxTransactionalAction extends AjaxAction implements Tran
 			this.writeJsonResponse(error.asJson(), response);
 			return null;
 		} else {
-			HashMap<String, Object> result = (HashMap<String, Object>)TransactionProvider.executeInTransaction(this, transactionalForm);
-			this.writeJsonResponse(result, response);
-			return null;
+			try {
+				HashMap<String, Object> result = (HashMap<String, Object>)TransactionProvider.executeInTransaction(this, transactionalForm);
+				this.writeJsonResponse(result, response);
+				return null;
+			} catch (ValidationException ex) {
+				this.writeJsonResponse(error.asJson(), response);
+				return null;
+			}
 		}
 	}
 

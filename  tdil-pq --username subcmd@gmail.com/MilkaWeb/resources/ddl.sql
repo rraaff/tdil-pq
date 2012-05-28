@@ -43,6 +43,7 @@ ENGINE = InnoDB;
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('smpt.server','localhost','Servidor de email',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('smpt.port','2525','Puerto del servidor de email',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','milka@contact.com.ar','Email del formulario de contacto',0);
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -63,8 +64,10 @@ CREATE TABLE NOTIFICATION_EMAIL (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('yourmilkaphoto', 'Aprobacion de foto milka','contenido del email',1);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('post-it', 'Aprobacion de post it','contenido del email',1);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('yourmilkaphoto', 'Aprobacion de foto milka','contenido del email',0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('post-it', 'Aprobacion de post it','contenido del email',0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('cartasdehijosapadres', 'Aprobacion de cartas de hijos a padres','contenido del email',0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('finalesdeemail', 'Aprobacion de finales de email','contenido del email',0);
 
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,

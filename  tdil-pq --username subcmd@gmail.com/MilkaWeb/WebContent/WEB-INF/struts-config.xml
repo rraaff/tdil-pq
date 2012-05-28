@@ -28,6 +28,8 @@
    name="VideoForm" type="com.tdil.milka.struts.forms.VideoForm"/>
    <form-bean id="RawInsertForm"
    name="RawInsertForm" type="com.tdil.milka.struts.forms.RawInsertForm"/>
+   <form-bean id="ContactForm"
+   name="ContactForm" type="com.tdil.milka.struts.forms.ContactForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -229,21 +231,23 @@
   </action>
   
   <!--  Public actions -->
-  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="session" type="com.tdil.milka.struts.action.UploadMilkaPhotoAction">
+  <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="request" type="com.tdil.milka.struts.action.UploadMilkaPhotoAction">
+  </action>
+  <action name="ContactForm" path="/contact" scope="request" type="com.tdil.milka.struts.action.ContactAction">
   </action>
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/index.jsp"/>
   </action>
-  <action name="PapapediaForm" path="/addPapapedia" scope="session" type="com.tdil.milka.struts.action.AddPapapediaAction">
+  <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
    <forward name="continue" path="/papapedia.jsp" redirect="true"/>
    <forward name="failure" path="/papapedia.jsp"/>
   </action>
-  <action name="EmailEndingForm" path="/uploadEmailEnding" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="EmailEndingForm" path="/uploadEmailEnding" scope="request" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/finalesDeEmail.jsp" redirect="true"/>
    <forward name="failure" path="/agregarFinalDeEmail.jsp"/>
   </action>
-  <action name="MailToParentForm" path="/uploadMailToParent" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="MailToParentForm" path="/uploadMailToParent" scope="request" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/cartasDeHijosAPadres.jsp" redirect="true"/>
    <forward name="failure" path="/agregarCartaDeHijoAPadre.jsp"/>
   </action>
