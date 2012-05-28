@@ -14,10 +14,10 @@
 		<width>800</width>
 		<height>25</height>
 		<buttonSize>20</buttonSize>
-		<nextButton>images/next.png</nextButton>
-		<previousButton>images/previous.png</previousButton>
-		<playButton>images/play.png</playButton>
-		<pauseButton>images/pause.png</pauseButton>
+		<nextButton>swf/ExpFinalesDeMails/images/next.png</nextButton>
+		<previousButton>swf/ExpFinalesDeMails/images/previous.png</previousButton>
+		<playButton>swf/ExpFinalesDeMails/images/play.png</playButton>
+		<pauseButton>swf/ExpFinalesDeMails/images/pause.png</pauseButton>
 	</info>
 	<view>
 		<loaderSize>20</loaderSize>
