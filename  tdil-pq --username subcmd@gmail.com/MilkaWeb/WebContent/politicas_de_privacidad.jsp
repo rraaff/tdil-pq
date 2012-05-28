@@ -5,11 +5,17 @@
 <title>Milka</title>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+<style>
+.spacerHeigh {
+	height:70px;
+	float:left;
+}
+</style>
 </head>
 <body>
 <div id="content">
 	<div id="header">
-		<div id="logo"><a href="index.html" title="Milka"></a></div>
+		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
 			<div id="subi"><a href="#" title="SUB&Iacute; tu foto con chocolate"></a></div>
 			<div id="social">
@@ -40,12 +46,8 @@
 	<div id="wrapper2-internas">
 		<div id="col_derecha">
 			<h2><span class="violeta">Milka </span>en el tiempo</h2>
-			<ul>
-				<li class=""><a href="#" title="Video 1" class="activo"><img src="images/video1.jpg" width="133" height="83" alt="Video1" /></a><h3>Jugando con chocolate</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 2" class="activo"><img src="images/video2.jpg" width="133" height="83" alt="Video2" /></a><h3>100 preguntas para la vaca</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 3" class="activo"><img src="images/video3.jpg" width="133" height="83" alt="Video3" /></a><h3>UNboxings</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 4" class="activo"><img src="images/video4.jpg" width="133" height="83" alt="Video4" /></a><h3>Para levantarse un domingo</h3><a href="#" class="playlist">Playlist</a></li>
-			</ul>
+			<span class="spacerHeigh"></span>
+			<%@ include file="includes/videoHorizontal.jsp" %>
 		</div>
 		<!-- end col_derecha-->
 		<div id="titulo-historia">
