@@ -6,9 +6,12 @@ html, body {
 }
 body {
 	margin:0;
-	background:url(images/barra/barra.png) no-repeat center top;
 }
 a {color:#535353; text-decoration:none}
+#bm_BarraContainer {
+	width:100%;
+	background:url(images/barra/barra.png) no-repeat center top;
+}
 #bm_content{
 	width:1000px;
 	margin:0 auto;
@@ -107,16 +110,18 @@ a {color:#535353; text-decoration:none}
 	color:#b398ff;
 }
 </style>
-<div id="bm_content">
-	<div id="bm_header">
-		<div id="bm_logo"><a href="index.jsp" title="Volver a la home de Milka"></a></div>
-		<!-- end logo-->
-		<div id="bm_social"><a href="#" class="facebook" title="Facebook"><img src="images/barra/facebook.png" width="17" height="17" alt="Facebook" /></a><img src="images/barra/separador.gif" width="1" height="21" /><a href="#" class="twitter" title="Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
-		<!-- end social-->
-		<div id="bm_controlador"><a href="#" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="#" class="right"></a></div>
-		<!-- end controlador-->
-		<%= MeltButton.meltButton(barClickCounter) %>
-		<!-- end me_derrite-->
+<div id="bm_BarraContainer">
+	<div id="bm_content">
+		<div id="bm_header">
+			<div id="bm_logo"><a href="index.jsp" title="Volver a la home de Milka"></a></div>
+			<!-- end logo-->
+			<div id="bm_social"><a href="#" class="facebook" title="Facebook"><img src="images/barra/facebook.png" width="17" height="17" alt="Facebook" /></a><img src="images/barra/separador.gif" width="1" height="21" /><a href="#" class="twitter" title="Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
+			<!-- end social-->
+			<div id="bm_controlador"><a href="#" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="#" class="right"></a></div>
+			<!-- end controlador-->
+			<%= MeltButton.meltButton(barClickCounter) %>
+			<!-- end me_derrite-->
+		</div>
+		<!-- end header-->
 	</div>
-	<!-- end header-->
-</div>		
+</div>
