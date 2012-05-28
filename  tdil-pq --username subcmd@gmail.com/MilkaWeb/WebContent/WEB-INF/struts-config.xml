@@ -233,6 +233,11 @@
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="request" type="com.tdil.milka.struts.action.UploadMilkaPhotoAction">
   </action>
+  <action name="EmailEndingForm" path="/uploadEmailEnding" scope="request" type="com.tdil.milka.struts.action.UploadEmailEndingAction">
+  </action>
+  <action name="MailToParentForm" path="/uploadMailToParent" scope="request" type="com.tdil.milka.struts.action.UploadMailToParentAction">
+  </action>
+  
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.milka.struts.action.ContactAction">
   </action>
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -243,14 +248,14 @@
    <forward name="continue" path="/papapedia.jsp" redirect="true"/>
    <forward name="failure" path="/papapedia.jsp"/>
   </action>
-  <action name="EmailEndingForm" path="/uploadEmailEnding" scope="request" type="com.tdil.struts.actions.SaveAction">
+  <!--  action name="EmailEndingForm" path="/uploadEmailEnding" scope="request" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/finalesDeEmail.jsp" redirect="true"/>
    <forward name="failure" path="/agregarFinalDeEmail.jsp"/>
   </action>
   <action name="MailToParentForm" path="/uploadMailToParent" scope="request" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/cartasDeHijosAPadres.jsp" redirect="true"/>
    <forward name="failure" path="/agregarCartaDeHijoAPadre.jsp"/>
-  </action>
+  </action-->
   <action path="/meltaction" scope="request" type="com.tdil.milka.struts.action.MeltButtonAction"/>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
