@@ -53,6 +53,8 @@ com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pag
 request.setAttribute( "test",  paginated);
 %>
 <body>
+<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
+<div id="container">
 <display:table name="test" sort="external" pagesize="10" id="testit">
   <display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable">
   	<%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("testit")).getCreationdate())%>
@@ -77,5 +79,6 @@ request.setAttribute( "test",  paginated);
 	</html:submit>
 </html:form>
 </logic:notEqual>
+</div>
 </body>
 </html>

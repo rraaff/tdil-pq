@@ -41,11 +41,10 @@ tr.tableRowEven,tr.even {
 th.sorted {
 	background-color: orange;
 }
-</style>
+div { /*border:dotted 1px #0066CC;*/ }
 
-	<style>
-	.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
-	</style>
+.ui-autocomplete-loading { background: white url('css/images/ui-anim_basic_16x16.gif') right center no-repeat; }
+</style>
 <script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
 <script>
 	$(document).ready(
@@ -125,44 +124,64 @@ request.setAttribute( "test",  paginated);
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
-<display:table name="test" sort="external" pagesize="10" id="testit">
-  <display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
-  <display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
-  <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
-  <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
-  <display:column title="acciones">
-  	<a href="./reviewMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
-  </display:column>
-</display:table>
-<logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
-<img id="img_to_review" width="200" height="200" src="./download.st?id=<bean:write name="MilkaPhotoAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MilkaPhotoAdministrationForm" property="extBlobData"/>" alt="">
-<img id="img_to_approve" src="./viewMilkaPhotoReplacement.do" width="200" height="200" align="absmiddle"> 
-<input type="file" name="upload_email" id="upload_email">Reemplazar<br>
-<html:form method="POST" action="/approveDisapproveMilkaPhoto">
-	<html:checkbox name="MilkaPhotoAdministrationForm" property="frontcover" /> Portada<br>
-	Tags: <html:text name="MilkaPhotoAdministrationForm" property="tags" style="width: 300px;"/><br>
-	<html:submit property="operation">
-		<bean:message key="approve" />
-	</html:submit>
-	<html:submit property="operation">
-		<bean:message key="disapprove" />
-	</html:submit>
-</html:form>
-<script>
-$(document).ready(
-	function(){
-		//alert($('#img_to_review').prop('width'));
-		//$('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
-	}
-	
-);
-
-$(window).load(function() {
-      $('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
-      $('#img_to_approve').resize({maxWidth: '200', maxHeight: '200'});
-});
-</script>
-</logic:notEqual>
+	<h1>Administración de Tu Foto Milka</h1>
+	<div style="float:left; width:920px; border:#FF0000;">
+		<div class="renglon width860">
+			<div class="label width860"><span class="comment">Solo una foto puede ser marcada como foto de portada, esa se ver&aacute; destacada en el homepage.</span></div>
+		</div>
+		<div class="renglon width860">
+			<display:table name="test" sort="external" pagesize="10" id="testit">
+				<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
+				<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
+				<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
+				<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
+				<display:column title="acciones"><a href="./reviewMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
+			</display:table>
+		</div>
+		<logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
+			<html:form method="POST" action="/approveDisapproveMilkaPhoto">
+				<div class="renglon width860">
+					<div style="width:212px; height:177px; float:left;">
+						<h3>Imagen original</h3>
+						<img id="img_to_review" width="212" height="157" src="./download.st?id=<bean:write name="MilkaPhotoAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MilkaPhotoAdministrationForm" property="extBlobData"/>" alt="">
+					</div>
+					<div style="width:212px; height:177px; float:left;">
+						<h3>Imagen nueva</h3>
+						<img id="img_to_approve" src="./viewMilkaPhotoReplacement.do" width="212" height="157" align="absmiddle">
+					</div>
+					<div style="width:400px; height:200px; float:left;">
+						Reemplazar<br/><br/>
+						<input type="file" name="upload_email" id="upload_email"><br/><br/>
+						<html:checkbox name="MilkaPhotoAdministrationForm" property="frontcover" />Elegir como portada<br/><br/>
+						Tags: <html:text name="MilkaPhotoAdministrationForm" property="tags" style="width: 400px;"/>
+					</div>
+				</div>
+				<div class="renglon width860" align="center">
+					<html:submit property="operation">
+						<bean:message key="approve" />
+					</html:submit>
+					<html:submit property="operation">
+						<bean:message key="disapprove" />
+					</html:submit>
+				</div>
+			</html:form>
+			<script>
+			$(document).ready(
+				function(){
+					//alert($('#img_to_review').prop('width'));
+					//$('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
+				}
+				
+			);
+			
+			$(window).load(function() {
+				  $('#img_to_review').resize({maxWidth: '212', maxHeight: '157'});
+				  $('#img_to_approve').resize({maxWidth: '212', maxHeight: '157'});
+			});
+			</script>
+			</logic:notEqual>
+		</div>
+	</div>
 </div>
 </body>
 </html>
