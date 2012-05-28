@@ -49,7 +49,6 @@ body {
 <body>
 <% int barClickCounter = MeltButton.CARTAS_DE_HIJOS_A_PADRES_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
-<!-- 			'FlashVars', 'XMLFile=swf/ExpCartasHaP/xml/config.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp', -->
 <script>
 	if (AC_FL_RunContent == 0) {
 		alert("This page requires AC_RunActiveContent.js.");

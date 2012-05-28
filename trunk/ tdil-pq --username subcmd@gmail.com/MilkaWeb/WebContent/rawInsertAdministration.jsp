@@ -19,13 +19,15 @@
 		<div id="conteinerScrollable" style="overflow:hidden;">
 			<html:form method="POST" action="/saveRawInsert">
 				<span class="errorText"><%=MilkaErrorFormatter.getErrorFrom(request, "general")%></span><br>
-				<div class="renglon width700">
+				<div class="renglon width920">
 					<div class="label width50">Tipo</div>
 					<div class="label width200"><bean:write name="RawInsertForm" property="inserttype" /></div>
-					<div class="label width50">Descripcion</div>
+					<div class="label width100">Descripci&oacute;n</div>
 					<div class="label width200"><bean:write name="RawInsertForm" property="description" /></div>
+				</div>
+				<div class="renglon width920">
 					<div class="label width80">Valor</div>
-					<div class="label width80"><html:textarea name="RawInsertForm" property="htmlcontent"/></div>
+					<div class="label width700 height120"><html:textarea name="RawInsertForm" property="htmlcontent" styleClass="width700 height120" /></div>
 					<div class="label width50"><%=MilkaErrorFormatter.getErrorFrom(request, "RawInsertForm.htmlcontent.err")%></div>
 				</div>
 				<logic:equal name="RawInsertForm" property="objectId" value="0">
