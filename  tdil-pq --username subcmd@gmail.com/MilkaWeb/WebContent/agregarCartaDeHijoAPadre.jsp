@@ -19,7 +19,7 @@ $(document).ready(
 		   $(valor).meltbutton();
 		});
 	
-	function generateTooltips() {
+		function generateTooltips() {
 			  //make sure tool tip is enabled for any new error label
 				$("img[id*='error']").tooltip({
 					showURL: false,
@@ -76,7 +76,7 @@ function postUpload(data) {
 		$( "#dialog-modal" ).dialog({
 				height: 140,
 				modal: true,
-				close: function(event, ui) {  document.location.href='./cartasDeHijosAPadres.jsp'; }
+				close: function(event, ui) {  document.location.href='./cartasDeHijosAPadres.jsp?dnc=true'; }
 			});
 	} else {
 		$( "#dialog-modal-err" ).dialog({

@@ -76,7 +76,7 @@ function postUpload(data) {
 		$( "#dialog-modal" ).dialog({
 				height: 140,
 				modal: true,
-				close: function(event, ui) {  document.location.href='./finalesDeEmail.jsp'; }
+				close: function(event, ui) {  document.location.href='./finalesDeEmail.jsp?dnc=true'; }
 			});
 	} else {
 		$( "#dialog-modal-err" ).dialog({

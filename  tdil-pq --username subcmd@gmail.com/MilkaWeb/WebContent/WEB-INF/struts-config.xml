@@ -245,8 +245,8 @@
    <forward name="failure" path="/index.jsp"/>
   </action>
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
-   <forward name="continue" path="/papapedia.jsp" redirect="true"/>
-   <forward name="failure" path="/papapedia.jsp"/>
+   <forward name="continue" path="/papapedia.jsp?dnc=true" redirect="true"/>
+   <forward name="failure" path="/papapedia.jsp?dnc=true"/>
   </action>
   <!--  action name="EmailEndingForm" path="/uploadEmailEnding" scope="request" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/finalesDeEmail.jsp" redirect="true"/>

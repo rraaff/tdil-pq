@@ -64,4 +64,13 @@ public class MeltButton implements TransactionalAction {
 		ClickCounter c = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(this.id);
 		this.quantity = c.getClicks();
 	}
+	
+	public static void incrementCounter(int id) {
+		try {
+			TransactionProvider.executeInTransaction(new IncrementCounter(id));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
