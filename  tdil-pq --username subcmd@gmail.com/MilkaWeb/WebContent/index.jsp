@@ -87,12 +87,21 @@ $(document).ready(
 	);
 
 function postUploadFotoMilka(data) {
-	$( "#dialog-form" ).dialog("destroy" );
-	$( "#dialog:ui-dialog" ).dialog( "destroy" );
+	$( "#dialog-form" ).dialog("close" );
+	if (data.result == 'OK') {
+		$("input[name='authorBean.name']").attr('value', '');
+		$("input[name='authorBean.email']").attr('value', '');
+		$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 		$( "#dialog-modal" ).dialog({
 			height: 140,
 			modal: true
 		});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
 }
 </script>
 
@@ -271,15 +280,17 @@ new TWTR.Widget({
 
     </div>
     
-<div id="dialog-modal" title="Tu foto milka">
+<div id="dialog-modal" class="hide" title="Subi tu foto con chocolate">
 	<p>
 		Gracias por subir tu foto.<br>
 		Te avisaremos cuando este aprobada.
 	</p>
 </div>
-<br>
+<div id="dialog-modal-err" class="hide" title="Subi tu foto con chocolate">
+	Ha ocurrido un error, intentelo nuevamente.
+</div>
 
-<div id="dialog-form" title="Subi tu foto con chocolate">
+<div id="dialog-form" class="hide" title="Subi tu foto con chocolate">
 	<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
 		<table>
 			<tr>
