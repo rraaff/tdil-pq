@@ -8,30 +8,31 @@
 	Ha ocurrido un error, intentelo nuevamente.
 </div>
 
-<div id="dialog-form" class="hide" title="Subi tu foto con chocolate">
+<div id="dialog-form" title="Subi tu foto con chocolate">
 	<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
-		<table>
+		<table width="330" cellspacing="0" cellpadding="0">
 			<tr>
-				<td>Nombre:<html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width180"/></td>
-				<td width="25" id="authorBean.nameerr"></td>
+				<td width="56" height="30">Nombre:</td>
+				<td width="242"><html:text name="MilkaPhotoForm" property="authorBean.name" styleClass="width230"/></td>
+				<td width="30" id="authorBean.nameerr"></td>
 			</tr>
 			<tr>
-				<td>email:<html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width180"/></td>
-				<td width="25" id="authorBean.emailerr"></td>
+				<td height="30">E-Mail:</td>
+				<td><html:text name="MilkaPhotoForm" property="authorBean.email" styleClass="width230"/></td>
+				<td width="30" id="authorBean.emailerr"></td>
 			</tr>
 			<tr>
-				<td>Politicas:<html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics" styleClass="width180"/></td>
-				<td width="25" id="authorBean.acceptPoliticserr"></td>
+				<td height="30" align="center"><html:checkbox name="MilkaPhotoForm" property="authorBean.acceptPolitics"/></td>
+				<td>Acepto las pol&iacute;ticas del sitio</td>
+				<td width="30" id="authorBean.acceptPoliticserr"></td>
 			</tr>
 			<tr>
-				<td><html:file name="MilkaPhotoForm" property="photoFormFile" /></td>
-				<td width="25" id="photoFormFileerr"></td>
+				<td colspan="2" height="30"><html:file name="MilkaPhotoForm" property="photoFormFile" /></td>
+				<td width="30" id="photoFormFileerr"></td>
 			</tr>
 			<tr>
-				<td>
-					<html:submit property="operation">Upload</html:submit>
-				</td>
+				<td colspan="3" height="30" align="center"><html:submit property="operation">Enviar imagen</html:submit></td>
 			</tr>
-		</table>	
+		</table>
 	</html:form>
 </div>
