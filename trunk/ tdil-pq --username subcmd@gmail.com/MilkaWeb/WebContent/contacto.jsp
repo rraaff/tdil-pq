@@ -139,12 +139,12 @@ function postContact(data) {
 		<table border="0" align="center" cellpadding="0" cellspacing="0" id="formulario_contacto">
 		  <tr>
 		    <td width="57" align="left"><label for="nombre">Nombre</label></td>
-		    <td width="501" align="left">
+		    <td width="450" align="left">
 		     <html:text name="ContactForm" property="name" styleClass="input_form"/> </td>
 		  </tr>
 		  
 		  <tr>
-		    <td align="left"><label for="email">Mail</label></td>
+		    <td align="left"><label for="email">E-Mail</label></td>
 		    <td align="left">
 		      <html:text name="ContactForm" property="email" styleClass="input_form"/></td>
 		  </tr>
@@ -156,7 +156,7 @@ function postContact(data) {
 		 
 		  <tr>
 		    <td height="50" align="right"></td>
-		    <td height="50" align="left"><html:submit property="operation">ENVIAR</html:submit></td>
+		    <td height="50" align="right"><html:submit property="operation">ENVIAR</html:submit></td>
 		  </tr>
 		  </table>
        </html:form>

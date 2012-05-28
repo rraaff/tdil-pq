@@ -553,7 +553,7 @@ a {color:#535353; text-decoration:none}
 	color:#666;
 	padding:2px 5px;
 	margin-top:5px;
-	margin-bottom:10px;
+	margin-bottom:20px;
 	float:left;
 	text-transform:uppercase;
 	font-size:10px;
@@ -790,7 +790,9 @@ div.rightArrow a{
 	width:260px;
 	float:right;
 	background: url(../images/base-columna-derecha.png) no-repeat 0 bottom;
-	min-height:657px;
+	/*height:657px;*/
+	height:637px;
+	overflow:hidden;
 	padding-bottom:10px;
 }
 
