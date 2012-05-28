@@ -8,12 +8,11 @@
 <head>
 <%@ include file="includes/boHead.jsp" %>
 </head>
-
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
-<div id="container">
-
-
+<div id="container" style="height:300px;">
+	<h1 align="center">Administración de contenidos del sitio oficial Milka.com.ar</h1>
+	<div align="center">seleccione una acci&oacute;n del men&uacute;.</div>
 </div>
 </body>
 </html>

@@ -16,6 +16,10 @@
 		MeltButton.incrementCounter(MeltButton.FINALES_DE_EMAIL_RENDER);
 	}
 %>
+<%
+	String nextPage = "postits.jsp";
+	String prevPage = "papapedia.jsp";
+%>
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <%@ include file="includes/head.jsp" %>
 <div id="fb-root"></div>

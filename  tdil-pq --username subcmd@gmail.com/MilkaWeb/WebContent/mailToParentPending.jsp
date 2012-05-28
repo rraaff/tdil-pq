@@ -79,54 +79,71 @@ request.setAttribute( "test",  paginated);
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
-<display:table name="test" sort="external" pagesize="10" id="testit">
-  <display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
-  <display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
-  <display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
-  <display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
-  <display:column title="acciones">
-  	<a href="./reviewMailToParent.do?id=<%= ((MailToParentValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a>
-  </display:column>
-</display:table>
-<logic:notEqual name="MailToParentAdministrationForm" property="idBlobData" value="0">
-<img id="img_to_review" width="200" height="200" src="./download.st?id=<bean:write name="MailToParentAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MailToParentAdministrationForm" property="extBlobData"/>" alt="">
-
-<img id="img_to_approve" src="./viewMailToParentReplacement.do" width="30" height="30" align="absmiddle"> 
-<input type="file" name="upload_email" id="upload_email">Reemplazar<br>
-
-<html:form method="POST" action="/approveDisapproveMailToParent">
-Titulo: <html:text name="MailToParentAdministrationForm" property="title" style="width: 300px;"/><br><br>
-Descripcion: <html:text name="MailToParentAdministrationForm" property="description" style="width: 300px;"/><br><br>
-Url: <html:text name="MailToParentAdministrationForm" property="urlLink" /><br><br>
-	Target:<html:select name="MailToParentAdministrationForm" property="urlTarget" >
-		<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
-			<option	<%=	(iterTarget).equals( mailToParentAdministrationForm.getUrlTarget()) ? "selected" : ""%>
-				value="<%=iterTarget%>">
-				&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-		<% } %>
-	</html:select><br><br>
-	<html:submit property="operation">
-		<bean:message key="approve" />
-	</html:submit>
-	<html:submit property="operation">
-		<bean:message key="disapprove" />
-	</html:submit>
-</html:form>
-<script>
-$(document).ready(
-	function(){
-		//alert($('#img_to_review').prop('width'));
-		//$('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
-	}
-	
-);
-
-$(window).load(function() {
-      $('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
-      $('#img_to_approve').resize({maxWidth: '200', maxHeight: '200'});
-});
-</script>
-</logic:notEqual>
+	<h1 align="center">Experiencia CARTAS DE HIJOS A PAFRES</h1>
+	<div class="renglon width860" style="margin-bottom:20px;">
+		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar, modificar o desaprobar las imágenes cargadas desde de la experiencia CARTAS DE HIJOS A PADRES por los usuarios. Respete los tamaños de las imágenes.</span></div>
+	</div>
+	<div class="renglon width860" style="margin-bottom:20px;">
+		<display:table name="test" sort="external" pagesize="10" id="testit">
+			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
+			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
+			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
+			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
+			<display:column title="acciones"><a href="./reviewMailToParent.do?id=<%= ((MailToParentValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
+		</display:table>
+	</div>
+	<logic:notEqual name="MailToParentAdministrationForm" property="idBlobData" value="0">
+<div class="renglon width860" style="margin-top:20px; border:dotted 1px #CCCCCC;">
+			<div style="width:212px; height:177px; float:left;">
+				<h3>Imagen original</h3>
+				<img id="img_to_review" width="212" height="157" src="./download.st?id=<bean:write name="MailToParentAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MailToParentAdministrationForm" property="extBlobData"/>" alt="">
+			</div>
+			<div style="width:212px; height:177px; float:left;">
+				<h3>Imagen actual</h3>
+				<img id="img_to_approve" src="./viewMailToParentReplacement.do" width="30" height="30" align="absmiddle">
+			</div>
+			<html:form method="POST" action="/approveDisapproveMailToParent">
+				<div style="width:400px; height:200px; float:left;">
+					Reemplazar<br/><br/>
+					<input type="file" name="upload_email" id="upload_email">Reemplazar<br/><br/>
+					<div class="label width80">Titulo: </div><html:text name="MailToParentAdministrationForm" property="title" style="width: 300px;"/><br><br>
+					<div class="label width80">Descripcion: </div><html:text name="MailToParentAdministrationForm" property="description" style="width: 300px;"/><br><br>
+					<div class="label width80">Url: </div><html:text name="MailToParentAdministrationForm" property="urlLink" /><br><br>
+					<div class="label width80">Target: </div>
+						<html:select name="MailToParentAdministrationForm" property="urlTarget" >
+							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+								<option	<%=	(iterTarget).equals( mailToParentAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+									value="<%=iterTarget%>">
+									&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+							<% } %>
+						</html:select>
+				</div>
+				<div class="renglon width860" align="center">
+					<html:submit property="operation">
+						<bean:message key="approve" />
+					</html:submit>
+					<html:submit property="operation">
+						<bean:message key="disapprove" />
+					</html:submit>
+				</div>
+			</html:form>
+		</div>
+		<script>
+			$(document).ready(
+				function(){
+					//alert($('#img_to_review').prop('width'));
+					//$('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
+				}
+				
+			);
+			
+			$(window).load(function() {
+				  $('#img_to_review').resize({maxWidth: '200', maxHeight: '200'});
+				  $('#img_to_approve').resize({maxWidth: '200', maxHeight: '200'});
+			});
+		</script>
+		</logic:notEqual>
+	</div>
 </div>
 </body>
 </html>
