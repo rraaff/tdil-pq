@@ -36,6 +36,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </head>
 
 <body>
+<!-- 			'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=agregarFinalDeEmail.jsp', -->
 <script>
 	if (AC_FL_RunContent == 0) {
 		alert("This page requires AC_RunActiveContent.js.");
@@ -43,7 +44,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 		AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
 			'width', '100%', 
 			'height','100%',
-			'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=agregarFinalDeEmail.jsp',
+			'FlashVars', 'XMLFile=cartasDeHijosAPadres.xml&URLtoUploads=agregarCartaDeHijoAPadre.jsp',
 			'src', 'swf/ExpFinalesDeMails/slider', 
 			'quality', 'best', 
 			'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
