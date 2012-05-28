@@ -934,3 +934,7 @@ div.rightArrow a{
 }
 #tooltip h3, #tooltip div { margin: 0; }
 /**/
+
+.hide {
+	display: none;
+}

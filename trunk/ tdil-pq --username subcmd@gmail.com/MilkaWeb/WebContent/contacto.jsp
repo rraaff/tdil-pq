@@ -1,10 +1,84 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page info="index"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+<%@ include file="includes/head.jsp" %>
+<script>
+$(document).ready(
+	function(){
+	
+		function generateTooltips() {
+			  //make sure tool tip is enabled for any new error label
+				$("img[id*='error']").tooltip({
+					showURL: false,
+					opacity: 0.99,
+					fade: 150,
+					positionRight: true ,
+					bodyHandler: function() {
+						return $("#"+this.id).attr("hovertext");
+					}
+				});
+				//make sure tool tip is enabled for any new valid label
+				$("img[src*='tick.gif']").tooltip({
+					showURL: false,
+						bodyHandler: function() {
+							return "OK";
+						}
+				});
+			}
+			
+			$('form').mouseover(function(){
+				      generateTooltips();
+				    });
+		
+			$("form[name='ContactForm']").validate({
+					errorPlacement: function(error, element) {
+						error.appendTo( element.parent("td").next("td") );
+					},
+					rules: { 'name': {required: true},
+							'email': {required: true, email: true},
+							'content': {required: true}
+					},
+					messages: {
+						'name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'content': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Ingrese el contenido.' />"}
+					},
+					submitHandler: function() {
+			            $("form[name='ContactForm']").ajaxSubmit({
+			    			type: "POST",
+			    			url: "./contact.do",
+			    			dataType: "json",
+			    			success: postContact
+			    			});
+			        }
+				});
+		}
+	);
+
+function postContact(data) {
+	if (data.result == 'OK') {
+		$( "#dialog-modal" ).dialog({
+				height: 140,
+				modal: true,
+				close: function(event, ui) {  document.location.href='./index.jsp'; }
+			});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
+}
+</script>
 </head>
 
 <body>
@@ -61,34 +135,41 @@
     <!-- end titulo-->
     
     <div id="formulario">
-    	<form method="post">
+    	<html:form method="POST" action="/contact">
 		<table border="0" align="center" cellpadding="0" cellspacing="0" id="formulario_contacto">
-  <tr>
-    <td width="57" align="left"><label for="nombre">Nombre</label></td>
-    <td width="501" align="left">
-      <input type="text" name="nombre" id="textfield" value="" class="input_form" /></td>
-  </tr>
-  
-  <tr>
-    <td align="left"><label for="email">Mail</label></td>
-    <td align="left">
-      <input type="text" name="email" id="textfield" value="" class="input_form" /></td>
-  </tr>
- 
-  <tr>
-    <td align="left" valign="top"><label for="consulta">Consulta</label></td>
-    <td align="left"><textarea name="consulta" id="textarea" cols="45" rows="5" class="comment_form"></textarea></td>
-  </tr>
- 
-  <tr>
-    <td height="50" align="right"></td>
-    <td height="50" align="left"><input type="submit" class="enviar" value="ENVIAR" ></td>
-  </tr>
-  </table>
-        </form>
+		  <tr>
+		    <td width="57" align="left"><label for="nombre">Nombre</label></td>
+		    <td width="501" align="left">
+		     <html:text name="ContactForm" property="name" styleClass="input_form"/> </td>
+		  </tr>
+		  
+		  <tr>
+		    <td align="left"><label for="email">Mail</label></td>
+		    <td align="left">
+		      <html:text name="ContactForm" property="email" styleClass="input_form"/></td>
+		  </tr>
+		 
+		  <tr>
+		    <td align="left" valign="top"><label for="consulta">Consulta</label></td>
+		    <td align="left"> <html:textarea name="ContactForm" property="content" styleClass="comment_form" cols="45" rows="5" /></td>
+		  </tr>
+		 
+		  <tr>
+		    <td height="50" align="right"></td>
+		    <td height="50" align="left"><html:submit property="operation">ENVIAR</html:submit></td>
+		  </tr>
+		  </table>
+       </html:form>
     </div>
     <!-- end formulario-->
     
+</div>
+
+<div id="dialog-modal" class="hide" title="Contacto">
+	Gracias por su mensaje.
+</div>
+<div id="dialog-modal-err" class="hide" title="Contacto">
+	Ha ocurrido un error, intentelo nuevamente.
 </div>
 <!-- end wrapper2-->
 	<%@ include file="includes/footer.jsp" %>

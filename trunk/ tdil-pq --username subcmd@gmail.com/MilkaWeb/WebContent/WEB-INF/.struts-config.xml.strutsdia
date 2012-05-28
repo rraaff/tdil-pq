@@ -8,7 +8,11 @@
    TARGET="page2" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
-  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadMilkaPhoto.do"
+   SUBTYPE="confirmed" TARGET="action12" TITLE="/uploadMilkaPhoto.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page1" PATH="/boLogin.jsp" SHAPE="240,129,0,0"
   SUBTYPE="jsp" TITLE="boLogin.jsp" TYPE="page" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/login.do" SUBTYPE="confirmed"
@@ -467,5 +471,14 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page15" PATH="/rawInsertAdministration.jsp"
   SHAPE="240,1297,0,0" SUBTYPE="jsp" TITLE="rawInsertAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveRawInsert.do"
+   SUBTYPE="confirmed" TARGET="action55" TITLE="/saveRawInsert.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editRawInsert.do"
+   SUBTYPE="confirmed" TARGET="action56" TITLE="/editRawInsert.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#contact" NAME="action57" PATH="/contact"
+  SHAPE="32,2465,0,0" TITLE="ContactForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
