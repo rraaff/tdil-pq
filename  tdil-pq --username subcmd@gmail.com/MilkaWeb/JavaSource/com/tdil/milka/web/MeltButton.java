@@ -13,6 +13,10 @@ public class MeltButton implements TransactionalAction {
 	public static final int FINALES_DE_EMAIL_COUNTER = 2;
 	public static final int CARTAS_DE_HIJOS_A_PADRES_COUNTER = 3;
 	
+	public static final int PAPAPEDIA_RENDER = 4;
+	public static final int FINALES_DE_EMAIL_RENDER = 5;
+	public static final int CARTAS_DE_HIJOS_A_PADRES_RENDER = 6;
+	
 	private int id;
 	private int quantity;
 	
