@@ -18,9 +18,73 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
-	}
 	
-);
+	function generateTooltips() {
+			  //make sure tool tip is enabled for any new error label
+				$("img[id*='error']").tooltip({
+					showURL: false,
+					opacity: 0.99,
+					fade: 150,
+					positionRight: true ,
+					bodyHandler: function() {
+						return $("#"+this.id).attr("hovertext");
+					}
+				});
+				//make sure tool tip is enabled for any new valid label
+				$("img[src*='tick.gif']").tooltip({
+					showURL: false,
+						bodyHandler: function() {
+							return "OK";
+						}
+				});
+			}
+			
+			$('form').mouseover(function(){
+				      generateTooltips();
+				    });
+		
+			$("form[name='MailToParentForm']").validate({
+					errorPlacement: function(error, element) {
+						error.appendTo( element.parent("div"));
+					},
+					rules: { 'authorBean.name': {required: true},
+							'authorBean.email': {required: true, email: true},
+							'authorBean.acceptPolitics': {required: true},
+							'photoFormFile': {required: true}
+					},
+					messages: {
+						'authorBean.name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+						'authorBean.email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'authorBean.acceptPolitics': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Debe aceptar las politicas.' />"},
+						'photoFormFile': {required: "<img id='photoerror' src='images/unchecked.gif' hovertext='Seleccione una foto.' />"}
+					},
+					submitHandler: function() {
+			            $("form[name='MailToParentForm']").ajaxSubmit({
+			    			type: "POST",
+			    			url: "./uploadMailToParent.do",
+			    			dataType: "json",
+			    			success: postUpload
+			    			});
+			        }
+				});
+		}
+	);
+
+function postUpload(data) {
+	if (data.result == 'OK') {
+		$( "#dialog-modal" ).dialog({
+				height: 140,
+				modal: true,
+				close: function(event, ui) {  document.location.href='./cartasDeHijosAPadres.jsp'; }
+			});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
+}
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 
@@ -107,6 +171,16 @@ body {
 	<div id="SubirImagen"><html:file name="MailToParentForm" property="photoFormFile" /><%=MilkaErrorFormatter.getErrorFrom(request, "MailToParentForm.photo.err")%></div>
 	<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 </html:form>
+</div>
+
+<div id="dialog-modal" class="hide" title="Cartas de Hijos a Padres">
+	<p>
+		Gracias por participar.<br>
+		Te avisaremos cuando este aprobada.
+	</p>
+</div>
+<div id="dialog-modal-err" class="hide" title="Cartas de Hijos a Padres">
+	Ha ocurrido un error, intentelo nuevamente.
 </div>
 </body>
 </html>
