@@ -5,19 +5,28 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.MailToParentDAO;
+import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.daomanager.DAOManager;
+import com.tdil.milka.model.Author;
 import com.tdil.milka.model.MailToParent;
+import com.tdil.milka.model.NotificationEmail;
+import com.tdil.milka.model.NotificationEmailExample;
+import com.tdil.milka.model.SystemProperty;
+import com.tdil.milka.model.SystemPropertyExample;
 import com.tdil.milka.model.valueobjects.MailToParentValueObject;
 import com.tdil.milka.utils.BlobHelper;
+import com.tdil.milka.utils.SystemPropertiesKeys;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -25,6 +34,7 @@ import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.ApproveDisapproveForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
+import com.tdil.utils.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -159,6 +169,27 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		setData(mailToParent);
 		mailToParent.setPublishdate(new Date());
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
+		
+		/** Inicio del email */
+		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
+		SystemPropertyExample smtpExample = new SystemPropertyExample();
+		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
+		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
+		
+		SystemPropertyExample portExample = new SystemPropertyExample();
+		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
+		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+		Author author = DAOManager.getAuthorDAO().selectAuthorByPrimaryKey(mailToParent.getIdAuthor());
+		NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
+		notificationEmailExample.createCriteria().andNotificationtypeEqualTo(com.tdil.milka.web.EmailUtils.cartasdehijosapadres);
+		NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO().selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
+		String content = notificationEmail.getContent();
+		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
+		try {
+			EmailUtils.sendEmail(content, author.getEmail(), "milka@milka.com.ar", "Contenido aprobado", smtpServer.getPropvalue(), smtpPort.getPropvalue());
+		} catch (MessagingException e) {
+			getLog().error(e.getMessage(), e);
+		}
 	}
 	
 	private void setData(MailToParent mailToParent) throws SQLException {
