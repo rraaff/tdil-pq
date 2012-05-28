@@ -59,6 +59,17 @@ public class MeltButton implements TransactionalAction {
 		return meltButton.quantity;
 	}
 	
+	public static int countParticipants() {
+		ParticipantCounter participantCounter = new ParticipantCounter();
+		try {
+			TransactionProvider.executeInTransaction(participantCounter);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return participantCounter.getResult();
+	}
+	
 	
 	public void executeInTransaction() throws SQLException {
 		ClickCounter c = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(this.id);

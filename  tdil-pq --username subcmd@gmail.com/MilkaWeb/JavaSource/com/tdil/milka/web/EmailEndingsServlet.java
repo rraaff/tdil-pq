@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tdil.milka.model.valueobjects.EmailEndingsValueObject;
-import com.tdil.milka.model.valueobjects.MailToParentValueObject;
 
 public class EmailEndingsServlet extends HttpServlet {
 
