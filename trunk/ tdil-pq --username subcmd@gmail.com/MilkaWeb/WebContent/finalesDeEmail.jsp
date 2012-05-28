@@ -17,6 +17,7 @@
 	}
 %>
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
+<%@ include file="includes/head.jsp" %>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -28,6 +29,15 @@
 
 <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script src="swf/ExpCartasHaP/scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+	}
+);
+</script>		
 <style>
 <!-- 
 body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times, serif; padding:0; margin:0; height:100%; }
@@ -36,6 +46,7 @@ body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times,
 </head>
 
 <body>
+<% int barClickCounter = MeltButton.FINALES_DE_EMAIL_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
 <script>
 	if (AC_FL_RunContent == 0) {
