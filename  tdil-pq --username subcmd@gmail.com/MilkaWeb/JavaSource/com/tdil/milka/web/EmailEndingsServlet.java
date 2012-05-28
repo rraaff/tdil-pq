@@ -39,8 +39,7 @@ public class EmailEndingsServlet extends HttpServlet {
 		resp.setContentType("text/xml");
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
-		//out.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
-		out.append("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+		out.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
 		out.append("<config>");
 		out.append(data.getRawInsert());
 		int i = 0;
