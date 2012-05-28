@@ -8,11 +8,7 @@
    TARGET="page2" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
-  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/uploadMilkaPhoto.do"
-   SUBTYPE="confirmed" TARGET="action12" TITLE="/uploadMilkaPhoto.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page1" PATH="/boLogin.jsp" SHAPE="240,129,0,0"
   SUBTYPE="jsp" TITLE="boLogin.jsp" TYPE="page" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/login.do" SUBTYPE="confirmed"
@@ -229,9 +225,11 @@
  <PROCESS-ITEM ID="#addPapapedia" NAME="action26" PATH="/addPapapedia"
   SHAPE="256,3601,0,0" TITLE="PapapediaForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/papapedia.jsp" TARGET="page8" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/papapedia.jsp?dnc=true" TARGET="page8" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/papapedia.jsp" TARGET="page8" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/papapedia.jsp?dnc=true" TARGET="page8" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page8" PATH="/papapedia.jsp" SHAPE="48,3586,0,0"
   SUBTYPE="jsp" TITLE="papapedia.jsp" TYPE="page" model-entity="StrutsProcessItem">

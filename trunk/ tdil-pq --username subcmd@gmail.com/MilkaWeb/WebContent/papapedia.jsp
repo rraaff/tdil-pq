@@ -15,7 +15,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
-
+<% 
+	if (!"true".equals(request.getParameter("dnc"))) {
+		MeltButton.incrementCounter(MeltButton.PAPAPEDIA_RENDER);
+	}
+%>
 <%@ include file="includes/head.jsp" %>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
@@ -210,6 +214,7 @@ SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNum
 			<h1>Papa es...</h1>
 			<div id="complete">
 				<html:form method="POST" action="/addPapapedia">
+					<input type="hidden" name="dnc" value="true"/>
 					<html:text name="PapapediaForm" property="text" styleClass="width180"/>
 					<html:submit property="operation">
 						Salvar

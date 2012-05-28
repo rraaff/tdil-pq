@@ -11,6 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
+<% 
+	if (!"true".equals(request.getParameter("dnc"))) {
+		MeltButton.incrementCounter(MeltButton.FINALES_DE_EMAIL_RENDER);
+	}
+%>
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

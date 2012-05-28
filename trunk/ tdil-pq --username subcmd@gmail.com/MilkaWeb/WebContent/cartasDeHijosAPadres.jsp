@@ -11,6 +11,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Milka</title>
+<% 
+	if (!"true".equals(request.getParameter("dnc"))) {
+		MeltButton.incrementCounter(MeltButton.CARTAS_DE_HIJOS_A_PADRES_RENDER);
+	}
+%>
 <%@ include file="includes/head.jsp" %>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
