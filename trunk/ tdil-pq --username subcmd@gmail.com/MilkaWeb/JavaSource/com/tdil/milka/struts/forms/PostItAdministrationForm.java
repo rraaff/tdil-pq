@@ -289,7 +289,8 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	public List<String> getAllColors() {
 		if (allColors == null) {
 			List<String> colors = new ArrayList<String>();
-			colors.add(Color.CYAN);
+			colors.add(Color.AMARILLO);
+			colors.add(Color.CELESTE);
 			colors.add(Color.MAGENTA);
 			allColors = colors;
 		}

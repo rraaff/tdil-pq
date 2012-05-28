@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS FILTERED_WORD;
 DROP TABLE IF EXISTS EMAIL_ENDINGS;
 DROP TABLE IF EXISTS MAIL_TO_PARENT;
 DROP TABLE IF EXISTS VIDEO;
+DROP TABLE IF EXISTS GOOD_MORNING;
 
 CREATE TABLE SYSTEMUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -325,4 +326,32 @@ CREATE TABLE VIDEO (
   `orderNumber` INT NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE GOOD_MORNING (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
+  `id_author` INT NOT NULL ,
+  `title` VARCHAR(100) NULL ,
+  `description` VARCHAR(4000) NULL ,
+  `frontCover` INT NOT NULL,
+  `showInHome` INT NOT NULL,
+  `approved` INT NOT NULL,
+  `id_blob_data` INT NULL,
+  `ext_blob_data` VARCHAR(10) NULL ,
+  `id_approved_data` INT NULL,
+  `ext_approved_data` VARCHAR(10) NULL ,
+  `id_click_counter` INT NOT NULL,
+  `url_link` VARCHAR(400) NULL ,
+  `url_target` VARCHAR(50) NULL ,
+  `twitter` VARCHAR(400) NULL ,
+  `facebook` VARCHAR(400) NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_GOOD_MORNING_00`
+    FOREIGN KEY (`id_author` )
+    REFERENCES AUTHOR (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;

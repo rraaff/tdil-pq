@@ -163,6 +163,7 @@ lightbox = new Lightbox options
       if ($link.attr('rel') === 'lightbox') {
         this.album.push({
           link: $link.attr('href'),
+          button: $link.attr('button'),
           title: $link.attr('title')
         });
       } else {
@@ -171,6 +172,7 @@ lightbox = new Lightbox options
           a = _ref[i];
           this.album.push({
             link: $(a).attr('href'),
+            button: $(a).attr('button'),
             title: $(a).attr('title')
           });
           if ($(a).attr('href') === $link.attr('href')) imageNumber = i;
@@ -274,9 +276,9 @@ lightbox = new Lightbox options
       var $lightbox,
         _this = this;
       $lightbox = $('#lightbox');
-      if (typeof this.album[this.currentImageIndex].title !== 'undefined' && this.album[this.currentImageIndex].title !== "") {
+      if (typeof this.album[this.currentImageIndex].button !== 'undefined' && this.album[this.currentImageIndex].button !== "") {
     	//alert(this.album[this.currentImageIndex].title);
-    	var title = this.album[this.currentImageIndex].title.split('-');
+    	var title = this.album[this.currentImageIndex].button.split('-');
         //$lightbox.find('.lb-caption').html().fadeIn('fast');XXX
         $lightbox.find('.lb-caption').html("<div id='mb-"+title[0]+"' buttonId='"+title[0]+"' quantity='"+title[1]+"'></div>").fadeIn('fast');
         $('#mb-'+title[0]).meltbutton();
