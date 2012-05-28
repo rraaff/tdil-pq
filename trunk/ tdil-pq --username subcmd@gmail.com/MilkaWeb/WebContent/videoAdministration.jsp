@@ -1,4 +1,4 @@
-	<%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
+<%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
@@ -41,58 +41,53 @@ div { /*border:dotted 1px #00CCFF; */}
 </style>
 </head>
 <body>
-<div id="header"></div>
+<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
 	<html:form method="POST" action="/saveVideo">
-	<div id="portaMenu"><%@ include file="includes/boMenu.jsp"%></div>
-	<div id="formulariosBase">
-		<h1>Contenido tipo Galer&iacute;a de im&aacute;genes</h1>
-		<span class="errorText"><%=MilkaErrorFormatter.getErrorFrom(request, "general")%></span>
-		<div id="conteinerScrollable" style="float:left; width:950px; height:380px; overflow:auto; border:#FF0000;">
-			<h2>Fotos</h2>
-			<div class="renglon width920">
-				<div class="label width920 comment">Podr&aacute; crear todas las galer&iacute;as que quiera. Los usuarios accederan a la secci&oacute;n de galer&iacute;as a trav&eacute;s de men&uacute; de galer&iacute;as. Cargue todas las ftos que desee para la galer&iacute;a y una vez cargadas, pordr&aacute; subir y bajar cada una de las mismas con los links en las acciones para modificar el &oacute;rden de aparici&oacute;n. Medida ideal de las imágenes 660 pixels x 400 pixels a 72dpi de resoluci&oacute;n</div>
+	<h1>Contenido tipo Galer&iacute;a de Playlist de Youtube</h1>
+	<span class="errorText"><%=MilkaErrorFormatter.getErrorFrom(request, "general")%></span>
+	<div style="float:left; width:920px; border:#FF0000;">
+		<div class="renglon width860">
+			<div class="label width860"><span class="comment">Podr&aacute; crear todos los links a playlist de YOUTUBE que quiera. Cargue todas las fotos representativa del playlist a 133px x 83px. Luego cargue la URL del playlist y un t&iacute;tulo.</span></div>
+		</div>
+		<div class="renglon width860 height60">
+			<div class="label width200 height60"><input type="file" name="upload_img" id="upload_img"></div>
+			<div class="label width50 height60"><%=MilkaErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
+			<div class="label width200 height50">
+				<logic:equal name="VideoForm" property="objectId" value="0">
+					<html:submit property="operation">
+						<bean:message key="save" />
+					</html:submit>
+				</logic:equal>
+				<logic:notEqual name="VideoForm" property="objectId" value="0">
+					<html:submit property="operation">
+						<bean:message key="modify" />
+					</html:submit>
+				</logic:notEqual>
 			</div>
-			<div class="width420 height250" style="float:left; overflow:auto;">
-				<table width="380" id="image_gal_tab">
+		</div>
+		<div class="width920">
+			<table width="920" id="image_gal_tab">
+				<tr>
+					<td class="headerTablas" width="50">Posici&oacute;n</td>
+					<td class="headerTablas">Titulo <%=MilkaErrorFormatter.getErrorFrom(request, "Video.title.err")%></td>
+					<td class="headerTablas">URL <%=MilkaErrorFormatter.getErrorFrom(request, "Video.url.err")%></td>
+					<td class="headerTablas">Foto</td>
+					<td class="headerTablas">Acciones</td>
+				</tr>
+				<logic:iterate id="selectedPosition" name="VideoForm" property="positions" indexId="iterIndexPositions">  
 					<tr>
-						<td class="headerTablas" width="50">Posici&oacute;n</td>
-						<td class="headerTablas">Titulo <%=MilkaErrorFormatter.getErrorFrom(request, "Video.title.err")%></td>
-						<td class="headerTablas">URL <%=MilkaErrorFormatter.getErrorFrom(request, "Video.url.err")%></td>
-						<td class="headerTablas">Foto</td>
-						<td class="headerTablas">Acciones</td>
+						<td align="center"><%=iterIndexPositions + 1%></td>
+						<td><html:text name="selectedPosition" property="title" indexed="true" styleClass="width150"/></td>
+						<td><html:text name="selectedPosition" property="url" indexed="true" styleClass="width400"/></td>
+						<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewVideoCover.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
+						<td align="center" width="100">
+							<a href="javascript:document.VideoForm.action='./moveVideoUp.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
+							<a href="javascript:document.VideoForm.action='./moveVideoDown.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
+							<a href="javascript:document.VideoForm.action='./deleteVideo.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>
 					</tr>
-					<logic:iterate id="selectedPosition" name="VideoForm" property="positions" indexId="iterIndexPositions">  
-						<tr>
-							<td align="center"><%=iterIndexPositions + 1%></td>
-							<td><html:text name="selectedPosition" property="title" indexed="true"/></td>
-							<td><html:text name="selectedPosition" property="url" indexed="true"/></td>
-							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewVideoCover.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
-							<td align="center" width="100">
-								<a href="javascript:document.VideoForm.action='./moveVideoUp.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
-								<a href="javascript:document.VideoForm.action='./moveVideoDown.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
-								<a href="javascript:document.VideoForm.action='./deleteVideo.do?index=<%=iterIndexPositions%>';document.VideoForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>
-						</tr>
-					</logic:iterate>
-				</table>
-			</div>
-			<div class="width500 height250" style="float:right;">
-				<div class="label width500 height25"></div>
-				<div class="label width200 height60"><input type="file" name="upload_img" id="upload_img"></div>
-				<div class="label width50 height60"><%=MilkaErrorFormatter.getErrorFrom(request, "ImageGallery.photo.err")%></div>
-				<div class="label width500 height50">
-					<logic:equal name="VideoForm" property="objectId" value="0">
-						<html:submit property="operation">
-							<bean:message key="save" />
-						</html:submit>
-					</logic:equal>
-					<logic:notEqual name="VideoForm" property="objectId" value="0">
-						<html:submit property="operation">
-							<bean:message key="modify" />
-						</html:submit>
-					</logic:notEqual>
-				</div>
-			</div>
+				</logic:iterate>
+			</table>
 		</div>
 	</div>
 	</html:form>

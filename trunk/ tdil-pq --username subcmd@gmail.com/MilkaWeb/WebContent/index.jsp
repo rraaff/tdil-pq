@@ -218,21 +218,14 @@ function postUploadFotoMilka(data) {
 		<div id="galeria-videos">
 			<h2>Frecuencia <span class="violeta">Ternura</span></h2>
 			<span class="derecha-videos"><!--2256 <span class="violeta">personas se encuentran en la misma frecuencia</span--></span>
-			<ul>
-				<li class=""><a href="#" title="Video 1" class="activo"><img src="images/video1.jpg" width="133" height="83" alt="Video1" /></a><h3>Jugando con chocolate</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 2" class="activo"><img src="images/video2.jpg" width="133" height="83" alt="Video2" /></a><h3>100 preguntas para la vaca</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 3" class="activo"><img src="images/video3.jpg" width="133" height="83" alt="Video3" /></a><h3>UNboxings</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 4" class="activo"><img src="images/video4.jpg" width="133" height="83" alt="Video4" /></a><h3>Para levantarse un domingo</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 5" class="activo"><img src="images/video5.jpg" width="133" height="83" alt="Video5" /></a><h3>Videos Tiernos</h3><a href="#" class="playlist">Playlist</a></li>
-				<li class=""><a href="#" title="Video 6" class="activo"><img src="images/video6.jpg" width="133" height="83" alt="Video6" /></a><h3>Tarde de lluvia</h3><a href="#" class="playlist">Playlist</a></li>
-			</ul>
+			<%@ include file="includes/videoHorizontal.jsp" %>
 		</div>
 		<!-- end galeria-videos-->
 		<div id="productos">
 			<h2>NUESTROS CHOCOLATES...</h2>
 			<div id="social">
 				<ul>
-					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook" target="_blank"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<!-- li class="facebook"><a name="fb_share" type="icon_link" share_url="http://localhost:8180/MilkaWeb/productos_alfajores.jsp"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script-->
 					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
