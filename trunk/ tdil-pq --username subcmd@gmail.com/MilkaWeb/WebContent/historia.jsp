@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.milka.utils.SystemPropertiesKeys"%>
+<%@page import="com.tdil.milka.web.SystemPropertyUtils"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -45,4 +47,5 @@
 		<h2>¿Y por qu&eacute; una vaca de color lila?</h2><p>Porque Philippe Suchard cre&iacute;a firmemente que para llamar la atenci&oacute;n era necesario <strong>"familiarizarse con aquello que es extra&ntilde;o y convertir en extra&ntilde;o a aquello que es familiar"</strong>. Y pocas cosas llaman m&aacute;s la atenci&oacute;n que una Vaca color Lila.</p><p>Desde entonces, la vaca ha sido la protagonista de todas las publicidades de Milka jugado el papel principal en m&aacute;s de 110 anuncios televisivos al punto tal que hoy en d&iacute;a representa la identidad visual de todos los productos de la marca Milka pero adem&aacute;s se ha convertido de una de las m&aacute;s grandes estrellas de la publicidad y est&aacute; solidamente anclada en la sociedad actual.</p></div>
 	</div>
 	<!-- end wrapper2-->
+	<%@ include file="includes/fbShare.jsp" %>
 	<%@ include file="includes/footer.jsp" %>
