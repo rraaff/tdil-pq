@@ -100,6 +100,7 @@
   <action name="MilkaPhotoAdministrationForm" parameter="Admin"
    path="/approveDisapproveMilkaPhoto" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/milkaPhotoPending.jsp"/>
+   <forward name="failure" path="/milkaPhotoPending.jsp"/>
   </action>
   <action path="/searchTags" scope="request" type="com.tdil.milka.struts.action.SearchTagsAction"/>
   <action parameter="Admin" path="/uploadMilkaPhotoReplacement" type="com.tdil.milka.struts.action.UploadMilkaPhotoReplacementAction"/>
@@ -122,6 +123,7 @@
   <action name="PostItAdministrationForm" parameter="Admin" path="/approveDisapprovePostIt"
    scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/postItPending.jsp"/>
+   <forward name="failure" path="/postItPending.jsp"/>
   </action>
   <action parameter="Admin" path="/uploadPostItImage" type="com.tdil.milka.struts.action.UploadPostItImageAction"/>
   <action name="PostItAdministrationForm" parameter="Admin" path="/viewPostItThumb"
@@ -146,6 +148,7 @@
   <action name="PapapediaAdministrationForm" parameter="Admin" path="/approveDisapprovePapapedia"
    scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/papapediaPending.jsp"/>
+   <forward name="failure" path="/papapediaPending.jsp"/>
   </action>
   
   <action name="EmailEndingsAdministrationForm" parameter="Admin"
@@ -163,6 +166,7 @@
   <action name="EmailEndingsAdministrationForm" parameter="Admin"
    path="/approveDisapproveEmailEndings" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/emailEndingsPending.jsp"/>
+   <forward name="failure" path="/emailEndingsPending.jsp"/>
   </action>
   <action parameter="Admin" path="/uploadEmailEndingReplacement" type="com.tdil.milka.struts.action.UploadEmailEndingReplacementAction"/>
   <action name="EmailEndingsAdministrationForm" parameter="Admin" path="/viewEmailEndingReplacement"
@@ -184,6 +188,7 @@
   <action name="MailToParentAdministrationForm" parameter="Admin"
    path="/approveDisapproveMailToParent" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/mailToParentPending.jsp"/>
+   <forward name="failure" path="/mailToParentPending.jsp"/>
   </action>
   <action parameter="Admin" path="/uploadMailToParentReplacement" type="com.tdil.milka.struts.action.UploadMailToParentReplacementAction"/>
   <action name="MailToParentAdministrationForm" parameter="Admin" path="/viewMailToParentReplacement"
@@ -237,13 +242,11 @@
   </action>
   <action name="MailToParentForm" path="/uploadMailToParent" scope="request" type="com.tdil.milka.struts.action.UploadMailToParentAction">
   </action>
-  
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.milka.struts.action.ContactAction">
   </action>
-  <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/index.jsp" redirect="true"/>
-   <forward name="failure" path="/index.jsp"/>
+  <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.milka.struts.action.AddPostItAction">
   </action>
+  
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
    <forward name="continue" path="/papapedia.jsp?dnc=true" redirect="true"/>
    <forward name="failure" path="/papapedia.jsp?dnc=true"/>

@@ -18,6 +18,10 @@ public class MilkaPhotoValueObject extends MilkaPhoto {
 		return authorValueObject;
 	}
 	
+	public String getImageTitle() {
+		return this.getAuthorValueObject().getName() + " " + (this.getTags() != null ? this.getTags() : "");
+	}
+	
 	public String getStatusRB() {
 		return StatusHelper.getStatusRB(this.getDeleted(), this.getApproved());
 	}

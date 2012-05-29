@@ -171,25 +171,7 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
 		
 		/** Inicio del email */
-		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
-		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
-		
-		SystemPropertyExample portExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
-		Author author = DAOManager.getAuthorDAO().selectAuthorByPrimaryKey(mailToParent.getIdAuthor());
-		NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
-		notificationEmailExample.createCriteria().andNotificationtypeEqualTo(com.tdil.milka.web.EmailUtils.cartasdehijosapadres);
-		NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO().selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
-		String content = notificationEmail.getContent();
-		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
-		try {
-			EmailUtils.sendEmail(content, author.getEmail(), "milka@milka.com.ar", "Contenido aprobado", smtpServer.getPropvalue(), smtpPort.getPropvalue());
-		} catch (MessagingException e) {
-			getLog().error(e.getMessage(), e);
-		}
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(mailToParent.getIdAuthor(), com.tdil.milka.web.EmailUtils.cartasdehijosapadres, SystemPropertiesKeys.CARTAS_DE_HIJOS_A_PADRES_URL);
 	}
 	
 	private void setData(MailToParent mailToParent) throws SQLException {

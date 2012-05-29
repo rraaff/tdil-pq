@@ -45,6 +45,14 @@ ENGINE = InnoDB;
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('smpt.server','localhost','Servidor de email',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('smpt.port','2525','Puerto del servidor de email',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','milka@contact.com.ar','Email del formulario de contacto',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('server.name','www.milka.com.ar','Nombre del server',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fotomilka.url','http://www.milka.com.ar/index.jsp','Url de tu foto milka',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('papapedia.url','http://www.milka.com.ar/papapedia.jsp','Url de la experiencia papapedia',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('postits.url','http://www.milka.com.ar/postits.jsp','Url de la experiencia post its',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('finalesDeEmail.url','http://www.milka.com.ar/finalesDeEmail.jsp','Url de la experiencia finales de email',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('cartasDeHijosAPadres.url','http://www.milka.com.ar/cartasDeHijosAPadres.jsp','Url de la experiencia cartas de hijos a padres',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contentapproved.emailfrom','info@milka.com.ar','Email from de aprobacion de contenido',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contentapproved.emailsubject','Contenido aprobado','Email subject de aprobacion de contenido',0);
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,

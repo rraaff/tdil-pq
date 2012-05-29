@@ -21,6 +21,7 @@ import com.tdil.milka.model.Color;
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.valueobjects.PostItValueObject;
 import com.tdil.milka.utils.BlobHelper;
+import com.tdil.milka.utils.SystemPropertiesKeys;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -56,6 +57,9 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	private static final int MAX_THUMB_SIZE = 50000; // 50k
 	private static final int MAX_COVER_SIZE = 100000; // 100k
 	
+	private static final String cover_key = "PostItAdministrationForm.cover";
+	private static final String thumb_key = "PostItAdministrationForm.thumb";
+	
 	@Override
 	public void reset() throws SQLException {
 		objectId = 0;
@@ -65,6 +69,8 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		urlLink = null;
 		urlTarget = null;
 		color = null;
+		this.cover = null;
+		this.thumb = null;
 	}
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -151,6 +157,12 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	
 	@Override
 	public void basicValidate(ValidationError error) {
+		if (this.getCover() == null) {
+			error.setFieldError(cover_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (this.getThumb() == null) {
+			error.setFieldError(thumb_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
 	}
 	
 	@Override
@@ -184,6 +196,8 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		setData(postIt);
 		postIt.setPublishdate(new Date());
 		postItDAO.updatePostItByPrimaryKey(postIt);
+		
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(postIt.getIdAuthor(), com.tdil.milka.web.EmailUtils.postits, SystemPropertiesKeys.POST_IT_URL);
 	}
 	
 	private void setData(PostIt postIt) throws SQLException {

@@ -9,13 +9,27 @@ import com.tdil.struts.TransactionalAction;
 
 public class MeltButton implements TransactionalAction {
 
+	// button
 	public static final int PAPAPEDIA_COUNTER = 1;
 	public static final int FINALES_DE_EMAIL_COUNTER = 2;
 	public static final int CARTAS_DE_HIJOS_A_PADRES_COUNTER = 3;
+	public static final int POSTIT_COUNTER = 4;
+	public static final int BUEN_DIA_COUNTER = 5;
+	// fase 2
+	public static final int APODOS_DE_AMOR_COUNTER = 6;
+	public static final int CARTAS_DE_PADRES_A_HIJOS_COUNTER = 7;
+	public static final int QUE_AMAS_QUE_ODIAS_COUNTER = 8;
 	
-	public static final int PAPAPEDIA_RENDER = 4;
-	public static final int FINALES_DE_EMAIL_RENDER = 5;
-	public static final int CARTAS_DE_HIJOS_A_PADRES_RENDER = 6;
+	// render
+	public static final int PAPAPEDIA_RENDER = 10;
+	public static final int FINALES_DE_EMAIL_RENDER = 11;
+	public static final int CARTAS_DE_HIJOS_A_PADRES_RENDER = 12;
+	public static final int POSTIT_RENDER = 13;
+	public static final int BUEN_DIA_RENDER = 14;
+	// fase 2
+	public static final int APODOS_DE_AMOR_RENDER = 15;
+	public static final int CARTAS_DE_PADRES_A_HIJOS_RENDER = 16;
+	public static final int QUE_AMAS_QUE_ODIAS_RENDER = 17;
 	
 	private int id;
 	private int quantity;
