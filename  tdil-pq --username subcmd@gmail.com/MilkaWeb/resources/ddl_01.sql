@@ -1,0 +1,1 @@
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.app','3785427834','Id de la app de facebook usada para compartir',0);
