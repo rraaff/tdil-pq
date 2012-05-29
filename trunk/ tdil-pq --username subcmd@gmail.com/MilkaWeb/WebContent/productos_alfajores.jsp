@@ -15,7 +15,7 @@
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <%@ include file="includes/head.jsp" %>
-<script src="js/jquery.min.js" type="text/javascript"></script>
+<!--script src="js/jquery.min.js" type="text/javascript"></script-->
 <script src="js/galeria.js" type="text/javascript"></script>
 <script type="text/javascript"> jQuery.noConflict();</script>
 
@@ -77,24 +77,7 @@ $(document).ready(
 </head>
 <body>
 <div id="content">
-	<div id="header">
-		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
-		<div id="box">
-			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Aacute; tu foto con chocolate"></a></div>
-			<div id="social">
-				<ul>
-					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
-					<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
-					<li class="facebook"><a href="#" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-					<li class="youtube"><a href="#" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
-				</ul>
-			</div>
-			<!-- end social-->
-		</div>
-		<!-- end box-->
-	</div>
-	<!-- end header-->
+	<%@ include file="includes/designHeader.jsp" %>
 	<div id="menu-wrapper">
 		<div id="menu">
 			<ul>
