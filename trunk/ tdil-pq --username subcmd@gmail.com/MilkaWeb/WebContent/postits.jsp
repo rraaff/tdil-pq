@@ -207,6 +207,7 @@ input[type="button"], input[type="submit"] {
 <% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
 <a href="#">Cargar imagen para la Experiencia POST-ITs</a>
+<a href="./postIts.xml">Servlet</a>
 <a href="./agregarPostIt.jsp">Agregar post-it</a>
 </body>
 </html>
