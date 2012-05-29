@@ -1,12 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<%@page import="com.tdil.milka.model.ClickCounter"%>
+<%@page import="com.tdil.milka.web.MeltButton"%>
+<%@ page info="index"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Milka :: Nuestros Chocolates</title>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<title>Milka.com.ar | Nuestros Chocolates - Alfajores</title>
+<meta name="keywords" content="Milka, chocolate, vaca, vaca lila, vaca violeta, chocolate aireado, chocolate relleno, relleno de dulce de leche, bombones, corazón, alfajor, tableta, almendras, castañas con caramelo, caramel, oreo, leger, baño maría, fondue, ternura, soft cappuccino, soft combinado, soft chocolate, bajón, regalo, amor, enamorados, avellanas, Cadbury, sabor, Shot, Tofi, Bon o bon, Cofler, golosinas, kiosco, postre, aniversario, cumpleaños, Kraft Foods, rico, sabor, cacao">
+<meta name="description" content="Bienvenidos al sitio oficial de Milka Argentina: los invitamos a deleitarse con el más rico chocolate con leche o con el Milka Dulce de Leche o con el Milka Almendras o con el Milka Oreo Blanco o Milka Castañas con Caramelo o Milka Oreo Leche o Milka Te Quiero Mucho! o Milka Feliz Cumple Atrasado! o Milka Suerte! o Milka Vos Sabés Por qué! o Milka Feliz Día! o Milka Gracias! o Milka Dulce de Leche Blanco o Milka Bombón o Milka Sahne Creme o Milka Caramel o Milka Soft Avellanas o Milka Soft Cappucciono o Milka Soft o Milka Soft Combinado o Milka Leger o Leger con Almedras o con el Leger Combinado. Los invitamos a probar el sabor de la ternura." />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
-
+<%@ include file="includes/head.jsp" %>
 <script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="js/galeria.js" type="text/javascript"></script>
 <script type="text/javascript"> jQuery.noConflict();</script>
@@ -25,6 +33,20 @@ window.addEvent('domready', function(){
 					overallContainer: 'gallery_container2'});					
 	
 });
+</script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+	
+		<%@ include file="includes/fotoMilkaReady.jsp" %>
+		
+	}
+);
+
+<%@ include file="includes/fotoMilkaScript.jsp" %>
 </script>
 <style>
 #galeria_productos #galeria_parte_1 {
@@ -58,7 +80,7 @@ window.addEvent('domready', function(){
 	<div id="header">
 		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
-			<div id="subi"><a href="#" title="SUB&Aacute; tu foto con chocolate"></a></div>
+			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Aacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
@@ -134,4 +156,5 @@ window.addEvent('domready', function(){
 		<!-- end bloque-texto-->
 	</div>
 	<!-- end wrapper2-->
+	<%@ include file="includes/fotoMilkaDialogs.jsp" %>
 	<%@ include file="includes/footer.jsp" %>

@@ -205,7 +205,5 @@ new TWTR.Widget({
 </script>
 
     </div>
-    
 <%@ include file="includes/fotoMilkaDialogs.jsp" %>
-
 <%@ include file="includes/footer.jsp" %>
