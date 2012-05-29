@@ -328,31 +328,31 @@ input[type="button"], input[type="submit"] {
 	<?php } else { ?>
 		<?php if ($prizeWinner == 1) { ?>
 			<div id="content" style="background-image:url(../images/felicitaciones.jpg); background-repeat:no-repeat;">
-				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 			</div>
 		<?php } else { ?>
 			<!--Tardaste mucho, tu premio ya se asigno a otra persona-->
 			<div id="content" style="background-image:url(../images/yaSeEntregaron.jpg); background-repeat:no-repeat;">
-				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 			</div>
 <?php } ?>
 	<?php } ?>
 <?php } else { ?>
 	<?php if ($alreadyParticipated == 1) { ?>
 		<div id="content" style="background-image:url(../images/yaParticipaste.jpg); background-repeat:no-repeat;">
-			<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+			<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 </div>
 	<?php } else { 
 		if ($alreadyWinner) { ?>
 			<div id="content" style="background-image:url(../images/yaGanaste.jpg); background-repeat:no-repeat;">
-				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+				<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 </div>
 		<?php
 		} else {
 			if ($promoToday == 1) { 
 				if ($allPrizesGiven == 1) { ?>
 					<div id="content" style="background-image:url(../images/yaSeEntregaron.jpg); background-repeat:no-repeat;">
-						<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+						<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 					</div>
 				<?php } else { ?>
 <div id="content">
@@ -400,11 +400,32 @@ input[type="button"], input[type="submit"] {
 				<?php } ?>
 			<?php } else { ?>
 <div id="content" style="background-image:url(../images/noHayHoy.jpg); background-repeat:no-repeat;">
-					<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="http://www.facebook.com/sharer.php?u=' + <?php echo $appurlforshare;?> + '&t=' + '<?php echo APP_NAME_TO_SHARE;?>"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
+					<div id="botonera"><a href="winners.php"><img src="../images/btn_verGanadores.png" alt="Ver ganadores" width="111" height="33" border="0"></a><a href="javascript:facebookShare('Participa de la promo Milka Corazones y ganate una caja bombones','Donde estas bombon','http://www.facebook.com/tdil.test.page/app_373863869313904','http://copac1.securesites.net/apps/milka_puzzle/images/logo-APP.jpg');"><img src="../images/btn_compartirFace.png" alt="Compartir" width="111" height="33" border="0"></a></div>
 </div>
 			<?php } ?>
 		<?php } ?>
 	<?php } ?>
 <?php } ?>
+<script>
+	window.fbAsyncInit = function() {
+	  FB.init({
+		appId      : '373863869313904',
+		status     : true,
+		cookie     : true
+	  });
+	};
+
+	(function(d){
+	   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+	   js = d.createElement('script'); js.id = id; js.async = true;
+	   js.src = "//connect.facebook.net/en_US/all.js";
+	   d.getElementsByTagName('head')[0].appendChild(js);
+	 }(document));
+	
+	function facebookShare(text, description, url, image) {
+		FB.ui({ method: 'feed',
+		link:url,picture:image,name:text,description:description});
+	}
+  </script>
 </body>
 </html>
