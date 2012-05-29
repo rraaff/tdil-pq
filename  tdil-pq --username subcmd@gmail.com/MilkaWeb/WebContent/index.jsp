@@ -30,11 +30,6 @@ $(document).ready(
 
 <%@ include file="includes/fotoMilkaScript.jsp" %>
 </script>
-
-<!-- FB share metas >
-<meta property="og:title" content="Milka Alfajores" />
-<meta property="og:description" content="Compartir la dulzura de nuestros alfajores con tus amigos es un acto de dulzura." />
-<meta property="og:image" content="http://localhost:8180/MilkaWeb/images/productos/alfajores_comp4.jpg" /-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
