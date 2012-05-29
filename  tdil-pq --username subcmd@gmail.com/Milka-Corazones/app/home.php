@@ -424,11 +424,13 @@ input[type="button"], input[type="submit"] {
 	
 	function facebookShare() {
 		var text = 'Participa de la promo Milka Corazones y ganate una caja bombones';
-		var description = 'Donde estas bombon';
+		var description = 'D&oacute;nde est&aacute;s bomb&oacute;n';
+		var caption = 'www.facebook.com/milka.com.ar/';
 		var url = '<?php echo $appurlforshare;?>';
 		var image = '<?php echo APPLICATION_URL;?>/../images/logo-APP.jpg';
 		FB.ui({ method: 'feed',display: 'popup',
-		link:url,picture:image,name:text,description:description});
+		link:url,picture:image,name:text,description:description,caption:caption});
+
 	}
   </script>
 </body>
