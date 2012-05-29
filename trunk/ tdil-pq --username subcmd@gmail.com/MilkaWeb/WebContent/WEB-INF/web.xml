@@ -68,7 +68,7 @@
     <url-pattern>/finalesDeEmail.xml</url-pattern>
   </servlet-mapping>
   
- <!-- Finales de email -->
+ <!-- Cartas de email -->
    <servlet>
     <servlet-name>MailToParentServlet</servlet-name>
     <servlet-class>com.tdil.milka.web.MailToParentServlet</servlet-class>
@@ -78,6 +78,18 @@
   <servlet-mapping>
     <servlet-name>MailToParentServlet</servlet-name>
     <url-pattern>/cartasDeHijosAPadres.xml</url-pattern>
+  </servlet-mapping>
+  
+  <!-- PostIts -->
+   <servlet>
+    <servlet-name>PostItServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.PostItServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>PostItServlet</servlet-name>
+    <url-pattern>/postIts.xml</url-pattern>
   </servlet-mapping>
  
  <!-- Action Servlet Configuration -->
