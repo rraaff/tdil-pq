@@ -53,6 +53,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('finale
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('cartasDeHijosAPadres.url','http://www.milka.com.ar/cartasDeHijosAPadres.jsp','Url de la experiencia cartas de hijos a padres',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contentapproved.emailfrom','info@milka.com.ar','Email from de aprobacion de contenido',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contentapproved.emailsubject','Contenido aprobado','Email subject de aprobacion de contenido',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.app','3785427834','Id de la app de facebook usada para compartir',0);
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,

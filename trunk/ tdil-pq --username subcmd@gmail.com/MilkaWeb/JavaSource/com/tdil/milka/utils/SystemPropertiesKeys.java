@@ -16,4 +16,6 @@ public interface SystemPropertiesKeys {
 	public static final String POST_IT_URL = "postits.url";
 	public static final String FINALES_DE_EMAILS_URL = "finalesDeEmail.url";
 	public static final String CARTAS_DE_HIJOS_A_PADRES_URL = "cartasDeHijosAPadres.url";
+	
+	public static final String APP_ID = "fb.app";
 }
