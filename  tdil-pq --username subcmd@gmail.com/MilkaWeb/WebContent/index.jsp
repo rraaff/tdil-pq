@@ -86,9 +86,9 @@ $(document).ready(
 			<div id="social">
 				<ul>
 					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
-					<li class="t"><a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a></li>
-					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="t"><!--a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a--></li>
+					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial','Hay tanta dulzura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
 					<li class="youtube"><a href="http://www.youtube.com/user/ChocolateMilkaArg" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
 				</ul>
 			</div>
@@ -156,10 +156,10 @@ $(document).ready(
 			<h2>NUESTROS CHOCOLATES...</h2>
 			<div id="social">
 				<ul>
-					<li class="facebook"><a href="http://www.facebook.com/milka.com.ar" title="Facebook" target="_blank"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | Nuestros Chocolates','Hay tanta dulzura para compartir','www.milka.com.ar/','http://www.milka.com.ar/productos_alfajores.jsp');" title="Compart&iacute; nuestros chocolates en Facebook" target="_blank"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<!-- li class="facebook"><a name="fb_share" type="icon_link" share_url="http://localhost:8180/MilkaWeb/productos_alfajores.jsp"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script-->
-					<li class="twitter"><a href="#" title="Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('Milka Argentina | Sitio oficial | Nuestros Chocolates | ') + encodeURIComponent('http://www.milka.com.ar/productos_alfajores.jsp')); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
 				</ul>
 			</div>
 			<!-- end social-->
@@ -169,7 +169,7 @@ $(document).ready(
 	</div>
     <!-- end productos-->
     <div id="box-facebook">
-    <div class="fb-like-box" data-href="http://www.facebook.com/chocolat" data-width="300" data-height="437" data-show-faces="false" data-border-color="#dbdbdb" data-stream="true" data-header="false"></div>
+    <div class="fb-like-box" data-href="http://www.facebook.com/milka.com.ar" data-width="300" data-height="437" data-show-faces="false" data-border-color="#dbdbdb" data-stream="true" data-header="false"></div>
     </div>
     <div id="box-twitter">
     	<script>
@@ -197,12 +197,9 @@ new TWTR.Widget({
     live: true,
     behavior: 'all'
   }
-}).render().setUser('MilkaChocolate').start();
+}).render().setUser('chocolatesmilka').start();
 </script>
-
     </div>
-    
-    <!-- ejemplo pablo -->
-    <%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.APP_ID)%>
+<%@ include file="includes/fbShare.jsp" %>
 <%@ include file="includes/fotoMilkaDialogs.jsp" %>
 <%@ include file="includes/footer.jsp" %>

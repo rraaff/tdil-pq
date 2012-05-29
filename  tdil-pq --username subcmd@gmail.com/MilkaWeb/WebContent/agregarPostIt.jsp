@@ -91,12 +91,11 @@ function postUpload(data) {
 <style>
 <!--
 body {
-	
-}
-#formContent {
-	background-image: url(images/experiencias/cartasDePaH/upload_bg.jpg);
+	background-image: url(images/experiencias/postits/bg_upload.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
+}
+#formContent {
 	width:900px;
 	height:400px;
 	margin:0 auto;
@@ -104,60 +103,75 @@ body {
 #Nombre {
 	height: 25px;
 	width: 170px;
-	left: 368px;
-	top: 139px;
+	left: 375px;
+	top: 136px;
 	position: relative;
 }
 #E-Mail {
 	height: 25px;
 	width: 170px;
-	left: 598px;
-	top: 114px;
+	left: 375px;
+	top: 145px;
 	position: relative;
 }
 #Politicas {
 	height: 25px;
 	width: 160px;
-	left: 309px;
-	top: 141px;
+	left: 300px;
+	top: 163px;
 	position: relative;
 }
 #SubirImagen {
-	height: 25px;
-	width: 260px;
-	left: 408px;
-	top: 158px;
+	height: 180px;
+	width: 180px;
+	left: 300px;
+	top: 198px;
 	position: relative;
 }
 .normalField {
+	font-family:"Trebuchet MS", Arial, sans-serif;
 	width:150px;
 	height:25px;
 	line-height:22px;
-	border: solid 1px #333333;
+	border: dotted 1px #ad9d1f;
+	background:transparent;
+}
+.normalTextArea {
+	width:200px;
+	height:120px;
 }
 #buttonHolder {
-	height: 130px;
-	width: 130px;
-	left: 742px;
-	top: 128px;
+	height: 85px;
+	width: 82px;
+	left: 512px;
+	top: 70px;
 	position: relative;
 }
 #buttonHolder .okCircle, .okCircle a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1px;
 	line-height:14px;
-	color: #FFFFFF;
+	color: #684bb5;
 	background:transparent;
 	text-decoration: none;
-	background-image: url(images/experiencias/cartasDePaH/upload.png);
+	background-image: url(images/experiencias/postits/boton.png);
 	background-repeat: no-repeat;
 	background-position: center center;
-	width:130px;
-	height:130px;
+	width:85px;
+	height:82px;
 	border:none;
 	cursor:hand;
 	margin:0;
 	padding:0;
+	
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
 }
 -->
 </style>
@@ -168,7 +182,7 @@ body {
 	<div id="Nombre"><html:text name="PostItForm" property="authorBean.name" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.name.err")%></div>
 	<div id="E-Mail"><html:text name="PostItForm" property="authorBean.email" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%></div>
 	<div id="Politicas"><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></div>
-	<div id="SubirImagen"><html:text name="PostItForm" property="text" styleClass="width180"/></div>
+	<div id="SubirImagen"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></div>
 	<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 </html:form>
 </div>

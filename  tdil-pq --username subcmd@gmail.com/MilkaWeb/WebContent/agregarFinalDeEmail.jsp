@@ -87,18 +87,89 @@ function postUpload(data) {
 }
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
+
+<style>
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #1e1e1e;
+	background-image: url(images/experiencias/finalesEmails/bg_carga.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#formularioEmails {
+	width: 390px;
+	margin-top: 176px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+#lineadecontenido {
+	width: 302px;
+	margin-left:88px;
+	margin-bottom:5px;
+	float:left;
+}
+.specialFields {
+	width:229px;
+	height:19px;
+	border:solid 1px #9d9fa1;
+}
+#textoEspecial {
+	top:40px;
+	left:20px;
+	position:relative;
+	float:left;	
+	width:360px;
+}
+.spacer{
+	width:100px;
+}
+#buttonHolder .okCircle, .okCircle a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1px;
+	line-height:14px;
+	color: #FFFFFF;
+	background:transparent;
+	text-decoration: none;
+	background-image: url(images/experiencias/finalesEmails/boton.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:49px;
+	height:48px;
+	border:none;
+	cursor:hand;
+	margin:0;
+	padding:0;
+	top:-52px;
+	left:20px;
+	position:relative;
+	
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+}
+</style>
 </head>
 <body>
-
-Agregar final de email
-<html:form method="POST" action="/uploadEmailEnding" enctype="multipart/form-data">
-	<div id="Nombre">Nombre:<html:text name="EmailEndingForm" property="authorBean.name" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.name.err")%></div>
-	Email:<html:text name="EmailEndingForm" property="authorBean.email" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%><br>
-	Politicas:<html:checkbox name="EmailEndingForm" property="authorBean.acceptPolitics" styleClass="width180"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><br>
-	<html:file name="EmailEndingForm" property="photoFormFile" />
-	<html:submit property="operation">
-		Upload
-	</html:submit><%=MilkaErrorFormatter.getErrorFrom(request, "EmailEndingForm.photo.err")%>
+<div id="formularioEmails">
+	<html:form method="POST" action="/uploadEmailEnding" enctype="multipart/form-data">
+		<div id="lineadecontenido"><html:text name="EmailEndingForm" property="authorBean.name" styleClass="specialFields"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.name.err")%></div>
+		<div id="lineadecontenido"><html:text name="EmailEndingForm" property="authorBean.email" styleClass="specialFields"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%></div>
+		<div id="lineadecontenido" style="margin-left:20px; margin-top:10px;"><html:checkbox name="EmailEndingForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio <%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%></div>
+		<div id="lineadecontenido" style="margin-left:20px; margin-top:10px;"><html:file name="EmailEndingForm" property="photoFormFile" /></div>
+		<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle">Enviar</html:submit><%=MilkaErrorFormatter.getErrorFrom(request, "EmailEndingForm.photo.err")%></div>
+		<div id="textoEspecial">
+			<p>Complet&aacute; los datos, carg&aacute; una captura de tu final de E-Mail<br />
+				enviarlo. Una vez que est&eacute; publicado te avisaremos.</p>
+			<p>XOXOXOXOXOXOXOXOXOXO</p>
+			<p>Milka!</p>
+		</div>
 </html:form>
 
 <div id="dialog-modal" class="hide" title="Finales de email">
@@ -109,6 +180,7 @@ Agregar final de email
 </div>
 <div id="dialog-modal-err" class="hide" title="Finales de email">
 	Ha ocurrido un error, intentelo nuevamente.
+</div>
 </div>
 </body>
 </html>

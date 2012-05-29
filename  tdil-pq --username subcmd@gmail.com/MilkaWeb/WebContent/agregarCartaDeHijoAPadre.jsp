@@ -159,9 +159,9 @@ body {
 	margin:0;
 	padding:0;
 	
-	-webkit-border-radius: none;
-	-moz-border-radius: none;
-	border-radius: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 	text-shadow: none;
 	box-shadow: none;
 	-webkit-box-shadow: none;
