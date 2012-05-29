@@ -1,4 +1,4 @@
-Instalación
+Instalaciï¿½n
 ===========
 
 1) Correr database.sql como root del mysql
@@ -13,10 +13,10 @@ Instalación
 Accesos
 =======
 
-Sitio público: ./index.jsp
+Sitio pï¿½blico: ./index.jsp
 
 BackOffice: ./boLogin.jsp
 
 Cambio de password del Admin
-UPDATE SYSTEMUSER SET password = SHA1('Admin') WHERE username = 'Admin';
+UPDATE SYSTEMUSER SET password = SHA1('Admin') WHERE username = '3p0x7';
 COMMIT;

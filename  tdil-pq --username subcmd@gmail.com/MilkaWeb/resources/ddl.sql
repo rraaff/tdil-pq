@@ -30,7 +30,7 @@ CREATE TABLE SYSTEMUSER (
   INDEX `IX_SYSTEMUSER_01` (`email` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('Admin'), 'Admin', 'admin@admin.com', 0);
+INSERT INTO SYSTEMUSER(username,password,name,email, deleted) VALUES('Admin',SHA1('3p0x7'), 'Admin', 'admin@admin.com', 0);
 
 CREATE TABLE SYSPROPERTIES (
   `id` INT NOT NULL AUTO_INCREMENT ,
