@@ -1,13 +1,9 @@
 <div id="dialog-modal" class="hide" title="Subi tu foto con chocolate">
-	<p>
-		Gracias por subir tu foto.<br>
-		Te avisaremos cuando este aprobada.
-	</p>
+	<p>Gracias por subir tu foto.<br>Te avisaremos cuando este aprobada.</p>
 </div>
 <div id="dialog-modal-err" class="hide" title="Subi tu foto con chocolate">
-	Ha ocurrido un error, intentelo nuevamente.
+	<p>Ha ocurrido un error, intentelo nuevamente.</p>
 </div>
-
 <div id="dialog-form" title="Subi tu foto con chocolate">
 	<html:form method="POST" action="/uploadMilkaPhoto" enctype="multipart/form-data">
 		<table width="330" cellspacing="0" cellpadding="0">

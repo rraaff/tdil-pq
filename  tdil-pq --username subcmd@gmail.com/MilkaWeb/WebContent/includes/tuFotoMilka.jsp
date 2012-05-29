@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <% List<MilkaPhotoValueObject> milkaPhotos = MilkaPhotoUtils.getPhotos(); %>
 <% List<MilkaPhotoValueObject> toDisplay = MilkaPhotoUtils.getDisplayPart(milkaPhotos); %>
+
 <div id="fotos">
 	<h2>TU FOTO MILKA</h2>
 		<ul>
