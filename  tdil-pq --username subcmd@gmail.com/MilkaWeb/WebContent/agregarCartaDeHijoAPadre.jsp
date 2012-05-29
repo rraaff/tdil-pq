@@ -158,6 +158,15 @@ body {
 	cursor:hand;
 	margin:0;
 	padding:0;
+	
+	-webkit-border-radius: none;
+	-moz-border-radius: none;
+	border-radius: none;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
 }
 -->
 </style>
