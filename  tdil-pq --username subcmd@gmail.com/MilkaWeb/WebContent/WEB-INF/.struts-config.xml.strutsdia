@@ -144,12 +144,7 @@
    TARGET="action17" TITLE="/approveDisapproveMilkaPhoto.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#addPostIt" NAME="action14" PATH="/addPostIt"
-  SHAPE="32,1873,0,0" TITLE="PostItForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/index.jsp"
-   TARGET="page0" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/index.jsp"
-   TARGET="page0" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SHAPE="32,1873,0,0" TITLE="PostItForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page7" PATH="/postItPending.jsp"
   SHAPE="240,2370,0,0" SUBTYPE="jsp" TITLE="postItsPending.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -162,6 +157,9 @@
   TITLE="MilkaPhotoAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/milkaPhotoPending.jsp" TARGET="page6" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToMilkaPhotoApprove" NAME="action13"
@@ -199,6 +197,9 @@
   TITLE="PostItAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/postItPending.jsp" TARGET="page7" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/postItPending.jsp" TARGET="page7" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#reviewMilkaPhoto" NAME="action16"
@@ -271,6 +272,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#uploadEmailEnding" NAME="action31"
   PATH="/uploadEmailEnding" SHAPE="32,1873,0,0" TITLE="EmailEndingForm"
@@ -309,6 +313,9 @@
   TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#uploadEmailEndingReplacement" NAME="action36"
@@ -358,6 +365,9 @@
   TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#uploadMailToParentReplacement" NAME="action45"

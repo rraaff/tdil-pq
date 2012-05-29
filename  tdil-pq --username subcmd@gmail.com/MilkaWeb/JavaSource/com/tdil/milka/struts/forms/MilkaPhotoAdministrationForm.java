@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
@@ -20,18 +19,12 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.MilkaPhotoDAO;
 import com.tdil.milka.dao.MilkaPhotoTagDAO;
-import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.dao.TagDAO;
 import com.tdil.milka.daomanager.DAOManager;
-import com.tdil.milka.model.Author;
 import com.tdil.milka.model.MilkaPhoto;
 import com.tdil.milka.model.MilkaPhotoExample;
 import com.tdil.milka.model.MilkaPhotoTag;
 import com.tdil.milka.model.MilkaPhotoTagExample;
-import com.tdil.milka.model.NotificationEmail;
-import com.tdil.milka.model.NotificationEmailExample;
-import com.tdil.milka.model.SystemProperty;
-import com.tdil.milka.model.SystemPropertyExample;
 import com.tdil.milka.model.Tag;
 import com.tdil.milka.model.TagExample;
 import com.tdil.milka.model.valueobjects.MilkaPhotoValueObject;
@@ -191,25 +184,7 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm im
 		updateTags(milkaPhoto);
 		
 		/** Inicio del email */
-		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
-		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
-		
-		SystemPropertyExample portExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
-		Author author = DAOManager.getAuthorDAO().selectAuthorByPrimaryKey(milkaPhoto.getIdAuthor());
-		NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
-		notificationEmailExample.createCriteria().andNotificationtypeEqualTo(com.tdil.milka.web.EmailUtils.tufotomilka);
-		NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO().selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
-		String content = notificationEmail.getContent();
-		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
-		try {
-			EmailUtils.sendEmail(content, author.getEmail(), "milka@milka.com.ar", "Contenido aprobado", smtpServer.getPropvalue(), smtpPort.getPropvalue());
-		} catch (MessagingException e) {
-			getLog().error(e.getMessage(), e);
-		}
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(milkaPhoto.getIdAuthor(), com.tdil.milka.web.EmailUtils.tufotomilka, SystemPropertiesKeys.FOTO_MILKA_URL);
 	}
 	
 	private void setData(MilkaPhoto milkaPhoto) throws SQLException {
@@ -295,7 +270,7 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm im
 		}
 		
 	}
-	private static Logger getLog() {
+	public static Logger getLog() {
 		return LoggerProvider.getLogger(MilkaPhotoAdministrationForm.class);
 	}
 	public List<MilkaPhotoValueObject> getSourceList() {

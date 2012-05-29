@@ -17,7 +17,7 @@
 <title>Milka</title>
 <% 
 	if (!"true".equals(request.getParameter("dnc"))) {
-		MeltButton.incrementCounter(MeltButton.PAPAPEDIA_RENDER);
+		MeltButton.incrementCounter(MeltButton.POSTIT_RENDER);
 	}
 %>
 <%
@@ -204,16 +204,9 @@ input[type="button"], input[type="submit"] {
 </head>
 
 <body>
-<%
-int totalItems = PapapediaUtils.getPapapediaCount();
-int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
-List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, PapapediaUtils.PAGE_SIZE, PapapediaUtils.PAGE_SIDE);
-int first = PaginationUtils.first(list);
-int last = PaginationUtils.last(list);
-SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
-%>
-<% int barClickCounter = MeltButton.PAPAPEDIA_COUNTER; %>
+<% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
 <a href="#">Cargar imagen para la Experiencia POST-ITs</a>
+<a href="./agregarPostIt.jsp">Agregar post-it</a>
 </body>
 </html>

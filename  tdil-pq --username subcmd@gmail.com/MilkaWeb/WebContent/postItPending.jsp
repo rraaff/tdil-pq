@@ -87,7 +87,7 @@ request.setAttribute( "test",  paginated);
 <body>
 <div id="header"><%@ include file="includes/boMenu.jsp" %></div>
 <div id="container">
-	<h1 align="center">Experiancia POST ITs</h1>
+	<h1 align="center">Experiencia POST ITs</h1>
 	<div class="renglon width860" style="margin-bottom:20px;">
 		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar, modificar o desaprobar los contenidos de la experiencia POST ITs.</span></div>
 	</div>
@@ -131,7 +131,7 @@ request.setAttribute( "test",  paginated);
 			<logic:notEqual name="PostItAdministrationForm" property="hasThumb" value="true">
 				<img id="img_thumb" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
 			</logic:notEqual>
-			<input type="file" name="upload_thumb" id="upload_thumb"><br>
+			<input type="file" name="upload_thumb" id="upload_thumb"><%=MilkaErrorFormatter.getErrorFrom(request, "PostItAdministrationForm.thumb.err")%><br>
 			Postit	
 			<logic:equal name="PostItAdministrationForm" property="hasCover" value="true">
 				<img id="img_cover" src="./viewPostItImage.do" width="30" height="30" align="absmiddle"> 
@@ -139,7 +139,7 @@ request.setAttribute( "test",  paginated);
 			<logic:notEqual name="PostItAdministrationForm" property="hasCover" value="true">
 				<img id="img_cover" src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
 			</logic:notEqual>
-			<input type="file" name="upload_cover" id="upload_cover"><br>
+			<input type="file" name="upload_cover" id="upload_cover"><%=MilkaErrorFormatter.getErrorFrom(request, "PostItAdministrationForm.cover.err")%><br>
 		
 			<html:submit property="operation">
 				<bean:message key="approve" />

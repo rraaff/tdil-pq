@@ -171,25 +171,7 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		emailEndingsDAO.updateEmailEndingsByPrimaryKey(emailEndings);
 		
 		/** Inicio del email */
-		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
-		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
-		
-		SystemPropertyExample portExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
-		Author author = DAOManager.getAuthorDAO().selectAuthorByPrimaryKey(emailEndings.getIdAuthor());
-		NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
-		notificationEmailExample.createCriteria().andNotificationtypeEqualTo(com.tdil.milka.web.EmailUtils.finalesdeemail);
-		NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO().selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
-		String content = notificationEmail.getContent();
-		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
-		try {
-			EmailUtils.sendEmail(content, author.getEmail(), "milka@milka.com.ar", "Contenido aprobado", smtpServer.getPropvalue(), smtpPort.getPropvalue());
-		} catch (MessagingException e) {
-			getLog().error(e.getMessage(), e);
-		}
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(emailEndings.getIdAuthor(), com.tdil.milka.web.EmailUtils.finalesdeemail, SystemPropertiesKeys.FINALES_DE_EMAILS_URL);
 	}
 	
 	private void setData(EmailEndings emailEndings) throws SQLException {

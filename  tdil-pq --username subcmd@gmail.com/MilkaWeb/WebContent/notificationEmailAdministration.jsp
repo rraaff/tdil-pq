@@ -16,7 +16,8 @@
 <div id="container">
 	<h1 align="center">Administraci&oacute;n de notificaciones por E-Mail</h1>
 	<div class="renglon width860 height40" style="margin-bottom:20px;">
-		<div class="label width860 height40"><span class="comment">Desde esta sección podrá cargar el contenido de los E-Mails que sirven como notificaciones de las Experiencias y los contenidos del sitio. También podrá testear los contenidos enviando pruebas a su propia casilla.</span></div>
+		<div class="label width860 height40"><span class="comment">Desde esta sección podrá cargar el contenido de los E-Mails que sirven como notificaciones de las Experiencias y los contenidos del sitio. También podrá testear los contenidos enviando pruebas a su propia casilla. Los emails soportan las 
+		siguientes variables: AUTHOR_NAME (nombre del autor), EXPERIENCE_LINK (link a la experiencia) y SERVER_NAME (server donde esta ejecutando la aplicacion).</span></div>
 	</div>
 	<html:form method="POST" action="/saveNotificationEmail">
 		<span class="errorText"><%=MilkaErrorFormatter.getErrorFrom(request, "general")%></span><br>

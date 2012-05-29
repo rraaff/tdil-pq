@@ -26,17 +26,22 @@ public class ApproveDisapproveAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		final ApproveDisapproveForm approveDisapproveForm = (ApproveDisapproveForm)form;
 		if (approveDisapproveForm.getOperation().equals(ApplicationResources.getMessage("approve"))) {
-			try {
-				TransactionProvider.executeInTransaction(new TransactionalAction() {
-					public void executeInTransaction() throws SQLException, ValidationException {
-						approveDisapproveForm.approve();
-					}
-				});
-				approveDisapproveForm.postApprove();
-			} catch (Exception ex) {
-				getLog().error(ex.getMessage(), ex);
-				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
-				return redirectToFailure(exError, request, mapping);
+			ValidationError error = approveDisapproveForm.validate();
+			if(error.hasError()) {
+				return redirectToFailure(error, request, mapping);
+			} else {
+				try {
+					TransactionProvider.executeInTransaction(new TransactionalAction() {
+						public void executeInTransaction() throws SQLException, ValidationException {
+							approveDisapproveForm.approve();
+						}
+					});
+					approveDisapproveForm.postApprove();
+				} catch (Exception ex) {
+					getLog().error(ex.getMessage(), ex);
+					ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
+					return redirectToFailure(exError, request, mapping);
+				}
 			}
 		} else {
 			try {
