@@ -69,7 +69,6 @@ $(document).ready(
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:11px;
 	top:14px;
-	left: 280px;
 }
 #bm_personas span{
 	color:#b398ff;
