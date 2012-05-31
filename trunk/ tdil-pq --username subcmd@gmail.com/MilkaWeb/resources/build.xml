@@ -53,9 +53,18 @@
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar"/>
 				<exclude name="servlet-api.jar"/>
-				<exclude name="displaytag-1.2.jar"/>
+				<exclude name="jsch-0.1.39.jar"/>
 			</lib>
 		</war>
+	</target>
+	
+	<target name="hotDeploy">
+		<delete dir="MILKA.tmp" failonerror="false"></delete>
+		<mkdir dir="MILKA.tmp"/>
+		<zip destfile="./MILKA.tmp/MILKA_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
+		</zip>
+		<scp file="./MILKA.tmp/MILKA_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true"></scp>
+		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_milka.sh"/>
 	</target>
 	
 	<target name="makeEntregable">

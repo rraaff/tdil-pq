@@ -279,9 +279,18 @@ lightbox = new Lightbox options
       if (typeof this.album[this.currentImageIndex].button !== 'undefined' && this.album[this.currentImageIndex].button !== "") {
     	//alert(this.album[this.currentImageIndex].title);
     	var title = this.album[this.currentImageIndex].button.split('-');
+    	var _this = this;
+    	var _imageIndex = this.currentImageIndex;
         //$lightbox.find('.lb-caption').html().fadeIn('fast');XXX
         $lightbox.find('.lb-caption').html("<div id='mb-"+title[0]+"' buttonId='"+title[0]+"' quantity='"+title[1]+"'></div>").fadeIn('fast');
-        $('#mb-'+title[0]).meltbutton();
+        $('#mb-'+title[0]).meltbutton(
+        	{onComplete: 
+        		function(buttonId, newQuantity) {
+        			$('#lk-'+buttonId).attr('button', buttonId + '-' + newQuantity);
+        			_this.album[_imageIndex].button = buttonId + '-' + newQuantity;
+        		} 
+        	}
+        );
       }
       if (this.album.length > 1) {
         //$lightbox.find('.lb-number').html(this.options.labelImage + ' ' + (this.currentImageIndex + 1) + ' ' + this.options.labelOf + '  ' + this.album.length).fadeIn('fast');

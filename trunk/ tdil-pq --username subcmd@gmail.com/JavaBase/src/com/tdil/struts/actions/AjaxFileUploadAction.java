@@ -14,7 +14,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.upload.FormFile;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
