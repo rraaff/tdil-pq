@@ -2,7 +2,13 @@
  * meltbutton (for jQuery)
  */
 (function($) {
-  $.fn.meltbutton = function(settings) {
+  $.fn.meltbutton = function(options) {
+	  var settings = {
+          onComplete: function(buttonId, newQuantity) {}
+        };
+	  if ( options ) { 
+          $.extend( settings, options );
+        }
 	  var obj = $(this);
   	  var buttonId = obj.attr("buttonId");
   	  var actualQuantity = obj.attr("quantity");
@@ -21,6 +27,7 @@
 					  		$('#' + buttonId + '-qty').html(data.quantity + " personas");
 					  		$.cookie(cookieName, "set", { expires: 180, path: "/" });
 					  		obj.clickenabled = false;
+					  		settings.onComplete.apply($(this), [buttonId, data.quantity]);
 					  	}
 				    });
 	  			}
