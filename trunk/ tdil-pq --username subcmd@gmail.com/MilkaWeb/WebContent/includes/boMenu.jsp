@@ -43,6 +43,12 @@
 						<li><html:link action="/goToMailToParentReview" >Revision de aprobados</html:link></li>
 					</ul>
 				</li>
+				<li><a href="#">Apodos de amor</a>
+					<ul>
+						<li><html:link action="/goToLoveNicknameApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+						<li><html:link action="/goToLoveNicknameReview" >Revision de aprobados</html:link></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Administracion</a>
