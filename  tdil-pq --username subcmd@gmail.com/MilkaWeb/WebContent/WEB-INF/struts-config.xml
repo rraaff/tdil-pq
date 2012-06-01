@@ -30,6 +30,10 @@
    name="RawInsertForm" type="com.tdil.milka.struts.forms.RawInsertForm"/>
    <form-bean id="ContactForm"
    name="ContactForm" type="com.tdil.milka.struts.forms.ContactForm"/>
+   <form-bean id="LoveNicknameForm"
+   name="LoveNicknameForm" type="com.tdil.milka.struts.forms.LoveNicknameForm"/>
+   <form-bean id="LoveNicknameAdministrationForm"
+   name="LoveNicknameAdministrationForm" type="com.tdil.milka.struts.forms.LoveNicknameAdministrationForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -151,6 +155,26 @@
    <forward name="failure" path="/papapediaPending.jsp"/>
   </action>
   
+  <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/goToLoveNicknameApprove"
+   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/loveNicknamePending.jsp"/>
+  </action>
+  <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/goToLoveNicknameReview"
+   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/loveNicknamePending.jsp"/>
+  </action>
+  <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/reviewLoveNickname"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/loveNicknamePending.jsp"/>
+  </action>
+  <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/approveDisapproveLoveNickname"
+   scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/loveNicknamePending.jsp"/>
+   <forward name="failure" path="/loveNicknamePending.jsp"/>
+  </action>
+  
+  
+  
   <action name="EmailEndingsAdministrationForm" parameter="Admin"
    path="/goToEmailEndingsApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
    <forward name="continue" path="/emailEndingsPending.jsp"/>
@@ -245,6 +269,8 @@
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.milka.struts.action.ContactAction">
   </action>
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.milka.struts.action.AddPostItAction">
+  </action>
+  <action name="LoveNicknameForm" path="/addLoveNick" scope="session" type="com.tdil.milka.struts.action.AddLoveNicknameAction">
   </action>
   
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">

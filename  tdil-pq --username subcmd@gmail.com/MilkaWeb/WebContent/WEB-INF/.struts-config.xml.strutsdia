@@ -475,4 +475,45 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#contact" NAME="action57" PATH="/contact"
   SHAPE="32,2465,0,0" TITLE="ContactForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addLoveNick" NAME="action58" PATH="/addLoveNick"
+  SHAPE="32,2497,0,0" TITLE="LoveNicknameForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToLoveNicknameApprove" NAME="action59"
+  PATH="/goToLoveNicknameApprove" SHAPE="32,2497,0,0"
+  TITLE="LoveNicknameAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page18" PATH="/loveNicknamePending.jsp"
+  SHAPE="304,2514,0,0" SUBTYPE="jsp" TITLE="loveNicknamePending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveLoveNickname.do" SUBTYPE="confirmed"
+   TARGET="action63" TITLE="/approveDisapproveLoveNickname.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLoveNicknameReview" NAME="action60"
+  PATH="/goToLoveNicknameReview" SHAPE="32,2609,0,0"
+  TITLE="LoveNicknameAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewLoveNickname" NAME="action61"
+  PATH="/reviewLoveNickname" SHAPE="32,2945,0,0"
+  TITLE="LoveNicknameAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveLoveNickname" NAME="action63"
+  PATH="/approveDisapproveLoveNickname" SHAPE="512,2497,0,0"
+  TITLE="LoveNicknameAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

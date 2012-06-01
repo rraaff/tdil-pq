@@ -19,7 +19,8 @@ class ParticipantCounter implements TransactionalAction {
 		ClickCounter cartasDeHijosAPadres = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(MeltButton.CARTAS_DE_HIJOS_A_PADRES_RENDER);
 		ClickCounter papapedia = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(MeltButton.PAPAPEDIA_RENDER);
 		ClickCounter finalesDeEmail = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(MeltButton.FINALES_DE_EMAIL_RENDER);
-		result = cartasDeHijosAPadres.getClicks() + papapedia.getClicks() + finalesDeEmail.getClicks();
+		ClickCounter apodosDeAmor = DAOManager.getClickCounterDAO().selectClickCounterByPrimaryKey(MeltButton.APODOS_DE_AMOR_RENDER);
+		result = cartasDeHijosAPadres.getClicks() + papapedia.getClicks() + finalesDeEmail.getClicks() + apodosDeAmor.getClicks();
 	}
 
 	public int getResult() {
