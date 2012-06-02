@@ -91,6 +91,19 @@
     <servlet-name>PostItServlet</servlet-name>
     <url-pattern>/postIts.xml</url-pattern>
   </servlet-mapping>
+  
+  
+    <!-- Apodos -->
+   <servlet>
+    <servlet-name>LoveNicknamesServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.LoveNicknamesServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoveNicknamesServlet</servlet-name>
+    <url-pattern>/apodosDeAmor.xml</url-pattern>
+  </servlet-mapping>
  
  <!-- Action Servlet Configuration -->
  <servlet>
