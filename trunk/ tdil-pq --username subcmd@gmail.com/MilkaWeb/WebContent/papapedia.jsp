@@ -212,6 +212,11 @@ List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, PapapediaU
 int first = PaginationUtils.first(list);
 int last = PaginationUtils.last(list);
 SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
+int linkId = 0;
+if (lnk != null && !StringUtils.isEmpty(lnk)) {
+	linkId = Integer.valueOf(lnk);
+	PapapediaUtils.setFirst(papapediaPage, linkId);
+}
 %>
 <% int barClickCounter = MeltButton.PAPAPEDIA_COUNTER; %>
 <%@ include file="includes/barraExperiencias.jsp" %>
@@ -233,7 +238,11 @@ SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNum
 		<div class="line"></div>
 		<div id="counter"><%=totalItems%> Comentarios</div>
 		<% for (WallWritting ww : papapediaPage.getPage()) { %>
-			<div class="texto">
+			<% if (ww.getId() == linkId) { %>
+				<div class="texto" style="border: 1px Solid Red;">XXXX
+			<% } else { %>
+				<div class="texto">
+			<% } %>
 				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %><a href="<%=ww.getUrlLink()%>" target="<%=ww.getUrlTarget()%>"><% } %>
 				<%=ww.getOriginaltext()%>
 				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
