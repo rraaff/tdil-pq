@@ -44,7 +44,7 @@ $(document).ready(
 <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script type="text/javascript">
 	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-29166792-1']);
+	_gaq.push(['_setAccount', 'UA-32381287-1']);
 	_gaq.push(['_trackPageview']);
 	(function() {
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -85,11 +85,11 @@ $(document).ready(
 			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
-					<li class="faqs"><a href="faqs.jsp" title="FAQS"></a></li>
-					<li class="t"><!--a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a--></li>
-					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial','Hay tanta dulzura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="faqs"><!-- a href="faqs.jsp" title="FAQS"></a--></li>
 					<li class="youtube"><a href="http://www.youtube.com/user/ChocolateMilkaArg" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
+					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial','Hay tanta dulzura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
+					<li class="t"><!--a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a--></li>
 				</ul>
 			</div>
 			<!-- end social-->
