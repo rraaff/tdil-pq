@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.web.SearchPage"%>
 <%@page import="com.tdil.milka.model.WallWritting"%>
 <%@page import="java.util.List"%>
@@ -21,6 +22,7 @@
 	if (!"true".equals(request.getParameter("dnc"))) {
 		MeltButton.incrementCounter(MeltButton.PAPAPEDIA_RENDER);
 	}
+	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
 	String nextPage = "finalesDeEmail.jsp";
@@ -231,7 +233,11 @@ SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNum
 		<div class="line"></div>
 		<div id="counter"><%=totalItems%> Comentarios</div>
 		<% for (WallWritting ww : papapediaPage.getPage()) { %>
-			<div class="texto"><%=ww.getOriginaltext()%></div>
+			<div class="texto">
+				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %><a href="<%=ww.getUrlLink()%>" target="<%=ww.getUrlTarget()%>"><% } %>
+				<%=ww.getOriginaltext()%>
+				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
+			</div>
 		<% } %>
 		<div id="paginado">
 			<div id="previuos">

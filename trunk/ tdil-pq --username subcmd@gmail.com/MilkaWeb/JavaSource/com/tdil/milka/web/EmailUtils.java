@@ -23,7 +23,7 @@ public class EmailUtils {
 	public static final String finalesdeemail = "finalesdeemail";
 	public static final String postits = "post-it";
 	
-	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, String link) throws SQLException {
+	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, int link) throws SQLException {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
@@ -42,15 +42,15 @@ public class EmailUtils {
 		subjectExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTENT_APPROVED_EMAIL_SUBJECT);
 		SystemProperty subject = systemPropertyDAO.selectSystemPropertyByExample(subjectExample).get(0);
 		
-		String destLink = link;
-		if (link == null) {
-			SystemPropertyExample linkExample = new SystemPropertyExample();
-			linkExample.createCriteria().andPropkeyEqualTo(experiencetype);
-			SystemProperty linkSysProperty = systemPropertyDAO.selectSystemPropertyByExample(linkExample).get(0);
-			if (linkSysProperty != null) {
-				destLink = linkSysProperty.getPropvalue();
+		String destLink = null;
+		SystemPropertyExample linkExample = new SystemPropertyExample();
+		linkExample.createCriteria().andPropkeyEqualTo(experiencetype);
+		SystemProperty linkSysProperty = systemPropertyDAO.selectSystemPropertyByExample(linkExample).get(0);
+		if (linkSysProperty != null) {
+			destLink = linkSysProperty.getPropvalue();
+			if (link != 0) {
+				destLink = destLink + "?lnk=" + link;
 			}
-			
 		}
 		
 		SystemPropertyExample serverExample = new SystemPropertyExample();

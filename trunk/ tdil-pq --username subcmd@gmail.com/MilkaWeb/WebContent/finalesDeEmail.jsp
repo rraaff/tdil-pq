@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.milka.model.ClickCounter"%>
 <%@page import="com.tdil.milka.web.MeltButton"%>
@@ -17,6 +18,7 @@
 	if (!"true".equals(request.getParameter("dnc"))) {
 		MeltButton.incrementCounter(MeltButton.FINALES_DE_EMAIL_RENDER);
 	}
+	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
 	String nextPage = "postits.jsp";
