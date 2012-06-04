@@ -27,6 +27,14 @@ public class PapapediaUtils {
 		}
 	}
 	
+	private static final class PapapediaGetTransactionalAction implements TransactionalActionWithResult {
+		int id; 
+		
+		public Object executeInTransaction() throws SQLException {
+			return DAOManager.getWallWrittingDAO().selectWallWrittingByPrimaryKey(id);
+		}
+	}
+	
 	private static final class PapapediaPageTransactionalAction implements TransactionalActionWithResult {
 		
 		private int pageNumber;
@@ -67,6 +75,25 @@ public class PapapediaUtils {
 		} catch (SQLException e) {
 			LOG.error(e.getMessage(), e);
 			return new SearchPage<WallWritting>(new ArrayList<WallWritting>(), false);
+		}
+	}
+	
+	public static void setFirst(SearchPage<WallWritting> page, int lnk) {
+		try {
+			boolean found = false;
+			for (WallWritting ww : page.getPage()) {
+				if (ww.getId() == lnk) {
+					found = true;
+				}
+			}
+			if (!found) {
+				PapapediaGetTransactionalAction papapediaGetTransactionalAction = new PapapediaGetTransactionalAction();
+				papapediaGetTransactionalAction.id = lnk;
+				WallWritting ww = (WallWritting)TransactionProvider.executeInTransactionWithResult(papapediaGetTransactionalAction);
+				page.getPage().set(0, ww);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
 		}
 	}
 }
