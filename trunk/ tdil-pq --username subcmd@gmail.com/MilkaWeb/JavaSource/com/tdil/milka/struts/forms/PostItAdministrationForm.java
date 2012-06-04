@@ -21,7 +21,9 @@ import com.tdil.milka.model.Color;
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.valueobjects.PostItValueObject;
 import com.tdil.milka.utils.BlobHelper;
+import com.tdil.milka.utils.LinkHelper;
 import com.tdil.milka.utils.SystemPropertiesKeys;
+import com.tdil.milka.web.Experience;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -32,7 +34,7 @@ import com.tdil.struts.forms.UploadData;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class PostItAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm, AjaxUploadHandlerForm {
+public class PostItAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm, AjaxUploadHandlerForm, LinkAnchorForm {
 
 	/**
 	 * 
@@ -43,6 +45,8 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	private String originaltext;
 	private String title;
 	private String description;
+	private String destinationType;
+	private int destinationId;
 	private String urlLink;
 	private String urlTarget;
 	private String color;
@@ -72,6 +76,11 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		this.cover = null;
 		this.thumb = null;
 	}
+	
+	public String getOriginType() {
+		return Experience.POST_ITS.name();
+	}
+	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 	}
@@ -182,6 +191,7 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	}
 	
 	public void postDisapprove() {
+		setUrlLink(null);
 		for (PostItValueObject mpvo : getSourceList()) {
 			if (mpvo.getId().equals(this.getObjectId())) {
 				mpvo.setApproved(2);
@@ -193,6 +203,13 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		PostItDAO postItDAO = DAOManager.getPostItDAO();
 		PostIt postIt = postItDAO.selectPostItByPrimaryKey(this.getObjectId());
 		postIt.setApproved(1);
+		// cambio el link
+		if (!LinkHelper.areEquals(postIt.getUrlLink(), this.getUrlLink())) {
+			LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
+			if (!StringUtils.isEmpty(this.getUrlLink())) {
+				LinkHelper.createNewLink(this.getOriginType(), postIt.getId(), destinationType, destinationId);
+			}
+		}
 		setData(postIt);
 		postIt.setPublishdate(new Date());
 		postItDAO.updatePostItByPrimaryKey(postIt);
@@ -232,8 +249,11 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		PostIt postIt = postItDAO.selectPostItByPrimaryKey(this.getObjectId());
 		postIt.setApproved(2);
 		setData(postIt);
+		postIt.setUrlLink(null);
 		postIt.setPublishdate(new Date());
 		postItDAO.updatePostItByPrimaryKey(postIt);
+		// cambio el link
+		LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
 	}
 	
 
@@ -312,6 +332,22 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 	}
 	public void setAllColors(List<String> allColors) {
 		this.allColors = allColors;
+	}
+
+	public String getDestinationType() {
+		return destinationType;
+	}
+
+	public void setDestinationType(String destinationType) {
+		this.destinationType = destinationType;
+	}
+
+	public int getDestinationId() {
+		return destinationId;
+	}
+
+	public void setDestinationId(int destinationId) {
+		this.destinationId = destinationId;
 	}
 
 }

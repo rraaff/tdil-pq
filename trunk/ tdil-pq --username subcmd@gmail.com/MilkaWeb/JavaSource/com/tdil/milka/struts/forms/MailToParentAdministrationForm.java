@@ -26,7 +26,9 @@ import com.tdil.milka.model.SystemProperty;
 import com.tdil.milka.model.SystemPropertyExample;
 import com.tdil.milka.model.valueobjects.MailToParentValueObject;
 import com.tdil.milka.utils.BlobHelper;
+import com.tdil.milka.utils.LinkHelper;
 import com.tdil.milka.utils.SystemPropertiesKeys;
+import com.tdil.milka.web.Experience;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -39,7 +41,7 @@ import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
 // TODO validaciones
-public class MailToParentAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm , AjaxUploadHandlerForm {
+public class MailToParentAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm , AjaxUploadHandlerForm, LinkAnchorForm {
 
 	private int objectId;
 	private boolean frontcover;
@@ -49,6 +51,8 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 
 	private String title;
 	private String description;
+	private String destinationType;
+	private int destinationId;
 	private String urlLink;
 	private String urlTarget;
 	
@@ -75,6 +79,11 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		this.urlLink = null;
 		this.urlTarget = null;
 	}
+	
+	public String getOriginType() {
+		return Experience.CARTAS_DE_HIJOS_A_PADRES.name();
+	}
+	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.frontcover = false;
@@ -155,6 +164,7 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 	}
 	
 	public void postDisapprove() {
+		setUrlLink(null);
 		for (MailToParentValueObject mpvo : getSourceList()) {
 			if (mpvo.getId().equals(this.getObjectId())) {
 				mpvo.setApproved(2);
@@ -166,6 +176,13 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		MailToParentDAO mailToParentDAO = DAOManager.getMailToParentDAO();
 		MailToParent mailToParent = mailToParentDAO.selectMailToParentByPrimaryKey(this.getObjectId());
 		mailToParent.setApproved(1);
+		// cambio el link
+		if (!LinkHelper.areEquals(mailToParent.getUrlLink(), this.getUrlLink())) {
+			LinkHelper.deleteActualLink(this.getOriginType(), mailToParent.getId());
+			if (!StringUtils.isEmpty(this.getUrlLink())) {
+				LinkHelper.createNewLink(this.getOriginType(), mailToParent.getId(), destinationType, destinationId);
+			}
+		}
 		setData(mailToParent);
 		mailToParent.setPublishdate(new Date());
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
@@ -195,7 +212,10 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		MailToParent mailToParent = mailToParentDAO.selectMailToParentByPrimaryKey(this.getObjectId());
 		mailToParent.setApproved(2);
 		setData(mailToParent);
+		mailToParent.setUrlLink(null);
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
+		// cambio el link
+		LinkHelper.deleteActualLink(this.getOriginType(), mailToParent.getId());
 	}
 
 	private static Logger getLog() {
@@ -266,6 +286,18 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 	}
 	public void setUrlTarget(String urlTarget) {
 		this.urlTarget = urlTarget;
+	}
+	public String getDestinationType() {
+		return destinationType;
+	}
+	public void setDestinationType(String destinationType) {
+		this.destinationType = destinationType;
+	}
+	public int getDestinationId() {
+		return destinationId;
+	}
+	public void setDestinationId(int destinationId) {
+		this.destinationId = destinationId;
 	}
 
 }

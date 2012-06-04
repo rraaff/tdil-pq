@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
@@ -16,17 +15,13 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.BlobDataDAO;
 import com.tdil.milka.dao.EmailEndingsDAO;
-import com.tdil.milka.dao.SystemPropertyDAO;
 import com.tdil.milka.daomanager.DAOManager;
-import com.tdil.milka.model.Author;
 import com.tdil.milka.model.EmailEndings;
-import com.tdil.milka.model.NotificationEmail;
-import com.tdil.milka.model.NotificationEmailExample;
-import com.tdil.milka.model.SystemProperty;
-import com.tdil.milka.model.SystemPropertyExample;
 import com.tdil.milka.model.valueobjects.EmailEndingsValueObject;
 import com.tdil.milka.utils.BlobHelper;
+import com.tdil.milka.utils.LinkHelper;
 import com.tdil.milka.utils.SystemPropertiesKeys;
+import com.tdil.milka.web.Experience;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
@@ -34,12 +29,11 @@ import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.ApproveDisapproveForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
-import com.tdil.utils.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
 // TODO validaciones
-public class EmailEndingsAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm , AjaxUploadHandlerForm {
+public class EmailEndingsAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm , AjaxUploadHandlerForm, LinkAnchorForm {
 
 	private int objectId;
 	private boolean frontcover;
@@ -49,6 +43,8 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 
 	private String title;
 	private String description;
+	private String destinationType;
+	private int destinationId;
 	private String urlLink;
 	private String urlTarget;
 	
@@ -79,6 +75,10 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		this.frontcover = false;
 		this.showinhome = false; 
+	}
+	
+	public String getOriginType() {
+		return Experience.FINALES_DE_EMAIL.name();
 	}
 
 	@Override
@@ -155,6 +155,7 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 	}
 	
 	public void postDisapprove() {
+		setUrlLink(null);
 		for (EmailEndingsValueObject mpvo : getSourceList()) {
 			if (mpvo.getId().equals(this.getObjectId())) {
 				mpvo.setApproved(2);
@@ -166,6 +167,13 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		EmailEndingsDAO emailEndingsDAO = DAOManager.getEmailEndingsDAO();
 		EmailEndings emailEndings = emailEndingsDAO.selectEmailEndingsByPrimaryKey(this.getObjectId());
 		emailEndings.setApproved(1);
+		// cambio el link
+		if (!LinkHelper.areEquals(emailEndings.getUrlLink(), this.getUrlLink())) {
+			LinkHelper.deleteActualLink(this.getOriginType(), emailEndings.getId());
+			if (!StringUtils.isEmpty(this.getUrlLink())) {
+				LinkHelper.createNewLink(this.getOriginType(), emailEndings.getId(), destinationType, destinationId);
+			}
+		}
 		setData(emailEndings);
 		emailEndings.setPublishdate(new Date());
 		emailEndingsDAO.updateEmailEndingsByPrimaryKey(emailEndings);
@@ -195,7 +203,10 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		EmailEndings emailEndings = emailEndingsDAO.selectEmailEndingsByPrimaryKey(this.getObjectId());
 		emailEndings.setApproved(2);
 		setData(emailEndings);
+		emailEndings.setUrlLink(null);
 		emailEndingsDAO.updateEmailEndingsByPrimaryKey(emailEndings);
+		// cambio el link
+		LinkHelper.deleteActualLink(this.getOriginType(), emailEndings.getId());
 	}
 
 	private static Logger getLog() {
@@ -266,6 +277,18 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 	}
 	public void setUrlTarget(String urlTarget) {
 		this.urlTarget = urlTarget;
+	}
+	public String getDestinationType() {
+		return destinationType;
+	}
+	public void setDestinationType(String destinationType) {
+		this.destinationType = destinationType;
+	}
+	public int getDestinationId() {
+		return destinationId;
+	}
+	public void setDestinationId(int destinationId) {
+		this.destinationId = destinationId;
 	}
 
 }
