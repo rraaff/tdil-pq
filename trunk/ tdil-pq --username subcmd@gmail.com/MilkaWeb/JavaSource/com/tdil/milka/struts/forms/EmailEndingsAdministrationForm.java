@@ -179,7 +179,7 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		emailEndingsDAO.updateEmailEndingsByPrimaryKey(emailEndings);
 		
 		/** Inicio del email */
-		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(emailEndings.getIdAuthor(), com.tdil.milka.web.EmailUtils.finalesdeemail, SystemPropertiesKeys.FINALES_DE_EMAILS_URL);
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(emailEndings.getIdAuthor(), com.tdil.milka.web.EmailUtils.finalesdeemail, SystemPropertiesKeys.FINALES_DE_EMAILS_URL, Experience.getLink(emailEndings));
 	}
 	
 	private void setData(EmailEndings emailEndings) throws SQLException {

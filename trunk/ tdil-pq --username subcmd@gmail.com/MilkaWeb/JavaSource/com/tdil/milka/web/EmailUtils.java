@@ -23,7 +23,7 @@ public class EmailUtils {
 	public static final String finalesdeemail = "finalesdeemail";
 	public static final String postits = "post-it";
 	
-	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype) throws SQLException {
+	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, String link) throws SQLException {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
@@ -42,9 +42,16 @@ public class EmailUtils {
 		subjectExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTENT_APPROVED_EMAIL_SUBJECT);
 		SystemProperty subject = systemPropertyDAO.selectSystemPropertyByExample(subjectExample).get(0);
 		
-		SystemPropertyExample linkExample = new SystemPropertyExample();
-		linkExample.createCriteria().andPropkeyEqualTo(experiencetype);
-		SystemProperty link = systemPropertyDAO.selectSystemPropertyByExample(linkExample).get(0);
+		String destLink = link;
+		if (link == null) {
+			SystemPropertyExample linkExample = new SystemPropertyExample();
+			linkExample.createCriteria().andPropkeyEqualTo(experiencetype);
+			SystemProperty linkSysProperty = systemPropertyDAO.selectSystemPropertyByExample(linkExample).get(0);
+			if (linkSysProperty != null) {
+				destLink = linkSysProperty.getPropvalue();
+			}
+			
+		}
 		
 		SystemPropertyExample serverExample = new SystemPropertyExample();
 		serverExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SERVER_NAME);
@@ -56,7 +63,7 @@ public class EmailUtils {
 		NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO().selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
 		String content = notificationEmail.getContent();
 		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
-		content = StringUtils.replace(content, "EXPERIENCE_LINK", link.getPropvalue());
+		content = StringUtils.replace(content, "EXPERIENCE_LINK", destLink);
 		content = StringUtils.replace(content, "SERVER_NAME", server.getPropvalue());
 		try {
 			com.tdil.utils.EmailUtils.sendEmail(content, author.getEmail(), from.getPropvalue(), subject.getPropvalue(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
