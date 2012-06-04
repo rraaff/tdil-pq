@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.web.SearchPage"%>
 <%@page import="com.tdil.milka.model.WallWritting"%>
 <%@page import="java.util.List"%>
@@ -21,6 +22,8 @@
 	if (!"true".equals(request.getParameter("dnc"))) {
 		MeltButton.incrementCounter(MeltButton.APODOS_DE_AMOR_RENDER);
 	}
+
+	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
 	String nextPage = "cartasDeHijosAPadres.jsp";

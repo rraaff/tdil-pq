@@ -184,7 +184,7 @@ public class MilkaPhotoAdministrationForm extends TransactionalValidationForm im
 		updateTags(milkaPhoto);
 		
 		/** Inicio del email */
-		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(milkaPhoto.getIdAuthor(), com.tdil.milka.web.EmailUtils.tufotomilka, SystemPropertiesKeys.FOTO_MILKA_URL, null);
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(milkaPhoto.getIdAuthor(), com.tdil.milka.web.EmailUtils.tufotomilka, SystemPropertiesKeys.FOTO_MILKA_URL, 0);
 	}
 	
 	private void setData(MilkaPhoto milkaPhoto) throws SQLException {

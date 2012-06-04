@@ -214,7 +214,7 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		postIt.setPublishdate(new Date());
 		postItDAO.updatePostItByPrimaryKey(postIt);
 		
-		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(postIt.getIdAuthor(), com.tdil.milka.web.EmailUtils.postits, SystemPropertiesKeys.POST_IT_URL, Experience.getLink(postIt));
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(postIt.getIdAuthor(), com.tdil.milka.web.EmailUtils.postits, SystemPropertiesKeys.POST_IT_URL, postIt.getId());
 	}
 	
 	private void setData(PostIt postIt) throws SQLException {
