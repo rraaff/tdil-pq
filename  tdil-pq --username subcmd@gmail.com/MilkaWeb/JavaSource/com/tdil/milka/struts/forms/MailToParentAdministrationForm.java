@@ -188,7 +188,7 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
 		
 		/** Inicio del email */
-		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(mailToParent.getIdAuthor(), com.tdil.milka.web.EmailUtils.cartasdehijosapadres, SystemPropertiesKeys.CARTAS_DE_HIJOS_A_PADRES_URL);
+		com.tdil.milka.web.EmailUtils.sendContentApprovedEmail(mailToParent.getIdAuthor(), com.tdil.milka.web.EmailUtils.cartasdehijosapadres, SystemPropertiesKeys.CARTAS_DE_HIJOS_A_PADRES_URL, Experience.getLink(mailToParent));
 	}
 	
 	private void setData(MailToParent mailToParent) throws SQLException {
