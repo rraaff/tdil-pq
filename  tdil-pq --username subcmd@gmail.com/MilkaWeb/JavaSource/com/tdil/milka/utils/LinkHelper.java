@@ -12,7 +12,6 @@ import com.tdil.milka.model.LoveNicknames;
 import com.tdil.milka.model.MailToParent;
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.WallWritting;
-import com.tdil.milka.struts.forms.MailToParentForm;
 import com.tdil.milka.web.Experience;
 
 public class LinkHelper {
