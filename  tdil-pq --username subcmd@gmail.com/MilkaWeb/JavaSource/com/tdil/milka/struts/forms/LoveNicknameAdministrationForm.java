@@ -136,6 +136,9 @@ public class LoveNicknameAdministrationForm extends TransactionalValidationForm 
 		postIt.setUrlLink(null);
 		postIt.setPublishdate(new Date());
 		postItDAO.updateLoveNicknamesByPrimaryKey(postIt);
+		// cambio el link
+		LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
+		LinkHelper.deleteOriginsFor(this.getOriginType(), postIt.getId());
 	}
 	
 

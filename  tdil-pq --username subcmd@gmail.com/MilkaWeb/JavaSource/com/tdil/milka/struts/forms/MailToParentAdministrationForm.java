@@ -216,6 +216,7 @@ public class MailToParentAdministrationForm extends TransactionalValidationForm 
 		mailToParentDAO.updateMailToParentByPrimaryKey(mailToParent);
 		// cambio el link
 		LinkHelper.deleteActualLink(this.getOriginType(), mailToParent.getId());
+		LinkHelper.deleteOriginsFor(this.getOriginType(), mailToParent.getId());
 	}
 
 	private static Logger getLog() {

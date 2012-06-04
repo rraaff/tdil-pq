@@ -254,6 +254,7 @@ public class PostItAdministrationForm extends TransactionalValidationForm implem
 		postItDAO.updatePostItByPrimaryKey(postIt);
 		// cambio el link
 		LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
+		LinkHelper.deleteOriginsFor(this.getOriginType(), postIt.getId());
 	}
 	
 

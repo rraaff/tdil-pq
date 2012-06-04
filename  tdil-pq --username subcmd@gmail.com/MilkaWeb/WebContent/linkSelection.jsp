@@ -88,6 +88,7 @@ request.setAttribute( "test",  paginated);
 			</display:column>
 		</display:table>
 	</div>
+	<a href="./backToExperience.do">Volver</a>
 </div>
 </body>
 </html>
