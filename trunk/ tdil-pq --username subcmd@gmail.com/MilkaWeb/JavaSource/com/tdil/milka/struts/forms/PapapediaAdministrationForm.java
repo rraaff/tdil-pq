@@ -134,6 +134,7 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 		postItDAO.updateWallWrittingByPrimaryKey(postIt);
 		// cambio el link
 		LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
+		LinkHelper.deleteOriginsFor(this.getOriginType(), postIt.getId());
 	}
 	
 

@@ -296,6 +296,15 @@
    <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
   </action>
   
+  <action name="LinkTargetSelectionForm" parameter="Admin"
+   path="/backToExperience" scope="session" type="com.tdil.milka.struts.action.BackToExperienceAction">
+   <forward name="FINALES_DE_EMAIL" path="/emailEndingsPending.jsp"/>
+   <forward name="CARTAS_DE_HIJOS_A_PADRES" path="/mailToParentPending.jsp"/>
+   <forward name="POST_ITS" path="/postItPending.jsp"/>
+   <forward name="PAPAPEDIA" path="/papapediaPending.jsp"/>
+   <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
+  </action>
+  
   <!--  Public actions -->
   <action name="MilkaPhotoForm" path="/uploadMilkaPhoto" scope="request" type="com.tdil.milka.struts.action.UploadMilkaPhotoAction">
   </action>

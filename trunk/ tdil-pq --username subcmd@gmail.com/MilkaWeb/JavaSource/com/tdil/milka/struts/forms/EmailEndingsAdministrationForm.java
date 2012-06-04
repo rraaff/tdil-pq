@@ -207,6 +207,7 @@ public class EmailEndingsAdministrationForm extends TransactionalValidationForm 
 		emailEndingsDAO.updateEmailEndingsByPrimaryKey(emailEndings);
 		// cambio el link
 		LinkHelper.deleteActualLink(this.getOriginType(), emailEndings.getId());
+		LinkHelper.deleteOriginsFor(this.getOriginType(), emailEndings.getId());
 	}
 
 	private static Logger getLog() {
