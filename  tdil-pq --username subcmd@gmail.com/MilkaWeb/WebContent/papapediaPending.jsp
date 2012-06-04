@@ -1,3 +1,4 @@
+<%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.model.valueobjects.StatusHelper"%>
 <%@page import="com.tdil.milka.model.valueobjects.CreationDateHelper"%>
 <%@page import="com.tdil.milka.model.WallWritting"%>
@@ -71,6 +72,15 @@ request.setAttribute( "test",  paginated);
 		<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
 			<html:form method="POST" action="/approveDisapprovePapapedia">
 				<p style="margin:20px;">Texto cargado por el usuario: <b><bean:write name="PapapediaAdministrationForm" property="originaltext"/></b></p>
+				<div class="label width80">URL:</div><bean:write name="PapapediaAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPapapedia.do">Seleccion de link</a><br><br>
+				<div class="label width80">Target: </div>
+						<html:select name="PapapediaAdministrationForm" property="urlTarget" >
+							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+								<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+									value="<%=iterTarget%>">
+									&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+							<% } %>
+						</html:select><br><br>
 				<html:submit property="operation">
 					<bean:message key="approve" />
 				</html:submit>

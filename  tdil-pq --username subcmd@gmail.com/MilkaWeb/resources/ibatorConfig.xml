@@ -96,6 +96,10 @@ targetProject="MilkaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="MILKA" tableName="LINKS" domainObjectName="Links" alias="lnk">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 <table schema="MILKA" tableName="GOOD_MORNING" domainObjectName="GoodMorning" alias="gm">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>

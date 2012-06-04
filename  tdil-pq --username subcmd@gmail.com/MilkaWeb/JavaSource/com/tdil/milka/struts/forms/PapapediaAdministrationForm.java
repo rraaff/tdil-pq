@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
@@ -13,13 +14,15 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.WallWrittingDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.WallWritting;
+import com.tdil.milka.utils.LinkHelper;
+import com.tdil.milka.web.Experience;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.ApproveDisapproveForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 
-public class PapapediaAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm {
+public class PapapediaAdministrationForm extends TransactionalValidationForm implements ApproveDisapproveForm, LinkAnchorForm {
 
 	/**
 	 * 
@@ -29,6 +32,11 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 	private int objectId;
 	private String originaltext;
 	
+	private String destinationType;
+	private int destinationId;
+	private String urlLink;
+	private String urlTarget;
+	
 	private List<WallWritting> sourceList;
 	
 	
@@ -37,6 +45,11 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 		objectId = 0;
 		originaltext = null;
 	}
+	
+	public String getOriginType() {
+		return Experience.PAPAPEDIA.name();
+	}
+	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 	}
@@ -60,6 +73,8 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 		if (postIt != null) {
 			this.objectId = id;
 			this.originaltext = postIt.getOriginaltext();
+			this.urlLink = postIt.getUrlLink();
+			this.urlTarget = postIt.getUrlTarget();
 		} 
 	}
 
@@ -84,6 +99,7 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 	}
 	
 	public void postDisapprove() {
+		setUrlLink(null);
 		for (WallWritting mpvo : getSourceList()) {
 			if (mpvo.getId().equals(this.getObjectId())) {
 				mpvo.setApproved(2);
@@ -94,8 +110,17 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 	public void approve() throws SQLException, ValidationException {
 		WallWrittingDAO postItDAO = DAOManager.getWallWrittingDAO();
 		WallWritting postIt = postItDAO.selectWallWrittingByPrimaryKey(this.getObjectId());
+		// cambio el link
+		if (!LinkHelper.areEquals(postIt.getUrlLink(), this.getUrlLink())) {
+			LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
+			if (!StringUtils.isEmpty(this.getUrlLink())) {
+				LinkHelper.createNewLink(this.getOriginType(), postIt.getId(), destinationType, destinationId);
+			}
+		}
 		postIt.setApproved(1);
 		postIt.setPublishdate(new Date());
+		postIt.setUrlLink(this.getUrlLink());
+		postIt.setUrlTarget(this.getUrlTarget());
 		postItDAO.updateWallWrittingByPrimaryKey(postIt);
 	}
 	
@@ -104,7 +129,11 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 		WallWritting postIt = postItDAO.selectWallWrittingByPrimaryKey(this.getObjectId());
 		postIt.setApproved(2);
 		postIt.setPublishdate(new Date());
+		postIt.setUrlLink(null);
+		postIt.setUrlTarget(this.getUrlTarget());
 		postItDAO.updateWallWrittingByPrimaryKey(postIt);
+		// cambio el link
+		LinkHelper.deleteActualLink(this.getOriginType(), postIt.getId());
 	}
 	
 
@@ -128,6 +157,30 @@ public class PapapediaAdministrationForm extends TransactionalValidationForm imp
 	}
 	public void setOriginaltext(String originaltext) {
 		this.originaltext = originaltext;
+	}
+	public String getDestinationType() {
+		return destinationType;
+	}
+	public void setDestinationType(String destinationType) {
+		this.destinationType = destinationType;
+	}
+	public int getDestinationId() {
+		return destinationId;
+	}
+	public void setDestinationId(int destinationId) {
+		this.destinationId = destinationId;
+	}
+	public String getUrlLink() {
+		return urlLink;
+	}
+	public void setUrlLink(String urlLink) {
+		this.urlLink = urlLink;
+	}
+	public String getUrlTarget() {
+		return urlTarget;
+	}
+	public void setUrlTarget(String urlTarget) {
+		this.urlTarget = urlTarget;
 	}
 
 }

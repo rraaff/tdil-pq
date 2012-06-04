@@ -516,4 +516,72 @@
    PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page19" PATH="/linkSelection.jsp"
+  SHAPE="240,3442,0,0" SUBTYPE="jsp" TITLE="linkSelection.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/searchExperiences.do"
+   SUBTYPE="confirmed" TARGET="action64" TITLE="/searchExperiences.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchExperiences" NAME="action64"
+  PATH="/searchExperiences" SHAPE="448,3442,0,0"
+  TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectExperience" NAME="action65"
+  PATH="/selectExperience" SHAPE="32,3905,0,0"
+  TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="FINALES_DE_EMAIL" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10"
+   TITLE="FINALES_DE_EMAIL" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="CARTAS_DE_HIJOS_A_PADRES" NAME="forward1"
+   PATH="/mailToParentPending.jsp" TARGET="page11"
+   TITLE="CARTAS_DE_HIJOS_A_PADRES" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="POST_ITS" NAME="forward2"
+   PATH="/postItPending.jsp" TARGET="page7" TITLE="POST_ITS"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="PAPAPEDIA" NAME="forward3"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="PAPAPEDIA"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="APODOS_DE_AMOR" NAME="forward4"
+   PATH="/loveNicknamePending.jsp" TARGET="page18"
+   TITLE="APODOS_DE_AMOR" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromEmail" NAME="action62"
+  PATH="/goToLinkTargetSelectionFromEmail" SHAPE="32,3793,0,0"
+  TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromLoveNickname"
+  NAME="action66" PATH="/goToLinkTargetSelectionFromLoveNickname"
+  SHAPE="32,3793,0,0" TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromPapapedia"
+  NAME="action68" PATH="/goToLinkTargetSelectionFromPapapedia"
+  SHAPE="32,3793,0,0" TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromPostIt" NAME="action69"
+  PATH="/goToLinkTargetSelectionFromPostIt" SHAPE="32,3793,0,0"
+  TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromMailToParent"
+  NAME="action67" PATH="/goToLinkTargetSelectionFromMailToParent"
+  SHAPE="32,3793,0,0" TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

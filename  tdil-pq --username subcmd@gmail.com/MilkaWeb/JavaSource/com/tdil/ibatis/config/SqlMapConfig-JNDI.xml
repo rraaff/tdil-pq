@@ -24,6 +24,7 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/NOTIFICATION_EMAIL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/RAW_INSERT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/CLICK_COUNTER_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/EXPERIENCE_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/milka/dao/maps/TAG_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/AUTHOR_SqlMap.xml"/>
@@ -37,5 +38,7 @@
 	<sqlMap resource="com/tdil/milka/dao/maps/MAIL_TO_PARENT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/VIDEO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/LOVE_NICKNAMES_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/LINKS_SqlMap.xml"/>
+	
 	<sqlMap resource="com/tdil/milka/dao/maps/GOOD_MORNING_SqlMap.xml"/>
 </sqlMapConfig>

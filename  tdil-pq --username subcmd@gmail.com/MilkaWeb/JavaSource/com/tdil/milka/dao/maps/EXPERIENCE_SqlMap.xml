@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="EXPERIENCE">
+  <resultMap class="com.tdil.milka.model.valueobjects.ExperienceValueObject" id="BaseResultMap">
+    <result column="exp_id" jdbcType="INTEGER" property="id" />
+    <result column="exp_type" jdbcType="VARCHAR" property="type" />
+    <result column="exp_description" jdbcType="VARCHAR" property="description" />
+    <result column="exp_idblob" jdbcType="INTEGER" property="idblob" />
+    <result column="exp_extblob" jdbcType="VARCHAR" property="extblob" />
+    <result column="exp_linkCount" jdbcType="INTEGER" property="linkCount" />
+  </resultMap>
+   <sql id="Base_Column_List">
+    exp.id as exp_id, exp.type as exp_type, exp.description as exp_description, 
+    exp.idblob as exp_idblob, exp.extblob as exp_extblob, 1 as exp_haslinks
+  </sql>
+  
+</sqlMap>
