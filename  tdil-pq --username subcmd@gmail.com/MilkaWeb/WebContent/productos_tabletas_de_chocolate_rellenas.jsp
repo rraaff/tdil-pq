@@ -72,7 +72,7 @@ window.addEvent('domready', function(){
 	<div id="wrapper2-internas">
 		<div id="titulo">
 			<h2>Nuestros <span class="violeta">Chocolates</span></h2>
-			<h3>Tabletas de chocolate s&oacute;lidas</h3>
+			<h3>Tabletas de Chocolate Rellenas</h3>
 		</div>
 		<!-- end titulo-->
 		<div id="menu-productos">
