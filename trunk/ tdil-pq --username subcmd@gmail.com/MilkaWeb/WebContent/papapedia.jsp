@@ -173,6 +173,12 @@ input[type="button"], input[type="submit"] {
 	border-bottom-style: dotted;
 	border-bottom-color: #999999;
 }
+.texto a {
+	color:#FF0000;
+}
+.resaltado {
+	font-weight:bold;
+}
 #paginado {
 	width: 606px;
 	height:25px;
@@ -248,7 +254,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 		<div id="counter"><%=totalItems%> Comentarios</div>
 		<% for (WallWritting ww : papapediaPage.getPage()) { %>
 			<% if (ww.getId() == linkId) { %>
-				<div class="texto" style="border: 1px Solid Red;">XXXX
+				<div class="texto resaltado">
 			<% } else { %>
 				<div class="texto">
 			<% } %>
