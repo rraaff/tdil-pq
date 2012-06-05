@@ -244,14 +244,12 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 				<html:form method="POST" action="/addPapapedia">
 					<input type="hidden" name="dnc" value="true"/>
 					<html:text name="PapapediaForm" property="text" styleClass="width180"/>
-					<html:submit property="operation">
-						Salvar
-					</html:submit>
+					<html:submit property="operation">Enviar</html:submit>
 				</html:form>	
 			</div>
 		</div>
 		<div class="line"></div>
-		<div id="counter"><%=totalItems%> Comentarios</div>
+		<div id="counter"><%=totalItems%> Definiciones</div>
 		<% for (WallWritting ww : papapediaPage.getPage()) { %>
 			<% if (ww.getId() == linkId) { %>
 				<div class="texto resaltado">
