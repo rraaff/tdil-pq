@@ -116,7 +116,7 @@ request.setAttribute( "test",  paginated);
 						&nbsp;&nbsp;&nbsp;<%=iterColor%></option>
 				</logic:iterate>
 			</html:select><br><br>
-			<div class="label width80">URL:</div><bean:write name="PostItAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPostIt.do">Seleccion de link</a><br><br>
+			<div class="label width80">URL:</div><bean:write name="PostItAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPostIt.do">Seleccion de link</a> - <a href="./clearLinkTargetPostIt.do">Borrar link</a><br><br>
 			Target:<html:select name="PostItAdministrationForm" property="urlTarget" >
 				<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
 					<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>

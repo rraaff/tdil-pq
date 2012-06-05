@@ -42,16 +42,17 @@ public class LoveNicknamesServlet extends HttpServlet {
 		out.append("<items>");
 		for (LoveNicknames loveNicknames : data) {
 			out.append("<item>");
+			out.append("<id>").append(String.valueOf(loveNicknames.getId())).append("</id>");
 			out.append("<text>").append(CDATA_START_TAG);
 			out.append(loveNicknames.getOriginaltext());
 			out.append(CDATA_END_TAG).append("</text>");
 			out.append("<position>").append(loveNicknames.getPosition()).append("</position>");
 			out.append("<sex>").append(loveNicknames.getSex()).append("</sex>");
 			out.append("<link>").append(CDATA_START_TAG);
-			out.append("");
+			out.append(loveNicknames.getUrlLink() != null ? loveNicknames.getUrlLink() : "");
 			out.append(CDATA_END_TAG).append("</link>");
 			out.append("<target>").append(CDATA_START_TAG);
-			out.append("_self");
+			out.append(loveNicknames.getUrlTarget());
 			out.append(CDATA_END_TAG).append("</target>");
 			out.append("<clickCounter>");
 			out.append(String.valueOf(loveNicknames.getIdClickCounter()));

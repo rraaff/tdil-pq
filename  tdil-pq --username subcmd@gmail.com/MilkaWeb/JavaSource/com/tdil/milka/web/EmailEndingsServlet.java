@@ -46,6 +46,7 @@ public class EmailEndingsServlet extends HttpServlet {
 		out.append("<items>");
 		for (EmailEndingsValueObject emailEndingsValueObject : answer) {
 			out.append("<item>");
+			out.append("<id>").append(String.valueOf(emailEndingsValueObject.getId())).append("</id>");
 			out.append("<text>").append(CDATA_START_TAG);
 			out.append(emailEndingsValueObject.getName()).append(" - ");
 			out.append(emailEndingsValueObject.getTitle()).append(" - ");
@@ -57,7 +58,7 @@ public class EmailEndingsServlet extends HttpServlet {
 			out.append("&type=PUBLIC&ext=").append(emailEndingsValueObject.getExtApprovedData());
 			out.append(CDATA_END_TAG).append("</view>");
 			out.append("<link>").append(CDATA_START_TAG);
-			out.append(emailEndingsValueObject.getUrlLink());
+			out.append(emailEndingsValueObject.getUrlLink() != null ? emailEndingsValueObject.getUrlLink() : "");
 			out.append(CDATA_END_TAG).append("</link>");
 			out.append("<target>").append(CDATA_START_TAG);
 			out.append(emailEndingsValueObject.getUrlTarget());

@@ -603,4 +603,39 @@
    PATH="/emailEndingsPending.jsp" TARGET="page10"
    TITLE="FINALES_DE_EMAIL" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#clearLinkTargetPostIt" NAME="action71"
+  PATH="/clearLinkTargetPostIt" SHAPE="240,4289,0,0"
+  TITLE="PostItAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/postItPending.jsp" TARGET="page7" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#clearLinkTargetPapapedia" NAME="action72"
+  PATH="/clearLinkTargetPapapedia" SHAPE="32,4513,0,0"
+  TITLE="PapapediaAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/papapediaPending.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#clearLinkTargetLoveNickname" NAME="action73"
+  PATH="/clearLinkTargetLoveNickname" SHAPE="32,3089,0,0"
+  TITLE="LoveNicknameAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveNicknamePending.jsp" TARGET="page18" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#clearLinkTargetEmailEndings" NAME="action74"
+  PATH="/clearLinkTargetEmailEndings" SHAPE="32,5329,0,0"
+  TITLE="EmailEndingsAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/emailEndingsPending.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#clearLinkTargetMailToParent" NAME="action75"
+  PATH="/clearLinkTargetMailToParent" SHAPE="32,6273,0,0"
+  TITLE="MailToParentAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

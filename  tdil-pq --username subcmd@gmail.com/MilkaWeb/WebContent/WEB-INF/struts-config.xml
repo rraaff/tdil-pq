@@ -139,6 +139,11 @@
    scope="session" type="com.tdil.milka.struts.action.ViewPostItImageAction">
   </action>
   
+  <action name="PostItAdministrationForm" parameter="Admin" path="/clearLinkTargetPostIt"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/postItPending.jsp"/>
+  </action>
+  
   <action name="PapapediaAdministrationForm" parameter="Admin" path="/goToPapapediaApprove"
    scope="session" type="com.tdil.struts.actions.GoToApproveAction">
    <forward name="continue" path="/papapediaPending.jsp"/>
@@ -155,6 +160,11 @@
    scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
    <forward name="continue" path="/papapediaPending.jsp"/>
    <forward name="failure" path="/papapediaPending.jsp"/>
+  </action>
+  
+  <action name="PapapediaAdministrationForm" parameter="Admin" path="/clearLinkTargetPapapedia"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/papapediaPending.jsp"/>
   </action>
   
   <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/goToLoveNicknameApprove"
@@ -174,8 +184,10 @@
    <forward name="continue" path="/loveNicknamePending.jsp"/>
    <forward name="failure" path="/loveNicknamePending.jsp"/>
   </action>
-  
-  
+  <action name="LoveNicknameAdministrationForm" parameter="Admin" path="/clearLinkTargetLoveNickname"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/loveNicknamePending.jsp"/>
+  </action>
   
   <action name="EmailEndingsAdministrationForm" parameter="Admin"
    path="/goToEmailEndingsApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
@@ -198,6 +210,10 @@
   <action name="EmailEndingsAdministrationForm" parameter="Admin" path="/viewEmailEndingReplacement"
    scope="session" type="com.tdil.milka.struts.action.ViewEmailEndingReplacementAction">
   </action>
+  <action name="EmailEndingsAdministrationForm" parameter="Admin" path="/clearLinkTargetEmailEndings"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/emailEndingsPending.jsp"/>
+  </action>
   
   <action name="MailToParentAdministrationForm" parameter="Admin"
    path="/goToMailToParentApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
@@ -219,6 +235,10 @@
   <action parameter="Admin" path="/uploadMailToParentReplacement" type="com.tdil.milka.struts.action.UploadMailToParentReplacementAction"/>
   <action name="MailToParentAdministrationForm" parameter="Admin" path="/viewMailToParentReplacement"
    scope="session" type="com.tdil.milka.struts.action.ViewMailToParentReplacementAction">
+  </action>
+  <action name="MailToParentAdministrationForm" parameter="Admin" path="/clearLinkTargetMailToParent"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/mailToParentPending.jsp"/>
   </action>
   
   <action name="VideoForm" parameter="Admin" path="/saveVideo"

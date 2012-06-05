@@ -42,6 +42,7 @@ public class PostItServlet extends HttpServlet {
 		out.append("<data>");
 		for (PostItValueObject postItValueObject : data) {
 			out.append("<item color=\"").append(postItValueObject.getColor()).append("\">");
+			out.append("<id>").append(String.valueOf(postItValueObject.getId())).append("</id>");
 			out.append("<title>").append(CDATA_START_TAG);
 			out.append(postItValueObject.getTitle() != null ? postItValueObject.getTitle() : "" );
 			out.append(CDATA_END_TAG).append("</title>");

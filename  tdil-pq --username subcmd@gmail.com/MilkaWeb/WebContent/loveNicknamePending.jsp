@@ -74,7 +74,7 @@ request.setAttribute( "test",  paginated);
 				<p style="margin:20px;">Texto cargado por el usuario: <b><bean:write name="LoveNicknameAdministrationForm" property="originaltext"/></b></p>
 				<p style="margin:20px;">Sexo cargado por el usuario: <b><bean:write name="LoveNicknameAdministrationForm" property="sex"/></b></p>
 				<p style="margin:20px;">Posicion: <b><bean:write name="LoveNicknameAdministrationForm" property="position"/></b></p>
-				<div class="label width80">URL:</div><bean:write name="LoveNicknameAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromLoveNickname.do">Seleccion de link</a><br><br>
+				<div class="label width80">URL:</div><bean:write name="LoveNicknameAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromLoveNickname.do">Seleccion de link</a> - <a href="./clearLinkTargetLoveNickname.do">Borrar link</a><br><br>
 				<div class="label width80">Target: </div>
 						<html:select name="LoveNicknameAdministrationForm" property="urlTarget" >
 							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
