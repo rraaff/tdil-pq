@@ -62,13 +62,13 @@ body {
 	overflow:auto;
 }
 #content #tableRow {
-	width:400px;
+	width:380px;
 	height:28px;
 }
 #content #tableRow div {
 	font-size:15px;
 	border:solid 1px #665395;
-	width:290px;
+	width:270px;
 	height:20px;
 	margin:2px;
 	overflow:hidden;
