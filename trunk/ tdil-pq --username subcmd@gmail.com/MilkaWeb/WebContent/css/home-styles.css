@@ -765,10 +765,8 @@ div.rightArrow a{
 	padding:20px 60px;
 	margin:5px 0 0 48px;
 	color:#6a5a94;
-	background: #fff url(../images/linea-titulos.png) no-repeat 0 bottom;
-	
+	background: #fff url(../images/linea-titulos.png) no-repeat 0 bottom;	
 }
-
 #contenidos{
 	font-size:13px;
 	line-height:26px;
@@ -780,28 +778,24 @@ div.rightArrow a{
 	color:#6c6c6c;
 	background:#FFF;
 	min-height:425px;
-	
 }
-
 #contenidos h2{
 	font-size:14px;
 	line-height:16px;
 	width:527px;
 	margin:20px 0 10px 0;
 	color:#5f4e86;
-	
 }
-
-#col_derecha{
+#col_derecha {
 	width:260px;
 	float:right;
-	background: url(../images/base-columna-derecha.png) no-repeat 0 bottom;
-	/*height:657px;*/
-	height:637px;
+/*	background: url(../images/base-columna-derecha.png) no-repeat 0 bottom;*/
+	background: url(../images/base-columna-derecha.png) no-repeat top center;
+	min-height:657px;
+	height:657px;
+	margin-top:10px;
 	overflow:hidden;
-	padding-bottom:10px;
 }
-
 #col_derecha h2{
 	width:170px;
 	padding-right:30px;
@@ -810,7 +804,19 @@ div.rightArrow a{
 	float:left;
 	background: url(../images/ico-play-historia.png) no-repeat left 0;
 }
-
+/* Target FireFox 3 [!] */
+html>/**/body #col_derecha h2, x:-moz-any-link, x:default {
+	font-size:16px;
+	line-height:40px;
+	margin-bottom:0px;
+}
+html>/**/body #col_derecha h3, x:-moz-any-link, x:default {
+	top:-3px;
+	position:relative;
+}
+html>/**/body #col_derecha ul li a.playlist, x:-moz-any-link, x:default {
+	margin-top:0px;
+}
 #col_derecha ul{
 	width:150px;
 	height:196px;
@@ -983,6 +989,19 @@ input[type="button"], input[type="submit"] {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#5b488d, endColorstr=#806bb3);
 	/* For Internet Explorer 8 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#5b488d, endColorstr=#806bb3)";
+}
+input[type="button"]:hover, input[type="submit"]:hover {
+	/* gradient */
+	background-image: linear-gradient(bottom, rgb(91,72,141) 0%, rgb(128,107,179) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(91,72,141) 0%, rgb(128,107,179) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(91,72,141) 0%, rgb(128,107,179) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(91,72,141) 0%, rgb(128,107,179) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(91,72,141) 0%, rgb(128,107,179) 100%);
+
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#806bb3, endColorstr=#5b488d);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#806bb3, endColorstr=#5b488d)";
 }
 .width20 { width:20px; }
 .width50 { width:50px; }

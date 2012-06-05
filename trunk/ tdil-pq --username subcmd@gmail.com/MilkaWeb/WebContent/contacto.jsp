@@ -114,8 +114,8 @@ function postContact(data) {
 		<div id="col_derecha_contacto">
 			<h2>Seguinos en...</h2>
 			<ul>        
-				<li class=""><a href="#" title="Twitter" class="activo"><img src="images/twitter-bloque.png" width="209" height="152" alt="Twitter" /></a></li>
-				<li class=""><a href="#" title="Facebook" class="activo"><img src="images/facebook-bloque.png" width="209" height="152" alt="Facebook" /></a></li>           
+				<li class=""><a href="https://twitter.com/#!/chocolatesmilka" title="Twitter" target="_blank" class="activo"><img src="images/twitter-bloque.png" width="209" height="152" alt="Twitter" /></a></li>
+				<li class=""><a href="http://www.facebook.com/milka.com.ar" title="Facebook" target="_blank" class="activo"><img src="images/facebook-bloque.png" width="209" height="152" alt="Facebook" /></a></li>           
 			</ul>
 		</div>
 		<!-- end col_derecha-->

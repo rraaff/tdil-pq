@@ -21,7 +21,8 @@
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <style>
 .spacerHeigh {
-	height:70px;
+	width:100%;
+	height:20px;
 	float:left;
 }
 </style>
@@ -42,9 +43,11 @@
 	<!-- end menu-wrapper-->
 	<div id="wrapper2-internas">
 		<div id="col_derecha">
-			<h2><span class="violeta">Milka </span>en el tiempo</h2>
-			<span class="spacerHeigh"></span>
-			<%@ include file="includes/videoHorizontal.jsp" %>
+			<h2><span class="violeta">Frecuencia</span> ternura</h2>
+			<!-- span class="spacerHeigh"></span-->
+			<div style="width:260px; height:580px; overflow:hidden;">
+				<%@ include file="includes/videoHorizontal.jsp" %>
+			</div>
 		</div>
 		<!-- end col_derecha-->
 		<div id="titulo-historia">
