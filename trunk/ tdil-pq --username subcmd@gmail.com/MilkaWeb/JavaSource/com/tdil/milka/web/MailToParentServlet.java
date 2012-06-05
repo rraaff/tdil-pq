@@ -46,6 +46,7 @@ public class MailToParentServlet extends HttpServlet {
 		out.append("<items>");
 		for (MailToParentValueObject mailToParent : answer) {
 			out.append("<item>");
+			out.append("<id>").append(String.valueOf(mailToParent.getId())).append("</id>");
 			out.append("<text>").append(CDATA_START_TAG);
 			out.append(mailToParent.getName()).append(" - ");
 			out.append(mailToParent.getTitle()).append(" - ");
@@ -57,7 +58,7 @@ public class MailToParentServlet extends HttpServlet {
 			out.append("&type=PUBLIC&ext=").append(mailToParent.getExtApprovedData());
 			out.append(CDATA_END_TAG).append("</view>");
 			out.append("<link>").append(CDATA_START_TAG);
-			out.append(mailToParent.getUrlLink());
+			out.append(mailToParent.getUrlLink() != null ? mailToParent.getUrlLink() : "");
 			out.append(CDATA_END_TAG).append("</link>");
 			out.append("<target>").append(CDATA_START_TAG);
 			out.append(mailToParent.getUrlTarget());

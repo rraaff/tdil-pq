@@ -108,7 +108,7 @@ request.setAttribute( "test",  paginated);
 					<input type="file" name="upload_email" id="upload_email">Reemplazar<br><br>
 					<div class="label width80">Titulo: </div><html:text name="EmailEndingsAdministrationForm" property="title" style="width: 300px;"/><br><br>
 					<div class="label width80">Descripcion: </div><html:text name="EmailEndingsAdministrationForm" property="description" style="width: 300px;"/><br><br>
-					<div class="label width80">URL:</div><bean:write name="EmailEndingsAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromEmail.do">Seleccion de link</a><br><br>
+					<div class="label width80">URL:</div><bean:write name="EmailEndingsAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromEmail.do">Seleccion de link</a> - <a href="./clearLinkTargetEmailEndings.do">Borrar link</a><br><br>
 					<div class="label width80">Target: </div>
 						<html:select name="EmailEndingsAdministrationForm" property="urlTarget" >
 							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>

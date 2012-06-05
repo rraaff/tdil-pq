@@ -72,7 +72,7 @@ request.setAttribute( "test",  paginated);
 		<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
 			<html:form method="POST" action="/approveDisapprovePapapedia">
 				<p style="margin:20px;">Texto cargado por el usuario: <b><bean:write name="PapapediaAdministrationForm" property="originaltext"/></b></p>
-				<div class="label width80">URL:</div><bean:write name="PapapediaAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPapapedia.do">Seleccion de link</a><br><br>
+				<div class="label width80">URL:</div><bean:write name="PapapediaAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPapapedia.do">Seleccion de link</a> - <a href="./clearLinkTargetPapapedia.do">Borrar link</a><br><br>
 				<div class="label width80">Target: </div>
 						<html:select name="PapapediaAdministrationForm" property="urlTarget" >
 							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
