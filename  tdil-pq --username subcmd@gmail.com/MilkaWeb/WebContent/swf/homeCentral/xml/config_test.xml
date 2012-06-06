@@ -15,12 +15,12 @@
 		<height>0</height>
 		<buttonSize>200</buttonSize>
 		<buttonHeights>60</buttonHeights>
-		<nextButton>swf/homeCentral/images/next.png</nextButton>
-		<previousButton>swf/homeCentral/images/previous.png</previousButton>
-		<playButton>swf/homeCentral/images/play.png</playButton>
-		<pauseButton>swf/homeCentral/images/pause.png</pauseButton>
-		<meAnimoOver>swf/homeCentral/images/meAnimo_Over.png</meAnimoOver>
-		<nomeAnimoOver>swf/homeCentral/images/noAnimo_over.png</nomeAnimoOver>
+		<nextButton>images/next.png</nextButton>
+		<previousButton>images/previous.png</previousButton>
+		<playButton>images/play.png</playButton>
+		<pauseButton>images/pause.png</pauseButton>
+		<meAnimoOver>images/meAnimo_Over.png</meAnimoOver>
+		<nomeAnimoOver>images/noAnimo_over.png</nomeAnimoOver>
 	</info>
 	<view>
 		<loaderSize>20</loaderSize>
@@ -35,36 +35,29 @@
 		<item>
 			<text></text>
 			<thumb></thumb>
-			<view>swf/homeCentral/images/view/teaserPostits.jpg</view>
-			<link>postits.jsp</link>
-			<target>_self</target>
-		</item>
-		<item>
-			<text></text>
-			<thumb></thumb>
-			<view>swf/homeCentral/images/view/teaserCartasDeHaP.jpg</view>
+			<view>images/view/teaserCartasDeHaP.jpg</view>
 			<link>cartasDeHijosAPadres.jsp</link>
 			<target>_self</target>
 		</item>
 		<item>
 			<text></text>
 			<thumb></thumb>
-			<view>swf/homeCentral/images/view/teaserPapapedia.jpg</view>
+			<view>images/view/teaserPapapedia.jpg</view>
 			<link>papapedia.jsp</link>
 			<target>_self</target>
 		</item>
 		<item>
 			<text></text>
 			<thumb></thumb>
-			<view>swf/homeCentral/images/view/teaserFinalesDeEmails.jpg</view>
+			<view>images/view/teaserFinalesDeEmails.jpg</view>
 			<link>finalesDeEmail.jsp</link>
 			<target>_self</target>
 		</item>
 		<item>
 			<text></text>
 			<thumb></thumb>
-			<view>swf/homeCentral/images/view/apodos.jpg</view>
-			<link>apodosDeAmor.jsp</link>
+			<view>images/view/teaserPostits.jpg</view>
+			<link>postits.jsp</link>
 			<target>_self</target>
 		</item>
 	</items>
