@@ -26,7 +26,7 @@
 %>
 <%
 	String nextPage = "apodosDeAmor.jsp";
-	String prevPage = "finalesDeEMail.jsp";
+	String prevPage = "finalesDeEmail.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
