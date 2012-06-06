@@ -106,7 +106,7 @@ body {
 				'allowFullScreen', 'false',
 				'allowScriptAccess','sameDomain',
 				'movie', 'swf/ExpApodos/apodos',
-				'flashvars','xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/',
+				'flashvars','xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=200',
 				'salign', ''
 				); //end AC code
 		}
@@ -118,9 +118,9 @@ body {
 		<param name="movie" value="swf/ExpApodos/apodos.swf" />
 		<param name="quality" value="best" />
 		<param name="wmode" value="transparent" />
-		<PARAM NAME="flashvars" VALUE="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/">
+		<PARAM NAME="flashvars" VALUE="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=200">
 	<embed src="swf/ExpApodos/apodos.swf" 
-	flashvars="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/"
+	flashvars="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=200"
 	quality="best" bgcolor="#ffffff" width="100%" height="100%" name="apodos" align="middle" wmode="transparent" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 		</object>
 	</noscript>
