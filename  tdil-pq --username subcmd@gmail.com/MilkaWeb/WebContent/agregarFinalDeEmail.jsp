@@ -106,6 +106,8 @@ body {
 	background-image: url(images/experiencias/finalesEmails/bg_carga.gif);
 	background-repeat: no-repeat;
 	background-position: center top;
+	height:100%;
+	overflow:hidden;
 }
 #formularioEmails {
 	width: 390px;

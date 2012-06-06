@@ -25,8 +25,8 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "finalesDeEmail.jsp";
+	String nextPage = "apodosDeAmor.jsp";
+	String prevPage = "finalesDeEMail.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
@@ -63,166 +63,69 @@ $(document).ready(
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
 </script>
+<script type='text/javascript' src='swf/ExpPostits/scripts/AC_RunActiveContent.js'></script>
 <style>
 <!-- 
 body {
 	font-family: Georgia, "Times New Roman", Times, serif;
-	background-image: url(images/experiencias/postits/proximamente.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-}/*
-#header {
-	background-image: url(images/experiencias/papapedia/header.gif);
-	background-repeat: no-repeat;
-	background-position: center top;
-	width:950px;
-	height:248px;
-	margin:0 auto;
-}
-#content h1 {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 22px;
-	font-style: italic;
+	background-image: url(images/experiencias/postits/tramaDeCorcho.jpg);
+	background-repeat: repeat;
 	color: #FFFFFF;
-	padding-top:16px;
-	margin-left:16px;
+	overflow:hidden;
 }
-#insertContentBlock {
-	background-color: #f2583c;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	width:606px;
-	height:98px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top:3px;
-	margin-bottom:8px;
-}
-#insertContentBlock #complete {
-	margin-left:16px;
-	margin-right:16px;
-	margin-top:3px;
-	width:100%;
-	height:33px;
-}
-#insertContentBlock #complete input[type="text"], #insertContentBlock #complete input[type="password"], #insertContentBlock #complete select {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size:14px;
-	font-style: italic;
-	color:#5a5a5a;
-	float:left;
-	margin:0;
-	padding:2px;
-	line-height: normal;
-	width:480px;
-	height:23px;
-	border: solid 1px #999999;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-}
-input[type="button"], input[type="submit"] {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size:15px;
-	color: #FFFFFF;
-	border-top-style: none;
-	border-right-style: none;
-	border-bottom-style: none;
-	border-left-style: none;
-	padding-top: 5px;
-	padding-right: 11px;
-	padding-bottom: 5px;
-	padding-left: 11px;
-	margin: 5px;
-	margin-top:0px;
-	float:left;
-	cursor:hand;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
-	background-color: #1c1c1c;
-}
-#counter {
-	color:#f2583c;
-	size:12px;
-	height: 20px;
-	width: 606px;
-	margin-top: 8px;
-	margin-right: auto;
-	margin-bottom: 8px;
-	margin-left: auto;
-}
-.line {
-	height: 2px;
-	width: 606px;
-	margin-top: 8px;
-	margin-right: auto;
-	margin-bottom: 8px;
-	margin-left: auto;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #999999;
-}
-.texto {
-	color:#5a5a5a;
-	font-size:12px;
-	width: 606px;
-	padding-top: 14px;
-	margin-right: auto;
-	padding-bottom: 14px;
-	margin-left: auto;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #999999;
-}
-#paginado {
-	width: 606px;
-	height:25px;
-	margin-top: 14px;
-	margin-right: auto;
-	margin-bottom: 68px;
-	margin-left: auto;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #f2583c;
-}
-#paginado #previuos {
-	width:250px;
-	height:20px;
-	padding-left:10px;
-	float:left;
-	background-image: url(images/experiencias/papapedia/prev.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#paginado #previuos a {
-	color:#f2583c;
-}
-#paginado #next {
-	width:250px;
-	height:20px;
-	padding-right:10px;
-	text-align:right;
-	float:right;
-	background-image: url(images/experiencias/papapedia/next.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#paginado #next a {
-	color:#f2583c;
-}*/
 -->
 </style>
 </head>
 
 <body>
 <% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
-<%@ include file="includes/barraExperiencias.jsp" %>
-<a href="#">Cargar imagen para la Experiencia POST-ITs</a>
-<a href="./postIts.xml">Servlet</a>
-<a href="./agregarPostIt.jsp">Agregar post-it</a>
+<div id="floater">
+	<%@ include file="includes/barraExperiencias.jsp" %>
+</div>
+<div id="flashin">
+	<script language="javascript">
+		if (AC_FL_RunContent == 0) {
+			alert("Esta página requiere el archivo AC_RunActiveContent.js.");
+		} else {
+			AC_FL_RunContent(
+				'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+				'width', '100%',
+				'height', '100%',
+				'src', 'swf/ExpPostits/milka',
+				'quality', 'best',
+				'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+				'align', 'middle',
+				'play', 'true',
+				'loop', 'true',
+				'scale', 'showall',
+				'wmode', 'transparent',
+				'devicefont', 'false',
+				'id', 'milka',
+				'bgcolor', '#000000',
+				'name', 'milka',
+				'menu', 'true',
+				'allowFullScreen', 'false',
+				'allowScriptAccess','sameDomain',
+				'movie', 'swf/ExpPostits/milka',
+	'flashvars','xmlfile=./postIts.xml&separacionpostit=71&scrollspeedx=7&scrollspeedy=5&opacidadshader=70&minpostits=500&imgbotonup=swf/ExpPostits/taller/enviarOut.png&imgbotonover=swf/ExpPostits/taller/enviarOver.png&imgbotondiffh=130&imgbotondiffv=40',
+				'salign', ''
+				); //end AC code
+		}
+	</script>
+	<noscript>
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="100%" height="100%" id="milka" align="middle">
+		<param name="allowScriptAccess" value="sameDomain" />
+		<param name="allowFullScreen" value="false" />
+		<param name="movie" value="swf/ExpPostits/milka.swf" />
+		<param name="quality" value="best" />
+		<param name="wmode" value="transparent" />
+		<PARAM NAME="flashvars" VALUE="xmlfile=./postIts.xml&separacionpostit=72&scrollspeedx=7&scrollspeedy=5&opacidadshader=70&minpostits=500&imgbotonup=swf/ExpPostits/taller/enviarOut.png&imgbotonover=swf/ExpPostits/taller/enviarOver.png&imgbotondiffh=130&imgbotondiffv=40">
+	<embed src="swf/ExpPostits/milka.swf" 
+	flashvars="xmlfile=./postIts.xml&separacionpostit=72&scrollspeedx=7&scrollspeedy=5&opacidadshader=70&minpostits=500&imgbotonup=swf/ExpPostits/taller/enviarOut.png&imgbotonover=swf/ExpPostits/taller/enviarOver.png&imgbotondiffh=130&imgbotondiffv=40"
+	quality="best" bgcolor="#000000" width="100%" height="100%" name="milka" align="middle" wmode="transparent" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+	</noscript>
+</div>
 <%@ include file="includes/fbShare.jsp" %>
 </body>
 </html>
