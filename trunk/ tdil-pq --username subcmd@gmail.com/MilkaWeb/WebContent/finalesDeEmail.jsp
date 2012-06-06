@@ -58,41 +58,53 @@ $(document).ready(
 </script>
 <style>
 <!-- 
-body { background-color:#FFFFFF; font-family: Georgia, "Times New Roman", Times, serif; padding:0; margin:0; height:100%; }
+body {
+	background-color:#FFFFFF;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding:0;
+	margin:0;
+	height:100%;
+	overflow:hidden;
+}
 -->
 </style>
 </head>
 
 <body>
 <% int barClickCounter = MeltButton.FINALES_DE_EMAIL_COUNTER; %>
-<%@ include file="includes/barraExperiencias.jsp" %>
-<script>
-	if (AC_FL_RunContent == 0) {
-		alert("This page requires AC_RunActiveContent.js.");
-	} else {
-		AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
-			'width', '100%', 
-			'height','100%',
-			'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=agregarFinalDeEmail.jsp',
-			'src', 'swf/ExpFinalesDeMails/slider', 
-			'quality', 'best', 
-			'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
-			'align', 'middle', 
-			'play', 'true', 
-			'loop', 'true', 
-			'scale', 'showall', 
-			'wmode', 'transparent', 
-			'devicefont', 'true', 
-			'id', 'ACTest', 
-			'bgcolor', '#ffffff', 
-			'name', 'slider', 
-			'menu', 'true', 
-			'allowScriptAccess', 'sameDomain', 
-			'movie', 'swf/ExpFinalesDeMails/slider',
-			'salign', '' ); 
-			//end AC code 
-	} 
-</script>
+<div id="floater">
+	<%@ include file="includes/barraExperiencias.jsp" %>
+</div>
+<div id="flashin">
+	<div style="height:50px; width:100%;"></div>
+	<script>
+		if (AC_FL_RunContent == 0) {
+			alert("This page requires AC_RunActiveContent.js.");
+		} else {
+			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+				'width', '100%', 
+				'height','100%',
+				'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=agregarFinalDeEmail.jsp',
+				'src', 'swf/ExpFinalesDeMails/slider', 
+				'quality', 'best', 
+				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+				'align', 'middle', 
+				'play', 'true', 
+				'loop', 'true', 
+				'scale', 'showall', 
+				'wmode', 'transparent', 
+				'devicefont', 'true', 
+				'id', 'ACTest', 
+				'bgcolor', '#ffffff', 
+				'name', 'slider', 
+				'menu', 'true', 
+				'allowScriptAccess', 'sameDomain', 
+				'movie', 'swf/ExpFinalesDeMails/slider',
+				'salign', '' ); 
+				//end AC code 
+		} 
+	</script>
+</div>
 <%@ include file="includes/fbShare.jsp" %>
 </body>
 </html>

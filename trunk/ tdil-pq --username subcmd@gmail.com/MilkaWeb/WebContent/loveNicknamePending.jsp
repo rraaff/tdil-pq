@@ -62,36 +62,46 @@ request.setAttribute( "test",  paginated);
 	</div>
 	<div class="renglon width860">
 		<display:table name="test" sort="external" pagesize="10" id="testit">
-			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable"><%= CreationDateHelper.getCreationDateAsString(((LoveNicknames)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
+			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable width80"><%= CreationDateHelper.getCreationDateAsString(((LoveNicknames)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
-			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable"><%= StatusHelper.getStatusRB(((LoveNicknames)pageContext.getAttribute("testit")).getDeleted(), ((LoveNicknames)pageContext.getAttribute("testit")).getApproved())%></display:column>
-			<display:column title="acciones"><a href="./reviewLoveNickname.do?id=<%= ((LoveNicknames)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
+			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable width80"><%= StatusHelper.getStatusRB(((LoveNicknames)pageContext.getAttribute("testit")).getDeleted(), ((LoveNicknames)pageContext.getAttribute("testit")).getApproved())%></display:column>
+			<display:column title="acciones" headerClass="width100"><a href="./reviewLoveNickname.do?id=<%= ((LoveNicknames)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
 		</display:table>
 	</div>
-	<div class="renglon width860" align="center">
-		<logic:notEqual name="LoveNicknameAdministrationForm" property="objectId" value="0">
-			<html:form method="POST" action="/approveDisapproveLoveNickname">
-				<p style="margin:20px;">Texto cargado por el usuario: <b><bean:write name="LoveNicknameAdministrationForm" property="originaltext"/></b></p>
-				<p style="margin:20px;">Sexo cargado por el usuario: <b><bean:write name="LoveNicknameAdministrationForm" property="sex"/></b></p>
-				<p style="margin:20px;">Posicion: <b><bean:write name="LoveNicknameAdministrationForm" property="position"/></b></p>
-				<div class="label width80">URL:</div><bean:write name="LoveNicknameAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromLoveNickname.do">Seleccion de link</a> - <a href="./clearLinkTargetLoveNickname.do">Borrar link</a><br><br>
-				<div class="label width80">Target: </div>
-						<html:select name="LoveNicknameAdministrationForm" property="urlTarget" >
-							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
-								<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
-									value="<%=iterTarget%>">
-									&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-							<% } %>
-						</html:select><br><br>
+	<logic:notEqual name="LoveNicknameAdministrationForm" property="objectId" value="0">
+		<html:form method="POST" action="/approveDisapproveLoveNickname">
+			<div class="renglon width860">
+				<div class="label width160">Texto cargado por el usuario</div>
+				<div class="label width500"><b><bean:write name="LoveNicknameAdministrationForm" property="originaltext"/></b></div>
+			</div>
+			<div class="renglon width860">
+				<div class="label width160">Sexo cargado por el usuario</div>
+				<div class="label width50"><b><bean:write name="LoveNicknameAdministrationForm" property="sex"/></b></div>
+				<div class="label width50">Posicion</div>
+				<div class="label width50"><b><bean:write name="LoveNicknameAdministrationForm" property="position"/></b></div>
+				<div class="label width20">URL</div>
+				<div class="label width230"><bean:write name="LoveNicknameAdministrationForm" property="urlLink"/><a href="./goToLinkTargetSelectionFromLoveNickname.do">Seleccion de link</a> - <a href="./clearLinkTargetLoveNickname.do">Borrar link</a></div>
+				<div class="label width80">Target</div>
+				<div class="label width200">
+					<html:select name="LoveNicknameAdministrationForm" property="urlTarget" >
+						<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+							<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
+								value="<%=iterTarget%>">
+								&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+						<% } %>
+					</html:select>
+				</div>
+			</div>
+			<div class="renglon width860" align="center">
 				<html:submit property="operation">
 					<bean:message key="approve" />
 				</html:submit>
 				<html:submit property="operation">
 					<bean:message key="disapprove" />
 				</html:submit>
-			</html:form>
-		</logic:notEqual>
-	</div>
+			</div>
+		</html:form>
+	</logic:notEqual>
 </div>
 </body>
 </html>

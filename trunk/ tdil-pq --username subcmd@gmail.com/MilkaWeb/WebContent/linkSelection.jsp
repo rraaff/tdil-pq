@@ -63,18 +63,25 @@ request.setAttribute( "test",  paginated);
 		<div class="renglon width860" style="margin-bottom:20px;">
 			<div class="label width860"><span class="comment">Desde esta sección podrá seleccionar el destino del link.</span></div>
 		</div>
-		<div class="label width80">Experiencia: </div>
-			<html:select name="LinkTargetSelectionForm" property="type" >
-				<% for (String iterTarget : ExperienceUtils.getAllExperiences()) { %>
-					<option	<%=	(iterTarget).equals( linkTargetSelectionForm.getType()) ? "selected" : ""%>
-						value="<%=iterTarget%>">
-						&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-				<% } %>
-			</html:select><br><br>
-		<div class="label width80">Descripcion: </div><html:text name="LinkTargetSelectionForm" property="description" style="width: 300px;"/><br><br>
-		<html:submit property="operation">
-			<bean:message key="search" />
-		</html:submit>
+		<div class="renglon width860">
+			<div class="label width80">Experiencia</div>
+			<div class="label width300">
+				<html:select name="LinkTargetSelectionForm" property="type" >
+					<% for (String iterTarget : ExperienceUtils.getAllExperiences()) { %>
+						<option	<%=	(iterTarget).equals( linkTargetSelectionForm.getType()) ? "selected" : ""%>
+							value="<%=iterTarget%>">
+							&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+					<% } %>
+				</html:select>
+			</div>
+			<div class="label width80">Descripcion</div>
+			<div class="label width300"><html:text name="LinkTargetSelectionForm" property="description" style="width: 300px;"/></div>
+		</div>
+		<div class="renglon width860" align="center">
+			<html:submit property="operation">
+				<bean:message key="search" />
+			</html:submit>
+		</div>
 	</html:form>
 	<div class="renglon width860">
 		<display:table name="test" sort="external" pagesize="10" id="testit">
@@ -88,7 +95,9 @@ request.setAttribute( "test",  paginated);
 			</display:column>
 		</display:table>
 	</div>
-	<a href="./backToExperience.do">Volver</a>
+	<div class="renglon width860" align="center">
+		<a href="./backToExperience.do">Volver</a>
+	</div>
 </div>
 </body>
 </html>

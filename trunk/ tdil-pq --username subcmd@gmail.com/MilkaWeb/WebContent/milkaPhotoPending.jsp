@@ -144,15 +144,17 @@ request.setAttribute( "test",  paginated);
 					<h3>Imagen original</h3>
 					<img id="img_to_review" width="212" height="157" src="./download.st?id=<bean:write name="MilkaPhotoAdministrationForm" property="idBlobData"/>&type=PUBLIC&ext=<bean:write name="MilkaPhotoAdministrationForm" property="extBlobData"/>" alt="">
 				</div>
+				<div class="label width20"></div>
 				<div style="width:212px; height:177px; float:left;">
 					<h3>Imagen actual</h3>
 					<img id="img_to_approve" src="./viewMilkaPhotoReplacement.do" width="212" height="157" align="absmiddle">
 				</div>
-				<div style="width:400px; height:200px; float:left;">
+				<div class="label width20"></div>
+				<div class="label width300 height200">
 					Reemplazar<br/><br/>
 					<input type="file" name="upload_email" id="upload_email"><br/><br/>
 					<html:checkbox name="MilkaPhotoAdministrationForm" property="frontcover" /> Elegir como portada<br/><br/>
-					Tags: <html:text name="MilkaPhotoAdministrationForm" property="tags" style="width: 400px;"/>
+					Tags: <html:text name="MilkaPhotoAdministrationForm" property="tags" styleClass="width300"/>
 				</div>
 			</div>
 			<div class="renglon width860" align="center">

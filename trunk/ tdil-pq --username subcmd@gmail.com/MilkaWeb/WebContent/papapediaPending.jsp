@@ -68,28 +68,35 @@ request.setAttribute( "test",  paginated);
 			<display:column title="acciones"><a href="./reviewPapapedia.do?id=<%= ((WallWritting)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
 		</display:table>
 	</div>
-	<div class="renglon width860" align="center">
-		<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
-			<html:form method="POST" action="/approveDisapprovePapapedia">
-				<p style="margin:20px;">Texto cargado por el usuario: <b><bean:write name="PapapediaAdministrationForm" property="originaltext"/></b></p>
-				<div class="label width80">URL:</div><bean:write name="PapapediaAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPapapedia.do">Seleccion de link</a> - <a href="./clearLinkTargetPapapedia.do">Borrar link</a><br><br>
-				<div class="label width80">Target: </div>
-						<html:select name="PapapediaAdministrationForm" property="urlTarget" >
-							<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
-								<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%>
-									value="<%=iterTarget%>">
-									&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
-							<% } %>
-						</html:select><br><br>
+	<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
+		<html:form method="POST" action="/approveDisapprovePapapedia">
+			<div class="renglon width860">
+				<div class="label width200">Texto cargado por el usuario</div>
+				<div class="label width500"><b><bean:write name="PapapediaAdministrationForm" property="originaltext"/></b></div>
+			</div>
+			<div class="renglon width860">
+				<div class="label width50">URL</div>
+				<div class="label width300"><bean:write name="PapapediaAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromPapapedia.do">Seleccion de link</a> - <a href="./clearLinkTargetPapapedia.do">Borrar link</a></div>
+				<div class="label width50"></div>
+				<div class="label width80">Target</div>
+				<div class="label width200">
+					<html:select name="PapapediaAdministrationForm" property="urlTarget" >
+						<% for (String iterTarget : UrlUtils.getAllTargets()) { %>
+							<option	<%=	(iterTarget).equals( postItAdministrationForm.getUrlTarget()) ? "selected" : ""%> value="<%=iterTarget%>">&nbsp;&nbsp;&nbsp;<%=iterTarget%></option>
+						<% } %>
+					</html:select>
+				</div>
+			</div>
+			<div class="renglon width860" align="center">
 				<html:submit property="operation">
 					<bean:message key="approve" />
 				</html:submit>
 				<html:submit property="operation">
 					<bean:message key="disapprove" />
 				</html:submit>
-			</html:form>
-		</logic:notEqual>
-	</div>
+			</div>
+		</html:form>
+	</logic:notEqual>
 </div>
 </body>
 </html>

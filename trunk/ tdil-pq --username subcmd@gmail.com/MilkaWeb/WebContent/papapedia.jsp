@@ -74,6 +74,7 @@ body {
 	width:950px;
 	height:248px;
 	margin:0 auto;
+	margin-top:20px;
 }
 #content h1 {
 	font-family: Georgia, "Times New Roman", Times, serif;
@@ -234,43 +235,47 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 }
 %>
 <% int barClickCounter = MeltButton.PAPAPEDIA_COUNTER; %>
-<%@ include file="includes/barraExperiencias.jsp" %>
-<div id="content">
-	<div id="header"></div>
-	<div id="cuerpoCentral">
-		<div id="insertContentBlock">
-			<h1>Papa es...</h1>
-			<div id="complete">
-				<html:form method="POST" action="/addPapapedia">
-					<input type="hidden" name="dnc" value="true"/>
-					<html:text name="PapapediaForm" property="text" styleClass="width180"/>
-					<html:submit property="operation">Enviar</html:submit>
-				</html:form>	
+<div id="floater">
+	<%@ include file="includes/barraExperiencias.jsp" %>
+</div>
+<div id="flashin">
+	<div id="content">
+		<div id="header"></div>
+		<div id="cuerpoCentral">
+			<div id="insertContentBlock">
+				<h1>Papa es...</h1>
+				<div id="complete">
+					<html:form method="POST" action="/addPapapedia">
+						<input type="hidden" name="dnc" value="true"/>
+						<html:text name="PapapediaForm" property="text" styleClass="width180"/>
+						<html:submit property="operation">Enviar</html:submit>
+					</html:form>	
+				</div>
 			</div>
-		</div>
-		<div class="line"></div>
-		<div id="counter"><%=totalItems%> Definiciones</div>
-		<% for (WallWritting ww : papapediaPage.getPage()) { %>
-			<% if (ww.getId() == linkId) { %>
-				<div class="texto resaltado">
-			<% } else { %>
-				<div class="texto">
+			<div class="line"></div>
+			<div id="counter"><%=totalItems%> Definiciones</div>
+			<% for (WallWritting ww : papapediaPage.getPage()) { %>
+				<% if (ww.getId() == linkId) { %>
+					<div class="texto resaltado">
+				<% } else { %>
+					<div class="texto">
+				<% } %>
+					<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %><a href="<%=ww.getUrlLink()%>" target="<%=ww.getUrlTarget()%>"><% } %>
+					<%=ww.getOriginaltext()%>
+					<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
+				</div>
 			<% } %>
-				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %><a href="<%=ww.getUrlLink()%>" target="<%=ww.getUrlTarget()%>"><% } %>
-				<%=ww.getOriginaltext()%>
-				<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
-			</div>
-		<% } %>
-		<div id="paginado">
-			<div id="previuos">
-				<% if (last != pageNumber) { %>
-					<a href="papapedia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Ver los anteriores</a>
-				<% } %>
-			</div>
-			<div id="next">
-				<% if (first != pageNumber) { %>
-					<a href="papapedia.jsp?pn=<%=first%>&dnc=true">Ver m&aacute;s comentarios</a>
-				<% } %>
+			<div id="paginado">
+				<div id="previuos">
+					<% if (last != pageNumber) { %>
+						<a href="papapedia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Ver los anteriores</a>
+					<% } %>
+				</div>
+				<div id="next">
+					<% if (first != pageNumber) { %>
+						<a href="papapedia.jsp?pn=<%=first%>&dnc=true">Ver m&aacute;s comentarios</a>
+					<% } %>
+				</div>
 			</div>
 		</div>
 	</div>
