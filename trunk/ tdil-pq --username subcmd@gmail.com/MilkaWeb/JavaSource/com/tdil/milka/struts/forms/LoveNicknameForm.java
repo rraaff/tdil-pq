@@ -56,7 +56,7 @@ public class LoveNicknameForm extends TransactionalValidationForm {
 	@Override
 	public void basicValidate(ValidationError error) {
 		FieldValidation.validateText(this.getText(), text_key, 150, error);
-		FieldValidation.validateText(this.getPosition(), position_key, 25, error);
+		//FieldValidation.validateText(this.getPosition(), position_key, 25, error);
 		FieldValidation.validateText(this.getSex(), sex_key, 1, error);
 	}
 	

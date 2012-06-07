@@ -40,13 +40,14 @@ public class LoveNicknamesServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
 		out.append("<items>");
+		int counter = 1;
 		for (LoveNicknames loveNicknames : data) {
 			out.append("<item>");
 			out.append("<id>").append(String.valueOf(loveNicknames.getId())).append("</id>");
 			out.append("<text>").append(CDATA_START_TAG);
 			out.append(loveNicknames.getOriginaltext());
 			out.append(CDATA_END_TAG).append("</text>");
-			out.append("<position>").append(loveNicknames.getPosition()).append("</position>");
+			out.append("<position>").append(String.valueOf(counter++)).append("</position>");
 			out.append("<sex>").append(loveNicknames.getSex()).append("</sex>");
 			out.append("<link>").append(CDATA_START_TAG);
 			out.append(loveNicknames.getUrlLink() != null ? loveNicknames.getUrlLink() : "");

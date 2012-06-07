@@ -45,6 +45,15 @@
 			<transaction src="ddl_01.sql" />
 		</sql>
 	</target>
+	
+	<target name="apodos" >
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="apodos.sql" />
+		</sql>
+	</target>
 
 	<target name="makeWar">
 		<delete file="./MILKA.tmp/MILKA_WEB.war"></delete>
