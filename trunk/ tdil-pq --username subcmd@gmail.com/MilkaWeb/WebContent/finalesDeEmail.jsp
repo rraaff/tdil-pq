@@ -76,7 +76,7 @@ body {
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
 <div id="flashin">
-	<div style="height:50px; width:100%;"></div>
+	<!--div style="height:50px; width:100%;"></div-->
 	<script>
 		if (AC_FL_RunContent == 0) {
 			alert("This page requires AC_RunActiveContent.js.");

@@ -284,18 +284,8 @@
 		
 		/* Acomodo el fondo */
 		private function set_background_mc(){
-			//1200x750
-			/*background_mc.width = slider_width;
-			background_mc.height = (750*slider_width)/1200;
-
-			baseDibujos_mc.height = slider_height;
-			baseDibujos_mc.x = (slider_width - 1200) / 2
-			
-			
-			logo_mc.x = baseDibujos_mc.x;*/
-			
 			btnSubi_mc.x = (slider_width - 130) / 2;
-			btnSubi_mc.y = slider_height - 230 + info_height;
+			btnSubi_mc.y = slider_height - 180 + info_height;
 			
 			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
 		}
@@ -407,11 +397,14 @@
 			rationX = bit.width / bit.height;
 			
 			if (((slider_height-info_height-thumb_height-2*info_space) / slider_width) < rationY) {
-				bit.width = slider_width;
-				bit.height = rationY * bit.width;
+				//bit.width = slider_width;
+				//bit.height = rationY * bit.width;
+				bit.width = slider_height * rationX;
+				bit.height = slider_height;
 			} else {
-				bit.height = slider_height-info_height-thumb_height-2*info_space;
-				bit.width = rationX * bit.height;
+				bit.height = slider_width * rationY;//slider_height-info_height-thumb_height-2*info_space;
+				bit.width = slider_width;
+				//rationX * bit.height;
 			}
 			
 			bit.x=(slider_width-bit.width)/2;
@@ -666,8 +659,8 @@
 			info.addChild(textMask);
 			
 			var nextButton:MovieClip = new MovieClip();
-				nextButton.y=(info_height-button_size)/2;
-				nextButton.x=info_width;
+				nextButton.y=-(slider_height/2);
+				nextButton.x=(slider_width/2)-(button_size*2.5);
 			info.addChild(nextButton);
 			
 			
@@ -685,7 +678,8 @@
 			nextButton.addChild(nextHotspot);
 				
 			var previousButton:MovieClip = new MovieClip();
-				previousButton.y=(info_height-button_size)/2;
+				previousButton.y=-(slider_height/2);
+				previousButton.x=-(slider_width/2)+(button_size*2);
 			info.addChild(previousButton);
 			
 			previousGraphic.load( new URLRequest(previous_picture));
@@ -703,8 +697,9 @@
 			
 			
 			var playpauseButton:MovieClip = new MovieClip();
-				playpauseButton.x=info_width+button_size+((slider_width-info_width)/2-button_size)/2;
-				playpauseButton.y=(info_height-button_size)/2;
+				playpauseButton.x=(slider_width/2)-button_size;
+				// info_width+button_size+((slider_width-info_width)/2-button_size)/2;
+				playpauseButton.y=-(slider_height/2);
 			
 			
 			if (auto_play)
