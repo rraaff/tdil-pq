@@ -13,7 +13,7 @@
 					<% if (milkaPhotoIndex == 0) { %>
 						<li class="f-grande"><a href="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" title="<%=mfvo.getImageTitle()%>" id="lk-<%=mfvo.getIdClickCounter()%>" rel="lightbox[pm]" button="<%=mfvo.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mfvo.getIdClickCounter())%>" class="activo"><img src="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" width="212" height="157" alt="foto1" /></a></li>
 					<% } else { %>
-						<li class="f-grande"><a href="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" title="<%=mfvo.getImageTitle()%>" id="lk-<%=mfvo.getIdClickCounter()%>" rel="lightbox[pm]" button="<%=mfvo.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mfvo.getIdClickCounter())%>" class="activo"><img src="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" width="66" height="66" alt="foto3" /></a></li>
+						<li class="f-grande"><a href="./download.st?id=<%=mfvo.getIdApprovedData()%>&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" title="<%=mfvo.getImageTitle()%>" id="lk-<%=mfvo.getIdClickCounter()%>" rel="lightbox[pm]" button="<%=mfvo.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mfvo.getIdClickCounter())%>" class="activo"><img src="./downloadThumb.st?id=<%=mfvo.getIdApprovedData()%>&width=66&height=66&type=PUBLIC&ext=<%=mfvo.getExtApprovedData()%>" alt="foto3" /></a></li>
 					<% } %>
 			<% 	milkaPhotoIndex = milkaPhotoIndex + 1;
 				} %>
