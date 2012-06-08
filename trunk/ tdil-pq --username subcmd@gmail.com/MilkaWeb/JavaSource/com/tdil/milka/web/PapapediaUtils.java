@@ -58,6 +58,17 @@ public class PapapediaUtils {
 			}
 		}
 	}
+	
+	private static final class PapapediaTransactionalAction implements TransactionalActionWithResult {
+		
+		public PapapediaTransactionalAction() {
+			super();
+		}
+
+		public Object executeInTransaction() throws SQLException {
+			return DAOManager.getWallWrittingDAO().selectPapapediaToReview();
+		}
+	}
 
 	
 	public static int getPapapediaCount() {
@@ -75,6 +86,15 @@ public class PapapediaUtils {
 		} catch (SQLException e) {
 			LOG.error(e.getMessage(), e);
 			return new SearchPage<WallWritting>(new ArrayList<WallWritting>(), false);
+		}
+	}
+	
+	public static List<WallWritting> getPapapediaList() {
+		try {
+			 return (List<WallWritting>)TransactionProvider.executeInTransactionWithResult(new PapapediaTransactionalAction());
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+			return new ArrayList<WallWritting>();
 		}
 	}
 	

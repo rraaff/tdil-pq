@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.cache.blob.BlobLocalData;
@@ -40,10 +41,11 @@ public class DownloadThumbnailController extends HttpServlet {
 		String type = req.getParameter("type");
 		String width = req.getParameter("width");
 		String height = req.getParameter("height");
+		String constrain = req.getParameter("constrain");
 		int id = Integer.parseInt(req.getParameter("id"));
 		String ext = req.getParameter("ext");
 		
-		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlobThumnail(type, id, width, height, 0, ext, null); // TODO usuario
+		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlobThumbnail(type, id, width, height, constrain, 0, ext, null); // TODO usuario
 		long length = blobLocalData.getFileSize();
 		Calendar cal = Calendar.getInstance();
 		cal.set(2010, 1, 1, 0, 0, 0);

@@ -17,9 +17,9 @@ public class ImageUtils {
 	private static int MINIMUN_WIDTH = 60;
 	private static int MINIMUN_HEIGHT = 60;
 	
-	public static void createThumbnail(BlobLocalData blobLocalData, String destFilename, String width, String height) {
+	public static void createThumbnail(BlobLocalData blobLocalData, String destFilename, String width, String height, boolean constrain) {
 		try {
-			VideoSize destinationVideoSize = getDestinationVideoSize(blobLocalData.getLocalFileName(), width, width);
+			VideoSize destinationVideoSize = getDestinationVideoSize(blobLocalData.getLocalFileName(), width, height, constrain);
 			File source = new File(blobLocalData.getLocalFileName());
 			File target = new File(destFilename);
 			Encoder encoder = new Encoder();
@@ -41,14 +41,14 @@ public class ImageUtils {
 		}
 	}
 	
-	public static VideoSize getDestinationVideoSize(String fileName, String width, String height) throws InputFormatException, EncoderException {
+	public static VideoSize getDestinationVideoSize(String fileName, String width, String height, boolean constrain) throws InputFormatException, EncoderException {
 		Encoder encoder = new Encoder();
 		MultimediaInfo info = encoder.getInfo(new File(fileName));
 		VideoSize original = info.getVideo().getSize();
-		return getDestinationVideoSize(original, width, height);
+		return getDestinationVideoSize(original, width, height, constrain);
 	}
 	
-	public static VideoSize getDestinationVideoSize(VideoSize original, String width, String height) {
+	public static VideoSize getDestinationVideoSize(VideoSize original, String width, String height, boolean constrain) {
 		if (org.apache.commons.lang.StringUtils.isEmpty(width)) {
 			// calculate based in height
 			return getVideoSizeUsingHeigth(original, height);
@@ -58,7 +58,7 @@ public class ImageUtils {
 				return getVideoSizeUsingWidth(original, width);
 			} else {
 				// calculate based in both
-				return getVideoSizeUsing(original, width, height);
+				return getVideoSizeUsing(original, width, height, constrain);
 			}
 		}
 	}
@@ -101,7 +101,7 @@ public class ImageUtils {
 		}
 	}
 
-	public static VideoSize getVideoSizeUsing(VideoSize original, String width, String height) {
+	public static VideoSize getVideoSizeUsing(VideoSize original, String width, String height, boolean constrain) {
         float destWidth = Integer.valueOf(width);
         float destHeight = Integer.valueOf(height);
         if (original.getWidth() <= destWidth) {
@@ -115,30 +115,58 @@ public class ImageUtils {
 
                 float minWidthRatio = (float) original.getWidth() / (float) MINIMUN_WIDTH;
                 float minHeightRatio = (float) original.getHeight() / (float) MINIMUN_HEIGHT;
-                if (widthRatio < heightRatio) { // escalo por el ratio menor, para que sobre la imagen de uno de los lados
-                    if (widthRatio > minWidthRatio) {
-                        widthRatio = minWidthRatio;
-                    }
-                    //calculo cuanto quedaria de alto con el escalado del ancho
-                    float destHeightFinal = original.getHeight() / widthRatio;
-        			if(destHeightFinal < MINIMUN_HEIGHT){
-        				//si el alto es menor de 60 tomo el minimo 60.
-        				return createVideoSize(original.getWidth() / minHeightRatio, original.getHeight() / minHeightRatio);
-        			}else{
-        				return createVideoSize(original.getWidth() / widthRatio, original.getHeight() / widthRatio);
-        			}
+                if (!constrain) {
+	                if (widthRatio < heightRatio) { // escalo por el ratio menor, para que sobre la imagen de uno de los lados
+	                    if (widthRatio > minWidthRatio) {
+	                        widthRatio = minWidthRatio;
+	                    }
+	                    //calculo cuanto quedaria de alto con el escalado del ancho
+	                    float destHeightFinal = original.getHeight() / widthRatio;
+	        			if(destHeightFinal < MINIMUN_HEIGHT){
+	        				//si el alto es menor de 60 tomo el minimo 60.
+	        				return createVideoSize(original.getWidth() / minHeightRatio, original.getHeight() / minHeightRatio);
+	        			}else{
+	        				return createVideoSize(original.getWidth() / widthRatio, original.getHeight() / widthRatio);
+	        			}
+	                } else {
+	                    if (heightRatio > minHeightRatio) {
+	                        heightRatio = minHeightRatio;
+	                    }
+	                  //calculo cuanto quedaria de ancho con el escalado del alto
+	                    float destWidthFinal = original.getWidth() / heightRatio;
+	        			if(destWidthFinal < MINIMUN_WIDTH){
+	        				//si el ancho es menor de 60 tomo el minimo 60.
+	        				return createVideoSize(original.getWidth() / minWidthRatio, original.getHeight() / minWidthRatio);
+	        			}else{
+	        				return createVideoSize(original.getWidth() / heightRatio, original.getHeight() / heightRatio);
+	        			}
+	                }
                 } else {
-                    if (heightRatio > minHeightRatio) {
-                        heightRatio = minHeightRatio;
-                    }
-                  //calculo cuanto quedaria de ancho con el escalado del alto
-                    float destWidthFinal = original.getWidth() / heightRatio;
-        			if(destWidthFinal < MINIMUN_WIDTH){
-        				//si el ancho es menor de 60 tomo el minimo 60.
-        				return createVideoSize(original.getWidth() / minWidthRatio, original.getHeight() / minWidthRatio);
-        			}else{
-        				return createVideoSize(original.getWidth() / heightRatio, original.getHeight() / heightRatio);
-        			}
+                	if (widthRatio > heightRatio) { // escalo por el ratio mayor para que entre en los limites
+	                    if (widthRatio > minWidthRatio) {
+	                        widthRatio = minWidthRatio;
+	                    }
+	                    //calculo cuanto quedaria de alto con el escalado del ancho
+	                    float destHeightFinal = original.getHeight() / widthRatio;
+	        			if(destHeightFinal < MINIMUN_HEIGHT){
+	        				//si el alto es menor de 60 tomo el minimo 60.
+	        				return createVideoSize(original.getWidth() / minHeightRatio, original.getHeight() / minHeightRatio);
+	        			}else{
+	        				return createVideoSize(original.getWidth() / widthRatio, original.getHeight() / widthRatio);
+	        			}
+	                } else {
+	                    if (heightRatio > minHeightRatio) {
+	                        heightRatio = minHeightRatio;
+	                    }
+	                  //calculo cuanto quedaria de ancho con el escalado del alto
+	                    float destWidthFinal = original.getWidth() / heightRatio;
+	        			if(destWidthFinal < MINIMUN_WIDTH){
+	        				//si el ancho es menor de 60 tomo el minimo 60.
+	        				return createVideoSize(original.getWidth() / minWidthRatio, original.getHeight() / minWidthRatio);
+	        			}else{
+	        				return createVideoSize(original.getWidth() / heightRatio, original.getHeight() / heightRatio);
+	        			}
+	                }
                 }
             }
         }

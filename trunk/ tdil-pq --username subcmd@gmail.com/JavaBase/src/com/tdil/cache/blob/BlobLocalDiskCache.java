@@ -22,7 +22,7 @@ public class BlobLocalDiskCache {
 		typesToResolvers.put(type, blobResolver);
 	}
 	
-	public static BlobLocalData getBlobThumnail(String type, int id, String width, String height, int version, String ext, User user) {
+	public static BlobLocalData getBlobThumbnail(String type, int id, String width, String height, String constrain, int version, String ext, User user) {
 		BlobResolver blobResolver = typesToResolvers.get(type);
 		if (blobResolver == null) {
 			getLog().error("No se encontro un blob resolver para " + type);
@@ -33,13 +33,12 @@ public class BlobLocalDiskCache {
 			return null;
 		}
 		// TODO sincronizar el load...
-		String localDataLocation = makeFileName(type, id, width, height, version, ext, blobResolver);
+		String localDataLocation = makeFileName(type, id, width, height, constrain, version, ext, blobResolver);
 		File local = new File(localDataLocation);
 		if (!local.exists()) {
 			try {
 				BlobLocalData blobLocalData = getBlob(type, id, version, ext, user);
-				ImageUtils.createThumbnail(blobLocalData, localDataLocation, width, height);
-				// 2 genero el thumbnail
+				ImageUtils.createThumbnail(blobLocalData, localDataLocation, width, height, "true".equals(constrain));
 				local = new File(localDataLocation);
 			} catch (Exception e) {
 				getLog().error(e.getMessage(), e);
@@ -95,11 +94,11 @@ public class BlobLocalDiskCache {
 		return sb.toString();
 	}
 	
-	private static String makeFileName(String type, int id, String width, String height, int version, String ext, BlobResolver blobResolver) {
+	private static String makeFileName(String type, int id, String width, String height, String max, int version, String ext, BlobResolver blobResolver) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(diskBlobLocation).append("/");
 		sb.append(type).append(separator);
-		sb.append(id).append('.').append(version).append("-").append(width).append("x").append(height).append('.').append(ext);
+		sb.append(id).append('.').append(version).append("-").append(width).append("x").append(height).append(".").append("true".equals(max) ? "1" : "0").append('.').append(ext);
 		return sb.toString();
 	}
 
