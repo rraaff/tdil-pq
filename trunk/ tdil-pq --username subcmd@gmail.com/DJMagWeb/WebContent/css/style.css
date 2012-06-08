@@ -121,6 +121,9 @@ select {
 body {
 	background-image: url(../images/bg-main.jpg);
 	background-repeat: repeat-x;
+/*	background-color:#FFFFFF;
+	background-image: url(../images/nuevoFondo.gif);
+	background-repeat: repeat;*/
 }
 #portaHeader {
 	background-image: url(../images/bg-headerHome.png);
