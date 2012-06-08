@@ -222,16 +222,11 @@ input[type="button"], input[type="submit"] {
 
 <body>
 <%
-int totalItems = PapapediaUtils.getPapapediaCount();
-int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
-List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, PapapediaUtils.PAGE_SIZE, PapapediaUtils.PAGE_SIDE);
-int first = PaginationUtils.first(list);
-int last = PaginationUtils.last(list);
-SearchPage<WallWritting> papapediaPage = PapapediaUtils.getPapapediaPage(pageNumber);
+List<WallWritting> papapediaList = PapapediaUtils.getPapapediaList();
+int totalItems = papapediaList.size();
 int linkId = 0;
 if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	linkId = Integer.valueOf(lnk);
-	PapapediaUtils.setFirst(papapediaPage, linkId);
 }
 %>
 <% int barClickCounter = MeltButton.PAPAPEDIA_COUNTER; %>
@@ -254,7 +249,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 			</div>
 			<div class="line"></div>
 			<div id="counter"><%=totalItems%> Definiciones</div>
-			<% for (WallWritting ww : papapediaPage.getPage()) { %>
+			<% for (WallWritting ww : papapediaList) { %>
 				<% if (ww.getId() == linkId) { %>
 					<div class="texto resaltado">
 				<% } else { %>
@@ -265,18 +260,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 					<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
 				</div>
 			<% } %>
-			<div id="paginado">
-				<div id="previuos">
-					<% if (last != pageNumber) { %>
-						<a href="papapedia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Ver los anteriores</a>
-					<% } %>
-				</div>
-				<div id="next">
-					<% if (first != pageNumber) { %>
-						<a href="papapedia.jsp?pn=<%=first%>&dnc=true">Ver m&aacute;s comentarios</a>
-					<% } %>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </div>
