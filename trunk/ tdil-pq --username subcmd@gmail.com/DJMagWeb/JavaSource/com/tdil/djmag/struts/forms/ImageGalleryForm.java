@@ -45,6 +45,9 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	private int countryId;
 	private String title;
 	private String description;
+	
+	private int coverPosition;
+	
 	private List<RankingPositionBean> positions = new ArrayList<RankingPositionBean>();
 	
 	private List<ImageGallery> allImageGalleries;
@@ -162,6 +165,9 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 		imageInGalleryExample.setOrderByClause("orderNumber");
 		List<ImageInGallery> images = imageInGalleryDAO.selectImageInGalleryByExample(imageInGalleryExample);
 		for (ImageInGallery image : images) {
+			if (image.getImageId().equals(imageGallery.getImageId())) {
+				setCoverPosition(image.getOrdernumber());
+			}
 			this.getPositions().add(createPositionForInGallery(image));
 		}
 		
@@ -234,10 +240,12 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 			imageGalleryNote.setDescription(this.getDescription());
 			imageGalleryNote.setIdCountry(this.getCountryId());
 			imageGalleryId = imageGalleryNoteDAO.insertImageGallery(imageGalleryNote);
+			imageGalleryNote.setId(imageGalleryId);
 			updateImageGallery(imageGalleryNote, imageGalleryId);
 		} else {
 			ImageGallery imageGalleryNote = new ImageGallery();
 			imageGalleryNote.setId(this.getObjectId());
+			imageGalleryNote.setDeleted(0);
 			imageGalleryNote.setTitle(this.getTitle());
 			imageGalleryNote.setDescription(this.getDescription());
 			imageGalleryNote.setIdCountry(this.getCountryId());
@@ -268,6 +276,11 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 			imageInGallery.setImageext(imageGalleryPositionBean.getUploadData().getExtension());
 			imageInGallery.setDeleted(0);
 			imageInGalleryDAO.insertImageInGallery(imageInGallery);
+			if (index == this.getCoverPosition()) {
+				imageGalleryNote.setImageId(blobId);
+				imageGalleryNote.setImageext(imageGalleryPositionBean.getUploadData().getExtension());
+				DAOManager.getImageGalleryDAO().updateImageGalleryByPrimaryKey(imageGalleryNote);
+			}
 			index = index + 1;
 		}
 	}
@@ -348,6 +361,13 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 
 	public void movePositionUp(int index) {
 		if (index > 0) {
+			if (index == this.getCoverPosition()) {
+				this.setCoverPosition(this.getCoverPosition() - 1);
+			} else {
+				if (index - 1 == this.getCoverPosition()) {
+					this.setCoverPosition(this.getCoverPosition() + 1);
+				}
+			}
 			RankingPositionBean prev = this.getPositions().get(index - 1);
 			RankingPositionBean act = this.getPositions().get(index);
 			this.getPositions().set(index - 1, act);
@@ -357,6 +377,13 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	
 	public void movePositionDown(int index) {
 		if (index < this.getPositions().size() - 1) {
+			if (index == this.getCoverPosition()) {
+				this.setCoverPosition(this.getCoverPosition() + 1);
+			} else {
+				if (index + 1 == this.getCoverPosition()) {
+					this.setCoverPosition(this.getCoverPosition() - 1);
+				}
+			}
 			RankingPositionBean next = this.getPositions().get(index + 1);
 			RankingPositionBean act = this.getPositions().get(index);
 			this.getPositions().set(index + 1, act);
@@ -397,8 +424,22 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	}
 
 	public void deleteImage(int id2) {
+		if (id2 == this.getCoverPosition()) {
+			this.setCoverPosition(0);
+		}
+		if (id2 < this.getCoverPosition()) {
+			this.setCoverPosition(this.getCoverPosition() - 1);
+		}
 		RankingPositionBean noteImageBean = this.getPositions().get(id2);
 		this.getPositions().remove(noteImageBean);
+	}
+
+	public int getCoverPosition() {
+		return coverPosition;
+	}
+
+	public void setCoverPosition(int coverPosition) {
+		this.coverPosition = coverPosition;
 	}
 
 }
