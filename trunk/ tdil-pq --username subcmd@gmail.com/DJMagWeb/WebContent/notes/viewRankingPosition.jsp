@@ -20,7 +20,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	RankingPosition positionToShow = publicHomeBean.getRankingPosition(posId);
 	List<RankingPositionImage> images = publicHomeBean.getRankingPositionImages(positionToShow);
-	
+	int backRankingPage = ((int)positionToShow.getOrdernumber() / 10) * 10;
 %>
 <html>
 <head>
@@ -227,7 +227,7 @@ div {
 				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/compartir_facebook.gif" width="82" height="18"></a></div>
 			</div>
 			<div id="linksBottom">
-				<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html">Volver al ranking</a>
+				<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=backRankingPage%>">Volver al ranking</a>
 			</div>
 		</div>
 		<div id="right">

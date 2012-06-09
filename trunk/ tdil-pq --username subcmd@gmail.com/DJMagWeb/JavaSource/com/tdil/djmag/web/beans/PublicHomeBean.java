@@ -123,6 +123,8 @@ public class PublicHomeBean  {
 	public static final int VIDEOS_PAGES_SIDE = 2;
 	public static final int VIDEOS_MAX_SECTIONS_PAGES = 5;
 	
+	public static final int RANKING_PAGINATION = 10;
+	
 	// 0 si no viene, sino lo que vino
 	public static int parsePageParam(String pString) {
 		if (StringUtils.isEmpty(pString)) {
@@ -1187,6 +1189,10 @@ public class PublicHomeBean  {
 
 	public List<com.tdil.djmag.model.RankingPosition> getRankingPositions() {
 		return rankingPositions;
+	}
+	
+	public List<com.tdil.djmag.model.RankingPosition> getRankingPositions(int start) {
+		return rankingPositions.subList(start, start + RANKING_PAGINATION);
 	}
 
 	public void setRankingPositions(List<com.tdil.djmag.model.RankingPosition> rankingPositions) {
