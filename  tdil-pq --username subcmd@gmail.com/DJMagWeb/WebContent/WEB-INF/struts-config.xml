@@ -394,6 +394,11 @@
    scope="session" type="com.tdil.djmag.struts.action.MoveImageInGalleryDownAction">
    <forward name="continue" path="/imageGalleryAdministration.jsp"/>
   </action>
+  
+  <action name="ImageGalleryForm" parameter="Admin" path="/selectImageGalleryCover"
+   scope="session" type="com.tdil.djmag.struts.action.SelecteImageGalleryCoverAction">
+   <forward name="continue" path="/imageGalleryAdministration.jsp"/>
+  </action>
 
   <action name="RankingPositionForm" parameter="Admin" path="/saveRankingPosition"
    scope="session" type="com.tdil.struts.actions.SaveAction">

@@ -885,4 +885,11 @@
    PATH="/rankingPositionAdministration.jsp" TARGET="page21"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectImageGalleryCover" NAME="action94"
+  PATH="/selectImageGalleryCover" SHAPE="32,14737,0,0"
+  TITLE="ImageGalleryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/imageGalleryAdministration.jsp" TARGET="page19"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

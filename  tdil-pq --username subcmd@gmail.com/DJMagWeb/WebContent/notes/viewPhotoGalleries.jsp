@@ -212,6 +212,12 @@ div { /*border:dotted 1px #00FF00;*/ }
 				<div id="top100LB">
 					<% for (ImageGallery imageGallery : galleries) { %>
 						<div id="renglonRank">
+							<!-- PABLO ejemplo de imagen -->
+							<div id="photo">
+								<a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html">
+									<img src="../../downloadThumb.st?id=<%=imageGallery.getImageId()%>&type=PUBLIC&ext=<%=imageGallery.getImageext()%>&width=100&height=100">
+								</a>
+							</div>
 							<div id="photo"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"></a></div>
 							<div id="ranked">
 								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a></span>
