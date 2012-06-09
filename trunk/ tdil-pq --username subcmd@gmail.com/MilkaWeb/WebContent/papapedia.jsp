@@ -175,7 +175,12 @@ input[type="button"], input[type="submit"] {
 	border-bottom-color: #999999;
 }
 .texto a {
-	color:#FF0000;
+	color:#5a5a5a;
+	text-decoration:underline;
+}
+.texto a:hover {
+	color:#f2583c;
+	text-decoration:underline;
 }
 .resaltado {
 	font-weight:bold;
@@ -216,11 +221,26 @@ input[type="button"], input[type="submit"] {
 #paginado #next a {
 	color:#f2583c;
 }
+#backToTop {
+	width:606px;
+	height:60px;
+	margin:0 auto;
+	line-height:60px;
+	text-align:right;
+}
+#backToTop a, #backToTop a:active, #backToTop a:visited {
+	color:#f2583c;
+	text-decoration:none;
+}
+#backToTop a:hover {
+	text-decoration:underline;
+}
 -->
 </style>
 </head>
 
 <body>
+<a name="top" id="top"></a>
 <%
 List<WallWritting> papapediaList = PapapediaUtils.getPapapediaList();
 int totalItems = papapediaList.size();
@@ -250,7 +270,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 			<div class="line"></div>
 			<div id="counter"><%=totalItems%> Definiciones</div>
 			<% for (WallWritting ww : papapediaList) { %>
-				<% if (ww.getId() == linkId) { %>
+		<% if (ww.getId() == linkId) { %>
 					<div class="texto resaltado">
 				<% } else { %>
 					<div class="texto">
@@ -260,10 +280,10 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 					<% if (!StringUtils.isEmpty(ww.getUrlLink())) { %></a><% } %>
 				</div>
 			<% } %>
-
+			<div id="backToTop"><a href="#top">Subir</a></div>
 		</div>
 	</div>
 </div>
-<%@ include file="includes/fbShare.jsp" %>
+	<%@ include file="includes/fbShare.jsp" %>
 </body>
 </html>

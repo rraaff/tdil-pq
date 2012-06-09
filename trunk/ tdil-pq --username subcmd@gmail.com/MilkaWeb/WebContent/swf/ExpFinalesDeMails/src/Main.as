@@ -285,7 +285,7 @@
 		/* Acomodo el fondo */
 		private function set_background_mc(){
 			btnSubi_mc.x = (slider_width - 130) / 2;
-			btnSubi_mc.y = slider_height - 180 + info_height;
+			btnSubi_mc.y = slider_height - 120 + info_height;
 			
 			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
 		}
@@ -399,8 +399,8 @@
 			if (((slider_height-info_height-thumb_height-2*info_space) / slider_width) < rationY) {
 				//bit.width = slider_width;
 				//bit.height = rationY * bit.width;
-				bit.width = slider_height * rationX;
-				bit.height = slider_height;
+				bit.width = (slider_height-120) * rationX;
+				bit.height = (slider_height-120);
 			} else {
 				bit.height = slider_width * rationY;//slider_height-info_height-thumb_height-2*info_space;
 				bit.width = slider_width;
@@ -660,7 +660,7 @@
 			
 			var nextButton:MovieClip = new MovieClip();
 				nextButton.y=-(slider_height/2);
-				nextButton.x=(slider_width/2)-(button_size*2.5);
+				nextButton.x=(slider_width/2)-(button_size);
 			info.addChild(nextButton);
 			
 			
@@ -699,7 +699,7 @@
 			var playpauseButton:MovieClip = new MovieClip();
 				playpauseButton.x=(slider_width/2)-button_size;
 				// info_width+button_size+((slider_width-info_width)/2-button_size)/2;
-				playpauseButton.y=-(slider_height/2);
+				playpauseButton.y=2500;//-(slider_height/2);
 			
 			
 			if (auto_play)
