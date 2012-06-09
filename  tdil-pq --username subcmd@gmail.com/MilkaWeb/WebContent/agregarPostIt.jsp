@@ -132,7 +132,7 @@ body {
 	position: relative;
 }
 #SubirImagen {
-	height: 180px;
+	height: 160px;
 	width: 180px;
 	left: 300px;
 	top: 198px;
@@ -151,37 +151,59 @@ body {
 	height:120px;
 }
 #buttonHolder {
+	border:none;
 	height: 85px;
 	width: 82px;
 	left: 512px;
 	top: 70px;
 	position: relative;
 }
-#buttonHolder .okCircle, .okCircle a {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1px;
-	line-height:14px;
-	color: #684bb5;
+#buttonHolder input[type="button"], #buttonHolder input[type="submit"] {
+	color:#684bb5;
+	background:none;
 	background:transparent;
-	text-decoration: none;
 	background-image: url(images/experiencias/postits/boton.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 	width:85px;
 	height:82px;
-	border:none;
 	cursor:hand;
 	margin:0;
 	padding:0;
-	
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
-	text-shadow: none;
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-o-box-shadow: none;
+	border:none;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	text-shadow: 0 0 0 rgba(255, 255, 255, 0.0);
+	box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
+	-webkit-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
+	-moz-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
+	-o-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
+}
+#buttonHolder input[type="button"]:hover, #buttonHolder input[type="submit"]:hover {
+	/* gradient */
+	background:none;
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#5b488d, endColorstr=#806bb3)";
+	color:#684bb5;
+	background:none;
+	background:transparent;
+	background-image: url(images/experiencias/postits/boton.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+#buttonHolder > input[type="submit"] {
+	color:FFF;
+}
+
+#buttonMeArrepentiHolder {
+	height: 52px;
+	width: 160px;
+	margin:0;
+	padding:0;
+	left: 370px;
+	top: 120px;
+	position: relative;
 }
 -->
 </style>
@@ -193,7 +215,11 @@ body {
 	<div id="E-Mail"><html:text name="PostItForm" property="authorBean.email" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%></div>
 	<div id="Politicas"><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></div>
 	<div id="SubirImagen"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></div>
-	<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
+	<div id="buttonHolder">
+		<!-- h t m l : s u  b m i t    p r o p  e r t y =  " o p e r  a t i o n "   s t  y leClass="okCircle"> < / h t m l  : s u b m it-->
+		<input type="submit" value="Enviar" />
+	</div>
+	<div id="buttonMeArrepentiHolder"><a href="postits.jsp"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div>
 </html:form>
 </div>
 
