@@ -48,6 +48,15 @@
 		</sql>
 	</target>
 	
+	<target name="incremental_02" >
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl_02.sql" />
+		</sql>
+	</target>
+	
 	<target name="dump-database">  
 	    <exec executable="mysqldump" output="database-dump.sql">  
 	        <arg value="--user=root" />  
