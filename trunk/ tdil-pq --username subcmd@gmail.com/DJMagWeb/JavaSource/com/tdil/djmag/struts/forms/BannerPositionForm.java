@@ -247,6 +247,7 @@ public class BannerPositionForm extends TransactionalValidationForm implements T
 		List<String> result = new ArrayList<String>();
 		result.add(BannerInsertPoints.HOME_TOP);
 		result.add(BannerInsertPoints.HOME_RIGHT);
+		result.add(BannerInsertPoints.HOME_RIGHT_AGENDA);
 		result.add(BannerInsertPoints.NOTE_TOP);
 		result.add(BannerInsertPoints.NOTE_RIGHT);
 		return result;

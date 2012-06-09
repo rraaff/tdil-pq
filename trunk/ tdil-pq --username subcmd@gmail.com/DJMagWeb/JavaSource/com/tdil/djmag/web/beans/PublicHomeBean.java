@@ -102,6 +102,8 @@ public class PublicHomeBean  {
 	private BannerValueObject noteTop;
 	private BannerValueObject noteRight;
 	
+	private BannerValueObject homeRightAgenda;
+	
 	private List<Video> lastVideos;
 	
 	private List<Country> allCountries;
@@ -192,6 +194,10 @@ public class PublicHomeBean  {
 	
 	public boolean hasHomeRightBanner() {
 		return this.getHomeRight() != null;
+	}
+	
+	public boolean hasHomeRightAgendaBanner() {
+		return this.getHomeRightAgenda() != null;
 	}
 	
 	public boolean hasNoteTopBanner() {
@@ -664,6 +670,9 @@ public class PublicHomeBean  {
 						}
 						if (ban.getPosition().equals(BannerInsertPoints.HOME_RIGHT)) {
 							setHomeRight(ban);
+						}
+						if (ban.getPosition().equals(BannerInsertPoints.HOME_RIGHT_AGENDA)) {
+							setHomeRightAgenda(ban);
 						}
 						if (ban.getPosition().equals(BannerInsertPoints.NOTE_TOP)) {
 							setNoteTop(ban);
@@ -1182,5 +1191,13 @@ public class PublicHomeBean  {
 
 	public void setRankingPositions(List<com.tdil.djmag.model.RankingPosition> rankingPositions) {
 		this.rankingPositions = rankingPositions;
+	}
+
+	public BannerValueObject getHomeRightAgenda() {
+		return homeRightAgenda;
+	}
+
+	public void setHomeRightAgenda(BannerValueObject homeRightAgenda) {
+		this.homeRightAgenda = homeRightAgenda;
 	}
 }
