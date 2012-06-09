@@ -24,8 +24,13 @@ $(document).ready(
 		  	if (response.result == 'OK') {
 		  		var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
 		  		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
+		  		if (maxindex == 0) {
+			  		var tdportada = $('<td align="center">SI</td>').appendTo( tr );
+		  		} else {
+		  			var tdportada = $('<td align="center"></td>').appendTo( tr );
+		  		}
 		  		var tdimg = $('<td align="center"><img id="ranking_' + maxindex + '" src="./viewImageGalleryPhoto.do?pos=' + maxindex + '" width="66" height="40" align="absmiddle"></td>').appendTo( tr );
-		  		var tdops = $('<td align="center" width="100"><a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryUp.do?index=\'' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryDown.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./deleteImageFromGallery.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>').appendTo( tr );
+		  		var tdops = $('<td align="center" width="100"><a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryUp.do?index=\'' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./moveImageInGalleryDown.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.ImageGalleryForm.action=\'./deleteImageFromGallery.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a>' +'<a href="javascript:document.ImageGalleryForm.action=\'./selectImageGalleryCover.do?index=' + maxindex + '\';document.ImageGalleryForm.submit();"><img src="boImages/portada.png" alt="Portada" width="20" height="20" hspace="5" border="0"></a></td>').appendTo( tr );
 		  		maxindex = maxindex + 1;
 		  	} else {
 		  		alert("Ha ocurrido un error");
@@ -68,14 +73,21 @@ div { /*border:dotted 1px #00CCFF; */}
 				<table width="380" id="image_gal_tab">
 					<tr>
 						<td class="headerTablas" width="50">Posici&oacute;n</td>
+						<td class="headerTablas" width="50">Portada</td>
 						<td class="headerTablas">Foto</td>
 						<td class="headerTablas">Acciones</td>
 					</tr>
+					<%	ImageGalleryForm imageGalleryForm = (ImageGalleryForm)session.getAttribute("ImageGalleryForm"); %>
 					<logic:iterate id="selectedPosition" name="ImageGalleryForm" property="positions" indexId="iterIndexPositions">  
 						<tr>
 							<td align="center"><%=iterIndexPositions + 1%></td>
+							<td align="center"><%=(iterIndexPositions == imageGalleryForm.getCoverPosition()) ? "SI" : ""%></td>
 							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewImageGalleryPhoto.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
-							<td align="center" width="100"><a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a><a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a><a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>
+							<td align="center" width="100">
+								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./selectImageGalleryCover.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/portada.png" alt="Portada" width="20" height="20" hspace="5" border="0"></a></td>
 						</tr>
 					</logic:iterate>
 				</table>
