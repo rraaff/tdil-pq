@@ -9,12 +9,14 @@
 <%@page import="com.tdil.djmag.model.valueobjects.NoteValueObject"%>
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%
+String startString = request.getParameter("start");
+int start = PublicHomeBean.parsePageParam(startString);
 String country = request.getParameter("country");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
 	SelectCountryServlet.initForCountry(request, country, "");
 } 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-	List<RankingPosition> positions = publicHomeBean.getRankingPositions();
+	List<RankingPosition> positions = publicHomeBean.getRankingPositions(start);
 	if (positions == null || positions.isEmpty()) {
 		String theURL = "../../selectCountry.st?iso_code_2=" + country;
 		theURL = response.encodeRedirectURL(theURL);
@@ -222,7 +224,7 @@ div {
 		<div id="left">
 			<div id="note">
 				<div id="top100LB">
-					<% int positionIndex = 1;
+					<% int positionIndex = start + 1;
 					for (RankingPosition position : positions) { %>
 						<div id="renglonRank">
 							<div id="position"><%=positionIndex++ %></div>
@@ -246,6 +248,13 @@ div {
 					<% } %>
 				</div>
 			</div>
+			<% if (start > 0) { %>
+				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start - PublicHomeBean.RANKING_PAGINATION%>">Ir a la pagina anterior</a>
+			<% } %>
+			<% if (start < 90) { %>
+				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start + PublicHomeBean.RANKING_PAGINATION%>">Ir a la pagina siguiente</a>
+			<% } %>
+			
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
 				</div>
