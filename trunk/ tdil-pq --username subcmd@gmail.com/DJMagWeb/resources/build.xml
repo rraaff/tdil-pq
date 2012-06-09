@@ -79,6 +79,15 @@
 		</war>
 	</target>
 	
+	<target name="hotDeploy">
+		<delete dir="DJMAG.tmp" failonerror="false"></delete>
+		<mkdir dir="DJMAG.tmp"/>
+		<zip destfile="./DJMAG.tmp/DJMAG_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
+		</zip>
+		<scp file="./DJMAG.tmp/DJMAG_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true"></scp>
+		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_djmag.sh"/>
+	</target>
+	
 	<target name="makeEntregable">
 		<delete dir="DJMAG.tmp" failonerror="false"></delete>
 		<mkdir dir="DJMAG.tmp"/>
