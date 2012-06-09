@@ -531,6 +531,7 @@ public class PublicHomeBean  {
 				public Object executeInTransaction() throws SQLException {
 					ImageInGalleryExample example = new ImageInGalleryExample();
 					example.createCriteria().andIdGalleryEqualTo(gallery.getId());
+					example.setOrderByClause("orderNumber");
 					return DAOManager.getImageInGalleryDAO().selectImageInGalleryByExample(example);
 				}
 			});
