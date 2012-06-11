@@ -206,7 +206,7 @@ div {
 <div id="supercontainer">
 	<div id="portaHeader">
 		<div id="header">
-			<div id="logo"><a href="../../index.jsp"><img src="../../images/logo.gif" width="197" height="123" /></a></div>
+			<div id="logo"><a href="../../index.jsp"><img src="../../images/logo.png" width="197" height="123" /></a></div>
 			<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>

@@ -26,13 +26,15 @@ img {
 	border:0;
 }
 body {
-	background-color:#000000;
+	/*background-color:#000000;*/
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	font-style: normal;
 	line-height: normal;
 	font-weight: normal;
-	color: #fff;	
+	color: #fff;
+	background-image: url(../images/fondo_v4.png);
+	background-repeat: repeat;
 }
 
 div {
@@ -124,8 +126,8 @@ body {
 	background-color:#000;
 }
 #portaHeader {
-	background-image: url(../images/bg-headerHome.png);
-	background-repeat: repeat;
+	/*background-image: url(../images/bg-headerHome.png);
+	background-repeat: repeat;*/
 	width: 1010px;
 	height: 123px;
 	margin:0 auto;
@@ -139,8 +141,8 @@ body {
 	margin-left: auto;*/
 }
 #portaHeader #header #logo {
-	background-image: url(../images/logoHome.png);
-	background-repeat: no-repeat;
+	/*background-image: url(../images/logoHome.png);
+	background-repeat: no-repeat;*/
 	float: left;
 	height: 123px;
 	width: 197px;

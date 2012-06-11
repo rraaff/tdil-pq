@@ -172,6 +172,10 @@ div {
 	margin-left:auto;
 	margin-right:auto;
 }
+.noteHelper {
+	background-repeat: no-repeat;
+	background-position: right center;
+}
 </style>
 </head>
 <body>
@@ -179,7 +183,7 @@ div {
 <div id="supercontainer">
 	<div id="portaHeader">
 		<div id="header">
-			<div id="logo"><a href="../../../index.jsp"><img src="../../../images/logo.gif" width="197" height="123" /></a></div>
+			<div id="logo"><a href="../../../index.jsp"><img src="../../../images/logo.png" width="197" height="123" /></a></div>
 			<div id="menu">
 				<ul>
 					<% for (Section sectionIter : publicHomeBean.getSectionsForCountry()) { %>
@@ -213,7 +217,7 @@ div {
 				for (int i = 0; (i < PublicHomeBean.SECTION_PAGE_SIZE && currentPage.size() > i); i++) { 
 					NoteValueObject nvo = currentPage.get(i); %>
 				<div id="note">
-					<div id="thmbnail" style="background:url(../../../downloadThumb.st?id=<%=nvo.getNoteImages().get(0).getId()%>&width=154&height=154&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>);"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><img src="../../../images/null.gif" width="154" height="142" /></a></div>
+					<div id="thmbnail" class="noteHelper" style="background:url(../../../downloadThumb.st?id=<%=nvo.getNoteImages().get(0).getId()%>&width=154&height=154&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>);"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><img src="../../../images/null.gif" width="154" height="142" /></a></div>
 					<div id="detalle">
 						<div id="title"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getTitle() %></a></div>
 						<div id="bajada"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getSummary()%></a></div>
