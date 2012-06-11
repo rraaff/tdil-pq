@@ -83,11 +83,11 @@ div { /*border:dotted 1px #00CCFF; */}
 							<td align="center"><%=iterIndexPositions + 1%></td>
 							<td align="center"><%=(iterIndexPositions == imageGalleryForm.getCoverPosition()) ? "SI" : ""%></td>
 							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewImageGalleryPhoto.do?pos=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
-							<td align="center" width="100">
-								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
-								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>
-								<a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a>
-								<a href="javascript:document.ImageGalleryForm.action='./selectImageGalleryCover.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/portada.png" alt="Portada" width="20" height="20" hspace="5" border="0"></a></td>
+							<td align="center" width="130">
+								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryUp.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/subir.png" title="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./moveImageInGalleryDown.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/bajar.png" title="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./deleteImageFromGallery.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/borrar.png" title="Borrar" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.ImageGalleryForm.action='./selectImageGalleryCover.do?index=<%=iterIndexPositions%>';document.ImageGalleryForm.submit();"><img src="boImages/portada.png" title="Portada" width="20" height="20" hspace="5" border="0"></a></td>
 						</tr>
 					</logic:iterate>
 				</table>

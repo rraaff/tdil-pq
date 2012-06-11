@@ -55,7 +55,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	border-bottom-color: #666;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -86,7 +86,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 }
 #fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
-	color:#e25237;
+	color:#e21e26;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -109,6 +109,8 @@ div { /*border:dotted 1px #00FF00;*/ }
 	width:78px;
 	height:78px;
 	background-image:url(../../images/thmbn_default.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
 	border:solid 1px #CCCCCC;
 	margin:8px;
 	float: left;
@@ -126,7 +128,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	overflow: hidden;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:visited {
-	color:#e25237;
+	color:#e21e26;
 	font-size:13px;
 	font-weight:bold;
 	width: 520px;
@@ -152,7 +154,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	text-decoration:underline;
 }
 .vermas, .vermas a, .vermas a:active, .vermas a:visited {
-	color:#e25237;
+	color:#e21e26;
 	font-size:11px;
 	font-weight:normal;
 	text-decoration:none;
@@ -213,12 +215,12 @@ div { /*border:dotted 1px #00FF00;*/ }
 					<% for (ImageGallery imageGallery : galleries) { %>
 						<div id="renglonRank">
 							<!-- PABLO ejemplo de imagen -->
-							<div id="photo">
+							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=imageGallery.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=imageGallery.getImageext()%>)">
 								<a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html">
-									<img src="../../downloadThumb.st?id=<%=imageGallery.getImageId()%>&type=PUBLIC&ext=<%=imageGallery.getImageext()%>&width=100&height=100">
+									<img src="../../images/null.gif" width="78" height="78">
 								</a>
 							</div>
-							<div id="photo"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"></a></div>
+							<!--div id="photo"><a href="../< % = p u b licHomeBean.getCountry().getIsoCode2()%>/viewGallery< % = i m ageGallery.getId()%>.html"></a></div -->
 							<div id="ranked">
 								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a></span>
 								<span class="description"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getDescription()%></a></span>

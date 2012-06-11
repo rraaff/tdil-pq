@@ -51,7 +51,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	border-bottom-color: #b5b5b5;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -110,7 +110,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	padding-top:13px;
 }
 #fakeLiveboxWindow #left #linksBottom a {
-	color:#e25237;
+	color:#e21e26;
 	padding:5px;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {

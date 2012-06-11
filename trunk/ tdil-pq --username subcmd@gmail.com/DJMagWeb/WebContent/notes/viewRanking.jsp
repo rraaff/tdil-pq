@@ -57,7 +57,7 @@ div {
 	border-bottom-color: #666;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -88,7 +88,7 @@ div {
 }
 #fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
-	color:#e25237;
+	color:#e21e26;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -99,7 +99,6 @@ div {
 #fakeLiveboxWindow #left #note #top100LB {
 	font-family: Arial, Helvetica, sans-serif;
 	width:650px;
-	height:1630px;
 	padding:0;
 	overflow:auto;
 }
@@ -124,6 +123,8 @@ div {
 	width:78px;
 	height:78px;
 	background-image:url(../../images/thmbn_default.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
 	border:solid 1px #CCCCCC;
 	margin:8px;
 	float: left;
@@ -141,7 +142,7 @@ div {
 	overflow: hidden;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:visited {
-	color:#e25237;
+	color:#e21e26;
 	font-size:13px;
 	font-weight:bold;
 	width: 480px;
@@ -165,8 +166,21 @@ div {
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:hover {
 	text-decoration:underline;
 }
+#fakeLiveboxWindow #left #linksBottom {
+	float:right;
+	margin-right:50px;
+}
+#fakeLiveboxWindow #left #linksBottom a {
+	color:#e21e26;
+	padding:5px;
+}
+#fakeLiveboxWindow #left #linksBottom #linkPage {
+/*	width:100px;*/
+	float:left;
+	margin-bottom:10px;
+}
 .vermas, .vermas a, .vermas a:active, .vermas a:visited {
-	color:#e25237;
+	color:#e21e26;
 	font-size:11px;
 	font-weight:normal;
 	text-decoration:none;
@@ -228,11 +242,11 @@ div {
 					for (RankingPosition position : positions) { %>
 						<div id="renglonRank">
 							<div id="position"><%=positionIndex++ %></div>
-							<div id="photo">
+							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=position.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=position.getImageext()%>)">
 								<% if (position.getImageId() != null && position.getImageId() != 0) { %>
-									<a href="./<%=position.getId()%>/rankingPosition.html"><img src="../../download.st?id=<%=position.getImageId()%>&type=PUBLIC&ext=<%=position.getImageext()%>" width="78" height="78"></a>
+									<a href="./<%=position.getId()%>/rankingPosition.html"><img src="../../images/null.gif" width="78" height="78" title="<%=position.getTitle() == null ? "" : position.getTitle()%>"></a>
 								<% } else { %>
-									<img src="../../null.gif" width="78" height="78">
+									<img src="../../images/null.gif" width="78" height="78">
 								<% } %>
 							</div>
 							<div id="ranked">
@@ -248,13 +262,14 @@ div {
 					<% } %>
 				</div>
 			</div>
-			<% if (start > 0) { %>
-				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start - PublicHomeBean.RANKING_PAGINATION%>">Ir a la pagina anterior</a>
-			<% } %>
-			<% if (start < 90) { %>
-				<a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start + PublicHomeBean.RANKING_PAGINATION%>">Ir a la pagina siguiente</a>
-			<% } %>
-			
+			<div id="linksBottom" align="center">
+				<% if (start > 0) { %>
+					<div id="linkPage"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start - PublicHomeBean.RANKING_PAGINATION%>">Anterior</a></div>
+				<% } %>
+				<% if (start < 90) { %>
+					<div id="linkPage"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=start + PublicHomeBean.RANKING_PAGINATION%>">Siguiente</a></div>
+				<% } %>
+			</div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
 				</div>

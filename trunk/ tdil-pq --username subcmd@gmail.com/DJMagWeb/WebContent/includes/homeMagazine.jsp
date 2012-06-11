@@ -47,7 +47,7 @@
 	text-decoration:underline;
 }
 #BlockMagazine #magazine #magazineContentBase #date {
-	color:#e25237;
+	color:#e21e26;
 	font-size:11px;
 }
 </style>

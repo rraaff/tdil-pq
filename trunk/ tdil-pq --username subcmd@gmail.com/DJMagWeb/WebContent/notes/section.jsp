@@ -46,7 +46,7 @@ div {
 	float:left;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -102,7 +102,7 @@ div {
 }
 #fakeLiveboxWindow #left #note #detalle #title, #fakeLiveboxWindow #left #note #detalle #title a, #fakeLiveboxWindow #left #note #detalle #title a:active, #fakeLiveboxWindow #left #note #detalle #title a:visited {
 	font-size:13px;
-	color:#e25237;
+	color:#e21e26;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -144,7 +144,7 @@ div {
 	padding-top:13px;
 }
 #fakeLiveboxWindow #left #linksBottom a {
-	color:#e25237;
+	color:#e21e26;
 	padding:5px;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {
@@ -213,7 +213,7 @@ div {
 				for (int i = 0; (i < PublicHomeBean.SECTION_PAGE_SIZE && currentPage.size() > i); i++) { 
 					NoteValueObject nvo = currentPage.get(i); %>
 				<div id="note">
-					<div id="thmbnail"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><img src="../../../download.st?id=<%=nvo.getNoteImages().get(0).getId()%>&type=note&ext=<%=nvo.getNoteImages().get(0).getExtension()%>" width="154" height="142" alt="" /></a></div>
+					<div id="thmbnail" style="background:url(../../../downloadThumb.st?id=<%=nvo.getNoteImages().get(0).getId()%>&width=154&height=154&type=PUBLIC&ext=<%=nvo.getNoteImages().get(0).getExtension()%>);"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><img src="../../../images/null.gif" width="154" height="142" /></a></div>
 					<div id="detalle">
 						<div id="title"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getTitle() %></a></div>
 						<div id="bajada"><a href="../../../<%=publicHomeBean.getExternalLink(nvo)%>?s=<%=section.getId()%>&p=<%=pageNumber%>"><%=nvo.getSummary()%></a></div>

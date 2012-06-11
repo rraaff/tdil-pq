@@ -119,11 +119,9 @@ select {
 	cursor:hand;
 }
 body {
-	background-image: url(../images/bg-main.jpg);
-	background-repeat: repeat-x;
-/*	background-color:#FFFFFF;
-	background-image: url(../images/nuevoFondo.gif);
-	background-repeat: repeat;*/
+/*	background-image: url(../images/bg-main.jpg);
+	background-repeat: repeat-x;*/
+	background-color:#000;
 }
 #portaHeader {
 	background-image: url(../images/bg-headerHome.png);
@@ -187,7 +185,7 @@ body {
 }
 #portaHeader #header #menu li a:hover {
 	background-image: none;
-	background-color:#e25237;
+	background-color:#e21e26;
 	padding-right: 12px;
 	padding-left: 12px;
 	display: block;
@@ -235,7 +233,7 @@ body {
 	font-size: 12px;
 	line-height: 25px;
 	font-weight: normal;
-	color: #e25237;
+	color: #e21e26;
 	text-align: right;
 	float: left;
 	width: 19px;
@@ -257,7 +255,7 @@ body {
 	background-color:#525252;
 }
 #BlockMain #top100Home #linkMore, #BlockMain #top100Home #linkMore a {
-	color:#e25237;
+	color:#e21e26;
 	float:left;
 	font-size: 12px;
 	position: relative;
@@ -301,7 +299,7 @@ body {
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #FFFFFF;
-	background-color: #e25237;
+	background-color: #e21e26;
 	float: right;
 	height: 51px;
 	width: 250px;
@@ -453,7 +451,7 @@ body {
 	text-align:center;
 }
 #footer #copyright a {
-	color:#e25237;
+	color:#e21e26;
 }
 #footer #copyright a:hover {
 	color:#FFFF33;
