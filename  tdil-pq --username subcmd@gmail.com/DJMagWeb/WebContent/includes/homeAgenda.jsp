@@ -32,7 +32,7 @@
 	float:left;
 }
 #BlockHomeCalendar #calendarEvent #date, #BlockHomeCalendar #calendarEvent #date a, #BlockHomeCalendar #calendarEvent #date a:hover {
-	background-color:#e25237;
+	background-color:#e21e26;
 	color:#FFFF33;
 	font-size:11px;
 	text-decoration:none;
@@ -57,13 +57,18 @@
 #titleNoteInAgenda a:hover {
 	text-decoration:underline;
 }
+.fotoHelperAgenda {
+	background-image: url(../images/foto2.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
 </style>
 <h2>calendario de eventos</h2>
 <% if (publicHomeBean.hasAgenda()) { %>
 	<div id="BlockHomeCalendar">
 	<% for (NoteValueObject note : publicHomeBean.getReducedAgenda()) { %>
 		<div id="calendarEvent">
-			<div id="image"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="./download.st?id=<%=note.getAgendaId()%>&type=PUBLIC&ext=<%=note.getAgendaext()%>" height="30" width="30"></a></div>
+			<div id="image" class="fotoHelperAgenda" style="background:url(./downloadThumb.st?id=<%=note.getAgendaId()%>&width=60&height=60&type=PUBLIC&ext=<%=note.getAgendaext()%>)"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="images/null.gif" height="30" width="30"></a></div>
 			<div id="renglon"><div id="date"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></a></div><div id="titleNoteInAgenda"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=note.getTitle() %></div></a></div>
 		</div>
 	<% } %>

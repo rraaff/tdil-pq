@@ -62,7 +62,7 @@ div {
 	border-bottom-color: #b5b5b5;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -120,7 +120,7 @@ div {
 }
 #ranked #title, #ranked #title a, #ranked #title a:active, #ranked #title a:visited {
 	font-size:14px;
-	color:#e25237;
+	color:#e21e26;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -167,7 +167,7 @@ div {
 	padding-top:13px;
 }
 #fakeLiveboxWindow #left #linksBottom a {
-	color:#e25237;
+	color:#e21e26;
 	padding:5px;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {

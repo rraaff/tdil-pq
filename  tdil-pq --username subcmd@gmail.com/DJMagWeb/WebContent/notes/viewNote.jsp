@@ -64,7 +64,7 @@ div {
 	border-bottom-color: #b5b5b5;
 }
 #sectionTitle {
-	background-color: #e55532;
+	background-color: #e21e26;
 	font-family: 'Doppio One', sans-serif;
 	font-size: 15px;
 	font-weight: normal;
@@ -104,7 +104,7 @@ div {
 }
 #fakeLiveboxWindow #left #note h1 {
 	font-size:18px;
-	color:#e25237;
+	color:#e21e26;
 	line-height: normal;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -147,7 +147,7 @@ div {
 	padding-top:13px;
 }
 #fakeLiveboxWindow #left #linksBottom a {
-	color:#e25237;
+	color:#e21e26;
 }
 #fakeLiveboxWindow #left #linksBottom #linkHome {
 	float:left;
@@ -219,7 +219,7 @@ div {
 					<div id="slider" class="nivoSlider">
 						<% /*Generacion de imagenes*/
 							for (NoteImage noteImage : noteToShow.getNoteImages()) { %>
-							<img src="../../../download.st?id=<%=noteImage.getId()%>&type=note&ext=<%=noteImage.getExtension()%>" alt="" width="654" height="400" />
+							<img src="../../../downloadThumb.st?id=<%=noteImage.getId()%>&width=654&height=654&type=PUBLIC&ext=<%=noteImage.getExtension()%>" width="654" height="400" />
 						<% } %>
 					</div>
 				</div>
