@@ -219,7 +219,7 @@ div {
 					<div id="slider" class="nivoSlider">
 						<% /*Generacion de imagenes*/
 							for (NoteImage noteImage : noteToShow.getNoteImages()) { %>
-							<img src="../../../downloadThumb.st?id=<%=noteImage.getId()%>&width=654&height=654&type=PUBLIC&ext=<%=noteImage.getExtension()%>" width="654" height="400" />
+							<img src="../../../downloadThumb.st?id=<%=noteImage.getId()%>&width=654&height=654&type=note&ext=<%=noteImage.getExtension()%>" width="654" height="400" />
 						<% } %>
 					</div>
 				</div>
