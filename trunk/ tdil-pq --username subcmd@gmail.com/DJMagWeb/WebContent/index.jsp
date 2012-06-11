@@ -108,7 +108,7 @@ $(document).ready(
 <a name="top"></a>
 <div id="portaHeader">
 	<div id="header">
-		<div id="logo"><img src="images/logo.gif" width="197" height="123" /></div>
+		<div id="logo"><img src="images/logo.png" width="197" height="123" /></div>
 		<div id="menu">
 			<ul>
 				<% for (Section section : publicHomeBean.getSectionsForCountry()) { %>

@@ -21,7 +21,7 @@
 	margin:0;
 	padding:0;
 	width:310px;
-	height:40px;
+	height:45px;
 	overflow:hidden;
 	text-decoration:none;
 }
