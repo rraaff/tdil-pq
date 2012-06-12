@@ -10,16 +10,17 @@
 
 	<target name="createDatabase">
 		<condition property="root.pass" value="root">
-		    <and>
-		      <os family="unix"/>
-		    </and>
-		  </condition>
-		  <condition property="root.pass" value="">
-		  	<and><not>
-		      <os family="unix"/>
-		    </not>
-		  	</and>
-		  </condition>
+			<and>
+				<os family="unix"/>
+			</and>
+		</condition>
+		<condition property="root.pass" value="">
+			<and>
+				<not>
+					<os family="unix"/>
+				</not>
+			</and>
+		</condition>
 		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
@@ -37,8 +38,8 @@
 			<transaction src="ddl_01.sql" />
 		</sql>
 	</target>
-	
-	
+
+
 	<target name="incremental_01" >
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
@@ -47,7 +48,7 @@
 			<transaction src="ddl_01.sql" />
 		</sql>
 	</target>
-	
+
 	<target name="incremental_02" >
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
@@ -56,19 +57,20 @@
 			<transaction src="ddl_02.sql" />
 		</sql>
 	</target>
-	
-	<target name="dump-database">  
-	    <exec executable="mysqldump" output="database-dump.sql">  
-	        <arg value="--user=root" />  
-	        <arg value="--password=root" />  
-	        <arg value="--host=localhost" />  
-	        <arg value="--port=3306" />  
-	        <arg value="DJMAG" />  
-	    </exec>  
+
+	<target name="dump-database">
+		<exec executable="mysqldump" output="database-dump.sql">
+			<arg value="--user=root" />
+			<arg value="--password=root" />
+			<arg value="--host=localhost" />
+			<arg value="--port=3306" />
+			<arg value="DJMAG" />
+		</exec>
 	</target>
 
 	<target name="makeWar">
-		<delete file="./DJMAG.tmp/DJMAG_WEB.war"></delete>
+		<delete file="./DJMAG.tmp/DJMAG_WEB.war">
+		</delete>
 		<war destfile="./DJMAG.tmp/DJMAG_WEB.war" basedir="../../DJMagWeb/WebContent" webxml="../../DJMagWeb/WebContent/WEB-INF/web.xml">
 			<classes dir="../../JavaBase/bin"/>
 			<lib dir="../../EnvironmentLibraries/">
@@ -78,24 +80,48 @@
 			</lib>
 		</war>
 	</target>
-	
+
 	<target name="hotDeploy">
-		<delete dir="DJMAG.tmp" failonerror="false"></delete>
+		<delete dir="DJMAG.tmp" failonerror="false">
+		</delete>
 		<mkdir dir="DJMAG.tmp"/>
 		<zip destfile="./DJMAG.tmp/DJMAG_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
 		</zip>
-		<scp file="./DJMAG.tmp/DJMAG_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true"></scp>
+		<scp file="./DJMAG.tmp/DJMAG_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true">
+		</scp>
 		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_djmag.sh"/>
 	</target>
-	
-	<target name="makeEntregable">
-		<delete dir="DJMAG.tmp" failonerror="false"></delete>
+
+	<target name="hotDeploy-prd">
+		<input message="Realmente desea hacer el hot deploy en produccion? (y/n)?" validargs="y,n" addproperty="do.delete" />
+		<condition property="do.abort">
+			<equals arg1="n" arg2="${do.delete}" />
+		</condition>
+		<fail if="do.abort">Build aborted by user.</fail>
+		<delete dir="DJMAG.tmp" failonerror="false">
+		</delete>
 		<mkdir dir="DJMAG.tmp"/>
-		<antcall target="makeWar"></antcall>
-    	<copy todir="DJMAG.tmp" file="Instrucciones.txt"></copy>
-    	<copy todir="DJMAG.tmp" file="database.sql"></copy>
-    	<copy todir="DJMAG.tmp" file="ddl.sql"></copy>
-		<copy todir="DJMAG.tmp" file="DJMAG_WEB.xml"></copy>
+		<zip destfile="./DJMAG.tmp/DJMAG_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
+		</zip>
+		<scp file="./DJMAG.tmp/DJMAG_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@23.23.211.79:/home/ubuntu/" passphrase="" trust="true">
+		</scp>
+		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="23.23.211.79" trust="true" knownhosts="23.23.211.79" passphrase="" command="sudo /home/ubuntu/hotdeploy_djmag.sh"/>
 	</target>
-	
+
+	<target name="makeEntregable">
+		<delete dir="DJMAG.tmp" failonerror="false">
+		</delete>
+		<mkdir dir="DJMAG.tmp"/>
+		<antcall target="makeWar">
+		</antcall>
+		<copy todir="DJMAG.tmp" file="Instrucciones.txt">
+		</copy>
+		<copy todir="DJMAG.tmp" file="database.sql">
+		</copy>
+		<copy todir="DJMAG.tmp" file="ddl.sql">
+		</copy>
+		<copy todir="DJMAG.tmp" file="DJMAG_WEB.xml">
+		</copy>
+	</target>
+
 </project>
