@@ -1,0 +1,71 @@
+<project name="TUAFESTA MysqlCreateTable" basedir="." default="createTables">
+
+	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
+	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
+	<property name="root.user" value="root" />
+
+	<property name="db.url" value="jdbc:mysql://localhost:3306/TUAFESTA" />
+	<property name="db.user" value="TUAFESTA_USER" />
+	<property name="db.pass" value="TUAFESTA_USER" />
+	
+	<target name="createDatabase">
+		  <condition property="root.pass" value="root">
+		    <and>
+		      <os family="unix"/>
+		    </and>
+		  </condition>
+		  <condition property="root.pass" value="">
+		  	<and><not>
+		      <os family="unix"/>
+		    </not>
+		  	</and>
+		  </condition>
+		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="database.sql" />
+		</sql>
+	</target>
+
+	<target name="createTables" depends="createDatabase">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl.sql" />
+		</sql>
+	</target>
+	
+	<target name="makeWar">
+		<delete file="./TUAFESTA.tmp/TUAFESTA_WEB.war"></delete>
+		<war destfile="./TUAFESTA.tmp/TUAFESTA_WEB.war" basedir="../../TUAFESTAWeb/WebContent" webxml="../../TUAFESTAWeb/WebContent/WEB-INF/web.xml">
+			<classes dir="../../JavaBase/bin"/>
+			<lib dir="../../EnvironmentLibraries/">
+				<include name="*.jar"/>
+				<exclude name="servlet-api.jar"/>
+				<exclude name="jsch-0.1.39.jar"/>
+			</lib>
+		</war>
+	</target>
+	
+	<target name="hotDeploy">
+		<delete dir="TUAFESTA.tmp" failonerror="false"></delete>
+		<mkdir dir="TUAFESTA.tmp"/>
+		<zip destfile="./TUAFESTA.tmp/TUAFESTA_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
+		</zip>
+		<scp file="./TUAFESTA.tmp/TUAFESTA_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true"></scp>
+		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_TUAFESTA.sh"/>
+	</target>
+	
+	<target name="makeEntregable">
+		<delete dir="TUAFESTA.tmp" failonerror="false"></delete>
+		<mkdir dir="TUAFESTA.tmp"/>
+		<antcall target="makeWar"></antcall>
+    	<copy todir="TUAFESTA.tmp" file="Instrucciones.txt"></copy>
+    	<copy todir="TUAFESTA.tmp" file="database.sql"></copy>
+    	<copy todir="TUAFESTA.tmp" file="ddl.sql"></copy>
+		<copy todir="TUAFESTA.tmp" file="TUAFESTA_WEB.xml"></copy>
+	</target>
+	
+</project>

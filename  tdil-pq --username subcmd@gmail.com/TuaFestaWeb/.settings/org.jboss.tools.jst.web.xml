@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-systems VERSION="3.2.1.v20111025-0439-H174-Final"
+ application-name="ZZZStruts" model-entity="FileSystems" workspace-home="./WebContent/WEB-INF">
+ <file-system NAME="WEB-INF" location="%workspace.home%" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-ROOT" info="Content-Type=Web"
+  location="%workspace.home%/.." model-entity="FileSystemFolder"/>
+ <file-system NAME="src" location="%workspace.home%/../../JavaSource" model-entity="FileSystemFolder"/>
+ <file-system NAME="classes" location="%workspace.home%/classes" model-entity="FileSystemFolder"/>
+ <file-system NAME="build" location="%workspace.home%/../../ant" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
+ <file-system NAME="DJMagWeb" location="%eclipse.project%" model-entity="FileSystemFolder"/>
+ <file-system NAME="lib-jasper-runtime.jar"
+  location="/home/mgodoy/icarus/tomcat/common/lib/jasper-runtime.jar" model-entity="FileSystemJar">
+  <FOLDER NAME="META-INF" model-entity="JarFolder"/>
+  <FOLDER NAME="org" model-entity="JarFolder">
+   <FOLDER NAME="apache" model-entity="JarFolder">
+    <FOLDER NAME="jasper" model-entity="JarFolder">
+     <FOLDER NAME="compiler" model-entity="JarFolder"/>
+     <FOLDER NAME="resources" model-entity="JarFolder"/>
+     <FOLDER NAME="runtime" model-entity="JarFolder"/>
+     <FOLDER NAME="security" model-entity="JarFolder"/>
+     <FOLDER NAME="util" model-entity="JarFolder"/>
+    </FOLDER>
+   </FOLDER>
+  </FOLDER>
+ </file-system>
+ <file-system NAME="lib-jsp-api.jar"
+  location="/home/mgodoy/icarus/tomcat/common/lib/jsp-api.jar" model-entity="FileSystemJar">
+  <FOLDER NAME="META-INF" model-entity="JarFolder"/>
+  <FOLDER NAME="javax" model-entity="JarFolder">
+   <FOLDER NAME="servlet" model-entity="JarFolder">
+    <FOLDER NAME="jsp" model-entity="JarFolder">
+     <FOLDER NAME="el" model-entity="JarFolder"/>
+     <FOLDER NAME="resources" model-entity="JarFolder"/>
+     <FOLDER NAME="tagext" model-entity="JarFolder"/>
+    </FOLDER>
+   </FOLDER>
+  </FOLDER>
+ </file-system>
+ <file-system NAME="lib-servlet-api.jar"
+  location="/home/mgodoy/icarus/tomcat/common/lib/servlet-api.jar" model-entity="FileSystemJar">
+  <FOLDER NAME="META-INF" model-entity="JarFolder"/>
+  <FOLDER NAME="javax" model-entity="JarFolder">
+   <FOLDER NAME="servlet" model-entity="JarFolder">
+    <FOLDER NAME="http" model-entity="JarFolder"/>
+    <FOLDER NAME="resources" model-entity="JarFolder"/>
+   </FOLDER>
+  </FOLDER>
+ </file-system>
+ <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
+  <module URI="/WEB-INF/struts-config.xml" model-entity="JstWebModule"
+   model-path="/struts-config.xml" src="src" web-root="WEB-ROOT"/>
+ </web>
+</file-systems>

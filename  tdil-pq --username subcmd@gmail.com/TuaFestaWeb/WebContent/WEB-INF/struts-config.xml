@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean id="LoginForm" name="LoginForm" type="com.tdil.tuafesta.struts.forms.LoginForm"/>
+  <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.tuafesta.struts.forms.SystemPropertyForm"/>
+  <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.tuafesta.struts.forms.NotificationEmailForm"/>
+  <form-bean id="RawInsertForm" name="RawInsertForm" type="com.tdil.tuafesta.struts.forms.RawInsertForm"/>
+ </form-beans>
+ <global-exceptions/>
+ <global-forwards>
+  <forward name="ajaxReturn" path="/empty.jsp"/>
+  <forward name="notLogged" path="/boLogin.jsp"/>
+  <forward name="notAuthorized" path="/boLogin.jsp"/>
+  <forward name="invalidAction" path="/boLogin.jsp"/>
+ </global-forwards>
+ <action-mappings>
+  <action name="LoginForm" path="/login" scope="request" type="com.tdil.tuafesta.struts.action.LoginAction">
+   <forward name="failure" path="/boLogin.jsp"/>
+   <forward name="success" path="/boHome.jsp" redirect="true"/>
+  </action>
+  <action path="/logout" type="com.tdil.tuafesta.struts.action.LogoutAction"/>
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/goToSystemPropertyABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/saveSystemProperty" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/editSystemProperty" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="SystemPropertyForm" parameter="Admin"
+   path="/toggleDeletedSystemProperty" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/systemPropertyAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/systemPropertyAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/goToNotificationEmailABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/saveNotificationEmail" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/editNotificationEmail" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/toggleDeletedNotificationEmail" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="NotificationEmailForm" parameter="Admin"
+   path="/testEmailNotification" scope="session" type="com.tdil.tuafesta.struts.action.TestEmailNotificationAction">
+   <forward name="continue" path="/notificationEmailAdministration.jsp"/>
+  </action>
+  <action name="RawInsertForm" parameter="Admin"
+   path="/goToRawInsertABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+  </action>
+  <action name="RawInsertForm" parameter="Admin" path="/saveRawInsert"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/rawInsertAdministration.jsp"/>
+  </action>
+  <action name="RawInsertForm" parameter="Admin" path="/editRawInsert"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+  </action>
+ </action-mappings>
+ <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
+ <message-resources parameter="com.tdil.tuafesta.struts.resources.ApplicationResources"/>
+</struts-config>
