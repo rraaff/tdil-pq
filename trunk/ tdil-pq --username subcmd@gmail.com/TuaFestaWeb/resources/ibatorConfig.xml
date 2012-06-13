@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+
+<ibatorConfiguration>
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/JavaBase/bin/" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/concu_test/EnvironmentLibraries/pluginibator.jar" />
+<ibatorContext 
+  id="ibatorContext" 
+  targetRuntime="Ibatis2Java5" 
+  defaultModelType="flat">
+
+<ibatorPlugin type="com.tdil.ibatis.plugin.MySqlDeleteByExamplePlugin">
+</ibatorPlugin>
+
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/TUAFESTA" userId="TUAFESTA_USER"
+			password="TUAFESTA_USER" />
+
+
+<javaModelGenerator targetPackage="com.tdil.tuafesta.model"
+  targetProject="TuaFestaWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="trimStrings" value="true" />
+  <property name="rootClass" value="com.tdil.ibatis.PersistentObject" />
+</javaModelGenerator>
+
+<sqlMapGenerator targetPackage="com.tdil.tuafesta.dao.maps"
+  targetProject="TuaFestaWeb">
+  <property name="enableSubPackages" value="true" />
+</sqlMapGenerator>
+
+<daoGenerator type="GENERIC-CI" 
+targetPackage="com.tdil.tuafesta.dao"
+implementationPackage="com.tdil.tuafesta.dao.impl"
+targetProject="TuaFestaWeb">
+  <property name="enableSubPackages" value="true" />
+  <property name="methodNameCalculator" value="extended" />
+</daoGenerator>
+
+<table schema="TUAFESTA" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="su">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="RAW_INSERT" domainObjectName="RawInsert" alias="ri">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+</ibatorContext>
+</ibatorConfiguration>
