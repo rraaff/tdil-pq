@@ -957,7 +957,7 @@ html>/**/body #col_derecha ul li a.playlist, x:-moz-any-link, x:default {
 	display: none;
 }
 
-input[type="button"], input[type="submit"] {
+input[type="button"], input[type="submit"], .buttonNormal {
 	color: #FFFFFF;
 	border-top-style: none;
 	border-right-style: none;

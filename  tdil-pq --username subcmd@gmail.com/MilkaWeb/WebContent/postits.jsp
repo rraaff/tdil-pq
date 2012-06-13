@@ -29,6 +29,7 @@
 	String prevPage = "finalesDeEmail.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
+<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <script>
@@ -85,7 +86,7 @@ body {
 <div id="flashin">
 	<script language="javascript">
 		if (AC_FL_RunContent == 0) {
-			alert("Esta página requiere el archivo AC_RunActiveContent.js.");
+			alert("Esta p&aacute;gina requiere el archivo AC_RunActiveContent.js.");
 		} else {
 			AC_FL_RunContent(
 				'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',

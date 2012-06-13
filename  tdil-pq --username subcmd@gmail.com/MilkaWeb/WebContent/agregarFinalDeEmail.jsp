@@ -10,6 +10,7 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <%@ include file="includes/head.jsp" %>
+<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <script>
