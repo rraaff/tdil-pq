@@ -158,10 +158,10 @@ body {
 	top: 70px;
 	position: relative;
 }
-#buttonHolder input[type="button"], #buttonHolder input[type="submit"] {
+input[type="button"], input[type="submit"] {
 	color:#684bb5;
 	background:none;
-	background:transparent;
+	background-color:transparent;
 	background-image: url(images/experiencias/postits/boton.png);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -179,8 +179,9 @@ body {
 	-webkit-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
 	-moz-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
 	-o-box-shadow: 0 0 0 0 rgba(44, 28, 89, 0.0);
+	position: relative;
 }
-#buttonHolder input[type="button"]:hover, #buttonHolder input[type="submit"]:hover {
+input[type="button"]:hover, input[type="submit"]:hover {
 	/* gradient */
 	background:none;
 	/* For Internet Explorer 8 */
@@ -192,10 +193,22 @@ body {
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-#buttonHolder > input[type="submit"] {
-	color:FFF;
+.okCircle, .okCircle a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1px;
+	line-height:14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(images/experiencias/postits/boton.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:85px;
+	height:82px;
+	border:none;
+	cursor:hand;
+	margin:0;
+	padding:0;
 }
-
 #buttonMeArrepentiHolder {
 	height: 52px;
 	width: 160px;
@@ -204,6 +217,109 @@ body {
 	left: 370px;
 	top: 120px;
 	position: relative;
+}
+/* recuperados de home styles*/
+.hide {
+	display: none;
+}
+@charset "utf-8";
+/* CSS Document */
+/*   Reseteo CSS   ***************************************************/
+
+body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	margin:0;
+	padding:0;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { 
+	border:0;
+}
+a img{border:0; outline:none;}
+a{
+	color:#c8c8c8;
+	outline:none;
+	cursor:pointer;
+	text-decoration:none;
+}
+a:hover{
+	color:#FFF;
+	outline:none;
+	text-decoration:underline;
+}
+p, ul{
+	margin-bottom:10px;	
+}
+.derecha{
+	float:right;
+	width:200px;
+	text-align:right;
+	margin:40px 20px 5px 0;
+}
+.violeta{
+	color:#715da5;	
+}
+h2{
+	margin:0;
+	padding:0;	
+	font-family: 'Sue Ellen Francisco', cursive;
+	text-transform:uppercase;
+	font-size:18px;
+	line-height:22px;
+	width:350px;
+}
+#titulo{
+	width:900px;
+	background:url(../images/linea-titulos.png) no-repeat 0 bottom;
+	margin:20px 0 0 48px;
+	padding:0 0 10px 0;
+	float:left;
+	clear:both;
+}
+#titulo h2{
+	font-family: 'Sue Ellen Francisco', cursive;
+	font-size:25px;
+	line-height:22px;
+	text-transform:none;
+	width:300px;
+	float:left;
+}
+#titulo h3{
+	float:right;
+	width:300px;
+	font-family: 'Sue Ellen Francisco', cursive;
+	font-size:25px;
+	line-height:22px;
+	margin:0;
+	padding:0;
+	text-align:right;
+}
+#header_home h2{
+	margin:35px 0 0 20px;
+	float:left;	
 }
 -->
 </style>
@@ -215,11 +331,8 @@ body {
 	<div id="E-Mail"><html:text name="PostItForm" property="authorBean.email" styleClass="normalField"/><%=MilkaErrorFormatter.getErrorFrom(request, "Author.email.err")%></div>
 	<div id="Politicas"><%=MilkaErrorFormatter.getErrorFrom(request, "Author.politics.err")%><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></div>
 	<div id="SubirImagen"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></div>
-	<div id="buttonHolder">
-		<!-- h t m l : s u  b m i t    p r o p  e r t y =  " o p e r  a t i o n "   s t  y leClass="okCircle"> < / h t m l  : s u b m it-->
-		<input type="submit" value="Enviar" />
-	</div>
-	<div id="buttonMeArrepentiHolder"><a href="postits.jsp"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div>
+	<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
+	<div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div>
 </html:form>
 </div>
 

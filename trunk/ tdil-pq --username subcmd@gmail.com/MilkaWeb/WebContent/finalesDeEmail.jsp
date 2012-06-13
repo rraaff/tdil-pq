@@ -26,6 +26,7 @@
 %>
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
 <%@ include file="includes/head.jsp" %>
+<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
