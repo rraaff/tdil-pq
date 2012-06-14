@@ -39,6 +39,7 @@ $(document).ready(
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=159591494155451";
+  js.async = true;
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 

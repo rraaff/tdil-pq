@@ -76,6 +76,7 @@
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war"></delete>
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
 		</war>
+		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
 	</target>
 
 	<target name="js.minify">
