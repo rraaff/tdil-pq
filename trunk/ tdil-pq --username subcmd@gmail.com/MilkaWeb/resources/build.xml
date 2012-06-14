@@ -1,25 +1,29 @@
 <project name="Milka MysqlCreateTable" basedir="." default="createTables">
 
+	<property name="project.name.cap" value="Milka" />
+	<property name="project.name.upper" value="MILKA" />
+	<property name="project.name.lower" value="milka" />
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
 	<property name="root.user" value="root" />
 
-	<property name="db.url" value="jdbc:mysql://localhost:3306/MILKA" />
-	<property name="db.user" value="MILKA_USER" />
-	<property name="db.pass" value="MILKA_USER" />
-	
+	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name}" />
+	<property name="db.user" value="${project.name.upper}_USER" />
+	<property name="db.pass" value="${project.name.upper}_USER" />
+
 	<target name="createDatabase">
-		  <condition property="root.pass" value="root">
-		    <and>
-		      <os family="unix"/>
-		    </and>
-		  </condition>
-		  <condition property="root.pass" value="">
-		  	<and><not>
-		      <os family="unix"/>
-		    </not>
-		  	</and>
-		  </condition>
+		<condition property="root.pass" value="root">
+			<and>
+				<os family="unix" />
+			</and>
+		</condition>
+		<condition property="root.pass" value="">
+			<and>
+				<not>
+					<os family="unix" />
+				</not>
+			</and>
+		</condition>
 		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
@@ -36,8 +40,8 @@
 			<transaction src="ddl.sql" />
 		</sql>
 	</target>
-	
-	<target name="incremental_01" >
+
+	<target name="incremental_01">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
@@ -45,8 +49,8 @@
 			<transaction src="ddl_01.sql" />
 		</sql>
 	</target>
-	
-	<target name="apodos" >
+
+	<target name="apodos">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
@@ -56,34 +60,69 @@
 	</target>
 
 	<target name="makeWar">
-		<delete file="./MILKA.tmp/MILKA_WEB.war"></delete>
-		<war destfile="./MILKA.tmp/MILKA_WEB.war" basedir="../../MilkaWeb/WebContent" webxml="../../MilkaWeb/WebContent/WEB-INF/web.xml">
-			<classes dir="../../JavaBase/bin"/>
+		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
+		</delete>
+		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
+			<classes dir="../../JavaBase/bin" />
 			<lib dir="../../EnvironmentLibraries/">
-				<include name="*.jar"/>
-				<exclude name="servlet-api.jar"/>
-				<exclude name="jsch-0.1.39.jar"/>
+				<include name="*.jar" />
+				<exclude name="servlet-api.jar" />
+				<exclude name="jsch-0.1.39.jar" />
 			</lib>
 		</war>
+		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
+		</unwar>
+		<antcall target="js.minify"></antcall>
+		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war"></delete>
+		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
+		</war>
 	</target>
-	
+
+	<target name="js.minify">
+		<apply verbose="true" executable="java" parallel="false" relative="true" dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/js/">
+			<fileset dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/js" includes="*.js"/>
+			<arg value="-jar" />
+			<arg path="../../DevelopmentLibraries/yuicompressor-2.4.6.jar"/>
+            <arg value="--charset"/>
+            <arg value="ISO-8859-1" />
+            <arg value="-o" />
+			<srcfile />
+			<mapper type="glob" from="*.js" to="*.js" />
+			<targetfile />
+		</apply>
+	</target>
+
 	<target name="hotDeploy">
-		<delete dir="MILKA.tmp" failonerror="false"></delete>
-		<mkdir dir="MILKA.tmp"/>
-		<zip destfile="./MILKA.tmp/MILKA_WEB.zip" basedir="../WebContent" excludes="META-INF/**,WEB-INF/**">
-		</zip>
-		<scp file="./MILKA.tmp/MILKA_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true"></scp>
-		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_milka.sh"/>
+		<delete dir="${project.name.upper}.tmp" failonerror="false"></delete>
+		<mkdir dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" />
+		<copy todir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
+			<fileset dir="../WebContent">
+				<exclude name="META-INF/**"/>
+				<exclude name="WEB-INF/**"/>
+			</fileset>
+		</copy>
+		<antcall target="js.minify"></antcall>
+		<zip destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1"></zip>
+		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
+		<!--scp file="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true">
+		</scp>
+		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_${project.name.lower}.sh" /-->
 	</target>
-	
+
 	<target name="makeEntregable">
-		<delete dir="MILKA.tmp" failonerror="false"></delete>
-		<mkdir dir="MILKA.tmp"/>
-		<antcall target="makeWar"></antcall>
-    	<copy todir="MILKA.tmp" file="Instrucciones.txt"></copy>
-    	<copy todir="MILKA.tmp" file="database.sql"></copy>
-    	<copy todir="MILKA.tmp" file="ddl.sql"></copy>
-		<copy todir="MILKA.tmp" file="MILKA_WEB.xml"></copy>
+		<delete dir="${project.name.upper}.tmp" failonerror="false">
+		</delete>
+		<mkdir dir="${project.name.upper}.tmp" />
+		<antcall target="makeWar">
+		</antcall>
+		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
+		</copy>
+		<copy todir="${project.name.upper}.tmp" file="database.sql">
+		</copy>
+		<copy todir="${project.name.upper}.tmp" file="ddl.sql">
+		</copy>
+		<copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
+		</copy>
 	</target>
-	
+
 </project>
