@@ -22,7 +22,7 @@ public class DownloadController extends HttpServlet {
 	private static final long serialVersionUID = -8356531321540585903L;
 
 	private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
-	private static final long DEFAULT_EXPIRE_TIME = 604800000L; // ..ms = 1
+	private static final long DEFAULT_EXPIRE_TIME = 2592000000L; // ..ms = 1
 																// week.
 
 	private static Logger getLog() {
