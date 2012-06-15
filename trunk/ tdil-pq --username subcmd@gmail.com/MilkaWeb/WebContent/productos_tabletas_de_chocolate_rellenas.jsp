@@ -95,8 +95,8 @@ window.addEvent('domready', function(){
 		</div>
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
-			<h3>La suavidad en su<br />estado m&aacute;s divertido</h3>
-			<p>El delicioso sabor del chocolate Milka combinando en tu boca con burbujas aireadas, logrando que lo rico tambi&eacute;n pueda ser liviano.</p>
+			<h3>La tentaci&oacute;n en<br /> estado de suavidad.</h3>
+			<p>Gotas de suavidad irresistibles con Milka Soft, Tabletas rellenas con un riqu&iacute;simo dulce de leche y otras combinaciones &uacute;nicas dif&iacute;ciles de describir en palabras.</p>
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">

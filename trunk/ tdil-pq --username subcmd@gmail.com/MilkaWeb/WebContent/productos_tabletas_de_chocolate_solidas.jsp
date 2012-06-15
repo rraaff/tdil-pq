@@ -103,8 +103,8 @@ window.addEvent('domready', function(){
 		</div>
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
-			<h3>La suavidad en su<br />estado m&aacute;s divertido</h3>
-			<p>El delicioso sabor del chocolate Milka combinando en tu boca con burbujas aireadas, logrando que lo rico tambi&eacute;n pueda ser liviano.</p>
+			<h3>La suavidad del<br />Chocolate Milka en su forma original</h3>
+			<p>Sabores que van desde la cl&aacute;sica tableta de chocolate con leche hasta las riqu&iacute;simas combinaciones con Almendras, Casta&ntilde;as con Caramelo, Oreo o ChocoSwing.</p>
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">

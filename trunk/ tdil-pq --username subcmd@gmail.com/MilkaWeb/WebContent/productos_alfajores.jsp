@@ -110,8 +110,8 @@ window.addEvent('domready', function(){
 		</div>
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
-			<h3>La suavidad en su<br />estado m&aacute;s divertido</h3>
-			<p>El delicioso sabor del chocolate Milka combinando en tu boca con burbujas aireadas, logrando que lo rico tambi&eacute;n pueda ser liviano.</p>
+			<h3>La suavidad<br />convertida en cl&aacute;sico</h3>
+			<p>El sabor del chocolate Milka en todas sus variantes; Desde el cl&aacute;sico Milka Mousse hasta los sabores &uacute;nicos del Milka Xtreme Choco y el Milka Oreo.</p>
 			<div id="gallery_container2">
 				<div id="thumb_container2">
 					<div id="thumbs2">
