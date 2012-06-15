@@ -248,7 +248,7 @@ a {color:#535353; text-decoration:none}
 		#menu ul li {
 			float:left;
 			display:inline;
-			background:url(../images/left-over.png) no-repeat left 0px;
+			/*background:url(../images/left-over.png) no-repeat left 0px;*/
 		}
 		#menu ul li:first-child {
 			margin-left:15px;
