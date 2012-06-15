@@ -38,6 +38,87 @@
   <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
  </listener>
  
+  <!-- Cache static content -->
+ <filter>
+    <filter-name>imagesCache</filter-name>
+    <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+    <init-param>
+        <param-name>static</param-name>
+        <param-value>true</param-value>
+    </init-param>
+    <init-param>
+        <param-name>expirationTime</param-name>
+        <param-value>1800</param-value>
+    </init-param>
+</filter>
+
+<filter>
+    <filter-name>cssCache</filter-name>
+    <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+    <init-param>
+        <param-name>expirationTime</param-name>
+        <param-value>1800</param-value>
+    </init-param>
+</filter>
+
+<filter>
+    <filter-name>swfCache</filter-name>
+    <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+    <init-param>
+        <param-name>expirationTime</param-name>
+        <param-value>1800</param-value>
+    </init-param>
+</filter>
+
+<filter>
+    <filter-name>jsCache</filter-name>
+    <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+    <init-param>
+        <param-name>private</param-name>
+        <param-value>true</param-value>
+    </init-param>
+    <init-param>
+        <param-name>expirationTime</param-name>
+        <param-value>1800</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>imagesCache</filter-name>
+    <url-pattern>/boImages/*</url-pattern>
+</filter-mapping>
+<filter-mapping>
+    <filter-name>imagesCache</filter-name>
+    <url-pattern>/images/*</url-pattern>
+</filter-mapping>
+<filter-mapping>
+    <filter-name>imagesCache</filter-name>
+    <url-pattern>/img/*</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+    <filter-name>cssCache</filter-name>
+    <url-pattern>/css/*</url-pattern>
+</filter-mapping>
+<filter-mapping>
+    <filter-name>cssCache</filter-name>
+    <url-pattern>/themes/*</url-pattern>
+</filter-mapping>
+<filter-mapping>
+    <filter-name>cssCache</filter-name>
+    <url-pattern>/skins/*</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+    <filter-name>swfCache</filter-name>
+    <url-pattern>/swf/*</url-pattern>
+</filter-mapping>
+
+<filter-mapping>
+    <filter-name>jsCache</filter-name>
+    <url-pattern>*.js</url-pattern>
+</filter-mapping>
+
  <!-- Seleccion de pais -->
   <servlet>
   <servlet-name>SelectCountryServlet</servlet-name>
