@@ -119,8 +119,8 @@ window.addEvent('domready', function(){
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
-					<div class="thumbnail" style="width:180px; margin-right:20px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
-					<div class="thumbnail" style="width:170px; margin-right:0px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche_blanco.jpg" width="200" height="119" /></a>Bombon Milka Blanco Dulce de Leche.</div>
+					<div class="thumbnail" style="width:180px; margin-right:20px; margin-left:10px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
+					<div class="thumbnail" style="width:170px; margin-right:0px; margin-left:10px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche_blanco.jpg" width="200" height="119" /></a>Bombon Milka Blanco Dulce de Leche.</div>
 				</div>
 			</div>
 		</div>
