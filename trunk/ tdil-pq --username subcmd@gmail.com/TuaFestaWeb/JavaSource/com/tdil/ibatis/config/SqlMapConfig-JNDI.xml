@@ -23,4 +23,8 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/BLOB_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/NOTIFICATION_EMAIL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/RAW_INSERT_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO2_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO3_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO4_SqlMap.xml"/>
 </sqlMapConfig>

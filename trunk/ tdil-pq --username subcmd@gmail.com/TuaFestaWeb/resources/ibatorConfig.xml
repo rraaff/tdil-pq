@@ -55,6 +55,15 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="RAW_INSERT" domainObjectName="RawInsert" alias="ri">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="TUAFESTA" tableName="GEO2" domainObjectName="Geo2" alias="g2">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="GEO3" domainObjectName="Geo3" alias="g3">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="GEO4" domainObjectName="Geo4" alias="g4">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>
