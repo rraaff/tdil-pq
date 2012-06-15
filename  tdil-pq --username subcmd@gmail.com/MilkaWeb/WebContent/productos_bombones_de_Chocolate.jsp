@@ -114,12 +114,13 @@ window.addEvent('domready', function(){
 		</div>
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
-			<h3>La suavidad en su<br />estado m&aacute;s divertido</h3>
-			<p>El delicioso sabor del chocolate Milka combinando en tu boca con burbujas aireadas, logrando que lo rico tambi&eacute;n pueda ser liviano.</p>
+			<h3>La suavidad en su<br />formato m&aacute;s &iacute;ntimo</h3>
+			<p>Relleno con un riqu&iacute;simo Dulce de Leche, cada bomb&oacute;n brinda un peque&ntilde;o gusto y un enorme placer, como todo lo que sale del coraz&oacute;n.</p>
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
 					<div class="thumbnail" style="width:170px; margin-right:0px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
+					<div class="thumbnail" style="width:170px; margin-right:0px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche_Blanco.jpg" width="200" height="119" /></a>Bombon Milka Blanco Dulce de Leche.</div>
 				</div>
 			</div>
 		</div>
