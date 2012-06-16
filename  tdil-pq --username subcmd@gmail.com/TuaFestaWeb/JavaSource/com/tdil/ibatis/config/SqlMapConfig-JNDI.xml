@@ -27,4 +27,6 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO2_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO3_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO4_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_CATEGORY_SqlMap.xml"/>
 </sqlMapConfig>

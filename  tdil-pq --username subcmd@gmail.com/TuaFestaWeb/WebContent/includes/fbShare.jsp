@@ -1,3 +1,5 @@
+<%@page import="com.tdil.tuafesta.web.SystemPropertyUtils"%>
+<%@page import="com.tdil.tuafesta.utils.SystemPropertiesKeys"%>
 <script>
 	window.fbAsyncInit = function() {
 	  FB.init({

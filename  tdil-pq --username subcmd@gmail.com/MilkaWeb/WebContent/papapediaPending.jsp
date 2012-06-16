@@ -61,7 +61,7 @@ request.setAttribute( "test",  paginated);
 		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar o desaprobar los mensajes cargados desde de la experiencia PAPAPEDIA por los usuarios. Recuerde que los mensajes se cargan directamente cuando el usuario postea, y si bien existe un filtro de palabras inadecuadas, no es ineludible.</span></div>
 	</div>
 	<div class="renglon width860">
-		<display:table name="test" sort="external" pagesize="10" id="testit">
+		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./papapediaPending.jsp">
 			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable"><%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
 			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable"><%= StatusHelper.getStatusRB(((WallWritting)pageContext.getAttribute("testit")).getDeleted(), ((WallWritting)pageContext.getAttribute("testit")).getApproved())%></display:column>

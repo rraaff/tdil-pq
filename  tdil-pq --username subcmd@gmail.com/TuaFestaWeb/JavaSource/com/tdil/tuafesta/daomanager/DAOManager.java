@@ -8,6 +8,7 @@ import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.NotificationEmailDAO;
+import com.tdil.tuafesta.dao.ProfesionalCategoryDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
 import com.tdil.tuafesta.dao.SystemPropertyDAO;
 import com.tdil.tuafesta.dao.SystemUserDAO;
@@ -16,6 +17,7 @@ import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
 import com.tdil.tuafesta.dao.impl.NotificationEmailDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfesionalCategoryDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemUserDAOImpl;
@@ -53,5 +55,9 @@ public class DAOManager {
 	
 	public static Geo4DAO getGeo4DAO() throws SQLException {
 		return new Geo4DAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProfesionalCategoryDAO getProfesionalCategoryDAO() throws SQLException {
+		return new ProfesionalCategoryDAOImpl(IBatisManager.getClient());
 	}
 }
