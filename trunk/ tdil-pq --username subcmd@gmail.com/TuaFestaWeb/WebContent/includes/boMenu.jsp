@@ -8,47 +8,7 @@
 	<ul class="nav">
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Contenidos del sitio</a>
 			<ul>
-				<li><a href="#">Tu foto TUAFESTA</a>
-					<ul>
-						<li><html:link action="/goToTUAFESTAPhotoApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToTUAFESTAPhotoReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
-				<li><html:link action="/goToVideoABM" >Administracion de videos</html:link></li>
-			</ul>
-		</li>
-		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Administraci&oacute;n de experiencias</a>
-			<ul>
-				<li><a href="#">Post-Its</a>
-					<ul>
-						<li><html:link action="/goToPostItApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToPostItReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
-				<li><a href="#">Papapedia</a>
-					<ul>
-						<li><html:link action="/goToPapapediaApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToPapapediaReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
-				<li><a href="#">Finales de email</a>
-					<ul>
-						<li><html:link action="/goToEmailEndingsApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToEmailEndingsReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
-				<li><a href="#">Cartas de hijos a padres</a>
-					<ul>
-						<li><html:link action="/goToMailToParentApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToMailToParentReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
-				<li><a href="#">Apodos de amor</a>
-					<ul>
-						<li><html:link action="/goToLoveNicknameApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
-						<li><html:link action="/goToLoveNicknameReview" >Revision de aprobados</html:link></li>
-					</ul>
-				</li>
+				<li><html:link action="/goToProfesionalCategoryABM" >Manejo de categorias</html:link></li>
 			</ul>
 		</li>
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Administracion</a>

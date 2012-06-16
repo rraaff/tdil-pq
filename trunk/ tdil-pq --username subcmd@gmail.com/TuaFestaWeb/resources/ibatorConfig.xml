@@ -64,6 +64,8 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="GEO4" domainObjectName="Geo4" alias="g4">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-
+<table schema="TUAFESTA" tableName="PROF_CATEGORY" domainObjectName="ProfesionalCategory" alias="pc">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 </ibatorContext>
 </ibatorConfiguration>

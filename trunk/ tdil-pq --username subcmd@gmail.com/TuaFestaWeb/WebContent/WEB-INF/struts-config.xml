@@ -8,6 +8,7 @@
   <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.tuafesta.struts.forms.SystemPropertyForm"/>
   <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.tuafesta.struts.forms.NotificationEmailForm"/>
   <form-bean id="RawInsertForm" name="RawInsertForm" type="com.tdil.tuafesta.struts.forms.RawInsertForm"/>
+  <form-bean id="ProfesionalCategoryForm" name="ProfesionalCategoryForm" type="com.tdil.tuafesta.struts.forms.ProfesionalCategoryForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -75,6 +76,27 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/rawInsertAdministration.jsp"/>
   </action>
+  
+  
+  <action name="ProfesionalCategoryForm" parameter="Admin" path="/goToProfesionalCategoryABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/profesionalCategoryAdministration.jsp"/>
+  </action>
+  <action name="ProfesionalCategoryForm" parameter="Admin" path="/saveProfesionalCategory"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/profesionalCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/profesionalCategoryAdministration.jsp"/>
+  </action>
+  <action name="ProfesionalCategoryForm" parameter="Admin" path="/editProfesionalCategory"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/profesionalCategoryAdministration.jsp"/>
+  </action>
+  <action name="ProfesionalCategoryForm" parameter="Admin" path="/toggleDeletedProfesionalCategory"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/profesionalCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/profesionalCategoryAdministration.jsp"/>
+  </action>
+  
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.tuafesta.struts.resources.ApplicationResources"/>

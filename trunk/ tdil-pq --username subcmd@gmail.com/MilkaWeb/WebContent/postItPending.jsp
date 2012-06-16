@@ -105,7 +105,7 @@ request.setAttribute( "test",  paginated);
 		<div class="label width860"><span class="comment">Desde esta secci&oacute;n podr&aacute; aprobar, modificar o desaprobar los contenidos de la experiencia POST ITs.</span></div>
 	</div>
 	<div class="renglon width860">
-		<display:table name="test" sort="external" pagesize="10" id="testit">
+		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./postItPending.jsp">
 			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
 			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>

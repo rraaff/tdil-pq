@@ -61,7 +61,7 @@ request.setAttribute( "test",  paginated);
 		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar o desaprobar los apodos cargados desde de la experiencia APODOS DE AMOR por los usuarios. Recuerde que los mensajes se cargan directamente cuando el usuario postea, y si bien existe un filtro de palabras inadecuadas, no es ineludible.</span></div>
 	</div>
 	<div class="renglon width860">
-		<display:table name="test" sort="external" pagesize="10" id="testit">
+		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./loveNicknamePending.jsp">
 			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable width80"><%= CreationDateHelper.getCreationDateAsString(((LoveNicknames)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
 			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable width80"><%= StatusHelper.getStatusRB(((LoveNicknames)pageContext.getAttribute("testit")).getDeleted(), ((LoveNicknames)pageContext.getAttribute("testit")).getApproved())%></display:column>
