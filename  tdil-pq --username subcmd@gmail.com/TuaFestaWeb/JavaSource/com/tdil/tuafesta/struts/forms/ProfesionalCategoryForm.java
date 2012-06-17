@@ -12,6 +12,8 @@ import com.tdil.tuafesta.dao.ProfesionalCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ProfesionalCategory;
 import com.tdil.tuafesta.model.ProfesionalCategoryExample;
+import com.tdil.tuafesta.utils.ProfesionalCategoryTreeNode;
+import com.tdil.tuafesta.utils.ProfesionalCategoryUtils;
 
 public class ProfesionalCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
@@ -28,7 +30,7 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 	private String name;
 	private String description;
 	private int parentId;
-	private List<ProfesionalCategory> allProfesionalCategory;
+	private List<ProfesionalCategoryTreeNode> allProfesionalCategory;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -61,10 +63,9 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 	}
 	
 	private void reloadList() throws SQLException {
-		ProfesionalCategoryExample example = new ProfesionalCategoryExample();
-		example.createCriteria().andParentIdEqualTo(0);
-		example.setOrderByClause("name");
-		this.setAllProfesionalCategory(DAOManager.getProfesionalCategoryDAO().selectProfesionalCategoryByExample(example));
+		List<ProfesionalCategoryTreeNode> list = ProfesionalCategoryUtils.getTreeInTransaction();
+		List<ProfesionalCategoryTreeNode> flatten = ProfesionalCategoryTreeNode.tree2list(list);
+		setAllProfesionalCategory(flatten);
 	}
 	
 	@Override
@@ -98,6 +99,7 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 			profesionalCategoryDAO.insertProfesionalCategory(profesionalCategory);
 		} else {
 			ProfesionalCategory profesionalCategory = new ProfesionalCategory();
+			profesionalCategory.setId(this.getObjectId());
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
@@ -130,11 +132,11 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 		this.description = description;
 	}
 
-	public List<ProfesionalCategory> getAllProfesionalCategory() {
+	public List<ProfesionalCategoryTreeNode> getAllProfesionalCategory() {
 		return allProfesionalCategory;
 	}
 
-	public void setAllProfesionalCategory(List<ProfesionalCategory> allProfesionalCategory) {
+	public void setAllProfesionalCategory(List<ProfesionalCategoryTreeNode> allProfesionalCategory) {
 		this.allProfesionalCategory = allProfesionalCategory;
 	}
 
@@ -163,4 +165,7 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 	}
 
 
+	public static List<ProfesionalCategoryTreeNode> getProfesionalCategoryTree() {
+		return ProfesionalCategoryUtils.getTree();
+	}
 }
