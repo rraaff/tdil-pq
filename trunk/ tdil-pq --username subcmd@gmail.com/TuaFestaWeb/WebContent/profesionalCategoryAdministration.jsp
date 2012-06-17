@@ -1,3 +1,7 @@
+<%@page import="com.tdil.tuafesta.utils.ProfesionalCategoryUtils"%>
+<%@page import="com.tdil.tuafesta.utils.ProfesionalCategoryTreeNode"%>
+<%@page import="java.util.List"%>
+<%@page import="com.tdil.tuafesta.struts.forms.ProfesionalCategoryForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
@@ -28,6 +32,19 @@
 					<div class="label width200"><html:text name="ProfesionalCategoryForm" property="description" styleClass="width180"/></div>
 					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalCategory.description.err")%></div>
 				</div>
+				
+				<% ProfesionalCategoryForm form = (ProfesionalCategoryForm) session.getAttribute("ProfesionalCategoryForm");
+					List<ProfesionalCategoryTreeNode> listtemp = ProfesionalCategoryForm.getProfesionalCategoryTree();
+					List<ProfesionalCategoryTreeNode> flatten = ProfesionalCategoryTreeNode.tree2list(listtemp);
+					%>
+				<html:select name="ProfesionalCategoryForm" property="parentId" styleClass="textfield_effect">
+					<option <%=form.getParentId() == 0 ? "selected" : "" %> value="0"></option>
+					<% for (ProfesionalCategoryTreeNode node : flatten) { %>
+						<option <%=node.getProfesionalCategory().getId().equals(form.getParentId()) ? "selected" : "" %> value="<%=node.getProfesionalCategory().getId()%>"><%= ProfesionalCategoryUtils.getPrefixFor(node)%><%=node.getProfesionalCategory().getName()%></option>
+					<% }
+					
+				%>
+				</html:select>
 				<div class="renglon height40">
 					<logic:equal name="ProfesionalCategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
@@ -56,15 +73,14 @@
 								id="iterSection" indexId="iterIndex">
 								<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
 									<td
-										<%=((com.tdil.ibatis.PersistentObject) iterSection).getDeleted() == 1 ? "class=\"notActive\""
-											: ""%>
-										align="left"><bean:write name="iterSection" property="name" />
+										<%=((ProfesionalCategoryTreeNode) iterSection).getProfesionalCategory().getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+										align="left"><%= ProfesionalCategoryUtils.getPrefixFor((ProfesionalCategoryTreeNode) iterSection)%><bean:write name="iterSection" property="name" />
 									</td>
 									<td>
 										<html:link action="editProfesionalCategory.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 										<html:link action="/toggleDeletedProfesionalCategory" paramName="iterSection"
 											paramProperty="id" paramId="id">
-											<% if (((com.tdil.ibatis.PersistentObject) iterSection).getDeleted() == 1) { %>
+											<% if (((ProfesionalCategoryTreeNode) iterSection).getProfesionalCategory().getDeleted() == 1) { %>
 												<img src="boImages/activar.png" alt="Activar">
 											<% } else { %>
 												<img src="boImages/desactivar.png" alt="Desactivar">
