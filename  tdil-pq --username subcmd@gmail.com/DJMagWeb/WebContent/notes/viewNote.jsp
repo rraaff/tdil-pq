@@ -30,6 +30,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 <html>
 <head>
 <title><%= noteToShow.getTitle()%></title>
+<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 <link href="../../../css/style.css" rel="stylesheet" type="text/css">
 <script src='../../../js/jquery-1.7.min.js' type='text/javascript'></script>
 <script src="../../../js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
@@ -93,6 +94,7 @@ div {
 	background-color:#FFFFFF;
 	width:660px;
 	padding:13px;
+	padding-top:0px;
 	overflow:hidden;
 }
 #fakeLiveboxWindow #left #note .date {

@@ -26,6 +26,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 %>
 <html>
 <head>
+<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
 <style>
@@ -80,7 +81,7 @@ div {
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:680px;
+	width:687px;
 }
 #fakeLiveboxWindow #left #note {
 	width:654px;
