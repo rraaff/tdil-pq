@@ -33,4 +33,7 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO4_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_CATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFESIONAL_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_WRITTING_SqlMap.xml"/>
 </sqlMapConfig>

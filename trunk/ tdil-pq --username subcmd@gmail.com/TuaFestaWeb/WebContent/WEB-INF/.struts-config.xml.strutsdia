@@ -198,5 +198,22 @@
  <PROCESS-ITEM NAME="page7"
   PATH="/profesionalCategoryAdministration.jsp" SHAPE="448,2465,0,0"
   SUBTYPE="jsp" TITLE="profesionalCategoryAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/toggleDeletedProfesionalCategory.do" SUBTYPE="confirmed"
+   TARGET="action14" TITLE="/toggleDeletedProfesionalCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveProfesionalCategory.do"
+   SUBTYPE="confirmed" TARGET="action12"
+   TITLE="/saveProfesionalCategory.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editProfesionalCategory.st"
+   SUBTYPE="confirmed" TARGET="page0"
+   TITLE="/editProfesionalCategory.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/editProfesionalCategory.st"
+  SHAPE="656,2465,0,0" SUBTYPE="other"
+  TITLE="editProfesionalCategory.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addProfesional" NAME="action15"
+  PATH="/addProfesional" SHAPE="32,3377,0,0" TITLE="ProfesionalForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -8,6 +8,10 @@ DROP TABLE IF EXISTS GEO3;
 DROP TABLE IF EXISTS GEO4;
 
 DROP TABLE IF EXISTS PROF_CATEGORY;
+DROP TABLE IF EXISTS PROFESIONAL;
+
+DROP TABLE IF EXISTS WALL_WRITTING;
+DROP TABLE IF EXISTS WALL;
 
 CREATE TABLE SYSTEMUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -97,4 +101,57 @@ CREATE TABLE PROF_CATEGORY (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_PROF_CATEGORY_00` (`parent_id` ASC))
+ENGINE = InnoDB;
+
+CREATE TABLE WALL (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `description` VARCHAR(50) NOT NULL ,
+  `moderated` INT NOT NULL,
+  `profanityFilter` INT NOT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_WALL_00` (`description` ASC))
+ENGINE = InnoDB;
+
+CREATE TABLE WALL_WRITTING (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
+  `id_author` INT  NULL ,
+  `originalText` VARCHAR(4000) NOT NULL ,
+  `approved` INT NOT NULL,
+  `id_wall` INT NOT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_WALL_WRITTING_01`
+    FOREIGN KEY (`id_wall` )
+    REFERENCES WALL (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE PROFESIONAL (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `firstname` VARCHAR(100) NOT NULL ,
+  `lastname` VARCHAR(100) NOT NULL ,
+  `sex` CHAR(1) NOT NULL ,
+  `birthdate` DATE NOT NULL ,
+  `phone` VARCHAR(15) NULL ,
+  `email` VARCHAR(150) NOT NULL ,
+  `password` VARCHAR(20) NOT NULL ,
+  `website` VARCHAR(200) NULL ,
+  `facebook` VARCHAR(200) NULL ,
+  `businesshours` VARCHAR(4000) NULL ,
+  `description` VARCHAR(4000) NULL ,
+  `emailvalid` INT NOT NULL,
+  `approved` INT NOT NULL,
+  `datachanged` INT NOT NULL,
+  `id_wall` INT NOT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+   CONSTRAINT `FK_WALL_WRITTING_02`
+    FOREIGN KEY (`id_wall` )
+    REFERENCES WALL (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
