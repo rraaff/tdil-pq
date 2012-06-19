@@ -19,10 +19,11 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 %>
 <html lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<title><%=imageGallery.getTitle()%></title>
-	<link rel="stylesheet" href="../../css/lightbox.css" type="text/css" media="screen" />
-	<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<title><%=imageGallery.getTitle()%></title>
+<link rel="stylesheet" href="../../css/lightbox.css" type="text/css" media="screen" />
+<link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
 <script src="../../js/jquery-1.7.min.js"></script>
 <script src="../../js/lightbox.js"></script>
 <style>
@@ -74,7 +75,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 }
 #fakeLiveboxWindow #left {
 	float:left;
-	width:690px;
+	width:687px;
 }
 #fakeLiveboxWindow #left #note {
 	width:680px;

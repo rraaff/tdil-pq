@@ -135,6 +135,8 @@ body {
 	float: none;
 }
 #portaHeader #header {
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
 	height: 123px;
 /*	width: 1010px;
 	margin-right: auto;
@@ -170,8 +172,6 @@ body {
 	display: inline;
 }
 #portaHeader #header #menu li a {
-	background-image: url(../images/bg-headerHomeLight.png);
-	background-repeat: repeat;
 	font-family: 'Doppio One', sans-serif;
 	text-transform: uppercase;
 	color: #FFFFFF;
@@ -326,6 +326,8 @@ body {
 	margin-top:10px;
 }
 #BlockSecondaryContent {
+	background-image: url(../images/bg-headerHomeLight.png);
+	background-repeat: repeat;
 	height: 1170px;
 	width: 1010px;
 	position: relative;
