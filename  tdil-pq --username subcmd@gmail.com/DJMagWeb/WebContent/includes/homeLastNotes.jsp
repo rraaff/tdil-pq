@@ -65,7 +65,7 @@
 		int index = 0;%>
 		<% for (NoteValueObject note : publicHomeBean.getReducedLastNotes()) { %>
 			<div id="lastNews" style="<%= (index < 2) ? "margin-right:14px;" : ""%>">
-				<div class="fotoHelperHLN" style="background:url(./downloadThumb.st?id=<%=note.getLastnewsthumbId()%>&width=200&height=200&type=PUBLIC&ext=<%=note.getLastnewsthumbext()%>);"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="images/null.gif" width="200" height="143"></a></div>
+				<div class="fotoHelperHLN" style="background:url(./downloadThumb.st?id=<%=note.getLastnewsthumbId()%>&width=200&height=200&type=PUBLIC&ext=<%=note.getLastnewsthumbext()%>); background-repeat:no-repeat; background-position:center center;"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="images/null.gif" width="200" height="143"></a></div>
 				<h3><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=note.getTitle() %></a></h3>
 				<div id="bajada"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=note.getSummary() %></a></div>
 				<div class="date"><%=PublicHomeBean.formatDate(note.getFromDate()) %></div>
