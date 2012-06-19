@@ -216,12 +216,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 					<% for (ImageGallery imageGallery : galleries) { %>
 						<div id="renglonRank">
 							<!-- PABLO ejemplo de imagen -->
-							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=imageGallery.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=imageGallery.getImageext()%>)">
-								<a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html">
-									<img src="../../images/null.gif" width="78" height="78">
-								</a>
-							</div>
-							<!--div id="photo"><a href="../< % = p u b licHomeBean.getCountry().getIsoCode2()%>/viewGallery< % = i m ageGallery.getId()%>.html"></a></div -->
+							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=imageGallery.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=imageGallery.getImageext()%>); background-repeat:no-repeat; background-position:center center;"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><img src="../../images/null.gif" width="78" height="78"></a></div>
 							<div id="ranked">
 								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a></span>
 								<span class="description"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getDescription()%></a></span>
