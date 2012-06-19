@@ -9,18 +9,24 @@ import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.NotificationEmailDAO;
 import com.tdil.tuafesta.dao.ProfesionalCategoryDAO;
+import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
 import com.tdil.tuafesta.dao.SystemPropertyDAO;
 import com.tdil.tuafesta.dao.SystemUserDAO;
+import com.tdil.tuafesta.dao.WallDAO;
+import com.tdil.tuafesta.dao.WallWrittingDAO;
 import com.tdil.tuafesta.dao.impl.BlobDataDAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
 import com.tdil.tuafesta.dao.impl.NotificationEmailDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalCategoryDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemUserDAOImpl;
+import com.tdil.tuafesta.dao.impl.WallDAOImpl;
+import com.tdil.tuafesta.dao.impl.WallWrittingDAOImpl;
 
 public class DAOManager {
 
@@ -59,5 +65,17 @@ public class DAOManager {
 	
 	public static ProfesionalCategoryDAO getProfesionalCategoryDAO() throws SQLException {
 		return new ProfesionalCategoryDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProfesionalDAO getProfesionalDAO() throws SQLException {
+		return new ProfesionalDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static WallDAO getWallDAO() throws SQLException {
+		return new WallDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static WallWrittingDAO getWallWrittingDAO() throws SQLException {
+		return new WallWrittingDAOImpl(IBatisManager.getClient());
 	}
 }
