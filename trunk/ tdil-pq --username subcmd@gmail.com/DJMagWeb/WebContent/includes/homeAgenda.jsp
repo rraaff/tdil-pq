@@ -68,7 +68,7 @@
 	<div id="BlockHomeCalendar">
 	<% for (NoteValueObject note : publicHomeBean.getReducedAgenda()) { %>
 		<div id="calendarEvent">
-			<div id="image" class="fotoHelperAgenda" style="background:url(./downloadThumb.st?id=<%=note.getAgendaId()%>&width=60&height=60&type=PUBLIC&ext=<%=note.getAgendaext()%>)"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="images/null.gif" height="30" width="30"></a></div>
+			<div id="image" class="fotoHelperAgenda" style="background:url(./downloadThumb.st?id=<%=note.getAgendaId()%>&width=60&height=60&type=PUBLIC&ext=<%=note.getAgendaext()%>); background-repeat:no-repeat; background-position:center center;"><a href="<%=publicHomeBean.getExternalLink(note)%>"><img src="images/null.gif" height="30" width="30"></a></div>
 			<div id="renglon"><div id="date"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=publicHomeBean.formatAgendaDate(note.getAgendaDate())%></a></div><div id="titleNoteInAgenda"><a href="<%=publicHomeBean.getExternalLink(note)%>"><%=note.getTitle() %></div></a></div>
 		</div>
 	<% } %>
