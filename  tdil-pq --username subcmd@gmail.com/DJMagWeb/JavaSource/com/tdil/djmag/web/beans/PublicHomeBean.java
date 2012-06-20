@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FooterDAO;
+import com.tdil.djmag.dao.GalleryCategoryDAO;
 import com.tdil.djmag.dao.MagazineDAO;
 import com.tdil.djmag.dao.NoteDAO;
 import com.tdil.djmag.dao.RankingNoteDAO;
@@ -31,6 +32,7 @@ import com.tdil.djmag.model.FacebookFeed;
 import com.tdil.djmag.model.FacebookFeedExample;
 import com.tdil.djmag.model.Footer;
 import com.tdil.djmag.model.FooterExample;
+import com.tdil.djmag.model.GalleryCategory;
 import com.tdil.djmag.model.ImageGallery;
 import com.tdil.djmag.model.ImageGalleryExample;
 import com.tdil.djmag.model.ImageInGallery;
@@ -489,7 +491,7 @@ public class PublicHomeBean  {
 			 return (List<ImageGallery>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
 					ImageGalleryExample imageGalleryExample = new ImageGalleryExample();
-					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0);
+					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0).andCategoryIdEqualTo(0);
 					imageGalleryExample.setOrderByClause("id desc");
 					List<ImageGallery> galleries = DAOManager.getImageGalleryDAO().selectImageGalleryByExample(imageGalleryExample);
 					return galleries;
@@ -498,6 +500,21 @@ public class PublicHomeBean  {
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<ImageGallery>();
+		}
+	}
+	
+	public List<GalleryCategory> getGalleryCategories() {
+		final Country country = this.getCountry();
+		try {
+			 return (List<GalleryCategory>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					GalleryCategoryDAO galleryCategoryDAO = DAOManager.getGalleryCategoryDAO();
+					return galleryCategoryDAO.selectGalleryCategoryForCountry(country);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<GalleryCategory>();
 		}
 	}
 	

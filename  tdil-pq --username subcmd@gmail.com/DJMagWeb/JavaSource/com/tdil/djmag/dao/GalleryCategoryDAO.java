@@ -1,5 +1,6 @@
 package com.tdil.djmag.dao;
 
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.GalleryCategory;
 import com.tdil.djmag.model.GalleryCategoryExample;
 import java.sql.SQLException;
@@ -93,4 +94,6 @@ public interface GalleryCategoryDAO {
      * @mbggenerated Tue Jun 19 18:08:48 ART 2012
      */
     int updateGalleryCategoryByPrimaryKey(GalleryCategory record) throws SQLException;
+
+    List<GalleryCategory> selectGalleryCategoryForCountry(Country country) throws SQLException;
 }
