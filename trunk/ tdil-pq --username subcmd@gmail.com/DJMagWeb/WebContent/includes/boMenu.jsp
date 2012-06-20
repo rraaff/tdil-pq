@@ -12,6 +12,7 @@
       <li><html:link action="/goToCountryABM" >Manejo de paises</html:link></li>
       <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
       <li><html:link action="/goToBannerABM" >Manejo de banners</html:link></li>
+      <li><html:link action="/goToGalleryCategoryABM" >Manejo de categorias de galerias</html:link></li>
     </ul>
   </li>
   <li>

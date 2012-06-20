@@ -7,7 +7,7 @@
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
 	<property name="root.user" value="root" />
 
-	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name}" />
+	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name.upper}" />
 	<property name="db.user" value="${project.name.upper}_USER" />
 	<property name="db.pass" value="${project.name.upper}_USER" />
 
@@ -50,12 +50,21 @@
 		</sql>
 	</target>
 
-	<target name="apodos">
+	<target name="incremental_02">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
-			<transaction src="apodos.sql" />
+			<transaction src="ddl_02.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental_03">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl_03.sql" />
 		</sql>
 	</target>
 

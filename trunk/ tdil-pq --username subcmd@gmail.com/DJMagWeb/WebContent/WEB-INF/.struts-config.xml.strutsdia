@@ -892,4 +892,46 @@
    PATH="/imageGalleryAdministration.jsp" TARGET="page19"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToGalleryCategoryABM" NAME="action95"
+  PATH="/goToGalleryCategoryABM" SHAPE="32,13617,0,0"
+  TITLE="GalleryCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page22" PATH="/galleryCategoryAdministration.jsp"
+  SHAPE="304,13634,0,0" SUBTYPE="jsp"
+  TITLE="galleryCategoryAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveGalleryCategory" NAME="action96"
+  PATH="/saveGalleryCategory" SHAPE="32,13729,0,0"
+  TITLE="GalleryCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editGalleryCategory" NAME="action97"
+  PATH="/editGalleryCategory" SHAPE="32,13873,0,0"
+  TITLE="GalleryCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedGalleryCategory" NAME="action98"
+  PATH="/toggleDeletedGalleryCategory" SHAPE="32,13985,0,0"
+  TITLE="GalleryCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/galleryCategoryAdministration.jsp" TARGET="page22"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadGalleryCategoryCover" NAME="action99"
+  PATH="/uploadGalleryCategoryCover" SHAPE="32,14737,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewGalleryCategoryCover" NAME="action100"
+  PATH="/viewGalleryCategoryCover" SHAPE="32,14737,0,0"
+  TITLE="GalleryCategoryForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
