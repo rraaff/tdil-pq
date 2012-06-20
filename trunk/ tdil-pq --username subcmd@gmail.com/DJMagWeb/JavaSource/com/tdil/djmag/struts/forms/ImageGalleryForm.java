@@ -17,6 +17,8 @@ import com.tdil.djmag.daomanager.DAOManager;
 import com.tdil.djmag.model.BlobData;
 import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.CountryExample;
+import com.tdil.djmag.model.GalleryCategory;
+import com.tdil.djmag.model.GalleryCategoryExample;
 import com.tdil.djmag.model.ImageGallery;
 import com.tdil.djmag.model.ImageGalleryExample;
 import com.tdil.djmag.model.ImageInGallery;
@@ -43,6 +45,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	
 	private int objectId;
 	private int countryId;
+	private int galleryCategoryId;
 	private String title;
 	private String description;
 	
@@ -53,6 +56,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 	private List<ImageGallery> allImageGalleries;
 	private List<CountrySelectionVO> selectedCountries = new ArrayList<CountrySelectionVO>();
 	private static List<Country> allCountries = new ArrayList<Country>();
+	private List<GalleryCategory> allCategories = new ArrayList<GalleryCategory>();
 	
 	
 	private static final String title_key = "ImageGallery.title";
@@ -133,6 +137,14 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 		countryExample.setOrderByClause("name");
 		setAllCountries(DAOManager.getCountryDAO().selectCountryByExample(countryExample));
 		
+		GalleryCategoryExample galleryCategoryExample = new GalleryCategoryExample();
+		galleryCategoryExample.setOrderByClause("title");
+		this.getAllCategories().clear();
+		GalleryCategory noCategory = new GalleryCategory();
+		noCategory.setId(0);
+		noCategory.setTitle("");
+		this.getAllCategories().add(noCategory);
+		this.getAllCategories().addAll(DAOManager.getGalleryCategoryDAO().selectGalleryCategoryByExample(galleryCategoryExample));
 		this.resetSelectedCountries();
 	}
 	
@@ -153,6 +165,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 			this.objectId = id;
 			this.title = imageGallery.getTitle();
 			this.description = imageGallery.getDescription();
+			this.galleryCategoryId = imageGallery.getCategoryId();
 //			this.setRankingPositions((RankingPositions)XMLUtils.fromXML(imageGallery.getPositions()));
 		} 
 		// reseteo los paises
@@ -179,7 +192,16 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 		result.setUploadData(new UploadData(blobData.getFilename(), blobData.getContent(), false));
 		return result;
 	}
-
+	
+	public GalleryCategory getCategoryById(int id) {
+		for (GalleryCategory cat : allCategories) {
+			if (cat.getId().equals(id)) {
+				return cat;
+			}
+		}
+		return null;
+	}
+	
 	public static Country getCountryWithId(Integer idCountry) {
 		for (Country c : getAllCountries()) {
 			if (c.getId().equals(idCountry)) {
@@ -239,6 +261,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 			imageGalleryNote.setTitle(this.getTitle());
 			imageGalleryNote.setDescription(this.getDescription());
 			imageGalleryNote.setIdCountry(this.getCountryId());
+			imageGalleryNote.setCategoryId(this.getGalleryCategoryId());
 			imageGalleryId = imageGalleryNoteDAO.insertImageGallery(imageGalleryNote);
 			imageGalleryNote.setId(imageGalleryId);
 			updateImageGallery(imageGalleryNote, imageGalleryId);
@@ -249,6 +272,7 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 			imageGalleryNote.setTitle(this.getTitle());
 			imageGalleryNote.setDescription(this.getDescription());
 			imageGalleryNote.setIdCountry(this.getCountryId());
+			imageGalleryNote.setCategoryId(this.getGalleryCategoryId());
 			imageGalleryNoteDAO.updateImageGalleryByPrimaryKeySelective(imageGalleryNote);
 			imageGalleryId = this.getObjectId();
 			updateImageGallery(imageGalleryNote, imageGalleryId);
@@ -440,6 +464,22 @@ public class ImageGalleryForm extends TransactionalValidationForm implements Tog
 
 	public void setCoverPosition(int coverPosition) {
 		this.coverPosition = coverPosition;
+	}
+
+	public int getGalleryCategoryId() {
+		return galleryCategoryId;
+	}
+
+	public void setGalleryCategoryId(int galleryCategoryId) {
+		this.galleryCategoryId = galleryCategoryId;
+	}
+
+	public List<GalleryCategory> getAllCategories() {
+		return allCategories;
+	}
+
+	public void setAllCategories(List<GalleryCategory> allCategories) {
+		this.allCategories = allCategories;
 	}
 
 }
