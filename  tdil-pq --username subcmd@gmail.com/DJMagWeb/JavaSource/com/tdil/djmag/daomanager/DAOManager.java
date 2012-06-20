@@ -8,6 +8,7 @@ import com.tdil.djmag.dao.BlobDataDAO;
 import com.tdil.djmag.dao.CountryDAO;
 import com.tdil.djmag.dao.FacebookFeedDAO;
 import com.tdil.djmag.dao.FooterDAO;
+import com.tdil.djmag.dao.GalleryCategoryDAO;
 import com.tdil.djmag.dao.ImageGalleryDAO;
 import com.tdil.djmag.dao.ImageInGalleryDAO;
 import com.tdil.djmag.dao.MagazineDAO;
@@ -31,6 +32,7 @@ import com.tdil.djmag.dao.impl.BlobDataDAOImpl;
 import com.tdil.djmag.dao.impl.CountryDAOImpl;
 import com.tdil.djmag.dao.impl.FacebookFeedDAOImpl;
 import com.tdil.djmag.dao.impl.FooterDAOImpl;
+import com.tdil.djmag.dao.impl.GalleryCategoryDAOImpl;
 import com.tdil.djmag.dao.impl.ImageGalleryDAOImpl;
 import com.tdil.djmag.dao.impl.ImageInGalleryDAOImpl;
 import com.tdil.djmag.dao.impl.MagazineDAOImpl;
@@ -142,5 +144,9 @@ public class DAOManager {
 	
 	public static RankingPositionImageDAO getRankingPositionImageDAO() throws SQLException {
 		return new RankingPositionImageDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static GalleryCategoryDAO getGalleryCategoryDAO() throws SQLException {
+		return new GalleryCategoryDAOImpl(IBatisManager.getClient());
 	}
 }
