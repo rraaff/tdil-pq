@@ -107,5 +107,8 @@ targetProject="DJMagWeb">
 <table schema="DJMAG" tableName="RANKING_POS_IMG" domainObjectName="RankingPositionImage">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="DJMAG" tableName="GALLERY_CATEGORY" domainObjectName="GalleryCategory">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 </ibatorContext>
 </ibatorConfiguration>

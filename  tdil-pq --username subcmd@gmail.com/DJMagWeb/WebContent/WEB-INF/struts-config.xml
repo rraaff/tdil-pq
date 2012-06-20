@@ -20,6 +20,7 @@
   <form-bean name="FooterForm" type="com.tdil.djmag.struts.forms.FooterForm"/>
   <form-bean name="ImageGalleryForm" type="com.tdil.djmag.struts.forms.ImageGalleryForm"/>
   <form-bean name="RankingPositionForm" type="com.tdil.djmag.struts.forms.RankingPositionForm"/>
+  <form-bean name="GalleryCategoryForm" type="com.tdil.djmag.struts.forms.GalleryCategoryForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -434,6 +435,30 @@
    scope="session" type="com.tdil.djmag.struts.action.MoveImageInRankingPositionDownAction">
    <forward name="continue" path="/rankingPositionAdministration.jsp"/>
   </action>
+  
+  <action name="GalleryCategoryForm" parameter="Admin" path="/goToGalleryCategoryABM"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/galleryCategoryAdministration.jsp"/>
+  </action>
+  <action name="GalleryCategoryForm" parameter="Admin" path="/saveGalleryCategory"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/galleryCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/galleryCategoryAdministration.jsp"/>
+  </action>
+  <action name="GalleryCategoryForm" parameter="Admin" path="/editGalleryCategory"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/galleryCategoryAdministration.jsp"/>
+  </action>
+  <action name="GalleryCategoryForm" parameter="Admin" path="/toggleDeletedGalleryCategory"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/galleryCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/galleryCategoryAdministration.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadGalleryCategoryCover" type="com.tdil.djmag.struts.action.UploadGalleryCategoryCoverAction"/>
+  <action name="GalleryCategoryForm" parameter="Admin" path="/viewGalleryCategoryCover"
+   scope="session" type="com.tdil.djmag.struts.action.ViewGalleryCategoryCoverAction">
+  </action>
+  
  </action-mappings>
   
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor" nocache="true"/>

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.djmag.model.GalleryCategory"%>
 <%@page import="com.tdil.djmag.struts.forms.CountrySelectionVO"%>
 <%@page import="com.tdil.djmag.model.ImageGallery"%>
 <%@page import="com.tdil.djmag.web.DJMagErrorFormatter"%>
@@ -53,6 +54,7 @@ div { /*border:dotted 1px #00CCFF; */}
 	<html:form method="POST" action="/saveImageGallery">
 	<div id="portaMenu"><%@ include file="includes/boMenu.jsp"%></div>
 	<div id="formulariosBase">
+		<%	ImageGalleryForm imageGalleryForm = (ImageGalleryForm)session.getAttribute("ImageGalleryForm"); %>
 		<h1>Contenido tipo Galer&iacute;a de im&aacute;genes</h1>
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 		<div class="renglon width860 height50">
@@ -63,6 +65,15 @@ div { /*border:dotted 1px #00CCFF; */}
 			<div class="label width80">Descripci&oacute;n</div>
 			<div class="label width420 height50"><html:textarea name="ImageGalleryForm" property="description" styleClass="width420 height50"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.description.err")%></div>
+			
+			<div class="label width80">Categor&iacute;a</div>
+			<div class="label width420 height50">
+				<html:select name="ImageGalleryForm" property="galleryCategoryId" styleClass="width120">
+					<logic:iterate name="ImageGalleryForm" property="allCategories" id="iterCategory">
+						<option	<%=	((GalleryCategory) iterCategory).getId().equals( imageGalleryForm.getGalleryCategoryId()) ? "selected" : ""%> value="<%=((GalleryCategory) iterCategory).getId()%>">&nbsp;&nbsp;&nbsp;<%=((GalleryCategory) iterCategory).getTitle()%></option>
+					</logic:iterate>
+				</html:select>
+			</div>
 		</div>
 		<div id="conteinerScrollable" style="float:left; width:950px; height:380px; overflow:auto; border:#FF0000;">
 			<h2>Fotos</h2>
@@ -77,7 +88,6 @@ div { /*border:dotted 1px #00CCFF; */}
 						<td class="headerTablas">Foto</td>
 						<td class="headerTablas">Acciones</td>
 					</tr>
-					<%	ImageGalleryForm imageGalleryForm = (ImageGalleryForm)session.getAttribute("ImageGalleryForm"); %>
 					<logic:iterate id="selectedPosition" name="ImageGalleryForm" property="positions" indexId="iterIndexPositions">  
 						<tr>
 							<td align="center"><%=iterIndexPositions + 1%></td>
@@ -130,6 +140,7 @@ div { /*border:dotted 1px #00CCFF; */}
 				<table>
 					<tr>
 						<td class="headerTablas" width="300">T&iacute;tulo</td>
+						<td class="headerTablas" width="300">Categor&iacute;a</td>
 						<td class="headerTablas" width="500">Pa&iacute;ses</td>
 						<td class="headerTablas" width="60">Acciones</td>
 					</tr>
@@ -139,6 +150,11 @@ div { /*border:dotted 1px #00CCFF; */}
 								<%=((com.tdil.ibatis.PersistentObject) iterImageGallery).getDeleted() == 1 ? "class=\"notActive\""
 									: ""%>
 								align="left"><bean:write name="iterImageGallery" property="title" />
+							</td>
+							<td	<%=((com.tdil.ibatis.PersistentObject) iterImageGallery).getDeleted() == 1 ? "class=\"notActive\""
+										: ""%> align="left">
+								<% GalleryCategory category = imageGalleryForm.getCategoryById(((ImageGallery) iterImageGallery).getCategoryId()); %>
+								<%= category.getTitle() %>&nbsp;
 							</td>
 							<td	<%=((com.tdil.ibatis.PersistentObject) iterImageGallery).getDeleted() == 1 ? "class=\"notActive\""
 										: ""%> align="left">
