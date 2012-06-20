@@ -2,8 +2,11 @@ package com.tdil.djmag.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.djmag.dao.GalleryCategoryDAO;
+import com.tdil.djmag.model.Country;
 import com.tdil.djmag.model.GalleryCategory;
 import com.tdil.djmag.model.GalleryCategoryExample;
+import com.tdil.djmag.model.Section;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -172,5 +175,10 @@ public class GalleryCategoryDAOImpl implements GalleryCategoryDAO {
         public Object getRecord() {
             return record;
         }
+    }
+    
+    public List<GalleryCategory> selectGalleryCategoryForCountry(Country country) throws SQLException {
+    	List<GalleryCategory> list = sqlMapClient.queryForList("GALLERY_CATEGORY.selectGalleriesForCountry", country);
+		return list;
     }
 }

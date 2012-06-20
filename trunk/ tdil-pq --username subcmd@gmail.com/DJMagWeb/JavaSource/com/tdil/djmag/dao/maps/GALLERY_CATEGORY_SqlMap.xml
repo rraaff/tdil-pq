@@ -261,4 +261,17 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  
+  
+  <!-- Custom queries -->
+  <select id="selectGalleriesForCountry" parameterClass="com.tdil.djmag.model.Country" resultMap="BaseResultMap">
+    <!--
+    -->
+    select gc.*
+    FROM GALLERY_CATEGORY gc
+    where gc.deleted = 0
+    and EXISTS (select * from IMAGE_GALLERY ig WHERE ig.category_id = gc.id AND ig.id_country = #id:INTEGER# AND ig.deleted = 0)
+    order by gc.title
+  </select>
 </sqlMap>

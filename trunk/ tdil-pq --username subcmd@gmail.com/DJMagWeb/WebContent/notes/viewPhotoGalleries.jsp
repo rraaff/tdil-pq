@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.djmag.model.GalleryCategory"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.djmag.model.ImageInGallery"%>
 <%@page import="java.util.List"%>
@@ -20,6 +21,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 
 	List<ImageGallery> galleries = publicHomeBean.getGalleriesForCountry();
+	List<GalleryCategory> categories = publicHomeBean.getGalleryCategories();
 	if (galleries == null) {
 		// TODO mando a la home
 	} else {
@@ -220,6 +222,17 @@ div { /*border:dotted 1px #00FF00;*/ }
 							<div id="ranked">
 								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getTitle()%></a></span>
 								<span class="description"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGallery<%=imageGallery.getId()%>.html"><%= imageGallery.getDescription()%></a></span>
+							</div>
+						</div>
+					<% } %>
+				</div>
+				<!-- PABLO categorias -->
+				<div >
+					<% for (GalleryCategory gc : categories) { %>
+						<div id="renglonRank">
+							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=gc.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=gc.getImageext()%>); background-repeat:no-repeat; background-position:center center;"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGalleryCategory<%=gc.getId()%>.html"><img src="../../images/null.gif" width="78" height="78"></a></div>
+							<div id="ranked">
+								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewGalleryCategory<%=gc.getId()%>.html"><%= gc.getTitle()%></a></span>
 							</div>
 						</div>
 					<% } %>
