@@ -54,6 +54,13 @@
     </rule>
     <rule>
         <note>
+            Redireccion para una categoria.
+        </note>
+        <from>/([a-z|A-Z]{2})/viewCategory([0-9]*).html</from>
+        <to>/viewCategory.jsp?country=$1&amp;c=$2</to>
+    </rule>
+    <rule>
+        <note>
             Redireccion para los imagenes.
         </note>
         <from>/[a-z|A-Z]{2}/images/(.*)</from>

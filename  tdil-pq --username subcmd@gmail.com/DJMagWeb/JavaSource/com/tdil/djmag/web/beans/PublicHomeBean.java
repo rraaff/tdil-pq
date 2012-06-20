@@ -503,6 +503,33 @@ public class PublicHomeBean  {
 		}
 	}
 	
+
+	@SuppressWarnings("unchecked")
+	public List<ImageGallery> getGalleriesForCountryAndCategory(final String categoryId) {
+		if (StringUtils.isEmpty(categoryId)) {
+			return new ArrayList<ImageGallery>();
+		}
+		if (!StringUtils.isNumeric(categoryId)) {
+			return new ArrayList<ImageGallery>();
+		}
+		final Integer catId = Integer.parseInt(categoryId);
+		final Country country = this.getCountry();
+		try {
+			 return (List<ImageGallery>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					ImageGalleryExample imageGalleryExample = new ImageGalleryExample();
+					imageGalleryExample.createCriteria().andIdCountryEqualTo(country.getId()).andDeletedEqualTo(0).andCategoryIdEqualTo(catId);
+					imageGalleryExample.setOrderByClause("id desc");
+					List<ImageGallery> galleries = DAOManager.getImageGalleryDAO().selectImageGalleryByExample(imageGalleryExample);
+					return galleries;
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<ImageGallery>();
+		}
+	}
+	
 	public List<GalleryCategory> getGalleryCategories() {
 		final Country country = this.getCountry();
 		try {
