@@ -190,7 +190,11 @@ div { /*border:dotted 1px #00FF00;*/ }
 				</div>
 			</div>
 			<div id="linksBottom">
-				<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
+				<% if (imageGallery.getCategoryId().equals(0)) { %>
+					<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
+				<% } else { %>
+					<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewCategory<%=imageGallery.getCategoryId()%>.html">Volver a las galer&iacute;as</a></div>
+				<% } %>
 			</div>
 		</div>
 		<div id="right">

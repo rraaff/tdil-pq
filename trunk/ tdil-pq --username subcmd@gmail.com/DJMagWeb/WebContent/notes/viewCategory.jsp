@@ -15,13 +15,13 @@
 <%@page import="com.tdil.djmag.web.beans.PublicHomeBean"%>
 <%
 String country = request.getParameter("country");
+String categoryId = request.getParameter("c");
 if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == null) {
 	SelectCountryServlet.initForCountry(request, country, "");
 } 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 
-	List<ImageGallery> galleries = publicHomeBean.getGalleriesForCountry();
-	List<GalleryCategory> categories = publicHomeBean.getGalleryCategories();
+	List<ImageGallery> galleries = publicHomeBean.getGalleriesForCountryAndCategory(categoryId);
 	if (galleries == null) {
 		// TODO mando a la home
 	} else {
@@ -226,18 +226,8 @@ div { /*border:dotted 1px #00FF00;*/ }
 						</div>
 					<% } %>
 				</div>
-				<!-- PABLO categorias -->
-				<div >
-					<% for (GalleryCategory gc : categories) { %>
-						<div id="renglonRank">
-							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=gc.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=gc.getImageext()%>); background-repeat:no-repeat; background-position:center center;"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewCategory<%=gc.getId()%>.html"><img src="../../images/null.gif" width="78" height="78"></a></div>
-							<div id="ranked">
-								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewCategory<%=gc.getId()%>.html"><%= gc.getTitle()%></a></span>
-							</div>
-						</div>
-					<% } %>
-				</div>
 			</div>
+			<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
 				</div>
