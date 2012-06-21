@@ -10,6 +10,7 @@
   <form-bean id="RawInsertForm" name="RawInsertForm" type="com.tdil.tuafesta.struts.forms.RawInsertForm"/>
   <form-bean id="ProfesionalCategoryForm" name="ProfesionalCategoryForm" type="com.tdil.tuafesta.struts.forms.ProfesionalCategoryForm"/>
   <form-bean id="ProfesionalForm" name="ProfesionalForm" type="com.tdil.tuafesta.struts.forms.ProfesionalForm"/>
+  <form-bean id="ValidateProfesionalEmailForm" name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -99,6 +100,12 @@
   </action>
   
   <action name="ProfesionalForm" path="/addProfesional" scope="request" type="com.tdil.tuafesta.struts.action.AddProfesionalAction">
+  </action>
+  
+  <action name="ValidateProfesionalEmailForm" path="/validateProfesionalEmail"
+   scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
+   <forward name="continue" path="/profesionalEmailValidated.jsp"/>
+   <forward name="failure" path="/profesionalEmailNotValidated.jsp"/>
   </action>
   
  </action-mappings>

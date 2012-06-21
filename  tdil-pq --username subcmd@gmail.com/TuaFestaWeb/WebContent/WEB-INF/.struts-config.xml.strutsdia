@@ -216,4 +216,20 @@
  <PROCESS-ITEM ID="#addProfesional" NAME="action15"
   PATH="/addProfesional" SHAPE="32,3377,0,0" TITLE="ProfesionalForm"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#validateProfesionalEmail" NAME="action16"
+  PATH="/validateProfesionalEmail" SHAPE="32,3377,0,0"
+  TITLE="ValidateProfesionalEmailForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalEmailValidated.jsp" TARGET="page8" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/profesionalEmailNotValidated.jsp" TARGET="page6"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page8" PATH="/profesionalEmailValidated.jsp"
+  SHAPE="240,3489,0,0" SUBTYPE="jsp"
+  TITLE="profesionalEmailValidated.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page6" PATH="/profesionalEmailNotValidated.jsp"
+  SHAPE="240,3377,0,0" SUBTYPE="jsp"
+  TITLE="profesionalEmailNotValidated.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

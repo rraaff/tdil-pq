@@ -61,6 +61,8 @@ CREATE TABLE NOTIFICATION_EMAIL (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('verif.email.prof', 'Verificacion de email de profesional','Para se verificado cliquea aca [LINK]',0);
+
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `insertType` VARCHAR(100) NOT NULL ,
@@ -147,6 +149,7 @@ CREATE TABLE PROFESIONAL (
   `approved` INT NOT NULL,
   `datachanged` INT NOT NULL,
   `id_wall` INT NOT NULL,
+  `verifemail` VARCHAR(20) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
    CONSTRAINT `FK_WALL_WRITTING_02`
