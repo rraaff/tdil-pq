@@ -1,4 +1,3 @@
-<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.struts.forms.MailToParentAdministrationForm"%>
 <%@page import="com.tdil.milka.model.valueobjects.MailToParentValueObject"%>
@@ -90,7 +89,7 @@ request.setAttribute( "test",  paginated);
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
 			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
 			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
-			<display:column title="acciones"><a href="./reviewMailToParent.do?id=<%= ((MailToParentValueObject)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
+			<display:column title="acciones"><a href="./reviewMailToParent.do?id=<%= ((MailToParentValueObject)pageContext.getAttribute("testit")).getId()%>&page=<%= request.getParameter("page") != null ? request.getParameter("page") : "1" %>">Revisar</a></display:column>
 		</display:table>
 	</div>
 	<logic:notEqual name="MailToParentAdministrationForm" property="idBlobData" value="0">
