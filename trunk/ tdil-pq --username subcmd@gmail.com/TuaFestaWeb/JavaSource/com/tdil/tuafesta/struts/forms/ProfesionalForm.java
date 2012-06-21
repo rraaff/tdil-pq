@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -97,6 +98,7 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		profesional.setBirthdate(parseDate(this.getBirthdate()));
 		profesional.setPhone(this.getPhone());
 		profesional.setEmail(this.getEmail());
+		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
 		profesional.setPassword(this.getPassword());
 		profesional.setWebsite(this.getWebsite());
 		profesional.setFacebook(this.getFacebook());
