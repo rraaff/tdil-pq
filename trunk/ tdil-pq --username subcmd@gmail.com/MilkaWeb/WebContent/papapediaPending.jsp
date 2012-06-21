@@ -1,3 +1,4 @@
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.model.valueobjects.StatusHelper"%>
 <%@page import="com.tdil.milka.model.valueobjects.CreationDateHelper"%>
@@ -62,10 +63,10 @@ request.setAttribute( "test",  paginated);
 	</div>
 	<div class="renglon width860">
 		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./papapediaPending.jsp">
-			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable"><%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
+			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" sortProperty="creationdate"><%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
-			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable"><%= StatusHelper.getStatusRB(((WallWritting)pageContext.getAttribute("testit")).getDeleted(), ((WallWritting)pageContext.getAttribute("testit")).getApproved())%></display:column>
-			<display:column title="acciones"><a href="./reviewPapapedia.do?id=<%= ((WallWritting)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
+			<display:column title="estado" sortable="false" headerClass="sortable"><%= StatusHelper.getStatusRB(((WallWritting)pageContext.getAttribute("testit")).getDeleted(), ((WallWritting)pageContext.getAttribute("testit")).getApproved())%></display:column>
+			<display:column title="acciones"><a href="./reviewPapapedia.do?id=<%= ((WallWritting)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
 		</display:table>
 	</div>
 	<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
