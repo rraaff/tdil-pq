@@ -37,8 +37,8 @@ body {
 	background-repeat: repeat;
 }
 
-div {
-	/*border:dotted 1px #00FF00;*/
+div {/*
+	border:dotted 1px #00FF00;*/
 }
 
 /************************************* Comienzo del country selection *************************************/
@@ -350,17 +350,17 @@ body {
 }
 #BlockSecondaryContent #leftContent {
 	float: left;
-	height: 1170px;
+/*	height: 1170px;*/
 	width: 635px;
 	margin-left: 15px;
 	position:relative;
 }
 #BlockSecondaryContent #rightContent {
 	float: right;
-	height: 1170px;
+/*	height: 1170px;*/
 	width: 309px;
-	margin-right: auto;
-	margin-left: auto;
+	margin-right: 15px;
+/*	margin-left: 15px;*/
 }
 #BlockSecondaryContent #rightContent #BlockTwFeed {
 	width:309px; 
