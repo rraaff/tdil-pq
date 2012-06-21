@@ -1,11 +1,18 @@
 package com.tdil.struts.pagination;
 
+import java.io.Serializable;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 
-public class BeanUtilsComparator extends CriterionComparator {
+public class BeanUtilsComparator extends CriterionComparator implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -461950646704491242L;
 
 	public BeanUtilsComparator() {
 		super();
