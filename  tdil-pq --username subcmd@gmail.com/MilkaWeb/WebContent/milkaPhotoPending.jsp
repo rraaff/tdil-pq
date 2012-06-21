@@ -1,3 +1,4 @@
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.milka.model.valueobjects.MilkaPhotoValueObject"%>
 <%@page import="com.tdil.milka.struts.forms.MilkaPhotoAdministrationForm"%>
 <%@page import="com.tdil.milka.web.MilkaErrorFormatter"%>
@@ -134,7 +135,7 @@ request.setAttribute( "test",  paginated);
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
 			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
 			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
-			<display:column title="acciones"><a href="./reviewMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%>">Revisar</a></display:column>
+			<display:column title="acciones"><a href="./reviewMilkaPhoto.do?id=<%= ((MilkaPhotoValueObject)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
 		</display:table>
 	</div>
 	<logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
