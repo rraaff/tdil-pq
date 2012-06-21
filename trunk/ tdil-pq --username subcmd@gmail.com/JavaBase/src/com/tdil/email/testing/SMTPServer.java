@@ -71,13 +71,6 @@ public class SMTPServer {
 	public SMTPServer() {
 		super();
 		instance = this;
-		new Thread("SMTP Server") {
-			@Override
-			public void run() {
-				SMTPServer.this.startServer();
-			}
-		}.start();
-		
 	}
 	
 	private void startServer() {
@@ -359,7 +352,13 @@ public class SMTPServer {
 	}
 
 	public static void main(String[] args) {
-		new SMTPServer();
+		final SMTPServer smtpServer = new SMTPServer();
+		new Thread("SMTP Server") {
+			@Override
+			public void run() {
+				smtpServer.startServer();
+			}
+		}.start();
 	}
 
 	public ServerSocket getSocket() {
