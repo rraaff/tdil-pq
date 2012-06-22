@@ -142,15 +142,17 @@ div { /*border:dotted 1px #00FF00;*/ }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .title a:hover {
 	text-decoration:underline;
 }
-#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:visited {
-	color:#CCC;
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description {
 	font-size:11px;
 	line-height:16px;
 	text-align:justify;
 	font-weight:normal;
 	width: 530px;
-	padding-bottom:13px;
 	float: left;
+}
+#fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:active, #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:visited {
+	color:#CCC;
+	padding-bottom:13px;
 	text-decoration:none;
 }
 #fakeLiveboxWindow #left #note #top100LB #renglonRank #ranked .description a:hover {
@@ -225,14 +227,12 @@ div { /*border:dotted 1px #00FF00;*/ }
 							</div>
 						</div>
 					<% } %>
-				</div>
-				<!-- PABLO categorias -->
-				<div >
 					<% for (GalleryCategory gc : categories) { %>
 						<div id="renglonRank">
 							<div id="photo" style="background:url(../../downloadThumb.st?id=<%=gc.getImageId()%>&width=78&height=78&type=PUBLIC&ext=<%=gc.getImageext()%>); background-repeat:no-repeat; background-position:center center;"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewCategory<%=gc.getId()%>.html"><img src="../../images/null.gif" width="78" height="78"></a></div>
 							<div id="ranked">
 								<span class="title"><a href="../<%=publicHomeBean.getCountry().getIsoCode2()%>/viewCategory<%=gc.getId()%>.html"><%= gc.getTitle()%></a></span>
+								<span class="description"><a href="#">Acá debería ir un for con el</a>, <a href="#">link a cada una de las galerías de la categoría</a>, <a href="#">separadas por un espacio y una coma</a></span>
 							</div>
 						</div>
 					<% } %>

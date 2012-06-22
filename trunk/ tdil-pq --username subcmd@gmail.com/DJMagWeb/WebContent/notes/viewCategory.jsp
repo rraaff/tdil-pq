@@ -211,7 +211,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %></div>
+		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %> > "NombRE DE LA categoría"</div>
 		<div id="left">
 			<div id="note">
 				<div id="top100LB">
