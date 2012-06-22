@@ -58,24 +58,24 @@ div { /*border:dotted 1px #00CCFF; */}
 		<h1>Contenido tipo Galer&iacute;a de im&aacute;genes</h1>
 		<span class="errorText"><%=DJMagErrorFormatter.getErrorFrom(request, "general")%></span>
 		<div class="renglon width860 height50">
-			<div class="label width50">T&iacute;tulo</div>
-			<div class="label width150"><html:text name="ImageGalleryForm" property="title" styleClass="width120"/></div>
+			<div class="label width80">T&iacute;tulo</div>
+			<div class="label width150"><html:text name="ImageGalleryForm" property="title" styleClass="width150"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.title.err")%></div>
-			<div class="label width50"></div>
 			<div class="label width80">Descripci&oacute;n</div>
-			<div class="label width420 height50"><html:textarea name="ImageGalleryForm" property="description" styleClass="width420 height50"/></div>
+			<div class="label width450 height50"><html:textarea name="ImageGalleryForm" property="description" styleClass="width450 height50"/></div>
 			<div class="label width50"><%=DJMagErrorFormatter.getErrorFrom(request, "ImageGallery.description.err")%></div>
-			
+		</div>
+		<div class="renglon width860">
 			<div class="label width80">Categor&iacute;a</div>
-			<div class="label width420 height50">
-				<html:select name="ImageGalleryForm" property="galleryCategoryId" styleClass="width120">
+			<div class="label width420">
+				<html:select name="ImageGalleryForm" property="galleryCategoryId" styleClass="width420">
 					<logic:iterate name="ImageGalleryForm" property="allCategories" id="iterCategory">
 						<option	<%=	((GalleryCategory) iterCategory).getId().equals( imageGalleryForm.getGalleryCategoryId()) ? "selected" : ""%> value="<%=((GalleryCategory) iterCategory).getId()%>">&nbsp;&nbsp;&nbsp;<%=((GalleryCategory) iterCategory).getTitle()%></option>
 					</logic:iterate>
 				</html:select>
 			</div>
 		</div>
-		<div id="conteinerScrollable" style="float:left; width:950px; height:380px; overflow:auto; border:#FF0000;">
+		<div id="conteinerScrollable" style="float:left; width:950px; height:335px; overflow:auto; border:#FF0000;">
 			<h2>Fotos</h2>
 			<div class="renglon width920">
 				<div class="label width920 comment">Podr&aacute; crear todas las galer&iacute;as que quiera. Los usuarios accederan a la secci&oacute;n de galer&iacute;as a trav&eacute;s de men&uacute; de galer&iacute;as. Cargue todas las ftos que desee para la galer&iacute;a y una vez cargadas, pordr&aacute; subir y bajar cada una de las mismas con los links en las acciones para modificar el &oacute;rden de aparici&oacute;n. Medida ideal de las imágenes 660 pixels x 400 pixels a 72dpi de resoluci&oacute;n</div>
@@ -135,7 +135,7 @@ div { /*border:dotted 1px #00CCFF; */}
 					</html:submit>
 				</div>
 			</div>
-			<h2>Listado de ImageGallerys</h2>
+			<h2>Listado de Galer&iacute;as</h2>
 			<div class="renglon width860 height200" style="overflow:auto;">
 				<table>
 					<tr>

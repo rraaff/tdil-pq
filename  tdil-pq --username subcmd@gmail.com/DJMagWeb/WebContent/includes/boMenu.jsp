@@ -9,10 +9,10 @@
    <li>
     <a href="#">Administraci&oacute;n</a>
     <ul>
-      <li><html:link action="/goToCountryABM" >Manejo de paises</html:link></li>
+      <li><html:link action="/goToCountryABM" >Manejo de pa&iacute;ses</html:link></li>
       <li><html:link action="/goToSectionABM" >Manejo de secciones</html:link></li>
       <li><html:link action="/goToBannerABM" >Manejo de banners</html:link></li>
-      <li><html:link action="/goToGalleryCategoryABM" >Manejo de categorias de galerias</html:link></li>
+      <li><html:link action="/goToGalleryCategoryABM" >Manejo de categor&iacute;as de galer&iacute;as</html:link></li>
     </ul>
   </li>
   <li>
