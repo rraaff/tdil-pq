@@ -38,9 +38,33 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
+		<%@ include file="includes/postItReady.jspf" %>
 	}
 	
 );
+
+function clearData() {
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='text']").attr('value', '');
+}
+
+function postAltaPostIt(data) {
+	$( "#dialog-form" ).dialog("close" );
+	if (data.result == 'OK') {
+		clearData();
+		$( "#dialog-modal" ).dialog({
+			height: 140,
+			modal: true
+		});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
+}
 </script>
 
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
@@ -82,6 +106,7 @@ body {
 <% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
+	<a href="#" id="subipostit" title="Subi tu post-it">Subi tu post-it</a>
 </div>
 <div id="flashin">
 	<script language="javascript">
@@ -128,5 +153,6 @@ body {
 	</noscript>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
+<%@ include file="includes/postItDialogs.jspf" %>
 </body>
 </html>

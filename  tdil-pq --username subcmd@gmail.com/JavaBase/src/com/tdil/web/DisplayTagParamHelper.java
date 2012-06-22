@@ -4,6 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 
+/**
+ * <%=DisplayTagParamHelper.getParams(request)%>
+ * @author mgodoy
+ *
+ */
+
 public class DisplayTagParamHelper {
 
 	public static String getParams(HttpServletRequest request) {

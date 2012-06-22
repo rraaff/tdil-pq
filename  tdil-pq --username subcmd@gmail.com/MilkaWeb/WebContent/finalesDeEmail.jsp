@@ -44,8 +44,31 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
+		<%@ include file="includes/finalesDeEmailReady.jspf" %>
 	}
 );
+
+function clearData() {
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+}
+
+function postUpload(data) {
+	$( "#dialog-form" ).dialog("close" );
+	if (data.result == 'OK') {
+		clearData();
+		$( "#dialog-modal" ).dialog({
+			height: 140,
+			modal: true
+		});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
+}
 </script>
 <script type="text/javascript">
 	var _gaq = _gaq || [];
@@ -75,6 +98,7 @@ body {
 <% int barClickCounter = MeltButton.FINALES_DE_EMAIL_COUNTER; %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
+	<a href="#" id="subifinal" title="Subi tu final de email">Subi tu final de email</a>
 </div>
 <div id="flashin">
 	<!--div style="height:50px; width:100%;"></div-->
@@ -107,5 +131,6 @@ body {
 	</script>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
+<%@ include file="includes/finalesDeEmailDialogs.jspf" %>
 </body>
 </html>
