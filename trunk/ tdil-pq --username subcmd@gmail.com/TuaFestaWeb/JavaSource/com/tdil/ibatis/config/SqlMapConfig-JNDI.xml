@@ -18,6 +18,7 @@
 
   <!-- List the SQL Map XML files. They can be loaded from the 
        classpath, as they are here (com.domain.data...) -->
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/VERSION_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SYSPROPERTIES_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SYSTEMUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/BLOB_DATA_SqlMap.xml"/>
