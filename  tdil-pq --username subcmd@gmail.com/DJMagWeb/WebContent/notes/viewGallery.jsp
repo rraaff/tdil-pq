@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.djmag.model.GalleryCategory"%>
 <%@page import="com.tdil.djmag.model.SectionType"%>
 <%@page import="com.tdil.djmag.model.Section"%>
 <%@page import="com.tdil.djmag.model.ImageInGallery"%>
@@ -16,6 +17,10 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
 	ImageGallery imageGallery = publicHomeBean.getImageGallery(galleryId);
 	List<ImageInGallery> photos = publicHomeBean.getGalleryPhotos(imageGallery);
+	GalleryCategory category = null;
+	if (!imageGallery.getCategoryId().equals(0)) {
+		category = PublicHomeBean.getGalleryCategory(String.valueOf(imageGallery.getCategoryId()));
+	}
 %>
 <html lang="en-us">
 <head>
@@ -178,7 +183,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %> > Nombre de la categoría (si aplica) > nombre de la galería</div>
+		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %><% if (category != null) { %> > <%=category.getTitle()%><% } %> > <%=imageGallery.getTitle()%></div>
 		<div id="left">
 			<div id="note">
 				<div id="top100LB">

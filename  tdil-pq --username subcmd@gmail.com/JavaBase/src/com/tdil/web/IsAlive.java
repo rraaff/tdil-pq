@@ -1,5 +1,6 @@
 package com.tdil.web;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.ibatis.TransactionProvider;
@@ -26,8 +28,22 @@ public class IsAlive extends HttpServlet {
 
 	private void doIsAlive(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		if (appversion == -1) {
-//			String st = getServletContext().getRealPath("/version.txt");
-//			System.out.println(st);
+			FileInputStream finput = null;
+			try {
+				String st = getServletContext().getRealPath("/version.txt");
+				finput = new FileInputStream(st);
+				appversion = Integer.valueOf(IOUtils.toString(finput));
+			} catch (Exception e) {
+				appversion = -2;
+			} finally {
+				if (finput != null) {
+					try {
+						finput.close();
+					} catch (Exception e) {
+						Log.error(e.getMessage(), e);
+					}
+				}
+			}
 		}
 		int version = 0;
 		try {
@@ -42,7 +58,7 @@ public class IsAlive extends HttpServlet {
 		}
 		// TODO segun la version, 404 o como esta
 		PrintWriter out = res.getWriter();
-		out.println("ok");
+		out.println(appversion + "-" + version);
 		out.close();
 	}
 	
