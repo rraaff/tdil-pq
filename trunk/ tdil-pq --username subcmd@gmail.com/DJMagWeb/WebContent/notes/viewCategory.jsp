@@ -20,9 +20,9 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 	SelectCountryServlet.initForCountry(request, country, "");
 } 
 	PublicHomeBean publicHomeBean = (PublicHomeBean)session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN);
-
+	GalleryCategory category = PublicHomeBean.getGalleryCategory(categoryId);
 	List<ImageGallery> galleries = publicHomeBean.getGalleriesForCountryAndCategory(categoryId);
-	if (galleries == null) {
+	if (category == null || galleries == null) {
 		// TODO mando a la home
 	} else {
 %>
@@ -176,6 +176,20 @@ div { /*border:dotted 1px #00FF00;*/ }
 	margin-left:auto;
 	margin-right:auto;
 }
+#fakeLiveboxWindow #left #linksBottom {
+	border-top:solid 1px #e5e5e5;
+	height:50px;
+	margin-left:13px;
+	margin-right:13px;
+	padding-top:13px;
+}
+#fakeLiveboxWindow #left #linksBottom a {
+	color:#e21e26;
+	padding:5px;
+}
+#fakeLiveboxWindow #left #linksBottom #linkHome {
+	float:left;
+}
 </style>
 </head>
 <body>
@@ -211,7 +225,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 		<div id="bannerHeader" align="center"><%=publicHomeBean.getNoteTop().getHtmlcontent() %></div>
 	<% } %>
 	<div id="fakeLiveboxWindow">
-		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %> > "NombRE DE LA categoría"</div>
+		<div id="sectionTitle"><%=publicHomeBean.getImageGallerySection().getName() %> > <%=category.getTitle() %></div>
 		<div id="left">
 			<div id="note">
 				<div id="top100LB">
@@ -227,7 +241,9 @@ div { /*border:dotted 1px #00FF00;*/ }
 					<% } %>
 				</div>
 			</div>
-			<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
+			<div id="linksBottom">
+				<div id="linkHome"><a href="../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewPhotoGalleries.html">Volver a las galer&iacute;as</a></div>
+			</div>
 			<div id="navBar">
 				<div style="float:left;"><a href="javascript:window.open('https://twitter.com/share?url=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/sharetw.gif" width="70" height="20" align="absmiddle"></a>
 				</div>
