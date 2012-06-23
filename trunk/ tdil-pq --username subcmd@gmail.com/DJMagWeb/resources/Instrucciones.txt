@@ -1,14 +1,13 @@
 Instalación
 ===========
 
-1) Correr database.sql como root del mysql
+1) Bajar el tomcat /etc/init.d/tomcat6 stop
 
-2) Correr ddl.sql DJMAG_USER/DJMAG_USER base DJMAG
+2) Ejecutar el archivo ddl_03.sql contra la base de datos
 
-3) Copiar el war al directorio webapps del tomcat (ej: apache-tomcat-6.0.32/webapps)
+3) Descomprimir el war en /usr/share/tomcat6/DJMAG_WEB
 
-4) Copiar el archivo DJMAG_WEB.xml al directorio de contextos del tomcat (ej: apache-tomcat-6.0.32/conf/Catalina/localhost)
-
+4) Levantar el tomcat /etc/init.d/tomcat6 start
 
 Accesos
 =======
