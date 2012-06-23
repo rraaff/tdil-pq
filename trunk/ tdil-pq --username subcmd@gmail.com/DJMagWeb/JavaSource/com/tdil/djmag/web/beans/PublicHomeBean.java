@@ -545,6 +545,27 @@ public class PublicHomeBean  {
 		}
 	}
 	
+	public static GalleryCategory getGalleryCategory(final String categoryId) {
+		if (StringUtils.isEmpty(categoryId)) {
+			return null;
+		}
+		if (!StringUtils.isNumeric(categoryId)) {
+			return null;
+		}
+		final Integer catId = Integer.parseInt(categoryId);
+		try {
+			 return (GalleryCategory)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					GalleryCategoryDAO galleryCategoryDAO = DAOManager.getGalleryCategoryDAO();
+					return galleryCategoryDAO.selectGalleryCategoryByPrimaryKey(catId);
+				}
+			});
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
 	public ImageGallery getImageGallery(String id) {
 		if (StringUtils.isEmpty(id)) {
 			return null;
