@@ -24,7 +24,7 @@ $('form').mouseover(function(){
 
 $("form[name='MilkaPhotoForm']").validate({
 		errorPlacement: function(error, element) {
-			error.appendTo( element.parent("td").next("td") );
+			error.appendTo( element.parent("div"));
 		},
 		rules: { 'authorBean.name': {required: true},
 				'authorBean.email': {required: true, email: true},
@@ -48,12 +48,12 @@ $("form[name='MilkaPhotoForm']").validate({
         }
 	});
 	
-	$( "#dialog-form" ).dialog({
-		autoOpen: false,
-		height: 300,
-		width: 350,
-		modal: true
+	$( "#closegracias" ).click(function() {
+		$( "#graciasporsubir" ).fadeOut();
 	});
-	$( "#subifotomilka" ).click(function() {
-		$( "#dialog-form" ).dialog( "open" );
+	$( "#cancelalta" ).click(function() {
+		$( "#altalayer" ).fadeOut();
+	});
+	$( "#closeerror" ).click(function() {
+		$( "#erroralta" ).fadeOut();
 	});

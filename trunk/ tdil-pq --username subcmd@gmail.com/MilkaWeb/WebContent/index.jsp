@@ -84,7 +84,7 @@ $(document).ready(
 	<div id="header">
 		<div id="logo"><a href="index.jsp" title="Milka"></a></div>
 		<div id="box">
-			<div id="subi"><a href="#" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>
+			<div id="subi"><a href="javascript:altaExperiencia()" id="subifotomilka" title="SUB&Iacute; tu foto con chocolate"></a></div>
 			<div id="social">
 				<ul>
 					<li class="faqs"><!-- a href="faqs.jsp" title="FAQS"></a--></li>
