@@ -128,7 +128,7 @@
 		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
 		<scp file="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" keyfile="/home/mgodoy/icarus/workspace/concu_test/MilkaWeb/resources/tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true">
 		</scp>
-		<sshexec failonerror="true" keyfile="/home/mgodoy/icarus/workspace/concu_test/MilkaWeb/resources/tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_${project.name.lower}.sh" />
+		<sshexec failonerror="true" keyfile="/home/mgodoy/icarus/workspace/concu_test/DJMagWeb/resources/tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_${project.name.lower}.sh" />
 	</target>
 
 	<target name="makeEntregable">
@@ -139,12 +139,12 @@
 		</antcall>
 		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
 		</copy>
-		<copy todir="${project.name.upper}.tmp" file="database.sql">
+		<!--copy todir="${project.name.upper}.tmp" file="database.sql">
+		</copy-->
+		<copy todir="${project.name.upper}.tmp" file="ddl_03.sql">
 		</copy>
-		<copy todir="${project.name.upper}.tmp" file="ddl.sql">
-		</copy>
-		<copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
-		</copy>
+		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
+		</copy-->
 	</target>
 
 	<target name="hotDeploy-prd">
