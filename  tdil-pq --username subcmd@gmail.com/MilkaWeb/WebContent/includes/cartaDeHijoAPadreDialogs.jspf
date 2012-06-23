@@ -1,34 +1,18 @@
-<div id="dialog-modal" class="hide" title="Cartas de Hijos a Padres">
-	<p>Gracias por subir tu carta.</p>
+<div id="graciasporsubir" class="hide" style="z-index: 500;">
+	<p>Gracias por participar.<br>Te avisaremos cuando este aprobada.</p>
+	<input type="button" id="closegracias" value="Close">
 </div>
-<div id="dialog-modal-err" class="hide" title="Cartas de Hijos a Padres">
+<div id="erroralta" class="hide" style="z-index: 500;">
 	<p>Ha ocurrido un error, intentelo nuevamente.</p>
+	<input type="button" id="closeerror" value="Close">
 </div>
-<div id="dialog-form" title="Cartas de Hijos a Padres">
+<div id="altalayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/uploadMailToParent" enctype="multipart/form-data">
-		<table width="330" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="56" height="30">Nombre:</td>
-				<td width="242"><html:text name="MailToParentForm" property="authorBean.name" styleClass="width230"/></td>
-				<td width="30" id="authorBean.nameerr"></td>
-			</tr>
-			<tr>
-				<td height="30">E-Mail:</td>
-				<td><html:text name="MailToParentForm" property="authorBean.email" styleClass="width230"/></td>
-				<td width="30" id="authorBean.emailerr"></td>
-			</tr>
-			<tr>
-				<td height="30" align="center"><html:checkbox name="MailToParentForm" property="authorBean.acceptPolitics"/></td>
-				<td>Acepto las pol&iacute;ticas del sitio</td>
-				<td width="30" id="authorBean.acceptPoliticserr"></td>
-			</tr>
-			<tr>
-				<td colspan="2" height="30"><html:file name="MailToParentForm" property="photoFormFile" /></td>
-				<td width="30" id="photoFormFileerr"></td>
-			</tr>
-			<tr>
-				<td colspan="3" height="30" align="center"><html:submit property="operation">Enviar carta</html:submit></td>
-			</tr>
-		</table>
+		<div id="Nombre"><html:text name="MailToParentForm" property="authorBean.name" styleClass="normalField"/></div>
+		<div id="E-Mail"><html:text name="MailToParentForm" property="authorBean.email" styleClass="normalField"/></div>
+		<div id="Politicas"><html:checkbox name="MailToParentForm" property="authorBean.acceptPolitics"/></div>
+		<div id="SubirImagen"><html:file name="MailToParentForm" property="photoFormFile" /></div>
+		<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 	</html:form>
+	<input type="button" id="cancelalta" value="Cancel">
 </div>

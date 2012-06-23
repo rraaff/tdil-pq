@@ -24,7 +24,7 @@ $('form').mouseover(function(){
 
 $("form[name='EmailEndingForm']").validate({
 		errorPlacement: function(error, element) {
-			error.appendTo( element.parent("td").next("td") );
+			error.appendTo( element.parent("div"));
 		},
 		rules: { 'authorBean.name': {required: true},
 				'authorBean.email': {required: true, email: true},
@@ -47,16 +47,3 @@ $("form[name='EmailEndingForm']").validate({
     			});
         }
 	});
-	
-$( "#dialog-form" ).dialog({
-	autoOpen: false,
-	height: 300,
-	width: 350,
-	modal: true
-});
-$( "#subifinal" ).click(function() {
-	$("input[name='authorBean.name']").attr('value', '');
-	$("input[name='authorBean.email']").attr('value', '');
-	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
-	$( "#dialog-form" ).dialog( "open" );
-});

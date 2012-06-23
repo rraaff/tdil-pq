@@ -1,34 +1,19 @@
-<div id="dialog-modal" class="hide" title="Subi tu post-it">
-	<p>Gracias por compartir tu post-it.</p>
+<div id="graciasporsubir" class="hide" style="z-index: 500;">
+	<p>Gracias por subir tu postit.</p>
+	<input type="button" id="closegracias" value="Close">
 </div>
-<div id="dialog-modal-err" class="hide" title="Subi tu post-it">
+<div id="erroralta" class="hide" style="z-index: 500;">
 	<p>Ha ocurrido un error, intentelo nuevamente.</p>
+	<input type="button" id="closeerror" value="Close">
 </div>
-<div id="dialog-form" title="Subi tu post-it">
+<div id="altalayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/addPostIt">
-		<table width="330" cellspacing="0" cellpadding="0">
-			<tr>
-				<td width="56" height="30">Nombre:</td>
-				<td width="242"><html:text name="PostItForm" property="authorBean.name" styleClass="normalField"/></td>
-				<td width="30" id="authorBean.nameerr"></td>
-			</tr>
-			<tr>
-				<td height="30">E-Mail:</td>
-				<td><html:text name="PostItForm" property="authorBean.email" styleClass="width230"/></td>
-				<td width="30" id="authorBean.emailerr"></td>
-			</tr>
-			<tr>
-				<td height="30" align="center"><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></td>
-				<td>Acepto las pol&iacute;ticas del sitio</td>
-				<td width="30" id="authorBean.acceptPoliticserr"></td>
-			</tr>
-			<tr>
-				<td colspan="2" height="30"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></td>
-				<td width="30" id="photoFormFileerr"></td>
-			</tr>
-			<tr>
-				<td colspan="3" height="30" align="center"><html:submit property="operation">Enviar</html:submit></td>
-			</tr>
-		</table>
+		<div id="Nombre"><html:text name="PostItForm" property="authorBean.name" styleClass="normalField"/></div>
+		<div id="E-Mail"><html:text name="PostItForm" property="authorBean.email" styleClass="normalField"/></div>
+		<div id="Politicas"><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></div>
+		<div id="SubirImagen"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></div>
+		<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
+		<div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div>
 	</html:form>
+	<input type="button" id="cancelalta" value="Cancel">
 </div>

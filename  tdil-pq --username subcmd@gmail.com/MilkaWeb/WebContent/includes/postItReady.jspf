@@ -24,7 +24,7 @@ $('form').mouseover(function(){
 
 $("form[name='PostItForm']").validate({
 		errorPlacement: function(error, element) {
-			error.appendTo( element.parent("td").next("td") );
+			error.appendTo( element.parent("div"));
 		},
 		rules: { 'authorBean.name': {required: true},
 				'authorBean.email': {required: true, email: true},
@@ -47,18 +47,4 @@ $("form[name='PostItForm']").validate({
     			success: postAltaPostIt
     			});
         }
-	});
-	
-	$( "#dialog-form" ).dialog({
-		autoOpen: false,
-		height: 300,
-		width: 350,
-		modal: true
-	});
-	$( "#subipostit" ).click(function() {
-		$("input[name='authorBean.name']").attr('value', '');
-		$("input[name='authorBean.email']").attr('value', '');
-		$("input[name='authorBean.acceptPolitics']").attr('checked', false);
-		$("textarea[name='text']").attr('value', '');
-		$( "#dialog-form" ).dialog( "open" );
 	});

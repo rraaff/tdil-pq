@@ -45,8 +45,32 @@ $(document).ready(
 		   $(valor).meltbutton();
 		});
 		<%@ include file="includes/finalesDeEmailReady.jspf" %>
+
+		$( "#closegracias" ).click(function() {
+			$( "#graciasporsubir" ).fadeOut();
+		});
+		$( "#cancelalta" ).click(function() {
+			$( "#altalayer" ).fadeOut();
+		});
+		$( "#closeerror" ).click(function() {
+			$( "#erroralta" ).fadeOut();
+		});
 	}
 );
+
+function altaExperiencia() {
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$( "#altalayer" ).css({
+		position: 'absolute',
+        top: top + 'px',
+        left: left + 'px'
+      }).fadeIn(500);
+}
 
 function clearData() {
 	$("input[name='authorBean.name']").attr('value', '');
@@ -55,18 +79,27 @@ function clearData() {
 }
 
 function postUpload(data) {
-	$( "#dialog-form" ).dialog("close" );
 	if (data.result == 'OK') {
 		clearData();
-		$( "#dialog-modal" ).dialog({
-			height: 140,
-			modal: true
-		});
+		$( "#altalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#graciasporsubir" ).width() / 2);
+		$( "#graciasporsubir" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
 	} else {
-		$( "#dialog-modal-err" ).dialog({
-				height: 140,
-				modal: true
-			});
+		$( "#altalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
 	}
 }
 </script>
@@ -98,8 +131,8 @@ body {
 <% int barClickCounter = MeltButton.FINALES_DE_EMAIL_COUNTER; %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
-	<a href="#" id="subifinal" title="Subi tu final de email">Subi tu final de email</a>
 </div>
+<input type="button" onclick="altaExperiencia()" value="Alta" style="position: absolute; top: 200px; left: 200px; z-index: 500;">
 <div id="flashin">
 	<!--div style="height:50px; width:100%;"></div-->
 	<script>
