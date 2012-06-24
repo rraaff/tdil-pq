@@ -178,10 +178,10 @@ body {
 		<div id="lineadecontenido" style="margin-left:20px; margin-top:10px;"><html:file name="EmailEndingForm" property="photoFormFile" /></div>
 		<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle">Enviar</html:submit><%=MilkaErrorFormatter.getErrorFrom(request, "EmailEndingForm.photo.err")%></div>
 		<div id="textoEspecial">
-			<p>Complet&aacute; los datos, carg&aacute; una captura de tu final de E-Mail<br />
-				enviarlo. Una vez que est&eacute; publicado te avisaremos.</p>
-			<p>XOXOXOXOXOXOXOXOXOXO</p>
-			<p>Milka!</p>
+			<p>Complet&aacute; los datos, carg&aacute; una captura del final de un e-mail y envialo.</p>
+			<p>XOXOXOXO</p>
+			<p>Milka</p>
+			<p>PD: Te avisaremos una vez que est&eacute; publicado.</p>
 		</div>
 </html:form>
 

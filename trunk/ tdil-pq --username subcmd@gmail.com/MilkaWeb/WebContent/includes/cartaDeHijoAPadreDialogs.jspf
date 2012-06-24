@@ -1,10 +1,10 @@
 <div id="graciasporsubir" class="hide" style="z-index: 500;">
 	<p>Gracias por participar.<br>Te avisaremos cuando este aprobada.</p>
-	<input type="button" id="closegracias" value="Close">
+	<div align="center"><input type="button" id="closegracias" value="Close"></div>
 </div>
 <div id="erroralta" class="hide" style="z-index: 500;">
 	<p>Ha ocurrido un error, intentelo nuevamente.</p>
-	<input type="button" id="closeerror" value="Close">
+	<div align="center"><input type="button" id="closeerror" value="Close"></div>
 </div>
 <div id="altalayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/uploadMailToParent" enctype="multipart/form-data">
@@ -12,7 +12,7 @@
 		<div id="E-Mail"><html:text name="MailToParentForm" property="authorBean.email" styleClass="normalField"/></div>
 		<div id="Politicas"><html:checkbox name="MailToParentForm" property="authorBean.acceptPolitics"/></div>
 		<div id="SubirImagen"><html:file name="MailToParentForm" property="photoFormFile" /></div>
-		<div id="buttonHolder"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
+		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
+		<div id="buttonCancelHolder"><input type="button" id="cancelalta" value="Me arrepentí"></div>
 	</html:form>
-	<input type="button" id="cancelalta" value="Cancel">
 </div>

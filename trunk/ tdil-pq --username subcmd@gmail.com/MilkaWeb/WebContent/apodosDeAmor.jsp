@@ -26,8 +26,8 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "postits.jsp";
+	String nextPage = "postits.jsp";
+	String prevPage = "finalesDeEmail.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -82,7 +82,7 @@ body {
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
 <div id="flashin">
-<div style="height:25px; width:100%;"></div>
+<div style="height:35px; width:100%;"></div>
 	<script language="javascript">
 		if (AC_FL_RunContent == 0) {
 			alert("Esta p&aacute;gina requiere el archivo AC_RunActiveContent.js.");
@@ -107,7 +107,7 @@ body {
 				'allowFullScreen', 'false',
 				'allowScriptAccess','sameDomain',
 				'movie', 'swf/ExpApodos/apodos',
-				'flashvars','xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=60',
+				'flashvars','xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=80',
 				'salign', ''
 				); //end AC code
 		}
@@ -119,9 +119,9 @@ body {
 		<param name="movie" value="swf/ExpApodos/apodos.swf" />
 		<param name="quality" value="best" />
 		<param name="wmode" value="transparent" />
-		<PARAM NAME="flashvars" VALUE="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=60">
+		<PARAM NAME="flashvars" VALUE="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=80">
 	<embed src="swf/ExpApodos/apodos.swf" 
-	flashvars="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=60"
+	flashvars="xmlfile=apodosDeAmor.xml&tipitospath=swf/ExpApodos/tipitos/&posttarget=./addLoveNick.do&maxtipitos=500&margintop=80"
 	quality="best" bgcolor="#ffffff" width="100%" height="100%" name="apodos" align="middle" wmode="transparent" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 		</object>
 	</noscript>

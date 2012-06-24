@@ -115,7 +115,7 @@ a {color:#535353; text-decoration:none}
 		<div id="bm_header">
 			<div id="bm_logo"><a href="index.jsp" title="Volver a la home de Milka"></a></div>
 			<!-- end logo-->
-			<div id="bm_social"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta dulzura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" width="17" height="17" alt="Facebook" /></a><img src="images/barra/separador.gif" width="1" height="21" /><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
+			<div id="bm_social"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" width="17" height="17" alt="Facebook" /></a><img src="images/barra/separador.gif" width="1" height="21" /><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
 			<!-- end social-->
 			<div id="bm_controlador"><a href="<%out.println(prevPage);%>" class="left"></a><span>PROB&Aacute; M&Aacute;S</span><a href="<%out.println(nextPage);%>" class="right"></a></div>
 			<!-- end controlador-->

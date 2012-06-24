@@ -25,8 +25,8 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "apodosDeAmor.jsp";
-	String prevPage = "finalesDeEmail.jsp";
+	String nextPage = "cartasDeHijosAPadres.jsp";
+	String prevPage = "apodosDeAmor.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -42,12 +42,15 @@ $(document).ready(
 
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#cancelalta" ).click(function() {
 			$( "#altalayer" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#closeerror" ).click(function() {
 			$( "#erroralta" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 	}
 	
@@ -62,9 +65,12 @@ function altaExperiencia() {
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$( "#altalayer" ).css({
 		position: 'absolute',
-        top: top + 'px',
-        left: left + 'px'
-      }).fadeIn(500);
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
 }
 
 function clearData() {
@@ -131,6 +137,77 @@ body {
 	color: #FFFFFF;
 	overflow:hidden;
 }
+div { /*border:dotted 1px #00CC33;*/ }
+#altalayer {
+	width:306px;
+	height:406px;
+	background-image: url(images/experiencias/postits/fondoAdd.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding:62px;
+}
+#graciasporsubir, #erroralta {
+	color:#FFFFFF;
+	background-color:#000000;
+	width:230px;
+	padding:15px;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+#lineadecontenido {
+	height:30px;
+	float:left;
+}
+#Nombre {
+	height: 25px;
+	width: 206px;
+	left: 85px;
+	top: 12px;
+	position: relative;
+}
+#E-Mail {
+	height: 25px;
+	width: 206px;
+	left: 85px;
+	top: 22px;
+	position: relative;
+}
+#Politicas {
+	height: 25px;
+	width: 160px;
+	left: 0px;
+	top: 40px;
+	position: relative;
+}
+#SubirImagen {
+	height: 100px;
+	width: 290px;
+	left: 0px;
+	top: 70px;
+	position: relative;
+}
+#buttonHolder {
+	border:none;
+	height: 82px;
+	width: 290px;
+	left: 0px;
+	top: 70px;
+	position: relative;
+}
+.normalField {
+	font-family:"Trebuchet MS", Arial, sans-serif;
+	width:206px;
+	height:25px;
+	line-height:22px;
+	border: dotted 1px #ad9d1f;
+	background:transparent;
+}
+.normalTextArea {
+	width:290px;
+	height:100px;
+}
 -->
 </style>
 </head>
@@ -139,9 +216,7 @@ body {
 <% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
-	<a href="#" id="subipostit" title="Subi tu post-it">Subi tu post-it</a>
 </div>
-<input type="button" onclick="altaExperiencia()" value="Alta" style="position: absolute; top: 200px; left: 200px; z-index: 500;">
 <div id="flashin">
 	<script language="javascript">
 		if (AC_FL_RunContent == 0) {
@@ -187,6 +262,7 @@ body {
 	</noscript>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
+<div id="bottomLayer" class="hide"><!-- --></div>
 <%@ include file="includes/postItDialogs.jspf" %>
 </body>
 </html>
