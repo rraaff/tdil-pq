@@ -67,6 +67,9 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="PROF_CATEGORY" domainObjectName="ProfesionalCategory" alias="pc">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="TUAFESTA" tableName="PROF_SERVICE" domainObjectName="ProfesionalService" alias="ps">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 <table schema="TUAFESTA" tableName="WALL" domainObjectName="Wall" alias="wa">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
