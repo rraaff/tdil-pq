@@ -21,7 +21,7 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "postits.jsp";
+	String nextPage = "apodosDeAmor.jsp";
 	String prevPage = "papapedia.jsp";
 %>
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'>
@@ -48,12 +48,15 @@ $(document).ready(
 
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#cancelalta" ).click(function() {
 			$( "#altalayer" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#closeerror" ).click(function() {
 			$( "#erroralta" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
 		});
 	}
 );
@@ -67,9 +70,12 @@ function altaExperiencia() {
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$( "#altalayer" ).css({
 		position: 'absolute',
-        top: top + 'px',
-        left: left + 'px'
-      }).fadeIn(500);
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
 }
 
 function clearData() {
@@ -116,12 +122,140 @@ function postUpload(data) {
 <style>
 <!-- 
 body {
-	background-color:#FFFFFF;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #1e1e1e;
 	padding:0;
 	margin:0;
 	height:100%;
 	overflow:hidden;
+}
+#graciasporsubir, #erroralta {
+	color:#FFFFFF;
+	background-color:#000000;
+	width:230px;
+		
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+#altalayer {
+	background-image: url(images/experiencias/finalesEmails/upload.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:489px;
+	height:600px;
+	padding:0px;
+}
+#lineadecontenido1 {
+	width: 302px;
+	margin-left:88px;
+	margin-top:175px;
+	margin-bottom:5px;
+	top:176qpx;
+	left:48px;
+	position:relative;
+}
+#lineadecontenido2 {
+	width: 302px;
+	margin-left:88px;
+	margin-bottom:5px;
+	top:206qpx;
+	left:48px;
+	position:relative;
+}
+#lineadecontenido3 {
+	width: 302px;
+	margin-left:20px;
+	margin-top:10px;
+	top:5px;
+	left:48px;
+	position:relative;
+}
+#lineadecontenido4 {
+	width: 302px;
+	margin-left:20px;
+	margin-top:10px;
+	top:5px;
+	left:48px;
+	position:relative;
+}
+.specialFields {
+	width:229px;
+	height:19px;
+	border:solid 1px #9d9fa1;
+}
+#textoEspecial {
+	top:-3px;
+	left:75px;
+	position:relative;
+	float:left;	
+	width:360px;
+}
+.spacer{
+	width:100px;
+}
+#buttonHolder .okCircle, .okCircle a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1px;
+	line-height:14px;
+	color: #FFFFFF;
+	background:transparent;
+	text-decoration: none;
+	background-image: url(images/experiencias/finalesEmails/boton.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:49px;
+	height:48px;
+	border:none;
+	cursor:hand;
+	margin:0;
+	padding:0;
+	top:-104px;
+	left:380px;
+	position:relative;
+	
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+}
+#buttonCloseHolder {
+	width:49px;
+	height:21px;
+	margin:0;
+	padding:0;
+	top:-360px;
+	left:405px;
+	position:relative;
+}
+#buttonCloseHolder .closeButton, .closeButton a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1px;
+	line-height:14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-image: url(images/experiencias/finalesEmails/close.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width:49px;
+	height:21px;
+	border:none;
+	border:transparent;
+	cursor:hand;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	background-color: transparent;
 }
 -->
 </style>
@@ -129,12 +263,11 @@ body {
 
 <body>
 <% int barClickCounter = MeltButton.FINALES_DE_EMAIL_COUNTER; %>
+<div id="bottomLayer" class="hide"><!-- --></div>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<input type="button" onclick="altaExperiencia()" value="Alta" style="position: absolute; top: 200px; left: 200px; z-index: 500;">
 <div id="flashin">
-	<!--div style="height:50px; width:100%;"></div-->
 	<script>
 		if (AC_FL_RunContent == 0) {
 			alert("This page requires AC_RunActiveContent.js.");
@@ -142,7 +275,7 @@ body {
 			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
 				'width', '100%', 
 				'height','100%',
-				'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=agregarFinalDeEmail.jsp',
+				'FlashVars', 'XMLFile=finalesDeEmail.xml&URLtoUploads=javascript:altaExperiencia()',
 				'src', 'swf/ExpFinalesDeMails/slider', 
 				'quality', 'best', 
 				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 

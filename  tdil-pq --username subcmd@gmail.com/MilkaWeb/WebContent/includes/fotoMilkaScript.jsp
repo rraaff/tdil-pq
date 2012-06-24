@@ -1,15 +1,18 @@
 function altaExperiencia() {
 	$window = $(window);
-    var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
-    var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
+	var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
+	var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
 	$("input[name='authorBean.name']").attr('value', '');
 	$("input[name='authorBean.email']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$( "#altalayer" ).css({
 		position: 'absolute',
-        top: top + 'px',
-        left: left + 'px'
-      }).fadeIn(500);
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
 }
 
 function clearData() {

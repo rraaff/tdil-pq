@@ -117,9 +117,9 @@ request.setAttribute( "test",  paginated);
 	</div>
 	<logic:notEqual name="PostItAdministrationForm" property="objectId" value="0">
 		<html:form method="POST" action="/approveDisapprovePostIt">
-			<div class="renglon width860">
+			<div class="renglon width860 height100">
 				<div class="label width100">Texto original</div>
-				<div class="label width200"><span class="black"><bean:write name="PostItAdministrationForm" property="originaltext"/></span></div>
+				<div class="label width350 height100" style="overflow:auto; border:solid 1px #CCCCCC;"><span class="black"><bean:write name="PostItAdministrationForm" property="originaltext"/></span></div>
 				<div class="label width50"></div>
 				<div class="label width50">T&iacute;tulo</div>
 				<div class="label width300"><html:text name="PostItAdministrationForm" property="title" style="width: 300px;"/></div>

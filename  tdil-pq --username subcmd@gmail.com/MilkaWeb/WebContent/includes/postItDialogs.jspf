@@ -1,10 +1,10 @@
 <div id="graciasporsubir" class="hide" style="z-index: 500;">
 	<p>Gracias por subir tu postit.</p>
-	<input type="button" id="closegracias" value="Close">
+	<div align="center"><input type="button" id="closegracias" value="Cerrar"></div>
 </div>
 <div id="erroralta" class="hide" style="z-index: 500;">
 	<p>Ha ocurrido un error, intentelo nuevamente.</p>
-	<input type="button" id="closeerror" value="Close">
+	<div align="center"><input type="button" id="closeerror" value="Volver"></div>
 </div>
 <div id="altalayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/addPostIt">
@@ -12,8 +12,7 @@
 		<div id="E-Mail"><html:text name="PostItForm" property="authorBean.email" styleClass="normalField"/></div>
 		<div id="Politicas"><html:checkbox name="PostItForm" property="authorBean.acceptPolitics"/></div>
 		<div id="SubirImagen"><html:textarea name="PostItForm" property="text" styleClass="normalField normalTextArea"/></div>
-		<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
-		<div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div>
+		<div id="buttonHolder" align="center"><input type="submit" value="Enviar" class="okCircle" /><input type="button" id="cancelalta" value="Me arrepentí"></div>
+		<!-- div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div-->
 	</html:form>
-	<input type="button" id="cancelalta" value="Cancel">
 </div>

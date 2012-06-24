@@ -291,7 +291,8 @@
 		}
 		
 		private function uploadURLfun(e:Event){
-			var vurl:String = "agregarFinalDeEmail.jsp";
+			//var vurl:String = "agregarFinalDeEmail.jsp";
+			var vurl:String = "javascript:altaExperiencia()";
 			var request:URLRequest = new URLRequest(vurl);
 			try {
 				navigateToURL(request, '_self');

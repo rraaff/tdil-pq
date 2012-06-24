@@ -50,10 +50,13 @@ $("form[name='MilkaPhotoForm']").validate({
 	
 	$( "#closegracias" ).click(function() {
 		$( "#graciasporsubir" ).fadeOut();
+		$( "#bottomLayer" ).fadeOut();
 	});
 	$( "#cancelalta" ).click(function() {
 		$( "#altalayer" ).fadeOut();
+		$( "#bottomLayer" ).fadeOut();
 	});
 	$( "#closeerror" ).click(function() {
 		$( "#erroralta" ).fadeOut();
+		$( "#bottomLayer" ).fadeOut();
 	});
