@@ -1,3 +1,4 @@
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.model.valueobjects.StatusHelper"%>
 <%@page import="com.tdil.milka.model.valueobjects.CreationDateHelper"%>
@@ -65,7 +66,7 @@ request.setAttribute( "test",  paginated);
 			<display:column title="fecha" sortable="true" sortName="fecha" sortProperty="creationdate" headerClass="sortable width80"><%= CreationDateHelper.getCreationDateAsString(((LoveNicknames)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
 			<display:column title="estado" sortable="false" sortName="estado" headerClass="sortable width80"><%= StatusHelper.getStatusRB(((LoveNicknames)pageContext.getAttribute("testit")).getDeleted(), ((LoveNicknames)pageContext.getAttribute("testit")).getApproved())%></display:column>
-			<display:column title="acciones" headerClass="width100"><a href="./reviewLoveNickname.do?id=<%= ((LoveNicknames)pageContext.getAttribute("testit")).getId()%>&page=<%= request.getParameter("page") != null ? request.getParameter("page") : "1" %>">Revisar</a></display:column>
+			<display:column title="acciones" headerClass="width100"><a href="./reviewLoveNickname.do?id=<%= ((LoveNicknames)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
 		</display:table>
 	</div>
 	<logic:notEqual name="LoveNicknameAdministrationForm" property="objectId" value="0">

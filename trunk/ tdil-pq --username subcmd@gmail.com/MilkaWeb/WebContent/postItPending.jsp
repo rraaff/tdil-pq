@@ -1,3 +1,4 @@
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.milka.struts.forms.UrlUtils"%>
 <%@page import="com.tdil.milka.model.valueobjects.PostItValueObject"%>
 <%@page import="com.tdil.milka.struts.forms.PostItAdministrationForm"%>
@@ -111,7 +112,7 @@ request.setAttribute( "test",  paginated);
 			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
 			<display:column title="estado" sortable="true" sortName="estado" headerClass="sortable" property="statusRB"></display:column>
 			<display:column title="acciones">
-			<a href="./reviewPostIt.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%>&page=<%= request.getParameter("page") != null ? request.getParameter("page") : "1" %>">Revisar</a>
+			<a href="./reviewPostIt.do?id=<%= ((PostItValueObject)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a>
 			</display:column>
 		</display:table>
 	</div>
