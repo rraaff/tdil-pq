@@ -41,12 +41,21 @@
 		</sql>
 	</target>
 
-	<target name="incremental_01">
+	<target name="incremental_02">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
-			<transaction src="ddl_01.sql" />
+			<transaction src="ddl_02.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental_03">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl_03.sql" />
 		</sql>
 	</target>
 
@@ -130,12 +139,12 @@
 		</antcall>
 		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
 		</copy>
-		<copy todir="${project.name.upper}.tmp" file="database.sql">
+		<!--copy todir="${project.name.upper}.tmp" file="database.sql">
+		</copy-->
+		<copy todir="${project.name.upper}.tmp" file="ddl_02.sql">
 		</copy>
-		<copy todir="${project.name.upper}.tmp" file="ddl.sql">
-		</copy>
-		<copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
-		</copy>
+		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
+		</copy-->
 	</target>
 	
 	<target name="hotDeploy-prd">

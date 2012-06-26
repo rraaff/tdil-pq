@@ -36,6 +36,8 @@
    name="LoveNicknameAdministrationForm" type="com.tdil.milka.struts.forms.LoveNicknameAdministrationForm"/>
    <form-bean id="LinkTargetSelectionForm"
    name="LinkTargetSelectionForm" type="com.tdil.milka.struts.forms.LinkTargetSelectionForm"/>
+   <form-bean id="MailToChildForm"
+   name="MailToChildForm" type="com.tdil.milka.struts.forms.MailToChildForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -337,6 +339,8 @@
   <action name="PostItForm" path="/addPostIt" scope="session" type="com.tdil.milka.struts.action.AddPostItAction">
   </action>
   <action name="LoveNicknameForm" path="/addLoveNick" scope="session" type="com.tdil.milka.struts.action.AddLoveNicknameAction">
+  </action>
+  <action name="MailToChildForm" path="/uploadMailToChild" scope="request" type="com.tdil.milka.struts.action.UploadMailToChildAction">
   </action>
   
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
