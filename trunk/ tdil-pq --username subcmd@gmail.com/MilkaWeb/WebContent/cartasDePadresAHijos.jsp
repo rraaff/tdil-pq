@@ -1,0 +1,393 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
+<%@page import="com.tdil.web.SearchPage"%>
+<%@page import="com.tdil.milka.model.WallWritting"%>
+<%@page import="java.util.List"%>
+<%@page import="com.tdil.web.PaginationUtils"%>
+<%@page import="com.tdil.milka.web.PapapediaUtils"%>
+<%@page import="com.tdil.milka.model.ClickCounter"%>
+<%@page import="com.tdil.milka.web.MeltButton"%>
+<%@ page info="index"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.milka.utils.SystemPropertiesKeys"%>
+<%@page import="com.tdil.milka.web.SystemPropertyUtils"%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Milka.com.ar | Sitio Oficial | Experiencia Postits</title>
+<% 
+	if (!"true".equals(request.getParameter("dnc"))) {
+		MeltButton.incrementCounter(MeltButton.POSTIT_RENDER);
+	}
+	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
+%>
+<%
+	String nextPage = "cartasDeHijosAPadres.jsp";
+	String prevPage = "apodosDeAmor.jsp";
+%>
+<%@ include file="includes/head.jsp" %>
+<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src='./js/jquery.cookie.js'></script>
+<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+		<%@ include file="includes/postItReady.jspf" %>
+
+		$( "#closegracias" ).click(function() {
+			$( "#graciasporsubir" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
+		});
+		$( "#cancelalta" ).click(function() {
+			$( "#altalayer" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
+		});
+		$( "#closeerror" ).click(function() {
+			$( "#erroralta" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
+		});
+	}
+	
+);
+
+function altaExperiencia() {
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$( "#altalayer" ).css({
+		position: 'absolute',
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
+}
+
+function clearData() {
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='text']").attr('value', '');
+}
+
+function postAltaPostIt(data) {
+	if (data.result == 'OK') {
+		clearData();
+		$( "#altalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#graciasporsubir" ).width() / 2);
+		$( "#graciasporsubir" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	} else {
+		$( "#altalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	}
+}
+</script>
+
+<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=159591494155451";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-32381287-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+<script type='text/javascript' src='swf/ExpPostits/scripts/AC_RunActiveContent.js'></script>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<style>
+<!-- 
+body {
+	font-family: 'Oswald', sans-serif;
+	color: #FFFFFF;
+}
+div { /*border:dotted 1px #00CC33;*/ }
+#altalayer {
+	width:306px;
+	height:406px;
+	background-image: url(images/experiencias/postits/fondoAdd.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding:62px;
+}
+#graciasporsubir, #erroralta {
+	color:#FFFFFF;
+	background-color:#000000;
+	width:230px;
+	padding:15px;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+#lineadecontenido {
+	height:30px;
+	float:left;
+}
+#Nombre {
+	height: 25px;
+	width: 206px;
+	left: 85px;
+	top: 12px;
+	position: relative;
+}
+#E-Mail {
+	height: 25px;
+	width: 206px;
+	left: 85px;
+	top: 22px;
+	position: relative;
+}
+#Politicas {
+	height: 25px;
+	width: 160px;
+	left: 0px;
+	top: 40px;
+	position: relative;
+}
+#SubirImagen {
+	height: 100px;
+	width: 290px;
+	left: 0px;
+	top: 70px;
+	position: relative;
+}
+#buttonHolder {
+	border:none;
+	height: 82px;
+	width: 290px;
+	left: 0px;
+	top: 70px;
+	position: relative;
+}
+.normalField {
+	font-family:"Trebuchet MS", Arial, sans-serif;
+	width:206px;
+	height:25px;
+	line-height:22px;
+	border: dotted 1px #ad9d1f;
+	background:transparent;
+}
+.normalTextArea {
+	width:290px;
+	height:100px;
+}
+/*   */
+h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color:#806bb3; }
+h2 {
+	font-weight:400;
+	font-size:13px;
+	padding-bottom:5px;
+	padding-top:5px;
+}
+#header {
+	background-color:#8c7bb5;
+	background-image: url(images/experiencias/padresAHijos/header.gif);
+	background-repeat: no-repeat;
+	height: 182px;
+	width: 828px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 25px;
+	margin-left: auto;
+	background-position: center bottom;
+}
+#pageBody {
+	width: 828px;
+	margin: 0px auto;
+}
+#pageLeft {
+	width:523px;
+	float:left;
+}
+#moduleContent {
+	background-image: url(images/experiencias/padresAHijos/bgModule.gif);
+	background-repeat: repeat-y;
+	width: 523px;
+	float: left;
+	margin-bottom: 25px;
+}
+#moduleContent #date {
+	background-image: url(images/experiencias/padresAHijos/dateBase.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	height: 47px;
+	width: 58px;
+	margin-top: 28px;
+	font-size: 11px;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 10px;
+}
+#moduleContent h1 {
+	color:#000000;
+	padding-top:25px;
+	padding-left:10px;
+	padding-bottom:5px;
+	text-transform: uppercase;
+	font-size: 14px;
+	width:450px;
+	float:left;
+}
+#moduleContent p {
+	color:#806bb3;
+	width:200px;
+	padding-left:10px;
+	padding-right:240px;
+	float:left;
+}
+#moduleContent img {
+	background-color:#FFFFFF;
+	padding:10px;
+	margin-left:10px;
+	margin-bottom:20px;
+}
+#pageRight {
+	width:233px;
+	float:right;
+}
+#blockLoader {
+	width:200px;
+	height:58px;
+	padding-bottom:10px;
+	padding-top:10px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #e9e9e9;
+	border-bottom-color: #e9e9e9;	
+}
+#blockLoader a, #blockLoader a:hover, #blockLoader a:visited, #blockLoader a:active {
+	color:#727272;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10px;
+}
+#blockLoader img {
+	float:left;
+}
+#lastEntriesNames {
+	width:100%;
+	font-family:Arial, Helvetica, sans-serif;
+}
+#lastEntriesNames a {
+	width:100%;
+	line-height:28px;
+	float:left;
+}
+#lastEntriesNames a:hover {
+	color:#333333;
+}
+#entryNumber {
+	color:#806bb3;
+	font-size:14px;
+	width:200px;
+	padding-bottom:10px;
+	padding-top:10px;
+	margin-top:25px;
+	margin-bottom:25px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #e9e9e9;
+	border-bottom-color: #e9e9e9;
+	float:left;
+}
+#entryNumber .numero {
+	color:#000000;
+}
+-->
+</style>
+</head>
+
+<body>
+<% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
+<div id="floater">
+	<%@ include file="includes/barraExperiencias.jsp" %>
+</div>
+<div id="flashin">
+	<div id="header"></div>
+	<div id="pageBody">
+		<div id="pageLeft">
+			<!-- Acá empieza el FOR de los módulos -->
+			<div id="moduleContent">
+				<div id="date">19<br/>JUN</div>
+				<h1>NOMBRE DE LA PERSONA QUE LO PUBLIC&Oacute;</h1>
+				<p>estoy aprendiendo a hacer fotos mentales</p>
+				<img src="images/experiencias/padresAHijos/demo.jpg" width="415" height="300" />
+			</div>
+			<!--  pongo otro para ver como queda -->
+			<div id="moduleContent">
+				<div id="date">19<br/>JUN</div>
+				<h1>NOMBRE DE LA PERSONA QUE LO PUBLIC&Oacute;</h1>
+				<p>estoy aprendiendo a hacer fotos mentales</p>
+				<img src="images/experiencias/padresAHijos/demo.jpg" width="415" height="300" />
+			</div>
+			<!-- fin otro demo -->
+			<!-- fin del FOR -->
+		</div>
+		<div id="pageRight">
+			<div id="blockLoader">
+				<img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" />
+				<h2>CARGAR UNA CARTA</h2>
+				<a href="#">Adjunta una imagen con un mensaje para tu hijo</a>
+			</div>
+			<h2>&Uacute;LTIMAS ENTRADAS</h2>
+			<div id="lastEntriesNames">
+				<a href="#">Ac&aacute; van los nombres</a>
+				<a href="#">Maureen</a>
+				<a href="#">Luz</a>
+				<a href="#">Larizza</a>
+				<a href="#">Juanqui</a>
+				<a href="#">Leticia</a>
+				<a href="#">Pepe</a>
+				<a href="#">Pancho</a>
+				<a href="#">Con</a>
+				<a href="#">Pur&eacute;</a>
+			</div>
+			<div id="entryNumber"><span class="numero">526.369</span> ENTRADAS</div>
+		</div>
+	</div>
+</div>
+<%@ include file="includes/fbShare.jsp" %>
+<div id="bottomLayer" class="hide"><!-- --></div>
+<%@ include file="includes/postItDialogs.jspf" %>
+</body>
+</html>
