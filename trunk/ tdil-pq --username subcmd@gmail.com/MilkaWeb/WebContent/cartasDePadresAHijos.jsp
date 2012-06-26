@@ -20,7 +20,7 @@
 <title>Milka.com.ar | Sitio Oficial | Experiencia Postits</title>
 <% 
 	if (!"true".equals(request.getParameter("dnc"))) {
-		MeltButton.incrementCounter(MeltButton.POSTIT_RENDER);
+		MeltButton.incrementCounter(MeltButton.CARTAS_DE_PADRES_A_HIJOS_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
@@ -38,7 +38,7 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
-		<%@ include file="includes/postItReady.jspf" %>
+		<%@ include file="includes/cartaDePadreAHijoReady.jspf" %>
 
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
@@ -62,6 +62,7 @@ function altaExperiencia() {
     var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
 	$("input[name='authorBean.name']").attr('value', '');
 	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$( "#altalayer" ).css({
 		position: 'absolute',
@@ -76,11 +77,12 @@ function altaExperiencia() {
 function clearData() {
 	$("input[name='authorBean.name']").attr('value', '');
 	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$("textarea[name='text']").attr('value', '');
 }
 
-function postAltaPostIt(data) {
+function postUpload(data) {
 	if (data.result == 'OK') {
 		clearData();
 		$( "#altalayer" ).fadeOut();
@@ -338,7 +340,7 @@ h2 {
 </head>
 
 <body>
-<% int barClickCounter = MeltButton.POSTIT_COUNTER; %>
+<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
@@ -367,7 +369,7 @@ h2 {
 			<div id="blockLoader">
 				<img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" />
 				<h2>CARGAR UNA CARTA</h2>
-				<a href="#">Adjunta una imagen con un mensaje para tu hijo</a>
+				<a href="javascript:altaExperiencia()">Adjunta una imagen con un mensaje para tu hijo</a>
 			</div>
 			<h2>&Uacute;LTIMAS ENTRADAS</h2>
 			<div id="lastEntriesNames">
@@ -388,6 +390,6 @@ h2 {
 </div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
-<%@ include file="includes/postItDialogs.jspf" %>
+<%@ include file="includes/cartaDePadreAHijoDialogs.jspf" %>
 </body>
 </html>

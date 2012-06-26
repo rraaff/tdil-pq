@@ -638,4 +638,7 @@
    PATH="/mailToParentPending.jsp" TARGET="page11" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadMailToChild" NAME="action76"
+  PATH="/uploadMailToChild" SHAPE="240,4289,0,0" TITLE="MailToChildForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

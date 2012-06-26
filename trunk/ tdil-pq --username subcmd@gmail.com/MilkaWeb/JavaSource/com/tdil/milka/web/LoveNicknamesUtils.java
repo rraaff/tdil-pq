@@ -21,7 +21,7 @@ public class LoveNicknamesUtils {
 	
 	private static final class GetLoveNicknames implements TransactionalActionWithResult {
 		public Object executeInTransaction() throws SQLException {
-			return DAOManager.getLoveNicknamesDAO().selectLoveNicknamesToReview();
+			return DAOManager.getLoveNicknamesDAO().selectLoveNicknamesForFlash();
 		}
 	}
 
