@@ -12,6 +12,7 @@ public class ExperienceUtils {
 		result.add(Experience.PAPAPEDIA.name());
 		result.add(Experience.CARTAS_DE_HIJOS_A_PADRES.name());
 		result.add(Experience.APODOS_DE_AMOR.name());
+		result.add(Experience.CARTAS_DE_PADRES_A_HIJOS.name());
 		return result;
 	}
 }

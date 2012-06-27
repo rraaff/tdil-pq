@@ -23,6 +23,8 @@ public class EmailUtils {
 	public static final String finalesdeemail = "finalesdeemail";
 	public static final String postits = "post-it";
 	
+	public static final String cartasdepadresahijos = "cartasdepadresahijos";
+	
 	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, int link) throws SQLException {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		

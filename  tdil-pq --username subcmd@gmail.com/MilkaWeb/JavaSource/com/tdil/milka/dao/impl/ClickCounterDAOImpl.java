@@ -152,4 +152,9 @@ public class ClickCounterDAOImpl implements ClickCounterDAO {
     	int rows = sqlMapClient.update("CLICK_COUNTER.incrementClickCounter", record);
         return rows;
     }
+    
+    public int sumRender() throws SQLException {
+    	Integer count = (Integer) sqlMapClient.queryForObject("CLICK_COUNTER.sumRender");
+		return count;
+    }
 }

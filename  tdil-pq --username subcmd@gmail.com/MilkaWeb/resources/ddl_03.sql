@@ -30,3 +30,9 @@ CREATE TABLE MAIL_TO_CHILD (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('cartasDePadresAHijos.url','http://www.milka.com.ar/cartasDePadresAHijos.jsp','Url de la experiencia cartas de padres a hijos',0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('cartasdepadresahijos', 'Aprobacion de cartas de padres a hijos','contenido del email',0);
+
+COMMIT;

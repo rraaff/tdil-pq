@@ -10,7 +10,6 @@
 	<html:form method="POST" action="/uploadMailToChild" enctype="multipart/form-data">
 		<div id="Nombre"><html:text name="MailToChildForm" property="authorBean.name" styleClass="normalField"/></div>
 		<div id="E-Mail"><html:text name="MailToChildForm" property="authorBean.email" styleClass="normalField"/></div>
-		<div id="Titulo"><html:text name="MailToChildForm" property="title" styleClass="normalField"/></div>
 		<div id="Description"><html:text name="MailToChildForm" property="description" styleClass="normalField"/></div>
 		<div id="Politicas"><html:checkbox name="MailToChildForm" property="authorBean.acceptPolitics"/></div>
 		<div id="SubirImagen"><html:file name="MailToChildForm" property="photoFormFile" /></div>
