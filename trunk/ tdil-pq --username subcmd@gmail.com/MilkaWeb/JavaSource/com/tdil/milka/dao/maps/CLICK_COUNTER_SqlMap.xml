@@ -221,4 +221,9 @@
     set clicks = clicks +1
     where id = #id:INTEGER#
   </update>
+  
+  <select id="sumRender" resultClass="java.lang.Integer">
+    select sum(clicks) from CLICK_COUNTER cc
+    where cc.id between 10 and 17
+  </select>
 </sqlMap>

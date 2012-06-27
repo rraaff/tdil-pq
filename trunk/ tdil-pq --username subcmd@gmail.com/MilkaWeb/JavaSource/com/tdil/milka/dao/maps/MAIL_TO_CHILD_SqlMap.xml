@@ -437,4 +437,45 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+    <resultMap class="com.tdil.milka.model.valueobjects.MailToChildValueObject" extends="BaseResultMap" id="ResultMapWithAuthor">
+  	<result column="name" jdbcType="VARCHAR" property="name" />
+  	<result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  
+  <sql id="Author_Column_List">
+  	author.name, author.email
+  </sql>
+  
+  <!-- Custom queries -->
+  
+  <select id="selectMailToChildWithAuthorsToApprove" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="MAIL_TO_CHILD.Base_Column_List" />,
+    <include refid="MAIL_TO_CHILD.Author_Column_List" />
+    from MAIL_TO_CHILD mtc, AUTHOR author
+    where mtc.id_author = author.id
+    and mtc.approved != 1
+    order by mtc.approved asc, mtc.id asc
+  </select>
+  
+  <select id="selectMailToChildWithAuthorsToReview" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="MAIL_TO_CHILD.Base_Column_List" />,
+    <include refid="MAIL_TO_CHILD.Author_Column_List" />
+    from MAIL_TO_CHILD mtc, AUTHOR author
+    where mtc.id_author = author.id
+    and mtc.approved = 1
+    order by mtc.publishDate desc, mtc.id desc
+  </select>
+  
+  <select id="selectExperience" resultMap="EXPERIENCE.BaseResultMap">
+    select 
+    	mtp.id as exp_id, 'CARTAS_DE_PADRES_A_HIJOS' as exp_type, mtp.title as exp_description,
+    	mtp.id_approved_data as exp_idblob, mtp.ext_approved_data as exp_extblob, 
+    	(select COUNT(*) FROM LINKS where destinationType = 'CARTAS_DE_PADRES_A_HIJOS' and destination = mtp.id) as exp_linkCount
+    from MAIL_TO_CHILD mtp
+    where mtp.approved = 1
+    order by exp_linkCount asc, mtp.id desc
+  </select>
 </sqlMap>

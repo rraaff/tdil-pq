@@ -38,6 +38,8 @@
    name="LinkTargetSelectionForm" type="com.tdil.milka.struts.forms.LinkTargetSelectionForm"/>
    <form-bean id="MailToChildForm"
    name="MailToChildForm" type="com.tdil.milka.struts.forms.MailToChildForm"/>
+   <form-bean id="MailToChildAdministrationForm"
+   name="MailToChildAdministrationForm" type="com.tdil.milka.struts.forms.MailToChildAdministrationForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -283,6 +285,32 @@
    <forward name="continue" path="/rawInsertAdministration.jsp"/>
   </action>
   
+  <action name="MailToChildAdministrationForm" parameter="Admin"
+   path="/goToMailToChildApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/mailToChildPending.jsp"/>
+  </action>
+  <action name="MailToChildAdministrationForm" parameter="Admin"
+   path="/goToMailToChildReview" scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/mailToChildPending.jsp"/>
+  </action>
+  <action name="MailToChildAdministrationForm" parameter="Admin"
+   path="/reviewMailToChild" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/mailToChildPending.jsp"/>
+  </action>
+  <action name="MailToChildAdministrationForm" parameter="Admin"
+   path="/approveDisapproveMailToChild" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/mailToChildPending.jsp"/>
+   <forward name="failure" path="/mailToChildPending.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadMailToChildReplacement" type="com.tdil.milka.struts.action.UploadMailToChildReplacementAction"/>
+  <action name="MailToChildAdministrationForm" parameter="Admin" path="/viewMailToChildReplacement"
+   scope="session" type="com.tdil.milka.struts.action.ViewMailToChildReplacementAction">
+  </action>
+  <action name="MailToChildAdministrationForm" parameter="Admin" path="/clearLinkTargetMailToChild"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/mailToChildPending.jsp"/>
+  </action>
+  
   <action name="LinkTargetSelectionForm" parameter="Admin"
    path="/goToLinkTargetSelectionFromEmail" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromEmailEndingAction">
    <forward name="continue" path="/linkSelection.jsp"/>
@@ -303,6 +331,10 @@
    path="/goToLinkTargetSelectionFromPostIt" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromPostItAction">
    <forward name="continue" path="/linkSelection.jsp"/>
   </action>
+  <action name="LinkTargetSelectionForm" parameter="Admin"
+   path="/goToLinkTargetSelectionFromMailToChild" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromMailToChildAction">
+   <forward name="continue" path="/linkSelection.jsp"/>
+  </action>
   
   <action name="LinkTargetSelectionForm" parameter="Admin"
    path="/searchExperiences" scope="session" type="com.tdil.milka.struts.action.SearchExperiencesAction">
@@ -316,6 +348,7 @@
    <forward name="POST_ITS" path="/postItPending.jsp"/>
    <forward name="PAPAPEDIA" path="/papapediaPending.jsp"/>
    <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
+   <forward name="CARTAS_DE_PADRES_A_HIJOS" path="/mailToChildPending.jsp"/>
   </action>
   
   <action name="LinkTargetSelectionForm" parameter="Admin"
@@ -325,6 +358,7 @@
    <forward name="POST_ITS" path="/postItPending.jsp"/>
    <forward name="PAPAPEDIA" path="/papapediaPending.jsp"/>
    <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
+   <forward name="CARTAS_DE_PADRES_A_HIJOS" path="/mailToChildPending.jsp"/>
   </action>
   
   <!--  Public actions -->

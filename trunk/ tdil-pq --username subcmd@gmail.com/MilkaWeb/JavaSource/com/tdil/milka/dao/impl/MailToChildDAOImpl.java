@@ -1,11 +1,15 @@
 package com.tdil.milka.dao.impl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.milka.dao.MailToChildDAO;
 import com.tdil.milka.model.MailToChild;
 import com.tdil.milka.model.MailToChildExample;
-import java.sql.SQLException;
-import java.util.List;
+import com.tdil.milka.model.valueobjects.ExperienceValueObject;
+import com.tdil.milka.model.valueobjects.MailToChildValueObject;
+import com.tdil.milka.model.valueobjects.MailToParentValueObject;
 
 public class MailToChildDAOImpl implements MailToChildDAO {
     /**
@@ -173,4 +177,19 @@ public class MailToChildDAOImpl implements MailToChildDAO {
             return record;
         }
     }
+    
+	/** Custom queries */
+	public List<MailToChildValueObject> selectMailToChildToApproveWithAuthor() throws SQLException {
+		List<MailToChildValueObject> list = sqlMapClient.queryForList("MAIL_TO_CHILD.selectMailToChildWithAuthorsToApprove");
+		return list;
+	}
+	public List<MailToChildValueObject> selectMailToChildToReviewWithAuthor() throws SQLException {
+		List<MailToChildValueObject> list = sqlMapClient.queryForList("MAIL_TO_CHILD.selectMailToChildWithAuthorsToReview");
+		return list;
+	}
+	
+	public List<ExperienceValueObject> search() throws SQLException {
+		List<ExperienceValueObject> list = sqlMapClient.queryForList("MAIL_TO_CHILD.selectExperience");
+		return list;
+	}
 }

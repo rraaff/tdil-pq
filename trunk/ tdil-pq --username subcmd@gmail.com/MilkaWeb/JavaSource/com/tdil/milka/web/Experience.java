@@ -2,6 +2,7 @@ package com.tdil.milka.web;
 
 import com.tdil.milka.model.EmailEndings;
 import com.tdil.milka.model.LoveNicknames;
+import com.tdil.milka.model.MailToChild;
 import com.tdil.milka.model.MailToParent;
 import com.tdil.milka.model.PostIt;
 import com.tdil.milka.model.WallWritting;
@@ -37,6 +38,12 @@ public enum Experience {
 		public String getLink() {
 			return "apodosDeAmor.jsp?lnk=";
 		}
+	},
+	CARTAS_DE_PADRES_A_HIJOS() {
+		@Override
+		public String getLink() {
+			return "cartasDePadresAHijos.jsp?lnk=";
+		}
 	};
 	
 	public abstract String getLink();
@@ -59,5 +66,9 @@ public enum Experience {
 	
 	public static String getLink(LoveNicknames obj) {
 		return APODOS_DE_AMOR.getLink() + obj.getId();
+	}
+	
+	public static String getLink(MailToChild obj) {
+		return CARTAS_DE_PADRES_A_HIJOS.getLink() + obj.getId();
 	}
 }

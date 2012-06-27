@@ -74,4 +74,6 @@ public interface ClickCounterDAO {
 
 	/** Increment counter */
     int incrementCounter(ClickCounter record) throws SQLException;
+    
+    int sumRender() throws SQLException;
 }

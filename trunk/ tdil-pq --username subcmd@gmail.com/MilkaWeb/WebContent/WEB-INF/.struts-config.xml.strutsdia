@@ -548,6 +548,9 @@
   <PROCESS-ITEM-OUTPUT ID="APODOS_DE_AMOR" NAME="forward4"
    PATH="/loveNicknamePending.jsp" TARGET="page18"
    TITLE="APODOS_DE_AMOR" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="CARTAS_DE_PADRES_A_HIJOS" NAME="forward5"
+   PATH="/mailToChildPending.jsp" TARGET="page20"
+   TITLE="CARTAS_DE_PADRES_A_HIJOS" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToLinkTargetSelectionFromEmail" NAME="action62"
   PATH="/goToLinkTargetSelectionFromEmail" SHAPE="32,3793,0,0"
@@ -602,6 +605,9 @@
   <PROCESS-ITEM-OUTPUT ID="FINALES_DE_EMAIL" NAME="forward4"
    PATH="/emailEndingsPending.jsp" TARGET="page10"
    TITLE="FINALES_DE_EMAIL" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="CARTAS_DE_PADRES_A_HIJOS" NAME="forward5"
+   PATH="/mailToChildPending.jsp" TARGET="page20"
+   TITLE="CARTAS_DE_PADRES_A_HIJOS" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#clearLinkTargetPostIt" NAME="action71"
   PATH="/clearLinkTargetPostIt" SHAPE="240,4289,0,0"
@@ -641,4 +647,62 @@
  <PROCESS-ITEM ID="#uploadMailToChild" NAME="action76"
   PATH="/uploadMailToChild" SHAPE="240,4289,0,0" TITLE="MailToChildForm"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToMailToChildApprove" NAME="action77"
+  PATH="/goToMailToChildApprove" SHAPE="32,4273,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20" PATH="/mailToChildPending.jsp"
+  SHAPE="304,4290,0,0" SUBTYPE="jsp" TITLE="mailToChildPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveMailToChild.do" SUBTYPE="confirmed"
+   TARGET="action80" TITLE="/approveDisapproveMailToChild.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToMailToChildReview" NAME="action78"
+  PATH="/goToMailToChildReview" SHAPE="32,4513,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewMailToChild" NAME="action79"
+  PATH="/reviewMailToChild" SHAPE="32,5217,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveMailToChild" NAME="action80"
+  PATH="/approveDisapproveMailToChild" SHAPE="32,5329,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadMailToChildReplacement" NAME="action81"
+  PATH="/uploadMailToChildReplacement" SHAPE="32,6305,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewMailToChildReplacement" NAME="action82"
+  PATH="/viewMailToChildReplacement" SHAPE="240,6321,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#clearLinkTargetMailToChild" NAME="action83"
+  PATH="/clearLinkTargetMailToChild" SHAPE="32,6193,0,0"
+  TITLE="MailToChildAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mailToChildPending.jsp" TARGET="page20" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromMailToChild"
+  NAME="action84" PATH="/goToLinkTargetSelectionFromMailToChild"
+  SHAPE="32,3793,0,0" TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
