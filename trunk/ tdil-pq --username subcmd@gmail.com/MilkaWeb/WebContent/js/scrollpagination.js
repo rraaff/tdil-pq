@@ -48,7 +48,7 @@
 			  success: function(data){
 				$(obj).append(data); 
 				var objectsRendered = $(obj).children('[rel!=loaded]');
-				
+				opts.contentData['items'] = opts.contentData['items'] + objectsRendered.size();
 				if (opts.afterLoad != null){
 					opts.afterLoad(objectsRendered);	
 				}
@@ -82,6 +82,6 @@
 		 'beforeLoad': null,
 		 'afterLoad': null	,
 		 'scrollTarget': null,
-		 'heightOffset': 0		  
+		 'heightOffset': 0
  };	
 })( jQuery );

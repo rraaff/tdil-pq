@@ -33,6 +33,22 @@
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
+<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
+	
+%>
+<%
+int totalItems = MailToChildUtils.getMailToChildCount();
+int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
+List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, MailToChildUtils.PAGE_SIZE, 1);
+int first = PaginationUtils.first(list);
+int last = PaginationUtils.last(list);
+SearchPage<MailToChildValueObject> mailPage = MailToChildUtils.getPage(0);
+int linkId = 0;
+if (lnk != null && !StringUtils.isEmpty(lnk)) {
+	linkId = Integer.valueOf(lnk);
+	MailToChildUtils.setFirst(mailPage, linkId);
+}
+%>
 <script>
 $(document).ready(
 	function(){
@@ -53,10 +69,12 @@ $(document).ready(
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
-
+		
+		<% 	int extraChild = 1;
+			if (totalItems > 10) { /*Solo activo el scroll si tengo mas de lo que muestro*/%>
 		$('#pageLeft').scrollPagination({
-			'contentPage': 'democontent.html', // the page where you are searching for results
-			'contentData': {}, // you can pass the children().size() to know where is the pagination
+			'contentPage': 'cartasDePadresAHijosPage.jsp', // the page where you are searching for results
+			'contentData': {items: 10}, // you can pass the children().size() to know where is the pagination
 			'scrollTarget': $(window), // who gonna scroll? in this example, the full window
 			'heightOffset': 10, // how many pixels before reaching end of the page would loading start? positives numbers only please
 			'beforeLoad': function(){ // before load, some function, maybe display a preloader div
@@ -66,12 +84,14 @@ $(document).ready(
 				 $('#loading').fadeOut();
 				 var i = 0;
 				 $(elementsLoaded).fadeInWithDelay();
-				 if ($('#pageLeft').children().size() > 100){ // if more than 100 results loaded stop pagination (only for test)
-				 	$('#nomoreresults').fadeIn();
+				 $('#pageLeft').contentData = {pageStart: $('#pageLeft').children().size()};
+				 if ($('#pageLeft').children().size() - <%=extraChild%> >= <%=totalItems%>){ // if more than total data
+				 	//$('#nomoreresults').fadeIn();
 					$('#pageLeft').stopScrollPagination();
 				 }
 			}
 		});
+		<% } %>
 		
 		// code for fade in element by element with delay
 		$.fn.fadeInWithDelay = function(){
@@ -404,22 +424,6 @@ h2 {
 </head>
 
 <body>
-<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
-	
-%>
-<%
-int totalItems = MailToChildUtils.getMailToChildCount();
-int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
-List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, MailToChildUtils.PAGE_SIZE, 1);
-int first = PaginationUtils.first(list);
-int last = PaginationUtils.last(list);
-SearchPage<MailToChildValueObject> mailPage = MailToChildUtils.getPage(0);
-int linkId = 0;
-if (lnk != null && !StringUtils.isEmpty(lnk)) {
-	linkId = Integer.valueOf(lnk);
-	MailToChildUtils.setFirst(mailPage, linkId);
-}
-%>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
@@ -436,9 +440,8 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 				</div>
 			<% } %>
 			<!-- test -->
-		    <div class="loading" id="loading">Wait a moment... it's loading!</div>
-		    <div class="loading" id="nomoreresults">Sorry, no more results for your pagination demo.</div>
 		</div>
+		    <div class="loading" id="loading">Wait a moment... it's loading!</div>
 		<div id="pageRight">
 			<div id="blockLoader">
 				<img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" />
