@@ -1,9 +1,9 @@
+<%@page import="com.tdil.milka.model.valueobjects.MailToChildValueObject"%>
+<%@page import="com.tdil.milka.web.MailToChildUtils"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.web.SearchPage"%>
-<%@page import="com.tdil.milka.model.WallWritting"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.web.PaginationUtils"%>
-<%@page import="com.tdil.milka.web.PapapediaUtils"%>
 <%@page import="com.tdil.milka.model.ClickCounter"%>
 <%@page import="com.tdil.milka.web.MeltButton"%>
 <%@ page info="index"%>
@@ -32,6 +32,7 @@
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<script type='text/javascript' src='./js/scrollpagination.js'></script>
 <script>
 $(document).ready(
 	function(){
@@ -52,6 +53,35 @@ $(document).ready(
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
+
+		$('#pageLeft').scrollPagination({
+			'contentPage': 'democontent.html', // the page where you are searching for results
+			'contentData': {}, // you can pass the children().size() to know where is the pagination
+			'scrollTarget': $(window), // who gonna scroll? in this example, the full window
+			'heightOffset': 10, // how many pixels before reaching end of the page would loading start? positives numbers only please
+			'beforeLoad': function(){ // before load, some function, maybe display a preloader div
+				$('#loading').fadeIn();	
+			},
+			'afterLoad': function(elementsLoaded){ // after loading, some function to animate results and hide a preloader div
+				 $('#loading').fadeOut();
+				 var i = 0;
+				 $(elementsLoaded).fadeInWithDelay();
+				 if ($('#pageLeft').children().size() > 100){ // if more than 100 results loaded stop pagination (only for test)
+				 	$('#nomoreresults').fadeIn();
+					$('#pageLeft').stopScrollPagination();
+				 }
+			}
+		});
+		
+		// code for fade in element by element with delay
+		$.fn.fadeInWithDelay = function(){
+			var delay = 0;
+			return this.each(function(){
+				$(this).delay(delay).animate({opacity:1}, 200);
+				delay += 100;
+			});
+		};
+		
 	}
 	
 );
@@ -335,12 +365,61 @@ h2 {
 #entryNumber .numero {
 	color:#000000;
 }
+
+
+#scrollpaginationdemo {
+	width:600px;
+	margin:0px auto;
+}
+
+#scrollpaginationdemo ul {
+	list-style:none;
+	width:100%;
+	margin:0px auto;
+	padding:0px;
+}
+
+#scrollpaginationdemo ul li {
+	margin:10px 0px;
+	width:100%;
+	background:#352828;
+	padding:5px 10px;
+	border-radius: 15px;
+	text-shadow: 2px 1px -1px #000000;
+}
+
+.loading {
+	background:#c1c39a;
+	color:#303030;
+	font-size:20px;
+	padding:5px 10px;
+	text-align:center;
+	width:450px;
+	margin:0px auto;
+	display:none;
+	border-radius: 5px;
+}
 -->
 </style>
 </head>
 
 <body>
-<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; %>
+<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
+	
+%>
+<%
+int totalItems = MailToChildUtils.getMailToChildCount();
+int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
+List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, MailToChildUtils.PAGE_SIZE, 1);
+int first = PaginationUtils.first(list);
+int last = PaginationUtils.last(list);
+SearchPage<MailToChildValueObject> mailPage = MailToChildUtils.getPage(0);
+int linkId = 0;
+if (lnk != null && !StringUtils.isEmpty(lnk)) {
+	linkId = Integer.valueOf(lnk);
+	MailToChildUtils.setFirst(mailPage, linkId);
+}
+%>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
@@ -348,22 +427,17 @@ h2 {
 	<div id="header"></div>
 	<div id="pageBody">
 		<div id="pageLeft">
-			<!-- Acá empieza el FOR de los módulos -->
-			<div id="moduleContent">
-				<div id="date">19<br/>JUN</div>
-				<h1>NOMBRE DE LA PERSONA QUE LO PUBLIC&Oacute;</h1>
-				<p>estoy aprendiendo a hacer fotos mentales</p>
-				<img src="images/experiencias/padresAHijos/demo.jpg" width="415" height="300" />
-			</div>
-			<!--  pongo otro para ver como queda -->
-			<div id="moduleContent">
-				<div id="date">19<br/>JUN</div>
-				<h1>NOMBRE DE LA PERSONA QUE LO PUBLIC&Oacute;</h1>
-				<p>estoy aprendiendo a hacer fotos mentales</p>
-				<img src="images/experiencias/padresAHijos/demo.jpg" width="415" height="300" />
-			</div>
-			<!-- fin otro demo -->
-			<!-- fin del FOR -->
+			<% for (MailToChildValueObject mtc : mailPage.getPage()) { %>
+				<div id="moduleContent">
+					<div id="date"><%=mtc.getDate()%><br/><%=mtc.getMonth()%></div>
+					<h1><%=mtc.getAuthorValueObject().getName()%></h1>
+					<p><%=mtc.getDescription()%></p>
+					<img src="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=415&height=300&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" width="415" height="300" />
+				</div>
+			<% } %>
+			<!-- test -->
+		    <div class="loading" id="loading">Wait a moment... it's loading!</div>
+		    <div class="loading" id="nomoreresults">Sorry, no more results for your pagination demo.</div>
 		</div>
 		<div id="pageRight">
 			<div id="blockLoader">
@@ -373,18 +447,11 @@ h2 {
 			</div>
 			<h2>&Uacute;LTIMAS ENTRADAS</h2>
 			<div id="lastEntriesNames">
-				<a href="#">Ac&aacute; van los nombres</a>
-				<a href="#">Maureen</a>
-				<a href="#">Luz</a>
-				<a href="#">Larizza</a>
-				<a href="#">Juanqui</a>
-				<a href="#">Leticia</a>
-				<a href="#">Pepe</a>
-				<a href="#">Pancho</a>
-				<a href="#">Con</a>
-				<a href="#">Pur&eacute;</a>
+				<% for (MailToChildValueObject mtc : mailPage.getPage()) { %>
+					<a href="#"><%=mtc.getAuthorValueObject().getName()%></a>
+				<% } %>
 			</div>
-			<div id="entryNumber"><span class="numero">526.369</span> ENTRADAS</div>
+			<div id="entryNumber"><span class="numero"><%=totalItems%></span> ENTRADAS</div>
 		</div>
 	</div>
 </div>

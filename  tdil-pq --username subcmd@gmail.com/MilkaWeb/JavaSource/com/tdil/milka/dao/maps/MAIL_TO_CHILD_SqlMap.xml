@@ -478,4 +478,31 @@
     where mtp.approved = 1
     order by exp_linkCount asc, mtp.id desc
   </select>
+  
+  	<select id="countApproved" resultClass="java.lang.Integer">
+    select 
+    count(*)
+    from MAIL_TO_CHILD mtc
+    where mtc.approved = 1
+  </select>
+  
+    <select id="selectMailToChildValueObjectByPrimaryKey" parameterClass="com.tdil.milka.model.MailToChild" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="MAIL_TO_CHILD.Base_Column_List" />,
+    <include refid="MAIL_TO_CHILD.Author_Column_List" />
+    from MAIL_TO_CHILD mtc, AUTHOR author
+    where mtc.id_author = author.id
+    and mtc.id = = #id:INTEGER#
+  </select>
+  
+    <select id="selectApprovedPage" parameterClass="java.util.Map" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="MAIL_TO_CHILD.Base_Column_List" />,
+    <include refid="MAIL_TO_CHILD.Author_Column_List" />
+    from MAIL_TO_CHILD mtc, AUTHOR author
+    where mtc.approved = 1
+    and mtc.id_author = author.id
+    order by mtc.publishDate desc
+    LIMIT #start:INTEGER#, #limit:INTEGER#
+  </select>
 </sqlMap>

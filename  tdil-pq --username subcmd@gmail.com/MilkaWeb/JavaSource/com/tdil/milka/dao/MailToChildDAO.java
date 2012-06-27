@@ -103,4 +103,10 @@ public interface MailToChildDAO {
 	List<MailToChildValueObject> selectMailToChildToReviewWithAuthor() throws SQLException;
 
 	List<ExperienceValueObject> search() throws SQLException;
+
+	MailToChildValueObject selectMailToChildValueObjectByPrimaryKey(int id) throws SQLException;
+
+	List<MailToChildValueObject> selectApproved(int start, int i) throws SQLException;
+
+	int countApproved() throws SQLException;
 }
