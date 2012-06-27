@@ -26,6 +26,8 @@ public class EmailUtils {
 	public static final String cartasdepadresahijos = "cartasdepadresahijos";
 	
 	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, int link) throws SQLException {
+		try {
+		
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
@@ -67,9 +69,9 @@ public class EmailUtils {
 		content = StringUtils.replace(content, "AUTHOR_NAME", author.getName());
 		content = StringUtils.replace(content, "EXPERIENCE_LINK", destLink);
 		content = StringUtils.replace(content, "SERVER_NAME", server.getPropvalue());
-		try {
+		
 			com.tdil.utils.EmailUtils.sendEmail(content, author.getEmail(), from.getPropvalue(), subject.getPropvalue(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
-		} catch (MessagingException e) {
+		} catch (Exception e) {
 			MilkaPhotoAdministrationForm.getLog().error(e.getMessage(), e);
 		}
 	}

@@ -18,6 +18,14 @@ public class MailToChildValueObject extends MailToChild {
 		return authorValueObject;
 	}
 	
+	public String getDate() {
+		return CreationDateHelper.getDateAsString(this.getCreationdate());
+	}
+	
+	public String getMonth() {
+		return CreationDateHelper.getMonthAsString(this.getCreationdate());
+	}
+	
 	public String getStatusRB() {
 		return StatusHelper.getStatusRB(this.getDeleted(), this.getApproved());
 	}
