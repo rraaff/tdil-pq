@@ -62,15 +62,16 @@ request.setAttribute( "test",  paginated);
 		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar o desaprobar los mensajes cargados desde de la experiencia PAPAPEDIA por los usuarios. Recuerde que los mensajes se cargan directamente cuando el usuario postea, y si bien existe un filtro de palabras inadecuadas, no es ineludible.</span></div>
 	</div>
 	<div class="renglon width860">
-		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./papapediaPending.jsp">
-			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" sortProperty="creationdate"><%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("testit")).getCreationdate())%></display:column>
+		<display:table name="test" sort="external" pagesize="10" keepStatus="true" id="papapediaTable" requestURI="./papapediaPending.jsp">
+			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" sortProperty="creationdate"><%= CreationDateHelper.getCreationDateAsString(((WallWritting)pageContext.getAttribute("papapediaTable")).getCreationdate())%></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="originaltext"></display:column>
-			<display:column title="estado" sortable="false" headerClass="sortable"><%= StatusHelper.getStatusRB(((WallWritting)pageContext.getAttribute("testit")).getDeleted(), ((WallWritting)pageContext.getAttribute("testit")).getApproved())%></display:column>
-			<display:column title="acciones"><a href="./reviewPapapedia.do?id=<%= ((WallWritting)pageContext.getAttribute("testit")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
+			<display:column title="estado" sortable="false" headerClass="sortable"><%= StatusHelper.getStatusRB(((WallWritting)pageContext.getAttribute("papapediaTable")).getDeleted(), ((WallWritting)pageContext.getAttribute("papapediaTable")).getApproved())%></display:column>
+			<display:column title="acciones"><a href="./reviewPapapedia.do?id=<%= ((WallWritting)pageContext.getAttribute("papapediaTable")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Revisar</a></display:column>
 		</display:table>
 	</div>
 	<logic:notEqual name="PapapediaAdministrationForm" property="objectId" value="0">
 		<html:form method="POST" action="/approveDisapprovePapapedia">
+			<%=DisplayTagParamHelper.getFields(request)%>
 			<div class="renglon width860">
 				<div class="label width200">Texto cargado por el usuario</div>
 				<div class="label width500"><b><bean:write name="PapapediaAdministrationForm" property="originaltext"/></b></div>

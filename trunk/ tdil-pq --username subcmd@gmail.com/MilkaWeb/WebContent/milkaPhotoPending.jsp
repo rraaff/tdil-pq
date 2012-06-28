@@ -140,6 +140,7 @@ request.setAttribute( "test",  paginated);
 	</div>
 	<logic:notEqual name="MilkaPhotoAdministrationForm" property="idBlobData" value="0">
 		<html:form method="POST" action="/approveDisapproveMilkaPhoto">
+			<%=DisplayTagParamHelper.getFields(request)%>
 			<div class="renglon width860" style="margin-top:20px; border:dotted 1px #CCCCCC;">
 				<div style="width:212px; height:177px; float:left;">
 					<h3>Imagen original</h3>

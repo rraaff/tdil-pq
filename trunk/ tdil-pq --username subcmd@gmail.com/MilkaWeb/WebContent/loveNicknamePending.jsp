@@ -71,6 +71,7 @@ request.setAttribute( "test",  paginated);
 	</div>
 	<logic:notEqual name="LoveNicknameAdministrationForm" property="objectId" value="0">
 		<html:form method="POST" action="/approveDisapproveLoveNickname">
+			<%=DisplayTagParamHelper.getFields(request)%>
 			<div class="renglon width860">
 				<div class="label width160">Texto cargado por el usuario</div>
 				<div class="label width500"><b><bean:write name="LoveNicknameAdministrationForm" property="originaltext"/></b></div>
