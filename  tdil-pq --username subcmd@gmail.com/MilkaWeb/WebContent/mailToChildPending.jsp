@@ -104,6 +104,7 @@ request.setAttribute( "test",  paginated);
 				<img id="img_to_approve" src="./viewMailToChildReplacement.do" width="30" height="30" align="absmiddle">
 			</div>
 			<html:form method="POST" action="/approveDisapproveMailToChild">
+				<%=DisplayTagParamHelper.getFields(request)%>
 				<div style="width:400px; height:200px; float:left;">
 					Reemplazar<br/><br/>
 					<input type="file" name="upload_email" id="upload_email">Reemplazar<br/><br/>
