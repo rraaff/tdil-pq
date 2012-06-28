@@ -91,6 +91,22 @@ public class MailToChildUtils {
 				getTransactionalAction.id = lnk;
 				MailToChildValueObject ww = (MailToChildValueObject)TransactionProvider.executeInTransactionWithResult(getTransactionalAction);
 				page.getPage().set(0, ww);
+			} else {
+				MailToChildGetTransactionalAction getTransactionalAction = new MailToChildGetTransactionalAction();
+				getTransactionalAction.id = lnk;
+				MailToChildValueObject ww = (MailToChildValueObject)TransactionProvider.executeInTransactionWithResult(getTransactionalAction);
+				MailToChildValueObject zeroPosition = page.getPage().get(0);
+				if (!ww.getId().equals(zeroPosition.getId())) {
+					int indexOriginal = 0;
+					for (MailToChildValueObject mtcvo : page.getPage()) {
+						if (mtcvo.getId().equals(ww.getId())) {
+							page.getPage().set(0, ww);
+							page.getPage().set(indexOriginal, zeroPosition);
+							return;
+						}
+						indexOriginal = indexOriginal + 1;
+					}
+				}
 			}
 		} catch (SQLException e) {
 			LOG.error(e.getMessage(), e);
