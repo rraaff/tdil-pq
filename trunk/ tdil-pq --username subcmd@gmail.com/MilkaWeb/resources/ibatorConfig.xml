@@ -108,5 +108,9 @@ targetProject="MilkaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="MILKA" tableName="LOVE_HATE" domainObjectName="LoveHate" alias="loh">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>

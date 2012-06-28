@@ -5,6 +5,8 @@ COMMIT;
 
 DROP TABLE IF EXISTS MAIL_TO_CHILD;
 
+DROP TABLE IF EXISTS LOVE_HATE;
+
 CREATE TABLE MAIL_TO_CHILD (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `creationDate` DATETIME NOT NULL ,
@@ -36,3 +38,18 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('cartas
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('cartasdepadresahijos', 'Aprobacion de cartas de padres a hijos','contenido del email',0);
 
 COMMIT;
+
+CREATE TABLE LOVE_HATE (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `creationDate` DATETIME NOT NULL ,
+  `publishDate` DATETIME NULL ,
+  `content` VARCHAR(100) NULL ,
+  `approved` INT NOT NULL,
+  `love` INT NOT NULL,
+  `votes` INT NOT NULL,
+  `id_click_counter` INT NOT NULL,
+  `url_link` VARCHAR(400) NULL ,
+  `url_target` VARCHAR(50) NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;

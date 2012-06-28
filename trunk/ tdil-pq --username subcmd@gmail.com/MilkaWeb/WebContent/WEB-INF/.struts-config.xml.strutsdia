@@ -705,4 +705,8 @@
    PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#addLove" NAME="action85" PATH="/addLove"
+  SHAPE="240,4289,0,0" TITLE="LoveForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addHate" NAME="action86" PATH="/addHate"
+  SHAPE="240,4289,0,0" TITLE="HateForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
