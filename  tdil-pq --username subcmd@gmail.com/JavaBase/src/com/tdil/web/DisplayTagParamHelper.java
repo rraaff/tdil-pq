@@ -25,4 +25,18 @@ public class DisplayTagParamHelper {
 		}
 		return result.toString();
 	}
+	
+	public static String getFields(HttpServletRequest request) {
+		StringBuffer result = new StringBuffer();
+		if (!StringUtils.isEmpty(request.getParameter("page"))) {
+			result.append("<input type=\"hidden\" name=\"page\" value=\"").append(request.getParameter("page")).append("\">");
+		}
+		if (!StringUtils.isEmpty(request.getParameter("sort"))) {
+			result.append("<input type=\"hidden\" name=\"sort\" value=\"").append(request.getParameter("sort")).append("\">");
+		}
+		if (!StringUtils.isEmpty(request.getParameter("dir"))) {
+			result.append("<input type=\"hidden\" name=\"dir\" value=\"").append(request.getParameter("dir")).append("\">");
+		}
+		return result.toString();
+	}
 }
