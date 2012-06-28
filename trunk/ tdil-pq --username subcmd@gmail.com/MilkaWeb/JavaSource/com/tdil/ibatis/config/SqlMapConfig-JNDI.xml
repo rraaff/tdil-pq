@@ -43,4 +43,5 @@
 	
 	<sqlMap resource="com/tdil/milka/dao/maps/GOOD_MORNING_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/milka/dao/maps/MAIL_TO_CHILD_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/milka/dao/maps/LOVE_HATE_SqlMap.xml"/>
 </sqlMapConfig>
