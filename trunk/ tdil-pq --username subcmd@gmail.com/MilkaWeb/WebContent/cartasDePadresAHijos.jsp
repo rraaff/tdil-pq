@@ -188,18 +188,21 @@ body {
 	font-family: 'Oswald', sans-serif;
 	color: #FFFFFF;
 }
-div { /*border:dotted 1px #00CC33;*/ }
+div {/* border:dotted 1px #00CC33; */}
 #altalayer {
-	width:306px;
-	height:406px;
-	background-image: url(images/experiencias/postits/fondoAdd.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	padding:62px;
+	color:#8c7bb5;
+	width:280px;
+	height:300px;
+	background-color:#e9e9e9;
+	padding:25px;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 #graciasporsubir, #erroralta {
-	color:#FFFFFF;
-	background-color:#000000;
+	color:#8c7bb5;
+	background-color:#e9e9e9;
 	width:230px;
 	padding:15px;
 	
@@ -207,56 +210,27 @@ div { /*border:dotted 1px #00CC33;*/ }
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
-#lineadecontenido {
-	height:30px;
+#renglon {
+	height: 25px;
+	margin-bottom:10px;
 	float:left;
 }
-#Nombre {
-	height: 25px;
-	width: 206px;
-	left: 85px;
-	top: 12px;
-	position: relative;
-}
-#E-Mail {
-	height: 25px;
-	width: 206px;
-	left: 85px;
-	top: 22px;
-	position: relative;
-}
-#Politicas {
-	height: 25px;
-	width: 160px;
-	left: 0px;
-	top: 40px;
-	position: relative;
-}
-#SubirImagen {
-	height: 100px;
-	width: 290px;
-	left: 0px;
-	top: 70px;
-	position: relative;
-}
+.widthData { width:60px; }
 #buttonHolder {
 	border:none;
 	height: 82px;
-	width: 290px;
-	left: 0px;
-	top: 70px;
-	position: relative;
+	width: 280px;
+	float:left;
 }
 .normalField {
 	font-family:"Trebuchet MS", Arial, sans-serif;
-	width:206px;
-	height:25px;
+	width:200px;
+	height:22px;
 	line-height:22px;
-	border: dotted 1px #ad9d1f;
-	background:transparent;
+	border: solid 1px #8c7bb5;
 }
 .normalTextArea {
-	width:290px;
+	width:200px;
 	height:100px;
 }
 /*   */
