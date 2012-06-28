@@ -31,8 +31,9 @@
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
-<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
+<link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
+<script src="./js/lightbox-melt.js"></script>
 <% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
 	
 %>
@@ -421,6 +422,30 @@ h2 {
 }
 -->
 </style>
+<style>
+ #bm_me_derrite a{
+	float:right;
+	width:108px;
+	height:41px;
+	background:url(images/barra/me-derrite.png) no-repeat;
+	position:relative;
+	margin-right: 50px;
+}
+#bm_personas{
+	float:left;
+	width:180px;
+	height:20px;
+	position:relative;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	top:14px;
+}
+#bm_personas span{
+	color:#b398ff;
+}
+</style>
+
 </head>
 
 <body>
@@ -431,12 +456,20 @@ h2 {
 	<div id="header"></div>
 	<div id="pageBody">
 		<div id="pageLeft">
-			<% for (MailToChildValueObject mtc : mailPage.getPage()) { %>
-				<div id="moduleContent">
+			<%  int linkAnchor = 0;
+				for (MailToChildValueObject mtc : mailPage.getPage()) { %>
+				<div id="moduleContent" >
 					<div id="date"><%=mtc.getDate()%><br/><%=mtc.getMonth()%></div>
-					<h1><%=mtc.getAuthorValueObject().getName()%></h1>
+					<h1 id="anchor-<%=linkAnchor++%>"><%=mtc.getAuthorValueObject().getName()%></h1>
 					<p><%=mtc.getDescription()%></p>
-					<img src="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=415&height=300&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" width="415" height="300" />
+					<a href="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" title="<%=mtc.getAuthorValueObject().getName()%>" id="lk-<%=mtc.getIdClickCounter()%>" rel="lightbox" button="<%=mtc.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mtc.getIdClickCounter())%>" class="activo">
+						<img src="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=415&height=300&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" width="415" height="300" />
+					</a>
+				</div>
+			<% } %>
+			<% if (!mailPage.isHasNext()) { %>
+				<div id="moduleContent">
+					<h1>No hay mas datos</h1>
 				</div>
 			<% } %>
 			<!-- test -->
@@ -450,8 +483,9 @@ h2 {
 			</div>
 			<h2>&Uacute;LTIMAS ENTRADAS</h2>
 			<div id="lastEntriesNames">
-				<% for (MailToChildValueObject mtc : mailPage.getPage()) { %>
-					<a href="#"><%=mtc.getAuthorValueObject().getName()%></a>
+				<%  int linkAnchorSource = 0; 
+					for (MailToChildValueObject mtc : mailPage.getPage()) { %>
+					<a href="#anchor-<%=linkAnchorSource++%>"><%=mtc.getAuthorValueObject().getName()%></a>
 				<% } %>
 			</div>
 			<div id="entryNumber"><span class="numero"><%=totalItems%></span> ENTRADAS</div>

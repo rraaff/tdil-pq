@@ -103,6 +103,9 @@ public class LinkTargetSelectionForm extends ActionForm implements Transactional
 		if (Experience.APODOS_DE_AMOR.name().equals(this.getType())) {
 			list = DAOManager.getLoveNicknamesDAO().search();
 		}
+		if (Experience.CARTAS_DE_PADRES_A_HIJOS.name().equals(this.getType())) {
+			list = DAOManager.getMailToChildDAO().search();
+		}
 		if (StringUtils.isEmpty(this.getDescription())) {
 			this.setSourceList(list);
 		} else {

@@ -471,7 +471,7 @@
   
   <select id="selectExperience" resultMap="EXPERIENCE.BaseResultMap">
     select 
-    	mtp.id as exp_id, 'CARTAS_DE_PADRES_A_HIJOS' as exp_type, mtp.title as exp_description,
+    	mtp.id as exp_id, 'CARTAS_DE_PADRES_A_HIJOS' as exp_type, mtp.description as exp_description,
     	mtp.id_approved_data as exp_idblob, mtp.ext_approved_data as exp_extblob, 
     	(select COUNT(*) FROM LINKS where destinationType = 'CARTAS_DE_PADRES_A_HIJOS' and destination = mtp.id) as exp_linkCount
     from MAIL_TO_CHILD mtp
@@ -492,7 +492,7 @@
     <include refid="MAIL_TO_CHILD.Author_Column_List" />
     from MAIL_TO_CHILD mtc, AUTHOR author
     where mtc.id_author = author.id
-    and mtc.id = = #id:INTEGER#
+    and mtc.id = #id:INTEGER#
   </select>
   
     <select id="selectApprovedPage" parameterClass="java.util.Map" resultMap="ResultMapWithAuthor">
