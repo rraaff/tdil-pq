@@ -1,0 +1,61 @@
+function generateTooltips() {
+  //make sure tool tip is enabled for any new error label
+	$("img[id*='error']").tooltip({
+		showURL: false,
+		opacity: 0.99,
+		fade: 150,
+		positionRight: true ,
+		bodyHandler: function() {
+			return $("#"+this.id).attr("hovertext");
+		}
+	});
+	//make sure tool tip is enabled for any new valid label
+	$("img[src*='tick.gif']").tooltip({
+		showURL: false,
+			bodyHandler: function() {
+				return "OK";
+			}
+	});
+}
+
+$('form').mouseover(function(){
+	      generateTooltips();
+	    });
+
+$("form[name='LoveForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent("div"));
+		},
+		rules: { 'text': {required: true}
+		},
+		messages: {
+			'text': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el texto.' />"}
+		},
+		submitHandler: function() {
+            $("form[name='LoveForm']").ajaxSubmit({
+    			type: "POST",
+    			url: "./addLove.do",
+    			dataType: "json",
+    			success: postLove
+    			});
+        }
+	});
+	
+$("form[name='HateForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent("div"));
+		},
+		rules: { 'text': {required: true}
+		},
+		messages: {
+			'text': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el texto.' />"}
+		},
+		submitHandler: function() {
+            $("form[name='HateForm']").ajaxSubmit({
+    			type: "POST",
+    			url: "./addHate.do",
+    			dataType: "json",
+    			success: postHate
+    			});
+        }
+	});

@@ -40,6 +40,10 @@
    name="MailToChildForm" type="com.tdil.milka.struts.forms.MailToChildForm"/>
    <form-bean id="MailToChildAdministrationForm"
    name="MailToChildAdministrationForm" type="com.tdil.milka.struts.forms.MailToChildAdministrationForm"/>
+   <form-bean id="LoveForm"
+   name="LoveForm" type="com.tdil.milka.struts.forms.LoveHateForm"/>
+   <form-bean id="HateForm"
+   name="HateForm" type="com.tdil.milka.struts.forms.LoveHateForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -375,6 +379,10 @@
   <action name="LoveNicknameForm" path="/addLoveNick" scope="session" type="com.tdil.milka.struts.action.AddLoveNicknameAction">
   </action>
   <action name="MailToChildForm" path="/uploadMailToChild" scope="request" type="com.tdil.milka.struts.action.UploadMailToChildAction">
+  </action>
+  <action name="LoveForm" path="/addLove" scope="request" type="com.tdil.milka.struts.action.AddLoveAction">
+  </action>
+  <action name="HateForm" path="/addHate" scope="request" type="com.tdil.milka.struts.action.AddHateAction">
   </action>
   
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
