@@ -10,6 +10,7 @@ import com.tdil.milka.dao.EmailEndingsDAO;
 import com.tdil.milka.dao.FilteredWordDAO;
 import com.tdil.milka.dao.GoodMorningDAO;
 import com.tdil.milka.dao.LinksDAO;
+import com.tdil.milka.dao.LoveHateDAO;
 import com.tdil.milka.dao.LoveNicknamesDAO;
 import com.tdil.milka.dao.MailToChildDAO;
 import com.tdil.milka.dao.MailToParentDAO;
@@ -31,6 +32,7 @@ import com.tdil.milka.dao.impl.EmailEndingsDAOImpl;
 import com.tdil.milka.dao.impl.FilteredWordDAOImpl;
 import com.tdil.milka.dao.impl.GoodMorningDAOImpl;
 import com.tdil.milka.dao.impl.LinksDAOImpl;
+import com.tdil.milka.dao.impl.LoveHateDAOImpl;
 import com.tdil.milka.dao.impl.LoveNicknamesDAOImpl;
 import com.tdil.milka.dao.impl.MailToChildDAOImpl;
 import com.tdil.milka.dao.impl.MailToParentDAOImpl;
@@ -131,5 +133,9 @@ public class DAOManager {
 	
 	public static MailToChildDAO getMailToChildDAO() throws SQLException {
 		return new MailToChildDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static LoveHateDAO getLoveHateDAO() throws SQLException {
+		return new LoveHateDAOImpl(IBatisManager.getClient());
 	}
 }
