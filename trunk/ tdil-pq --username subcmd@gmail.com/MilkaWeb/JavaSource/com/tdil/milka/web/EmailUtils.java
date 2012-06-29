@@ -31,7 +31,7 @@ public class EmailUtils {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyLike("mail.smtp").andDeletedEqualTo(0);
+		smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
 		List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
 		Properties properties = new Properties();
 		for (SystemProperty sp : list) {
