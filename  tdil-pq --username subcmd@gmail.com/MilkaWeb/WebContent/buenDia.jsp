@@ -17,10 +17,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Milka.com.ar | Sitio Oficial | Experiencia Postits</title>
+<title>Milka.com.ar | Sitio Oficial | Experiencia Buen Dia</title>
 <% 
 	if (!"true".equals(request.getParameter("dnc"))) {
-		MeltButton.incrementCounter(MeltButton.CARTAS_DE_PADRES_A_HIJOS_RENDER);
+		MeltButton.incrementCounter(MeltButton.BUEN_DIA_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
@@ -39,7 +39,7 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
-		<%@ include file="includes/cartaDePadreAHijoReady.jspf" %>
+		<%@ include file="includes/buenDiaReady.jspf" %>
 
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
@@ -53,34 +53,6 @@ $(document).ready(
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
-
-		$('#pageLeft').scrollPagination({
-			'contentPage': 'democontent.html', // the page where you are searching for results
-			'contentData': {}, // you can pass the children().size() to know where is the pagination
-			'scrollTarget': $(window), // who gonna scroll? in this example, the full window
-			'heightOffset': 10, // how many pixels before reaching end of the page would loading start? positives numbers only please
-			'beforeLoad': function(){ // before load, some function, maybe display a preloader div
-				$('#loading').fadeIn();	
-			},
-			'afterLoad': function(elementsLoaded){ // after loading, some function to animate results and hide a preloader div
-				 $('#loading').fadeOut();
-				 var i = 0;
-				 $(elementsLoaded).fadeInWithDelay();
-				 if ($('#pageLeft').children().size() > 100){ // if more than 100 results loaded stop pagination (only for test)
-				 	$('#nomoreresults').fadeIn();
-					$('#pageLeft').stopScrollPagination();
-				 }
-			}
-		});
-		
-		// code for fade in element by element with delay
-		$.fn.fadeInWithDelay = function(){
-			var delay = 0;
-			return this.each(function(){
-				$(this).delay(delay).animate({opacity:1}, 200);
-				delay += 100;
-			});
-		};
 		
 	}
 	
@@ -352,7 +324,7 @@ h2 {
 </head>
 
 <body>
-<% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
+<% int barClickCounter = MeltButton.BUEN_DIA_COUNTER; 
 	
 %>
 <%
@@ -374,7 +346,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 <div id="flashin">
 	<div id="header"></div>
 	<div id="commands">
-		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="#" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
+		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator"><a href="#">< P&aacute;gina anterior</a> | <a href="#">Siguiente p&aacute;gina ></a></div>
 	</div>
 	<div id="pageBody">
@@ -405,6 +377,6 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 </div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
-<%@ include file="includes/cartaDePadreAHijoDialogs.jspf" %>
+<%@ include file="includes/buenDiaDialogs.jspf" %>
 </body>
 </html>

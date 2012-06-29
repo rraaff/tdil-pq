@@ -19,5 +19,7 @@ public interface SystemPropertiesKeys {
 	
 	public static final String CARTAS_DE_PADRES_A_HIJOS_URL = "cartasDePadresAHijos.url";
 	
+	public static final String BUEN_DIA_URL = "buendia.url";
+	
 	public static final String APP_ID = "fb.app";
 }

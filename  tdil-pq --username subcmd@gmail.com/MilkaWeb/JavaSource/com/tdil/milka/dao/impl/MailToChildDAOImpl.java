@@ -9,7 +9,6 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.milka.dao.MailToChildDAO;
 import com.tdil.milka.model.MailToChild;
 import com.tdil.milka.model.MailToChildExample;
-import com.tdil.milka.model.WallWritting;
 import com.tdil.milka.model.valueobjects.ExperienceValueObject;
 import com.tdil.milka.model.valueobjects.MailToChildValueObject;
 

@@ -13,6 +13,7 @@ public class ExperienceUtils {
 		result.add(Experience.CARTAS_DE_HIJOS_A_PADRES.name());
 		result.add(Experience.APODOS_DE_AMOR.name());
 		result.add(Experience.CARTAS_DE_PADRES_A_HIJOS.name());
+		result.add(Experience.BUEN_DIA.name());
 		return result;
 	}
 }

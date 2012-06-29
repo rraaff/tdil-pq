@@ -1,9 +1,12 @@
 package com.tdil.milka.dao;
 
-import com.tdil.milka.model.GoodMorning;
-import com.tdil.milka.model.GoodMorningExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.milka.model.GoodMorning;
+import com.tdil.milka.model.GoodMorningExample;
+import com.tdil.milka.model.valueobjects.ExperienceValueObject;
+import com.tdil.milka.model.valueobjects.GoodMorningValueObject;
 
 public interface GoodMorningDAO {
 
@@ -72,4 +75,16 @@ public interface GoodMorningDAO {
 	 * @mbggenerated  Wed Jun 27 22:57:22 ART 2012
 	 */
 	int updateGoodMorningByPrimaryKey(GoodMorning record) throws SQLException;
+	
+	List<GoodMorningValueObject> selectGoodMorningToApproveWithAuthor() throws SQLException;
+
+	List<GoodMorningValueObject> selectGoodMorningToReviewWithAuthor() throws SQLException;
+
+	List<ExperienceValueObject> search() throws SQLException;
+
+	GoodMorningValueObject selectGoodMorningValueObjectByPrimaryKey(int id) throws SQLException;
+
+	List<GoodMorningValueObject> selectApproved(int start, int i) throws SQLException;
+
+	int countApproved() throws SQLException;
 }

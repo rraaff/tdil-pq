@@ -1,6 +1,7 @@
 package com.tdil.milka.web;
 
 import com.tdil.milka.model.EmailEndings;
+import com.tdil.milka.model.GoodMorning;
 import com.tdil.milka.model.LoveNicknames;
 import com.tdil.milka.model.MailToChild;
 import com.tdil.milka.model.MailToParent;
@@ -44,6 +45,12 @@ public enum Experience {
 		public String getLink() {
 			return "cartasDePadresAHijos.jsp?lnk=";
 		}
+	},
+	BUEN_DIA() {
+		@Override
+		public String getLink() {
+			return "buenDia.jsp?lnk=";
+		}
 	};
 	
 	public abstract String getLink();
@@ -70,5 +77,9 @@ public enum Experience {
 	
 	public static String getLink(MailToChild obj) {
 		return CARTAS_DE_PADRES_A_HIJOS.getLink() + obj.getId();
+	}
+	
+	public static String getLink(GoodMorning obj) {
+		return BUEN_DIA.getLink() + obj.getId();
 	}
 }

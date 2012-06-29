@@ -468,4 +468,72 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+     <resultMap class="com.tdil.milka.model.valueobjects.GoodMorningValueObject" extends="BaseResultMap" id="ResultMapWithAuthor">
+  	<result column="name" jdbcType="VARCHAR" property="name" />
+  	<result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  
+  <sql id="Author_Column_List">
+  	author.name, author.email
+  </sql>
+  
+  <!-- Custom queries -->
+  
+  <select id="selectGoodMorningWithAuthorsToApprove" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="GOOD_MORNING.Base_Column_List" />,
+    <include refid="GOOD_MORNING.Author_Column_List" />
+    from GOOD_MORNING gm, AUTHOR author
+    where gm.id_author = author.id
+    and gm.approved != 1
+    order by gm.approved asc, gm.id asc
+  </select>
+  
+  <select id="selectGoodMorningWithAuthorsToReview" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="GOOD_MORNING.Base_Column_List" />,
+    <include refid="GOOD_MORNING.Author_Column_List" />
+    from GOOD_MORNING gm, AUTHOR author
+    where gm.id_author = author.id
+    and gm.approved = 1
+    order by gm.publishDate desc, gm.id desc
+  </select>
+  
+  <select id="selectExperience" resultMap="EXPERIENCE.BaseResultMap">
+    select 
+    	mtp.id as exp_id, 'BUEN_DIA' as exp_type, mtp.description as exp_description,
+    	mtp.id_approved_data as exp_idblob, mtp.ext_approved_data as exp_extblob, 
+    	(select COUNT(*) FROM LINKS where destinationType = 'BUEN_DIA' and destination = mtp.id) as exp_linkCount
+    from GOOD_MORNING mtp
+    where mtp.approved = 1
+    order by exp_linkCount asc, mtp.id desc
+  </select>
+  
+  	<select id="countApproved" resultClass="java.lang.Integer">
+    select 
+    count(*)
+    from GOOD_MORNING gm
+    where gm.approved = 1
+  </select>
+  
+    <select id="selectGoodMorningValueObjectByPrimaryKey" parameterClass="com.tdil.milka.model.GoodMorning" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="GOOD_MORNING.Base_Column_List" />,
+    <include refid="GOOD_MORNING.Author_Column_List" />
+    from GOOD_MORNING gm, AUTHOR author
+    where gm.id_author = author.id
+    and gm.id = #id:INTEGER#
+  </select>
+  
+    <select id="selectApprovedPage" parameterClass="java.util.Map" resultMap="ResultMapWithAuthor">
+    select 
+    <include refid="GOOD_MORNING.Base_Column_List" />,
+    <include refid="GOOD_MORNING.Author_Column_List" />
+    from GOOD_MORNING gm, AUTHOR author
+    where gm.approved = 1
+    and gm.id_author = author.id
+    order by gm.publishDate desc
+    LIMIT #start:INTEGER#, #limit:INTEGER#
+  </select>
 </sqlMap>

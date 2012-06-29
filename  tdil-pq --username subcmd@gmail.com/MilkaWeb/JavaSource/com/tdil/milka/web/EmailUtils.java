@@ -25,6 +25,8 @@ public class EmailUtils {
 	
 	public static final String cartasdepadresahijos = "cartasdepadresahijos";
 	
+	public static final String buendia = "buendia";
+	
 	public static void sendContentApprovedEmail(int idauthor, String notificationtype, String experiencetype, int link) throws SQLException {
 		try {
 		

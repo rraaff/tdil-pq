@@ -1,0 +1,18 @@
+<div id="graciasporsubir" class="hide" style="z-index: 500;">
+	<p>Gracias por participar.<br>Te avisaremos cuando este aprobada.</p>
+	<div align="center"><input type="button" id="closegracias" value="Close"></div>
+</div>
+<div id="erroralta" class="hide" style="z-index: 500;">
+	<p>Ha ocurrido un error, intentelo nuevamente.</p>
+	<div align="center"><input type="button" id="closeerror" value="Close"></div>
+</div>
+<div id="altalayer" class="hide" style="z-index: 500;">
+	<html:form method="POST" action="/uploadGoodMorning" enctype="multipart/form-data">
+		<div id="renglon" class="widthData">Nombre: </div><div id="renglon"><html:text name="GoodMorningForm" property="authorBean.name" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">E-Mail: </div><div id="renglon"><html:text name="GoodMorningForm" property="authorBean.email" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">Mensaje: </div><div id="renglon normalTextArea"><html:textarea name="GoodMorningForm" property="description" styleClass="normalTextArea"/></div>
+		<div id="renglon"><html:checkbox name="GoodMorningForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
+		<div id="renglon"><html:file name="GoodMorningForm" property="photoFormFile" /></div>
+		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit><input type="button" id="cancelalta" value="Me arrepentí"></div>
+	</html:form>
+</div>

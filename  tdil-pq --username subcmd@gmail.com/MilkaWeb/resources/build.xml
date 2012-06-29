@@ -58,6 +58,15 @@
 			<transaction src="ddl_03.sql" />
 		</sql>
 	</target>
+	
+	<target name="incremental_04">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl_04.sql" />
+		</sql>
+	</target>
 
 	<target name="apodos">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
@@ -141,7 +150,7 @@
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="database.sql">
 		</copy-->
-		<copy todir="${project.name.upper}.tmp" file="ddl_02.sql">
+		<copy todir="${project.name.upper}.tmp" file="ddl_03.sql">
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
