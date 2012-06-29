@@ -4,8 +4,14 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.milka.dao.GoodMorningDAO;
 import com.tdil.milka.model.GoodMorning;
 import com.tdil.milka.model.GoodMorningExample;
+import com.tdil.milka.model.GoodMorning;
+import com.tdil.milka.model.valueobjects.ExperienceValueObject;
+import com.tdil.milka.model.valueobjects.GoodMorningValueObject;
+
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GoodMorningDAOImpl implements GoodMorningDAO {
 
@@ -145,5 +151,44 @@ public class GoodMorningDAOImpl implements GoodMorningDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	/** Custom queries */
+	public List<GoodMorningValueObject> selectGoodMorningToApproveWithAuthor() throws SQLException {
+		List<GoodMorningValueObject> list = sqlMapClient
+				.queryForList("GOOD_MORNING.selectGoodMorningWithAuthorsToApprove");
+		return list;
+	}
+
+	public List<GoodMorningValueObject> selectGoodMorningToReviewWithAuthor() throws SQLException {
+		List<GoodMorningValueObject> list = sqlMapClient
+				.queryForList("GOOD_MORNING.selectGoodMorningWithAuthorsToReview");
+		return list;
+	}
+
+	public List<ExperienceValueObject> search() throws SQLException {
+		List<ExperienceValueObject> list = sqlMapClient.queryForList("GOOD_MORNING.selectExperience");
+		return list;
+	}
+
+	public GoodMorningValueObject selectGoodMorningValueObjectByPrimaryKey(int id) throws SQLException {
+		GoodMorning _key = new GoodMorning();
+		_key.setId(id);
+		GoodMorningValueObject record = (GoodMorningValueObject) sqlMapClient.queryForObject(
+				"GOOD_MORNING.selectGoodMorningValueObjectByPrimaryKey", _key);
+		return record;
+	}
+	
+	public List<GoodMorningValueObject> selectApproved(int start, int limit) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("start", start);
+		params.put("limit", limit);
+		List<GoodMorningValueObject> list = sqlMapClient.queryForList("GOOD_MORNING.selectApprovedPage", params);
+		return list;
+	}
+	
+	public int countApproved() throws SQLException {
+		Integer count = (Integer) sqlMapClient.queryForObject("GOOD_MORNING.countApproved");
+		return count;
 	}
 }

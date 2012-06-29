@@ -13,10 +13,12 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.AuthorDAO;
 import com.tdil.milka.dao.ClickCounterDAO;
 import com.tdil.milka.dao.EmailEndingsDAO;
+import com.tdil.milka.dao.GoodMorningDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.Author;
 import com.tdil.milka.model.ClickCounter;
 import com.tdil.milka.model.EmailEndings;
+import com.tdil.milka.model.GoodMorning;
 import com.tdil.milka.model.valueobjects.AuthorValueObject;
 import com.tdil.milka.utils.BlobHelper;
 import com.tdil.struts.ValidationError;
@@ -36,6 +38,8 @@ public class GoodMorningForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private AuthorValueObject authorBean;
+	private String title;
+	private String description;
 	private FormFile photoFormFile;
 	private UploadData photo;
 	
@@ -62,11 +66,13 @@ public class GoodMorningForm extends TransactionalValidationForm {
 		if (uploadData != null) {
 			int fileSize = formFile.getFileSize();
 			if (fileSize > MAX_PHOTO_SIZE) {
-				error.setFieldError("EmailEndingForm.photo", ValidationErrors.TOO_BIG);
+				error.setFieldError("GoodMorningForm.photo", ValidationErrors.TOO_BIG);
 				this.setPhoto(null);
 				return;
 			}
 			this.setPhoto(uploadData);
+		} else {
+			error.setFieldError("GoodMorningForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
 		}
 	}
 	
@@ -76,7 +82,7 @@ public class GoodMorningForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		EmailEndingsDAO emailEndingsDao = DAOManager.getEmailEndingsDAO();
+		GoodMorningDAO mailsToParentsDao = DAOManager.getGoodMorningDAO();
 		AuthorDAO authorDAO = DAOManager.getAuthorDAO();
 		ClickCounterDAO clickCounterDAO = DAOManager.getClickCounterDAO();
 		ClickCounter clickCounter = new ClickCounter();
@@ -87,17 +93,19 @@ public class GoodMorningForm extends TransactionalValidationForm {
 		int authorId = authorDAO.insertAuthor(author);
 		int blobId = BlobHelper.insertBlob(this.getPhoto());
 		
-		EmailEndings emailEnding = new EmailEndings();
-		emailEnding.setApproved(0);
-		emailEnding.setCreationdate(new Date());
-		emailEnding.setDeleted(0);
-		emailEnding.setExtBlobData(this.getPhoto().getExtension());
-		emailEnding.setFrontcover(0);
-		emailEnding.setIdAuthor(authorId);
-		emailEnding.setIdClickCounter(clickCounterId);
-		emailEnding.setIdBlobData(blobId);
-		emailEnding.setShowinhome(0);
-		emailEndingsDao.insertEmailEndings(emailEnding);
+		GoodMorning goodMorning = new GoodMorning();
+		goodMorning.setTitle(this.getTitle());
+		goodMorning.setDescription(this.getDescription());
+		goodMorning.setApproved(0);
+		goodMorning.setCreationdate(new Date());
+		goodMorning.setDeleted(0);
+		goodMorning.setExtBlobData(this.getPhoto().getExtension());
+		goodMorning.setFrontcover(0);
+		goodMorning.setIdAuthor(authorId);
+		goodMorning.setIdClickCounter(clickCounterId);
+		goodMorning.setIdBlobData(blobId);
+		goodMorning.setShowinhome(0);
+		mailsToParentsDao.insertGoodMorning(goodMorning);
 	}	
 
 
@@ -124,6 +132,18 @@ public class GoodMorningForm extends TransactionalValidationForm {
 	}
 	public void setPhotoFormFile(FormFile photoFormFile) {
 		this.photoFormFile = photoFormFile;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

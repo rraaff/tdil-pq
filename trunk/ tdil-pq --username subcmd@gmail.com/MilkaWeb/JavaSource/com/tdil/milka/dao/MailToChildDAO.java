@@ -1,13 +1,12 @@
 package com.tdil.milka.dao;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.tdil.milka.model.MailToChild;
 import com.tdil.milka.model.MailToChildExample;
 import com.tdil.milka.model.valueobjects.ExperienceValueObject;
 import com.tdil.milka.model.valueobjects.MailToChildValueObject;
-import com.tdil.milka.model.valueobjects.MailToParentValueObject;
-
-import java.sql.SQLException;
-import java.util.List;
 
 public interface MailToChildDAO {
     /**

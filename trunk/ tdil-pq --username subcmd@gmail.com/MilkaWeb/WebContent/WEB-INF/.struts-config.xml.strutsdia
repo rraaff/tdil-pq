@@ -551,6 +551,9 @@
   <PROCESS-ITEM-OUTPUT ID="CARTAS_DE_PADRES_A_HIJOS" NAME="forward5"
    PATH="/mailToChildPending.jsp" TARGET="page20"
    TITLE="CARTAS_DE_PADRES_A_HIJOS" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="BUEN_DIA" NAME="forward6"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="BUEN_DIA"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToLinkTargetSelectionFromEmail" NAME="action62"
   PATH="/goToLinkTargetSelectionFromEmail" SHAPE="32,3793,0,0"
@@ -608,6 +611,9 @@
   <PROCESS-ITEM-OUTPUT ID="CARTAS_DE_PADRES_A_HIJOS" NAME="forward5"
    PATH="/mailToChildPending.jsp" TARGET="page20"
    TITLE="CARTAS_DE_PADRES_A_HIJOS" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="BUEN_DIA" NAME="forward6"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="BUEN_DIA"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#clearLinkTargetPostIt" NAME="action71"
   PATH="/clearLinkTargetPostIt" SHAPE="240,4289,0,0"
@@ -709,4 +715,66 @@
   SHAPE="240,4289,0,0" TITLE="LoveForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addHate" NAME="action86" PATH="/addHate"
   SHAPE="240,4289,0,0" TITLE="HateForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadGoodMorning" NAME="action87"
+  PATH="/uploadGoodMorning" SHAPE="240,4289,0,0" TITLE="GoodMorningForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToLinkTargetSelectionFromGoodMorning"
+  NAME="action88" PATH="/goToLinkTargetSelectionFromGoodMorning"
+  SHAPE="32,3793,0,0" TITLE="LinkTargetSelectionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/linkSelection.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page21" PATH="/goodMorningPending.jsp"
+  SHAPE="240,3905,0,0" SUBTYPE="jsp" TITLE="goodMorningPending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/approveDisapproveGoodMorning.do" SUBTYPE="confirmed"
+   TARGET="action89" TITLE="/approveDisapproveGoodMorning.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveGoodMorning" NAME="action89"
+  PATH="/approveDisapproveGoodMorning" SHAPE="448,3905,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToGoodMorningApprove" NAME="action90"
+  PATH="/goToGoodMorningApprove" SHAPE="32,4577,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToGoodMorningReview" NAME="action91"
+  PATH="/goToGoodMorningReview" SHAPE="32,3905,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewGoodMorning" NAME="action92"
+  PATH="/reviewGoodMorning" SHAPE="32,3793,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadGoodMorningReplacement" NAME="action93"
+  PATH="/uploadGoodMorningReplacement" SHAPE="656,4289,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewGoodMorningReplacement" NAME="action94"
+  PATH="/viewGoodMorningReplacement" SHAPE="864,4273,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#clearLinkTargetGoodMorning" NAME="action95"
+  PATH="/clearLinkTargetGoodMorning" SHAPE="32,3681,0,0"
+  TITLE="GoodMorningAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goodMorningPending.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -44,6 +44,10 @@
    name="LoveForm" type="com.tdil.milka.struts.forms.LoveHateForm"/>
    <form-bean id="HateForm"
    name="HateForm" type="com.tdil.milka.struts.forms.LoveHateForm"/>
+   <form-bean id="GoodMorningForm"
+   name="GoodMorningForm" type="com.tdil.milka.struts.forms.GoodMorningForm"/>
+   <form-bean id="GoodMorningAdministrationForm"
+   name="GoodMorningAdministrationForm" type="com.tdil.milka.struts.forms.GoodMorningAdministrationForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -315,6 +319,32 @@
    <forward name="continue" path="/mailToChildPending.jsp"/>
   </action>
   
+  <action name="GoodMorningAdministrationForm" parameter="Admin"
+   path="/goToGoodMorningApprove" scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/goodMorningPending.jsp"/>
+  </action>
+  <action name="GoodMorningAdministrationForm" parameter="Admin"
+   path="/goToGoodMorningReview" scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/goodMorningPending.jsp"/>
+  </action>
+  <action name="GoodMorningAdministrationForm" parameter="Admin"
+   path="/reviewGoodMorning" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/goodMorningPending.jsp"/>
+  </action>
+  <action name="GoodMorningAdministrationForm" parameter="Admin"
+   path="/approveDisapproveGoodMorning" scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/goodMorningPending.jsp"/>
+   <forward name="failure" path="/goodMorningPending.jsp"/>
+  </action>
+  <action parameter="Admin" path="/uploadGoodMorningReplacement" type="com.tdil.milka.struts.action.UploadGoodMorningReplacementAction"/>
+  <action name="GoodMorningAdministrationForm" parameter="Admin" path="/viewGoodMorningReplacement"
+   scope="session" type="com.tdil.milka.struts.action.ViewGoodMorningReplacementAction">
+  </action>
+  <action name="GoodMorningAdministrationForm" parameter="Admin" path="/clearLinkTargetGoodMorning"
+   scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
+   <forward name="continue" path="/goodMorningPending.jsp"/>
+  </action>
+  
   <action name="LinkTargetSelectionForm" parameter="Admin"
    path="/goToLinkTargetSelectionFromEmail" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromEmailEndingAction">
    <forward name="continue" path="/linkSelection.jsp"/>
@@ -339,6 +369,10 @@
    path="/goToLinkTargetSelectionFromMailToChild" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromMailToChildAction">
    <forward name="continue" path="/linkSelection.jsp"/>
   </action>
+  <action name="LinkTargetSelectionForm" parameter="Admin"
+   path="/goToLinkTargetSelectionFromGoodMorning" scope="session" type="com.tdil.milka.struts.action.GoToLinkTargetSelectionFromGoodMorningAction">
+   <forward name="continue" path="/linkSelection.jsp"/>
+  </action>
   
   <action name="LinkTargetSelectionForm" parameter="Admin"
    path="/searchExperiences" scope="session" type="com.tdil.milka.struts.action.SearchExperiencesAction">
@@ -353,6 +387,7 @@
    <forward name="PAPAPEDIA" path="/papapediaPending.jsp"/>
    <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
    <forward name="CARTAS_DE_PADRES_A_HIJOS" path="/mailToChildPending.jsp"/>
+   <forward name="BUEN_DIA" path="/goodMorningPending.jsp"/>
   </action>
   
   <action name="LinkTargetSelectionForm" parameter="Admin"
@@ -363,6 +398,7 @@
    <forward name="PAPAPEDIA" path="/papapediaPending.jsp"/>
    <forward name="APODOS_DE_AMOR" path="/loveNicknamePending.jsp"/>
    <forward name="CARTAS_DE_PADRES_A_HIJOS" path="/mailToChildPending.jsp"/>
+   <forward name="BUEN_DIA" path="/goodMorningPending.jsp"/>
   </action>
   
   <!--  Public actions -->
@@ -383,6 +419,8 @@
   <action name="LoveForm" path="/addLove" scope="request" type="com.tdil.milka.struts.action.AddLoveAction">
   </action>
   <action name="HateForm" path="/addHate" scope="request" type="com.tdil.milka.struts.action.AddHateAction">
+  </action>
+  <action name="GoodMorningForm" path="/uploadGoodMorning" scope="request" type="com.tdil.milka.struts.action.UploadGoodMorningAction">
   </action>
   
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">
