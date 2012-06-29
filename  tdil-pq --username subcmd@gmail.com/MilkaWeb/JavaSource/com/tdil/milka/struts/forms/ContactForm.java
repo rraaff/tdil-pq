@@ -1,6 +1,8 @@
 package com.tdil.milka.struts.forms;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -65,19 +67,19 @@ public class ContactForm extends TransactionalValidationForm {
 	public void save() throws SQLException, ValidationException {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
-		
-		SystemPropertyExample portExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+		smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
+		List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
+		Properties properties = new Properties();
+		for (SystemProperty sp : list) {
+			properties.put(sp.getPropkey(), sp.getPropvalue());
+		}
 		
 		SystemPropertyExample destExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTACT_FORM_EMAIL);
+		destExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTACT_FORM_EMAIL);
 		SystemProperty emailDest = systemPropertyDAO.selectSystemPropertyByExample(destExample).get(0);
 		
 		try {
-			EmailUtils.sendEmail(this.getContent(), emailDest.getPropvalue(), this.getEmail(), "Contacto desde el site", smtpServer.getPropvalue(), smtpPort.getPropvalue());
+			EmailUtils.sendEmail(this.getContent(), emailDest.getPropvalue(), this.getEmail(), "Contacto desde el site", properties);
 		} catch (MessagingException e) {
 			getLog().error(e.getMessage(), e);
 			throw new ValidationException(new ValidationError("ContactForm.GENERAL_ERROR"));
