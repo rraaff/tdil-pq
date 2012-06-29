@@ -57,3 +57,21 @@ CREATE TABLE LOVE_HATE (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+DELETE FROM SYSPROPERTIES WHERE propKey = 'smpt.server';
+DELETE FROM SYSPROPERTIES WHERE propKey = 'smpt.port';
+DELETE FROM SYSPROPERTIES WHERE propKey LIKE 'mail.smtp%';
+COMMIT;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.user','contacto@milka.com.ar','mail.smtp.user',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.host','smtp.gmail.com','mail.smtp.host',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.port','465','mail.smtp.port',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.starttls.enable','true','mail.smtp.starttls.enable',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.auth','true','mail.smtp.auth',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.port','465','mail.smtp.socketFactory.port',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.class','javax.net.ssl.SSLSocketFactory','mail.smtp.socketFactory.class',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.fallback','false','mail.smtp.socketFactory.fallback',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.password','mil123ka','mail.smtp.password',0);
+
+COMMIT;

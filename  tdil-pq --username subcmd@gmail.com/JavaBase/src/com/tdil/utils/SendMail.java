@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -22,7 +23,6 @@ import javax.mail.internet.MimeMultipart;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * Insert the type's description here. Creation date: (4/9/2002 11:51:29 AM)
  * 
@@ -30,8 +30,10 @@ import org.apache.commons.lang.StringUtils;
 public class SendMail {
 	// Represents the mail Session used to send mails
 	private Session mailSession = null;
-	private String mailSMTPHost = null;
-	public String mailSMTPPORT = "25";
+	private Properties properties;
+
+	// private String mailSMTPHost = null;
+	// public String mailSMTPPORT = "25";
 
 	/**
 	 * Constructor
@@ -42,15 +44,25 @@ public class SendMail {
 	public SendMail(String aMailSMTPHost) {
 		super();
 
-		this.setMailSMTPHost(aMailSMTPHost);
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", aMailSMTPHost);
+		properties.put("mail.smtp.port", 25);
+		setProperties(properties);
 		this.initializeMailSession();
 	}
-	
+
 	public SendMail(String aMailSMTPHost, String port) {
 		super();
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", aMailSMTPHost);
+		properties.put("mail.smtp.port", port);
+		setProperties(properties);
+		this.initializeMailSession();
+	}
 
-		this.setMailSMTPHost(aMailSMTPHost);
-		this.setMailSMTPPORT(port);
+	public SendMail(Properties properties) {
+		super();
+		setProperties(properties);
 		this.initializeMailSession();
 	}
 
@@ -62,16 +74,19 @@ public class SendMail {
 	 */
 	public SendMail(String aMailSMTPHost, boolean debug) {
 		super();
-
-		this.setMailSMTPHost(aMailSMTPHost);
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", aMailSMTPHost);
+		properties.put("mail.smtp.port", 25);
+		setProperties(properties);
 		this.initializeMailSession(debug);
 	}
-	
+
 	public SendMail(String aMailSMTPHost, String port, boolean debug) {
 		super();
-
-		this.setMailSMTPHost(aMailSMTPHost);
-		this.setMailSMTPPORT(port);
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", aMailSMTPHost);
+		properties.put("mail.smtp.port", port);
+		setProperties(properties);
 		this.initializeMailSession(debug);
 	}
 
@@ -103,16 +118,6 @@ public class SendMail {
 	}
 
 	/**
-	 * Insert the method's description here. Creation date: (4/9/2002 2:06:55
-	 * PM)
-	 * 
-	 * @return java.lang.String
-	 */
-	private java.lang.String getMailSMTPHost() {
-		return mailSMTPHost;
-	}
-
-	/**
 	 * Initialize and gets a Mail Session
 	 */
 	private void initializeMailSession() {
@@ -123,14 +128,15 @@ public class SendMail {
 	 * Initialize and gets a Mail Session
 	 */
 	private void initializeMailSession(boolean debug) {
-		Properties props = new Properties();
-		props.put("mail.smtp.host", this.getMailSMTPHost());
-		props.put("mail.smtp.port", getMailSMTPPORT());
-		this.setMailSession(Session.getInstance(props, null));
-		this.getMailSession().setDebug(debug);
-		if (this.getMailSession().getProperties().isEmpty()) {
-			this.getMailSession().getProperties().put("mail.smtp.host", this.getMailSMTPHost());
-			this.getMailSession().getProperties().put("mail.smtp.port", getMailSMTPPORT()); 
+		String useAuth = this.getProperties().getProperty("mail.smtp.auth");
+		if ("true".equals(useAuth)) {
+			String user = this.getProperties().getProperty("mail.smtp.user");
+			String password = this.getProperties().getProperty("mail.smtp.password");
+			this.setMailSession(Session.getInstance(this.getProperties(), new SMTPAuthenticator(user, password)));
+			this.getMailSession().setDebug(debug);
+		} else {
+			this.setMailSession(Session.getInstance(this.getProperties(), null));
+			this.getMailSession().setDebug(debug);
 		}
 	}
 
@@ -187,11 +193,11 @@ public class SendMail {
 	 *            the Content ID, and Value is the file name to attach.
 	 */
 	public void sendCustomizedMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
-			boolean isHTML, String bodyContent, ArrayList fileAttachmentList,
-			ArrayList contentAttachmentList) throws MessagingException {
+			boolean isHTML, String bodyContent, ArrayList fileAttachmentList, ArrayList contentAttachmentList)
+			throws MessagingException {
 
 		try {
-			
+
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
 
 			if (isHTML)
@@ -272,13 +278,12 @@ public class SendMail {
 
 		this.sendCustomizedMail(from, toList, null, null, subject, false, body, null, null);
 	}
-	
-	public void sendCustomizedHtmlMail(String from, String to, String subject, String body)
-		throws MessagingException {
-	
+
+	public void sendCustomizedHtmlMail(String from, String to, String subject, String body) throws MessagingException {
+
 		ArrayList toList = new java.util.ArrayList();
 		toList.add(new InternetAddress(to));
-		
+
 		this.sendCustomizedMail(from, toList, null, null, subject, true, body, null, null);
 	}
 
@@ -447,8 +452,7 @@ public class SendMail {
 	 *            the Content ID, and Value is the file name to attach.
 	 */
 	public void sendMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
-			MimeMultipart mimeMultiPart, ArrayList fileAttachmentList)
-			throws MessagingException {
+			MimeMultipart mimeMultiPart, ArrayList fileAttachmentList) throws MessagingException {
 
 		try {
 			// Adds File Attachments
@@ -483,33 +487,40 @@ public class SendMail {
 		mailSession = newMailSession;
 	}
 
-	/**
-	 * Insert the method's description here. Creation date: (4/9/2002 2:06:55
-	 * PM)
-	 * 
-	 * @param newMailSMTPHost
-	 *            java.lang.String
-	 */
-	private void setMailSMTPHost(java.lang.String newMailSMTPHost) {
-		mailSMTPHost = newMailSMTPHost;
+	private Properties getProperties() {
+		return properties;
 	}
 
-	/**
-	 * Returns the string representation of the object Creation date: (08-Jan-02
-	 * 15:53:36)
-	 * 
-	 * @return java.lang.String
-	 */
-	public String toString() {
-		return super.toString() + " (SMTPHost: " + this.getMailSMTPHost() + " , Session.getProperties: "
-				+ this.getMailSession().getProperties() + ")";
+	private void setProperties(Properties properties) {
+		this.properties = properties;
 	}
 
-	private String getMailSMTPPORT() {
-		return mailSMTPPORT;
-	}
+	public static void main(String[] args) {
+		Properties props = new Properties();
+		props.put("mail.smtp.user", "contacto@milka.com.ar");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "465");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.socketFactory.fallback", "false");
 
-	private void setMailSMTPPORT(String mailSMTPPORT) {
-		this.mailSMTPPORT = mailSMTPPORT;
+		SecurityManager security = System.getSecurityManager();
+
+		try {
+			Authenticator auth = new SMTPAuthenticator("contacto@milka.com.ar", "mil123ka");
+			Session session = Session.getInstance(props, auth);
+			// session.setDebug(true);
+
+			MimeMessage msg = new MimeMessage(session);
+			msg.setText("test");
+			msg.setSubject("Test");
+			msg.setFrom(new InternetAddress("contacto@milka.com.ar"));
+			msg.addRecipient(Message.RecipientType.TO, new InternetAddress("subcmd@gmail.com"));
+			Transport.send(msg);
+		} catch (Exception mex) {
+			mex.printStackTrace();
+		}
 	}
 }
