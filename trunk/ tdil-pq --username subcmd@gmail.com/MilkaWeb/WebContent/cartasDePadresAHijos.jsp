@@ -266,6 +266,7 @@ h2 {
 	background-repeat: repeat-y;
 	width: 523px;
 	float: left;
+	padding-bottom:20px;
 	margin-bottom: 25px;
 }
 #moduleContent #date {
@@ -299,11 +300,11 @@ h2 {
 	padding-right:240px;
 	float:left;
 }
-#moduleContent img {
-	background-color:#FFFFFF;
-	padding:10px;
-	margin-left:10px;
-	margin-bottom:20px;
+#moduleContent #image {
+	width:415px;
+	height:300px;
+	margin-left:68px;
+	float:left;
 }
 #pageRight {
 	width:233px;
@@ -382,7 +383,6 @@ h2 {
 	border-radius: 15px;
 	text-shadow: 2px 1px -1px #000000;
 }
-
 .loading {
 	background:#c1c39a;
 	color:#303030;
@@ -394,9 +394,6 @@ h2 {
 	display:none;
 	border-radius: 5px;
 }
--->
-</style>
-<style>
  #bm_me_derrite a{
 	float:right;
 	width:108px;
@@ -432,18 +429,16 @@ h2 {
 		<div id="pageLeft">
 			<%  int linkAnchor = 0;
 				for (MailToChildValueObject mtc : mailPage.getPage()) { %>
-				<div id="moduleContent" >
+				<div id="moduleContent">
 					<div id="date"><%=mtc.getDate()%><br/><%=mtc.getMonth()%></div>
 					<h1 id="anchor-<%=linkAnchor++%>"><%=mtc.getAuthorValueObject().getName()%></h1>
 					<p><%=mtc.getDescription()%></p>
-					<a href="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" title="<%=mtc.getAuthorValueObject().getName()%>" id="lk-<%=mtc.getIdClickCounter()%>" rel="lightbox" button="<%=mtc.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mtc.getIdClickCounter())%>" class="activo">
-						<img src="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=415&height=300&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" width="415" height="300" />
-					</a>
+					<div id="image" style="background-image:url(./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=415&height=415&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>); background-repeat:no-repeat;"><a href="./downloadThumb.st?id=<%=mtc.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=mtc.getExtApprovedData()%>" title="<%=mtc.getAuthorValueObject().getName()%>" id="lk-<%=mtc.getIdClickCounter()%>" rel="lightbox" button="<%=mtc.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(mtc.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="415" height="300" /></a></div>
 				</div>
 			<% } %>
 			<% if (!mailPage.isHasNext()) { %>
 				<div id="moduleContent">
-					<h1>No hay mas datos</h1>
+					<h2 style="padding-left:230px; padding-bottom:0px; margin-bottom:0px;">No hay mas datos</h1>
 				</div>
 			<% } %>
 			<!-- test -->
@@ -462,7 +457,7 @@ h2 {
 					<a href="#anchor-<%=linkAnchorSource++%>"><%=mtc.getAuthorValueObject().getName()%></a>
 				<% } %>
 			</div>
-			<div id="entryNumber"><span class="numero"><%=totalItems%></span> ENTRADAS</div>
+			<div id="entryNumber"><span class="numero"><%=totalItems%></span>&nbsp;&nbsp;ENTRADAS</div>
 		</div>
 	</div>
 </div>

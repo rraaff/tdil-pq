@@ -108,8 +108,9 @@ request.setAttribute( "test",  paginated);
 				<div style="width:400px; height:200px; float:left;">
 					Reemplazar<br/><br/>
 					<input type="file" name="upload_email" id="upload_email">Reemplazar<br/><br/>
-					<div class="label width80">Titulo: </div><html:text name="MailToChildAdministrationForm" property="title" style="width: 300px;"/><br><br>
-					<div class="label width80">Descripcion: </div><html:text name="MailToChildAdministrationForm" property="description" style="width: 300px;"/><br><br>
+					<div class="label width80">Posteado por: </div><html:text name="MailToChildAdministrationForm" property="title" style="width: 300px;"/><br><br>
+					<div class="label width80">Dedicatoria: </div>
+					<html:text name="MailToChildAdministrationForm" property="description" style="width: 300px;"/><br><br>
 					<div class="label width80">URL:</div><bean:write name="MailToChildAdministrationForm" property="urlLink"/> <a href="./goToLinkTargetSelectionFromMailToChild.do">Seleccion de link</a> - <a href="./clearLinkTargetMailToChild.do">Borrar link</a><br><br>
 					<div class="label width80">Target: </div>
 						<html:select name="MailToChildAdministrationForm" property="urlTarget" >
