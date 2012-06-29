@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -199,15 +200,53 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 				public void executeInTransaction() throws SQLException, ValidationException {
 					SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 					SystemPropertyExample smtpExample = new SystemPropertyExample();
-					smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-					SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
+					smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
+					List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
+					Properties properties = new Properties();
+					for (SystemProperty sp : list) {
+						properties.put(sp.getPropkey(), sp.getPropvalue());
+					}
 					
-					SystemPropertyExample portExample = new SystemPropertyExample();
-					portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-					SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+					SystemPropertyExample serverExample = new SystemPropertyExample();
+					serverExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SERVER_NAME);
+					SystemProperty server = systemPropertyDAO.selectSystemPropertyByExample(serverExample).get(0);
+					String content = NotificationEmailForm.this.getContent().replaceAll("SERVER_NAME", server.getPropvalue());
+					content = content.replaceAll("AUTHOR_NAME", "Nombre Apellido");
+					
+					String expUrlKey = "";
+					if (NotificationEmailForm.this.getNotificationtype().equals(com.tdil.milka.web.EmailUtils.tufotomilka)) {
+						expUrlKey = SystemPropertiesKeys.FOTO_MILKA_URL;
+					} else {
+						if (NotificationEmailForm.this.getNotificationtype().equals(com.tdil.milka.web.EmailUtils.postits)) {
+							expUrlKey = SystemPropertiesKeys.POST_IT_URL;
+						} else {
+							if (NotificationEmailForm.this.getNotificationtype().equals(com.tdil.milka.web.EmailUtils.finalesdeemail)) {
+								expUrlKey = SystemPropertiesKeys.FINALES_DE_EMAILS_URL;
+							} else {
+								if (NotificationEmailForm.this.getNotificationtype().equals(com.tdil.milka.web.EmailUtils.cartasdepadresahijos)) {
+									expUrlKey = SystemPropertiesKeys.CARTAS_DE_PADRES_A_HIJOS_URL;
+								} else {
+									if (NotificationEmailForm.this.getNotificationtype().equals(com.tdil.milka.web.EmailUtils.cartasdehijosapadres)) {
+										expUrlKey = SystemPropertiesKeys.CARTAS_DE_HIJOS_A_PADRES_URL;
+									} else {
+										// continuar por aca
+									}	
+								}	
+							}
+						}
+					}
+					String destLink = "";
+					SystemPropertyExample linkExample = new SystemPropertyExample();
+					linkExample.createCriteria().andPropkeyEqualTo(expUrlKey);
+					SystemProperty linkSysProperty = systemPropertyDAO.selectSystemPropertyByExample(linkExample).get(0);
+					if (linkSysProperty != null) {
+						destLink = linkSysProperty.getPropvalue();
+					}
+					
+					content = content.replaceAll("EXPERIENCE_LINK", destLink);
 					
 					try {
-						EmailUtils.sendEmail(NotificationEmailForm.this.getContent(), NotificationEmailForm.this.getEmail(), NotificationEmailForm.this.getEmail(), "Test email for type " + NotificationEmailForm.this.getNotificationtype(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
+						EmailUtils.sendEmail(content, NotificationEmailForm.this.getEmail(), NotificationEmailForm.this.getEmail(), "Test email for type " + NotificationEmailForm.this.getNotificationtype(), properties);
 					} catch (MessagingException e) {
 						NotificationEmailForm.this.errorsSending = true;
 						setErrorText(e);

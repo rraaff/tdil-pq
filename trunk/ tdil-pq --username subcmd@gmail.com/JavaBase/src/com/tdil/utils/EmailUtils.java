@@ -1,5 +1,7 @@
 package com.tdil.utils;
 
+import java.util.Properties;
+
 import javax.mail.MessagingException;
 
 
@@ -7,6 +9,11 @@ public class EmailUtils {
 
 	public static void sendEmail(String email, String to, String from, String subject, String smtpServer, String smtpPort) throws MessagingException {
 		SendMail sendMail = new SendMail(smtpServer, smtpPort);
+		sendMail.sendCustomizedHtmlMail(from, to, subject, email);
+	}
+	
+	public static void sendEmail(String email, String to, String from, String subject, Properties properties) throws MessagingException {
+		SendMail sendMail = new SendMail(properties);
 		sendMail.sendCustomizedHtmlMail(from, to, subject, email);
 	}
 	

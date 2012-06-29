@@ -1,8 +1,8 @@
 package com.tdil.milka.web;
 
 import java.sql.SQLException;
-
-import javax.mail.MessagingException;
+import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -31,12 +31,12 @@ public class EmailUtils {
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 		
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
-		smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-		SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
-		
-		SystemPropertyExample portExample = new SystemPropertyExample();
-		portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-		SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+		smtpExample.createCriteria().andPropkeyLike("mail.smtp").andDeletedEqualTo(0);
+		List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
+		Properties properties = new Properties();
+		for (SystemProperty sp : list) {
+			properties.put(sp.getPropkey(), sp.getPropvalue());
+		}
 		
 		SystemPropertyExample fromExample = new SystemPropertyExample();
 		fromExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTENT_APPROVED_EMAIL_FROM);
@@ -70,7 +70,7 @@ public class EmailUtils {
 		content = StringUtils.replace(content, "EXPERIENCE_LINK", destLink);
 		content = StringUtils.replace(content, "SERVER_NAME", server.getPropvalue());
 		
-			com.tdil.utils.EmailUtils.sendEmail(content, author.getEmail(), from.getPropvalue(), subject.getPropvalue(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
+			com.tdil.utils.EmailUtils.sendEmail(content, author.getEmail(), from.getPropvalue(), subject.getPropvalue(), properties);
 		} catch (Exception e) {
 			MilkaPhotoAdministrationForm.getLog().error(e.getMessage(), e);
 		}
