@@ -85,7 +85,7 @@ request.setAttribute( "test",  paginated);
 		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar, modificar o desaprobar las imágenes cargadas desde de la experiencia CARTAS DE PADRES A HIJOS por los usuarios. Respete los tamaños de las imágenes.</span></div>
 	</div>
 	<div class="renglon width860" style="margin-bottom:20px;">
-		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./mailToChildPending.jsp">
+		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./goodMorningPending.jsp">
 			<display:column title="fecha" sortable="true" sortName="fecha" headerClass="sortable" property="creationDateAsString"></display:column>
 			<display:column title="name" sortable="true" sortName="name" headerClass="sortable" property="name"></display:column>
 			<display:column title="email" sortable="true" sortName="email" headerClass="sortable" property="email"></display:column>
