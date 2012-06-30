@@ -349,7 +349,7 @@ int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn"));
 List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, GoodMorningUtils.PAGE_SIZE, 1);
 int first = PaginationUtils.first(list);
 int last = PaginationUtils.last(list);
-SearchPage<GoodMorningValueObject> mailPage = GoodMorningUtils.getPage(0);
+SearchPage<GoodMorningValueObject> mailPage = GoodMorningUtils.getPage(pageNumber);
 int linkId = 0;
 if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	linkId = Integer.valueOf(lnk);
@@ -365,7 +365,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
-			<a href="#">< P&aacute;gina anterior</a> | <a href="#">Siguiente p&aacute;gina ></a></div>
+			<% if (first != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber - 1%>&dnc=true">< P&aacute;gina anterior</a><% } else {%>< P&aacute;gina anterior<%} %> | <% if (last != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Siguiente p&aacute;gina ></a><% } else {%>Siguiente p&aacute;gina ><%} %></div>
 	</div>
 	<div id="pageBody">
 		<% goodMorningValueObject = mailPage.getItemAt(0); %>
