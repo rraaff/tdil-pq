@@ -258,9 +258,17 @@ h2 {
 	width:222px;
 	height:173px;
 }
-#a3 {
+#a34 {
 	width:222px;
 	height:366px;
+}
+#a3 {
+	width:222px;
+	height:173px;
+}
+#a4 {
+	width:222px;
+	height:173px;
 }
 #b3 {
 	width:464px;
@@ -290,7 +298,7 @@ h2 {
 	width:222px;
 	height:173px;
 }
-#data {
+.data {
 	background-image: url(images/experiencias/buenDia/bgData.png);
 	background-repeat: repeat;
 	width: 100%;
@@ -352,7 +360,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	<div id="pageBody">
 		<div id="a1" class="basecolor floater spaceR spaceB">
 			<!-- Mataría que esto tenga un fade-in/fade-out en rollover del bloque -->
-			<div id="data">
+			<div class="data">
 				<!-- yo me copié esto de la barra de experiencias, pero lo que debería compartir con estos botones es la imagen que estás viendo -->
 				<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
 				<span class="dedicatoria floater">Dedicatoria que postea el usuario</span>
@@ -363,7 +371,10 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 		<div id="d1" class="basecolor floater spaceB">D1</div>
 		<div id="c2" class="basecolor floater spaceR">C2</div>
 		<div id="d2" class="basecolor floater spaceB">D2</div>
-		<div id="a3" class="basecolor floater spaceR spaceB">A3</div>
+		<div id="a34" class="floater spaceR spaceB">
+			<div id="a3" class="basecolor floater spaceB">A3</div>
+			<div id="a4" class="basecolor floater">A4</div>
+		</div>
 		<div id="b3" class="basecolor floater spaceR spaceB">B3</div>
 		<div id="d3" class="basecolor floater spaceB ">D3</div>
 		<div id="d4" class="basecolor floater">D4</div>
