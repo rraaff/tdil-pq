@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.daomanager.DAOManager;
-import com.tdil.milka.model.WallWritting;
 import com.tdil.milka.model.valueobjects.MailToChildValueObject;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.web.PaginationUtils;

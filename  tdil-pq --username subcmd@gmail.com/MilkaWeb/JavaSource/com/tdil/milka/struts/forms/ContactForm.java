@@ -78,8 +78,12 @@ public class ContactForm extends TransactionalValidationForm {
 		destExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.CONTACT_FORM_EMAIL);
 		SystemProperty emailDest = systemPropertyDAO.selectSystemPropertyByExample(destExample).get(0);
 		
+		StringBuffer mailBody = new StringBuffer();
+		mailBody.append("Contacto del usuario: ").append(this.getName()).append("<br>");
+		mailBody.append("Email: ").append(this.getEmail()).append("<br>");
+		mailBody.append("Contenido: ").append(this.getContent()).append("<br>");
 		try {
-			EmailUtils.sendEmail(this.getContent(), emailDest.getPropvalue(), this.getEmail(), "Contacto desde el site", properties);
+			EmailUtils.sendEmail(mailBody.toString(), emailDest.getPropvalue(), this.getEmail(), "Contacto desde el site", properties);
 		} catch (MessagingException e) {
 			getLog().error(e.getMessage(), e);
 			throw new ValidationException(new ValidationError("ContactForm.GENERAL_ERROR"));

@@ -26,6 +26,14 @@ public class SearchPage<T> {
 			
 		}
 	}
+	
+	public T getItemAt(int position) {
+		if (page.size() >= position) {
+			return page.get(position);
+		} else {
+			return null;
+		}
+	}
 
 	public List<T> getPage() {
 		return page;

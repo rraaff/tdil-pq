@@ -75,3 +75,23 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.s
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.password','mil123ka','mail.smtp.password',0);
 
 COMMIT;
+
+DELETE FROM SYSPROPERTIES WHERE propKey = 'buendia.url';
+DELETE FROM NOTIFICATION_EMAIL WHERE notificationType = 'buendia';
+COMMIT;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('buendia.url','http://www.milka.com.ar/buendia.jsp','Url de la experiencia buen dia',0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,deleted) VALUES('buendia', 'Aprobacion de buen dia','contenido del email',0);
+
+COMMIT;
+
+CREATE INDEX IX_EMAIL_ENDINGS_APP ON EMAIL_ENDINGS (approved); 
+CREATE INDEX IX_GOOD_MORNING_APP ON GOOD_MORNING (approved);
+CREATE INDEX IX_LOVE_HATE_APP ON LOVE_HATE (approved);
+CREATE INDEX IX_LOVE_NICKNAMES_APP ON LOVE_NICKNAMES (approved);
+CREATE INDEX IX_MAIL_TO_CHILD_APP ON MAIL_TO_CHILD (approved);
+CREATE INDEX IX_MAIL_TO_PARENT_APP ON MAIL_TO_PARENT (approved);
+CREATE INDEX IX_MILKA_PHOTO_APP ON MILKA_PHOTO (approved);
+CREATE INDEX IX_POST_IT_APP ON POST_IT (approved);
+CREATE INDEX IX_WALL_WRITTING_APP ON WALL_WRITTING (approved);

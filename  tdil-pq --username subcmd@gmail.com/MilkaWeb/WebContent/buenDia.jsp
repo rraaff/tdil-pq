@@ -1,5 +1,6 @@
-<%@page import="com.tdil.milka.model.valueobjects.MailToChildValueObject"%>
-<%@page import="com.tdil.milka.web.MailToChildUtils"%>
+<%@page import="com.tdil.milka.model.valueobjects.CreationDateHelper"%>
+<%@page import="com.tdil.milka.model.valueobjects.GoodMorningValueObject"%>
+<%@page import="com.tdil.milka.web.GoodMorningUtils"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.web.SearchPage"%>
 <%@page import="java.util.List"%>
@@ -52,6 +53,13 @@ $(document).ready(
 		$( "#closeerror" ).click(function() {
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
+		});
+
+		$( "#a1" ).hover(function() {
+			$( "#a1data" ).fadeIn();
+		});
+		$( "#a1" ).mouseleave(function() {
+			$( "#a1data" ).fadeOut();
 		});
 		
 	}
@@ -298,7 +306,7 @@ h2 {
 	width:222px;
 	height:173px;
 }
-.data {
+#a1data {
 	background-image: url(images/experiencias/buenDia/bgData.png);
 	background-repeat: repeat;
 	width: 100%;
@@ -336,17 +344,18 @@ h2 {
 	
 %>
 <%
-int totalItems = MailToChildUtils.getMailToChildCount();
+int totalItems = GoodMorningUtils.getGoodMorningCount();
 int pageNumber = PaginationUtils.parsePageParam(request.getParameter("pn")); 
-List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, MailToChildUtils.PAGE_SIZE, 1);
+List<Integer> list = PaginationUtils.getPages(totalItems, pageNumber, GoodMorningUtils.PAGE_SIZE, 1);
 int first = PaginationUtils.first(list);
 int last = PaginationUtils.last(list);
-SearchPage<MailToChildValueObject> mailPage = MailToChildUtils.getPage(0);
+SearchPage<GoodMorningValueObject> mailPage = GoodMorningUtils.getPage(0);
 int linkId = 0;
 if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	linkId = Integer.valueOf(lnk);
-	MailToChildUtils.setFirst(mailPage, linkId);
+	GoodMorningUtils.setFirst(mailPage, linkId);
 }
+GoodMorningValueObject goodMorningValueObject = null;
 %>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
@@ -355,19 +364,28 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	<div id="header"></div>
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
-		<div id="paginator"><a href="#">< P&aacute;gina anterior</a> | <a href="#">Siguiente p&aacute;gina ></a></div>
+		<div id="paginator">
+			<a href="#">< P&aacute;gina anterior</a> | <a href="#">Siguiente p&aacute;gina ></a></div>
 	</div>
 	<div id="pageBody">
-		<div id="a1" class="basecolor floater spaceR spaceB">
-			<!-- Mataría que esto tenga un fade-in/fade-out en rollover del bloque -->
-			<div class="data">
-				<!-- yo me copié esto de la barra de experiencias, pero lo que debería compartir con estos botones es la imagen que estás viendo -->
-				<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
-				<span class="dedicatoria floater">Dedicatoria que postea el usuario</span>
-				<span class="usuarioFecha floater">Nombre del usuario - fecha del upload en un formato 28 de Junio de 2012</span>
+		<% goodMorningValueObject = mailPage.getItemAt(0); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="a1data" style="display: none;">
+					<!-- yo me copié esto de la barra de experiencias, pero lo que debería compartir con estos botones es la imagen que estás viendo -->
+					<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
+					<span class="dedicatoria floater"><%=goodMorningValueObject.getDescription()%></span>
+					<span class="usuarioFecha floater"><%=goodMorningValueObject.getAuthorValueObject().getName()%> - <%=CreationDateHelper.getDateFull(goodMorningValueObject.getCreationdate()) %></span>
+				</div>
 			</div>
+		<% } else { %>
+			<div id="a1" class="basecolor floater spaceR spaceB"></div>
+		<% } %>
+		<div id="c1" class="basecolor floater spaceR spaceB">
+			<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
+			<span class="dedicatoria floater">Dedicatoria que postea el usuario</span>
+			<span class="usuarioFecha floater">Nombre del usuario - fecha del upload en un formato 28 de Junio de 2012</span>
 		</div>
-		<div id="c1" class="basecolor floater spaceR spaceB">C1</div>
 		<div id="d1" class="basecolor floater spaceB">D1</div>
 		<div id="c2" class="basecolor floater spaceR">C2</div>
 		<div id="d2" class="basecolor floater spaceB">D2</div>
