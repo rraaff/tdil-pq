@@ -53,7 +53,7 @@ public class GoodMorningUtils {
 			if (size == 0) {
 				return new SearchPage<GoodMorningValueObject>(new ArrayList<GoodMorningValueObject>(), false);
 			} else {
-				return new SearchPage<GoodMorningValueObject>(result, 0, PAGE_SIZE);
+				return new SearchPage<GoodMorningValueObject>(result, size > PAGE_SIZE);
 				//return new SearchPage<WallWritting>(result, pageNumber, PAGE_SIZE);
 			}
 		}
