@@ -55,11 +55,100 @@ $(document).ready(
 			$( "#bottomLayer" ).fadeOut();
 		});
 
-		$( "#a1" ).hover(function() {
+		$( "#a1" ).mouseenter(function() {
 			$( "#a1data" ).fadeIn();
 		});
 		$( "#a1" ).mouseleave(function() {
 			$( "#a1data" ).fadeOut();
+		});
+
+		$( "#c1" ).mouseenter(function() {
+			$( "#c1data" ).fadeIn();
+		});
+		$( "#c1" ).mouseleave(function() {
+			$( "#c1data" ).fadeOut();
+		});
+		$( "#c2" ).mouseenter(function() {
+			$( "#c2data" ).fadeIn();
+		});
+		$( "#c2" ).mouseleave(function() {
+			$( "#c2data" ).fadeOut();
+		});
+		$( "#d1" ).mouseenter(function() {
+			$( "#d1data" ).fadeIn();
+		});
+		$( "#d1" ).mouseleave(function() {
+			$( "#d1data" ).fadeOut();
+		});
+
+		$( "#d2" ).mouseenter(function() {
+			$( "#d2data" ).fadeIn();
+		});
+		$( "#d2" ).mouseleave(function() {
+			$( "#d2data" ).fadeOut();
+		});
+
+		$( "#b3" ).mouseenter(function() {
+			$( "#b3data" ).fadeIn();
+		});
+		$( "#b3" ).mouseleave(function() {
+			$( "#b3data" ).fadeOut();
+		});
+
+		$( "#a3" ).mouseenter(function() {
+			$( "#a3data" ).fadeIn();
+		});
+		$( "#a3" ).mouseleave(function() {
+			$( "#a3data" ).fadeOut();
+		});
+
+		$( "#d3" ).mouseenter(function() {
+			$( "#d3data" ).fadeIn();
+		});
+		$( "#d3" ).mouseleave(function() {
+			$( "#d3data" ).fadeOut();
+		});
+
+		$( "#a4" ).mouseenter(function() {
+			$( "#a4data" ).fadeIn();
+		});
+		$( "#a4" ).mouseleave(function() {
+			$( "#a4data" ).fadeOut();
+		});
+
+		$( "#d4" ).mouseenter(function() {
+			$( "#d4data" ).fadeIn();
+		});
+		$( "#d4" ).mouseleave(function() {
+			$( "#d4data" ).fadeOut();
+		});
+
+		$( "#a5" ).mouseenter(function() {
+			$( "#a5data" ).fadeIn();
+		});
+		$( "#a5" ).mouseleave(function() {
+			$( "#a5data" ).fadeOut();
+		});
+
+		$( "#b5" ).mouseenter(function() {
+			$( "#b5data" ).fadeIn();
+		});
+		$( "#b5" ).mouseleave(function() {
+			$( "#b5data" ).fadeOut();
+		});
+
+		$( "#c5" ).mouseenter(function() {
+			$( "#c5data" ).fadeIn();
+		});
+		$( "#c5" ).mouseleave(function() {
+			$( "#c5data" ).fadeOut();
+		});
+
+		$( "#d5" ).mouseenter(function() {
+			$( "#d5data" ).fadeIn();
+		});
+		$( "#d5" ).mouseleave(function() {
+			$( "#d5data" ).fadeOut();
 		});
 		
 	}
@@ -306,7 +395,7 @@ h2 {
 	width:222px;
 	height:173px;
 }
-#a1data {
+.data {
 	background-image: url(images/experiencias/buenDia/bgData.png);
 	background-repeat: repeat;
 	width: 100%;
@@ -371,35 +460,159 @@ GoodMorningValueObject goodMorningValueObject = null;
 		<% goodMorningValueObject = mailPage.getItemAt(0); %>
 		<% if (goodMorningValueObject != null) { %>
 			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
-				<div id="a1data" style="display: none;">
-					<!-- yo me copié esto de la barra de experiencias, pero lo que debería compartir con estos botones es la imagen que estás viendo -->
-					<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
-					<span class="dedicatoria floater"><%=goodMorningValueObject.getDescription()%></span>
-					<span class="usuarioFecha floater"><%=goodMorningValueObject.getAuthorValueObject().getName()%> - <%=CreationDateHelper.getDateFull(goodMorningValueObject.getCreationdate()) %></span>
+				<div id="a1data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
 			</div>
 		<% } else { %>
 			<div id="a1" class="basecolor floater spaceR spaceB"></div>
 		<% } %>
-		<div id="c1" class="basecolor floater spaceR spaceB">
-			<div id="socialInBlock"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | ' + document.title ,'Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/barra/facebook.png" alt="Facebook" width="17" height="17" /></a><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/barra/twitter.png" width="17" height="17" alt="Twitter" /></a></div>
-			<span class="dedicatoria floater">Dedicatoria que postea el usuario</span>
-			<span class="usuarioFecha floater">Nombre del usuario - fecha del upload en un formato 28 de Junio de 2012</span>
-		</div>
-		<div id="d1" class="basecolor floater spaceB">D1</div>
-		<div id="c2" class="basecolor floater spaceR">C2</div>
-		<div id="d2" class="basecolor floater spaceB">D2</div>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(1); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="c1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="c1data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="c1" class="basecolor floater spaceR spaceB"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(3); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="d1" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="d1data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="d1" class="basecolor floater spaceB"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(2); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="c2" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="c2data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="c2" class="basecolor floater spaceR"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(4); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="d2" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="d2data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="d2" class="basecolor floater spaceB"></div>
+		<% } %>
+		
 		<div id="a34" class="floater spaceR spaceB">
-			<div id="a3" class="basecolor floater spaceB">A3</div>
-			<div id="a4" class="basecolor floater">A4</div>
+		
+			<% goodMorningValueObject = mailPage.getItemAt(6); %>
+			<% if (goodMorningValueObject != null) { %>
+				<div id="a3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+					<div id="a3data" class="data" style="display: none;">
+						<%@ include file="includes/buenDiaBlock.jspf" %>
+					</div>
+				</div>
+			<% } else { %>
+				<div id="a3" class="basecolor floater spaceB"></div>
+			<% } %>
+		
+			<% goodMorningValueObject = mailPage.getItemAt(8); %>
+			<% if (goodMorningValueObject != null) { %>
+				<div id="a4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+					<div id="a4data" class="data" style="display: none;">
+						<%@ include file="includes/buenDiaBlock.jspf" %>
+					</div>
+				</div>
+			<% } else { %>
+				<div id="a4" class="basecolor floater"></div>
+			<% } %>
 		</div>
-		<div id="b3" class="basecolor floater spaceR spaceB">B3</div>
-		<div id="d3" class="basecolor floater spaceB ">D3</div>
-		<div id="d4" class="basecolor floater">D4</div>
-		<div id="a5" class="basecolor floater spaceR">A5</div>
-		<div id="b5" class="basecolor floater spaceR">B5</div>
-		<div id="c5" class="basecolor floater spaceR">C5</div>
-		<div id="d5" class="basecolor floater">D5</div>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(5); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="b3" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="b3data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="b3" class="basecolor floater spaceR spaceB"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(7); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="d3" class="basecolor floater spaceB"" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="d3data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="d3" class="basecolor floater spaceB"></div>
+		<% } %>
+			
+		<% goodMorningValueObject = mailPage.getItemAt(9); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="d4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="d4data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="d4" class="basecolor floater"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(10); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="a5data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="a5" class="basecolor floater spaceR"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(11); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="b5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="b5data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="b5" class="basecolor floater spaceR"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(12); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="c5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="c5data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="c5" class="basecolor floater spaceR"></div>
+		<% } %>
+		
+		<% goodMorningValueObject = mailPage.getItemAt(13); %>
+		<% if (goodMorningValueObject != null) { %>
+			<div id="d5" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="d5data" class="data" style="display: none;">
+					<%@ include file="includes/buenDiaBlock.jspf" %>
+				</div>
+			</div>
+		<% } else { %>
+			<div id="d5" class="basecolor floater"></div>
+		<% } %>
 		<div class="floater" style="width:948px; height:20px; border-bottom:dashed 1px #000000;"></div>
 		<div class="floater" style="width:948px; height:40px;"></div>
 	</div>
