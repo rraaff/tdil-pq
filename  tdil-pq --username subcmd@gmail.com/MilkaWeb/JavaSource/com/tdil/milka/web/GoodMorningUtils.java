@@ -47,14 +47,12 @@ public class GoodMorningUtils {
 		public Object executeInTransaction() throws SQLException {
 			int limit = PaginationUtils.currentPageLimit(pageNumber, PAGE_SIZE);
 			int start = pageNumber * PAGE_SIZE;
-			// List<WallWritting> result = DAOManager.getWallWrittingDAO().selectApprovedPapapedia(limit);
 			List<GoodMorningValueObject> result = DAOManager.getGoodMorningDAO().selectApproved(start, PAGE_SIZE + 1);
 			int size = result.size();
 			if (size == 0) {
 				return new SearchPage<GoodMorningValueObject>(new ArrayList<GoodMorningValueObject>(), false);
 			} else {
 				return new SearchPage<GoodMorningValueObject>(result, size > PAGE_SIZE);
-				//return new SearchPage<WallWritting>(result, pageNumber, PAGE_SIZE);
 			}
 		}
 	}
