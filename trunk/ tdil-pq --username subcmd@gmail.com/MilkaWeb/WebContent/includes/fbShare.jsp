@@ -14,8 +14,10 @@
 	   d.getElementsByTagName('head')[0].appendChild(js);
 	 }(document));
 	
-	function facebookShare(text,description,caption,url,image) {
-		var image = '<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME)%>/images/logoFBsite.jpg';
+	function facebookShare(text,description,caption,url, image) {
+		if (!image) {
+			image = '<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME)%>/images/logoFBsite.jpg';
+		}
 		FB.ui({ method: 'feed',display: 'popup',
 		link:url,picture:image,name:text,description:description,caption:caption});
 

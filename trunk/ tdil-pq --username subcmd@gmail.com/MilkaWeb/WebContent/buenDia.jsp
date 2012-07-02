@@ -24,6 +24,7 @@
 		MeltButton.incrementCounter(MeltButton.BUEN_DIA_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
+	String serverName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 %>
 <%
 	String nextPage = "cartasDeHijosAPadres.jsp";
