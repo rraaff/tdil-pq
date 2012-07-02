@@ -239,10 +239,10 @@ body {
 }
 div { /* border:dotted 1px #00CC33; */ }
 #altalayer {
-	color:#8c7bb5;
+	color:#fc767b;
 	width:280px;
 	height:300px;
-	background-color:#e9e9e9;
+	background-color:#000;
 	padding:25px;
 	
 	-webkit-border-radius: 10px;
@@ -250,8 +250,8 @@ div { /* border:dotted 1px #00CC33; */ }
 	border-radius: 10px;
 }
 #graciasporsubir, #erroralta {
-	color:#8c7bb5;
-	background-color:#e9e9e9;
+	color:#fc767b;
+	background-color:#000;
 	width:230px;
 	padding:15px;
 	
@@ -455,12 +455,12 @@ GoodMorningValueObject goodMorningValueObject = null;
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
-			<% if (first != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber - 1%>&dnc=true">< P&aacute;gina anterior</a><% } else {%>< P&aacute;gina anterior<%} %> | <% if (last != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Siguiente p&aacute;gina ></a><% } else {%>Siguiente p&aacute;gina ><%} %></div>
+			<% if (first != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber - 1%>&dnc=true">< P&aacute;gina anterior</a><%} %> | <% if (last != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Siguiente p&aacute;gina ></a><%} %></div>
 	</div>
 	<div id="pageBody">
 		<% goodMorningValueObject = mailPage.getItemAt(0); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -468,10 +468,9 @@ GoodMorningValueObject goodMorningValueObject = null;
 		<% } else { %>
 			<div id="a1" class="basecolor floater spaceR spaceB"></div>
 		<% } %>
-		
 		<% goodMorningValueObject = mailPage.getItemAt(1); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="c1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="c1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -482,7 +481,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(3); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d1" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="d1" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -493,7 +492,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(2); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="c2" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="c2" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -504,7 +503,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(4); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d2" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="d2" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -517,7 +516,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 			<% goodMorningValueObject = mailPage.getItemAt(6); %>
 			<% if (goodMorningValueObject != null) { %>
-				<div id="a3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="a3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a3data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
 					</div>
@@ -528,7 +527,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 			<% goodMorningValueObject = mailPage.getItemAt(8); %>
 			<% if (goodMorningValueObject != null) { %>
-				<div id="a4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+				<div id="a4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a4data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
 					</div>
@@ -540,7 +539,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(5); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="b3" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="b3" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -551,7 +550,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(7); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d3" class="basecolor floater spaceB"" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="d3" class="basecolor floater spaceB"" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -562,7 +561,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			
 		<% goodMorningValueObject = mailPage.getItemAt(9); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="d4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d4data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -573,7 +572,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(10); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -584,7 +583,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(11); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="b5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="b5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -595,7 +594,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(12); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="c5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="c5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
@@ -606,7 +605,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(13); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d5" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>);">
+			<div id="d5" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
 				</div>
