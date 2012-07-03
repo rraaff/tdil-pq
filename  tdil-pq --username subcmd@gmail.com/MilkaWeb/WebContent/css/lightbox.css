@@ -90,7 +90,7 @@
 
 /* line 65, ../sass/lightbox.sass */
 .lb-prev, .lb-next {
-  width: 49%;
+  width: 10%;
   height: 100%;
   background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
   /* Trick IE into showing hover */
