@@ -95,3 +95,9 @@ CREATE INDEX IX_MAIL_TO_PARENT_APP ON MAIL_TO_PARENT (approved);
 CREATE INDEX IX_MILKA_PHOTO_APP ON MILKA_PHOTO (approved);
 CREATE INDEX IX_POST_IT_APP ON POST_IT (approved);
 CREATE INDEX IX_WALL_WRITTING_APP ON WALL_WRITTING (approved);
+
+DELETE FROM SYSPROPERTIES WHERE propKey = 'limitar.participaciones';
+COMMIT;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('limitar.participaciones','true','Limita las participaciones a una por dia',0);
+COMMIT;
