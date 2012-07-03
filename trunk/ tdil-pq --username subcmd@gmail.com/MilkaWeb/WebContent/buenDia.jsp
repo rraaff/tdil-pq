@@ -497,7 +497,15 @@ GoodMorningValueObject goodMorningValueObject = null;
 </div>
 <div id="flashin">
 	<div id="header"></div>
-	<div></div>
+	<div id="test">
+		<script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','320','height','240','src','infusion-jQuery-webcam-11d6467/jscam','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','infusion-jQuery-webcam-11d6467/jscam' ); //end AC code
+</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="320" height="240">
+			<param name="movie" value="infusion-jQuery-webcam-11d6467/jscam.swf" />
+			<param name="quality" value="high" />
+			<embed src="infusion-jQuery-webcam-11d6467/jscam.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="320" height="240"></embed>
+		</object>
+	</noscript></div>
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
@@ -605,12 +613,12 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(7); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
-				<div id="d3data" class="data" style="display: none;">
+		<div id="d3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
+			<div id="d3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-				</div>
-				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
+		</div>
 		<% } else { %>
 			<div id="d3" class="basecolor floater spaceB"></div>
 		<% } %>
@@ -629,12 +637,12 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(10); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
-				<div id="a5data" class="data" style="display: none;">
+		<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
+			<div id="a5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-				</div>
+			</div>
 				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
-				</div>
+		</div>
 			</div>
 		<% } else { %>
 			<div id="a5" class="basecolor floater spaceR"></div>
@@ -677,7 +685,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 		<% } %>
 		<div class="floater" style="width:948px; height:20px; border-bottom:dashed 1px #000000;"></div>
 		<div class="floater" style="width:948px; height:40px;"></div>
-	</div>
+</div>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
