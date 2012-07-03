@@ -416,9 +416,13 @@
   </action>
   <action name="MailToChildForm" path="/uploadMailToChild" scope="request" type="com.tdil.milka.struts.action.UploadMailToChildAction">
   </action>
-  <action name="LoveForm" path="/addLove" scope="request" type="com.tdil.milka.struts.action.AddLoveAction">
+  <action name="LoveForm" path="/addLove" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <forward name="continue" path="/queAmasQueOdias.jsp?dnc=true&amp;amas=1" redirect="true"/>
+   <forward name="failure" path="/queAmasQueOdias.jsp?dnc=true"/>
   </action>
-  <action name="HateForm" path="/addHate" scope="request" type="com.tdil.milka.struts.action.AddHateAction">
+  <action name="HateForm" path="/addHate" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <forward name="continue" path="/queAmasQueOdias.jsp?dnc=true&amp;odias=1" redirect="true"/>
+   <forward name="failure" path="/queAmasQueOdias.jsp?dnc=true"/>
   </action>
   <action name="GoodMorningForm" path="/uploadGoodMorning" scope="request" type="com.tdil.milka.struts.action.UploadGoodMorningAction">
   </action>

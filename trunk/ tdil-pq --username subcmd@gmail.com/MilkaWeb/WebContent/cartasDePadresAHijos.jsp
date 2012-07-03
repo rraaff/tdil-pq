@@ -23,6 +23,7 @@
 		MeltButton.incrementCounter(MeltButton.CARTAS_DE_PADRES_A_HIJOS_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
+	boolean limitCookie = "true".equals(SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.LIMIT_COOKIE));
 %>
 <%
 	String nextPage = "cartasDeHijosAPadres.jsp";
@@ -70,6 +71,9 @@ $(document).ready(
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
+		$( "#closeyaparticipaste" ).click(function() {
+			$( "#yaparticipaste" ).fadeOut();
+		});
 		
 		<% 	int extraChild = 1;
 			if (totalItems > 10) { /*Solo activo el scroll si tengo mas de lo que muestro*/%>
@@ -108,6 +112,19 @@ $(document).ready(
 );
 
 function altaExperiencia() {
+	<% if (limitCookie) { %>
+		if ($.cookie('cdpah')) {
+			$window = $(window);
+		    var top = ($window.height() / 2) - ($( "#yaparticipaste" ).height() / 2);
+		    var left = ($window.width() / 2) - ($( "#yaparticipaste" ).width() / 2);
+			$( "#yaparticipaste" ).css({
+				position: 'absolute',
+		        top: top + 'px',
+		        left: left + 'px'
+		      }).fadeIn(500);
+			return;
+		}
+	<% } %>
 	$window = $(window);
     var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
     var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
@@ -115,6 +132,7 @@ function altaExperiencia() {
 	$("input[name='authorBean.email']").attr('value', '');
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='description']").attr('value', '');
 	$( "#altalayer" ).css({
 		position: 'absolute',
 		top: top + 'px',
@@ -130,12 +148,13 @@ function clearData() {
 	$("input[name='authorBean.email']").attr('value', '');
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
-	$("textarea[name='text']").attr('value', '');
+	$("textarea[name='description']").attr('value', '');
 }
 
 function postUpload(data) {
 	if (data.result == 'OK') {
 		clearData();
+		$.cookie('cdpah', "set", { expires: 1, path: "/" });
 		$( "#altalayer" ).fadeOut();
 		$window = $(window);
 	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);

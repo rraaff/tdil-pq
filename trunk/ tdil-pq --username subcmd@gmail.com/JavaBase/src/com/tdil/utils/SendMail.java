@@ -28,6 +28,7 @@ import org.apache.commons.lang.StringUtils;
  * 
  */
 public class SendMail {
+	
 	// Represents the mail Session used to send mails
 	private Session mailSession = null;
 	private Properties properties;
