@@ -350,7 +350,7 @@ h2 {
 	width: 948px;
 	margin: 0px auto;
 }
-.basecolor { background-color:#C8E9EE; }
+.basecolor { /*background-color:#C8E9EE; */}
 .spaceR { margin-right:20px; }
 .spaceB { margin-bottom:20px; }
 .floater { float:left; }
@@ -464,6 +464,12 @@ h2 {
 #bm_personas span{
 	color:#b398ff;
 }
+#imageContainer {
+	position:relative;
+	top:0;
+	left:0;
+	z-index:4;
+}
 -->
 </style>
 </head>
@@ -491,6 +497,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 </div>
 <div id="flashin">
 	<div id="header"></div>
+	<div></div>
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
@@ -502,8 +509,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="464" height="366" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="a1" class="basecolor floater spaceR spaceB"></div>
@@ -513,8 +520,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="c1" class="basecolor floater spaceR spaceB"></div>
@@ -525,8 +532,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d1" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="d1" class="basecolor floater spaceB"></div>
@@ -537,8 +544,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c2" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="c2" class="basecolor floater spaceR"></div>
@@ -549,7 +556,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d2" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
+				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a>
 				</div>
 			</div>
 		<% } else { %>
@@ -563,8 +571,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 				<div id="a3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a3data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
-						<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 					</div>
+					<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 				</div>
 			<% } else { %>
 				<div id="a3" class="basecolor floater spaceB"></div>
@@ -575,8 +583,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 				<div id="a4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a4data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
-						<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 					</div>
+					<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 				</div>
 			<% } else { %>
 				<div id="a4" class="basecolor floater"></div>
@@ -588,8 +596,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="b3" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="464" height="366" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="b3" class="basecolor floater spaceR spaceB"></div>
@@ -597,11 +605,11 @@ GoodMorningValueObject goodMorningValueObject = null;
 		
 		<% goodMorningValueObject = mailPage.getItemAt(7); %>
 		<% if (goodMorningValueObject != null) { %>
-			<div id="d3" class="basecolor floater spaceB"" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
+			<div id="d3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="d3" class="basecolor floater spaceB"></div>
@@ -612,8 +620,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d4data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="d4" class="basecolor floater"></div>
@@ -624,7 +632,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
+				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 				</div>
 			</div>
 		<% } else { %>
@@ -636,8 +645,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="b5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="b5" class="basecolor floater spaceR"></div>
@@ -648,8 +657,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="c5" class="basecolor floater spaceR"></div>
@@ -660,8 +669,8 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d5" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
-					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
+				<div id="imageContainer"><a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo"><img src="images/null.gif" width="222" height="173" border="0" /></a></div>
 			</div>
 		<% } else { %>
 			<div id="d5" class="basecolor floater"></div>

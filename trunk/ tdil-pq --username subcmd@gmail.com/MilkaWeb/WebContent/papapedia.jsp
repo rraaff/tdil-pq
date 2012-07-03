@@ -73,7 +73,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:950px;
-	height:248px;
+	height:227px;
 	margin:0 auto;
 	margin-top:20px;
 }
@@ -258,6 +258,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	<div id="content">
 		<div id="header"></div>
 		<div id="cuerpoCentral">
+			<p style="width:440px; margin:0 auto; padding-bottom:20px; text-align:center; font-size:12px; color:#626262;">Un padre son muchas cosas en una sola. No importa si estuvo o est&aacute;, si vive cerca o lejos, si habla mucho o poco. Un padre es un &aacute;rbol, una roca y un sol.<br /><span style="color:#f2583c;">¿Qu&eacute; es para vos?</span></p>
 			<div id="insertContentBlock">
 				<h1>Papa es...</h1>
 				<div id="complete">
@@ -271,7 +272,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 			<div class="line"></div>
 			<div id="counter"><%=totalItems%> Definiciones</div>
 			<% for (WallWritting ww : papapediaList) { %>
-		<% if (ww.getId() == linkId) { %>
+<% if (ww.getId() == linkId) { %>
 					<div class="texto resaltado">
 				<% } else { %>
 					<div class="texto">

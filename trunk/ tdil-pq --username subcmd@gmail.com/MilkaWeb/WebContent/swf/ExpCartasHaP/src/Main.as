@@ -117,6 +117,7 @@
 			slider.addChild(thumb);
 			slider.addChild(logo_mc);
 			slider.addChild(btnSubi_mc);
+			slider.addChild(bajada_mc);
 			
 			/* Loading the data xml file */
 			var XMLDataPath:String = root.loaderInfo.parameters.XMLFile;
@@ -202,8 +203,9 @@
 			
 			/* Adding view mask */
 			var viewMask:MovieClip = new MovieClip();
-				viewMask.graphics.beginFill(0x00FFFF,1);
-				viewMask.graphics.drawRect(0,0,slider_width,slider_height-info_height-thumb_height-2*info_space);
+				viewMask.graphics.beginFill(0x00FFFF,0);
+				//viewMask.graphics.drawRect(500,20,slider_width,slider_height-info_height-thumb_height-2*info_space);
+				viewMask.graphics.drawRect(view.x,view.y,slider_width,baseDibujos_mc.height-250);
 				viewMask.graphics.endFill();
 			view.addChild(viewMask);
 			viewItems.mask = viewMask;
@@ -225,8 +227,9 @@
 			
 			/* Adding view hotspot */
 			var viewHotspot:MovieClip = new MovieClip();
-				viewHotspot.graphics.beginFill(0x00FFFF,0);
-				viewHotspot.graphics.drawRect(0,0,slider_width,slider_height-info_height-thumb_height-2*info_space);
+				viewHotspot.graphics.beginFill(0x0012FF,0);
+				//viewHotspot.graphics.drawRect(0,0,slider_width,slider_height-info_height-thumb_height-2*info_space);
+				viewHotspot.graphics.drawRect(viewItems.x,viewItems.y,slider_width,slider_height-info_height-thumb_height-2*info_space);
 				viewHotspot.graphics.endFill();
 				viewHotspot.addEventListener(MouseEvent.MOUSE_OVER,freez_time);
 				viewHotspot.addEventListener(MouseEvent.MOUSE_OUT,unfreez_time);
@@ -295,18 +298,23 @@
 		private function set_background_mc(){
 			//1200x750
 			background_mc.width = slider_width;
-			background_mc.height = (750*slider_width)/1200;
+			background_mc.height = slider_height;//(750*slider_width)/1200;
 
-			baseDibujos_mc.height = slider_height;
-			baseDibujos_mc.x = (slider_width - 1200) / 2
+			baseDibujos_mc.height = slider_height - 50;
+			baseDibujos_mc.x = (slider_width - 1200) / 2;
+			baseDibujos_mc.y = 50;
 			
 			
 			logo_mc.x = baseDibujos_mc.x;
+			logo_mc.y = baseDibujos_mc.y;
 			
 			btnSubi_mc.x = (slider_width - 130) / 2;
 			btnSubi_mc.y = slider_height - 130;
 			
 			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
+			
+			bajada_mc.x = (slider_width) / 2;
+			bajada_mc.y = 10;
 		}
 
 		private function uploadURLfun(e:Event){
@@ -328,12 +336,13 @@
 				viewTimer.visible=false;
 				var viewItem:MovieClip = new MovieClip();
 					viewItem.index=nr;
-					viewItem.x=slider_width;
+					// viewItem.x=slider_width;
+					viewItem.x=slider_width/2;
 					
 				var viewMask:MovieClip = new MovieClip();
 					viewMask.graphics.beginFill(0x00FFFF,1);
-					//viewMask.graphics.drawRect(0,0,slider_width,slider_height-info_height-thumb_height-2*info_space);
-					viewMask.graphics.drawRect((slider_width-665)/2,(slider_height-457)/2,665,457);
+					viewMask.graphics.drawRect(0,0,slider_width,slider_height-info_height-thumb_height-2*info_space);
+					//viewMask.graphics.drawRect((slider_width-665)/2,(slider_height-457)/2,665,457);
 					viewMask.graphics.endFill();
 				viewItem.addChild(viewMask);
 				
@@ -417,15 +426,15 @@
 			rationY = bit.height / bit.width;
 			rationX = bit.width / bit.height;
 			
-			/*if (((slider_height-info_height-thumb_height-2*info_space) / slider_width) < rationY) {
+			if (((slider_height-info_height-thumb_height-2*info_space) / slider_width) < rationY) {
 				bit.width = slider_width/2;
 				bit.height = rationY * bit.width;
 			} else {
-				//bit.height = slider_height-info_height-thumb_height-2*info_space;
-				//bit.width = rationX * bit.height;*/
-				bit.width = 665;
-				bit.height = 457;
-			//}
+				bit.height = slider_height-info_height-thumb_height-2*info_space;
+				bit.width = rationX * bit.height;
+			/*	bit.width = 665;
+				bit.height = 457;*/
+			}
 			
 			bit.x=(slider_width-bit.width)/2;
 			bit.y=((slider_height-info_height-thumb_height-2*info_space)-bit.height)/2;
