@@ -151,7 +151,6 @@ $(document).ready(
 		$( "#d5" ).mouseleave(function() {
 			$( "#d5data" ).fadeOut();
 		});
-		
 	}
 	
 );
@@ -164,6 +163,7 @@ function altaExperiencia() {
 	$("input[name='authorBean.email']").attr('value', '');
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='description']").attr('value', '');
 	$( "#altalayer" ).css({
 		position: 'absolute',
 		top: top + 'px',
@@ -179,7 +179,7 @@ function clearData() {
 	$("input[name='authorBean.email']").attr('value', '');
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
-	$("textarea[name='text']").attr('value', '');
+	$("textarea[name='description']").attr('value', '');
 }
 
 function postUpload(data) {

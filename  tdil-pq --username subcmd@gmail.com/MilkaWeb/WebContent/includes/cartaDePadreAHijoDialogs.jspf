@@ -2,6 +2,10 @@
 	<p>Gracias por participar.<br>Te avisaremos cuando este aprobada.</p>
 	<div align="center"><input type="button" id="closegracias" value="Close"></div>
 </div>
+<div id="yaparticipaste" class="hide" style="z-index: 500;">
+	<p>Ya participaste el dia de hoy.</p>
+	<div align="center"><input type="button" id="closeyaparticipaste" value="Close"></div>
+</div>
 <div id="erroralta" class="hide" style="z-index: 500;">
 	<p>Ha ocurrido un error, intentelo nuevamente.</p>
 	<div align="center"><input type="button" id="closeerror" value="Close"></div>

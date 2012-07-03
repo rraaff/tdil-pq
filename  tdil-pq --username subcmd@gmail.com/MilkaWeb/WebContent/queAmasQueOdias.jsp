@@ -42,6 +42,22 @@ $(document).ready(
 		});
 		<%@ include file="includes/queAmasQueOdiasReady.jspf" %>
 
+		<% if ("true".equals(request.getParameter("dnc"))) { %>
+			<% if ("1".equals(request.getParameter("amas"))) { %>
+				$.cookie('amas', "set", { expires: 1, path: "/" });
+			<% } %>
+			<% if ("1".equals(request.getParameter("odias"))) { %>
+				$.cookie('odias', "set", { expires: 1, path: "/" });
+			<% } %>
+		<% } %>
+
+  	  	if ($.cookie('amas')) {
+  	  	  	// deshabilito el alta de amas
+  	  	}
+  	  	if ($.cookie('odias')) {
+  	  	// deshabilito el alta de odias
+	  	}
+		
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
@@ -444,11 +460,19 @@ h2 {
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<br><br><br><br>
-<input type="button" onclick="altaLove()" value="Amo...">
-<input type="button" onclick="altaHate()" value="Odio...">
+<br><br><br><br><br><br>
+	<html:form method="POST" action="/addLove" >
+		<html:hidden name="LoveForm" property="love" value="on"/>
+		<div id="Amo">Amo...<html:text name="LoveForm" property="text" styleClass="normalField"/></div><br><br>
+		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
+	</html:form><br><br>
+	<html:form method="POST" action="/addHate" >
+		<html:hidden name="LoveForm" property="love" value="off"/>
+		<div id="Odio">Odio...<html:text name="HateForm" property="text" styleClass="normalField"/></div><br><br>
+		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
+	</html:form>
+	
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
-<%@ include file="includes/queAmasQueOdiasDialogs.jspf" %>
 </body>
 </html>

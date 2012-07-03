@@ -21,5 +21,7 @@ public interface SystemPropertiesKeys {
 	
 	public static final String BUEN_DIA_URL = "buendia.url";
 	
+	public static final String LIMIT_COOKIE = "limitar.participaciones";
+	
 	public static final String APP_ID = "fb.app";
 }

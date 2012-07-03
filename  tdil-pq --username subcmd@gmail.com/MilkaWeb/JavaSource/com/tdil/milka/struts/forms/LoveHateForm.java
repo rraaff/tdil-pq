@@ -3,6 +3,8 @@ package com.tdil.milka.struts.forms;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,6 +35,8 @@ public class LoveHateForm extends TransactionalValidationForm {
 	private String text;
 	private boolean love = true;
 	
+	private static final Pattern pattern = Pattern.compile("([a-z|A-Z]+)");
+	
 	private static final String text_key = "LoveHateForm.text";
 	
 	@Override
@@ -53,7 +57,16 @@ public class LoveHateForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-		FieldValidation.validateText(this.getText(), text_key, 150, error);
+		FieldValidation.validateText(this.getText(), text_key, 20, error);
+		Matcher matcher = pattern.matcher(this.getText());
+		if (matcher.find()) {
+			String found = matcher.group();
+			if (!this.getText().equals(found)) {
+				// TODO error de palabra
+			}
+		} else {
+			// TODO error de palabra
+		}
 		//FieldValidation.validateText(this.getPosition(), position_key, 25, error);
 	}
 	
@@ -94,6 +107,7 @@ public class LoveHateForm extends TransactionalValidationForm {
 			loveHate.setVotes(loveHate.getVotes() + 1);
 			loveHateDAO.updateLoveHateByPrimaryKey(loveHate);
 		}
+		this.setText("");
 	}	
 
 	private static Logger getLog() {
