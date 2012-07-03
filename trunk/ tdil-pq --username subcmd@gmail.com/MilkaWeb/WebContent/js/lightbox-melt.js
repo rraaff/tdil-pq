@@ -141,6 +141,10 @@ lightbox = new Lightbox options
         _this.changeImage(_this.currentImageIndex - 1);
         return false;
       });
+      $lightbox.find('.lb-nav').on('click', function(e) {
+        _this.navigateOut(_this.currentImageIndex);
+        return false;
+      });
       $lightbox.find('.lb-next').on('click', function(e) {
         _this.changeImage(_this.currentImageIndex + 1);
         return false;
@@ -164,6 +168,8 @@ lightbox = new Lightbox options
         this.album.push({
           link: $link.attr('href'),
           button: $link.attr('button'),
+          lnkout: $link.attr('lnkout'),
+          lnktarget: $link.attr('lnktarget'),
           title: $link.attr('title')
         });
       } else {
@@ -173,6 +179,8 @@ lightbox = new Lightbox options
           this.album.push({
             link: $(a).attr('href'),
             button: $(a).attr('button'),
+            lnkout: $link.attr('lnkout'),
+            lnktarget: $link.attr('lnktarget'),
             title: $(a).attr('title')
           });
           if ($(a).attr('href') === $link.attr('href')) imageNumber = i;
@@ -187,6 +195,22 @@ lightbox = new Lightbox options
         left: left + 'px'
       }).fadeIn(this.options.fadeDuration);
       this.changeImage(imageNumber);
+    };
+    
+    Lightbox.prototype.navigateOut = function(imageNumber) {
+      var $image, $lightbox, preloader,
+        _this = this;
+      this.disableKeyboardNav();
+      $lightbox = $('#lightbox');
+      var lnkout = _this.album[imageNumber].lnkout;
+      if (typeof lnkout !== 'undefined' && lnkout != "") {
+      	var lnktarget = _this.album[imageNumber].lnktarget;
+      	if (lnktarget == '_self') {
+			location.href=lnkout;
+		} else {
+			window.open(lnkout);
+		}
+	  }
     };
 
     Lightbox.prototype.changeImage = function(imageNumber) {
