@@ -31,7 +31,6 @@
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
 <link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
 <script src="./js/lightbox-melt.js"></script>
