@@ -24,6 +24,7 @@
 		MeltButton.incrementCounter(MeltButton.BUEN_DIA_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
+	boolean limitCookie = "true".equals(SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.LIMIT_COOKIE));
 	String serverName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 %>
 <%
@@ -54,6 +55,9 @@ $(document).ready(
 		$( "#closeerror" ).click(function() {
 			$( "#erroralta" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
+		});
+		$( "#closeyaparticipaste" ).click(function() {
+			$( "#yaparticipaste" ).fadeOut();
 		});
 
 		$( "#a1" ).mouseenter(function() {
@@ -156,6 +160,19 @@ $(document).ready(
 );
 
 function altaExperiencia() {
+	<% if (limitCookie) { %>
+	if ($.cookie('bd')) {
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#yaparticipaste" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#yaparticipaste" ).width() / 2);
+		$( "#yaparticipaste" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+		return;
+	}
+<% } %>
 	$window = $(window);
     var top = ($window.height() / 2) - ($( "#altalayer" ).height() / 2);
     var left = ($window.width() / 2) - ($( "#altalayer" ).width() / 2);
@@ -185,6 +202,7 @@ function clearData() {
 function postUpload(data) {
 	if (data.result == 'OK') {
 		clearData();
+		$.cookie('bd', "set", { expires: 1, path: "/" });
 		$( "#altalayer" ).fadeOut();
 		$window = $(window);
 	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
