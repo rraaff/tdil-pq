@@ -33,9 +33,9 @@
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<script type='text/javascript' src='./js/jquery.cookie.js'></script>
-<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
+<link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
+<script src="./js/lightbox-melt.js"></script>
 <script>
 $(document).ready(
 	function(){
@@ -443,6 +443,27 @@ h2 {
 	margin-right:10px;
 }
 #socialInBlock img { margin-left:3px; }
+ #bm_me_derrite a{
+	float:right;
+	width:108px;
+	height:41px;
+	background:url(images/barra/me-derrite.png) no-repeat;
+	position:relative;
+	margin-right: 50px;
+}
+#bm_personas{
+	float:left;
+	width:180px;
+	height:20px;
+	position:relative;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	top:14px;
+}
+#bm_personas span{
+	color:#b398ff;
+}
 -->
 </style>
 </head>
@@ -481,6 +502,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="a1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -491,6 +513,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c1" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -502,6 +525,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d1" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d1data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -513,6 +537,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c2" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -524,6 +549,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d2" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d2data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -537,6 +563,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 				<div id="a3" class="basecolor floater spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a3data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
+						<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 					</div>
 				</div>
 			<% } else { %>
@@ -548,6 +575,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 				<div id="a4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 					<div id="a4data" class="data" style="display: none;">
 						<%@ include file="includes/buenDiaBlock.jspf" %>
+						<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 					</div>
 				</div>
 			<% } else { %>
@@ -560,6 +588,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="b3" class="basecolor floater spaceR spaceB" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=464&height=366&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -571,6 +600,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d3" class="basecolor floater spaceB"" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d3data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -582,6 +612,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d4" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d4data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -593,6 +624,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="a5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="a5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -604,6 +636,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="b5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="b5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -615,6 +648,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="c5" class="basecolor floater spaceR" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="c5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
@@ -626,6 +660,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 			<div id="d5" class="basecolor floater" style="background-image:url(./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=222&height=173&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>); background-repeat:no-repeat; background-position:center center;">
 				<div id="d5data" class="data" style="display: none;">
 					<%@ include file="includes/buenDiaBlock.jspf" %>
+					<a href="./downloadThumb.st?id=<%=goodMorningValueObject.getIdApprovedData()%>&width=800&height=600&type=PUBLIC&ext=<%=goodMorningValueObject.getExtApprovedData()%>" title="<%=goodMorningValueObject.getAuthorValueObject().getName()%>" id="lk-<%=goodMorningValueObject.getIdClickCounter()%>" <%if (goodMorningValueObject.getUrlLink() != null && !"".equals(goodMorningValueObject.getUrlLink())) {%>lnkout="<%=goodMorningValueObject.getUrlLink()%>"<%}%> lnktarget="<%=goodMorningValueObject.getUrlTarget()%>" rel="lightbox[gm]" button="<%=goodMorningValueObject.getIdClickCounter()%>-<%=MeltButton.meltButtonCount(goodMorningValueObject.getIdClickCounter())%>" class="activo">Imagen</a>
 				</div>
 			</div>
 		<% } else { %>
