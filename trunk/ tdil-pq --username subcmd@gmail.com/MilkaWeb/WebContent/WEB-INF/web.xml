@@ -194,6 +194,18 @@
     <servlet-name>LoveNicknamesServlet</servlet-name>
     <url-pattern>/apodosDeAmor.xml</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>SaveWebcamServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.SaveWebcamServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SaveWebcamServlet</servlet-name>
+    <url-pattern>/saveWebcam.st</url-pattern>
+  </servlet-mapping>
  
  <!-- Action Servlet Configuration -->
  <servlet>

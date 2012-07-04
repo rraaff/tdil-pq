@@ -497,15 +497,51 @@ GoodMorningValueObject goodMorningValueObject = null;
 </div>
 <div id="flashin">
 	<div id="header"></div>
-	<div id="test">
-		<script type="text/javascript">
-AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','320','height','240','src','infusion-jQuery-webcam-11d6467/jscam','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','infusion-jQuery-webcam-11d6467/jscam' ); //end AC code
-</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="320" height="240">
-			<param name="movie" value="infusion-jQuery-webcam-11d6467/jscam.swf" />
-			<param name="quality" value="high" />
-			<embed src="infusion-jQuery-webcam-11d6467/jscam.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="320" height="240"></embed>
-		</object>
-	</noscript></div>
+	<!-- First, include the JPEGCam JavaScript Library -->
+	<script type="text/javascript" src="js/webcam.js"></script>
+	
+	<!-- Configure a few settings -->
+	<script language="JavaScript">
+	
+		webcam.set_swf_url('swf/webcam.swf');
+		webcam.set_api_url( './saveWebcam.st' );
+		webcam.set_quality( 90 ); // JPEG quality (1 - 100)
+		webcam.set_shutter_sound( true, 'swf/shutter.mp3' ); // play shutter click sound
+	</script>
+	
+	<!-- Next, write the movie to the page at 320x240 -->
+	<script language="JavaScript">
+		document.write( webcam.get_html(320, 240, 640, 480) );
+	</script>
+	
+	<!-- Some buttons for controlling things -->
+	<br/><form>
+		<input type=button value="Configure..." onClick="webcam.configure()">
+		&nbsp;&nbsp;
+		<input type=button value="Take Snapshot" onClick="take_snapshot()">
+	</form>
+	
+	<!-- Code to handle the server response (see test.php) -->
+	<script language="JavaScript">
+		webcam.set_hook( 'onComplete', 'my_completion_handler' );
+		
+		function take_snapshot() {
+			// take snapshot and upload to server
+			webcam.snap();
+		}
+		
+		function my_completion_handler(msg) {
+			// extract URL out of PHP output
+			if (msg == 'OK') {
+				alert('OK')
+				// reset camera for another shot
+				webcam.reset();
+			} else {
+				alert("Error");
+			}
+		}
+	</script>
+	
 	<div id="commands">
 		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
