@@ -343,7 +343,7 @@ body {
 	color: #000;
 }
 div { /* border:dotted 1px #00CC33; */ }
-#altalayer {
+#altalayer, #capturalayer {
 	color:#fc767b;
 	width:280px;
 	height:300px;
@@ -353,6 +353,10 @@ div { /* border:dotted 1px #00CC33; */ }
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+#capturalayer {
+	width:360px;
+	height:450px;
 }
 #graciasporsubir, #erroralta {
 	color:#fc767b;
@@ -370,6 +374,7 @@ div { /* border:dotted 1px #00CC33; */ }
 	float:left;
 }
 .widthData { width:60px; }
+.widthData2 { width:300px; }
 #buttonHolder {
 	border:none;
 	height: 82px;
@@ -412,9 +417,12 @@ h2 {
 	margin:0 auto 10px auto;
 }
 #upload {
-	color:#fc767b;
+	color:#000;
 	width:50%;
 	float:left;
+}
+#upload a, #upload a:active, #upload a:visited {
+	color:#fc767b;
 }
 #upload img {
 	margin:5px;
@@ -530,7 +538,7 @@ h2 {
 	margin-right:10px;
 }
 #socialInBlock img { margin-left:3px; }
- #bm_me_derrite a{
+#bm_me_derrite a{
 	float:right;
 	width:108px;
 	height:41px;
@@ -584,14 +592,12 @@ GoodMorningValueObject goodMorningValueObject = null;
 </div>
 <div id="flashin">
 	<div id="header"></div>
-	
 	<!-- Next, write the movie to the page at 320x240 -->
 	<script language="JavaScript">
 		//document.write(  );
 	</script>
-	
 	<div id="commands">
-		<div id="upload"><a href="javascript:capturaExperiencia()" style="margin-top:5px;"><img id="captureimage" src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /></a><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
+		<div id="upload"><a href="javascript:capturaExperiencia()" style="margin-top:5px;"><img id="captureimage" src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /> Captur&aacute; con tu webcam</a> o <a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A desde tu disco r&iacute;gido.</a></div>
 		<div id="paginator">
 			<% if (first != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber - 1%>&dnc=true">< P&aacute;gina anterior</a><%} %> | <% if (last != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Siguiente p&aacute;gina ></a><%} %></div>
 	</div>
