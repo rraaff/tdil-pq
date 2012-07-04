@@ -284,8 +284,8 @@
 		
 		/* Acomodo el fondo */
 		private function set_background_mc(){
-			btnSubi_mc.x = (slider_width - 130) / 2;
-			btnSubi_mc.y = slider_height - 120 + info_height;
+			btnSubi_mc.x = slider_width / 2;
+			btnSubi_mc.y = slider_height - btnSubi_mc.height + info_height;
 			
 			btnSubi_mc.addEventListener(MouseEvent.CLICK, uploadURLfun);
 		}
