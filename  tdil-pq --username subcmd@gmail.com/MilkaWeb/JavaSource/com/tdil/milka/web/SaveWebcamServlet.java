@@ -26,15 +26,17 @@ public class SaveWebcamServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("POST Save webcam");
+		String author = req.getParameter("authorBean.name");
+		String email = req.getParameter("authorBean.email");
+		String description = req.getParameter("description");
 		InputStream input = req.getInputStream();
 		FileOutputStream fout = new FileOutputStream("/home/mgodoy/temp/sign.jpg");
-		try {
-			IOUtils.copy(input, fout);
-		} catch (Exception e) {
-			fout.close();
-			e.printStackTrace();
-		}
-		System.out.println(req.getParameterMap());
+//		try {
+//			IOUtils.copy(input, fout);
+//		} catch (Exception e) {
+//			fout.close();
+//			e.printStackTrace();
+//		}
 		resp.getOutputStream().write("OK".getBytes());
 	}
 }

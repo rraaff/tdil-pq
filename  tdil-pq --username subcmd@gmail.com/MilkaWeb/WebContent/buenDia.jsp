@@ -36,6 +36,27 @@
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
 <link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
 <script src="./js/lightbox-melt.js"></script>
+	<!-- First, include the JPEGCam JavaScript Library -->
+	<script type="text/javascript" src="js/webcam.js"></script>
+	
+	<!-- Configure a few settings -->
+	<script language="JavaScript">
+	
+		webcam.set_swf_url('swf/webcam.swf');
+		
+		webcam.set_quality( 90 ); // JPEG quality (1 - 100)
+		webcam.set_shutter_sound( true, 'swf/shutter.mp3' ); // play shutter click sound
+	</script>
+	<!-- Code to handle the server response (see test.php) -->
+	<script language="JavaScript">
+		webcam.set_hook( 'onComplete', 'my_completion_handler' );
+		
+		function take_snapshot() {
+			// take snapshot and upload to server
+			webcam.set_api_url( './saveWebcam.st?author=Marcos' );
+			webcam.snap();
+		}
+	</script>
 <script>
 $(document).ready(
 	function(){
@@ -50,6 +71,10 @@ $(document).ready(
 		});
 		$( "#cancelalta" ).click(function() {
 			$( "#altalayer" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
+		});
+		$( "#cancelcapture" ).click(function() {
+			$( "#capturalayer" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#closeerror" ).click(function() {
@@ -159,6 +184,40 @@ $(document).ready(
 	
 );
 
+function capturaExperiencia() {
+	<% if (limitCookie) { %>
+	if ($.cookie('bd')) {
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#yaparticipaste" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#yaparticipaste" ).width() / 2);
+		$( "#yaparticipaste" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+		return;
+	}
+<% } %>
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#capturalayer" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#capturalayer" ).width() / 2);
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='title']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='description']").attr('value', '');
+	document.getElementById("webcamlayer").innerHTML = webcam.get_html(320, 240, 640, 480);
+	//$( "#webcamlayer" ).prop('innerHTML', webcam.get_html(320, 240, 640, 480));
+	$( "#capturalayer" ).css({
+		position: 'absolute',
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
+}
+
 function altaExperiencia() {
 	<% if (limitCookie) { %>
 	if ($.cookie('bd')) {
@@ -197,6 +256,34 @@ function clearData() {
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$("textarea[name='description']").attr('value', '');
+}
+
+function my_completion_handler(msg) {
+	// extract URL out of PHP output
+	if (msg == 'OK') {
+		clearData();
+		$.cookie('bd', "set", { expires: 1, path: "/" });
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#graciasporsubir" ).width() / 2);
+		$( "#graciasporsubir" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+		webcam.reset();
+	} else {
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	}
 }
 
 function postUpload(data) {
@@ -497,53 +584,14 @@ GoodMorningValueObject goodMorningValueObject = null;
 </div>
 <div id="flashin">
 	<div id="header"></div>
-	<!-- First, include the JPEGCam JavaScript Library -->
-	<script type="text/javascript" src="js/webcam.js"></script>
-	
-	<!-- Configure a few settings -->
-	<script language="JavaScript">
-	
-		webcam.set_swf_url('swf/webcam.swf');
-		webcam.set_api_url( './saveWebcam.st' );
-		webcam.set_quality( 90 ); // JPEG quality (1 - 100)
-		webcam.set_shutter_sound( true, 'swf/shutter.mp3' ); // play shutter click sound
-	</script>
 	
 	<!-- Next, write the movie to the page at 320x240 -->
 	<script language="JavaScript">
-		document.write( webcam.get_html(320, 240, 640, 480) );
-	</script>
-	
-	<!-- Some buttons for controlling things -->
-	<br/><form>
-		<input type=button value="Configure..." onClick="webcam.configure()">
-		&nbsp;&nbsp;
-		<input type=button value="Take Snapshot" onClick="take_snapshot()">
-	</form>
-	
-	<!-- Code to handle the server response (see test.php) -->
-	<script language="JavaScript">
-		webcam.set_hook( 'onComplete', 'my_completion_handler' );
-		
-		function take_snapshot() {
-			// take snapshot and upload to server
-			webcam.snap();
-		}
-		
-		function my_completion_handler(msg) {
-			// extract URL out of PHP output
-			if (msg == 'OK') {
-				alert('OK')
-				// reset camera for another shot
-				webcam.reset();
-			} else {
-				alert("Error");
-			}
-		}
+		//document.write(  );
 	</script>
 	
 	<div id="commands">
-		<div id="upload"><img src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
+		<div id="upload"><a href="javascript:capturaExperiencia()" style="margin-top:5px;"><img id="captureimage" src="images/experiencias/buenDia/webcamIcon.gif" width="33" height="34" align="absmiddle" /></a><a href="javascript:altaExperiencia()" style="margin-top:5px;">Sub&iacute; tu BUEN D&Iacute;A</a></div>
 		<div id="paginator">
 			<% if (first != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber - 1%>&dnc=true">< P&aacute;gina anterior</a><%} %> | <% if (last != pageNumber) { %><a href="buenDia.jsp?pn=<%=pageNumber + 1%>&dnc=true">Siguiente p&aacute;gina ></a><%} %></div>
 	</div>
