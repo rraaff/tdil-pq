@@ -258,7 +258,7 @@ if (lnk != null && !StringUtils.isEmpty(lnk)) {
 	<div id="content">
 		<div id="header"></div>
 		<div id="cuerpoCentral">
-			<p style="width:440px; margin:0 auto; padding-bottom:20px; text-align:center; font-size:12px; color:#626262;">Un padre son muchas cosas en una sola. No importa si estuvo o est&aacute;, si vive cerca o lejos, si habla mucho o poco. Un padre es un &aacute;rbol, una roca y un sol.<br /><span style="color:#f2583c;">¿Qu&eacute; es para vos?</span></p>
+			<p style="width:440px; margin:0 auto; padding-bottom:20px; text-align:center; font-size:12px; color:#626262;">Un padre son muchas cosas en una sola. No importa si estuvo o est&aacute;, si vive cerca o lejos, si habla mucho o poco. Un padre es un &aacute;rbol, una roca y un sol.<br /><span style="color:#f2583c;">&#191;Qu&eacute; es para vos?</span></p>
 			<div id="insertContentBlock">
 				<h1>Papa es...</h1>
 				<div id="complete">
