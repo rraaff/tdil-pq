@@ -20,3 +20,14 @@
 		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit><input type="button" id="cancelalta" value="Me arrepentí"></div>
 	</html:form>
 </div>
+
+<div id="capturalayer" class="hide" style="z-index: 500;">
+	<form method="POST" action="" name="CaptureForm">
+		<div id="renglon" class="widthData">Nombre: </div><div id="renglon"><input tytpe="text" name="authorBean.name" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">E-Mail: </div><div id="renglon"><input tytpe="text" name="authorBean.email" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">Mensaje: </div><div id="renglon normalTextArea"><textarea name="description" styleClass="normalTextArea"></textarea></div>
+		<div id="renglon"><input type="checkbox" name="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
+		<div id="webcamlayer"></div>
+		<div id="buttonHolder" align="center"><input type=button value="Take Snapshot" onClick="take_snapshot()"><input type="button" id="cancelcapture" value="Me arrepentí"></div>
+	</form>
+</div>
