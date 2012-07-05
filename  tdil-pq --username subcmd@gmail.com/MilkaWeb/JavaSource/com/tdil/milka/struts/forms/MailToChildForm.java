@@ -59,18 +59,22 @@ public class MailToChildForm extends TransactionalValidationForm {
 	@Override
 	public void basicValidate(ValidationError error) {
 		getAuthorBean().basicValidate(error);
-		FormFile formFile = this.getPhotoFormFile();
-		UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
-		if (uploadData != null) {
-			int fileSize = formFile.getFileSize();
-			if (fileSize > MAX_PHOTO_SIZE) {
-				error.setFieldError("MailToChildForm.photo", ValidationErrors.TOO_BIG);
-				this.setPhoto(null);
-				return;
-			}
-			this.setPhoto(uploadData);
+		if (this.getPhoto() != null && this.getPhotoFormFile() == null) {
+			
 		} else {
-			error.setFieldError("MailToChildForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
+			FormFile formFile = this.getPhotoFormFile();
+			UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
+			if (uploadData != null) {
+				int fileSize = formFile.getFileSize();
+				if (fileSize > MAX_PHOTO_SIZE) {
+					error.setFieldError("MailToChildForm.photo", ValidationErrors.TOO_BIG);
+					this.setPhoto(null);
+					return;
+				}
+				this.setPhoto(uploadData);
+			} else {
+				error.setFieldError("MailToChildForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
+			}
 		}
 	}
 	

@@ -46,14 +46,13 @@
 		
 		webcam.set_quality( 90 ); // JPEG quality (1 - 100)
 		webcam.set_shutter_sound( true, 'swf/shutter.mp3' ); // play shutter click sound
-	</script>
-	<!-- Code to handle the server response (see test.php) -->
-	<script language="JavaScript">
 		webcam.set_hook( 'onComplete', 'my_completion_handler' );
+		var photoTaken = false;
 		
 		function take_snapshot() {
 			// take snapshot and upload to server
-			webcam.set_api_url( './saveWebcam.st?author=Marcos' );
+			photoTaken = true;
+			webcam.set_api_url( './saveWebcamGoodMorning.st' );
 			webcam.snap();
 		}
 	</script>
@@ -74,6 +73,7 @@ $(document).ready(
 			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#cancelcapture" ).click(function() {
+			$( "#webcamphotoimg" ).attr('src', 'images/null.gif');
 			$( "#capturalayer" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
@@ -261,6 +261,23 @@ function clearData() {
 function my_completion_handler(msg) {
 	// extract URL out of PHP output
 	if (msg == 'OK') {
+		$( "#webcamphotoimg" ).attr('src', './viewGoodMorningWebcam.do');
+		webcam.reset();
+	} else {
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	}
+}
+
+function postUploadWC(data) {
+	if (data.result == 'OK') {
 		clearData();
 		$.cookie('bd', "set", { expires: 1, path: "/" });
 		$( "#capturalayer" ).fadeOut();
@@ -272,7 +289,6 @@ function my_completion_handler(msg) {
 	        top: top + 'px',
 	        left: left + 'px'
 	      }).fadeIn(500);
-		webcam.reset();
 	} else {
 		$( "#capturalayer" ).fadeOut();
 		$window = $(window);

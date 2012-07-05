@@ -34,6 +34,26 @@
 <script type='text/javascript' src='./js/scrollpagination.js'></script>
 <link rel="stylesheet" href="./css/lightbox.css" type="text/css" media="screen" />
 <script src="./js/lightbox-melt.js"></script>
+<!-- First, include the JPEGCam JavaScript Library -->
+	<script type="text/javascript" src="js/webcam.js"></script>
+	
+	<!-- Configure a few settings -->
+	<script language="JavaScript">
+	
+		webcam.set_swf_url('swf/webcam.swf');
+		
+		webcam.set_quality( 90 ); // JPEG quality (1 - 100)
+		webcam.set_shutter_sound( true, 'swf/shutter.mp3' ); // play shutter click sound
+		webcam.set_hook( 'onComplete', 'my_completion_handler' );
+		var photoTaken = false;
+		
+		function take_snapshot() {
+			// take snapshot and upload to server
+			photoTaken = true;
+			webcam.set_api_url( './saveWebcamMailToChild.st' );
+			webcam.snap();
+		}
+	</script>
 <% int barClickCounter = MeltButton.CARTAS_DE_PADRES_A_HIJOS_COUNTER; 
 	
 %>
@@ -64,6 +84,11 @@ $(document).ready(
 		});
 		$( "#cancelalta" ).click(function() {
 			$( "#altalayer" ).fadeOut();
+			$( "#bottomLayer" ).fadeOut();
+		});
+		$( "#cancelcapture" ).click(function() {
+			$( "#webcamphotoimg" ).attr('src', 'images/null.gif');
+			$( "#capturalayer" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
 		});
 		$( "#closeerror" ).click(function() {
@@ -110,6 +135,40 @@ $(document).ready(
 	
 );
 
+function capturaExperiencia() {
+	<% if (limitCookie) { %>
+	if ($.cookie('bd')) {
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#yaparticipaste" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#yaparticipaste" ).width() / 2);
+		$( "#yaparticipaste" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+		return;
+	}
+<% } %>
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#capturalayer" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#capturalayer" ).width() / 2);
+	$("input[name='authorBean.name']").attr('value', '');
+	$("input[name='authorBean.email']").attr('value', '');
+	$("input[name='title']").attr('value', '');
+	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
+	$("textarea[name='description']").attr('value', '');
+	document.getElementById("webcamlayer").innerHTML = webcam.get_html(320, 240, 640, 480);
+	//$( "#webcamlayer" ).prop('innerHTML', webcam.get_html(320, 240, 640, 480));
+	$( "#capturalayer" ).css({
+		position: 'absolute',
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+	$( "#bottomLayer" ).css({
+		position: 'absolute'
+	}).fadeIn(499);
+}
+
 function altaExperiencia() {
 	<% if (limitCookie) { %>
 		if ($.cookie('cdpah')) {
@@ -148,6 +207,50 @@ function clearData() {
 	$("input[name='title']").attr('value', '');
 	$("input[name='authorBean.acceptPolitics']").attr('checked', false);
 	$("textarea[name='description']").attr('value', '');
+}
+
+function my_completion_handler(msg) {
+	// extract URL out of PHP output
+	if (msg == 'OK') {
+		$( "#webcamphotoimg" ).attr('src', './viewMailToChildWebcam.do');
+		webcam.reset();
+	} else {
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	}
+}
+
+function postUploadWC(data) {
+	if (data.result == 'OK') {
+		clearData();
+		$.cookie('bd', "set", { expires: 1, path: "/" });
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#graciasporsubir" ).width() / 2);
+		$( "#graciasporsubir" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	} else {
+		$( "#capturalayer" ).fadeOut();
+		$window = $(window);
+	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
+	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
+		$( "#erroralta" ).css({
+			position: 'absolute',
+	        top: top + 'px',
+	        left: left + 'px'
+	      }).fadeIn(500);
+	}
 }
 
 function postUpload(data) {
@@ -464,7 +567,7 @@ h2 {
 		    <div class="loading" id="loading">Wait a moment... it's loading!</div>
 		<div id="pageRight">
 			<div id="blockLoader">
-				<img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" />
+				<a href="javascript:capturaExperiencia()" style="margin-top:5px;"><img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" /></a>
 				<h2>CARGAR UNA CARTA</h2>
 				<a href="javascript:altaExperiencia()">Adjunta una imagen con un mensaje para tu hijo</a>
 			</div>
