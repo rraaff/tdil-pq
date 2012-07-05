@@ -49,3 +49,35 @@ $("form[name='MailToChildForm']").validate({
     			});
         }
 	});
+	
+$.validator.addMethod("photocaptured", function(value, element) {
+      return photoTaken;
+}, "Debe capturar la foto");
+
+$("form[name='MailToChildWCForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent("div"));
+		},
+		rules: { 'authorBean.name': {required: true},
+				'authorBean.email': {required: true, email: true},
+				'description': {required: true},
+				'authorBean.acceptPolitics': {required: true},
+				'phototaken': {photocaptured: true}
+		},
+		messages: {
+			'authorBean.name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+			'authorBean.email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+					email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+			'description': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese la descripcion.' />"}, 
+			'authorBean.acceptPolitics': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Debe aceptar las politicas.' />"},
+			'phototaken': {photocaptured: "<img id='phototakenerror' src='images/unchecked.gif' hovertext='Debe capturar la foto antes.' />"}
+		},
+		submitHandler: function() {
+            $("form[name='MailToChildWCForm']").ajaxSubmit({
+    			type: "POST",
+    			url: "./uploadMailToChildWC.do",
+    			dataType: "json",
+    			success: postUploadWC
+    			});
+        }
+	});

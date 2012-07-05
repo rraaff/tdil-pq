@@ -49,6 +49,11 @@
    <form-bean id="GoodMorningAdministrationForm"
    name="GoodMorningAdministrationForm" type="com.tdil.milka.struts.forms.GoodMorningAdministrationForm"/>
    
+   <form-bean id="GoodMorningWCForm"
+   name="GoodMorningWCForm" type="com.tdil.milka.struts.forms.GoodMorningForm"/>
+   <form-bean id="MailToChildWCForm"
+   name="MailToChildWCForm" type="com.tdil.milka.struts.forms.MailToChildForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -425,6 +430,18 @@
    <forward name="failure" path="/queAmasQueOdias.jsp?dnc=true"/>
   </action>
   <action name="GoodMorningForm" path="/uploadGoodMorning" scope="request" type="com.tdil.milka.struts.action.UploadGoodMorningAction">
+  </action>
+  
+  <action name="GoodMorningWCForm" path="/uploadGoodMorningWC" scope="session" type="com.tdil.milka.struts.action.UploadGoodMorningAction">
+  </action>
+  <action name="GoodMorningWCForm" path="/viewGoodMorningWebcam"
+   scope="session" type="com.tdil.milka.struts.action.ViewGoodMorningWebcamAction">
+  </action>
+  
+  <action name="MailToChildWCForm" path="/uploadMailToChildWC" scope="session" type="com.tdil.milka.struts.action.UploadMailToChildAction">
+  </action>
+  <action name="MailToChildWCForm" path="/viewMailToChildWebcam"
+   scope="session" type="com.tdil.milka.struts.action.ViewMailToChildWebcamAction">
   </action>
   
   <action name="PapapediaForm" path="/addPapapedia" scope="request" type="com.tdil.milka.struts.action.AddPapapediaAction">

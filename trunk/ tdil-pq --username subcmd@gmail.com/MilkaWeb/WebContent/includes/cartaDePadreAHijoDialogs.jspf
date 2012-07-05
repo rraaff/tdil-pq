@@ -20,3 +20,14 @@
 		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit><input type="button" id="cancelalta" value="Me arrepentí"></div>
 	</html:form>
 </div>
+<div id="capturalayer" class="hide" style="z-index: 500;">
+	<html:form method="POST" action="/uploadMailToChildWC" enctype="multipart/form-data">
+		<div id="renglon" class="widthData">Nombre: </div><div id="renglon"><html:text name="MailToChildWCForm" property="authorBean.name" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">E-Mail: </div><div id="renglon"><html:text name="MailToChildWCForm" property="authorBean.email" styleClass="normalField"/></div>
+		<div id="renglon" class="widthData">Mensaje: </div><div id="renglon normalTextArea"><html:textarea name="MailToChildWCForm" property="description" styleClass="normalTextArea"/></div>
+		<div id="renglon"><html:checkbox name="MailToChildWCForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
+		<div id="webcamlayer" style="width:320px; height:290px; margin:0 auto;"></div>
+		<div id="webcamphoto" style="width:320px; height:290px; margin:0 auto;"><img id="webcamphotoimg" width="320" height="240" src="images/null.gif"><input type="text" style="visibility: hidden;" id="phototaken" name="phototaken"></div>
+		<div id="buttonHolder" style="width:360px;" align="center"><input type=button value="Capturar" onClick="take_snapshot()"><html:submit property="operation" styleClass="okCircle"></html:submit><input type="button" id="cancelcapture" value="Me arrepentí"></div>
+	</html:form>
+</div>

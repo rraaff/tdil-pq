@@ -197,14 +197,25 @@
   
   
   <servlet>
-    <servlet-name>SaveWebcamServlet</servlet-name>
-    <servlet-class>com.tdil.milka.web.SaveWebcamServlet</servlet-class>
+    <servlet-name>SaveWebcamGoodMorningServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.SaveWebcamGoodMorningServlet</servlet-class>
     <load-on-startup>3</load-on-startup>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>SaveWebcamServlet</servlet-name>
-    <url-pattern>/saveWebcam.st</url-pattern>
+    <servlet-name>SaveWebcamGoodMorningServlet</servlet-name>
+    <url-pattern>/saveWebcamGoodMorning.st</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SaveWebcamMailToChildServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.SaveWebcamMailToChildServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>SaveWebcamMailToChildServlet</servlet-name>
+    <url-pattern>/saveWebcamMailToChild.st</url-pattern>
   </servlet-mapping>
  
  <!-- Action Servlet Configuration -->

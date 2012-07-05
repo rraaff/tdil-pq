@@ -799,4 +799,10 @@
   <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/addHate.do"
    SUBTYPE="confirmed" TARGET="action86" TITLE="/addHate.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadGoodMorningWC" NAME="action96"
+  PATH="/uploadGoodMorningWC" SHAPE="240,5073,0,0"
+  TITLE="GoodMorningWCForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewGoodMorningWebcam" NAME="action97"
+  PATH="/viewGoodMorningWebcam" SHAPE="240,5073,0,0"
+  TITLE="GoodMorningWCForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

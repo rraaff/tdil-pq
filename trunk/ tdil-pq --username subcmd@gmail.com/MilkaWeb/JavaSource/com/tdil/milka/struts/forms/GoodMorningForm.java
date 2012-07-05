@@ -12,12 +12,10 @@ import org.apache.struts.upload.FormFile;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.dao.AuthorDAO;
 import com.tdil.milka.dao.ClickCounterDAO;
-import com.tdil.milka.dao.EmailEndingsDAO;
 import com.tdil.milka.dao.GoodMorningDAO;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.Author;
 import com.tdil.milka.model.ClickCounter;
-import com.tdil.milka.model.EmailEndings;
 import com.tdil.milka.model.GoodMorning;
 import com.tdil.milka.model.valueobjects.AuthorValueObject;
 import com.tdil.milka.utils.BlobHelper;
@@ -61,18 +59,22 @@ public class GoodMorningForm extends TransactionalValidationForm {
 	@Override
 	public void basicValidate(ValidationError error) {
 		getAuthorBean().basicValidate(error);
-		FormFile formFile = this.getPhotoFormFile();
-		UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
-		if (uploadData != null) {
-			int fileSize = formFile.getFileSize();
-			if (fileSize > MAX_PHOTO_SIZE) {
-				error.setFieldError("GoodMorningForm.photo", ValidationErrors.TOO_BIG);
-				this.setPhoto(null);
-				return;
-			}
-			this.setPhoto(uploadData);
+		if (this.getPhoto() != null && this.getPhotoFormFile() == null) {
+			
 		} else {
-			error.setFieldError("GoodMorningForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
+			FormFile formFile = this.getPhotoFormFile();
+			UploadData uploadData = FieldValidation.validateFormFile(formFile, "", true, error);
+			if (uploadData != null) {
+				int fileSize = formFile.getFileSize();
+				if (fileSize > MAX_PHOTO_SIZE) {
+					error.setFieldError("GoodMorningForm.photo", ValidationErrors.TOO_BIG);
+					this.setPhoto(null);
+					return;
+				}
+				this.setPhoto(uploadData);
+			} else {
+				error.setFieldError("GoodMorningForm.photo", ValidationErrors.CANNOT_BE_EMPTY);
+			}
 		}
 	}
 	
