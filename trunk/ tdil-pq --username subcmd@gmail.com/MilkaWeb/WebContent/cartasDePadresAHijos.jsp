@@ -310,16 +310,19 @@ body {
 	color: #FFFFFF;
 }
 div {/* border:dotted 1px #00CC33; */}
-#altalayer {
+#altalayer, #capturalayer {
 	color:#8c7bb5;
 	width:280px;
-	height:300px;
+	height:340px;
 	background-color:#e9e9e9;
 	padding:25px;
 	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+#capturalayer {
+	width:980px;
 }
 #graciasporsubir, #erroralta {
 	color:#8c7bb5;
@@ -339,8 +342,12 @@ div {/* border:dotted 1px #00CC33; */}
 .widthData { width:60px; }
 #buttonHolder {
 	border:none;
-	height: 82px;
 	width: 280px;
+	float:left;
+}
+#buttonHolder2 {
+	border:none;
+	width:980px;
 	float:left;
 }
 .normalField {
@@ -432,6 +439,9 @@ h2 {
 	float:right;
 }
 #blockLoader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#000000;
 	width:200px;
 	height:58px;
 	padding-bottom:10px;
@@ -445,8 +455,6 @@ h2 {
 }
 #blockLoader a, #blockLoader a:hover, #blockLoader a:visited, #blockLoader a:active {
 	color:#727272;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:10px;
 }
 #blockLoader img {
 	float:left;
@@ -564,12 +572,12 @@ h2 {
 			<% } %>
 			<!-- test -->
 		</div>
-		    <div class="loading" id="loading">Wait a moment... it's loading!</div>
+		<div class="loading" id="loading">Wait a moment... it's loading!</div>
 		<div id="pageRight">
 			<div id="blockLoader">
-				<a href="javascript:capturaExperiencia()" style="margin-top:5px;"><img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" /></a>
+				<a href="javascript:capturaExperiencia()" style="margin-top:5px;" title="Tom&aacute; una captura con tu Webcam"><img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" /></a>
 				<h2>CARGAR UNA CARTA</h2>
-				<a href="javascript:altaExperiencia()">Adjunta una imagen con un mensaje para tu hijo</a>
+				<a href="javascript:altaExperiencia()" title="Sub&iacute; una imagen de tu disco r&iacute;gido">Adjunta una imagen</a> o <a href="javascript:capturaExperiencia()" title="Tom&aacute; una captura con tu Webcam">us&aacute; tu webcam.</a>
 			</div>
 			<h2>&Uacute;LTIMAS ENTRADAS</h2>
 			<div id="lastEntriesNames">
