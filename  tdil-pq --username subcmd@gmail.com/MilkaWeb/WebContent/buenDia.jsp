@@ -359,6 +359,7 @@ body {
 	color: #000;
 }
 div { /* border:dotted 1px #00CC33; */ }
+.debuger { border:dotted 1px #00CC33; }
 #altalayer, #capturalayer {
 	color:#fc767b;
 	width:280px;
@@ -371,8 +372,8 @@ div { /* border:dotted 1px #00CC33; */ }
 	border-radius: 10px;
 }
 #capturalayer {
-	width:360px;
-	height:450px;
+	width:980px;
+	height:350px;
 }
 #graciasporsubir, #erroralta {
 	color:#fc767b;
@@ -390,12 +391,18 @@ div { /* border:dotted 1px #00CC33; */ }
 	float:left;
 }
 .widthData { width:60px; }
-.widthData2 { width:300px; }
+.widthData2 { width:200px; }
 #buttonHolder {
 	border:none;
-	height: 82px;
-	width: 280px;
+	width:300px;
 	float:left;
+	padding-top:20px;
+}
+#buttonHolder2 {
+	border:none;
+	width:980px;
+	float:left;
+	padding-top:20px;
 }
 .normalField {
 	font-family:"Trebuchet MS", Arial, sans-serif;
@@ -457,11 +464,18 @@ h2 {
 	color:#d14349;
 	text-decoration:underline;
 }
+#experienceContent {
+	width: 948px;
+	margin: 0px auto;
+}
 #pageBody {
 	width: 948px;
 	margin: 0px auto;
 }
-.basecolor { /*background-color:#C8E9EE; */}
+.basecolor {
+	/*background-color:#C8E9EE; */
+	overflow:hidden;
+}
 .spaceR { margin-right:20px; }
 .spaceB { margin-bottom:20px; }
 .floater { float:left; }
@@ -532,6 +546,10 @@ h2 {
 	color:#FFFFFF;
 	font-size:16px;
 	overflow:hidden;
+	position:relative;
+	top:0;
+	left:0;
+	z-index:6;
 }
 .dedicatoria {
 	width:100%;
@@ -606,7 +624,7 @@ GoodMorningValueObject goodMorningValueObject = null;
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<div id="flashin">
+<div id="experienceContent">
 	<div id="header"></div>
 	<!-- Next, write the movie to the page at 320x240 -->
 	<script language="JavaScript">
@@ -789,9 +807,9 @@ GoodMorningValueObject goodMorningValueObject = null;
 		<% } else { %>
 			<div id="d5" class="basecolor floater"></div>
 		<% } %>
-		<div class="floater" style="width:948px; height:20px; border-bottom:dashed 1px #000000;"></div>
-		<div class="floater" style="width:948px; height:40px;"></div>
-</div>
+		<div class="floater" style="width:948px; height:20px; margin:0 auto; border-bottom:dashed 1px #000000;"></div>
+		<div class="floater" style="width:948px; height:40px; margin:0 auto;"></div>
+	</div>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
