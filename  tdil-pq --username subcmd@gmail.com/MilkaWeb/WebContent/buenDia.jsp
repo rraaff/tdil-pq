@@ -28,8 +28,8 @@
 	String serverName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 %>
 <%
-	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "apodosDeAmor.jsp";
+	String nextPage = "cartasDePadresAHijos.jsp";
+	String prevPage = "xxxxxc.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
