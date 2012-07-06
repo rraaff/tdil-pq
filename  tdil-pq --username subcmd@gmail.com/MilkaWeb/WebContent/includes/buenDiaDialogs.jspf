@@ -23,7 +23,7 @@
 <div id="capturalayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/uploadGoodMorningWC" enctype="multipart/form-data">
 		<div style="width:300px; float:left;">
-			<h2 style="padding-bottom:20px;">Completá los datos</h2>
+			<h2 style="padding-bottom:20px;">Complet&aacute; los datos</h2>
 			<div id="renglon" class="widthData">Nombre: </div><div id="renglon" class="widthData2"><html:text name="GoodMorningWCForm" property="authorBean.name" styleClass="normalField"/></div>
 			<div id="renglon" class="widthData">E-Mail: </div><div id="renglon" class="widthData2"><html:text name="GoodMorningWCForm" property="authorBean.email" styleClass="normalField"/></div>
 			<div id="renglon" class="widthData">Mensaje: </div><div id="renglon" class="widthData2 normalTextArea" style="height:100px;"><html:textarea name="GoodMorningWCForm" property="description" styleClass="normalTextArea"/></div>
@@ -34,7 +34,7 @@
 			<div id="webcamlayer" style="width:320px; margin:0 auto;float:left;"></div>
 		</div>
 		<div style="width:340px; float:left;">
-			<h2 style="padding-bottom:20px; padding-left:20px;">Vistra previa</h2>
+			<h2 style="padding-bottom:20px; padding-left:20px;">Vista previa</h2>
 			<div id="webcamphoto" style="width:320px; height:240px; margin-left:20px; float:left; background:#999999;"><img id="webcamphotoimg" width="320" height="240" src="images/null.gif"><br/><br/><input type="text" style="visibility:hidden;" id="phototaken" name="phototaken"></div>
 		</div>
 		<div style="width:980px; float:right;" align="center">
