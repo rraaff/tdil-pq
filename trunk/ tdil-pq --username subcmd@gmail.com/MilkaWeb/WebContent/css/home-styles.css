@@ -936,7 +936,7 @@ html>/**/body #col_derecha ul li a.playlist, x:-moz-any-link, x:default {
 /**/
 #tooltip {
 	position: absolute;
-	z-index: 3000;
+	z-index: 99999;
 	border: 1px solid #fff;
 	background-color: #000;
 	padding: 10px;
