@@ -35,7 +35,7 @@
 		</div>
 		<div style="width:340px; float:left;">
 			<h2 style="padding-bottom:20px; padding-left:20px;">Vista previa</h2>
-			<div id="webcamphoto" style="width:320px; height:240px; margin:0 auto; background:#999999;"><img id="webcamphotoimg" width="320" height="240" src="images/null.gif"><input type="text" style="visibility: hidden;" id="phototaken" name="phototaken"></div>
+			<div id="webcamphoto" style="width:320px; height:240px; margin:0 auto; background:#999999;"><img id="webcamphotoimg" name="webcamphotoimg" width="320" height="240" src="images/null.gif"><input type="text" style="visibility: hidden;" id="phototaken" name="phototaken"></div>
 		</div>
 		<div style="width:980px; padding-top:10px; float:right;" align="center">
 			<div id="buttonHolder2" align="center"><input type=button value="Capturar" onClick="take_snapshot()"><input type="submit" id="operation" value="Subir"><input type="button" id="cancelcapture" value="Me arrepentí"></div>
