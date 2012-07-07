@@ -262,7 +262,7 @@ function clearData() {
 function my_completion_handler(msg) {
 	// extract URL out of PHP output
 	if (msg == 'OK') {
-		$( "#webcamphotoimg" ).attr('src', './viewGoodMorningWebcam.do');
+		$( "#webcamphotoimg" ).attr('src', './viewGoodMorningWebcam.do?rnd=' + Math.random());
 		webcam.reset();
 	} else {
 		$( "#capturalayer" ).fadeOut();

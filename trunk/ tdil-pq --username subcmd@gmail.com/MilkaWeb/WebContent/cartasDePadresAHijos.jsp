@@ -214,7 +214,7 @@ function clearData() {
 function my_completion_handler(msg) {
 	// extract URL out of PHP output
 	if (msg == 'OK') {
-		$( "#webcamphotoimg" ).attr('src', './viewMailToChildWebcam.do');
+		$( "#webcamphotoimg" ).attr('src', './viewMailToChildWebcam.do?rnd=' + Math.random());
 		webcam.reset();
 	} else {
 		$( "#capturalayer" ).fadeOut();
