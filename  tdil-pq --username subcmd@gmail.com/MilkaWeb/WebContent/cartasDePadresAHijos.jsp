@@ -51,6 +51,7 @@
 		function take_snapshot() {
 			// take snapshot and upload to server
 			photoTaken = true;
+			$( "#webcamphotoimg" ).attr('src', 'images/null.gif');
 			webcam.set_api_url( './saveWebcamMailToChild.st' );
 			webcam.snap();
 		}
