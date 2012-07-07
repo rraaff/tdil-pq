@@ -305,7 +305,6 @@ function postUpload(data) {
 <script type='text/javascript' src='swf/ExpPostits/scripts/AC_RunActiveContent.js'></script>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 <style>
-<!-- 
 body {
 	font-family: 'Oswald', sans-serif;
 	color: #FFFFFF;
