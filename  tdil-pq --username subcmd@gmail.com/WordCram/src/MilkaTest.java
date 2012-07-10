@@ -24,7 +24,7 @@ public class MilkaTest {
 	public static void main(String args[]) {
 
 		WordFonter fonter = Fonters.pickFrom(PApplet.createFont("LiberationSerif-Regular.ttf", 10),
-				PApplet.createFont("MINYN___.TTF", 10));
+				PApplet.createFont("MINYN___.TTF", 10), PApplet.createFont("Alako-Bold.ttf", 10));
 			//Fonters.alwaysUse(PApplet.createDefaultFont(12));
 		WordSizer sizer = Sizers.byWeight(5, 70);
 		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,255,0), PApplet.color(255,0,0), PApplet.color(0,0,255));
