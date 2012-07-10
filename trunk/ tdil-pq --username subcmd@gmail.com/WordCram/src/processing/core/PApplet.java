@@ -8869,15 +8869,15 @@ public class PApplet extends Applet
    * @param v2 green or saturation values relative to the current color range
    * @param v3 blue or brightness values relative to the current color range
    */
-  public final int color(int v1, int v2, int v3) {
-    if (g == null) {
+  public final static int color(int v1, int v2, int v3) {
+//    if (g == null) {
       if (v1 > 255) v1 = 255; else if (v1 < 0) v1 = 0;
       if (v2 > 255) v2 = 255; else if (v2 < 0) v2 = 0;
       if (v3 > 255) v3 = 255; else if (v3 < 0) v3 = 0;
 
       return 0xff000000 | (v1 << 16) | (v2 << 8) | v3;
-    }
-    return g.color(v1, v2, v3);
+//    }
+//    return g.color(v1, v2, v3);
   }
 
   public final int color(int v1, int v2, int v3, int alpha) {
