@@ -23,9 +23,12 @@ public class MilkaTest {
 
 	public static void main(String args[]) {
 
-		WordFonter fonter = Fonters.alwaysUse(PApplet.createDefaultFont(12));
+		WordFonter fonter = Fonters.pickFrom(PApplet.createFont("LiberationSerif-Regular.ttf", 10),
+				PApplet.createFont("MINYN___.TTF", 10));
+			//Fonters.alwaysUse(PApplet.createDefaultFont(12));
 		WordSizer sizer = Sizers.byWeight(5, 70);
-		WordColorer colorer = Colorers.alwaysUse(PApplet.color(0));
+		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,255,0), PApplet.color(255,0,0), PApplet.color(0,0,255));
+//		alwaysUse();
 		WordAngler angler = Anglers.pickFrom(0, PApplet.radians(270));
 		WordPlacer placer = Placers.horizLine();
 		WordNudger nudger = new SpiralWordNudger();
@@ -43,9 +46,9 @@ public class MilkaTest {
 				new Word("chango", 0.057f),
 				new Word("publiquest", 0.134f),
 				new Word("tdil", 0.05f),
-				new Word("avioneta", 0.23f),
+				new Word("AVIONETA", 0.23f),
 				new Word("chocolate", 0.1013f),
-				new Word("milka", 0.1234f),
+				new Word("Milka", 0.1234f),
 				new Word("alfajor", 0.19f),
 				new Word("lolo", 0.3f)};
 		WordCramEngine wordCramEngine = new WordCramEngine(graphics, words, fonter, sizer, colorer, angler, placer,
