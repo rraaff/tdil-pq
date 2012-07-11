@@ -217,6 +217,29 @@
     <servlet-name>SaveWebcamMailToChildServlet</servlet-name>
     <url-pattern>/saveWebcamMailToChild.st</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LoveWordCloudTagServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.LoveWordCloudTagServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoveWordCloudTagServlet</servlet-name>
+    <url-pattern>/loveWordCloudTag.st</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>HateWordCloudTagServlet</servlet-name>
+    <servlet-class>com.tdil.milka.web.HateWordCloudTagServlet</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>HateWordCloudTagServlet</servlet-name>
+    <url-pattern>/hateWordCloudTag.st</url-pattern>
+  </servlet-mapping>
+  
  
  <!-- Action Servlet Configuration -->
  <servlet>
