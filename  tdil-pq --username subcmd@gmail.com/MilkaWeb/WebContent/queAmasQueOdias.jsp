@@ -40,7 +40,7 @@ $(document).ready(
 		$("div[id^='mb-']").each(function(indice,valor) {
 		   $(valor).meltbutton();
 		});
-		<%@ include file="includes/queAmasQueOdiasReady.jspf" %>
+		
 
 		<% if ("true".equals(request.getParameter("dnc"))) { %>
 			<% if ("1".equals(request.getParameter("amas"))) { %>
@@ -460,6 +460,8 @@ h2 {
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
+<img src="./hateWordCloudTag.st"><br><br><br><br><br><br>
+<img src="./loveWordCloudTag.st"><br><br><br><br><br><br>
 <br><br><br><br><br><br>
 	<html:form method="POST" action="/addLove" >
 		<html:hidden name="LoveForm" property="love" value="on"/>
