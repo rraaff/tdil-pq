@@ -1,8 +1,8 @@
 package wordcram;
 
 public class RenderOptions {
-	int maxAttemptsToPlaceWord = -1; // default: based on Word weight
-	int maxNumberOfWordsToDraw = -1; // default: unlimited
-	int minShapeSize = 7;
-	int wordPadding = 0;
+	public int maxAttemptsToPlaceWord = -1; // default: based on Word weight
+	public int maxNumberOfWordsToDraw = -1; // default: unlimited
+	public int minShapeSize = 7;
+	public int wordPadding = 0;
 }
