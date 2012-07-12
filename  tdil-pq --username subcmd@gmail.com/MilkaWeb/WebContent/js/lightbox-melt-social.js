@@ -170,7 +170,10 @@ lightbox = new Lightbox options
           button: $link.attr('button'),
           lnkout: $link.attr('lnkout'),
           lnktarget: $link.attr('lnktarget'),
-          title: $link.attr('title')
+          title: $link.attr('title'),
+          id: $link.attr('id'),
+          description: $link.attr('description'),
+          userdate: $link.attr('userdate')
         });
       } else {
         _ref = $($link.prop("tagName") + '[rel="' + $link.attr('rel') + '"]');
@@ -181,7 +184,10 @@ lightbox = new Lightbox options
             button: $(a).attr('button'),
             lnkout: $(a).attr('lnkout'),
             lnktarget: $(a).attr('lnktarget'),
-            title: $(a).attr('title')
+            title: $(a).attr('title'),
+            id: $(a).attr('id'),
+            description: $(a).attr('description'),
+            userdate: $(a).attr('userdate')
           });
           if ($(a).attr('href') === $link.attr('href')) imageNumber = i;
         }
@@ -229,7 +235,7 @@ lightbox = new Lightbox options
         $image.attr('src', _this.album[imageNumber].link);
         $image.width = preloader.width;
         $image.height = preloader.height;
-        return _this.sizeContainer(preloader.width, preloader.height);
+        return _this.sizeContainer(preloader.width, preloader.height, imageNumber);
       };
       preloader.src = this.album[imageNumber].link;
       this.currentImageIndex = imageNumber;
@@ -239,10 +245,11 @@ lightbox = new Lightbox options
       return $('#lightboxOverlay').width($(document).width()).height($(document).height());
     };
 
-    Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight) {
+    Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight, imageNumber) {
       var $container, $lightbox, $outerContainer, containerBottomPadding, containerLeftPadding, containerRightPadding, containerTopPadding, newHeight, newWidth, oldHeight, oldWidth,
         _this = this;
       $lightbox = $('#lightbox');
+      $('#bd_data').remove();
       $outerContainer = $lightbox.find('.lb-outerContainer');
       oldWidth = $outerContainer.outerWidth();
       oldHeight = $outerContainer.outerHeight();
@@ -273,6 +280,31 @@ lightbox = new Lightbox options
         $lightbox.find('.lb-nextLink').height(newHeight);
         _this.showImage();
       }, this.options.resizeDuration);
+      var _description = this.album[imageNumber].description;
+      var _userdate = this.album[imageNumber].userdate;
+      var _id = this.album[imageNumber].id;
+      var _href = this.album[imageNumber].link;
+   // XXX start
+      setTimeout(function() {
+      var top1 = containerTopPadding;
+      $window = $(window);
+      var left1 = ($window.width() / 2) + 10;
+      left1 = left1 - (newWidth / 2);
+      $( "<div id='bd_data' style='z-index: 20; position: absolute;'><div id='lbsocialInBlock'><img id='fbshare' src='images/barra/facebook.png' alt='Facebook' width='17' height='17' /><img id='twtshare' src='images/barra/twitter.png' width='17' height='17' alt='Twitter' /></div><span id='dedicatoria' class='lbdedicatoria lbfloater'>" + _description + "</span><span class='lbusuarioFecha lbfloater'>" + _userdate + "</span></div>" ).appendTo($lightbox).css({
+        top: top1 + 'px',
+        left: left1 + 'px',
+        width: newWidth - 20
+      }).fadeIn(500, function () {
+    	  $('#fbshare').on('click', function(e) {
+    		  facebookShareGoodMorning('Milka Argentina | Sitio oficial | ' + document.title ,_description,'www.milka.com.ar/',_id, _href);
+    	      });
+    	  $('#twtshare').on('click', function(e) {
+    		  window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); 
+    	      });
+    	  
+      });
+      }, this.options.resizeDuration);
+      // XXX end
     };
 
     Lightbox.prototype.showImage = function() {
