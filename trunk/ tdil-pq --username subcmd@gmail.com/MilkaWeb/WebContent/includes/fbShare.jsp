@@ -1,3 +1,4 @@
+<% String fbSharejspServerName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME); %>
 <script>
 	window.fbAsyncInit = function() {
 	  FB.init({
@@ -16,10 +17,18 @@
 	
 	function facebookShare(text,description,caption,url, image) {
 		if (!image) {
-			image = '<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME)%>/images/logoFBsite.jpg';
+			image = '<%=fbSharejspServerName%>/images/logoFBsite.jpg';
 		}
 		FB.ui({ method: 'feed',display: 'popup',
 		link:url,picture:image,name:text,description:description,caption:caption});
+
+	}
+
+	function facebookShareGoodMorning(text,description,caption, lnkid, image) {
+		var img = "http://<%=fbSharejspServerName%>/" + image;
+		var url = "http://<%=fbSharejspServerName%>/buenDia.jsp?lnk=" + lnkid;
+		FB.ui({ method: 'feed',display: 'popup',
+		link:url,picture:img,name:text,description:description,caption:caption});
 
 	}
   </script>
