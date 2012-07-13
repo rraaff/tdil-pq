@@ -21,7 +21,7 @@
 <title>Milka.com.ar | Sitio Oficial | Experiencia Ayuda Ternura</title>
 <% 
 	if (!"true".equals(request.getParameter("dnc"))) {
-		MeltButton.incrementCounter(MeltButton.BUEN_DIA_RENDER);
+		MeltButton.incrementCounter(MeltButton.AYUDA_TERNURAS_RENDER);
 	}
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 	boolean limitCookie = "true".equals(SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.LIMIT_COOKIE));
@@ -32,7 +32,19 @@
 	String prevPage = "xxxxxc.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
-<script src="./js/lightbox-melt-social.js"></script>
+<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src='./js/jquery.cookie.js'></script>
+<script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<script>
+$(document).ready(
+	function(){
+		$("div[id^='mb-']").each(function(indice,valor) {
+		   $(valor).meltbutton();
+		});
+	}
+	
+);
+</script>
 
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
 <div id="fb-root"></div>
@@ -110,7 +122,7 @@
 </head>
 
 <body>
-<% int barClickCounter = MeltButton.BUEN_DIA_COUNTER; 
+<% int barClickCounter = MeltButton.AYUDA_TERNURAS_COUNTER; 
 	
 %>
 <div id="floater">

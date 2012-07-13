@@ -30,6 +30,10 @@ public class MeltButton implements TransactionalAction {
 	public static final int APODOS_DE_AMOR_RENDER = 15;
 	public static final int CARTAS_DE_PADRES_A_HIJOS_RENDER = 16;
 	public static final int QUE_AMAS_QUE_ODIAS_RENDER = 17;
+	public static final int AYUDA_TERNURAS_RENDER = 18;
+	
+	// Extras
+	public static final int AYUDA_TERNURAS_COUNTER = 20;
 	
 	private int id;
 	private int quantity;

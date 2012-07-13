@@ -805,4 +805,48 @@
  <PROCESS-ITEM ID="#viewGoodMorningWebcam" NAME="action97"
   PATH="/viewGoodMorningWebcam" SHAPE="240,5073,0,0"
   TITLE="GoodMorningWCForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewMailToChildWebcam" NAME="action98"
+  PATH="/viewMailToChildWebcam" SHAPE="240,5073,0,0"
+  TITLE="MailToChildWCForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadMailToChildWC" NAME="action99"
+  PATH="/uploadMailToChildWC" SHAPE="448,5057,0,0"
+  TITLE="MailToChildWCForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToLoveHateApprove" NAME="action100"
+  PATH="/goToLoveHateApprove" SHAPE="32,5057,0,0"
+  TITLE="LoveHateAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveHatePending.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page23" PATH="/loveHatePending.jsp"
+  SHAPE="304,5074,0,0" SUBTYPE="jsp" TITLE="loveHatePending.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/approveDisapproveLoveHate.do"
+   SUBTYPE="confirmed" TARGET="action103"
+   TITLE="/approveDisapproveLoveHate.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToLoveHateReview" NAME="action101"
+  PATH="/goToLoveHateReview" SHAPE="32,5313,0,0"
+  TITLE="LoveHateAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveHatePending.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#reviewLoveHate" NAME="action102"
+  PATH="/reviewLoveHate" SHAPE="32,5425,0,0"
+  TITLE="LoveHateAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/loveHatePending.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#approveDisapproveLoveHate" NAME="action103"
+  PATH="/approveDisapproveLoveHate" SHAPE="32,6321,0,0"
+  TITLE="LoveHateAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/loveHatePending.jsp" TARGET="page23" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/loveHatePending.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -4,6 +4,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.milka.dao.LoveHateDAO;
 import com.tdil.milka.model.LoveHate;
 import com.tdil.milka.model.LoveHateExample;
+import com.tdil.milka.model.LoveNicknames;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -173,4 +175,12 @@ public class LoveHateDAOImpl implements LoveHateDAO {
             return record;
         }
     }
+    
+	public List<LoveHate> selectLoveHateToApprove() throws SQLException {
+		return sqlMapClient.queryForList("LOVE_HATE.selectLoveHateToApprove");
+	}
+	
+	public List<LoveHate> selectLoveHateToReview() throws SQLException {
+		return sqlMapClient.queryForList("LOVE_HATE.selectLoveHateToReview");
+	}
 }

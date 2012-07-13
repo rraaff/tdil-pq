@@ -61,6 +61,12 @@
 						<li><html:link action="/goToGoodMorningReview" >Revision de aprobados</html:link></li>
 					</ul>
 				</li>
+				<li><a href="#">Que Amas Que Odias</a>
+					<ul>
+						<li><html:link action="/goToLoveHateApprove" >Pendientes de Aprobaci&oacute;n</html:link></li>
+						<li><html:link action="/goToLoveHateReview" >Revision de aprobados</html:link></li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Administracion</a>
