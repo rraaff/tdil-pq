@@ -82,6 +82,7 @@
 		</delete>
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
 			<classes dir="../../JavaBase/bin" />
+			<classes dir="../../WordCram/bin" />
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar" />
 				<exclude name="servlet-api.jar" />
@@ -150,7 +151,7 @@
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="database.sql">
 		</copy-->
-		<copy todir="${project.name.upper}.tmp" file="ddl_03.sql">
+		<copy todir="${project.name.upper}.tmp" file="ddl_04.sql">
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
