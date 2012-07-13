@@ -341,4 +341,21 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="selectLoveHateToApprove" resultMap="BaseResultMap">
+    select 
+    <include refid="LOVE_HATE.Base_Column_List" />
+    from LOVE_HATE loh
+    where loh.approved != 1
+    order by loh.approved asc, loh.id desc
+  </select>
+  
+  <select id="selectLoveHateToReview" resultMap="BaseResultMap">
+    select 
+    <include refid="LOVE_HATE.Base_Column_List" />
+    from LOVE_HATE loh
+    where loh.approved = 1
+    order by loh.id desc
+  </select>
+  
 </sqlMap>

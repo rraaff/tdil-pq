@@ -54,6 +54,9 @@
    <form-bean id="MailToChildWCForm"
    name="MailToChildWCForm" type="com.tdil.milka.struts.forms.MailToChildForm"/>
    
+   <form-bean id="LoveHateAdministrationForm"
+   name="LoveHateAdministrationForm" type="com.tdil.milka.struts.forms.LoveHateAdministrationForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -348,6 +351,25 @@
   <action name="GoodMorningAdministrationForm" parameter="Admin" path="/clearLinkTargetGoodMorning"
    scope="session" type="com.tdil.milka.struts.action.ClearLinkTargetAction">
    <forward name="continue" path="/goodMorningPending.jsp"/>
+  </action>
+  
+  
+  <action name="LoveHateAdministrationForm" parameter="Admin" path="/goToLoveHateApprove"
+   scope="session" type="com.tdil.struts.actions.GoToApproveAction">
+   <forward name="continue" path="/loveHatePending.jsp"/>
+  </action>
+  <action name="LoveHateAdministrationForm" parameter="Admin" path="/goToLoveHateReview"
+   scope="session" type="com.tdil.struts.actions.GoToReviewAction">
+   <forward name="continue" path="/loveHatePending.jsp"/>
+  </action>
+  <action name="LoveHateAdministrationForm" parameter="Admin" path="/reviewLoveHate"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/loveHatePending.jsp"/>
+  </action>
+  <action name="LoveHateAdministrationForm" parameter="Admin" path="/approveDisapproveLoveHate"
+   scope="session" type="com.tdil.struts.actions.ApproveDisapproveAction">
+   <forward name="continue" path="/loveHatePending.jsp"/>
+   <forward name="failure" path="/loveHatePending.jsp"/>
   </action>
   
   <action name="LinkTargetSelectionForm" parameter="Admin"

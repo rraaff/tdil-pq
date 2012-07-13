@@ -93,4 +93,8 @@ public interface LoveHateDAO {
      * @mbggenerated Wed Jun 27 22:57:22 ART 2012
      */
     int updateLoveHateByPrimaryKey(LoveHate record) throws SQLException;
+
+	List<LoveHate> selectLoveHateToApprove() throws SQLException;
+
+	List<LoveHate> selectLoveHateToReview() throws SQLException;
 }
