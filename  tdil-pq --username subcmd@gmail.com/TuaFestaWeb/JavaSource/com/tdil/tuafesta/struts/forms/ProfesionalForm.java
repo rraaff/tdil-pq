@@ -19,6 +19,8 @@ import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.Wall;
+import com.tdil.tuafesta.utils.SystemPropertiesKeys;
+import com.tdil.tuafesta.web.EmailUtils;
 
 public class ProfesionalForm extends TransactionalValidationForm {
 
@@ -109,7 +111,13 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		profesional.setApproved(0);
 		profesional.setDatachanged(0);
 		profesional.setDeleted(0);
-		profesionalDAO.insertProfesional(profesional);
+		int id = profesionalDAO.insertProfesional(profesional);
+		
+		StringBuffer link = new StringBuffer();
+		link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
+		
+		/** Inicio del email */
+		EmailUtils.sendEmail(this.getEmail(), link.toString(), EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
 	}
 
 	private Date parseDate(String fromDate2) {

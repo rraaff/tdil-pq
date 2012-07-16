@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,8 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 	private String notificationtype;
 	private String description;
 	private String replacements;
+	private String from_;
+	private String subject;
 	private String content;
 	
 	// Para el test del email, podriamos testear con reemplazos???
@@ -89,6 +92,8 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 			this.replacements = notificationEmail.getReplacements();
 			this.description = notificationEmail.getDescription();
 			this.content = notificationEmail.getContent();
+			this.from_ = notificationEmail.getFrom();
+			this.subject = notificationEmail.getSubject();
 		} 
 	}
 	
@@ -130,6 +135,8 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 			systemProperty.setId(this.getObjectId());
 			// Solo admito el cambio del value
 			systemProperty.setContent(this.getContent());
+			systemProperty.setFrom(this.getFrom());
+			systemProperty.setSubject(this.getSubject());
 			systemPropertyDAO.updateNotificationEmailByPrimaryKeySelective(systemProperty);
 		}
 	}
@@ -199,15 +206,20 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 				public void executeInTransaction() throws SQLException, ValidationException {
 					SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
 					SystemPropertyExample smtpExample = new SystemPropertyExample();
-					smtpExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_SERVER);
-					SystemProperty smtpServer = systemPropertyDAO.selectSystemPropertyByExample(smtpExample).get(0);
+					smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
+					List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
+					Properties properties = new Properties();
+					for (SystemProperty sp : list) {
+						properties.put(sp.getPropkey(), sp.getPropvalue());
+					}
 					
-					SystemPropertyExample portExample = new SystemPropertyExample();
-					portExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SMTP_PORT);
-					SystemProperty smtpPort = systemPropertyDAO.selectSystemPropertyByExample(portExample).get(0);
+					SystemPropertyExample serverExample = new SystemPropertyExample();
+					serverExample.createCriteria().andPropkeyEqualTo(SystemPropertiesKeys.SERVER_NAME);
+					SystemProperty server = systemPropertyDAO.selectSystemPropertyByExample(serverExample).get(0);
+					String content = NotificationEmailForm.this.getContent().replaceAll("SERVER_NAME", server.getPropvalue());
 					
 					try {
-						EmailUtils.sendEmail(NotificationEmailForm.this.getContent(), NotificationEmailForm.this.getEmail(), NotificationEmailForm.this.getEmail(), "Test email for type " + NotificationEmailForm.this.getNotificationtype(), smtpServer.getPropvalue(), smtpPort.getPropvalue());
+						EmailUtils.sendEmail(content, NotificationEmailForm.this.getEmail(), NotificationEmailForm.this.getFrom(), NotificationEmailForm.this.getSubject(), properties);
 					} catch (MessagingException e) {
 						NotificationEmailForm.this.errorsSending = true;
 						setErrorText(e);
@@ -261,6 +273,18 @@ public class NotificationEmailForm extends TransactionalValidationForm implement
 	}
 	public void setEmailTest(boolean emailSent) {
 		this.emailTest = emailSent;
+	}
+	public String getFrom() {
+		return from_;
+	}
+	public void setFrom(String from_) {
+		this.from_ = from_;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 }
