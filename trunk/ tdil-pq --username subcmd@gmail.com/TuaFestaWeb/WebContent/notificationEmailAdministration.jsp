@@ -17,7 +17,7 @@
 	<h1 align="center">Administraci&oacute;n de notificaciones por E-Mail</h1>
 	<div class="renglon width860 height40" style="margin-bottom:20px;">
 		<div class="label width860 height40"><span class="comment">Desde esta sección podrá cargar el contenido de los E-Mails que sirven como notificaciones de las Experiencias y los contenidos del sitio. También podrá testear los contenidos enviando pruebas a su propia casilla. Los emails soportan las 
-		siguientes variables: AUTHOR_NAME (nombre del autor), EXPERIENCE_LINK (link a la experiencia) y SERVER_NAME (server donde esta ejecutando la aplicacion).</span></div>
+		siguientes variables: SERVER_NAME (server donde esta ejecutando la aplicacion).</span></div>
 	</div>
 	<html:form method="POST" action="/saveNotificationEmail">
 		<span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span><br>
@@ -31,6 +31,12 @@
 			<div class="label width100">Valor</div>
 			<div class="label width700 height120"><html:textarea name="NotificationEmailForm" property="content" styleClass="width700 height120"/></div>
 			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "NotificationEmailForm.content.err")%></div>
+		</div>
+		<div class="renglon width860">
+			<div class="label width100">From: </div>
+			<div class="label width300"><html:text name="NotificationEmailForm" property="from" /></div>
+			<div class="label width50">Subject: </div>
+			<div class="label width300"><html:text name="NotificationEmailForm" property="subject" /></div>
 		</div>
 		<logic:notEqual name="NotificationEmailForm" property="objectId" value="0">
 			<div class="renglon width860" style="margin-bottom:20px;">
