@@ -19,8 +19,9 @@ import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.Wall;
-import com.tdil.tuafesta.utils.SystemPropertiesKeys;
 import com.tdil.tuafesta.web.EmailUtils;
+import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class ProfesionalForm extends TransactionalValidationForm {
 
@@ -46,6 +47,18 @@ public class ProfesionalForm extends TransactionalValidationForm {
 	private String facebook;
 	private String businesshours;
 	private String description;
+	
+	private static final String firstname_key = "ProfesionalForm.firstname";
+	private static final String lastname_key = "ProfesionalForm.lastname";
+	private static final String sex_key = "ProfesionalForm.sex";
+	private static final String birthdate_key = "ProfesionalForm.birthdate";
+	private static final String phone_key = "ProfesionalForm.phone";
+	private static final String email_key = "ProfesionalForm.email";
+	private static final String password_key = "ProfesionalForm.password";
+	private static final String website_key = "ProfesionalForm.website";
+	private static final String facebook_key = "ProfesionalForm.facebook";
+	private static final String businesshours_key = "ProfesionalForm.businesshours";
+	private static final String description_key = "ProfesionalForm.description";
 
 	@Override
 	public void reset() throws SQLException {
@@ -75,7 +88,20 @@ public class ProfesionalForm extends TransactionalValidationForm {
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO VALIDACIONES
+		FieldValidation.validateText(this.getFirstname(), firstname_key, 100, validationError);
+		FieldValidation.validateText(this.getLastname(), lastname_key, 100, validationError);
+		FieldValidation.validateText(this.getSex(), sex_key, 1, validationError);
+		FieldValidation.validateText(this.getPhone(), phone_key, 15, false, validationError);
+		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
+		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		FieldValidation.validateText(this.getWebsite(), website_key, 200, false, validationError);
+		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
+		FieldValidation.validateText(this.getBusinesshours(), businesshours_key, 4000, validationError);
+		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
+		Date birthDate = parseDate(this.getBirthdate());
+		if (birthDate == null) {
+			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
+		} 
 	}
 
 	@Override

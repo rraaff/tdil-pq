@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -48,32 +49,17 @@ $(document).ready(
 						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
 						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
 								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"}
-					},
-					submitHandler: function() {
-			            $("form[name='ProfesionalForm']").ajaxSubmit({
-			    			type: "POST",
-			    			url: "./addProfesional.do",
-			    			dataType: "json",
-			    			success: postAdd
-			    			});
-			        }
+					}
 				});
+
+			
+			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd'});
 		}
+
+	
 	);
 
-function postAdd(data) {
-	if (data.result == 'OK') {
-		$( "#dialog-modal" ).dialog({
-				height: 140,
-				modal: true }
-			});
-	} else {
-		$( "#dialog-modal-err" ).dialog({
-				height: 140,
-				modal: true
-			});
-	}
-}
+
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 
@@ -85,28 +71,30 @@ function postAdd(data) {
 <div id="formContent">
 <html:form method="POST" action="/addProfesional">
 	Nombre<div id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.firstname.err")%></div>
 	Apellido<div id="Apellido"><html:text name="ProfesionalForm" property="lastname" styleClass="normalField"/></div>
-	Sexo<div id="Sexo"><html:text name="ProfesionalForm" property="sex" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.lastname.err")%></div>
+	Sexo<div id="Sexo"><html:radio property="sex" value="m" />Masculino <html:radio property="sex" value="f" />Femenino</div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.sex.err")%></div>
 	Fecha Nac.<div id="Fecha Nac."><html:text name="ProfesionalForm" property="birthdate" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.birthdate.err")%></div>
 	Telefono<div id="Telefono"><html:text name="ProfesionalForm" property="phone" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.phone.err")%></div>
 	Email<div id="Email"><html:text name="ProfesionalForm" property="email" styleClass="normalField"/></div>
-	Password<div id="Password"><html:text name="ProfesionalForm" property="password" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.email.err")%></div>
+	Password<div id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
 	Web<div id="Web"><html:text name="ProfesionalForm" property="website" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.website.err")%></div>
 	Facebook<div id="Facebook"><html:text name="ProfesionalForm" property="facebook" styleClass="normalField"/></div>
-	Horario de Atencion<div id="Horario de Atencion"><html:text name="ProfesionalForm" property="businesshours" styleClass="normalField"/></div>
-	Descripcion<div id="Descripcion"><html:text name="ProfesionalForm" property="description" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.facebook.err")%></div>
+	Horario de Atencion<div id="Horario de Atencion"><html:textarea name="ProfesionalForm" property="businesshours" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.businesshours.err")%></div>
+	Descripcion<div id="Descripcion"><html:textarea name="ProfesionalForm" property="description" styleClass="normalField"/></div>
+	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.description.err")%></div>
 	<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
 </html:form>
 </div>
 
-<div id="dialog-modal" class="hide" title="Registro">
-	<p>
-		Gracias por registrarte.<br>
-		Te avisaremos cuando te hayamos aprobado.
-	</p>
-</div>
-<div id="dialog-modal-err" class="hide" title="Registro">
-	Ha ocurrido un error, intentelo nuevamente.
-</div>
 </body>
 </html>
