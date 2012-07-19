@@ -12,6 +12,7 @@
   <form-bean id="ProfesionalServiceForm" name="ProfesionalServiceForm" type="com.tdil.tuafesta.struts.forms.ProfesionalServiceForm"/>
   <form-bean id="ProfesionalForm" name="ProfesionalForm" type="com.tdil.tuafesta.struts.forms.ProfesionalForm"/>
   <form-bean id="ValidateProfesionalEmailForm" name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
+  <form-bean id="ContactForm" name="ContactForm" type="com.tdil.tuafesta.struts.forms.ContactForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -119,13 +120,18 @@
    <forward name="failure" path="/profesionalServiceAdministration.jsp"/>
   </action>
   
-  <action name="ProfesionalForm" path="/addProfesional" scope="request" type="com.tdil.tuafesta.struts.action.AddProfesionalAction">
+  <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/addProfesionalSuccess.jsp" redirect="true"/>
+   <forward name="failure" path="/addProfesional.jsp"/>
   </action>
   
   <action name="ValidateProfesionalEmailForm" path="/validateProfesionalEmail"
    scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
    <forward name="failure" path="/profesionalEmailNotValidated.jsp"/>
+  </action>
+  
+  <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction">
   </action>
   
  </action-mappings>

@@ -215,7 +215,14 @@
   TITLE="editProfesionalCategory.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addProfesional" NAME="action15"
   PATH="/addProfesional" SHAPE="32,3377,0,0" TITLE="ProfesionalForm"
-  TYPE="action" model-entity="StrutsProcessItem"/>
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/addProfesionalSuccess.jsp" TARGET="page11" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/addProfesional.jsp" TARGET="page12" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#validateProfesionalEmail" NAME="action16"
   PATH="/validateProfesionalEmail" SHAPE="32,3377,0,0"
   TITLE="ValidateProfesionalEmailForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -241,7 +248,18 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page9" PATH="/profesionalServiceAdministration.jsp"
   SHAPE="304,4098,0,0" SUBTYPE="jsp"
-  TITLE="profesionalServiceAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="profesionalServiceAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/editProfesionalService.st"
+   SUBTYPE="confirmed" TARGET="page10"
+   TITLE="/editProfesionalService.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/toggleDeletedProfesionalService.do" SUBTYPE="confirmed"
+   TARGET="action20" TITLE="/toggleDeletedProfesionalService.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveProfesionalService.do"
+   SUBTYPE="confirmed" TARGET="action18"
+   TITLE="/saveProfesionalService.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveProfesionalService" NAME="action18"
   PATH="/saveProfesionalService" SHAPE="32,4193,0,0"
   TITLE="ProfesionalServiceForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -269,4 +287,15 @@
    PATH="/profesionalServiceAdministration.jsp" TARGET="page9"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="/editProfesionalService.st"
+  SHAPE="512,4098,0,0" SUBTYPE="other" TITLE="editProfesionalService.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#contact" NAME="action21" PATH="/contact"
+  SHAPE="32,5105,0,0" TITLE="ContactForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page11" PATH="/addProfesionalSuccess.jsp"
+  SHAPE="448,3377,0,0" SUBTYPE="jsp" TITLE="addProfesionalSuccess.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page12" PATH="/addProfesional.jsp"
+  SHAPE="240,3601,0,0" SUBTYPE="jsp" TITLE="addProfesional.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

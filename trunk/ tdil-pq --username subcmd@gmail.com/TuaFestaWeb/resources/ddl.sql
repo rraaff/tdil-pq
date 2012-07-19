@@ -41,10 +41,11 @@ CREATE TABLE SYSPROPERTIES (
   UNIQUE INDEX `UQ_SYSPROPERTIES_00` (`propKey` ASC))
 ENGINE = InnoDB;
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','tuafesta.test@gmail.com','Email del formulario de contacto',0);
+
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.user','tuafesta.test@gmail.com','mail.smtp.user',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.host','smtp.gmail.com','mail.smtp.host',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.port','465','mail.smtp.port',0);
-
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.starttls.enable','true','mail.smtp.starttls.enable',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.auth','true','mail.smtp.auth',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.port','465','mail.smtp.socketFactory.port',0);
