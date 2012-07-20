@@ -297,5 +297,25 @@
   TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page12" PATH="/addProfesional.jsp"
   SHAPE="240,3601,0,0" SUBTYPE="jsp" TITLE="addProfesional.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/addProfesional.do"
+   SUBTYPE="confirmed" TARGET="action15" TITLE="/addProfesional.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToProfesionalAdministration" NAME="action22"
+  PATH="/goToProfesionalAdministration" SHAPE="32,5105,0,0"
+  TITLE="ProfesionalAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/profesionalSAdministration.jsp" TARGET="page13"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/profesionalAdministration.jsp" TARGET="page14"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="/profesionalSAdministration.jsp"
+  SHAPE="256,5122,0,0" SUBTYPE="jsp"
+  TITLE="profesionalSAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page14" PATH="/profesionalAdministration.jsp"
+  SHAPE="256,5266,0,0" SUBTYPE="jsp"
+  TITLE="profesionalAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
