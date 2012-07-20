@@ -13,6 +13,7 @@
   <form-bean id="ProfesionalForm" name="ProfesionalForm" type="com.tdil.tuafesta.struts.forms.ProfesionalForm"/>
   <form-bean id="ValidateProfesionalEmailForm" name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.tuafesta.struts.forms.ContactForm"/>
+  <form-bean id="ProfesionalAdministrationForm" name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -118,6 +119,12 @@
    scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/profesionalServiceAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalServiceAdministration.jsp"/>
+  </action>
+  
+  <action name="ProfesionalAdministrationForm" parameter="Admin" path="/goToProfesionalAdministration"
+   scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/profesionalSAdministration.jsp"/>
   </action>
   
   <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">

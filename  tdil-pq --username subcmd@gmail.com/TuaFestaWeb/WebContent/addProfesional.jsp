@@ -53,7 +53,8 @@ $(document).ready(
 				});
 
 			
-			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd'});
+			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+				changeYear: true, yearRange: "1900:2012"});
 		}
 
 	
