@@ -28,8 +28,8 @@
 	String serverName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 %>
 <%
-	String nextPage = "cartasDePadresAHijos.jsp";
-	String prevPage = "xxxxxc.jsp";
+	String nextPage = "postits.jsp";
+	String prevPage = "apodosDeAmor.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -69,6 +69,10 @@ $(document).ready(
 </script>
 <style>
 <!-- 
+body {
+	background-color:#655498;
+	overflow:hidden;
+}
 #socialInBlock {
 	width:40px;
 	height:17px;
@@ -119,6 +123,36 @@ $(document).ready(
 }
 -->
 </style>
+<script type="text/javascript" src="experienciasExternas/js/swfobject.js"></script>
+<script type="text/javascript">
+
+function showFlashApplication(holder)
+{
+	var swfurl = "experienciasExternas/swf/main/code.swf";
+	
+	var flashvars = {
+		'base_path' : 'http://copac1.securesites.net/apps/milka_ayudaternura/'
+		,'services_path' : 'http://copac1.securesites.net/apps/milka_ayudater_be/'
+	}
+	
+	var tmp = [];
+	for(var field in flashvars) {
+		tmp.push(field + "=" + encodeURIComponent(flashvars[field]));
+	}
+	var flashvars_str = tmp.join("&");		
+	
+	var so = new SWFObject(swfurl + "?" + flashvars_str, "flash_app", "100%", "660", "10", "#655498");
+	
+	so.addParam("scale", "noscale");
+	so.addParam("salign", "T");
+	so.addParam("allowscriptaccess","always");
+	so.addParam("wmode","transparent");
+	
+	so.write(holder);
+	
+}
+
+</script>
 </head>
 
 <body>
@@ -128,8 +162,13 @@ $(document).ready(
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<div id="contentAyudas">
-
+<div id="flashin">
+	<div style="height:25px; width:100%;"></div>
+	<div id="flash_content" >
+		<script type="text/javascript">
+			showFlashApplication("flash_content");
+		</script>	
+	</div>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>

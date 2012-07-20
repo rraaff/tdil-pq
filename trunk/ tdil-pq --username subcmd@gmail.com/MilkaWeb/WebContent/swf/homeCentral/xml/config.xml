@@ -67,5 +67,12 @@
 			<link>apodosDeAmor.jsp</link>
 			<target>_self</target>
 		</item>
+		<item>
+			<text></text>
+			<thumb></thumb>
+			<view>swf/homeCentral/images/view/img_rotador_ayudaternura.jpg</view>
+			<link>ayudasTernuras.jsp</link>
+			<target>_self</target>
+		</item>
 	</items>
 </config>

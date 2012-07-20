@@ -26,7 +26,7 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "postits.jsp";
+	String nextPage = "ayudasTernuras.jsp";
 	String prevPage = "finalesDeEmail.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
