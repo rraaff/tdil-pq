@@ -4,8 +4,12 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.model.Geo3;
 import com.tdil.tuafesta.model.Geo3Example;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Geo3DAOImpl implements Geo3DAO {
 
@@ -145,5 +149,12 @@ public class Geo3DAOImpl implements Geo3DAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<GeoLevelValueObject> searchGeoLevelsByNombre(String string) throws SQLException {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nombre", string);
+		List<GeoLevelValueObject> list = sqlMapClient.queryForList("GEO3.searchGeoLevelsByNombre", params);
+		return list;
 	}
 }

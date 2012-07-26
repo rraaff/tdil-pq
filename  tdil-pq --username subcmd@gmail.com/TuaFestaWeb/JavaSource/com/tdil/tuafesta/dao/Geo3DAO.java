@@ -2,6 +2,8 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.Geo3;
 import com.tdil.tuafesta.model.Geo3Example;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -72,4 +74,6 @@ public interface Geo3DAO {
 	 * @mbggenerated  Sun Jul 15 20:26:46 ART 2012
 	 */
 	int updateGeo3ByPrimaryKey(Geo3 record) throws SQLException;
+	
+	List<GeoLevelValueObject> searchGeoLevelsByNombre(String string) throws SQLException;
 }

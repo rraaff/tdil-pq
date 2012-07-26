@@ -1,11 +1,15 @@
 package com.tdil.tuafesta.dao.impl;
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
-import java.sql.SQLException;
-import java.util.List;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 
 public class Geo2DAOImpl implements Geo2DAO {
 
@@ -145,5 +149,12 @@ public class Geo2DAOImpl implements Geo2DAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<GeoLevelValueObject> searchGeoLevelsByNombre(String string) throws SQLException {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("nombre", string);
+		List<GeoLevelValueObject> list = sqlMapClient.queryForList("GEO2.searchGeoLevelsByNombre", params);
+		return list;
 	}
 }

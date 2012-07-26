@@ -14,6 +14,7 @@
   <form-bean id="ValidateProfesionalEmailForm" name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.tuafesta.struts.forms.ContactForm"/>
   <form-bean id="ProfesionalAdministrationForm" name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
+  <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -125,6 +126,19 @@
    scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalSAdministration.jsp"/>
+  </action>
+  
+  <action name="GeoLevelForm" path="/saveGeoLevel" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/geoLevelAdministration.jsp"/>
+  </action>
+  <action name="GeoLevelForm" parameter="Admin" path="/toggleDeletedGeoLevel"
+   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/geoLevelAdministration.jsp"/>
+  </action>
+  <action name="GeoLevelForm" path="/searchGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
   </action>
   
   <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
