@@ -214,4 +214,23 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject" id="GeoLevelValueObjectResultMap">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="nombre2" jdbcType="VARCHAR" property="nombre2" />
+    <result column="nombre3" jdbcType="VARCHAR" property="nombre3" />
+    <result column="nombre4" jdbcType="VARCHAR" property="nombre4" />
+    <result column="parentId" jdbcType="INTEGER" property="parentId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+  </resultMap>
+  
+  <select id="searchGeoLevelsByNombre" parameterClass="java.util.Map" resultMap="GeoLevelValueObjectResultMap">
+    select 
+    	id, nombre as nombre2, '' as nombre3, '' as nombre4, 0 as parentId, 2 as level, deleted
+    from GEO2 geo2
+    where nombre like #nombre:VARCHAR#
+    order by nombre
+  </select>
 </sqlMap>

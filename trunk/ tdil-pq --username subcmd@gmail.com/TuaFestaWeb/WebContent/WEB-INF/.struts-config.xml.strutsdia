@@ -318,4 +318,43 @@
  <PROCESS-ITEM NAME="page14" PATH="/profesionalAdministration.jsp"
   SHAPE="256,5266,0,0" SUBTYPE="jsp"
   TITLE="profesionalAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveGeoLevel" NAME="action23" PATH="/saveGeoLevel"
+  SHAPE="32,6033,0,0" TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page16" PATH="/geoLevelAdministration.jsp"
+  SHAPE="256,6050,0,0" SUBTYPE="jsp" TITLE="geoLevelAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveGeoLevel.do"
+   SUBTYPE="confirmed" TARGET="action23" TITLE="/saveGeoLevel.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedGeoLevel.do"
+   SUBTYPE="confirmed" TARGET="action25"
+   TITLE="/toggleDeletedGeoLevel.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editGeoLevel.st"
+   SUBTYPE="confirmed" TARGET="page17" TITLE="/editGeoLevel.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchGeoLevel" NAME="action24"
+  PATH="/searchGeoLevel" SHAPE="32,6737,0,0" TITLE="GeoLevelForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedGeoLevel" NAME="action25"
+  PATH="/toggleDeletedGeoLevel" SHAPE="464,6050,0,0"
+  TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

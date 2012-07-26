@@ -229,4 +229,14 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="searchGeoLevelsByNombre" parameterClass="java.util.Map" resultMap="GEO2.GeoLevelValueObjectResultMap">
+    select 
+    	geo4.id, geo2.nombre as nombre2, geo3.nombre as nombre3, geo4.nombre as nombre4, geo3.id as parentId, 4 as level, geo4.deleted
+    from GEO2 geo2, GEO3 geo3, GEO4 geo4
+    where geo2.id = geo3.geo2_id
+    and geo3.id = geo4.geo3_id
+    and geo4.nombre like #nombre:VARCHAR#
+    order by geo4.nombre
+  </select>
 </sqlMap>
