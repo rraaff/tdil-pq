@@ -2,7 +2,7 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="572" h="455" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>R008-M1-%20Registro%20-%20Registro%20Profesional%20Facebook%20%28Paso%201%29</text>
+        <text>R008-M1-%20Registro%20-%20Registro%20Clientes%20Facebook%20%28Paso%201%29</text>
       </controlProperties>
     </control>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="34" y="151" w="537" h="-1" measuredW="100" measuredH="5" zOrder="1" locked="false" isInGroup="-1"/>
@@ -11,33 +11,33 @@
         <text>FACEBOOK</text>
       </controlProperties>
     </control>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="34" y="171" w="-1" h="-1" measuredW="461" measuredH="41" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="34" y="171" w="-1" h="-1" measuredW="461" measuredH="41" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <size>32</size>
         <text>Acced%E9%20con%20tu%20cuenta%20Facebook</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::SubTitle" x="34" y="215" w="-1" h="-1" measuredW="543" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::SubTitle" x="34" y="215" w="-1" h="-1" measuredW="543" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <size>16</size>
         <text>Ingres%E1%20tus%20datos%20y%20acept%E1%20para%20iniciar%20la%20registraci%F3n%20con%20tus%20E-Mail%20validado.</text>
       </controlProperties>
     </control>
-    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="217" y="337" w="178" h="54" measuredW="100" measuredH="30" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="217" y="337" w="178" h="54" measuredW="100" measuredH="30" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <color>2848996</color>
-        <href>R008-M1-Registro-Profesionales%20Facebook-Paso2%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso2.bmml%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso2.bmml%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso2.bmml</href>
+        <href>R008-M1-Registro-Clientes%20Facebook-Paso2%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso2.bmml%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso2.bmml%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso2.bmml</href>
         <icon>FacebookIcon%7Csmall</icon>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22197%2C337%2C375%2C391%22%20href%3D%22R008-M1-Registro-Profesionales%2520Facebook-Paso2.bmml%22%20alt%3D%22R008-M1-Registro-Profesionales%20Facebook-Paso2%22%20id%3D%2214%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22197%2C337%2C375%2C391%22%20href%3D%22R008-M1-Registro-Clientes%2520Facebook-Paso2.bmml%22%20alt%3D%22R008-M1-Registro-Clientes%20Facebook-Paso2%22%20id%3D%225%22/%3E</map>
         <text>Acceder</text>
       </controlProperties>
     </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::TextInput" x="118" y="270" w="174" h="-1" measuredW="73" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="118" y="270" w="174" h="-1" measuredW="73" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>usuario%20FB</text>
       </controlProperties>
     </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::TextInput" x="327" y="270" w="174" h="-1" measuredW="88" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="327" y="270" w="174" h="-1" measuredW="88" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>password%20FB</text>
       </controlProperties>

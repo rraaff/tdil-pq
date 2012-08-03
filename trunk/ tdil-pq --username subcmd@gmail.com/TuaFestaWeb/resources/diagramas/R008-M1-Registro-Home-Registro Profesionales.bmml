@@ -56,12 +56,16 @@
     <control controlID="10" controlTypeID="com.balsamiq.mockups::MultilineButton" x="34" y="364" w="280" h="69" measuredW="289" measuredH="69" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16750848</color>
+        <href>R008-M1-Registro-Profesionales%20Facebook-Paso1%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso1.bmml%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso1.bmml%26bm%3BR008-M1-Registro-Profesionales%20Facebook-Paso1.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2214%2C364%2C294%2C433%22%20href%3D%22R008-M1-Registro-Profesionales%2520Facebook-Paso1.bmml%22%20alt%3D%22R008-M1-Registro-Profesionales%20Facebook-Paso1%22%20id%3D%2210%22/%3E</map>
         <text>REGISTRATE%20CON%20TU%20FACEBOOK%0ASimplifica%20el%20proceso%20de%20validaci%F3n%20de%20datos</text>
       </controlProperties>
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::MultilineButton" x="342" y="364" w="301" h="69" measuredW="202" measuredH="69" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16750848</color>
+        <href>R008-M1-Registro-Profesionales%20Normal-Paso1%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso1.bmml%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso1.bmml%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso1.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22322%2C364%2C623%2C433%22%20href%3D%22R008-M1-Registro-Profesionales%2520Normal-Paso1.bmml%22%20alt%3D%22R008-M1-Registro-Profesionales%20Normal-Paso1%22%20id%3D%2211%22/%3E</map>
         <text>%A1REGISTRATE%20AHORA%21%0ARegistrarse%20es%20totalmente%20gratuito</text>
       </controlProperties>
     </control>
