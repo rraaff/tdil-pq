@@ -1,0 +1,78 @@
+<mockup version="1.0" skin="sketch" measuredW="1007" measuredH="609" mockupW="987" mockupH="609">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="987" h="609" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>R008-M1-%20Registro%20-%20Registro%20Profesional%20Facebook%20%28Paso%201%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="34" y="151" w="950" h="-1" measuredW="100" measuredH="5" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::IconLabel" x="43" y="82" w="-1" h="-1" measuredW="64" measuredH="69" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tua%20Festa</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::LinkBar" x="140" y="124" w="-1" h="-1" measuredW="444" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>R008-M1-Registro-Pre-registro%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%2C%2C%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22120%2C124%2C186%2C145%22%20href%3D%22R008-M1-Registro-Pre-registro.bmml%22%20alt%3D%22R008-M1-Registro-Pre-registro%22%20id%3D%223_0%22/%3E%0A</map>
+        <selectedIndex>0</selectedIndex>
+        <text>Registrate%2C%20Ingresar%2C%20Mi%20cuenta%2C%20hola%20%23Usuario%20%28No%20soy%20%23Ese%20Usuario%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::IconLabel" x="802" y="94" w="-1" h="-1" measuredW="93" measuredH="45" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>BaloonIcon%7Csmall</icon>
+        <text>share%20facebook</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::IconLabel" x="902" y="94" w="-1" h="-1" measuredW="82" measuredH="45" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>BaloonIcon%7Csmall</icon>
+        <text>share%20Twitter</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::SearchBox" x="643" y="114" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>search</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Paragraph" x="34" y="248" w="557" h="116" measuredW="200" measuredH="80" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Ac%E1%20te%20explicamos%20por%20qu%E9%20te%20conviene%20inscribirte%20al%20sitio%20para%20poder%20ofrecer%20tus%20productos%20y%20servicios.%0ATambi%E9n%20te%20explicamos%20que%20clasificaciones%20corresponden%20a%20productos%20y%20cuales%20a%20servicios%20y%20todas%20las%20mec%E1nicas%20del%20sitio.%0A%20%0ALuego%20de%20invitamos%20a%20registrarte%20usando%20o%20no%20tu%20cuenta%20de%20Facebook.</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Title" x="34" y="171" w="-1" h="-1" measuredW="364" measuredH="41" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>32</size>
+        <text>Registro%20de%20profesionales</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::SubTitle" x="34" y="215" w="-1" h="-1" measuredW="557" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Sus%20un%20profesional%20o%20una%20empresa%20y%20queres%20ofrecer%20tus%20productos%20en%20Tua%20Festa</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::MultilineButton" x="34" y="364" w="280" h="69" measuredW="289" measuredH="69" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16750848</color>
+        <text>REGISTRATE%20CON%20TU%20FACEBOOK%0ASimplifica%20el%20proceso%20de%20validaci%F3n%20de%20datos</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::MultilineButton" x="342" y="364" w="301" h="69" measuredW="202" measuredH="69" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16750848</color>
+        <text>%A1REGISTRATE%20AHORA%21%0ARegistrarse%20es%20totalmente%20gratuito</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Canvas" x="34" y="462" w="948" h="90" measuredW="100" measuredH="70" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::LinkBar" x="271" y="494" w="-1" h="-1" measuredW="444" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR008-M1-Registro-Pre-registro%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22251%2C494%2C289%2C515%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2213_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22307%2C494%2C382%2C515%22%20href%3D%22R008-M1-Registro-Pre-registro.bmml%22%20alt%3D%22R008-M1-Registro-Pre-registro%22%20id%3D%2213_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22400%2C494%2C493%2C515%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2213_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22511%2C494%2C568%2C515%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2213_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22586%2C494%2C637%2C515%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2213_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22655%2C494%2C695%2C515%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2213_5%22/%3E%0A</map>
+        <selectedIndex>1</selectedIndex>
+        <text>Home%2C%20Registraci%F3n%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

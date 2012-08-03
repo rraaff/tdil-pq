@@ -8,6 +8,8 @@
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::LinkBar" x="140" y="130" w="-1" h="-1" measuredW="444" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
+        <hrefs>R008-M1-Registro-Pre-registro%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%2C%2C%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22133%2C130%2C199%2C151%22%20href%3D%22R008-M1-Registro-Pre-registro.bmml%22%20alt%3D%22R008-M1-Registro-Pre-registro%22%20id%3D%222_0%22/%3E%0A</map>
         <text>Registrate%2C%20Ingresar%2C%20Mi%20cuenta%2C%20hola%20%23Usuario%20%28No%20soy%20%23Ese%20Usuario%29</text>
       </controlProperties>
     </control>
@@ -28,7 +30,7 @@
         <text>search</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::StickyNote" x="70" y="137" w="214" h="64" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::StickyNote" x="56" y="145" w="214" h="64" measuredW="109" measuredH="123" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Registrate%3A%20Va%20al%20R008-M1</text>
       </controlProperties>
@@ -106,12 +108,12 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::StickyNote" x="379" y="0" w="211" h="82" measuredW="109" measuredH="123" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::StickyNote" x="350" y="36" w="211" h="82" measuredW="109" measuredH="123" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>acceso%20a%20cuenta%20de%20profesional%3A</text>
       </controlProperties>
     </control>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::Arrow" x="307" y="27" w="72" h="100" measuredW="150" measuredH="100" zOrder="23" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Arrow" x="307" y="73" w="58" h="54" measuredW="150" measuredH="100" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <direction>bottom</direction>
         <leftArrow>false</leftArrow>
@@ -180,7 +182,7 @@
     </control>
     <control controlID="36" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="13" w="987" h="1355" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>A%20Web%20Page%0Ahttp%3A//</text>
+        <text>R001-M1-Home%20Page</text>
       </controlProperties>
     </control>
     <control controlID="37" controlTypeID="com.balsamiq.mockups::HRule" x="32" y="585" w="950" h="-1" measuredW="100" measuredH="5" zOrder="36" locked="false" isInGroup="-1"/>
