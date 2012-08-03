@@ -1,81 +1,86 @@
-<mockup version="1.0" skin="sketch" measuredW="984" measuredH="326" mockupW="950" mockupH="318">
+<mockup version="1.0" skin="sketch" measuredW="1007" measuredH="1355" mockupW="987" mockupH="1355">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::HRule" x="34" y="77" w="950" h="-1" measuredW="100" measuredH="5" zOrder="1" locked="false" isInGroup="-1"/>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="43" y="8" w="-1" h="-1" measuredW="64" measuredH="69" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::HRule" x="34" y="151" w="950" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::IconLabel" x="43" y="82" w="-1" h="-1" measuredW="64" measuredH="69" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Tua%20Festa</text>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::LinkBar" x="140" y="50" w="-1" h="-1" measuredW="446" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::LinkBar" x="140" y="124" w="-1" h="-1" measuredW="444" measuredH="21" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Registrate%2C%20Ingresar%2C%20Mi%20cuenta%2C%20hola%20%23Usuario%20%28No%20soy%20%23Ese%20Usuario%29</text>
       </controlProperties>
     </control>
-    <control controlID="5" controlTypeID="com.balsamiq.mockups::IconLabel" x="802" y="20" w="-1" h="-1" measuredW="93" measuredH="45" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::IconLabel" x="802" y="94" w="-1" h="-1" measuredW="93" measuredH="45" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <icon>BaloonIcon%7Csmall</icon>
         <text>share%20facebook</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::IconLabel" x="902" y="20" w="-1" h="-1" measuredW="82" measuredH="45" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::IconLabel" x="902" y="94" w="-1" h="-1" measuredW="82" measuredH="45" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <icon>BaloonIcon%7Csmall</icon>
         <text>share%20Twitter</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::FieldSet" x="49" y="111" w="453" h="190" measuredW="200" measuredH="170" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::FieldSet" x="49" y="185" w="453" h="190" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <backgroundAlpha>1</backgroundAlpha>
         <text>%BFQueres%20contactarte%20con%20profesionales%3F</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Paragraph" x="65" y="188" w="422" h="53" measuredW="200" measuredH="80" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Paragraph" x="65" y="262" w="422" h="53" measuredW="200" measuredH="80" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Podes%20registrarte%20usando%20tu%20cuenta%20de%20Facebook%20o%20simplemente%20cargando%20unos%20datos.</text>
       </controlProperties>
     </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::SearchBox" x="643" y="40" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::SearchBox" x="643" y="114" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>search</text>
       </controlProperties>
     </control>
-    <control controlID="19" controlTypeID="com.balsamiq.mockups::Label" x="65" y="140" w="422" h="51" measuredW="629" measuredH="26" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::Label" x="65" y="214" w="422" h="51" measuredW="629" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
         <text>%BFTe%20queres%20registrar%20para%20contactarte%20y%20ser%20contactado%20por%20los%20profesionales%3F</text>
       </controlProperties>
     </control>
-    <control controlID="20" controlTypeID="com.balsamiq.mockups::MultilineButton" x="207" y="215" w="280" h="69" measuredW="290" measuredH="69" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::MultilineButton" x="207" y="289" w="280" h="69" measuredW="289" measuredH="69" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16750848</color>
         <text>REGISTRATE%20CON%20TU%20FACEBOOK%0ANo%20se%20publicar%E1n%20sus%20datos%20personales</text>
       </controlProperties>
     </control>
-    <control controlID="23" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="86" w="950" h="240" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="160" w="950" h="240" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Registrate</text>
       </controlProperties>
     </control>
-    <control controlID="24" controlTypeID="com.balsamiq.mockups::FieldSet" x="513" y="113" w="453" h="188" measuredW="200" measuredH="170" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::FieldSet" x="513" y="187" w="453" h="188" measuredW="200" measuredH="170" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%BFSos%20un%20profesional%3F</text>
       </controlProperties>
     </control>
-    <control controlID="25" controlTypeID="com.balsamiq.mockups::Paragraph" x="528" y="197" w="242" h="53" measuredW="200" measuredH="80" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::Paragraph" x="528" y="271" w="242" h="53" measuredW="200" measuredH="80" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Podes%20registrarte%20usando%20tu%20cuenta%20de%20facebook%20o%20cargando%20tus%20datos%20como%20profesional.%20Luego%20de%20corroborar%20tus%20datos%20podr%E1s%20publicar%20tus%20productos%20o%20servicios.</text>
       </controlProperties>
     </control>
-    <control controlID="30" controlTypeID="com.balsamiq.mockups::Label" x="528" y="146" w="416" h="54" measuredW="488" measuredH="26" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Label" x="528" y="220" w="416" h="54" measuredW="488" measuredH="26" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
         <text>%BFQueres%20ofrecer%20tus%20productos%20o%20servicios%3F%20Registrate%20gratis</text>
       </controlProperties>
     </control>
-    <control controlID="31" controlTypeID="com.balsamiq.mockups::MultilineButton" x="763" y="215" w="191" h="69" measuredW="217" measuredH="69" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::MultilineButton" x="763" y="289" w="191" h="69" measuredW="214" measuredH="69" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16750848</color>
         <text>%A1REGISTRATE%20Y%20VENDE%21%0ARegistrarse%20es%20totalmente%20gratuito</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="987" h="1355" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>R008-M1-%20Registro%20-%20Pre-Registro</text>
       </controlProperties>
     </control>
   </controls>
