@@ -2,7 +2,7 @@
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="987" h="1404" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>R008-M1-%20Registro%20-%20Registro%20Profesional%20Normal%20%28paso%201%29</text>
+        <text>R008-M1-%20Registro%20-%20Registro%20Profesional%20Facebook%20%28paso%202%29</text>
       </controlProperties>
     </control>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="34" y="151" w="950" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="-1"/>
@@ -137,9 +137,10 @@
         <text>Fecha%20de%20nacimiento%3A</text>
       </controlProperties>
     </control>
-    <control controlID="28" controlTypeID="com.balsamiq.mockups::TextInput" x="43" y="372" w="-1" h="-1" measuredW="267" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::TextInput" x="43" y="372" w="-1" h="-1" measuredW="208" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>E-Mail%20%28Se%20utilizar%E1%20como%20nombre%20de%20usuario%29</text>
+        <state>disabled</state>
+        <text>E-Mail%20%28ya%20velidado%20por%20Facebook%29</text>
       </controlProperties>
     </control>
     <control controlID="29" controlTypeID="com.balsamiq.mockups::FieldSet" x="34" y="440" w="600" h="181" measuredW="200" measuredH="170" zOrder="27" locked="false" isInGroup="-1">
@@ -272,11 +273,11 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="60" controlTypeID="com.balsamiq.mockups::MultilineButton" x="357" y="1183" w="313" h="79" measuredW="336" measuredH="69" zOrder="51" locked="false" isInGroup="-1">
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::MultilineButton" x="357" y="1183" w="313" h="79" measuredW="288" measuredH="69" zOrder="51" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16750848</color>
         <icon>SimpleArrowIcon%7Csmall</icon>
-        <text>ENVIAR%20DATOS%20DE%20REGISTRO%0ALe%20enviaremos%20un%20E-Mail%20para%20validar%20la%20casilla%20de%20correo</text>
+        <text>ENVIAR%20DATOS%20DE%20REGISTRO%0ASe%20cargan%20los%20datos%20en%20su%20perfil</text>
       </controlProperties>
     </control>
     <control controlID="61" controlTypeID="com.balsamiq.mockups::Paragraph" x="52" y="661" w="490" h="80" measuredW="200" measuredH="80" zOrder="52" locked="false" isInGroup="-1">
@@ -289,7 +290,7 @@
         <text>Redactar%20comentarios%20de%20ayuda%20para%20secci%F3n%20de%20datos%20personales.</text>
       </controlProperties>
     </control>
-    <control controlID="63" controlTypeID="com.balsamiq.mockups::FieldSet" x="1030" y="1161" w="293" h="117" measuredW="200" measuredH="170" zOrder="54" locked="false" isInGroup="-1">
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::FieldSet" x="1030" y="1161" w="293" h="207" measuredW="200" measuredH="170" zOrder="54" locked="false" isInGroup="-1">
       <controlProperties>
         <color>7317724</color>
         <text>Resultados</text>
@@ -305,6 +306,18 @@
         <direction>bottom</direction>
         <leftArrow>false</leftArrow>
         <text/>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Link" x="1040" y="1289" w="-1" h="-1" measuredW="147" measuredH="21" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>R008-M1-Registro-Profesionales%20Normal-Paso3%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso3.bmml%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso3.bmml%26bm%3BR008-M1-Registro-Profesionales%20Normal-Paso3.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%221020%2C1289%2C1167%2C1310%22%20href%3D%22R008-M1-Registro-Profesionales%2520Normal-Paso3.bmml%22%20alt%3D%22R008-M1-Registro-Profesionales%20Normal-Paso3%22%20id%3D%2266%22/%3E</map>
+        <text>de%20la%20registraci%F3n%20normal</text>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="1044" y="1262" w="-1" h="-1" measuredW="258" measuredH="21" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Si%20es%20resultado%20es%20exitoso%20continua%20al%20paso%203</text>
       </controlProperties>
     </control>
   </controls>
