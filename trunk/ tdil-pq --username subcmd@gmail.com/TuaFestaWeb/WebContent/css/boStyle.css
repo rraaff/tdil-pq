@@ -44,7 +44,6 @@ a:hover {
 }
 /**/
 #header {
-	background-image: url(../boImages/headerBase.jpg);
 	background-repeat: no-repeat;
 	height: 150px;
 	width: 980px;
@@ -65,7 +64,6 @@ a:hover {
 	width: 900px;
 	margin-right: auto;
 	margin-left: auto;
-	background-image: url(../boImages/baseForm.jpg);
 	background-repeat: no-repeat;
 	background-position: center top;
 	padding-top: 30px;
