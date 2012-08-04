@@ -8,14 +8,13 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
-import com.tdil.tuafesta.dao.ProfesionalCategoryDAO;
+import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.ProfesionalCategory;
-import com.tdil.tuafesta.model.ProfesionalCategoryExample;
-import com.tdil.tuafesta.utils.ProfesionalCategoryTreeNode;
-import com.tdil.tuafesta.utils.ProfesionalCategoryUtils;
+import com.tdil.tuafesta.model.ServiceCategory;
+import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
+import com.tdil.tuafesta.utils.ServiceCategoryUtils;
 
-public class ProfesionalCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class ServiceCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -24,13 +23,13 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 	
 	private int id;
 	
-	private List<ProfesionalCategory> parentCategories = new ArrayList<ProfesionalCategory>();
+	private List<ServiceCategory> parentCategories = new ArrayList<ServiceCategory>();
 	
 	private int objectId;
 	private String name;
 	private String description;
 	private int parentId;
-	private List<ProfesionalCategoryTreeNode> allProfesionalCategory;
+	private List<ServiceCategoryTreeNode> allServiceCategory;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -57,20 +56,20 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		ProfesionalCategory professionalCategory = DAOManager.getProfesionalCategoryDAO().selectProfesionalCategoryByPrimaryKey(this.getObjectId());
+		ServiceCategory professionalCategory = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(this.getObjectId());
 		professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
-		DAOManager.getProfesionalCategoryDAO().updateProfesionalCategoryByPrimaryKeySelective(professionalCategory);
+		DAOManager.getServiceCategoryDAO().updateServiceCategoryByPrimaryKeySelective(professionalCategory);
 	}
 	
 	private void reloadList() throws SQLException {
-		List<ProfesionalCategoryTreeNode> list = ProfesionalCategoryUtils.getTreeInTransaction();
-		List<ProfesionalCategoryTreeNode> flatten = ProfesionalCategoryTreeNode.tree2list(list);
-		setAllProfesionalCategory(flatten);
+		List<ServiceCategoryTreeNode> list = ServiceCategoryUtils.getTreeInTransaction();
+		List<ServiceCategoryTreeNode> flatten = ServiceCategoryTreeNode.tree2list(list);
+		setAllServiceCategory(flatten);
 	}
 	
 	@Override
 	public void initWith(int id) throws SQLException {
-		ProfesionalCategory systemProperty = DAOManager.getProfesionalCategoryDAO().selectProfesionalCategoryByPrimaryKey(id);
+		ServiceCategory systemProperty = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(id);
 		if (systemProperty != null) {
 			this.objectId = id;
 			this.name = systemProperty.getName();
@@ -89,21 +88,21 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		ProfesionalCategoryDAO profesionalCategoryDAO = DAOManager.getProfesionalCategoryDAO();
+		ServiceCategoryDAO profesionalCategoryDAO = DAOManager.getServiceCategoryDAO();
 		if (this.getObjectId() == 0) {
-			ProfesionalCategory profesionalCategory = new ProfesionalCategory();
+			ServiceCategory profesionalCategory = new ServiceCategory();
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
 			profesionalCategory.setDeleted(0);
-			profesionalCategoryDAO.insertProfesionalCategory(profesionalCategory);
+			profesionalCategoryDAO.insertServiceCategory(profesionalCategory);
 		} else {
-			ProfesionalCategory profesionalCategory = new ProfesionalCategory();
+			ServiceCategory profesionalCategory = new ServiceCategory();
 			profesionalCategory.setId(this.getObjectId());
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
-			profesionalCategoryDAO.updateProfesionalCategoryByPrimaryKeySelective(profesionalCategory);
+			profesionalCategoryDAO.updateServiceCategoryByPrimaryKeySelective(profesionalCategory);
 		}
 	}
 
@@ -132,12 +131,12 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 		this.description = description;
 	}
 
-	public List<ProfesionalCategoryTreeNode> getAllProfesionalCategory() {
-		return allProfesionalCategory;
+	public List<ServiceCategoryTreeNode> getAllServiceCategory() {
+		return allServiceCategory;
 	}
 
-	public void setAllProfesionalCategory(List<ProfesionalCategoryTreeNode> allProfesionalCategory) {
-		this.allProfesionalCategory = allProfesionalCategory;
+	public void setAllServiceCategory(List<ServiceCategoryTreeNode> allServiceCategory) {
+		this.allServiceCategory = allServiceCategory;
 	}
 
 	public String getName() {
@@ -156,16 +155,16 @@ public class ProfesionalCategoryForm extends TransactionalValidationForm impleme
 		this.parentId = parentId;
 	}
 
-	public List<ProfesionalCategory> getParentCategories() {
+	public List<ServiceCategory> getParentCategories() {
 		return parentCategories;
 	}
 
-	public void setParentCategories(List<ProfesionalCategory> parentCategories) {
+	public void setParentCategories(List<ServiceCategory> parentCategories) {
 		this.parentCategories = parentCategories;
 	}
 
 
-	public static List<ProfesionalCategoryTreeNode> getProfesionalCategoryTree() {
-		return ProfesionalCategoryUtils.getTree();
+	public static List<ServiceCategoryTreeNode> getServiceCategoryTree() {
+		return ServiceCategoryUtils.getTree();
 	}
 }

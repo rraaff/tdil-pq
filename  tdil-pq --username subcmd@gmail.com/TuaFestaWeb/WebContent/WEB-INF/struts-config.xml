@@ -8,12 +8,14 @@
   <form-bean id="SystemPropertyForm" name="SystemPropertyForm" type="com.tdil.tuafesta.struts.forms.SystemPropertyForm"/>
   <form-bean id="NotificationEmailForm" name="NotificationEmailForm" type="com.tdil.tuafesta.struts.forms.NotificationEmailForm"/>
   <form-bean id="RawInsertForm" name="RawInsertForm" type="com.tdil.tuafesta.struts.forms.RawInsertForm"/>
-  <form-bean id="ProfesionalCategoryForm" name="ProfesionalCategoryForm" type="com.tdil.tuafesta.struts.forms.ProfesionalCategoryForm"/>
+  <form-bean id="ServiceCategoryForm" name="ServiceCategoryForm" type="com.tdil.tuafesta.struts.forms.ServiceCategoryForm"/>
   <form-bean id="ProfesionalServiceForm" name="ProfesionalServiceForm" type="com.tdil.tuafesta.struts.forms.ProfesionalServiceForm"/>
   <form-bean id="ProfesionalForm" name="ProfesionalForm" type="com.tdil.tuafesta.struts.forms.ProfesionalForm"/>
-  <form-bean id="ValidateProfesionalEmailForm" name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
+  <form-bean id="ValidateProfesionalEmailForm"
+   name="ValidateProfesionalEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateProfesionalEmailForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.tuafesta.struts.forms.ContactForm"/>
-  <form-bean id="ProfesionalAdministrationForm" name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
+  <form-bean id="ProfesionalAdministrationForm"
+   name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
  </form-beans>
  <global-exceptions/>
@@ -82,79 +84,69 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/rawInsertAdministration.jsp"/>
   </action>
-  
-  
-  <action name="ProfesionalCategoryForm" parameter="Admin" path="/goToProfesionalCategoryABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/profesionalCategoryAdministration.jsp"/>
+  <action name="ServiceCategoryForm" parameter="Admin"
+   path="/goToServiceCategoryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/serviceCategoryAdministration.jsp"/>
   </action>
-  <action name="ProfesionalCategoryForm" parameter="Admin" path="/saveProfesionalCategory"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/profesionalCategoryAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/profesionalCategoryAdministration.jsp"/>
+  <action name="ServiceCategoryForm" parameter="Admin"
+   path="/saveServiceCategory" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/serviceCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/serviceCategoryAdministration.jsp"/>
   </action>
-  <action name="ProfesionalCategoryForm" parameter="Admin" path="/editProfesionalCategory"
-   scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/profesionalCategoryAdministration.jsp"/>
+  <action name="ServiceCategoryForm" parameter="Admin"
+   path="/editServiceCategory" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/serviceCategoryAdministration.jsp"/>
   </action>
-  <action name="ProfesionalCategoryForm" parameter="Admin" path="/toggleDeletedProfesionalCategory"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/profesionalCategoryAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/profesionalCategoryAdministration.jsp"/>
+  <action name="ServiceCategoryForm" parameter="Admin"
+   path="/toggleDeletedServiceCategory" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/serviceCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/serviceCategoryAdministration.jsp"/>
   </action>
-  
- <action name="ProfesionalServiceForm" parameter="Admin" path="/goToProfesionalServiceABM"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="ProfesionalServiceForm" parameter="Admin"
+   path="/goToProfesionalServiceABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/profesionalServiceAdministration.jsp"/>
   </action>
-  <action name="ProfesionalServiceForm" parameter="Admin" path="/saveProfesionalService"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="ProfesionalServiceForm" parameter="Admin"
+   path="/saveProfesionalService" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/profesionalServiceAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalServiceAdministration.jsp"/>
   </action>
-  <action name="ProfesionalServiceForm" parameter="Admin" path="/editProfesionalService"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="ProfesionalServiceForm" parameter="Admin"
+   path="/editProfesionalService" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/profesionalServiceAdministration.jsp"/>
   </action>
-  <action name="ProfesionalServiceForm" parameter="Admin" path="/toggleDeletedProfesionalService"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+  <action name="ProfesionalServiceForm" parameter="Admin"
+   path="/toggleDeletedProfesionalService" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/profesionalServiceAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalServiceAdministration.jsp"/>
   </action>
-  
-  <action name="ProfesionalAdministrationForm" parameter="Admin" path="/goToProfesionalAdministration"
-   scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
+  <action name="ProfesionalAdministrationForm" parameter="Admin"
+   path="/goToProfesionalAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalSAdministration.jsp"/>
   </action>
-  
   <action name="GeoLevelForm" path="/saveGeoLevel" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/geoLevelAdministration.jsp"/>
   </action>
-  <action name="GeoLevelForm" parameter="Admin" path="/toggleDeletedGeoLevel"
-   scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+  <action name="GeoLevelForm" parameter="Admin"
+   path="/toggleDeletedGeoLevel" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/geoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/searchGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
   </action>
-  
   <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/addProfesionalSuccess.jsp" redirect="true"/>
    <forward name="failure" path="/addProfesional.jsp"/>
   </action>
-  
-  <action name="ValidateProfesionalEmailForm" path="/validateProfesionalEmail"
-   scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
+  <action name="ValidateProfesionalEmailForm"
+   path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
    <forward name="failure" path="/profesionalEmailNotValidated.jsp"/>
   </action>
-  
-  <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction">
-  </action>
-  
+  <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.tuafesta.struts.resources.ApplicationResources"/>
