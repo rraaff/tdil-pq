@@ -1,9 +1,9 @@
 <%@page import="com.tdil.tuafesta.struts.forms.GeoLevelForm"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject"%>
-<%@page import="com.tdil.tuafesta.utils.ProfesionalCategoryUtils"%>
-<%@page import="com.tdil.tuafesta.utils.ProfesionalCategoryTreeNode"%>
+<%@page import="com.tdil.tuafesta.utils.ServiceCategoryUtils"%>
+<%@page import="com.tdil.tuafesta.utils.ServiceCategoryTreeNode"%>
 <%@page import="java.util.List"%>
-<%@page import="com.tdil.tuafesta.struts.forms.ProfesionalCategoryForm"%>
+<%@page import="com.tdil.tuafesta.struts.forms.ServiceCategoryForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>

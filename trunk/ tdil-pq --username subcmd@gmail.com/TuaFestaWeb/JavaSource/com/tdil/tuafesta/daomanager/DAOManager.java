@@ -8,10 +8,12 @@ import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.NotificationEmailDAO;
-import com.tdil.tuafesta.dao.ProfesionalCategoryDAO;
+import com.tdil.tuafesta.dao.ProductCategoryDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
+import com.tdil.tuafesta.dao.ProfesionalProductDAO;
 import com.tdil.tuafesta.dao.ProfesionalServiceDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
+import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.dao.SystemPropertyDAO;
 import com.tdil.tuafesta.dao.SystemUserDAO;
 import com.tdil.tuafesta.dao.WallDAO;
@@ -21,10 +23,12 @@ import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
 import com.tdil.tuafesta.dao.impl.NotificationEmailDAOImpl;
-import com.tdil.tuafesta.dao.impl.ProfesionalCategoryDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProductCategoryDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfesionalProductDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalServiceDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
+import com.tdil.tuafesta.dao.impl.ServiceCategoryDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemUserDAOImpl;
 import com.tdil.tuafesta.dao.impl.WallDAOImpl;
@@ -65,12 +69,20 @@ public class DAOManager {
 		return new Geo4DAOImpl(IBatisManager.getClient());
 	}
 	
-	public static ProfesionalCategoryDAO getProfesionalCategoryDAO() throws SQLException {
-		return new ProfesionalCategoryDAOImpl(IBatisManager.getClient());
+	public static ServiceCategoryDAO getServiceCategoryDAO() throws SQLException {
+		return new ServiceCategoryDAOImpl(IBatisManager.getClient());
 	}
 	
 	public static ProfesionalServiceDAO getProfesionalServiceDAO() throws SQLException {
 		return new ProfesionalServiceDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProductCategoryDAO getProductCategoryDAO() throws SQLException {
+		return new ProductCategoryDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProfesionalProductDAO getProfesionalProductDAO() throws SQLException {
+		return new ProfesionalProductDAOImpl(IBatisManager.getClient());
 	}
 	
 	public static ProfesionalDAO getProfesionalDAO() throws SQLException {

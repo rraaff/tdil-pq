@@ -33,8 +33,10 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO3_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO4_SqlMap.xml"/>
 	
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_CATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_SERV_CATEGORY_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_SERVICE_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_PROD_CATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_PRODUCT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFESIONAL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_WRITTING_SqlMap.xml"/>

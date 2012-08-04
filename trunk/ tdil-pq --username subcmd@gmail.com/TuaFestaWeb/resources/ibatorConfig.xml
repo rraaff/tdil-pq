@@ -64,10 +64,16 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="GEO4" domainObjectName="Geo4" alias="g4">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="TUAFESTA" tableName="PROF_CATEGORY" domainObjectName="ProfesionalCategory" alias="pc">
+<table schema="TUAFESTA" tableName="PROF_SERV_CATEGORY" domainObjectName="ServiceCategory" alias="sc">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="TUAFESTA" tableName="PROF_SERVICE" domainObjectName="ProfesionalService" alias="ps">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="PROF_PROD_CATEGORY" domainObjectName="ProductCategory" alias="pc">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="TUAFESTA" tableName="PROF_PRODUCT" domainObjectName="ProfesionalProduct" alias="pp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="TUAFESTA" tableName="WALL" domainObjectName="Wall" alias="wa">
