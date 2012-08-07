@@ -128,8 +128,10 @@ CREATE TABLE PROF_SERVICE (
   `description` VARCHAR(4000) NOT NULL ,
   `average_price` INT NULL,
   `approved` INT NOT NULL ,
+  `id_category` INT NULL,
   `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  INDEX `IX_PROF_SERV_ID_CAT_00` (`id_category` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE PROF_PROD_CATEGORY (
@@ -148,8 +150,10 @@ CREATE TABLE PROF_PRODUCT (
   `description` VARCHAR(4000) NOT NULL ,
   `average_price` INT NULL,
   `approved` INT NOT NULL ,
+  `id_category` INT NULL,
   `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  INDEX `IX_PROF_PROD_ID_CAT_00` (`id_category` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE WALL (

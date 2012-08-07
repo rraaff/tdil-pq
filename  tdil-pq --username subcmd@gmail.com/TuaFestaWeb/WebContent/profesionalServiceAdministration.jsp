@@ -1,3 +1,6 @@
+<%@page import="com.tdil.tuafesta.utils.ServiceCategoryUtils"%>
+<%@page import="com.tdil.tuafesta.struts.forms.ServiceCategoryForm"%>
+<%@page import="com.tdil.tuafesta.utils.ServiceCategoryTreeNode"%>
 <%@page import="com.tdil.tuafesta.model.ProfesionalService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalServiceForm"%>
@@ -34,6 +37,22 @@
 					<div class="label width200"><html:text name="ProfesionalServiceForm" property="averagePrice" styleClass="width180"/></div>
 					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalService.averagePrice.err")%></div>
 					<div class="label width120"><html:checkbox name="ProfesionalServiceForm" property="approved" />Aprobada</div>
+					
+					<%
+						ProfesionalServiceForm form = (ProfesionalServiceForm)session.getAttribute("ProfesionalServiceForm");
+						List<ServiceCategoryTreeNode> listtemp = ServiceCategoryForm.getServiceCategoryTree();
+						List<ServiceCategoryTreeNode> flatten = ServiceCategoryTreeNode.tree2list(listtemp);
+					%>
+					<html:select name="ProfesionalServiceForm" property="categoryId" styleClass="textfield_effect">
+						<option <%=form.getCategoryId() == 0 ? "selected" : ""%> value="0"></option>
+						<%
+							for (ServiceCategoryTreeNode node : flatten) {
+						%>
+							<option <%=node.getServiceCategory().getId().equals(form.getCategoryId()) ? "selected" : ""%> value="<%=node.getServiceCategory().getId()%>"><%=ServiceCategoryUtils.getPrefixFor(node)%><%=node.getServiceCategory().getName()%></option>
+						<%
+							}
+						%>
+					</html:select>
 				</div>
 				<div class="renglon height40">
 					<logic:equal name="ProfesionalServiceForm" property="objectId" value="0">

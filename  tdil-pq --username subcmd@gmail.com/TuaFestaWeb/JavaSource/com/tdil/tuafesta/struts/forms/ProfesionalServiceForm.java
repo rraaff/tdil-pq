@@ -17,6 +17,8 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ProfesionalService;
 import com.tdil.tuafesta.model.ProfesionalServiceExample;
 import com.tdil.tuafesta.model.ProfesionalServiceExample.Criteria;
+import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
+import com.tdil.tuafesta.utils.ServiceCategoryUtils;
 import com.tdil.validations.FieldValidation;
 
 public class ProfesionalServiceForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
@@ -33,6 +35,7 @@ public class ProfesionalServiceForm extends TransactionalValidationForm implemen
 	private String description;
 	private String averagePrice;
 	private boolean approved = true;
+	private int categoryId;
 	private List<ProfesionalService> allServices;
 	
 	private static String name_key = "ProfesionalService.name";
@@ -69,6 +72,7 @@ public class ProfesionalServiceForm extends TransactionalValidationForm implemen
 			this.objectId = id;
 			this.name = service.getName();
 			this.description = service.getDescription();
+			this.categoryId = service.getIdCategory() != null ? service.getIdCategory() : 0;
 			this.approved = service.getApproved().equals(1);
 			if (service.getAveragePrice() != null) {
 				this.averagePrice = String.valueOf(service.getAveragePrice());
@@ -138,6 +142,7 @@ public class ProfesionalServiceForm extends TransactionalValidationForm implemen
 	public void setData(ProfesionalService service) {
 		service.setName(this.getName());
 		service.setDescription(this.getDescription());
+		service.setIdCategory(this.getCategoryId());
 		if (this.isApproved()) {
 			service.setApproved(1);
 		} else {
@@ -206,4 +211,15 @@ public class ProfesionalServiceForm extends TransactionalValidationForm implemen
 		this.approved = approved;
 	}
 
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public static List<ServiceCategoryTreeNode> getServiceCategoryTree() {
+		return ServiceCategoryUtils.getTree(false);
+	}
 }

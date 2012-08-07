@@ -48,6 +48,7 @@
 						}
 					%>
 				</html:select>
+				<%=TuaFestaErrorFormatter.getErrorFrom(request, "ServiceCategory.parentId.err")%>
 				<div class="renglon height40">
 					<logic:equal name="ServiceCategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
