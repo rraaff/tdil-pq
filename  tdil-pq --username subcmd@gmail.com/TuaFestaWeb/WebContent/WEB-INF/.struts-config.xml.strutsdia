@@ -197,7 +197,18 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page7" PATH="/serviceCategoryAdministration.jsp"
   SHAPE="448,2465,0,0" SUBTYPE="jsp"
-  TITLE="profesionalCategoryAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="profesionalCategoryAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveServiceCategory.do"
+   SUBTYPE="confirmed" TARGET="action12" TITLE="/saveServiceCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/toggleDeletedServiceCategory.do" SUBTYPE="confirmed"
+   TARGET="action14" TITLE="/toggleDeletedServiceCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editServiceCategory.st"
+   SUBTYPE="confirmed" TARGET="page17" TITLE="/editServiceCategory.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#addProfesional" NAME="action15"
   PATH="/addProfesional" SHAPE="32,3377,0,0" TITLE="ProfesionalForm"
   TYPE="action" model-entity="StrutsProcessItem">
@@ -344,4 +355,58 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/editGeoLevel.st" SHAPE="464,6162,0,0"
   SUBTYPE="other" TITLE="editGeoLevel.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page17" PATH="/editServiceCategory.st"
+  SHAPE="656,2465,0,0" SUBTYPE="other" TITLE="editServiceCategory.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToProductCategoryABM" NAME="action26"
+  PATH="/goToProductCategoryABM" SHAPE="32,7585,0,0"
+  TITLE="ProductCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page18" PATH="/productCategoryAdministration.jsp"
+  SHAPE="304,7602,0,0" SUBTYPE="jsp"
+  TITLE="productCategoryAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/toggleDeletedProductCategory.do" SUBTYPE="confirmed"
+   TARGET="action29" TITLE="/toggleDeletedProductCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveProductCategory.do"
+   SUBTYPE="confirmed" TARGET="action27" TITLE="/saveProductCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editProductCategory.st"
+   SUBTYPE="confirmed" TARGET="page19" TITLE="/editProductCategory.st"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProductCategory" NAME="action27"
+  PATH="/saveProductCategory" SHAPE="32,7761,0,0"
+  TITLE="ProductCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editProductCategory" NAME="action28"
+  PATH="/editProductCategory" SHAPE="32,7905,0,0"
+  TITLE="ProductCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedProductCategory" NAME="action29"
+  PATH="/toggleDeletedProductCategory" SHAPE="32,8017,0,0"
+  TITLE="ProductCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/productCategoryAdministration.jsp" TARGET="page18"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page19" PATH="/editProductCategory.st"
+  SHAPE="544,7586,0,0" SUBTYPE="other" TITLE="editProductCategory.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
