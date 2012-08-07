@@ -13,6 +13,7 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
 import com.tdil.tuafesta.utils.ServiceCategoryUtils;
+import com.tdil.validations.FieldValidation;
 
 public class ServiceCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
@@ -30,6 +31,12 @@ public class ServiceCategoryForm extends TransactionalValidationForm implements 
 	private String description;
 	private int parentId;
 	private List<ServiceCategoryTreeNode> allServiceCategory;
+	
+	private static String name_key = "ServiceCategory.name";
+	private static String description_key = "ServiceCategory.description";
+	
+	private static String parentId_key = "ServiceCategory.parentId";
+	private static String PARENT_INVALID = "TREE_IS_GRAPH";
 	
 	@Override
 	public void reset() throws SQLException {
@@ -62,7 +69,7 @@ public class ServiceCategoryForm extends TransactionalValidationForm implements 
 	}
 	
 	private void reloadList() throws SQLException {
-		List<ServiceCategoryTreeNode> list = ServiceCategoryUtils.getTreeInTransaction();
+		List<ServiceCategoryTreeNode> list = ServiceCategoryUtils.getTreeInTransaction(false);
 		List<ServiceCategoryTreeNode> flatten = ServiceCategoryTreeNode.tree2list(list);
 		setAllServiceCategory(flatten);
 	}
@@ -80,10 +87,24 @@ public class ServiceCategoryForm extends TransactionalValidationForm implements 
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
+		FieldValidation.validateText(this.getName(), name_key, 100, validationError);
+		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
 	}
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
+		if (this.getObjectId() != 0) {
+			ServiceCategoryDAO profesionalCategoryDAO = DAOManager.getServiceCategoryDAO();
+			ServiceCategory serviceCategory = profesionalCategoryDAO.selectServiceCategoryByPrimaryKey(this.getParentId());
+			while (serviceCategory != null) {
+				if (serviceCategory.getId().equals(this.getObjectId())) {
+					// error, arbol es un grafo
+					validationError.setFieldError(parentId_key, PARENT_INVALID);
+					return;
+				}
+				serviceCategory = profesionalCategoryDAO.selectServiceCategoryByPrimaryKey(serviceCategory.getParentId());
+			}
+		}
 	}
 
 	@Override
@@ -165,6 +186,6 @@ public class ServiceCategoryForm extends TransactionalValidationForm implements 
 
 
 	public static List<ServiceCategoryTreeNode> getServiceCategoryTree() {
-		return ServiceCategoryUtils.getTree();
+		return ServiceCategoryUtils.getTree(false);
 	}
 }
