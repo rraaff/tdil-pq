@@ -409,4 +409,41 @@
  <PROCESS-ITEM NAME="page19" PATH="/editProductCategory.st"
   SHAPE="544,7586,0,0" SUBTYPE="other" TITLE="editProductCategory.st"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToProfesionalProductABM" NAME="action30"
+  PATH="/goToProfesionalProductABM" SHAPE="32,8945,0,0"
+  TITLE="ProfesionalProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20"
+  PATH="/profesionalProductAdministration.jsp" SHAPE="304,8962,0,0"
+  SUBTYPE="jsp" TITLE="profesionalProductAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveProfesionalProduct" NAME="action31"
+  PATH="/saveProfesionalProduct" SHAPE="32,9057,0,0"
+  TITLE="ProfesionalProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editProfesionalProduct" NAME="action32"
+  PATH="/editProfesionalProduct" SHAPE="32,9201,0,0"
+  TITLE="ProfesionalProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedProfesionalProduct" NAME="action33"
+  PATH="/toggleDeletedProfesionalProduct" SHAPE="32,9313,0,0"
+  TITLE="ProfesionalProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/profesionalProductAdministration.jsp" TARGET="page20"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

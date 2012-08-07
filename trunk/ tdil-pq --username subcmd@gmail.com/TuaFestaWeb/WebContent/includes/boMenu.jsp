@@ -17,6 +17,7 @@
 				<li><html:link action="/goToServiceCategoryABM" >Manejo de categorias de servicios</html:link></li>
 				<li><html:link action="/goToProfesionalServiceABM" >Manejo de servicios</html:link></li>
 				<li><html:link action="/goToProductCategoryABM" >Manejo de categorias de productos</html:link></li>
+				<li><html:link action="/goToProfesionalProductABM" >Manejo de productos</html:link></li>
 			</ul>
 		</li>
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Administracion</a>
