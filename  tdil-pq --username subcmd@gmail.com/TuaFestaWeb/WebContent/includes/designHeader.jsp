@@ -1,18 +1,21 @@
+<div id="headers">
 	<div id="header">
-		<div id="logo"><a href="index.jsp" title="TUAFESTA"></a></div>
-		<div id="box">
-			<div id="subi"><a href="index.jsp" title="SUB&Iacute; tu foto con chocolate"></a></div>
-			<div id="social">
-				<ul>
-					<li class="faqs"><!--a href="faqs.jsp" title="FAQS"></a--></li>
-					<li class="youtube"><a href="http://www.youtube.com/user/ChocolateTUAFESTAArg" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
-					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
-					<li class="facebook"><a href="javascript:facebookShare('TUAFESTA Argentina | Sitio oficial | ' + document.title ,'Hay tanta dulzura para compartir','www.TUAFESTA.com.ar/',location.href);" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<li class="t"><!--a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a--></li>
+		<div id="logo"><a href="./index.jsp" title="Volver al Inicio"><img src="images/skin_basic/logos/headerLogo.png" /></a></div>
+		<div id="centralhead">
+			<div id="border"></div>
+			<div id="taglineAndMenu">
+				<p>El sitio que te ayuda a organizar tu fiesta</p>
+				<ul class="nav">
+					<li><a href="addProfesional.jsp">Registrate</a></li>
+					<li><a href="#">Ingresar</a></li>
+					<li><a href="#">Mi cuenta</a></li>
+					<li><span class="userLogged">Bienvenido&nbsp;</span><span class="selected">Alejandro Price </span><a href="#">(no soy Alejandro)</a></li>
 				</ul>
 			</div>
-			<!-- end social-->
+			<div id="border"></div>
+			<div id="search">Buscar <input placeholder="Ej: Fotografía" name="simpleSearch" type="text" class="searchField"/></div>
+			<div id="border"></div>
+			<div id="social"><a href="#" title="Compart&iacute; en Facebook"><img src="images/skin_basic/header/icon_FB.gif" alt="Compart&iacute; en Facebook" /></a><a href="#" title="Compart&iacute; en Twitter"><img src="images/skin_basic/header/icon_TW.gif" alt="Compart&iacute; en Twitter" /></a></div>
 		</div>
-		<!-- end box-->
 	</div>
-	<!-- end header-->
+</div>
