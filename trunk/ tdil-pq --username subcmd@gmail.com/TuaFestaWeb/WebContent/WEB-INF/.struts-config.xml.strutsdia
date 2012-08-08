@@ -302,15 +302,12 @@
   PATH="/goToProfesionalAdministration" SHAPE="32,5105,0,0"
   TITLE="ProfesionalAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/profesionalSAdministration.jsp" TARGET="page13"
-   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/profesionalAdministration.jsp" TARGET="page14" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/profesionalAdministration.jsp" TARGET="page14"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page13" PATH="/profesionalSAdministration.jsp"
-  SHAPE="256,5122,0,0" SUBTYPE="jsp"
-  TITLE="profesionalSAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page14" PATH="/profesionalAdministration.jsp"
   SHAPE="256,5266,0,0" SUBTYPE="jsp"
   TITLE="profesionalAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
@@ -418,7 +415,18 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page20"
   PATH="/profesionalProductAdministration.jsp" SHAPE="304,8962,0,0"
-  SUBTYPE="jsp" TITLE="profesionalProductAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="profesionalProductAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveProfesionalProduct.do"
+   SUBTYPE="confirmed" TARGET="action31"
+   TITLE="/saveProfesionalProduct.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/toggleDeletedProfesionalProduct.do" SUBTYPE="confirmed"
+   TARGET="action33" TITLE="/toggleDeletedProfesionalProduct.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editProfesionalProduct.st"
+   SUBTYPE="confirmed" TARGET="page21"
+   TITLE="/editProfesionalProduct.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveProfesionalProduct" NAME="action31"
   PATH="/saveProfesionalProduct" SHAPE="32,9057,0,0"
   TITLE="ProfesionalProductForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -445,5 +453,28 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/profesionalProductAdministration.jsp" TARGET="page20"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page21" PATH="/editProfesionalProduct.st"
+  SHAPE="512,8962,0,0" SUBTYPE="other" TITLE="editProfesionalProduct.st"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToGeoLevelAdministration" NAME="action34"
+  PATH="/goToGeoLevelAdministration" SHAPE="32,6737,0,0"
+  TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevelAdministration" NAME="action35"
+  PATH="/refreshGeoLevelAdministration" SHAPE="32,6737,0,0"
+  TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editGeoLevel" NAME="action36" PATH="/editGeoLevel"
+  SHAPE="32,6737,0,0" TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

@@ -34,8 +34,6 @@
 					<div class="label width200"><html:text name="ProfesionalServiceForm" property="description" styleClass="width180"/></div>
 					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalService.description.err")%></div>
 					<div class="label width180">Precio promeio</div>
-					<div class="label width200"><html:text name="ProfesionalServiceForm" property="averagePrice" styleClass="width180"/></div>
-					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalService.averagePrice.err")%></div>
 					<div class="label width120"><html:checkbox name="ProfesionalServiceForm" property="approved" />Aprobada</div>
 					
 					<%

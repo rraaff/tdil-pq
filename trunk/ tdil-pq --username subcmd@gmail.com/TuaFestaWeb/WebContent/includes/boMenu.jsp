@@ -8,7 +8,7 @@
 	<ul class="nav">
 		<li><a href="#" style="background:none; color:#000000; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; -o-box-shadow: none;">Profesionales</a>
 			<ul>
-				<li><a href="geoLevelAdministration.jsp">Geo Levels</a></li>
+				<li><html:link action="/goToGeoLevelAdministration">Geo Levels</html:link></li>
 				<li><html:link action="/goToProfesionalAdministration" >Administracion</html:link></li>
 			</ul>
 		</li>

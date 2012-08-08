@@ -163,7 +163,14 @@
   <action name="ProfesionalAdministrationForm" parameter="Admin"
    path="/goToProfesionalAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/profesionalSAdministration.jsp"/>
+   <forward name="failure" path="/profesionalAdministration.jsp"/>
+  </action>
+  
+  <action name="GeoLevelForm" path="/goToGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+  </action>
+  <action name="GeoLevelForm" path="/refreshGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.RefreshAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/saveGeoLevel" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
@@ -177,6 +184,11 @@
   <action name="GeoLevelForm" path="/searchGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
   </action>
+  <action name="GeoLevelForm" parameter="Admin"
+   path="/editGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+  </action>
+  
   <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/addProfesionalSuccess.jsp" redirect="true"/>
    <forward name="failure" path="/addProfesional.jsp"/>
