@@ -31,20 +31,24 @@
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::CoverFlow" x="43" y="177" w="615" h="208" measuredW="493" measuredH="198" zOrder="7" locked="false" isInGroup="-1"/>
-    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="725" y="206" w="-1" h="-1" measuredW="219" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="725" y="194" w="-1" h="-1" measuredW="219" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>R010-M1-Busqueda%20Avanzada%26bm%3BR010-M1-Busqueda%20Avanzada.bmml%26bm%3BR010-M1-Busqueda%20Avanzada.bmml%26bm%3BR010-M1-Busqueda%20Avanzada.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22718%2C194%2C937%2C221%22%20href%3D%22R010-M1-Busqueda%2520Avanzada.bmml%22%20alt%3D%22R010-M1-Busqueda%20Avanzada%22%20id%3D%228%22/%3E</map>
         <text>Te%20ayudamos%20a%20organizar%20tu%20fiesta</text>
       </controlProperties>
     </control>
-    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="753" y="302" w="-1" h="-1" measuredW="164" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Button" x="753" y="290" w="-1" h="-1" measuredW="164" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
+        <href>R008-M1-Registro-Clientes%20Facebook-Paso1%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso1.bmml%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso1.bmml%26bm%3BR008-M1-Registro-Clientes%20Facebook-Paso1.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22746%2C290%2C910%2C317%22%20href%3D%22R008-M1-Registro-Clientes%2520Facebook-Paso1.bmml%22%20alt%3D%22R008-M1-Registro-Clientes%20Facebook-Paso1%22%20id%3D%2210%22/%3E</map>
         <text>Registrate%20con%20facebook</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="784" y="260" w="-1" h="-1" measuredW="102" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Link" x="784" y="248" w="-1" h="-1" measuredW="102" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <href>R008-M1-Registro-Home-Registro%20Profesionales%26bm%3BR008-M1-Registro-Home-Registro%20Profesionales.bmml%26bm%3BR008-M1-Registro-Home-Registro%20Profesionales.bmml%26bm%3BR008-M1-Registro-Home-Registro%20Profesionales.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22777%2C260%2C879%2C281%22%20href%3D%22R008-M1-Registro-Home-Registro%2520Profesionales.bmml%22%20alt%3D%22R008-M1-Registro-Home-Registro%20Profesionales%22%20id%3D%2211%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22777%2C248%2C879%2C269%22%20href%3D%22R008-M1-Registro-Home-Registro%2520Profesionales.bmml%22%20alt%3D%22R008-M1-Registro-Home-Registro%20Profesionales%22%20id%3D%2211%22/%3E</map>
         <text>%BFC%F3mo%20publicar%3F</text>
       </controlProperties>
     </control>
@@ -398,17 +402,24 @@
       </controlProperties>
     </control>
     <control controlID="92" controlTypeID="com.balsamiq.mockups::Canvas" x="43" y="1242" w="948" h="90" measuredW="100" measuredH="70" zOrder="80" locked="false" isInGroup="-1"/>
-    <control controlID="93" controlTypeID="com.balsamiq.mockups::LinkBar" x="280" y="1274" w="-1" h="-1" measuredW="444" measuredH="21" zOrder="81" locked="false" isInGroup="-1">
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::LinkBar" x="247" y="1274" w="-1" h="-1" measuredW="540" measuredH="21" zOrder="81" locked="false" isInGroup="-1">
       <controlProperties>
-        <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR008-M1-Registro-Pre-registro%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22273%2C1274%2C311%2C1295%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2293_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22329%2C1274%2C404%2C1295%22%20href%3D%22R008-M1-Registro-Pre-registro.bmml%22%20alt%3D%22R008-M1-Registro-Pre-registro%22%20id%3D%2293_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22422%2C1274%2C515%2C1295%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2293_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22533%2C1274%2C590%2C1295%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2293_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22608%2C1274%2C659%2C1295%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2293_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22677%2C1274%2C717%2C1295%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2293_5%22/%3E%0A</map>
+        <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR002-M1-Lista%20promociones%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%2CR008-M1-Registro-Pre-registro%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%26bm%3BR008-M1-Registro-Pre-registro.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22240%2C1274%2C278%2C1295%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2293_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22296%2C1274%2C374%2C1295%22%20href%3D%22R002-M1-Lista%2520promociones.bmml%22%20alt%3D%22R002-M1-Lista%20promociones%22%20id%3D%2293_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22392%2C1274%2C467%2C1295%22%20href%3D%22R008-M1-Registro-Pre-registro.bmml%22%20alt%3D%22R008-M1-Registro-Pre-registro%22%20id%3D%2293_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22485%2C1274%2C578%2C1295%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2293_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22596%2C1274%2C653%2C1295%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2293_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22671%2C1274%2C722%2C1295%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2293_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22740%2C1274%2C780%2C1295%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2293_6%22/%3E%0A</map>
         <selectedIndex>0</selectedIndex>
-        <text>Home%2C%20Registraci%F3n%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
+        <text>Home%2C%20Promociones%2C%20Registraci%F3n%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
       </controlProperties>
     </control>
     <control controlID="96" controlTypeID="com.balsamiq.mockups::StickyNote" x="329" y="647" w="359" h="220" measuredW="109" measuredH="123" zOrder="82" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Avisos%20Destacados%20Simples%20%28Sin%20Filtro%29%0ASe%20muestra%3A%20%0A-%20Descripci%F3n%20cortada%0A-%20Rubro%3A%20%28Categor%EDas%20y%20sub%20categor%EDas%2C%20todas%20seguidas%20en%20bloques%29%0A-%20Precio%20promedio%3A%20Se%20calcula%20seg%FAn%20los%20precios%20cargados%20en%20el%20perfil.%20%28El%20usuario%20puede%20desactivar%20el%20pracio%20para%20que%20no%20sea%20visible%20en%20los%20avisos.%20Esto%20proteje%20a%20profesionales%20que%20ofrecen%20servicios%20de%20muy%20variado%20rango%20de%20precios%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::Button" x="747" y="340" w="-1" h="-1" measuredW="175" measuredH="27" zOrder="83" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>R002-M1-Lista%20promociones%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22740%2C340%2C915%2C367%22%20href%3D%22R002-M1-Lista%2520promociones.bmml%22%20alt%3D%22R002-M1-Lista%20promociones%22%20id%3D%2297%22/%3E</map>
+        <text>Ver%20todas%20las%20promociones</text>
       </controlProperties>
     </control>
   </controls>
