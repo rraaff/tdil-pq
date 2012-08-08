@@ -1,3 +1,5 @@
+<%@page import="com.tdil.tuafesta.model.Geo3"%>
+<%@page import="com.tdil.tuafesta.model.Geo2"%>
 <%@page import="com.tdil.tuafesta.struts.forms.GeoLevelForm"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject"%>
 <%@page import="com.tdil.tuafesta.utils.ServiceCategoryUtils"%>
@@ -27,14 +29,36 @@
 			<h1>Administraci&oacute;n de geo levels</h1>
 			<div id="conteinerScrollable" style="overflow:hidden;">
 				<span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span>
-				<html:select name="GeoLevelForm" property="level">
-					<% for (int i = 2; i <= 4; i++) { %>
-						<option	<%=	i == geoLevelForm.getLevel() ? "selected" : ""%>
-							value="<%=String.valueOf(i)%>">
-							&nbsp;&nbsp;&nbsp;<%=String.valueOf(i)%></option>
+				<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
+					<option value="0">-<option>
+					<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
+						<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
+							value="<%=String.valueOf(geo2.getId())%>">
+							<%=geo2.getNombre()%></option>
 					<% } %>
 				</html:select>
-
+				<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
+					<html:select name="GeoLevelForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
+					<% for (Geo3 geo3 : geoLevelForm.getLevel3()) { %>	
+						<option	<%=	geo3.getId() == geoLevelForm.getGeo3Id() ? "selected" : ""%>
+							value="<%=String.valueOf(geo3.getId())%>">
+							<%=geo3.getNombre()%></option>
+					<% } %>
+					</html:select>
+				</logic:notEqual>
+				<logic:equal name="GeoLevelForm" property="geo2Id" value="0">
+					Provincia:
+				</logic:equal>
+				<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
+					<logic:equal name="GeoLevelForm" property="geo3Id" value="0">
+						Partido:
+					</logic:equal>
+					<logic:notEqual name="GeoLevelForm" property="geo3Id" value="0">
+						Localidad:
+					</logic:notEqual>
+				</logic:notEqual>
+				<html:text name="GeoLevelForm" property="nombre" styleClass="width180"/></div>
+				<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
 				<div class="renglon height40">
 					<logic:equal name="GeoLevelForm" property="objectId" value="0">
 						<html:submit property="operation">
@@ -81,7 +105,7 @@
 										align="left"><%= ((GeoLevelValueObject) iterSection).getNombre() %>
 									</td>
 									<td>
-										<html:link action="editGeoLevel.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+										<a href="./editGeoLevel.do?id=<%=((GeoLevelValueObject) iterSection).getId()%>&level=<%=((GeoLevelValueObject) iterSection).getLevel()%>"><img src="boImages/editar.png" alt="Editar"></a>
 										<html:link action="/toggleDeletedGeoLevel" paramName="iterSection"
 											paramProperty="id" paramId="id">
 											<% if (((GeoLevelValueObject) iterSection).getDeleted() == 1) { %>

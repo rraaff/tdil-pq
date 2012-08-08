@@ -148,7 +148,7 @@ public class ProfesionalServiceForm extends TransactionalValidationForm implemen
 		} else {
 			service.setApproved(0);
 		}
-		if (StringUtils.isNumeric(this.getAveragePrice())) {
+		if (StringUtils.isNumeric(this.getAveragePrice()) && !StringUtils.isEmpty(this.getAveragePrice())) {
 			service.setAveragePrice(Integer.valueOf(this.getAveragePrice()));
 		} else {
 			service.setAveragePrice(null);
