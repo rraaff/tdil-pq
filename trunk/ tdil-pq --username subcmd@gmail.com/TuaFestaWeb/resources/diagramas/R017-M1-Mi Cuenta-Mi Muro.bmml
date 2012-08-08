@@ -117,33 +117,24 @@
         <text>aprobar</text>
       </controlProperties>
     </control>
-    <control controlID="24" controlTypeID="com.balsamiq.mockups::Canvas" x="39" y="603" w="948" h="90" measuredW="100" measuredH="70" zOrder="22" locked="false" isInGroup="-1"/>
-    <control controlID="25" controlTypeID="com.balsamiq.mockups::LinkBar" x="276" y="635" w="-1" h="-1" measuredW="430" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
-      <controlProperties>
-        <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR009-M1-Mi%20cuenta-Perfil%20Profesional%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22256%2C635%2C294%2C656%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2225_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22312%2C635%2C373%2C656%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional%22%20id%3D%2225_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22391%2C635%2C484%2C656%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2225_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22502%2C635%2C559%2C656%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2225_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22577%2C635%2C628%2C656%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2225_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22646%2C635%2C686%2C656%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2225_5%22/%3E%0A</map>
-        <selectedIndex>1</selectedIndex>
-        <text>Home%2C%20Mi%20Cuenta%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
-      </controlProperties>
-    </control>
-    <control controlID="26" controlTypeID="com.balsamiq.mockups::FieldSet" x="50" y="509" w="541" h="66" measuredW="200" measuredH="170" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::FieldSet" x="50" y="509" w="541" h="66" measuredW="200" measuredH="170" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <backgroundAlpha>0.25</backgroundAlpha>
         <color>16776960</color>
         <text>Agregar%20nuevo%20topico</text>
       </controlProperties>
     </control>
-    <control controlID="27" controlTypeID="com.balsamiq.mockups::Paragraph" x="59" y="525" w="278" h="20" measuredW="200" measuredH="80" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Paragraph" x="59" y="525" w="278" h="20" measuredW="200" measuredH="80" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Comentario%20de%20That%20Day%20in%20London</text>
       </controlProperties>
     </control>
-    <control controlID="28" controlTypeID="com.balsamiq.mockups::Link" x="541" y="547" w="-1" h="-1" measuredW="41" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Link" x="541" y="547" w="-1" h="-1" measuredW="41" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Enviar</text>
       </controlProperties>
     </control>
-    <control controlID="31" controlTypeID="com.balsamiq.mockups::LinkBar" x="160" y="132" w="-1" h="-1" measuredW="402" measuredH="21" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::LinkBar" x="160" y="132" w="-1" h="-1" measuredW="402" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>R009-M1-Mi%20cuenta-Perfil%20Profesional%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%2CR017-M1-Mi%20Cuenta-Mi%20Muro%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml%2C</hrefs>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22140%2C132%2C245%2C153%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional%22%20id%3D%2231_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22263%2C132%2C311%2C153%22%20href%3D%22R017-M1-Mi%2520Cuenta-Mi%2520Muro.bmml%22%20alt%3D%22R017-M1-Mi%20Cuenta-Mi%20Muro%22%20id%3D%2231_1%22/%3E%0A</map>
@@ -151,10 +142,19 @@
         <text>Mi%20cuenta%20%20%20%20%20%20%20%20%20%20%20%20%2C%20Mi%20Muro%2C%20hola%20%23Usuario%20%28No%20soy%20%23Ese%20Usuario%29</text>
       </controlProperties>
     </control>
-    <control controlID="32" controlTypeID="com.balsamiq.mockups::NumericStepper" x="224" y="130" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::NumericStepper" x="224" y="130" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <color>13576743</color>
         <text>5</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Canvas" x="40" y="599" w="948" h="90" measuredW="100" measuredH="70" zOrder="27" locked="false" isInGroup="-1"/>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::LinkBar" x="253" y="631" w="-1" h="-1" measuredW="523" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR002-M1-Lista%20promociones%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%2CR009-M1-Mi%20cuenta-Perfil%20Profesional%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22233%2C631%2C271%2C652%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2234_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22289%2C631%2C367%2C652%22%20href%3D%22R002-M1-Lista%2520promociones.bmml%22%20alt%3D%22R002-M1-Lista%20promociones%22%20id%3D%2234_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22385%2C631%2C443%2C652%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional%22%20id%3D%2234_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22461%2C631%2C554%2C652%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2234_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22572%2C631%2C629%2C652%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2234_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22647%2C631%2C698%2C652%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2234_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22716%2C631%2C756%2C652%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2234_6%22/%3E%0A</map>
+        <selectedIndex>2</selectedIndex>
+        <text>Home%2C%20Promociones%2C%20Mi%20cuenta%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
       </controlProperties>
     </control>
   </controls>
