@@ -4,7 +4,7 @@
 		<div id="linkAndCopy">
 			<a href="">Inicio</a>
 			<a href="">Promociones</a>
-			<a href="">Registraci&oacute;</a>
+			<a href="">Registraci&oacute;n</a>
 			<a href="">Quienes somos</a>
 			<a href="contacto.jsp" title="Envianos tus consultas o sugerencias">Contacto</a>
 			<a href="">Legales</a>
