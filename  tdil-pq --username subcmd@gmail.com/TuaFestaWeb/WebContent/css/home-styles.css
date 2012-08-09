@@ -36,13 +36,13 @@ abbr,acronym {
 }
 a img{border:0; outline:none;}
 a{
-	color:#c8c8c8;
+	color:#292f3a;
 	outline:none;
 	cursor:pointer;
 	text-decoration:none;
 }
 a:hover{
-	color:#FFF;
+	color:#292f3a;
 	outline:none;
 	text-decoration:underline;
 }
@@ -72,7 +72,6 @@ body {
 	font-size:12px;
 }
 a {
-	color:#0033FF;
 	text-decoration:none
 }
 /* ///////////////////////////////////////////////////////////// */
@@ -187,6 +186,214 @@ a {
 	margin-left:12px;
 	margin-top:45px;
 	float:left;
+}
+/* / CENTRAL /////////////////////////////////////////////////// */
+#central {
+	background-image: url(../images/skin_basic/backgrounds/home_promoBase.jpg);
+	background-repeat: repeat-x;
+	width:100%;
+	height:367px;
+	margin:0px;
+	float:left;
+}
+#central #centralBlock {
+	background-image:url(../images/skin_basic/backgrounds/borders.png);
+	background-repeat:repeat-y;
+	width:1000px;
+	height:367px;
+	margin:0 auto;
+}
+#central #centralBlock #promos {
+	background-image: url(../images/skin_basic/home/basePromos.png);
+	background-repeat: no-repeat;
+	width:643px;
+	height:367px;
+	margin-left:10px;
+	float:left;
+}
+#central #centralBlock #buttons {
+	width:337px;
+	height:367px;
+	padding-top:2px;
+	float:left;
+}
+#central #centralBlock #buttons a {
+	float:left;
+}
+/* / CONTENT /////////////////////////////////////////////////// */
+#content {
+	background-image: url(../images/skin_basic/backgrounds/body.gif);
+	background-repeat: repeat;
+	width:100%;
+	margin:0;
+	float:left;
+}
+#superHighlighted {
+	background-image: url(../images/skin_basic/backgrounds/borders_central.png);
+	background-repeat: repeat-y;
+	width:1000px;
+	min-height:240px;
+	margin:0 auto;
+}
+#superHighlighted #superHighlightedBlock {
+	color: #292f3a;
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: url(../images/skin_basic/backgrounds/superHighlighted.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:490px;
+	height:240px;
+	
+	float:left;
+}
+#superHighlightedBlock #navigationButtons {
+	width:458px;
+	height:42px;
+	position:relative;
+	top:99px;
+	left:16px;
+}
+#superHighlightedBlock #navigationButtons #left {
+	width:22px;
+	height:42px;
+	float:left;
+}
+#superHighlightedBlock #navigationButtons #right {
+	width:22px;
+	height:42px;
+	float:right;
+}
+#superHighlightedBlock #adv {
+	width:188px;
+	height:190px;
+	margin-left:10px;
+	margin-right:10px;
+	position:relative;
+	top:-15px;
+	left:37px;
+	float:left;
+}
+#superHighlightedBlock #adv img {
+	padding-bottom:18px;
+}
+#superHighlightedBlock #adv .precio {}
+#superHighlightedBlock #adv h4 a, #superHighlightedBlock #adv h4 a:active, #superHighlightedBlock #adv h4 a:visited {
+	color:#292f3a;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+}
+#superHighlightedBlock #adv h4 a:hover {
+	text-decoration:underline;
+}
+/* / BARRA LATERAR IZQUIERDA /////////////////////////////////// */
+#superHighlighted #leftCentral {
+	width:624px;
+	min-height:620px;
+	margin-left:20px;
+	margin-right:10px;
+	margin-top:20px;
+	margin-bottom:10px;
+	float:left;
+}
+#lowHighlightedAdv {
+	width:294px;
+	height:118px;
+	margin-left:15px;
+	margin-bottom:15px;
+	float:left;
+}
+#lowHighlightedAdv h5, #lowHighlightedAdv h5 a {
+	color:#292f3a;
+	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+#lowHighlightedAdv #imageAtAdv {
+	background-image: url(../images/skin_basic/demo/lha.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:86px;
+	float:left;
+}
+#lowHighlightedAdv p, #lowHighlightedAdv p a {
+	font-size:11px;
+	width:198px;
+	height:40px;
+	padding-left:10px;
+	padding-bottom:2px;
+	overflow:hidden;
+	float:left;
+}
+#lowHighlightedAdv .category, #lowHighlightedAdv .category a {
+	color:#1b91d7;
+	font-size:11px;
+	text-decoration:underline;
+	width:198px;
+	padding-left:10px;
+	padding-bottom:2px;
+	overflow:hidden;
+	float:left;
+}
+#lowHighlightedAdv .price, #lowHighlightedAdv .price a {
+	color:#939393;
+	font-size:11px;
+	width:198px;
+	padding-left:10px;
+	overflow:hidden;
+	float:left;
+}
+/* / BARRA LATERAR DERECHA ///////////////////////////////////// */
+#superHighlighted #rightCentral {
+	width:323px;
+	min-height:660px;
+	margin-top:20px;
+	background-color:#fafafa;
+	float:left;
+}
+#superHighlighted #punteado {
+	background-image: url(../images/skin_basic/backgrounds/punteadoGrande.gif);
+	background-repeat: repeat-x;
+	background-position: center center;
+	width:960px;
+	height:2px;
+	margin-left:20px;
+	float:left;
+}
+#zoneNavigation, #categoryNavigation {
+	padding:16px;
+	padding-bottom:0px;
+}
+#zoneNavigation p, #categoryNavigation p {
+	-moz-column-width: 130px;
+	-moz-column-gap: 15px;
+	-webkit-column-width: 130px;
+	-webkit-column-gap: 15px;
+	/*-webkit-column-rule: 1px solid #ccc;
+	-moz-column-rule: 1px solid #ccc;*/
+
+	font-size:11px;
+	line-height:18px;
+	width:290px;
+	height:262px;
+	
+	overflow:hidden;
+}
+#zoneNavigation a, #categoryNavigation a {
+	color:#1399f8;
+}
+#zoneNavigation h3, #categoryNavigation h3 {
+	color:#035b9c;
+	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
+	font-size:20px;
+	padding-bottom:10px;
+}
+#categoryNavigation h3 {
+	color:#f6b400;
 }
 /* / FOOTER //////////////////////////////////////////////////// */
 #footers {
