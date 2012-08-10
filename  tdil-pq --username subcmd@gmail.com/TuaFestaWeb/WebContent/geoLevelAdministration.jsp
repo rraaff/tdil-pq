@@ -29,34 +29,67 @@
 			<h1>Administraci&oacute;n de geo levels</h1>
 			<div id="conteinerScrollable" style="overflow:hidden;">
 				<span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span>
-				<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
-					<option value="0">-<option>
-					<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
-						<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
-							value="<%=String.valueOf(geo2.getId())%>">
-							<%=geo2.getNombre()%></option>
-					<% } %>
-				</html:select>
-				<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
-					<html:select name="GeoLevelForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
-					<% for (Geo3 geo3 : geoLevelForm.getLevel3()) { %>	
-						<option	<%=	geo3.getId() == geoLevelForm.getGeo3Id() ? "selected" : ""%>
-							value="<%=String.valueOf(geo3.getId())%>">
-							<%=geo3.getNombre()%></option>
-					<% } %>
+				<logic:equal name="GeoLevelForm" property="objectId" value="0">
+					<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Administration.do';this.form.submit()">
+						<option value="0">-<option>
+						<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
+							<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
+								value="<%=String.valueOf(geo2.getId())%>">
+								<%=geo2.getNombre()%></option>
+						<% } %>
 					</html:select>
-				</logic:notEqual>
-				<logic:equal name="GeoLevelForm" property="geo2Id" value="0">
-					Provincia:
 				</logic:equal>
-				<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
-					<logic:equal name="GeoLevelForm" property="geo3Id" value="0">
-						Partido:
-					</logic:equal>
-					<logic:notEqual name="GeoLevelForm" property="geo3Id" value="0">
-						Localidad:
+				
+				<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
+					<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
+						<bean:write name="GeoLevelForm" property="geo2Nombre" />
 					</logic:notEqual>
 				</logic:notEqual>
+				
+				<logic:equal name="GeoLevelForm" property="objectId" value="0">
+					<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
+						<html:select name="GeoLevelForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
+						<option value="0">-<option>
+						<% for (Geo3 geo3 : geoLevelForm.getLevel3()) { %>	
+							<option	<%=	geo3.getId() == geoLevelForm.getGeo3Id() ? "selected" : ""%>
+								value="<%=String.valueOf(geo3.getId())%>">
+								<%=geo3.getNombre()%></option>
+						<% } %>
+						</html:select>
+					</logic:notEqual>
+				</logic:equal>
+				<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
+					<logic:notEqual name="GeoLevelForm" property="geo3Id" value="0">
+						<bean:write name="GeoLevelForm" property="geo3Nombre" />
+					</logic:notEqual>
+				</logic:notEqual>
+				
+				<logic:equal name="GeoLevelForm" property="objectId" value="0">
+					<logic:equal name="GeoLevelForm" property="geo2Id" value="0">
+						Provincia:
+					</logic:equal>
+					<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
+						<logic:equal name="GeoLevelForm" property="geo3Id" value="0">
+							Partido:
+						</logic:equal>
+						<logic:notEqual name="GeoLevelForm" property="geo3Id" value="0">
+							Localidad:
+						</logic:notEqual>
+					</logic:notEqual>
+				</logic:equal>
+				
+				<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
+					<logic:equal name="GeoLevelForm" property="level" value="2">
+						Provincia:
+					</logic:equal>
+					<logic:equal name="GeoLevelForm" property="level" value="3">
+						Partido:
+					</logic:equal>
+					<logic:equal name="GeoLevelForm" property="level" value="4">
+						Localidad:
+					</logic:equal>
+				</logic:notEqual>
+				
 				<html:text name="GeoLevelForm" property="nombre" styleClass="width180"/></div>
 				<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
 				<div class="renglon height40">

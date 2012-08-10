@@ -39,7 +39,9 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	private int objectId;
 	private String nombre;
 	private int geo2Id;
+	private String geo2Nombre;
 	private int geo3Id;
+	private String geo3Nombre;
 	
 	private String nombreSearch;
 	private int levelSearch = 2;
@@ -96,6 +98,7 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	
 	public void initWith(int level, int id) throws SQLException {
 		setObjectId(id);
+		this.level = level;
 		if (level == 2) {
 			Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(id);
 			this.setNombre(geo2.getNombre());
@@ -106,13 +109,18 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(id);
 				this.setNombre(geo3.getNombre());
 				setGeo2Id(geo3.getGeo2Id());
+				Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(geo3.getGeo2Id());
+				setGeo2Nombre(geo2.getNombre());
 				setGeo3Id(0);
 			} else {
 				Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(id);
 				this.setNombre(geo4.getNombre());
 				Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(geo4.getGeo3Id());
+				Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(geo3.getGeo2Id());
 				setGeo2Id(geo3.getGeo2Id());
+				setGeo2Nombre(geo2.getNombre());
 				setGeo3Id(geo3.getId());
+				setGeo3Nombre(geo3.getNombre());
 			}
 		}
 	}
@@ -339,6 +347,22 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 
 	public void setLevel3(List<Geo3> level3) {
 		this.level3 = level3;
+	}
+
+	public String getGeo2Nombre() {
+		return geo2Nombre;
+	}
+
+	public void setGeo2Nombre(String geo2Nombre) {
+		this.geo2Nombre = geo2Nombre;
+	}
+
+	public String getGeo3Nombre() {
+		return geo3Nombre;
+	}
+
+	public void setGeo3Nombre(String geo3Nombre) {
+		this.geo3Nombre = geo3Nombre;
 	}
 
 }
