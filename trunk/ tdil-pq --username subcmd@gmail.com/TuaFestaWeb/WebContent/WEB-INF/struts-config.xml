@@ -169,6 +169,10 @@
   <action name="GeoLevelForm" path="/goToGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
+  
+  <action name="GeoLevelForm" path="/refreshGeoLevel2Administration" scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+  </action>
   <action name="GeoLevelForm" path="/refreshGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.RefreshAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
