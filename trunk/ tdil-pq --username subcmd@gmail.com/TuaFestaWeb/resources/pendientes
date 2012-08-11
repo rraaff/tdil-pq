@@ -1,6 +1,13 @@
-	notimooErrorManager.show({
-							title: 'Error',
-							message: '<html:messages id="msg" message="true"><% if (!"*".equals(msg)) {%><%=msg%><br><% } %></html:messages>',
-							 customClass:'alert_error',
-							 sticky: true
-						});
+Tema localidades, les dejo solo capital?, el resto que las den de alta a mano.
+El resto que las den de alta a mano
+A las localidades les falta el borrado, deberia ser fisico, siempre y cuando
+ no tengas un profesional linkeado.
+ 
+ El profesional podria tener una foto/logo?
+ 
+ Estadisticas de uso?
+ 
+ Visitas al perfil, inclusion en busquedas?
+ 
+ 
+ 
