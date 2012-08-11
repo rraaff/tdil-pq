@@ -9,10 +9,16 @@ import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.NotificationEmailDAO;
 import com.tdil.tuafesta.dao.ProductCategoryDAO;
+import com.tdil.tuafesta.dao.ProfesionalChangeDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.ProfesionalProductDAO;
 import com.tdil.tuafesta.dao.ProfesionalServiceDAO;
+import com.tdil.tuafesta.dao.ProfilePictureDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
+import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.dao.SellPhotoDAO;
+import com.tdil.tuafesta.dao.SellVideoDAO;
+import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.dao.SystemPropertyDAO;
 import com.tdil.tuafesta.dao.SystemUserDAO;
@@ -24,10 +30,16 @@ import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
 import com.tdil.tuafesta.dao.impl.NotificationEmailDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProductCategoryDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfesionalChangeDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalProductDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalServiceDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfilePictureDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
+import com.tdil.tuafesta.dao.impl.SellDAOImpl;
+import com.tdil.tuafesta.dao.impl.SellPhotoDAOImpl;
+import com.tdil.tuafesta.dao.impl.SellVideoDAOImpl;
+import com.tdil.tuafesta.dao.impl.ServiceAreaDAOImpl;
 import com.tdil.tuafesta.dao.impl.ServiceCategoryDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemUserDAOImpl;
@@ -95,5 +107,24 @@ public class DAOManager {
 	
 	public static WallWrittingDAO getWallWrittingDAO() throws SQLException {
 		return new WallWrittingDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProfesionalChangeDAO getProfesionalChangeDAO() throws SQLException {
+		return new ProfesionalChangeDAOImpl(IBatisManager.getClient());
+	}
+	public static ProfilePictureDAO getProfilePictureDAO() throws SQLException {
+		return new ProfilePictureDAOImpl(IBatisManager.getClient());
+	}
+	public static SellPhotoDAO getSellPhotoDAO() throws SQLException {
+		return new SellPhotoDAOImpl(IBatisManager.getClient());
+	}
+	public static SellDAO getSellDAO() throws SQLException {
+		return new SellDAOImpl(IBatisManager.getClient());
+	}
+	public static SellVideoDAO getSellVideoDAO() throws SQLException {
+		return new SellVideoDAOImpl(IBatisManager.getClient());
+	}
+	public static ServiceAreaDAO getServiceAreaDAO() throws SQLException {
+		return new ServiceAreaDAOImpl(IBatisManager.getClient());
 	}
 }
