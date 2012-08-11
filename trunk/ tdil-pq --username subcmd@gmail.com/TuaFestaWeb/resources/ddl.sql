@@ -278,6 +278,7 @@ ENGINE = InnoDB;
 CREATE TABLE SELL_PHOTO (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_sell` INT NOT NULL,
+  `orderNumber` INT NOT NULL ,
   `approved` INT NOT NULL,
   `id_blob_data` INT NOT NULL,
   `ext_blob_data` VARCHAR(10) NOT NULL ,
@@ -293,6 +294,7 @@ ENGINE = InnoDB;
 CREATE TABLE SELL_VIDEO (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_sell` INT NOT NULL,
+  `orderNumber` INT NOT NULL ,
   `approved` INT NOT NULL,
   `url` VARCHAR(200) NOT NULL,
   `deleted` INT NOT NULL ,

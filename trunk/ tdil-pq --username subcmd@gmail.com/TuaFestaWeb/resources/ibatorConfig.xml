@@ -85,5 +85,31 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="PROFESIONAL" domainObjectName="Profesional" alias="prof">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+
+<table schema="TUAFESTA" tableName="PROFILE_PICTURE" domainObjectName="ProfilePicture" alias="profpic">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="PROFESIONAL_CHANGE" domainObjectName="ProfesionalChange" alias="profchg">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="SERVICE_AREA" domainObjectName="ServiceArea" alias="sa">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="SELL" domainObjectName="Sell" alias="sell">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="SELL_PHOTO" domainObjectName="SellPhoto" alias="sellp">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="SELL_VIDEO" domainObjectName="SellVideo" alias="sellv">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+
 </ibatorContext>
 </ibatorConfiguration>
