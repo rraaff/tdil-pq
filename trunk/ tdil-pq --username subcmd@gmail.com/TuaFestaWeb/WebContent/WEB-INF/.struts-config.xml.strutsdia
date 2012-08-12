@@ -213,10 +213,10 @@
   PATH="/addProfesional" SHAPE="32,3377,0,0" TITLE="ProfesionalForm"
   TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/addProfesionalSuccess.jsp" TARGET="page11" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/registroProfesionalEmailEnviado.jsp" TARGET="page11"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/addProfesional.jsp" TARGET="page12" TITLE="failure"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#validateProfesionalEmail" NAME="action16"
@@ -288,10 +288,10 @@
   TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#contact" NAME="action21" PATH="/contact"
   SHAPE="32,5105,0,0" TITLE="ContactForm" TYPE="action" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM NAME="page11" PATH="/addProfesionalSuccess.jsp"
+ <PROCESS-ITEM NAME="page11" PATH="/registroProfesionalEmailEnviado.jsp"
   SHAPE="448,3377,0,0" SUBTYPE="jsp" TITLE="addProfesionalSuccess.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM NAME="page12" PATH="/addProfesional.jsp"
+ <PROCESS-ITEM NAME="page12" PATH="/registroProfesional.jsp"
   SHAPE="240,3601,0,0" SUBTYPE="jsp" TITLE="addProfesional.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/addProfesional.do"
@@ -475,8 +475,31 @@
  <PROCESS-ITEM ID="#refreshGeoLevel2Administration" NAME="action37"
   PATH="/refreshGeoLevel2Administration" SHAPE="32,6737,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+  <PROCESS-ITEM-OUTPUT ID="geo2changed" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16"
+   TITLE="geo2changed" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel2Profesional" NAME="action38"
+  PATH="/refreshGeoLevel2Profesional" SHAPE="32,6737,0,0"
+  TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo2changed" NAME="forward0"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="geo2changed"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel3Profesional" NAME="action39"
+  PATH="/refreshGeoLevel3Profesional" SHAPE="32,4081,0,0"
+  TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo3changed" NAME="forward0"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="geo3changed"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToRegistroProfesional" NAME="action40"
+  PATH="/goToRegistroProfesional" SHAPE="32,4081,0,0"
+  TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchProduct" NAME="action41" PATH="/searchProduct"
+  SHAPE="32,10353,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

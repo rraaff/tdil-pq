@@ -122,7 +122,6 @@
    <forward name="continue" path="/profesionalServiceAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalServiceAdministration.jsp"/>
   </action>
-  
   <action name="ProductCategoryForm" parameter="Admin"
    path="/goToProductCategoryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/productCategoryAdministration.jsp"/>
@@ -159,21 +158,21 @@
    <forward name="continue" path="/profesionalProductAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalProductAdministration.jsp"/>
   </action>
-  
   <action name="ProfesionalAdministrationForm" parameter="Admin"
    path="/goToProfesionalAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalAdministration.jsp"/>
   </action>
-  
-  <action name="GeoLevelForm" path="/goToGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="GeoLevelForm" path="/goToGeoLevelAdministration"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
-  
-  <action name="GeoLevelForm" path="/refreshGeoLevel2Administration" scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
-   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+  <action name="GeoLevelForm" path="/refreshGeoLevel2Administration"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="geo2changed" path="/geoLevelAdministration.jsp"/>
   </action>
-  <action name="GeoLevelForm" path="/refreshGeoLevelAdministration" scope="session" type="com.tdil.struts.actions.RefreshAction">
+  <action name="GeoLevelForm" path="/refreshGeoLevelAdministration"
+   scope="session" type="com.tdil.struts.actions.RefreshAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/saveGeoLevel" scope="session" type="com.tdil.struts.actions.SaveAction">
@@ -188,15 +187,30 @@
   <action name="GeoLevelForm" path="/searchGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAction">
    <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
   </action>
-  <action name="GeoLevelForm" parameter="Admin"
-   path="/editGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
+  <action name="GeoLevelForm" parameter="Admin" path="/editGeoLevel"
+   scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
   
-  <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/addProfesionalSuccess.jsp" redirect="true"/>
-   <forward name="failure" path="/addProfesional.jsp"/>
+  <action name="ProfesionalForm" path="/goToRegistroProfesional"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/registroProfesional.jsp"/>
   </action>
+  <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/registroProfesionalEmailEnviado.jsp" redirect="true"/>
+   <forward name="failure" path="/registroProfesional.jsp"/>
+  </action>
+  <action name="ProfesionalForm" path="/refreshGeoLevel2Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="geo2changed" path="/registroProfesional.jsp"/>
+  </action>
+  <action name="ProfesionalForm" path="/refreshGeoLevel3Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
+   <forward name="geo3changed" path="/registroProfesional.jsp"/>
+  </action>
+  
+  <action path="/searchProduct" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAction"/>
+  
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>

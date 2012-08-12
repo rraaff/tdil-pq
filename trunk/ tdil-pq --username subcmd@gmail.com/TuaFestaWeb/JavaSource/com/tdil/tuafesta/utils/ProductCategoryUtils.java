@@ -36,6 +36,20 @@ public class ProductCategoryUtils {
 			return new ArrayList<ProductCategoryTreeNode>();
 		}
 	}
+	
+	public static String getCategoryPath(int idCategory) throws SQLException {
+		if (idCategory == 0) {
+			return "";
+		} else {
+			ProductCategoryDAO productCategoryDAO = DAOManager.getProductCategoryDAO();
+			ProductCategory productCategory = productCategoryDAO.selectProductCategoryByPrimaryKey(idCategory);
+			if (productCategory.getParentId() != 2) {
+				return getCategoryPath(productCategory.getParentId()) + " > " + productCategory.getName();
+			} else {
+				return productCategory.getName();
+			}
+		}
+	}
 
 	public static List<ProductCategoryTreeNode> getTreeInTransaction(boolean onlyActive) throws SQLException {
 		ProductCategoryDAO profesionalCategoryDAO = DAOManager.getProductCategoryDAO();
