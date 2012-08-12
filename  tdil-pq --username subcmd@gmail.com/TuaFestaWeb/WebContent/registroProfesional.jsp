@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.forms.beans.ProductBean"%>
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.tuafesta.model.Geo4"%>
 <%@page import="com.tdil.tuafesta.model.Geo3"%>
 <%@page import="com.tdil.tuafesta.model.Geo2"%>
@@ -10,6 +12,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <%@ include file="includes/head.jsp" %>
 <script>
@@ -60,7 +63,17 @@ $(document).ready(
 			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
 
-			$( "#product" ).autocomplete({
+			function productSelected(prodLabel, prodValue, prodCat) {
+				$("input[name=productSelectedText]").attr('value', prodLabel);
+				$("input[name=productAutocompleter]").attr('value','');
+				$("input[name=productAutocompleter]").css('display', 'none');
+				$("input[name=productCategorySelected]").attr('value', prodCat);
+				$("#productSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
+				$("#productSelectedDiv").css('display', 'block');
+				$("input[name=productId]").attr('value', prodValue);
+			}
+			
+			$( "input[name=productAutocompleter]" ).autocomplete({
 				source: function( request, response ) {
 					$.ajax({
 						url: "searchProduct.do",
@@ -81,9 +94,9 @@ $(document).ready(
 				},
 				minLength: 2,
 				select: function( event, ui ) {
-					alert(ui.item ?
-							"Selected: " + ui.item.label  + "-" + ui.item.value + "-" + ui.item.path :
-								"Nothing selected, input was " + this.value);
+					if (ui.item) {
+						productSelected(ui.item.label, ui.item.value, ui.item.path);
+					}
 					/*log( ui.item ?
 						"Selected: " + ui.item.label :
 						"Nothing selected, input was " + this.value);*/
@@ -100,6 +113,14 @@ $(document).ready(
 	
 	);
 
+function limpiarProducto() {
+	$("input[name=productAutocompleter]").attr('value','');
+	$("input[name=productAutocompleter]").css('display', 'block');
+	$("input[name=productSelectedText]").attr('value', '');
+	$("#productSelectedDiv").prop('innerHTML', '');
+	$("#productSelectedDiv").css('display', 'none');
+	$("input[name=productId]").attr('value', '');
+}
 
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
@@ -179,11 +200,35 @@ $(document).ready(
 	Descripcion<div id="Descripcion"><html:textarea name="ProfesionalForm" property="description" styleClass="normalField"/></div>
 	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.description.err")%></div>
 	
-	
 	<div class="ui-widget">
-		<label for="product">Productos: </label>
-		<input id="product" />
+		<html:hidden name="ProfesionalForm" property="productId"/>
+		<html:hidden name="ProfesionalForm" property="productSelectedText"/>
+		<html:hidden name="ProfesionalForm" property="productCategorySelected"/>
+		Producto
+		<logic:equal name="ProfesionalForm" property="productSelected" value="false">
+			<html:text name="ProfesionalForm" property="productAutocompleter" styleClass="normalField" style="display: block;"/>
+			<div id="productSelectedDiv" style="display: none;"></div>
+		</logic:equal>
+		<logic:equal name="ProfesionalForm" property="productSelected" value="true">
+			<html:text name="ProfesionalForm" property="productAutocompleter" styleClass="normalField" style="display: none;"/>
+			<div id="productSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="productSelected"/> (<bean:write name="ProfesionalForm" filter="false" property="productCategorySelected"/>)</div>
+		</logic:equal>
+		Precio<html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField"/>
+		<a href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp; <a href="javascript:limpiarProducto()">Limpiar</a>
 	</div>
+	
+	<%
+java.util.List source = profesionalForm.getProducts();
+com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+request.setAttribute( "products",  paginated);
+%>
+	<display:table name="products" sort="external" pagesize="10" id="products" requestURI="./registroProfesional.jsp">
+		<display:column title="Producto" sortable="true" sortName="Producto" headerClass="sortable" property="profesionalProductText"></display:column>
+		<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable" property="productCategoryText"></display:column>
+		<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable" property="referencePrice"></display:column>
+		<display:column title="acciones"><a href="./quitarProducto.do?id=<%= ((ProductBean)pageContext.getAttribute("products")).getProfesionalProductId()%><%=DisplayTagParamHelper.getParams(request)%>">Quitar</a></display:column>
+	</display:table>
+	<%=DisplayTagParamHelper.getFields(request)%>
 	
 	<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
 </html:form>

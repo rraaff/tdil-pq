@@ -209,6 +209,10 @@
    <forward name="geo3changed" path="/registroProfesional.jsp"/>
   </action>
   
+  <action name="ProfesionalForm" path="/addProduct"
+   scope="session" type="com.tdil.tuafesta.struts.action.AddProductAction">
+   <forward name="continue" path="/registroProfesional.jsp"/>
+  </action>
   <action path="/searchProduct" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAction"/>
   
   <action name="ValidateProfesionalEmailForm"
