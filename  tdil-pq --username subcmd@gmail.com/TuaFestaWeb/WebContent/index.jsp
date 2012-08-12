@@ -91,7 +91,7 @@ div, span, p, a {/* border:dotted 1px #00FF00; */}
 		<div id="promos"></div>
 		<div id="buttons">
 			<div class="advancedSearch"><a href=""></a></div>
-			<div class="addProfessional"><a href="addProfesional.jsp"></a></div>
+			<div class="addProfessional"><a href="registroProfesional.jsp"></a></div>
 			<div class="addClientFB"><a href=""></a></div>
 			<div class="viewPromotions"><a href="promotionList.jsp"></a></div>
 		</div>

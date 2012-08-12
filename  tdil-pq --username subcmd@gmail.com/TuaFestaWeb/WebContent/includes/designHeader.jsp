@@ -6,7 +6,7 @@
 			<div id="taglineAndMenu">
 				<p>El sitio que te ayuda a organizar tu fiesta</p>
 				<ul class="nav">
-					<li><a href="addProfesional.jsp">Registrate</a></li>
+					<li><a href="./goToRegistroProfesional.do">Registrate</a></li>
 					<li><a href="#">Ingresar</a></li>
 					<li><a href="#">Mi cuenta</a></li>
 					<li><span class="userLogged">Bienvenido&nbsp;</span><span class="selected">Alejandro Price </span><a href="#">(no soy Alejandro)</a></li>

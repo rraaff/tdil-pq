@@ -10,11 +10,11 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.struts.actions.RefreshAction;
 import com.tdil.tuafesta.struts.forms.GeoLevelSelectionForm;
 
-public class RefreshGeoLevel2Action extends RefreshAction {
+public class RefreshGeoLevel3Action extends RefreshAction {
 
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-			((GeoLevelSelectionForm)form).setGeo3Id(0);
-			return mapping.findForward("geo2changed");
+			((GeoLevelSelectionForm)form).setGeo4Id(0);
+			return mapping.findForward("geo3changed");
 	}
 }

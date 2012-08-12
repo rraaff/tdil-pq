@@ -1,13 +1,28 @@
-Tema localidades, les dejo solo capital?, el resto que las den de alta a mano.
-El resto que las den de alta a mano
+Tema alta de profesional
+Al registro (mockup le falta) website, horario de atencion y descripcion.
+Ver cuales van a ser obligatorios y cuales no
+
+JQuery para simular el place holder
+
+Localidades dejar solo las de capital
+
 A las localidades les falta el borrado, deberia ser fisico, siempre y cuando
  no tengas un profesional linkeado.
  
- El profesional podria tener una foto/logo?
- 
  Estadisticas de uso?
+  Visitas al perfil, inclusion en busquedas?
  
- Visitas al perfil, inclusion en busquedas?
+ ******
+ App de test
  
- 
- 
+ TuaFestaTest
+App ID:	431410236909520
+App Secret:	63b6f58fec5dfba0cde041149e3a9255(reiniciar)
+
+(editar icono)
+
+domain
+localhost
+
+url del sitio
+http://localhost:8180/TuaFestaWeb/

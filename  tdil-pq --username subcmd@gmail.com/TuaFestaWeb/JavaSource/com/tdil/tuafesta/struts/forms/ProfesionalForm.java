@@ -4,26 +4,41 @@ package com.tdil.tuafesta.struts.forms;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.tuafesta.dao.Geo2DAO;
+import com.tdil.tuafesta.dao.Geo3DAO;
+import com.tdil.tuafesta.dao.Geo4DAO;
+import com.tdil.tuafesta.dao.ProfesionalChangeDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Geo2;
+import com.tdil.tuafesta.model.Geo2Example;
+import com.tdil.tuafesta.model.Geo3;
+import com.tdil.tuafesta.model.Geo3Example;
+import com.tdil.tuafesta.model.Geo4;
+import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class ProfesionalForm extends TransactionalValidationForm {
+public class ProfesionalForm extends TransactionalValidationForm implements GeoLevelSelectionForm {
 
 	/**
 	 * 
@@ -39,26 +54,55 @@ public class ProfesionalForm extends TransactionalValidationForm {
 	private String lastname;
 	private String sex;
 	private String birthdate;
-	private String phone;
+	
+	private String phoneAreaCode;
+	private String phoneNumber;
+	private String phoneExtension;
+	private String phoneType;
+	
 	private String email;
 	private String password;
 	private String retypepassword;
+	
+	private String businessname;
+	private String cuit;
+	private String iibb;
+	
+	private int geo2Id;
+	private int geo3Id;
+	private int geo4Id;
+	
+	private List<Geo2> level2;
+	private List<Geo3> level3;
+	private List<Geo4> level4;
+	
 	private String website;
 	private String facebook;
 	private String businesshours;
 	private String description;
 	
-	private static final String firstname_key = "ProfesionalForm.firstname";
-	private static final String lastname_key = "ProfesionalForm.lastname";
-	private static final String sex_key = "ProfesionalForm.sex";
-	private static final String birthdate_key = "ProfesionalForm.birthdate";
-	private static final String phone_key = "ProfesionalForm.phone";
-	private static final String email_key = "ProfesionalForm.email";
-	private static final String password_key = "ProfesionalForm.password";
-	private static final String website_key = "ProfesionalForm.website";
-	private static final String facebook_key = "ProfesionalForm.facebook";
-	private static final String businesshours_key = "ProfesionalForm.businesshours";
-	private static final String description_key = "ProfesionalForm.description";
+	public static final String firstname_key = "ProfesionalForm.firstname";
+	public static final String lastname_key = "ProfesionalForm.lastname";
+	public static final String sex_key = "ProfesionalForm.sex";
+	public static final String birthdate_key = "ProfesionalForm.birthdate";
+	public static final String phoneareacode_key = "ProfesionalForm.phoneAreaCode";
+	public static final String phonenumber_key = "ProfesionalForm.phoneNumber";
+	public static final String phoneextension_key = "ProfesionalForm.phoneExtension";
+	public static final String phonetype_key = "ProfesionalForm.phoneType";
+	
+	public static final String email_key = "ProfesionalForm.email";
+	public static final String password_key = "ProfesionalForm.password";
+	
+	public static final String businessname_key = "ProfesionalForm.businessname";
+	public static final String cuit_key = "ProfesionalForm.cuit";
+	public static final String iibb_key = "ProfesionalForm.iibb";
+	
+	public static final String website_key = "ProfesionalForm.website";
+	public static final String facebook_key = "ProfesionalForm.facebook";
+	public static final String businesshours_key = "ProfesionalForm.businesshours";
+	public static final String description_key = "ProfesionalForm.description";
+	
+	private static final Logger LOG = LoggerProvider.getLogger(ProfesionalForm.class);
 
 	@Override
 	public void reset() throws SQLException {
@@ -67,10 +111,18 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		this.lastname = null;
 		this.sex = null;
 		this.birthdate = null;
-		this.phone = null;
+		this.phoneAreaCode = null;
+		this.phoneNumber = null;
+		this.phoneExtension = null;
+		this.phoneType = null;
 		this.email = null;
 		this.password = null;
 		this.retypepassword = null;
+		
+		this.businessname = null;
+		this.cuit = null;
+		this.iibb = null;
+		
 		this.website = null;
 		this.facebook = null;
 		this.businesshours = null;
@@ -79,6 +131,10 @@ public class ProfesionalForm extends TransactionalValidationForm {
 
 	@Override
 	public void init() throws SQLException {
+		Geo2DAO geo2dao = DAOManager.getGeo2DAO();
+		Geo2Example geo2Example = new Geo2Example();
+		geo2Example.setOrderByClause("nombre");
+		setLevel2(geo2dao.selectGeo2ByExample(geo2Example));
 	}
 
 	@Override
@@ -91,9 +147,19 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		FieldValidation.validateText(this.getFirstname(), firstname_key, 100, validationError);
 		FieldValidation.validateText(this.getLastname(), lastname_key, 100, validationError);
 		FieldValidation.validateText(this.getSex(), sex_key, 1, validationError);
-		FieldValidation.validateText(this.getPhone(), phone_key, 15, false, validationError);
+		FieldValidation.validateText(this.getPhoneAreaCode(), phoneareacode_key, 15, false, validationError);
+		FieldValidation.validateText(this.getPhoneNumber(), phonenumber_key, 15, false, validationError);
+		FieldValidation.validateText(this.getPhoneExtension(), phoneextension_key, 10, false, validationError);
+		FieldValidation.validateText(this.getPhoneType(), phonetype_key, 25, false, validationError);
+		
+		// TODO if por facebook
 		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
 		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		
+		FieldValidation.validateText(this.getBusinessname(), businessname_key, 400, validationError);
+		FieldValidation.validateText(this.getCuit(), cuit_key, 400, validationError);
+		FieldValidation.validateText(this.getIibb(), iibb_key, 400, validationError);
+		
 		FieldValidation.validateText(this.getWebsite(), website_key, 200, false, validationError);
 		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
 		FieldValidation.validateText(this.getBusinesshours(), businesshours_key, 4000, validationError);
@@ -111,6 +177,7 @@ public class ProfesionalForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
+		ProfesionalChangeDAO profesionalChangeDAO = DAOManager.getProfesionalChangeDAO();
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
 		WallDAO wallDAO = DAOManager.getWallDAO();
 		Wall wall = new Wall();
@@ -119,21 +186,39 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		wall.setProfanityfilter(0);
 		wall.setDeleted(0);
 		int wallId = wallDAO.insertWall(wall);
+		
+		ProfesionalChange profesionalChange = new ProfesionalChange();
+		profesionalChange.setDeleted(0);
+		int profesionalChangeId = profesionalChangeDAO.insertProfesionalChange(profesionalChange);
+		
 		Profesional profesional = new Profesional();
 		profesional.setFirstname(this.getFirstname());
 		profesional.setLastname(this.getLastname());
+		profesional.setPhoneareacode(this.getPhoneAreaCode());
+		profesional.setPhonenumber(this.getPhoneNumber());
+		profesional.setPhoneextension(this.getPhoneExtension());
+		profesional.setPhonetype(this.getPhoneType());
 		profesional.setSex(this.getSex());
 		profesional.setBirthdate(parseDate(this.getBirthdate()));
-		profesional.setPhone(this.getPhone());
+		
 		profesional.setEmail(this.getEmail());
 		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
+		
+		// TODO if por facebook
 		profesional.setPassword(this.getPassword());
+		profesional.setEmailvalid(0);
+		//
+		profesional.setBusinessname(this.getBusinessname());
+		profesional.setCuit(this.getCuit());
+		profesional.setIibb(this.getIibb());
+		
 		profesional.setWebsite(this.getWebsite());
 		profesional.setFacebook(this.getFacebook());
 		profesional.setBusinesshours(this.getBusinesshours());
 		profesional.setDescription(this.getDescription());
 		profesional.setIdWall(wallId);
-		profesional.setEmailvalid(0);
+		profesional.setIdProfesionalChange(profesionalChangeId);
+		
 		profesional.setApproved(0);
 		profesional.setDatachanged(0);
 		profesional.setDeleted(0);
@@ -208,14 +293,6 @@ public class ProfesionalForm extends TransactionalValidationForm {
 		this.birthdate = birthdate;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -270,6 +347,144 @@ public class ProfesionalForm extends TransactionalValidationForm {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getPhoneAreaCode() {
+		return phoneAreaCode;
+	}
+
+	public void setPhoneAreaCode(String phoneAreaCode) {
+		this.phoneAreaCode = phoneAreaCode;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPhoneExtension() {
+		return phoneExtension;
+	}
+
+	public void setPhoneExtension(String phoneExtension) {
+		this.phoneExtension = phoneExtension;
+	}
+
+	public String getPhoneType() {
+		return phoneType;
+	}
+
+	public void setPhoneType(String phoneType) {
+		this.phoneType = phoneType;
+	}
+
+	public String getBusinessname() {
+		return businessname;
+	}
+
+	public void setBusinessname(String businessname) {
+		this.businessname = businessname;
+	}
+
+	public String getCuit() {
+		return cuit;
+	}
+
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
+	}
+
+	public String getIibb() {
+		return iibb;
+	}
+
+	public void setIibb(String iibb) {
+		this.iibb = iibb;
+	}
+
+	public int getGeo2Id() {
+		return geo2Id;
+	}
+
+	public void setGeo2Id(int geo2Id) {
+		this.geo2Id = geo2Id;
+	}
+
+	public int getGeo3Id() {
+		return geo3Id;
+	}
+
+	public void setGeo3Id(int geo3Id) {
+		this.geo3Id = geo3Id;
+	}
+
+	public int getGeo4Id() {
+		return geo4Id;
+	}
+
+	public void setGeo4Id(int geo4Id) {
+		this.geo4Id = geo4Id;
+	}
+
+	public List<Geo2> getLevel2() {
+		return level2;
+	}
+
+	public void setLevel2(List<Geo2> level2) {
+		this.level2 = level2;
+	}
+
+	public List<Geo3> getLevel3() {
+		if (geo2Id != 0) {
+			try {
+				TransactionProvider.executeInTransaction(new TransactionalAction() {
+					public void executeInTransaction() throws SQLException, ValidationException {
+						Geo3DAO geo3dao = DAOManager.getGeo3DAO();
+						Geo3Example geo3Example = new Geo3Example();
+						geo3Example.createCriteria().andGeo2IdEqualTo(ProfesionalForm.this.geo2Id);
+						geo3Example.setOrderByClause("nombre");
+						ProfesionalForm.this.setLevel3(geo3dao.selectGeo3ByExample(geo3Example));
+					}
+				});
+			} catch (Exception e) {
+				LOG.error(e.getMessage(), e);
+			}
+		} else {
+			setLevel3(new ArrayList<Geo3>());
+		}
+		return level3;
+	}
+
+	public void setLevel3(List<Geo3> level3) {
+		this.level3 = level3;
+	}
+
+	public List<Geo4> getLevel4() {
+		if (geo3Id != 0) {
+			try {
+				TransactionProvider.executeInTransaction(new TransactionalAction() {
+					public void executeInTransaction() throws SQLException, ValidationException {
+						Geo4DAO geo4dao = DAOManager.getGeo4DAO();
+						Geo4Example geo4Example = new Geo4Example();
+						geo4Example.createCriteria().andGeo3IdEqualTo(ProfesionalForm.this.geo3Id);
+						geo4Example.setOrderByClause("nombre");
+						ProfesionalForm.this.setLevel4(geo4dao.selectGeo4ByExample(geo4Example));
+					}
+				});
+			} catch (Exception e) {
+				LOG.error(e.getMessage(), e);
+			}
+		} else {
+			setLevel4(new ArrayList<Geo4>());
+		}
+		return level4;
+	}
+
+	public void setLevel4(List<Geo4> level4) {
+		this.level4 = level4;
 	}
 
 }

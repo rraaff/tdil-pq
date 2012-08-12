@@ -26,7 +26,7 @@ import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.validations.FieldValidation;
 
-public class GeoLevelForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class GeoLevelForm extends TransactionalValidationForm implements ToggleDeletedFlagForm, GeoLevelSelectionForm {
 
 	/**
 	 * 
@@ -365,4 +365,7 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 		this.geo3Nombre = geo3Nombre;
 	}
 
+	public void setGeo4Id(int geo4Id) {
+		// nothing to do
+	}
 }
