@@ -43,7 +43,7 @@ public class ProductCategoryUtils {
 		} else {
 			ProductCategoryDAO productCategoryDAO = DAOManager.getProductCategoryDAO();
 			ProductCategory productCategory = productCategoryDAO.selectProductCategoryByPrimaryKey(idCategory);
-			if (productCategory.getParentId() != 2) {
+			if (productCategory.getParentId() != 0) {
 				return getCategoryPath(productCategory.getParentId()) + " > " + productCategory.getName();
 			} else {
 				return productCategory.getName();

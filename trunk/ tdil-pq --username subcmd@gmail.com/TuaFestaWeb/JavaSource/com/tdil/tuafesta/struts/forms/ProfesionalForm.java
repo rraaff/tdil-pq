@@ -34,6 +34,7 @@ import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.Wall;
+import com.tdil.tuafesta.struts.forms.beans.ProductBean;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -80,6 +81,14 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private String facebook;
 	private String businesshours;
 	private String description;
+	
+	// abm de productos
+	private List<ProductBean> products = new ArrayList<ProductBean>();
+	private String productId;
+	private String productCategorySelected;
+	private String productAutocompleter;
+	private String productSelectedText;
+	private String referenceprice;
 	
 	public static final String firstname_key = "ProfesionalForm.firstname";
 	public static final String lastname_key = "ProfesionalForm.lastname";
@@ -243,6 +252,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			// throw new RuntimeException(e);
 			return null;
 		}
+	}
+	
+	public boolean isProductSelected() {
+		return !StringUtils.isEmpty(this.getProductId());
 	}
 
 	public int getObjectId() {
@@ -485,6 +498,76 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 
 	public void setLevel4(List<Geo4> level4) {
 		this.level4 = level4;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public String getProductAutocompleter() {
+		return productAutocompleter;
+	}
+
+	public void setProductAutocompleter(String productAutocompleter) {
+		this.productAutocompleter = productAutocompleter;
+	}
+
+	public String getProductSelectedText() {
+		return productSelectedText;
+	}
+
+	public void setProductSelectedText(String productSelected) {
+		this.productSelectedText = productSelected;
+	}
+
+	public String getReferenceprice() {
+		return referenceprice;
+	}
+
+	public void setReferenceprice(String referenceprice) {
+		this.referenceprice = referenceprice;
+	}
+
+	public String getProductCategorySelected() {
+		return productCategorySelected;
+	}
+
+	public void setProductCategorySelected(String productCategorySelected) {
+		this.productCategorySelected = productCategorySelected;
+	}
+
+	public void addProduct() {
+		// TODO validaciones
+		if (this.isProductSelected()) {
+			// producto elegido de la rd
+			ProductBean productbean = new ProductBean();
+			productbean.setProfesionalProductId(Integer.valueOf(this.getProductId()));
+			productbean.setProfesionalProductText(this.getProductSelectedText());
+			productbean.setProductCategoryText(this.getProductCategorySelected());
+			productbean.setReferencePrice(this.getReferenceprice());
+			this.getProducts().add(productbean);
+		} else {
+			// producto no rd
+			ProductBean productbean = new ProductBean();
+			productbean.setProfesionalProductId(0);
+			productbean.setProfesionalProductText(this.getProductAutocompleter());
+			productbean.setProductCategoryText("-");
+			productbean.setReferencePrice(this.getReferenceprice());
+			this.getProducts().add(productbean);
+		}
+		
+	}
+
+	public List<ProductBean> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<ProductBean> products) {
+		this.products = products;
 	}
 
 }
