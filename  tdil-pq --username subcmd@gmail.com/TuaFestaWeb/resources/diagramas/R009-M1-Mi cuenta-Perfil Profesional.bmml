@@ -253,5 +253,23 @@
         <text>Ver%20muro%20completo</text>
       </controlProperties>
     </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::StickyNote" x="992" y="472" w="355" h="73" measuredW="109" measuredH="123" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>-%20cargar%20una%20solo%20foto%20de%20perfil%20bajo%20el%20tag%20%22logo%22.</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::StickyNote" x="751" y="571" w="353" h="123" measuredW="109" measuredH="123" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>FALTA%20CASO%20CARGA%20Y%20EDICI%D3N%20DE%20PRODUCTOS%20Y%20SERVICIOS%20COMPLETA</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::StickyNote" x="917" y="739" w="223" h="71" measuredW="109" measuredH="123" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>FALTA%20EDITOR%20DE%20AGENDA</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
