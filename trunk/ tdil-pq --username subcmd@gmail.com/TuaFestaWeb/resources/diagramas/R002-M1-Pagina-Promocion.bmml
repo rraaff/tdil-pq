@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1007" measuredH="644" mockupW="987" mockupH="644">
+<mockup version="1.0" skin="sketch" measuredW="1157" measuredH="644" mockupW="1137" mockupH="644">
   <controls>
     <control controlID="9" controlTypeID="com.balsamiq.mockups::FieldSet" x="39" y="173" w="942" h="319" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
@@ -104,6 +104,12 @@
     <control controlID="31" controlTypeID="com.balsamiq.mockups::SearchBox" x="643" y="120" w="-1" h="-1" measuredW="120" measuredH="25" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>search</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::StickyNote" x="815" y="201" w="342" h="123" measuredW="109" measuredH="123" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13369344</color>
+        <text>Agregar%20detalle%20de%20todos%20los%20productos%20y%20servicios%20incluidos%20en%20la%20promoci%F3n.%0Alayer%20con%20detalle%20del%20profesional</text>
       </controlProperties>
     </control>
   </controls>
