@@ -64,6 +64,7 @@ request.setAttribute( "test",  paginated);
 			<display:column title="Apellido" sortable="true" sortName="Apellido" headerClass="sortable" property="lastname"></display:column>
 			<display:column title="Email" sortable="true" sortName="Email" headerClass="sortable" property="email"></display:column>
 			<display:column title="Estado" headerClass="width100"><%= ProfesionalStatusHelper.getStatusFor((Profesional)pageContext.getAttribute("testit"))%></display:column>
+			<display:column title="Acciones" headerClass="width100">Revisar</display:column>
 		</display:table>
 	</div>
 </div>

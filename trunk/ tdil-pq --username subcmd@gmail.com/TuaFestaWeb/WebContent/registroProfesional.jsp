@@ -120,6 +120,7 @@ function limpiarProducto() {
 	$("#productSelectedDiv").prop('innerHTML', '');
 	$("#productSelectedDiv").css('display', 'none');
 	$("input[name=productId]").attr('value', '');
+	$("input[name=referenceprice]").attr('value', '');
 }
 
 </script>
@@ -211,10 +212,11 @@ function limpiarProducto() {
 		</logic:equal>
 		<logic:equal name="ProfesionalForm" property="productSelected" value="true">
 			<html:text name="ProfesionalForm" property="productAutocompleter" styleClass="normalField" style="display: none;"/>
-			<div id="productSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="productSelected"/> (<bean:write name="ProfesionalForm" filter="false" property="productCategorySelected"/>)</div>
+			<div id="productSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="productSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="productCategorySelected"/>)</div>
 		</logic:equal>
 		Precio<html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField"/>
-		<a href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp; <a href="javascript:limpiarProducto()">Limpiar</a>
+		<a href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp; 
+		<a href="javascript:limpiarProducto()">Limpiar</a>
 	</div>
 	
 	<%
@@ -226,7 +228,9 @@ request.setAttribute( "products",  paginated);
 		<display:column title="Producto" sortable="true" sortName="Producto" headerClass="sortable" property="profesionalProductText"></display:column>
 		<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable" property="productCategoryText"></display:column>
 		<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable" property="referencePrice"></display:column>
-		<display:column title="acciones"><a href="./quitarProducto.do?id=<%= ((ProductBean)pageContext.getAttribute("products")).getProfesionalProductId()%><%=DisplayTagParamHelper.getParams(request)%>">Quitar</a></display:column>
+		<display:column title="acciones">
+			<a href="javascript:document.ProfesionalForm.action='./removeProduct.do?index=<%= ((ProductBean)pageContext.getAttribute("products")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
+		</display:column>
 	</display:table>
 	<%=DisplayTagParamHelper.getFields(request)%>
 	
