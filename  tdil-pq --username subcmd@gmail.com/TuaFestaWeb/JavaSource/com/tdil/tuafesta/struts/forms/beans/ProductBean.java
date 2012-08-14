@@ -1,8 +1,12 @@
 package com.tdil.tuafesta.struts.forms.beans;
 
-public class ProductBean {
+import java.io.Serializable;
+
+public class ProductBean implements Serializable {
 
 	// TODO a esto le falta considerar que puede ser una edicion
+	
+	private int index;
 	
 	private int profesionalProductId;
 	private String productCategoryText;
@@ -32,6 +36,12 @@ public class ProductBean {
 	}
 	public void setReferencePrice(String referencePrice) {
 		this.referencePrice = referencePrice;
+	}
+	public int getIndex() {
+		return index;
+	}
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	
 }
