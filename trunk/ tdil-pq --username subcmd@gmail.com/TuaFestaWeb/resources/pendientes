@@ -1,3 +1,8 @@
+Pensar como voy a manejar (o quizas ahora no) el cambio del dato pk (email).
+
+Al backend al listado de productos hay que hacerlo con busqueda y display table.
+Lo mismo para el de servicios. Deberia tener tambien el category path.
+
 Tema alta de profesional
 Al registro (mockup le falta) website, horario de atencion y descripcion.
 Ver cuales van a ser obligatorios y cuales no
@@ -11,6 +16,9 @@ A las localidades les falta el borrado, deberia ser fisico, siempre y cuando
  
  Estadisticas de uso?
   Visitas al perfil, inclusion en busquedas?
+  
+Clicks en geo levels
+Cliks en categorias
  
  ******
  App de test
