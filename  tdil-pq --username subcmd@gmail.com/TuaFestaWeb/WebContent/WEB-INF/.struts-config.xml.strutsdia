@@ -508,4 +508,40 @@
    PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#removeProduct" NAME="action43" PATH="/removeProduct"
+  SHAPE="32,4081,0,0" TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#verifyProfesional" NAME="action44"
+  PATH="/verifyProfesional" SHAPE="32,10353,0,0"
+  TITLE="VerifyProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="/verifyProfesional.jsp"
+  SHAPE="240,10465,0,0" SUBTYPE="jsp" TITLE="verifyProfesional.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#approveProfesional" NAME="action45"
+  PATH="/approveProfesional" SHAPE="32,11361,0,0"
+  TITLE="VerifyProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalAdministration.jsp" TARGET="page14"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#disapproveProfesional" NAME="action46"
+  PATH="/disapproveProfesional" SHAPE="32,11361,0,0"
+  TITLE="VerifyProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalAdministration.jsp" TARGET="page14"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
