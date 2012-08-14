@@ -19,6 +19,7 @@
   <form-bean id="ProfesionalAdministrationForm"
    name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
+  <form-bean id="VerifyProfesionalForm" name="VerifyProfesionalForm" type="com.tdil.tuafesta.struts.forms.VerifyProfesionalForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -211,9 +212,28 @@
   
   <action name="ProfesionalForm" path="/addProduct"
    scope="session" type="com.tdil.tuafesta.struts.action.AddProductAction">
-   <forward name="continue" path="/registroProfesional.jsp"/>
+   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
+  </action>
+  <action name="ProfesionalForm" path="/removeProduct"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveProductAction">
+   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
   <action path="/searchProduct" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAction"/>
+  
+  <action name="VerifyProfesionalForm" parameter="Admin"
+   path="/verifyProfesional" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/verifyProfesional.jsp"/>
+  </action>
+  <action name="VerifyProfesionalForm" parameter="Admin"
+   path="/approveProfesional" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/verifyProfesional.jsp"/>
+  </action>
+  <action name="VerifyProfesionalForm" parameter="Admin"
+   path="/disapproveProfesional" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/verifyProfesional.jsp"/>
+  </action>
   
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
