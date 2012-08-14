@@ -12,6 +12,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalStatus;
 
 public class ValidateProfesionalEmailForm extends TransactionalValidationForm {
 
@@ -60,6 +61,7 @@ public class ValidateProfesionalEmailForm extends TransactionalValidationForm {
 			if (profesional.getVerifemail().equals(this.getVerifemail())) {
 				profesional.setEmailvalid(1);
 				profesional.setVerifemail(null);
+				profesional.setStatus(ProfesionalStatus.VERIFICATION_PENDING);
 				profesionalDAO.updateProfesionalByPrimaryKey(profesional);
 			} else {
 				throw new ValidationException(new ValidationError("not valid"));

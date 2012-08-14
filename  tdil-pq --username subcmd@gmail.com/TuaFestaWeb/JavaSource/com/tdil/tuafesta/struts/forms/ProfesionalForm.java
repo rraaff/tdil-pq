@@ -1,6 +1,7 @@
 package com.tdil.tuafesta.struts.forms;
 
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,7 @@ import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.ProfesionalChangeDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
+import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo2;
@@ -33,6 +35,9 @@ import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
+import com.tdil.tuafesta.model.ProfesionalStatus;
+import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.struts.forms.beans.ProductBean;
 import com.tdil.tuafesta.web.EmailUtils;
@@ -188,6 +193,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	public void save() throws SQLException, ValidationException {
 		ProfesionalChangeDAO profesionalChangeDAO = DAOManager.getProfesionalChangeDAO();
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
+		SellDAO sellDAO = DAOManager.getSellDAO();
 		WallDAO wallDAO = DAOManager.getWallDAO();
 		Wall wall = new Wall();
 		wall.setDescription("profesional");
@@ -228,10 +234,26 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setIdWall(wallId);
 		profesional.setIdProfesionalChange(profesionalChangeId);
 		
-		profesional.setApproved(0);
+		profesional.setStatus(ProfesionalStatus.EMAIL_VALIDATION_PENDING);
 		profesional.setDatachanged(0);
 		profesional.setDeleted(0);
 		int id = profesionalDAO.insertProfesional(profesional);
+		
+		for (ProductBean productBean : getProducts()) {
+			Sell sell = new Sell();
+			sell.setIdProfesional(id);
+			sell.setType(SellType.PRODUCT);
+			sell.setIdProdServ(productBean.getProfesionalProductId());
+			if (sell.getIdProdServ() == 0) {
+				sell.setItem(productBean.getProfesionalProductText());
+			}
+			// TODO ver tema de . , etc
+			BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+			sell.setReferenceprice(refPrice);
+			sell.setApproved(0);
+			sell.setDeleted(0);
+			sellDAO.insertSell(sell);
+		}
 		
 		StringBuffer link = new StringBuffer();
 		link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
@@ -549,7 +571,8 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			productbean.setProfesionalProductText(this.getProductSelectedText());
 			productbean.setProductCategoryText(this.getProductCategorySelected());
 			productbean.setReferencePrice(this.getReferenceprice());
-			this.getProducts().add(productbean);
+			this.getProducts().add(0, productbean);
+			cleanProductFields();
 		} else {
 			// producto no rd
 			ProductBean productbean = new ProductBean();
@@ -557,17 +580,43 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			productbean.setProfesionalProductText(this.getProductAutocompleter());
 			productbean.setProductCategoryText("-");
 			productbean.setReferencePrice(this.getReferenceprice());
-			this.getProducts().add(productbean);
+			this.getProducts().add(0, productbean);
+			cleanProductFields();
 		}
 		
 	}
 
+	private void cleanProductFields() {
+		this.setProductId(null);
+		this.setProductAutocompleter(null);
+		this.setProductSelectedText(null);
+		this.setProductCategorySelected(null);
+		this.setReferenceprice(null);
+	}
+
 	public List<ProductBean> getProducts() {
+		int index = 0;
+		for (ProductBean productBean : products) {
+			productBean.setIndex(index++);
+		}
 		return products;
 	}
 
 	public void setProducts(List<ProductBean> products) {
 		this.products = products;
+	}
+
+	public void removeProduct(String index) {
+		if (StringUtils.isEmpty(index)) {
+			return;
+		}
+		if (!StringUtils.isNumeric(index)) {
+			return;
+		}
+		int indexInt = Integer.parseInt(index);
+		if (indexInt < getProducts().size()) {
+			this.getProducts().remove(indexInt);
+		}
 	}
 
 }
