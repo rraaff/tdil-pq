@@ -1,3 +1,22 @@
+Seguir (orden)
+) Aprobacion
+) Hacer la home
+	) Destacados de primer nivel, de segundo, rubro destacado
+) Alta de fotos y videos, moderacion de backend
+) Foto perfil del profesional
+) Hacer la pagina de alta de promociones/aplicacion en la home
+) Busquedas avanzadas
+) Login de profesional al website
+) Modificacion de profesional
+) Desaprobacion del profesional
+) Login/registracion de clientes (normal y con fb)
+) perfil publico del profesional
+) bajado de reporte  del listado de profesionales
+) registracion de profesionales con fb
+) compartir en fb ...
+
+
+
 Pensar como voy a manejar (o quizas ahora no) el cambio del dato pk (email).
 
 Al backend al listado de productos hay que hacerlo con busqueda y display table.
