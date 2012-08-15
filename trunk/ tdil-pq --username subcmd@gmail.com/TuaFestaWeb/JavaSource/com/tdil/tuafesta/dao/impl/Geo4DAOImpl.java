@@ -1,15 +1,15 @@
 package com.tdil.tuafesta.dao.impl;
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
-
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Geo4DAOImpl implements Geo4DAO {
 
@@ -155,6 +155,14 @@ public class Geo4DAOImpl implements Geo4DAO {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("nombre", string);
 		List<GeoLevelValueObject> list = sqlMapClient.queryForList("GEO4.searchGeoLevelsByNombre", params);
+		return list;
+	}
+	
+	
+	public List<GeoLevelValueObject> selectGeoLevelsByGeo4(String searchName) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("searchName", "%" + searchName.toUpperCase() + "%");
+		List<GeoLevelValueObject> list = sqlMapClient.queryForList("GEO4.selectGeoLevel4", params);
 		return list;
 	}
 }

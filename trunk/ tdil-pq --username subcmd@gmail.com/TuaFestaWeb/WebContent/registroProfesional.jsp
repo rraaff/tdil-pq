@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ProductBean"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.tuafesta.model.Geo4"%>
@@ -108,6 +109,51 @@ $(document).ready(
 					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 				}
 			});
+
+
+			function serviceAreaSelected(serviceAreaLabel, serviceAreaValue) {
+				$("input[name=serviceAreaSelectedText]").attr('value', serviceAreaLabel);
+				$("input[name=serviceAreaAutocompleter]").attr('value','');
+				$("input[name=serviceAreaAutocompleter]").css('display', 'none');
+				$("#serviceAreaSelectedDiv").prop('innerHTML', serviceAreaLabel);
+				$("#serviceAreaSelectedDiv").css('display', 'block');
+				$("input[name=geoLevel4Id]").attr('value', serviceAreaValue);
+				$("#addGeoLink").css('display', 'block');
+			}
+			$( "input[name=serviceAreaAutocompleter]" ).autocomplete({
+				source: function( request, response ) {
+					$.ajax({
+						url: "searchGeoLevelAjax.do",
+						data: {
+							name: request.term
+						},
+						dataType: "json",
+						success: function( data ) {
+							response( $.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.id
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function( event, ui ) {
+					if (ui.item) {
+						serviceAreaSelected(ui.item.label, ui.item.value);
+					}
+					/*log( ui.item ?
+						"Selected: " + ui.item.label :
+						"Nothing selected, input was " + this.value);*/
+				},
+				open: function() {
+					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});
 		}
 
 	
@@ -122,6 +168,17 @@ function limpiarProducto() {
 	$("input[name=productId]").attr('value', '');
 	$("input[name=referenceprice]").attr('value', '');
 }
+
+function limpiarServiceArea() {
+	$("input[name=productSelectedText]").attr('value', '');
+	$("input[name=serviceAreaAutocompleter]").attr('value','');
+	$("input[name=serviceAreaAutocompleter]").css('display', 'block');
+	$("#serviceAreaSelectedDiv").prop('innerHTML', '');
+	$("#serviceAreaSelectedDiv").css('display', 'none');
+	$("input[name=geoLevel4Id]").attr('value', '');
+	$("#addGeoLink").css('display', 'none');
+}
+
 
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
@@ -200,6 +257,39 @@ function limpiarProducto() {
 	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.businesshours.err")%></div>
 	Descripcion<div id="Descripcion"><html:textarea name="ProfesionalForm" property="description" styleClass="normalField"/></div>
 	<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.description.err")%></div>
+	
+	<div class="ui-widget">
+	<html:hidden name="ProfesionalForm" property="geoLevel4Id"/>
+	<html:hidden name="ProfesionalForm" property="serviceAreaSelectedText"/>
+		Zona:
+		<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="false">
+			<html:text name="ProfesionalForm" property="serviceAreaAutocompleter" styleClass="normalField" style="display: block;"/>
+			<div id="serviceAreaSelectedDiv" style="display: none;"></div>
+		</logic:equal>
+		<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="true">
+			<html:text name="ProfesionalForm" property="serviceAreaAutocompleter" styleClass="normalField" style="display: none;"/>
+			<div id="serviceAreaSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceAreaSelectedText"/></div>
+		</logic:equal>
+		<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="true">
+			<a id="addGeoLink" href="javascript:document.ProfesionalForm.action='./addServiceArea.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp;
+		</logic:equal>
+		<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="false">
+			<a id="addGeoLink" style="display: none;" href="javascript:document.ProfesionalForm.action='./addServiceArea.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp;
+		</logic:equal>
+		 
+		<a id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a>
+	</div>
+	<%
+java.util.List sourceServiceAreas = profesionalForm.getServiceAreas();
+com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
+request.setAttribute( "serviceAreas",  paginatedServiceAreas);
+%>
+	<display:table name="serviceAreas" sort="external" pagesize="10" id="serviceAreas" requestURI="./registroProfesional.jsp">
+		<display:column title="Zona" sortable="true" sortName="Zona" headerClass="sortable" property="serviceAreaText"></display:column>
+		<display:column title="acciones">
+			<a href="javascript:document.ProfesionalForm.action='./removeServiceArea.do?index=<%= ((ServiceAreaBean)pageContext.getAttribute("serviceAreas")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
+		</display:column>
+	</display:table>
 	
 	<div class="ui-widget">
 		<html:hidden name="ProfesionalForm" property="productId"/>

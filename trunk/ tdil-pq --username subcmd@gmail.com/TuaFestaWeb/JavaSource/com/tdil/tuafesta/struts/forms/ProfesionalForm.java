@@ -25,6 +25,7 @@ import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.dao.ProfesionalChangeDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo2;
@@ -38,8 +39,10 @@ import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.struts.forms.beans.ProductBean;
+import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -86,6 +89,12 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private String facebook;
 	private String businesshours;
 	private String description;
+	
+	// abm de areas de servicios
+	private List<ServiceAreaBean> serviceAreas = new ArrayList<ServiceAreaBean>();
+	private String geoLevel4Id;
+	private String serviceAreaAutocompleter;
+	private String serviceAreaSelectedText;
 	
 	// abm de productos
 	private List<ProductBean> products = new ArrayList<ProductBean>();
@@ -195,6 +204,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
 		SellDAO sellDAO = DAOManager.getSellDAO();
 		WallDAO wallDAO = DAOManager.getWallDAO();
+		ServiceAreaDAO serviceAreaDAO = DAOManager.getServiceAreaDAO();
 		Wall wall = new Wall();
 		wall.setDescription("profesional");
 		wall.setModerated(1);
@@ -255,6 +265,16 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			sellDAO.insertSell(sell);
 		}
 		
+		for (ServiceAreaBean serviceAreaBean : serviceAreas) {
+			ServiceArea serviceArea = new ServiceArea();
+			serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevel4Id());
+			serviceArea.setLevel(4);
+			serviceArea.setIdProfesional(id);
+			serviceArea.setApproved(0);
+			serviceArea.setDeleted(0);
+			serviceAreaDAO.insertServiceArea(serviceArea);
+		}
+		
 		StringBuffer link = new StringBuffer();
 		link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
 		
@@ -278,6 +298,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	
 	public boolean isProductSelected() {
 		return !StringUtils.isEmpty(this.getProductId());
+	}
+	
+	public boolean isServiceAreaSelected() {
+		return !StringUtils.isEmpty(this.getGeoLevel4Id());
 	}
 
 	public int getObjectId() {
@@ -616,6 +640,69 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		int indexInt = Integer.parseInt(index);
 		if (indexInt < getProducts().size()) {
 			this.getProducts().remove(indexInt);
+		}
+	}
+
+	public List<ServiceAreaBean> getServiceAreas() {
+		int index = 0;
+		for (ServiceAreaBean bean : serviceAreas) {
+			bean.setIndex(index++);
+		}
+		return serviceAreas;
+	}
+
+	public void setServiceAreas(List<ServiceAreaBean> serviceAreas) {
+		this.serviceAreas = serviceAreas;
+	}
+
+	public String getGeoLevel4Id() {
+		return geoLevel4Id;
+	}
+
+	public void setGeoLevel4Id(String geoLevel4Id) {
+		this.geoLevel4Id = geoLevel4Id;
+	}
+
+	public String getServiceAreaAutocompleter() {
+		return serviceAreaAutocompleter;
+	}
+
+	public void setServiceAreaAutocompleter(String serviceAreaAutocompleter) {
+		this.serviceAreaAutocompleter = serviceAreaAutocompleter;
+	}
+
+	public String getServiceAreaSelectedText() {
+		return serviceAreaSelectedText;
+	}
+
+	public void setServiceAreaSelectedText(String serviceAreaSelectedText) {
+		this.serviceAreaSelectedText = serviceAreaSelectedText;
+	}
+
+	public void addServiceArea() {
+		ServiceAreaBean serviceAreaBean = new ServiceAreaBean();
+		serviceAreaBean.setGeoLevel4Id(Integer.valueOf(this.getGeoLevel4Id()));
+		serviceAreaBean.setServiceAreaText(this.getServiceAreaSelectedText());
+		this.getServiceAreas().add(0, serviceAreaBean);
+		cleanServiceAreaFields();
+	}
+	
+	private void cleanServiceAreaFields() {
+		this.setGeoLevel4Id(null);
+		this.setServiceAreaAutocompleter(null);
+		this.setServiceAreaSelectedText(null);
+	}
+
+	public void removeServiceArea(String index) {
+		if (StringUtils.isEmpty(index)) {
+			return;
+		}
+		if (!StringUtils.isNumeric(index)) {
+			return;
+		}
+		int indexInt = Integer.parseInt(index);
+		if (indexInt < getServiceAreas().size()) {
+			this.getServiceAreas().remove(indexInt);
 		}
 	}
 
