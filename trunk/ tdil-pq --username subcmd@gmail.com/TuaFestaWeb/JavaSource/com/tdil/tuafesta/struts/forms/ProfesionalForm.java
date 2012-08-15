@@ -43,6 +43,7 @@ import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.struts.forms.beans.ProductBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
+import com.tdil.tuafesta.struts.forms.beans.ServiceBean;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -103,6 +104,14 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private String productAutocompleter;
 	private String productSelectedText;
 	private String referenceprice;
+	
+	// abm de servicios
+	private List<ServiceBean> services = new ArrayList<ServiceBean>();
+	private String serviceId;
+	private String serviceCategorySelected;
+	private String serviceAutocompleter;
+	private String serviceSelectedText;
+	private String serviceReferenceprice;
 	
 	public static final String firstname_key = "ProfesionalForm.firstname";
 	public static final String lastname_key = "ProfesionalForm.lastname";
@@ -265,6 +274,22 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			sellDAO.insertSell(sell);
 		}
 		
+		for (ServiceBean serviceBean : getServices()) {
+			Sell sell = new Sell();
+			sell.setIdProfesional(id);
+			sell.setType(SellType.SERVICE);
+			sell.setIdProdServ(serviceBean.getProfesionalServiceId());
+			if (sell.getIdProdServ() == 0) {
+				sell.setItem(serviceBean.getProfesionalServiceText());
+			}
+			// TODO ver tema de . , etc
+			BigDecimal refPrice = new BigDecimal(serviceBean.getReferencePrice());
+			sell.setReferenceprice(refPrice);
+			sell.setApproved(0);
+			sell.setDeleted(0);
+			sellDAO.insertSell(sell);
+		}
+		
 		for (ServiceAreaBean serviceAreaBean : serviceAreas) {
 			ServiceArea serviceArea = new ServiceArea();
 			serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevel4Id());
@@ -302,6 +327,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	
 	public boolean isServiceAreaSelected() {
 		return !StringUtils.isEmpty(this.getGeoLevel4Id());
+	}
+	
+	public boolean isServiceSelected() {
+		return !StringUtils.isEmpty(this.getServiceId());
 	}
 
 	public int getObjectId() {
@@ -617,6 +646,14 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.setProductCategorySelected(null);
 		this.setReferenceprice(null);
 	}
+	
+	private void cleanServiceFields() {
+		this.setServiceId(null);
+		this.setServiceAutocompleter(null);
+		this.setServiceSelectedText(null);
+		this.setServiceCategorySelected(null);
+		this.setServiceReferenceprice(null);
+	}
 
 	public List<ProductBean> getProducts() {
 		int index = 0;
@@ -703,6 +740,94 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		int indexInt = Integer.parseInt(index);
 		if (indexInt < getServiceAreas().size()) {
 			this.getServiceAreas().remove(indexInt);
+		}
+	}
+
+	public List<ServiceBean> getServices() {
+		int index = 0;
+		for (ServiceBean serviceBean : services) {
+			serviceBean.setIndex(index++);
+		}
+		return services;
+	}
+
+	public void setServices(List<ServiceBean> services) {
+		this.services = services;
+	}
+
+	public String getServiceId() {
+		return serviceId;
+	}
+
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
+	}
+
+	public String getServiceCategorySelected() {
+		return serviceCategorySelected;
+	}
+
+	public void setServiceCategorySelected(String serviceCategorySelected) {
+		this.serviceCategorySelected = serviceCategorySelected;
+	}
+
+	public String getServiceAutocompleter() {
+		return serviceAutocompleter;
+	}
+
+	public void setServiceAutocompleter(String serviceAutocompleter) {
+		this.serviceAutocompleter = serviceAutocompleter;
+	}
+
+	public String getServiceSelectedText() {
+		return serviceSelectedText;
+	}
+
+	public void setServiceSelectedText(String serviceSelectedText) {
+		this.serviceSelectedText = serviceSelectedText;
+	}
+
+	public String getServiceReferenceprice() {
+		return serviceReferenceprice;
+	}
+
+	public void setServiceReferenceprice(String serviceReferenceprice) {
+		this.serviceReferenceprice = serviceReferenceprice;
+	}
+
+	public void addService() {
+		// TODO validaciones
+		if (this.isServiceSelected()) {
+			// serviceo elegido de la rd
+			ServiceBean servicebean = new ServiceBean();
+			servicebean.setProfesionalServiceId(Integer.valueOf(this.getServiceId()));
+			servicebean.setProfesionalServiceText(this.getServiceSelectedText());
+			servicebean.setServiceCategoryText(this.getServiceCategorySelected());
+			servicebean.setReferencePrice(this.getReferenceprice());
+			this.getServices().add(0, servicebean);
+			cleanServiceFields();
+		} else {
+			// serviceo no rd
+			ServiceBean servicebean = new ServiceBean();
+			servicebean.setProfesionalServiceId(0);
+			servicebean.setProfesionalServiceText(this.getServiceAutocompleter());
+			servicebean.setServiceCategoryText("-");
+			servicebean.setReferencePrice(this.getReferenceprice());
+			this.getServices().add(0, servicebean);
+			cleanServiceFields();
+		}
+	}
+
+	public void removeService(String index) {
+		if (StringUtils.isEmpty(index)) {
+			return;
+		}
+		if (!StringUtils.isNumeric(index)) {
+			return;
+		}
+		int indexInt = Integer.parseInt(index);
+		if (indexInt < getServices().size()) {
+			this.getServices().remove(indexInt);
 		}
 	}
 

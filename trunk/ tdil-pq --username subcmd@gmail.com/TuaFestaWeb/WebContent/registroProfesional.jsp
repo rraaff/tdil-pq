@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ProductBean"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
@@ -73,6 +74,17 @@ $(document).ready(
 				$("#productSelectedDiv").css('display', 'block');
 				$("input[name=productId]").attr('value', prodValue);
 			}
+
+			function serviceSelected(prodLabel, prodValue, prodCat) {
+				alert(prodCat);
+				$("input[name=serviceSelectedText]").attr('value', prodLabel);
+				$("input[name=serviceAutocompleter]").attr('value','');
+				$("input[name=serviceAutocompleter]").css('display', 'none');
+				$("input[name=serviceCategorySelected]").attr('value', prodCat);
+				$("#serviceSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
+				$("#serviceSelectedDiv").css('display', 'block');
+				$("input[name=serviceId]").attr('value', prodValue);
+			}
 			
 			$( "input[name=productAutocompleter]" ).autocomplete({
 				source: function( request, response ) {
@@ -97,6 +109,43 @@ $(document).ready(
 				select: function( event, ui ) {
 					if (ui.item) {
 						productSelected(ui.item.label, ui.item.value, ui.item.path);
+					}
+					/*log( ui.item ?
+						"Selected: " + ui.item.label :
+						"Nothing selected, input was " + this.value);*/
+				},
+				open: function() {
+					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});
+
+
+			$( "input[name=serviceAutocompleter]" ).autocomplete({
+				source: function( request, response ) {
+					$.ajax({
+						url: "searchService.do",
+						data: {
+							name: request.term
+						},
+						dataType: "json",
+						success: function( data ) {
+							response( $.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.id,
+									path: item.path
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function( event, ui ) {
+					if (ui.item) {
+						serviceSelected(ui.item.label, ui.item.value, ui.item.path);
 					}
 					/*log( ui.item ?
 						"Selected: " + ui.item.label :
@@ -167,6 +216,16 @@ function limpiarProducto() {
 	$("#productSelectedDiv").css('display', 'none');
 	$("input[name=productId]").attr('value', '');
 	$("input[name=referenceprice]").attr('value', '');
+}
+
+function limpiarServicio() {
+	$("input[name=serviceAutocompleter]").attr('value','');
+	$("input[name=serviceAutocompleter]").css('display', 'block');
+	$("input[name=serviceSelectedText]").attr('value', '');
+	$("#serviceSelectedDiv").prop('innerHTML', '');
+	$("#serviceSelectedDiv").css('display', 'none');
+	$("input[name=serviceId]").attr('value', '');
+	$("input[name=serviceReferenceprice]").attr('value', '');
 }
 
 function limpiarServiceArea() {
@@ -322,6 +381,38 @@ request.setAttribute( "products",  paginated);
 			<a href="javascript:document.ProfesionalForm.action='./removeProduct.do?index=<%= ((ProductBean)pageContext.getAttribute("products")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
 		</display:column>
 	</display:table>
+
+<div class="ui-widget">
+		<html:hidden name="ProfesionalForm" property="serviceId"/>
+		<html:hidden name="ProfesionalForm" property="serviceSelectedText"/>
+		<html:hidden name="ProfesionalForm" property="serviceCategorySelected"/>
+		Servicio
+		<logic:equal name="ProfesionalForm" property="serviceSelected" value="false">
+			<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField" style="display: block;"/>
+			<div id="serviceSelectedDiv" style="display: none;"></div>
+		</logic:equal>
+		<logic:equal name="ProfesionalForm" property="serviceSelected" value="true">
+			<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField" style="display: none;"/>
+			<div id="serviceSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="serviceCategorySelected"/>)</div>
+		</logic:equal>
+		Precio<html:text name="ProfesionalForm" property="serviceReferenceprice" styleClass="normalField"/>
+		<a href="javascript:document.ProfesionalForm.action='./addService.do';document.ProfesionalForm.submit();">Agregar</a> &nbsp; 
+		<a href="javascript:limpiarServicio()">Limpiar</a>
+	</div>
+<%
+java.util.List servicesSource = profesionalForm.getServices();
+com.tdil.struts.pagination.PaginatedListImpl paginatedServices = new com.tdil.struts.pagination.PaginatedListImpl(servicesSource, request, 10);
+request.setAttribute( "services",  paginatedServices);
+%>
+	<display:table name="services" sort="external" pagesize="10" id="services" requestURI="./registroProfesional.jsp">
+		<display:column title="Servicio" sortable="true" sortName="Servicio" headerClass="sortable" property="profesionalServiceText"></display:column>
+		<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable" property="serviceCategoryText"></display:column>
+		<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable" property="referencePrice"></display:column>
+		<display:column title="acciones">
+			<a href="javascript:document.ProfesionalForm.action='./removeService.do?index=<%= ((ServiceBean)pageContext.getAttribute("services")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
+		</display:column>
+	</display:table>
+	
 	<%=DisplayTagParamHelper.getFields(request)%>
 	
 	<div id="buttonHolder"><input type="submit" value="Enviar" class="okCircle" /></div>
