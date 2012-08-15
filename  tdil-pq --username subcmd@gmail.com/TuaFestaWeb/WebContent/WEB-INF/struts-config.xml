@@ -219,6 +219,16 @@
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
   <action path="/searchProduct" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAction"/>
+  <action path="/searchGeoLevelAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAjaxAction"/>
+  
+  <action name="ProfesionalForm" path="/addServiceArea"
+   scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAreaAction">
+   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
+  </action>
+  <action name="ProfesionalForm" path="/removeServiceArea"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveServiceAreaAction">
+   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
+  </action>
   
   <action name="VerifyProfesionalForm" parameter="Admin"
    path="/verifyProfesional" scope="session" type="com.tdil.struts.actions.EditAction">

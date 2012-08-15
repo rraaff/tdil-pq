@@ -76,4 +76,6 @@ public interface Geo4DAO {
 	int updateGeo4ByPrimaryKey(Geo4 record) throws SQLException;
 
 	List<GeoLevelValueObject> searchGeoLevelsByNombre(String string) throws SQLException;
+	
+	List<GeoLevelValueObject> selectGeoLevelsByGeo4(String searchName) throws SQLException;
 }

@@ -6,6 +6,11 @@ public class ProductBean implements Serializable {
 
 	// TODO a esto le falta considerar que puede ser una edicion
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6929326102200140850L;
+
 	private int index;
 	
 	private int profesionalProductId;

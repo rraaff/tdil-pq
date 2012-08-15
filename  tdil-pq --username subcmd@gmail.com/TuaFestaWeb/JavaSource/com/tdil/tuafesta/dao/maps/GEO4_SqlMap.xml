@@ -239,4 +239,24 @@
     and geo4.nombre like #nombre:VARCHAR#
     order by geo4.nombre
   </select>
+  
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject" id="GeoLevel4ValueObject">
+  	<result column="id" jdbcType="INTEGER" property="id" />
+    <result column="nombre2" jdbcType="VARCHAR" property="nombre2" />
+    <result column="nombre3" jdbcType="VARCHAR" property="nombre3" />
+    <result column="nombre4" jdbcType="DATE" property="nombre4" />
+    <result column="parentId" jdbcType="INTEGER" property="parentId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  <select id="selectGeoLevel4" parameterClass="java.util.Map" resultMap="GeoLevel4ValueObject">
+    SELECT GEO4.id, GEO2.nombre as nombre2, GEO3.nombre as nombre3, GEO4.nombre as nombre4, GEO4.geo3_id as parentId, 4 as level
+	FROM GEO2, GEO3, GEO4
+	WHERE GEO2.id = GEO3.geo2_id
+	AND GEO3.id = GEO4.geo3_id
+	AND GEO2.deleted = 0
+	AND GEO3.deleted = 0
+	AND GEO4.deleted = 0
+	AND UPPER(GEO4.nombre) LIKE #searchName:VARCHAR#
+  </select>
 </sqlMap>
