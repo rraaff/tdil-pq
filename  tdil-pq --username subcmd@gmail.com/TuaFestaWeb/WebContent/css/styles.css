@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content h1, #content h2, #content h3, #content h4 {
+	padding:8px 8px;
+}
