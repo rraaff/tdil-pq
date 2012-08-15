@@ -52,7 +52,6 @@ p, ul{
 /* END RESET */
 div, span, p, a { /*border:dotted 1px #00FF00;*/ }
 html, body {
-	width:100%;
 	height: 100%;
 }
 body {
@@ -215,13 +214,19 @@ a {
 	float:left;
 }
 /* / CONTENT /////////////////////////////////////////////////// */
+#preContainer {
+	width:1000px;
+	margin:0 auto;
+}
 #content {
 	background-image: url(../images/skin_basic/backgrounds/borders_central.png);
 	background-repeat: repeat-y;
+	background-position: center center;
 	width:1000px;
 	margin:0 auto;
-	/*float:left;           //  Esto anda mal */
+	padding:0;
 	position:relative;
+	float:left;
 }
 #content h1, #content h2, #content h3, #content h4 {
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
