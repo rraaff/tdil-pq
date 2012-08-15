@@ -36,6 +36,20 @@ public class ServiceCategoryUtils {
 			return new ArrayList<ServiceCategoryTreeNode>();
 		}
 	}
+	
+	public static String getCategoryPath(int idCategory) throws SQLException {
+		if (idCategory == 0) {
+			return "";
+		} else {
+			ServiceCategoryDAO productCategoryDAO = DAOManager.getServiceCategoryDAO();
+			ServiceCategory productCategory = productCategoryDAO.selectServiceCategoryByPrimaryKey(idCategory);
+			if (productCategory.getParentId() != 0) {
+				return getCategoryPath(productCategory.getParentId()) + " > " + productCategory.getName();
+			} else {
+				return productCategory.getName();
+			}
+		}
+	}
 
 	public static List<ServiceCategoryTreeNode> getTreeInTransaction(boolean onlyActive) throws SQLException {
 		ServiceCategoryDAO profesionalCategoryDAO = DAOManager.getServiceCategoryDAO();
