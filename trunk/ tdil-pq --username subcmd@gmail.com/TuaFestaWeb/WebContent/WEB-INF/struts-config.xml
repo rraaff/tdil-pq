@@ -19,7 +19,7 @@
   <form-bean id="ProfesionalAdministrationForm"
    name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
-  <form-bean id="VerifyProfesionalForm" name="VerifyProfesionalForm" type="com.tdil.tuafesta.struts.forms.VerifyProfesionalForm"/>
+  <form-bean id="ReviewProfesionalForm" name="ReviewProfesionalForm" type="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -239,16 +239,18 @@
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
   
-  <action name="VerifyProfesionalForm" parameter="Admin"
-   path="/verifyProfesional" scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/verifyProfesional.jsp"/>
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/reviewProfesional" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewProfesionalAction">
+   <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
+   <forward name="verification" path="/verifyProfesional.jsp"/>
   </action>
-  <action name="VerifyProfesionalForm" parameter="Admin"
+  
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/approveProfesional" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/verifyProfesional.jsp"/>
   </action>
-  <action name="VerifyProfesionalForm" parameter="Admin"
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/disapproveProfesional" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/verifyProfesional.jsp"/>
@@ -259,6 +261,20 @@
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
    <forward name="failure" path="/profesionalEmailNotValidated.jsp"/>
   </action>
+  
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/verifyProfesional" scope="session" type="com.tdil.tuafesta.struts.action.VerifyProfesionalAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/verifyProfesional.jsp"/>
+  </action>
+  
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/manualValidateProfesionalEmail" scope="session" type="com.tdil.tuafesta.struts.action.ManualValidateProfesionalEmailAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/validateProfesionalEmail.jsp"/>
+  </action>
+  
+  
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

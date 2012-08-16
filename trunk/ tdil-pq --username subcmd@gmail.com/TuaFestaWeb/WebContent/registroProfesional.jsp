@@ -83,7 +83,6 @@ $(document).ready(
 			}
 
 			function serviceSelected(prodLabel, prodValue, prodCat) {
-				alert(prodCat);
 				$("input[name=serviceSelectedText]").attr('value', prodLabel);
 				$("input[name=serviceAutocompleter]").attr('value','');
 				$("input[name=serviceAutocompleter]").css('display', 'none');

@@ -803,7 +803,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			servicebean.setProfesionalServiceId(Integer.valueOf(this.getServiceId()));
 			servicebean.setProfesionalServiceText(this.getServiceSelectedText());
 			servicebean.setServiceCategoryText(this.getServiceCategorySelected());
-			servicebean.setReferencePrice(this.getReferenceprice());
+			servicebean.setReferencePrice(this.getServiceReferenceprice());
 			this.getServices().add(0, servicebean);
 			cleanServiceFields();
 		} else {
@@ -812,7 +812,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			servicebean.setProfesionalServiceId(0);
 			servicebean.setProfesionalServiceText(this.getServiceAutocompleter());
 			servicebean.setServiceCategoryText("-");
-			servicebean.setReferencePrice(this.getReferenceprice());
+			servicebean.setReferencePrice(this.getServiceReferenceprice());
 			this.getServices().add(0, servicebean);
 			cleanServiceFields();
 		}

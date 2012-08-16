@@ -16,7 +16,7 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
-import com.tdil.tuafesta.struts.forms.VerifyProfesionalForm;
+import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
 
 public class DisapproveProfesionalAction extends AbstractAction {
@@ -26,7 +26,7 @@ public class DisapproveProfesionalAction extends AbstractAction {
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		final VerifyProfesionalForm abstractForm = (VerifyProfesionalForm) form;
+		final ReviewProfesionalForm abstractForm = (ReviewProfesionalForm) form;
 		ValidationError error = abstractForm.validateForDisapprove();
 		if(error.hasError()) {
 			return redirectToFailure(error, request, mapping);

@@ -13,35 +13,31 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
-import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
+import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
-import com.tdil.validations.ValidationErrors;
 
-public class ApproveProfesionalAction extends AbstractAction {
+public class GoToReviewProfesionalAction extends AbstractAction {
 	
-	private static final Logger LOG = LoggerProvider.getLogger(ApproveProfesionalAction.class);
+	private static final Logger LOG = LoggerProvider.getLogger(GoToReviewProfesionalAction.class);
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 		final ReviewProfesionalForm abstractForm = (ReviewProfesionalForm) form;
-		ValidationError error = abstractForm.validateForApprove();
-		if(error.hasError()) {
-			return redirectToFailure(error, request, mapping);
-		} else {
-			try {
-				TransactionProvider.executeInTransaction(new TransactionalAction() {
-					public void executeInTransaction() throws SQLException, ValidationException {
-						abstractForm.approve();
-					}
-				});
-			} catch (Exception ex) {
-				LOG.error(ex.getMessage(), ex);
-				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
-				return redirectToFailure(exError, request, mapping);
+		final int userId = Integer.parseInt(request.getParameter("id"));
+		TransactionProvider.executeInTransaction(new TransactionalAction() {
+			public void executeInTransaction() throws SQLException, ValidationException {
+				abstractForm.initWith(userId);
 			}
+		});
+		if (abstractForm.getProfesional().getStatus().equals(ProfesionalStatus.EMAIL_VALIDATION_PENDING)) {
+			return mapping.findForward("emailValidation");
+		}
+		if (abstractForm.getProfesional().getStatus().equals(ProfesionalStatus.VERIFICATION_PENDING)) {
+			return mapping.findForward("verification");
 		}
 		return mapping.findForward("continue");
 	}
