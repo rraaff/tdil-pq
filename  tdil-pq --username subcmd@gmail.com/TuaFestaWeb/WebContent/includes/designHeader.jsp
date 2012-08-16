@@ -8,7 +8,7 @@
 				<ul class="nav">
 					<li><a href="registroPreRegistro.jsp">Registrate</a></li>
 					<li><a href="#">Ingresar</a></li>
-					<li><a href="#">Mi cuenta</a></li>
+					<li><a href="perfilProfesional.jsp">Mi cuenta</a></li>
 					<li><span class="userLogged">Bienvenido&nbsp;</span><span class="selected">Alejandro </span><a href="#">(no soy Alejandro)</a></li>
 				</ul>
 			</div>
