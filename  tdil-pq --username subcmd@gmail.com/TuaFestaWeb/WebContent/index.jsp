@@ -90,7 +90,7 @@
 		<div id="promos"></div>
 		<div id="buttons">
 			<div class="advancedSearch"><a href=""></a></div>
-			<div class="addProfessional"><a href="./goToRegistroProfesional.do"></a></div>
+			<div class="addProfessional"><a href="registroPreRegistro.jsp"></a></div>
 			<div class="addClientFB"><a href=""></a></div>
 			<div class="viewPromotions"><a href="promotionList.jsp"></a></div>
 		</div>
