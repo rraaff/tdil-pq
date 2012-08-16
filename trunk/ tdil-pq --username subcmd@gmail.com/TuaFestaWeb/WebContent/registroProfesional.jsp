@@ -260,7 +260,7 @@ function limpiarServiceArea() {
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/addProfesional">
-			<div id="formSection" class="width650">
+			<div id="formSection">
 				<div class="myRow">
 					<div class="myLabel width50">Nombre</div>
 					<div class="myLabel width160" id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField width150"/></div>
@@ -299,13 +299,13 @@ function limpiarServiceArea() {
 					<div class="myLabel width40">Clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width150"/></div>
 					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
-					<div class="myLabel width2	50">TODO If por facebook // Borrar este div...</div>
+					<div class="myLabel width250">TODO If por facebook // Borrar este div...</div>
 				</div>
 			</div>
 			<div id="formSection" class="width650">
 				<div class="myRow">
 					<div class="myLabel width200">Nombre profesional o de la empresa</div>
-					<div class="myLabel width400" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width400"/></div>
+					<div class="myLabel width380" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width350"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
 				</div>
 				<div class="myRow">
@@ -368,15 +368,16 @@ function limpiarServiceArea() {
 					<div class="myLabel width210 height50" id="Descripcion"><html:textarea name="ProfesionalForm" property="description" styleClass="normalField width200 height50"/></div>
 				</div>
 			</div>
-			<h2 style="float:left; padding-bottom:0; margin-bottom:0;">Agregue productos y servicios que desee ofrecer</h2>
+			
 			<div id="formSection" class="width650">
+				<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px;">Agregue productos y servicios que desee ofrecer</h2>
 				<div class="myRow">
-					<div class="myLabel width650 comment">Agregue todos productos  que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
+					<div class="myLabel width600 comment">Agregue todos productos  que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">Producto</div>
 					<div class="ui-widget">
-						<div class="myLabel width350">
+						<div class="myLabel width320">
 							<html:hidden name="ProfesionalForm" property="productId"/>
 							<html:hidden name="ProfesionalForm" property="productSelectedText"/>
 							<html:hidden name="ProfesionalForm" property="productCategorySelected"/>
@@ -410,12 +411,12 @@ function limpiarServiceArea() {
 					</display:table>
 					
 				<div class="myRow" style="margin-top:15px; border-top:dotted 1px #FFFFFF;">
-					<div class="myLabel width650 comment" style="margin-top:15px;">Agregue todos servicios que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los servicios que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los servicios para su comodidad.</div>
+					<div class="myLabel width600 comment" style="margin-top:15px;">Agregue todos servicios que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los servicios que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los servicios para su comodidad.</div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">Servicio</div>
 					<div class="ui-widget">
-						<div class="myLabel width350">
+						<div class="myLabel width320">
 							<html:hidden name="ProfesionalForm" property="serviceId"/>
 							<html:hidden name="ProfesionalForm" property="serviceSelectedText"/>
 							<html:hidden name="ProfesionalForm" property="serviceCategorySelected"/>
@@ -449,7 +450,7 @@ function limpiarServiceArea() {
 				</div>					
 					
 				<div class="myRow" style="margin-top:15px; border-top:dotted 1px #FFFFFF;">
-					<div class="myLabel width650 comment"  style="margin-top:15px;">Agregue todas las &aacute;reas de cobertura para este producto/servicio</div>
+					<div class="myLabel width600 comment"  style="margin-top:15px;">Agregue todas las &aacute;reas de cobertura para este producto/servicio</div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width100">Localidad/barrio</div>
@@ -466,7 +467,7 @@ function limpiarServiceArea() {
 								<div id="serviceAreaSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceAreaSelectedText"/></div>
 							</logic:equal>
 						</div>
-						<div class="myLabel width50">
+						<div class="myLabel width100">
 							<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="true">
 								<a class="nonelyLink" id="addGeoLink" href="javascript:document.ProfesionalForm.action='./addServiceArea.do';document.ProfesionalForm.submit();">Agregar</a>
 							</logic:equal>
@@ -478,7 +479,7 @@ function limpiarServiceArea() {
 					</div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width650">
+					<div class="myLabel width600">
 						<%
 						java.util.List sourceServiceAreas = profesionalForm.getServiceAreas();
 						com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
@@ -497,6 +498,7 @@ function limpiarServiceArea() {
 		</html:form>
 		</div>
 		<!-- aca Termina el formulario -->
+		</div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

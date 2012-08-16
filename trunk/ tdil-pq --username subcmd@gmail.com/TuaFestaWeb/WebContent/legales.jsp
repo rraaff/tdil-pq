@@ -7,7 +7,7 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 2)</title>
+<title>Tua Festa | R015-M1- Legales</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -20,13 +20,17 @@
 <div id="preContainer">
 	<div id="content">
 		<div id="titleArea">
-			<h1>Registro de profesionales</h1>
-			<h2>¡Felicitaciones! Hemos validado su dirección de E-Mail.</h2>
+			<h1>LEGALES</h1>
+			<h2>Politicas de participaci&oacute;n y privacidad.</h2>
 		</div>
-		<div id="formContent" class="height300">
-			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Su registro ha sido completado. Cada producto o servicio que haya agregado, así como las fotos, videos o demás contenidos de su perfil, requieren aprobación de un administrador de TUA FESTA. Podrás agregar contenidos, productos y servicios cuando lo desees. Éstos deberán ser aprobados antes de ser accesibles por los usuarios.</p>
-				<p><a href="#">Ir a Mi Cuenta</a></p>
+		<div id="formContent" class="height450">
+			<div id="leftBar">
+				<p>texto para completar</p>
+			</div>
+			<div style="width:393px; padding-top:34px; margin-left:20px; float:right;">
+				<h2 style="padding-left:0;">Seguinos en</h2>
+				<div style="margin-right:25px; float:left;"><a href="http://www.facebook.com/"><img src="images/skin_basic/buttons/facebookPlaca.gif" alt="Seguinos en Facebook" /></a></div>
+				<div style="float:left;"><a href="http://www.twitter.com/"><img src="images/skin_basic/buttons/twitterPlaca.gif" alt="Seguinos en Twitter" width="184" height="121" /></a></div>
 			</div>
 		</div>
 	</div>
