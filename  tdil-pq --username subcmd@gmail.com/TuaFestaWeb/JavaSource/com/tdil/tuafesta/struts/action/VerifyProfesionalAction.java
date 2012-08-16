@@ -16,34 +16,50 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
+import com.tdil.struts.actions.ApproveDisapproveAction;
+import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
 
-public class ApproveProfesionalAction extends AbstractAction {
-	
-	private static final Logger LOG = LoggerProvider.getLogger(ApproveProfesionalAction.class);
+public class VerifyProfesionalAction extends AbstractAction {
 
+	// TODO manejar la actualizacion de estados en la pagina de listado
+	
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		final ReviewProfesionalForm abstractForm = (ReviewProfesionalForm) form;
-		ValidationError error = abstractForm.validateForApprove();
-		if(error.hasError()) {
-			return redirectToFailure(error, request, mapping);
-		} else {
+		final ReviewProfesionalForm approveDisapproveForm = (ReviewProfesionalForm) form;
+		if (approveDisapproveForm.getOperation().equals(ApplicationResources.getMessage("Approve"))) {
 			try {
 				TransactionProvider.executeInTransaction(new TransactionalAction() {
 					public void executeInTransaction() throws SQLException, ValidationException {
-						abstractForm.approve();
+						approveDisapproveForm.verify();
 					}
 				});
 			} catch (Exception ex) {
-				LOG.error(ex.getMessage(), ex);
+				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
 				return redirectToFailure(exError, request, mapping);
+			}
+		} else {
+			if (approveDisapproveForm.getOperation().equals(ApplicationResources.getMessage("Block"))) {
+				try {
+					TransactionProvider.executeInTransaction(new TransactionalAction() {
+						public void executeInTransaction() throws SQLException, ValidationException {
+							approveDisapproveForm.blockProfesional();
+						}
+					});
+				} catch (Exception ex) {
+					getLog().error(ex.getMessage(), ex);
+					ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
+					return redirectToFailure(exError, request, mapping);
+				}
 			}
 		}
 		return mapping.findForward("continue");
 	}
 
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(ApproveDisapproveAction.class);
+	}
 }

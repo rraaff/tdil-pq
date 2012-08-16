@@ -11,7 +11,7 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 
-public class VerifyProfesionalForm extends TransactionalValidationForm {
+public class ReviewProfesionalForm extends TransactionalValidationForm {
 
 	/**
 	 * 
@@ -107,6 +107,32 @@ public class VerifyProfesionalForm extends TransactionalValidationForm {
 
 	public void setDisapproveReason(String disapproveReason) {
 		this.disapproveReason = disapproveReason;
+	}
+
+	public void validateEmailManual() throws SQLException {
+		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
+		Profesional profesional = profesionalDAO.selectProfesionalByPrimaryKey(this.getProfesional().getId());
+		profesional.setEmailvalid(1);
+		profesional.setVerifemail(null);
+		profesional.setStatus(ProfesionalStatus.VERIFICATION_PENDING);
+		profesionalDAO.updateProfesionalByPrimaryKey(profesional);
+	}
+
+	public void blockProfesional() throws SQLException {
+		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
+		Profesional profesional = profesionalDAO.selectProfesionalByPrimaryKey(this.getProfesional().getId());
+		profesional.setStatus(ProfesionalStatus.BLOCKED);
+		profesionalDAO.updateProfesionalByPrimaryKey(profesional);
+	}
+
+	public void verify() throws SQLException {
+		// TODO Auto-generated method stub
+		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
+		Profesional profesional = profesionalDAO.selectProfesionalByPrimaryKey(this.getProfesional().getId());
+		profesional.setReviewdate(new Date());
+		profesional.setStatus(ProfesionalStatus.APPROVED);
+		profesionalDAO.updateProfesionalByPrimaryKey(profesional);
+		// TODO a esto le falta aprobar los datos puntuales, le falta el tema de los productos no rd etc etc
 	}
 
 

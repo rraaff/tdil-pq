@@ -28,6 +28,8 @@ public class SearchProductAction extends AjaxAction {
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		response.setContentType("Content-Type: text/html;charset=ISO-8859-1");
+	    response.setHeader("cache-control", "no-cache");
 		final String term = request.getParameter("name");
 		@SuppressWarnings("unchecked")
 		List<String> result = (List<String>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
