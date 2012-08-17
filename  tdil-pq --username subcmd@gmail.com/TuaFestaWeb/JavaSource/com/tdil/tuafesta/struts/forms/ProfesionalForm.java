@@ -232,6 +232,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setPhonenumber(this.getPhoneNumber());
 		profesional.setPhoneextension(this.getPhoneExtension());
 		profesional.setPhonetype(this.getPhoneType());
+		profesional.setIdGeolevel(this.getGeo4Id());
 		profesional.setSex(this.getSex());
 		profesional.setBirthdate(parseDate(this.getBirthdate()));
 		

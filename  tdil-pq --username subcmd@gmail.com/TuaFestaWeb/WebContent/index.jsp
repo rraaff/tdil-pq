@@ -203,7 +203,7 @@
 				<h3>Todos las zonas</h3>
 				<p>
 					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4Levels()) { %>
-						<a href="#"><%=geo4.getNombre() %></a><br />
+						<a href="searchProfesionalByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
 					<% } %>
 				</p>
 			</div>

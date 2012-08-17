@@ -609,4 +609,24 @@
    PATH="/profesionalAdministration.jsp" TARGET="page14"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchProfesionalByGeoLevel4" NAME="action58"
+  PATH="/searchProfesionalByGeoLevel4" SHAPE="32,10353,0,0"
+  TITLE="ProfesionalSearchResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/profesionalSearchResult.jsp" TARGET="page22" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page22" PATH="/profesionalSearchResult.jsp"
+  SHAPE="240,10370,0,0" SUBTYPE="jsp"
+  TITLE="profesionalSearchResult.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewProfesionalProfile" NAME="action59"
+  PATH="/viewProfesionalProfile" SHAPE="32,9985,0,0"
+  TITLE="ProfesionalProfileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/perfilProfesional.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page23" PATH="/perfilProfesional.jsp"
+  SHAPE="240,9985,0,0" SUBTYPE="jsp" TITLE="perfilProfesional.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

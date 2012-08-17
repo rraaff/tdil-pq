@@ -1,9 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<%@page import="com.tdil.tuafesta.model.Profesional"%>
+<%@page import="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
-
+<%@ page contentType="text/html; charset=ISO-8859-1" %>
+<%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Tua Festa | R009-M1- Mi cuenta - Perfil de usuario profesional</title>
@@ -36,44 +41,47 @@
 	<div id="content">
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
-			<h1>Perfil de #La Empresa</h1>
+			<h1>Perfil de <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h1>
 			<h2>Estos son tus datos, productos y servicios publicados. Tambi&eacute;n podr&aacute;s acceder a tu muro.</h2>
 		</div>
+		<% ProfesionalProfileForm profesionalProfileForm = (ProfesionalProfileForm)session.getAttribute("ProfesionalProfileForm"); 
+			Profesional profesional = profesionalProfileForm.getProfesional();
+		%>
 		<div id="formContent">
 			<div id="muroContainer">MURO INSERT</div>
 			<div id="formSection">
 				<div class="myRow">
-					<div class="myLabel width400">#Nombre completo del usuario</div>
+					<div class="myLabel width400"><bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width400">Tel&eacute;fono #Personal: 011 15 5876 3153</div>
+					<div class="myLabel width400">Tel&eacute;fono <bean:write name="ProfesionalProfileForm" property="profesional.phonetype"/>: <bean:write name="ProfesionalProfileForm" property="profesional.phoneareacode"/>-<bean:write name="ProfesionalProfileForm" property="profesional.phonenumber"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width200">Sexo: Masculino</div>
-					<div class="myLabel width200">Fecha Nac.:22/11/1979</div>
+					<div class="myLabel width200">Sexo: <%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></div>
+					<div class="myLabel width200">Fecha Nac.: <bean:write name="ProfesionalProfileForm" property="birthDate"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width400">E-Mail: pablo@tdil.com.ar</div>
+					<div class="myLabel width400">E-Mail: <bean:write name="ProfesionalProfileForm" property="profesional.email"/></div>
 				</div>
 			</div>
 			<div id="formSection" class="width650">
 				<div class="myRow">
-					<div class="myLabel width400">Nombre profesional/empresa: That Day in London</div>
+					<div class="myLabel width400">Nombre profesional/empresa: <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width200">CUIT: 27768647</div>
-					<div class="myLabel width200">IIBB: 11111111</div>
+					<div class="myLabel width200">CUIT: <bean:write name="ProfesionalProfileForm" property="profesional.cuit"/></div>
+					<div class="myLabel width200">IIBB: <bean:write name="ProfesionalProfileForm" property="profesional.iibb"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width400">Ubicaci&oacute;n: Capital Federal > Villa Devoto</div>
+					<div class="myLabel width400">Ubicaci&oacute;n: <bean:write name="ProfesionalProfileForm" property="geoLevelPath"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width200">Web: www.thatdayinlondon.com</div>
-					<div class="myLabel width200">Facebook: 15555555555</div>
+					<div class="myLabel width200">Web: <%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></div>
+					<div class="myLabel width200">Facebook: <%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></div>
 				</div>
 				<div class="myRow height50">
-					<div class="myLabel width200">Horario de Atenci&oacute;n: De lunes a viernes de 9 a 18hs Sabados de 9 a 12hs</div>
-					<div class="myLabel width200">Descripci&oacute;n: Local a la calle</div>
+					<div class="myLabel width200">Horario de Atenci&oacute;n: <bean:write name="ProfesionalProfileForm" property="profesional.businesshours"/></div>
+					<div class="myLabel width200">Descripci&oacute;n: <bean:write name="ProfesionalProfileForm" property="profesional.description"/></div>
 				</div>
 			</div>
 			
@@ -83,6 +91,7 @@
 					<div class="myLabel width600 comment">Recuerde que a cada producto o servicio le puede adjuntar una imagen, precios de referencia, &aacute;reas de covertura y otros detalles una vez finalizado el proceso de registraci&oacute;n.</div>
 				</div>
 				<div class="myRow">ACA VA EL LISTADO</div>
+				Pendiente
 			</div>
 		</div>
 	</div>
