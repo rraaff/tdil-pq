@@ -4,8 +4,13 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.ProductCategoryDAO;
 import com.tdil.tuafesta.model.ProductCategory;
 import com.tdil.tuafesta.model.ProductCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 
@@ -148,5 +153,10 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<CategoryValueObject> selectTopCategories() throws SQLException {
+		List<CategoryValueObject> list = sqlMapClient.queryForList("PROF_PROD_CATEGORY.selectTopCategories");
+		return list;
 	}
 }

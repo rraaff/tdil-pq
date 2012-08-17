@@ -2,6 +2,8 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.ProductCategory;
 import com.tdil.tuafesta.model.ProductCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -73,4 +75,6 @@ public interface ProductCategoryDAO {
 	 * @mbggenerated  Mon Aug 13 19:20:03 ART 2012
 	 */
 	int updateProductCategoryByPrimaryKey(ProductCategory record) throws SQLException;
+	
+	public List<CategoryValueObject> selectTopCategories() throws SQLException;
 }

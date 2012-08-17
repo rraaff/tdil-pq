@@ -247,4 +247,16 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+    <resultMap class="com.tdil.tuafesta.model.valueobjects.CategoryValueObject" id="CategoryValueObject">
+  	<result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="catType" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  
+  <select id="selectTopCategories" resultMap="CategoryValueObject">
+    SELECT id, name, 1 as catType
+    FROM PROF_SERV_CATEGORY
+    WHERE parent_id = 0
+  </select>
 </sqlMap>

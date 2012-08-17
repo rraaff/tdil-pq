@@ -1,9 +1,11 @@
 package com.tdil.tuafesta.dao;
 
-import com.tdil.tuafesta.model.ServiceCategory;
-import com.tdil.tuafesta.model.ServiceCategoryExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.tuafesta.model.ServiceCategory;
+import com.tdil.tuafesta.model.ServiceCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 
 public interface ServiceCategoryDAO {
 
@@ -73,4 +75,6 @@ public interface ServiceCategoryDAO {
 	 * @mbggenerated  Mon Aug 13 19:20:03 ART 2012
 	 */
 	int updateServiceCategoryByPrimaryKey(ServiceCategory record) throws SQLException;
+	
+	public List<CategoryValueObject> selectTopCategories() throws SQLException;
 }
