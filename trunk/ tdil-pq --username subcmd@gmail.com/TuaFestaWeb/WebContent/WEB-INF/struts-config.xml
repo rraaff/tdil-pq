@@ -20,6 +20,8 @@
    name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
   <form-bean id="ReviewProfesionalForm" name="ReviewProfesionalForm" type="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"/>
+  <form-bean id="ProfesionalSearchResultForm" name="ProfesionalSearchResultForm" type="com.tdil.tuafesta.struts.forms.ProfesionalSearchResultForm"/>
+  <form-bean id="ProfesionalProfileForm" name="ProfesionalProfileForm" type="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -274,6 +276,15 @@
    <forward name="failure" path="/validateProfesionalEmail.jsp"/>
   </action>
   
+  <action name="ProfesionalSearchResultForm"
+   path="/searchProfesionalByGeoLevel4" scope="session" type="com.tdil.tuafesta.struts.action.SearchProfesionalByGeoLevel4">
+   <forward name="continue" path="/profesionalSearchResult.jsp" redirect="true"/>
+  </action>
+  
+  <action name="ProfesionalProfileForm" 
+     path="/viewProfesionalProfile" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/perfilProfesional.jsp"/>
+  </action>
   
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
  </action-mappings>
