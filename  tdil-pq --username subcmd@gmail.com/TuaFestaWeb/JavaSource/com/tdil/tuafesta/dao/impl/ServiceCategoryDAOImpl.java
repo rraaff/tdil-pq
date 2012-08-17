@@ -4,6 +4,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.model.ServiceCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -148,5 +150,10 @@ public class ServiceCategoryDAOImpl implements ServiceCategoryDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<CategoryValueObject> selectTopCategories() throws SQLException {
+		List<CategoryValueObject> list = sqlMapClient.queryForList("PROF_SERV_CATEGORY.selectTopCategories");
+		return list;
 	}
 }

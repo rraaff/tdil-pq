@@ -11,6 +11,7 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ProductCategory;
 import com.tdil.tuafesta.model.ProductCategoryExample;
 import com.tdil.tuafesta.model.ProductCategoryExample.Criteria;
+import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 
 public class ProductCategoryUtils {
 

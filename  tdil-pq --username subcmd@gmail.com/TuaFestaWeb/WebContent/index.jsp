@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
+<%@page import="com.tdil.tuafesta.model.valueobjects.CategoryValueObject"%>
+<%@page import="com.tdil.tuafesta.utils.GeoLevelUtils"%>
+<%@page import="com.tdil.tuafesta.model.Geo4"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -197,12 +201,20 @@
 			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
 			<div id="zoneNavigation">
 				<h3>Todos las zonas</h3>
-				<p><a href="#">Abasto</a><br /><a href="#">Agronom&iacute;a</a><br /><a href="#">Almagro</a><br /><a href="#">Balvanera</a><br /><a href="#">Barracas</a><br /><a href="#">Barrio Norte</a><br /><a href="#">Belgrano</a><br /><a href="#">Boedo</a><br /><a href="#">Caballito</a><br /><a href="#">Chacarita</a><br /><a href="#">Coghlan</a><br /><a href="#">Colegiales</a><br /><a href="#">Constitucion</a><br /><a href="#">Flores</a><br /><a href="#">Floresta</a><br /><a href="#">La Boca</a><br /><a href="#">Liniers</a><br /><a href="#">Mataderos</a><br /><a href="#">Micro Centro</a><br /><a href="#">Monserrat</a><br /><a href="#">Monte Castro</a><br /><a href="#">Nu&ntilde;ez</a><br /><a href="#">Nueva Pompeya</a><br /><a href="#">Palermo</a><br /><a href="#">Palermo Viejo</a><br /><a href="#">Parque Avellaneda</a><br /><a href="#">Parque Chacabuco</a><br /><a href="#">Parque Patricios</a><br /><a href="#">Paternal</a><br /><a href="#">Puerto Madero</a><br /><a href="#">Recoleta</a><br /><a href="#">Retiro</a><br /><a href="#">Saavedra</a><br /><a href="#">San Cristobal</a><br /><a href="#">San Nicolas</a><br /><a href="#">San Telmo</a><br /><a href="#">Velez Sarsfield</a><br /><a href="#">Versalles</a><br /><a href="#">Villa Crespo</a><br /><a href="#">Villa Devoto</a><br /><a href="#">Villa General Mitre</a><br /><a href="#">Villa Lugano</a><br /><a href="#">Villa Luro</a><br /><a href="#">Villa Ortuzar</a><br /><a href="#">Villa Pueyrredon</a><br /><a href="#">Villa Real</a><br /><a href="#">Villa Riachuelo</a><br /><a href="#">Villa Santa Rita</a><br /><a href="#">Villa Soldati</a><br /><a href="#">Villa Urquiza</a><br /><a href="#">Villa del Parque</a></p>
+				<p>
+					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4Levels()) { %>
+						<a href="#"><%=geo4.getNombre() %></a><br />
+					<% } %>
+				</p>
 			</div>
 			<div id="punteado" style="width:284px;"></div>
 			<div id="categoryNavigation">
 				<h3>Todos las rubros</h3>
-				<p><a href="#">Alimentos y bebidas</a><br /><a href="#">Alojamiento y hoteles</a><br /><a href="#">Animales</a><br /><a href="#">Audio, fotograf&iacute;a y video</a><br /><a href="#">Automotores</a><br /><a href="#">Belleza y cuidado personal</a><br /><a href="#">Calzados</a><br /><a href="#">Computaci&oacute;n e inform&aacute;tica</a><br /><a href="#">Construcci&oacute;n y mantenimiento</a><br /><a href="#">Deportes</a><br /><a href="#">Ense&ntilde;anza, cursos y capacitaciones</a><br /><a href="#">Entidades financieras</a><br /><a href="#">Entretenimiento</a><br /><a href="#">Estaciones de servicio</a><br /><a href="#">Gastronom&iacute;a</a><br /><a href="#">Hogar</a><br /><a href="#">Indumentaria</a><br /><a href="#">Industria</a><br /><a href="#">Inmobiliaria</a><br /><a href="#">Jard&iacute;n</a><br /><a href="#">Joyer&iacute;a y relojer&iacute;a</a><br /><a href="#">Juegos de azar</a><br /><a href="#">Juguetes</a><br /><a href="#">Kioscos y polirubros</a><br /><a href="#">Librer&iacute;a y papeler&iacute;a</a><br /><a href="#">Libros y revistas</a><br /><a href="#">M&aacute;quinas y herramientas</a><br /><a href="#">Materiales de construcci&oacute;n</a><br /><a href="#">Medicina y medicamentos</a><br /><a href="#">Medios de comunicaci&oacute;n y publicidad</a><br /><a href="#">M&uacute;sica</a><br /><a href="#">&oacute;ptica</a><br /><a href="#">Otros</a><br /><a href="#">Reparaci&oacute;n</a><br /><a href="#">Rodados</a><br /><a href="#">Seguros y seguridad</a><br /><a href="#">Servicio para eventos</a><br /><a href="#">Servicios en general</a><br /><a href="#">Servicios para Empresas</a><br /><a href="#">Servicios profesionales</a><br /><a href="#">Talleres</a><br /><a href="#">Telas</a><br /><a href="#">Telefon&iacute;a e internet</a><br /><a href="#">Transportes</a><br /><a href="#">Turismo</a></p>
+				<p>
+					<% for (CategoryValueObject cat : CategoryUtils.getTopCategories()) { %>
+						<a href="#"><%=cat.getName() %></a><br />
+					<% } %>
+				</p>
 			</div>
 		</div>
 	</div>
