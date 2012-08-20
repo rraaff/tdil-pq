@@ -61,7 +61,7 @@
         <text>Busc%E1%20todos%20los%20productos%20o%20servicios%20que%20necesites%20para%20tu%20fiesta%20y%20te%20contactamos%20con%20los%20profesionales.</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::CallOut" x="1032" y="239" w="-1" h="-1" measuredW="186" measuredH="39" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::CallOut" x="1032" y="239" w="-1" h="-1" measuredW="186" measuredH="37" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>1%20Login%20de%20usuarios%20opcional</text>
       </controlProperties>
@@ -112,12 +112,12 @@
         <text>Agreg%E1%20Productos%20o%20Servicios%20a%20tu%20busqueda</text>
       </controlProperties>
     </control>
-    <control controlID="48" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="414" w="645" h="-1" measuredW="344" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="452" w="645" h="-1" measuredW="344" measuredH="27" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Ej%3A%20Maraca%20banana%20%28Productos%3A%20Cotill%F3n%20%3E%20Carnaval%20Carioca</text>
       </controlProperties>
     </control>
-    <control controlID="49" controlTypeID="com.balsamiq.mockups::MultilineButton" x="320" y="540" w="112" h="35" measuredW="91" measuredH="55" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::MultilineButton" x="320" y="570" w="112" h="35" measuredW="91" measuredH="55" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <color>40463</color>
         <text>Agregar</text>
@@ -129,13 +129,13 @@
         <text>Configur%E1%20tu%20b%FAsqueda</text>
       </controlProperties>
     </control>
-    <control controlID="51" controlTypeID="com.balsamiq.mockups::HRule" x="48" y="590" w="653" h="-1" measuredW="100" measuredH="5" zOrder="24" locked="false" isInGroup="-1"/>
-    <control controlID="52" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="453" w="645" h="-1" measuredW="324" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::HRule" x="48" y="610" w="653" h="-1" measuredW="100" measuredH="5" zOrder="24" locked="false" isInGroup="-1"/>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="491" w="645" h="-1" measuredW="324" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Precio%20m%E1ximo%20que%20estoy%20dispuesto%20a%20pagar%20por%20unidad</text>
       </controlProperties>
     </control>
-    <control controlID="54" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="494" w="645" h="-1" measuredW="132" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="532" w="645" h="-1" measuredW="132" measuredH="27" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Ubicaci%F3n%20del%20evento</text>
       </controlProperties>
@@ -154,19 +154,24 @@
         <text>REALIZAR%20B%DASQUEDA</text>
       </controlProperties>
     </control>
-    <control controlID="57" controlTypeID="com.balsamiq.mockups::CallOut" x="748" y="521" w="-1" h="-1" measuredW="137" measuredH="37" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::CallOut" x="748" y="559" w="-1" h="-1" measuredW="137" measuredH="40" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <text>2%20Texto%20predictivo</text>
       </controlProperties>
     </control>
-    <control controlID="58" controlTypeID="com.balsamiq.mockups::Arrow" x="616" y="425" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Arrow" x="616" y="463" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::Arrow" x="598" y="508" w="150" h="28" measuredW="150" measuredH="100" zOrder="31" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Arrow" x="598" y="546" w="150" h="28" measuredW="150" measuredH="100" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::TextInput" x="50" y="414" w="645" h="-1" measuredW="266" measuredH="27" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Texto%20libre%20%28se%20le%20puede%20poner%20el%20predictivo%29</text>
       </controlProperties>
     </control>
   </controls>
