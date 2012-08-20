@@ -27,15 +27,16 @@ public abstract class TransactionalValidationForm extends AbstractForm {
 		}
 		return validationError;
 	}
-	
+
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(TransactionalValidationForm.class);
 	}
-	
+
 	public void executeValidationInTransaction(ValidationError validationError) throws SQLException {
 		TransactionProvider.validateInTransaction(this, validationError);
 	}
-	
+
 	public abstract void basicValidate(ValidationError validationError);
+
 	public abstract void validateInTransaction(ValidationError validationError) throws SQLException;
 }

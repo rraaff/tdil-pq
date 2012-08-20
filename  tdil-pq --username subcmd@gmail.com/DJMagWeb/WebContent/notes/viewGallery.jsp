@@ -214,6 +214,6 @@ div { /*border:dotted 1px #00FF00;*/ }
 	</div>
 </div>
 <%@ include file="../includes/rankingFooter.jsp" %>
+<%@ include file="../../../includes/fbShare.jspf" %>
 </body>
-
 </html>
