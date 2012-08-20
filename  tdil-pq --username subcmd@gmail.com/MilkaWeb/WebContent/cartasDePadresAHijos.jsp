@@ -28,7 +28,7 @@
 %>
 <%
 	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "apodosDeAmor.jsp";
+	String prevPage = "buenDia.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -363,7 +363,7 @@ div {/* border:dotted 1px #00CC33; */}
 	height:100px;
 }
 /*   */
-h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color:#806bb3; }
+h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color:#f00ec8; }
 h2 {
 	font-weight:400;
 	font-size:13px;
@@ -444,7 +444,7 @@ h2 {
 	font-size:10px;
 	color:#000000;
 	width:200px;
-	height:58px;
+	height:128px;
 	padding-bottom:10px;
 	padding-top:10px;
 	border-top-width: 1px;
@@ -473,7 +473,7 @@ h2 {
 	color:#333333;
 }
 #entryNumber {
-	color:#806bb3;
+	color:#f00ec8;
 	font-size:14px;
 	width:200px;
 	padding-bottom:10px;
@@ -576,9 +576,9 @@ h2 {
 		<div class="loading" id="loading">Wait a moment... it's loading!</div>
 		<div id="pageRight">
 			<div id="blockLoader">
-				<a href="javascript:capturaExperiencia()" style="margin-top:5px;" title="Tom&aacute; una captura con tu Webcam"><img src="images/experiencias/padresAHijos/webcam.gif" width="61" height="60" /></a>
 				<h2>CARGAR UNA CARTA</h2>
-				<a href="javascript:altaExperiencia()" title="Sub&iacute; una imagen de tu disco r&iacute;gido">Adjunta una imagen</a> o <a href="javascript:capturaExperiencia()" title="Tom&aacute; una captura con tu Webcam">us&aacute; tu webcam.</a>
+				<div style="float:left;"><a href="javascript:capturaExperiencia()" title="Tom&aacute; una captura con tu Webcam"><img src="images/experiencias/padresAHijos/usaWebcam.gif" /></a></div>
+				<div style="float:left; margin-top:3px;"><a href="javascript:altaExperiencia()" title="Sub&iacute; una imagen de tu disco r&iacute;gido"><img src="images/experiencias/padresAHijos/attachPic.gif" /></a></div>
 			</div>
 			<h2>&Uacute;LTIMAS ENTRADAS</h2>
 			<div id="lastEntriesNames">

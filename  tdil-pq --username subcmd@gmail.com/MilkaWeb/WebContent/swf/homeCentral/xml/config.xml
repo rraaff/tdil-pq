@@ -42,6 +42,20 @@
 		<item>
 			<text></text>
 			<thumb></thumb>
+			<view>swf/homeCentral/images/view/buenDia.jpg</view>
+			<link>buenDia.jsp</link>
+			<target>_self</target>
+		</item>
+		<item>
+			<text></text>
+			<thumb></thumb>
+			<view>swf/homeCentral/images/view/teaserDePadres.jpg</view>
+			<link>cartasDePadresAHijos.jsp</link>
+			<target>_self</target>
+		</item>
+		<item>
+			<text></text>
+			<thumb></thumb>
 			<view>swf/homeCentral/images/view/teaserCartasDeHaP.jpg</view>
 			<link>cartasDeHijosAPadres.jsp</link>
 			<target>_self</target>

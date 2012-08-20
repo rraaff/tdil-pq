@@ -22,7 +22,7 @@
 %>
 <%
 	String nextPage = "papapedia.jsp";
-	String prevPage = "postits.jsp";
+	String prevPage = "cartasDePadresAHijos.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
