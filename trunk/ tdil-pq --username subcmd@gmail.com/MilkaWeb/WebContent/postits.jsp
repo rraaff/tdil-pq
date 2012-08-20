@@ -25,8 +25,8 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "apodosDeAmor.jsp";
+	String nextPage = "buenDia.jsp";
+	String prevPage = "ayudasTernuras.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />

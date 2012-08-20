@@ -29,7 +29,7 @@
 %>
 <%
 	String nextPage = "cartasDePadresAHijos.jsp";
-	String prevPage = "xxxxxc.jsp";
+	String prevPage = "postits.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -553,17 +553,17 @@ h2 {
 	z-index:6;
 }
 .dedicatoria {
-	width:100%;
+	width:90%;
 	margin-left:20px;
 	margin-bottom:5px;
 }
 .usuarioFecha {
-	width:100%;
+	width:90%;
 	margin:20px;
 	margin-top:0px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #d8f7ff;
-	font-size:12px;
+	font-size:11px;
 }
 #socialInBlock {
 	width:40px;
