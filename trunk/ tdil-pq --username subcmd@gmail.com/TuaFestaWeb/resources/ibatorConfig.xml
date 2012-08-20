@@ -118,5 +118,21 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="TUAFESTA" tableName="PROMOTION_SELL" domainObjectName="PromotionSell" alias="promse">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="PROMOTION_PHOTO" domainObjectName="PromotionPhoto" alias="promphot">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="PROMOTION_VIDEO" domainObjectName="PromotionVideo" alias="promvi">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+<table schema="TUAFESTA" tableName="STATISTIC" domainObjectName="Statistic" alias="stat">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>

@@ -25,13 +25,14 @@ La session deberia ser minima
 Que tipo de datos de estadisticas van a querer?
 Se me ocurre:
 Visitas al perfil del profesional
-Visitas a los productos del profesional (esto no se si unicas por session), contacto
-Visitas a las promos, contacto por la promo (como seria esto?)
+Visitas a los productos del profesional (esto no se si unicas por session), contacto (si esta en promo registrarlo)
+Visitas a las promos, contacto por la promo (como seria esto, registro uno por uno en una forma particular?)
 Rubros mas buscados
 Productos mas buscados
 Servicios mas buscados
 Zonas mas buscadas
-Inclusion de profesional en busquedas? esto seria costoso, quizas mostrado de profesional en busquedas.
+Inclusion de productos o servicios de un prof en busquedas? esto seria costoso, quizas mostrado de profesional en busquedas.
+
 
 Textos mas buscados?
 
@@ -43,8 +44,10 @@ Se pueden recopilar estadisticas de compartir cosas en fb?
 
 Parte de las estadisticas coincide con datos de las notificaciones.
 
+*****************************
 
 La busqueda simple?, busca sobre todo?
+Definir todos los campos de busqueda y buscar por todo
 
 No hay busqueda seleccionando el profesional?
 
@@ -53,12 +56,22 @@ Existe la pagina del profesional, tambien deberia existir la pagina del producto
 Quizas podria en la pagina del producto del profesional tener un listado los mismos productos 
 de otro profesional?
 
-El listado, es de profesionales o de productos/servicios?
+
+rta:
+Renombrar perfilProfesioal por contactCardPofesional.
+El listado, es de profesionales o de productos/servicios? es de productos y servicios
 
 Promociones:
-Para pensar, elegis productos de profesionales o elegis cosas separadas? 
+Para pensar, elegis productos de profesionales o elegis cosas separadas?, precio referencia en promo, precio total. Codigo de promocion.
 separadas no tiene sentido.
 Las promociones van a tener fotos? una o varias? videos?
+Si, varias, videos tambien.
+Contactar te muestra todos los datos de la promo.
+
+Rta:
+Al layer de rubros le pongo todos, al entrar listo los de ese y los que estan mas abajo. 
+Agregar ver todos al layer de los geo levels.
+Listado es de profesionales!!!
 
 Tema del muro:
 Va a estar paginado? yo diria que si
@@ -73,6 +86,12 @@ la respuesta tampoco, o lo que es lo mismo, que salga solo para mi, una especie 
 Si pensamos en el muro como que ademas de posts del profesional tiene preguntas y respuestas,
 quizas habria que pensar el tema del orden.
 
+Rta: del lado del profesional, thread completo mas boton de filtrar pendientes de respuesta
+Mensajito privado por ahora no.
+Aviso al cliente de rta por email.
+El profesional puede postear sin responder.
+Muro tipo ajax.
+
 Pensar como voy a manejar (o quizas ahora no) el cambio del dato pk (email).
 
 Al backend al listado de productos hay que hacerlo con busqueda y display table.
@@ -80,7 +99,7 @@ Lo mismo para el de servicios. Deberia tener tambien el category path.
 
 Tema alta de profesional
 Al registro (mockup le falta) website, horario de atencion y descripcion.
-Ver cuales van a ser obligatorios y cuales no
+Ver cuales van a ser obligatorios y cuales no, solo email y telefono.
 
 JQuery para simular el place holder
 
