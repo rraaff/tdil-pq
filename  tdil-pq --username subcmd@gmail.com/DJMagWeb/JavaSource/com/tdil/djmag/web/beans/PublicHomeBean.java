@@ -121,7 +121,7 @@ public class PublicHomeBean  {
 	public static final int SECTIONS_PAGES_SIDE = 5;
 	public static final int MAX_SECTIONS_PAGES = 5;
 	
-	public static final int VIDEOS_PAGE_SIZE = 5;
+	public static final int VIDEOS_PAGE_SIZE = 7;
 	public static final int VIDEOS_PAGES_SIDE = 2;
 	public static final int VIDEOS_MAX_SECTIONS_PAGES = 5;
 	
