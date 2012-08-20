@@ -150,7 +150,7 @@
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="database.sql">
 		</copy-->
-		<copy todir="${project.name.upper}.tmp" file="ddl_03.sql">
+		<copy todir="${project.name.upper}.tmp" file="ddl_04.sql">
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
