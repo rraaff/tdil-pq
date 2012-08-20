@@ -16,12 +16,16 @@ import com.tdil.tuafesta.dao.ProfesionalProductDAO;
 import com.tdil.tuafesta.dao.ProfesionalServiceDAO;
 import com.tdil.tuafesta.dao.ProfilePictureDAO;
 import com.tdil.tuafesta.dao.PromotionDAO;
+import com.tdil.tuafesta.dao.PromotionPhotoDAO;
+import com.tdil.tuafesta.dao.PromotionSellDAO;
+import com.tdil.tuafesta.dao.PromotionVideoDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.SellPhotoDAO;
 import com.tdil.tuafesta.dao.SellVideoDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.ServiceCategoryDAO;
+import com.tdil.tuafesta.dao.StatisticDAO;
 import com.tdil.tuafesta.dao.SystemPropertyDAO;
 import com.tdil.tuafesta.dao.SystemUserDAO;
 import com.tdil.tuafesta.dao.WallDAO;
@@ -39,12 +43,16 @@ import com.tdil.tuafesta.dao.impl.ProfesionalProductDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalServiceDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfilePictureDAOImpl;
 import com.tdil.tuafesta.dao.impl.PromotionDAOImpl;
+import com.tdil.tuafesta.dao.impl.PromotionPhotoDAOImpl;
+import com.tdil.tuafesta.dao.impl.PromotionSellDAOImpl;
+import com.tdil.tuafesta.dao.impl.PromotionVideoDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
 import com.tdil.tuafesta.dao.impl.SellDAOImpl;
 import com.tdil.tuafesta.dao.impl.SellPhotoDAOImpl;
 import com.tdil.tuafesta.dao.impl.SellVideoDAOImpl;
 import com.tdil.tuafesta.dao.impl.ServiceAreaDAOImpl;
 import com.tdil.tuafesta.dao.impl.ServiceCategoryDAOImpl;
+import com.tdil.tuafesta.dao.impl.StatisticDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.dao.impl.SystemUserDAOImpl;
 import com.tdil.tuafesta.dao.impl.WallDAOImpl;
@@ -133,6 +141,18 @@ public class DAOManager {
 	}
 	public static PromotionDAO getPromotionDAO() throws SQLException {
 		return new PromotionDAOImpl(IBatisManager.getClient());
+	}
+	public static PromotionSellDAO getPromotionSellDAO() throws SQLException {
+		return new PromotionSellDAOImpl(IBatisManager.getClient());
+	}
+	public static PromotionPhotoDAO getPromotionPhotoDAO() throws SQLException {
+		return new PromotionPhotoDAOImpl(IBatisManager.getClient());
+	}
+	public static PromotionVideoDAO getPromotionVideoDAO() throws SQLException {
+		return new PromotionVideoDAOImpl(IBatisManager.getClient());
+	}
+	public static StatisticDAO getStatisticDAO() throws SQLException {
+		return new StatisticDAOImpl(IBatisManager.getClient());
 	}
 	public static ClientDAO getClientDAO() throws SQLException {
 		return new ClientDAOImpl(IBatisManager.getClient());
