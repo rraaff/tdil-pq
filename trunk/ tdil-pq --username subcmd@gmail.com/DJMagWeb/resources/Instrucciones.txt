@@ -1,9 +1,9 @@
-Instalación
+Instalaciï¿½n
 ===========
 
 1) Bajar el tomcat /etc/init.d/tomcat6 stop
 
-2) Ejecutar el archivo ddl_03.sql contra la base de datos
+2) Ejecutar el archivo ddl_04.sql contra la base de datos
 
 3) Descomprimir el war en /usr/share/tomcat6/DJMAG_WEB
 
@@ -12,7 +12,7 @@ Instalación
 Accesos
 =======
 
-Sitio público: ./index.jsp
+Sitio pï¿½blico: ./index.jsp
 
 BackOffice: ./boLogin.jsp
 
