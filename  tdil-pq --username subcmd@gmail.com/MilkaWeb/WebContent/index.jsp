@@ -91,7 +91,7 @@ $(document).ready(
 				<ul>
 					<li class="faqs"><!-- a href="faqs.jsp" title="FAQS"></a--></li>
 					<li class="youtube"><a href="http://www.youtube.com/user/ChocolateMilkaArg" title="Youtube"><img src="images/youtube.png" width="22" height="22" alt="Youtube" border="none" /></a></li>
-					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent(document.title + ' | ') + encodeURIComponent(location.href)); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="twitter"><div id="custom-tweet-button"><a href="https://twitter.com/share?url=http%3A%2F%2Fwww.milka.com.ar" target="_blank"><img src="images/null.gif" width="22" height="22" /></a></div></li>
 					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial','Hay tanta ternura para compartir','www.milka.com.ar/',location.href);" title="Facebook"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
 					<li class="t"><!--a href="#" title="t"><img src="images/t.png" width="22" height="22" alt="t" border="none" /></a--></li>
 				</ul>
@@ -161,9 +161,7 @@ $(document).ready(
 			<div id="social">
 				<ul>
 					<li class="facebook"><a href="javascript:facebookShare('Milka Argentina | Sitio oficial | Nuestros Chocolates','Hay tanta ternura para compartir','www.milka.com.ar/','http://www.milka.com.ar/productos_alfajores.jsp');" title="Compart&iacute; nuestros chocolates en Facebook" target="_blank"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<!-- li class="facebook"><a name="fb_share" type="icon_link" share_url="http://localhost:8180/MilkaWeb/productos_alfajores.jsp"><img src="images/facebook.png" width="22" height="22" alt="Facebook" border="none" /></a></li>
-					<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script-->
-					<li class="twitter"><a href="javascript:window.open('http://twitter.com/home?status=' + encodeURIComponent('Milka Argentina | Sitio oficial | Nuestros Chocolates | ') + encodeURIComponent('http://www.milka.com.ar/productos_alfajores.jsp')); return false;" title="Compartir en Twitter"><img src="images/twitter.png" width="22" height="22" alt="Twitter" border="none" /></a></li>
+					<li class="twitter"><div id="custom-tweet-button"><a href="https://twitter.com/share?url=http%3A%2F%2Fwww.milka.com.ar%2Fproductos_alfajores.jsp" target="_blank"><img src="images/null.gif" width="22" height="22" /></a></div></li>
 				</ul>
 			</div>
 			<!-- end social-->
