@@ -196,7 +196,12 @@ a {color:#535353; text-decoration:none}
 	height:20px;
 	margin-top:15px;
 }
-
+#custom-tweet-button a {
+	display: block;
+	background: url('../images/twitter.png') center center no-repeat;
+	width:22px;
+	height:22px;
+}
 #header #box #social ul li.youtube {
 	height:20px;
 	margin-top:15px;
