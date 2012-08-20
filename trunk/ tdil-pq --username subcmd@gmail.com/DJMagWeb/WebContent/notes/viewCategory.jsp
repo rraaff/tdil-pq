@@ -28,6 +28,7 @@ if (session == null || session.getAttribute(PublicHomeBean.PUBLIC_HOME_BEAN) == 
 %>
 <html>
 <head>
+<title><%=publicHomeBean.getImageGallerySection().getName() %> > <%=category.getTitle() %></title>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
 <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
 <script src='../../js/jquery-1.7.min.js' type='text/javascript'></script>
@@ -247,7 +248,11 @@ div { /*border:dotted 1px #00FF00;*/ }
 			<div id="navBar">
 				<div style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
-				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../images/buttons/compartir_facebook.gif" width="82" height="18"></a></div>
+				<div style="float:left; margin-left:10px; margin-top:1px;">
+					<a href="javascript:facebookShare('DJMAGLA | Sitio oficial | ' + document.title ,'Pablo editar','www.djmagla.com/',location.href);" title="Facebook">
+						<img src="../../images/buttons/compartir_facebook.gif" width="82" height="18">
+					</a>
+				</div>
 			</div>
 		</div>
 		<div id="right">
@@ -262,6 +267,7 @@ div { /*border:dotted 1px #00FF00;*/ }
 	</div>
 </div>
 <%@ include file="../includes/rankingFooter.jsp" %>
+ <%@ include file="../../../includes/fbShare.jspf" %>
 </body>
 </html>
 <% }

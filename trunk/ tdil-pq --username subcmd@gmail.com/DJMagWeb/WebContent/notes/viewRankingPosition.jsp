@@ -226,7 +226,11 @@ div {
 			<div id="navBar">
 				<div style="float:left;"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
-				<div style="float:left; margin-left:10px; margin-top:1px;"><a href="javascript:window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(location.href)); return false;"><img src="../../../images/buttons/compartir_facebook.gif" width="82" height="18"></a></div>
+				<div style="float:left; margin-left:10px; margin-top:1px;">
+					<a href="javascript:facebookShare('DJMAGLA | Sitio oficial | ' + document.title ,'Pablo editar','www.djmagla.com/',location.href);" title="Facebook">
+						<img src="../../../images/buttons/compartir_facebook.gif" width="82" height="18">
+					</a>
+				</div>
 			</div>
 			<div id="linksBottom">
 				<a href="../../../notes/<%=publicHomeBean.getCountry().getIsoCode2()%>/viewRanking.html?start=<%=backRankingPage%>">Volver al ranking</a>
@@ -245,7 +249,7 @@ div {
 </div>
 
 <%@ include file="../includes/noteFooter.jsp" %>
-
+<%@ include file="../includes/fbShare.jspf" %>
 <!-- cargo el slider -->
 	<% if (!images.isEmpty()) { %>
 	<script type="text/javascript">

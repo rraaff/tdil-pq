@@ -1,3 +1,9 @@
+App ID:	251599304960063
+App Secret:	9cbb4b6d3affecabc7db0c85cab006bb
+
+***************************
+
+
 maxPacket size a 10MB
 
 INSERT INTO COUNTRY(name, iso_code_2, deleted) VALUES('Argentina', 'AR', 0);
