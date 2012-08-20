@@ -10,13 +10,12 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.milka.daomanager.DAOManager;
 import com.tdil.milka.model.SystemProperty;
 import com.tdil.milka.model.SystemPropertyExample;
-import com.tdil.milka.struts.forms.PostItForm;
 import com.tdil.struts.TransactionalActionWithResult;
 
 public class SystemPropertyUtils {
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(PostItForm.class);
+		return LoggerProvider.getLogger(SystemPropertyUtils.class);
 	}
 	
 	private static final class GetSystemProperty implements TransactionalActionWithResult {
