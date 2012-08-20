@@ -48,7 +48,13 @@
 			Profesional profesional = profesionalProfileForm.getProfesional();
 		%>
 		<div id="formContent">
-			<div id="muroContainer">MURO INSERT</div>
+			<div id="muroContainer">
+				<html:form method="POST" action="/addWallComment">
+					<html:text name="ProfesionalProfileForm" property="content" />
+					MURO INSERT
+					<input type="submit" value="Postear"/>
+				</html:form>
+			</div>
 			<div id="formSection">
 				<div class="myRow">
 					<div class="myLabel width400"><bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></div>

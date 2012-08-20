@@ -1,3 +1,6 @@
+Estaria bueno hacer una especie de minisite para profesionales que paguen algo diferenciado.
+Por ejemplo, en www.tuafesta.com/mgodoy esta un sitio cn solo mi catalago de cosas, seccion de fotos etc ect.
+
 Seguir (orden)
 ) Aprobacion
 ) Hacer la home
@@ -15,7 +18,60 @@ Seguir (orden)
 ) registracion de profesionales con fb
 ) compartir en fb ...
 
+Pendientes:
+Tratar de hacer el sitio publico lo mas stateles posible, ya que no tiene log out.
+Se podria hacer que el dato de login quede en una cookie y yo no usar sessiones en el server?
+La session deberia ser minima
+Que tipo de datos de estadisticas van a querer?
+Se me ocurre:
+Visitas al perfil del profesional
+Visitas a los productos del profesional (esto no se si unicas por session), contacto
+Visitas a las promos, contacto por la promo (como seria esto?)
+Rubros mas buscados
+Productos mas buscados
+Servicios mas buscados
+Zonas mas buscadas
+Inclusion de profesional en busquedas? esto seria costoso, quizas mostrado de profesional en busquedas.
 
+Textos mas buscados?
+
+Otra opcion es hacer un modelo de estadisticas, que se baje cada x cantidad o x tiempo, que se 
+cuelgue del shutdown de la vm, pudiendo recopilar cosas y mandarlas en batch, 
+pudiendo de esta forma recopilar estadisticas a full.
+
+Se pueden recopilar estadisticas de compartir cosas en fb?
+
+Parte de las estadisticas coincide con datos de las notificaciones.
+
+
+La busqueda simple?, busca sobre todo?
+
+No hay busqueda seleccionando el profesional?
+
+Pensar:
+Existe la pagina del profesional, tambien deberia existir la pagina del producto del profesional.
+Quizas podria en la pagina del producto del profesional tener un listado los mismos productos 
+de otro profesional?
+
+El listado, es de profesionales o de productos/servicios?
+
+Promociones:
+Para pensar, elegis productos de profesionales o elegis cosas separadas? 
+separadas no tiene sentido.
+Las promociones van a tener fotos? una o varias? videos?
+
+Tema del muro:
+Va a estar paginado? yo diria que si
+Los comentarios pendientes no se deberian ver, excepto que sean del usuario logueado,
+esos deberian decir pendiente de revision o algo asi.
+El profesional ademas debera poder contestar a un mensae, de modo que las respuestas queden ordenadas, 
+asi como postear en forma general.
+La respuesta a un mensaje deberia informarle al que pregunto que le respondieron en el muro? 
+la respuesta iria en el mail o que le pase un link al perfil del profesional?
+Los comentarios en el muro, pueden ser privados? tipo, te pregunto pero aunque no quiero que salga ni en el muro ni 
+la respuesta tampoco, o lo que es lo mismo, que salga solo para mi, una especie de post privado.
+Si pensamos en el muro como que ademas de posts del profesional tiene preguntas y respuestas,
+quizas habria que pensar el tema del orden.
 
 Pensar como voy a manejar (o quizas ahora no) el cambio del dato pk (email).
 
@@ -28,6 +84,7 @@ Ver cuales van a ser obligatorios y cuales no
 
 JQuery para simular el place holder
 
+*******************************************
 Localidades dejar solo las de capital
 
 A las localidades les falta el borrado, deberia ser fisico, siempre y cuando

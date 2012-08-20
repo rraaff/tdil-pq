@@ -22,6 +22,7 @@
   <form-bean id="ReviewProfesionalForm" name="ReviewProfesionalForm" type="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"/>
   <form-bean id="ProfesionalSearchResultForm" name="ProfesionalSearchResultForm" type="com.tdil.tuafesta.struts.forms.ProfesionalSearchResultForm"/>
   <form-bean id="ProfesionalProfileForm" name="ProfesionalProfileForm" type="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"/>
+  <form-bean id="WallCommentForm" name="WallCommentForm" type="com.tdil.tuafesta.struts.forms.WallCommentForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -283,6 +284,12 @@
   
   <action name="ProfesionalProfileForm" 
      path="/viewProfesionalProfile" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/perfilProfesional.jsp"/>
+  </action>
+  
+  
+  <action name="ProfesionalProfileForm" 
+     path="/addWallComment" scope="session" type="com.tdil.tuafesta.struts.action.AddWallCommentAction">
    <forward name="continue" path="/perfilProfesional.jsp"/>
   </action>
   
