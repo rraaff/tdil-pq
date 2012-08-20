@@ -47,4 +47,7 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_VIDEO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SERVICE_AREA_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/CLIENT_SqlMap.xml"/>
 </sqlMapConfig>

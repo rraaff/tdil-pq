@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
 import com.tdil.tuafesta.dao.BlobDataDAO;
+import com.tdil.tuafesta.dao.ClientDAO;
 import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
@@ -14,6 +15,7 @@ import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.ProfesionalProductDAO;
 import com.tdil.tuafesta.dao.ProfesionalServiceDAO;
 import com.tdil.tuafesta.dao.ProfilePictureDAO;
+import com.tdil.tuafesta.dao.PromotionDAO;
 import com.tdil.tuafesta.dao.RawInsertDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.SellPhotoDAO;
@@ -25,6 +27,7 @@ import com.tdil.tuafesta.dao.SystemUserDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.dao.WallWrittingDAO;
 import com.tdil.tuafesta.dao.impl.BlobDataDAOImpl;
+import com.tdil.tuafesta.dao.impl.ClientDAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
@@ -35,6 +38,7 @@ import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalProductDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalServiceDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfilePictureDAOImpl;
+import com.tdil.tuafesta.dao.impl.PromotionDAOImpl;
 import com.tdil.tuafesta.dao.impl.RawInsertDAOImpl;
 import com.tdil.tuafesta.dao.impl.SellDAOImpl;
 import com.tdil.tuafesta.dao.impl.SellPhotoDAOImpl;
@@ -126,5 +130,11 @@ public class DAOManager {
 	}
 	public static ServiceAreaDAO getServiceAreaDAO() throws SQLException {
 		return new ServiceAreaDAOImpl(IBatisManager.getClient());
+	}
+	public static PromotionDAO getPromotionDAO() throws SQLException {
+		return new PromotionDAOImpl(IBatisManager.getClient());
+	}
+	public static ClientDAO getClientDAO() throws SQLException {
+		return new ClientDAOImpl(IBatisManager.getClient());
 	}
 }
