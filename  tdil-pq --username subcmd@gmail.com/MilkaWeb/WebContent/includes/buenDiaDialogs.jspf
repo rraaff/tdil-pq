@@ -15,7 +15,7 @@
 		<div id="renglon" class="widthData">Nombre: </div><div id="renglon"><html:text name="GoodMorningForm" property="authorBean.name" styleClass="normalField"/></div>
 		<div id="renglon" class="widthData">E-Mail: </div><div id="renglon"><html:text name="GoodMorningForm" property="authorBean.email" styleClass="normalField"/></div>
 		<div id="renglon" class="widthData">Mensaje: </div><div id="renglon normalTextArea"><html:textarea name="GoodMorningForm" property="description" styleClass="normalTextArea"/></div>
-		<div id="renglon"><html:checkbox name="GoodMorningForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
+		<div id="renglon" style="padding-top:10px; padding-left:60px;"><html:checkbox name="GoodMorningForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
 		<div id="renglon"><html:file name="GoodMorningForm" property="photoFormFile" /></div>
 		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit><input type="button" id="cancelalta" value="Me arrepentí"></div>
 	</html:form>
@@ -27,7 +27,7 @@
 			<div id="renglon" class="widthData">Nombre: </div><div id="renglon" class="widthData2"><html:text name="GoodMorningWCForm" property="authorBean.name" styleClass="normalField"/></div>
 			<div id="renglon" class="widthData">E-Mail: </div><div id="renglon" class="widthData2"><html:text name="GoodMorningWCForm" property="authorBean.email" styleClass="normalField"/></div>
 			<div id="renglon" class="widthData">Mensaje: </div><div id="renglon" class="widthData2 normalTextArea" style="height:100px;"><html:textarea name="GoodMorningWCForm" property="description" styleClass="normalTextArea"/></div>
-			<div id="renglon" style="padding-top:20px;"><html:checkbox name="GoodMorningWCForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
+			<div id="renglon" style="padding-top:0px; padding-left:60px;"><html:checkbox name="GoodMorningWCForm" property="authorBean.acceptPolitics"/> Acepto las pol&iacute;ticas del sitio</div>
 		</div>
 		<div style="width:320px; float:left;">
 			<h2 style="padding-bottom:20px;">C&aacute;mara web</h2>
@@ -38,7 +38,7 @@
 			<div id="webcamphoto" style="width:320px; height:240px; margin-left:20px; float:left; background:#999999;"><img id="webcamphotoimg" width="320" height="240" src="images/null.gif"><br/><br/><input type="text" style="visibility:hidden;" id="phototaken" name="phototaken"></div>
 		</div>
 		<div style="width:980px; float:right;" align="center">
-			<div id="buttonHolder2" align="center"><input type=button value="Capturar" onClick="take_snapshot()"><input type="submit" id="operation" value="Subir"><input type="button" id="cancelcapture" value="Me arrepentí"></div>
+			<div id="buttonHolder2" align="center"><input type="button" value="Capturar" onClick="take_snapshot()"><input type="submit" id="operation" value="Subir"><input type="button" id="cancelcapture" value="Me arrepentí"></div>
 		</div>
 	</html:form>
 </div>

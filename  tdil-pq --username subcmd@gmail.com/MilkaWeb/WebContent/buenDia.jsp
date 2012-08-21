@@ -362,19 +362,29 @@ body {
 div { /* border:dotted 1px #00CC33; */ }
 .debuger { border:dotted 1px #00CC33; }
 #altalayer, #capturalayer {
-	color:#fc767b;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
 	width:280px;
 	height:300px;
-	background-color:#000;
+	background-color:#684cb5;
 	padding:25px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 10px;
 	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 #capturalayer {
 	width:980px;
 	height:350px;
+}
+#capturalayer h2 {
+	font-size:16px;
+	text-transform: none;
 }
 #graciasporsubir, #erroralta {
 	color:#fc767b;
@@ -382,9 +392,9 @@ div { /* border:dotted 1px #00CC33; */ }
 	width:230px;
 	padding:15px;
 	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 #renglon {
 	height: 25px;
@@ -397,7 +407,7 @@ div { /* border:dotted 1px #00CC33; */ }
 	border:none;
 	width:300px;
 	float:left;
-	padding-top:20px;
+	padding-top:0;
 }
 #buttonHolder2 {
 	border:none;
@@ -410,11 +420,18 @@ div { /* border:dotted 1px #00CC33; */ }
 	width:200px;
 	height:22px;
 	line-height:22px;
-	border: solid 1px #8c7bb5;
+	border: solid 1px #543898;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 .normalTextArea {
 	width:200px;
 	height:100px;
+	border: solid 1px #543898;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 /*   */
 h1, h2, h3, h4 { font-family:Georgia, "Times New Roman", Times, serif }
@@ -612,6 +629,56 @@ h2 {
 	top:0;
 	left:0;
 	z-index:6;
+}
+
+
+input[type="button"], input[type="submit"] {
+	color: #FFFFFF;
+	border: none;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	margin: 10px;
+	cursor:hand;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	background:none;
+	background-image: url(images/experiencias/buenDia/baseBoton.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+input[type="button"]:hover, input[type="submit"]:hover {
+	color: #FFFF00;
+	border: none;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	margin: 10px;
+	cursor:hand;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+	background:none;
+	background-image: url(images/experiencias/buenDia/baseBoton.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
 }
 -->
 </style>
