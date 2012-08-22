@@ -8,9 +8,9 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo4;
-import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 
-public class ProfesionalSearchResultForm extends TransactionalValidationForm {
+public class SellSearchResultForm extends TransactionalValidationForm {
 
 	/**
 	 * 
@@ -20,7 +20,7 @@ public class ProfesionalSearchResultForm extends TransactionalValidationForm {
 	private int id;
 	private int objectId;
 	
-	private List<Profesional> searchResult;
+	private List<SellValueObject> searchResult;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -49,7 +49,7 @@ public class ProfesionalSearchResultForm extends TransactionalValidationForm {
 	public void searchByGeoLevel4(int id) throws SQLException, ValidationException {
 		Geo4 geo4 = new Geo4();
 		geo4.setId(id);
-		setSearchResult(DAOManager.getProfesionalDAO().selectProfesionalsByGeo4(geo4));
+		setSearchResult(DAOManager.getSellDAO().selectSellsByGeo4(geo4));
 	}
 
 	public int getObjectId() {
@@ -69,11 +69,11 @@ public class ProfesionalSearchResultForm extends TransactionalValidationForm {
 		this.id = id;
 	}
 
-	public List<Profesional> getSearchResult() {
+	public List<SellValueObject> getSearchResult() {
 		return searchResult;
 	}
 
-	public void setSearchResult(List<Profesional> searchResult) {
+	public void setSearchResult(List<SellValueObject> searchResult) {
 		this.searchResult = searchResult;
 	}
 

@@ -2,10 +2,16 @@ package com.tdil.tuafesta.dao.impl;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.model.Geo4;
+import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SellDAOImpl implements SellDAO {
 
@@ -145,5 +151,13 @@ public class SellDAOImpl implements SellDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	public List<SellValueObject> selectSellsByGeo4(Geo4 geo4) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("geo4id", geo4.getId());
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellProductsByGeo4", params);
+		list.addAll((List<SellValueObject>)sqlMapClient.queryForList("SELL.searchSellServicesByGeo4", params));
+		return list;
 	}
 }

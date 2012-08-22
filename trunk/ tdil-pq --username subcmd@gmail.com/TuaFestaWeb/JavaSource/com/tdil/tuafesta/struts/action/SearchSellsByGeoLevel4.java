@@ -15,17 +15,17 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
-import com.tdil.tuafesta.struts.forms.ProfesionalSearchResultForm;
+import com.tdil.tuafesta.struts.forms.SellSearchResultForm;
 
-public class SearchProfesionalByGeoLevel4 extends AbstractAction {
+public class SearchSellsByGeoLevel4 extends AbstractAction {
 	
-	private static final Logger LOG = LoggerProvider.getLogger(SearchProfesionalByGeoLevel4.class);
+	private static final Logger LOG = LoggerProvider.getLogger(SearchSellsByGeoLevel4.class);
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		final ProfesionalSearchResultForm abstractForm = (ProfesionalSearchResultForm) form;
+		final SellSearchResultForm abstractForm = (SellSearchResultForm) form;
 		final int userId = Integer.parseInt(request.getParameter("id"));
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {

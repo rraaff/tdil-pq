@@ -1,9 +1,12 @@
 package com.tdil.tuafesta.dao;
 
-import com.tdil.tuafesta.model.Sell;
-import com.tdil.tuafesta.model.SellExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.tuafesta.model.Geo4;
+import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 
 public interface SellDAO {
 
@@ -72,4 +75,6 @@ public interface SellDAO {
 	 * @mbggenerated  Mon Aug 20 20:10:42 ART 2012
 	 */
 	int updateSellByPrimaryKey(Sell record) throws SQLException;
+	
+	public List<SellValueObject> selectSellsByGeo4(Geo4 geo4) throws SQLException;
 }
