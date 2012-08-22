@@ -18,6 +18,8 @@ Seguir (orden)
 ) registracion de profesionales con fb
 ) compartir en fb ...
 
+Falta numero entre parentesis por geo level...
+
 Pendientes:
 Tratar de hacer el sitio publico lo mas stateles posible, ya que no tiene log out.
 Se podria hacer que el dato de login quede en una cookie y yo no usar sessiones en el server?

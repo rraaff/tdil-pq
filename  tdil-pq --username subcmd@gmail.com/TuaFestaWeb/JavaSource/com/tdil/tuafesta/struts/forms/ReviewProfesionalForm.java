@@ -7,9 +7,15 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
+import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalStatus;
+import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.ServiceArea;
+import com.tdil.tuafesta.model.ServiceAreaExample;
 
 public class ReviewProfesionalForm extends TransactionalValidationForm {
 
@@ -92,13 +98,14 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	public void approve() throws SQLException {
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
 		Profesional profesional = profesionalDAO.selectProfesionalByPrimaryKey(this.getProfesional().getId());
 		profesional.setReviewdate(new Date());
 		profesional.setStatus(ProfesionalStatus.APPROVED);
 		profesionalDAO.updateProfesionalByPrimaryKey(profesional);
-		// TODO a esto le falta aprobar los datos puntuales, le falta el tema de los productos no rd etc etc
+		
 	}
 	
 	public String getDisapproveReason() {
@@ -133,6 +140,20 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		profesional.setStatus(ProfesionalStatus.APPROVED);
 		profesionalDAO.updateProfesionalByPrimaryKey(profesional);
 		// TODO a esto le falta aprobar los datos puntuales, le falta el tema de los productos no rd etc etc
+		SellDAO sellDao = DAOManager.getSellDAO();
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(this.getProfesional().getId());
+		for (Sell sell : sellDao.selectSellByExample(sellExample)) {
+			sell.setApproved(1);
+			sellDao.updateSellByPrimaryKey(sell);
+		}
+		ServiceAreaDAO serviceAreaDAO = DAOManager.getServiceAreaDAO();
+		ServiceAreaExample serviceAreaExample = new ServiceAreaExample();
+		serviceAreaExample.createCriteria().andIdProfesionalEqualTo(this.getProfesional().getId());
+		for (ServiceArea serviceArea : serviceAreaDAO.selectServiceAreaByExample(serviceAreaExample)) {
+			serviceArea.setApproved(1);
+			serviceAreaDAO.updateServiceAreaByPrimaryKey(serviceArea);
+		}
 	}
 
 

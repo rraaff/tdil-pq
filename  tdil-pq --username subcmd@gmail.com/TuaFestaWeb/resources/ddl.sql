@@ -264,6 +264,7 @@ CREATE TABLE PROFESIONAL (
   `verifemail` VARCHAR(20) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
+  INDEX `IX_PROFESIONAL_00` (`id_geolevel` ASC),
    CONSTRAINT `FK_WALL_WRITTING_02`
     FOREIGN KEY (`id_wall` )
     REFERENCES WALL (`id` )
@@ -294,6 +295,7 @@ CREATE TABLE SELL (
   `approved` INT NOT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
+  INDEX `IX_SELL_00` (`id_prod_serv` ASC),
    CONSTRAINT `FK_SELL_00`
     FOREIGN KEY (`id_profesional` )
     REFERENCES PROFESIONAL (`id` )
@@ -340,6 +342,7 @@ CREATE TABLE SERVICE_AREA (
   `id_geolevel` INT NOT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
+  INDEX `IX_SERVICE_AREA_00` (`id_geolevel` ASC),
    CONSTRAINT `FK_SERVICE_AREA_00`
     FOREIGN KEY (`id_profesional` )
     REFERENCES PROFESIONAL (`id` )

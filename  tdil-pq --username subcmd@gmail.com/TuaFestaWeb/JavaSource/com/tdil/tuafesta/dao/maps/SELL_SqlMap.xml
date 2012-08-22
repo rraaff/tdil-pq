@@ -293,4 +293,48 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.SellValueObject" id="SellValueObject" extends="BaseResultMap">
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  	<result column="description" jdbcType="VARCHAR" property="description" />
+  	<result column="profesionalbusinessname" jdbcType="VARCHAR" property="profesionalbusinessname" />
+  </resultMap>
+  
+  <select id="searchSellProductsByGeo4" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prod.name as name,
+    	prod.description as description,
+    	prof.businessname as profesionalbusinessname
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof
+    where sell.id_prod_serv = prod.id
+    and sell.type = 1
+    and sell.id_profesional = prof.id
+    and prof.id_geolevel = #geo4id:INTEGER#
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prod.approved = 1
+    and prod.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
+  
+  <select id="searchSellServicesByGeo4" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
+    where sell.id_prod_serv = serv.id
+    and sell.type = 2
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    and prof.id in (select id_profesional FROM SERVICE_AREA sa where sa.level = 4 and id_geolevel = #geo4id:INTEGER#)
+  </select>
 </sqlMap>
