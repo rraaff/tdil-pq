@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
 import com.tdil.tuafesta.dao.BlobDataDAO;
+import com.tdil.tuafesta.dao.CacheRegionDAO;
 import com.tdil.tuafesta.dao.ClientDAO;
 import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
@@ -31,6 +32,7 @@ import com.tdil.tuafesta.dao.SystemUserDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.dao.WallWrittingDAO;
 import com.tdil.tuafesta.dao.impl.BlobDataDAOImpl;
+import com.tdil.tuafesta.dao.impl.CacheRegionDAOImpl;
 import com.tdil.tuafesta.dao.impl.ClientDAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
@@ -156,5 +158,8 @@ public class DAOManager {
 	}
 	public static ClientDAO getClientDAO() throws SQLException {
 		return new ClientDAOImpl(IBatisManager.getClient());
+	}
+	public static CacheRegionDAO getCacheRegionDAO() throws SQLException {
+		return new CacheRegionDAOImpl(IBatisManager.getClient());
 	}
 }

@@ -643,4 +643,11 @@
  <PROCESS-ITEM NAME="page24" PATH="/sellSearchResult.jsp"
   SHAPE="240,11473,0,0" SUBTYPE="jsp" TITLE="sellSearchResult.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#searchSellsByCategory" NAME="action61"
+  PATH="/searchSellsByCategory" SHAPE="32,12433,0,0"
+  TITLE="SellSearchResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sellSearchResult.jsp" TARGET="page24" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

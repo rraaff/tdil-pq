@@ -211,8 +211,9 @@
 			<div id="categoryNavigation">
 				<h3>Todos las rubros</h3>
 				<p>
-					<% for (CategoryValueObject cat : CategoryUtils.getTopCategories()) { %>
-						<a href="#"><%=cat.getName() %></a><br />
+					<% for (CategoryValueObject cat : CategoryUtils.getAllCategories()) { %>
+						<a href="#"></a><br />
+						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
 					<% } %>
 				</p>
 			</div>

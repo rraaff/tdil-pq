@@ -11,6 +11,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.ProductCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ProductCategory;
+import com.tdil.tuafesta.utils.CacheRegionUtils;
 import com.tdil.tuafesta.utils.ProductCategoryTreeNode;
 import com.tdil.tuafesta.utils.ProductCategoryUtils;
 import com.tdil.validations.FieldValidation;
@@ -125,6 +126,7 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 			profesionalCategory.setParentId(this.getParentId());
 			profesionalCategoryDAO.updateProductCategoryByPrimaryKeySelective(profesionalCategory);
 		}
+		CacheRegionUtils.incrementVersionInTransaction(ProductCategory.class.getName());
 	}
 
 	public int getObjectId() {

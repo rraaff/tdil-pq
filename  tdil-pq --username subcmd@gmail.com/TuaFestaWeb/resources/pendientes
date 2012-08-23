@@ -20,6 +20,7 @@ Seguir (orden)
 
 Falta numero entre parentesis por geo level...
 
+
 Pendientes:
 Tratar de hacer el sitio publico lo mas stateles posible, ya que no tiene log out.
 Se podria hacer que el dato de login quede en una cookie y yo no usar sessiones en el server?
@@ -58,11 +59,6 @@ Existe la pagina del profesional, tambien deberia existir la pagina del producto
 Quizas podria en la pagina del producto del profesional tener un listado los mismos productos 
 de otro profesional?
 
-
-rta:
-Renombrar perfilProfesioal por contactCardPofesional.
-El listado, es de profesionales o de productos/servicios? es de productos y servicios
-
 Promociones:
 Para pensar, elegis productos de profesionales o elegis cosas separadas?, precio referencia en promo, precio total. Codigo de promocion.
 separadas no tiene sentido.
@@ -72,8 +68,9 @@ Contactar te muestra todos los datos de la promo.
 
 Rta:
 Al layer de rubros le pongo todos, al entrar listo los de ese y los que estan mas abajo. 
+Ver si es posible hacer un query jerarquico o algo asi.
+Ver tema cache distruido con timestamp en la base.
 Agregar ver todos al layer de los geo levels.
-Listado es de profesionales!!!
 
 Tema del muro:
 Va a estar paginado? yo diria que si
