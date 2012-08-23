@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tdil.cache.CacheEntry;
+import com.tdil.cache.CacheManager;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.tuafesta.dao.ProductCategoryDAO;
@@ -27,11 +29,10 @@ public class ProductCategoryUtils {
 		try {
 			return (List<ProductCategoryTreeNode>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
-					return ProductCategoryUtils.getTreeInTransaction(onlyActive);
+					return getTreeInTransaction(onlyActive);
 				}
 			});
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return new ArrayList<ProductCategoryTreeNode>();
 		}
@@ -52,6 +53,11 @@ public class ProductCategoryUtils {
 	}
 
 	public static List<ProductCategoryTreeNode> getTreeInTransaction(boolean onlyActive) throws SQLException {
+		Integer version = CacheRegionUtils.getVersionInTransaction(ProductCategory.class.getName());
+		CacheEntry<List<ProductCategoryTreeNode>> cached = CacheManager.getCacheEntry(ProductCategory.class.getName(), "TREE-" + onlyActive, version);
+		if (cached != null) {
+			return cached.getValue();
+		}
 		ProductCategoryDAO profesionalCategoryDAO = DAOManager.getProductCategoryDAO();
 		ProductCategoryExample example = new ProductCategoryExample();
 		Criteria criteria = example.createCriteria();
@@ -62,11 +68,13 @@ public class ProductCategoryUtils {
 		example.setOrderByClause("name");
 		
 		List<ProductCategory> temp = profesionalCategoryDAO.selectProductCategoryByExample(example);
-		List<ProductCategoryTreeNode> result = new ArrayList<ProductCategoryTreeNode>();
+		ArrayList<ProductCategoryTreeNode> result = new ArrayList<ProductCategoryTreeNode>();
 		for (ProductCategory profesionalCategory : temp) {
 			ProductCategoryTreeNode newTree = new ProductCategoryTreeNode(profesionalCategory);
 			result.add(getTreeFor(newTree, onlyActive));
 		}
+		
+		CacheManager.put(ProductCategory.class.getName(), "TREE-" + onlyActive, result, version);
 		return result;
 	}
 
@@ -86,5 +94,13 @@ public class ProductCategoryUtils {
 			tree.addChild(getTreeFor(newTree, onlyActive));
 		}
 		return tree;
+	}
+
+	public static List<Integer> selectChildsOf(List<ProductCategoryTreeNode> tree, int catId) {
+		List<Integer> result = new ArrayList<Integer>();
+		for (ProductCategoryTreeNode productCategoryTreeNode : tree) {
+			productCategoryTreeNode.addChildsOf(result, catId);
+		}
+		return result;
 	}
 }

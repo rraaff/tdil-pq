@@ -268,6 +268,11 @@
    path="/searchSellsByGeoLevel4" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByGeoLevel4">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
+  <action name="SellSearchResultForm"
+   path="/searchSellsByCategory" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
+   <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
+  </action>
+  
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/profesionalContactCard.jsp"/>

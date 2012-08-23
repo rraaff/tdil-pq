@@ -86,4 +86,25 @@ public class ProductCategoryTreeNode implements Serializable {
 	public String getDescription() {
 		return profesionalCategory.getDescription();
 	}
+
+	public void addChildsOf(List<Integer> result, int catId) {
+		if (this.getId().equals(catId)) {
+			for (ProductCategoryTreeNode child : childs) {
+				result.add(child.getId());
+				child.addChilds(result);
+			}
+		} else {
+			for (ProductCategoryTreeNode child : childs) {
+				child.addChildsOf(result, catId);
+			}
+		}
+		
+	}
+
+	private void addChilds(List<Integer> result) {
+		for (ProductCategoryTreeNode child : childs) {
+			result.add(child.getId());
+			child.addChilds(result);
+		}
+	}
 }
