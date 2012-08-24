@@ -446,4 +446,5 @@ CREATE TABLE CACHE_REGION (
 ENGINE = InnoDB;
 
 INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ProductCategory',0);
+INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ServiceCategory',0);
 COMMIT;

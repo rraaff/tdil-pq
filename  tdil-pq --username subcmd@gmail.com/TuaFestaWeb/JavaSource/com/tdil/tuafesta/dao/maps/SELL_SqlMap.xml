@@ -399,4 +399,26 @@
     and prof.status = 2
     and prof.deleted = 0
   </select>
+  
+    <select id="searchSellServicesByCategories" parameterClass="list" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
+    where sell.id_prod_serv = serv.id
+    and serv.id_category in
+    	<iterate open="(" close=")" conjunction=",">
+		   #[]#
+		</iterate>
+    and sell.type = 1
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
 </sqlMap>

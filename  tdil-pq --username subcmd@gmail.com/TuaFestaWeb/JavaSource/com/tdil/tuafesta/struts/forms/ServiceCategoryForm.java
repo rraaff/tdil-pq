@@ -11,6 +11,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ServiceCategory;
+import com.tdil.tuafesta.utils.CacheRegionUtils;
 import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
 import com.tdil.tuafesta.utils.ServiceCategoryUtils;
 import com.tdil.validations.FieldValidation;
@@ -125,6 +126,7 @@ public class ServiceCategoryForm extends TransactionalValidationForm implements 
 			profesionalCategory.setParentId(this.getParentId());
 			profesionalCategoryDAO.updateServiceCategoryByPrimaryKeySelective(profesionalCategory);
 		}
+		CacheRegionUtils.incrementVersionInTransaction(ServiceCategory.class.getName());
 	}
 
 	public int getObjectId() {
