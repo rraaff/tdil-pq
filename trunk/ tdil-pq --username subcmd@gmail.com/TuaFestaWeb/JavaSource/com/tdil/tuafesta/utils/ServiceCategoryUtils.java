@@ -4,10 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tdil.cache.CacheEntry;
+import com.tdil.cache.CacheManager;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.tuafesta.dao.ServiceCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.ProductCategory;
 import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.model.ServiceCategoryExample;
 import com.tdil.tuafesta.model.ServiceCategoryExample.Criteria;
@@ -52,6 +55,12 @@ public class ServiceCategoryUtils {
 	}
 
 	public static List<ServiceCategoryTreeNode> getTreeInTransaction(boolean onlyActive) throws SQLException {
+		Integer version = CacheRegionUtils.getVersionInTransaction(ServiceCategory.class.getName());
+		CacheEntry<List<ServiceCategoryTreeNode>> cached = CacheManager.getCacheEntry(ServiceCategory.class.getName(), "TREE-" + onlyActive, version);
+		if (cached != null) {
+			return cached.getValue();
+		}
+		
 		ServiceCategoryDAO profesionalCategoryDAO = DAOManager.getServiceCategoryDAO();
 		ServiceCategoryExample example = new ServiceCategoryExample();
 		Criteria criteria = example.createCriteria();
@@ -62,11 +71,12 @@ public class ServiceCategoryUtils {
 		example.setOrderByClause("name");
 		
 		List<ServiceCategory> temp = profesionalCategoryDAO.selectServiceCategoryByExample(example);
-		List<ServiceCategoryTreeNode> result = new ArrayList<ServiceCategoryTreeNode>();
+		ArrayList<ServiceCategoryTreeNode> result = new ArrayList<ServiceCategoryTreeNode>();
 		for (ServiceCategory profesionalCategory : temp) {
 			ServiceCategoryTreeNode newTree = new ServiceCategoryTreeNode(profesionalCategory);
 			result.add(getTreeFor(newTree, onlyActive));
 		}
+		CacheManager.put(ServiceCategory.class.getName(), "TREE-" + onlyActive, result, version);
 		return result;
 	}
 
@@ -86,5 +96,13 @@ public class ServiceCategoryUtils {
 			tree.addChild(getTreeFor(newTree, onlyActive));
 		}
 		return tree;
+	}
+	
+	public static List<Integer> selectChildsOf(List<ServiceCategoryTreeNode> tree, int catId) {
+		List<Integer> result = new ArrayList<Integer>();
+		for (ServiceCategoryTreeNode productCategoryTreeNode : tree) {
+			productCategoryTreeNode.addChildsOf(result, catId);
+		}
+		return result;
 	}
 }

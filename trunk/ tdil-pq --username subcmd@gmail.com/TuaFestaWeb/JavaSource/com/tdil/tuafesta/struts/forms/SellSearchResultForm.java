@@ -14,6 +14,8 @@ import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.utils.ProductCategoryTreeNode;
 import com.tdil.tuafesta.utils.ProductCategoryUtils;
+import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
+import com.tdil.tuafesta.utils.ServiceCategoryUtils;
 
 public class SellSearchResultForm extends TransactionalValidationForm {
 
@@ -86,17 +88,19 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 		SellDAO sellDao = DAOManager.getSellDAO();
 		if (catType == CategoryValueObject.PRODUCT) {
 			List<SellValueObject> sellValueObject = sellDao.selectProductSellsByCategory(catId);
-			// TODO falta la busqueda sobre los hijos de la categoria
 			List<ProductCategoryTreeNode> tree = ProductCategoryUtils.getTreeInTransaction(true);
 			List<Integer> catids = ProductCategoryUtils.selectChildsOf(tree, catId);
 			if (!catids.isEmpty()) {
 				sellValueObject.addAll(sellDao.selectProductSellsByCategories(catids));
 			}
-			// TODO
 			setSearchResult(sellValueObject);
 		} else {
 			List<SellValueObject> sellValueObject = sellDao.selectServiceSellsByCategory(catId);
-			// TODO falta la busqueda sobre los hijos de la categoria
+			List<ServiceCategoryTreeNode> tree = ServiceCategoryUtils.getTreeInTransaction(true);
+			List<Integer> catids = ServiceCategoryUtils.selectChildsOf(tree, catId);
+			if (!catids.isEmpty()) {
+				sellValueObject.addAll(sellDao.selectServiceSellsByCategories(catids));
+			}
 			setSearchResult(sellValueObject);
 		}
 		

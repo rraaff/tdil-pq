@@ -178,4 +178,9 @@ public class SellDAOImpl implements SellDAO {
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellServicesByCategory", params);
 		return list;
 	}
+	
+	public List<SellValueObject> selectServiceSellsByCategories(List<Integer> catids) throws SQLException {
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellServicesByCategories", catids);
+		return list;
+	}
 }
