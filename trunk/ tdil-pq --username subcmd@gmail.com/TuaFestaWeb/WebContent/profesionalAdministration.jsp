@@ -13,38 +13,7 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
-<style>
-th.sorted a,th.sortable a {
-	background-position: right;
-	display: block;
-	width: 100%;
-}
-
-th.sortable a {
-	background-image: url(img/displaytag/arrow_off.png);
-}
-
-th.order1 a {
-	background-image: url(img/displaytag/arrow_down.png);
-}
-
-th.order2 a {
-	background-image: url(img/displaytag/arrow_up.png);
-}
-
-tr.odd {
-	background-color: #fff
-}
-
-tr.tableRowEven,tr.even {
-	background-color: #fea
-}
-th.sorted {
-	background-color: orange;
-}
-</style>
 </head>
-
 <%
 	ProfesionalAdministrationForm postItAdministrationForm = (ProfesionalAdministrationForm)session.getAttribute("ProfesionalAdministrationForm");
 java.util.List source = postItAdministrationForm.getSearch();
@@ -52,20 +21,23 @@ com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pag
 request.setAttribute( "test",  paginated);
 %>
 <body>
-<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
-<div id="container">
-	<h1 align="center">Profesionales</h1>
-	<div class="renglon width860" style="margin-bottom:20px;">
-		<div class="label width860"><span class="comment">Desde esta sección podrá operar sobre los profesionales.</span></div>
-	</div>
-	<div class="renglon width860">
-		<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./profesionalAdministration.jsp">
-			<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable" property="firstname"></display:column>
-			<display:column title="Apellido" sortable="true" sortName="Apellido" headerClass="sortable" property="lastname"></display:column>
-			<display:column title="Email" sortable="true" sortName="Email" headerClass="sortable" property="email"></display:column>
-			<display:column title="Estado" headerClass="width100"><%= ProfesionalStatusHelper.getStatusFor((Profesional)pageContext.getAttribute("testit"))%></display:column>
-			<display:column title="Acciones" headerClass="width100"><a href="reviewProfesional.do?id=<%=((Profesional)pageContext.getAttribute("testit")).getId()%>">Revisar</display:column>
-		</display:table>
+<%@ include file="includes/boMenu.jsp" %>
+<div id="boWrapper">
+	<div id="boCentral">
+		<div id="formulariosBase">
+		<h1>Profesionales</h1>
+		<div class="renglon width950" style="margin-bottom:20px;">
+			<div class="label width950"><span class="comment">Desde esta sección podrá operar sobre los profesionales.</span></div>
+		</div>
+		<div class="renglon width950" style="margin-bottom:50px;">
+			<display:table name="test" sort="external" pagesize="10" id="testit" requestURI="./profesionalAdministration.jsp">
+				<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable width200" property="firstname"></display:column>
+				<display:column title="Apellido" sortable="true" sortName="Apellido" headerClass="sortable width200" property="lastname"></display:column>
+				<display:column title="E-mail" sortable="true" sortName="Email" headerClass="sortable width200" property="email"></display:column>
+				<display:column title="Estado" headerClass="sortable width150"><%= ProfesionalStatusHelper.getStatusFor((Profesional)pageContext.getAttribute("testit"))%></display:column>
+				<display:column title="Acciones" headerClass="sortable width150"><a href="reviewProfesional.do?id=<%=((Profesional)pageContext.getAttribute("testit")).getId()%>">Revisar</display:column>
+			</display:table>
+		</div>
 	</div>
 </div>
 </body>

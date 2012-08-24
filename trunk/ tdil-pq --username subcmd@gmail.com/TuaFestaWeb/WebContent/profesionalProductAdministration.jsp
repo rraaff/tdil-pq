@@ -18,41 +18,46 @@
 </head>
 
 <body>
-<div id="header"></div>
-<div id="container">
-	<div style="height:50px; display:block;"><%@ include file="includes/boMenu.jsp"%></div>
-	<div id="formulariosBase">
-		<html:form method="POST" action="/saveProfesionalProduct">
-			<h1>Administraci&oacute;n de productos</h1>
-			<div id="conteinerScrollable" style="overflow:hidden;">
-				<span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span>
-				<div class="renglon width500">
-					<div class="label width180">Nombre</div>
-					<div class="label width200"><html:text name="ProfesionalProductForm" property="name" styleClass="width180"/></div>
-					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalProduct.name.err")%></div>
-					<div class="label width180">Descripcion</div>
-					<div class="label width200"><html:text name="ProfesionalProductForm" property="description" styleClass="width180"/></div>
-					<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalProduct.description.err")%></div>
-					<div class="label width180">Precio promeio</div>
-					<div class="label width120"><html:checkbox name="ProfesionalProductForm" property="approved" />Aprobada</div>
-					
-					<%
-						ProfesionalProductForm form = (ProfesionalProductForm)session.getAttribute("ProfesionalProductForm");
-						List<ProductCategoryTreeNode> listtemp = ProductCategoryForm.getProductCategoryTree();
-						List<ProductCategoryTreeNode> flatten = ProductCategoryTreeNode.tree2list(listtemp);
-					%>
-					<html:select name="ProfesionalProductForm" property="categoryId" styleClass="textfield_effect">
-						<option <%=form.getCategoryId() == 0 ? "selected" : ""%> value="0"></option>
-						<%
-							for (ProductCategoryTreeNode node : flatten) {
-						%>
-							<option <%=node.getProductCategory().getId().equals(form.getCategoryId()) ? "selected" : ""%> value="<%=node.getProductCategory().getId()%>"><%=ProductCategoryUtils.getPrefixFor(node)%><%=node.getProductCategory().getName()%></option>
-						<%
-							}
-						%>
-					</html:select>
+<%@ include file="includes/boMenu.jsp"%>
+<div id="boWrapper">
+	<div id="boCentral">
+		<div id="formulariosBase">
+			<html:form method="POST" action="/saveProfesionalProduct">
+				<h1>Administraci&oacute;n de productos</h1>
+				<div class="renglon width950">
+					<div class="label width950"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 				</div>
-				<div class="renglon height40">
+				<div class="renglon width950">
+					<div class="label width100">Nombre</div>
+					<div class="label width250"><html:text name="ProfesionalProductForm" property="name" styleClass="width250"/></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalProduct.name.err")%></div>
+					<div class="label width80">Descripci&oacute;n</div>
+					<div class="label width300"><html:text name="ProfesionalProductForm" property="description" styleClass="width300"/></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalProduct.description.err")%></div>
+					<!-- div class="label width180">Precio promeio</div -->
+					<div class="label width100"><html:checkbox name="ProfesionalProductForm" property="approved" />Aprobada</div>
+				</div>
+				<div class="renglon width950">
+					<div class="label width100">Categor&iacute;a padre</div>
+					<div class="label width800">
+						<%
+							ProfesionalProductForm form = (ProfesionalProductForm)session.getAttribute("ProfesionalProductForm");
+							List<ProductCategoryTreeNode> listtemp = ProductCategoryForm.getProductCategoryTree();
+							List<ProductCategoryTreeNode> flatten = ProductCategoryTreeNode.tree2list(listtemp);
+						%>
+						<html:select name="ProfesionalProductForm" property="categoryId" styleClass="textfield_effect width800">
+							<option <%=form.getCategoryId() == 0 ? "selected" : ""%> value="0"></option>
+							<%
+								for (ProductCategoryTreeNode node : flatten) {
+							%>
+								<option <%=node.getProductCategory().getId().equals(form.getCategoryId()) ? "selected" : ""%> value="<%=node.getProductCategory().getId()%>"><%=ProductCategoryUtils.getPrefixFor(node)%><%=node.getProductCategory().getName()%></option>
+							<%
+								}
+							%>
+						</html:select>
+					</div>
+				</div>
+				<div class="renglon width950 height50" align="center">
 					<logic:equal name="ProfesionalProductForm" property="objectId" value="0">
 						<html:submit property="operation">
 							<bean:message key="save" />
@@ -67,39 +72,37 @@
 						<bean:message key="reset" />
 					</html:submit>
 				</div>
-				<!-- hr -->
-				<div id="fiftyfiftyRight">
-					<h2>Listado de Productos</h2>
-					<div class="renglon width450 height300" style="overflow:auto;">
-						<table>
-							<tr>
-								<td class="headerTablas" width="140">Nombre</td>
-								<td class="headerTablas" width="50">Acciones</td>
+				<h1>Listado de Productos</h1>
+				<div class="renglon width950" style="margin-bottom:50px;">
+					<table width="100%">
+						<tr>
+							<td class="headerTablas" width="140">Nombre</td>
+							<td class="headerTablas" width="50">Acciones</td>
+						</tr>
+						<logic:iterate name="ProfesionalProductForm" property="allServices"
+							id="iterSection" indexId="iterIndex">
+							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+								<td
+									<%=((ProfesionalProduct) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+									align="left"><bean:write name="iterSection" property="name" />
+								</td>
+								<td>
+									<html:link action="editProfesionalProduct.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+									<html:link action="/toggleDeletedProfesionalProduct" paramName="iterSection"
+										paramProperty="id" paramId="id">
+										<% if (((ProfesionalProduct) iterSection).getDeleted() == 1) { %>
+											<img src="boImages/activar.png" alt="Activar">
+										<% } else { %>
+											<img src="boImages/desactivar.png" alt="Desactivar">
+										<% } %>
+									</html:link>
+								</td>
 							</tr>
-							<logic:iterate name="ProfesionalProductForm" property="allServices"
-								id="iterSection" indexId="iterIndex">
-								<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
-									<td
-										<%=((ProfesionalProduct) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
-										align="left"><bean:write name="iterSection" property="name" />
-									</td>
-									<td>
-										<html:link action="editProfesionalProduct.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
-										<html:link action="/toggleDeletedProfesionalProduct" paramName="iterSection"
-											paramProperty="id" paramId="id">
-											<% if (((ProfesionalProduct) iterSection).getDeleted() == 1) { %>
-												<img src="boImages/activar.png" alt="Activar">
-											<% } else { %>
-												<img src="boImages/desactivar.png" alt="Desactivar">
-											<% } %>
-										</html:link>
-									</td>
-								</tr>
-							</logic:iterate>
-						</table>
-					</div>
+						</logic:iterate>
+					</table>
 				</div>
-		</html:form>
+			</html:form>
+		</div>
 	</div>
 </div>
 </body>

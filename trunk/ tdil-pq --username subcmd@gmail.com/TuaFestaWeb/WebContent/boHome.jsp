@@ -9,10 +9,11 @@
 <%@ include file="includes/boHead.jsp" %>
 </head>
 <body>
-<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
-<div id="container" style="height:300px;">
-	<h1 align="center">Administración de contenidos del sitio oficial TUAFESTA.com.ar</h1>
-	<div align="center">seleccione una acci&oacute;n del men&uacute;.</div>
+<%@ include file="includes/boMenu.jsp" %>
+<div id="boWrapper">
+	<div id="boCentral" class="height450">
+		<div class="width200 centering" style="margin-top:200px;" align="center">Seleccione una acci&oacute;n del men&uacute;.</div>
+	</div>
 </div>
 </body>
 </html>
