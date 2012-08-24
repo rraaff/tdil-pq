@@ -614,7 +614,7 @@ a {
 /* ///////////////////////////////////////////////////////////// */
 
 
-
+/*  / LOS DE MARCOS /////////////////////////////////////////////// */
 /* the forward and backward buttons */
 .addfwd { display:block; position:absolute; cursor:pointer; width:25px; top:0; right:0px; background:url(../images/gallery_fwd.jpg) no-repeat 0 0;z-index:300;  }
 .addbkwd { display:block; position:absolute; cursor:pointer; width:25px; top:0; left:0px; background:url(../images/gallery_back.jpg) no-repeat 0 0; z-index:300;  }
