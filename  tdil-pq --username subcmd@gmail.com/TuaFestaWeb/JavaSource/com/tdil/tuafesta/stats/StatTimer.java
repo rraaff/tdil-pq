@@ -15,7 +15,10 @@ public class StatTimer extends Thread {
 	public void run() {
 		while(true) {
 			try {
-				sleep(StatsManager.BUFFER_DUMP_TIME);
+				if (StatsManager.LOG.isDebugEnabled()) {
+					StatsManager.LOG.debug("stat timer sleeping for " + StatsManager.BUFFER_DUMP_TIME.get());
+				}
+				sleep(StatsManager.BUFFER_DUMP_TIME.get());
 				List<Statistic> towrite;
 				// copio el buffer
 				synchronized (StatsManager.mutex) {
@@ -24,12 +27,22 @@ public class StatTimer extends Thread {
 					StatsManager.buffer.clear();
 				}
 				// escribo el buffer
-				if (towrite.size() > 0) {
+				int size = towrite.size();
+				if (size > 0) {
 					StatsManager.addBatch(towrite);
 				}
+				// si el tamanio es menos de la mitad, incremento el tiempo
+				if (size * 2 < StatsManager.BUFFER_SIZE) {
+					int actual = StatsManager.BUFFER_DUMP_TIME.get() + StatsManager.DUMP_TIME_INC;
+					if (actual < StatsManager.MAX_DUMP_TIME) {
+						if (StatsManager.LOG.isDebugEnabled()) {
+							StatsManager.LOG.debug("dump time incremented to " + actual);
+						}
+						StatsManager.BUFFER_DUMP_TIME.set(actual);
+					}
+				}
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				StatsManager.LOG.error(e.getMessage(), e);
 			}
 		}
 	}

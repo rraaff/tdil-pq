@@ -23,11 +23,9 @@ public class StatBatch implements Runnable, TransactionalAction {
 		try {
 			TransactionProvider.executeInTransaction(this);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StatsManager.LOG.error(e.getMessage(), e);
 		} catch (ValidationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StatsManager.LOG.error(e.getMessage(), e);
 		}
 	}
 	
