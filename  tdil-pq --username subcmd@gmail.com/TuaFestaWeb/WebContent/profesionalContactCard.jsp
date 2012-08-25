@@ -3,7 +3,7 @@
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page info="index"%>
+<%@ page info="profesionalContactCard"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>

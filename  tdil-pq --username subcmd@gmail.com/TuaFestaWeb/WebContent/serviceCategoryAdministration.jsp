@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ServiceCategoryForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
-<%@ page info="index"%>
+<%@ page info="serviceCategoryAdministration"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic"%>

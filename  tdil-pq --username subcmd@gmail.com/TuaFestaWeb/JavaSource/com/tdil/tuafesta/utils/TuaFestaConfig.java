@@ -19,6 +19,7 @@ import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.model.SystemProperty;
 import com.tdil.tuafesta.model.SystemPropertyExample;
 import com.tdil.tuafesta.roles.Administrator;
+import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.users.None;
 import com.tdil.users.Role;
 import com.tdil.utils.SystemConfig;
@@ -34,6 +35,7 @@ public class TuaFestaConfig extends SystemConfig {
 	public void init(ServletContextEvent sce) {
 		super.init(sce);
 		this.loadFilteredWords();
+		StatsManager.start();
 	}
 	
 	

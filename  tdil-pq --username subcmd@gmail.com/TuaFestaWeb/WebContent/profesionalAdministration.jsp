@@ -2,7 +2,7 @@
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
-<%@ page info="index"%>
+<%@ page info="profesionalAdministration"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic"%>

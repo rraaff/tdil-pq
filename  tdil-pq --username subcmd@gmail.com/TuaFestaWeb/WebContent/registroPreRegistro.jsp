@@ -9,7 +9,7 @@
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page info="index"%>
+<%@ page info="registroPreRegistro"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>

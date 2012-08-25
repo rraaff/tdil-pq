@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page info="index"%>
+<%@ page info="profesionalEmailNotValidated"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
@@ -25,7 +25,7 @@
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Vuelva a intentarlo. Si el error persiste, contactese con los administradores del sitio <a href="contact.jsp">haciendo clic ac&aacute;</a></p>
+				<p>Vuelva a intentarlo. Si el error persiste, contactese con los administradores del sitio <a href="contacto.jsp">haciendo clic ac&aacute;</a></p>
 			</div>
 		</div>
 	</div>

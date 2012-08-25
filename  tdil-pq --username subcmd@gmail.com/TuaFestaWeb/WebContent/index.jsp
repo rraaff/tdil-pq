@@ -200,7 +200,7 @@
 		<div id="rightCentral">
 			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
 			<div id="zoneNavigation">
-				<h3>Todos las zonas</h3>
+				<h3><a href="listadoZonas.jsp">Todos las zonas</a></h3>
 				<p>
 					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4Levels()) { %>
 						<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
@@ -209,10 +209,9 @@
 			</div>
 			<div id="punteado" style="width:284px;"></div>
 			<div id="categoryNavigation">
-				<h3>Todos las rubros</h3>
+				<h3><a href="listadoRubros.jsp">Todos los rubros</a></h3>
 				<p>
 					<% for (CategoryValueObject cat : CategoryUtils.getAllCategories()) { %>
-						<a href="#"></a><br />
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
 					<% } %>
 				</p>
