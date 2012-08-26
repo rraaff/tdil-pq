@@ -34,6 +34,9 @@ DROP TABLE IF EXISTS STATISTIC;
 
 DROP TABLE IF EXISTS CACHE_REGION;
 
+DROP TABLE IF EXISTS HIGHLIGHTED_PROF;
+DROP TABLE IF EXISTS HIGHLIGHTED_CAT;
+
 DROP TABLE IF EXISTS VERSION;
 
 CREATE TABLE SYSTEMUSER (
@@ -97,6 +100,7 @@ CREATE TABLE NOTIFICATION_EMAIL (
 ENGINE = InnoDB;
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('verif.email.prof', 'Verificacion de email de profesional','Para completar la validacion de tu email cliquea aca [LINK]','Verificacion de email', 'tuafesta.test@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('verif.email.client', 'Verificacion de email de client','Para completar la validacion de tu email cliquea aca [LINK]','Verificacion de email', 'tuafesta.test@gmail.com', 0);
 
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -448,3 +452,32 @@ ENGINE = InnoDB;
 INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ProductCategory',0);
 INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ServiceCategory',0);
 COMMIT;
+
+CREATE TABLE HIGHLIGHTED_PROF (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_profesional` INT NOT NULL,
+  `fromDate` DATETIME NOT NULL ,
+  `toDate` DATETIME NOT NULL ,
+  `payment` DECIMAL(10,2),
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_HIGHLIGHTED_PROF_00` (`id_profesional` ASC),
+  INDEX `IX_HIGHLIGHTED_PROF_01` (`fromDate` ASC, `toDate` ASC),
+   CONSTRAINT `FK_HIGHLIGHTED_PROF_00`
+    FOREIGN KEY (`id_profesional` )
+    REFERENCES PROFESIONAL (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE HIGHLIGHTED_CAT (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `type` INT NOT NULL,
+  `id_prod_serv_cat` INT NULL,
+  `fromDate` DATETIME NOT NULL ,
+  `toDate` DATETIME NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_HIGHLIGHTED_CAT_00` (`id_prod_serv_cat` ASC),
+  INDEX `IX_HIGHLIGHTED_CAT_01` (`fromDate` ASC, `toDate` ASC))
+ENGINE = InnoDB;

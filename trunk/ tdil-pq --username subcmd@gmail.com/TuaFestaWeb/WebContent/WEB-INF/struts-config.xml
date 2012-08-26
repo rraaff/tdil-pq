@@ -24,6 +24,10 @@
    name="SellSearchResultForm" type="com.tdil.tuafesta.struts.forms.SellSearchResultForm"/>
   <form-bean id="ProfesionalProfileForm" name="ProfesionalProfileForm" type="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"/>
   <form-bean id="WallCommentForm" name="WallCommentForm" type="com.tdil.tuafesta.struts.forms.WallCommentForm"/>
+  
+  <form-bean id="ClientForm" name="ClientForm" type="com.tdil.tuafesta.struts.forms.ClientForm"/>
+  <form-bean id="ValidateClientEmailForm"
+   name="ValidateClientEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateClientEmailForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -272,6 +276,30 @@
    path="/searchSellsByCategory" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
+  
+  
+  <action name="ClientForm" path="/goToRegistroCliente"
+   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/registroCliente.jsp"/>
+  </action>
+  <action name="ClientForm" path="/addClient" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/registroClienteEmailEnviado.jsp" redirect="true"/>
+   <forward name="failure" path="/registroCliente.jsp"/>
+  </action>
+  <action name="ClientForm" path="/refreshGeoLevel2Client"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="geo2changed" path="/registroCliente.jsp"/>
+  </action>
+  <action name="ClientForm" path="/refreshGeoLevel3Client"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
+   <forward name="geo3changed" path="/registroCliente.jsp"/>
+  </action>
+    <action name="ValidateClientEmailForm"
+   path="/validateClientEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateClientEmailAction">
+   <forward name="continue" path="/clienteEmailValidated.jsp"/>
+   <forward name="failure" path="/clienteEmailNotValidated.jsp"/>
+  </action>
+  
   
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
    scope="session" type="com.tdil.struts.actions.EditAction">

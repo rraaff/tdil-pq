@@ -21,6 +21,7 @@ public class EmailUtils {
 	private static final Logger Log = LoggerProvider.getLogger(EmailUtils.class);
 	
 	public static final String PROFESIONAL_EMAIL_VERIFICATION = "verif.email.prof";
+	public static final String CLIENT_EMAIL_VERIFICATION = "verif.email.client";
 
 	public static void sendEmail(String to, String lnk, String notificationtype) throws SQLException {
 		try {
