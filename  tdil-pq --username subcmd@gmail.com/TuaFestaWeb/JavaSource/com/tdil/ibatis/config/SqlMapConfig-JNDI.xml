@@ -49,4 +49,7 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/CACHE_REGION_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/STATISTIC_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/HIGHLIGHTED_PROF_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/HIGHLIGHTED_CAT_SqlMap.xml"/>
+	
 </sqlMapConfig>
