@@ -30,6 +30,12 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	private int id;
 	
 	private int objectId;
+	
+	private String categoryType;
+	private int categoryId;
+	private String categorySelectedText;
+	private String categoryAutocompleter;
+	
 	private CategoryValueObject category;
 	private String fromDate;
 	private String toDate;
@@ -62,6 +68,10 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 			this.fromDate = DateUtils.formatDate(highlightedCategory.getFromdate());
 			this.toDate = DateUtils.formatDate(highlightedCategory.getTodate());
 		}
+	}
+	
+	public boolean isCategorySelected() {
+		return this.getCategoryId() != 0;
 	}
 		
 	/** Used for delete */
@@ -108,8 +118,8 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	}
 
 	public void setData(HighlightedCategory highlightedCategory) {
-		highlightedCategory.setIdProdServCat(this.getCategory().getId());
-		highlightedCategory.setType(this.getCategory().getType());
+		highlightedCategory.setIdProdServCat(this.getCategoryId());
+		highlightedCategory.setType(this.getCategoryType().equals("p") ? 0 : 1);
 		highlightedCategory.setFromdate(DateUtils.parseDate(this.getFromDate()));
 		highlightedCategory.setTodate(DateUtils.parseDate(this.getToDate()));
 	}
@@ -166,5 +176,38 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	public static Logger getLog() {
 		return LoggerProvider.getLogger(HighlightedCategoryForm.class);
 	}
+
+	public String getCategoryType() {
+		return categoryType;
+	}
+
+	public void setCategoryType(String categoryType) {
+		this.categoryType = categoryType;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategorySelectedText() {
+		return categorySelectedText;
+	}
+
+	public void setCategorySelectedText(String categorySelectedText) {
+		this.categorySelectedText = categorySelectedText;
+	}
+
+	public String getCategoryAutocompleter() {
+		return categoryAutocompleter;
+	}
+
+	public void setCategoryAutocompleter(String categoryAutocompleter) {
+		this.categoryAutocompleter = categoryAutocompleter;
+	}
+
 
 }
