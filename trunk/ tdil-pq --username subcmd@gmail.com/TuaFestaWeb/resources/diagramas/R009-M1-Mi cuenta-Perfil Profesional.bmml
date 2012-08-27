@@ -1,11 +1,11 @@
-<mockup version="1.0" skin="sketch" measuredW="1499" measuredH="1017" mockupW="1479" mockupH="1017">
+<mockup version="1.0" skin="sketch" measuredW="1007" measuredH="1038" mockupW="987" mockupH="1038">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="987" h="1017" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="0" w="987" h="1038" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>R009-M1-%20Mi%20cuenta%20-%20Perfil%20de%20usuario%20profesional</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::FieldSet" x="35" y="529" w="957" h="338" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::FieldSet" x="35" y="529" w="598" h="362" measuredW="200" measuredH="170" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <backgroundAlpha>0.25</backgroundAlpha>
         <color>16750848</color>
@@ -55,17 +55,19 @@
         <text>Complet%E1%20los%20datos%20del%20formulario%20y%20segu%ED%20los%20pasos%20de%20la%20registraci%F3n%20para%20poder%20publicar</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::MultilineButton" x="700" y="553" w="274" h="69" measuredW="285" measuredH="69" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::MultilineButton" x="111" y="595" w="195" h="49" measuredW="194" measuredH="69" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16776960</color>
-        <text>EDITAR%20PRODUCTOS/SERVICIOS%0AEditar%2C%20agregar%20o%20borrar</text>
+        <href>R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Productos%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Productos.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Productos.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Productos.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2291%2C595%2C286%2C644%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional-Editar%2520Productos.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Productos%22%20id%3D%2211%22/%3E</map>
+        <text>EDITAR%20PRODUCTOS%0AEditar%2C%20agregar%20o%20borrar</text>
       </controlProperties>
     </control>
-    <control controlID="12" controlTypeID="com.balsamiq.mockups::Canvas" x="43" y="884" w="948" h="90" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1"/>
-    <control controlID="13" controlTypeID="com.balsamiq.mockups::LinkBar" x="256" y="916" w="-1" h="-1" measuredW="523" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Canvas" x="43" y="908" w="948" h="90" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::LinkBar" x="256" y="940" w="-1" h="-1" measuredW="523" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
       <controlProperties>
         <hrefs>R001-M1-Home%20Page%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%26bm%3BR001-M1-Home%20Page.bmml%2CR002-M1-Lista%20promociones%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%26bm%3BR002-M1-Lista%20promociones.bmml%2CR009-M1-Mi%20cuenta-Perfil%20Profesional%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional.bmml%2CR014-M1-Quienes-Somos%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%26bm%3BR014-M1-Quienes-Somos.bmml%2CR013-M1-Contacto%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%26bm%3BR013-M1-Contacto.bmml%2CR015-M1-Legales%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%26bm%3BR015-M1-Legales.bmml%2CR016-M1-FAQs%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml%26bm%3BR016-M1-FAQs.bmml</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22236%2C916%2C274%2C937%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2213_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22292%2C916%2C370%2C937%22%20href%3D%22R002-M1-Lista%2520promociones.bmml%22%20alt%3D%22R002-M1-Lista%20promociones%22%20id%3D%2213_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22388%2C916%2C446%2C937%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional%22%20id%3D%2213_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22464%2C916%2C557%2C937%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2213_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22575%2C916%2C632%2C937%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2213_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22650%2C916%2C701%2C937%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2213_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22719%2C916%2C759%2C937%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2213_6%22/%3E%0A</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22236%2C940%2C274%2C961%22%20href%3D%22R001-M1-Home%2520Page.bmml%22%20alt%3D%22R001-M1-Home%20Page%22%20id%3D%2213_0%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22292%2C940%2C370%2C961%22%20href%3D%22R002-M1-Lista%2520promociones.bmml%22%20alt%3D%22R002-M1-Lista%20promociones%22%20id%3D%2213_1%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22388%2C940%2C446%2C961%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional%22%20id%3D%2213_2%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22464%2C940%2C557%2C961%22%20href%3D%22R014-M1-Quienes-Somos.bmml%22%20alt%3D%22R014-M1-Quienes-Somos%22%20id%3D%2213_3%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22575%2C940%2C632%2C961%22%20href%3D%22R013-M1-Contacto.bmml%22%20alt%3D%22R013-M1-Contacto%22%20id%3D%2213_4%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22650%2C940%2C701%2C961%22%20href%3D%22R015-M1-Legales.bmml%22%20alt%3D%22R015-M1-Legales%22%20id%3D%2213_5%22/%3E%0A%3Carea%20shape%3D%22rect%22%20coords%3D%22719%2C940%2C759%2C961%22%20href%3D%22R016-M1-FAQs.bmml%22%20alt%3D%22R016-M1-FAQs%22%20id%3D%2213_6%22/%3E%0A</map>
         <selectedIndex>2</selectedIndex>
         <text>Home%2C%20Promociones%2C%20Mi%20cuenta%2C%20Quienes%20somos%2C%20Contacto%2C%20Legales%2C%20FAQs</text>
       </controlProperties>
@@ -84,21 +86,21 @@
         <text>Datos%20Profesionales%20o%20de%20Empresa</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::DataGrid" x="50" y="678" w="926" h="174" measuredW="712" measuredH="175" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::DataGrid" x="50" y="702" w="572" h="174" measuredW="712" measuredH="175" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <hLines>true</hLines>
-        <text>Nombre%20%5E%2C%20Tipo%20%5Ev%2C%20Categor%EDas%20%5Ev%2C%20Estado%20%5Ev%2C%20Acciones%0AMentel%20Blanco%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Negro%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Rojo%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Azul%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AAsesoramiento%20en%20Manteler%EDa%2C%20Servicio%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0A%7B60L%2C%2020L%2C%2060L%2C%2040C%2C%2030C%7D</text>
+        <text>Nombre%20%5E%2C%20Tipo%20%5Ev%2C%20Categor%EDas%20%5Ev%2C%20Estado%20%5Ev%2C%20Acciones%0AMentel%20Blanco%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Negro%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Rojo%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AMantel%20Azul%2C%20Producto%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0AAsesoramiento%20en%20Manteler%EDa%2C%20Servicio%2C%20Blanco%20y%20Decoraci%F3n%20/%20Manteler%EDa%2C%20Pendiente%20de%20validaci%F3n%2C%20Editar%20%20/%20%20Borrar%0A%7B50L%2C%2030L%2C%2050L%2C%2040C%2C%2030C%7D</text>
         <vLines>false</vLines>
       </controlProperties>
     </control>
-    <control controlID="39" controlTypeID="com.balsamiq.mockups::SubTitle" x="54" y="654" w="-1" h="-1" measuredW="234" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::SubTitle" x="54" y="678" w="-1" h="-1" measuredW="234" measuredH="24" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <size>16</size>
         <text>Productos%20y%20servicios%20agregados</text>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::HRule" x="50" y="634" w="926" h="-1" measuredW="100" measuredH="5" zOrder="17" locked="false" isInGroup="-1"/>
-    <control controlID="52" controlTypeID="com.balsamiq.mockups::Paragraph" x="52" y="553" w="633" h="80" measuredW="200" measuredH="80" zOrder="18" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::HRule" x="50" y="658" w="572" h="-1" measuredW="100" measuredH="5" zOrder="17" locked="false" isInGroup="-1"/>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Paragraph" x="50" y="553" w="566" h="42" measuredW="200" measuredH="80" zOrder="18" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Recuerde%20que%20a%20cada%20producto%20o%20servicio%20le%20puede%20adjuntar%20una%20imagen%2C%20precios%20de%20referencia%2C%20%E1reas%20de%20covertura%20y%20otros%20detalles%20una%20vez%20finalizado%20el%20proceso%20de%20registraci%F3n.</text>
       </controlProperties>
@@ -106,6 +108,8 @@
     <control controlID="57" controlTypeID="com.balsamiq.mockups::MultilineButton" x="346" y="292" w="264" h="54" measuredW="258" measuredH="69" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16776960</color>
+        <href>R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Personales%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Personales.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Personales.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Personales.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22326%2C292%2C590%2C346%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional-Editar%2520Personales.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Personales%22%20id%3D%2257%22/%3E</map>
         <text>EDITAR%20DATOS%20PERSONALES%0ARequiere%20aprovaci%F3n%20de%20un%20Administrador</text>
       </controlProperties>
     </control>
@@ -122,18 +126,9 @@
     <control controlID="60" controlTypeID="com.balsamiq.mockups::MultilineButton" x="346" y="440" w="264" h="54" measuredW="285" measuredH="69" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <color>16776960</color>
+        <href>R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Empresa%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Empresa.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Empresa.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Empresa.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22326%2C440%2C590%2C494%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional-Editar%2520Empresa.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Empresa%22%20id%3D%2260%22/%3E</map>
         <text>EDITAR%20DATOS%20PROFESIONALES%0AAgregar%20o%20modificar%20datos.%20Ejemplo%3A%20Calle%2C%20Tel%E9fono</text>
-      </controlProperties>
-    </control>
-    <control controlID="62" controlTypeID="com.balsamiq.mockups::StickyNote" x="1016" y="385" w="483" h="123" measuredW="109" measuredH="123" zOrder="25" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Puede%20agregar%3A%0A-%20Direcci%F3n%20completa%0A-%20Fotos%2C%20videos%20o%20audio%20%28insertando%20el%20c%F3digo%20de%20Youtube%20u%20otro%20sitio%29%0A-%20</text>
-      </controlProperties>
-    </control>
-    <control controlID="63" controlTypeID="com.balsamiq.mockups::Arrow" x="605" y="446" w="435" h="28" measuredW="150" measuredH="100" zOrder="41" locked="false" isInGroup="-1">
-      <controlProperties>
-        <direction>bottom</direction>
-        <text/>
       </controlProperties>
     </control>
     <control controlID="64" controlTypeID="com.balsamiq.mockups::FieldSet" x="643" y="263" w="349" h="266" measuredW="200" measuredH="170" zOrder="23" locked="false" isInGroup="-1">
@@ -148,127 +143,133 @@
         <value>100</value>
       </controlProperties>
     </control>
-    <control controlID="66" controlTypeID="com.balsamiq.mockups::Paragraph" x="668" y="296" w="278" h="20" measuredW="200" measuredH="80" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Paragraph" x="668" y="296" w="278" h="20" measuredW="200" measuredH="80" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Comentario%20de%20usuario</text>
       </controlProperties>
     </control>
-    <control controlID="67" controlTypeID="com.balsamiq.mockups::Link" x="845" y="318" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Link" x="845" y="318" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <text>contestar</text>
       </controlProperties>
     </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::Link" x="912" y="318" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Link" x="912" y="318" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>borrar</text>
       </controlProperties>
     </control>
-    <control controlID="70" controlTypeID="com.balsamiq.mockups::FieldSet" x="659" y="280" w="302" h="66" measuredW="200" measuredH="170" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="70" controlTypeID="com.balsamiq.mockups::FieldSet" x="659" y="280" w="302" h="66" measuredW="200" measuredH="170" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Usuario%20Marcos</text>
       </controlProperties>
     </control>
-    <control controlID="76" controlTypeID="com.balsamiq.mockups::Label" x="670" y="318" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Label" x="670" y="318" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <color>2848996</color>
         <text>Fecha%20y%20hora</text>
       </controlProperties>
     </control>
-    <control controlID="77" controlTypeID="com.balsamiq.mockups::FieldSet" x="660" y="353" w="302" h="66" measuredW="200" measuredH="170" zOrder="31" locked="false" isInGroup="-1">
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::FieldSet" x="660" y="353" w="302" h="66" measuredW="200" measuredH="170" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <backgroundAlpha>0.25</backgroundAlpha>
         <color>65535</color>
         <text>Respuesta</text>
       </controlProperties>
     </control>
-    <control controlID="78" controlTypeID="com.balsamiq.mockups::Paragraph" x="669" y="369" w="278" h="20" measuredW="200" measuredH="80" zOrder="32" locked="false" isInGroup="-1">
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::Paragraph" x="669" y="369" w="278" h="20" measuredW="200" measuredH="80" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Comentario%20de%20That%20Day%20in%20London</text>
       </controlProperties>
     </control>
-    <control controlID="79" controlTypeID="com.balsamiq.mockups::Link" x="866" y="391" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::Link" x="866" y="391" w="-1" h="-1" measuredW="38" measuredH="21" zOrder="32" locked="false" isInGroup="-1">
       <controlProperties>
         <text>editar</text>
       </controlProperties>
     </control>
-    <control controlID="80" controlTypeID="com.balsamiq.mockups::Link" x="913" y="391" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::Link" x="913" y="391" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
       <controlProperties>
         <text>borrar</text>
       </controlProperties>
     </control>
-    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="671" y="391" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="35" locked="false" isInGroup="-1">
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="671" y="391" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
         <color>2848996</color>
         <text>Fecha%20y%20hora</text>
       </controlProperties>
     </control>
-    <control controlID="82" controlTypeID="com.balsamiq.mockups::FieldSet" x="659" y="427" w="302" h="66" measuredW="200" measuredH="170" zOrder="36" locked="false" isInGroup="-1">
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::FieldSet" x="659" y="427" w="302" h="66" measuredW="200" measuredH="170" zOrder="35" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Usuario%20Marcos</text>
       </controlProperties>
     </control>
-    <control controlID="83" controlTypeID="com.balsamiq.mockups::Paragraph" x="668" y="443" w="278" h="20" measuredW="200" measuredH="80" zOrder="37" locked="false" isInGroup="-1">
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Paragraph" x="668" y="443" w="278" h="20" measuredW="200" measuredH="80" zOrder="36" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Comentario%20de%20usuario</text>
       </controlProperties>
     </control>
-    <control controlID="84" controlTypeID="com.balsamiq.mockups::Link" x="845" y="465" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="38" locked="false" isInGroup="-1">
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Link" x="845" y="465" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="37" locked="false" isInGroup="-1">
       <controlProperties>
         <text>contestar</text>
       </controlProperties>
     </control>
-    <control controlID="85" controlTypeID="com.balsamiq.mockups::Link" x="912" y="465" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="39" locked="false" isInGroup="-1">
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Link" x="912" y="465" w="-1" h="-1" measuredW="40" measuredH="21" zOrder="38" locked="false" isInGroup="-1">
       <controlProperties>
         <text>borrar</text>
       </controlProperties>
     </control>
-    <control controlID="86" controlTypeID="com.balsamiq.mockups::Label" x="670" y="465" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="40" locked="false" isInGroup="-1">
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Label" x="670" y="465" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="39" locked="false" isInGroup="-1">
       <controlProperties>
         <color>2848996</color>
         <text>Fecha%20y%20hora</text>
       </controlProperties>
     </control>
-    <control controlID="87" controlTypeID="com.balsamiq.mockups::NumericStepper" x="204" y="122" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="42" locked="false" isInGroup="-1">
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::NumericStepper" x="204" y="122" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <color>13576743</color>
         <text>5</text>
       </controlProperties>
     </control>
-    <control controlID="88" controlTypeID="com.balsamiq.mockups::StickyNote" x="622" y="61" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="43" locked="false" isInGroup="-1">
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::StickyNote" x="622" y="61" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="41" locked="false" isInGroup="-1">
       <controlProperties>
         <text>sistema%20de%20alertas%20tipo%20Facebook</text>
       </controlProperties>
     </control>
-    <control controlID="89" controlTypeID="com.balsamiq.mockups::Arrow" x="231" y="98" w="402" h="33" measuredW="150" measuredH="100" zOrder="44" locked="false" isInGroup="-1">
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Arrow" x="231" y="98" w="402" h="33" measuredW="150" measuredH="100" zOrder="42" locked="false" isInGroup="-1">
       <controlProperties>
         <direction>bottom</direction>
         <leftArrow>false</leftArrow>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="90" controlTypeID="com.balsamiq.mockups::Link" x="843" y="498" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="45" locked="false" isInGroup="-1">
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::Link" x="843" y="498" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="43" locked="false" isInGroup="-1">
       <controlProperties>
         <href>R017-M1-Mi%20Cuenta-Mi%20Muro%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml%26bm%3BR017-M1-Mi%20Cuenta-Mi%20Muro.bmml</href>
         <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22823%2C498%2C939%2C519%22%20href%3D%22R017-M1-Mi%2520Cuenta-Mi%2520Muro.bmml%22%20alt%3D%22R017-M1-Mi%20Cuenta-Mi%20Muro%22%20id%3D%2290%22/%3E</map>
         <text>Ver%20muro%20completo</text>
       </controlProperties>
     </control>
-    <control controlID="91" controlTypeID="com.balsamiq.mockups::StickyNote" x="992" y="472" w="355" h="73" measuredW="109" measuredH="123" zOrder="46" locked="false" isInGroup="-1">
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::MultilineButton" x="325" y="595" w="194" h="49" measuredW="181" measuredH="69" zOrder="44" locked="false" isInGroup="-1">
       <controlProperties>
-        <color>13369344</color>
-        <text>-%20cargar%20una%20solo%20foto%20de%20perfil%20bajo%20el%20tag%20%22logo%22.</text>
+        <color>16776960</color>
+        <href>R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Servicios%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Servicios.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Servicios.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Servicios.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22305%2C595%2C499%2C644%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional-Editar%2520Servicios.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Servicios%22%20id%3D%2294%22/%3E</map>
+        <text>EDITAR%20SERVICIOS%0AEditar%2C%20agregar%20o%20borrar</text>
       </controlProperties>
     </control>
-    <control controlID="92" controlTypeID="com.balsamiq.mockups::StickyNote" x="751" y="571" w="353" h="123" measuredW="109" measuredH="123" zOrder="47" locked="false" isInGroup="-1">
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::FieldSet" x="643" y="531" w="349" h="318" measuredW="200" measuredH="170" zOrder="45" locked="false" isInGroup="-1">
       <controlProperties>
-        <color>13369344</color>
-        <text>FALTA%20CASO%20CARGA%20Y%20EDICI%D3N%20DE%20PRODUCTOS%20Y%20SERVICIOS%20COMPLETA</text>
+        <backgroundAlpha>0.25</backgroundAlpha>
+        <color>16750848</color>
+        <text>Agenda</text>
       </controlProperties>
     </control>
-    <control controlID="93" controlTypeID="com.balsamiq.mockups::StickyNote" x="917" y="739" w="223" h="71" measuredW="109" measuredH="123" zOrder="48" locked="false" isInGroup="-1">
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Calendar" x="663" y="553" w="306" h="214" measuredW="96" measuredH="96" zOrder="46" locked="false" isInGroup="-1"/>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::MultilineButton" x="720" y="782" w="194" h="49" measuredW="160" measuredH="69" zOrder="47" locked="false" isInGroup="-1">
       <controlProperties>
-        <color>13369344</color>
-        <text>FALTA%20EDITOR%20DE%20AGENDA</text>
+        <color>16776960</color>
+        <href>R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Agenda%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Agenda.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Agenda.bmml%26bm%3BR009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Agenda.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22700%2C782%2C894%2C831%22%20href%3D%22R009-M1-Mi%2520cuenta-Perfil%2520Profesional-Editar%2520Agenda.bmml%22%20alt%3D%22R009-M1-Mi%20cuenta-Perfil%20Profesional-Editar%20Agenda%22%20id%3D%2297%22/%3E</map>
+        <text>EDITAR%20AGENDA%0ADeterminar%20disponibilidad</text>
       </controlProperties>
     </control>
   </controls>
