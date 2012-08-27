@@ -716,7 +716,18 @@
  <PROCESS-ITEM NAME="page29"
   PATH="/highlightedCategoryAdministration.jsp" SHAPE="304,14242,0,0"
   SUBTYPE="jsp" TITLE="highlightedCategoryAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/toggleDeletedHighlightedCategory.do" SUBTYPE="confirmed"
+   TARGET="action70" TITLE="/toggleDeletedHighlightedCategory.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/saveHighlightedCategory.do"
+   SUBTYPE="confirmed" TARGET="action68"
+   TITLE="/saveHighlightedCategory.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editHighlightedCategory.st"
+   SUBTYPE="confirmed" TARGET="page30"
+   TITLE="/editHighlightedCategory.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveHighlightedCategory" NAME="action68"
   PATH="/saveHighlightedCategory" SHAPE="32,14225,0,0"
   TITLE="HighlightedCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -744,4 +755,9 @@
    PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page30" PATH="/editHighlightedCategory.st"
+  SHAPE="512,14242,0,0" SUBTYPE="other"
+  TITLE="editHighlightedCategory.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#searchCategory" NAME="action71"
+  PATH="/searchCategory" SHAPE="32,14225,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
