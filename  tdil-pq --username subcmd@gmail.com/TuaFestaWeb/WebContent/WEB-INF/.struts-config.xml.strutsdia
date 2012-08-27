@@ -755,9 +755,68 @@
    PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page30" PATH="/editHighlightedCategory.st"
-  SHAPE="512,14242,0,0" SUBTYPE="other"
-  TITLE="editHighlightedCategory.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#searchCategory" NAME="action71"
   PATH="/searchCategory" SHAPE="32,14225,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#searchProfesionalsToHighlight" NAME="action72"
+  PATH="/searchProfesionalsToHighlight" SHAPE="32,14225,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page31"
+  PATH="/highlightedProfesionalAdministration.jsp" SHAPE="256,14242,0,0"
+  SUBTYPE="jsp" TITLE="highlightedProfesionalAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/editHighlightedProfesional.st" SUBTYPE="confirmed"
+   TARGET="page30" TITLE="/editHighlightedProfesional.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/saveHighlightedProfesional.do" SUBTYPE="confirmed"
+   TARGET="action74" TITLE="/saveHighlightedProfesional.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2"
+   PATH="/toggleDeletedHighlightedProfesional.do" SUBTYPE="confirmed"
+   TARGET="action75" TITLE="/toggleDeletedHighlightedProfesional.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToHighlightedProfesionalABM" NAME="action73"
+  PATH="/goToHighlightedProfesionalABM" SHAPE="32,14225,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page30" PATH="/editHighlightedProfesional.st"
+  SHAPE="464,14242,0,0" SUBTYPE="other"
+  TITLE="editHighlightedProfesional.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveHighlightedProfesional" NAME="action74"
+  PATH="/saveHighlightedProfesional" SHAPE="464,14354,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedHighlightedProfesional" NAME="action75"
+  PATH="/toggleDeletedHighlightedProfesional" SHAPE="672,14242,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editHighlightedProfesional" NAME="action76"
+  PATH="/editHighlightedProfesional" SHAPE="32,14225,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
