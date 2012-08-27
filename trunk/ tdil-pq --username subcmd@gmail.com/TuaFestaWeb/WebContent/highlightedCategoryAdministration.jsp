@@ -1,6 +1,3 @@
-<%@page import="com.tdil.tuafesta.utils.ProductCategoryUtils"%>
-<%@page import="com.tdil.tuafesta.struts.forms.ProductCategoryForm"%>
-<%@page import="com.tdil.tuafesta.utils.ProductCategoryTreeNode"%>
 <%@page import="com.tdil.tuafesta.model.HighlightedCategory"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.tuafesta.struts.forms.HighlightedCategoryForm"%>
@@ -26,7 +23,7 @@ $(document).ready(
 			function categorySelected(categoryLabel, categoryValue) {
 				$("input[name=categorySelectedText]").attr('value', categoryLabel);
 				$("input[name=categoryAutocompleter]").attr('value','');
-				$("input[name=categoryAutocompleter]").css('display', 'none');
+				$("#autocompleterdiv").css('display', 'none');
 				$("#categorySelectedDiv").prop('innerHTML', categoryLabel);
 				$("#categorySelectedDiv").css('display', 'block');
 				$("input[name=categoryId]").attr('value', categoryValue);
@@ -74,10 +71,10 @@ $(document).ready(
 
 function limpiarCategoria() {
 	$("input[name=categoryAutocompleter]").attr('value','');
-	$("input[name=categoryAutocompleter]").css('display', 'block');
 	$("input[name=categorySelectedText]").attr('value', '');
 	$("#categorySelectedDiv").prop('innerHTML', '');
 	$("#categorySelectedDiv").css('display', 'none');
+	$("#autocompleterdiv").css('display', 'block');
 	$("input[name=categoryId]").attr('value', '');
 }
 
@@ -102,12 +99,17 @@ function limpiarCategoria() {
 						<html:hidden name="HighlightedCategoryForm" property="categoryId"/>
 						<html:hidden name="HighlightedCategoryForm" property="categorySelectedText"/>
 							<logic:equal name="HighlightedCategoryForm" property="categorySelected" value="false">
+								<div id="autocompleterdiv">
 								<html:radio name="HighlightedCategoryForm" property="categoryType" value="p" /> Producto&nbsp;&nbsp;&nbsp;<html:radio name="HighlightedCategoryForm" property="categoryType" value="s" /> Servicio
 								<html:text name="HighlightedCategoryForm" property="categoryAutocompleter" styleClass="normalField width350" style="display: block;"/>
+								</div>
 								<div id="categorySelectedDiv" style="display: none;"></div>
 							</logic:equal>
 							<logic:equal name="HighlightedCategoryForm" property="categorySelected" value="true">
-								<html:text name="HighlightedCategoryForm" property="categoryAutocompleter" styleClass="normalField width350" style="display: none;"/>
+								<div id="autocompleterdiv" style="display: none;">
+								<html:radio name="HighlightedCategoryForm" property="categoryType" value="p" /> Producto&nbsp;&nbsp;&nbsp;<html:radio name="HighlightedCategoryForm" property="categoryType" value="s" /> Servicio
+								<html:text name="HighlightedCategoryForm" property="categoryAutocompleter" styleClass="normalField width350"/>
+								</div>
 								<div id="categorySelectedDiv" style="display: block;"><bean:write name="HighlightedCategoryForm" filter="false" property="categorySelectedText"/></div>
 							</logic:equal>
 						</div>
@@ -117,7 +119,6 @@ function limpiarCategoria() {
 					</div>
 				</div>
 				<div class="renglon width950">					
-					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedCategory.v.err")%></div>
 					<div class="label width100">Inicio</div>
 					<div class="label width250"><html:text name="HighlightedCategoryForm" property="fromDate" styleClass="width250"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedCategory.fromDate.err")%></div>

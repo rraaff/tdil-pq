@@ -16,6 +16,8 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.HighlightedCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.HighlightedCategory;
+import com.tdil.tuafesta.model.ProductCategory;
+import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
 import com.tdil.tuafesta.utils.DateUtils;
@@ -47,6 +49,10 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		this.category = null;
 		this.fromDate = null;
 		this.toDate = null;
+		this.categoryType = "";
+		this.categoryId = 0;
+		this.categorySelectedText = "";
+		this.categoryAutocompleter = "";
 	}
 	
 	@Override
@@ -64,9 +70,19 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		HighlightedCategory highlightedCategory = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(id);
 		if (highlightedCategory != null) {
 			this.objectId = id;
-			// TODO setear a categoria
 			this.fromDate = DateUtils.formatDate(highlightedCategory.getFromdate());
 			this.toDate = DateUtils.formatDate(highlightedCategory.getTodate());
+			if (highlightedCategory.getType().equals(0)) { // producto
+				ProductCategory productCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
+				this.categoryId = productCategory.getId();
+				this.categorySelectedText = productCategory.getName();
+				this.categoryType = "p";
+			} else { // servicio
+				ServiceCategory serviceCategory = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
+				this.categoryId = serviceCategory.getId();
+				this.categorySelectedText = serviceCategory.getName();
+				this.categoryType = "s";
+			}
 		}
 	}
 	

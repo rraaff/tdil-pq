@@ -5,13 +5,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalExample;
+import com.tdil.tuafesta.model.ProfesionalExample.Criteria;
 import com.tdil.tuafesta.model.valueobjects.HighlightedProfesionalValueObject;
 
 public class HighlightedProfesionalForm extends TransactionalValidationForm {
@@ -26,7 +32,13 @@ public class HighlightedProfesionalForm extends TransactionalValidationForm {
 	private int id;
 
 	private int objectId;
+	
 	private Profesional profesional;
+	private String firstNameSearch;
+	private String lastNameSearch;
+	private String businessNameSearch;
+	private List<Profesional> profesionalSearch = new ArrayList<Profesional>();
+	
 	private String payment;
 	private String fromDate;
 	private String toDate;
@@ -137,5 +149,59 @@ public class HighlightedProfesionalForm extends TransactionalValidationForm {
 		this.search = search;
 	}
 
+	public String getFirstNameSearch() {
+		return firstNameSearch;
+	}
 
+	public void setFirstNameSearch(String firstNameSearch) {
+		this.firstNameSearch = firstNameSearch;
+	}
+
+	public String getLastNameSearch() {
+		return lastNameSearch;
+	}
+
+	public void setLastNameSearch(String lastNameSearch) {
+		this.lastNameSearch = lastNameSearch;
+	}
+
+	public String getBusinessNameSearch() {
+		return businessNameSearch;
+	}
+
+	public void setBusinessNameSearch(String businessNameSearch) {
+		this.businessNameSearch = businessNameSearch;
+	}
+
+
+	public void searchProfesionals() {
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				public void executeInTransaction() throws SQLException, ValidationException {
+					ProfesionalExample profesionalExample = new ProfesionalExample();
+					Criteria criteria = profesionalExample.createCriteria();
+					if (StringUtils.isEmpty(HighlightedProfesionalForm.this.firstNameSearch)) {
+						criteria.andFirstnameLike("%" + HighlightedProfesionalForm.this.firstNameSearch + "%");
+					}
+					if (StringUtils.isEmpty(HighlightedProfesionalForm.this.lastNameSearch)) {
+						criteria.andLastnameLike("%" + HighlightedProfesionalForm.this.lastNameSearch + "%");
+					}
+					if (StringUtils.isEmpty(HighlightedProfesionalForm.this.businessNameSearch)) {
+						criteria.andBusinessnameLike("%" + HighlightedProfesionalForm.this.businessNameSearch + "%");
+					}
+					HighlightedProfesionalForm.this.setProfesionalSearch(DAOManager.getProfesionalDAO().selectProfesionalByExample(profesionalExample)); // TODO case insensitivity
+				}
+			});
+		} catch (Exception e) {
+			Log.error(e.getMessage(), e);
+		}
+	}
+
+	public List<Profesional> getProfesionalSearch() {
+		return profesionalSearch;
+	}
+
+	public void setProfesionalSearch(List<Profesional> profesionalSearch) {
+		this.profesionalSearch = profesionalSearch;
+	}
 }
