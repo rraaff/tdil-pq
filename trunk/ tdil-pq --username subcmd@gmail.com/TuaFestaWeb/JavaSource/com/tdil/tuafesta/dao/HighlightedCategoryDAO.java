@@ -2,6 +2,8 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.HighlightedCategory;
 import com.tdil.tuafesta.model.HighlightedCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -93,4 +95,6 @@ public interface HighlightedCategoryDAO {
      * @mbggenerated Sun Aug 26 20:37:47 ART 2012
      */
     int updateHighlightedCategoryByPrimaryKey(HighlightedCategory record) throws SQLException;
+
+	List<HighlightedCategoryValueObject> selectAllHighlightedCategoriesValueObjects() throws SQLException;
 }

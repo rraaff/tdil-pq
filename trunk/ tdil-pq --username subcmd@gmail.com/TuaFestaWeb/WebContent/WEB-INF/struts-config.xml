@@ -28,6 +28,12 @@
   <form-bean id="ClientForm" name="ClientForm" type="com.tdil.tuafesta.struts.forms.ClientForm"/>
   <form-bean id="ValidateClientEmailForm"
    name="ValidateClientEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateClientEmailForm"/>
+   
+   <form-bean id="HighlightedProfesionalForm"
+   name="HighlightedProfesionalForm" type="com.tdil.tuafesta.struts.forms.HighlightedProfesionalForm"/>
+   <form-bean id="HighlightedCategoryForm"
+   name="HighlightedCategoryForm" type="com.tdil.tuafesta.struts.forms.HighlightedCategoryForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -300,6 +306,24 @@
    <forward name="failure" path="/clienteEmailNotValidated.jsp"/>
   </action>
   
+  <action name="HighlightedCategoryForm" parameter="Admin"
+   path="/goToHighlightedCategoryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/highlightedCategoryAdministration.jsp"/>
+  </action>
+  <action name="HighlightedCategoryForm" parameter="Admin"
+   path="/saveHighlightedCategory" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/highlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/highlightedCategoryAdministration.jsp"/>
+  </action>
+  <action name="HighlightedCategoryForm" parameter="Admin"
+   path="/editHighlightedCategory" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/highlightedCategoryAdministration.jsp"/>
+  </action>
+  <action name="HighlightedCategoryForm" parameter="Admin"
+   path="/toggleDeletedHighlightedCategory" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/highlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/highlightedCategoryAdministration.jsp"/>
+  </action>
   
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
    scope="session" type="com.tdil.struts.actions.EditAction">
