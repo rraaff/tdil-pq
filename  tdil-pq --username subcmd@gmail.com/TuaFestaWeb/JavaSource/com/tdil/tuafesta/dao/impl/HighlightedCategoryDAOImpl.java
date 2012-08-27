@@ -4,6 +4,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.HighlightedCategoryDAO;
 import com.tdil.tuafesta.model.HighlightedCategory;
 import com.tdil.tuafesta.model.HighlightedCategoryExample;
+import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -172,5 +175,10 @@ public class HighlightedCategoryDAOImpl implements HighlightedCategoryDAO {
         public Object getRecord() {
             return record;
         }
+    }
+    
+    public List<HighlightedCategoryValueObject> selectAllHighlightedCategoriesValueObjects() throws SQLException {
+    	List<HighlightedCategoryValueObject> list = sqlMapClient.queryForList("HIGHLIGHTED_CAT.selectAllHighlightedCategoriesValueObjects");
+		return list;
     }
 }

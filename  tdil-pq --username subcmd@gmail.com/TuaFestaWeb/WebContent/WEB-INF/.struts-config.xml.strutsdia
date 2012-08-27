@@ -706,4 +706,42 @@
  <PROCESS-ITEM NAME="page28" PATH="/clienteEmailValidated.jsp"
   SHAPE="256,14242,0,0" SUBTYPE="jsp" TITLE="clienteEmailValidated.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToHighlightedCategoryABM" NAME="action67"
+  PATH="/goToHighlightedCategoryABM" SHAPE="32,14225,0,0"
+  TITLE="HighlightedCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page29"
+  PATH="/highlightedCategoryAdministration.jsp" SHAPE="304,14242,0,0"
+  SUBTYPE="jsp" TITLE="highlightedCategoryAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveHighlightedCategory" NAME="action68"
+  PATH="/saveHighlightedCategory" SHAPE="32,14225,0,0"
+  TITLE="HighlightedCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editHighlightedCategory" NAME="action69"
+  PATH="/editHighlightedCategory" SHAPE="32,14225,0,0"
+  TITLE="HighlightedCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedHighlightedCategory" NAME="action70"
+  PATH="/toggleDeletedHighlightedCategory" SHAPE="32,14225,0,0"
+  TITLE="HighlightedCategoryForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/highlightedCategoryAdministration.jsp" TARGET="page29"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

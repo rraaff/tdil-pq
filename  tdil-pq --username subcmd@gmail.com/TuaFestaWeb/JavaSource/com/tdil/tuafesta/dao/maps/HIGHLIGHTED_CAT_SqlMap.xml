@@ -262,4 +262,24 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject" extends="BaseResultMap" id="HighlightedCategoryValueObject">
+    <result column="categoryName" jdbcType="VARCHAR" property="categoryName" />
+  </resultMap>
+  
+  <select id="selectAllHighlightedCategoriesValueObjects" resultMap="HighlightedCategoryValueObject">
+    select 
+    	<include refid="HIGHLIGHTED_CAT.Base_Column_List" />, pc.name as categoryName
+    FROM HIGHLIGHTED_CAT hc, PROF_PROD_CATEGORY pc
+    WHERE hc.type = 0
+    AND hc.id_prod_serv_cat = pc.id
+    UNION
+    select 
+    	<include refid="HIGHLIGHTED_CAT.Base_Column_List" />, sc.name as categoryName
+    FROM HIGHLIGHTED_CAT hc, PROF_SERV_CATEGORY sc
+    WHERE hc.type = 1
+    AND hc.id_prod_serv_cat = sc.id
+  </select>
+  
 </sqlMap>
