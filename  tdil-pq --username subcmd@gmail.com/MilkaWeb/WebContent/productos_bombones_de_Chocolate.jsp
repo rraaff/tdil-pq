@@ -116,12 +116,13 @@ window.addEvent('domready', function(){
 		<!-- end galeria_productos-->
 		<div id="bloque_texto">
 			<h3>La suavidad en su<br />formato m&aacute;s &iacute;ntimo</h3>
-			<p>Relleno con un riqu&iacute;simo Dulce de Leche, cada bomb&oacute;n brinda un peque&ntilde;o gusto y un enorme placer, como todo lo que sale del coraz&oacute;n.</p>
+			<p>Rellenos de ternura y suavidad, cada bomb&oacute;n nos sorprende con la combinaci&oacute;n perfecta para brind&aacute;ndonos un peque&ntilde;o gusto y un enorme placer.</p>
 		<div id="gallery_container2">
 			<div id="thumb_container2">
 				<div id="thumbs2">
-					<div class="thumbnail" style="width:180px; margin-right:20px; margin-left:10px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
-					<div class="thumbnail" style="width:170px; margin-right:0px; margin-left:10px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche_blanco.jpg" width="200" height="119" /></a>Bombon Milka Blanco Dulce de Leche.</div>
+					<div class="thumbnail" style="width:180px; margin-right:40px; margin-left:10px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche.jpg" width="200" height="119" /></a>Bombon Milka Dulce de Leche.</div>
+					<div class="thumbnail" style="width:200px; margin-right:20px; margin-left:20px;"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Dulce_de_Leche_blanco.jpg" width="200" height="119" /></a>Bombon Milka Blanco Dulce de Leche.</div>
+					<div class="thumbnail" style="width:200px; margin-right:20px; margin-left:20px;" align="center"><a href="#" rel="lightbox[galerie]"><img src="images/productos/thmb/thumb_Bombon_Milka_Avellanas.jpg" width="200" height="119" /></a>Bombon Milka Relleno con Avellanas.</div>
 				</div>
 			</div>
 		</div>
