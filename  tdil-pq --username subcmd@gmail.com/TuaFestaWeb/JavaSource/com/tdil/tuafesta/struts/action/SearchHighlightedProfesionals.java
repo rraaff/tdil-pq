@@ -17,9 +17,9 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.tuafesta.struts.forms.HighlightedProfesionalForm;
 
-public class SearchProfesionalsToHighlight extends AbstractAction {
+public class SearchHighlightedProfesionals extends AbstractAction {
 	
-	private static final Logger LOG = LoggerProvider.getLogger(SearchProfesionalsToHighlight.class);
+	private static final Logger LOG = LoggerProvider.getLogger(SearchHighlightedProfesionals.class);
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -28,10 +28,9 @@ public class SearchProfesionalsToHighlight extends AbstractAction {
 		final HighlightedProfesionalForm abstractForm = (HighlightedProfesionalForm) form;
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {
-				abstractForm.searchProfesionals();
+				abstractForm.searchHighlightedProfesionals();
 			}
 		});
-		request.setAttribute("fromsearch", "1");
 		return mapping.findForward("continue");
 	}
 
