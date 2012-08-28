@@ -760,9 +760,6 @@
  <PROCESS-ITEM ID="#searchProfesionalsToHighlight" NAME="action72"
   PATH="/searchProfesionalsToHighlight" SHAPE="32,14225,0,0"
   TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
-   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -814,6 +811,20 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#editHighlightedProfesional" NAME="action76"
   PATH="/editHighlightedProfesional" SHAPE="32,14225,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectProfesionalToHighlight" NAME="action77"
+  PATH="/selectProfesionalToHighlight" SHAPE="32,14225,0,0"
+  TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchHighlightedProfesionals" NAME="action78"
+  PATH="/searchHighlightedProfesionals" SHAPE="32,14225,0,0"
   TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"

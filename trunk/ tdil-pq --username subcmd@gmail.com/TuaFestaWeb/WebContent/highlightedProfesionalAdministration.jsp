@@ -24,6 +24,10 @@ $(document).ready(
 			$("input[name=toDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
 
+			$("input[name=profesionalDateSearch]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+				changeYear: true, yearRange: "2012:2020"});
+
+
 			$( "#openSearchProfToHigh" ).click(function() {
 				$("#searchProfToHighLayer").css('display', 'block');
 			});
@@ -48,17 +52,21 @@ $(document).ready(
 				<div class="renglon width950">
 					<div class="label width950"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 				</div>
-				TODO aca va el profesional, mas un link que muestre un layer de busqueda de profesional
-				Desde el layer tengo un link que selecciona el profesional
 				
+				<% HighlightedProfesionalForm highlightedProfesionalForm = (HighlightedProfesionalForm)session.getAttribute("HighlightedProfesionalForm");%>
+				<% if (highlightedProfesionalForm.getProfesional() != null) { %>
+					<%=  highlightedProfesionalForm.getProfesional().getBusinessname() %>
+				<% } else {  %>
+					-
+				<% } %>
 				<a id="openSearchProfToHigh">Buscar</a>
-				<div id="searchProfToHighLayer" style="display: none;">
+				<div id="searchProfToHighLayer" style="display: <%= "1".equals(highlightedProfesionalForm.getFromsearch()) ? "block" : "none" %>;">
+					<html:hidden name="HighlightedProfesionalForm" property="fromsearch" value="0"/>
 					Nombre: <html:text name="HighlightedProfesionalForm" property="firstNameSearch"/><br>
 					Apellido: <html:text name="HighlightedProfesionalForm" property="lastNameSearch"/><br>
 					BusinessName: <html:text name="HighlightedProfesionalForm" property="businessNameSearch"/><br>	
 					<div class="myRow">
 					<%
-					HighlightedProfesionalForm highlightedProfesionalForm = (HighlightedProfesionalForm)session.getAttribute("HighlightedProfesionalForm");
 					java.util.List source = highlightedProfesionalForm.getProfesionalSearch();
 					com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
 					request.setAttribute( "highlightedProfesionals",  paginated);
@@ -67,11 +75,12 @@ $(document).ready(
 						<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable width250" property="firstname"></display:column>
 						<display:column title="Apellido" sortable="true" sortName="Apellido" headerClass="sortable width250" property="lastname"></display:column>
 						<display:column title="BusinessName" sortable="true" sortName="BusinessName" headerClass="sortable width100" property="businessname"></display:column>
-						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.HighlightedProfesionalForm.action='./selectProfesionalToHighlight.do?index=<%= ((Profesional)pageContext.getAttribute("highlightedProfesionals")).getId()%>';document.HighlightedProfesionalForm.submit();">Seleccionar</a>
+						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.HighlightedProfesionalForm.action='./selectProfesionalToHighlight.do?id=<%= ((Profesional)pageContext.getAttribute("highlightedProfesionals")).getId()%>';document.HighlightedProfesionalForm.submit();">Seleccionar</a>
 						</display:column>
 					</display:table>
 					</div>
-					<%=DisplayTagParamHelper.getFields(request)%>	
+					<%=DisplayTagParamHelper.getFields(request)%>
+					<a class="nonelyLink" href="javascript:document.HighlightedProfesionalForm['fromsearch'].value = '1'; document.HighlightedProfesionalForm.action='./searchProfesionalsToHighlight.do';document.HighlightedProfesionalForm.submit();">Buscar</a>
 					<a id="closeSearchProfToHigh">Cerrar</a>
 				</div>
 				<div class="renglon width950">					
@@ -81,6 +90,9 @@ $(document).ready(
 					<div class="label width100">Fin</div>
 					<div class="label width250"><html:text name="HighlightedProfesionalForm" property="toDate" styleClass="width250"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.toDate.err")%></div>
+					<div class="label width100">Pago</div>
+					<div class="label width250"><html:text name="HighlightedProfesionalForm" property="payment" styleClass="width250"/></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.payment.err")%></div>
 				</div>
 				<div class="renglon width950 height50" align="center">
 					<logic:equal name="HighlightedProfesionalForm" property="objectId" value="0">
@@ -99,7 +111,11 @@ $(document).ready(
 				</div>
 				<h1>Listado de Profesionales destacados</h1>
 				<div class="renglon width950" style="margin-bottom:50px;">
-					TODO aca va la busqueda de profesionales
+					Nombre: <html:text name="HighlightedProfesionalForm" property="profesionalFirstNameSearch"/><br>
+					Apellido: <html:text name="HighlightedProfesionalForm" property="profesionalLastNameSearch"/><br>
+					BusinessName: <html:text name="HighlightedProfesionalForm" property="profesionalBusinessNameSearch"/><br>
+					Activo en: <html:text name="HighlightedProfesionalForm" property="profesionalDateSearch"/><br>
+					<a class="nonelyLink" href="javascript:document.HighlightedProfesionalForm.action='./searchHighlightedProfesionals.do';document.HighlightedProfesionalForm.submit();">Buscar</a>
 					<table width="100%">
 						<tr>
 							<td class="headerTablas" width="140">Profesional</td>

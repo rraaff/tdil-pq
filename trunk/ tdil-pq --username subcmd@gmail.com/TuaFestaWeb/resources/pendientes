@@ -1,5 +1,65 @@
-Revisar que pasa en el alta del profesional con la paginacion porque tengo mas de una tabla.
+Lunes
+Registro de Profesionales Normal
+Registro de Clientes Normal
+Edición del perfil profesional
+Carga de productos y servicios
 
+LOGIN
+Login de Profesionales Normal
+Login de Clientes Normal
+
+BUSQUEDAS
+Motor de búsquedas
+Resultado de búsquedas
+Busqueda avanzada
+
+PROMOCIONES
+Home: Destacado central BO: (Armado de promociones)
+Listado de promociones
+Detalle de la promoción
+
+NAVEGACIÓN
+Area de navegación por zonas/rubros
+Administración de navegación por zonas/rubros
+
+PERFIL DEL PROFESIONAL
+Vista del perfil profesional (vista del profesional)
+Listado de productos y servicios
+Contact card del profesional (vista del cliente)
+Muro (ultimo)
+Agenda (ultimo)
+
+************
+
+Agregar fecha de nacimiento al usuario
+
+Si no tiene area de cobertura que salga por todas las busquedas.
+Registracion sin area de cobertura de servicios.
+
+Area de cobertura por nivel, cualquiera.
+
+geo Levels revisar el cambio de padre y eso
+
+Agenda un dia, ocupado o no
+
+Datos publicos:
+Empresa
+Nombre, localizacion solo geolevels, logo detalles y videos
+Opcional con seleccion toda la direccion (solo cuando pones contactar)
+Personales
+Nombre y apellido
+email cuando pones contactar
+Opcional: telefono si lo quiere publicar, cuando contactas
+
+******************
+Destacar no se destaca rubro sino productos y servicios.
+
+
+Precio promedio en la home no tiene sentido.
+
+Super destacado es igual al otro?
+
+Revisar que pasa en el alta del profesional con la paginacion porque tengo mas de una tabla.
 
 Destacados
 Destaco un producto/servicio de un profesional o destaco el profesional con todos sus rubros y 

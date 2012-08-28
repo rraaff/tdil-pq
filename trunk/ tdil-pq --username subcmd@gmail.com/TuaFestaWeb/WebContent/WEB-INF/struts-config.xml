@@ -348,7 +348,14 @@
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/searchProfesionalsToHighlight" scope="session" type="com.tdil.tuafesta.struts.action.SearchProfesionalsToHighlight">
    <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/highlightedProfesionalAdministration.jsp"/>
+  </action>
+  <action name="HighlightedProfesionalForm" parameter="Admin"
+   path="/selectProfesionalToHighlight" scope="session" type="com.tdil.tuafesta.struts.action.SelectProfesionalToHighlight">
+   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="HighlightedProfesionalForm" parameter="Admin"
+   path="/searchHighlightedProfesionals" scope="session" type="com.tdil.tuafesta.struts.action.SearchHighlightedProfesionals">
+   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
   </action>
     
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
