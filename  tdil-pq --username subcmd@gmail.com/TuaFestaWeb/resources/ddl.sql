@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE NOTIFICATION_EMAIL (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `notificationType` VARCHAR(20) NOT NULL ,
+  `notificationType` VARCHAR(50) NOT NULL ,
   `description` VARCHAR(300) NOT NULL ,
   `subject` VARCHAR(50) NOT NULL ,
   `from_` VARCHAR(100) NOT NULL ,
@@ -100,7 +100,11 @@ CREATE TABLE NOTIFICATION_EMAIL (
 ENGINE = InnoDB;
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('verif.email.prof', 'Verificacion de email de profesional','Para completar la validacion de tu email cliquea aca [LINK]','Verificacion de email', 'tuafesta.test@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('verif.email.client', 'Verificacion de email de client','Para completar la validacion de tu email cliquea aca [LINK]','Verificacion de email', 'tuafesta.test@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('verif.email.client', 'Verificacion de email de cliente','Para completar la validacion de tu email cliquea aca [LINK]','Verificacion de email', 'tuafesta.test@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('passreset.email.prof', 'Reseteo de password de profesional','Nueva clave [PASSWORD]','Nueva clave', 'tuafesta.test@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('passreset.email.client', 'Reseteo de password de cliente','Nueva clave [PASSWORD]','Nueva clave', 'tuafesta.test@gmail.com', 0);
+
 
 CREATE TABLE RAW_INSERT (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -258,7 +262,7 @@ CREATE TABLE PROFESIONAL (
   `cuit` VARCHAR(400) NOT NULL ,
   `iibb` VARCHAR(400) NOT NULL ,
   `email` VARCHAR(150) NOT NULL ,
-  `password` VARCHAR(20) NOT NULL ,
+  `password` VARCHAR(255) NOT NULL ,
   `website` VARCHAR(200) NULL ,
   `facebook` VARCHAR(200) NULL ,
   `businesshours` VARCHAR(4000) NULL ,
@@ -271,6 +275,7 @@ CREATE TABLE PROFESIONAL (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_PROFESIONAL_00` (`id_geolevel` ASC),
+  INDEX `IX_PROFESIONAL_01` (`email` ASC),
    CONSTRAINT `FK_WALL_WRITTING_02`
     FOREIGN KEY (`id_wall` )
     REFERENCES WALL (`id` )
@@ -420,15 +425,17 @@ CREATE TABLE CLIENT (
   `firstname` VARCHAR(100) NOT NULL ,
   `lastname` VARCHAR(100) NOT NULL ,
   `sex` CHAR(1) NOT NULL ,
+  `birthdate` DATE NOT NULL ,
   `id_geolevel` INT NULL,
   `email` VARCHAR(150) NOT NULL ,
-  `password` VARCHAR(20) NOT NULL ,
+  `password` VARCHAR(255) NOT NULL ,
   `facebook` VARCHAR(200) NULL ,
   `emailvalid` INT NOT NULL,
   `status` INT NOT NULL,
   `verifemail` VARCHAR(20) NULL ,
   `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  INDEX `IX_CLIENT_00` (`email` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE STATISTIC (

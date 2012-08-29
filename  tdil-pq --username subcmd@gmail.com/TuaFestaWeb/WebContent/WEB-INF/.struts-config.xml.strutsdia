@@ -830,4 +830,19 @@
    PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetPassword" NAME="action79" PATH="/resetPassword"
+  SHAPE="32,14225,0,0" TITLE="PasswordResetForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/resetearPassword.jsp" TARGET="page33" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/passwordEnviada.jsp" TARGET="page34" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page34" PATH="/passwordEnviada.jsp"
+  SHAPE="240,14337,0,0" SUBTYPE="jsp" TITLE="passwordEnviada.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page33" PATH="/resetearPassword.jsp"
+  SHAPE="240,14449,0,0" SUBTYPE="jsp" TITLE="resetearPassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -7,7 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -28,6 +30,7 @@ import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.ClientExample;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
 import com.tdil.tuafesta.model.Geo3;
@@ -36,6 +39,7 @@ import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
+import com.tdil.tuafesta.model.ProfesionalExample;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
@@ -44,6 +48,7 @@ import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.struts.forms.beans.ProductBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceBean;
+import com.tdil.tuafesta.utils.DateUtils;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -112,6 +117,8 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private String serviceAutocompleter;
 	private String serviceSelectedText;
 	private String serviceReferenceprice;
+	
+	private static final int MIN_PASS_LENGTH = 4;
 	
 	public static final String firstname_key = "ProfesionalForm.firstname";
 	public static final String lastname_key = "ProfesionalForm.lastname";
@@ -196,15 +203,37 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
 		FieldValidation.validateText(this.getBusinesshours(), businesshours_key, 4000, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
-		Date birthDate = parseDate(this.getBirthdate());
+		Date birthDate = DateUtils.parseDate(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
-		} 
+		}
+		
+		if (!validationError.hasFieldError(password_key)) {
+			if (this.getPassword().length() < MIN_PASS_LENGTH) {
+				validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
+			} else {
+				if (!this.getPassword().equals(this.getRetypepassword())) {
+					validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+				}
+			}
+		}
 	}
 
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-		// TODO VALIDACIONES
+		ClientExample clientExample = new ClientExample();
+		clientExample.createCriteria().andEmailEqualTo(this.getEmail());
+		int count = DAOManager.getClientDAO().countClientByExample(clientExample);
+		if (count > 0) {
+			validationError.setFieldError(email_key, ValidationErrors.DUPLICATED);
+		} else {
+			ProfesionalExample profesionalExample = new ProfesionalExample();
+			profesionalExample.createCriteria().andEmailEqualTo(this.getEmail());
+			count = DAOManager.getProfesionalDAO().countProfesionalByExample(profesionalExample);
+			if (count > 0) {
+				validationError.setFieldError(email_key, ValidationErrors.DUPLICATED);
+			}
+		}
 	}
 
 	@Override
@@ -234,7 +263,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setPhonetype(this.getPhoneType());
 		profesional.setIdGeolevel(this.getGeo4Id());
 		profesional.setSex(this.getSex());
-		profesional.setBirthdate(parseDate(this.getBirthdate()));
+		profesional.setBirthdate(DateUtils.parseDate(this.getBirthdate()));
 		
 		profesional.setEmail(this.getEmail());
 		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
@@ -305,23 +334,11 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
 		
 		/** Inicio del email */
-		EmailUtils.sendEmail(this.getEmail(), link.toString(), EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(EmailUtils.LINK_KEY, link.toString());
+		EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
 	}
 
-	private Date parseDate(String fromDate2) {
-		try {
-			if (StringUtils.isEmpty(fromDate2)) {
-				return null;
-			}
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			return dateFormat.parse(fromDate2);
-		} catch (ParseException e) {
-			Log.error(e.getMessage(), e);
-			// throw new RuntimeException(e);
-			return null;
-		}
-	}
-	
 	public boolean isProductSelected() {
 		return !StringUtils.isEmpty(this.getProductId());
 	}
@@ -383,6 +400,9 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	}
 
 	public String getEmail() {
+		if (email != null) {
+			email = email.toLowerCase();
+		}
 		return email;
 	}
 
