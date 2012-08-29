@@ -37,9 +37,11 @@ public class FieldValidation {
 		if (StringUtils.isEmpty(text) && required) {
 			validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
 		} else {
-			result = text.trim();
-			if (result.length() > length) {
-				validation.setFieldError(field, ValidationErrors.TEXT_TOO_LONG);
+			if (text != null) {
+				result = text.trim();
+				if (result.length() > length) {
+					validation.setFieldError(field, ValidationErrors.TEXT_TOO_LONG);
+				}
 			}
 		}
 		return result;

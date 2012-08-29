@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ProductBean"%>
@@ -34,19 +35,60 @@ $(document).ready(
 					},
 					rules: { 'firstname': {required: true},
 							'lastname': {required: true},
-							'email': {required: true, email: true}
+							'birthdate': {required: true},
+							'email': {required: true, email: true},
+							'phoneAreaCode': {required: true, digits: true},
+							'phoneNumber': {required: true, digits: true},
+							'phoneExtension': {required: false, digits: true},
+							'phoneType': {required: true},
+							'sex': {required: true},
+							'password': {required: true},
+							'retypepassword': {required: true},
+							'businessname': {required: true},
+							'cuit': {required: true},
+							'iibb': {required: true},
+							'geo2Id': {required: true},
+							'geo3Id': {required: true},
+							'geo4Id': {required: true}
 					},
 					messages: {
 						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
 						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
+						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese la fecha de nacimiento.' />"}, 
 						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
-								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"}
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'phoneAreaCode': {required: "<img id='phoneAreaCodeerrorreq' src='images/unchecked.gif' hovertext='Ingrese el codigo de area.' />",
+							digits: "<img id='phoneAreaCodeerrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"} ,
+						'phoneNumber': {required: "<img id='phoneNumbererrorreq' src='images/unchecked.gif' hovertext='Ingrese el numero de telefono.' />",
+							digits: "<img id='phoneNumbererrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"},
+						'phoneExtension': {digits: "<img id='phoneExtensionerrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"},
+						'phoneType': {required: "<img id='phoneTypeerror' src='images/unchecked.gif' hovertext='Seleccione el tipo de telefono.' />"},
+						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"},
+						'password': {required: "<img id='passworderror' src='images/unchecked.gif' hovertext='Ingrese el password.' />"},
+						'retypepassword': {required: "<img id='retypepassworderror' src='images/unchecked.gif' hovertext='Reingrese el password.' />"},
+						'businessname': {required: "<img id='businessnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre comercial.' />"},
+						'cuit': {required: "<img id='cuiterror' src='images/unchecked.gif' hovertext='Ingrese el cuit.' />"},
+						'iibb': {required: "<img id='iibberror' src='images/unchecked.gif' hovertext='Ingrese el iibb.' />"},
+						'geo2Id': {required: "<img id='geo2iderror' src='images/unchecked.gif' hovertext='Seleccione la provincia.' />"},
+						'geo3Id': {required: "<img id='geo3iderror' src='images/unchecked.gif' hovertext='Seleccione el partido.' />"},
+						'geo4Id': {required: "<img id='geo4iderror' src='images/unchecked.gif' hovertext='Seleccione la localidad.' />"}
+						
 					}
 				});
 
 			
 			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
+
+			$( "#addproductlink" ).click(function() {
+				$("#addproductlayer").css('display', 'block');
+				$("#addservicelayer").css('display', 'none');
+			});
+
+			$( "#addservicelink" ).click(function() {
+				$("#addproductlayer").css('display', 'none');
+				$("#addservicelayer").css('display', 'block');
+			});
 
 			function productSelected(prodLabel, prodValue, prodCat) {
 				$("input[name=productSelectedText]").attr('value', prodLabel);
@@ -67,7 +109,6 @@ $(document).ready(
 				$("#serviceSelectedDiv").css('display', 'block');
 				$("input[name=serviceId]").attr('value', prodValue);
 			}
-			
 			$( "input[name=productAutocompleter]" ).autocomplete({
 				source: function( request, response ) {
 					$.ajax({
@@ -141,50 +182,7 @@ $(document).ready(
 				}
 			});
 
-
-			function serviceAreaSelected(serviceAreaLabel, serviceAreaValue) {
-				$("input[name=serviceAreaSelectedText]").attr('value', serviceAreaLabel);
-				$("input[name=serviceAreaAutocompleter]").attr('value','');
-				$("input[name=serviceAreaAutocompleter]").css('display', 'none');
-				$("#serviceAreaSelectedDiv").prop('innerHTML', serviceAreaLabel);
-				$("#serviceAreaSelectedDiv").css('display', 'block');
-				$("input[name=geoLevel4Id]").attr('value', serviceAreaValue);
-				$("#addGeoLink").css('display', 'block');
-			}
-			$( "input[name=serviceAreaAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchGeoLevelAjax.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						serviceAreaSelected(ui.item.label, ui.item.value);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
+			
 		}
 
 	
@@ -210,17 +208,6 @@ function limpiarServicio() {
 	$("input[name=serviceReferenceprice]").attr('value', '');
 }
 
-function limpiarServiceArea() {
-	$("input[name=productSelectedText]").attr('value', '');
-	$("input[name=serviceAreaAutocompleter]").attr('value','');
-	$("input[name=serviceAreaAutocompleter]").css('display', 'block');
-	$("#serviceAreaSelectedDiv").prop('innerHTML', '');
-	$("#serviceAreaSelectedDiv").css('display', 'none');
-	$("input[name=geoLevel4Id]").attr('value', '');
-	$("#addGeoLink").css('display', 'none');
-}
-
-
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
@@ -236,6 +223,7 @@ function limpiarServiceArea() {
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/addProfesional">
+			<% ProfesionalForm profesionalForm = (ProfesionalForm)session.getAttribute("ProfesionalForm"); %>
 			<div id="formSection">
 				<div class="myRow">
 					<div class="myLabel width50">Nombre</div>
@@ -257,7 +245,14 @@ function limpiarServiceArea() {
 					<div class="myLabel width50" id="Telefono"><html:text name="ProfesionalForm" property="phoneExtension" styleClass="normalField width40"/></div>
 					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
 					<div class="myLabel width20">Tipo</div>
-					<div class="myLabel width110" id="Telefono"><html:text name="ProfesionalForm" property="phoneType" styleClass="normalField width100"/></div>
+					<div class="myLabel width110" id="Telefono"><html:select name="ProfesionalForm" property="phoneType" styleClass="normalField width150">
+							<option value="">Seleccione</option><%-- 
+							--%><% for (String type : profesionalForm.getPhoneTypes()) { %><%--
+								--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
+										--%><%=type%></option>
+							<% } %>
+						</html:select>
+					</div>
 					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonetype_key + ".err")%></div>
 				</div>
 				<div class="myRow">
@@ -277,6 +272,11 @@ function limpiarServiceArea() {
 					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
 					<div class="myLabel width250">TODO If por facebook // Borrar este div...</div>
 				</div>
+				<div class="myRow">
+					<div class="myLabel width40">Retype</div>
+					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="retypepassword" styleClass="normalField width150"/></div>
+					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
+				</div>
 			</div>
 			<div id="formSection" class="width650">
 				<div class="myRow">
@@ -295,20 +295,18 @@ function limpiarServiceArea() {
 				<div class="myRow">
 					<div class="myLabel width50">Ubicaci&oacute;n</div>
 					<div class="myLabel width160">
-						<% ProfesionalForm profesionalForm = (ProfesionalForm)session.getAttribute("ProfesionalForm"); %>
 						<html:select name="ProfesionalForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Profesional.do';this.form.submit()" styleClass="normalField width150">
-							<option value="0">Seleccione<option>
-							<% for (Geo2 geo2 : profesionalForm.getLevel2()) { %>	
-								<option	<%=	geo2.getId() == profesionalForm.getGeo2Id() ? "selected" : ""%>
-									value="<%=String.valueOf(geo2.getId())%>">
-									<%=geo2.getNombre()%></option>
+							<option value="0">Seleccione</option><%-- 
+							--%><% for (Geo2 geo2 : profesionalForm.getLevel2()) { %><%--
+								--%><option <%=	geo2.getId() == profesionalForm.getGeo2Id() ? "selected" : ""%> value="<%=String.valueOf(geo2.getId())%>"><%--
+										--%><%=geo2.getNombre()%></option>
 							<% } %>
 						</html:select>
 					</div>
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
 						<html:select name="ProfesionalForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Profesional.do';this.form.submit()" styleClass="normalField width200">
-							<option value="0">Seleccione<option>
+							<option value="0">Seleccione</option>
 							<% for (Geo3 geo3 : profesionalForm.getLevel3()) { %>	
 								<option	<%=	geo3.getId() == profesionalForm.getGeo3Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo3.getId())%>">
@@ -319,7 +317,7 @@ function limpiarServiceArea() {
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
 						<html:select name="ProfesionalForm" property="geo4Id" styleClass="normalField width200">
-							<option value="0">Seleccione<option>
+							<option value="0">Seleccione</option>
 							<% for (Geo4 geo4 : profesionalForm.getLevel4()) { %>	
 								<option	<%=	geo4.getId() == profesionalForm.getGeo4Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo4.getId())%>">
@@ -328,29 +326,15 @@ function limpiarServiceArea() {
 						</html:select>
 					</div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Web</div>
-					<div class="myLabel width310" id="Web"><html:text name="ProfesionalForm" property="website" styleClass="normalField width300"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.website.err")%></div>
-					<div class="myLabel width50">Facebook</div>
-					<div class="myLabel width100" id="Facebook"><html:text name="ProfesionalForm" property="facebook" styleClass="normalField width100"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.facebook.err")%></div>
-				</div>
-				<div class="myRow height50">
-					<div class="myLabel width100">Horario de Atenci&oacute;n<br/><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.businesshours.err")%></div>
-					<div class="myLabel width210 height50" id="Horario de Atencion"><html:textarea name="ProfesionalForm" property="businesshours" styleClass="normalField width200 height50"/></div>
-					<div class="myLabel width20">&nbsp;</div>
-					<div class="myLabel width80">Descripci&oacute;n<br/><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.description.err")%></div>
-					<div class="myLabel width210 height50" id="Descripcion"><html:textarea name="ProfesionalForm" property="description" styleClass="normalField width200 height50"/></div>
-				</div>
 			</div>
 			
 			<div id="formSection" class="width650">
 				<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px;">Agregue productos y servicios que desee ofrecer</h2>
 				<div class="myRow">
-					<div class="myLabel width600 comment">Agregue todos productos  que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
+					<div class="myLabel width600 comment">Agregue todos productos que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
+					<a class="nonelyLink" id="addproductlink">Agregar producto</a><a class="nonelyLink" id="addservicelink">Agregar servicio</a>
 				</div>
-				<div class="myRow">
+				<div class="myRow" id="addproductlayer" style="display: none;">
 					<div class="myLabel width50">Producto</div>
 					<div class="ui-widget">
 						<div class="myLabel width320">
@@ -369,108 +353,54 @@ function limpiarServiceArea() {
 						</div>
 						<div class="myLabel width80">Precio unitario</div>
 						<div class="myLabel width60"><html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField width50"/></div>
-						<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarProducto()">Limpiar</a></div>
+						<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarProducto()">Cancelar</a></div>
 					</div>
 				</div>
+				
+				<div class="myRow" id="addservicelayer" style="display: none;">
+					<div class="myLabel width600 comment" style="margin-top:15px;">Agregue todos servicios que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los servicios que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los servicios para su comodidad.</div>
+					<div class="myRow">
+						<div class="myLabel width50">Servicio</div>
+						<div class="ui-widget">
+							<div class="myLabel width320">
+								<html:hidden name="ProfesionalForm" property="serviceId"/>
+								<html:hidden name="ProfesionalForm" property="serviceSelectedText"/>
+								<html:hidden name="ProfesionalForm" property="serviceCategorySelected"/>
+								<logic:equal name="ProfesionalForm" property="serviceSelected" value="false">
+									<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: block;"/>
+									<div id="serviceSelectedDiv" style="display: none;"></div>
+								</logic:equal>
+								<logic:equal name="ProfesionalForm" property="serviceSelected" value="true">
+									<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: none;"/>
+									<div id="serviceSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="serviceCategorySelected"/>)</div>
+								</logic:equal>
+							</div>
+							<div class="myLabel width50">Precio</div>
+							<div class="myLabel width60"><html:text name="ProfesionalForm" property="serviceReferenceprice" styleClass="normalField width50"/></div>
+							<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addService.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarServicio()">Cancelar</a></div>
+						</div>
+					</div>
+				</div>
+				
 				<div class="myRow">
 					<%
-					java.util.List source = profesionalForm.getProducts();
+					java.util.List source = profesionalForm.getSells();
 					com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
-					request.setAttribute( "products",  paginated);
+					request.setAttribute( "sells",  paginated);
 					%>
-					<display:table name="products" sort="external" pagesize="10" id="products" requestURI="./registroProfesional.jsp">
-						<display:column title="Producto" sortable="true" sortName="Producto" headerClass="sortable width250" property="profesionalProductText"></display:column>
-						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="productCategoryText"></display:column>
+					<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./registroProfesional.jsp">
+						<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
+						<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width250" property="sellTypeDescription"></display:column>
+						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
 						<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
-						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./removeProduct.do?index=<%= ((ProductBean)pageContext.getAttribute("products")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
+						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./removeSell.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
 						</display:column>
 					</display:table>
-					
-				<div class="myRow" style="margin-top:15px; border-top:dotted 1px #FFFFFF;">
-					<div class="myLabel width600 comment" style="margin-top:15px;">Agregue todos servicios que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los servicios que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los servicios para su comodidad.</div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Servicio</div>
-					<div class="ui-widget">
-						<div class="myLabel width320">
-							<html:hidden name="ProfesionalForm" property="serviceId"/>
-							<html:hidden name="ProfesionalForm" property="serviceSelectedText"/>
-							<html:hidden name="ProfesionalForm" property="serviceCategorySelected"/>
-							<logic:equal name="ProfesionalForm" property="serviceSelected" value="false">
-								<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: block;"/>
-								<div id="serviceSelectedDiv" style="display: none;"></div>
-							</logic:equal>
-							<logic:equal name="ProfesionalForm" property="serviceSelected" value="true">
-								<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: none;"/>
-								<div id="serviceSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="serviceCategorySelected"/>)</div>
-							</logic:equal>
-						</div>
-						<div class="myLabel width50">Precio</div>
-						<div class="myLabel width60"><html:text name="ProfesionalForm" property="serviceReferenceprice" styleClass="normalField width50"/></div>
-						<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addService.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarServicio()">Limpiar</a></div>
-					</div>
-				</div>
-				<div class="myRow">
-					<%
-					java.util.List servicesSource = profesionalForm.getServices();
-					com.tdil.struts.pagination.PaginatedListImpl paginatedServices = new com.tdil.struts.pagination.PaginatedListImpl(servicesSource, request, 10);
-					request.setAttribute( "services",  paginatedServices);
-					%>
-					<display:table name="services" sort="external" pagesize="10" id="services" requestURI="./registroProfesional.jsp">
-						<display:column title="Servicio" sortable="true" sortName="Servicio" headerClass="sortable width150" property="profesionalServiceText"></display:column>
-						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width150" property="serviceCategoryText"></display:column>
-						<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable width150" property="referencePrice"></display:column>
-						<display:column title="acciones" headerClass="sortable width150"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./removeService.do?index=<%= ((ServiceBean)pageContext.getAttribute("services")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a></display:column>
-					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
-				</div>					
-					
-				<div class="myRow" style="margin-top:15px; border-top:dotted 1px #FFFFFF;">
-					<div class="myLabel width600 comment"  style="margin-top:15px;">Agregue todas las &aacute;reas de cobertura para este producto/servicio</div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width100">Localidad/barrio</div>
-					<div class="ui-widget">
-						<div class="myLabel width400">
-						<html:hidden name="ProfesionalForm" property="geoLevel4Id"/>
-						<html:hidden name="ProfesionalForm" property="serviceAreaSelectedText"/>
-							<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="false">
-								<html:text name="ProfesionalForm" property="serviceAreaAutocompleter" styleClass="normalField width350" style="display: block;"/>
-								<div id="serviceAreaSelectedDiv" style="display: none;"></div>
-							</logic:equal>
-							<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="true">
-								<html:text name="ProfesionalForm" property="serviceAreaAutocompleter" styleClass="normalField width350" style="display: none;"/>
-								<div id="serviceAreaSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceAreaSelectedText"/></div>
-							</logic:equal>
-						</div>
-						<div class="myLabel width100">
-							<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="true">
-								<a class="nonelyLink" id="addGeoLink" href="javascript:document.ProfesionalForm.action='./addServiceArea.do';document.ProfesionalForm.submit();">Agregar</a>
-							</logic:equal>
-							<logic:equal name="ProfesionalForm" property="serviceAreaSelected" value="false">
-								<a class="nonelyLink" id="addGeoLink" style="display: none;" href="javascript:document.ProfesionalForm.action='./addServiceArea.do';document.ProfesionalForm.submit();">Agregar</a>
-							</logic:equal>
-							<a class="nonelyLink" id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a>
-						</div>
-					</div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width600">
-						<%
-						java.util.List sourceServiceAreas = profesionalForm.getServiceAreas();
-						com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
-						request.setAttribute( "serviceAreas",  paginatedServiceAreas);
-						%>
-						<display:table name="serviceAreas" sort="external" pagesize="10" id="serviceAreas" requestURI="./registroProfesional.jsp">
-							<display:column title="&Aacute;reas de cobertura" sortable="true" sortName="Zona" headerClass="sortable width500" property="serviceAreaText"></display:column>
-							<display:column title="Acciones disponibles" headerClass="sortable width150"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./removeServiceArea.do?index=<%= ((ServiceAreaBean)pageContext.getAttribute("serviceAreas")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a></display:column>
-						</display:table>
-					</div>
-				</div>
+				</div>	
 				<div class="myRow">
 					<div class="myLabel" align="center"><input type="submit" value="ENVIAR DATOS DE REGISTRO<br/>Le enviaremos un E-Mail para validar la casilla de correo" class="buttonSubmit" /></div>
 				</div>
-			</div>
 		</html:form>
 		</div>
 		<!-- aca Termina el formulario -->

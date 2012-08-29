@@ -508,12 +508,6 @@
    PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#removeProduct" NAME="action43" PATH="/removeProduct"
-  SHAPE="32,4081,0,0" TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page13" PATH="/verifyProfesional.jsp"
   SHAPE="240,10465,0,0" SUBTYPE="jsp" TITLE="verifyProfesional.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -560,12 +554,6 @@
  <PROCESS-ITEM ID="#searchService" NAME="action50" PATH="/searchService"
   SHAPE="32,10353,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addService" NAME="action51" PATH="/addService"
-  SHAPE="32,4081,0,0" TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
- <PROCESS-ITEM ID="#removeService" NAME="action52" PATH="/removeService"
   SHAPE="32,4081,0,0" TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
@@ -844,5 +832,15 @@
   TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page33" PATH="/resetearPassword.jsp"
   SHAPE="240,14449,0,0" SUBTYPE="jsp" TITLE="resetearPassword.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/resetPassword.do"
+   SUBTYPE="confirmed" TARGET="action79" TITLE="/resetPassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#removeSell" NAME="action43" PATH="/removeSell"
+  SHAPE="32,4081,0,0" TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
