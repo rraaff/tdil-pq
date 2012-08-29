@@ -3,7 +3,10 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
@@ -20,6 +23,7 @@ import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Client;
+import com.tdil.tuafesta.model.ClientExample;
 import com.tdil.tuafesta.model.ClientStatus;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
@@ -27,8 +31,12 @@ import com.tdil.tuafesta.model.Geo3;
 import com.tdil.tuafesta.model.Geo3Example;
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
+import com.tdil.tuafesta.model.ProfesionalExample;
+import com.tdil.tuafesta.utils.DateUtils;
 import com.tdil.tuafesta.web.EmailUtils;
+import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class ClientForm extends TransactionalValidationForm implements GeoLevelSelectionForm {
 
@@ -45,6 +53,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 	private String firstname;
 	private String lastname;
 	private String sex;
+	private String birthdate;
 	
 	private String email;
 	private String password;
@@ -58,6 +67,8 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 	private List<Geo3> level3;
 	private List<Geo4> level4;
 	
+	
+	private static final int MIN_PASS_LENGTH = 4;
 	public static final String firstname_key = "ClientForm.firstname";
 	public static final String lastname_key = "ClientForm.lastname";
 	public static final String sex_key = "ClientForm.sex";
@@ -74,9 +85,17 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		this.firstname = null;
 		this.lastname = null;
 		this.sex = null;
+		this.birthdate = null;
 		this.email = null;
 		this.password = null;
 		this.retypepassword = null;
+		this.geo2Id = 0;
+		this.geo3Id = 0;
+		this.geo4Id = 0;
+		
+		this.level2 = null;
+		this.level3 = null;
+		this.level4 = null;
 		
 	}
 
@@ -102,11 +121,38 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		// TODO if por facebook
 		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
 		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		
+		Date birthDate = DateUtils.parseDate(this.getBirthdate());
+		if (birthDate == null) {
+			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		if (!validationError.hasFieldError(password_key)) {
+			if (this.getPassword().length() < MIN_PASS_LENGTH) {
+				validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
+			} else {
+				if (!this.getPassword().equals(this.getRetypepassword())) {
+					validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+				}
+			}
+		}
+		
 	}
 
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
-		// TODO VALIDACIONES
+		ClientExample clientExample = new ClientExample();
+		clientExample.createCriteria().andEmailEqualTo(this.getEmail());
+		int count = DAOManager.getClientDAO().countClientByExample(clientExample);
+		if (count > 0) {
+			validationError.setFieldError(email_key, ValidationErrors.DUPLICATED);
+		} else {
+			ProfesionalExample profesionalExample = new ProfesionalExample();
+			profesionalExample.createCriteria().andEmailEqualTo(this.getEmail());
+			count = DAOManager.getProfesionalDAO().countProfesionalByExample(profesionalExample);
+			if (count > 0) {
+				validationError.setFieldError(email_key, ValidationErrors.DUPLICATED);
+			}
+		}
 	}
 
 	@Override
@@ -118,12 +164,13 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		client.setLastname(this.getLastname());
 		client.setIdGeolevel(this.getGeo4Id());
 		client.setSex(this.getSex());
+		client.setBirthdate(DateUtils.parseDate(this.getBirthdate()));
 		
 		client.setEmail(this.getEmail());
 		client.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
 		
 		// TODO if por facebook
-		client.setPassword(this.getPassword());
+		client.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
 		client.setEmailvalid(0);
 		//
 		
@@ -135,7 +182,9 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		link.append("/validateClientEmail.do?id=").append(id).append("&verifemail=").append(client.getVerifemail());
 		
 		/** Inicio del email */
-		EmailUtils.sendEmail(this.getEmail(), link.toString(), EmailUtils.CLIENT_EMAIL_VERIFICATION);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(EmailUtils.LINK_KEY, link.toString());
+		EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.CLIENT_EMAIL_VERIFICATION);
 	}
 
 	public int getObjectId() {
@@ -179,6 +228,9 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 	}
 
 	public String getEmail() {
+		if (email != null) {
+			email = email.toLowerCase();
+		}
 		return email;
 	}
 
@@ -282,6 +334,14 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 
 	public void setLevel4(List<Geo4> level4) {
 		this.level4 = level4;
+	}
+
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
 	}
 
 }

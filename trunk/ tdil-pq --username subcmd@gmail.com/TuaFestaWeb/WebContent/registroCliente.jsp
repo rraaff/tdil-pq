@@ -23,30 +23,6 @@
 <script>
 $(document).ready(
 	function(){
-	
-		function generateTooltips() {
-			  //make sure tool tip is enabled for any new error label
-				$("img[id*='error']").tooltip({
-					showURL: false,
-					opacity: 0.99,
-					fade: 150,
-					positionRight: true ,
-					bodyHandler: function() {
-						return $("#"+this.id).attr("hovertext");
-					}
-				});
-				//make sure tool tip is enabled for any new valid label
-				$("img[src*='tick.gif']").tooltip({
-					showURL: false,
-						bodyHandler: function() {
-							return "OK";
-						}
-				});
-			}
-			
-			$('form').mouseover(function(){
-				      generateTooltips();
-				    });
 		
 			$("form[name='ClientForm']").validate({
 					errorPlacement: function(error, element) {
@@ -54,15 +30,26 @@ $(document).ready(
 					},
 					rules: { 'firstname': {required: true},
 							'lastname': {required: true},
-							'email': {required: true, email: true}
+							'sex': {required: true},
+							'email': {required: true, email: true},
+							'birthdate': {required: true},
+							'password': {required: true},
+							'retypepassword': {required: true}
 					},
 					messages: {
 						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
-						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
+						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"},
+						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"}, 
 						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
-								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"}
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese su fecha de nacimiento.' />"},
+						'password': {required: "<img id='passworderror' src='images/unchecked.gif' hovertext='Ingrese el password.' />"},
+						'retypepassword': {required: "<img id='retypepassworderror' src='images/unchecked.gif' hovertext='Reingrese el password.' />"}
 					}
 				});
+
+			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+				changeYear: true, yearRange: "1900:2012"});
 
 		}
 
@@ -99,8 +86,8 @@ $(document).ready(
 					<div class="myLabel width200" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino</div>
 					<div class="myLabel width110">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.sex.err")%></div>
 					<div class="myLabel width60">Fecha Nac.</div>
-					<div class="myLabel width150" id="Fecha Nac."><input type="text" class="normalField width150"/></div>
-					<div class="myLabel width50"><!-- %=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")% --></div>
+					<div class="myLabel width150" id="Fecha Nac."><html:text name="ClientForm" property="birthdate" styleClass="normalField width150"/></div>
+					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")%></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">E-Mail</div>
@@ -110,6 +97,10 @@ $(document).ready(
 					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width150"/></div>
 					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
 					<div class="myLabel width250">TODO If por facebook // Borrar este div...</div>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width40">Reingresar clave</div>
+					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width150"/></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">Ubicaci&oacute;n</div>

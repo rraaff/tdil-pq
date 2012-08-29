@@ -2,6 +2,7 @@ package com.tdil.tuafesta.web;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
@@ -18,12 +19,20 @@ import com.tdil.tuafesta.utils.SystemPropertiesKeys;
 
 public class EmailUtils {
 
+
+	public static final String SERVER_NAME_KEY = "SERVER_NAME";
+	public static final String LINK_KEY = "[LINK]";
+	public static final String PASSWORD_KEY = "[PASSWORD]";
+
 	private static final Logger Log = LoggerProvider.getLogger(EmailUtils.class);
 	
 	public static final String PROFESIONAL_EMAIL_VERIFICATION = "verif.email.prof";
 	public static final String CLIENT_EMAIL_VERIFICATION = "verif.email.client";
+	
+	public static final String PROFESIONAL_PASSWORD_RESET = "passreset.email.prof";
+	public static final String CLIENT_PASSWORD_RESET = "passreset.email.client";
 
-	public static void sendEmail(String to, String lnk, String notificationtype) throws SQLException {
+	public static void sendEmail(String to, Map<String, String> replacements, String notificationtype) throws SQLException {
 		try {
 
 			SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
@@ -45,12 +54,15 @@ public class EmailUtils {
 			NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO()
 					.selectNotificationEmailByExampleWithBLOBs(notificationEmailExample).get(0);
 			String content = notificationEmail.getContent();
-			content = StringUtils.replace(content, "SERVER_NAME", server.getPropvalue());
+			content = StringUtils.replace(content, SERVER_NAME_KEY, server.getPropvalue());
 			
-			if (lnk != null) {
-				content = StringUtils.replace(content, "[LINK]", server.getPropvalue() + lnk);
+			for (Map.Entry<String, String> entry : replacements.entrySet()) {
+				if (entry.getKey().equals(LINK_KEY)) {
+					content = StringUtils.replace(content, entry.getKey(), server.getPropvalue() + entry.getValue());
+				} else {
+					content = StringUtils.replace(content, entry.getKey(), entry.getValue());
+				}
 			}
-
 			com.tdil.utils.EmailUtils.sendEmail(content, to, notificationEmail.getFrom(), notificationEmail.getSubject(), properties);
 		} catch (Exception e) {
 			Log.error(e.getMessage(), e);
