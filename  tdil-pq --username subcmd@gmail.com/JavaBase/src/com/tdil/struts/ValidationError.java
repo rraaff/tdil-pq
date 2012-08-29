@@ -88,4 +88,8 @@ public class ValidationError {
 		return errors;
 	}
 
+	public boolean hasFieldError(String key) {
+		return this.getFieldErrors().containsKey(key);
+	}
+
 }
