@@ -14,7 +14,6 @@
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
 </head>
-
 <body>
 <%@ include file="includes/boMenu.jsp" %>
 <div id="boWrapper">

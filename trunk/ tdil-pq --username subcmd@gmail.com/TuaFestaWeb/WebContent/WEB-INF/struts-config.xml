@@ -37,13 +37,21 @@
    <form-bean id="PasswordResetForm"
    name="PasswordResetForm" type="com.tdil.tuafesta.struts.forms.PasswordResetForm"/>
    
+   <form-bean id="WebsiteLoginForm"
+   name="WebsiteLoginForm" type="com.tdil.tuafesta.struts.forms.WebsiteLoginForm"/>
+   
+   <form-bean id="ClientHomeForm"
+   name="ClientHomeForm" type="com.tdil.tuafesta.struts.forms.ClientHomeForm"/>
+   <form-bean id="ProfesionalHomeForm"
+   name="ProfesionalHomeForm" type="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
   <forward name="ajaxReturn" path="/empty.jsp"/>
-  <forward name="notLogged" path="/boLogin.jsp"/>
-  <forward name="notAuthorized" path="/boLogin.jsp"/>
-  <forward name="invalidAction" path="/boLogin.jsp"/>
+  <forward name="notLogged" path="/index.jsp"/>
+  <forward name="notAuthorized" path="/ups.jsp"/>
+  <forward name="invalidAction" path="/ups.jsp"/>
  </global-forwards>
  <action-mappings>
   <action name="LoginForm" path="/login" scope="request" type="com.tdil.tuafesta.struts.action.LoginAction">
@@ -373,7 +381,27 @@
    <forward name="failure" path="/resetearPassword.jsp"/>
    <forward name="continue" path="/passwordEnviada.jsp"/>
   </action>
+  
+  <action name="WebsiteLoginForm" path="/websiteLogin"
+   scope="session" type="com.tdil.tuafesta.struts.action.WebsiteLoginAction">
+   <forward name="failure" path="/login.jsp"/>
+   <forward name="successProfesional" path="/index.jsp"/>
+   <forward name="successClient" path="/index.jsp"/>
+  </action>
+  
+  <action name="ClientHomeForm" path="/goToClientHome" parameter="Client"
+   scope="session" type="com.tdil.tuafesta.struts.action.GoClientHomeAction">
+   <forward name="continue" path="/homeCliente.jsp"/>
+  </action>
+  
+  <action name="ProfesionalHomeForm" path="/goToProfesionalHome" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.GoProfesionalHomeAction">
+   <forward name="continue" path="/homeProfesional.jsp"/>
+  </action>
 
+  <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
+	<forward name="notLogged" path="/index.jsp"/>
+  </action>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.tuafesta.struts.resources.ApplicationResources"/>

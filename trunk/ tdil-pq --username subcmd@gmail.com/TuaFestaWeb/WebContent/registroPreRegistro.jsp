@@ -8,6 +8,7 @@
 <%@page import="com.tdil.tuafesta.model.Geo2"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
+<%@ include file="includes/userLogged.jspf" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="registroPreRegistro"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -321,7 +322,7 @@ function limpiarServiceArea() {
 </style>
 </head>
 <body>
-<%@ include file="includes/designHeader.jsp" %>
+<%@ include file="includes/designHeader.jspf" %>
 <div id="divisionHeaderBody"></div>
 <div id="preContainer">
 	<div id="content">

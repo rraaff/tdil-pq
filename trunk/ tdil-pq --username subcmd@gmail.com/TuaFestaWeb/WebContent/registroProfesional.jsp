@@ -9,6 +9,7 @@
 <%@page import="com.tdil.tuafesta.model.Geo2"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
+<%@ include file="includes/userLogged.jspf" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="registroProfesional"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -212,7 +213,7 @@ function limpiarServicio() {
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
 <body>
-<%@ include file="includes/designHeader.jsp" %>
+<%@ include file="includes/designHeader.jspf" %>
 <div id="divisionHeaderBody"></div>
 <div id="preContainer">
 	<div id="content">
@@ -302,6 +303,7 @@ function limpiarServicio() {
 										--%><%=geo2.getNombre()%></option>
 							<% } %>
 						</html:select>
+						<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.geo2_key + ".err")%>
 					</div>
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
@@ -313,6 +315,7 @@ function limpiarServicio() {
 									<%=geo3.getNombre()%></option>
 							<% } %>
 						</html:select>
+						<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.geo3_key + ".err")%>
 					</div>
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
@@ -324,6 +327,7 @@ function limpiarServicio() {
 									<%=geo4.getNombre()%></option>
 							<% } %>
 						</html:select>
+						<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.geo4_key + ".err")%>
 					</div>
 				</div>
 			</div>
@@ -397,7 +401,8 @@ function limpiarServicio() {
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
-				</div>	
+				</div>
+				<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
 				<div class="myRow">
 					<div class="myLabel" align="center"><input type="submit" value="ENVIAR DATOS DE REGISTRO<br/>Le enviaremos un E-Mail para validar la casilla de correo" class="buttonSubmit" /></div>
 				</div>

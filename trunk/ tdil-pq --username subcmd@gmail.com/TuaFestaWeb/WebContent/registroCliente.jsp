@@ -4,6 +4,7 @@
 <%@page import="com.tdil.tuafesta.model.Geo2"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ClientForm"%>
+<%@ include file="includes/userLogged.jspf" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="registroCliente"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -60,7 +61,7 @@ $(document).ready(
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
 <body>
-<%@ include file="includes/designHeader.jsp" %>
+<%@ include file="includes/designHeader.jspf" %>
 <div id="divisionHeaderBody"></div>
 <div id="preContainer">
 	<div id="content">

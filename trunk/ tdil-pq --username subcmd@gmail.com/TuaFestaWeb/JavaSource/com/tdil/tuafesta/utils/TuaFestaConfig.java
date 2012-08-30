@@ -19,6 +19,8 @@ import com.tdil.tuafesta.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.tuafesta.model.SystemProperty;
 import com.tdil.tuafesta.model.SystemPropertyExample;
 import com.tdil.tuafesta.roles.Administrator;
+import com.tdil.tuafesta.roles.ClientRole;
+import com.tdil.tuafesta.roles.ProfesionalRole;
 import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.users.None;
 import com.tdil.users.Role;
@@ -55,6 +57,8 @@ public class TuaFestaConfig extends SystemConfig {
 	@Override
 	protected void initRoles() {
 		Role.addRole(Administrator.INSTANCE);
+		Role.addRole(ClientRole.INSTANCE);
+		Role.addRole(ProfesionalRole.INSTANCE);
 	}
 	
 	@Override
