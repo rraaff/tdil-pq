@@ -47,6 +47,7 @@ import com.tdil.tuafesta.struts.forms.beans.SellBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
 import com.tdil.tuafesta.utils.DateUtils;
 import com.tdil.tuafesta.web.EmailUtils;
+import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -133,6 +134,11 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	public static final String businessname_key = "ProfesionalForm.businessname";
 	public static final String cuit_key = "ProfesionalForm.cuit";
 	public static final String iibb_key = "ProfesionalForm.iibb";
+	public static final String sells_key = "ProfesionalForm.sells";
+	
+	public static final String geo2_key = "ProfesionalForm.geo2";
+	public static final String geo3_key = "ProfesionalForm.geo3";
+	public static final String geo4_key = "ProfesionalForm.geo4";
 	
 	public static final String website_key = "ProfesionalForm.website";
 	public static final String facebook_key = "ProfesionalForm.facebook";
@@ -164,6 +170,22 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.facebook = null;
 		this.businesshours = null;
 		this.description = null;
+		
+		this.geo2Id = 0;
+		this.geo3Id = 0;
+		this.geo4Id = 0;
+		this.sells = new ArrayList<SellBean>();
+		
+		this.productId = null;
+		this.productCategorySelected = null;
+		this.productAutocompleter = null;
+		this.productSelectedText = null;
+		this.referenceprice = null;
+		this.serviceId = null;
+		this.serviceCategorySelected = null;
+		this.serviceAutocompleter = null;
+		this.serviceSelectedText = null;
+		this.serviceReferenceprice = null;
 	}
 
 	@Override
@@ -213,7 +235,13 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
+		FieldValidation.validateId(geo2Id, geo2_key, validationError);
+		FieldValidation.validateId(geo3Id, geo3_key, validationError);
+		FieldValidation.validateId(geo4Id, geo4_key, validationError);
 		
+		if (this.getSells().isEmpty()) {
+			validationError.setFieldError(sells_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
 		if (!validationError.hasFieldError(password_key)) {
 			if (this.getPassword().length() < MIN_PASS_LENGTH) {
 				validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
@@ -275,7 +303,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
 		
 		// TODO if por facebook
-		profesional.setPassword(this.getPassword());
+		profesional.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
 		profesional.setEmailvalid(0);
 		//
 		profesional.setBusinessname(this.getBusinessname());

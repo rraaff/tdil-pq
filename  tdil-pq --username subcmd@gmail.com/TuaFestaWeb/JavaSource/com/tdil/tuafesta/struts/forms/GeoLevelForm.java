@@ -172,11 +172,11 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				// inserto
 				Geo2 geo2 = new Geo2();
 				geo2.setNombre(this.getNombre());
+				geo2.setDeleted(0);
 				DAOManager.getGeo2DAO().insertGeo2(geo2);
 			} else {
 				// modifico
-				Geo2 geo2 = new Geo2();
-				geo2.setId(this.getObjectId());
+				Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(this.getObjectId());
 				geo2.setNombre(this.getNombre());
 				DAOManager.getGeo2DAO().updateGeo2ByPrimaryKey(geo2);
 			}
@@ -188,11 +188,11 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 					Geo3 geo3 = new Geo3();
 					geo3.setNombre(this.getNombre());
 					geo3.setGeo2Id(this.getGeo2Id());
+					geo3.setDeleted(0);
 					DAOManager.getGeo3DAO().insertGeo3(geo3);
 				} else {
 					// modifico
-					Geo3 geo3 = new Geo3();
-					geo3.setId(this.getObjectId());
+					Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(this.getObjectId());
 					geo3.setNombre(this.getNombre());
 					geo3.setGeo2Id(this.getGeo2Id());
 					DAOManager.getGeo3DAO().updateGeo3ByPrimaryKey(geo3);
@@ -204,11 +204,11 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 					Geo4 geo4 = new Geo4();
 					geo4.setNombre(this.getNombre());
 					geo4.setGeo3Id(this.getGeo3Id());
+					geo4.setDeleted(0);
 					DAOManager.getGeo4DAO().insertGeo4(geo4);
 				} else {
 					// modifico
-					Geo4 geo4 = new Geo4();
-					geo4.setId(this.getObjectId());
+					Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(this.getObjectId());
 					geo4.setNombre(this.getNombre());
 					geo4.setGeo3Id(this.getGeo3Id());
 					DAOManager.getGeo4DAO().updateGeo4ByPrimaryKey(geo4);
