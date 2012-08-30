@@ -1,3 +1,4 @@
+<%@page import="com.tdil.tuafesta.web.WebsiteUser"%>
 <div id="headers">
 	<div id="header">
 		<div id="logo"><a href="./index.jsp" title="Volver al Inicio"><img src="images/skin_basic/logos/headerLogo.png" /></a></div>
@@ -7,9 +8,24 @@
 				<p>El sitio que te ayuda a organizar tu fiesta</p>
 				<ul class="nav">
 					<li><a href="registroPreRegistro.jsp">Registrate</a></li>
-					<li><a href="#">Ingresar</a></li>
-					<li><a href="profesionalContactCard.jsp">Mi cuenta</a></li>
-					<li><span class="userLogged">Bienvenido&nbsp;</span><span class="selected">Alejandro </span><a href="#">(no soy Alejandro)</a></li>
+					<li><a href="./login.jsp">Ingresar</a></li>
+					<li>
+						<% if (websiteUser != null && websiteUser.isLogged()) { %>
+							<% if (websiteUser.isClient()) { %>
+								<a href="./goToClientHome.do?id=<%=websiteUser.getClient().getId()%>">Mi cuenta</a>
+							<% } else { %>
+								<a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Mi cuenta</a>
+							<% } %>
+						<% } else {  %>
+							Mi cuenta
+						<% } %>
+					</li>
+					<li><span class="userLogged">
+						<% if (websiteUser != null && websiteUser.isLogged()) { %>
+							Bienvenido&nbsp;</span><span class="selected"><%= websiteUser.getName() %> </span>
+							<a href="./websiteLogout.do">(no soy <%= websiteUser.getName() %>)</a>
+						<% } %>
+					</li>
 				</ul>
 			</div>
 			<div id="border"></div>

@@ -97,7 +97,7 @@ function postContact(data) {
 <body>
 
 <div id="content">
-	<%@ include file="includes/designHeader.jsp" %>
+	<%@ include file="includes/designHeader.jspf" %>
 	<div id="menu-wrapper">
 		<div id="menu">
 			<ul>

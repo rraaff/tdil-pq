@@ -1,11 +1,30 @@
-Password hasheado
-Circuito de reseteo de password
+Agregar a los js propios de un rol el chequeo del rol
+
+*Agregar fecha de nacimiento al usuario
+*Arreglar mant de geo levels
+Cambiar logos de geo levels, tiene que tener uno de disponible para servicios y otro de 
+borrar de la base.
+
+Que pablo vea el header
+
+
+Ver tema de busquedas por textos y case sensitivity
+
+Definir bien la busqueda por geolevels, casos
+Profesional con una direccion en lugar x, con productos, sin area de cobertura de servicios.
+Profesional con una direccion en lugar x, con servicios, sin area de cobertura de servicios.
+Profesional con una direccion en lugar x, con servicios, con area de cobertura de servicios.
+No deberiamos tener area de cobertura de productos?
+
+
+Validar que el precio de referencia no este vacio y sea un numero?
+Los geo levels son obligatorios para el cliente?
 
 No deberia tener un disclaimer de acepto las politicas del sitio blababla
 
 Lunes
-Registro de Profesionales Normal
-Registro de Clientes Normal
+Registro de Profesionales Normal X
+Registro de Clientes Normal X
 Edición del perfil profesional
 Carga de productos y servicios
 
@@ -19,6 +38,7 @@ Resultado de búsquedas
 Busqueda avanzada
 
 PROMOCIONES
+Backend
 Home: Destacado central BO: (Armado de promociones)
 Listado de promociones
 Detalle de la promoción
@@ -36,7 +56,7 @@ Agenda (ultimo)
 
 ************
 
-Agregar fecha de nacimiento al usuario
+
 
 Si no tiene area de cobertura que salga por todas las busquedas.
 Registracion sin area de cobertura de servicios.

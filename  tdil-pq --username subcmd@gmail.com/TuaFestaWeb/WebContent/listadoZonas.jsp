@@ -3,6 +3,7 @@
 <%@page import="com.tdil.tuafesta.model.valueobjects.CategoryValueObject"%>
 <%@page import="com.tdil.tuafesta.utils.GeoLevelUtils"%>
 <%@page import="com.tdil.tuafesta.model.Geo4"%>
+<%@ include file="includes/userLogged.jspf" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="listadoZonas"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
