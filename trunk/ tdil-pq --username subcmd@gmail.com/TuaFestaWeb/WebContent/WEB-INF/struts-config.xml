@@ -45,6 +45,9 @@
    <form-bean id="ProfesionalHomeForm"
    name="ProfesionalHomeForm" type="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"/>
    
+   <form-bean id="SellDetailsForm"
+   name="SellDetailsForm" type="com.tdil.tuafesta.struts.forms.SellDetailsForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -217,6 +220,11 @@
    scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
    <forward name="continue" path="/geoLevelAdministration.jsp"/>
   </action>
+  <action name="GeoLevelForm" parameter="Admin" path="/deleteGeoLevelFromDatabase"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeleteGeoLevelFromDatabaseAction">
+   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+  </action>
+  
   <action name="ProfesionalForm" path="/goToRegistroProfesional"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/registroProfesional.jsp"/>
@@ -291,6 +299,11 @@
   <action name="SellSearchResultForm"
    path="/searchSellsByCategory" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
+  </action>
+  
+  <action name="SellDetailsForm"
+   path="/viewSellDetails" scope="session" type="com.tdil.tuafesta.struts.action.ViewSellDetailsAction">
+   <forward name="continue" path="/detallesDeVenta.jsp" redirect="true"/>
   </action>
   
   

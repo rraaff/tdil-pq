@@ -298,6 +298,9 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
   	<result column="description" jdbcType="VARCHAR" property="description" />
   	<result column="profesionalbusinessname" jdbcType="VARCHAR" property="profesionalbusinessname" />
+  	<result column="geo2name" jdbcType="VARCHAR" property="geo2name" />
+  	<result column="geo3name" jdbcType="VARCHAR" property="geo3name" />
+  	<result column="geo4name" jdbcType="VARCHAR" property="geo4name" />
   </resultMap>
   
   <select id="searchSellProductsByGeo4" parameterClass="java.util.Map" resultMap="SellValueObject">
@@ -305,51 +308,94 @@
     	<include refid="SELL.Base_Column_List" />,
     	prod.name as name,
     	prod.description as description,
-    	prof.businessname as profesionalbusinessname
-    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name,
+    	IF(g4.id=#geo4id:INTEGER#,"1","4") ordercol
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
     and sell.type = 1
     and sell.id_profesional = prof.id
-    and prof.id_geolevel = #geo4id:INTEGER#
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
     and sell.approved = 1
     and sell.deleted = 0
     and prod.approved = 1
     and prod.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
-  </select>
-  
-  <select id="searchSellServicesByGeo4" parameterClass="java.util.Map" resultMap="SellValueObject">
-    select 
+union all
+	select 
     	<include refid="SELL.Base_Column_List" />,
     	serv.name as name,
     	serv.description as description,
-    	prof.businessname as profesionalbusinessname
-    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name,
+    	"2" ordercol
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4, SERVICE_AREA sa
     where sell.id_prod_serv = serv.id
     and sell.type = 2
     and sell.id_profesional = prof.id
+    and sa.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
     and sell.approved = 1
     and sell.deleted = 0
     and serv.approved = 1
     and serv.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
-    and prof.id in (select id_profesional FROM SERVICE_AREA sa where sa.level = 4 and id_geolevel = #geo4id:INTEGER#)
+    and prof.id = sa.id_profesional
+	and sa.level = 4 
+	and sa.id_geolevel = #geo4id:INTEGER#
+union all
+	select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name,
+    	IF(g4.id=#geo4id:INTEGER#,"3","5") ordercol
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
+    where sell.id_prod_serv = serv.id
+    and sell.type = 2
+    and sell.id_profesional = prof.id
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    and not exists (select sa.* from SERVICE_AREA sa where sa.id_profesional = prof.id)
+    order by ordercol
   </select>
-  
-  
+ 
   <select id="searchSellProductsByCategory" parameterClass="java.util.Map" resultMap="SellValueObject">
     select 
     	<include refid="SELL.Base_Column_List" />,
     	prod.name as name,
     	prod.description as description,
-    	prof.businessname as profesionalbusinessname
-    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof,GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
     and prod.id_category = #catid:INTEGER#
     and sell.type = 1
     and sell.id_profesional = prof.id
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
     and sell.approved = 1
     and sell.deleted = 0
     and prod.approved = 1
@@ -363,8 +409,11 @@
     	<include refid="SELL.Base_Column_List" />,
     	prod.name as name,
     	prod.description as description,
-    	prof.businessname as profesionalbusinessname
-    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof,GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
     and prod.id_category in
     	<iterate close=")" conjunction="," open="(">
@@ -372,6 +421,9 @@
 		</iterate>
     and sell.type = 1
     and sell.id_profesional = prof.id
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
     and sell.approved = 1
     and sell.deleted = 0
     and prod.approved = 1
@@ -386,7 +438,10 @@
     	<include refid="SELL.Base_Column_List" />,
     	serv.name as name,
     	serv.description as description,
-    	prof.businessname as profesionalbusinessname
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
     where sell.id_prod_serv = serv.id
     and serv.id_category = #catid:INTEGER#
@@ -405,14 +460,17 @@
     	<include refid="SELL.Base_Column_List" />,
     	serv.name as name,
     	serv.description as description,
-    	prof.businessname as profesionalbusinessname
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
     where sell.id_prod_serv = serv.id
     and serv.id_category in
     	<iterate close=")" conjunction="," open="(">
 		   #[]#
 		</iterate>
-    and sell.type = 1
+    and sell.type = 2
     and sell.id_profesional = prof.id
     and sell.approved = 1
     and sell.deleted = 0
@@ -421,4 +479,53 @@
     and prof.status = 2
     and prof.deleted = 0
   </select>
+  
+  
+  <select id="selectSellProductValueObject" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prod.name as name,
+    	prod.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
+    where sell.id = #id:INTEGER#
+    and sell.id_prod_serv = prod.id
+    and sell.type = 1
+    and sell.id_profesional = prof.id
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prod.approved = 1
+    and prod.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
+  
+  <select id="selectSellServiceValueObject" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
+    where sell.id = #id:INTEGER#
+    and sell.id_prod_serv = serv.id
+    and sell.type = 2
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
+  
 </sqlMap>

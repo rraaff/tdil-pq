@@ -41,8 +41,9 @@
 						<display:column title="Producto/Servicio" sortable="true" sortName="name" headerClass="sortable width150" property="name"></display:column>
 						<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable width150" property="profesionalbusinessname"></display:column>
 						<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable width150" property="referenceprice"></display:column>
+						<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width150" property="geoLevelPath"></display:column>
 						<display:column title="acciones" headerClass="sortable width150">
-							<a href="./viewProfesionalProfile.do?id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getIdProfesional()%><%=DisplayTagParamHelper.getParams(request)%>">Ver perfil</a>
+							<a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a>
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>

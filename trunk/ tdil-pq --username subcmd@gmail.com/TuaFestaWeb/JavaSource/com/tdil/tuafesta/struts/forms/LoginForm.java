@@ -19,7 +19,7 @@ import com.tdil.tuafesta.model.SystemUser;
 import com.tdil.tuafesta.model.SystemUserExample;
 import com.tdil.tuafesta.model.SystemUserExample.Criteria;
 import com.tdil.tuafesta.roles.Administrator;
-import com.tdil.users.User;
+import com.tdil.tuafesta.web.WebsiteUser;
 import com.tdil.utils.CryptoUtils;
 
 public class LoginForm extends ActionForm {
@@ -68,7 +68,7 @@ public class LoginForm extends ActionForm {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
 		}
 		
-		User user = new User();
+		WebsiteUser user = new WebsiteUser();
 		user.setId(exists.getId());
 		Set<String> roles = new HashSet<String>();
 		roles.add(Administrator.INSTANCE.getName());
