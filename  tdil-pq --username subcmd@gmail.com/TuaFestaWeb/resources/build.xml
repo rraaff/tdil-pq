@@ -94,9 +94,9 @@
 		<antcall target="js.minify"></antcall>
 		<zip destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1"></zip>
 		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
-		<!--scp file="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" keyfile="./tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true">
+		<scp file="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" keyfile="/home/mgodoy/icarus/workspace/concu_test/DJMagWeb/resources/tdil01.pem" todir="ubuntu@ec2-23-21-18-79.compute-1.amazonaws.com:/home/ubuntu/" passphrase="" trust="true">
 		</scp>
-		<sshexec failonerror="true" keyfile="./tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_${project.name.lower}.sh" /-->
+		<sshexec failonerror="true" keyfile="/home/mgodoy/icarus/workspace/concu_test/DJMagWeb/resources/tdil01.pem" username="ubuntu" host="ec2-23-21-18-79.compute-1.amazonaws.com" trust="true" knownhosts="ec2-23-21-18-79.compute-1.amazonaws.com" passphrase="" command="sudo /home/ubuntu/hotdeploy_${project.name.lower}.sh" />
 	</target>
 
 	<target name="makeEntregable">
