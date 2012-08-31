@@ -1,12 +1,18 @@
+Profesional
+
+Productos se listan todos, se muestra la ubicacion del profesional. Ordenar primero el que coincida la ubicacion.
+Servicios, si no tiene area de cobertura, lo listo siempre, que diga consultar area de cobertura.
+Si tiene area de cobertura, va por esa. Este sale primero en la busqueda.
+
 Agregar a los js propios de un rol el chequeo del rol
 
 *Agregar fecha de nacimiento al usuario
 *Arreglar mant de geo levels
 Cambiar logos de geo levels, tiene que tener uno de disponible para servicios y otro de 
 borrar de la base.
+Agrego icono que no exista.
 
 Que pablo vea el header
-
 
 Ver tema de busquedas por textos y case sensitivity
 
@@ -18,7 +24,11 @@ No deberiamos tener area de cobertura de productos?
 
 
 Validar que el precio de referencia no este vacio y sea un numero?
+Rta
+No obligatorio, las busquedas salen primero los que cumplen.
+
 Los geo levels son obligatorios para el cliente?
+RTA: No son obligatorios
 
 No deberia tener un disclaimer de acepto las politicas del sitio blababla
 

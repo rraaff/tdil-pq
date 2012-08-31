@@ -368,4 +368,8 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	public void setGeo4Id(int geo4Id) {
 		// nothing to do
 	}
+
+	public void deleteGeoLevelFromDatabase(int levelId, int userId) {
+		// TODO implementarlo, chequear todas las referencias
+	}
 }

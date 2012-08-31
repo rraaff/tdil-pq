@@ -13,6 +13,12 @@ public class WebsiteUser extends User {
 	
 	private Client client;
 	private Profesional profesional;
+	private boolean admin = false;
+	
+	public WebsiteUser() {
+		super();
+		admin = true;
+	}
 	
 	public WebsiteUser(Client client) {
 		super();
@@ -28,14 +34,21 @@ public class WebsiteUser extends User {
 		if (this.getClient() != null) {
 			return this.getClient().getFirstname() + " " + this.getClient().getLastname();
 		} else {
-			return this.getProfesional().getFirstname() + " " + this.getProfesional().getLastname();
+			if (this.getProfesional() != null) {
+				return this.getProfesional().getFirstname() + " " + this.getProfesional().getLastname();
+			} else {
+				return "Admin";
+			}
 		}
 	}
 	
 	public boolean isLogged() {
-		return this.getClient() != null || this.getProfesional() != null;
+		return this.getClient() != null || this.getProfesional() != null || this.admin;
 	}
 	
+	public boolean isWebsiteLogged() {
+		return this.getClient() != null || this.getProfesional() != null;
+	}	
 	public boolean isClient() {
 		return this.getClient() != null;
 	}

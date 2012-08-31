@@ -330,6 +330,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedGeoLevel.do"
    SUBTYPE="confirmed" TARGET="action25"
    TITLE="/toggleDeletedGeoLevel.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/deleteGeoLevelFromDatabase.do" SUBTYPE="confirmed"
+   TARGET="action83" TITLE="/deleteGeoLevelFromDatabase.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchGeoLevel" NAME="action24"
   PATH="/searchGeoLevel" SHAPE="32,6737,0,0" TITLE="GeoLevelForm"
@@ -889,5 +892,22 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page38" PATH="/homeProfesional.jsp"
   SHAPE="240,14306,0,0" SUBTYPE="jsp" TITLE="homeProfesional.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deleteGeoLevelFromDatabase" NAME="action83"
+  PATH="/deleteGeoLevelFromDatabase" SHAPE="464,6162,0,0"
+  TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewSellDetails" NAME="action84"
+  PATH="/viewSellDetails" SHAPE="32,12529,0,0" TITLE="SellDetailsForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/detallesDeVenta.jsp" TARGET="page39" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page39" PATH="/detallesDeVenta.jsp"
+  SHAPE="240,12529,0,0" SUBTYPE="jsp" TITLE="detallesDeVenta.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

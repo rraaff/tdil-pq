@@ -108,7 +108,7 @@ $(document).ready(
 					<div class="myLabel width160">
 						<% ClientForm clientForm = (ClientForm)session.getAttribute("ClientForm"); %>
 						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width150">
-							<option value="0">Seleccione<option>
+							<option value="0">Seleccione</option>
 							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
 								<option	<%=	geo2.getId() == clientForm.getGeo2Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo2.getId())%>">
@@ -119,7 +119,7 @@ $(document).ready(
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
 						<html:select name="ClientForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Client.do';this.form.submit()" styleClass="normalField width200">
-							<option value="0">Seleccione<option>
+							<option value="0">Seleccione</option>
 							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>	
 								<option	<%=	geo3.getId() == clientForm.getGeo3Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo3.getId())%>">
@@ -130,7 +130,7 @@ $(document).ready(
 					<div class="myLabel width20"></div>
 					<div class="myLabel width210">
 						<html:select name="ClientForm" property="geo4Id" styleClass="normalField width200">
-							<option value="0">Seleccione<option>
+							<option value="0">Seleccione</option>
 							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>	
 								<option	<%=	geo4.getId() == clientForm.getGeo4Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo4.getId())%>">

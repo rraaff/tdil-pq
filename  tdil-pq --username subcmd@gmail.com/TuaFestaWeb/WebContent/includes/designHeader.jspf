@@ -7,10 +7,21 @@
 			<div id="taglineAndMenu">
 				<p>El sitio que te ayuda a organizar tu fiesta</p>
 				<ul class="nav">
-					<li><a href="registroPreRegistro.jsp">Registrate</a></li>
-					<li><a href="./login.jsp">Ingresar</a></li>
 					<li>
-						<% if (websiteUser != null && websiteUser.isLogged()) { %>
+						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
+							Registrate
+						<% } else {  %>
+							<a href="registroPreRegistro.jsp">Registrate</a>
+						<% } %>
+					</li>
+					<li>
+						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
+							Ingresar
+						<% } else {  %>
+							<a href="./login.jsp">Ingresar</a></li>
+						<% } %>
+					<li>
+						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
 							<% if (websiteUser.isClient()) { %>
 								<a href="./goToClientHome.do?id=<%=websiteUser.getClient().getId()%>">Mi cuenta</a>
 							<% } else { %>
@@ -21,7 +32,7 @@
 						<% } %>
 					</li>
 					<li><span class="userLogged">
-						<% if (websiteUser != null && websiteUser.isLogged()) { %>
+						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
 							Bienvenido&nbsp;</span><span class="selected"><%= websiteUser.getName() %> </span>
 							<a href="./websiteLogout.do">(no soy <%= websiteUser.getName() %>)</a>
 						<% } %>

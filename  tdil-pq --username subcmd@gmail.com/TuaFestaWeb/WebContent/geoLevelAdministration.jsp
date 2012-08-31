@@ -162,6 +162,10 @@
 											<img src="boImages/desactivar.png" alt="Desactivar">
 										<% } %>
 									</html:link>
+									<html:link action="/deleteGeoLevelFromDatabase" paramName="iterSection"
+										paramProperty="id" paramId="id">
+											<img src="boImages/deleteFromDb.png" alt="Eliminar de la base">
+									</html:link>
 								</td>
 							</tr>
 						</logic:iterate>
