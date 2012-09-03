@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean id="LoginForm" name="LoginForm" type="com.tdil.thalamusweb.struts.forms.LoginForm"/>
+ </form-beans>
+ <global-exceptions/>
+ <global-forwards>
+  <forward name="ajaxReturn" path="/empty.jsp"/>
+  <forward name="notLogged" path="/index.jsp"/>
+  <forward name="notAuthorized" path="/index.jsp"/>
+  <forward name="invalidAction" path="/index.jsp"/>
+ </global-forwards>
+ <action-mappings>
+  <action name="LoginForm" path="/login" scope="request" type="com.tdil.thalamusweb.struts.action.LoginAction">
+   <forward name="failure" path="/login.jsp"/>
+   <forward name="success" path="/index.jsp" redirect="true"/>
+  </action>
+  <action path="/logout" type="com.tdil.djmag.struts.action.LogoutAction"/>
+ </action-mappings>
+ 
+ <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
+ <message-resources parameter="com.tdil.thalamusweb.struts.resources.ApplicationResources"/>
+</struts-config>
