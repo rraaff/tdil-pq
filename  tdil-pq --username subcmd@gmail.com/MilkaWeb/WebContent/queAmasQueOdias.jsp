@@ -194,9 +194,9 @@ function postHate(data) {
 <!-- 
 body {
 	font-family: 'Oswald', sans-serif;
-	color: #FFFFFF;
+	color: #00FF55;
 }
-div { /*border:dotted 1px #00CC33;*/ }
+div { border:dotted 1px #00CC33; }
 #altalayer {
 	width:306px;
 	height:406px;
@@ -215,66 +215,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
-#lineadecontenido {
-	height:30px;
-	float:left;
-}
-#Nombre {
-	height: 25px;
-	width: 206px;
-	left: 85px;
-	top: 12px;
-	position: relative;
-}
-#E-Mail {
-	height: 25px;
-	width: 206px;
-	left: 85px;
-	top: 22px;
-	position: relative;
-}
-#Politicas {
-	height: 25px;
-	width: 160px;
-	left: 0px;
-	top: 40px;
-	position: relative;
-}
-#SubirImagen {
-	height: 100px;
-	width: 290px;
-	left: 0px;
-	top: 70px;
-	position: relative;
-}
-#buttonHolder {
-	border:none;
-	height: 82px;
-	width: 290px;
-	left: 0px;
-	top: 70px;
-	position: relative;
-}
-.normalField {
-	font-family:"Trebuchet MS", Arial, sans-serif;
-	width:206px;
-	height:25px;
-	line-height:22px;
-	border: dotted 1px #ad9d1f;
-	background:transparent;
-}
-.normalTextArea {
-	width:290px;
-	height:100px;
-}
-/*   */
-h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; color:#806bb3; }
-h2 {
-	font-weight:400;
-	font-size:13px;
-	padding-bottom:5px;
-	padding-top:5px;
-}
+/*
 #header {
 	background-color:#8c7bb5;
 	background-image: url(images/experiencias/padresAHijos/header.gif);
@@ -317,7 +258,7 @@ h2 {
 	padding-top: 10px;
 }
 #moduleContent h1 {
-	color:#000000;
+	color:#FFF;
 	padding-top:25px;
 	padding-left:10px;
 	padding-bottom:5px;
@@ -392,10 +333,8 @@ h2 {
 	float:left;
 }
 #entryNumber .numero {
-	color:#000000;
+	color:#FFF;
 }
-
-
 #scrollpaginationdemo {
 	width:600px;
 	margin:0px auto;
@@ -427,7 +366,7 @@ h2 {
 	margin:0px auto;
 	display:none;
 	border-radius: 5px;
-}
+}*/
 -->
 </style>
 <style>
@@ -460,20 +399,18 @@ h2 {
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<img src="./hateWordCloudTag.st"><br><br><br><br><br><br>
-<img src="./loveWordCloudTag.st"><br><br><br><br><br><br>
-<br><br><br><br><br><br>
+<img src="./hateWordCloudTag.st"><br><br>
+<img src="./loveWordCloudTag.st"><br><br>
 	<html:form method="POST" action="/addLove" >
 		<html:hidden name="LoveForm" property="love" value="on"/>
-		<div id="Amo">Amo...<html:text name="LoveForm" property="text" styleClass="normalField"/></div><br><br>
+		<div id="Amo">Amo...<html:text name="LoveForm" property="text" styleClass="normalField"/></div>
 		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 	</html:form><br><br>
 	<html:form method="POST" action="/addHate" >
 		<html:hidden name="LoveForm" property="love" value="off"/>
-		<div id="Odio">Odio...<html:text name="HateForm" property="text" styleClass="normalField"/></div><br><br>
+		<div id="Odio">Odio...<html:text name="HateForm" property="text" styleClass="normalField"/></div>
 		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
 	</html:form>
-	
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>
