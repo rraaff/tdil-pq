@@ -19,6 +19,13 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<style>
+#formContent {
+	min-height:290px;
+	padding-top:20px;
+	margin-bottom:20px;
+}
+</style>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -26,7 +33,7 @@
 <div id="preContainer">
 	<div id="content">
 		<div id="titleArea">
-			<h1>Resultado de la busqueda</h1>
+			<h1>Resultado de la b&uacute;squeda</h1>
 		</div>
 		<div id="formContent" class="height300">
 			<%
@@ -38,11 +45,11 @@
 					request.setAttribute( "sells",  paginatedServices);
 					%>
 					<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./sellSearchResult.jsp">
-						<display:column title="Producto/Servicio" sortable="true" sortName="name" headerClass="sortable width150" property="name"></display:column>
-						<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable width150" property="profesionalbusinessname"></display:column>
-						<display:column title="Precio Ref." sortable="true" sortName="precio" headerClass="sortable width150" property="referenceprice"></display:column>
-						<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width150" property="geoLevelPath"></display:column>
-						<display:column title="acciones" headerClass="sortable width150">
+						<display:column title="Producto/Servicio" sortable="true" sortName="name" headerClass="sortable width200" property="name"></display:column>
+						<display:column title="Vendedor" sortable="true" sortName="Nombre" headerClass="sortable width200" property="profesionalbusinessname"></display:column>
+						<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width100" property="referenceprice"></display:column>
+						<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width350" property="geoLevelPath"></display:column>
+						<display:column title="acciones" headerClass="sortable width100">
 							<a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a>
 						</display:column>
 					</display:table>

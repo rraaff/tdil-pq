@@ -22,11 +22,11 @@
 	<div id="content">
 		<div id="titleArea">
 			<h1>Registro de clientes</h1>
-			<h2>¡Felicitaciones! Hemos validado su dirección de E-Mail.</h2>
+			<h2>&#161;Felicitaciones! Hemos validado su direcci&oacute;n de E-Mail.</h2>
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
-				
+				Ya podes comunicarte con los profesionales y empresas que ofrecen sus productos y servicios en Tua Festa. Para iniciar tus b&uacute;squedas arranc&aacute; <a href="index.jsp" title="Iniciar la navegaci&oacute;n">la p&aacute;gina de inicio para ver las promociones</a>.
 			</div>
 		</div>
 	</div>

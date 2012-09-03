@@ -529,14 +529,18 @@ a {
 #zoneNavigation a, #categoryNavigation a {
 	color:#1399f8;
 }
-#zoneNavigation h3, #categoryNavigation h3 {
+#zoneNavigation h3, #categoryNavigation h3, #zoneNavigation h3 a {
 	color:#035b9c;
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
 	font-size:20px;
 	padding-bottom:10px;
+	padding-left:0;
+	text-decoration:none;
 }
-#categoryNavigation h3 {
+#categoryNavigation h3, #categoryNavigation h3 a {
+	padding-left:0;
 	color:#f6b400;
+	text-decoration:none;
 }
 /* / FOOTER //////////////////////////////////////////////////// */
 #footers {

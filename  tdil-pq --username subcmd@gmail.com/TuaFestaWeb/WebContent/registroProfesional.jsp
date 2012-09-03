@@ -228,11 +228,11 @@ function limpiarServicio() {
 			<div id="formSection">
 				<div class="myRow">
 					<div class="myLabel width50">Nombre</div>
-					<div class="myLabel width160" id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField width150"/></div>
+					<div class="myLabel width200" id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField width200"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.firstname.err")%></div>
 					<div class="myLabel width50">&nbsp;</div>
-					<div class="myLabel width50">Apellido</div>
-					<div class="myLabel width160" id="Apellido"><html:text name="ProfesionalForm" property="lastname" styleClass="normalField width150"/></div>
+					<div class="myLabel width80">Apellido</div>
+					<div class="myLabel width150" id="Apellido"><html:text name="ProfesionalForm" property="lastname" styleClass="normalField width150"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.lastname.err")%></div>
 				</div>
 				<div class="myRow">
@@ -258,25 +258,24 @@ function limpiarServicio() {
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">Sexo</div>
-					<div class="myLabel width200" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino</div>
-					<div class="myLabel width110">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.sex.err")%></div>
-					<div class="myLabel width60">Fecha Nac.</div>
+					<div class="myLabel width150" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino</div>
+					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.sex.err")%></div>
+					<div class="myLabel width80">Fecha Nac.</div>
 					<div class="myLabel width150" id="Fecha Nac."><html:text name="ProfesionalForm" property="birthdate" styleClass="normalField width150"/></div>
 					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.birthdate.err")%></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width280" id="Email"><html:text name="ProfesionalForm" property="email" styleClass="normalField width250"/></div>
+					<div class="myLabel width150" id="Email"><html:text name="ProfesionalForm" property="email" styleClass="normalField width150"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.email.err")%></div>
-					<div class="myLabel width40">Clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
-					<div class="myLabel width250">TODO If por facebook // Borrar este div...</div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width40">Retype</div>
+					<div class="myLabel width50">Clave</div>
+					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width150"/></div>
+					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
+					<div class="myLabel width80">Repetir clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="retypepassword" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
+					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
 				</div>
 			</div>
 			<div id="formSection" class="width650">
@@ -379,7 +378,7 @@ function limpiarServicio() {
 									<div id="serviceSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="serviceCategorySelected"/>)</div>
 								</logic:equal>
 							</div>
-							<div class="myLabel width50">Precio</div>
+							<div class="myLabel width50">Precio b&aacute;sico</div>
 							<div class="myLabel width60"><html:text name="ProfesionalForm" property="serviceReferenceprice" styleClass="normalField width50"/></div>
 							<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addService.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarServicio()">Cancelar</a></div>
 						</div>
@@ -403,13 +402,11 @@ function limpiarServicio() {
 					<%=DisplayTagParamHelper.getFields(request)%>
 				</div>
 				<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
-				<div class="myRow">
-					<div class="myLabel" align="center"><input type="submit" value="ENVIAR DATOS DE REGISTRO<br/>Le enviaremos un E-Mail para validar la casilla de correo" class="buttonSubmit" /></div>
-				</div>
+			</div>
+			<div class="myRow width650" align="center"><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
 		</html:form>
 		</div>
 		<!-- aca Termina el formulario -->
-		</div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

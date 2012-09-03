@@ -21,7 +21,7 @@
 		<div id="formulariosBase">
 			<h1>Validar email del profesional</h1>
 			<div class="renglon width950">
-				<div class="label width950"><span class="errorText">Desde esta sección podrá validar manualmente el email del profesional. Si lo bloquea el profesional no podra ingresar al sistema ni registrarse nuevamente.</span></div>
+				<div class="label width950"><span class="errorText">Desde esta secci&oacute;n podr&aacute; validar manualmente el E-mail del profesional. Si lo bloquea el profesional no podra ingresar al sistema ni registrarse nuevamente.</span></div>
 			</div>
 			<html:form method="POST" action="/manualValidateProfesionalEmail">
 				<div class="renglon width950 bordeGris bordeBottomNo">
