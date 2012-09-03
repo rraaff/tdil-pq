@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#login" NAME="action0" PATH="/login"
+  SHAPE="32,17,0,0" TITLE="LoginForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/login.jsp"
+   TARGET="page4" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward1" PATH="/index.jsp"
+   TARGET="page0" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="ajaxReturn" NAME="forward0" PATH="/empty.jsp"
+  SHAPE="32,497,0,0" TARGET="page3" TITLE="ajaxReturn" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/empty.jsp" SHAPE="240,514,0,0"
+  SUBTYPE="jsp" TITLE="empty.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notLogged" NAME="forward1" PATH="/index.jsp"
+  SHAPE="48,273,0,0" TARGET="page0" TITLE="notLogged" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="invalidAction" NAME="forward2" PATH="/index.jsp"
+  SHAPE="48,385,0,0" TARGET="page0" TITLE="invalidAction" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logout" NAME="action2" PATH="/logout"
+  SHAPE="32,609,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/index.jsp"
+  SHAPE="32,1521,0,0" TARGET="page0" TITLE="notAuthorized"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4" PATH="/login.jsp" SHAPE="240,241,0,0"
+  SUBTYPE="jsp" TITLE="login.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+</PROCESS>
