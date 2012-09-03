@@ -94,13 +94,13 @@ $(document).ready(
 					<div class="myLabel width50">E-Mail</div>
 					<div class="myLabel width280" id="Email"><html:text name="ClientForm" property="email" styleClass="normalField width250"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.email.err")%></div>
-					<div class="myLabel width40">Clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
-					<div class="myLabel width250">TODO If por facebook // Borrar este div...</div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width40">Reingresar clave</div>
+					<div class="myLabel width50">Clave</div>
+					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width150"/></div>
+					<div class="myLabel width120">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
+
+					<div class="myLabel width100">Reingresar clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width150"/></div>
 				</div>
 				<div class="myRow">
@@ -139,9 +139,7 @@ $(document).ready(
 						</html:select>
 					</div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel" align="center"><input type="submit" value="ENVIAR DATOS DE REGISTRO<br/>Le enviaremos un E-Mail para validar la casilla de correo" class="buttonSubmit" /></div>
-				</div>
+				<div class="myRow" align="center" style="padding-bottom:0;"><!-- input type="submit" value="Enviar datos" class="buttonSubmit" / --><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
 			</div>
 			</html:form>
 		</div>

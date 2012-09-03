@@ -18,19 +18,37 @@
 <%@ include file="includes/head.jsp" %>
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <style>
-
+#formContent {
+	min-height:290px;
+	padding-top:20px;
+	margin-bottom:20px;
+}
 </style>
 </head>
-
 <body>
-
+<%@ include file="includes/designHeader.jspf" %>
+<div id="divisionHeaderBody"></div>
+<div id="preContainer">
+	<div id="content">
+		<!-- aca arranca el formulario -->
+		<div id="titleArea">
+			<h1>Todos las categor&iacute;as</h1>
+		</div>
+		<div id="formContent">
+			<div id="zoneNavigation">
 				<p>
 					<% for (CategoryValueObject cat : CategoryUtils.getAllCategories()) { %>
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
 
 					<% } %>
 				</p>
-
+			</div>
+		</div>
+	</div>
+</div>
+<!-- % @ include file="includes/fbShare.jsp" %-->
+<%@ include file="includes/footer.jsp" %>
 </body>
 </html>

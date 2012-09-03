@@ -4,3 +4,53 @@
 #content h1, #content h2, #content h3, #content h4 {
 	padding:8px 8px;
 }
+/* reescritura */
+#zoneNavigation, #categoryNavigation {
+	padding:0;
+}
+#zoneNavigation p, #categoryNavigation p {
+	-moz-column-width: 190px;
+	-moz-column-gap: 15px;
+	-webkit-column-width: 190px;
+	-webkit-column-gap: 15px;
+	-webkit-column-rule: 1px solid #ccc;
+	-moz-column-rule: 1px solid #ccc;
+
+	font-size:13px;
+	line-height:20px;
+	width:410px;
+	height:262px;
+	
+	overflow:hidden;
+}
+#zoneNavigation a, #categoryNavigation a {
+	color:#efaf01;
+}
+.sortable {
+	line-height:33px;
+	color:#292f3a;
+	background-image: url(../images/skin_basic/backgrounds/headerTablas.gif);
+	background-repeat: repeat-x;
+	padding-left:5px;
+	padding-right:5px;
+}
+.sortable a {
+	color:#292f3a;
+}
+tr {
+	height:30px;
+}
+td {
+	text-transform:capitalize;
+	padding-left:5px;
+	padding-right:5px;
+}
+td a {
+	color:#292f3a;
+}
+.odd {
+	background-color: #e6f5ff;
+}
+.even {
+	background-color: #fff;
+}

@@ -32,6 +32,11 @@
 	
 	float:right;
 }
+#formContent {
+	min-height:290px;
+	padding-top:20px;
+	margin-bottom:20px;
+}
 -->
 </style>
 </head>
@@ -43,10 +48,8 @@
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Detalles de la venta <bean:write name="SellDetailsForm" property="sellValueObject.name"/></h1>
-			<h2></h2>
 		</div>
-		<a href="./viewProfesionalProfile.do?id=<bean:write name="SellDetailsForm" property="sellValueObject.idProfesional"/>">Ver perfil profesional</a>
-		
+		<div id="formContent" class="height300"><a href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a></div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
