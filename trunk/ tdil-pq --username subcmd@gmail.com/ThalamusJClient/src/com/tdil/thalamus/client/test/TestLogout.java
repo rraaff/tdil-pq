@@ -2,7 +2,6 @@ package com.tdil.thalamus.client.test;
 
 import junit.framework.TestCase;
 import net.sf.json.JSON;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
@@ -14,16 +13,7 @@ public class TestLogout extends TestCase {
 		System.out.println(result);
 		assertTrue(result instanceof JSONObject);
 		JSONObject json = (JSONObject)result;
-		JSONArray links = json.getJSONArray("links");
-		boolean foundhome = false;
-		for (Object obj : links) {
-			JSONObject jsonObj = (JSONObject)obj;
-			if (jsonObj.getString("ref").equals("home")) {
-				foundhome = true;
-			}
-		}
-		assertTrue(foundhome);
-		JSONObject errors = json.getJSONObject("errors");
-		assertTrue(errors.isEmpty());
+		JSONObject errors = (JSONObject)json.get("errors");
+		assertNotNull(errors.getString("unathorized"));
 	}
 }

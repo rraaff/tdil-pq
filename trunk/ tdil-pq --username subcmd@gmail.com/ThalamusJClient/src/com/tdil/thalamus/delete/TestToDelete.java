@@ -38,6 +38,7 @@ public class TestToDelete {
 		start.set(1970, 0, 1, 0,0,0);
 		start.set(Calendar.MILLISECOND, 0);
 		System.out.println(new Date(714070884661l - start.getTimeInMillis()));
+		System.out.println(new Date(714070884661l /1000));
 	
 //		Cookie jsession = login("user1@mail.com", "1234");
 //		System.out.println(jsession);
