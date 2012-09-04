@@ -27,6 +27,7 @@ public class TestRegister extends TestCase {
 		person.put(RegistrationParameters.phoneNumberType, "cellphone");
 		person.put(RegistrationParameters.password, "1234");
 		JSON result1 = ThalamusClientFacade.register(person);
+		System.out.println(result1);
 		
 		JSON result = ThalamusClientFacade.login(email, "1234");
 		assertTrue(result instanceof JSONObject);
