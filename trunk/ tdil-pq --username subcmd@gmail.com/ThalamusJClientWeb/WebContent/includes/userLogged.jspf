@@ -1,0 +1,11 @@
+<%@page import="com.tdil.thalamusweb.utils.WebsiteUser"%>
+<% 	
+WebsiteUser websiteUser = null;
+boolean logged = false;
+if (request.getSession(false) != null) {
+	websiteUser = (WebsiteUser)request.getSession(false).getAttribute("user");
+	if (websiteUser != null) {
+		logged = true;
+	}
+}
+%>

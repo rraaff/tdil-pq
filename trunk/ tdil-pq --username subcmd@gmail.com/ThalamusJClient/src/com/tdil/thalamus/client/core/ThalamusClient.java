@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import net.sf.json.util.JSONTokener;
-import net.sf.json.util.JSONUtils;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.Header;
@@ -23,7 +23,7 @@ public class ThalamusClient {
 	
 	private static String server = "http://ec2-23-23-84-70.compute-1.amazonaws.com:9080";
 
-	public static JSON login(String username, String password) throws HttpStatusException, InvalidResponseException, CommunicationException {
+	public static JSON login(String username, String password) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();
 		String authStr = username + ":" + password;
@@ -52,6 +52,9 @@ public class ThalamusClient {
 			if (rawResponseMessage == null) {
 				throw new InvalidResponseException();
 			}
+			if (isUnauthorizedAccessResponse(rawResponseMessage)) {
+				throw new UnauthorizedException((JSON)rawResponseMessage);
+			}
 			return (JSON)rawResponseMessage;
 		} catch (HttpException e) {
 			throw new CommunicationException(e);
@@ -60,10 +63,17 @@ public class ThalamusClient {
 		}
 	}
 	
-	public static JSON executeGet(String username, String password, String service) throws HttpStatusException, InvalidResponseException, CommunicationException {
+	public static JSON executeGet(String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executeGet(null, null, service);
+	}
+	
+	
+	public static JSON executeGet(String username, String password, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
 		GetMethod httpMethod = new GetMethod(server + service);
-		addAuthentication(httpMethod, username, password);
+		if (username != null) {
+			addAuthentication(httpMethod, username, password);
+		}
 		try {
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
@@ -81,6 +91,9 @@ public class ThalamusClient {
 			if (rawResponseMessage == null) {
 				throw new InvalidResponseException();
 			}
+			if (isUnauthorizedAccessResponse(rawResponseMessage)) {
+				throw new UnauthorizedException((JSON)rawResponseMessage);
+			}
 			return (JSON)rawResponseMessage;
 		} catch (HttpException e) {
 			throw new CommunicationException(e);
@@ -89,9 +102,28 @@ public class ThalamusClient {
 		}
 	}
 	
-	public static JSON executePost(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException {
+	private static boolean isUnauthorizedAccessResponse(Object rawResponseMessage) {
+		if (rawResponseMessage instanceof JSONObject) {
+			JSONObject response = (JSONObject)rawResponseMessage;
+			JSONObject errors = response.getJSONObject("errors");
+			if (errors != null) {
+				Object unauthorized = errors.get("unathorized");
+				return unauthorized != null;
+			}
+		}
+		return false;
+	}
+	
+	public static JSON executePost(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(json, null, null, service);
+	}
+
+	public static JSON executePost(JSON json, String username, String password, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
 		PostMethod httpMethod = new PostMethod(server + service);
+		if (username != null) {
+			addAuthentication(httpMethod, username, password);
+		}
 		try {
 			httpMethod.setRequestHeader("Content-type", "application/json");
 			RequestEntity requestEntity = new StringRequestEntity(json.toString());
@@ -99,11 +131,11 @@ public class ThalamusClient {
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
 			String response = httpMethod.getResponseBodyAsString();
-//			if (isRedirection(statusCode)) {
-//				HttpMethod redirect = handleRedirect(httpMethod, client, username, password);
-//	            response = redirect.getResponseBodyAsString();
-//	            statusCode = redirect.getStatusCode();
-//			}
+			if (isRedirection(statusCode)) {
+				HttpMethod redirect = handleRedirect(httpMethod, client, username, password);
+	            response = redirect.getResponseBodyAsString();
+	            statusCode = redirect.getStatusCode();
+			}
 			if (statusCode != HttpStatus.SC_OK) {
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
@@ -111,6 +143,9 @@ public class ThalamusClient {
 			Object rawResponseMessage = tokener.nextValue();
 			if (rawResponseMessage == null) {
 				throw new InvalidResponseException();
+			}
+			if (isUnauthorizedAccessResponse(rawResponseMessage)) {
+				throw new UnauthorizedException((JSON)rawResponseMessage);
 			}
 			return (JSON)rawResponseMessage;
 		} catch (HttpException e) {
@@ -130,7 +165,9 @@ public class ThalamusClient {
 		Header redirectHeader = method.getResponseHeader("location");
 		String redirectLocation = redirectHeader.getValue();
 		GetMethod redirect = new GetMethod(redirectLocation);
-		addAuthentication(redirect, username, password);
+		if (username != null) {
+			addAuthentication(redirect, username, password);
+		}
         client.executeMethod(redirect);
         return redirect;
 	}

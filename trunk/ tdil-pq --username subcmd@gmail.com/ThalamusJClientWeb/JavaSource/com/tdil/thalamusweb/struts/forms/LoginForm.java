@@ -4,12 +4,20 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.thalamus.client.core.CommunicationException;
+import com.tdil.thalamus.client.core.HttpStatusException;
+import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamusweb.utils.WebsiteUser;
 
 public class LoginForm extends ActionForm {
@@ -47,8 +55,25 @@ public class LoginForm extends ActionForm {
 		}
 		
 		// Voy contra el core
-		WebsiteUser user = new WebsiteUser(this.getUsername(), this.getPassword());
-		return user;
+		try {
+//			No hace falta, si el profile me da ok, es porque es valido...ver con gabriel
+//			JSON login = ThalamusClientFacade.login(this.getUsername(), this.getPassword());
+			JSONObject getProfile = (JSONObject)ThalamusClientFacade.getProfile(this.getUsername(), this.getPassword());
+			JSONObject data = getProfile.getJSONObject("data");
+			String firstName = ((JSONObject)data).getJSONObject("profile").getString("firstName");
+			String lastName = ((JSONObject)data).getJSONObject("profile").getString("lastName");
+			
+			WebsiteUser user = new WebsiteUser(firstName + " " + lastName, this.getUsername(), this.getPassword());
+			return user;
+		} catch (HttpStatusException e) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		} catch (InvalidResponseException e) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		} catch (CommunicationException e) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		} catch (UnauthorizedException e) {
+			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+		}
 	}
 	
 }

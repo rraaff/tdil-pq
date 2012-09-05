@@ -23,5 +23,29 @@
   SHAPE="32,1521,0,0" TARGET="page0" TITLE="notAuthorized"
   TYPE="forward" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page4" PATH="/login.jsp" SHAPE="240,241,0,0"
-  SUBTYPE="jsp" TITLE="login.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="login.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/login.do" SUBTYPE="confirmed"
+   TARGET="action0" TITLE="/login.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToRegister" NAME="action1" PATH="/goToRegister"
+  SHAPE="32,609,0,0" TITLE="RegisterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/register.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1" PATH="/register.jsp" SHAPE="240,626,0,0"
+  SUBTYPE="jsp" TITLE="register.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/register.do"
+   SUBTYPE="confirmed" TARGET="action3" TITLE="/register.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#register" NAME="action3" PATH="/register"
+  SHAPE="32,721,0,0" TITLE="RegisterForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/registerSuccessful.jsp" TARGET="page2" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1" PATH="/register.jsp"
+   TARGET="page1" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/registerSuccessful.jsp"
+  SHAPE="240,833,0,0" SUBTYPE="jsp" TITLE="registerSuccessful.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
