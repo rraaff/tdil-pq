@@ -6,29 +6,16 @@
 
 <html>
 <head>
-<%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp" %>
 </head>
 <body>
-<h1>Thalamus Home</h1>
+<h1>Thalamus Legal</h1>
 
-<% if (!logged) { %>
-	<a href="goToRegister.do">Registrate</a>
-<% } else { %>
-	Registrate
-<% } %>
-<% if (!logged) { %>
-	<a href="login.jsp">Ingresa</a>
-<% } else { %>
-	Hola <%= websiteUser.getName() %>
-<% } %>
+
+<a href="registro.jsp">Registrate</a>
+<a href="login.jsp">Ingresa</a>
 <a href="catalogo.jsp">Catalogo</a>
 <a href="legal.jsp">Legal</a>
-<% if (!logged) { %>
-	Salir
-<% } else { %>
-	<a href="logout.do">Salir</a>
-<% } %>
 
 </body>
 </html>			

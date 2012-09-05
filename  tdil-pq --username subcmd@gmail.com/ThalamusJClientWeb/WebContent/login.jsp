@@ -14,14 +14,14 @@
 <div id="header"></div>
 <div id="container">
 	<div id="loginBase">
-		<h1>Ingreso al Administrador</h1>
+		<h1>Ingreso</h1>
 		<html:form method="POST" action="/login">
 		<div class="renglon width20">
 			<div class="label width20"><span class="errorText"><%=ThalamusJClientWebErrorFormatter.getErrorFrom(request, "general")%></span></div>
 		</div>
 		<div class="renglon width230">
 			<html:hidden name="LoginForm" property="operation" value=""/>
-			<div class="label width80">Usuario</div>or
+			<div class="label width80">Usuario</div>
 			<div class="label width150"><html:text name="LoginForm" property="username" styleClass="width120"/></div>
 		</div>
 		<div class="renglon width230">
@@ -32,5 +32,11 @@
 		</html:form>
 	</div>
 </div>
+
+<a href="registro.jsp">Registrate</a>
+<a href="login.jsp">Ingresa</a>
+<a href="catalogo.jsp">Catalogo</a>
+<a href="legal.jsp">Legal</a>
+
 </body>
 </html>

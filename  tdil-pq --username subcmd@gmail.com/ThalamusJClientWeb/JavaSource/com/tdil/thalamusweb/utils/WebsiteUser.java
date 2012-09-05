@@ -12,8 +12,11 @@ public class WebsiteUser extends User {
 	private String username;
 	private String password;
 	
-	public WebsiteUser(String username, String password) {
+	private String name;
+	
+	public WebsiteUser(String name, String username, String password) {
 		super();
+		this.name = name;
 		this.username = username;
 		this.password = password;
 	}
@@ -24,6 +27,10 @@ public class WebsiteUser extends User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public String getName() {
+		return name;
 	}
 	
 	

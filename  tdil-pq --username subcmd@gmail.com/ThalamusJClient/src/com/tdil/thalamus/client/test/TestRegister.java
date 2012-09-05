@@ -14,18 +14,19 @@ public class TestRegister extends TestCase {
 		String email = "Marcos" + System.currentTimeMillis() + "@gmail.com";
 		JSONObject person = new JSONObject();
 		person.put(RegistrationParameters.firstName, "Marcos");
-		person.put(RegistrationParameters.lastName, "Marcos");
+		person.put(RegistrationParameters.lastName, "Godoy");
 		person.put(RegistrationParameters.email, email);
 		person.put(RegistrationParameters.birthDate, 714070884661l);
-		person.put(RegistrationParameters.street, "Marcos");
-		person.put(RegistrationParameters.city, "Marcos");
+		person.put(RegistrationParameters.street, "Robles");
+		person.put(RegistrationParameters.city, "Dolores");
 		person.put(RegistrationParameters.stateId, 1);
 		person.put(RegistrationParameters.countryId, 8);
-		person.put(RegistrationParameters.postalCode, "1900");
+		person.put(RegistrationParameters.postalCode, "7100");
 		person.put(RegistrationParameters.addressType, "home");
 		person.put(RegistrationParameters.phoneNumber, "+54 0221 4513521");
 		person.put(RegistrationParameters.phoneNumberType, "cellphone");
 		person.put(RegistrationParameters.password, "1234");
+		System.out.println(person);
 		JSON result1 = ThalamusClientFacade.register(person);
 		System.out.println(result1);
 		
@@ -43,5 +44,15 @@ public class TestRegister extends TestCase {
 		assertTrue(foundhome);
 		JSONObject errors = json.getJSONObject("errors");
 		assertTrue(errors.isEmpty());
+		
+		/**/
+		JSON getProfile = ThalamusClientFacade.getProfile(email, "1234");
+		assertTrue(getProfile instanceof JSONObject);
+		JSONObject getProf = (JSONObject)getProfile;
+		JSONObject data = getProf.getJSONObject("data");
+		String firstName = ((JSONObject)data).getJSONObject("profile").getString("firstName");
+		String lastName = ((JSONObject)data).getJSONObject("profile").getString("lastName");
+		assertEquals("Marcos", firstName);
+		assertEquals("Godoy", lastName);
 	}
 }
