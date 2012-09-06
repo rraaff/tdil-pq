@@ -15,6 +15,7 @@ import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.thalamus.client.facade.RegistrationParameters;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamusweb.struts.forms.beans.ComboBean;
 
@@ -98,25 +99,24 @@ public class RegisterForm extends AbstractForm {
 	@Override
 	public void save() throws SQLException, ValidationException {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("firstName",this.firstName);
-		jsonObject.put("lastName",this.lastName);
-		jsonObject.put("email",this.email);
-		jsonObject.put("birthDate",this.birthDate);
-		jsonObject.put("birthDate",com.tdil.utils.DateUtils.parseDate(this.getBirthDate()).getTime());
-		jsonObject.put("street",this.street);
-		jsonObject.put("city",this.city);
-		jsonObject.put("countryId",this.countryId);
-		jsonObject.put("stateId",this.stateId);
-		jsonObject.put("postalCode",this.postalCode);
-		jsonObject.put("addressType",this.addressType);
-		jsonObject.put("phoneNumber",this.phoneNumber);
-		jsonObject.put("phoneNumberType",this.phoneNumberType);
-		jsonObject.put("password",this.password);
+		jsonObject.put(RegistrationParameters.firstName,this.firstName);
+		jsonObject.put(RegistrationParameters.lastName,this.lastName);
+		jsonObject.put(RegistrationParameters.email,this.email);
+		jsonObject.put(RegistrationParameters.birthDate,com.tdil.utils.DateUtils.parseDate(this.getBirthDate()).getTime());
+		jsonObject.put(RegistrationParameters.street,this.street);
+		jsonObject.put(RegistrationParameters.city,this.city);
+		jsonObject.put(RegistrationParameters.countryId,this.countryId);
+		jsonObject.put(RegistrationParameters.stateId,this.stateId);
+		jsonObject.put(RegistrationParameters.postalCode,this.postalCode);
+		jsonObject.put(RegistrationParameters.addressType,this.addressType);
+		jsonObject.put(RegistrationParameters.phoneNumber,this.phoneNumber);
+		jsonObject.put(RegistrationParameters.phoneNumberType,this.phoneNumberType);
+		jsonObject.put(RegistrationParameters.password,this.password);
 		
-//		jsonObject.put("activeConsumer",this.activeConsumer);
-//		jsonObject.put("preferedBrand",this.preferedBrand);
-//		jsonObject.put("alternativeBrandId",this.alternativeBrandId);
-//		jsonObject.put("consumptionFrequency",this.consumptionFrequency);
+		jsonObject.put(RegistrationParameters.activeConsumer,this.activeConsumer);
+		jsonObject.put(RegistrationParameters.preferedBrandId,this.preferedBrand);
+		jsonObject.put(RegistrationParameters.alternativeBrandId,this.alternativeBrandId);
+		jsonObject.put(RegistrationParameters.consumptionFrequency,this.consumptionFrequency);
 		System.out.println(jsonObject);
 		try {
 			JSON response = ThalamusClientFacade.registerPersonAndConsumer(jsonObject);
