@@ -6,6 +6,11 @@
   <param-name>application.resources</param-name>
   <param-value>com.tdil.thalamusweb.struts.resources.ApplicationResources</param-value>
  </context-param>
+ <context-param>
+  <param-name>thalamus.server</param-name>
+  <param-value>http://ec2-23-23-84-70.compute-1.amazonaws.com:9080</param-value>
+ </context-param>
+ 
  <filter>
   <filter-name>NoCachingFilter</filter-name>
   <filter-class>com.tdil.web.NoCacheFilter</filter-class>

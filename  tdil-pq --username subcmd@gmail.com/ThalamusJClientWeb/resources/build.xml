@@ -75,8 +75,8 @@
 		<mkdir dir="${project.name.upper}.tmp" />
 		<antcall target="makeWar">
 		</antcall>
-		<!--copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
-		</copy-->
+		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
+		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
 	</target>
