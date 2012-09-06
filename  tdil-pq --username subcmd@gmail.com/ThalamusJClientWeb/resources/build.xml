@@ -1,15 +1,15 @@
-<project name="Milka" basedir="." default="makeEntregable">
+<project name="Thalamus" basedir="." default="makeEntregable">
 
-	<property name="project.name.cap" value="Milka" />
-	<property name="project.name.upper" value="MILKA" />
-	<property name="project.name.lower" value="milka" />
+	<property name="project.name.cap" value="ThalamusJClient" />
+	<property name="project.name.upper" value="THALAMUSJCLIENT" />
+	<property name="project.name.lower" value="thalamusjclient" />
 
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
 			<classes dir="../../JavaBase/bin" />
-			<classes dir="../../WordCram/bin" />
+			<classes dir="../../ThalamusJClient/bin" />
 			<lib dir="../../EnvironmentLibraries/">
 				<include name="*.jar" />
 				<exclude name="servlet-api.jar" />
@@ -18,6 +18,7 @@
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
 		</unwar>
+		<copy todir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/lib" file="../../ThalamusJClient/commons-httpclient.jar"></copy>
 		<antcall target="js.minify"></antcall>
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war"></delete>
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
@@ -74,32 +75,10 @@
 		<mkdir dir="${project.name.upper}.tmp" />
 		<antcall target="makeWar">
 		</antcall>
-		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
-		</copy>
+		<!--copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
+		</copy-->
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
-	</target>
-	
-	<target name="hotDeploy-prd">
-		<input message="Realmente desea hacer el hot deploy en produccion? (y/n)?" validargs="y,n" addproperty="do.delete" />
-		<condition property="do.abort">
-			<equals arg1="n" arg2="${do.delete}" />
-		</condition>
-		<fail if="do.abort">Build aborted by user.</fail>
-		<delete dir="${project.name.upper}.tmp" failonerror="false"></delete>
-		<mkdir dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" />
-		<copy todir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
-			<fileset dir="../WebContent">
-				<exclude name="META-INF/**"/>
-				<exclude name="WEB-INF/**"/>
-			</fileset>
-		</copy>
-		<antcall target="js.minify"></antcall>
-		<zip destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.zip" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1"></zip>
-		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
-		<scp file="./MILKA.tmp/MILKA_WEB.zip" keyfile="/home/mgodoy/freelance/aws/tdil01.pem" todir="ubuntu@23.23.228.132:/home/ubuntu/" passphrase="" trust="true">
-		</scp>
-		<sshexec failonerror="true" keyfile="/home/mgodoy/freelance/aws/tdil01.pem" username="ubuntu" host="23.23.228.132" trust="true" knownhosts="23.23.228.132" passphrase="" command="sudo /home/ubuntu/hotdeploy_milka.sh"/>
 	</target>
 
 </project>
