@@ -4,6 +4,10 @@ public interface ThalamusServices {
 
 	public String GET_COUNTRIES = "/thalamus/api/referencedata/countries";
 	public String GET_BRANDS = "/thalamus/api/referencedata/brands";
+	
+	public String GET_STATES_START = "/thalamus/api/referencedata/countries/";
+	public String GET_STATES_END = "/states";
+	
 
 	public String LOGIN = "/thalamus/api/thalamus_security_check";
 	public String LOGOUT = "/thalamus/api/thalamus_security_logout";

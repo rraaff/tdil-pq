@@ -55,7 +55,7 @@ $(document).ready(
 			Ciudad:<html:text name="RegisterForm" property="city" styleClass="normalField width200"/>
 		</div>
 		<div class="myLabel width110" id="Pais">
-			Pais:<html:select name="RegisterForm" property="countryId" styleClass="normalField width150">
+			Pais:<html:select name="RegisterForm" property="countryId" styleClass="normalField width150" onchange="this.form.action='./refreshStatesRegistro.do';this.form.submit()">
 				<option value="">Seleccione</option>
 				<% for (ComboBean country : registerForm.getCountries()) { %>
 					<option <%=	country.getValue() == registerForm.getCountryId() ? "selected" : ""%> value="<%=country.getValue()%>">
@@ -63,6 +63,41 @@ $(document).ready(
 				<% } %>
 			</html:select>
 		</div>
+		<div class="myLabel width110" id="Pais">
+			Estados:<html:select name="RegisterForm" property="stateId" styleClass="normalField width150">
+				<option value="">Seleccione</option>
+				<% for (ComboBean state : registerForm.getStates()) { %>
+					<option <%=	state.getValue() == registerForm.getStateId() ? "selected" : ""%> value="<%=state.getValue()%>">
+						<%=state.getLabel()%></option>
+				<% } %>
+			</html:select>
+		</div>
+		
+		<div class="myLabel width110" id="Pais">
+			<html:checkbox name="RegisterForm" property="activeConsumer" />Consumidor activo
+		</div>
+		<div class="myLabel width110" id="Pais">
+			Marca regular:<html:select name="RegisterForm" property="preferedBrand" styleClass="normalField width150">
+				<option value="">Seleccione</option>
+				<% for (ComboBean brand : registerForm.getBrands()) { %>
+					<option <%=	brand.getValue() == registerForm.getPreferedBrand() ? "selected" : ""%> value="<%=brand.getValue()%>">
+						<%=brand.getLabel()%></option>
+				<% } %>
+			</html:select>
+		</div>
+		<div class="myLabel width110" id="Pais">
+			Marca alternativa:<html:select name="RegisterForm" property="alternativeBrandId" styleClass="normalField width150">
+				<option value="">Seleccione</option>
+				<% for (ComboBean brand : registerForm.getBrands()) { %>
+					<option <%=	brand.getValue() == registerForm.getAlternativeBrandId() ? "selected" : ""%> value="<%=brand.getValue()%>">
+						<%=brand.getLabel()%></option>
+				<% } %>
+			</html:select>
+		</div>
+		<div class="myLabel width110">
+			consumptionFrequency:<html:text name="RegisterForm" property="consumptionFrequency" styleClass="normalField width200"/>
+		</div>
+		
 		<div class="myLabel width110">
 			postalCode:<html:text name="RegisterForm" property="postalCode" styleClass="normalField width200"/>
 		</div>
@@ -88,7 +123,7 @@ $(document).ready(
 			</html:select>
 		</div>
 		<div class="myLabel width110">
-			password:<html:text name="RegisterForm" property="password" styleClass="normalField width200"/>
+			password:<html:password name="RegisterForm" property="password" styleClass="normalField width200"/>
 		</div>
 		
 		<html:submit property="operation">Registro</html:submit>
