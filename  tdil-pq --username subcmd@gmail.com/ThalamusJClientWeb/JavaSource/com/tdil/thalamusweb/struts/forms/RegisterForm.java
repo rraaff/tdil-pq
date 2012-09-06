@@ -30,6 +30,12 @@ public class RegisterForm extends AbstractForm {
 	private String city;
 	private int countryId;
 	private int stateId;
+	
+	private boolean activeConsumer;
+	private int preferedBrand;
+	private int alternativeBrandId;
+	private int consumptionFrequency;
+	
 	private String postalCode;
 	private String addressType;
 	private String phoneNumber;
@@ -37,6 +43,7 @@ public class RegisterForm extends AbstractForm {
 	private String password;
 	
 	private List<ComboBean> countries = new ArrayList<ComboBean>();
+	private List<ComboBean> brands = new ArrayList<ComboBean>();
 	private List<ComboBean> states = new ArrayList<ComboBean>();
 
 	@Override
@@ -53,7 +60,13 @@ public class RegisterForm extends AbstractForm {
 				JSONObject row = result.getJSONObject(i);
 				countries.add(new ComboBean(row.getInt("id"), row.getString("name")));
 			}
-			
+			brands.clear();
+			JSONArray brandsResult = (JSONArray)ThalamusClientFacade.getBrands();
+			for (int i = 0; i < brandsResult.size(); i++) {
+				JSONObject row = brandsResult.getJSONObject(i);
+				brands.add(new ComboBean(row.getInt("id"), row.getString("name")));
+			}
+			states.clear();
 		} catch (HttpStatusException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,20 +101,27 @@ public class RegisterForm extends AbstractForm {
 		jsonObject.put("firstName",this.firstName);
 		jsonObject.put("lastName",this.lastName);
 		jsonObject.put("email",this.email);
-		// TODO esto verlo jsonObject.put("birthDate",this.birthDate);
-		jsonObject.put("birthDate",714070884661l);
+		jsonObject.put("birthDate",this.birthDate);
+		jsonObject.put("birthDate",com.tdil.utils.DateUtils.parseDate(this.getBirthDate()).getTime());
 		jsonObject.put("street",this.street);
 		jsonObject.put("city",this.city);
 		jsonObject.put("countryId",this.countryId);
-		jsonObject.put("stateId",1);
+		jsonObject.put("stateId",this.stateId);
 		jsonObject.put("postalCode",this.postalCode);
 		jsonObject.put("addressType",this.addressType);
 		jsonObject.put("phoneNumber",this.phoneNumber);
 		jsonObject.put("phoneNumberType",this.phoneNumberType);
 		jsonObject.put("password",this.password);
+		
+//		jsonObject.put("activeConsumer",this.activeConsumer);
+//		jsonObject.put("preferedBrand",this.preferedBrand);
+//		jsonObject.put("alternativeBrandId",this.alternativeBrandId);
+//		jsonObject.put("consumptionFrequency",this.consumptionFrequency);
 		System.out.println(jsonObject);
 		try {
-			JSON response = ThalamusClientFacade.register(jsonObject);
+			JSON response = ThalamusClientFacade.registerPersonAndConsumer(jsonObject);
+			// if response is ok if ()
+			
 			
 		} catch (HttpStatusException e) {
 			throw new ValidationException(new ValidationError("RegisterForm.GENERAL_ERROR"));
@@ -228,11 +248,77 @@ public class RegisterForm extends AbstractForm {
 	}
 
 	public List<ComboBean> getStates() {
+		if (this.getCountryId() == 0) {
+			states = new ArrayList<ComboBean>();
+		} else {
+			if (states.isEmpty() || this.getCountryId() != states.get(0).getParent()) {
+				try {
+					states.clear();
+					JSONArray brandsResult = (JSONArray)ThalamusClientFacade.getStates(this.getCountryId());
+					for (int i = 0; i < brandsResult.size(); i++) {
+						JSONObject row = brandsResult.getJSONObject(i);
+						states.add(new ComboBean(row.getInt("id"), row.getString("name"), row.getInt("masterId")));
+					}
+				} catch (HttpStatusException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvalidResponseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (CommunicationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnauthorizedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 		return states;
 	}
 
 	public void setStates(List<ComboBean> states) {
 		this.states = states;
+	}
+
+	public List<ComboBean> getBrands() {
+		return brands;
+	}
+
+	public void setBrands(List<ComboBean> brands) {
+		this.brands = brands;
+	}
+
+	public boolean isActiveConsumer() {
+		return activeConsumer;
+	}
+
+	public void setActiveConsumer(boolean activeConsumer) {
+		this.activeConsumer = activeConsumer;
+	}
+
+	public int getPreferedBrand() {
+		return preferedBrand;
+	}
+
+	public void setPreferedBrand(int preferedBrand) {
+		this.preferedBrand = preferedBrand;
+	}
+
+	public int getAlternativeBrandId() {
+		return alternativeBrandId;
+	}
+
+	public void setAlternativeBrandId(int alternativeBrandId) {
+		this.alternativeBrandId = alternativeBrandId;
+	}
+
+	public int getConsumptionFrequency() {
+		return consumptionFrequency;
+	}
+
+	public void setConsumptionFrequency(int consumptionFrequency) {
+		this.consumptionFrequency = consumptionFrequency;
 	}
 	
 }

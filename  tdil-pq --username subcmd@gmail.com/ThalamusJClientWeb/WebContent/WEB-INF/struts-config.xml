@@ -25,10 +25,15 @@
    <forward name="continue" path="/register.jsp" redirect="true"/>
   </action>
   
-  <action name="RegisterForm" path="/register" scope="session" type="com.tdil.thalamusweb.struts.action.ThalamusSaveAction">
+  <action name="RegisterForm" path="/register" scope="session" type="com.tdil.thalamusweb.struts.action.ThalamusRegisterAction">
    <forward name="failure" path="/register.jsp"/>
    <forward name="continue" path="/registerSuccessful.jsp" redirect="true"/>
   </action>
+  
+  <action name="RegisterForm" path="/refreshStatesRegistro" scope="session" type="com.tdil.struts.actions.RefreshAction">
+   <forward name="continue" path="/register.jsp"/>
+  </action>
+  
   
  </action-mappings>
  

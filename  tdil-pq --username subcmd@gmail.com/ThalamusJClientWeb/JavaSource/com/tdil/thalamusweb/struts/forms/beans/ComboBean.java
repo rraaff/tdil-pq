@@ -8,6 +8,7 @@ public class ComboBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6443238617665160971L;
+	private int parent;
 	private int value;
 	private String label;
 	
@@ -15,6 +16,13 @@ public class ComboBean implements Serializable {
 		super();
 		this.value = value;
 		this.label = label;
+	}
+	
+	public ComboBean(int value, String label, int parent) {
+		super();
+		this.value = value;
+		this.label = label;
+		this.parent = parent;
 	}
 	
 	public int getValue() {
@@ -28,5 +36,13 @@ public class ComboBean implements Serializable {
 	}
 	public void setLabel(String label) {
 		this.label = label;
+	}
+
+	public int getParent() {
+		return parent;
+	}
+
+	public void setParent(int parent) {
+		this.parent = parent;
 	}
 }

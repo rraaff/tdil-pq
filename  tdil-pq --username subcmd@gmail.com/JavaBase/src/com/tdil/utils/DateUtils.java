@@ -1,7 +1,11 @@
 package com.tdil.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import org.apache.commons.lang.StringUtils;
 
 public class DateUtils {
 
@@ -53,5 +57,27 @@ public class DateUtils {
 		calendar.set(Calendar.SECOND, seconds);
 		calendar.set(Calendar.MILLISECOND, milliseconds);
 		return calendar; 
+	}
+
+	public static String formatDate(Date fromDate2) {
+		if (fromDate2 == null) {
+			return "";
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return dateFormat.format(fromDate2);
+	}
+
+	public static Date parseDate(String fromDate2) {
+		try {
+			if (StringUtils.isEmpty(fromDate2)) {
+				return null;
+			}
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			return dateFormat.parse(fromDate2);
+		} catch (ParseException e) {
+//			HighlightedCategoryForm.getLog().error(e.getMessage(), e);
+			//throw new RuntimeException(e);
+			return null;
+		}
 	}
 }

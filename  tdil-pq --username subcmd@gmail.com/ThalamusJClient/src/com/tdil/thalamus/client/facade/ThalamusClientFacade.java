@@ -28,6 +28,10 @@ public class ThalamusClientFacade {
 		return ThalamusClient.executeGet(ThalamusServices.GET_COUNTRIES);
 	}
 	
+	public static JSON getStates(int country) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return ThalamusClient.executeGet(ThalamusServices.GET_STATES_START + country + ThalamusServices.GET_STATES_END);
+	}
+	
 	public static JSON getBrands() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return ThalamusClient.executeGet(ThalamusServices.GET_BRANDS);
 	}
@@ -35,6 +39,10 @@ public class ThalamusClientFacade {
 	
 	public static JSON register(JSONObject jsonObject) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return ThalamusClient.executePost(jsonObject, ThalamusServices.REGISTER_PERSON);
+	}
+	
+	public static JSON registerPersonAndConsumer(JSONObject jsonObject) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return ThalamusClient.executePost(jsonObject, ThalamusServices.REGISTER_PERSON_CONSUMER);
 	}
 	
 }

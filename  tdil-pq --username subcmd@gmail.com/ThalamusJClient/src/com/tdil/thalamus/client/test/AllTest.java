@@ -12,6 +12,7 @@ public class AllTest {
 		suite.addTestSuite(TestLogin.class);
 		suite.addTestSuite(TestLogout.class);
 		suite.addTestSuite(TestCountries.class);
+		suite.addTestSuite(TestStates.class);
 		suite.addTestSuite(TestBrands.class);
 		suite.addTestSuite(TestRegister.class);
 		return suite;
