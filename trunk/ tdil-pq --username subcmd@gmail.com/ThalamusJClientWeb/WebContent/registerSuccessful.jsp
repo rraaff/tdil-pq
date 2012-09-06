@@ -7,12 +7,40 @@
 <html>
 <head>
 <%@ include file="includes/head.jsp" %>
+<style type="text/css">
+<!--
+#registrationSucessful {
+	background-image: url(images/skin_nrg/registration_successful.jpg);
+	background-repeat: no-repeat;
+	width: 990px;
+	height: 580px;
+	margin: 0 auto;
+}
+#textMessage {
+	width:440px;
+	height:60px;
+	font-family: 'Gill Sans MT', Genova, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #2d0703;
+	left:276px;
+	top:260px;
+	position:relative;
+}
+#button {
+	width:440px;
+	height:58px;
+	left:280px;
+	top:318px;
+	position:relative;
+	text-align:right;
+}
+-->
+</style>
 </head>
 <body>
-<h1>Registro exitoso</h1>
-
-
-Tu registracion fue exitosa <a href="index.jsp">Ir a la home</a>
-
+<div id="registrationSucessful">
+	<div id="textMessage" align="center">You prize has been traded-off successfully,<br/>Check the status of your shipment regularly</div>
+	<div id="button"><a href="index.jsp" title="Continue"><img src="images/skin_nrg/btn_continue.png" width="198" height="56"></a></div>
+</div>
 </body>
 </html>			
