@@ -45,7 +45,6 @@ import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.Wall;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
-import com.tdil.tuafesta.utils.DateUtils;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
@@ -231,7 +230,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
 		FieldValidation.validateText(this.getBusinesshours(), businesshours_key, 4000, false, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, false, validationError);
-		Date birthDate = DateUtils.parseDate(this.getBirthdate());
+		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
@@ -297,7 +296,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setPhonetype(this.getPhoneType());
 		profesional.setIdGeolevel(this.getGeo4Id());
 		profesional.setSex(this.getSex());
-		profesional.setBirthdate(DateUtils.parseDate(this.getBirthdate()));
+		profesional.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
 		
 		profesional.setEmail(this.getEmail());
 		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
