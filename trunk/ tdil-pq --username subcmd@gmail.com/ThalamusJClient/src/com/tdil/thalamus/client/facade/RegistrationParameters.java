@@ -17,7 +17,7 @@ public interface RegistrationParameters {
 	public String password = "password";
 	
 	public String activeConsumer = "activeConsumer";
-	public String preferedBrand = "preferedBrand";
+	public String preferedBrandId = "preferedBrandId";
 	public String alternativeBrandId = "alternativeBrandId";
 	public String consumptionFrequency = "consumptionFrequency";
 }

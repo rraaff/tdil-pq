@@ -11,7 +11,7 @@ import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 public class TestRegister extends TestCase {
 
 	public void testRegisterSuccess() throws Exception {
-		String email = "Marcos" + System.currentTimeMillis() + "@gmail.com";
+		String email = "Marcos" + System.nanoTime() + "@gmail.com";
 		JSONObject person = new JSONObject();
 		person.put(RegistrationParameters.firstName, "Marcos");
 		person.put(RegistrationParameters.lastName, "Godoy");
@@ -57,7 +57,7 @@ public class TestRegister extends TestCase {
 	}
 	
 	public void testRegisterConsumerSuccess() throws Exception {
-		String email = "Marcos" + System.currentTimeMillis() + "@gmail.com";
+		String email = "Marcos" + System.nanoTime() + "@gmail.com";
 		JSONObject person = new JSONObject();
 		person.put(RegistrationParameters.firstName, "Marcos");
 		person.put(RegistrationParameters.lastName, "Godoy");
@@ -74,7 +74,7 @@ public class TestRegister extends TestCase {
 		person.put(RegistrationParameters.password, "1234");
 		
 		person.put(RegistrationParameters.activeConsumer, true);
-		person.put(RegistrationParameters.preferedBrand, 1);
+		person.put(RegistrationParameters.preferedBrandId, 1);
 		person.put(RegistrationParameters.alternativeBrandId, 2);
 		person.put(RegistrationParameters.consumptionFrequency, 2);
 		System.out.println(person);
