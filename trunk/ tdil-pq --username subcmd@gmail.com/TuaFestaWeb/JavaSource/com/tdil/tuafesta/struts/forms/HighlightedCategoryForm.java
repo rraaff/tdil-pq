@@ -20,7 +20,6 @@ import com.tdil.tuafesta.model.ProductCategory;
 import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
-import com.tdil.tuafesta.utils.DateUtils;
 
 public class HighlightedCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
@@ -70,8 +69,8 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		HighlightedCategory highlightedCategory = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(id);
 		if (highlightedCategory != null) {
 			this.objectId = id;
-			this.fromDate = DateUtils.formatDate(highlightedCategory.getFromdate());
-			this.toDate = DateUtils.formatDate(highlightedCategory.getTodate());
+			this.fromDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getFromdate());
+			this.toDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getTodate());
 			if (highlightedCategory.getType().equals(0)) { // producto
 				ProductCategory productCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
 				this.categoryId = productCategory.getId();
@@ -136,8 +135,8 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	public void setData(HighlightedCategory highlightedCategory) {
 		highlightedCategory.setIdProdServCat(this.getCategoryId());
 		highlightedCategory.setType(this.getCategoryType().equals("p") ? 0 : 1);
-		highlightedCategory.setFromdate(DateUtils.parseDate(this.getFromDate()));
-		highlightedCategory.setTodate(DateUtils.parseDate(this.getToDate()));
+		highlightedCategory.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
+		highlightedCategory.setTodate(com.tdil.utils.DateUtils.parseDate(this.getToDate()));
 	}
 
 	public int getObjectId() {

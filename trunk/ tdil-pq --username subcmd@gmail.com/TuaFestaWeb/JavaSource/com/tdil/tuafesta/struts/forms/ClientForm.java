@@ -32,7 +32,6 @@ import com.tdil.tuafesta.model.Geo3Example;
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.ProfesionalExample;
-import com.tdil.tuafesta.utils.DateUtils;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
@@ -122,7 +121,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
 		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
 		
-		Date birthDate = DateUtils.parseDate(this.getBirthdate());
+		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
@@ -164,7 +163,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		client.setLastname(this.getLastname());
 		client.setIdGeolevel(this.getGeo4Id());
 		client.setSex(this.getSex());
-		client.setBirthdate(DateUtils.parseDate(this.getBirthdate()));
+		client.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
 		
 		client.setEmail(this.getEmail());
 		client.setVerifemail(RandomStringUtils.randomAlphanumeric(20));

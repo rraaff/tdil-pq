@@ -22,7 +22,6 @@ import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalExample;
 import com.tdil.tuafesta.model.ProfesionalExample.Criteria;
 import com.tdil.tuafesta.model.valueobjects.HighlightedProfesionalValueObject;
-import com.tdil.tuafesta.utils.DateUtils;
 
 public class HighlightedProfesionalForm extends TransactionalValidationForm {
 
@@ -93,8 +92,8 @@ public class HighlightedProfesionalForm extends TransactionalValidationForm {
 		HighlightedProfesionalDAO highlightedProfesionalDAO = DAOManager.getHighlightedProfesionalDAO();
 		HighlightedProfesional highlightedProfesional = new HighlightedProfesional();
 		highlightedProfesional.setIdProfesional(this.getProfesional().getId());
-		highlightedProfesional.setFromdate(DateUtils.parseDate(this.getFromDate()));
-		highlightedProfesional.setTodate(DateUtils.parseDate(this.getToDate()));
+		highlightedProfesional.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
+		highlightedProfesional.setTodate(com.tdil.utils.DateUtils.parseDate(this.getToDate()));
 		highlightedProfesional.setDeleted(0);
 		BigDecimal payment = new BigDecimal(this.getPayment());
 		highlightedProfesional.setPayment(payment);
@@ -230,7 +229,7 @@ public class HighlightedProfesionalForm extends TransactionalValidationForm {
 			if (StringUtils.isEmpty(this.profesionalBusinessNameSearch)) {
 				params.put("businessname", "%" + this.profesionalBusinessNameSearch + "%");
 			}
-			Date datesearch = DateUtils.parseDate(this.profesionalDateSearch);
+			Date datesearch = com.tdil.utils.DateUtils.parseDate(this.profesionalDateSearch);
 			if (datesearch != null) {
 				params.put("dateactive", datesearch);
 			}

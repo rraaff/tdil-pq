@@ -1,7 +1,6 @@
 package com.tdil.tuafesta.model.valueobjects;
 
 import com.tdil.tuafesta.model.HighlightedProfesional;
-import com.tdil.tuafesta.utils.DateUtils;
 
 public class HighlightedProfesionalValueObject extends HighlightedProfesional {
 
@@ -21,11 +20,11 @@ public class HighlightedProfesionalValueObject extends HighlightedProfesional {
 	}
 	
 	public String getFormatedfromdate() {
-		return DateUtils.formatDate(this.getFromdate());
+		return com.tdil.utils.DateUtils.formatDate(this.getFromdate());
 	}
 	
 	public String getFormatedtodate() {
-		return DateUtils.formatDate(this.getTodate());
+		return com.tdil.utils.DateUtils.formatDate(this.getTodate());
 	}
 	
 }
