@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.thalamus.client.core.ThalamusClient;
 
 public class ThalamusJClientWebConfig implements ServletContextListener {
 
@@ -36,6 +37,13 @@ public class ThalamusJClientWebConfig implements ServletContextListener {
 						"ThalamusJClientWebConfig application.resources is "
 								+ (applicationResourcesParam == null ? "null" : applicationResourcesParam));
 				ApplicationResources.init(applicationResourcesParam);
+				
+				String thalamusserver = c.getInitParameter("thalamus.server");
+				if (thalamusserver != null) {
+					ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
+				}
+				getLog().fatal(
+						"Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
 			}
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
