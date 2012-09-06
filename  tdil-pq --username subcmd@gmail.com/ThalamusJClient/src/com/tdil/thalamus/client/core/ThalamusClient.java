@@ -21,14 +21,14 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 public class ThalamusClient {
 	
-	private static String server = "http://ec2-23-23-84-70.compute-1.amazonaws.com:9080";
+	private static String THALAMUS_SERVER = "http://ec2-23-23-84-70.compute-1.amazonaws.com:9080";
 
 	public static JSON login(String username, String password) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();
 		String authStr = username + ":" + password;
         String authEncoded = Base64.encodeBase64String(authStr.getBytes());
-		PostMethod httpMethod = new PostMethod(server + ThalamusServices.LOGIN);
+		PostMethod httpMethod = new PostMethod(THALAMUS_SERVER + ThalamusServices.LOGIN);
 		httpMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		httpMethod.setRequestHeader("Authorization", "Basic " + authEncoded);
 		String data = "j_username="+URLEncoder.encode(username)+"&j_password=" + URLEncoder.encode(password);
@@ -70,7 +70,7 @@ public class ThalamusClient {
 	
 	public static JSON executeGet(String username, String password, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
-		GetMethod httpMethod = new GetMethod(server + service);
+		GetMethod httpMethod = new GetMethod(THALAMUS_SERVER + service);
 		if (username != null) {
 			addAuthentication(httpMethod, username, password);
 		}
@@ -120,7 +120,7 @@ public class ThalamusClient {
 
 	public static JSON executePost(JSON json, String username, String password, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		HttpClient client = new HttpClient();
-		PostMethod httpMethod = new PostMethod(server + service);
+		PostMethod httpMethod = new PostMethod(THALAMUS_SERVER + service);
 		if (username != null) {
 			addAuthentication(httpMethod, username, password);
 		}
@@ -177,11 +177,11 @@ public class ThalamusClient {
 		HttpStatus.SC_MOVED_TEMPORARILY == statusCode;
 	}
 
-	public static String getServer() {
-		return server;
+	public static String getTHALAMUS_SERVER() {
+		return THALAMUS_SERVER;
 	}
 
-	public static void setServer(String server) {
-		ThalamusClient.server = server;
+	public static void setTHALAMUS_SERVER(String server) {
+		ThalamusClient.THALAMUS_SERVER = server;
 	}
 }
