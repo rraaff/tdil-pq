@@ -32,6 +32,7 @@
   
   <action name="RegisterForm" path="/refreshStatesRegistro" scope="session" type="com.tdil.struts.actions.RefreshAction">
    <forward name="continue" path="/register.jsp"/>
+   <forward name="failure" path="/ups.jsp"/>
   </action>
   
   
