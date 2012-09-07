@@ -71,6 +71,7 @@ html, body {
 body {
 	background-image: url(../images/skin_nrg/trama.gif);
 	background-repeat: repeat;
+	background-position:center top;
 	margin:0;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#000;
