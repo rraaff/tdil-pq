@@ -53,5 +53,9 @@
   TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/register.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1" PATH="/ups.jsp"
+   TARGET="page5" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page5" PATH="/ups.jsp" SHAPE="240,977,0,0"
+  SUBTYPE="jsp" TITLE="ups.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
