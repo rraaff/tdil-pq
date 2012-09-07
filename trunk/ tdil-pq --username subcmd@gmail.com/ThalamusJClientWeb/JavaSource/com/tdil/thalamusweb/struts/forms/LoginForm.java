@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
@@ -17,7 +16,11 @@ import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.thalamus.client.facade.ProfileResponse;
+import com.tdil.thalamus.client.facade.RegistrationParameters;
+import com.tdil.thalamus.client.facade.StandardResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
+import com.tdil.thalamus.client.utils.ThalamusUtils;
 import com.tdil.thalamusweb.utils.WebsiteUser;
 
 public class LoginForm extends ActionForm {
@@ -53,26 +56,23 @@ public class LoginForm extends ActionForm {
 		if (StringUtils.isEmpty(this.getPassword())) {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
 		}
-		
-		// Voy contra el core
 		try {
-//			No hace falta, si el profile me da ok, es porque es valido...ver con gabriel
-//			JSON login = ThalamusClientFacade.login(this.getUsername(), this.getPassword());
 			JSONObject getProfile = (JSONObject)ThalamusClientFacade.getProfile(this.getUsername(), this.getPassword());
-			JSONObject data = getProfile.getJSONObject("data");
-			String firstName = ((JSONObject)data).getJSONObject("profile").getString("firstName");
-			String lastName = ((JSONObject)data).getJSONObject("profile").getString("lastName");
+			JSONObject data = getProfile.getJSONObject(StandardResponse.DATA);
+			String firstName = ((JSONObject)data).getJSONObject(ProfileResponse.PROFILE).getString(RegistrationParameters.firstName);
+			String lastName = ((JSONObject)data).getJSONObject(ProfileResponse.PROFILE).getString(RegistrationParameters.lastName);
 			
 			WebsiteUser user = new WebsiteUser(firstName + " " + lastName, this.getUsername(), this.getPassword());
+			user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
 			return user;
 		} catch (HttpStatusException e) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.HttpStatusException"));
 		} catch (InvalidResponseException e) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.InvalidResponseException"));
 		} catch (CommunicationException e) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.CommunicationException"));
 		} catch (UnauthorizedException e) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.UnauthorizedException"));
 		}
 	}
 	

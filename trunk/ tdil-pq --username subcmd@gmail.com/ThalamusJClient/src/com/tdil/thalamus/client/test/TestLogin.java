@@ -1,5 +1,10 @@
 package com.tdil.thalamus.client.test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import junit.framework.TestCase;
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
@@ -24,5 +29,15 @@ public class TestLogin extends TestCase {
 		assertTrue(foundhome);
 		JSONObject errors = json.getJSONObject("errors");
 		assertTrue(errors.isEmpty());
+		System.out.println(json);
+		
+		Set<Integer> appliedActivities = new HashSet<Integer>();
+		JSONObject data = json.getJSONObject("data");
+		JSONArray activities= data.getJSONArray("activities");
+		for (int i = 0; i < activities.size(); i++) {
+			JSONObject act = activities.getJSONObject(i);
+			appliedActivities.add(act.getInt("id"));
+		}
+		System.out.println(appliedActivities);
 	}
 }

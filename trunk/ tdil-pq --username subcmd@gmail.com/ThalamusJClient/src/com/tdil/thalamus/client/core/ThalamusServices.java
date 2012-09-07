@@ -16,7 +16,6 @@ public interface ThalamusServices {
 	
 	public String GET_PERSON_PROFILE = "/thalamus/api/people/profile";
 
-	// TODO
 	public String GET_PERSON_CONSUMER = "/thalamus/api/people/consumer";
 	
 	public String REGISTER_PERSON_CONSUMER = "/thalamus/api/people/register/profileconsumer";

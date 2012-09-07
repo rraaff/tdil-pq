@@ -4,22 +4,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import org.apache.log4j.Logger;
+import org.apache.struts.action.ActionMapping;
+
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
+import com.tdil.struts.forms.RefreshableForm;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.RegistrationParameters;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
+import com.tdil.thalamus.client.utils.ThalamusUtils;
 import com.tdil.thalamusweb.struts.forms.beans.ComboBean;
+import com.tdil.thalamusweb.utils.WebsiteUser;
 
-public class RegisterForm extends AbstractForm {
+public class RegisterForm extends AbstractForm implements RefreshableForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
@@ -49,11 +58,18 @@ public class RegisterForm extends AbstractForm {
 
 	@Override
 	public ValidationError validate() {
-		// TODO Auto-generated method stub
 		return new ValidationError();
 	}
+	@Override
+	public void init() throws SQLException {
+		
+	}
 	
-	public void init() {
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(RegisterForm.class);
+	}
+	
+	public void searchReferenceData() throws ValidationException {
 		try {
 			countries.clear();
 			JSONArray result = (JSONArray)ThalamusClientFacade.getCountries();
@@ -69,35 +85,55 @@ public class RegisterForm extends AbstractForm {
 			}
 			states.clear();
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ValidationException(new ValidationError("RegisterForm.HttpStatusException"));
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ValidationException(new ValidationError("RegisterForm.InvalidResponseException"));
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ValidationException(new ValidationError("RegisterForm.CommunicationException"));
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ValidationException(new ValidationError("RegisterForm.UnauthorizedException"));
 		}
 		
 	}
 	
 	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
+		this.activeConsumer = false;
+	}
+	
+	@Override
 	public void initWith(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
 	public void reset() throws SQLException {
-		// TODO Auto-generated method stub
-		
+		this.firstName = null;
+		this.lastName = null;
+		this.email = null;
+		this.birthDate = null;
+		this.street = null;
+		this.city = null;
+		this.countryId = 0;
+		this.stateId = 0;
+
+		this.activeConsumer = false;
+		this.preferedBrand = 0;
+		this.alternativeBrandId = 0;
+		this.consumptionFrequency = 0;
+
+		this.postalCode = null;
+		this.addressType = null;
+		this.phoneNumber = null;
+		this.phoneNumberType = null;
+		this.password = null;
 	}
 	
 	@Override
 	public void save() throws SQLException, ValidationException {
+	}
+	
+	public WebsiteUser register() throws ValidationException {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(RegistrationParameters.firstName,this.firstName);
 		jsonObject.put(RegistrationParameters.lastName,this.lastName);
@@ -117,22 +153,20 @@ public class RegisterForm extends AbstractForm {
 		jsonObject.put(RegistrationParameters.preferedBrandId,this.preferedBrand);
 		jsonObject.put(RegistrationParameters.alternativeBrandId,this.alternativeBrandId);
 		jsonObject.put(RegistrationParameters.consumptionFrequency,this.consumptionFrequency);
-		System.out.println(jsonObject);
 		try {
 			JSON response = ThalamusClientFacade.registerPersonAndConsumer(jsonObject);
-			// if response is ok if ()
-			
-			
+			WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), this.getEmail(), this.getPassword());
+			user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom((JSONObject)response));
+			return user;
 		} catch (HttpStatusException e) {
-			throw new ValidationException(new ValidationError("RegisterForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("RegisterForm.HttpStatusException"));
 		} catch (InvalidResponseException e) {
-			throw new ValidationException(new ValidationError("RegisterForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("RegisterForm.InvalidResponseException"));
 		} catch (CommunicationException e) {
-			throw new ValidationException(new ValidationError("RegisterForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("RegisterForm.CommunicationException"));
 		} catch (UnauthorizedException e) {
-			throw new ValidationException(new ValidationError("RegisterForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("RegisterForm.UnauthorizedException"));
 		}
-		
 	}
 
 	public int getCountryId() {
@@ -246,32 +280,36 @@ public class RegisterForm extends AbstractForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void refresh() throws ValidationException {
+		if (states.isEmpty() || this.getCountryId() != states.get(0).getParent()) {
+			try {
+				states.clear();
+				JSONArray brandsResult = (JSONArray)ThalamusClientFacade.getStates(this.getCountryId());
+				for (int i = 0; i < brandsResult.size(); i++) {
+					JSONObject row = brandsResult.getJSONObject(i);
+					states.add(new ComboBean(row.getInt("id"), row.getString("name"), row.getInt("masterId")));
+				}
+			} catch (HttpStatusException e) {
+				throw new ValidationException(new ValidationError("RegisterForm.HttpStatusException"));
+			} catch (InvalidResponseException e) {
+				throw new ValidationException(new ValidationError("RegisterForm.InvalidResponseException"));
+			} catch (CommunicationException e) {
+				throw new ValidationException(new ValidationError("RegisterForm.CommunicationException"));
+			} catch (UnauthorizedException e) {
+				throw new ValidationException(new ValidationError("RegisterForm.UnauthorizedException"));
+			}
+		}
+	}
 
 	public List<ComboBean> getStates() {
 		if (this.getCountryId() == 0) {
 			states = new ArrayList<ComboBean>();
 		} else {
-			if (states.isEmpty() || this.getCountryId() != states.get(0).getParent()) {
-				try {
-					states.clear();
-					JSONArray brandsResult = (JSONArray)ThalamusClientFacade.getStates(this.getCountryId());
-					for (int i = 0; i < brandsResult.size(); i++) {
-						JSONObject row = brandsResult.getJSONObject(i);
-						states.add(new ComboBean(row.getInt("id"), row.getString("name"), row.getInt("masterId")));
-					}
-				} catch (HttpStatusException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvalidResponseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (CommunicationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (UnauthorizedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			try {
+				refresh();
+			} catch (ValidationException e) {
+				getLog().error(e);
 			}
 		}
 		return states;
