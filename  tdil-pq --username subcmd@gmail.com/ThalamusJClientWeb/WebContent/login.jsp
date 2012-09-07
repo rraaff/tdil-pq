@@ -75,7 +75,7 @@
 		<div class="renglon width440">
 			<div class="label width240" style="padding-top:20px;"><a href="index.jsp" title="Cancel registration and back home">Back home</a></div>
 			<div class="label width40" style="padding-top:20px;">or</div>
-			<div class="label width160 "><input type="image" src="images/skin_nrg/btn_register_at_form.png"/></div>
+			<div class="label width160 "><input type="image" src="images/skin_nrg/btn_login_at_form.png"/></div>
 		</div>
 		<!-- ht m l : s u b m i t property="operation">Login< / h t ml:s u b mit  -->
 		</html:form>
