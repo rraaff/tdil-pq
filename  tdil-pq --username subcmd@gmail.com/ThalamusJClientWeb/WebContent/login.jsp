@@ -73,8 +73,8 @@
 		</div>
 		<div class="renglon width440 height10" style="margin:0; padding:0;">&nbsp;</div>
 		<div class="renglon width440">
-			<div class="label width240" style="padding-top:20px;"><a href="index.jsp" title="Cancel registration and back home">Back home</a></div>
-			<div class="label width40" style="padding-top:20px;">or</div>
+			<div class="label width210" style="padding-top:20px;"><a href="index.jsp" title="Cancel registration and back home">Back home</a></div>
+			<div class="label width70" style="padding-top:20px;">or</div>
 			<div class="label width160 "><input type="image" src="images/skin_nrg/btn_login_at_form.png"/></div>
 		</div>
 		<!-- ht m l : s u b m i t property="operation">Login< / h t ml:s u b mit  -->
