@@ -1,5 +1,8 @@
 package com.tdil.thalamusweb.utils;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.tdil.users.User;
 
 public class WebsiteUser extends User {
@@ -13,6 +16,8 @@ public class WebsiteUser extends User {
 	private String password;
 	
 	private String name;
+	
+	private Set<Integer> appliedActivities = new HashSet<Integer>();
 	
 	public WebsiteUser(String name, String username, String password) {
 		super();
@@ -31,6 +36,18 @@ public class WebsiteUser extends User {
 
 	public String getName() {
 		return name;
+	}
+
+	public Set<Integer> getAppliedActivities() {
+		return appliedActivities;
+	}
+
+	public void setAppliedActivities(Set<Integer> appliedActivities) {
+		this.appliedActivities = appliedActivities;
+	}
+	
+	public boolean appliesToActivity(int activityId) {
+		return appliedActivities.contains(activityId);
 	}
 	
 	

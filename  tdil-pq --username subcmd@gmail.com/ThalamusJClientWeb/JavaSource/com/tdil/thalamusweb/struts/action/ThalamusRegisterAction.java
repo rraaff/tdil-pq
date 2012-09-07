@@ -36,9 +36,7 @@ public class ThalamusRegisterAction extends AbstractAction {
 			return redirectToFailure(error, request, mapping);
 		} else {
 			try {
-				form.save();
-				
-				WebsiteUser user = new WebsiteUser(form.getFirstName() + " " + form.getLastName(), form.getEmail(), form.getPassword());
+				WebsiteUser user = form.register();
 				request.getSession().setAttribute("user", user);
 				form.reset();
 				form.init();

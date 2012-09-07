@@ -57,6 +57,21 @@
 </style>
 </head>
 <body>
+<% if (logged) { %>
+	<% if (websiteUser.appliesToActivity(1)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 1); %>
+		Pablo aca va la opcion de aplica a la 1
+	<% } else { %>
+		<% if (websiteUser.appliesToActivity(2)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 2); %>
+			Pablo aca va la opcion de aplica a la 2
+		<% } else { %>
+			<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
+				Pablo aca va la opcion de aplica a la 3
+			<% } else { %>
+				Aca va la opcion 0	
+			<% } %>
+		<% } %>	
+	<% } %>
+<% } %>
 <div id="homeLogOff">
 	<div id="bottomBar">
 		<% if (!logged) { %>
@@ -70,6 +85,10 @@
 		<div id="thalamus_driven"><a href="http://www.thalamuscorp.com/" title="Thalamus Driven"><img src="images/skin_nrg/thalamus_diven.png" width="125" height="50"></a></div>
 	</div>
 </div>
+
+<% if (logged && websiteUser.appliesToActivity(4)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 4); %>
+	Pablo, aca va que aplica al catalogo
+<% } %>
 <!-- 
 
 < % if (!logged) { %>
