@@ -1,8 +1,6 @@
 package com.tdil.thalamus.client.test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
