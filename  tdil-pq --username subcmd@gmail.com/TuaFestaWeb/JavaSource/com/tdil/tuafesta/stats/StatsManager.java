@@ -1,6 +1,7 @@
 package com.tdil.tuafesta.stats;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -34,7 +35,24 @@ public class StatsManager {
 		if (timer == null) {
 			timer = new StatTimer();
 			timer.start();
+			
+			Runtime.getRuntime().addShutdownHook(new Thread() {
+				@Override
+				public void run() {
+					writepool.shutdown();
+				}
+			});
 		}
+	}
+	
+	public static void addStat(StatisticType type, int id, String text) {
+		Statistic statistic = new Statistic();
+		statistic.setStattype(type.getID());
+		statistic.setObjectid(id);
+		statistic.setTextdata(text);
+		statistic.setObjecttime(new Date());
+		statistic.setDeleted(0);
+		addStat(statistic);
 	}
 	
 	public static void addStat(Statistic stat) {
@@ -59,6 +77,8 @@ public class StatsManager {
 			}
 		}
 	}
+	
+	
 	
 	protected static void addBatch(List<Statistic> batch) {
 		writepool.submit(new StatBatch(batch));

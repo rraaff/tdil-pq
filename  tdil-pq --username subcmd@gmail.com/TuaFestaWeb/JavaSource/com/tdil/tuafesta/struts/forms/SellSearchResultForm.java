@@ -10,8 +10,11 @@ import com.tdil.tuafesta.dao.ProductCategoryDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo4;
+import com.tdil.tuafesta.model.Statistic;
 import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+import com.tdil.tuafesta.stats.StatisticType;
+import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.utils.ProductCategoryTreeNode;
 import com.tdil.tuafesta.utils.ProductCategoryUtils;
 import com.tdil.tuafesta.utils.ServiceCategoryTreeNode;
@@ -87,6 +90,7 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 	public void searchByCategory(int catType, int catId) throws SQLException {
 		SellDAO sellDao = DAOManager.getSellDAO();
 		if (catType == CategoryValueObject.PRODUCT) {
+			StatsManager.addStat(StatisticType.PROD_CATEGORY_SEARCH, catId, null); // stat
 			List<SellValueObject> sellValueObject = sellDao.selectProductSellsByCategory(catId);
 			List<ProductCategoryTreeNode> tree = ProductCategoryUtils.getTreeInTransaction(true);
 			List<Integer> catids = ProductCategoryUtils.selectChildsOf(tree, catId);
@@ -95,6 +99,7 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 			}
 			setSearchResult(sellValueObject);
 		} else {
+			StatsManager.addStat(StatisticType.SERV_CATEGORY_SEARCH, catId, null); // stat
 			List<SellValueObject> sellValueObject = sellDao.selectServiceSellsByCategory(catId);
 			List<ServiceCategoryTreeNode> tree = ServiceCategoryUtils.getTreeInTransaction(true);
 			List<Integer> catids = ServiceCategoryUtils.selectChildsOf(tree, catId);
