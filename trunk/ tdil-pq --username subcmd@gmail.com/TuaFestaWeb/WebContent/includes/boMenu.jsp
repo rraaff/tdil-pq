@@ -33,6 +33,11 @@
 							<li><html:link action="/goToNotificationEmailABM" >Notificaciones por email</html:link></li>
 						</ul>
 					</li>
+					<li><a href="#">Reportes</a>
+						<ul>
+							<li><a href="./boStatisticReport.jsp">Reportes</a></li>
+						</ul>
+					</li>
 					<li><a href="#">Sistema</a>
 						<ul>
 							<li><html:link action="/goToSystemPropertyABM" >Variables de sistema</html:link></li>

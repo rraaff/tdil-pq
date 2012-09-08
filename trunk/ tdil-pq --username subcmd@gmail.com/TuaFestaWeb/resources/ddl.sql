@@ -440,9 +440,10 @@ ENGINE = InnoDB;
 
 CREATE TABLE STATISTIC (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `textData` VARCHAR(100) NOT NULL ,
+  `textData` VARCHAR(100) NULL ,
   `statType` INT NOT NULL,
   `objectId` INT NULL,
+  `objectTime` DATETIME NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

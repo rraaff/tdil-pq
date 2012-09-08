@@ -910,4 +910,6 @@
  <PROCESS-ITEM NAME="page39" PATH="/detallesDeVenta.jsp"
   SHAPE="240,12529,0,0" SUBTYPE="jsp" TITLE="detallesDeVenta.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#statisticReport" NAME="action85"
+  PATH="/statisticReport" SHAPE="32,13649,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

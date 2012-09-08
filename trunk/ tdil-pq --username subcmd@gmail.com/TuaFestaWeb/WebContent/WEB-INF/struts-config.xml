@@ -48,6 +48,9 @@
    <form-bean id="SellDetailsForm"
    name="SellDetailsForm" type="com.tdil.tuafesta.struts.forms.SellDetailsForm"/>
    
+   <form-bean id="StatisticReportForm"
+   name="StatisticReportForm" type="com.tdil.tuafesta.struts.forms.StatisticReportForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -292,6 +295,8 @@
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/validateProfesionalEmail.jsp"/>
   </action>
+  <action parameter="Admin" path="/statisticReport" scope="request" type="com.tdil.tuafesta.struts.action.StatisticReportAction"/>
+  
   <action name="SellSearchResultForm"
    path="/searchSellsByGeoLevel4" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByGeoLevel4">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
