@@ -48,7 +48,7 @@ function doSearch() {
 								{
 									"sExtends": "pdf",
 									"sPdfOrientation": "landscape",
-									"sPdfMessage": "Reporte."
+									"sPdfMessage": "Reporte.pdf"
 								},
 								"print"
 							]
@@ -87,7 +87,7 @@ function doSearch() {
                 </select><br>
 				<div class="label width860 height50" style="text-align:center;"><input type="button" onClick="doSearch();" value="Buscar"></div>
 			
-				<div class="label width860"><div id="dynamic">
+				<div id="dynamic">
 					<table class="display" id="reportTable">
 						<thead>
 							<tr>

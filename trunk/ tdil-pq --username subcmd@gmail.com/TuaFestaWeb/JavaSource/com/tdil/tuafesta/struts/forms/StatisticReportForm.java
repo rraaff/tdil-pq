@@ -2,6 +2,7 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,47 +51,87 @@ public class StatisticReportForm extends ReportForm {
 	public List<List<Object>> search() throws SQLException {
 		List<List<Object>> full = new ArrayList<List<Object>>();
 		if (this.sStatType == StatisticType.PROD_CATEGORY_SEARCH.getID()) {
-			Map<String, Object> params = new HashMap<String, Object>();
-			boolean groupbyobject = false;
-			boolean groupbydate = false;
-			if (sGroup == 1) {
-				params.put("groupby", "1");
-				params.put("groupbyobject", "1");
-				groupbyobject = true;
-			}
-			if (sSum == 0) {
-				params.put("dateformated", "%Y-%m-%d %H:%i:%S");
-			}
-			if (sSum == 1) {
-				params.put("groupby", "1");
-				params.put("dateformated", "%Y-%m");
-				params.put("groupbydate", "1");
-				groupbydate = true;
-			}
-			if (sSum == 2) {
-				params.put("groupby", "1");
-				params.put("dateformated", "%Y-%m-%d");
-				params.put("groupbydate", "1");
-				groupbydate = true;
-			}
-			if (groupbyobject && !groupbydate) {
-				params.put("datena", "1");
-			}
-			if (!groupbyobject && groupbydate) {
-				params.put("objectna", "1");
-			}
-			StatisticDAO statDao = DAOManager.getStatisticDAO();
-			List<StatisticValueObject> result = statDao.selectProdCategoryStats(params);
-			System.out.println(result);
-			for (StatisticValueObject svo : result) {
-				List<Object> row = new ArrayList<Object>();
-				row.add(svo.getData());
-				row.add(svo.getObjecttime());
-				row.add(svo.getQuantity());
-				full.add(row);
-			}
+			searchByProdCategories(full);
+		}
+		if (this.sStatType == StatisticType.SERV_CATEGORY_SEARCH.getID()) {
+			searchByServCategories(full);
+		}
+		if (this.sStatType == StatisticType.GEO_LEVEL_SEARCH.getID()) {
+			searchByGeoLevels(full);
 		}
 		return full;
+	}
+
+	private void searchByGeoLevels(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectGeoLevelStats(params);
+		fillResult(full, result);
+	}
+
+	private void searchByProdCategories(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectProdCategoryStats(params);
+		fillResult(full, result);
+	}
+
+	private void fillResult(List<List<Object>> full, List<StatisticValueObject> result) {
+		for (StatisticValueObject svo : result) {
+			List<Object> row = new ArrayList<Object>();
+			row.add(svo.getData());
+			row.add(svo.getObjecttime());
+			row.add(svo.getQuantity());
+			full.add(row);
+		}
+	}
+
+	private Map<String, Object> getSearchParams() {
+		Map<String, Object> params = new HashMap<String, Object>();
+		boolean groupbyobject = false;
+		boolean groupbydate = false;
+		if (sGroup == 1) {
+			params.put("groupby", "1");
+			params.put("groupbyobject", "1");
+			groupbyobject = true;
+		}
+		if (sSum == 0) {
+			params.put("dateformated", "%Y-%m-%d %H:%i:%S");
+		}
+		if (sSum == 1) {
+			params.put("groupby", "1");
+			params.put("dateformated", "%Y-%m");
+			params.put("groupbydate", "1");
+			groupbydate = true;
+		}
+		if (sSum == 2) {
+			params.put("groupby", "1");
+			params.put("dateformated", "%Y-%m-%d");
+			params.put("groupbydate", "1");
+			groupbydate = true;
+		}
+		if (groupbyobject && !groupbydate) {
+			params.put("datena", "1");
+		}
+		if (!groupbyobject && groupbydate) {
+			params.put("objectna", "1");
+		}
+		Date sfrom = com.tdil.utils.DateUtils.parseDate(this.getsFrom());
+		if (sfrom != null) {
+			params.put("sFrom", sfrom);
+		}
+		Date sto = com.tdil.utils.DateUtils.parseDate(this.getsTo());
+		if (sto != null) {
+			params.put("sTo", com.tdil.utils.DateUtils.date2LastMomentOfDate(sto));
+		}
+		return params;
+	}
+	
+	private void searchByServCategories(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectServCategoryStats(params);
+		fillResult(full, result);
 	}
 
 	public int getsStatType() {

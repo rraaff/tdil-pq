@@ -55,6 +55,17 @@ public class StatsManager {
 		addStat(statistic);
 	}
 	
+	public static void addStat(StatisticType type, int id, int extraId, String text) {
+		Statistic statistic = new Statistic();
+		statistic.setStattype(type.getID());
+		statistic.setObjectid(id);
+		statistic.setExtraid(extraId);
+		statistic.setTextdata(text);
+		statistic.setObjecttime(new Date());
+		statistic.setDeleted(0);
+		addStat(statistic);
+	}
+	
 	public static void addStat(Statistic stat) {
 		synchronized (mutex) {
 			buffer.add(stat);
