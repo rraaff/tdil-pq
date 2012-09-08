@@ -57,6 +57,7 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 	}
 	
 	public void searchByGeoLevel4(int id) throws SQLException, ValidationException {
+		StatsManager.addStat(StatisticType.GEO_LEVEL_SEARCH, id, 4, null);
 		Geo4 geo4 = new Geo4();
 		geo4.setId(id);
 		setSearchResult(DAOManager.getSellDAO().selectSellsByGeo4(geo4));

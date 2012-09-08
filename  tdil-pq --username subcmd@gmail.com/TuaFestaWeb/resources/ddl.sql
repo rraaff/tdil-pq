@@ -443,6 +443,7 @@ CREATE TABLE STATISTIC (
   `textData` VARCHAR(100) NULL ,
   `statType` INT NOT NULL,
   `objectId` INT NULL,
+  `extraId` INT NULL,
   `objectTime` DATETIME NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
