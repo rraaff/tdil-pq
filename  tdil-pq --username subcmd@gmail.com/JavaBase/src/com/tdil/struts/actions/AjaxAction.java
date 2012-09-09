@@ -21,6 +21,8 @@ public abstract class AjaxAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
+		response.setContentType("Content-Type: text/html;charset=ISO-8859-1");
+	    response.setHeader("cache-control", "no-cache");
 		User user = AbstractAction.getLoggedUser(request);
 		if (!Role.isValid(user, AbstractAction.getPermissions(mapping))) {
 			HashMap<String, String> result = new HashMap<String, String>();
