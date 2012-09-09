@@ -78,4 +78,6 @@ public interface Geo4DAO {
 	List<GeoLevelValueObject> searchGeoLevelsByNombre(String string) throws SQLException;
 	
 	List<GeoLevelValueObject> selectGeoLevelsByGeo4(String searchName) throws SQLException;
+	
+	GeoLevelValueObject selectGeoLevelsByGeo4(int id) throws SQLException;
 }

@@ -113,6 +113,7 @@
     	</isNull>
     from STATISTIC st, GEO4 geo4
     where st.statType = 0
+    and st.extraId = 4
 	and st.objectId = geo4.id
 	<isNotNull property="sFrom">
         	and objecttime >= #sFrom:TIMESTAMP#
@@ -122,11 +123,173 @@
     </isNotNull>
 	<dynamic prepend="group by">
 		<isNotNull prepend="," property="groupbyobject">
-        	geo4.id, geo4.name
+        	geo4.id, geo4.nombre
     	</isNotNull>
 		<isNotNull prepend="," property="groupbydate">
         	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
     	</isNotNull>
-    </dynamic>;
+    </dynamic>
+    
+    union
+    
+    select 
+    	<isNotNull property="objectna">
+        	'n/a' as data,
+    	</isNotNull>
+    	<isNull property="objectna">
+	    	geo3.nombre as data,
+    	</isNull>
+
+    	<isNotNull property="datena">
+        	'n/a' as objecttime,
+    	</isNotNull>
+    	<isNull property="datena">
+	    	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#) as objecttime,
+    	</isNull>
+    	<isNotNull property="groupby">
+        	sum(1) as quantity
+    	</isNotNull>
+    	<isNull property="groupby">
+        	1 as quantity
+    	</isNull>
+    from STATISTIC st, GEO3 geo3
+    where st.statType = 0
+    and st.extraId = 3
+	and st.objectId = geo3.id
+	<isNotNull property="sFrom">
+        	and objecttime >= #sFrom:TIMESTAMP#
+    </isNotNull>
+    <isNotNull property="sTo">
+        	and objecttime &lt;= #sTo:TIMESTAMP#
+    </isNotNull>
+	<dynamic prepend="group by">
+		<isNotNull prepend="," property="groupbyobject">
+        	geo3.id, geo3.nombre
+    	</isNotNull>
+		<isNotNull prepend="," property="groupbydate">
+        	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
+    	</isNotNull>
+    </dynamic>
+    
+    union
+    
+    select 
+    	<isNotNull property="objectna">
+        	'n/a' as data,
+    	</isNotNull>
+    	<isNull property="objectna">
+	    	geo2.nombre as data,
+    	</isNull>
+
+    	<isNotNull property="datena">
+        	'n/a' as objecttime,
+    	</isNotNull>
+    	<isNull property="datena">
+	    	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#) as objecttime,
+    	</isNull>
+    	<isNotNull property="groupby">
+        	sum(1) as quantity
+    	</isNotNull>
+    	<isNull property="groupby">
+        	1 as quantity
+    	</isNull>
+    from STATISTIC st, GEO2 geo2
+    where st.statType = 0
+    and st.extraId = 2
+	and st.objectId = geo2.id
+	<isNotNull property="sFrom">
+        	and objecttime >= #sFrom:TIMESTAMP#
+    </isNotNull>
+    <isNotNull property="sTo">
+        	and objecttime &lt;= #sTo:TIMESTAMP#
+    </isNotNull>
+	<dynamic prepend="group by">
+		<isNotNull prepend="," property="groupbyobject">
+        	geo2.id, geo2.nombre
+    	</isNotNull>
+		<isNotNull prepend="," property="groupbydate">
+        	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
+    	</isNotNull>
+    </dynamic>
+  </select>
+  
+   <select id="profesionalViewStats" parameterClass="java.util.Map" resultMap="StatisticValueObject">
+    select 
+    	<isNotNull property="objectna">
+        	'n/a' as data,
+    	</isNotNull>
+    	<isNull property="objectna">
+	    	prof.businessName as data,
+    	</isNull>
+
+    	<isNotNull property="datena">
+        	'n/a' as objecttime,
+    	</isNotNull>
+    	<isNull property="datena">
+	    	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#) as objecttime,
+    	</isNull>
+    	<isNotNull property="groupby">
+        	sum(1) as quantity
+    	</isNotNull>
+    	<isNull property="groupby">
+        	1 as quantity
+    	</isNull>
+    from STATISTIC st, PROFESIONAL prof
+    where st.statType = 6
+	and st.objectId = prof.id
+	<isNotNull property="sFrom">
+        	and objecttime >= #sFrom:TIMESTAMP#
+    </isNotNull>
+    <isNotNull property="sTo">
+        	and objecttime &lt;= #sTo:TIMESTAMP#
+    </isNotNull>
+	<dynamic prepend="group by">
+		<isNotNull prepend="," property="groupbyobject">
+        	prof.id, prof.businessName
+    	</isNotNull>
+		<isNotNull prepend="," property="groupbydate">
+        	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
+    	</isNotNull>
+    </dynamic>
+  </select>
+  
+  <select id="profesionalContactStats" parameterClass="java.util.Map" resultMap="StatisticValueObject">
+    select 
+    	<isNotNull property="objectna">
+        	'n/a' as data,
+    	</isNotNull>
+    	<isNull property="objectna">
+	    	prof.businessName as data,
+    	</isNull>
+
+    	<isNotNull property="datena">
+        	'n/a' as objecttime,
+    	</isNotNull>
+    	<isNull property="datena">
+	    	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#) as objecttime,
+    	</isNull>
+    	<isNotNull property="groupby">
+        	sum(1) as quantity
+    	</isNotNull>
+    	<isNull property="groupby">
+        	1 as quantity
+    	</isNull>
+    from STATISTIC st, PROFESIONAL prof
+    where st.statType = 7
+	and st.objectId = prof.id
+	<isNotNull property="sFrom">
+        	and objecttime >= #sFrom:TIMESTAMP#
+    </isNotNull>
+    <isNotNull property="sTo">
+        	and objecttime &lt;= #sTo:TIMESTAMP#
+    </isNotNull>
+	<dynamic prepend="group by">
+		<isNotNull prepend="," property="groupbyobject">
+        	prof.id, prof.businessName
+    	</isNotNull>
+		<isNotNull prepend="," property="groupbydate">
+        	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
+    	</isNotNull>
+    </dynamic>
   </select>
 </sqlMap>

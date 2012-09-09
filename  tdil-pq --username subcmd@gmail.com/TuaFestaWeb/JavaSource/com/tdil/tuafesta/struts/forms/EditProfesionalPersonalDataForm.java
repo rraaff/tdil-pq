@@ -11,6 +11,9 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalChange;
 
 public class EditProfesionalPersonalDataForm extends TransactionalValidationForm {
 
@@ -51,6 +54,8 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 
 	@Override
 	public void initWith(int id) throws SQLException {
+		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
+		ProfesionalChange profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(profesional.getIdProfesionalChange());
 	}
 	
 	@Override

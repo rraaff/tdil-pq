@@ -164,4 +164,14 @@ public class StatisticDAOImpl implements StatisticDAO {
 		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.geoLevelStats", params);
 		return list;
 	}
+	
+	public List<StatisticValueObject> selectProfesionalViewStats(Map<String, Object> params) throws SQLException {
+		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.profesionalViewStats", params);
+		return list;
+	}
+	
+	public List<StatisticValueObject> selectProfesionalContactStats(Map<String, Object> params) throws SQLException {
+		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.profesionalContactStats", params);
+		return list;
+	}
 }

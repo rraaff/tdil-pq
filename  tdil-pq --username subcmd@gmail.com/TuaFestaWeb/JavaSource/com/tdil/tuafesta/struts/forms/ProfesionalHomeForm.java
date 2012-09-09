@@ -13,6 +13,7 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 
 public class ProfesionalHomeForm extends TransactionalValidationForm {
 
@@ -22,6 +23,7 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	private static final long serialVersionUID = 6752258803637709971L;
 	
 	private Profesional profesional;
+	private GeoLevelValueObject location;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -37,6 +39,7 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	@Override
 	public void initWith(int id) throws SQLException {
 		profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
+		location = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(profesional.getIdGeolevel());
 	}
 	
 	@Override
@@ -57,6 +60,12 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	}
 	public Profesional getProfesional() {
 		return profesional;
+	}
+	public GeoLevelValueObject getLocation() {
+		return location;
+	}
+	public void setLocation(GeoLevelValueObject location) {
+		this.location = location;
 	}
 	
 }

@@ -259,4 +259,12 @@
 	AND GEO4.deleted = 0
 	AND UPPER(GEO4.nombre) LIKE #searchName:VARCHAR#
   </select>
+  
+  <select id="selectGeoLevel4ById" parameterClass="java.lang.Integer" resultMap="GeoLevel4ValueObject">
+    SELECT GEO4.id, GEO2.nombre as nombre2, GEO3.nombre as nombre3, GEO4.nombre as nombre4, GEO4.geo3_id as parentId, 4 as level
+	FROM GEO2, GEO3, GEO4
+	WHERE GEO2.id = GEO3.geo2_id
+	AND GEO3.id = GEO4.geo3_id
+	AND GEO4.id =  #id:INTEGER#
+  </select>
 </sqlMap>
