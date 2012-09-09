@@ -15,6 +15,8 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+import com.tdil.tuafesta.stats.StatisticType;
+import com.tdil.tuafesta.stats.StatsManager;
 
 public class SellDetailsForm extends TransactionalValidationForm {
 

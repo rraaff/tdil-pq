@@ -179,4 +179,9 @@ public class Geo4DAOImpl implements Geo4DAO {
 		List<GeoLevelValueObject> list = sqlMapClient.queryForList("GEO4.selectGeoLevel4", params);
 		return list;
 	}
+	
+	public GeoLevelValueObject selectGeoLevelsByGeo4(int id) throws SQLException {
+		GeoLevelValueObject list = (GeoLevelValueObject)sqlMapClient.queryForObject("GEO4.selectGeoLevel4ById", id);
+		return list;
+	}
 }

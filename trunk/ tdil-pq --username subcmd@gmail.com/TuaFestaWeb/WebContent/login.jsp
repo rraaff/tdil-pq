@@ -55,7 +55,7 @@
 						<div class="myLabel width300" align="center"><input type="image" value=" " class="" src="images/skin_basic/buttons/ingresarClientes.png" /><!-- h t m l : s u b  m i t   p r o  p e r t y =  " o p e r a  t i o n"  > I ng r e s a r < / h t m l : s  u b m i t - --></div>
 					</div>
 					<div class="myRow width300">
-						<div class="myLabel width150"><a href="#" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
+						<div class="myLabel width150"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
 						<div class="myLabel width150"><a href="#" title="recuper&aacute; tu usuario">&#191;No record&aacute;s con qu&eacute; E-Mail te registraste?</a></div>
 					</div>
 				</html:form>

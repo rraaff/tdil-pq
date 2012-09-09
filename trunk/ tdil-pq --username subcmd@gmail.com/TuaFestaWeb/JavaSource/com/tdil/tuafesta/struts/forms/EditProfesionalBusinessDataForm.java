@@ -13,9 +13,12 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
+import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo3;
 import com.tdil.tuafesta.model.Geo4;
+import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalChange;
 
 public class EditProfesionalBusinessDataForm extends TransactionalValidationForm {
 
@@ -64,6 +67,8 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 
 	@Override
 	public void initWith(int id) throws SQLException {
+		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
+		ProfesionalChange profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(profesional.getIdProfesionalChange());
 	}
 	
 	@Override

@@ -3,7 +3,7 @@
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<%@ page info="profesionalContactCard"%>
+<%@ page info="perfilPublicoProfesional"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
@@ -60,23 +60,13 @@
 					<div class="myLabel width400"><bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width400">Tel&eacute;fono <bean:write name="ProfesionalProfileForm" property="profesional.phonetype"/>: <bean:write name="ProfesionalProfileForm" property="profesional.phoneareacode"/>-<bean:write name="ProfesionalProfileForm" property="profesional.phonenumber"/></div>
-				</div>
-				<div class="myRow">
 					<div class="myLabel width200">Sexo: <%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></div>
 					<div class="myLabel width200">Fecha Nac.: <bean:write name="ProfesionalProfileForm" property="birthDate"/></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width400">E-Mail: <bean:write name="ProfesionalProfileForm" property="profesional.email"/></div>
 				</div>
 			</div>
 			<div id="formSection" class="width650">
 				<div class="myRow">
 					<div class="myLabel width400">Nombre profesional/empresa: <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width200">CUIT: <bean:write name="ProfesionalProfileForm" property="profesional.cuit"/></div>
-					<div class="myLabel width200">IIBB: <bean:write name="ProfesionalProfileForm" property="profesional.iibb"/></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width400">Ubicaci&oacute;n: <bean:write name="ProfesionalProfileForm" property="geoLevelPath"/></div>
@@ -100,6 +90,8 @@
 				Pendiente
 			</div>
 		</div>
+		
+		<div id="formContent" class="height300"><a href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

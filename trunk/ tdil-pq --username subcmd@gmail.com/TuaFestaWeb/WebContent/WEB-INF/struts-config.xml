@@ -23,6 +23,7 @@
   <form-bean id="ProfesionalSearchResultForm"
    name="SellSearchResultForm" type="com.tdil.tuafesta.struts.forms.SellSearchResultForm"/>
   <form-bean id="ProfesionalProfileForm" name="ProfesionalProfileForm" type="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"/>
+  <form-bean id="ProfesionalContactForm" name="ProfesionalContactForm" type="com.tdil.tuafesta.struts.forms.ProfesionalContactForm"/>
   <form-bean id="WallCommentForm" name="WallCommentForm" type="com.tdil.tuafesta.struts.forms.WallCommentForm"/>
   
   <form-bean id="ClientForm" name="ClientForm" type="com.tdil.tuafesta.struts.forms.ClientForm"/>
@@ -50,6 +51,11 @@
    
    <form-bean id="StatisticReportForm"
    name="StatisticReportForm" type="com.tdil.tuafesta.struts.forms.StatisticReportForm"/>
+   
+   <form-bean id="EditProfesionalPersonalDataForm"
+   name="EditProfesionalPersonalDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm"/>
+   <form-bean id="EditProfesionalBusinessDataForm"
+   name="EditProfesionalBusinessDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -386,11 +392,16 @@
     
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/profesionalContactCard.jsp"/>
+   <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
+  <action name="ProfesionalContactForm" path="/contactProfesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/profesionalContactData.jsp"/>
+  </action>
+  
   <action name="ProfesionalProfileForm" path="/addWallComment"
    scope="session" type="com.tdil.tuafesta.struts.action.AddWallCommentAction">
-   <forward name="continue" path="/profesionalContactCard.jsp"/>
+   <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
 
@@ -401,7 +412,7 @@
   </action>
   
   <action name="WebsiteLoginForm" path="/websiteLogin"
-   scope="session" type="com.tdil.tuafesta.struts.action.WebsiteLoginAction">
+   scope="request" type="com.tdil.tuafesta.struts.action.WebsiteLoginAction">
    <forward name="failure" path="/login.jsp"/>
    <forward name="successProfesional" path="/index.jsp"/>
    <forward name="successClient" path="/index.jsp"/>
@@ -415,6 +426,14 @@
   <action name="ProfesionalHomeForm" path="/goToProfesionalHome" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.GoProfesionalHomeAction">
    <forward name="continue" path="/homeProfesional.jsp"/>
+  </action>
+  <action name="EditProfesionalPersonalDataForm" path="/goToEditProfesionalPersonalData" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalPersonalData.jsp"/>
+  </action>
+  <action name="EditProfesionalBusinessDataForm" path="/goToEditProfesionalBusinessData" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
   </action>
 
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">

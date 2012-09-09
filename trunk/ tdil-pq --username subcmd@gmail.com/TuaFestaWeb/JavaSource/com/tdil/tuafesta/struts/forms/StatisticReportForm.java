@@ -59,6 +59,12 @@ public class StatisticReportForm extends ReportForm {
 		if (this.sStatType == StatisticType.GEO_LEVEL_SEARCH.getID()) {
 			searchByGeoLevels(full);
 		}
+		if (this.sStatType == StatisticType.PROFESIONAL_VIEW.getID()) {
+			searchProfesionalView(full);
+		}
+		if (this.sStatType == StatisticType.PROFESIONAL_CONTACT.getID()) {
+			searchProfesionalContact(full);
+		}
 		return full;
 	}
 
@@ -73,6 +79,20 @@ public class StatisticReportForm extends ReportForm {
 		Map<String, Object> params = getSearchParams();
 		StatisticDAO statDao = DAOManager.getStatisticDAO();
 		List<StatisticValueObject> result = statDao.selectProdCategoryStats(params);
+		fillResult(full, result);
+	}
+	
+	private void searchProfesionalView(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectProfesionalViewStats(params);
+		fillResult(full, result);
+	}
+	
+	private void searchProfesionalContact(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectProfesionalContactStats(params);
 		fillResult(full, result);
 	}
 

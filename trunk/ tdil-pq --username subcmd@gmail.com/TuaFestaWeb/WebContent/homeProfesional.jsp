@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ClientHomeForm"%>
 <%@ include file="includes/userLogged.jspf" %>
@@ -21,7 +22,9 @@
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
-<% ProfesionalHomeForm profesionalHomeForm = (ProfesionalHomeForm)session.getAttribute("ProfesionalHomeForm"); %>
+<% ProfesionalHomeForm profesionalHomeForm = (ProfesionalHomeForm)session.getAttribute("ProfesionalHomeForm"); 
+	Profesional profesional = profesionalHomeForm.getProfesional();
+%>
 <div id="divisionHeaderBody"></div>
 <div id="preContainer">
 	<div id="content">
@@ -30,6 +33,37 @@
 			<h1>Home del profesional <%=profesionalHomeForm.getProfesional().getFirstname() %></h1>
 			<h2></h2>
 		</div>
+		<div style="border: 1px Solid Black;">
+			<legend>Datos personales</legend>
+			<%= profesional.getFirstname() %> <%= profesional.getLastname() %><br>
+			Telefono: <%= profesional.getPhonetype() %> <%= profesional.getPhoneareacode() %> <%= profesional.getPhonenumber() %> <%= profesional.getPhoneextension() == null ? "" : profesional.getPhoneextension() %> <br>
+			Sexo: <%= profesional.getSex().equals("m") ? "Masculino" : "Femenino" %>
+			<a href="./goToEditProfesionalPersonalData.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Datos profesionales</legend>
+			<%= profesional.getBusinessname() %><br>
+			CUIT: <%= profesional.getCuit() %><br>
+			IIBB: <%= profesional.getIibb() %><br>
+			Localizado en: <%= profesionalHomeForm.getLocation().getNombre4()%>, <%= profesionalHomeForm.getLocation().getNombre3()%>, <%= profesionalHomeForm.getLocation().getNombre2()%>
+			<a href="./goToEditProfesionalBusinessData.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Productos / Servicios</legend>
+			<a href="./goToEditProfesionalProducts.do?id=<%=profesional.getId()%>">Editar</a>
+			<a href="./goToEditProfesionalServices.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Muro</legend>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Agenda</legend>
+			<a href="./goToEditProfesionalAgenda.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
 		<!-- aca Termina el formulario -->
 	</div>
 </div>
