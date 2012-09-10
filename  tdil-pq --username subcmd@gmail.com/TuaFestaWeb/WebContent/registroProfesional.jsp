@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.PhoneType"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
@@ -248,7 +249,7 @@ function limpiarServicio() {
 					<div class="myLabel width20">Tipo</div>
 					<div class="myLabel width110" id="Telefono"><html:select name="ProfesionalForm" property="phoneType" styleClass="normalField width150">
 							<option value="">Seleccione</option><%-- 
-							--%><% for (String type : profesionalForm.getPhoneTypes()) { %><%--
+							--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
 								--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
 										--%><%=type%></option>
 							<% } %>

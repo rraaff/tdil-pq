@@ -18,6 +18,7 @@ import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.ProfesionalProductDAO;
 import com.tdil.tuafesta.dao.ProfesionalServiceDAO;
 import com.tdil.tuafesta.dao.ProfilePictureDAO;
+import com.tdil.tuafesta.dao.ProfileVideoDAO;
 import com.tdil.tuafesta.dao.PromotionDAO;
 import com.tdil.tuafesta.dao.PromotionPhotoDAO;
 import com.tdil.tuafesta.dao.PromotionSellDAO;
@@ -48,6 +49,7 @@ import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalProductDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalServiceDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfilePictureDAOImpl;
+import com.tdil.tuafesta.dao.impl.ProfileVideoDAOImpl;
 import com.tdil.tuafesta.dao.impl.PromotionDAOImpl;
 import com.tdil.tuafesta.dao.impl.PromotionPhotoDAOImpl;
 import com.tdil.tuafesta.dao.impl.PromotionSellDAOImpl;
@@ -132,6 +134,10 @@ public class DAOManager {
 	}
 	public static ProfilePictureDAO getProfilePictureDAO() throws SQLException {
 		return new ProfilePictureDAOImpl(IBatisManager.getClient());
+	}
+	
+	public static ProfileVideoDAO getProfileVideoDAO() throws SQLException {
+		return new ProfileVideoDAOImpl(IBatisManager.getClient());
 	}
 	public static SellPhotoDAO getSellPhotoDAO() throws SQLException {
 		return new SellPhotoDAOImpl(IBatisManager.getClient());
