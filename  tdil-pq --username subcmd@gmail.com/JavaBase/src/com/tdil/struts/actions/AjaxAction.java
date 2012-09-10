@@ -21,7 +21,10 @@ public abstract class AjaxAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
-		response.setContentType("Content-Type: text/html;charset=ISO-8859-1");
+		String contentType = this.getContentType();
+		if (contentType != null) {
+			response.setContentType(contentType);
+		}
 	    response.setHeader("cache-control", "no-cache");
 		User user = AbstractAction.getLoggedUser(request);
 		if (!Role.isValid(user, AbstractAction.getPermissions(mapping))) {
@@ -32,7 +35,10 @@ public abstract class AjaxAction extends Action {
 		return this.basicExecute(mapping, form, request, response);
 	}
 	
-	
+	protected String getContentType() {
+		return "Content-Type: application/json; charset=ISO-8859-1";
+	}
+
 	protected final void writeJsonResponse(HashMap result, HttpServletResponse response) throws IOException {
 		JSONObject json = JSONObject.fromObject(result);
 		response.getOutputStream().write(json.toString().getBytes());

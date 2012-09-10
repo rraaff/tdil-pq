@@ -24,6 +24,7 @@ public class EditAction extends AbstractAction {
 		final int userId = Integer.parseInt(request.getParameter("id"));
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {
+				abstractForm.reset();
 				abstractForm.initWith(userId);
 			}
 		});
