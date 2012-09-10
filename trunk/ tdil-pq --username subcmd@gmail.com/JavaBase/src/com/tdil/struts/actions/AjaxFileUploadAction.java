@@ -23,6 +23,11 @@ public abstract class AjaxFileUploadAction extends AjaxAction {
 
 	public static final String UPLOAD_NAME = "upload";
 	
+	@Override
+	protected String getContentType() {
+		return null;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {

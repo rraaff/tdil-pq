@@ -4,7 +4,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 public class StringUtils {
 	
-	private static final String origin = " áéíóúÁÉÍÓÚñÑ";
+	private static final String origin = " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 	private static final String dest = "_aeiouAEIOUnN";
 
 	public static String notNullValueOf(String st) {
@@ -12,6 +12,38 @@ public class StringUtils {
 			return "";
 		} else {
 			return st;
+		}
+	}
+	
+	public static String nvl(String first, String second) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
+			return second;
+		} else {
+			return first;
+		}
+	}
+	
+	public static String getDataForChange(String first, String second) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
+			return null;
+		} else {
+			if (first.equals(second)) {
+				return null;
+			} else {
+				return first;
+			}
+		}
+	}
+	
+	public static int getDataForChange(int id1, int id2) {
+		if (id1 == 0) {
+			return 0;
+		} else {
+			if (id1 == id2) {
+				return 0;
+			} else {
+				return id1;
+			}
 		}
 	}
 	
