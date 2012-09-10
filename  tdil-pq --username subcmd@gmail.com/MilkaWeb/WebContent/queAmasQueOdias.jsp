@@ -196,7 +196,7 @@ body {
 	font-family: 'Oswald', sans-serif;
 	color: #00FF55;
 }
-div { border:dotted 1px #00CC33; }
+div { /*border:dotted 1px #00CC33;*/ }
 #altalayer {
 	width:306px;
 	height:406px;
@@ -391,6 +391,36 @@ div { border:dotted 1px #00CC33; }
 #bm_personas span{
 	color:#b398ff;
 }
+
+/**/
+#acaVaElFlash {
+	width:700px;
+	height:500px;
+	margin:0 auto;
+}
+#controles {
+	width:450px;
+	
+	margin:0 auto;
+}
+.myRenglon { width:450px; height:47px; float:left; }
+.myLabel { float:left; }
+.qaqoField {
+	width:264px;
+	height:37px;
+	font-size:25px;
+	border: solid 1px #834baa;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+#dato {
+	color:#595959;
+	font-family:"Tahoma", "Trebuchet MS", Arial, sans-serif;
+	font-size:11px;
+	text-align:center;
+	width:450px;
+	float:left;
+}
 </style>
 
 </head>
@@ -399,18 +429,96 @@ div { border:dotted 1px #00CC33; }
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<img src="./hateWordCloudTag.st"><br><br>
-<img src="./loveWordCloudTag.st"><br><br>
-	<html:form method="POST" action="/addLove" >
-		<html:hidden name="LoveForm" property="love" value="on"/>
-		<div id="Amo">Amo...<html:text name="LoveForm" property="text" styleClass="normalField"/></div>
-		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
-	</html:form><br><br>
-	<html:form method="POST" action="/addHate" >
-		<html:hidden name="LoveForm" property="love" value="off"/>
-		<div id="Odio">Odio...<html:text name="HateForm" property="text" styleClass="normalField"/></div>
-		<div id="buttonHolder" align="center"><html:submit property="operation" styleClass="okCircle"></html:submit></div>
-	</html:form>
+<div id="acaVaElFlash">
+	<script>
+		if (AC_FL_RunContent == 0) {
+			alert("This page requires AC_RunActiveContent.js.");
+		} else {
+			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+				'width', '700', 
+				'height','500',
+				'FlashVars', 'fileToLoad=./loveWordCloudTag.st',
+				'src', 'swf/ExpQAQO/qa', 
+				'quality', 'best', 
+				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+				'align', 'middle', 
+				'play', 'true', 
+				'loop', 'true', 
+				'scale', 'showall', 
+				'wmode', 'opaque', 
+				'devicefont', 'true', 
+				'id', 'ACTest', 
+				'bgcolor', '#ffffff', 
+				'name', 'qa', 
+				'menu', 'true', 
+				'allowScriptAccess', 'sameDomain', 
+				'movie', 'swf/ExpQAQO/qa',
+				'salign', '' ); 
+				//end AC code 
+		} 
+	</script>
+<!-- img src=""-->
+</div>
+<html:form method="POST" action="/addLove" >
+	<html:hidden name="LoveForm" property="love" value="on"/>
+	<div id="controles">
+		<div class="myRenglon">
+			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queAmas.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
+			<!-- h t m l :  s u b m i t    pr  o p e r t y =  " op  e r a t i o n ">< / h tm l  : s u b m  it -->
+			<div class="myLabel"><html:text name="LoveForm" property="text" styleClass="qaqoField"/></div>
+		</div>
+		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
+		<div class="myRenglon">
+			<div id="dato">a personas respondieron a esta pregunta</div>
+		</div>
+	</div>
+</html:form>
+
+<!-- a partir de acá es la parte de QUE ODIAS -->
+<div id="acaVaElFlash">
+	<script>
+		if (AC_FL_RunContent == 0) {
+			alert("This page requires AC_RunActiveContent.js.");
+		} else {
+			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+				'width', '700', 
+				'height','500',
+				'FlashVars', 'fileToLoad=./hateWordCloudTag.st',
+				'src', 'swf/ExpQAQO/qa', 
+				'quality', 'best', 
+				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+				'align', 'middle', 
+				'play', 'true', 
+				'loop', 'true', 
+				'scale', 'showall', 
+				'wmode', 'opaque', 
+				'devicefont', 'true', 
+				'id', 'ACTest', 
+				'bgcolor', '#ffffff', 
+				'name', 'qa', 
+				'menu', 'true', 
+				'allowScriptAccess', 'sameDomain', 
+				'movie', 'swf/ExpQAQO/qa',
+				'salign', '' ); 
+				//end AC code 
+		} 
+	</script>
+<!-- img src=""-->
+</div>
+<html:form method="POST" action="/addHate" >
+	<html:hidden name="LoveForm" property="love" value="off"/>
+	<div id="controles">
+		<div class="myRenglon">
+			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queOdias.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
+			<!-- h t m l :  s u b m i t    pr  o p e r t y =  " op  e r a t i o n ">< / h tm l  : s u b m  it -->
+			<div class="myLabel"><html:text name="HateForm" property="text" styleClass="qaqoField"/></div>
+		</div>
+		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
+		<div class="myRenglon">
+			<div id="dato">a personas respondieron a esta pregunta</div>
+		</div>
+	</div>
+</html:form>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>
