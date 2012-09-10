@@ -938,7 +938,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page42" PATH="/editProfesionalPersonalData.jsp"
   SHAPE="240,14338,0,0" SUBTYPE="jsp"
-  TITLE="editProfesionalPersonalData.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="editProfesionalPersonalData.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/saveProfesionalPersonalData.do" SUBTYPE="confirmed"
+   TARGET="action89" TITLE="/saveProfesionalPersonalData.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToEditProfesionalBusinessData" NAME="action88"
   PATH="/goToEditProfesionalBusinessData" SHAPE="32,14321,0,0"
   TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -948,5 +952,48 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page43" PATH="/editProfesionalBusinessData.jsp"
   SHAPE="240,14338,0,0" SUBTYPE="jsp"
-  TITLE="editProfesionalBusinessData.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="editProfesionalBusinessData.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/saveProfesionalBusinessData.do" SUBTYPE="confirmed"
+   TARGET="action90" TITLE="/saveProfesionalBusinessData.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProfesionalPersonalData" NAME="action89"
+  PATH="/saveProfesionalPersonalData" SHAPE="448,14450,0,0"
+  TITLE="EditProfesionalPersonalDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeProfesional.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/editProfesionalPersonalData.jsp" TARGET="page42"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProfesionalBusinessData" NAME="action90"
+  PATH="/saveProfesionalBusinessData" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editProfesionalBusinessData.jsp" TARGET="page43"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/homeProfesional.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel2EditBusiness" NAME="action91"
+  PATH="/refreshGeoLevel2EditBusiness" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo2changed" NAME="forward0"
+   PATH="/editProfesionalBusinessData.jsp" TARGET="page43"
+   TITLE="geo2changed" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel3EditBusiness" NAME="action92"
+  PATH="/refreshGeoLevel3EditBusiness" SHAPE="32,14433,0,0"
+  TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo3changed" NAME="forward0"
+   PATH="/editProfesionalBusinessData.jsp" TARGET="page43"
+   TITLE="geo3changed" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadProfesionalLogo" NAME="action93"
+  PATH="/uploadProfesionalLogo" SHAPE="32,14321,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewProfesionalLogo" NAME="action94"
+  PATH="/viewProfesionalLogo" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

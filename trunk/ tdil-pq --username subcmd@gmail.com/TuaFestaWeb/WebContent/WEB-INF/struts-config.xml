@@ -435,7 +435,32 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
   </action>
-
+  
+  <action name="EditProfesionalPersonalDataForm" path="/saveProfesionalPersonalData" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="failure" path="/editProfesionalPersonalData.jsp"/>
+   <forward name="continue" path="/homeProfesional.jsp"/>
+  </action>
+  
+  <action name="EditProfesionalBusinessDataForm" path="/saveProfesionalBusinessData" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="failure" path="/editProfesionalBusinessData.jsp"/>
+   <forward name="continue" path="/homeProfesional.jsp"/>
+  </action>
+  
+  <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel2EditBusiness"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="geo2changed" path="/editProfesionalBusinessData.jsp"/>
+  </action>
+  <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel3EditBusiness"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
+   <forward name="geo3changed" path="/editProfesionalBusinessData.jsp"/>
+  </action>
+  <action parameter="Profesional" path="/uploadProfesionalLogo" type="com.tdil.tuafesta.struts.action.UploadProfesionalLogoAction"/>
+  <action name="EditProfesionalBusinessDataForm" parameter="Profesional" path="/viewProfesionalLogo"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalLogoAction">
+  </action>
+  
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
 	<forward name="notLogged" path="/index.jsp"/>
   </action>

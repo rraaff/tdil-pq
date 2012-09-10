@@ -116,7 +116,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private String serviceSelectedText;
 	private String serviceReferenceprice;
 	
-	private static final int MIN_PASS_LENGTH = 4;
+	protected static final int MIN_PASS_LENGTH = 4;
 	
 	public static final String firstname_key = "ProfesionalForm.firstname";
 	public static final String lastname_key = "ProfesionalForm.lastname";
@@ -129,6 +129,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	
 	public static final String email_key = "ProfesionalForm.email";
 	public static final String password_key = "ProfesionalForm.password";
+	public static final String retypepassword_key = "ProfesionalForm.retypepassword";
 	
 	public static final String businessname_key = "ProfesionalForm.businessname";
 	public static final String cuit_key = "ProfesionalForm.cuit";
@@ -143,6 +144,13 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	public static final String facebook_key = "ProfesionalForm.facebook";
 	public static final String businesshours_key = "ProfesionalForm.businesshours";
 	public static final String description_key = "ProfesionalForm.description";
+	
+	public static final String video1_key = "ProfesionalForm.video1";
+	public static final String video2_key = "ProfesionalForm.video2";
+	public static final String video3_key = "ProfesionalForm.video3";
+	public static final String video4_key = "ProfesionalForm.video4";
+	public static final String video5_key = "ProfesionalForm.video5";
+	
 	
 	private static final Logger LOG = LoggerProvider.getLogger(ProfesionalForm.class);
 
@@ -199,14 +207,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	public void initWith(int id) throws SQLException {
 
 	}
-	
-	public List<String> getPhoneTypes() {
-		List<String> result = new ArrayList<String>();
-		result.add("Particular");
-		result.add("Celular");
-		result.add("Laboral");
-		return result;
-	}
+
 
 	@Override
 	public void basicValidate(ValidationError validationError) {

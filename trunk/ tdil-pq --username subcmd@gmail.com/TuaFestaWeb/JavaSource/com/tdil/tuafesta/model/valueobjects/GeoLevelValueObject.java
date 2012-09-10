@@ -6,6 +6,10 @@ public class GeoLevelValueObject {
 
 	private int id;
 	
+	private int geo2id;
+	private int geo3id;
+	private int geo4id;
+	
 	private String nombre2;
 	private String nombre3;
 	private String nombre4;
@@ -67,5 +71,29 @@ public class GeoLevelValueObject {
 	}
 	public void setNombre4(String nombre4) {
 		this.nombre4 = nombre4;
+	}
+
+	public int getGeo2id() {
+		return geo2id;
+	}
+
+	public void setGeo2id(int geo2id) {
+		this.geo2id = geo2id;
+	}
+
+	public int getGeo3id() {
+		return geo3id;
+	}
+
+	public void setGeo3id(int geo3id) {
+		this.geo3id = geo3id;
+	}
+
+	public int getGeo4id() {
+		return geo4id;
+	}
+
+	public void setGeo4id(int geo4id) {
+		this.geo4id = geo4id;
 	}
 }
