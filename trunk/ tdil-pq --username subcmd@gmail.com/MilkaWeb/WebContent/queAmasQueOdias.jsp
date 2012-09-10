@@ -429,6 +429,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
+<img scr="./loveWordCloudTag.st" width="1" height="1" />
 <div id="acaVaElFlash">
 	<script>
 		if (AC_FL_RunContent == 0) {
