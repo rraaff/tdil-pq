@@ -44,9 +44,9 @@
 }
 #nav a .remarcado, .remarcado { color:#f1ce0b; }
 #bottomBar {
-	width: 990px;
+	width: 970px;
 	height: 119px;
-	top: 440px;
+	top: 10px;
 	position:relative;
 }
 #registerButton {
@@ -59,7 +59,7 @@
 #CodeButton {
 	width: 314px;
 	height: 99px;
-	margin-left:500px;
+	margin-left:470px;
 	margin-top:12px;
 	float:left;
 }
@@ -115,7 +115,7 @@ body {
 #activities #activity03 {
 	background-image: url(images/skin_nrg/act_03.png);
 	background-repeat: no-repeat;
-	background-position: center top;
+	background-position: -85px -10px;
 	width:990px;
 	height:410px;
 	z-index:3;
@@ -128,19 +128,25 @@ body {
 <% if (logged) { %>
 	<div id="homeLogged">
 		<% if (logged && websiteUser.appliesToActivity(4)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 4); %>
-			<div id="nav" align="center"><a href="myAccount.jsp"><span class="remarcado">You have 100 points in your account</span></a>  .  <a href="myAccount.jsp">My Account</a>  .  <a href="catalog.jsp">Rewards Catalog</a>  .  <a href="shipments.jsp">Shipment Status</a>  .  <a href="legal.jsp">Privacy</a></div>
+			<div id="nav" align="center"><a href="myAccount.jsp"><span class="remarcado">You have 100 points in your account</span></a>  .  <a href="myAccount.jsp">My Account</a>  .  <a href="catalog.jsp">Rewards Catalog</a>  .  <a href="shipments.jsp">Shipment Status</a>  .  <a href="legal.jsp">Privacy</a>  .  <a href="logout.do">Logout</a></div>
 		<% } else { %>
-			<div id="nav" align="center"><span class="remarcado">Hi <%= websiteUser.getName() %></span>  .  <a href="legal.jsp">Privacy</a></div>
+			<div id="nav" align="center"><span class="remarcado">Hi <%= websiteUser.getName() %></span>  .  <a href="legal.jsp">Privacy</a>  .  <a href="logout.do">Logout</a></div>
 		<% } %>
 		<div id="activities">
 			<% if (websiteUser.appliesToActivity(1)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 1); %>
 				<div id="activity01">&nbsp;</div>
+			<% } else { %>
+				<div id="activity01" style="background-image:url(images/skin_nrg/act_01_else.png);">&nbsp;</div>
 			<% } %>
 			<% if (websiteUser.appliesToActivity(2)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 2); %>
 				<div id="activity02">&nbsp;</div>
+			<% } else { %>
+				<div id="activity02" style="background-image:url(images/skin_nrg/act_02_else.png); background-position:-20px -20px;">&nbsp;</div>
 			<% } %>
 			<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
 				<div id="activity03">&nbsp;</div>
+			<% } else { %>
+				<div id="activity03" style="background-image:url(images/skin_nrg/act_03_else.png);">&nbsp;</div>
 			<% } %>
 		</div>
 		<div id="bottomBar" style="margin-left:45px;">
@@ -154,7 +160,7 @@ body {
 	</div>
 <% } else { %>
 	<div id="homeLogOff">
-		<div id="bottomBar">
+		<div id="bottomBar" style="top:445px;">
 			<div id="registerButton"><a href="goToRegister.do"><img src="images/skin_nrg/btn_register.png" width="314" height="99"></a></div>
 			<div id="menuText">
 				<div id="menuItem"><a href="login.jsp" title="Login now!"><img src="images/skin_nrg/btn_login.png" width="46" height="32"></a></div>

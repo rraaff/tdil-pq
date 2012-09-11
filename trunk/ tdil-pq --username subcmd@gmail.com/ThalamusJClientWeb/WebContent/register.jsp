@@ -94,18 +94,10 @@ $(document).ready(
 			<div class="label width250"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Street</div>
-			<div class="label width250"><html:text name="RegisterForm" property="street" styleClass="normalField width250"/></div>
-		</div>
-		<div class="renglon">
-			<div class="label width150">City</div>
-			<div class="label width250"><html:text name="RegisterForm" property="city" styleClass="normalField width250"/></div>
-		</div>
-		<div class="renglon">
 			<div class="label width150">Country</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="countryId" styleClass="normalField width250" onchange="this.form.action='./refreshStatesRegistro.do';this.form.submit()">
-					<option value="">Seleccione</option>
+					<option value="">Select one option</option>
 					<% for (ComboBean country : registerForm.getCountries()) { %>
 						<option <%=	country.getValue() == registerForm.getCountryId() ? "selected" : ""%> value="<%=country.getValue()%>">
 							<%=country.getLabel()%></option>
@@ -117,7 +109,7 @@ $(document).ready(
 			<div class="label width150">State</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
-					<option value="">Seleccione</option>
+					<option value="">Select one option</option>
 					<% for (ComboBean state : registerForm.getStates()) { %>
 						<option <%=	state.getValue() == registerForm.getStateId() ? "selected" : ""%> value="<%=state.getValue()%>">
 							<%=state.getLabel()%></option>
@@ -126,36 +118,12 @@ $(document).ready(
 			</div>
 		</div>
 		<div class="renglon">
-			<div class="label width20"><html:checkbox name="RegisterForm" property="activeConsumer" /></div>
-			<div class="label width150">Active consumer</div>
+			<div class="label width150">City</div>
+			<div class="label width250"><html:text name="RegisterForm" property="city" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Regular brand</div>
-			<div class="label width250">
-				<html:select name="RegisterForm" property="preferedBrand" styleClass="normalField width250">
-					<option value="">Seleccione</option>
-					<% for (ComboBean brand : registerForm.getBrands()) { %>
-						<option <%=	brand.getValue() == registerForm.getPreferedBrand() ? "selected" : ""%> value="<%=brand.getValue()%>">
-							<%=brand.getLabel()%></option>
-					<% } %>
-				</html:select>
-			</div>
-		</div>
-		<div class="renglon">
-			<div class="label width150">Alternative brand</div>
-			<div class="label width250">
-				<html:select name="RegisterForm" property="alternativeBrandId" styleClass="normalField width250">
-					<option value="">Seleccione</option>
-					<% for (ComboBean brand : registerForm.getBrands()) { %>
-						<option <%=	brand.getValue() == registerForm.getAlternativeBrandId() ? "selected" : ""%> value="<%=brand.getValue()%>">
-							<%=brand.getLabel()%></option>
-					<% } %>
-				</html:select>
-			</div>
-		</div>
-		<div class="renglon">
-			<div class="label width150">Consumption Frequency</div>
-			<div class="label width250"><html:text name="RegisterForm" property="consumptionFrequency" styleClass="normalField width50"/></div>
+			<div class="label width150">Street</div>
+			<div class="label width250"><html:text name="RegisterForm" property="street" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
 			<div class="label width150">Postal Code</div>
@@ -165,7 +133,7 @@ $(document).ready(
 			<div class="label width150">Address type</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="addressType" styleClass="normalField width250">
-					<option value="">Seleccione</option>
+					<option value="">Select one option</option>
 					<% for (String type : AddressType.types) { %>
 						<option <%=	type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
 							<%=type%></option>
@@ -181,13 +149,45 @@ $(document).ready(
 			<div class="label width150">Phone type</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="phoneNumberType" styleClass="normalField width250">
-					<option value="">Seleccione</option>
+					<option value="">Select one option</option>
 					<% for (String type : PhoneNumberType.types) { %>
 						<option <%=	type.equals(registerForm.getPhoneNumberType()) ? "selected" : ""%> value="<%=type%>">
 							<%=type%></option>
 					<% } %>
 				</html:select>
 			</div>
+		</div>
+		<div class="renglon">
+			<div class="label width380">Do you consume energy drinks?</div>
+			<div class="label width20" style="padding-top:4px;"><html:checkbox name="RegisterForm" property="activeConsumer"/></div>
+		</div>
+		<div class="renglon">
+			<div class="label width150">Regular brand</div>
+			<div class="label width250">
+				<html:select name="RegisterForm" property="preferedBrand" styleClass="normalField width250">
+					<option value="">Select one option</option>
+					<% for (ComboBean brand : registerForm.getBrands()) { %>
+						<option <%=	brand.getValue() == registerForm.getPreferedBrand() ? "selected" : ""%> value="<%=brand.getValue()%>">
+							<%=brand.getLabel()%></option>
+					<% } %>
+				</html:select>
+			</div>
+		</div>
+		<div class="renglon">
+			<div class="label width150">Alternative brand</div>
+			<div class="label width250">
+				<html:select name="RegisterForm" property="alternativeBrandId" styleClass="normalField width250">
+					<option value="">Select one option</option>
+					<% for (ComboBean brand : registerForm.getBrands()) { %>
+						<option <%=	brand.getValue() == registerForm.getAlternativeBrandId() ? "selected" : ""%> value="<%=brand.getValue()%>">
+							<%=brand.getLabel()%></option>
+					<% } %>
+				</html:select>
+			</div>
+		</div>
+		<div class="renglon">
+			<div class="label width350">How many times a week do you consume an energy drink?</div>
+			<div class="label width50"><html:text name="RegisterForm" property="consumptionFrequency" styleClass="normalField width50"/></div>
 		</div>
 		<div class="renglon">
 			<div class="label width150">Password</div>
