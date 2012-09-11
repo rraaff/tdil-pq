@@ -77,7 +77,7 @@ public class LoveHateForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		String text = StringUtils.capitalize(this.getText());
+		String text = this.getText().toUpperCase();
 		LoveHateDAO loveHateDAO = DAOManager.getLoveHateDAO();
 		LoveHateExample loveHateExample = new LoveHateExample();
 		loveHateExample.createCriteria().andContentEqualTo(text).andLoveEqualTo(this.isLove() ? 1 : 0);
