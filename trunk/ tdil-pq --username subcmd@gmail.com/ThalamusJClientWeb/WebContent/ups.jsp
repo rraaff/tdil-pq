@@ -8,52 +8,19 @@
 <%@ include file="includes/errorJS.jsp"%>
 <style type="text/css">
 <!--
-#header {
-	width:990px;
-	height:237px;
-	margin:0 auto;
+h1 {
+	color:#FFFFFF;
+	font-size:24px;
 }
-#central {
-	width:990px;
-	height:164px;
-	margin:0 auto;
-}
-#left {
-	width:273px;
-	height:164px;
-	float:left;
-}
-#form {
-	background-image: url(images/skin_nrg/login__03.png);
-	background-repeat: no-repeat;
-	width:444px;
-	height:164px;
-	float:left;
-	overflow: hidden;
-	font-family: 'Gill Sans MT', Genova, Arial, Helvetica, sans-serif;
-	font-size: 18px;
-	color: #2d0703;	
-	
-}
-#right {
-	width:273px;
-	height:164px;
-	float:left;
-}
-#footer {
-	width:990px;
-	height:92px;
-	margin:0 auto;
-}
-.renglon {
-	padding-bottom:15px;
+p {
+	color:#FFFFFF;
 }
 -->
 </style>
 </head>
 
 <body>
-Ups, a ocurrido un error
-
+<h1>Ups!</h1>
+<p>Ha ocurrido un error.</p>
 </body>
 </html>
