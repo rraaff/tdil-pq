@@ -444,12 +444,10 @@
   <action name="MailToChildForm" path="/uploadMailToChild" scope="request" type="com.tdil.milka.struts.action.UploadMailToChildAction">
   </action>
   <action name="LoveForm" path="/addLove" scope="session" type="com.tdil.struts.actions.SaveAction">
-  <forward name="continue" path="/queAmasQueOdias.jsp?dnc=true&amp;amas=1" redirect="true"/>
-   <forward name="failure" path="/queAmasQueOdias.jsp?dnc=true"/>
+  <forward name="continue" path="/queAmas.jsp?dnc=true&amp;amas=1" redirect="true"/>
   </action>
   <action name="HateForm" path="/addHate" scope="session" type="com.tdil.struts.actions.SaveAction">
-  <forward name="continue" path="/queAmasQueOdias.jsp?dnc=true&amp;odias=1" redirect="true"/>
-   <forward name="failure" path="/queAmasQueOdias.jsp?dnc=true"/>
+  <forward name="continue" path="/queOdias.jsp?dnc=true&amp;odias=1" redirect="true"/>
   </action>
   <action name="GoodMorningForm" path="/uploadGoodMorning" scope="request" type="com.tdil.milka.struts.action.UploadGoodMorningAction">
   </action>

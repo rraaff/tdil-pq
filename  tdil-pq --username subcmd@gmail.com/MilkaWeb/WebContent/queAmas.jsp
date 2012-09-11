@@ -46,18 +46,11 @@ $(document).ready(
 			<% if ("1".equals(request.getParameter("amas"))) { %>
 				$.cookie('amas', "set", { expires: 1, path: "/" });
 			<% } %>
-			<% if ("1".equals(request.getParameter("odias"))) { %>
-				$.cookie('odias', "set", { expires: 1, path: "/" });
-			<% } %>
 		<% } %>
 
   	  	if ($.cookie('amas')) {
   	  	  	// deshabilito el alta de amas
   	  	}
-  	  	if ($.cookie('odias')) {
-  	  	// deshabilito el alta de odias
-	  	}
-		
 		$( "#closegracias" ).click(function() {
 			$( "#graciasporsubir" ).fadeOut();
 			$( "#bottomLayer" ).fadeOut();
@@ -65,14 +58,8 @@ $(document).ready(
 		$( "#cancelaltalove" ).click(function() {
 			$( "#altalove" ).fadeOut();
 		});
-		$( "#cancelaltahate" ).click(function() {
-			$( "#altahate" ).fadeOut();
-		});
 		$( "#closeerrorlove" ).click(function() {
 			$( "#erroraltalove" ).fadeOut();
-		});
-		$( "#closeerrorhate" ).click(function() {
-			$( "#erroraltahate" ).fadeOut();
 		});
 		
 		// code for fade in element by element with delay
@@ -94,18 +81,6 @@ function altaLove() {
     var left = ($window.width() / 2) - ($( "#altalove" ).width() / 2);
 	$("input[name='text']").attr('value', '');
 	$( "#altalove" ).css({
-		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
-	}).fadeIn(500);
-}
-
-function altaHate() {
-	$window = $(window);
-    var top = ($window.height() / 2) - ($( "#altahate" ).height() / 2);
-    var left = ($window.width() / 2) - ($( "#altahate" ).width() / 2);
-	$("input[name='text']").attr('value', '');
-	$( "#altahate" ).css({
 		position: 'absolute',
 		top: top + 'px',
 		left: left + 'px'
@@ -141,30 +116,6 @@ function postLove(data) {
 	}
 }
 
-function postHate(data) {
-	if (data.result == 'OK') {
-		clearData();
-		$( "#altahate" ).fadeOut();
-		$window = $(window);
-	    var top = ($window.height() / 2) - ($( "#graciasporsubir" ).height() / 2);
-	    var left = ($window.width() / 2) - ($( "#graciasporsubir" ).width() / 2);
-		$( "#graciasporsubir" ).css({
-			position: 'absolute',
-	        top: top + 'px',
-	        left: left + 'px'
-	      }).fadeIn(500);
-	} else {
-		$( "#altahate" ).fadeOut();
-		$window = $(window);
-	    var top = ($window.height() / 2) - ($( "#erroralta" ).height() / 2);
-	    var left = ($window.width() / 2) - ($( "#erroralta" ).width() / 2);
-		$( "#erroralta" ).css({
-			position: 'absolute',
-	        top: top + 'px',
-	        left: left + 'px'
-	      }).fadeIn(500);
-	}
-}
 </script>
 
 <link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
@@ -506,20 +457,6 @@ div { /*border:dotted 1px #00CC33;*/ }
 	</script>
 <!-- img src=""-->
 </div>
-<html:form method="POST" action="/addHate" >
-	<html:hidden name="LoveForm" property="love" value="off"/>
-	<div id="controles">
-		<div class="myRenglon">
-			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queOdias.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
-			<!-- h t m l :  s u b m i t    pr  o p e r t y =  " op  e r a t i o n ">< / h tm l  : s u b m  it -->
-			<div class="myLabel"><html:text name="HateForm" property="text" styleClass="qaqoField"/></div>
-		</div>
-		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
-		<div class="myRenglon">
-			<div id="dato">a personas respondieron a esta pregunta</div>
-		</div>
-	</div>
-</html:form>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>
