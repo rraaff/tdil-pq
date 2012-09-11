@@ -56,9 +56,13 @@ public class SaveAction extends AbstractAction {
 				return redirectToFailure(exError, request, mapping);
 			}
 		}
-		return mapping.findForward("continue");
+		return this.getSucessForward(form, mapping);
 	}
 	
+	protected ActionForward getSucessForward(AbstractForm form, ActionMapping mapping) {
+		return mapping.findForward("continue");
+	}
+
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(SaveAction.class);
 	}

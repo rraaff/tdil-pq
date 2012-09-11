@@ -35,6 +35,22 @@ public class StringUtils {
 		}
 	}
 	
+	public static String getDataForChange(String first, String second, String nullValue) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
+			if (!org.apache.commons.lang.StringUtils.isEmpty(second)) {
+				return nullValue;
+			} else {
+				return null;
+			}
+		} else {
+			if (first.equals(second)) {
+				return null;
+			} else {
+				return first;
+			}
+		}
+	}
+	
 	public static int getDataForChange(int id1, int id2) {
 		if (id1 == 0) {
 			return 0;
