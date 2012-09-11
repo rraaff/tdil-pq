@@ -2,10 +2,8 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -168,43 +166,11 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		approvedExample.setOrderByClause("orderNumber");
 		List<ProfileVideo> approved = DAOManager.getProfileVideoDAO().selectProfileVideoByExample(approvedExample);
 		
-		ProfileVideoExample pendingExample = new ProfileVideoExample();
-		pendingExample.createCriteria().andIdProfesionalEqualTo(profesional.getId()).andApprovedEqualTo(0);
-		pendingExample.setOrderByClause("orderNumber");
-		List<ProfileVideo> pending = DAOManager.getProfileVideoDAO().selectProfileVideoByExample(pendingExample);
-		if (pending.isEmpty()) {
-			if (approved.size() > 0) {
-				setVideo1(approved.get(0).getUrl());
-			}
-			if (approved.size() > 1) {
-				setVideo2(approved.get(1).getUrl());
-			}
-			if (approved.size() > 2) {
-				setVideo3(approved.get(2).getUrl());
-			}
-			if (approved.size() > 3) {
-				setVideo4(approved.get(3).getUrl());
-			}
-			if (approved.size() > 4) {
-				setVideo5(approved.get(4).getUrl());
-			}
-		} else {
-			if (pending.size() > 0) {
-				setVideo1(pending.get(0).getUrl());
-			}
-			if (pending.size() > 1) {
-				setVideo2(pending.get(1).getUrl());
-			}
-			if (pending.size() > 2) {
-				setVideo3(pending.get(2).getUrl());
-			}
-			if (pending.size() > 3) {
-				setVideo4(pending.get(3).getUrl());
-			}
-			if (approved.size() > 4) {
-				setVideo5(pending.get(4).getUrl());
-			}
-		}
+		setVideo1(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
+		setVideo2(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));
+		setVideo3(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo3(), profesional.getVideo3()));
+		setVideo4(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
+		setVideo5(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
 		
 	}
 	
@@ -218,6 +184,12 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		FieldValidation.validateId(geo2Id, ProfesionalForm.geo2_key, validationError);
 		FieldValidation.validateId(geo3Id, ProfesionalForm.geo3_key, validationError);
 		FieldValidation.validateId(geo4Id, ProfesionalForm.geo4_key, validationError);
+		
+		FieldValidation.validateText(this.getVideo1(), ProfesionalForm.video1_key, 200, false, validationError);
+		FieldValidation.validateText(this.getVideo2(), ProfesionalForm.video2_key, 200, false, validationError);
+		FieldValidation.validateText(this.getVideo3(), ProfesionalForm.video3_key, 200, false, validationError);
+		FieldValidation.validateText(this.getVideo4(), ProfesionalForm.video4_key, 200, false, validationError);
+		FieldValidation.validateText(this.getVideo5(), ProfesionalForm.video5_key, 200, false, validationError);
 	}
 	
 	@Override
@@ -243,99 +215,11 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 			profesionalChange.setIdProfilePicture(id);
 		}
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
-		
-		// Manejo de videos
-		ProfileVideoExample approvedExample = new ProfileVideoExample();
-		approvedExample.createCriteria().andIdProfesionalEqualTo(profesional.getId()).andApprovedEqualTo(1);
-		approvedExample.setOrderByClause("orderNumber");
-		
-		ProfileVideoExample pendingExample = new ProfileVideoExample();
-		pendingExample.createCriteria().andIdProfesionalEqualTo(profesional.getId()).andApprovedEqualTo(0);
-		ProfileVideoDAO profileVideoDAO = DAOManager.getProfileVideoDAO();
-		profileVideoDAO.deleteProfileVideoByExample(pendingExample);
-		
-		List<ProfileVideo> oldVideos = profileVideoDAO.selectProfileVideoByExample(approvedExample);
-		List<String> old = new ArrayList<String>();
-		for (ProfileVideo profileVideo : oldVideos) {
-			old.add(profileVideo.getUrl());
-		}
-		boolean changed = false;
-		boolean changedOrder = false;
-		if (StringUtils.isEmpty(this.getVideo1()) || !old.contains(this.getVideo1())) {
-			changed = true;
-			if (old.size() <= 0 || !old.get(0).equals(this.getVideo1())) {
-				changedOrder = true;
-			}
-		}
-		if (StringUtils.isEmpty(this.getVideo2()) || !old.contains(this.getVideo2())) {
-			changed = true;
-			if (old.size() <= 1 || !old.get(1).equals(this.getVideo2())) {
-				changedOrder = true;
-			}
-		}
-		if (StringUtils.isEmpty(this.getVideo3()) || !old.contains(this.getVideo3())) {
-			changed = true;
-			if (old.size() <= 2 || !old.get(2).equals(this.getVideo3())) {
-				changedOrder = true;
-			}
-		}
-		if (StringUtils.isEmpty(this.getVideo4()) || !old.contains(this.getVideo4())) {
-			changed = true;
-			if (old.size() <= 3 || !old.get(3).equals(this.getVideo4())) {
-				changedOrder = true;
-			}
-		}
-		if (StringUtils.isEmpty(this.getVideo5()) || !old.contains(this.getVideo5())) {
-			changed = true;
-			if (old.size() <= 4 || !old.get(4).equals(this.getVideo5())) {
-				changedOrder = true;
-			}
-		}
-		List<String> newVideosUrls = new ArrayList<String>();
-		if (!StringUtils.isEmpty(this.getVideo1())) {
-			newVideosUrls.add(this.getVideo1());
-		}
-		if (!StringUtils.isEmpty(this.getVideo2())) {
-			newVideosUrls.add(this.getVideo2());
-		}
-		if (!StringUtils.isEmpty(this.getVideo3())) {
-			newVideosUrls.add(this.getVideo3());
-		}
-		if (!StringUtils.isEmpty(this.getVideo4())) {
-			newVideosUrls.add(this.getVideo4());
-		}
-		if (!StringUtils.isEmpty(this.getVideo5())) {
-			newVideosUrls.add(this.getVideo5());
-		}
-		if (changed) {
-			int order = 0;
-			for (String newUrl : newVideosUrls) {
-				ProfileVideo profileVideo = new ProfileVideo();
-				profileVideo.setApproved(0);
-				profileVideo.setDeleted(0);
-				profileVideo.setIdProfesional(profesional.getId());
-				profileVideo.setOrdernumber(order);
-				profileVideo.setUrl(newUrl);
-				profileVideoDAO.insertProfileVideo(profileVideo);
-				order = order + 1;
-			}
-		} else {
-			// si cambio el orden, cambiarlos los persistidos y aprobados
-			if (changedOrder) {
-				profileVideoDAO.deleteProfileVideoByExample(approvedExample);
-				int order = 0;
-				for (String newUrl : newVideosUrls) {
-					ProfileVideo profileVideo = new ProfileVideo();
-					profileVideo.setApproved(1);
-					profileVideo.setDeleted(0);
-					profileVideo.setIdProfesional(profesional.getId());
-					profileVideo.setOrdernumber(order);
-					profileVideo.setUrl(newUrl);
-					profileVideoDAO.insertProfileVideo(profileVideo);
-					order = order + 1;
-				}
-			}
-		}
+		profesionalChange.setVideo1(com.tdil.utils.StringUtils.getDataForChange(this.getVideo1(), profesional.getVideo1(), "DELETE"));
+		profesionalChange.setVideo2(com.tdil.utils.StringUtils.getDataForChange(this.getVideo2(), profesional.getVideo2(), "DELETE"));
+		profesionalChange.setVideo3(com.tdil.utils.StringUtils.getDataForChange(this.getVideo3(), profesional.getVideo3(), "DELETE"));
+		profesionalChange.setVideo4(com.tdil.utils.StringUtils.getDataForChange(this.getVideo4(), profesional.getVideo4(), "DELETE"));
+		profesionalChange.setVideo5(com.tdil.utils.StringUtils.getDataForChange(this.getVideo5(), profesional.getVideo5(), "DELETE"));
 	}
 
 	public int getObjectId() {

@@ -13,7 +13,9 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+import com.tdil.tuafesta.utils.ProfesionalUtils;
 
 public class ProfesionalHomeForm extends TransactionalValidationForm {
 
@@ -22,6 +24,8 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
 	
+	private boolean personalDataChanged = false;
+	private boolean businessDataChanged = false;
 	private Profesional profesional;
 	private GeoLevelValueObject location;
 	
@@ -39,6 +43,10 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	@Override
 	public void initWith(int id) throws SQLException {
 		profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
+		ProfesionalChange profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(profesional.getIdProfesionalChange());
+		personalDataChanged = ProfesionalUtils.mergePersonalData(profesional, profesionalChange);
+		businessDataChanged = ProfesionalUtils.mergeBusinessData(profesional, profesionalChange);
+		
 		location = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(profesional.getIdGeolevel());
 	}
 	
@@ -66,6 +74,18 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	}
 	public void setLocation(GeoLevelValueObject location) {
 		this.location = location;
+	}
+	public boolean isPersonalDataChanged() {
+		return personalDataChanged;
+	}
+	public void setPersonalDataChanged(boolean personalDataChanged) {
+		this.personalDataChanged = personalDataChanged;
+	}
+	public boolean isBusinessDataChanged() {
+		return businessDataChanged;
+	}
+	public void setBusinessDataChanged(boolean businessDataChanged) {
+		this.businessDataChanged = businessDataChanged;
 	}
 	
 }

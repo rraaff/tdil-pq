@@ -961,7 +961,7 @@
   PATH="/saveProfesionalPersonalData" SHAPE="448,14450,0,0"
   TITLE="EditProfesionalPersonalDataForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/homeProfesional.jsp" TARGET="page38" TITLE="continue"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
    PATH="/editProfesionalPersonalData.jsp" TARGET="page42"
@@ -974,7 +974,7 @@
    PATH="/editProfesionalBusinessData.jsp" TARGET="page43"
    TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/homeProfesional.jsp" TARGET="page38" TITLE="continue"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#refreshGeoLevel2EditBusiness" NAME="action91"
