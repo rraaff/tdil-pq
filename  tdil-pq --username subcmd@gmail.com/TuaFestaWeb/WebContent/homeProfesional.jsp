@@ -34,7 +34,7 @@
 			<h2></h2>
 		</div>
 		<div style="border: 1px Solid Black;">
-			<legend>Datos personales</legend>
+			<legend>Datos personales <%= profesionalHomeForm.isPersonalDataChanged() ? "*" : "" %></legend>
 			<%= profesional.getFirstname() %> <%= profesional.getLastname() %><br>
 			Telefono: <%= profesional.getPhonetype() %> <%= profesional.getPhoneareacode() %> <%= profesional.getPhonenumber() %> <%= profesional.getPhoneextension() == null ? "" : profesional.getPhoneextension() %> <br>
 			Sexo: <%= profesional.getSex().equals("m") ? "Masculino" : "Femenino" %>
@@ -42,7 +42,7 @@
 		</div><br>
 		
 		<div style="border: 1px Solid Black;">
-			<legend>Datos profesionales</legend>
+			<legend>Datos profesionales <%= profesionalHomeForm.isBusinessDataChanged() ? "*" : "" %></legend>
 			<%= profesional.getBusinessname() %><br>
 			CUIT: <%= profesional.getCuit() %><br>
 			IIBB: <%= profesional.getIibb() %><br>

@@ -240,6 +240,11 @@ CREATE TABLE PROFESIONAL_CHANGE (
   `facebook` VARCHAR(200) NULL ,
   `businesshours` VARCHAR(4000) NULL ,
   `description` VARCHAR(4000) NULL ,
+  `video1` VARCHAR(200) NULL,
+  `video2` VARCHAR(200) NULL,
+  `video3` VARCHAR(200) NULL,
+  `video4` VARCHAR(200) NULL,
+  `video5` VARCHAR(200) NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -268,6 +273,11 @@ CREATE TABLE PROFESIONAL (
   `facebook` VARCHAR(200) NULL ,
   `businesshours` VARCHAR(4000) NULL ,
   `description` VARCHAR(4000) NULL ,
+  `video1` VARCHAR(200) NULL,
+  `video2` VARCHAR(200) NULL,
+  `video3` VARCHAR(200) NULL,
+  `video4` VARCHAR(200) NULL,
+  `video5` VARCHAR(200) NULL,
   `emailvalid` INT NOT NULL,
   `status` INT NOT NULL,
   `datachanged` INT NOT NULL,

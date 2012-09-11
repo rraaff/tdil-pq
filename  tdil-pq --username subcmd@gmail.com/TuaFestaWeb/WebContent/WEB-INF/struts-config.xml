@@ -437,15 +437,15 @@
   </action>
   
   <action name="EditProfesionalPersonalDataForm" path="/saveProfesionalPersonalData" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalPersonalDataAction">
    <forward name="failure" path="/editProfesionalPersonalData.jsp"/>
-   <forward name="continue" path="/homeProfesional.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
   
   <action name="EditProfesionalBusinessDataForm" path="/saveProfesionalBusinessData" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalBusinessDataAction">
    <forward name="failure" path="/editProfesionalBusinessData.jsp"/>
-   <forward name="continue" path="/homeProfesional.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
   
   <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel2EditBusiness"
