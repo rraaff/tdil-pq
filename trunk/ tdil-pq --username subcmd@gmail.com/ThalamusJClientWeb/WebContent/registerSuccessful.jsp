@@ -39,7 +39,7 @@
 </head>
 <body>
 <div id="registrationSucessful">
-	<div id="textMessage" align="center">You prize has been traded-off successfully,<br/>Check the status of your shipment regularly</div>
+	<div id="textMessage" align="center"></div>
 	<div id="button"><a href="index.jsp" title="Continue"><img src="images/skin_nrg/btn_continue.png" width="198" height="56"></a></div>
 </div>
 </body>
