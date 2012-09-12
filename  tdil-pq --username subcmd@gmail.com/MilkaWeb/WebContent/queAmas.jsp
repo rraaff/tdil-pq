@@ -166,162 +166,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
-/*
-#header {
-	background-color:#8c7bb5;
-	background-image: url(images/experiencias/padresAHijos/header.gif);
-	background-repeat: no-repeat;
-	height: 182px;
-	width: 828px;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 25px;
-	margin-left: auto;
-	background-position: center bottom;
-}
-#pageBody {
-	width: 828px;
-	margin: 0px auto;
-}
-#pageLeft {
-	width:523px;
-	float:left;
-}
-#moduleContent {
-	background-image: url(images/experiencias/padresAHijos/bgModule.gif);
-	background-repeat: repeat-y;
-	width: 523px;
-	float: left;
-	margin-bottom: 25px;
-}
-#moduleContent #date {
-	background-image: url(images/experiencias/padresAHijos/dateBase.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	float: left;
-	height: 47px;
-	width: 58px;
-	margin-top: 28px;
-	font-size: 11px;
-	color: #FFFFFF;
-	text-align: center;
-	vertical-align: middle;
-	padding-top: 10px;
-}
-#moduleContent h1 {
-	color:#FFF;
-	padding-top:25px;
-	padding-left:10px;
-	padding-bottom:5px;
-	text-transform: uppercase;
-	font-size: 14px;
-	width:450px;
-	float:left;
-}
-#moduleContent p {
-	color:#806bb3;
-	width:200px;
-	padding-left:10px;
-	padding-right:240px;
-	float:left;
-}
-#moduleContent img {
-	background-color:#FFFFFF;
-	padding:10px;
-	margin-left:10px;
-	margin-bottom:20px;
-}
-#pageRight {
-	width:233px;
-	float:right;
-}
-#blockLoader {
-	width:200px;
-	height:58px;
-	padding-bottom:10px;
-	padding-top:10px;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #e9e9e9;
-	border-bottom-color: #e9e9e9;	
-}
-#blockLoader a, #blockLoader a:hover, #blockLoader a:visited, #blockLoader a:active {
-	color:#727272;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:10px;
-}
-#blockLoader img {
-	float:left;
-}
-#lastEntriesNames {
-	width:100%;
-	font-family:Arial, Helvetica, sans-serif;
-}
-#lastEntriesNames a {
-	width:100%;
-	line-height:28px;
-	float:left;
-}
-#lastEntriesNames a:hover {
-	color:#333333;
-}
-#entryNumber {
-	color:#806bb3;
-	font-size:14px;
-	width:200px;
-	padding-bottom:10px;
-	padding-top:10px;
-	margin-top:25px;
-	margin-bottom:25px;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #e9e9e9;
-	border-bottom-color: #e9e9e9;
-	float:left;
-}
-#entryNumber .numero {
-	color:#FFF;
-}
-#scrollpaginationdemo {
-	width:600px;
-	margin:0px auto;
-}
-
-#scrollpaginationdemo ul {
-	list-style:none;
-	width:100%;
-	margin:0px auto;
-	padding:0px;
-}
-
-#scrollpaginationdemo ul li {
-	margin:10px 0px;
-	width:100%;
-	background:#352828;
-	padding:5px 10px;
-	border-radius: 15px;
-	text-shadow: 2px 1px -1px #000000;
-}
-
-.loading {
-	background:#c1c39a;
-	color:#303030;
-	font-size:20px;
-	padding:5px 10px;
-	text-align:center;
-	width:450px;
-	margin:0px auto;
-	display:none;
-	border-radius: 5px;
-}*/
--->
-</style>
-<style>
- #bm_me_derrite a{
+#bm_me_derrite a{
 	float:right;
 	width:108px;
 	height:41px;
@@ -372,10 +217,9 @@ div { /*border:dotted 1px #00CC33;*/ }
 	width:450px;
 	float:left;
 }
+-->
 </style>
-
 </head>
-
 <body>
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
@@ -409,14 +253,12 @@ div { /*border:dotted 1px #00CC33;*/ }
 				//end AC code 
 		} 
 	</script>
-<!-- img src=""-->
 </div>
 <html:form method="POST" action="/addLove" >
 	<html:hidden name="LoveForm" property="love" value="on"/>
 	<div id="controles">
 		<div class="myRenglon">
 			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queAmas.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
-			<!-- h t m l :  s u b m i t    pr  o p e r t y =  " op  e r a t i o n ">< / h tm l  : s u b m  it -->
 			<div class="myLabel"><html:text name="LoveForm" property="text" styleClass="qaqoField"/></div>
 		</div>
 		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
@@ -425,38 +267,6 @@ div { /*border:dotted 1px #00CC33;*/ }
 		</div>
 	</div>
 </html:form>
-
-<!-- a partir de acá es la parte de QUE ODIAS -->
-<div id="acaVaElFlash">
-	<script>
-		if (AC_FL_RunContent == 0) {
-			alert("This page requires AC_RunActiveContent.js.");
-		} else {
-			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
-				'width', '700', 
-				'height','500',
-				'FlashVars', 'fileToLoad=./hateWordCloudTag.st',
-				'src', 'swf/ExpQAQO/qa', 
-				'quality', 'best', 
-				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
-				'align', 'middle', 
-				'play', 'true', 
-				'loop', 'true', 
-				'scale', 'showall', 
-				'wmode', 'opaque', 
-				'devicefont', 'true', 
-				'id', 'ACTest', 
-				'bgcolor', '#ffffff', 
-				'name', 'qa', 
-				'menu', 'true', 
-				'allowScriptAccess', 'sameDomain', 
-				'movie', 'swf/ExpQAQO/qa',
-				'salign', '' ); 
-				//end AC code 
-		} 
-	</script>
-<!-- img src=""-->
-</div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>
