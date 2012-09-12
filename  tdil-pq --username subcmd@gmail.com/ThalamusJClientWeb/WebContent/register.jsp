@@ -13,7 +13,7 @@
 <%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
 <%@ include file="includes/errorJS.jsp"%>
-		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm"); %>
+<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm"); %>
 <script>
 $(document).ready(
 	function(){
@@ -31,7 +31,6 @@ $(document).ready(
 		  $("select[name=preferedBrand]").attr ( "disabled" , true );
 	      $("select[name=alternativeBrandId]").attr ( "disabled" , true );
 		<% } %>
-		
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, yearRange: "1900:2012"});
 	}
