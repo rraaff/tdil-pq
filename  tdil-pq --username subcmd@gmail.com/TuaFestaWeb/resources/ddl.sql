@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS WALL;
 DROP TABLE IF EXISTS SERVICE_AREA;
 
 DROP TABLE IF EXISTS SELL;
+DROP TABLE IF EXISTS SELL_MEDIA;
 DROP TABLE IF EXISTS SELL_PHOTO;
 DROP TABLE IF EXISTS SELL_VIDEO;
 
@@ -321,6 +322,34 @@ CREATE TABLE SELL (
    CONSTRAINT `FK_SELL_00`
     FOREIGN KEY (`id_profesional` )
     REFERENCES PROFESIONAL (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE SELL_MEDIA (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_sell` INT NOT NULL,
+  `video1` VARCHAR(200) NULL,
+  `video2` VARCHAR(200) NULL,
+  `video3` VARCHAR(200) NULL,
+  `video4` VARCHAR(200) NULL,
+  `video5` VARCHAR(200) NULL,
+  `id_blob_data1` INT NULL,
+  `ext_blob_data1` VARCHAR(10) NULL ,
+  `id_blob_data2` INT NULL,
+  `ext_blob_data2` VARCHAR(10) NULL ,
+  `id_blob_data3` INT NULL,
+  `ext_blob_data3` VARCHAR(10) NULL ,
+  `id_blob_data4` INT NULL,
+  `ext_blob_data4` VARCHAR(10) NULL ,
+  `id_blob_data5` INT NULL,
+  `ext_blob_data5` VARCHAR(10) NULL ,
+  `approved` INT NOT NULL,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+   CONSTRAINT `FK_SELL_MEDIA_00`
+    FOREIGN KEY (`id_sell` )
+    REFERENCES SELL (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

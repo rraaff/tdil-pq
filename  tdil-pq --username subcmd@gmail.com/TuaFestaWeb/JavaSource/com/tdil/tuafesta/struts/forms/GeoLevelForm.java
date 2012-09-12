@@ -303,10 +303,10 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
 					if (GeoLevelForm.this.getLevelSearch() == 2) {
-						GeoLevelForm.this.setSearch(DAOManager.getGeo2DAO().searchGeoLevelsByNombre("%" + GeoLevelForm.this.getNombreSearch().toUpperCase() + "%"));
+						GeoLevelForm.this.setSearch(DAOManager.getGeo2DAO().searchGeoLevelsByNombre("%" + GeoLevelForm.this.getNombreSearch().toUpperCase() + "%", false));
 					} else {
 						if (GeoLevelForm.this.getLevelSearch() == 3) {
-							GeoLevelForm.this.setSearch(DAOManager.getGeo3DAO().searchGeoLevelsByNombre("%" + GeoLevelForm.this.getNombreSearch().toUpperCase() + "%"));
+							GeoLevelForm.this.setSearch(DAOManager.getGeo3DAO().searchGeoLevelsByNombre("%" + GeoLevelForm.this.getNombreSearch().toUpperCase() + "%", false));
 						} else {
 							GeoLevelForm.this.setSearch(DAOManager.getGeo4DAO().searchGeoLevelsByNombre("%" + GeoLevelForm.this.getNombreSearch().toUpperCase() + "%"));
 						}	

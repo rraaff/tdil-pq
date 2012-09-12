@@ -56,6 +56,8 @@
    name="EditProfesionalPersonalDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm"/>
    <form-bean id="EditProfesionalBusinessDataForm"
    name="EditProfesionalBusinessDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm"/>
+   <form-bean id="EditProfesionalServiceAreaForm"
+   name="EditProfesionalServiceAreaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalServiceAreaForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -264,13 +266,6 @@
   <action path="/searchGeoLevelAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAjaxAction"/>
   <action path="/searchCategory" scope="request" type="com.tdil.tuafesta.struts.action.SearchCategoryAction"/>
   
-  <action name="ProfesionalForm" path="/addServiceArea" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAreaAction">
-   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
-  </action>
-  <action name="ProfesionalForm" path="/removeServiceArea"
-   scope="session" type="com.tdil.tuafesta.struts.action.RemoveServiceAreaAction">
-   <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
-  </action>
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/reviewProfesional" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewProfesionalAction">
    <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
@@ -436,16 +431,34 @@
    <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
   </action>
   
+  <action name="EditProfesionalServiceAreaForm" path="/goToEditProfesionalServiceArea" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalServiceArea.jsp"/>
+  </action>
+  
   <action name="EditProfesionalPersonalDataForm" path="/saveProfesionalPersonalData" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalPersonalDataAction">
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalPersonalData.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
   
   <action name="EditProfesionalBusinessDataForm" path="/saveProfesionalBusinessData" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalBusinessDataAction">
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalBusinessData.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
+  </action>
+  
+  <action name="EditProfesionalServiceAreaForm" path="/saveProfesionalServiceArea" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+   <forward name="failure" path="/editProfesionalServiceArea.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
+  </action>
+  <action name="EditProfesionalServiceAreaForm" path="/addServiceArea" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAreaAction">
+   <forward name="continue" path="/editProfesionalServiceArea.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfesionalServiceAreaForm" path="/removeServiceArea"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveServiceAreaAction">
+   <forward name="continue" path="/editProfesionalServiceArea.jsp" redirect="true"/>
   </action>
   
   <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel2EditBusiness"

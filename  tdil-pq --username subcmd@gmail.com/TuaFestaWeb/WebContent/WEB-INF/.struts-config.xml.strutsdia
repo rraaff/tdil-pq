@@ -541,20 +541,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchGeoLevelAjax" NAME="action47"
   PATH="/searchGeoLevelAjax" SHAPE="32,10353,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM ID="#addServiceArea" NAME="action48"
-  PATH="/addServiceArea" SHAPE="32,4081,0,0" TITLE="ProfesionalForm"
-  TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
- <PROCESS-ITEM ID="#removeServiceArea" NAME="action49"
-  PATH="/removeServiceArea" SHAPE="32,4193,0,0" TITLE="ProfesionalForm"
-  TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchService" NAME="action50" PATH="/searchService"
   SHAPE="32,10353,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addService" NAME="action51" PATH="/addService"
@@ -996,4 +982,42 @@
  <PROCESS-ITEM ID="#viewProfesionalLogo" NAME="action94"
   PATH="/viewProfesionalLogo" SHAPE="32,14321,0,0"
   TITLE="EditProfesionalBusinessDataForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToEditProfesionalServiceArea" NAME="action95"
+  PATH="/goToEditProfesionalServiceArea" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalServiceAreaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServiceArea.jsp" TARGET="page44"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page44" PATH="/editProfesionalServiceArea.jsp"
+  SHAPE="240,14338,0,0" SUBTYPE="jsp"
+  TITLE="editProfesionalServiceArea.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/saveProfesionalServiceArea.do" SUBTYPE="confirmed"
+   TARGET="action96" TITLE="/saveProfesionalServiceArea.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProfesionalServiceArea" NAME="action96"
+  PATH="/saveProfesionalServiceArea" SHAPE="448,14562,0,0"
+  TITLE="EditProfesionalServiceAreaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editProfesionalServiceArea.jsp" TARGET="page44"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#addServiceArea" NAME="action48"
+  PATH="/addServiceArea" SHAPE="64,14321,0,0"
+  TITLE="EditProfesionalServiceAreaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServiceArea.jsp" TARGET="page44"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#removeServiceArea" NAME="action49"
+  PATH="/removeServiceArea" SHAPE="64,14433,0,0"
+  TITLE="EditProfesionalServiceAreaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServiceArea.jsp" TARGET="page44"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

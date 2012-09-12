@@ -31,12 +31,28 @@ public class SearchGeoLevelAjaxAction extends AjaxAction {
 		List<String> result = (List<String>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 			public Object executeInTransaction() throws SQLException {
 				List<GeoLevelValueObject> searchResult = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(term);
-				
 				List<Map<String, String>> result = new ArrayList<Map<String,String>>();
 				for (GeoLevelValueObject geo : searchResult) {
 					Map<String, String> row = new HashMap<String, String>();
 					row.put("id", String.valueOf(geo.getId()));
 					row.put("name", geo.getNombre());
+					row.put("level", "4");
+					result.add(row);
+				}
+				searchResult = DAOManager.getGeo3DAO().searchGeoLevelsByNombre("%" + term + "%", true);
+				for (GeoLevelValueObject geo : searchResult) {
+					Map<String, String> row = new HashMap<String, String>();
+					row.put("id", String.valueOf(geo.getId()));
+					row.put("name", geo.getNombre());
+					row.put("level", "3");
+					result.add(row);
+				}
+				searchResult = DAOManager.getGeo2DAO().searchGeoLevelsByNombre("%" + term + "%", true);
+				for (GeoLevelValueObject geo : searchResult) {
+					Map<String, String> row = new HashMap<String, String>();
+					row.put("id", String.valueOf(geo.getId()));
+					row.put("name", geo.getNombre());
+					row.put("level", "2");
 					result.add(row);
 				}
 				return result;

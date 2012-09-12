@@ -164,7 +164,6 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		ProfileVideoExample approvedExample = new ProfileVideoExample();
 		approvedExample.createCriteria().andIdProfesionalEqualTo(profesional.getId()).andApprovedEqualTo(1);
 		approvedExample.setOrderByClause("orderNumber");
-		List<ProfileVideo> approved = DAOManager.getProfileVideoDAO().selectProfileVideoByExample(approvedExample);
 		
 		setVideo1(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
 		setVideo2(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));

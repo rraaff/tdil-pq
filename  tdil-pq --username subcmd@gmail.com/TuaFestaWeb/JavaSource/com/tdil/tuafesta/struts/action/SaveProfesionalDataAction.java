@@ -6,13 +6,13 @@ import org.apache.struts.action.ActionRedirect;
 
 import com.tdil.struts.actions.SaveAction;
 import com.tdil.struts.forms.AbstractForm;
-import com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm;
+import com.tdil.tuafesta.struts.forms.EditProfesionalDataForm;
 
-public class SaveProfesionalPersonalDataAction extends SaveAction {
+public class SaveProfesionalDataAction extends SaveAction {
 
 	@Override
 	protected ActionForward getSucessForward(AbstractForm form, ActionMapping mapping) {
-		EditProfesionalPersonalDataForm aForm = (EditProfesionalPersonalDataForm)form;
+		EditProfesionalDataForm aForm = (EditProfesionalDataForm)form;
 		ActionRedirect redirect = new ActionRedirect(mapping.findForward("continue"));
 		redirect.addParameter("id", aForm.getId());
 		return redirect;
