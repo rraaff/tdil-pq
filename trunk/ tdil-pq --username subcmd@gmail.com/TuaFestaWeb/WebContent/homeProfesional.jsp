@@ -57,6 +57,11 @@
 		</div><br>
 		
 		<div style="border: 1px Solid Black;">
+			<legend>Areas de cobertura </legend>
+			<a href="./goToEditProfesionalServiceArea.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
 			<legend>Muro</legend>
 		</div><br>
 		

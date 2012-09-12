@@ -50,7 +50,7 @@ import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class ProfesionalForm extends TransactionalValidationForm implements GeoLevelSelectionForm {
+public class ProfesionalForm extends TransactionalValidationForm implements GeoLevelSelectionForm, ServiceAreaForm {
 
 	/**
 	 * 
@@ -339,7 +339,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		}
 		for (ServiceAreaBean serviceAreaBean : serviceAreas) {
 			ServiceArea serviceArea = new ServiceArea();
-			serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevel4Id());
+			serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevelId());
 			serviceArea.setLevel(4);
 			serviceArea.setIdProfesional(id);
 			serviceArea.setApproved(0);
@@ -758,13 +758,13 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 
 	public void addServiceArea() {
 		ServiceAreaBean serviceAreaBean = new ServiceAreaBean();
-		serviceAreaBean.setGeoLevel4Id(Integer.valueOf(this.getGeoLevel4Id()));
+		serviceAreaBean.setGeoLevelId(Integer.valueOf(this.getGeoLevel4Id()));
 		serviceAreaBean.setServiceAreaText(this.getServiceAreaSelectedText());
 		this.getServiceAreas().add(0, serviceAreaBean);
 		cleanServiceAreaFields();
 	}
 	
-	private void cleanServiceAreaFields() {
+	public void cleanServiceAreaFields() {
 		this.setGeoLevel4Id(null);
 		this.setServiceAreaAutocompleter(null);
 		this.setServiceAreaSelectedText(null);

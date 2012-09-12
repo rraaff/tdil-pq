@@ -149,5 +149,9 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="TUAFESTA" tableName="SELL_MEDIA" domainObjectName="SellMedia" alias="sm">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>
