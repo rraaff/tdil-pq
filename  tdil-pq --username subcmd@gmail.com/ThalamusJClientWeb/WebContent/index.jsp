@@ -121,6 +121,15 @@ body {
 	z-index:3;
 	position:absolute;
 }
+#activities #activityNN {
+	background-image: url(images/skin_nrg/act_NN.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:990px;
+	height:410px;
+	z-index:4;
+	position:absolute;
+}
 -->
 </style>
 </head>
@@ -134,19 +143,46 @@ body {
 		<% } %>
 		<div id="activities">
 			<% if (websiteUser.appliesToActivity(1)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 1); %>
-				<div id="activity01">&nbsp;</div>
+				<% if (websiteUser.appliesToActivity(2)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 2); %>
+					<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
+						<!-- composición 1 + 2 + 3 -->
+						<div id="activity01" style="background-position: center -20px;">&nbsp;</div>
+						<div id="activity02" style="background-position: center -25px;">&nbsp;</div>
+						<div id="activity03" style="background-position: -70px -10px;">&nbsp;</div>
+					<% } else { %>
+						<!-- composición 1 + 2 -->
+						<div id="activity01" style="background-position: 90px -40px;">&nbsp;</div>
+						<div id="activity02" style="background-position: -200px -40px;">&nbsp;</div>
+					<% } %>
+				<% } else { %>
+					<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
+						<!-- composición las 1 + 3 -->
+						<div id="activity01" style="background-position: 450px -35px;">&nbsp;</div>
+						<div id="activity03" style="background-position: -240px -25px;">&nbsp;</div>
+					<% } else { %>
+						<!-- composición 1 -->
+						<div id="activity01" style="background-position: 270px -40px;">&nbsp;</div>
+					<% } %>
+				<% } %>
 			<% } else { %>
-				<div id="activity01" style="background-image:url(images/skin_nrg/act_01_else.png);">&nbsp;</div>
-			<% } %>
-			<% if (websiteUser.appliesToActivity(2)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 2); %>
-				<div id="activity02">&nbsp;</div>
-			<% } else { %>
-				<div id="activity02" style="background-image:url(images/skin_nrg/act_02_else.png); background-position:-20px -20px;">&nbsp;</div>
-			<% } %>
-			<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
-				<div id="activity03">&nbsp;</div>
-			<% } else { %>
-				<div id="activity03" style="background-image:url(images/skin_nrg/act_03_else.png);">&nbsp;</div>
+				<% if (websiteUser.appliesToActivity(2)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 2); %>
+					<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
+						<!-- composición 2 + 3 -->
+						<div id="activity02" style="background-position: -200px -40px;">&nbsp;</div>
+						<div id="activity03" style="background-position: -240px -25px;">&nbsp;</div>
+					<% } else { %>
+						<!-- composición 2 -->
+						<div id="activity02" style="background-position: -400px -20px;">&nbsp;</div>
+					<% } %>
+				<% } else { %>
+					<% if (websiteUser.appliesToActivity(3)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 3); %>
+						<!-- composición 3 -->
+						<div id="activity03">&nbsp;</div>
+					<% } else { %>
+						<!-- neutral -->
+						<div id="activityNN">&nbsp;</div>
+					<% } %>
+				<% } %>
 			<% } %>
 		</div>
 		<div id="bottomBar" style="margin-left:45px;">
