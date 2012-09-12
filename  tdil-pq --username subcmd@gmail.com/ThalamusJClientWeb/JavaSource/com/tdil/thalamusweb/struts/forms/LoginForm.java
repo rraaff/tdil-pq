@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -66,7 +67,11 @@ public class LoginForm extends ActionForm {
 			user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
 			return user;
 		} catch (HttpStatusException e) {
-			throw new ValidationException(new ValidationError("LoginForm.HttpStatusException"));
+			if (e.getStatus() == HttpStatus.SC_UNAUTHORIZED) {
+				throw new ValidationException(new ValidationError("LoginForm.HttpStatusException.401"));
+			} else {
+				throw new ValidationException(new ValidationError("LoginForm.HttpStatusException"));
+			}
 		} catch (InvalidResponseException e) {
 			throw new ValidationException(new ValidationError("LoginForm.InvalidResponseException"));
 		} catch (CommunicationException e) {
