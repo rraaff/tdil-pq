@@ -2,6 +2,7 @@ package com.tdil.thalamusweb.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -138,7 +139,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		jsonObject.put(RegistrationParameters.firstName,this.firstName);
 		jsonObject.put(RegistrationParameters.lastName,this.lastName);
 		jsonObject.put(RegistrationParameters.email,this.email);
-		jsonObject.put(RegistrationParameters.birthDate,com.tdil.utils.DateUtils.parseDate(this.getBirthDate()).getTime());
+		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthDate());
+		if (birthDate != null) {
+			jsonObject.put(RegistrationParameters.birthDate,birthDate.getTime());
+		} else {
+			jsonObject.put(RegistrationParameters.birthDate,null);
+		}
 		jsonObject.put(RegistrationParameters.street,this.street);
 		jsonObject.put(RegistrationParameters.city,this.city);
 		jsonObject.put(RegistrationParameters.countryId,this.countryId);

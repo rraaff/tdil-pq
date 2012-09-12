@@ -13,10 +13,25 @@
 <%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
 <%@ include file="includes/errorJS.jsp"%>
+		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm"); %>
 <script>
 $(document).ready(
 	function(){
 
+		$("input[name=activeConsumer]").click(function() {
+			 if ($(this).attr("checked")) {
+			      $("select[name=preferedBrand]").removeAttr ( "disabled" );
+			      $("select[name=alternativeBrandId]").removeAttr ( "disabled" );
+			 } else {
+			      $("select[name=preferedBrand]").attr ( "disabled" , true );
+			      $("select[name=alternativeBrandId]").attr ( "disabled" , true );
+			 }
+		});
+		<% if (!registerForm.isActiveConsumer()) { %>
+		  $("select[name=preferedBrand]").attr ( "disabled" , true );
+	      $("select[name=alternativeBrandId]").attr ( "disabled" , true );
+		<% } %>
+		
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, yearRange: "1900:2012"});
 	}
@@ -73,7 +88,6 @@ $(document).ready(
 	<div id="left"><img src="images/skin_nrg/register_02.png" width="275" height="360"></div>
 	<div id="form">
 		<html:form method="POST" action="/register">
-		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm"); %>
 		<div class="renglon">
 			<div class="label"><span class="errorText"><%=ThalamusJClientWebErrorFormatter.getErrorFrom(request, "general")%></span></div>
 		</div>
