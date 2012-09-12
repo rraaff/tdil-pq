@@ -14,6 +14,27 @@
 				<include name="*.jar" />
 				<exclude name="servlet-api.jar" />
 				<exclude name="jsch-0.1.39.jar" />
+				<exclude name="cue.language.jar" />
+				<exclude name="asm-3.3.1.jar" />
+				<exclude name="cglib-2.2.2.jar" />
+				<exclude name="displaytag-1.2.jar" />
+				<exclude name="displaytag-export-poi-1.2.jar" />
+				<exclude name="displaytag-portlet-1.2.jar" />
+				<exclude name="ibatis-2.3.4.726.jar" />
+				<exclude name="iText-2.0.8.jar" />
+				<exclude name="jakarta-oro.jar" />
+				<exclude name="jcs-1.3.jar" />
+				<exclude name="jfor-0.7.2rc1.jar" />
+				<exclude name="jtidy-r938.jar" />
+				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
+				<exclude name="nekohtml.jar" />
+				<exclude name="pluginibator.jar" />
+				<exclude name="poi-3.1-FINAL-20080629.jar" />
+				<exclude name="urlrewrite-3.2.0.jar" />
+				<exclude name="xercesImpl-2.8.0.jar" />
+				<exclude name="xml-apis-xerces-2.9.1.jar" />
+				<exclude name="xpp3_min-1.1.3.4.M.jar" />
+				<exclude name="xstream-1.1.3.jar" />
 			</lib>
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
