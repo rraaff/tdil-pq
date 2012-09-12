@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="commons-httpclient.jar" sourcepath="commons-httpclient-3.0.1-src.zip"/>
+	<classpathentry exported="true" kind="lib" path="commons-httpclient.jar" sourcepath="commons-httpclient-3.0.1-src.zip"/>
 	<classpathentry kind="lib" path="junit-4.8.2.jar"/>
 	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-beanutils.jar"/>
 	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-codec.jar"/>
