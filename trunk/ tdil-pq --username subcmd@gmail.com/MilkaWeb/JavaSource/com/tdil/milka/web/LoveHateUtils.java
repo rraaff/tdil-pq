@@ -115,7 +115,7 @@ public class LoveHateUtils {
 		WordPlacer placer = Placers.centerClump();
 		WordNudger nudger = new SpiralWordNudger();
 		PGraphicsJava2D graphics = new PGraphicsJava2D();
-		graphics.setSize(1200, 500);
+		graphics.setSize(1200, 357);
 		graphics.background(0xffffffff);
 		RenderOptions renderOptions = new RenderOptions();
 		WordCramEngine wordCramEngine = new WordCramEngine(graphics, words, fonter, sizer, colorer, angler, placer,
@@ -137,17 +137,17 @@ public class LoveHateUtils {
 		for (Word word : wordList) {
 			words[index++] = word;
 		}
-		PFont font1 = LoveHateFonts.createFont("LiberationSerif-Regular.ttf", 12);
-		PFont font2 = LoveHateFonts.createFont("MINYN___.TTF", 12);
-		PFont font3 = LoveHateFonts.createFont("Alako-Bold.ttf", 12);
+		PFont font1 = LoveHateFonts.createFont("roughage.ttf", 20);
+		PFont font2 = LoveHateFonts.createFont("SkunkMonkeyRough", 20);
+		PFont font3 = LoveHateFonts.createFont("wornmss.ttf", 20);
 		WordFonter fonter = Fonters.pickFrom(font1, font2, font3);
 		WordSizer sizer = Sizers.byWeight(10, 50);
-		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,255,0), PApplet.color(255,0,0), PApplet.color(0,0,255));
+		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,0,0), PApplet.color(10,10,10), PApplet.color(20,20,20));
 		WordAngler angler = Anglers.pickFrom(0, PApplet.radians(270));
 		WordPlacer placer = Placers.centerClump();
 		WordNudger nudger = new SpiralWordNudger();
 		PGraphicsJava2D graphics = new PGraphicsJava2D();
-		graphics.setSize(1200, 500);
+		graphics.setSize(1200, 367);
 		graphics.background(0xffffffff);
 		RenderOptions renderOptions = new RenderOptions();
 		WordCramEngine wordCramEngine = new WordCramEngine(graphics, words, fonter, sizer, colorer, angler, placer,
