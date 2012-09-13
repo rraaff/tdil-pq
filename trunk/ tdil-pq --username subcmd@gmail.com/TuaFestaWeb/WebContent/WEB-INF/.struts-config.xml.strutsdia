@@ -1020,4 +1020,85 @@
    PATH="/editProfesionalServiceArea.jsp" TARGET="page44"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEditProfesionalProducts" NAME="action97"
+  PATH="/goToEditProfesionalProducts" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page45" PATH="/editProfesionalProducts.jsp"
+  SHAPE="240,14338,0,0" SUBTYPE="jsp"
+  TITLE="editProfesionalProducts.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveProfesionalProducts.do"
+   SUBTYPE="confirmed" TARGET="action98"
+   TITLE="/saveProfesionalProducts.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProfesionalProducts" NAME="action98"
+  PATH="/saveProfesionalProducts" SHAPE="80,14321,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editAddProduct" NAME="action99"
+  PATH="/editAddProduct" SHAPE="80,14321,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editRemoveProduct" NAME="action100"
+  PATH="/editRemoveProduct" SHAPE="80,14433,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEditProfesionalServices" NAME="action101"
+  PATH="/goToEditProfesionalServices" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page46" PATH="/editProfesionalServices.jsp"
+  SHAPE="352,14338,0,0" SUBTYPE="jsp"
+  TITLE="editProfesionalServices.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveProfesionalServices.do"
+   SUBTYPE="confirmed" TARGET="action102"
+   TITLE="/saveProfesionalServices.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveProfesionalServices" NAME="action102"
+  PATH="/saveProfesionalServices" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editAddService" NAME="action103"
+  PATH="/editAddService" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editRemoveService" NAME="action104"
+  PATH="/editRemoveService" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewProductImage" NAME="action105"
+  PATH="/viewProductImage" SHAPE="32,14321,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadProductImage" NAME="action106"
+  PATH="/uploadProductImage" SHAPE="32,14321,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

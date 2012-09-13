@@ -19,6 +19,8 @@ public class SellValueObject extends Sell {
 	private String geo4name;
 	
 	private String profesionalbusinessname;
+	
+	private int idCategory;
 
 	public String getName() {
 		return name;
@@ -74,6 +76,14 @@ public class SellValueObject extends Sell {
 
 	public void setGeo4name(String geo4name) {
 		this.geo4name = geo4name;
+	}
+
+	public int getIdCategory() {
+		return idCategory;
+	}
+
+	public void setIdCategory(int idCategory) {
+		this.idCategory = idCategory;
 	}
 	
 }

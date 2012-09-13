@@ -8,14 +8,14 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.struts.actions.RefreshAction;
-import com.tdil.tuafesta.struts.forms.ProfesionalForm;
+import com.tdil.tuafesta.struts.forms.ProfesionalSellForm;
 
 public class AddServiceAction extends RefreshAction {
 
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		ProfesionalForm profesionalForm = (ProfesionalForm)form;
+		ProfesionalSellForm profesionalForm = (ProfesionalSellForm)form;
 		profesionalForm.addService();
 		return mapping.findForward("continue");
 	}

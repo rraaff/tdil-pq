@@ -1,9 +1,13 @@
 package com.tdil.tuafesta.struts.forms.beans;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+import com.tdil.tuafesta.utils.ProductCategoryUtils;
 
 public class SellBean implements Serializable {
 
@@ -18,9 +22,31 @@ public class SellBean implements Serializable {
 	
 	private int type;
 	private int id;
+	private int productId;
 	private String categoryText;
 	private String name;
 	private String referencePrice;
+	
+	
+	public SellBean() {
+	}
+	
+	public SellBean(Sell sell) {
+		this.setId(sell.getId());
+		this.setProductId(sell.getIdProdServ());
+		this.setType(sell.getType());
+		this.setName(sell.getItem());
+		this.setReferencePrice(sell.getReferenceprice().toString());
+	}
+
+	public SellBean(SellValueObject sell) throws SQLException {
+		this.setId(sell.getId());
+		this.setProductId(sell.getIdProdServ());
+		this.setType(sell.getType());
+		this.setName(sell.getName());
+		this.setReferencePrice(sell.getReferenceprice().toString());
+		this.setCategoryText(ProductCategoryUtils.getCategoryPath(sell.getIdCategory()));
+	}
 	
 	public String getSellTypeDescription() {
 		return ApplicationResources.getMessage(this.type == SellType.PRODUCT ? "PRODUCT" : "SERVICE");
@@ -44,11 +70,11 @@ public class SellBean implements Serializable {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getId() {
-		return id;
+	public int getProductId() {
+		return productId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setProductId(int id) {
+		this.productId = id;
 	}
 	public String getCategoryText() {
 		return categoryText;
@@ -61,6 +87,14 @@ public class SellBean implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

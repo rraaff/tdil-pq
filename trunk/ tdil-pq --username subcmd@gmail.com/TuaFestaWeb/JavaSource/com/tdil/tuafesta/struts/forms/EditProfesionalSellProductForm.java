@@ -1,95 +1,180 @@
 package com.tdil.tuafesta.struts.forms;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.lang.StringUtils;
 
-import org.apache.log4j.Logger;
-import org.apache.struts.action.ActionMapping;
-
-import com.tdil.log4j.LoggerProvider;
-import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
-import com.tdil.struts.forms.TransactionalValidationForm;
-import com.tdil.struts.forms.UploadData;
+import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
 
-public class EditProfesionalSellProductForm extends TransactionalValidationForm {
+public class EditProfesionalSellProductForm extends EditProfesionalSellForm implements ProfesionalSellForm {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
-	
-	private int id;
-	
-	private int objectId;
-	
 	private String productId;
 	private String productCategorySelected;
 	private String productAutocompleter;
 	private String productSelectedText;
 	private String referenceprice;
 	
-	private UploadData image1;
-	private UploadData image2;
-	private UploadData image3;
-	private UploadData image4;
-	private UploadData image5;
 	
-	// abm de productos
-	private List<SellBean> sells = new ArrayList<SellBean>();
+	@Override
+	public void initWith(int id) throws SQLException {
+		this.reset();
+		this.setId(id);
+		SellDAO sellDAO = DAOManager.getSellDAO();
+		// obtengo las que tienen producto
+		List<SellValueObject> sellVOs = sellDAO.selectProductSellsByProfesional(id);
+		for (SellValueObject sellValueObject : sellVOs) {
+			this.getSells().add(new SellBean(sellValueObject));
+		}
+		// obtengo las que no tienen producto en rd
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(id).andTypeEqualTo(SellType.PRODUCT).andIdProdServEqualTo(0);
+		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
+		for (Sell sell : sells) {
+			this.getSells().add(new SellBean(sell));
+		}
+	}
 	
 	@Override
 	public void reset() throws SQLException {
-		this.objectId = 0;
-	}
-	@Override
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-	}
-
-	@Override
-	public void init() throws SQLException {
-	}
-
-	@Override
-	public void initWith(int id) throws SQLException {
+		super.reset();
+		this.productId = null;
+		this.productCategorySelected = null;
+		this.productAutocompleter = null;
+		this.productSelectedText = null;
+		this.referenceprice = null;
 	}
 	
-	@Override
-	public void basicValidate(ValidationError validationError) {
-	}
-	
-	@Override
-	public void validateInTransaction(ValidationError validationError) throws SQLException {
-	}
-
 	@Override
 	public void save() throws SQLException, ValidationException {
-
+		SellDAO sellDAO = DAOManager.getSellDAO();
+		// calculo las que tenia
+		Set<Integer> retained = new HashSet<Integer>();
+		for (SellBean productBean : getSells()) {
+			retained.add(productBean.getId());
+		}
+		// borro las que ya no estan
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(this.getId()).andTypeEqualTo(SellType.PRODUCT);
+		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
+		for (Sell s : sells) {
+			if (!retained.contains(s.getId())) {
+				sellDAO.deleteSellByPrimaryKey(s.getId());
+			}
+		}
+		for (SellBean productBean : getSells()) {
+			if (productBean.getId() == 0) {
+				// inserto las nuevas
+				Sell sell = new Sell();
+				sell.setIdProfesional(this.getId());
+				sell.setType(productBean.getType());
+				sell.setIdProdServ(productBean.getProductId());
+				if (sell.getIdProdServ() == 0) {
+					sell.setItem(productBean.getName());
+				}
+				// TODO ver tema de . , etc
+				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+				sell.setReferenceprice(refPrice);
+				sell.setApproved(0);
+				sell.setDeleted(0);
+				sellDAO.insertSell(sell);
+			} else {
+				// TODO update
+			}
+		}
 	}
 
-	public int getObjectId() {
-		return objectId;
+	public boolean isProductSelected() {
+		return !StringUtils.isEmpty(this.getProductId());
+	}
+	public void addService() {
+		// TODO Auto-generated method stub
+	}
+	
+	public void addProduct() {
+		// TODO validaciones
+		if (this.isProductSelected()) {
+			// producto elegido de la rd
+			SellBean productbean = new SellBean();
+			productbean.setType(SellType.PRODUCT);
+			productbean.setProductId(Integer.valueOf(this.getProductId()));
+			productbean.setName(this.getProductSelectedText());
+			productbean.setCategoryText(this.getProductCategorySelected());
+			productbean.setReferencePrice(this.getReferenceprice());
+			this.getSells().add(0, productbean);
+			cleanProductFields();
+		} else {
+			// producto no rd
+			SellBean productbean = new SellBean();
+			productbean.setType(SellType.PRODUCT);
+			productbean.setProductId(0);
+			productbean.setName(this.getProductAutocompleter());
+			productbean.setCategoryText("-");
+			productbean.setReferencePrice(this.getReferenceprice());
+			this.getSells().add(0, productbean);
+			cleanProductFields();
+		}
+	}
+	
+	private void cleanProductFields() {
+		this.setProductId(null);
+		this.setProductAutocompleter(null);
+		this.setProductSelectedText(null);
+		this.setProductCategorySelected(null);
+		this.setReferenceprice(null);
 	}
 
-	public void setObjectId(int id) {
-		this.objectId = id;
+	public String getProductId() {
+		return productId;
 	}
 
-
-	public int getId() {
-		return id;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getProductCategorySelected() {
+		return productCategorySelected;
 	}
 
-	private static Logger getLog() {
-		return LoggerProvider.getLogger(EditProfesionalSellProductForm.class);
+	public void setProductCategorySelected(String productCategorySelected) {
+		this.productCategorySelected = productCategorySelected;
 	}
 
+	public String getProductAutocompleter() {
+		return productAutocompleter;
+	}
+
+	public void setProductAutocompleter(String productAutocompleter) {
+		this.productAutocompleter = productAutocompleter;
+	}
+
+	public String getProductSelectedText() {
+		return productSelectedText;
+	}
+
+	public void setProductSelectedText(String productSelectedText) {
+		this.productSelectedText = productSelectedText;
+	}
+
+	public String getReferenceprice() {
+		return referenceprice;
+	}
+
+	public void setReferenceprice(String referenceprice) {
+		this.referenceprice = referenceprice;
+	}
 }
