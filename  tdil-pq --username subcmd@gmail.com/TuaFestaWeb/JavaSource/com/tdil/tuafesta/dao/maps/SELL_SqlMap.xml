@@ -301,6 +301,7 @@
   	<result column="geo2name" jdbcType="VARCHAR" property="geo2name" />
   	<result column="geo3name" jdbcType="VARCHAR" property="geo3name" />
   	<result column="geo4name" jdbcType="VARCHAR" property="geo4name" />
+  	<result column="idCategory" jdbcType="INTEGER" property="idCategory" />
   </resultMap>
   
   <select id="searchSellProductsByGeo4" parameterClass="java.util.Map" resultMap="SellValueObject">
@@ -312,6 +313,7 @@
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
     	g4.nombre as geo4name,
+    	0 as idCategory,
     	IF(g4.id=#geo4id:INTEGER#,"1","4") ordercol
     from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
@@ -335,6 +337,7 @@ union all
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
     	g4.nombre as geo4name,
+    	0 as idCategory,
     	"2" ordercol
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4, SERVICE_AREA sa
     where sell.id_prod_serv = serv.id
@@ -361,6 +364,7 @@ union all
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
     	g4.nombre as geo4name,
+    	0 as idCategory,
     	IF(g4.id=#geo4id:INTEGER#,"3","5") ordercol
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = serv.id
@@ -387,7 +391,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
-    	g4.nombre as geo4name
+    	g4.nombre as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof,GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
     and prod.id_category = #catid:INTEGER#
@@ -404,6 +409,22 @@ union all
     and prof.deleted = 0
   </select>
   
+  <select id="searchSellProductsByProfesional" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prod.name as name,
+    	prod.description as description,
+    	null as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name,
+    	prod.id_category as idCategory
+    from SELL sell, PROF_PRODUCT prod
+    where sell.id_prod_serv = prod.id
+    and sell.id_profesional = #id:INTEGER#
+    and sell.type = 1
+  </select>
+  
   <select id="searchSellProductsByCategories" parameterClass="list" resultMap="SellValueObject">
     select 
     	<include refid="SELL.Base_Column_List" />,
@@ -412,7 +433,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
-    	g4.nombre as geo4name
+    	g4.nombre as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof,GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_prod_serv = prod.id
     and prod.id_category in
@@ -441,7 +463,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	null as geo2name,
     	null as geo3name,
-    	null as geo4name
+    	null as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
     where sell.id_prod_serv = serv.id
     and serv.id_category = #catid:INTEGER#
@@ -455,6 +478,22 @@ union all
     and prof.deleted = 0
   </select>
   
+  <select id="searchSellServicesByProfesional" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	null as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name,
+    	serv.id_category as idCategory
+    from SELL sell, PROF_SERVICE serv
+    where sell.id_prod_serv = serv.id
+    and sell.id_profesional = #id:INTEGER#
+    and sell.type = 2
+  </select>
+  
     <select id="searchSellServicesByCategories" parameterClass="list" resultMap="SellValueObject">
     select 
     	<include refid="SELL.Base_Column_List" />,
@@ -463,7 +502,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	null as geo2name,
     	null as geo3name,
-    	null as geo4name
+    	null as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
     where sell.id_prod_serv = serv.id
     and serv.id_category in
@@ -489,7 +529,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	g2.nombre as geo2name,
     	g3.nombre as geo3name,
-    	g4.nombre as geo4name
+    	g4.nombre as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id = #id:INTEGER#
     and sell.id_prod_serv = prod.id
@@ -514,7 +555,8 @@ union all
     	prof.businessname as profesionalbusinessname,
     	null as geo2name,
     	null as geo3name,
-    	null as geo4name
+    	null as geo4name,
+    	0 as idCategory
     from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
     where sell.id = #id:INTEGER#
     and sell.id_prod_serv = serv.id

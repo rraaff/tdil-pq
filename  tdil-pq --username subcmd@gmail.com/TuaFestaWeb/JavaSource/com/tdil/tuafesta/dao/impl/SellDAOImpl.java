@@ -167,6 +167,13 @@ public class SellDAOImpl implements SellDAO {
 		return list;
 	}
 	
+	public List<SellValueObject> selectProductSellsByProfesional(int id) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellProductsByProfesional", params);
+		return list;
+	}
+	
 	public List<SellValueObject> selectProductSellsByCategories(List<Integer> catids) throws SQLException {
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellProductsByCategories", catids);
 		return list;
@@ -176,6 +183,13 @@ public class SellDAOImpl implements SellDAO {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("catid", catid);
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellServicesByCategory", params);
+		return list;
+	}
+	
+	public List<SellValueObject> selectServiceSellsByProfesional(int id) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchSellServicesByProfesional", params);
 		return list;
 	}
 	

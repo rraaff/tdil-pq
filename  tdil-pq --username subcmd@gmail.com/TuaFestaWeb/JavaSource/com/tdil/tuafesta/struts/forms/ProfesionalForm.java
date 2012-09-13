@@ -50,7 +50,7 @@ import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class ProfesionalForm extends TransactionalValidationForm implements GeoLevelSelectionForm, ServiceAreaForm {
+public class ProfesionalForm extends TransactionalValidationForm implements GeoLevelSelectionForm, ServiceAreaForm, ProfesionalSellForm {
 
 	/**
 	 * 
@@ -326,7 +326,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			Sell sell = new Sell();
 			sell.setIdProfesional(id);
 			sell.setType(productBean.getType());
-			sell.setIdProdServ(productBean.getId());
+			sell.setIdProdServ(productBean.getProductId());
 			if (sell.getIdProdServ() == 0) {
 				sell.setItem(productBean.getName());
 			}
@@ -659,7 +659,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			// producto elegido de la rd
 			SellBean productbean = new SellBean();
 			productbean.setType(SellType.PRODUCT);
-			productbean.setId(Integer.valueOf(this.getProductId()));
+			productbean.setProductId(Integer.valueOf(this.getProductId()));
 			productbean.setName(this.getProductSelectedText());
 			productbean.setCategoryText(this.getProductCategorySelected());
 			productbean.setReferencePrice(this.getReferenceprice());
@@ -669,7 +669,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			// producto no rd
 			SellBean productbean = new SellBean();
 			productbean.setType(SellType.PRODUCT);
-			productbean.setId(0);
+			productbean.setProductId(0);
 			productbean.setName(this.getProductAutocompleter());
 			productbean.setCategoryText("-");
 			productbean.setReferencePrice(this.getReferenceprice());
@@ -829,7 +829,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			// serviceo elegido de la rd
 			SellBean servicebean = new SellBean();
 			servicebean.setType(SellType.SERVICE);
-			servicebean.setId(Integer.valueOf(this.getServiceId()));
+			servicebean.setProductId(Integer.valueOf(this.getServiceId()));
 			servicebean.setName(this.getServiceSelectedText());
 			servicebean.setCategoryText(this.getServiceCategorySelected());
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
@@ -839,7 +839,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			// serviceo no rd
 			SellBean servicebean = new SellBean();
 			servicebean.setType(SellType.SERVICE);
-			servicebean.setId(0);
+			servicebean.setProductId(0);
 			servicebean.setName(this.getServiceAutocompleter());
 			servicebean.setCategoryText("-");
 			servicebean.setReferencePrice(this.getServiceReferenceprice());

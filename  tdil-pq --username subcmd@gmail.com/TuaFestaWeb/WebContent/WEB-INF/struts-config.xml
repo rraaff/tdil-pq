@@ -58,6 +58,10 @@
    name="EditProfesionalBusinessDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm"/>
    <form-bean id="EditProfesionalServiceAreaForm"
    name="EditProfesionalServiceAreaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalServiceAreaForm"/>
+   <form-bean id="EditProfesionalSellProductForm"
+   name="EditProfesionalSellProductForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellProductForm"/>
+   <form-bean id="EditProfesionalSellServiceForm"
+   name="EditProfesionalSellServiceForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellServiceForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -469,6 +473,43 @@
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/editProfesionalBusinessData.jsp"/>
   </action>
+  
+  <action name="EditProfesionalSellProductForm" path="/goToEditProfesionalProducts" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp"/>
+  </action>
+  <action name="EditProfesionalSellProductForm" path="/saveProfesionalProducts" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+   <forward name="failure" path="/editProfesionalProducts.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
+  </action>
+  <action name="EditProfesionalSellProductForm" path="/editAddProduct" scope="session" type="com.tdil.tuafesta.struts.action.AddProductAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfesionalSellProductForm" path="/editRemoveProduct" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
+  </action>
+  <action parameter="Profesional" path="/uploadProductImage" type="com.tdil.tuafesta.struts.action.UploadProductImageAction"/>
+  <action name="EditProfesionalSellProductForm" parameter="Profesional" path="/viewProductImage"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewProductImageAction">
+  </action>
+  
+  <action name="EditProfesionalSellServiceForm" path="/goToEditProfesionalServices" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalServices.jsp"/>
+  </action>
+  <action name="EditProfesionalSellServiceForm" path="/saveProfesionalServices" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+   <forward name="failure" path="/editProfesionalServices.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
+  </action>
+  <action name="EditProfesionalSellServiceForm" path="/editAddService" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAction">
+   <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfesionalSellServiceForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+   <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
+  </action>
+  
   <action parameter="Profesional" path="/uploadProfesionalLogo" type="com.tdil.tuafesta.struts.action.UploadProfesionalLogoAction"/>
   <action name="EditProfesionalBusinessDataForm" parameter="Profesional" path="/viewProfesionalLogo"
    scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalLogoAction">
