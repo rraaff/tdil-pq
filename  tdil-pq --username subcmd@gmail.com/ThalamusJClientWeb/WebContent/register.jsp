@@ -112,26 +112,29 @@ $(document).ready(
 	<div id="form">
 		<html:form method="POST" action="/register">
 		<div class="renglon">
-			<div class="label"><span class="errorText"><%=ThalamusJClientWebErrorFormatter.getErrorFrom(request, "general")%></span></div>
+			<div class="label width420" align="center" style="font-size:10px;"><%=ThalamusJClientWebErrorFormatter.getErrorFrom(request, "general")%></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Name</div>
+			<div class="label width420" align="center"><span class="commment">Fields marked with a * are required</span></div>
+		</div>
+		<div class="renglon">
+			<div class="label width150">* Name</div>
 			<div class="label width250"><html:text name="RegisterForm" property="firstName" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Surname</div>
+			<div class="label width150">* Surname</div>
 			<div class="label width250"><html:text name="RegisterForm" property="lastName" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">E-Mail</div>
+			<div class="label width150">* E-Mail</div>
 			<div class="label width250"><html:text name="RegisterForm" property="email" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Date of birth</div>
+			<div class="label width150">* Date of birth</div>
 			<div class="label width250"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Country</div>
+			<div class="label width150">* Country</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="countryId" styleClass="normalField width250" onchange="this.form.action='./refreshStatesRegistro.do';this.form.submit()">
 					<option value="">Select one option</option>
@@ -143,7 +146,7 @@ $(document).ready(
 			</div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">State</div>
+			<div class="label width150">* State</div>
 			<div class="label width250">
 				<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
 					<option value="">Select one option</option>
@@ -227,27 +230,18 @@ $(document).ready(
 			<div class="label width50"><html:text name="RegisterForm" property="consumptionFrequency" styleClass="normalField width50"/></div>
 		</div>
 		<div class="renglon">
-			<div class="label width150">Password</div>
+			<div class="label width150">* Password</div>
 			<div class="label width250"><html:password name="RegisterForm" property="password" styleClass="normalField width250"/></div>
 		</div>
 		<div class="renglon">
 			<div class="label width200" style="padding-top:20px;"><a href="index.jsp" title="Cancel registration and back home">Back home</a></div>
 			<div class="label width40" style="padding-top:20px;">or</div>
-			<div class="label width160 "><input type="image" src="images/skin_nrg/btn_register_at_form.png"/><!-- h t m l : s u b  m i t  property="operation">Registro< / h t m l  :submit--></div>
+			<div class="label width160 "><input type="image" src="images/skin_nrg/btn_register_at_form.png"/></div>
 		</div>
 		</html:form>
 	</div>
 	<div id="left"><img src="images/skin_nrg/register_04.png" width="275" height="360"></div>
 </div>
 <div id="footer"><img src="images/skin_nrg/register_05.jpg" width="990" height="92"></div>
-<!-- 
-< % if (!logged) { %>
-	<a href="login.jsp">Ingresa</a>
-< % } else { %>
-	Hola < % = websiteUser.getName() %>
-< % } %>
-<a href="catalogo.jsp">Catalogo</a>
-<a href="legal.jsp">Legal</a>
--->
 </body>
 </html>
