@@ -8,7 +8,7 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Cliente Normal (paso 2)</title>
+<title>Tua Festa | Registro - Registro Cliente Normal (paso 2)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
