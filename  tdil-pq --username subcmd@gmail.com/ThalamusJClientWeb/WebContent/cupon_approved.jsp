@@ -6,6 +6,7 @@
 
 <html>
 <head>
+<%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp" %>
 <style type="text/css">
 <!--

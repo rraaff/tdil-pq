@@ -18,6 +18,30 @@
 $(document).ready(
 	function(){
 
+		$("form[name='RegisterForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.parent("div"));
+			},
+			rules: { 'firstName': {required: true},
+					'lastName': {required: true},
+					'birthDate': {required: true},
+					'email': {required: true, email: true},
+					'countryId': {required: true},
+					'stateId': {required: true},
+					'password': {required: true}
+			},
+			messages: {
+				'firstName': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+				'lastName': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
+				'birthDate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese la fecha de nacimiento.' />"}, 
+				'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+						email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+				'countryId': {required: "<img id='phoneAreaCodeerrorreq' src='images/unchecked.gif' hovertext='Seleccione un pais.' />"} ,
+				'stateId': {required: "<img id='phoneNumbererrorreq' src='images/unchecked.gif' hovertext='Seleccione una provincia.' />"},
+				'password': {required: "<img id='passworderror' src='images/unchecked.gif' hovertext='Ingrese el password.' />"}
+			}
+		});
+		
 		$("input[name=activeConsumer]").click(function() {
 			 if ($(this).attr("checked")) {
 			      $("select[name=preferedBrand]").removeAttr ( "disabled" );
