@@ -4,6 +4,7 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <html>
 <head>
+<%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
 <%@ include file="includes/errorJS.jsp"%>
 <style type="text/css">
