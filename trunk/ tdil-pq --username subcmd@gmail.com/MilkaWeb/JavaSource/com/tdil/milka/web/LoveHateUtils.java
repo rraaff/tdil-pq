@@ -174,9 +174,9 @@ public class LoveHateUtils {
 			words[index++] = word;
 		}
 		PFont font1 = LoveHateFonts.createFont("roughage.ttf", 20);
-		PFont font2 = LoveHateFonts.createFont("SkunkMonkeyRough", 20);
+//		PFont font2 = LoveHateFonts.createFont("SkunkMonkeyRough", 20);
 		PFont font3 = LoveHateFonts.createFont("wornmss.ttf", 20);
-		WordFonter fonter = Fonters.pickFrom(font1, font2, font3);
+		WordFonter fonter = Fonters.pickFrom(font1, /*font2, */font3);
 		WordSizer sizer = Sizers.byWeight(10, 50);
 		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,0,0), PApplet.color(10,10,10), PApplet.color(20,20,20));
 		WordAngler angler = Anglers.pickFrom(0, PApplet.radians(270));
