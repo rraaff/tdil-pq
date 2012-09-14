@@ -18,8 +18,12 @@ import com.tdil.struts.actions.AjaxFileUploadAction;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
-import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.dao.SellMediaDAO;
+import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.SellMedia;
+import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
+import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
@@ -102,6 +106,139 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 		}
 	}
 	
+	protected void createSellMedia(SellMediaDAO sellMediaDAO, int sellId, SellBean sell) throws SQLException {
+		SellMedia sellMedia = new SellMedia();
+		sellMedia.setIdSell(sellId);
+		sellMedia.setDeleted(0);
+		sellMedia.setApproved(1); // TODO AUTOAPP
+		updateSellMedia(sellMedia, sell);
+		sellMediaDAO.insertSellMedia(sellMedia);
+	}
+	
+	protected void createOrUpdateSellMedia(SellMediaDAO sellMediaDAO, int sellId, SellBean sell) throws SQLException {
+		SellMediaExample sellMediaExample = new SellMediaExample();
+		sellMediaExample.createCriteria().andIdSellEqualTo(sellId).andApprovedEqualTo(1);
+		List<SellMedia> sellMediaList = sellMediaDAO.selectSellMediaByExample(sellMediaExample);
+		if (sellMediaList.isEmpty()) {
+			SellMedia sellMedia = new SellMedia();
+			sellMedia.setIdSell(sellId);
+			sellMedia.setDeleted(0);
+			sellMedia.setApproved(1); // TODO AUTOAPP
+			updateSellMedia(sellMedia,sell);
+			sellMediaDAO.insertSellMedia(sellMedia);
+		} else {
+			SellMedia sellMedia = sellMediaList.get(0);
+			updateSellMedia(sellMedia,sell);
+			sellMediaDAO.updateSellMediaByPrimaryKey(sellMedia);
+		}
+	}
+
+	protected void deleteSellMediaFor(Integer id) throws SQLException {
+		SellMediaExample sellMediaExample = new SellMediaExample();
+		sellMediaExample.createCriteria().andIdSellEqualTo(id);
+		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
+		List<SellMedia> medias = sellMediaDAO.selectSellMediaByExample(sellMediaExample);
+		for (SellMedia m : medias) {
+			deleteBlobs(m, new SellBean()); // fuerzo el borrado
+			sellMediaDAO.deleteSellMediaByPrimaryKey(m.getId());
+		}
+	}
+	
+	protected void updateSellMedia(SellMedia sellMedia, SellBean sell) throws SQLException {
+		// TODO AUTOAPP
+		deleteBlobs(sellMedia, sell);
+		List<UploadData> toInsert = getImagesToInsert(sell);
+		if (toInsert.size() > 0) {
+			int id = BlobHelper.insertBlob(sell.getImage1());
+			sellMedia.setIdBlobData1(id);
+			sellMedia.setExtBlobData1(sell.getImage1().getExtension());
+		} else {
+			sellMedia.setIdBlobData1(0);
+		}
+		if (toInsert.size() > 1) {
+			int id = BlobHelper.insertBlob(sell.getImage2());
+			sellMedia.setIdBlobData2(id);
+			sellMedia.setExtBlobData2(sell.getImage2().getExtension());
+		} else {
+			sellMedia.setIdBlobData2(0);
+		}
+		if (toInsert.size() > 2) {
+			int id = BlobHelper.insertBlob(sell.getImage3());
+			sellMedia.setIdBlobData3(id);
+			sellMedia.setExtBlobData3(sell.getImage3().getExtension());
+		} else {
+			sellMedia.setIdBlobData3(0);
+		}
+		if (toInsert.size() > 3) {
+			int id = BlobHelper.insertBlob(sell.getImage4());
+			sellMedia.setIdBlobData4(id);
+			sellMedia.setExtBlobData4(sell.getImage4().getExtension());
+		} else {
+			sellMedia.setIdBlobData4(0);
+		}
+		if (toInsert.size() > 4) {
+			int id = BlobHelper.insertBlob(sell.getImage5());
+			sellMedia.setIdBlobData5(id);
+			sellMedia.setExtBlobData5(sell.getImage5().getExtension());
+		} else {
+			sellMedia.setIdBlobData5(0);
+		}
+	}
+
+	protected void deleteBlobs(SellMedia sellMedia, SellBean sell) throws SQLException {
+		if (shouldBeDeleted(sellMedia.getIdBlobData1(), sell.getImage1())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		}
+		if (shouldBeDeleted(sellMedia.getIdBlobData2(), sell.getImage1())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		}
+		if (shouldBeDeleted(sellMedia.getIdBlobData3(), sell.getImage1())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		}
+		if (shouldBeDeleted(sellMedia.getIdBlobData4(), sell.getImage1())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		}
+		if (shouldBeDeleted(sellMedia.getIdBlobData5(), sell.getImage1())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		}
+	}
+
+	protected List<UploadData> getImagesToInsert(SellBean sell) {
+		List<UploadData> result = new ArrayList<UploadData>();
+		if (sell.getImage1() != null) {
+			result.add(sell.getImage1());
+		}
+		if (sell.getImage2() != null) {
+			result.add(sell.getImage2());
+		}
+		if (sell.getImage3() != null) {
+			result.add(sell.getImage3());
+		}
+		if (sell.getImage4() != null) {
+			result.add(sell.getImage4());
+		}
+		if (sell.getImage5() != null) {
+			result.add(sell.getImage5());
+		}
+		return result;
+	}
+
+	protected boolean shouldBeDeleted(Integer idBlobData1, UploadData image1) {
+		if (idBlobData1 == null) {
+			return false;
+		}
+		if (idBlobData1 == 0) {
+			return false;
+		}
+		if (image1 == null) {
+			return true;
+		}
+		if (image1.isModified()) {
+			return true;
+		}
+		return true; // por default se borra todo
+	}
+	
 	public void handleAjaxFileUpload(Map<String, FileItem> fileItems, ValidationError validationError,
 			Map<String, Object> result) {
 		FileItem uploaded = fileItems.get(AjaxFileUploadAction.UPLOAD_NAME);
@@ -129,6 +266,14 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 			}
 		}
 		result.put("result", "OK");
+	}
+	
+	protected void clearMediaFields() {
+		this.image1 = null;
+		this.image2 = null;
+		this.image3 = null;
+		this.image4 = null;
+		this.image5 = null;
 	}
 
 	@Override

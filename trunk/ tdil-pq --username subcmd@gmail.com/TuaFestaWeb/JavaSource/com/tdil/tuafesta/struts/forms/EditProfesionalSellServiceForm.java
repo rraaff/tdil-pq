@@ -10,6 +10,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.tdil.struts.ValidationException;
 import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
@@ -62,6 +63,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 	@Override
 	public void save() throws SQLException, ValidationException {
 		SellDAO sellDAO = DAOManager.getSellDAO();
+		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
 		// calculo las que tenia
 		Set<Integer> retained = new HashSet<Integer>();
 		for (SellBean productBean : getSells()) {
@@ -73,6 +75,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
 		for (Sell s : sells) {
 			if (!retained.contains(s.getId())) {
+				deleteSellMediaFor(s.getId());
 				sellDAO.deleteSellByPrimaryKey(s.getId());
 			}
 		}
@@ -83,17 +86,21 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 				sell.setIdProfesional(this.getId());
 				sell.setType(productBean.getType());
 				sell.setIdProdServ(productBean.getProductId());
+				sell.setApproved(0);
 				if (sell.getIdProdServ() == 0) {
 					sell.setItem(productBean.getName());
+				} else {
+					// TODO AUTOAPP
+					sell.setApproved(1);
 				}
 				// TODO ver tema de . , etc
 				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
 				sell.setReferenceprice(refPrice);
-				sell.setApproved(0);
 				sell.setDeleted(0);
-				sellDAO.insertSell(sell);
+				int sellId = sellDAO.insertSell(sell);
+				createSellMedia(sellMediaDAO, sellId, productBean);
 			} else {
-				// TODO update
+				createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
 			}
 		}
 	}
@@ -116,6 +123,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 			servicebean.setName(this.getServiceSelectedText());
 			servicebean.setCategoryText(this.getServiceCategorySelected());
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
+			servicebean.setMedia(this);
 			this.getSells().add(0, servicebean);
 			cleanServiceFields();
 		} else {
@@ -126,6 +134,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 			servicebean.setName(this.getServiceAutocompleter());
 			servicebean.setCategoryText("-");
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
+			servicebean.setMedia(this);
 			this.getSells().add(0, servicebean);
 			cleanServiceFields();
 		}
@@ -137,6 +146,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 		this.setServiceSelectedText(null);
 		this.setServiceCategorySelected(null);
 		this.setServiceReferenceprice(null);
+		clearMediaFields();
 	}
 
 	public String getServiceId() {

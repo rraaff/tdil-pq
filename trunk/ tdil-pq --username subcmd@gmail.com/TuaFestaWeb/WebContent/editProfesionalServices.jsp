@@ -28,9 +28,77 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
 <script>
 $(document).ready(
 	function(){
+
+		$('#upload0').ajaxfileupload({
+		  	'action': './uploadServiceImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#image0').attr('src', './viewServiceImage.do?index=0');	  		
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		$('#upload1').ajaxfileupload({
+		  	'action': './uploadServiceImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#image1').attr('src', './viewServiceImage.do?index=1');	  		
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		$('#upload2').ajaxfileupload({
+		  	'action': './uploadServiceImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#image2').attr('src', './viewServiceImage.do?index=2');	  		
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		$('#upload3').ajaxfileupload({
+		  	'action': './uploadServiceImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#image3').attr('src', './viewServiceImage.do?index=3');	  		
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		$('#upload4').ajaxfileupload({
+		  	'action': './uploadServiceImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		$('#image4').attr('src', './viewServiceImage.do?index=4');	  		
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+		
 		function serviceSelected(prodLabel, prodValue, prodCat) {
 			$("input[name=serviceSelectedText]").attr('value', prodLabel);
 			$("input[name=serviceAutocompleter]").attr('value','');
@@ -88,6 +156,11 @@ function limpiarServicio() {
 	$("#serviceSelectedDiv").css('display', 'none');
 	$("input[name=serviceId]").attr('value', '');
 	$("input[name=serviceReferenceprice]").attr('value', '');
+	$('#image0').attr('src', 'boImages/na.gif');
+	$('#image1').attr('src', 'boImages/na.gif');
+	$('#image2').attr('src', 'boImages/na.gif');
+	$('#image3').attr('src', 'boImages/na.gif');
+	$('#image4').attr('src', 'boImages/na.gif');
 }
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
@@ -126,6 +199,78 @@ function limpiarServicio() {
 					<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.EditProfesionalSellServiceForm.action='./editAddService.do';document.EditProfesionalSellServiceForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarServicio()">Cancelar</a></div>
 				</div>
 			</div>
+			
+						<div class="myRow">
+				<div class="label width100 height80">
+					<logic:notEqual name="EditProfesionalSellServiceForm" property="imageId0" value="0">
+						<img id="image0" src="./viewServiceImage.do?index=0" width="78" height="78" align="absmiddle" border="1">
+					</logic:notEqual>
+				</div>
+				<div class="label width100 height80">
+					<logic:equal name="EditProfesionalSellServiceForm" property="imageId0" value="0">
+						<img id="image0" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
+					</logic:equal>
+				</div>
+				<div class="label width200"><input type="file" name="upload0" id="upload0"></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
+			</div>
+			<div class="myRow">
+				<div class="label width100 height80">
+					<logic:notEqual name="EditProfesionalSellServiceForm" property="imageId1" value="0">
+						<img id="image1" src="./viewServiceImage.do?index=1" width="78" height="78" align="absmiddle" border="1">
+					</logic:notEqual>
+				</div>
+				<div class="label width100 height80">
+					<logic:equal name="EditProfesionalSellServiceForm" property="imageId1" value="0">
+						<img id="image1" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
+					</logic:equal>
+				</div>
+				<div class="label width200"><input type="file" name="upload1" id="upload1"></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
+			</div>
+			<div class="myRow">
+				<div class="label width100 height80">
+					<logic:notEqual name="EditProfesionalSellServiceForm" property="imageId2" value="0">
+						<img id="image2" src="./viewServiceImage.do?index=2" width="78" height="78" align="absmiddle" border="1">
+					</logic:notEqual>
+				</div>
+				<div class="label width100 height80">
+					<logic:equal name="EditProfesionalSellServiceForm" property="imageId2" value="0">
+						<img id="image2" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
+					</logic:equal>
+				</div>
+				<div class="label width200"><input type="file" name="upload2" id="upload2"></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
+			</div>
+			<div class="myRow">
+				<div class="label width100 height80">
+					<logic:notEqual name="EditProfesionalSellServiceForm" property="imageId3" value="0">
+						<img id="image3" src="./viewServiceImage.do?index=3" width="78" height="78" align="absmiddle" border="1">
+					</logic:notEqual>
+				</div>
+				<div class="label width100 height80">
+					<logic:equal name="EditProfesionalSellServiceForm" property="imageId3" value="0">
+						<img id="image3" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
+					</logic:equal>
+				</div>
+				<div class="label width200"><input type="file" name="upload3" id="upload3"></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
+			</div>
+			<div class="myRow">
+				<div class="label width100 height80">
+					<logic:notEqual name="EditProfesionalSellServiceForm" property="imageId4" value="0">
+						<img id="image4" src="./viewServiceImage.do?index=4" width="78" height="78" align="absmiddle" border="1">
+					</logic:notEqual>
+				</div>
+				<div class="label width100 height80">
+					<logic:equal name="EditProfesionalSellServiceForm" property="imageId4" value="0">
+						<img id="image4" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
+					</logic:equal>
+				</div>
+				<div class="label width200"><input type="file" name="upload4" id="upload4"></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
+			</div>
+			
 			<div class="myRow">
 				<%
 				java.util.List source = EditProfesionalSellServiceForm.getSells();
