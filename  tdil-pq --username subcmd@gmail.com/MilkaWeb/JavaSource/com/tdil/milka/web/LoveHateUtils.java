@@ -134,7 +134,7 @@ public class LoveHateUtils {
 		}
 	}
 
-	public static void createLoveWordCloudTag() {
+	public synchronized static void createLoveWordCloudTag() {
 		List<Word> wordList = getLoveWordCloudTag();
 		Word words[] = new Word[wordList.size()];
 		int index = 0;
@@ -166,7 +166,7 @@ public class LoveHateUtils {
 		}
 	}
 	
-	public static void createHateWordCloudTag() {
+	public synchronized static void createHateWordCloudTag() {
 		List<Word> wordList = getHateWordCloudTag();
 		Word words[] = new Word[wordList.size()];
 		int index = 0;
