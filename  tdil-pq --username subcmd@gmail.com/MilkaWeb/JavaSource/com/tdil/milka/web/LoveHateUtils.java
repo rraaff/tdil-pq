@@ -51,12 +51,48 @@ public class LoveHateUtils {
 		}
 	}
 	
+	private static final class GetLoveWordCloudTagCount implements TransactionalActionWithResult {
+		public Object executeInTransaction() throws SQLException {
+			LoveHateExample loveHateExample = new LoveHateExample();
+			loveHateExample.createCriteria().andApprovedEqualTo(1).andLoveEqualTo(1);
+			return DAOManager.getLoveHateDAO().countLoveHateByExample(loveHateExample);
+		}
+	}
+	
 	private static final class GetHateWordCloudTag implements TransactionalActionWithResult {
 		public Object executeInTransaction() throws SQLException {
 			LoveHateExample loveHateExample = new LoveHateExample();
 			loveHateExample.createCriteria().andApprovedEqualTo(1).andLoveEqualTo(0);
 			loveHateExample.setOrderByClause("votes DESC");
 			return DAOManager.getLoveHateDAO().selectLoveHateByExample(loveHateExample);
+		}
+	}
+	
+	private static final class GetHateWordCloudTagCount implements TransactionalActionWithResult {
+		public Object executeInTransaction() throws SQLException {
+			LoveHateExample loveHateExample = new LoveHateExample();
+			loveHateExample.createCriteria().andApprovedEqualTo(1).andLoveEqualTo(0);
+			return DAOManager.getLoveHateDAO().countLoveHateByExample(loveHateExample);
+		}
+	}
+	
+	public static Integer getLoveCount() {
+		try {
+			Integer count = (Integer)TransactionProvider.executeInTransactionWithResult(new GetLoveWordCloudTagCount());
+			return count;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return 0;
+		}
+	}
+	
+	public static Integer getHateCount() {
+		try {
+			Integer count = (Integer)TransactionProvider.executeInTransactionWithResult(new GetHateWordCloudTagCount());
+			return count;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return 0;
 		}
 	}
 

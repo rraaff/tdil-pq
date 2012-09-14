@@ -263,7 +263,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 		</div>
 		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
 		<div class="myRenglon">
-			<div id="dato">a personas respondieron a esta pregunta</div>
+			<div id="dato">a <%=com.tdil.milka.web.LoveHateUtils.getLoveCount() %> personas respondieron a esta pregunta</div>
 		</div>
 	</div>
 </html:form>
