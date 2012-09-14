@@ -716,12 +716,18 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/queAmas.jsp?dnc=true&amp;amas=1" TARGET="page24"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/queAmas.jsp?dnc=true&amp;amas=1" TARGET="page24"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#addHate" NAME="action86" PATH="/addHate"
   SHAPE="240,4289,0,0" TITLE="HateForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/queOdias.jsp?dnc=true&amp;odias=1" TARGET="page25"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/queOdias.jsp?dnc=true&amp;odias=1" TARGET="page25"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#uploadGoodMorning" NAME="action87"
   PATH="/uploadGoodMorning" SHAPE="240,4289,0,0" TITLE="GoodMorningForm"
@@ -841,5 +847,8 @@
    SUBTYPE="confirmed" TARGET="action85" TITLE="/addLove.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page25" PATH="/queOdias.jsp" SHAPE="448,4513,0,0"
-  SUBTYPE="jsp" TITLE="queOdias.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="queOdias.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/addHate.do"
+   SUBTYPE="confirmed" TARGET="action86" TITLE="/addHate.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

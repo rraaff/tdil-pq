@@ -53,7 +53,7 @@ public class HateWordCloudTagServlet extends HttpServlet {
 		
 	}
 
-	private boolean isOutOfDate(File file) {
+	private synchronized boolean isOutOfDate(File file) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(lastGenerated.getTimeInMillis());
 		cal.add(Calendar.MILLISECOND, cachetimemillis);
