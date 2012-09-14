@@ -21,14 +21,20 @@ public class LoveWordCloudTagServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 4570360669857999122L;
-	public static Calendar lastGenerated = Calendar.getInstance();
-	public static final int cachetimemillis = 1000 * 60;
+	public static Calendar lastGenerated = initCalendar();
+	public static final int cachetimemillis = 1000 * 60 * 5;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doService(req, resp);
 	}
 	
+	private static Calendar initCalendar() {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MILLISECOND, cachetimemillis * -2);
+		return cal;
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doService(req, resp);
