@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,8 @@ public class LoveWordCloudTagServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 4570360669857999122L;
+	public static Calendar lastGenerated = Calendar.getInstance();
+	public static final int cachetimemillis = 1000 * 60;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +36,7 @@ public class LoveWordCloudTagServlet extends HttpServlet {
 
 	private void doService(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		File file = new File(BlobLocalDiskCache.getDiskBlobLocation() + "/loveCloud.png");
-		if (file == null || !file.exists() || true /*isOutOfDate(file)*/) {
+		if (file == null || !file.exists() || isOutOfDate(file)) {
 			LoveHateUtils.createLoveWordCloudTag();
 		}
 		InputStream inputStream = null;
@@ -47,5 +50,17 @@ public class LoveWordCloudTagServlet extends HttpServlet {
 			inputStream.close();
 		}
 		
+	}
+	
+	private boolean isOutOfDate(File file) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(lastGenerated.getTimeInMillis());
+		cal.add(Calendar.MILLISECOND, cachetimemillis);
+		if (cal.before(Calendar.getInstance())) {
+			lastGenerated = Calendar.getInstance();
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
