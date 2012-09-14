@@ -156,6 +156,11 @@ function limpiarProducto() {
 	$("#productSelectedDiv").css('display', 'none');
 	$("input[name=productId]").attr('value', '');
 	$("input[name=referenceprice]").attr('value', '');
+	$('#image0').attr('src', 'boImages/na.gif');
+	$('#image1').attr('src', 'boImages/na.gif');
+	$('#image2').attr('src', 'boImages/na.gif');
+	$('#image3').attr('src', 'boImages/na.gif');
+	$('#image4').attr('src', 'boImages/na.gif');
 }
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>

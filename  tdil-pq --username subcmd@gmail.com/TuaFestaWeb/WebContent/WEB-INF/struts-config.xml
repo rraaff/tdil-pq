@@ -509,6 +509,10 @@
   <action name="EditProfesionalSellServiceForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
+  <action parameter="Profesional" path="/uploadServiceImage" type="com.tdil.tuafesta.struts.action.UploadServiceImageAction"/>
+  <action name="EditProfesionalSellServiceForm" parameter="Profesional" path="/viewServiceImage"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewServiceImageAction">
+  </action>
   
   <action parameter="Profesional" path="/uploadProfesionalLogo" type="com.tdil.tuafesta.struts.action.UploadProfesionalLogoAction"/>
   <action name="EditProfesionalBusinessDataForm" parameter="Profesional" path="/viewProfesionalLogo"

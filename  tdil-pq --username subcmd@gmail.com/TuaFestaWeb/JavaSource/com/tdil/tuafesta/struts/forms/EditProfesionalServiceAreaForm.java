@@ -130,8 +130,8 @@ public class EditProfesionalServiceAreaForm extends TransactionalValidationForm 
 		for (ServiceAreaBean serviceAreaBean : this.getServiceAreas()) {
 			if (serviceAreaBean.getId() == 0) {
 				ServiceArea serviceArea = new ServiceArea();
-				serviceArea.setApproved(0);
 				serviceArea.setDeleted(0);
+				serviceArea.setApproved(1); // TODO AUTOAPP
 				serviceArea.setIdProfesional(this.getId());
 				serviceArea.setLevel(serviceAreaBean.getLevel());
 				serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevelId());

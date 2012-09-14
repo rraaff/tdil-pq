@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.forms.beans.PublicImageBlobBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.SellDetailsForm"%>
 <%@ include file="includes/userLogged.jspf" %>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
@@ -19,6 +20,8 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+<script src="js/lightbox.js"></script>
 <style>
 <!--
 .myRow {
@@ -49,6 +52,16 @@
 		<div id="titleArea">
 			<h1>Detalles de la venta <bean:write name="SellDetailsForm" property="sellValueObject.name"/></h1>
 		</div>
+		<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
+		<% if (sellDetailsForm.hasMedia()) { %>
+			<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
+			<div class="fotoHelper" style="width:150px; height:150px; background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);">
+				<a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>">
+					<img src="images/null.gif" width="150" height="150" />
+				</a>
+			</div>
+			<% } %>
+		<% } %>
 		<div id="formContent" class="height300"><a href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a></div>
 		
 		<div id="formContent" class="height300"><a href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>

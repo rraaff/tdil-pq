@@ -1101,4 +1101,9 @@
   TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#uploadProductImage" NAME="action106"
   PATH="/uploadProductImage" SHAPE="32,14321,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadServiceImage" NAME="action107"
+  PATH="/uploadServiceImage" SHAPE="32,14321,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewServiceImage" NAME="action108"
+  PATH="/viewServiceImage" SHAPE="240,14337,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
