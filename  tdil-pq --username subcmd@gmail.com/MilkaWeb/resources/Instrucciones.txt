@@ -1,9 +1,9 @@
-Instalación
+Instalaciï¿½n
 ===========
 
 1) Bajar el tomcat /etc/init.d/tomcat6 stop
 
-2) Ejecutar el archivo ddl_05.sql contra la base de datos
+2) Ejecutar el archivo ddl_06.sql contra la base de datos
 
 3) Descomprimir el war en /usr/share/tomcat6/MILKA_WEB
 
