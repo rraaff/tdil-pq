@@ -189,10 +189,33 @@ div { /*border:dotted 1px #00CC33;*/ }
 }
 
 /**/
+#todalapage {
+	width:766px;
+	height:500px;
+	margin:0 auto;
+}
+#todalapage #navLeft a {
+	background-image: url(images/experiencias/QAQO/previuos.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	height: 33px;
+	width: 33px;
+	margin-top: 235px;
+}
+#todalapage #navRight a {
+	background-image: url(images/experiencias/QAQO/next.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	height: 33px;
+	width: 33px;
+	margin-top: 235px;
+}
 #acaVaElFlash {
 	width:700px;
 	height:500px;
-	margin:0 auto;
+	float:left;
 }
 #controles {
 	width:450px;
@@ -225,34 +248,38 @@ div { /*border:dotted 1px #00CC33;*/ }
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
 <img scr="./loveWordCloudTag.st" width="1" height="1" />
-<div id="acaVaElFlash">
-	<script>
-		if (AC_FL_RunContent == 0) {
-			alert("This page requires AC_RunActiveContent.js.");
-		} else {
-			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
-				'width', '700', 
-				'height','500',
-				'FlashVars', 'fileToLoad=./loveWordCloudTag.st',
-				'src', 'swf/ExpQAQO/qa', 
-				'quality', 'best', 
-				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
-				'align', 'middle', 
-				'play', 'true', 
-				'loop', 'true', 
-				'scale', 'showall', 
-				'wmode', 'opaque', 
-				'devicefont', 'true', 
-				'id', 'ACTest', 
-				'bgcolor', '#ffffff', 
-				'name', 'qa', 
-				'menu', 'true', 
-				'allowScriptAccess', 'sameDomain', 
-				'movie', 'swf/ExpQAQO/qa',
-				'salign', '' ); 
-				//end AC code 
-		} 
-	</script>
+<div id="todalapage">
+	<div id="navLeft"><a href="queOdias.jsp" title="Qu&eacute; Odias?"></a></div>
+	<div id="acaVaElFlash">
+		<script>
+			if (AC_FL_RunContent == 0) {
+				alert("This page requires AC_RunActiveContent.js.");
+			} else {
+				AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+					'width', '700', 
+					'height','500',
+					'FlashVars', 'fileToLoad=./loveWordCloudTag.st',
+					'src', 'swf/ExpQAQO/qa', 
+					'quality', 'best', 
+					'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+					'align', 'middle', 
+					'play', 'true', 
+					'loop', 'true', 
+					'scale', 'showall', 
+					'wmode', 'opaque', 
+					'devicefont', 'true', 
+					'id', 'ACTest', 
+					'bgcolor', '#ffffff', 
+					'name', 'qa', 
+					'menu', 'true', 
+					'allowScriptAccess', 'sameDomain', 
+					'movie', 'swf/ExpQAQO/qa',
+					'salign', '' ); 
+					//end AC code 
+			} 
+		</script>
+	</div>
+	<div id="navRight"><a href="queOdias.jsp" title="Qu&eacute; Odias?"></a></div>
 </div>
 <html:form method="POST" action="/addLove" >
 	<html:hidden name="LoveForm" property="love" value="on"/>
