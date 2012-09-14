@@ -185,10 +185,33 @@ div { /*border:dotted 1px #00CC33;*/ }
 }
 
 /**/
+#todalapage {
+	width:766px;
+	height:500px;
+	margin:0 auto;
+}
+#todalapage #navLeft a {
+	background-image: url(images/experiencias/QAQO/previuos.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	height: 33px;
+	width: 33px;
+	margin-top: 235px;
+}
+#todalapage #navRight a {
+	background-image: url(images/experiencias/QAQO/next.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	height: 33px;
+	width: 33px;
+	margin-top: 235px;
+}
 #acaVaElFlash {
 	width:700px;
 	height:500px;
-	margin:0 auto;
+	float:left;
 }
 #controles {
 	width:450px;
@@ -220,42 +243,45 @@ div { /*border:dotted 1px #00CC33;*/ }
 <div id="floater">
 	<%@ include file="includes/barraExperiencias.jsp" %>
 </div>
-<!-- a partir de acá es la parte de QUE ODIAS -->
-<div id="acaVaElFlash">
-	<script>
-		if (AC_FL_RunContent == 0) {
-			alert("This page requires AC_RunActiveContent.js.");
-		} else {
-			AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
-				'width', '700', 
-				'height','500',
-				'FlashVars', 'fileToLoad=./hateWordCloudTag.st',
-				'src', 'swf/ExpQAQO/qo', 
-				'quality', 'best', 
-				'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
-				'align', 'middle', 
-				'play', 'true', 
-				'loop', 'true', 
-				'scale', 'showall', 
-				'wmode', 'opaque', 
-				'devicefont', 'true', 
-				'id', 'ACTest', 
-				'bgcolor', '#ffffff', 
-				'name', 'qo', 
-				'menu', 'true', 
-				'allowScriptAccess', 'sameDomain', 
-				'movie', 'swf/ExpQAQO/qo',
-				'salign', '' ); 
-				//end AC code 
-		} 
-	</script>
-<!-- img src=""-->
+<img scr="./hateWordCloudTag.st" width="1" height="1" />
+<div id="todalapage">
+	<div id="navLeft"><a href="queAmas.jsp" title="Qu&eacute; Amas?"></a></div>
+	<div id="acaVaElFlash">
+		<script>
+			if (AC_FL_RunContent == 0) {
+				alert("This page requires AC_RunActiveContent.js.");
+			} else {
+				AC_FL_RunContent( 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 
+					'width', '700', 
+					'height','500', 
+					'FlashVars', 'fileToLoad=./hateWordCloudTag.st',
+					'src', 'swf/ExpQAQO/qo', 
+					'quality', 'best', 
+					'pluginspage', 'http://www.macromedia.com/go/getflashplayer', 
+					'align', 'middle', 
+					'play', 'true', 
+					'loop', 'true', 
+					'scale', 'showall', 
+					'wmode', 'opaque', 
+					'devicefont', 'true', 
+					'id', 'ACTest', 
+					'bgcolor', '#ffffff', 
+					'name', 'qo', 
+					'menu', 'true', 
+					'allowScriptAccess', 'sameDomain', 
+					'movie', 'swf/ExpQAQO/qo',
+					'salign', '' ); 
+					//end AC code 
+			} 
+		</script>
+	</div>
+	<div id="navRight"><a href="queAmas.jsp" title="Qu&eacute; Amas?"></a></div>
 </div>
 <html:form method="POST" action="/addHate" >
 	<html:hidden name="LoveForm" property="love" value="off"/>
 	<div id="controles">
 		<div class="myRenglon">
-			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queOdias.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
+			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queOdias.gif" /><input type="image" src="images/experiencias/QAQO/btn_queOdiass.gif" width="50" height="47" /></div>
 			<div class="myLabel"><html:text name="HateForm" property="text" styleClass="qaqoField"/></div>
 		</div>
 		<div class="myRenglon" style="background-image:url(images/experiencias/QAQO/divison.gif); background-repeat:repeat-x; height:18px;">&nbsp;</div>
