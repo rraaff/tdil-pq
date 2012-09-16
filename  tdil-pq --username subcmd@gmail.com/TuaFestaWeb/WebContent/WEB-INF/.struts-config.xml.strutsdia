@@ -1106,4 +1106,18 @@
  <PROCESS-ITEM ID="#viewServiceImage" NAME="action108"
   PATH="/viewServiceImage" SHAPE="240,14337,0,0"
   TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deleteProductImage" NAME="action109"
+  PATH="/deleteProductImage" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteServiceImage" NAME="action110"
+  PATH="/deleteServiceImage" SHAPE="96,14321,0,0"
+  TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

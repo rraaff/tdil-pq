@@ -31,6 +31,15 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 	private String serviceSelectedText;
 	private String serviceReferenceprice;
 	
+	
+	@Override
+	protected void loadForEdit(SellBean edited) {
+		this.serviceId = String.valueOf(edited.getProductId());
+		this.serviceCategorySelected = edited.getCategoryText();
+		this.serviceSelectedText = edited.getName();
+		this.serviceReferenceprice = edited.getReferencePrice();
+	}
+	
 	@Override
 	public void initWith(int id) throws SQLException {
 		this.reset();
@@ -100,6 +109,11 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 				int sellId = sellDAO.insertSell(sell);
 				createSellMedia(sellMediaDAO, sellId, productBean);
 			} else {
+				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
+				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+				sell.setReferenceprice(refPrice);
+				// TODO esto deberia mandarlo a pending nuevamente
+				sellDAO.updateSellByPrimaryKey(sell);
 				createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
 			}
 		}
@@ -115,29 +129,38 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 	
 	public void addService() {
 		// TODO validaciones
+		SellBean servicebean = null;
+		if (edited != null) {
+			servicebean = edited;
+		} else {
+			servicebean = new SellBean();
+		}
 		if (this.isServiceSelected()) {
 			// serviceo elegido de la rd
-			SellBean servicebean = new SellBean();
 			servicebean.setType(SellType.SERVICE);
 			servicebean.setProductId(Integer.valueOf(this.getServiceId()));
 			servicebean.setName(this.getServiceSelectedText());
 			servicebean.setCategoryText(this.getServiceCategorySelected());
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
 			servicebean.setMedia(this);
-			this.getSells().add(0, servicebean);
+			if (edited == null) {
+				this.getSells().add(0, servicebean);
+			}
 			cleanServiceFields();
 		} else {
 			// serviceo no rd
-			SellBean servicebean = new SellBean();
 			servicebean.setType(SellType.SERVICE);
 			servicebean.setProductId(0);
 			servicebean.setName(this.getServiceAutocompleter());
 			servicebean.setCategoryText("-");
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
 			servicebean.setMedia(this);
-			this.getSells().add(0, servicebean);
+			if (edited == null) {
+				this.getSells().add(0, servicebean);
+			}
 			cleanServiceFields();
 		}
+		edited = null;
 	}
 	
 	private void cleanServiceFields() {

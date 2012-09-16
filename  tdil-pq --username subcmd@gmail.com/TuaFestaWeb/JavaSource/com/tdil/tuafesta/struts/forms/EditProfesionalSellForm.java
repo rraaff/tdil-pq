@@ -18,8 +18,10 @@ import com.tdil.struts.actions.AjaxFileUploadAction;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
+import com.tdil.tuafesta.dao.BlobDataDAO;
 import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.BlobData;
 import com.tdil.tuafesta.model.SellMedia;
 import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
@@ -35,6 +37,8 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 	private static final long serialVersionUID = 1351122768332927638L;
 	private int id;
 	private int objectId;
+	
+	protected SellBean edited;
 
 	private UploadData image1;
 	private UploadData image2;
@@ -58,6 +62,64 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(EditProfesionalSellProductForm.class);
 	}
+	
+	public void loadForEdit(int index) throws SQLException {
+		edited = this.getSells().get(index);
+		if (edited.getId() != 0) {
+			// si ya estaba grabado
+			if (!edited.isDataLoaded()) { // si no se cargaron los datos, los cargo de la base
+				BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
+				SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
+				SellMediaExample sellMediaExample = new SellMediaExample();
+				sellMediaExample.createCriteria().andIdSellEqualTo(edited.getId()).andApprovedEqualTo(1); // TODO AUTO APP
+				List<SellMedia> list = sellMediaDAO.selectSellMediaByExample(sellMediaExample);
+				if (!list.isEmpty()) {
+					SellMedia media = list.get(0);
+					if (media.getIdBlobData1() != null && media.getIdBlobData1() != 0) {
+						BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(media.getIdBlobData1());
+						this.setImage1(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+						edited.setImage1(this.getImage1());
+					}
+					if (media.getIdBlobData2() != null && media.getIdBlobData2() != 0) {
+						BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(media.getIdBlobData2());
+						this.setImage2(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+						edited.setImage2(this.getImage2());
+					}
+					if (media.getIdBlobData3() != null && media.getIdBlobData3() != 0) {
+						BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(media.getIdBlobData3());
+						this.setImage3(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+						edited.setImage3(this.getImage3());
+					}
+					if (media.getIdBlobData4() != null && media.getIdBlobData4() != 0) {
+						BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(media.getIdBlobData4());
+						this.setImage4(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+						edited.setImage4(this.getImage4());
+					}
+					if (media.getIdBlobData5() != null && media.getIdBlobData5() != 0) {
+						BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(media.getIdBlobData5());
+						this.setImage5(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+						edited.setImage5(this.getImage5());
+					}
+				}
+				edited.setDataLoaded(true);
+			} else {
+				this.setImage1(edited.getImage1());
+				this.setImage2(edited.getImage2());
+				this.setImage3(edited.getImage3());
+				this.setImage4(edited.getImage4());
+				this.setImage5(edited.getImage5());
+			}
+		} else {
+			this.setImage1(edited.getImage1());
+			this.setImage2(edited.getImage2());
+			this.setImage3(edited.getImage3());
+			this.setImage4(edited.getImage4());
+			this.setImage5(edited.getImage5());
+		}
+		loadForEdit(edited);
+	}
+	
+	protected abstract void loadForEdit(SellBean edited);
 
 	@Override
 	public void reset() throws SQLException {
@@ -149,37 +211,37 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 		deleteBlobs(sellMedia, sell);
 		List<UploadData> toInsert = getImagesToInsert(sell);
 		if (toInsert.size() > 0) {
-			int id = BlobHelper.insertBlob(sell.getImage1());
+			int id = BlobHelper.insertBlob(toInsert.get(0));
 			sellMedia.setIdBlobData1(id);
-			sellMedia.setExtBlobData1(sell.getImage1().getExtension());
+			sellMedia.setExtBlobData1(toInsert.get(0).getExtension());
 		} else {
 			sellMedia.setIdBlobData1(0);
 		}
 		if (toInsert.size() > 1) {
-			int id = BlobHelper.insertBlob(sell.getImage2());
+			int id = BlobHelper.insertBlob(toInsert.get(1));
 			sellMedia.setIdBlobData2(id);
-			sellMedia.setExtBlobData2(sell.getImage2().getExtension());
+			sellMedia.setExtBlobData2(toInsert.get(1).getExtension());
 		} else {
 			sellMedia.setIdBlobData2(0);
 		}
 		if (toInsert.size() > 2) {
-			int id = BlobHelper.insertBlob(sell.getImage3());
+			int id = BlobHelper.insertBlob(toInsert.get(2));
 			sellMedia.setIdBlobData3(id);
-			sellMedia.setExtBlobData3(sell.getImage3().getExtension());
+			sellMedia.setExtBlobData3(toInsert.get(2).getExtension());
 		} else {
 			sellMedia.setIdBlobData3(0);
 		}
 		if (toInsert.size() > 3) {
-			int id = BlobHelper.insertBlob(sell.getImage4());
+			int id = BlobHelper.insertBlob(toInsert.get(3));
 			sellMedia.setIdBlobData4(id);
-			sellMedia.setExtBlobData4(sell.getImage4().getExtension());
+			sellMedia.setExtBlobData4(toInsert.get(3).getExtension());
 		} else {
 			sellMedia.setIdBlobData4(0);
 		}
 		if (toInsert.size() > 4) {
-			int id = BlobHelper.insertBlob(sell.getImage5());
+			int id = BlobHelper.insertBlob(toInsert.get(4));
 			sellMedia.setIdBlobData5(id);
-			sellMedia.setExtBlobData5(sell.getImage5().getExtension());
+			sellMedia.setExtBlobData5(toInsert.get(4).getExtension());
 		} else {
 			sellMedia.setIdBlobData5(0);
 		}
@@ -189,17 +251,17 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 		if (shouldBeDeleted(sellMedia.getIdBlobData1(), sell.getImage1())) {
 			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
 		}
-		if (shouldBeDeleted(sellMedia.getIdBlobData2(), sell.getImage1())) {
-			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		if (shouldBeDeleted(sellMedia.getIdBlobData2(), sell.getImage2())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData2());
 		}
-		if (shouldBeDeleted(sellMedia.getIdBlobData3(), sell.getImage1())) {
-			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		if (shouldBeDeleted(sellMedia.getIdBlobData3(), sell.getImage3())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData3());
 		}
-		if (shouldBeDeleted(sellMedia.getIdBlobData4(), sell.getImage1())) {
-			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		if (shouldBeDeleted(sellMedia.getIdBlobData4(), sell.getImage4())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData4());
 		}
-		if (shouldBeDeleted(sellMedia.getIdBlobData5(), sell.getImage1())) {
-			BlobHelper.deleteBlob(sellMedia.getIdBlobData1());
+		if (shouldBeDeleted(sellMedia.getIdBlobData5(), sell.getImage5())) {
+			BlobHelper.deleteBlob(sellMedia.getIdBlobData5());
 		}
 	}
 
@@ -415,6 +477,14 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 
 	public void setVideo5(String video5) {
 		this.video5 = video5;
+	}
+
+	public SellBean getEdited() {
+		return edited;
+	}
+
+	public void setEdited(SellBean edited) {
+		this.edited = edited;
 	}
 
 }

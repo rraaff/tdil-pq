@@ -14,7 +14,6 @@ import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
-import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
@@ -31,6 +30,13 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 	private String productSelectedText;
 	private String referenceprice;
 	
+	@Override
+	protected void loadForEdit(SellBean edited) {
+		this.productId = String.valueOf(edited.getProductId());
+		this.productCategorySelected = edited.getCategoryText();
+		this.productSelectedText = edited.getName();
+		this.referenceprice = edited.getReferencePrice();
+	}
 	
 	@Override
 	public void initWith(int id) throws SQLException {
@@ -101,6 +107,11 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 				int sellId = sellDAO.insertSell(sell);
 				createSellMedia(sellMediaDAO, sellId, productBean);
 			} else {
+				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
+				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+				sell.setReferenceprice(refPrice);
+				// TODO esto deberia mandarlo a pending nuevamente
+				sellDAO.updateSellByPrimaryKey(sell);
 				createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
 			}
 		}
@@ -115,29 +126,38 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 	
 	public void addProduct() {
 		// TODO validaciones
+		SellBean productbean = null;
+		if (edited != null) {
+			productbean = edited;
+		} else {
+			productbean = new SellBean();
+		}
 		if (this.isProductSelected()) {
 			// producto elegido de la rd
-			SellBean productbean = new SellBean();
 			productbean.setType(SellType.PRODUCT);
 			productbean.setProductId(Integer.valueOf(this.getProductId()));
 			productbean.setName(this.getProductSelectedText());
 			productbean.setCategoryText(this.getProductCategorySelected());
 			productbean.setReferencePrice(this.getReferenceprice());
 			productbean.setMedia(this);
-			this.getSells().add(0, productbean);
+			if (edited == null) {
+				this.getSells().add(0, productbean);
+			}
 			cleanProductFields();
 		} else {
 			// producto no rd
-			SellBean productbean = new SellBean();
 			productbean.setType(SellType.PRODUCT);
 			productbean.setProductId(0);
 			productbean.setName(this.getProductAutocompleter());
 			productbean.setCategoryText("-");
 			productbean.setReferencePrice(this.getReferenceprice());
 			productbean.setMedia(this);
-			this.getSells().add(0, productbean);
+			if (edited == null) {
+				this.getSells().add(0, productbean);
+			}
 			cleanProductFields();
 		}
+		edited = null;
 	}
 	
 	private void cleanProductFields() {

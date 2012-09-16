@@ -483,6 +483,15 @@
    <forward name="failure" path="/editProfesionalProducts.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
+    <action name="EditProfesionalSellProductForm" path="/editProfesionalProduct" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp"/>
+  </action>
+    <action name="EditProfesionalSellProductForm" path="/deleteProductImage" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp"/>
+  </action>
+  
   <action name="EditProfesionalSellProductForm" path="/editAddProduct" scope="session" type="com.tdil.tuafesta.struts.action.AddProductAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
@@ -503,6 +512,15 @@
    <forward name="failure" path="/editProfesionalServices.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
+  <action name="EditProfesionalSellServiceForm" path="/editProfesionalService" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
+   <forward name="continue" path="/editProfesionalServices.jsp"/>
+  </action>
+    <action name="EditProfesionalSellServiceForm" path="/deleteServiceImage" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
+   <forward name="continue" path="/editProfesionalServices.jsp"/>
+  </action>
+  
   <action name="EditProfesionalSellServiceForm" path="/editAddService" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>

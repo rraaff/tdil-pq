@@ -1,6 +1,8 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +17,7 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
 
 public class ProfesionalHomeForm extends TransactionalValidationForm {
@@ -28,6 +31,8 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	private boolean businessDataChanged = false;
 	private Profesional profesional;
 	private GeoLevelValueObject location;
+	
+	private List<SellValueObject> sells = new ArrayList<SellValueObject>();
 	
 	@Override
 	public void reset() throws SQLException {
@@ -48,6 +53,9 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 		businessDataChanged = ProfesionalUtils.mergeBusinessData(profesional, profesionalChange);
 		
 		location = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(profesional.getIdGeolevel());
+		
+		sells = DAOManager.getSellDAO().selectProductSellsByProfesional(id);
+		sells.addAll(DAOManager.getSellDAO().selectServiceSellsByProfesional(id));
 	}
 	
 	@Override
@@ -86,6 +94,12 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	}
 	public void setBusinessDataChanged(boolean businessDataChanged) {
 		this.businessDataChanged = businessDataChanged;
+	}
+	public List<SellValueObject> getSells() {
+		return sells;
+	}
+	public void setSells(List<SellValueObject> sells) {
+		this.sells = sells;
 	}
 	
 }
