@@ -16,6 +16,7 @@
 						<ul>
 							<li><html:link action="/goToGeoLevelAdministration">Geo Levels</html:link></li>
 							<li><html:link action="/goToProfesionalAdministration" >Administraci&oacute;n</html:link></li>
+							<li><html:link action="/goToPromotionAdministration" >Promociones</html:link></li>
 						</ul>
 					</li>
 					<li><a href="#">Contenidos del sitio</a>

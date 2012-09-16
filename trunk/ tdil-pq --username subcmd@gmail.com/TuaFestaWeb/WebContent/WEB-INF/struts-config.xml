@@ -63,6 +63,9 @@
    <form-bean id="EditProfesionalSellServiceForm"
    name="EditProfesionalSellServiceForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellServiceForm"/>
    
+   <form-bean id="PromotionForm"
+   name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -535,6 +538,25 @@
   <action parameter="Profesional" path="/uploadProfesionalLogo" type="com.tdil.tuafesta.struts.action.UploadProfesionalLogoAction"/>
   <action name="EditProfesionalBusinessDataForm" parameter="Profesional" path="/viewProfesionalLogo"
    scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalLogoAction">
+  </action>
+ 
+  <action name="PromotionForm" parameter="Admin"
+   path="/goToPromotionAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin"
+   path="/savePromotion" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin"
+   path="/editPromotion" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin"
+   path="/toggleDeletedPromotion" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boPromotionAdministration.jsp"/>
   </action>
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">

@@ -407,7 +407,8 @@ CREATE TABLE PROMOTION (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `startDate` DATETIME NOT NULL ,
   `endDate` DATETIME NOT NULL ,
-  `description` VARCHAR(400) NOT NULL ,
+  `name` VARCHAR(100) NOT NULL ,
+  `description` VARCHAR(4000) NOT NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
