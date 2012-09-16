@@ -1120,4 +1120,51 @@
    PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToPromotionAdministration" NAME="action111"
+  PATH="/goToPromotionAdministration" SHAPE="48,1873,0,0"
+  TITLE="PromotionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page47" PATH="/boPromotionAdministration.jsp"
+  SHAPE="320,1890,0,0" SUBTYPE="jsp"
+  TITLE="boPromotionAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/savePromotion.do"
+   SUBTYPE="confirmed" TARGET="action112" TITLE="/savePromotion.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/toggleDeletedSystemProperty.do" SUBTYPE="confirmed"
+   TARGET="action5" TITLE="/toggleDeletedSystemProperty.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editPromotion.do"
+   SUBTYPE="confirmed" TARGET="action113" TITLE="/editPromotion.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#savePromotion" NAME="action112"
+  PATH="/savePromotion" SHAPE="48,2049,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editPromotion" NAME="action113"
+  PATH="/editPromotion" SHAPE="48,2337,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedPromotion" NAME="action114"
+  PATH="/toggleDeletedPromotion" SHAPE="48,2561,0,0"
+  TITLE="PromotionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
