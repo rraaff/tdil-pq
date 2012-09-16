@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
+<%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
+<%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ClientHomeForm"%>
@@ -55,6 +58,23 @@
 			<a href="./goToEditProfesionalProducts.do?id=<%=profesional.getId()%>">Editar</a>
 			<a href="./goToEditProfesionalServices.do?id=<%=profesional.getId()%>">Editar</a>
 		</div><br>
+		<div class="myRow">
+			<%
+			java.util.List source = profesionalHomeForm.getSells();
+			com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+			request.setAttribute( "sells",  paginated);
+			%>
+			<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./homeProfesional.jsp">
+				<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
+				<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width250" property="sellTypeDescription"></display:column>
+				<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
+				<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referenceprice"></display:column>
+				<display:column title="Estado" sortable="true" sortName="Estado" headerClass="sortable width100">
+					<%= ((SellValueObject)pageContext.getAttribute("sells")).getStatusText()%>
+				</display:column>
+			</display:table>
+			<%=DisplayTagParamHelper.getFields(request)%>
+		</div>
 		
 		<div style="border: 1px Solid Black;">
 			<legend>Areas de cobertura </legend>

@@ -30,6 +30,8 @@ public class SellBean implements Serializable {
 	private String name;
 	private String referencePrice;
 	
+	private boolean dataLoaded;
+	
 	private UploadData image1;
 	private UploadData image2;
 	private UploadData image3;
@@ -205,6 +207,14 @@ public class SellBean implements Serializable {
 		this.setVideo4(editProfesionalSellServiceForm.getVideo4());
 		this.setVideo5(editProfesionalSellServiceForm.getVideo5());
 		
+	}
+
+	public boolean isDataLoaded() {
+		return dataLoaded;
+	}
+
+	public void setDataLoaded(boolean dataLoaded) {
+		this.dataLoaded = dataLoaded;
 	}
 	
 }

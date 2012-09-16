@@ -1,8 +1,16 @@
 package com.tdil.tuafesta.model.valueobjects;
 
-import org.apache.commons.lang.StringUtils;
+import java.sql.SQLException;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+
+import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.struts.forms.NotificationEmailForm;
+import com.tdil.tuafesta.utils.ProductCategoryUtils;
 
 public class SellValueObject extends Sell {
 
@@ -22,6 +30,31 @@ public class SellValueObject extends Sell {
 	
 	private int idCategory;
 
+	public String getSellTypeDescription() {
+		return ApplicationResources.getMessage(this.getType() == SellType.PRODUCT ? "PRODUCT" : "SERVICE");
+	}
+	
+	public String getStatusText() {
+		if (this.getApproved() != null && this.getApproved().equals(1)) {
+			return ApplicationResources.getMessage("APPROVED");
+		} else {
+			return ApplicationResources.getMessage("PENDING");
+		}
+	}
+	
+	public String getCategoryText() {
+		try {
+			return ProductCategoryUtils.getCategoryPath(this.getIdCategory());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return "";
+		}
+	}
+	
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(SellValueObject.class);
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -212,6 +212,7 @@ function limpiarServicio() {
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload0" id="upload0"></div>
+				<a href="./deleteServiceImage.do?index=1">Borrar</a>
 				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
@@ -226,6 +227,7 @@ function limpiarServicio() {
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload1" id="upload1"></div>
+				<a href="./deleteServiceImage.do?index=2">Borrar</a>
 				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
@@ -240,6 +242,7 @@ function limpiarServicio() {
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload2" id="upload2"></div>
+				<a href="./deleteServiceImage.do?index=3">Borrar</a>
 				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
@@ -254,6 +257,7 @@ function limpiarServicio() {
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload3" id="upload3"></div>
+				<a href="./deleteServiceImage.do?index=4">Borrar</a>
 				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
@@ -268,6 +272,7 @@ function limpiarServicio() {
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload4" id="upload4"></div>
+				<a href="./deleteServiceImage.do?index=5">Borrar</a>
 				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellServiceForm.image_key + ".err")%></div>
 			</div>
 			
@@ -282,7 +287,9 @@ function limpiarServicio() {
 					<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width250" property="sellTypeDescription"></display:column>
 					<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
 					<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
-					<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.EditProfesionalSellServiceForm.action='./editRemoveService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellServiceForm.submit();">Quitar</a>
+					<display:column title="acciones" headerClass="sortable width50">
+						<a class="nonelyLink" href="./editProfesionalService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>">Editar</a>
+						<a class="nonelyLink" href="javascript:document.EditProfesionalSellServiceForm.action='./editRemoveService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellServiceForm.submit();">Quitar</a>
 					</display:column>
 				</display:table>
 				<%=DisplayTagParamHelper.getFields(request)%>
