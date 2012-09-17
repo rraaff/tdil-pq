@@ -89,4 +89,8 @@ public interface SellDAO {
 	public SellValueObject selectSellProductValueObject(int id) throws SQLException;
 
 	public SellValueObject selectSellServiceValueObject(int id) throws SQLException;
+
+	public List<SellValueObject> searchProductsSellsBy(String name, String profesionalBusinessname) throws SQLException;
+
+	public List<SellValueObject> searchServicesSellsBy(String name, String profesionalBusinessname) throws SQLException;
 }

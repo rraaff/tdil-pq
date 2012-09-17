@@ -1167,4 +1167,11 @@
    PATH="/boPromotionAdministration.jsp" TARGET="page47"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchSellsForPromotion" NAME="action115"
+  PATH="/searchSellsForPromotion" SHAPE="48,2273,0,0"
+  TITLE="PromotionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

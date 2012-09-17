@@ -55,6 +55,13 @@ $(document).ready(
 			<div class="label width100"><html:text name="PromotionForm" property="enddate"/></div>
 			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.enddate_key + ".err")%></div>
 		</div>
+		
+		<html:radio name="PromotionForm" property="searchForm.type" value="1" />
+		<html:radio name="PromotionForm" property="searchForm.type" value="2" />
+		<html:text name="PromotionForm" property="searchForm.name"/>
+		<html:text name="PromotionForm" property="searchForm.profesionalBusinessname"/>
+		<a class="nonelyLink" href="javascript:document.PromotionForm.action='./searchSellsForPromotion.do';document.PromotionForm.submit();">Buscar</a>
+		
 		<div class="renglon width860" style="margin-bottom:20px;" align="center">
 			<logic:equal name="PromotionForm" property="objectId" value="0">
 				<html:submit property="operation">

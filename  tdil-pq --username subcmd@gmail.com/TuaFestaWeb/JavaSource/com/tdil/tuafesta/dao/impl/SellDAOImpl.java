@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.model.Geo4;
@@ -210,5 +212,30 @@ public class SellDAOImpl implements SellDAO {
 		params.put("id", id);
 		SellValueObject record = (SellValueObject) sqlMapClient.queryForObject("SELL.selectSellServiceValueObject", params);
 		return record;
+	}
+	
+	@Override
+	public List<SellValueObject> searchProductsSellsBy(String name, String profesionalBusinessname) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		if (!StringUtils.isEmpty(name)) {
+			params.put("name", "%"+name+"%");
+		}
+		if (!StringUtils.isEmpty(profesionalBusinessname)) {
+			params.put("profesionalBusinessname", "%"+profesionalBusinessname+"%");
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchProductsSellsBy", params);
+		return list;
+	}
+	@Override
+	public List<SellValueObject> searchServicesSellsBy(String name, String profesionalBusinessname) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		if (!StringUtils.isEmpty(name)) {
+			params.put("name", "%"+name+"%");
+		}
+		if (!StringUtils.isEmpty(profesionalBusinessname)) {
+			params.put("profesionalBusinessname", "%"+profesionalBusinessname+"%");
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchServicesSellsBy", params);
+		return list;
 	}
 }

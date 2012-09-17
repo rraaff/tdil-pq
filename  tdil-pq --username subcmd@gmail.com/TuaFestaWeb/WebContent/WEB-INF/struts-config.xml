@@ -558,6 +558,10 @@
    <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boPromotionAdministration.jsp"/>
   </action>
+  <action name="PromotionForm" parameter="Admin"
+   path="/searchSellsForPromotion" scope="session" type="com.tdil.struts.actions.SearchAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
+  </action>
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
 	<forward name="notLogged" path="/index.jsp"/>

@@ -570,4 +570,65 @@ union all
     and prof.deleted = 0
   </select>
   
+  
+  <select id="searchProductsSellsBy" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prod.name as name,
+    	prod.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name,
+    	0 as idCategory
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
+    where sell.id_prod_serv = prod.id
+    and sell.type = 1
+    and sell.id_profesional = prof.id
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prod.approved = 1
+    and prod.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    <isNotNull prepend="and" property="name">
+    	prod.name LIKE #name:VARCHAR#
+    </isNotNull>
+    <isNotNull prepend="and" property="profesionalBusinessname">
+    	prof.businessname LIKE #profesionalBusinessname:VARCHAR#
+    </isNotNull>
+  </select>
+  
+  
+  <select id="searchServicesSellsBy" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name,
+    	0 as idCategory
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof
+    where sell.id_prod_serv = serv.id
+    and sell.type = 2
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    <isNotNull prepend="and" property="name">
+    	serv.name LIKE #name:VARCHAR#
+    </isNotNull>
+    <isNotNull prepend="and" property="profesionalBusinessname">
+    	prof.businessname LIKE #profesionalBusinessname:VARCHAR#
+    </isNotNull>
+  </select>
+  
 </sqlMap>
