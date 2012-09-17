@@ -14,24 +14,24 @@
 				<ul class="myMenu">
 					<li><a href="#">Profesionales</a>
 						<ul>
-							<li><html:link action="/goToGeoLevelAdministration">Geo Levels</html:link></li>
 							<li><html:link action="/goToProfesionalAdministration" >Administraci&oacute;n</html:link></li>
 							<li><html:link action="/goToPromotionAdministration" >Promociones</html:link></li>
 						</ul>
 					</li>
 					<li><a href="#">Contenidos del sitio</a>
 						<ul>
-							<li><html:link action="/goToServiceCategoryABM" >Manejo de categorias de servicios</html:link></li>
-							<li><html:link action="/goToProfesionalServiceABM" >Manejo de servicios</html:link></li>
-							<li><html:link action="/goToProductCategoryABM" >Manejo de categorias de productos</html:link></li>
-							<li><html:link action="/goToProfesionalProductABM" >Manejo de productos</html:link></li>
-							<li><html:link action="/goToHighlightedCategoryABM" >Manejo de categorias destacadas</html:link></li>
+							<li><html:link action="/goToServiceCategoryABM" >Categor&iacute;as de Servicios</html:link></li>
+							<li><html:link action="/goToProfesionalServiceABM" >Servicios</html:link></li>
+							<li><html:link action="/goToProductCategoryABM" >Categor&iacute;as de Productos</html:link></li>
+							<li><html:link action="/goToProfesionalProductABM" >Productos</html:link></li>
+							<li><html:link action="/goToHighlightedCategoryABM" >Categor&iacute;as Destacadas</html:link></li>
 						</ul>
 					</li>
 					<li><a href="#">Administracion</a>
 						<ul>
-							<li><html:link action="/goToRawInsertABM" >Administracion de inserts</html:link></li>
-							<li><html:link action="/goToNotificationEmailABM" >Notificaciones por email</html:link></li>
+							<li><html:link action="/goToGeoLevelAdministration">Geo Levels</html:link></li>
+							<li><html:link action="/goToRawInsertABM" >Editar de HTML inserts</html:link></li>
+							<li><html:link action="/goToNotificationEmailABM" >Notificaciones por E-Mail</html:link></li>
 						</ul>
 					</li>
 					<li><a href="#">Reportes</a>
