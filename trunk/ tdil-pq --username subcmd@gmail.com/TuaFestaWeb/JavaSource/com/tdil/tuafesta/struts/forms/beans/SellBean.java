@@ -26,6 +26,7 @@ public class SellBean implements Serializable {
 	private int type;
 	private int id;
 	private int productId;
+	private String profesionalBusinessname;
 	private String categoryText;
 	private String name;
 	private String referencePrice;
@@ -215,6 +216,14 @@ public class SellBean implements Serializable {
 
 	public void setDataLoaded(boolean dataLoaded) {
 		this.dataLoaded = dataLoaded;
+	}
+
+	public String getProfesionalBusinessname() {
+		return profesionalBusinessname;
+	}
+
+	public void setProfesionalBusinessname(String profesionalBusinessname) {
+		this.profesionalBusinessname = profesionalBusinessname;
 	}
 	
 }

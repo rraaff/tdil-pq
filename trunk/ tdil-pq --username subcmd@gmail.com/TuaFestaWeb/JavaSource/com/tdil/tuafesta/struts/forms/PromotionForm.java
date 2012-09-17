@@ -1,22 +1,25 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.SearchForm;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Promotion;
 import com.tdil.tuafesta.model.PromotionExample;
+import com.tdil.tuafesta.struts.forms.beans.SellBean;
 import com.tdil.utils.DateUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class PromotionForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class PromotionForm extends TransactionalValidationForm implements ToggleDeletedFlagForm, SearchForm {
 
 	/**
 	 * 
@@ -32,6 +35,10 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	
 	private String name;
 	private String description;
+	private List<SellBean> sells = new ArrayList<SellBean>();
+	
+	private SearchSellForm searchForm = new SearchSellForm();
+	
 	private List<Promotion> allPromotion;
 	
 	public static String startdate_key = "Promotion.startdate";
@@ -46,6 +53,12 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		this.description = null;
 		this.startdate = null;
 		this.enddate = null;
+		this.sells = new ArrayList<SellBean>();
+	}
+	
+	@Override
+	public void search() throws ValidationException {
+		this.searchForm.search();
 	}
 
 	@Override
@@ -189,6 +202,22 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
+	}
+
+	public List<SellBean> getSells() {
+		return sells;
+	}
+
+	public void setSells(List<SellBean> sells) {
+		this.sells = sells;
+	}
+
+	public SearchSellForm getSearchForm() {
+		return searchForm;
+	}
+
+	public void setSearchForm(SearchSellForm searchForm) {
+		this.searchForm = searchForm;
 	}
 
 }
