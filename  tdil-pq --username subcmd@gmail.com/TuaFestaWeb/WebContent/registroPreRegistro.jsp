@@ -1,4 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.web.SystemPropertyUtils"%>
+<%@page import="com.tdil.tuafesta.utils.SystemPropertiesKeys"%>
+<%@page import="com.tdil.tuafesta.struts.action.LoginClientFacebookAction"%>
+<%@page import="com.tdil.facebook.Facebook"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ProductBean"%>
@@ -334,7 +338,8 @@ function limpiarServiceArea() {
 			<div id="moduloPreReg" class="cliente">
 				<h2>Te queres registrar para contactarte y ser contactado por los profesionales?</h2>
 				<p>Podes registrarte sin costo alguno usando tu cuenta de Facebook o <a href="./goToRegistroCliente.do" title="Registrate sin usar tu cuenta de Facebook">simplemente cargando unos datos b&aacute;sicos.</a></p>
-				<div id="buttonFB"><a href="#"><img src="images/null.gif" width="328" height="65" /></a></div>
+				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.FB_API_KEY),
+					SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME) + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="328" height="65" /></a></div>
 			</div>
 			<div id="moduloPreReg" class="profesional">
 				<h2><span class="profesional_title">Queres ofrecer tus productos o servicios? </span><span class="remarcadoDCF6FC">Registrate gratis</span></h2>

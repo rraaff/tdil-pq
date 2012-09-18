@@ -70,6 +70,7 @@ $(document).ready(
 			<h1>Registro de Clientes (Gratuito 100%)</h1>
 			<h2>Complet&aacute; los datos del formulario y segu&iacute; los pasos de la registraci&oacute;n.</h2>
 		</div>
+		<% ClientForm clientForm = (ClientForm)session.getAttribute("ClientForm");%>
 		<div id="formContent">
 			<html:form method="POST" action="/addClient">
 			<div id="formSection">
@@ -92,9 +93,15 @@ $(document).ready(
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width280" id="Email"><html:text name="ClientForm" property="email" styleClass="normalField width250"/></div>
+					<div class="myLabel width280" id="Email">
+						<% if (clientForm.isFacebookRegister()) { %>
+							<bean:write name="ClientForm" property="email" />
+						<% } else {  %>
+							<html:text name="ClientForm" property="email" styleClass="normalField width250"/></div>
+						<% } %>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.email.err")%></div>
 				</div>
+				<% if (!clientForm.isFacebookRegister()) { %>
 				<div class="myRow">
 					<div class="myLabel width50">Clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width150"/></div>
@@ -103,10 +110,11 @@ $(document).ready(
 					<div class="myLabel width100">Reingresar clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width150"/></div>
 				</div>
+				
+				<% } %>
 				<div class="myRow">
 					<div class="myLabel width50">Ubicaci&oacute;n</div>
 					<div class="myLabel width160">
-						<% ClientForm clientForm = (ClientForm)session.getAttribute("ClientForm"); %>
 						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width150">
 							<option value="0">Seleccione</option>
 							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
