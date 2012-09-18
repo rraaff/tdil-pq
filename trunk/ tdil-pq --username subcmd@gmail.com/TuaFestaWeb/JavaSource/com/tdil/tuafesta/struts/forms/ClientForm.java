@@ -1,12 +1,15 @@
 package com.tdil.tuafesta.struts.forms;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.log4j.Logger;
@@ -32,7 +35,9 @@ import com.tdil.tuafesta.model.Geo3Example;
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.ProfesionalExample;
+import com.tdil.tuafesta.roles.ClientRole;
 import com.tdil.tuafesta.web.EmailUtils;
+import com.tdil.tuafesta.web.WebsiteUser;
 import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -48,39 +53,45 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 
 	private int id;
 
+	private Client logged; // esta variable tiene el cliente luego de la ejecucion del save
+	
 	private int objectId;
+	private boolean facebookRegister;
+	private String facebookId;
+
 	private String firstname;
 	private String lastname;
 	private String sex;
 	private String birthdate;
-	
+
 	private String email;
 	private String password;
 	private String retypepassword;
-	
+
 	private int geo2Id;
 	private int geo3Id;
 	private int geo4Id;
-	
+
 	private List<Geo2> level2;
 	private List<Geo3> level3;
 	private List<Geo4> level4;
-	
-	
+
 	private static final int MIN_PASS_LENGTH = 4;
 	public static final String firstname_key = "ClientForm.firstname";
 	public static final String lastname_key = "ClientForm.lastname";
 	public static final String sex_key = "ClientForm.sex";
 	public static final String birthdate_key = "ClientForm.birthdate";
-	
+
 	public static final String email_key = "ClientForm.email";
 	public static final String password_key = "ClientForm.password";
-	
+
 	private static final Logger LOG = LoggerProvider.getLogger(ClientForm.class);
 
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
+		this.facebookRegister = false;
+		this.facebookId = null;
 		this.firstname = null;
 		this.lastname = null;
 		this.sex = null;
@@ -91,11 +102,12 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		this.geo2Id = 0;
 		this.geo3Id = 0;
 		this.geo4Id = 0;
-		
+
 		this.level2 = null;
 		this.level3 = null;
 		this.level4 = null;
-		
+		this.logged = null;
+
 	}
 
 	@Override
@@ -117,24 +129,27 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		FieldValidation.validateText(this.getLastname(), lastname_key, 100, validationError);
 		FieldValidation.validateText(this.getSex(), sex_key, 1, validationError);
 
-		// TODO if por facebook
-		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
-		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
-		
+		if (!this.isFacebookRegister()) {
+			FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
+			FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		}
+
 		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
-		if (!validationError.hasFieldError(password_key)) {
-			if (this.getPassword().length() < MIN_PASS_LENGTH) {
-				validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
-			} else {
-				if (!this.getPassword().equals(this.getRetypepassword())) {
-					validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+		if (!this.isFacebookRegister()) {
+			if (!validationError.hasFieldError(password_key)) {
+				if (this.getPassword().length() < MIN_PASS_LENGTH) {
+					validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
+				} else {
+					if (!this.getPassword().equals(this.getRetypepassword())) {
+						validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+					}
 				}
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -157,33 +172,38 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 	@Override
 	public void save() throws SQLException, ValidationException {
 		ClientDAO clientDAO = DAOManager.getClientDAO();
-		
+
 		Client client = new Client();
 		client.setFirstname(this.getFirstname());
 		client.setLastname(this.getLastname());
 		client.setIdGeolevel(this.getGeo4Id());
 		client.setSex(this.getSex());
 		client.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
-		
 		client.setEmail(this.getEmail());
-		client.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
-		
-		// TODO if por facebook
-		client.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
-		client.setEmailvalid(0);
-		//
-		
-		client.setStatus(ClientStatus.EMAIL_VALIDATION_PENDING);
+		if (!this.isFacebookRegister()) {
+			client.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
+			client.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
+			client.setEmailvalid(0);
+			client.setStatus(ClientStatus.EMAIL_VALIDATION_PENDING);
+		} else {
+			client.setFacebookid(this.getFacebookId());
+			client.setEmailvalid(1);
+			client.setStatus(ClientStatus.APPROVED);
+		}
 		client.setDeleted(0);
 		int id = clientDAO.insertClient(client);
 		
-		StringBuffer link = new StringBuffer();
-		link.append("/validateClientEmail.do?id=").append(id).append("&verifemail=").append(client.getVerifemail());
-		
-		/** Inicio del email */
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(EmailUtils.LINK_KEY, link.toString());
-		EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.CLIENT_EMAIL_VERIFICATION);
+		logged = clientDAO.selectClientByPrimaryKey(id);
+
+		if (!this.isFacebookRegister()) {
+			StringBuffer link = new StringBuffer();
+			link.append("/validateClientEmail.do?id=").append(id).append("&verifemail=").append(client.getVerifemail());
+
+			/** Inicio del email */
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(EmailUtils.LINK_KEY, link.toString());
+			EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.CLIENT_EMAIL_VERIFICATION);
+		}
 	}
 
 	public int getObjectId() {
@@ -341,6 +361,48 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
+	}
+
+	public boolean isFacebookRegister() {
+		return facebookRegister;
+	}
+
+	public void setFacebookRegister(boolean facebookRegister) {
+		this.facebookRegister = facebookRegister;
+	}
+
+	public String getFacebookId() {
+		return facebookId;
+	}
+
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
+	}
+
+	public void takeFacebookData(JSONObject authFacebookLogin) {
+		this.setFacebookRegister(true);
+		this.setFacebookId(authFacebookLogin.getString("id"));
+		this.setFirstname(authFacebookLogin.getString("first_name"));
+		this.setLastname(authFacebookLogin.getString("last_name"));
+		this.setEmail(authFacebookLogin.getString("email"));
+
+	}
+	
+	public Object executeLoginFB() throws SQLException, ValidationException {
+		ClientExample clientExample = new ClientExample();
+		clientExample.createCriteria().andEmailEqualTo(this.getEmail());
+		List<Client> clients = DAOManager.getClientDAO().selectClientByExample(clientExample);
+		if (!clients.isEmpty()) {
+			Client client = clients.get(0);
+			// si no tiene el fbid, aprovecho y lo updateo
+			return WebsiteLoginForm.getWebsiteUserFor(client);
+		} else {
+			return null;
+		}
+	}
+
+	public Client getLogged() {
+		return logged;
 	}
 
 }

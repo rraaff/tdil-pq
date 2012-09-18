@@ -643,6 +643,8 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/registroClienteEmailEnviado.jsp" TARGET="page26"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logged" NAME="forward2" PATH="/index.jsp"
+   TARGET="page37" TITLE="logged" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page26" PATH="/registroClienteEmailEnviado.jsp"
   SHAPE="256,14242,0,0" SUBTYPE="jsp"
@@ -1173,5 +1175,16 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/boPromotionAdministration.jsp" TARGET="page47"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#loginClientFB" NAME="action116"
+  PATH="/loginClientFB" SHAPE="32,12337,0,0" TITLE="ClientForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1" PATH="/index.jsp"
+   TARGET="page37" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logged" NAME="forward0" PATH="/index.jsp"
+   TARGET="page37" TITLE="logged" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="completeRegistration" NAME="forward2"
+   PATH="/registroCliente.jsp" TARGET="page25"
+   TITLE="completeRegistration" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

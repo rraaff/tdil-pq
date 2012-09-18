@@ -80,7 +80,11 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.s
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.fallback','false','mail.smtp.socketFactory.fallback',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.password','t3sttu4f3st4','mail.smtp.password',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('server.name','www.tuafesta.com.ar','Nombre del server',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('server.name','http://ec2-23-21-18-79.compute-1.amazonaws.com:8080/TUAFESTA_WEB/','Nombre del server',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.api_key','3785427834','api_key de la app de facebook',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.secret','63b6f58fec5dfba0cde041149e3a9255','secret de la app de facebook',0);
+
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -471,14 +475,15 @@ CREATE TABLE CLIENT (
   `birthdate` DATE NOT NULL ,
   `id_geolevel` INT NULL,
   `email` VARCHAR(150) NOT NULL ,
-  `password` VARCHAR(255) NOT NULL ,
-  `facebook` VARCHAR(200) NULL ,
+  `password` VARCHAR(255) NULL ,
+  `facebookid` VARCHAR(200) NULL ,
   `emailvalid` INT NOT NULL,
   `status` INT NOT NULL,
   `verifemail` VARCHAR(20) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
-  INDEX `IX_CLIENT_00` (`email` ASC))
+  INDEX `IX_CLIENT_00` (`email` ASC),
+  INDEX `IX_CLIENT_01` (`facebookid` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE STATISTIC (

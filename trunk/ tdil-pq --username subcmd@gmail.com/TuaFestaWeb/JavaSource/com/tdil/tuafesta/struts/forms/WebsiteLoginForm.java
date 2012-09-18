@@ -76,11 +76,7 @@ public class WebsiteLoginForm extends ActionForm {
 				throw new ValidationException(new ValidationError("WebsiteLoginForm.BLOCKED"));
 			}
 			// Esta todo ok, aca lo logueo
-			com.tdil.tuafesta.web.WebsiteUser user = new com.tdil.tuafesta.web.WebsiteUser(client);
-			user.setId(client.getId());
-			Set<String> roles = new HashSet<String>();
-			roles.add(ClientRole.INSTANCE.getName());
-			user.setRoles(roles);
+			com.tdil.tuafesta.web.WebsiteUser user = getWebsiteUserFor(client);
 			return user;
 		} else {
 			// si no lo encontre como cliente lo busco como profesional
@@ -111,6 +107,14 @@ public class WebsiteLoginForm extends ActionForm {
 			return user;
 		}
 		
+	}
+	public static com.tdil.tuafesta.web.WebsiteUser getWebsiteUserFor(Client client) {
+		com.tdil.tuafesta.web.WebsiteUser user = new com.tdil.tuafesta.web.WebsiteUser(client);
+		user.setId(client.getId());
+		Set<String> roles = new HashSet<String>();
+		roles.add(ClientRole.INSTANCE.getName());
+		user.setRoles(roles);
+		return user;
 	}
 	
 }
