@@ -267,9 +267,16 @@ function limpiarServicio() {
 				</div>
 				<div class="myRow">
 					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width150" id="Email"><html:text name="ProfesionalForm" property="email" styleClass="normalField width150"/></div>
+					<div class="myLabel width150" id="Email">
+						<% if (profesionalForm.isFacebookRegister()) { %>
+							<bean:write name="ProfesionalForm" property="email" />
+						<% } else { %>
+							<html:text name="ProfesionalForm" property="email" styleClass="normalField width150"/>
+						<% } %>
+					</div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.email.err")%></div>
 				</div>
+				<% if (!profesionalForm.isFacebookRegister()) { %>
 				<div class="myRow">
 					<div class="myLabel width50">Clave</div>
 					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width150"/></div>
@@ -278,6 +285,7 @@ function limpiarServicio() {
 					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="retypepassword" styleClass="normalField width150"/></div>
 					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
 				</div>
+				<% } %>
 			</div>
 			<div id="formSection" class="width650">
 				<div class="myRow">
