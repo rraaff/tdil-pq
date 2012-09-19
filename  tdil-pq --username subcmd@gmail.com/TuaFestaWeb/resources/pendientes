@@ -1,3 +1,11 @@
+Manejo de categorias
+Cada vez que creas una categoria, a la categoria superior le creo la 
+opcion otros en forma automatica (si no la tiene).
+
+Podes crear subcategorias de cualquiera menos de la otros (estas las voy a esconder).
+
+Cuando elegis una categoria que no tiene subcategorias, ahi te muestro la opcion para agregar.
+
 
 
 Cambiar productos
