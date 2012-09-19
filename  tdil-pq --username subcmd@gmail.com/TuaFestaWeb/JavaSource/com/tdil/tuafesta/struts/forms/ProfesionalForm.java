@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -28,6 +30,7 @@ import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Client;
 import com.tdil.tuafesta.model.ClientExample;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
@@ -60,8 +63,11 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	private static final Logger Log = LoggerProvider.getLogger(ProfesionalForm.class);
 
 	private int id;
+	private Profesional logged; // esta variable tiene el cliente luego de la ejecucion del save
 
 	private int objectId;
+	private boolean facebookRegister;
+	private String facebookId;
 	private String firstname;
 	private String lastname;
 	private String sex;
@@ -157,6 +163,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
+		this.logged = null;
 		this.firstname = null;
 		this.lastname = null;
 		this.sex = null;
@@ -219,9 +226,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		FieldValidation.validateText(this.getPhoneExtension(), phoneextension_key, 10, false, validationError);
 		FieldValidation.validateText(this.getPhoneType(), phonetype_key, 25, false, validationError);
 		
-		// TODO if por facebook
-		FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
-		FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		if (!this.isFacebookRegister()) {
+			FieldValidation.validateText(this.getEmail(), email_key, 150, validationError);
+			FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
+		}
 		
 		FieldValidation.validateText(this.getBusinessname(), businessname_key, 400, validationError);
 		FieldValidation.validateText(this.getCuit(), cuit_key, 400, validationError);
@@ -242,12 +250,14 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		if (this.getSells().isEmpty()) {
 			validationError.setFieldError(sells_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
-		if (!validationError.hasFieldError(password_key)) {
-			if (this.getPassword().length() < MIN_PASS_LENGTH) {
-				validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
-			} else {
-				if (!this.getPassword().equals(this.getRetypepassword())) {
-					validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+		if (!this.isFacebookRegister()) {
+			if (!validationError.hasFieldError(password_key)) {
+				if (this.getPassword().length() < MIN_PASS_LENGTH) {
+					validationError.setFieldError(password_key, "PASSWORD_TOO_SHORT");
+				} else {
+					if (!this.getPassword().equals(this.getRetypepassword())) {
+						validationError.setFieldError(password_key, "RETYPE_NOT_EQUAL");
+					}
 				}
 			}
 		}
@@ -300,12 +310,17 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
 		
 		profesional.setEmail(this.getEmail());
-		profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
 		
-		// TODO if por facebook
-		profesional.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
-		profesional.setEmailvalid(0);
-		//
+		if (!this.isFacebookRegister()) {
+			profesional.setVerifemail(RandomStringUtils.randomAlphanumeric(20));
+			profesional.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
+			profesional.setEmailvalid(0);
+			profesional.setStatus(ProfesionalStatus.EMAIL_VALIDATION_PENDING);
+		} else {
+			profesional.setFacebookid(this.getFacebookId());
+			profesional.setEmailvalid(1);
+			profesional.setStatus(ProfesionalStatus.VERIFICATION_PENDING);
+		}
 		profesional.setBusinessname(this.getBusinessname());
 		profesional.setCuit(this.getCuit());
 		profesional.setIibb(this.getIibb());
@@ -317,7 +332,6 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setIdWall(wallId);
 		profesional.setIdProfesionalChange(profesionalChangeId);
 		
-		profesional.setStatus(ProfesionalStatus.EMAIL_VALIDATION_PENDING);
 		profesional.setDatachanged(0);
 		profesional.setDeleted(0);
 		int id = profesionalDAO.insertProfesional(profesional);
@@ -347,13 +361,17 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			serviceAreaDAO.insertServiceArea(serviceArea);
 		}
 		
-		StringBuffer link = new StringBuffer();
-		link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
+		logged = profesionalDAO.selectProfesionalByPrimaryKey(id);
 		
-		/** Inicio del email */
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(EmailUtils.LINK_KEY, link.toString());
-		EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
+		if (!this.isFacebookRegister()) {
+			StringBuffer link = new StringBuffer();
+			link.append("/validateProfesionalEmail.do?id=").append(id).append("&verifemail=").append(profesional.getVerifemail());
+			
+			/** Inicio del email */
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(EmailUtils.LINK_KEY, link.toString());
+			EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
+		}
 	}
 
 	public boolean isProductSelected() {
@@ -846,6 +864,47 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			this.getSells().add(0, servicebean);
 			cleanServiceFields();
 		}
+	}
+
+	public void takeFacebookData(JSONObject authFacebookLogin) {
+		this.setFacebookRegister(true);
+		this.setFacebookId(authFacebookLogin.getString("id"));
+		this.setFirstname(authFacebookLogin.getString("first_name"));
+		this.setLastname(authFacebookLogin.getString("last_name"));
+		this.setEmail(authFacebookLogin.getString("email"));
+	}
+	
+	public Object executeLoginFB() throws SQLException, ValidationException {
+		ProfesionalExample clientExample = new ProfesionalExample();
+		clientExample.createCriteria().andEmailEqualTo(this.getEmail());
+		List<Profesional> clients = DAOManager.getProfesionalDAO().selectProfesionalByExample(clientExample);
+		if (!clients.isEmpty()) {
+			Profesional client = clients.get(0);
+			// si no tiene el fbid, aprovecho y lo updateo
+			return WebsiteLoginForm.getWebsiteUserFor(client);
+		} else {
+			return null;
+		}
+	}
+
+	public boolean isFacebookRegister() {
+		return facebookRegister;
+	}
+
+	public void setFacebookRegister(boolean facebookRegister) {
+		this.facebookRegister = facebookRegister;
+	}
+
+	public String getFacebookId() {
+		return facebookId;
+	}
+
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
+	}
+
+	public Profesional getLogged() {
+		return logged;
 	}
 
 }

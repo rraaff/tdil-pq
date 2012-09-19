@@ -22,7 +22,6 @@ import com.tdil.tuafesta.model.ProfesionalExample;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.roles.ClientRole;
 import com.tdil.tuafesta.roles.ProfesionalRole;
-import com.tdil.users.User;
 import com.tdil.utils.CryptoUtils;
 
 public class WebsiteLoginForm extends ActionForm {
@@ -113,6 +112,14 @@ public class WebsiteLoginForm extends ActionForm {
 		user.setId(client.getId());
 		Set<String> roles = new HashSet<String>();
 		roles.add(ClientRole.INSTANCE.getName());
+		user.setRoles(roles);
+		return user;
+	}
+	public static com.tdil.tuafesta.web.WebsiteUser getWebsiteUserFor(Profesional profesional) {
+		com.tdil.tuafesta.web.WebsiteUser user = new com.tdil.tuafesta.web.WebsiteUser(profesional);
+		user.setId(profesional.getId());
+		Set<String> roles = new HashSet<String>();
+		roles.add(ProfesionalRole.INSTANCE.getName());
 		user.setRoles(roles);
 		return user;
 	}
