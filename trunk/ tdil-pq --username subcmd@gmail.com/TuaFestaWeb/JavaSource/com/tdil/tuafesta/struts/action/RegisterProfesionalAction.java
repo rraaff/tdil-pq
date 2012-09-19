@@ -18,11 +18,11 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
-import com.tdil.tuafesta.struts.forms.ClientForm;
+import com.tdil.tuafesta.struts.forms.ProfesionalForm;
 import com.tdil.tuafesta.struts.forms.WebsiteLoginForm;
 import com.tdil.validations.ValidationErrors;
 
-public class RegisterClientAction extends AbstractAction {
+public class RegisterProfesionalAction extends AbstractAction {
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -53,7 +53,7 @@ public class RegisterClientAction extends AbstractAction {
 				return redirectToFailure(exError, request, mapping);
 			}
 		}
-		ClientForm clientForm = (ClientForm)form;
+		ProfesionalForm clientForm = (ProfesionalForm)form;
 		if (clientForm.isFacebookRegister()) {
 			request.getSession().setAttribute("user", WebsiteLoginForm.getWebsiteUserFor(clientForm.getLogged()));
 			return mapping.findForward("logged");
@@ -67,6 +67,6 @@ public class RegisterClientAction extends AbstractAction {
 	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(RegisterClientAction.class);
+		return LoggerProvider.getLogger(RegisterProfesionalAction.class);
 	}
 }
