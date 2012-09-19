@@ -247,9 +247,15 @@
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/registroProfesional.jsp"/>
   </action>
-  <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="ProfesionalForm" path="/addProfesional" scope="session" type="com.tdil.tuafesta.struts.action.RegisterProfesionalAction">
    <forward name="continue" path="/registroProfesionalEmailEnviado.jsp" redirect="true"/>
+   <forward name="logged" path="/index.jsp" redirect="true"/>
    <forward name="failure" path="/registroProfesional.jsp"/>
+  </action>
+  <action name="ProfesionalForm" path="/loginProfesionalFB" type="com.tdil.tuafesta.struts.action.LoginProfesionalFacebookAction">
+	<forward name="logged" path="/index.jsp"/>
+	<forward name="completeRegistration" path="/registroProfesional.jsp"/>
+	<forward name="cancel" path="/index.jsp"/>
   </action>
   <action name="ProfesionalForm" path="/refreshGeoLevel2Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
@@ -420,7 +426,6 @@
    <forward name="successProfesional" path="/index.jsp"/>
    <forward name="successClient" path="/index.jsp"/>
   </action>
-  
   
    <action name="ClientForm" path="/loginClientFB" type="com.tdil.tuafesta.struts.action.LoginClientFacebookAction">
 	<forward name="logged" path="/index.jsp"/>

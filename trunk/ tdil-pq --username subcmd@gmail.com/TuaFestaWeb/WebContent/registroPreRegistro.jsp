@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.struts.action.LoginProfesionalFacebookAction"%>
 <%@page import="com.tdil.tuafesta.web.SystemPropertyUtils"%>
 <%@page import="com.tdil.tuafesta.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.tuafesta.struts.action.LoginClientFacebookAction"%>
@@ -29,228 +30,6 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
-<script>
-$(document).ready(
-	function(){
-	
-		function generateTooltips() {
-			  //make sure tool tip is enabled for any new error label
-				$("img[id*='error']").tooltip({
-					showURL: false,
-					opacity: 0.99,
-					fade: 150,
-					positionRight: true ,
-					bodyHandler: function() {
-						return $("#"+this.id).attr("hovertext");
-					}
-				});
-				//make sure tool tip is enabled for any new valid label
-				$("img[src*='tick.gif']").tooltip({
-					showURL: false,
-						bodyHandler: function() {
-							return "OK";
-						}
-				});
-			}
-			
-			$('form').mouseover(function(){
-				      generateTooltips();
-				    });
-		
-			$("form[name='ProfesionalForm']").validate({
-					errorPlacement: function(error, element) {
-						error.appendTo( element.parent("div"));
-					},
-					rules: { 'firstname': {required: true},
-							'lastname': {required: true},
-							'email': {required: true, email: true}
-					},
-					messages: {
-						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
-						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
-						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
-								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"}
-					}
-				});
-
-			
-			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-				changeYear: true, yearRange: "1900:2012"});
-
-			function productSelected(prodLabel, prodValue, prodCat) {
-				$("input[name=productSelectedText]").attr('value', prodLabel);
-				$("input[name=productAutocompleter]").attr('value','');
-				$("input[name=productAutocompleter]").css('display', 'none');
-				$("input[name=productCategorySelected]").attr('value', prodCat);
-				$("#productSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
-				$("#productSelectedDiv").css('display', 'block');
-				$("input[name=productId]").attr('value', prodValue);
-			}
-
-			function serviceSelected(prodLabel, prodValue, prodCat) {
-				$("input[name=serviceSelectedText]").attr('value', prodLabel);
-				$("input[name=serviceAutocompleter]").attr('value','');
-				$("input[name=serviceAutocompleter]").css('display', 'none');
-				$("input[name=serviceCategorySelected]").attr('value', prodCat);
-				$("#serviceSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
-				$("#serviceSelectedDiv").css('display', 'block');
-				$("input[name=serviceId]").attr('value', prodValue);
-			}
-			
-			$( "input[name=productAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchProduct.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id,
-									path: item.path
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						productSelected(ui.item.label, ui.item.value, ui.item.path);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
-
-
-			$( "input[name=serviceAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchService.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id,
-									path: item.path
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						serviceSelected(ui.item.label, ui.item.value, ui.item.path);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
-
-
-			function serviceAreaSelected(serviceAreaLabel, serviceAreaValue) {
-				$("input[name=serviceAreaSelectedText]").attr('value', serviceAreaLabel);
-				$("input[name=serviceAreaAutocompleter]").attr('value','');
-				$("input[name=serviceAreaAutocompleter]").css('display', 'none');
-				$("#serviceAreaSelectedDiv").prop('innerHTML', serviceAreaLabel);
-				$("#serviceAreaSelectedDiv").css('display', 'block');
-				$("input[name=geoLevel4Id]").attr('value', serviceAreaValue);
-				$("#addGeoLink").css('display', 'block');
-			}
-			$( "input[name=serviceAreaAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchGeoLevelAjax.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						serviceAreaSelected(ui.item.label, ui.item.value);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
-		}
-
-	
-	);
-
-function limpiarProducto() {
-	$("input[name=productAutocompleter]").attr('value','');
-	$("input[name=productAutocompleter]").css('display', 'block');
-	$("input[name=productSelectedText]").attr('value', '');
-	$("#productSelectedDiv").prop('innerHTML', '');
-	$("#productSelectedDiv").css('display', 'none');
-	$("input[name=productId]").attr('value', '');
-	$("input[name=referenceprice]").attr('value', '');
-}
-
-function limpiarServicio() {
-	$("input[name=serviceAutocompleter]").attr('value','');
-	$("input[name=serviceAutocompleter]").css('display', 'block');
-	$("input[name=serviceSelectedText]").attr('value', '');
-	$("#serviceSelectedDiv").prop('innerHTML', '');
-	$("#serviceSelectedDiv").css('display', 'none');
-	$("input[name=serviceId]").attr('value', '');
-	$("input[name=serviceReferenceprice]").attr('value', '');
-}
-
-function limpiarServiceArea() {
-	$("input[name=productSelectedText]").attr('value', '');
-	$("input[name=serviceAreaAutocompleter]").attr('value','');
-	$("input[name=serviceAreaAutocompleter]").css('display', 'block');
-	$("#serviceAreaSelectedDiv").prop('innerHTML', '');
-	$("#serviceAreaSelectedDiv").css('display', 'none');
-	$("input[name=geoLevel4Id]").attr('value', '');
-	$("#addGeoLink").css('display', 'none');
-}
-
-
-</script>
 <%@ include file="includes/boErrorJS.jsp" %>
 <style>
 <!-- 
@@ -334,16 +113,19 @@ function limpiarServiceArea() {
 		<div id="titleArea">
 			<h1>Registro</h1>
 		</div>
+		<% 
+			String apikey = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.FB_API_KEY);
+			String redirect = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
+		%>
 		<div id="formContent">
 			<div id="moduloPreReg" class="cliente">
 				<h2>Te queres registrar para contactarte y ser contactado por los profesionales?</h2>
 				<p>Podes registrarte sin costo alguno usando tu cuenta de Facebook o <a href="./goToRegistroCliente.do" title="Registrate sin usar tu cuenta de Facebook">simplemente cargando unos datos b&aacute;sicos.</a></p>
-				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.FB_API_KEY),
-					SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME) + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="328" height="65" /></a></div>
+				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="328" height="65" /></a></div>
 			</div>
 			<div id="moduloPreReg" class="profesional">
 				<h2><span class="profesional_title">Queres ofrecer tus productos o servicios? </span><span class="remarcadoDCF6FC">Registrate gratis</span></h2>
-				<p>Podes registrarte usando tu cuenta de <a href="#">facebook</a> o cargando tus datos como profesional. Luego de corroborar tus datos podr&aacute;s publicar tus productos o servicios.</p>
+				<p>Podes registrarte usando tu cuenta de <a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginProfesionalFacebookAction.redirect_uri, Facebook.email_perms)%>">facebook</a> o cargando tus datos como profesional. Luego de corroborar tus datos podr&aacute;s publicar tus productos o servicios.</p>
 				<div id="buttonProf"><a href="./goToRegistroProfesional.do"><img src="images/null.gif" width="229" height="65" /></a></div>
 			</div>
 		</div>
