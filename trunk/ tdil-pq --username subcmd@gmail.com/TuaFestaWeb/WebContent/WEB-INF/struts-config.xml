@@ -279,6 +279,9 @@
   <action path="/searchGeoLevelAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAjaxAction"/>
   <action path="/searchCategory" scope="request" type="com.tdil.tuafesta.struts.action.SearchCategoryAction"/>
   
+  <action path="/searchProductCategories" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductCategoriesAjaxAction"/>
+  
+  
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/reviewProfesional" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewProfesionalAction">
    <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
