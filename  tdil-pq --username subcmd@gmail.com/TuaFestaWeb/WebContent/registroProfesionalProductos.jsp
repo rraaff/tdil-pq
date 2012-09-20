@@ -72,6 +72,14 @@ $(document).ready(
 							prodcats[changedLevel] = tdnextlevel;
 							var continueButton = $('<input type="button" value="Continuar"/>').appendTo( tdnextlevel );
 							continueButton.click(function() {
+								var catPath = $('#pcl-0').find("option:selected").text();
+								var i;
+								for (i = 0; i < prodcats.length; i++) {
+									if (prodcats[i] != null) {
+										catPath = catPath + " > " + $('#pcl-' + i).find("option:selected").text();
+									}
+								}
+								$( "#categoryPath" ).prop('innerHTML', catPath);
 								$( "#selectProductCategoryLayer" ).fadeOut();
 								$( "#addProductLayer" ).fadeIn(500);
 							});
@@ -82,7 +90,6 @@ $(document).ready(
 		            }
 		        });
 			}
-			
 		}
 
 		$('#cancelAddProduct').click(function() {
@@ -97,7 +104,6 @@ $(document).ready(
 			}
 			$('#pcl-0').attr('selectedIndex', '-1').find("option:selected").removeAttr("selected");
 			$( "#addProductLayer" ).fadeOut();
-			//$( "#selectProductCategoryLayer" ).fadeIn(500);
 		});
 			
 		$('#pcl-0').change(selectChange);
@@ -105,17 +111,13 @@ $(document).ready(
 		$('#addProduct').click(function() {
 			$( "#selectProductCategoryLayer" ).fadeIn(500);
 		});
+
+		$('#doAddProduct').click(function() {
+
+		});
 		
-		/*var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
-  		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
-  		if (maxindex == 0) {
-	  		var tdportada = $('<td align="center">SI</td>').appendTo( tr );
-  		} else {
-  			var tdportada = $('<td align="center"></td>').appendTo( tr );
-  		}*/
-			
-		}
-	);
+	}
+);
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
@@ -124,9 +126,9 @@ $(document).ready(
 <a href="#" id="addProduct">Agregar producto</a>
 
 <div id="addProductLayer" style="display: none;">
-<input type="text" id="categoryId" name="categoryId" value=""/>
-<input type="text" id="categoryPath" name="categoryPath" value=""/>
-<input type="text" id="name" name="name" value=""/>
+<span id="categoryPath"></span><br/>
+<input type="text" id="categoryId" name="categoryId" value=""/><br/>
+<input type="text" id="name" name="name" value=""/><br/>
 <a href="#" id="doAddProduct">Agregar</a>&nbsp;<a href="#" id="cancelAddProduct">Cancelar</a>
 </div>
 	
