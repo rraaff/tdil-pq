@@ -11,6 +11,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.ProductCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ProductCategory;
+import com.tdil.tuafesta.model.ProductCategoryExample;
 import com.tdil.tuafesta.utils.CacheRegionUtils;
 import com.tdil.tuafesta.utils.ProductCategoryTreeNode;
 import com.tdil.tuafesta.utils.ProductCategoryUtils;
@@ -116,15 +117,29 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
+			profesionalCategory.setIsother(0);
 			profesionalCategory.setDeleted(0);
 			profesionalCategoryDAO.insertProductCategory(profesionalCategory);
 		} else {
-			ProductCategory profesionalCategory = new ProductCategory();
-			profesionalCategory.setId(this.getObjectId());
+			ProductCategory profesionalCategory = profesionalCategoryDAO.selectProductCategoryByPrimaryKey(this.getObjectId());
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
 			profesionalCategoryDAO.updateProductCategoryByPrimaryKeySelective(profesionalCategory);
+		}
+		if (this.getParentId() != 0) {
+			ProductCategoryExample otherexample = new ProductCategoryExample();
+			otherexample.createCriteria().andParentIdEqualTo(this.getParentId()).andIsotherEqualTo(1);
+			List<ProductCategory> pc = profesionalCategoryDAO.selectProductCategoryByExample(otherexample);
+			if (pc.isEmpty()) {
+				ProductCategory profesionalCategory = new ProductCategory();
+				profesionalCategory.setName("Otros");
+				profesionalCategory.setDescription("Otros");
+				profesionalCategory.setParentId(this.getParentId());
+				profesionalCategory.setIsother(1);
+				profesionalCategory.setDeleted(0);
+				profesionalCategoryDAO.insertProductCategory(profesionalCategory);
+			}
 		}
 		CacheRegionUtils.incrementVersionInTransaction(ProductCategory.class.getName());
 	}

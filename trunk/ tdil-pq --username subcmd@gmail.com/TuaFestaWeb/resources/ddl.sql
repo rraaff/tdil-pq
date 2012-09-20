@@ -173,6 +173,7 @@ CREATE TABLE PROF_PROD_CATEGORY (
   `name` VARCHAR(100) NOT NULL ,
   `description` VARCHAR(4000) NOT NULL ,
   `parent_id` INT NULL,
+  `isother` INT NOT NULL DEFAULT 0,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_PROF_PROD_CAT_00` (`parent_id` ASC))

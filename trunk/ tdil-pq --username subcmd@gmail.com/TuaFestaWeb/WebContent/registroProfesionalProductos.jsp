@@ -1,4 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
+<%@page import="com.tdil.tuafesta.model.ProductCategory"%>
 <%@page import="com.tdil.tuafesta.model.PhoneType"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
@@ -58,9 +60,6 @@ $(document).ready(
 							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
 							//alert(msg.length);
 			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
-				   			/*$('<option value="1">uno</option>').appendTo(select);
-				   			$('<option value="2">dos</option>').appendTo(select);
-				   			$('<option value="0">otros</option>').appendTo(select);*/
 				   			prodcats[changedLevel] = tdnextlevel;
 				   			select.change(selectChange);
 			                $.each(msg, function(index, item) {
@@ -74,7 +73,7 @@ $(document).ready(
 							continueButton.click(function() {
 								var catPath = $('#pcl-0').find("option:selected").text();
 								var i;
-								for (i = 0; i < prodcats.length; i++) {
+								for (i = 1; i < prodcats.length; i++) {
 									if (prodcats[i] != null) {
 										catPath = catPath + " > " + $('#pcl-' + i).find("option:selected").text();
 									}
@@ -137,8 +136,9 @@ $(document).ready(
 		<tr id="prod_cat_tr">
 			<td>
 				<select id="pcl-0" size="10" style="width: 120px;" level="0">
-					<option value="1">Consumibles</option>
-					<option value="0">Otros</option>
+					<% for (ProductCategory pc : CategoryUtils.getProductCategories(0)) { %>
+						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
+					<% } %>
 				</select>
 			</td>
 		</tr>
