@@ -21,7 +21,7 @@ public class CategoryUtils {
 				public Object executeInTransaction() throws SQLException {
 					ProductCategoryExample productCategoryExample = new ProductCategoryExample();
 					productCategoryExample.createCriteria().andParentIdEqualTo(parent).andDeletedEqualTo(0);
-					productCategoryExample.setOrderByClause("name");
+					productCategoryExample.setOrderByClause("isother, name");
 					return DAOManager.getProductCategoryDAO().selectProductCategoryByExample(productCategoryExample);
 				}
 			});
