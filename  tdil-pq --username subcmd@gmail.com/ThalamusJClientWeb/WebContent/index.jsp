@@ -50,8 +50,8 @@
 	position:relative;
 }
 #registerButton {
-	width: 314px;
-	height: 99px;
+	width: 388px;
+	height: 110px;
 	margin-left:20px;
 	margin-top:10px;
 	float:left;
@@ -64,7 +64,7 @@
 	float:left;
 }
 #menuText {
-	width: 490px;
+	width: 413px;
 	height: 32px;
 	margin-left:20px;
 	margin-top:45px;
@@ -197,7 +197,7 @@ body {
 <% } else { %>
 	<div id="homeLogOff">
 		<div id="bottomBar" style="top:445px;">
-			<div id="registerButton"><a href="goToRegister.do"><img src="images/skin_nrg/btn_register.png" width="314" height="99"></a></div>
+			<div id="registerButton"><a href="goToRegister.do"><img src="images/skin_nrg/btn_register_new.png" width="388" height="110"></a></div>
 			<div id="menuText">
 				<div id="menuItem"><a href="login.jsp" title="Login now!"><img src="images/skin_nrg/btn_login.png" width="46" height="32"></a></div>
 				<div id="separador"><img src="images/skin_nrg/puntoMenu.png" width="21" height="32"></div>

@@ -84,11 +84,11 @@
 	<div id="left"><img src="images/skin_nrg/login__04.png" width="273" height="164"></div>
 </div>
 <div id="footer"><img src="images/skin_nrg/login__05.jpg" width="990" height="179"></div>
-
+<!--
 <a href="registro.jsp">Registrate</a>
 <a href="login.jsp">Ingresa</a>
 <a href="catalogo.jsp">Catalogo</a>
 <a href="legal.jsp">Legal</a>
-
+-->
 </body>
 </html>
