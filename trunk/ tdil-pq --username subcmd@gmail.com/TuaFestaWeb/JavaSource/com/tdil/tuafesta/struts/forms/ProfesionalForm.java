@@ -46,6 +46,8 @@ import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.Wall;
+import com.tdil.tuafesta.stats.StatisticType;
+import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
 import com.tdil.tuafesta.web.EmailUtils;
@@ -372,6 +374,8 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			params.put(EmailUtils.LINK_KEY, link.toString());
 			EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.PROFESIONAL_EMAIL_VERIFICATION);
 		}
+		
+		StatsManager.addStat(StatisticType.PROFESIONAL_REGISTRATION, id, null);
 	}
 
 	public boolean isProductSelected() {

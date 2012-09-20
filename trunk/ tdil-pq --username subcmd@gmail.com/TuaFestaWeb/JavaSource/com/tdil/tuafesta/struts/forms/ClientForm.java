@@ -36,6 +36,8 @@ import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.ProfesionalExample;
 import com.tdil.tuafesta.roles.ClientRole;
+import com.tdil.tuafesta.stats.StatisticType;
+import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.web.EmailUtils;
 import com.tdil.tuafesta.web.WebsiteUser;
 import com.tdil.utils.CryptoUtils;
@@ -204,6 +206,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 			params.put(EmailUtils.LINK_KEY, link.toString());
 			EmailUtils.sendEmail(this.getEmail(), params, EmailUtils.CLIENT_EMAIL_VERIFICATION);
 		}
+		StatsManager.addStat(StatisticType.CLIENT_REGISTRATION, id, null);
 	}
 
 	public int getObjectId() {
