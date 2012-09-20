@@ -16,6 +16,17 @@ $(document).ready(
 			changeYear: true, yearRange: "1900:2020"});
 		$("#sTo").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, yearRange: "1900:2020"});
+
+		$('#sStatType').change(
+			function() {
+				var selValue = Number($(this).attr('value'));
+				if (selValue == 8 || selValue == 9) {
+					$('#sGroup').attr('disabled', 'true');
+				} else {
+					$('#sGroup').removeAttr('disabled');
+				}
+			}
+		);
 	}
 );
 
@@ -65,7 +76,8 @@ function doSearch() {
 		<h1>Reportes estadisticos</h1>
 		<div id="conteinerScrollable">
 			
-				Tipo de estadistica:<select id="sStatType">
+				Tipo de estadistica:
+				<select id="sStatType">
                     <option value="0">Busquedas por geo level</option>
                     <option value="1">Busquedas por categoria de productos</option>
                     <option value="2">Busquedas por categoria de servicios</option>
@@ -74,7 +86,10 @@ function doSearch() {
                     <option value="5">Busquedas simples</option>
                     <option value="6">Visitas al perfil del profesional</option>
                     <option value="7">Contactos al perfil del profesional</option>
-                </select>Agrupar:<select id="sGroup">
+                    <option value="8">Registraciones de profesionales</option>
+                    <option value="9">Registraciones de clientes</option>
+                </select>
+                Agrupar:<select id="sGroup">
                     <option value="0">No</option>
                     <option value="1">Si</option>
                 </select><br>

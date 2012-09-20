@@ -174,4 +174,19 @@ public class StatisticDAOImpl implements StatisticDAO {
 		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.profesionalContactStats", params);
 		return list;
 	}
+	
+	@Override
+	public List<StatisticValueObject> selectProfesionalRegistrationStats(Map<String, Object> params)
+			throws SQLException {
+		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.selectProfesionalRegistrationStats", params);
+		return list;
+	}
+	
+	@Override
+	public List<StatisticValueObject> selectClientRegistrationStats(Map<String, Object> params) throws SQLException {
+		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.selectClientRegistrationStats", params);
+		return list;
+	}
+	
+	
 }

@@ -85,4 +85,8 @@ public interface StatisticDAO {
 	List<StatisticValueObject> selectProfesionalViewStats(Map<String, Object> params) throws SQLException;
 
 	List<StatisticValueObject> selectProfesionalContactStats(Map<String, Object> params) throws SQLException;
+
+	List<StatisticValueObject> selectProfesionalRegistrationStats(Map<String, Object> params) throws SQLException;
+
+	List<StatisticValueObject> selectClientRegistrationStats(Map<String, Object> params) throws SQLException;
 }

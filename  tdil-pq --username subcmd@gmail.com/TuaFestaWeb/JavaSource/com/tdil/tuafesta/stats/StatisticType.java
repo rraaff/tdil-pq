@@ -54,6 +54,20 @@ public enum StatisticType {
 		public int getID() {
 			return 7;
 		}
+	},
+	
+	PROFESIONAL_REGISTRATION() {
+		@Override
+		public int getID() {
+			return 8;
+		}
+	},
+	
+	CLIENT_REGISTRATION() {
+		@Override
+		public int getID() {
+			return 9;
+		}
 	};
 	
 	
