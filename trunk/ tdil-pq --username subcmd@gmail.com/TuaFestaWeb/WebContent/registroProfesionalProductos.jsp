@@ -35,48 +35,76 @@ $(document).ready(
 
 		var selectChange = function() {
 			var selValue = Number($(this).attr('value'));
-			var changedLevel = Number($(this).attr('level'));
+			if (selValue > 0) {
+				var changedLevel = Number($(this).attr('level'));
+				var i;
+				for (i = changedLevel; i < prodcats.length; i++) {
+					if (prodcats[i] != null) {
+						prodcats[i].remove();
+					}
+				}
+				for (i = prodcats.length - 1; i > changedLevel; i--) {
+					prodcats[i] = null;
+				}
+				
+				$.ajax({
+		            type: "GET",
+		            cache: false,
+		            url: "./searchProductCategories.do",
+		            data: {parent: selValue },
+		            contentType: "application/json; charset=utf-8",
+		            success: function(msg) {
+						if (msg.length > 0) {
+							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
+							//alert(msg.length);
+			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
+				   			/*$('<option value="1">uno</option>').appendTo(select);
+				   			$('<option value="2">dos</option>').appendTo(select);
+				   			$('<option value="0">otros</option>').appendTo(select);*/
+				   			prodcats[changedLevel] = tdnextlevel;
+				   			select.change(selectChange);
+			                $.each(msg, function(index, item) {
+				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+			                	//select.options[select.options.length] = new Option(item.id, );
+			                });
+						} else {
+							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
+							prodcats[changedLevel] = tdnextlevel;
+							var continueButton = $('<input type="button" value="Continuar"/>').appendTo( tdnextlevel );
+							continueButton.click(function() {
+								$( "#selectProductCategoryLayer" ).fadeOut();
+								$( "#addProductLayer" ).fadeIn(500);
+							});
+						}
+		            },
+		            error: function() {
+		                alert("error consultando los productos");
+		            }
+		        });
+			}
+			
+		}
+
+		$('#cancelAddProduct').click(function() {
 			var i;
-			for (i = changedLevel; i < prodcats.length; i++) {
+			for (i = 0; i < prodcats.length; i++) {
 				if (prodcats[i] != null) {
 					prodcats[i].remove();
 				}
 			}
-			for (i = prodcats.length - 1; i > changedLevel; i--) {
+			for (i = 0; i < prodcats.length; i++) {
 				prodcats[i] = null;
 			}
-			var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
-
-			$.ajax({
-	            type: "GET",
-	            cche: false,
-	            url: "./searchProductCategories.do",
-	            data: {parent: selValue },
-	            contentType: "application/json; charset=utf-8",
-	            success: function(msg) {
-					if (msg.length > 0) {
-						//alert(msg.length);
-		               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
-			   			/*$('<option value="1">uno</option>').appendTo(select);
-			   			$('<option value="2">dos</option>').appendTo(select);
-			   			$('<option value="0">otros</option>').appendTo(select);*/
-			   			prodcats[changedLevel] = tdnextlevel;
-			   			select.change(selectChange);
-		                $.each(msg, function(index, item) {
-			                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
-		                	//select.options[select.options.length] = new Option(item.id, );
-		                });
-					}
-	            },
-	            error: function() {
-	                alert("error consultando los productos");
-	            }
-	        });
-			
-			
-		}
+			$('#pcl-0').attr('selectedIndex', '-1').find("option:selected").removeAttr("selected");
+			$( "#addProductLayer" ).fadeOut();
+			//$( "#selectProductCategoryLayer" ).fadeIn(500);
+		});
 			
 		$('#pcl-0').change(selectChange);
+
+		$('#addProduct').click(function() {
+			$( "#selectProductCategoryLayer" ).fadeIn(500);
+		});
 		
 		/*var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
   		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
@@ -92,8 +120,18 @@ $(document).ready(
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
 <body>
-<div style="width: 100%; overflow-x:auto;">
-	<table id="prod_cat_tbl">
+
+<a href="#" id="addProduct">Agregar producto</a>
+
+<div id="addProductLayer" style="display: none;">
+<input type="text" id="categoryId" name="categoryId" value=""/>
+<input type="text" id="categoryPath" name="categoryPath" value=""/>
+<input type="text" id="name" name="name" value=""/>
+<a href="#" id="doAddProduct">Agregar</a>&nbsp;<a href="#" id="cancelAddProduct">Cancelar</a>
+</div>
+	
+<div id="selectProductCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
+	<table id="prod_cat_tbl" border="1">
 		<tr id="prod_cat_tr">
 			<td>
 				<select id="pcl-0" size="10" style="width: 120px;" level="0">
