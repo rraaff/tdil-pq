@@ -28,11 +28,12 @@
 }
 #nav {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 18px;
+	font-size: 15px;
 	font-weight:bold;
-	
-	width:100%;
+	line-height:22px;
+	width:950px;
 	height:22px;
+	padding-top:10px;
 }
 #nav a {
 	color:#FFFFFF;
@@ -60,7 +61,7 @@
 	width: 314px;
 	height: 99px;
 	margin-left:470px;
-	margin-top:12px;
+	margin-top:2px;
 	float:left;
 }
 #menuText {
@@ -137,9 +138,9 @@ body {
 <% if (logged) { %>
 	<div id="homeLogged">
 		<% if (logged && websiteUser.appliesToActivity(4)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 4); %>
-			<div id="nav" align="center"><a href="myAccount.jsp"><span class="remarcado">You have 100 points in your account</span></a>  .  <a href="myAccount.jsp">My Account</a>  .  <a href="catalog.jsp">Rewards Catalog</a>  .  <a href="shipments.jsp">Shipment Status</a>  .  <a href="legal.jsp">Privacy</a>  .  <a href="logout.do">Logout</a></div>
+			<div id="nav" align="center"><a href="myAccount.jsp"><span class="remarcado">You have 100 points in your account</span></a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="myAccount.jsp">My&nbsp;Account</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="catalog.jsp">Rewards Catalog</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="shipments.jsp">Shipment Status</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="legal.jsp">Privacy</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="logout.do">Logout</a></div>
 		<% } else { %>
-			<div id="nav" align="center"><span class="remarcado">Hi <%= websiteUser.getName() %></span>  .  <a href="legal.jsp">Privacy</a>  .  <a href="logout.do">Logout</a></div>
+			<div id="nav" align="center"><span class="remarcado">Hi <%= websiteUser.getName() %></span>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="legal.jsp">Privacy</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="logout.do">Logout</a></div>
 		<% } %>
 		<div id="activities">
 			<% if (websiteUser.appliesToActivity(1)) { com.tdil.thalamusweb.utils.ThalamusWebUtils.loginToActivity(websiteUser, 1); %>
