@@ -4,6 +4,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.PromotionDAO;
 import com.tdil.tuafesta.model.Promotion;
 import com.tdil.tuafesta.model.PromotionExample;
+import com.tdil.tuafesta.model.valueobjects.PromotionValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -145,5 +148,11 @@ public class PromotionDAOImpl implements PromotionDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	@Override
+	public List<PromotionValueObject> selectActivePromotions() throws SQLException {
+		List<PromotionValueObject> list = sqlMapClient.queryForList("PROMOTION.selectActivePromotions");
+		return list;
 	}
 }

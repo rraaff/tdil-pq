@@ -120,7 +120,7 @@ $(document).ready(
 						<td><bean:write name="added" property="name" /></td>
 						<td><bean:write name="added" property="categoryText" /></td>
 						<td><bean:write name="added" property="profesionalBusinessname" /></td>
-						<td><a href="./removeSellFromPromotion.do?index=<%=iterIndex%>">Quitar</a></td>
+						<td><a href="javascript:document.PromotionForm.action='./removeSellFromPromotion.do?index=<%=iterIndex%>';document.PromotionForm.submit();">Quitar</a></td>
 					</tr>
 				</logic:iterate>
 			</table>
@@ -146,7 +146,7 @@ $(document).ready(
 						<td><bean:write name="iterSearch" property="name" /></td>
 						<td><bean:write name="iterSearch" property="categoryText" /></td>
 						<td><bean:write name="iterSearch" property="profesionalbusinessname" /></td>
-						<td><a href="./addSellToPromotion.do?index=<%=iterIndex%>">Agregar</a></td>
+						<td><a href="javascript:document.PromotionForm.action='./addSellToPromotion.do?index=<%=iterIndex%>';document.PromotionForm.submit();">Agregar</a></td>
 					</tr>
 				</logic:iterate>
 			</table>

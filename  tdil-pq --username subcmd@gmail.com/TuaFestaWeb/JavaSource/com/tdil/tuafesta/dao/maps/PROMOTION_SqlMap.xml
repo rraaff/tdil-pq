@@ -262,4 +262,21 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.PromotionValueObject" extends="BaseResultMap" id="PromotionValueObject">
+  	<result column="firstImageid" jdbcType="INTEGER" property="firstImageid" />
+    <result column="firstImageExt" jdbcType="VARCHAR" property="firstImageExt" />
+  </resultMap>
+  
+  <select id="selectActivePromotions" parameterClass="java.util.Map" resultMap="PromotionValueObject">
+    select 
+    	<include refid="PROMOTION.Base_Column_List" />,
+    	pp.id_blob_data as firstImageid,
+    	pp.ext_blob_data as firstImageExt
+    from PROMOTION promo, PROMOTION_PHOTO pp 
+    where promo.id = pp.id_promotion
+    and pp.orderNumber = 0
+    and CURDATE() >= promo.startDate
+    and promo.endDate >= CURDATE()
+  </select>
 </sqlMap>
