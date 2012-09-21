@@ -1,0 +1,28 @@
+<mockup version="1.0" skin="sketch" measuredW="1142" measuredH="476" mockupW="1122" mockupH="463">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="20" y="13" w="1122" h="463" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>R010-M2-Manejo%20de%20Avisos%20destacados</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="35" y="109" w="957" h="-1" measuredW="662" measuredH="50" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>left</align>
+        <text>Administraci%F3n%20de%20avisos%20Destacados</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="35" y="166" w="1092" h="156" measuredW="830" measuredH="145" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Profesional%20%5E%2C%20Tipo%20de%20aviso%20%5Ev%2C%20Costo%20%5Ev%2C%20Pago%2C%20Fecha%20desde%20%5Ev%2C%20Fecha%20hasta%20%5Ev%2C%20Acciones%0ANN%2C%20prof%2C%20%24150%2C%20Pago%2C%2013/09/2012%2C%2014/10/2012%2C%20Ver/Editar/Pausar%20publicaci%F3n/Marcar%20como%20impago%0ANN%2C%20prod/serv%2C%20%24120%2C%20Pago%2C%2013/09/2012%2C%2020/09/2012%2C%20Ver/Editar/Pausar%20publicaci%F3n/Marcar%20como%20impago%0ANN%2C%20prof%2C%20%24110%2C%20Pago%2C%2013/09/2012%2C%2018/09/2012%2C%20Ver/Editar/Pausar%20publicaci%F3n/Marcar%20como%20impago%0ANN%2C%20prod/serv%2C%20%24180%2C%20Impago%2C%2013/09/2012%2C%2020/10/2012%2C%20Ver/Editar/Pausar%20publicaci%F3n/Marcar%20como%20pago%0A%7B5L%2C%208C%2C%205C%2C%205C%2C%208C%2C%208C%2C%2015C%7D</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::MultilineButton" x="504" y="354" w="-1" h="-1" measuredW="199" measuredH="69" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16750848</color>
+        <href>R010-M2-Crear%20aviso%20destacado-Paso%201%26bm%3BR010-M2-Crear%20aviso%20destacado-Paso%201.bmml%26bm%3BR010-M2-Crear%20aviso%20destacado-Paso%201.bmml%26bm%3BR010-M2-Crear%20aviso%20destacado-Paso%201.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22484%2C341%2C683%2C410%22%20href%3D%22R010-M2-Crear%2520aviso%2520destacado-Paso%25201.bmml%22%20alt%3D%22R010-M2-Crear%20aviso%20destacado-Paso%201%22%20id%3D%224%22/%3E</map>
+        <text>CREAR%20NUEVO%20AVISO%0AIniciar%20wizzard</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
