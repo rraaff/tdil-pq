@@ -2,6 +2,8 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.Promotion;
 import com.tdil.tuafesta.model.PromotionExample;
+import com.tdil.tuafesta.model.valueobjects.PromotionValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -72,4 +74,6 @@ public interface PromotionDAO {
 	 * @mbggenerated  Thu Sep 20 22:30:23 ART 2012
 	 */
 	int updatePromotionByPrimaryKey(Promotion record) throws SQLException;
+	
+	public List<PromotionValueObject> selectActivePromotions() throws SQLException;
 }

@@ -1,3 +1,10 @@
+Prommociones
+Agregar resto de datos
+Hacer pagina de listado de todas las promos
+Warning de imagen de promo muy chiquita
+Hacer pagina de detalle de una promo
+
+
 Manejo de categorias
 Cada vez que creas una categoria, a la categoria superior le creo la 
 opcion otros en forma automatica (si no la tiene).
@@ -5,8 +12,6 @@ opcion otros en forma automatica (si no la tiene).
 Podes crear subcategorias de cualquiera menos de la otros (estas las voy a esconder).
 
 Cuando elegis una categoria que no tiene subcategorias, ahi te muestro la opcion para agregar.
-
-
 
 Cambiar productos
 

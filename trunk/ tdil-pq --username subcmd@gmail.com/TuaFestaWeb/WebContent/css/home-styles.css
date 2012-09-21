@@ -213,8 +213,8 @@ a {
 	margin:0 auto;
 }
 #central #centralBlock #promos {
-	background-image: url(../images/skin_basic/home/basePromos.png);
-	background-repeat: no-repeat;
+	/*background-image: url(../images/skin_basic/home/basePromos.png);
+	background-repeat: no-repeat;*/
 	width:643px;
 	height:367px;
 	margin-left:10px;
