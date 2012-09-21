@@ -9,8 +9,8 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
-import com.tdil.tuafesta.struts.forms.NotificationEmailForm;
 import com.tdil.tuafesta.utils.ProductCategoryUtils;
+import com.tdil.tuafesta.utils.ServiceCategoryUtils;
 
 public class SellValueObject extends Sell {
 
@@ -44,7 +44,11 @@ public class SellValueObject extends Sell {
 	
 	public String getCategoryText() {
 		try {
-			return ProductCategoryUtils.getCategoryPath(this.getIdCategory());
+			if (this.getType().equals(SellType.PRODUCT)) {
+				return ProductCategoryUtils.getCategoryPath(this.getIdCategory());
+			} else {
+				return ServiceCategoryUtils.getCategoryPath(this.getIdCategory());
+			}
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return "";

@@ -50,6 +50,8 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SERVICE_AREA_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_PHOTO_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_SELL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/CLIENT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/CACHE_REGION_SqlMap.xml"/>
 	

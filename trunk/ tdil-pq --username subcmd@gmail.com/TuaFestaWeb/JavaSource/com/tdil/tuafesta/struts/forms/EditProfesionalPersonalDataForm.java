@@ -103,7 +103,6 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 	public void save() throws SQLException, ValidationException {
 		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
 		ProfesionalChange profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(profesional.getIdProfesionalChange());
-		
 		profesionalChange.setFirstname(com.tdil.utils.StringUtils.getDataForChange(this.getFirstname(), profesional.getFirstname()));
 		profesionalChange.setLastname(com.tdil.utils.StringUtils.getDataForChange(this.getLastname(), profesional.getLastname()));
 		profesionalChange.setSex(com.tdil.utils.StringUtils.getDataForChange(this.getSex(), profesional.getSex()));
