@@ -578,6 +578,30 @@
    path="/searchSellsForPromotion" scope="session" type="com.tdil.struts.actions.SearchAction">
    <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
   </action>
+  <action parameter="Admin" path="/uploadPromotionImage" type="com.tdil.tuafesta.struts.action.UploadPromotionImageAction"/>
+  <action name="PromotionForm" parameter="Admin" path="/viewPromotionImage"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewPromotionImageAction">
+  </action>
+  <action name="PromotionForm" parameter="Admin" path="/movePromotionImageUp"
+   scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionUpAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+   <action name="PromotionForm" parameter="Admin" path="/movePromotionImageDown"
+   scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionDownAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin" path="/deletePromotionImage"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeletePromotionImageAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin" path="/addSellToPromotion"
+   scope="session" type="com.tdil.tuafesta.struts.action.AddSellToPromotionAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  <action name="PromotionForm" parameter="Admin" path="/removeSellFromPromotion"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellFromPromotionAction">
+   <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
 	<forward name="notLogged" path="/index.jsp"/>

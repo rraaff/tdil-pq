@@ -1202,4 +1202,44 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchProductCategories" NAME="action118"
   PATH="/searchProductCategories" SHAPE="32,14481,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#uploadPromotionImage" NAME="action119"
+  PATH="/uploadPromotionImage" SHAPE="32,14481,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewPromotionImage" NAME="action120"
+  PATH="/viewPromotionImage" SHAPE="240,14497,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#movePromotionImageUp" NAME="action123"
+  PATH="/movePromotionImageUp" SHAPE="48,2273,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#movePromotionImageDown" NAME="action122"
+  PATH="/movePromotionImageDown" SHAPE="48,1985,0,0"
+  TITLE="PromotionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deletePromotionImage" NAME="action121"
+  PATH="/deletePromotionImage" SHAPE="48,1873,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#addSellToPromotion" NAME="action124"
+  PATH="/addSellToPromotion" SHAPE="48,1985,0,0" TITLE="PromotionForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#removeSellFromPromotion" NAME="action125"
+  PATH="/removeSellFromPromotion" SHAPE="48,1985,0,0"
+  TITLE="PromotionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boPromotionAdministration.jsp" TARGET="page47"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

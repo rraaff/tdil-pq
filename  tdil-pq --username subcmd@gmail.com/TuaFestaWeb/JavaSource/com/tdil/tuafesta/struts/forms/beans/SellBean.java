@@ -62,8 +62,9 @@ public class SellBean implements Serializable {
 		this.setProductId(sell.getIdProdServ());
 		this.setType(sell.getType());
 		this.setName(sell.getName());
+		this.setProfesionalBusinessname(sell.getProfesionalbusinessname());
 		this.setReferencePrice(sell.getReferenceprice().toString());
-		this.setCategoryText(ProductCategoryUtils.getCategoryPath(sell.getIdCategory()));
+		this.setCategoryText(sell.getCategoryText());
 	}
 	
 	public String getSellTypeDescription() {

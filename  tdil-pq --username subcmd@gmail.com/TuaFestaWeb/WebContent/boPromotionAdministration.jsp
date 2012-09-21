@@ -12,16 +12,35 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
 <script>
+var maxindex = <bean:write name="PromotionForm" property="maxImages" />;
 $(document).ready(
 	function(){
-			$("input[name=startdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-				changeYear: true, yearRange: "1900:2012"});
-			$("input[name=enddate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-				changeYear: true, yearRange: "1900:2020"});
-		}
-	
-	);
+		$("input[name=startdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			changeYear: true, yearRange: "1900:2012"});
+		$("input[name=enddate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			changeYear: true, yearRange: "1900:2020"});
+
+		$('#upload_img').ajaxfileupload({
+		  	'action': './uploadPromotionImage.do',
+		  'onComplete': function(response) {
+		  	if (response.result == 'OK') {
+		  		var tr = $('<tr></tr>').appendTo( $('#image_gal_tab') );
+		  		var tdpos = $('<td align="center">' + (maxindex + 1) + '</td>').appendTo( tr );
+		  		var tdimg = $('<td align="center"><img id="ranking_' + maxindex + '" src="./viewPromotionImage.do?index=' + maxindex + '" width="66" height="40" align="absmiddle"></td>').appendTo( tr );
+		  		var tdops = $('<td align="center" width="100"><a href="javascript:document.PromotionForm.action=\'./movePromotionImageUp.do?index=' + maxindex + '\';document.PromotionForm.submit();"><img src="boImages/subir.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.PromotionForm.action=\'./movePromotionImageDown.do?index=' + maxindex + '\';document.PromotionForm.submit();"><img src="boImages/bajar.png" alt="Subir" width="20" height="20" hspace="5" border="0"></a>' + '<a href="javascript:document.PromotionForm.action=\'./deletePromotionImage.do?index=' + maxindex + '\';document.PromotionForm.submit();"><img src="boImages/borrar.png" alt="Borrar" width="20" height="20" hspace="5" border="0"></a></td>').appendTo( tr );
+		  		maxindex = maxindex + 1;
+		  	} else {
+		  		alert("Ha ocurrido un error");
+		  	}
+		  },
+		  'onCancel': function() {
+		    console.log('no file selected');
+		  }
+		});
+	}
+);
 
 </script>
 </head>
@@ -56,11 +75,82 @@ $(document).ready(
 			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.enddate_key + ".err")%></div>
 		</div>
 		
-		<html:radio name="PromotionForm" property="searchForm.type" value="1" />
-		<html:radio name="PromotionForm" property="searchForm.type" value="2" />
-		<html:text name="PromotionForm" property="searchForm.name"/>
-		<html:text name="PromotionForm" property="searchForm.profesionalBusinessname"/>
-		<a class="nonelyLink" href="javascript:document.PromotionForm.action='./searchSellsForPromotion.do';document.PromotionForm.submit();">Buscar</a>
+		<div id="conteinerScrollable" style="float:left; width:950px; height:335px; overflow:auto; border:#FF0000;">
+			<h2>Fotos</h2>
+			<div class="width420 height250" style="float:left; overflow:auto;">
+				<table width="380" id="image_gal_tab">
+					<tr>
+						<td class="headerTablas" width="50">Posici&oacute;n</td>
+						<td class="headerTablas">Foto</td>
+						<td class="headerTablas">Acciones</td>
+					</tr>
+					<logic:iterate id="selectedPosition" name="PromotionForm" property="photos" indexId="iterIndexPositions">  
+						<tr>
+							<td align="center"><%=iterIndexPositions + 1%></td>
+							<td align="center"><img id="ranking_<%=iterIndexPositions%>" src="./viewPromotionImage.do?index=<%=iterIndexPositions%>" width="66" height="40" align="absmiddle"></td> 
+							<td align="center" width="130">
+								<a href="javascript:document.PromotionForm.action='./movePromotionImageUp.do?index=<%=iterIndexPositions%>';document.PromotionForm.submit();"><img src="boImages/subir.png" title="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.PromotionForm.action='./movePromotionImageDown.do?index=<%=iterIndexPositions%>';document.PromotionForm.submit();"><img src="boImages/bajar.png" title="Subir" width="20" height="20" hspace="5" border="0"></a>
+								<a href="javascript:document.PromotionForm.action='./deletePromotionImage.do?index=<%=iterIndexPositions%>';document.PromotionForm.submit();"><img src="boImages/borrar.png" title="Borrar" width="20" height="20" hspace="5" border="0"></a></td>
+						</tr>
+					</logic:iterate>
+				</table>
+			</div>
+			<div class="width500 height250" style="float:right;">
+				<div class="label width500 height25"></div>
+				<div class="label width200 height60"><input type="file" name="upload_img" id="upload_img"></div>
+				<div class="label width50 height60"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.photo_key + ".err")%></div>
+			</div>
+		</div>
+		
+		<div id="conteinerScrollable" style="width:300px; height:335px; overflow:auto; border:#FF0000;">
+			<table>
+				<tr>
+					<td colspan="4">Productos/Servicios Agregados</td>
+				</tr>
+				<tr>
+					<td class="headerTablas">Nombre</td>
+					<td class="headerTablas">Categoria</td>
+					<td class="headerTablas">Profesional</td>
+					<td class="headerTablas" width="60">Acciones</td>
+				</tr>
+				<logic:iterate name="PromotionForm" property="sells"
+					id="added" indexId="iterIndex">
+					<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+						<td><bean:write name="added" property="name" /></td>
+						<td><bean:write name="added" property="categoryText" /></td>
+						<td><bean:write name="added" property="profesionalBusinessname" /></td>
+						<td><a href="./removeSellFromPromotion.do?index=<%=iterIndex%>">Quitar</a></td>
+					</tr>
+				</logic:iterate>
+			</table>
+		</div>
+		
+		<div id="conteinerScrollable" style="width:300px; height:335px; overflow:auto; border:#FF0000;">
+			<html:radio name="PromotionForm" property="searchForm.type" value="1" />Productos
+			<html:radio name="PromotionForm" property="searchForm.type" value="2" />Servicios<br>
+			Nombre:<html:text name="PromotionForm" property="searchForm.name"/><br>
+			Profesional:<html:text name="PromotionForm" property="searchForm.profesionalBusinessname"/><br>
+			<a class="nonelyLink" href="javascript:document.PromotionForm.action='./searchSellsForPromotion.do';document.PromotionForm.submit();">Buscar</a>
+			<table>
+				<td colspan="4">Productos/Servicios a agregar</td>
+				<tr>
+					<td class="headerTablas">Nombre</td>
+					<td class="headerTablas">Categoria</td>
+					<td class="headerTablas">Profesional</td>
+					<td class="headerTablas" width="60">Acciones</td>
+				</tr>
+				<logic:iterate name="PromotionForm" property="searchForm.searchResult"
+					id="iterSearch" indexId="iterIndex">
+					<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+						<td><bean:write name="iterSearch" property="name" /></td>
+						<td><bean:write name="iterSearch" property="categoryText" /></td>
+						<td><bean:write name="iterSearch" property="profesionalbusinessname" /></td>
+						<td><a href="./addSellToPromotion.do?index=<%=iterIndex%>">Agregar</a></td>
+					</tr>
+				</logic:iterate>
+			</table>
+		</div>
 		
 		<div class="renglon width860" style="margin-bottom:20px;" align="center">
 			<logic:equal name="PromotionForm" property="objectId" value="0">
