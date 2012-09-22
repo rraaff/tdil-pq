@@ -111,78 +111,7 @@ $(document).ready(
 				$("#serviceSelectedDiv").css('display', 'block');
 				$("input[name=serviceId]").attr('value', prodValue);
 			}
-			$( "input[name=productAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchProduct.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id,
-									path: item.path
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						productSelected(ui.item.label, ui.item.value, ui.item.path);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
-
-
-			$( "input[name=serviceAutocompleter]" ).autocomplete({
-				source: function( request, response ) {
-					$.ajax({
-						url: "searchService.do",
-						data: {
-							name: request.term
-						},
-						dataType: "json",
-						success: function( data ) {
-							response( $.map( data, function( item ) {
-								return {
-									label: item.name,
-									value: item.id,
-									path: item.path
-								}
-							}));
-						}
-					});
-				},
-				minLength: 2,
-				select: function( event, ui ) {
-					if (ui.item) {
-						serviceSelected(ui.item.label, ui.item.value, ui.item.path);
-					}
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
-				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
-			});
+			
 
 			
 		}

@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.SellType"%>
 <%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
-<%@page import="com.tdil.tuafesta.model.ProductCategory"%>
+<%@page import="com.tdil.tuafesta.model.Category"%>
 <%@page import="com.tdil.tuafesta.model.PhoneType"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
@@ -33,87 +34,7 @@
 $(document).ready(
 	function(){
 
-		var prodcats = new Array();
-
-		var selectChange = function() {
-			var selValue = Number($(this).attr('value'));
-			if (selValue > 0) {
-				var changedLevel = Number($(this).attr('level'));
-				var i;
-				for (i = changedLevel; i < prodcats.length; i++) {
-					if (prodcats[i] != null) {
-						prodcats[i].remove();
-					}
-				}
-				for (i = prodcats.length - 1; i > changedLevel; i--) {
-					prodcats[i] = null;
-				}
-				
-				$.ajax({
-		            type: "GET",
-		            cache: false,
-		            url: "./searchProductCategories.do",
-		            data: {parent: selValue },
-		            contentType: "application/json; charset=utf-8",
-		            success: function(msg) {
-						if (msg.length > 0) {
-							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
-							//alert(msg.length);
-			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
-				   			prodcats[changedLevel] = tdnextlevel;
-				   			select.change(selectChange);
-			                $.each(msg, function(index, item) {
-				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
-			                	//select.options[select.options.length] = new Option(item.id, );
-			                });
-						} else {
-							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
-							prodcats[changedLevel] = tdnextlevel;
-							var continueButton = $('<input type="button" value="Continuar"/>').appendTo( tdnextlevel );
-							continueButton.click(function() {
-								var catPath = $('#pcl-0').find("option:selected").text();
-								var i;
-								for (i = 1; i < prodcats.length; i++) {
-									if (prodcats[i] != null) {
-										catPath = catPath + " > " + $('#pcl-' + i).find("option:selected").text();
-									}
-								}
-								$( "#categoryPath" ).prop('innerHTML', catPath);
-								$( "#selectProductCategoryLayer" ).fadeOut();
-								$( "#addProductLayer" ).fadeIn(500);
-							});
-						}
-		            },
-		            error: function() {
-		                alert("error consultando los productos");
-		            }
-		        });
-			}
-		}
-
-		$('#cancelAddProduct').click(function() {
-			var i;
-			for (i = 0; i < prodcats.length; i++) {
-				if (prodcats[i] != null) {
-					prodcats[i].remove();
-				}
-			}
-			for (i = 0; i < prodcats.length; i++) {
-				prodcats[i] = null;
-			}
-			$('#pcl-0').attr('selectedIndex', '-1').find("option:selected").removeAttr("selected");
-			$( "#addProductLayer" ).fadeOut();
-		});
-			
-		$('#pcl-0').change(selectChange);
-
-		$('#addProduct').click(function() {
-			$( "#selectProductCategoryLayer" ).fadeIn(500);
-		});
-
-		$('#doAddProduct').click(function() {
-
-		});
+		<%@ include file="includes/add_sell_js.jspf"%>
 		
 	}
 );
@@ -123,27 +44,17 @@ $(document).ready(
 <body>
 
 <a href="#" id="addProduct">Agregar producto</a>
+<a href="#" id="addService">Agregar servicio</a>
 
-<div id="addProductLayer" style="display: none;">
+<div id="addSellLayer" style="display: none;">
 <span id="categoryPath"></span><br/>
 <input type="text" id="categoryId" name="categoryId" value=""/><br/>
 <input type="text" id="name" name="name" value=""/><br/>
-<a href="#" id="doAddProduct">Agregar</a>&nbsp;<a href="#" id="cancelAddProduct">Cancelar</a>
+<a href="#" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
 </div>
 	
-<div id="selectProductCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
-	<table id="prod_cat_tbl" border="1">
-		<tr id="prod_cat_tr">
-			<td>
-				<select id="pcl-0" size="10" style="width: 120px;" level="0">
-					<% for (ProductCategory pc : CategoryUtils.getProductCategories(0)) { %>
-						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
-					<% } %>
-				</select>
-			</td>
-		</tr>
-	</table>
-</div>
+<%@ include file="includes/add_sell_layers.jspf"%>
+
 <!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 </body>

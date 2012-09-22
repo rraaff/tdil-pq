@@ -9,8 +9,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
-import com.tdil.tuafesta.utils.ProductCategoryUtils;
-import com.tdil.tuafesta.utils.ServiceCategoryUtils;
+import com.tdil.tuafesta.utils.TreeCategoryUtils;
 
 public class SellValueObject extends Sell {
 
@@ -28,8 +27,6 @@ public class SellValueObject extends Sell {
 	
 	private String profesionalbusinessname;
 	
-	private int idCategory;
-
 	public String getSellTypeDescription() {
 		return ApplicationResources.getMessage(this.getType() == SellType.PRODUCT ? "PRODUCT" : "SERVICE");
 	}
@@ -44,11 +41,7 @@ public class SellValueObject extends Sell {
 	
 	public String getCategoryText() {
 		try {
-			if (this.getType().equals(SellType.PRODUCT)) {
-				return ProductCategoryUtils.getCategoryPath(this.getIdCategory());
-			} else {
-				return ServiceCategoryUtils.getCategoryPath(this.getIdCategory());
-			}
+			return TreeCategoryUtils.getCategoryPath(this.getIdCategory());
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return "";
@@ -115,12 +108,4 @@ public class SellValueObject extends Sell {
 		this.geo4name = geo4name;
 	}
 
-	public int getIdCategory() {
-		return idCategory;
-	}
-
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
-	}
-	
 }

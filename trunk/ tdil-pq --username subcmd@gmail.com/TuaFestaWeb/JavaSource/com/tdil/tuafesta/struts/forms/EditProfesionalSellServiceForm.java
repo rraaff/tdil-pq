@@ -34,7 +34,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 	
 	@Override
 	protected void loadForEdit(SellBean edited) {
-		this.serviceId = String.valueOf(edited.getProductId());
+		this.serviceId = String.valueOf(edited.getCategoryId());
 		this.serviceCategorySelected = edited.getCategoryText();
 		this.serviceSelectedText = edited.getName();
 		this.serviceReferenceprice = edited.getReferencePrice();
@@ -94,7 +94,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 				Sell sell = new Sell();
 				sell.setIdProfesional(this.getId());
 				sell.setType(productBean.getType());
-				sell.setIdProdServ(productBean.getProductId());
+				sell.setIdProdServ(productBean.getCategoryId());
 				sell.setApproved(0);
 				if (sell.getIdProdServ() == 0) {
 					sell.setItem(productBean.getName());
@@ -138,7 +138,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 		if (this.isServiceSelected()) {
 			// serviceo elegido de la rd
 			servicebean.setType(SellType.SERVICE);
-			servicebean.setProductId(Integer.valueOf(this.getServiceId()));
+			servicebean.setCategoryId(Integer.valueOf(this.getServiceId()));
 			servicebean.setName(this.getServiceSelectedText());
 			servicebean.setCategoryText(this.getServiceCategorySelected());
 			servicebean.setReferencePrice(this.getServiceReferenceprice());
@@ -150,7 +150,7 @@ public class EditProfesionalSellServiceForm extends EditProfesionalSellForm impl
 		} else {
 			// serviceo no rd
 			servicebean.setType(SellType.SERVICE);
-			servicebean.setProductId(0);
+			servicebean.setCategoryId(0);
 			servicebean.setName(this.getServiceAutocompleter());
 			servicebean.setCategoryText("-");
 			servicebean.setReferencePrice(this.getServiceReferenceprice());

@@ -16,8 +16,6 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.HighlightedCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.HighlightedCategory;
-import com.tdil.tuafesta.model.ProductCategory;
-import com.tdil.tuafesta.model.ServiceCategory;
 import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
 
@@ -65,24 +63,24 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	
 	@Override
 	public void initWith(int id) throws SQLException {
-		HighlightedCategoryDAO highlightedCategoryDAO = DAOManager.getHighlightedCategoryDAO();
-		HighlightedCategory highlightedCategory = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(id);
-		if (highlightedCategory != null) {
-			this.objectId = id;
-			this.fromDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getFromdate());
-			this.toDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getTodate());
-			if (highlightedCategory.getType().equals(0)) { // producto
-				ProductCategory productCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
-				this.categoryId = productCategory.getId();
-				this.categorySelectedText = productCategory.getName();
-				this.categoryType = "p";
-			} else { // servicio
-				ServiceCategory serviceCategory = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
-				this.categoryId = serviceCategory.getId();
-				this.categorySelectedText = serviceCategory.getName();
-				this.categoryType = "s";
-			}
-		}
+//		HighlightedCategoryDAO highlightedCategoryDAO = DAOManager.getHighlightedCategoryDAO();
+//		HighlightedCategory highlightedCategory = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(id);
+//		if (highlightedCategory != null) {
+//			this.objectId = id;
+//			this.fromDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getFromdate());
+//			this.toDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getTodate());
+//			if (highlightedCategory.getType().equals(0)) { // producto
+//				ProductCategory productCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
+//				this.categoryId = productCategory.getId();
+//				this.categorySelectedText = productCategory.getName();
+//				this.categoryType = "p";
+//			} else { // servicio
+//				ServiceCategory serviceCategory = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
+//				this.categoryId = serviceCategory.getId();
+//				this.categorySelectedText = serviceCategory.getName();
+//				this.categoryType = "s";
+//			}
+//		}
 	}
 	
 	public boolean isCategorySelected() {

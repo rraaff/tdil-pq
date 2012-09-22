@@ -64,16 +64,7 @@ targetProject="TuaFestaWeb">
 <table schema="TUAFESTA" tableName="GEO4" domainObjectName="Geo4" alias="g4">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="TUAFESTA" tableName="PROF_SERV_CATEGORY" domainObjectName="ServiceCategory" alias="sc">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-<table schema="TUAFESTA" tableName="PROF_SERVICE" domainObjectName="ProfesionalService" alias="ps">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-<table schema="TUAFESTA" tableName="PROF_PROD_CATEGORY" domainObjectName="ProductCategory" alias="pc">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-<table schema="TUAFESTA" tableName="PROF_PRODUCT" domainObjectName="ProfesionalProduct" alias="pp">
+<table schema="TUAFESTA" tableName="CATEGORY" domainObjectName="Category" alias="cate">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="TUAFESTA" tableName="WALL" domainObjectName="Wall" alias="wa">
@@ -102,14 +93,6 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
-<table schema="TUAFESTA" tableName="SELL_PHOTO" domainObjectName="SellPhoto" alias="sellp">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-
-<table schema="TUAFESTA" tableName="SELL_VIDEO" domainObjectName="SellVideo" alias="sellv">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-
 <table schema="TUAFESTA" tableName="PROMOTION" domainObjectName="Promotion" alias="promo">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -126,10 +109,6 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
-<table schema="TUAFESTA" tableName="PROMOTION_VIDEO" domainObjectName="PromotionVideo" alias="promvi">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-
 <table schema="TUAFESTA" tableName="STATISTIC" domainObjectName="Statistic" alias="stat">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -142,10 +121,6 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="TUAFESTA" tableName="HIGHLIGHTED_CAT" domainObjectName="HighlightedCategory" alias="hc">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-
-<table schema="TUAFESTA" tableName="PROFILE_VIDEO" domainObjectName="ProfileVideo" alias="pv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 

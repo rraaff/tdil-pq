@@ -19,10 +19,8 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.actions.AjaxAction;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.ProfesionalProduct;
-import com.tdil.tuafesta.model.ProfesionalProductExample;
-import com.tdil.tuafesta.utils.ProductCategoryUtils;
 
+@Deprecated
 public class SearchProductAction extends AjaxAction {
 
 	@Override
@@ -32,17 +30,17 @@ public class SearchProductAction extends AjaxAction {
 		@SuppressWarnings("unchecked")
 		List<String> result = (List<String>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 			public Object executeInTransaction() throws SQLException {
-				// TODO esto deberia hacer la busqueda tambien por los nombres de las categorias
-				ProfesionalProductExample profesionalProductExample = new ProfesionalProductExample();
-				profesionalProductExample.createCriteria().andNameLike("%" + term + "%");
+//				// TODO esto deberia hacer la busqueda tambien por los nombres de las categorias
+//				ProfesionalProductExample profesionalProductExample = new ProfesionalProductExample();
+//				profesionalProductExample.createCriteria().andNameLike("%" + term + "%");
 				List<Map<String, String>> result = new ArrayList<Map<String,String>>();
-				for (ProfesionalProduct t : DAOManager.getProfesionalProductDAO().selectProfesionalProductByExample(profesionalProductExample)) {
-					Map<String, String> row = new HashMap<String, String>();
-					row.put("id", t.getId().toString());
-					row.put("name", t.getName());
-					row.put("path", ProductCategoryUtils.getCategoryPath(t.getIdCategory()));
-					result.add(row);
-				}
+//				for (ProfesionalProduct t : DAOManager.getProfesionalProductDAO().selectProfesionalProductByExample(profesionalProductExample)) {
+//					Map<String, String> row = new HashMap<String, String>();
+//					row.put("id", t.getId().toString());
+//					row.put("name", t.getName());
+//					row.put("path", ProductCategoryUtils.getCategoryPath(t.getIdCategory()));
+//					result.add(row);
+//				}
 				return result;
 			}
 		});

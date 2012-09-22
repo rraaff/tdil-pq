@@ -32,7 +32,7 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 	
 	@Override
 	protected void loadForEdit(SellBean edited) {
-		this.productId = String.valueOf(edited.getProductId());
+		this.productId = String.valueOf(edited.getCategoryId());
 		this.productCategorySelected = edited.getCategoryText();
 		this.productSelectedText = edited.getName();
 		this.referenceprice = edited.getReferencePrice();
@@ -47,13 +47,6 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 		List<SellValueObject> sellVOs = sellDAO.selectProductSellsByProfesional(id);
 		for (SellValueObject sellValueObject : sellVOs) {
 			this.getSells().add(new SellBean(sellValueObject));
-		}
-		// obtengo las que no tienen producto en rd
-		SellExample sellExample = new SellExample();
-		sellExample.createCriteria().andIdProfesionalEqualTo(id).andTypeEqualTo(SellType.PRODUCT).andIdProdServEqualTo(0);
-		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
-		for (Sell sell : sells) {
-			this.getSells().add(new SellBean(sell));
 		}
 	}
 	
@@ -92,7 +85,7 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 				Sell sell = new Sell();
 				sell.setIdProfesional(this.getId());
 				sell.setType(productBean.getType());
-				sell.setIdProdServ(productBean.getProductId());
+				sell.setIdProdServ(productBean.getCategoryId());
 				sell.setApproved(0);
 				if (sell.getIdProdServ() == 0) {
 					sell.setItem(productBean.getName());
@@ -135,7 +128,7 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 		if (this.isProductSelected()) {
 			// producto elegido de la rd
 			productbean.setType(SellType.PRODUCT);
-			productbean.setProductId(Integer.valueOf(this.getProductId()));
+			productbean.setCategoryId(Integer.valueOf(this.getProductId()));
 			productbean.setName(this.getProductSelectedText());
 			productbean.setCategoryText(this.getProductCategorySelected());
 			productbean.setReferencePrice(this.getReferenceprice());
@@ -147,7 +140,7 @@ public class EditProfesionalSellProductForm extends EditProfesionalSellForm impl
 		} else {
 			// producto no rd
 			productbean.setType(SellType.PRODUCT);
-			productbean.setProductId(0);
+			productbean.setCategoryId(0);
 			productbean.setName(this.getProductAutocompleter());
 			productbean.setCategoryText("-");
 			productbean.setReferencePrice(this.getReferenceprice());

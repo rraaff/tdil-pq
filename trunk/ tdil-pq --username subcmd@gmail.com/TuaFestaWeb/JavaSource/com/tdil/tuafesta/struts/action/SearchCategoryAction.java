@@ -19,10 +19,9 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.actions.AjaxAction;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.ProductCategory;
-import com.tdil.tuafesta.model.ProductCategoryExample;
-import com.tdil.tuafesta.model.ServiceCategory;
-import com.tdil.tuafesta.model.ServiceCategoryExample;
+import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.CategoryExample;
+import com.tdil.tuafesta.model.SellType;
 
 public class SearchCategoryAction extends AjaxAction {
 
@@ -37,27 +36,14 @@ public class SearchCategoryAction extends AjaxAction {
 		List<String> result = (List<String>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 			public Object executeInTransaction() throws SQLException {
 				List<Map<String, String>> result = new ArrayList<Map<String,String>>();
-				// si es producto
-				if ("p".equals(type)) {
-					ProductCategoryExample productCategoryExample = new ProductCategoryExample();
-					productCategoryExample.createCriteria().andNameLike("%" + term + "%").andDeletedEqualTo(0);
-					productCategoryExample.setOrderByClause("name");
-					for (ProductCategory t : DAOManager.getProductCategoryDAO().selectProductCategoryByExample(productCategoryExample)) {
-						Map<String, String> row = new HashMap<String, String>();
-						row.put("id", t.getId().toString());
-						row.put("name", t.getName());
-						result.add(row);
-					}
-				} else { // si es servicio
-					ServiceCategoryExample serviceCategoryExample = new ServiceCategoryExample();
-					serviceCategoryExample.createCriteria().andNameLike("%" + term + "%").andDeletedEqualTo(0);
-					serviceCategoryExample.setOrderByClause("name");
-					for (ServiceCategory t : DAOManager.getServiceCategoryDAO().selectServiceCategoryByExample(serviceCategoryExample)) {
-						Map<String, String> row = new HashMap<String, String>();
-						row.put("id", t.getId().toString());
-						row.put("name", t.getName());
-						result.add(row);
-					}		
+				CategoryExample productCategoryExample = new CategoryExample();
+				productCategoryExample.createCriteria().andNameLike("%" + term + "%").andTypeEqualTo("p".equals(type) ? SellType.PRODUCT : SellType.SERVICE).andDeletedEqualTo(0);
+				productCategoryExample.setOrderByClause("name");
+				for (Category t : DAOManager.getCategoryDAO().selectCategoryByExample(productCategoryExample)) {
+					Map<String, String> row = new HashMap<String, String>();
+					row.put("id", t.getId().toString());
+					row.put("name", t.getName());
+					result.add(row);
 				}
 				return result;
 			}

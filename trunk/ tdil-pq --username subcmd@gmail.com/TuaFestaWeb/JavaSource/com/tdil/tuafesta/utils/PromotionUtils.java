@@ -8,8 +8,6 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.ProductCategory;
-import com.tdil.tuafesta.model.ProductCategoryExample;
 import com.tdil.tuafesta.model.Promotion;
 import com.tdil.tuafesta.model.PromotionPhotoExample;
 import com.tdil.tuafesta.model.valueobjects.PromotionValueObject;

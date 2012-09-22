@@ -4,49 +4,49 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tdil.tuafesta.model.ProductCategory;
+import com.tdil.tuafesta.model.Category;
 
-public class ProductCategoryTreeNode implements Serializable {
+public class CategoryTreeNode implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -458918044276232438L;
 
-	private ProductCategoryTreeNode parentNode;
+	private CategoryTreeNode parentNode;
 	
 	private int level = 0;
-	private ProductCategory profesionalCategory;
+	private Category profesionalCategory;
 	
-	private List<ProductCategoryTreeNode> childs = new ArrayList<ProductCategoryTreeNode>();
+	private List<CategoryTreeNode> childs = new ArrayList<CategoryTreeNode>();
 
-	public ProductCategoryTreeNode(ProductCategory profesionalCategory) {
+	public CategoryTreeNode(Category profesionalCategory) {
 		super();
 		this.profesionalCategory = profesionalCategory;
 	}
 
-	public ProductCategory getProductCategory() {
+	public Category getCategory() {
 		return profesionalCategory;
 	}
 
-	public void setProductCategory(ProductCategory profesionalCategory) {
+	public void setCategory(Category profesionalCategory) {
 		this.profesionalCategory = profesionalCategory;
 	}
 	
-	public void addChild(ProductCategoryTreeNode child) {
+	public void addChild(CategoryTreeNode child) {
 		this.getChilds().add(child);
 		child.setParentNode(this);
 	}
 
-	private List<ProductCategoryTreeNode> getChilds() {
+	private List<CategoryTreeNode> getChilds() {
 		return childs;
 	}
 
-	public ProductCategoryTreeNode getParentNode() {
+	public CategoryTreeNode getParentNode() {
 		return parentNode;
 	}
 
-	public void setParentNode(ProductCategoryTreeNode parentNode) {
+	public void setParentNode(CategoryTreeNode parentNode) {
 		this.parentNode = parentNode;
 	}
 
@@ -58,14 +58,14 @@ public class ProductCategoryTreeNode implements Serializable {
 		this.level = level;
 	}
 	
-	public static List<ProductCategoryTreeNode> tree2list(List<ProductCategoryTreeNode> treelist) {
-		List<ProductCategoryTreeNode> result = new ArrayList<ProductCategoryTreeNode>();
+	public static List<CategoryTreeNode> tree2list(List<CategoryTreeNode> treelist) {
+		List<CategoryTreeNode> result = new ArrayList<CategoryTreeNode>();
 		tree2list(treelist, result);
 		return result;
 	}
 	
-	public static void tree2list(List<ProductCategoryTreeNode> treelist, List<ProductCategoryTreeNode> result) {
-		for (ProductCategoryTreeNode pro : treelist) {
+	public static void tree2list(List<CategoryTreeNode> treelist, List<CategoryTreeNode> result) {
+		for (CategoryTreeNode pro : treelist) {
 			result.add(pro);
 			tree2list(pro.getChilds(), result);
 		}
@@ -89,12 +89,12 @@ public class ProductCategoryTreeNode implements Serializable {
 
 	public void addChildsOf(List<Integer> result, int catId) {
 		if (this.getId().equals(catId)) {
-			for (ProductCategoryTreeNode child : childs) {
+			for (CategoryTreeNode child : childs) {
 				result.add(child.getId());
 				child.addChilds(result);
 			}
 		} else {
-			for (ProductCategoryTreeNode child : childs) {
+			for (CategoryTreeNode child : childs) {
 				child.addChildsOf(result, catId);
 			}
 		}
@@ -102,7 +102,7 @@ public class ProductCategoryTreeNode implements Serializable {
 	}
 
 	private void addChilds(List<Integer> result) {
-		for (ProductCategoryTreeNode child : childs) {
+		for (CategoryTreeNode child : childs) {
 			result.add(child.getId());
 			child.addChilds(result);
 		}

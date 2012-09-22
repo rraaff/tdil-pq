@@ -1,0 +1,140 @@
+var prodcats = new Array();
+
+		var pselectChange = function() {
+			var selValue = Number($(this).attr('value'));
+			if (selValue > 0) {
+				var changedLevel = Number($(this).attr('level'));
+				var i;
+				for (i = changedLevel; i < prodcats.length; i++) {
+					if (prodcats[i] != null) {
+						prodcats[i].remove();
+					}
+				}
+				for (i = prodcats.length - 1; i > changedLevel; i--) {
+					prodcats[i] = null;
+				}
+				
+				$.ajax({
+		            type: "GET",
+		            cache: false,
+		            url: "./searchProductCategories.do",
+		            data: {parent: selValue },
+		            contentType: "application/json; charset=utf-8",
+		            success: function(msg) {
+						if (msg.length > 0) {
+							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
+							//alert(msg.length);
+			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
+				   			prodcats[changedLevel] = tdnextlevel;
+				   			select.change(pselectChange);
+			                $.each(msg, function(index, item) {
+				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+			                	//select.options[select.options.length] = new Option(item.id, );
+			                });
+						} else {
+							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
+							prodcats[changedLevel] = tdnextlevel;
+							var continueButton = $('<input type="button" value="Continuar"/>').appendTo( tdnextlevel );
+							continueButton.click(function() {
+								var catPath = $('#pcl-0').find("option:selected").text();
+								var i;
+								for (i = 1; i < prodcats.length; i++) {
+									if (prodcats[i] != null) {
+										catPath = catPath + " > " + $('#pcl-' + i).find("option:selected").text();
+									}
+								}
+								$( "#categoryPath" ).prop('innerHTML', catPath);
+								$( "#selectPCategoryLayer" ).fadeOut();
+								$( "#addSellLayer" ).fadeIn(500);
+							});
+						}
+		            },
+		            error: function() {
+		                alert("error consultando los productos");
+		            }
+		        });
+			}
+		}
+
+		var sselectChange = function() {
+			var selValue = Number($(this).attr('value'));
+			if (selValue > 0) {
+				var changedLevel = Number($(this).attr('level'));
+				var i;
+				for (i = changedLevel; i < prodcats.length; i++) {
+					if (prodcats[i] != null) {
+						prodcats[i].remove();
+					}
+				}
+				for (i = prodcats.length - 1; i > changedLevel; i--) {
+					prodcats[i] = null;
+				}
+				
+				$.ajax({
+		            type: "GET",
+		            cache: false,
+		            url: "./searchServiceCategories.do",
+		            data: {parent: selValue },
+		            contentType: "application/json; charset=utf-8",
+		            success: function(msg) {
+						if (msg.length > 0) {
+							var tdnextlevel = $('<td></td>').appendTo( $('#serv_cat_tr') );
+							//alert(msg.length);
+			               var select = $('<select id="scl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
+				   			prodcats[changedLevel] = tdnextlevel;
+				   			select.change(sselectChange);
+			                $.each(msg, function(index, item) {
+				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+			                	//select.options[select.options.length] = new Option(item.id, );
+			                });
+						} else {
+							var tdnextlevel = $('<td></td>').appendTo( $('#serv_cat_tr') );
+							prodcats[changedLevel] = tdnextlevel;
+							var continueButton = $('<input type="button" value="Continuar"/>').appendTo( tdnextlevel );
+							continueButton.click(function() {
+								var catPath = $('#scl-0').find("option:selected").text();
+								var i;
+								for (i = 1; i < prodcats.length; i++) {
+									if (prodcats[i] != null) {
+										catPath = catPath + " > " + $('#scl-' + i).find("option:selected").text();
+									}
+								}
+								$( "#categoryPath" ).prop('innerHTML', catPath);
+								$( "#selectSCategoryLayer" ).fadeOut();
+								$( "#addSellLayer" ).fadeIn(500);
+							});
+						}
+		            },
+		            error: function() {
+		                alert("error consultando los servicios");
+		            }
+		        });
+			}
+		}
+
+		$('#cancelAddSell').click(function() {
+			var i;
+			for (i = 0; i < prodcats.length; i++) {
+				if (prodcats[i] != null) {
+					prodcats[i].remove();
+				}
+			}
+			for (i = 0; i < prodcats.length; i++) {
+				prodcats[i] = null;
+			}
+			$('#pcl-0').attr('selectedIndex', '-1').find("option:selected").removeAttr("selected");
+			$('#scl-0').attr('selectedIndex', '-1').find("option:selected").removeAttr("selected");
+			$( "#addSellLayer" ).fadeOut();
+		});
+
+		$('#pcl-0').change(pselectChange);
+		$('#scl-0').change(sselectChange);
+
+		$('#addProduct').click(function() {
+			$( "#selectSCategoryLayer" ).fadeOut();
+			$( "#selectPCategoryLayer" ).fadeIn(500);
+		});
+		$('#addService').click(function() {
+			$( "#selectPCategoryLayer" ).fadeOut();
+			$( "#selectSCategoryLayer" ).fadeIn(500);
+		});
