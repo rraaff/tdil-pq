@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
@@ -25,7 +24,6 @@ import com.tdil.tuafesta.dao.BlobDataDAO;
 import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
-import com.tdil.tuafesta.dao.ProfileVideoDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.BlobData;
 import com.tdil.tuafesta.model.Geo2;
@@ -36,8 +34,6 @@ import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
-import com.tdil.tuafesta.model.ProfileVideo;
-import com.tdil.tuafesta.model.ProfileVideoExample;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.validations.FieldValidation;
@@ -160,10 +156,6 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		}
 		
 		setDescription(com.tdil.utils.StringUtils.nvl(profesionalChange.getDescription(), profesional.getDescription()));
-		
-		ProfileVideoExample approvedExample = new ProfileVideoExample();
-		approvedExample.createCriteria().andIdProfesionalEqualTo(profesional.getId()).andApprovedEqualTo(1);
-		approvedExample.setOrderByClause("orderNumber");
 		
 		setVideo1(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
 		setVideo2(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));

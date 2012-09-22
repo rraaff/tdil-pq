@@ -30,7 +30,6 @@ import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.Client;
 import com.tdil.tuafesta.model.ClientExample;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
@@ -111,18 +110,12 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 	// abm de productos
 	private List<SellBean> sells = new ArrayList<SellBean>();
 	
-	private String productId;
-	private String productCategorySelected;
-	private String productAutocompleter;
-	private String productSelectedText;
+	private String categoryId;
+	private String categorySelected;
+	private String sellName;
+	private String sellDescription;
 	private String referenceprice;
 	
-	// abm de servicios
-	private String serviceId;
-	private String serviceCategorySelected;
-	private String serviceAutocompleter;
-	private String serviceSelectedText;
-	private String serviceReferenceprice;
 	
 	protected static final int MIN_PASS_LENGTH = 4;
 	
@@ -192,16 +185,11 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.geo4Id = 0;
 		this.sells = new ArrayList<SellBean>();
 		
-		this.productId = null;
-		this.productCategorySelected = null;
-		this.productAutocompleter = null;
-		this.productSelectedText = null;
+		this.categoryId = null;
+		this.categorySelected = null;
+		this.sellName= null;
+		this.sellDescription= null;
 		this.referenceprice = null;
-		this.serviceId = null;
-		this.serviceCategorySelected = null;
-		this.serviceAutocompleter = null;
-		this.serviceSelectedText = null;
-		this.serviceReferenceprice = null;
 	}
 
 	@Override
@@ -342,10 +330,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 			Sell sell = new Sell();
 			sell.setIdProfesional(id);
 			sell.setType(productBean.getType());
-			sell.setIdProdServ(productBean.getProductId());
-			if (sell.getIdProdServ() == 0) {
-				sell.setItem(productBean.getName());
-			}
+//			sell.setIdProdServ(productBean.getProductId());
+//			if (sell.getIdProdServ() == 0) {
+//				sell.setItem(productBean.getName());
+//			} // TODO esto cambia
 			// TODO ver tema de . , etc
 			BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
 			sell.setReferenceprice(refPrice);
@@ -376,18 +364,6 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		}
 		
 		StatsManager.addStat(StatisticType.PROFESIONAL_REGISTRATION, id, null);
-	}
-
-	public boolean isProductSelected() {
-		return !StringUtils.isEmpty(this.getProductId());
-	}
-	
-	public boolean isServiceAreaSelected() {
-		return !StringUtils.isEmpty(this.getGeoLevel4Id());
-	}
-	
-	public boolean isServiceSelected() {
-		return !StringUtils.isEmpty(this.getServiceId());
 	}
 
 	public int getObjectId() {
@@ -635,30 +611,6 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.level4 = level4;
 	}
 
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
-	public String getProductAutocompleter() {
-		return productAutocompleter;
-	}
-
-	public void setProductAutocompleter(String productAutocompleter) {
-		this.productAutocompleter = productAutocompleter;
-	}
-
-	public String getProductSelectedText() {
-		return productSelectedText;
-	}
-
-	public void setProductSelectedText(String productSelected) {
-		this.productSelectedText = productSelected;
-	}
-
 	public String getReferenceprice() {
 		return referenceprice;
 	}
@@ -667,56 +619,27 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.referenceprice = referenceprice;
 	}
 
-	public String getProductCategorySelected() {
-		return productCategorySelected;
-	}
-
-	public void setProductCategorySelected(String productCategorySelected) {
-		this.productCategorySelected = productCategorySelected;
-	}
-
 	public void addProduct() {
 		// TODO validaciones
-		if (this.isProductSelected()) {
-			// producto elegido de la rd
-			SellBean productbean = new SellBean();
-			productbean.setType(SellType.PRODUCT);
-			productbean.setProductId(Integer.valueOf(this.getProductId()));
-			productbean.setName(this.getProductSelectedText());
-			productbean.setCategoryText(this.getProductCategorySelected());
-			productbean.setReferencePrice(this.getReferenceprice());
-			this.getSells().add(0, productbean);
-			cleanProductFields();
-		} else {
-			// producto no rd
-			SellBean productbean = new SellBean();
-			productbean.setType(SellType.PRODUCT);
-			productbean.setProductId(0);
-			productbean.setName(this.getProductAutocompleter());
-			productbean.setCategoryText("-");
-			productbean.setReferencePrice(this.getReferenceprice());
-			this.getSells().add(0, productbean);
-			cleanProductFields();
-		}
-		
+		SellBean productbean = new SellBean();
+		productbean.setType(SellType.PRODUCT);
+		productbean.setCategoryId(Integer.valueOf(this.getCategoryId()));
+		productbean.setName(this.getSellName());
+		productbean.setDescription(this.getSellDescription());
+		productbean.setCategoryText(this.getCategorySelected());
+		productbean.setReferencePrice(this.getReferenceprice());
+		this.getSells().add(0, productbean);
+		cleanSellFields();
 	}
 
-	private void cleanProductFields() {
-		this.setProductId(null);
-		this.setProductAutocompleter(null);
-		this.setProductSelectedText(null);
-		this.setProductCategorySelected(null);
+	private void cleanSellFields() {
+		this.setCategoryId(null);
+		this.setCategorySelected(null);
+		this.setSellName(null);
+		this.setSellDescription(null);
 		this.setReferenceprice(null);
 	}
 	
-	private void cleanServiceFields() {
-		this.setServiceId(null);
-		this.setServiceAutocompleter(null);
-		this.setServiceSelectedText(null);
-		this.setServiceCategorySelected(null);
-		this.setServiceReferenceprice(null);
-	}
-
 	public List<SellBean> getSells() {
 		int index = 0;
 		for (SellBean sellBean : sells) {
@@ -805,69 +728,17 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		}
 	}
 
-	public String getServiceId() {
-		return serviceId;
-	}
-
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
-	}
-
-	public String getServiceCategorySelected() {
-		return serviceCategorySelected;
-	}
-
-	public void setServiceCategorySelected(String serviceCategorySelected) {
-		this.serviceCategorySelected = serviceCategorySelected;
-	}
-
-	public String getServiceAutocompleter() {
-		return serviceAutocompleter;
-	}
-
-	public void setServiceAutocompleter(String serviceAutocompleter) {
-		this.serviceAutocompleter = serviceAutocompleter;
-	}
-
-	public String getServiceSelectedText() {
-		return serviceSelectedText;
-	}
-
-	public void setServiceSelectedText(String serviceSelectedText) {
-		this.serviceSelectedText = serviceSelectedText;
-	}
-
-	public String getServiceReferenceprice() {
-		return serviceReferenceprice;
-	}
-
-	public void setServiceReferenceprice(String serviceReferenceprice) {
-		this.serviceReferenceprice = serviceReferenceprice;
-	}
-
 	public void addService() {
 		// TODO validaciones
-		if (this.isServiceSelected()) {
-			// serviceo elegido de la rd
-			SellBean servicebean = new SellBean();
-			servicebean.setType(SellType.SERVICE);
-			servicebean.setProductId(Integer.valueOf(this.getServiceId()));
-			servicebean.setName(this.getServiceSelectedText());
-			servicebean.setCategoryText(this.getServiceCategorySelected());
-			servicebean.setReferencePrice(this.getServiceReferenceprice());
-			this.getSells().add(0, servicebean);
-			cleanServiceFields();
-		} else {
-			// serviceo no rd
-			SellBean servicebean = new SellBean();
-			servicebean.setType(SellType.SERVICE);
-			servicebean.setProductId(0);
-			servicebean.setName(this.getServiceAutocompleter());
-			servicebean.setCategoryText("-");
-			servicebean.setReferencePrice(this.getServiceReferenceprice());
-			this.getSells().add(0, servicebean);
-			cleanServiceFields();
-		}
+		SellBean servicebean = new SellBean();
+		servicebean.setType(SellType.SERVICE);
+		servicebean.setCategoryId(Integer.valueOf(this.getCategoryId()));
+		servicebean.setName(this.getSellName());
+		servicebean.setDescription(this.getSellDescription());
+		servicebean.setCategoryText(this.getCategorySelected());
+		servicebean.setReferencePrice(this.getReferenceprice());
+		this.getSells().add(0, servicebean);
+		cleanSellFields();
 	}
 
 	public void takeFacebookData(JSONObject authFacebookLogin) {
@@ -909,6 +780,38 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 
 	public Profesional getLogged() {
 		return logged;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategorySelected() {
+		return categorySelected;
+	}
+
+	public void setCategorySelected(String categorySelected) {
+		this.categorySelected = categorySelected;
+	}
+
+	public String getSellName() {
+		return sellName;
+	}
+
+	public void setSellName(String sellName) {
+		this.sellName = sellName;
+	}
+
+	public String getSellDescription() {
+		return sellDescription;
+	}
+
+	public void setSellDescription(String sellDescription) {
+		this.sellDescription = sellDescription;
 	}
 
 }

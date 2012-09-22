@@ -21,9 +21,7 @@
 					<li><a href="#">Contenidos del sitio</a>
 						<ul>
 							<li><html:link action="/goToServiceCategoryABM" >Categor&iacute;as de Servicios</html:link></li>
-							<li><html:link action="/goToProfesionalServiceABM" >Servicios</html:link></li>
 							<li><html:link action="/goToProductCategoryABM" >Categor&iacute;as de Productos</html:link></li>
-							<li><html:link action="/goToProfesionalProductABM" >Productos</html:link></li>
 							<li><html:link action="/goToHighlightedCategoryABM" >Categor&iacute;as Destacadas</html:link></li>
 						</ul>
 					</li>

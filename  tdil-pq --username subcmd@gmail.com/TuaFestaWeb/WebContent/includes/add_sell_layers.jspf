@@ -1,0 +1,26 @@
+<div id="selectPCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
+	<table id="prod_cat_tbl" border="1">
+		<tr id="prod_cat_tr">
+			<td>
+				<select id="pcl-0" size="10" style="width: 120px;" level="0">
+					<% for (com.tdil.tuafesta.model.Category pc : com.tdil.tuafesta.utils.CategoryUtils.getCategories(0, SellType.PRODUCT)) { %>
+						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
+					<% } %>
+				</select>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="selectSCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
+	<table id="serv_cat_tbl" border="1">
+		<tr id="serv_cat_tr">
+			<td>
+				<select id="scl-0" size="10" style="width: 120px;" level="0">
+					<% for (com.tdil.tuafesta.model.Category pc : com.tdil.tuafesta.utils.CategoryUtils.getCategories(0, SellType.SERVICE)) { %>
+						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
+					<% } %>
+				</select>
+			</td>
+		</tr>
+	</table>
+</div>

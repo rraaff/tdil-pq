@@ -146,49 +146,16 @@ CREATE TABLE GEO4 (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE TABLE PROF_SERV_CATEGORY (
+CREATE TABLE CATEGORY (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(100) NOT NULL ,
   `description` VARCHAR(4000) NOT NULL ,
   `parent_id` INT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-  INDEX `IX_PROF_SERV_CAT_00` (`parent_id` ASC))
-ENGINE = InnoDB;
-
-CREATE TABLE PROF_SERVICE (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(100) NOT NULL ,
-  `description` VARCHAR(4000) NOT NULL ,
-  `average_price` INT NULL,
-  `approved` INT NOT NULL ,
-  `id_category` INT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-  INDEX `IX_PROF_SERV_ID_CAT_00` (`id_category` ASC))
-ENGINE = InnoDB;
-
-CREATE TABLE PROF_PROD_CATEGORY (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(100) NOT NULL ,
-  `description` VARCHAR(4000) NOT NULL ,
-  `parent_id` INT NULL,
+  `type` INT NOT NULL,
   `isother` INT NOT NULL DEFAULT 0,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
-  INDEX `IX_PROF_PROD_CAT_00` (`parent_id` ASC))
-ENGINE = InnoDB;
-
-CREATE TABLE PROF_PRODUCT (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(100) NOT NULL ,
-  `description` VARCHAR(4000) NOT NULL ,
-  `average_price` INT NULL,
-  `approved` INT NOT NULL ,
-  `id_category` INT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-  INDEX `IX_PROF_PROD_ID_CAT_00` (`id_category` ASC))
+  INDEX `IX_CATEGORY_00` (`parent_id` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE WALL (
@@ -320,16 +287,16 @@ CREATE TABLE SELL (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_profesional` INT NOT NULL,
   `type` INT NOT NULL,
-  `id_prod_serv` INT NULL,
+  `id_category` INT NULL,
   `item` VARCHAR(400) NULL,
+  `description` VARCHAR(4000) NULL,
   `referenceprice` DECIMAL(10,2),
   `approved` INT NOT NULL,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
-  INDEX `IX_SELL_00` (`id_prod_serv` ASC),
-   CONSTRAINT `FK_SELL_00`
-    FOREIGN KEY (`id_profesional` )
-    REFERENCES PROFESIONAL (`id` )
+   CONSTRAINT `FK_CATEGORY_00`
+    FOREIGN KEY (`id_category` )
+    REFERENCES CATEGORY (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -356,37 +323,6 @@ CREATE TABLE SELL_MEDIA (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
    CONSTRAINT `FK_SELL_MEDIA_00`
-    FOREIGN KEY (`id_sell` )
-    REFERENCES SELL (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE TABLE SELL_PHOTO (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_sell` INT NOT NULL,
-  `orderNumber` INT NOT NULL ,
-  `approved` INT NOT NULL,
-  `id_blob_data` INT NOT NULL,
-  `ext_blob_data` VARCHAR(10) NOT NULL ,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-   CONSTRAINT `FK_SELL_PHOTO_00`
-    FOREIGN KEY (`id_sell` )
-    REFERENCES SELL (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE TABLE SELL_VIDEO (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_sell` INT NOT NULL,
-  `orderNumber` INT NOT NULL ,
-  `approved` INT NOT NULL,
-  `url` VARCHAR(200) NOT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-   CONSTRAINT `FK_SELL_VIDEO_00`
     FOREIGN KEY (`id_sell` )
     REFERENCES SELL (`id` )
     ON DELETE NO ACTION
@@ -454,20 +390,6 @@ CREATE TABLE PROMOTION_PHOTO (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE PROMOTION_VIDEO (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_promotion` INT NOT NULL,
-  `orderNumber` INT NOT NULL ,
-  `url` VARCHAR(200) NOT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-   CONSTRAINT `FK_PROMOTION_VIDEO_00`
-    FOREIGN KEY (`id_promotion` )
-    REFERENCES PROMOTION (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 CREATE TABLE CLIENT (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `firstname` VARCHAR(100) NOT NULL ,
@@ -507,8 +429,7 @@ CREATE TABLE CACHE_REGION (
   INDEX `IX_CACHE_REGION_00` (`name` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ProductCategory',0);
-INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.ServiceCategory',0);
+INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.tuafesta.model.Category',0);
 COMMIT;
 
 CREATE TABLE HIGHLIGHTED_PROF (
@@ -538,19 +459,4 @@ CREATE TABLE HIGHLIGHTED_CAT (
   PRIMARY KEY (`id`),
   INDEX `IX_HIGHLIGHTED_CAT_00` (`id_prod_serv_cat` ASC),
   INDEX `IX_HIGHLIGHTED_CAT_01` (`fromDate` ASC, `toDate` ASC))
-ENGINE = InnoDB;
-
-CREATE TABLE PROFILE_VIDEO (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_profesional` INT NOT NULL,
-  `orderNumber` INT NOT NULL ,
-  `approved` INT NOT NULL,
-  `url` VARCHAR(200) NOT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-   CONSTRAINT `FK_PROFILE_VIDEO_00`
-    FOREIGN KEY (`id_profesional` )
-    REFERENCES PROFESIONAL (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;

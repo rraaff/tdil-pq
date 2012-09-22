@@ -9,8 +9,6 @@ import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.EditProfesionalSellForm;
-import com.tdil.tuafesta.struts.forms.EditProfesionalSellServiceForm;
-import com.tdil.tuafesta.utils.ProductCategoryUtils;
 
 public class SellBean implements Serializable {
 
@@ -25,10 +23,11 @@ public class SellBean implements Serializable {
 	
 	private int type;
 	private int id;
-	private int productId;
+	private int categoryId;
 	private String profesionalBusinessname;
 	private String categoryText;
 	private String name;
+	private String description;
 	private String referencePrice;
 	
 	private boolean dataLoaded;
@@ -51,7 +50,7 @@ public class SellBean implements Serializable {
 	
 	public SellBean(Sell sell) {
 		this.setId(sell.getId());
-		this.setProductId(sell.getIdProdServ());
+		this.setCategoryId(sell.getIdCategory());
 		this.setType(sell.getType());
 		this.setName(sell.getItem());
 		this.setReferencePrice(sell.getReferenceprice().toString());
@@ -59,7 +58,7 @@ public class SellBean implements Serializable {
 
 	public SellBean(SellValueObject sell) throws SQLException {
 		this.setId(sell.getId());
-		this.setProductId(sell.getIdProdServ());
+		this.setCategoryId(sell.getIdCategory());
 		this.setType(sell.getType());
 		this.setName(sell.getName());
 		this.setProfesionalBusinessname(sell.getProfesionalbusinessname());
@@ -89,11 +88,11 @@ public class SellBean implements Serializable {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public int getProductId() {
-		return productId;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setProductId(int id) {
-		this.productId = id;
+	public void setCategoryId(int id) {
+		this.categoryId = id;
 	}
 	public String getCategoryText() {
 		return categoryText;
@@ -225,6 +224,14 @@ public class SellBean implements Serializable {
 
 	public void setProfesionalBusinessname(String profesionalBusinessname) {
 		this.profesionalBusinessname = profesionalBusinessname;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

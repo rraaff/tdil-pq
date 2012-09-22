@@ -33,21 +33,16 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO3_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/GEO4_SqlMap.xml"/>
 	
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_SERV_CATEGORY_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_SERVICE_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_PROD_CATEGORY_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROF_PRODUCT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/CATEGORY_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFESIONAL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_WRITTING_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFESIONAL_CHANGE_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFILE_PICTURE_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFILE_VIDEO_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_PHOTO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_VIDEO_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SERVICE_AREA_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_MEDIA_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROMOTION_PHOTO_SqlMap.xml"/>
@@ -59,6 +54,5 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/HIGHLIGHTED_PROF_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/HIGHLIGHTED_CAT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/STATISTIC_REPORT_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_MEDIA_SqlMap.xml"/>
 	
 </sqlMapConfig>

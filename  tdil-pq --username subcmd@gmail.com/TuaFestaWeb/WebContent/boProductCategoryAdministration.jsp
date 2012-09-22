@@ -1,7 +1,8 @@
-<%@page import="com.tdil.tuafesta.utils.ProductCategoryUtils"%>
-<%@page import="com.tdil.tuafesta.utils.ProductCategoryTreeNode"%>
+<%@page import="com.tdil.tuafesta.utils.TreeCategoryUtils"%>
+<%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
+<%@page import="com.tdil.tuafesta.utils.CategoryTreeNode"%>
 <%@page import="java.util.List"%>
-<%@page import="com.tdil.tuafesta.struts.forms.ProductCategoryForm"%>
+<%@page import="com.tdil.tuafesta.struts.forms.CategoryForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@ page info="productCategoryAdministration"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
@@ -27,26 +28,26 @@
 				</div>
 				<div class="renglon width950">
 					<div class="label width100">Nombre</div>
-					<div class="label width300"><html:text name="ProductCategoryForm" property="name" styleClass="width300"/></div>
+					<div class="label width300"><html:text name="CategoryForm" property="name" styleClass="width300"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProductCategory.name.err")%></div>
 					<div class="label width80">Descripci&oacute;n</div>
-					<div class="label width350"><html:text name="ProductCategoryForm" property="description" styleClass="width350"/></div>
+					<div class="label width350"><html:text name="CategoryForm" property="description" styleClass="width350"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProductCategory.description.err")%></div>
 				</div>
 				<div class="renglon width950">
 					<div class="label width100">Categor&iacute;a padre</div>
 					<div class="label width800">
 						<%
-							ProductCategoryForm form = (ProductCategoryForm) session.getAttribute("ProductCategoryForm");
-								List<ProductCategoryTreeNode> listtemp = ProductCategoryForm.getProductCategoryTree();
-								List<ProductCategoryTreeNode> flatten = ProductCategoryTreeNode.tree2list(listtemp);
+							CategoryForm form = (CategoryForm) session.getAttribute("CategoryForm");
+								List<CategoryTreeNode> listtemp = form.getCategoryTree();
+								List<CategoryTreeNode> flatten = CategoryTreeNode.tree2list(listtemp);
 						%>
-						<html:select name="ProductCategoryForm" property="parentId" styleClass="textfield_effect width800">
+						<html:select name="CategoryForm" property="parentId" styleClass="textfield_effect width800">
 							<option <%=form.getParentId() == 0 ? "selected" : ""%> value="0"></option>
 							<%
-								for (ProductCategoryTreeNode node : flatten) {
+								for (CategoryTreeNode node : flatten) {
 							%>
-								<option <%=node.getProductCategory().getId().equals(form.getParentId()) ? "selected" : ""%> value="<%=node.getProductCategory().getId()%>"><%=ProductCategoryUtils.getPrefixFor(node)%><%=node.getProductCategory().getName()%></option>
+								<option <%=node.getCategory().getId().equals(form.getParentId()) ? "selected" : ""%> value="<%=node.getCategory().getId()%>"><%=TreeCategoryUtils.getPrefixFor(node)%><%=node.getCategory().getName()%></option>
 							<%
 								}
 							%>
@@ -55,12 +56,12 @@
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProductCategory.parentId.err")%></div>
 				</div>
 				<div class="renglon width950 height50" align="center">
-					<logic:equal name="ProductCategoryForm" property="objectId" value="0">
+					<logic:equal name="CategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
 							<bean:message key="save" />
 						</html:submit>
 					</logic:equal>
-					<logic:notEqual name="ProductCategoryForm" property="objectId" value="0">
+					<logic:notEqual name="CategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
 							<bean:message key="modify" />
 						</html:submit>
@@ -76,19 +77,19 @@
 							<td class="headerTablas" width="140">Nombre</td>
 							<td class="headerTablas" width="50">Acciones</td>
 						</tr>
-						<logic:iterate name="ProductCategoryForm" property="allProductCategory"
+						<logic:iterate name="CategoryForm" property="allCategory"
 							id="iterSection" indexId="iterIndex">
 							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
 								<td
-									<%=((ProductCategoryTreeNode) iterSection).getProductCategory().getDeleted() == 1 ? "class=\"notActive\"" : ""%>
-									align="left"><%=ProductCategoryUtils.getPrefixFor((ProductCategoryTreeNode) iterSection)%><bean:write name="iterSection" property="name" />
+									<%=((CategoryTreeNode) iterSection).getCategory().getDeleted() == 1 ? "class=\"notActive\"" : ""%>
+									align="left"><%=TreeCategoryUtils.getPrefixFor((CategoryTreeNode) iterSection)%><bean:write name="iterSection" property="name" />
 								</td>
 								<td>
 									<html:link action="editProductCategory.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 									<html:link action="/toggleDeletedProductCategory" paramName="iterSection"
 										paramProperty="id" paramId="id">
 										<%
-											if (((ProductCategoryTreeNode) iterSection).getProductCategory().getDeleted() == 1) {
+											if (((CategoryTreeNode) iterSection).getCategory().getDeleted() == 1) {
 										%>
 											<img src="boImages/activar.png" alt="Activar">
 										<% } else { %>

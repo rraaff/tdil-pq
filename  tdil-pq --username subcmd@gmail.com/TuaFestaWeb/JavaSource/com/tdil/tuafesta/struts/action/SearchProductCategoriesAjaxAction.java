@@ -15,7 +15,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.struts.actions.AjaxAction;
-import com.tdil.tuafesta.model.ProductCategory;
+import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.utils.CategoryUtils;
 
 public class SearchProductCategoriesAjaxAction extends AjaxAction {
@@ -27,7 +28,7 @@ public class SearchProductCategoriesAjaxAction extends AjaxAction {
 		int parentId = Integer.parseInt(parent);
 		@SuppressWarnings("unchecked")
 		List<Map<String, String>> result = new ArrayList<Map<String,String>>();
-		for (ProductCategory pc : CategoryUtils.getProductCategories(parentId)) {
+		for (Category pc : CategoryUtils.getCategories(parentId, SellType.PRODUCT)) {
 			Map<String, String> row = new HashMap<String, String>();
 			row.put("id", String.valueOf(pc.getId()));
 			row.put("name", pc.getName());

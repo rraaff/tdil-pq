@@ -8,16 +8,16 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
-import com.tdil.tuafesta.dao.ProductCategoryDAO;
+import com.tdil.tuafesta.dao.CategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.ProductCategory;
-import com.tdil.tuafesta.model.ProductCategoryExample;
+import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.CategoryExample;
 import com.tdil.tuafesta.utils.CacheRegionUtils;
-import com.tdil.tuafesta.utils.ProductCategoryTreeNode;
-import com.tdil.tuafesta.utils.ProductCategoryUtils;
+import com.tdil.tuafesta.utils.CategoryTreeNode;
+import com.tdil.tuafesta.utils.TreeCategoryUtils;
 import com.tdil.validations.FieldValidation;
 
-public class ProductCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
+public class CategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -26,18 +26,20 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 	
 	private int id;
 	
-	private List<ProductCategory> parentCategories = new ArrayList<ProductCategory>();
+	private int type;
+	
+	private List<Category> parentCategories = new ArrayList<Category>();
 	
 	private int objectId;
 	private String name;
 	private String description;
 	private int parentId;
-	private List<ProductCategoryTreeNode> allProductCategory;
+	private List<CategoryTreeNode> allCategory;
 	
-	private static String name_key = "ProductCategory.name";
-	private static String description_key = "ProductCategory.description";
+	private static String name_key = "Category.name";
+	private static String description_key = "Category.description";
 	
-	private static String parentId_key = "ProductCategory.parentId";
+	private static String parentId_key = "Category.parentId";
 	private static String PARENT_INVALID = "TREE_IS_GRAPH";
 	
 	@Override
@@ -65,20 +67,20 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		ProductCategory professionalCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(this.getObjectId());
+		Category professionalCategory = DAOManager.getCategoryDAO().selectCategoryByPrimaryKey(this.getObjectId());
 		professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
-		DAOManager.getProductCategoryDAO().updateProductCategoryByPrimaryKeySelective(professionalCategory);
+		DAOManager.getCategoryDAO().updateCategoryByPrimaryKeySelective(professionalCategory);
 	}
 	
 	private void reloadList() throws SQLException {
-		List<ProductCategoryTreeNode> list = ProductCategoryUtils.getTreeInTransaction(false);
-		List<ProductCategoryTreeNode> flatten = ProductCategoryTreeNode.tree2list(list);
-		setAllProductCategory(flatten);
+		List<CategoryTreeNode> list = TreeCategoryUtils.getTreeInTransaction(false, this.getType());
+		List<CategoryTreeNode> flatten = CategoryTreeNode.tree2list(list);
+		setAllCategory(flatten);
 	}
 	
 	@Override
 	public void initWith(int id) throws SQLException {
-		ProductCategory systemProperty = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(id);
+		Category systemProperty = DAOManager.getCategoryDAO().selectCategoryByPrimaryKey(id);
 		if (systemProperty != null) {
 			this.objectId = id;
 			this.name = systemProperty.getName();
@@ -96,52 +98,54 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
 		if (this.getObjectId() != 0) {
-			ProductCategoryDAO profesionalCategoryDAO = DAOManager.getProductCategoryDAO();
-			ProductCategory serviceCategory = profesionalCategoryDAO.selectProductCategoryByPrimaryKey(this.getParentId());
+			CategoryDAO profesionalCategoryDAO = DAOManager.getCategoryDAO();
+			Category serviceCategory = profesionalCategoryDAO.selectCategoryByPrimaryKey(this.getParentId());
 			while (serviceCategory != null) {
 				if (serviceCategory.getId().equals(this.getObjectId())) {
 					// error, arbol es un grafo
 					validationError.setFieldError(parentId_key, PARENT_INVALID);
 					return;
 				}
-				serviceCategory = profesionalCategoryDAO.selectProductCategoryByPrimaryKey(serviceCategory.getParentId());
+				serviceCategory = profesionalCategoryDAO.selectCategoryByPrimaryKey(serviceCategory.getParentId());
 			}
 		}
 	}
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		ProductCategoryDAO profesionalCategoryDAO = DAOManager.getProductCategoryDAO();
+		CategoryDAO profesionalCategoryDAO = DAOManager.getCategoryDAO();
 		if (this.getObjectId() == 0) {
-			ProductCategory profesionalCategory = new ProductCategory();
+			Category profesionalCategory = new Category();
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
 			profesionalCategory.setIsother(0);
 			profesionalCategory.setDeleted(0);
-			profesionalCategoryDAO.insertProductCategory(profesionalCategory);
+			profesionalCategory.setType(this.getType());
+			profesionalCategoryDAO.insertCategory(profesionalCategory);
 		} else {
-			ProductCategory profesionalCategory = profesionalCategoryDAO.selectProductCategoryByPrimaryKey(this.getObjectId());
+			Category profesionalCategory = profesionalCategoryDAO.selectCategoryByPrimaryKey(this.getObjectId());
 			profesionalCategory.setName(this.getName());
 			profesionalCategory.setDescription(this.getDescription());
 			profesionalCategory.setParentId(this.getParentId());
-			profesionalCategoryDAO.updateProductCategoryByPrimaryKeySelective(profesionalCategory);
+			profesionalCategoryDAO.updateCategoryByPrimaryKeySelective(profesionalCategory);
 		}
 		if (this.getParentId() != 0) {
-			ProductCategoryExample otherexample = new ProductCategoryExample();
+			CategoryExample otherexample = new CategoryExample();
 			otherexample.createCriteria().andParentIdEqualTo(this.getParentId()).andIsotherEqualTo(1);
-			List<ProductCategory> pc = profesionalCategoryDAO.selectProductCategoryByExample(otherexample);
+			List<Category> pc = profesionalCategoryDAO.selectCategoryByExample(otherexample);
 			if (pc.isEmpty()) {
-				ProductCategory profesionalCategory = new ProductCategory();
+				Category profesionalCategory = new Category();
 				profesionalCategory.setName("Otros");
 				profesionalCategory.setDescription("Otros");
 				profesionalCategory.setParentId(this.getParentId());
 				profesionalCategory.setIsother(1);
 				profesionalCategory.setDeleted(0);
-				profesionalCategoryDAO.insertProductCategory(profesionalCategory);
+				profesionalCategory.setType(this.getType());
+				profesionalCategoryDAO.insertCategory(profesionalCategory);
 			}
 		}
-		CacheRegionUtils.incrementVersionInTransaction(ProductCategory.class.getName());
+		CacheRegionUtils.incrementVersionInTransaction(Category.class.getName());
 	}
 
 	public int getObjectId() {
@@ -169,12 +173,12 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 		this.description = description;
 	}
 
-	public List<ProductCategoryTreeNode> getAllProductCategory() {
-		return allProductCategory;
+	public List<CategoryTreeNode> getAllCategory() {
+		return allCategory;
 	}
 
-	public void setAllProductCategory(List<ProductCategoryTreeNode> allProductCategory) {
-		this.allProductCategory = allProductCategory;
+	public void setAllCategory(List<CategoryTreeNode> allCategory) {
+		this.allCategory = allCategory;
 	}
 
 	public String getName() {
@@ -193,16 +197,24 @@ public class ProductCategoryForm extends TransactionalValidationForm implements 
 		this.parentId = parentId;
 	}
 
-	public List<ProductCategory> getParentCategories() {
+	public List<Category> getParentCategories() {
 		return parentCategories;
 	}
 
-	public void setParentCategories(List<ProductCategory> parentCategories) {
+	public void setParentCategories(List<Category> parentCategories) {
 		this.parentCategories = parentCategories;
 	}
 
 
-	public static List<ProductCategoryTreeNode> getProductCategoryTree() {
-		return ProductCategoryUtils.getTree(false);
+	public List<CategoryTreeNode> getCategoryTree() {
+		return TreeCategoryUtils.getTree(false, this.getType());
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 }

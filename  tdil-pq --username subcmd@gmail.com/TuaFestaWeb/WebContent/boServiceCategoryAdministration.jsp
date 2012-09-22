@@ -1,7 +1,9 @@
-<%@page import="com.tdil.tuafesta.utils.ServiceCategoryUtils"%>
-<%@page import="com.tdil.tuafesta.utils.ServiceCategoryTreeNode"%>
+<%@page import="com.tdil.tuafesta.utils.TreeCategoryUtils"%>
+<%@page import="com.tdil.tuafesta.model.SellType"%>
+<%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
+<%@page import="com.tdil.tuafesta.utils.CategoryTreeNode"%>
 <%@page import="java.util.List"%>
-<%@page import="com.tdil.tuafesta.struts.forms.ServiceCategoryForm"%>
+<%@page import="com.tdil.tuafesta.struts.forms.CategoryForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@ page info="serviceCategoryAdministration"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
@@ -27,26 +29,26 @@
 				</div>
 				<div class="renglon width950">
 					<div class="label width100">Nombre</div>
-					<div class="label width300"><html:text name="ServiceCategoryForm" property="name" styleClass="width300"/></div>
+					<div class="label width300"><html:text name="CategoryForm" property="name" styleClass="width300"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ServiceCategory.name.err")%></div>
 					<div class="label width80">Descripci&oacute;n</div>
-					<div class="label width350"><html:text name="ServiceCategoryForm" property="description" styleClass="width350"/></div>
+					<div class="label width350"><html:text name="CategoryForm" property="description" styleClass="width350"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ServiceCategory.description.err")%></div>
 				</div>
 				<div class="renglon width950">
 					<div class="label width100">Categor&iacute;a padre</div>
 					<div class="label width800">
 						<%
-							ServiceCategoryForm form = (ServiceCategoryForm) session.getAttribute("ServiceCategoryForm");
-								List<ServiceCategoryTreeNode> listtemp = ServiceCategoryForm.getServiceCategoryTree();
-								List<ServiceCategoryTreeNode> flatten = ServiceCategoryTreeNode.tree2list(listtemp);
+							CategoryForm form = (CategoryForm) session.getAttribute("CategoryForm");
+								List<CategoryTreeNode> listtemp = form.getCategoryTree();
+								List<CategoryTreeNode> flatten = CategoryTreeNode.tree2list(listtemp);
 						%>
-						<html:select name="ServiceCategoryForm" property="parentId" styleClass="textfield_effect width800">
+						<html:select name="CategoryForm" property="parentId" styleClass="textfield_effect width800">
 							<option <%=form.getParentId() == 0 ? "selected" : ""%> value="0"></option>
 							<%
-								for (ServiceCategoryTreeNode node : flatten) {
+								for (CategoryTreeNode node : flatten) {
 							%>
-								<option <%=node.getServiceCategory().getId().equals(form.getParentId()) ? "selected" : ""%> value="<%=node.getServiceCategory().getId()%>"><%=ServiceCategoryUtils.getPrefixFor(node)%><%=node.getServiceCategory().getName()%></option>
+								<option <%=node.getCategory().getId().equals(form.getParentId()) ? "selected" : ""%> value="<%=node.getCategory().getId()%>"><%=TreeCategoryUtils.getPrefixFor(node)%><%=node.getCategory().getName()%></option>
 							<%
 								}
 							%>
@@ -55,12 +57,12 @@
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ServiceCategory.parentId.err")%></div>
 				</div>
 				<div class="renglon height50" align="center">
-					<logic:equal name="ServiceCategoryForm" property="objectId" value="0">
+					<logic:equal name="CategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
 							<bean:message key="save" />
 						</html:submit>
 					</logic:equal>
-					<logic:notEqual name="ServiceCategoryForm" property="objectId" value="0">
+					<logic:notEqual name="CategoryForm" property="objectId" value="0">
 						<html:submit property="operation">
 							<bean:message key="modify" />
 						</html:submit>
@@ -76,19 +78,19 @@
 							<td class="headerTablas" width="140">Nombre</td>
 							<td class="headerTablas" width="50">Acciones</td>
 						</tr>
-						<logic:iterate name="ServiceCategoryForm" property="allServiceCategory"
+						<logic:iterate name="CategoryForm" property="allCategory"
 							id="iterSection" indexId="iterIndex">
 							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
 								<td
-									<%=((ServiceCategoryTreeNode) iterSection).getServiceCategory().getDeleted() == 1 ? "class=\"notActive\"" : ""%>
-									align="left"><%=ServiceCategoryUtils.getPrefixFor((ServiceCategoryTreeNode) iterSection)%><bean:write name="iterSection" property="name" />
+									<%=((CategoryTreeNode) iterSection).getCategory().getDeleted() == 1 ? "class=\"notActive\"" : ""%>
+									align="left"><%=TreeCategoryUtils.getPrefixFor((CategoryTreeNode) iterSection)%><bean:write name="iterSection" property="name" />
 								</td>
 								<td>
 									<html:link action="editServiceCategory.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 									<html:link action="/toggleDeletedServiceCategory" paramName="iterSection"
 										paramProperty="id" paramId="id">
 										<%
-											if (((ServiceCategoryTreeNode) iterSection).getServiceCategory().getDeleted() == 1) {
+											if (((CategoryTreeNode) iterSection).getCategory().getDeleted() == 1) {
 										%>
 											<img src="boImages/activar.png" alt="Activar">
 										<% } else { %>
