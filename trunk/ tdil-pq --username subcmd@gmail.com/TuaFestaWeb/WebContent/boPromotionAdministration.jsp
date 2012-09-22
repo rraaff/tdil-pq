@@ -65,6 +65,11 @@ $(document).ready(
 			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.description_key + ".err")%></div>
 		</div>
 		<div class="renglon width860">
+			<div class="label width80">Precio</div>
+			<div class="label width200"><html:text name="PromotionForm" property="price"/></div>
+			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.price_key + ".err")%></div>
+		</div>
+		<div class="renglon width860">
 			<div class="label width50">Inicio</div>
 			<div class="label width200"><html:text name="PromotionForm" property="startdate"/></div>
 			<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.startdate_key + ".err")%></div>
