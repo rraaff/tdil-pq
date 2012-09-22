@@ -119,14 +119,14 @@
 				<% /*Generacion de imagenes*/
 				List<PromotionValueObject> promos = PromotionUtils.getActivePromotions(); 
 				for (PromotionValueObject pvo : promos) { %>
-			        <a href=""><img src="./downloadThumb.st?width=428&height=385&id=<%=pvo.getFirstImageid()%>&type=PUBLIC&ext=<%=pvo.getFirstImageExt()%>" alt="" title="#htmlcaption<%=pvo.getId() %>" width="428" height="385" /></a>
+			        <img src="./downloadThumb.st?width=428&height=385&id=<%=pvo.getFirstImageid()%>&type=PUBLIC&ext=<%=pvo.getFirstImageExt()%>" alt="" title="#htmlcaption<%=pvo.getId() %>" width="428" height="385" />
 				<% } %>
 			    </div>
 				<% /*Generacion de captions*/
 				for (PromotionValueObject pvo : promos) { %>
 				    <div id="htmlcaption<%=pvo.getId() %>" class="nivo-html-caption">
-			    	<h1><a href=""><%=pvo.getName() %></a></h1>
-					<div class="bajada"><a href=""><%=pvo.getDescription() %></a></div>
+			    	<h1><a href="./detallePromocion.jsp?id=<%=pvo.getId() %>"><%=pvo.getName() %></a></h1>
+					<div class="bajada"><a href="./detallePromocion.jsp?id=<%=pvo.getId() %>"><%=pvo.getDescription() %></a></div>
 					<div class="date">$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDate(pvo.getStartdate()) %> hasta <%=DateUtils.formatDate(pvo.getEnddate()) %></div>
 			 	</div>
 			 	<% } %>
@@ -261,14 +261,14 @@
 <!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 <script type="text/javascript">
-	  $(document).ready(function(){
-	   $('#slider').nivoSlider({
-			effect: 'fold',  // Specify sets like: 'fold,fade,sliceDown');
-			pauseTime: 10000
-		});
-		
+  $(document).ready(function(){
+   $('#slider').nivoSlider({
+		effect: 'fold',  // Specify sets like: 'fold,fade,sliceDown');
+		pauseTime: 10000
+	});
 	
-	  });
-    </script>
+
+  });
+   </script>
 </body>
 </html>
