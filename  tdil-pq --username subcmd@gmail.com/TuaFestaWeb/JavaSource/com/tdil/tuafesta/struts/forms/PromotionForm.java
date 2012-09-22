@@ -1,5 +1,6 @@
 package com.tdil.tuafesta.struts.forms;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.StringUtils;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -52,6 +54,8 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	
 	private String name;
 	private String description;
+	private String price;
+	
 	private List<BlobBean> photos = new ArrayList<BlobBean>();
 	
 	private List<SellBean> sells = new ArrayList<SellBean>();
@@ -65,6 +69,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	public static String name_key = "Promotion.name";
 	public static String description_key = "Promotion.description";
 	public static String photo_key = "Promotion.photo";
+	public static String price_key = "Promotion.price";
 	
 	private static final int MAX_PHOTO_SIZE = 1000000;
 	
@@ -73,6 +78,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		this.objectId = 0;
 		this.name = null;
 		this.description = null;
+		this.price = null;
 		this.startdate = null;
 		this.enddate = null;
 		this.sells = new ArrayList<SellBean>();
@@ -140,6 +146,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 			this.description= promotion.getDescription();
 			setStartdate(DateUtils.formatDate(promotion.getStartdate()));
 			setEnddate(DateUtils.formatDate(promotion.getEnddate()));
+			this.setPrice(promotion.getPrice().toString());
 			PromotionPhotoDAO photoDAO = DAOManager.getPromotionPhotoDAO();
 			PromotionPhotoExample promotionPhotoExample = new PromotionPhotoExample();
 			promotionPhotoExample.createCriteria().andIdPromotionEqualTo(id);
@@ -167,6 +174,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	public void basicValidate(ValidationError validationError) {
 		FieldValidation.validateText(this.getName(), name_key, 100, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
+		FieldValidation.validateBigDecimal(this.getPrice(), price_key, 1, Integer.MAX_VALUE, validationError);
 		Date starDate = com.tdil.utils.DateUtils.parseDate(this.getStartdate());
 		if (starDate == null) {
 			validationError.setFieldError(startdate_key, ValidationErrors.CANNOT_BE_EMPTY);
@@ -259,6 +267,8 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		promotion.setDescription(this.getDescription());
 		promotion.setStartdate(DateUtils.parseDate(this.getStartdate()));
 		promotion.setEnddate(DateUtils.parseDate(this.getEnddate()));
+		BigDecimal refPrice = new BigDecimal(this.getPrice());
+		promotion.setPrice(refPrice);
 	}
 	
 	public void moveImageUp(int index) {
@@ -363,6 +373,14 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 
 	public void setPhotos(List<BlobBean> photos) {
 		this.photos = photos;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
 
 }

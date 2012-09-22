@@ -415,6 +415,7 @@ CREATE TABLE PROMOTION (
   `endDate` DATETIME NOT NULL ,
   `name` VARCHAR(100) NOT NULL ,
   `description` VARCHAR(4000) NOT NULL ,
+  `price` DECIMAL(10,2),
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

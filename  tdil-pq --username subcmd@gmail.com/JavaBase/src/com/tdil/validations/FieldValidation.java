@@ -5,6 +5,7 @@ import gnu.regexp.UncheckedRE;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -68,6 +69,22 @@ public class FieldValidation {
 					validation.setFieldError(field, ValidationErrors.OVER_MAX);
 				}
 				return String.valueOf(resultTmp);
+			} catch (NumberFormatException e) {
+				validation.setFieldError(field, ValidationErrors.INVALID_NUMBER);
+			}
+		}
+		return result;
+	}
+	
+	public static String validateBigDecimal(String text, String field, int min, int max, ValidationError validation) {
+		String result = text;
+		if (StringUtils.isEmpty(text)) {
+			validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
+		} else {
+			String idToValidate = text.trim();
+			try {
+				BigDecimal bd = new BigDecimal(idToValidate); // TODO validar
+				return idToValidate;
 			} catch (NumberFormatException e) {
 				validation.setFieldError(field, ValidationErrors.INVALID_NUMBER);
 			}

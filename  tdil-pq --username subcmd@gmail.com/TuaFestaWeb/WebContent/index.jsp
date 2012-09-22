@@ -126,8 +126,8 @@
 				for (PromotionValueObject pvo : promos) { %>
 				    <div id="htmlcaption<%=pvo.getId() %>" class="nivo-html-caption">
 			    	<h1><a href=""><%=pvo.getName() %></a></h1>
-					<div class="bajada"><a href="">Detalles</a></div>
-					<div class="date"><%=DateUtils.formatDate(pvo.getStartdate()) %> - <%=DateUtils.formatDate(pvo.getEnddate()) %></div>
+					<div class="bajada"><a href=""><%=pvo.getDescription() %></a></div>
+					<div class="date">$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDate(pvo.getStartdate()) %> hasta <%=DateUtils.formatDate(pvo.getEnddate()) %></div>
 			 	</div>
 			 	<% } %>
 			</div>
