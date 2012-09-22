@@ -235,4 +235,12 @@ public class SellDAOImpl implements SellDAO {
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.searchServicesSellsBy", params);
 		return list;
 	}
+	
+	@Override
+	public List<SellValueObject> selectSellsForPromotion(int promotionId) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("promotionId", promotionId);
+		List<SellValueObject> record = sqlMapClient.queryForList("SELL.selectSellsForPromotion", params);
+		return record;
+	}
 }

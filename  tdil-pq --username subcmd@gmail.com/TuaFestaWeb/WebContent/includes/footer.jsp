@@ -3,7 +3,7 @@
 		<img id="logo" name="logo" src="images/skin_basic/logos/footer_grayscale.gif" />
 		<div id="linkAndCopy">
 			<a href="index.jsp">Inicio</a>
-			<a href="#">Promociones</a>
+			<a href="./listadoPromociones.jsp">Promociones</a>
 			<a href="registroPreRegistro.jsp">Registraci&oacute;n</a>
 			<a href="quienes_somos.jsp">Quienes somos</a>
 			<a href="contacto.jsp" title="Envianos tus consultas o sugerencias">Contacto</a>

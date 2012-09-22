@@ -295,4 +295,5 @@
     and CURDATE() &gt;= promo.startDate
     and promo.endDate &gt;= CURDATE()
   </select>
+  
 </sqlMap>

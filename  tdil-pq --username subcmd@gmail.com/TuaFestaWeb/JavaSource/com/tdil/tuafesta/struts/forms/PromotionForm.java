@@ -83,6 +83,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		this.enddate = null;
 		this.sells = new ArrayList<SellBean>();
 		this.photos = new ArrayList<BlobBean>();
+		this.searchForm = new SearchSellForm();
 	}
 	
 	public void handleAjaxFileUpload(Map<String, FileItem> fileItems, ValidationError error,

@@ -631,4 +631,51 @@ union all
     </isNotNull>
   </select>
   
+  
+    <select id="selectSellsForPromotion" parameterClass="java.util.Map" resultMap="SellValueObject">
+     select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prod.name as name,
+    	prod.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name,
+    	prod.id_category as idCategory
+    from SELL sell, PROF_PRODUCT prod, PROFESIONAL prof, PROMOTION_SELL ps
+    where sell.id_prod_serv = prod.id
+    and sell.type = 1
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prod.approved = 1
+    and prod.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    and sell.id = ps.id_sell
+    and ps.id_promotion = #promotionId:INTEGER#
+    union all
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	serv.name as name,
+    	serv.description as description,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name,
+    	serv.id_category as idCategory
+    from SELL sell, PROF_SERVICE serv, PROFESIONAL prof, PROMOTION_SELL ps
+    where sell.id_prod_serv = serv.id
+    and sell.type = 2
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and serv.approved = 1
+    and serv.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    and sell.id = ps.id_sell
+    and ps.id_promotion = #promotionId:INTEGER#
+  </select>
+  
 </sqlMap>

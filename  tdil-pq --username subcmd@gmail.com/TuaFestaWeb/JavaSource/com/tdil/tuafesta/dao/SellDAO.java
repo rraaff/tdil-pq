@@ -93,4 +93,6 @@ public interface SellDAO {
 	public List<SellValueObject> searchProductsSellsBy(String name, String profesionalBusinessname) throws SQLException;
 
 	public List<SellValueObject> searchServicesSellsBy(String name, String profesionalBusinessname) throws SQLException;
+
+	List<SellValueObject> selectSellsForPromotion(int promotionId) throws SQLException;
 }
