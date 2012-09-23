@@ -330,7 +330,10 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		for (SellBean productBean : getSells()) {
 			Sell sell = new Sell();
 			sell.setIdProfesional(id);
+			sell.setIdCategory(productBean.getCategoryId());
 			sell.setType(productBean.getType());
+			sell.setName(productBean.getName());
+			sell.setDescription(productBean.getDescription());
 //			sell.setIdProdServ(productBean.getProductId());
 //			if (sell.getIdProdServ() == 0) {
 //				sell.setItem(productBean.getName());
