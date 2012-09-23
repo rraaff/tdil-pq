@@ -230,10 +230,10 @@
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/registroProfesional.jsp"/>
   </action>
-  <action name="ProfesionalForm" path="/addProduct" scope="session" type="com.tdil.tuafesta.struts.action.AddProductAction">
+  <action name="ProfesionalForm" path="/registroProfesionalAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
-  <action name="ProfesionalForm" path="/removeSell" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+  <action name="ProfesionalForm" path="/registroProfesionalRemoveSell" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
   <action name="ProfesionalForm" path="/addService" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAction">

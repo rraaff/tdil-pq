@@ -30,7 +30,7 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
-<script>
+<script> 
 $(document).ready(
 	function(){
 
@@ -49,6 +49,7 @@ $(document).ready(
 <div id="addSellLayer" style="display: none;">
 <span id="categoryPath"></span><br/>
 <input type="text" id="categoryId" name="categoryId" value=""/><br/>
+<input type="text" id="categorySelected" name="categorySelected" value=""/><br/>
 <input type="text" id="name" name="name" value=""/><br/>
 <a href="#" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
 </div>

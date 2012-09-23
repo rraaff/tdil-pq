@@ -10,13 +10,13 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.struts.actions.RefreshAction;
 import com.tdil.tuafesta.struts.forms.ProfesionalSellForm;
 
-public class AddProductAction extends RefreshAction {
+public class AddSellAction extends RefreshAction {
 
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		ProfesionalSellForm profesionalForm = (ProfesionalSellForm)form;
-		profesionalForm.addProduct();
+		profesionalForm.addSell();
 		return mapping.findForward("continue");
 	}
 }

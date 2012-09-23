@@ -62,6 +62,7 @@ public class LoginProfesionalFacebookAction extends Action implements Transactio
                 }
                 if (accessToken != null && expires != null) {
                 	ProfesionalForm clientForm = (ProfesionalForm)form;
+                	clientForm.reset();
                 	clientForm.takeFacebookData(UserService.authFacebookLogin(accessToken, expires));
                 	try {
             			User user = (User) TransactionProvider.executeInTransaction(this, clientForm);
