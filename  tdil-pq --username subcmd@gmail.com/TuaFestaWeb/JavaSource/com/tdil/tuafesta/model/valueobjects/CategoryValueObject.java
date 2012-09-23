@@ -2,8 +2,8 @@ package com.tdil.tuafesta.model.valueobjects;
 
 public class CategoryValueObject implements Comparable<CategoryValueObject>{
 
-	public static int PRODUCT = 0;
-	public static int SERVICE = 1;
+	public static int PRODUCT = 1;
+	public static int SERVICE = 2;
 	
 	private int id;
 	private String name;

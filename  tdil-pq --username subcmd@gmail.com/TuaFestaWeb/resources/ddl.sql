@@ -288,7 +288,7 @@ CREATE TABLE SELL (
   `id_profesional` INT NOT NULL,
   `type` INT NOT NULL,
   `id_category` INT NULL,
-  `item` VARCHAR(400) NULL,
+  `name` VARCHAR(400) NULL,
   `description` VARCHAR(4000) NULL,
   `referenceprice` DECIMAL(10,2),
   `approved` INT NOT NULL,

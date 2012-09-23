@@ -18,9 +18,6 @@ public class SellValueObject extends Sell {
 	 */
 	private static final long serialVersionUID = -7335582850975800212L;
 	
-	private String name;
-	private String description;
-	
 	private String geo2name;
 	private String geo3name;
 	private String geo4name;
@@ -52,22 +49,6 @@ public class SellValueObject extends Sell {
 		return LoggerProvider.getLogger(SellValueObject.class);
 	}
 	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getProfesionalbusinessname() {
 		return profesionalbusinessname;
 	}
