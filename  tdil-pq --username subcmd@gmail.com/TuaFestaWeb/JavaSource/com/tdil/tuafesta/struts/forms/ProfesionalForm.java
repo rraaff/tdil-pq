@@ -30,6 +30,7 @@ import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.dao.WallDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Category;
 import com.tdil.tuafesta.model.ClientExample;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
@@ -619,17 +620,29 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.referenceprice = referenceprice;
 	}
 
-	public void addProduct() {
-		// TODO validaciones
-		SellBean productbean = new SellBean();
-		productbean.setType(SellType.PRODUCT);
-		productbean.setCategoryId(Integer.valueOf(this.getCategoryId()));
-		productbean.setName(this.getSellName());
-		productbean.setDescription(this.getSellDescription());
-		productbean.setCategoryText(this.getCategorySelected());
-		productbean.setReferencePrice(this.getReferenceprice());
-		this.getSells().add(0, productbean);
-		cleanSellFields();
+	public void addSell() {
+		
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				public void executeInTransaction() throws SQLException, ValidationException {
+					Category category = DAOManager.getCategoryDAO().selectCategoryByPrimaryKey(Integer.valueOf(ProfesionalForm.this.getCategoryId()));
+					// TODO validaciones//
+					SellBean productbean = new SellBean();
+					productbean.setType(category.getType());
+					productbean.setCategoryId(Integer.valueOf(ProfesionalForm.this.getCategoryId()));
+					productbean.setName(ProfesionalForm.this.getSellName());
+					productbean.setDescription(ProfesionalForm.this.getSellDescription());
+					productbean.setCategoryText(ProfesionalForm.this.getCategorySelected());
+					productbean.setReferencePrice(ProfesionalForm.this.getReferenceprice());
+					ProfesionalForm.this.getSells().add(0, productbean);
+					cleanSellFields();
+				}
+			});
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		} 
+		
+
 	}
 
 	private void cleanSellFields() {
@@ -726,19 +739,6 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		if (indexInt < getServiceAreas().size()) {
 			this.getServiceAreas().remove(indexInt);
 		}
-	}
-
-	public void addService() {
-		// TODO validaciones
-		SellBean servicebean = new SellBean();
-		servicebean.setType(SellType.SERVICE);
-		servicebean.setCategoryId(Integer.valueOf(this.getCategoryId()));
-		servicebean.setName(this.getSellName());
-		servicebean.setDescription(this.getSellDescription());
-		servicebean.setCategoryText(this.getCategorySelected());
-		servicebean.setReferencePrice(this.getReferenceprice());
-		this.getSells().add(0, servicebean);
-		cleanSellFields();
 	}
 
 	public void takeFacebookData(JSONObject authFacebookLogin) {

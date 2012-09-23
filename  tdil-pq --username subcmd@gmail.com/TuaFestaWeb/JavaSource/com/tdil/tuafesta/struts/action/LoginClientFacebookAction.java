@@ -61,6 +61,7 @@ public class LoginClientFacebookAction extends Action implements TransactionalAc
                 }
                 if (accessToken != null && expires != null) {
                 	ClientForm clientForm = (ClientForm)form;
+                	clientForm.reset();
                 	clientForm.takeFacebookData(UserService.authFacebookLogin(accessToken, expires));
                 	try {
             			User user = (User) TransactionProvider.executeInTransaction(this, clientForm);

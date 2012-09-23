@@ -81,63 +81,13 @@ $(document).ready(
 			
 			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
-
-			$( "#addproductlink" ).click(function() {
-				$("#addproductlayer").css('display', 'block');
-				$("#addservicelayer").css('display', 'none');
-			});
-
-			$( "#addservicelink" ).click(function() {
-				$("#addproductlayer").css('display', 'none');
-				$("#addservicelayer").css('display', 'block');
-			});
-
-			function productSelected(prodLabel, prodValue, prodCat) {
-				$("input[name=productSelectedText]").attr('value', prodLabel);
-				$("input[name=productAutocompleter]").attr('value','');
-				$("input[name=productAutocompleter]").css('display', 'none');
-				$("input[name=productCategorySelected]").attr('value', prodCat);
-				$("#productSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
-				$("#productSelectedDiv").css('display', 'block');
-				$("input[name=productId]").attr('value', prodValue);
-			}
-
-			function serviceSelected(prodLabel, prodValue, prodCat) {
-				$("input[name=serviceSelectedText]").attr('value', prodLabel);
-				$("input[name=serviceAutocompleter]").attr('value','');
-				$("input[name=serviceAutocompleter]").css('display', 'none');
-				$("input[name=serviceCategorySelected]").attr('value', prodCat);
-				$("#serviceSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
-				$("#serviceSelectedDiv").css('display', 'block');
-				$("input[name=serviceId]").attr('value', prodValue);
-			}
 			
 
-			
+			<%@ include file="includes/add_sell_js.jspf"%>
 		}
 
 	
 	);
-
-function limpiarProducto() {
-	$("input[name=productAutocompleter]").attr('value','');
-	$("input[name=productAutocompleter]").css('display', 'block');
-	$("input[name=productSelectedText]").attr('value', '');
-	$("#productSelectedDiv").prop('innerHTML', '');
-	$("#productSelectedDiv").css('display', 'none');
-	$("input[name=productId]").attr('value', '');
-	$("input[name=referenceprice]").attr('value', '');
-}
-
-function limpiarServicio() {
-	$("input[name=serviceAutocompleter]").attr('value','');
-	$("input[name=serviceAutocompleter]").css('display', 'block');
-	$("input[name=serviceSelectedText]").attr('value', '');
-	$("#serviceSelectedDiv").prop('innerHTML', '');
-	$("#serviceSelectedDiv").css('display', 'none');
-	$("input[name=serviceId]").attr('value', '');
-	$("input[name=serviceReferenceprice]").attr('value', '');
-}
 
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
@@ -273,54 +223,19 @@ function limpiarServicio() {
 				<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px;">Agregue productos y servicios que desee ofrecer</h2>
 				<div class="myRow">
 					<div class="myLabel width600 comment">Agregue todos productos que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
-					<a class="nonelyLink" id="addproductlink">Agregar producto</a><a class="nonelyLink" id="addservicelink">Agregar servicio</a>
-				</div>
-				<div class="myRow" id="addproductlayer" style="display: none;">
-					<div class="myLabel width50">Producto</div>
-					<div class="ui-widget">
-						<div class="myLabel width320">
-							<html:hidden name="ProfesionalForm" property="productId"/>
-							<html:hidden name="ProfesionalForm" property="productSelectedText"/>
-							<html:hidden name="ProfesionalForm" property="productCategorySelected"/>
-						
-							<logic:equal name="ProfesionalForm" property="productSelected" value="false">
-								<html:text name="ProfesionalForm" property="productAutocompleter" styleClass="normalField width300" style="display: block;"/>
-								<div id="productSelectedDiv" style="display: none;"></div>
-							</logic:equal>
-							<logic:equal name="ProfesionalForm" property="productSelected" value="true">
-								<html:text name="ProfesionalForm" property="productAutocompleter" styleClass="normalField width300" style="display: none;"/>
-								<div id="productSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="productSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="productCategorySelected"/>)</div>
-							</logic:equal>
-						</div>
-						<div class="myLabel width80">Precio unitario</div>
-						<div class="myLabel width60"><html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField width50"/></div>
-						<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addProduct.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarProducto()">Cancelar</a></div>
-					</div>
+					<a class="nonelyLink" id="addProduct">Agregar producto</a><a class="nonelyLink" id="addService">Agregar servicio</a>
 				</div>
 				
-				<div class="myRow" id="addservicelayer" style="display: none;">
-					<div class="myLabel width600 comment" style="margin-top:15px;">Agregue todos servicios que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los servicios que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los servicios para su comodidad.</div>
-					<div class="myRow">
-						<div class="myLabel width50">Servicio</div>
-						<div class="ui-widget">
-							<div class="myLabel width320">
-								<html:hidden name="ProfesionalForm" property="serviceId"/>
-								<html:hidden name="ProfesionalForm" property="serviceSelectedText"/>
-								<html:hidden name="ProfesionalForm" property="serviceCategorySelected"/>
-								<logic:equal name="ProfesionalForm" property="serviceSelected" value="false">
-									<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: block;"/>
-									<div id="serviceSelectedDiv" style="display: none;"></div>
-								</logic:equal>
-								<logic:equal name="ProfesionalForm" property="serviceSelected" value="true">
-									<html:text name="ProfesionalForm" property="serviceAutocompleter" styleClass="normalField width300" style="display: none;"/>
-									<div id="serviceSelectedDiv" style="display: block;"><bean:write name="ProfesionalForm" filter="false" property="serviceSelectedText"/> (<bean:write name="ProfesionalForm" filter="false" property="serviceCategorySelected"/>)</div>
-								</logic:equal>
-							</div>
-							<div class="myLabel width50">Precio b&aacute;sico</div>
-							<div class="myLabel width60"><html:text name="ProfesionalForm" property="serviceReferenceprice" styleClass="normalField width50"/></div>
-							<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./addService.do';document.ProfesionalForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarServicio()">Cancelar</a></div>
-						</div>
-					</div>
+				<%@ include file="includes/add_sell_layers.jspf"%>
+				
+				<div id="addSellLayer" style="display: none;">
+					<span id="categoryPath"></span><br/>
+					<html:text name="ProfesionalForm" property="categoryId" styleClass="normalField width100"/><br/>
+					<html:text name="ProfesionalForm" property="categorySelected" styleClass="normalField width100"/><br/>
+					<html:text name="ProfesionalForm" property="sellName" styleClass="normalField width100"/><br/>
+					<html:text name="ProfesionalForm" property="sellDescription" styleClass="normalField width100"/><br/>
+					<html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField width100"/><br/>
+					<a href="javascript:document.ProfesionalForm.action='./registroProfesionalAddSell.do';document.ProfesionalForm.submit();" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
 				</div>
 				
 				<div class="myRow">
@@ -334,7 +249,7 @@ function limpiarServicio() {
 						<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width250" property="sellTypeDescription"></display:column>
 						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
 						<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
-						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./removeSell.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
+						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./registroProfesionalRemoveSell.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>

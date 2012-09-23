@@ -38,13 +38,17 @@ var prodcats = new Array();
 							continueButton.click(function() {
 								var catPath = $('#pcl-0').find("option:selected").text();
 								var i;
+								var selCatId = 0;
 								for (i = 1; i < prodcats.length; i++) {
 									if (prodcats[i] != null) {
 										catPath = catPath + " > " + $('#pcl-' + i).find("option:selected").text();
+										selCatId = $('#pcl-' + i).find("option:selected").val();
 									}
 								}
+								$( "input[name=categoryId]" ).attr('value', selCatId);
+								$( "input[name=categorySelected]" ).attr('value', catPath);
 								$( "#categoryPath" ).prop('innerHTML', catPath);
-								$( "#selectPCategoryLayer" ).fadeOut();
+								$( "#selectSCategoryLayer" ).fadeOut();
 								$( "#addSellLayer" ).fadeIn(500);
 							});
 						}
@@ -94,11 +98,15 @@ var prodcats = new Array();
 							continueButton.click(function() {
 								var catPath = $('#scl-0').find("option:selected").text();
 								var i;
+								var selCatId = 0;
 								for (i = 1; i < prodcats.length; i++) {
 									if (prodcats[i] != null) {
 										catPath = catPath + " > " + $('#scl-' + i).find("option:selected").text();
+										selCatId = $('#scl-' + i).find("option:selected").val();
 									}
 								}
+								$( "input[name=categoryId]" ).attr('value', selCatId);
+								$( "input[name=categorySelected]" ).attr('value', catPath);
 								$( "#categoryPath" ).prop('innerHTML', catPath);
 								$( "#selectSCategoryLayer" ).fadeOut();
 								$( "#addSellLayer" ).fadeIn(500);
