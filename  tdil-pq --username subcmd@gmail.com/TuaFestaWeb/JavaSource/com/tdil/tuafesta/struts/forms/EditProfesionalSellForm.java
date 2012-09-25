@@ -1,9 +1,12 @@
 package com.tdil.tuafesta.struts.forms;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,14 +17,18 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
+import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxFileUploadAction;
 import com.tdil.struts.forms.AjaxUploadHandlerForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
 import com.tdil.tuafesta.dao.BlobDataDAO;
+import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.BlobData;
+import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellExample;
 import com.tdil.tuafesta.model.SellMedia;
 import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
@@ -29,7 +36,7 @@ import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public abstract class EditProfesionalSellForm extends TransactionalValidationForm implements EditProfesionalDataForm, AjaxUploadHandlerForm {
+public class EditProfesionalSellForm extends TransactionalValidationForm implements EditProfesionalDataForm, ProfesionalSellForm, AjaxUploadHandlerForm {
 
 	/**
 	 * 
@@ -52,6 +59,14 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 	private String video4;
 	private String video5;
 	
+	private int type;
+	
+	private String categoryId;
+	private String categorySelected;
+	private String sellName;
+	private String sellDescription;
+	private String referenceprice;
+	
 	private List<SellBean> sells = new ArrayList<SellBean>();
 
 	
@@ -60,7 +75,21 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 	private static final int MAX_IMAGE_SIZE = 1000000;
 	
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(EditProfesionalSellProductForm.class);
+		return LoggerProvider.getLogger(EditProfesionalSellForm.class);
+	}
+	
+	@Override
+	public void initWith(int id) throws SQLException {
+		this.reset();
+		this.setId(id);
+		SellDAO sellDAO = DAOManager.getSellDAO();
+		// obtengo las que tienen producto
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(id).andTypeEqualTo(this.getType());
+		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
+		for (Sell sell : sells) {
+			this.getSells().add(new SellBean(sell));
+		}
 	}
 	
 	public void loadForEdit(int index) throws SQLException {
@@ -119,8 +148,83 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 		loadForEdit(edited);
 	}
 	
-	protected abstract void loadForEdit(SellBean edited);
+	protected void loadForEdit(SellBean edited) {
+		this.categoryId = String.valueOf(edited.getCategoryId());
+		this.categorySelected = edited.getCategoryText();
+		this.sellName = edited.getName();
+		this.sellDescription = edited.getDescription();
+		this.referenceprice = edited.getReferencePrice();
+	}
+	
+	public void addSell() {
+		// TODO validaciones//
+		SellBean productbean = new SellBean();
+		productbean.setType(this.getType());
+		productbean.setCategoryId(Integer.valueOf(this.getCategoryId()));
+		productbean.setName(this.getSellName());
+		productbean.setDescription(this.getSellDescription());
+		productbean.setCategoryText(this.getCategorySelected());
+		productbean.setReferencePrice(this.getReferenceprice());
+		productbean.setMedia(this);
+		this.getSells().add(0, productbean);
+		cleanSellFields();
+		clearMediaFields();
+	}
+	
+	private void cleanSellFields() {
+		this.setCategoryId(null);
+		this.setCategorySelected(null);
+		this.setSellName(null);
+		this.setSellDescription(null);
+		this.setReferenceprice(null);
+	}
 
+	@Override
+	public void save() throws SQLException, ValidationException {
+		SellDAO sellDAO = DAOManager.getSellDAO();
+		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
+		// calculo las que tenia
+		Set<Integer> retained = new HashSet<Integer>();
+		for (SellBean productBean : getSells()) {
+			retained.add(productBean.getId());
+		}
+		// borro las que ya no estan
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(this.getId()).andTypeEqualTo(this.getType());
+		List<Sell> sells = sellDAO.selectSellByExample(sellExample);
+		for (Sell s : sells) {
+			if (!retained.contains(s.getId())) {
+				deleteSellMediaFor(s.getId());
+				sellDAO.deleteSellByPrimaryKey(s.getId());
+			}
+		}
+		for (SellBean productBean : getSells()) {
+			if (productBean.getId() == 0) {
+				// inserto las nuevas
+				Sell sell = new Sell();
+				sell.setIdProfesional(this.getId());
+				sell.setType(productBean.getType());
+				sell.setIdCategory(productBean.getCategoryId());
+				sell.setApproved(1); // AUTO APP
+				sell.setName(productBean.getName());
+				sell.setDescription(productBean.getDescription());
+				// TODO ver tema de . , etc
+				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+				sell.setReferenceprice(refPrice);
+				sell.setDeleted(0);
+				int sellId = sellDAO.insertSell(sell);
+				createSellMedia(sellMediaDAO, sellId, productBean);
+			} else {
+				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
+				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+				sell.setReferenceprice(refPrice);
+				// TODO esto deberia mandarlo a pending nuevamente
+				sellDAO.updateSellByPrimaryKey(sell);
+				createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
+			}
+		}
+	}
+	
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
@@ -485,6 +589,54 @@ public abstract class EditProfesionalSellForm extends TransactionalValidationFor
 
 	public void setEdited(SellBean edited) {
 		this.edited = edited;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategorySelected() {
+		return categorySelected;
+	}
+
+	public void setCategorySelected(String categorySelected) {
+		this.categorySelected = categorySelected;
+	}
+
+	public String getSellName() {
+		return sellName;
+	}
+
+	public void setSellName(String sellName) {
+		this.sellName = sellName;
+	}
+
+	public String getSellDescription() {
+		return sellDescription;
+	}
+
+	public void setSellDescription(String sellDescription) {
+		this.sellDescription = sellDescription;
+	}
+
+	public String getReferenceprice() {
+		return referenceprice;
+	}
+
+	public void setReferenceprice(String referenceprice) {
+		this.referenceprice = referenceprice;
 	}
 
 }

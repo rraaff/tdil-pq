@@ -1,11 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
-<%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalSellProductForm"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalServiceAreaForm"%>
 <%@page import="com.tdil.tuafesta.model.PhoneType"%>
-<%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalSellProductForm"%>
+<%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
 <%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm"%>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
@@ -99,69 +98,11 @@ $(document).ready(
 		  }
 		});
 		
-		function productSelected(prodLabel, prodValue, prodCat) {
-			$("input[name=productSelectedText]").attr('value', prodLabel);
-			$("input[name=productAutocompleter]").attr('value','');
-			$("input[name=productAutocompleter]").css('display', 'none');
-			$("input[name=productCategorySelected]").attr('value', prodCat);
-			$("#productSelectedDiv").prop('innerHTML', prodLabel + ' (' + prodCat + ')');
-			$("#productSelectedDiv").css('display', 'block');
-			$("input[name=productId]").attr('value', prodValue);
-		}
-			
 
-		$( "input[name=productAutocompleter]" ).autocomplete({
-			source: function( request, response ) {
-				$.ajax({
-					url: "searchProduct.do",
-					data: {
-						name: request.term
-					},
-					dataType: "json",
-					success: function( data ) {
-						response( $.map( data, function( item ) {
-							return {
-								label: item.name,
-								value: item.id,
-								path: item.path
-							}
-						}));
-					}
-				});
-			},
-			minLength: 2,
-			select: function( event, ui ) {
-				if (ui.item) {
-					productSelected(ui.item.label, ui.item.value, ui.item.path);
-				}
-				/*log( ui.item ?
-					"Selected: " + ui.item.label :
-					"Nothing selected, input was " + this.value);*/
-			},
-			open: function() {
-				$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-			},
-			close: function() {
-				$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-			}
-		});
-	}
-);
+		<%@ include file="includes/add_sell_js.jspf"%>
+});
 
-function limpiarProducto() {
-	$("input[name=productAutocompleter]").attr('value','');
-	$("input[name=productAutocompleter]").css('display', 'block');
-	$("input[name=productSelectedText]").attr('value', '');
-	$("#productSelectedDiv").prop('innerHTML', '');
-	$("#productSelectedDiv").css('display', 'none');
-	$("input[name=productId]").attr('value', '');
-	$("input[name=referenceprice]").attr('value', '');
-	$('#image0').attr('src', 'boImages/na.gif');
-	$('#image1').attr('src', 'boImages/na.gif');
-	$('#image2').attr('src', 'boImages/na.gif');
-	$('#image3').attr('src', 'boImages/na.gif');
-	$('#image4').attr('src', 'boImages/na.gif');
-}
+
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
@@ -177,109 +118,104 @@ function limpiarProducto() {
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/saveProfesionalProducts">
-			<% EditProfesionalSellProductForm EditProfesionalSellProductForm = (EditProfesionalSellProductForm)session.getAttribute("EditProfesionalSellProductForm"); %>
+			<% EditProfesionalSellForm EditProfesionalSellForm = (EditProfesionalSellForm)session.getAttribute("EditProfesionalSellForm"); %>
 			<div class="myRow" id="addproductlayer">
 				<div class="myLabel width50">Producto</div>
-				<div class="ui-widget">
-					<div class="myLabel width320">
-						<html:hidden name="EditProfesionalSellProductForm" property="productId"/>
-						<html:hidden name="EditProfesionalSellProductForm" property="productSelectedText"/>
-						<html:hidden name="EditProfesionalSellProductForm" property="productCategorySelected"/>
-					
-						<logic:equal name="EditProfesionalSellProductForm" property="productSelected" value="false">
-							<html:text name="EditProfesionalSellProductForm" property="productAutocompleter" styleClass="normalField width300" style="display: block;"/>
-							<div id="productSelectedDiv" style="display: none;"></div>
-						</logic:equal>
-						<logic:equal name="EditProfesionalSellProductForm" property="productSelected" value="true">
-							<html:text name="EditProfesionalSellProductForm" property="productAutocompleter" styleClass="normalField width300" style="display: none;"/>
-							<div id="productSelectedDiv" style="display: block;"><bean:write name="EditProfesionalSellProductForm" filter="false" property="productSelectedText"/> (<bean:write name="EditProfesionalSellProductForm" filter="false" property="productCategorySelected"/>)</div>
-						</logic:equal>
-					</div>
-					<div class="myLabel width80">Precio unitario</div>
-					<div class="myLabel width60"><html:text name="EditProfesionalSellProductForm" property="referenceprice" styleClass="normalField width50"/></div>
-					<div class="myLabel width50"><a class="nonelyLink" href="javascript:document.EditProfesionalSellProductForm.action='./editAddProduct.do';document.EditProfesionalSellProductForm.submit();">Agregar</a><a class="nonelyLink" href="javascript:limpiarProducto()">Cancelar</a></div>
+				<a class="nonelyLink" id="addProduct">Agregar producto</a>
+				</div>
+				
+				<%@ include file="includes/add_sell_layers.jspf"%>
+				
+				<div id="addSellLayer" style="display: none;">
+					<span id="categoryPath"></span><br/>
+					<html:text name="EditProfesionalSellForm" property="categoryId" styleClass="normalField width100"/><br/>
+					<html:text name="EditProfesionalSellForm" property="categorySelected" styleClass="normalField width100"/><br/>
+					<html:text name="EditProfesionalSellForm" property="sellName" styleClass="normalField width100"/><br/>
+					<html:text name="EditProfesionalSellForm" property="sellDescription" styleClass="normalField width100"/><br/>
+					<html:text name="EditProfesionalSellForm" property="referenceprice" styleClass="normalField width100"/><br/>
+					<a href="javascript:document.EditProfesionalSellForm.action='./editProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
 				</div>
 			</div>
 			<div class="myRow">
 				<div class="label width100 height80">
-					<logic:notEqual name="EditProfesionalSellProductForm" property="imageId0" value="0">
+					<logic:notEqual name="EditProfesionalSellForm" property="imageId0" value="0">
 						<img id="image0" src="./viewProductImage.do?index=0" width="78" height="78" align="absmiddle" border="1">
 					</logic:notEqual>
 				</div>
 				<div class="label width100 height80">
-					<logic:equal name="EditProfesionalSellProductForm" property="imageId0" value="0">
+					<logic:equal name="EditProfesionalSellForm" property="imageId0" value="0">
 						<img id="image0" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload0" id="upload0"></div>
 				<a href="./deleteProductImage.do?index=1">Borrar</a>
-				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellProductForm.image_key + ".err")%></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
 				<div class="label width100 height80">
-					<logic:notEqual name="EditProfesionalSellProductForm" property="imageId1" value="0">
+					<logic:notEqual name="EditProfesionalSellForm" property="imageId1" value="0">
 						<img id="image1" src="./viewProductImage.do?index=1" width="78" height="78" align="absmiddle" border="1">
 					</logic:notEqual>
 				</div>
 				<div class="label width100 height80">
-					<logic:equal name="EditProfesionalSellProductForm" property="imageId1" value="0">
+					<logic:equal name="EditProfesionalSellForm" property="imageId1" value="0">
 						<img id="image1" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload1" id="upload1"></div>
 				<a href="./deleteProductImage.do?index=2">Borrar</a>
-				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellProductForm.image_key + ".err")%></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
 				<div class="label width100 height80">
-					<logic:notEqual name="EditProfesionalSellProductForm" property="imageId2" value="0">
+					<logic:notEqual name="EditProfesionalSellForm" property="imageId2" value="0">
 						<img id="image2" src="./viewProductImage.do?index=2" width="78" height="78" align="absmiddle" border="1">
 					</logic:notEqual>
 				</div>
 				<div class="label width100 height80">
-					<logic:equal name="EditProfesionalSellProductForm" property="imageId2" value="0">
+					<logic:equal name="EditProfesionalSellForm" property="imageId2" value="0">
 						<img id="image2" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload2" id="upload2"></div>
 				<a href="./deleteProductImage.do?index=3">Borrar</a>
-				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellProductForm.image_key + ".err")%></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
 				<div class="label width100 height80">
-					<logic:notEqual name="EditProfesionalSellProductForm" property="imageId3" value="0">
+					<logic:notEqual name="EditProfesionalSellForm" property="imageId3" value="0">
 						<img id="image3" src="./viewProductImage.do?index=3" width="78" height="78" align="absmiddle" border="1">
 					</logic:notEqual>
 				</div>
 				<div class="label width100 height80">
-					<logic:equal name="EditProfesionalSellProductForm" property="imageId3" value="0">
+					<logic:equal name="EditProfesionalSellForm" property="imageId3" value="0">
 						<img id="image3" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload3" id="upload3"></div>
 				<a href="./deleteProductImage.do?index=4">Borrar</a>
-				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellProductForm.image_key + ".err")%></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 			</div>
 			<div class="myRow">
 				<div class="label width100 height80">
-					<logic:notEqual name="EditProfesionalSellProductForm" property="imageId4" value="0">
+					<logic:notEqual name="EditProfesionalSellForm" property="imageId4" value="0">
 						<img id="image4" src="./viewProductImage.do?index=4" width="78" height="78" align="absmiddle" border="1">
 					</logic:notEqual>
 				</div>
 				<div class="label width100 height80">
-					<logic:equal name="EditProfesionalSellProductForm" property="imageId4" value="0">
+					<logic:equal name="EditProfesionalSellForm" property="imageId4" value="0">
 						<img id="image4" src="boImages/na.gif" width="78" height="78" align="absmiddle" border="1">
 					</logic:equal>
 				</div>
 				<div class="label width200"><input type="file" name="upload4" id="upload4"></div>
 				<a href="./deleteProductImage.do?index=5">Borrar</a>
-				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellProductForm.image_key + ".err")%></div>
+				<div class="label width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 			</div>
 			
 			
 			<div class="myRow">
 				<%
-				java.util.List source = EditProfesionalSellProductForm.getSells();
+				java.util.List source = EditProfesionalSellForm.getSells();
 				com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
 				request.setAttribute( "sells",  paginated);
 				%>
@@ -290,7 +226,7 @@ function limpiarProducto() {
 					<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
 					<display:column title="acciones" headerClass="sortable width50">
 						<a class="nonelyLink" href="./editProfesionalProduct.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>">Editar</a>
-						<a class="nonelyLink" href="javascript:document.EditProfesionalSellProductForm.action='./editRemoveProduct.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellProductForm.submit();">Quitar</a>
+						<a class="nonelyLink" href="javascript:document.EditProfesionalSellForm.action='./editRemoveProduct.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellForm.submit();">Quitar</a>
 					</display:column>
 				</display:table>
 				<%=DisplayTagParamHelper.getFields(request)%>

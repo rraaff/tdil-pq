@@ -337,7 +337,7 @@
   TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#editProfesionalProduct" NAME="action32"
   PATH="/editProfesionalProduct" SHAPE="32,9201,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -898,7 +898,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToEditProfesionalProducts" NAME="action97"
   PATH="/goToEditProfesionalProducts" SHAPE="32,14321,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -912,7 +912,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveProfesionalProducts" NAME="action98"
   PATH="/saveProfesionalProducts" SHAPE="80,14321,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
    PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -920,16 +920,9 @@
    PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#editAddProduct" NAME="action99"
-  PATH="/editAddProduct" SHAPE="80,14321,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM ID="#editRemoveProduct" NAME="action100"
   PATH="/editRemoveProduct" SHAPE="80,14433,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -974,7 +967,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewProductImage" NAME="action105"
   PATH="/viewProductImage" SHAPE="32,14321,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem"/>
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#uploadProductImage" NAME="action106"
   PATH="/uploadProductImage" SHAPE="32,14321,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#uploadServiceImage" NAME="action107"
@@ -984,7 +977,7 @@
   TITLE="EditProfesionalSellServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#deleteProductImage" NAME="action109"
   PATH="/deleteProductImage" SHAPE="96,14321,0,0"
-  TITLE="EditProfesionalSellProductForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
@@ -1156,6 +1149,13 @@
   TITLE="ProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/registroProfesional.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editProfesionalProductsAddSell" NAME="action30"
+  PATH="/editProfesionalProductsAddSell" SHAPE="96,14257,0,0"
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

@@ -18,6 +18,7 @@ import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.SellBean;
 
+@Deprecated
 public class EditProfesionalSellProductForm extends EditProfesionalSellForm implements ProfesionalSellForm {
 
 	/**

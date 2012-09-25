@@ -10,14 +10,14 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.forms.UploadData;
-import com.tdil.tuafesta.struts.forms.EditProfesionalSellServiceForm;
+import com.tdil.tuafesta.struts.forms.EditProfesionalSellForm;
 
 public class ViewServiceImageAction extends AbstractAction {
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		EditProfesionalSellServiceForm noteForm = (EditProfesionalSellServiceForm) form;
+		EditProfesionalSellForm noteForm = (EditProfesionalSellForm) form;
 		int index = Integer.parseInt(request.getParameter("index"));
 		UploadData uploadData = null;
 		if (index == 0) {
