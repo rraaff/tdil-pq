@@ -126,7 +126,8 @@ $(document).ready(
 				
 				<%@ include file="includes/add_sell_layers.jspf"%>
 				
-				<div id="addSellLayer" style="display: none;">
+				
+				<div id="addSellLayer" style="<%=EditProfesionalSellForm.isEdition() ? "" : "display: none;"%>
 					<span id="categoryPath"></span><br/>
 					<html:text name="EditProfesionalSellForm" property="categoryId" styleClass="normalField width100"/><br/>
 					<html:text name="EditProfesionalSellForm" property="categorySelected" styleClass="normalField width100"/><br/>

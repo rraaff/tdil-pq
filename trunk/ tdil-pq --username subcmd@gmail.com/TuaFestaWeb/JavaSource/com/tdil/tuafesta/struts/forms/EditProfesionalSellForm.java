@@ -148,6 +148,10 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 		loadForEdit(edited);
 	}
 	
+	public boolean isEdition() {
+		return edited != null;
+	}
+	
 	protected void loadForEdit(SellBean edited) {
 		this.categoryId = String.valueOf(edited.getCategoryId());
 		this.categorySelected = edited.getCategoryText();
@@ -157,8 +161,13 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 	}
 	
 	public void addSell() {
+		SellBean productbean = null;
+		if (edited != null) {
+			productbean = edited;
+		} else {
+			productbean = new SellBean();
+		}
 		// TODO validaciones//
-		SellBean productbean = new SellBean();
 		productbean.setType(this.getType());
 		productbean.setCategoryId(Integer.valueOf(this.getCategoryId()));
 		productbean.setName(this.getSellName());
@@ -166,9 +175,12 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 		productbean.setCategoryText(this.getCategorySelected());
 		productbean.setReferencePrice(this.getReferenceprice());
 		productbean.setMedia(this);
-		this.getSells().add(0, productbean);
+		if (edited == null) {
+			this.getSells().add(0, productbean);
+		}
 		cleanSellFields();
 		clearMediaFields();
+		edited = null;
 	}
 	
 	private void cleanSellFields() {
@@ -216,6 +228,8 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 				createSellMedia(sellMediaDAO, sellId, productBean);
 			} else {
 				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
+				sell.setName(productBean.getName());
+				sell.setDescription(productBean.getDescription());
 				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
 				sell.setReferenceprice(refPrice);
 				// TODO esto deberia mandarlo a pending nuevamente

@@ -9,6 +9,7 @@ import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.EditProfesionalSellForm;
+import com.tdil.tuafesta.utils.TreeCategoryUtils;
 
 public class SellBean implements Serializable {
 
@@ -48,12 +49,14 @@ public class SellBean implements Serializable {
 	public SellBean() {
 	}
 	
-	public SellBean(Sell sell) {
+	public SellBean(Sell sell) throws SQLException {
 		this.setId(sell.getId());
 		this.setCategoryId(sell.getIdCategory());
 		this.setType(sell.getType());
 		this.setName(sell.getName());
+		this.setDescription(sell.getDescription());
 		this.setReferencePrice(sell.getReferenceprice().toString());
+		this.setCategoryText(TreeCategoryUtils.getCategoryPath(sell.getIdCategory()));
 	}
 
 	public SellBean(SellValueObject sell) throws SQLException {
@@ -61,6 +64,7 @@ public class SellBean implements Serializable {
 		this.setCategoryId(sell.getIdCategory());
 		this.setType(sell.getType());
 		this.setName(sell.getName());
+		this.setDescription(sell.getDescription());
 		this.setProfesionalBusinessname(sell.getProfesionalbusinessname());
 		this.setReferencePrice(sell.getReferenceprice().toString());
 		this.setCategoryText(sell.getCategoryText());
