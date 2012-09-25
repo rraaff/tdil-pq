@@ -11,7 +11,7 @@ public class UploadServiceImageAction extends AjaxFileUploadAction {
 
 	@Override
 	protected AjaxUploadHandlerForm getUploadForm(HttpServletRequest request, ActionForm form) {
-		return (AjaxUploadHandlerForm)request.getSession().getAttribute("EditProfesionalSellServiceForm");
+		return (AjaxUploadHandlerForm)request.getSession().getAttribute("EditProfesionalSellForm");
 	}
 
 }

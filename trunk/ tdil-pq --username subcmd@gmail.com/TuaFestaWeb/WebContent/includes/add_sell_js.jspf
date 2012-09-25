@@ -48,7 +48,7 @@ var prodcats = new Array();
 								$( "input[name=categoryId]" ).attr('value', selCatId);
 								$( "input[name=categorySelected]" ).attr('value', catPath);
 								$( "#categoryPath" ).prop('innerHTML', catPath);
-								$( "#selectSCategoryLayer" ).fadeOut();
+								$( "#selectPCategoryLayer" ).fadeOut();
 								$( "#addSellLayer" ).fadeIn(500);
 							});
 						}
