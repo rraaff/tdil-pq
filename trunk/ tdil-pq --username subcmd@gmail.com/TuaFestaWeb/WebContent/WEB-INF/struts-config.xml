@@ -490,33 +490,33 @@
   <action name="EditProfesionalSellForm" parameter="Profesional" path="/viewProductImage"
    scope="session" type="com.tdil.tuafesta.struts.action.ViewProductImageAction">
   </action>
-  
-  <action name="EditProfesionalSellServiceForm" path="/goToEditProfesionalServices" parameter="Profesional"
+ 
+  <action name="EditProfesionalSellForm" path="/goToEditProfesionalServices" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.EditProfesionalServicesAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
-  <action name="EditProfesionalSellServiceForm" path="/saveProfesionalServices" parameter="Profesional"
+  <action name="EditProfesionalSellForm" path="/saveProfesionalServices" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalServices.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  <action name="EditProfesionalSellServiceForm" path="/editProfesionalService" parameter="Profesional"
+  <action name="EditProfesionalSellForm" path="/editProfesionalService" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
-    <action name="EditProfesionalSellServiceForm" path="/deleteServiceImage" parameter="Profesional"
+    <action name="EditProfesionalSellForm" path="/deleteServiceImage" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
   
-  <action name="EditProfesionalSellServiceForm" path="/editAddService" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAction">
+  <action name="EditProfesionalSellForm" path="/editProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalSellServiceForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+  <action name="EditProfesionalSellForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
   <action parameter="Profesional" path="/uploadServiceImage" type="com.tdil.tuafesta.struts.action.UploadServiceImageAction"/>
-  <action name="EditProfesionalSellServiceForm" parameter="Profesional" path="/viewServiceImage"
+  <action name="EditProfesionalSellForm" parameter="Profesional" path="/viewServiceImage"
    scope="session" type="com.tdil.tuafesta.struts.action.ViewServiceImageAction">
   </action>
   
