@@ -1,5 +1,7 @@
 package com.tdil.utils;
 
+import java.util.Date;
+
 import org.apache.commons.lang.StringEscapeUtils;
 
 public class StringUtils {
@@ -17,6 +19,34 @@ public class StringUtils {
 	
 	public static String nvl(String first, String second) {
 		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
+			return second;
+		} else {
+			return first;
+		}
+	}
+	
+	public static Date nvl(Date first, Date second) {
+		if (first == null) {
+			return second;
+		} else {
+			return first;
+		}
+	}
+	
+	public static Integer nvl(Integer first, Integer second) {
+		if (first == null) {
+			return second;
+		} else {
+			if (first == 0) {
+				return second;
+			} else {
+				return first;
+			}
+		}
+	}
+	
+	public static int nvl(int first, int second) {
+		if (first == 0) {
 			return second;
 		} else {
 			return first;
