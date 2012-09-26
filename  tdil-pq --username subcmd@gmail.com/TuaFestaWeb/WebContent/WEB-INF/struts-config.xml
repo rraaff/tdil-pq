@@ -58,10 +58,6 @@
    
    <form-bean id="EditProfesionalSellForm"
    name="EditProfesionalSellForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"/>
-   <form-bean id="EditProfesionalSellProductForm"
-   name="EditProfesionalSellProductForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellProductForm"/>
-   <form-bean id="EditProfesionalSellServiceForm"
-   name="EditProfesionalSellServiceForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellServiceForm"/>
    
    <form-bean id="PromotionForm"
    name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
