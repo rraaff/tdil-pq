@@ -1,3 +1,11 @@
+CREATE TABLE PROFILE_PICTURE (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_blob_data` INT NOT NULL,
+  `ext_blob_data` VARCHAR(10) NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
 CREATE TABLE PROMOTION_VIDEO (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_promotion` INT NOT NULL,

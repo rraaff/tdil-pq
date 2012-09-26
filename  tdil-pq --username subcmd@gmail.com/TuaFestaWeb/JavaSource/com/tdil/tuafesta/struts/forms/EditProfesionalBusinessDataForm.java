@@ -36,10 +36,11 @@ import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.utils.BlobHelper;
+import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class EditProfesionalBusinessDataForm extends TransactionalValidationForm implements GeoLevelSelectionForm, AjaxUploadHandlerForm {
+public class EditProfesionalBusinessDataForm extends TransactionalValidationForm implements GeoLevelSelectionForm, AjaxUploadHandlerForm, EditProfesionalDataForm {
 
 	/**
 	 * 
@@ -198,19 +199,48 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setDescription(com.tdil.utils.StringUtils.getDataForChange(this.getDescription(), profesional.getDescription()));
 		profesionalChange.setIdGeolevel(com.tdil.utils.StringUtils.getDataForChange(this.getGeo4Id(), profesional.getIdGeolevel()));
 		
-		if (logo.isModified()) {
+		if (logo != null && logo.isModified()) {
 			if (imageId != 0) {
 				BlobHelper.deleteBlob(imageId);
 			}
 			int id = BlobHelper.insertBlob(this.getLogo());
 			profesionalChange.setIdProfilePicture(id);
+			profesionalChange.setExtProfilePicture(logo.getExtension());
 		}
-		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		profesionalChange.setVideo1(com.tdil.utils.StringUtils.getDataForChange(this.getVideo1(), profesional.getVideo1(), "DELETE"));
 		profesionalChange.setVideo2(com.tdil.utils.StringUtils.getDataForChange(this.getVideo2(), profesional.getVideo2(), "DELETE"));
 		profesionalChange.setVideo3(com.tdil.utils.StringUtils.getDataForChange(this.getVideo3(), profesional.getVideo3(), "DELETE"));
 		profesionalChange.setVideo4(com.tdil.utils.StringUtils.getDataForChange(this.getVideo4(), profesional.getVideo4(), "DELETE"));
 		profesionalChange.setVideo5(com.tdil.utils.StringUtils.getDataForChange(this.getVideo5(), profesional.getVideo5(), "DELETE"));
+		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		if (true) { //TODO auto aprove
+			profesional.setBusinessname(StringUtils.nvl(profesionalChange.getBusinessname(), profesional.getBusinessname()));
+			profesional.setCuit(StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
+			profesional.setIibb(StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));
+			profesional.setDescription(StringUtils.nvl(profesionalChange.getDescription(), profesional.getDescription()));
+			profesional.setIdGeolevel(StringUtils.nvl(profesionalChange.getIdGeolevel(), profesional.getIdGeolevel()));
+			profesional.setIdProfilePicture(StringUtils.nvl(profesionalChange.getIdProfilePicture(), profesional.getIdProfilePicture()));
+			profesional.setExtProfilePicture(StringUtils.nvl(profesionalChange.getExtProfilePicture(), profesional.getExtProfilePicture()));
+			profesional.setVideo1(StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
+			profesional.setVideo2(StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));
+			profesional.setVideo3(StringUtils.nvl(profesionalChange.getVideo3(), profesional.getVideo3()));
+			profesional.setVideo4(StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
+			profesional.setVideo5(StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
+			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
+			profesionalChange.setBusinessname(null);
+			profesionalChange.setCuit(null);
+			profesionalChange.setIibb(null);
+			profesionalChange.setDescription(null);
+			profesionalChange.setIdGeolevel(null);
+			profesionalChange.setIdProfilePicture(null);
+			profesionalChange.setExtProfilePicture(null);
+			profesionalChange.setVideo1(null);
+			profesionalChange.setVideo2(null);
+			profesionalChange.setVideo3(null);
+			profesionalChange.setVideo4(null);
+			profesionalChange.setVideo5(null);
+			DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		}
 	}
 
 	public int getObjectId() {

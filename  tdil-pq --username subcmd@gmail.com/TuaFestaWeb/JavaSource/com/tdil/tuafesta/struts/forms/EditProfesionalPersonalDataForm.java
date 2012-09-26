@@ -15,9 +15,10 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.utils.DateUtils;
+import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
 
-public class EditProfesionalPersonalDataForm extends TransactionalValidationForm {
+public class EditProfesionalPersonalDataForm extends TransactionalValidationForm implements EditProfesionalDataForm {
 
 	/**
 	 * 
@@ -112,6 +113,26 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setPhoneextension(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneExtension(), profesional.getPhoneextension()));
 		profesionalChange.setPhonetype(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneType(), profesional.getPhonetype()));
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		if (true) { // TODO auto aprove
+			profesional.setFirstname(StringUtils.nvl(profesionalChange.getFirstname(), profesional.getFirstname()));
+			profesional.setLastname(StringUtils.nvl(profesionalChange.getLastname(), profesional.getLastname()));
+			profesional.setSex(StringUtils.nvl(profesionalChange.getSex(), profesional.getSex()));
+			profesional.setBirthdate(StringUtils.nvl(profesionalChange.getBirthdate(), profesional.getBirthdate()));
+			profesional.setPhoneareacode(StringUtils.nvl(profesionalChange.getPhoneareacode(), profesional.getPhoneareacode()));
+			profesional.setPhonenumber(StringUtils.nvl(profesionalChange.getPhonenumber(), profesional.getPhonenumber()));
+			profesional.setPhoneextension(StringUtils.nvl(profesionalChange.getPhoneextension(), profesional.getPhoneextension()));
+			profesional.setPhonetype(StringUtils.nvl(profesionalChange.getPhonetype(), profesional.getPhonetype()));
+			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
+			profesionalChange.setFirstname(null);
+			profesionalChange.setLastname(null);
+			profesionalChange.setSex(null);
+			profesionalChange.setBirthdate(null);
+			profesionalChange.setPhoneareacode(null);
+			profesionalChange.setPhonenumber(null);
+			profesionalChange.setPhoneextension(null);
+			profesionalChange.setPhonetype(null);
+			DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		}
 	}
 
 	public int getObjectId() {

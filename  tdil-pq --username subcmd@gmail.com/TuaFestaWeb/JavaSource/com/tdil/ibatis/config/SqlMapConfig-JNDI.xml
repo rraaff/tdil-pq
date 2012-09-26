@@ -35,7 +35,6 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/WALL_WRITTING_SqlMap.xml"/>
 	
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFESIONAL_CHANGE_SqlMap.xml"/>
-	<sqlMap resource="com/tdil/tuafesta/dao/maps/PROFILE_PICTURE_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SERVICE_AREA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/SELL_MEDIA_SqlMap.xml"/>
