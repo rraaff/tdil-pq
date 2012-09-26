@@ -77,10 +77,6 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
-<table schema="TUAFESTA" tableName="PROFILE_PICTURE" domainObjectName="ProfilePicture" alias="profpic">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-
 <table schema="TUAFESTA" tableName="PROFESIONAL_CHANGE" domainObjectName="ProfesionalChange" alias="profchg">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>

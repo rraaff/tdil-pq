@@ -185,17 +185,10 @@ CREATE TABLE WALL_WRITTING (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE PROFILE_PICTURE (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_blob_data` INT NOT NULL,
-  `ext_blob_data` VARCHAR(10) NOT NULL ,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
 CREATE TABLE PROFESIONAL_CHANGE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_profile_picture` INT NULL,
+  `ext_profile_picture` VARCHAR(10) NULL ,
   `modificationDate` DATETIME NULL ,
   `reviewDate` DATETIME NULL ,
   `disapproveReason` VARCHAR(4000) NULL ,
@@ -230,6 +223,7 @@ CREATE TABLE PROFESIONAL (
   `reviewDate` DATETIME NULL ,
   `disapproveReason` VARCHAR(4000) NULL ,
   `id_profile_picture` INT NULL,
+  `ext_profile_picture` VARCHAR(10) NULL ,
   `firstname` VARCHAR(100) NOT NULL ,
   `lastname` VARCHAR(100) NOT NULL ,
   `sex` CHAR(1) NOT NULL ,
