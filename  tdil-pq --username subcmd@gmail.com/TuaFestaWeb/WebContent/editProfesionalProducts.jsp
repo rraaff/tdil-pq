@@ -134,7 +134,7 @@ $(document).ready(
 					<html:text name="EditProfesionalSellForm" property="sellName" styleClass="normalField width100"/><br/>
 					<html:text name="EditProfesionalSellForm" property="sellDescription" styleClass="normalField width100"/><br/>
 					<html:text name="EditProfesionalSellForm" property="referenceprice" styleClass="normalField width100"/><br/>
-					<a href="javascript:document.EditProfesionalSellForm.action='./editProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
+					<a href="javascript:document.EditProfesionalSellForm.action='./editProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();" id="doAddSell">Guardar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
 				</div>
 			</div>
 			<div class="myRow">
