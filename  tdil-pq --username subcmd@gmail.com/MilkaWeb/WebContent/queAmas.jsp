@@ -1,5 +1,5 @@
-<%@page import="com.tdil.milka.model.valueobjects.MailToChildValueObject"%>
-<%@page import="com.tdil.milka.web.MailToChildUtils"%>
+<%@page import="com.tdil.milka.web.LoveHateUtils"%>
+<%@page import="com.tdil.milka.struts.forms.LoveHateForm"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.web.SearchPage"%>
 <%@page import="java.util.List"%>
@@ -32,7 +32,8 @@
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <% int barClickCounter = MeltButton.QUE_AMAS_QUE_ODIAS_COUNTER; 
-	
+	int votes = 0;
+	boolean showLayer = false;
 %>
 <script>
 $(document).ready(
@@ -45,7 +46,25 @@ $(document).ready(
 		<% if ("true".equals(request.getParameter("dnc"))) { %>
 			<% if ("1".equals(request.getParameter("amas"))) { %>
 				$.cookie('amas', "set", { expires: 1, path: "/" });
-			<% } %>
+				$( "#closegracias" ).click(function() {
+					$( "#showfeedback" ).fadeOut();
+				});
+				<% 
+					LoveHateForm loveForm = (LoveHateForm)session.getAttribute("LoveForm");
+					if (loveForm != null && !StringUtils.isEmpty(loveForm.getText())) {
+						votes = LoveHateUtils.getLoveCount(loveForm.getText());
+						showLayer = true;
+						loveForm.setText("");
+					}
+				} %>
+				$window = $(window);
+			    var top = ($window.height() / 2) - ($( "#showfeedback" ).height() / 2);
+			    var left = ($window.width() / 2) - ($( "#showfeedback" ).width() / 2);
+				$( "#showfeedback" ).css({
+					position: 'absolute',
+			        top: top + 'px',
+			        left: left + 'px'
+			      }).fadeIn(500).delay(4000).fadeOut('slow');
 		<% } %>
 
   	  	if ($.cookie('amas')) {
@@ -294,6 +313,18 @@ div { /*border:dotted 1px #00CC33;*/ }
 		</div>
 	</div>
 </html:form>
+<% if (showLayer) { %>
+<div id="showfeedback" class="hide" style="z-index: 500;">
+	<h2 style="color:#FFFFFF; margin-bottom:20px;">Gracias por participar</h2>
+	<p><% if (votes == 1) { %>
+			Sos la primer persona en votar esa palabra
+		<% } else {  %>
+			<%=votes %> personas votaron la misma palabra
+		<% } %>
+	.</p>
+	<div align="center"><input type="button" id="closegracias" value="Close"></div>
+</div>
+<% } %>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>

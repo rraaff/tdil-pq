@@ -42,6 +42,42 @@ public class LoveHateUtils {
 		return LoggerProvider.getLogger(LoveHateUtils.class);
 	}
 	
+	private static final class GetLoveCount implements TransactionalActionWithResult {
+		private String word;
+		public GetLoveCount(String word) {
+			super();
+			this.word = word;
+		}
+		public Object executeInTransaction() throws SQLException {
+			LoveHateExample loveHateExample = new LoveHateExample();
+			loveHateExample.createCriteria().andContentEqualTo(this.word).andLoveEqualTo(1);
+			List<LoveHate> loveHates = DAOManager.getLoveHateDAO().selectLoveHateByExample(loveHateExample);
+			if (loveHates.isEmpty()) {
+				 return 0;
+			} else {
+				return loveHates.get(0).getVotes();
+			}
+		}
+	}
+	
+	private static final class GetHateCount implements TransactionalActionWithResult {
+		private String word;
+		public GetHateCount(String word) {
+			super();
+			this.word = word;
+		}
+		public Object executeInTransaction() throws SQLException {
+			LoveHateExample loveHateExample = new LoveHateExample();
+			loveHateExample.createCriteria().andContentEqualTo(this.word).andLoveEqualTo(0);
+			List<LoveHate> loveHates = DAOManager.getLoveHateDAO().selectLoveHateByExample(loveHateExample);
+			if (loveHates.isEmpty()) {
+				 return 0;
+			} else {
+				return loveHates.get(0).getVotes();
+			}
+		}
+	}
+	
 	private static final class GetLoveWordCloudTag implements TransactionalActionWithResult {
 		public Object executeInTransaction() throws SQLException {
 			LoveHateExample loveHateExample = new LoveHateExample();
@@ -86,6 +122,26 @@ public class LoveHateUtils {
 		}
 	}
 	
+	public static Integer getLoveCount(String word) {
+		try {
+			Integer count = (Integer)TransactionProvider.executeInTransactionWithResult(new GetLoveCount(word));
+			return count;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return 0;
+		}
+	}
+	
+	public static Integer getHateCount(String word) {
+		try {
+			Integer count = (Integer)TransactionProvider.executeInTransactionWithResult(new GetHateCount(word));
+			return count;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return 0;
+		}
+	}
+	
 	public static Integer getHateCount() {
 		try {
 			Integer count = (Integer)TransactionProvider.executeInTransactionWithResult(new GetHateWordCloudTagCount());
@@ -101,12 +157,17 @@ public class LoveHateUtils {
 		try {
 			List<LoveHate> intermediate = (List<LoveHate>)TransactionProvider.executeInTransactionWithResult(new GetLoveWordCloudTag());
 			float total = 0;
+			float max = 0;
 			for (LoveHate loveHate : intermediate) {
 				total = total + loveHate.getVotes();
+				if (loveHate.getVotes() > max) {
+					max = loveHate.getVotes();
+				}
 			}
 			List<Word> result = new ArrayList<Word>();
 			for (LoveHate loveHate : intermediate) {
-				result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / total, 0.05f)));
+				// viejo result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / total, 0.05f)));
+				result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / max, 0.01f)));
 			}
 			return result;
 		} catch (SQLException e) {
@@ -145,7 +206,7 @@ public class LoveHateUtils {
 		PFont font2 = LoveHateFonts.createFont("BOD_PSTC.ttf", 20);
 		PFont font3 = LoveHateFonts.createFont("georgia_0.ttf", 20);
 		WordFonter fonter = Fonters.pickFrom(font1, font2, font3);
-		WordSizer sizer = Sizers.byWeight(10, 50);
+		WordSizer sizer = Sizers.byWeight(10, 80);
 		WordColorer colorer = Colorers.pickFrom(PApplet.color(113,68,149), PApplet.color(23,20,19), PApplet.color(111,74,116), PApplet.color(147,145,147), PApplet.color(168,91,167));
 		WordAngler angler = Anglers.pickFrom(0, PApplet.radians(270));
 		WordPlacer placer = Placers.centerClump();
