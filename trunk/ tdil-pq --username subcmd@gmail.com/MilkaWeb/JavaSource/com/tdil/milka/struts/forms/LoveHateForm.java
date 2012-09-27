@@ -41,7 +41,7 @@ public class LoveHateForm extends TransactionalValidationForm {
 	
 	@Override
 	public void reset() throws SQLException {
-		text = null;
+//		text = null;
 	}
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -77,7 +77,7 @@ public class LoveHateForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		String text = this.getText().toUpperCase();
+		String text = this.getText();
 		LoveHateDAO loveHateDAO = DAOManager.getLoveHateDAO();
 		LoveHateExample loveHateExample = new LoveHateExample();
 		loveHateExample.createCriteria().andContentEqualTo(text).andLoveEqualTo(this.isLove() ? 1 : 0);
@@ -107,13 +107,15 @@ public class LoveHateForm extends TransactionalValidationForm {
 			loveHate.setVotes(loveHate.getVotes() + 1);
 			loveHateDAO.updateLoveHateByPrimaryKey(loveHate);
 		}
-		this.setText("");
 	}	
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoveHateForm.class);
 	}
 	public String getText() {
+		if (text != null) {
+			 return text.toUpperCase();
+		}
 		return text;
 	}
 	public void setText(String text) {

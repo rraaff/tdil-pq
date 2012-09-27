@@ -42,9 +42,9 @@ public class LoveWordCloudTagServlet extends HttpServlet {
 
 	private void doService(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		File file = new File(BlobLocalDiskCache.getDiskBlobLocation() + "/loveCloud.png");
-		if (file == null || !file.exists() || isOutOfDate(file)) {
+//		if (file == null || !file.exists() || isOutOfDate(file)) {
 			LoveHateUtils.createLoveWordCloudTag();
-		}
+//		}
 		InputStream inputStream = null;
 		try {
 			inputStream = new FileInputStream(BlobLocalDiskCache.getDiskBlobLocation() + "/loveCloud.png");
