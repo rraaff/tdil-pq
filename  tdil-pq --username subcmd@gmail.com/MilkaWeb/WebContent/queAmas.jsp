@@ -137,7 +137,7 @@ function postLove(data) {
 
 </script>
 
-<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/>
+<!-- link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -159,31 +159,26 @@ function postLove(data) {
 	})();
 </script>
 <script type='text/javascript' src='swf/ExpPostits/scripts/AC_RunActiveContent.js'></script>
-<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<!--link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'-->
 <style>
 <!-- 
 body {
-	font-family: 'Oswald', sans-serif;
-	color: #00FF55;
+	color: #FFF;
 }
 div { /*border:dotted 1px #00CC33;*/ }
-#altalayer {
-	width:306px;
-	height:406px;
-	background-image: url(images/experiencias/postits/fondoAdd.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	padding:62px;
-}
-#graciasporsubir, #erroralta {
-	color:#FFFFFF;
-	background-color:#000000;
-	width:230px;
-	padding:15px;
+#altalayer, #showfeedback, #graciasporsubir, #erroralta {
+	color: #FFF;
+	background-color:#000;
+	width:250px;
+	height:50px;
+	margin:0 auto;
+	padding:50px;
 	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	
+	text-align:center;
 }
 #bm_me_derrite a{
 	float:right;
@@ -315,13 +310,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 </html:form>
 <% if (showLayer) { %>
 <div id="showfeedback" class="hide" style="z-index: 500;">
-	<h2 style="color:#FFFFFF; margin-bottom:20px;">Gracias por participar</h2>
-	<p><% if (votes == 1) { %>
-			Sos la primer persona en votar esa palabra
-		<% } else {  %>
-			<%=votes %> personas votaron la misma palabra
-		<% } %>
-	.</p>
+	<p><% if (votes == 1) { %>Sos el primero que ama eso<% } else {  %><%=votes %>&nbsp;personas aman lo mismo que vos<% } %>.</p>
 	<div align="center"><input type="button" id="closegracias" value="Close"></div>
 </div>
 <% } %>
