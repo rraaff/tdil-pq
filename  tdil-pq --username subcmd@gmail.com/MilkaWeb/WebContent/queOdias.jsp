@@ -59,16 +59,18 @@ $(document).ready(
 					position: 'absolute',
 			        top: top + 'px',
 			        left: left + 'px'
-			      }).fadeIn(500).delay(4000).fadeOut('slow');
+			      }).fadeIn(500);
+			      setTimeout(function() {
+						$( "#showfeedback" ).fadeOut();
+					},4000);
 		<% } %>
 
   	  	if ($.cookie('odias')) {
   	  	// deshabilito el alta de odias
 	  	}
 		
-		$( "#closegracias" ).click(function() {
-			$( "#graciasporsubir" ).fadeOut();
-			$( "#bottomLayer" ).fadeOut();
+  	  $( "#closegracias" ).click(function() {
+			$( "#showfeedback" ).fadeOut();
 		});
 		$( "#cancelaltahate" ).click(function() {
 			$( "#altahate" ).fadeOut();

@@ -46,9 +46,6 @@ $(document).ready(
 		<% if ("true".equals(request.getParameter("dnc"))) { %>
 			<% if ("1".equals(request.getParameter("amas"))) { %>
 				$.cookie('amas', "set", { expires: 1, path: "/" });
-				$( "#closegracias" ).click(function() {
-					$( "#showfeedback" ).fadeOut();
-				});
 				<% 
 					LoveHateForm loveForm = (LoveHateForm)session.getAttribute("LoveForm");
 					if (loveForm != null && !StringUtils.isEmpty(loveForm.getText())) {
@@ -64,15 +61,17 @@ $(document).ready(
 					position: 'absolute',
 			        top: top + 'px',
 			        left: left + 'px'
-			      }).fadeIn(500).delay(4000).fadeOut('slow');
+			      }).fadeIn(500);
+			      setTimeout(function() {
+						$( "#showfeedback" ).fadeOut();
+					},4000);
 		<% } %>
 
   	  	if ($.cookie('amas')) {
   	  	  	// deshabilito el alta de amas
   	  	}
 		$( "#closegracias" ).click(function() {
-			$( "#graciasporsubir" ).fadeOut();
-			$( "#bottomLayer" ).fadeOut();
+			$( "#showfeedback" ).fadeOut();
 		});
 		$( "#cancelaltalove" ).click(function() {
 			$( "#altalove" ).fadeOut();
