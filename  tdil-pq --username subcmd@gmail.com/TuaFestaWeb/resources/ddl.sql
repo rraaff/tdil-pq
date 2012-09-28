@@ -126,6 +126,9 @@ ENGINE = InnoDB;
 CREATE TABLE GEO2(
   `id` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(100) NOT NULL ,
+  `availableForService` INT NOT NULL,
+  `showInHome` INT NOT NULL,
+  `homeIndex` INT NULL,
   `deleted` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -134,6 +137,9 @@ CREATE TABLE GEO3 (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `geo2_id` INT NOT NULL,
   `nombre` VARCHAR(100) NOT NULL ,
+  `availableForService` INT NOT NULL,
+  `showInHome` INT NOT NULL,
+  `homeIndex` INT NULL,
   `deleted` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -142,6 +148,9 @@ CREATE TABLE GEO4 (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `geo3_id` INT NOT NULL,
   `nombre` VARCHAR(100) NOT NULL ,
+  `availableForService` INT NOT NULL,
+  `showInHome` INT NOT NULL,
+  `homeIndex` INT NULL,
   `deleted` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

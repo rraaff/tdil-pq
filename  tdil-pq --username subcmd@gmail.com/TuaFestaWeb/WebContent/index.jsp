@@ -241,7 +241,7 @@
 			<div id="zoneNavigation">
 				<h3><a href="listadoZonas.jsp">Todos las zonas</a></h3>
 				<p>
-					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4Levels()) { %>
+					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4LevelsForHome()) { %>
 						<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
 					<% } %>
 				</p>

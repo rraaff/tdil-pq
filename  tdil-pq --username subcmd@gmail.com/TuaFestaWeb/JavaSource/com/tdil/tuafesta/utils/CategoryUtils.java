@@ -55,7 +55,7 @@ public class CategoryUtils {
 				public Object executeInTransaction() throws SQLException {
 					CategoryExample productCategoryExample = new CategoryExample();
 					productCategoryExample.createCriteria().andDeletedEqualTo(0).andShowinhomeEqualTo(1);
-					productCategoryExample.setOrderByClause("homeIndex, name");
+					productCategoryExample.setOrderByClause("ISNULL(homeIndex) ASC, homeIndex, name");
 					List<Category> allCategories = DAOManager.getCategoryDAO().selectCategoryByExample(productCategoryExample);
 					return allCategories;
 				}

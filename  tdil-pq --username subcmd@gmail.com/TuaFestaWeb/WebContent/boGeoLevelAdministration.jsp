@@ -4,7 +4,7 @@
 <%@page import="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.tuafesta.web.TuaFestaErrorFormatter"%>
-<%@ page info="geoLevelAdministration"%>
+<%@ page info="boGeoLevelAdministration"%>
 <%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic"%>
@@ -63,6 +63,11 @@
 							</logic:notEqual>
 							<html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
 							<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
+							
+							Disponible para servicios:<html:checkbox name="GeoLevelForm" property="availableforservice" styleClass="width120"/><br>
+							Mostrar en la home:<html:checkbox name="GeoLevelForm" property="showinhome" styleClass="width120"/><br>
+							<html:text name="GeoLevelForm" property="homeindex" styleClass="width120"/>
+							<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%>
 						</logic:equal>
 					
 						<!-- Si es edicion -->			
@@ -102,6 +107,11 @@
 								</html:select>
 								Localidad: <html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
 							<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
+							
+							Disponible para servicios:<html:checkbox name="GeoLevelForm" property="availableforservice" styleClass="width120"/><br>
+							Mostrar en la home:<html:checkbox name="GeoLevelForm" property="showinhome" styleClass="width120"/><br>
+							<html:text name="GeoLevelForm" property="homeindex" styleClass="width120"/>
+							<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%>
 							</logic:equal>
 						</logic:notEqual>
 					</div>

@@ -4,7 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.struts.action.ActionMapping;
 
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
@@ -43,6 +47,10 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	private int geo3Id;
 	private String geo3Nombre;
 	
+	private boolean availableforservice;
+	private boolean showinhome;
+	private String homeindex;
+	
 	private String nombreSearch;
 	private int levelSearch = 2;
 	private int parentIdSearch;
@@ -52,7 +60,8 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	
 	private List<GeoLevelValueObject> search = new ArrayList<GeoLevelValueObject>();
 	
-	private static String name_key = "GeoLevel.name";
+	public static String homeindex_key = "GeoLevel.homeindex";
+	public static String name_key = "GeoLevel.name";
 	private static String name_duplicated_key = "DUPLICATED";
 	
 	private static final Logger LOG = LoggerProvider.getLogger(GeoLevelForm.class);
@@ -68,6 +77,17 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 		this.nombreSearch = null;
 		this.levelSearch = 2;
 		this.parentIdSearch = 0;
+		
+		this.showinhome = false;
+		this.homeindex = null;
+		this.availableforservice = false;
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
+		this.showinhome = false;
+		this.availableforservice = false;
 	}
 
 	@Override
@@ -104,6 +124,9 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 			this.setNombre(geo2.getNombre());
 			setGeo2Id(0);
 			setGeo3Id(0);
+			this.homeindex = (geo2.getHomeindex() == null ? null : String.valueOf(geo2.getHomeindex()));
+			this.showinhome = geo2.getShowinhome().equals(1);
+			this.availableforservice = geo2.getAvailableforservice().equals(1);
 		} else {
 			if (level == 3) {
 				Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(id);
@@ -112,6 +135,9 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(geo3.getGeo2Id());
 				setGeo2Nombre(geo2.getNombre());
 				setGeo3Id(0);
+				this.homeindex = (geo3.getHomeindex() == null ? null : String.valueOf(geo3.getHomeindex()));
+				this.showinhome = geo3.getShowinhome().equals(1);
+				this.availableforservice = geo3.getAvailableforservice().equals(1);
 			} else {
 				Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(id);
 				this.setNombre(geo4.getNombre());
@@ -121,6 +147,9 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				setGeo2Nombre(geo2.getNombre());
 				setGeo3Id(geo3.getId());
 				setGeo3Nombre(geo3.getNombre());
+				this.homeindex = (geo4.getHomeindex() == null ? null : String.valueOf(geo4.getHomeindex()));
+				this.showinhome = geo4.getShowinhome().equals(1);
+				this.availableforservice = geo4.getAvailableforservice().equals(1);
 			}
 		}
 	}
@@ -128,6 +157,7 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	@Override
 	public void basicValidate(ValidationError validationError) {
 		FieldValidation.validateText(this.getNombre(), name_key, 100, validationError);
+		FieldValidation.validateNumber(this.getHomeindex(), homeindex_key, 1, 1000, false, validationError);
 	}
 	
 	@Override
@@ -139,7 +169,10 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 			geo2Example.createCriteria().andNombreEqualTo(this.getNombre());
 			List<Geo2> list = geo2dao.selectGeo2ByExample(geo2Example);
 			if (!list.isEmpty()) {
-				validationError.setFieldError(name_key, "2" + name_duplicated_key);
+				Geo2 geo = list.get(0);
+				if (geo.getId() != this.getObjectId()) {
+					validationError.setFieldError(name_key, "2" + name_duplicated_key);
+				}
 			}
 		} else {
 			if (geo3Id == 0) {
@@ -149,7 +182,10 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				geo3Example.createCriteria().andNombreEqualTo(this.getNombre()).andGeo2IdEqualTo(geo2Id);
 				List<Geo3> list = geo3dao.selectGeo3ByExample(geo3Example);
 				if (!list.isEmpty()) {
-					validationError.setFieldError(name_key, "3" + name_duplicated_key);
+					Geo3 geo = list.get(0);
+					if (geo.getId() != this.getObjectId()) {
+						validationError.setFieldError(name_key, "3" + name_duplicated_key);
+					}
 				}
 			} else {
 				// busco por geo 4 repetido
@@ -158,7 +194,10 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				geo4Example.createCriteria().andNombreEqualTo(this.getNombre()).andGeo3IdEqualTo(geo3Id);
 				List<Geo4> list = geo4dao.selectGeo4ByExample(geo4Example);
 				if (!list.isEmpty()) {
-					validationError.setFieldError(name_key, "4" + name_duplicated_key);
+					Geo4 geo = list.get(0);
+					if (geo.getId() != this.getObjectId()) {
+						validationError.setFieldError(name_key, "4" + name_duplicated_key);
+					}
 				}
 			}
 		}
@@ -173,11 +212,25 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 				Geo2 geo2 = new Geo2();
 				geo2.setNombre(this.getNombre());
 				geo2.setDeleted(0);
+				if (StringUtils.isEmpty(this.getHomeindex())) {
+					geo2.setHomeindex(null);
+				} else {
+					geo2.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+				}
+				geo2.setShowinhome(this.isShowinhome() ? 1 : 0);
+				geo2.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 				DAOManager.getGeo2DAO().insertGeo2(geo2);
 			} else {
 				// modifico
 				Geo2 geo2 = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(this.getObjectId());
 				geo2.setNombre(this.getNombre());
+				if (StringUtils.isEmpty(this.getHomeindex())) {
+					geo2.setHomeindex(null);
+				} else {
+					geo2.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+				}
+				geo2.setShowinhome(this.isShowinhome() ? 1 : 0);
+				geo2.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 				DAOManager.getGeo2DAO().updateGeo2ByPrimaryKey(geo2);
 			}
 		} else {
@@ -189,12 +242,26 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 					geo3.setNombre(this.getNombre());
 					geo3.setGeo2Id(this.getGeo2Id());
 					geo3.setDeleted(0);
+					if (StringUtils.isEmpty(this.getHomeindex())) {
+						geo3.setHomeindex(null);
+					} else {
+						geo3.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+					}
+					geo3.setShowinhome(this.isShowinhome() ? 1 : 0);
+					geo3.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 					DAOManager.getGeo3DAO().insertGeo3(geo3);
 				} else {
 					// modifico
 					Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(this.getObjectId());
 					geo3.setNombre(this.getNombre());
 					geo3.setGeo2Id(this.getGeo2Id());
+					if (StringUtils.isEmpty(this.getHomeindex())) {
+						geo3.setHomeindex(null);
+					} else {
+						geo3.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+					}
+					geo3.setShowinhome(this.isShowinhome() ? 1 : 0);
+					geo3.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 					DAOManager.getGeo3DAO().updateGeo3ByPrimaryKey(geo3);
 				}
 			} else {
@@ -205,12 +272,26 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 					geo4.setNombre(this.getNombre());
 					geo4.setGeo3Id(this.getGeo3Id());
 					geo4.setDeleted(0);
+					if (StringUtils.isEmpty(this.getHomeindex())) {
+						geo4.setHomeindex(null);
+					} else {
+						geo4.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+					}
+					geo4.setShowinhome(this.isShowinhome() ? 1 : 0);
+					geo4.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 					DAOManager.getGeo4DAO().insertGeo4(geo4);
 				} else {
 					// modifico
 					Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(this.getObjectId());
 					geo4.setNombre(this.getNombre());
 					geo4.setGeo3Id(this.getGeo3Id());
+					if (StringUtils.isEmpty(this.getHomeindex())) {
+						geo4.setHomeindex(null);
+					} else {
+						geo4.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
+					}
+					geo4.setShowinhome(this.isShowinhome() ? 1 : 0);
+					geo4.setAvailableforservice(this.isAvailableforservice() ? 1 : 0);
 					DAOManager.getGeo4DAO().updateGeo4ByPrimaryKey(geo4);
 				}
 			}
@@ -371,5 +452,29 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 
 	public void deleteGeoLevelFromDatabase(int levelId, int userId) {
 		// TODO implementarlo, chequear todas las referencias
+	}
+
+	public boolean isAvailableforservice() {
+		return availableforservice;
+	}
+
+	public void setAvailableforservice(boolean availableforservice) {
+		this.availableforservice = availableforservice;
+	}
+
+	public boolean isShowinhome() {
+		return showinhome;
+	}
+
+	public void setShowinhome(boolean showinhome) {
+		this.showinhome = showinhome;
+	}
+
+	public String getHomeindex() {
+		return homeindex;
+	}
+
+	public void setHomeindex(String homeindex) {
+		this.homeindex = homeindex;
 	}
 }

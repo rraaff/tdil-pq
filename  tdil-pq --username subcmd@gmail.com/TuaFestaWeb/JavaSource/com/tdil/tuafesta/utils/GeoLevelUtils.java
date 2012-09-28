@@ -15,12 +15,30 @@ import com.tdil.tuafesta.model.Geo4Example;
 public class GeoLevelUtils {
 
 	@SuppressWarnings("unchecked")
+	public static List<Geo4> getActiveGeo4LevelsForHome()  {
+		try {
+			return (List<Geo4>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					Geo4Example geo4Example = new Geo4Example();
+					geo4Example.createCriteria().andDeletedEqualTo(0).andShowinhomeEqualTo(1).andAvailableforserviceEqualTo(1);
+					geo4Example.setOrderByClause("ISNULL(homeIndex) ASC, homeIndex, nombre");
+					return DAOManager.getGeo4DAO().selectGeo4ByExample(geo4Example);
+				}
+			});
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Geo4>();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public static List<Geo4> getActiveGeo4Levels()  {
 		try {
 			return (List<Geo4>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
 				public Object executeInTransaction() throws SQLException {
 					Geo4Example geo4Example = new Geo4Example();
-					geo4Example.createCriteria().andDeletedEqualTo(0);
+					geo4Example.createCriteria().andDeletedEqualTo(0).andAvailableforserviceEqualTo(1);
 					geo4Example.setOrderByClause("nombre");
 					return DAOManager.getGeo4DAO().selectGeo4ByExample(geo4Example);
 				}
