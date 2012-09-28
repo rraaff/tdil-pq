@@ -55,9 +55,15 @@ public class FieldValidation {
 	}
 	
 	public static String validateNumber(String text, String field, int min, int max, ValidationError validation) {
+		return validateNumber(text, field, min, max, true, validation);
+	}
+	
+	public static String validateNumber(String text, String field, int min, int max, boolean required, ValidationError validation) {
 		String result = text;
 		if (StringUtils.isEmpty(text)) {
-			validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
+			if (required) {
+				validation.setFieldError(field, ValidationErrors.CANNOT_BE_EMPTY);
+			}
 		} else {
 			String idToValidate = text.trim();
 			try {
