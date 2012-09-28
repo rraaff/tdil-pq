@@ -136,8 +136,6 @@ function postLove(data) {
 }
 
 </script>
-
-<!-- link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco' rel='stylesheet' type='text/css'/-->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -159,7 +157,6 @@ function postLove(data) {
 	})();
 </script>
 <script type='text/javascript' src='swf/ExpPostits/scripts/AC_RunActiveContent.js'></script>
-<!--link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'-->
 <style>
 <!-- 
 body {
