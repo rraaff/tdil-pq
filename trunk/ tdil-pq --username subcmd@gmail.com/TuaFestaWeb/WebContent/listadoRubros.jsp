@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.Category"%>
 <%@page import="com.tdil.tuafesta.utils.CategoryUtils"%>
-<%@page import="com.tdil.tuafesta.model.valueobjects.CategoryValueObject"%>
 <%@page import="com.tdil.tuafesta.utils.GeoLevelUtils"%>
 <%@page import="com.tdil.tuafesta.model.Geo4"%>
 <%@ include file="includes/userLogged.jspf" %>
@@ -39,7 +39,7 @@
 		<div id="formContent">
 			<div id="zoneNavigation">
 				<p>
-					<% for (CategoryValueObject cat : CategoryUtils.getAllCategories()) { %>
+					<% for (Category cat : CategoryUtils.getAllCategories()) { %>
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
 
 					<% } %>

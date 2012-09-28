@@ -29,10 +29,17 @@
 				<div class="renglon width950">
 					<div class="label width100">Nombre</div>
 					<div class="label width300"><html:text name="CategoryForm" property="name" styleClass="width300"/></div>
-					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProductCategory.name.err")%></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.name_key + ".err")%></div>
 					<div class="label width80">Descripci&oacute;n</div>
 					<div class="label width350"><html:text name="CategoryForm" property="description" styleClass="width350"/></div>
-					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProductCategory.description.err")%></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.description_key + ".err")%></div>
+				</div>
+				<div class="renglon width950">
+					<div class="label width100">Mostar en la home</div>
+					<div class="label width300"><html:checkbox name="CategoryForm" property="showinhome" styleClass="width300"/></div>
+					<div class="label width80">Indice</div>
+					<div class="label width350"><html:text name="CategoryForm" property="homeindex" styleClass="width350"/></div>
+					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.homeindex_key + ".err")%></div>
 				</div>
 				<div class="renglon width950">
 					<div class="label width100">Categor&iacute;a padre</div>

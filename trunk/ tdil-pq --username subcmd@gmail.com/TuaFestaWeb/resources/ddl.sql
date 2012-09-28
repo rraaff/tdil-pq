@@ -152,6 +152,8 @@ CREATE TABLE CATEGORY (
   `description` VARCHAR(4000) NOT NULL ,
   `parent_id` INT NULL,
   `type` INT NOT NULL,
+  `showInHome` INT NOT NULL,
+  `homeIndex` INT NULL,
   `isother` INT NOT NULL DEFAULT 0,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
