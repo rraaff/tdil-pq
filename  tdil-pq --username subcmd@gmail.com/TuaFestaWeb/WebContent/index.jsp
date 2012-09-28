@@ -250,7 +250,7 @@
 			<div id="categoryNavigation">
 				<h3><a href="listadoRubros.jsp">Todos los rubros</a></h3>
 				<p>
-					<% for (Category cat : CategoryUtils.getAllCategories()) { %>
+					<% for (Category cat : CategoryUtils.getAllCategoriesForIndex()) { %>
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
 					<% } %>
 				</p>

@@ -49,6 +49,25 @@ public class CategoryUtils {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public static List<Category> getAllCategoriesForIndex()  {
+		try {
+			return (List<Category>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					CategoryExample productCategoryExample = new CategoryExample();
+					productCategoryExample.createCriteria().andDeletedEqualTo(0).andShowinhomeEqualTo(1);
+					productCategoryExample.setOrderByClause("homeIndex, name");
+					List<Category> allCategories = DAOManager.getCategoryDAO().selectCategoryByExample(productCategoryExample);
+					return allCategories;
+				}
+			});
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Category>();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public static List<Category> getAllCategories()  {
 		try {
 			return (List<Category>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
