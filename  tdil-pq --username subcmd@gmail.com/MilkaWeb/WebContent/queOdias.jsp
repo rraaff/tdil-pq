@@ -1,3 +1,5 @@
+<%@page import="com.tdil.milka.web.LoveHateUtils"%>
+<%@page import="com.tdil.milka.struts.forms.LoveHateForm"%>
 <%@page import="com.tdil.milka.model.valueobjects.MailToChildValueObject"%>
 <%@page import="com.tdil.milka.web.MailToChildUtils"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
@@ -29,7 +31,8 @@
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <% int barClickCounter = MeltButton.QUE_AMAS_QUE_ODIAS_COUNTER; 
-	
+	int votes = 0;
+	boolean showLayer = false;
 %>
 <script>
 $(document).ready(
@@ -41,7 +44,22 @@ $(document).ready(
 		<% if ("true".equals(request.getParameter("dnc"))) { %>
 			<% if ("1".equals(request.getParameter("odias"))) { %>
 				$.cookie('odias', "set", { expires: 1, path: "/" });
-			<% } %>
+			<% 
+					LoveHateForm hateForm = (LoveHateForm)session.getAttribute("HateForm");
+					if (hateForm != null && !StringUtils.isEmpty(hateForm.getText())) {
+						votes = LoveHateUtils.getHateCount(hateForm.getText());
+						showLayer = true;
+						hateForm.setText("");
+					}
+				} %>
+				$window = $(window);
+			    var top = ($window.height() / 2) - ($( "#showfeedback" ).height() / 2);
+			    var left = ($window.width() / 2) - ($( "#showfeedback" ).width() / 2);
+				$( "#showfeedback" ).css({
+					position: 'absolute',
+			        top: top + 'px',
+			        left: left + 'px'
+			      }).fadeIn(500).delay(4000).fadeOut('slow');
 		<% } %>
 
   	  	if ($.cookie('odias')) {
@@ -290,6 +308,12 @@ div { /*border:dotted 1px #00CC33;*/ }
 		</div>
 	</div>
 </html:form>
+<% if (showLayer) { %>
+<div id="showfeedback" class="hide" style="z-index: 500;">
+	<p><% if (votes == 1) { %>Sos el primero que odia eso<% } else {  %><%=votes %>&nbsp;personas odian lo mismo que vos<% } %>.</p>
+	<div align="center"><input type="button" id="closegracias" value="Close"></div>
+</div>
+<% } %>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>
