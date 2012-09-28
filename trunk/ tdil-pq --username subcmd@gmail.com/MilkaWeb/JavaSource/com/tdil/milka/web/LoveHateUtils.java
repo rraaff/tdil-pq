@@ -249,7 +249,7 @@ public class LoveHateUtils {
 		WordPlacer placer = Placers.centerClump();
 		WordNudger nudger = new SpiralWordNudger();
 		PGraphicsJava2D graphics = new PGraphicsJava2D();
-		graphics.setSize(1200, 367);
+		graphics.setSize(1200, 360);
 		graphics.background(0xffffffff);
 		RenderOptions renderOptions = new RenderOptions();
 		WordCramEngine wordCramEngine = new WordCramEngine(graphics, words, fonter, sizer, colorer, angler, placer,
