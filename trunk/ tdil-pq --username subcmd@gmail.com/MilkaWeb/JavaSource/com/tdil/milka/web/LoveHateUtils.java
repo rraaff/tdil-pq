@@ -181,12 +181,17 @@ public class LoveHateUtils {
 		try {
 			List<LoveHate> intermediate = (List<LoveHate>)TransactionProvider.executeInTransactionWithResult(new GetHateWordCloudTag());
 			float total = 0;
+			float max = 0;
 			for (LoveHate loveHate : intermediate) {
 				total = total + loveHate.getVotes();
+				if (loveHate.getVotes() > max) {
+					max = loveHate.getVotes();
+				}
 			}
 			List<Word> result = new ArrayList<Word>();
 			for (LoveHate loveHate : intermediate) {
-				result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / total, 0.05f)));
+//				result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / total, 0.05f)));
+				result.add(new Word(loveHate.getContent(), Math.max(loveHate.getVotes().floatValue() / max, 0.01f)));
 			}
 			return result;
 		} catch (SQLException e) {
@@ -238,7 +243,7 @@ public class LoveHateUtils {
 //		PFont font2 = LoveHateFonts.createFont("SkunkMonkeyRough", 20);
 		PFont font3 = LoveHateFonts.createFont("wornmss.ttf", 20);
 		WordFonter fonter = Fonters.pickFrom(font1, /*font2, */font3);
-		WordSizer sizer = Sizers.byWeight(10, 50);
+		WordSizer sizer = Sizers.byWeight(10, 80);
 		WordColorer colorer = Colorers.pickFrom(PApplet.color(0,0,0), PApplet.color(10,10,10), PApplet.color(20,20,20));
 		WordAngler angler = Anglers.pickFrom(0, PApplet.radians(270));
 		WordPlacer placer = Placers.centerClump();
