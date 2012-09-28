@@ -259,10 +259,10 @@
  <PROCESS-ITEM ID="#saveGeoLevel" NAME="action23" PATH="/saveGeoLevel"
   SHAPE="32,6033,0,0" TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="failure"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page16" PATH="/geoLevelAdministration.jsp"
@@ -282,17 +282,17 @@
   PATH="/searchGeoLevel" SHAPE="32,6737,0,0" TITLE="GeoLevelForm"
   TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#toggleDeletedGeoLevel" NAME="action25"
   PATH="/toggleDeletedGeoLevel" SHAPE="464,6050,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="failure"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/editServiceCategory.st"
@@ -346,27 +346,27 @@
   PATH="/goToGeoLevelAdministration" SHAPE="32,6737,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#refreshGeoLevelAdministration" NAME="action35"
   PATH="/refreshGeoLevelAdministration" SHAPE="32,6737,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#editGeoLevel" NAME="action36" PATH="/editGeoLevel"
   SHAPE="32,6737,0,0" TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#refreshGeoLevel2Administration" NAME="action37"
   PATH="/refreshGeoLevel2Administration" SHAPE="32,6737,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="geo2changed" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9"
    TITLE="geo2changed" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#refreshGeoLevel2Profesional" NAME="action38"
@@ -752,7 +752,7 @@
   PATH="/deleteGeoLevelFromDatabase" SHAPE="464,6162,0,0"
   TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/geoLevelAdministration.jsp" TARGET="page16" TITLE="continue"
+   PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewSellDetails" NAME="action84"
@@ -1158,4 +1158,7 @@
    PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="/boGeoLevelAdministration.jsp"
+  SHAPE="240,6737,0,0" SUBTYPE="jsp"
+  TITLE="boGeoLevelAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

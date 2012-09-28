@@ -176,35 +176,35 @@
   </action>
   <action name="GeoLevelForm" path="/goToGeoLevelAdministration"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/refreshGeoLevel2Administration"
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
-   <forward name="geo2changed" path="/geoLevelAdministration.jsp"/>
+   <forward name="geo2changed" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/refreshGeoLevelAdministration"
    scope="session" type="com.tdil.struts.actions.RefreshAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/saveGeoLevel" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" parameter="Admin"
    path="/toggleDeletedGeoLevel" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" path="/searchGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp" redirect="true"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp" redirect="true"/>
   </action>
   <action name="GeoLevelForm" parameter="Admin" path="/editGeoLevel"
    scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" parameter="Admin" path="/deleteGeoLevelFromDatabase"
    scope="session" type="com.tdil.tuafesta.struts.action.DeleteGeoLevelFromDatabaseAction">
-   <forward name="continue" path="/geoLevelAdministration.jsp"/>
+   <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
   
   <action name="ProfesionalForm" path="/goToRegistroProfesional"

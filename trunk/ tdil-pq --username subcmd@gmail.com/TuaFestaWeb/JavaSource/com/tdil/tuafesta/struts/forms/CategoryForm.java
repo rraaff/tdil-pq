@@ -112,7 +112,7 @@ public class CategoryForm extends TransactionalValidationForm implements ToggleD
 	public void basicValidate(ValidationError validationError) {
 		FieldValidation.validateText(this.getName(), name_key, 100, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
-		FieldValidation.validateNumber(this.getHomeindex(), homeindex, 1, 1000, false, validationError);
+		FieldValidation.validateNumber(this.getHomeindex(), homeindex_key, 1, 1000, false, validationError);
 	}
 	
 	@Override
@@ -160,7 +160,7 @@ public class CategoryForm extends TransactionalValidationForm implements ToggleD
 				profesionalCategory.setHomeindex(Integer.valueOf(this.getHomeindex().trim()));
 			}
 			profesionalCategory.setShowinhome(this.isShowinhome() ? 1 : 0);
-			profesionalCategoryDAO.updateCategoryByPrimaryKeySelective(profesionalCategory);
+			profesionalCategoryDAO.updateCategoryByPrimaryKey(profesionalCategory);
 		}
 		if (this.getParentId() != 0) {
 			CategoryExample otherexample = new CategoryExample();
