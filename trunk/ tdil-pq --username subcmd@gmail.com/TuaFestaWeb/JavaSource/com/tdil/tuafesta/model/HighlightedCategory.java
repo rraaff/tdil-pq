@@ -2,7 +2,7 @@ package com.tdil.tuafesta.model;
 
 import com.tdil.ibatis.PersistentObject;
 import java.util.Date;
-
+@Deprecated
 public class HighlightedCategory extends PersistentObject {
 
 	/**
