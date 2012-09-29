@@ -102,3 +102,32 @@ CREATE TABLE PROF_SERVICE (
   PRIMARY KEY (`id`),
   INDEX `IX_PROF_SERV_ID_CAT_00` (`id_category` ASC))
 ENGINE = InnoDB;
+
+CREATE TABLE HIGHLIGHTED_PROF (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_profesional` INT NOT NULL,
+  `fromDate` DATETIME NOT NULL ,
+  `toDate` DATETIME NOT NULL ,
+  `payment` DECIMAL(10,2),
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_HIGHLIGHTED_PROF_00` (`id_profesional` ASC),
+  INDEX `IX_HIGHLIGHTED_PROF_01` (`fromDate` ASC, `toDate` ASC),
+   CONSTRAINT `FK_HIGHLIGHTED_PROF_00`
+    FOREIGN KEY (`id_profesional` )
+    REFERENCES PROFESIONAL (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE HIGHLIGHTED_CAT (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `type` INT NOT NULL,
+  `id_prod_serv_cat` INT NULL,
+  `fromDate` DATETIME NOT NULL ,
+  `toDate` DATETIME NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_HIGHLIGHTED_CAT_00` (`id_prod_serv_cat` ASC),
+  INDEX `IX_HIGHLIGHTED_CAT_01` (`fromDate` ASC, `toDate` ASC))
+ENGINE = InnoDB;
