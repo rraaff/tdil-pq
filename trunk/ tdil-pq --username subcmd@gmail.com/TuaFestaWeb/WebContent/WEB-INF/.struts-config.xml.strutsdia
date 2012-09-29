@@ -265,19 +265,6 @@
    PATH="/boGeoLevelAdministration.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page16" PATH="/geoLevelAdministration.jsp"
-  SHAPE="256,6050,0,0" SUBTYPE="jsp" TITLE="geoLevelAdministration.jsp"
-  TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveGeoLevel.do"
-   SUBTYPE="confirmed" TARGET="action23" TITLE="/saveGeoLevel.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedGeoLevel.do"
-   SUBTYPE="confirmed" TARGET="action25"
-   TITLE="/toggleDeletedGeoLevel.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link1"
-   PATH="/deleteGeoLevelFromDatabase.do" SUBTYPE="confirmed"
-   TARGET="action83" TITLE="/deleteGeoLevelFromDatabase.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchGeoLevel" NAME="action24"
   PATH="/searchGeoLevel" SHAPE="32,6737,0,0" TITLE="GeoLevelForm"
   TYPE="action" model-entity="StrutsProcessItem">
@@ -1160,5 +1147,22 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page9" PATH="/boGeoLevelAdministration.jsp"
   SHAPE="240,6737,0,0" SUBTYPE="jsp"
-  TITLE="boGeoLevelAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="boGeoLevelAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedGeoLevel.do"
+   SUBTYPE="confirmed" TARGET="action25"
+   TITLE="/toggleDeletedGeoLevel.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1"
+   PATH="/deleteGeoLevelFromDatabase.do" SUBTYPE="confirmed"
+   TARGET="action83" TITLE="/deleteGeoLevelFromDatabase.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/saveGeoLevel.do"
+   SUBTYPE="confirmed" TARGET="action23" TITLE="/saveGeoLevel.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchSellsByText" NAME="action33"
+  PATH="/searchSellsByText" SHAPE="32,12433,0,0"
+  TITLE="SellSearchResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sellSearchResult.jsp" TARGET="page24" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

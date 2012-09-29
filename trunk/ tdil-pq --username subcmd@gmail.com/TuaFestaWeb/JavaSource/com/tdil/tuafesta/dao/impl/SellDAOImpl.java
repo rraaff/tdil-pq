@@ -246,4 +246,10 @@ public class SellDAOImpl implements SellDAO {
 		List<SellValueObject> record = sqlMapClient.queryForList("SELL.selectSellsForPromotion", params);
 		return record;
 	}
+	
+	@Override
+	public List<SellValueObject> selectSellsByTerms(List<String> terms) throws SQLException {
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsByTerms", terms);
+		return list;
+	}
 }

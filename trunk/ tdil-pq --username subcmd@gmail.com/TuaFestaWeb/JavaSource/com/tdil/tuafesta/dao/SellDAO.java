@@ -95,4 +95,6 @@ public interface SellDAO {
 	public List<SellValueObject> searchServicesSellsBy(String name, String profesionalBusinessname) throws SQLException;
 
 	List<SellValueObject> selectSellsForPromotion(int promotionId) throws SQLException;
+
+	List<SellValueObject> selectSellsByTerms(List<String> terms) throws SQLException;
 }

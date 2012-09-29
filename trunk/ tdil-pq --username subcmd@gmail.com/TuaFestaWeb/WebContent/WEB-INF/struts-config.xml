@@ -287,6 +287,10 @@
    path="/searchSellsByCategory" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
+  <action name="SellSearchResultForm"
+   path="/searchSellsByText" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByText">
+   <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
+  </action>
   
   <action name="SellDetailsForm"
    path="/viewSellDetails" scope="session" type="com.tdil.tuafesta.struts.action.ViewSellDetailsAction">
