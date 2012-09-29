@@ -113,10 +113,7 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
-<table schema="TUAFESTA" tableName="HIGHLIGHTED_PROF" domainObjectName="HighlightedProfesional" alias="hp">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
-<table schema="TUAFESTA" tableName="HIGHLIGHTED_CAT" domainObjectName="HighlightedCategory" alias="hc">
+<table schema="TUAFESTA" tableName="ADVERTISEMENT" domainObjectName="Advertisement" alias="ad">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
