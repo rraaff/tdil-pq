@@ -4,6 +4,7 @@ import com.tdil.ibatis.PersistentObject;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Deprecated
 public class HighlightedProfesional extends PersistentObject {
 
 	/**

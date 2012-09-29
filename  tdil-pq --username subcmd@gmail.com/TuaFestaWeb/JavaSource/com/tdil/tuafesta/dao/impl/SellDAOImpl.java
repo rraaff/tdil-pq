@@ -252,4 +252,5 @@ public class SellDAOImpl implements SellDAO {
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsByTerms", terms);
 		return list;
 	}
+	
 }
