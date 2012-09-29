@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 			<div id="border"></div>
-			<div id="search">Buscar <input placeholder="Ej: Fotografía" name="simpleSearch" type="text" class="searchField"/></div>
+			<div id="search"><form name="simpleSearch" action="./searchSellsByText.do">Buscar <input placeholder="Ej: Fotografía" name="searchText" type="text" class="searchField"/></form></div>
 			<div id="border"></div>
 			<div id="social"><a href="#" title="Compart&iacute; en Facebook"><img src="images/skin_basic/header/icon_FB.gif" alt="Compart&iacute; en Facebook" /></a><a href="#" title="Compart&iacute; en Twitter"><img src="images/skin_basic/header/icon_TW.gif" alt="Compart&iacute; en Twitter" /></a></div>
 		</div>

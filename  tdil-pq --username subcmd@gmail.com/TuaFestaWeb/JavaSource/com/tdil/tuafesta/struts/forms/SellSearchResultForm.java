@@ -1,7 +1,10 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -105,6 +108,24 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 				sellValueObject.addAll(sellDao.selectServiceSellsByCategories(catids));
 			}
 			setSearchResult(sellValueObject);
+		}
+		
+	}
+
+	public void searchByText(String searchText) throws SQLException {
+		String splitted[] = searchText.split(" ");
+		List<String> terms = new ArrayList<String>();
+		for (String st : splitted) {
+			String trimmed = st.trim();
+			if (!StringUtils.isEmpty(trimmed)) {
+				terms.add("%" + trimmed + "%");
+			}
+		}
+		if (!terms.isEmpty()) {
+			SellDAO sellDao = DAOManager.getSellDAO();
+			setSearchResult(sellDao.selectSellsByTerms(terms));
+		} else {
+			setSearchResult(new ArrayList<SellValueObject>());
 		}
 		
 	}
