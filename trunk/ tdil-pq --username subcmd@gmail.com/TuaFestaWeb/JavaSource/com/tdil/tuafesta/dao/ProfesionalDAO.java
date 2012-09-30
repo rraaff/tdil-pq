@@ -5,6 +5,7 @@ import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalExample;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface ProfesionalDAO {
 
@@ -75,4 +76,6 @@ public interface ProfesionalDAO {
 	int updateProfesionalByPrimaryKey(Profesional record) throws SQLException;
 
 	public List<Profesional> selectProfesionalsByGeo4(Geo4 geo4) throws SQLException;
+
+	List<Profesional> selectProfesionalBy(Map<String, String> profesionalNameSearch) throws SQLException;
 }

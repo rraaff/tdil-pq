@@ -16,6 +16,7 @@
 						<ul>
 							<li><html:link action="/goToProfesionalAdministration" >Administraci&oacute;n</html:link></li>
 							<li><html:link action="/goToPromotionAdministration" >Promociones</html:link></li>
+							<li><html:link action="/goToAdAdministration" >Avisos</html:link></li>
 						</ul>
 					</li>
 					<li><a href="#">Contenidos del sitio</a>

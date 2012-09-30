@@ -23,13 +23,14 @@ import com.tdil.tuafesta.dao.AdvertisementDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.AdTarget;
 import com.tdil.tuafesta.model.AdType;
 import com.tdil.tuafesta.model.Advertisement;
 import com.tdil.tuafesta.model.Profesional;
-import com.tdil.tuafesta.model.ProfesionalExample;
-import com.tdil.tuafesta.model.ProfesionalExample.Criteria;
 import com.tdil.tuafesta.model.Sell;
+import com.tdil.tuafesta.model.SellExample;
 import com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.utils.DateUtils;
 
 public class AdvertisementForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
@@ -46,15 +47,14 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	private int objectId;
 
 	// search profesional for add
-	private String fromsearch = "0";
-	private String firstNameSearch;
-	private String lastNameSearch;
-	private String businessNameSearch;
+	private String profesionalNameSearch;
 	private List<Profesional> profesionalSearch = new ArrayList<Profesional>();
 
 	private boolean profesionalAd;
 	private Profesional profesional;
+	private List<Sell> sells = new ArrayList<Sell>();
 	private Sell sell;
+	private int adTarget = AdTarget.PROFESIONAL;
 	private int type = AdType.NORMAL;
 	private boolean paidup;
 	private String price = "0";
@@ -62,9 +62,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	private String toDate;
 
 	// search to edit
-	private String profesionalFirstNameSearch;
-	private String profesionalLastNameSearch;
-	private String profesionalBusinessNameSearch;
+	private String profesionalNameSearchAd;
 	private String profesionalDateSearch;
 	private List<AdvertisementValueObject> search = new ArrayList<AdvertisementValueObject>();
 
@@ -96,13 +94,12 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		this.objectId = 0;
 		this.profesionalAd = false;
 		this.profesional = null;
+		this.adTarget = AdTarget.PROFESIONAL;
 		this.sell = null;
 		this.type = AdType.NORMAL;
 		this.paidup = false;
 		this.search = null;
-		this.firstNameSearch = null;
-		this.lastNameSearch = null;
-		this.businessNameSearch = null;
+		this.profesionalNameSearch = null;
 		this.profesionalSearch = new ArrayList<Profesional>();
 		
 		this.price = "0";
@@ -208,14 +205,6 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		this.profesional = profesional;
 	}
 
-	public String getProfesionalBusinessNameSearch() {
-		return profesionalBusinessNameSearch;
-	}
-
-	public void setProfesionalBusinessNameSearch(String profesionalBusinessNameSearch) {
-		this.profesionalBusinessNameSearch = profesionalBusinessNameSearch;
-	}
-
 	public String getProfesionalDateSearch() {
 		return profesionalDateSearch;
 	}
@@ -224,46 +213,11 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		this.profesionalDateSearch = profesionalDateSearch;
 	}
 
-	public String getFirstNameSearch() {
-		return firstNameSearch;
-	}
-
-	public void setFirstNameSearch(String firstNameSearch) {
-		this.firstNameSearch = firstNameSearch;
-	}
-
-	public String getLastNameSearch() {
-		return lastNameSearch;
-	}
-
-	public void setLastNameSearch(String lastNameSearch) {
-		this.lastNameSearch = lastNameSearch;
-	}
-
-	public String getBusinessNameSearch() {
-		return businessNameSearch;
-	}
-
-	public void setBusinessNameSearch(String businessNameSearch) {
-		this.businessNameSearch = businessNameSearch;
-	}
-
 	public void searchProfesionals() {
 		try {
-			ProfesionalExample profesionalExample = new ProfesionalExample();
-			Criteria criteria = profesionalExample.createCriteria();
-			if (StringUtils.isEmpty(this.firstNameSearch)) {
-				criteria.andFirstnameLike("%" + this.firstNameSearch + "%");
-			}
-			if (StringUtils.isEmpty(this.lastNameSearch)) {
-				criteria.andLastnameLike("%" + this.lastNameSearch + "%");
-			}
-			if (StringUtils.isEmpty(this.businessNameSearch)) {
-				criteria.andBusinessnameLike("%" + this.businessNameSearch + "%");
-			}
-			this.setProfesionalSearch(DAOManager.getProfesionalDAO().selectProfesionalByExample(profesionalExample)); // TODO
-																														// case
-																														// insensitivity
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("name", "%" + this.getProfesionalNameSearch() + "%");
+			this.setProfesionalSearch(DAOManager.getProfesionalDAO().selectProfesionalBy(params)); // TODO																														// insensitivity
 		} catch (Exception e) {
 			Log.error(e.getMessage(), e);
 		}
@@ -272,14 +226,8 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	public void searchHighlightedProfesionals() {
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
-			if (StringUtils.isEmpty(this.profesionalFirstNameSearch)) {
-				params.put("firstname", "%" + this.profesionalFirstNameSearch + "%");
-			}
-			if (StringUtils.isEmpty(this.profesionalLastNameSearch)) {
-				params.put("lastname", "%" + this.profesionalLastNameSearch + "%");
-			}
-			if (StringUtils.isEmpty(this.profesionalBusinessNameSearch)) {
-				params.put("businessname", "%" + this.profesionalBusinessNameSearch + "%");
+			if (StringUtils.isEmpty(this.getProfesionalNameSearchAd())) {
+				params.put("name", "%" + this.getProfesionalNameSearchAd() + "%");
 			}
 			Date datesearch = com.tdil.utils.DateUtils.parseDate(this.profesionalDateSearch);
 			if (datesearch != null) {
@@ -304,31 +252,15 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	public void selectProfesional(int profesionalId) throws SQLException {
 		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(profesionalId);
 		this.setProfesional(profesional);
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andApprovedEqualTo(1).andDeletedEqualTo(0).andIdProfesionalEqualTo(profesionalId);
+		setSells(DAOManager.getSellDAO().selectSellByExample(sellExample));
 
 	}
-
-	public String getFromsearch() {
-		return fromsearch;
-	}
-
-	public void setFromsearch(String fromsearch) {
-		this.fromsearch = fromsearch;
-	}
-
-	public String getProfesionalFirstNameSearch() {
-		return profesionalFirstNameSearch;
-	}
-
-	public void setProfesionalFirstNameSearch(String profesionalFirstNameSearch) {
-		this.profesionalFirstNameSearch = profesionalFirstNameSearch;
-	}
-
-	public String getProfesionalLastNameSearch() {
-		return profesionalLastNameSearch;
-	}
-
-	public void setProfesionalLastNameSearch(String profesionalLastNameSearch) {
-		this.profesionalLastNameSearch = profesionalLastNameSearch;
+	
+	public void selectSell(int sellId) throws SQLException {
+		Sell sell = DAOManager.getSellDAO().selectSellByPrimaryKey(sellId);
+		this.setSell(sell);
 	}
 
 	public boolean isProfesionalAd() {
@@ -377,5 +309,29 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 
 	public void setSearch(List<AdvertisementValueObject> search) {
 		this.search = search;
+	}
+	public String getProfesionalNameSearch() {
+		return profesionalNameSearch;
+	}
+	public void setProfesionalNameSearch(String profesionalNameSearch) {
+		this.profesionalNameSearch = profesionalNameSearch;
+	}
+	public String getProfesionalNameSearchAd() {
+		return profesionalNameSearchAd;
+	}
+	public void setProfesionalNameSearchAd(String profesionalNameSearchAd) {
+		this.profesionalNameSearchAd = profesionalNameSearchAd;
+	}
+	public int getAdTarget() {
+		return adTarget;
+	}
+	public void setAdTarget(int adTarget) {
+		this.adTarget = adTarget;
+	}
+	public List<Sell> getSells() {
+		return sells;
+	}
+	public void setSells(List<Sell> sells) {
+		this.sells = sells;
 	}
 }

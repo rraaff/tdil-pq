@@ -1165,4 +1165,56 @@
    PATH="/sellSearchResult.jsp" TARGET="page24" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToAdAdministration" NAME="action42"
+  PATH="/goToAdAdministration" SHAPE="48,1985,0,0"
+  TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page16" PATH="/boAdvertisementAdministration.jsp"
+  SHAPE="464,1985,0,0" SUBTYPE="jsp"
+  TITLE="boAdvertisementAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAdvertisement.do"
+   SUBTYPE="confirmed" TARGET="action43" TITLE="/saveAdvertisement.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveAdvertisement" NAME="action43"
+  PATH="/saveAdvertisement" SHAPE="672,1985,0,0"
+  TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchProfesionalsForAd" NAME="action99"
+  PATH="/searchProfesionalsForAd" SHAPE="240,2289,0,0"
+  TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectProfesionalForAd" NAME="action103"
+  PATH="/selectProfesionalForAd" SHAPE="240,2289,0,0"
+  TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#adTypeChangedAction" NAME="action126"
+  PATH="/adTypeChangedAction" SHAPE="240,2289,0,0"
+  TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectSellForAd" NAME="action127"
+  PATH="/selectSellForAd" SHAPE="240,2289,0,0" TITLE="AdvertisementForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
