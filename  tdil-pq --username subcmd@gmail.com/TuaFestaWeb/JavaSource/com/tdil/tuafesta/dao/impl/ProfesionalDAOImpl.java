@@ -6,9 +6,11 @@ import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalExample;
 import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class ProfesionalDAOImpl implements ProfesionalDAO {
 
@@ -152,6 +154,12 @@ public class ProfesionalDAOImpl implements ProfesionalDAO {
 
 	public List<Profesional> selectProfesionalsByGeo4(Geo4 geo4) throws SQLException {
 		List<Profesional> list = sqlMapClient.queryForList("PROFESIONAL.selectProfesionalsByGeo4", geo4);
+		return list;
+	}
+	
+	@Override
+	public List<Profesional> selectProfesionalBy(Map<String, String> profesionalNameSearch) throws SQLException {
+		List<Profesional> list = sqlMapClient.queryForList("PROFESIONAL.selectProfesionalBy", profesionalNameSearch);
 		return list;
 	}
 }

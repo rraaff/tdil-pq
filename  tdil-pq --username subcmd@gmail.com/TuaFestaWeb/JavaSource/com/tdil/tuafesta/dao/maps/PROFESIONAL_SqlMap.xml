@@ -752,4 +752,21 @@
 	order by prof.businessName
   </select>
   
+  
+  
+   <select id="selectProfesionalBy" parameterClass="java.util.Map" resultMap="BaseResultMap">
+     select 
+    	<include refid="PROFESIONAL.Base_Column_List" />
+    from PROFESIONAL prof
+    where prof.status = 2
+    and prof.deleted = 0
+    and ( 
+    	prof.businessName like #name:VARCHAR# OR
+    	prof.firstname like #name:VARCHAR# OR
+    	prof.lastname like #name:VARCHAR#
+    )
+    order by prof.businessName
+  </select>
+    
+  
 </sqlMap>

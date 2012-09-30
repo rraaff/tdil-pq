@@ -59,8 +59,8 @@
    <form-bean id="EditProfesionalSellForm"
    name="EditProfesionalSellForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"/>
    
-   <form-bean id="PromotionForm"
-   name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
+   <form-bean id="AdvertisementForm"
+   name="AdvertisementForm" type="com.tdil.tuafesta.struts.forms.AdvertisementForm"/>
    
  </form-beans>
  <global-exceptions/>
@@ -570,6 +570,32 @@
   <action name="PromotionForm" parameter="Admin" path="/removeSellFromPromotion"
    scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellFromPromotionAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
+  </action>
+  
+   <action name="AdvertisementForm" parameter="Admin"
+   path="/goToAdAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
+  </action>
+   <action name="AdvertisementForm" parameter="Admin"
+   path="/saveAdvertisement" scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boAdvertisementAdministration.jsp"/>
+  </action>
+  <action name="AdvertisementForm" parameter="Admin"
+   path="/searchProfesionalsForAd" scope="session" type="com.tdil.tuafesta.struts.action.SearchProfesionalsForAd">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="AdvertisementForm" parameter="Admin"
+   path="/selectProfesionalForAd" scope="session" type="com.tdil.tuafesta.struts.action.SelectProfesionalForAd">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="AdvertisementForm" parameter="Admin"
+   path="/selectSellForAd" scope="session" type="com.tdil.tuafesta.struts.action.SelectSellForAd">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="AdvertisementForm" path="/adTypeChangedAction"
+   scope="session" type="com.tdil.struts.actions.RefreshAction">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
