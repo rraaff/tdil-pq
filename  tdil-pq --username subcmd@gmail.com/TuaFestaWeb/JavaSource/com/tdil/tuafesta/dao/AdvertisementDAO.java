@@ -2,8 +2,11 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.Advertisement;
 import com.tdil.tuafesta.model.AdvertisementExample;
+import com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface AdvertisementDAO {
     /**
@@ -93,4 +96,6 @@ public interface AdvertisementDAO {
      * @mbggenerated Sat Sep 29 00:10:00 ART 2012
      */
     int updateAdvertisementByPrimaryKey(Advertisement record) throws SQLException;
+
+	List<AdvertisementValueObject> searchByProfAndDates(Map<String, Object> params) throws SQLException;
 }

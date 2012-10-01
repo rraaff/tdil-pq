@@ -308,4 +308,33 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+ <resultMap class="com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject" extends="BaseResultMap" id="AdvertisementValueObject">
+  	<result column="profesionalBusinessName" jdbcType="VARCHAR" property="profesionalBusinessName" />
+  	<result column="sellName" jdbcType="VARCHAR" property="sellName" />
+  </resultMap>
+  
+  <select id="searchByProfAndDates" parameterClass="java.util.Map" resultMap="AdvertisementValueObject">
+    select 
+    	<include refid="ADVERTISEMENT.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	(select name from SELL s where s.id = ad.id_sell) as sellName
+    from ADVERTISEMENT ad, PROFESIONAL prof
+    where ad.id_profesional = prof.id
+    <isNotNull prepend="and" property="dateactive">
+    	(
+    		ad.toDate >= #dateactive:DATETIME# AND
+    		#dateactive:DATETIME# >= ad.fromDate
+    	)
+    </isNotNull>
+    <isNotNull prepend="and" property="dateactive">
+    	(
+    		prof.businessname LIKE #profesionalBusinessname:VARCHAR# OR
+    		prof.firstname LIKE #profesionalBusinessname:VARCHAR# OR
+    		prof.lastname LIKE #profesionalBusinessname:VARCHAR# 
+    	)
+    </isNotNull>
+    
+ </select>
+    
 </sqlMap>

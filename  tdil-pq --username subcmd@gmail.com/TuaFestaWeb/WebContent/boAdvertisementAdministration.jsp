@@ -1,3 +1,4 @@
+<%@page import="com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject"%>
 <%@page import="com.tdil.tuafesta.model.Sell"%>
 <%@page import="com.tdil.tuafesta.model.AdTarget"%>
 <%@page import="com.tdil.tuafesta.struts.forms.AdvertisementForm"%>
@@ -81,56 +82,138 @@ $(document).ready(
 					<html:radio property="adTarget" value="2" onchange="document.AdvertisementForm.action='./adTypeChangedAction.do';document.AdvertisementForm.submit();"/>Producto/Servicio
 					<% if (adForm.getAdTarget() == AdTarget.PROFESIONAL) { %>
 						<br>Por profesional<br>
+						<div class="renglon width950">					
+							<div class="label width100">Inicio</div>
+							<div class="label width250"><html:text name="AdvertisementForm" property="fromDate" styleClass="width250"/></div>
+							<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.fromDate.err")%></div>
+							<div class="label width100">Fin</div>
+							<div class="label width250"><html:text name="AdvertisementForm" property="toDate" styleClass="width250"/></div>
+							<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.toDate.err")%></div>
+							<div class="label width100">Pago</div>
+							<div class="label width250"><html:checkbox name="AdvertisementForm" property="paidup" styleClass="width250"/></div>
+							<div class="label width100">Precio</div>
+							<div class="label width250"><html:text name="AdvertisementForm" property="price" styleClass="width250"/></div>
+							<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.payment.err")%></div>
+							<html:radio property="type" value="1"/> Normal&nbsp;&nbsp;&nbsp;
+							<html:radio property="type" value="2" />Superdestacado
+						</div>
+						<div class="renglon width950 height50" align="center">
+							<logic:equal name="AdvertisementForm" property="objectId" value="0">
+								<html:submit property="operation">
+									<bean:message key="save" />
+								</html:submit>
+							</logic:equal>
+							<logic:notEqual name="AdvertisementForm" property="objectId" value="0">
+								<html:submit property="operation">
+									<bean:message key="modify" />
+								</html:submit>
+							</logic:notEqual>
+							<html:submit property="operation">
+								<bean:message key="reset" />
+							</html:submit>
+						</div>
 					<% } else { %>
 						<br>Por producto/servicio<br>
 						<% if (adForm.getSell() == null) { %>
 							<div class="myRow">
-							<%
-							java.util.List source = adForm.getSells();
-							com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
-							request.setAttribute( "sells",  paginated);
-							%>
-							<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./homeProfesional.jsp">
-								<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
-								<display:column title="acciones" headerClass="sortable width50">
-									<a class="nonelyLink" href="javascript:document.AdvertisementForm.action='./selectSellForAd.do?id=<%= ((Sell)pageContext.getAttribute("sells")).getId()%>';document.AdvertisementForm.submit();">Seleccionar</a>
-								</display:column>
-							</display:table>
-							<%=DisplayTagParamHelper.getFields(request)%>
+								<%
+								java.util.List source = adForm.getSells();
+								com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+								request.setAttribute( "sells",  paginated);
+								%>
+								<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./homeProfesional.jsp">
+									<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
+									<display:column title="acciones" headerClass="sortable width50">
+										<a class="nonelyLink" href="javascript:document.AdvertisementForm.action='./selectSellForAd.do?id=<%= ((Sell)pageContext.getAttribute("sells")).getId()%>';document.AdvertisementForm.submit();">Seleccionar</a>
+									</display:column>
+								</display:table>
+								<%=DisplayTagParamHelper.getFields(request)%>
+							</div>
 						<% } else { %>
 							<%=adForm.getSell().getName() %>
+							<div class="renglon width950">					
+								<div class="label width100">Inicio</div>
+								<div class="label width250"><html:text name="AdvertisementForm" property="fromDate" styleClass="width250"/></div>
+								<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.fromDate.err")%></div>
+								<div class="label width100">Fin</div>
+								<div class="label width250"><html:text name="AdvertisementForm" property="toDate" styleClass="width250"/></div>
+								<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.toDate.err")%></div>
+								<div class="label width100">Pago</div>
+								<div class="label width250"><html:checkbox name="AdvertisementForm" property="paidup" styleClass="width250"/></div>
+								<div class="label width100">Precio</div>
+								<div class="label width250"><html:text name="AdvertisementForm" property="price" styleClass="width250"/></div>
+								<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.payment.err")%></div>
+								<html:radio property="type" value="1"/> Normal&nbsp;&nbsp;&nbsp;
+								<html:radio property="type" value="2" />Superdestacado
+							</div>
+							<div class="renglon width950 height50" align="center">
+								<logic:equal name="AdvertisementForm" property="objectId" value="0">
+									<html:submit property="operation">
+										<bean:message key="save" />
+									</html:submit>
+								</logic:equal>
+								<logic:notEqual name="AdvertisementForm" property="objectId" value="0">
+									<html:submit property="operation">
+										<bean:message key="modify" />
+									</html:submit>
+								</logic:notEqual>
+								<html:submit property="operation">
+									<bean:message key="reset" />
+								</html:submit>
+							</div>
 						<% } %>
-					</div>
 					<% } %>
-					<div class="renglon width950">					
-						<div class="label width100">Inicio</div>
-						<div class="label width250"><html:text name="AdvertisementForm" property="fromDate" styleClass="width250"/></div>
-						<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.fromDate.err")%></div>
-						<div class="label width100">Fin</div>
-						<div class="label width250"><html:text name="AdvertisementForm" property="toDate" styleClass="width250"/></div>
-						<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.toDate.err")%></div>
-						<div class="label width100">Pago</div>
-						<div class="label width250"><html:text name="AdvertisementForm" property="price" styleClass="width250"/></div>
-						<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedProfesional.payment.err")%></div>
-					</div>
-					<div class="renglon width950 height50" align="center">
-						<logic:equal name="AdvertisementForm" property="objectId" value="0">
-							<html:submit property="operation">
-								<bean:message key="save" />
-							</html:submit>
-						</logic:equal>
-						<logic:notEqual name="AdvertisementForm" property="objectId" value="0">
-							<html:submit property="operation">
-								<bean:message key="modify" />
-							</html:submit>
-						</logic:notEqual>
-						<html:submit property="operation">
-							<bean:message key="reset" />
-						</html:submit>
-					</div>
+					
 				<% } %>
 				
 				
+				<h1>Listado de Profesionales destacados</h1>
+				<div class="renglon width950" style="margin-bottom:50px;">
+					Nombre: <html:text name="AdvertisementForm" property="profesionalNameSearchAd"/><br>
+					Activo en: <html:text name="AdvertisementForm" property="profesionalDateSearch"/><br>
+					<a class="nonelyLink" href="javascript:document.AdvertisementForm.action='./searchAds.do';document.AdvertisementForm.submit();">Buscar</a>
+					<table width="100%">
+						<tr>
+							<td class="headerTablas" width="140">Profesional</td>
+							<td class="headerTablas" width="140">Producto/Servicio</td>
+							<td class="headerTablas" width="140">Desde</td>
+							<td class="headerTablas" width="140">Hasta</td>
+							<td class="headerTablas" width="50">Acciones</td>
+						</tr>
+						<logic:iterate name="AdvertisementForm" property="search"
+							id="iterSection" indexId="iterIndex">
+							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+								<td
+									<%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+									align="left"><bean:write name="iterSection" property="profesionalBusinessName" />
+								</td>
+								<td
+									<%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+									align="left"><bean:write name="iterSection" property="sellName" />
+								</td>
+								<td
+									<%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+									align="left"><bean:write name="iterSection" property="formatedfromdate" />
+								</td>
+								<td
+									<%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %>
+									align="left"><bean:write name="iterSection" property="formatedtodate" />
+								</td>
+								<td>
+									<html:link action="editAd.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
+									<html:link action="/toggleDeletedAd" paramName="iterSection"
+										paramProperty="id" paramId="id">
+										<% if (((AdvertisementValueObject) iterSection).getDeleted() == 1) { %>
+											<img src="boImages/activar.png" alt="Activar">
+										<% } else { %>
+											<img src="boImages/desactivar.png" alt="Desactivar">
+										<% } %>
+									</html:link>
+								</td>
+							</tr>
+						</logic:iterate>
+					</table>
+				</div>
 			</html:form>
 		</div>
 	</div>
