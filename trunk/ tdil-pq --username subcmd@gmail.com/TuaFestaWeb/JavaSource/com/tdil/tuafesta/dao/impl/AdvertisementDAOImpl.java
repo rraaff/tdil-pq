@@ -4,8 +4,12 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.AdvertisementDAO;
 import com.tdil.tuafesta.model.Advertisement;
 import com.tdil.tuafesta.model.AdvertisementExample;
+import com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class AdvertisementDAOImpl implements AdvertisementDAO {
     /**
@@ -172,5 +176,11 @@ public class AdvertisementDAOImpl implements AdvertisementDAO {
         public Object getRecord() {
             return record;
         }
+    }
+    
+    @Override
+    public List<AdvertisementValueObject> searchByProfAndDates(Map<String, Object> params) throws SQLException {
+    	List<AdvertisementValueObject> list = sqlMapClient.queryForList("ADVERTISEMENT.searchByProfAndDates", params);
+		return list;
     }
 }

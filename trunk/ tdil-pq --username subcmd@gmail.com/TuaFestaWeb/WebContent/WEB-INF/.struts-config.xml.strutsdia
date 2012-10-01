@@ -565,7 +565,7 @@
    SUBTYPE="confirmed" TARGET="action68"
    TITLE="/saveHighlightedCategory.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/editHighlightedCategory.st"
-   SUBTYPE="confirmed" TARGET="page30"
+   SUBTYPE="confirmed" TARGET="page18"
    TITLE="/editHighlightedCategory.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveHighlightedCategory" NAME="action68"
@@ -608,9 +608,6 @@
   PATH="/highlightedProfesionalAdministration.jsp" SHAPE="256,14242,0,0"
   SUBTYPE="jsp" TITLE="highlightedProfesionalAdministration.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0"
-   PATH="/editHighlightedProfesional.st" SUBTYPE="confirmed"
-   TARGET="page30" TITLE="/editHighlightedProfesional.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT NAME="link1"
    PATH="/saveHighlightedProfesional.do" SUBTYPE="confirmed"
    TARGET="action74" TITLE="/saveHighlightedProfesional.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
@@ -618,6 +615,9 @@
    PATH="/toggleDeletedHighlightedProfesional.do" SUBTYPE="confirmed"
    TARGET="action75" TITLE="/toggleDeletedHighlightedProfesional.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/editHighlightedProfesional.st" SUBTYPE="confirmed"
+   TARGET="page20" TITLE="/editHighlightedProfesional.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToHighlightedProfesionalABM" NAME="action73"
   PATH="/goToHighlightedProfesionalABM" SHAPE="32,14225,0,0"
@@ -626,9 +626,6 @@
    PATH="/highlightedProfesionalAdministration.jsp" TARGET="page31"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page30" PATH="/editHighlightedProfesional.st"
-  SHAPE="464,14242,0,0" SUBTYPE="other"
-  TITLE="editHighlightedProfesional.st" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#saveHighlightedProfesional" NAME="action74"
   PATH="/saveHighlightedProfesional" SHAPE="464,14354,0,0"
   TITLE="HighlightedProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1178,6 +1175,11 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAdvertisement.do"
    SUBTYPE="confirmed" TARGET="action43" TITLE="/saveAdvertisement.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/editAd.st"
+   SUBTYPE="confirmed" TARGET="page10" TITLE="/editAd.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/toggleDeletedAd.do"
+   SUBTYPE="confirmed" TARGET="action129" TITLE="/toggleDeletedAd.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveAdvertisement" NAME="action43"
   PATH="/saveAdvertisement" SHAPE="672,1985,0,0"
@@ -1217,4 +1219,34 @@
    PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchAds" NAME="action128" PATH="/searchAds"
+  SHAPE="304,2289,0,0" TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleDeletedAd" NAME="action129"
+  PATH="/toggleDeletedAd" SHAPE="304,2289,0,0" TITLE="AdvertisementForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="/editAd.st" SHAPE="672,2097,0,0"
+  SUBTYPE="other" TITLE="editAd.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page18" PATH="/editHighlightedCategory.st"
+  SHAPE="512,14242,0,0" SUBTYPE="other"
+  TITLE="editHighlightedCategory.st" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#editAd" NAME="action130" PATH="/editAd"
+  SHAPE="240,2289,0,0" TITLE="AdvertisementForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/boAdvertisementAdministration.jsp" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20" PATH="/editHighlightedProfesional.st"
+  SHAPE="672,14354,0,0" SUBTYPE="other"
+  TITLE="editHighlightedProfesional.st" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -69,6 +69,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	/** Used for delete */
 	public void resetAfterDelete() throws SQLException {
 		this.reset();
+		this.searchAds();
 	}
 	public void initForDeleteWith(int userId) throws SQLException {
 		this.objectId = userId;
@@ -98,7 +99,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		this.sell = null;
 		this.type = AdType.NORMAL;
 		this.paidup = false;
-		this.search = null;
+//		this.search = new ArrayList<AdvertisementValueObject>();
 		this.profesionalNameSearch = null;
 		this.profesionalSearch = new ArrayList<Profesional>();
 		
@@ -113,13 +114,16 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 
 	@Override
 	public void initWith(int id) throws SQLException {
+		this.objectId = id;
 		AdvertisementDAO adDao = DAOManager.getAdvertisementDAO();
 		ProfesionalDAO profesionalDao = DAOManager.getProfesionalDAO();
 		SellDAO sellDao = DAOManager.getSellDAO();
 		Advertisement ad = adDao.selectAdvertisementByPrimaryKey(id);
 		this.setProfesional(profesionalDao.selectProfesionalByPrimaryKey(ad.getIdProfesional()));
 		int sellId = ad.getIdSell();
+		this.adTarget = AdTarget.PROFESIONAL;
 		if (sellId != 0) {
+			this.adTarget = AdTarget.SELL;
 			this.setSell(sellDao.selectSellByPrimaryKey(sellId));
 		}
 		this.setType(ad.getType());
@@ -159,7 +163,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		ad.setIdSell(this.getSell() == null ? 0 : this.getSell().getId());
 		ad.setType(this.getType());
 		ad.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
-		ad.setTodate(com.tdil.utils.DateUtils.parseDate(this.getToDate()));
+		ad.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
 		ad.setPaidup(this.isPaidup() ? 1 : 0);
 		BigDecimal price = new BigDecimal(this.getPrice());
 		ad.setPrice(price);
@@ -223,7 +227,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		}
 	}
 	
-	public void searchHighlightedProfesionals() {
+	public void searchAds() {
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 			if (StringUtils.isEmpty(this.getProfesionalNameSearchAd())) {
@@ -233,7 +237,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 			if (datesearch != null) {
 				params.put("dateactive", datesearch);
 			}
-			// TODO Hacer la busqueda en el DAO
+			this.setSearch(DAOManager.getAdvertisementDAO().searchByProfAndDates(params));
 																														// case
 																														// insensitivity
 		} catch (Exception e) {
@@ -252,6 +256,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 	public void selectProfesional(int profesionalId) throws SQLException {
 		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(profesionalId);
 		this.setProfesional(profesional);
+		this.setSell(null);
 		SellExample sellExample = new SellExample();
 		sellExample.createCriteria().andApprovedEqualTo(1).andDeletedEqualTo(0).andIdProfesionalEqualTo(profesionalId);
 		setSells(DAOManager.getSellDAO().selectSellByExample(sellExample));

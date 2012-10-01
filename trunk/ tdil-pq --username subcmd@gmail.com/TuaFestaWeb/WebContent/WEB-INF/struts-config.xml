@@ -597,6 +597,19 @@
    scope="session" type="com.tdil.struts.actions.RefreshAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
+  <action name="AdvertisementForm" path="/searchAds"
+   scope="session" type="com.tdil.tuafesta.struts.action.SearchAds">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
+  </action>
+  <action name="AdvertisementForm" parameter="Admin"
+   path="/toggleDeletedAd" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boAdvertisementAdministration.jsp"/>
+  </action>
+  <action name="AdvertisementForm" parameter="Admin"
+   path="/editAd" scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
+  </action>
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
 	<forward name="notLogged" path="/index.jsp"/>
