@@ -20,17 +20,22 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.AdvertisementDAO;
+import com.tdil.tuafesta.dao.BlobDataDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.AdTarget;
 import com.tdil.tuafesta.model.AdType;
 import com.tdil.tuafesta.model.Advertisement;
+import com.tdil.tuafesta.model.BlobData;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.SellMedia;
+import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.utils.DateUtils;
 
 public class AdvertisementForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
@@ -158,9 +163,39 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 		}
 	}
 
-	private void setData(Advertisement ad) {
+	private void setData(Advertisement ad) throws SQLException {
+		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
 		ad.setIdProfesional(this.getProfesional().getId());
-		ad.setIdSell(this.getSell() == null ? 0 : this.getSell().getId());
+		if (ad.getIdBlobData() != null && ad.getIdBlobData() != 0) {
+			BlobHelper.deleteBlob(ad.getIdBlobData());
+			ad.setIdBlobData(null);
+			ad.setExtBlobData(null);
+		}
+		if (this.getSell() == null) {
+			ad.setIdSell(0);
+			if (this.getProfesional().getIdProfilePicture() != null && this.getProfesional().getIdProfilePicture() != 0) {
+				BlobData logo = blobDataDAO.selectBlobDataByPrimaryKey(this.getProfesional().getIdProfilePicture());
+				logo.setId(null);
+				int newBlob = blobDataDAO.insertBlobData(logo);
+				ad.setIdBlobData(newBlob);
+				ad.setExtBlobData(this.getProfesional().getExtProfilePicture());
+			}
+		} else {
+			ad.setIdSell(this.getSell().getId());
+			SellMediaExample sellMediaExample = new SellMediaExample();
+			sellMediaExample.createCriteria().andApprovedEqualTo(1).andIdSellEqualTo(this.getSell().getId());
+			List<SellMedia> media = DAOManager.getSellMediaDAO().selectSellMediaByExample(sellMediaExample);
+			if (!media.isEmpty()) {
+				SellMedia sm = media.get(0);
+				if (sm.getIdBlobData1() != null && sm.getIdBlobData1() != 0) {
+					BlobData sellPhoto = blobDataDAO.selectBlobDataByPrimaryKey(sm.getIdBlobData1());
+					sellPhoto.setId(null);
+					int newBlob = blobDataDAO.insertBlobData(sellPhoto);
+					ad.setIdBlobData(newBlob);
+					ad.setExtBlobData(sm.getExtBlobData1());
+				}
+			}
+		}
 		ad.setType(this.getType());
 		ad.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
 		ad.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));

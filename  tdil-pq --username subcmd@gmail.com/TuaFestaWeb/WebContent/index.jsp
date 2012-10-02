@@ -1,4 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject"%>
+<%@page import="com.tdil.tuafesta.utils.AdUtils"%>
+<%@page import="com.tdil.tuafesta.utils.AdsForHome"%>
 <%@page import="com.tdil.tuafesta.model.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="com.tdil.utils.DateUtils"%>
@@ -180,61 +183,32 @@
 				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
 				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
 				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		</div>
+				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		
+			</div>
+			<% 	AdsForHome adsForHome = AdUtils.getAdsHome(); %>
+			<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
+				<div id="lowHighlightedAdv">
+					<h5><a href="#"><%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
+					<div id="imageAtAdv" style="">
+						<a href="#">
+							<% if (advertisementValueObject.hasImage()) { %>
+								<img src="./downloadThumb.st?width=86&height=86&id=<%=advertisementValueObject.getIdBlobData()%>&type=PUBLIC&ext=<%=advertisementValueObject.getExtBlobData()%>" alt=""/>
+							<% } else { %>
+								<img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" />
+							<% } %>
+						</a>
+					</div>
+					<p><a href="#">
+						<% if (advertisementValueObject.isProfesionalAd()) { %>
+							<%=advertisementValueObject.getProfesionalDescriptionUpTo(50) %>
+						<% } else { %>
+							<%=advertisementValueObject.getSellName() %>
+							<span class="category">Rubro: <%=advertisementValueObject.getCategoryName() %></span>
+						<% } %>
+						</a></p>
+					<span class="price"><a href="#"></a></span>		
+				</div>
+			<% } %>
 		</div>
 		<div id="rightCentral">
 			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
