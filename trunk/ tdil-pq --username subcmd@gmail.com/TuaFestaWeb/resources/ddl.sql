@@ -447,6 +447,8 @@ CREATE TABLE ADVERTISEMENT (
   `toDate` DATETIME NOT NULL ,
   `paidUp` INT NOT NULL,
   `price` DECIMAL(10,2),
+  `id_blob_data` INT NULL,
+  `ext_blob_data` VARCHAR(10) NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_ADVERTISEMENT_00` (`id_sell` ASC),
