@@ -11,6 +11,7 @@ import com.tdil.tuafesta.dao.ClientDAO;
 import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
+import com.tdil.tuafesta.dao.HighlightedCategoryDAO;
 import com.tdil.tuafesta.dao.NotificationEmailDAO;
 import com.tdil.tuafesta.dao.ProfesionalChangeDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
@@ -34,6 +35,7 @@ import com.tdil.tuafesta.dao.impl.ClientDAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo2DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo3DAOImpl;
 import com.tdil.tuafesta.dao.impl.Geo4DAOImpl;
+import com.tdil.tuafesta.dao.impl.HighlightedCategoryDAOImpl;
 import com.tdil.tuafesta.dao.impl.NotificationEmailDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalChangeDAOImpl;
 import com.tdil.tuafesta.dao.impl.ProfesionalDAOImpl;
@@ -134,5 +136,8 @@ public class DAOManager {
 	}
 	public static AdvertisementDAO getAdvertisementDAO() throws SQLException {
 		return new AdvertisementDAOImpl(IBatisManager.getClient());
+	}
+	public static HighlightedCategoryDAO getHighlightedCategoryDAO() throws SQLException {
+		return new HighlightedCategoryDAOImpl(IBatisManager.getClient());
 	}
 }

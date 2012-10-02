@@ -59,6 +59,9 @@
    <form-bean id="EditProfesionalSellForm"
    name="EditProfesionalSellForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"/>
    
+   <form-bean id="PromotionForm"
+   name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
+   
    <form-bean id="AdvertisementForm"
    name="AdvertisementForm" type="com.tdil.tuafesta.struts.forms.AdvertisementForm"/>
    
@@ -323,21 +326,21 @@
   
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/goToHighlightedCategoryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/highlightedCategoryAdministration.jsp"/>
+   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/saveHighlightedCategory" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/highlightedCategoryAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/highlightedCategoryAdministration.jsp"/>
+   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/editHighlightedCategory" scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/highlightedCategoryAdministration.jsp"/>
+   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/toggleDeletedHighlightedCategory" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/highlightedCategoryAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/highlightedCategoryAdministration.jsp"/>
+   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   
   <action name="HighlightedProfesionalForm" parameter="Admin"
