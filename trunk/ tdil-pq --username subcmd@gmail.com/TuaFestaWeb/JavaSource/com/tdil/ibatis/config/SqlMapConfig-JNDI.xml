@@ -48,4 +48,5 @@
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/STATISTIC_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/STATISTIC_REPORT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/tuafesta/dao/maps/ADVERTISEMENT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/tuafesta/dao/maps/HIGHLIGHTED_CAT_SqlMap.xml"/>
 </sqlMapConfig>

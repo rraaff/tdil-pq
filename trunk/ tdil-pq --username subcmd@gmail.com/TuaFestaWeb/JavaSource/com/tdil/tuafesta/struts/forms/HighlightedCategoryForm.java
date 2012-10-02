@@ -1,23 +1,36 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.log4j.LoggerProvider;
+import com.tdil.ibatis.TransactionProvider;
+import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.tuafesta.dao.CategoryDAO;
+import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.HighlightedCategoryDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.CategoryExample;
+import com.tdil.tuafesta.model.Geo3;
+import com.tdil.tuafesta.model.Geo3Example;
 import com.tdil.tuafesta.model.HighlightedCategory;
-import com.tdil.tuafesta.model.valueobjects.CategoryValueObject;
 import com.tdil.tuafesta.model.valueobjects.HighlightedCategoryValueObject;
+import com.tdil.tuafesta.utils.CacheRegionUtils;
+import com.tdil.tuafesta.utils.CategoryTreeNode;
+import com.tdil.tuafesta.utils.TreeCategoryUtils;
+import com.tdil.utils.DateUtils;
+import com.tdil.validations.FieldValidation;
 
 public class HighlightedCategoryForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
@@ -30,67 +43,38 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	
 	private int objectId;
 	
-	private String categoryType;
 	private int categoryId;
-	private String categorySelectedText;
-	private String categoryAutocompleter;
-	
-	private CategoryValueObject category;
 	private String fromDate;
 	private String toDate;
-	private List<HighlightedCategoryValueObject> allHighlightedCategories;
+	
+	private List<HighlightedCategoryValueObject> allCategories = new ArrayList<HighlightedCategoryValueObject>();
+	
+	public static String name_key = "Category.name";
+	public static String description_key = "Category.description";
+	public static String homeindex_key = "Category.homeindex";
 	
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
-		this.category = null;
+		this.categoryId= 0;
 		this.fromDate = null;
 		this.toDate = null;
-		this.categoryType = "";
-		this.categoryId = 0;
-		this.categorySelectedText = "";
-		this.categoryAutocompleter = "";
 	}
 	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		super.reset(mapping, request);
 	}
 
 	@Override
 	public void init() throws SQLException {
-		this.setAllHighlightedCategories(DAOManager.getHighlightedCategoryDAO().selectAllHighlightedCategoriesValueObjects());
+		reloadList();
 	}
-	
-	@Override
-	public void initWith(int id) throws SQLException {
-//		HighlightedCategoryDAO highlightedCategoryDAO = DAOManager.getHighlightedCategoryDAO();
-//		HighlightedCategory highlightedCategory = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(id);
-//		if (highlightedCategory != null) {
-//			this.objectId = id;
-//			this.fromDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getFromdate());
-//			this.toDate = com.tdil.utils.DateUtils.formatDate(highlightedCategory.getTodate());
-//			if (highlightedCategory.getType().equals(0)) { // producto
-//				ProductCategory productCategory = DAOManager.getProductCategoryDAO().selectProductCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
-//				this.categoryId = productCategory.getId();
-//				this.categorySelectedText = productCategory.getName();
-//				this.categoryType = "p";
-//			} else { // servicio
-//				ServiceCategory serviceCategory = DAOManager.getServiceCategoryDAO().selectServiceCategoryByPrimaryKey(highlightedCategory.getIdProdServCat());
-//				this.categoryId = serviceCategory.getId();
-//				this.categorySelectedText = serviceCategory.getName();
-//				this.categoryType = "s";
-//			}
-//		}
-	}
-	
-	public boolean isCategorySelected() {
-		return this.getCategoryId() != 0;
-	}
-		
+
 	/** Used for delete */
 	public void resetAfterDelete() throws SQLException {
 		this.reset();
-		this.setAllHighlightedCategories(DAOManager.getHighlightedCategoryDAO().selectAllHighlightedCategoriesValueObjects());
+		reloadList();
 	}
 	public void initForDeleteWith(int userId) throws SQLException {
 		this.objectId = userId;
@@ -99,14 +83,29 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		HighlightedCategory highlightedCategory = DAOManager.getHighlightedCategoryDAO().selectHighlightedCategoryByPrimaryKey(this.getObjectId());
-		highlightedCategory.setDeleted(highlightedCategory.getDeleted().equals(1) ? 0 : 1);
-		DAOManager.getHighlightedCategoryDAO().updateHighlightedCategoryByPrimaryKeySelective(highlightedCategory);
+		HighlightedCategory professionalCategory = DAOManager.getHighlightedCategoryDAO().selectHighlightedCategoryByPrimaryKey(this.getObjectId());
+		professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
+		DAOManager.getHighlightedCategoryDAO().updateHighlightedCategoryByPrimaryKeySelective(professionalCategory);
 	}
 	
+	private void reloadList() throws SQLException {
+		setAllCategories(DAOManager.getHighlightedCategoryDAO().searchHighlightedCategories());
+	}
+	
+	@Override
+	public void initWith(int id) throws SQLException {
+		HighlightedCategory systemProperty = DAOManager.getHighlightedCategoryDAO().selectHighlightedCategoryByPrimaryKey(id);
+		if (systemProperty != null) {
+			this.objectId = id;
+			this.categoryId = systemProperty.getIdCategory();
+			this.fromDate= DateUtils.formatDate(systemProperty.getFromdate());
+			this.toDate = DateUtils.formatDate(systemProperty.getTodate());
+		} 
+	}
 
 	@Override
 	public void basicValidate(ValidationError validationError) {
+		
 	}
 	
 	@Override
@@ -118,23 +117,19 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 	public void save() throws SQLException, ValidationException {
 		HighlightedCategoryDAO highlightedCategoryDAO = DAOManager.getHighlightedCategoryDAO();
 		if (this.getObjectId() == 0) {
-			HighlightedCategory highlightedCategory = new HighlightedCategory();
-			setData(highlightedCategory);
-			highlightedCategory.setDeleted(0);
-			highlightedCategoryDAO.insertHighlightedCategory(highlightedCategory);
+			HighlightedCategory hc = new HighlightedCategory();
+			hc.setIdCategory(this.getCategoryId());
+			hc.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
+			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
+			hc.setDeleted(0);
+			highlightedCategoryDAO.insertHighlightedCategory(hc);
 		} else {
-			HighlightedCategory highlightedCategory = new HighlightedCategory();
-			highlightedCategory.setId(this.getObjectId());
-			setData(highlightedCategory);
-			highlightedCategoryDAO.updateHighlightedCategoryByPrimaryKeySelective(highlightedCategory);
+			HighlightedCategory hc = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(this.getObjectId());
+			hc.setIdCategory(this.getCategoryId());
+			hc.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
+			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
+			highlightedCategoryDAO.updateHighlightedCategoryByPrimaryKey(hc);
 		}
-	}
-
-	public void setData(HighlightedCategory highlightedCategory) {
-		highlightedCategory.setIdProdServCat(this.getCategoryId());
-		highlightedCategory.setType(this.getCategoryType().equals("p") ? 0 : 1);
-		highlightedCategory.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
-		highlightedCategory.setTodate(com.tdil.utils.DateUtils.parseDate(this.getToDate()));
 	}
 
 	public int getObjectId() {
@@ -154,12 +149,12 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		this.id = id;
 	}
 
-	public CategoryValueObject getCategory() {
-		return category;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(CategoryValueObject category) {
-		this.category = category;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public String getFromDate() {
@@ -178,49 +173,26 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		this.toDate = toDate;
 	}
 
-	public List<HighlightedCategoryValueObject> getAllHighlightedCategories() {
-		return allHighlightedCategories;
+	public List<HighlightedCategoryValueObject> getAllCategories() {
+		return allCategories;
 	}
 
-	public void setAllHighlightedCategories(List<HighlightedCategoryValueObject> allHighlightedCategories) {
-		this.allHighlightedCategories = allHighlightedCategories;
-	}
-	
-	public static Logger getLog() {
-		return LoggerProvider.getLogger(HighlightedCategoryForm.class);
+	public void setAllCategories(List<HighlightedCategoryValueObject> allCategories) {
+		this.allCategories = allCategories;
 	}
 
-	public String getCategoryType() {
-		return categoryType;
+	@SuppressWarnings("unchecked")
+	public static List<Category> getCategories()  {
+		try {
+			return (List<Category>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					return DAOManager.getCategoryDAO().selectCategoryWithoutChilds();
+				}
+			});
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ArrayList<Category>();
+		}
 	}
-
-	public void setCategoryType(String categoryType) {
-		this.categoryType = categoryType;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public String getCategorySelectedText() {
-		return categorySelectedText;
-	}
-
-	public void setCategorySelectedText(String categorySelectedText) {
-		this.categorySelectedText = categorySelectedText;
-	}
-
-	public String getCategoryAutocompleter() {
-		return categoryAutocompleter;
-	}
-
-	public void setCategoryAutocompleter(String categoryAutocompleter) {
-		this.categoryAutocompleter = categoryAutocompleter;
-	}
-
-
 }

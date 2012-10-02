@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.lang.StringUtils;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
