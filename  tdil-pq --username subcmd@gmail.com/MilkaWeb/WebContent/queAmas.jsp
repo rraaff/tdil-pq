@@ -69,9 +69,25 @@ $(document).ready(
 
   	  	if ($.cookie('amas')) {
   	  	  	// deshabilito el alta de amas
+  	  		$("input[name='alreadyVoted']").attr('value', 'on');
+	  	  	$("form[name=LoveForm]").submit(function(e) {
+		  	  	$window = $(window);
+			    var top = ($window.height() / 2) - ($( "#showalreadyvoted" ).height() / 2);
+			    var left = ($window.width() / 2) - ($( "#showalreadyvoted" ).width() / 2);
+		  	  	$( "#showalreadyvoted" ).css({
+					position: 'absolute',
+			        top: top + 'px',
+			        left: left + 'px'
+			      }).fadeIn(500);
+  	                e.preventDefault();
+  	                return false;
+	  	    });
   	  	}
 		$( "#closegracias" ).click(function() {
 			$( "#showfeedback" ).fadeOut();
+		});
+		$( "#closevoted" ).click(function() {
+			$( "#showalreadyvoted" ).fadeOut();
 		});
 		$( "#cancelaltalove" ).click(function() {
 			$( "#altalove" ).fadeOut();
@@ -162,7 +178,7 @@ body {
 	color: #FFF;
 }
 div { /*border:dotted 1px #00CC33;*/ }
-#altalayer, #showfeedback, #graciasporsubir, #erroralta {
+#altalayer, #showfeedback, #graciasporsubir, #erroralta, #showalreadyvoted {
 	color: #FFF;
 	background-color:#000;
 	width:250px;
@@ -293,6 +309,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 </div>
 <html:form method="POST" action="/addLove" >
 	<html:hidden name="LoveForm" property="love" value="on"/>
+	<html:hidden name="LoveForm" property="alreadyVoted" value="off"/>
 	<div id="controles">
 		<div class="myRenglon">
 			<div class="myLabel"><img src="images/experiencias/QAQO/tag_queAmas.gif" /><input type="image" src="images/experiencias/QAQO/btn_queAmas.gif" width="50" height="47" /></div>
@@ -310,6 +327,10 @@ div { /*border:dotted 1px #00CC33;*/ }
 	<div align="center"><input type="button" id="closegracias" value="Close"></div>
 </div>
 <% } %>
+<div id="showalreadyvoted" class="hide" style="z-index: 500;">
+	<p>Ya enviaste tu palabra de amor del día.</p>
+	<div align="center"><input type="button" id="closevoted" value="Close"></div>
+</div>
 <%@ include file="includes/fbShare.jsp" %>
 <div id="bottomLayer" class="hide"><!-- --></div>
 </body>

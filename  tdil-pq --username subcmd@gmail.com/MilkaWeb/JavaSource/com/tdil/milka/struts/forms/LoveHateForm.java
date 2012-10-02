@@ -34,6 +34,7 @@ public class LoveHateForm extends TransactionalValidationForm {
 	
 	private String text;
 	private boolean love = true;
+	private boolean alreadyVoted = false;
 	
 	private static final Pattern pattern = Pattern.compile("([a-z|A-Z]+)");
 	
@@ -57,6 +58,14 @@ public class LoveHateForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
+		if (this.isAlreadyVoted()) {
+			if (this.isLove()) {
+				error.setFieldError(text_key, "LOVE_ALREADY_VOTED");
+			} else {
+				error.setFieldError(text_key, "HATE_ALREADY_VOTED");
+			}
+			return;
+		}
 		FieldValidation.validateText(this.getText(), text_key, 20, error);
 		Matcher matcher = pattern.matcher(this.getText());
 		if (matcher.find()) {
@@ -126,6 +135,12 @@ public class LoveHateForm extends TransactionalValidationForm {
 	}
 	public void setLove(boolean love) {
 		this.love = love;
+	}
+	public boolean isAlreadyVoted() {
+		return alreadyVoted;
+	}
+	public void setAlreadyVoted(boolean alreadyVoted) {
+		this.alreadyVoted = alreadyVoted;
 	}
 
 }

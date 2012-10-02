@@ -43,9 +43,9 @@ public class HateWordCloudTagServlet extends HttpServlet {
 
 	private void doService(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		File file = new File(BlobLocalDiskCache.getDiskBlobLocation() + "/hateCloud.png");
-//		if (file == null || !file.exists() || isOutOfDate(file)) {
+		if (file == null || !file.exists() || isOutOfDate(file)) {
 			LoveHateUtils.createHateWordCloudTag();
-//		}
+		}
 		InputStream inputStream = null;
 		try {
 			inputStream = new FileInputStream(BlobLocalDiskCache.getDiskBlobLocation() + "/hateCloud.png");
