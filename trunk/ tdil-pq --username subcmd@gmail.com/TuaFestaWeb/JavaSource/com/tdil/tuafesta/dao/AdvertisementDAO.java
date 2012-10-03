@@ -80,4 +80,6 @@ public interface AdvertisementDAO {
 	List<AdvertisementValueObject> selectActiveNormalAds() throws SQLException;
 
 	List<AdvertisementValueObject> selectActiveExtraAds() throws SQLException;
+
+	List<AdvertisementValueObject> selectActiveExtraAdsByCategory() throws SQLException;
 }

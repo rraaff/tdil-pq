@@ -166,6 +166,12 @@ public class AdvertisementDAOImpl implements AdvertisementDAO {
    @Override
     public List<AdvertisementValueObject> selectActiveExtraAds() throws SQLException {
 	   List<AdvertisementValueObject> list = sqlMapClient.queryForList("ADVERTISEMENT.selectActiveExtraAds");
-		return list;
+	   return list;
     } 
+   
+   @Override
+	public List<AdvertisementValueObject> selectActiveExtraAdsByCategory() throws SQLException {
+	   List<AdvertisementValueObject> list = sqlMapClient.queryForList("ADVERTISEMENT.selectActiveExtraAdsByCategory");
+	   return list;
+	}
 }

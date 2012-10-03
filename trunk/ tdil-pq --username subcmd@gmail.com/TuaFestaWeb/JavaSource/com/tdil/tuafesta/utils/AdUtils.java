@@ -24,6 +24,7 @@ public class AdUtils {
 					AdsForHome adsForHome = new AdsForHome();
 					adsForHome.setNormal(adDao.selectActiveNormalAds());
 					adsForHome.setExtraWithoutFilter(adDao.selectActiveExtraAds());
+					adsForHome.setExtraByCategory(adDao.selectActiveExtraAdsByCategory());
 					return adsForHome;
 				}
 			});
