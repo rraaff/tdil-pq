@@ -407,6 +407,7 @@
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof
     where ad.type = 1
+    and ad.deleted = 0
     and ad.id_sell = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
@@ -420,6 +421,7 @@
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
     where ad.type = 1
+    and ad.deleted = 0
     and ad.id_sell != 0
     and s.id = ad.id_sell 
     and s.id_profesional = cat.id
@@ -437,6 +439,7 @@
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof
     where ad.type = 2
+    and ad.deleted = 0
     and ad.id_sell = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
@@ -450,12 +453,60 @@
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
     where ad.type = 2 
+    and ad.deleted = 0
     and ad.id_sell != 0
     and s.id = ad.id_sell 
     and s.id_profesional = cat.id
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
+ </select>
+ 
+ <select id="selectActiveExtraAdsByCategory" resultMap="AdvertisementValueObject">
+    select 
+    	<include refid="ADVERTISEMENT.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	prof.description as profesionalDescription,
+    	null as sellName,
+    	null as categoryName
+    from ADVERTISEMENT ad, PROFESIONAL prof
+    where ad.type = 2
+    and ad.deleted = 0
+    and ad.id_sell = 0
+    and ad.id_profesional = prof.id
+	and ad.toDate &gt;= CURDATE()
+	and CURDATE() &gt;= ad.fromDate
+	and exists (select *
+		from SELL s 
+		where s.id_profesional = prof.id
+		and s.id_category in (select hc.id_category 
+			from HIGHLIGHTED_CAT hc
+			where hc.deleted = 0
+			and hc.toDate >= CURDATE()
+			and CURDATE() >= hc.fromDate))
+    union all
+    select 
+    	<include refid="ADVERTISEMENT.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	prof.description as profesionalDescription,
+    	s.name as sellName,
+    	cat.name as categoryName
+    from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
+    where ad.type = 2 
+    and ad.deleted = 0
+    and ad.id_sell != 0
+    and s.id = ad.id_sell 
+    and s.id_profesional = cat.id
+    and ad.id_profesional = prof.id
+	and ad.toDate &gt;= CURDATE()
+	and CURDATE() &gt;= ad.fromDate
+	and cat.id in (
+		select hc.id_category 
+		from HIGHLIGHTED_CAT hc
+		where hc.deleted = 0
+		and hc.toDate >= CURDATE()
+		and CURDATE() >= hc.fromDate
+		)
  </select>
     
 </sqlMap>
