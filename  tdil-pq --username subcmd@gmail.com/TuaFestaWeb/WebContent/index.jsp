@@ -28,6 +28,8 @@
 <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/nivo_theme/default.css" type="text/css" media="screen" />
+<link href="css/carrousel.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.infinite-carousel.js"></script>
 <style>
 <!--
 .advancedSearch, .addProfessional, .addClientFB, .viewPromotions {
@@ -145,46 +147,51 @@
 <div id="preContainer">
 	<div id="content">
 		<div id="superHighlightedBlock" style="margin-left:10px;">
-			<div id="navigationButtons">
-				<div id="left"><a href=""><img src="images/skin_basic/buttons/superHighlited_left.gif" width="22" height="42" /></a></div>
-				<div id="right"><a href=""><img src="images/skin_basic/buttons/superHighlited_right.gif" width="22" height="42" /></a></div>
+			<div id="sliderBloc">
+				<a id="previous">Previous</a>
+				<div style="" id="slider-stage">
+					<div style="width: 512px;" id="slider-list">
+						<a class="theme" href="http://www.google.com">
+							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
+							<span>Profesional: Fotografos</span>
+							<h4>Horacio Carrano Foto</h4>
+							<span>Precio desde: $ 6.000</span>
+						</a>
+						<a class="theme" href="http://www.google.com">
+							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
+							<span>Profesional: Fotografos</span>
+							<h4>Horacio Carrano Foto</h4>
+							<span>Precio desde: $ 6.000</span>
+						</a>
+					</div>
+				</div>
+				<a id="next">Next</a>
 			</div>
-			<div id="adv">
-				<a href="#"><img src="images/skin_basic/demo/superHighlightedPic.gif" /></a>
-				<span class="rubro"><a href="#">Rubro: Salones/Quintas</a></span>
-				<h4><a href="#">Quinta LOS DIEZ</a></h4>
-				<span class="precio"><a href="#">Precio desde: $ 6.000</a></span>		</div>
-			<div id="adv">
-				<img src="images/skin_basic/demo/superHighlightedPic.gif" />
-				<span class="rubro"><a href="#">Rubro: Salones/Quintas</a></span>
-				<h4><a href="#">Finca Madero</a></h4>
-				<span class="precio"><a href="#">Precio desde: $ 9.000</a></span>		</div>
 		</div>
 		<div id="superHighlightedBlock" style="margin-right:10px;">
-			<div id="navigationButtons">
-				<div id="left"><a href=""><img src="images/skin_basic/buttons/superHighlited_left.gif" width="22" height="42" /></a></div>
-				<div id="right"><a href=""><img src="images/skin_basic/buttons/superHighlited_right.gif" width="22" height="42" /></a></div>
+			<div id="sliderBloc">
+				<a id="previous1">Previous</a>
+				<div style="" id="slider-stage1">
+					<div style="width: 512px;" id="slider-list">
+						<a class="theme" href="http://www.google.com">
+							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
+							<span>Profesional: Fotografos</span>
+							<h4>Horacio Carrano Foto</h4>
+							<span>Precio desde: $ 6.000</span>
+						</a>
+						<a class="theme" href="http://www.google.com">
+							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
+							<span>Profesional: Fotografos</span>
+							<h4>Horacio Carrano Foto</h4>
+							<span>Precio desde: $ 6.000</span>
+						</a>
+					</div>
+				</div>
+				<a id="next1">Next</a>
 			</div>
-			<div id="adv">
-				<a href="#"><img src="images/skin_basic/demo/superHighlightedPic.gif" /></a>
-				<span class="rubro"><a href="#">Profesional: Fotografos</a></span>
-				<h4><a href="#">Horacio Carrano Foto</a></h4>
-				<span class="precio"><a href="#">Precio desde: $ 6.000</a></span>		</div>
-			<div id="adv">
-				<a href="#"><img src="images/skin_basic/demo/superHighlightedPic.gif" /></a>
-				<span class="rubro"><a href="#">Profesional: Peinador</a></span>
-				<h4><a href="#">Juan Carlos Coifeur</a></h4>
-				<span class="precio"><a href="#">Precio desde: $ 6.000</a></span>		</div>
 		</div>
 		<div id="punteado"></div>
 		<div id="leftCentral">
-			<div id="lowHighlightedAdv">
-				<h5><a href="#">Nombre del Profesional</a></h5>
-				<div id="imageAtAdv" style=""><a href="#"><img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a></div>
-				<p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ipsum mauris, imperdiet vitae viverra sed, fringilla at nisi. Nullam ac massa neque, sed mattis odio. Vivamus consequat urna non lorem convallis dapibus. Sed blandit, felis ac sagittis viverra, velit odio.</a></p>
-				<span class="category"><a href="#">Rubro: Fotograf&iacute;a</a></span>
-				<span class="price"><a href="#">Precio promedio: $ 6.000</a></span>		
-			</div>
 			<% 	AdsForHome adsForHome = AdUtils.getAdsHome(); %>
 			<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
 				<div id="lowHighlightedAdv">
@@ -240,7 +247,9 @@
 		effect: 'fold',  // Specify sets like: 'fold,fade,sliceDown');
 		pauseTime: 10000
 	});
-	
+
+   jQuery('#slider-stage').carousel('#previous', '#next');
+   jQuery('#slider-stage1').carousel('#previous1', '#next1');
 
   });
    </script>
