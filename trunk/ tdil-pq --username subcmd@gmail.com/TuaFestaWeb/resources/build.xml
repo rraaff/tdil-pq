@@ -45,7 +45,7 @@
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
 			<transaction src="localidades.sql" />
-			<transaction src="demo_data.sql" />
+			<!--transaction src="demo_data.sql" /-->
 		</sql>
 	</target>
 
