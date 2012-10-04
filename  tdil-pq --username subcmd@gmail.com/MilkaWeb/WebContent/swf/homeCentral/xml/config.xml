@@ -35,6 +35,13 @@
 		<item>
 			<text></text>
 			<thumb></thumb>
+			<view>swf/homeCentral/images/view/teaserQaqo.jpg</view>
+			<link>queAmas.jsp</link>
+			<target>_self</target>
+		</item>
+		<item>
+			<text></text>
+			<thumb></thumb>
 			<view>swf/homeCentral/images/view/teaserPostits.jpg</view>
 			<link>postits.jsp</link>
 			<target>_self</target>

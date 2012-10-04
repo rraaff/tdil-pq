@@ -26,7 +26,7 @@
 %>
 <%
 	String nextPage = "buenDia.jsp";
-	String prevPage = "ayudasTernuras.jsp";
+	String prevPage = "queAmas.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
