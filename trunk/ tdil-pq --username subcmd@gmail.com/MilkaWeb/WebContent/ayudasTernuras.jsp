@@ -28,7 +28,7 @@
 	String serverName = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 %>
 <%
-	String nextPage = "postits.jsp";
+	String nextPage = "queAmas.jsp";
 	String prevPage = "apodosDeAmor.jsp";
 %>
 <%@ include file="includes/head.jsp" %>

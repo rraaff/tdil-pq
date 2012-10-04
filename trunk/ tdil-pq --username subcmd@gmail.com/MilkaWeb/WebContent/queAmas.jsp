@@ -25,8 +25,8 @@
 	String lnk = StringUtils.isEmpty(request.getParameter("lnk")) ? "" : request.getParameter("lnk");
 %>
 <%
-	String nextPage = "cartasDeHijosAPadres.jsp";
-	String prevPage = "apodosDeAmor.jsp";
+	String nextPage = "postits.jsp";
+	String prevPage = "ayudasTernuras.jsp";
 %>
 <%@ include file="includes/head.jsp" %>
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
@@ -328,7 +328,7 @@ div { /*border:dotted 1px #00CC33;*/ }
 </div>
 <% } %>
 <div id="showalreadyvoted" class="hide" style="z-index: 500;">
-	<p>Ya enviaste tu palabra de amor del día.</p>
+	<p>Ya enviaste tu palabra de amor del dï¿½a.</p>
 	<div align="center"><input type="button" id="closevoted" value="Close"></div>
 </div>
 <%@ include file="includes/fbShare.jsp" %>
