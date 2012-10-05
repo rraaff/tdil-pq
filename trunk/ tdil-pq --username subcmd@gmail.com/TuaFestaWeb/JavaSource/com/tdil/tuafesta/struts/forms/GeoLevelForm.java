@@ -21,6 +21,7 @@ import com.tdil.tuafesta.dao.Geo2DAO;
 import com.tdil.tuafesta.dao.Geo3DAO;
 import com.tdil.tuafesta.dao.Geo4DAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Category;
 import com.tdil.tuafesta.model.Geo2;
 import com.tdil.tuafesta.model.Geo2Example;
 import com.tdil.tuafesta.model.Geo3;
@@ -109,7 +110,6 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
-		
 	}
 
 	@Override

@@ -87,6 +87,7 @@ public class CategoryForm extends TransactionalValidationForm implements ToggleD
 		Category professionalCategory = DAOManager.getCategoryDAO().selectCategoryByPrimaryKey(this.getObjectId());
 		professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
 		DAOManager.getCategoryDAO().updateCategoryByPrimaryKeySelective(professionalCategory);
+		CacheRegionUtils.incrementVersionInTransaction(Category.class.getName());
 	}
 	
 	private void reloadList() throws SQLException {
