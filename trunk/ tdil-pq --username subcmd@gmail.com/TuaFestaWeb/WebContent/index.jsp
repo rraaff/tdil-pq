@@ -144,55 +144,59 @@
 		</div>
 	</div>
 </div>
+<% 	AdsForHome adsForHome = AdUtils.getAdsHome(); %>
 <div id="preContainer">
 	<div id="content">
+		<% if (!adsForHome.getExtraByCategory().isEmpty()) { %>
 		<div id="superHighlightedBlock" style="margin-left:10px;">
 			<div id="sliderBloc">
 				<a id="previous">Previous</a>
 				<div style="" id="slider-stage">
 					<div style="width: 512px;" id="slider-list">
-						<a class="theme" href="http://www.google.com">
-							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
-							<span>Profesional: Fotografos</span>
-							<h4>Horacio Carrano Foto</h4>
-							<span>Precio desde: $ 6.000</span>
+						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraByCategory()) { %>
+						<a class="theme" href="#">
+							<% if (adByCat.hasImage()) { %>
+								<img src="./downloadThumb.st?width=188&height=109&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
+							<% } else { %>
+								<img src="images/skin_basic/masks/lha_mask.png" width="188" height="109" />
+							<% } %>
+							<span>Profesional: <%=adByCat.getProfesionalBusinessName() %></span>
+							<h4><%=adByCat.getCategoryName()%></h4>
+							<span>Precio desde: </span>
 						</a>
-						<a class="theme" href="http://www.google.com">
-							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
-							<span>Profesional: Fotografos</span>
-							<h4>Horacio Carrano Foto</h4>
-							<span>Precio desde: $ 6.000</span>
-						</a>
+						<% } %>
 					</div>
 				</div>
 				<a id="next">Next</a>
 			</div>
 		</div>
+		<% } %>
+		<% if (!adsForHome.getExtraWithoutFilter().isEmpty()) { %>
 		<div id="superHighlightedBlock" style="margin-right:10px;">
 			<div id="sliderBloc">
 				<a id="previous1">Previous</a>
 				<div style="" id="slider-stage1">
 					<div style="width: 512px;" id="slider-list">
-						<a class="theme" href="http://www.google.com">
-							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
-							<span>Profesional: Fotografos</span>
-							<h4>Horacio Carrano Foto</h4>
-							<span>Precio desde: $ 6.000</span>
+						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraWithoutFilter()) { %>
+						<a class="theme" href="#">
+							<% if (adByCat.hasImage()) { %>
+								<img src="./downloadThumb.st?width=188&height=109&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
+							<% } else { %>
+								<img src="images/skin_basic/masks/lha_mask.png" width="188" height="109" />
+							<% } %>
+							<span>Profesional: <%=adByCat.getProfesionalBusinessName() %></span>
+							<h4><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></h4>
+							<span>Precio desde: </span>
 						</a>
-						<a class="theme" href="http://www.google.com">
-							<img src="images/skin_basic/demo/superHighlightedPic.gif" />
-							<span>Profesional: Fotografos</span>
-							<h4>Horacio Carrano Foto</h4>
-							<span>Precio desde: $ 6.000</span>
-						</a>
+						<% } %>
 					</div>
 				</div>
 				<a id="next1">Next</a>
 			</div>
 		</div>
+		<% } %>
 		<div id="punteado"></div>
 		<div id="leftCentral">
-			<% 	AdsForHome adsForHome = AdUtils.getAdsHome(); %>
 			<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
 				<div id="lowHighlightedAdv">
 					<h5><a href="#"><%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
@@ -248,8 +252,12 @@
 		pauseTime: 10000
 	});
 
+   <% if (!adsForHome.getExtraByCategory().isEmpty()) { %>
    jQuery('#slider-stage').carousel('#previous', '#next');
+   <% } %>
+   <% if (!adsForHome.getExtraWithoutFilter().isEmpty()) { %>
    jQuery('#slider-stage1').carousel('#previous1', '#next1');
+   <% } %>
 
   });
    </script>
