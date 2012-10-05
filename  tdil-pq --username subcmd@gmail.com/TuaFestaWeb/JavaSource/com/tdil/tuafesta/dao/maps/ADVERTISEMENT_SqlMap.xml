@@ -463,27 +463,25 @@
  </select>
  
  <select id="selectActiveExtraAdsByCategory" resultMap="AdvertisementValueObject">
-    select 
+    select distinct
     	<include refid="ADVERTISEMENT.Base_Column_List" />,
     	prof.businessname as profesionalbusinessname,
     	prof.description as profesionalDescription,
     	null as sellName,
-    	null as categoryName
-    from ADVERTISEMENT ad, PROFESIONAL prof
+    	cat.name as categoryName
+    from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, HIGHLIGHTED_CAT hc, CATEGORY cat
     where ad.type = 2
     and ad.deleted = 0
     and ad.id_sell = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
-	and exists (select *
-		from SELL s 
-		where s.id_profesional = prof.id
-		and s.id_category in (select hc.id_category 
-			from HIGHLIGHTED_CAT hc
-			where hc.deleted = 0
-			and hc.toDate >= CURDATE()
-			and CURDATE() >= hc.fromDate))
+	and s.id_profesional = prof.id
+	and hc.deleted = 0
+	and hc.toDate >= CURDATE()
+	and CURDATE() >= hc.fromDate
+	and s.id_category = hc.id_category
+	and cat.id = s.id_category
     union all
     select 
     	<include refid="ADVERTISEMENT.Base_Column_List" />,
