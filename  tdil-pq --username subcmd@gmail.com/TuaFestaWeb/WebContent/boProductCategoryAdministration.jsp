@@ -96,7 +96,7 @@
 									<html:link action="/toggleDeletedProductCategory" paramName="iterSection"
 										paramProperty="id" paramId="id">
 										<%
-											if (((CategoryTreeNode) iterSection).getCategory().getDeleted() == 1) {
+											if (((CategoryTreeNode) iterSection).getCategory().getDeleted().equals(1)) {
 										%>
 											<img src="boImages/activar.png" alt="Activar">
 										<% } else { %>

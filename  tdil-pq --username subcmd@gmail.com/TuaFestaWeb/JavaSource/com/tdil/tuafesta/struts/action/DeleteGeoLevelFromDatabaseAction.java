@@ -22,11 +22,11 @@ public class DeleteGeoLevelFromDatabaseAction extends EditAction {
 			HttpServletResponse response) throws Exception {
 		
 		final GeoLevelForm abstractForm = (GeoLevelForm) form;
-		final int levelId = Integer.parseInt(request.getParameter("level"));
-		final int userId = Integer.parseInt(request.getParameter("id"));
+//		final int levelId = Integer.parseInt(request.getParameter("level"));
+//		final int userId = Integer.parseInt(request.getParameter("id"));
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {
-				abstractForm.deleteGeoLevelFromDatabase(levelId, userId);
+//				abstractForm.deleteGeoLevelFromDatabase(levelId, userId);
 			}
 		});
 
