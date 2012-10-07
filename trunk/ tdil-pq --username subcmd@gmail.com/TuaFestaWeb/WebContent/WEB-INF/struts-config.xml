@@ -194,7 +194,7 @@
    <forward name="failure" path="/boGeoLevelAdministration.jsp"/>
   </action>
   <action name="GeoLevelForm" parameter="Admin"
-   path="/toggleDeletedGeoLevel" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   path="/toggleDeletedGeoLevel" scope="session" type="com.tdil.tuafesta.struts.action.ToggleDeletedGeoLevelAction">
    <forward name="continue" path="/boGeoLevelAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boGeoLevelAdministration.jsp"/>
   </action>
