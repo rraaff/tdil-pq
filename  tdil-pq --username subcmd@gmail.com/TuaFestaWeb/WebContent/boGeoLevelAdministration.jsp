@@ -162,14 +162,13 @@
 								</td>
 								<td class="paddingTD">
 									<a href="./editGeoLevel.do?id=<%=((GeoLevelValueObject) iterSection).getId()%>&level=<%=((GeoLevelValueObject) iterSection).getLevel()%>"><img src="boImages/editar.png" alt="Editar"></a>
-									<html:link action="/toggleDeletedGeoLevel" paramName="iterSection"
-										paramProperty="id" paramId="id">
+									<a href="./toggleDeletedGeoLevel.do?id=<%=((GeoLevelValueObject) iterSection).getId()%>&level=<%=((GeoLevelValueObject) iterSection).getLevel()%>">
 										<% if (((GeoLevelValueObject) iterSection).getDeleted() == 1) { %>
 											<img src="boImages/activar.png" alt="Activar">
 										<% } else { %>
 											<img src="boImages/desactivar.png" alt="Desactivar">
 										<% } %>
-									</html:link>
+									</a>
 									<html:link action="/deleteGeoLevelFromDatabase" paramName="iterSection"
 										paramProperty="id" paramId="id">
 											<img src="boImages/deleteFromDb.png" alt="Eliminar de la base">

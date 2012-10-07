@@ -31,7 +31,7 @@ import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.validations.FieldValidation;
 
-public class GeoLevelForm extends TransactionalValidationForm implements ToggleDeletedFlagForm, GeoLevelSelectionForm {
+public class GeoLevelForm extends TransactionalValidationForm implements GeoLevelSelectionForm {
 
 	/**
 	 * 
@@ -41,6 +41,7 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 	private int id;
 	
 	private int level = 2;
+	private int levelDelete = 2;
 	private int objectId;
 	private String nombre;
 	private int geo2Id;
@@ -101,15 +102,32 @@ public class GeoLevelForm extends TransactionalValidationForm implements ToggleD
 
 	/** Used for delete */
 	public void resetAfterDelete() throws SQLException {
-		this.reset();
+		this.objectId = 0;
+		this.search();
 	}
-	public void initForDeleteWith(int userId) throws SQLException {
+	public void initForDeleteWith(int userId, int level) throws SQLException {
 		this.objectId = userId;
+		this.levelDelete = level;
 	}
 	public void validateForToggleDeletedFlag(ValidationError validationError) {
 		// TODO Auto-generated method stub
 	}
 	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		if (this.levelDelete == 2) {
+			Geo2 professionalCategory = DAOManager.getGeo2DAO().selectGeo2ByPrimaryKey(this.getObjectId());
+			professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
+			DAOManager.getGeo2DAO().updateGeo2ByPrimaryKeySelective(professionalCategory);
+		} else {
+			if (this.levelDelete == 3) {
+				Geo3 professionalCategory = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(this.getObjectId());
+				professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
+				DAOManager.getGeo3DAO().updateGeo3ByPrimaryKeySelective(professionalCategory);
+			} else {
+				Geo4 professionalCategory = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(this.getObjectId());
+				professionalCategory.setDeleted(professionalCategory.getDeleted().equals(1) ? 0 : 1);
+				DAOManager.getGeo4DAO().updateGeo4ByPrimaryKeySelective(professionalCategory);
+			}
+		}
 	}
 
 	@Override
