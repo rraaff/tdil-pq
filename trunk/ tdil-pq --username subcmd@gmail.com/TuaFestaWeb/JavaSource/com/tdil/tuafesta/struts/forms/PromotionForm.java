@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.lang.StringUtils;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -19,6 +20,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.struts.forms.UploadData;
 import com.tdil.tuafesta.dao.PromotionPhotoDAO;
 import com.tdil.tuafesta.dao.PromotionSellDAO;
+import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.BlobData;
 import com.tdil.tuafesta.model.Promotion;
@@ -228,6 +230,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		}
 		// borro todas las photos
 		PromotionPhotoDAO photoDAO = DAOManager.getPromotionPhotoDAO();
+		SellDAO sellDao = DAOManager.getSellDAO();
 		PromotionPhotoExample promotionPhotoExample = new PromotionPhotoExample();
 		promotionPhotoExample.createCriteria().andIdPromotionEqualTo(id);
 		List<PromotionPhoto> oldPhotos = photoDAO.selectPromotionPhotoByExample(promotionPhotoExample);
@@ -257,6 +260,11 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 			PromotionSell promotionSell = new PromotionSell();
 			promotionSell.setIdPromotion(id);
 			promotionSell.setIdSell(sellBean.getId());
+			if (StringUtils.isEmpty(sellBean.getReferencePrice())) {
+				promotionSell.setReferenceprice(null);
+			} else {
+				promotionSell.setReferenceprice(new BigDecimal(sellBean.getReferencePrice()));
+			}
 			promotionSell.setDeleted(0);
 			promotionSellDAO.insertPromotionSell(promotionSell);
 		}

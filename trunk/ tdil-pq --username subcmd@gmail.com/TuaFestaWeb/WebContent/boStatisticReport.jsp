@@ -88,6 +88,7 @@ function doSearch() {
                     <option value="7">Contactos al perfil del profesional</option>
                     <option value="8">Registraciones de profesionales</option>
                     <option value="9">Registraciones de clientes</option>
+                    <option value="10">Contactos a promociones</option>
                 </select>
                 Agrupar:<select id="sGroup">
                     <option value="0">No</option>

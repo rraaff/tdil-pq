@@ -199,9 +199,19 @@
 		<div id="leftCentral">
 			<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
 				<div id="lowHighlightedAdv">
-					<h5><a href="#"><%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
+					<h5>
+						<% if (advertisementValueObject.isProfesionalAd()) { %>
+							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>">
+						<% } else {  %>
+							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>">
+						<% } %>
+						<%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
 					<div id="imageAtAdv" style="">
-						<a href="#">
+						<% if (advertisementValueObject.isProfesionalAd()) { %>
+							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>">
+						<% } else {  %>
+							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>">
+						<% } %>
 							<% if (advertisementValueObject.hasImage()) { %>
 								<img src="./downloadThumb.st?width=86&height=86&id=<%=advertisementValueObject.getIdBlobData()%>&type=PUBLIC&ext=<%=advertisementValueObject.getExtBlobData()%>" alt=""/>
 							<% } else { %>
@@ -209,14 +219,14 @@
 							<% } %>
 						</a>
 					</div>
-					<p><a href="#">
+					<p>
 						<% if (advertisementValueObject.isProfesionalAd()) { %>
-							<%=advertisementValueObject.getProfesionalDescriptionUpTo(50) %>
+							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalDescriptionUpTo(50) %></a>
 						<% } else { %>
-							<%=advertisementValueObject.getSellName() %>
-							<span class="category">Rubro: <%=advertisementValueObject.getCategoryName() %></span>
+							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getSellName() %>
+							<span class="category">Rubro: <%=advertisementValueObject.getCategoryName() %></span></a>
 						<% } %>
-						</a></p>
+					</p>
 					<span class="price"><a href="#"></a></span>		
 				</div>
 			<% } %>

@@ -65,6 +65,9 @@
    <form-bean id="AdvertisementForm"
    name="AdvertisementForm" type="com.tdil.tuafesta.struts.forms.AdvertisementForm"/>
    
+   <form-bean id="PromotionContactForm"
+   name="PromotionContactForm" type="com.tdil.tuafesta.struts.forms.PromotionContactForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -381,6 +384,11 @@
   <action name="ProfesionalContactForm" path="/contactProfesional"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/profesionalContactData.jsp"/>
+  </action>
+  
+  <action name="PromotionContactForm" path="/contactPromotion"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/promotionContactData.jsp"/>
   </action>
   
   <action name="ProfesionalProfileForm" path="/addWallComment"

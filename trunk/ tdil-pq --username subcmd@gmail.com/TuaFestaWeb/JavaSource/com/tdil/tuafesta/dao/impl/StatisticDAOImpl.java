@@ -188,5 +188,8 @@ public class StatisticDAOImpl implements StatisticDAO {
 		return list;
 	}
 	
-	
+	public List<StatisticValueObject> selectPromotionContactStats(Map<String, Object> params) throws SQLException {
+		List<StatisticValueObject> list = sqlMapClient.queryForList("STATISTIC_REPORT.promotionContactStats", params);
+		return list;
+	}
 }
