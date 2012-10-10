@@ -68,6 +68,13 @@ public enum StatisticType {
 		public int getID() {
 			return 9;
 		}
+	},
+	
+	PROMOTION_CONTACT() {
+		@Override
+		public int getID() {
+			return 10;
+		}
 	};
 	
 	

@@ -71,6 +71,9 @@ public class StatisticReportForm extends ReportForm {
 		if (this.sStatType == StatisticType.CLIENT_REGISTRATION.getID()) {
 			searchClientRegistration(full);
 		}
+		if (this.sStatType == StatisticType.PROMOTION_CONTACT.getID()) {
+			searchPromotionContact(full);
+		}
 		return full;
 	}
 
@@ -99,6 +102,13 @@ public class StatisticReportForm extends ReportForm {
 		Map<String, Object> params = getSearchParams();
 		StatisticDAO statDao = DAOManager.getStatisticDAO();
 		List<StatisticValueObject> result = statDao.selectProfesionalContactStats(params);
+		fillResult(full, result);
+	}
+	
+	private void searchPromotionContact(List<List<Object>> full) throws SQLException {
+		Map<String, Object> params = getSearchParams();
+		StatisticDAO statDao = DAOManager.getStatisticDAO();
+		List<StatisticValueObject> result = statDao.selectPromotionContactStats(params);
 		fillResult(full, result);
 	}
 	

@@ -16,6 +16,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellMedia;
 import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.model.SellType;
@@ -84,7 +85,16 @@ public class SellDetailsForm extends TransactionalValidationForm {
 		if (type == SellType.PRODUCT) {
 			sellValueObject = DAOManager.getSellDAO().selectSellProductValueObject(id);
 		} else {
-			sellValueObject = DAOManager.getSellDAO().selectSellServiceValueObject(id);
+			if (type == SellType.SERVICE) {
+				sellValueObject = DAOManager.getSellDAO().selectSellServiceValueObject(id);
+			} else {
+				Sell sell = DAOManager.getSellDAO().selectSellByPrimaryKey(id);
+				if (sell.getType().equals(SellType.PRODUCT)) {
+					sellValueObject = DAOManager.getSellDAO().selectSellProductValueObject(id);
+				} else {
+					sellValueObject = DAOManager.getSellDAO().selectSellServiceValueObject(id);
+				}
+			}
 		}
 		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
 		SellMediaExample sellMediaExample = new SellMediaExample();

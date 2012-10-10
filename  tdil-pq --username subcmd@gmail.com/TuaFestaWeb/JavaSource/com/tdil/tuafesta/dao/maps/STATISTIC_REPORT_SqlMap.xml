@@ -368,4 +368,45 @@
     	</isNotNull>
     </dynamic>
   </select>
+  
+  
+  <select id="promotionContactStats" parameterClass="java.util.Map" resultMap="StatisticValueObject">
+    select 
+    	<isNotNull property="objectna">
+        	'n/a' as data,
+    	</isNotNull>
+    	<isNull property="objectna">
+	    	prom.name as data,
+    	</isNull>
+
+    	<isNotNull property="datena">
+        	'n/a' as objecttime,
+    	</isNotNull>
+    	<isNull property="datena">
+	    	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#) as objecttime,
+    	</isNull>
+    	<isNotNull property="groupby">
+        	sum(1) as quantity
+    	</isNotNull>
+    	<isNull property="groupby">
+        	1 as quantity
+    	</isNull>
+    from STATISTIC st, PROMOTION prom
+    where st.statType = 10
+	and st.objectId = prom.id
+	<isNotNull property="sFrom">
+        	and objecttime >= #sFrom:TIMESTAMP#
+    </isNotNull>
+    <isNotNull property="sTo">
+        	and objecttime &lt;= #sTo:TIMESTAMP#
+    </isNotNull>
+	<dynamic prepend="group by">
+		<isNotNull prepend="," property="groupbyobject">
+        	prom.id, prom.name
+    	</isNotNull>
+		<isNotNull prepend="," property="groupbydate">
+        	DATE_FORMAT(st.objectTime,#dateformated:VARCHAR#)
+    	</isNotNull>
+    </dynamic>
+  </select>
 </sqlMap>

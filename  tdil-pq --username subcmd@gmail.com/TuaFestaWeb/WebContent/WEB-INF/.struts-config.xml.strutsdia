@@ -1145,9 +1145,6 @@
  <PROCESS-ITEM NAME="page9" PATH="/boGeoLevelAdministration.jsp"
   SHAPE="240,6737,0,0" SUBTYPE="jsp"
   TITLE="boGeoLevelAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/toggleDeletedGeoLevel.do"
-   SUBTYPE="confirmed" TARGET="action25"
-   TITLE="/toggleDeletedGeoLevel.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT NAME="link1"
    PATH="/deleteGeoLevelFromDatabase.do" SUBTYPE="confirmed"
    TARGET="action83" TITLE="/deleteGeoLevelFromDatabase.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
@@ -1264,4 +1261,14 @@
    SUBTYPE="confirmed" TARGET="page18"
    TITLE="/editHighlightedCategory.st" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#contactPromotion" NAME="action131"
+  PATH="/contactPromotion" SHAPE="32,2849,0,0"
+  TITLE="PromotionContactForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/promotionContactData.jsp" TARGET="page30" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page30" PATH="/promotionContactData.jsp"
+  SHAPE="240,2866,0,0" SUBTYPE="jsp" TITLE="promotionContactData.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

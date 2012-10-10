@@ -87,6 +87,7 @@
 		<%  	first = false;
 			} %><br>
 	</div>
+	<a href="./contactPromotion.do?id=<%=id %>">Contactar profesionales</a>
 </div>
 <p>
 <!-- % @ include file="includes/fbShare.jsp" %-->
