@@ -106,82 +106,63 @@ $(document).ready(
 		<html:form method="POST" action="/addProfesional">
 			<% ProfesionalForm profesionalForm = (ProfesionalForm)session.getAttribute("ProfesionalForm"); %>
 			<div id="formSection">
+				<h2>Datos personales</h2>
 				<div class="myRow">
-					<div class="myLabel width50">Nombre</div>
-					<div class="myLabel width200" id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField width200"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.firstname.err")%></div>
-					<div class="myLabel width50">&nbsp;</div>
-					<div class="myLabel width80">Apellido</div>
-					<div class="myLabel width150" id="Apellido"><html:text name="ProfesionalForm" property="lastname" styleClass="normalField width150"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.lastname.err")%></div>
+					<div class="myLabel width70">Nombre</div>
+					<div class="myLabel width300" id="Nombre"><html:text name="ProfesionalForm" property="firstname" styleClass="normalField width240"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.firstname.err")%></div>
+					<div class="myLabel width60">&nbsp;</div>
+					<div class="myLabel width70">Apellido</div>
+					<div class="myLabel width280" id="Apellido"><html:text name="ProfesionalForm" property="lastname" styleClass="normalField width240"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.lastname.err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width50">Cod. &aacute;rea</div>
-					<div class="myLabel width60" id="Telefono"><html:text name="ProfesionalForm" property="phoneAreaCode" styleClass="normalField width50"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneareacode_key + ".err")%></div>
+					<div class="myLabel width70">Cod. &aacute;rea</div>
+					<div class="myLabel width70" id="Telefono"><html:text name="ProfesionalForm" property="phoneAreaCode" styleClass="normalField width30"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneareacode_key + ".err")%></div>
 					<div class="myLabel width50">N&uacute;mero</div>
-					<div class="myLabel width160" id="Telefono"><html:text name="ProfesionalForm" property="phoneNumber" styleClass="normalField width150"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonenumber_key + ".err")%></div>
+					<div class="myLabel width160" id="Telefono"><html:text name="ProfesionalForm" property="phoneNumber" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonenumber_key + ".err")%></div>
 					<div class="myLabel width20">Int.</div>
-					<div class="myLabel width50" id="Telefono"><html:text name="ProfesionalForm" property="phoneExtension" styleClass="normalField width40"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
-					<div class="myLabel width20">Tipo</div>
-					<div class="myLabel width110" id="Telefono"><html:select name="ProfesionalForm" property="phoneType" styleClass="normalField width150">
+					<div class="myLabel width80" id="Telefono"><html:text name="ProfesionalForm" property="phoneExtension" styleClass="normalField width40"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
+					<div class="myLabel width50">Tipo</div>
+					<div class="myLabel width280" id="Telefono"><html:select name="ProfesionalForm" property="phoneType" styleClass="normalField width240">
 							<option value="">Seleccione</option><%-- 
 							--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
 								--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
 										--%><%=type%></option>
 							<% } %>
 						</html:select>
-					</div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonetype_key + ".err")%></div>
+					&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonetype_key + ".err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width50">Sexo</div>
-					<div class="myLabel width150" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino</div>
-					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.sex.err")%></div>
+					<div class="myLabel width70">Sexo</div>
+					<div class="myLabel width350" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino&nbsp;&nbsp;&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.sex.err")%></div>
 					<div class="myLabel width80">Fecha Nac.</div>
-					<div class="myLabel width150" id="Fecha Nac."><html:text name="ProfesionalForm" property="birthdate" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.birthdate.err")%></div>
+					<div class="myLabel width280" id="Fecha Nac."><html:text name="ProfesionalForm" property="birthdate" styleClass="normalField width240"/><%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.birthdate.err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width150" id="Email">
+					<div class="myLabel width70">E-Mail</div>
+					<div class="myLabel width300" id="Email">
 						<% if (profesionalForm.isFacebookRegister()) { %>
 							<bean:write name="ProfesionalForm" property="email" />
 						<% } else { %>
-							<html:text name="ProfesionalForm" property="email" styleClass="normalField width150"/>
+							<html:text name="ProfesionalForm" property="email" styleClass="normalField width240"/>
 						<% } %>
-					</div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.email.err")%></div>
+					&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.email.err")%></div>
 				</div>
 				<% if (!profesionalForm.isFacebookRegister()) { %>
-				<div class="myRow">
-					<div class="myLabel width50">Clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width150"/></div>
-					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
-					<div class="myLabel width80">Repetir clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ProfesionalForm" property="retypepassword" styleClass="normalField width150"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
-				</div>
+					<div class="myRow">
+						<div class="myLabel width70">Clave</div>
+						<div class="myLabel width350" id="Password"><html:password name="ProfesionalForm" property="password" styleClass="normalField width240"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.password.err")%></div>
+						<div class="myLabel width80">Repetir clave</div>
+						<div class="myLabel width280" id="Password"><html:password name="ProfesionalForm" property="retypepassword" styleClass="normalField width240"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ProfesionalForm.retypepassword.err")%></div>
+					</div>
 				<% } %>
-			</div>
-			<div id="formSection" class="width650">
+				<div class="width760 height25" style="float:left;">&nbsp;</div>
+				<h2>Datos profesionales</h2>
 				<div class="myRow">
-					<div class="myLabel width200">Nombre profesional o de la empresa</div>
-					<div class="myLabel width380" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width350"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
+					<div class="myLabel width230">Nombre profesional o de la empresa</div>
+					<div class="myLabel width450" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width350"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width50">CUIT</div>
-					<div class="myLabel width100" id=""><html:text name="ProfesionalForm" property="cuit" styleClass="normalField width100"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.cuit_key + ".err")%></div>
-					<div class="myLabel width30">IIBB</div>
-					<div class="myLabel width100" id=""><html:text name="ProfesionalForm" property="iibb" styleClass="normalField"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.iibb_key + ".err")%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Ubicaci&oacute;n</div>
+					<div class="myLabel width70">Ubicaci&oacute;n</div>
 					<div class="myLabel width160">
 						<html:select name="ProfesionalForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Profesional.do';this.form.submit()" styleClass="normalField width150">
 							<option value="0">Seleccione</option><%-- 
@@ -217,25 +198,42 @@ $(document).ready(
 						<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.geo4_key + ".err")%>
 					</div>
 				</div>
-			</div>
-			
-			<div id="formSection" class="width650">
-				<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px;">Agregue productos y servicios que desee ofrecer</h2>
 				<div class="myRow">
-					<div class="myLabel width600 comment">Agregue todos productos que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
-					<a class="nonelyLink" id="addProduct">Agregar producto</a><a class="nonelyLink" id="addService">Agregar servicio</a>
+					<div class="myLabel width70">CUIT</div>
+					<div class="myLabel width200" id=""><html:text name="ProfesionalForm" property="cuit" styleClass="normalField width150"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.cuit_key + ".err")%></div>
+					<div class="myLabel width120"><span class="comment">Sin guiones</span></div>
+					<div class="myLabel width50">IIBB</div>
+					<div class="myLabel width200" id=""><html:text name="ProfesionalForm" property="iibb" styleClass="normalField width150"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.iibb_key + ".err")%></div>
 				</div>
-				
+				<div class="width760 height25" style="float:left;">&nbsp;</div>
+				<h2>Agregue productos y servicios que desee ofrecer</h2>
+				<div class="myRow">
+					<div class="myLabel width790 comment">Agregue todos productos que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width780">Desea incorporar producto a su perfil? Si, <a class="nonelyLink" id="addProduct">agregar producto</a>, o <a class="nonelyLink" id="addService">agregar servicio</a></div>
+				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
 				
 				<div id="addSellLayer" style="display: none;">
-					<span id="categoryPath"></span><br/>
-					<html:text name="ProfesionalForm" property="categoryId" styleClass="normalField width100"/><br/>
-					<html:text name="ProfesionalForm" property="categorySelected" styleClass="normalField width100"/><br/>
-					<html:text name="ProfesionalForm" property="sellName" styleClass="normalField width100"/><br/>
-					<html:text name="ProfesionalForm" property="sellDescription" styleClass="normalField width100"/><br/>
-					<html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField width100"/><br/>
-					<a href="javascript:document.ProfesionalForm.action='./registroProfesionalAddSell.do';document.ProfesionalForm.submit();" id="doAddSell">Agregar</a>&nbsp;<a href="#" id="cancelAddSell">Cancelar</a>
+					<div class="myRow">
+						<div class="myLabel width780"><span id="categoryPath" class="prodServCategoryPath"></span></div>
+					</div>
+					<html:text name="ProfesionalForm" property="categoryId" styleClass="hidden"/>
+					<html:text name="ProfesionalForm" property="categorySelected" styleClass="hidden"/>
+					<div class="myRow">
+						<div class="myLabel width70">Art&iacute;culo<!-- meter un if si es servicio que diga "Servicio" --></div>
+						<div class="myLabel width210"><html:text name="ProfesionalForm" property="sellName" styleClass="normalField width200"/></div>
+						<div class="myLabel width30">&nbsp;</div>
+						<div class="myLabel width70">Descripci&oacute;n<!-- meter un if que diga "Servicio" --></div>
+						<div class="myLabel width210 height100"><html:textarea name="ProfesionalForm" property="sellDescription" styleClass="normalField width200 height80"/></div>
+						<div class="myLabel width30">&nbsp;</div>
+						<div class="myLabel width90">Precio Unitario<!-- meter un if si es servicio que diga "Precio base" --></div>
+						<div class="myLabel width70"><html:text name="ProfesionalForm" property="referenceprice" styleClass="normalField width60"/></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width800" align="center"><a href="javascript:document.ProfesionalForm.action='./registroProfesionalAddSell.do';document.ProfesionalForm.submit();" id="doAddSell">Agregar</a> o <a href="#" id="cancelAddSell">Cancelar</a></div>
+					</div>
 				</div>
 				
 				<div class="myRow">
@@ -246,17 +244,19 @@ $(document).ready(
 					%>
 					<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./registroProfesional.jsp">
 						<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
-						<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width250" property="sellTypeDescription"></display:column>
-						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
-						<display:column title="Precio Unitario" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
+						<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
+						<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width400" property="categoryText"></display:column>
+						<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referencePrice"></display:column>
 						<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./registroProfesionalRemoveSell.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
 						</display:column>
 					</display:table>
-					<%=DisplayTagParamHelper.getFields(request)%>
+					<div style="color:#00FF99;"><%=DisplayTagParamHelper.getFields(request)%></div>
 				</div>
-				<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
+				<div class="myRow" align="center">
+					<div class="myLabel width780 width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
+				</div>
+				<div class="myRow" align="center"><input type="submit" value="enviar datos" class="" /></div>
 			</div>
-			<div class="myRow width650" align="center"><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
 		</html:form>
 		</div>
 		<!-- aca Termina el formulario -->

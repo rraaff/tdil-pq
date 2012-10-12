@@ -1,0 +1,241 @@
+@charset "utf-8";
+/* CSS Document */
+/*   Reseteo CSS   ***************************************************/
+
+body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	margin:0;
+	padding:0;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { 
+	border:0;
+}
+a img{border:0; outline:none;}
+a{
+	color:#292f3a;
+	outline:none;
+	cursor:pointer;
+	text-decoration:none;
+}
+a:hover{
+	color:#292f3a;
+	outline:none;
+	text-decoration:underline;
+}
+p, ul{
+	margin-bottom:10px;	
+}
+/* END RESET */
+/* ///////////////////////////////////////////////////////////// */
+/* / HEADER //////////////////////////////////////////////////// */
+#headers {
+	background-image: url(../images/skin_basic/backgrounds/header.gif);
+	background-repeat: repeat-x;
+	width:100%;
+	height:130px;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+#headers #header {
+	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
+	width:980px;
+	height:130px;
+	margin:0 auto;
+}
+#headers #header #logo {
+	width:141px;
+	height:130px;
+	float:left;
+}
+#headers #header #centralhead {
+	width: 830px;
+	height:130px;
+	float:left;
+}
+#headers #header #centralhead #border {
+	/*background-color:#00FF33;*/
+	background-image: url(../images/skin_basic/header/border.gif);
+	background-repeat: no-repeat;
+	width:6px;
+	height:107px;
+	margin-top:11px;
+	float:left;
+}
+#headers #header #centralhead #taglineAndMenu {
+	width:474px;
+	margin-left:16px;
+	margin-top:57px;
+	float:left;
+}
+#headers #header #centralhead #taglineAndMenu p {
+	font-size: 18px;
+	color: #005a9e;
+}
+* {
+	list-style:none;
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+.nav > li {
+	font-size:11px;
+	margin-top:12px;
+	float:left;
+}
+.nav li a, .userLogged {
+	color:#8d8d8d;
+	display:block;
+	padding:0 10px;
+	float:left;
+}
+.userLogged {
+	padding-right:0;
+	float:left;
+}
+.selected {
+	color:#efaf01;
+	display:block;
+	float:left;
+}
+.nav li a:hover {
+	color:#efaf01;
+}
+.nav li ul {
+	display:none;
+	position:absolute;
+	min-width:80px;
+}
+.nav li:hover > ul {
+	display:block;
+}
+.nav li ul li {
+	position:relative;
+}
+.nav li ul li ul {
+	right:-165px;
+	top:0;
+}
+#headers #header #centralhead #search {
+	color:#8e8e8e;
+	font-size:13px;
+	width:233px;
+	margin-left:17px;
+	margin-top:50px;
+	float:left;
+}
+#headers #header #centralhead #search .searchField {
+	font-size: 12px;
+	background-image: url(../images/skin_basic/header/baseSimpleSearch.gif);
+	background-repeat: no-repeat;
+	border:none;
+	width:143px;
+	height:22px;
+	padding-top:3px;
+	padding-left:13px;
+	padding-bottom:3px;
+	padding-right:13px;
+}
+#headers #header #centralhead #social {
+	margin-left:12px;
+	margin-top:45px;
+	float:left;
+}
+/* / FOOTER //////////////////////////////////////////////////// */
+#footers {
+	background-image: url(../images/skin_basic/backgrounds/footer.gif);
+	background-repeat: repeat-x;
+	margin: 0px;
+	height: 108px;
+	width: 100%;
+	float:left;
+	position:relative;
+}
+#footers #footer {
+	width:980px;
+	margin: 0 auto;
+}
+#footers #footer #logo {
+	width:120px;
+	height:96px;
+	margin-top: 12px;
+	float:left;
+}
+#footers #footer #linkAndCopy {
+	width:500px;
+	margin-left:16px;
+	margin-right:16px;
+	margin-top:37px;
+	float:left;
+	
+	font-size:11px;
+	text-align:center;
+}
+#footers #footer #linkAndCopy a, #footers #footer #linkAndCopy a:active, #footers #footer #linkAndCopy a:visited {
+	margin-left:3px;
+	margin-right:3px;
+}
+#footers #footer #linkAndCopy a:hover {
+	color:#f46048;
+}
+#footers #footer #social {
+	width:158px;
+	height:41px;
+	margin-top:46px;
+	margin-left:37px;
+	float:left;
+}
+#footers #footer #tdil {
+	width:105px;
+	margin-top:46px;
+	margin-left:19px;
+	float:left;
+}
+#footers #footer #tdil #logo {
+	width:105px;
+	height:23px;
+	margin:0;
+	float:left;
+}
+#footers #footer #tdil #tagline {
+	width:105px;
+	font-size:10px;
+	line-height:normal;
+	text-align:center;
+	padding-top:8px;
+	float:left;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+#footers a, #footers a:active, #footers a:visited {
+	color:#919191;
+	text-decoration:none;
+}
+#footers a:hover {
+	color:#919191;
+	text-decoration:underline;
+}
+/* ///////////////////////////////////////////////////////////// */

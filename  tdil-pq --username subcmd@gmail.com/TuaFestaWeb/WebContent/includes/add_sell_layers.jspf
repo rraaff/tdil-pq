@@ -1,8 +1,8 @@
 <div id="selectPCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
-	<table id="prod_cat_tbl" border="1">
+	<table id="prod_cat_tbl">
 		<tr id="prod_cat_tr">
 			<td>
-				<select id="pcl-0" size="10" style="width: 120px;" level="0">
+				<select id="pcl-0" size="10" style="width: 200px;" level="0">
 					<% for (com.tdil.tuafesta.model.Category pc : com.tdil.tuafesta.utils.CategoryUtils.getCategories(0, com.tdil.tuafesta.model.SellType.PRODUCT)) { %>
 						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
 					<% } %>
@@ -12,10 +12,10 @@
 	</table>
 </div>
 <div id="selectSCategoryLayer" style="display: none; width: 100%; overflow-x:auto;">
-	<table id="serv_cat_tbl" border="1">
+	<table id="serv_cat_tbl">
 		<tr id="serv_cat_tr">
 			<td>
-				<select id="scl-0" size="10" style="width: 120px;" level="0">
+				<select id="scl-0" size="10" style="width: 200px;" level="0">
 					<% for (com.tdil.tuafesta.model.Category pc : com.tdil.tuafesta.utils.CategoryUtils.getCategories(0, com.tdil.tuafesta.model.SellType.SERVICE)) { %>
 						<option value="<%=pc.getId()%>"><%=pc.getName()%></option>
 					<% } %>
