@@ -27,8 +27,6 @@ public class AddWallCommentAction extends AbstractAction {
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		final ProfesionalProfileForm abstractForm = (ProfesionalProfileForm) form;
-		// TODO ver como seteto el id del wall
-		abstractForm.setUserId(2);
 		ValidationError error = abstractForm.validateWallComment();
 		if(error.hasError()) {
 			return redirectToFailure(error, request, mapping);

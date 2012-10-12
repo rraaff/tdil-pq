@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.model.valueobjects.WallWrittingValueObject"%>
 <%@ include file="includes/userLogged.jspf" %>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"%>
@@ -49,11 +50,18 @@
 		%>
 		<div id="formContent">
 			<div id="muroContainer">
-				<html:form method="POST" action="/addWallComment">
-					<html:text name="ProfesionalProfileForm" property="content" />
-					MURO INSERT
-					<input type="submit" value="Postear"/>
-				</html:form>
+				<% if (websiteUser != null && websiteUser.isClient()) {
+					profesionalProfileForm.setUserId(websiteUser.getId());%>
+					<html:form method="POST" action="/addWallComment">
+						<html:text name="ProfesionalProfileForm" property="content" />
+						<input type="submit" value="Postear"/>
+					</html:form>
+				<% } else { %>
+					Para poder postear tenes que estar logueado
+				<% } %>
+				<% for (WallWrittingValueObject wwvo : profesionalProfileForm.getWallWritting()) { %>
+					<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+				<% } %>
 			</div>
 			<div id="formSection">
 				<div class="myRow">
