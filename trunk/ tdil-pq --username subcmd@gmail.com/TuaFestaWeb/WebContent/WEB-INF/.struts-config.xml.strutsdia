@@ -470,6 +470,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/perfilPublicoProfesional.jsp" TARGET="page23" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/perfilPublicoProfesional.jsp" TARGET="page23" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchSellsByGeoLevel4" NAME="action58"
   PATH="/searchSellsByGeoLevel4" SHAPE="32,11361,0,0"

@@ -2,6 +2,9 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -11,6 +14,7 @@ import com.tdil.tuafesta.dao.WallWrittingDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.WallWritting;
+import com.tdil.tuafesta.model.valueobjects.WallWrittingValueObject;
 import com.tdil.tuafesta.stats.StatisticType;
 import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.utils.GeoLevelUtils;
@@ -28,6 +32,8 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 	
 	private WallCommentForm wallCommentForm = new WallCommentForm();
 	
+	private List<WallWrittingValueObject> wallWritting;
+	
 	@Override
 	public void reset() throws SQLException {
 	}
@@ -41,6 +47,12 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 		StatsManager.addStat(StatisticType.PROFESIONAL_VIEW, id, null);
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
 		setProfesional(profesionalDAO.selectProfesionalByPrimaryKey(id));
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("idWall", this.getProfesional().getIdWall());
+		params.put("start", 0);
+		params.put("limit", 10);
+		wallWritting = DAOManager.getWallWrittingDAO().selectWallWindow(params);
 	}
 
 	@Override
@@ -116,12 +128,16 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 
 	public ValidationError validateWallComment() {
 		ValidationError validationError = new ValidationError();
-		// TODO Auto-generated method stub
+		this.getWallCommentForm().basicValidate(validationError);
 		return validationError;
 	}
 
 	public void addWallComment() throws SQLException {
 		this.getWallCommentForm().addWallComment();
+	}
+
+	public List<WallWrittingValueObject> getWallWritting() {
+		return wallWritting;
 	}
 
 }
