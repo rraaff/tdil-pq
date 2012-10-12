@@ -22,11 +22,11 @@
 	<div id="content">
 		<div id="titleArea">
 			<h1>Registro de profesionales</h1>
-			<h2>¡Felicitaciones! Hemos validado su dirección de E-Mail.</h2>
+			<h2>�Felicitaciones! Hemos validado su direcci&oacute;n de E-Mail.</h2>
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Su registro ha sido completado. Cada producto o servicio que haya agregado, así como las fotos, videos o demás contenidos de su perfil, requieren aprobación de un administrador de TUA FESTA. Podrás agregar contenidos, productos y servicios cuando lo desees. Éstos deberán ser aprobados antes de ser accesibles por los usuarios.</p>
+				<p>Su registro ha sido completado. Cada producto o servicio que haya agregado, as&iacute; como las fotos, videos o dem&aacute;s contenidos de su perfil, requieren aprobaci&oacute;n de un administrador de TUA FESTA. Podr&aacute;s agregar contenidos, productos y servicios cuando lo desees. Éstos deber&aacute;n ser aprobados antes de ser accesibles por los usuarios.</p>
 				<p><a href="#">Ir a Mi Cuenta</a></p>
 			</div>
 		</div>

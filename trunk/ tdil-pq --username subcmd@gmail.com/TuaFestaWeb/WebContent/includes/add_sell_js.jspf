@@ -24,7 +24,7 @@ var prodcats = new Array();
 						if (msg.length > 0) {
 							var tdnextlevel = $('<td></td>').appendTo( $('#prod_cat_tr') );
 							//alert(msg.length);
-			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
+			               var select = $('<select id="pcl-'+ (changedLevel + 1)+'" size="10" style="width: 200px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
 				   			prodcats[changedLevel] = tdnextlevel;
 				   			select.change(pselectChange);
 			                $.each(msg, function(index, item) {
@@ -84,7 +84,7 @@ var prodcats = new Array();
 						if (msg.length > 0) {
 							var tdnextlevel = $('<td></td>').appendTo( $('#serv_cat_tr') );
 							//alert(msg.length);
-			               var select = $('<select id="scl-'+ (changedLevel + 1)+'" size="10" style="width: 120px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
+			               var select = $('<select id="scl-'+ (changedLevel + 1)+'" size="10" style="width: 200px;" level="'+ (changedLevel + 1)+'"></select>').appendTo(tdnextlevel);
 				   			prodcats[changedLevel] = tdnextlevel;
 				   			select.change(sselectChange);
 			                $.each(msg, function(index, item) {

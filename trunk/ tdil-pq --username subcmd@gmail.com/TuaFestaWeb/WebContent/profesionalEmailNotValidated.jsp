@@ -22,7 +22,7 @@
 	<div id="content">
 		<div id="titleArea">
 			<h1>Registro de profesionales</h1>
-			<h2>Su dirección de E-Mail no ha sido validada correctamente.</h2>
+			<h2>Su direcci&oacute;n de E-Mail no ha sido validada correctamente.</h2>
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
