@@ -393,6 +393,7 @@
   
   <action name="ProfesionalProfileForm" path="/addWallComment"
    scope="session" type="com.tdil.tuafesta.struts.action.AddWallCommentAction">
+   <forward name="failure" path="/perfilPublicoProfesional.jsp"/>
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
