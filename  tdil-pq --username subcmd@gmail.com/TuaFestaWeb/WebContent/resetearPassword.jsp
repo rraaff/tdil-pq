@@ -10,13 +10,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Clientes (paso 1)</title>
+<title>Tua Festa | Recupero de clave</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 $(document).ready(
 	function(){
@@ -46,21 +43,21 @@ $(document).ready(
 	<div id="content">
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
-			<h1>Reseteo de clave</h1>
-			<h2>Ingrese su email y le enviaremos una nueva clave.</h2>
+			<h1>Generar nueva clave</h1>
+			<h2>Ingrese su E-Mail y le enviaremos una nueva clave</h2>
 		</div>
 		<div id="formContent">
 			<html:form method="POST" action="/resetPassword">
-			<div id="formSection">
-				<div class="myRow">
-					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width280" id="Email"><html:text name="PasswordResetForm" property="email" styleClass="normalField width250"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "PasswordResetForm.email.err")%></div>
+				<div id="loginBase" style="width:300px; height:800px; margin:40px auto;">
+					<div class="myRow">
+						<div class="myLabel width60" align="right">E-Mail</div>
+						<div class="myLabel width240" id="Email"><html:text name="PasswordResetForm" property="email" styleClass="normalField width200"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "PasswordResetForm.email.err")%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width100" align="center" style="padding-top:20px;"><a href="index.jsp">Volver</a></div>
+						<div class="myLabel width200" align="center"><input type="submit" value="Resetear password" class="buttonSubmit" /></div>
+					</div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel" align="center"><input type="submit" value="Resetear password" class="buttonSubmit" /></div>
-				</div>
-			</div>
 			</html:form>
 		</div>
 		<!-- aca Termina el formulario -->

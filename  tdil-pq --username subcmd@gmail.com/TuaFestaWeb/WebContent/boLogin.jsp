@@ -22,11 +22,11 @@
 	</div>
 </div>
 <div id="boWrapper">
-	<div id="boCentral">
-		<div id="loginBase" class="width250">
+	<div id="boCentral" class="height450">
+		<div id="loginBase" style="width:250px; height:150px; margin:140px auto;">
 			<html:form method="POST" action="/login">
 				<div class="renglon width250">
-					<div class="label width250"><span class="errorText"><html:errors property="general" /></span></div>
+					<div class="label width250" align="center"><span class="errorText"><html:errors property="general" /></span></div>
 				</div>
 				<div class="renglon width250">
 					<html:hidden name="LoginForm" property="operation" value=""/>

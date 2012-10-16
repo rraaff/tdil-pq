@@ -46,27 +46,36 @@ th.sorted {
 </head>
 
 <body>
-<div id="header"><%@ include file="includes/boMenu.jsp" %></div>
-<div id="container">
-	<h1 align="center">Verificar profesional</h1>
-	<div class="renglon width860" style="margin-bottom:20px;">
-		<div class="label width860"><span class="comment">Desde esta sección podrá aprobar o desaprobar nuevos profesionales.</span></div>
+<%@ include file="includes/boMenu.jsp" %>
+<div id="boWrapper">
+	<div id="boCentral" class="height450">
+		<h1>Verificar profesional</h1>
+		<div id="formulariosBase" class="height350">
+			<div class="renglon width100per">
+				<div class="label width100per"><span class="comment">Desde esta sección podrá aprobar o desaprobar nuevos profesionales.</span></div>
+			</div>
+			<html:form method="POST" action="/verifyProfesional">
+				<div class="renglon width100per height100">
+					<div class="label width100per height100">Nombre: <strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong><br>
+						Apellido: <strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong><br>
+						Raz&oacute;n Social: <strong><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></strong><br>
+						E-mail: <strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong>
+					</div>
+				</div>
+				<div class="renglon width100per">
+					<div class="label width350 centering" style="float:none;">
+						<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>
+						<html:submit property="operation">
+							<bean:message key="Approve" />
+						</html:submit>
+						<html:submit property="operation">
+							<bean:message key="Block" />
+						</html:submit>
+					</div>
+				</div>
+			</html:form>
+		</div>
 	</div>
-	<html:form method="POST" action="/verifyProfesional">
-		Nombre: <bean:write name="ReviewProfesionalForm" property="profesional.firstname"/> <br>
-		Apellido: <bean:write name="ReviewProfesionalForm" property="profesional.lastname"/> <br>
-		Razon Social: <bean:write name="ReviewProfesionalForm" property="profesional.businessname"/> <br>
-		Email: <bean:write name="ReviewProfesionalForm" property="profesional.email"/> <br>
-	
-		<html:submit property="operation">
-			<bean:message key="Approve" />
-		</html:submit>
-		<html:submit property="operation">
-			<bean:message key="Block" />
-		</html:submit>
-	</html:form>
-	
-<a href="profesionalAdministration.jsp">Volver</a>
 </div>
 </body>
 </html>
