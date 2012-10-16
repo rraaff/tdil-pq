@@ -31,7 +31,6 @@
 <script type="text/javascript" src="js/jquery.infinite-carousel.js"></script>
 <style>
 <!--
-body, div, a, p, ul, li, table, td, tr { /*border:dotted 1px #FF0000;*/ }
 #slider h1 a, #slider h1 a:active, #slider h1 a:visited, #slider h1 {
 	border:none;
 	text-decoration:none;
@@ -143,34 +142,33 @@ body, div, a, p, ul, li, table, td, tr { /*border:dotted 1px #FF0000;*/ }
 		<div id="leftCentral">
 		<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
 				<div id="lowHighlightedAdv">
-					<h5>
-						<% if (advertisementValueObject.isProfesionalAd()) { %>
-							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>">
-						<% } else {  %>
-							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>">
-						<% } %>
-					<%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
-					<div id="imageAtAdv" style="">
-						<% if (advertisementValueObject.isProfesionalAd()) { %>
-							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>">
-						<% } else {  %>
-							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>">
-						<% } %>
-							<% if (advertisementValueObject.hasImage()) { %>
-								<img src="./downloadThumb.st?width=86&height=86&id=<%=advertisementValueObject.getIdBlobData()%>&type=PUBLIC&ext=<%=advertisementValueObject.getExtBlobData()%>" alt=""/>
-							<% } else { %>
-								<img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" />
-							<% } %>
-						</a>
-					</div>
-					<p>
-						<% if (advertisementValueObject.isProfesionalAd()) { %>
-							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalDescriptionUpTo(50) %></a>
+					<% if (advertisementValueObject.isProfesionalAd()) { %>
+						<h5><a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
+					<% } else {  %>
+						<h5><a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getSellName() %></a></h5>
+					<% } %>
+					<div id="imageAtAdv" style="background-repeat:no-repeat; background-position: center center; 
+						<% if (advertisementValueObject.hasImage()) { %>
+							background-image:url(./downloadThumb.st?width=86&height=86&id=<%=advertisementValueObject.getIdBlobData()%>&type=PUBLIC&ext=<%=advertisementValueObject.getExtBlobData()%>);"
 						<% } else { %>
-							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getSellName() %>
-							<span class="category">Rubro: <%=advertisementValueObject.getCategoryName() %></span></a>
+							background-image:url(boImages/na.gif);
 						<% } %>
-					</p>
+					">
+						<% if (advertisementValueObject.isProfesionalAd()) { %>
+							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>">
+						<% } else {  %>
+							<a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>">
+						<% } %>
+						<img src="images/skin_basic/masks/lha_mask.png" width="86" height="86" /></a>
+					</div>
+					<div class="detalle">
+						<% if (advertisementValueObject.isProfesionalAd()) { %>
+							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalDescriptionUpTo(120) %><br/><br/>Ir al perfil</a>
+						<% } else { %>
+							<span class="category">Rubro: <a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getCategoryName() %></a></span>
+							<p style="padding-top:10px;">Agregar la descripci&oacute;n del producto</p>
+						<% } %>
+					</div>
 					<span class="price"><a href="#"></a></span>		
 				</div>
 			<% } %>

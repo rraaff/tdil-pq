@@ -101,6 +101,8 @@ body {
 }
 /* reescritura */
 #zoneNavigation, #categoryNavigation {
+	width:290px;	
+	overflow:hidden;
 	padding:0;
 }
 #zoneNavigation p, #categoryNavigation p {
