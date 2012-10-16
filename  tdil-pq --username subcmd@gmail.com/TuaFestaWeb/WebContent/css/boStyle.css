@@ -223,6 +223,12 @@ h2 {
 	padding:0;
 	margin:0;
 }
+h3 {
+	font-size: 14px;
+	color: #febe10;
+	padding:0 0 10px 0;
+	margin:0;
+}
 div, p, table, tr, td, a, h1, h2, h3, h4, h5 { /*border:dotted 1px #00FF33;*/ }
 /* / BO CENTRAL //////////////////////////////////////////////////// */
 #boWrapper {
