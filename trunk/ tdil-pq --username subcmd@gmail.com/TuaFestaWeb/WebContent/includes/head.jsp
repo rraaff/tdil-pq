@@ -6,3 +6,7 @@
 <script src="js/jquery.tooltip.js" type="text/javascript"></script>
 <script type='text/javascript' src='./js/jquery.cookie.js'></script>
 <script type='text/javascript' src='./js/jquery.melt-button.js'></script>
+<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="css/styleReset.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/sizers.css" rel="stylesheet" type="text/css" />

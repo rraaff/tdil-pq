@@ -23,8 +23,6 @@
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/styleReset.css" rel="stylesheet" type="text/css" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
