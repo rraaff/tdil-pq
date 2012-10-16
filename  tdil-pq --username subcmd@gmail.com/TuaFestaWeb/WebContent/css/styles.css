@@ -47,7 +47,7 @@ body {
 }
 #content h2 {
 	font-size:16px;
-	line-height:16px;
+	line-height:22px;
 	color:#596066;
 }
 #buttonContactForm {
@@ -82,12 +82,16 @@ body {
 
 	float:left;
 }
-#formSection h2 {
+#formSection h2, .subAtForm {
 	color:#035b9c;
 	font-size:20px;
 	padding:10px 0 10px 0;
 	margin-bottom:10px;
 	border-bottom:dotted 1px #CCCCCC;
+}
+.subAtForm {
+	color:#febe10;
+	font-size:16px;
 }
 #formSection a {
 	color:#004089;
