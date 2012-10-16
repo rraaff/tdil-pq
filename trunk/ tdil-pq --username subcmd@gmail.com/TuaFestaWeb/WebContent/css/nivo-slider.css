@@ -48,12 +48,13 @@
 .nivo-caption {
 	position:absolute;
 	left:0px;
-	bottom:15px;
+	bottom:94px;
 	background-image:url(../images/bg-headerHome.png);
 	color:#fff;
 	opacity:1; /* Overridden by captionOpacity setting */
-	width:100%;
+	width:624px;
 	z-index:8;
+	overflow:hidden;
 }
 .nivo-caption p {
 	padding:10px;
@@ -65,23 +66,29 @@
 .nivo-html-caption {
     display:none;
 }
-.nivo-caption h1 {
+.nivo-caption h1, nivo-caption h1 a, #slider h1 a, #slider h1 a:active, #slider h1 a:visited, #slider h1 {
+	font:"Tahoma", "Trebuchet MS", Arial, sans-serif;
 	width:100%;
-	font-size:22px;
-	color:#f1e752;
+	font-size:20px;
+	font-weight:normal;
+	color:#6acdef;
 	text-decoration:underline;
+	border:none;
 }
 .nivo-caption .bajada {
+	font:"Tahoma", "Trebuchet MS", Arial, sans-serif;
+	color:#ffb631;
 	font-size:13px;
 	line-height:16px;
 	padding-top:0px;
 	overflow:hidden;
 }
 .nivo-caption .date {
+	font:"Tahoma", "Trebuchet MS", Arial, sans-serif;
 	width:100%;
 	font-size:13px;
-	color:#8c8c8c;
-	font-weight:700;
+	color:#ffb631;
+	font-weight:normal;
 	line-height:16px;
 	padding-top:8px;
 	padding-bottom:5px;
