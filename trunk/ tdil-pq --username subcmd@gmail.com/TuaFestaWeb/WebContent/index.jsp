@@ -34,15 +34,24 @@
 body, div, a, p, ul, li, table, td, tr { /*border:dotted 1px #FF0000;*/ }
 #slider h1 a, #slider h1 a:active, #slider h1 a:visited, #slider h1 {
 	border:none;
-	color:#FFFF33;
 	text-decoration:none;
+	padding-bottom:6px;
 }
 #slider h1 a:hover {
 	text-decoration:underline;
 }
 #slider .bajada a {
+	color:#ffb631;
 	border:none;
 	text-decoration:none;
+}
+.theme-default .nivo-controlNav {
+	left: 50%;
+	bottom: 65px;
+	margin-left: -20px;
+}
+.nivo-directionNav a {
+	top: 35%;
 }
 -->
 </style>
@@ -53,7 +62,7 @@ body, div, a, p, ul, li, table, td, tr { /*border:dotted 1px #FF0000;*/ }
 <div id="central">
 	<div id="centralBlock">
 		<div id="promos">
-			<div class="slider-wrapper theme-default" style="width:628px; height:400px; margin-left:10px; margin-top:18px; float:left;">
+			<div class="slider-wrapper theme-default" style="width:628px; height:400px; margin-left:10px; margin-top:17px; float:left;">
 			    <div class="ribbon"></div>
 			    <div id="slider" class="nivoSlider">
 				<% /*Generacion de imagenes*/

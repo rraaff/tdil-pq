@@ -16,13 +16,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Clientes (paso 1)</title>
+<title>Tua Festa | Mi cuenta (Datos personales)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 $(document).ready(
 	function(){
@@ -51,6 +48,11 @@ $(document).ready(
 	);
 
 </script>
+<style>
+#formSection {
+	width:920px;
+}
+</style>
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
 <body>
@@ -61,66 +63,57 @@ $(document).ready(
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Editar datos personales</h1>
-			<h2></h2>
+			<h2>Modific&aacute; o actualiz&aacute; tus datos personales</h2>
 		</div>
 		<div id="formContent">
-		<html:form method="POST" action="/saveProfesionalPersonalData">
-			<% EditProfesionalPersonalDataForm profesionalForm = (EditProfesionalPersonalDataForm)session.getAttribute("EditProfesionalPersonalDataForm"); %>
-			<div id="formSection">
-				<div class="myRow">
-					<div class="myLabel width50">Nombre</div>
-					<div class="myLabel width200" id="Nombre"><html:text name="EditProfesionalPersonalDataForm" property="firstname" styleClass="normalField width200"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.firstname_key + ".err")%></div>
-					<div class="myLabel width50">&nbsp;</div>
-					<div class="myLabel width80">Apellido</div>
-					<div class="myLabel width150" id="Apellido"><html:text name="EditProfesionalPersonalDataForm" property="lastname" styleClass="normalField width150"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.lastname_key + ".err")%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Cod. &aacute;rea</div>
-					<div class="myLabel width60" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneAreaCode" styleClass="normalField width50"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneareacode_key + ".err")%></div>
-					<div class="myLabel width50">N&uacute;mero</div>
-					<div class="myLabel width160" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneNumber" styleClass="normalField width150"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonenumber_key + ".err")%></div>
-					<div class="myLabel width20">Int.</div>
-					<div class="myLabel width50" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneExtension" styleClass="normalField width40"/></div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
-					<div class="myLabel width20">Tipo</div>
-					<div class="myLabel width110" id="Telefono"><html:select name="EditProfesionalPersonalDataForm" property="phoneType" styleClass="normalField width150">
-							<option value="">Seleccione</option><%-- 
-							--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
-								--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
-										--%><%=type%></option>
-							<% } %>
-						</html:select>
+			<html:form method="POST" action="/saveProfesionalPersonalData">
+				<% EditProfesionalPersonalDataForm profesionalForm = (EditProfesionalPersonalDataForm)session.getAttribute("EditProfesionalPersonalDataForm"); %>
+				<div id="formSection">
+					<div class="myRow">
+						<div class="myLabel width80">Nombre</div>
+						<div class="myLabel width250" id="Nombre"><html:text name="EditProfesionalPersonalDataForm" property="firstname" styleClass="normalField width200"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.firstname_key + ".err")%></div>
+						<div class="myLabel width50">&nbsp;</div>
+						<div class="myLabel width80">Apellido</div>
+						<div class="myLabel width250" id="Apellido"><html:text name="EditProfesionalPersonalDataForm" property="lastname" styleClass="normalField width200"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.lastname_key + ".err")%></div>
 					</div>
-					<div class="myLabel width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonetype_key + ".err")%></div>
+					<div class="myRow">
+						<div class="myLabel width80">Cod. &aacute;rea</div>
+						<div class="myLabel width60" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneAreaCode" styleClass="normalField width40"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneareacode_key + ".err")%></div>
+						<div class="myLabel width50">N&uacute;mero</div>
+						<div class="myLabel width120" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneNumber" styleClass="normalField width90"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonenumber_key + ".err")%></div>
+						<div class="myLabel width20">Int.</div>
+						<div class="myLabel width100" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneExtension" styleClass="normalField width40"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
+						<div class="myLabel width30">Tipo</div>
+						<div class="myLabel width250" id="Telefono"><html:select name="EditProfesionalPersonalDataForm" property="phoneType" styleClass="normalField width200">
+								<option value="">Seleccione</option><%-- 
+								--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
+									--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
+											--%><%=type%></option>
+								<% } %>
+							</html:select>
+							&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phonetype_key + ".err")%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Sexo</div>
+						<div class="myLabel width300" id="Sexo"><html:radio name="EditProfesionalPersonalDataForm" property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio name="EditProfesionalPersonalDataForm" property="sex" value="f" /> Femenino&nbsp;&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sex_key + ".err")%></div>
+						<div class="myLabel width80">Fecha nacim.</div>
+						<div class="myLabel width250" id="Fecha Nac."><html:text name="EditProfesionalPersonalDataForm" property="birthdate" styleClass="normalField width200"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.birthdate_key + ".err")%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">E-Mail</div>
+						<div class="myLabel width800" id="Email"><strong><%=profesionalForm.getEmail() %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Clave</div>
+						<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="password" styleClass="normalField width150"/></div>
+						<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.password_key + ".err")%></div>
+						<div class="myLabel width80">Repetir clave</div>
+						<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="retypepassword" styleClass="normalField width150"/></div>
+						<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.retypepassword_key + ".err")%></div>
+					</div>
+					<div class="myRow" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Sexo</div>
-					<div class="myLabel width150" id="Sexo"><html:radio name="EditProfesionalPersonalDataForm" property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio name="EditProfesionalPersonalDataForm" property="sex" value="f" /> Femenino</div>
-					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sex_key + ".err")%></div>
-					<div class="myLabel width80">Fecha Nac.</div>
-					<div class="myLabel width150" id="Fecha Nac."><html:text name="EditProfesionalPersonalDataForm" property="birthdate" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.birthdate_key + ".err")%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width150" id="Email"><%=profesionalForm.getEmail() %></div>
-					<div class="myLabel width50">&nbsp;</div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width50">Clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="password" styleClass="normalField width150"/></div>
-					<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.password_key + ".err")%></div>
-					<div class="myLabel width80">Repetir clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="retypepassword" styleClass="normalField width150"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.retypepassword_key + ".err")%></div>
-				</div>
-			</div>
-			<div class="myRow width650" align="center"><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
-		</html:form>
+			</html:form>
 		</div>
 		<!-- aca Termina el formulario -->
 	</div>

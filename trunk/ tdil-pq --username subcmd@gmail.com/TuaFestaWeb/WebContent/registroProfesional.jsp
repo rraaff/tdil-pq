@@ -20,13 +20,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 1)</title>
+<title>Tua Festa | Registro Profesional (paso 1)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<!-- link href="css/home-styles.css" rel="stylesheet" type="text/css" / -->
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 $(document).ready(
 	function(){
@@ -214,7 +211,6 @@ $(document).ready(
 					<div class="myLabel width780">Desea incorporar producto a su perfil? Si, <a class="nonelyLink" id="addProduct">agregar producto</a>, o <a class="nonelyLink" id="addService">agregar servicio</a></div>
 				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
-				
 				<div id="addSellLayer" style="display: none;">
 					<div class="myRow">
 						<div class="myLabel width780"><span id="categoryPath" class="prodServCategoryPath"></span></div>
@@ -225,7 +221,7 @@ $(document).ready(
 						<div class="myLabel width70">Art&iacute;culo<!-- meter un if si es servicio que diga "Servicio" --></div>
 						<div class="myLabel width210"><html:text name="ProfesionalForm" property="sellName" styleClass="normalField width200"/></div>
 						<div class="myLabel width30">&nbsp;</div>
-						<div class="myLabel width70">Descripci&oacute;n<!-- meter un if que diga "Servicio" --></div>
+						<div class="myLabel width70">Descripci&oacute;n</div>
 						<div class="myLabel width210 height100"><html:textarea name="ProfesionalForm" property="sellDescription" styleClass="normalField width200 height80"/></div>
 						<div class="myLabel width30">&nbsp;</div>
 						<div class="myLabel width90">Precio Unitario<!-- meter un if si es servicio que diga "Precio base" --></div>

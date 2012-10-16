@@ -18,13 +18,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Clientes (paso 1)</title>
+<title>Tua Festa | Mi cuenta (Modificar servicios)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 $(document).ready(
 	function(){
@@ -99,47 +96,53 @@ function limpiarServiceArea() {
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Editar areas de cobertura</h1>
-			<h2></h2>
+			<h2>Agreg&aacute;, borr&aacute; o modific&aacute; las &aacute;reas de cobertura en las que prestas tus servicios</h2>
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/saveProfesionalServiceArea">
-			<div class="ui-widget">
-				<html:hidden name="EditProfesionalServiceAreaForm" property="level"/>
-				<html:hidden name="EditProfesionalServiceAreaForm" property="geoLevelId"/>
-				<html:hidden name="EditProfesionalServiceAreaForm" property="serviceAreaSelectedText"/>
-					Zona:
-					<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="false">
-						<html:text name="EditProfesionalServiceAreaForm" property="serviceAreaAutocompleter" styleClass="normalField" style="display: block;"/>
-						<div id="serviceAreaSelectedDiv" style="display: none;"></div>
-					</logic:equal>
-					<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="true">
-						<html:text name="EditProfesionalServiceAreaForm" property="serviceAreaAutocompleter" styleClass="normalField" style="display: none;"/>
-						<div id="serviceAreaSelectedDiv" style="display: block;"><bean:write name="EditProfesionalServiceAreaForm" filter="false" property="serviceAreaSelectedText"/></div>
-					</logic:equal>
-					<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="true">
-						<a id="addGeoLink" href="javascript:document.EditProfesionalServiceAreaForm.action='./addServiceArea.do';document.EditProfesionalServiceAreaForm.submit();">Agregar</a> &nbsp;
-					</logic:equal>
-					<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="false">
-						<a id="addGeoLink" style="display: none;" href="javascript:document.EditProfesionalServiceAreaForm.action='./addServiceArea.do';document.EditProfesionalServiceAreaForm.submit();">Agregar</a> &nbsp;
-					</logic:equal>
-					 
-					<a id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a>
+			<div id="formSection" style="width:920px;">
+				<div class="ui-widget">
+					<html:hidden name="EditProfesionalServiceAreaForm" property="level"/>
+					<html:hidden name="EditProfesionalServiceAreaForm" property="geoLevelId"/>
+					<html:hidden name="EditProfesionalServiceAreaForm" property="serviceAreaSelectedText"/>
+					<div class="myRow">
+						<div class="myLabel width50">Zona</div>
+						<div class="myLabel width700">
+							<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="false">
+								<html:text name="EditProfesionalServiceAreaForm" property="serviceAreaAutocompleter" styleClass="normalField width600" style="display: block;"/>
+								<div id="serviceAreaSelectedDiv" style="display: none;"></div>
+							</logic:equal>
+							<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="true">
+								<html:text name="EditProfesionalServiceAreaForm" property="serviceAreaAutocompleter" style="display: none;"/>
+								<div id="serviceAreaSelectedDiv" style="display: block;"><bean:write name="EditProfesionalServiceAreaForm" filter="false" property="serviceAreaSelectedText"/></div>
+							</logic:equal>
+						</div>
+						<div class="myLabel width50">
+							<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="true">
+								<a id="addGeoLink" href="javascript:document.EditProfesionalServiceAreaForm.action='./addServiceArea.do';document.EditProfesionalServiceAreaForm.submit();">Agregar</a> &nbsp;
+							</logic:equal>
+							<logic:equal name="EditProfesionalServiceAreaForm" property="serviceAreaSelected" value="false">
+								<a id="addGeoLink" style="display: none;" href="javascript:document.EditProfesionalServiceAreaForm.action='./addServiceArea.do';document.EditProfesionalServiceAreaForm.submit();">Agregar</a> &nbsp;
+							</logic:equal>
+						</div>
+						<div class="myLabel width50"><a id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a></div>
+					</div>
+					<%
+						EditProfesionalServiceAreaForm profesionalForm = (EditProfesionalServiceAreaForm)session.getAttribute("EditProfesionalServiceAreaForm");
+					java.util.List sourceServiceAreas = profesionalForm.getServiceAreas();
+					com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
+					request.setAttribute( "serviceAreas",  paginatedServiceAreas);
+					%>
+						<display:table name="serviceAreas" sort="external" pagesize="10" id="serviceAreas" requestURI="./editProfesionalServiceArea.jsp">
+							<display:column title="Zona" sortable="true" sortName="Zona" headerClass="sortable width800" property="serviceAreaText"></display:column>
+							<display:column title="acciones" headerClass="sortable width120"><a href="javascript:document.EditProfesionalServiceAreaForm.action='./removeServiceArea.do?index=<%= ((ServiceAreaBean)pageContext.getAttribute("serviceAreas")).getIndex()%>';document.EditProfesionalServiceAreaForm.submit();">Quitar</a>
+							</display:column>
+						</display:table>
+					</div>
+					<div class="myRow width920" style="padding-bottom:0; margin-top:15px;" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
-				<%
-				EditProfesionalServiceAreaForm profesionalForm = (EditProfesionalServiceAreaForm)session.getAttribute("EditProfesionalServiceAreaForm");
-			java.util.List sourceServiceAreas = profesionalForm.getServiceAreas();
-			com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
-			request.setAttribute( "serviceAreas",  paginatedServiceAreas);
-			%>
-				<display:table name="serviceAreas" sort="external" pagesize="10" id="serviceAreas" requestURI="./editProfesionalServiceArea.jsp">
-					<display:column title="Zona" sortable="true" sortName="Zona" headerClass="sortable" property="serviceAreaText"></display:column>
-					<display:column title="acciones">
-						<a href="javascript:document.EditProfesionalServiceAreaForm.action='./removeServiceArea.do?index=<%= ((ServiceAreaBean)pageContext.getAttribute("serviceAreas")).getIndex()%>';document.EditProfesionalServiceAreaForm.submit();">Quitar</a>
-					</display:column>
-				</display:table>
-			<div class="myRow width650" align="center"><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
+			</div>
 		</html:form>
-		</div>
 		<!-- aca Termina el formulario -->
 	</div>
 </div>
