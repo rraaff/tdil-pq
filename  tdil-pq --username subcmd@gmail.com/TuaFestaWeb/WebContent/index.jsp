@@ -91,21 +91,21 @@
 <div id="preContainer">
 	<div id="content">
 		<% if (!adsForHome.getExtraByCategory().isEmpty()) { %>
-		<div id="superHighlightedBlock" style="margin-left:10px;">
+		<div id="superHighlightedBlock" style="margin-left:20px;">
 			<div id="sliderBloc">
 				<a id="previous">Previous</a>
 				<div style="" id="slider-stage">
-					<div style="width: 512px;" id="slider-list">
+					<div id="slider-list">
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraByCategory()) { %>
 						<a class="theme" href="#">
 							<% if (adByCat.hasImage()) { %>
-								<img src="./downloadThumb.st?width=188&height=109&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
+								<img src="./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
 							<% } else { %>
-								<img src="images/skin_basic/masks/lha_mask.png" width="188" height="109" />
+								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
-							<span>Profesional: <%=adByCat.getProfesionalBusinessName() %></span>
-							<h4><%=adByCat.getCategoryName()%></h4>
-							<span>Precio desde: </span>
+							<span class="nameVignette"><%=adByCat.getProfesionalBusinessName() %></span><br/>
+							<span class="changeTheme"><%=adByCat.getCategoryName()%></span>
+							<span class="priceTheme">Precio:</span>
 						</a>
 						<% } %>
 					</div>
@@ -115,21 +115,21 @@
 		</div>
 		<% } %>
 		<% if (!adsForHome.getExtraWithoutFilter().isEmpty()) { %>
-		<div id="superHighlightedBlock" style="margin-right:10px;">
+		<div id="superHighlightedBlock">
 			<div id="sliderBloc">
 				<a id="previous1">Previous</a>
 				<div style="" id="slider-stage1">
-					<div style="width: 512px;" id="slider-list">
+					<div id="slider-list">
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraWithoutFilter()) { %>
 						<a class="theme" href="#">
 							<% if (adByCat.hasImage()) { %>
-								<img src="./downloadThumb.st?width=188&height=109&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
+								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC;" align="center"><img src="./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
 							<% } else { %>
-								<img src="images/skin_basic/masks/lha_mask.png" width="188" height="109" />
+								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
-							<span>Profesional: <%=adByCat.getProfesionalBusinessName() %></span>
-							<h4><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></h4>
-							<span>Precio desde: </span>
+							<span class="nameVignette"><%=adByCat.getProfesionalBusinessName() %></span><br/>
+							<span class="changeTheme"><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></span>
+							<span class="priceTheme">Precio: </span>
 						</a>
 						<% } %>
 					</div>

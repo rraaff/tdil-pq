@@ -14,13 +14,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Clientes (paso 1)</title>
+<title>Tua Festa | Registro Clientes (paso 1)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 $(document).ready(
 	function(){
@@ -73,48 +70,39 @@ $(document).ready(
 		<% ClientForm clientForm = (ClientForm)session.getAttribute("ClientForm");%>
 		<div id="formContent">
 			<html:form method="POST" action="/addClient">
-			<div id="formSection">
-				<div class="myRow">
-					<div class="myLabel width50">Nombre</div>
-					<div class="myLabel width200" id="Nombre"><html:text name="ClientForm" property="firstname" styleClass="normalField width150"/></div>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.firstname.err")%></div>
-					<div class="myLabel width60">&nbsp;</div>
+			<div id="formSection" style="margin-bottom:20px;">
+				<div class="myRow" style="padding-top:20px;">
+					<div class="myLabel width80">Nombre</div>
+					<div class="myLabel width180" id="Nombre"><html:text name="ClientForm" property="firstname" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.firstname.err")%></div>
 					<div class="myLabel width60">Apellido</div>
-					<div class="myLabel width160" id="Apellido"><html:text name="ClientForm" property="lastname" styleClass="normalField width150"/></div>
-					<div class="myLabel width40">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.lastname.err")%></div>
-				</div>
-				<div class="myRow">
+					<div class="myLabel width180" id="Apellido"><html:text name="ClientForm" property="lastname" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.lastname.err")%></div>
 					<div class="myLabel width50">Sexo</div>
-					<div class="myLabel width200" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino</div>
-					<div class="myLabel width110">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.sex.err")%></div>
-					<div class="myLabel width60">Fecha Nac.</div>
-					<div class="myLabel width150" id="Fecha Nac."><html:text name="ClientForm" property="birthdate" styleClass="normalField width150"/></div>
-					<div class="myLabel width50"><%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")%></div>
+					<div class="myLabel width200" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino&nbsp;&nbsp;&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.sex.err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width50">E-Mail</div>
-					<div class="myLabel width280" id="Email">
+					<div class="myLabel width80">Fecha Nac.</div>
+					<div class="myLabel width180" id="Fecha Nac."><html:text name="ClientForm" property="birthdate" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")%></div>
+					<div class="myLabel width60">E-Mail</div>
+					<div class="myLabel width450" id="Email">
 						<% if (clientForm.isFacebookRegister()) { %>
 							<bean:write name="ClientForm" property="email" />
 						<% } else {  %>
-							<html:text name="ClientForm" property="email" styleClass="normalField width250"/></div>
+							<html:text name="ClientForm" property="email" styleClass="normalField width400"/>
 						<% } %>
-					<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.email.err")%></div>
+					&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.email.err")%></div>
 				</div>
 				<% if (!clientForm.isFacebookRegister()) { %>
-				<div class="myRow">
-					<div class="myLabel width50">Clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width150"/></div>
-					<div class="myLabel width120">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
-
-					<div class="myLabel width100">Reingresar clave</div>
-					<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width150"/></div>
-				</div>
-				
+					<div class="myRow">
+						<div class="myLabel width80">Clave</div>
+						<div class="myLabel width160" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
+	
+						<div class="myLabel width80">Repetir clave</div>
+						<div class="myLabel width250" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width120"/></div>
+					</div>
 				<% } %>
 				<div class="myRow">
-					<div class="myLabel width50">Ubicaci&oacute;n</div>
-					<div class="myLabel width160">
+					<div class="myLabel width80">Ubicaci&oacute;n</div>
+					<div class="myLabel width200">
 						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width150">
 							<option value="0">Seleccione</option>
 							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
@@ -124,8 +112,7 @@ $(document).ready(
 							<% } %>
 						</html:select>
 					</div>
-					<div class="myLabel width20"></div>
-					<div class="myLabel width210">
+					<div class="myLabel width250">
 						<html:select name="ClientForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Client.do';this.form.submit()" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
 							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>	
@@ -135,8 +122,7 @@ $(document).ready(
 							<% } %>
 						</html:select>
 					</div>
-					<div class="myLabel width20"></div>
-					<div class="myLabel width210">
+					<div class="myLabel width250">
 						<html:select name="ClientForm" property="geo4Id" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
 							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>	
@@ -147,7 +133,7 @@ $(document).ready(
 						</html:select>
 					</div>
 				</div>
-				<div class="myRow" align="center" style="padding-bottom:0;"><!-- input type="submit" value="Enviar datos" class="buttonSubmit" / --><input type="image" value=" " class="" src="images/skin_basic/buttons/registroClientes.png" /></div>
+				<div class="myRow" align="center"><input type="submit" value="Enviar datos" class="buttonSubmit" /></div>
 			</div>
 			</html:form>
 		</div>

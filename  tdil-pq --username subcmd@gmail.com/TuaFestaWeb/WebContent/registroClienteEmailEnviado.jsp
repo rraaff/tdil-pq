@@ -8,12 +8,10 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 2)</title>
+<title>Tua Festa | Registro Clientes (paso 1 - Completo)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -24,8 +22,8 @@
 			<h1>Registro de cliente</h1>
 			<h2>Sus datos han sido recibidos correctamente.</h2>
 		</div>
-		<div id="formContent" class="height300">
-			<div style="padding-top:50px; padding-bottom:50px;">
+		<div id="formContent" class="height290">
+			<div style="padding-top:110px;">
 				<p>Su usuario ha sido dado creado. En breve recibira un E-Mail para continuar con el registro.</p>
 				<p>Ingrese a la direcci&oacute;n que figura en el cuerpo del E-Mail para validar su direcci&oacute;n de correo.</p>
 			</div>

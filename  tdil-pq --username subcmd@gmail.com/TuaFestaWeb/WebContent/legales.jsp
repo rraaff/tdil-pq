@@ -8,12 +8,10 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R015-M1- Legales</title>
+<title>Tua Festa | Legales</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>

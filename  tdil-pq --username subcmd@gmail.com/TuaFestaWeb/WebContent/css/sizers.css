@@ -108,6 +108,8 @@ input[type="button"]:hover, input[type="submit"]:hover {
 .height200 { height:200px; }
 .height220 { height:220px; }
 .height250 { height:250px; }
+.height280 { height:280px; }
+.height290 { height:290px; }
 .height300 { height:300px; }
 .height350 { height:300px; }
 .height400 { height:400px; }
@@ -121,7 +123,7 @@ input[type="button"]:hover, input[type="submit"]:hover {
 .height780 { height:780px; }
 .height800 { height:800px; }
 .height850 { height:850px; }
-
+.height1200 { height:1200px; }
 
 .centering { margin:0 auto; }
 .margin100 { margin:100px; }
