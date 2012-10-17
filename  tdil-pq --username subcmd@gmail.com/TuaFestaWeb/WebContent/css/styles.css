@@ -9,9 +9,6 @@ body {
 	color:#000;
 	font-size:12px;
 }
-#content h1, #content h2, #content h3, #content h4 {
-	padding:8px 8px;
-}
 /* / CONTENT /////////////////////////////////////////////////// */
 #divisionHeaderBody {
 	background-image: url(../images/skin_basic/backgrounds/divisionLineHeaderBody.gif);
@@ -33,6 +30,9 @@ body {
 	padding:0;
 	position:relative;
 	float:left;
+}
+#content h1, #content h2, #content h3, #content h4 {
+	padding:8px 8px;
 }
 #content h1, #content h2, #content h3, #content h4 {
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
@@ -271,4 +271,26 @@ html>/**/body #col_derecha ul li a.playlist, x:-moz-any-link, x:default {
 }
 .hidden {
 	visibility:hidden;
+}
+/**/
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #fff;
+	background-color: #000;
+	padding: 10px;
+	opacity: 0.85;
+	color: #FFCCCC;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+}
+#tooltip h3, #tooltip div { margin: 0; }
+/**/
+.hide {
+	display: none;
 }

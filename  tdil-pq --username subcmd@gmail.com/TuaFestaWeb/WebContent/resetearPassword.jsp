@@ -48,7 +48,7 @@ $(document).ready(
 		</div>
 		<div id="formContent">
 			<html:form method="POST" action="/resetPassword">
-				<div id="loginBase" style="width:300px; height:800px; margin:40px auto;">
+				<div id="loginBase" style="width:300px; height:100px; margin:75px auto; padding-top:25px;">
 					<div class="myRow">
 						<div class="myLabel width60" align="right">E-Mail</div>
 						<div class="myLabel width240" id="Email"><html:text name="PasswordResetForm" property="email" styleClass="normalField width200"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "PasswordResetForm.email.err")%></div>

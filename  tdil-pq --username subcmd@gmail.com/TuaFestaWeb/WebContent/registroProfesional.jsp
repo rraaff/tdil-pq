@@ -156,7 +156,7 @@ $(document).ready(
 				<h2>Datos profesionales</h2>
 				<div class="myRow">
 					<div class="myLabel width230">Nombre profesional o de la empresa</div>
-					<div class="myLabel width450" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width350"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
+					<div class="myLabel width530" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width510"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width70">Ubicaci&oacute;n</div>
@@ -204,11 +204,16 @@ $(document).ready(
 				</div>
 				<div class="width760 height25" style="float:left;">&nbsp;</div>
 				<h2>Agregue productos y servicios que desee ofrecer</h2>
-				<div class="myRow">
-					<div class="myLabel width790 comment">Agregue todos productos que desee. Si el producto ya ha sido tipificado, aparecer&aacute; dentro de las opciones de texto predictivo. Es mejor para su negocio y sus posibilidades, que todos los productos que agregue est&eacute;n tipificados. Los administradores del sitio se encargan de tipificar los productos para su comodidad.</div>
+				<div class="myRow" align="center">
+					<div class="myLabel width780 width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width780">Desea incorporar producto a su perfil? Si, <a class="nonelyLink" id="addProduct">agregar producto</a>, o <a class="nonelyLink" id="addService">agregar servicio</a></div>
+					<div class="myLabel width790 comment">
+						<p>Agreg&aacute; todos productos o servicios que desees. No es obligatorio hacerlo ahora. Podes hacerlo una vez que tu perfil haya sido validado.<br/>Es importante que el producto o servicio que agregues est&eacute; en la categor&iacute;a correcta. Eso te beneficiar&aacute; en las b&uacute;squedas.</p>
+					</div>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width780">&#191;Desea incorporar producto o servicios a su perfil? Si,<a class="nonelyLink" id="addProduct">agregar producto,</a>o<a class="nonelyLink" id="addService">agregar servicio.</a></div>
 				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
 				<div id="addSellLayer" style="display: none;">
@@ -248,10 +253,7 @@ $(document).ready(
 					</display:table>
 					<div style="color:#00FF99;"><%=DisplayTagParamHelper.getFields(request)%></div>
 				</div>
-				<div class="myRow" align="center">
-					<div class="myLabel width780 width20">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.sells_key + ".err")%></div>
-				</div>
-				<div class="myRow" align="center"><input type="submit" value="enviar datos" class="" /></div>
+				<div class="myRow" align="center"><input type="submit" value="Enviar datos" class="" /></div>
 			</div>
 		</html:form>
 		</div>

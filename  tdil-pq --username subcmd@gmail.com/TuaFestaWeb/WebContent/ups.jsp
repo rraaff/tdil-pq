@@ -8,39 +8,24 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R016-M1- FAQs-Preguntas Frecuentes</title>
+<title>Tua Festa | ups! ocurri&oacute; un error</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 <style>
 <!--
-#formContent #leftBar {
-	width:520px;
-	padding-top:20px;
-	padding-bottom:50px;
-	float:left;
-}
-#formContent #leftBar h5 {
-	font-size:18px;
-	padding-top:20px;
-	padding-bottom:10px;
-}
-#formContent #leftBar p {
-	color:#252e35;
-	font-size:13px;
-	line-height:20px;
-	text-align:justify;
-	margin-top:0;
-	text-shadow:none;
-}
+
 -->
 </style>
 </head>
 <body>
-Ha ocurrido un error...
-<!-- % @ include file="includes/fbShare.jsp" %-->
-<%@ include file="includes/footer.jsp" %>
+<div id="content">
+	<div style="width:250px; height:220px; margin:100px auto;" align="center">
+		<p><a href="index.jsp"><img src="images/skin_basic/logos/headerLogo.png" width="141" height="130" border="0" /></a></p>
+		<h2>Ha ocurrido un error...</h2>
+		<p></p>
+		<p><a href="index.jsp">Volver al inicio</a></p>
+	</div>
+</div>
 </body>
 </html>

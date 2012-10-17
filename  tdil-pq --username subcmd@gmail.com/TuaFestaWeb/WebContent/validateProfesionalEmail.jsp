@@ -17,31 +17,32 @@
 <body>
 <%@ include file="includes/boMenu.jsp" %>
 <div id="boWrapper">
-	<div id="boCentral">
-		<div id="formulariosBase">
-			<h1>Validar email del profesional</h1>
-			<div class="renglon width950">
-				<div class="label width950"><span class="errorText">Desde esta secci&oacute;n podr&aacute; validar manualmente el E-mail del profesional. Si lo bloquea el profesional no podra ingresar al sistema ni registrarse nuevamente.</span></div>
+	<div id="boCentral" class="height450">
+		<h1>Validar email del profesional</h1>
+		<div id="formulariosBase" class="height350">
+			<div class="myRow width100per">
+				<div class="myLabel width100per"><span class="errorText">Desde esta secci&oacute;n podr&aacute; validar manualmente el E-mail del profesional. Si lo bloquea el profesional no podra ingresar al sistema ni registrarse nuevamente.</span></div>
 			</div>
 			<html:form method="POST" action="/manualValidateProfesionalEmail">
-				<div class="renglon width950 bordeGris bordeBottomNo">
-					<div class="label width100">Nombre</div>
-					<div class="label width850"><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></div>
+				<div class="myRow">
+					<div class="myLabel width90">Nombre</div>
+					<div class="myLabel width800"><strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong></div>
 				</div>
-				<div class="renglon width950 bordeGris bordeBottomNo">
-					<div class="label width100">Apellido</div>
-					<div class="label width850"><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></div>
+				<div class="myRow">
+					<div class="myLabel width90">Apellido</div>
+					<div class="myLabel width800"><strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong></div>
 				</div>
-				<div class="renglon width950 bordeGris bordeBottomNo">
-					<div class="label width100">Razon Social</div>
-					<div class="label width850"><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></div>
+				<div class="myRow">
+					<div class="myLabel width90">Razon Social</div>
+					<div class="myLabel width800"><strong><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></strong></div>
 				</div>
-				<div class="renglon width950 bordeGris">
-					<div class="label width100">E-mail</div>
-					<div class="label width850"><bean:write name="ReviewProfesionalForm" property="profesional.email"/></div>
+				<div class="myRow">
+					<div class="myLabel width90">E-mail</div>
+					<div class="myLabel width800"><strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong></div>
 				</div>
-				<div class="renglon width950">
-					<div class="label width950" align="center">
+				<div class="myRow width350" style="margin:0 auto; float:none;">
+					<div class="myLabel width50" style="padding-top:16px;"><a href="profesionalAdministration.jsp">Volver</a></div>
+					<div class="myLabel width300">
 						<html:submit property="operation">
 							<bean:message key="Approve" />
 						</html:submit>
@@ -51,9 +52,6 @@
 					</div>
 				</div>
 			</html:form>
-			<div class="renglon width950">
-				<div class="label width950" align="center"><a href="profesionalAdministration.jsp">Volver</a></div>
-			</div>
 		</div>
 	</div>
 </div>
