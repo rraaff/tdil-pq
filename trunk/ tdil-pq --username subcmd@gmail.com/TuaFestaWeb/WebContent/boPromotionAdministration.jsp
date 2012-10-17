@@ -50,7 +50,7 @@ $(document).ready(
 <div id="boWrapper">
 	<div id="boCentral">
 		<h1>Administraci&oacute;n de Promotions</h1>
-		<div id="formulariosBase" class="height780">
+		<div id="formulariosBase" class="height1200">
 			<div class="myRow">
 				<div class="myLabel"><span class="comment">Desde aquí podrá configurar las promociones.</span></div>
 			</div>
@@ -84,7 +84,7 @@ $(document).ready(
 					<div class="myRow height60" style="margin-top:12px;">
 						<div class="myLabel width580 height60"><input type="file" name="upload_img" id="upload_img">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.photo_key + ".err")%></div>
 					</div>
-					<div class="width580 height250" style="float:left; overflow:auto; border:solid 1px #CCCCCC;">
+					<div class="width580" style="height:190px; float:left; overflow:auto; border:solid 1px #CCCCCC;">
 						<table width="580" id="image_gal_tab">
 							<tr>
 								<td class="headerTablas" width="50">Posici&oacute;n</td>
@@ -105,45 +105,43 @@ $(document).ready(
 					</div>
 				</div>
 				<div style="width:100%; height:10px; margin-bottom:20px; border-bottom:dotted 1px #CCCCCC; float:left;">&nbsp;</div>
-				<div style="width:440px; float:left;">
+				<div style="width:460px; height:370px; overflow:auto; float:left;">
 					<h2 style="margin-bottom:20px;">Productos/Servicios Agregados</h2>
-					<table width="100%">
-						<tr>
-							<td class="headerTablas">Nombre</td>
-							<td class="headerTablas">Categor&iacute;a</td>
-							<td class="headerTablas">Profesional</td>
-							<td class="headerTablas" width="60">Acciones</td>
-						</tr>
-						<logic:iterate name="PromotionForm" property="sells"
-							id="added" indexId="iterIndex">
-							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
-								<td><bean:write name="added" property="name" /></td>
-								<td><bean:write name="added" property="categoryText" /></td>
-								<td><bean:write name="added" property="profesionalBusinessname" /></td>
-								<td><a href="javascript:document.PromotionForm.action='./removeSellFromPromotion.do?index=<%=iterIndex%>';document.PromotionForm.submit();">Quitar</a></td>
+					<div style="height:330px; overflow:auto; float:left;">
+						<table width="100%">
+							<tr>
+								<td class="headerTablas">Nombre</td>
+								<td class="headerTablas">Categor&iacute;a</td>
+								<td class="headerTablas">Profesional</td>
+								<td class="headerTablas" width="60">Acciones</td>
 							</tr>
-						</logic:iterate>
-					</table>
+							<logic:iterate name="PromotionForm" property="sells"
+								id="added" indexId="iterIndex">
+								<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+									<td><bean:write name="added" property="name" /></td>
+									<td><bean:write name="added" property="categoryText" /></td>
+									<td><bean:write name="added" property="profesionalBusinessname" /></td>
+									<td><a href="javascript:document.PromotionForm.action='./removeSellFromPromotion.do?index=<%=iterIndex%>';document.PromotionForm.submit();">Quitar</a></td>
+								</tr>
+							</logic:iterate>
+						</table>
+					</div>
 				</div>
-				<div style="width:440px; margin-left:20px; float:left;">
+				<div style="width:460px; height:360px;; margin-left:20px; float:left;">
 					<h2 style="margin-bottom:20px;">Productos o servicios a agregar</h2>
-					<div style="width:430px; height:250px; padding:5px; border:dotted 1px #CCCCCC;">
+					<div style="width:450px; height:317px; padding:5px; border:dotted 1px #CCCCCC;">
 						<div class="myRow">
-							<div class="myLabel">Buscar por:</div>
+							<div class="myLabel width70">Buscar por:</div>
+							<div class="myLabel width350"> <html:radio name="PromotionForm" property="searchForm.type" value="1" /> productos&nbsp;&nbsp;&nbsp;&nbsp;<html:radio name="PromotionForm" property="searchForm.type" value="2" />Servicios</div>
 						</div>
 						<div class="myRow">
-							<div class="myLabel width420"><html:radio name="PromotionForm" property="searchForm.type" value="1" />productos  <html:radio name="PromotionForm" property="searchForm.type" value="2" />Servicios</div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width80">Nombre</div>
-							<div class="myLabel width350"><html:text name="PromotionForm" property="searchForm.name" styleClass="normalField width350"/></div>
-						</div>
-						<div class="myRow">
+							<div class="myLabel width60">Nombre</div>
+							<div class="myLabel width150"><html:text name="PromotionForm" property="searchForm.name" styleClass="normalField width120"/></div>
 							<div class="myLabel width80">Profesional</div>
-							<div class="myLabel width350"><html:text name="PromotionForm" property="searchForm.profesionalBusinessname" styleClass="normalField width350"/></div>
+							<div class="myLabel width120"><html:text name="PromotionForm" property="searchForm.profesionalBusinessname" styleClass="normalField width120"/></div>
 						</div>
 						<div class="myRow" align="center"><a class="nonelyLink" href="javascript:document.PromotionForm.action='./searchSellsForPromotion.do';document.PromotionForm.submit();">Buscar</a></div>
-						<div class="myRow">
+						<div class="myRow" style="height:200px; overflow:auto;">
 							<table width="100%">
 								<tr>
 									<td class="headerTablas">Nombre</td>
@@ -180,7 +178,7 @@ $(document).ready(
 					</html:submit>
 				</div>
 			</html:form>
-			<div class="myRow" style="margin-bottom:20px;">
+			<div class="myRow" style="height:350px; overflow:auto; margin-bottom:20px;">
 				<table width="100%">
 					<tr>
 						<td class="headerTablas">Nombre</td>

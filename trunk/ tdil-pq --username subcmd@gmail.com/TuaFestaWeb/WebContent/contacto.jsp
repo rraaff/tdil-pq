@@ -8,12 +8,10 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R013-M1- Contacto</title>
+<title>Tua Festa | Contacto</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -36,21 +34,26 @@
 			<div id="rightBar">
 				<div id="formWrapper">
 					<div class="myRow">
-						<div class="myLabel">Nombre</div><div class="myLabel width160"><input type="text" class="normalField width150" /></div>
-						<div class="myLabel width30">&nbsp;</div>
-						<div class="myLabel">Apellido</div><div class="myLabel width160"><input type="text" class="normalField width150" /></div>
+						<div class="myLabel width60">Nombre</div>
+						<div class="myLabel width160"><input type="text" class="normalField width150" /></div>
+						<div class="myLabel width20">&nbsp;</div>
+						<div class="myLabel width60">Apellido</div>
+						<div class="myLabel width160"><input type="text" class="normalField width150" /></div>
 					</div>
 					<div class="myRow" style="padding-bottom:2px;">
-						<div class="myLabel">E-Mail</div><div class="myLabel width400"><input type="text" class="normalField width390" /></div>
+						<div class="myLabel width60">E-Mail</div>
+						<div class="myLabel width400"><input type="text" class="normalField width390" /></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width450">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</div>
+						<div class="myLabel width450"><span class="comment">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</span></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel">Asunto</div><div class="myLabel width400"><input type="text" class="normalField width390" /></div>
+						<div class="myLabel width60">Asunto</div>
+						<div class="myLabel width400"><input type="text" class="normalField width390" /></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel">Texto</div><div class="myLabel width400 height100"><textarea class="normalField width390 height100"></textarea></div>
+						<div class="myLabel width60">Texto</div>
+						<div class="myLabel width400 height100"><textarea class="normalField width390 height100"></textarea></div>
 					</div>
 					<div class="myRow" style="padding-bottom:2px;">
 						<div id="buttonContactForm"><a href="#"><img src="images/null.gif" width="169" height="65" /></a></div>

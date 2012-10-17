@@ -14,17 +14,20 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R009-M1- Mi cuenta - Perfil de usuario profesional</title>
+<title>Tua Festa | Promoci&oacute; (Datos de los profesionales)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <style>
 <!--
-.myRow {
-	padding-bottom:5px;
+#formSection {
+	width:920px;
+}
+#formSectionPart {
+	width:300px;
+	
+	overflow:hidden;
+	float:left;
 }
 #muroContainer {
 	background:#CCCCCC;
@@ -44,37 +47,38 @@
 	<div id="content">
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
-			<h1>Datos de contacto de la promocion <bean:write name="PromotionContactForm" property="promotion.name"/></h1>
+			<h1>Promocion: <bean:write name="PromotionContactForm" property="promotion.name"/></h1>
+			<h2>En esta p&aacute;gina est&aacute;n los datos de contacto de todos los profesionales incluidos en la promoci&oacute;n</h2>
 		</div>
 		<% PromotionContactForm promotionContactForm = (PromotionContactForm)session.getAttribute("PromotionContactForm"); 
 			for (Profesional profesional : promotionContactForm.getProfesionals()) {
 		%>
 		<div id="formContent">
 			<div id="formSection">
-				<div class="myRow">
-					<div class="myLabel width400"><%=profesional.getCompleteName()%></div>
+				<div id="formSectionPart">
+					<h2 style="font-size:18px; line-height:18px; padding-top:0;"><%=profesional.getCompleteName()%></h2>
+					<div class="myRow">
+						<div class="myLabel">Tel&eacute;fono <%=profesional.getPhonetype()%>: <%=profesional.getPhoneareacode()%>-<%=profesional.getPhonenumber()%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel">E-Mail: <%=profesional.getEmail()%></div>
+					</div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel width400">Tel&eacute;fono <%=profesional.getPhonetype()%>: <%=profesional.getPhoneareacode()%>-<%=profesional.getPhonenumber()%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width400">E-Mail: <%=profesional.getEmail()%></div>
-				</div>
-			</div>
-			<div id="formSection" class="width650">
-				<div class="myRow">
-					<div class="myLabel width400">Nombre profesional/empresa: <%=profesional.getBusinessname()%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width400">Ubicaci&oacute;n: <%=GeoLevelUtils.getPath(profesional.getIdGeolevel())%></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width200">Web: <%= com.tdil.utils.StringUtils.nvl(profesional.getWebsite(),"-") %></div>
-					<div class="myLabel width200">Facebook: <%= com.tdil.utils.StringUtils.nvl(profesional.getFacebook(),"-") %></div>
-				</div>
-				<div class="myRow height50">
-					<div class="myLabel width200">Horario de Atenci&oacute;n: <%=com.tdil.utils.StringUtils.nvl(profesional.getBusinesshours(), "-")%></div>
-					<div class="myLabel width200">Descripci&oacute;n: <%=com.tdil.utils.StringUtils.nvl(profesional.getDescription(),"-")%></div>
+				<div id="formSectionPart" style="width:600px; margin-left:20px;">
+					<h2 style="font-size:18px; line-height:18px; padding-top:0;"><%=profesional.getBusinessname()%></h2>
+					<div class="myRow">
+						<div class="myLabel width600">Ubicaci&oacute;n: <strong><%=GeoLevelUtils.getPath(profesional.getIdGeolevel())%></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width300">Web: <strong><%= com.tdil.utils.StringUtils.nvl(profesional.getWebsite(),"-") %></strong></div>
+						<div class="myLabel width300">Facebook: <strong><%= com.tdil.utils.StringUtils.nvl(profesional.getFacebook(),"-") %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width600">Horario de Atenci&oacute;n: <strong><%=com.tdil.utils.StringUtils.nvl(profesional.getBusinesshours(), "-")%></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width600">Descripci&oacute;n: <span style="color:#666666; font-style:italic;"><%=com.tdil.utils.StringUtils.nvl(profesional.getDescription(),"-")%></span></div>
+					</div>
 				</div>
 			</div>
 		</div>
