@@ -153,7 +153,9 @@ body {
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
 	font-size:14px;
 	font-weight:bold;
-	padding-bottom:10px;
+	margin-bottom:15px;
+	overflow:hidden;
+	height:14px;
 }
 #lowHighlightedAdv h6, #lowHighlightedAdv h6 a {
 	color:#666;
@@ -251,26 +253,4 @@ body {
 	padding-left:0;
 /*	color:#f6b400;*/
 	text-decoration:none;
-}
-/**/
-#tooltip {
-	position: absolute;
-	z-index: 3000;
-	border: 1px solid #fff;
-	background-color: #000;
-	padding: 10px;
-	opacity: 0.85;
-	color: #FFCCCC;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-	-o-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-}
-#tooltip h3, #tooltip div { margin: 0; }
-/**/
-.hide {
-	display: none;
 }

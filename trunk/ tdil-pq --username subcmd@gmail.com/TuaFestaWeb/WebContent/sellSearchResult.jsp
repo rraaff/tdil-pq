@@ -13,12 +13,10 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 2)</title>
+<title>Tua Festa | Resultados de la busqueda</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 <style>
 #formContent {
 	min-height:290px;
@@ -45,13 +43,11 @@
 					request.setAttribute( "sells",  paginatedServices);
 					%>
 					<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./sellSearchResult.jsp">
-						<display:column title="Producto/Servicio" sortable="true" sortName="name" headerClass="sortable width200" property="name"></display:column>
-						<display:column title="Vendedor" sortable="true" sortName="Nombre" headerClass="sortable width200" property="profesionalbusinessname"></display:column>
-						<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width100" property="referenceprice"></display:column>
-						<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width350" property="geoLevelPath"></display:column>
-						<display:column title="acciones" headerClass="sortable width100">
-							<a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a>
-						</display:column>
+						<display:column title="Producto/Servicio" sortable="true" sortName="name" headerClass="sortable width400" property="name"></display:column>
+						<display:column title="Vendedor" sortable="true" sortName="Nombre" headerClass="sortable width150" property="profesionalbusinessname"></display:column>
+						<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referenceprice"></display:column>
+						<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width250" property="geoLevelPath"></display:column>
+						<display:column title="acciones" headerClass="sortable width80"><a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a></display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
 		</div>

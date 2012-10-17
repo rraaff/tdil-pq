@@ -23,13 +23,13 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 1)</title>
+<title>Tua Festa | Registro</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<!--link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" /-->
 <%@ include file="includes/boErrorJS.jsp" %>
 <style>
 <!-- 
@@ -75,7 +75,7 @@
 }
 .profesional_title {
 	color:#FFF;
-	font-weight:bold;
+	font-weight:normal;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 .remarcadoDCF6FC {
@@ -85,7 +85,7 @@
 }
 #buttonFB {
 	background-image: url(images/skin_basic/buttons/registerClientFB_off.png);
-	width:328px;
+	width:324px;
 	height:65px;
 	margin:26px auto 0 auto;
 }
@@ -112,20 +112,21 @@
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Registro</h1>
+			<h2>Busc&aacute;s productos y servicios para organizar tu fiesta o queres ofrecerlos para contactarte con clientes</h2>
 		</div>
 		<% 
 			String apikey = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.FB_API_KEY);
 			String redirect = SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.SERVER_NAME);
 		%>
-		<div id="formContent">
+		<div id="formContent" style="margin-top:0; padding-top:0;">
 			<div id="moduloPreReg" class="cliente">
-				<h2>Te queres registrar para contactarte y ser contactado por los profesionales?</h2>
+				<h2>&#191;Te queres registrar para entran en contacto con los mejores profesionales?</h2>
 				<p>Podes registrarte sin costo alguno usando tu cuenta de Facebook o <a href="./goToRegistroCliente.do" title="Registrate sin usar tu cuenta de Facebook">simplemente cargando unos datos b&aacute;sicos.</a></p>
-				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="328" height="65" /></a></div>
+				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="324" height="65" /></a></div>
 			</div>
 			<div id="moduloPreReg" class="profesional">
-				<h2><span class="profesional_title">Queres ofrecer tus productos o servicios? </span><span class="remarcadoDCF6FC">Registrate gratis</span></h2>
-				<p>Podes registrarte usando tu cuenta de <a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginProfesionalFacebookAction.redirect_uri, Facebook.email_perms)%>">facebook</a> o cargando tus datos como profesional. Luego de corroborar tus datos podr&aacute;s publicar tus productos o servicios.</p>
+				<h2><span class="profesional_title">&#191;Queres ofrecer tus productos o servicios?</span><br/><span class="remarcadoDCF6FC">Registrate gratis</span></h2>
+				<p>Podes hacerlo utilizando tu cuenta de <a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginProfesionalFacebookAction.redirect_uri, Facebook.email_perms)%>">facebook</a> o cargando tus datos como profesional.<br/><br/></p>
 				<div id="buttonProf"><a href="./goToRegistroProfesional.do"><img src="images/null.gif" width="229" height="65" /></a></div>
 			</div>
 		</div>
