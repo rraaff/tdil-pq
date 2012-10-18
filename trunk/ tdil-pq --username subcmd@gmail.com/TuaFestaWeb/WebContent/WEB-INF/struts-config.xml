@@ -68,6 +68,9 @@
    <form-bean id="PromotionContactForm"
    name="PromotionContactForm" type="com.tdil.tuafesta.struts.forms.PromotionContactForm"/>
    
+   <form-bean id="WallModerationForm"
+   name="WallModerationForm" type="com.tdil.tuafesta.struts.forms.WallModerationForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -433,6 +436,36 @@
   <action name="EditProfesionalBusinessDataForm" path="/goToEditProfesionalBusinessData" parameter="Profesional"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
+  </action>
+  
+  <action name="WallModerationForm" path="/goToModerateProfesionalWall" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  
+  <action name="WallModerationForm" path="/loadWallWrittingToAnswer" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToAnswerAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  <action name="WallModerationForm" path="/loadWallWrittingToEdit" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToEditAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  <action name="WallModerationForm" path="/viewWallWrittingAll" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingAllAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  <action name="WallModerationForm" path="/viewWallWrittingPending" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingPendingAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  <action name="WallModerationForm" path="/deleteWallWritting" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.DeleteWallWrittingAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  <action name="WallModerationForm" path="/markAsRespondedWallWritting" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.MarkAsRespondedWallWrittingAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
   
   <action name="EditProfesionalServiceAreaForm" path="/goToEditProfesionalServiceArea" parameter="Profesional"
