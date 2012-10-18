@@ -104,6 +104,22 @@
 				<!-- aca Termina el formulario -->
 			</div>
 		</div>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Areas de cobertura </legend>
+			<a href="./goToEditProfesionalServiceArea.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Muro: <%=profesionalHomeForm.getWallModerationPendingCount() %> posts pendientes de moderacion</legend>
+			<a href="./goToModerateProfesionalWall.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		
+		<div style="border: 1px Solid Black;">
+			<legend>Agenda</legend>
+			<a href="./goToEditProfesionalAgenda.do?id=<%=profesional.getId()%>">Editar</a>
+		</div><br>
+		<!-- aca Termina el formulario -->
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
