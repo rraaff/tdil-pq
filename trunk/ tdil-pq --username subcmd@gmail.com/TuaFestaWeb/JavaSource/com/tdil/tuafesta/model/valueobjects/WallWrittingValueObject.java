@@ -18,4 +18,8 @@ public class WallWrittingValueObject extends WallWritting {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
+	
+	public boolean isAuthorProfesional() {
+		return this.getIdAuthor() == null || this.getId().equals(0);
+	}
 }

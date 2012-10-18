@@ -188,6 +188,7 @@ CREATE TABLE WALL_WRITTING (
   `originalText` VARCHAR(4000) NOT NULL ,
   `approved` INT NOT NULL,
   `id_wall` INT NOT NULL,
+  `response_pending` INT NOT NULL ,
   `id_response_to` INT  NULL ,
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`),

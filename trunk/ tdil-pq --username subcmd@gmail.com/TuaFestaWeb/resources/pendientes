@@ -1,3 +1,14 @@
+Sabés qué le falta a la tabla de la sección de administración de avisos... una columna con el tipo de aviso
+
+Te paso otras cosas de TUA FESTA que necesito tu ayuda para corregir.
+ 
+En la REGISTRACIÓN de PROFESIONALES
+- Que los campos de CUIT y IIBB no estén ahí pero si en la edición del perfil.
+- Las fechas y los nombres de los meses en español
+- Que agregar productos o servicios no sea obligatorio
+- Ponele “Categoría: “ antes de la ruta de categoría cuando agregas productos o servicios
+- Ponerle a eso un style “.categoryRoot” para que lo pueda definir desde el css
+
 
 Home del profesional debe tener todo el listado de productos y servicios del profesional
 
