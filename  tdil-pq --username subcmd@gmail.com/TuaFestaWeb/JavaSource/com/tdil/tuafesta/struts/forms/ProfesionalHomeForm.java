@@ -16,6 +16,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
+import com.tdil.tuafesta.model.WallWrittingExample;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
@@ -31,6 +32,7 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	private boolean businessDataChanged = false;
 	private Profesional profesional;
 	private GeoLevelValueObject location;
+	private int wallModerationPendingCount;
 	
 	private List<SellValueObject> sells = new ArrayList<SellValueObject>();
 	
@@ -56,6 +58,10 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 		
 		sells = DAOManager.getSellDAO().selectProductSellsByProfesional(id);
 		sells.addAll(DAOManager.getSellDAO().selectServiceSellsByProfesional(id));
+		
+		WallWrittingExample wallWrittingExample = new WallWrittingExample();
+		wallWrittingExample.createCriteria().andIdWallEqualTo(profesional.getIdWall()).andDeletedEqualTo(0).andResponsePendingEqualTo(1);
+		setWallModerationPendingCount(DAOManager.getWallWrittingDAO().countWallWrittingByExample(wallWrittingExample));
 	}
 	
 	@Override
@@ -100,6 +106,12 @@ public class ProfesionalHomeForm extends TransactionalValidationForm {
 	}
 	public void setSells(List<SellValueObject> sells) {
 		this.sells = sells;
+	}
+	public int getWallModerationPendingCount() {
+		return wallModerationPendingCount;
+	}
+	public void setWallModerationPendingCount(int wallModerationPendingCount) {
+		this.wallModerationPendingCount = wallModerationPendingCount;
 	}
 	
 }

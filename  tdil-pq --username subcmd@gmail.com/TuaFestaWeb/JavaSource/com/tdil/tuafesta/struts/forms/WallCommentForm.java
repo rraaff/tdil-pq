@@ -91,6 +91,7 @@ public class WallCommentForm extends TransactionalValidationForm {
 		wallWritting.setApproved(0);
 		wallWritting.setOriginaltext(this.getContent());
 		wallWritting.setCreationdate(new Date());
+		wallWritting.setResponsePending(1);
 		wallWritting.setDeleted(0);
 		dao.insertWallWritting(wallWritting);
 	}
