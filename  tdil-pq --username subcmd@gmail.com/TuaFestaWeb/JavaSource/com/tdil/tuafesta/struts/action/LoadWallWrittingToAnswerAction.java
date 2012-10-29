@@ -23,7 +23,7 @@ public class LoadWallWrittingToAnswerAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		
 		final AbstractForm abstractForm = (AbstractForm) form;
-		final int wid = Integer.parseInt(request.getParameter("wid"));
+		final int wid = Integer.parseInt(request.getParameter("id"));
 		TransactionProvider.executeInTransaction(new TransactionalAction() {
 			public void executeInTransaction() throws SQLException, ValidationException {
 				((WallModerationForm)abstractForm).loadWrittingToAnswer(wid);

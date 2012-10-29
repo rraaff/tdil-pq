@@ -51,7 +51,7 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("idWall", this.getProfesional().getIdWall());
 		params.put("start", 0);
-		params.put("limit", 10);
+		params.put("limit", 11);
 		wallWritting = DAOManager.getWallWrittingDAO().selectWallWindow(params);
 	}
 

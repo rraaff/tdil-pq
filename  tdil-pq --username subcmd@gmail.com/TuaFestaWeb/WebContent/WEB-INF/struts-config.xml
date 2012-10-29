@@ -443,6 +443,11 @@
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
   
+  <action name="WallModerationForm" path="/saveWallWritting" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/moderateProfesionalWall.jsp"/>
+  </action>
+  
   <action name="WallModerationForm" path="/loadWallWrittingToAnswer" parameter="Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToAnswerAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>

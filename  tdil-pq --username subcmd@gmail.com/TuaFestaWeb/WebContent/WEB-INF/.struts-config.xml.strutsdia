@@ -1283,7 +1283,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page49" PATH="/moderateProfesionalWall.jsp"
   SHAPE="240,3554,0,0" SUBTYPE="jsp" TITLE="moderateProfesionalWall.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveWallWritting.do"
+   SUBTYPE="confirmed" TARGET="action139" TITLE="/saveWallWritting.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#loadWallWrittingToAnswer" NAME="action133"
   PATH="/loadWallWrittingToAnswer" SHAPE="32,4273,0,0"
   TITLE="WallModerationForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1321,6 +1325,13 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#markAsRespondedWallWritting" NAME="action138"
   PATH="/markAsRespondedWallWritting" SHAPE="32,4273,0,0"
+  TITLE="WallModerationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/moderateProfesionalWall.jsp" TARGET="page49" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveWallWritting" NAME="action139"
+  PATH="/saveWallWritting" SHAPE="32,4273,0,0"
   TITLE="WallModerationForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/moderateProfesionalWall.jsp" TARGET="page49" TITLE="continue"

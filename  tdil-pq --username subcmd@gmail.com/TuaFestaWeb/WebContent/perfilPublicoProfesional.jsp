@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.util.List"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.WallWrittingValueObject"%>
 <%@ include file="includes/userLogged.jspf" %>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
@@ -19,6 +20,39 @@
 <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <link href="css/home-styles.css" rel="stylesheet" type="text/css" />
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script>
+<%
+ProfesionalProfileForm profesionalProfileForm = (ProfesionalProfileForm)session.getAttribute("ProfesionalProfileForm"); 
+Profesional profesional = profesionalProfileForm.getProfesional();
+List<WallWrittingValueObject> muro = profesionalProfileForm.getWallWritting();
+int totalItems = muro.size();
+%>
+$(document).ready(
+	function(){
+		$('.more').live("click",function() 
+			{
+				var ID = $(this).attr("id");
+				if(ID) {
+					$("#more"+ID).html('<img src="img/moreajax.gif" />');
+					$.ajax({
+					type: "POST",
+					url: "muroPagina.jsp?idwall=<%=profesional.getIdWall()%>&idprof=<%=profesional.getId()%>",
+					data: "items="+ ID, 
+					cache: false,
+					success: function(html){
+						$("#muroContainer").append(html);
+						$("#more"+ID).remove(); // removing old more button
+					}
+					});
+				} else {
+					$(".morebox").html('No hay mas resultados');// no results
+				}
+				return false;
+			}
+		);
+	}
+);
+</script>
 <style>
 <!--
 .myRow {
@@ -45,9 +79,7 @@
 			<h1>Perfil de <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h1>
 			<h2>Estos son tus datos, productos y servicios publicados. Tambi&eacute;n podr&aacute;s acceder a tu muro.</h2>
 		</div>
-		<% ProfesionalProfileForm profesionalProfileForm = (ProfesionalProfileForm)session.getAttribute("ProfesionalProfileForm"); 
-			Profesional profesional = profesionalProfileForm.getProfesional();
-		%>
+		
 		<div id="formContent">
 			<div id="muroContainer">
 				<% if (websiteUser != null && websiteUser.isClient()) {
@@ -59,10 +91,21 @@
 				<% } else { %>
 					Para poder postear tenes que estar logueado
 				<% } %>
-				<% for (WallWrittingValueObject wwvo : profesionalProfileForm.getWallWritting()) { %>
-					<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+				<% int index = 0;
+					for (WallWrittingValueObject wwvo : muro) { 
+						if(index < 10) { %>
+							<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+						<% }
+						index = index + 1;
+						%>
+				<% } %>
+				<% if (totalItems > 10) { %>
+				<div id="more10" class="morebox">
+					<a href="#" class="more" id="10">Ver mas</a>
+				</div>
 				<% } %>
 			</div>
+			
 			<div id="formSection">
 				<div class="myRow">
 					<div class="myLabel width400"><bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></div>
