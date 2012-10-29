@@ -27,6 +27,34 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 
 <%@ include file="includes/boErrorJS.jsp" %>
+<% WallModerationForm wallModerationForm = (WallModerationForm)session.getAttribute("WallModerationForm"); %>
+<script>
+$(document).ready(
+	function(){
+		$('.more').live("click",function() 
+			{
+				var ID = $(this).attr("id");
+				if(ID) {
+					$("#more"+ID).html('<img src="img/moreajax.gif" />');
+					$.ajax({
+					type: "POST",
+					url: "moderarMuroPagina.jsp?idwall=<%=wallModerationForm.getWallId()%>&idprof=<%=wallModerationForm.getProfesional().getId()%>",
+					data: "items="+ ID, 
+					cache: false,
+					success: function(html){
+						$("#formContent").append(html);
+						$("#more"+ID).remove(); // removing old more button
+					}
+					});
+				} else {
+					$(".morebox").html('No hay mas resultados');// no results
+				}
+				return false;
+			}
+		);
+	}
+);
+</script>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -34,31 +62,65 @@
 <div id="preContainer">
 	<div id="content">
 		<!-- aca arranca el formulario -->
-		<% WallModerationForm wallModerationForm = (WallModerationForm)session.getAttribute("WallModerationForm"); %>
 		<div id="titleArea">
-			<h1>Moderar mi muro</h1>
-			
+			<h1>Moderar mi muro</h1>			
 			<h2></h2>
 		</div>
+		<% if (wallModerationForm.isResponding()) { %>
+			Respondiendo a: <%=wallModerationForm.getPostClient().getFirstname() + " " + wallModerationForm.getPostClient().getLastname()%><br>
+			<%=wallModerationForm.getPostToAnswer().getOriginaltext()%>
+		<% } %>
+		<html:form method="POST" action="/saveWallWritting">
+			<div class="renglon">
+				<div class="label width100per" align="center"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
+			</div>
+			<div class="renglon">
+				<div class="label width130">Texto:</div>
+				<div class="label width780"><html:text name="WallModerationForm" property="post" styleClass="normalField width740"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, WallModerationForm.post_key + ".err")%></div>
+			</div>
+			<div class="renglon height50" align="center">
+				<logic:equal name="WallModerationForm" property="responding" value="true">
+					<html:submit property="operation">
+						<bean:message key="answer" />
+					</html:submit>
+				</logic:equal>
+				<logic:notEqual name="WallModerationForm" property="responding" value="true">
+					<html:submit property="operation">
+						<bean:message key="post" />
+					</html:submit>
+				</logic:notEqual>
+				<html:submit property="operation">
+					<bean:message key="reset" />
+				</html:submit>
+			</div>
+		</html:form>
+			
+		<br>
 		<% if (wallModerationForm.isShowAll()) { %>
 			<b></>Todos</b> - <a href="./viewWallWrittingPending.do">Solo pendientes</a>
 		<% } else { %>
 			<a href="./viewWallWrittingAll.do">Todos</a> - <b>Solo pendientes</b>
 		<% } %>
 		<div id="formContent">
-			<% for (WallWrittingValueObject wwvo : wallModerationForm.getWallWritting()) { %>
+			<% int index = 0;
+				for (WallWrittingValueObject wwvo : wallModerationForm.getWallWritting()) { %>
 					<div>
 						<%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? wallModerationForm.getProfesional().getBusinessname() : wwvo.getAuthorName()%>)
 						<% if (wwvo.isAuthorProfesional()) { %>
-							<a href="./">Editar</a>
+							<a href="./loadWallWrittingToEdit.do?id=<%=wwvo.getId() %>">Editar</a>
 							<a href="./deleteWallWritting.do?id=<%=wwvo.getId() %>">Borrar</a>
 						<% } else { %>
 							<% if (wwvo.getResponsePending().equals(1)) { %>
-								<a href="./">Responder</a>
+								<a href="./loadWallWrittingToAnswer.do?id=<%=wwvo.getId() %>">Responder</a>
 								<a href="./markAsRespondedWallWritting.do?id=<%=wwvo.getId() %>">Marcar como respondido</a>
 							<% } %>
 							<a href="./deleteWallWritting.do?id=<%=wwvo.getId() %>">Borrar</a>
 						<% } %>
+					</div>
+				<% } %>
+				<% if (wallModerationForm.isShowAll() && wallModerationForm.hasMore()) { %>
+					<div id="more<%=wallModerationForm.getWallWritting().size()%>" class="morebox">
+						<a href="#" class="more" id="<%=wallModerationForm.getWallWritting().size()%>">Ver mas</a>
 					</div>
 				<% } %>
 		</div>
