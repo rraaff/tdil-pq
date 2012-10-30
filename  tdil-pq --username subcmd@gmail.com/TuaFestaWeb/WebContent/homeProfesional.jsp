@@ -99,7 +99,7 @@
 				</div>
 				<div style="width:450px; float:left;">
 					<h2><legend>Agenda</legend></h2>
-					<div class="myRow">Proximamente<!-- a href="./goToEditProfesionalAgenda.do?id=<%=profesional.getId()%>">Editar</a--></div>
+					<div class="myRow"><a href="./goToEditAgenda.do?id=<%=profesional.getId()%>">Editar</a></div>
 				</div>
 				<!-- aca Termina el formulario -->
 			</div>

@@ -1337,4 +1337,33 @@
    PATH="/moderateProfesionalWall.jsp" TARGET="page49" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEditAgenda" NAME="action140"
+  PATH="/goToEditAgenda" SHAPE="32,5057,0,0"
+  TITLE="EditProfesionalAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page50" PATH="/editProfesionalAgenda.jsp"
+  SHAPE="256,5074,0,0" SUBTYPE="jsp" TITLE="editProfesionalAgenda.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAgenda.do"
+   SUBTYPE="confirmed" TARGET="action141" TITLE="/saveAgenda.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveAgenda" NAME="action141" PATH="/saveAgenda"
+  SHAPE="32,5169,0,0" TITLE="EditProfesionalAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deleteAgenda" NAME="action142" PATH="/deleteAgenda"
+  SHAPE="32,5617,0,0" TITLE="EditProfesionalAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -71,6 +71,9 @@
    <form-bean id="WallModerationForm"
    name="WallModerationForm" type="com.tdil.tuafesta.struts.forms.WallModerationForm"/>
    
+   <form-bean id="EditProfesionalAgendaForm"
+   name="EditProfesionalAgendaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalAgendaForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -472,6 +475,22 @@
    scope="session" type="com.tdil.tuafesta.struts.action.MarkAsRespondedWallWrittingAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
+  
+  
+  <action name="EditProfesionalAgendaForm" path="/goToEditAgenda" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editProfesionalAgenda.jsp"/>
+  </action>
+  <action name="EditProfesionalAgendaForm" path="/saveAgenda" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="continue" path="/editProfesionalAgenda.jsp"/>
+  </action>
+    <action name="EditProfesionalAgendaForm" parameter="Profesional"
+   path="/deleteAgenda" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/editProfesionalAgenda.jsp" redirect="true"/>
+   <forward name="failure" path="/editProfesionalAgenda.jsp"/>
+  </action>
+  
   
   <action name="EditProfesionalServiceAreaForm" path="/goToEditProfesionalServiceArea" parameter="Profesional"
    scope="session" type="com.tdil.struts.actions.EditAction">
