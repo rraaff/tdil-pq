@@ -125,5 +125,9 @@ targetProject="TuaFestaWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="TUAFESTA" tableName="PROFESIONAL_AGENDA" domainObjectName="ProfesionalAgenda" alias="pa">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
 </ibatorContext>
 </ibatorConfiguration>
