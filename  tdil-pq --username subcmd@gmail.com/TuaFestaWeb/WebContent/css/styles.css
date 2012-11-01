@@ -119,7 +119,7 @@ body {
 	overflow:hidden;
 }
 #zoneNavigation a, #categoryNavigation a {
-	color:#efaf01;
+	color:#d59b00;
 }
 table {
 	border:solid 1px #ccc;
@@ -128,6 +128,7 @@ table {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	text-transform:lowercase;
 }
 .sortable {
 	line-height:normal;
@@ -144,8 +145,9 @@ tr {
 	height:30px;
 }
 td {
-	padding-left:5px;
-	padding-right:5px;
+	padding:5px;
+	border-bottom:dotted 1px #CCC;
+	border-right:dotted 1px #CCC;
 }
 td a {
 	color:#292f3a;
@@ -189,7 +191,7 @@ a {
 	padding-bottom:0;
 }
 #formContent a {
-	color:#efaf01;
+	color:#d59b00;
 }
 #formContent #leftBar {
 	width:400px;
@@ -225,7 +227,7 @@ a {
 	margin-left:30px;
 }
 .prodServCategoryPath {
-	color:#efaf01;
+	color:#d59b00;
 }
 #loginBase {
 	background-image: url(../images/skin_basic/backgrounds/formBackground.gif);
@@ -250,7 +252,7 @@ a {
 
 /*  / LOS DE MARCOS /////////////////////////////////////////////// */
 /* the forward and backward buttons */
-.addfwd { display:block; position:absolute; cursor:pointer; width:25px; top:0; right:0px; background:url(../images/gallery_fwd.jpg) no-repeat 0 0;z-index:300;  }
+.addfwd { display:block; position:absolute; cursor:pointer; width:25px; top:0; right:0px; background:url(../images/gallery_fwd.jpg) no-repeat 0 0; z-index:300;  }
 .addbkwd { display:block; position:absolute; cursor:pointer; width:25px; top:0; left:0px; background:url(../images/gallery_back.jpg) no-repeat 0 0; z-index:300;  }
 /* Target FireFox 3 [!] */
 html>/**/body #col_derecha h2, x:-moz-any-link, x:default {

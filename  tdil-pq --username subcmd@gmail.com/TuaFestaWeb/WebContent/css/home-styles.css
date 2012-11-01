@@ -154,9 +154,9 @@ body {
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
 	font-size:14px;
 	font-weight:bold;
-	margin-bottom:15px;
+	margin-bottom:13px;
 	overflow:hidden;
-	height:14px;
+	height:16px;
 }
 #lowHighlightedAdv h6, #lowHighlightedAdv h6 a {
 	color:#666;

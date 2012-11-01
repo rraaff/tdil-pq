@@ -1,3 +1,4 @@
+@charset "utf-8";
 div, span, p, a { /*border:dotted 1px #00FF00; /**/}
 .myRow, .renglon {
 	width:100%;
@@ -9,7 +10,7 @@ div, span, p, a { /*border:dotted 1px #00FF00; /**/}
 	float:left;
 }
 /* campos textfield, input, select, */
-.normalField, input[type="select"] {
+.normalField, input[type="text"], input[type="password"], input[type="select"] {
 	background:#f4f8ff;
 	height:22px;
 	margin:0 5px;
@@ -21,24 +22,34 @@ div, span, p, a { /*border:dotted 1px #00FF00; /**/}
 	border:solid 1px #cbdfff;
 }
 /* INPUT BUTTONS  */
-input[type="button"], input[type="submit"] {
+input.button[class], input.submit[class] {  /* IE ignores [class] */
+    width: auto;  /* cancel margin fix for other browsers */
+}
+input[type=button], input[type=submit], .inputButtonHelper, .inputButtonHelper a, input.button, input.submit {
+	background:none;
+	width: auto;
 	color: #000;
 	border-style: none;
-	padding: 10px 20px;
+	padding: 10px 10px;
 	margin: 10px;
 	cursor:hand;
+	border:none;
+	border:0;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+
 	text-shadow: 0 1px 0 rgba(230, 230, 230, 0.9);
-	box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.3);
-	-webkit-box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1);
-	-moz-box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1);
+	box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1); /* FF, Chrome, Safari */
+	background-image: -webkit-box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1);
+	background-image: -moz-box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1);
 	-o-box-shadow: 0 0 3px 3px rgba(44, 28, 89, 0.1);
+	
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febe10', endColorstr='#febe10',GradientType=0 );*/
 	
 	background:#febe10;
 }
-input[type="button"]:hover, input[type="submit"]:hover {
+input[type=button]:hover, input[type=submit]:hover, .inputButtonHelper:hover, .inputButtonHelper a:hover {
 	background:#ffcb08;
 }
 
@@ -61,9 +72,11 @@ input[type="button"]:hover, input[type="submit"]:hover {
 .width180 { width:180px; }
 .width200 { width:200px; }
 .width210 { width:210px; }
+.width220 { width:220px; }
 .width230 { width:230px; }
 .width240 { width:240px; }
 .width250 { width:250px; }
+.width270 { width:270px; }
 .width280 { width:280px; }
 .width300 { width:300px; }
 .width310 { width:310px; }
@@ -78,6 +91,7 @@ input[type="button"]:hover, input[type="submit"]:hover {
 .width475 { width:475px; }
 .width500 { width:500px; }
 .width510 { width:510px; }
+.width520 { width:520px; }
 .width530 { width:530px; }
 .width550 { width:550px; }
 .width580 { width:580px; }
@@ -127,3 +141,5 @@ input[type="button"]:hover, input[type="submit"]:hover {
 
 .centering { margin:0 auto; }
 .margin100 { margin:100px; }
+.fleft { float:left; }
+.fright { float:right; }
