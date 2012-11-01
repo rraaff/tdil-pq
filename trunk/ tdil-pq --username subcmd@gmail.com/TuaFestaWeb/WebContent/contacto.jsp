@@ -27,8 +27,8 @@
 				<p>Envianos tu pregunta, duda o sugerencia a trav&eacute;s de este formulario. Existe una p&aacute;gina con preguntas frecuentes donde contestamos las dudas m&aacute;s repetidas de los usuarios. &iquest;Ya las revisaste?</a></p>
 				<div style="padding-top:115px;">
 					<h2 style="padding-left:0;">Seguinos en</h2>
-					<div style="margin-right:25px; float:left;"><a href="http://www.facebook.com/"><img src="images/skin_basic/buttons/facebookPlaca.gif" alt="Seguinos en Facebook" /></a></div>
-					<div style="float:left;"><a href="http://www.twitter.com/"><img src="images/skin_basic/buttons/twitterPlaca.gif" alt="Seguinos en Twitter" width="184" height="121" /></a></div>
+					<div style="margin-right:25px; float:left;"><a href="http://www.facebook.com/TuaFesta" target="_blank"><img src="images/skin_basic/buttons/facebookPlaca.gif" alt="Seguinos en Facebook" /></a></div>
+					<div style="float:left;"><a href="https://twitter.com/TuaFesta" target="_blank"><img src="images/skin_basic/buttons/twitterPlaca.gif" alt="Seguinos en Twitter" width="184" height="121" /></a></div>
 				</div>
 			</div>
 			<div id="rightBar">
@@ -45,7 +45,7 @@
 						<div class="myLabel width400"><input type="text" class="normalField width390" /></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width450"><span class="comment">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</span></div>
+						<div class="myLabel width450"><span class="comment" style="color:#333333;">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</span></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width60">Asunto</div>

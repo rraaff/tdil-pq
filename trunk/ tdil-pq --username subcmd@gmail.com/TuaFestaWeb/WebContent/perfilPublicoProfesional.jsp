@@ -13,13 +13,10 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R009-M1- Mi cuenta - Perfil de usuario profesional</title>
+<title>Tua Festa | Perfil de usuario profesional</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <script>
 <%
 ProfesionalProfileForm profesionalProfileForm = (ProfesionalProfileForm)session.getAttribute("ProfesionalProfileForm"); 
@@ -55,16 +52,14 @@ $(document).ready(
 </script>
 <style>
 <!--
-.myRow {
-	padding-bottom:5px;
-}
 #muroContainer {
-	background:#CCCCCC;
+	width:280px;
+	background-color: #E6E6E6;
+	padding: 10px;
 	
-	width:270px;
-	height:500px;
-	
-	float:right;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
 -->
 </style>
@@ -76,73 +71,74 @@ $(document).ready(
 	<div id="content">
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
-			<h1>Perfil de <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h1>
-			<h2>Estos son tus datos, productos y servicios publicados. Tambi&eacute;n podr&aacute;s acceder a tu muro.</h2>
+			<h1>Perfil del profesional</h1>
+			<h2>Mir&aacute; los datos del profesional, sus productos y/o servicios, dejales una consulta en su muro o revis&aacute; su agenda de eventos</h2>
 		</div>
-		
 		<div id="formContent">
-			<div id="muroContainer">
-				<% if (websiteUser != null && websiteUser.isClient()) {
-					profesionalProfileForm.setUserId(websiteUser.getId());%>
-					<html:form method="POST" action="/addWallComment">
-						<html:text name="ProfesionalProfileForm" property="content" />
-						<input type="submit" value="Postear"/>
-					</html:form>
-				<% } else { %>
-					Para poder postear tenes que estar logueado
-				<% } %>
-				<% int index = 0;
-					for (WallWrittingValueObject wwvo : muro) { 
-						if(index < 10) { %>
-							<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
-						<% }
-						index = index + 1;
-						%>
-				<% } %>
-				<% if (totalItems > 10) { %>
-				<div id="more10" class="morebox">
-					<a href="#" class="more" id="10">Ver mas</a>
+			<div id="formSection" style="width:920px;">
+				<h2><bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h2>
+				<div class="fright width300">
+					<div id="muroContainer" class="height350">
+						<h2 style="font-size:18px;">Muro de <bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></h2>
+						<% if (websiteUser != null && websiteUser.isClient()) {
+							profesionalProfileForm.setUserId(websiteUser.getId());%>
+							<html:form method="POST" action="/addWallComment">
+								<div class="myRow height80">
+									<div class="myLabel width280 height80"><html:textarea name="ProfesionalProfileForm" property="content" styleClass="width280 height80" /></div>
+								</div>
+								<div class="myRow height50" align="center"><input type="submit" value="Enviar"/></div>
+							</html:form>
+						<% } else { %>
+							Para poder postear tenes que estar logueado
+						<% } %>
+						<% int index = 0;
+							for (WallWrittingValueObject wwvo : muro) { 
+								if(index < 10) { %>
+									<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+								<% }
+								index = index + 1;
+								%>
+						<% } %>
+						<% if (totalItems > 10) { %>
+						<div id="more10" class="morebox">
+							<a href="#" class="more" id="10">Ver mas</a>
+						</div>
+						<% } %>
+					</div>
 				</div>
-				<% } %>
-			</div>
-			
-			<div id="formSection">
-				<div class="myRow">
-					<div class="myLabel width400"><bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></div>
+				<div class="fleft width600">
+					<div class="myRow">
+						<div class="myLabel width80">Sexo</div>
+						<div class="myLabel width120"><strong><%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></strong></div>
+						<div class="myLabel width80">Fecha Nac.</div>
+						<div class="myLabel width120"><strong><bean:write name="ProfesionalProfileForm" property="birthDate"/></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Ubicaci&oacute;n</div>
+						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="geoLevelPath"/></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Web</div>
+						<div class="myLabel width520"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Facebook</div>
+						<div class="myLabel width520"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width80">Horario</div>
+						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="profesional.businesshours"/></strong></div>
+					</div>
+					<div class="myRow height80">
+						<div class="myLabel width80">Descripci&oacute;n</div>
+						<div class="myLabel width520 height80"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
+					</div>
+					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
+					<div class="myRow">ACA VA EL LISTADO - Pendiente</div>
+					<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel width200">Sexo: <%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></div>
-					<div class="myLabel width200">Fecha Nac.: <bean:write name="ProfesionalProfileForm" property="birthDate"/></div>
-				</div>
-			</div>
-			<div id="formSection" class="width650">
-				<div class="myRow">
-					<div class="myLabel width400">Nombre profesional/empresa: <bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width400">Ubicaci&oacute;n: <bean:write name="ProfesionalProfileForm" property="geoLevelPath"/></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width200">Web: <%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></div>
-					<div class="myLabel width200">Facebook: <%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></div>
-				</div>
-				<div class="myRow height50">
-					<div class="myLabel width200">Horario de Atenci&oacute;n: <bean:write name="ProfesionalProfileForm" property="profesional.businesshours"/></div>
-					<div class="myLabel width200">Descripci&oacute;n: <bean:write name="ProfesionalProfileForm" property="profesional.description"/></div>
-				</div>
-			</div>
-			
-			<div id="formSection" class="width650">
-				<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px;">Productos y Servicios</h2>
-				<div class="myRow">
-					<div class="myLabel width600 comment">Recuerde que a cada producto o servicio le puede adjuntar una imagen, precios de referencia, &aacute;reas de covertura y otros detalles una vez finalizado el proceso de registraci&oacute;n.</div>
-				</div>
-				<div class="myRow">ACA VA EL LISTADO</div>
-				Pendiente
 			</div>
 		</div>
-		
-		<div id="formContent" class="height300"><a href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

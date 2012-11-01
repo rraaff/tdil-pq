@@ -209,7 +209,7 @@ $(document).ready(
 				</div>
 				<div class="myRow">
 					<div class="myLabel width790 comment">
-						<p>Agreg&aacute; todos productos o servicios que desees. No es obligatorio hacerlo ahora. Podes hacerlo una vez que tu perfil haya sido validado.<br/>Es importante que el producto o servicio que agregues est&eacute; en la categor&iacute;a correcta. Eso te beneficiar&aacute; en las b&uacute;squedas.</p>
+						<p>Agreg&aacute; todos los productos o servicios que desees. No es obligatorio hacerlo ahora. Podes hacerlo una vez que tu perfil haya sido validado.<br/>Es importante que el producto o servicio que agregues est&eacute; en la categor&iacute;a correcta. Eso te beneficiar&aacute; en las b&uacute;squedas.</p>
 					</div>
 				</div>
 				<div class="myRow">
