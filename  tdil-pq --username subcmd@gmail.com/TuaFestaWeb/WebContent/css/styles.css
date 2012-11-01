@@ -110,8 +110,6 @@ body {
 	-moz-column-gap: 15px;
 	-webkit-column-width: 190px;
 	-webkit-column-gap: 15px;
-	-webkit-column-rule: 1px solid #ccc;
-	-moz-column-rule: 1px solid #ccc;
 
 	font-size:13px;
 	line-height:20px;

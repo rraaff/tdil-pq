@@ -241,6 +241,7 @@ body {
 }
 #zoneNavigation a, #categoryNavigation a {
 	color:#1399f8;
+	text-transform:uppercase;
 }
 #zoneNavigation h3, #categoryNavigation h3, #zoneNavigation h3 a, #categoryNavigation h3 a {
 	color:#035b9c;
