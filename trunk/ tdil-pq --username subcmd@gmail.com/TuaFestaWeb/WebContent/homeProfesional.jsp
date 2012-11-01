@@ -95,7 +95,7 @@
 				</div>
 				<div style="width:450px; margin-right:20px; float:left;">
 					<h2><legend>Muro</legend></h2>
-					<div class="myRow">Proximamente</div>
+					<div class="myRow">Mensajes pendientes de moderaci&oacute;n: <%=profesionalHomeForm.getWallModerationPendingCount() %> <a href="./goToModerateProfesionalWall.do?id=<%=profesional.getId()%>">Ir al muro</a></div>
 				</div>
 				<div style="width:450px; float:left;">
 					<h2><legend>Agenda</legend></h2>
@@ -104,22 +104,6 @@
 				<!-- aca Termina el formulario -->
 			</div>
 		</div>
-		
-		<div style="border: 1px Solid Black;">
-			<legend>Areas de cobertura </legend>
-			<a href="./goToEditProfesionalServiceArea.do?id=<%=profesional.getId()%>">Editar</a>
-		</div><br>
-		
-		<div style="border: 1px Solid Black;">
-			<legend>Muro: <%=profesionalHomeForm.getWallModerationPendingCount() %> posts pendientes de moderacion</legend>
-			<a href="./goToModerateProfesionalWall.do?id=<%=profesional.getId()%>">Editar</a>
-		</div><br>
-		
-		<div style="border: 1px Solid Black;">
-			<legend>Agenda</legend>
-			<a href="./goToEditProfesionalAgenda.do?id=<%=profesional.getId()%>">Editar</a>
-		</div><br>
-		<!-- aca Termina el formulario -->
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
