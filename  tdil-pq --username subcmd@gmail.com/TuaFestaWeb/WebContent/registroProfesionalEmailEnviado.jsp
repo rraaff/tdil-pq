@@ -24,7 +24,7 @@
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Su usuario ha sido dado creado. En breve recibira un E-Mail para continuar con el registro.</p>
+				<p>Su usuario ha sido creado. En breve recibira un E-Mail para continuar con el registro.</p>
 				<p>Ingrese a la direcci&oacute;n que figura en el cuerpo del E-Mail para validar su direcci&oacute;n de correo.</p>
 			</div>
 		</div>

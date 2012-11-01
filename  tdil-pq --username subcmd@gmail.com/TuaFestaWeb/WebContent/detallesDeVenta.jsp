@@ -13,20 +13,14 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R009-M1- Mi cuenta - Detalles de venta</title>
+<title>Tua Festa | Detalles de venta</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
 <script src="js/lightbox.js"></script>
 <style>
 <!--
-.myRow {
-	padding-bottom:5px;
-}
 #muroContainer {
 	background:#CCCCCC;
 	
@@ -34,11 +28,6 @@
 	height:500px;
 	
 	float:right;
-}
-#formContent {
-	min-height:290px;
-	padding-top:20px;
-	margin-bottom:20px;
 }
 -->
 </style>
@@ -50,21 +39,23 @@
 	<div id="content">
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
-			<h1>Detalles de la venta <bean:write name="SellDetailsForm" property="sellValueObject.name"/></h1>
+			<h1>Detalles de la venta</h1>
+			<h2>Estos son los detalles del producto o servicio seleccionado</h2>
 		</div>
-		<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
-		<% if (sellDetailsForm.hasMedia()) { %>
-			<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
-			<div class="fotoHelper" style="width:150px; height:150px; background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);">
-				<a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>">
-					<img src="images/null.gif" width="150" height="150" />
-				</a>
+		<div id="formContent">
+			<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
+			<div id="formSection" style="width:920px;">
+				<h2><bean:write name="SellDetailsForm" property="sellValueObject.name"/></h2>
+				<div class="myRow">
+					<% if (sellDetailsForm.hasMedia()) { %>
+						<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
+						<div class="fotoHelper" style="width:150px; height:150px; background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);"><a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>"><img src="images/null.gif" width="150" height="150" /></a></div>
+						<% } %>
+					<% } %>
+				</div>
+				<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>
 			</div>
-			<% } %>
-		<% } %>
-		<div id="formContent" class="height300"><a href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a></div>
-		
-		<div id="formContent" class="height300"><a href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>
+		</div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

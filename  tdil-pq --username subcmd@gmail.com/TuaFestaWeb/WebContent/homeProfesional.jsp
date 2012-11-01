@@ -82,7 +82,7 @@
 						request.setAttribute( "sells",  paginated);
 						%>
 						<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./homeProfesional.jsp">
-							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width150" property="name"></display:column>
+							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
 							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referenceprice"></display:column>

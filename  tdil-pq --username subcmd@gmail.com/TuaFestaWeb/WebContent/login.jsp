@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ include file="includes/userLogged.jspf" %>
 <%@ page info="login"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -7,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | Inicio | El sitio #1 en contactos entre profesionales y clientes del rubro eventos</title>
+<title>Tua Festa | Ingresar con tu usuario | El sitio #1 en contactos entre profesionales y clientes del rubro eventos</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp"%>
@@ -25,24 +26,37 @@
 			<h2>Ingres&aacute; el E-Mail con el que te registraste y tu clave.</h2>
 		</div>
 		<div id="formContent">
-			<div id="loginBase" style="width:300px; height:250px; margin:40px auto;">
+			<div id="loginBase" style="width:622px; height:170px; margin:60px auto;">
 				<html:form method="POST" action="/websiteLogin">
-					<div class="myRow" align="center">&nbsp;<span class="errorText"><html:errors property="general" /></span></div>
-					<div class="myRow">
-						<html:hidden name="WebsiteLoginForm" property="operation" value=""/>
-						<div class="myLabel width80">E-mail</div>
-						<div class="myLabel width210"><html:text name="WebsiteLoginForm" property="email" styleClass="normalField width200"/></div>
+					<div class="width300 fleft">
+						<div class="myRow" align="center">&nbsp;<span class="errorText"><html:errors property="general" /></span></div>
+						<div class="myRow width300">
+							<html:hidden name="WebsiteLoginForm" property="operation" value=""/>
+							<div class="myLabel width80">E-mail</div>
+							<div class="myLabel width210"><html:text name="WebsiteLoginForm" property="email" styleClass="normalField width200"/></div>
+						</div>
+						<div class="myRow width300">
+							<div class="myLabel width80">Contrase&ntilde;a</div>
+							<div class="myLabel width210"><html:password name="WebsiteLoginForm" property="password" styleClass="normalField width200"/></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width300" align="center"><input type="submit" value="Ingresar con tu usuario" class="inputButtonHelper" /></div>
+						</div>
 					</div>
-					<div class="myRow">
-						<div class="myLabel width80">Contrase&ntilde;a</div>
-						<div class="myLabel width210"><html:password name="WebsiteLoginForm" property="password" styleClass="normalField width200"/></div>
+					<div class="width280 fleft" style="margin-left:10px; padding-top:33px; padding-left:20px; border-left:dotted 1px #CCC;">
+						<div class="myRow">
+							<div class="myLabel width280" align="center">&#191;No est&aacute;s registrado? <a href="./registroPreRegistro.jsp" title="recuper&aacute; tu clave">Registrate ahora</a></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width280" align="center"><a href="#" title="recuper&aacute; tu usuario">&#191;No record&aacute;s con qu&eacute; E-Mail te registraste?</a></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width280" align="center"><a href="index.jsp">Volver</a></div>
+						</div>
 					</div>
-					<div class="myRow">
-						<div class="myLabel width100" align="center" style="padding-top:20px;"><a href="index.jsp">Volver</a></div>
-						<div class="myLabel width200" align="center"><input type="submit" value="Ingresar con tu usuario" /></div>
-					</div>
-					<div class="myRow"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
-					<div class="myRow"><a href="#" title="recuper&aacute; tu usuario">&#191;No record&aacute;s con qu&eacute; E-Mail te registraste?</a></div>
 				</html:form>
 			</div>
 		</div>

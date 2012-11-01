@@ -8,12 +8,10 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | R008-M1- Registro - Registro Profesional Normal (paso 2)</title>
+<title>Tua Festa | Registro - Registro Profesional Normal (paso 2)</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
-<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href="css/home-styles.css" rel="stylesheet" type="text/css" />
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<%@ include file="includes/head.jsp" %>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -22,12 +20,12 @@
 	<div id="content">
 		<div id="titleArea">
 			<h1>Registro de profesionales</h1>
-			<h2>¡Felicitaciones! Hemos validado su direcci&oacute;n de E-Mail.</h2>
+			<h2>&#161;Felicitaciones! Hemos validado su direcci&oacute;n de E-Mail.</h2>
 		</div>
 		<div id="formContent" class="height300">
 			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Su registro ha sido completado. Cada producto o servicio que haya agregado, as&iacute; como las fotos, videos o dem&aacute;s contenidos de su perfil, requieren aprobaci&oacute;n de un administrador de TUA FESTA. Podr&aacute;s agregar contenidos, productos y servicios cuando lo desees. Ã‰stos deber&aacute;n ser aprobados antes de ser accesibles por los usuarios.</p>
-				<p><a href="#">Ir a Mi Cuenta</a></p>
+				<p>Su registro ha sido completado. Cada producto o servicio que haya agregado, as&iacute; como las fotos, videos o dem&aacute;s contenidos de su perfil, requieren aprobaci&oacute;n de un administrador de TUA FESTA.</p>
+				<p><a href="./login.jsp">Ir a Mi Cuenta</a></p>
 			</div>
 		</div>
 	</div>

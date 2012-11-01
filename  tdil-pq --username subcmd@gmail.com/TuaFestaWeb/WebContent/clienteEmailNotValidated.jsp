@@ -23,9 +23,7 @@
 			<h2>Su direcci&oacute;n de E-Mail no ha sido validada correctamente.</h2>
 		</div>
 		<div id="formContent" class="height300">
-			<div style="padding-top:50px; padding-bottom:50px;">
-				<p>Vuelva a intentarlo. Si el error persiste, contactese con los administradores del sitio <a href="contacto.jsp">haciendo clic ac&aacute;</a></p>
-			</div>
+			<div style="padding-top:50px; padding-bottom:50px;"><p>Vuelva a intentarlo. Si el error persiste, contactese con los administradores del sitio <a href="contacto.jsp">haciendo clic ac&aacute;</a></p></div>
 		</div>
 	</div>
 </div>
