@@ -1,4 +1,20 @@
 <%@page import="com.tdil.tuafesta.web.WebsiteUser"%>
+<style>
+#headers #header #centralhead #search .searchField {
+	font-size: 12px;
+	background:none;
+	background-image: url(images/skin_basic/header/baseSimpleSearch.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	border:none;
+	width:157px;
+	height:28px;
+	padding-top:3px;
+	padding-left:13px;
+	padding-bottom:3px;
+	padding-right:0px;	
+}
+</style>
 <div id="headers">
 	<div id="header">
 		<div id="logo"><a href="./index.jsp" title="Volver al Inicio"><img src="images/skin_basic/logos/headerLogo.png" /></a></div>
@@ -15,25 +31,20 @@
 					<% } else {  %>
 						<li><a href="./login.jsp">Ingresar</a></li>
 					<% } %>
-					<li>
-						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
-							<% if (websiteUser.isClient()) { %>
-								<a href="./goToClientHome.do?id=<%=websiteUser.getClient().getId()%>">Mi cuenta</a>
-							<% } else { %>
-								<a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Mi cuenta</a>
-							<% } %>
+					<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
+						<% if (websiteUser.isClient()) { %>
+							<li><a href="./goToClientHome.do?id=<%=websiteUser.getClient().getId()%>">Mi cuenta</a></li>
+						<% } else { %>
+							<li><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Mi cuenta</a></li>
 						<% } %>
-					</li>
-					<li><span class="userLogged">
-						<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
-							Bienvenido&nbsp;</span><span class="selected"><%= websiteUser.getName() %> </span>
-							<a href="./websiteLogout.do">(no soy <%= websiteUser.getName() %>)</a>
-						<% } %>
-					</li>
+					<% } %>
+					<% if (websiteUser != null && websiteUser.isWebsiteLogged()) { %>
+						<li><span class="userLogged">Bienvenido&nbsp;</span><span class="selected"><%= websiteUser.getName() %> </span><a href="./websiteLogout.do">(no soy <%= websiteUser.getName() %>)</a></li>
+					<% } %>
 				</ul>
 			</div>
 			<div id="border"></div>
-			<div id="search"><form name="simpleSearch" action="./searchSellsByText.do">Buscar <input placeholder="Ej: Fotografía" name="searchText" type="text" class="searchField"/></form></div>
+			<div id="search"><form name="simpleSearch" action="./searchSellsByText.do">Buscar <input placeholder="Ej: Fotograf&iacute;a" name="searchText" type="text" class="searchField"/></form></div>
 			<div id="border"></div>
 			<div id="social"><a href="#" title="Compart&iacute; en Facebook"><img src="images/skin_basic/header/icon_FB.gif" alt="Compart&iacute; en Facebook" /></a><a href="#" title="Compart&iacute; en Twitter"><img src="images/skin_basic/header/icon_TW.gif" alt="Compart&iacute; en Twitter" /></a></div>
 		</div>
