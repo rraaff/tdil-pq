@@ -103,14 +103,6 @@ $(document).ready(
 						<div class="myLabel width80">E-Mail</div>
 						<div class="myLabel width800" id="Email"><strong><%=profesionalForm.getEmail() %></strong></div>
 					</div>
-					<div class="myRow">
-						<div class="myLabel width80">Clave</div>
-						<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="password" styleClass="normalField width150"/></div>
-						<div class="myLabel width150">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.password_key + ".err")%></div>
-						<div class="myLabel width80">Repetir clave</div>
-						<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPersonalDataForm" property="retypepassword" styleClass="normalField width150"/></div>
-						<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.retypepassword_key + ".err")%></div>
-					</div>
 					<div class="myRow" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
 			</html:form>

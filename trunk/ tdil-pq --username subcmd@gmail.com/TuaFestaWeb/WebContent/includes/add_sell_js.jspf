@@ -47,7 +47,7 @@ var prodcats = new Array();
 								}
 								$( "input[name=categoryId]" ).attr('value', selCatId);
 								$( "input[name=categorySelected]" ).attr('value', catPath);
-								$( "#categoryPath" ).prop('innerHTML', catPath);
+								$( "#categoryPath" ).prop('innerHTML', 'Categoria:' + catPath);
 								$( "#selectPCategoryLayer" ).fadeOut();
 								$( "#addSellLayer" ).fadeIn(500);
 							});
@@ -107,7 +107,7 @@ var prodcats = new Array();
 								}
 								$( "input[name=categoryId]" ).attr('value', selCatId);
 								$( "input[name=categorySelected]" ).attr('value', catPath);
-								$( "#categoryPath" ).prop('innerHTML', catPath);
+								$( "#categoryPath" ).prop('innerHTML', 'Categoria:' + catPath);
 								$( "#selectSCategoryLayer" ).fadeOut();
 								$( "#addSellLayer" ).fadeIn(500);
 							});

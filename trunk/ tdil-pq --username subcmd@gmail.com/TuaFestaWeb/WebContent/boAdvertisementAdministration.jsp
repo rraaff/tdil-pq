@@ -178,6 +178,7 @@ h2 {
 						<tr>
 							<td class="headerTablas" width="300">Profesional</td>
 							<td class="headerTablas" width="300">Producto/Servicio</td>
+							<td class="headerTablas" width="300">Tipo</td>
 							<td class="headerTablas" width="100">Desde</td>
 							<td class="headerTablas" width="100">Hasta</td>
 							<td class="headerTablas" width="100">Acciones</td>
@@ -186,7 +187,10 @@ h2 {
 							<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
 								<td <%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterSection" property="profesionalBusinessName" /></td>
 								<td <%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterSection" property="sellName" /></td>
+								<td <%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterSection" property="translatedType" /></td>
 								<td <%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterSection" property="formatedfromdate" /></td>
+								
+								
 								<td <%=((AdvertisementValueObject) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : "" %> align="left"><bean:write name="iterSection" property="formatedtodate" /></td>
 								<td>
 									<html:link action="editAd.st?" paramName="iterSection" paramProperty="id" paramId="id">

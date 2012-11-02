@@ -74,6 +74,9 @@
    <form-bean id="EditProfesionalAgendaForm"
    name="EditProfesionalAgendaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalAgendaForm"/>
    
+   <form-bean id="EditProfesionalPasswordDataForm"
+   name="EditProfesionalPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPasswordDataForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -402,6 +405,20 @@
    <forward name="failure" path="/perfilPublicoProfesional.jsp"/>
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
+  
+  <action name="ProfesionalProfileForm" path="/currMonth"
+   scope="session" type="com.tdil.tuafesta.struts.action.CurrentMonthAgenda">
+   <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
+  </action>
+  <action name="ProfesionalProfileForm" path="/nextMonth"
+   scope="session" type="com.tdil.tuafesta.struts.action.NextMonthAgenda">
+   <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
+  </action>
+  <action name="ProfesionalProfileForm" path="/prevMonth"
+   scope="session" type="com.tdil.tuafesta.struts.action.PrevMonthAgenda">
+   <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
+  </action>
+  
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
 
   <action name="PasswordResetForm" path="/resetPassword"
@@ -439,6 +456,17 @@
   <action name="EditProfesionalBusinessDataForm" path="/goToEditProfesionalBusinessData" parameter="Profesional"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
+  </action>
+  
+  <action name="EditProfesionalPasswordDataForm" path="/goToChangePassword" parameter="Profesional"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/changeProfesionalPassword.jsp"/>
+  </action>
+  
+  <action name="EditProfesionalPasswordDataForm" path="/changePassword" parameter="Profesional"
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+   <forward name="failure" path="/changeProfesionalPassword.jsp"/>
+   <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
   
   <action name="WallModerationForm" path="/goToModerateProfesionalWall" parameter="Profesional"
