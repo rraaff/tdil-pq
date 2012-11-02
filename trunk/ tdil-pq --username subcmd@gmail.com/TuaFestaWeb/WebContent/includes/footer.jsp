@@ -5,7 +5,7 @@
 			<a href="index.jsp">Inicio</a>
 			<a href="./listadoPromociones.jsp">Promociones</a>
 			<a href="registroPreRegistro.jsp">Registraci&oacute;n</a>
-			<a href="quienes_somos.jsp">Quienes somos</a>
+			<!--a href="quienes_somos.jsp">Quienes somos</a-->
 			<a href="contacto.jsp" title="Envianos tus consultas o sugerencias">Contacto</a>
 			<a href="legales.jsp">Legales</a>
 			<a href="faqs.jsp">FAQs</a>

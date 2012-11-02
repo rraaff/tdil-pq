@@ -23,8 +23,7 @@
 			<h2>&#161;Felicitaciones! Hemos validado su direcci&oacute;n de E-Mail.</h2>
 		</div>
 		<div id="formContent" class="height300">
-			<div style="padding-top:50px; padding-bottom:50px;">Ya podes comunicarte con los profesionales y empresas que ofrecen sus productos y servicios en Tua Festa. Para iniciar tus b&uacute;squedas arranc&aacute; <a href="index.jsp" title="Iniciar la navegaci&oacute;n">la p&aacute;gina de inicio para ver las promociones</a>.
-			</div>
+			<div style="padding-top:50px; padding-bottom:50px;">Ya podes comunicarte con los profesionales y empresas que ofrecen sus productos y servicios en Tua Festa.<br/>Para iniciar tus b&uacute;squedas ingresa con tu usuario y contrase&ntilde;a desde la <a href="index.jsp" title="Iniciar la navegaci&oacute;n">p&aacute;gina de inicio</a>.</div>
 		</div>
 	</div>
 </div>

@@ -29,6 +29,11 @@
 	
 	float:right;
 }
+#formContent h3 {
+	margin-left:0px;
+	padding-bottom:20px;
+	padding-left:0px;
+}
 -->
 </style>
 </head>
@@ -46,16 +51,25 @@
 			<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="SellDetailsForm" property="sellValueObject.name"/></h2>
-				<h2><bean:write name="SellDetailsForm" property="sellValueObject.description"/></h2>
-				<h2><bean:write name="SellDetailsForm" property="sellValueObject.referenceprice"/></h2>
-				<h2><bean:write name="SellDetailsForm" property="sellValueObject.categoryText"/></h2>
-				<h2><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></h2>
+				<h3><bean:write name="SellDetailsForm" property="sellValueObject.categoryText"/></h3>
 				<div class="myRow">
 					<% if (sellDetailsForm.hasMedia()) { %>
 						<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
 						<div class="fotoHelper" style="width:150px; height:150px; background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);"><a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>"><img src="images/null.gif" width="150" height="150" /></a></div>
 						<% } %>
 					<% } %>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width80">Descripci&oacute;n</div>
+					<div class="myLabel width800"><bean:write name="SellDetailsForm" property="sellValueObject.description"/></div>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width100">Precio unitario</div>
+					<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.referenceprice"/></strong></div>
+				</div>
+				<div class="myRow">
+					<div class="myLabel width100">Ubicaci&oacute;n</div>
+					<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></strong></div>
 				</div>
 				<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>
 			</div>
