@@ -155,7 +155,7 @@ $(document).ready(
 				<h2>Datos profesionales</h2>
 				<div class="myRow">
 					<div class="myLabel width230">Nombre profesional o de la empresa</div>
-					<div class="myLabel width530" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width510"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
+					<div class="myLabel width550" id=""><html:text name="ProfesionalForm" property="businessname" styleClass="normalField width500"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businessname_key + ".err")%></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width70">Ubicaci&oacute;n</div>

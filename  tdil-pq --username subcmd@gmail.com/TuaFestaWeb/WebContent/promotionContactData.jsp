@@ -79,10 +79,12 @@
 					<div class="myRow">
 						<div class="myLabel width600">Descripci&oacute;n: <span style="color:#666666; font-style:italic;"><%=com.tdil.utils.StringUtils.nvl(profesional.getDescription(),"-")%></span></div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
 		<% } %>
+		<div class="myRow height30" align="center" style="padding-top:20px;"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="javascript:window.history.back();">Volver</a></div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

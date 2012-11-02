@@ -53,7 +53,7 @@ $(document).ready(
 						<div class="myLabel width120">Producto/Servicio</div>
 						<div class="myLabel width400"><html:text name="OrganizeWizardForm" property="product" styleClass="normalField width350"/></div>
 						<div class="myLabel width50">Precio</div>
-						<div class="myLabel width120"><html:text name="OrganizeWizardForm" property="maxPrice" styleClass="normalField width100"/></div>
+						<div class="myLabel width300"><html:text name="OrganizeWizardForm" property="maxPrice" styleClass="normalField width100"/></div>
 					</div>
 					<div class="myRow" align="center"><html:submit property="operation">Agregar</html:submit></div>
 				</html:form>

@@ -211,14 +211,11 @@ $(document).ready(
 						request.setAttribute( "sells",  paginated);
 						%>
 						<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./registroProfesional.jsp">
-							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width250" property="name"></display:column>
+							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
-							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
-							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referencePrice"></display:column>
-							<display:column title="Acciones" headerClass="sortable width50">
-								<a class="nonelyLink" href="./editProfesionalService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>">Editar</a>
-								<a class="nonelyLink" href="javascript:document.EditProfesionalSellForm.action='./editRemoveService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellForm.submit();">Quitar</a>
-							</display:column>
+							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
+							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
+							<display:column title="Acciones" headerClass="sortable width100"><a class="nonelyLink" href="./editProfesionalService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>">Editar</a> <a class="nonelyLink" href="javascript:document.EditProfesionalSellForm.action='./editRemoveService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellForm.submit();">Quitar</a></display:column>
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</div>
