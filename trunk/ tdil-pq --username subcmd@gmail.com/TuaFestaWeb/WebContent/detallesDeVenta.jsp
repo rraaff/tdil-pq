@@ -46,6 +46,10 @@
 			<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="SellDetailsForm" property="sellValueObject.name"/></h2>
+				<h2><bean:write name="SellDetailsForm" property="sellValueObject.description"/></h2>
+				<h2><bean:write name="SellDetailsForm" property="sellValueObject.referenceprice"/></h2>
+				<h2><bean:write name="SellDetailsForm" property="sellValueObject.categoryText"/></h2>
+				<h2><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></h2>
 				<div class="myRow">
 					<% if (sellDetailsForm.hasMedia()) { %>
 						<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
