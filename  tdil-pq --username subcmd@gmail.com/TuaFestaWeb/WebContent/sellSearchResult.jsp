@@ -31,6 +31,7 @@
 	<div id="content">
 		<div id="titleArea">
 			<h1>Resultado de la b&uacute;squeda</h1>
+			<h2>Encontr&aacute; todo lo que necesitas para tu evento</h2>
 		</div>
 		<div id="formContent">
 			<div id="formSection">
@@ -52,7 +53,7 @@
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 				</div>
-				<div class="myRow" align="center"><a href="./index.jsp">volver al inicio</a> o <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./goToSearchWizard.do">Realizar otra b&uacute;squeda avanzada</a></div>
+				<div class="myRow height30" align="center" style="padding-top:20px;"><a href="./index.jsp">volver al inicio</a> o <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./goToSearchWizard.do">Realizar otra b&uacute;squeda avanzada</a></div>
 			</div>
 		</div>
 	</div>

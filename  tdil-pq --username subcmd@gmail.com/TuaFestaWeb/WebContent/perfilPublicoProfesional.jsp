@@ -76,25 +76,24 @@ $(document).ready(function(){
 </script>
 <style>
 <!--
-
-.agendaBusy {
-	background:#CCCCCC;
-}
-.agendaNormal {
-	background:#FFFFFF;
-}
-.agendaNotActual {
-	background:#000000;
-}
-
+.agendaBusy { background:#CCCCCC; }
+.agendaNormal { background:#FFFFFF; }
+.agendaNotActual { background:#000000; }
 #muroContainer {
 	width:280px;
 	background-color: #E6E6E6;
 	padding: 10px;
-	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+}
+.rowMuro {
+	color:#000000;
+	border-top:dotted 1px #FFF;
+}
+.rowAnswer {
+	background:#f9f9f9;
+	padding-bottom:0px;
 }
 -->
 </style>
@@ -113,31 +112,28 @@ $(document).ready(function(){
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h2>
 				<div class="fright width300">
-					<div id="muroContainer" style="min-height:350px;">
+					<div id="muroContainer" class="fleft"><!-- style="min-height:350px;"-->
 						<h2 style="font-size:18px;">Muro de <bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></h2>
 						<% if (websiteUser != null && websiteUser.isClient()) {
 							profesionalProfileForm.setUserId(websiteUser.getId());%>
 							<html:form method="POST" action="/addWallComment">
-								<div class="myRow">
-									<div class="myLabel width280"><html:textarea name="ProfesionalProfileForm" property="content" styleClass="width280" /></div>
-								</div>
+								<div class="myRow"><html:textarea name="ProfesionalProfileForm" property="content" styleClass="width280" /></div>
 								<div class="myRow height50" align="center"><input type="submit" value="Enviar"/></div>
 							</html:form>
 						<% } else { %>
-							Para poder postear tenes que estar logueado
+							<div class="myRow" align="center"><span class="comment2 alerta">Para consultar debes estar registrado</span></div>
 						<% } %>
 						<% int index = 0;
 							for (WallWrittingValueObject wwvo : muro) { 
 								if(index < 10) { %>
-									<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+									<div class="myRow comment rowMuro rowAnswer"><%=wwvo.getOriginaltext() %></div>
+									<div class="myRow comment">(<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
 								<% }
 								index = index + 1;
 								%>
 						<% } %>
 						<% if (totalItems > 10) { %>
-						<div id="more10" class="morebox">
-							<a href="#" class="more" id="10">Ver mas</a>
-						</div>
+						<div id="more10" class="myRow morebox" align="center"><a href="#" class="more" id="10">Ver mas</a></div>
 						<% } %>
 					</div>
 				</div>
@@ -170,7 +166,7 @@ $(document).ready(function(){
 					</div>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
 					<div class="myRow">ACA VA EL LISTADO - Pendiente</div>
-					<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
+					<div class="myRow height20" align="center" style="padding-top:20px;"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 				</div>
 			</div>
 		</div>
