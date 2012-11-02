@@ -98,8 +98,8 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		if (systemProperty != null) {
 			this.objectId = id;
 			this.categoryId = systemProperty.getIdCategory();
-			this.fromDate= DateUtils.formatDate(systemProperty.getFromdate());
-			this.toDate = DateUtils.formatDate(systemProperty.getTodate());
+			this.fromDate= DateUtils.formatDateSp(systemProperty.getFromdate());
+			this.toDate = DateUtils.formatDateSp(systemProperty.getTodate());
 		} 
 	}
 
@@ -119,15 +119,15 @@ public class HighlightedCategoryForm extends TransactionalValidationForm impleme
 		if (this.getObjectId() == 0) {
 			HighlightedCategory hc = new HighlightedCategory();
 			hc.setIdCategory(this.getCategoryId());
-			hc.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
-			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
+			hc.setFromdate(com.tdil.utils.DateUtils.parseDateSp(this.getFromDate()));
+			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDateSp(this.getToDate())));
 			hc.setDeleted(0);
 			highlightedCategoryDAO.insertHighlightedCategory(hc);
 		} else {
 			HighlightedCategory hc = highlightedCategoryDAO.selectHighlightedCategoryByPrimaryKey(this.getObjectId());
 			hc.setIdCategory(this.getCategoryId());
-			hc.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
-			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
+			hc.setFromdate(com.tdil.utils.DateUtils.parseDateSp(this.getFromDate()));
+			hc.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDateSp(this.getToDate())));
 			highlightedCategoryDAO.updateHighlightedCategoryByPrimaryKey(hc);
 		}
 	}

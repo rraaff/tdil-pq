@@ -80,4 +80,26 @@ public class DateUtils {
 			return null;
 		}
 	}
+	
+	public static String formatDateSp(Date fromDate2) {
+		if (fromDate2 == null) {
+			return "";
+		}
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		return dateFormat.format(fromDate2);
+	}
+
+	public static Date parseDateSp(String fromDate2) {
+		try {
+			if (StringUtils.isEmpty(fromDate2)) {
+				return null;
+			}
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			return dateFormat.parse(fromDate2);
+		} catch (ParseException e) {
+//			HighlightedCategoryForm.getLog().error(e.getMessage(), e);
+			//throw new RuntimeException(e);
+			return null;
+		}
+	}
 }

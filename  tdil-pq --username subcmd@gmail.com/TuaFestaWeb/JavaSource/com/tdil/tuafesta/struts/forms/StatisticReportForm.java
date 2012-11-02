@@ -166,11 +166,11 @@ public class StatisticReportForm extends ReportForm {
 		if (!groupbyobject && groupbydate) {
 			params.put("objectna", "1");
 		}
-		Date sfrom = com.tdil.utils.DateUtils.parseDate(this.getsFrom());
+		Date sfrom = com.tdil.utils.DateUtils.parseDateSp(this.getsFrom());
 		if (sfrom != null) {
 			params.put("sFrom", sfrom);
 		}
-		Date sto = com.tdil.utils.DateUtils.parseDate(this.getsTo());
+		Date sto = com.tdil.utils.DateUtils.parseDateSp(this.getsTo());
 		if (sto != null) {
 			params.put("sTo", com.tdil.utils.DateUtils.date2LastMomentOfDate(sto));
 		}

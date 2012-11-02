@@ -116,7 +116,7 @@
 					<div class="imageAllPromo"><a href="./detallePromocion.jsp?id=<%=pvo.getId() %>"><img src="./downloadThumb.st?width=312&height=153&id=<%=pvo.getFirstImageid()%>&type=PUBLIC&ext=<%=pvo.getFirstImageExt()%>" title="#htmlcaption<%=pvo.getId() %>" width="312" height="153" /></a></div>
 					<div class="ladata">
 						<h3>Detalle de la promoci&oacute;n</h3>
-						<span class="activeAllPromo">Activa desde: <strong><%=DateUtils.formatDate(pvo.getStartdate()) %></strong> hasta: <strong><%=DateUtils.formatDate(pvo.getEnddate()) %></strong></span>
+						<span class="activeAllPromo">Activa desde: <strong><%=DateUtils.formatDateSp(pvo.getStartdate()) %></strong> hasta: <strong><%=DateUtils.formatDateSp(pvo.getEnddate()) %></strong></span>
 						<span class="descriptionAllPromo"><%=pvo.getDescription() %></span>
 						<span class="priceAllPromo">$<%=pvo.getPrice() %></span>
 					</div>

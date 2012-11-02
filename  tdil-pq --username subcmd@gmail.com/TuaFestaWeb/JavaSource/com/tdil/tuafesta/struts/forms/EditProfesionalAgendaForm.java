@@ -93,7 +93,7 @@ public class EditProfesionalAgendaForm extends TransactionalValidationForm imple
 		profesionalAgenda.setBusy(1);
 		profesionalAgenda.setDeleted(0);
 		profesionalAgenda.setIdProfesional(this.id);
-		profesionalAgenda.setDate(DateUtils.parseDate(this.getEventdate()));
+		profesionalAgenda.setDate(DateUtils.parseDateSp(this.getEventdate()));
 		DAOManager.getProfesionalAgendaDAO().insertProfesionalAgenda(profesionalAgenda);
 	}
 

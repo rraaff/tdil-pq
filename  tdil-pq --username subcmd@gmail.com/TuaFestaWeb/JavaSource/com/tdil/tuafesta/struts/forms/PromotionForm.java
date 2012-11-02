@@ -146,8 +146,8 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 			this.objectId = id;
 			this.name = promotion.getName();
 			this.description= promotion.getDescription();
-			setStartdate(DateUtils.formatDate(promotion.getStartdate()));
-			setEnddate(DateUtils.formatDate(promotion.getEnddate()));
+			setStartdate(DateUtils.formatDateSp(promotion.getStartdate()));
+			setEnddate(DateUtils.formatDateSp(promotion.getEnddate()));
 			this.setPrice(promotion.getPrice().toString());
 			PromotionPhotoDAO photoDAO = DAOManager.getPromotionPhotoDAO();
 			PromotionPhotoExample promotionPhotoExample = new PromotionPhotoExample();
@@ -177,11 +177,11 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 		FieldValidation.validateText(this.getName(), name_key, 100, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, validationError);
 		FieldValidation.validateBigDecimal(this.getPrice(), price_key, 1, Integer.MAX_VALUE, validationError);
-		Date starDate = com.tdil.utils.DateUtils.parseDate(this.getStartdate());
+		Date starDate = com.tdil.utils.DateUtils.parseDateSp(this.getStartdate());
 		if (starDate == null) {
 			validationError.setFieldError(startdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
-		Date endDate = com.tdil.utils.DateUtils.parseDate(this.getEnddate());
+		Date endDate = com.tdil.utils.DateUtils.parseDateSp(this.getEnddate());
 		if (endDate == null) {
 			validationError.setFieldError(enddate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
@@ -273,8 +273,8 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	private void setData(Promotion promotion) {
 		promotion.setName(this.getName());
 		promotion.setDescription(this.getDescription());
-		promotion.setStartdate(DateUtils.parseDate(this.getStartdate()));
-		promotion.setEnddate(DateUtils.parseDate(this.getEnddate()));
+		promotion.setStartdate(DateUtils.parseDateSp(this.getStartdate()));
+		promotion.setEnddate(DateUtils.parseDateSp(this.getEnddate()));
 		BigDecimal refPrice = new BigDecimal(this.getPrice());
 		promotion.setPrice(refPrice);
 	}

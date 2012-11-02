@@ -21,12 +21,12 @@
 $(document).ready(
 	function(){
 
-			$("input[name=fromDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=fromDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
-			$("input[name=toDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=toDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
 
-			$("input[name=profesionalDateSearch]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=profesionalDateSearch]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "2012:2020"});
 
 

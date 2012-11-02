@@ -23,9 +23,9 @@
 $(document).ready(
 	function(){
 
-			$("input[name=fromDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=fromDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
-			$("input[name=toDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=toDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
 	}	
 );
@@ -106,12 +106,12 @@ $(document).ready(
 								<td
 									<%=((HighlightedCategory) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 									align="left">
-										<%=DateUtils.formatDate(((HighlightedCategory) iterSection).getFromdate()) %>
+										<%=DateUtils.formatDateSp(((HighlightedCategory) iterSection).getFromdate()) %>
 								</td>
 								<td
 									<%=((HighlightedCategory) iterSection).getDeleted() == 1 ? "class=\"notActive\"" : ""%>
 									align="left">
-										<%=DateUtils.formatDate(((HighlightedCategory) iterSection).getTodate()) %>
+										<%=DateUtils.formatDateSp(((HighlightedCategory) iterSection).getTodate()) %>
 								</td>
 								<td>
 									<html:link action="editHighlightedCategory.st?" paramName="iterSection" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>

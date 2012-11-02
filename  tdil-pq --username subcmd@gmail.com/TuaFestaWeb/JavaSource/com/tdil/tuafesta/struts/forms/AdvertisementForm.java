@@ -132,8 +132,8 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 			this.setSell(sellDao.selectSellByPrimaryKey(sellId));
 		}
 		this.setType(ad.getType());
-		this.setFromDate(DateUtils.formatDate(ad.getFromdate()));
-		this.setToDate(DateUtils.formatDate(ad.getTodate()));
+		this.setFromDate(DateUtils.formatDateSp(ad.getFromdate()));
+		this.setToDate(DateUtils.formatDateSp(ad.getTodate()));
 		this.setPaidup(ad.getPaidup().equals(1));
 		this.setPrice(ad.getPrice().toString());
 	}
@@ -197,8 +197,8 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 			}
 		}
 		ad.setType(this.getType());
-		ad.setFromdate(com.tdil.utils.DateUtils.parseDate(this.getFromDate()));
-		ad.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDate(this.getToDate())));
+		ad.setFromdate(com.tdil.utils.DateUtils.parseDateSp(this.getFromDate()));
+		ad.setTodate(DateUtils.date2LastMomentOfDate(com.tdil.utils.DateUtils.parseDateSp(this.getToDate())));
 		ad.setPaidup(this.isPaidup() ? 1 : 0);
 		BigDecimal price = new BigDecimal(this.getPrice());
 		ad.setPrice(price);
@@ -268,7 +268,7 @@ public class AdvertisementForm extends TransactionalValidationForm implements To
 			if (StringUtils.isEmpty(this.getProfesionalNameSearchAd())) {
 				params.put("name", "%" + this.getProfesionalNameSearchAd() + "%");
 			}
-			Date datesearch = com.tdil.utils.DateUtils.parseDate(this.profesionalDateSearch);
+			Date datesearch = com.tdil.utils.DateUtils.parseDateSp(this.profesionalDateSearch);
 			if (datesearch != null) {
 				params.put("dateactive", datesearch);
 			}

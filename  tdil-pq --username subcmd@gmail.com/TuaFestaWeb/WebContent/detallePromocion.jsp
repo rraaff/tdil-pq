@@ -73,7 +73,7 @@
 		</div>
 		<%=pvo.getName() %><br>
 		<%=pvo.getDescription() %><br>
-		$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDate(pvo.getStartdate()) %> hasta <%=DateUtils.formatDate(pvo.getEnddate()) %><br>
+		$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDateSp(pvo.getStartdate()) %> hasta <%=DateUtils.formatDateSp(pvo.getEnddate()) %><br>
 		Productos y servicios<br>
 		<% 	boolean first = true;
 			for (SellValueObject svo : pvo.getSells()) { %>

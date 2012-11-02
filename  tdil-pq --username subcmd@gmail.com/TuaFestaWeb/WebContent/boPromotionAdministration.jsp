@@ -17,9 +17,9 @@
 var maxindex = <bean:write name="PromotionForm" property="maxImages" />;
 $(document).ready(
 	function(){
-		$("input[name=startdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		$("input[name=startdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2012"});
-		$("input[name=enddate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		$("input[name=enddate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2020"});
 
 		$('#upload_img').ajaxfileupload({
@@ -193,8 +193,8 @@ $(document).ready(
 									: ""%>
 								align="left"><bean:write name="iterSystemProperty" property="name" />
 							</td>
-							<td><%=DateUtils.formatDate(((Promotion) iterSystemProperty).getStartdate()) %></td>
-							<td><%=DateUtils.formatDate(((Promotion) iterSystemProperty).getEnddate()) %></td>
+							<td><%=DateUtils.formatDateSp(((Promotion) iterSystemProperty).getStartdate()) %></td>
+							<td><%=DateUtils.formatDateSp(((Promotion) iterSystemProperty).getEnddate()) %></td>
 							<td align="center"><html:link action="/editPromotion" paramName="iterSystemProperty" paramProperty="id" paramId="id"><img src="boImages/editar.png" alt="Editar"></html:link>
 								<html:link action="/toggleDeletedSystemProperty" paramName="iterSystemProperty"
 									paramProperty="id" paramId="id">

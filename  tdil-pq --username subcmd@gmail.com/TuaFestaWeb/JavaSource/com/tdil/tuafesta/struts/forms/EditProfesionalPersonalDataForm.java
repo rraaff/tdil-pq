@@ -63,7 +63,7 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		setFirstname(com.tdil.utils.StringUtils.nvl(profesionalChange.getFirstname(), profesional.getFirstname()));
 		setLastname(com.tdil.utils.StringUtils.nvl(profesionalChange.getLastname(), profesional.getLastname()));
 		setSex(com.tdil.utils.StringUtils.nvl(profesionalChange.getSex(), profesional.getSex()));
-		setBirthdate(com.tdil.utils.StringUtils.nvl(DateUtils.formatDate(profesionalChange.getBirthdate()), DateUtils.formatDate(profesional.getBirthdate())));
+		setBirthdate(com.tdil.utils.StringUtils.nvl(DateUtils.formatDateSp(profesionalChange.getBirthdate()), DateUtils.formatDateSp(profesional.getBirthdate())));
 		setPhoneAreaCode(com.tdil.utils.StringUtils.nvl(profesionalChange.getPhoneareacode(), profesional.getPhoneareacode()));
 		setPhoneNumber(com.tdil.utils.StringUtils.nvl(profesionalChange.getPhonenumber(), profesional.getPhonenumber()));
 		setPhoneExtension(com.tdil.utils.StringUtils.nvl(profesionalChange.getPhoneextension(), profesional.getPhoneextension()));
@@ -107,7 +107,7 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setFirstname(com.tdil.utils.StringUtils.getDataForChange(this.getFirstname(), profesional.getFirstname()));
 		profesionalChange.setLastname(com.tdil.utils.StringUtils.getDataForChange(this.getLastname(), profesional.getLastname()));
 		profesionalChange.setSex(com.tdil.utils.StringUtils.getDataForChange(this.getSex(), profesional.getSex()));
-		profesionalChange.setBirthdate(DateUtils.parseDate(com.tdil.utils.StringUtils.getDataForChange(this.getBirthdate(), DateUtils.formatDate(profesional.getBirthdate()))));
+		profesionalChange.setBirthdate(DateUtils.parseDateSp(com.tdil.utils.StringUtils.getDataForChange(this.getBirthdate(), DateUtils.formatDateSp(profesional.getBirthdate()))));
 		profesionalChange.setPhoneareacode(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneAreaCode(), profesional.getPhoneareacode()));
 		profesionalChange.setPhonenumber(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneNumber(), profesional.getPhonenumber()));
 		profesionalChange.setPhoneextension(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneExtension(), profesional.getPhoneextension()));

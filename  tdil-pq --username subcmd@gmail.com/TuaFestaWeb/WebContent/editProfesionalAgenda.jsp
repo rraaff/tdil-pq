@@ -28,10 +28,11 @@
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
 <script src="js/jquery.ajaxfileupload.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
 <script>
 $(document).ready(
 	function(){
-		$("input[name=eventdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		$("input[name=eventdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2015"});
 		
 });
@@ -68,7 +69,7 @@ $(document).ready(
 						%>
 						<display:table name="agenda" sort="external" pagesize="10" id="agenda" requestURI="./editProfesionalAgenda.jsp">
 							<display:column title="Dia" sortable="true" sortName="Dia" headerClass="sortable width250">
-								<%= DateUtils.formatDate(((ProfesionalAgenda)pageContext.getAttribute("agenda")).getDate())%>
+								<%= DateUtils.formatDateSp(((ProfesionalAgenda)pageContext.getAttribute("agenda")).getDate())%>
 							</display:column>
 							<display:column title="Acciones" headerClass="sortable width50">
 								<a class="nonelyLink" href="./deleteAgenda.do?id=<%= ((ProfesionalAgenda)pageContext.getAttribute("agenda")).getId()%>">Borrar</a>
