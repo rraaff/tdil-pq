@@ -49,6 +49,30 @@ $(document).ready(
 		);
 	}
 );
+$(document).ready(function(){
+    $('ProfesionalProfileForm').autosize();  
+});
+</script>
+<style>
+#content textarea, .mirroredText { 
+	line-height:20px;
+	vertical-align: top; 
+	transition: height 0.2s;
+	-webkit-transition: height 0.2s; 
+	-moz-transition: height 0.2s;
+	background:#f4f8ff;
+	font:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border:solid 1px #cbdfff;
+}
+</style>
+<script>
+    $(document).ready(function(){
+        $('textarea').autosize({className:'mirroredText',append: "\n"});
+    });
 </script>
 <style>
 <!--
@@ -89,13 +113,13 @@ $(document).ready(
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h2>
 				<div class="fright width300">
-					<div id="muroContainer" class="height350">
+					<div id="muroContainer" style="min-height:350px;">
 						<h2 style="font-size:18px;">Muro de <bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></h2>
 						<% if (websiteUser != null && websiteUser.isClient()) {
 							profesionalProfileForm.setUserId(websiteUser.getId());%>
 							<html:form method="POST" action="/addWallComment">
-								<div class="myRow height80">
-									<div class="myLabel width280 height80"><html:textarea name="ProfesionalProfileForm" property="content" styleClass="width280 height80" /></div>
+								<div class="myRow">
+									<div class="myLabel width280"><html:textarea name="ProfesionalProfileForm" property="content" styleClass="width280" /></div>
 								</div>
 								<div class="myRow height50" align="center"><input type="submit" value="Enviar"/></div>
 							</html:form>

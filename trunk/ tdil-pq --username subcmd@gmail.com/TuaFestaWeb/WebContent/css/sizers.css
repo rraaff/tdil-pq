@@ -10,7 +10,7 @@ div, span, p, a { /*border:dotted 1px #00FF00; /**/}
 	float:left;
 }
 /* campos textfield, input, select, */
-.normalField, input[type="text"], input[type="password"], input[type="select"] {
+.normalField, input[type="text"], input[type="password"], input[type="select"], input[type="textarea"] {
 	background:#f4f8ff;
 	height:22px;
 	margin:0 5px;
@@ -52,6 +52,18 @@ input[type=button], input[type=submit], .inputButtonHelper, .inputButtonHelper a
 input[type=button]:hover, input[type=submit]:hover, .inputButtonHelper:hover, .inputButtonHelper a:hover {
 	background:#ffcb08;
 }
+input[type="textarea"] {
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    display:block;/*reset from inline*/
+    width:100%;
+    margin:0;/*remove defaults*/
+    overflow-y:auto;/*resets IE*/
+    overflow-x:hidden;/*resets IE*/
+}
+* html input[type="textarea"] {margin-left:-5px}/*ie6 cheap fix*/
+*+html input[type="textarea"] {margin-left:-5px}/*ie7 cheap fix*/
 
 /* sizers */
 .fontSize11 { font-size:11px; }

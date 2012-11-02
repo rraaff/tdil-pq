@@ -8,7 +8,7 @@
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tua Festa | Inicio | El sitio #1 en contactos entre profesionales y clientes del rubro eventos</title>
+<title>Tua Festa | Te ayudamos a organizar tu fiesta | El sitio #1 en contactos entre profesionales y clientes del rubro eventos</title>
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
@@ -37,49 +37,56 @@ $(document).ready(
 
 <body>
 <%@ include file="includes/designHeader.jspf" %>
-
-<html:form method="POST" action="/addToSearch">
-	<div style="float:left;" class="width350">
-		<div class="myRow">
-			<div class="myLabel width80">Producto/Servicio</div>
-			<div class="myLabel width250"><html:text name="OrganizeWizardForm" property="product" styleClass="normalField width200"/>&nbsp;</div>
+<div id="divisionHeaderBody"></div>
+<div id="preContainer">
+	<div id="content">
+		<!-- aca arranca el formulario -->
+		<div id="titleArea">
+			<h1>Te ayudamos a organizar tu fiesta</h1>
+			<h2>Realizando b&uacute;squedas avanzadas. Obtendr&aacute;s un listados de profesionales, sus productos o servicios y podr&aacute;s contactarlos</h2>
 		</div>
-		<div class="myRow">
-			<div class="myLabel width80">Precio</div>
-			<div class="myLabel width250"><html:text name="OrganizeWizardForm" property="maxPrice" styleClass="normalField width200"/>&nbsp;</div>
+		<div id="formContent">
+			<div id="formSection" style="width:920px;">
+				<h2>Paso 1: Agreg&aacute; al listado todos los productos y/o servicios que necesitas para tu evento</h2>
+				<html:form method="POST" action="/addToSearch">
+					<div class="myRow">
+						<div class="myLabel width120">Producto/Servicio</div>
+						<div class="myLabel width400"><html:text name="OrganizeWizardForm" property="product" styleClass="normalField width350"/></div>
+						<div class="myLabel width50">Precio</div>
+						<div class="myLabel width120"><html:text name="OrganizeWizardForm" property="maxPrice" styleClass="normalField width100"/></div>
+					</div>
+					<div class="myRow" align="center"><html:submit property="operation">Agregar</html:submit></div>
+				</html:form>
+				<!-- empieza la tabla de la busqueda -->
+				<html:form method="POST" action="/searchWizard">
+					<div class="myRow"> <!--  style="height:200px; overflow:auto;"-->
+						<table width="100%">
+							<tr>
+								<td class="headerTablas">Producto o Servicio</td>
+								<td class="headerTablas" width="90">Precio Maximo</td>
+								<td class="headerTablas" width="60">Acciones</td>
+							</tr>
+							<logic:iterate name="OrganizeWizardForm" property="searchSellBeans"
+								id="iterSearch" indexId="iterIndex">
+								<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
+									<td><bean:write name="iterSearch" property="product" /></td>
+									<td><bean:write name="iterSearch" property="maxPrice" /></td>
+									<td><a href="./removeFromSearch.do?index=<%=iterIndex%>">Quitar</a></td>
+								</tr>
+							</logic:iterate>
+						</table>
+					</div>
+					<h2>Paso 2: Determin&aacute; la ubicaci&oacute;n de tu evento para buscar aquellos profesinales que trabajen cerca tuyo</h2>
+					<div class="myRow">
+						<div class="myLabel width80">Ubicaci&oacute;n</div>
+						<div class="myLabel width520"><html:text name="OrganizeWizardForm" property="geoLevel" styleClass="normalField width500"/></div>
+					</div>
+					<div class="myRow" align="center"><html:submit property="operation">Buscar</html:submit></div>
+				</html:form>
+			</div>
 		</div>
-		<html:submit property="operation">Agregar</html:submit>
 	</div>
-</html:form>
-
-<html:form method="POST" action="/searchWizard">
-	<div class="myRow" style="height:200px; overflow:auto;">
-		<table width="100%">
-			<tr>
-				<td class="headerTablas">Producto o Servicio</td>
-				<td class="headerTablas">Precio Maximo</td>
-				<td class="headerTablas" width="60">Acciones</td>
-			</tr>
-			<logic:iterate name="OrganizeWizardForm" property="searchSellBeans"
-				id="iterSearch" indexId="iterIndex">
-				<tr class="<%=(iterIndex % 2 == 0) ? "d0" : "d1"%>">
-					<td><bean:write name="iterSearch" property="product" /></td>
-					<td><bean:write name="iterSearch" property="maxPrice" /></td>
-					<td><a href="./removeFromSearch.do?index=<%=iterIndex%>">Quitar</a></td>
-				</tr>
-			</logic:iterate>
-		</table>
-	</div>
-
-	<div style="float:left;" class="width350">
-		<div class="myRow">
-			<div class="myLabel width80">Ubicacion</div>
-			<div class="myLabel width250"><html:text name="OrganizeWizardForm" property="geoLevel" styleClass="normalField width200"/>&nbsp;</div>
-		</div>
-		<html:submit property="operation">Search</html:submit>
-	</div>
-</html:form>
-			
+</div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 </body>

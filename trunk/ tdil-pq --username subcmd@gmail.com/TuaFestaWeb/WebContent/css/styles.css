@@ -152,10 +152,12 @@ td {
 td a {
 	color:#292f3a;
 }
-.odd {
+.odd, .d0 {
+	text-align:left;
 	background-color: #f9f9f9;
 }
-.even {
+.even, .d1 {
+	text-align:left;
 	background-color: #fff;
 }
 a {
