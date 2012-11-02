@@ -1403,5 +1403,45 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page51" PATH="/changeProfesionalPassword.jsp"
   SHAPE="240,4273,0,0" SUBTYPE="jsp"
-  TITLE="changeProfesionalPassword.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="changeProfesionalPassword.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changePassword.do"
+   SUBTYPE="confirmed" TARGET="action147" TITLE="/changePassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#addToSearch" NAME="action148" PATH="/addToSearch"
+  SHAPE="240,2289,0,0" TITLE="OrganizeWizardForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/searchWizard.jsp" TARGET="page52" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page52" PATH="/searchWizard.jsp"
+  SHAPE="448,2289,0,0" SUBTYPE="jsp" TITLE="searchWizard.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/addToSearch.do"
+   SUBTYPE="confirmed" TARGET="action148" TITLE="/addToSearch.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/searchWizard.do"
+   SUBTYPE="confirmed" TARGET="action150" TITLE="/searchWizard.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToSearchWizard" NAME="action149"
+  PATH="/goToSearchWizard" SHAPE="240,2721,0,0"
+  TITLE="OrganizeWizardForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/searchWizard.jsp" TARGET="page52" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchWizard" NAME="action150" PATH="/searchWizard"
+  SHAPE="656,2289,0,0" TITLE="SellSearchResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/sellSearchResult.jsp" TARGET="page24" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#removeFromSearch" NAME="action151"
+  PATH="/removeFromSearch" SHAPE="288,2721,0,0"
+  TITLE="OrganizeWizardForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/searchWizard.jsp" TARGET="page52" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

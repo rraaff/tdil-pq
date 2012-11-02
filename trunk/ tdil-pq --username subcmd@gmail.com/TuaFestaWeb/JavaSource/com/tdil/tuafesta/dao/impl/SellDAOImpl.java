@@ -253,4 +253,12 @@ public class SellDAOImpl implements SellDAO {
 		return list;
 	}
 	
+	@Override
+	public List<SellValueObject> selectSellsByTextAndPrice(String text, Integer price) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("text", "%"+text+"%");
+		params.put("maxPrice", price);
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsByTextAndPrice", params);
+		return list;
+	}
 }
