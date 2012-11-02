@@ -2,6 +2,7 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,8 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 	private int id;
 	private int objectId;
 	private Profesional profesional;
+	
+	private Calendar calendar;
 	
 	private WallCommentForm wallCommentForm = new WallCommentForm();
 	
@@ -138,6 +141,31 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 
 	public List<WallWrittingValueObject> getWallWritting() {
 		return wallWritting;
+	}
+
+	public Calendar getCalendar() {
+		if (calendar == null) {
+			calendar = Calendar.getInstance();
+			calendar.set(Calendar.DATE, 1);
+		}
+		return calendar;
+	}
+
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
+
+	public void moveCurrentMonth() {
+		calendar = Calendar.getInstance();
+		calendar.set(Calendar.DATE, 1);
+	}
+
+	public void movePrevMonth() {
+		getCalendar().add(Calendar.MONTH, -1);
+	}
+	
+	public void moveNextMonth() {
+		getCalendar().add(Calendar.MONTH, 1);
 	}
 
 }
