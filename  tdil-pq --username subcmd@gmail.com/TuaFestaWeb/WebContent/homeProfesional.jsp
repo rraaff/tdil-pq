@@ -52,7 +52,7 @@
 						<div class="myLabel width450">Sexo <strong><%= profesional.getSex().equals("m") ? "Masculino" : "Femenino" %></strong></div>
 					</div>
 					<div class="myRow"><a href="./goToEditProfesionalPersonalData.do?id=<%=profesional.getId()%>">Editar Datos personales</a></div>
-					<div class="myRow"><a href="#">Cambiar clave de acceso</a></div>
+					<div class="myRow"><a href="./goToChangePassword.do?id=<%=profesional.getId()%>">Cambiar clave de acceso</a></div>
 				</div>
 				<div style="width:450px; float:left;">
 					<h2><legend>Datos profesionales <%= profesionalHomeForm.isBusinessDataChanged() ? "*" : "" %></legend></h2>

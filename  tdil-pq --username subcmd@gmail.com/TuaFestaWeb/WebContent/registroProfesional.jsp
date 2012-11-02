@@ -66,8 +66,6 @@ $(document).ready(
 						'password': {required: "<img id='passworderror' src='images/unchecked.gif' hovertext='Ingrese el password.' />"},
 						'retypepassword': {required: "<img id='retypepassworderror' src='images/unchecked.gif' hovertext='Reingrese el password.' />"},
 						'businessname': {required: "<img id='businessnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre comercial.' />"},
-						'cuit': {required: "<img id='cuiterror' src='images/unchecked.gif' hovertext='Ingrese el cuit.' />"},
-						'iibb': {required: "<img id='iibberror' src='images/unchecked.gif' hovertext='Ingrese el iibb.' />"},
 						'geo2Id': {required: "<img id='geo2iderror' src='images/unchecked.gif' hovertext='Seleccione la provincia.' />"},
 						'geo3Id': {required: "<img id='geo3iderror' src='images/unchecked.gif' hovertext='Seleccione el partido.' />"},
 						'geo4Id': {required: "<img id='geo4iderror' src='images/unchecked.gif' hovertext='Seleccione la localidad.' />"}
@@ -194,13 +192,6 @@ $(document).ready(
 						</html:select>
 						<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.geo4_key + ".err")%>
 					</div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width70">CUIT</div>
-					<div class="myLabel width200" id=""><html:text name="ProfesionalForm" property="cuit" styleClass="normalField width150"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.cuit_key + ".err")%></div>
-					<div class="myLabel width120"><span class="comment">Sin guiones</span></div>
-					<div class="myLabel width50">IIBB</div>
-					<div class="myLabel width200" id=""><html:text name="ProfesionalForm" property="iibb" styleClass="normalField width150"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.iibb_key + ".err")%></div>
 				</div>
 				<div class="width760 height25" style="float:left;">&nbsp;</div>
 				<h2>Agregue productos y servicios que desee ofrecer</h2>

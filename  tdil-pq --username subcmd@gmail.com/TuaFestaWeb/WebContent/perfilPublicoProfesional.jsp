@@ -52,6 +52,17 @@ $(document).ready(
 </script>
 <style>
 <!--
+
+.agendaBusy {
+	background:#CCCCCC;
+}
+.agendaNormal {
+	background:#FFFFFF;
+}
+.agendaNotActual {
+	background:#000000;
+}
+
 #muroContainer {
 	width:280px;
 	background-color: #E6E6E6;
