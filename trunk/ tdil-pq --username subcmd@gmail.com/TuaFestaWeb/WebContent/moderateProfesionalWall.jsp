@@ -112,11 +112,11 @@ $(document).ready(
 				<div class="renglon">
 					<div class="label"><span class="comment">Podr&aacute; revisar los mensajes que te dejaron los usuarios. Eleg&iacute; si queres ver todos o solamente aquellos pendientes de respuesta o moderaci&oacute;n.</span></div>
 				</div>
-				<div class="renglon" align="center">
+				<div class="myRow height30" align="center" style="padding-top:20px;">
 					<% if (wallModerationForm.isShowAll()) { %>
-						<div class="label width100per"><b>Todos</b> - <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewWallWrittingPending.do">Solo pendientes</a></div>
+						<b>Todos</b> - <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewWallWrittingPending.do">Solo pendientes</a>
 					<% } else { %>
-						<div class="label width100per"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewWallWrittingAll.do">Todos</a> - <b>Solo pendientes</b></div>
+						<a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewWallWrittingAll.do">Todos</a> - <b>Solo pendientes</b>
 					<% } %>
 				</div>
 				<div class="renglon">
@@ -146,7 +146,7 @@ $(document).ready(
 						</div>
 					<% } %>
 				</div>
-				<div class="renglon" align="center"><a href="./goToProfesionalHome.do?id=<%=wallModerationForm.getId()%>">Volver</a></div>
+				<div class="myRow height30" align="center" style="padding-top:20px;"><a href="./goToProfesionalHome.do?id=<%=wallModerationForm.getId()%>">Volver</a></div>
 			</div>
 			<!-- aca Termina el formulario -->
 		</div>
