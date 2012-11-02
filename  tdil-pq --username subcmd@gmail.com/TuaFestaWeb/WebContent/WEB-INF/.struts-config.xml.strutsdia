@@ -1366,4 +1366,42 @@
    PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#currMonth" NAME="action143" PATH="/currMonth"
+  SHAPE="48,11057,0,0" TITLE="ProfesionalProfileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/perfilPublicoProfesional.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#nextMonth" NAME="action144" PATH="/nextMonth"
+  SHAPE="48,10833,0,0" TITLE="ProfesionalProfileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/perfilPublicoProfesional.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#prevMonth" NAME="action145" PATH="/prevMonth"
+  SHAPE="48,11169,0,0" TITLE="ProfesionalProfileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/perfilPublicoProfesional.jsp" TARGET="page23" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToChangePassword" NAME="action146"
+  PATH="/goToChangePassword" SHAPE="32,4273,0,0"
+  TITLE="EditProfesionalPasswordDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/changeProfesionalPassword.jsp" TARGET="page51"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#changePassword" NAME="action147"
+  PATH="/changePassword" SHAPE="32,4385,0,0"
+  TITLE="EditProfesionalPasswordDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/changeProfesionalPassword.jsp" TARGET="page51" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToProfesionalHome.do" TARGET="action82" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page51" PATH="/changeProfesionalPassword.jsp"
+  SHAPE="240,4273,0,0" SUBTYPE="jsp"
+  TITLE="changeProfesionalPassword.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
