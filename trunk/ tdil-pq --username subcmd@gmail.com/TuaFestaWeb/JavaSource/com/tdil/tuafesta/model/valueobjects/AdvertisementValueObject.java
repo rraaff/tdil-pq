@@ -1,7 +1,7 @@
 package com.tdil.tuafesta.model.valueobjects;
 
-import org.apache.commons.lang.StringUtils;
-
+import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.tuafesta.model.AdType;
 import com.tdil.tuafesta.model.Advertisement;
 
 public class AdvertisementValueObject extends Advertisement {
@@ -18,7 +18,10 @@ public class AdvertisementValueObject extends Advertisement {
 	public String getProfesionalBusinessName() {
 		return profesionalBusinessName;
 	}
-
+	public String getTranslatedType() {
+		return ApplicationResources.getMessage("AD_" + (this.getType().equals(AdType.NORMAL) ? "NORMAL" : "SUPER"));		
+	}
+	
 	public void setProfesionalBusinessName(String profesionalBusinessName) {
 		this.profesionalBusinessName = profesionalBusinessName;
 	}

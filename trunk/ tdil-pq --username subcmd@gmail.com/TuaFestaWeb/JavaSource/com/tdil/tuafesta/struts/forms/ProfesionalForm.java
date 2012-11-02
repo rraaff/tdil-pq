@@ -223,8 +223,8 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		}
 		
 		FieldValidation.validateText(this.getBusinessname(), businessname_key, 400, validationError);
-		FieldValidation.validateText(this.getCuit(), cuit_key, 400, validationError);
-		FieldValidation.validateText(this.getIibb(), iibb_key, 400, validationError);
+		FieldValidation.validateText(this.getCuit(), cuit_key, 400, false, validationError);
+		FieldValidation.validateText(this.getIibb(), iibb_key, 400, false, validationError);
 		
 		FieldValidation.validateText(this.getWebsite(), website_key, 200, false, validationError);
 		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
@@ -238,9 +238,9 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		FieldValidation.validateId(geo3Id, geo3_key, validationError);
 		FieldValidation.validateId(geo4Id, geo4_key, validationError);
 		
-		if (this.getSells().isEmpty()) {
-			validationError.setFieldError(sells_key, ValidationErrors.CANNOT_BE_EMPTY);
-		}
+//		if (this.getSells().isEmpty()) {
+//			validationError.setFieldError(sells_key, ValidationErrors.CANNOT_BE_EMPTY);
+//		}
 		if (!this.isFacebookRegister()) {
 			if (!validationError.hasFieldError(password_key)) {
 				if (this.getPassword().length() < MIN_PASS_LENGTH) {
