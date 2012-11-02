@@ -425,6 +425,9 @@
   <PROCESS-ITEM-OUTPUT ID="verification" NAME="forward1"
    PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="verification"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="aproved" NAME="forward2"
+   PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="aproved"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/validateProfesionalEmail.jsp"
   SHAPE="240,11361,0,0" SUBTYPE="jsp"
@@ -1444,4 +1447,7 @@
    PATH="/searchWizard.jsp" TARGET="page52" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page53" PATH="/reviewProfesional.jsp"
+  SHAPE="240,11585,0,0" SUBTYPE="jsp" TITLE="reviewProfesional.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

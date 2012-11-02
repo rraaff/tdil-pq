@@ -39,6 +39,9 @@ public class GoToReviewProfesionalAction extends AbstractAction {
 		if (abstractForm.getProfesional().getStatus().equals(ProfesionalStatus.VERIFICATION_PENDING)) {
 			return mapping.findForward("verification");
 		}
+		if (abstractForm.getProfesional().getStatus().equals(ProfesionalStatus.APPROVED)) {
+			return mapping.findForward("aproved");
+		}
 		return mapping.findForward("continue");
 	}
 
