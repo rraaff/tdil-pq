@@ -20,6 +20,7 @@
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>
 <script>
 $(document).ready(
 	function(){
@@ -40,7 +41,7 @@ $(document).ready(
 				});
 
 			
-			$("input[name=birthdate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			$("input[name=birthdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 				changeYear: true, yearRange: "1900:2012"});
 
 		}

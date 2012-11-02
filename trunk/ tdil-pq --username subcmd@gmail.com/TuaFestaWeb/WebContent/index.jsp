@@ -75,7 +75,7 @@
 				    <div id="htmlcaption<%=pvo.getId() %>" class="nivo-html-caption">
 			    	<h1><a href="./detallePromocion.jsp?id=<%=pvo.getId() %>"><%=pvo.getName() %></a></h1>
 					<div class="bajada"><a href="./detallePromocion.jsp?id=<%=pvo.getId() %>"><%=pvo.getDescription() %></a></div>
-					<div class="date">$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDate(pvo.getStartdate()) %> hasta <%=DateUtils.formatDate(pvo.getEnddate()) %></div>
+					<div class="date">$<%=pvo.getPrice() %> - Desde <%=DateUtils.formatDateSp(pvo.getStartdate()) %> hasta <%=DateUtils.formatDateSp(pvo.getEnddate()) %></div>
 			 	</div>
 			 	<% } %>
 			</div>

@@ -136,7 +136,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 			FieldValidation.validateText(this.getPassword(), password_key, 20, validationError);
 		}
 
-		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthdate());
+		Date birthDate = com.tdil.utils.DateUtils.parseDateSp(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
@@ -180,7 +180,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 		client.setLastname(this.getLastname());
 		client.setIdGeolevel(this.getGeo4Id());
 		client.setSex(this.getSex());
-		client.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
+		client.setBirthdate(com.tdil.utils.DateUtils.parseDateSp(this.getBirthdate()));
 		client.setEmail(this.getEmail());
 		if (!this.isFacebookRegister()) {
 			client.setVerifemail(RandomStringUtils.randomAlphanumeric(20));

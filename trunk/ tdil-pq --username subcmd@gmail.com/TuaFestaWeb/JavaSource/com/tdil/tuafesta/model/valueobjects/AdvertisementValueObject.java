@@ -27,11 +27,11 @@ public class AdvertisementValueObject extends Advertisement {
 	}
 	
 	public String getFormatedfromdate() {
-		return com.tdil.utils.DateUtils.formatDate(this.getFromdate());
+		return com.tdil.utils.DateUtils.formatDateSp(this.getFromdate());
 	}
 	
 	public String getFormatedtodate() {
-		return com.tdil.utils.DateUtils.formatDate(this.getTodate());
+		return com.tdil.utils.DateUtils.formatDateSp(this.getTodate());
 	}
 
 	public String getSellName() {

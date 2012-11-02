@@ -230,7 +230,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		FieldValidation.validateText(this.getFacebook(), facebook_key, 200, false, validationError);
 		FieldValidation.validateText(this.getBusinesshours(), businesshours_key, 4000, false, validationError);
 		FieldValidation.validateText(this.getDescription(), description_key, 4000, false, validationError);
-		Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthdate());
+		Date birthDate = com.tdil.utils.DateUtils.parseDateSp(this.getBirthdate());
 		if (birthDate == null) {
 			validationError.setFieldError(birthdate_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
@@ -298,7 +298,7 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		profesional.setPhonetype(this.getPhoneType());
 		profesional.setIdGeolevel(this.getGeo4Id());
 		profesional.setSex(this.getSex());
-		profesional.setBirthdate(com.tdil.utils.DateUtils.parseDate(this.getBirthdate()));
+		profesional.setBirthdate(com.tdil.utils.DateUtils.parseDateSp(this.getBirthdate()));
 		
 		profesional.setEmail(this.getEmail());
 		

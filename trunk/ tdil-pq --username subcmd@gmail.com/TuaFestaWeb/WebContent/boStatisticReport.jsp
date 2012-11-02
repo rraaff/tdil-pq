@@ -12,9 +12,9 @@
 <script>
 $(document).ready(
 	function(){
-		$("#sFrom").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		$("#sFrom").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2020"});
-		$("#sTo").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		$("#sTo").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2020"});
 
 		$('#sStatType').change(

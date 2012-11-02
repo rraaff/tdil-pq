@@ -14,3 +14,4 @@
 <script type="text/javascript" charset="utf-8" src="js/TableTools.min.js"></script>
 <script type='text/javascript' src='js/jquery-resize.js'></script>
 <!--link href="css/boMenu.css" media="screen" rel="stylesheet" type="text/css" / -->
+<script type="text/javascript" src="js/jquery.ui.datepicker-es.js"></script>

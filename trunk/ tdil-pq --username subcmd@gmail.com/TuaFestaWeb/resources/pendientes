@@ -6,11 +6,10 @@ Te paso otras cosas de TUA FESTA que necesito tu ayuda para corregir.
  
 En la REGISTRACIÓN de PROFESIONALES
 HECHO - Que los campos de CUIT y IIBB no estén ahí pero si en la edición del perfil.
-- Las fechas y los nombres de los meses en español
+HECHO - Las fechas y los nombres de los meses en español
 HECHO - Que agregar productos o servicios no sea obligatorio
 HECHO - Ponele “Categoría: “ antes de la ruta de categoría cuando agregas productos o servicios
 mmm, no se que queres - Ponerle a eso un style “.categoryRoot” para que lo pueda definir desde el css
-
 
 Home del profesional debe tener todo el listado de productos y servicios del profesional
 
