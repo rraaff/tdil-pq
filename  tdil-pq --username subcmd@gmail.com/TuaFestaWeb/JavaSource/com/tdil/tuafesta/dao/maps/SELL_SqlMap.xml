@@ -635,5 +635,22 @@ union all
     and prof.deleted = 0
   </select>
   
+  <select id="selectSellsByTextAndPrice" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
+    from SELL sell, PROFESIONAL prof
+    where (sell.name like #text:VARCHAR# OR sell.description like #text:VARCHAR#)
+    and #maxPrice:INTEGER# >= sell.referenceprice
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
+  
  
 </sqlMap>

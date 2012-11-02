@@ -77,6 +77,9 @@
    <form-bean id="EditProfesionalPasswordDataForm"
    name="EditProfesionalPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPasswordDataForm"/>
    
+   <form-bean id="OrganizeWizardForm"
+   name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
+   
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -707,6 +710,22 @@
    path="/editAd" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
+  
+  
+  <action name="OrganizeWizardForm" path="/goToSearchWizard" scope="session" type="com.tdil.tuafesta.struts.action.GoToSearchWizardAction">
+   <forward name="continue" path="/searchWizard.jsp"/>
+  </action>
+  <action name="OrganizeWizardForm" path="/addToSearch" scope="session" type="com.tdil.tuafesta.struts.action.AddSearchSellBeanAction">
+   <forward name="continue" path="/searchWizard.jsp"/>
+  </action>
+  <action name="OrganizeWizardForm" path="/removeFromSearch" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSearchSellBeanAction">
+   <forward name="continue" path="/searchWizard.jsp"/>
+  </action>
+  
+  <action name="SellSearchResultForm" path="/searchWizard" scope="session" type="com.tdil.tuafesta.struts.action.SearchWizardAction">
+   <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
+  </action>  
+  
   
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
 	<forward name="notLogged" path="/index.jsp"/>
