@@ -409,6 +409,9 @@ union all
     from SELL sell
     where sell.id_profesional = #id:INTEGER#
     and sell.type = 1
+        <isNotNull property="approved">
+        and approved = #approved:INTEGER#
+    </isNotNull>
   </select>
   
   <select id="searchSellProductsByCategories" parameterClass="list" resultMap="SellValueObject">
@@ -462,6 +465,9 @@ union all
     from SELL sell
     where sell.id_profesional = #id:INTEGER#
     and sell.type = 2
+    <isNotNull property="approved">
+        and approved = #approved:INTEGER#
+    </isNotNull>
   </select>
   
     <select id="searchSellServicesByCategories" parameterClass="list" resultMap="SellValueObject">

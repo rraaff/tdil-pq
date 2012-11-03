@@ -1,3 +1,27 @@
+Hola Marcos,
+ 
+Me vendría suuuuuper bien poder subir lo que está hasta ahora para que los chicos hagan un test el fin de semana. ¿Podrás?
+ 
+Te preparé una lista con temas pendientes en TF. Algunas cosas son detalles que van surgiendo del uso. Avisame si me olvido de algo.
+ 
+A.      Página del perfil público del profesional (perfilPublicoProfesional.jsp):
+Hecho a.       Le falta el listado de productos y servicios.
+Hecho b.      Me encantaría tener un if loco para determinar si es mensaje de usuario o respuesta puesto en el class. 
+	<div class="myRow comment rowMuro rowAnswer">, habría que sacar rowAnswer.
+B.      (Sugerencia) Página de resultados de búsqueda (sellSearchResult.jsp): Sería bueno que te recupere los parámetros 
+	de búsqueda, luego te aparezca la leyenda de los resultados y luego un botón que te permita volver a la búsqueda recuperando los mismos parámetros.
+C.      Búsqueda Avanzada (SearchWizard.jsp): El campo Precio no debería ser obligatorio
+Heho D.      Listado de contactos de una promoción (promotionContactData.jsp): Que no escriba varias veces los datos de un mismo profesional si
+	 es que se repite en una promo.
+E.       En la registración de usuarios profesionales y de clientes también: Cuando te vas a registrarte como usuario profesional,
+	 envías los datos, y te pasa a la página de tus datos fueron enviados con éxito te va a llegar un mail >> el mail no me llego, y tendría que haber un botón que diga, te llego el mail?? si no te llego reenvialo haciendo click aca! algo asi.
+F.       BACKOFFICE: Sigue pendiente poder determinar el orden de los bloques de búsqueda por zonas o rubros de la home o si aparecen o no.
+G.     Login con Facebook
+H.      Share de Facebook
+I.        Share de twitter
+
+*****
+
 Formulario de cambio de password
 
 HECHO SabÃ©s quÃ© le falta a la tabla de la secciÃ³n de administraciÃ³n de avisos... una columna con el tipo de aviso

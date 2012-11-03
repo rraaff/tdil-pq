@@ -108,5 +108,8 @@ public class EditProfesionalPasswordDataForm extends TransactionalValidationForm
 	public void setRetypepassword(String retypepassword) {
 		this.retypepassword = retypepassword;
 	}
+	protected boolean isAutoApprove() {
+		return false;
+	}
 
 }
