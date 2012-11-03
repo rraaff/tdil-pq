@@ -272,5 +272,8 @@ public class WallModerationForm extends TransactionalValidationForm implements E
 	public void setHasMore(boolean hasMore) {
 		this.hasMore = hasMore;
 	}
+	protected boolean isAutoApprove() {
+		return false;
+	}
 
 }

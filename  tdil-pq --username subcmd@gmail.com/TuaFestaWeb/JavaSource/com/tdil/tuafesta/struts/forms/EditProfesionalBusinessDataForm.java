@@ -1,6 +1,7 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
+import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.isAutoApprove;
 
 public class EditProfesionalBusinessDataForm extends TransactionalValidationForm implements GeoLevelSelectionForm, AjaxUploadHandlerForm, EditProfesionalDataForm {
 
@@ -213,7 +215,7 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setVideo4(com.tdil.utils.StringUtils.getDataForChange(this.getVideo4(), profesional.getVideo4(), "DELETE"));
 		profesionalChange.setVideo5(com.tdil.utils.StringUtils.getDataForChange(this.getVideo5(), profesional.getVideo5(), "DELETE"));
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
-		if (true) { //TODO auto aprove
+		if (isAutoApprove()) {
 			profesional.setBusinessname(StringUtils.nvl(profesionalChange.getBusinessname(), profesional.getBusinessname()));
 			profesional.setCuit(StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
 			profesional.setIibb(StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));

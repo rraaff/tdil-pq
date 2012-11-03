@@ -48,4 +48,19 @@ public class SystemPropertyUtils {
 			return "";
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public static String getSystemPropertValueInSameTransaction(String key) {
+		try {
+			List<SystemProperty> result = (List<SystemProperty>)new GetSystemProperty(key).executeInTransaction();
+			if (result.size() > 0) {
+				return result.get(0).getPropvalue();
+			} else {
+				return "";
+			}
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return "";
+		}
+	}
 }

@@ -129,5 +129,8 @@ public class EditProfesionalAgendaForm extends TransactionalValidationForm imple
 	public void setAgendaList(List<ProfesionalAgenda> agendaList) {
 		this.agendaList = agendaList;
 	}
+	protected boolean isAutoApprove() {
+		return false;
+	}
 
 }

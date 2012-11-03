@@ -2,6 +2,7 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +16,7 @@ import com.tdil.tuafesta.dao.WallWrittingDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.WallWritting;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.model.valueobjects.WallWrittingValueObject;
 import com.tdil.tuafesta.stats.StatisticType;
 import com.tdil.tuafesta.stats.StatsManager;
@@ -34,6 +36,8 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 	private Calendar calendar;
 	
 	private WallCommentForm wallCommentForm = new WallCommentForm();
+	
+	private List<SellValueObject> sells = new ArrayList<SellValueObject>();
 	
 	private List<WallWrittingValueObject> wallWritting;
 	
@@ -56,6 +60,9 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 		params.put("start", 0);
 		params.put("limit", 11);
 		wallWritting = DAOManager.getWallWrittingDAO().selectWallWindow(params);
+		
+		sells = DAOManager.getSellDAO().selectApprovedProductSellsByProfesional(id);
+		sells.addAll(DAOManager.getSellDAO().selectApprovedServiceSellsByProfesional(id));
 	}
 
 	@Override
@@ -166,6 +173,14 @@ public class ProfesionalProfileForm extends TransactionalValidationForm {
 	
 	public void moveNextMonth() {
 		getCalendar().add(Calendar.MONTH, 1);
+	}
+
+	public List<SellValueObject> getSells() {
+		return sells;
+	}
+
+	public void setSells(List<SellValueObject> sells) {
+		this.sells = sells;
 	}
 
 }

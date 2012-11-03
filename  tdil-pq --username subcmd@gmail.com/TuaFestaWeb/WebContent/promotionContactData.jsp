@@ -51,7 +51,7 @@
 			<h2>En esta p&aacute;gina est&aacute;n los datos de contacto de todos los profesionales incluidos en la promoci&oacute;n</h2>
 		</div>
 		<% PromotionContactForm promotionContactForm = (PromotionContactForm)session.getAttribute("PromotionContactForm"); 
-			for (Profesional profesional : promotionContactForm.getProfesionals()) {
+			for (Profesional profesional : promotionContactForm.getUniqueProfesionals()) {
 		%>
 		<div id="formContent">
 			<div id="formSection">

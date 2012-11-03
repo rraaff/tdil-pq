@@ -81,10 +81,12 @@ public interface SellDAO {
 	public List<SellValueObject> selectProductSellsByCategory(int catid) throws SQLException;
 	public List<SellValueObject> selectProductSellsByCategories(List<Integer> catids) throws SQLException;
 	public List<SellValueObject> selectProductSellsByProfesional(int id) throws SQLException;
+	public List<SellValueObject> selectApprovedProductSellsByProfesional(int id) throws SQLException;
 	
 	public List<SellValueObject> selectServiceSellsByCategory(int catid) throws SQLException;
 	public List<SellValueObject> selectServiceSellsByCategories(List<Integer> catids) throws SQLException;
 	public List<SellValueObject> selectServiceSellsByProfesional(int id) throws SQLException;
+	public List<SellValueObject> selectApprovedServiceSellsByProfesional(int id) throws SQLException;
 
 	public SellValueObject selectSellProductValueObject(int id) throws SQLException;
 

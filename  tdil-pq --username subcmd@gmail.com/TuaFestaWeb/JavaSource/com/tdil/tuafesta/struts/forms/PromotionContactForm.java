@@ -2,6 +2,7 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,6 +102,18 @@ public class PromotionContactForm extends TransactionalValidationForm {
 
 	public void setPromotion(Promotion promotion) {
 		this.promotion = promotion;
+	}
+	
+	public List<Profesional> getUniqueProfesionals() {
+		List<Profesional> result = new ArrayList<Profesional>();
+		Set<Integer> added = new HashSet<Integer>();
+		for (Profesional p : getProfesionals()) {
+			if (!added.contains(p.getId())) {
+				added.add(p.getId());
+				result.add(p);
+			}
+		}
+		return result;
 	}
 
 	public List<Profesional> getProfesionals() {

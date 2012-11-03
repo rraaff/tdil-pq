@@ -35,6 +35,7 @@ import com.tdil.tuafesta.struts.forms.beans.SellBean;
 import com.tdil.tuafesta.utils.BlobHelper;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
+import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.isAutoApprove;
 
 public class EditProfesionalSellForm extends TransactionalValidationForm implements EditProfesionalDataForm, ProfesionalSellForm, AjaxUploadHandlerForm {
 
@@ -217,7 +218,11 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 				sell.setIdProfesional(this.getId());
 				sell.setType(productBean.getType());
 				sell.setIdCategory(productBean.getCategoryId());
-				sell.setApproved(1); // AUTO APP
+				if (isAutoApprove()) {
+					sell.setApproved(1);
+				} else {
+					sell.setApproved(0);
+				}
 				sell.setName(productBean.getName());
 				sell.setDescription(productBean.getDescription());
 				// TODO ver tema de . , etc
@@ -303,7 +308,11 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 			SellMedia sellMedia = new SellMedia();
 			sellMedia.setIdSell(sellId);
 			sellMedia.setDeleted(0);
-			sellMedia.setApproved(1); // TODO AUTOAPP
+			if (isAutoApprove()) {
+				sellMedia.setApproved(1);
+			} else {
+				sellMedia.setApproved(0);
+			}
 			updateSellMedia(sellMedia,sell);
 			sellMediaDAO.insertSellMedia(sellMedia);
 		} else {

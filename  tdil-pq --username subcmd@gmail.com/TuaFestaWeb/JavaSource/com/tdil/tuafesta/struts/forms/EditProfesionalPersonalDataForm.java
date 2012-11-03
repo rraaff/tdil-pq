@@ -14,6 +14,8 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
+import com.tdil.tuafesta.utils.SystemPropertiesKeys;
+import com.tdil.tuafesta.web.SystemPropertyUtils;
 import com.tdil.utils.DateUtils;
 import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
@@ -40,8 +42,6 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 	private String phoneType;
 	
 	private String email;
-	private String password;
-	private String retypepassword;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -80,20 +80,6 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		FieldValidation.validateText(this.getPhoneNumber(), ProfesionalForm.phonenumber_key, 15, false, validationError);
 		FieldValidation.validateText(this.getPhoneExtension(), ProfesionalForm.phoneextension_key, 10, false, validationError);
 		FieldValidation.validateText(this.getPhoneType(), ProfesionalForm.phonetype_key, 25, false, validationError);
-		
-		FieldValidation.validateText(this.getPassword(), ProfesionalForm.password_key, 20, false, validationError);
-		
-		if (!validationError.hasFieldError(ProfesionalForm.password_key)) {
-			if (this.getPassword().length() != 0 || this.getRetypepassword().length() != 0) {
-				if (this.getPassword().length() < ProfesionalForm.MIN_PASS_LENGTH) {
-					validationError.setFieldError(ProfesionalForm.password_key, "PASSWORD_TOO_SHORT");
-				} else {
-					if (!this.getPassword().equals(this.getRetypepassword())) {
-						validationError.setFieldError(ProfesionalForm.password_key, "RETYPE_NOT_EQUAL");
-					}
-				}
-			}
-		}
 	}
 	
 	@Override
@@ -113,7 +99,7 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setPhoneextension(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneExtension(), profesional.getPhoneextension()));
 		profesionalChange.setPhonetype(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneType(), profesional.getPhonetype()));
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
-		if (true) { // TODO auto aprove
+		if (isAutoApprove()) {
 			profesional.setFirstname(StringUtils.nvl(profesionalChange.getFirstname(), profesional.getFirstname()));
 			profesional.setLastname(StringUtils.nvl(profesionalChange.getLastname(), profesional.getLastname()));
 			profesional.setSex(StringUtils.nvl(profesionalChange.getSex(), profesional.getSex()));
@@ -135,6 +121,11 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		}
 	}
 
+
+	protected static boolean isAutoApprove() {
+		String value = SystemPropertyUtils.getSystemPropertValueInSameTransaction(SystemPropertiesKeys.AUTO_APPROVE_PROFESIONALS);
+		return "TRUE".equals(value);
+	}
 	public int getObjectId() {
 		return objectId;
 	}
@@ -208,18 +199,6 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getRetypepassword() {
-		return retypepassword;
-	}
-	public void setRetypepassword(String retypepassword) {
-		this.retypepassword = retypepassword;
 	}
 
 }

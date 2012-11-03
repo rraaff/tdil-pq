@@ -21,6 +21,7 @@ import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
 import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
+import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.isAutoApprove;
 
 public class EditProfesionalServiceAreaForm extends TransactionalValidationForm implements EditProfesionalDataForm, ServiceAreaForm {
 
@@ -131,7 +132,11 @@ public class EditProfesionalServiceAreaForm extends TransactionalValidationForm 
 			if (serviceAreaBean.getId() == 0) {
 				ServiceArea serviceArea = new ServiceArea();
 				serviceArea.setDeleted(0);
-				serviceArea.setApproved(1); // TODO AUTOAPP
+				if (isAutoApprove()) {
+					serviceArea.setApproved(1);
+				} else {
+					serviceArea.setApproved(0);
+				}
 				serviceArea.setIdProfesional(this.getId());
 				serviceArea.setLevel(serviceAreaBean.getLevel());
 				serviceArea.setIdGeolevel(serviceAreaBean.getGeoLevelId());
