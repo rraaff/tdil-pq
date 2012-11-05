@@ -36,6 +36,11 @@ public class ApproveProfesionalPersonalDataChangeAction extends AbstractAction {
 						approveDisapproveForm.approvePersonalDataChange();
 					}
 				});
+				TransactionProvider.executeInTransaction(new TransactionalAction() {
+					public void executeInTransaction() throws SQLException, ValidationException {
+						approveDisapproveForm.initWith(approveDisapproveForm.getProfesional().getId());
+					}
+				});
 			} catch (Exception ex) {
 				LOG.error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
