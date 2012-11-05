@@ -216,33 +216,37 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setVideo5(com.tdil.utils.StringUtils.getDataForChange(this.getVideo5(), profesional.getVideo5(), "DELETE"));
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		if (isAutoApprove()) {
-			profesional.setBusinessname(StringUtils.nvl(profesionalChange.getBusinessname(), profesional.getBusinessname()));
-			profesional.setCuit(StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
-			profesional.setIibb(StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));
-			profesional.setDescription(StringUtils.nvl(profesionalChange.getDescription(), profesional.getDescription()));
-			profesional.setIdGeolevel(StringUtils.nvl(profesionalChange.getIdGeolevel(), profesional.getIdGeolevel()));
-			profesional.setIdProfilePicture(StringUtils.nvl(profesionalChange.getIdProfilePicture(), profesional.getIdProfilePicture()));
-			profesional.setExtProfilePicture(StringUtils.nvl(profesionalChange.getExtProfilePicture(), profesional.getExtProfilePicture()));
-			profesional.setVideo1(StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
-			profesional.setVideo2(StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));
-			profesional.setVideo3(StringUtils.nvl(profesionalChange.getVideo3(), profesional.getVideo3()));
-			profesional.setVideo4(StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
-			profesional.setVideo5(StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
-			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
-			profesionalChange.setBusinessname(null);
-			profesionalChange.setCuit(null);
-			profesionalChange.setIibb(null);
-			profesionalChange.setDescription(null);
-			profesionalChange.setIdGeolevel(null);
-			profesionalChange.setIdProfilePicture(null);
-			profesionalChange.setExtProfilePicture(null);
-			profesionalChange.setVideo1(null);
-			profesionalChange.setVideo2(null);
-			profesionalChange.setVideo3(null);
-			profesionalChange.setVideo4(null);
-			profesionalChange.setVideo5(null);
-			DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+			approveBusinessData(profesional, profesionalChange);
 		}
+	}
+	
+	public static void approveBusinessData(Profesional profesional, ProfesionalChange profesionalChange) throws SQLException {
+		profesional.setBusinessname(StringUtils.nvl(profesionalChange.getBusinessname(), profesional.getBusinessname()));
+		profesional.setCuit(StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
+		profesional.setIibb(StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));
+		profesional.setDescription(StringUtils.nvl(profesionalChange.getDescription(), profesional.getDescription()));
+		profesional.setIdGeolevel(StringUtils.nvl(profesionalChange.getIdGeolevel(), profesional.getIdGeolevel()));
+		profesional.setIdProfilePicture(StringUtils.nvl(profesionalChange.getIdProfilePicture(), profesional.getIdProfilePicture()));
+		profesional.setExtProfilePicture(StringUtils.nvl(profesionalChange.getExtProfilePicture(), profesional.getExtProfilePicture()));
+		profesional.setVideo1(StringUtils.nvl(profesionalChange.getVideo1(), profesional.getVideo1()));
+		profesional.setVideo2(StringUtils.nvl(profesionalChange.getVideo2(), profesional.getVideo2()));
+		profesional.setVideo3(StringUtils.nvl(profesionalChange.getVideo3(), profesional.getVideo3()));
+		profesional.setVideo4(StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
+		profesional.setVideo5(StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
+		profesionalChange.setBusinessname(null);
+		profesionalChange.setCuit(null);
+		profesionalChange.setIibb(null);
+		profesionalChange.setDescription(null);
+		profesionalChange.setIdGeolevel(null);
+		profesionalChange.setIdProfilePicture(null);
+		profesionalChange.setExtProfilePicture(null);
+		profesionalChange.setVideo1(null);
+		profesionalChange.setVideo2(null);
+		profesionalChange.setVideo3(null);
+		profesionalChange.setVideo4(null);
+		profesionalChange.setVideo5(null);
+		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 	}
 
 	public int getObjectId() {

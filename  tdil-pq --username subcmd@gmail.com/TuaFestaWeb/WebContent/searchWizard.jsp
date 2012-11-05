@@ -20,12 +20,11 @@ $(document).ready(
 						error.appendTo( element.parent("div"));
 					},
 					rules: { 'product': {required: true},
-							'maxPrice': {required: true, digits: true}
+							'maxPrice': {digits: true}
 					},
 					messages: {
 						'product': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el producto o servicio.' />"}, 
-						'maxPrice': {required: "<img id='phoneAreaCodeerrorreq' src='images/unchecked.gif' hovertext='Ingrese precio maximo.' />",
-							digits: "<img id='phoneAreaCodeerrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"}
+						'maxPrice': {digits: "<img id='phoneAreaCodeerrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"}
 					}
 				});
 	}
