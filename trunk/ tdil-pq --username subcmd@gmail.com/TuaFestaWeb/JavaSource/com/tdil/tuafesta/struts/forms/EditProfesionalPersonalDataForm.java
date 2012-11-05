@@ -100,25 +100,29 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setPhonetype(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneType(), profesional.getPhonetype()));
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		if (isAutoApprove()) {
-			profesional.setFirstname(StringUtils.nvl(profesionalChange.getFirstname(), profesional.getFirstname()));
-			profesional.setLastname(StringUtils.nvl(profesionalChange.getLastname(), profesional.getLastname()));
-			profesional.setSex(StringUtils.nvl(profesionalChange.getSex(), profesional.getSex()));
-			profesional.setBirthdate(StringUtils.nvl(profesionalChange.getBirthdate(), profesional.getBirthdate()));
-			profesional.setPhoneareacode(StringUtils.nvl(profesionalChange.getPhoneareacode(), profesional.getPhoneareacode()));
-			profesional.setPhonenumber(StringUtils.nvl(profesionalChange.getPhonenumber(), profesional.getPhonenumber()));
-			profesional.setPhoneextension(StringUtils.nvl(profesionalChange.getPhoneextension(), profesional.getPhoneextension()));
-			profesional.setPhonetype(StringUtils.nvl(profesionalChange.getPhonetype(), profesional.getPhonetype()));
-			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
-			profesionalChange.setFirstname(null);
-			profesionalChange.setLastname(null);
-			profesionalChange.setSex(null);
-			profesionalChange.setBirthdate(null);
-			profesionalChange.setPhoneareacode(null);
-			profesionalChange.setPhonenumber(null);
-			profesionalChange.setPhoneextension(null);
-			profesionalChange.setPhonetype(null);
-			DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+			approvePersonalData(profesional, profesionalChange);
 		}
+	}
+	
+	public static void approvePersonalData(Profesional profesional, ProfesionalChange profesionalChange) throws SQLException {
+		profesional.setFirstname(StringUtils.nvl(profesionalChange.getFirstname(), profesional.getFirstname()));
+		profesional.setLastname(StringUtils.nvl(profesionalChange.getLastname(), profesional.getLastname()));
+		profesional.setSex(StringUtils.nvl(profesionalChange.getSex(), profesional.getSex()));
+		profesional.setBirthdate(StringUtils.nvl(profesionalChange.getBirthdate(), profesional.getBirthdate()));
+		profesional.setPhoneareacode(StringUtils.nvl(profesionalChange.getPhoneareacode(), profesional.getPhoneareacode()));
+		profesional.setPhonenumber(StringUtils.nvl(profesionalChange.getPhonenumber(), profesional.getPhonenumber()));
+		profesional.setPhoneextension(StringUtils.nvl(profesionalChange.getPhoneextension(), profesional.getPhoneextension()));
+		profesional.setPhonetype(StringUtils.nvl(profesionalChange.getPhonetype(), profesional.getPhonetype()));
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
+		profesionalChange.setFirstname(null);
+		profesionalChange.setLastname(null);
+		profesionalChange.setSex(null);
+		profesionalChange.setBirthdate(null);
+		profesionalChange.setPhoneareacode(null);
+		profesionalChange.setPhonenumber(null);
+		profesionalChange.setPhoneextension(null);
+		profesionalChange.setPhonetype(null);
+		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 	}
 
 

@@ -12,79 +12,139 @@ public class ProfesionalUtils {
 		boolean result = false;
 		if (!StringUtils.isEmpty(profesionalChange.getFirstname())) {
 			profesional.setFirstname(profesionalChange.getFirstname());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getLastname())) {
 			profesional.setLastname(profesionalChange.getLastname());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getSex())) {
 			profesional.setSex(profesionalChange.getSex());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getPhoneareacode())) {
 			profesional.setPhoneareacode(profesionalChange.getPhoneareacode());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getPhonenumber())) {
 			profesional.setPhonenumber(profesionalChange.getPhonenumber());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getPhoneextension())) {
 			profesional.setPhoneextension(profesionalChange.getPhoneextension());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getPhonetype())) {
 			profesional.setPhonetype(profesionalChange.getPhonetype());
-			result = true;
+			return true;
 		}
 		return result;
+	}
+	
+	public static boolean personalDataChanged(ProfesionalChange profesionalChange) {
+		if (!StringUtils.isEmpty(profesionalChange.getFirstname())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getLastname())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getSex())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getPhoneareacode())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getPhonenumber())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getPhoneextension())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getPhonetype())) {
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean mergeBusinessData(Profesional profesional, ProfesionalChange profesionalChange) {
 		boolean result = false;
 		if (!StringUtils.isEmpty(profesionalChange.getBusinessname())) {
 			profesional.setBusinessname(profesionalChange.getBusinessname());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getCuit())) {
 			profesional.setCuit(profesionalChange.getCuit());
-			result = true;
+			return true;
 		}
 		if (profesionalChange.getIdGeolevel() != null && profesionalChange.getIdGeolevel() != 0) {
 			profesional.setIdGeolevel(profesionalChange.getIdGeolevel());
-			result = true;
+			return true;
 		}
 		if (profesionalChange.getIdProfilePicture() != null && profesionalChange.getIdProfilePicture() != 0) {
 			profesional.setIdProfilePicture(profesionalChange.getIdProfilePicture());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getDescription())) {
 			profesional.setDescription(profesionalChange.getDescription());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getVideo1())) {
 			profesional.setVideo1(profesionalChange.getVideo1());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getVideo2())) {
 			profesional.setVideo2(profesionalChange.getVideo2());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getVideo3())) {
 			profesional.setVideo3(profesionalChange.getVideo3());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getVideo4())) {
 			profesional.setVideo4(profesionalChange.getVideo4());
-			result = true;
+			return true;
 		}
 		if (!StringUtils.isEmpty(profesionalChange.getVideo5())) {
 			profesional.setVideo5(profesionalChange.getVideo5());
-			result = true;
+			return true;
 		}
 		
 		return result;
+	}
+	
+	public static boolean businessDataChanged(ProfesionalChange profesionalChange) {
+		if (!StringUtils.isEmpty(profesionalChange.getBusinessname())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getCuit())) {
+			return true;
+		}
+		if (profesionalChange.getIdGeolevel() != null && profesionalChange.getIdGeolevel() != 0) {
+			return true;
+		}
+		if (profesionalChange.getIdProfilePicture() != null && profesionalChange.getIdProfilePicture() != 0) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getDescription())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getVideo1())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getVideo2())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getVideo3())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getVideo4())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesionalChange.getVideo5())) {
+			return true;
+		}
+		
+		return false;
 	}
 	
 }

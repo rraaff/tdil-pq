@@ -11,11 +11,14 @@ import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
+import com.tdil.tuafesta.utils.ProfesionalUtils;
+import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.approvePersonalData;
 
 public class ReviewProfesionalForm extends TransactionalValidationForm {
 
@@ -26,8 +29,14 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 
 	private int id;
 	private int objectId;
+	private boolean personalDataModified;
+	private boolean businessDataModified;
+	private boolean sellsModified;
+	
 	private Profesional profesional;
 	private String disapproveReason;
+
+	private ProfesionalChange profesionalChange;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -41,6 +50,13 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	public void initWith(int id) throws SQLException {
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
 		setProfesional(profesionalDAO.selectProfesionalByPrimaryKey(id));
+		
+		profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(getProfesional().getIdProfesionalChange());
+		personalDataModified = ProfesionalUtils.personalDataChanged(profesionalChange);
+		businessDataModified = ProfesionalUtils.businessDataChanged(profesionalChange);
+		SellExample sellExample = new SellExample();
+		sellExample.createCriteria().andIdProfesionalEqualTo(id).andApprovedEqualTo(0);
+		sellsModified = DAOManager.getSellDAO().countSellByExample(sellExample) > 0;
 	}
 
 	@Override
@@ -108,6 +124,10 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		
 	}
 	
+	public void approvePersonalDataChange() throws SQLException {
+		approvePersonalData(profesional, profesionalChange);
+	}
+	
 	public String getDisapproveReason() {
 		return disapproveReason;
 	}
@@ -154,6 +174,38 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 			serviceArea.setApproved(1);
 			serviceAreaDAO.updateServiceAreaByPrimaryKey(serviceArea);
 		}
+	}
+
+	public boolean isPersonalDataModified() {
+		return personalDataModified;
+	}
+
+	public void setPersonalDataModified(boolean personalDataModified) {
+		this.personalDataModified = personalDataModified;
+	}
+
+	public boolean isBusinessDataModified() {
+		return businessDataModified;
+	}
+
+	public void setBusinessDataModified(boolean businessDataModified) {
+		this.businessDataModified = businessDataModified;
+	}
+
+	public boolean isSellsModified() {
+		return sellsModified;
+	}
+
+	public void setSellsModified(boolean sellsModifiedModified) {
+		this.sellsModified = sellsModifiedModified;
+	}
+
+	public ProfesionalChange getProfesionalChange() {
+		return profesionalChange;
+	}
+
+	public void setProfesionalChange(ProfesionalChange profesionalChange) {
+		this.profesionalChange = profesionalChange;
 	}
 
 

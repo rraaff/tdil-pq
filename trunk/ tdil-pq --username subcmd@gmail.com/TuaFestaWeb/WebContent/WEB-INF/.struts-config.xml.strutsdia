@@ -1450,4 +1450,11 @@
  <PROCESS-ITEM NAME="page53" PATH="/reviewProfesional.jsp"
   SHAPE="240,11585,0,0" SUBTYPE="jsp" TITLE="reviewProfesional.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#approveProfesionalPersonalDataChange"
+  NAME="action152" PATH="/approveProfesionalPersonalDataChange"
+  SHAPE="32,14449,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
