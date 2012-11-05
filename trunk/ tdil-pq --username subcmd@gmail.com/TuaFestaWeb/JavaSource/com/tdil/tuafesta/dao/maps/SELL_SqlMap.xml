@@ -650,7 +650,9 @@ union all
     	null as geo4name
     from SELL sell, PROFESIONAL prof
     where (sell.name like #text:VARCHAR# OR sell.description like #text:VARCHAR#)
-    and #maxPrice:INTEGER# >= sell.referenceprice
+	<isNotNull prepend="and" property="maxPrice">
+    	 #maxPrice:INTEGER# >= sell.referenceprice
+    </isNotNull>
     and sell.id_profesional = prof.id
     and sell.approved = 1
     and sell.deleted = 0

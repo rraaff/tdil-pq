@@ -34,7 +34,7 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 		try {
 			searchResult = new ArrayList<SellValueObject>();
 			for (SearchSellBean searchBean : searchSellBeans) {
-				searchResult.addAll(DAOManager.getSellDAO().selectSellsByTextAndPrice(searchBean.getProduct(), Integer.parseInt(searchBean.getMaxPrice())));
+				searchResult.addAll(DAOManager.getSellDAO().selectSellsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
 			}
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block

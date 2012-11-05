@@ -19,6 +19,7 @@ import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.approvePersonalData;
+import static com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm.approveBusinessData;
 
 public class ReviewProfesionalForm extends TransactionalValidationForm {
 
@@ -126,6 +127,10 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	
 	public void approvePersonalDataChange() throws SQLException {
 		approvePersonalData(profesional, profesionalChange);
+	}
+	
+	public void approveBusinessDataChange() throws SQLException {
+		approveBusinessData(profesional, profesionalChange);
 	}
 	
 	public String getDisapproveReason() {

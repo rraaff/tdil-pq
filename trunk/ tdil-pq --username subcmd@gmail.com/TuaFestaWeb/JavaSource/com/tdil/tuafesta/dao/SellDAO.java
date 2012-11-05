@@ -100,6 +100,6 @@ public interface SellDAO {
 
 	List<SellValueObject> selectSellsByTerms(List<String> terms) throws SQLException;
 	
-	List<SellValueObject> selectSellsByTextAndPrice(String text, Integer price) throws SQLException;
+	List<SellValueObject> selectSellsByTextAndPrice(String text, String price) throws SQLException;
 
 }
