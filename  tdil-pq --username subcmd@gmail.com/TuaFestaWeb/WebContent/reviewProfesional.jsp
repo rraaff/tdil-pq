@@ -1,3 +1,4 @@
+<%@page import="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalStatusHelper"%>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"%>
@@ -50,11 +51,11 @@ th.sorted {
 <div id="boWrapper">
 	<div id="boCentral" class="height450">
 		<h1>Revisar datos del profesional</h1>
+		<% ReviewProfesionalForm reviewProfesionalForm = (ReviewProfesionalForm)session.getAttribute("ReviewProfesionalForm");%>
 		<div id="formulariosBase" class="height350">
 			<div class="renglon width100per">
 				<div class="label width100per"><span class="comment">Desde esta sección podrá revisar los datos del profesional.</span></div>
 			</div>
-
 				<div class="renglon width100per height100">
 					<div class="label width100per height100">Nombre: <strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong><br>
 						Apellido: <strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong><br>
@@ -62,6 +63,9 @@ th.sorted {
 						E-mail: <strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong>
 					</div>
 				</div>
+				<a href="./reviewPersonalData.jsp">Datos Personales <%=reviewProfesionalForm.isPersonalDataModified() ? "*" : ""%></a>
+				<a href="./reviewBusinessData.jsp">Datos profesionales <%=reviewProfesionalForm.isBusinessDataModified() ? "*" : ""%></a>
+				<a href="./reviewSellData.do?id=<%=reviewProfesionalForm.getProfesional().getId()%>">Productos/Servicios <%=reviewProfesionalForm.isSellsModified() ? "*" : ""%></a>
 				<div class="renglon width100per">
 					<div class="label width350 centering" style="float:none;">
 						<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>

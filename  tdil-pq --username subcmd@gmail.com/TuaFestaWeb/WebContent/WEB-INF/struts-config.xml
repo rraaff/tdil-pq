@@ -281,6 +281,12 @@
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/verifyProfesional.jsp"/>
   </action>
+  
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/approveProfesionalPersonalDataChange" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalPersonalDataChangeAction">
+   <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
+  </action>
+  
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
