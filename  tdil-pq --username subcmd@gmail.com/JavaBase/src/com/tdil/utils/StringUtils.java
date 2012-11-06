@@ -25,6 +25,14 @@ public class StringUtils {
 		}
 	}
 	
+	public static String nvl(String first, String prefix, String second) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
+			return second;
+		} else {
+			return prefix + first;
+		}
+	}
+	
 	public static Date nvl(Date first, Date second) {
 		if (first == null) {
 			return second;
