@@ -1,7 +1,6 @@
 Grabar la aprobacion de un cambio de prof debe recargar la data de cambio o no
 El listado de profesionales debe tener una opcion de los que tienen cambios
 
-
 Hola Marcos,
  
 Me vendría suuuuuper bien poder subir lo que está hasta ahora para que los chicos hagan un test el fin de semana. ¿Podrás?
@@ -20,7 +19,7 @@ Heho D.      Listado de contactos de una promoción (promotionContactData.jsp): Q
 E.       En la registración de usuarios profesionales y de clientes también: Cuando te vas a registrarte como usuario profesional,
 	 envías los datos, y te pasa a la página de tus datos fueron enviados con éxito te va a llegar un mail >> el mail no me llego, y tendría que haber un botón que diga, te llego el mail?? si no te llego reenvialo haciendo click aca! algo asi.
 F.       BACKOFFICE: Sigue pendiente poder determinar el orden de los bloques de búsqueda por zonas o rubros de la home o si aparecen o no.
-G.     Login con Facebook
+HECHO G.     Login con Facebook
 H.      Share de Facebook
 I.        Share de twitter
 
