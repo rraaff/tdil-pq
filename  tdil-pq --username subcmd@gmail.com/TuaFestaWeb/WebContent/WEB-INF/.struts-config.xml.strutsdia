@@ -1464,4 +1464,7 @@
    PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewProfesionalChangeLogo" NAME="action154"
+  PATH="/viewProfesionalChangeLogo" SHAPE="32,6497,0,0"
+  TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -6,10 +6,13 @@ import java.util.Date;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
+import com.tdil.struts.forms.UploadData;
+import com.tdil.tuafesta.dao.BlobDataDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.BlobData;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.ProfesionalStatus;
@@ -17,6 +20,7 @@ import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.approvePersonalData;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm.approveBusinessData;
@@ -36,6 +40,12 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	
 	private Profesional profesional;
 	private String disapproveReason;
+	
+	private GeoLevelValueObject location;
+	private GeoLevelValueObject changeLocation;
+	
+	private int changeImageId;
+	private UploadData changeLogo;
 
 	private ProfesionalChange profesionalChange;
 	
@@ -50,6 +60,8 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	@Override
 	public void initWith(int id) throws SQLException {
 		ProfesionalDAO profesionalDAO = DAOManager.getProfesionalDAO();
+		BlobDataDAO blobDataDAO = DAOManager.getBlobDataDAO();
+		
 		setProfesional(profesionalDAO.selectProfesionalByPrimaryKey(id));
 		
 		profesionalChange = DAOManager.getProfesionalChangeDAO().selectProfesionalChangeByPrimaryKey(getProfesional().getIdProfesionalChange());
@@ -58,6 +70,25 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		SellExample sellExample = new SellExample();
 		sellExample.createCriteria().andIdProfesionalEqualTo(id).andApprovedEqualTo(0);
 		sellsModified = DAOManager.getSellDAO().countSellByExample(sellExample) > 0;
+		
+		location = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(profesional.getIdGeolevel());
+		if (profesionalChange.getIdGeolevel() != null && profesionalChange.getIdGeolevel() != 0) {
+			changeLocation = DAOManager.getGeo4DAO().selectGeoLevelsByGeo4(profesionalChange.getIdGeolevel());
+		} else {
+			changeLocation = null;
+		}
+		
+		if (profesionalChange.getIdProfilePicture() != null && profesionalChange.getIdProfilePicture() != 0) {
+			this.changeImageId = profesionalChange.getIdProfilePicture();
+		} else {
+			this.changeImageId = 0;
+		}
+		if (this.changeImageId != 0) {
+			BlobData frontCover = blobDataDAO.selectBlobDataByPrimaryKey(this.changeImageId);
+			this.setChangeLogo(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
+		} else {
+			this.setChangeLogo(null);
+		}
 	}
 
 	@Override
@@ -211,6 +242,30 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 
 	public void setProfesionalChange(ProfesionalChange profesionalChange) {
 		this.profesionalChange = profesionalChange;
+	}
+
+	public GeoLevelValueObject getLocation() {
+		return location;
+	}
+
+	public void setLocation(GeoLevelValueObject location) {
+		this.location = location;
+	}
+
+	public GeoLevelValueObject getChangeLocation() {
+		return changeLocation;
+	}
+
+	public void setChangeLocation(GeoLevelValueObject changeLocation) {
+		this.changeLocation = changeLocation;
+	}
+
+	public UploadData getChangeLogo() {
+		return changeLogo;
+	}
+
+	public void setChangeLogo(UploadData changeLogo) {
+		this.changeLogo = changeLogo;
 	}
 
 

@@ -290,6 +290,9 @@
    path="/approveProfesionalBusinessDataChange" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalBusinessDataChangeAction">
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
   </action>
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/viewProfesionalChangeLogo" scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalChangeLogoAction">
+  </action>  
   
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">

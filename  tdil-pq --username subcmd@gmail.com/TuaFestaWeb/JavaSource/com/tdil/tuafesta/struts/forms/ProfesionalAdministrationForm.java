@@ -26,6 +26,8 @@ public class ProfesionalAdministrationForm extends ActionForm {
 	private int objectId;
 	
 	private String status;
+	private String name;
+	private boolean tooMany;
 	
 	private List<Profesional> search;
 
@@ -79,6 +81,22 @@ public class ProfesionalAdministrationForm extends ActionForm {
 
 	public void setSearch(List<Profesional> search) {
 		this.search = search;
+	}
+
+	public boolean isTooMany() {
+		return tooMany;
+	}
+
+	public void setTooMany(boolean tooMany) {
+		this.tooMany = tooMany;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
