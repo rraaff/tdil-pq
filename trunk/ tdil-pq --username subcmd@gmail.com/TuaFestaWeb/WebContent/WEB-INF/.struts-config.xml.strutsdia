@@ -1467,4 +1467,12 @@
  <PROCESS-ITEM ID="#viewProfesionalChangeLogo" NAME="action154"
   PATH="/viewProfesionalChangeLogo" SHAPE="32,6497,0,0"
   TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#reviewSell" NAME="action155" PATH="/reviewSell"
+  SHAPE="32,6017,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewSell.jsp" TARGET="page54" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page54" PATH="/reviewSell.jsp" SHAPE="240,6017,0,0"
+  SUBTYPE="jsp" TITLE="reviewSell.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

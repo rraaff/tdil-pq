@@ -505,7 +505,9 @@ union all
     and prof.id_geolevel = g4.id
     and g4.geo3_id = g3.id
     and g3.geo2_id = g2.id
-    and sell.approved = 1
+    <isNotNull prepend="and" property="approved">
+    	sell.approved = 1
+    </isNotNull>
     and sell.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
@@ -522,7 +524,9 @@ union all
     where sell.id = #id:INTEGER#
     and sell.type = 2
     and sell.id_profesional = prof.id
-    and sell.approved = 1
+    <isNotNull prepend="and" property="approved">
+    	sell.approved = 1
+    </isNotNull>
     and sell.deleted = 0
     and prof.status = 2
     and prof.deleted = 0

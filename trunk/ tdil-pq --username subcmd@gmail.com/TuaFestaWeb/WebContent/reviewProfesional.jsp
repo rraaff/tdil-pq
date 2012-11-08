@@ -65,7 +65,7 @@ th.sorted {
 				</div>
 				<a href="./reviewPersonalData.jsp">Datos Personales <%=reviewProfesionalForm.isPersonalDataModified() ? "*" : ""%></a>
 				<a href="./reviewBusinessData.jsp">Datos profesionales <%=reviewProfesionalForm.isBusinessDataModified() ? "*" : ""%></a>
-				<a href="./reviewSellData.do?id=<%=reviewProfesionalForm.getProfesional().getId()%>">Productos/Servicios <%=reviewProfesionalForm.isSellsModified() ? "*" : ""%></a>
+				<a href="./reviewSellData.jsp">Productos/Servicios <%=reviewProfesionalForm.isSellsModified() ? "*" : ""%></a>
 				<div class="renglon width100per">
 					<div class="label width350 centering" style="float:none;">
 						<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>
