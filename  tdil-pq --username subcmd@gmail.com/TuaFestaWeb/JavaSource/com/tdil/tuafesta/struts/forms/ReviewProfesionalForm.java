@@ -235,6 +235,12 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		approveBusinessData(profesional, profesionalChange);
 	}
 	
+	public void approveSell() throws SQLException {
+		Sell sell = DAOManager.getSellDAO().selectSellByPrimaryKey(this.getSellValueObject().getId());
+		sell.setApproved(1);
+		DAOManager.getSellDAO().updateSellByPrimaryKey(sell);
+	}
+	
 	public String getDisapproveReason() {
 		return disapproveReason;
 	}

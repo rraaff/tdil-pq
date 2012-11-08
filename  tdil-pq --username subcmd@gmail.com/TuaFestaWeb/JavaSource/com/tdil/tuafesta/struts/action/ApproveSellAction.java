@@ -20,9 +20,9 @@ import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
 
-public class ApproveProfesionalPersonalDataChangeAction extends AbstractAction {
+public class ApproveSellAction extends AbstractAction {
 	
-	private static final Logger LOG = LoggerProvider.getLogger(ApproveProfesionalPersonalDataChangeAction.class);
+	private static final Logger LOG = LoggerProvider.getLogger(ApproveSellAction.class);
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -32,7 +32,7 @@ public class ApproveProfesionalPersonalDataChangeAction extends AbstractAction {
 			try {
 				TransactionProvider.executeInTransaction(new TransactionalAction() {
 					public void executeInTransaction() throws SQLException, ValidationException {
-						approveDisapproveForm.approvePersonalDataChange();
+						approveDisapproveForm.approveSell();
 					}
 				});
 				TransactionProvider.executeInTransaction(new TransactionalAction() {

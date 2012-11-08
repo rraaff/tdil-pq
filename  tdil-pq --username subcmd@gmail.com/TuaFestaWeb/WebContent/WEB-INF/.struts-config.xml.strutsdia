@@ -1475,4 +1475,13 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page54" PATH="/reviewSell.jsp" SHAPE="240,6017,0,0"
   SUBTYPE="jsp" TITLE="reviewSell.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#approveSell" NAME="action156" PATH="/approveSell"
+  SHAPE="32,6865,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewSellData.jsp" TARGET="page55" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page55" PATH="/reviewSellData.jsp"
+  SHAPE="240,6977,0,0" SUBTYPE="jsp" TITLE="reviewSellData.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
