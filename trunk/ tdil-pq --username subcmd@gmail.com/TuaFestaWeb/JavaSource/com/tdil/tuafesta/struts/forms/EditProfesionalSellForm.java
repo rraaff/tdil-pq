@@ -165,6 +165,7 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 		SellBean productbean = null;
 		if (edited != null) {
 			productbean = edited;
+			productbean.setEdited(true);
 		} else {
 			productbean = new SellBean();
 		}
@@ -232,19 +233,21 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 				int sellId = sellDAO.insertSell(sell);
 				createSellMedia(sellMediaDAO, sellId, productBean);
 			} else {
-				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
-				sell.setName(productBean.getName());
-				sell.setDescription(productBean.getDescription());
-				if (isAutoApprove()) {
-					sell.setApproved(1);
-				} else {
-					sell.setApproved(0);
+				if (productBean.isEdited()) {
+					Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
+					sell.setName(productBean.getName());
+					sell.setDescription(productBean.getDescription());
+					if (isAutoApprove()) {
+						sell.setApproved(1);
+					} else {
+						sell.setApproved(0);
+					}
+					BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
+					sell.setReferenceprice(refPrice);
+					// TODO esto deberia mandarlo a pending nuevamente
+					sellDAO.updateSellByPrimaryKey(sell);
+					createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
 				}
-				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
-				sell.setReferenceprice(refPrice);
-				// TODO esto deberia mandarlo a pending nuevamente
-				sellDAO.updateSellByPrimaryKey(sell);
-				createOrUpdateSellMedia(sellMediaDAO, productBean.getId(), productBean);
 			}
 		}
 	}

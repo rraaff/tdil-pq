@@ -73,7 +73,19 @@ th.sorted {
 			</div>
 		</div>
 	</div>
-	
+	<html:form method="POST" action="/approveSell">
+		<div class="myRow width350" style="margin:0 auto; float:none;">
+			<div class="myLabel width50" style="padding-top:16px;"><a href="reviewSellData.jsp">Volver</a></div>
+			<div class="myLabel width300">
+				<html:submit property="operation">
+					<bean:message key="Approve" />
+				</html:submit>
+				<html:submit property="operation">
+					<bean:message key="Block" />
+				</html:submit>
+			</div>
+		</div>
+	</html:form>
 	
 </div>
 </body>

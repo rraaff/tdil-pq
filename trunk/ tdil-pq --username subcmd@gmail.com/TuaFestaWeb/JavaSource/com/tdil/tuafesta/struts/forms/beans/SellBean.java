@@ -31,6 +31,7 @@ public class SellBean implements Serializable {
 	private String description;
 	private String referencePrice;
 	
+	private boolean edited;
 	private boolean dataLoaded;
 	
 	private UploadData image1;
@@ -236,6 +237,14 @@ public class SellBean implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isEdited() {
+		return edited;
+	}
+
+	public void setEdited(boolean edited) {
+		this.edited = edited;
 	}
 	
 }
