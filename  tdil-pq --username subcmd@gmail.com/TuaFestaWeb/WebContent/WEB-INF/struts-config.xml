@@ -309,6 +309,11 @@
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/validateProfesionalEmail.jsp"/>
   </action>
+  <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/reviewSell" scope="session" type="com.tdil.tuafesta.struts.action.ReviewSellAction">
+   <forward name="continue" path="/reviewSell.jsp" redirect="true"/>
+  </action>
+  
   <action parameter="Admin" path="/statisticReport" scope="request" type="com.tdil.tuafesta.struts.action.StatisticReportAction"/>
   
   <action name="SellSearchResultForm"

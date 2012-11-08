@@ -219,11 +219,28 @@ public class SellDAOImpl implements SellDAO {
 	public SellValueObject selectSellProductValueObject(int id) throws SQLException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
+		params.put("approved", Boolean.TRUE);
 		SellValueObject record = (SellValueObject) sqlMapClient.queryForObject("SELL.selectSellProductValueObject", params);
 		return record;
 	}
 	
+	@Override
+	public SellValueObject selectSellProductValueObjectNoFilter(int id) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		SellValueObject record = (SellValueObject) sqlMapClient.queryForObject("SELL.selectSellProductValueObject", params);
+		return record;
+	}
+
 	public SellValueObject selectSellServiceValueObject(int id) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		params.put("approved", Boolean.TRUE);
+		SellValueObject record = (SellValueObject) sqlMapClient.queryForObject("SELL.selectSellServiceValueObject", params);
+		return record;
+	}
+	@Override
+	public SellValueObject selectSellServiceValueObjectNoFilter(int id) throws SQLException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
 		SellValueObject record = (SellValueObject) sqlMapClient.queryForObject("SELL.selectSellServiceValueObject", params);

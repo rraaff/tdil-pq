@@ -235,6 +235,11 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 				Sell sell = sellDAO.selectSellByPrimaryKey(productBean.getId());
 				sell.setName(productBean.getName());
 				sell.setDescription(productBean.getDescription());
+				if (isAutoApprove()) {
+					sell.setApproved(1);
+				} else {
+					sell.setApproved(0);
+				}
 				BigDecimal refPrice = new BigDecimal(productBean.getReferencePrice());
 				sell.setReferenceprice(refPrice);
 				// TODO esto deberia mandarlo a pending nuevamente

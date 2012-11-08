@@ -1,7 +1,9 @@
 package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
@@ -10,6 +12,7 @@ import com.tdil.struts.forms.UploadData;
 import com.tdil.tuafesta.dao.BlobDataDAO;
 import com.tdil.tuafesta.dao.ProfesionalDAO;
 import com.tdil.tuafesta.dao.SellDAO;
+import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.BlobData;
@@ -18,9 +21,14 @@ import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.ProfesionalStatus;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellExample;
+import com.tdil.tuafesta.model.SellMedia;
+import com.tdil.tuafesta.model.SellMediaExample;
+import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+import com.tdil.tuafesta.struts.forms.beans.PublicImageBlobBean;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.approvePersonalData;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm.approveBusinessData;
@@ -48,6 +56,12 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	private UploadData changeLogo;
 
 	private ProfesionalChange profesionalChange;
+	
+	private List<SellValueObject> sells = new ArrayList<SellValueObject>();
+	
+	private SellValueObject sellValueObject;
+	private SellMedia sellMedia;
+	
 	
 	@Override
 	public void reset() throws SQLException {
@@ -88,6 +102,63 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 			this.setChangeLogo(new UploadData(frontCover.getFilename(), frontCover.getContent(), false));
 		} else {
 			this.setChangeLogo(null);
+		}
+		
+		sells = DAOManager.getSellDAO().selectProductSellsByProfesional(id);
+		sells.addAll(DAOManager.getSellDAO().selectServiceSellsByProfesional(id));
+	}
+	
+	public List<PublicImageBlobBean> getMedia() {
+		List<PublicImageBlobBean> result = new ArrayList<PublicImageBlobBean>();
+		if (sellMedia != null) {
+			if (sellMedia.getIdBlobData1() != null && sellMedia.getIdBlobData1() != 0) {
+				result.add(new PublicImageBlobBean(sellMedia.getIdBlobData1(), sellMedia.getExtBlobData1()));
+			}
+			if (sellMedia.getIdBlobData2() != null && sellMedia.getIdBlobData2() != 0) {
+				result.add(new PublicImageBlobBean(sellMedia.getIdBlobData2(), sellMedia.getExtBlobData2()));
+			}
+			if (sellMedia.getIdBlobData3() != null && sellMedia.getIdBlobData3() != 0) {
+				result.add(new PublicImageBlobBean(sellMedia.getIdBlobData3(), sellMedia.getExtBlobData3()));
+			}
+			if (sellMedia.getIdBlobData4() != null && sellMedia.getIdBlobData4() != 0) {
+				result.add(new PublicImageBlobBean(sellMedia.getIdBlobData4(), sellMedia.getExtBlobData4()));
+			}
+			if (sellMedia.getIdBlobData5() != null && sellMedia.getIdBlobData5() != 0) {
+				result.add(new PublicImageBlobBean(sellMedia.getIdBlobData5(), sellMedia.getExtBlobData5()));
+			}
+			
+		}
+		return result;
+		
+	}
+	
+	public boolean hasMedia() {
+		return sellMedia != null;
+	}
+	
+	public void initWith(int type, int id) throws SQLException {
+		if (type == SellType.PRODUCT) {
+			sellValueObject = DAOManager.getSellDAO().selectSellProductValueObjectNoFilter(id);
+		} else {
+			if (type == SellType.SERVICE) {
+				sellValueObject = DAOManager.getSellDAO().selectSellServiceValueObjectNoFilter(id);
+			} else {
+				Sell sell = DAOManager.getSellDAO().selectSellByPrimaryKey(id);
+				if (sell.getType().equals(SellType.PRODUCT)) {
+					sellValueObject = DAOManager.getSellDAO().selectSellProductValueObjectNoFilter(id);
+				} else {
+					sellValueObject = DAOManager.getSellDAO().selectSellServiceValueObjectNoFilter(id);
+				}
+			}
+		}
+		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
+		SellMediaExample sellMediaExample = new SellMediaExample();
+		sellMediaExample.createCriteria().andIdSellEqualTo(id).andApprovedEqualTo(1);
+		List<SellMedia> result = sellMediaDAO.selectSellMediaByExample(sellMediaExample);
+		if (!result.isEmpty()) {
+			sellMedia = result.get(0);
+		} else {
+			sellMedia = null;
 		}
 	}
 
@@ -266,6 +337,30 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 
 	public void setChangeLogo(UploadData changeLogo) {
 		this.changeLogo = changeLogo;
+	}
+
+	public List<SellValueObject> getSells() {
+		return sells;
+	}
+
+	public void setSells(List<SellValueObject> sells) {
+		this.sells = sells;
+	}
+
+	public SellValueObject getSellValueObject() {
+		return sellValueObject;
+	}
+
+	public void setSellValueObject(SellValueObject sellValueObject) {
+		this.sellValueObject = sellValueObject;
+	}
+
+	public SellMedia getSellMedia() {
+		return sellMedia;
+	}
+
+	public void setSellMedia(SellMedia sellMedia) {
+		this.sellMedia = sellMedia;
 	}
 
 
