@@ -298,6 +298,19 @@
    <forward name="continue" path="/reviewSellData.jsp" redirect="true"/>
   </action>
   
+   <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/disapproveProfesionalPersonalDataChange" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalPersonalDataChangeAction">
+   <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
+  </action>
+   <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/disapproveProfesionalBusinessDataChange" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalBusinessDataChangeAction">
+   <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
+  </action>
+   <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/disapproveSell" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveSellAction">
+   <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
+  </action>
+  
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
