@@ -23,6 +23,9 @@ public class EmailUtils {
 	public static final String SERVER_NAME_KEY = "SERVER_NAME";
 	public static final String LINK_KEY = "[LINK]";
 	public static final String PASSWORD_KEY = "[PASSWORD]";
+	
+	public static final String SELL_NAME_KEY = "[SELL_NAME]";
+	public static final String MOTIVE_KEY = "[MOTIVE]";
 
 	private static final Logger Log = LoggerProvider.getLogger(EmailUtils.class);
 	
@@ -31,6 +34,10 @@ public class EmailUtils {
 	
 	public static final String PROFESIONAL_PASSWORD_RESET = "passreset.email.prof";
 	public static final String CLIENT_PASSWORD_RESET = "passreset.email.client";
+	
+	public static final String DISAPPROVE_PERSONAL = "disapprove.personal";
+	public static final String DISAPPROVE_BUSINESS = "disapprove.business";
+	public static final String DISAPPROVE_SELL = "disapprove.sell";
 
 	public static void sendEmail(String to, Map<String, String> replacements, String notificationtype) throws SQLException {
 		try {

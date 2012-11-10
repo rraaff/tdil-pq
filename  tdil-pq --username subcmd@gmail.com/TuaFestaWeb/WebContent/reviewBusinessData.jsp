@@ -16,6 +16,25 @@
 <head>
 <%@ include file="includes/boHead.jsp"%>
 <%@ include file="includes/boErrorJS.jsp"%>
+<script>
+$(document).ready(
+	function(){
+		$( "#canceldisapprove" ).click(function() {
+			$( "#disapprovelayer" ).fadeOut();
+		});
+	}
+);
+function disapprove() {
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#disapprovelayer" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#disapprovelayer" ).width() / 2);
+	$( "#disapprovelayer" ).css({
+		position: 'absolute',
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+}
+</script>
 <style>
 th.sorted a,th.sortable a {
 	background-position: right;
@@ -110,9 +129,12 @@ th.sorted {
 		<div class="myRow width350" style="margin:0 auto; float:none;">
 			<div class="myLabel width50" style="padding-top:16px;"><a href="reviewProfesional.jsp">Volver</a></div>
 			<div class="myLabel width300">
+				<% if (reviewProfesionalForm.isBusinessDataModified()) { %>
 				<html:submit property="operation">
 					<bean:message key="Approve" />
 				</html:submit>
+				<input type="button" value="Desaprobar" onclick="disapprove();">
+				<% } %>
 				<html:submit property="operation">
 					<bean:message key="Block" />
 				</html:submit>
@@ -120,6 +142,13 @@ th.sorted {
 		</div>
 	</html:form>
 	
+</div>
+<div id="disapprovelayer" class="hide" style="z-index: 500;">
+	<html:form method="POST" action="/disapproveProfesionalBusinessDataChange">
+		<div id="Motivo"><html:text name="ReviewProfesionalForm" property="disapproveMotive" styleClass="normalField"/></div>
+		<div id="buttonHolder" align="center"><input type="submit" value="Desaprobar"/><input type="button" id="canceldisapprove" value="Cancelar"></div>
+		<!-- div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div-->
+	</html:form>
 </div>
 </body>
 </html>

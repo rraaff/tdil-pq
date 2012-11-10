@@ -1474,7 +1474,11 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page54" PATH="/reviewSell.jsp" SHAPE="240,6017,0,0"
-  SUBTYPE="jsp" TITLE="reviewSell.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="reviewSell.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/approveSell.do"
+   SUBTYPE="confirmed" TARGET="action156" TITLE="/approveSell.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#approveSell" NAME="action156" PATH="/approveSell"
   SHAPE="32,6865,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
@@ -1484,4 +1488,25 @@
  <PROCESS-ITEM NAME="page55" PATH="/reviewSellData.jsp"
   SHAPE="240,6977,0,0" SUBTYPE="jsp" TITLE="reviewSellData.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#disapproveProfesionalPersonalDataChange"
+  NAME="action157" PATH="/disapproveProfesionalPersonalDataChange"
+  SHAPE="32,14449,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#disapproveProfesionalBusinessDataChange"
+  NAME="action158" PATH="/disapproveProfesionalBusinessDataChange"
+  SHAPE="32,14449,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#disapproveSell" NAME="action159"
+  PATH="/disapproveSell" SHAPE="32,12705,0,0"
+  TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

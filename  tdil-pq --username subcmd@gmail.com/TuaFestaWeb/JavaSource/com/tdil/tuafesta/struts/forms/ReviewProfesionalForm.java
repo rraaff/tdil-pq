@@ -3,8 +3,13 @@ package com.tdil.tuafesta.struts.forms;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
@@ -30,6 +35,8 @@ import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.PublicImageBlobBean;
 import com.tdil.tuafesta.utils.ProfesionalUtils;
+import com.tdil.tuafesta.web.EmailUtils;
+
 import static com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm.approvePersonalData;
 import static com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm.approveBusinessData;
 
@@ -62,6 +69,9 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	private SellValueObject sellValueObject;
 	private SellMedia sellMedia;
 	
+	private String disapproveMotive;
+	
+	private static final Logger LOG = LoggerProvider.getLogger(ReviewProfesionalForm.class);
 	
 	@Override
 	public void reset() throws SQLException {
@@ -308,6 +318,10 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 	public boolean isSellsModified() {
 		return sellsModified;
 	}
+	
+	public boolean isCurrentSellApproved() {
+		return sellValueObject.getApproved() != null && sellValueObject.getApproved().equals(1);
+	}
 
 	public void setSellsModified(boolean sellsModifiedModified) {
 		this.sellsModified = sellsModifiedModified;
@@ -367,6 +381,89 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 
 	public void setSellMedia(SellMedia sellMedia) {
 		this.sellMedia = sellMedia;
+	}
+
+	public void disapproveBusinessDataChange() throws SQLException {
+		profesionalChange.setBusinessname(null);
+		profesionalChange.setCuit(null);
+		profesionalChange.setIibb(null);
+		profesionalChange.setDescription(null);
+		profesionalChange.setIdGeolevel(null);
+		profesionalChange.setIdProfilePicture(null);
+		profesionalChange.setExtProfilePicture(null);
+		profesionalChange.setVideo1(null);
+		profesionalChange.setVideo2(null);
+		profesionalChange.setVideo3(null);
+		profesionalChange.setVideo4(null);
+		profesionalChange.setVideo5(null);
+		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		try {
+			/** Inicio del email */
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(EmailUtils.MOTIVE_KEY, this.getDisapproveMotive());
+			EmailUtils.sendEmail(this.getProfesional().getEmail(), params, EmailUtils.DISAPPROVE_BUSINESS);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+	}
+
+	public void disapprovePersonalDataChange() throws SQLException {
+		profesionalChange.setFirstname(null);
+		profesionalChange.setLastname(null);
+		profesionalChange.setSex(null);
+		profesionalChange.setBirthdate(null);
+		profesionalChange.setPhoneareacode(null);
+		profesionalChange.setPhonenumber(null);
+		profesionalChange.setPhoneextension(null);
+		profesionalChange.setPhonetype(null);
+		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
+		try {
+			/** Inicio del email */
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(EmailUtils.MOTIVE_KEY, this.getDisapproveMotive());
+			EmailUtils.sendEmail(this.getProfesional().getEmail(), params, EmailUtils.DISAPPROVE_PERSONAL);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+	}
+
+	public void disapproveSell() throws SQLException {
+		DAOManager.getSellMediaDAO().deleteSellMediaByPrimaryKey(sellMedia.getId());
+		DAOManager.getSellDAO().deleteSellByPrimaryKey(this.getSellValueObject().getId());
+		if (sellMedia != null) {
+			if (sellMedia.getIdBlobData1() != null && sellMedia.getIdBlobData1() != 0) {
+				DAOManager.getBlobDataDAO().deleteBlobDataByPrimaryKey(sellMedia.getIdBlobData1());
+			}
+			if (sellMedia.getIdBlobData2() != null && sellMedia.getIdBlobData2() != 0) {
+				DAOManager.getBlobDataDAO().deleteBlobDataByPrimaryKey(sellMedia.getIdBlobData2());
+			}
+			if (sellMedia.getIdBlobData3() != null && sellMedia.getIdBlobData3() != 0) {
+				DAOManager.getBlobDataDAO().deleteBlobDataByPrimaryKey(sellMedia.getIdBlobData3());
+			}
+			if (sellMedia.getIdBlobData4() != null && sellMedia.getIdBlobData4() != 0) {
+				DAOManager.getBlobDataDAO().deleteBlobDataByPrimaryKey(sellMedia.getIdBlobData4());
+			}
+			if (sellMedia.getIdBlobData5() != null && sellMedia.getIdBlobData5() != 0) {
+				DAOManager.getBlobDataDAO().deleteBlobDataByPrimaryKey(sellMedia.getIdBlobData5());
+			}
+		}
+		try {
+			/** Inicio del email */
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(EmailUtils.MOTIVE_KEY, this.getDisapproveMotive());
+			params.put(EmailUtils.SELL_NAME_KEY, this.getSellValueObject().getName());
+			EmailUtils.sendEmail(this.getProfesional().getEmail(), params, EmailUtils.DISAPPROVE_SELL);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+		}
+	}
+
+	public String getDisapproveMotive() {
+		return disapproveMotive;
+	}
+
+	public void setDisapproveMotive(String disapproveMotive) {
+		this.disapproveMotive = disapproveMotive;
 	}
 
 
