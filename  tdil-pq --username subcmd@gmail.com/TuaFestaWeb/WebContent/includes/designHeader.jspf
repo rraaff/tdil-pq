@@ -46,7 +46,8 @@
 			<div id="border"></div>
 			<div id="search"><form name="simpleSearch" action="./searchSellsByText.do">Buscar <input placeholder="Ej: Fotograf&iacute;a" name="searchText" type="text" class="searchField"/></form></div>
 			<div id="border"></div>
-			<div id="social"><a href="#" title="Compart&iacute; en Facebook"><img src="images/skin_basic/header/icon_FB.gif" alt="Compart&iacute; en Facebook" /></a><a href="#" title="Compart&iacute; en Twitter"><img src="images/skin_basic/header/icon_TW.gif" alt="Compart&iacute; en Twitter" /></a></div>
+			<div id="social"><a href="javascript:facebookShare(document.title ,'Sitio de Fiestas','www.tuafesta.com.ar/',location.href);" title="Compart&iacute; en Facebook"><img src="images/skin_basic/header/icon_FB.gif" alt="Compart&iacute; en Facebook" /></a><a href="#" title="Compart&iacute; en Twitter"><img src="images/skin_basic/header/icon_TW.gif" alt="Compart&iacute; en Twitter" /></a></div>
 		</div>
 	</div>
 </div>
+<%@ include file="fbShare.jsp" %>

@@ -195,7 +195,6 @@
 		</div>
 	</div>
 </div>
-<!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 <script type="text/javascript">
   $(document).ready(function(){

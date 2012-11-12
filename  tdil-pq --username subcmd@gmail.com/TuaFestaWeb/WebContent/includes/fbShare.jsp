@@ -3,7 +3,7 @@
 <script>
 	window.fbAsyncInit = function() {
 	  FB.init({
-		appId      : '<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.APP_ID)%>',
+		appId      : '<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.FB_API_KEY)%>',
 		status     : true,
 		cookie     : true
 	  });
