@@ -22,4 +22,9 @@
 		link:url,picture:image,name:text,description:description,caption:caption});
 
 	}
+
+	function twitterShare(stat) {
+		window.open('http://twitter.com/home?status=' + encodeURIComponent(stat) + ' ' + encodeURIComponent(location.href)); 
+	}
+	
   </script>
