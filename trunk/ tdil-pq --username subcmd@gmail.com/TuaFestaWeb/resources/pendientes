@@ -6,53 +6,23 @@ Me vendrÌa suuuuuper bien poder subir lo que est· hasta ahora para que los chico
  
 Te preparÈ una lista con temas pendientes en TF. Algunas cosas son detalles que van surgiendo del uso. Avisame si me olvido de algo.
  
-A.      P·gina del perfil p˙blico del profesional (perfilPublicoProfesional.jsp):
-Hecho a.       Le falta el listado de productos y servicios.
-Hecho b.      Me encantarÌa tener un if loco para determinar si es mensaje de usuario o respuesta puesto en el class. 
-	<div class="myRow comment rowMuro rowAnswer">, habrÌa que sacar rowAnswer.
 B.      (Sugerencia) P·gina de resultados de b˙squeda (sellSearchResult.jsp): SerÌa bueno que te recupere los par·metros 
 	de b˙squeda, luego te aparezca la leyenda de los resultados y luego un botÛn que te permita volver a la b˙squeda recuperando los mismos par·metros.
 C.      B˙squeda Avanzada (SearchWizard.jsp): El campo Precio no deberÌa ser obligatorio
-Heho D.      Listado de contactos de una promociÛn (promotionContactData.jsp): Que no escriba varias veces los datos de un mismo profesional si
-	 es que se repite en una promo.
 E.       En la registraciÛn de usuarios profesionales y de clientes tambiÈn: Cuando te vas a registrarte como usuario profesional,
 	 envÌas los datos, y te pasa a la p·gina de tus datos fueron enviados con Èxito te va a llegar un mail >> el mail no me llego, y tendrÌa que haber un botÛn que diga, te llego el mail?? si no te llego reenvialo haciendo click aca! algo asi.
 F.       BACKOFFICE: Sigue pendiente poder determinar el orden de los bloques de b˙squeda por zonas o rubros de la home o si aparecen o no.
-HECHO G.     Login con Facebook
-H.      Share de Facebook
-I.        Share de twitter
+HECHO I.        Share de twitter
 
 *****
 
-Formulario de cambio de password
-
-HECHO Sab√©s qu√© le falta a la tabla de la secci√≥n de administraci√≥n de avisos... una columna con el tipo de aviso
-
-Te paso otras cosas de TUA FESTA que necesito tu ayuda para corregir.
- 
-En la REGISTRACI√ìN de PROFESIONALES
-HECHO - Que los campos de CUIT y IIBB no est√©n ah√≠ pero si en la edici√≥n del perfil.
-HECHO - Las fechas y los nombres de los meses en espa√±ol
-HECHO - Que agregar productos o servicios no sea obligatorio
-HECHO - Ponele ‚ÄúCategor√≠a: ‚Äú antes de la ruta de categor√≠a cuando agregas productos o servicios
-mmm, no se que queres - Ponerle a eso un style ‚Äú.categoryRoot‚Äù para que lo pueda definir desde el css
-
-Home del profesional debe tener todo el listado de productos y servicios del profesional
-
+Formulario de cambio de password para los clientes
 
 Borrado de cosas y referencias y acciones, a definir.
 
 Ver si es posible hacer que el logout, not logged del backend te mande a la de login del backend
 
 
-Prioridades para la beta:
-- Circuito completo de registraci√≥n Profesional (incluye facebook)
-- Manejo de la Circuito completo de cuenta profesional (Sin muro ni agenda)
-- M√≥dulo de promociones (solo fotos)
-- M√≥dulo de avisos destacados (ya tengo la definici√≥n) 
-- Busqueda simple
-- Busqueda por zona
-- Busqueda por Rubro
 
 *********************************
 
