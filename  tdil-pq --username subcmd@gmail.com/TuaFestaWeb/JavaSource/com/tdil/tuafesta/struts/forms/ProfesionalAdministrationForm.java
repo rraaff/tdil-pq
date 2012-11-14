@@ -7,9 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.forms.SearchForm;
@@ -31,12 +34,20 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 	
 	private int status;
 	private String name;
+	private boolean dataModified;
 	private boolean tooMany;
 	
 	private List<Profesional> search = new ArrayList<Profesional>();
 
 	public void initWith(int id) throws SQLException {
 		
+	}
+	
+	@Override
+	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		super.reset(mapping, request);
+		dataModified = false;
 	}
 	
 	public void init() throws SQLException {
@@ -51,6 +62,9 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 			params.put("status", this.getStatus());
 			if (!StringUtils.isEmpty(this.getName())) {
 				params.put("name", "%"+this.getName()+"%");
+			}
+			if (dataModified) {
+				params.put("dataModified", "true");
 			}
 			search = DAOManager.getProfesionalDAO().selectProfesionalForAdministration(params);
 			if (search.size() > 100) {
