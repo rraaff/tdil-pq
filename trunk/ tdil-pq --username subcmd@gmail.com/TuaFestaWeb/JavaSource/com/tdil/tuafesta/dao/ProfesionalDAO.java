@@ -78,4 +78,6 @@ public interface ProfesionalDAO {
 	public List<Profesional> selectProfesionalsByGeo4(Geo4 geo4) throws SQLException;
 
 	List<Profesional> selectProfesionalBy(Map<String, String> profesionalNameSearch) throws SQLException;
+
+	List<Profesional> selectProfesionalForAdministration(Map<String, Object> params) throws SQLException;
 }

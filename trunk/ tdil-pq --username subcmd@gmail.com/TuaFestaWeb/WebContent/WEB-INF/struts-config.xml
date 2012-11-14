@@ -192,6 +192,10 @@
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/profesionalAdministration.jsp"/>
   </action>
+  <action name="ProfesionalAdministrationForm" parameter="Admin"
+   path="/searchProfesionalAdministration" scope="session" type="com.tdil.struts.actions.SearchAction">
+   <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
+  </action>
   <action name="GeoLevelForm" path="/goToGeoLevelAdministration"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
@@ -270,6 +274,7 @@
    <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
    <forward name="verification" path="/verifyProfesional.jsp"/>
    <forward name="aproved" path="/reviewProfesional.jsp"/>
+   <forward name="blocked" path="/reviewProfesionalBlocked.jsp"/>
   </action>
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/approveProfesional" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalAction">

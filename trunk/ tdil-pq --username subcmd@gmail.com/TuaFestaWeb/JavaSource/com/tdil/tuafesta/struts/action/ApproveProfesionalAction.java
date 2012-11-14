@@ -16,6 +16,8 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
+import com.tdil.struts.actions.SearchTransactionalAction;
+import com.tdil.struts.forms.SearchForm;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
 
@@ -37,6 +39,7 @@ public class ApproveProfesionalAction extends AbstractAction {
 						abstractForm.approve();
 					}
 				});
+				TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)form));
 			} catch (Exception ex) {
 				LOG.error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);

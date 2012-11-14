@@ -2,17 +2,22 @@ package com.tdil.tuafesta.struts.forms;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.forms.SearchForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalExample;
 
-public class ProfesionalAdministrationForm extends ActionForm {
+public class ProfesionalAdministrationForm extends ActionForm implements SearchForm {
 
 	/**
 	 * 
@@ -25,29 +30,39 @@ public class ProfesionalAdministrationForm extends ActionForm {
 
 	private int objectId;
 	
-	private String status;
+	private int status;
 	private String name;
 	private boolean tooMany;
 	
-	private List<Profesional> search;
+	private List<Profesional> search = new ArrayList<Profesional>();
 
 	public void initWith(int id) throws SQLException {
 		
 	}
 	
 	public void init() throws SQLException {
-		ProfesionalExample profesionalExample = new ProfesionalExample();
-		profesionalExample.setOrderByClause("email");
-		setSearch(DAOManager.getProfesionalDAO().selectProfesionalByExample(profesionalExample));
+//		ProfesionalExample profesionalExample = new ProfesionalExample();
+//		profesionalExample.setOrderByClause("email");
+//		setSearch(DAOManager.getProfesionalDAO().selectProfesionalByExample(profesionalExample));
 	}
 	
 	public void search() {
-		if (ProfesionalStatusHelper.EMAIL_NOT_VALIDATED.equals(this.getStatus())) {
-			
-		} else {
-			if (ProfesionalStatusHelper.DATA_NOT_COMPLETE.equals(this.getStatus())) {
-				
-			}	
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("status", this.getStatus());
+			if (!StringUtils.isEmpty(this.getName())) {
+				params.put("name", "%"+this.getName()+"%");
+			}
+			search = DAOManager.getProfesionalDAO().selectProfesionalForAdministration(params);
+			if (search.size() > 100) {
+				search = search.subList(0, 100);
+				setTooMany(true);
+			} else {
+				setTooMany(false);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -67,11 +82,11 @@ public class ProfesionalAdministrationForm extends ActionForm {
 		this.id = id;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 

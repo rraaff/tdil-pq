@@ -255,7 +255,12 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page14" PATH="/profesionalAdministration.jsp"
   SHAPE="256,5266,0,0" SUBTYPE="jsp"
-  TITLE="profesionalAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="profesionalAdministration.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/searchProfesionalAdministration.do" SUBTYPE="confirmed"
+   TARGET="action160" TITLE="/searchProfesionalAdministration.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveGeoLevel" NAME="action23" PATH="/saveGeoLevel"
   SHAPE="32,6033,0,0" TITLE="GeoLevelForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
@@ -427,6 +432,9 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="aproved" NAME="forward2"
    PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="aproved"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="blocked" NAME="forward3"
+   PATH="/reviewProfesionalBlocked.jsp" TARGET="page56" TITLE="blocked"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/validateProfesionalEmail.jsp"
@@ -1478,6 +1486,9 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/approveSell.do"
    SUBTYPE="confirmed" TARGET="action156" TITLE="/approveSell.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/disapproveSell.do"
+   SUBTYPE="confirmed" TARGET="action159" TITLE="/disapproveSell.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#approveSell" NAME="action156" PATH="/approveSell"
   SHAPE="32,6865,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1509,4 +1520,14 @@
    PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchProfesionalAdministration" NAME="action160"
+  PATH="/searchProfesionalAdministration" SHAPE="32,6017,0,0"
+  TITLE="ProfesionalAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/profesionalAdministration.jsp" TARGET="page14"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page56" PATH="/reviewProfesionalBlocked.jsp"
+  SHAPE="448,11473,0,0" SUBTYPE="jsp"
+  TITLE="reviewProfesionalBlocked.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -162,4 +162,10 @@ public class ProfesionalDAOImpl implements ProfesionalDAO {
 		List<Profesional> list = sqlMapClient.queryForList("PROFESIONAL.selectProfesionalBy", profesionalNameSearch);
 		return list;
 	}
+	
+	@Override
+	public List<Profesional> selectProfesionalForAdministration(Map<String, Object> params) throws SQLException {
+		List<Profesional> list = sqlMapClient.queryForList("PROFESIONAL.selectProfesionalForAdministration", params);
+		return list;
+	}
 }

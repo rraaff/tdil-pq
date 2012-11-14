@@ -17,6 +17,8 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.actions.ApproveDisapproveAction;
+import com.tdil.struts.actions.SearchTransactionalAction;
+import com.tdil.struts.forms.SearchForm;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
@@ -36,6 +38,7 @@ public class VerifyProfesionalAction extends AbstractAction {
 						approveDisapproveForm.verify();
 					}
 				});
+				TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
@@ -49,6 +52,7 @@ public class VerifyProfesionalAction extends AbstractAction {
 							approveDisapproveForm.blockProfesional();
 						}
 					});
+					TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
 				} catch (Exception ex) {
 					getLog().error(ex.getMessage(), ex);
 					ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
