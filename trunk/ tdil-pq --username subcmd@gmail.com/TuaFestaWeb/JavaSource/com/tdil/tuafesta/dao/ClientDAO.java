@@ -4,6 +4,7 @@ import com.tdil.tuafesta.model.Client;
 import com.tdil.tuafesta.model.ClientExample;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface ClientDAO {
 
@@ -72,4 +73,6 @@ public interface ClientDAO {
 	 * @mbggenerated  Mon Oct 29 16:37:30 ART 2012
 	 */
 	int updateClientByPrimaryKey(Client record) throws SQLException;
+
+	List<Client> selectClientForAdministration(Map<String, Object> params) throws SQLException;
 }

@@ -4,8 +4,11 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.ClientDAO;
 import com.tdil.tuafesta.model.Client;
 import com.tdil.tuafesta.model.ClientExample;
+import com.tdil.tuafesta.model.Profesional;
+
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class ClientDAOImpl implements ClientDAO {
 
@@ -145,5 +148,11 @@ public class ClientDAOImpl implements ClientDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	@Override
+	public List<Client> selectClientForAdministration(Map<String, Object> params) throws SQLException {
+		List<Client> list = sqlMapClient.queryForList("CLIENT.selectClientForAdministration", params);
+		return list;
 	}
 }

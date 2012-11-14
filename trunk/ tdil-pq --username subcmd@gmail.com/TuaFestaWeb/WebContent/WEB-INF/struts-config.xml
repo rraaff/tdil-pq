@@ -15,6 +15,11 @@
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.tuafesta.struts.forms.ContactForm"/>
   <form-bean id="ProfesionalAdministrationForm"
    name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
+  <form-bean id="ClientAdministrationForm"
+   name="ClientAdministrationForm" type="com.tdil.tuafesta.struts.forms.ClientAdministrationForm"/>
+  <form-bean id="ReviewClientForm"
+   name="ReviewClientForm" type="com.tdil.tuafesta.struts.forms.ReviewClientForm"/>
+   
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
   <form-bean id="ReviewProfesionalForm" name="ReviewProfesionalForm" type="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"/>
   <form-bean id="ProfesionalSearchResultForm"
@@ -185,6 +190,26 @@
    path="/toggleDeletedProductCategory" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/boProductCategoryAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boProductCategoryAdministration.jsp"/>
+  </action>
+
+  <action name="ClientAdministrationForm" parameter="Admin"
+   path="/goToClientAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToClientAdministrationAction">
+   <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="ReviewClientForm" parameter="Admin"
+   path="/reviewClient" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewClientAction">
+   <forward name="emailValidation" path="/validateClientEmail.jsp"/>
+   <forward name="aproved" path="/reviewClient.jsp"/>
+   <forward name="blocked" path="/reviewClientBlocked.jsp"/>
+  </action>
+    <action name="ClientAdministrationForm" parameter="Admin"
+   path="/searchClientAdministration" scope="session" type="com.tdil.struts.actions.SearchAction">
+   <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
+  </action>
+  <action name="ReviewClientForm" parameter="Admin"
+   path="/manualValidateClientEmail" scope="session" type="com.tdil.tuafesta.struts.action.ManualValidateClientEmailAction">
+   <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/validateClientEmail.jsp"/>
   </action>
 
   <action name="ProfesionalAdministrationForm" parameter="Admin"

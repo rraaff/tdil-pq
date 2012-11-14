@@ -19,6 +19,11 @@
 							<li><html:link action="/goToAdAdministration" >Avisos</html:link></li>
 						</ul>
 					</li>
+					<li><a href="#">Clientes</a>
+						<ul>
+							<li><html:link action="/goToClientAdministration" >Administraci&oacute;n</html:link></li>
+						</ul>
+					</li>
 					<li><a href="#">Contenidos del sitio</a>
 						<ul>
 							<li><html:link action="/goToServiceCategoryABM" >Categor&iacute;as de Servicios</html:link></li>

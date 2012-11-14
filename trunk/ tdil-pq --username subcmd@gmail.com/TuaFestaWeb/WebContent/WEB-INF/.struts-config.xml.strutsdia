@@ -427,14 +427,14 @@
   <PROCESS-ITEM-OUTPUT ID="emailValidation" NAME="forward0"
    PATH="/validateProfesionalEmail.jsp" TARGET="page0"
    TITLE="emailValidation" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="verification" NAME="forward1"
-   PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="verification"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="aproved" NAME="forward2"
    PATH="/reviewProfesional.jsp" TARGET="page53" TITLE="aproved"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="blocked" NAME="forward3"
    PATH="/reviewProfesionalBlocked.jsp" TARGET="page56" TITLE="blocked"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="verification" NAME="forward1"
+   PATH="/verifyProfesional.jsp" TARGET="page13" TITLE="verification"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page0" PATH="/validateProfesionalEmail.jsp"
@@ -1457,7 +1457,12 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page53" PATH="/reviewProfesional.jsp"
   SHAPE="240,11585,0,0" SUBTYPE="jsp" TITLE="reviewProfesional.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/manualValidateProfesionalEmail.do" SUBTYPE="confirmed"
+   TARGET="action53" TITLE="/manualValidateProfesionalEmail.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#approveProfesionalPersonalDataChange"
   NAME="action152" PATH="/approveProfesionalPersonalDataChange"
   SHAPE="32,14449,0,0" TITLE="ReviewProfesionalForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1529,5 +1534,65 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page56" PATH="/reviewProfesionalBlocked.jsp"
   SHAPE="448,11473,0,0" SUBTYPE="jsp"
-  TITLE="reviewProfesionalBlocked.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="reviewProfesionalBlocked.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/verifyProfesional.do"
+   SUBTYPE="confirmed" TARGET="action57" TITLE="/verifyProfesional.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToClientAdministration" NAME="action161"
+  PATH="/goToClientAdministration" SHAPE="32,6017,0,0"
+  TITLE="ClientAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/clientAdministration.jsp" TARGET="page57" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page57" PATH="/clientAdministration.jsp"
+  SHAPE="240,6129,0,0" SUBTYPE="jsp" TITLE="clientAdministration.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/searchClientAdministration.do" SUBTYPE="confirmed"
+   TARGET="action162" TITLE="/searchClientAdministration.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchClientAdministration" NAME="action162"
+  PATH="/searchClientAdministration" SHAPE="448,6241,0,0"
+  TITLE="ClientAdministrationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/clientAdministration.jsp" TARGET="page57" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page58" PATH="/validateClientEmail.jsp"
+  SHAPE="656,11361,0,0" SUBTYPE="jsp" TITLE="validateClientEmail.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/manualValidateClientEmail.do"
+   SUBTYPE="confirmed" TARGET="action164"
+   TITLE="/manualValidateClientEmail.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page59" PATH="/reviewClient.jsp"
+  SHAPE="240,11697,0,0" SUBTYPE="jsp" TITLE="reviewClient.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page60" PATH="/reviewClientBlocked.jsp"
+  SHAPE="448,11585,0,0" SUBTYPE="jsp" TITLE="reviewClientBlocked.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#reviewClient" NAME="action163" PATH="/reviewClient"
+  SHAPE="448,12305,0,0" TITLE="ReviewClientForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="emailValidation" NAME="forward0"
+   PATH="/validateClientEmail.jsp" TARGET="page58"
+   TITLE="emailValidation" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="aproved" NAME="forward1"
+   PATH="/reviewClient.jsp" TARGET="page59" TITLE="aproved"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="blocked" NAME="forward2"
+   PATH="/reviewClientBlocked.jsp" TARGET="page60" TITLE="blocked"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#manualValidateClientEmail" NAME="action164"
+  PATH="/manualValidateClientEmail" SHAPE="864,11361,0,0"
+  TITLE="ReviewClientForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/validateClientEmail.jsp" TARGET="page58" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/clientAdministration.jsp" TARGET="page57" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

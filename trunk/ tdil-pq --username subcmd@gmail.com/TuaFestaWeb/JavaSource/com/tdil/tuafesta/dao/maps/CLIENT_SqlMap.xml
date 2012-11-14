@@ -371,4 +371,21 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+    <select id="selectClientForAdministration" parameterClass="java.util.Map" resultMap="BaseResultMap">
+     select 
+    	<include refid="CLIENT.Base_Column_List" />
+    from CLIENT cli
+    where cli.status = #status:INTEGER#
+    and cli.deleted = 0
+    <isNotNull prepend="and" property="name">
+     ( 
+    	cli.firstname like #name:VARCHAR# OR
+    	prof.lastname like #name:VARCHAR#
+    )
+    </isNotNull>
+    order by cli.lastname
+    limit 101
+  </select>
+  
 </sqlMap>

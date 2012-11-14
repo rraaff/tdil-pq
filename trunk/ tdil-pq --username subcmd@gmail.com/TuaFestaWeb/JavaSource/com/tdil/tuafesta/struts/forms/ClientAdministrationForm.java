@@ -14,16 +14,16 @@ import org.apache.struts.action.ActionForm;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.forms.SearchForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.Client;
 
-public class ProfesionalAdministrationForm extends ActionForm implements SearchForm {
+public class ClientAdministrationForm extends ActionForm implements SearchForm {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6752258803637709971L;
 
-	private static final Logger Log = LoggerProvider.getLogger(ProfesionalAdministrationForm.class);
+	private static final Logger Log = LoggerProvider.getLogger(ClientAdministrationForm.class);
 
 	private int id;
 
@@ -33,7 +33,7 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 	private String name;
 	private boolean tooMany;
 	
-	private List<Profesional> search = new ArrayList<Profesional>();
+	private List<Client> search = new ArrayList<Client>();
 
 	public void initWith(int id) throws SQLException {
 		
@@ -52,7 +52,7 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 			if (!StringUtils.isEmpty(this.getName())) {
 				params.put("name", "%"+this.getName()+"%");
 			}
-			search = DAOManager.getProfesionalDAO().selectProfesionalForAdministration(params);
+			search = DAOManager.getClientDAO().selectClientForAdministration(params);
 			if (search.size() > 100) {
 				search = search.subList(0, 100);
 				setTooMany(true);
@@ -89,11 +89,11 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 		this.status = status;
 	}
 
-	public List<Profesional> getSearch() {
+	public List<Client> getSearch() {
 		return search;
 	}
 
-	public void setSearch(List<Profesional> search) {
+	public void setSearch(List<Client> search) {
 		this.search = search;
 	}
 
