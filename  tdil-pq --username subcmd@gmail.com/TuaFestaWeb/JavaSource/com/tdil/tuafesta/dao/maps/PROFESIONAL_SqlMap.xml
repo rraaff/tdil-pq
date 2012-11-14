@@ -782,6 +782,10 @@
     	prof.lastname like #name:VARCHAR#
     )
     </isNotNull>
+    <isNotNull prepend="and" property="dataModified">
+    	(prof.datachanged = 1 
+    	or exists (select * from SELL s where s.id_profesional = prof.id and s.approved = 0))
+    </isNotNull>
     order by prof.businessName
     limit 101
   </select>

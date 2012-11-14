@@ -41,6 +41,8 @@ request.setAttribute( "test",  paginated);
 						<div class="myLabel width80">Nombre</div>
 						<div class="myLabel width250"><html:text name="ProfesionalAdministrationForm" property="name" styleClass="normalField width200"/></div>
 					</div>
+					Solo con datos pendientes de revision:<html:checkbox name="ProfesionalAdministrationForm" property="dataModified" styleClass="normalField width200"/>
+					<br>
 					Estado:
 							<html:select name="ProfesionalAdministrationForm" property="status" styleClass="normalField width240">
 							<% int selected = ((ProfesionalAdministrationForm)session.getAttribute("ProfesionalAdministrationForm")).getStatus(); %>

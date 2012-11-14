@@ -31,6 +31,7 @@
   <form-bean id="ClientForm" name="ClientForm" type="com.tdil.tuafesta.struts.forms.ClientForm"/>
   <form-bean id="ValidateClientEmailForm"
    name="ValidateClientEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateClientEmailForm"/>
+   <form-bean id="EditClientPasswordDataForm" name="EditClientPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditClientPasswordDataForm"/>
    
    <form-bean id="HighlightedProfesionalForm"
    name="HighlightedProfesionalForm" type="com.tdil.tuafesta.struts.forms.HighlightedProfesionalForm"/>
@@ -511,6 +512,15 @@
   
   <action name="ClientHomeForm" path="/goToClientHome" parameter="Client"
    scope="session" type="com.tdil.tuafesta.struts.action.GoClientHomeAction">
+   <forward name="continue" path="/homeCliente.jsp"/>
+  </action>
+  <action name="EditClientPasswordDataForm" path="/goToChangeClientPassword" parameter="Client"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/changeClientPassword.jsp"/>
+  </action>
+  <action name="EditClientPasswordDataForm" path="/changeClientPassword" parameter="Client"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
+   <forward name="failure" path="/changeClientPassword.jsp"/>
    <forward name="continue" path="/homeCliente.jsp"/>
   </action>
   
