@@ -1569,10 +1569,18 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page59" PATH="/reviewClient.jsp"
   SHAPE="240,11697,0,0" SUBTYPE="jsp" TITLE="reviewClient.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/manualValidateClientEmail.do"
+   SUBTYPE="confirmed" TARGET="action164"
+   TITLE="/manualValidateClientEmail.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page60" PATH="/reviewClientBlocked.jsp"
   SHAPE="448,11585,0,0" SUBTYPE="jsp" TITLE="reviewClientBlocked.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/manualValidateClientEmail.do"
+   SUBTYPE="confirmed" TARGET="action164"
+   TITLE="/manualValidateClientEmail.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#reviewClient" NAME="action163" PATH="/reviewClient"
   SHAPE="448,12305,0,0" TITLE="ReviewClientForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="emailValidation" NAME="forward0"
@@ -1593,6 +1601,30 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/clientAdministration.jsp" TARGET="page57" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToChangeClientPassword" NAME="action165"
+  PATH="/goToChangeClientPassword" SHAPE="32,13585,0,0"
+  TITLE="EditClientPasswordDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/changeClientPassword.jsp" TARGET="page61" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page61" PATH="/changeClientPassword.jsp"
+  SHAPE="240,13602,0,0" SUBTYPE="jsp" TITLE="changeClientPassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changeClientPassword.do"
+   SUBTYPE="confirmed" TARGET="action166"
+   TITLE="/changeClientPassword.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#changeClientPassword" NAME="action166"
+  PATH="/changeClientPassword" SHAPE="448,13714,0,0"
+  TITLE="EditClientPasswordDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/changeClientPassword.jsp" TARGET="page61" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/homeCliente.jsp" TARGET="page36" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

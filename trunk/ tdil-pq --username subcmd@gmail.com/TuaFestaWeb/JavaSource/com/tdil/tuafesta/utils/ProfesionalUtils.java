@@ -146,5 +146,9 @@ public class ProfesionalUtils {
 		
 		return false;
 	}
+
+	public static boolean dataChanged(ProfesionalChange profesionalChange) {
+		return personalDataChanged(profesionalChange) || businessDataChanged(profesionalChange);
+	}
 	
 }

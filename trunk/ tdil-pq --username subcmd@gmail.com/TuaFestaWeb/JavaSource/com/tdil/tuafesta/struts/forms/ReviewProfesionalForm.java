@@ -396,6 +396,9 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		profesionalChange.setVideo3(null);
 		profesionalChange.setVideo4(null);
 		profesionalChange.setVideo5(null);
+		Profesional prof = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(this.getProfesional().getId());
+		prof.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange) ? 1 : 0);
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(prof);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		try {
 			/** Inicio del email */
@@ -416,6 +419,9 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		profesionalChange.setPhonenumber(null);
 		profesionalChange.setPhoneextension(null);
 		profesionalChange.setPhonetype(null);
+		Profesional prof = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(this.getProfesional().getId());
+		prof.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange) ? 1 : 0);
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(prof);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		try {
 			/** Inicio del email */

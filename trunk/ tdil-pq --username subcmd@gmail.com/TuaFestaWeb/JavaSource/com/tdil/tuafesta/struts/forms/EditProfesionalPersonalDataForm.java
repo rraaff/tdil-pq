@@ -14,6 +14,7 @@ import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
+import com.tdil.tuafesta.utils.ProfesionalUtils;
 import com.tdil.tuafesta.utils.SystemPropertiesKeys;
 import com.tdil.tuafesta.web.SystemPropertyUtils;
 import com.tdil.utils.DateUtils;
@@ -98,9 +99,12 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setPhonenumber(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneNumber(), profesional.getPhonenumber()));
 		profesionalChange.setPhoneextension(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneExtension(), profesional.getPhoneextension()));
 		profesionalChange.setPhonetype(com.tdil.utils.StringUtils.getDataForChange(this.getPhoneType(), profesional.getPhonetype()));
+		profesional.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange) ? 1 : 0);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		if (isAutoApprove()) {
 			approvePersonalData(profesional, profesionalChange);
+		} else {
+			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		}
 	}
 	
@@ -113,7 +117,6 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesional.setPhonenumber(StringUtils.nvl(profesionalChange.getPhonenumber(), profesional.getPhonenumber()));
 		profesional.setPhoneextension(StringUtils.nvl(profesionalChange.getPhoneextension(), profesional.getPhoneextension()));
 		profesional.setPhonetype(StringUtils.nvl(profesionalChange.getPhonetype(), profesional.getPhonetype()));
-		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		profesionalChange.setFirstname(null);
 		profesionalChange.setLastname(null);
 		profesionalChange.setSex(null);
@@ -122,6 +125,8 @@ public class EditProfesionalPersonalDataForm extends TransactionalValidationForm
 		profesionalChange.setPhonenumber(null);
 		profesionalChange.setPhoneextension(null);
 		profesionalChange.setPhonetype(null);
+		profesional.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange) ? 1 : 0);
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 	}
 

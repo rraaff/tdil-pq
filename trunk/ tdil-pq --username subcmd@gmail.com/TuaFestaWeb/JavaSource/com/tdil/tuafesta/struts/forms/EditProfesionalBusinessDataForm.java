@@ -37,6 +37,7 @@ import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.ProfesionalChange;
 import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
 import com.tdil.tuafesta.utils.BlobHelper;
+import com.tdil.tuafesta.utils.ProfesionalUtils;
 import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
@@ -214,9 +215,12 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setVideo3(com.tdil.utils.StringUtils.getDataForChange(this.getVideo3(), profesional.getVideo3(), "DELETE"));
 		profesionalChange.setVideo4(com.tdil.utils.StringUtils.getDataForChange(this.getVideo4(), profesional.getVideo4(), "DELETE"));
 		profesionalChange.setVideo5(com.tdil.utils.StringUtils.getDataForChange(this.getVideo5(), profesional.getVideo5(), "DELETE"));
+		profesional.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange) ? 1 : 0);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 		if (isAutoApprove()) {
 			approveBusinessData(profesional, profesionalChange);
+		} else {
+			DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		}
 	}
 	
@@ -233,7 +237,6 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesional.setVideo3(StringUtils.nvl(profesionalChange.getVideo3(), profesional.getVideo3()));
 		profesional.setVideo4(StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
 		profesional.setVideo5(StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
-		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		profesionalChange.setBusinessname(null);
 		profesionalChange.setCuit(null);
 		profesionalChange.setIibb(null);
@@ -246,6 +249,8 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setVideo3(null);
 		profesionalChange.setVideo4(null);
 		profesionalChange.setVideo5(null);
+		profesional.setDatachanged(ProfesionalUtils.dataChanged(profesionalChange)  ? 1 : 0);
+		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
 		DAOManager.getProfesionalChangeDAO().updateProfesionalChangeByPrimaryKey(profesionalChange);
 	}
 

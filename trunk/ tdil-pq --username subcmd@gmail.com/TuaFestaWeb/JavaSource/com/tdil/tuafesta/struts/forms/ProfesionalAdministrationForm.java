@@ -127,6 +127,14 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 		this.name = name;
 	}
 
+	public boolean isDataModified() {
+		return dataModified;
+	}
+
+	public void setDataModified(boolean dataModified) {
+		this.dataModified = dataModified;
+	}
+
 
 
 }

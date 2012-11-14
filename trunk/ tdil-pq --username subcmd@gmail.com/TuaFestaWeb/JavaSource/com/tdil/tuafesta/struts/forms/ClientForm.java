@@ -78,7 +78,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 	private List<Geo3> level3;
 	private List<Geo4> level4;
 
-	private static final int MIN_PASS_LENGTH = 4;
+	public static final int MIN_PASS_LENGTH = 4;
 	public static final String firstname_key = "ClientForm.firstname";
 	public static final String lastname_key = "ClientForm.lastname";
 	public static final String sex_key = "ClientForm.sex";
@@ -86,6 +86,7 @@ public class ClientForm extends TransactionalValidationForm implements GeoLevelS
 
 	public static final String email_key = "ClientForm.email";
 	public static final String password_key = "ClientForm.password";
+	public static final String retypepassword_key = "ClientForm.retypepassword";
 
 	private static final Logger LOG = LoggerProvider.getLogger(ClientForm.class);
 

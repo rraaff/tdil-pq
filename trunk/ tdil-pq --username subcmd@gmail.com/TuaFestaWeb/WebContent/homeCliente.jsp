@@ -29,6 +29,7 @@
 			<h1>Home del cliente <%=clientHomeForm.getClient().getFirstname() %></h1>
 			<h2></h2>
 		</div>
+		<a href="./goToChangeClientPassword.do?id=<%=clientHomeForm.getClient().getId()%>">Cambiar mi password</a>
 		<!-- aca Termina el formulario -->
 	</div>
 </div>

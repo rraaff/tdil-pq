@@ -12,11 +12,11 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.Profesional;
+import com.tdil.tuafesta.model.Client;
 import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 
-public class EditProfesionalPasswordDataForm extends TransactionalValidationForm implements EditProfesionalDataForm {
+public class EditClientPasswordDataForm extends TransactionalValidationForm {
 
 	/**
 	 * 
@@ -49,15 +49,15 @@ public class EditProfesionalPasswordDataForm extends TransactionalValidationForm
 	
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		FieldValidation.validateText(this.getPassword(), ProfesionalForm.password_key, 20, false, validationError);
+		FieldValidation.validateText(this.getPassword(), ClientForm.password_key, 20, false, validationError);
 		
-		if (!validationError.hasFieldError(ProfesionalForm.password_key)) {
+		if (!validationError.hasFieldError(ClientForm.password_key)) {
 			if (this.getPassword().length() != 0 || this.getRetypepassword().length() != 0) {
-				if (this.getPassword().length() < ProfesionalForm.MIN_PASS_LENGTH) {
-					validationError.setFieldError(ProfesionalForm.password_key, "PASSWORD_TOO_SHORT");
+				if (this.getPassword().length() < ClientForm.MIN_PASS_LENGTH) {
+					validationError.setFieldError(ClientForm.password_key, "PASSWORD_TOO_SHORT");
 				} else {
 					if (!this.getPassword().equals(this.getRetypepassword())) {
-						validationError.setFieldError(ProfesionalForm.password_key, "RETYPE_NOT_EQUAL");
+						validationError.setFieldError(ClientForm.password_key, "RETYPE_NOT_EQUAL");
 					}
 				}
 			}
@@ -70,9 +70,9 @@ public class EditProfesionalPasswordDataForm extends TransactionalValidationForm
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		Profesional profesional = DAOManager.getProfesionalDAO().selectProfesionalByPrimaryKey(id);
+		Client profesional = DAOManager.getClientDAO().selectClientByPrimaryKey(id);
 		profesional.setPassword(CryptoUtils.getHashedValue(this.getPassword()));
-		DAOManager.getProfesionalDAO().updateProfesionalByPrimaryKey(profesional);
+		DAOManager.getClientDAO().updateClientByPrimaryKey(profesional);
 	}
 
 	public int getObjectId() {
@@ -93,7 +93,7 @@ public class EditProfesionalPasswordDataForm extends TransactionalValidationForm
 	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(EditProfesionalPasswordDataForm.class);
+		return LoggerProvider.getLogger(EditClientPasswordDataForm.class);
 	}
 	public String getPassword() {
 		return password;
