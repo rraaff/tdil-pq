@@ -20,15 +20,15 @@ import com.tdil.struts.actions.ApproveDisapproveAction;
 import com.tdil.struts.actions.SearchTransactionalAction;
 import com.tdil.struts.forms.SearchForm;
 import com.tdil.struts.resources.ApplicationResources;
-import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
+import com.tdil.tuafesta.struts.forms.ReviewClientForm;
 import com.tdil.validations.ValidationErrors;
 
-public class ManualValidateProfesionalEmailAction extends AbstractAction {
+public class ManualValidateClientEmailAction extends AbstractAction {
 
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		final ReviewProfesionalForm approveDisapproveForm = (ReviewProfesionalForm) form;
+		final ReviewClientForm approveDisapproveForm = (ReviewClientForm) form;
 		if (approveDisapproveForm.getOperation().equals(ApplicationResources.getMessage("Approve"))) {
 			try {
 				TransactionProvider.executeInTransaction(new TransactionalAction() {
@@ -36,7 +36,7 @@ public class ManualValidateProfesionalEmailAction extends AbstractAction {
 						approveDisapproveForm.validateEmailManual();
 					}
 				});
-				TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
+				TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ClientAdministrationForm")));
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
@@ -47,10 +47,10 @@ public class ManualValidateProfesionalEmailAction extends AbstractAction {
 				try {
 					TransactionProvider.executeInTransaction(new TransactionalAction() {
 						public void executeInTransaction() throws SQLException, ValidationException {
-							approveDisapproveForm.blockProfesional();
+							approveDisapproveForm.blockClient();
 						}
 					});
-					TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
+					TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ClientAdministrationForm")));
 				} catch (Exception ex) {
 					getLog().error(ex.getMessage(), ex);
 					ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
