@@ -47,7 +47,6 @@ request.setAttribute( "test",  paginated);
 							<option <%=	selected == 0 ? "selected" : ""%> value="0">Validacion de email pendiente</option>
 							<option <%=	selected == 1 ? "selected" : ""%> value="1">Verificacion pendiente</option>
 							<option <%=	selected == 2 ? "selected" : ""%> value="2">Aprobado</option>
-							<option <%=	selected == 3 ? "selected" : ""%> value="3">Desaprobados</option>
 							<option <%=	selected == 4 ? "selected" : ""%> value="4">Bloqueados</option>
 						</html:select>
 					<html:submit property="operation">
