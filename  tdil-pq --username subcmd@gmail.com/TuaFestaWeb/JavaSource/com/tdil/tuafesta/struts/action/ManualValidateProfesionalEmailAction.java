@@ -2,6 +2,7 @@ package com.tdil.tuafesta.struts.action;
 
 import java.sql.SQLException;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,14 +18,14 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.actions.ApproveDisapproveAction;
+import com.tdil.struts.actions.SearchTransactionalAction;
+import com.tdil.struts.forms.SearchForm;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.struts.forms.ReviewProfesionalForm;
 import com.tdil.validations.ValidationErrors;
 
 public class ManualValidateProfesionalEmailAction extends AbstractAction {
 
-	// TODO manejar la actualizacion de estados en la pagina de listado
-	
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -36,6 +37,7 @@ public class ManualValidateProfesionalEmailAction extends AbstractAction {
 						approveDisapproveForm.validateEmailManual();
 					}
 				});
+				TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
@@ -49,6 +51,7 @@ public class ManualValidateProfesionalEmailAction extends AbstractAction {
 							approveDisapproveForm.blockProfesional();
 						}
 					});
+					TransactionProvider.executeInTransaction(new SearchTransactionalAction((SearchForm)request.getSession().getAttribute("ProfesionalAdministrationForm")));
 				} catch (Exception ex) {
 					getLog().error(ex.getMessage(), ex);
 					ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
