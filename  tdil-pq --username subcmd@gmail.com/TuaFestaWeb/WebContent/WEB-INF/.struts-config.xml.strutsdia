@@ -1627,4 +1627,38 @@
    PATH="/homeCliente.jsp" TARGET="page36" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editClient" NAME="action167" PATH="/editClient"
+  SHAPE="32,14545,0,0" TITLE="ClientHomeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editClient.jsp" TARGET="page62" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page62" PATH="/editClient.jsp"
+  SHAPE="240,14657,0,0" SUBTYPE="jsp" TITLE="editClient.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveClient.do"
+   SUBTYPE="confirmed" TARGET="action168" TITLE="/saveClient.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveClient" NAME="action168" PATH="/saveClient"
+  SHAPE="32,14545,0,0" TITLE="ClientHomeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToClientHome.do" TARGET="action81" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/editClient.jsp" TARGET="page62" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel2EditClient" NAME="action169"
+  PATH="/refreshGeoLevel2EditClient" SHAPE="32,14545,0,0"
+  TITLE="ClientHomeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo2changed" NAME="forward0"
+   PATH="/editClient.jsp" TARGET="page62" TITLE="geo2changed"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#refreshGeoLevel3EditClient" NAME="action170"
+  PATH="/refreshGeoLevel3EditClient" SHAPE="32,14657,0,0"
+  TITLE="ClientHomeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="geo3changed" NAME="forward0"
+   PATH="/editClient.jsp" TARGET="page62" TITLE="geo3changed"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

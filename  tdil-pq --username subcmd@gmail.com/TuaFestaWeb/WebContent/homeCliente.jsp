@@ -28,6 +28,14 @@
 		<div id="titleArea">
 			<h1>Home del cliente <%=clientHomeForm.getClient().getFirstname() %></h1>
 			<h2></h2>
+			Nombre: <%=clientHomeForm.getClient().getFirstname() %><br>
+			Apellido: <%=clientHomeForm.getClient().getLastname() %><br>
+			Sexo: <%=clientHomeForm.getClient().getSex().equals("m") ? "Masculino" : "Femenino"%><br>
+			Email: <%=clientHomeForm.getClient().getEmail() %><br>
+			<% if (clientHomeForm.getLocation() != null) { %>
+			Localizado en <strong><%= clientHomeForm.getLocation().getNombre4()%>, <%= clientHomeForm.getLocation().getNombre3()%>, <%= clientHomeForm.getLocation().getNombre2()%></strong><br>
+			<% } %>
+			<a href="./editClient.do?id=<%=clientHomeForm.getClient().getId()%>">Editar mis datos</a>
 		</div>
 		<a href="./goToChangeClientPassword.do?id=<%=clientHomeForm.getClient().getId()%>">Cambiar mi password</a>
 		<!-- aca Termina el formulario -->

@@ -518,10 +518,27 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/changeClientPassword.jsp"/>
   </action>
+  <action name="ClientHomeForm" path="/editClient" parameter="Client"
+   scope="session" type="com.tdil.struts.actions.EditAction">
+   <forward name="continue" path="/editClient.jsp"/>
+  </action>
+  <action name="ClientHomeForm" path="/saveClient" parameter="Client"
+   scope="session" type="com.tdil.tuafesta.struts.action.SaveClientDataAction">
+   <forward name="failure" path="/editClient.jsp"/>
+   <forward name="continue" path="/goToClientHome.do"/>
+  </action>
   <action name="EditClientPasswordDataForm" path="/changeClientPassword" parameter="Client"
    scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="failure" path="/changeClientPassword.jsp"/>
    <forward name="continue" path="/homeCliente.jsp"/>
+  </action>
+    <action name="ClientHomeForm" path="/refreshGeoLevel2EditClient"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+   <forward name="geo2changed" path="/editClient.jsp"/>
+  </action>
+  <action name="ClientHomeForm" path="/refreshGeoLevel3EditClient"
+   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
+   <forward name="geo3changed" path="/editClient.jsp"/>
   </action>
   
   <action name="ProfesionalHomeForm" path="/goToProfesionalHome" parameter="Profesional"
