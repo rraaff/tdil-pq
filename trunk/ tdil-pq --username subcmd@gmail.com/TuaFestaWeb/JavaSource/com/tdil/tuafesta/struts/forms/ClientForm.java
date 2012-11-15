@@ -4,10 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import net.sf.json.JSONObject;
 
@@ -35,11 +33,9 @@ import com.tdil.tuafesta.model.Geo3Example;
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Geo4Example;
 import com.tdil.tuafesta.model.ProfesionalExample;
-import com.tdil.tuafesta.roles.ClientRole;
 import com.tdil.tuafesta.stats.StatisticType;
 import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.web.EmailUtils;
-import com.tdil.tuafesta.web.WebsiteUser;
 import com.tdil.utils.CryptoUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
