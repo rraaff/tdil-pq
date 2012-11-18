@@ -25,6 +25,9 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 	private String product;
 	private String maxPrice;
 	
+	private String geoLevelId;
+	private String geoLevelSelectedText;
+	private String level;
 	private String geoLevel;
 	
 	private List<SellValueObject> searchResult;
@@ -43,6 +46,10 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean isGeoLevelSelected() {
+		return this.getGeoLevelId() != null && this.getGeoLevelId().trim().length() > 0;
 	}
 
 	public List<SearchSellBean> getSearchSellBeans() {
@@ -113,6 +120,30 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 
 	public void setSearchResult(List<SellValueObject> searchResult) {
 		this.searchResult = searchResult;
+	}
+
+	public String getGeoLevelId() {
+		return geoLevelId;
+	}
+
+	public void setGeoLevelId(String geoLevelId) {
+		this.geoLevelId = geoLevelId;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getGeoLevelSelectedText() {
+		return geoLevelSelectedText;
+	}
+
+	public void setGeoLevelSelectedText(String geoLevelSelectedText) {
+		this.geoLevelSelectedText = geoLevelSelectedText;
 	}
 
 }
