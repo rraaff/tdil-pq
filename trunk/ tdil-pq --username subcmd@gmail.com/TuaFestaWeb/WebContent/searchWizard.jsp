@@ -26,10 +26,64 @@ $(document).ready(
 						'product': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el producto o servicio.' />"}, 
 						'maxPrice': {digits: "<img id='phoneAreaCodeerrordig' src='images/unchecked.gif' hovertext='Ingrese solo numeros.' />"}
 					}
-				});
+			});
+
+			function serviceAreaSelected(serviceAreaLabel, serviceAreaValue, level) {
+				$("input[name=geoLevelSelectedText]").attr('value', serviceAreaLabel);
+				$("input[name=geoLevel]").attr('value','');
+				$("#geoLevelAutocompleterContainer").css('display', 'none');
+				$("#geoLevelSelectedDiv").prop('innerHTML', serviceAreaLabel);
+				$("#geoLevelSelectedDiv").css('display', 'block');
+				$("input[name=geoLevelId]").attr('value', serviceAreaValue);
+				$("input[name=level]").attr('value', level);
+			}
+			$( "input[name=geoLevel]" ).autocomplete({
+				source: function( request, response ) {
+					$.ajax({
+						url: "searchGeoLevelAjax.do",
+						data: {
+							name: request.term
+						},
+						dataType: "json",
+						success: function( data ) {
+							response( $.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.id,
+									level: item.level
+								}
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function( event, ui ) {
+					if (ui.item) {
+						serviceAreaSelected(ui.item.label, ui.item.value, ui.item.level);
+					} 
+					/*log( ui.item ?
+						"Selected: " + ui.item.label :
+						"Nothing selected, input was " + this.value);*/
+				},
+				open: function() {
+					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				},
+				close: function() {
+					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+				}
+			});
 	}
 );
 
+function limpiarServiceArea() {
+	$("input[name=geoLevelId]").attr('value', '');
+	$("input[name=geoLevelId]").attr('value', '');
+	$("input[name=geoLevelSelectedText]").attr('value', '');
+	$("input[name=geoLevel]").attr('value','');
+	$("#geoLevelAutocompleterContainer").css('display', 'block');
+	$("#geoLevelSelectedDiv").prop('innerHTML', '');
+	$("#geoLevelSelectedDiv").css('display', 'none');
+}
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
 </head>
@@ -58,6 +112,8 @@ $(document).ready(
 				</html:form>
 				<!-- empieza la tabla de la busqueda -->
 				<html:form method="POST" action="/searchWizard">
+					<html:hidden name="OrganizeWizardForm" property="geoLevelId" />
+					<html:hidden name="OrganizeWizardForm" property="level" />
 					<div class="myRow"> <!--  style="height:200px; overflow:auto;"-->
 						<table width="100%">
 							<tr>
@@ -78,7 +134,19 @@ $(document).ready(
 					<h2>Paso 2: Determin&aacute; la ubicaci&oacute;n de tu evento para buscar aquellos profesinales que trabajen cerca tuyo</h2>
 					<div class="myRow">
 						<div class="myLabel width80">Ubicaci&oacute;n</div>
-						<div class="myLabel width520"><html:text name="OrganizeWizardForm" property="geoLevel" styleClass="normalField width500"/></div>
+						
+						
+						<logic:equal name="OrganizeWizardForm" property="geoLevelSelected" value="false">
+							<div class="myLabel width520" id="geoLevelAutocompleterContainer"><html:text name="OrganizeWizardForm" property="geoLevel" styleClass="normalField width500"/></div>
+							<div id="geoLevelSelectedDiv" style="display: none;"></div>
+							<div class="myLabel width50"><a id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a></div>
+						</logic:equal>
+						<logic:equal name="OrganizeWizardForm" property="geoLevelSelected" value="true">
+							<div class="myLabel width520" id="geoLevelAutocompleterContainer"><html:text name="OrganizeWizardForm" property="geoLevel" styleClass="normalField width500"/></div>
+							<div id="geoLevelSelectedDiv" style="display: block;"><bean:write name="OrganizeWizardForm" filter="false" property="geoLevelSelectedText"/></div>
+							<div class="myLabel width50"><a id="cleanGeoLink" href="javascript:limpiarServiceArea()">Limpiar</a></div>
+						</logic:equal>
+						
 					</div>
 					<div class="myRow" align="center"><html:submit property="operation">Buscar</html:submit></div>
 				</html:form>
