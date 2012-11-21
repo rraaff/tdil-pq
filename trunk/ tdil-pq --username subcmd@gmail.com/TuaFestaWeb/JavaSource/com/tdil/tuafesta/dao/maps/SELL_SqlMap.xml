@@ -664,5 +664,46 @@ union all
     and prof.deleted = 0
   </select>
   
+  <select id="selectSellsProductsByTextAndPrice" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
+    from SELL sell, PROFESIONAL prof
+    where (sell.name like #text:VARCHAR# OR sell.description like #text:VARCHAR#)
+	<isNotNull prepend="and" property="maxPrice">
+    	 #maxPrice:INTEGER# >= sell.referenceprice
+    </isNotNull>
+    and sell.id_profesional = prof.id
+    and sell.type = 1
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+  </select>
+  
+  <select id="selectSellsServicesByTextAndPriceAndGeoLevel" parameterClass="java.util.Map" resultMap="SellValueObject">
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
+    	null as geo2name,
+    	null as geo3name,
+    	null as geo4name
+    from SELL sell, PROFESIONAL prof
+    where (sell.name like #text:VARCHAR# OR sell.description like #text:VARCHAR#)
+	<isNotNull prepend="and" property="maxPrice">
+    	 #maxPrice:INTEGER# >= sell.referenceprice
+    </isNotNull>
+    and sell.id_profesional = prof.id
+    and sell.type = 2
+    and sell.approved = 1
+    and sell.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    and prof.id in (select id_profesional from SERVICE_AREA where id_geolevel = #geoId:INTEGER#)
+  </select>
+  
  
 </sqlMap>

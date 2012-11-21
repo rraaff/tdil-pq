@@ -35,9 +35,18 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 	@Override
 	public void search() throws ValidationException {
 		try {
-			searchResult = new ArrayList<SellValueObject>();
-			for (SearchSellBean searchBean : searchSellBeans) {
-				searchResult.addAll(DAOManager.getSellDAO().selectSellsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
+			if (StringUtils.isEmpty(this.getGeoLevelId())) {
+				searchResult = new ArrayList<SellValueObject>();
+				for (SearchSellBean searchBean : searchSellBeans) {
+					searchResult.addAll(DAOManager.getSellDAO().selectSellsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
+				}
+			} else {
+				searchResult = new ArrayList<SellValueObject>();
+				int geoLevelId = Integer.parseInt(this.getGeoLevelId());
+				for (SearchSellBean searchBean : searchSellBeans) {
+					searchResult.addAll(DAOManager.getSellDAO().selectSellsProductsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
+					searchResult.addAll(DAOManager.getSellDAO().selectSellsServicesByTextAndPriceAndGeoLevel(searchBean.getProduct(), searchBean.getMaxPrice(), geoLevelId));
+				}
 			}
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
