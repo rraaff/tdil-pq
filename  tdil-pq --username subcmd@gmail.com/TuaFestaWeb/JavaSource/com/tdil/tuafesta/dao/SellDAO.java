@@ -1,6 +1,7 @@
 package com.tdil.tuafesta.dao;
 
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 import com.tdil.tuafesta.model.Geo4;
@@ -103,5 +104,9 @@ public interface SellDAO {
 	List<SellValueObject> selectSellsByTerms(List<String> terms) throws SQLException;
 	
 	List<SellValueObject> selectSellsByTextAndPrice(String text, String price) throws SQLException;
+
+	Collection<? extends SellValueObject> selectSellsProductsByTextAndPrice(String product, String maxPrice) throws SQLException;
+
+	Collection<? extends SellValueObject> selectSellsServicesByTextAndPriceAndGeoLevel(String product, String maxPrice, int geoId) throws SQLException;
 
 }

@@ -1,6 +1,7 @@
 package com.tdil.tuafesta.dao.impl;
 
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -294,6 +295,31 @@ public class SellDAOImpl implements SellDAO {
 			params.put("maxPrice", Integer.valueOf(price));
 		}
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsByTextAndPrice", params);
+		return list;
+	}
+	
+	@Override
+	public Collection<? extends SellValueObject> selectSellsProductsByTextAndPrice(String product, String maxPrice)
+			throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("text", "%"+product+"%");
+		if (maxPrice != null && maxPrice.trim().length() > 0) {
+			params.put("maxPrice", Integer.valueOf(maxPrice));
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsProductsByTextAndPrice", params);
+		return list;
+	}
+	
+	@Override
+	public Collection<? extends SellValueObject> selectSellsServicesByTextAndPriceAndGeoLevel(String product,
+			String maxPrice, int geoId) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("text", "%"+product+"%");
+		params.put("geoId", geoId);
+		if (maxPrice != null && maxPrice.trim().length() > 0) {
+			params.put("maxPrice", Integer.valueOf(maxPrice));
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsServicesByTextAndPriceAndGeoLevel", params);
 		return list;
 	}
 }

@@ -20,6 +20,8 @@ public class SearchWizardAction extends Action {
 			HttpServletResponse response) throws Exception {
 		
 		final OrganizeWizardForm organizeWizardForm = (OrganizeWizardForm)request.getSession().getAttribute("OrganizeWizardForm");
+		organizeWizardForm.setGeoLevelId(request.getParameter("geoLevelId"));
+		organizeWizardForm.setLevel(request.getParameter("level"));
 		TransactionProvider.executeInTransaction(new SearchTransactionalAction(organizeWizardForm));
 		SellSearchResultForm form2 = (SellSearchResultForm)form;
 		form2.setSearchResult(organizeWizardForm.getSearchResult());
