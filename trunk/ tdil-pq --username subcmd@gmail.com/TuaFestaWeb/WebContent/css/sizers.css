@@ -154,5 +154,11 @@ input[type="textarea"] {
 
 .centering { margin:0 auto; }
 .margin100 { margin:100px; }
+.mTop20 { margin-top:20px; }
+.mTop30 { margin-top:30px; }
+.mTop40 { margin-top:40px; }
+.mTop60 { margin-top:60px; }
+.mTop80 { margin-top:80px; }
+.mTop100 { margin-top:100px; }
 .fleft { float:left; }
 .fright { float:right; }
