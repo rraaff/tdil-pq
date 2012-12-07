@@ -67,13 +67,13 @@
 					<div class="myRow">
 						<div class="myLabel width450">Localizado en <strong><%= profesionalHomeForm.getLocation().getNombre4()%>, <%= profesionalHomeForm.getLocation().getNombre3()%>, <%= profesionalHomeForm.getLocation().getNombre2()%></strong></div>
 					</div>
-					<div class="myRow"><a href="./goToEditProfesionalBusinessData.do?id=<%=profesional.getId()%>">Editar</a></div>
+					<div class="myRow"><a href="./goToEditProfesionalBusinessData.do?id=<%=profesional.getId()%>">Editar Datos Profesionales</a></div>
 				</div>
 				<div class="width100per" style="float:left;">
 					<h2><legend>Productos / Servicios</legend></h2>
 					<div class="myRow">
-						<div class="myLabel width450"><a href="./goToEditProfesionalProducts.do?id=<%=profesional.getId()%>">Editar Productos</a> - <a href="./goToEditProfesionalServices.do?id=<%=profesional.getId()%>">Editar Servicios</a></div>
-						<div class="myLabel width450">&Aacute;reas de cobertura de servicios <a href="./goToEditProfesionalServiceArea.do?id=<%=profesional.getId()%>">Editar</a></div>
+						<div class="myLabel width450">Agrega todos los productos/servicios que quieras, luego desde ac&aacute; podr&aacute;s editarlos o eliminarlos. <br /><a href="./goToEditProfesionalProducts.do?id=<%=profesional.getId()%>">Editar Productos</a> - <a href="./goToEditProfesionalServices.do?id=<%=profesional.getId()%>">Editar Servicios</a></div>
+						<div class="myLabel width450">En &aacute;reas de cobertura, agrega las zonas donde brindas servicios, as&iacute; te ahorraras tiempo en contestarle a clientes de otras zonas.<br /><a href="./goToEditProfesionalServiceArea.do?id=<%=profesional.getId()%>">Ver/Editar &aacute;reas de cobertura</a></div>
 					</div>
 					<div class="myRow">
 						<%
@@ -95,11 +95,11 @@
 				</div>
 				<div style="width:450px; margin-right:20px; float:left;">
 					<h2><legend>Muro</legend></h2>
-					<div class="myRow">Mensajes pendientes de moderaci&oacute;n: <%=profesionalHomeForm.getWallModerationPendingCount() %> <a href="./goToModerateProfesionalWall.do?id=<%=profesional.getId()%>">Ir al muro</a></div>
+					<div class="myRow">A trav&eacute;s del muro podr&aacute;s interactuar con tus clientes, o simplemente subir alg&uacute;n tipo de informaci&oacute;n que te interese. Siempre que alguien te escriba te aparecer&aacute; en "Mi cuenta" (en la secci&oacute;n Muro), pero hasta que no le contestes no aparecer&aacute; para que los dem&aacute;s lo vean. Si te escriben algo que no corresponde simplemente no le contestes, o borra el comentario.<br /><br />Mensajes pendientes de moderaci&oacute;n: <%=profesionalHomeForm.getWallModerationPendingCount() %> <a href="./goToModerateProfesionalWall.do?id=<%=profesional.getId()%>">Ir al muro</a></div>
 				</div>
 				<div style="width:450px; float:left;">
 					<h2><legend>Agenda</legend></h2>
-					<div class="myRow"><a href="./goToEditAgenda.do?id=<%=profesional.getId()%>">Editar</a></div>
+					<div class="myRow"><a href="./goToEditAgenda.do?id=<%=profesional.getId()%>">Editar agenda</a></div>
 				</div>
 				<!-- aca Termina el formulario -->
 			</div>

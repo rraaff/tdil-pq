@@ -56,7 +56,7 @@ $(document).ready(
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Editar datos profesionales</h1>
-			<h2>Modific&aacute; tus datos agreg&aacute; videos y el logo de tu empresa</h2>
+			<h2>&#161;Completa los datos de profesional, agr&eacute;gale v&iacute;deos y fotos, esta secci&oacute;n ser&aacute; la que primero vean tus futuros clientes!</h2>
 		</div>
 		<div id="formContent">
 			<div id="formSection">
@@ -143,7 +143,7 @@ $(document).ready(
 						<div class="myLabel width60">Video 5</div>
 						<div class="myLabel width400" id=""><html:text name="EditProfesionalBusinessDataForm" property="video5" styleClass="normalField width350"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.video5_key + ".err")%></div>
 					</div>
-					<div class="myRow" align="center"><input type="submit" value="Grabar y volver a mi perfil" /></div>
+					<div class="myRow" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi perfil" /></div>
 				</html:form>
 			</div>
 		</div>

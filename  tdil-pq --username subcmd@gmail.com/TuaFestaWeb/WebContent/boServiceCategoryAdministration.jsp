@@ -33,7 +33,7 @@
 				</div>
 				<div class="renglon">
 					<div class="label width130">Descripci&oacute;n</div>
-					<div class="label width780 height100"><html:text name="CategoryForm" property="description" styleClass="normalField width740 height100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.description_key + ".err")%></div>
+					<div class="label width780 height100"><html:textarea name="CategoryForm" property="description" styleClass="normalField width740 height100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.description_key + ".err")%></div>
 				</div>
 				<div class="renglon">
 					<div class="label width20"><html:checkbox name="CategoryForm" property="showinhome"/></div>

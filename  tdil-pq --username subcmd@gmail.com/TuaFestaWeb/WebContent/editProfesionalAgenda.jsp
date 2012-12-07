@@ -77,7 +77,7 @@ $(document).ready(
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</div>
-					<div class="myRow width920" align="center"><a href="#">Volver a mi cuenta sin grabar</a></div>
+					<div class="myRow width920" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta</a></div>
 				</div>
 			</div>
 		</html:form>

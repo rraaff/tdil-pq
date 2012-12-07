@@ -20,18 +20,20 @@
 <%@ include file="includes/boMenu.jsp"%>
 <div id="boWrapper">
 	<div id="boCentral">
-		<div id="formulariosBase">
+		<h1>Administraci&oacute;n de geo levels</h1>
+		<div id="formulariosBase" class="height1200">
 			<html:form method="POST" action="/saveGeoLevel">
 				<% GeoLevelForm geoLevelForm = (GeoLevelForm)session.getAttribute("GeoLevelForm"); %>
-				<h1>Administraci&oacute;n de geo levels</h1>
-				<div class="renglon width950">
-					<div class="label width950"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
+				<div class="renglon">
+					<div class="label width100per"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 				</div>
-				<div class="renglon width950 height50">
-					<!-- Si es creacion  -->
-					<div class="label width950">
-						<logic:equal name="GeoLevelForm" property="objectId" value="0">
-							<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Administration.do';this.form.submit()">
+				<!-- Si es creacion  -->
+				<logic:equal name="GeoLevelForm" property="objectId" value="0">
+					<h2>Crear Geo Level</h2>
+					<div class="renglon">
+						<div class="label width130">Seleccionar Provincia</div>
+						<div class="label width800">
+							<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Administration.do';this.form.submit()" styleClass="normalField">
 								<option value="0">-</option>
 								<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
 									<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
@@ -39,9 +41,8 @@
 										<%=geo2.getNombre()%></option>
 								<% } %>
 							</html:select>
-							
 							<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
-								<html:select name="GeoLevelForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()">
+								<html:select name="GeoLevelForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevelAdministration.do';this.form.submit()" styleClass="normalField">
 									<option value="0">-</option>
 									<% for (Geo3 geo3 : geoLevelForm.getLevel3()) { %>	
 										<option	<%=	geo3.getId() == geoLevelForm.getGeo3Id() ? "selected" : ""%>
@@ -51,33 +52,44 @@
 								</html:select>
 							</logic:notEqual>
 							<logic:equal name="GeoLevelForm" property="geo2Id" value="0">
-									Provincia:
+								Provincia
 							</logic:equal>
 							<logic:notEqual name="GeoLevelForm" property="geo2Id" value="0">
 								<logic:equal name="GeoLevelForm" property="geo3Id" value="0">
-									Partido:
+									Partido
 								</logic:equal>
 								<logic:notEqual name="GeoLevelForm" property="geo3Id" value="0">
-									Localidad:
+									Localidad
 								</logic:notEqual>
 							</logic:notEqual>
 							<html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
-							<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
-							
-							Disponible para servicios:<html:checkbox name="GeoLevelForm" property="availableforservice" styleClass="width120"/><br>
-							Mostrar en la home:<html:checkbox name="GeoLevelForm" property="showinhome" styleClass="width120"/><br>
-							<html:text name="GeoLevelForm" property="homeindex" styleClass="width120"/>
-							<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%>
-						</logic:equal>
-					
-						<!-- Si es edicion -->			
-						<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
-							<logic:equal name="GeoLevelForm" property="level" value="2">
-								Provincia: <html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
-								<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
-							</logic:equal>
-							<logic:equal name="GeoLevelForm" property="level" value="3">
-								Provincia:<html:select name="GeoLevelForm" property="geo2Id">
+							&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
+						</div>
+					</div>
+					<div class="renglon">
+						<div class="label width20"><html:checkbox name="GeoLevelForm" property="availableforservice" /></div>
+						<div class="label width200">Disponible para servicios</div>
+						<div class="label width20"><html:checkbox name="GeoLevelForm" property="showinhome" /></div>
+						<div class="label width200">Mostrar en la home</div>
+						<div class="label width50">&nbsp;</div>
+						<div class="label width50">&Oacute;rden</div>
+						<div class="label width150"><html:text name="GeoLevelForm" property="homeindex" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%></div>
+					</div>
+				</logic:equal>
+				<!-- Si es edicion -->
+				<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
+					<h2>Edici&oacute;n de Geo Levels</h2>
+					<logic:equal name="GeoLevelForm" property="level" value="2">
+						<div class="renglon">
+							<div class="label width130">Provincia</div>
+							<div class="label width200"><html:text name="GeoLevelForm" property="nombre" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%></div>
+						</div>
+					</logic:equal>
+					<logic:equal name="GeoLevelForm" property="level" value="3">
+						<div class="renglon">
+							<div class="label width130">Provincia</div>
+							<div class="label width200">
+								<html:select name="GeoLevelForm" property="geo2Id" styleClass="normalField">
 									<option value="0">-</option>
 									<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
 										<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
@@ -85,11 +97,17 @@
 											<%=geo2.getNombre()%></option>
 									<% } %>
 								</html:select>
-								Partido: <html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
-							<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
-							</logic:equal>
-							<logic:equal name="GeoLevelForm" property="level" value="4">
-								Provincia:<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Administration.do';this.form.submit()">
+							</div>
+							<div class="label width50">&nbsp;</div>
+							<div class="label width50">Partido</div>
+							<div class="label width150"><html:text name="GeoLevelForm" property="nombre" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%></div>
+						</div>
+					</logic:equal>
+					<logic:equal name="GeoLevelForm" property="level" value="4">
+						<div class="renglon">
+							<div class="label width130">Provincia</div>
+							<div class="label width200">
+								<html:select name="GeoLevelForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Administration.do';this.form.submit()" styleClass="normalField">
 									<option value="0">-</option>
 									<% for (Geo2 geo2 : geoLevelForm.getLevel2()) { %>	
 										<option	<%=	geo2.getId() == geoLevelForm.getGeo2Id() ? "selected" : ""%>
@@ -97,7 +115,11 @@
 											<%=geo2.getNombre()%></option>
 									<% } %>
 								</html:select>
-								Partido:<html:select name="GeoLevelForm" property="geo3Id">
+							</div>
+							<div class="label width50">&nbsp;</div>
+							<div class="label width80">Partido</div>
+							<div class="label width200">
+								<html:select name="GeoLevelForm" property="geo3Id">
 									<option value="0">-</option>
 									<% for (Geo3 geo3 : geoLevelForm.getLevel3()) { %>	
 										<option	<%=	geo3.getId() == geoLevelForm.getGeo3Id() ? "selected" : ""%>
@@ -105,37 +127,42 @@
 											<%=geo3.getNombre()%></option>
 									<% } %>
 								</html:select>
-								Localidad: <html:text name="GeoLevelForm" property="nombre" styleClass="width120"/>
-							<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%>
-							
-							Disponible para servicios:<html:checkbox name="GeoLevelForm" property="availableforservice" styleClass="width120"/><br>
-							Mostrar en la home:<html:checkbox name="GeoLevelForm" property="showinhome" styleClass="width120"/><br>
-							<html:text name="GeoLevelForm" property="homeindex" styleClass="width120"/>
-							<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%>
-							</logic:equal>
-						</logic:notEqual>
-					</div>
-					<div class="label width300 height50" align="center">
-						<logic:equal name="GeoLevelForm" property="objectId" value="0">
-							<html:submit property="operation">
-								<bean:message key="save" />
-							</html:submit>
-						</logic:equal>
-						<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
-							<html:submit property="operation">
-								<bean:message key="modify" />
-							</html:submit>
-						</logic:notEqual>
+							</div>
+							<div class="label width50">&nbsp;</div>
+							<div class="label width80">Localidad</div>
+							<div class="label width150"><html:text name="GeoLevelForm" property="nombre" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "GeoLevel.name.err")%></div>
+						</div>
+						<div class="renglon">
+							<div class="label width20"><html:checkbox name="GeoLevelForm" property="availableforservice" /></div>
+							<div class="label width200">Disponible para servicios</div>
+							<div class="label width20"><html:checkbox name="GeoLevelForm" property="showinhome" /></div>
+							<div class="label width200">Mostrar en la home</div>
+							<div class="label width50">&nbsp;</div>
+							<div class="label width50">&Oacute;rden</div>
+							<div class="label width150"><html:text name="GeoLevelForm" property="homeindex" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, GeoLevelForm.homeindex_key + ".err")%></div>
+						</div>
+					</logic:equal>
+				</logic:notEqual>
+				<div class="renglon height50" align="center">
+					<logic:equal name="GeoLevelForm" property="objectId" value="0">
 						<html:submit property="operation">
-							<bean:message key="reset" />
+							<bean:message key="save" />
 						</html:submit>
-					</div>
+					</logic:equal>
+					<logic:notEqual name="GeoLevelForm" property="objectId" value="0">
+						<html:submit property="operation">
+							<bean:message key="modify" />
+						</html:submit>
+					</logic:notEqual>
+					<html:submit property="operation">
+						<bean:message key="reset" />
+					</html:submit>
 				</div>
-				<h1>Listado de Geo Levels</h1>
-				<div class="renglon width950 height50">
-					<div class="label width100" style="margin-top:10px;">Buscar por nivel: </div>
-					<div class="label width100" style="margin-top:10px;">
-						<html:select name="GeoLevelForm" property="levelSearch">
+				<h2>Listado de Geo Levels</h2>
+				<div class="renglon height50">
+					<div class="label width100" style="margin-top:17px;">Seleccionar nivel</div>
+					<div class="label width100" style="margin-top:17px;">
+						<html:select name="GeoLevelForm" property="levelSearch" styleClass="normalField">
 						<% for (int i = 2; i <= 4; i++) { %>
 							<option	<%=	i == geoLevelForm.getLevelSearch() ? "selected" : ""%>
 								value="<%=String.valueOf(i)%>">
@@ -143,11 +170,11 @@
 						<% } %>
 						</html:select>
 					</div>
-					<div class="label width50" style="margin-top:10px;">Nombre</div>
-					<div class="label width200" style="margin-top:10px;"><html:text name="GeoLevelForm" property="nombreSearch" styleClass="width200"/></div>
+					<div class="label width50" style="margin-top:17px;">Nombre</div>
+					<div class="label width200" style="margin-top:17px;"><html:text name="GeoLevelForm" property="nombreSearch" styleClass="normalField width200"/></div>
 					<div class="label width350 height50"><html:button property="operation" onclick="this.form.action='./searchGeoLevel.do';this.form.submit();">Buscar</html:button></div>
 				</div>
-				<div class="renglon width950" style="margin-bottom:50px;">
+				<div class="renglon" style="margin-bottom:50px;">
 					<table width="100%">
 						<tr>
 							<td class="headerTablas" width="140">Nombre</td>

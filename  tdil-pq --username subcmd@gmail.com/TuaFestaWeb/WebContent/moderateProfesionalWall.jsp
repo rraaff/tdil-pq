@@ -74,7 +74,10 @@ $(document).ready(
 		<div id="formContent">
 			<div id="formSection" style="width:920px;">
 				<html:form method="POST" action="/saveWallWritting">
-					<h2>Datos personales</h2>
+					<h2>Mensajes</h2>
+					<div class="renglon">
+						<p>A trav&eacute;s del muro podr&aacute;s interactuar con tus clientes, o simplemente subir alg&uacute;n tipo de informaci&oacute;n que te interese. Siempre que alguien te escriba te aparecer&aacute; en "Mi cuenta" (en la secci&oacute;n Muro), pero hasta que no le contestes no aparecer&aacute; para que los dem&aacute;s lo vean. Si te escriben algo que no corresponde simplemente no le contestes, o borra el comentario.</p>
+					</div>
 					<div class="renglon">
 						<div class="label width100per" align="center"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 					</div>
@@ -146,7 +149,7 @@ $(document).ready(
 						</div>
 					<% } %>
 				</div>
-				<div class="myRow height30" align="center" style="padding-top:20px;"><a href="./goToProfesionalHome.do?id=<%=wallModerationForm.getId()%>">Volver</a></div>
+				<div class="myRow height30" align="center" style="padding-top:20px;"><a href="./goToProfesionalHome.do?id=<%=wallModerationForm.getId()%>">Volver a Mi Cuenta</a></div>
 			</div>
 			<!-- aca Termina el formulario -->
 		</div>

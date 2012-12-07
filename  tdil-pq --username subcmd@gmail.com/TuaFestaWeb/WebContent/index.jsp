@@ -99,7 +99,7 @@
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraByCategory()) { %>
 						<a class="theme" href="#">
 							<% if (adByCat.hasImage()) { %>
-								<img src="./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/>
+								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
 							<% } else { %>
 								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
@@ -123,7 +123,7 @@
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraWithoutFilter()) { %>
 						<a class="theme" href="#">
 							<% if (adByCat.hasImage()) { %>
-								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC;" align="center"><img src="./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
+								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
 							<% } else { %>
 								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
@@ -175,20 +175,20 @@
 		</div>
 		<div id="rightCentral">
 			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
-			<div id="zoneNavigation">
-				<h3><a href="listadoZonas.jsp">Todos las zonas</a></h3>
-				<p>
-					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4LevelsForHome()) { %>
-						<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
-					<% } %>
-				</p>
-			</div>
-			<div id="punteado" style="width:284px;"></div>
 			<div id="categoryNavigation">
 				<h3><a href="listadoRubros.jsp">Todos los rubros</a></h3>
 				<p>
 					<% for (Category cat : CategoryUtils.getAllCategoriesForIndex()) { %>
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
+					<% } %>
+				</p>
+			</div>
+			<div id="punteado" style="width:284px;"></div>
+			<div id="zoneNavigation">
+				<h3><a href="listadoZonas.jsp">Todos las zonas</a></h3>
+				<p>
+					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4LevelsForHome()) { %>
+						<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
 					<% } %>
 				</p>
 			</div>

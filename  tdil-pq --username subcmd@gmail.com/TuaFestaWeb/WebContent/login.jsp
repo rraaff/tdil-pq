@@ -50,9 +50,9 @@
 						<div class="myRow">
 							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
 						</div>
-						<div class="myRow">
+						<!--div class="myRow">
 							<div class="myLabel width280" align="center"><a href="#" title="recuper&aacute; tu usuario">&#191;No record&aacute;s con qu&eacute; E-Mail te registraste?</a></div>
-						</div>
+						</div-->
 						<div class="myRow">
 							<div class="myLabel width280" align="center"><a href="index.jsp">Volver</a></div>
 						</div>
