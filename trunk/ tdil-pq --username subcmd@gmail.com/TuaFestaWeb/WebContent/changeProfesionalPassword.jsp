@@ -56,7 +56,7 @@ $(document).ready(
 						<div class="myLabel width150" id="Password"><html:password name="EditProfesionalPasswordDataForm" property="retypepassword" styleClass="normalField width150"/></div>
 						<div class="myLabel width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.retypepassword_key + ".err")%></div>
 					</div>
-					<div class="myRow" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
+					<div class="myRow" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
 			</html:form>
 		</div>

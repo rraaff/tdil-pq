@@ -105,15 +105,15 @@ $(document).ready(
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Editar servicios</h1>
-			<h2>Agreg&aacute;, borr&aacute; o modific&aacute; los servicios de tu listado</h2>
+			<h2>Agrega todos los servicios que quieras, luego desde ac&aacute; podr&aacute;s editarlos o eliminarlos</h2>
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/saveProfesionalServices">
 			<% EditProfesionalSellForm EditProfesionalSellForm = (EditProfesionalSellForm)session.getAttribute("EditProfesionalSellForm"); %>
 			<div id="formSection" style="width:920px;">
 				<h2>Agregar Servicio</h2>
-				<div class="myRow" id="addservicelayer">
-					<div class="myLabel width100per"><a class="nonelyLink" id="addService">Agregar</a></div>
+				<div class="myRow mTop20" id="addservicelayer">
+					<div class="myLabel width100per">1) Primer paso: <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" id="addService">Seleccion&aacute; categor&iacute;a</a></div>
 				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
 				<div id="addSellLayer" style="<%=EditProfesionalSellForm.isEdition() ? "" : "display: none;"%>
@@ -219,7 +219,7 @@ $(document).ready(
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</div>
-					<div class="myRow width920" align="center"><a href="#">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
+					<div class="myRow width920" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
 		</html:form>
 		</div>

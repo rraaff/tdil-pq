@@ -104,7 +104,7 @@ $(document).ready(
 						<div class="myLabel width80">E-Mail</div>
 						<div class="myLabel width800" id="Email"><strong><%=profesionalForm.getEmail() %></strong></div>
 					</div>
-					<div class="myRow" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
+					<div class="myRow" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
 			</html:form>
 		</div>

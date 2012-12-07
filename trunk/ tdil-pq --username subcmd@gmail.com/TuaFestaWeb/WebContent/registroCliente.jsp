@@ -57,6 +57,33 @@ $(document).ready(
 
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
+<style>
+#formContent {
+	margin-right:0px;
+	padding-left:10px;
+	width:710px;
+	float:left;
+	overflow:hidden;
+}
+#formSection {
+	width:680px;
+}
+#formHelpers {
+	margin:8px;
+	width:210px;
+	float:left;
+}
+#formHelpers .helper {
+	background-image: url(images/skin_basic/backgrounds/cartelitoRegistracion.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	
+	padding-left:36px;
+	padding-top:24px;
+	padding-right:10px;
+	padding-bottom:20px;
+}*/
+</style>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -73,38 +100,38 @@ $(document).ready(
 			<html:form method="POST" action="/addClient">
 			<div id="formSection" style="margin-bottom:20px;">
 				<div class="myRow" style="padding-top:20px;">
-					<div class="myLabel width80">Nombre</div>
-					<div class="myLabel width180" id="Nombre"><html:text name="ClientForm" property="firstname" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.firstname.err")%></div>
+					<div class="myLabel width70">Nombre</div>
+					<div class="myLabel width150" id="Nombre"><html:text name="ClientForm" property="firstname" styleClass="normalField width100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.firstname.err")%></div>
 					<div class="myLabel width60">Apellido</div>
-					<div class="myLabel width180" id="Apellido"><html:text name="ClientForm" property="lastname" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.lastname.err")%></div>
+					<div class="myLabel width150" id="Apellido"><html:text name="ClientForm" property="lastname" styleClass="normalField width100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.lastname.err")%></div>
 					<div class="myLabel width50">Sexo</div>
 					<div class="myLabel width200" id="Sexo"><html:radio property="sex" value="m" /> Masculino&nbsp;&nbsp;&nbsp;<html:radio property="sex" value="f" /> Femenino&nbsp;&nbsp;&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.sex.err")%></div>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width80">Fecha Nac.</div>
-					<div class="myLabel width180" id="Fecha Nac."><html:text name="ClientForm" property="birthdate" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")%></div>
+					<div class="myLabel width70">Fecha Nac.</div>
+					<div class="myLabel width150" id="Fecha Nac."><html:text name="ClientForm" property="birthdate" styleClass="normalField width100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.birthdate.err")%></div>
 					<div class="myLabel width60">E-Mail</div>
-					<div class="myLabel width450" id="Email">
+					<div class="myLabel width400" id="Email">
 						<% if (clientForm.isFacebookRegister()) { %>
 							<bean:write name="ClientForm" property="email" />
 						<% } else {  %>
-							<html:text name="ClientForm" property="email" styleClass="normalField width400"/>
+							<html:text name="ClientForm" property="email" styleClass="normalField width350"/>
 						<% } %>
 					&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.email.err")%></div>
 				</div>
 				<% if (!clientForm.isFacebookRegister()) { %>
 					<div class="myRow">
-						<div class="myLabel width80">Clave</div>
-						<div class="myLabel width160" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width120"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
+						<div class="myLabel width70">Clave</div>
+						<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
 	
-						<div class="myLabel width80">Repetir clave</div>
+						<div class="myLabel width60">Repetir</div>
 						<div class="myLabel width250" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width120"/></div>
 					</div>
 				<% } %>
 				<div class="myRow">
-					<div class="myLabel width80">Ubicaci&oacute;n</div>
-					<div class="myLabel width200">
-						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width150">
+					<div class="myLabel width70">Ubicaci&oacute;n</div>
+					<div class="myLabel width150">
+						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width120">
 							<option value="0">Seleccione</option>
 							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
 								<option	<%=	geo2.getId() == clientForm.getGeo2Id() ? "selected" : ""%>
@@ -113,7 +140,7 @@ $(document).ready(
 							<% } %>
 						</html:select>
 					</div>
-					<div class="myLabel width250">
+					<div class="myLabel width220">
 						<html:select name="ClientForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Client.do';this.form.submit()" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
 							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>	
@@ -123,7 +150,7 @@ $(document).ready(
 							<% } %>
 						</html:select>
 					</div>
-					<div class="myLabel width250">
+					<div class="myLabel width220">
 						<html:select name="ClientForm" property="geo4Id" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
 							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>	
@@ -139,6 +166,9 @@ $(document).ready(
 			</html:form>
 		</div>
 		<!-- aca Termina el formulario -->
+		<div id="formHelpers">
+			<div class="helper" style="margin-top:20px; height:180px;"><strong>Registr&aacute;ndote</strong> como usuario vas a poder navegar por el sitio sin necesidad de cargar tus datos cada ves que te quieras <strong>contactar con alguna empresa o profesional</strong>.</div>
+		</div>
 	</div>
 </div>
 <!-- % @ include file="includes/fbShare.jsp" %-->

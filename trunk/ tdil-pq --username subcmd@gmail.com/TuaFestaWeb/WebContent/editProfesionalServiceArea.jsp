@@ -96,7 +96,7 @@ function limpiarServiceArea() {
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Editar areas de cobertura</h1>
-			<h2>Agreg&aacute;, borr&aacute; o modific&aacute; las &aacute;reas de cobertura en las que prestas tus servicios</h2>
+			<h2>En &aacute;reas de cobertura, agrega las zonas donde brindas servicios, as&iacute; te ahorraras tiempo en contestarle a clientes de otras zonas.</h2>
 		</div>
 		<div id="formContent">
 		<html:form method="POST" action="/saveProfesionalServiceArea">
@@ -139,7 +139,7 @@ function limpiarServiceArea() {
 							</display:column>
 						</display:table>
 					</div>
-					<div class="myRow width920" style="padding-bottom:0; margin-top:15px;" align="center"><input type="submit" value="Grabar y volver a mi cuenta" /></div>
+					<div class="myRow width920" style="padding-bottom:0; margin-top:15px;" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
 				</div>
 			</div>
 		</html:form>
