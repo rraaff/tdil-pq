@@ -116,6 +116,9 @@ public class ProfesionalUtils {
 		if (!StringUtils.isEmpty(profesionalChange.getBusinessname())) {
 			return true;
 		}
+		if (!StringUtils.isEmpty(profesionalChange.getIibb())) {
+			return true;
+		}
 		if (!StringUtils.isEmpty(profesionalChange.getCuit())) {
 			return true;
 		}

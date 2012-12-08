@@ -817,4 +817,9 @@ public class ProfesionalForm extends TransactionalValidationForm implements GeoL
 		this.sellDescription = sellDescription;
 	}
 
+	@Override
+	public void cancelAddSell() {
+		// TODO Auto-generated method stub
+		
+	}
 }

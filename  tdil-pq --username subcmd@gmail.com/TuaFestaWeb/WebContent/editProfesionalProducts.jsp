@@ -117,14 +117,18 @@ $(document).ready(
 		<html:form method="POST" action="/saveProfesionalProducts">
 			<% EditProfesionalSellForm EditProfesionalSellForm = (EditProfesionalSellForm)session.getAttribute("EditProfesionalSellForm"); %>
 			<div id="formSection" style="width:920px;">
-				<h2>Agregar Producto</h2>
-				<div class="myRow mTop20" id="addproductlayer">
+				<% if (EditProfesionalSellForm.isEdition()) { %>
+					<h2>Modificar Producto</h2>
+				<% } else { %>
+					<h2>Agregar Producto</h2>
+				<% } %>
+				<div class="myRow mTop20" id="addproductlayer" style="<%=EditProfesionalSellForm.isEdition() ? "display: none;" : ""%>">
 					<div class="myLabel width100per">1) Primer paso: <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" id="addProduct">Seleccion&aacute; la categor&iacute;a</a></div>
 				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
 				<div id="addSellLayer" style="<%=EditProfesionalSellForm.isEdition() ? "" : "display: none;"%>">
 					<div class="myRow">
-						<div class="myLabel width100per"><span id="categoryPath" class="prodServCategoryPath"></span></div>
+						<div class="myLabel width100per"><span id="categoryPath" class="prodServCategoryPath"><%=EditProfesionalSellForm.isEdition() ? EditProfesionalSellForm.getCategorySelected() : ""%></span></div>
 					</div>
 					<html:text name="EditProfesionalSellForm" property="categoryId" styleClass="hidden"/>
 					<html:text name="EditProfesionalSellForm" property="categorySelected" styleClass="hidden"/>
@@ -204,7 +208,7 @@ $(document).ready(
 						<div class="label width300"><input type="file" name="upload4" id="upload4"><br/><a href="./deleteProductImage.do?index=5">Borrar</a><br/><%=TuaFestaErrorFormatter.getErrorFrom(request, EditProfesionalSellForm.image_key + ".err")%></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width100per" align="center"><a href="#" id="cancelAddSell">Cancelar</a>&nbsp;<input type="button" value="Guardar" onclick="javascript:document.EditProfesionalSellForm.action='./editProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();"/></div>
+						<div class="myLabel width100per" align="center"><a href="javascript:document.EditProfesionalSellForm.action='./cancelProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();" id="cancelAddSell">Cancelar</a>&nbsp;<input type="button" value="Guardar" onclick="javascript:document.EditProfesionalSellForm.action='./editProfesionalProductsAddSell.do';document.EditProfesionalSellForm.submit();"/></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width920 subAtForm">&nbsp;</div>

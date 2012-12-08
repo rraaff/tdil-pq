@@ -2,39 +2,54 @@
 
 - LOGIN.JSP (Líneas comentadas entre la 53/55)
   * ¿No recordás con qué E-Mail te registraste? Está sin hacer. ¿Cómo debería ser el proceso? ¿Necesitas que te aclare algo?
-
+RTA: No se que proceso se pueda hacer, el email es la clave.
 
 - EDITPROFESIONALAGENDA.JSP
   * Un pinche que tiene es que cuando grabas un evento te recarga la página con la fecha puesta en el campo de texto y si haces refresh te carga dos eventos con la misma fecha... Luego pincha
-
+RTA: Hecho
 
 - EDITPROFESIONALPRODUCTS.JSP y EDITPROFESIONALSERVICES.JSP
-  * si no agregas la categoría (que de por sí es poco visible, le puse un subtítulo , un botón y un tag para mejorarlo un poco), resulta que cuando queres grabar se te va a la pantalla de error genérica del sitio. Queda muy poco amigable.
+  * si no agregas la categoría (que de por sí es poco visible, le puse un subtítulo , un botón y un tag para mejorarlo un poco), resulta que cuando queres grabar se te va 
+  a la pantalla de error genérica del sitio. Queda muy poco amigable.
+RTA: Lo arregle, era un div mal cerrado
   * El precio acepta cualquier caracter. Sería bueno tener un formateador de textos en los campos de precios.
+RTA: Veo que puedo hacer
   * Cuando modificas un servicio/producto ya creado tenes que agregarle nuevamente el rubro, se puede correjir para que aparezca?
+RTA: No hacia falta, con un par de if te muestro el que y tiene, ademas le puse logica al cancel que no hacia nada
   * cuando agregas una foto (a un producto/servicio) y esta no es compatible o algo, hace que la agrega, después no aparece y no da error alguno. Habría que ver temas de validaciones y poner un texto con los formatos y pesos permitidos.
+RTA: Me lo anoto, el tema de compatibilidad va por el conversor de imagen
 
 - PERFILPUBLICOPROFESIONAL.JSP
   * Le podríamos agregar un línea con la fecha a cada mensaje al lado de quíen la escribió.
+RTA: te agregue la fecha, formato sin hora, acordate que esto toca el perfil y tambien muroPagina.jsp (esta ultima es la paginacion cuando tenes mas de 10 y vas pidiendo mas y mas)
   * Una vez aprobados los video y logos, no aparece.
+RTA: Decime donde los queres y los agrego
 
 - HOMEPROFESIONAL.JSP
   * de la nada se me puso el IIBB en null... Lo modifico y sigue en null.
+RTA: Lo probe y salvo un detalle que cuando solo modificas eso no te lo pone como modificado andaba, esto ya lo arregle. Quizas te faltaba la aprobacion del cambio desde el backend.
 
 - DETALLESDEVENTA.JSP
   * No me aparece el área de cobertura de servicios que le puse.
+RTA: Tenes razon, decime en que lugares lo queres
   * Formatear las unidades de precio. Formato correcto: $ X.XXX.XXX,XX.-
+RTA: lo anoto para hacerlo
 
 - SHARE DE TWITTER
   * Tengo un problema que deberíamos charlar. El share te pone por default el título de la página, que es larguísimo y encima es default, cosas que no identifica realmente que es lo que estás compartiendo. Creo que deberíamos darle una vuelta de rosca.
+RTA: Lo charlamos, el tema es que el share es general, no hay muchos datos que se puedan usar.
 
 - BOADVERTISEMENTADMINISTRATION.JSP
   * En el combo de año para agregar un aviso no pasa del año 2012.
-
+RTA: Hecho
 
 // Para revisar
 Con esto, por lo que vi, el back end estaria completo salvo los casos de borrado de cosas (geo levels, categorias).
 De la parte publica faltaria el circuito de edicion de datos de clientes, el cambio de password del mismo, y lo que tenia de las busquedas (autocompleter y uso del geo level)
+RTA: 
+	La parte de edicion del cliente ya estaba hecha, tenes un par de links abajo
+	Las busquedas las acabo de completar
 
 Mi idea es liquidar maniana la edicion de datos de cliente y cambio de password, y pasado la busqueda.
 Me esta quedando pendiente la busqueda usando geolevel, la moderacion de los datos de venta y de geo levels y en todos los casos de moderacion como vamos a manejar la desaprobacion, es decir, se le va a enviar un mensaje por el esquema de notificaciones o un email?
+RTA: La desaprobacion manda email, ya consolide los sql en el de la base de cero, pero vos corre el incremental 4 que te los crea.

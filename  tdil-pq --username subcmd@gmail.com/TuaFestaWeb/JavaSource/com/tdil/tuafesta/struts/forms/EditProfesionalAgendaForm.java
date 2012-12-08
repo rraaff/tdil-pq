@@ -40,6 +40,7 @@ public class EditProfesionalAgendaForm extends TransactionalValidationForm imple
 	
 	@Override
 	public void reset() throws SQLException {
+		this.eventdate = null;
 		reloadList();
 	}
 	@Override

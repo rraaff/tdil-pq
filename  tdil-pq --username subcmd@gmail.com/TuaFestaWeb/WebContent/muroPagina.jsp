@@ -1,3 +1,4 @@
+<%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.tuafesta.utils.WallUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.WallWrittingValueObject"%>
 <%@page import="java.util.List"%>
@@ -16,7 +17,7 @@ boolean hasnext = list.size() > 10;
 <% int index = 0;
 	for (WallWrittingValueObject wwvo : list) { 
 		if(index < 10) { %>
-			<div><%=wwvo.getOriginaltext() %> (<%=wwvo.getAuthorName()%>)</div>
+			<div><%=wwvo.getOriginaltext() %> (<%=DateUtils.formatDateSp(wwvo.getCreationdate())%> - <%=wwvo.getAuthorName()%>)</div>
 		<% }
 		index = index + 1;
 		%>

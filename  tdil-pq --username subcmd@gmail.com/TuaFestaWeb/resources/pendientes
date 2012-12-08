@@ -1,3 +1,13 @@
+  * Formatear las unidades de precio. Formato correcto: $ X.XXX.XXX,XX.-
+RTA: lo anoto para hacerlo
+
+  * cuando agregas una foto (a un producto/servicio) y esta no es compatible o algo, hace que la agrega, después no aparece y no da error alguno. Habría que ver temas de validaciones y poner un texto con los formatos y pesos permitidos.
+RTA: Me lo anoto, el tema de compatibilidad va por el conversor de imagen
+
+  * El precio acepta cualquier caracter. Sería bueno tener un formateador de textos en los campos de precios.
+RTA: Veo que puedo hacer
+
+*****************
 El listado de profesionales debe tener una opcion de los que tienen cambios
 
 Hola Marcos,
