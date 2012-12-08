@@ -34,8 +34,6 @@ DROP TABLE IF EXISTS PROFESIONAL;
 DROP TABLE IF EXISTS PROFESIONAL_CHANGE;
 DROP TABLE IF EXISTS PROFILE_PICTURE;
 
-DROP TABLE IF EXISTS PROFESIONAL_AGENDA;
-
 DROP TABLE IF EXISTS WALL;
 
 DROP TABLE IF EXISTS CLIENT;
@@ -88,6 +86,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('server
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.api_key','3785427834','api_key de la app de facebook',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.secret','63b6f58fec5dfba0cde041149e3a9255','secret de la app de facebook',0);
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('auto.approve','FALSE','Auto aprobar cambios de profesionales',0);
+
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -115,6 +115,15 @@ INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('passreset.email.prof', 'Reseteo de password de profesional','Nueva clave [PASSWORD]','Nueva clave', 'tuafesta.test@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('passreset.email.client', 'Reseteo de password de cliente','Nueva clave [PASSWORD]','Nueva clave', 'tuafesta.test@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) 
+VALUES('disapprove.personal', 'Desaprobacion de datos personales','La modificacion de tus datos personales no ha sido aprobada.[MOTIVE]', 'Modificacion no aprobada', 'tuafesta.test@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) 
+VALUES('disapprove.business', 'Desaprobacion de datos profesionales','La modificacion de tus datos profesionales no ha sido aprobada.[MOTIVE]', 'Modificacion no aprobada', 'tuafesta.test@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) 
+VALUES('disapprove.sell', 'Desaprobacion de datos venta','La venta [SELL_NAME] no ha sido aprobada.[MOTIVE]','Venta no aprobada', 'tuafesta.test@gmail.com', 0);
 
 
 CREATE TABLE RAW_INSERT (

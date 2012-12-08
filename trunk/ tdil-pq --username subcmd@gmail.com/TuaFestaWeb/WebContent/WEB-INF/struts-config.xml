@@ -679,6 +679,9 @@
   <action name="EditProfesionalSellForm" path="/editProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
+  <action name="EditProfesionalSellForm" path="/cancelProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
+   <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
+  </action>
   <action name="EditProfesionalSellForm" path="/editRemoveProduct" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
@@ -706,6 +709,9 @@
   </action>
   
   <action name="EditProfesionalSellForm" path="/editProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
+   <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfesionalSellForm" path="/cancelProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
   <action name="EditProfesionalSellForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">

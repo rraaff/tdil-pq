@@ -18,7 +18,7 @@ var maxindex = <bean:write name="PromotionForm" property="maxImages" />;
 $(document).ready(
 	function(){
 		$("input[name=startdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-			changeYear: true, yearRange: "1900:2012"});
+			changeYear: true, yearRange: "1900:2020"});
 		$("input[name=enddate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
 			changeYear: true, yearRange: "1900:2020"});
 

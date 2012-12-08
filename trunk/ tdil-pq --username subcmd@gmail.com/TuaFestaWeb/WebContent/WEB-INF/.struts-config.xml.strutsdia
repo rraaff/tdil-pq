@@ -1666,4 +1666,18 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#searchProductTreeAjax" NAME="action171"
   PATH="/searchProductTreeAjax" SHAPE="240,13601,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#cancelProfesionalServicesAddSell" NAME="action172"
+  PATH="/cancelProfesionalServicesAddSell" SHAPE="96,14577,0,0"
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalServices.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#cancelProfesionalProductsAddSell" NAME="action173"
+  PATH="/cancelProfesionalProductsAddSell" SHAPE="96,14577,0,0"
+  TITLE="EditProfesionalSellForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editProfesionalProducts.jsp" TARGET="page45" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

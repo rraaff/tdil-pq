@@ -161,6 +161,16 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 		this.referenceprice = edited.getReferencePrice();
 	}
 	
+	@Override
+	public void cancelAddSell() {
+		this.edited = null;
+		this.categoryId = null;
+		this.categorySelected = null;
+		this.sellName = null;
+		this.sellDescription = null;
+		this.referenceprice = null;
+	}
+	
 	public void addSell() {
 		SellBean productbean = null;
 		if (edited != null) {
@@ -255,6 +265,7 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 	@Override
 	public void reset() throws SQLException {
 		this.objectId = 0;
+		this.edited = null;
 		this.image1 = null;
 		this.image2 = null;
 		this.image3 = null;

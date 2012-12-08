@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="java.util.List"%>
@@ -130,7 +131,7 @@ $(document).ready(function(){
 							for (WallWrittingValueObject wwvo : muro) { 
 								if(index < 10) { %>
 									<div class="myRow comment rowMuro <%= wwvo.getIdAuthor() == null ? "rowAnswer" : "" %>"><%=wwvo.getOriginaltext() %></div>
-									<div class="myRow comment">(<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
+									<div class="myRow comment">(<%=DateUtils.formatDateSp(wwvo.getCreationdate())%>-<%=wwvo.getIdAuthor() == null ? profesional.getBusinessname() : wwvo.getAuthorName()%>)</div>
 								<% }
 								index = index + 1;
 								%>
