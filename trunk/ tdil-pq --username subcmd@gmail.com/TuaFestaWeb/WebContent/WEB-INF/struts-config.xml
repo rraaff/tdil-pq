@@ -295,6 +295,8 @@
   <action path="/searchServiceCategories" scope="request" type="com.tdil.tuafesta.struts.action.SearchServiceCategoriesAjaxAction"/>
   
   
+  <action path="/searchProductTreeAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAjaxAction"/>
+  
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/reviewProfesional" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewProfesionalAction">
    <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
@@ -607,7 +609,8 @@
   </action>
   <action name="EditProfesionalAgendaForm" path="/saveAgenda" parameter="Profesional"
    scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/editProfesionalAgenda.jsp"/>
+   <forward name="continue" path="/editProfesionalAgenda.jsp" redirect="true"/>
+   <forward name="failure" path="/editProfesionalAgenda.jsp"/>
   </action>
     <action name="EditProfesionalAgendaForm" parameter="Profesional"
    path="/deleteAgenda" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">

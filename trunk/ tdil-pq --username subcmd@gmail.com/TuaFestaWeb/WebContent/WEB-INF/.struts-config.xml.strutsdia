@@ -1367,6 +1367,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/editProfesionalAgenda.jsp" TARGET="page50" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#deleteAgenda" NAME="action142" PATH="/deleteAgenda"
   SHAPE="32,5617,0,0" TITLE="EditProfesionalAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1661,4 +1664,6 @@
    PATH="/editClient.jsp" TARGET="page62" TITLE="geo3changed"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#searchProductTreeAjax" NAME="action171"
+  PATH="/searchProductTreeAjax" SHAPE="240,13601,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
