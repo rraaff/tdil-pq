@@ -61,16 +61,45 @@ $(document).ready(
 					if (ui.item) {
 						serviceAreaSelected(ui.item.label, ui.item.value, ui.item.level);
 					} 
-					/*log( ui.item ?
-						"Selected: " + ui.item.label :
-						"Nothing selected, input was " + this.value);*/
 				},
-				open: function() {
-					$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+				open: function() {	$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );},
+				close: function() {$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );}
+			});
+
+			function productSelected(serviceAreaLabel, serviceAreaValue) {
+				$("input[name=product]").attr('value', serviceAreaLabel);
+				$("input[name=productPath]").attr('value', serviceAreaLabel);
+				$("#productAutocompleterContainer").css('display', 'none');
+				$("#productSelectedText").prop('innerHTML', serviceAreaLabel);
+				$("#productSelectedDiv").css('display', 'block');
+				$("input[name=productId]").attr('value', serviceAreaValue);
+			}
+			$( "input[name=product]" ).autocomplete({
+				source: function( request, response ) {
+					$.ajax({
+						url: "searchProductTreeAjax.do",
+						data: {
+							name: request.term
+						},
+						dataType: "json",
+						success: function( data ) {
+							response( $.map( data, function( item ) {
+								return {
+									label: item.name,
+									value: item.id
+								}
+							}));
+						}
+					});
 				},
-				close: function() {
-					$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-				}
+				minLength: 2,
+				select: function( event, ui ) {
+					if (ui.item) {
+						productSelected(ui.item.label, ui.item.value);
+					} 
+				},
+				open: function() {	$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );},
+				close: function() {$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );}
 			});
 	}
 );
@@ -83,6 +112,15 @@ function limpiarServiceArea() {
 	$("#geoLevelAutocompleterContainer").css('display', 'block');
 	$("#geoLevelSelectedDiv").prop('innerHTML', '');
 	$("#geoLevelSelectedDiv").css('display', 'none');
+}
+
+function limpiarProduct() {
+	$("input[name=product]").attr('value', '');
+	$("input[name=productId]").attr('value','');
+	$("input[name=productPath]").attr('value','');
+	$("#productAutocompleterContainer").css('display', 'block');
+	$("#productSelectedText").prop('innerHTML', '');
+	$("#productSelectedDiv").css('display', 'none');
 }
 </script>
 <%@ include file="includes/boErrorJS.jsp" %>
@@ -102,13 +140,18 @@ function limpiarServiceArea() {
 			<div id="formSection" style="width:920px;">
 				<h2>Paso 1: Agreg&aacute; al listado todos los productos y/o servicios que necesitas para tu evento</h2>
 				<html:form method="POST" action="/addToSearch">
-					<div class="myRow">
+					<html:hidden name="OrganizeWizardForm" property="productId" />
+					<html:hidden name="OrganizeWizardForm" property="productPath" />
+					<div class="myRow" id="productAutocompleterContainer">
 						<div class="myLabel width120">Producto/Servicio</div>
 						<div class="myLabel width400"><html:text name="OrganizeWizardForm" property="product" styleClass="normalField width350"/></div>
+					</div>
+					<div id="productSelectedDiv" style="display: none;">
+						<div id="productSelectedText" ></div>
 						<div class="myLabel width50">Precio</div>
 						<div class="myLabel width300"><html:text name="OrganizeWizardForm" property="maxPrice" styleClass="normalField width100"/></div>
+						<html:submit property="operation">Agregar</html:submit>
 					</div>
-					<div class="myRow" align="center"><html:submit property="operation">Agregar</html:submit></div>
 				</html:form>
 				<!-- empieza la tabla de la busqueda -->
 				<html:form method="POST" action="/searchWizard">
@@ -131,7 +174,7 @@ function limpiarServiceArea() {
 							</logic:iterate>
 						</table>
 					</div>
-					<h2>Paso 2: Determin&aacute; la ubicaci&oacute;n de tu evento para buscar aquellos profesinales que trabajen cerca tuyo</h2>
+					<h2>Paso 2: Determin&aacute; la ubicaci&oacute;n de tu evento para buscar aquellos profesionales que trabajen cerca tuyo</h2>
 					<div class="myRow">
 						<div class="myLabel width80">Ubicaci&oacute;n</div>
 						
