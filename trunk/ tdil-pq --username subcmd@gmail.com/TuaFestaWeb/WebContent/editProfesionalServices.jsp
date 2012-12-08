@@ -116,7 +116,7 @@ $(document).ready(
 					<div class="myLabel width100per">1) Primer paso: <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" id="addService">Seleccion&aacute; categor&iacute;a</a></div>
 				</div>
 				<%@ include file="includes/add_sell_layers.jspf"%>
-				<div id="addSellLayer" style="<%=EditProfesionalSellForm.isEdition() ? "" : "display: none;"%>
+				<div id="addSellLayer" style="<%=EditProfesionalSellForm.isEdition() ? "" : "display: none;"%>">
 					<div class="myRow">
 						<div class="myLabel width100per"><span id="categoryPath" class="prodServCategoryPath"></span></div>
 					</div>
@@ -203,6 +203,7 @@ $(document).ready(
 					<div class="myRow">
 						<div class="myLabel width920 subAtForm">&nbsp;</div>
 					</div>
+				</div>
 					<h2>Mis Servicios</h2>
 					<div class="myRow">
 						<%
@@ -220,7 +221,7 @@ $(document).ready(
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</div>
 					<div class="myRow width920" align="center"><a href="./goToProfesionalHome.do?id=<%=websiteUser.getProfesional().getId()%>">Volver a mi cuenta sin grabar</a>&nbsp;<input type="submit" value="Grabar y volver a mi cuenta" /></div>
-				</div>
+				
 		</html:form>
 		</div>
 		<!-- aca Termina el formulario -->
