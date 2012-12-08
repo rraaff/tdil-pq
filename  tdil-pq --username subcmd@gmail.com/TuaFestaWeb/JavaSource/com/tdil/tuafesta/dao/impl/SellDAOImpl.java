@@ -322,4 +322,41 @@ public class SellDAOImpl implements SellDAO {
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectSellsServicesByTextAndPriceAndGeoLevel", params);
 		return list;
 	}
+	
+	@Override
+	public Collection<? extends SellValueObject> selectProductSellsByCategoriesAndPrice(List<Integer> categoriesIds,
+			String maxPrice) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("categories", categoriesIds);
+		if (maxPrice != null && maxPrice.trim().length() > 0) {
+			params.put("maxPrice", Integer.valueOf(maxPrice));
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectProductSellsByCategoriesAndPrice", params);
+		return list;
+	}
+
+	@Override
+	public Collection<? extends SellValueObject> selectServiceSellsByCategoriesAndPrice(List<Integer> categoriesIds,
+			String maxPrice) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("categories", categoriesIds);
+		if (maxPrice != null && maxPrice.trim().length() > 0) {
+			params.put("maxPrice", Integer.valueOf(maxPrice));
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectServiceSellsByCategoriesAndPrice", params);
+		return list;
+	}
+	
+	@Override
+	public Collection<? extends SellValueObject> selectServicesSellsByCategoriesAndPriceAndGeoLevel(
+			List<Integer> categoriesIds, String maxPrice, int geoLevelId) throws SQLException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("categories", categoriesIds);
+		params.put("geoId", geoLevelId);
+		if (maxPrice != null && maxPrice.trim().length() > 0) {
+			params.put("maxPrice", Integer.valueOf(maxPrice));
+		}
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectServicesSellsByCategoriesAndPriceAndGeoLevel", params);
+		return list;
+	}
 }
