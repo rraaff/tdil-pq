@@ -89,12 +89,16 @@ public class EditProfesionalAgendaForm extends TransactionalValidationForm imple
 
 	@Override
 	public void save() throws SQLException, ValidationException {
-		ProfesionalAgenda profesionalAgenda = new ProfesionalAgenda();
-		profesionalAgenda.setBusy(1);
-		profesionalAgenda.setDeleted(0);
-		profesionalAgenda.setIdProfesional(this.id);
-		profesionalAgenda.setDate(DateUtils.parseDateSp(this.getEventdate()));
-		DAOManager.getProfesionalAgendaDAO().insertProfesionalAgenda(profesionalAgenda);
+		ProfesionalAgendaExample profesionalAgendaExample = new ProfesionalAgendaExample();
+		profesionalAgendaExample.createCriteria().andIdProfesionalEqualTo(this.getObjectId()).andDateEqualTo(DateUtils.parseDateSp(this.getEventdate()));
+		if (DAOManager.getProfesionalAgendaDAO().selectProfesionalAgendaByExample(profesionalAgendaExample).isEmpty()) {
+			ProfesionalAgenda profesionalAgenda = new ProfesionalAgenda();
+			profesionalAgenda.setBusy(1);
+			profesionalAgenda.setDeleted(0);
+			profesionalAgenda.setIdProfesional(this.objectId);
+			profesionalAgenda.setDate(DateUtils.parseDateSp(this.getEventdate()));
+			DAOManager.getProfesionalAgendaDAO().insertProfesionalAgenda(profesionalAgenda);
+		}
 	}
 
 	public int getObjectId() {

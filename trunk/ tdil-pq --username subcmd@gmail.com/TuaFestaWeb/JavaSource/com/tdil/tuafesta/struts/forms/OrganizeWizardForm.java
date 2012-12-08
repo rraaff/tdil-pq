@@ -10,8 +10,12 @@ import org.apache.struts.action.ActionForm;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.SearchForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.SearchSellBean;
+import com.tdil.tuafesta.utils.CategoryTreeNode;
+import com.tdil.tuafesta.utils.TreeCategoryUtils;
 
 public class OrganizeWizardForm extends ActionForm implements SearchForm {
 
@@ -22,7 +26,9 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 	
 	private List<SearchSellBean> searchSellBeans = new ArrayList<SearchSellBean>();
 	
+	private String productId;
 	private String product;
+	private String productPath;
 	private String maxPrice;
 	
 	private String geoLevelId;
@@ -35,17 +41,24 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 	@Override
 	public void search() throws ValidationException {
 		try {
+			searchResult = new ArrayList<SellValueObject>();
+
+			List<SellSearchCategories> product = new ArrayList<OrganizeWizardForm.SellSearchCategories>();
+			List<SellSearchCategories> services = new ArrayList<OrganizeWizardForm.SellSearchCategories>();
+			fillSearchCategories(product, services);
+			
+			for (SellSearchCategories prodCat : product) {
+				searchResult.addAll(DAOManager.getSellDAO().selectProductSellsByCategoriesAndPrice(prodCat.getCategoriesIds(), prodCat.getMaxPrice()));
+			}
+			
 			if (StringUtils.isEmpty(this.getGeoLevelId())) {
-				searchResult = new ArrayList<SellValueObject>();
-				for (SearchSellBean searchBean : searchSellBeans) {
-					searchResult.addAll(DAOManager.getSellDAO().selectSellsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
+				for (SellSearchCategories servCat : services) {
+					searchResult.addAll(DAOManager.getSellDAO().selectServiceSellsByCategoriesAndPrice(servCat.getCategoriesIds(), servCat.getMaxPrice()));
 				}
 			} else {
-				searchResult = new ArrayList<SellValueObject>();
 				int geoLevelId = Integer.parseInt(this.getGeoLevelId());
-				for (SearchSellBean searchBean : searchSellBeans) {
-					searchResult.addAll(DAOManager.getSellDAO().selectSellsProductsByTextAndPrice(searchBean.getProduct(), searchBean.getMaxPrice()));
-					searchResult.addAll(DAOManager.getSellDAO().selectSellsServicesByTextAndPriceAndGeoLevel(searchBean.getProduct(), searchBean.getMaxPrice(), geoLevelId));
+				for (SellSearchCategories servCat : services) {
+					searchResult.addAll(DAOManager.getSellDAO().selectServicesSellsByCategoriesAndPriceAndGeoLevel(servCat.getCategoriesIds(), servCat.getMaxPrice(), geoLevelId));
 				}
 			}
 		} catch (NumberFormatException e) {
@@ -57,6 +70,24 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 		}
 	}
 	
+	private void fillSearchCategories(List<SellSearchCategories> product2, List<SellSearchCategories> services) throws NumberFormatException, SQLException {
+		for (SearchSellBean searchBean : searchSellBeans) {
+			
+			Category category = DAOManager.getCategoryDAO().selectCategoryByPrimaryKey(Integer.valueOf(searchBean.getProductId()));
+			if (category.getType().equals(SellType.PRODUCT)) {
+				List<CategoryTreeNode> tree = TreeCategoryUtils.getTreeInTransaction(true, SellType.PRODUCT);
+				List<Integer> catids = TreeCategoryUtils.selectChildsOf(tree, category.getId());
+				catids.add(category.getId());
+				product2.add(new SellSearchCategories(searchBean.getMaxPrice(), catids));
+			} else {
+				List<CategoryTreeNode> tree = TreeCategoryUtils.getTreeInTransaction(true, SellType.SERVICE);
+				List<Integer> catids = TreeCategoryUtils.selectChildsOf(tree, category.getId());
+				catids.add(category.getId());
+				services.add(new SellSearchCategories(searchBean.getMaxPrice(), catids));
+			}
+		}
+	}
+
 	public boolean isGeoLevelSelected() {
 		return this.getGeoLevelId() != null && this.getGeoLevelId().trim().length() > 0;
 	}
@@ -94,10 +125,14 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 	}
 
 	public void addSearchSellBean() {
-		// TODO validaciones
 		SearchSellBean searchSellBean = new SearchSellBean();
-		searchSellBean.setProduct(this.getProduct());
-		searchSellBean.setMaxPrice(this.getMaxPrice());
+		searchSellBean.setProduct(this.getProductPath());
+		searchSellBean.setProductId(this.getProduct());
+		if (StringUtils.isNumeric(this.getMaxPrice())) {
+			searchSellBean.setMaxPrice(this.getMaxPrice());
+		} else {
+			searchSellBean.setMaxPrice(null);
+		}
 		this.getSearchSellBeans().add(searchSellBean);
 		
 		this.setProduct(null);
@@ -153,6 +188,45 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 
 	public void setGeoLevelSelectedText(String geoLevelSelectedText) {
 		this.geoLevelSelectedText = geoLevelSelectedText;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+	public String getProductPath() {
+		return productPath;
+	}
+
+	public void setProductPath(String productPath) {
+		this.productPath = productPath;
+	}
+	
+	private class SellSearchCategories {
+		
+		private String maxPrice;
+		private List<Integer> categoriesIds = new ArrayList<Integer>();
+		
+		public SellSearchCategories(String maxPrice, List<Integer> categoriesIds) {
+			super();
+			this.maxPrice = maxPrice;
+			this.categoriesIds = categoriesIds;
+		}
+
+		public String getMaxPrice() {
+			return maxPrice;
+		}
+
+		public List<Integer> getCategoriesIds() {
+			return categoriesIds;
+		}
+		
+		
+		
 	}
 
 }

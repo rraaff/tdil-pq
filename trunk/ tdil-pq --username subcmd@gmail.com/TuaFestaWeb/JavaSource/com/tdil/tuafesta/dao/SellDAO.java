@@ -109,4 +109,13 @@ public interface SellDAO {
 
 	Collection<? extends SellValueObject> selectSellsServicesByTextAndPriceAndGeoLevel(String product, String maxPrice, int geoId) throws SQLException;
 
+	Collection<? extends SellValueObject> selectProductSellsByCategoriesAndPrice(List<Integer> categoriesIds,
+			String maxPrice) throws SQLException;
+
+	Collection<? extends SellValueObject> selectServiceSellsByCategoriesAndPrice(List<Integer> categoriesIds,
+			String maxPrice) throws SQLException;
+
+	Collection<? extends SellValueObject> selectServicesSellsByCategoriesAndPriceAndGeoLevel(
+			List<Integer> categoriesIds, String maxPrice, int geoLevelId) throws SQLException;
+
 }

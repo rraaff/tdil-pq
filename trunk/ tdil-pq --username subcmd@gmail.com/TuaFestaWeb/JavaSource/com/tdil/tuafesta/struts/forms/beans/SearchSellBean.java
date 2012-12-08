@@ -9,6 +9,7 @@ public class SearchSellBean implements Serializable {
 	 */
 	private static final long serialVersionUID = -2611624585392019299L;
 	
+	private String productId;
 	private String product;
 	private String maxPrice;
 	
@@ -23,5 +24,11 @@ public class SearchSellBean implements Serializable {
 	}
 	public void setMaxPrice(String maxPrice) {
 		this.maxPrice = maxPrice;
+	}
+	public String getProductId() {
+		return productId;
+	}
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 }
