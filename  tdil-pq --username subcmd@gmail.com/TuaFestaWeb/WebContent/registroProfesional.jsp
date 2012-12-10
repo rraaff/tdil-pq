@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.model.PhoneType"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.ServiceBean"%>
@@ -265,7 +266,9 @@ $(document).ready(
 							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width200" property="name"></display:column>
 							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width250" property="categoryText"></display:column>
-							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referencePrice"></display:column>
+							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
+								<%= LocalizationUtils.formatPrice(((SellBean)pageContext.getAttribute("sells")).getReferencePrice())%>
+							</display:column>
 							<display:column title="acciones" headerClass="sortable width50"><a class="nonelyLink" href="javascript:document.ProfesionalForm.action='./registroProfesionalRemoveSell.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.ProfesionalForm.submit();">Quitar</a>
 							</display:column>
 						</display:table>
