@@ -30,6 +30,8 @@
 $(document).ready(
 	function(){
 
+		$("input[name=referenceprice]").jStepper({minValue:0});
+		
 		$('#upload0').ajaxfileupload({
 		  	'action': './uploadProductImage.do',
 		  'onComplete': function(response) {

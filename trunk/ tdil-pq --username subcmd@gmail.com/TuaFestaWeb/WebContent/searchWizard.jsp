@@ -15,6 +15,10 @@
 <script>
 $(document).ready(
 	function(){
+
+		
+		$("input[name=maxPrice]").jStepper({minValue:0});
+		
 			$("form[name='OrganizeWizardForm']").validate({
 					errorPlacement: function(error, element) {
 						error.appendTo( element.parent("div"));

@@ -11,3 +11,4 @@
 <script type="text/javascript" src="./js/jquery.cookie.js"></script>
 <script type="text/javascript" src="./js/jquery.melt-button.js"></script>
 <script type="text/javascript" src="./js/jquery.autosize.js"></script>
+<script type="text/javascript" src="./js/jquery.jstepper.js"></script>
