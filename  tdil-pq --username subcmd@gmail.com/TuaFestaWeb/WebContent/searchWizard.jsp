@@ -138,7 +138,7 @@ function limpiarProduct() {
 		<!-- aca arranca el formulario -->
 		<div id="titleArea">
 			<h1>Te ayudamos a organizar tu fiesta</h1>
-			<h2>Realizando b&uacute;squedas avanzadas. Obtendr&aacute;s un listados de profesionales, sus productos o servicios y podr&aacute;s contactarlos</h2>
+			<h2>Eleg&iacute; los productos/servicios que buscas, podes poner un precio m&aacute;ximo que pagar&iacute;as (si buscas un producto el precio es por unidad). Despu&eacute;s eleg&iacute;s la zona donde vas a hacer tu fiesta y hace click en buscar.</h2>
 		</div>
 		<div id="formContent">
 			<div id="formSection" style="width:920px;">

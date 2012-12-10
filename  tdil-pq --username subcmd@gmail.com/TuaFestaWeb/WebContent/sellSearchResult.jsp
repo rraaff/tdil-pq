@@ -20,8 +20,9 @@
 <%@ include file="includes/head.jsp" %>
 <style>
 #formSection {
-	width:920px;
+	width:650px;
 	min-height:250px;
+	float:left;
 }
 </style>
 </head>
@@ -57,6 +58,9 @@
 						<%=DisplayTagParamHelper.getFields(request)%>
 				</div>
 				<div class="myRow height30" align="center" style="padding-top:20px;"><a href="./index.jsp">volver al inicio</a> o <a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./goToSearchWizard.do">Realizar otra b&uacute;squeda avanzada</a></div>
+			</div>
+			<div class="banner b250x250">
+				<img src="//" alt="banner 250x250"/>
 			</div>
 		</div>
 	</div>
