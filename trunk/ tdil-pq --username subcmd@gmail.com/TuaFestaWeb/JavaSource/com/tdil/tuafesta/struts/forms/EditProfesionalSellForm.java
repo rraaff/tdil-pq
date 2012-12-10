@@ -450,7 +450,7 @@ public class EditProfesionalSellForm extends TransactionalValidationForm impleme
 	public void handleAjaxFileUpload(Map<String, FileItem> fileItems, ValidationError validationError,
 			Map<String, Object> result) {
 		FileItem uploaded = fileItems.get(AjaxFileUploadAction.UPLOAD_NAME);
-		UploadData uploadData = FieldValidation.validateFileItem(uploaded, image_key, true, validationError);
+		UploadData uploadData = FieldValidation.validateFileItemImage(uploaded, image_key, true, validationError);
 		if (uploadData != null) {
 			long fileSize = uploaded.getSize();
 			if (fileSize > MAX_IMAGE_SIZE) {

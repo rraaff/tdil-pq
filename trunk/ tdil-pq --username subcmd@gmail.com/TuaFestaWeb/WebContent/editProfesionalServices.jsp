@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
@@ -219,7 +220,9 @@ $(document).ready(
 							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
-							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width100" property="referencePrice"></display:column>
+							<display:column title="Precio U" sortable="true" sortName="precio" headerClass="sortable width80">
+								<%= LocalizationUtils.formatPrice(((SellBean)pageContext.getAttribute("sells")).getReferencePrice())%>
+							</display:column>
 							<display:column title="Acciones" headerClass="sortable width100"><a class="nonelyLink" href="./editProfesionalService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>">Editar</a> <a class="nonelyLink" href="javascript:document.EditProfesionalSellForm.action='./editRemoveService.do?index=<%= ((SellBean)pageContext.getAttribute("sells")).getIndex()%>';document.EditProfesionalSellForm.submit();">Quitar</a></display:column>
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>

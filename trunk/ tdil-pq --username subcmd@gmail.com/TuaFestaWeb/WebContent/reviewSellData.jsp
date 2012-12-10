@@ -1,3 +1,4 @@
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
 <%@page import="com.tdil.tuafesta.model.ProfesionalChange"%>
 <%@page import="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"%>
@@ -69,7 +70,9 @@ th.sorted {
 					<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 					<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 					<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
-					<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referenceprice"></display:column>
+					<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
+						<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
+					</display:column>
 					<display:column title="Estado" sortable="true" sortName="Estado" headerClass="sortable width50">
 						<a href="./reviewSell.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">
 						<%= ((SellValueObject)pageContext.getAttribute("sells")).getStatusText()%>

@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.PublicImageBlobBean"%>
 <%@page import="com.tdil.tuafesta.struts.forms.SellDetailsForm"%>
 <%@ include file="includes/userLogged.jspf" %>
@@ -65,7 +66,7 @@
 				</div>
 				<div class="myRow">
 					<div class="myLabel width100">Precio unitario</div>
-					<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.referenceprice"/></strong></div>
+					<div class="myLabel width800"><strong><%=LocalizationUtils.formatPrice(sellDetailsForm.getSellValueObject().getReferenceprice())%></strong></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width100">Ubicaci&oacute;n</div>

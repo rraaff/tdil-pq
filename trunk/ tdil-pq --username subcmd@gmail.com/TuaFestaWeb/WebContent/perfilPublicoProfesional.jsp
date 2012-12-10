@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
@@ -179,7 +180,9 @@ $(document).ready(function(){
 							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
-							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50" property="referenceprice"></display:column>
+							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
+								<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
+							</display:column>
 							<display:column title="acciones" headerClass="sortable width80"><a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a></display:column>
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>

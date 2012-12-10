@@ -90,7 +90,7 @@ public class PromotionForm extends TransactionalValidationForm implements Toggle
 	public void handleAjaxFileUpload(Map<String, FileItem> fileItems, ValidationError error,
 			Map<String, Object> result) {
 		FileItem uploaded = fileItems.get(AjaxFileUploadAction.UPLOAD_NAME);
-		UploadData uploadData = FieldValidation.validateFileItem(uploaded, photo_key, true, error);
+		UploadData uploadData = FieldValidation.validateFileItemImage(uploaded, photo_key, true, error);
 		if (uploadData != null) {
 			long fileSize = uploaded.getSize();
 			if (fileSize > MAX_PHOTO_SIZE) {
