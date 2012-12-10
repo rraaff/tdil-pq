@@ -9,9 +9,14 @@ import org.apache.commons.lang.StringUtils;
 
 public class LocalizationUtils {
 
-	public static String formatPrice(String price) {
+	public static String formatPrice(String priceSt) {
+		String price = priceSt;
 		if (price == null || StringUtils.isEmpty(price)) {
 			return "-";
+		}
+		int index = price.indexOf('.');
+		if (index != 0) {
+			price = price.substring(0, index);
 		}
 		if (!StringUtils.isNumeric(price)) {
 			return "-";
