@@ -25,8 +25,7 @@
 <div id="preContainer">
 	<div id="content">
 		<div id="titleArea">
-			<h1>LEGALES</h1>
-			<h2>T&eacute;rminos y condiciones</h2>
+			<h1>T&eacute;rminos y condiciones</h1>
 		</div>
 		<div id="formContent" class="height450">
 			<div id="leftBar" style="width:680px;">
@@ -47,8 +46,8 @@
 			</div>
 			<div style="width:184px; padding-top:34px; margin-left:20px; float:right;">
 				<h2 style="padding-left:0;">Seguinos en</h2>
-				<div style="margin-bottom:25px; float:left;"><a href="http://www.facebook.com/"><img src="images/skin_basic/buttons/facebookPlaca.gif" alt="Seguinos en Facebook" /></a></div>
-				<div style="float:left;"><a href="http://www.twitter.com/"><img src="images/skin_basic/buttons/twitterPlaca.gif" alt="Seguinos en Twitter" width="184" height="121" /></a></div>
+				<div style="margin-bottom:25px; float:left;"><a href="http://www.facebook.com/TuaFesta" target="_blank" title="Seguinos en Facebook"><img src="images/skin_basic/buttons/facebookPlaca.gif" alt="Seguinos en Facebook"/></a></div>
+				<div style="float:left;"><a href="https://twitter.com/TuaFesta" target="_blank" title="Seguinos en Twitter"><img src="images/skin_basic/buttons/twitterPlaca.gif" alt="Seguinos en Twitter" width="184" height="121" /></a></div>
 			</div>
 		</div>
 	</div>

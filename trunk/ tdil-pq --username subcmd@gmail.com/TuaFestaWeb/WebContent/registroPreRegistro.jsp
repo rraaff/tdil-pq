@@ -117,7 +117,7 @@
 		%>
 		<div id="formContent" style="margin-top:0; padding-top:0;">
 			<div id="moduloPreReg" class="cliente">
-				<h2>&#191;Te queres registrar para entran en contacto con los mejores profesionales?</h2>
+				<h2>&#191;Te queres registrar para entrar en contacto con los mejores profesionales?</h2>
 				<p>Podes registrarte sin costo alguno usando tu cuenta de Facebook o <a href="./goToRegistroCliente.do" title="Registrate sin usar tu cuenta de Facebook">simplemente cargando unos datos b&aacute;sicos.</a></p>
 				<div id="buttonFB"><a href="<%=Facebook.getLoginRedirectURL(apikey,redirect + LoginClientFacebookAction.redirect_uri, Facebook.email_perms)%>"><img src="images/null.gif" width="324" height="65" /></a></div>
 			</div>
