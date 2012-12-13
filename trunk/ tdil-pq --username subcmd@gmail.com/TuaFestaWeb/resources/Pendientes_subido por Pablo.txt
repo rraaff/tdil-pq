@@ -16,6 +16,7 @@ Pablo: No sé. ¿Qué proceso está de moda? A veces hay sitios que te dice, "si no 
 - EDITPROFESIONALPRODUCTS.JSP y EDITPROFESIONALSERVICES.JSP
   * cuando agregas una foto (a un producto/servicio) y esta no es compatible o algo, hace que la agrega, después no aparece y no da error alguno. Habría que ver temas de validaciones y poner un texto con los formatos y pesos permitidos.
 RTA: Me lo anoto, el tema de compatibilidad va por el conversor de imagen
+HECHO
 
 - PERFILPUBLICOPROFESIONAL.JSP
   * Una vez aprobados los video y logos, no aparece.
@@ -28,6 +29,7 @@ RTA: Tenes razon, decime en que lugares lo queres
 Pablo: Ponelo en donde quieras que yo lo acomodo después.
   * Formatear las unidades de precio. Formato correcto: $ X.XXX.XXX,XX.-
 RTA: lo anoto para hacerlo
+HECHO
 
 - SHARE DE TWITTER
   * Tengo un problema que deberíamos charlar. El share te pone por default el título de la página, que es larguísimo y encima es default, cosas que no identifica realmente que es lo que estás compartiendo. Creo que deberíamos darle una vuelta de rosca.
