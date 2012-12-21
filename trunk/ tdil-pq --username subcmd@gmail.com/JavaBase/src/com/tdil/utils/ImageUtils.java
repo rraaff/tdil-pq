@@ -41,6 +41,12 @@ public class ImageUtils {
 		}
 	}
 	
+	public static MultimediaInfo getMultimediaInfo(String fileName) throws InputFormatException, EncoderException {
+		Encoder encoder = new Encoder();
+		MultimediaInfo info = encoder.getInfo(new File(fileName));
+		return info;
+	}
+	
 	public static VideoSize getDestinationVideoSize(String fileName, String width, String height, boolean constrain) throws InputFormatException, EncoderException {
 		Encoder encoder = new Encoder();
 		MultimediaInfo info = encoder.getInfo(new File(fileName));
