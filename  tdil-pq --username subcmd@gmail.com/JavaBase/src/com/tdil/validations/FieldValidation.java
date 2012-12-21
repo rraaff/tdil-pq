@@ -3,6 +3,11 @@ package com.tdil.validations;
 import gnu.regexp.RE;
 import gnu.regexp.UncheckedRE;
 
+import it.sauronsoftware.jave.EncoderException;
+import it.sauronsoftware.jave.MultimediaInfo;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -12,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -20,6 +27,7 @@ import org.apache.struts.upload.FormFile;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.forms.UploadData;
+import com.tdil.utils.ImageUtils;
 
 public class FieldValidation {
 	
@@ -191,6 +199,54 @@ public class FieldValidation {
 		try {
 			io = fileItem.getInputStream();
 			return new UploadData(fileName, IOUtils.toByteArray(io), true);
+		} catch (IOException e) {
+			getLog().error(e.getMessage(), e);
+			validation.setGeneralError(e.getMessage());
+		} finally {
+			if (io != null) {
+				try {
+					io.close();
+				} catch (IOException e) {
+					getLog().error(e.getMessage(), e);
+					validation.setGeneralError(e.getMessage());
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static UploadData validateFileItemImage(FileItem fileItem, String fieldName, boolean required, ValidationError validation) {
+		boolean isEmpty = fileItem.getSize() == 0;
+		if (isEmpty && required) {
+			validation.setFieldError(fieldName, ValidationErrors.CANNOT_BE_EMPTY);
+			return null;
+		}
+		if (isEmpty) {
+			return null;
+		}
+		String name = fileItem.getName();
+		String fileName = name;
+		InputStream io = null;
+		try {
+			io = fileItem.getInputStream();
+			File file = File.createTempFile("upload", "." + FilenameUtils.getExtension(fileItem.getName()));
+			FileOutputStream fout = new FileOutputStream(file);
+			byte content[] = IOUtils.toByteArray(io);
+			try {
+				fout.write(content);
+				fout.close();
+				MultimediaInfo info = ImageUtils.getMultimediaInfo(file.getAbsolutePath());
+				if (info.getVideo() == null) {
+					validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
+					return null;
+				}
+			} catch (EncoderException e) {
+				validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
+				return null;
+			} finally {
+				file.delete();
+			}
+			return new UploadData(fileName, content, true);
 		} catch (IOException e) {
 			getLog().error(e.getMessage(), e);
 			validation.setGeneralError(e.getMessage());
