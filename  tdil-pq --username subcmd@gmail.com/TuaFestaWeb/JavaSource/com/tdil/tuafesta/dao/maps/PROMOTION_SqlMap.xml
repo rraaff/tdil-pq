@@ -294,6 +294,14 @@
     and pp.orderNumber = 0
     and CURDATE() &gt;= promo.startDate
     and promo.endDate &gt;= CURDATE()
+    and EXISTS (select * from PROMOTION_SELL ps, SELL s, PROFESIONAL prof
+    	where ps.id_promotion = promo.id
+    	and ps.id_sell = s.id
+    	and s.id_profesional = prof.id
+    	and s.approved = 1
+    	and s.deleted = 0
+    	and prof.status = 2
+    	and prof.deleted = 0)
   </select>
   
 </sqlMap>
