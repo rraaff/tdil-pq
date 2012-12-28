@@ -409,6 +409,8 @@
     where ad.type = 1
     and ad.deleted = 0
     and ad.id_sell = 0
+    and prof.status = 2
+    and prof.deleted = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
@@ -425,6 +427,8 @@
     and ad.id_sell != 0
     and s.id = ad.id_sell 
     and s.id_profesional = cat.id
+    and prof.status = 2
+    and prof.deleted = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
@@ -441,6 +445,8 @@
     where ad.type = 2
     and ad.deleted = 0
     and ad.id_sell = 0
+    and prof.status = 2
+    and prof.deleted = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
@@ -457,6 +463,8 @@
     and ad.id_sell != 0
     and s.id = ad.id_sell 
     and s.id_profesional = cat.id
+    and prof.status = 2
+    and prof.deleted = 0
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
@@ -476,6 +484,8 @@
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
 	and CURDATE() &gt;= ad.fromDate
+	and prof.status = 2
+    and prof.deleted = 0
 	and s.id_profesional = prof.id
 	and hc.deleted = 0
 	and hc.toDate &gt;= CURDATE()
@@ -494,6 +504,8 @@
     and ad.deleted = 0
     and ad.id_sell != 0
     and s.id = ad.id_sell 
+    and prof.status = 2
+    and prof.deleted = 0
     and s.id_profesional = cat.id
     and ad.id_profesional = prof.id
 	and ad.toDate &gt;= CURDATE()
