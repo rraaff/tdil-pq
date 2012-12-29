@@ -107,7 +107,7 @@
 
 	<target name="js.minify">
 		<apply verbose="true" executable="java" parallel="false" relative="true" dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/js/">
-			<fileset dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/js" includes="*.js"/>
+			<fileset dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/js" includes="*.js" excludes="jquery.jstepper.js"/>
 			<arg value="-jar" />
 			<arg path="../../DevelopmentLibraries/yuicompressor-2.4.6.jar"/>
             <arg value="--charset"/>
