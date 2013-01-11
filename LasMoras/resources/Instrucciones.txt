@@ -1,0 +1,20 @@
+Instalación
+===========
+
+1) Descomprimir el zip
+
+2) Correr resources/database.sql como root del mysql
+
+3) Correr resources/lasmoras.sql como LASMORAS_USER/LASMORAS_USER base LASMORAS
+
+4) Copiar los archivos al root del servidor
+
+4) Modificar constantes.php con los datos del server de la base (constante DB_SERVER)
+
+
+Accesos
+=======
+
+Sitio público: ./index.php
+
+BackOffice: ./boLogin.php
