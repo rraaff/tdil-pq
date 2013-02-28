@@ -36,7 +36,7 @@ public abstract class AjaxAction extends Action {
 	}
 	
 	protected String getContentType() {
-		return "Content-Type: application/json; charset=ISO-8859-1";
+		return "application/json; charset=ISO-8859-1";
 	}
 
 	protected final void writeJsonResponse(HashMap result, HttpServletResponse response) throws IOException {
