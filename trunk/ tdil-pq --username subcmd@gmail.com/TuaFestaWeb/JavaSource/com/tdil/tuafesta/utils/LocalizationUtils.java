@@ -15,7 +15,7 @@ public class LocalizationUtils {
 			return "-";
 		}
 		int index = price.indexOf('.');
-		if (index != 0) {
+		if (index != -1) {
 			price = price.substring(0, index);
 		}
 		if (!StringUtils.isNumeric(price)) {
