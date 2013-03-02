@@ -61,9 +61,9 @@
 						<div class="myLabel width450"><strong><%= profesional.getBusinessname() %></strong></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width210">CUIT <strong><%= profesional.getCuit() %></strong></div>
+						<div class="myLabel width210">CUIT <strong><%= profesional.getCuit() != null ? profesional.getCuit() : "" %></strong></div>
 						<div class="myLabel width20">&nbsp;</div>
-						<div class="myLabel width210">IIBB <strong><%= profesional.getIibb() %></strong></div>
+						<div class="myLabel width210">IIBB <strong><%= profesional.getIibb() != null ? profesional.getIibb() : "" %></strong></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width450">Localizado en <strong><%= profesionalHomeForm.getLocation().getNombre4()%>, <%= profesionalHomeForm.getLocation().getNombre3()%>, <%= profesionalHomeForm.getLocation().getNombre2()%></strong></div>
