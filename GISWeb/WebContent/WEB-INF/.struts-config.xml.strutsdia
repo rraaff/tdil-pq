@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="#login" NAME="action0" PATH="/login"
+  SHAPE="32,17,0,0" TITLE="LoginForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/register.do"
+   SUBTYPE="confirmed" TARGET="action3" TITLE="/register.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/login.do" SUBTYPE="confirmed"
+   TARGET="action0" TITLE="/login.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/requestResetPassword.do"
+   SUBTYPE="confirmed" TARGET="action6" TITLE="/requestResetPassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="ajaxReturn" NAME="forward0" PATH="/empty.jsp"
+  SHAPE="32,497,0,0" TARGET="page3" TITLE="ajaxReturn" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/empty.jsp" SHAPE="240,514,0,0"
+  SUBTYPE="jsp" TITLE="empty.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notLogged" NAME="forward1" PATH="/index.jsp"
+  SHAPE="48,273,0,0" TARGET="page0" TITLE="notLogged" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="invalidAction" NAME="forward2" PATH="/index.jsp"
+  SHAPE="48,385,0,0" TARGET="page0" TITLE="invalidAction" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#logout" NAME="action2" PATH="/logout"
+  SHAPE="32,609,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="notAuthorized" NAME="forward3" PATH="/index.jsp"
+  SHAPE="32,1521,0,0" TARGET="page0" TITLE="notAuthorized"
+  TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#register" NAME="action3" PATH="/register"
+  SHAPE="32,721,0,0" TITLE="RegisterForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="/ups.jsp" SHAPE="240,977,0,0"
+  SUBTYPE="jsp" TITLE="ups.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#requestResetPassword" NAME="action6"
+  PATH="/requestResetPassword" SHAPE="448,641,0,0"
+  TITLE="RequestResetPasswordForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToResetPassword" NAME="action5"
+  PATH="/goToResetPassword" SHAPE="656,657,0,0"
+  TITLE="ResetPasswordForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/resetPassword.jsp" TARGET="page6" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetPassword" NAME="action7" PATH="/resetPassword"
+  SHAPE="864,641,0,0" TITLE="ResetPasswordForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/resetPassword.jsp" TARGET="page6" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page6" PATH="/resetPassword.jsp"
+  SHAPE="864,769,0,0" SUBTYPE="jsp" TITLE="resetPassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/resetPassword.do"
+   SUBTYPE="confirmed" TARGET="action7" TITLE="/resetPassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page7" PATH="/home.jsp" SHAPE="1072,641,0,0"
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#searchStates" NAME="action8" PATH="/searchStates"
+  SHAPE="448,897,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToUpdatePerson" NAME="action9"
+  PATH="/goToUpdatePerson" SHAPE="32,897,0,0" TITLE="UpdatePersonForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/updatePerson.jsp" TARGET="page2" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page2" PATH="/updatePerson.jsp" SHAPE="240,914,0,0"
+  SUBTYPE="jsp" TITLE="updatePerson.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/updatePerson.do"
+   SUBTYPE="confirmed" TARGET="action10" TITLE="/updatePerson.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#updatePerson" NAME="action10" PATH="/updatePerson"
+  SHAPE="240,913,0,0" TITLE="UpdatePersonForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#facebooklogin" NAME="action11" PATH="/facebooklogin"
+  SHAPE="32,1153,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1" PATH="/index.jsp"
+   TARGET="page0" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="register" NAME="forward2"
+   PATH="/index.jsp?openRegister=true" TARGET="page0" TITLE="register"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#twitterlogin" NAME="action12" PATH="/twitterlogin"
+  SHAPE="976,529,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="register" NAME="forward0"
+   PATH="/index.jsp?openRegister=true" TARGET="page0" TITLE="register"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2" PATH="/index.jsp"
+   TARGET="page0" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#facebookconnect" NAME="action1"
+  PATH="/facebookconnect" SHAPE="976,961,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2" PATH="/home.jsp"
+   TARGET="page7" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#twitterconnect" NAME="action4"
+  PATH="/twitterconnect" SHAPE="976,961,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -1,0 +1,20 @@
+[
+    {
+    "description": "Casa",
+    "id": "1",
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2012",
+    "lastChangeHour": "20:30",
+    "lastChangeUser": "MARCELA",
+    "on": true
+  },
+    {
+    "description": "Estudio",
+    "id": "2",
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2012",
+    "lastChangeHour": "20:30",
+    "lastChangeUser": "MARCELA",
+    "on": false
+  }
+]

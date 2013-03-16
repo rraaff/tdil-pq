@@ -350,6 +350,9 @@
 <Context path="/LoJackWeb" reloadable="true" docBase="LoJackWeb/WebContent/" workDir="LoJackWeb/work" >
    <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
 </Context>
+<Context path="/GISWeb" reloadable="true" docBase="GISWeb/WebContent/" workDir="GISWeb/work" >
+   <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
+</Context>
       </Host>
 
     </Engine>

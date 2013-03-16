@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.apache.poi.hssf.record.formula.functions.Proper;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.gis.GISConnector;
 import com.tdil.lojack.roles.WebsiteUser;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.thalamus.client.cache.ThalamusCache;
@@ -119,6 +120,14 @@ public class LoJackWebConfig implements ServletContextListener {
 					getLog().error("Can not initialize caches", e);
 				}
 				Role.addRole(WebsiteUser.INSTANCE);
+				
+				String gisserver = prop.getProperty("gis.server");
+				
+				if (gisserver != null) {
+					GISConnector.setGisServer(gisserver);
+				}
+				getLog().fatal(
+						"GIS server is " + (gisserver == null ? "null" : gisserver));
 			}
 			getLog().fatal("LoJackWebConfig initialized");
 		} catch (Exception e) {
