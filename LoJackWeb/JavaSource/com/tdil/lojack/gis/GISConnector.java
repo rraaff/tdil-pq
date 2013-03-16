@@ -36,6 +36,7 @@ public class GISConnector {
 	private static String gisServer = "http://localhost:8180/GISWeb/";
 	
 	private static final String GET_ALARMS = "getAlarms.json";
+	private static final String SEND_PANC = "sendPanic.json";
 
 	public static Collection<Alarm> getAlarms(String userId) {
 		JSONObject jsonObject = new JSONObject();
@@ -49,8 +50,16 @@ public class GISConnector {
 			return null;
 		}
 	}
-	public static boolean sendPanicSignal(Alarm alarm) {
-		return false;
+	public static boolean sendPanicSignal(String alarmId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("alarmId", alarmId);
+		try {
+			GISResponse response = execute(jsonObject, SEND_PANC);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
 	}
 	public static boolean activateAlarm(Alarm alarm, String password) {
 		return false;

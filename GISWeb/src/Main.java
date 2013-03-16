@@ -36,6 +36,8 @@ public class Main {
 		
 		JSONArray jsonObject = JSONArray.fromObject( alarms ); 
 		System.out.println(jsonObject.toString(2));
+		
+		
 	}
 
 }
