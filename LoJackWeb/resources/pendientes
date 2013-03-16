@@ -1,0 +1,116 @@
+{
+  "link":   {
+    "ref": "SingUp",
+    "href": "/person"
+  },
+  "reason": "NotRegisterd",
+  "data":   {
+    "links": [],
+    "consumer": null,
+    "profile":     {
+      "links": [],
+      "email": "rraaff_666@hotmail.com",
+      "facebook": "marcos.1101",
+      "lastname": "Godoy",
+      "firstname": "Marcos"
+    },
+    "credential": null,
+    "socialConnections": [    {
+      "links": [],
+      "partyId": null,
+      "providerId": "facebook",
+      "providerUserId": "1495896967",
+      "displayName": "marcos.1101",
+      "profileUrl": "http://facebook.com/profile.php?id=1495896967",
+      "imageUrl": "http://graph.facebook.com/1495896967/picture",
+      "accessToken": "AAAHYZCSDDPbABANTYBCNrFO9QZBCNzbjpofXZCOOvaC0N287eyYS7RbwfbbABxVQVImgzN0NyAYh2qyerZAy2EeuC80IZCBXyGSqjXTbg1wZDZD",
+      "secret": null,
+      "refreshToken": null,
+      "expireTime": 1363603847654
+    }]
+  }
+}
+
+
+tema login FACEBOOK
+link en la pagina
+que jquery que haga el submit, reciba la url y haga el redirect
+
+
+
+HeadersPreviewResponseCookiesTiming
+{"result":"ERR","general":"Error interno del servidor"}
+
+limpiar datos al cerrar la ventana
+<% if (registerForm.isInUse(PersonFieldNames.firstName)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.lastName)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.gender)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.email)) { %>
+	$("form[name='LoginForm'] input[name='password']").attr('value', '');
+	<% if (registerForm.isInUse(PersonFieldNames.birthDate)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneType)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.countryId)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.stateId)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.activeConsumer)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.preferedBrand)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.alternativeBrandId)) { %>
+	<% if (registerForm.isInUse(PersonFieldNames.consumtionFrequency)) { %>
+
+commit
+pull
+merge tool en archivos rojos, resolviendo conflictos
+add to index en cada uno
+push to upstream
+
+-1: isAlive
+	Hecho
+
+0. generales
+agregamos 1 parametro general en todos los request que es el codigo de touchpoint.
+	Lo agregue y se rompe, revisarlo
+ 
+1. Proceso de Registración
+mostrar los errores que devuelve thalamus cuando hay problemas en el formulario, 
+poniendo cada error donde corresponde
+hacer el formulario de registracion dinamico en base a las definiciones que devuelve thalamus
+agregar la parte del OptIn al formulario de registracion (permiso de envio de emails de la marca al consumidor)
+actualizamos el servicio rest que toma la registracion, adecuarlo el sitio al nuevo servicio
+(NO DISPONIBLE AHORA, ESTARA EN DOS SEMANAS) : registracion con facebook: en el proceso de registracion poder linkear la cuenta con la de facebook, o registrarse directamente con facebook
+ 
+2. Proceso de Login
+poderse loggear con email / dni
+(DISPONIBLE EN DOS SEMANAS) poderse loggear con facebook
+ 
+3. Proces de Recupero de password
+agregar la funcionalidad de recupero de password , ya creamos los servicios rest para hacer esto
+ 
+4. edicion de perfil una vez que el consumidor esta loggeado
+ 
+5. login a una actividad, armando una pagina mas (si no esta implementado ya en la parte del programa de millas)
+
+
+Dudas:
+
+Tema del touchpoint, ya lo pase por otro email, pero me esta dando error cuando lo paso como header (retorna 400, bad request).
+Que valor se puede enviar?
+
+En la registracion, de donde salen los valores para:
+preferedProductId
+alternativeProductdId
+brandFamilyId
+channel
+
+La registracion esta dando error 401, cuando la misma no deberia chequear por login.
+
+Los campos fijos para Request Reset Password, podrian retornarse en un servicio asi no los tendria que hardcodear.
+
+El servicio RequestResetPassword esta retornando el codigo 201, esto esta bien?
+Estaria bueno que el servicio me retorne el token, para poder hacer pruebas, hoy esta mando mails reles?
