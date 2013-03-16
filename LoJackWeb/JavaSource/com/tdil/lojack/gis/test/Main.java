@@ -12,6 +12,13 @@ public class Main {
 		System.out.println(GISConnector.getAlarms("1"));
 		
 		System.out.println(GISConnector.sendPanicSignal("1"));
+		
+		System.out.println(GISConnector.activateAlarm("1", "s"));
+		System.out.println(GISConnector.deactivateAlarm("1", "s"));
+		
+		System.out.println(GISConnector.getAlarmLog("1"));
+		
+		System.out.println(GISConnector.changeAlarmPassword("1", "newnew"));
 	}
 
 }

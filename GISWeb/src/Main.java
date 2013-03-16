@@ -37,7 +37,23 @@ public class Main {
 		JSONArray jsonObject = JSONArray.fromObject( alarms ); 
 		System.out.println(jsonObject.toString(2));
 		
+		ChangeLog changeLog = new ChangeLog();
+		changeLog.setAction("ACTIVAR");
+		changeLog.setDate("2012");
+		changeLog.setHour("20:30");
+		changeLog.setUser("MARCELA");
 		
+		List<ChangeLog> log = new ArrayList<ChangeLog>();
+		log.add(changeLog);
+		changeLog = new ChangeLog();
+		changeLog.setAction("DESATIVAR");
+		changeLog.setDate("2012");
+		changeLog.setHour("22:30");
+		changeLog.setUser("MARCOS");
+		log.add(changeLog);
+		
+		jsonObject = JSONArray.fromObject( log ); 
+		System.out.println(jsonObject.toString(2));
 	}
 
 }

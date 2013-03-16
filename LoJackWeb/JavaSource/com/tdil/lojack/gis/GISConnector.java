@@ -37,6 +37,10 @@ public class GISConnector {
 	
 	private static final String GET_ALARMS = "getAlarms.json";
 	private static final String SEND_PANC = "sendPanic.json";
+	private static final String ACTIVATE_ALARM = "activateAlarm.json";
+	private static final String DEACTIVATE_ALARM = "deactivateAlarm.json";
+	private static final String GET_ALARM_LOG = "getAlarmLog.json";
+	private static final String CHANGE_ALARM_PASSWORD = "changeAlarmPassword.json";
 
 	public static Collection<Alarm> getAlarms(String userId) {
 		JSONObject jsonObject = new JSONObject();
@@ -61,19 +65,54 @@ public class GISConnector {
 			return false;
 		}
 	}
-	public static boolean activateAlarm(Alarm alarm, String password) {
-		return false;
+	public static boolean activateAlarm(String alarmId, String password) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("alarmId", alarmId);
+		jsonObject.put("password", password);
+		try {
+			GISResponse response = execute(jsonObject, ACTIVATE_ALARM);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	public static boolean deactivateAlarm(String alarmId, String password) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("alarmId", alarmId);
+		jsonObject.put("password", password);
+		try {
+			GISResponse response = execute(jsonObject, DEACTIVATE_ALARM);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
 		
 	}
-	public static boolean deactivateAlarm(Alarm alarm, String password) {
-		return false;
-		
+	public static Collection<ChangeLog> getAlarmLog(String alarmId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("alarmId", alarmId);
+		try {
+			GISResponse response = execute(jsonObject, GET_ALARM_LOG);
+			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
+			return resultObj;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
 	}
-	public static List<ChangeLog> getAlarmLog(Alarm alarm) {
-		return null;
-	}
-	public static boolean changeAlarmPassword(Alarm alarm, String newPassword) {
-		return false;
+	public static boolean changeAlarmPassword(String alarmId, String newPassword) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("alarmId", alarmId);
+		jsonObject.put("newPassword", newPassword);
+		try {
+			GISResponse response = execute(jsonObject, CHANGE_ALARM_PASSWORD);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
 	}
 
 	public static List<Light> getLights(String userId) {
