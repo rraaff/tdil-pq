@@ -4,15 +4,4 @@ Instalacion
 Armar el war con el ant target makeEntregable.
 
 Copiar el war al directorio de wars del app server.
-De ser necesario cambiar la URL del server que provee los servicios de Thalamus editar
-dentro del archivo web.xml del war la siguiente propery:
-
-<context-param>
-  <param-name>thalamus.server</param-name>
-  <param-value>http://ec2-23-23-84-70.compute-1.amazonaws.com:8080</param-value>
- </context-param>
- 
-<context-param>
-  <param-name>thalamus.touchpoint</param-name>
-  <param-value>WEBSITE</param-value>
- </context-param>
+La configuracion se hace seteando la system property lojack.configuration.
