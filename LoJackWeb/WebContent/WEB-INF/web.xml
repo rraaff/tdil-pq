@@ -6,18 +6,6 @@
   <param-name>application.resources</param-name>
   <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>
  </context-param>
- <context-param>
-  <param-name>thalamus.server</param-name>
-  <param-value>http://ec2-23-23-84-70.compute-1.amazonaws.com:80/thalamus</param-value>
- </context-param>
- <context-param>
-  <param-name>thalamus.touchpoint.code</param-name>
-  <param-value>test</param-value>
- </context-param>
- <context-param>
-  <param-name>thalamus.touchpoint.token</param-name>
-  <param-value>testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</param-value>
- </context-param>
  <filter>
   <filter-name>NoCachingFilter</filter-name>
   <filter-class>com.tdil.web.NoCacheFilter</filter-class>

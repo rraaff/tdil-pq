@@ -1,5 +1,7 @@
 package com.tdil.lojack.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Enumeration;
 import java.util.Properties;
 
@@ -9,7 +11,9 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.record.formula.functions.Proper;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.roles.WebsiteUser;
@@ -37,6 +41,31 @@ public class LoJackWebConfig implements ServletContextListener {
 		try {
 			getLog().fatal("LoJackWebConfig initializing");
 
+			String propertiesLocation = System.getProperty("lojack.configuration");
+			if (propertiesLocation == null) {
+				getLog().fatal("no lojack.configuration provided");
+			}
+			Properties prop = new Properties();
+			File file = new File(propertiesLocation);
+			if (file == null || !file.exists()) {
+				getLog().fatal("lojack.configuration not found: " + (propertiesLocation == null ? "null" : propertiesLocation));
+			} else {
+				getLog().fatal("LoJackWebConfig initializing from " + propertiesLocation);
+			}
+			FileInputStream fileInput = null;
+			try {
+				fileInput = new FileInputStream(file);
+				prop.load(fileInput);
+			} catch (Exception e1) {
+				getLog().fatal(e1.getMessage(), e1);
+			} finally {
+				if (fileInput != null) {
+					fileInput.close();
+				}
+			}
+			String logFilePath = prop.getProperty("log4j.location");
+			LoggerProvider.initialize(logFilePath, LogManager.getCurrentLoggers());
+			
 			ServletContext c = sce.getServletContext();
 			if (c != null) {
 				String applicationResourcesParam = c.getInitParameter("application.resources");
@@ -45,36 +74,27 @@ public class LoJackWebConfig implements ServletContextListener {
 								+ (applicationResourcesParam == null ? "null" : applicationResourcesParam));
 				ApplicationResources.init(applicationResourcesParam);
 				
-				String thalamusserver = c.getInitParameter("thalamus.server");
+				String thalamusserver = prop.getProperty("thalamus.server");
 				if (thalamusserver != null) {
 					ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
 				}
 				getLog().fatal(
 						"Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
 				
-				String thalamustouchpointCode = c.getInitParameter("thalamus.touchpoint.code");
+				String thalamustouchpointCode = prop.getProperty("thalamus.touchpoint.code");
 				if (thalamustouchpointCode != null) {
 					ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
 				}
 				getLog().fatal(
 						"Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
 				
-				String thalamustouchpointToken = c.getInitParameter("thalamus.touchpoint.token");
+				String thalamustouchpointToken = prop.getProperty("thalamus.touchpoint.token");
 				if (thalamustouchpointToken != null) {
 					ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
 				}
 				getLog().fatal(
 						"Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
-
-				Properties properties = new Properties();
-				Enumeration<String> enumeration = c.getInitParameterNames();
-				while (enumeration.hasMoreElements()) {
-					String key = enumeration.nextElement();
-					if (key.startsWith("thalamus.cache")) {
-						properties.put(key, c.getInitParameter(key));
-					}
-				}
-				ThalamusCache.configureWith(properties);
+				ThalamusCache.configureWith(prop);
 				// Initializes the caches
 				try {
 					getLog().fatal("About to initialize cache");
