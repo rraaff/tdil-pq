@@ -10,7 +10,7 @@
      define subcomponents such as "Valves" or "Loggers" at this level.
  -->
 
-<Server port="8108" shutdown="SHUTDOWN">
+<Server port="8208" shutdown="SHUTDOWN">
 
   <!-- Comment these entries out to disable JMX MBeans support used for the 
        administration web application -->
@@ -48,7 +48,7 @@
   <Service name="Catalina">
 
     <!-- Define a non-SSL HTTP/1.1 Connector on port 8080 -->
-    <Connector port="8180" maxHttpHeaderSize="8192"
+    <Connector port="8280" maxHttpHeaderSize="8192"
                maxThreads="150" minSpareThreads="1" maxSpareThreads="10"
                enableLookups="false" redirectPort="8443" acceptCount="100"
                connectionTimeout="20000" disableUploadTimeout="true" maxPostSize="0"/>
@@ -347,10 +347,7 @@
    url="jdbc:mysql://localhost/dbcptest"/>
 
         -->
-<Context path="/GISWeb" reloadable="true" docBase="GISWeb/WebContent/" workDir="GISWeb/work" >
-   <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
-</Context>
-<Context path="/LoJackWeb" reloadable="true" docBase="LoJackWeb/WebContent/" workDir="LoJackWeb/work" >
+<Context path="/ThalamusWeb" reloadable="true" docBase="ThalamusWeb/WebContent/" workDir="ThalamusWeb/work" >
    <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
 </Context>
       </Host>
