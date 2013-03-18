@@ -60,6 +60,40 @@
         <to>/twitter.json</to>
     </rule>
     
+     <rule>
+        <note>
+        </note>
+        <from>/api/v1/signin</from>
+        <to>/signin.jsp</to>
+    </rule>
+     <rule>
+        <note>
+        </note>
+        <from>/api/v1/person</from>
+        <to>/person.json</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/api/v1/activities/.*/login</from>
+        <to>/loginactivity.json</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/api/v1/connect/facebook</from>
+        <to>/connectfacebook.json</to>
+    </rule>
+    /api/v1/connect/twitter
+    <rule>
+        <note>
+        </note>
+        <from>/api/v1/connect/twitter</from>
+        <to>/connecttwitter.json</to>
+    </rule>
+      
     <rule>
         <note>
         </note>

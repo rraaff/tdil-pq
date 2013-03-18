@@ -1,0 +1,32 @@
+{
+  "context": {
+    "links": [
+      {
+        "ref": "home",
+        "href": "http://localhost:8080/thalamus/api/v1/people/home"
+      },
+      {
+        "ref": "profile",
+        "href": "http://localhost:8080/thalamus/api/v1/people/profile"
+      },
+      {
+        "ref": "consumer",
+        "href": "http://localhost:8080/thalamus/api/v1/people/consumer"
+      }
+    ],
+    "activities": [
+      {
+        "links": [],
+        "code": "EMileage",
+        "name": "E Mileage",
+        "message": "E Mileage. You can accumulate points by introducing the codes printed on E packs. Then you can trade those points for items in our catalogue. You will participate in raffle at the end of the activity. You can up-load your codes using your smartphone, our web page, SMS or iPad.",
+        "type": "GENERIC"
+      }
+    ],
+    "simpleProfile": {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "test@test.com"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "link": {
+        "ref": "",
+        "href": "https://graph.facebook.com/oauth/authorize?client_id=134902150014812&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fthalamus%2Fapi%2Fv1%2Fconnect%2Ffacebook"
+          },
+         "reason": "",
+         "data": null
+}
