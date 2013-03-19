@@ -18,6 +18,9 @@
 <body>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
 <hr> 
-<a href="productoHome.jsp">Producto Home</a> | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
+Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
+<hr> 
+
+Mis Alarmas | Mis Luces | Mi Camara
 </body>
 </html>

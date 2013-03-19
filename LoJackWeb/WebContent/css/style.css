@@ -14,8 +14,6 @@ body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,t
 }
 /* Main Structure */
 body {
-	background-color: #333333;
-	background-image: url(../images/skin_nrg2/backs/base.gif);
 	background-repeat: repeat;
 	background-position: center top;
 	margin:0;
