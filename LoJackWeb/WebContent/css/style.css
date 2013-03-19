@@ -24,7 +24,6 @@ body {
 	overflow:hidden;
 }
 #structure {
-	background-image: url(../images/skin_nrg2/backs/home.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:1000px;
@@ -46,7 +45,6 @@ body {
 	float:left;
 }
 #activities #activity01 {
-	background-image: url(images/skin_nrg2/activities/act_01.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:990px;
@@ -55,7 +53,6 @@ body {
 	position:absolute;
 }
 #activities #activity02 {
-	background-image: url(images/skin_nrg2/activities/act_02.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:990px;
@@ -64,7 +61,6 @@ body {
 	position:absolute;
 }
 #activities #activity03 {
-	background-image: url(images/skin_nrg2/activities/act_03.png);
 	background-repeat: no-repeat;
 	background-position: -85px -10px;
 	width:990px;
@@ -73,7 +69,6 @@ body {
 	position:absolute;
 }
 #activities #activityNN {
-	background-image: url(images/skin_nrg2/activities/act_NN.gif);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:990px;
@@ -140,7 +135,6 @@ body {
 }
 /* Layers */
 .layerOnTop {
-	background-image: url(../images/skin_nrg2/backs/topLayer.png);
 	background-repeat: repeat;
 	height: 100%;
 	width: 100%;
@@ -152,7 +146,6 @@ body {
 	color:#2d0703;
 }
 .registerLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/registrationForm.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:505px;
@@ -169,12 +162,10 @@ body {
 	float:left;
 }
 .editProfileLayer {
-	background-image: url(../images/skin_nrg2/backs/editProfile.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 }
 .loginLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/loginForm.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:506px;
@@ -191,7 +182,6 @@ body {
 	float:left;
 }
 .resetPassLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/resetPassForm.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:506px;
@@ -208,7 +198,6 @@ body {
 	float:left;
 }
 .resetPassNewLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/resetPassNew.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:506px;
@@ -225,7 +214,6 @@ body {
 	float:left;
 }
 .defaultLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/defaultScreen.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:506px;
@@ -242,7 +230,6 @@ body {
 	float:left;
 }
 .legalLayerStyles {
-	background-image: url(../images/skin_nrg2/backs/legalScreen.png);
 	background-repeat: no-repeat;
 	background-position: center top;
 	width:716px;
