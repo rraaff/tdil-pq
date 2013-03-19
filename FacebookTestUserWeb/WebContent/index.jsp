@@ -1,3 +1,4 @@
+<%@page import="com.facebook.FacebookTestUser"%>
 <%@page import="com.facebook.FacebookTestData"%>
 <%
 	FacebookTestData facebookTestData = (FacebookTestData)session.getAttribute("FacebookTestData");
@@ -23,15 +24,25 @@ Nombre:<input type="text" name="firstname">
 Apellido:<input type="text" name="lastname">
 <input type="submit">
 </form>
-
+<hr>
+Listado | <a href="getAll.jsp">Cargar todos</a>
 <table border="1">
 	<tr>
 		<td>Id</td>
 		<td>Nombre</td>
 		<td>Email</td>
 		<td>Login</td>
-		<td>Delete</td>
+		<td>Borrar</td>
 	</tr>
+	<% for (FacebookTestUser ftu : facebookTestData.getTestUsers()) { %>
+	<tr>
+		<td><%=ftu.getId()%></td>
+		<td><%=ftu.getName()%></td>
+		<td><%=ftu.getEmail()%></td>
+		<td><%=ftu.getLogin_url()%></td>
+		<td><a href="deleteTestUser.jsp?id=<%=ftu.getId()%>">Borrar</a></td>
+	</tr>
+	<% } %>
 </table>
 
 </body>

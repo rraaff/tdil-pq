@@ -12,12 +12,17 @@ public class GetTestUser {
 
 	public static void main(String[] args) throws HttpException, IOException {
 		String test_user_id = "100005455842995";
+		
+		System.out.println(get(test_user_id).toString(2));
+	}
+
+	public static JSONObject get(String test_user_id) throws IOException,
+			HttpException {
 		HttpClient client = new HttpClient();
 		GetMethod httpMethod = new GetMethod("https://graph.facebook.com/"+test_user_id);
 		client.executeMethod(httpMethod);
 		int statusCode = httpMethod.getStatusCode();
 		String response = httpMethod.getResponseBodyAsString();
-		JSONObject array = JSONObject.fromObject(response);
-		System.out.println(array.toString(2));
+		return JSONObject.fromObject(response);
 	}
 }

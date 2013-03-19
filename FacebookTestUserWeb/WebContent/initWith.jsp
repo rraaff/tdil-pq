@@ -11,5 +11,6 @@
 	facebookTestData.setAppName(appName);
 	facebookTestData.setAppId(appId);
 	facebookTestData.setAccessToken(accessToken);
+	facebookTestData.refreshTestUsers();
 %>
 <jsp:forward page="index.jsp"></jsp:forward>

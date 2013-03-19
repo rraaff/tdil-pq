@@ -1,4 +1,4 @@
-package com.tdil.facebook.testing;
+package com.facebook.util;
 
 public interface FacebookContants {
 	
