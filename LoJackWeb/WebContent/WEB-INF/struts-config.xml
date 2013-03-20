@@ -9,6 +9,8 @@
   <form-bean id="ResetPasswordForm" name="ResetPasswordForm" type="com.tdil.lojack.struts.forms.ResetPasswordForm"/>
   <form-bean id="RegisterForm" name="RegisterForm" type="com.tdil.lojack.struts.forms.RegisterForm"/>
   <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.lojack.struts.forms.RegisterForm"/>
+  <form-bean id="AlarmsForm" name="AlarmsForm" type="com.tdil.lojack.struts.forms.AlarmsForm"/>
+  <form-bean id="LightsForm" name="LightsForm" type="com.tdil.lojack.struts.forms.LightsForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -65,6 +67,14 @@
   
   <action path="/searchStates" type="com.tdil.lojack.struts.action.SearchStatesAjaxAction"/>
   
+  <!-- Home -->
+  <action name="AlarmsForm" parameter="WebsiteUser" path="/goToHomeAlarms" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
+  	<forward name="continue" path="/homeAlarmas.jsp" redirect="true"/>
+  </action>
+  <action name="LightsForm" parameter="WebsiteUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
+  	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
+  </action>
+
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

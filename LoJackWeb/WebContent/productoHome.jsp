@@ -16,11 +16,11 @@
 </script>
 </head>
 <body>
-Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
+Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="./logout.do">Salir</a>
 <hr> 
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
 <hr> 
 
-Mis Alarmas | Mis Luces | Mi Camara
+<a href="./goToHomeAlarms.do">Mis Alarmas</a> | <a href="./goToHomeLights.do">Mis Luces</a> | Mi Camara
 </body>
 </html>

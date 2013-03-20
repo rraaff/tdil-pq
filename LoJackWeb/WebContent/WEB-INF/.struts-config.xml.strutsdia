@@ -107,4 +107,23 @@
   <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1" PATH="/home.jsp"
    TARGET="page7" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToHomeAlarms" NAME="action13"
+  PATH="/goToHomeAlarms" SHAPE="32,1217,0,0" TITLE="AlarmsForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeAlarmas.jsp" TARGET="page4" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page4" PATH="/homeAlarmas.jsp" SHAPE="240,1329,0,0"
+  SUBTYPE="jsp" TITLE="homeAlarmas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToHomeLights" NAME="action14"
+  PATH="/goToHomeLights" SHAPE="32,1617,0,0" TITLE="LightsForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeLuces.jsp" TARGET="page8" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1" PATH="/homeLights.jsp" SHAPE="240,1634,0,0"
+  SUBTYPE="jsp" TITLE="homeLights.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page8" PATH="/homeLuces.jsp" SHAPE="240,1729,0,0"
+  SUBTYPE="jsp" TITLE="homeLuces.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

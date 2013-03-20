@@ -2,7 +2,6 @@ package com.tdil.lojack.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Enumeration;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -13,7 +12,6 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.record.formula.functions.Proper;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.GISConnector;
