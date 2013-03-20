@@ -21,6 +21,8 @@ Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a h
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
 <hr> 
 
-<a href="./goToHomeAlarms.do">Mis Alarmas</a> | <a href="./goToHomeLights.do">Mis Luces</a> | Mi Camara
+<a href="./goToHomeAlarms.do">Mis Alarmas</a> | 
+<a href="./goToHomeLights.do">Mis Luces</a> | 
+<a href="./goToHomeCamera.do">Mi Camara</a>
 </body>
 </html>

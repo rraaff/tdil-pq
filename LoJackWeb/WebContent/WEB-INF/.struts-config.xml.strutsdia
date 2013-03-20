@@ -122,8 +122,14 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/homeLuces.jsp" TARGET="page8" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page1" PATH="/homeLights.jsp" SHAPE="240,1634,0,0"
-  SUBTYPE="jsp" TITLE="homeLights.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page8" PATH="/homeLuces.jsp" SHAPE="240,1729,0,0"
   SUBTYPE="jsp" TITLE="homeLuces.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToHomeCamera" NAME="action15"
+  PATH="/goToHomeCamera" SHAPE="32,2065,0,0" TITLE="CameraForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeCamara.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page1" PATH="/homeCamara.jsp" SHAPE="240,2082,0,0"
+  SUBTYPE="jsp" TITLE="homeCamara.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
