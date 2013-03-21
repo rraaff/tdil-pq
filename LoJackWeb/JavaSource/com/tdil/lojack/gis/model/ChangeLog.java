@@ -1,7 +1,10 @@
 package com.tdil.lojack.gis.model;
 
-public class ChangeLog {
+import java.io.Serializable;
 
+public class ChangeLog implements Serializable {
+
+	private static final long serialVersionUID = 4135669633103106386L;
 	private String date;
 	private String hour;
 	private String action;

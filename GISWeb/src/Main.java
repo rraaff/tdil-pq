@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import com.tdil.lojack.gis.model.Alarm;
+import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.gis.model.ChangeLog;
 
 
@@ -54,6 +56,34 @@ public class Main {
 		
 		jsonObject = JSONArray.fromObject( log ); 
 		System.out.println(jsonObject.toString(2));
+		
+		System.out.println("*************************");
+		
+		AlarmAgenda alarmAgenda = new AlarmAgenda();
+		alarmAgenda.setId("1");
+		alarmAgenda.setDescription("Dias habiles");
+		alarmAgenda.setType("BUSINESS_DAYS");
+		alarmAgenda.setActivateTime("10:00:00");
+		alarmAgenda.setDeactivateTime("17:30:00");
+		
+		List<AlarmAgenda> agendas = new ArrayList<AlarmAgenda>();
+		agendas.add(alarmAgenda);
+		
+		alarmAgenda = new AlarmAgenda();
+		alarmAgenda.setId("2");
+		alarmAgenda.setDescription("Findes");
+		alarmAgenda.setType("WEEKENDS");
+		alarmAgenda.setActivateTime("20:00:00");
+		alarmAgenda.setDeactivateTime("05:00:00");
+		
+		agendas.add(alarmAgenda);
+		jsonObject = JSONArray.fromObject( agendas ); 
+		System.out.println(jsonObject.toString(2));
+		
+		System.out.println("*************************");
+		
+		JSONObject jsonObject1 = JSONObject.fromObject(alarmAgenda);
+		System.out.println(jsonObject1.toString(2));
 	}
 
 }

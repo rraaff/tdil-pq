@@ -1,7 +1,10 @@
 package com.tdil.lojack.gis.model;
 
-public abstract class GISManageableObject {
+import java.io.Serializable;
 
+public abstract class GISManageableObject implements Serializable {
+
+	private static final long serialVersionUID = -362319874007139163L;
 	private String id;
 	private String description;
 	private boolean on;
@@ -18,6 +21,10 @@ public abstract class GISManageableObject {
 	}
 	public String getDescription() {
 		return description;
+	}
+	
+	public boolean hasChangeData() {
+		return getLastChangeDate() != null;
 	}
 	public void setDescription(String description) {
 		this.description = description;

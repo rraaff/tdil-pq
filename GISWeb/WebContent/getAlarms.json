@@ -3,16 +3,16 @@
     "description": "Casa",
     "id": "1",
     "lastChangeAction": "ACTIVAR",
-    "lastChangeDate": "2012",
+    "lastChangeDate": "2013-03-19",
     "lastChangeHour": "20:30",
-    "lastChangeUser": "MARCELA",
+    "lastChangeUser": "VALENTINA",
     "on": true
   },
     {
     "description": "Estudio",
     "id": "2",
     "lastChangeAction": "ACTIVAR",
-    "lastChangeDate": "2012",
+    "lastChangeDate": "2013-02-01",
     "lastChangeHour": "20:30",
     "lastChangeUser": "MARCELA",
     "on": false
