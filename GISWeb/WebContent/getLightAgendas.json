@@ -1,0 +1,16 @@
+[
+    {
+    "activateTime": "10:00:00",
+    "deactivateTime": "17:30:00",
+    "description": "Dias habiles",
+    "id": "1",
+    "type": "BUSINESS_DAYS"
+  },
+    {
+    "activateTime": "20:00:00",
+    "deactivateTime": "05:00:00",
+    "description": "Findes",
+    "id": "2",
+    "type": "WEEKENDS"
+  }
+]

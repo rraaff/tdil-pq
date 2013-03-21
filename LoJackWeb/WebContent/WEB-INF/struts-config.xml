@@ -12,6 +12,7 @@
   <form-bean id="AlarmsForm" name="AlarmsForm" type="com.tdil.lojack.struts.forms.AlarmsForm"/>
   <form-bean id="AlarmAgendaForm" name="AlarmAgendaForm" type="com.tdil.lojack.struts.forms.AlarmAgendaForm"/>
   <form-bean id="LightsForm" name="LightsForm" type="com.tdil.lojack.struts.forms.LightsForm"/>
+  <form-bean id="LightAgendaForm" name="LightAgendaForm" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
   <form-bean id="CameraForm" name="CameraForm" type="com.tdil.lojack.struts.forms.CameraForm"/>
  </form-beans>
  <global-exceptions/>
@@ -78,6 +79,9 @@
   </action>
   <action name="LightsForm" parameter="WebsiteUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaForm" parameter="WebsiteUser" path="/goToHomeLightAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
+  	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
   <action name="CameraForm" parameter="WebsiteUser" path="/goToHomeCamera" scope="session" type="com.tdil.lojack.struts.action.GoToHomeCameraAction">
   	<forward name="continue" path="/homeCamara.jsp" redirect="true"/>

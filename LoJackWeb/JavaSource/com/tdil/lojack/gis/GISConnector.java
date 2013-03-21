@@ -22,12 +22,12 @@ import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
+import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
-import com.tdil.thalamus.client.facade.json.beans.BrandBean;
 
 // TODO ver que datos de autheticacion hay que proveer
 public class GISConnector {
@@ -36,6 +36,7 @@ public class GISConnector {
 	
 	private static String gisServer = "http://localhost:8180/GISWeb/";
 	
+	// Alarmas
 	private static final String GET_ALARMS = "getAlarms.json";
 	private static final String SEND_PANC = "sendPanic.json";
 	private static final String ACTIVATE_ALARM = "activateAlarm.json";
@@ -46,6 +47,11 @@ public class GISConnector {
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
+	
+	// Luces
+	private static final String GET_LIGHTS = "getLights.json";
+	
+	private static final String GET_LIGHT_AGENDAS = "getLightAgendas.json";
 
 	public static Collection<Alarm> getAlarms(String userId) {
 		JSONObject jsonObject = new JSONObject();
@@ -158,8 +164,17 @@ public class GISConnector {
 		}
 	}
 
-	public static List<Light> getLights(String userId) {
-		return null;
+	public static Collection<Light> getLights(String userId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("userId", userId);
+		try {
+			GISResponse response = executeGIS(jsonObject, GET_LIGHTS);
+			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
+			return resultObj;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
 	}
 	public static boolean activateLight(Light light, String password) {
 		return false;
@@ -173,6 +188,20 @@ public class GISConnector {
 	public static boolean changeLightPassword(Light light, String newPassword) {
 		return false;
 	}
+	
+	public static Collection<LightAgenda> getLighAtgendas(String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("lightId", lightId);
+		try {
+			GISResponse response = executeGIS(jsonObject, GET_LIGHT_AGENDAS);
+			Collection<LightAgenda> resultObj = (Collection<LightAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
+			return resultObj;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
 	public static String getGisServer() {
 		return gisServer;
 	}

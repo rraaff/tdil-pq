@@ -1,0 +1,29 @@
+[
+    {
+    "description": "Frente casa",
+    "id": "1",
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2013-03-19",
+    "lastChangeHour": "20:30",
+    "lastChangeUser": "VALENTINA",
+    "on": true
+  },
+    {
+    "description": "Fondo casa",
+    "id": "2",
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2013-02-01",
+    "lastChangeHour": "20:30",
+    "lastChangeUser": "MARCELA",
+    "on": false
+  },
+    {
+    "description": "Cocina casa",
+    "id": "3",
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2013-02-01",
+    "lastChangeHour": "20:30",
+    "lastChangeUser": "MARCELA",
+    "on": false
+  }
+]

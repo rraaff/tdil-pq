@@ -2,7 +2,7 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
-public class AlarmAgenda implements Serializable {
+public class LightAgenda implements Serializable {
 
 	private static final long serialVersionUID = -822422216180257981L;
 	
