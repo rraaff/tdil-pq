@@ -9,6 +9,220 @@ body {
 	color:#000;
 	font-size:12px;
 }
+/* / HEADER //////////////////////////////////////////////////// */
+#headers {
+	background-image: url(../images/skin_basic/backgrounds/header.gif);
+	background-repeat: repeat-x;
+	width:100%;
+	height:130px;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+#headers #header {
+	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
+	width:980px;
+	height:130px;
+	margin:0 auto;
+	clear:both;
+}
+#headers #header #logo {
+	width:141px;
+	height:130px;
+	float:left;
+}
+#headers #header #centralhead {
+	width: 830px;
+	height:130px;
+	float:left;
+}
+#headers #header #centralhead #border {
+	/*background-color:#00FF33;*/
+	background-image: url(../images/skin_basic/header/border.gif);
+	background-repeat: no-repeat;
+	width:6px;
+	height:107px;
+	margin-top:11px;
+	float:left;
+}
+#headers #header #centralhead #taglineAndMenu {
+	width:474px;
+	margin-left:16px;
+	margin-top:57px;
+	float:left;
+}
+#headers #header #centralhead #taglineAndMenu p {
+	font-size: 18px;
+	color: #005a9e;
+}
+* {
+	list-style:none;
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+.nav > li {
+	font-size:11px;
+	margin-top:12px;
+	float:left;
+}
+.nav li a, .userLogged {
+	color:#8d8d8d;
+	display:block;
+	padding:0 10px;
+	float:left;
+}
+.userLogged {
+	padding-right:0;
+	float:left;
+}
+.selected {
+	color:#d59b00;
+	display:block;
+	float:left;
+}
+.nav li a:hover {
+	color:#d59b00;
+}
+.nav li ul {
+	display:none;
+	position:absolute;
+	min-width:80px;
+}
+.nav li:hover > ul {
+	display:block;
+}
+.nav li ul li {
+	position:relative;
+}
+.nav li ul li ul {
+	right:-165px;
+	top:0;
+}
+#headers #header #centralhead #search {
+	color:#8e8e8e;
+	font-size:13px;
+	width:230px;
+	margin-left:17px;
+	margin-top:50px;
+	float:left;
+	overflow:hidden;
+}
+#headers #header #centralhead #search .searchField {
+	font-size: 12px;
+	background:none;
+	background-image: url(../images/skin_basic/header/baseSimpleSearch.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	border:none;
+	width:157px;
+	height:28px;
+	padding-top:3px;
+	padding-left:13px;
+	padding-bottom:3px;
+	padding-right:0px;	
+}
+#headers #header #centralhead #social {
+	width:54px;
+	height:36px;
+	margin-left:12px;
+	margin-top:48px;
+	float:left;
+	overflow:hidden;
+}
+#headers #header #centralhead #social ul li a {
+	width:27px;
+	height:36px;
+	float:left;
+	overflow:hidden;
+}
+#headers #header #centralhead #social ul li.fb a {
+	background-image: url(../images/skin_basic/header/icon_FB.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;	
+}
+#headers #header #centralhead #social ul li.tw a {
+	background-image: url(../images/skin_basic/header/icon_TW.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;	
+}
+#headers #header #centralhead #social ul li.fb a:hover, #headers #header #centralhead #social ul li.tw a:hover {
+	background-position: 0px -36px;	
+}
+/* / FOOTER //////////////////////////////////////////////////// */
+#footers {
+	background-image: url(../images/skin_basic/backgrounds/footer.gif);
+	background-repeat: repeat-x;
+	margin: 0px;
+	height: 108px;
+	width: 100%;
+	float:left;
+	position:relative;
+}
+#footers #footer {
+	width:980px;
+	margin: 0 auto;
+}
+#footers #footer #logo {
+	width:120px;
+	height:96px;
+	margin-top: 12px;
+	float:left;
+}
+#footers #footer #linkAndCopy {
+	width:500px;
+	margin-left:16px;
+	margin-right:16px;
+	margin-top:37px;
+	float:left;
+	
+	font-size:11px;
+	text-align:center;
+}
+#footers #footer #linkAndCopy a, #footers #footer #linkAndCopy a:active, #footers #footer #linkAndCopy a:visited {
+	margin-left:3px;
+	margin-right:3px;
+}
+#footers #footer #linkAndCopy a:hover {
+	color:#f46048;
+}
+#footers #footer #social {
+	width:158px;
+	height:41px;
+	margin-top:46px;
+	margin-left:37px;
+	float:left;
+}
+#footers #footer #tdil {
+	width:105px;
+	margin-top:46px;
+	margin-left:19px;
+	float:left;
+}
+#footers #footer #tdil #logo {
+	width:105px;
+	height:23px;
+	margin:0;
+	float:left;
+}
+#footers #footer #tdil #tagline {
+	width:105px;
+	font-size:10px;
+	line-height:normal;
+	text-align:center;
+	padding-top:8px;
+	float:left;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+#footers a, #footers a:active, #footers a:visited {
+	color:#919191;
+	text-decoration:none;
+}
+#footers a:hover {
+	color:#919191;
+	text-decoration:underline;
+}
+/* ///////////////////////////////////////////////////////////// */
 /* / CONTENT /////////////////////////////////////////////////// */
 #divisionHeaderBody {
 	background-image: url(../images/skin_basic/backgrounds/divisionLineHeaderBody.gif);

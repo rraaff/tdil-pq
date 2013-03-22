@@ -38,35 +38,34 @@ body {
 	padding-left:8px;
 	float:left;
 }
-.advancedSearch a, .addProfessional a, .addClientFB a, .viewPromotions a {
+#central #centralBlock #buttons ul li.advancedSearch a, #central #centralBlock #buttons ul li.addProfessional a, #central #centralBlock #buttons ul li.addClientFB a, #central #centralBlock #buttons ul li.viewPromotions a {
 	width:324px;
 	margin:4px;
 	padding:0;
-	float:left;
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: 0px 0px;
+	float:left;
+	overflow:hidden;
 }
-.advancedSearch a {
-	background-image: url(../images/skin_basic/buttons/advancedSearch_off.png);
+#central #centralBlock #buttons ul li.advancedSearch a {
+	background-image: url(../images/skin_basic/buttons/advancedSearch.png);
 	height:137px;
 }
-.advancedSearch a:hover {
-	background-image: url(../images/skin_basic/buttons/advancedSearch_on.png);
-}
-.addProfessional a {
-	background-image: url(../images/skin_basic/buttons/registerProfessional_off.png);
+#central #centralBlock #buttons ul li.addProfessional a {
+	background-image: url(../images/skin_basic/buttons/registerProfessional.png);
 	height:129px;
 }
-.addProfessional a:hover {
-	background-image: url(../images/skin_basic/buttons/registerProfessional_on.png);
-}
-.addClientFB a {
-	background-image: url(../images/skin_basic/buttons/registerClientFB_off.png);
+#central #centralBlock #buttons ul li.addClientFB a {
+	background-image: url(../images/skin_basic/buttons/registerClientFB.png);
 	height:65px;
 }
-.addClientFB a:hover {
-	background-image: url(../images/skin_basic/buttons/registerClientFB_on.png);
-}
+/*#central #centralBlock #buttons ul li.viewPromotions a {
+	background-image: url(../images/skin_basic/buttons/registerClientFB.png);
+}*/
+#central #centralBlock #buttons ul li.advancedSearch a:hover { background-position: 0px -137px; }
+#central #centralBlock #buttons ul li.addProfessional a:hover { background-position: 0px -129px; }
+#central #centralBlock #buttons ul li.addClientFB a:hover { background-position: 0px -65px; }
+
 #superHighlightedBlock {
 	color: #292f3a;
 	font-size: 11px;

@@ -81,9 +81,11 @@
 			</div>
 		</div>
 		<div id="buttons">
-			<div class="advancedSearch"><a href="./goToSearchWizard.do"></a></div>
-			<div class="addProfessional"><a href="./goToRegistroProfesional.do"></a></div>
-			<div class="addClientFB"><a href="registroPreRegistro.jsp"></a></div>
+			<ul>
+				<li class="advancedSearch"><a href="./goToSearchWizard.do" title="Arm&aacute; una b&uacute;squeda completa con todo lo que necesitas para tu evento."></a></li>
+				<li class="addProfessional"><a href="./goToRegistroProfesional.do" title="Registrate ahora y comenz&aacute; a ofrecer tus productos / servicios."></a></li>
+				<li class="addClientFB"><a href="registroPreRegistro.jsp" title="Registrate como usuario para contactar profesionales. Podes usar tu cuenta de Facebook."></a></li>
+			</ul>
 		</div>
 	</div>
 </div>
