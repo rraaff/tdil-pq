@@ -21,6 +21,11 @@
     $( "#closeLogLayer" ).click(function() {
 		$( "#logLayer" ).fadeOut();
 	});
+
+    $( "#closeSavedConfLayer" ).click(function() {
+		$( "#confSavedLayer" ).fadeOut();
+	});
+    closeSavedConfLayer
   });
   
   function seeAlarmLog(alarmId) {
@@ -81,6 +86,9 @@ Mis Alarmas<br><br>
 		Consultando datos...
 	</div>
 </div>
-
+<div id="confSavedLayer" style="display: none; z-index: 500;">
+	La configuracion ha sido salvada
+	<input type="button" id="closeSavedConfLayer" value="Cerrar">
+</div>
 </body>
 </html>

@@ -32,9 +32,15 @@ public class AlarmAlertConfigurationForm extends ExternalServiceForm {
 	}
 	
 	@Override
-	public int save() throws SQLException, ValidationException {
-		// TODO Auto-generated method stub
-		return 200;
+	public boolean save() throws SQLException, ValidationException {
+		AlarmAlertConfiguration configuration = new AlarmAlertConfiguration();
+		configuration.setUserId(String.valueOf(user.getId()));
+		configuration.setAlarmId(this.getAlarmId());
+		configuration.setActivateDeactivate(this.isActivateDeactivate());
+		configuration.setActivateDeactivateByOther(this.isActivateDeactivateByOther());
+		configuration.setPowerSupplyLost(this.isPowerSupplyLost());
+		configuration.setAlarmActivation(this.isAlarmActivation());
+		return LoJackServicesConnector.saveAlarmAlertConfiguration(configuration);
 	}
 
 	public void initWith(WebsiteUser user, String alarmId) {

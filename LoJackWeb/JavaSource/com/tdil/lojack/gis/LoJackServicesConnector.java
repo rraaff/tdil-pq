@@ -40,7 +40,7 @@ public class LoJackServicesConnector {
 	
 	// Alarmas GIS
 	private static final String GET_ALARMS = "getAlarms.json";
-	private static final String SEND_PANC = "sendPanic.json";
+	private static final String SEND_PANIC = "sendPanic.json";
 	private static final String ACTIVATE_ALARM = "activateAlarm.json";
 	private static final String DEACTIVATE_ALARM = "deactivateAlarm.json";
 	private static final String GET_ALARM_LOG = "getAlarmLog.json";
@@ -51,6 +51,7 @@ public class LoJackServicesConnector {
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
 	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
+	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
 	
 	// Luces
 	private static final String GET_LIGHTS = "getLights.json";
@@ -73,7 +74,7 @@ public class LoJackServicesConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("alarmId", alarmId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, SEND_PANC);
+			JSONResponse response = executeGIS(jsonObject, SEND_PANIC);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -125,11 +126,31 @@ public class LoJackServicesConnector {
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_ALERT_CONFIGURATION);
 			JSONObject object = (JSONObject)response.getResult();
-			AlarmAlertConfiguration configuration = (AlarmAlertConfiguration)JSONObject.toBean(jsonObject, AlarmAlertConfiguration.class);
+			AlarmAlertConfiguration configuration = (AlarmAlertConfiguration)JSONObject.toBean(object, AlarmAlertConfiguration.class);
 			return configuration;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return null;
+		}
+	}
+	
+	public static boolean saveAlarmAlertConfiguration(AlarmAlertConfiguration conf) {
+		JSONObject jsonObject = JSONObject.fromObject(conf);
+		try {
+			JSONResponse response = executeService(jsonObject, SAVE_ALARM_ALERT_CONFIGURATION);
+			JSONObject object = (JSONObject)response.getResult();
+			if (object != null) {
+				if (object.containsKey("result")) {
+					return object.getBoolean("result");
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
 		}
 	}
 	

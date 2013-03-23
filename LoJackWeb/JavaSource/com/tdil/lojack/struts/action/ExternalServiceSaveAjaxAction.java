@@ -21,16 +21,11 @@ public class ExternalServiceSaveAjaxAction extends AjaxAction  {
 			HttpServletResponse response) throws Exception {
 			ExternalServiceForm aForm = (ExternalServiceForm) form;
 		try {
-			int status = aForm.save();
 			HashMap<String, Object> result = new HashMap<String, Object>();
-			if (status == 200 || status == 201) {
+			if(aForm.save()) { // TODO ver si necesito manejar porque no lo hizo
 				result.put("result", "OK");
 			} else {
-				if (status == 404) {
-					result.put("result", "404");
-				} else {
-					result.put("result", "ERR");
-				}
+				result.put("result", "ERR");
 			}
 			writeJsonResponse(result, response);
 			return null;
