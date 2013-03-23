@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.lojack.gis.GISConnector;
+import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.utils.WebsiteUser;
 
@@ -29,7 +29,7 @@ public class AlarmsForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setAlarms(GISConnector.getAlarms(String.valueOf(user.getId())));
+		setAlarms(LoJackServicesConnector.getAlarms(String.valueOf(user.getId())));
 	}
 
 	public Collection<Alarm> getAlarms() {

@@ -4,12 +4,12 @@ import net.sf.json.JSON;
 
 import org.apache.commons.httpclient.HttpStatus;
 
-public class GISResponse {
+public class JSONResponse {
 
 	private JSON result;
 	private int statusCode;
 	
-	public GISResponse(JSON result, int statusCode) {
+	public JSONResponse(JSON result, int statusCode) {
 		super();
 		this.result = result;
 		this.statusCode = statusCode;

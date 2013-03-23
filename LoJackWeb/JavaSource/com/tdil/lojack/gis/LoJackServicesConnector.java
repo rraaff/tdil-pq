@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AlarmAgenda;
+import com.tdil.lojack.gis.model.AlarmAlertConfiguration;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.gis.model.LightAgenda;
@@ -30,13 +31,14 @@ import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 // TODO ver que datos de autheticacion hay que proveer
-public class GISConnector {
+public class LoJackServicesConnector {
 	
-	private static final Logger LOG = LoggerProvider.getLogger(GISConnector.class);
+	private static final Logger LOG = LoggerProvider.getLogger(LoJackServicesConnector.class);
 	
 	private static String gisServer = "http://localhost:8180/GISWeb/";
+	private static String servicesServer = "http://localhost:8180/GISWeb/";
 	
-	// Alarmas
+	// Alarmas GIS
 	private static final String GET_ALARMS = "getAlarms.json";
 	private static final String SEND_PANC = "sendPanic.json";
 	private static final String ACTIVATE_ALARM = "activateAlarm.json";
@@ -44,9 +46,11 @@ public class GISConnector {
 	private static final String GET_ALARM_LOG = "getAlarmLog.json";
 	private static final String CHANGE_ALARM_PASSWORD = "changeAlarmPassword.json";
 
+	// Alarmas Services
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
+	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
 	
 	// Luces
 	private static final String GET_LIGHTS = "getLights.json";
@@ -57,7 +61,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("userId", userId);
 		try {
-			GISResponse response = executeGIS(jsonObject, GET_ALARMS);
+			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
 			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -69,7 +73,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("alarmId", alarmId);
 		try {
-			GISResponse response = executeGIS(jsonObject, SEND_PANC);
+			JSONResponse response = executeGIS(jsonObject, SEND_PANC);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -81,7 +85,7 @@ public class GISConnector {
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("password", password);
 		try {
-			GISResponse response = executeGIS(jsonObject, ACTIVATE_ALARM);
+			JSONResponse response = executeGIS(jsonObject, ACTIVATE_ALARM);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -93,7 +97,7 @@ public class GISConnector {
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("password", password);
 		try {
-			GISResponse response = executeGIS(jsonObject, DEACTIVATE_ALARM);
+			JSONResponse response = executeGIS(jsonObject, DEACTIVATE_ALARM);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -105,7 +109,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("alarmId", alarmId);
 		try {
-			GISResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
+			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
 			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -113,12 +117,28 @@ public class GISConnector {
 			return null;
 		}
 	}
+	
+	public static AlarmAlertConfiguration getAlarmAlertConfiguration(String userId, String alarmId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("userId", userId);
+		jsonObject.put("alarmId", alarmId);
+		try {
+			JSONResponse response = executeService(jsonObject, GET_ALARM_ALERT_CONFIGURATION);
+			JSONObject object = (JSONObject)response.getResult();
+			AlarmAlertConfiguration configuration = (AlarmAlertConfiguration)JSONObject.toBean(jsonObject, AlarmAlertConfiguration.class);
+			return configuration;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
 	public static boolean changeAlarmPassword(String alarmId, String newPassword) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("newPassword", newPassword);
 		try {
-			GISResponse response = executeGIS(jsonObject, CHANGE_ALARM_PASSWORD);
+			JSONResponse response = executeGIS(jsonObject, CHANGE_ALARM_PASSWORD);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -130,7 +150,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("agendaId", agendaId);
 		try {
-			GISResponse response = executeGIS(jsonObject, GET_ALARM_AGENDAS);
+			JSONResponse response = executeGIS(jsonObject, GET_ALARM_AGENDAS);
 			Collection<AlarmAgenda> resultObj = (Collection<AlarmAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), AlarmAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -143,7 +163,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("agendaId", agendaId);
 		try {
-			GISResponse response = executeGIS(jsonObject, DELETE_ALARM_AGENDA);
+			JSONResponse response = executeGIS(jsonObject, DELETE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -156,7 +176,7 @@ public class GISConnector {
 		System.out.println(jsonObject.toString(2));
 		//jsonObject.put("agendaId", agendaId);
 		try {
-			GISResponse response = executeGIS(jsonObject, ADD_ALARM_AGENDA);
+			JSONResponse response = executeGIS(jsonObject, ADD_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -168,7 +188,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("userId", userId);
 		try {
-			GISResponse response = executeGIS(jsonObject, GET_LIGHTS);
+			JSONResponse response = executeGIS(jsonObject, GET_LIGHTS);
 			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -193,7 +213,7 @@ public class GISConnector {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("lightId", lightId);
 		try {
-			GISResponse response = executeGIS(jsonObject, GET_LIGHT_AGENDAS);
+			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_AGENDAS);
 			Collection<LightAgenda> resultObj = (Collection<LightAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -206,15 +226,23 @@ public class GISConnector {
 		return gisServer;
 	}
 	public static void setGisServer(String gisServer) {
-		GISConnector.gisServer = gisServer;
+		LoJackServicesConnector.gisServer = gisServer;
 	}
 	
-	public static GISResponse executeGIS(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+	public static JSONResponse executeGIS(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return execute(gisServer, json, service);
+	}
+	
+	public static JSONResponse executeService(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return execute(servicesServer, json, service);
+	}
+	
+	private static JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Execute POST to: " + service + " json " + (json == null ? "null" : json));
 		}
 		HttpClient client = new HttpClient();
-		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(gisServer + service);
+		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + service);
 		try {
 			httpMethod.setRequestHeader("Content-type", "application/json");
 			if (json != null) {
@@ -231,7 +259,7 @@ public class GISConnector {
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("POST result is: " + result);
 			}
-			return new GISResponse(result, statusCode);
+			return new JSONResponse(result, statusCode);
 		} catch (HttpException e) {
 			throw new CommunicationException(e);
 		} catch (IOException e) {
@@ -247,6 +275,12 @@ public class GISConnector {
 			throw new InvalidResponseException();
 		}
 		return (JSON)rawResponseMessage;
+	}
+	public static String getServicesServer() {
+		return servicesServer;
+	}
+	public static void setServicesServer(String servicesServer) {
+		LoJackServicesConnector.servicesServer = servicesServer;
 	}
 	
 }

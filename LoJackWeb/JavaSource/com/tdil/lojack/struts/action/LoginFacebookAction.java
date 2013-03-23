@@ -21,6 +21,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.struts.forms.RegisterForm;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
+import com.tdil.thalamus.client.facade.json.beans.LoginResult;
 
 public class LoginFacebookAction extends Action {
 
@@ -32,7 +33,8 @@ public class LoginFacebookAction extends Action {
 		String code = request.getParameter("code");
         if (!StringUtils.isEmpty(code)) {
         	RegisterForm register = (RegisterForm)request.getSession().getAttribute("RegisterForm");
-        	JSONObject json = (JSONObject)ThalamusClientFacade.signInFacebook(code);
+        	LoginResult login = (LoginResult)ThalamusClientFacade.signInFacebook(code);
+        	JSONObject json = (JSONObject)login.getResponse().getResult();
         	if (isNotLogged(json)) {
 	        	register.setSocialConnections(getSocialConnections(json));
 	        	setData(register, json);
@@ -40,6 +42,7 @@ public class LoginFacebookAction extends Action {
 	        	return mapping.findForward("register");
         	} else {
         		// marcar como logueado
+        		
         		return mapping.findForward("continue");
         	}
         } else { // si cancelo

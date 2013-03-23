@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.lojack.gis.GISConnector;
+import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.utils.WebsiteUser;
 
@@ -29,7 +29,7 @@ public class LightsForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setLights(GISConnector.getLights(String.valueOf(user.getId())));
+		setLights(LoJackServicesConnector.getLights(String.valueOf(user.getId())));
 	}
 
 

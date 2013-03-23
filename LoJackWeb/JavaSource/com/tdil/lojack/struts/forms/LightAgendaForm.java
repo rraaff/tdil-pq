@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.lojack.gis.GISConnector;
+import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.lojack.utils.WebsiteUser;

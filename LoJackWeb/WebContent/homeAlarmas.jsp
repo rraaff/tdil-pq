@@ -17,7 +17,33 @@
 <script>
   $(function() {
     $( "#accordion" ).accordion();
+
+    $( "#closeLogLayer" ).click(function() {
+		$( "#logLayer" ).fadeOut();
+	});
   });
+  
+  function seeAlarmLog(alarmId) {
+	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
+		  centerLayer($(window), $( "#logLayer" ));
+		});
+  }
+
+  function confAlarmAlert(alarmId) {
+	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function() {
+		  centerLayer($(window), $( "#confAlertLayer" ));
+		});
+  }
+
+  function centerLayer(objWin, objLayer) {
+		var top = (objWin.height() / 2) - (objLayer.height() / 2);
+		var left = (objWin.width() / 2) - (objLayer.width() / 2);
+		objLayer.css({
+			position: 'absolute',
+			top: top + 'px',
+			left: left + 'px'
+		}).fadeIn(500);
+	}
   </script>
 </head>
 <body>
@@ -35,13 +61,26 @@ Mis Alarmas<br><br>
    		<% if (alarm.hasChangeData()) { %>
    			Ultimo cambio: <%=alarm.getLastChangeDate() %> - <%=alarm.getLastChangeHour() %>
    			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
-   			<a href="#">Ver log completo</a><br>
-   			Envio de <a href="#">Alertas por Email</a><br>
+   			<a href="javascript:seeAlarmLog('<%= alarm.getId() %>')">Ver log completo</a><br>
+   			Envio de <a href="javascript:confAlarmAlert('<%= alarm.getId() %>')">Alertas por Email</a><br>
    			<a href="./goToHomeAlarmAgenda.do?alarmId=<%=alarm.getId()%>">Configurar horarios</a> de Armado/Desarmado<br>
    		<% } %>
     </p>
   </div>
   <% } %>
 </div>
+<div id="logLayer" style="display: none; z-index: 500;">
+	<div id="logData">
+		Consultando datos...
+	</div>
+	<input type="button" id="closeLogLayer" value="Cerrar">
+</div>
+
+<div id="confAlertLayer" style="display: none; z-index: 500;">
+	<div id="confAlert">
+		Consultando datos...
+	</div>
+</div>
+
 </body>
 </html>

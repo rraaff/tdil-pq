@@ -14,7 +14,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.lojack.gis.GISConnector;
+import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.roles.WebsiteUser;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.thalamus.client.cache.ThalamusCache;
@@ -120,12 +120,18 @@ public class LoJackWebConfig implements ServletContextListener {
 				Role.addRole(WebsiteUser.INSTANCE);
 				
 				String gisserver = prop.getProperty("gis.server");
-				
 				if (gisserver != null) {
-					GISConnector.setGisServer(gisserver);
+					LoJackServicesConnector.setGisServer(gisserver);
 				}
 				getLog().fatal(
 						"GIS server is " + (gisserver == null ? "null" : gisserver));
+				
+				String servicesserver = prop.getProperty("services.server");
+				if (servicesserver != null) {
+					LoJackServicesConnector.setServicesServer(servicesserver);
+				}
+				getLog().fatal(
+						"Services server is " + (servicesserver == null ? "null" : servicesserver));
 			}
 			getLog().fatal("LoJackWebConfig initialized");
 		} catch (Exception e) {

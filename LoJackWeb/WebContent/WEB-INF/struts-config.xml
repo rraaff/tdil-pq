@@ -11,6 +11,7 @@
   <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.lojack.struts.forms.RegisterForm"/>
   <form-bean id="AlarmsForm" name="AlarmsForm" type="com.tdil.lojack.struts.forms.AlarmsForm"/>
   <form-bean id="AlarmAgendaForm" name="AlarmAgendaForm" type="com.tdil.lojack.struts.forms.AlarmAgendaForm"/>
+  <form-bean id="AlarmAlertConfigurationForm" name="AlarmAlertConfigurationForm" type="com.tdil.lojack.struts.forms.AlarmAlertConfigurationForm"/>
   <form-bean id="LightsForm" name="LightsForm" type="com.tdil.lojack.struts.forms.LightsForm"/>
   <form-bean id="LightAgendaForm" name="LightAgendaForm" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
   <form-bean id="CameraForm" name="CameraForm" type="com.tdil.lojack.struts.forms.CameraForm"/>
@@ -77,6 +78,12 @@
   <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/goToHomeAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
+  <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAlertConfigurationAction">
+  	<forward name="continue" path="/homeConfiguracionAlertasAlarma.jsp" redirect="true"/>
+  </action>
+  <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/saveAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
+  </action>
+  
   <action name="LightsForm" parameter="WebsiteUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
   </action>

@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AlarmAgenda;
+import com.tdil.lojack.gis.model.AlarmAlertConfiguration;
 import com.tdil.lojack.gis.model.ChangeLog;
 
 
@@ -84,6 +85,16 @@ public class Main {
 		
 		JSONObject jsonObject1 = JSONObject.fromObject(alarmAgenda);
 		System.out.println(jsonObject1.toString(2));
+		
+		System.out.println("*************************");
+		
+		AlarmAlertConfiguration conf = new AlarmAlertConfiguration();
+		conf.setActivateDeactivate(false);
+		conf.setActivateDeactivateByOther(true);
+		conf.setAlarmActivation(true);
+		conf.setPowerSupplyLost(true);
+		JSONObject jsonObject2 = JSONObject.fromObject(conf);
+		System.out.println(jsonObject2.toString(2));
 	}
 
 }

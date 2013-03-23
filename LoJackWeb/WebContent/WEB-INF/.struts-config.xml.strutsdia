@@ -152,4 +152,21 @@
  <PROCESS-ITEM NAME="page10" PATH="/homeLuzAgenda.jsp"
   SHAPE="240,2754,0,0" SUBTYPE="jsp" TITLE="homeLuzAgenda.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToHomeAlarmAlertConf" NAME="action18"
+  PATH="/goToHomeAlarmAlertConf" SHAPE="32,3073,0,0"
+  TITLE="AlarmAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeConfiguracionAlertasAlarma.jsp" TARGET="page11"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="/homeConfiguracionAlertasAlarma.jsp"
+  SHAPE="240,3090,0,0" SUBTYPE="jsp"
+  TITLE="homeConfiguracionAlertasAlarma.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/requestResetPassword.do"
+   SUBTYPE="confirmed" TARGET="action6" TITLE="/requestResetPassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveAlarmAlertConf" NAME="action19"
+  PATH="/saveAlarmAlertConf" SHAPE="32,3409,0,0"
+  TITLE="AlarmAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -1,0 +1,6 @@
+{
+  "activateDeactivate": false,
+  "activateDeactivateByOther": true,
+  "alarmActivation": true,
+  "powerSupplyLost": true
+}
