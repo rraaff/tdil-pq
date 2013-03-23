@@ -1,1 +1,7 @@
 Mostrar el error de login en el layer de login, sin cerrarlo
+
+Traerme el resource bundle de dispay tag
+
+Renombrar userId por guid
+
+Ver de pasar el guid en todos los servicios que invoco.

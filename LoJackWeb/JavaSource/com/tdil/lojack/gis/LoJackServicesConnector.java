@@ -49,6 +49,7 @@ public class LoJackServicesConnector {
 	// Alarmas Services
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
+	private static final String ACTIVATE_ALARM_AGENDA = "activateAlarmAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
 	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
 	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
@@ -185,6 +186,18 @@ public class LoJackServicesConnector {
 		jsonObject.put("agendaId", agendaId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, DELETE_ALARM_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean activateAlarmAgenda(String agendaId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("agendaId", agendaId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, ACTIVATE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

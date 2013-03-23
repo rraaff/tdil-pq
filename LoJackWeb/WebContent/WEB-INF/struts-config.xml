@@ -78,6 +78,13 @@
   <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/goToHomeAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
+  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/editAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
+  	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/toggleActivationAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
+  	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
+  </action>
+  
   <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAlertConfigurationAction">
   	<forward name="continue" path="/homeConfiguracionAlertasAlarma.jsp" redirect="true"/>
   </action>

@@ -162,11 +162,25 @@
  <PROCESS-ITEM NAME="page11" PATH="/homeConfiguracionAlertasAlarma.jsp"
   SHAPE="240,3090,0,0" SUBTYPE="jsp"
   TITLE="homeConfiguracionAlertasAlarma.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/requestResetPassword.do"
-   SUBTYPE="confirmed" TARGET="action6" TITLE="/requestResetPassword.do"
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAlarmAlertConf.do"
+   SUBTYPE="confirmed" TARGET="action19" TITLE="/saveAlarmAlertConf.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveAlarmAlertConf" NAME="action19"
   PATH="/saveAlarmAlertConf" SHAPE="32,3409,0,0"
   TITLE="AlarmAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#editAlarmAgenda" NAME="action20"
+  PATH="/editAlarmAgenda" SHAPE="32,2401,0,0" TITLE="AlarmAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeAlarmaAgenda.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleActivationAlarmAgenda" NAME="action21"
+  PATH="/toggleActivationAlarmAgenda" SHAPE="32,2401,0,0"
+  TITLE="AlarmAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeAlarmaAgenda.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
