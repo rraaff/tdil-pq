@@ -1,5 +1,7 @@
 package com.tdil.lojack.struts.forms;
 
+import java.sql.SQLException;
+
 import org.apache.struts.action.ActionForm;
 
 import com.tdil.struts.ValidationError;
@@ -18,4 +20,6 @@ public abstract class ThalamusForm extends ActionForm {
 	}
 	
 	public abstract void basicValidate(ValidationError validationError);
+	
+	public abstract void reset() throws SQLException;
 }

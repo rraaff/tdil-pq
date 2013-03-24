@@ -28,6 +28,26 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panic
 <% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
 Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
 
+<html:form method="POST" action="/saveAlarmAgenda">
+	Descripcion:<html:text name="AlarmAgendaForm" property="description" styleClass="normalField width120"/><br>
+	Desde el dia <html:text name="AlarmAgendaForm" property="from" styleClass="normalField width120"/> hasta el dia <html:text name="AlarmAgendaForm" property="to" styleClass="normalField width120"/><br>
+	
+	Desde las: horas y minutos y segundos <br>
+	Hasta las: horas y minutos y segundos <br>
+	
+	<logic:equal name="AlarmAgendaForm" property="edition" value="true">
+		<html:submit property="operation">
+			Grabar
+		</html:submit>
+	</logic:equal>
+	<logic:equal name="AlarmAgendaForm" property="edition" value="false">
+		<html:submit property="operation">
+			Agregar
+		</html:submit>
+	</logic:equal>
+	<input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset">
+</html:form>
+
 <div class="myRow">
 	<%
 	java.util.List source = alarmAgendaForm.getAlarmAgendas();

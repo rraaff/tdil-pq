@@ -1,18 +1,20 @@
 package com.tdil.lojack.struts.forms;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.ValidationError;
+import com.tdil.struts.ValidationException;
 
-public class AlarmAgendaForm extends ActionForm {
+public class AlarmAgendaForm extends ThalamusForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
@@ -26,6 +28,15 @@ public class AlarmAgendaForm extends ActionForm {
 	private String type;
 	private String customDays; //Sa,Do,Lu,Ma,Mi,Ju,Vi
 	// Hora en formato HH en 00-24:MM:SS, ejemplo 10:30:00 18:30:00
+	
+	private String activateTimeHour;
+	private String activateTimeMinute;
+	private String activateTimeSeconds;
+	
+	private String deactivateTimeHour;
+	private String deactivateTimeMinute;
+	private String deactivateTimeSeconds;
+	
 	private String activateTime;
 	private String deactivateTime;
 	
@@ -39,7 +50,29 @@ public class AlarmAgendaForm extends ActionForm {
 		super.reset(mapping, request);
 	}
 	
+	public boolean isEdition() {
+		return !org.apache.commons.lang.StringUtils.isEmpty(this.getId());
+	}
+	
 	public void reset() {
+		// TODO 
+		this.id = null;
+		this.description= null;
+		this.from= null; // Fechas en formato YYYY-MM-DD
+		this.to= null;
+		this.type= null;
+		this.customDays= null; //Sa,Do,Lu,Ma,Mi,Ju,Vi
+		
+		this.activateTimeHour= null;
+		this.activateTimeMinute= null;
+		this.activateTimeSeconds= null;
+		
+		this.deactivateTimeHour= null;
+		this.deactivateTimeMinute= null;
+		this.deactivateTimeSeconds= null;
+		
+		this.activateTime= null;
+		this.deactivateTime= null;
 	}
 
 	public void initWith(WebsiteUser user, String alarmId) {
@@ -175,6 +208,33 @@ public class AlarmAgendaForm extends ActionForm {
 			}
 		}
 		
+	}
+	
+	@Override
+	public void basicValidate(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+
+	public void save() throws SQLException, ValidationException {
+		AlarmAgenda alarmAgenda = new AlarmAgenda();
+		alarmAgenda.setId(this.getId());
+		alarmAgenda.setFrom(this.getFrom());
+		alarmAgenda.setTo(this.getTo());
+		alarmAgenda.setType(this.getType());
+		alarmAgenda.setCustomDays(this.getCustomDays());
+		alarmAgenda.setActivateTime(this.getActivateTime());
+		alarmAgenda.setDeactivateTime(this.getDeactivateTime());
+		boolean saved = false;
+		if (isEdition()) {
+			saved = LoJackServicesConnector.saveAlarmAgenda(alarmAgenda);
+		} else {
+			saved = LoJackServicesConnector.addAlarmAgenda(alarmAgenda);
+		}
+		if (!saved) {
+			// levantar una validation Exception
+		} else {
+			this.reset();
+		}
 	}
 	
 }

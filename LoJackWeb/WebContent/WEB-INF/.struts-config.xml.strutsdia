@@ -134,7 +134,11 @@
   SUBTYPE="jsp" TITLE="homeCamara.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page9" PATH="/homeAlarmaAgenda.jsp"
   SHAPE="240,1505,0,0" SUBTYPE="jsp" TITLE="homeAlarmaAgenda.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAlarmAgenda.do"
+   SUBTYPE="confirmed" TARGET="action22" TITLE="/saveAlarmAgenda.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToHomeAlarmAgenda" NAME="action16"
   PATH="/goToHomeAlarmAgenda" SHAPE="32,2401,0,0"
   TITLE="AlarmAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -179,6 +183,20 @@
  <PROCESS-ITEM ID="#toggleActivationAlarmAgenda" NAME="action21"
   PATH="/toggleActivationAlarmAgenda" SHAPE="32,2401,0,0"
   TITLE="AlarmAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeAlarmaAgenda.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveAlarmAgenda" NAME="action22"
+  PATH="/saveAlarmAgenda" SHAPE="448,1505,0,0" TITLE="AlarmAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeAlarmaAgenda.jsp" TARGET="page9" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetAlarmAgenda" NAME="action23"
+  PATH="/resetAlarmAgenda" SHAPE="32,2401,0,0" TITLE="AlarmAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/homeAlarmaAgenda.jsp" TARGET="page9" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>

@@ -51,6 +51,8 @@ public class LoJackServicesConnector {
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
 	private static final String ACTIVATE_ALARM_AGENDA = "activateAlarmAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
+	private static final String SAVE_ALARM_AGENDA = "saveAlarmAgenda.json";
+	
 	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
 	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
 	
@@ -210,7 +212,20 @@ public class LoJackServicesConnector {
 		System.out.println(jsonObject.toString(2));
 		//jsonObject.put("agendaId", agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, ADD_ALARM_AGENDA);
+			JSONResponse response = executeService(jsonObject, ADD_ALARM_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean saveAlarmAgenda(AlarmAgenda alarmAgenda) {
+		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
+		System.out.println(jsonObject.toString(2));
+		//jsonObject.put("agendaId", agendaId);
+		try {
+			JSONResponse response = executeService(jsonObject, SAVE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
