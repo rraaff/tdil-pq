@@ -78,7 +78,7 @@ public class AlarmAgendaForm extends ThalamusForm {
 	public void initWith(WebsiteUser user, String alarmId) {
 		setUser(user);
 		setAlarmId(alarmId);
-		setAlarmAgendas(new ArrayList<AlarmAgenda>(LoJackServicesConnector.getAlarmAgendas(alarmId)));
+		setAlarmAgendas(new ArrayList<AlarmAgenda>(LoJackServicesConnector.getAlarmAgendas(user.getGuid(), alarmId)));
 	}
 
 	public WebsiteUser getUser() {
@@ -196,12 +196,12 @@ public class AlarmAgendaForm extends ThalamusForm {
 		AlarmAgenda alarmAgenda = getAlarmAgenda(id);
 		if (alarmAgenda != null) {
 			if (alarmAgenda.isActive()) {
-				boolean result = LoJackServicesConnector.deleteAlarmAgenda(id);
+				boolean result = LoJackServicesConnector.deleteAlarmAgenda(user.getGuid(), id);
 				if (result) {
 					alarmAgenda.setActive(false);
 				}
 			} else {
-				boolean result = LoJackServicesConnector.activateAlarmAgenda(id);
+				boolean result = LoJackServicesConnector.activateAlarmAgenda(user.getGuid(), id);
 				if (result) {
 					alarmAgenda.setActive(true);
 				}
@@ -226,9 +226,9 @@ public class AlarmAgendaForm extends ThalamusForm {
 		alarmAgenda.setDeactivateTime(this.getDeactivateTime());
 		boolean saved = false;
 		if (isEdition()) {
-			saved = LoJackServicesConnector.saveAlarmAgenda(alarmAgenda);
+			saved = LoJackServicesConnector.saveAlarmAgenda(user.getGuid(), alarmAgenda);
 		} else {
-			saved = LoJackServicesConnector.addAlarmAgenda(alarmAgenda);
+			saved = LoJackServicesConnector.addAlarmAgenda(user.getGuid(), alarmAgenda);
 		}
 		if (!saved) {
 			// levantar una validation Exception

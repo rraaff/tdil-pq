@@ -24,6 +24,15 @@ public class WebsiteUser extends User {
 		this.token = tokenHolder;
 	}
 	
+	@Override
+	public Integer getId() {
+		return 1;
+	}
+	
+	public String getGuid() {
+		return String.valueOf(this.getId());
+	}
+	
 	public boolean isLogged() {
 		return this.getToken() != null && this.getToken().hasToken();
 	}

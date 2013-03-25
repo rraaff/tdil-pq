@@ -63,7 +63,7 @@ public class LoJackServicesConnector {
 
 	public static Collection<Alarm> getAlarms(String userId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("userId", userId);
+		jsonObject.put("guid", userId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
 			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
@@ -73,8 +73,9 @@ public class LoJackServicesConnector {
 			return null;
 		}
 	}
-	public static boolean sendPanicSignal(String alarmId) {
+	public static boolean sendPanicSignal(String userId, String alarmId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, SEND_PANIC);
@@ -84,8 +85,9 @@ public class LoJackServicesConnector {
 			return false;
 		}
 	}
-	public static boolean activateAlarm(String alarmId, String password) {
+	public static boolean activateAlarm(String userId, String alarmId, String password) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("password", password);
 		try {
@@ -96,8 +98,9 @@ public class LoJackServicesConnector {
 			return false;
 		}
 	}
-	public static boolean deactivateAlarm(String alarmId, String password) {
+	public static boolean deactivateAlarm(String userId,String alarmId, String password) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("password", password);
 		try {
@@ -109,8 +112,9 @@ public class LoJackServicesConnector {
 		}
 		
 	}
-	public static Collection<ChangeLog> getAlarmLog(String alarmId) {
+	public static Collection<ChangeLog> getAlarmLog(String userId, String alarmId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
@@ -124,7 +128,7 @@ public class LoJackServicesConnector {
 	
 	public static AlarmAlertConfiguration getAlarmAlertConfiguration(String userId, String alarmId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("userId", userId);
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_ALERT_CONFIGURATION);
@@ -137,8 +141,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean saveAlarmAlertConfiguration(AlarmAlertConfiguration conf) {
+	public static boolean saveAlarmAlertConfiguration(String userId, AlarmAlertConfiguration conf) {
 		JSONObject jsonObject = JSONObject.fromObject(conf);
+		jsonObject.put("guid", userId);
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_ALARM_ALERT_CONFIGURATION);
 			JSONObject object = (JSONObject)response.getResult();
@@ -157,8 +162,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean changeAlarmPassword(String alarmId, String newPassword) {
+	public static boolean changeAlarmPassword(String userId, String alarmId, String newPassword) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("alarmId", alarmId);
 		jsonObject.put("newPassword", newPassword);
 		try {
@@ -170,8 +176,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static Collection<AlarmAgenda> getAlarmAgendas(String agendaId) {
+	public static Collection<AlarmAgenda> getAlarmAgendas(String userId, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("agendaId", agendaId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_AGENDAS);
@@ -183,8 +190,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean deleteAlarmAgenda(String agendaId) {
+	public static boolean deleteAlarmAgenda(String userId, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("agendaId", agendaId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, DELETE_ALARM_AGENDA);
@@ -195,8 +203,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean activateAlarmAgenda(String agendaId) {
+	public static boolean activateAlarmAgenda(String userId, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("agendaId", agendaId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, ACTIVATE_ALARM_AGENDA);
@@ -207,10 +216,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean addAlarmAgenda(AlarmAgenda alarmAgenda) {
+	public static boolean addAlarmAgenda(String userId, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		System.out.println(jsonObject.toString(2));
-		//jsonObject.put("agendaId", agendaId);
+		jsonObject.put("guid", userId);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -220,10 +228,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean saveAlarmAgenda(AlarmAgenda alarmAgenda) {
+	public static boolean saveAlarmAgenda(String userId, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		System.out.println(jsonObject.toString(2));
-		//jsonObject.put("agendaId", agendaId);
+		jsonObject.put("guid", userId);
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -235,7 +242,7 @@ public class LoJackServicesConnector {
 
 	public static Collection<Light> getLights(String userId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("userId", userId);
+		jsonObject.put("guid", userId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHTS);
 			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);

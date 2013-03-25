@@ -20,7 +20,6 @@ public class AlarmAgenda implements Serializable {
 	public static final String Sa = "Sa";
 	public static final String Do = "Do";
 
-	private WebsiteUser user;
 	private String id;
 	private String description;
 	
@@ -79,12 +78,6 @@ public class AlarmAgenda implements Serializable {
 	}
 	public void setCustomDays(String customDays) {
 		this.customDays = customDays;
-	}
-	public WebsiteUser getUser() {
-		return user;
-	}
-	public void setUser(WebsiteUser user) {
-		this.user = user;
 	}
 
 	public String getFrom() {

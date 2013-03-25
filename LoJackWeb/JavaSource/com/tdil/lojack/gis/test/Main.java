@@ -16,16 +16,17 @@ public class Main {
 		BasicConfigurator.configure();
 		Logger rootLogger = Logger.getRootLogger();
 		rootLogger.setLevel(Level.DEBUG);
+		/*
 		System.out.println(LoJackServicesConnector.getAlarms("1"));
 		
-		System.out.println(LoJackServicesConnector.sendPanicSignal("1"));
+		System.out.println(LoJackServicesConnector.sendPanicSignal("1", "1"));
 		
-		System.out.println(LoJackServicesConnector.activateAlarm("1", "s"));
-		System.out.println(LoJackServicesConnector.deactivateAlarm("1", "s"));
+		System.out.println(LoJackServicesConnector.activateAlarm("1", "1", "s"));
+		System.out.println(LoJackServicesConnector.deactivateAlarm("1", "1", "s"));
 		
-		System.out.println(LoJackServicesConnector.getAlarmLog("1"));
+		System.out.println(LoJackServicesConnector.getAlarmLog("1", "1"));
 		
-		System.out.println(LoJackServicesConnector.changeAlarmPassword("1", "newnew"));
+		System.out.println(LoJackServicesConnector.changeAlarmPassword("1", "1", "newnew"));*/
 		
 		
 	}
