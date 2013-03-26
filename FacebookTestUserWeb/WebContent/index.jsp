@@ -16,6 +16,8 @@
 <% } else { %>
 	No conectado
 <% } %> | <a href="initWith.jsp?appId=520056664702384&clientSecret=e5929ff3d78f50a6e19cfe44e48e899a&appName=ThalamusTest">Inicializar para Thalamus Test</a>
+<br>
+<a href="initWith.jsp?appId=103292516498840&clientSecret=bf071b86cf483bb62ae0494cd56496ec&appName=TuaFesta">Inicializar para Tua Festa Test</a>
 
 <hr>
 Crear usuario

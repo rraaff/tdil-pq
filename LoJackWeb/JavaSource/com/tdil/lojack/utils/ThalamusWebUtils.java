@@ -48,4 +48,5 @@ public class ThalamusWebUtils {
 			ThalamusResponse response) {
 		addErrorsTo(validationError, response.getResult());
 	}
+	
 }

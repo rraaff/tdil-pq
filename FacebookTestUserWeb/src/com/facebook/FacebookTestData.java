@@ -86,12 +86,17 @@ public class FacebookTestData implements Serializable {
 		oldtestUsers.addAll(testUsers);
 		testUsers.clear();
 		
-		JSONObject object = ListTestUsers.list(this.getAppId(), this.getAccessToken());
-		JSONArray jsonArray = (JSONArray)object.getJSONArray("data");
-		
-		testUsers = (Collection<FacebookTestUser>)JSONArray.toCollection(jsonArray, FacebookTestUser.class);
-		for (FacebookTestUser old : oldtestUsers) {
-			setExtendedData(old);
+		try {
+			JSONObject object = ListTestUsers.list(this.getAppId(), this.getAccessToken());
+			JSONArray jsonArray = (JSONArray)object.getJSONArray("data");
+			
+			testUsers = (Collection<FacebookTestUser>)JSONArray.toCollection(jsonArray, FacebookTestUser.class);
+			for (FacebookTestUser old : oldtestUsers) {
+				setExtendedData(old);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

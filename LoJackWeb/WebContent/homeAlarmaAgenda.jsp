@@ -1,3 +1,4 @@
+<%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.lojack.gis.model.AlarmAgenda"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.lojack.struts.forms.AlarmAgendaForm"%>
@@ -32,8 +33,33 @@ Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
 	Descripcion:<html:text name="AlarmAgendaForm" property="description" styleClass="normalField width120"/><br>
 	Desde el dia <html:text name="AlarmAgendaForm" property="from" styleClass="normalField width120"/> hasta el dia <html:text name="AlarmAgendaForm" property="to" styleClass="normalField width120"/><br>
 	
-	Desde las: horas y minutos y segundos <br>
-	Hasta las: horas y minutos y segundos <br>
+	Desde las: <html:select name="AlarmAgendaForm" property="activateTimeHour">
+		<% for (String hour : DateUtils.ALL_HOURS) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select> horas y <html:select name="AlarmAgendaForm" property="activateTimeMinute">
+		<% for (String hour : DateUtils.ALL_MINUTES) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select> minutos y <html:select name="AlarmAgendaForm" property="activateTimeSeconds">
+		<% for (String hour : DateUtils.ALL_SECONDS) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select> segundos <br>
+	
+	Hasta las: <html:select name="AlarmAgendaForm" property="deactivateTimeHour">
+		<% for (String hour : DateUtils.ALL_HOURS) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select>horas y <html:select name="AlarmAgendaForm" property="deactivateTimeMinute">
+		<% for (String hour : DateUtils.ALL_MINUTES) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select> minutos y <html:select name="AlarmAgendaForm" property="deactivateTimeSeconds">
+		<% for (String hour : DateUtils.ALL_SECONDS) { %>
+			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+		<% } %>
+	</html:select> segundos <br>
 	
 	<logic:equal name="AlarmAgendaForm" property="edition" value="true">
 		<html:submit property="operation">
