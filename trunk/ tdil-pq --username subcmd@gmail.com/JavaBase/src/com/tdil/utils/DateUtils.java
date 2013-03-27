@@ -2,12 +2,40 @@ package com.tdil.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 
 public class DateUtils {
+	
+	public static List<String> ALL_HOURS;
+	public static List<String> ALL_MINUTES;
+	public static List<String> ALL_SECONDS;
+	
+	static {
+		List<String> result = new ArrayList<String>(24);
+		for (int i = 0; i < 10; i++) {
+			result.add("0" + i);
+		}
+		for (int i = 10; i < 24; i++) {
+			result.add(String.valueOf(i));
+		}
+		ALL_HOURS = Collections.unmodifiableList(result);
+		
+		result = new ArrayList<String>(60);
+		for (int i = 0; i < 10; i++) {
+			result.add("0" + i);
+		}
+		for (int i = 10; i < 59; i++) {
+			result.add(String.valueOf(i));
+		}
+		ALL_MINUTES = Collections.unmodifiableList(result);
+		ALL_SECONDS = ALL_MINUTES;
+	}
 
 	public static Date date2LastMomentOfDate(Date date) {
 		if (date == null) {
@@ -102,4 +130,5 @@ public class DateUtils {
 			return null;
 		}
 	}
+	
 }

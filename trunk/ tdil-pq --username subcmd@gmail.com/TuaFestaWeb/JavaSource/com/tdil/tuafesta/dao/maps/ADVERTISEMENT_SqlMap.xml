@@ -426,7 +426,7 @@
     and ad.deleted = 0
     and ad.id_sell != 0
     and s.id = ad.id_sell 
-    and s.id_profesional = cat.id
+    and s.id_category = cat.id
     and prof.status = 2
     and prof.deleted = 0
     and ad.id_profesional = prof.id

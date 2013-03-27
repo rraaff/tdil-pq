@@ -143,6 +143,13 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="fleft width600">
+					<div id="myRow" style="background-repeat:no-repeat; background-position: center center; 
+						<% if (profesional.getIdProfilePicture() != null && profesional.getIdProfilePicture() != 0) { %>
+							background-image:url(./downloadThumb.st?width=86&height=86&id=<%=profesional.getIdProfilePicture()%>&type=PUBLIC&ext=<%=profesional.getExtProfilePicture()%>);"
+						<% } else { %>
+							background-image:url(boImages/na.gif);
+						<% } %>
+					">asasas</div>
 					<div class="myRow">
 						<div class="myLabel width80">Sexo</div>
 						<div class="myLabel width120"><strong><%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></strong></div>

@@ -24,9 +24,9 @@ $(document).ready(
 	function(){
 
 			$("input[name=fromDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, yearRange: "1900:2012"});
+				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 			$("input[name=toDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, yearRange: "1900:2012"});
+				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 	}	
 );
 

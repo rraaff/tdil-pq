@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
-<%@page import="com.tdil.tuafesta.struts.forms.ProfesionalSearchResultForm"%>
+<%@page import="com.tdil.tuafesta.struts.forms.SellSearchResultForm"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page info="index"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %>
@@ -19,7 +19,7 @@
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<%@ include file="includes/designHeader.jsp" %>
+<%@ include file="includes/designHeader.jspf" %>
 <div id="divisionHeaderBody"></div>
 <div id="preContainer">
 	<div id="content">
@@ -27,13 +27,15 @@
 			<h1>Listado de profesionales</h1>
 		</div>
 		<div id="formContent" class="height300">
-			<% ProfesionalSearchResultForm profesionalForm = (ProfesionalSearchResultForm)session.getAttribute("ProfesionalSearchResultForm"); %>
+			<%
+				SellSearchResultForm profesionalForm = (SellSearchResultForm)session.getAttribute("ProfesionalSearchResultForm");
+			%>
 			<%
 					java.util.List servicesSource = profesionalForm.getSearchResult();
 					com.tdil.struts.pagination.PaginatedListImpl paginatedServices = new com.tdil.struts.pagination.PaginatedListImpl(servicesSource, request, 10);
 					request.setAttribute( "profesionals",  paginatedServices);
 					%>
-					<display:table name="profesionals" sort="external" pagesize="10" id="profesionals" requestURI="./profesionalSearchResult.jsp">
+					<display:table name="profesionals" sort="external" pagesize="10" id="profesionals" requestURI="./sellSearchResult.jsp">
 						<display:column title="Nombre" sortable="true" sortName="Nombre" headerClass="sortable width150" property="completeName"></display:column>
 						<display:column title="acciones" headerClass="sortable width150">
 							<a href="./viewProfesionalProfile.do?id=<%= ((Profesional)pageContext.getAttribute("profesionals")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver perfil</a>
