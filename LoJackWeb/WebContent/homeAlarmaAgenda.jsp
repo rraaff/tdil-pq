@@ -59,7 +59,15 @@ Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
 		<% for (String hour : DateUtils.ALL_SECONDS) { %>
 			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 		<% } %>
-	</html:select> segundos <br>
+	</html:select> segundos <br><br>
+	
+	Lunes<html:checkbox name="AlarmAgendaForm" property="monday"/> | 
+	Martes<html:checkbox name="AlarmAgendaForm" property="tuesday"/> | 
+	Miercoles<html:checkbox name="AlarmAgendaForm" property="wednesday"/> | 
+	Jueves<html:checkbox name="AlarmAgendaForm" property="thursday"/> | 
+	Viernes<html:checkbox name="AlarmAgendaForm" property="friday"/> | 
+	Sabado<html:checkbox name="AlarmAgendaForm" property="saturday"/> | 
+	Domingo<html:checkbox name="AlarmAgendaForm" property="sunday"/><br>
 	
 	<logic:equal name="AlarmAgendaForm" property="edition" value="true">
 		<html:submit property="operation">

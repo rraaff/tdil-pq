@@ -30,8 +30,8 @@ public class LoginTwitterAction extends Action {
 		String code = request.getParameter("oauth_token");
         if (!StringUtils.isEmpty(code)) {
         	RegisterForm register = (RegisterForm)request.getSession().getAttribute("RegisterForm");
-        	JSONObject json = (JSONObject)ThalamusClientFacade.signInTwitter(code);
-        	if (isNotLogged(json)) {
+        	// TODO JSONObject json = (JSONObject)ThalamusClientFacade.signInTwitter(code);
+        	/*if (isNotLogged(json)) {
 	        	register.setSocialConnections(getSocialConnections(json));
 	        	setData(register, json);
 	        	System.out.println(json.toString(2));
@@ -39,7 +39,8 @@ public class LoginTwitterAction extends Action {
         	} else {
         		// marcar como logueado
         		return mapping.findForward("continue");
-        	}
+        	}*/
+        	return mapping.findForward("cancel");
         } else { // si cancelo
         	return mapping.findForward("cancel");
         }

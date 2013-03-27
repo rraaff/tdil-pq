@@ -55,6 +55,13 @@ public class AlarmAgendaForm extends ThalamusForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
+		this.monday = false;
+		this.tuesday = false;
+		this.wednesday = false;
+		this.thursday = false;
+		this.friday = false;
+		this.saturday = false;
+		this.sunday = false;
 	}
 	
 	public boolean isEdition() {
@@ -151,11 +158,44 @@ public class AlarmAgendaForm extends ThalamusForm {
 	}
 
 	public String getCustomDays() {
-		return customDays;
+		StringBuffer result = new StringBuffer();
+		if (this.monday) {
+			result.append("Lu,");
+		}
+		if (this.tuesday) {
+			result.append("Ma,");
+		}
+		if (this.wednesday) {
+			result.append("Mi,");
+		}
+		if (this.thursday) {
+			result.append("Ju,");
+		}
+		if (this.friday) {
+			result.append("Vi,");
+		}
+		if (this.saturday) {
+			result.append("Sa,");
+		}
+		if (this.sunday) {
+			result.append("Do,");
+		}
+		String days = result.toString();
+		if (days.length() > 0) {
+			return days.substring(0, days.length() - 1);
+		} else {
+			return "";
+		}
 	}
 
 	public void setCustomDays(String customDays) {
-		this.customDays = customDays;
+		this.monday = customDays.indexOf("Lu") != -1;
+		this.tuesday = customDays.indexOf("Ma") != -1;
+		this.wednesday = customDays.indexOf("Mi") != -1;
+		this.thursday = customDays.indexOf("Ju") != -1;
+		this.friday = customDays.indexOf("Vi") != -1;
+		this.saturday = customDays.indexOf("Sa") != -1;
+		this.sunday = customDays.indexOf("Do") != -1;
 	}
 
 	public String getActivateTime() {
@@ -294,6 +334,62 @@ public class AlarmAgendaForm extends ThalamusForm {
 
 	public void setDeactivateTimeSeconds(String deactivateTimeSeconds) {
 		this.deactivateTimeSeconds = deactivateTimeSeconds;
+	}
+
+	public boolean isMonday() {
+		return monday;
+	}
+
+	public void setMonday(boolean monday) {
+		this.monday = monday;
+	}
+
+	public boolean isTuesday() {
+		return tuesday;
+	}
+
+	public void setTuesday(boolean tuesday) {
+		this.tuesday = tuesday;
+	}
+
+	public boolean isWednesday() {
+		return wednesday;
+	}
+
+	public void setWednesday(boolean wednesday) {
+		this.wednesday = wednesday;
+	}
+
+	public boolean isThursday() {
+		return thursday;
+	}
+
+	public void setThursday(boolean thursday) {
+		this.thursday = thursday;
+	}
+
+	public boolean isFriday() {
+		return friday;
+	}
+
+	public void setFriday(boolean friday) {
+		this.friday = friday;
+	}
+
+	public boolean isSaturday() {
+		return saturday;
+	}
+
+	public void setSaturday(boolean saturday) {
+		this.saturday = saturday;
+	}
+
+	public boolean isSunday() {
+		return sunday;
+	}
+
+	public void setSunday(boolean sunday) {
+		this.sunday = sunday;
 	}
 	
 }
