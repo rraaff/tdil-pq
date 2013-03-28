@@ -13,6 +13,7 @@ public class AdvertisementValueObject extends Advertisement {
 	private String profesionalBusinessName;
 	private String profesionalDescription;
 	private String sellName;
+	private String sellDescription;
 	private String categoryName;
 
 	public String getProfesionalBusinessName() {
@@ -64,6 +65,13 @@ public class AdvertisementValueObject extends Advertisement {
 	
 	public boolean hasImage() {
 		return this.getIdBlobData() != null && this.getIdBlobData() != 0;
+	}
+	
+	public String getSellDescription() {
+		return sellDescription;
+	}
+	public void setSellDescription(String sellDescription) {
+		this.sellDescription = sellDescription;
 	}
 	
 	public String getProfesionalDescriptionUpTo(int chars) {
