@@ -48,6 +48,10 @@
 			left: left + 'px'
 		}).fadeIn(500);
 	}
+
+	function append(st) {
+		$('#password').attr('value', $('#password').attr('value') + st);
+	}
   </script>
 </head>
 <body>
@@ -59,7 +63,13 @@ Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <div id="accordion">
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>>
-  <h3><%= alarm.getDescription() %> <%=alarm.isOn() ? "Encendida" : "Apagada"%></h3>
+  <h3><%= alarm.getDescription() %> <%=alarm.isOn() ? "Encendida" : "Apagada"%>
+  	<% if (alarm.isOn()) { %>
+  		<span onclick="alert(1)">Apagar</span>
+  	<% } else { %>
+  		<span onclick="alert(2)">Encender</span>
+  	<% } %>
+  </h3>
   <div>
     <p>
    		<% if (alarm.hasChangeData()) { %>
@@ -88,6 +98,23 @@ Mis Alarmas<br><br>
 <div id="confSavedLayer" style="display: none; z-index: 500;">
 	La configuracion ha sido salvada
 	<input type="button" id="closeSavedConfLayer" value="Cerrar">
+</div>
+
+<div id="passwordLayer" style="display: none; z-index: 500;">
+	<input type="password" id="password">
+	<input type="button" onclick="append('1')" value="1">
+	<input type="button" onclick="append('1')" value="2">
+	<input type="button" onclick="append('1')" value="3">
+	<input type="button" onclick="append('1')" value="4">
+	<input type="button" onclick="append('1')" value="5">
+	<input type="button" onclick="append('1')" value="6">
+	<input type="button" onclick="append('1')" value="7">
+	<input type="button" onclick="append('1')" value="8">
+	<input type="button" onclick="append('1')" value="9">
+	<input type="button" onclick="append('1')" value="*">
+	<input type="button" onclick="append('1')" value="0">
+	<input type="button" onclick="append('1')" value="#">
+	<input type="button" onclick="" value="Confirmar">
 </div>
 </body>
 </html>
