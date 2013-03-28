@@ -168,7 +168,7 @@
 							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalDescriptionUpTo(120) %><br/><br/>Ir al perfil</a>
 						<% } else { %>
 							<span class="category">Rubro: <a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getCategoryName() %></a></span>
-							<p style="padding-top:10px;">Agregar la descripci&oacute;n del producto</p>
+							<p style="padding-top:10px;"><%=advertisementValueObject.getSellDescription()%></p>
 						<% } %>
 					</div>
 					<span class="price"><a href="#"></a></span>		
