@@ -1,0 +1,14 @@
+[
+    {
+    "action": "ACTIVAR",
+    "date": "2012",
+    "hour": "20:30",
+    "user": "MARCELA"
+  },
+    {
+    "action": "DESATIVAR",
+    "date": "2012",
+    "hour": "22:30",
+    "user": "MARCOS"
+  }
+]

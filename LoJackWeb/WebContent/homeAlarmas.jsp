@@ -25,7 +25,6 @@
     $( "#closeSavedConfLayer" ).click(function() {
 		$( "#confSavedLayer" ).fadeOut();
 	});
-    closeSavedConfLayer
   });
   
   function seeAlarmLog(alarmId) {

@@ -6,16 +6,15 @@
 --><%@ include file="includes/userLogged.jspf" %>
 Configuracion de las alertas 
 
-<html:form method="POST" action="/saveAlarmAlertConf">
+<html:form method="POST" action="/saveLightAlertConf">
 	<div id="errorSavingConf" style="display: none;">Ha ocurrido un error</div>
-	Activacion/Desactivacion:<html:checkbox name="AlarmAlertConfigurationForm" property="activateDeactivate" styleClass="normalField width120"/>
-	Activacion/Desactivacion por otros:<html:checkbox name="AlarmAlertConfigurationForm" property="activateDeactivateByOther" styleClass="normalField width120"/>
-	Corte de energia:<html:checkbox name="AlarmAlertConfigurationForm" property="powerSupplyLost" styleClass="normalField width120"/>
-	Disparado de alarma:<html:checkbox name="AlarmAlertConfigurationForm" property="alarmActivation" styleClass="normalField width120"/>
+	Activacion/Desactivacion:<html:checkbox name="LightAlertConfigurationForm" property="activateDeactivate" styleClass="normalField width120"/>
+	Activacion/Desactivacion por otros:<html:checkbox name="LightAlertConfigurationForm" property="activateDeactivateByOther" styleClass="normalField width120"/>
+	Corte de energia:<html:checkbox name="LightAlertConfigurationForm" property="powerSupplyLost" styleClass="normalField width120"/>
 	<input type="submit" id="submitforgotPassword" value="Submit"><input type="button" id="closeConfAlertLayer" value="Cancel">
 </html:form>
 <script>
-$("form[name='AlarmAlertConfigurationForm']").validate({
+$("form[name='LightAlertConfigurationForm']").validate({
 	errorPlacement: function(error, element) {
 		error.appendTo( element.parent("div"));
 	},
@@ -23,9 +22,9 @@ $("form[name='AlarmAlertConfigurationForm']").validate({
 	messages: {			},
 	submitHandler: function() {
 		$( "#errorSavingConf" ).css( 'display', 'none' )
-        $("form[name='AlarmAlertConfigurationForm']").ajaxSubmit({
+        $("form[name='LightAlertConfigurationForm']").ajaxSubmit({
 			type: "POST",
-			url: "./saveAlarmAlertConf.do",
+			url: "./saveLightAlertConf.do",
 			dataType: "json",
 			success: function(data) {
 				if (data.result == 'OK') {

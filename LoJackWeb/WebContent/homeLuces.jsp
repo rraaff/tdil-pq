@@ -17,7 +17,37 @@
 <script>
   $(function() {
     $( "#accordion" ).accordion();
+
+    $( "#closeLogLayer" ).click(function() {
+		$( "#logLayer" ).fadeOut();
+	});
+	
+	$( "#closeSavedConfLayer" ).click(function() {
+		$( "#confSavedLayer" ).fadeOut();
+	});
   });
+
+  function seeLightLog(lightId) {
+	  $('#logData').load('logLuz.jsp?lightId=' + lightId, function() {
+		  centerLayer($(window), $( "#logLayer" ));
+		});
+  }
+  
+  function confLightAlert(lightId) {
+	  $('#confAlert').load('goToHomeLightAlertConf.do?lightId=' + lightId, function() {
+		  centerLayer($(window), $( "#confAlertLayer" ));
+		});
+  }
+  
+  function centerLayer(objWin, objLayer) {
+		var top = (objWin.height() / 2) - (objLayer.height() / 2);
+		var left = (objWin.width() / 2) - (objLayer.width() / 2);
+		objLayer.css({
+			position: 'absolute',
+			top: top + 'px',
+			left: left + 'px'
+		}).fadeIn(500);
+	}
   </script>
 </head>
 <body>
@@ -29,19 +59,35 @@ Mis Lucess<br><br>
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <div id="accordion">
 <% for (Light light : lightsForm.getLights()) { %>>
-  <h3><%= light.getDescription() %> <%=light.isOn() ? "Encendida" : "Apagada"%></h3>
+  <h3><%= light.getDescription() %> <%=light.isHasOnOffInfo() ? (light.isOn() ? "Encendida" : "Apagada") : ""%></h3>
   <div>
     <p>
    		<% if (light.hasChangeData()) { %>
    			Ultimo cambio: <%=light.getLastChangeDate() %> - <%=light.getLastChangeHour() %>
    			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
-   			<a href="#">Ver log completo</a><br>
-   			Envio de <a href="#">Alertas por Email</a><br>
-   			<a href="./goToHomeLightAgenda.do?lightId=<%=light.getId()%>">Configurar horarios</a> de Armado/Desarmado<br>
+   			<a href="javascript:seeLightLog('<%= light.getId() %>')">Ver log completo</a><br>
+   			Envio de <a href="javascript:confLightAlert('<%= light.getId() %>')">Alertas por Email</a><br>
+   			<a href="./goToHomeLightAgenda.do?lightId=<%=light.getId()%>">Configurar horarios</a> de Encendido/Apagado<br>
    		<% } %>
     </p>
   </div>
   <% } %>
+</div>
+<div id="logLayer" style="display: none; z-index: 500;">
+	<div id="logData">
+		Consultando datos...
+	</div>
+	<input type="button" id="closeLogLayer" value="Cerrar">
+</div>
+
+<div id="confAlertLayer" style="display: none; z-index: 500;">
+	<div id="confAlert">
+		Consultando datos...
+	</div>
+</div>
+<div id="confSavedLayer" style="display: none; z-index: 500;">
+	La configuracion ha sido salvada
+	<input type="button" id="closeSavedConfLayer" value="Cerrar">
 </div>
 </div>
 </body>

@@ -6,6 +6,7 @@
     "lastChangeDate": "2013-03-19",
     "lastChangeHour": "20:30",
     "lastChangeUser": "VALENTINA",
+    "hasOnOffInfo": true,
     "on": true
   },
     {
@@ -15,6 +16,7 @@
     "lastChangeDate": "2013-02-01",
     "lastChangeHour": "20:30",
     "lastChangeUser": "MARCELA",
+    "hasOnOffInfo": true,
     "on": false
   },
     {
@@ -24,6 +26,7 @@
     "lastChangeDate": "2013-02-01",
     "lastChangeHour": "20:30",
     "lastChangeUser": "MARCELA",
+    "hasOnOffInfo": false,
     "on": false
   }
 ]

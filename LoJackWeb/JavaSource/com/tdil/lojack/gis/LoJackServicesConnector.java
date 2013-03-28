@@ -2,7 +2,6 @@ package com.tdil.lojack.gis;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
@@ -24,6 +23,7 @@ import com.tdil.lojack.gis.model.AlarmAlertConfiguration;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.gis.model.LightAgenda;
+import com.tdil.lojack.gis.model.LightAlertConfiguration;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
@@ -56,8 +56,13 @@ public class LoJackServicesConnector {
 	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
 	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
 	
-	// Luces
+	// Luces GIS
 	private static final String GET_LIGHTS = "getLights.json";
+	private static final String GET_LIGHT_LOG = "getLightLog.json";
+	
+	// Luces Services
+	private static final String GET_LIGHT_ALERT_CONFIGURATION = "getLightAlertConfiguration.json";
+	private static final String SAVE_LIGHT_ALERT_CONFIGURATION = "saveLightAlertConfiguration.json";
 	
 	private static final String GET_LIGHT_AGENDAS = "getLightAgendas.json";
 
@@ -258,9 +263,56 @@ public class LoJackServicesConnector {
 	public static boolean deactivateLight(Light light, String password) {
 		return false;
 	}
-	public static Collection<ChangeLog> getLightLog(Light light) {
-		return null;
+	public static Collection<ChangeLog> getLightLog(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_LOG);
+			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
+			return resultObj;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
 	}
+	
+	public static LightAlertConfiguration getLightAlertConfiguration(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeService(jsonObject, GET_LIGHT_ALERT_CONFIGURATION);
+			JSONObject object = (JSONObject)response.getResult();
+			LightAlertConfiguration configuration = (LightAlertConfiguration)JSONObject.toBean(object, LightAlertConfiguration.class);
+			return configuration;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
+	public static boolean saveLightAlertConfiguration(String userId, LightAlertConfiguration conf) {
+		JSONObject jsonObject = JSONObject.fromObject(conf);
+		jsonObject.put("guid", userId);
+		try {
+			JSONResponse response = executeService(jsonObject, SAVE_LIGHT_ALERT_CONFIGURATION);
+			JSONObject object = (JSONObject)response.getResult();
+			if (object != null) {
+				if (object.containsKey("result")) {
+					return object.getBoolean("result");
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
 	public static boolean changeLightPassword(Light light, String newPassword) {
 		return false;
 	}
