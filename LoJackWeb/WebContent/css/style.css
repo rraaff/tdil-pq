@@ -23,6 +23,9 @@ body {
 	height:100%;
 	overflow:hidden;
 }
+body a {
+	color:#958732;
+}
 #structure {
 	background-repeat: no-repeat;
 	background-position: center top;
