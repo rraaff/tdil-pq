@@ -101,6 +101,9 @@
   <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/saveAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
   </action>
   
+  <action path="/activateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceAjaxAction"/>
+  <action path="/deactivateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceAjaxAction"/>
+  
   <action name="LightsForm" parameter="WebsiteUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
   </action>

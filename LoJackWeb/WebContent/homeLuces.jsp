@@ -50,11 +50,59 @@
 	}
 	function toggleRandomSequence(objCheckbox, lightId) {
 		if (objCheckbox.checked) {
-			alert('activar');
+			activateRandom(objCheckbox, lightId);
 		} else {
-			alert('desactivar');
+			deactivateRandom(objCheckbox, lightId);
 		}
 	}
+
+	function activateRandom(objCheckbox, lightId) {
+		  $.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./activateLightRandomSequence.do",
+	          data: {lightId: lightId},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  if (data.result == 'OK') {
+						//$( "#confAlertLayer" ).fadeOut();
+						//centerLayer($(window), $( "#confSavedLayer" ));
+						alert('Se ha enviado el comando');
+					} else {
+						alert('El comando no ha podido enviarse');
+						objCheckbox.checked = false;
+					}
+	          },
+	          error: function() {
+	        	  alert('El comando no ha podido enviarse');
+	        	  objCheckbox.checked = false;
+	          }
+	      });
+	  }
+
+	function deactivateRandom(objCheckbox, lightId) {
+		  $.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./deactivateLightRandomSequence.do",
+	          data: {lightId: lightId},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  if (data.result == 'OK') {
+						//$( "#confAlertLayer" ).fadeOut();
+						//centerLayer($(window), $( "#confSavedLayer" ));
+						alert('Se ha enviado el comando');
+					} else {
+						alert('El comando no ha podido enviarse');
+						objCheckbox.checked = true;
+					}
+	          },
+	          error: function() {
+	        	  alert('El comando no ha podido enviarse');
+	        	  objCheckbox.checked = true;
+	          }
+	      });
+	  }
   </script>
 </head>
 <body>

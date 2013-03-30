@@ -254,4 +254,9 @@
   SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#deactivateAlarm" NAME="action31"
   PATH="/deactivateAlarm" SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#activateLightRandomSequence" NAME="action32"
+  PATH="/activateLightRandomSequence" SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deactivateLightRandomSequence" NAME="action33"
+  PATH="/deactivateLightRandomSequence" SHAPE="240,4433,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
