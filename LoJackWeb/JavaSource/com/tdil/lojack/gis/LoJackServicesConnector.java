@@ -60,6 +60,9 @@ public class LoJackServicesConnector {
 	private static final String GET_LIGHTS = "getLights.json";
 	private static final String GET_LIGHT_LOG = "getLightLog.json";
 	
+	private static final String ACTIVATE_LIGHT_RANDOM_SEQUENCE = "activateLightRandomSequence.json";
+	private static final String DEACTIVATE_LIGHT_RANDOM_SEQUENCE = "deactivateLightRandomSequence.json";
+	
 	// Luces Services
 	private static final String GET_LIGHT_AGENDAS = "getLightAgendas.json";
 	private static final String DELETE_LIGHT_AGENDA = "deleteLightAgenda.json";
@@ -261,6 +264,33 @@ public class LoJackServicesConnector {
 			return null;
 		}
 	}
+	
+	public static boolean activateLightRandomSequence(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, ACTIVATE_LIGHT_RANDOM_SEQUENCE);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean deactivateLightRandomSequence(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, DEACTIVATE_LIGHT_RANDOM_SEQUENCE);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
 	public static boolean activateLight(Light light, String password) {
 		return false;
 	}

@@ -48,6 +48,13 @@
 			left: left + 'px'
 		}).fadeIn(500);
 	}
+	function toggleRandomSequence(objCheckbox, lightId) {
+		if (objCheckbox.checked) {
+			alert('activar');
+		} else {
+			alert('desactivar');
+		}
+	}
   </script>
 </head>
 <body>
@@ -68,6 +75,7 @@ Mis Lucess<br><br>
    			<a href="javascript:seeLightLog('<%= light.getId() %>')">Ver log completo</a><br>
    			Envio de <a href="javascript:confLightAlert('<%= light.getId() %>')">Alertas por Email</a><br>
    			<a href="./goToHomeLightAgenda.do?lightId=<%=light.getId()%>">Configurar horarios</a> de Encendido/Apagado<br>
+ 			<input type="checkbox" onchange="toggleRandomSequence(this, '<%=light.getId()%>')" <%= light.isRandomSequence() ? "checked" : ""%>>Activar/Desactivar secuencia aleatoria
    		<% } %>
     </p>
   </div>

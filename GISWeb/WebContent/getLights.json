@@ -7,7 +7,8 @@
     "lastChangeHour": "20:30",
     "lastChangeUser": "VALENTINA",
     "hasOnOffInfo": true,
-    "on": true
+    "on": true,
+    "randomSequence": true
   },
     {
     "description": "Fondo casa",
@@ -17,7 +18,8 @@
     "lastChangeHour": "20:30",
     "lastChangeUser": "MARCELA",
     "hasOnOffInfo": true,
-    "on": false
+    "on": false,
+    "randomSequence": false
   },
     {
     "description": "Cocina casa",
@@ -27,6 +29,7 @@
     "lastChangeHour": "20:30",
     "lastChangeUser": "MARCELA",
     "hasOnOffInfo": false,
-    "on": false
+    "on": false,
+    "randomSequence": false
   }
 ]
