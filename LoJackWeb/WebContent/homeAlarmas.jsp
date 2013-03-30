@@ -29,11 +29,22 @@
     $( "#closePasswordLayerButton" ).click(function() {
 		$( "#passwordLayer" ).fadeOut();
 	});
+
+    $( "#closePanicLayer" ).click(function() {
+		$( "#sendPanicLayer" ).fadeOut();
+	});
+    
   });
   
   function seeAlarmLog(alarmId) {
 	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
 		  centerLayer($(window), $( "#logLayer" ));
+		});
+  }
+
+  function sendPanic() {
+	  $('#sendPanic').load('sendPanic.jsp', function() {
+		  centerLayer($(window), $( "#sendPanicLayer" ));
 		});
   }
 
@@ -115,7 +126,7 @@
 <body>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
 <hr> 
-Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
+Producto Home | Producto Prevent | Producto Pet | Producto Otro | <a href="javascript:sendPanic()">Boton de panico</a>
 <hr> 
 Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
@@ -175,5 +186,13 @@ Mis Alarmas<br><br>
 	<input type="button" id="passwordLayerButton" value="Confirmar">
 	<input type="button" id="closePasswordLayerButton" value="Cerrar">
 </div>
+
+<div id="sendPanicLayer" style="display: none; z-index: 500;">
+	<div id="sendPanic">
+		Consultando datos...
+	</div>
+	<input type="button" id="closePanicLayer" value="Cerrar">
+</div>
+
 </body>
 </html>
