@@ -250,4 +250,8 @@
    PATH="/homeLuzAgenda.jsp" TARGET="page10" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#activateAlarm" NAME="action30" PATH="/activateAlarm"
+  SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deactivateAlarm" NAME="action31"
+  PATH="/deactivateAlarm" SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -25,6 +25,10 @@
     $( "#closeSavedConfLayer" ).click(function() {
 		$( "#confSavedLayer" ).fadeOut();
 	});
+
+    $( "#closePasswordLayerButton" ).click(function() {
+		$( "#passwordLayer" ).fadeOut();
+	});
   });
   
   function seeAlarmLog(alarmId) {
@@ -37,6 +41,60 @@
 	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function() {
 		  centerLayer($(window), $( "#confAlertLayer" ));
 		});
+  }
+
+  function activateAlarm(alarmId) {
+	  $('#passwordLayerButton').attr('onclick', 'doActivate("'+alarmId+'")');
+	  centerLayer($(window), $( "#passwordLayer" ));
+  }
+
+  function doActivate(alarmId) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./activateAlarm.do",
+          data: {alarmId: alarmId , password:  $('#password').attr('value')},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result == 'OK') {
+					//$( "#confAlertLayer" ).fadeOut();
+					//centerLayer($(window), $( "#confSavedLayer" ));
+					alert('La alarma ha sido activada');
+				} else {
+					alert('La alarma no ha podido activarse');
+				}
+          },
+          error: function() {
+        	  alert('La alarma no ha podido activarse');
+          }
+      });
+  }
+
+  function doDeactivate(alarmId) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./deactivateAlarm.do",
+          data: {alarmId: alarmId , password:  $('#password').attr('value')},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result == 'OK') {
+					//$( "#confAlertLayer" ).fadeOut();
+					//centerLayer($(window), $( "#confSavedLayer" ));
+					alert('La alarma ha sido desactivada');
+				} else {
+					alert('La alarma no ha podido desactivarse');
+				}
+          },
+          error: function() {
+        	  alert('La alarma no ha podido desactivarse');
+          }
+      });
+  }
+  
+  function deactivateAlarm(alarmId) {
+	  $('#passwordLayerButton').attr('onclick', 'doDeactivate("'+alarmId+'")');
+	  centerLayer($(window), $( "#passwordLayer" ));
   }
 
   function centerLayer(objWin, objLayer) {
@@ -65,9 +123,9 @@ Mis Alarmas<br><br>
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>>
   <h3><%= alarm.getDescription() %> <%=alarm.isOn() ? "Encendida" : "Apagada"%>
   	<% if (alarm.isOn()) { %>
-  		<span onclick="alert(1)">Apagar</span>
+  		<span onclick="deactivateAlarm('<%=alarm.getId()%>')">Apagar</span>
   	<% } else { %>
-  		<span onclick="alert(2)">Encender</span>
+  		<span onclick="activateAlarm('<%=alarm.getId()%>')">Encender</span>
   	<% } %>
   </h3>
   <div>
@@ -103,18 +161,19 @@ Mis Alarmas<br><br>
 <div id="passwordLayer" style="display: none; z-index: 500;">
 	<input type="password" id="password">
 	<input type="button" onclick="append('1')" value="1">
-	<input type="button" onclick="append('1')" value="2">
-	<input type="button" onclick="append('1')" value="3">
-	<input type="button" onclick="append('1')" value="4">
-	<input type="button" onclick="append('1')" value="5">
-	<input type="button" onclick="append('1')" value="6">
-	<input type="button" onclick="append('1')" value="7">
-	<input type="button" onclick="append('1')" value="8">
-	<input type="button" onclick="append('1')" value="9">
-	<input type="button" onclick="append('1')" value="*">
-	<input type="button" onclick="append('1')" value="0">
-	<input type="button" onclick="append('1')" value="#">
-	<input type="button" onclick="" value="Confirmar">
+	<input type="button" onclick="append('2')" value="2">
+	<input type="button" onclick="append('3')" value="3">
+	<input type="button" onclick="append('4')" value="4">
+	<input type="button" onclick="append('5')" value="5">
+	<input type="button" onclick="append('6')" value="6">
+	<input type="button" onclick="append('7')" value="7">
+	<input type="button" onclick="append('8')" value="8">
+	<input type="button" onclick="append('9')" value="9">
+	<input type="button" onclick="append('*')" value="*">
+	<input type="button" onclick="append('0')" value="0">
+	<input type="button" onclick="append('#')" value="#">
+	<input type="button" id="passwordLayerButton" value="Confirmar">
+	<input type="button" id="closePasswordLayerButton" value="Cerrar">
 </div>
 </body>
 </html>
