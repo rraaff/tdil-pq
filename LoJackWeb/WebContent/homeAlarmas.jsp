@@ -48,6 +48,28 @@
 		});
   }
 
+  function doSendPanic(alarmId) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./sendPanic.do",
+          data: {alarmId: alarmId},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result == 'OK') {
+					//$( "#confAlertLayer" ).fadeOut();
+					//centerLayer($(window), $( "#confSavedLayer" ));
+					alert('Se ha enviado la senial de panico');
+				} else {
+					alert('La senial de panico no ha podido enviarse');
+				}
+          },
+          error: function() {
+        	  alert('La senial de panico no ha podido enviarse');
+          }
+      });
+  }
+
   function confAlarmAlert(alarmId) {
 	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function() {
 		  centerLayer($(window), $( "#confAlertLayer" ));

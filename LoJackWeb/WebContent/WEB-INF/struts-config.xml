@@ -75,6 +75,7 @@
   <!-- Home -->
   <action path="/activateAlarm" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmAjaxAction"/>
   <action path="/deactivateAlarm" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmAjaxAction"/>
+  <action path="/sendPanic" scope="request" type="com.tdil.lojack.struts.action.SendPanicAlarmAjaxAction"/>
   
   <action name="AlarmsForm" parameter="WebsiteUser" path="/goToHomeAlarms" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
   	<forward name="continue" path="/homeAlarmas.jsp" redirect="true"/>

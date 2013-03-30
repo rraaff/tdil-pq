@@ -7,5 +7,5 @@ Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser.getGuid
 %>
 Enviar senial de panico <br>
 <% for (Alarm alarm : alarms) { %>
-<%= alarm.getId() %> - <%=alarm.getDescription() %><hr> 
+<a href="javascript:doSendPanic('<%= alarm.getId() %>')"><%= alarm.getId() %> - <%=alarm.getDescription() %></a><hr> 
 <% } %>

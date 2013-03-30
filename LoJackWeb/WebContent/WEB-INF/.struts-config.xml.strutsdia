@@ -259,4 +259,6 @@
  <PROCESS-ITEM ID="#deactivateLightRandomSequence" NAME="action33"
   PATH="/deactivateLightRandomSequence" SHAPE="240,4433,0,0"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sendPanic" NAME="action34" PATH="/sendPanic"
+  SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
