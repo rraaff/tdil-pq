@@ -61,11 +61,15 @@ public class LoJackServicesConnector {
 	private static final String GET_LIGHT_LOG = "getLightLog.json";
 	
 	// Luces Services
+	private static final String GET_LIGHT_AGENDAS = "getLightAgendas.json";
+	private static final String DELETE_LIGHT_AGENDA = "deleteLightAgenda.json";
+	private static final String ACTIVATE_LIGHT_AGENDA = "activateLightAgenda.json";
+	private static final String ADD_LIGHT_AGENDA = "addLightAgenda.json";
+	private static final String SAVE_LIGHT_AGENDA = "saveLightAgenda.json";
+	
 	private static final String GET_LIGHT_ALERT_CONFIGURATION = "getLightAlertConfiguration.json";
 	private static final String SAVE_LIGHT_ALERT_CONFIGURATION = "saveLightAlertConfiguration.json";
 	
-	private static final String GET_LIGHT_AGENDAS = "getLightAgendas.json";
-
 	public static Collection<Alarm> getAlarms(String userId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("guid", userId);
@@ -317,8 +321,9 @@ public class LoJackServicesConnector {
 		return false;
 	}
 	
-	public static Collection<LightAgenda> getLighAtgendas(String lightId) {
+	public static Collection<LightAgenda> getLightAgendas(String userId, String lightId) {
 		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
 		jsonObject.put("lightId", lightId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_AGENDAS);
@@ -327,6 +332,56 @@ public class LoJackServicesConnector {
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return null;
+		}
+	}
+	
+	public static boolean deleteLightAgenda(String userId, String agendaId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("agendaId", agendaId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, DELETE_LIGHT_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean activateLightAgenda(String userId, String agendaId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("agendaId", agendaId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, ACTIVATE_LIGHT_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean addLightAgenda(String userId, LightAgenda alarmAgenda) {
+		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
+		jsonObject.put("guid", userId);
+		try {
+			JSONResponse response = executeService(jsonObject, ADD_LIGHT_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static boolean saveLightAgenda(String userId, LightAgenda alarmAgenda) {
+		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
+		jsonObject.put("guid", userId);
+		try {
+			JSONResponse response = executeService(jsonObject, SAVE_LIGHT_AGENDA);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
 		}
 	}
 	

@@ -104,6 +104,19 @@
   <action name="LightAgendaForm" parameter="WebsiteUser" path="/goToHomeLightAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
+  <action name="LightAgendaForm" parameter="WebsiteUser" path="/editLightAgenda" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
+  	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaForm" parameter="WebsiteUser" path="/saveLightAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
+  	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaForm" parameter="WebsiteUser" path="/resetLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaForm" parameter="WebsiteUser" path="/toggleActivationLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
+  	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  
   <action name="LightAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeLightAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToLightAlertConfigurationAction">
   	<forward name="continue" path="/homeConfiguracionAlertasLuz.jsp" redirect="true"/>
   </action>

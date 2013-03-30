@@ -2,8 +2,6 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
-import com.tdil.lojack.utils.WebsiteUser;
-
 public class AlarmAgenda implements Serializable {
 
 	private static final long serialVersionUID = -822422216180257981L;

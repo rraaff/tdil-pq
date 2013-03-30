@@ -155,7 +155,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page10" PATH="/homeLuzAgenda.jsp"
   SHAPE="240,2754,0,0" SUBTYPE="jsp" TITLE="homeLuzAgenda.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveLightAgenda.do"
+   SUBTYPE="confirmed" TARGET="action26" TITLE="/saveLightAgenda.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToHomeAlarmAlertConf" NAME="action18"
   PATH="/goToHomeAlarmAlertConf" SHAPE="32,3073,0,0"
   TITLE="AlarmAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -210,8 +214,40 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page12" PATH="/homeConfiguracionAlertasLuz.jsp"
   SHAPE="240,3762,0,0" SUBTYPE="jsp"
-  TITLE="homeConfiguracionAlertasLuz.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  TITLE="homeConfiguracionAlertasLuz.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveLightAlertConf.do"
+   SUBTYPE="confirmed" TARGET="action25" TITLE="/saveLightAlertConf.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveLightAlertConf" NAME="action25"
   PATH="/saveLightAlertConf" SHAPE="32,4081,0,0"
   TITLE="LightAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveLightAgenda" NAME="action26"
+  PATH="/saveLightAgenda" SHAPE="448,2754,0,0" TITLE="LightAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeLuzAgenda.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editLightAgenda" NAME="action27"
+  PATH="/editLightAgenda" SHAPE="32,3073,0,0" TITLE="LightAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeLuzAgenda.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetLightAgenda" NAME="action28"
+  PATH="/resetLightAgenda" SHAPE="32,2849,0,0" TITLE="LightAgendaForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeLuzAgenda.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleActivationLightAgenda" NAME="action29"
+  PATH="/toggleActivationLightAgenda" SHAPE="32,3185,0,0"
+  TITLE="LightAgendaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeLuzAgenda.jsp" TARGET="page10" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
