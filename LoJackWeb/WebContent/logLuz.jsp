@@ -9,5 +9,10 @@ Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websit
 %>
 Log de cambios <br>
 <% for (ChangeLog log : logCollection) { %>
-<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr> 
+	<% if (log.hasAvatar()) { %>
+		<img src="<%=log.getAvatarURL()%>"/>
+	<% } else { %>
+		no image
+	<% } %> -
+	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr> 
 <% } %>

@@ -9,8 +9,13 @@ public class ChangeLog implements Serializable {
 	private String hour;
 	private String action;
 	private String user;
+	private String avatarURL;
 	
 	public ChangeLog() {
+	}
+	
+	public boolean hasAvatar() {
+		return !org.apache.commons.lang.StringUtils.isEmpty(avatarURL);
 	}
 
 	public String getDate() {
@@ -43,6 +48,14 @@ public class ChangeLog implements Serializable {
 
 	public void setUser(String user) {
 		this.user = user;
+	}
+
+	public String getAvatarURL() {
+		return avatarURL;
+	}
+
+	public void setAvatarURL(String avatarURL) {
+		this.avatarURL = avatarURL;
 	}
 	
 }
