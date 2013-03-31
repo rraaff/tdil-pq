@@ -19,6 +19,58 @@
 <head>
 <%@ include file="includes/head.jsp" %>
 <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+
+    $("input[cl]").each(function(indice,valor) {
+	   $(valor).click(function() {
+		   $( "#" + $(this).attr('cl') ).fadeOut();
+		});
+	});
+
+    $("input[name=from]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		changeYear: true, minDate: "-5Y", maxDate: "+5Y"});
+    $("input[name=to]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+		changeYear: true, minDate: "-5Y", maxDate: "+5Y"});
+
+    $("input[name='type']").click(function () {
+    	if ($(this).attr('value') == 'CUSTOM') {
+    		$("input[name='monday']").removeAttr('disabled');
+    		$("input[name='tuesday']").removeAttr('disabled');
+    		$("input[name='wednesday']").removeAttr('disabled');
+    		$("input[name='thursday']").removeAttr('disabled');
+    		$("input[name='friday']").removeAttr('disabled');
+    		$("input[name='saturday']").removeAttr('disabled');
+    		$("input[name='sunday']").removeAttr('disabled');
+       	} else {
+       		$("input[name='monday']").attr('disabled','disabled');
+       		$("input[name='tuesday']").attr('disabled','disabled');
+       		$("input[name='wednesday']").attr('disabled','disabled');
+       		$("input[name='thursday']").attr('disabled','disabled');
+       		$("input[name='friday']").attr('disabled','disabled');
+       		$("input[name='saturday']").attr('disabled','disabled');
+       		$("input[name='sunday']").attr('disabled','disabled');
+        }
+    });
+
+    if($("input[name='type']:checked").attr('value') == 'CUSTOM') {
+    	$("input[name='monday']").removeAttr('disabled');
+		$("input[name='tuesday']").removeAttr('disabled');
+		$("input[name='wednesday']").removeAttr('disabled');
+		$("input[name='thursday']").removeAttr('disabled');
+		$("input[name='friday']").removeAttr('disabled');
+		$("input[name='saturday']").removeAttr('disabled');
+		$("input[name='sunday']").removeAttr('disabled');
+    } else {
+    	$("input[name='monday']").attr('disabled','disabled');
+   		$("input[name='tuesday']").attr('disabled','disabled');
+   		$("input[name='wednesday']").attr('disabled','disabled');
+   		$("input[name='thursday']").attr('disabled','disabled');
+   		$("input[name='friday']").attr('disabled','disabled');
+   		$("input[name='saturday']").attr('disabled','disabled');
+   		$("input[name='sunday']").attr('disabled','disabled');
+    }
+  });
 </script>
 </head>
 <body>
@@ -60,6 +112,10 @@ Configurar agenda para la luz <%=lightAgendaForm.getLightId() %>
 			<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 		<% } %>
 	</html:select> segundos <br><br>
+	
+	<html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias<br>
+	<html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio><br>
+	<html:radio property="type" value="CUSTOM">Personalizado</html:radio><br>
 	
 	Lunes<html:checkbox name="LightAgendaForm" property="monday"/> | 
 	Martes<html:checkbox name="LightAgendaForm" property="tuesday"/> | 
