@@ -1,6 +1,6 @@
 Separar servicios gis y no gis por directorio y configurar a nivel del war
 
-Capturar respuestas de not logged y mandarlo a la index
+Capturar respuestas de not logged y mandarlo a la index, tanto jsp directo, cargado de jsp en layer como ajax.
 
 Mostrar el error de login en el layer de login, sin cerrarlo
 
