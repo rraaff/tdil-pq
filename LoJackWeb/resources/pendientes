@@ -1,5 +1,7 @@
 Separar servicios gis y no gis por directorio y configurar a nivel del war
 
+Capturar respuestas de not logged y mandarlo a la index
+
 Mostrar el error de login en el layer de login, sin cerrarlo
 
 Traerme el resource bundle de dispay tag

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.model.AgendaType;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
@@ -77,7 +78,7 @@ public class AlarmAgendaForm extends AgendaForm {
 			this.setDescription(alarmAgenda.getDescription());
 			this.setFrom(alarmAgenda.getFrom());
 			this.setTo(alarmAgenda.getTo());
-			this.setType(alarmAgenda.getType());
+ 			this.setType(alarmAgenda.getType());
 			this.setCustomDays(alarmAgenda.getCustomDays());
 			this.setActivateTime(alarmAgenda.getActivateTime());
 			this.setDeactivateTime(alarmAgenda.getDeactivateTime());
@@ -122,7 +123,11 @@ public class AlarmAgendaForm extends AgendaForm {
 		alarmAgenda.setFrom(this.getFrom());
 		alarmAgenda.setTo(this.getTo());
 		alarmAgenda.setType(this.getType());
-		alarmAgenda.setCustomDays(this.getCustomDays());
+		if (AgendaType.CUSTOM.equals(this.getType())) {
+			alarmAgenda.setCustomDays(this.getCustomDays());
+		} else {
+			alarmAgenda.setCustomDays("");
+		}
 		alarmAgenda.setActivateTime(this.getActivateTime());
 		alarmAgenda.setDeactivateTime(this.getDeactivateTime());
 		boolean saved = false;
