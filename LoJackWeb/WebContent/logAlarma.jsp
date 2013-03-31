@@ -1,7 +1,8 @@
 <%@page import="com.tdil.lojack.gis.model.ChangeLog"%>
 <%@page import="java.util.Collection"%>
 <%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
-<%@ include file="includes/userLogged.jspf" %>
+<%@ include file="includes/userLogged.jspf" %><!--
+--><%@ include file="includes/mustBeLogged.jspf" %>
 <%
 String alarmId = request.getParameter("alarmId"); 
 Collection<ChangeLog> logCollection = LoJackServicesConnector.getAlarmLog(websiteUser.getGuid(), alarmId);

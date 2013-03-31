@@ -33,6 +33,13 @@
     $( "#closePanicLayer" ).click(function() {
 		$( "#sendPanicLayer" ).fadeOut();
 	});
+
+    $( "#closePanicSentLayer" ).click(function() {
+		$( "#panicSentLayer" ).fadeOut();
+	});
+    $( "#closeSendPanicErrorLayer" ).click(function() {
+		$( "#sendPanicErrorLayer" ).fadeOut();
+	});
     
   });
   
@@ -48,7 +55,7 @@
 		});
   }
 
-  function doSendPanic(alarmId) {
+  function doSendPanic(alarmDesc, alarmId) {
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -57,15 +64,23 @@
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
-					//$( "#confAlertLayer" ).fadeOut();
-					//centerLayer($(window), $( "#confSavedLayer" ));
-					alert('Se ha enviado la senial de panico');
+					$( "#sendPanicLayer" ).fadeOut();
+					$( "#sendPanicErrorLayer" ).fadeOut();
+					centerLayer($(window), $( "#panicSentLayer" ));
 				} else {
-					alert('La senial de panico no ha podido enviarse');
+					$( "#sendPanicLayer" ).fadeOut();
+					$( "#sendPanicErrorLayer" ).fadeOut();
+					$('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
+					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '","'+alarmId+'")');
+					centerLayer($(window), $( "#sendPanicErrorLayer" ));
 				}
           },
           error: function() {
-        	  alert('La senial de panico no ha podido enviarse');
+        	  $( "#sendPanicLayer" ).fadeOut();
+        	  $( "#sendPanicErrorLayer" ).fadeOut();
+			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
+			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '","'+alarmId+'")');
+			  centerLayer($(window), $( "#sendPanicErrorLayer" ));
           }
       });
   }
@@ -209,12 +224,25 @@ Mis Alarmas<br><br>
 	<input type="button" id="closePasswordLayerButton" value="Cerrar">
 </div>
 
+<!-- Inicio panic -->
 <div id="sendPanicLayer" style="display: none; z-index: 500;">
 	<div id="sendPanic">
 		Consultando datos...
 	</div>
 	<input type="button" id="closePanicLayer" value="Cerrar">
 </div>
+<div id="panicSentLayer" style="display: none; z-index: 500;">
+	Se ha enviado la senial de panico
+	<input type="button" id="closePanicSentLayer"" value="Cerrar">
+</div>
+<div id="sendPanicErrorLayer" style="display: none; z-index: 500;">
+	<div id="sendPanicError">
+		Ha occurrido un error enviando la senial de panico
+	</div>
+	<input type="button" id="retryPanic" value="Reintentar">
+	<input type="button" id="closeSendPanicErrorLayer" value="Cerrar">
+</div>
+<!-- Fin panic -->
 
 </body>
 </html>
