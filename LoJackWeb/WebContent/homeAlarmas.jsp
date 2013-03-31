@@ -18,27 +18,10 @@
   $(function() {
     $( "#accordion" ).accordion();
 
-    $( "#closeLogLayer" ).click(function() {
-		$( "#logLayer" ).fadeOut();
-	});
-
-    $( "#closeSavedConfLayer" ).click(function() {
-		$( "#confSavedLayer" ).fadeOut();
-	});
-
-    $( "#closePasswordLayerButton" ).click(function() {
-		$( "#passwordLayer" ).fadeOut();
-	});
-
-    $( "#closePanicLayer" ).click(function() {
-		$( "#sendPanicLayer" ).fadeOut();
-	});
-
-    $( "#closePanicSentLayer" ).click(function() {
-		$( "#panicSentLayer" ).fadeOut();
-	});
-    $( "#closeSendPanicErrorLayer" ).click(function() {
-		$( "#sendPanicErrorLayer" ).fadeOut();
+    $("input[cl]").each(function(indice,valor) {
+	   $(valor).click(function() {
+		   $( "#" + $(this).attr('cl') ).fadeOut();
+		});
 	});
     
   });
@@ -92,6 +75,7 @@
   }
 
   function activateAlarm(alarmId) {
+	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doActivate("'+alarmId+'")');
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
@@ -105,15 +89,16 @@
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
-					//$( "#confAlertLayer" ).fadeOut();
-					//centerLayer($(window), $( "#confSavedLayer" ));
-					alert('La alarma ha sido activada');
+        		  $( "#passwordLayer" ).fadeOut();
+				  centerLayer($(window), $( "#alarmActivatedLayer" ));
 				} else {
-					alert('La alarma no ha podido activarse');
+					$( "#passwordLayer" ).fadeOut();
+					centerLayer($(window), $( "#alarmNotActivatedLayer" ));
 				}
           },
           error: function() {
-        	  alert('La alarma no ha podido activarse');
+        	  $( "#passwordLayer" ).fadeOut();
+			  centerLayer($(window), $( "#alarmNotActivatedLayer" ));
           }
       });
   }
@@ -127,20 +112,22 @@
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
-					//$( "#confAlertLayer" ).fadeOut();
-					//centerLayer($(window), $( "#confSavedLayer" ));
-					alert('La alarma ha sido desactivada');
+        		  $( "#passwordLayer" ).fadeOut();
+				  centerLayer($(window), $( "#alarmDeactivatedLayer" ));
 				} else {
-					alert('La alarma no ha podido desactivarse');
+					$( "#passwordLayer" ).fadeOut();
+					centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
 				}
           },
           error: function() {
-        	  alert('La alarma no ha podido desactivarse');
+        	  $( "#passwordLayer" ).fadeOut();
+			  centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
           }
       });
   }
   
   function deactivateAlarm(alarmId) {
+	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doDeactivate("'+alarmId+'")');
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
@@ -193,7 +180,7 @@ Mis Alarmas<br><br>
 	<div id="logData">
 		Consultando datos...
 	</div>
-	<input type="button" id="closeLogLayer" value="Cerrar">
+	<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar">
 </div>
 
 <div id="confAlertLayer" style="display: none; z-index: 500;">
@@ -203,7 +190,7 @@ Mis Alarmas<br><br>
 </div>
 <div id="confSavedLayer" style="display: none; z-index: 500;">
 	La configuracion ha sido salvada
-	<input type="button" id="closeSavedConfLayer" value="Cerrar">
+	<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
 </div>
 
 <div id="passwordLayer" style="display: none; z-index: 500;">
@@ -221,7 +208,24 @@ Mis Alarmas<br><br>
 	<input type="button" onclick="append('0')" value="0">
 	<input type="button" onclick="append('#')" value="#">
 	<input type="button" id="passwordLayerButton" value="Confirmar">
-	<input type="button" id="closePasswordLayerButton" value="Cerrar">
+	<input type="button" id="closePasswordLayerButton" cl="passwordLayer" value="Cerrar">
+</div>
+
+<div id="alarmActivatedLayer" style="display: none; z-index: 500;">
+	Se ha activado la alarma
+	<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar">
+</div>
+<div id="alarmNotActivatedLayer" style="display: none; z-index: 500;">
+	No ha podido activarse la alarma
+	<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
+</div>
+<div id="alarmDeactivatedLayer" style="display: none; z-index: 500;">
+	Se ha desactivado la alarma
+	<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
+</div>
+<div id="alarmNotDeactivatedLayer" style="display: none; z-index: 500;">
+	No ha podido desactivarse la alarma
+	<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
 </div>
 
 <!-- Inicio panic -->
@@ -229,18 +233,18 @@ Mis Alarmas<br><br>
 	<div id="sendPanic">
 		Consultando datos...
 	</div>
-	<input type="button" id="closePanicLayer" value="Cerrar">
+	<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
 </div>
 <div id="panicSentLayer" style="display: none; z-index: 500;">
 	Se ha enviado la senial de panico
-	<input type="button" id="closePanicSentLayer"" value="Cerrar">
+	<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
 </div>
 <div id="sendPanicErrorLayer" style="display: none; z-index: 500;">
 	<div id="sendPanicError">
 		Ha occurrido un error enviando la senial de panico
 	</div>
 	<input type="button" id="retryPanic" value="Reintentar">
-	<input type="button" id="closeSendPanicErrorLayer" value="Cerrar">
+	<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar">
 </div>
 <!-- Fin panic -->
 

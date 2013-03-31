@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Alarm"%>
 <%@page import="java.util.Collection"%>
 <%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
@@ -8,5 +9,5 @@ Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser.getGuid
 %>
 Enviar senial de panico <br>
 <% for (Alarm alarm : alarms) { %>
-<a href="javascript:doSendPanic('<%=alarm.getDescription() %>', '<%= alarm.getId() %>')"><%= alarm.getId() %> - <%=alarm.getDescription() %></a><hr> 
+<a href="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', '<%= alarm.getId() %>')"><%= alarm.getId() %> - <%=alarm.getDescription() %></a><hr> 
 <% } %>

@@ -18,13 +18,11 @@
   $(function() {
     $( "#accordion" ).accordion();
 
-    $( "#closeLogLayer" ).click(function() {
-		$( "#logLayer" ).fadeOut();
-	});
-	
-	$( "#closeSavedConfLayer" ).click(function() {
-		$( "#confSavedLayer" ).fadeOut();
-	});
+	 $("input[cl]").each(function(indice,valor) {
+		   $(valor).click(function() {
+			   $( "#" + $(this).attr('cl') ).fadeOut();
+			});
+		});
   });
 
   function seeLightLog(lightId) {
@@ -65,16 +63,14 @@
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
-						//$( "#confAlertLayer" ).fadeOut();
-						//centerLayer($(window), $( "#confSavedLayer" ));
-						alert('Se ha enviado el comando');
+						centerLayer($(window), $( "#randomActivatedLayer" ));
 					} else {
-						alert('El comando no ha podido enviarse');
+						centerLayer($(window), $( "#randomNotActivatedLayer" ));
 						objCheckbox.checked = false;
 					}
 	          },
 	          error: function() {
-	        	  alert('El comando no ha podido enviarse');
+	        	  centerLayer($(window), $( "#randomNotActivatedLayer" ));
 	        	  objCheckbox.checked = false;
 	          }
 	      });
@@ -89,16 +85,14 @@
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
-						//$( "#confAlertLayer" ).fadeOut();
-						//centerLayer($(window), $( "#confSavedLayer" ));
-						alert('Se ha enviado el comando');
+	        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
 					} else {
-						alert('El comando no ha podido enviarse');
+						centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 						objCheckbox.checked = true;
 					}
 	          },
 	          error: function() {
-	        	  alert('El comando no ha podido enviarse');
+	        	  centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 	        	  objCheckbox.checked = true;
 	          }
 	      });
@@ -133,7 +127,7 @@ Mis Lucess<br><br>
 	<div id="logData">
 		Consultando datos...
 	</div>
-	<input type="button" id="closeLogLayer" value="Cerrar">
+	<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar">
 </div>
 
 <div id="confAlertLayer" style="display: none; z-index: 500;">
@@ -143,8 +137,26 @@ Mis Lucess<br><br>
 </div>
 <div id="confSavedLayer" style="display: none; z-index: 500;">
 	La configuracion ha sido salvada
-	<input type="button" id="closeSavedConfLayer" value="Cerrar">
+	<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
 </div>
+
+<div id="randomActivatedLayer" style="display: none; z-index: 500;">
+	Se ha enviado el comando de activacion de secuencia random
+	<input type="button" id="closerandomActivatedLayer" cl="randomActivatedLayer" value="Cerrar">
 </div>
+<div id="randomNotActivatedLayer" style="display: none; z-index: 500;">
+	No ha podido enviarse el comando de activacion de secuencia random
+	<input type="button" id="closerandomNotActivatedLayer" cl="randomNotActivatedLayer" value="Cerrar">
+</div>
+
+<div id="randomDeactivatedLayer" style="display: none; z-index: 500;">
+	Se ha enviado el comando de desactivacion de secuencia random
+	<input type="button" id="closerandomDeactivatedLayer" cl="randomDeactivatedLayer" value="Cerrar">
+</div>
+<div id="randomNotDeactivatedLayer" style="display: none; z-index: 500;">
+	No ha podido enviarse el comando de desactivacion de secuencia random
+	<input type="button" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer" value="Cerrar">
+</div>
+
 </body>
 </html>
