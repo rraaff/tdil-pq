@@ -18,6 +18,8 @@ public class AlarmAgendaForm extends AgendaForm {
 	private WebsiteUser user;
 	private String alarmId;
 	
+	private String password;
+	
 	private String id;
 	
 	// TODO
@@ -132,15 +134,23 @@ public class AlarmAgendaForm extends AgendaForm {
 		alarmAgenda.setDeactivateTime(this.getDeactivateTime());
 		boolean saved = false;
 		if (isEdition()) {
-			saved = LoJackServicesConnector.saveAlarmAgenda(user.getGuid(), alarmAgenda);
+			saved = LoJackServicesConnector.saveAlarmAgenda(user.getGuid(), this.getPassword(), alarmAgenda);
 		} else {
-			saved = LoJackServicesConnector.addAlarmAgenda(user.getGuid(), alarmAgenda);
+			saved = LoJackServicesConnector.addAlarmAgenda(user.getGuid(), this.getAlarmId(), this.getPassword(), alarmAgenda);
 		}
 		if (!saved) {
 			// levantar una validation Exception
 		} else {
 			this.reset();
 		}
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

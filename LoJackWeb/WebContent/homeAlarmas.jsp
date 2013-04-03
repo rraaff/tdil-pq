@@ -193,23 +193,7 @@ Mis Alarmas<br><br>
 	<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
 </div>
 
-<div id="passwordLayer" style="display: none; z-index: 500;">
-	<input type="password" id="password">
-	<input type="button" onclick="append('1')" value="1">
-	<input type="button" onclick="append('2')" value="2">
-	<input type="button" onclick="append('3')" value="3">
-	<input type="button" onclick="append('4')" value="4">
-	<input type="button" onclick="append('5')" value="5">
-	<input type="button" onclick="append('6')" value="6">
-	<input type="button" onclick="append('7')" value="7">
-	<input type="button" onclick="append('8')" value="8">
-	<input type="button" onclick="append('9')" value="9">
-	<input type="button" onclick="append('*')" value="*">
-	<input type="button" onclick="append('0')" value="0">
-	<input type="button" onclick="append('#')" value="#">
-	<input type="button" id="passwordLayerButton" value="Confirmar">
-	<input type="button" id="closePasswordLayerButton" cl="passwordLayer" value="Cerrar">
-</div>
+<%@ include file="includes/passwordLayer.jspf" %>
 
 <div id="alarmActivatedLayer" style="display: none; z-index: 500;">
 	Se ha activado la alarma

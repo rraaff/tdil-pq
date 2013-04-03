@@ -1,4 +1,4 @@
-Separar servicios gis y no gis por directorio y configurar a nivel del war
+Encendido y apagado de luz
 
 Capturar respuestas de not logged y mandarlo a la index, tanto jsp directo, cargado de jsp en layer como ajax.
 

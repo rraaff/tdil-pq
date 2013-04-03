@@ -69,7 +69,30 @@
    		$("input[name='saturday']").attr('disabled','disabled');
    		$("input[name='sunday']").attr('disabled','disabled');
     }
+
+    $('#passwordLayerButton').click(function() {
+    	$("form[name='AlarmAgendaForm']").submit();
+	});
   });
+
+  function save() {
+	  $('#password').attr('value','');
+	  centerLayer($(window), $( "#passwordLayer" ));
+  }
+
+  function centerLayer(objWin, objLayer) {
+		var top = (objWin.height() / 2) - (objLayer.height() / 2);
+		var left = (objWin.width() / 2) - (objLayer.width() / 2);
+		objLayer.css({
+			position: 'absolute',
+			top: top + 'px',
+			left: left + 'px'
+		}).fadeIn(500);
+	}
+
+  function append(st) {
+		$('#password').attr('value', $('#password').attr('value') + st);
+	}
 </script>
 </head>
 <body>
@@ -125,15 +148,13 @@ Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
 	Sabado<html:checkbox name="AlarmAgendaForm" property="saturday"/> | 
 	Domingo<html:checkbox name="AlarmAgendaForm" property="sunday"/><br>
 	
+	<%@ include file="includes/passwordLayer.jspf" %>
+	
 	<logic:equal name="AlarmAgendaForm" property="edition" value="true">
-		<html:submit property="operation">
-			Grabar
-		</html:submit>
+		<input type="button" onclick="save()" value="Modificar">
 	</logic:equal>
 	<logic:equal name="AlarmAgendaForm" property="edition" value="false">
-		<html:submit property="operation">
-			Agregar
-		</html:submit>
+		<input type="button" onclick="save()" value="Agregar">
 	</logic:equal>
 	<input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset">
 </html:form>

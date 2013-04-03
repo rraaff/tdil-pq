@@ -228,9 +228,11 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean addAlarmAgenda(String userId, AlarmAgenda alarmAgenda) {
+	public static boolean addAlarmAgenda(String userId, String alarmId, String password, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put("guid", userId);
+		jsonObject.put("alarmId", alarmId);
+		jsonObject.put("password", password);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -240,9 +242,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean saveAlarmAgenda(String userId, AlarmAgenda alarmAgenda) {
+	public static boolean saveAlarmAgenda(String userId, String password, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put("guid", userId);
+		jsonObject.put("password", password);
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -391,9 +394,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean addLightAgenda(String userId, LightAgenda alarmAgenda) {
+	public static boolean addLightAgenda(String userId, String lightId, LightAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");

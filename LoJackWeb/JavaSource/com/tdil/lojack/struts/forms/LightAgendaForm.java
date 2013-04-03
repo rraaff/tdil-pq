@@ -2,7 +2,6 @@ package com.tdil.lojack.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.tdil.lojack.gis.LoJackServicesConnector;
@@ -129,7 +128,7 @@ public class LightAgendaForm extends AgendaForm {
 		if (isEdition()) {
 			saved = LoJackServicesConnector.saveLightAgenda(user.getGuid(), lightAgenda);
 		} else {
-			saved = LoJackServicesConnector.addLightAgenda(user.getGuid(), lightAgenda);
+			saved = LoJackServicesConnector.addLightAgenda(user.getGuid(), this.getLightId(), lightAgenda);
 		}
 		if (!saved) {
 			// levantar una validation Exception
