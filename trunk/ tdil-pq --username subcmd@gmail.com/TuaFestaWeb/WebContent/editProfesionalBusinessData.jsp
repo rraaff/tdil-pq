@@ -122,6 +122,19 @@ $(document).ready(
 						<div class="myLabel width440 height100"><html:textarea name="EditProfesionalBusinessDataForm" property="description" styleClass="normalField width400 height80"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.description_key + ".err")%></div>
 					</div>
 					<div class="myRow">
+						<div class="myLabel width70 height100">Facebook</div>
+						<div class="myLabel width440 height100"><html:text name="EditProfesionalBusinessDataForm" property="facebook" styleClass="normalField width400 height80"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.facebook_key + ".err")%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width70 height100">Website</div>
+						<div class="myLabel width440 height100"><html:text name="EditProfesionalBusinessDataForm" property="website" styleClass="normalField width400 height80"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.website_key + ".err")%></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width70 height100">Horario</div>
+						<div class="myLabel width440 height100"><html:textarea name="EditProfesionalBusinessDataForm" property="businesshours" styleClass="normalField width400 height80"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.businesshours_key + ".err")%></div>
+					</div>
+					
+					<div class="myRow">
 						<div class="myLabel width920 subAtForm"><span>Agregar videos a tu perfil</span></div>
 					</div>
 					<div class="myRow">

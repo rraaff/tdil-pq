@@ -58,6 +58,10 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 	private String cuit;
 	private String iibb;
 	
+	private String website;
+	private String facebook;
+	private String businesshours;
+	
 	private int geo2Id;
 	private int geo3Id;
 	private int geo4Id;
@@ -135,6 +139,10 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		setCuit(com.tdil.utils.StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
 		setIibb(com.tdil.utils.StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));
 		
+		setFacebook(com.tdil.utils.StringUtils.nvl(profesionalChange.getFacebook(), profesional.getFacebook()));
+		setWebsite(com.tdil.utils.StringUtils.nvl(profesionalChange.getWebsite(), profesional.getWebsite()));
+		setBusinesshours(com.tdil.utils.StringUtils.nvl(profesionalChange.getBusinesshours(), profesional.getBusinesshours()));
+		
 		int idgeo4 = 0;
 		if (profesionalChange.getIdGeolevel() != null && profesionalChange.getIdGeolevel() != 0) {
 			idgeo4 = profesionalChange.getIdGeolevel();
@@ -175,6 +183,10 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		FieldValidation.validateText(this.getCuit(), ProfesionalForm.cuit_key, 400, false, validationError);
 		FieldValidation.validateText(this.getIibb(), ProfesionalForm.iibb_key, 400, false, validationError);
 		
+		FieldValidation.validateText(this.getWebsite(), ProfesionalForm.website_key, 200, false, validationError);
+		FieldValidation.validateText(this.getFacebook(), ProfesionalForm.facebook_key, 200, false, validationError);
+		FieldValidation.validateText(this.getBusinesshours(), ProfesionalForm.businesshours_key, 4000, false, validationError);
+		
 		FieldValidation.validateText(this.getDescription(), ProfesionalForm.description_key, 4000, false, validationError);
 		FieldValidation.validateId(geo2Id, ProfesionalForm.geo2_key, validationError);
 		FieldValidation.validateId(geo3Id, ProfesionalForm.geo3_key, validationError);
@@ -200,6 +212,10 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setCuit(com.tdil.utils.StringUtils.getDataForChange(this.getCuit(), profesional.getCuit()));
 		profesionalChange.setIibb(com.tdil.utils.StringUtils.getDataForChange(this.getIibb(), profesional.getIibb()));
 		profesionalChange.setDescription(com.tdil.utils.StringUtils.getDataForChange(this.getDescription(), profesional.getDescription()));
+		profesionalChange.setFacebook(com.tdil.utils.StringUtils.getDataForChange(this.getFacebook(), profesional.getFacebook()));
+		profesionalChange.setWebsite(com.tdil.utils.StringUtils.getDataForChange(this.getWebsite(), profesional.getWebsite()));
+		profesionalChange.setBusinesshours(com.tdil.utils.StringUtils.getDataForChange(this.getBusinesshours(), profesional.getBusinesshours()));
+		
 		profesionalChange.setIdGeolevel(com.tdil.utils.StringUtils.getDataForChange(this.getGeo4Id(), profesional.getIdGeolevel()));
 		
 		if (logo != null && logo.isModified()) {
@@ -229,6 +245,11 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesional.setCuit(StringUtils.nvl(profesionalChange.getCuit(), profesional.getCuit()));
 		profesional.setIibb(StringUtils.nvl(profesionalChange.getIibb(), profesional.getIibb()));
 		profesional.setDescription(StringUtils.nvl(profesionalChange.getDescription(), profesional.getDescription()));
+		
+		profesional.setFacebook(StringUtils.nvl(profesionalChange.getFacebook(), profesional.getFacebook()));
+		profesional.setWebsite(StringUtils.nvl(profesionalChange.getWebsite(), profesional.getWebsite()));
+		profesional.setBusinesshours(StringUtils.nvl(profesionalChange.getBusinesshours(), profesional.getBusinesshours()));
+		
 		profesional.setIdGeolevel(StringUtils.nvl(profesionalChange.getIdGeolevel(), profesional.getIdGeolevel()));
 		profesional.setIdProfilePicture(StringUtils.nvl(profesionalChange.getIdProfilePicture(), profesional.getIdProfilePicture()));
 		profesional.setExtProfilePicture(StringUtils.nvl(profesionalChange.getExtProfilePicture(), profesional.getExtProfilePicture()));
@@ -241,6 +262,10 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		profesionalChange.setCuit(null);
 		profesionalChange.setIibb(null);
 		profesionalChange.setDescription(null);
+		profesionalChange.setFacebook(null);
+		profesionalChange.setWebsite(null);
+		profesionalChange.setBusinesshours(null);
+		
 		profesionalChange.setIdGeolevel(null);
 		profesionalChange.setIdProfilePicture(null);
 		profesionalChange.setExtProfilePicture(null);
@@ -409,6 +434,24 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 	}
 	public void setImageId(int imageId) {
 		this.imageId = imageId;
+	}
+	public String getWebsite() {
+		return website;
+	}
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	public String getFacebook() {
+		return facebook;
+	}
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+	public String getBusinesshours() {
+		return businesshours;
+	}
+	public void setBusinesshours(String businesshours) {
+		this.businesshours = businesshours;
 	}
 
 }

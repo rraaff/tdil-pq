@@ -66,6 +66,15 @@
 						<div class="myLabel width210">IIBB <strong><%= profesional.getIibb() != null ? profesional.getIibb() : "" %></strong></div>
 					</div>
 					<div class="myRow">
+						<div class="myLabel width210">Facebook <strong><%= profesional.getFacebook() != null ? profesional.getFacebook() : "" %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width210">Website <strong><%= profesional.getWebsite() != null ? profesional.getWebsite() : "" %></strong></div>
+					</div>
+					<div class="myRow">
+						<div class="myLabel width210">Horario <strong><%= profesional.getBusinesshours() != null ? profesional.getBusinesshours() : "" %></strong></div>
+					</div>
+					<div class="myRow">
 						<div class="myLabel width450">Localizado en <strong><%= profesionalHomeForm.getLocation().getNombre4()%>, <%= profesionalHomeForm.getLocation().getNombre3()%>, <%= profesionalHomeForm.getLocation().getNombre2()%></strong></div>
 					</div>
 					<div class="myRow"><a href="./goToEditProfesionalBusinessData.do?id=<%=profesional.getId()%>">Editar Datos Profesionales</a></div>
