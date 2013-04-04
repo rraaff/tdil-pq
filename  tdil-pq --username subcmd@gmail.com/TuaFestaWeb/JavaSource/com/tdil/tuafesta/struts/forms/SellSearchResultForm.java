@@ -18,7 +18,9 @@ import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.stats.StatisticType;
 import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.utils.CategoryTreeNode;
+import com.tdil.tuafesta.utils.SystemPropertiesKeys;
 import com.tdil.tuafesta.utils.TreeCategoryUtils;
+import com.tdil.tuafesta.web.SystemPropertyUtils;
 
 public class SellSearchResultForm extends TransactionalValidationForm {
 
@@ -30,6 +32,7 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 	private int id;
 	private int objectId;
 	
+	private String ommited;
 	private List<SellValueObject> searchResult;
 	
 	@Override
@@ -113,12 +116,19 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 	}
 
 	public void searchByText(String searchText) throws SQLException {
+		setOmmited("");
 		String splitted[] = searchText.split(" ");
 		List<String> terms = new ArrayList<String>();
+		String value = SystemPropertyUtils.getSystemPropertValueInSameTransaction(SystemPropertiesKeys.MIN_SEARCH_LENGHT);
+		int minlength = Integer.parseInt(value);
 		for (String st : splitted) {
 			String trimmed = st.trim();
 			if (!StringUtils.isEmpty(trimmed)) {
-				terms.add("%" + trimmed + "%");
+				if (trimmed.length() < minlength) {
+					setOmmited(getOmmited() + trimmed + " ");
+				} else {
+					terms.add("%" + trimmed + "%");
+				}
 			}
 		}
 		if (!terms.isEmpty()) {
@@ -128,6 +138,14 @@ public class SellSearchResultForm extends TransactionalValidationForm {
 			setSearchResult(new ArrayList<SellValueObject>());
 		}
 		
+	}
+
+	public void setOmmited(String ommited) {
+		this.ommited = ommited;
+	}
+
+	public String getOmmited() {
+		return ommited;
 	}
 
 

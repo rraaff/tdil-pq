@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
 <%@page import="com.tdil.tuafesta.model.Profesional"%>
@@ -41,6 +42,9 @@
 					<%
 						SellSearchResultForm profesionalForm = (SellSearchResultForm)session.getAttribute("SellSearchResultForm");
 					%>
+					<% if (!StringUtils.isEmpty(profesionalForm.getOmmited())) { %>
+						Los siguientes terminos han sido excluidos de la busqueda por ser demasiado cortos: "<%=profesionalForm.getOmmited()%>"<br>
+					<% } %>
 					<%
 						java.util.List servicesSource = profesionalForm.getSearchResult();
 						com.tdil.struts.pagination.PaginatedListImpl paginatedServices = new com.tdil.struts.pagination.PaginatedListImpl(servicesSource, request, 10);
