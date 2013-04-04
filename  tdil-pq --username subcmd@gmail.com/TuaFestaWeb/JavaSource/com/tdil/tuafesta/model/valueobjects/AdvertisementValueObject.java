@@ -1,5 +1,7 @@
 package com.tdil.tuafesta.model.valueobjects;
 
+import java.math.BigDecimal;
+
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.tuafesta.model.AdType;
 import com.tdil.tuafesta.model.Advertisement;
@@ -14,6 +16,7 @@ public class AdvertisementValueObject extends Advertisement {
 	private String profesionalDescription;
 	private String sellName;
 	private String sellDescription;
+	private BigDecimal sellPrice;
 	private String categoryName;
 
 	public String getProfesionalBusinessName() {
@@ -72,6 +75,13 @@ public class AdvertisementValueObject extends Advertisement {
 	}
 	public void setSellDescription(String sellDescription) {
 		this.sellDescription = sellDescription;
+	}
+	
+	public BigDecimal getSellPrice() {
+		return sellPrice;
+	}
+	public void setSellPrice(BigDecimal sellPrice) {
+		this.sellPrice = sellPrice;
 	}
 	
 	public String getProfesionalDescriptionUpTo(int chars) {

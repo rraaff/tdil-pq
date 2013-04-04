@@ -98,6 +98,23 @@ th.sorted {
 					-> <%=change.getDescription()%>
 				<% } else { %>
 				<% } %><br>
+				
+			Facebook: <%=com.tdil.utils.StringUtils.nvl(profesional.getFacebook(), "-")%> 
+				<% if (!StringUtils.isEmpty(change.getFacebook())) { %>
+					-> <%=change.getFacebook()%>
+				<% } else { %>
+				<% } %><br>
+			Website: <%=com.tdil.utils.StringUtils.nvl(profesional.getWebsite(), "-")%> 
+				<% if (!StringUtils.isEmpty(change.getWebsite())) { %>
+					-> <%=change.getWebsite()%>
+				<% } else { %>
+				<% } %><br>
+			Horario: <%=com.tdil.utils.StringUtils.nvl(profesional.getBusinesshours(), "-")%> 
+				<% if (!StringUtils.isEmpty(change.getBusinesshours())) { %>
+					-> <%=change.getBusinesshours()%>
+				<% } else { %>
+				<% } %><br>
+				
 			Video1: <%=com.tdil.utils.StringUtils.nvl(profesional.getVideo1(), "-")%> 
 				<% if (!StringUtils.isEmpty(change.getVideo1())) { %>
 					-> <%=change.getVideo1()%>

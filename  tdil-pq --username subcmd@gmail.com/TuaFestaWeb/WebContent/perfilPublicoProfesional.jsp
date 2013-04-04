@@ -150,6 +150,7 @@ $(document).ready(function(){
 							background-image:url(boImages/na.gif);
 						<% } %>
 					">asasas</div>
+					
 					<div class="myRow">
 						<div class="myLabel width80">Sexo</div>
 						<div class="myLabel width120"><strong><%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></strong></div>

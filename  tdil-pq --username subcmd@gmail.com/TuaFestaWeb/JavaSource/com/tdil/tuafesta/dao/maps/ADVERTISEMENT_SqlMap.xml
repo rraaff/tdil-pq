@@ -347,6 +347,7 @@
   	<result column="profesionalDescription" jdbcType="VARCHAR" property="profesionalDescription" />
   	<result column="sellName" jdbcType="VARCHAR" property="sellName" />
   	<result column="sellDescription" jdbcType="VARCHAR" property="sellDescription" />
+  	<result column="sellPrice" jdbcType="DECIMAL" property="sellPrice" />
   	<result column="categoryName" jdbcType="VARCHAR" property="categoryName" />
   </resultMap>
   
@@ -357,6 +358,7 @@
     	prof.description as profesionalDescription,
     	null as sellName,
     	null as sellDescription,
+    	null as sellPrice,
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof
     where ad.id_sell = 0
@@ -381,6 +383,7 @@
     	prof.description as profesionalDescription,
     	s.name as sellName,
     	s.description as sellDescription,
+    	s.referenceprice as sellPrice,
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s
     where ad.id_sell != 0
@@ -408,6 +411,7 @@
     	prof.description as profesionalDescription,
     	null as sellName,
     	null as sellDescription,
+    	null as sellPrice,
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof
     where ad.type = 1
@@ -425,6 +429,7 @@
     	prof.description as profesionalDescription,
     	s.name as sellName,
     	s.description as sellDescription,
+    	s.referenceprice as sellPrice,
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
     where ad.type = 1
@@ -446,6 +451,7 @@
     	prof.description as profesionalDescription,
     	null as sellName,
     	null as sellDescription,
+    	null as sellPrice,
     	null as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof
     where ad.type = 2
@@ -463,6 +469,7 @@
     	prof.description as profesionalDescription,
     	s.name as sellName,
     	s.description as sellDescription,
+    	s.referenceprice as sellPrice,
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
     where ad.type = 2 
@@ -484,6 +491,7 @@
     	prof.description as profesionalDescription,
     	null as sellName,
     	null as sellDescription,
+    	null as sellPrice,
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, HIGHLIGHTED_CAT hc, CATEGORY cat
     where ad.type = 2
@@ -507,6 +515,7 @@
     	prof.description as profesionalDescription,
     	s.name as sellName,
     	s.description as sellDescription,
+    	s.referenceprice as sellPrice,
     	cat.name as categoryName
     from ADVERTISEMENT ad, PROFESIONAL prof, SELL s, CATEGORY cat
     where ad.type = 2 

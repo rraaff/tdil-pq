@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.AdvertisementValueObject"%>
 <%@page import="com.tdil.tuafesta.utils.AdUtils"%>
 <%@page import="com.tdil.tuafesta.utils.AdsForHome"%>
@@ -107,7 +108,9 @@
 							<% } %>
 							<span class="nameVignette"><%=adByCat.getProfesionalBusinessName() %></span><br/>
 							<span class="changeTheme"><%=adByCat.getCategoryName()%></span>
-							<span class="priceTheme">Precio:</span>
+							<% if (!adByCat.isProfesionalAd()) { %>
+								<span class="priceTheme">Precio: <%=LocalizationUtils.formatPrice(adByCat.getSellPrice())%></span>
+							<% } %>
 						</a>
 						<% } %>
 					</div>
@@ -131,7 +134,9 @@
 							<% } %>
 							<span class="nameVignette"><%=adByCat.getProfesionalBusinessName() %></span><br/>
 							<span class="changeTheme"><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></span>
-							<span class="priceTheme">Precio: </span>
+							<% if (!adByCat.isProfesionalAd()) { %>
+								<span class="priceTheme">Precio: <%=LocalizationUtils.formatPrice(adByCat.getSellPrice())%></span>
+							<% } %>
 						</a>
 						<% } %>
 					</div>
@@ -171,7 +176,9 @@
 							<p style="padding-top:10px;"><%=advertisementValueObject.getSellDescription()%></p>
 						<% } %>
 					</div>
-					<span class="price"><a href="#"></a></span>		
+					<% if (!advertisementValueObject.isProfesionalAd()) { %>
+						<span class="price">Precio: <%=LocalizationUtils.formatPrice(advertisementValueObject.getSellPrice())%></span>
+					<% } %>
 				</div>
 			<% } %>
 		</div>

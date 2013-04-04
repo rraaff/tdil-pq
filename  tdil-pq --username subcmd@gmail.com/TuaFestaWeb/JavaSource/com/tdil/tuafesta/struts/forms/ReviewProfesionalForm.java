@@ -388,6 +388,9 @@ public class ReviewProfesionalForm extends TransactionalValidationForm {
 		profesionalChange.setCuit(null);
 		profesionalChange.setIibb(null);
 		profesionalChange.setDescription(null);
+		profesionalChange.setFacebook(null);
+		profesionalChange.setWebsite(null);
+		profesionalChange.setBusinesshours(null);
 		profesionalChange.setIdGeolevel(null);
 		profesionalChange.setIdProfilePicture(null);
 		profesionalChange.setExtProfilePicture(null);
