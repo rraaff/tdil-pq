@@ -12,4 +12,6 @@ public interface SystemPropertiesKeys {
 	public static final String FB_SECRET = "fb.secret";
 	
 	public static final String AUTO_APPROVE_PROFESIONALS = "auto.approve";
+	
+	public static final String MIN_SEARCH_LENGHT = "search.minlenght";
 }
