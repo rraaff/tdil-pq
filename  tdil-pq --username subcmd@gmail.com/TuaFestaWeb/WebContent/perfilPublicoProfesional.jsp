@@ -149,7 +149,7 @@ $(document).ready(function(){
 						<% } else { %>
 							background-image:url(boImages/na.gif);
 						<% } %>
-					">asasas</div>
+					"></div>
 					
 					<div class="myRow">
 						<div class="myLabel width80">Sexo</div>
