@@ -45,6 +45,8 @@ public class LoJackServicesConnector {
 	private static final String DEACTIVATE_ALARM = "deactivateAlarm.json";
 	private static final String GET_ALARM_LOG = "getAlarmLog.json";
 	private static final String CHANGE_ALARM_PASSWORD = "changeAlarmPassword.json";
+	
+	private static final String RENAME_ALARM = "renameAlarm.json";
 
 	// Alarmas Services
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
@@ -59,6 +61,11 @@ public class LoJackServicesConnector {
 	// Luces GIS
 	private static final String GET_LIGHTS = "getLights.json";
 	private static final String GET_LIGHT_LOG = "getLightLog.json";
+	
+	private static final String TURN_ON_LIGHT = "turnOnLight.json";
+	private static final String TURN_OFF_LIGHT = "turnOffLight.json";
+	
+	private static final String RENAME_LIGHT = "renameLight.json";
 	
 	private static final String ACTIVATE_LIGHT_RANDOM_SEQUENCE = "activateLightRandomSequence.json";
 	private static final String DEACTIVATE_LIGHT_RANDOM_SEQUENCE = "deactivateLightRandomSequence.json";
@@ -124,6 +131,22 @@ public class LoJackServicesConnector {
 		}
 		
 	}
+	
+	public static boolean renameAlarm(String userId,String alarmId, String description) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("alarmId", alarmId);
+		jsonObject.put("description", description);
+		try {
+			JSONResponse response = executeGIS(jsonObject, RENAME_ALARM);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+		
+	}
+	
 	public static Collection<ChangeLog> getAlarmLog(String userId, String alarmId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("guid", userId);
@@ -294,12 +317,46 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean activateLight(Light light, String password) {
-		return false;
+	public static boolean activateLight(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, TURN_ON_LIGHT);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
 	}
-	public static boolean deactivateLight(Light light, String password) {
-		return false;
+	public static boolean deactivateLight(String userId, String lightId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, TURN_OFF_LIGHT);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
 	}
+	
+	public static boolean renameLight(String userId,String lightId, String description) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		jsonObject.put("lightId", lightId);
+		jsonObject.put("description", description);
+		try {
+			JSONResponse response = executeGIS(jsonObject, RENAME_LIGHT);
+			return ((JSONObject)response.getResult()).getBoolean("result");
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return false;
+		}
+		
+	}
+	
 	public static Collection<ChangeLog> getLightLog(String userId, String lightId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("guid", userId);

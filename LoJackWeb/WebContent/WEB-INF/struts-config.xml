@@ -102,6 +102,12 @@
   <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/saveAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
   </action>
   
+  <action path="/renameAlarm" scope="request" type="com.tdil.lojack.struts.action.RenameAlarmAjaxAction"/>
+  <action path="/renameLight" scope="request" type="com.tdil.lojack.struts.action.RenameLightAjaxAction"/>
+  
+  <action path="/turnOnLight" scope="request" type="com.tdil.lojack.struts.action.TunOnLightAjaxAction"/>
+  <action path="/turnOffLight" scope="request" type="com.tdil.lojack.struts.action.TunOffLightAjaxAction"/>
+  
   <action path="/activateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceAjaxAction"/>
   <action path="/deactivateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceAjaxAction"/>
   

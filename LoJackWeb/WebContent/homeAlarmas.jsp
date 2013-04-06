@@ -14,6 +14,7 @@
 <html>
 <head>
 <%@ include file="includes/head.jsp" %>
+
 <script>
   $(function() {
     $( "#accordion" ).accordion();
@@ -23,8 +24,34 @@
 		   $( "#" + $(this).attr('cl') ).fadeOut();
 		});
 	});
-    
+  
+  $('.editable').editable(function(value, settings) { 
+	     return doRenameAlarm($(this).attr('id'), value);
+	  }, { 
+	     type    : 'textarea',
+	     submit  : 'OK',
+	 });
   });
+
+  function doRenameAlarm(alarmId, alarmDesc) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./renameAlarm.do",
+          data: {alarmId: alarmId, description: alarmDesc},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result == 'OK') {
+				} else {
+					 $('#'+alarmId).prop('innerHTML', 'Error');	
+				}
+          },
+          error: function() {
+        	  $('#'+alarmId).prop('innerHTML', 'Error');	
+          }
+      });
+      return alarmDesc;
+  }
   
   function seeAlarmLog(alarmId) {
 	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
@@ -152,6 +179,9 @@ Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a h
 <hr> 
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | <a href="javascript:sendPanic()">Boton de panico</a>
 <hr> 
+
+<div class="edit" id="div_1">Dolor</div>
+
 Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <div id="accordion">
@@ -164,6 +194,7 @@ Mis Alarmas<br><br>
   	<% } %>
   </h3>
   <div>
+  	<div id="<%=alarm.getId()%>" class="editable"><%= alarm.getDescription() %></div>
     <p>
    		<% if (alarm.hasChangeData()) { %>
    			Ultimo cambio: <%=alarm.getLastChangeDate() %> - <%=alarm.getLastChangeHour() %>

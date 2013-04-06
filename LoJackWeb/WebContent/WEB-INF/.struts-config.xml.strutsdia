@@ -261,4 +261,12 @@
   TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#sendPanic" NAME="action34" PATH="/sendPanic"
   SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#turnOnLight" NAME="action35" PATH="/turnOnLight"
+  SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#turnOffLight" NAME="action36" PATH="/turnOffLight"
+  SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#renameAlarm" NAME="action37" PATH="/renameAlarm"
+  SHAPE="32,4417,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#renameLight" NAME="action38" PATH="/renameLight"
+  SHAPE="240,4433,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -1,4 +1,14 @@
-Encendido y apagado de luz
+*** si o si
+
+Rename de alarmas y luces, acomodar doc de servicios
+
+Camara
+
+Parte thalamus
+
+Armar el war y deployarlo en JBoss
+
+*** detalles
 
 Capturar respuestas de not logged y mandarlo a la index, tanto jsp directo, cargado de jsp en layer como ajax.
 
@@ -6,4 +16,3 @@ Mostrar el error de login en el layer de login, sin cerrarlo
 
 Traerme el resource bundle de dispay tag
 
-Armar el war y deployarlo en JBoss

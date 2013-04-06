@@ -23,8 +23,34 @@
 			   $( "#" + $(this).attr('cl') ).fadeOut();
 			});
 		});
+	  $('.editable').editable(function(value, settings) { 
+		     return doRenameLight($(this).attr('id'), value);
+		  }, { 
+		     type    : 'textarea',
+		     submit  : 'OK',
+		 });
   });
 
+  function doRenameLight(lightId, lightDesc) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./renameLight.do",
+          data: {lightId: lightId, description: lightDesc},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result == 'OK') {
+				} else {
+					 $('#'+lightId).prop('innerHTML', 'Error');	
+				}
+          },
+          error: function() {
+        	  $('#'+lightId).prop('innerHTML', 'Error');	
+          }
+      });
+      return lightDesc;
+  }
+  
   function seeLightLog(lightId) {
 	  $('#logData').load('logLuz.jsp?lightId=' + lightId, function() {
 		  centerLayer($(window), $( "#logLayer" ));
@@ -53,6 +79,46 @@
 			deactivateRandom(objCheckbox, lightId);
 		}
 	}
+
+	function turnOnLight(lightId) {
+		  $.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./turnOnLight.do",
+	          data: {lightId: lightId},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  if (data.result == 'OK') {
+						centerLayer($(window), $( "#lightTurnedOnLayer" ));
+					} else {
+						centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+					}
+	          },
+	          error: function() {
+	        	  centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+	          }
+	      });
+	  }
+
+	function turnOffLight(lightId) {
+		  $.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./turnOffLight.do",
+	          data: {lightId: lightId},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  if (data.result == 'OK') {
+						centerLayer($(window), $( "#lightTurnedOffLayer" ));
+					} else {
+						centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+					}
+	          },
+	          error: function() {
+	        	  centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+	          }
+	      });
+	  }
 
 	function activateRandom(objCheckbox, lightId) {
 		  $.ajax({
@@ -108,9 +174,22 @@ Mis Lucess<br><br>
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <div id="accordion">
 <% for (Light light : lightsForm.getLights()) { %>>
-  <h3><%= light.getDescription() %> <%=light.isHasOnOffInfo() ? (light.isOn() ? "Encendida" : "Apagada") : ""%></h3>
+  <h3>
+  	<%= light.getDescription() %> <%=light.isHasOnOffInfo() ? (light.isOn() ? "Encendida" : "Apagada") : ""%>
+  	<% if (light.isHasOnOffInfo()) { %>
+  		<% if (light.isOn()) { %>
+	  		<span onclick="turnOffLight('<%=light.getId()%>')">Apagar</span>
+	  	<% } else  { %>
+	  		<span onclick="turnOnLight('<%=light.getId()%>')">Encender</span>
+	  	<% } %>
+  	<% } else  { %>
+  		<span onclick="turnOnLight('<%=light.getId()%>')">Encender</span>
+  		<span onclick="turnOffLight('<%=light.getId()%>')">Apagar</span>
+  	<% } %>
+  </h3>
   <div>
     <p>
+    	<div id="<%=light.getId()%>" class="editable"><%= light.getDescription() %></div>
    		<% if (light.hasChangeData()) { %>
    			Ultimo cambio: <%=light.getLastChangeDate() %> - <%=light.getLastChangeHour() %>
    			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
@@ -156,6 +235,24 @@ Mis Lucess<br><br>
 <div id="randomNotDeactivatedLayer" style="display: none; z-index: 500;">
 	No ha podido enviarse el comando de desactivacion de secuencia random
 	<input type="button" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer" value="Cerrar">
+</div>
+
+<div id="lightTurnedOnLayer" style="display: none; z-index: 500;">
+	Se ha enviado el comando de encendido de la luz
+	<input type="button" id="closerlightTurnedOnLayer" cl="lightTurnedOnLayer" value="Cerrar">
+</div>
+<div id="lightNotTurnedOnLayer" style="display: none; z-index: 500;">
+	No ha podido enviarse el comando de encendido de la luz
+	<input type="button" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer" value="Cerrar">
+</div>
+
+<div id="lightTurnedOffLayer" style="display: none; z-index: 500;">
+	Se ha enviado el comando de apagado de la luz
+	<input type="button" id="closerlightTurnedOffLayer" cl="lightTurnedOffLayer" value="Cerrar">
+</div>
+<div id="lightNotTurnedOffLayer" style="display: none; z-index: 500;">
+	No ha podido enviarse el comando de apagado de la luz
+	<input type="button" id="closelightNotTurnedOffLayer" cl="lightNotTurnedOffLayer" value="Cerrar">
 </div>
 
 </body>
