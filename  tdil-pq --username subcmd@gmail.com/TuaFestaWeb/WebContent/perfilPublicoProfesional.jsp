@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
@@ -177,6 +178,31 @@ $(document).ready(function(){
 						<div class="myLabel width80">Descripci&oacute;n</div>
 						<div class="myLabel width520 height80"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
 					</div>
+					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
+						<div class="myRow height80">
+							<a href="<%=profesional.getVideo1() %>">Video 1</a>
+						</div>
+					<% } %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
+						<div class="myRow height80">
+							<a href="<%=profesional.getVideo2() %>">Video 2</a>
+						</div>
+					<% } %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
+						<div class="myRow height80">
+							<a href="<%=profesional.getVideo3() %>">Video 3</a>
+						</div>
+					<% } %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
+						<div class="myRow height80">
+							<a href="<%=profesional.getVideo4() %>">Video 4</a>
+						</div>
+					<% } %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
+						<div class="myRow height80">
+							<a href="<%=profesional.getVideo5() %>">Video 5</a>
+						</div>
+					<% } %>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
 					<div class="myRow">
 						<%

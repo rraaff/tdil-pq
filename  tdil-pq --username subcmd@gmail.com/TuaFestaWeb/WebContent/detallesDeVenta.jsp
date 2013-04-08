@@ -68,10 +68,14 @@
 					<div class="myLabel width100">Precio unitario</div>
 					<div class="myLabel width800"><strong><%=LocalizationUtils.formatPrice(sellDetailsForm.getSellValueObject().getReferenceprice())%></strong></div>
 				</div>
-				<div class="myRow">
-					<div class="myLabel width100">Ubicaci&oacute;n</div>
-					<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></strong></div>
-				</div>
+				<% if (sellDetailsForm.getSellValueObject().isProduct()) { %>
+					<div class="myRow">
+						<div class="myLabel width100">Ubicaci&oacute;n</div>
+						<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></strong></div>
+					</div>
+				<% } else { %>
+					Área de Cobertura
+				<% } %>
 				<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>
 			</div>
 		</div>
