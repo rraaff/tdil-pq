@@ -28,6 +28,10 @@ public class SellValueObject extends Sell {
 		return ApplicationResources.getMessage(this.getType() == SellType.PRODUCT ? "PRODUCT" : "SERVICE");
 	}
 	
+	public boolean isProduct() {
+		return this.getType() == SellType.PRODUCT;
+	}
+	
 	public String getStatusText() {
 		if (this.getApproved() != null && this.getApproved().equals(1)) {
 			return ApplicationResources.getMessage("APPROVED");
