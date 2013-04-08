@@ -35,8 +35,11 @@
   </action>
   
   <action path="/facebookconnect" type="com.tdil.lojack.struts.action.FacebookConnectAction">
-  	<forward name="continue" path="/home.jsp" redirect="true"/>
-  	<forward name="cancel" path="/home.jsp" redirect="true"/>
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/facebookremove" scope="session" type="com.tdil.thalamusweb.struts.action.DeleteFacebookAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
   <action path="/twitterlogin" scope="request" type="com.tdil.lojack.struts.action.LoginTwitterAction">
@@ -46,8 +49,11 @@
   </action>
   
   <action path="/twitterconnect" type="com.tdil.lojack.struts.action.TwitterConnectAction">
-  	<forward name="continue" path="/home.jsp" redirect="true"/>
-  	<forward name="cancel" path="/home.jsp" redirect="true"/>
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/twitterremove" scope="session" type="com.tdil.thalamusweb.struts.action.DeleteTwitterAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
   <action name="RequestResetPasswordForm" path="/requestResetPassword" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordAction"/>
