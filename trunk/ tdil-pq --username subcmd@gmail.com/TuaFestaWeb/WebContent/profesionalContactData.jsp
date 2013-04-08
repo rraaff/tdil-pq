@@ -64,11 +64,11 @@
 				</div>
 				<div class="myRow">
 					<div class="myLabel width80">Web</div>
-					<div class="myLabel width830"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></div>
+					<div class="myLabel width830"><a href="<%=profesional.getWebsite() %>" title="Ir al sitio del profesional" target="_blank"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></a></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width80">Facebook</div>
-					<div class="myLabel width830"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></div>
+					<div class="myLabel width830"><a href="<%=profesional.getFacebook() %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
 				</div>
 				<div class="myRow">
 					<div class="myLabel width80">Horario</div>
