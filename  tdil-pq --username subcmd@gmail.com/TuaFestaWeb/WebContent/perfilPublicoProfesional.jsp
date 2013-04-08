@@ -164,11 +164,11 @@ $(document).ready(function(){
 					</div>
 					<div class="myRow">
 						<div class="myLabel width80">Web</div>
-						<div class="myLabel width520"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></div>
+						<div class="myLabel width520"><a href="<%=profesional.getWebsite() %>" title="Ir al sitio del profesional" target="_blank"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></a></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width80">Facebook</div>
-						<div class="myLabel width520"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></div>
+						<div class="myLabel width520"><a href="<%=profesional.getFacebook() %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width80">Horario</div>
@@ -178,29 +178,30 @@ $(document).ready(function(){
 						<div class="myLabel width80">Descripci&oacute;n</div>
 						<div class="myLabel width520 height80"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
 					</div>
+					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
 					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
-						<div class="myRow height80">
-							<a href="<%=profesional.getVideo1() %>">Video 1</a>
+						<div class="myRow">
+							<a href="<%=profesional.getVideo1() %>">Video 1: <%=profesional.getVideo1() %></a>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
-						<div class="myRow height80">
-							<a href="<%=profesional.getVideo2() %>">Video 2</a>
+						<div class="myRow">
+							<a href="<%=profesional.getVideo2() %>">Video 2: <%=profesional.getVideo2() %></a>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
-						<div class="myRow height80">
-							<a href="<%=profesional.getVideo3() %>">Video 3</a>
+						<div class="myRow">
+							<a href="<%=profesional.getVideo3() %>">Video 3: <%=profesional.getVideo3() %></a>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
-						<div class="myRow height80">
-							<a href="<%=profesional.getVideo4() %>">Video 4</a>
+						<div class="myRow">
+							<a href="<%=profesional.getVideo4() %>">Video 4: <%=profesional.getVideo4() %></a>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
-						<div class="myRow height80">
-							<a href="<%=profesional.getVideo5() %>">Video 5</a>
+						<div class="myRow">
+							<a href="<%=profesional.getVideo5() %>">Video 5: <%=profesional.getVideo5() %></a>
 						</div>
 					<% } %>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>

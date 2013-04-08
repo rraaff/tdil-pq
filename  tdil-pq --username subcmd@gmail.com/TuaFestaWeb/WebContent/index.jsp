@@ -147,7 +147,7 @@
 		<% } %>
 		<div id="punteado"></div>
 		<div id="leftCentral">
-		<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
+			<% for (AdvertisementValueObject advertisementValueObject : adsForHome.getNormal()) { %>
 				<div id="lowHighlightedAdv">
 					<% if (advertisementValueObject.isProfesionalAd()) { %>
 						<h5><a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalBusinessName() %></a></h5>
@@ -173,12 +173,12 @@
 							<a href="./viewProfesionalProfile.do?id=<%=advertisementValueObject.getIdProfesional()%>"><%=advertisementValueObject.getProfesionalDescriptionUpTo(120) %><br/><br/>Ir al perfil</a>
 						<% } else { %>
 							<span class="category">Rubro: <a href="./viewSellDetails.do?type=0&id=<%=advertisementValueObject.getIdSell() %>"><%=advertisementValueObject.getCategoryName() %></a></span>
-							<p style="padding-top:10px;"><%=advertisementValueObject.getSellDescription()%></p>
+							<p style="padding-top:8px;"><%=advertisementValueObject.getSellDescription()%></p>
+						<% } %>
+						<% if (!advertisementValueObject.isProfesionalAd()) { %>
+							<span class="price">Precio: <%=LocalizationUtils.formatPrice(advertisementValueObject.getSellPrice())%></span>
 						<% } %>
 					</div>
-					<% if (!advertisementValueObject.isProfesionalAd()) { %>
-						<span class="price">Precio: <%=LocalizationUtils.formatPrice(advertisementValueObject.getSellPrice())%></span>
-					<% } %>
 				</div>
 			<% } %>
 		</div>
