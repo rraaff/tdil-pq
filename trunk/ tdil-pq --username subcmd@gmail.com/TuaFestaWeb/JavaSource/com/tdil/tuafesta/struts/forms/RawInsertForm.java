@@ -5,13 +5,16 @@ import java.util.List;
 
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.RawInsertDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.RawInsert;
 import com.tdil.tuafesta.model.RawInsertExample;
+import com.tdil.tuafesta.utils.Banner;
+import com.tdil.tuafesta.utils.CacheRegionUtils;
 
-public class RawInsertForm extends TransactionalValidationForm {
+public class RawInsertForm extends TransactionalValidationForm implements ToggleDeletedFlagForm {
 
 	/**
 	 * 
@@ -32,6 +35,21 @@ public class RawInsertForm extends TransactionalValidationForm {
 		this.inserttype = null;
 		this.htmlcontent = null;
 		this.description = null;
+	}
+	
+	/** Used for delete */
+	public void resetAfterDelete() throws SQLException {
+		this.reset();
+		reloadList();
+	}
+	public void initForDeleteWith(int userId) throws SQLException {
+		this.objectId = userId;
+	}
+	public void validateForToggleDeletedFlag(ValidationError validationError) {
+		// TODO Auto-generated method stub
+	}
+	public void toggleDeletedFlag() throws SQLException, ValidationException {
+		DAOManager.getRawInsertDAO().deleteRawInsertByPrimaryKey(this.getObjectId());
 	}
 
 	@Override
@@ -68,14 +86,21 @@ public class RawInsertForm extends TransactionalValidationForm {
 	public void save() throws SQLException, ValidationException {
 		RawInsertDAO systemPropertyDAO = DAOManager.getRawInsertDAO();
 		if (this.getObjectId() == 0) {
-			/* nada que hacer, no hay altas de estas entidades */
+			RawInsert systemProperty = new RawInsert();
+			systemProperty.setInserttype(this.getInserttype());
+			systemProperty.setDescription(this.getDescription());
+			systemProperty.setDeleted(0);
+			systemProperty.setHtmlcontent(this.getHtmlcontent());
+			systemPropertyDAO.insertRawInsert(systemProperty);
 		} else {
 			RawInsert systemProperty = new RawInsert();
 			systemProperty.setId(this.getObjectId());
-			// Solo admito el cambio del value
+			systemProperty.setInserttype(this.getInserttype());
+			systemProperty.setDescription(this.getDescription());
 			systemProperty.setHtmlcontent(this.getHtmlcontent());
 			systemPropertyDAO.updateRawInsertByPrimaryKeySelective(systemProperty);
 		}
+		CacheRegionUtils.incrementVersionInTransaction(Banner.class.getName());
 	}
 
 	public int getObjectId() {

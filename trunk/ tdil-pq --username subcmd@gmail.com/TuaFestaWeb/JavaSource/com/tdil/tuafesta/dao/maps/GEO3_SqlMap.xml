@@ -291,8 +291,8 @@
   </select>
   
     <select id="selectGeoLevel3ById" parameterClass="java.lang.Integer" resultMap="GEO2.GeoLevelValueObjectResultMap">
-    SELECT GEO3.id, GEO2.nombre as nombre2, GEO3.nombre as nombre3, '' as nombre4, GEO3.geo2_id as parentId, 3 as level, geo3.deleted as deleted
-    	GEO2.id as geo2id, GEO3.id as geo3id, 0 as geo4id ,
+    SELECT GEO3.id, GEO2.nombre as nombre2, GEO3.nombre as nombre3, '' as nombre4, GEO3.geo2_id as parentId, 3 as level, GEO3.deleted as deleted,
+    	GEO2.id as geo2id, GEO3.id as geo3id, 0 as geo4id
 	FROM GEO2, GEO3
 	WHERE GEO2.id = GEO3.geo2_id
 	AND GEO3.id = #id:INTEGER#

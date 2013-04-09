@@ -15,15 +15,15 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.tuafesta.dao.SellMediaDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
-import com.tdil.tuafesta.model.Profesional;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellMedia;
 import com.tdil.tuafesta.model.SellMediaExample;
 import com.tdil.tuafesta.model.SellType;
+import com.tdil.tuafesta.model.ServiceArea;
+import com.tdil.tuafesta.model.ServiceAreaExample;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
-import com.tdil.tuafesta.stats.StatisticType;
-import com.tdil.tuafesta.stats.StatsManager;
 import com.tdil.tuafesta.struts.forms.beans.PublicImageBlobBean;
+import com.tdil.tuafesta.struts.forms.beans.ServiceAreaBean;
 
 public class SellDetailsForm extends TransactionalValidationForm {
 
@@ -35,6 +35,8 @@ public class SellDetailsForm extends TransactionalValidationForm {
 	private SellValueObject sellValueObject;
 	
 	private SellMedia sellMedia;
+	
+	private List<ServiceAreaBean> serviceAreas;
 	
 	@Override
 	public void reset() throws SQLException {
@@ -96,6 +98,15 @@ public class SellDetailsForm extends TransactionalValidationForm {
 				}
 			}
 		}
+		serviceAreas = new ArrayList<ServiceAreaBean>();
+		if (sellValueObject.getType() == SellType.SERVICE) { // si es servicio, busco las zonas de cobertura
+			ServiceAreaExample serviceAreaExample = new ServiceAreaExample();
+			serviceAreaExample.createCriteria().andIdProfesionalEqualTo(id);
+			List<ServiceArea> list = DAOManager.getServiceAreaDAO().selectServiceAreaByExample(serviceAreaExample);
+			for (ServiceArea sa : list) {
+				serviceAreas.add(new ServiceAreaBean(sa));
+			}
+		}
 		SellMediaDAO sellMediaDAO = DAOManager.getSellMediaDAO();
 		SellMediaExample sellMediaExample = new SellMediaExample();
 		sellMediaExample.createCriteria().andIdSellEqualTo(id).andApprovedEqualTo(1);
@@ -131,6 +142,12 @@ public class SellDetailsForm extends TransactionalValidationForm {
 	}
 	public void setSellMedia(SellMedia sellMedia) {
 		this.sellMedia = sellMedia;
+	}
+	public List<ServiceAreaBean> getServiceAreas() {
+		return serviceAreas;
+	}
+	public void setServiceAreas(List<ServiceAreaBean> serviceAreas) {
+		this.serviceAreas = serviceAreas;
 	}
 
 	

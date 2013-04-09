@@ -17,9 +17,7 @@
    name="ProfesionalAdministrationForm" type="com.tdil.tuafesta.struts.forms.ProfesionalAdministrationForm"/>
   <form-bean id="ClientAdministrationForm"
    name="ClientAdministrationForm" type="com.tdil.tuafesta.struts.forms.ClientAdministrationForm"/>
-  <form-bean id="ReviewClientForm"
-   name="ReviewClientForm" type="com.tdil.tuafesta.struts.forms.ReviewClientForm"/>
-   
+  <form-bean id="ReviewClientForm" name="ReviewClientForm" type="com.tdil.tuafesta.struts.forms.ReviewClientForm"/>
   <form-bean id="GeoLevelForm" name="GeoLevelForm" type="com.tdil.tuafesta.struts.forms.GeoLevelForm"/>
   <form-bean id="ReviewProfesionalForm" name="ReviewProfesionalForm" type="com.tdil.tuafesta.struts.forms.ReviewProfesionalForm"/>
   <form-bean id="ProfesionalSearchResultForm"
@@ -27,65 +25,35 @@
   <form-bean id="ProfesionalProfileForm" name="ProfesionalProfileForm" type="com.tdil.tuafesta.struts.forms.ProfesionalProfileForm"/>
   <form-bean id="ProfesionalContactForm" name="ProfesionalContactForm" type="com.tdil.tuafesta.struts.forms.ProfesionalContactForm"/>
   <form-bean id="WallCommentForm" name="WallCommentForm" type="com.tdil.tuafesta.struts.forms.WallCommentForm"/>
-  
   <form-bean id="ClientForm" name="ClientForm" type="com.tdil.tuafesta.struts.forms.ClientForm"/>
-  <form-bean id="ValidateClientEmailForm"
-   name="ValidateClientEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateClientEmailForm"/>
-   <form-bean id="EditClientPasswordDataForm" name="EditClientPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditClientPasswordDataForm"/>
-   
-   <form-bean id="HighlightedProfesionalForm"
+  <form-bean id="ValidateClientEmailForm" name="ValidateClientEmailForm" type="com.tdil.tuafesta.struts.forms.ValidateClientEmailForm"/>
+  <form-bean id="EditClientPasswordDataForm"
+   name="EditClientPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditClientPasswordDataForm"/>
+  <form-bean id="HighlightedProfesionalForm"
    name="HighlightedProfesionalForm" type="com.tdil.tuafesta.struts.forms.HighlightedProfesionalForm"/>
-   <form-bean id="HighlightedCategoryForm"
-   name="HighlightedCategoryForm" type="com.tdil.tuafesta.struts.forms.HighlightedCategoryForm"/>
-   
-   <form-bean id="PasswordResetForm"
-   name="PasswordResetForm" type="com.tdil.tuafesta.struts.forms.PasswordResetForm"/>
-   
-   <form-bean id="WebsiteLoginForm"
-   name="WebsiteLoginForm" type="com.tdil.tuafesta.struts.forms.WebsiteLoginForm"/>
-   
-   <form-bean id="ClientHomeForm"
-   name="ClientHomeForm" type="com.tdil.tuafesta.struts.forms.ClientHomeForm"/>
-   <form-bean id="ProfesionalHomeForm"
-   name="ProfesionalHomeForm" type="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"/>
-   
-   <form-bean id="SellDetailsForm"
-   name="SellDetailsForm" type="com.tdil.tuafesta.struts.forms.SellDetailsForm"/>
-   
-   <form-bean id="StatisticReportForm"
-   name="StatisticReportForm" type="com.tdil.tuafesta.struts.forms.StatisticReportForm"/>
-   
-   <form-bean id="EditProfesionalPersonalDataForm"
+  <form-bean id="HighlightedCategoryForm" name="HighlightedCategoryForm" type="com.tdil.tuafesta.struts.forms.HighlightedCategoryForm"/>
+  <form-bean id="PasswordResetForm" name="PasswordResetForm" type="com.tdil.tuafesta.struts.forms.PasswordResetForm"/>
+  <form-bean id="WebsiteLoginForm" name="WebsiteLoginForm" type="com.tdil.tuafesta.struts.forms.WebsiteLoginForm"/>
+  <form-bean id="ClientHomeForm" name="ClientHomeForm" type="com.tdil.tuafesta.struts.forms.ClientHomeForm"/>
+  <form-bean id="ProfesionalHomeForm" name="ProfesionalHomeForm" type="com.tdil.tuafesta.struts.forms.ProfesionalHomeForm"/>
+  <form-bean id="SellDetailsForm" name="SellDetailsForm" type="com.tdil.tuafesta.struts.forms.SellDetailsForm"/>
+  <form-bean id="StatisticReportForm" name="StatisticReportForm" type="com.tdil.tuafesta.struts.forms.StatisticReportForm"/>
+  <form-bean id="EditProfesionalPersonalDataForm"
    name="EditProfesionalPersonalDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPersonalDataForm"/>
-   <form-bean id="EditProfesionalBusinessDataForm"
+  <form-bean id="EditProfesionalBusinessDataForm"
    name="EditProfesionalBusinessDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalBusinessDataForm"/>
-   <form-bean id="EditProfesionalServiceAreaForm"
+  <form-bean id="EditProfesionalServiceAreaForm"
    name="EditProfesionalServiceAreaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalServiceAreaForm"/>
-   
-   <form-bean id="EditProfesionalSellForm"
-   name="EditProfesionalSellForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"/>
-   
-   <form-bean id="PromotionForm"
-   name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
-   
-   <form-bean id="AdvertisementForm"
-   name="AdvertisementForm" type="com.tdil.tuafesta.struts.forms.AdvertisementForm"/>
-   
-   <form-bean id="PromotionContactForm"
-   name="PromotionContactForm" type="com.tdil.tuafesta.struts.forms.PromotionContactForm"/>
-   
-   <form-bean id="WallModerationForm"
-   name="WallModerationForm" type="com.tdil.tuafesta.struts.forms.WallModerationForm"/>
-   
-   <form-bean id="EditProfesionalAgendaForm"
+  <form-bean id="EditProfesionalSellForm" name="EditProfesionalSellForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalSellForm"/>
+  <form-bean id="PromotionForm" name="PromotionForm" type="com.tdil.tuafesta.struts.forms.PromotionForm"/>
+  <form-bean id="AdvertisementForm" name="AdvertisementForm" type="com.tdil.tuafesta.struts.forms.AdvertisementForm"/>
+  <form-bean id="PromotionContactForm" name="PromotionContactForm" type="com.tdil.tuafesta.struts.forms.PromotionContactForm"/>
+  <form-bean id="WallModerationForm" name="WallModerationForm" type="com.tdil.tuafesta.struts.forms.WallModerationForm"/>
+  <form-bean id="EditProfesionalAgendaForm"
    name="EditProfesionalAgendaForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalAgendaForm"/>
-   
-   <form-bean id="EditProfesionalPasswordDataForm"
+  <form-bean id="EditProfesionalPasswordDataForm"
    name="EditProfesionalPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPasswordDataForm"/>
-   
-   <form-bean id="OrganizeWizardForm"
-   name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
-   
+  <form-bean id="OrganizeWizardForm" name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -142,18 +110,22 @@
   </action>
   <action name="RawInsertForm" parameter="Admin"
    path="/goToRawInsertABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
-   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+   <forward name="continue" path="/boRawInsertAdministration.jsp"/>
   </action>
   <action name="RawInsertForm" parameter="Admin" path="/saveRawInsert"
    scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/rawInsertAdministration.jsp" redirect="true"/>
-   <forward name="failure" path="/rawInsertAdministration.jsp"/>
+   <forward name="continue" path="/boRawInsertAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boRawInsertAdministration.jsp"/>
   </action>
   <action name="RawInsertForm" parameter="Admin" path="/editRawInsert"
    scope="session" type="com.tdil.struts.actions.EditAction">
-   <forward name="continue" path="/rawInsertAdministration.jsp"/>
+   <forward name="continue" path="/boRawInsertAdministration.jsp"/>
   </action>
-  
+  <action name="RawInsertForm" parameter="Admin"
+   path="/toggleDeletedRawInsert" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
+   <forward name="continue" path="/boRawInsertAdministration.jsp" redirect="true"/>
+   <forward name="failure" path="/boRawInsertAdministration.jsp"/>
+  </action>
   <action name="CategoryForm" parameter="Admin"
    path="/goToServiceCategoryABM" scope="session" type="com.tdil.tuafesta.struts.action.GoToServiceCategoryABMAction">
    <forward name="continue" path="/boServiceCategoryAdministration.jsp"/>
@@ -172,8 +144,6 @@
    <forward name="continue" path="/boServiceCategoryAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boServiceCategoryAdministration.jsp"/>
   </action>
-  
-
   <action name="CategoryForm" parameter="Admin"
    path="/goToProductCategoryABM" scope="session" type="com.tdil.tuafesta.struts.action.GoToProductCategoryABMAction">
    <forward name="continue" path="/boProductCategoryAdministration.jsp"/>
@@ -192,18 +162,17 @@
    <forward name="continue" path="/boProductCategoryAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boProductCategoryAdministration.jsp"/>
   </action>
-
   <action name="ClientAdministrationForm" parameter="Admin"
    path="/goToClientAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToClientAdministrationAction">
    <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
   </action>
-  <action name="ReviewClientForm" parameter="Admin"
-   path="/reviewClient" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewClientAction">
+  <action name="ReviewClientForm" parameter="Admin" path="/reviewClient"
+   scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewClientAction">
    <forward name="emailValidation" path="/validateClientEmail.jsp"/>
    <forward name="aproved" path="/reviewClient.jsp"/>
    <forward name="blocked" path="/reviewClientBlocked.jsp"/>
   </action>
-    <action name="ClientAdministrationForm" parameter="Admin"
+  <action name="ClientAdministrationForm" parameter="Admin"
    path="/searchClientAdministration" scope="session" type="com.tdil.struts.actions.SearchAction">
    <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
   </action>
@@ -212,7 +181,6 @@
    <forward name="continue" path="/clientAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/validateClientEmail.jsp"/>
   </action>
-
   <action name="ProfesionalAdministrationForm" parameter="Admin"
    path="/goToProfesionalAdministration" scope="session" type="com.tdil.tuafesta.struts.action.GoToProfesionalAdministrationAction">
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
@@ -250,11 +218,10 @@
    scope="session" type="com.tdil.tuafesta.struts.action.EditGeoLevelAction">
    <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
-  <action name="GeoLevelForm" parameter="Admin" path="/deleteGeoLevelFromDatabase"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeleteGeoLevelFromDatabaseAction">
+  <action name="GeoLevelForm" parameter="Admin"
+   path="/deleteGeoLevelFromDatabase" scope="session" type="com.tdil.tuafesta.struts.action.DeleteGeoLevelFromDatabaseAction">
    <forward name="continue" path="/boGeoLevelAdministration.jsp"/>
   </action>
-  
   <action name="ProfesionalForm" path="/goToRegistroProfesional"
    scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/registroProfesional.jsp"/>
@@ -265,9 +232,9 @@
    <forward name="failure" path="/registroProfesional.jsp"/>
   </action>
   <action name="ProfesionalForm" path="/loginProfesionalFB" type="com.tdil.tuafesta.struts.action.LoginProfesionalFacebookAction">
-	<forward name="logged" path="/index.jsp"/>
-	<forward name="completeRegistration" path="/registroProfesional.jsp"/>
-	<forward name="cancel" path="/index.jsp"/>
+   <forward name="logged" path="/index.jsp"/>
+   <forward name="completeRegistration" path="/registroProfesional.jsp"/>
+   <forward name="cancel" path="/index.jsp"/>
   </action>
   <action name="ProfesionalForm" path="/refreshGeoLevel2Profesional"
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
@@ -277,10 +244,12 @@
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/registroProfesional.jsp"/>
   </action>
-  <action name="ProfesionalForm" path="/registroProfesionalAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
+  <action name="ProfesionalForm" path="/registroProfesionalAddSell"
+   scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
-  <action name="ProfesionalForm" path="/registroProfesionalRemoveSell" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+  <action name="ProfesionalForm" path="/registroProfesionalRemoveSell"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/registroProfesional.jsp" redirect="true"/>
   </action>
   <action name="ProfesionalForm" path="/addService" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAction">
@@ -290,13 +259,9 @@
   <action path="/searchService" scope="request" type="com.tdil.tuafesta.struts.action.SearchServiceAction"/>
   <action path="/searchGeoLevelAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchGeoLevelAjaxAction"/>
   <action path="/searchCategory" scope="request" type="com.tdil.tuafesta.struts.action.SearchCategoryAction"/>
-  
   <action path="/searchProductCategories" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductCategoriesAjaxAction"/>
   <action path="/searchServiceCategories" scope="request" type="com.tdil.tuafesta.struts.action.SearchServiceCategoriesAjaxAction"/>
-  
-  
   <action path="/searchProductTreeAjax" scope="request" type="com.tdil.tuafesta.struts.action.SearchProductAjaxAction"/>
-  
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/reviewProfesional" scope="session" type="com.tdil.tuafesta.struts.action.GoToReviewProfesionalAction">
    <forward name="emailValidation" path="/validateProfesionalEmail.jsp"/>
@@ -314,7 +279,6 @@
    <forward name="continue" path="/profesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/verifyProfesional.jsp"/>
   </action>
-  
   <action name="ReviewProfesionalForm" parameter="Admin"
    path="/approveProfesionalPersonalDataChange" scope="session" type="com.tdil.tuafesta.struts.action.ApproveProfesionalPersonalDataChangeAction">
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
@@ -324,26 +288,23 @@
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
   </action>
   <action name="ReviewProfesionalForm" parameter="Admin"
-   path="/viewProfesionalChangeLogo" scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalChangeLogoAction">
-  </action>  
-   <action name="ReviewProfesionalForm" parameter="Admin"
+   path="/viewProfesionalChangeLogo" scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalChangeLogoAction"/>
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/approveSell" scope="session" type="com.tdil.tuafesta.struts.action.ApproveSellAction">
    <forward name="continue" path="/reviewSellData.jsp" redirect="true"/>
   </action>
-  
-   <action name="ReviewProfesionalForm" parameter="Admin"
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/disapproveProfesionalPersonalDataChange" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalPersonalDataChangeAction">
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
   </action>
-   <action name="ReviewProfesionalForm" parameter="Admin"
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/disapproveProfesionalBusinessDataChange" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveProfesionalBusinessDataChangeAction">
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
   </action>
-   <action name="ReviewProfesionalForm" parameter="Admin"
+  <action name="ReviewProfesionalForm" parameter="Admin"
    path="/disapproveSell" scope="session" type="com.tdil.tuafesta.struts.action.DisapproveSellAction">
    <forward name="continue" path="/reviewProfesional.jsp" redirect="true"/>
   </action>
-  
   <action name="ValidateProfesionalEmailForm"
    path="/validateProfesionalEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateProfesionalEmailAction">
    <forward name="continue" path="/profesionalEmailValidated.jsp"/>
@@ -363,30 +324,23 @@
    path="/reviewSell" scope="session" type="com.tdil.tuafesta.struts.action.ReviewSellAction">
    <forward name="continue" path="/reviewSell.jsp" redirect="true"/>
   </action>
-  
   <action parameter="Admin" path="/statisticReport" scope="request" type="com.tdil.tuafesta.struts.action.StatisticReportAction"/>
-  
-  <action name="SellSearchResultForm"
-   path="/searchSellsByGeoLevel4" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByGeoLevel4">
+  <action name="SellSearchResultForm" path="/searchSellsByGeoLevel4"
+   scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByGeoLevel4">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
-  <action name="SellSearchResultForm"
-   path="/searchSellsByCategory" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
+  <action name="SellSearchResultForm" path="/searchSellsByCategory"
+   scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByCategory">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
-  <action name="SellSearchResultForm"
-   path="/searchSellsByText" scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByText">
+  <action name="SellSearchResultForm" path="/searchSellsByText"
+   scope="session" type="com.tdil.tuafesta.struts.action.SearchSellsByText">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
   </action>
-  
-  <action name="SellDetailsForm"
-   path="/viewSellDetails" scope="session" type="com.tdil.tuafesta.struts.action.ViewSellDetailsAction">
+  <action name="SellDetailsForm" path="/viewSellDetails" scope="session" type="com.tdil.tuafesta.struts.action.ViewSellDetailsAction">
    <forward name="continue" path="/detallesDeVenta.jsp" redirect="true"/>
   </action>
-  
-  
-  <action name="ClientForm" path="/goToRegistroCliente"
-   scope="session" type="com.tdil.struts.actions.GoToABMAction">
+  <action name="ClientForm" path="/goToRegistroCliente" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/registroCliente.jsp"/>
   </action>
   <action name="ClientForm" path="/addClient" scope="session" type="com.tdil.tuafesta.struts.action.RegisterClientAction">
@@ -402,19 +356,19 @@
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/registroCliente.jsp"/>
   </action>
-    <action name="ValidateClientEmailForm"
-   path="/validateClientEmail" scope="request" type="com.tdil.tuafesta.struts.action.ValidateClientEmailAction">
+  <action name="ValidateClientEmailForm" path="/validateClientEmail"
+   scope="request" type="com.tdil.tuafesta.struts.action.ValidateClientEmailAction">
    <forward name="continue" path="/clienteEmailValidated.jsp"/>
    <forward name="failure" path="/clienteEmailNotValidated.jsp"/>
   </action>
-  
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/goToHighlightedCategoryABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/saveHighlightedCategory" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
@@ -423,17 +377,18 @@
   </action>
   <action name="HighlightedCategoryForm" parameter="Admin"
    path="/toggleDeletedHighlightedCategory" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/boHighlightedCategoryAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boHighlightedCategoryAdministration.jsp"/>
   </action>
-  
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/goToHighlightedProfesionalABM" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/highlightedProfesionalAdministration.jsp"/>
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/saveHighlightedProfesional" scope="session" type="com.tdil.struts.actions.SaveAction">
-   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/highlightedProfesionalAdministration.jsp"/>
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
@@ -442,22 +397,25 @@
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/toggleDeletedHighlightedProfesional" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
-   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/highlightedProfesionalAdministration.jsp"/>
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/searchProfesionalsToHighlight" scope="session" type="com.tdil.tuafesta.struts.action.SearchProfesionalsToHighlight">
-   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/selectProfesionalToHighlight" scope="session" type="com.tdil.tuafesta.struts.action.SelectProfesionalToHighlight">
-   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
   </action>
   <action name="HighlightedProfesionalForm" parameter="Admin"
    path="/searchHighlightedProfesionals" scope="session" type="com.tdil.tuafesta.struts.action.SearchHighlightedProfesionals">
-   <forward name="continue" path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
+   <forward name="continue"
+    path="/highlightedProfesionalAdministration.jsp" redirect="true"/>
   </action>
-    
   <action name="ProfesionalProfileForm" path="/viewProfesionalProfile"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
@@ -466,18 +424,15 @@
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/profesionalContactData.jsp"/>
   </action>
-  
   <action name="PromotionContactForm" path="/contactPromotion"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/promotionContactData.jsp"/>
   </action>
-  
   <action name="ProfesionalProfileForm" path="/addWallComment"
    scope="session" type="com.tdil.tuafesta.struts.action.AddWallCommentAction">
    <forward name="failure" path="/perfilPublicoProfesional.jsp"/>
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
-  
   <action name="ProfesionalProfileForm" path="/currMonth"
    scope="session" type="com.tdil.tuafesta.struts.action.CurrentMonthAgenda">
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
@@ -490,51 +445,44 @@
    scope="session" type="com.tdil.tuafesta.struts.action.PrevMonthAgenda">
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
-  
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
-
-  <action name="PasswordResetForm" path="/resetPassword"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="PasswordResetForm" path="/resetPassword" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="failure" path="/resetearPassword.jsp"/>
    <forward name="continue" path="/passwordEnviada.jsp"/>
   </action>
-  
-  <action name="WebsiteLoginForm" path="/websiteLogin"
-   scope="request" type="com.tdil.tuafesta.struts.action.WebsiteLoginAction">
+  <action name="WebsiteLoginForm" path="/websiteLogin" scope="request" type="com.tdil.tuafesta.struts.action.WebsiteLoginAction">
    <forward name="failure" path="/login.jsp"/>
    <forward name="successProfesional" path="/index.jsp"/>
    <forward name="successClient" path="/index.jsp"/>
   </action>
-  
-   <action name="ClientForm" path="/loginClientFB" type="com.tdil.tuafesta.struts.action.LoginClientFacebookAction">
-	<forward name="logged" path="/index.jsp"/>
-	<forward name="completeRegistration" path="/registroCliente.jsp"/>
-	<forward name="cancel" path="/index.jsp"/>
+  <action name="ClientForm" path="/loginClientFB" type="com.tdil.tuafesta.struts.action.LoginClientFacebookAction">
+   <forward name="logged" path="/index.jsp"/>
+   <forward name="completeRegistration" path="/registroCliente.jsp"/>
+   <forward name="cancel" path="/index.jsp"/>
   </action>
-  
-  <action name="ClientHomeForm" path="/goToClientHome" parameter="Client"
-   scope="session" type="com.tdil.tuafesta.struts.action.GoClientHomeAction">
+  <action name="ClientHomeForm" parameter="Client"
+   path="/goToClientHome" scope="session" type="com.tdil.tuafesta.struts.action.GoClientHomeAction">
    <forward name="continue" path="/homeCliente.jsp"/>
   </action>
-  <action name="EditClientPasswordDataForm" path="/goToChangeClientPassword" parameter="Client"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditClientPasswordDataForm" parameter="Client"
+   path="/goToChangeClientPassword" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/changeClientPassword.jsp"/>
   </action>
-  <action name="ClientHomeForm" path="/editClient" parameter="Client"
+  <action name="ClientHomeForm" parameter="Client" path="/editClient"
    scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editClient.jsp"/>
   </action>
-  <action name="ClientHomeForm" path="/saveClient" parameter="Client"
+  <action name="ClientHomeForm" parameter="Client" path="/saveClient"
    scope="session" type="com.tdil.tuafesta.struts.action.SaveClientDataAction">
    <forward name="failure" path="/editClient.jsp"/>
    <forward name="continue" path="/goToClientHome.do"/>
   </action>
-  <action name="EditClientPasswordDataForm" path="/changeClientPassword" parameter="Client"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="EditClientPasswordDataForm" parameter="Client"
+   path="/changeClientPassword" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="failure" path="/changeClientPassword.jsp"/>
    <forward name="continue" path="/homeCliente.jsp"/>
   </action>
-    <action name="ClientHomeForm" path="/refreshGeoLevel2EditClient"
+  <action name="ClientHomeForm" path="/refreshGeoLevel2EditClient"
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
    <forward name="geo2changed" path="/editClient.jsp"/>
   </action>
@@ -542,202 +490,186 @@
    scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/editClient.jsp"/>
   </action>
-  
-  <action name="ProfesionalHomeForm" path="/goToProfesionalHome" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.GoProfesionalHomeAction">
+  <action name="ProfesionalHomeForm" parameter="Profesional"
+   path="/goToProfesionalHome" scope="session" type="com.tdil.tuafesta.struts.action.GoProfesionalHomeAction">
    <forward name="continue" path="/homeProfesional.jsp"/>
   </action>
-  <action name="EditProfesionalPersonalDataForm" path="/goToEditProfesionalPersonalData" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditProfesionalPersonalDataForm" parameter="Profesional"
+   path="/goToEditProfesionalPersonalData" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalPersonalData.jsp"/>
   </action>
-  <action name="EditProfesionalBusinessDataForm" path="/goToEditProfesionalBusinessData" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditProfesionalBusinessDataForm" parameter="Profesional"
+   path="/goToEditProfesionalBusinessData" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalBusinessData.jsp"/>
   </action>
-  
-  <action name="EditProfesionalPasswordDataForm" path="/goToChangePassword" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditProfesionalPasswordDataForm" parameter="Profesional"
+   path="/goToChangePassword" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/changeProfesionalPassword.jsp"/>
   </action>
-  
-  <action name="EditProfesionalPasswordDataForm" path="/changePassword" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalPasswordDataForm" parameter="Profesional"
+   path="/changePassword" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/changeProfesionalPassword.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  
-  <action name="WallModerationForm" path="/goToModerateProfesionalWall" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/goToModerateProfesionalWall" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  
-  <action name="WallModerationForm" path="/saveWallWritting" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/saveWallWritting" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  
-  <action name="WallModerationForm" path="/loadWallWrittingToAnswer" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToAnswerAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/loadWallWrittingToAnswer" scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToAnswerAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  <action name="WallModerationForm" path="/loadWallWrittingToEdit" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToEditAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/loadWallWrittingToEdit" scope="session" type="com.tdil.tuafesta.struts.action.LoadWallWrittingToEditAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  <action name="WallModerationForm" path="/viewWallWrittingAll" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingAllAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/viewWallWrittingAll" scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingAllAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  <action name="WallModerationForm" path="/viewWallWrittingPending" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingPendingAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/viewWallWrittingPending" scope="session" type="com.tdil.tuafesta.struts.action.ViewWallWrittingPendingAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  <action name="WallModerationForm" path="/deleteWallWritting" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeleteWallWrittingAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/deleteWallWritting" scope="session" type="com.tdil.tuafesta.struts.action.DeleteWallWrittingAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  <action name="WallModerationForm" path="/markAsRespondedWallWritting" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.MarkAsRespondedWallWrittingAction">
+  <action name="WallModerationForm" parameter="Profesional"
+   path="/markAsRespondedWallWritting" scope="session" type="com.tdil.tuafesta.struts.action.MarkAsRespondedWallWrittingAction">
    <forward name="continue" path="/moderateProfesionalWall.jsp"/>
   </action>
-  
-  
-  <action name="EditProfesionalAgendaForm" path="/goToEditAgenda" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditProfesionalAgendaForm" parameter="Profesional"
+   path="/goToEditAgenda" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalAgenda.jsp"/>
   </action>
-  <action name="EditProfesionalAgendaForm" path="/saveAgenda" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="EditProfesionalAgendaForm" parameter="Profesional"
+   path="/saveAgenda" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/editProfesionalAgenda.jsp" redirect="true"/>
    <forward name="failure" path="/editProfesionalAgenda.jsp"/>
   </action>
-    <action name="EditProfesionalAgendaForm" parameter="Profesional"
+  <action name="EditProfesionalAgendaForm" parameter="Profesional"
    path="/deleteAgenda" scope="session" type="com.tdil.struts.actions.ToggleDeletedAction">
    <forward name="continue" path="/editProfesionalAgenda.jsp" redirect="true"/>
    <forward name="failure" path="/editProfesionalAgenda.jsp"/>
   </action>
-  
-  
-  <action name="EditProfesionalServiceAreaForm" path="/goToEditProfesionalServiceArea" parameter="Profesional"
-   scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="EditProfesionalServiceAreaForm" parameter="Profesional"
+   path="/goToEditProfesionalServiceArea" scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/editProfesionalServiceArea.jsp"/>
   </action>
-  
-  <action name="EditProfesionalPersonalDataForm" path="/saveProfesionalPersonalData" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalPersonalDataForm" parameter="Profesional"
+   path="/saveProfesionalPersonalData" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalPersonalData.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  
-  <action name="EditProfesionalBusinessDataForm" path="/saveProfesionalBusinessData" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalBusinessDataForm" parameter="Profesional"
+   path="/saveProfesionalBusinessData" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalBusinessData.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  
-  <action name="EditProfesionalServiceAreaForm" path="/saveProfesionalServiceArea" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalServiceAreaForm" parameter="Profesional"
+   path="/saveProfesionalServiceArea" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalServiceArea.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  <action name="EditProfesionalServiceAreaForm" path="/addServiceArea" scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAreaAction">
+  <action name="EditProfesionalServiceAreaForm" path="/addServiceArea"
+   scope="session" type="com.tdil.tuafesta.struts.action.AddServiceAreaAction">
    <forward name="continue" path="/editProfesionalServiceArea.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalServiceAreaForm" path="/removeServiceArea"
-   scope="session" type="com.tdil.tuafesta.struts.action.RemoveServiceAreaAction">
+  <action name="EditProfesionalServiceAreaForm"
+   path="/removeServiceArea" scope="session" type="com.tdil.tuafesta.struts.action.RemoveServiceAreaAction">
    <forward name="continue" path="/editProfesionalServiceArea.jsp" redirect="true"/>
   </action>
-  
-  <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel2EditBusiness"
-   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
+  <action name="EditProfesionalBusinessDataForm"
+   path="/refreshGeoLevel2EditBusiness" scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel2Action">
    <forward name="geo2changed" path="/editProfesionalBusinessData.jsp"/>
   </action>
-  <action name="EditProfesionalBusinessDataForm" path="/refreshGeoLevel3EditBusiness"
-   scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
+  <action name="EditProfesionalBusinessDataForm"
+   path="/refreshGeoLevel3EditBusiness" scope="session" type="com.tdil.tuafesta.struts.action.RefreshGeoLevel3Action">
    <forward name="geo3changed" path="/editProfesionalBusinessData.jsp"/>
   </action>
-  
-  <action name="EditProfesionalSellForm" path="/goToEditProfesionalProducts" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.EditProfesionalProductsAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/goToEditProfesionalProducts" scope="session" type="com.tdil.tuafesta.struts.action.EditProfesionalProductsAction">
    <forward name="continue" path="/editProfesionalProducts.jsp"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/saveProfesionalProducts" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/saveProfesionalProducts" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalProducts.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-    <action name="EditProfesionalSellForm" path="/editProfesionalProduct" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/editProfesionalProduct" scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
    <forward name="continue" path="/editProfesionalProducts.jsp"/>
   </action>
-    <action name="EditProfesionalSellForm" path="/deleteProductImage" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/deleteProductImage" scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
    <forward name="continue" path="/editProfesionalProducts.jsp"/>
   </action>
-  
-  <action name="EditProfesionalSellForm" path="/editProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
+  <action name="EditProfesionalSellForm"
+   path="/editProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/cancelProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
+  <action name="EditProfesionalSellForm"
+   path="/cancelProfesionalProductsAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/editRemoveProduct" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+  <action name="EditProfesionalSellForm" path="/editRemoveProduct"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/editProfesionalProducts.jsp" redirect="true"/>
   </action>
   <action parameter="Profesional" path="/uploadProductImage" type="com.tdil.tuafesta.struts.action.UploadProductImageAction"/>
-  <action name="EditProfesionalSellForm" parameter="Profesional" path="/viewProductImage"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewProductImageAction">
-  </action>
- 
-  <action name="EditProfesionalSellForm" path="/goToEditProfesionalServices" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.EditProfesionalServicesAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/viewProductImage" scope="session" type="com.tdil.tuafesta.struts.action.ViewProductImageAction"/>
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/goToEditProfesionalServices" scope="session" type="com.tdil.tuafesta.struts.action.EditProfesionalServicesAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/saveProfesionalServices" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/saveProfesionalServices" scope="session" type="com.tdil.tuafesta.struts.action.SaveProfesionalDataAction">
    <forward name="failure" path="/editProfesionalServices.jsp"/>
    <forward name="continue" path="/goToProfesionalHome.do"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/editProfesionalService" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/editProfesionalService" scope="session" type="com.tdil.tuafesta.struts.action.LoadSellToEditAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
-    <action name="EditProfesionalSellForm" path="/deleteServiceImage" parameter="Profesional"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/deleteServiceImage" scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellImageAction">
    <forward name="continue" path="/editProfesionalServices.jsp"/>
   </action>
-  
-  <action name="EditProfesionalSellForm" path="/editProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
+  <action name="EditProfesionalSellForm"
+   path="/editProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.AddSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/cancelProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
+  <action name="EditProfesionalSellForm"
+   path="/cancelProfesionalServicesAddSell" scope="session" type="com.tdil.tuafesta.struts.action.CancelAddSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
-  <action name="EditProfesionalSellForm" path="/editRemoveService" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
+  <action name="EditProfesionalSellForm" path="/editRemoveService"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveSellAction">
    <forward name="continue" path="/editProfesionalServices.jsp" redirect="true"/>
   </action>
   <action parameter="Profesional" path="/uploadServiceImage" type="com.tdil.tuafesta.struts.action.UploadServiceImageAction"/>
-  <action name="EditProfesionalSellForm" parameter="Profesional" path="/viewServiceImage"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewServiceImageAction">
-  </action>
-  
+  <action name="EditProfesionalSellForm" parameter="Profesional"
+   path="/viewServiceImage" scope="session" type="com.tdil.tuafesta.struts.action.ViewServiceImageAction"/>
   <action parameter="Profesional" path="/uploadProfesionalLogo" type="com.tdil.tuafesta.struts.action.UploadProfesionalLogoAction"/>
-  <action name="EditProfesionalBusinessDataForm" parameter="Profesional" path="/viewProfesionalLogo"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalLogoAction">
-  </action>
- 
+  <action name="EditProfesionalBusinessDataForm" parameter="Profesional"
+   path="/viewProfesionalLogo" scope="session" type="com.tdil.tuafesta.struts.action.ViewProfesionalLogoAction"/>
   <action name="PromotionForm" parameter="Admin"
    path="/goToPromotionAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-  <action name="PromotionForm" parameter="Admin"
-   path="/savePromotion" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="PromotionForm" parameter="Admin" path="/savePromotion"
+   scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boPromotionAdministration.jsp"/>
   </action>
-  <action name="PromotionForm" parameter="Admin"
-   path="/editPromotion" scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="PromotionForm" parameter="Admin" path="/editPromotion"
+   scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
   <action name="PromotionForm" parameter="Admin"
@@ -750,35 +682,33 @@
    <forward name="continue" path="/boPromotionAdministration.jsp" redirect="true"/>
   </action>
   <action parameter="Admin" path="/uploadPromotionImage" type="com.tdil.tuafesta.struts.action.UploadPromotionImageAction"/>
-  <action name="PromotionForm" parameter="Admin" path="/viewPromotionImage"
-   scope="session" type="com.tdil.tuafesta.struts.action.ViewPromotionImageAction">
-  </action>
-  <action name="PromotionForm" parameter="Admin" path="/movePromotionImageUp"
-   scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionUpAction">
+  <action name="PromotionForm" parameter="Admin"
+   path="/viewPromotionImage" scope="session" type="com.tdil.tuafesta.struts.action.ViewPromotionImageAction"/>
+  <action name="PromotionForm" parameter="Admin"
+   path="/movePromotionImageUp" scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionUpAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-   <action name="PromotionForm" parameter="Admin" path="/movePromotionImageDown"
-   scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionDownAction">
+  <action name="PromotionForm" parameter="Admin"
+   path="/movePromotionImageDown" scope="session" type="com.tdil.tuafesta.struts.action.MoveImageInPromotionDownAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-  <action name="PromotionForm" parameter="Admin" path="/deletePromotionImage"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeletePromotionImageAction">
+  <action name="PromotionForm" parameter="Admin"
+   path="/deletePromotionImage" scope="session" type="com.tdil.tuafesta.struts.action.DeletePromotionImageAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-  <action name="PromotionForm" parameter="Admin" path="/addSellToPromotion"
-   scope="session" type="com.tdil.tuafesta.struts.action.AddSellToPromotionAction">
+  <action name="PromotionForm" parameter="Admin"
+   path="/addSellToPromotion" scope="session" type="com.tdil.tuafesta.struts.action.AddSellToPromotionAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-  <action name="PromotionForm" parameter="Admin" path="/removeSellFromPromotion"
-   scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellFromPromotionAction">
+  <action name="PromotionForm" parameter="Admin"
+   path="/removeSellFromPromotion" scope="session" type="com.tdil.tuafesta.struts.action.DeleteSellFromPromotionAction">
    <forward name="continue" path="/boPromotionAdministration.jsp"/>
   </action>
-  
-   <action name="AdvertisementForm" parameter="Admin"
+  <action name="AdvertisementForm" parameter="Admin"
    path="/goToAdAdministration" scope="session" type="com.tdil.struts.actions.GoToABMAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
-   <action name="AdvertisementForm" parameter="Admin"
+  <action name="AdvertisementForm" parameter="Admin"
    path="/saveAdvertisement" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boAdvertisementAdministration.jsp"/>
@@ -799,8 +729,7 @@
    scope="session" type="com.tdil.struts.actions.RefreshAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
-  <action name="AdvertisementForm" path="/searchAds"
-   scope="session" type="com.tdil.tuafesta.struts.action.SearchAds">
+  <action name="AdvertisementForm" path="/searchAds" scope="session" type="com.tdil.tuafesta.struts.action.SearchAds">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
   <action name="AdvertisementForm" parameter="Admin"
@@ -808,29 +737,27 @@
    <forward name="continue" path="/boAdvertisementAdministration.jsp" redirect="true"/>
    <forward name="failure" path="/boAdvertisementAdministration.jsp"/>
   </action>
-  <action name="AdvertisementForm" parameter="Admin"
-   path="/editAd" scope="session" type="com.tdil.struts.actions.EditAction">
+  <action name="AdvertisementForm" parameter="Admin" path="/editAd"
+   scope="session" type="com.tdil.struts.actions.EditAction">
    <forward name="continue" path="/boAdvertisementAdministration.jsp"/>
   </action>
-  
-  
-  <action name="OrganizeWizardForm" path="/goToSearchWizard" scope="session" type="com.tdil.tuafesta.struts.action.GoToSearchWizardAction">
+  <action name="OrganizeWizardForm" path="/goToSearchWizard"
+   scope="session" type="com.tdil.tuafesta.struts.action.GoToSearchWizardAction">
    <forward name="continue" path="/searchWizard.jsp"/>
   </action>
   <action name="OrganizeWizardForm" path="/addToSearch" scope="session" type="com.tdil.tuafesta.struts.action.AddSearchSellBeanAction">
    <forward name="continue" path="/searchWizard.jsp"/>
   </action>
-  <action name="OrganizeWizardForm" path="/removeFromSearch" scope="session" type="com.tdil.tuafesta.struts.action.RemoveSearchSellBeanAction">
+  <action name="OrganizeWizardForm" path="/removeFromSearch"
+   scope="session" type="com.tdil.tuafesta.struts.action.RemoveSearchSellBeanAction">
    <forward name="continue" path="/searchWizard.jsp"/>
   </action>
-  
-  <action name="SellSearchResultForm" path="/searchWizard" scope="session" type="com.tdil.tuafesta.struts.action.SearchWizardAction">
+  <action name="SellSearchResultForm" path="/searchWizard"
+   scope="session" type="com.tdil.tuafesta.struts.action.SearchWizardAction">
    <forward name="continue" path="/sellSearchResult.jsp" redirect="true"/>
-  </action>  
-  
-  
+  </action>
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
-	<forward name="notLogged" path="/index.jsp"/>
+   <forward name="notLogged" path="/index.jsp"/>
   </action>
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

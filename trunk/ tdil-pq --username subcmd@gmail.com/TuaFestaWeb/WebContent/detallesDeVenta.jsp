@@ -12,6 +12,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %>
 <%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %>
 <%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Tua Festa | Detalles de venta</title>
@@ -75,6 +76,15 @@
 					</div>
 				<% } else { %>
 					Área de Cobertura
+					<%
+					java.util.List sourceServiceAreas = sellDetailsForm.getServiceAreas();
+					com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);
+					request.setAttribute( "serviceAreas",  paginatedServiceAreas);
+					%>
+						<display:table name="serviceAreas" sort="external" pagesize="10" id="serviceAreas" requestURI="./editProfesionalServiceArea.jsp">
+							<display:column title="Zona" sortable="true" sortName="Zona" headerClass="sortable width800" property="serviceAreaText"></display:column>
+						</display:table>
+					</div>
 				<% } %>
 				<div class="myRow" align="center"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./viewProfesionalProfile.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Ver perfil profesional</a><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='SellDetailsForm' property='sellValueObject.idProfesional'/>">Contactar profesional</a></div>
 			</div>

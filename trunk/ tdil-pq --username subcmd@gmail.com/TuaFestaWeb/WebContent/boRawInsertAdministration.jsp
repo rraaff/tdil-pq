@@ -21,10 +21,10 @@
 	<html:form method="POST" action="/saveRawInsert">
 		<div class="renglon width860" style="margin-bottom:20px;">
 			<span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span><br>
-			<div class="label width50">Tipo</div>
-			<div class="label width200"><bean:write name="RawInsertForm" property="inserttype" /></div>
+			<div class="label width50">Nombre:</div>
+			<div class="label width200"><html:text name="RawInsertForm" property="inserttype" /></div>
 			<div class="label width100">Descripci&oacute;n</div>
-			<div class="label width200"><bean:write name="RawInsertForm" property="description" /></div>
+			<div class="label width200"><html:text name="RawInsertForm" property="description" /></div>
 		</div>
 		<div class="renglon width860" style="margin-bottom:20px;">
 			<div class="label width80">Valor</div>
@@ -33,7 +33,7 @@
 		</div>
 		<div class="renglon width860" style="margin-bottom:20px;" align="center">
 			<logic:equal name="RawInsertForm" property="objectId" value="0">
-				<html:submit property="operation" disabled="true">
+				<html:submit property="operation">
 					<bean:message key="save" />
 				</html:submit>
 			</logic:equal>
@@ -47,10 +47,15 @@
 			</html:submit>
 		</div>
 	</html:form>
+	El codgo jsp para insertar es: <br>
+	<code>
+		&lt;%=com.tdil.tuafesta.utils.Banner.banner([Insert id])%&gt;
+	</code>
 	<div class="renglon width860">
 		<table>
 			<tr>
-				<td class="headerTablas">Tipo</td>
+				<td class="headerTablas">Insert id</td>
+				<td class="headerTablas">Nombre</td>
 				<td class="headerTablas">Descripcion</td>
 				<td class="headerTablas" width="60">Acciones</td>
 			</tr>
@@ -60,10 +65,24 @@
 					<td
 						<%=((com.tdil.ibatis.PersistentObject) iterRawInsert).getDeleted() == 1 ? "class=\"notActive\""
 							: ""%>
+						align="left"><bean:write name="iterRawInsert" property="id" />
+					</td>
+					<td
+						<%=((com.tdil.ibatis.PersistentObject) iterRawInsert).getDeleted() == 1 ? "class=\"notActive\""
+							: ""%>
 						align="left"><bean:write name="iterRawInsert" property="inserttype" />
 					</td>
 					<td><bean:write name="iterRawInsert" property="description" /></td>
-					<td align="center"><html:link action="/editRawInsert" paramName="iterRawInsert" paramProperty="id" paramId="id" title="editar"><img src="boImages/editar.png" alt="Editar"></html:link>
+					<td align="center">
+						<html:link action="/editRawInsert" paramName="iterRawInsert" paramProperty="id" paramId="id" title="editar"><img src="boImages/editar.png" alt="Editar"></html:link>
+						<html:link action="/toggleDeletedRawInsert" paramName="iterRawInsert"
+								paramProperty="id" paramId="id">
+								<% if (((com.tdil.ibatis.PersistentObject) iterRawInsert).getDeleted() == 1) { %>
+									<img src="boImages/activar.png" alt="Activar">
+								<% } else { %>
+									<img src="boImages/desactivar.png" alt="Desactivar">
+								<% } %>
+							</html:link>
 					</td>
 				</tr>
 			</logic:iterate>
