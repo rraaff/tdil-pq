@@ -100,7 +100,11 @@
 				<div style="" id="slider-stage">
 					<div id="slider-list">
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraByCategory()) { %>
-						<a class="theme" href="#">
+						<% if (adByCat.isProfesionalAd()) { %>
+							<a class="theme" href="./viewProfesionalProfile.do?id=<%=adByCat.getIdProfesional()%>">
+						<% } else { %>
+							<a class="theme" href="./viewSellDetails.do?type=0&id=<%=adByCat.getIdSell() %>">
+						<% } %>
 							<% if (adByCat.hasImage()) { %>
 								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
 							<% } else { %>
@@ -126,7 +130,11 @@
 				<div style="" id="slider-stage1">
 					<div id="slider-list">
 						<% for (AdvertisementValueObject adByCat : adsForHome.getExtraWithoutFilter()) { %>
-						<a class="theme" href="#">
+							<% if (adByCat.isProfesionalAd()) { %>
+								<a class="theme" href="./viewProfesionalProfile.do?id=<%=adByCat.getIdProfesional()%>">
+							<% } else { %>
+								<a class="theme" href="./viewSellDetails.do?type=0&id=<%=adByCat.getIdSell() %>">
+							<% } %>
 							<% if (adByCat.hasImage()) { %>
 								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
 							<% } else { %>

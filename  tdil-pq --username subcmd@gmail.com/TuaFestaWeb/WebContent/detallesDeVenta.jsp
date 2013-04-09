@@ -45,12 +45,12 @@
 <div id="preContainer">
 	<div id="content">
 		<!-- aca arranca el formulario -->
+		<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
 		<div id="titleArea">
 			<h1>Detalles de la venta</h1>
-			<h2>Estos son los detalles del producto o servicio seleccionado</h2>
+			<h2>Estos son los detalles del <%= (sellDetailsForm.getSellValueObject().isProduct() ? "Producto" : "Servicio")%> seleccionado</h2>
 		</div>
 		<div id="formContent">
-			<% SellDetailsForm sellDetailsForm = (SellDetailsForm)session.getAttribute("SellDetailsForm");  %>
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="SellDetailsForm" property="sellValueObject.name"/></h2>
 				<h3><bean:write name="SellDetailsForm" property="sellValueObject.categoryText"/></h3>
