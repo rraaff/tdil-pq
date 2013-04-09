@@ -40,10 +40,8 @@ $(document).ready(
 		<div id="formulariosBase">
 			<html:form method="POST" action="/saveHighlightedCategory">
 				<h1>Administraci&oacute;n de categor&iacute;as destacadas</h1>
-				<div class="renglon width950">
-					<div class="label width950"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
-				</div>
-				<div class="renglon width950">
+				<div class="renglon"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
+				<div class="renglon">
 					<div class="label width100">Inicio</div>
 					<div class="label width250"><html:text name="HighlightedCategoryForm" property="fromDate" styleClass="width250"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedCategoryForm.fromDate.err")%></div>
@@ -51,7 +49,7 @@ $(document).ready(
 					<div class="label width250"><html:text name="HighlightedCategoryForm" property="toDate" styleClass="width250"/></div>
 					<div class="label width50">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "HighlightedCategoryForm.toDate.err")%></div>
 				</div>
-				<div class="renglon width950">
+				<div class="renglon">
 					<div class="label width100">Categor&iacute;a</div>
 					<div class="label width800">
 						<%
@@ -87,7 +85,7 @@ $(document).ready(
 					</html:submit>
 				</div>
 				<h1>Listado de Categorias</h1>
-				<div class="renglon width950" style="margin-bottom:50px;">
+				<div class="renglon">
 					<table width="100%">
 						<tr>
 							<td class="headerTablas" width="140">Nombre</td>

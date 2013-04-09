@@ -22,11 +22,9 @@
 <div id="boWrapper">
 	<div id="boCentral">
 		<h1>Administraci&oacute;n de categor&iacute;as de servcios</h1>
-		<div id="formulariosBase" class="height650">
+		<div id="formulariosBase">
 			<html:form method="POST" action="/saveServiceCategory">
-				<div class="renglon">
-					<div class="label width100per" align="center"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
-				</div>
+				<div class="renglon"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 				<div class="renglon">
 					<div class="label width130">Nombre de categor&iacute;a</div>
 					<div class="label width780"><html:text name="CategoryForm" property="name" styleClass="normalField width740"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, CategoryForm.name_key + ".err")%></div>
@@ -76,7 +74,7 @@
 					</html:submit>
 				</div>
 				<h2>Listado de Categorias de Servcios</h2>
-				<div class="renglon height300" style="overflow:auto; padding-top:15px; padding-bottom:30px;">
+				<div class="renglon" style="overflow:auto; padding-top:15px;">
 					<table width="100%">
 						<tr>
 							<td class="headerTablas" width="700">Nombre</td>

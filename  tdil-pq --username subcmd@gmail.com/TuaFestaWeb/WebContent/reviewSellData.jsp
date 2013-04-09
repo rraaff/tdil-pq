@@ -53,38 +53,33 @@ th.sorted {
 <body>
 <%@ include file="includes/boMenu.jsp" %>
 <div id="boWrapper">
-	<div id="boCentral" class="height450">
+	<div id="boCentral">
 		<h1>Revisar datos de las ventas del profesional</h1>
 		<% ReviewProfesionalForm reviewProfesionalForm = (ReviewProfesionalForm)session.getAttribute("ReviewProfesionalForm");
 			Profesional profesional = reviewProfesionalForm.getProfesional(); 
 			ProfesionalChange change = reviewProfesionalForm.getProfesionalChange(); %>
-		<div class="width100per" style="float:left;">
+		<div id="formulariosBase">
 			<h2><legend>Productos / Servicios</legend></h2>
-			<div class="myRow">
+			<div class="renglon">
 				<%
 				java.util.List source = reviewProfesionalForm.getSells();
 				com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
 				request.setAttribute( "sells",  paginated);
 				%>
+			</div>
+			<div class="renglon">
 				<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./reviewSellData.jsp">
 					<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
 					<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
 					<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
-					<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
-						<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
-					</display:column>
-					<display:column title="Estado" sortable="true" sortName="Estado" headerClass="sortable width50">
-						<a href="./reviewSell.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">
-						<%= ((SellValueObject)pageContext.getAttribute("sells")).getStatusText()%>
-						</a>
-					</display:column>
+					<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width100"><%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%></display:column>
+					<display:column title="Estado" sortable="true" sortName="Estado" headerClass="sortable width50"><a href="./reviewSell.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>"> <%= ((SellValueObject)pageContext.getAttribute("sells")).getStatusText()%></a></display:column>
 				</display:table>
 				<%=DisplayTagParamHelper.getFields(request)%>
 			</div>
+			<div class="renglon" align="center"><a href="javascript:history.back();">Volver</a></div>
 		</div>
 	</div>
-	
-	
 </div>
 </body>
 </html>

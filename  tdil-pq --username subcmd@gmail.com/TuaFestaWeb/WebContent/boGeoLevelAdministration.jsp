@@ -21,12 +21,10 @@
 <div id="boWrapper">
 	<div id="boCentral">
 		<h1>Administraci&oacute;n de geo levels</h1>
-		<div id="formulariosBase" class="height1200">
+		<div id="formulariosBase">
 			<html:form method="POST" action="/saveGeoLevel">
 				<% GeoLevelForm geoLevelForm = (GeoLevelForm)session.getAttribute("GeoLevelForm"); %>
-				<div class="renglon">
-					<div class="label width100per"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
-				</div>
+				<div class="renglon"><span class="errorText"><%=TuaFestaErrorFormatter.getErrorFrom(request, "general")%></span></div>
 				<!-- Si es creacion  -->
 				<logic:equal name="GeoLevelForm" property="objectId" value="0">
 					<h2>Crear Geo Level</h2>
@@ -174,7 +172,7 @@
 					<div class="label width200" style="margin-top:17px;"><html:text name="GeoLevelForm" property="nombreSearch" styleClass="normalField width200"/></div>
 					<div class="label width350 height50"><html:button property="operation" onclick="this.form.action='./searchGeoLevel.do';this.form.submit();">Buscar</html:button></div>
 				</div>
-				<div class="renglon" style="margin-bottom:50px;">
+				<div class="renglon">
 					<table width="100%">
 						<tr>
 							<td class="headerTablas" width="140">Nombre</td>
