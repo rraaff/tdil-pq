@@ -64,7 +64,7 @@
 		<div id="promos">
 			<div class="slider-wrapper theme-default" style="width:628px; height:400px; margin-left:10px; margin-top:17px; float:left;">
 			    <div class="ribbon"></div>
-			    <div id="slider" class="nivoSlider">
+			    <div id="slider" class="nivoSlider" style="">
 				<% /*Generacion de imagenes*/
 				List<PromotionValueObject> promos = PromotionUtils.getActivePromotions(); 
 				for (PromotionValueObject pvo : promos) { %>
@@ -106,7 +106,8 @@
 							<a class="theme" href="./viewSellDetails.do?type=0&id=<%=adByCat.getIdSell() %>">
 						<% } %>
 							<% if (adByCat.hasImage()) { %>
-								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
+								<div style="width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden; 
+								background-image:url(./downloadThumb.st?width=188&height=108&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>); background-position:center center; background-repeat:no-repeat;"><img src="images/null.gif" width="188" height="108" /></div>
 							<% } else { %>
 								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
@@ -136,7 +137,8 @@
 								<a class="theme" href="./viewSellDetails.do?type=0&id=<%=adByCat.getIdSell() %>">
 							<% } %>
 							<% if (adByCat.hasImage()) { %>
-								<div style="background:#fff; width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden;" align="center"><img src="./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>" alt=""/></div>
+								<div style="width:186px; height:106px; float:left; border:solid 1px #CCCCCC; overflow:hidden; 
+								background-image:url(./downloadThumb.st?width=186&height=106&id=<%=adByCat.getIdBlobData()%>&type=PUBLIC&ext=<%=adByCat.getExtBlobData()%>); background-position:center center; background-repeat:no-repeat;"><img src="images/null.gif" width="188" height="108" /></div>
 							<% } else { %>
 								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>

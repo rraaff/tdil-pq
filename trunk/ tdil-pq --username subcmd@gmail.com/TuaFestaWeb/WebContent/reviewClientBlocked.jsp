@@ -48,26 +48,17 @@ th.sorted {
 <body>
 <%@ include file="includes/boMenu.jsp" %>
 <div id="boWrapper">
-	<div id="boCentral" class="height450">
+	<div id="boCentral">
 		<h1>Client bloqueado</h1>
-		<div id="formulariosBase" class="height350">
-			<div class="renglon width100per">
-				<div class="label width100per"><span class="comment">Desde esta sección podrá aprobar un cliente blockeado.</span></div>
-			</div>
+		<div id="formulariosBase">
+			<div class="renglon"><span class="comment">Desde esta sección podrá aprobar un cliente blockeado.</span></div>
 			<html:form method="POST" action="/manualValidateClientEmail">
-				<div class="renglon width100per height100">
-					<div class="label width100per height100">Nombre: <strong><bean:write name="ReviewClientForm" property="client.firstname"/></strong><br>
-						Apellido: <strong><bean:write name="ReviewClientForm" property="client.lastname"/></strong><br>
-						E-mail: <strong><bean:write name="ReviewClientForm" property="client.email"/></strong>
-					</div>
-				</div>
-				<div class="renglon width100per">
-					<div class="label width350 centering" style="float:none;">
-						<a href="clientAdministration.jsp" style="margin-right:50px;">Volver</a>
-						<html:submit property="operation">
-							<bean:message key="Approve" />
-						</html:submit>
-					</div>
+				<div class="renglon">Nombre: <strong><bean:write name="ReviewClientForm" property="client.firstname"/></strong><br/>Apellido: <strong><bean:write name="ReviewClientForm" property="client.lastname"/></strong><br/>E-mail: <strong><bean:write name="ReviewClientForm" property="client.email"/></strong></div>
+				<div class="renglon" align="center">
+					<a href="clientAdministration.jsp" style="margin-right:50px;">Volver</a>
+					<html:submit property="operation">
+						<bean:message key="Approve" />
+					</html:submit>
 				</div>
 			</html:form>
 		</div>

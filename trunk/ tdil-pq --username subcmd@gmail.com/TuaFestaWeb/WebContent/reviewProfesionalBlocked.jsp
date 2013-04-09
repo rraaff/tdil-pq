@@ -48,27 +48,17 @@ th.sorted {
 <body>
 <%@ include file="includes/boMenu.jsp" %>
 <div id="boWrapper">
-	<div id="boCentral" class="height450">
+	<div id="boCentral">
 		<h1>Profesional bloqueado</h1>
-		<div id="formulariosBase" class="height350">
-			<div class="renglon width100per">
-				<div class="label width100per"><span class="comment">Desde esta sección podrá aprobar un profesional blockeado.</span></div>
-			</div>
+		<div id="formulariosBase">
+			<div class="renglon"><span class="comment">Desde esta sección podrá aprobar un profesional blockeado.</span></div>
 			<html:form method="POST" action="/verifyProfesional">
-				<div class="renglon width100per height100">
-					<div class="label width100per height100">Nombre: <strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong><br>
-						Apellido: <strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong><br>
-						Raz&oacute;n Social: <strong><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></strong><br>
-						E-mail: <strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong>
-					</div>
-				</div>
-				<div class="renglon width100per">
-					<div class="label width350 centering" style="float:none;">
-						<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>
-						<html:submit property="operation">
-							<bean:message key="Approve" />
-						</html:submit>
-					</div>
+				<div class="renglon">Nombre: <strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong><br/>Apellido: <strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong><br/>Raz&oacute;n Social: <strong><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></strong><br/>E-mail: <strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong></div>
+				<div class="renglon" align="center">
+					<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>
+					<html:submit property="operation">
+						<bean:message key="Approve" />
+					</html:submit>
 				</div>
 			</html:form>
 		</div>

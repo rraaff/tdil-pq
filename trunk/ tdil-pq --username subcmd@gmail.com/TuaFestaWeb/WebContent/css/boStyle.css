@@ -220,7 +220,7 @@ h1 {
 h2 {
 	font-size: 16px;
 	color: #005a9e;
-	padding:0;
+	padding:10px 0;
 	margin:0;
 }
 h3 {
@@ -229,19 +229,21 @@ h3 {
 	padding:0 0 10px 0;
 	margin:0;
 }
-div, p, table, tr, td, a, h1, h2, h3, h4, h5 { /*border:dotted 1px #00FF33;*/ }
+div, p, table, tr, td, a, h1, h2, h3, h4, h5 { /*border:dotted 1px #00FF33;/**/ }
 /* / BO CENTRAL //////////////////////////////////////////////////// */
 #boWrapper {
 	width:1000px;
 	margin:0 auto;
 }
 #boCentral {
+	border-bottom:1px solid #999999;
 	background-image: url(../images/skin_basic/backgrounds/borders_central.png);
 	background-repeat: repeat-y;
 	background-position: center top;
 	width: 960px;
 	padding:0 20px;
 	float: left;
+	display:inline-block;
 }
 #formSection, #loginBase, #formulariosBase {
 	background-image: url(../images/skin_basic/backgrounds/formBackground.gif);
@@ -251,7 +253,8 @@ div, p, table, tr, td, a, h1, h2, h3, h4, h5 { /*border:dotted 1px #00FF33;*/ }
 	color:#3f495b;
 	font-size:13px;
 	width:940px;
-	margin: 0 auto;
+	height:auto;
+	margin: 0 auto 20px auto;
 	padding:10px;
 
 	-webkit-border-radius: 5px;
@@ -262,6 +265,14 @@ div, p, table, tr, td, a, h1, h2, h3, h4, h5 { /*border:dotted 1px #00FF33;*/ }
 	-webkit-box-shadow: 0 0 3px 3px rgba(80, 80, 80, 0.1);
 	-moz-box-shadow: 0 0 3px 3px rgba(80, 80, 80, 0.1);
 	-o-box-shadow: 0 0 3px 3px rgba(80, 80, 80, 0.1);
+	
+	display:inline-block;
+}
+#loginBase {
+	width:250px;
+	height:150px;
+	margin:140px auto;
+	display:block;
 }
 /*  / LOS DE MARCOS /////////////////////////////////////////////// */
 /* the forward and backward buttons */

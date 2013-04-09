@@ -100,7 +100,7 @@ th.sorted {
 				<html:submit property="operation">
 					<bean:message key="Approve" />
 				</html:submit>
-				<input type="button" value="Desaprobar" onclick="disapprove();">
+				<input type="button" value="Desaprobar" onClick="disapprove();">
 				<% } %>
 				<html:submit property="operation">
 					<bean:message key="Block" />
