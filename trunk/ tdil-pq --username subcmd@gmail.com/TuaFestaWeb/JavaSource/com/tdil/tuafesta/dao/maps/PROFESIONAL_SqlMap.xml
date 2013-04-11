@@ -773,8 +773,10 @@
      select 
     	<include refid="PROFESIONAL.Base_Column_List" />
     from PROFESIONAL prof
-    where prof.status = #status:INTEGER#
-    and prof.deleted = 0
+    where  prof.deleted = 0
+    <isNotNull prepend="and" property="status">
+    	prof.status = #status:INTEGER#
+    </isNotNull>
     <isNotNull prepend="and" property="name">
      ( 
     	prof.businessName like #name:VARCHAR# OR
