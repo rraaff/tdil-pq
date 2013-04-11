@@ -45,6 +45,7 @@ request.setAttribute( "test",  paginated);
 					<div class="myLabel width200">
 						<html:select name="ProfesionalAdministrationForm" property="status" styleClass="normalField width200">
 						<% int selected = ((ProfesionalAdministrationForm)session.getAttribute("ProfesionalAdministrationForm")).getStatus(); %>
+							<option <%=	selected == -1 ? "selected" : ""%> value="-1">Todos</option>
 							<option <%=	selected == 0 ? "selected" : ""%> value="0">Validacion de email pendiente</option>
 							<option <%=	selected == 1 ? "selected" : ""%> value="1">Verificacion pendiente</option>
 							<option <%=	selected == 2 ? "selected" : ""%> value="2">Aprobado</option>
