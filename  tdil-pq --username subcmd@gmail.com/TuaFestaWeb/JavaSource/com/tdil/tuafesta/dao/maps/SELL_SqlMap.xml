@@ -330,6 +330,7 @@
     where sell.type = 1
     and sell.id_profesional = prof.id
     and prof.id_geolevel = g4.id
+    and prof.id_geolevel = #geo4id:INTEGER#
     and g4.geo3_id = g3.id
     and g3.geo2_id = g2.id
     and sell.approved = 1
@@ -357,25 +358,6 @@ union all
     and prof.id = sa.id_profesional
 	and sa.level = 4 
 	and sa.id_geolevel = #geo4id:INTEGER#
-union all
-	select 
-    	<include refid="SELL.Base_Column_List" />,
-    	prof.businessname as profesionalbusinessname,
-    	g2.nombre as geo2name,
-    	g3.nombre as geo3name,
-    	g4.nombre as geo4name,
-    	IF(g4.id=#geo4id:INTEGER#,"3","5") ordercol
-    from SELL sell, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
-    where sell.type = 2
-    and sell.id_profesional = prof.id
-    and prof.id_geolevel = g4.id
-    and g4.geo3_id = g3.id
-    and g3.geo2_id = g2.id
-    and sell.approved = 1
-    and sell.deleted = 0
-    and prof.status = 2
-    and prof.deleted = 0
-    and not exists (select sa.* from SERVICE_AREA sa where sa.id_profesional = prof.id)
     order by ordercol
   </select>
  

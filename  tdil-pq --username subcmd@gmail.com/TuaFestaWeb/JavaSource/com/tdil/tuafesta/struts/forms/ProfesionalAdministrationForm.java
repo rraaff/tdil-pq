@@ -32,7 +32,7 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 
 	private int objectId;
 	
-	private int status;
+	private int status = -1;
 	private String name;
 	private boolean dataModified;
 	private boolean tooMany;
@@ -59,7 +59,9 @@ public class ProfesionalAdministrationForm extends ActionForm implements SearchF
 	public void search() {
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("status", this.getStatus());
+			if (this.getStatus() != -1) {
+				params.put("status", this.getStatus());
+			}
 			if (!StringUtils.isEmpty(this.getName())) {
 				params.put("name", "%"+this.getName()+"%");
 			}
