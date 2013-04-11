@@ -376,8 +376,10 @@
      select 
     	<include refid="CLIENT.Base_Column_List" />
     from CLIENT cli
-    where cli.status = #status:INTEGER#
-    and cli.deleted = 0
+    where cli.deleted = 0
+    <isNotNull prepend="and" property="status">
+    	cli.status = #status:INTEGER#
+    </isNotNull> 
     <isNotNull prepend="and" property="name">
      ( 
     	cli.firstname like #name:VARCHAR# OR
