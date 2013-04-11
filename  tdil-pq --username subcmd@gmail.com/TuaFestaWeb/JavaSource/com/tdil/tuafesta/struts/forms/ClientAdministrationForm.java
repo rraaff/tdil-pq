@@ -29,7 +29,7 @@ public class ClientAdministrationForm extends ActionForm implements SearchForm {
 
 	private int objectId;
 	
-	private int status;
+	private int status = -1;
 	private String name;
 	private boolean tooMany;
 	
@@ -48,7 +48,9 @@ public class ClientAdministrationForm extends ActionForm implements SearchForm {
 	public void search() {
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("status", this.getStatus());
+			if (this.getStatus() != -1) {
+				params.put("status", this.getStatus());
+			}
 			if (!StringUtils.isEmpty(this.getName())) {
 				params.put("name", "%"+this.getName()+"%");
 			}
