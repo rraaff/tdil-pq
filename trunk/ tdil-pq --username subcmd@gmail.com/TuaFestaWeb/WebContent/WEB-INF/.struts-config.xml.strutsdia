@@ -1693,4 +1693,21 @@
    PATH="/boRawInsertAdministration.jsp" TARGET="page15"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page63" PATH="/listadoRubros.jsp"
+  SHAPE="240,13666,0,0" SUBTYPE="jsp" TITLE="listadoRubros.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#navigateCategory" NAME="action176"
+  PATH="/navigateCategory" SHAPE="32,14609,0,0"
+  TITLE="CategoryNavigationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/listadoRubros.jsp" TARGET="page63" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#navigateCategoryAll" NAME="action175"
+  PATH="/navigateCategoryAll" SHAPE="32,14609,0,0"
+  TITLE="CategoryNavigationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/listadoRubros.jsp" TARGET="page63" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

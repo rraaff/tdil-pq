@@ -54,6 +54,7 @@
   <form-bean id="EditProfesionalPasswordDataForm"
    name="EditProfesionalPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPasswordDataForm"/>
   <form-bean id="OrganizeWizardForm" name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
+  <form-bean id="CategoryNavigationForm" name="CategoryNavigationForm" type="com.tdil.tuafesta.struts.forms.CategoryNavigationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -759,6 +760,17 @@
   <action path="/websiteLogout" type="com.tdil.tuafesta.struts.action.LogoutAction">
    <forward name="notLogged" path="/index.jsp"/>
   </action>
+  
+  <action name="CategoryNavigationForm" path="/navigateCategoryAll"
+   scope="session" type="com.tdil.tuafesta.struts.action.StartCategoryNavigationAction">
+   <forward name="continue" path="/listadoRubros.jsp" redirect="true"/>
+  </action>
+  
+  <action name="CategoryNavigationForm" path="/navigateCategory"
+   scope="session" type="com.tdil.tuafesta.struts.action.CategoryNavigationAction">
+   <forward name="continue" path="/listadoRubros.jsp" redirect="true"/>
+  </action>
+  
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
  <message-resources parameter="com.tdil.tuafesta.struts.resources.ApplicationResources"/>
