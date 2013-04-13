@@ -49,7 +49,6 @@ public class SearchProductAjaxAction extends AjaxAction {
 					rowResult.put("name", TreeCategoryUtils.getCategoryPath(category.getId()));
 					jsonResult.add(rowResult);
 				}
-				System.out.println(jsonResult);
 				return jsonResult;
 			}
 		});
