@@ -51,19 +51,10 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 			List<SellSearchCategories> services = new ArrayList<OrganizeWizardForm.SellSearchCategories>();
 			fillSearchCategories(product, services);
 			
-			for (SellSearchCategories prodCat : product) {
-				// TODO if por el ge level
-				searchResult.addAll(DAOManager.getSellDAO().selectProductSellsByCategoriesAndPrice(prodCat.getCategoriesIds(), prodCat.getMaxPrice()));
-			}
-			
-			if (StringUtils.isEmpty(this.getGeoLevelId())) {
-				for (SellSearchCategories servCat : services) {
-					searchResult.addAll(DAOManager.getSellDAO().selectServiceSellsByCategoriesAndPrice(servCat.getCategoriesIds(), servCat.getMaxPrice()));
-				}
-			} else {
+			Map<String, Object> geosearch = new HashMap<String, Object>();
+			if (!StringUtils.isEmpty(this.getGeoLevelId())) {
 				int geoLevelId = Integer.parseInt(this.getGeoLevelId());
 				int levelInt = Integer.parseInt(this.getLevel());
-				Map<String, Object> geosearch = new HashMap<String, Object>();
 				if (levelInt == 4) {
 					Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(geoLevelId);
 					geosearch.put("level4", geo4.getId());
@@ -79,6 +70,23 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 				if (levelInt == 2) {
 					geosearch.put("level2", geoLevelId);
 				}
+			}
+			// Busqueda de productos
+			if (StringUtils.isEmpty(this.getGeoLevelId())) {
+				for (SellSearchCategories prodCat : product) {
+					searchResult.addAll(DAOManager.getSellDAO().selectProductSellsByCategoriesAndPrice(prodCat.getCategoriesIds(), prodCat.getMaxPrice()));
+				}
+			} else {
+				for (SellSearchCategories prodCat : product) {
+					searchResult.addAll(DAOManager.getSellDAO().selectProductSellsByCategoriesAndPriceAndGeoLevel(prodCat.getCategoriesIds(), prodCat.getMaxPrice(), geosearch));
+				}
+			}
+			// Busqueda de servicios
+			if (StringUtils.isEmpty(this.getGeoLevelId())) {
+				for (SellSearchCategories servCat : services) {
+					searchResult.addAll(DAOManager.getSellDAO().selectServiceSellsByCategoriesAndPrice(servCat.getCategoriesIds(), servCat.getMaxPrice()));
+				}
+			} else {
 				for (SellSearchCategories servCat : services) {
 					searchResult.addAll(DAOManager.getSellDAO().selectServicesSellsByCategoriesAndPriceAndGeoLevel(servCat.getCategoriesIds(), servCat.getMaxPrice(), geosearch));
 				}
