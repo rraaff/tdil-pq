@@ -195,7 +195,7 @@
 		<div id="rightCentral">
 			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
 			<div id="categoryNavigation">
-				<h3><a href="listadoRubros.jsp">Todos los rubros</a></h3>
+				<h3><a href="./navigateCategoryAll.do">Todos los rubros</a></h3>
 				<p>
 					<% for (Category cat : CategoryUtils.getAllCategoriesForIndex()) { %>
 						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
