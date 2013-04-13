@@ -71,7 +71,7 @@ Otra opci&oacute;n ser&aacute; hacerlo directamente con tu cuenta de Facebook, q
 				<a href="#top">Subir</a>
 				<a name="respuesta4" id="respuesta4"></a>
 				<h5>&#161;TuaFesta te ayuda a organizar tu fiesta!</h5>
-				<p>Entra a “te ayudamos a organizar tu fiesta”. Ah&iacute; se encuentra un buscador avanzado donde te ayudara a encontrar los mejores proveedores para tu fiesta, filtrando por rubro, zona en la que trabajan, y precio. Esta b&uacute;squeda te mostrara los datos de contacto de quienes cumplan con tus requisitos, podr&aacute;s seleccionar los que te interesan y exportarlos en un PDF e imprimirlos, para luego contactarte con ellos.</p>
+				<p>Entra a "te ayudamos a organizar tu fiesta". Ah&iacute; se encuentra un buscador avanzado donde te ayudara a encontrar los mejores proveedores para tu fiesta, filtrando por rubro, zona en la que trabajan, y precio. Esta b&uacute;squeda te mostrara los datos de contacto de quienes cumplan con tus requisitos, podr&aacute;s seleccionar los que te interesan y exportarlos en un PDF e imprimirlos, para luego contactarte con ellos.</p>
 				<a href="#top">Subir</a>
 				<a name="respuesta5" id="respuesta5"></a>
 				<h5>&#191;Por qu&eacute; registrarte?</h5>
