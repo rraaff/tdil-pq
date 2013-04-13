@@ -3,6 +3,7 @@ package com.tdil.tuafesta.dao;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Sell;
@@ -116,6 +117,6 @@ public interface SellDAO {
 			String maxPrice) throws SQLException;
 
 	Collection<? extends SellValueObject> selectServicesSellsByCategoriesAndPriceAndGeoLevel(
-			List<Integer> categoriesIds, String maxPrice, int geoLevelId) throws SQLException;
+			List<Integer> categoriesIds, String maxPrice, Map<String, Object> geolevels) throws SQLException;
 
 }
