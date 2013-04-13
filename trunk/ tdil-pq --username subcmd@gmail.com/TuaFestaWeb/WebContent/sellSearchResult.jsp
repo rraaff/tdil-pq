@@ -26,6 +26,13 @@
 	float:left;
 }
 </style>
+<script>
+  $(function() {
+    $("a[id^='tool-']").each(function(indice,valor) {
+		   $(valor).tooltip();
+		});
+  });
+  </script>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -56,7 +63,10 @@
 							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
 								<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
 							</display:column>
-							<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width250" property="geoLevelPath"></display:column>
+							<display:column title="Ubicacion" sortable="true" sortName="Ubicacion" headerClass="sortable width250">
+								<a id="tool-1" href="" title="<%= ((SellValueObject)pageContext.getAttribute("sells")).getGeoLevelPath()%>">
+									<%= com.tdil.utils.StringUtils.getStringOfLen(((SellValueObject)pageContext.getAttribute("sells")).getGeoLevelPath(), 60, "...")%></a>
+							</display:column>
 							<display:column title="acciones" headerClass="sortable width80"><a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a></display:column>
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>

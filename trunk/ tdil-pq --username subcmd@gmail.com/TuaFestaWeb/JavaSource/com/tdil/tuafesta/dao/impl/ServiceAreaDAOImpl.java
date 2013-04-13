@@ -4,7 +4,11 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.tuafesta.dao.ServiceAreaDAO;
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 public class ServiceAreaDAOImpl implements ServiceAreaDAO {
@@ -145,5 +149,12 @@ public class ServiceAreaDAOImpl implements ServiceAreaDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	@Override
+	public Collection<GeoLevelValueObject> selectServiceAreaFor(
+			int profesionalId) throws SQLException {
+		List<GeoLevelValueObject> list = sqlMapClient.queryForList("SERVICE_AREA.selectServiceAreasVos", profesionalId);
+		return list;
 	}
 }
