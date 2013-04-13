@@ -192,11 +192,11 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		FieldValidation.validateId(geo3Id, ProfesionalForm.geo3_key, validationError);
 		FieldValidation.validateId(geo4Id, ProfesionalForm.geo4_key, validationError);
 		
-		FieldValidation.validateText(this.getVideo1(), ProfesionalForm.video1_key, 200, false, validationError);
-		FieldValidation.validateText(this.getVideo2(), ProfesionalForm.video2_key, 200, false, validationError);
-		FieldValidation.validateText(this.getVideo3(), ProfesionalForm.video3_key, 200, false, validationError);
-		FieldValidation.validateText(this.getVideo4(), ProfesionalForm.video4_key, 200, false, validationError);
-		FieldValidation.validateText(this.getVideo5(), ProfesionalForm.video5_key, 200, false, validationError);
+		FieldValidation.validateText(this.getVideo1(), ProfesionalForm.video1_key, 600, false, validationError);
+		FieldValidation.validateText(this.getVideo2(), ProfesionalForm.video2_key, 600, false, validationError);
+		FieldValidation.validateText(this.getVideo3(), ProfesionalForm.video3_key, 600, false, validationError);
+		FieldValidation.validateText(this.getVideo4(), ProfesionalForm.video4_key, 600, false, validationError);
+		FieldValidation.validateText(this.getVideo5(), ProfesionalForm.video5_key, 600, false, validationError);
 	}
 	
 	@Override

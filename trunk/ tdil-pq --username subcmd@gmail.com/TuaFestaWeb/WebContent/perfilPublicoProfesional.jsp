@@ -178,27 +178,27 @@ $(document).ready(function(){
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
 					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
 						<div class="myRow">
-							<a href="<%=profesional.getVideo1() %>">Video 1: <%=profesional.getVideo1() %></a>
+							Video 1: <%=profesional.getVideo1() %>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
 						<div class="myRow">
-							<a href="<%=profesional.getVideo2() %>">Video 2: <%=profesional.getVideo2() %></a>
+							Video 2: <%=profesional.getVideo2() %>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
 						<div class="myRow">
-							<a href="<%=profesional.getVideo3() %>">Video 3: <%=profesional.getVideo3() %></a>
+							Video 3: <%=profesional.getVideo3() %>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
 						<div class="myRow">
-							<a href="<%=profesional.getVideo4() %>">Video 4: <%=profesional.getVideo4() %></a>
+							Video 4: <%=profesional.getVideo4() %>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
 						<div class="myRow">
-							<a href="<%=profesional.getVideo5() %>">Video 5: <%=profesional.getVideo5() %></a>
+							Video 5: <%=profesional.getVideo5() %>
 						</div>
 					<% } %>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>

@@ -124,35 +124,35 @@ th.sorted {
 					<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><a href="<%=com.tdil.utils.StringUtils.nvl(profesional.getVideo1(), "-")%>">Video 1</a>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo1(), "-")%>Video 1:
 				<% if (!StringUtils.isEmpty(change.getVideo1())) { %>
 					-> <%=change.getVideo1()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><a href="<%=com.tdil.utils.StringUtils.nvl(profesional.getVideo2(), "-")%>">Video 2</a>  
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo2(), "-")%>Video 2:
 				<% if (!StringUtils.isEmpty(change.getVideo2())) { %>
 					-> <%=change.getVideo2()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><a href="<%=com.tdil.utils.StringUtils.nvl(profesional.getVideo3(), "-")%>">Video 3</a>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo3(), "-")%>Video 3:
 				<% if (!StringUtils.isEmpty(change.getVideo3())) { %>
 					-> <%=change.getVideo3()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><a href="<%=com.tdil.utils.StringUtils.nvl(profesional.getVideo4(), "-")%>">Video 4</a>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo4(), "-")%>>Video 4:
 				<% if (!StringUtils.isEmpty(change.getVideo4())) { %>
 					-> <%=change.getVideo4()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><a href="<%=com.tdil.utils.StringUtils.nvl(profesional.getVideo5(), "-")%>">Video 5</a>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo5(), "-")%>Video 5:
 				<% if (!StringUtils.isEmpty(change.getVideo5())) { %>
 					-> <%=change.getVideo5()%>
 				<% } else { %>
