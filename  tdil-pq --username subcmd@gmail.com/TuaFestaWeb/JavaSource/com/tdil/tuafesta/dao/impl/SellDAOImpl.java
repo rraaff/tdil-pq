@@ -349,10 +349,10 @@ public class SellDAOImpl implements SellDAO {
 	
 	@Override
 	public Collection<? extends SellValueObject> selectServicesSellsByCategoriesAndPriceAndGeoLevel(
-			List<Integer> categoriesIds, String maxPrice, int geoLevelId) throws SQLException {
+			List<Integer> categoriesIds, String maxPrice, Map<String, Object> geolevels) throws SQLException {
 		Map<String, Object> params = new HashMap<String, Object>();
+		params.putAll(geolevels);
 		params.put("categories", categoriesIds);
-		params.put("geoId", geoLevelId);
 		if (maxPrice != null && maxPrice.trim().length() > 0) {
 			params.put("maxPrice", Integer.valueOf(maxPrice));
 		}

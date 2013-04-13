@@ -818,7 +818,43 @@ union all
     and sell.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
-    and prof.id in (select id_profesional from SERVICE_AREA where id_geolevel = #geoId:INTEGER#)
+    and exists (select id_profesional from 
+    				(SELECT sa.id_profesional, -1 g4id, -1 g3id, g2.id g2id
+						FROM SERVICE_AREA sa, GEO2 g2
+						where sa.level = 2
+						and sa.id_geolevel = g2.id
+						UNION
+						SELECT sa.id_profesional, -1 g4id, g3.id g3id, g3.geo2_id g2id
+						FROM SERVICE_AREA sa, GEO3 g3
+						where sa.level = 3
+						and sa.id_geolevel = g3.id
+						UNION
+						SELECT sa.id_profesional, g4.id g4id, g3.id g3id, g3.geo2_id g2id
+						FROM SERVICE_AREA sa, GEO4 g4, GEO3 g3
+						where sa.level = 4
+						and sa.id_geolevel = g4.id
+						and g4.geo3_id = g3.id) sa 
+    				where sa.id_profesional = prof.id
+    				and (
+	    				<isNotNull property="level4">
+	    					(sa.g4id = #level4:INTEGER#)
+					    	or 
+					    	(sa.g4id = -1 and sa.g3id = #level3:INTEGER#)
+	    					or 
+					    	(sa.g3id = -1 and sa.g2id = #level2:INTEGER#)
+					    </isNotNull>
+					    <isNull property="level4">
+	    					<isNotNull property="level3">
+						    	(sa.g3id = #level3:INTEGER#)
+		    					or 
+						    	(sa.g3id = -1 and sa.g2id = #level2:INTEGER#)
+					    	</isNotNull>
+					    	<isNull property="level3">
+						    	(sa.g2id = #level2:INTEGER#)
+					    	</isNull>
+					    </isNull>
+    				)
+    			)
   </select>
   
 </sqlMap>

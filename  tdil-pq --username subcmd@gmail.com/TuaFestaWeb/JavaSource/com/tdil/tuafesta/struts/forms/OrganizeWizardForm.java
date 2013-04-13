@@ -2,7 +2,9 @@ package com.tdil.tuafesta.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
@@ -11,6 +13,8 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.SearchForm;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Category;
+import com.tdil.tuafesta.model.Geo3;
+import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.struts.forms.beans.SearchSellBean;
@@ -48,6 +52,7 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 			fillSearchCategories(product, services);
 			
 			for (SellSearchCategories prodCat : product) {
+				// TODO if por el ge level
 				searchResult.addAll(DAOManager.getSellDAO().selectProductSellsByCategoriesAndPrice(prodCat.getCategoriesIds(), prodCat.getMaxPrice()));
 			}
 			
@@ -57,8 +62,25 @@ public class OrganizeWizardForm extends ActionForm implements SearchForm {
 				}
 			} else {
 				int geoLevelId = Integer.parseInt(this.getGeoLevelId());
+				int levelInt = Integer.parseInt(this.getLevel());
+				Map<String, Object> geosearch = new HashMap<String, Object>();
+				if (levelInt == 4) {
+					Geo4 geo4 = DAOManager.getGeo4DAO().selectGeo4ByPrimaryKey(geoLevelId);
+					geosearch.put("level4", geo4.getId());
+					geosearch.put("level3", geo4.getGeo3Id());
+					Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(geo4.getGeo3Id());
+					geosearch.put("level2", geo3.getGeo2Id());
+				}
+				if (levelInt == 3) {
+					Geo3 geo3 = DAOManager.getGeo3DAO().selectGeo3ByPrimaryKey(geoLevelId);
+					geosearch.put("level3", geo3.getId());
+					geosearch.put("level2", geo3.getGeo2Id());
+				}
+				if (levelInt == 2) {
+					geosearch.put("level2", geoLevelId);
+				}
 				for (SellSearchCategories servCat : services) {
-					searchResult.addAll(DAOManager.getSellDAO().selectServicesSellsByCategoriesAndPriceAndGeoLevel(servCat.getCategoriesIds(), servCat.getMaxPrice(), geoLevelId));
+					searchResult.addAll(DAOManager.getSellDAO().selectServicesSellsByCategoriesAndPriceAndGeoLevel(servCat.getCategoriesIds(), servCat.getMaxPrice(), geosearch));
 				}
 			}
 		} catch (NumberFormatException e) {
