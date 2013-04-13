@@ -2,7 +2,11 @@ package com.tdil.tuafesta.dao;
 
 import com.tdil.tuafesta.model.ServiceArea;
 import com.tdil.tuafesta.model.ServiceAreaExample;
+import com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject;
+import com.tdil.tuafesta.model.valueobjects.SellValueObject;
+
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 public interface ServiceAreaDAO {
@@ -72,4 +76,6 @@ public interface ServiceAreaDAO {
 	 * @mbggenerated  Mon Oct 29 16:37:30 ART 2012
 	 */
 	int updateServiceAreaByPrimaryKey(ServiceArea record) throws SQLException;
+	
+	Collection<GeoLevelValueObject> selectServiceAreaFor(int profesionalId) throws SQLException;
 }

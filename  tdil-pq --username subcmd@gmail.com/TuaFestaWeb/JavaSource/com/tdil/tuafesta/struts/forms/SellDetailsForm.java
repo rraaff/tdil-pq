@@ -101,7 +101,7 @@ public class SellDetailsForm extends TransactionalValidationForm {
 		serviceAreas = new ArrayList<ServiceAreaBean>();
 		if (sellValueObject.getType() == SellType.SERVICE) { // si es servicio, busco las zonas de cobertura
 			ServiceAreaExample serviceAreaExample = new ServiceAreaExample();
-			serviceAreaExample.createCriteria().andIdProfesionalEqualTo(id);
+			serviceAreaExample.createCriteria().andIdProfesionalEqualTo(sellValueObject.getIdProfesional());
 			List<ServiceArea> list = DAOManager.getServiceAreaDAO().selectServiceAreaByExample(serviceAreaExample);
 			for (ServiceArea sa : list) {
 				serviceAreas.add(new ServiceAreaBean(sa));

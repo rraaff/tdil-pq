@@ -262,4 +262,38 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <resultMap class="com.tdil.tuafesta.model.valueobjects.GeoLevelValueObject" id="GeoLevelValueObject">
+    <result column="nombre2" jdbcType="VARCHAR" property="nombre2" />
+    <result column="nombre3" jdbcType="VARCHAR" property="nombre3" />
+    <result column="nombre4" jdbcType="DATE" property="nombre4" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  
+  <select id="selectServiceAreasVos" parameterClass="java.lang.Integer" resultMap="GeoLevelValueObject">
+    SELECT geo2.nombre as nombre2, '' as nombre3, '' as nombre4, 2 as level
+	FROM SERVICE_AREA sa, GEO2 geo2
+	WHERE geo2.id = sa.id_geolevel
+	and sa.level = 2
+	and sa.deleted = 0
+	and sa.id_profesional = #id:INTEGER#
+	UNION ALL
+	SELECT geo2.nombre as nombre2, geo3.nombre as nombre3, '' as nombre4, 3 as level
+	FROM SERVICE_AREA sa, GEO2 geo2, GEO3 geo3
+	WHERE geo2.id = geo3.geo2_id
+	and geo3.id = sa.id_geolevel
+	and sa.level = 3
+	and sa.deleted = 0
+	and sa.id_profesional = #id:INTEGER#
+	UNION ALL
+	SELECT geo2.nombre as nombre2, geo3.nombre as nombre3, geo4.nombre as nombre4, 4 as level
+	FROM SERVICE_AREA sa, GEO2 geo2, GEO3 geo3, GEO4 geo4
+	WHERE geo2.id = geo3.geo2_id
+	and geo3.id = geo4.geo3_id
+	and geo4.id = sa.id_geolevel
+	and sa.level = 4
+	and sa.deleted = 0
+	and sa.id_profesional = #id:INTEGER#
+  </select>
+  
 </sqlMap>

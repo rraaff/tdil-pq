@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 public class StringUtils {
 	
-	private static final String origin = " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+	private static final String origin = " áéíóúÁÉÍÓÚñÑ";
 	private static final String dest = "_aeiouAEIOUnN";
 
 	public static String notNullValueOf(String st) {
@@ -15,6 +15,16 @@ public class StringUtils {
 		} else {
 			return st;
 		}
+	}
+	
+	public static String getStringOfLen(String st, int len, String complete) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(st)) {
+			return "";
+		}
+		if (st.length() < len) {
+			return st;
+		}
+		return st.substring(0, len - complete.length()) + complete;
 	}
 	
 	public static String nvl(String first, String second) {

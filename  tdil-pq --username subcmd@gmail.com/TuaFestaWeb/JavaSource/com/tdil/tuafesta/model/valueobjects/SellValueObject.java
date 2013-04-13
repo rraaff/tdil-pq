@@ -1,12 +1,19 @@
 package com.tdil.tuafesta.model.valueobjects;
 
 import java.sql.SQLException;
+import java.util.Collection;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.tuafesta.daomanager.DAOManager;
+import com.tdil.tuafesta.model.Geo2;
+import com.tdil.tuafesta.model.Geo3;
+import com.tdil.tuafesta.model.Geo4;
 import com.tdil.tuafesta.model.Sell;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.utils.TreeCategoryUtils;
@@ -21,6 +28,8 @@ public class SellValueObject extends Sell {
 	private String geo2name;
 	private String geo3name;
 	private String geo4name;
+	
+	private String serviceAreas;
 	
 	private String profesionalbusinessname;
 	
@@ -62,10 +71,40 @@ public class SellValueObject extends Sell {
 	}
 	
 	public String getGeoLevelPath() {
-		if (this.getGeo2name() == null || StringUtils.isEmpty(this.getGeo2name())) {
-			return "-";
+		if (this.isProduct()) {
+			if (this.getGeo2name() == null || StringUtils.isEmpty(this.getGeo2name())) {
+				return "-";
+			} else {
+				return this.getGeo2name() + " > " + this.getGeo3name() + " > " + this.getGeo4name();
+			}
 		} else {
-			return this.getGeo2name() + " > " + this.getGeo3name() + " > " + this.getGeo4name();
+			if (serviceAreas == null) {
+				serviceAreas = getServiceAreas();
+			}
+			return serviceAreas;
+		}
+	}
+
+	private String getServiceAreas() {
+		try {
+			return (String)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				public Object executeInTransaction() throws SQLException {
+					Collection<GeoLevelValueObject> resultList = DAOManager.getServiceAreaDAO().selectServiceAreaFor(SellValueObject.this.getIdProfesional());
+					StringBuilder result = new StringBuilder();
+					for (GeoLevelValueObject geoValueObject : resultList) {
+						result.append(geoValueObject.getNombre()).append(", ");
+					}
+					if (result.length() > 2) {
+						result.deleteCharAt(result.length() - 1);
+						result.deleteCharAt(result.length() - 1);
+					}
+					return result.toString();
+				}
+			});
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
 		}
 	}
 
