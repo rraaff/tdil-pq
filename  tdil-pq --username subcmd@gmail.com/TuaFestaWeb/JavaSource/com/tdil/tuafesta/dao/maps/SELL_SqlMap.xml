@@ -618,6 +618,24 @@ union all
 	    	<iterate close="" conjunction="OR" open="">
 			  sell.description like #[]#
 			</iterate>
+			)
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.firstname like #[]#
+			</iterate>
+			)
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.lastname like #[]#
+			</iterate>
+			) 
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.businessname like #[]#
+			</iterate>
 			) 
 		)
     and sell.id_profesional = prof.id
