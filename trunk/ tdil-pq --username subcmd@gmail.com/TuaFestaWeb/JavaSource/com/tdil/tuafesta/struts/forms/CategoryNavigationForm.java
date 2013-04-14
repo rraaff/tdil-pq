@@ -14,7 +14,6 @@ import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.tuafesta.dao.SellDAO;
 import com.tdil.tuafesta.daomanager.DAOManager;
 import com.tdil.tuafesta.model.Category;
-import com.tdil.tuafesta.model.CategoryExample;
 import com.tdil.tuafesta.model.SellType;
 import com.tdil.tuafesta.model.valueobjects.SellValueObject;
 import com.tdil.tuafesta.utils.CategoryUtils;

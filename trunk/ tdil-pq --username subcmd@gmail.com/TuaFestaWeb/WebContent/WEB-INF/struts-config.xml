@@ -55,6 +55,7 @@
    name="EditProfesionalPasswordDataForm" type="com.tdil.tuafesta.struts.forms.EditProfesionalPasswordDataForm"/>
   <form-bean id="OrganizeWizardForm" name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
   <form-bean id="CategoryNavigationForm" name="CategoryNavigationForm" type="com.tdil.tuafesta.struts.forms.CategoryNavigationForm"/>
+  <form-bean id="GeoLevelNavigationForm" name="GeoLevelNavigationForm" type="com.tdil.tuafesta.struts.forms.GeoLevelNavigationForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -770,6 +771,16 @@
    scope="session" type="com.tdil.tuafesta.struts.action.CategoryNavigationAction">
    <forward name="continue" path="/listadoRubros.jsp" redirect="true"/>
   </action>
+  
+  <action name="GeoLevelNavigationForm" path="/navigateGeoAll"
+   scope="session" type="com.tdil.tuafesta.struts.action.StartGeoLevelNavigationAction">
+   <forward name="continue" path="/listadoZonas.jsp" redirect="true"/>
+  </action>
+  <action name="GeoLevelNavigationForm" path="/navigateGeo"
+   scope="session" type="com.tdil.tuafesta.struts.action.GeoNavigationAction">
+   <forward name="continue" path="/listadoZonas.jsp" redirect="true"/>
+  </action>
+  
   
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
