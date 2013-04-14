@@ -361,6 +361,13 @@ public class SellDAOImpl implements SellDAO {
 	}
 	
 	@Override
+	public Collection<? extends SellValueObject> selectServicesSellsByGeoLevel(
+			Map<String, Object> geolevels) throws SQLException {
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectServicesSellsByGeoLevel", geolevels);
+		return list;
+	}
+	
+	@Override
 	public Collection<? extends SellValueObject> selectProductSellsByCategoriesAndPriceAndGeoLevel(
 			List<Integer> categoriesIds, String maxPrice,
 			Map<String, Object> geolevels) throws SQLException {
@@ -371,6 +378,13 @@ public class SellDAOImpl implements SellDAO {
 			params.put("maxPrice", Integer.valueOf(maxPrice));
 		}
 		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectProductSellsByCategoriesAndPriceAndGeoLevel", params);
+		return list;
+	}
+	
+	@Override
+	public Collection<? extends SellValueObject> selectProductSellsByGeoLevel(
+			Map<String, Object> geolevels) throws SQLException {
+		List<SellValueObject> list = sqlMapClient.queryForList("SELL.selectProductSellsByGeoLevel", geolevels);
 		return list;
 	}
 }

@@ -1710,4 +1710,20 @@
    PATH="/listadoRubros.jsp" TARGET="page63" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#navigateGeoAll" NAME="action177"
+  PATH="/navigateGeoAll" SHAPE="32,14609,0,0"
+  TITLE="GeoLevelNavigationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/listadoZonas.jsp" TARGET="page64" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page64" PATH="/listadoZonas.jsp"
+  SHAPE="240,14626,0,0" SUBTYPE="jsp" TITLE="listadoZonas.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#navigateGeo" NAME="action178" PATH="/navigateGeo"
+  SHAPE="32,14609,0,0" TITLE="GeoLevelNavigationForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/listadoZonas.jsp" TARGET="page64" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

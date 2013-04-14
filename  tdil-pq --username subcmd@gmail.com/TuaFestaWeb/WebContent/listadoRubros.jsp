@@ -55,8 +55,7 @@
 				<h1>Todos las categor&iacute;as</h1>
 			<% } else { %>
 				<a href="./navigateCategoryAll.do">Todas</a> 
-				<% int index = 0;
-					for (Category cat : form.getPath()) { %>
+				<% for (Category cat : form.getPath()) { %>
 					>> <a href="./navigateCategory.do?id=<%=cat.getId() %>"><%=cat.getName() %></a> 
 				<% 	} %>
 			<% } %>
