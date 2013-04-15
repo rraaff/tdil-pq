@@ -647,6 +647,54 @@ union all
     select 
     	<include refid="SELL.Base_Column_List" />,
     	prof.businessname as profesionalbusinessname,
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
+    from SELL sell, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
+    where (
+    		(
+	    	<iterate close="" conjunction="OR" open="">
+			  sell.name like #[]#
+			</iterate>
+			) 
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  sell.description like #[]#
+			</iterate>
+			)
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.firstname like #[]#
+			</iterate>
+			)
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.lastname like #[]#
+			</iterate>
+			) 
+			OR
+			(
+	    	<iterate close="" conjunction="OR" open="">
+			  prof.businessname like #[]#
+			</iterate>
+			) 
+		)
+	and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id 
+    and sell.id_profesional = prof.id
+    and sell.approved = 1
+    and sell.type = 1
+    and sell.deleted = 0
+    and prof.status = 2
+    and prof.deleted = 0
+    UNION ALL
+    select 
+    	<include refid="SELL.Base_Column_List" />,
+    	prof.businessname as profesionalbusinessname,
     	null as geo2name,
     	null as geo3name,
     	null as geo4name
@@ -684,6 +732,7 @@ union all
 		)
     and sell.id_profesional = prof.id
     and sell.approved = 1
+    and sell.type = 2
     and sell.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
@@ -717,7 +766,7 @@ union all
     	null as geo4name
     from SELL sell, PROFESIONAL prof
     where (sell.name like #text:VARCHAR# OR sell.description like #text:VARCHAR#)
-	<isNotNull prepend="and" property="maxPrice">
+	<isNotNull prepend="and" property="maxPrice">df 
     	 #maxPrice:INTEGER# >= sell.referenceprice
     </isNotNull>
     and sell.id_profesional = prof.id
@@ -754,10 +803,10 @@ union all
     select 
     	<include refid="SELL.Base_Column_List" />,
     	prof.businessname as profesionalbusinessname,
-    	null as geo2name,
-    	null as geo3name,
-    	null as geo4name
-    from SELL sell, PROFESIONAL prof
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
+    from SELL sell, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_category in
     	<iterate close=")" property="categories" conjunction="," open="(">
 		   #categories[]#
@@ -771,15 +820,18 @@ union all
     and sell.deleted = 0
     and prof.status = 2
     and prof.deleted = 0
+    and prof.id_geolevel = g4.id
+    and g4.geo3_id = g3.id
+    and g3.geo2_id = g2.id
   </select>
   
   <select id="selectProductSellsByCategoriesAndPriceAndGeoLevel" parameterClass="java.util.Map" resultMap="SellValueObject">
     select 
     	<include refid="SELL.Base_Column_List" />,
     	prof.businessname as profesionalbusinessname,
-    	null as geo2name,
-    	null as geo3name,
-    	null as geo4name
+    	g2.nombre as geo2name,
+    	g3.nombre as geo3name,
+    	g4.nombre as geo4name
     from SELL sell, PROFESIONAL prof, GEO2 g2, GEO3 g3, GEO4 g4
     where sell.id_category in
     	<iterate close=")" property="categories" conjunction="," open="(">
