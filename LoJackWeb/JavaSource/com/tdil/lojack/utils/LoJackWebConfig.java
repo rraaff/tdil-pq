@@ -21,7 +21,7 @@ import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ThalamusClient;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.users.Role;
-
+@Deprecated
 public class LoJackWebConfig implements ServletContextListener {
 
 	private static Logger getLog() {

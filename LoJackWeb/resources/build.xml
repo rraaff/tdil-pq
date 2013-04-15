@@ -3,7 +3,45 @@
 	<property name="project.name.cap" value="LoJack" />
 	<property name="project.name.upper" value="LOJACK" />
 	<property name="project.name.lower" value="lojack" />
+	
+	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
+	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
+	<property name="root.user" value="root" />
 
+	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name.upper}" />
+	<property name="db.user" value="${project.name.upper}_USER" />
+	<property name="db.pass" value="${project.name.upper}_USER" />
+
+	<target name="createDatabase">
+		<condition property="root.pass" value="root">
+			<and>
+				<os family="unix" />
+			</and>
+		</condition>
+		<condition property="root.pass" value="">
+			<and>
+				<not>
+					<os family="unix" />
+				</not>
+			</and>
+		</condition>
+		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="database.sql" />
+		</sql>
+	</target>
+	
+	<target name="createTables" depends="createDatabase">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl.sql" />
+		</sql>
+	</target>
+	
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>
@@ -11,8 +49,8 @@
 			<classes dir="../../thalamusJClient/ThalamusJClient/bin" />
 			<lib dir="../../thalamusJClient/EnvironmentLibraries/">
 				<include name="*.jar" />
-				<exclude name="servlet-api.jar" />
-				<exclude name="jsch-0.1.39.jar" />
+				<!--exclude name="servlet-api.jar" />
+				<exclude name="jsch-0.1.39.jar" /-->
 				<exclude name="cue.language.jar" />
 				<exclude name="asm-3.3.1.jar" />
 				<exclude name="cglib-2.2.2.jar" />
@@ -33,7 +71,7 @@
 				<exclude name="xml-apis-xerces-2.9.1.jar" />
 				<exclude name="xpp3_min-1.1.3.4.M.jar" />
 				<exclude name="xstream-1.1.3.jar" />
-				<exclude name="yuicompressor-2.4.6.jar"/>
+				<!--exclude name="yuicompressor-2.4.6.jar"/-->
 			</lib>
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">

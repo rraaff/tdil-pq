@@ -352,6 +352,14 @@
 </Context>
 <Context path="/LoJackWeb" reloadable="true" docBase="LoJackWeb/WebContent/" workDir="LoJackWeb/work" >
    <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
+   <Resource name="jdbc/database" auth="Container"
+   	type="javax.sql.DataSource" removeAbandoned="true"
+   	removeAbandonedTimeout="30" maxActive="100"
+   	maxIdle="30" maxWait="10000" username="LOJACK_USER"
+  	password="LOJACK_USER"
+   	driverClassName="com.mysql.jdbc.Driver"
+   	validationQuery="select 1"
+   	url="jdbc:mysql://localhost:3306/LOJACK" />
 </Context>
       </Host>
 
