@@ -22,8 +22,8 @@ public class Test {
 	    System.out.println(base64.encode(("preisinger" + ":" + "lj2013").getBytes()));
 	    
 	    try {
-	      //url = new URL("http://ljcam2.dyndns.org:8888/jpg/image.jpg");
-	    url = new URL("http://gsilveyra.dyndns.org:5005/nphMotionJpeg?Resolution=320x240&Quality=Standard");
+	      url = new URL("http://ljcam2.dyndns.org:8888/jpg/image.jpg");
+	      //url = new URL("http://gsilveyra.dyndns.org:5005/nphMotionJpeg?Resolution=320x240&Quality=Standard");
 	    }
 	    catch (MalformedURLException e) {
 	      System.err.println("Invalid URL");
@@ -32,8 +32,8 @@ public class Test {
 	    
 	    try {
 	      conn = (HttpURLConnection)url.openConnection();
-	      //conn.setRequestProperty("Authorization", "Basic " + base64.encode(("preisinger" + ":" + "lj2013").getBytes()));
-	      conn.setRequestProperty("Authorization", "Basic " + base64.encode(("camara" + ":" + "123456").getBytes()));
+	      conn.setRequestProperty("Authorization", "Basic " + base64.encode(("preisinger" + ":" + "lj2013").getBytes()));
+	      //conn.setRequestProperty("Authorization", "Basic " + base64.encode(("camara" + ":" + "123456").getBytes()));
 	      httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
 	      int prev = 0;
 	      int cur = 0;

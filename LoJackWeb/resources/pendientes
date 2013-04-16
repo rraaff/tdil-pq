@@ -1,12 +1,15 @@
 *** si o si
 
-Rename de alarmas y luces, acomodar doc de servicios
-
 Camara
+Exportacion del applet (jar, firma)
+escalado de la imagen
+Extraer las clases de generacion a un projecto aparte
+Armar servlet para mobile
 
 Parte thalamus
 
 Armar el war y deployarlo en JBoss
+
 
 *** detalles
 
