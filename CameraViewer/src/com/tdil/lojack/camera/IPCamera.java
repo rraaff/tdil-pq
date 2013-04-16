@@ -1,6 +1,11 @@
 package com.tdil.lojack.camera;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -57,5 +62,46 @@ public abstract class IPCamera {
 
 	public void setBasicAuth(String basicAuth) {
 		this.basicAuth = basicAuth;
+	}
+
+	protected void readFully(String urlString) {
+		HttpURLConnection conn = null;
+		BufferedInputStream httpIn = null;
+		URL url;
+		try {
+			url = new URL(urlString);
+		} catch (MalformedURLException e) {
+			System.err.println("Invalid URL");
+			return;
+		}
+		try {
+			conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestProperty("Authorization", this.getBasicAuth());
+			httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
+			try {
+				while (httpIn != null && (httpIn.read()) >= 0) {
+				}
+				return;
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.err.println("I/O Error: " + e.getMessage());
+				return;
+			}
+		} catch (IOException e) {
+			System.err.println("Unable to connect: " + e.getMessage());
+			return;
+		} finally {
+			if (httpIn != null) {
+				try {
+					httpIn.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				conn.disconnect();
+			}
+		}
 	}
 }

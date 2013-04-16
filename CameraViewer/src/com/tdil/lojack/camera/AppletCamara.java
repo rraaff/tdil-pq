@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 
+import com.tdil.lojack.camera.models.PanasonicBLC131;
 import com.tdil.lojack.camera.models.TPLinkSC4171G;
 
 /**
@@ -229,11 +230,16 @@ public class AppletCamara extends javax.swing.JApplet {
 		//String username = getParameter("username");
 		//String password = getParameter("password");
 		
-		String url = "http://ljcam2.dyndns.org:8888";
-		//http://ljcam2.dyndns.org:8888/cgi-bin/operator/ptzset?move=right
+		/*String url = "http://ljcam2.dyndns.org:8888";
 		String username = "preisinger";
 		String password = "lj2013";
-		camera = new TPLinkSC4171G(url, username, password); // TODO if por modelo de camera
+		camera = new TPLinkSC4171G(url, username, password); // TODO if por modelo de camera*/
+		
+		String url = "http://gsilveyra.dyndns.org:5005";
+		String username = "camara";
+		String password = "123456";
+		camera = new PanasonicBLC131(url, username, password); // TODO if por modelo de camera
+		
 		Thread thread = new Thread() {
 			/*
 			 * (non-Javadoc)
@@ -246,10 +252,12 @@ public class AppletCamara extends javax.swing.JApplet {
 					ByteArrayInputStream in = null;
 					try {
 						in = camera.nextFrame();
-						Image imagen = ImageIO.read(in);
-						panelCamara.setImagen(imagen);
-						panelCamara.repaint();
-						sleep(1000);
+						if (in != null) {
+							Image imagen = ImageIO.read(in);
+							panelCamara.setImagen(imagen);
+							panelCamara.repaint();
+							sleep(1000);
+						}
 					} catch (IOException e) {
 						e.printStackTrace();
 					} catch (InterruptedException e) {
@@ -257,7 +265,9 @@ public class AppletCamara extends javax.swing.JApplet {
 						e.printStackTrace();
 					} finally {
 						try {
-							in.close();
+							if (in != null) {
+								in.close();
+							}
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
