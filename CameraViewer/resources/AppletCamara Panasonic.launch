@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/CameraViewer/src/com/tdil/lojack/camera/AppletCamara.java"/>
+<listEntry value="/CameraViewer/src/com/tdil/lojack/camera/applet/AppletCamara.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -15,6 +15,6 @@
 <mapEntry key="username" value="camara"/>
 </mapAttribute>
 <intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="320"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.tdil.lojack.camera.AppletCamara"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.tdil.lojack.camera.applet.AppletCamara"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CameraViewer"/>
 </launchConfiguration>
