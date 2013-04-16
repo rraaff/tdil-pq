@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/CameraViewer/src/com/tdil/lojack/camera/AppletCamara.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="480"/>
+<stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value=""/>
+<mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
+<mapEntry key="model" value="TPLinkSC4171G"/>
+<mapEntry key="password" value="lj2013"/>
+<mapEntry key="refresh" value="1500"/>
+<mapEntry key="url" value="http://ljcam2.dyndns.org:8888"/>
+<mapEntry key="username" value="preisinger"/>
+</mapAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="640"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.tdil.lojack.camera.AppletCamara"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CameraViewer"/>
+</launchConfiguration>

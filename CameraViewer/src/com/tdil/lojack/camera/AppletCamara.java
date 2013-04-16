@@ -6,37 +6,29 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.Authenticator;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.border.EmptyBorder;
 
 import com.tdil.lojack.camera.models.PanasonicBLC131;
 import com.tdil.lojack.camera.models.TPLinkSC4171G;
 
 /**
- * This code was generated using CloudGarden's Jigloo SWT/Swing GUI Builder,
- * which is free for non-commercial use. If Jigloo is being used commercially
- * (ie, by a for-profit company or business) then you should purchase a license
- * - please visit www.cloudgarden.com for details.
+ * Class <code>AppletCamara</code> is responsible of establishing a directo connection
+ * to the camera and refresh its image at a regular interval.
  */
 public class AppletCamara extends javax.swing.JApplet {
 
-	private IPCamera camera;
-	
-	private PanelCamara panelCamara;
+	private static final long serialVersionUID = -2966192681788304871L;
 
-	private JPanel jPanelHome;
+	private IPCamera camera = null;
+
+	private PanelCamara panelCamara;
 
 	private JButton jButtonDerecha;
 
@@ -50,7 +42,7 @@ public class AppletCamara extends javax.swing.JApplet {
 
 	private JPanel jPanelVertical;
 
-	private JButton jButtonHome;
+	private long refreshInterval;
 
 	public AppletCamara() {
 		initGUI();
@@ -69,7 +61,6 @@ public class AppletCamara extends javax.swing.JApplet {
 			jPanelHorizontal = new JPanel();
 			jButtonIzquierda = new JButton();
 			jButtonDerecha = new JButton();
-			jButtonHome = new JButton();
 
 			GridBagLayout thisLayout = new GridBagLayout();
 			this.getContentPane().setLayout(thisLayout);
@@ -96,11 +87,9 @@ public class AppletCamara extends javax.swing.JApplet {
 			jButtonArriba.setIcon(new ImageIcon(AppletCamara.class
 					.getResource("/com/tdil/lojack/camera/up.png")));
 			jButtonArriba.setPressedIcon(new ImageIcon(AppletCamara.class
-					.getResource(
-							"/com/tdil/lojack/camera/up_press.png")));
+					.getResource("/com/tdil/lojack/camera/up_press.png")));
 			jButtonArriba.setRolloverIcon(new ImageIcon(AppletCamara.class
-					.getResource(
-							"/com/tdil/lojack/camera/up_rollover.png")));
+					.getResource("/com/tdil/lojack/camera/up_rollover.png")));
 			jButtonArriba.setToolTipText("Mover la cámara hacia arriba");
 			jButtonArriba.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
 			jPanelVertical.add(jButtonArriba, new GridBagConstraints(0, 0, 1,
@@ -114,11 +103,9 @@ public class AppletCamara extends javax.swing.JApplet {
 			jButtonAbajo.setIcon(new ImageIcon(AppletCamara.class
 					.getResource("/com/tdil/lojack/camera/down.png")));
 			jButtonAbajo.setPressedIcon(new ImageIcon(AppletCamara.class
-					.getResource(
-							"/com/tdil/lojack/camera/down_press.png")));
+					.getResource("/com/tdil/lojack/camera/down_press.png")));
 			jButtonAbajo.setRolloverIcon(new ImageIcon(AppletCamara.class
-					.getResource(
-							"/com/tdil/lojack/camera/down_rollover.png")));
+					.getResource("/com/tdil/lojack/camera/down_rollover.png")));
 			jButtonAbajo.setToolTipText("Mover la cámara hacia abajo");
 			jButtonAbajo.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
 			jPanelVertical.add(jButtonAbajo, new GridBagConstraints(0, 1, 1, 1,
@@ -160,8 +147,8 @@ public class AppletCamara extends javax.swing.JApplet {
 
 			jButtonDerecha.setIcon(new ImageIcon(AppletCamara.class
 					.getResource("/com/tdil/lojack/camera/right.png")));
-			jButtonDerecha.setPressedIcon(new ImageIcon(getClass()
-					.getResource("right_press.png")));
+			jButtonDerecha.setPressedIcon(new ImageIcon(getClass().getResource(
+					"right_press.png")));
 			jButtonDerecha.setRolloverIcon(new ImageIcon(getClass()
 					.getResource("right_rollover.png")));
 			jButtonDerecha.setToolTipText("Mover la cámara hacia la derecha");
@@ -173,36 +160,6 @@ public class AppletCamara extends javax.swing.JApplet {
 					jButtonDerechaActionPerformed(evt);
 				}
 			});
-
-			/*GridBagLayout jPanelHomeLayout = new GridBagLayout();
-			jPanelHome.setLayout(jPanelHomeLayout);
-			jPanelHomeLayout.columnWidths = new int[] { 1, 1, 1, 1 };
-			jPanelHomeLayout.rowHeights = new int[] { 1, 1, 1, 1 };
-			jPanelHomeLayout.columnWeights = new double[] { 0.1, 0.1, 0.1, 0.1 };
-			jPanelHomeLayout.rowWeights = new double[] { 0.1, 0.1, 0.1, 0.1 };
-			jPanelHome.setBackground(new java.awt.Color(208, 176, 255));
-			this.getContentPane().add(
-					jPanelHome,
-					new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0, 10, 0,
-							new Insets(0, 5, 0, 0), 0, 1));
-
-			jButtonHome.setIcon(new ImageIcon(getClass().getClassLoader()
-					.getResource("home.png")));
-			jButtonHome.setBorderPainted(false);
-			jButtonHome.setContentAreaFilled(false);
-			jButtonHome.setPressedIcon(new ImageIcon(getClass()
-					.getClassLoader().getResource("home_press.png")));
-			jButtonHome.setRolloverIcon(new ImageIcon(getClass()
-					.getClassLoader().getResource("home_rollover.png")));
-			jButtonHome.setToolTipText("Ir a la posición inicial de la cámara");
-			jButtonHome.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
-			jPanelHome.add(jButtonHome, new GridBagConstraints(3, 2, 1, 2, 0.0,
-					0.0, 10, 0, new Insets(0, 0, 0, 0), 0, 0));
-			jButtonHome.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
-					jButtonHomeActionPerformed(evt);
-				}
-			});*/
 
 			postInitGUI();
 		} catch (Exception e) {
@@ -226,20 +183,23 @@ public class AppletCamara extends javax.swing.JApplet {
 
 	public void init() {
 		super.init();
-		//String url = getParameter("url");
-		//String username = getParameter("username");
-		//String password = getParameter("password");
-		
-		/*String url = "http://ljcam2.dyndns.org:8888";
-		String username = "preisinger";
-		String password = "lj2013";
-		camera = new TPLinkSC4171G(url, username, password); // TODO if por modelo de camera*/
-		
-		String url = "http://gsilveyra.dyndns.org:5005";
-		String username = "camara";
-		String password = "123456";
-		camera = new PanasonicBLC131(url, username, password); // TODO if por modelo de camera
-		
+		String url = getParameter("url");
+		String username = getParameter("username");
+		String password = getParameter("password");
+		refreshInterval = 1000;
+		String refreshIntervalParam = getParameter("refresh");
+		if (refreshIntervalParam != null) {
+			refreshInterval = Long.parseLong(refreshIntervalParam);
+		}
+
+		String model = getParameter("model");
+		if ("TPLinkSC4171G".equals(model)) {
+			camera = new TPLinkSC4171G(url, username, password);
+		}
+		if ("PanasonicBLC131".equals(model)) {
+			camera = new PanasonicBLC131(url, username, password);
+		}
+
 		Thread thread = new Thread() {
 			/*
 			 * (non-Javadoc)
@@ -254,9 +214,9 @@ public class AppletCamara extends javax.swing.JApplet {
 						in = camera.nextFrame();
 						if (in != null) {
 							Image imagen = ImageIO.read(in);
-							panelCamara.setImagen(imagen);
+							panelCamara.setImage(imagen);
 							panelCamara.repaint();
-							sleep(1000);
+							sleep(refreshInterval);
 						}
 					} catch (IOException e) {
 						e.printStackTrace();
