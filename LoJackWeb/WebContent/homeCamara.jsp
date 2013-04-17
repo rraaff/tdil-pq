@@ -13,7 +13,65 @@
 <head>
 <%@ include file="includes/head.jsp" %>
 <script>
+$(function() {
+	  setInterval(function() {
+		  $('#cameraImg').attr('src', './viewCamera');
+	  },1000);
+	}
+);
 
+function up() {
+	  $.ajax({
+        type: "GET",
+        cache: false,
+        url: "./moveCamera?dir=up",
+        success: function(data) {
+      	  $('#cameraImg').attr('src', './viewCamera');
+       },
+        error: function() {
+        	alert('err');	
+        }
+    });
+}
+function down() {
+	  $.ajax({
+      type: "GET",
+      cache: false,
+      url: "./moveCamera?dir=down",
+      success: function(data) {
+    	  $('#cameraImg').attr('src', './viewCamera');
+     },
+      error: function() {
+      	alert('err');	
+      }
+  });
+}
+function left() {
+	  $.ajax({
+    type: "GET",
+    cache: false,
+    url: "./moveCamera?dir=left",
+    success: function(data) {
+    	$('#cameraImg').attr('src', './viewCamera');
+   },
+    error: function() {
+    	alert('err');	
+    }
+});
+}
+function right() {
+	  $.ajax({
+  type: "GET",
+  cache: false,
+  url: "./moveCamera?dir=right",
+  success: function(data) {
+	  $('#cameraImg').attr('src', './viewCamera');
+ },
+  error: function() {
+  	alert('err');	
+  }
+});
+}
   </script>
 </head>
 <body>
@@ -40,6 +98,10 @@ Mi Camara<br><br>
       </embed>
     </comment>
   </object>
-
+<img id="cameraImg" src="./viewCamera" width="320" height="240"><br>
+<a href="javascript:up()" id="up">Up</a><br>
+<a href="javascript:down()" id="down">Down</a><br>
+<a href="javascript:left()" id="left">Left</a><br>
+<a href="javascript:right()" id="right">Right</a><br>
 </body>
 </html>
