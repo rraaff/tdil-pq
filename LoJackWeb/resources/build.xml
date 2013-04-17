@@ -66,6 +66,7 @@
 			</then>
 		</if>
 		<signjar alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore" jar="../WebContent/cameraviewer-b${hora}.jar"></signjar>
+		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="../WebContent/homeCamara.jsp"/>
     </target>
 	
 	<target name="createTables" depends="createDatabase">

@@ -23,6 +23,23 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panic
 <hr> 
 Mi Camara<br><br>
 
+<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
+  <param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
+  <PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
+  <PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201304170023.jar">
+  <PARAM NAME="username" VALUE="preisinger">
+  <PARAM NAME="password" VALUE=lj2013>
+  <PARAM NAME="url" VALUE="http://ljcam2.dyndns.org:8888">
+  <PARAM NAME="model" VALUE="TPLinkSC4171G">
+    <comment>
+      <embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
+      	ARCHIVE="cameraviewer-b201304170023.jar" username="preisinger" password="lj2013" url="http://ljcam2.dyndns.org:8888" model="TPLinkSC4171G">
+        <noembed>
+          No Java Support.
+        </noembed>
+      </embed>
+    </comment>
+  </object>
 
 </body>
 </html>

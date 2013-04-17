@@ -7,7 +7,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -85,12 +87,12 @@ public class AppletCamara extends javax.swing.JApplet {
 					new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, 10, 0,
 							new Insets(0, 0, 5, 0), 0, 0));
 
-			jButtonArriba.setIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/up.png")));
-			jButtonArriba.setPressedIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/up_press.png")));
-			jButtonArriba.setRolloverIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/up_rollover.png")));
+			jButtonArriba.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("up.png"))));
+			jButtonArriba.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("up_press.png"))));
+			jButtonArriba.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("up_rollover.png"))));
 			jButtonArriba.setToolTipText("Mover la cámara hacia arriba");
 			jButtonArriba.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
 			jPanelVertical.add(jButtonArriba, new GridBagConstraints(0, 0, 1,
@@ -101,12 +103,12 @@ public class AppletCamara extends javax.swing.JApplet {
 				}
 			});
 
-			jButtonAbajo.setIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/down.png")));
-			jButtonAbajo.setPressedIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/down_press.png")));
-			jButtonAbajo.setRolloverIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/down_rollover.png")));
+			jButtonAbajo.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("down.png"))));
+			jButtonAbajo.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("down_press.png"))));
+			jButtonAbajo.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("down_rollover.png"))));
 			jButtonAbajo.setToolTipText("Mover la cámara hacia abajo");
 			jButtonAbajo.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
 			jPanelVertical.add(jButtonAbajo, new GridBagConstraints(0, 1, 1, 1,
@@ -129,12 +131,12 @@ public class AppletCamara extends javax.swing.JApplet {
 					new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0, 10, 0,
 							new Insets(0, 0, 0, 5), 0, 0));
 
-			jButtonIzquierda.setIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/left.png")));
-			jButtonIzquierda.setPressedIcon(new ImageIcon(getClass()
-					.getResource("left_press.png")));
-			jButtonIzquierda.setRolloverIcon(new ImageIcon(getClass()
-					.getResource("left_rollover.png")));
+			jButtonIzquierda.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("left.png"))));
+			jButtonIzquierda.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("left_press.png"))));
+			jButtonIzquierda.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("left_rollover.png"))));
 			jButtonIzquierda
 					.setToolTipText("Mover la cámara hacia la izquierda");
 			jButtonIzquierda.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
@@ -146,12 +148,12 @@ public class AppletCamara extends javax.swing.JApplet {
 				}
 			});
 
-			jButtonDerecha.setIcon(new ImageIcon(AppletCamara.class
-					.getResource("/com/tdil/lojack/camera/right.png")));
-			jButtonDerecha.setPressedIcon(new ImageIcon(getClass().getResource(
-					"right_press.png")));
-			jButtonDerecha.setRolloverIcon(new ImageIcon(getClass()
-					.getResource("right_rollover.png")));
+			jButtonDerecha.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("right.png"))));
+			jButtonDerecha.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("right_press.png"))));
+			jButtonDerecha.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+					.getResourceAsStream("right_rollover.png"))));
 			jButtonDerecha.setToolTipText("Mover la cámara hacia la derecha");
 			jButtonDerecha.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
 			jPanelHorizontal.add(jButtonDerecha, new GridBagConstraints(1, 0,
@@ -165,6 +167,30 @@ public class AppletCamara extends javax.swing.JApplet {
 			postInitGUI();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public byte[] getBytesFrom(InputStream in) {
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024]; // you can configure the buffer size
+			int length;
+		
+			while ((length = in.read(buffer)) != -1) out.write(buffer, 0, length); //copy streams
+			 // call this in a finally block
+		
+			return out.toByteArray();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
