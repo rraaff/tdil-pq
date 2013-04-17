@@ -11,6 +11,9 @@
 	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name.upper}" />
 	<property name="db.user" value="${project.name.upper}_USER" />
 	<property name="db.pass" value="${project.name.upper}_USER" />
+	
+	<taskdef resource="net/sf/antcontrib/antlib.xml"
+			classpath="./ant-contrib.jar" />
 
 	<target name="createDatabase">
 		<condition property="root.pass" value="root">
@@ -32,6 +35,38 @@
 			<transaction src="database.sql" />
 		</sql>
 	</target>
+	
+	<target name="create_jar_applet">
+		<tstamp>
+			<format property="hora" pattern="yyyyMMddHHmm"/>
+		</tstamp>
+		<delete>
+	      <fileset dir="../WebContent/" includes="cameraviewer-*.jar"/>
+	    </delete>
+        <jar destfile="../WebContent/cameraviewer-b${hora}.jar" filesetmanifest="mergewithoutmain">
+        	<fileset dir="../../Camera/bin"/>
+            <fileset dir="../../CameraViewer/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../Camera/commons-codec.jar"/>
+        </jar>
+		<if>
+			<not>
+				<available file="./LoJackKeyStore" type="file" />
+			</not>	
+			<then>
+				<echo>Generating new certificate</echo>
+				<delete file="./LoJackKeyStore"/>
+				<genkey validity="18250" alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore">
+					<dname>
+						<param name="CN" value="LoJack SA" />
+						<param name="OU" value="LoJack" />
+						<param name="O" value="LoJack" />
+						<param name="C" value="AR" />
+					</dname>
+				</genkey>
+			</then>
+		</if>
+		<signjar alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore" jar="../WebContent/cameraviewer-b${hora}.jar"></signjar>
+    </target>
 	
 	<target name="createTables" depends="createDatabase">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
