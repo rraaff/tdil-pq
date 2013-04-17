@@ -19,7 +19,7 @@ public class DAOManager {
 		return new SystemPropertyDAOImpl(IBatisManager.getClient());
 	}
 	
-	public static WebsiteUserDAO getSystemUserDAO() throws SQLException {
+	public static WebsiteUserDAO getWebsiteUserDAO() throws SQLException {
 		return new WebsiteUserDAOImpl(IBatisManager.getClient());
 	}
 	

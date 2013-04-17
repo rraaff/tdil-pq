@@ -59,6 +59,14 @@
   <url-pattern>*.do</url-pattern>
  </filter-mapping>
  <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/viewCamera</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/moveCamera</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
   <filter-name>imagesCache</filter-name>
   <url-pattern>/images/*</url-pattern>
  </filter-mapping>
@@ -84,6 +92,16 @@
   </init-param>
   <load-on-startup>1</load-on-startup>
  </servlet>
+ 
+ <servlet>
+  <servlet-name>ViewCameraServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.ViewCameraServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>MoveCameraServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.MoveCameraServlet</servlet-class>
+ </servlet>
+ 
  <servlet>
   <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.FacebookSignIn</servlet-class>
@@ -105,6 +123,18 @@
   <servlet-name>action</servlet-name>
   <url-pattern>*.do</url-pattern>
  </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>ViewCameraServlet</servlet-name>
+  <url-pattern>/viewCamera</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>MoveCameraServlet</servlet-name>
+  <url-pattern>/moveCamera</url-pattern>
+ </servlet-mapping>
+ 
+ 
  <servlet-mapping>
   <servlet-name>FacebookSignIn</servlet-name>
   <url-pattern>/signin/facebook</url-pattern>

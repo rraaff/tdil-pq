@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONTokener;
 
@@ -20,6 +21,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.gis.model.AlarmAlertConfiguration;
+import com.tdil.lojack.gis.model.Camera;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.gis.model.LightAgenda;
@@ -57,6 +59,9 @@ public class LoJackServicesConnector {
 	
 	private static final String GET_ALARM_ALERT_CONFIGURATION = "getAlarmAlertConfiguration.json";
 	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
+	
+	// Camara
+	private static final String GET_CAMERA = "getCamera.json";
 	
 	// Luces GIS
 	private static final String GET_LIGHTS = "getLights.json";
@@ -275,6 +280,23 @@ public class LoJackServicesConnector {
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return false;
+		}
+	}
+	
+	public static Camera getCamera(String userId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("guid", userId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, GET_CAMERA);
+			JSONObject object = (JSONObject)response.getResult();
+			if (!object.containsKey("model") || object.get("model") instanceof JSONNull) {
+				return null;
+			}
+			Camera camera = (Camera)JSONObject.toBean(object, Camera.class);
+			return camera;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
 		}
 	}
 

@@ -1,3 +1,6 @@
+primero, que el tiempo de refresco de las imágenes que se obtienen a través del servlet sea 
+parametrizable, cosa que nos de un grado de libertad para jugar con la performance
+
 *** si o si
 
 Camara
@@ -5,6 +8,9 @@ Exportacion del applet (jar, firma)
 escalado de la imagen
 Extraer las clases de generacion a un projecto aparte
 Armar servlet para mobile
+
+WishList: que el applet no tenga los datos de la camara, sino que se los baje de la webapp, encriptados, 
+de forma que no queden visibles ninguno de los mismos.
 
 Parte thalamus
 
