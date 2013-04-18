@@ -78,6 +78,7 @@ public abstract class IPCamera {
 		try {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestProperty("Authorization", this.getBasicAuth());
+			configureTimeout(conn);
 			httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
 			try {
 				while (httpIn != null && (httpIn.read()) >= 0) {
@@ -104,6 +105,11 @@ public abstract class IPCamera {
 				conn.disconnect();
 			}
 		}
+	}
+
+	protected void configureTimeout(HttpURLConnection conn) {
+		conn.setConnectTimeout(1000);
+		conn.setReadTimeout(1000);
 	}
 
 }

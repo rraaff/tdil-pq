@@ -242,6 +242,8 @@ public class AppletCamara extends javax.swing.JApplet {
 							panelCamara.setImage(imagen);
 							panelCamara.repaint();
 							sleep(refreshInterval);
+						} else {
+							System.out.println("null image");
 						}
 					} catch (IOException e) {
 						e.printStackTrace();

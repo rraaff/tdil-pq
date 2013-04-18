@@ -39,6 +39,7 @@ public class TPLinkSC4171G extends IPCamera {
 		}
 		try {
 			conn = (HttpURLConnection) url.openConnection();
+			configureTimeout(conn);
 			conn.setRequestProperty("Authorization", this.getBasicAuth());
 			httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
 			int prev = 0;
@@ -58,6 +59,9 @@ public class TPLinkSC4171G extends IPCamera {
 						httpIn = null;
 					}
 					prev = cur;
+				}
+				if (jpgOut == null) {
+					return null;
 				}
 				return new ByteArrayInputStream(jpgOut.toByteArray());
 			} catch (IOException e) {
