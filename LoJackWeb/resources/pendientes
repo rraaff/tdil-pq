@@ -10,7 +10,7 @@ DONE Exportacion del applet (jar, firma)
 DONE Extraer las clases de generacion a un projecto aparte
 DONE Armar servlet para mobile
 
-tiempo de refresh parametrizable, documentarlo
+DONE tiempo de refresh parametrizable, documentarlo
 cookie para la seleccion de applet/no applet
 
 escalado de la imagen
