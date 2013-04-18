@@ -1,3 +1,6 @@
+<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
+<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
+<%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
@@ -13,13 +16,6 @@
 <head>
 <%@ include file="includes/head.jsp" %>
 <script>
-$(function() {
-	  setInterval(function() {
-		  $('#cameraImg').attr('src', './viewCamera');
-	  },1000);
-	}
-);
-
 function up() {
 	  $.ajax({
         type: "GET",
@@ -81,27 +77,39 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panic
 <hr> 
 Mi Camara<br><br>
 
-<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
-  <param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
-  <PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
-  <PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201304170023.jar">
-  <PARAM NAME="username" VALUE="preisinger">
-  <PARAM NAME="password" VALUE=lj2013>
-  <PARAM NAME="url" VALUE="http://ljcam2.dyndns.org:8888">
-  <PARAM NAME="model" VALUE="TPLinkSC4171G">
-    <comment>
-      <embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-      	ARCHIVE="cameraviewer-b201304170023.jar" username="preisinger" password="lj2013" url="http://ljcam2.dyndns.org:8888" model="TPLinkSC4171G">
-        <noembed>
-          No Java Support.
-        </noembed>
-      </embed>
-    </comment>
-  </object>
-<img id="cameraImg" src="./viewCamera" width="320" height="240"><br>
-<a href="javascript:up()" id="up">Up</a><br>
-<a href="javascript:down()" id="down">Down</a><br>
-<a href="javascript:left()" id="left">Left</a><br>
-<a href="javascript:right()" id="right">Right</a><br>
+<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
+<% if (cameraForm.isUseApplet()) { %>
+	<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
+	  <param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
+	  <PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
+	  <PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201304170023.jar">
+	  <PARAM NAME="username" VALUE="<%=cameraForm.getUsername()%>">
+	  <PARAM NAME="password" VALUE="<%=cameraForm.getPassword()%>">
+	  <PARAM NAME="url" VALUE="<%=cameraForm.getUrl()%>">
+	  <PARAM NAME="model" VALUE="<%=cameraForm.getModel()%>">
+	    <comment>
+	      <embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
+	      	ARCHIVE="cameraviewer-b201304170023.jar" username="<%=cameraForm.getUsername()%>" password="<%=cameraForm.getPassword()%>" 
+	      	url="<%=cameraForm.getUrl()%>" model="<%=cameraForm.getModel()%>">
+	        <noembed>
+	          No Java Support.
+	        </noembed>
+	      </embed>
+	    </comment>
+	  </object>
+	  <a href="./toggleCameraView.do">Vista basica</a>
+<% } else { %>
+	<img id="cameraImg" src="./viewCamera" width="320" height="240"><br>
+	<a href="javascript:up()" id="up">Up</a><br>
+	<a href="javascript:down()" id="down">Down</a><br>
+	<a href="javascript:left()" id="left">Left</a><br>
+	<a href="javascript:right()" id="right">Right</a><br>
+	<a href="./toggleCameraView.do">Vista Avanzada</a>
+	<script>
+	setInterval(function() {
+		  $('#cameraImg').attr('src', './viewCamera');
+	},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
+	</script>
+<% } %>
 </body>
 </html>

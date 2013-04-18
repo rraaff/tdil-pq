@@ -235,7 +235,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				throw new ValidationException(validationError);
 			} else {
 				LoginResult loginResult = ThalamusClientBeanFacade.login(new LoginBean(this.getPrincipal(), this.getPassword()));
-				WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), loginResult.getTokenHolder());
+				WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), loginResult.getTokenHolder(), "-3", "AA");
+				// TODO XXX
 				user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(loginResult));
 				return user;
 			}
@@ -691,7 +692,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				ThalamusWebUtils.addErrorsTo(validationError, response);
 				throw new ValidationException(validationError);
 			} else {
-				WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), this.getToken());
+				WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), this.getToken(), "-3", "");
+				// TODO XXX
 				//user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom((JSONObject)response.getResult()));
 				return user;
 			}

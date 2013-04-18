@@ -26,6 +26,8 @@ public class LoginForm extends ActionForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
+	private String timezoneOffset;
+	private String timezoneName;
 	private String username;
 	private String password;
 	
@@ -56,7 +58,7 @@ public class LoginForm extends ActionForm {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
 		}
 		try {
-			return login(this.getUsername(), this.getPassword());
+			return login(this.getUsername(), this.getPassword(), this.getTimezoneOffset(), this.getTimezoneName());
 		} catch (HttpStatusException e) {
 			if (e.getStatus() == HttpStatus.SC_UNAUTHORIZED) {
 				throw new ValidationException(new ValidationError("LoginForm.HttpStatusException.401"));
@@ -72,7 +74,7 @@ public class LoginForm extends ActionForm {
 		}
 	}
 	
-	public static WebsiteUser login(String username, String pasword) throws HttpStatusException, InvalidResponseException,
+	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName) throws HttpStatusException, InvalidResponseException,
 			CommunicationException, UnauthorizedException {
 		LoginBean loginBean = new LoginBean(username, pasword);
 		LoginResult result = ThalamusClientBeanFacade.login(loginBean);
@@ -81,9 +83,21 @@ public class LoginForm extends ActionForm {
 		
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
-		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder());
+		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), timezoneOffset, timezoneName);
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
 		return user;
+	}
+	public String getTimezoneOffset() {
+		return timezoneOffset;
+	}
+	public void setTimezoneOffset(String timezoneOffset) {
+		this.timezoneOffset = timezoneOffset;
+	}
+	public String getTimezoneName() {
+		return timezoneName;
+	}
+	public void setTimezoneName(String timezoneName) {
+		this.timezoneName = timezoneName;
 	}
 	
 }

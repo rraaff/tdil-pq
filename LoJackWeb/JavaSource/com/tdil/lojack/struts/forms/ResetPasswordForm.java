@@ -61,7 +61,7 @@ public class ResetPasswordForm extends ThalamusForm {
 				ThalamusWebUtils.addErrorsTo(validationError, response);
 				throw new ValidationException(validationError);
 			} else {
-				return LoginForm.login(this.getUsername(), this.getPassword());
+				return LoginForm.login(this.getUsername(), this.getPassword(), "-3", ""); // TODO XXX
 			}
 			// TODO ver como manejo los errores
 		} catch (HttpStatusException e) {

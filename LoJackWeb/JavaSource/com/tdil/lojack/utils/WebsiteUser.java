@@ -15,13 +15,18 @@ public class WebsiteUser extends User {
 
 	private TokenHolder token;
 	private String name;
+	private String lojackUserId = "ase001"; // TODO XXX
+	private String timezoneOffset;
+	private String timezoneName;
 	
 	private Set<String> appliedActivities = new HashSet<String>();
 	
-	public WebsiteUser(String name, TokenHolder tokenHolder) {
+	public WebsiteUser(String name, TokenHolder tokenHolder, String timezoneOffset, String timezoneName) {
 		super();
 		this.name = name;
 		this.token = tokenHolder;
+		this.timezoneOffset = timezoneOffset;
+		this.timezoneName = timezoneName;
 	}
 	
 	@Override
@@ -30,7 +35,7 @@ public class WebsiteUser extends User {
 	}
 	
 	public String getGuid() {
-		return String.valueOf(this.getId());
+		return String.valueOf(this.getToken().getCookie().getValue());
 	}
 	
 	public boolean isLogged() {
@@ -66,6 +71,30 @@ public class WebsiteUser extends User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTimezoneOffset() {
+		return timezoneOffset;
+	}
+
+	public void setTimezoneOffset(String timezoneOffset) {
+		this.timezoneOffset = timezoneOffset;
+	}
+
+	public String getTimezoneName() {
+		return timezoneName;
+	}
+
+	public void setTimezoneName(String timezoneName) {
+		this.timezoneName = timezoneName;
+	}
+
+	public String getLojackUserId() {
+		return lojackUserId;
+	}
+
+	public void setLojackUserId(String lojackUserId) {
+		this.lojackUserId = lojackUserId;
 	}
 	
 }

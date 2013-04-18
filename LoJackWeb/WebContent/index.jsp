@@ -20,7 +20,9 @@
 <html>
 <head>
 <%@ include file="includes/head.jsp" %>
+<script type="text/javascript" src="js/jstz.js"></script>
 <script>
+
 $(document).ready(
 	function(){
 
@@ -152,6 +154,13 @@ $(document).ready(
 		<% if ("true".equals(request.getParameter("openRegister"))) { %>
 			basicRegister();
 		<% } %>
+
+		/* Seteo el offset */
+		var userDate = new Date();  
+		var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );  
+		$("form[name='LoginForm'] input[name='timezoneOffset']").attr('value', userTimeZone);
+		var tz = jstz.determine(); // Determines the time zone of the browser client
+		$("form[name='LoginForm'] input[name='timezoneName']").attr('value',  tz.name());
 	}
 );
 
@@ -561,6 +570,8 @@ function postResetPassword(data) {
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent">
 			<html:form method="POST" action="/login">
+				<html:hidden name="LoginForm" property="timezoneOffset"/>
+				<html:hidden name="LoginForm" property="timezoneName"/>
 				<div class="myRow">
 					<div class="myLabel width100">&nbsp;</div>
 					<div class="myLabel width100">User</div>

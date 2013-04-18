@@ -29,7 +29,7 @@ public class AlarmsForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setAlarms(LoJackServicesConnector.getAlarms(String.valueOf(user.getId())));
+		setAlarms(LoJackServicesConnector.getAlarms(String.valueOf(user.getId()), user.getLojackUserId(), user.getTimezoneOffset(), user.getTimezoneName()));
 	}
 
 	public Collection<Alarm> getAlarms() {

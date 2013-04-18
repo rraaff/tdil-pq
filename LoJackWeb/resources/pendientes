@@ -1,13 +1,19 @@
-primero, que el tiempo de refresco de las imágenes que se obtienen a través del servlet sea 
-parametrizable, cosa que nos de un grado de libertad para jugar con la performance
+resolver timezone para login con fb y twitter...
+
+timezone en todos los servicios
+lojackUserId en todos los servicios
 
 *** si o si
 
 Camara
-Exportacion del applet (jar, firma)
+DONE Exportacion del applet (jar, firma)
+DONE Extraer las clases de generacion a un projecto aparte
+DONE Armar servlet para mobile
+
+tiempo de refresh parametrizable, documentarlo
+cookie para la seleccion de applet/no applet
+
 escalado de la imagen
-Extraer las clases de generacion a un projecto aparte
-Armar servlet para mobile
 
 WishList: que el applet no tenga los datos de la camara, sino que se los baje de la webapp, encriptados, 
 de forma que no queden visibles ninguno de los mismos.
@@ -20,6 +26,7 @@ Armar el war y deployarlo en JBoss
 *** detalles
 
 Capturar respuestas de not logged y mandarlo a la index, tanto jsp directo, cargado de jsp en layer como ajax.
+Esto lo puedo poner en una funcion con timeout, fijarme la de prevent asi copio la logica
 
 Mostrar el error de login en el layer de login, sin cerrarlo
 
