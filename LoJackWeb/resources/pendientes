@@ -9,8 +9,10 @@ Camara
 DONE Exportacion del applet (jar, firma)
 DONE Extraer las clases de generacion a un projecto aparte
 DONE Armar servlet para mobile
-
 DONE tiempo de refresh parametrizable, documentarlo
+
+Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
+
 cookie para la seleccion de applet/no applet
 
 escalado de la imagen

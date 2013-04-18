@@ -175,10 +175,8 @@ public class AppletCamara extends javax.swing.JApplet {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024]; // you can configure the buffer size
 			int length;
-		
 			while ((length = in.read(buffer)) != -1) out.write(buffer, 0, length); //copy streams
 			 // call this in a finally block
-		
 			return out.toByteArray();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -271,22 +269,42 @@ public class AppletCamara extends javax.swing.JApplet {
 
 	/** Auto-generated event handler method */
 	protected void jButtonDerechaActionPerformed(ActionEvent evt) {
-		camera.right();
+		new Thread() {
+			@Override
+			public void run() {
+				camera.right();
+			}
+		}.start();
 	}
 
 	/** Auto-generated event handler method */
 	protected void jButtonIzquierdaActionPerformed(ActionEvent evt) {
-		camera.left();
+		new Thread() {
+			@Override
+			public void run() {
+				camera.left();
+			}
+		}.start();
 	}
 
 	/** Auto-generated event handler method */
 	protected void jButtonArribaActionPerformed(ActionEvent evt) {
-		camera.up();
+		new Thread() {
+			@Override
+			public void run() {
+				camera.up();
+			}
+		}.start();
 	}
 
 	/** Auto-generated event handler method */
 	protected void jButtonAbajoActionPerformed(ActionEvent evt) {
-		camera.down();
+		new Thread() {
+			@Override
+			public void run() {
+				camera.down();
+			}
+		}.start();
 	}
 
 }

@@ -11,7 +11,7 @@
 <mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
 <mapEntry key="model" value="TPLinkSC4171G"/>
 <mapEntry key="password" value="lj2013"/>
-<mapEntry key="refresh" value="1500"/>
+<mapEntry key="refresh" value="100"/>
 <mapEntry key="url" value="http://ljcam2.dyndns.org:8888"/>
 <mapEntry key="username" value="preisinger"/>
 </mapAttribute>
