@@ -25,6 +25,9 @@ public class ViewCameraServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
+		if (cameraForm == null) {
+			return;
+		}
 		resp.setContentType(cameraForm.getCamera().getMimeType());
 		InputStream inputStream = null;
 		try {
