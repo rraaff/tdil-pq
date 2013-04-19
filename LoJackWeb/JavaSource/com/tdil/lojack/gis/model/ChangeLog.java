@@ -9,15 +9,11 @@ public class ChangeLog implements Serializable {
 	private String hour;
 	private String action;
 	private String user;
-	private String avatarURL;
+	private String lojackUserId;
 	
 	public ChangeLog() {
 	}
 	
-	public boolean hasAvatar() {
-		return !org.apache.commons.lang.StringUtils.isEmpty(avatarURL);
-	}
-
 	public String getDate() {
 		return date;
 	}
@@ -50,12 +46,12 @@ public class ChangeLog implements Serializable {
 		this.user = user;
 	}
 
-	public String getAvatarURL() {
-		return avatarURL;
+	public String getLojackUserId() {
+		return lojackUserId;
 	}
 
-	public void setAvatarURL(String avatarURL) {
-		this.avatarURL = avatarURL;
+	public void setLojackUserId(String lojackUserId) {
+		this.lojackUserId = lojackUserId;
 	}
-	
+
 }

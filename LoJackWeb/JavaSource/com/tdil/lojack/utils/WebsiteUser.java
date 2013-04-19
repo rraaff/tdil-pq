@@ -104,6 +104,10 @@ public class WebsiteUser extends User {
 	}
 
 	public com.tdil.lojack.model.WebsiteUser getModelUser() {
+		if (modelUser == null) {
+			modelUser = new com.tdil.lojack.model.WebsiteUser();
+			modelUser.setLojackuserid(lojackUserId);
+		}
 		return modelUser;
 	}
 

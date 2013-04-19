@@ -21,6 +21,7 @@ import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.thalamus.client.facade.ProfileResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.json.beans.LoginBean;
 import com.tdil.thalamus.client.facade.json.beans.LoginResult;
@@ -96,10 +97,7 @@ public class LoginForm extends ActionForm {
 		return user;
 	}
 	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
-		JSONObject profile = getProfile.getProfile();
-		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
-			user.setHomeUser(profile.getBoolean("isHomeUser"));
-		}
+		JSONObject profile = getProfile.getProfile().getJSONObject("person").getJSONObject(ProfileResponse.PROFILE);
 		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
 			user.setHomeUser(profile.getBoolean("isHomeUser"));
 		}
@@ -107,7 +105,7 @@ public class LoginForm extends ActionForm {
 			user.setPreventUser(profile.getBoolean("isPreventUser"));
 		}
 		if (profile.containsKey("isPetUser") && profile.get("isPetUser") != JSONNull.getInstance()) {
-			user.setHomeUser(profile.getBoolean("isPetUser"));
+			user.setPetUser(profile.getBoolean("isPetUser"));
 		}
 		if (profile.containsKey("lojackUserId") && profile.get("lojackUserId") != JSONNull.getInstance()) {
 			user.setLojackUserId(profile.getString("lojackUserId"));

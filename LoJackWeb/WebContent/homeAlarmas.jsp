@@ -180,8 +180,6 @@ Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a h
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | <a href="javascript:sendPanic()">Boton de panico</a>
 <hr> 
 
-<div class="edit" id="div_1">Dolor</div>
-
 Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <div id="accordion">

@@ -41,6 +41,10 @@ public class WebsiteUserUtils {
 		}
 	}
 	
+	public static boolean hasAvatar(com.tdil.lojack.model.WebsiteUser usr) {
+		return usr.getIdAvatar() != null && usr.getIdAvatar() != 0;
+	}
+	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(WebsiteUserUtils.class);
 	}
