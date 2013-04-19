@@ -5,7 +5,7 @@
 <%@ include file="includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %>
 <%
-Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser.getGuid());
+Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser.getGuid(), websiteUser.getLojackUserId(), websiteUser.getTimezoneOffset(), websiteUser.getTimezoneName());
 %>
 Enviar senial de panico <br>
 <% for (Alarm alarm : alarms) { %>

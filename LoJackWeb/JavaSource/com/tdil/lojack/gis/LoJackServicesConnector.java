@@ -234,7 +234,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, GET_ALARM_AGENDAS);
+			JSONResponse response = executeService(jsonObject, GET_ALARM_AGENDAS);
 			Collection<AlarmAgenda> resultObj = (Collection<AlarmAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), AlarmAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -248,7 +248,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, DELETE_ALARM_AGENDA);
+			JSONResponse response = executeService(jsonObject, DELETE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -261,7 +261,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, ACTIVATE_ALARM_AGENDA);
+			JSONResponse response = executeService(jsonObject, ACTIVATE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -451,7 +451,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(LIGHT_ID, lightId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_AGENDAS);
+			JSONResponse response = executeService(jsonObject, GET_LIGHT_AGENDAS);
 			Collection<LightAgenda> resultObj = (Collection<LightAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
@@ -465,7 +465,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, DELETE_LIGHT_AGENDA);
+			JSONResponse response = executeService(jsonObject, DELETE_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -478,7 +478,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, userId);
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
-			JSONResponse response = executeGIS(jsonObject, ACTIVATE_LIGHT_AGENDA);
+			JSONResponse response = executeService(jsonObject, ACTIVATE_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

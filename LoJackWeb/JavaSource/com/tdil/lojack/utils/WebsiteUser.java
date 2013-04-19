@@ -19,6 +19,12 @@ public class WebsiteUser extends User {
 	private String timezoneOffset;
 	private String timezoneName;
 	
+	private boolean isHomeUser;
+	private boolean isPreventUser;
+	private boolean isPetUser;
+	
+	private com.tdil.lojack.model.WebsiteUser modelUser;
+	
 	private Set<String> appliedActivities = new HashSet<String>();
 	
 	public WebsiteUser(String name, TokenHolder tokenHolder, String timezoneOffset, String timezoneName) {
@@ -95,6 +101,38 @@ public class WebsiteUser extends User {
 
 	public void setLojackUserId(String lojackUserId) {
 		this.lojackUserId = lojackUserId;
+	}
+
+	public com.tdil.lojack.model.WebsiteUser getModelUser() {
+		return modelUser;
+	}
+
+	public void setModelUser(com.tdil.lojack.model.WebsiteUser modelUser) {
+		this.modelUser = modelUser;
+	}
+
+	public boolean isHomeUser() {
+		return isHomeUser;
+	}
+
+	public void setHomeUser(boolean isHomeUser) {
+		this.isHomeUser = isHomeUser;
+	}
+
+	public boolean isPreventUser() {
+		return isPreventUser;
+	}
+
+	public void setPreventUser(boolean isPreventUser) {
+		this.isPreventUser = isPreventUser;
+	}
+
+	public boolean isPetUser() {
+		return isPetUser;
+	}
+
+	public void setPetUser(boolean isPetUser) {
+		this.isPetUser = isPetUser;
 	}
 	
 }

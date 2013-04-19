@@ -1,3 +1,5 @@
+Activar/desactivar agendas cambia el form a modo edicion...
+
 resolver timezone para login con fb y twitter...
 
 timezone en todos los servicios
@@ -32,5 +34,5 @@ Esto lo puedo poner en una funcion con timeout, fijarme la de prevent asi copio 
 
 Mostrar el error de login en el layer de login, sin cerrarlo
 
-Traerme el resource bundle de dispay tag
+Traerme el resource bundle de display tag
 

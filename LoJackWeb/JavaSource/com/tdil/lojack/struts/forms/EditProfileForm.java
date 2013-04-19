@@ -29,7 +29,7 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	private int imageId;
 	private UploadData avatar;
 	
-	private static final String avatar_key = "EditProfileForm.avatar";
+	public static final String avatar_key = "EditProfileForm.avatar";
 	
 	private static final int MAX_AVATAR_SIZE = 1000000;
 	
@@ -75,7 +75,7 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	public void initWith(String userId) throws SQLException {
 		this.userId = userId;
 		WebsiteUserExample websiteUserExample = new WebsiteUserExample();
-		websiteUserExample.createCriteria().andUseridEqualTo(userId);
+		websiteUserExample.createCriteria().andLojackuseridEqualTo(userId);
 		List<WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(websiteUserExample);
 		if (result != null && !result.isEmpty()) {
 			WebsiteUser user = result.get(0);
@@ -93,7 +93,7 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	@Override
 	public void save() throws SQLException, ValidationException {
 		WebsiteUserExample websiteUserExample = new WebsiteUserExample();
-		websiteUserExample.createCriteria().andUseridEqualTo(userId);
+		websiteUserExample.createCriteria().andLojackuseridEqualTo(userId);
 		List<WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(websiteUserExample);
 
 		int idAvatar = 0;
@@ -108,13 +108,13 @@ public class EditProfileForm extends TransactionalValidationForm implements
 		
 		if (result == null || result.isEmpty()) {
 			WebsiteUser user = new WebsiteUser();
-			user.setUserid(userId);
+			user.setLojackuserid(userId);
 			user.setIdAvatar(idAvatar);
 			user.setExtAvatar(extAvatar);
 			DAOManager.getWebsiteUserDAO().insertWebsiteUser(user);
 		} else {
 			WebsiteUser user = result.get(0);
-			user.setUserid(userId);
+			user.setLojackuserid(userId);
 			user.setIdAvatar(idAvatar);
 			user.setExtAvatar(extAvatar);
 			DAOManager.getWebsiteUserDAO().updateWebsiteUserByPrimaryKey(user);

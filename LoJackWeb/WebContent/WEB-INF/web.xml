@@ -94,6 +94,15 @@
  </servlet>
  
  <servlet>
+  <servlet-name>DownloadServlet</servlet-name>
+  <servlet-class>com.tdil.web.DownloadController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>DownloadServlet</servlet-name>
+  <url-pattern>/download.st</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
   <servlet-name>ViewCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.ViewCameraServlet</servlet-class>
  </servlet>

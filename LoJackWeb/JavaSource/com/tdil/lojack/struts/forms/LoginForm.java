@@ -4,12 +4,17 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONNull;
+import net.sf.json.JSONObject;
+
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
@@ -84,9 +89,32 @@ public class LoginForm extends ActionForm {
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
 		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), timezoneOffset, timezoneName);
+		setAccess(user, getProfile);
+		
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
+		user.setModelUser(WebsiteUserUtils.getWebSiteUser(user.getLojackUserId()));
 		return user;
 	}
+	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
+		JSONObject profile = getProfile.getProfile();
+		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
+			user.setHomeUser(profile.getBoolean("isHomeUser"));
+		}
+		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
+			user.setHomeUser(profile.getBoolean("isHomeUser"));
+		}
+		if (profile.containsKey("isPreventUser") && profile.get("isPreventUser") != JSONNull.getInstance()) {
+			user.setPreventUser(profile.getBoolean("isPreventUser"));
+		}
+		if (profile.containsKey("isPetUser") && profile.get("isPetUser") != JSONNull.getInstance()) {
+			user.setHomeUser(profile.getBoolean("isPetUser"));
+		}
+		if (profile.containsKey("lojackUserId") && profile.get("lojackUserId") != JSONNull.getInstance()) {
+			user.setLojackUserId(profile.getString("lojackUserId"));
+		}
+	}
+	
+	
 	public String getTimezoneOffset() {
 		return timezoneOffset;
 	}

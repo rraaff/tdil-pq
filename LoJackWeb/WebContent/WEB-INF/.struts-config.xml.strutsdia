@@ -281,4 +281,28 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/homeCamara.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToEditProfile" NAME="action42"
+  PATH="/goToEditProfile" SHAPE="32,4385,0,0" TITLE="EditProfileForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editAvatar.jsp" TARGET="page13" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page13" PATH="/editAvatar.jsp" SHAPE="240,4402,0,0"
+  SUBTYPE="jsp" TITLE="editAvatar.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveProfile.do"
+   SUBTYPE="confirmed" TARGET="action45" TITLE="/saveProfile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#uploadAvatar" NAME="action43" PATH="/uploadAvatar"
+  SHAPE="32,4721,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewAvatar" NAME="action44" PATH="/viewAvatar"
+  SHAPE="32,4721,0,0" TITLE="EditProfileForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveProfile" NAME="action45" PATH="/saveProfile"
+  SHAPE="1280,641,0,0" TITLE="EditProfileForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editAvatar.jsp" TARGET="page13" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

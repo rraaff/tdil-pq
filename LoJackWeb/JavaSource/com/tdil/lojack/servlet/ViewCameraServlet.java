@@ -29,7 +29,11 @@ public class ViewCameraServlet extends HttpServlet {
 		InputStream inputStream = null;
 		try {
 			inputStream = cameraForm.getCamera().nextFrame();
-			IOUtils.copy(inputStream, resp.getOutputStream());
+			if (inputStream != null) {
+				IOUtils.copy(inputStream, resp.getOutputStream());
+			} else {
+				// TODO enviar una imagen na ...
+			}
 		} finally {
 			if (inputStream != null) {
 				inputStream.close();

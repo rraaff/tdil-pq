@@ -4,13 +4,13 @@
     "date": "2012",
     "hour": "20:30",
     "user": "MARCELA",
-    "avatarURL" : null
+    "lojackUserId" : "2"
   },
     {
     "action": "DESATIVAR",
     "date": "2012",
     "hour": "22:30",
     "user": "MARCOS",
-    "avatarURL" : "http://ec2-54-234-200-17.compute-1.amazonaws.com:8080/TUAFESTA_WEB/images/skin_basic/logos/headerLogo.png"
+    "lojackUserId" : "1"
   }
 ]

@@ -16,8 +16,30 @@
 </script>
 </head>
 <body>
+<a href="./goToEditProfile.do" title="Cambiar">
+	<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
+		<img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
+	<% } else { %>
+		<img src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
+	<% } %>
+	</a>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
 <hr> 
-<a href="productoHome.jsp">Producto Home</a> | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
+<% if (websiteUser.isHomeUser()) { %>
+	<a href="productoHome.jsp">Producto Home</a>
+<% } else { %>
+	Producto Home
+<% } %> | 
+<% if (websiteUser.isHomeUser()) { %>
+	<a href="#">Producto Prevent</a>
+<% } else { %>
+	Producto Prevent
+<% } %> | 
+<% if (websiteUser.isPetUser()) { %>
+	<a href="#">Producto Pet</a>
+<% } else { %>
+	Producto Pet
+<% } %> | 
+ Boton de panico
 </body>
 </html>
