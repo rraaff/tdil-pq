@@ -90,9 +90,7 @@ public class Main {
 		
 		AlarmAlertConfiguration conf = new AlarmAlertConfiguration();
 		conf.setActivateDeactivate(false);
-		conf.setActivateDeactivateByOther(true);
 		conf.setAlarmActivation(true);
-		conf.setPowerSupplyLost(true);
 		JSONObject jsonObject2 = JSONObject.fromObject(conf);
 		System.out.println(jsonObject2.toString(2));
 	}

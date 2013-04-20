@@ -18,8 +18,6 @@ public class LightAlertConfigurationForm extends ExternalServiceForm {
 	private WebsiteUser user;
 	private String lightId;
 	private boolean activateDeactivate;
-	private boolean activateDeactivateByOther;
-	private boolean powerSupplyLost;
 	
 		
 	@Override
@@ -36,8 +34,6 @@ public class LightAlertConfigurationForm extends ExternalServiceForm {
 		configuration.setUserId(String.valueOf(user.getId()));
 		configuration.setLightId(this.getLightId());
 		configuration.setActivateDeactivate(this.isActivateDeactivate());
-		configuration.setActivateDeactivateByOther(this.isActivateDeactivateByOther());
-		configuration.setPowerSupplyLost(this.isPowerSupplyLost());
 		return LoJackServicesConnector.saveLightAlertConfiguration(user.getGuid(), configuration);
 	}
 
@@ -46,8 +42,6 @@ public class LightAlertConfigurationForm extends ExternalServiceForm {
 		setLightId(lightId);
 		LightAlertConfiguration conf = LoJackServicesConnector.getLightAlertConfiguration(String.valueOf(user.getId()), lightId);
 		this.setActivateDeactivate(conf.isActivateDeactivate());
-		this.setActivateDeactivateByOther(conf.isActivateDeactivateByOther());
-		this.setPowerSupplyLost(conf.isPowerSupplyLost());
 	}
 
 	public WebsiteUser getUser() {
@@ -72,22 +66,6 @@ public class LightAlertConfigurationForm extends ExternalServiceForm {
 
 	public void setActivateDeactivate(boolean activateDeactivate) {
 		this.activateDeactivate = activateDeactivate;
-	}
-
-	public boolean isActivateDeactivateByOther() {
-		return activateDeactivateByOther;
-	}
-
-	public void setActivateDeactivateByOther(boolean activateDeactivateByOther) {
-		this.activateDeactivateByOther = activateDeactivateByOther;
-	}
-
-	public boolean isPowerSupplyLost() {
-		return powerSupplyLost;
-	}
-
-	public void setPowerSupplyLost(boolean powerSupplyLost) {
-		this.powerSupplyLost = powerSupplyLost;
 	}
 
 }

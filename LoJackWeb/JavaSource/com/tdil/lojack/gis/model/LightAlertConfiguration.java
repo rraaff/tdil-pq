@@ -9,8 +9,6 @@ public class LightAlertConfiguration implements Serializable {
 	private String userId;
 	private String lightId;
 	private boolean activateDeactivate;
-	private boolean activateDeactivateByOther;
-	private boolean powerSupplyLost;
 	
 	public LightAlertConfiguration() {
 	}
@@ -26,18 +24,6 @@ public class LightAlertConfiguration implements Serializable {
 	}
 	public void setActivateDeactivate(boolean activateDeactivate) {
 		this.activateDeactivate = activateDeactivate;
-	}
-	public boolean isActivateDeactivateByOther() {
-		return activateDeactivateByOther;
-	}
-	public void setActivateDeactivateByOther(boolean activateDeactivateByOther) {
-		this.activateDeactivateByOther = activateDeactivateByOther;
-	}
-	public boolean isPowerSupplyLost() {
-		return powerSupplyLost;
-	}
-	public void setPowerSupplyLost(boolean powerSupplyLost) {
-		this.powerSupplyLost = powerSupplyLost;
 	}
 
 	public String getUserId() {

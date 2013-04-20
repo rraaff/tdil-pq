@@ -9,8 +9,6 @@ public class AlarmAlertConfiguration implements Serializable {
 	private String userId;
 	private String alarmId;
 	private boolean activateDeactivate;
-	private boolean activateDeactivateByOther;
-	private boolean powerSupplyLost;
 	private boolean alarmActivation;
 	
 	public AlarmAlertConfiguration() {
@@ -27,18 +25,6 @@ public class AlarmAlertConfiguration implements Serializable {
 	}
 	public void setActivateDeactivate(boolean activateDeactivate) {
 		this.activateDeactivate = activateDeactivate;
-	}
-	public boolean isActivateDeactivateByOther() {
-		return activateDeactivateByOther;
-	}
-	public void setActivateDeactivateByOther(boolean activateDeactivateByOther) {
-		this.activateDeactivateByOther = activateDeactivateByOther;
-	}
-	public boolean isPowerSupplyLost() {
-		return powerSupplyLost;
-	}
-	public void setPowerSupplyLost(boolean powerSupplyLost) {
-		this.powerSupplyLost = powerSupplyLost;
 	}
 	public boolean isAlarmActivation() {
 		return alarmActivation;

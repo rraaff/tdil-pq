@@ -10,8 +10,6 @@ Configuracion de las alertas
 <html:form method="POST" action="/saveAlarmAlertConf">
 	<div id="errorSavingConf" style="display: none;">Ha ocurrido un error</div>
 	Activacion/Desactivacion:<html:checkbox name="AlarmAlertConfigurationForm" property="activateDeactivate" styleClass="normalField width120"/>
-	Activacion/Desactivacion por otros:<html:checkbox name="AlarmAlertConfigurationForm" property="activateDeactivateByOther" styleClass="normalField width120"/>
-	Corte de energia:<html:checkbox name="AlarmAlertConfigurationForm" property="powerSupplyLost" styleClass="normalField width120"/>
 	Disparado de alarma:<html:checkbox name="AlarmAlertConfigurationForm" property="alarmActivation" styleClass="normalField width120"/>
 	<input type="submit" id="submitforgotPassword" value="Submit"><input type="button" id="closeConfAlertLayer" value="Cancel">
 </html:form>
