@@ -21,7 +21,7 @@ public class ToggleActivationLightAgendaAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		LightAgendaForm aForm = (LightAgendaForm)form;
 		try {
-			aForm.toggleActivation(request.getParameter("id"));
+			aForm.toggleActivation(request.getParameter("agendaId"));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

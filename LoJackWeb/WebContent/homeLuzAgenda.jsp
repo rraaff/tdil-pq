@@ -154,7 +154,7 @@ Configurar agenda para la luz <%=lightAgendaForm.getLightId() %>
 		<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable width350" property="active"></display:column>
 		<display:column title="Acciones" headerClass="sortable width100">
 			<a class="nonelyLink" href="./editLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
-				<a class="nonelyLink" href="./toggleActivationLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
+				<a class="nonelyLink" href="./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
 					<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
 						Desactivar
 					<% } else { %>

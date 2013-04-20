@@ -175,7 +175,7 @@ Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
 		<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable width350" property="active"></display:column>
 		<display:column title="Acciones" headerClass="sortable width100">
 			<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
-				<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
+				<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
 					<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
 						Desactivar
 					<% } else { %>
