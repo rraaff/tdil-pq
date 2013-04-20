@@ -29,9 +29,9 @@
 	});
 
     $("input[name=from]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-		changeYear: true, minDate: "-5Y", maxDate: "+5Y"});
+		changeYear: true, minDate: "-0d", maxDate: "+10Y"});
     $("input[name=to]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-		changeYear: true, minDate: "-5Y", maxDate: "+5Y"});
+		changeYear: true, minDate: "-0d", maxDate: "+10Y"});
 
     $("input[name='type']").click(function () {
     	if ($(this).attr('value') == 'CUSTOM') {
