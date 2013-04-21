@@ -1,3 +1,8 @@
+<% 
+	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
+	if (agentInfo.detectMobileLong()) { %>
+	<jsp:forward page="./mobile/index.jsp"></jsp:forward>
+<% } else { %>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.OptIn"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%>
@@ -570,3 +575,4 @@ function postResetPassword(data) {
 <%@ include file="includes/legalesLayer.jsp" %>
 </body>
 </html>
+<% } %>
