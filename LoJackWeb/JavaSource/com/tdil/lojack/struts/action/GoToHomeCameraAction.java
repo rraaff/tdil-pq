@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.ThalamusWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
@@ -25,6 +26,7 @@ public class GoToHomeCameraAction extends AbstractAction {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			aForm.initWith(user);
+			aForm.setUseApplet(ThalamusWebUtils.useCameraApplet(request));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

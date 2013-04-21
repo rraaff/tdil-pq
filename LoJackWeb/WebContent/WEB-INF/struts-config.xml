@@ -28,6 +28,7 @@
  <action-mappings>
 
   <action name="LoginForm" path="/login" scope="request" type="com.tdil.lojack.struts.action.LoginAction"/>
+  <action path="/checkSession" scope="request" type="com.tdil.lojack.struts.action.CheckSessionAjaxAction"/>
   
   <action path="/facebooklogin" scope="request" type="com.tdil.lojack.struts.action.LoginFacebookAction">
   	<forward name="register" path="/index.jsp?openRegister=true" redirect="true"/>

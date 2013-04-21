@@ -11,7 +11,7 @@
 --><%@ include file="includes/mustBeLogged.jspf" %>
 <html>
 <head>
-<%@ include file="includes/head.jsp" %>
+<%@ include file="includes/headLogged.jsp" %>
 <script>
 </script>
 </head>

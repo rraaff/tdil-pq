@@ -1,5 +1,6 @@
 package com.tdil.lojack.struts.action;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +24,9 @@ public class ToggleCameraViewAction extends AbstractAction {
 		} else {
 			aForm.setUseApplet(true);
 		}
+		Cookie cookie1 = new Cookie("cameview", aForm.isUseApplet() ? "applet" : "basic");
+		cookie1.setMaxAge(24*60*60);
+		response.addCookie(cookie1); 
 		return mapping.findForward("continue");
 	}
 	

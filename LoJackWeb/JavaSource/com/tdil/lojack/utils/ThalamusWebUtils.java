@@ -1,5 +1,8 @@
 package com.tdil.lojack.utils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
@@ -47,6 +50,23 @@ public class ThalamusWebUtils {
 	public static void addErrorsTo(ValidationError validationError,
 			ThalamusResponse response) {
 		addErrorsTo(validationError, response.getResult());
+	}
+	
+	public static boolean useCameraApplet(HttpServletRequest request) {
+		Cookie cameraCookie = getCameraCookie(request);
+		if (cameraCookie == null) {
+			return true;
+		}
+		return "applet".equals(cameraCookie.getValue());
+	}
+	
+	public static Cookie getCameraCookie(HttpServletRequest request) {
+		for (Cookie co : request.getCookies()) {
+			if (co.getName().equals("cameview")) {
+				return co;
+			}
+		}
+		return null;
 	}
 	
 }

@@ -14,8 +14,9 @@ DONE Armar servlet para mobile
 DONE tiempo de refresh parametrizable, documentarlo
 
 Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
+Que muestre el timestamp de la ultima actualizacion
 
-cookie para la seleccion de applet/no applet
+DONE cookie para la seleccion de applet/no applet
 
 escalado de la imagen
 
@@ -28,9 +29,6 @@ Armar el war y deployarlo en JBoss
 
 
 *** detalles
-
-Capturar respuestas de not logged y mandarlo a la index, tanto jsp directo, cargado de jsp en layer como ajax.
-Esto lo puedo poner en una funcion con timeout, fijarme la de prevent asi copio la logica
 
 Mostrar el error de login en el layer de login, sin cerrarlo
 
