@@ -60,17 +60,6 @@ $(document).ready(
 				}
 			}
 		);
-		$("input[name=activeConsumer]").click(function() {
-			 if ($(this).attr("checked")) {
-			      $("select[name=preferedBrandId]").removeAttr ( "disabled" );
-			      $("select[name=alternativeBrandId]").removeAttr ( "disabled" );
-			      $("input[name=consumptionFrequency]").removeAttr ( "disabled" );
-			 } else {
-			      $("select[name=preferedBrandId]").attr ( "disabled" , true );
-			      $("select[name=alternativeBrandId]").attr ( "disabled" , true );
-			      $("input[name=consumptionFrequency]").attr ( "disabled" , true );
-			 }
-		});
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 		
@@ -196,7 +185,6 @@ function basicRegister() {
 	$("form[name='RegisterForm'] select").each(function(index, param) {
 		$(param).val('');
 	});
-	$("form[name='RegisterForm'] input[name='activeConsumer']").prop('checked', true);  
 	centerLayer($(window), $( "#registerLayer" ));
 }
 
@@ -294,7 +282,13 @@ function postResetPassword(data) {
 				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 				registerForm.searchReferenceData();
 				%>
-				<% if (registerForm.isInUse(PersonFieldNames.firstName)) { %>
+					<div class="myRow">
+						<div class="myLabel width120">* DNI</div>
+						<div class="myLabel width270"><html:text name="RegisterForm" property="document" styleClass="normalField width250"/></div>
+					</div>
+					<div class="myRow errorField" style="display: none;" id="p.profile.document">
+						<div id="err.profile.document"></div>
+					</div>
 					<div class="myRow">
 						<div class="myLabel width120">* Name</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="firstName" styleClass="normalField width250"/></div>
@@ -303,8 +297,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
 						<div id="err.profile.firstName"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.lastName)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Surname</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="lastName" styleClass="normalField width250"/></div>
@@ -313,8 +305,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
 						<div id="err.profile.lastName"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.gender)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Gender</div>
 						<div class="myLabel width30"><html:radio property="gender" value="Male" /></div>
@@ -326,8 +316,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.gender">
 						<div id="err.profile.gender"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.email)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* E-mail</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="email" styleClass="normalField width250"/></div>
@@ -336,7 +324,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.email">
 						<div id="err.profile.email"></div>
 					</div>
-				<% } %>
 				<div class="myRow">
 					<div class="myLabel width120">* Password</div>
 					<div class="myLabel width270"><html:password name="RegisterForm" property="password" styleClass="normalField width250"/></div>
@@ -345,7 +332,6 @@ function postResetPassword(data) {
 				<div class="myRow errorField" style="display: none;" id="p.credential.password">
 					<div id="err.credential.password"></div>
 				</div>
-				<% if (registerForm.isInUse(PersonFieldNames.birthDate)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Birth date</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
@@ -354,18 +340,16 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
 						<div id="err.profile.birthDate"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Country code</div>
 						<div class="myLabel width100"><html:text name="RegisterForm" property="phoneIntCode" styleClass="normalField width100"/></div>
 					</div>
+					<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) ? "" : ""%>
 					<div class="myRow errorField" style="display: none;" id="p.profile.phone.intCode">
 						<div id="err.profile.phone.intCode"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) { %>
+					<% } %>
 					<div class="myRow">
 						<div class="myLabel width120">Area code</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
@@ -374,8 +358,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
 						<div id="err.profile.phone.areaCode"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Local number</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneNumber" styleClass="normalField width250"/></div>
@@ -384,8 +366,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.phone.number">
 						<div id="err.profile.phone.number"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneType)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Type</div>
 						<div class="myLabel width270">
@@ -402,8 +382,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.phone.type">
 						<div id="err.profile.phone.type"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.countryId)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Country</div>
 						<div class="myLabel width270">
@@ -420,8 +398,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.address.countryId">
 						<div id="err.profile.address.countryId"></div>
 					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.stateId)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">State/Province</div>
 						<div class="myLabel width270">
@@ -434,7 +410,6 @@ function postResetPassword(data) {
 					<div class="myRow errorField" style="display: none;" id="p.profile.address.stateId">
 						<div id="err.profile.address.stateId"></div>
 					</div>
-				<% } %>
 				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Street 1</div>
@@ -493,71 +468,6 @@ function postResetPassword(data) {
 						<div id="err.profile.address.city"></div>
 					</div>
 				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.activeConsumer)) { %>
-					<div class="myRow">
-						<div class="myLabel width30"><html:checkbox name="RegisterForm" property="activeConsumer"/></div>
-						<div class="myLabel width300">Consume NRG products?</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.activeConsumer)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.consumer.activeConsumer">
-						<div id="err.consumer.activeConsumer"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.preferedBrand)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Prefered brand?</div>
-						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="preferedBrandId" styleClass="normalField width250">
-								<option value="">Select one option</option>
-								<% for (BrandBean brand : registerForm.getBrands()) { %>
-									<option <%=	brand.getId() == registerForm.getPreferedBrandId() ? "selected" : ""%> value="<%=brand.getId()%>">
-										<%=brand.getName()%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.preferedBrand)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.consumer.preferedBrandId">
-						<div id="err.consumer.preferedBrandId"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.alternativeBrandId)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Alternate brand?</div>
-						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="alternativeBrandId" styleClass="normalField width250">
-								<option value="">Select one option</option>
-								<% for (BrandBean brand : registerForm.getBrands()) { %>
-									<option <%=	brand.getId() == registerForm.getAlternativeBrandId() ? "selected" : ""%> value="<%=brand.getId()%>">
-										<%=brand.getName()%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.alternativeBrandId)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.consumer.alternativeBrandId">
-						<div id="err.consumer.alternativeBrandId"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.consumtionFrequency)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Frecuency</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="consumptionFrequency" styleClass="normalField width50"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.consumtionFrequency)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.consumer.consumtionFrecuency">
-						<div id="err.consumer.consumtionFrecuency"></div>
-					</div>
-				<% } %>
-				<logic:iterate id="optIn" name="RegisterForm" property="optIns">
-					<div class="myRow">
-						<div class="myLabel width100per"><h3><bean:write name="optIn" property="brandFamilyName"/></h3></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width30"><html:checkbox name="optIn" property="accepted" indexed="true" /></div>
-						<div class="myLabel width350"><bean:write name="optIn" property="channelName"/></div>
-					</div>
-				</logic:iterate>
 				<div class="myRow">
 					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"><input type="button" id="closeregisterLayer" value="Cancel"></div>
 				</div>

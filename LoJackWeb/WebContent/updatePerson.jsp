@@ -1,5 +1,4 @@
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
-<%@page import="com.tdil.lojack.struts.forms.beans.OptIn"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.CountryBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.fields.PersonFieldNames"%>
@@ -55,17 +54,6 @@ $(document).ready(
 				}
 			}
 		);
-		$("input[name=activeConsumer]").click(function() {
-			 if ($(this).attr("checked")) {
-			      $("select[name=preferedBrandId]").removeAttr ( "disabled" );
-			      $("select[name=alternativeBrandId]").removeAttr ( "disabled" );
-			      $("input[name=consumptionFrequency]").removeAttr ( "disabled" );
-			 } else {
-			      $("select[name=preferedBrandId]").attr ( "disabled" , true );
-			      $("select[name=alternativeBrandId]").attr ( "disabled" , true );
-			      $("input[name=consumptionFrequency]").attr ( "disabled" , true );
-			 }
-		});
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 		
@@ -136,32 +124,6 @@ function postRegister(data) {
 </script>
 </head>
 <body onLoad="javascript:register();">
-<div id="structure">
-	<div id="content">
-		<!-- top menu -->
-		<%
-			if (logged && websiteUser.appliesToActivity("EMileage")) { com.tdil.lojack.utils.ThalamusWebUtils.loginToActivity(websiteUser, "EMileage");
-		%>
-			<%@ include file="includes/EMileageMenu.jsp" %>
-		<%
-			} else {
-		%>
-			<%@ include file="includes/regularMenu.jsp" %>
-		<%
-			}
-		%>
-	</div>
-	<div id="footer">
-		<%
-			if (logged && websiteUser.appliesToActivity("EMileage")) { com.tdil.lojack.utils.ThalamusWebUtils.loginToActivity(websiteUser, "EMileage");
-		%>
-			<div class="signInButtons" style="width:760px;"><img src="images/skin_nrg2/logos/nrg_on_footer.png" width="446" height="119"><a href="mp/cupon.jsp" title="Insert your code now!"><img src="images/skin_nrg2/buttons/btn_cupon.png" width="314" height="99"></a></div>
-		<% } else { %>
-			<div class="signInButtons"><img src="images/skin_nrg2/logos/nrg_on_footer.png"></div>
-		<% } %>
-		<div class="theThalamusLogo"><a href="http://www.thalamuscorp.com/" title="Thalamus driven" target="_blank"><img src="images/skin_nrg2/logos/thalamus_diven.png" alt="Thalamus driven"></a></div>
-	</div>
-</div>
 <!-- Edit profile layer -->
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
 	<div class="registerLayerStyles editProfileLayer">
@@ -172,21 +134,23 @@ function postRegister(data) {
 			<html:form method="POST" action="/updatePerson">
 				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("UpdatePersonForm");
 				%>
-				<% if (registerForm.isInUse(PersonFieldNames.firstName)) { %>
+				<div class="myRow">
+						<div class="myLabel width120">* DNI</div>
+						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="document" styleClass="normalField width250"/></div>
+					</div>
+					<div class="myRow errorField" style="display: none;" id="p.profile.document">
+						<div id="err.profile.document"></div>
+					</div>
 					<div class="myRow">
 						<div class="myLabel width120">* Name</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="firstName" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstName"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.lastName)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Surname</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="lastName" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastName"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.gender)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Gender</div>
 						<div class="myLabel width30"><html:radio property="gender" value="Male" /></div>
@@ -195,8 +159,6 @@ function postRegister(data) {
 						<div class="myLabel width110">Femenino</div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%><div id="err.profile.gender"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.email)) { %>
 					<div class="myRow">
 					<% if (registerForm.isPrincipal(PersonFieldNames.email)) { %>
 							<div class="myLabel width120">* E-mail / User</div>
@@ -208,19 +170,16 @@ function postRegister(data) {
 						</div>
 						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "*" : ""%><div id="err.profile.email"></div>
 					<% } %>
-				<% } %>
 				<div class="myRow">
 					<div class="myLabel width120">* Password</div>
 					<div class="myLabel width270"><html:password name="UpdatePersonForm" property="password" styleClass="normalField width250"/></div>
 				</div>
 				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%><div id="err.credential.password"></div>
-				<% if (registerForm.isInUse(PersonFieldNames.birthDate)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">* Birth date</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="birthDate" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
-				<% } %>
 				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Country code</div>
@@ -228,20 +187,16 @@ function postRegister(data) {
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) ? "*" : ""%><div id="err.profile.phone.intCode"></div>
 				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Area code</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "*" : ""%><div id="err.profile.phone.areaCode"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Local number</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="phoneNumber" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "*" : ""%><div id="err.profile.phone.number"></div>
-				<% } %>
 				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneType)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Type</div>
@@ -330,59 +285,6 @@ function postRegister(data) {
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "*" : ""%><div id="err.profile.address.city"></div>
 				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.activeConsumer)) { %>
-					<div class="myRow">
-						<div class="myLabel width30"><html:checkbox name="UpdatePersonForm" property="activeConsumer"/></div>
-						<div class="myLabel width300">Consume NRG products?</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.activeConsumer)) ? "*" : ""%><div id="err.consumer.activeConsumer"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.preferedBrand)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Prefered brand?</div>
-						<div class="myLabel width270">
-							<html:select name="UpdatePersonForm" property="preferedBrandId" styleClass="normalField width250">
-								<option value="">Select one option</option>
-								<% for (BrandBean brand : registerForm.getBrands()) { %>
-									<option <%=	brand.getId() == registerForm.getPreferedBrandId() ? "selected" : ""%> value="<%=brand.getId()%>">
-										<%=brand.getName()%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.preferedBrand)) ? "*" : ""%><div id="err.consumer.preferedBrandId"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.alternativeBrandId)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Alternate brand?</div>
-						<div class="myLabel width270">
-							<html:select name="UpdatePersonForm" property="alternativeBrandId" styleClass="normalField width250">
-								<option value="">Select one option</option>
-								<% for (BrandBean brand : registerForm.getBrands()) { %>
-									<option <%=	brand.getId() == registerForm.getAlternativeBrandId() ? "selected" : ""%> value="<%=brand.getId()%>">
-										<%=brand.getName()%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.alternativeBrandId)) ? "*" : ""%><div id="err.consumer.alternativeBrandId"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.consumtionFrequency)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Frecuency</div>
-						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="consumptionFrequency" styleClass="normalField width50"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.consumtionFrequency)) ? "*" : ""%><div id="err.consumer.consumtionFrecuency"></div>
-				<% } %>
-				<logic:iterate id="optIn" name="UpdatePersonForm" property="optIns">
-					<div class="myRow">
-						<div class="myLabel width100per"><h3><bean:write name="optIn" property="brandFamilyName"/></h3></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width30"><html:checkbox name="optIn" property="accepted" indexed="true" /></div>
-						<div class="myLabel width350"><bean:write name="optIn" property="channelName"/></div>
-					</div>
-				</logic:iterate>
 				<div class="myRow">
 					<div class="myLabel width100per" align="center">
 						<input type="submit" id="submitregister" value="Save">

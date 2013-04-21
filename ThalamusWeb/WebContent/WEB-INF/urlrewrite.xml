@@ -32,6 +32,12 @@
     <rule>
         <note>
         </note>
+        <from>/api/v1/referencedata/countries/1/states</from>
+        <to>/states1.json</to>
+    </rule>
+    <rule>
+        <note>
+        </note>
         <from>/api/v1/referencedata/countries</from>
         <to>/countries.json</to>
     </rule>

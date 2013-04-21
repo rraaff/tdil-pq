@@ -53,7 +53,16 @@ public class ThalamusRegisterAction extends AjaxAction {
 					result.put("general", error1.getGeneralError());
 				}
 				for (Map.Entry<String, String> fieldErr : error1.getFieldErrors().entrySet()) {
-					result.put(fieldErr.getKey(), ApplicationResources.getMessage(fieldErr.getValue()));
+					String keyToStore = fieldErr.getKey();
+					if (keyToStore.equals("credential.principal")) {
+						keyToStore = aForm.getFieldNameForPrincipal();
+					}
+					String err = ApplicationResources.getMessage(fieldErr.getValue());
+					if (StringUtils.isEmpty(err)) {
+						result.put(keyToStore, fieldErr.getValue());
+					} else {
+						result.put(keyToStore, err);
+					}
 				}
 				writeJsonResponse(result, response);
 				return null;
