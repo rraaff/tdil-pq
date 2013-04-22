@@ -10,6 +10,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -20,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
+import com.tdil.utils.encryption.DesEncrypter;
 
 /**
  * Class <code>AppletCamara</code> is responsible of establishing a directo connection
@@ -208,16 +211,45 @@ public class AppletCamara extends javax.swing.JApplet {
 
 	public void init() {
 		super.init();
-		String url = getParameter("url");
 		String username = getParameter("username");
-		String password = getParameter("password");
-		refreshInterval = 1000;
-		String refreshIntervalParam = getParameter("refresh");
-		if (refreshIntervalParam != null) {
-			refreshInterval = Long.parseLong(refreshIntervalParam);
+		String url = null;
+		String password = null;
+		String refreshIntervalParam = null;
+		String model = null;
+		if (username == null || username.length() == 0) {
+			URL urlParams;
+			try {
+				urlParams = new URL(this.getCodeBase().toString() + "/cameraConfig");
+				byte[] params = getBytesFrom(urlParams.openStream());
+				DesEncrypter encrypter = new DesEncrypter("esta es la clave de la camara para lojack");
+				byte[] conf = encrypter.decrypt(params);
+				String config = new String(conf);
+				String parameters[] = config.split(",");
+				username = parameters[0];
+				password = parameters[1];
+				url = parameters[2];
+				model = parameters[3];
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			url = getParameter("url");
+			password = getParameter("password");
+			refreshInterval = 1000;
+			refreshIntervalParam = getParameter("refresh");
+			if (refreshIntervalParam != null) {
+				refreshInterval = Long.parseLong(refreshIntervalParam);
+			}
+	
+			model = getParameter("model");
 		}
-
-		String model = getParameter("model");
 		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(model)) {
 			camera = new TPLinkSC4171G(url, username, password);
 		}

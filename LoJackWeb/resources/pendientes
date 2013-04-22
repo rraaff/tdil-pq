@@ -1,4 +1,4 @@
-instalar ffmpeg
+instalar ffmpeg, documentar como y para que
 
 resolver timezone para login con fb y twitter...
 
@@ -20,7 +20,7 @@ DONE cookie para la seleccion de applet/no applet
 
 escalado de la imagen
 
-WishList: que el applet no tenga los datos de la camara, sino que se los baje de la webapp, encriptados, 
+DONE: que el applet no tenga los datos de la camara, sino que se los baje de la webapp, encriptados, 
 de forma que no queden visibles ninguno de los mismos.
 
 Parte thalamus
