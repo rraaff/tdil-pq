@@ -41,7 +41,7 @@ Listado | <a href="getAll.jsp">Cargar todos</a>
 		<td><%=ftu.getId()%></td>
 		<td><%=ftu.getName()%></td>
 		<td><%=ftu.getEmail()%></td>
-		<td><%=ftu.getLogin_url()%></td>
+		<td><a href="<%=ftu.getLogin_url()%>"><%=ftu.getLogin_url()%></a></td>
 		<td><a href="deleteTestUser.jsp?id=<%=ftu.getId()%>">Borrar</a></td>
 	</tr>
 	<% } %>
