@@ -1,5 +1,5 @@
 UPDATE SYSPROPERTIES 
-set propValue = 'https://testa-lojack-rest.thalamuslive.com/lojack/' where propKey = 'thalamus.server';
+set propValue = 'https://testa-lojack-rest.thalamuslive.com/lojack' where propKey = 'thalamus.server';
 
 UPDATE SYSPROPERTIES 
 set propValue = 'REAL-LIFE-SMARTPHONE-APP' where propKey = 'thalamus.touchpoint.code';

@@ -216,7 +216,10 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private JSONObject getPersonJSON() {
 		JSONObject general = new JSONObject();
 		JSONObject profile = new JSONObject();
-		profile.put("document", this.getDocument());
+		JSONObject document = new JSONObject();
+		document.put("type", 1);
+		document.put("number", this.getDocument());
+		profile.put("document", document);
 		if (isInUseAndEditable(PersonFieldNames.firstName)) {
 			profile.put(PersonFieldNames.firstName, this.getFirstName());
 		}
@@ -597,12 +600,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		return twitter;
 	}
 	public String getFieldNameForPrincipal() {
-		FieldDescription fieldDescription = personFields.getProfileField(PersonFieldNames.email);
-		if (fieldDescription.isPrincipal()) {
-			return "profile.email";
-		}
-		// TODO aca tener en cuenta el resto de los campos que pueden ser principal
-		return null;
+		return "profile.document";
 	}
 	public String getDocument() {
 		return document;

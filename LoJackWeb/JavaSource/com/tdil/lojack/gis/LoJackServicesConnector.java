@@ -528,7 +528,7 @@ public class LoJackServicesConnector {
 	
 	private static JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		if (LOG.isDebugEnabled()) {
-			LOG.debug("Execute POST to: " + service + " json " + (json == null ? "null" : json));
+			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
 		}
 		HttpClient client = new HttpClient();
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + service);
@@ -541,13 +541,13 @@ public class LoJackServicesConnector {
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
 			String response = httpMethod.getResponseBodyAsString();
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
+			}
 			if (statusCode != HttpStatus.SC_OK) {
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
 			JSON result = extractJSONObjectResponse(response);
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("POST result is: " + result);
-			}
 			return new JSONResponse(result, statusCode);
 		} catch (HttpException e) {
 			throw new CommunicationException(e);
