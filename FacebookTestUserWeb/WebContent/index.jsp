@@ -34,6 +34,7 @@ Listado | <a href="getAll.jsp">Cargar todos</a>
 		<td>Nombre</td>
 		<td>Email</td>
 		<td>Login</td>
+		<td>Cargar</td>
 		<td>Borrar</td>
 	</tr>
 	<% for (FacebookTestUser ftu : facebookTestData.getTestUsers()) { %>
@@ -42,6 +43,7 @@ Listado | <a href="getAll.jsp">Cargar todos</a>
 		<td><%=ftu.getName()%></td>
 		<td><%=ftu.getEmail()%></td>
 		<td><a href="<%=ftu.getLogin_url()%>"><%=ftu.getLogin_url()%></a></td>
+		<td><a href="getUser.jsp?id=<%=ftu.getId()%>">Cargar</a></td>
 		<td><a href="deleteTestUser.jsp?id=<%=ftu.getId()%>">Borrar</a></td>
 	</tr>
 	<% } %>
