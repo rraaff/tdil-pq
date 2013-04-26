@@ -41,7 +41,7 @@ public class WebsiteUser extends User {
 	}
 	
 	public String getGuid() {
-		return String.valueOf(this.getToken().getCookie().getValue());
+		return String.valueOf(this.getToken().getCookie("JSESSIONID").getValue());
 	}
 	
 	public boolean isLogged() {
