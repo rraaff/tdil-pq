@@ -1,9 +1,13 @@
 package com.tdil.lojack.prevent.model;
 
+import java.io.Serializable;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias(value="UserLogin")
-public class UserLogin {
+public class UserLogin implements Serializable {
+
+	private static final long serialVersionUID = 2302439744441021092L;
 
 	@XStreamAlias("User")
 	private String user;

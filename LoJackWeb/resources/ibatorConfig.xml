@@ -39,7 +39,7 @@ targetProject="LoJackWeb">
   <property name="enableSubPackages" value="true" />
   <property name="methodNameCalculator" value="extended" />
 </daoGenerator>
-
+<!-- SqlServer ??? -->
 <table schema="LOJACK" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
