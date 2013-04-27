@@ -2,7 +2,12 @@ instalar ffmpeg, documentar como y para que
 
 lojackUserId en todos los servicios
 
-tema cookies en twitter login y thalamus login, pasar todas, tomar todas
+url de las cookies, deshardcodear
+
+pasar servlets,actions, etc de energy a lojack
+
+tema cookies en twitter login y thalamus login, pasar todas, tomar todas, esto si gabriel no descula lo de doble cookie
+
 
 *** si o si
 
