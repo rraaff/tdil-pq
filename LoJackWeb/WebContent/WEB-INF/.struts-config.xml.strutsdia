@@ -307,4 +307,27 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#checkSession" NAME="action46" PATH="/checkSession"
   SHAPE="32,4385,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToChangePassword" NAME="action47"
+  PATH="/goToChangePassword" SHAPE="32,4385,0,0"
+  TITLE="ChangePasswordForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/changePassword.jsp" TARGET="page14" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page14" PATH="/changePassword.jsp"
+  SHAPE="240,4402,0,0" SUBTYPE="jsp" TITLE="changePassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changePassword.do"
+   SUBTYPE="confirmed" TARGET="action48" TITLE="/changePassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#changePassword" NAME="action48"
+  PATH="/changePassword" SHAPE="448,4385,0,0" TITLE="ChangePasswordForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/changePassword.jsp" TARGET="page14" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

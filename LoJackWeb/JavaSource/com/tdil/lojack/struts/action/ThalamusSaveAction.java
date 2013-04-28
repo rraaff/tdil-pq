@@ -7,9 +7,11 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessages;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
+import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
@@ -38,6 +40,8 @@ public class ThalamusSaveAction extends AbstractAction {
 				form.save();
 				form.reset();
 				form.init();
+			} catch (ValidationException e) {
+				return redirectToFailure(e, request, mapping);
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
@@ -45,6 +49,35 @@ public class ThalamusSaveAction extends AbstractAction {
 			}
 		}
 		return mapping.findForward("continue");
+	}
+	
+	protected ActionForward redirectToFailure(ValidationException ex, HttpServletRequest request, ActionMapping mapping) {
+/*		ValidationError error1 = ex.getError();
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		result.put("result", "ERR");
+		if (!StringUtils.isEmpty(error1.getGeneralError())) {
+			result.put("general", error1.getGeneralError());
+		}
+		for (Map.Entry<String, String> fieldErr : error1.getFieldErrors().entrySet()) {
+			String keyToStore = fieldErr.getKey();
+			String err = ApplicationResources.getMessage(fieldErr.getValue());
+			if (StringUtils.isEmpty(err)) {
+				result.put(keyToStore, fieldErr.getValue());
+			} else {
+				result.put(keyToStore, err);
+			}
+		}*/
+		
+		ActionMessages msg = ex.asMessages();
+		if (msg != null) {
+			request.setAttribute("hasError", "true");
+			addErrors(request, msg);
+		}
+		ActionMessages errors = ex.getError().asActionsErrors();
+		if (errors != null) {
+			addErrors(request, errors);	
+		}
+		return mapping.findForward("failure");
 	}
 	
 	private static Logger getLog() {

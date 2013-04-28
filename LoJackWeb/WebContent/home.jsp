@@ -23,7 +23,8 @@
 		<img src="boImages/na.gif" width="30" height="30" align="absmiddle"> 
 	<% } %>
 	</a>
-	<a href="./goToUpdatePerson.do" title="Cambiar mis datos">Cambiar mis datos</a> | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
+	<a href="./goToUpdatePerson.do" title="Cambiar mis datos">Cambiar mis datos</a> | 
+	<a href="./goToChangePassword.do" title="Cambiar mi password">Cambiar mi password </a> | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
 <hr> 
 <% if (websiteUser.isHomeUser()) { %>
 	<a href="productoHome.jsp">Producto Home</a>

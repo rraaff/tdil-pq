@@ -22,10 +22,10 @@ public class Main {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException, IOException {
-		/*UserLogin userLogin = new UserLogin();
-		userLogin.setUser("Prevent2");
-		userLogin.setPassword("1234");
-		PreventConnector.login(userLogin);*/
+		UserLogin userLogin = new UserLogin();
+		userLogin.setUser("grecovery");
+		userLogin.setPassword("7744");
+		PreventConnector.login(userLogin);/*
 		String vehicles = IOUtils.toString(Main.class.getResourceAsStream("Vehicles.xml"));
 		System.out.println(vehicles);	
 		Object o = XMLUtils.fromXML(vehicles);
@@ -35,7 +35,7 @@ public class Main {
 		String zones = IOUtils.toString(Main.class.getResourceAsStream("SatellitePositions.xml"));
 		System.out.println(zones);	
 		o = XMLUtils.fromXML(zones);
-		System.out.println(o);
+		System.out.println(o);*/
 	}
 
 }

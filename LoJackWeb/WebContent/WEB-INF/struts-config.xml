@@ -17,6 +17,7 @@
   <form-bean id="LightAlertConfigurationForm" name="LightAlertConfigurationForm" type="com.tdil.lojack.struts.forms.LightAlertConfigurationForm"/>
   <form-bean id="CameraForm" name="CameraForm" type="com.tdil.lojack.struts.forms.CameraForm"/>
   <form-bean id="EditProfileForm" name="EditProfileForm" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
+  <form-bean id="ChangePasswordForm" name="ChangePasswordForm" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -86,6 +87,15 @@
   <action name="EditProfileForm" parameter="WebsiteUser" path="/saveProfile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileAction">
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   	<forward name="failure" path="/editAvatar.jsp"/>
+  </action>
+  
+  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/goToChangePassword" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
+  	<forward name="continue" path="/changePassword.jsp" redirect="true"/>
+  </action>
+  
+  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/changePassword" scope="session" type="com.tdil.lojack.struts.action.ThalamusSaveAction">
+  	<forward name="failure" path="/changePassword.jsp"/>
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
   </action>
   
   <action path="/searchStates" type="com.tdil.lojack.struts.action.SearchStatesAjaxAction"/>
