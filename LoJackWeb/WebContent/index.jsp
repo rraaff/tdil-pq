@@ -22,9 +22,72 @@
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
 	} %>
-<html>
-<head>
 <%@ include file="includes/head.jsp" %>
+<!-- Slider -->
+<script src="js/jquery-latest.js"></script>
+<link href="css/slider.css" rel="stylesheet" type="text/css" />
+<script src="js/slideshow.js"></script>
+<script>
+	var t=setInterval(function(){$("#right").click()},10000);
+	$(document).ready(function()
+	{
+		var present=1;
+		var next=2;
+		var total_slide=document.getElementById("slider").childElementCount;
+		
+		$("#right").click(function()
+		{
+			
+			present_slide="#slide"+present;
+			next_slide="#slide"+next;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			present++;
+			next++;
+			if(present==(total_slide+1))
+			{
+				present=1;
+				next=2;
+				for(i=1;i<=total_slide;i++)
+				{
+					$("#slide"+i).css("top","426px");
+				}
+				$("#slide1").css("top","0px");
+			}
+			
+		});
+		
+		$("#left").click(function()
+		{
+			if(present==1)
+			{
+			next_slide="#slide"+total_slide;
+			present_slide="#slide"+present;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			
+			present=total_slide;
+			next=1;
+			}else
+			{
+			next_slide="#slide"+(present-1);
+			present_slide="#slide"+present;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			present--;
+			next--;
+			}
+			if(next==0)
+			{
+				present=(total_slide-1);
+				next=total_slide;
+	
+			}
+		});
+	});
+
+</script>
+<!-- End Slider -->
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
 
@@ -258,25 +321,37 @@ function postResetPassword(data) {
 </script>
 </head>
 <body>
-<div id="structure">
-	<div id="content">
-		
-	</div>
-	<div id="footer">
-		<div class="signInButtons"><a href="javascript:register();" id="register" title="Register Now!"><img src="images/skin_nrg2/buttons/btn_register_new.png"></a></div>
-		<div class="menuNotAnUser">
-			<ul>
-				<li><a href="javascript:register();" id="register" title="Register Now!">Register Now!</a></li>
-				<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Register Now!">Facebook</a></li>
-				<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Register Now!">Twitter</a></li>
-				<li><a href="javascript:login();" id="login" title="Access now!">Login</a></li>
-				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Forgot your password? Enter here to recover it">Password recovery</a></li>
-				<li><a href="javascript:verLegales();" id="legales" title="Legales">Legal</a></li>
+<section id="main">
+	<%@ include file="includes/header.jsp" %>
+	<section id="productsMenu">
+		<div class="userLoggedThalamusMenu">
+			<ul class="nav">
+				<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
+				<li class="toRight"><a href="#" title="¿Dónde estacioar? Te ayudamos a encontrar un lugar">Parking</a></li>
+				<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
+				<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
+				<li class="toRight"><a href="#" title="Administrá sus alarmas, luces y cámaras">Home</a></li>
 			</ul>
 		</div>
-		<div class="theThalamusLogo"><a href="http://www.thalamuscorp.com/" title="Thalamus driven" target="_blank"><img src="images/skin_nrg2/logos/thalamus_diven.png" alt="Thalamus driven"></a></div>
-	</div>
-</div>
+	</section>
+	<section id="content">
+		<div id="sliderContainer">
+			
+			<div id="slider"><!-- <img src="images/null.gif" />-->
+				<div id="slide1" class="slide page1"><a href="#" title="">&nbsp;</a></div>
+				<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
+				<div id="slide3" class="slide page3"><a href="#" title="">&nbsp;</a></div>
+				<div id="slide4" class="slide page4"><a href="#" title="">&nbsp;</a></div>
+				<div id="slide5" class="slide page5"><a href="#" title="">&nbsp;</a></div>
+			</div>
+			<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
+			<img src="images/back.png" width="40px;"  id="left"/></div>
+		</div>
+	</section>
+	<section id="footer">
+
+	</section>
+</section>
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
