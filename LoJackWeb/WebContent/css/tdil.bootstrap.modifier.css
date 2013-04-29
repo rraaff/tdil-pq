@@ -1,0 +1,107 @@
+body, section, div, table, td, tr { margin: 0; padding: 0; border:0;}
+a {
+	color: #FFF;
+}
+#main {
+	color: #3F3F3F;
+	font-weight: normal;
+	font-family: "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
+}
+header {
+	color: #FFF;
+	background: #000;
+	width: 100%;
+	height: 42px;
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	overflow: hidden;
+}
+header .userLoggedThalamusMenu, #productsMenu .userLoggedThalamusMenu {
+	text-transform: uppercase;
+	font-size: 8px;
+	width: 964px;
+	margin: 0px auto;
+	padding: 0px;
+}
+header .correctNav, .nav {
+	margin: 0px;
+	padding: 0px;
+	height: 0px;
+	line-height: 0px;
+}
+header ul li {
+	line-height: 42px;
+	float: left;
+}
+header ul li.toRight, #productsMenu ul li.toRight {
+	float: right;
+}
+header .nav>li>a  {
+	padding-left:20px;
+	padding-right: 20px; 
+}
+header .nav>li>a:hover, header .nav>li>a:focus, #productsMenu .nav>li>a:hover, #productsMenu .nav>li>a:focus  {
+	background-color: #f05223;
+}
+header a:hover, header a:focus {
+	color: #FFF;
+	text-decoration: underline;
+}
+header .userName {
+	color: #f05223;
+}
+/* PRODUCT NAV */
+#productsMenu {
+	background: url(../images/skin_lj_rl/backs/productsMenu.png);
+	background-repeat: repeat-x;
+	width: 100%;
+	height: 109px;
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	overflow: hidden;
+}
+#productsMenu ul li.logo {
+	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
+	background-repeat: no-repeat;
+	width: 219px;
+	height: 109px;
+	float: left;
+}
+#productsMenu ul li {
+	background:#e41b23;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 109px;
+}
+#productsMenu .nav>li>a:hover {
+	color:#fff
+}
+#productsMenu .nav>li>a {
+	padding-right:35px;
+	padding-left:35px;
+}
+/*content*/
+#content {
+	color: #FFF;
+	background: #0005FF;
+	width: 100%;
+	height: 426px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	/*display: inline-block;*/
+	overflow: hidden;
+}
+/* FOOTER */
+#footer-copy {
+	background: #e6e6e6;
+	border-top: 1px solid #f3f3f3;
+	color: #808080;
+	font-size: 11px;
+	font-family: arial;
+	line-height: 16px;
+	text-align: center;
+	padding: 10px 0;
+}
