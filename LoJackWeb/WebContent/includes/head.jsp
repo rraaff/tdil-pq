@@ -1,8 +1,19 @@
-<title>Thalamus Demo web :: The Brain, Heart and Muscle of brand-consumer relationships</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>TBD :: TBD</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
-<link type='text/css' href='css/reset-styles.css' rel='stylesheet' media='screen' />
-<link type='text/css' href='css/sizers.css' rel='stylesheet' media='screen' />
-<link type='text/css' href='css/style.css' rel='stylesheet' media='screen' />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/reset-styles" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- Hay que definir cuales jqueries hacen falta y cuales no para no tener lios con bootstrap-->
 <link type='text/css' href='css/jquery-ui-1.10.2.custom.css' rel='stylesheet' media='screen' />
 <script type='text/javascript' src='js/jquery-1.7.min.js'></script>
 <script type='text/javascript' src='js/jquery.form.js'></script>
