@@ -20,6 +20,7 @@ import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.model.SystemProperty;
 import com.tdil.lojack.model.SystemPropertyExample;
+import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.roles.WebsiteUser;
 import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ThalamusClient;
@@ -98,6 +99,13 @@ public class LoJackConfig extends SystemConfig {
 		}
 		getLog().fatal(
 				"Services server is " + (servicesserver == null ? "null" : servicesserver));
+		
+		String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
+		if (preventserver != null) {
+			PreventConnector.setPreventServer(preventserver);
+		}
+		getLog().fatal(
+				"Prevent server is " + (preventserver == null ? "null" : preventserver));
 	}
 	
 	

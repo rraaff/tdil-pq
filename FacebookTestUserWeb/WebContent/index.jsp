@@ -15,9 +15,11 @@
 	Conectado a <%=facebookTestData.getAppName()%>
 <% } else { %>
 	No conectado
-<% } %> | <a href="initWith.jsp?appId=520056664702384&clientSecret=e5929ff3d78f50a6e19cfe44e48e899a&appName=ThalamusTest">Inicializar para Thalamus Test</a>
+<% } %> <br> <a href="initWith.jsp?appId=520056664702384&clientSecret=e5929ff3d78f50a6e19cfe44e48e899a&appName=ThalamusTest">Inicializar para Thalamus Test</a>
 <br>
 <a href="initWith.jsp?appId=103292516498840&clientSecret=bf071b86cf483bb62ae0494cd56496ec&appName=TuaFesta">Inicializar para Tua Festa Test</a>
+<br>
+<a href="initWith.jsp?appId=520886374635218&clientSecret=94f191d5758f8387a834ac1e41010f6d&appName=LoJackDev">Inicializar para LoJackDev</a>
 
 <hr>
 Crear usuario
