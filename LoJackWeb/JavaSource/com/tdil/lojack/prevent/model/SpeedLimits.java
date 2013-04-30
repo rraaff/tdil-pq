@@ -21,4 +21,18 @@ public class SpeedLimits implements Serializable {
 	public void setLimits(List<SpeedLimit> limits) {
 		this.limits = limits;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SpeedLimits [");
+		if (limits != null) {
+			builder.append("limits=");
+			builder.append(limits);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

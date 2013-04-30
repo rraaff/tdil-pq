@@ -67,4 +67,32 @@ public class Vehicles implements Serializable {
 	public void setPreviousIndex(String previousIndex) {
 		this.previousIndex = previousIndex;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Vehicles [");
+		if (vehiclesCollection != null) {
+			builder.append("vehiclesCollection=");
+			builder.append(vehiclesCollection);
+			builder.append(", ");
+		}
+		if (nextStatus != null) {
+			builder.append("nextStatus=");
+			builder.append(nextStatus);
+			builder.append(", ");
+		}
+		if (nextIndex != null) {
+			builder.append("nextIndex=");
+			builder.append(nextIndex);
+			builder.append(", ");
+		}
+		if (previousIndex != null) {
+			builder.append("previousIndex=");
+			builder.append(previousIndex);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-@XStreamAlias(value="SecureZoneResponse")
-public class SecureZoneResponse implements Serializable {
+@XStreamAlias(value="SpeedLimitResponse")
+public class SpeedLimitResponse implements Serializable {
 
 	private static final long serialVersionUID = -6970006504745625049L;
 
@@ -23,7 +23,7 @@ public class SecureZoneResponse implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("SecureZoneResponse [");
+		builder.append("SpeedLimitResponse [");
 		if (status != null) {
 			builder.append("status=");
 			builder.append(status);
@@ -31,6 +31,7 @@ public class SecureZoneResponse implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+	
 	
 	
 }

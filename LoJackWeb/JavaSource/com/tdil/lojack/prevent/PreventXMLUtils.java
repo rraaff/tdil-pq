@@ -1,4 +1,4 @@
-package com.tdil.lojack.utils;
+package com.tdil.lojack.prevent;
 
 import java.io.ByteArrayOutputStream;
 
@@ -12,13 +12,14 @@ import com.tdil.lojack.prevent.model.SecureZone;
 import com.tdil.lojack.prevent.model.SecureZoneResponse;
 import com.tdil.lojack.prevent.model.SecureZones;
 import com.tdil.lojack.prevent.model.SpeedLimit;
+import com.tdil.lojack.prevent.model.SpeedLimitResponse;
 import com.tdil.lojack.prevent.model.SpeedLimits;
 import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.prevent.model.Vehicles;
 import com.thoughtworks.xstream.XStream;
 
-public class XMLUtils {
+public class PreventXMLUtils {
 	
 	private static XStream xstream;
 
@@ -38,6 +39,7 @@ public class XMLUtils {
 		xstream.processAnnotations(SatellitePosition.class);
 		xstream.processAnnotations(SatellitePositionDesc.class);
 		xstream.processAnnotations(SatellitePositions.class);
+		xstream.processAnnotations(SpeedLimitResponse.class);
 	}
 	
 	public static final String asXML(Object o) {

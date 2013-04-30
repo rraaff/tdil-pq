@@ -9,10 +9,10 @@ public class UserLogin implements Serializable {
 
 	private static final long serialVersionUID = 2302439744441021092L;
 
-	@XStreamAlias("User")
+	@XStreamAlias("user")
 	private String user;
 	
-	@XStreamAlias("Password")
+	@XStreamAlias("password")
 	private String password;
 	
 	public String getUser() {

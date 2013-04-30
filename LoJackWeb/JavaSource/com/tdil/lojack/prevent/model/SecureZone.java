@@ -34,5 +34,27 @@ public class SecureZone implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SecureZone [");
+		if (id != null) {
+			builder.append("id=");
+			builder.append(id);
+			builder.append(", ");
+		}
+		if (description != null) {
+			builder.append("description=");
+			builder.append(description);
+			builder.append(", ");
+		}
+		if (status != null) {
+			builder.append("status=");
+			builder.append(status);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 }

@@ -129,4 +129,73 @@ public class Vehicle implements Serializable {
 	public void setGeoRef(String geoRef) {
 		this.geoRef = geoRef;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Vehicle [");
+		if (iD != null) {
+			builder.append("iD=");
+			builder.append(iD);
+			builder.append(", ");
+		}
+		if (description != null) {
+			builder.append("description=");
+			builder.append(description);
+			builder.append(", ");
+		}
+		if (status != null) {
+			builder.append("status=");
+			builder.append(status);
+			builder.append(", ");
+		}
+		if (brand != null) {
+			builder.append("brand=");
+			builder.append(brand);
+			builder.append(", ");
+		}
+		if (model != null) {
+			builder.append("model=");
+			builder.append(model);
+			builder.append(", ");
+		}
+		if (year != null) {
+			builder.append("year=");
+			builder.append(year);
+			builder.append(", ");
+		}
+		if (dateTime != null) {
+			builder.append("dateTime=");
+			builder.append(dateTime);
+			builder.append(", ");
+		}
+		if (latitude != null) {
+			builder.append("latitude=");
+			builder.append(latitude);
+			builder.append(", ");
+		}
+		if (longitude != null) {
+			builder.append("longitude=");
+			builder.append(longitude);
+			builder.append(", ");
+		}
+		if (speed != null) {
+			builder.append("speed=");
+			builder.append(speed);
+			builder.append(", ");
+		}
+		if (direction != null) {
+			builder.append("direction=");
+			builder.append(direction);
+			builder.append(", ");
+		}
+		if (geoRef != null) {
+			builder.append("geoRef=");
+			builder.append(geoRef);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

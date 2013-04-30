@@ -21,5 +21,18 @@ public class SecureZones implements Serializable {
 	public void setSecureZones(List<SecureZone> secureZones) {
 		this.secureZones = secureZones;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SecureZones [");
+		if (secureZones != null) {
+			builder.append("secureZones=");
+			builder.append(secureZones);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 }

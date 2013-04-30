@@ -22,4 +22,17 @@ public class SatellitePositions implements Serializable {
 		this.satellitePositionDescCollection = satellitePositionDescCollection;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SatellitePositions [");
+		if (satellitePositionDescCollection != null) {
+			builder.append("satellitePositionDescCollection=");
+			builder.append(satellitePositionDescCollection);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 }

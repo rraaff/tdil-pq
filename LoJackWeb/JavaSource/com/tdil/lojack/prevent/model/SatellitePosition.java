@@ -49,4 +49,37 @@ public class SatellitePosition implements Serializable {
 	public void setZoom(String zoom) {
 		this.zoom = zoom;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SatellitePosition [");
+		if (longitude != null) {
+			builder.append("longitude=");
+			builder.append(longitude);
+			builder.append(", ");
+		}
+		if (latitude != null) {
+			builder.append("latitude=");
+			builder.append(latitude);
+			builder.append(", ");
+		}
+		if (street != null) {
+			builder.append("street=");
+			builder.append(street);
+			builder.append(", ");
+		}
+		if (number != null) {
+			builder.append("number=");
+			builder.append(number);
+			builder.append(", ");
+		}
+		if (zoom != null) {
+			builder.append("zoom=");
+			builder.append(zoom);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

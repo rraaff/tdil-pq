@@ -27,4 +27,22 @@ public class LoginResponse implements Serializable {
 	public void setUserToken(String userToken) {
 		this.userToken = userToken;
 	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("LoginResponse [");
+		if (userToken != null) {
+			builder.append("userToken=");
+			builder.append(userToken);
+			builder.append(", ");
+		}
+		if (status != null) {
+			builder.append("status=");
+			builder.append(status);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

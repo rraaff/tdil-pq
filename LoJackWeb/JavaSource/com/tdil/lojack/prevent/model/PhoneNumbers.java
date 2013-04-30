@@ -64,4 +64,37 @@ public class PhoneNumbers implements Serializable {
 		this.vehicleID = vehicleID;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PhoneNumbers [");
+		if (userToken != null) {
+			builder.append("userToken=");
+			builder.append(userToken);
+			builder.append(", ");
+		}
+		if (vehicleID != null) {
+			builder.append("vehicleID=");
+			builder.append(vehicleID);
+			builder.append(", ");
+		}
+		if (alerts != null) {
+			builder.append("alerts=");
+			builder.append(alerts);
+			builder.append(", ");
+		}
+		if (crash != null) {
+			builder.append("crash=");
+			builder.append(crash);
+			builder.append(", ");
+		}
+		if (other != null) {
+			builder.append("other=");
+			builder.append(other);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 }

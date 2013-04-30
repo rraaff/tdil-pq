@@ -31,4 +31,22 @@ public class SpeedLimit implements Serializable {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("SpeedLimit [");
+		if (id != null) {
+			builder.append("id=");
+			builder.append(id);
+			builder.append(", ");
+		}
+		if (description != null) {
+			builder.append("description=");
+			builder.append(description);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 }
