@@ -20,40 +20,6 @@
 $(document).ready(
 	function(){
 
-		$("input[name=consumptionFrequency]").jStepper({minValue:0});
-		
-		$('select[name=countryId]').change(
-			function() {
-				var selectToLoad = $('select[name=stateId]');
-				selectToLoad.empty();
-            	$('<option>Loading</option>').appendTo(selectToLoad);
-				var countrySelected = Number($(this).attr('value'));
-				if (countrySelected > 0) {
-					$.ajax({
-			            type: "GET",
-			            cache: false,
-			            url: "./searchStates.do",
-			            data: {countryId: countrySelected },
-			            contentType: "application/json; charset=utf-8",
-			            success: function(msg) {
-			            	var select = $('select[name=stateId]');
-			            	select.empty();
-			            	$('<option>Select one option</option>').appendTo(select);
-			            	$.each(msg, function(index, item) {
-				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
-			                });
-			            },
-			            error: function() {
-			                alert("error consultando los estados");
-			            }
-			        });
-				} else {
-					var select = $('select[name=stateId]');
-	            	select.empty();
-	            	$('<option>Select one option</option>').appendTo(select);
-				}
-			}
-		);
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 		
@@ -168,25 +134,13 @@ function postRegister(data) {
 							<div class="myLabel width120">* E-mail</div>
 							<div class="myLabel width270"><html:text name="UpdatePersonForm" property="email" styleClass="normalField width250"/></div>
 						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "*" : ""%><div id="err.profile.email"></div>
+						<div id="err.profile.email"></div>
 					<% } %>
-				<div class="myRow">
-					<div class="myLabel width120">* Password</div>
-					<div class="myLabel width270"><html:password name="UpdatePersonForm" property="password" styleClass="normalField width250"/></div>
-				</div>
-				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%><div id="err.credential.password"></div>
 					<div class="myRow">
 						<div class="myLabel width120">* Birth date</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="birthDate" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Country code</div>
-						<div class="myLabel width100"><html:text name="UpdatePersonForm" property="phoneIntCode" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) ? "*" : ""%><div id="err.profile.phone.intCode"></div>
-				<% } %>
 					<div class="myRow">
 						<div class="myLabel width120">Area code</div>
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
@@ -197,37 +151,13 @@ function postRegister(data) {
 						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="phoneNumber" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "*" : ""%><div id="err.profile.phone.number"></div>
-				<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneType)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Type</div>
-						<div class="myLabel width270">
-							<html:select name="UpdatePersonForm" property="phoneType" styleClass="normalField width250"><br>
-								<option value="">Select an option</option>
-									<% for (String type : registerForm.getPhoneTypes()) { %>
-										<option <%=type.equals(registerForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>">
-											<%=type%></option>
-									<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneType)) ? "*" : ""%><div id="err.profile.phone.type"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.countryId)) { %>
-					<div class="myRow">
+				
+				<div class="myRow">
 						<div class="myLabel width120">Country</div>
 						<div class="myLabel width270">
-							<html:select name="UpdatePersonForm" property="countryId" styleClass="normalField width250">
-								<option value="">Select an option</option>
-									<% for (CountryBean country : registerForm.getCountries()) { %>
-										<option <%=	country.getId() == registerForm.getCountryId() ? "selected" : ""%> value="<%=country.getId()%>">
-											<%=country.getName()%></option>
-									<% } %>
-							</html:select>
+							<%=registerForm.getCountrySelected()%>
 						</div>
 					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.countryId)) ? "*" : ""%><div id="err.profile.address.countryId"></div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.stateId)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">State/Province</div>
 						<div class="myLabel width270">
@@ -241,7 +171,6 @@ function postRegister(data) {
 						</div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "*" : ""%><div id="err.profile.address.stateId"></div>
-				<% } %>
 				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
 					<div class="myRow">
 						<div class="myLabel width120">Street 1</div>

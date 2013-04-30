@@ -1,3 +1,4 @@
+<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <% 
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -94,40 +95,7 @@
 $(document).ready(
 	function(){
 
-		$("input[name=consumptionFrequency]").jStepper({minValue:0});
 		
-		$('select[name=countryId]').change(
-			function() {
-				var selectToLoad = $('select[name=stateId]');
-				selectToLoad.empty();
-            	$('<option>Loading</option>').appendTo(selectToLoad);
-				var countrySelected = Number($(this).attr('value'));
-				if (countrySelected > 0) {
-					$.ajax({
-			            type: "GET",
-			            cache: false,
-			            url: "./searchStates.do",
-			            data: {countryId: countrySelected },
-			            contentType: "application/json; charset=utf-8",
-			            success: function(msg) {
-			            	var select = $('select[name=stateId]');
-			            	select.empty();
-			            	$('<option>Select one option</option>').appendTo(select);
-			            	$.each(msg, function(index, item) {
-				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
-			                });
-			            },
-			            error: function() {
-			                alert("error consultando los estados");
-			            }
-			        });
-				} else {
-					var select = $('select[name=stateId]');
-	            	select.empty();
-	            	$('<option>Select one option</option>').appendTo(select);
-				}
-			}
-		);
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
 		
@@ -421,16 +389,6 @@ function postResetPassword(data) {
 						<div id="err.profile.birthDate"></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width120">Country code</div>
-						<div class="myLabel width100"><html:text name="RegisterForm" property="phoneIntCode" styleClass="normalField width100"/></div>
-					</div>
-					<% if (registerForm.isInUse(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) { %>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.phone.intCode">
-						<div id="err.profile.phone.intCode"></div>
-					</div>
-					<% } %>
-					<div class="myRow">
 						<div class="myLabel width120">Area code</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
 					</div>
@@ -439,7 +397,7 @@ function postResetPassword(data) {
 						<div id="err.profile.phone.areaCode"></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width120">Local number</div>
+						<div class="myLabel width120">Mobile number</div>
 						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneNumber" styleClass="normalField width250"/></div>
 					</div>
 					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
@@ -447,42 +405,20 @@ function postResetPassword(data) {
 						<div id="err.profile.phone.number"></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width120">Type</div>
-						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="phoneType" styleClass="normalField width250">
-								<option value="">Select an option</option>
-								<% for (String type : registerForm.getPhoneTypes()) { %>
-									<option <%=type.equals(registerForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>">
-										<%=type%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneType)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.phone.type">
-						<div id="err.profile.phone.type"></div>
-					</div>
-					<div class="myRow">
 						<div class="myLabel width120">Country</div>
 						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="countryId" styleClass="normalField width250">
-								<option value="">Select an option</option>
-								<% for (CountryBean country : registerForm.getCountries()) { %>
-									<option <%=	country.getId() == registerForm.getCountryId() ? "selected" : ""%> value="<%=country.getId()%>">
-										<%=country.getName()%></option>
-								<% } %>
-							</html:select>
+							<%=registerForm.getCountrySelected()%>
 						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.countryId)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.countryId">
-						<div id="err.profile.address.countryId"></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width120">State/Province</div>
 						<div class="myLabel width270">
 							<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
 								<option value="">Select an option</option>
+								<% for (StateBean stateBean : registerForm.getStates()) { %>
+									<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
+										<%=stateBean.getName()%></option>
+								<% } %>
 							</html:select>
 						</div>
 					</div>

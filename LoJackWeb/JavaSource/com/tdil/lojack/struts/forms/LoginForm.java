@@ -82,7 +82,7 @@ public class LoginForm extends ActionForm {
 	
 	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName) throws HttpStatusException, InvalidResponseException,
 			CommunicationException, UnauthorizedException {
-		LoginBean loginBean = new LoginBean(username, pasword);
+		LoginBean loginBean = new LoginBean("1:" + username, pasword);
 		LoginResult result = ThalamusClientBeanFacade.login(loginBean);
 		PersonResult getProfile = ThalamusClientBeanFacade.getPerson(result.getTokenHolder());
 		

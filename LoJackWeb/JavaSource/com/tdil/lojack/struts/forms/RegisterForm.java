@@ -61,12 +61,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private String email;
 	
 	// celular, opcional
+	private String phoneIntCode = "54"; // Argentina, hardcodeado?
 	private String phoneNumber;
 	private String phoneAreaCode;
-	private String phoneType; // celular, hardcodeado
-	private String phoneIntCode; // Argentina, hardcodeado?
+	private String phoneType = "cellphone"; // celular, hardcodeado
 	
-	
+	private String countrySelected;
 	private int countryId; // Argentina, hardcodeado
 	private int stateId;
 	private String street1; // opcional
@@ -139,8 +139,15 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	public void searchReferenceData() throws ValidationException {
 		try {
 			countries = ThalamusClientBeanFacade.getCountries();
+			if (countries.size() == 1) {
+				CountryBean arg = this.countries.iterator().next();
+				this.countryId = arg.getId();
+				this.countrySelected = arg.getName();
+				setStates(ThalamusClientBeanFacade.getStates(this.getCountryId()));
+			} else {
+				states.clear();
+			}
 			brands = ThalamusClientBeanFacade.getBrands();
-			states.clear();
 			this.personFields = ThalamusClientBeanFacade.getPersonFields();
 			this.setFacebookLoginUrl(ThalamusClientBeanFacade.getFacebookLogin());
 			
@@ -489,6 +496,11 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		JSON gral = ThalamusClientFacade.getPerson(tokenHolder);
 		JSONObject person = ((JSONObject)gral).getJSONObject("person");
 		JSONObject profile = person.getJSONObject("profile");
+		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
+			JSONObject document = profile.getJSONObject("document");
+			this.setDocument(document.getString("number"));
+		}
+		
 		if (profile.containsKey(PersonFieldNames.firstName) && profile.get(PersonFieldNames.firstName) != JSONNull.getInstance()) {
 			this.setFirstName(profile.getString(PersonFieldNames.firstName));
 		}
@@ -523,6 +535,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			JSONObject address = profile.getJSONObject(PersonFieldNames.address);
 			if (address.containsKey(PersonFieldNames.countryId) && address.get(PersonFieldNames.countryId) != JSONNull.getInstance()) {
 				this.setCountryId(address.getInt(PersonFieldNames.countryId));
+				CountryBean arg = this.countries.iterator().next();
+				this.countrySelected = arg.getName();
 				setStates(ThalamusClientBeanFacade.getStates(this.getCountryId()));
 			}
 			if (address.containsKey(PersonFieldNames.stateId) && address.get(PersonFieldNames.stateId) != JSONNull.getInstance()) {
@@ -607,6 +621,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 	public void setDocument(String dniNumber) {
 		this.document = dniNumber;
+	}
+	public String getCountrySelected() {
+		return countrySelected;
+	}
+	public void setCountrySelected(String countrySelected) {
+		this.countrySelected = countrySelected;
 	}
 	
 }
