@@ -15,8 +15,8 @@ public class PhoneNumbers implements Serializable {
 	@XStreamAlias(value="vehicleID")
 	private String vehicleID;
 	
-	@XStreamAlias(value="Alerts")
-	private String alerts;
+	@XStreamAlias(value="Alert")
+	private String alert;
 	
 	@XStreamAlias(value="Crash")
 	private String crash;
@@ -24,12 +24,12 @@ public class PhoneNumbers implements Serializable {
 	@XStreamAlias(value="Other")
 	private String other;
 
-	public String getAlerts() {
-		return alerts;
+	public String getAlert() {
+		return alert;
 	}
 
-	public void setAlerts(String alerts) {
-		this.alerts = alerts;
+	public void setAlert(String alerts) {
+		this.alert = alerts;
 	}
 
 	public String getCrash() {
@@ -78,9 +78,9 @@ public class PhoneNumbers implements Serializable {
 			builder.append(vehicleID);
 			builder.append(", ");
 		}
-		if (alerts != null) {
+		if (alert != null) {
 			builder.append("alerts=");
-			builder.append(alerts);
+			builder.append(alert);
 			builder.append(", ");
 		}
 		if (crash != null) {

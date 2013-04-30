@@ -41,10 +41,37 @@ public class SatellitePositionDesc extends SatellitePosition {
 		if (description != null) {
 			builder.append("description=");
 			builder.append(description);
+			builder.append(", ");
+		}
+		if (getLongitude() != null) {
+			builder.append("getLongitude()=");
+			builder.append(getLongitude());
+			builder.append(", ");
+		}
+		if (getLatitude() != null) {
+			builder.append("getLatitude()=");
+			builder.append(getLatitude());
+			builder.append(", ");
+		}
+		if (getStreet() != null) {
+			builder.append("getStreet()=");
+			builder.append(getStreet());
+			builder.append(", ");
+		}
+		if (getNumber() != null) {
+			builder.append("getNumber()=");
+			builder.append(getNumber());
+			builder.append(", ");
+		}
+		if (getZoom() != null) {
+			builder.append("getZoom()=");
+			builder.append(getZoom());
 		}
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 
 	
 }

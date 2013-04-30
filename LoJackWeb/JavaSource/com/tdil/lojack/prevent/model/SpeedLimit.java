@@ -48,5 +48,9 @@ public class SpeedLimit implements Serializable {
 		return builder.toString();
 	}
 
+	public boolean isActive() {
+		return this.getDescription().endsWith("ACTIVA");
+	}
+
 	
 }

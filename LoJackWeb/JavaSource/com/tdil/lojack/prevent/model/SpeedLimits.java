@@ -33,6 +33,15 @@ public class SpeedLimits implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	public SpeedLimit getActiveSpeedLimit() {
+		for (SpeedLimit sl : limits) {
+			if (sl.isActive()) {
+				return sl;
+			}
+		}
+		return null;
+	}
 	
 	
 }

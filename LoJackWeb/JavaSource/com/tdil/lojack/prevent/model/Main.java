@@ -23,12 +23,12 @@ public class Main {
 	 */
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException, IOException {
 		UserLogin userLogin = new UserLogin();
-		userLogin.setUser("grecovery");
-		userLogin.setPassword("7744");
+		userLogin.setUser("Prevent2");
+		userLogin.setPassword("1234");
 		XMLResponse resp = PreventConnector.login(userLogin);
 		LoginResponse lr = (LoginResponse)resp.getResult();
 		
-		
+		// listado de vehiculos
 		Vehicles vehicles = null;
 		try {
 			URLParams getVehicles = new URLParams(lr).index("0");
@@ -40,6 +40,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		// zonas seguras
 		Vehicle vehicle = null;
 		try {
 			vehicle = vehicles.getVehiclesCollection().get(0);
@@ -51,15 +52,35 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		
+		// cambio de zona
+		// TODO
+		
+		
+		// limite de velocidad
+		SpeedLimits sp = null;
 		try {
 			resp = PreventConnector.getVehicleSpeedLimit(lr, vehicle);
-			SpeedLimits sp = (SpeedLimits)resp.getResult();
+			sp = (SpeedLimits)resp.getResult();
 			System.out.println(sp);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// cambio de limite de velocidad 
+		SpeedLimit selected = sp.getActiveSpeedLimit();
+		System.out.println("Active is " + selected);
+		SpeedLimit random = getRandomSpeedLimit(sp, selected);
+		try {
+			resp = PreventConnector.setVehicleSpeedLimit(lr, vehicle, random);
+			SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
+			System.out.println(slr);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		// telefonos
 		try {
 			resp = PreventConnector.getVehiclePhones(lr, vehicle);
 			PhoneNumbers pn = (PhoneNumbers)resp.getResult();
@@ -68,7 +89,23 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// cambio de telefono
+		PhoneNumbers phoneNumbers = new PhoneNumbers();
+		phoneNumbers.setAlert(String.valueOf(System.currentTimeMillis()));
+		phoneNumbers.setCrash(String.valueOf(System.currentTimeMillis()));
+		phoneNumbers.setOther(String.valueOf(System.currentTimeMillis()));
+		phoneNumbers.setUserToken(lr.getUserToken());
+		phoneNumbers.setVehicleID(vehicle.getiD());
+		try {
+			resp = PreventConnector.setVehiclePhones(lr, phoneNumbers);
+			PhoneNumbersReponse pn = (PhoneNumbersReponse)resp.getResult();
+			System.out.println(pn);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		// posicion satelital
 		try {
 			resp = PreventConnector.getVehicleSatPosition(lr, vehicle);
 			SatellitePosition satpos = (SatellitePosition)resp.getResult();
@@ -78,6 +115,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		// posicion satelital de toda la flota
 		try {
 			resp = PreventConnector.getFlotSatPosition(lr);
 			SatellitePositions satposs = (SatellitePositions)resp.getResult();
@@ -99,6 +137,16 @@ public class Main {
 		System.out.println(zones);	
 		o = XMLUtils.fromXML(zones);
 		System.out.println(o);*/
+	}
+
+	private static SpeedLimit getRandomSpeedLimit(SpeedLimits sp,
+			SpeedLimit selected) {
+		for (SpeedLimit sl : sp.getLimits()) {
+			if (!sl.getId().equals(selected.getId())) {
+				return sl;
+			}
+		}
+		return null;
 	}
 
 }
