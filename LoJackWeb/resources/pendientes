@@ -1,42 +1,96 @@
-instalar ffmpeg, documentar como y para que
+Tema base de datos
+Podriamos seguir usando mysql, podriamos switchear ongoing?
+Esto nos permitiria seguir con el ritmo, y poder tener mas cosas andando mas pronto.
+El impacto de switchear quizas no sea tan grande, al menos no en logica aplicativa.
 
-hacer configurable el server de prevent
-
-lojackUserId en todos los servicios
-
-url de las cookies, deshardcodear
-
-pasar servlets,actions, etc de energy a lojack
-
-tema cookies en twitter login y thalamus login, pasar todas, tomar todas, esto si gabriel no descula lo de doble cookie
+Tema prevent
+Una vez validados los casos de uso, para poder mostrar podriamos hacer pasar por un login o hardcodear el usuario y password.
+No hariamos el mostrado de zona porque no esta expuesto.
+Esto nos permitira mostrar casi todo prevent andando.
 
 
-*** si o si
+*****
+
+Accesos externos logueados
+
+No depende de nadie??
+
+*******************************
+Estacionamientos
+
+Depende de base de datos
+
+*******************************
+Prevent
+
+No hay login automatico, depende de implementacion de GeoSystems
+
+No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems 
+
+Thalamus ******
+
+Gabriel tiene que solucionar el tema de la multicookie (JSESSIONID, AWSELB)
+
+Gabriel Error 500 en registracion con fb / twitter
+
+Add social, remove social
+Depende de definicion de uso, Pablo y LoJack
+
+*******************************
+Home
+
+Manejo de descripciones de alarmas
+Depende de base de datos
+
+Manejo de descripciones de luces
+Depende de base de datos
+
+Manejo de alertas por email (no son alertas, son avisos)
+Depende de base de datos
+Depende de MW (es necesario saber si se va a usar idEntidad y idDevice o solo uno de ambos)
+
+Activacion/Desactivacion de alarmas
+Dependen de servicio de validacion de password de Thalamus
+
+Cambio de password
+No pedir el credential, depende de cambio en thalamus
+
+Resto de home
+Depende de MW
+
+Servicios asincronicos
+Modelar este funcionamiento
+Depende de cerrar interfaces con MW
 
 Camara
-DONE Exportacion del applet (jar, firma)
-DONE Extraer las clases de generacion a un projecto aparte
-DONE Armar servlet para mobile
-DONE tiempo de refresh parametrizable, documentarlo
-
+Usar nueva nomenclatura de tipos
+Manejar multiples camaras?
 Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
 Que muestre el timestamp de la ultima actualizacion
+ancho y alto de camara
+mejora visual del applet
+Depende de MW
 
-DONE cookie para la seleccion de applet/no applet
 
-escalado de la imagen
+*******************************
+Mobile web
+Pablo, definir casos
+Marcos, soporte a esto
 
-DONE: que el applet no tenga los datos de la camara, sino que se los baje de la webapp, encriptados, 
-de forma que no queden visibles ninguno de los mismos.
 
-Parte thalamus
+*******************************
+Nuestros
+
+instalar ffmpeg, documentar como y para que (avatar)
+
+url de las cookies, deshardcodear
+Esto tiene que ver con twitter
+
+pasar servlets,actions, etc de energy a lojack
+Esto tiene que ver con los ultimos cambios de fb y twitter
 
 Armar el war y deployarlo en JBoss
-
-
-*** detalles
 
 Mostrar el error de login en el layer de login, sin cerrarlo
 
 Traerme el resource bundle de display tag
-
