@@ -35,15 +35,16 @@
 }
 #slider-list a.theme span.nameVignette {
 	color:#a0a09b;
-	font-size:11px;
+	font-size:12px;
 }
 #slider-list a.theme:hover span.nameVignette, #slider-list a.theme:hover span.priceTheme {
 	color:#494947;
 }
 #slider-list a.theme span.changeTheme {
+	color:#005a9e;
 	font-family:"Tahoma", Arial, Helvetica, sans-serif;
-	font-size:14px;
-	font-weight:normal;
+	font-size:15px;
+	font-weight:bold;
 	text-transform:uppercase;
 	display:block
 }
@@ -51,9 +52,10 @@
 	display:block
 }
 #slider-list a.theme span.priceTheme {
-	color:#a0a09b;
-	font-size:12px;
-	font-weight:normal;
+	color:#005a9e;
+	font-family:"Tahoma", Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:bold;
 	display:block
 }
 #sliderBloc {

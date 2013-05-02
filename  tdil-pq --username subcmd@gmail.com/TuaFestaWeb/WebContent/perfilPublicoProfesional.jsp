@@ -171,9 +171,9 @@ $(document).ready(function(){
 						<div class="myLabel width80">Horario</div>
 						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="profesional.businesshours"/></strong></div>
 					</div>
-					<div class="myRow height80">
+					<div class="myRow">
 						<div class="myLabel width80">Descripci&oacute;n</div>
-						<div class="myLabel width520 height80"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
+						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
 					</div>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
 					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
