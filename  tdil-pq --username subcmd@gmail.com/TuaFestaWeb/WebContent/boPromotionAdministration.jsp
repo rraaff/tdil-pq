@@ -80,7 +80,9 @@ $(document).ready(
 			<div style="float:left;" class="width580">
 				<h2>Fotos de la promo</h2>
 				<div class="myRow height60" style="margin-top:12px;">
-					<div class="myLabel width580 height60"><input type="file" name="upload_img" id="upload_img">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.photo_key + ".err")%></div>
+					<div class="myLabel width580 height60"><input type="file" name="upload_img" id="upload_img">&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, PromotionForm.photo_key + ".err")%>
+					<p><br/>Bajar PSD ejemplo para generar las im&aacute;genes de las promos <a href="images/files/imagenPromoCentral.rar">desde ac&aacute;</a></p>
+					</div>
 				</div>
 				<div class="width580" style="height:190px; float:left; overflow:auto; border:solid 1px #CCCCCC;">
 					<table width="580" id="image_gal_tab">

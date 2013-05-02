@@ -81,13 +81,17 @@
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 #buttonFB {
-	background-image: url(images/skin_basic/buttons/registerClientFB_off.png);
+	background-image: url(images/skin_basic/buttons/registerClientFB.png);
+	background-repeat:no-repeat;
+	background-position:0 0;
 	width:324px;
 	height:65px;
 	margin:26px auto 0 auto;
 }
 #buttonFB:hover {
-	background-image: url(images/skin_basic/buttons/registerClientFB_on.png);
+	background-image: url(images/skin_basic/buttons/registerClientFB.png);
+	background-repeat:no-repeat;
+	background-position:0 -65px;
 }
 #buttonProf {
 	background-image: url(images/skin_basic/buttons/preReg_registerProfessional_off.png);

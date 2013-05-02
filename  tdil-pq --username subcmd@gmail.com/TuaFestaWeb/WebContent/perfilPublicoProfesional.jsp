@@ -178,27 +178,32 @@ $(document).ready(function(){
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
 					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
 						<div class="myRow">
-							Video 1: <%=profesional.getVideo1() %>
+							<h4>Video 1</h4>
+							<div><%=profesional.getVideo1() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
 						<div class="myRow">
-							Video 2: <%=profesional.getVideo2() %>
+							<h4>Video 2</h4>
+							<div><%=profesional.getVideo2() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
 						<div class="myRow">
-							Video 3: <%=profesional.getVideo3() %>
+							<h4>Video 3</h4>
+							<div><%=profesional.getVideo3() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
 						<div class="myRow">
-							Video 4: <%=profesional.getVideo4() %>
+							<h4>Video 4</h4>
+							<div><%=profesional.getVideo4() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
 						<div class="myRow">
-							Video 5: <%=profesional.getVideo5() %>
+							<h4>Video 5</h4>
+							<div><%=profesional.getVideo5() %></div>
 						</div>
 					<% } %>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
