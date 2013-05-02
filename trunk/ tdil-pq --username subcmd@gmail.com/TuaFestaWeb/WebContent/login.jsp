@@ -43,21 +43,22 @@
 							<div class="myLabel width300" align="center"><input type="submit" value="Ingresar con tu usuario" class="inputButtonHelper" /></div>
 						</div>
 					</div>
-					<div class="width280 fleft" style="margin-left:10px; padding-top:33px; padding-left:20px; border-left:dotted 1px #CCC;">
+					<div class="width280 fleft" style="margin-left:10px; padding-top:13px; padding-left:20px; border-left:dotted 1px #CCC;">
 						<div class="myRow">
 							<div class="myLabel width280" align="center">&#191;No est&aacute;s registrado? <a href="./registroPreRegistro.jsp" title="recuper&aacute; tu clave">Registrate ahora</a></div>
 						</div>
 						<div class="myRow">
 							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
 						</div>
-						<!--div class="myRow">
-							<div class="myLabel width280" align="center"><a href="#" title="recuper&aacute; tu usuario">&#191;No record&aacute;s con qu&eacute; E-Mail te registraste?</a></div>
-						</div-->
+						<div class="myRow">
+							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="Regener&aacute; tu clave">&#191;No recibiste el E-Mail confirmando tu registraci&oacute;n?</a></div>
+						</div>
 						<div class="myRow">
 							<div class="myLabel width280" align="center"><a href="index.jsp">Volver</a></div>
 						</div>
 					</div>
 				</html:form>
+				<div class="myRow" align="center"><br/>Si no recib&iacute;s los E-Mail de TuaFesta, te recomendamos revisar el correo no deseado o <a href="contacto.jsp" title="Contanos si no recibis los E-Mails del sistema">contactanos ahora</a>.</div>
 			</div>
 		</div>
 	</div>

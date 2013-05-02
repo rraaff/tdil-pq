@@ -55,7 +55,7 @@ $(document).ready(
 					</div>
 					<div class="myRow">
 						<div class="myLabel width100" align="center" style="padding-top:20px;"><a href="index.jsp">Volver</a></div>
-						<div class="myLabel width200" align="center"><input type="submit" value="Resetear password" class="buttonSubmit" /></div>
+						<div class="myLabel width200" align="center"><input type="submit" value="Regener&aacute; tu clave" class="buttonSubmit" /></div>
 					</div>
 				</div>
 			</html:form>
