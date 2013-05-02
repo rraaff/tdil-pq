@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/reset-styles" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+<!-- Hay que definir cuales jqueries hacen falta y cuales no para no tener lios con bootstrap-->
+<link type='text/css' href='css/jquery-ui-1.10.2.custom.css' rel='stylesheet' media='screen' />
+<script type='text/javascript' src='js/jquery-1.7.min.js'></script>
+<script type='text/javascript' src='js/jquery.form.js'></script>
+<script type='text/javascript' src='js/jquery-ui-1.10.2.custom.min.js'></script>
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="js/jquery.jstepper.js"></script>
+<script type="text/javascript" src="js/jquery.jeditable.js"></script>
+<!-- Slider -->
+<script src="js/jquery-latest.js"></script>
+<link href="css/slider.css" rel="stylesheet" type="text/css" />
+<script src="js/slideshow.js"></script>
+<script>
+	var t=setInterval(function(){$("#right").click()},10000);
+	$(document).ready(function()
+	{
+		var present=1;
+		var next=2;
+		var total_slide=document.getElementById("slider").childElementCount;
+		
+		$("#right").click(function()
+		{
+			
+			present_slide="#slide"+present;
+			next_slide="#slide"+next;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			present++;
+			next++;
+			if(present==(total_slide+1))
+			{
+				present=1;
+				next=2;
+				for(i=1;i<=total_slide;i++)
+				{
+					$("#slide"+i).css("top","426px");
+				}
+				$("#slide1").css("top","0px");
+			}
+			
+		});
+		
+		$("#left").click(function()
+		{
+			if(present==1)
+			{
+			next_slide="#slide"+total_slide;
+			present_slide="#slide"+present;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			
+			present=total_slide;
+			next=1;
+			}else
+			{
+			next_slide="#slide"+(present-1);
+			present_slide="#slide"+present;
+			$(present_slide).css("top","426px");
+			$(next_slide).css("top","0px");
+			present--;
+			next--;
+			}
+			if(next==0)
+			{
+				present=(total_slide-1);
+				next=total_slide;
+	
+			}
+		});
+	});
+
+</script>
+<!-- End Slider -->
+<script type="text/javascript" src="js/jstz.js"></script>
+<script>
+
+$(document).ready(
+	function(){
+
+		
+		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+		
+		$("form[name='RegisterForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.parent("div"));
+			},
+			rules: { 			},
+			messages: {			},
+			submitHandler: function() {
+				clearErrors();
+	            $("form[name='RegisterForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./register.do",
+	    			dataType: "json",
+	    			success: postRegister
+	    			});
+	        }
+		});
+
+		$("form[name='LoginForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.parent("div"));
+			},
+			rules: { 
+			},
+			messages: {
+				
+			},
+			submitHandler: function() {
+	            $("form[name='LoginForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./login.do",
+	    			dataType: "json",
+	    			success: postLogin
+	    			});
+	        }
+		});
+
+		$("form[name='RequestResetPasswordForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.parent("div"));
+			},
+			rules: { 			},
+			messages: {			},
+			submitHandler: function() {
+	            $("form[name='RequestResetPasswordForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./requestResetPassword.do",
+	    			dataType: "json",
+	    			success: postResetPassword
+	    			});
+	        }
+		});
+		
+		$( "#closeregisterLayer" ).click(function() {
+			$( "#registerLayer" ).fadeOut();
+			clearErrors();
+		});
+		$( "#closeloginLayer" ).click(function() {
+			$( "#loginLayer" ).fadeOut();
+		});
+		$( "#closeforgotPasswordLayer" ).click(function() {
+			$( "#forgotPasswordLayer" ).fadeOut();
+		});
+		$( "#closeforgotPasswordEmailSentLayer" ).click(function() {
+			$( "#forgotPasswordEmailSentLayer" ).fadeOut();
+		});
+		$( "#closeforgotPasswordUserNotFoundLayer" ).click(function() {
+			$( "#forgotPasswordUserNotFoundLayer" ).fadeOut();
+		});
+		$( "#closeforgotPasswordErrorLayer" ).click(function() {
+			$( "#forgotPasswordErrorLayer" ).fadeOut();
+		});
+		$( "#closeloginInvalidLayer" ).click(function() {
+			$( "#loginInvalidLayer" ).fadeOut();
+		});
+		
+		<%@ include file="includes/closeLegalesLayer.jsp" %>
+
+		<% if ("true".equals(request.getParameter("openRegister"))) { %>
+			basicRegister();
+		<% } %>
+
+		/* Seteo el offset */
+		var userDate = new Date();  
+		var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );  
+		$("form[name='LoginForm'] input[name='timezoneOffset']").attr('value', userTimeZone);
+		var tz = jstz.determine(); // Determines the time zone of the browser client
+		$("form[name='LoginForm'] input[name='timezoneName']").attr('value',  tz.name());
+	}
+);
+
+function clearErrors() {
+	$("div[id^='err.']").each(function(index, valor) {
+		$(valor).prop('innerHTML','');
+	});
+	$(".myRow.errorField").each(
+		function (index, valor) {
+			$(valor).css("display", "none");
+		}
+	); 
+}
+
+
+function register() {
+	$("form[name='RegisterForm'] input[type='text']").each(function(index, param) {
+		$(param).attr('value', '');
+	});
+	basicRegister();
+}
+
+function basicRegister() {
+	$("form[name='RegisterForm'] input[type='password']").each(function(index, param) {
+		$(param).attr('value', '');
+	});
+	$("form[name='RegisterForm'] input[type='radio']").each(function(index, param){
+		$(param).prop('checked', false);  
+	  });
+	$("form[name='RegisterForm'] input[type='checkbox']").each(function(index, param){
+		$(param).prop('checked', false);  
+	});
+	$("form[name='RegisterForm'] select").each(function(index, param) {
+		$(param).val('');
+	});
+	centerLayer($(window), $( "#registerLayer" ));
+}
+
+function login() {
+	$("form[name='LoginForm'] input[name='username']").attr('value', '');
+	$("form[name='LoginForm'] input[name='password']").attr('value', '');
+	centerLayer($(window), $( "#loginLayer" ));
+}
+
+function forgotPassword() {
+	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
+	centerLayer($(window), $( "#forgotPasswordLayer" ));
+}
+
+<%@ include file="includes/openLegalesLayer.jsp" %>
+
+function centerLayer(objWin, objLayer) {
+	var top = (objWin.height() / 2) - (objLayer.height() / 2);
+	var left = (objWin.width() / 2) - (objLayer.width() / 2);
+	objLayer.css({
+		position: 'absolute',
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
+}
+
+function postRegister(data) {
+	if (data.result == 'OK') {
+		window.location.replace('./home.jsp');
+	} else {
+		$.each(data, function(key, value) {
+			var obj = document.getElementById('err.' + key);
+			if (obj) {
+				var objParent = document.getElementById('p.' + key);
+				if (objParent) {
+					objParent.style.display='block';
+				}
+				obj.innerHTML = value;
+			}
+	       });
+	}
+}
+
+function postLogin(data) {
+	if (data.result == 'OK') {
+		window.location.replace('./home.jsp');
+	} else {
+		$( "#loginLayer" ).fadeOut();
+		centerLayer($(window), $( "#loginInvalidLayer" ));
+	}
+}
+
+function postResetPassword(data) {
+	$( "#forgotPasswordLayer" ).fadeOut();
+	if (data.result == 'OK') {
+		centerLayer($(window), $( "#forgotPasswordEmailSentLayer" ));
+	} else {
+		if (data.result == '404') {
+			centerLayer($(window), $( "#forgotPasswordUserNotFoundLayer" ));
+		} else {
+			centerLayer($(window), $( "#forgotPasswordErrorLayer" ));
+		}
+	}
+}
+
+</script>
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<header>
+	<div class="userLoggedThalamusMenu">
+		<!-- if user logged -->
+		<ul class="correctNav">
+			<li>Usuario: <span class="userName">Nombre</span></li>
+			<!--li class="toRight"><a href="javascript:login();" id="login" title="Access now!">Login</a></li>
+			<li class="toRight"><a href="javascript:forgotPassword();" id="forgotPassword" title="Forgot your password? Enter here to recover it">Password recovery</a></li>
+			<li class="toRight"><a href="javascript:verLegales();" id="legales" title="Legales">Legal</a></li>
+			<li class="toRight"><a href="javascript:register();" id="register" title="Registrate gratis">Registrate ahora</a></li>
+			<li class="toRight"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Registrate con tu cuenta de Facebook">Ingresa con tu Facebook</a></li>
+			<li class="toRight"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Registrate con tu cuenta de Twitter">Ingresa con tu Twitter</a></li-->
+			<li class="toRight"><a href="#" title="Salir del sistema">Salir</a></li>
+			<li class="toRight"><a href="#" title="Cambiar mis clave">Cambiar mi clave</a></li>
+			<li class="toRight"><a href="#" title="Cambiar mis datos">Cambiar mis datos</a></li>
+		</ul>
+		<!-- End IF -->
+	</div>
+</header>
+<section id="productsMenu">
+	<div class="userLoggedThalamusMenu">
+		<ul class="correctNav">
+			<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
+			<li class="toRight"><a href="#" title="¿Dónde estacioar? Te ayudamos a encontrar un lugar">Parking</a></li>
+			<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
+			<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
+			<li class="toRight optHome"><a href="productoHome.jsp" title="Administrá sus alarmas, luces y cámaras">Home</a></li>
+		</ul>
+	</div>
+</section>
+<section id="content">
+	<div id="sliderContainer">
+		<div id="slider"><!-- <img src="images/null.gif" />-->
+			<div id="slide1" class="slide page1"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide3" class="slide page3"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide4" class="slide page4"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide5" class="slide page5"><a href="#" title="">&nbsp;</a></div>
+		</div>
+		<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
+		<img src="images/back.png" width="40px;"  id="left"/></div>
+	</div>
+</section>
+<section id="footer">
+
+</section>
+</body>
+</html>

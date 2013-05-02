@@ -287,38 +287,37 @@ function postResetPassword(data) {
 }
 
 </script>
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<section id="main">
-	<%@ include file="includes/header.jsp" %>
-	<section id="productsMenu">
-		<div class="userLoggedThalamusMenu">
-			<ul class="nav">
-				<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
-				<li class="toRight"><a href="#" title="¿Dónde estacioar? Te ayudamos a encontrar un lugar">Parking</a></li>
-				<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
-				<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
-				<li class="toRight"><a href="#" title="Administrá sus alarmas, luces y cámaras">Home</a></li>
-			</ul>
+<%@ include file="includes/header.jsp" %>	
+<section id="productsMenu">
+	<div class="userLoggedThalamusMenu">
+		<ul class="correctNav">
+			<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
+			<li class="toRight"><a href="#" title="¿Dónde estacioar? Te ayudamos a encontrar un lugar">Parking</a></li>
+			<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
+			<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
+			<li class="toRight optHome"><a href="productoHome.jsp" title="Administrá sus alarmas, luces y cámaras">Home</a></li>
+		</ul>
+	</div>
+</section>
+<section id="content">
+	<div id="sliderContainer">
+		
+		<div id="slider"><!-- <img src="images/null.gif" />-->
+			<div id="slide1" class="slide page1"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide3" class="slide page3"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide4" class="slide page4"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide5" class="slide page5"><a href="#" title="">&nbsp;</a></div>
 		</div>
-	</section>
-	<section id="content">
-		<div id="sliderContainer">
-			
-			<div id="slider"><!-- <img src="images/null.gif" />-->
-				<div id="slide1" class="slide page1"><a href="#" title="">&nbsp;</a></div>
-				<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-				<div id="slide3" class="slide page3"><a href="#" title="">&nbsp;</a></div>
-				<div id="slide4" class="slide page4"><a href="#" title="">&nbsp;</a></div>
-				<div id="slide5" class="slide page5"><a href="#" title="">&nbsp;</a></div>
-			</div>
-			<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
-			<img src="images/back.png" width="40px;"  id="left"/></div>
-		</div>
-	</section>
-	<section id="footer">
+		<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
+		<img src="images/back.png" width="40px;"  id="left"/></div>
+	</div>
+</section>
+<section id="footer">
 
-	</section>
 </section>
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
 	<div class="registerLayerStyles">

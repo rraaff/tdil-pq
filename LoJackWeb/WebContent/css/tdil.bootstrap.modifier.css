@@ -2,7 +2,7 @@ body, section, div, table, td, tr { margin: 0; padding: 0; border:0;}
 a {
 	color: #FFF;
 }
-#main {
+body {
 	color: #3F3F3F;
 	font-weight: normal;
 	font-family: "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
@@ -14,73 +14,104 @@ header {
 	height: 42px;
 	padding: 0px;
 	margin: 0px;
+}
+header .userLoggedThalamusMenu {
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
 	display: inline-block;
 	overflow: hidden;
 }
-header .userLoggedThalamusMenu, #productsMenu .userLoggedThalamusMenu {
-	text-transform: uppercase;
-	font-size: 8px;
+.correctNav {
 	width: 964px;
 	margin: 0px auto;
 	padding: 0px;
 }
-header .correctNav, .nav {
-	margin: 0px;
-	padding: 0px;
-	height: 0px;
-	line-height: 0px;
-}
-header ul li {
+li {
 	line-height: 42px;
-	float: left;
 }
-header ul li.toRight, #productsMenu ul li.toRight {
+ul li {
+	float: left;
+	list-style: none;
+}
+ul li.toRight {
 	float: right;
 }
-header .nav>li>a  {
+ul li a {
 	padding-left:20px;
-	padding-right: 20px; 
+	padding-top:16px;
+	padding-right:20px; 
+	padding-bottom:16px;
 }
-header .nav>li>a:hover, header .nav>li>a:focus, #productsMenu .nav>li>a:hover, #productsMenu .nav>li>a:focus  {
+ul li a:hover,
+ul li a:focus  {
 	background-color: #f05223;
-}
-header a:hover, header a:focus {
 	color: #FFF;
-	text-decoration: underline;
+	text-decoration: none;
 }
-header .userName {
+.userName {
 	color: #f05223;
 }
 /* PRODUCT NAV */
 #productsMenu {
-	background: url(../images/skin_lj_rl/backs/productsMenu.png);
-	background-repeat: repeat-x;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#761617), to(#601919)); /* Chrome, Safari 4+ */
+	background-image: -webkit-linear-gradient(top, #761617, #601919); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+	background-image:    -moz-linear-gradient(top, #761617, #601919); /* Firefox 3.6-15 */
+	background-image:      -o-linear-gradient(top, #761617, #601919); /* Opera 11.10-12.00 */
+	background-image:         linear-gradient(to bottom, #761617, #601919); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 	width: 100%;
-	height: 109px;
+	height: 91px;
 	padding: 0px;
 	margin: 0px;
+}
+#productsMenu .userLoggedThalamusMenu {
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
 	display: inline-block;
 	overflow: hidden;
 }
 #productsMenu ul li.logo {
 	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
 	background-repeat: no-repeat;
-	width: 219px;
-	height: 109px;
+	width: 173px;
+	height: 91px;
 	float: left;
 }
 #productsMenu ul li {
-	background:#e41b23;
+	background:#e51b24;
 	font-size: 22px;
 	font-weight: bold;
-	line-height: 109px;
+	line-height: 91px;
 }
-#productsMenu .nav>li>a:hover {
-	color:#fff
-}
-#productsMenu .nav>li>a {
-	padding-right:35px;
+#productsMenu ul li a {
 	padding-left:35px;
+	padding-top:34px;
+	padding-right:35px; 
+	padding-bottom:35px;
+}
+#productsMenu ul li a:hover,
+#productsMenu ul li a:focus  {
+	background-color: #f05223;
+	color: #FFF;
+	text-decoration: none;
+}
+#productsMenu ul li a:hover,
+#productsMenu ul li a:focus  {
+	background-color: #f05223;
+	color: #FFF;
+	text-decoration: none;
+}
+#productsMenu ul li.optHome a:hover,
+#productsMenu ul li.optHome a:focus,
+#productsMenu ul li.optHome:active {
+	background: url(../images/skin_lj_rl/backs/productMenu/home.png);
+	background-repeat: no-repeat;
 }
 /*content*/
 #content {
@@ -91,9 +122,28 @@ header .userName {
 	padding: 0px;
 	margin: 0px;
 	text-align: center;
-	/*display: inline-block;*/
+	display: inline-block;
 	overflow: hidden;
 }
+/* PRODUCTO:HOME */
+#content .col1_170 {
+	width: 170px;
+	float: left;
+}
+#content .col1_794 {
+	background: #f0ece4;
+	width: 794px;
+	float: left;
+}
+#content .tab {
+	width: 170px;
+	height: 26px;
+}
+#content ul.tabServices {}
+#content li.tabAlarms a {}
+#content li.tabLights a {}
+#content li.tabCameras a {}
+
 /* FOOTER */
 #footer-copy {
 	background: #e6e6e6;
