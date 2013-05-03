@@ -43,6 +43,15 @@ targetProject="LoJackWeb">
 <table schema="LOJACK" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="LOJACK" tableName="ALARM_CONF" domainObjectName="AlarmConf" alias="ac">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="LOJACK" tableName="LIGHT_CONF" domainObjectName="LightConf" alias="lc">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+<table schema="LOJACK" tableName="ASYNC_JOB" domainObjectName="AsyncJob" alias="aj">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 <table schema="LOJACK" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>

@@ -33,12 +33,12 @@
 	 });
   });
 
-  function doRenameAlarm(alarmId, alarmDesc) {
+  function doRenameAlarm(idEntidad, alarmDesc) {
 	  $.ajax({
           type: "GET",
           cache: false,
           url: "./renameAlarm.do",
-          data: {alarmId: alarmId, description: alarmDesc},
+          data: {idEntidad: idEntidad, description: alarmDesc},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
@@ -183,23 +183,23 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | <a href="javas
 Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <div id="accordion">
-<% for (Alarm alarm : alarmsForm.getAlarms()) { %>>
-  <h3><%= alarm.getDescription() %> <%=alarm.isOn() ? "Encendida" : "Apagada"%>
-  	<% if (alarm.isOn()) { %>
-  		<span onclick="deactivateAlarm('<%=alarm.getId()%>')">Apagar</span>
+<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
+  <h3><%= alarm.getDescription() %> <%=alarm.isTriggered() ? "Disparada" : (alarm.isActive() ? "Encendidad" : "Apagada")%>
+  	<% if (alarm.isInactive() ) { %>
+  		<span onclick="activateAlarm('<%=alarm.getIdEntidad()%>')">Encender</span>
   	<% } else { %>
-  		<span onclick="activateAlarm('<%=alarm.getId()%>')">Encender</span>
+  		<span onclick="deactivateAlarm('<%=alarm.getIdEntidad()%>')">Apagar</span>
   	<% } %>
   </h3>
   <div>
-  	<div id="<%=alarm.getId()%>" class="editable"><%= alarm.getDescription() %></div>
+  	<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
     <p>
    		<% if (alarm.hasChangeData()) { %>
-   			Ultimo cambio: <%=alarm.getLastChangeDate() %> - <%=alarm.getLastChangeHour() %>
+   			Ultimo cambio: <%=alarm.getLastChangeDate() %>
    			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
-   			<a href="javascript:seeAlarmLog('<%= alarm.getId() %>')">Ver log completo</a><br>
-   			Envio de <a href="javascript:confAlarmAlert('<%= alarm.getId() %>')">Alertas por Email</a><br>
-   			<a href="./goToHomeAlarmAgenda.do?alarmId=<%=alarm.getId()%>">Configurar horarios</a> de Armado/Desarmado<br>
+   			<a href="javascript:seeAlarmLog('<%= alarm.getIdEntidad() %>')">Ver log completo</a><br>
+   			Envio de <a href="javascript:confAlarmAlert('<%= alarm.getIdEntidad() %>')">Alertas por Email</a><br>
+   			<a href="./goToHomeAlarmAgenda.do?alarmId=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
    		<% } %>
     </p>
   </div>

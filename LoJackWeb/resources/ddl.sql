@@ -1,4 +1,10 @@
 DROP TABLE IF EXISTS WEBSITEUSER;
+
+DROP TABLE IF EXISTS ALARM_CONF;
+DROP TABLE IF EXISTS LIGHT_CONF;
+
+DROP TABLE IF EXISTS ASYNC_JOB;
+
 DROP TABLE IF EXISTS SYSPROPERTIES;
 DROP TABLE IF EXISTS BLOB_DATA;
 DROP TABLE IF EXISTS CACHE_REGION;
@@ -12,6 +18,45 @@ CREATE TABLE WEBSITEUSER (
   `ext_avatar` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`),
   INDEX `IX_WEBSITEUSER_00` (`lojackUserId` ASC))
+ENGINE = InnoDB;
+
+CREATE TABLE ALARM_CONF (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `idEntidad` INT NOT NULL ,
+  `idWebsiteUser` INT NOT NULL ,
+  `description` VARCHAR(100) NULL ,
+  `emailNotification` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_ALARM_CONF_00` (`idWebsiteUser` ASC),
+  CONSTRAINT `FK_ALARM_CONF_00`
+    FOREIGN KEY (`idWebsiteUser` )
+    REFERENCES WEBSITEUSER (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE LIGHT_CONF (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `idEntidad` INT NOT NULL ,
+  `idLuz` INT NOT NULL ,
+  `idWebsiteUser` INT NOT NULL ,
+  `description` VARCHAR(100) NULL ,
+  `emailNotification` INT NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_LIGHT_CONF_00` (`idWebsiteUser` ASC),
+  CONSTRAINT `FK_LIGHT_CONF_00`
+    FOREIGN KEY (`idWebsiteUser` )
+    REFERENCES WEBSITEUSER (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE ASYNC_JOB (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `idJob` INT NOT NULL ,
+  `postDate` DATETIME NOT NULL ,
+  PRIMARY KEY (`id`),
+  INDEX `IX_ASYNC_JOB_00` (`idJob` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE SYSPROPERTIES (
@@ -33,6 +78,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('preven
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prop.tmp.path','/home/mgodoy/icarus/apache-tomcat-6.0.32/temp','prop.tmp.path',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.refreshTime','1000','camera.mobile.refreshTime',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.applet.refreshTime','1000','camera.applet.refreshTime',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.refresh.time','1000','job.refresh.time',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.abort.time','10000','job.abort.time',0);
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,

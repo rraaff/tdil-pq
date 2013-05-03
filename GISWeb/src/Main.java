@@ -16,7 +16,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Alarm alarm = new Alarm();
+		/*Alarm alarm = new Alarm();
 		alarm.setId("1");
 		alarm.setDescription("Casa");
 		alarm.setOn(true);
@@ -92,7 +92,7 @@ public class Main {
 		conf.setActivateDeactivate(false);
 		conf.setAlarmActivation(true);
 		JSONObject jsonObject2 = JSONObject.fromObject(conf);
-		System.out.println(jsonObject2.toString(2));
+		System.out.println(jsonObject2.toString(2));*/
 	}
 
 }

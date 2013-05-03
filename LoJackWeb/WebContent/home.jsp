@@ -24,6 +24,31 @@
 <%@ include file="includes/headLogged.jsp" %>
 
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<script>
+<script>
+$(function() {
+		$( "#accessPrevent" ).click(function() {
+			 $.ajax({
+					type: "POST",
+					url: "http://www.lojackprevent.com.ar/loginPortal.aspx",
+					data: {
+						SESSIONID: '<%=websiteUser.getToken().getCookie("JSESSIONID").getValue()%>',
+						TIMEZONEOFFSET: -3
+					},
+					beforeSend: function (request) {
+						request.setRequestHeader("Lojack-Token", "a5b0981a0188bb9a5b7fe44b6c32d894");
+					},
+					success: function (data) {
+						if (data.status == 200)
+							window.location = decodeURI(data.url);
+						else
+							alert(data.error);
+					}
+				});
+		});
+});
+</script>
+</script>
 </head>
 <body>
 <header>

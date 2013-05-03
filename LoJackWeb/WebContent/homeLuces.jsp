@@ -31,12 +31,12 @@
 		 });
   });
 
-  function doRenameLight(lightId, lightDesc) {
+  function doRenameLight(idEntidadIdLuz, lightDesc) {
 	  $.ajax({
           type: "GET",
           cache: false,
           url: "./renameLight.do",
-          data: {lightId: lightId, description: lightDesc},
+          data: {idEntidadIdLuz: idEntidadIdLuz, description: lightDesc},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
@@ -173,30 +173,35 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panic
 Mis Lucess<br><br>
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <div id="accordion">
-<% for (Light light : lightsForm.getLights()) { %>>
+<% for (Light light : lightsForm.getLights()) { %>
   <h3>
-  	<%= light.getDescription() %> <%=light.isHasOnOffInfo() ? (light.isOn() ? "Encendida" : "Apagada") : ""%>
-  	<% if (light.isHasOnOffInfo()) { %>
-  		<% if (light.isOn()) { %>
-	  		<span onclick="turnOffLight('<%=light.getId()%>')">Apagar</span>
-	  	<% } else  { %>
-	  		<span onclick="turnOnLight('<%=light.getId()%>')">Encender</span>
-	  	<% } %>
+  	<%= light.getDescription() %>
+  	<% if (light.isInRandomMode()) { %>
+  		Modo random <span onclick="deactivateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Desactivar modo random</span>
   	<% } else  { %>
-  		<span onclick="turnOnLight('<%=light.getId()%>')">Encender</span>
-  		<span onclick="turnOffLight('<%=light.getId()%>')">Apagar</span>
-  	<% } %>
+  		<% if (light.isOn()) { %>
+	  		Encendida <span onclick="turnOffLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Apagar</span>
+  		<% } else  { %>
+			<% if (light.isOff()) { %>
+	  			Apagada <span onclick="turnOnLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Encender</span>
+	  			<span onclick="activateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Activar modo random</span>
+  			<% } else  { %>
+  				Estado desconocido <span onclick="turnOnLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Encender</span>
+  				<span onclick="turnOffLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Apagar</span>
+  				<span onclick="activateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Activar modo random</span>
+		    <% } %>
+	  <% } %>
+	 <% } %>
   </h3>
   <div>
     <p>
-    	<div id="<%=light.getId()%>" class="editable"><%= light.getDescription() %></div>
+    	<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
    		<% if (light.hasChangeData()) { %>
-   			Ultimo cambio: <%=light.getLastChangeDate() %> - <%=light.getLastChangeHour() %>
+   			Ultimo cambio: <%=light.getLastChangeDate() %>
    			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
-   			<a href="javascript:seeLightLog('<%= light.getId() %>')">Ver log completo</a><br>
-   			Envio de <a href="javascript:confLightAlert('<%= light.getId() %>')">Alertas por Email</a><br>
-   			<a href="./goToHomeLightAgenda.do?lightId=<%=light.getId()%>">Configurar horarios</a> de Encendido/Apagado<br>
- 			<input type="checkbox" onchange="toggleRandomSequence(this, '<%=light.getId()%>')" <%= light.isRandomSequence() ? "checked" : ""%>>Activar/Desactivar secuencia aleatoria
+   			<a href="javascript:seeLightLog('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Ver log completo</a><br>
+   			Envio de <a href="javascript:confLightAlert('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Alertas por Email</a><br>
+   			<a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado<br>
    		<% } %>
     </p>
   </div>

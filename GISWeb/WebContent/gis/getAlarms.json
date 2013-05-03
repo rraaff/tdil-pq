@@ -1,20 +1,26 @@
 [
     {
-    "description": "Casa",
-    "id": "1",
+    "idEntidad": 1,
     "lastChangeAction": "ACTIVAR",
-    "lastChangeDate": "2013-03-19",
-    "lastChangeHour": "20:30",
+    "lastChangeDate": "2013-03-19 23:50",
     "lastChangeUser": "VALENTINA",
-    "on": true
+    "lastChangeLojackUserID":"ase001",
+    "status": "ARMADA"
   },
     {
-    "description": "Estudio",
-    "id": "2",
+    "idEntidad": 2,
     "lastChangeAction": "ACTIVAR",
-    "lastChangeDate": "2013-02-01",
-    "lastChangeHour": "20:30",
+    "lastChangeDate": "2013-02-01 17:30",
     "lastChangeUser": "MARCELA",
-    "on": false
+    "lastChangeLojackUserID":"ase002",
+    "status": "DESARMADA"
+  },
+  {
+    "idEntidad": 3,
+    "lastChangeAction": "ACTIVAR",
+    "lastChangeDate": "2013-02-01 17:30",
+    "lastChangeUser": "MARCELA",
+    "lastChangeLojackUserID":"ase002",
+    "status": "DISPARADA"
   }
 ]
