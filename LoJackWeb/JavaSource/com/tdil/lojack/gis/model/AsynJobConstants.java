@@ -11,4 +11,6 @@ public class AsynJobConstants {
 	public static final int OK = 3;
 	public static final int FAILED = 4; 
 	public static final int SENDMESSAGE = 5; 
+	
+	public static final int JOB_TIMEOUT = 6;
 }
