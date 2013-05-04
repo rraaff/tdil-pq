@@ -167,8 +167,13 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmActivatedLayer" ));
 				} else {
-					$( "#passwordLayer" ).fadeOut();
-					centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+					if (data.result == 'ERR_PASS') {
+	        		  $( "#passwordLayer" ).fadeOut();
+					  centerLayer($(window), $( "#invalidPasswordLayer" ));
+					} else {
+						$( "#passwordLayer" ).fadeOut();
+						centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+					}
 				}
           },
           error: function() {
@@ -190,8 +195,13 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmDeactivatedLayer" ));
 				} else {
-					$( "#passwordLayer" ).fadeOut();
-					centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+					if (data.result == 'ERR_PASS') {
+	        		  $( "#passwordLayer" ).fadeOut();
+					  centerLayer($(window), $( "#invalidPasswordLayer" ));
+					} else {
+						$( "#passwordLayer" ).fadeOut();
+						centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+					}
 				}
           },
           error: function() {
@@ -279,6 +289,10 @@ Mis Alarmas<br><br>
 <div id="alarmNotActivatedLayer" style="display: none; z-index: 500;">
 	No ha podido activarse la alarma
 	<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
+</div>
+<div id="invalidPasswordLayer" style="display: none; z-index: 500;">
+	La contrasenia no es correcta
+	<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
 </div>
 <div id="alarmDeactivatedLayer" style="display: none; z-index: 500;">
 	Se ha desactivado la alarma

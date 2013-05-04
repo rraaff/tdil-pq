@@ -12,6 +12,9 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.actions.AjaxAction;
+import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
+import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
+import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordResultBean;
 
 public class DeactivateAlarmAjaxAction extends AjaxAction {
 
@@ -21,12 +24,17 @@ public class DeactivateAlarmAjaxAction extends AjaxAction {
 		WebsiteUser sessionUser = (WebsiteUser)request.getSession().getAttribute("user");
 		final String alarmId = request.getParameter("alarmId");
 		final String password = request.getParameter("password");
-		boolean gisResult = LoJackServicesConnector.deactivateAlarm(sessionUser.getGuid(), alarmId, password);
+		ValidatePasswordResultBean validatePasswordResultBean = ThalamusClientBeanFacade.validatePassword(sessionUser.getToken(), new ValidatePasswordBean(password));
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		if(gisResult) { // TODO ver si necesito manejar porque no lo hizo
-			result.put("result", "OK");
+		if (!validatePasswordResultBean.isOk()) { // validar con thalamus
+			result.put("result", "ERR_PASS");
 		} else {
-			result.put("result", "ERR");
+			boolean gisResult = LoJackServicesConnector.deactivateAlarm(sessionUser.getGuid(), alarmId, password);
+			if(gisResult) { // TODO ver si necesito manejar porque no lo hizo
+				result.put("result", "OK");
+			} else {
+				result.put("result", "ERR");
+			}
 		}
 		writeJsonResponse(result, response);
 		return null;

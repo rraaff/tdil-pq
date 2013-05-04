@@ -13,6 +13,13 @@
     <rule>
         <note>
         </note>
+        <from>/api/v1/person/password/validate</from>
+        <to>/validatePassword.json</to>
+    </rule>
+
+    <rule>
+        <note>
+        </note>
         <from>/api/v1/referencedata/brandsfamilies</from>
         <to>/brandsfamilies.json</to>
     </rule>
@@ -106,6 +113,7 @@
         <from>/api/v1/isAlive</from>
         <to>/isAlive.json</to>
     </rule>
+
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
