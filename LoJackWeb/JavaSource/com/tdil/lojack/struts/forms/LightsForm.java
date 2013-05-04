@@ -11,9 +11,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
-import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.Light;
-import com.tdil.lojack.model.AlarmConf;
 import com.tdil.lojack.model.LightConf;
 import com.tdil.lojack.model.LightConfExample;
 import com.tdil.lojack.utils.WebsiteUser;
