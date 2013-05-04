@@ -50,6 +50,54 @@
       });
       return lightDesc;
   }
+
+  function toggleEmailNotification(objCheckbox, idEntidad, idLuz) {
+		if (objCheckbox.checked) {
+			activateEmailNotification(objCheckbox, idEntidad, idLuz);
+		} else {
+			deactivateEmailNotification(objCheckbox, idEntidad, idLuz);
+		}
+	}
+
+	function activateEmailNotification(objCheckbox, idEntidad, idLuz) {
+		  $.ajax({
+	        type: "GET",
+	        cache: false,
+	        url: "./activateLightEmailNotification.do",
+	        data: {idEntidad: idEntidad, idLuz: idLuz},
+	        contentType: "application/json; charset=utf-8",
+	        success: function(data) {
+	      	  if (data.result != 'OK') {
+					alert('Ha occurrido un error ejecutando la accion');
+					objCheckbox.checked = false;
+				}
+	        },
+	        error: function() {
+	      	  alert('Ha occurrido un error ejecutando la accion');
+	      	  objCheckbox.checked = false;
+	        }
+	    });
+	}
+	
+	function deactivateEmailNotification(objCheckbox, idEntidad, idLuz) {
+		  $.ajax({
+	        type: "GET",
+	        cache: false,
+	        url: "./deactivateLightEmailNotification.do",
+	        data: {idEntidad: idEntidad, idLuz: idLuz},
+	        contentType: "application/json; charset=utf-8",
+	        success: function(data) {
+	      	  if (data.result != 'OK') {
+					alert('Ha occurrido un error ejecutando la accion');
+					objCheckbox.checked = true;
+				}
+	        },
+	        error: function() {
+	      	  alert('Ha occurrido un error ejecutando la accion');
+	      	  objCheckbox.checked = true;
+	        }
+	    });
+	}
   
   function seeLightLog(lightId) {
 	  $('#logData').load('logLuz.jsp?lightId=' + lightId, function() {
@@ -200,7 +248,7 @@ Mis Lucess<br><br>
    			Ultimo cambio: <%=light.getLastChangeDate() %>
    			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
    			<a href="javascript:seeLightLog('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Ver log completo</a><br>
-   			Envio de <a href="javascript:confLightAlert('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Alertas por Email</a><br>
+   			<input type="checkbox" onchange="toggleEmailNotification(this, '<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')" <%= light.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
    			<a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado<br>
    		<% } %>
     </p>

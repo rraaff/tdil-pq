@@ -52,6 +52,54 @@
       });
       return alarmDesc;
   }
+
+  function toggleEmailNotification(objCheckbox, idEntidad) {
+		if (objCheckbox.checked) {
+			activateEmailNotification(objCheckbox, idEntidad);
+		} else {
+			deactivateEmailNotification(objCheckbox, idEntidad);
+		}
+	}
+
+  function activateEmailNotification(objCheckbox, idEntidad) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./activateAlarmEmailNotification.do",
+          data: {idEntidad: idEntidad},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result != 'OK') {
+				alert('Ha occurrido un error ejecutando la accion');
+				objCheckbox.checked = false;
+			}
+          },
+          error: function() {
+        	  alert('Ha occurrido un error ejecutando la accion');
+        	  objCheckbox.checked = false;
+          }
+      });
+  }
+
+function deactivateEmailNotification(objCheckbox, idEntidad) {
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./deactivateAlarmEmailNotification.do",
+          data: {idEntidad: idEntidad},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  if (data.result != 'OK') {
+				alert('Ha occurrido un error ejecutando la accion');
+				objCheckbox.checked = true;
+			}
+          },
+          error: function() {
+        	  alert('Ha occurrido un error ejecutando la accion');
+        	  objCheckbox.checked = true;
+          }
+      });
+  }
   
   function seeAlarmLog(alarmId) {
 	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
@@ -198,7 +246,7 @@ Mis Alarmas<br><br>
    			Ultimo cambio: <%=alarm.getLastChangeDate() %>
    			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
    			<a href="javascript:seeAlarmLog('<%= alarm.getIdEntidad() %>')">Ver log completo</a><br>
-   			Envio de <a href="javascript:confAlarmAlert('<%= alarm.getIdEntidad() %>')">Alertas por Email</a><br>
+   			<input type="checkbox" onchange="toggleEmailNotification(this, '<%=alarm.getIdEntidad()%>')" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
    			<a href="./goToHomeAlarmAgenda.do?alarmId=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
    		<% } %>
     </p>

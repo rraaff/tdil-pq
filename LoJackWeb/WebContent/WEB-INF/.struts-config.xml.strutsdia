@@ -330,4 +330,16 @@
    PATH="/changePassword.jsp" TARGET="page14" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#activateAlarmEmailNotification" NAME="action49"
+  PATH="/activateAlarmEmailNotification" SHAPE="32,4385,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deactivateAlarmEmailNotification" NAME="action50"
+  PATH="/deactivateAlarmEmailNotification" SHAPE="240,4401,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#activateLightEmailNotification" NAME="action51"
+  PATH="/activateLightEmailNotification" SHAPE="32,4385,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#deactivateLightEmailNotification" NAME="action52"
+  PATH="/deactivateLightEmailNotification" SHAPE="240,4401,0,0"
+  TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

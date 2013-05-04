@@ -25,20 +25,21 @@
 
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <script>
-<script>
 $(function() {
 		$( "#accessPrevent" ).click(function() {
 			 $.ajax({
 					type: "POST",
-					url: "http://www.lojackprevent.com.ar/loginPortal.aspx",
+					url: "http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx",
 					data: {
 						SESSIONID: '<%=websiteUser.getToken().getCookie("JSESSIONID").getValue()%>',
 						TIMEZONEOFFSET: -3
 					},
 					beforeSend: function (request) {
+						alert(1);
 						request.setRequestHeader("Lojack-Token", "a5b0981a0188bb9a5b7fe44b6c32d894");
 					},
 					success: function (data) {
+						alert(data);
 						if (data.status == 200)
 							window.location = decodeURI(data.url);
 						else
@@ -47,7 +48,6 @@ $(function() {
 				});
 		});
 });
-</script>
 </script>
 </head>
 <body>
@@ -78,7 +78,7 @@ $(function() {
 				<li class="toRight"><a href="#" title="¿No tenes PET? Adquirilo acá">Pets</a></li>
 			<% } %>
 			<% if (websiteUser.isHomeUser()) { %>
-				<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
+				<li class="toRight"><a href="#" id="accessPrevent" title="Monitoreá sus vehículos">Prevent</a></li>
 			<% } else { %>
 				<li class="toRight"><a href="#" title="¿No tenes PREVENT? Adquirilo acá">Prevent</a></li>
 			<% } %>

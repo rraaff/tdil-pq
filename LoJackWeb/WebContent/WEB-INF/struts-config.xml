@@ -124,6 +124,12 @@
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
   
+  <action path="/activateAlarmEmailNotification" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction"/>
+  <action path="/deactivateAlarmEmailNotification" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction"/>
+  
+  <action path="/activateLightEmailNotification" scope="request" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction"/>
+  <action path="/deactivateLightEmailNotification" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction"/>
+  
   <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAlertConfigurationAction">
   	<forward name="continue" path="/homeConfiguracionAlertasAlarma.jsp" redirect="true"/>
   </action>
