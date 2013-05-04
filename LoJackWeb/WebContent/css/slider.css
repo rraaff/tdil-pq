@@ -1,7 +1,21 @@
+body {
+	overflow: hidden;
+}
+#contentSlider {
+	color: #FFF;
+	background: #0005FF;
+	width: 100%;
+	height: 842px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	display: inline-block;
+	overflow: hidden;
+}
 #sliderContainer {
 	background: #005588;
 	width:100%;
-	height:426px;
+	height:842px;
 	padding:0;
 	margin:0;
 	overflow:hidden;
@@ -10,7 +24,7 @@
 #slider {
 	background: #f1f1f1;
 	width:100%;
-	height:426px;
+	height:842px;
 	padding:0px;
 	margin:0 auto;
 	overflow:hidden;
@@ -38,7 +52,7 @@
 }
 .slide {
 	width:100%;
-	height:426px;
+	height:842px;
 
 	position:absolute;
 	top:0px;

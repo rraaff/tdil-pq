@@ -23,7 +23,16 @@
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
 	} %>
-<%@ include file="includes/head.jsp" %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/reset-styles" rel="stylesheet" media="screen">
+<!-- Bootstrap -->
+
 <!-- Slider -->
 <script src="js/jquery-latest.js"></script>
 <link href="css/slider.css" rel="stylesheet" type="text/css" />
@@ -41,7 +50,7 @@
 			
 			present_slide="#slide"+present;
 			next_slide="#slide"+next;
-			$(present_slide).css("top","426px");
+			$(present_slide).css("top","842px");
 			$(next_slide).css("top","0px");
 			present++;
 			next++;
@@ -51,7 +60,7 @@
 				next=2;
 				for(i=1;i<=total_slide;i++)
 				{
-					$("#slide"+i).css("top","426px");
+					$("#slide"+i).css("top","842px");
 				}
 				$("#slide1").css("top","0px");
 			}
@@ -64,7 +73,7 @@
 			{
 			next_slide="#slide"+total_slide;
 			present_slide="#slide"+present;
-			$(present_slide).css("top","426px");
+			$(present_slide).css("top","842px");
 			$(next_slide).css("top","0px");
 			
 			present=total_slide;
@@ -73,7 +82,7 @@
 			{
 			next_slide="#slide"+(present-1);
 			present_slide="#slide"+present;
-			$(present_slide).css("top","426px");
+			$(present_slide).css("top","842px");
 			$(next_slide).css("top","0px");
 			present--;
 			next--;
@@ -287,30 +296,36 @@ function postResetPassword(data) {
 }
 
 </script>
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery_indexMenu.js"></script>
+<script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
-<%@ include file="includes/header.jsp" %>	
-<section id="productsMenu">
-	<div class="userLoggedThalamusMenu">
-		<ul class="correctNav">
-			<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
-			<li class="toRight"><a href="#" title="¿Dónde estacioar? Te ayudamos a encontrar un lugar">Parking</a></li>
-			<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
-			<li class="toRight"><a href="#" title="Monitoreá sus vehículos">Prevent</a></li>
-			<li class="toRight optHome"><a href="productoHome.jsp" title="Administrá sus alarmas, luces y cámaras">Home</a></li>
-		</ul>
-	</div>
-</section>
-<section id="content">
+<div id="menu">
+	<ul class="menu">
+		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
+			<div>
+				<ul>
+					<li><a href="javascript:login();" id="login" title="Access now!"><span>Ingresar</span></a></li>
+					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
+					<li><a href="javascript:verLegales();" id="legales" title="Legales"><span>Legales</span></a></li>
+					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
+<section id="contentSlider">
 	<div id="sliderContainer">
 		
 		<div id="slider"><!-- <img src="images/null.gif" />-->
-			<div id="slide1" class="slide page1"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide1" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide3" class="slide page3"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide4" class="slide page4"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide5" class="slide page5"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide3" class="slide page2"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide4" class="slide page2"><a href="#" title="">&nbsp;</a></div>
+			<div id="slide5" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 		</div>
 		<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
 		<img src="images/back.png" width="40px;"  id="left"/></div>
