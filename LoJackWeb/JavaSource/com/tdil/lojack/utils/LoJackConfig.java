@@ -18,6 +18,7 @@ import com.tdil.lojack.cache.blob.BlobDataType;
 import com.tdil.lojack.cache.blob.PublicBlobResolver;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.model.SystemProperty;
 import com.tdil.lojack.model.SystemPropertyExample;
 import com.tdil.lojack.prevent.PreventConnector;
@@ -32,10 +33,11 @@ import com.tdil.utils.SystemPropertyCache;
 
 public class LoJackConfig extends SystemConfig {
 
+
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
 	}
-	
+
 	@Override
 	public void init(ServletContextEvent sce) {
 		super.init(sce);
@@ -44,22 +46,19 @@ public class LoJackConfig extends SystemConfig {
 		if (thalamusserver != null) {
 			ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
 		}
-		getLog().fatal(
-				"Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
-		
+		getLog().fatal("Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
+
 		String thalamustouchpointCode = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.code");
 		if (thalamustouchpointCode != null) {
 			ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
 		}
-		getLog().fatal(
-				"Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
-		
+		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
+
 		String thalamustouchpointToken = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.token");
 		if (thalamustouchpointToken != null) {
 			ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
 		}
-		getLog().fatal(
-				"Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
+		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
 		ThalamusCache.configureWith(new Properties());
 		// Initializes the caches
 		try {
@@ -85,47 +84,51 @@ public class LoJackConfig extends SystemConfig {
 			getLog().error("Can not initialize caches", e);
 		}
 		Role.addRole(WebsiteUser.INSTANCE);
-		
+
 		String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
 		if (gisserver != null) {
 			LoJackServicesConnector.setGisServer(gisserver);
 		}
-		getLog().fatal(
-				"GIS server is " + (gisserver == null ? "null" : gisserver));
-		
+		getLog().fatal("GIS server is " + (gisserver == null ? "null" : gisserver));
+
 		String servicesserver = SystemPropertyUtils.getSystemPropertValue("services.server");
 		if (servicesserver != null) {
 			LoJackServicesConnector.setServicesServer(servicesserver);
 		}
-		getLog().fatal(
-				"Services server is " + (servicesserver == null ? "null" : servicesserver));
-		
+		getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
+
 		String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
 		if (preventserver != null) {
 			PreventConnector.setPreventServer(preventserver);
 		}
-		getLog().fatal(
-				"Prevent server is " + (preventserver == null ? "null" : preventserver));
+		getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
+
+		getLog().fatal("Starting middleware jobs updater");
+		UpdateMiddlewareJobsThread updateMiddlewareJobsThread = new UpdateMiddlewareJobsThread();
+		UpdateMiddlewareJobsThread.setUpdateMiddlewareJobsThread(updateMiddlewareJobsThread);
+		updateMiddlewareJobsThread.start();
+		getLog().fatal("Middleware jobs updater started");
+
 	}
-	
-	
+
 	@Override
 	protected String getLogDir() {
 		return "lojacklogs";
 	}
+
 	private void loadFilteredWords() {
 
 	}
 
 	@Override
 	protected void initXMLALias() {
-		//XMLUtils.addAlias("RankingPositions", RankingPositions.class);
+		// XMLUtils.addAlias("RankingPositions", RankingPositions.class);
 	}
-	
+
 	@Override
 	protected void initRoles() {
 	}
-	
+
 	@Override
 	protected void loadProperties() {
 	}
@@ -133,7 +136,8 @@ public class LoJackConfig extends SystemConfig {
 	@Override
 	protected void loadPropertiesFromDBInTransaction() {
 		try {
-			List<SystemProperty> list = new SystemPropertyDAOImpl(IBatisManager.getClient()).selectSystemPropertyByExample(new SystemPropertyExample());
+			List<SystemProperty> list = new SystemPropertyDAOImpl(IBatisManager.getClient())
+					.selectSystemPropertyByExample(new SystemPropertyExample());
 			for (SystemProperty property : list) {
 				getLog().fatal("LOJACKConfig: " + property.getPropkey() + "=" + property.getPropvalue());
 				SystemPropertyCache.put(property.getPropkey(), property.getPropvalue());
@@ -143,7 +147,7 @@ public class LoJackConfig extends SystemConfig {
 		}
 
 	}
-	
+
 	@Override
 	protected void initBlobCache() {
 		getLog().fatal("LOJACKConfig: blob cache starting ");

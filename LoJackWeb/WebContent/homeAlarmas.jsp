@@ -113,12 +113,12 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		});
   }
 
-  function doSendPanic(alarmDesc, alarmId) {
+  function doSendPanic(alarmDesc, idEntidad) {
 	  $.ajax({
           type: "GET",
           cache: false,
           url: "./sendPanic.do",
-          data: {alarmId: alarmId},
+          data: {idEntidad: idEntidad},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
@@ -129,7 +129,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					$( "#sendPanicLayer" ).fadeOut();
 					$( "#sendPanicErrorLayer" ).fadeOut();
 					$('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
-					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '","'+alarmId+'")');
+					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
 					centerLayer($(window), $( "#sendPanicErrorLayer" ));
 				}
           },
@@ -137,7 +137,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  $( "#sendPanicLayer" ).fadeOut();
         	  $( "#sendPanicErrorLayer" ).fadeOut();
 			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
-			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '","'+alarmId+'")');
+			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
 			  centerLayer($(window), $( "#sendPanicErrorLayer" ));
           }
       });

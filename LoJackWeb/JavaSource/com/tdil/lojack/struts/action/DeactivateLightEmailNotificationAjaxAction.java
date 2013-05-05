@@ -7,11 +7,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.ibatis.TransactionProvider;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.model.LightConf;
 import com.tdil.lojack.model.LightConfExample;
@@ -55,11 +57,15 @@ public class DeactivateLightEmailNotificationAjaxAction extends AjaxAction {
 			});
 			result.put("result", "OK");
 		} catch (Exception e) {
-			// TODO: handle exception
+			getLog().error(e.getMessage(), e);
 			result.put("result", "ERR");
 		}
 		writeJsonResponse(result, response);
 		return null;
+	}
+	
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(DeactivateLightEmailNotificationAjaxAction.class);
 	}
 
 }

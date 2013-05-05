@@ -76,4 +76,6 @@ public interface AsyncJobDAO {
 	 * @mbggenerated  Sat May 04 15:44:50 ART 2013
 	 */
 	int updateAsyncJobByPrimaryKey(AsyncJob record) throws SQLException;
+	
+	int oldestMWJob() throws SQLException;
 }

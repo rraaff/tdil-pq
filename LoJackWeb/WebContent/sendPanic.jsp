@@ -5,9 +5,9 @@
 <%@ include file="includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %>
 <%
-Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser.getGuid(), websiteUser.getLojackUserId(), websiteUser.getTimezoneOffset(), websiteUser.getTimezoneName());
+Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
 %>
 Enviar senial de panico <br>
 <% for (Alarm alarm : alarms) { %>
-<a href="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', '<%= alarm.getId() %>')"><%= alarm.getId() %> - <%=alarm.getDescription() %></a><hr> 
+<a href="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', <%= alarm.getIdEntidad() %>)"><%= alarm.getIdEntidad() %> - <%=alarm.getDescription() %></a><hr> 
 <% } %>

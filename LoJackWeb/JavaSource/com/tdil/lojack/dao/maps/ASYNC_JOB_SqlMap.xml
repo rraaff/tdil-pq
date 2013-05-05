@@ -292,4 +292,10 @@
       status = #status:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="oldestMWJob" resultClass="java.lang.Integer">
+  	select min(idJob)
+  	from ASYNC_JOB
+  	where status between 1 and 6
+  </select>
 </sqlMap>

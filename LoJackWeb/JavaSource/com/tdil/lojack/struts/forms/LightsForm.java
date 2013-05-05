@@ -47,7 +47,7 @@ public class LightsForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setLights(LoJackServicesConnector.getLights(String.valueOf(user.getId())));
+		setLights(LoJackServicesConnector.getLights(user));
 		try {
 			List<LightConf> lightConf = (List<LightConf>)new GetLightConf(user.getModelUser().getId()).executeInTransaction();
 			for (Light light : getLights()) {

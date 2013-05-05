@@ -16,7 +16,7 @@ public class AlarmAgendaForm extends AgendaForm {
 	private static final long serialVersionUID = 7670249948557986182L;
 
 	private WebsiteUser user;
-	private String alarmId;
+	private int idEntidad;
 	
 	private String password;
 	
@@ -35,10 +35,10 @@ public class AlarmAgendaForm extends AgendaForm {
 		this.id = null;
 	}
 
-	public void initWith(WebsiteUser user, String alarmId) {
+	public void initWith(WebsiteUser user, int idEntidad) {
 		setUser(user);
-		setAlarmId(alarmId);
-		setAlarmAgendas(new ArrayList<AlarmAgenda>(LoJackServicesConnector.getAlarmAgendas(user.getGuid(), alarmId)));
+		setIdEntidad(idEntidad);
+		setAlarmAgendas(new ArrayList<AlarmAgenda>(LoJackServicesConnector.getAlarmAgendas(user, idEntidad)));
 	}
 
 	public WebsiteUser getUser() {
@@ -49,12 +49,12 @@ public class AlarmAgendaForm extends AgendaForm {
 		this.user = user;
 	}
 
-	public String getAlarmId() {
-		return alarmId;
+	public int getIdEntidad() {
+		return idEntidad;
 	}
 
-	public void setAlarmId(String alarmId) {
-		this.alarmId = alarmId;
+	public void setIdEntidad(int alarmId) {
+		this.idEntidad = alarmId;
 	}
 
 	public List<AlarmAgenda> getAlarmAgendas() {
@@ -100,12 +100,12 @@ public class AlarmAgendaForm extends AgendaForm {
 		AlarmAgenda alarmAgenda = getAlarmAgenda(id);
 		if (alarmAgenda != null) {
 			if (alarmAgenda.isActive()) {
-				boolean result = LoJackServicesConnector.deleteAlarmAgenda(user.getGuid(), id);
+				boolean result = LoJackServicesConnector.deleteAlarmAgenda(user, id);
 				if (result) {
 					alarmAgenda.setActive(false);
 				}
 			} else {
-				boolean result = LoJackServicesConnector.activateAlarmAgenda(user.getGuid(), id);
+				boolean result = LoJackServicesConnector.activateAlarmAgenda(user, id);
 				if (result) {
 					alarmAgenda.setActive(true);
 				}
@@ -134,9 +134,10 @@ public class AlarmAgendaForm extends AgendaForm {
 		alarmAgenda.setDeactivateTime(this.getDeactivateTime());
 		boolean saved = false;
 		if (isEdition()) {
-			saved = LoJackServicesConnector.saveAlarmAgenda(user.getGuid(), this.getPassword(), alarmAgenda);
+			// TODO password contra thalamus...
+			saved = LoJackServicesConnector.saveAlarmAgenda(user, alarmAgenda);
 		} else {
-			saved = LoJackServicesConnector.addAlarmAgenda(user.getGuid(), this.getAlarmId(), this.getPassword(), alarmAgenda);
+			saved = LoJackServicesConnector.addAlarmAgenda(user, this.getIdEntidad(), alarmAgenda);
 		}
 		if (!saved) {
 			// levantar una validation Exception

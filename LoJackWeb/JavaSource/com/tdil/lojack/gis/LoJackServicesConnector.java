@@ -1,6 +1,7 @@
 package com.tdil.lojack.gis;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import net.sf.json.JSON;
@@ -21,11 +22,17 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AlarmAgenda;
 import com.tdil.lojack.gis.model.AlarmAlertConfiguration;
+import com.tdil.lojack.gis.model.AsyncJobConstants.AsyncJobActions;
+import com.tdil.lojack.gis.model.AsyncJobResponse;
 import com.tdil.lojack.gis.model.Camera;
 import com.tdil.lojack.gis.model.ChangeLog;
+import com.tdil.lojack.gis.model.JobStatus;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.lojack.gis.model.LightAlertConfiguration;
+import com.tdil.lojack.utils.AsyncJobUtils;
+import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
@@ -34,21 +41,26 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 // TODO ver que datos de autheticacion hay que proveer
 public class LoJackServicesConnector {
-	
 
 	private static final String GUID = "guid";
 	private static final String LOJACK_USER_ID = "lojackUserId";
 	private static final String TZ_OFFSET = "timezoneOffset";
 	private static final String TZ_NAME = "timezoneName";
 	private static final String PASSWORD = "password";
-	private static final String ALARM_ID = "alarmId";
+	private static final String ID_ENTIDAD = "idEntidad";
+	private static final String ID_LUZ = "idLuz";
+	private static final String JOB_ID = "jobId";
 	private static final String AGENDA_ID = "agendaId";
-	private static final String LIGHT_ID = "lightId";
 
+	private static final String RECEIVE_NOTIFICATION = "receiveNotification";
+	
 	private static final Logger LOG = LoggerProvider.getLogger(LoJackServicesConnector.class);
 	
 	private static String gisServer = "http://localhost:8180/GISWeb/";
 	private static String servicesServer = "http://localhost:8180/GISWeb/";
+	
+	// Jobs
+	private static final String get_History_Job_Status = "getHistoryJobStatus.json";
 	
 	// Alarmas GIS
 	private static final String GET_ALARMS = "getAlarms.json";
@@ -56,9 +68,6 @@ public class LoJackServicesConnector {
 	private static final String ACTIVATE_ALARM = "activateAlarm.json";
 	private static final String DEACTIVATE_ALARM = "deactivateAlarm.json";
 	private static final String GET_ALARM_LOG = "getAlarmLog.json";
-	private static final String CHANGE_ALARM_PASSWORD = "changeAlarmPassword.json";
-	
-	private static final String RENAME_ALARM = "renameAlarm.json";
 
 	// Alarmas Services
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
@@ -80,7 +89,6 @@ public class LoJackServicesConnector {
 	private static final String TURN_ON_LIGHT = "turnOnLight.json";
 	private static final String TURN_OFF_LIGHT = "turnOffLight.json";
 	
-	private static final String RENAME_LIGHT = "renameLight.json";
 	
 	private static final String ACTIVATE_LIGHT_RANDOM_SEQUENCE = "activateLightRandomSequence.json";
 	private static final String DEACTIVATE_LIGHT_RANDOM_SEQUENCE = "deactivateLightRandomSequence.json";
@@ -95,12 +103,9 @@ public class LoJackServicesConnector {
 	private static final String GET_LIGHT_ALERT_CONFIGURATION = "getLightAlertConfiguration.json";
 	private static final String SAVE_LIGHT_ALERT_CONFIGURATION = "saveLightAlertConfiguration.json";
 	
-	public static Collection<Alarm> getAlarms(String userId, String lojackUserId, String timezoneOffset, String timezoneName) {
+	public static Collection<Alarm> getAlarms(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LOJACK_USER_ID, lojackUserId);
-		jsonObject.put(TZ_OFFSET, timezoneOffset);
-		jsonObject.put(TZ_NAME, timezoneName);
+		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
 			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
@@ -110,65 +115,57 @@ public class LoJackServicesConnector {
 			return null;
 		}
 	}
-	public static boolean sendPanicSignal(String userId, String alarmId) {
+	public static AsyncJobResponse sendPanicSignal(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
 		try {
 			JSONResponse response = executeGIS(jsonObject, SEND_PANIC);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			AsyncJobResponse result = new AsyncJobResponse((JSONObject)response.getResult());
+			registerNewJob(user, idEntidad, AsyncJobActions.PANIC_ALARM, result);
+			return result;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
-	public static boolean activateAlarm(String userId, String alarmId, String password) {
+	
+	public static AsyncJobResponse activateAlarm(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
-		jsonObject.put(PASSWORD, password);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
 		try {
 			JSONResponse response = executeGIS(jsonObject, ACTIVATE_ALARM);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
-	public static boolean deactivateAlarm(String userId,String alarmId, String password) {
+	public static AsyncJobResponse deactivateAlarm(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
-		jsonObject.put(PASSWORD, password);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
 		try {
 			JSONResponse response = executeGIS(jsonObject, DEACTIVATE_ALARM);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 		
 	}
 	
-	public static boolean renameAlarm(String userId,String alarmId, String description) {
+	public static Collection<ChangeLog> getAlarmLog(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
-		jsonObject.put("description", description);
-		try {
-			JSONResponse response = executeGIS(jsonObject, RENAME_ALARM);
-			return ((JSONObject)response.getResult()).getBoolean("result");
-		} catch (Exception e) {
-			LOG.error(e.getMessage(), e);
-			return false;
-		}
-		
-	}
-	
-	public static Collection<ChangeLog> getAlarmLog(String userId, String alarmId) {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
 			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
@@ -179,10 +176,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
+	@Deprecated
 	public static AlarmAlertConfiguration getAlarmAlertConfiguration(String userId, String alarmId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_ALERT_CONFIGURATION);
 			JSONObject object = (JSONObject)response.getResult();
@@ -193,7 +190,7 @@ public class LoJackServicesConnector {
 			return null;
 		}
 	}
-	
+	@Deprecated
 	public static boolean saveAlarmAlertConfiguration(String userId, AlarmAlertConfiguration conf) {
 		JSONObject jsonObject = JSONObject.fromObject(conf);
 		jsonObject.put(GUID, userId);
@@ -215,24 +212,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean changeAlarmPassword(String userId, String alarmId, String newPassword) {
+	public static Collection<AlarmAgenda> getAlarmAgendas(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
-		jsonObject.put("newPassword", newPassword);
-		try {
-			JSONResponse response = executeGIS(jsonObject, CHANGE_ALARM_PASSWORD);
-			return ((JSONObject)response.getResult()).getBoolean("result");
-		} catch (Exception e) {
-			LOG.error(e.getMessage(), e);
-			return false;
-		}
-	}
-	
-	public static Collection<AlarmAgenda> getAlarmAgendas(String userId, String agendaId) {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(AGENDA_ID, agendaId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_AGENDAS);
 			Collection<AlarmAgenda> resultObj = (Collection<AlarmAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), AlarmAgenda.class);
@@ -243,9 +226,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean deleteAlarmAgenda(String userId, String agendaId) {
+	public static boolean deleteAlarmAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, DELETE_ALARM_AGENDA);
@@ -256,9 +239,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean activateAlarmAgenda(String userId, String agendaId) {
+	public static boolean activateAlarmAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, ACTIVATE_ALARM_AGENDA);
@@ -269,11 +252,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean addAlarmAgenda(String userId, String alarmId, String password, AlarmAgenda alarmAgenda) {
+	public static boolean addAlarmAgenda(WebsiteUser user, int idEntidad, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		jsonObject.put(GUID, userId);
-		jsonObject.put(ALARM_ID, alarmId);
-		jsonObject.put(PASSWORD, password);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -283,10 +265,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean saveAlarmAgenda(String userId, String password, AlarmAgenda alarmAgenda) {
+	public static boolean saveAlarmAgenda(WebsiteUser user, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		jsonObject.put(GUID, userId);
-		jsonObject.put(PASSWORD, password);
+		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -296,9 +277,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static Camera getCamera(String userId) {
+	public static Camera getCamera(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_CAMERA);
 			JSONObject object = (JSONObject)response.getResult();
@@ -313,9 +294,9 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static Collection<Light> getLights(String userId) {
+	public static Collection<Light> getLights(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHTS);
 			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
@@ -326,76 +307,66 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean activateLightRandomSequence(String userId, String lightId) {
+	public static AsyncJobResponse activateLightRandomSequence(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeGIS(jsonObject, ACTIVATE_LIGHT_RANDOM_SEQUENCE);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
 	
-	public static boolean deactivateLightRandomSequence(String userId, String lightId) {
+	public static AsyncJobResponse deactivateLightRandomSequence(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeGIS(jsonObject, DEACTIVATE_LIGHT_RANDOM_SEQUENCE);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
 	
-	public static boolean activateLight(String userId, String lightId) {
+	public static AsyncJobResponse activateLight(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeGIS(jsonObject, TURN_ON_LIGHT);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
-	public static boolean deactivateLight(String userId, String lightId) {
+	public static AsyncJobResponse deactivateLight(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeGIS(jsonObject, TURN_OFF_LIGHT);
-			return ((JSONObject)response.getResult()).getBoolean("result");
+			return new AsyncJobResponse((JSONObject)response.getResult());
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return false;
+			return AsyncJobResponse.ERROR;
 		}
 	}
 	
-	public static boolean renameLight(String userId,String lightId, String description) {
+	public static Collection<ChangeLog> getLightLog(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
-		jsonObject.put("description", description);
-		try {
-			JSONResponse response = executeGIS(jsonObject, RENAME_LIGHT);
-			return ((JSONObject)response.getResult()).getBoolean("result");
-		} catch (Exception e) {
-			LOG.error(e.getMessage(), e);
-			return false;
-		}
-		
-	}
-	
-	public static Collection<ChangeLog> getLightLog(String userId, String lightId) {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_LOG);
 			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
@@ -406,10 +377,11 @@ public class LoJackServicesConnector {
 		}
 	}
 	
+	@Deprecated
 	public static LightAlertConfiguration getLightAlertConfiguration(String userId, String lightId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(ID_LUZ, lightId);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_LIGHT_ALERT_CONFIGURATION);
 			JSONObject object = (JSONObject)response.getResult();
@@ -421,6 +393,7 @@ public class LoJackServicesConnector {
 		}
 	}
 	
+	@Deprecated
 	public static boolean saveLightAlertConfiguration(String userId, LightAlertConfiguration conf) {
 		JSONObject jsonObject = JSONObject.fromObject(conf);
 		jsonObject.put(GUID, userId);
@@ -442,14 +415,11 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean changeLightPassword(Light light, String newPassword) {
-		return false;
-	}
-	
-	public static Collection<LightAgenda> getLightAgendas(String userId, String lightId) {
+	public static Collection<LightAgenda> getLightAgendas(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_LIGHT_AGENDAS);
 			Collection<LightAgenda> resultObj = (Collection<LightAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
@@ -460,9 +430,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean deleteLightAgenda(String userId, String agendaId) {
+	public static boolean deleteLightAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, DELETE_LIGHT_AGENDA);
@@ -473,9 +443,9 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean activateLightAgenda(String userId, String agendaId) {
+	public static boolean activateLightAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, ACTIVATE_LIGHT_AGENDA);
@@ -486,10 +456,10 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean addLightAgenda(String userId, String lightId, LightAgenda alarmAgenda) {
+	public static boolean addLightAgenda(WebsiteUser user, int idLuz, LightAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		jsonObject.put(GUID, userId);
-		jsonObject.put(LIGHT_ID, lightId);
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -499,15 +469,39 @@ public class LoJackServicesConnector {
 		}
 	}
 	
-	public static boolean saveLightAgenda(String userId, LightAgenda alarmAgenda) {
+	public static boolean saveLightAgenda(WebsiteUser user, LightAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
-		jsonObject.put(GUID, userId);
+		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return false;
+		}
+	}
+	
+	public static Collection<JobStatus> getHistoryJobStatus(WebsiteUser user, int jobId) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(JOB_ID, jobId);
+		try {
+			JSONResponse response = executeGIS(jsonObject, get_History_Job_Status);
+			Collection<JobStatus> resultObj = (Collection<JobStatus>)JSONArray.toCollection((JSONArray)response.getResult(), JobStatus.class);
+			return resultObj;
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
+	private static void registerNewJob(WebsiteUser user, int idEntidad, int action, AsyncJobResponse result) {
+		if (result.getJobId() != 0) {
+			try {
+				AsyncJobUtils.registerNewJob(user.getModelUser().getId(), action, result.getJobId(), idEntidad, 0);
+			} catch (SQLException e) {
+				LOG.error(e.getMessage(), e);
+			}
 		}
 	}
 	

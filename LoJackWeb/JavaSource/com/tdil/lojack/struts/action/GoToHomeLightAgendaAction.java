@@ -24,7 +24,7 @@ public class GoToHomeLightAgendaAction extends AbstractAction {
 		try {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
-			aForm.initWith(user, request.getParameter("lightId"));
+			aForm.initWith(user, Integer.valueOf(request.getParameter("idEntidad")), Integer.valueOf(request.getParameter("idLuz")));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

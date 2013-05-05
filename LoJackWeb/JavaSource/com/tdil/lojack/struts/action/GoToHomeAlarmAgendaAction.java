@@ -24,7 +24,7 @@ public class GoToHomeAlarmAgendaAction extends AbstractAction {
 		try {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
-			aForm.initWith(user, request.getParameter("alarmId"));
+			aForm.initWith(user, Integer.parseInt(request.getParameter("idEntidad")));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

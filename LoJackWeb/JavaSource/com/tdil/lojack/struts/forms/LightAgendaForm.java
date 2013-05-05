@@ -15,7 +15,8 @@ public class LightAgendaForm extends AgendaForm {
 	private static final long serialVersionUID = 7670249948557986182L;
 
 	private WebsiteUser user;
-	private String lightId;
+	private int idEntidad;
+	private int idLuz;
 	
 	private String id;
 	private List<LightAgenda> lightAgendas;
@@ -31,10 +32,10 @@ public class LightAgendaForm extends AgendaForm {
 		this.id = null;
 	}
 
-	public void initWith(WebsiteUser user, String lightId) {
+	public void initWith(WebsiteUser user, int idEntidad, int idLuz) {
 		setUser(user);
-		setLightId(lightId);
-		setLightAgendas(new ArrayList<LightAgenda>(LoJackServicesConnector.getLightAgendas(user.getGuid(), lightId)));
+		setIdLuz(idLuz);
+		setLightAgendas(new ArrayList<LightAgenda>(LoJackServicesConnector.getLightAgendas(user, this.idEntidad, this.idLuz)));
 	}
 
 	public WebsiteUser getUser() {
@@ -45,12 +46,12 @@ public class LightAgendaForm extends AgendaForm {
 		this.user = user;
 	}
 
-	public String getLightId() {
-		return lightId;
+	public int getIdLuz() {
+		return idLuz;
 	}
 
-	public void setLightId(String lightId) {
-		this.lightId = lightId;
+	public void setIdLuz(int lightId) {
+		this.idLuz = lightId;
 	}
 
 	public List<LightAgenda> getLightAgendas() {
@@ -96,12 +97,12 @@ public class LightAgendaForm extends AgendaForm {
 		LightAgenda lightAgenda = getLightAgenda(id);
 		if (lightAgenda != null) {
 			if (lightAgenda.isActive()) {
-				boolean result = LoJackServicesConnector.deleteLightAgenda(user.getGuid(), id);
+				boolean result = LoJackServicesConnector.deleteLightAgenda(user, id);
 				if (result) {
 					lightAgenda.setActive(false);
 				}
 			} else {
-				boolean result = LoJackServicesConnector.activateLightAgenda(user.getGuid(), id);
+				boolean result = LoJackServicesConnector.activateLightAgenda(user, id);
 				if (result) {
 					lightAgenda.setActive(true);
 				}
@@ -126,15 +127,23 @@ public class LightAgendaForm extends AgendaForm {
 		lightAgenda.setDeactivateTime(this.getDeactivateTime());
 		boolean saved = false;
 		if (isEdition()) {
-			saved = LoJackServicesConnector.saveLightAgenda(user.getGuid(), lightAgenda);
+			saved = LoJackServicesConnector.saveLightAgenda(user, lightAgenda);
 		} else {
-			saved = LoJackServicesConnector.addLightAgenda(user.getGuid(), this.getLightId(), lightAgenda);
+			saved = LoJackServicesConnector.addLightAgenda(user, this.getIdLuz(), lightAgenda);
 		}
 		if (!saved) {
 			// levantar una validation Exception
 		} else {
 			this.reset();
 		}
+	}
+
+	public int getIdEntidad() {
+		return idEntidad;
+	}
+
+	public void setIdEntidad(int idEntidad) {
+		this.idEntidad = idEntidad;
 	}
 
 	

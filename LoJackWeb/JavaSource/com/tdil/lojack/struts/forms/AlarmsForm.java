@@ -48,7 +48,7 @@ public class AlarmsForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setAlarms(LoJackServicesConnector.getAlarms(String.valueOf(user.getId()), user.getLojackUserId(), user.getTimezoneOffset(), user.getTimezoneName()));
+		setAlarms(LoJackServicesConnector.getAlarms(user));
 		try {
 			List<AlarmConf> alarmConf = (List<AlarmConf>)new GetAlarmConf(user.getModelUser().getId()).executeInTransaction();
 			for (Alarm alarm : getAlarms()) {

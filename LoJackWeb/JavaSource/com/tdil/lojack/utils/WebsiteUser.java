@@ -3,13 +3,17 @@ package com.tdil.lojack.utils;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
+import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
+import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 import com.tdil.users.User;
 
 public class WebsiteUser extends User {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6066615316635634331L;
 
@@ -18,15 +22,17 @@ public class WebsiteUser extends User {
 	private String lojackUserId = "ase001"; // TODO XXX
 	private String timezoneOffset;
 	private String timezoneName;
-	
+
 	private boolean isHomeUser;
 	private boolean isPreventUser;
 	private boolean isPetUser;
-	
+
+	private UserJobCollection userJobCollection;
+
 	private com.tdil.lojack.model.WebsiteUser modelUser;
-	
+
 	private Set<String> appliedActivities = new HashSet<String>();
-	
+
 	public WebsiteUser(String name, TokenHolder tokenHolder, String timezoneOffset, String timezoneName) {
 		super();
 		this.name = name;
@@ -34,16 +40,16 @@ public class WebsiteUser extends User {
 		this.timezoneOffset = timezoneOffset;
 		this.timezoneName = timezoneName;
 	}
-	
+
 	@Override
 	public Integer getId() {
 		return 1;
 	}
-	
+
 	public String getGuid() {
 		return String.valueOf(this.getToken().getCookie("JSESSIONID").getValue());
 	}
-	
+
 	public boolean isLogged() {
 		return this.getToken() != null && this.getToken().hasToken();
 	}
@@ -59,7 +65,7 @@ public class WebsiteUser extends User {
 	public void setAppliedActivities(Set<String> appliedActivities) {
 		this.appliedActivities = appliedActivities;
 	}
-	
+
 	public boolean appliesToActivity(String code) {
 		return appliedActivities.contains(code);
 	}
@@ -67,7 +73,7 @@ public class WebsiteUser extends User {
 	public TokenHolder getToken() {
 		return token;
 	}
-	
+
 	@Override
 	public Set<String> getRoles() {
 		Set<String> roles = new HashSet<String>();
@@ -138,5 +144,10 @@ public class WebsiteUser extends User {
 	public void setPetUser(boolean isPetUser) {
 		this.isPetUser = isPetUser;
 	}
-	
+
+	public void createUserJobCollection(HttpSession session) {
+		this.userJobCollection = new UserJobCollection(session, this);
+		UpdateMiddlewareJobsThread.getUpdateMiddlewareJobsThread().addUserJobCollection(this.userJobCollection);
+	}
+
 }

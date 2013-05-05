@@ -1,0 +1,4 @@
+[
+	{ "jobId": 1, jobStatus: "OK" },
+	{ "jobId": 2, jobStatus: "FAILED" } 
+]

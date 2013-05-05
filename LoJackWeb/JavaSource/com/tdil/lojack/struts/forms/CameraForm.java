@@ -36,7 +36,7 @@ public class CameraForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		setCamera(LoJackServicesConnector.getCamera(String.valueOf(user.getId())));
+		setCamera(LoJackServicesConnector.getCamera(user));
 	}
 
 	public WebsiteUser getUser() {

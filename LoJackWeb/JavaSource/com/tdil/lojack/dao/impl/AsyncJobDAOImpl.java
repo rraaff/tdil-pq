@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.model.AsyncJobExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class AsyncJobDAOImpl implements AsyncJobDAO {
 
@@ -157,5 +158,12 @@ public class AsyncJobDAOImpl implements AsyncJobDAO {
 		public Object getRecord() {
 			return record;
 		}
+	}
+	
+	@Override
+	public int oldestMWJob() throws SQLException {
+		Integer count = (Integer) sqlMapClient.queryForObject(
+				"ASYNC_JOB.oldestMWJob");
+		return count;
 	}
 }

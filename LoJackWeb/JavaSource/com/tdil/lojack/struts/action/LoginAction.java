@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -11,10 +12,11 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 
 import com.tdil.lojack.struts.forms.LoginForm;
+import com.tdil.lojack.utils.LoJackConfig;
+import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AjaxAction;
-import com.tdil.users.User;
 
 public class LoginAction extends AjaxAction  {
 
@@ -23,8 +25,10 @@ public class LoginAction extends AjaxAction  {
 			HttpServletResponse response) throws Exception {
 			LoginForm login = (LoginForm) form;
 		try {
-			User user = (User) login.executeLogin();
-			request.getSession().setAttribute("user", user);
+			WebsiteUser user = (WebsiteUser) login.executeLogin();
+			HttpSession session = request.getSession();
+			user.createUserJobCollection(session);
+			session.setAttribute("user", user); // TODO hacer esto en login por fb y twitter
 			HashMap<String, Object> result = new HashMap<String, Object>();
 			result.put("result", "OK");
 			writeJsonResponse(result, response);
@@ -38,7 +42,7 @@ public class LoginAction extends AjaxAction  {
 			}
 			ActionMessages errors = error.asActionsErrors();
 			if (errors != null) {
-				addErrors(request, errors);	
+				addErrors(request, errors);
 			}
 			HashMap<String, Object> result = new HashMap<String, Object>();
 			result.put("result", "ERR");
@@ -46,5 +50,5 @@ public class LoginAction extends AjaxAction  {
 			return null;
 		}
 	}
-	
+
 }

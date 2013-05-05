@@ -39,6 +39,13 @@
 		<appender-ref ref="FileAppenderAsync" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
+	
+	<category name="com.tdil.lojack.gis.UpdateMiddlewareJobsThread" additivity="false">
+		<priority value="debug" />
+		<appender-ref ref="ConsoleAppender" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
 
 	<category name="com.ibatis" additivity="false">
 		<priority value="error" />

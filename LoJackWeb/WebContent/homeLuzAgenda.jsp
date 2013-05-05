@@ -79,7 +79,7 @@ Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a h
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
 <hr> 
 <% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>
-Configurar agenda para la luz <%=lightAgendaForm.getLightId() %>
+Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%>
 
 <html:form method="POST" action="/saveLightAgenda">
 	Descripcion:<html:text name="LightAgendaForm" property="description" styleClass="normalField width120"/><br>

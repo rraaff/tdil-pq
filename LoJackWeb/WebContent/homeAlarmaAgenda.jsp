@@ -102,7 +102,7 @@ Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panic
 <hr> 
 
 <% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
-Configurar agenda para la alarma <%=alarmAgendaForm.getAlarmId() %>
+Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%>
 
 <html:form method="POST" action="/saveAlarmAgenda">
 	Descripcion:<html:text name="AlarmAgendaForm" property="description" styleClass="normalField width120"/><br>
