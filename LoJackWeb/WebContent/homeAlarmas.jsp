@@ -24,10 +24,10 @@
 		   $( "#" + $(this).attr('cl') ).fadeOut();
 		});
 	});
-  
-  $('.editable').editable(function(value, settings) { 
+
+  $('.editable').editable(function(value, settings) {
 	     return doRenameAlarm($(this).attr('id'), value);
-	  }, { 
+	  }, {
 	     type    : 'textarea',
 	     submit  : 'OK',
 	 });
@@ -43,11 +43,11 @@
           success: function(data) {
         	  if (data.result == 'OK') {
 				} else {
-					 $('#'+alarmId).prop('innerHTML', 'Error');	
+					 $('#'+alarmId).prop('innerHTML', 'Error');
 				}
           },
           error: function() {
-        	  $('#'+alarmId).prop('innerHTML', 'Error');	
+        	  $('#'+alarmId).prop('innerHTML', 'Error');
           }
       });
       return alarmDesc;
@@ -100,7 +100,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           }
       });
   }
-  
+
   function seeAlarmLog(alarmId) {
 	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
 		  centerLayer($(window), $( "#logLayer" ));
@@ -155,12 +155,12 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
 
-  function doActivate(alarmId) {
+  function doActivate(idEntidad) {
 	  $.ajax({
           type: "GET",
           cache: false,
           url: "./activateAlarm.do",
-          data: {alarmId: alarmId , password:  $('#password').attr('value')},
+          data: {idEntidad: idEntidad , password:  $('#password').attr('value')},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
@@ -183,12 +183,12 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
-  function doDeactivate(alarmId) {
+  function doDeactivate(idEntidad) {
 	  $.ajax({
           type: "GET",
           cache: false,
           url: "./deactivateAlarm.do",
-          data: {alarmId: alarmId , password:  $('#password').attr('value')},
+          data: {idEntidad: idEntidad , password:  $('#password').attr('value')},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
         	  if (data.result == 'OK') {
@@ -210,7 +210,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           }
       });
   }
-  
+
   function deactivateAlarm(alarmId) {
 	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doDeactivate("'+alarmId+'")');
@@ -234,9 +234,9 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 </head>
 <body>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
-<hr> 
+<hr>
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | <a href="javascript:sendPanic()">Boton de panico</a>
-<hr> 
+<hr>
 
 Mis Alarmas<br><br>
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
