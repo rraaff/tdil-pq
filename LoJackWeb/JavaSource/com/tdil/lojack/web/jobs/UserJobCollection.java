@@ -71,6 +71,10 @@ public class UserJobCollection implements Serializable {
 		return false;
 	}
 
+	public void addJob(AsyncJob job) {
+		this.jobs.add(job);
+	}
+
 	public void updateStatus(Collection<JobStatus> result) {
 		 // TODO post ejecucion, marcar los timeout...
 		for (JobStatus jobStatus : result) {

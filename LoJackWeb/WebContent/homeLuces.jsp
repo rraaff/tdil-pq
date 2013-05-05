@@ -23,9 +23,9 @@
 			   $( "#" + $(this).attr('cl') ).fadeOut();
 			});
 		});
-	  $('.editable').editable(function(value, settings) { 
+	  $('.editable').editable(function(value, settings) {
 		     return doRenameLight($(this).attr('id'), value);
-		  }, { 
+		  }, {
 		     type    : 'textarea',
 		     submit  : 'OK',
 		 });
@@ -41,11 +41,11 @@
           success: function(data) {
         	  if (data.result == 'OK') {
 				} else {
-					 $('#'+lightId).prop('innerHTML', 'Error');	
+					 $('#'+lightId).prop('innerHTML', 'Error');
 				}
           },
           error: function() {
-        	  $('#'+lightId).prop('innerHTML', 'Error');	
+        	  $('#'+lightId).prop('innerHTML', 'Error');
           }
       });
       return lightDesc;
@@ -78,7 +78,7 @@
 	        }
 	    });
 	}
-	
+
 	function deactivateEmailNotification(objCheckbox, idEntidad, idLuz) {
 		  $.ajax({
 	        type: "GET",
@@ -98,19 +98,19 @@
 	        }
 	    });
 	}
-  
-  function seeLightLog(lightId) {
-	  $('#logData').load('logLuz.jsp?lightId=' + lightId, function() {
+
+  function seeLightLog(idEntidad, idLuz) {
+	  $('#logData').load('logLuz.jsp?idEntidad=' + idEntidad + '&idLuz=' + idLuz, function() {
 		  centerLayer($(window), $( "#logLayer" ));
 		});
   }
-  
+
   function confLightAlert(lightId) {
 	  $('#confAlert').load('goToHomeLightAlertConf.do?lightId=' + lightId, function() {
 		  centerLayer($(window), $( "#confAlertLayer" ));
 		});
   }
-  
+
   function centerLayer(objWin, objLayer) {
 		var top = (objWin.height() / 2) - (objLayer.height() / 2);
 		var left = (objWin.width() / 2) - (objLayer.width() / 2);
@@ -128,12 +128,12 @@
 		}
 	}
 
-	function turnOnLight(lightId) {
+	function turnOnLight(idEntidad, idLuz) {
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
 	          url: "./turnOnLight.do",
-	          data: {lightId: lightId},
+	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
@@ -148,12 +148,12 @@
 	      });
 	  }
 
-	function turnOffLight(lightId) {
+	function turnOffLight(idEntidad, idLuz) {
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
 	          url: "./turnOffLight.do",
-	          data: {lightId: lightId},
+	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
@@ -168,46 +168,42 @@
 	      });
 	  }
 
-	function activateRandom(objCheckbox, lightId) {
+	function activateRandomSequence(idEntidad, idLuz) {
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
 	          url: "./activateLightRandomSequence.do",
-	          data: {lightId: lightId},
+	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
 						centerLayer($(window), $( "#randomActivatedLayer" ));
 					} else {
 						centerLayer($(window), $( "#randomNotActivatedLayer" ));
-						objCheckbox.checked = false;
 					}
 	          },
 	          error: function() {
 	        	  centerLayer($(window), $( "#randomNotActivatedLayer" ));
-	        	  objCheckbox.checked = false;
 	          }
 	      });
 	  }
 
-	function deactivateRandom(objCheckbox, lightId) {
+	function deactivateRandomSequence(idEntidad, idLuz) {
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
 	          url: "./deactivateLightRandomSequence.do",
-	          data: {lightId: lightId},
+	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  if (data.result == 'OK') {
 	        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
 					} else {
 						centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
-						objCheckbox.checked = true;
 					}
 	          },
 	          error: function() {
 	        	  centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
-	        	  objCheckbox.checked = true;
 	          }
 	      });
 	  }
@@ -215,9 +211,9 @@
 </head>
 <body>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="logout.do">Salir</a>
-<hr> 
+<hr>
 Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
-<hr> 
+<hr>
 Mis Lucess<br><br>
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <div id="accordion">
@@ -225,18 +221,18 @@ Mis Lucess<br><br>
   <h3>
   	<%= light.getDescription() %>
   	<% if (light.isInRandomMode()) { %>
-  		Modo random <span onclick="deactivateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Desactivar modo random</span>
+  		Modo random <span onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Desactivar modo random</span>
   	<% } else  { %>
   		<% if (light.isOn()) { %>
-	  		Encendida <span onclick="turnOffLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Apagar</span>
+	  		Encendida <span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
   		<% } else  { %>
 			<% if (light.isOff()) { %>
-	  			Apagada <span onclick="turnOnLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Encender</span>
-	  			<span onclick="activateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Activar modo random</span>
+	  			Apagada <span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+	  			<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
   			<% } else  { %>
-  				Estado desconocido <span onclick="turnOnLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Encender</span>
-  				<span onclick="turnOffLight('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Apagar</span>
-  				<span onclick="activateRandomSequence('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Activar modo random</span>
+  				Estado desconocido <span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+  				<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
+  				<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
 		    <% } %>
 	  <% } %>
 	 <% } %>
@@ -247,8 +243,8 @@ Mis Lucess<br><br>
    		<% if (light.hasChangeData()) { %>
    			Ultimo cambio: <%=light.getLastChangeDate() %>
    			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
-   			<a href="javascript:seeLightLog('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')">Ver log completo</a><br>
-   			<input type="checkbox" onchange="toggleEmailNotification(this, '<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')" <%= light.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
+   			<a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a><br>
+   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
    			<a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado<br>
    		<% } %>
     </p>

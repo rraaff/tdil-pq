@@ -5,8 +5,9 @@
 <%@ include file="includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %>
 <%
-String lightId = request.getParameter("lightId"); 
-Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websiteUser.getGuid(), lightId);
+int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
+int idLuz = Integer.valueOf(request.getParameter("idLuz"));
+Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websiteUser, idEntidad, idLuz);
 %>
 Log de cambios <br>
 <% for (ChangeLog log : logCollection) {
@@ -16,5 +17,5 @@ Log de cambios <br>
 	<% } else { %>
 		<img src="images/na.gif" width="30" height="30" align="absmiddle">
 	<% } %> -
-	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr> 
+	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr>
 <% } %>

@@ -101,8 +101,8 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
-  function seeAlarmLog(alarmId) {
-	  $('#logData').load('logAlarma.jsp?alarmId=' + alarmId, function() {
+  function seeAlarmLog(idEntidad) {
+	  $('#logData').load('logAlarma.jsp?idEntidad=' + idEntidad, function() {
 		  centerLayer($(window), $( "#logLayer" ));
 		});
   }
@@ -244,9 +244,9 @@ Mis Alarmas<br><br>
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>
   <h3><%= alarm.getDescription() %> <%=alarm.isTriggered() ? "Disparada" : (alarm.isActive() ? "Encendidad" : "Apagada")%>
   	<% if (alarm.isInactive() ) { %>
-  		<span onclick="activateAlarm('<%=alarm.getIdEntidad()%>')">Encender</span>
+  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">Encender</span>
   	<% } else { %>
-  		<span onclick="deactivateAlarm('<%=alarm.getIdEntidad()%>')">Apagar</span>
+  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">Apagar</span>
   	<% } %>
   </h3>
   <div>
@@ -255,9 +255,9 @@ Mis Alarmas<br><br>
    		<% if (alarm.hasChangeData()) { %>
    			Ultimo cambio: <%=alarm.getLastChangeDate() %>
    			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
-   			<a href="javascript:seeAlarmLog('<%= alarm.getIdEntidad() %>')">Ver log completo</a><br>
-   			<input type="checkbox" onchange="toggleEmailNotification(this, '<%=alarm.getIdEntidad()%>')" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
-   			<a href="./goToHomeAlarmAgenda.do?alarmId=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
+   			<a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a><br>
+   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
+   			<a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
    		<% } %>
     </p>
   </div>
@@ -283,7 +283,7 @@ Mis Alarmas<br><br>
 <%@ include file="includes/passwordLayer.jspf" %>
 
 <div id="alarmActivatedLayer" style="display: none; z-index: 500;">
-	Se ha activado la alarma
+	Se ha enviado el comando de activacion la alarma
 	<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar">
 </div>
 <div id="alarmNotActivatedLayer" style="display: none; z-index: 500;">
@@ -295,7 +295,7 @@ Mis Alarmas<br><br>
 	<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
 </div>
 <div id="alarmDeactivatedLayer" style="display: none; z-index: 500;">
-	Se ha desactivado la alarma
+	Se ha enviado el comando de desactivacion la alarma
 	<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
 </div>
 <div id="alarmNotDeactivatedLayer" style="display: none; z-index: 500;">
@@ -311,7 +311,7 @@ Mis Alarmas<br><br>
 	<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
 </div>
 <div id="panicSentLayer" style="display: none; z-index: 500;">
-	Se ha enviado la senial de panico
+	Se ha enviado el comando de senial de panico
 	<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
 </div>
 <div id="sendPanicErrorLayer" style="display: none; z-index: 500;">

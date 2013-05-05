@@ -5,16 +5,16 @@
 <%@ include file="includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %>
 <%
-String alarmId = request.getParameter("alarmId"); 
-Collection<ChangeLog> logCollection = LoJackServicesConnector.getAlarmLog(websiteUser.getGuid(), alarmId);
+int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
+Collection<ChangeLog> logCollection = LoJackServicesConnector.getAlarmLog(websiteUser, idEntidad);
 %>
 Log de cambios <br>
-<% for (ChangeLog log : logCollection) { 
+<% for (ChangeLog log : logCollection) {
 	com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUser(log.getLojackUserId()); %>
 	<% if (WebsiteUserUtils.hasAvatar(logUsr)) { %>
 		<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" width="30" height="30" align="absmiddle">
 	<% } else { %>
 		<img src="images/na.gif" width="30" height="30" align="absmiddle">
 	<% } %> -
-	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr> 
+	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr>
 <% } %>

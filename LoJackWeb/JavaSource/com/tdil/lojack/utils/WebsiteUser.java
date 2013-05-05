@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpSession;
 
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
+import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 import com.tdil.users.User;
@@ -148,6 +149,10 @@ public class WebsiteUser extends User {
 	public void createUserJobCollection(HttpSession session) {
 		this.userJobCollection = new UserJobCollection(session, this);
 		UpdateMiddlewareJobsThread.getUpdateMiddlewareJobsThread().addUserJobCollection(this.userJobCollection);
+	}
+
+	public void addAsyncJob(AsyncJob asyncJob) {
+		this.userJobCollection.addJob(asyncJob);
 	}
 
 }
