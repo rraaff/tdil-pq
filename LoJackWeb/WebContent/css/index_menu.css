@@ -89,6 +89,7 @@ div#menu ul ul {
 }
 div#menu ul ul a {
   	width: 184px;
+    height: 25px;
 	padding: 0px 7px 3px 8px;
     height: auto;
     float: none;
@@ -98,7 +99,7 @@ div#menu ul ul a {
     z-index: -1;
 }
 div#menu ul ul a span {
-	  padding: 0 10px 0px 10px;
+    padding: 0 10px 0px 10px;
     line-height: 25px;
     color: #FFF;
     font-weight:normal;
@@ -106,32 +107,28 @@ div#menu ul ul a span {
     background:none;
 }
 div#menu ul ul a:hover {
-    background: url(images/submenu-selected-bottom.gif) no-repeat 8px bottom;
+    /*background: url(images/submenu-selected-bottom.gif) no-repeat 8px bottom;*/
 }
 div#menu ul ul a:hover span {
-    background: url(images/submenu-selected-top.gif) no-repeat 0px 0px;
+    /*background: url(images/submenu-selected-top.gif) no-repeat 0px 0px;*/
     color: #fff;
 }
-
 div#menu ul ul li.last { background: none; }
 div#menu ul ul li {
     width: 100%;
 }
-
 /* menu::level3 */
 div#menu ul ul div {
-    width: 208px;
-    margin: -50px 0 0 190px !important;
+    /*width: 208px;*/
+    margin: -50px 0 0 150px !important;
     height: auto;
     _padding: 0 0 9px 3px;
 }
 div#menu ul ul ul {
 	_padding-right:1px;
 }
-
 /* lava lamp */
 div#menu li.back {
 }
 div#menu li.back .left {
 }
-

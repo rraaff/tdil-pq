@@ -3,9 +3,10 @@ a {
 	color: #FFF;
 }
 body {
+	background: #FFF;
 	color: #3F3F3F;
 	font-weight: normal;
-	font-family: "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
+	font-family: "Gotham", "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
 }
 header {
 	color: #FFF;
@@ -57,15 +58,20 @@ ul li a:focus  {
 }
 /* PRODUCT NAV */
 #productsMenu {
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#761617), to(#601919)); /* Chrome, Safari 4+ */
-	background-image: -webkit-linear-gradient(top, #761617, #601919); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
-	background-image:    -moz-linear-gradient(top, #761617, #601919); /* Firefox 3.6-15 */
-	background-image:      -o-linear-gradient(top, #761617, #601919); /* Opera 11.10-12.00 */
+	/*background-image: -webkit-gradient(linear, left top, left bottom, from(#761617), to(#601919)); /* Chrome, Safari 4+ /
+	background-image: -webkit-linear-gradient(top, #761617, #601919); /* Chrome 10-25, iOS 5+, Safari 5.1+ /
+	background-image:    -moz-linear-gradient(top, #761617, #601919); /* Firefox 3.6-15 /
+	background-image:      -o-linear-gradient(top, #761617, #601919); /* Opera 11.10-12.00 /
 	background-image:         linear-gradient(to bottom, #761617, #601919); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+	background: url(../images/skin_lj_rl/backs/productMenu/menu_base.png);
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
 	width: 100%;
-	height: 91px;
+	height: 97px;
 	padding: 0px;
 	margin: 0px;
+	z-index: 2;
+	position: absolute;
 }
 #productsMenu .userLoggedThalamusMenu {
 	text-transform: uppercase;
@@ -79,21 +85,25 @@ ul li a:focus  {
 #productsMenu ul li.logo {
 	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
 	background-repeat: no-repeat;
+	background-position: 0px 0px;
 	width: 173px;
 	height: 91px;
+	margin-bottom: 6px;
 	float: left;
 }
 #productsMenu ul li {
-	background:#e51b24;
+	background: url(../images/skin_lj_rl/backs/productMenu/menu_off.png);
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
 	font-size: 22px;
 	font-weight: bold;
-	line-height: 91px;
+	line-height: 97px;
 }
 #productsMenu ul li a {
 	padding-left:35px;
 	padding-top:34px;
 	padding-right:35px; 
-	padding-bottom:35px;
+	padding-bottom:41px;
 }
 #productsMenu ul li a:hover,
 #productsMenu ul li a:focus  {
@@ -112,11 +122,10 @@ ul li a:focus  {
 #productsMenu ul li.optHome:active {
 	background: url(../images/skin_lj_rl/backs/productMenu/home.png);
 	background-repeat: no-repeat;
+	background-position: 0px -1px;
 }
 /*content*/
 #content {
-	color: #FFF;
-	background: #0005FF;
 	width: 100%;
 	height: 426px;
 	padding: 0px;
@@ -124,27 +133,169 @@ ul li a:focus  {
 	text-align: center;
 	display: inline-block;
 	overflow: hidden;
+	top:133px;
+	position: absolute;
+}
+.pageWrapper, footer .pageWrapper {
+	width: 968px;
+	margin: 0 auto;
 }
 /* PRODUCTO:HOME */
 #content .col1_170 {
-	width: 170px;
+	width: 170px !important;
 	float: left;
 }
 #content .col1_794 {
 	background: #f0ece4;
-	width: 794px;
+	width: 714px;
+	height: 364px;
+	padding: 30px 40px;
 	float: left;
 }
 #content .tab {
 	width: 170px;
 	height: 26px;
 }
-#content ul.tabServices {}
-#content li.tabAlarms a {}
-#content li.tabLights a {}
-#content li.tabCameras a {}
+#content ul.tabServices {
+	width: 170px;
+	float: left;
+}
+#content ul li a {
+	color: #641819;
+	font-weight: normal;
+	text-transform: uppercase;
+	line-height: 21px;
+	width: 170px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+#content ul li a:hover,
+#content ul li a:focus {
+	background-color: #f0ece4;
+}
+#content li.tabAlarms a {
+	background: url(../images/skin_lj_rl/buttons/alarms_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 41px;
+	padding: 99px 0px 0px 0px;
+}
+#content li.tabLights a {
+	background: url(../images/skin_lj_rl/buttons/luces_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 37px;
+	padding: 94px 0px 0px 0px;
+}
+#content li.tabCameras a {
+	background: url(../images/skin_lj_rl/buttons/cameras_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 40px;
+	padding: 80px 0px 0px 0px;
+}
 
 /* FOOTER */
+footer {
+	width: 100%;
+	padding: 50px 0px;
+	margin: 0px;
+	display: inline-block;
+	overflow: hidden;
+	top:557px;
+	position: absolute;
+}
+footer h3 {
+	color: #551a1a;
+	font-size: 29px;
+	font-weight: lighter;
+	line-height: 34px;
+	text-transform: uppercase;
+}
+footer p {
+	color:#e51b24;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 17px;
+}
+.col1_300 {
+	width: 300px;
+	padding-left: 5px;
+	float: left;
+}
+.col_social {
+	width: 128px;
+	float: right;
+	margin-top: 104px;
+}
+footer .btn-primary {
+	color: #fff;
+	font-size: 9px;
+	font-weight: normal;
+	font-family: "Gotham", "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+	line-height: 17px;
+	padding: 0px 15px;
+
+	background-color: #f05224;
+	background-image: none;/* -moz-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*-webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));*/
+	background-image: none;/*-webkit-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*-o-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*linear-gradient(to bottom,#08c,#04c);*/
+	background-image: url(../images/skin_lj_rl/buttons/punta_boton.png);
+	background-repeat: no-repeat;
+	background-position: right 0px;
+	border-color: none;/* #04c #04c #002a80;
+	border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc',endColorstr='#ff0044cc',GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);*/
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border:none;
+}
+footer .btn:hover,
+footer .btn:focus {
+	background-color: #e51b24;
+	background-position: right -17px;
+}
+footer .nav-pills>li>a {
+	width: 21px;
+	height: 22px;
+	padding: 0;
+	margin: 0 9px 0 0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border:none;
+}
+footer .nav-pills>li>a.fb {
+	background: url(../images/skin_lj_rl/buttons/icon_grey_facebook.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a.tw {
+	background: url(../images/skin_lj_rl/buttons/icon_grey_twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 26px;
+}
+footer .nav-pills>li>a.ln {
+	background: url(../images/skin_lj_rl/buttons/icon_grey_in.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a.gp {
+	background: url(../images/skin_lj_rl/buttons/icon_grey_googleplus.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a:hover, 
+footer .nav-pills>li>a:focus {
+	background-position: 0px -32px;
+}
 #footer-copy {
 	background: #e6e6e6;
 	border-top: 1px solid #f3f3f3;
@@ -155,3 +306,5 @@ ul li a:focus  {
 	text-align: center;
 	padding: 10px 0;
 }
+/* SIZERS */
+.marginRight_60 { margin-right: 60px; }
