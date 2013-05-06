@@ -1,5 +1,5 @@
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
-<% 
+<%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
 	<jsp:forward page="./mobile/index.jsp"></jsp:forward>
@@ -19,7 +19,7 @@
 --><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
 --><%@ include file="includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="includes/userLogged.jspf" %><!--
---><% if (websiteUser != null && websiteUser.isLogged()) { %> 
+--><% if (websiteUser != null && websiteUser.isLogged()) { %>
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
 	} %>
@@ -32,7 +32,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles" rel="stylesheet" media="screen">
 <!-- Bootstrap -->
-
+<%@ include file="includes/headNotLogged.jsp" %>
 <!-- Slider -->
 <script src="js/jquery-latest.js"></script>
 <link href="css/slider.css" rel="stylesheet" type="text/css" />
@@ -44,10 +44,10 @@
 		var present=1;
 		var next=2;
 		var total_slide=document.getElementById("slider").childElementCount;
-		
+
 		$("#right").click(function()
 		{
-			
+
 			present_slide="#slide"+present;
 			next_slide="#slide"+next;
 			$(present_slide).css("top","842px");
@@ -64,9 +64,9 @@
 				}
 				$("#slide1").css("top","0px");
 			}
-			
+
 		});
-		
+
 		$("#left").click(function()
 		{
 			if(present==1)
@@ -75,7 +75,7 @@
 			present_slide="#slide"+present;
 			$(present_slide).css("top","842px");
 			$(next_slide).css("top","0px");
-			
+
 			present=total_slide;
 			next=1;
 			}else
@@ -91,7 +91,7 @@
 			{
 				present=(total_slide-1);
 				next=total_slide;
-	
+
 			}
 		});
 	});
@@ -104,10 +104,9 @@
 $(document).ready(
 	function(){
 
-		
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
-		
+
 		$("form[name='RegisterForm']").validate({
 			errorPlacement: function(error, element) {
 				error.appendTo( element.parent("div"));
@@ -129,10 +128,10 @@ $(document).ready(
 			errorPlacement: function(error, element) {
 				error.appendTo( element.parent("div"));
 			},
-			rules: { 
+			rules: {
 			},
 			messages: {
-				
+
 			},
 			submitHandler: function() {
 	            $("form[name='LoginForm']").ajaxSubmit({
@@ -159,7 +158,7 @@ $(document).ready(
 	    			});
 	        }
 		});
-		
+
 		$( "#closeregisterLayer" ).click(function() {
 			$( "#registerLayer" ).fadeOut();
 			clearErrors();
@@ -182,7 +181,7 @@ $(document).ready(
 		$( "#closeloginInvalidLayer" ).click(function() {
 			$( "#loginInvalidLayer" ).fadeOut();
 		});
-		
+
 		<%@ include file="includes/closeLegalesLayer.jsp" %>
 
 		<% if ("true".equals(request.getParameter("openRegister"))) { %>
@@ -190,8 +189,8 @@ $(document).ready(
 		<% } %>
 
 		/* Seteo el offset */
-		var userDate = new Date();  
-		var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );  
+		var userDate = new Date();
+		var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
 		$("form[name='LoginForm'] input[name='timezoneOffset']").attr('value', userTimeZone);
 		var tz = jstz.determine(); // Determines the time zone of the browser client
 		$("form[name='LoginForm'] input[name='timezoneName']").attr('value',  tz.name());
@@ -206,7 +205,7 @@ function clearErrors() {
 		function (index, valor) {
 			$(valor).css("display", "none");
 		}
-	); 
+	);
 }
 
 
@@ -222,10 +221,10 @@ function basicRegister() {
 		$(param).attr('value', '');
 	});
 	$("form[name='RegisterForm'] input[type='radio']").each(function(index, param){
-		$(param).prop('checked', false);  
+		$(param).prop('checked', false);
 	  });
 	$("form[name='RegisterForm'] input[type='checkbox']").each(function(index, param){
-		$(param).prop('checked', false);  
+		$(param).prop('checked', false);
 	});
 	$("form[name='RegisterForm'] select").each(function(index, param) {
 		$(param).val('');
@@ -297,7 +296,6 @@ function postResetPassword(data) {
 
 </script>
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery_indexMenu.js"></script>
 <script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
@@ -319,7 +317,7 @@ function postResetPassword(data) {
 </div>
 <section id="contentSlider">
 	<div id="sliderContainer">
-		
+
 		<div id="slider"><!-- <img src="images/null.gif" />-->
 			<div id="slide1" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
@@ -501,7 +499,7 @@ function postResetPassword(data) {
 				<div class="myRow">
 					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"><input type="button" id="closeregisterLayer" value="Cancel"></div>
 				</div>
-			</html:form> 
+			</html:form>
 		</div>
 	</div>
 </div>

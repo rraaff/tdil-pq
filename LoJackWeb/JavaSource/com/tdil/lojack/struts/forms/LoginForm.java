@@ -36,7 +36,7 @@ public class LoginForm extends ActionForm {
 	private String timezoneName;
 	private String username;
 	private String password;
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -49,7 +49,7 @@ public class LoginForm extends ActionForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
@@ -79,19 +79,23 @@ public class LoginForm extends ActionForm {
 			throw new ValidationException(new ValidationError("LoginForm.UnauthorizedException"));
 		}
 	}
-	
+
 	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName) throws HttpStatusException, InvalidResponseException,
 			CommunicationException, UnauthorizedException {
 		LoginBean loginBean = new LoginBean("1:" + username, pasword);
 		LoginResult result = ThalamusClientBeanFacade.login(loginBean);
+		return getUserLogged(/*timezoneOffset, timezoneName,*/ result);
+	}
+	public static WebsiteUser getUserLogged(LoginResult result/*, String timezoneOffset, String timezoneName*/) throws HttpStatusException,
+			InvalidResponseException, CommunicationException, UnauthorizedException {
 		PersonResult getProfile = ThalamusClientBeanFacade.getPerson(result.getTokenHolder());
-		
-		
+
+
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
-		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), timezoneOffset, timezoneName);
+		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), "", ""); // TODO
 		setAccess(user, getProfile);
-		
+
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
 		user.setModelUser(WebsiteUserUtils.getWebSiteUser(user.getLojackUserId()));
 		return user;
@@ -111,8 +115,8 @@ public class LoginForm extends ActionForm {
 			user.setLojackUserId(profile.getString("lojackUserId"));
 		}
 	}
-	
-	
+
+
 	public String getTimezoneOffset() {
 		return timezoneOffset;
 	}
@@ -125,5 +129,5 @@ public class LoginForm extends ActionForm {
 	public void setTimezoneName(String timezoneName) {
 		this.timezoneName = timezoneName;
 	}
-	
+
 }
