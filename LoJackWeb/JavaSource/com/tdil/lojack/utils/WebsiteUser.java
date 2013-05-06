@@ -155,4 +155,8 @@ public class WebsiteUser extends User {
 		this.userJobCollection.addJob(asyncJob);
 	}
 
+	public AsyncJob getPendingJob(int idEntidad, int idLuz) {
+		return this.userJobCollection.getPendingJob(idEntidad, idLuz);
+	}
+
 }

@@ -32,13 +32,17 @@ public class UserJobCollection implements Serializable {
 
 	public int getOldestJob() {
 		for (AsyncJob asyncJob : jobs) {
-			if (asyncJob.getStatus().equals(AsyncJobStatus.INITIAL)
-					|| asyncJob.getStatus().equals(AsyncJobStatus.SENDEDTOGIS)
-					|| asyncJob.getStatus().equals(AsyncJobStatus.PENDING)) {
+			if (isInProgress(asyncJob)) {
 				return asyncJob.getIdjob();
 			}
 		}
 		return 0; // nada para consultar
+	}
+
+	public boolean isInProgress(AsyncJob asyncJob) {
+		return asyncJob.getStatus().equals(AsyncJobStatus.INITIAL)
+		|| asyncJob.getStatus().equals(AsyncJobStatus.SENDEDTOGIS)
+		|| asyncJob.getStatus().equals(AsyncJobStatus.PENDING);
 	}
 
 	public List<AsyncJob> getJobs() {
@@ -94,6 +98,19 @@ public class UserJobCollection implements Serializable {
 
 	public int getUserId() {
 		return userId;
+	}
+
+	public AsyncJob getPendingJob(int idEntidad, int idLuz) {
+		for (AsyncJob asyncJob : getJobs()) {
+			if (asyncJob.getIdentidad().equals(idEntidad)) {
+				if (asyncJob.getIdluz().equals(idLuz)) {
+					if (isInProgress(asyncJob)) {
+						return asyncJob;
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 
