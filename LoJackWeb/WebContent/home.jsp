@@ -90,5 +90,8 @@ $(function() {
 		</ul>
 	</div>
 </section>
+<section id="contenidoADefinir">
+	acá va la ruedita
+</section>
 </body>
 </html>
