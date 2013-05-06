@@ -133,6 +133,7 @@ ul li a:focus  {
 	text-align: center;
 	display: inline-block;
 	overflow: hidden;
+	left:0px;
 	top:133px;
 	position: absolute;
 }
@@ -150,7 +151,22 @@ ul li a:focus  {
 	width: 714px;
 	height: 364px;
 	padding: 30px 40px;
+	overflow: hidden;
 	float: left;
+}
+#content .alarmasBG, #content .lucesBG, #content .camarasBG {
+	background: url(../images/skin_lj_rl/backs/productHome_alarm.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-color: #f0ece4;
+}
+#content .lucesBG {
+	background: url(../images/skin_lj_rl/backs/productHome_light.png);
+	background-color: #f0ece4;
+}
+#content .camarasBG {
+	background: url(../images/skin_lj_rl/backs/productHome_camera.png);
+	background-color: #f0ece4;
 }
 #content .tab {
 	width: 170px;
@@ -195,7 +211,42 @@ ul li a:focus  {
 	height: 40px;
 	padding: 80px 0px 0px 0px;
 }
-
+#content li.active { background-color: #f0ece4; }
+/* Accordion modifiers */
+#accordion {
+	width: 714px;
+	margin: 0;
+	padding: 0;
+	text-align: left;;
+}
+#accordion h3 {
+	color: #761617;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 21px;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0;
+}
+#accordion .statusObject {
+	color: #7f9e48;
+	font-size: 9px;
+	font-weight: normal;
+	line-height: 11px;
+	text-transform: uppercase;
+}
+#accordion .titleContainer {
+	border:dotted 1px #0044ff;
+	width: 500px;
+	float: left;
+}
+#accordion .switchContainer {
+	border:dotted 1px #000;
+	width: 200px;
+	height: 30px;
+	overflow: hidden;
+	float: left;
+}
 /* FOOTER */
 footer {
 	width: 100%;
@@ -203,6 +254,7 @@ footer {
 	margin: 0px;
 	display: inline-block;
 	overflow: hidden;
+	left:0px;
 	top:557px;
 	position: absolute;
 }
