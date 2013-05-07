@@ -1,0 +1,24 @@
+/* COPYRIGHT */
+#copyright {
+	width: 100%;
+	height: 50px;
+	bottom: -20px;
+	z-index: 1000;
+	position: fixed;
+}
+#copyright .copy {
+	color: #fff;
+	font-size: 8px;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: normal;
+	text-align: center;
+	text-transform: uppercase;
+	width: 968px;
+	margin: 0 auto;
+}
+#copyright a {
+	color: #fff;
+}
+#copyright p {
+	color: #fff;
+}

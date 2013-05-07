@@ -1,0 +1,49 @@
+#laRuedita {
+	width: 100%;
+	top: 100px;
+	z-index: 999;
+	position: fixed;
+}
+#laRuedita .fakeRuedita {
+	background: url(../images/skin_lj_rl/backs/wheel.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 422px;
+	height: 421px;
+	margin: 0 auto;
+}
+#laRuedita {
+	animation:myfirst 3s;
+	-webkit-animation:myfirst 3s; /* Safari and Chrome */
+}
+#logoIndex {
+	background: url(../images/skin_lj_rl/logos/lo-jack_index.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 243px;
+	height: 169px;
+	top: 60px;
+	z-index: 998;
+	position: fixed;
+}
+#logoIndex {
+	animation:mySecond 2s;
+	-webkit-animation:mySecond 2s; /* Safari and Chrome */
+}
+
+@keyframes myfirst {
+	from {top: -500px;}
+	to {top: 100px;}
+}
+@-webkit-keyframes myfirst { /* Safari and Chrome */
+	from {top: -3500px;}
+	to {top: 100px;}
+}
+@keyframes mySecond {
+	from {left: -280px;}
+	to {left: 0px;}
+}
+@-webkit-keyframes mySecond { /* Safari and Chrome */
+	from {left: -280px;}
+	to {left: 0px;}
+}

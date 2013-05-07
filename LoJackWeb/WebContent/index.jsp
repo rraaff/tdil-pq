@@ -1,4 +1,4 @@
-<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
+﻿<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -296,6 +296,8 @@ function postResetPassword(data) {
 
 </script>
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
+<link type="text/css" href="css/copyright.css" rel="stylesheet" />
+<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
 <script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
@@ -306,10 +308,9 @@ function postResetPassword(data) {
 				<ul>
 					<li><a href="javascript:login();" id="login" title="Access now!"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
-					<li><a href="javascript:verLegales();" id="legales" title="Legales"><span>Legales</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Facebook"><span>IngresÃ¡ con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Twitter"><span>IngresÃ¡ con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -317,8 +318,7 @@ function postResetPassword(data) {
 </div>
 <section id="contentSlider">
 	<div id="sliderContainer">
-
-		<div id="slider"><!-- <img src="images/null.gif" />-->
+		<div id="slider">
 			<div id="slide1" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 			<div id="slide3" class="slide page2"><a href="#" title="">&nbsp;</a></div>
@@ -329,8 +329,17 @@ function postResetPassword(data) {
 		<img src="images/back.png" width="40px;"  id="left"/></div>
 	</div>
 </section>
-<section id="footer">
 
+<div id="laRuedita">
+	<div class="fakeRuedita"></div>
+</div>
+
+<div id="logoIndex">&nbsp;</div>
+
+<section id="copyright">
+	<div class="copy">
+		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
+	</div>
 </section>
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
 	<div class="registerLayerStyles">

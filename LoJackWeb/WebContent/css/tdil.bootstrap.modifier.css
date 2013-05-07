@@ -167,6 +167,33 @@ ul li a:focus  {
 #content .camarasBG {
 	background: url(../images/skin_lj_rl/backs/productHome_camera.png);
 	background-color: #f0ece4;
+	width: 694px;
+	height: 377px;
+	padding: 40px 0 0 48px ;
+}
+#cameraTitle {
+	background-color: #fff;
+	background-image: url(../images/skin_lj_rl/buttons/toggle_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 10px 14px;
+	width: 560px;
+	height: 54px; 
+}
+#cameraTitle h1 {
+	color: #761617;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 54px;
+	text-align: left;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0 0 0 40px;
+}
+#appletHolder {
+	background: #232323;
+	width: 560px;
+	height: 297px;
+	overflow: hidden;
 }
 #content .tab {
 	width: 170px;
@@ -348,15 +375,6 @@ footer .nav-pills>li>a:hover,
 footer .nav-pills>li>a:focus {
 	background-position: 0px -32px;
 }
-#footer-copy {
-	background: #e6e6e6;
-	border-top: 1px solid #f3f3f3;
-	color: #808080;
-	font-size: 11px;
-	font-family: arial;
-	line-height: 16px;
-	text-align: center;
-	padding: 10px 0;
-}
+
 /* SIZERS */
 .marginRight_60 { margin-right: 60px; }
