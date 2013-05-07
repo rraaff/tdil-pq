@@ -1,7 +1,6 @@
 package com.tdil.lojack.gis;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -33,7 +32,6 @@ import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.lojack.gis.model.LightAlertConfiguration;
 import com.tdil.lojack.model.AsyncJob;
-import com.tdil.lojack.utils.AsyncJobUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.thalamus.client.core.CommunicationException;

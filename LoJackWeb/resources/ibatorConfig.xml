@@ -7,9 +7,9 @@
 <classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 <classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/javabase.jar" />
 <classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/pluginibator.jar" />
-<ibatorContext 
-  id="ibatorContext" 
-  targetRuntime="Ibatis2Java5" 
+<ibatorContext
+  id="ibatorContext"
+  targetRuntime="Ibatis2Java5"
   defaultModelType="flat">
 
 <ibatorPlugin type="com.tdil.ibatis.plugin.MySqlDeleteByExamplePlugin">
@@ -32,7 +32,7 @@
   <property name="enableSubPackages" value="true" />
 </sqlMapGenerator>
 
-<daoGenerator type="GENERIC-CI" 
+<daoGenerator type="GENERIC-CI"
 targetPackage="com.tdil.lojack.dao"
 implementationPackage="com.tdil.lojack.dao.impl"
 targetProject="LoJackWeb">
@@ -63,6 +63,9 @@ targetProject="LoJackWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="LOJACK" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

@@ -3,7 +3,7 @@
 	<property name="project.name.cap" value="LoJack" />
 	<property name="project.name.upper" value="LOJACK" />
 	<property name="project.name.lower" value="lojack" />
-	
+
 	<property name="sql.driver" value="com.mysql.jdbc.Driver" />
 	<property name="root.url" value="jdbc:mysql://localhost:3306/" />
 	<property name="root.user" value="root" />
@@ -11,7 +11,7 @@
 	<property name="db.url" value="jdbc:mysql://localhost:3306/${project.name.upper}" />
 	<property name="db.user" value="${project.name.upper}_USER" />
 	<property name="db.pass" value="${project.name.upper}_USER" />
-	
+
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 			classpath="./ant-contrib.jar" />
 
@@ -35,7 +35,7 @@
 			<transaction src="database.sql" />
 		</sql>
 	</target>
-	
+
 	<target name="create_jar_applet">
 		<tstamp>
 			<format property="hora" pattern="yyyyMMddHHmm"/>
@@ -51,7 +51,7 @@
 		<if>
 			<not>
 				<available file="./LoJackKeyStore" type="file" />
-			</not>	
+			</not>
 			<then>
 				<echo>Generating new certificate</echo>
 				<delete file="./LoJackKeyStore"/>
@@ -68,16 +68,17 @@
 		<signjar alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore" jar="../WebContent/cameraviewer-b${hora}.jar"></signjar>
 		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="../WebContent/homeCamara.jsp"/>
     </target>
-	
+
 	<target name="createTables" depends="createDatabase">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
 			<transaction src="ddl.sql" />
+			<transaction src="poi_inserts.sql" />
 		</sql>
 	</target>
-	
+
 	<target name="useThalamusTest">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
@@ -86,7 +87,7 @@
 			<transaction src="thalamus_test.sql" />
 		</sql>
 	</target>
-	
+
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>
@@ -141,7 +142,7 @@
 			<mapper type="glob" from="*.js" to="*.js" />
 			<targetfile />
 		</apply>
-		
+
 		<apply verbose="true" executable="java" parallel="false" relative="true" dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/css/">
 			<fileset dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/css" includes="*.css"/>
 			<arg value="-jar" />
