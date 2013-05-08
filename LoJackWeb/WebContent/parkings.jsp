@@ -140,7 +140,14 @@
         		parkings = null;
             }
         }
-        var popup;
+        var currentPopup;
+        var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
+            "autoSize": true,
+            "minSize": new OpenLayers.Size(300, 50),
+            "maxSize": new OpenLayers.Size(500, 300),
+            "keepInMap": true
+        });
+
         function addParkings() {
             if (!parkings) {
 	        	parkings = new OpenLayers.Layer.Markers( "Parkings" );
@@ -160,18 +167,27 @@
 			var point = new OpenLayers.LonLat(lon,lat);
 			point.transform(proj, Mapa.map.getProjectionObject());
 			var marker = new OpenLayers.Marker(point,icon.clone());
-			marker.events.register('mouseover', marker, function(evt) {
-				if (popup == null) {
-			    popup = new OpenLayers.Popup.FramedCloud("Popup",
-			        point,
-			        null,
-			        '<div><b>'+title+'</b><br>'+desc+'</div>',
-			        null,
-			        false);
-			    Mapa.map.addPopup(popup);
-				}
-			});
-			marker.events.register('mouseout', marker, function(evt) {popup.hide();popup = null;});
+			var feature = new OpenLayers.Feature(parkings, point);
+            feature.closeBox = true;
+            feature.popupClass = popupClass;
+            feature.data.popupContentHTML = '<div style="background-color:#003366;color: White">' + title + '<br>' + desc +'</div>';
+            feature.data.overflow = "auto";
+
+            var markerClick = function(evt) {
+                if (currentPopup != null && currentPopup.visible() && currentPopup != this.popup) {
+                    currentPopup.hide();
+                }
+                if (this.popup == null) {
+                    this.popup = this.createPopup(this.closeBox);
+                    Mapa.map.addPopup(this.popup);
+                    this.popup.show();
+                } else {
+                    this.popup.toggle();
+                }
+                currentPopup = this.popup;
+                OpenLayers.Event.stop(evt);
+            };
+            marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
 
