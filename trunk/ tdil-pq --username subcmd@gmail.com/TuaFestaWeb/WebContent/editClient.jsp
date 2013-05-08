@@ -22,7 +22,7 @@
 <script>
 $(document).ready(
 	function(){
-		
+
 			$("form[name='ClientHomeForm']").validate({
 					errorPlacement: function(error, element) {
 						error.appendTo( element.parent("div"));
@@ -33,19 +33,19 @@ $(document).ready(
 							'birthdate': {required: true}
 					},
 					messages: {
-						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"},
 						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"},
-						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"}, 
+						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"},
 						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese su fecha de nacimiento.' />"}
 					}
 				});
 
 			$("input[name=birthdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+				changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-100:+0'});
 
 		}
 
-	
+
 	);
 
 </script>
@@ -79,7 +79,7 @@ $(document).ready(
 					<div class="myLabel width80">Ubicaci&oacute;n</div>
 						<html:select name="ClientHomeForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2EditClient.do';this.form.submit()" styleClass="normalField width150">
 							<option value="0">Seleccione</option>
-							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
+							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>
 								<option	<%=	geo2.getId() == clientForm.getGeo2Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo2.getId())%>">
 									<%=geo2.getNombre()%></option>
@@ -87,7 +87,7 @@ $(document).ready(
 						</html:select>
 						<html:select name="ClientHomeForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3EditClient.do';this.form.submit()" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
-							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>	
+							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>
 								<option	<%=	geo3.getId() == clientForm.getGeo3Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo3.getId())%>">
 									<%=geo3.getNombre()%></option>
@@ -95,7 +95,7 @@ $(document).ready(
 						</html:select>
 						<html:select name="ClientHomeForm" property="geo4Id" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
-							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>	
+							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>
 								<option	<%=	geo4.getId() == clientForm.getGeo4Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo4.getId())%>">
 									<%=geo4.getNombre()%></option>

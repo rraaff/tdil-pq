@@ -22,7 +22,7 @@
 <script>
 $(document).ready(
 	function(){
-		
+
 			$("form[name='ClientForm']").validate({
 					errorPlacement: function(error, element) {
 						error.appendTo( element.parent("div"));
@@ -36,9 +36,9 @@ $(document).ready(
 							'retypepassword': {required: true}
 					},
 					messages: {
-						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
+						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"},
 						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"},
-						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"}, 
+						'sex': {required: "<img id='sexerror' src='images/unchecked.gif' hovertext='Seleccione el sexo.' />"},
 						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
 								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
 						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese su fecha de nacimiento.' />"},
@@ -48,11 +48,11 @@ $(document).ready(
 				});
 
 			$("input[name=birthdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+				changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-100:+0'});
 
 		}
 
-	
+
 	);
 
 </script>
@@ -77,7 +77,7 @@ $(document).ready(
 	background-image: url(images/skin_basic/backgrounds/cartelitoRegistracion.png);
 	background-repeat: no-repeat;
 	background-position: center top;
-	
+
 	padding-left:36px;
 	padding-top:24px;
 	padding-right:10px;
@@ -123,7 +123,7 @@ $(document).ready(
 					<div class="myRow">
 						<div class="myLabel width70">Clave</div>
 						<div class="myLabel width150" id="Password"><html:password name="ClientForm" property="password" styleClass="normalField width100"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, "ClientForm.password.err")%></div>
-	
+
 						<div class="myLabel width60">Repetir</div>
 						<div class="myLabel width250" id="Password"><html:password name="ClientForm" property="retypepassword" styleClass="normalField width120"/></div>
 					</div>
@@ -133,7 +133,7 @@ $(document).ready(
 					<div class="myLabel width150">
 						<html:select name="ClientForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Client.do';this.form.submit()" styleClass="normalField width120">
 							<option value="0">Seleccione</option>
-							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>	
+							<% for (Geo2 geo2 : clientForm.getLevel2()) { %>
 								<option	<%=	geo2.getId() == clientForm.getGeo2Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo2.getId())%>">
 									<%=geo2.getNombre()%></option>
@@ -143,7 +143,7 @@ $(document).ready(
 					<div class="myLabel width220">
 						<html:select name="ClientForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Client.do';this.form.submit()" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
-							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>	
+							<% for (Geo3 geo3 : clientForm.getLevel3()) { %>
 								<option	<%=	geo3.getId() == clientForm.getGeo3Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo3.getId())%>">
 									<%=geo3.getNombre()%></option>
@@ -153,7 +153,7 @@ $(document).ready(
 					<div class="myLabel width220">
 						<html:select name="ClientForm" property="geo4Id" styleClass="normalField width200">
 							<option value="0">Seleccione</option>
-							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>	
+							<% for (Geo4 geo4 : clientForm.getLevel4()) { %>
 								<option	<%=	geo4.getId() == clientForm.getGeo4Id() ? "selected" : ""%>
 									value="<%=String.valueOf(geo4.getId())%>">
 									<%=geo4.getNombre()%></option>

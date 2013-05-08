@@ -24,7 +24,7 @@
 <script>
 $(document).ready(
 	function(){
-	
+
 			$("form[name='EditProfesionalPersonalDataForm']").validate({
 					errorPlacement: function(error, element) {
 						error.appendTo( element.parent("div"));
@@ -40,12 +40,12 @@ $(document).ready(
 					}
 				});
 
-			
+
 			$("input[name=birthdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+				changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-100:+0'});
 
 		}
-	
+
 	);
 
 </script>
@@ -86,7 +86,7 @@ $(document).ready(
 						<div class="myLabel width100" id="Telefono"><html:text name="EditProfesionalPersonalDataForm" property="phoneExtension" styleClass="normalField width40"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
 						<div class="myLabel width30">Tipo</div>
 						<div class="myLabel width250" id="Telefono"><html:select name="EditProfesionalPersonalDataForm" property="phoneType" styleClass="normalField width200">
-								<option value="">Seleccione</option><%-- 
+								<option value="">Seleccione</option><%--
 								--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
 									--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
 											--%><%=type%></option>
