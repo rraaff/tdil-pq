@@ -160,7 +160,8 @@
 			var point = new OpenLayers.LonLat(lon,lat);
 			point.transform(proj, Mapa.map.getProjectionObject());
 			var marker = new OpenLayers.Marker(point,icon.clone());
-			marker.events.register('click', marker, function(evt) {
+			marker.events.register('mouseover', marker, function(evt) {
+				if (popup == null) {
 			    popup = new OpenLayers.Popup.FramedCloud("Popup",
 			        point,
 			        null,
@@ -168,8 +169,9 @@
 			        null,
 			        false);
 			    Mapa.map.addPopup(popup);
+				}
 			});
-			marker.events.register('mouseout', marker, function(evt) {popup.hide();});
+			marker.events.register('mouseout', marker, function(evt) {popup.hide();popup = null;});
 			return marker;
 		}
 
