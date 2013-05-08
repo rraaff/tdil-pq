@@ -29,7 +29,7 @@
 <script>
 $(document).ready(
 	function(){
-	
+
 			$("form[name='ProfesionalForm']").validate({
 					errorPlacement: function(error, element) {
 						error.appendTo( element.parent("div"));
@@ -53,9 +53,9 @@ $(document).ready(
 							'geo4Id': {required: true}
 					},
 					messages: {
-						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"}, 
-						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"}, 
-						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese la fecha de nacimiento.' />"}, 
+						'firstname': {required: "<img id='firstnameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"},
+						'lastname': {required: "<img id='lastnameerror' src='images/unchecked.gif' hovertext='Ingrese el apellido.' />"},
+						'birthdate': {required: "<img id='birthdateerror' src='images/unchecked.gif' hovertext='Ingrese la fecha de nacimiento.' />"},
 						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
 								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
 						'phoneAreaCode': {required: "<img id='phoneAreaCodeerrorreq' src='images/unchecked.gif' hovertext='Ingrese el codigo de area.' />",
@@ -71,19 +71,19 @@ $(document).ready(
 						'geo2Id': {required: "<img id='geo2iderror' src='images/unchecked.gif' hovertext='Seleccione la provincia.' />"},
 						'geo3Id': {required: "<img id='geo3iderror' src='images/unchecked.gif' hovertext='Seleccione el partido.' />"},
 						'geo4Id': {required: "<img id='geo4iderror' src='images/unchecked.gif' hovertext='Seleccione la localidad.' />"}
-						
+
 					}
 				});
 
-			
+
 			$("input[name=birthdate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
-			
+				changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-100:+0'});
+
 
 			<%@ include file="includes/add_sell_js.jspf"%>
 		}
 
-	
+
 	);
 
 </script>
@@ -109,7 +109,7 @@ $(document).ready(
 	background-image: url(images/skin_basic/backgrounds/cartelitoRegistracion.png);
 	background-repeat: no-repeat;
 	background-position: center top;
-	
+
 	padding-left:36px;
 	padding-top:24px;
 	padding-right:10px;
@@ -150,7 +150,7 @@ $(document).ready(
 						<div class="myLabel width60" id="Telefono"><html:text name="ProfesionalForm" property="phoneExtension" styleClass="normalField width40"/>&nbsp;<%=TuaFestaErrorFormatter.getErrorFrom(request, ProfesionalForm.phoneextension_key + ".err")%></div>
 						<div class="myLabel width40">Tipo</div>
 						<div class="myLabel width200" id="Telefono"><html:select name="ProfesionalForm" property="phoneType" styleClass="normalField width150">
-								<option value="">Seleccione</option><%-- 
+								<option value="">Seleccione</option><%--
 								--%><% for (String type : PhoneType.getPhoneTypes()) { %><%--
 									--%><option <%=	type.equals(profesionalForm.getPhoneType()) ? "selected" : ""%> value="<%=type%>"><%--
 											--%><%=type%></option>
@@ -192,7 +192,7 @@ $(document).ready(
 						<div class="myLabel width70">Ubicaci&oacute;n</div>
 						<div class="myLabel width160">
 							<html:select name="ProfesionalForm" property="geo2Id" onchange="this.form.action='./refreshGeoLevel2Profesional.do';this.form.submit()" styleClass="normalField width150">
-								<option value="0">Seleccione</option><%-- 
+								<option value="0">Seleccione</option><%--
 								--%><% for (Geo2 geo2 : profesionalForm.getLevel2()) { %><%--
 									--%><option <%=	geo2.getId() == profesionalForm.getGeo2Id() ? "selected" : ""%> value="<%=String.valueOf(geo2.getId())%>"><%--
 											--%><%=geo2.getNombre()%></option>
@@ -204,7 +204,7 @@ $(document).ready(
 						<div class="myLabel width200">
 							<html:select name="ProfesionalForm" property="geo3Id" onchange="this.form.action='./refreshGeoLevel3Profesional.do';this.form.submit()" styleClass="normalField width180">
 								<option value="0">Seleccione</option>
-								<% for (Geo3 geo3 : profesionalForm.getLevel3()) { %>	
+								<% for (Geo3 geo3 : profesionalForm.getLevel3()) { %>
 									<option	<%=	geo3.getId() == profesionalForm.getGeo3Id() ? "selected" : ""%>
 										value="<%=String.valueOf(geo3.getId())%>">
 										<%=geo3.getNombre()%></option>
@@ -216,7 +216,7 @@ $(document).ready(
 						<div class="myLabel width200">
 							<html:select name="ProfesionalForm" property="geo4Id" styleClass="normalField width160">
 								<option value="0">Seleccione</option>
-								<% for (Geo4 geo4 : profesionalForm.getLevel4()) { %>	
+								<% for (Geo4 geo4 : profesionalForm.getLevel4()) { %>
 									<option	<%=	geo4.getId() == profesionalForm.getGeo4Id() ? "selected" : ""%>
 										value="<%=String.valueOf(geo4.getId())%>">
 										<%=geo4.getNombre()%></option>
@@ -255,7 +255,7 @@ $(document).ready(
 						</div>
 						<div class="myRow" align="center"><a href="javascript:document.ProfesionalForm.action='./registroProfesionalAddSell.do';document.ProfesionalForm.submit();" id="doAddSell">Agregar</a> o <a href="#" id="cancelAddSell">Cancelar</a></div>
 					</div>
-					
+
 					<div class="myRow width600">
 						<%
 						java.util.List source = profesionalForm.getSells();
