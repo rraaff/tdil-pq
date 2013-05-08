@@ -306,11 +306,11 @@ function postResetPassword(data) {
 		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
 			<div>
 				<ul>
-					<li><a href="javascript:login();" id="login" title="Access now!"><span>Ingresar</span></a></li>
+					<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"><span>Ingres√° con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"><span>Ingres√° con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"><span>Ingres· con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"><span>Ingres· con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -329,23 +329,45 @@ function postResetPassword(data) {
 		<img src="images/back.png" width="40px;"  id="left"/></div>
 	</div>
 </section>
-<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
-	logueado y con acceso a home
-<% } else { %>
-	no logueado o sin acceso a home
-<% } %>
-<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-	logueado y con acceso a prevent
-<% } else { %>
-	no logueado o sin acceso a prevent
-<% } %>
-<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
-	logueado y con acceso a pet
-<% } else { %>
-	no logueado o sin acceso a pet
-<% } %>
+
 <div id="laRuedita">
 	<div class="fakeRuedita"></div>
+	<% if (websiteUser != null && websiteUser.isLogged()) { %>
+		<div id="iconoLogin"><a href="logout.do" title="Salir del sistema"></a></div>
+	<% } else { %>
+		<div id="iconoLogin"><a href="javascript:login();" title="Ingresar ahora"></a></div>
+	<% } %>
+	<div id="iconoParkings"><a href="parkings.jsp" title="Utiliz· la App gratuita y encontr· donde estacionar en CABA"></a></div>
+
+	<% if (websiteUser != null && websiteUser.isLogged()) { %>
+		<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"></a></div>
+	<% } else { %>
+		<div id="iconoProfile"><a href="" title="øøø???"></a></div>
+	<% } %>
+
+	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+		<!-- logueado y con acceso a prevent -->
+		<div id="iconoCar"><a href="" title=""></a></div>
+	<% } else { %>
+		<!-- no logueado o sin acceso a prevent -->
+		<div id="iconoCar"><a href="" title=""></a></div>
+	<% } %>
+
+	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
+		<!-- logueado y con acceso a home -->
+		<div id="iconoHome"><a href="" title=""></a></div>
+	<% } else { %>
+		<!-- no logueado o sin acceso a home -->
+		<div id="iconoHome"><a href="" title=""></a></div>
+	<% } %>
+
+	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
+		<!-- logueado y con acceso a pet -->
+		<div id="iconoPets"><a href="" title=""></a></div>
+	<% } else { %>
+		<!-- no logueado o sin acceso a pet -->
+		<div id="iconoPets"><a href="" title=""></a></div>
+	<% } %>
 </div>
 
 <div id="logoIndex">&nbsp;</div>
