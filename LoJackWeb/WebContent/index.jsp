@@ -377,7 +377,7 @@ function postResetPassword(data) {
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
-<div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
 			<div class="myRow">
@@ -549,7 +549,7 @@ function postResetPassword(data) {
 	</div>
 </div>
 <!-- Login Form -->
-<div id="loginLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="loginLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent">
 			<html:form method="POST" action="/login">
@@ -573,7 +573,7 @@ function postResetPassword(data) {
 	</div>
 </div>
 <!-- login error -->
-<div id="loginInvalidLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="loginInvalidLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
@@ -586,7 +586,7 @@ function postResetPassword(data) {
 	</div>
 </div>
 <!-- forgot password -->
-<div id="forgotPasswordLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="forgotPasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="resetPassLayerStyles">
 		<div class="resetPassLayerContent">
 			<html:form method="POST" action="/requestResetPassword">
@@ -603,7 +603,7 @@ function postResetPassword(data) {
 	</div>
 </div>
 <!-- Forgot password e-mail sent -->
-<div id="forgotPasswordEmailSentLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="forgotPasswordEmailSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
@@ -615,7 +615,7 @@ function postResetPassword(data) {
 		</div>
 	</div>
 </div>
-<div id="forgotPasswordUserNotFoundLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="forgotPasswordUserNotFoundLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
@@ -627,7 +627,7 @@ function postResetPassword(data) {
 		</div>
 	</div>
 </div>
-<div id="forgotPasswordErrorLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="forgotPasswordErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
