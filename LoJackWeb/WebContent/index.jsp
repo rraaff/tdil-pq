@@ -1,4 +1,4 @@
-﻿<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
+<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -309,8 +309,8 @@ function postResetPassword(data) {
 					<li><a href="javascript:login();" id="login" title="Access now!"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Facebook"><span>IngresÃ¡ con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Twitter"><span>IngresÃ¡ con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -329,7 +329,21 @@ function postResetPassword(data) {
 		<img src="images/back.png" width="40px;"  id="left"/></div>
 	</div>
 </section>
-
+<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
+	logueado y con acceso a home
+<% } else { %>
+	no logueado o sin acceso a home
+<% } %>
+<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+	logueado y con acceso a prevent
+<% } else { %>
+	no logueado o sin acceso a prevent
+<% } %>
+<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
+	logueado y con acceso a pet
+<% } else { %>
+	no logueado o sin acceso a pet
+<% } %>
 <div id="laRuedita">
 	<div class="fakeRuedita"></div>
 </div>
@@ -338,7 +352,7 @@ function postResetPassword(data) {
 
 <section id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados pol�tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcci�n general de defensa y protecci�n al consumidor</p>
 	</div>
 </section>
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
