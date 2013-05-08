@@ -23,6 +23,9 @@ import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.utils.encryption.DesEncrypter;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Color;
 
 /**
  * Class <code>AppletCamara</code> is responsible of establishing a directo connection
@@ -46,8 +49,6 @@ public class AppletCamara extends javax.swing.JApplet {
 
 	private JButton jButtonArriba;
 
-	private JPanel jPanelVertical;
-
 	private long refreshInterval;
 
 	public AppletCamara() {
@@ -61,78 +62,17 @@ public class AppletCamara extends javax.swing.JApplet {
 	public void initGUI() {
 		try {
 			preInitGUI();
-			jPanelVertical = new JPanel();
-			jButtonArriba = new JButton();
-			jButtonAbajo = new JButton();
 			jPanelHorizontal = new JPanel();
 			jButtonIzquierda = new JButton();
 			jButtonDerecha = new JButton();
-
-			GridBagLayout thisLayout = new GridBagLayout();
-			this.getContentPane().setLayout(thisLayout);
-			thisLayout.columnWidths = new int[] { 1, 1 };
-			thisLayout.rowHeights = new int[] { 1, 1 };
-			thisLayout.columnWeights = new double[] { 0.1, 0.1 };
-			thisLayout.rowWeights = new double[] { 0.1, 0.1 };
 			this.setSize(new java.awt.Dimension(350, 241));
 			this.getContentPane().setBackground(
-					new java.awt.Color(208, 176, 255));
-
-			GridBagLayout jPanelVerticalLayout = new GridBagLayout();
-			jPanelVertical.setLayout(jPanelVerticalLayout);
-			jPanelVerticalLayout.columnWidths = new int[] { 1 };
-			jPanelVerticalLayout.rowHeights = new int[] { 1, 1 };
-			jPanelVerticalLayout.columnWeights = new double[] { 0.1 };
-			jPanelVerticalLayout.rowWeights = new double[] { 0.1, 0.1 };
-			jPanelVertical.setBackground(new java.awt.Color(208, 176, 255));
+					Color.BLACK);
+			getContentPane().setLayout(new BorderLayout(0, 0));
+			jPanelHorizontal.setBackground(Color.BLACK);
 			this.getContentPane().add(
-					jPanelVertical,
-					new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0, 10, 0,
-							new Insets(0, 0, 5, 0), 0, 0));
-
-			jButtonArriba.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("up.png"))));
-			jButtonArriba.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("up_press.png"))));
-			jButtonArriba.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("up_rollover.png"))));
-			jButtonArriba.setToolTipText("Mover la cámara hacia arriba");
-			jButtonArriba.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
-			jPanelVertical.add(jButtonArriba, new GridBagConstraints(0, 0, 1,
-					1, 0.0, 0.0, 10, 2, new Insets(0, 0, 5, 0), 0, 0));
-			jButtonArriba.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
-					jButtonArribaActionPerformed(evt);
-				}
-			});
-
-			jButtonAbajo.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("down.png"))));
-			jButtonAbajo.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("down_press.png"))));
-			jButtonAbajo.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
-					.getResourceAsStream("down_rollover.png"))));
-			jButtonAbajo.setToolTipText("Mover la cámara hacia abajo");
-			jButtonAbajo.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
-			jPanelVertical.add(jButtonAbajo, new GridBagConstraints(0, 1, 1, 1,
-					0.0, 0.0, 10, 0, new Insets(5, 0, 0, 0), 0, 0));
-			jButtonAbajo.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent evt) {
-					jButtonAbajoActionPerformed(evt);
-				}
-			});
-
-			GridBagLayout jPanelHorizontalLayout = new GridBagLayout();
-			jPanelHorizontal.setLayout(jPanelHorizontalLayout);
-			jPanelHorizontalLayout.columnWidths = new int[] { 1, 1 };
-			jPanelHorizontalLayout.rowHeights = new int[] { 1 };
-			jPanelHorizontalLayout.columnWeights = new double[] { 0.1, 0.1 };
-			jPanelHorizontalLayout.rowWeights = new double[] { 0.1 };
-			jPanelHorizontal.setBackground(new java.awt.Color(208, 176, 255));
-			this.getContentPane().add(
-					jPanelHorizontal,
-					new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0, 10, 0,
-							new Insets(0, 0, 0, 5), 0, 0));
+					jPanelHorizontal, BorderLayout.SOUTH);
+			jPanelHorizontal.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
 
 			jButtonIzquierda.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
 					.getResourceAsStream("left.png"))));
@@ -143,13 +83,44 @@ public class AppletCamara extends javax.swing.JApplet {
 			jButtonIzquierda
 					.setToolTipText("Mover la cámara hacia la izquierda");
 			jButtonIzquierda.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
-			jPanelHorizontal.add(jButtonIzquierda, new GridBagConstraints(0, 0,
-					1, 1, 0.0, 0.0, 10, 0, new Insets(0, 0, 0, 5), 0, 0));
+			jPanelHorizontal.add(jButtonIzquierda);
 			jButtonIzquierda.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
 					jButtonIzquierdaActionPerformed(evt);
 				}
 			});
+			jButtonArriba = new JButton();
+			jPanelHorizontal.add(jButtonArriba);
+
+						jButtonArriba.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("up.png"))));
+						jButtonArriba.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("up_press.png"))));
+						jButtonArriba.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("up_rollover.png"))));
+						jButtonArriba.setToolTipText("Mover la cámara hacia arriba");
+						jButtonArriba.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
+						jButtonArriba.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								jButtonArribaActionPerformed(evt);
+							}
+						});
+			jButtonAbajo = new JButton();
+			jPanelHorizontal.add(jButtonAbajo);
+
+						jButtonAbajo.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("down.png"))));
+						jButtonAbajo.setPressedIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("down_press.png"))));
+						jButtonAbajo.setRolloverIcon(new ImageIcon(getBytesFrom(AppletCamara.class
+								.getResourceAsStream("down_rollover.png"))));
+						jButtonAbajo.setToolTipText("Mover la cámara hacia abajo");
+						jButtonAbajo.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
+						jButtonAbajo.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent evt) {
+								jButtonAbajoActionPerformed(evt);
+							}
+						});
 
 			jButtonDerecha.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
 					.getResourceAsStream("right.png"))));
@@ -159,8 +130,7 @@ public class AppletCamara extends javax.swing.JApplet {
 					.getResourceAsStream("right_rollover.png"))));
 			jButtonDerecha.setToolTipText("Mover la cámara hacia la derecha");
 			jButtonDerecha.setBorder(new EmptyBorder(new Insets(0, 0, 0, 0)));
-			jPanelHorizontal.add(jButtonDerecha, new GridBagConstraints(1, 0,
-					1, 1, 0.0, 0.0, 10, 0, new Insets(0, 5, 0, 0), 0, 0));
+			jPanelHorizontal.add(jButtonDerecha);
 			jButtonDerecha.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
 					jButtonDerechaActionPerformed(evt);
@@ -172,7 +142,7 @@ public class AppletCamara extends javax.swing.JApplet {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public byte[] getBytesFrom(InputStream in) {
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -204,9 +174,7 @@ public class AppletCamara extends javax.swing.JApplet {
 		panelCamara = new PanelCamara();
 		panelCamara.setBackground(new java.awt.Color(255, 255, 255));
 		this.getContentPane().add(
-				panelCamara,
-				new GridBagConstraints(0, 0, 1, 1, 100.0, 100.0, 10, 1,
-						new Insets(5, 5, 5, 5), 0, 0));
+				panelCamara);
 	}
 
 	public void init() {
@@ -247,7 +215,7 @@ public class AppletCamara extends javax.swing.JApplet {
 			if (refreshIntervalParam != null) {
 				refreshInterval = Long.parseLong(refreshIntervalParam);
 			}
-	
+
 			model = getParameter("model");
 		}
 		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(model)) {
@@ -260,7 +228,7 @@ public class AppletCamara extends javax.swing.JApplet {
 		Thread thread = new Thread() {
 			/*
 			 * (non-Javadoc)
-			 * 
+			 *
 			 * @see java.lang.Thread#run()
 			 */
 			public void run() {
