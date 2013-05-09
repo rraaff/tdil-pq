@@ -342,4 +342,14 @@
  <PROCESS-ITEM ID="#deactivateLightEmailNotification" NAME="action52"
   PATH="/deactivateLightEmailNotification" SHAPE="240,4401,0,0"
   TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculesSpeedLimits" NAME="action53"
+  PATH="/goToVehiculesSpeedLimits" SHAPE="32,4385,0,0"
+  TITLE="VehiclesSpeedLimitForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/vehiculosVelocidades.jsp" TARGET="page15" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page15" PATH="/vehiculosVelocidades.jsp"
+  SHAPE="240,4402,0,0" SUBTYPE="jsp" TITLE="vehiculosVelocidades.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

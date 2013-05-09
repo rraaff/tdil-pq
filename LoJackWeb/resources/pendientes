@@ -1,3 +1,25 @@
+Captura de tiempos, sumarizacion por sistema externo
+
+prevent
+home
+log paginado
+
+if else logueado no logueado acceso o no acceso en la rueda, link o layer, index y home
+
+semana que viene
+liquidarlo parkings
+
+Layer de procesando
+camaras
+
+
+General
+Agregar roles para HOME y PREVENT, que se manejen en las acciones struts
+Manejar permisos por estos accesos en cada pagina
+
+Prevent
+manejar un metodo que vuelva a pedir los vehiculos si hay mas
+
 https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
 
 Tema base de datos

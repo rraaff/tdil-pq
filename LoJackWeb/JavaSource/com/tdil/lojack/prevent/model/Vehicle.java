@@ -12,7 +12,7 @@ public class Vehicle implements Serializable {
 	@XStreamAlias(value="Status")
 	private String status;
 	@XStreamAlias(value="ID")
-	private String iD;
+	private String id;
 	@XStreamAlias(value="Description")
 	private String description;
 	@XStreamAlias(value="Brand")
@@ -42,12 +42,12 @@ public class Vehicle implements Serializable {
 		this.status = status;
 	}
 
-	public String getiD() {
-		return iD;
+	public String getId() {
+		return id;
 	}
 
-	public void setiD(String iD) {
-		this.iD = iD;
+	public void setId(String iD) {
+		this.id = iD;
 	}
 
 	public String getDescription() {
@@ -134,9 +134,9 @@ public class Vehicle implements Serializable {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Vehicle [");
-		if (iD != null) {
+		if (id != null) {
 			builder.append("iD=");
-			builder.append(iD);
+			builder.append(id);
 			builder.append(", ");
 		}
 		if (description != null) {

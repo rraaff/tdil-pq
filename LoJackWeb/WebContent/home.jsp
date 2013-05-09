@@ -35,7 +35,6 @@ $(function() {
 						TIMEZONEOFFSET: -3
 					},
 					beforeSend: function (request) {
-						alert(1);
 						request.setRequestHeader("Lojack-Token", "a5b0981a0188bb9a5b7fe44b6c32d894");
 					},
 					success: function (data) {
@@ -77,8 +76,8 @@ $(function() {
 			<% } else { %>
 				<li class="toRight"><a href="#" title="¿No tenes PET? Adquirilo acá">Pets</a></li>
 			<% } %>
-			<% if (websiteUser.isHomeUser()) { %>
-				<li class="toRight"><a href="#" id="accessPrevent" title="Monitoreá sus vehículos">Prevent</a></li>
+			<% if (websiteUser.isPreventUser()) { %>
+				<li class="toRight"><a href="productoPrevent.jsp" id="accessPrevent" title="Monitoreá sus vehículos">Prevent</a></li>
 			<% } else { %>
 				<li class="toRight"><a href="#" title="¿No tenes PREVENT? Adquirilo acá">Prevent</a></li>
 			<% } %>

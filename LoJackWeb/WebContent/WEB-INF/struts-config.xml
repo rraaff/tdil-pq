@@ -18,6 +18,8 @@
   <form-bean id="CameraForm" name="CameraForm" type="com.tdil.lojack.struts.forms.CameraForm"/>
   <form-bean id="EditProfileForm" name="EditProfileForm" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
   <form-bean id="ChangePasswordForm" name="ChangePasswordForm" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
+  <form-bean id="VehiclesSpeedLimitForm" name="VehiclesSpeedLimitForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"/>
+  
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -176,6 +178,11 @@
   
   <action name="CameraForm" parameter="WebsiteUser" path="/toggleCameraView" scope="session" type="com.tdil.lojack.struts.action.ToggleCameraViewAction">
   	<forward name="continue" path="/homeCamara.jsp" redirect="true"/>
+  </action>
+
+  <!-- Prevent -->
+  <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
+  	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
   </action>
 
  </action-mappings>

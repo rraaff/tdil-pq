@@ -26,11 +26,11 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 public class PreventConnector {
 
-	
+
 
 	// POST
 	private static final String LOGIN = "/Users/Login";
-	
+
 	// GET
 	private static final String VEHICLES = "/Vehicles/?index={index}&userToken={userToken}";
 	private static final String VEHICLE_GET_SECURE_ZONES = "/Vehicles/{vehicleID}/SecureZones/?userToken={userToken}";
@@ -42,84 +42,106 @@ public class PreventConnector {
 	// get
 	private static final String VEHICLE_GET_SAT_POSITION = "/Vehicles/{vehicleID}/SatellitePosition/?userToken={userToken}";
 	private static final String FLOT_GET_SAT_POSITION = "/Vehicles/SatellitePositions/?userToken={userToken}";
-	
+
 
 	private static String preventServer = "http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc";
 
 	private static final Logger LOG = LoggerProvider.getLogger(PreventConnector.class);
-	
+
 	public static final String index = "{index}";
 	public static final String userToken = "{userToken}";
 	public static final String vehicleID = "{vehicleID}";
 	public static final String secureZoneID = "{secureZoneID}";
 	public static final String speedLimitID = "{speedLimitID}";
-	
-	
-	
+
+	@Deprecated
+	public static LoginResponse getLogin() {
+		try {
+			UserLogin userLogin = new UserLogin();
+			userLogin.setUser("Prevent2");
+			userLogin.setPassword("1234");
+			XMLResponse resp = PreventConnector.login(userLogin);
+			return(LoginResponse)resp.getResult();
+		} catch (HttpStatusException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidResponseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CommunicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnauthorizedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static XMLResponse login(UserLogin userLogin) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executePost(getPreventServer(), LOGIN, userLogin, null);
 	}
-	
+
 	public static XMLResponse getVehicles(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLES, params);
 	}
-	
+
 	public static XMLResponse getVehicleSecureZones(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_GET_SECURE_ZONES, new URLParams(loginResponse).vehicleID(vehicle.getiD()));
+		return executeGet(getPreventServer(), VEHICLE_GET_SECURE_ZONES, new URLParams(loginResponse).vehicleID(vehicle.getId()));
 	}
-	
+
 	public static XMLResponse getVehicleSecureZones(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SECURE_ZONES, params);
 	}
-	
+
 	public static XMLResponse getVehicleSpeedLimit(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_GET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getiD()));
+		return executeGet(getPreventServer(), VEHICLE_GET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getId()));
 	}
-	
+
 	public static XMLResponse getVehicleSpeedLimit(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SPEED_LIMIT, params);
 	}
-	
+
 	public static XMLResponse setVehicleSpeedLimit(LoginResponse loginResponse, Vehicle vehicle, SpeedLimit sl) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_SET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getiD()).speedLimitID(sl.getId()));
+		return executeGet(getPreventServer(), VEHICLE_SET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getId()).speedLimitID(sl.getId()));
 	}
-	
+
 	public static XMLResponse setVehicleSpeedLimit(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_SET_SPEED_LIMIT, params);
 	}
-	
+
 	public static XMLResponse getVehiclePhones(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_GET_PHONES, new URLParams(loginResponse).vehicleID(vehicle.getiD()));
+		return executeGet(getPreventServer(), VEHICLE_GET_PHONES, new URLParams(loginResponse).vehicleID(vehicle.getId()));
 	}
-	
+
 	public static XMLResponse getVehiclePhones(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_PHONES, params);
 	}
-	
+
 	public static XMLResponse setVehiclePhones(LoginResponse loginResponse, PhoneNumbers phoneNumbers) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executePost(getPreventServer(), VEHICLE_SET_PHONES, phoneNumbers, new URLParams(loginResponse).vehicleID(phoneNumbers.getVehicleID()));
 	}
-	
+
 	public static XMLResponse setVehiclePhones(Object body, URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executePost(getPreventServer(), VEHICLE_SET_PHONES, body, params);
 	}
-	
+
 	public static XMLResponse getVehicleSatPosition(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_GET_SAT_POSITION, new URLParams(loginResponse).vehicleID(vehicle.getiD()));
+		return executeGet(getPreventServer(), VEHICLE_GET_SAT_POSITION, new URLParams(loginResponse).vehicleID(vehicle.getId()));
 	}
-	
+
 	public static XMLResponse getVehicleSatPosition(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SAT_POSITION, params);
 	}
-	
+
 	public static XMLResponse getFlotSatPosition(LoginResponse loginResponse) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), FLOT_GET_SAT_POSITION, new URLParams(loginResponse));
 	}
-	
+
 	public static XMLResponse getFlotSatPosition(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), FLOT_GET_SAT_POSITION, params);
 	}
-	
+
 	private static XMLResponse executeGet(String server, String service, URLParams replacements) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		String url = service;
 		for (Map.Entry<String, String> entries : replacements.getParams().entrySet()) {
@@ -149,7 +171,7 @@ public class PreventConnector {
 			throw new CommunicationException(e);
 		}
 	}
-	
+
 	private static XMLResponse executePost(String server, String service, Object param, URLParams urlParams) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		String xml = null;
 		if (param != null) {
@@ -159,7 +181,7 @@ public class PreventConnector {
 		if (urlParams != null) {
 			for (Map.Entry<String, String> entries : urlParams.getParams().entrySet()) {
 				url = url.replace(entries.getKey(), entries.getValue());
-			}	
+			}
 		}
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Execute: " + server + url + " xml: " + (xml == null ? "null" : xml));
