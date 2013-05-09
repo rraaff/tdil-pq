@@ -1,8 +1,11 @@
 #laRuedita {
+	/*border:dotted 1px black;*/
 	width: 100%;
+	height: 421px;
 	top: 100px;
 	z-index: 999;
 	position: fixed;
+	overflow: hidden;
 }
 #laRuedita .fakeRuedita {
 	background: url(../images/skin_lj_rl/backs/wheel.png);
@@ -11,6 +14,8 @@
 	width: 422px;
 	height: 421px;
 	margin: 0 auto;
+	/*opacity:0.5;
+	filter:alpha(opacity=50);*/
 }
 #logoIndex {
 	background: url(../images/skin_lj_rl/logos/lo-jack_index.png);
@@ -22,94 +27,126 @@
 	z-index: 998;
 	position: fixed;
 }
-#iconoLogin a {
+/* ICONOS */
+#iconoLogin {
+	/*border: dotted 1px red;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_lock_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 139px;
 	height: 138px;
-	top: 30px;
-	left: 502px;
-	position: absolute;
+	top:30px;
+	left:30px;
+	z-index: 1101;
+	position: relative;
 }
-#iconoLogin a:hover, #iconoLogin a:focus {
+#iconoLogin img,
+#iconoProfile img,
+#iconoCar img {
+	width: 139px;
+	height: 138px;
+	margin: 0;
+	padding: 0;
+}
+#iconoLogin:hover, #iconoLogin:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_lock_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
-#iconoParkings a {
+#iconoParkings {
+	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_parkings_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 155px;
 	height: 114px;
-	top: 10px;
-	left: 605px;
-	position: absolute;
+	top: -128px;
+	left: 134px;
+	z-index: 1102;
+	position: relative;
 }
-#iconoParkings a:hover, #iconoParkings a:focus {
+#iconoParkings img {
+	width: 155px;
+	height: 114px;
+	margin: 0;
+	padding: 0;
+}
+#iconoParkings:hover, #iconoParkings:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_parkings_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
-#iconoProfile a {
+#iconoProfile {
+	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_profile_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 138px;
 	height: 138px;
-	top: 30px;
-	left: 726px;
-	position: absolute;
+	top: -222px;
+	left: 254px;
+	z-index: 1103;
+	position: relative;
 }
-#iconoProfile a:hover, #iconoProfile a:focus {
+#iconoProfile:hover, #iconoProfile:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_profile_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
-#iconoCar a {
+#iconoCar {
+	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_car_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 139px;
 	height: 138px;
-	top: 254px;
-	left: 501px;
-	position: absolute;
+	top: -136px;
+	left: 29px;
+	position: relative;
 }
-#iconoCar a:hover, #iconoCar a:focus {
+#iconoCar:hover, #iconoCar:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_car_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
-#iconoHome a {
+#iconoHome {
+	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_home_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 155px;
 	height: 133px;
-	top: 288px;
-	left: 605px;
-	position: absolute;
+	top: -230px;
+	left: 133px;
+	position: relative;
 }
-#iconoHome a:hover, #iconoHome a:focus {
+#iconoHome {
+	width: 155px;
+	height: 133px;
+}
+#iconoHome:hover, #iconoHome:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_home_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
-#iconoPets a {
+#iconoPets {
+	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_pets_off.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 	width: 138px;
 	height: 138px;
-	top: 255px;
-	left: 726px;
-	position: absolute;
+	top: -406px;
+	left: 255px;
+	position: relative;
 }
-#iconoPets a:hover, #iconoPets a:focus {
+#iconoPets {
+	width: 138px;
+	height: 138px;
+}
+#iconoPets:hover, #iconoPets:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_pets_on.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 /* Animaciones */

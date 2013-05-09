@@ -30,7 +30,8 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles" rel="stylesheet" media="screen">
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
 <!-- Bootstrap -->
 <%@ include file="includes/headNotLogged.jsp" %>
 <!-- Slider -->
@@ -296,12 +297,14 @@ function postResetPassword(data) {
 
 </script>
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
+<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
+<link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
 <script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
-<div id="menu">
+<div id="menu" style="display:none;">
 	<ul class="menu">
 		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
 			<div>
@@ -331,46 +334,58 @@ function postResetPassword(data) {
 </section>
 
 <div id="laRuedita">
-	<div class="fakeRuedita"></div>
-	<% if (websiteUser != null && websiteUser.isLogged()) { %>
-		<div id="iconoLogin"><a href="logout.do" title="Salir del sistema"></a></div>
-	<% } else { %>
-		<div id="iconoLogin"><a href="javascript:login();" title="Ingresar ahora"></a></div>
-	<% } %>
-	<div id="iconoParkings"><a href="parkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"></a></div>
+	<div class="fakeRuedita">
+		<% if (websiteUser != null && websiteUser.isLogged()) { %>
+			<div id="iconoLogin"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<div id="iconoLogin"><a href="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
+		<% } %>
 
-	<% if (websiteUser != null && websiteUser.isLogged()) { %>
-		<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"></a></div>
-	<% } else { %>
-		<div id="iconoProfile"><a href="" title="¿¿¿???"></a></div>
-	<% } %>
+		<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
 
-	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-		<!-- logueado y con acceso a prevent -->
-		<div id="iconoCar"><a href="" title=""></a></div>
-	<% } else { %>
-		<!-- no logueado o sin acceso a prevent -->
-		<div id="iconoCar"><a href="" title=""></a></div>
-	<% } %>
+		<% if (websiteUser != null && websiteUser.isLogged()) { %>
+			<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<div id="iconoProfile"><a href="" title="¿¿¿???"><img src="images/null.gif" /></a></div>
+		<% } %>
 
-	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
-		<!-- logueado y con acceso a home -->
-		<div id="iconoHome"><a href="" title=""></a></div>
-	<% } else { %>
-		<!-- no logueado o sin acceso a home -->
-		<div id="iconoHome"><a href="" title=""></a></div>
-	<% } %>
+		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+			<!-- logueado y con acceso a prevent -->
+			<div id="iconoCar"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<!-- no logueado o sin acceso a prevent -->
+			<div id="iconoCar"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } %>
 
-	<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
-		<!-- logueado y con acceso a pet -->
-		<div id="iconoPets"><a href="" title=""></a></div>
-	<% } else { %>
-		<!-- no logueado o sin acceso a pet -->
-		<div id="iconoPets"><a href="" title=""></a></div>
-	<% } %>
+		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
+			<!-- logueado y con acceso a home -->
+			<div id="iconoHome"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<!-- no logueado o sin acceso a home -->
+			<div id="iconoHome"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } %>
+
+		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
+			<!-- logueado y con acceso a pet -->
+			<div id="iconoPets"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<!-- no logueado o sin acceso a pet -->
+			<div id="iconoPets"><a href="" title=""><img src="images/null.gif" /></a></div>
+		<% } %>
+	</div>
 </div>
 
 <div id="logoIndex">&nbsp;</div>
+
+<div id="socialSingleSignOn">
+	<div><span class="textInside">Ingresá con tus cuentas</span></div>
+	<div>
+		<ul>
+			<li class="facebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+			<li class="twitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+		</ul>
+	</div>
+</div>
 
 <section id="copyright">
 	<div class="copy">
@@ -553,20 +568,25 @@ function postResetPassword(data) {
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent">
 			<html:form method="POST" action="/login">
+				<div id="xContainer"><button id="buttonCloseLayer" id="closeloginLayer">X</button></div>
+				<h3>Ingresar</h3>
 				<html:hidden name="LoginForm" property="timezoneOffset"/>
 				<html:hidden name="LoginForm" property="timezoneName"/>
 				<div class="myRow">
-					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">User</div>
-					<div class="myLabel width150"><html:text name="LoginForm" property="username" styleClass="normalField width120"/></div>
+					<div class="tagsOnInputs">DNI</div>
+					<html:text name="LoginForm" property="username"/>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">Password</div>
-					<div class="myLabel width150"><html:password name="LoginForm" property="password" styleClass="normalField width120"/></div>
+					<div class="tagsOnInputs">CLAVE</div>
+					<html:password name="LoginForm" property="password"/>
 				</div>
 				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitlogin" value="Login"><input type="button" id="closeloginLayer" value="Cancel"></div>
+					<div class="myLabel width165">[Checkbox] Recordarme</div>
+					<div class="myLabel width165 tRight"><a href="" title="Recuperar tu clave">(olvidé mi clave)</a></div>
+				</div>
+				<div class="myRow">
+					<input type="submit" id="submitlogin" value=" " class="indexLogin">
+					<!--<input type="button" id="closeloginLayer" value="Cancel"></div>-->
 				</div>
 			</html:form>
 		</div>

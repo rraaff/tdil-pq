@@ -1,0 +1,49 @@
+#socialSingleSignOn {
+	right: 10px;
+	bottom: 50px;
+	z-index: 30;
+	position: fixed;
+	display: inline-block;
+}
+#socialSingleSignOn div {
+	float: left;
+}
+#socialSingleSignOn .textInside {
+	color: #FFF;
+	font-size: 11px;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: normal;
+	text-align: right;
+	line-height: 30px;
+}
+#socialSingleSignOn ul {
+	padding: 0;
+	margin: 0 0 0 10px;
+}
+#socialSingleSignOn ul li {
+	float: left;
+	list-style: none;
+}
+#socialSingleSignOn ul li a {
+	list-style: none;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	float: left;
+}
+#socialSingleSignOn ul li.facebook a {
+	background: url(../images/skin_lj_rl/buttons/icon_white_facebook.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+#socialSingleSignOn ul li.twitter a {
+	background: url(../images/skin_lj_rl/buttons/icon_white_twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+#socialSingleSignOn ul li.facebook a:hover,
+#socialSingleSignOn ul li.facebook a:focus,
+#socialSingleSignOn ul li.twitter a:hover,
+#socialSingleSignOn ul li.twitter a:focus {
+	background-position: 0px -30px;
+}

@@ -1,0 +1,107 @@
+#loginLayer {}
+.layerOnTop {
+	background: url(../images/skin_lj_rl/backs/topLayer.png);
+	background-repeat: repeat;
+
+	font-size: 11px;
+
+	height: 100%;
+	width: 100%;
+	padding:0;
+	margin:0;
+}
+.loginLayerStyles {}
+.loginLayerContent {
+	border: 10px solid rgb(0, 0, 0);
+	border: 10px solid rgba(0, 0, 0, .8);
+	-webkit-background-clip: padding-box; /* for Safari */
+	border-radius: 10px;
+	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	background: #fff;
+	width: 334px;
+	height: 303px;
+	margin: 120px auto;
+	padding: 0 73px 0 73px;
+}
+#loginLayer h3 {
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+/*	//-webkit-text-stroke-width: .05px;
+	//-webkit-text-stroke-color: white;
+	-webkit-font-smoothing:antialiased;*/
+}
+.tagsOnInputs {
+	color: #999;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 45px;
+	
+	width: 30px;
+	margin: 0 auto;
+	padding: 0 0 0 20px;
+	z-index: 9999;
+	position: absolute;
+}
+#xContainer {
+	width: 30px;
+	margin: 0 auto;
+	top: 5px;
+	right: -215px;
+	z-index: 9998;
+	position: relative;
+}
+/* imputs */
+#loginLayer input:not([type]),
+#loginLayer input[type="color"],
+#loginLayer input[type="email"],
+#loginLayer input[type="number"],
+#loginLayer input[type="password"],
+#loginLayer input[type="tel"],
+#loginLayer input[type="url"],
+#loginLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 268px;
+	padding: 0 0 0 70px;
+	margin: 5px auto;
+}
+
+#loginLayer button {
+	background: transparent;
+	background-color: #fff;
+
+	border: none;
+
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+
+	margin: 10px 0;
+	left:0px;
+	text-align: right;
+
+	cursor: pointer;
+}
+.indexLogin {
+	border: none;
+	background: url(../images/skin_lj_rl/buttons/button_ingresar.png);
+	background-repeat: no-repeat;
+	width: 132px;
+	height: 35px;
+
+	margin-top: 20px;
+
+	cursor: pointer;
+}

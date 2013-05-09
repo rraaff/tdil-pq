@@ -12,6 +12,9 @@ body {
 	display: inline-block;
 	overflow: hidden;
 }
+#contentSlider a {
+	text-decoration: none;
+}
 #sliderContainer {
 	background: #005588;
 	width:100%;

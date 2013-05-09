@@ -376,5 +376,3 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 </footer>
 </body>
 </html>
-</body>
-</html>

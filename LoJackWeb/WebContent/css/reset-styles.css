@@ -11,6 +11,14 @@ h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; padding:0; margin:0; }
 q:before,q:after { content:''; }
 abbr,acronym { border:0; }
 a img{ border:0; outline:none; }
-a { color:#FFF; outline:none; cursor:pointer; text-decoration:none; }
-a:hover{ color:#f1ce0b; outline:none; text-decoration:none; }
+a { color:#ee5222; outline:none; cursor:pointer; text-decoration:none; }
+a:hover, a:focus { color:#000; outline:none; text-decoration:none; }
 /* END RESET */
+body, section, div, table, td, tr { margin: 0; padding: 0; border:0;}
+body {
+	background: #FFF;
+	color: #3F3F3F;
+	font-weight: normal;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-size: 100%;
+}
