@@ -30,12 +30,12 @@ function MapaOSM(elementId, containerId, options) {
         mapContainer.removeChild(mapContainer.firstChild);
     }
     this.mapElement = document.createElement("div");
-    this.mapElement.id = elementId;    
+    this.mapElement.id = elementId;
     this.mapElement.style.height = "100%";
     this.mapElement.style.width = "100%";
     mapContainer.appendChild(this.mapElement);
 
-    this.map = new OpenLayers.Map(elementId, { controls: [] });        
+    this.map = new OpenLayers.Map(elementId, { controls: [] });
     this.printConfig = {
         title: "",
         comment: "",
@@ -43,9 +43,9 @@ function MapaOSM(elementId, containerId, options) {
         showComment: true,
         showScale: true,
         showNorth: true
-    };      
+    };
 
-    // Layers    
+    // Layers
     var tilesetUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
     this.mainLayer = new OpenLayers.Layer.OSM("MainLayer", tilesetUrl, { transitionEffect: "resize", tileOptions: { crossOriginKeyword: null }});
     this.marcasLayer = new OpenLayers.Layer.Markers("Marcas");
@@ -106,7 +106,7 @@ function MapaOSM(elementId, containerId, options) {
 
     this.pointDigitizer.events.register("featureadded", this, function (evt) {
         this.pointDigitizer.deactivate();
-        var point = this.GetDataPoint(evt.feature.geometry.x, evt.feature.geometry.y);        
+        var point = this.GetDataPoint(evt.feature.geometry.x, evt.feature.geometry.y);
         if (options.PointDigitizedHandler) {
             options.PointDigitizedHandler(point.x, point.y);
         }
@@ -160,6 +160,7 @@ MapaOSM.prototype.GetLonLat = function (lon, lat) {
 MapaOSM.prototype.SetParameters = function (parameters) {
     var lon = null;
     var lat = null;
+    var zoomLevel = this.baseZoomLevel;
 
     this.ResetLayers();
 
@@ -180,11 +181,14 @@ MapaOSM.prototype.SetParameters = function (parameters) {
                 case "lat":
                     lat = parseFloat(value);
                     break;
+                case "zoom":
+                	zoomLevel = parseFloat(value);
+                    break;
             }
         }
     }
     if (lon && lat) {
-        this.map.setCenter(this.GetLonLat(lon, lat), this.baseZoomLevel, false, false);
+        this.map.setCenter(this.GetLonLat(lon, lat), zoomLevel, false, false);
     }
     this.map.updateSize();
 }
@@ -298,7 +302,7 @@ MapaOSM.prototype.DibujarEscala = function (contenedor) {
     this.map.addControl(scaleLine);
     contenedor.innerHTML = scaleLine.div.innerHTML;
     this.map.removeControl(scaleLine);
-} 
+}
 
 MapaOSM.prototype.ZoomIn = function () {
     this.map.zoomIn();
@@ -437,13 +441,13 @@ MapaOSM.prototype.Copiar = function (options) {
     } catch (ex) {
         result.errorMessage = ex.message;
         result.success = false;
-    }    
+    }
     if (options.callback) {
         options.callback(result);
-    }    
+    }
 }
 
-MapaOSM.prototype.Pan = function () {    
+MapaOSM.prototype.Pan = function () {
     this.dragControl.activate();
     this.selectControl.deactivate();
     this.highlightControl.deactivate();
@@ -498,7 +502,7 @@ MapaOSM.prototype.CrearPoligono = function (puntos, colorArea, opacityArea, colo
         fillColor: colorArea,
         fillOpacity: opacityArea
     };
-    var feature = new OpenLayers.Feature.Vector(polygon); //, null, featStyle);    
+    var feature = new OpenLayers.Feature.Vector(polygon); //, null, featStyle);
     return feature;
 }
 
@@ -781,7 +785,7 @@ MapaOSM.prototype.MostrarBusqueda = function (busqueda) {
     //        { X: -58.5103992, Y: -34.4765983 },
     //        { X: -58.5110791, Y: -34.4758855 },
     //        { X: -58.5118631, Y: -34.4750635 },
-    //        { X: -58.5125584, Y: -34.474333 }    
+    //        { X: -58.5125584, Y: -34.474333 }
 }
 
 MapaOSM.prototype.IniciarDibujoAreaCircular = function () {
@@ -999,7 +1003,7 @@ MapaOSM.prototype.MGZoomWidth = function (y, x, width, unit) {
     try {
         this.GetMap().zoomWidth(y, x, width, unit);
 
-        //Ajuste vertical del zoom                
+        //Ajuste vertical del zoom
         //Si no refresco no actualiza MapHeight
         this.GetMap().refresh();
 

@@ -87,6 +87,7 @@ $(function() {
 			<% } else { %>
 				<li class="toRight optHome"><a href="#" title="¿No tenes HOME? Adquirilo acá">Home</a></li>
 			<% } %>
+			<li class="toRight optHome"><a href="productoParkings.jsp" title="Parkings">Estacionamientos</a></li>
 		</ul>
 	</div>
 </section>

@@ -13,41 +13,44 @@ import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.LoJackWebUtils;
 
 public class ViewCameraServlet extends HttpServlet {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 5611834065781809280L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
-		if (cameraForm == null) {
-			return;
-		}
-		resp.setContentType(cameraForm.getCamera().getMimeType());
-		InputStream inputStream = null;
-		try {
-			inputStream = cameraForm.getCamera().nextFrame();
-			if (inputStream != null) {
-				IOUtils.copy(inputStream, resp.getOutputStream());
-			} else {
-				// TODO enviar una imagen na ...
+		if (LoJackWebUtils.isUserLogged(req)) {
+			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
+			if (cameraForm == null) {
+				return;
 			}
-		} finally {
-			if (inputStream != null) {
-				inputStream.close();
+			resp.setContentType(cameraForm.getCamera().getMimeType());
+			InputStream inputStream = null;
+			try {
+				inputStream = cameraForm.getCamera().nextFrame();
+				if (inputStream != null) {
+					IOUtils.copy(inputStream, resp.getOutputStream());
+				} else {
+					// TODO enviar una imagen na ...
+				}
+			} finally {
+				if (inputStream != null) {
+					inputStream.close();
+				}
 			}
 		}
 	}
-	
+
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(ViewCameraServlet.class);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

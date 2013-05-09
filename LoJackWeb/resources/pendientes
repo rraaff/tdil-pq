@@ -1,3 +1,5 @@
+https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
+
 Tema base de datos
 Podriamos seguir usando mysql, podriamos switchear ongoing?
 Esto nos permitiria seguir con el ritmo, y poder tener mas cosas andando mas pronto.
@@ -25,7 +27,7 @@ Prevent
 
 No hay login automatico, depende de implementacion de GeoSystems
 
-No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems 
+No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems
 
 Thalamus ******
 

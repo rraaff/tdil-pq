@@ -33,6 +33,7 @@ import com.tdil.utils.SystemPropertyCache;
 
 public class LoJackConfig extends SystemConfig {
 
+	private static String FRONT_SERVER;
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -42,6 +43,12 @@ public class LoJackConfig extends SystemConfig {
 	public void init(ServletContextEvent sce) {
 		super.init(sce);
 		this.loadFilteredWords();
+		String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
+		if (frontserver != null) {
+			setFRONT_SERVER(frontserver);
+		}
+		getLog().fatal("Front server is " + frontserver);
+
 		String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
 		if (thalamusserver != null) {
 			ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
@@ -172,6 +179,14 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("LOJACKConfig: blob cache started at " + path);
 		BlobLocalDiskCache.setDiskBlobLocation(path);
 		BlobLocalDiskCache.addBlobResolver(BlobDataType.PUBLIC, new PublicBlobResolver(None.INSTANCE_ARR));
+	}
+
+	public static String getFRONT_SERVER() {
+		return FRONT_SERVER;
+	}
+
+	public static void setFRONT_SERVER(String fRONT_SERVER) {
+		FRONT_SERVER = fRONT_SERVER;
 	}
 
 }

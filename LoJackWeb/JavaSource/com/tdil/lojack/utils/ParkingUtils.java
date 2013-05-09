@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.javadocmd.simplelatlng.LatLng;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
@@ -37,6 +38,10 @@ public class ParkingUtils {
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(ParkingUtils.class);
+	}
+
+	public static LatLng getLatLng(PointOfInterest poi) {
+		return new LatLng(poi.getLat().doubleValue(), poi.getLon().doubleValue());
 	}
 
 }

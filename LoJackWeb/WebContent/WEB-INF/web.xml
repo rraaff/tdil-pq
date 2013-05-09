@@ -115,6 +115,10 @@
   <servlet-class>com.tdil.lojack.servlet.CameraConfigServlet</servlet-class>
  </servlet>
  
+ <servlet>
+  <servlet-name>SearchParkingsServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.SearchParkingsServlet</servlet-class>
+ </servlet>
  
  <servlet>
   <servlet-name>FacebookSignIn</servlet-name>
@@ -153,6 +157,10 @@
   <url-pattern>/cameraConfig</url-pattern>
  </servlet-mapping>
  
+ <servlet-mapping>
+  <servlet-name>SearchParkingsServlet</servlet-name>
+  <url-pattern>/searchParkings</url-pattern>
+ </servlet-mapping>
  
  <servlet-mapping>
   <servlet-name>FacebookSignIn</servlet-name>

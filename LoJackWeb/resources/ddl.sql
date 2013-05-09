@@ -81,6 +81,7 @@ CREATE TABLE SYSPROPERTIES (
   UNIQUE INDEX `UQ_SYSPROPERTIES_00` (`propKey` ASC))
 ENGINE = InnoDB;
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/LoJackWeb','front.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','test','thalamus.touchpoint.code',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
