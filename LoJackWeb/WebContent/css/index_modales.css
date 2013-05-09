@@ -11,7 +11,8 @@
 	margin:0;
 }
 .loginLayerStyles {}
-.loginLayerContent {
+.loginLayerContent,
+.registerLayerContent {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -23,7 +24,12 @@
 	margin: 120px auto;
 	padding: 0 73px 0 73px;
 }
-#loginLayer h3 {
+.registerLayerContent {
+	height: 560px;
+	margin: 30px auto;
+}
+#loginLayer h3,
+#registerLayer h3 {
 	color: #ee5222;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-weight: bold;
@@ -75,8 +81,28 @@
 	padding: 0 0 0 70px;
 	margin: 5px auto;
 }
+#registerLayer input:not([type]),
+#registerLayer input[type="color"],
+#registerLayer input[type="email"],
+#registerLayer input[type="number"],
+#registerLayer input[type="password"],
+#registerLayer input[type="tel"],
+#registerLayer input[type="url"],
+#registerLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
 
-#loginLayer button {
+	width: 300px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+}
+#loginLayer button,
+#registerLayer button {
 	background: transparent;
 	background-color: #fff;
 

@@ -304,7 +304,7 @@ function postResetPassword(data) {
 <script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
-<div id="menu" style="display:none;">
+<div id="menu"><!-- style="display:none;"-->
 	<ul class="menu">
 		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
 			<div>
@@ -319,63 +319,8 @@ function postResetPassword(data) {
 		</li>
 	</ul>
 </div>
-<section id="contentSlider">
-	<div id="sliderContainer">
-		<div id="slider">
-			<div id="slide1" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide2" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide3" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide4" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-			<div id="slide5" class="slide page2"><a href="#" title="">&nbsp;</a></div>
-		</div>
-		<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
-		<img src="images/back.png" width="40px;"  id="left"/></div>
-	</div>
-</section>
-
-<div id="laRuedita">
-	<div class="fakeRuedita">
-		<% if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoLogin"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoLogin"><a href="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
-		<% } %>
-
-		<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
-
-		<% if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoProfile"><a href="" title="¿¿¿???"><img src="images/null.gif" /></a></div>
-		<% } %>
-
-		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-			<!-- logueado y con acceso a prevent -->
-			<div id="iconoCar"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<!-- no logueado o sin acceso a prevent -->
-			<div id="iconoCar"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } %>
-
-		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
-			<!-- logueado y con acceso a home -->
-			<div id="iconoHome"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<!-- no logueado o sin acceso a home -->
-			<div id="iconoHome"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } %>
-
-		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
-			<!-- logueado y con acceso a pet -->
-			<div id="iconoPets"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<!-- no logueado o sin acceso a pet -->
-			<div id="iconoPets"><a href="" title=""><img src="images/null.gif" /></a></div>
-		<% } %>
-	</div>
-</div>
-
-<div id="logoIndex">&nbsp;</div>
+<%@ include file="includes/sectionSlider.jsp" %>
+<%@ include file="includes/laRuedita.jsp" %>
 
 <div id="socialSingleSignOn">
 	<div><span class="textInside">Ingresá con tus cuentas</span></div>
@@ -392,174 +337,177 @@ function postResetPassword(data) {
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
+
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
-			<div class="myRow">
-				<div class="myLabel width100per" style="text-align:center;">Field marqued with * are required for registration</div>
+			<div id="xContainer"><button id="buttonCloseLayer" id="closeregisterLayer">X</button></div>
+			<h3>Registrate</h3>
+			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
+			<div style="width:100%; height:430px; overflow: auto;">
+				<html:form method="POST" action="/register">
+					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
+					registerForm.searchReferenceData();
+					%>
+						<div class="myRow">
+							<div class="myLabel width120">* DNI</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="document" styleClass="normalField width250"/></div>
+						</div>
+						<div class="myRow errorField" style="display: none;" id="p.profile.document">
+							<div id="err.profile.document"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">* Nombre</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="firstName" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
+							<div id="err.profile.firstName"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">* Apellido</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="lastName" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
+							<div id="err.profile.lastName"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width80">* Sexo</div>
+							<div class="myLabel width30"><html:radio property="gender" value="Male" /></div>
+							<div class="myLabel width50">Masc.</div>
+							<div class="myLabel width30"><html:radio property="gender" value="Female" /></div>
+							<div class="myLabel width50">Fem.</div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.gender">
+							<div id="err.profile.gender"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width100">* E-mail</div>
+							<div class="myLabel width200"><html:text name="RegisterForm" property="email"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.email">
+							<div id="err.profile.email"></div>
+						</div>
+					<div class="myRow">
+						<div class="myLabel width120">* Password</div>
+						<div class="myLabel width270"><html:password name="RegisterForm" property="password" styleClass="normalField width250"/></div>
+					</div>
+					<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
+					<div class="myRow errorField" style="display: none;" id="p.credential.password">
+						<div id="err.credential.password"></div>
+					</div>
+						<div class="myRow">
+							<div class="myLabel width120">* Birth date</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
+							<div id="err.profile.birthDate"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">Area code</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
+							<div id="err.profile.phone.areaCode"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">Mobile number</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="phoneNumber" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.phone.number">
+							<div id="err.profile.phone.number"></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">Country</div>
+							<div class="myLabel width270">
+								<%=registerForm.getCountrySelected()%>
+							</div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width120">State/Province</div>
+							<div class="myLabel width270">
+								<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
+									<option value="">Select an option</option>
+									<% for (StateBean stateBean : registerForm.getStates()) { %>
+										<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
+											<%=stateBean.getName()%></option>
+									<% } %>
+								</html:select>
+							</div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.stateId">
+							<div id="err.profile.address.stateId"></div>
+						</div>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
+						<div class="myRow">
+							<div class="myLabel width120">Street 1</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="street1" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.street1">
+							<div id="err.profile.address.street1"></div>
+						</div>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
+						<div class="myRow">
+							<div class="myLabel width120">Street 2</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="street2" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.street2">
+							<div id="err.profile.address.street2"></div>
+						</div>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
+						<div class="myRow">
+							<div class="myLabel width120">Type</div>
+							<div class="myLabel width270">
+								<html:select name="RegisterForm" property="addressType" styleClass="normalField width250">
+									<option value="">Select one option</option>
+									<% for (String type : registerForm.getAddressTypes()) { %>
+										<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
+									<%=type%></option>
+									<% } %>
+								</html:select>
+							</div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.type">
+							<div id="err.profile.address.type"></div>
+						</div>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
+						<div class="myRow">
+							<div class="myLabel width120">Postal code</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="postalCode" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.postalCode">
+							<div id="err.profile.address.postalCode"></div>
+						</div>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
+						<div class="myRow">
+							<div class="myLabel width120">City</div>
+							<div class="myLabel width270"><html:text name="RegisterForm" property="city" styleClass="normalField width250"/></div>
+						</div>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.address.city">
+							<div id="err.profile.address.city"></div>
+						</div>
+					<% } %>
+					<div class="myRow">
+						<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"><input type="button" id="closeregisterLayer" value="Cancel"></div>
+					</div>
+				</html:form>
 			</div>
-			<html:form method="POST" action="/register">
-				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
-				registerForm.searchReferenceData();
-				%>
-					<div class="myRow">
-						<div class="myLabel width120">* DNI</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="document" styleClass="normalField width250"/></div>
-					</div>
-					<div class="myRow errorField" style="display: none;" id="p.profile.document">
-						<div id="err.profile.document"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">* Name</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="firstName" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
-						<div id="err.profile.firstName"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">* Surname</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="lastName" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
-						<div id="err.profile.lastName"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">* Gender</div>
-						<div class="myLabel width30"><html:radio property="gender" value="Male" /></div>
-						<div class="myLabel width100">Male</div>
-						<div class="myLabel width30"><html:radio property="gender" value="Female" /></div>
-						<div class="myLabel width110">Femenino</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.gender">
-						<div id="err.profile.gender"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">* E-mail</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="email" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.email">
-						<div id="err.profile.email"></div>
-					</div>
-				<div class="myRow">
-					<div class="myLabel width120">* Password</div>
-					<div class="myLabel width270"><html:password name="RegisterForm" property="password" styleClass="normalField width250"/></div>
-				</div>
-				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
-				<div class="myRow errorField" style="display: none;" id="p.credential.password">
-					<div id="err.credential.password"></div>
-				</div>
-					<div class="myRow">
-						<div class="myLabel width120">* Birth date</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
-						<div id="err.profile.birthDate"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">Area code</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
-						<div id="err.profile.phone.areaCode"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">Mobile number</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="phoneNumber" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.phone.number">
-						<div id="err.profile.phone.number"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">Country</div>
-						<div class="myLabel width270">
-							<%=registerForm.getCountrySelected()%>
-						</div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">State/Province</div>
-						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
-								<option value="">Select an option</option>
-								<% for (StateBean stateBean : registerForm.getStates()) { %>
-									<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
-										<%=stateBean.getName()%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.stateId">
-						<div id="err.profile.address.stateId"></div>
-					</div>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Street 1</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="street1" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.street1">
-						<div id="err.profile.address.street1"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Street 2</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="street2" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.street2">
-						<div id="err.profile.address.street2"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Type</div>
-						<div class="myLabel width270">
-							<html:select name="RegisterForm" property="addressType" styleClass="normalField width250">
-								<option value="">Select one option</option>
-								<% for (String type : registerForm.getAddressTypes()) { %>
-									<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
-								<%=type%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.type">
-						<div id="err.profile.address.type"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">Postal code</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="postalCode" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.postalCode">
-						<div id="err.profile.address.postalCode"></div>
-					</div>
-				<% } %>
-				<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
-					<div class="myRow">
-						<div class="myLabel width120">City</div>
-						<div class="myLabel width270"><html:text name="RegisterForm" property="city" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.profile.address.city">
-						<div id="err.profile.address.city"></div>
-					</div>
-				<% } %>
-				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"><input type="button" id="closeregisterLayer" value="Cancel"></div>
-				</div>
-			</html:form>
 		</div>
 	</div>
 </div>
