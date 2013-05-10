@@ -321,7 +321,7 @@ function postResetPassword(data) {
 <script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
-<div id="menu"><!-- style="display:none;"-->
+<div id="menu" style="display:none;">
 	<ul class="menu">
 		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
 			<div>
@@ -343,8 +343,8 @@ function postResetPassword(data) {
 	<div><span class="textInside">Ingresá con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="facebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-			<li class="twitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
