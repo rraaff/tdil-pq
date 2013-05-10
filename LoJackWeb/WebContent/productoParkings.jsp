@@ -321,8 +321,6 @@
 	<div id="mapContainer" class="smallmap">
                 </div>
 
-showErrorLayer
-
 <div id="showErrorLayer" style="display: none; z-index: 500;">
 	<div id="showErrorLayerMessage">
 		...
