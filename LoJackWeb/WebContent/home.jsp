@@ -24,7 +24,7 @@
 <%@ include file="includes/headLogged.jsp" %>
 
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<script>
+<!-- script>
 $(function() {
 		$( "#accessPrevent" ).click(function() {
 			 $.ajax({
@@ -47,7 +47,7 @@ $(function() {
 				});
 		});
 });
-</script>
+</script-->
 </head>
 <body>
 <header>

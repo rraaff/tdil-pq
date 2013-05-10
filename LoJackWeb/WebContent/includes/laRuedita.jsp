@@ -20,7 +20,11 @@
 			<div id="iconoLogin"><a href="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
 		<% } %>
 
-		<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
+		<% if (websiteUser != null && websiteUser.isLogged()) { %>
+			<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
+		<% } else { %>
+			<div id="iconoParkings"><a href="#" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
+		<% } %>
 
 		<% if (websiteUser != null && websiteUser.isLogged()) { %>
 			<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"><img src="images/null.gif" /></a></div>
