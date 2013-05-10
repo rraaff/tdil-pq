@@ -21,6 +21,8 @@
 	margin: 0 0 0 10px;
 }
 #socialSingleSignOn ul li {
+	padding: 0;
+	margin: 0;
 	float: left;
 	list-style: none;
 }
@@ -31,19 +33,19 @@
 	overflow: hidden;
 	float: left;
 }
-#socialSingleSignOn ul li.facebook a {
+#socialSingleSignOn ul li.sofacebook a {
 	background: url(../images/skin_lj_rl/buttons/icon_white_facebook.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 }
-#socialSingleSignOn ul li.twitter a {
+#socialSingleSignOn ul li.sotwitter a {
 	background: url(../images/skin_lj_rl/buttons/icon_white_twitter.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 }
-#socialSingleSignOn ul li.facebook a:hover,
-#socialSingleSignOn ul li.facebook a:focus,
-#socialSingleSignOn ul li.twitter a:hover,
-#socialSingleSignOn ul li.twitter a:focus {
+#socialSingleSignOn ul li.sofacebook a:hover,
+#socialSingleSignOn ul li.sofacebook a:focus,
+#socialSingleSignOn ul li.sotwitter a:hover,
+#socialSingleSignOn ul li.sotwitter a:focus {
 	background-position: 0px -30px;
 }

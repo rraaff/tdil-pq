@@ -102,6 +102,7 @@
 	height: 138px;
 	top: -136px;
 	left: 29px;
+	z-index: 1104;
 	position: relative;
 }
 #iconoCar:hover, #iconoCar:focus {
@@ -118,9 +119,10 @@
 	height: 133px;
 	top: -230px;
 	left: 133px;
+	z-index: 1105;
 	position: relative;
 }
-#iconoHome {
+#iconoHome img {
 	width: 155px;
 	height: 133px;
 }
@@ -138,9 +140,10 @@
 	height: 138px;
 	top: -406px;
 	left: 255px;
+	z-index: 1106;
 	position: relative;
 }
-#iconoPets {
+#iconoPets img {
 	width: 138px;
 	height: 138px;
 }
