@@ -1,3 +1,5 @@
+<%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
+<%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
 <%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
 <%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
@@ -38,20 +40,30 @@
 <section id="content">
 	<div class="pageWrapper">
 Velocidades de los vehiculos<br>
-<% VehiclesSpeedLimitForm vehiclesSpeedLimitForm = (VehiclesSpeedLimitForm)session.getAttribute("VehiclesSpeedLimitForm"); %>
-<% for (Vehicle vehicle : vehiclesSpeedLimitForm.getVehicles()) { %>
-	<%=vehicle.getId() %>-<%=vehicle.getBrand() %>-<%=vehicle.getModel() %>-<%=vehicle.getDescription() %>
-		<>
-	<br>
-<% } %>
 <br>
+
+
+<html:form method="POST" action="/saveVehiculesSpeedLimits">
+<table>
 		<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
-			<bean:write name="selectedSpeedLimit" property="vehicle.description" /><br>
-				<td><htmlcheckbox name="selectedCountry" property="selected" indexed="true" /></td>
-				<td><htmltext name="selectedCountry" property="sectionName" indexed="true" /></td>
+			<tr>
+				<td><bean:write name="selectedSpeedLimit" property="vehicle.description" /></td>
+				<td><html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
+					<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
+						SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
+						for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
+							<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+							value="<%=sl.getId()%>">
+							<%=sl.getDescription()%></option>
+					<% } %>
+				</html:select></td>
 			</tr>
 		</logic:iterate>
-
+</table>
+				<div class="myRow">
+					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
+				</div>
+			</html:form>
 	</div>
 </section>
 <footer>

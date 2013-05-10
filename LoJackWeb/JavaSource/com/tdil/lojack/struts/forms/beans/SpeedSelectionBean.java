@@ -50,4 +50,13 @@ public class SpeedSelectionBean implements Serializable {
 	public void setLimits(SpeedLimits limits) {
 		this.limits = limits;
 	}
+
+	public SpeedLimit getSelectedSpeedLimit() {
+		for (SpeedLimit speedLimit : limits.getLimits()) {
+			if (speedLimit.getId().equals(this.getSpeedLimitId())) {
+				return speedLimit;
+			}
+		}
+		return null;
+	}
 }

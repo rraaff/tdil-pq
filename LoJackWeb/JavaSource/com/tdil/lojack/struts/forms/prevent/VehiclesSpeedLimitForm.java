@@ -9,10 +9,13 @@ import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
+import com.tdil.lojack.prevent.XMLResponse;
+import com.tdil.lojack.prevent.model.SpeedLimitResponse;
 import com.tdil.lojack.prevent.model.SpeedLimits;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.struts.forms.beans.SpeedSelectionBean;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
@@ -62,9 +65,39 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 	public List<SpeedSelectionBean> getSpeedLimits() {
 		return speedLimits;
 	}
+	
+	public SpeedSelectionBean getSelectedSpeedLimit(int index) {
+		return this.speedLimits.get(index);
+	}
 
 	public void setSpeedLimits(List<SpeedSelectionBean> speedLimits) {
 		this.speedLimits = speedLimits;
+	}
+
+	public void save() throws ValidationException {
+		if (resp == null) {
+			resp = PreventConnector.getLogin();
+		}
+		for (SpeedSelectionBean speedSelectionBean : speedLimits) {
+			try {
+				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(resp, speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
+				System.out.println(setSpeed.getResult());
+				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
+			} catch (HttpStatusException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidResponseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (CommunicationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnauthorizedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }

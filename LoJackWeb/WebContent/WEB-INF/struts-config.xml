@@ -184,6 +184,11 @@
   <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
   </action>
+  <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveSpeedLimitsAction">
+  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  	<forward name="failure" path="/vehiculosVelocidades.jsp" redirect="true"/>
+  </action>
+
 
  </action-mappings>
  
