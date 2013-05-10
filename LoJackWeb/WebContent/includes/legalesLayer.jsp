@@ -1,4 +1,4 @@
-<div id="legalesLayer" class="layerOnTop" style="display: none; z-index: 500;">
+<div id="legalesLayer" class="layerOnTop" style="display: none; z-index:1500;">
 	<div class="legalLayerStyles">
 		<div class="legalLayerContent">
 			<div id="legal">

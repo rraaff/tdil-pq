@@ -1,4 +1,4 @@
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
+﻿<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="home"%><!--
@@ -16,17 +16,28 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/reset-styles" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+<!--script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script-->
+
 <%@ include file="includes/headLogged.jsp" %>
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+
+
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
+<link href="css/index_social.css" rel="stylesheet" type="text/css" />
+<link href="css/copyright.css" rel="stylesheet" type="text/css" />
+
 </head>
+
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
+
+
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
@@ -42,27 +53,7 @@
 		</div>
 	</div>
 </section>
-<footer>
-	<div class="pageWrapper">
-		<div class="col1_300 marginRight_60">
-			<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
-			<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col1_300 marginRight_60">
-			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col_social">
-			<ul class="nav nav-pills nav-social">
-				<li><a href="#" class="fb"></a></li>
-				<li><a href="#" class="tw"></a></li>
-				<li><a href="#" class="ln"></a></li>
-				<li><a href="#" class="gp"></a></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+
+<%@ include file="includes/footerProductoHome.jsp" %>
 </body>
 </html>

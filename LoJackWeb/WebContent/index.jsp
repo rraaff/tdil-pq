@@ -1,4 +1,4 @@
-<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
+Ôªø<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -33,6 +33,8 @@
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <!-- Bootstrap -->
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" />
 <%@ include file="includes/headNotLogged.jsp" %>
 <!-- Slider -->
 <script src="js/jquery-latest.js"></script>
@@ -106,7 +108,7 @@ $(document).ready(
 	function(){
 
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
 
 		$("form[name='RegisterForm']").validate({
 			errorPlacement: function(error, element) {
@@ -318,7 +320,6 @@ function postResetPassword(data) {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<script type="text/javascript" src="js/indexMenu.js"></script>
 </head>
 <body>
 <div id="menu" style="display:none;">
@@ -329,8 +330,8 @@ function postResetPassword(data) {
 					<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"><span>Ingres· con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"><span>Ingres· con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"><span>Ingres√° con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"><span>Ingres√° con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -340,19 +341,18 @@ function postResetPassword(data) {
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="socialSingleSignOn">
-	<div><span class="textInside">Ingres· con tus cuentas</span></div>
+	<div><span class="textInside">Ingres√° con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
 
 <section id="copyright">
 	<div class="copy">
-	<a href="javascript:showVideo1()">Video1</a>
-		<p>2013 lojack - todos los derechos reservados polÌtica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcciÛn general de defensa y protecciÛn al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados pol√≠tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcci√≥n general de defensa y protecci√≥n al consumidor</p>
 	</div>
 </section>
 
@@ -361,169 +361,165 @@ function postResetPassword(data) {
 		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
-			<div class="myRow">Los campos marcados con * son requeridos para la registraciÛn</div>
+			<div class="myRow">Los campos marcados con * son requeridos para la registraci√≥n</div>
 			<div style="width:100%; height:430px; overflow: auto;">
 				<html:form method="POST" action="/register">
 					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 					registerForm.searchReferenceData();
 					%>
-						<div class="myRow">
-							<div class="myLabel width120">* DNI</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="document" styleClass="normalField width250"/></div>
-						</div>
-						<div class="myRow errorField" style="display: none;" id="p.profile.document">
-							<div id="err.profile.document"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">* Nombre</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="firstName" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
-							<div id="err.profile.firstName"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">* Apellido</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="lastName" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
-							<div id="err.profile.lastName"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width80">* Sexo</div>
-							<div class="myLabel width30"><html:radio property="gender" value="Male" /></div>
-							<div class="myLabel width50">Masc.</div>
-							<div class="myLabel width30"><html:radio property="gender" value="Female" /></div>
-							<div class="myLabel width50">Fem.</div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.gender">
-							<div id="err.profile.gender"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width100">* E-mail</div>
-							<div class="myLabel width200"><html:text name="RegisterForm" property="email"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.email">
-							<div id="err.profile.email"></div>
-						</div>
-					<div class="myRow">
-						<div class="myLabel width120">* Password</div>
-						<div class="myLabel width270"><html:password name="RegisterForm" property="password" styleClass="normalField width250"/></div>
-					</div>
-					<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
-					<div class="myRow errorField" style="display: none;" id="p.credential.password">
-						<div id="err.credential.password"></div>
-					</div>
-						<div class="myRow">
-							<div class="myLabel width120">* Birth date</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="birthDate" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
-							<div id="err.profile.birthDate"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">Area code</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="phoneAreaCode" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
-							<div id="err.profile.phone.areaCode"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">Mobile number</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="phoneNumber" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.phone.number">
-							<div id="err.profile.phone.number"></div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">Country</div>
-							<div class="myLabel width270">
-								<%=registerForm.getCountrySelected()%>
+					<form>
+						<fieldset>
+							<label>* DNI</label>
+							<html:text name="RegisterForm" property="document" />
+							<div class="myRow errorField" style="display: none;" id="p.profile.document">
+								<div id="err.profile.document"></div>
 							</div>
-						</div>
-						<div class="myRow">
-							<div class="myLabel width120">State/Province</div>
-							<div class="myLabel width270">
-								<html:select name="RegisterForm" property="stateId" styleClass="normalField width250">
-									<option value="">Select an option</option>
-									<% for (StateBean stateBean : registerForm.getStates()) { %>
-										<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
-											<%=stateBean.getName()%></option>
-									<% } %>
-								</html:select>
+						</fieldset>
+						<fieldset>
+							<label>* Nombre</label>
+							<html:text name="RegisterForm" property="firstName" />
+								<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
+								<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
+									<div id="err.profile.firstName"></div>
+								</div>
+						</fieldset>
+						<fieldset>
+							<label>* Apellido</label>
+							<html:text name="RegisterForm" property="lastName" />
+							<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
+								<div id="err.profile.lastName"></div>
 							</div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.stateId">
-							<div id="err.profile.address.stateId"></div>
-						</div>
-					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
-						<div class="myRow">
-							<div class="myLabel width120">Street 1</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="street1" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.street1">
-							<div id="err.profile.address.street1"></div>
-						</div>
-					<% } %>
-					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
-						<div class="myRow">
-							<div class="myLabel width120">Street 2</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="street2" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.street2">
-							<div id="err.profile.address.street2"></div>
-						</div>
-					<% } %>
-					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
-						<div class="myRow">
-							<div class="myLabel width120">Type</div>
-							<div class="myLabel width270">
-								<html:select name="RegisterForm" property="addressType" styleClass="normalField width250">
+						</fieldset>
+						<fieldset>
+							<label>* Sexo:</label>
+							<html:radio property="gender" value="Male" />
+							<span>Masculino</span>
+							<html:radio property="gender" value="Female" />
+							<span>Femenino</span>
+							<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.gender">
+								<div id="err.profile.gender"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>* E-mail</label>
+							<html:text name="RegisterForm" property="email"/>
+							<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.email">
+								<div id="err.profile.email"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>* Clave</label>
+							<html:password name="RegisterForm" property="password" />
+							<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.credential.password">
+								<div id="err.credential.password"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>* Fecha de nac.</label>
+							<html:text name="RegisterForm" property="birthDate" />
+							<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
+								<div id="err.profile.birthDate"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>C√≥digo de √°rea</label>
+							<html:text name="RegisterForm" property="phoneAreaCode" />
+							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
+								<div id="err.profile.phone.areaCode"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>Tel√©fono celular</label>
+							<html:text name="RegisterForm" property="phoneNumber" />
+							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.phone.number">
+								<div id="err.profile.phone.number"></div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>Pa√≠s</label>
+							<span><%=registerForm.getCountrySelected()%></span>
+						</fieldset>
+						<fieldset>
+							<label>Provincia</label>
+							<html:select name="RegisterForm" property="stateId" >
+								<option value="">Select an option</option>
+								<% for (StateBean stateBean : registerForm.getStates()) { %>
+									<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
+										<%=stateBean.getName()%></option>
+								<% } %>
+							</html:select>
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.stateId">
+								<div id="err.profile.address.stateId"></div>
+							</div>
+						</fieldset>
+						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
+							<fieldset>
+								<label>Calle 1</label>
+								<html:text name="RegisterForm" property="street1" />
+								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
+								<div class="errorField" style="display: none;" id="p.profile.address.street1">
+									<div id="err.profile.address.street1"></div>
+								</div>
+							</fieldset>
+						<% } %>
+						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
+							<fieldset>
+								<label>Calle 2</label>
+								<html:text name="RegisterForm" property="street2" />
+								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
+								<div class="errorField" style="display: none;" id="p.profile.address.street2">
+									<div id="err.profile.address.street2"></div>
+								</div>
+							</fieldset>
+						<% } %>
+						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
+							<fieldset>
+								<label>Tipo</label>
+								<html:select name="RegisterForm" property="addressType">
 									<option value="">Select one option</option>
 									<% for (String type : registerForm.getAddressTypes()) { %>
 										<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
 									<%=type%></option>
 									<% } %>
 								</html:select>
-							</div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.type">
-							<div id="err.profile.address.type"></div>
-						</div>
-					<% } %>
-					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
-						<div class="myRow">
-							<div class="myLabel width120">Postal code</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="postalCode" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.postalCode">
-							<div id="err.profile.address.postalCode"></div>
-						</div>
-					<% } %>
-					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
-						<div class="myRow">
-							<div class="myLabel width120">City</div>
-							<div class="myLabel width270"><html:text name="RegisterForm" property="city" styleClass="normalField width250"/></div>
-						</div>
-						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.address.city">
-							<div id="err.profile.address.city"></div>
-						</div>
-					<% } %>
-					<div class="myRow">
-						<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"><input type="button" id="closeregisterLayer" value="Cancel"></div>
-					</div>
+								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
+								<div class="errorField" style="display: none;" id="p.profile.address.type">
+									<div id="err.profile.address.type"></div>
+								</div>
+							</fieldset>
+						<% } %>
+						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
+							<fieldset>
+								<label>C√≥digo postal</label>
+								<html:text name="RegisterForm" property="postalCode" />
+								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
+								<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
+									<div id="err.profile.address.postalCode"></div>
+								</div>
+							</fieldset>
+						<% } %>
+						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
+							<fieldset>
+								<label>Ciudad</label>
+								<html:text name="RegisterForm" property="city" />
+								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
+								<div class="errorField" style="display: none;" id="p.profile.address.city">
+									<div id="err.profile.address.city"></div>
+								</div>
+							</fieldset>
+						<% } %>
+						<fieldset>
+							<input type="submit" id="submitregister" value="Submit">
+						</fieldset>
+					</form>
 				</html:form>
 			</div>
 		</div>
@@ -538,22 +534,24 @@ function postResetPassword(data) {
 				<h3>Ingresar</h3>
 				<html:hidden name="LoginForm" property="timezoneOffset"/>
 				<html:hidden name="LoginForm" property="timezoneName"/>
-				<div class="myRow">
-					<div class="tagsOnInputs">DNI</div>
-					<html:text name="LoginForm" property="username"/>
-				</div>
-				<div class="myRow">
-					<div class="tagsOnInputs">CLAVE</div>
-					<html:password name="LoginForm" property="password"/>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width165">[Checkbox] Recordarme</div>
-					<div class="myLabel width165 tRight"><a href="" title="Recuperar tu clave">(olvidÈ mi clave)</a></div>
-				</div>
-				<div class="myRow">
-					<input type="submit" id="submitlogin" value=" " class="indexLogin">
-					<!--<input type="button" id="closeloginLayer" value="Cancel"></div>-->
-				</div>
+				<form>
+					<fieldset>
+						<label>DNI</label>
+						<html:text name="LoginForm" property="username"/>
+					</fieldset>
+					<fieldset>
+						<label>CLAVE</label>
+						<html:password name="LoginForm" property="password"/>
+					</fieldset>
+					<fieldset>
+						<input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
+						<span>Recordarme</span>
+						<span style="float: right;"><a href="" title="Recuperar tu clave">(olvid√© mi clave)</a></span>
+					</fieldset>
+					<fieldset>
+						<input type="submit" id="submitlogin" value=" " class="indexLogin">
+					</fieldset>
+				</form>
 			</html:form>
 		</div>
 	</div>
@@ -626,14 +624,17 @@ function postResetPassword(data) {
 	</div>
 </div>
 
-<div id="video1Layer" class="layerOnTop" style="display: none; z-index: 1500;">
+<div id="video1Layer" class="layerOnTop70" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
-			<div class="myRow">
-				<div class="myLabel width100per" align="center">Este es el video 1</div>
-			</div>
-			<div class="myRow">
-				<div class="myLabel width100per" align="center"><button id="closevideo1Layer" cl="video1Layer">Cerrar</button></div>
+			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer" cl="video1Layer">< volver</button></div>
+			<div id="videoWrapper">Insert Video (Coup√©)</div>
+			<div id="footerizer">
+				<div class="col1_300 marginRight_60">
+					<h3>Video Title</h3>
+					<p>Con LoJack for Laptopts sab√©s que si te roban la computadora, te la encontramos.</p>
+					<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
+				</div>
 			</div>
 		</div>
 	</div>

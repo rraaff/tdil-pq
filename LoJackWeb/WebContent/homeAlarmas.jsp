@@ -1,4 +1,4 @@
-<%@page import="com.tdil.lojack.gis.model.Alarm"%>
+﻿<%@page import="com.tdil.lojack.gis.model.Alarm"%>
 <%@page import="com.tdil.lojack.struts.forms.AlarmsForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
@@ -18,13 +18,19 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/reset-styles" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
 <%@ include file="includes/headLogged.jsp" %>
+
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
+<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
+<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
 <script>
   $(function() {
@@ -244,10 +250,10 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
   </script>
 </head>
 <body>
+
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 
-<a href="javascript:sendPanic()">Boton de panico</a>
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
@@ -290,58 +296,58 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 			  </div>
 			  <% } %>
 			</div>
-			<div id="logLayer" style="display: none; z-index: 500;">
+			<div id="logLayer" style="display: none; z-index: 1500;">
 				<div id="logData">
 					Consultando datos...
 				</div>
 				<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar">
 			</div>
 
-			<div id="confAlertLayer" style="display: none; z-index: 500;">
+			<div id="confAlertLayer" style="display: none; z-index: 1500;">
 				<div id="confAlert">
 					Consultando datos...
 				</div>
 			</div>
-			<div id="confSavedLayer" style="display: none; z-index: 500;">
+			<div id="confSavedLayer" style="display: none; z-index: 1500;">
 				La configuracion ha sido salvada
 				<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
 			</div>
 
 			<%@ include file="includes/passwordLayer.jspf" %>
 
-			<div id="alarmActivatedLayer" style="display: none; z-index: 500;">
+			<div id="alarmActivatedLayer" style="display: none; z-index: 1500;">
 				Se ha enviado el comando de activacion la alarma
 				<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar">
 			</div>
-			<div id="alarmNotActivatedLayer" style="display: none; z-index: 500;">
+			<div id="alarmNotActivatedLayer" style="display: none; z-index: 1500;">
 				No ha podido activarse la alarma
 				<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
 			</div>
-			<div id="invalidPasswordLayer" style="display: none; z-index: 500;">
+			<div id="invalidPasswordLayer" style="display: none; z-index: 1500;">
 				La contrasenia no es correcta
 				<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
 			</div>
-			<div id="alarmDeactivatedLayer" style="display: none; z-index: 500;">
+			<div id="alarmDeactivatedLayer" style="display: none; z-index: 1500;">
 				Se ha enviado el comando de desactivacion la alarma
 				<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
 			</div>
-			<div id="alarmNotDeactivatedLayer" style="display: none; z-index: 500;">
+			<div id="alarmNotDeactivatedLayer" style="display: none; z-index: 1500;">
 				No ha podido desactivarse la alarma
 				<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
 			</div>
 
 			<!-- Inicio panic -->
-			<div id="sendPanicLayer" style="display: none; z-index: 500;">
+			<div id="sendPanicLayer" style="display: none; z-index: 1500;">
 				<div id="sendPanic">
 					Consultando datos...
 				</div>
 				<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
 			</div>
-			<div id="panicSentLayer" style="display: none; z-index: 500;">
+			<div id="panicSentLayer" style="display: none; z-index: 1500;">
 				Se ha enviado el comando de senial de panico
 				<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
 			</div>
-			<div id="sendPanicErrorLayer" style="display: none; z-index: 500;">
+			<div id="sendPanicErrorLayer" style="display: none; z-index: 1500;">
 				<div id="sendPanicError">
 					Ha occurrido un error enviando la senial de panico
 				</div>
@@ -352,27 +358,10 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		</div>
 	</div>
 </section>
-<footer>
-	<div class="pageWrapper">
-		<div class="col1_300 marginRight_60">
-			<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
-			<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col1_300 marginRight_60">
-			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col_social">
-			<ul class="nav nav-pills nav-social">
-				<li><a href="#" class="fb"></a></li>
-				<li><a href="#" class="tw"></a></li>
-				<li><a href="#" class="ln"></a></li>
-				<li><a href="#" class="gp"></a></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+
+<!-- a href="javascript:sendPanic()">Boton de panico</a -->
+
+<%@ include file="includes/footerProductoHome.jsp" %>
+
 </body>
 </html>

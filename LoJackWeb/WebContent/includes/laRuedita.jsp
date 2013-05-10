@@ -1,4 +1,4 @@
-<section id="contentSlider">
+﻿<section id="contentSlider">
 	<div id="sliderContainer">
 		<div id="slider">
 			<div id="slide1" class="slide page2"><a href="#" title="">&nbsp;</a></div>
@@ -37,7 +37,7 @@
 			<div id="iconoCar"><a href="productoPrevent.jsp" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
 		<% } else { %>
 			<!-- no logueado o sin acceso a prevent -->
-			<div id="iconoCar"><a href="#" title="Más sobre CAR"><img src="images/null.gif" /></a></div>
+			<div id="iconoCar"><a href="javascript:showVideo1()" title="Más sobre CAR"><img src="images/null.gif" /></a></div>
 		<% } %>
 
 		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
@@ -45,15 +45,15 @@
 			<div id="iconoHome"><a href="productoHome.jsp" title="Administrá tus alarmas, luces y cámaras"><img src="images/null.gif" /></a></div>
 		<% } else { %>
 			<!-- no logueado o sin acceso a home -->
-			<div id="iconoHome"><a href="#" title="Más sobre HOME"><img src="images/null.gif" /></a></div>
+			<div id="iconoHome"><a href="javascript:showVideo1()" title="Más sobre HOME"><img src="images/null.gif" /></a></div>
 		<% } %>
 
 		<% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
 			<!-- logueado y con acceso a pet -->
-			<div id="iconoPets"><a href="#" title="Cuidá a tus mascostas"><img src="images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="javascript:showVideo1()" title="Cuidá a tus mascostas"><img src="images/null.gif" /></a></div>
 		<% } else { %>
 			<!-- no logueado o sin acceso a pet -->
-			<div id="iconoPets"><a href="#" title="Más sobre PETS"><img src="images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="javascript:showVideo1()" title="Más sobre PETS"><img src="images/null.gif" /></a></div>
 		<% } %>
 	</div>
 </div>

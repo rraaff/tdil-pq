@@ -1,5 +1,5 @@
 #loginLayer {}
-.layerOnTop {
+.layerOnTop, .layerOnTop20, .layerOnTop70 {
 	background: url(../images/skin_lj_rl/backs/topLayer.png);
 	background-repeat: repeat;
 
@@ -9,6 +9,12 @@
 	width: 100%;
 	padding:0;
 	margin:0;
+}
+.layerOnTop20 {
+	background: url(../images/skin_lj_rl/backs/topLayer20.png);
+}
+.layerOnTop70 {
+	background: url(../images/skin_lj_rl/backs/topLayer70.png);
 }
 .loginLayerStyles {}
 .loginLayerContent,
@@ -25,6 +31,7 @@
 	padding: 0 73px 0 73px;
 }
 .registerLayerContent {
+	width: 450px;
 	height: 560px;
 	margin: 30px auto;
 }
@@ -39,18 +46,29 @@
 	//-webkit-text-stroke-color: white;
 	-webkit-font-smoothing:antialiased;*/
 }
-.tagsOnInputs {
+.tagsOnInputs, label, fieldset span {
 	color: #999;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-weight: normal;
 	font-size: 10px;
 	line-height: 45px;
 	
-	width: 30px;
-	margin: 0 auto;
-	padding: 0 0 0 20px;
-	z-index: 9999;
-	position: absolute;
+	width: 100px;
+	margin:0;
+	padding:0;
+
+	/*z-index: 9999;
+	position: absolute;*/
+	float: left;
+	cursor: auto;
+}
+fieldset input[type="radio"] {
+	line-height: 10px;
+	margin: 15px 5px 0 0;
+	float: left;
+}
+fieldset select {
+	margin: 10px 0;
 }
 #xContainer {
 	width: 30px;
@@ -78,8 +96,12 @@
 	text-transform: uppercase;
 
 	width: 268px;
-	padding: 0 0 0 70px;
+	padding: 0 0 0 10px;
 	margin: 5px auto;
+	float: left;
+}
+#loginLayer label {
+	width: 50px;
 }
 #registerLayer input:not([type]),
 #registerLayer input[type="color"],
@@ -127,7 +149,50 @@
 	width: 132px;
 	height: 35px;
 
-	margin-top: 20px;
+	margin-top: 5px;
 
 	cursor: pointer;
 }
+
+
+#video1Layer {}
+#video1Layer h3 {
+	color: #fff;
+	font-size: 38px;
+	text-transform: uppercase;
+	font-weight: lighter;
+
+}
+#video1Layer p {
+	color: #fff;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+
+}
+.defaultLayerStyles {}
+.defaultLayerContent {
+	width: 927px;
+
+	margin: 0 auto;
+}
+.closeLayerVideoLink {
+	margin-top: 30px;
+	text-align: right;
+}
+.customLink {
+	font-size: 11px;
+	text-transform: uppercase;
+}
+#videoWrapper {
+	background: #000;
+	width: 927px;
+	height: 431px;
+	margin: 10px 0;
+}
+/*			<div class="col1_300 marginRight_60">
+				<h3>LoJack for<br/>Laptopts</h3>
+				<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
+				<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
+			</div>
+*/

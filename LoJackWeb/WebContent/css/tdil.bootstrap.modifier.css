@@ -1,13 +1,3 @@
-body, section, div, table, td, tr { margin: 0; padding: 0; border:0;}
-a {
-	color: #FFF;
-}
-body {
-	background: #FFF;
-	color: #3F3F3F;
-	font-weight: normal;
-	font-family: "Gotham", "Helvetica", Arial, sans-serif;
-}
 header {
 	color: #FFF;
 	background: #000;
@@ -16,14 +6,10 @@ header {
 	padding: 0px;
 	margin: 0px;
 }
-header .userLoggedThalamusMenu {
+header {
 	text-transform: uppercase;
 	font-family: Arial, sans-serif;
 	font-size: 10px;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	display: inline-block;
 	overflow: hidden;
 }
 .correctNav {
@@ -31,24 +17,24 @@ header .userLoggedThalamusMenu {
 	margin: 0px auto;
 	padding: 0px;
 }
-li {
+header li {
 	line-height: 42px;
 }
-ul li {
+header ul li {
 	float: left;
 	list-style: none;
 }
-ul li.toRight {
+header ul li.toRight {
 	float: right;
 }
-ul li a {
+header ul li a {
 	padding-left:20px;
 	padding-top:16px;
 	padding-right:20px; 
 	padding-bottom:16px;
 }
-ul li a:hover,
-ul li a:focus  {
+header ul li a:hover,
+header ul li a:focus  {
 	background-color: #f05223;
 	color: #FFF;
 	text-decoration: none;
@@ -98,8 +84,12 @@ ul li a:focus  {
 	font-size: 22px;
 	font-weight: bold;
 	line-height: 97px;
+
+	float: right;
+	list-style: none;
 }
 #productsMenu ul li a {
+	color: #fff;
 	padding-left:35px;
 	padding-top:34px;
 	padding-right:35px; 
@@ -202,6 +192,10 @@ ul li a:focus  {
 #content ul.tabServices {
 	width: 170px;
 	float: left;
+}
+#content ul li {
+	float: right;
+	list-style: none;
 }
 #content ul li a {
 	color: #641819;
@@ -308,7 +302,13 @@ footer p {
 	float: right;
 	margin-top: 104px;
 }
-footer .btn-primary {
+.col_social ul li {
+	float: right;
+	list-style: none;
+}
+footer .btn-primary,
+#footerizer .btn-primary {
+	background-color: transparent;
 	color: #fff;
 	font-size: 9px;
 	font-weight: normal;
@@ -336,7 +336,9 @@ footer .btn-primary {
 	border:none;
 }
 footer .btn:hover,
-footer .btn:focus {
+footer .btn:focus,
+#footerizer .btn:hover,
+#footerizer .btn:focus {
 	background-color: #e51b24;
 	background-position: right -17px;
 }
@@ -389,6 +391,13 @@ footer .nav-pills>li>a:focus {
 	padding: 0;
 
 }
+
+#legalLayerStyles  {}
+.legalLayerContent {
+	width: 967px;
+	margin: 0 auto;
+}
+#legal {}
 
 /* SIZERS */
 .marginRight_60 { margin-right: 60px; }

@@ -1,4 +1,4 @@
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
+Ôªø<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="home"%><!--
@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
-<!-- link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" -->
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 
 <%@ include file="includes/headLogged.jsp" %>
 
@@ -116,7 +116,6 @@ $(function() {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<script type="text/javascript" src="js/indexMenu.js"></script>
 <style>
 header {
 	width: 100%;
@@ -191,24 +190,6 @@ header {
 </style>
 </head>
 <body>
-<!---div id="menu">
-	<ul class="menu">
-		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
-			<div>
-				<ul>
-					<li>
-						<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-								<a href="./goToEditProfile.do" title="Cambiar imagen"><img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="42" height="42" align="absmiddle"></a>
-						<% } %>
-					Usuario: <span class="userName">Nombre</span></li>
-					<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-					<li><a href="./goToChangePassword.do" title="Cambiar mis clave">Cambiar mi clave</a></li>
-					<li><a href="./goToUpdatePerson.do" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				</ul>
-			</div>
-		</li>
-	</ul>
-</div -->
 <header>
 	<div id="floatyMenu">
 		<div class="wrapper">
@@ -224,24 +205,24 @@ header {
 			</ul>
 		</div>
 	</div>
-	<div id="floatyOpener"><a href="#" title="Abrir men˙">Menu</a></div>
-</header
+	<div id="floatyOpener"><a href="#" title="Abrir men√∫">Menu</a></div>
+</header>
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="socialSingleSignOn">
-	<div><span class="textInside">Ingres· con tus cuentas</span></div>
+	<div><span class="textInside">Ingres√° con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
 
 <section id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados polÌtica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcciÛn general de defensa y protecciÛn al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados pol√≠tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcci√≥n general de defensa y protecci√≥n al consumidor</p>
 	</div>
 </section>
 
