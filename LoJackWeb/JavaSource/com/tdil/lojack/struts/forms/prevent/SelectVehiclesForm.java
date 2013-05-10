@@ -4,6 +4,7 @@ import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
 import com.tdil.lojack.prevent.model.PhoneNumbers;
 import com.tdil.lojack.prevent.model.SatellitePosition;
+import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.struts.forms.beans.SpeedSelectionBean;
 import com.tdil.struts.ValidationException;
@@ -125,7 +126,7 @@ public class SelectVehiclesForm extends VehiclesForm {
 			resp = PreventConnector.getLogin();
 		}
 			try {
-				PhoneNumbers phoneNumbers = new PhoneNumbers();
+				UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
 				phoneNumbers.setAlert(this.getAlertPhone());
 				phoneNumbers.setCrash(this.getCrashPhone());
 				phoneNumbers.setOther(this.getOtherPhone());

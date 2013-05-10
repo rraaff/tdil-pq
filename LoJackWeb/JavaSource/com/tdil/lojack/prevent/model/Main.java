@@ -102,7 +102,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		// cambio de telefono
-		PhoneNumbers phoneNumbers = new PhoneNumbers();
+		UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
 		phoneNumbers.setAlert(String.valueOf(System.currentTimeMillis()));
 		phoneNumbers.setCrash(String.valueOf(System.currentTimeMillis()));
 		phoneNumbers.setOther(String.valueOf(System.currentTimeMillis()));

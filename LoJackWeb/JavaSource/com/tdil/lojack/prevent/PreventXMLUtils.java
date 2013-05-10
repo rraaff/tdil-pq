@@ -14,14 +14,17 @@ import com.tdil.lojack.prevent.model.SecureZones;
 import com.tdil.lojack.prevent.model.SpeedLimit;
 import com.tdil.lojack.prevent.model.SpeedLimitResponse;
 import com.tdil.lojack.prevent.model.SpeedLimits;
+import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.prevent.model.Vehicles;
 import com.thoughtworks.xstream.XStream;
 
 public class PreventXMLUtils {
-	
+
 	private static XStream xstream;
+
+	private static XStream xstreamUpdatePhone;
 
 	static {
 		xstream = new XStream();
@@ -40,17 +43,27 @@ public class PreventXMLUtils {
 		xstream.processAnnotations(SatellitePositionDesc.class);
 		xstream.processAnnotations(SatellitePositions.class);
 		xstream.processAnnotations(SpeedLimitResponse.class);
+
+		xstreamUpdatePhone = new XStream();
+		xstreamUpdatePhone.processAnnotations(UpdatePhoneNumbers.class);
 	}
-	
+
 	public static final String asXML(Object o) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		xstream.toXML(o, baos);
 		byte[] result = baos.toByteArray();
 		return new String(result);
 	}
-	
+
+	public static final String asXMLUpdatePhone(Object o) {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		xstreamUpdatePhone.toXML(o, baos);
+		byte[] result = baos.toByteArray();
+		return new String(result);
+	}
+
 	public static final Object fromXML(String xml) {
 		return xstream.fromXML(xml);
 	}
-	
+
 }

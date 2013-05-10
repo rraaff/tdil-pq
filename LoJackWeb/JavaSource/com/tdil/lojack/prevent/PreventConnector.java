@@ -17,6 +17,7 @@ import com.tdil.lojack.prevent.model.LoginResponse;
 import com.tdil.lojack.prevent.model.PhoneNumbers;
 import com.tdil.lojack.prevent.model.SecureZone;
 import com.tdil.lojack.prevent.model.SpeedLimit;
+import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.thalamus.client.core.CommunicationException;
@@ -24,6 +25,7 @@ import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
+import com.tdil.utils.XMLUtils;
 
 public class PreventConnector {
 
@@ -125,8 +127,8 @@ public class PreventConnector {
 		return executeGet(getPreventServer(), VEHICLE_GET_PHONES, params);
 	}
 
-	public static XMLResponse setVehiclePhones(LoginResponse loginResponse, PhoneNumbers phoneNumbers) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executePost(getPreventServer(), VEHICLE_SET_PHONES, phoneNumbers, new URLParams(loginResponse).vehicleID(phoneNumbers.getVehicleID()));
+	public static XMLResponse setVehiclePhones(LoginResponse loginResponse, UpdatePhoneNumbers phoneNumbers) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), VEHICLE_SET_PHONES, PreventXMLUtils.asXMLUpdatePhone(phoneNumbers), new URLParams(loginResponse).vehicleID(phoneNumbers.getVehicleID()));
 	}
 
 	public static XMLResponse setVehiclePhones(Object body, URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
@@ -182,7 +184,11 @@ public class PreventConnector {
 	private static XMLResponse executePost(String server, String service, Object param, URLParams urlParams) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		String xml = null;
 		if (param != null) {
-			xml = PreventXMLUtils.asXML(param);
+			if (param instanceof String) {
+				xml = (String)param;
+			} else {
+				xml = PreventXMLUtils.asXML(param);
+			}
 		}
 		String url = service;
 		if (urlParams != null) {

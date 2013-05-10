@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias(value="PhoneNumbers")
-public class PhoneNumbers implements Serializable {
+public class UpdatePhoneNumbers implements Serializable {
 
 	private static final long serialVersionUID = 457280774604652610L;
 
@@ -15,17 +15,14 @@ public class PhoneNumbers implements Serializable {
 	@XStreamAlias(value="vehicleID")
 	private String vehicleID;
 
-	@XStreamAlias(value="Alert")
+	@XStreamAlias(value="alert")
 	private String alert;
 
-	@XStreamAlias(value="Crash")
+	@XStreamAlias(value="crash")
 	private String crash;
 
-	@XStreamAlias(value="Other")
+	@XStreamAlias(value="other")
 	private String other;
-
-	@XStreamAlias(value="Status")
-	private String status;
 
 	public String getAlert() {
 		return alert;
@@ -97,14 +94,6 @@ public class PhoneNumbers implements Serializable {
 		}
 		builder.append("]");
 		return builder.toString();
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 
