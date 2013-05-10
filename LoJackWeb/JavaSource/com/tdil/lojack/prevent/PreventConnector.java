@@ -36,12 +36,12 @@ public class PreventConnector {
 	private static final String VEHICLES = "/Vehicles/?index={index}&userToken={userToken}";
 	private static final String VEHICLE_GET_SECURE_ZONES = "/Vehicles/{vehicleID}/SecureZones/?userToken={userToken}";
 	private static final String VEHICLE_SET_SECURE_ZONE = "/SecureZone/?secureZoneID={secureZoneID}&vehicleID={vehicleID}&userToken={userToken}";
-	
+
 	private static final String VEHICLE_GET_SPEED_LIMIT = "/Vehicles/{vehicleID}/SpeedLimit/?userToken={userToken}";
 	private static final String VEHICLE_SET_SPEED_LIMIT = "/SpeedLimit/?SpeedLimitID={speedLimitID}&VehicleID={vehicleID}&userToken={userToken}";
 	private static final String VEHICLE_GET_PHONES = "/Vehicles/{vehicleID}/PhoneNumbers/?userToken={userToken}";
 	// POST
-	private static final String VEHICLE_SET_PHONES = "/Vehicule/{vehicleID}/PhoneNumbers";
+	private static final String VEHICLE_SET_PHONES = "/{userToken}/Vehicles/{vehicleID}/PhoneNumbers";
 	// get
 	private static final String VEHICLE_GET_SAT_POSITION = "/Vehicles/{vehicleID}/SatellitePosition/?userToken={userToken}";
 	private static final String FLOT_GET_SAT_POSITION = "/Vehicles/SatellitePositions/?userToken={userToken}";
@@ -96,7 +96,7 @@ public class PreventConnector {
 	public static XMLResponse getVehicleSecureZones(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SECURE_ZONES, params);
 	}
-	
+
 	public static XMLResponse setVehicleSecureZone(LoginResponse loginResponse, Vehicle vehicle, SecureZone sl) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_SET_SECURE_ZONE, new URLParams(loginResponse).vehicleID(vehicle.getId()).secureZoneID(sl == null ? "0" : sl.getId()));
 	}

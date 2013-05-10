@@ -1,3 +1,8 @@
+<%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%>
+<%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
+<%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
+<%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
+<%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
 <%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
@@ -35,10 +40,19 @@
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<a href="./goToVehiculesSpeedLimits.do">Velocidades</a><br>
-		<a href="./goToVehiculesSecureZones.do">Zonas Seguras</a><br>
-		<a href="./goToVehiculesForMap.do">Ubicar vehiculos</a><br>
-		<a href="./goToVehiculesForPhone.do">Manejar telefonos</a><br>
+Telefonos de los vehiculos<br>
+<br>
+
+<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
+<table>
+		<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+			<tr>
+				<td><%=vehicle.getDescription() %></td>
+				<td><a href="./editVehiculePhones.do?vehicleId=<%=vehicle.getId()%>">Ver Telefonos</a></td>
+			</tr>
+		<% } %>
+</table>
+
 	</div>
 </section>
 <footer>

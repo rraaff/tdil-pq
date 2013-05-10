@@ -413,4 +413,38 @@
  <PROCESS-ITEM NAME="page19" PATH="/mostrarVehiculoEnMapa.jsp"
   SHAPE="240,5937,0,0" SUBTYPE="jsp" TITLE="mostrarVehiculoEnMapa.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculesForPhone" NAME="action59"
+  PATH="/goToVehiculesForPhone" SHAPE="32,6385,0,0"
+  TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/seleccionarVehiculoParaTelefonos.jsp" TARGET="page20"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page20"
+  PATH="/seleccionarVehiculoParaTelefonos.jsp" SHAPE="240,6402,0,0"
+  SUBTYPE="jsp" TITLE="seleccionarVehiculoParaTelefonos.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#editVehiculePhones" NAME="action60"
+  PATH="/editVehiculePhones" SHAPE="32,6833,0,0"
+  TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/editarTelefonosVehiculo.jsp" TARGET="page21" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page21" PATH="/editarTelefonosVehiculo.jsp"
+  SHAPE="240,6850,0,0" SUBTYPE="jsp" TITLE="editarTelefonosVehiculo.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehiculesPhones.do"
+   SUBTYPE="confirmed" TARGET="action61" TITLE="/saveVehiculesPhones.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVehiculesPhones" NAME="action61"
+  PATH="/saveVehiculesPhones" SHAPE="448,6850,0,0"
+  TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/editarTelefonosVehiculo.jsp" TARGET="page21" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
