@@ -19,6 +19,8 @@
   <form-bean id="EditProfileForm" name="EditProfileForm" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
   <form-bean id="ChangePasswordForm" name="ChangePasswordForm" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
   <form-bean id="VehiclesSpeedLimitForm" name="VehiclesSpeedLimitForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"/>
+  <form-bean id="VehiclesSecureZoneForm" name="VehiclesSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSecureZoneForm"/>
+  
   
  </form-beans>
  <global-exceptions/>
@@ -186,7 +188,14 @@
   </action>
   <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveSpeedLimitsAction">
   	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
-  	<forward name="failure" path="/vehiculosVelocidades.jsp" redirect="true"/>
+  	<forward name="failure" path="/vehiculosVelocidades.jsp"/>
+  </action>
+  <action name="VehiclesSecureZoneForm" parameter="WebsiteUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
+  	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>
+  </action>
+  <action name="VehiclesSecureZoneForm" parameter="WebsiteUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAction">
+  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  	<forward name="failure" path="/vehiculosZonasSeguras.jsp"/>
   </action>
 
 

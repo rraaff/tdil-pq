@@ -56,5 +56,9 @@ public class SecureZone implements Serializable {
 		return builder.toString();
 	}
 	
+	public boolean isActive() {
+		return this.getDescription().endsWith("ACTIVA");
+	}
+	
 	
 }

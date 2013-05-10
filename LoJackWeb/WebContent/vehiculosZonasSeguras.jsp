@@ -1,3 +1,5 @@
+<%@page import="com.tdil.lojack.prevent.model.SecureZone"%>
+<%@page import="com.tdil.lojack.struts.forms.beans.SecureZoneSelectionBean"%>
 <%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
 <%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
@@ -39,20 +41,19 @@
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-Velocidades de los vehiculos<br>
+Zonas Seguras de los vehiculos<br>
 <br>
 
-
-<html:form method="POST" action="/saveVehiculesSpeedLimits">
+<html:form method="POST" action="/saveVehiculesSecureZones">
 <table>
-		<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
+		<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
 			<tr>
-				<td><bean:write name="selectedSpeedLimit" property="vehicle.description" /></td>
-				<td><html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
+				<td><bean:write name="selectedSecureZone" property="vehicle.description" /></td>
+				<td><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
 					<option	value="">-</option>
-					<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
-						SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
-						for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
+					<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
+						SecureZone selected = ssb.getZones().getActiveZone();
+						for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
 							<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
 							value="<%=sl.getId()%>">
 							<%=sl.getDescription()%></option>
@@ -65,7 +66,7 @@ Velocidades de los vehiculos<br>
 					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
 				</div>
 			</html:form>
-	</div>
+</div>
 </section>
 <footer>
 	<div class="pageWrapper">

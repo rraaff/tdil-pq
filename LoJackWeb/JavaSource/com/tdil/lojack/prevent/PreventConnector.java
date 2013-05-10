@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.model.LoginResponse;
 import com.tdil.lojack.prevent.model.PhoneNumbers;
+import com.tdil.lojack.prevent.model.SecureZone;
 import com.tdil.lojack.prevent.model.SpeedLimit;
 import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.lojack.prevent.model.Vehicle;
@@ -34,6 +35,8 @@ public class PreventConnector {
 	// GET
 	private static final String VEHICLES = "/Vehicles/?index={index}&userToken={userToken}";
 	private static final String VEHICLE_GET_SECURE_ZONES = "/Vehicles/{vehicleID}/SecureZones/?userToken={userToken}";
+	private static final String VEHICLE_SET_SECURE_ZONE = "/SecureZone/?secureZoneID={secureZoneID}&vehicleID={vehicleID}&userToken={userToken}";
+	
 	private static final String VEHICLE_GET_SPEED_LIMIT = "/Vehicles/{vehicleID}/SpeedLimit/?userToken={userToken}";
 	private static final String VEHICLE_SET_SPEED_LIMIT = "/SpeedLimit/?SpeedLimitID={speedLimitID}&VehicleID={vehicleID}&userToken={userToken}";
 	private static final String VEHICLE_GET_PHONES = "/Vehicles/{vehicleID}/PhoneNumbers/?userToken={userToken}";
@@ -93,6 +96,10 @@ public class PreventConnector {
 	public static XMLResponse getVehicleSecureZones(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SECURE_ZONES, params);
 	}
+	
+	public static XMLResponse setVehicleSecureZone(LoginResponse loginResponse, Vehicle vehicle, SecureZone sl) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executeGet(getPreventServer(), VEHICLE_SET_SECURE_ZONE, new URLParams(loginResponse).vehicleID(vehicle.getId()).secureZoneID(sl == null ? "0" : sl.getId()));
+	}
 
 	public static XMLResponse getVehicleSpeedLimit(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getId()));
@@ -103,7 +110,7 @@ public class PreventConnector {
 	}
 
 	public static XMLResponse setVehicleSpeedLimit(LoginResponse loginResponse, Vehicle vehicle, SpeedLimit sl) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return executeGet(getPreventServer(), VEHICLE_SET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getId()).speedLimitID(sl.getId()));
+		return executeGet(getPreventServer(), VEHICLE_SET_SPEED_LIMIT, new URLParams(loginResponse).vehicleID(vehicle.getId()).speedLimitID(sl == null ? "0" : sl.getId()));
 	}
 
 	public static XMLResponse setVehicleSpeedLimit(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {

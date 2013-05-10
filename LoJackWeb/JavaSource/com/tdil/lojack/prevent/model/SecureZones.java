@@ -33,6 +33,15 @@ public class SecureZones implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	public SecureZone getActiveZone() {
+		for (SecureZone sl : secureZones) {
+			if (sl.isActive()) {
+				return sl;
+			}
+		}
+		return null;
+	}
 	
 	
 }

@@ -10,9 +10,9 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
-import com.tdil.lojack.prevent.model.SpeedLimits;
+import com.tdil.lojack.prevent.model.SecureZones;
 import com.tdil.lojack.prevent.model.Vehicle;
-import com.tdil.lojack.struts.forms.beans.SpeedSelectionBean;
+import com.tdil.lojack.struts.forms.beans.SecureZoneSelectionBean;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
@@ -20,18 +20,18 @@ import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 
-public class VehiclesSpeedLimitForm extends VehiclesForm {
+public class VehiclesSecureZoneForm extends VehiclesForm {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = -4103112336985471907L;
 
-	private Map<String, SpeedLimits> vehicleIdToSpeedLimit;
-	private List<SpeedSelectionBean> speedLimits;
+	private Map<String, SecureZones> vehicleIdToSecureZones;
+	private List<SecureZoneSelectionBean> secureZones;
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(VehiclesSpeedLimitForm.class);
+		return LoggerProvider.getLogger(VehiclesSecureZoneForm.class);
 	}
 
 	@Override
@@ -41,13 +41,13 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 		if (resp == null) {
 			resp = PreventConnector.getLogin();
 		}
-		vehicleIdToSpeedLimit = new HashMap<String, SpeedLimits>();
-		speedLimits = new ArrayList<SpeedSelectionBean>();
+		vehicleIdToSecureZones = new HashMap<String, SecureZones>();
+		secureZones = new ArrayList<SecureZoneSelectionBean>();
 		for (Vehicle vehicle : this.getVehicles()) {
 			try {
-				SpeedLimits limits = (SpeedLimits)PreventConnector.getVehicleSpeedLimit(resp, vehicle).getResult();
-				vehicleIdToSpeedLimit.put(vehicle.getId(), limits);
-				speedLimits.add(new SpeedSelectionBean(vehicle, limits));
+				SecureZones limits = (SecureZones)PreventConnector.getVehicleSecureZones(resp, vehicle).getResult();
+				vehicleIdToSecureZones.put(vehicle.getId(), limits);
+				secureZones.add(new SecureZoneSelectionBean(vehicle, limits));
 			} catch (HttpStatusException e) {
 				getLog().error(e.getMessage(), e);
 			} catch (InvalidResponseException e) {
@@ -61,25 +61,25 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 
 	}
 
-	public List<SpeedSelectionBean> getSpeedLimits() {
-		return speedLimits;
+	public List<SecureZoneSelectionBean> getSecureZones() {
+		return secureZones;
 	}
 	
-	public SpeedSelectionBean getSelectedSpeedLimit(int index) {
-		return this.speedLimits.get(index);
+	public SecureZoneSelectionBean getSelectedSecureZone(int index) {
+		return this.secureZones.get(index);
 	}
 
-	public void setSpeedLimits(List<SpeedSelectionBean> speedLimits) {
-		this.speedLimits = speedLimits;
+	public void setSecureZones(List<SecureZoneSelectionBean> speedLimits) {
+		this.secureZones = speedLimits;
 	}
 
 	public void save() throws ValidationException {
 		if (resp == null) {
 			resp = PreventConnector.getLogin();
 		}
-		for (SpeedSelectionBean speedSelectionBean : speedLimits) {
+		for (SecureZoneSelectionBean speedSelectionBean : secureZones) {
 			try {
-				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(resp, speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
+				XMLResponse setSpeed = PreventConnector.setVehicleSecureZone(resp, speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSecureZone());
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {

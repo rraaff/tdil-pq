@@ -35,7 +35,8 @@
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<a href="./goToVehiculesSpeedLimits.do">Velocidades</a>
+		<a href="./goToVehiculesSpeedLimits.do">Velocidades</a><br>
+		<a href="./goToVehiculesSecureZones.do">Zonas Seguras</a>
 	</div>
 </section>
 <footer>

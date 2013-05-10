@@ -369,4 +369,24 @@
  <PROCESS-ITEM NAME="page16" PATH="/productoPrevent.jsp"
   SHAPE="240,4770,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculesSecureZones" NAME="action55"
+  PATH="/goToVehiculesSecureZones" SHAPE="32,5121,0,0"
+  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/vehiculosZonasSeguras.jsp" TARGET="page17" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page17" PATH="/vehiculosZonasSeguras.jsp"
+  SHAPE="240,5138,0,0" SUBTYPE="jsp" TITLE="vehiculosZonasSeguras.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
+  PATH="/saveVehiculesSecureZones" SHAPE="32,5121,0,0"
+  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/vehiculosZonasSeguras.jsp" TARGET="page17" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
