@@ -90,7 +90,6 @@
     }
 }
 </style>
-	<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script src="js/OpenLayers.js" type="text/javascript"></script>
     <script src="js/MapaOSM.js" type="text/javascript"></script>
 </head>

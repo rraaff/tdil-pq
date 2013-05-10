@@ -378,7 +378,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/vehiculosZonasSeguras.jsp"
   SHAPE="240,5138,0,0" SUBTYPE="jsp" TITLE="vehiculosZonasSeguras.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehiculesSecureZones.do"
+   SUBTYPE="confirmed" TARGET="action56"
+   TITLE="/saveVehiculesSecureZones.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
   PATH="/saveVehiculesSecureZones" SHAPE="32,5121,0,0"
   TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -389,4 +393,24 @@
    PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToVehiculesForMap" NAME="action57"
+  PATH="/goToVehiculesForMap" SHAPE="32,5489,0,0"
+  TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/seleccionarVehiculoParaMapa.jsp" TARGET="page18"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page18" PATH="/seleccionarVehiculoParaMapa.jsp"
+  SHAPE="240,5489,0,0" SUBTYPE="jsp"
+  TITLE="seleccionarVehiculoParaMapa.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#locateVehicleInMap" NAME="action58"
+  PATH="/locateVehicleInMap" SHAPE="32,5937,0,0"
+  TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mostrarVehiculoEnMapa.jsp" TARGET="page19" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page19" PATH="/mostrarVehiculoEnMapa.jsp"
+  SHAPE="240,5937,0,0" SUBTYPE="jsp" TITLE="mostrarVehiculoEnMapa.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
