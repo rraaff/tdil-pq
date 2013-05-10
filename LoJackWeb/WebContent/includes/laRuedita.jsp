@@ -22,8 +22,8 @@
 
 		<% if (websiteUser != null && websiteUser.isLogged()) { %>
 			<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoParkings"><a href="#" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
+		<% } else { %> 
+			<div id="iconoParkings"><a href="javascript:parkingsNotLogged();" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
 		<% } %>
 
 		<% if (websiteUser != null && websiteUser.isLogged()) { %>
@@ -59,3 +59,29 @@
 </div>
 
 <div id="logoIndex">&nbsp;</div>
+<script>
+$(document).ready(
+	function(){
+		$( "#closeparkingsNotLoggedLayer" ).click(function() {
+			$( "#parkingsNotLoggedLayer" ).fadeOut();
+			return false;
+		});
+	}
+);
+function parkingsNotLogged() {
+	centerLayer($(window), $( "#parkingsNotLoggedLayer" ));
+	return false;
+}
+</script>
+<div id="parkingsNotLoggedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="defaultLayerStyles">
+		<div class="defaultLayerContent">
+			<div class="myRow">
+				<div class="myLabel width100per" align="center">Registrate y accede a parkings</div>
+			</div>
+			<div class="myRow">
+				<div class="myLabel width100per" align="center"><button id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer">Cerrar</button></div>
+			</div>
+		</div>
+	</div>
+</div>
