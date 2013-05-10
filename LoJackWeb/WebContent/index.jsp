@@ -160,12 +160,25 @@ $(document).ready(
 	        }
 		});
 
+		$("button[cl]").each(function(indice,valor) {
+		   $(valor).click(function() {
+			   $( "#" + $(this).attr('cl') ).fadeOut();
+			});
+		});
+
 		$( "#closeregisterLayer" ).click(function() {
 			$( "#registerLayer" ).fadeOut();
 			clearErrors();
+			return false;
+		});
+		$( "#closeregisterLayer1" ).click(function() {
+			$( "#registerLayer" ).fadeOut();
+			clearErrors();
+			return false;
 		});
 		$( "#closeloginLayer" ).click(function() {
 			$( "#loginLayer" ).fadeOut();
+			return false;
 		});
 		$( "#closeforgotPasswordLayer" ).click(function() {
 			$( "#forgotPasswordLayer" ).fadeOut();
@@ -245,6 +258,10 @@ function forgotPassword() {
 }
 
 <%@ include file="includes/openLegalesLayer.jsp" %>
+
+function showVideo1() {
+	centerLayer($(window), $( "#video1Layer" ));
+}
 
 function centerLayer(objWin, objLayer) {
 	var top = (objWin.height() / 2) - (objLayer.height() / 2);
@@ -334,6 +351,7 @@ function postResetPassword(data) {
 
 <section id="copyright">
 	<div class="copy">
+	<a href="javascript:showVideo1()">Video1</a>
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
@@ -341,7 +359,7 @@ function postResetPassword(data) {
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="buttonCloseLayer" id="closeregisterLayer">X</button></div>
+			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
 			<div style="width:100%; height:430px; overflow: auto;">
@@ -516,7 +534,7 @@ function postResetPassword(data) {
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent">
 			<html:form method="POST" action="/login">
-				<div id="xContainer"><button id="buttonCloseLayer" id="closeloginLayer">X</button></div>
+				<div id="xContainer"><button id="closeloginLayer">X</button></div>
 				<h3>Ingresar</h3>
 				<html:hidden name="LoginForm" property="timezoneOffset"/>
 				<html:hidden name="LoginForm" property="timezoneName"/>
@@ -603,6 +621,19 @@ function postResetPassword(data) {
 			</div>
 			<div class="myRow">
 				<div class="myLabel width100per" align="center"><input type="button" id="closeforgotPasswordErrorLayer" value="Close"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="video1Layer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="defaultLayerStyles">
+		<div class="defaultLayerContent">
+			<div class="myRow">
+				<div class="myLabel width100per" align="center">Este es el video 1</div>
+			</div>
+			<div class="myRow">
+				<div class="myLabel width100per" align="center"><button id="closevideo1Layer" cl="video1Layer">Cerrar</button></div>
 			</div>
 		</div>
 	</div>
