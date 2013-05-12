@@ -9,18 +9,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class PanasonicBLC131 extends IPCamera {
-	
+
 	private static final String IMAGE = "/nphMotionJpeg?Resolution=320x240&Quality=Standard";
 	private static final String LEFT = "/nphControlCamera?Direction=PanLeft";
 	private static final String RIGHT = "/nphControlCamera?Direction=PanRight";
 	private static final String UP = "/nphControlCamera?Direction=TiltUp";
 	private static final String DOWN = "/nphControlCamera?Direction=TiltDown";
-	public static final String PANASONIC_BLC131 = "PanasonicBLC131";
+	public static final String PANASONIC_BLC131 = "2";
 
 	public PanasonicBLC131(String url, String username, String password) {
 		super(url, username, password);
 	}
-	
+
 	@Override
 	public String getMimeType() {
 		return "image/jpeg";
@@ -86,7 +86,7 @@ public class PanasonicBLC131 extends IPCamera {
 			}
 		}
 	}
-	
+
 	@Override
 	public void down() {
 		readFully(this.getUrl() + DOWN);
@@ -106,5 +106,5 @@ public class PanasonicBLC131 extends IPCamera {
 	public void up() {
 		readFully(this.getUrl() + UP);
 	}
-	
+
 }

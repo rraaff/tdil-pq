@@ -15,12 +15,12 @@ public class TPLinkSC4171G extends IPCamera {
 	private static final String RIGHT = "/cgi-bin/operator/ptzset?move=right";
 	private static final String UP = "/cgi-bin/operator/ptzset?move=up";
 	private static final String DOWN = "/cgi-bin/operator/ptzset?move=down";
-	public static final String TP_LINK_SC4171G = "TPLinkSC4171G";
-	
+	public static final String TP_LINK_SC4171G = "1";
+
 	public TPLinkSC4171G(String url, String username, String password) {
 		super(url, username, password);
 	}
-	
+
 	@Override
 	public String getMimeType() {
 		return "image/jpeg";

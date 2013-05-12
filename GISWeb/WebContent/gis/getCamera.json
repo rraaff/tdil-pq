@@ -1,6 +1,14 @@
-{
-	"username" : "preisinger",
-	"password": "lj2013",
-	"url" : "http://ljcam2.dyndns.org:8888",
-	"model" : "TPLinkSC4171G" 
-}
+[
+	{
+		"username" : "preisinger",
+		"password": "lj2013",
+		"url" : "http://ljca1.dyndns.org:8888",
+		"model" : "1"
+	},
+	{
+		"username" : "camara",
+		"password": "123456",
+		"url" : "http://gsilveyra.dyndns.org:5005",
+		"model" : "2"
+	}
+]
