@@ -176,6 +176,10 @@
   </action>
   
   <action name="CameraForm" parameter="WebsiteUser" path="/goToHomeCamera" scope="session" type="com.tdil.lojack.struts.action.GoToHomeCameraAction">
+  	<forward name="continue" path="/homeCamaras.jsp" redirect="true"/>
+  </action>
+  
+  <action name="CameraForm" parameter="WebsiteUser" path="/selectCamera" scope="session" type="com.tdil.lojack.struts.action.SelectCameraAction">
   	<forward name="continue" path="/homeCamara.jsp" redirect="true"/>
   </action>
   

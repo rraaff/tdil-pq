@@ -1,4 +1,5 @@
-﻿<%@page import="com.tdil.lojack.gis.model.Alarm"%>
+<%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
+<%@page import="com.tdil.lojack.gis.model.Alarm"%>
 <%@page import="com.tdil.lojack.struts.forms.AlarmsForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
@@ -22,11 +23,10 @@
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
-<script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <%@ include file="includes/headLogged.jsp" %>
-
+<script src="js/alarms.js"></script>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
@@ -34,7 +34,6 @@
 
 <script>
   $(function() {
-    $( "#accordion" ).accordion();
 
     $("input[cl]").each(function(indice,valor) {
 	   $(valor).click(function() {
@@ -118,6 +117,16 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
+	function toggle(idEntidad) {
+		if ($('#cont-' + idEntidad).css('display') == 'none') {
+			$('#cont-' + idEntidad).css('display', 'block');
+			$('#toggle-' + idEntidad).prop('innerHTML',"-");
+		} else {
+			$('#cont-' + idEntidad).css('display', 'none');
+			$('#toggle-' + idEntidad).prop('innerHTML',"+");
+		}
+	}
+
   function seeAlarmLog(idEntidad) {
 	  $('#logData').load('logAlarma.jsp?idEntidad=' + idEntidad, function() {
 		  centerLayer($(window), $( "#logLayer" ));
@@ -183,13 +192,19 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmActivatedLayer" ));
+				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
 					} else {
-						$( "#passwordLayer" ).fadeOut();
-						centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+						if (data.result == 'HAS_JOB') {
+		        		  $( "#passwordLayer" ).fadeOut();
+						  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+						} else {
+							$( "#passwordLayer" ).fadeOut();
+							centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+						}
 					}
 				}
           },
@@ -211,13 +226,19 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmDeactivatedLayer" ));
+				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
 					} else {
-						$( "#passwordLayer" ).fadeOut();
-						centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+						if (data.result == 'HAS_JOB') {
+		        		  $( "#passwordLayer" ).fadeOut();
+						  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+						} else {
+							$( "#passwordLayer" ).fadeOut();
+							centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+						}
 					}
 				}
           },
@@ -262,38 +283,50 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				<li class="tabAlarms active" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
-			<ul>
+			</ul>
 		</div>
 		<div class="col1_794 alarmasBG">
 			<% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 			<div id="accordion">
 			<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
-				<!--div class="titleContainer"-->
-					<h3><%= alarm.getDescription() %>
-					<!-- necesito poder meterle un class distinto a cada status -->
-			  		<!--span class="statusObject"-->
-			  			<%=alarm.isTriggered() ? "Disparada" : (alarm.isActive() ? "Encendidad" : "Apagada")%>
-			  		<!--/span>
-				</div>
-			  	<div class="switchContainer"-->
-				  	<% if (alarm.isInactive() ) { %>
-				  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">Encender</span>
-				  	<% } else { %>
-				  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">Apagar</span>
-				  	<% } %>
-			  	<!--/div--></h3>
-			  <div>
-			  <div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
-			    <p>
-			   		<% if (alarm.hasChangeData()) { %>
-			   			Ultimo cambio: <%=alarm.getLastChangeDate() %>
-			   			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
-			   			<a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a><br>
-			   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
-			   			<a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
-			   		<% } %>
-			    </p>
-			  </div>
+					<div class="titleContainer">
+						<button id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')">+</button>
+							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
+						<!-- necesito poder meterle un class distinto a cada status -->
+				  			<% if (alarm.isTriggered()) { %>
+				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+				  			<% } else { %>
+				  				<% if (alarm.isActive()) { %>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+					  			<% } else { %>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+					  			<% } %>
+				  			<% } %>
+				  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
+				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
+				  			<% } else { %>
+				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
+				  			<% } %>
+					</div>
+				  	<div class="switchContainer">
+					  	<% if (alarm.isInactive() ) { %>
+					  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">Encender</span>
+					  	<% } else { %>
+					  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">Apagar</span>
+					  	<% } %>
+				  	</div>
+			  <div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
+				    <p>
+				   		<% if (alarm.hasChangeData()) { %>
+				   			Ultimo cambio: <%=alarm.getLastChangeDate() %>
+				   			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
+				   			<a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a><br>
+				   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
+				   			<a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
+				   		<% } %>
+				    </p>
+				  </div>
+			   </div>
 			  <% } %>
 			</div>
 			<div id="logLayer" style="display: none; z-index: 1500;">
@@ -335,6 +368,10 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				No ha podido desactivarse la alarma
 				<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
 			</div>
+			<div id="jobInProgressErrorLayer" style="display: none; z-index: 500;">
+				La alarma esta procesando una tarea, por favor espere.
+				<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
+			</div>
 
 			<!-- Inicio panic -->
 			<div id="sendPanicLayer" style="display: none; z-index: 1500;">
@@ -358,10 +395,8 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		</div>
 	</div>
 </section>
-
 <!-- a href="javascript:sendPanic()">Boton de panico</a -->
 
 <%@ include file="includes/footerProductoHome.jsp" %>
-
 </body>
 </html>

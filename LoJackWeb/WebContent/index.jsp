@@ -1,4 +1,4 @@
-﻿<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
+<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -249,6 +249,8 @@ function basicRegister() {
 }
 
 function login() {
+	$('#loginerr').prop('innerHTML', '');
+	$('#loginerr').css('display', 'none');
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
 	centerLayer($(window), $( "#loginLayer" ));
@@ -296,8 +298,8 @@ function postLogin(data) {
 	if (data.result == 'OK') {
 		window.location.replace('./home.jsp');
 	} else {
-		$( "#loginLayer" ).fadeOut();
-		centerLayer($(window), $( "#loginInvalidLayer" ));
+		$('#loginerr').prop('innerHTML', 'El usuario o contrasenia son incorrectos');
+		$('#loginerr').css('display', 'block');
 	}
 }
 
@@ -534,6 +536,7 @@ function postResetPassword(data) {
 				<h3>Ingresar</h3>
 				<html:hidden name="LoginForm" property="timezoneOffset"/>
 				<html:hidden name="LoginForm" property="timezoneName"/>
+				<div class="myRow" id="loginerr" style="display: none;"></div>
 				<form>
 					<fieldset>
 						<label>DNI</label>

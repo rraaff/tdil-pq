@@ -1,4 +1,4 @@
-﻿<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
+<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
 <%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
@@ -23,7 +23,6 @@
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
-<script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <%@ include file="includes/headLogged.jsp" %>
@@ -43,7 +42,7 @@ function up() {
 					$('#cameraImg').attr('src', './viewCamera');
 			 },
 				error: function() {
-					alert('err');	
+					alert('err');
 				}
 		});
 }
@@ -56,7 +55,7 @@ function down() {
 				$('#cameraImg').attr('src', './viewCamera');
 		 },
 			error: function() {
-				alert('err');	
+				alert('err');
 			}
 	});
 }
@@ -69,7 +68,7 @@ function left() {
 			$('#cameraImg').attr('src', './viewCamera');
 	 },
 		error: function() {
-			alert('err');	
+			alert('err');
 		}
 });
 }
@@ -82,7 +81,7 @@ function right() {
 		$('#cameraImg').attr('src', './viewCamera');
  },
 	error: function() {
-		alert('err');	
+		alert('err');
 	}
 });
 }
@@ -121,7 +120,7 @@ function right() {
 								</embed>
 							</comment>
 						</object>
-						
+
 				<% } else { %>
 					<img id="cameraImg" src="./viewCamera" width="561" height="297"><br>
 					<a href="javascript:up()" id="up">Up</a><br>

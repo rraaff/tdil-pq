@@ -122,7 +122,8 @@
   PATH="/goToHomeCamera" SHAPE="32,2065,0,0" TITLE="CameraForm"
   TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/homeCamara.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/homeCamaras.jsp" TARGET="page22" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page1" PATH="/homeCamara.jsp" SHAPE="240,2082,0,0"
   SUBTYPE="jsp" TITLE="homeCamara.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
@@ -446,5 +447,12 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page22" PATH="/homeCamaras.jsp"
+  SHAPE="240,2177,0,0" SUBTYPE="jsp" TITLE="homeCamaras.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#selectCamera" NAME="action62" PATH="/selectCamera"
+  SHAPE="32,2369,0,0" TITLE="CameraForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/homeCamara.jsp" TARGET="page1" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

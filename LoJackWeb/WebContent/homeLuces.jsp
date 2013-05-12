@@ -1,4 +1,5 @@
-﻿<%@page import="com.tdil.lojack.gis.model.Light"%>
+<%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
+<%@page import="com.tdil.lojack.gis.model.Light"%>
 <%@page import="com.tdil.lojack.struts.forms.LightsForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
@@ -22,11 +23,10 @@
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
-<script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 <%@ include file="includes/headLogged.jsp" %>
-
+<script src="js/lights.js"></script>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
@@ -34,7 +34,6 @@
 
 <script>
   $(function() {
-    $( "#accordion" ).accordion();
 
 	 $("input[cl]").each(function(indice,valor) {
 		   $(valor).click(function() {
@@ -117,6 +116,16 @@
 	    });
 	}
 
+	function toggle(idEntidad) {
+		if ($('#cont-' + idEntidad).css('display') == 'none') {
+			$('#cont-' + idEntidad).css('display', 'block');
+			$('#toggle-' + idEntidad).prop('innerHTML',"-");
+		} else {
+			$('#cont-' + idEntidad).css('display', 'none');
+			$('#toggle-' + idEntidad).prop('innerHTML',"+");
+		}
+	}
+
   function seeLightLog(idEntidad, idLuz) {
 	  $('#logData').load('logLuz.jsp?idEntidad=' + idEntidad + '&idLuz=' + idLuz, function() {
 		  centerLayer($(window), $( "#logLayer" ));
@@ -154,10 +163,15 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
-	        	  if (data.result == 'OK') {
-						centerLayer($(window), $( "#lightTurnedOnLayer" ));
-					} else {
-						centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+	        	  if (data.result == 'HAS_JOB') {
+					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+				  } else {
+		        	  if (data.result == 'OK') {
+							centerLayer($(window), $( "#lightTurnedOnLayer" ));
+							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+						} else {
+							centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+						}
 					}
 	          },
 	          error: function() {
@@ -174,10 +188,15 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
-	        	  if (data.result == 'OK') {
-						centerLayer($(window), $( "#lightTurnedOffLayer" ));
+	        	  if (data.result == 'HAS_JOB') {
+					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
-						centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+		        	  if (data.result == 'OK') {
+							centerLayer($(window), $( "#lightTurnedOffLayer" ));
+							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+						} else {
+							centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+						}
 					}
 	          },
 	          error: function() {
@@ -194,10 +213,15 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
-	        	  if (data.result == 'OK') {
-						centerLayer($(window), $( "#randomActivatedLayer" ));
+	        	  if (data.result == 'HAS_JOB') {
+					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
-						centerLayer($(window), $( "#randomNotActivatedLayer" ));
+		        	  if (data.result == 'OK') {
+							centerLayer($(window), $( "#randomActivatedLayer" ));
+							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+						} else {
+							centerLayer($(window), $( "#randomNotActivatedLayer" ));
+						}
 					}
 	          },
 	          error: function() {
@@ -214,10 +238,15 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
-	        	  if (data.result == 'OK') {
-	        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
+	        	  if (data.result == 'HAS_JOB') {
+					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
-						centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
+		        	  if (data.result == 'OK') {
+		        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
+		        		  $( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+						} else {
+							centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
+						}
 					}
 	          },
 	          error: function() {
@@ -245,28 +274,52 @@
 			<div id="accordion">
 			<% for (Light light : lightsForm.getLights()) { %>
 			  <h3>
-			  	<%= light.getDescription() %>
+			  	<button id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>')">+</button>
+			  	<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
 			  	<% if (light.isInRandomMode()) { %>
-			  		Modo random <span onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Desactivar modo random</span>
+			  		<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+			  		<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+		  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+		  			<% } else { %>
+		  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+		  			<% } %>
+			  		<span onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Desactivar modo random</span>
 			  	<% } else  { %>
 			  		<% if (light.isOn()) { %>
-				  		Encendida <span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
+				  		<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+				  		<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+			  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+			  			<% } else { %>
+			  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+			  			<% } %>
+				  		<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
 			  		<% } else  { %>
 						<% if (light.isOff()) { %>
-				  			Apagada <span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+				  			<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+				  			<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+				  			<% } else { %>
+				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+				  			<% } %>
+				  			<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
 				  			<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
 			  			<% } else  { %>
-			  				Estado desconocido <span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+			  				<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+			  				<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+				  			<% } else { %>
+				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+				  			<% } %>
+		  					<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
 			  				<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
 			  				<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
 					    <% } %>
 				  <% } %>
 				 <% } %>
 			  </h3>
-			  <div>
+			  <div id="cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
 			    <p>
-			    	<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
-			   		<% if (light.hasChangeData()) { %>
+			    	<% if (light.hasChangeData()) { %>
 			   			Ultimo cambio: <%=light.getLastChangeDate() %>
 			   			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
 			   			<a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a><br>
@@ -319,6 +372,11 @@
 			<div id="lightNotTurnedOnLayer" style="display: none; z-index: 500;">
 				No ha podido enviarse el comando de encendido de la luz
 				<input type="button" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer" value="Cerrar">
+			</div>
+
+			<div id="jobInProgressErrorLayer" style="display: none; z-index: 500;">
+				La luz esta procesando una tarea, por favor espere.
+				<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
 			</div>
 
 			<div id="lightTurnedOffLayer" style="display: none; z-index: 500;">

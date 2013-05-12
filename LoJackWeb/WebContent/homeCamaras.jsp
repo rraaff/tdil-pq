@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.gis.model.Camera"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
 <%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
@@ -26,18 +27,31 @@
 <%@ include file="includes/headLogged.jsp" %>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 
-<script>
-</script>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<a href="./goToVehiculesSpeedLimits.do">Velocidades</a><br>
-		<a href="./goToVehiculesSecureZones.do">Zonas Seguras</a><br>
-		<a href="./goToVehiculesForMap.do">Ubicar vehiculos</a><br>
-		<a href="./goToVehiculesForPhone.do">Manejar telefonos</a><br>
+		<div class="col1_170">
+			<div class="tab"><img src="images/skin_lj_rl/tabs/servicion.png"></div>
+			<ul class="tabServices">
+				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
+				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
+				<li class="tabCameras active"><a href="./goToHomeCamera.do">Mi Camara</a></li>
+			</ul>
+		</div>
+		<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
+		<div class="col1_794 camarasBG">
+			<div id="cameraTitle">
+				<h1>Mis C&aacute;maras</h1>
+			</div>
+			<% int camIndex = 0;
+				for (Camera camera : cameraForm.getAllCameras()) { %>
+				<a href="./selectCamera.do?pos=<%=camIndex%>"><%=camera.getUrl()%></a><br>
+			<% camIndex = camIndex + 1;
+				} %>
+		</div>
 	</div>
 </section>
 <footer>
