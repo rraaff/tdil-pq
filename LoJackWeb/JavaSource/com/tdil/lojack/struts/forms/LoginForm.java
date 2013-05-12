@@ -102,6 +102,10 @@ public class LoginForm extends ActionForm {
 	}
 	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
 		JSONObject profile = getProfile.getProfile().getJSONObject("person").getJSONObject(ProfileResponse.PROFILE);
+		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
+			JSONObject document = profile.getJSONObject("document");
+			user.setLojackUserId(document.getInt("type") + ":" + document.getString("number"));
+		}
 		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
 			user.setHomeUser(profile.getBoolean("isHomeUser"));
 		}

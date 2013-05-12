@@ -1,11 +1,14 @@
 package com.tdil.lojack.utils;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
+import com.tdil.lojack.gis.model.Alarm;
+import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
@@ -20,7 +23,7 @@ public class WebsiteUser extends User {
 
 	private TokenHolder token;
 	private String name;
-	private String lojackUserId = "ase001"; // TODO XXX
+	private String lojackUserId;
 	private String timezoneOffset;
 	private String timezoneName;
 
@@ -44,11 +47,15 @@ public class WebsiteUser extends User {
 
 	@Override
 	public Integer getId() {
-		return 1;
+		return this.getModelUser().getId();
 	}
 
 	public String getGuid() {
 		return String.valueOf(this.getToken().getCookie("JSESSIONID").getValue());
+	}
+
+	public String getExtraCookie() {
+		return String.valueOf(this.getToken().getCookie("AWSELB").getValue());
 	}
 
 	public boolean isLogged() {
@@ -151,12 +158,24 @@ public class WebsiteUser extends User {
 		UpdateMiddlewareJobsThread.getUpdateMiddlewareJobsThread().addUserJobCollection(this.userJobCollection);
 	}
 
+	public List<AsyncJob> getAndRemoveFinishedJobs() {
+		return this.userJobCollection.getAndRemoveFinishedJobs();
+	}
+
 	public void addAsyncJob(AsyncJob asyncJob) {
 		this.userJobCollection.addJob(asyncJob);
 	}
 
 	public AsyncJob getPendingJob(int idEntidad, int idLuz) {
 		return this.userJobCollection.getPendingJob(idEntidad, idLuz);
+	}
+
+	public boolean hasJobInProgress(Alarm alarm) {
+		return this.userJobCollection.getPendingJob(alarm.getIdEntidad(), 0) != null;
+	}
+
+	public boolean hasJobInProgress(Light light) {
+		return this.userJobCollection.getPendingJob(light.getIdEntidad(), light.getIdLuz()) != null;
 	}
 
 }

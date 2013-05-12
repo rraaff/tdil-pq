@@ -22,7 +22,7 @@ public class Light implements Serializable {
 	private String lastChangeAction;
 	private String lastChangeUser;
 	private String lastChangeLojackUserID;
-	
+
 	// campos de light conf
 	private int idLightConf;
 	private String description;
@@ -32,25 +32,41 @@ public class Light implements Serializable {
 	private static final int ON = 1;
 	private static final int UNKNOWN = 2;
 	private static final int RANDOM = 3;
-	
-	
+
+
 	public Light() {
 	}
-	
+
 	public boolean isInRandomMode() {
 		return this.getStatus() == RANDOM;
 	}
-	
+
 	public boolean isOff() {
 		return this.getStatus() == OFF;
 	}
-	
+
 	public boolean isOn() {
 		return this.getStatus() == ON;
 	}
-	
+
 	public boolean isStatusUnknown() {
 		return this.getStatus() == UNKNOWN;
+	}
+
+	public String getStatusDescription() {
+		if (this.getStatus() == RANDOM) {
+			return "Modo random";
+		} else {
+			if (this.getStatus() == ON) {
+				return "Encendida";
+			} else {
+				if (this.getStatus() == OFF) {
+					return "Apagada";
+				} else {
+					return "Desconocido";
+				}
+			}
+		}
 	}
 
 	public String getDescription() {

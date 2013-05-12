@@ -3,6 +3,7 @@ package com.tdil.lojack.gis;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
@@ -40,7 +41,7 @@ import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
-// TODO ver que datos de autheticacion hay que proveer
+// TODO ver que datos de authenticacion hay que proveer
 public class LoJackServicesConnector {
 
 	private static final String GUID = "guid";
@@ -282,17 +283,13 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static Camera getCamera(WebsiteUser user) {
+	public static Collection<Camera> getCameras(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_CAMERA);
-			JSONObject object = (JSONObject)response.getResult();
-			if (!object.containsKey("model") || object.get("model") instanceof JSONNull) {
-				return null;
-			}
-			Camera camera = (Camera)JSONObject.toBean(object, Camera.class);
-			return camera;
+			Collection<Camera> resultObj = (Collection<Camera>)JSONArray.toCollection((JSONArray)response.getResult(), Camera.class);
+			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return null;
@@ -566,6 +563,7 @@ public class LoJackServicesConnector {
 	}
 
 	private static JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		long start = System.currentTimeMillis();
 		if (LOG.isDebugEnabled()) {
 			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
 		}
@@ -592,6 +590,11 @@ public class LoJackServicesConnector {
 			throw new CommunicationException(e);
 		} catch (IOException e) {
 			throw new CommunicationException(e);
+		} finally {
+			if (LOG.isDebugEnabled()) {
+				long end = System.currentTimeMillis();
+				LOG.debug("Execute: " + service + " took " + (end - start) + " millis");
+			}
 		}
 	}
 

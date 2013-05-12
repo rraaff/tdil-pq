@@ -2,6 +2,7 @@ package com.tdil.lojack.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
@@ -41,80 +42,113 @@ public class LoJackConfig extends SystemConfig {
 
 	@Override
 	public void init(ServletContextEvent sce) {
-		super.init(sce);
-		this.loadFilteredWords();
-		String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
-		if (frontserver != null) {
-			setFRONT_SERVER(frontserver);
-		}
-		getLog().fatal("Front server is " + frontserver);
-
-		String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
-		if (thalamusserver != null) {
-			ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
-		}
-		getLog().fatal("Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
-
-		String thalamustouchpointCode = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.code");
-		if (thalamustouchpointCode != null) {
-			ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
-		}
-		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
-
-		String thalamustouchpointToken = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.token");
-		if (thalamustouchpointToken != null) {
-			ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
-		}
-		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
-		ThalamusCache.configureWith(new Properties());
-		// Initializes the caches
 		try {
-			getLog().fatal("About to initialize cache");
-			getLog().fatal("Initializing brand families cache");
-			ThalamusClientBeanFacade.getBrandFamilies();
-			getLog().fatal("Initializing brands cache");
-			ThalamusClientBeanFacade.getBrands();
-			getLog().fatal("Initializing channels cache");
-			ThalamusClientBeanFacade.getChannels();
-			getLog().fatal("Initializing countries cache");
-			ThalamusClientBeanFacade.getCountries();
-			getLog().fatal("Initializing document types cache");
-			ThalamusClientBeanFacade.getDocumentTypes();
-			getLog().fatal("Initializing person fields cache");
-			ThalamusClientBeanFacade.getPersonFields();
-			getLog().fatal("Initializing facebook login");
-			ThalamusClientBeanFacade.getFacebookLogin();
-			getLog().fatal("Initializing twitter login");
-			ThalamusClientBeanFacade.getTwitterLogin();
-			getLog().fatal("Cache initialized");
+			super.init(sce);
+			this.loadFilteredWords();
+			String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
+			if (frontserver != null) {
+				setFRONT_SERVER(frontserver);
+			}
+			getLog().fatal("Front server is " + frontserver);
+
+			String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
+			if (thalamusserver != null) {
+				ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
+			}
+			getLog().fatal("Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
+
+			URL thalamusUrl = new URL(thalamusserver);
+			String thalamushost = SystemPropertyUtils.getSystemPropertValue("thalamus.host");
+			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamushost)) {
+				ThalamusClient.setTHALAMUS_HOST(thalamushost);
+			} else {
+				ThalamusClient.setTHALAMUS_HOST(thalamusUrl.getHost());
+			}
+			getLog().fatal("Thalamus host is " + ThalamusClient.getTHALAMUS_HOST());
+
+			String thalamuscookiepath = SystemPropertyUtils.getSystemPropertValue("thalamus.cookiePath");
+			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamuscookiepath)) {
+				ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamuscookiepath);
+			} else {
+				ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamusUrl.getPath());
+			}
+			getLog().fatal("Thalamus cookie path is " + ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
+
+			String thalamustouchpointCode = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.code");
+			if (thalamustouchpointCode != null) {
+				ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
+			}
+			getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
+
+			String thalamustouchpointToken = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.token");
+			if (thalamustouchpointToken != null) {
+				ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
+			}
+			getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
+			ThalamusCache.configureWith(new Properties());
+			// Initializes the caches
+			try {
+				getLog().fatal("About to initialize cache");
+				getLog().fatal("Initializing brand families cache");
+				ThalamusClientBeanFacade.getBrandFamilies();
+				getLog().fatal("Initializing brands cache");
+				ThalamusClientBeanFacade.getBrands();
+				getLog().fatal("Initializing channels cache");
+				ThalamusClientBeanFacade.getChannels();
+				getLog().fatal("Initializing countries cache");
+				ThalamusClientBeanFacade.getCountries();
+				getLog().fatal("Initializing document types cache");
+				ThalamusClientBeanFacade.getDocumentTypes();
+				getLog().fatal("Initializing person fields cache");
+				ThalamusClientBeanFacade.getPersonFields();
+				getLog().fatal("Initializing facebook login");
+				ThalamusClientBeanFacade.getFacebookLogin();
+				getLog().fatal("Initializing twitter login");
+				ThalamusClientBeanFacade.getTwitterLogin();
+				getLog().fatal("Cache initialized");
+			} catch (Exception e) {
+				getLog().error("Can not initialize caches", e);
+			}
+			Role.addRole(WebsiteUser.INSTANCE);
+
+			String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
+			if (gisserver != null) {
+				LoJackServicesConnector.setGisServer(gisserver);
+			}
+			getLog().fatal("GIS server is " + (gisserver == null ? "null" : gisserver));
+
+			String servicesserver = SystemPropertyUtils.getSystemPropertValue("services.server");
+			if (servicesserver != null) {
+				LoJackServicesConnector.setServicesServer(servicesserver);
+			}
+			getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
+
+			String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
+			if (preventserver != null) {
+				PreventConnector.setPreventServer(preventserver);
+			}
+			getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
+
+			getLog().fatal("Starting middleware jobs updater");
+			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));
+			int jobaborttime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.abort.time"));
+			int jobclientrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.client.refresh.time"));
+			UpdateMiddlewareJobsThread.setJobRefreshTime(jobrefreshtime);
+			UpdateMiddlewareJobsThread.setJobAbortTime(jobaborttime);
+			UpdateMiddlewareJobsThread.setJobClientRefreshTime(jobclientrefreshtime);
+			getLog().fatal("Middleware job refresh time is " + jobrefreshtime + " millis");
+			getLog().fatal("Middleware job abort time is " + jobaborttime + " millis");
+			getLog().fatal("Middleware job client refresh time is " + jobclientrefreshtime + " millis");
+
+			UpdateMiddlewareJobsThread updateMiddlewareJobsThread = new UpdateMiddlewareJobsThread();
+			UpdateMiddlewareJobsThread.setUpdateMiddlewareJobsThread(updateMiddlewareJobsThread);
+			updateMiddlewareJobsThread.start();
+			getLog().fatal("Middleware jobs updater started");
 		} catch (Exception e) {
-			getLog().error("Can not initialize caches", e);
+			e.printStackTrace(System.out);
+			getLog().error(e.getMessage(), e);
+			throw new RuntimeException(e);
 		}
-		Role.addRole(WebsiteUser.INSTANCE);
-
-		String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
-		if (gisserver != null) {
-			LoJackServicesConnector.setGisServer(gisserver);
-		}
-		getLog().fatal("GIS server is " + (gisserver == null ? "null" : gisserver));
-
-		String servicesserver = SystemPropertyUtils.getSystemPropertValue("services.server");
-		if (servicesserver != null) {
-			LoJackServicesConnector.setServicesServer(servicesserver);
-		}
-		getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
-
-		String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
-		if (preventserver != null) {
-			PreventConnector.setPreventServer(preventserver);
-		}
-		getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
-
-		getLog().fatal("Starting middleware jobs updater");
-		UpdateMiddlewareJobsThread updateMiddlewareJobsThread = new UpdateMiddlewareJobsThread();
-		UpdateMiddlewareJobsThread.setUpdateMiddlewareJobsThread(updateMiddlewareJobsThread);
-		updateMiddlewareJobsThread.start();
-		getLog().fatal("Middleware jobs updater started");
 
 	}
 

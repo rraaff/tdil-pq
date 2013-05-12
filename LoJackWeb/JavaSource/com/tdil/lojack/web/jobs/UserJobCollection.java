@@ -3,11 +3,13 @@ package com.tdil.lojack.web.jobs;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.gis.model.AsyncJobConstants;
 import com.tdil.lojack.gis.model.AsyncJobConstants.AsyncJobStatus;
 import com.tdil.lojack.gis.model.JobStatus;
@@ -79,17 +81,19 @@ public class UserJobCollection implements Serializable {
 		this.jobs.add(job);
 	}
 
-	public void updateStatus(Collection<JobStatus> result) {
-		 // TODO post ejecucion, marcar los timeout...
+	public synchronized void updateStatus(Collection<JobStatus> result) {
 		for (JobStatus jobStatus : result) {
 			updateStatus(jobStatus);
 		}
+	}
 
+	private void remove(Collection<AsyncJob> finished) {
+		this.jobs.removeAll(finished);
 	}
 
 	private void updateStatus(JobStatus jobStatus) {
 		for (AsyncJob asyncJob : jobs) {
-			if (asyncJob.getIdjob().equals(jobStatus)) {
+			if (asyncJob.getIdjob().equals(jobStatus.getJobId())) {
 				asyncJob.setStatus(AsyncJobConstants.getStatusId(jobStatus.getJobStatus()));
 				return;
 			}
@@ -100,17 +104,44 @@ public class UserJobCollection implements Serializable {
 		return userId;
 	}
 
-	public AsyncJob getPendingJob(int idEntidad, int idLuz) {
+	public synchronized List<AsyncJob> getAndRemoveFinishedJobs() {
+		List<AsyncJob> finished = new ArrayList<AsyncJob>();
 		for (AsyncJob asyncJob : getJobs()) {
-			if (asyncJob.getIdentidad().equals(idEntidad)) {
-				if (asyncJob.getIdluz().equals(idLuz)) {
-					if (isInProgress(asyncJob)) {
-						return asyncJob;
+			if (!isInProgress(asyncJob) || isAssumedDead(asyncJob)) {
+				finished.add(asyncJob);
+			}
+		}
+		remove(finished);
+		return finished;
+	}
+
+	private boolean isAssumedDead(AsyncJob asyncJob) {
+		Calendar now = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
+		end.setTime(asyncJob.getPostdate());
+		end.add(Calendar.MILLISECOND, UpdateMiddlewareJobsThread.getJobAbortTime());
+		return end.before(now);
+	}
+
+	public synchronized AsyncJob getPendingJob(int idEntidad, int idLuz) {
+		AsyncJob result = null;
+		List<AsyncJob> deadJobs = new ArrayList<AsyncJob>();
+		for (AsyncJob asyncJob : getJobs()) {
+			if (isAssumedDead(asyncJob)) {
+				deadJobs.add(asyncJob);
+			} else {
+				if (result == null) {
+					if (asyncJob.getIdentidad().equals(idEntidad)) {
+						if (asyncJob.getIdluz().equals(idLuz)) {
+							if (isInProgress(asyncJob)) {
+								result = asyncJob;
+							}
+						}
 					}
 				}
 			}
 		}
-		return null;
+		return result;
 	}
 
 

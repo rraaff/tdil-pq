@@ -1,17 +1,19 @@
+Ver que el log se recargue, configure adWatch?
+
+Login con sleep...
+
+Mandar la cookie extra
+log paginado
+
 Captura de tiempos, sumarizacion por sistema externo
 
 prevent
 home
 log paginado
 
-if else logueado no logueado acceso o no acceso en la rueda, link o layer, index y home
-
 semana que viene
 liquidarlo parkings
-
 Layer de procesando
-camaras
-
 
 General
 Agregar roles para HOME y PREVENT, que se manejen en las acciones struts
@@ -82,13 +84,7 @@ No pedir el credential, depende de cambio en thalamus
 Resto de home
 Depende de MW
 
-Servicios asincronicos
-Modelar este funcionamiento
-Depende de cerrar interfaces con MW
-
 Camara
-Usar nueva nomenclatura de tipos
-Manejar multiples camaras?
 Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
 Que muestre el timestamp de la ultima actualizacion
 ancho y alto de camara
@@ -114,7 +110,5 @@ pasar servlets,actions, etc de energy a lojack
 Esto tiene que ver con los ultimos cambios de fb y twitter
 
 Armar el war y deployarlo en JBoss
-
-Mostrar el error de login en el layer de login, sin cerrarlo
 
 Traerme el resource bundle de display tag

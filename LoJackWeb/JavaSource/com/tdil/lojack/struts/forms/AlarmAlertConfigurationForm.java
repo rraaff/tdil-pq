@@ -19,16 +19,16 @@ public class AlarmAlertConfigurationForm extends ExternalServiceForm {
 	private String alarmId;
 	private boolean activateDeactivate;
 	private boolean alarmActivation;
-	
-		
+
+
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
 	}
-	
+
 	public void reset() {
 	}
-	
+
 	@Override
 	public boolean save() throws SQLException, ValidationException {
 		AlarmAlertConfiguration configuration = new AlarmAlertConfiguration();

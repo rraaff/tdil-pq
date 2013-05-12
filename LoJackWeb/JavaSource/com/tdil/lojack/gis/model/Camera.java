@@ -10,7 +10,7 @@ public class Camera implements Serializable {
 	private String password;
 	private String url;
 	private String model;
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -35,5 +35,5 @@ public class Camera implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
+
 }

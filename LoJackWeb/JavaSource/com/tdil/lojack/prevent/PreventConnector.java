@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.model.LoginResponse;
-import com.tdil.lojack.prevent.model.PhoneNumbers;
 import com.tdil.lojack.prevent.model.SecureZone;
 import com.tdil.lojack.prevent.model.SpeedLimit;
 import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
@@ -25,7 +24,6 @@ import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
-import com.tdil.utils.XMLUtils;
 
 public class PreventConnector {
 
@@ -152,6 +150,7 @@ public class PreventConnector {
 	}
 
 	private static XMLResponse executeGet(String server, String service, URLParams replacements) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		long start = System.currentTimeMillis();
 		String url = service;
 		for (Map.Entry<String, String> entries : replacements.getParams().entrySet()) {
 			url = url.replace(entries.getKey(), entries.getValue());
@@ -178,10 +177,16 @@ public class PreventConnector {
 			throw new CommunicationException(e);
 		} catch (IOException e) {
 			throw new CommunicationException(e);
+		} finally {
+			if (LOG.isDebugEnabled()) {
+				long end = System.currentTimeMillis();
+				LOG.debug("Execute: " + url + " took " + (end - start) + " millis");
+			}
 		}
 	}
 
 	private static XMLResponse executePost(String server, String service, Object param, URLParams urlParams) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		long start = System.currentTimeMillis();
 		String xml = null;
 		if (param != null) {
 			if (param instanceof String) {
@@ -222,6 +227,11 @@ public class PreventConnector {
 			throw new CommunicationException(e);
 		} catch (IOException e) {
 			throw new CommunicationException(e);
+		} finally {
+			if (LOG.isDebugEnabled()) {
+				long end = System.currentTimeMillis();
+				LOG.debug("Execute: " + service + " took " + (end - start) + " millis");
+			}
 		}
 	}
 

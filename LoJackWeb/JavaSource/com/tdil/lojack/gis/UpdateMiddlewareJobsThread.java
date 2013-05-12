@@ -8,16 +8,20 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.model.JobStatus;
+import com.tdil.lojack.utils.SystemPropertyUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.struts.TransactionalActionWithResult;
 
 public class UpdateMiddlewareJobsThread extends Thread {
+
+	private static int JobRefreshTime = 1000;
+	private static int JobAbortTime = 10000;
+	private static int JobClientRefreshTime = 1000;
 
 	private List<UserJobCollection> jobsToUpdate = new Vector<UserJobCollection>();
 
@@ -60,7 +64,7 @@ public class UpdateMiddlewareJobsThread extends Thread {
 			if (getLog().isDebugEnabled()) {
 				getLog().debug("Updating jobs");
 			}
-			long waitMillis = 1000;
+			long waitMillis = getJobClientRefreshTime();
 			List<UserJobCollection> toIterate = new ArrayList<UserJobCollection>();
 			toIterate.addAll(jobsToUpdate);
 			for (UserJobCollection userJobCollection : toIterate) {
@@ -113,5 +117,29 @@ public class UpdateMiddlewareJobsThread extends Thread {
 
 	public static void setUpdateMiddlewareJobsThread(UpdateMiddlewareJobsThread updateMiddlewareJobsThread) {
 		UpdateMiddlewareJobsThread.updateMiddlewareJobsThread = updateMiddlewareJobsThread;
+	}
+
+	public static int getJobRefreshTime() {
+		return JobRefreshTime;
+	}
+
+	public static void setJobRefreshTime(int jobRefreshTime) {
+		JobRefreshTime = jobRefreshTime;
+	}
+
+	public static int getJobAbortTime() {
+		return JobAbortTime;
+	}
+
+	public static void setJobAbortTime(int jobAbortTime) {
+		JobAbortTime = jobAbortTime;
+	}
+
+	public static int getJobClientRefreshTime() {
+		return JobClientRefreshTime;
+	}
+
+	public static void setJobClientRefreshTime(int jobClientRefreshTime) {
+		JobClientRefreshTime = jobClientRefreshTime;
 	}
 }

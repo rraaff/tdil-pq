@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AsyncJobResponse;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.actions.AjaxAction;
@@ -30,12 +31,18 @@ public class DeactivateAlarmAjaxAction extends AjaxAction {
 		if (!validatePasswordResultBean.isOk()) { // validar con thalamus
 			result.put("result", "ERR_PASS");
 		} else {
-			AsyncJobResponse jobResponse = LoJackServicesConnector.deactivateAlarm(sessionUser, idEntidad);
-			if(jobResponse.getJobId() != 0) { // TODO ver si necesito manejar porque no lo hizo
-				result.put("result", "OK");
-				result.put("jobId", jobResponse.getJobId());
+			Alarm alarm = new Alarm();
+			alarm.setIdEntidad(idEntidad);
+			if (sessionUser.hasJobInProgress(alarm)) {
+				result.put("result", "HAS_JOB");
 			} else {
-				result.put("result", "ERR");
+				AsyncJobResponse jobResponse = LoJackServicesConnector.deactivateAlarm(sessionUser, idEntidad);
+				if(jobResponse.getJobId() != 0) { // TODO ver si necesito manejar porque no lo hizo
+					result.put("result", "OK");
+					result.put("jobId", jobResponse.getJobId());
+				} else {
+					result.put("result", "ERR");
+				}
 			}
 		}
 		writeJsonResponse(result, response);
