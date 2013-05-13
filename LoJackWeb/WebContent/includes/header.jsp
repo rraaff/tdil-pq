@@ -1,4 +1,4 @@
-﻿<header>
+﻿<header class="menuInternas">
 	<div class="userLoggedThalamusMenu">
 		<ul class="correctNav">
 			<li>Usuario: <span class="userName"><%=websiteUser.getName()%></span></li>

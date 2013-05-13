@@ -18,7 +18,8 @@
 }
 .loginLayerStyles {}
 .loginLayerContent,
-.registerLayerContent {
+.registerLayerContent,
+.legalLayerContent {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -26,7 +27,6 @@
 	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 	background: #fff;
 	width: 334px;
-	height: 303px;
 	margin: 120px auto;
 	padding: 0 73px 0 73px;
 }
@@ -35,13 +35,34 @@
 	height: 560px;
 	margin: 30px auto;
 }
+.legalLayerContent {
+	height: 450px;
+	margin: 20px auto;
+	padding: 30px 20px 30px 30px;
+}
+
 #loginLayer h3,
-#registerLayer h3 {
+#registerLayer h3,
+#parkingsNotLoggedLayer h3,
+#forgotPasswordLayer h3,
+#forgotPasswordUserNotFoundLayer h3,
+#forgotPasswordErrorLayer h3,
+#legalesLayer h3 {
 	color: #ee5222;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-weight: bold;
 	font-size: 20px;
 	line-height: 25px;
+/*	//-webkit-text-stroke-width: .05px;
+	//-webkit-text-stroke-color: white;
+	-webkit-font-smoothing:antialiased;*/
+}
+#legalesLayer h2 {
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 32px;
+	line-height: 35px;
 /*	//-webkit-text-stroke-width: .05px;
 	//-webkit-text-stroke-color: white;
 	-webkit-font-smoothing:antialiased;*/
@@ -78,7 +99,7 @@ fieldset select {
 	z-index: 9998;
 	position: relative;
 }
-/* imputs */
+/* inputs */
 #loginLayer input:not([type]),
 #loginLayer input[type="color"],
 #loginLayer input[type="email"],
@@ -96,12 +117,35 @@ fieldset select {
 	text-transform: uppercase;
 
 	width: 268px;
+	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
 	float: left;
 }
 #loginLayer label {
 	width: 50px;
+}
+#forgotPasswordLayer input:not([type]),
+#forgotPasswordLayer input[type="color"],
+#forgotPasswordLayer input[type="email"],
+#forgotPasswordLayer input[type="number"],
+#forgotPasswordLayer input[type="password"],
+#forgotPasswordLayer input[type="tel"],
+#forgotPasswordLayer input[type="url"],
+#forgotPasswordLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 280px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+	float: left;
 }
 #registerLayer input:not([type]),
 #registerLayer input[type="color"],
@@ -120,11 +164,13 @@ fieldset select {
 	text-transform: uppercase;
 
 	width: 300px;
+	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
 }
 #loginLayer button,
-#registerLayer button {
+#registerLayer button,
+button.buttonLink {
 	background: transparent;
 	background-color: #fff;
 
@@ -153,7 +199,22 @@ fieldset select {
 
 	cursor: pointer;
 }
+.indexButtonBase {
+	border: none;
+	color: #fff;
+	background: url(../images/skin_lj_rl/buttons/button_base.png);
+	background-repeat: no-repeat;
+	
+	text-transform: uppercase;
 
+	width: 120px;
+	height: 35px;
+
+	margin-top: 5px;
+	cursor: pointer;
+
+	float: right;
+}
 
 #video1Layer {}
 #video1Layer h3 {
@@ -172,9 +233,21 @@ fieldset select {
 }
 .defaultLayerStyles {}
 .defaultLayerContent {
-	width: 927px;
-
-	margin: 0 auto;
+	border: 10px solid rgb(0, 0, 0);
+	border: 10px solid rgba(0, 0, 0, .8);
+	-webkit-background-clip: padding-box; /* for Safari */
+	border-radius: 10px;
+	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	background: #fff;
+	width: 334px;
+	margin: 120px auto;
+	padding: 20px 20px 0 20px;
+}
+.loginLayerContent p,
+.defaultLayerContent p {
+	font-size: 13px;
+	line-height: 18px;
+	padding: 30px 0;
 }
 .closeLayerVideoLink {
 	margin-top: 30px;
@@ -190,9 +263,3 @@ fieldset select {
 	height: 431px;
 	margin: 10px 0;
 }
-/*			<div class="col1_300 marginRight_60">
-				<h3>LoJack for<br/>Laptopts</h3>
-				<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
-				<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-			</div>
-*/

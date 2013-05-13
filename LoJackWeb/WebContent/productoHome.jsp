@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
+<!-- meta charset="utf-8"/-->
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +21,7 @@
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="js/bootstrap.min.js"></script>
+
 <%@ include file="includes/headLogged.jsp" %>
 
 
@@ -32,9 +33,9 @@
 </head>
 
 <body>
+
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
-
 
 <section id="content">
 	<div class="pageWrapper">
@@ -53,5 +54,6 @@
 </section>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
+
 </body>
 </html>

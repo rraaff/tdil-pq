@@ -1,1 +1,0 @@
-			<div id="nav" align="center"><span class="remarcado">Hi <%= websiteUser.getName() %></span>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="./goToUpdatePerson.do" title="Edit my profile">Edit my profile</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="javascript:verLegales();" id="legales" title="Legal">Legal</a>&nbsp;&nbsp;.&nbsp;&nbsp;<a href="logout.do">Logout</a></div>

@@ -3,14 +3,16 @@ body {
 }
 #contentSlider {
 	color: #FFF;
-	background: #0005FF;
+	/*background: #0005FF;*/
 	width: 100%;
 	height: 842px;
 	padding: 0px;
 	margin: 0px;
 	text-align: center;
-	display: inline-block;
+	/*display: inline-block;*/
 	overflow: hidden;
+	top: -10px;
+	position: fixed;
 }
 #contentSlider a {
 	text-decoration: none;

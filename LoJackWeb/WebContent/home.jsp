@@ -120,8 +120,10 @@ $(function() {
 header {
 	width: 100%;
 	height: 63px;
-	position: absolute;
+	position: fixed;
 	z-index: 5;
+	top: 0px;
+
 }
 #floatyMenu {
 	background: url(images/skin_lj_rl/backs/topLayer.png);
@@ -226,5 +228,7 @@ header {
 	</div>
 </section>
 
+<!-- Layer legales -->
+<%@ include file="includes/legalesLayer.jsp" %>
 </body>
 </html>

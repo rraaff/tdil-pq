@@ -1,7 +1,7 @@
 ﻿<section id="productsMenu">
 	<div class="userLoggedThalamusMenu">
 		<ul class="correctNav">
-			<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"></li>
+			<li class="logo" title="Lo-Jack, Lo tuyo es tuyo"><a href="home.jsp" title="Volver al inicio"></a></li>
 			<li class="toRight"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA">Parking</a></li>
 			<% if (websiteUser.isPetUser()) { %>
 				<li class="toRight"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
