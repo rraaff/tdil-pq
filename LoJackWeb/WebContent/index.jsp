@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
+<!--  meta charset="utf-8"/ -->
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -332,8 +332,8 @@ function postResetPassword(data) {
 					<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"><span>Ingres√° con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"><span>Ingres√° con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"><span>Ingres· con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"><span>Ingres· con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -343,7 +343,7 @@ function postResetPassword(data) {
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="socialSingleSignOn">
-	<div><span class="textInside">Ingres√° con tus cuentas</span></div>
+	<div><span class="textInside">Ingres· con tus cuentas</span></div>
 	<div>
 		<ul>
 			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"></a></li>
