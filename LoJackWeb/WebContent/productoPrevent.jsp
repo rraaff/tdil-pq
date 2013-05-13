@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
+<!-- meta charset="utf-8"/ -->
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@
 		</div>
 		<div class="col1_300 marginRight_60">
 			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
+			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos. Engancháte ya con esta prubaaaaaáéññññññ</p>
 			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
 		</div>
 		<div class="col_social">

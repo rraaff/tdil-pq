@@ -346,15 +346,15 @@ function postResetPassword(data) {
 	<div><span class="textInside">Ingresá con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="IngresÃ¡ con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
 
 <section id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados polÃ­tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcciÃ³n general de defensa y protecciÃ³n al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
 
@@ -363,7 +363,7 @@ function postResetPassword(data) {
 		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
-			<div class="myRow">Los campos marcados con * son requeridos para la registraciÃ³n</div>
+			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
 			<div style="width:100%; height:430px; overflow: auto;">
 				<html:form method="POST" action="/register">
 					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
@@ -429,7 +429,7 @@ function postResetPassword(data) {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>CÃ³digo de Ã¡rea</label>
+							<label>Código de área</label>
 							<html:text name="RegisterForm" property="phoneAreaCode" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
 							<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
@@ -437,7 +437,7 @@ function postResetPassword(data) {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>TelÃ©fono celular</label>
+							<label>Teléfono celular</label>
 							<html:text name="RegisterForm" property="phoneNumber" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
 							<div class="errorField" style="display: none;" id="p.profile.phone.number">
@@ -445,7 +445,7 @@ function postResetPassword(data) {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>PaÃ­s</label>
+							<label>País</label>
 							<span><%=registerForm.getCountrySelected()%></span>
 						</fieldset>
 						<fieldset>
@@ -500,7 +500,7 @@ function postResetPassword(data) {
 						<% } %>
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
 							<fieldset>
-								<label>CÃ³digo postal</label>
+								<label>Código postal</label>
 								<html:text name="RegisterForm" property="postalCode" />
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
 								<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
@@ -549,7 +549,7 @@ function postResetPassword(data) {
 					<fieldset>
 						<input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
 						<span>Recordarme</span>
-						<span style="float: right;"><a href="" title="Recuperar tu clave">(olvidÃ© mi clave)</a></span>
+						<span style="float: right;"><a href="" title="Recuperar tu clave">(olvidé mi clave)</a></span>
 					</fieldset>
 					<fieldset>
 						<input type="submit" id="submitlogin" value=" " class="indexLogin">
@@ -564,7 +564,7 @@ function postResetPassword(data) {
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
-				<div class="myLabel width100per" align="center">Username and/or password doesn't match.</div>
+				<div class="myLabel width100per" align="center">El usuario y/o la clave no coinciden.</div>
 			</div>
 			<div class="myRow">
 				<div class="myLabel width100per" align="center"><input type="button" id="closeloginInvalidLayer" value="Close"></div>
@@ -579,7 +579,7 @@ function postResetPassword(data) {
 			<html:form method="POST" action="/requestResetPassword">
 				<div class="myRow">
 					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">User/E-Mail</div>
+					<div class="myLabel width100">DNI</div>
 					<div class="myLabel width150"><html:text name="RequestResetPasswordForm" property="username" styleClass="normalField width120"/></div>
 				</div>
 				<div class="myRow">
@@ -594,7 +594,7 @@ function postResetPassword(data) {
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
 			<div class="myRow">
-				<div class="myLabel width100per" align="center">We've sent you an E-Mail with a link to reset your password.<br />If you don't receive it in a few hour please check your Junk Mail Filters or retry.</div>
+				<div class="myLabel width100per" align="center">Te hemos enviado una clave temporaria. <br />If you don't receive it in a few hour please check your Junk Mail Filters or retry.</div>
 			</div>
 			<div class="myRow">
 				<div class="myLabel width100per" align="center"><input type="button" id="closeforgotPasswordEmailSentLayer" value="Back"></div>
