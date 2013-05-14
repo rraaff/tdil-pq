@@ -103,14 +103,10 @@ public class ChangePasswordForm extends AbstractForm {
 	}
 	private JSONObject getChangePasswordJSON() {
 		JSONObject result = new JSONObject();
-		result.put("principal", this.getPrincipal());
 		result.put("oldpassword", this.getOldPassword());
 		result.put("newPassword", this.getNewPassword());
 		result.put("confirmNewPassword", this.getConfirmNewPassword());
 		return result;		
-	}
-	private String getPrincipal() {
-		return "1:25270161";
 	}
 	public WebsiteUser getUser() {
 		return user;
