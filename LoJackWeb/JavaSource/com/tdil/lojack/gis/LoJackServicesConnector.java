@@ -45,7 +45,7 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 public class LoJackServicesConnector {
 
 	private static final String GUID = "guid";
-	private static final String EXTRA_GUID = "awselb";
+	private static final String EXTRA_GUID = "AWSELB";
 	
 	private static final String LOJACK_USER_ID = "lojackUserId";
 	private static final String TZ_OFFSET = "timezoneOffset";
