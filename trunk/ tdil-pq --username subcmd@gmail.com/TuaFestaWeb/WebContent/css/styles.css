@@ -264,15 +264,6 @@ body {
 	line-height:22px;
 	color:#596066;
 }
-#buttonContactForm {
-	background-image: url(../images/skin_basic/buttons/contactFormSubmit_off.png);
-	width: 169px;
-	height: 65px;
-	margin:0 auto;
-}
-#buttonContactForm:hover {
-	background-image: url(../images/skin_basic/buttons/contactFormSubmit_on.png);
-}
 /* FORMS */
 #formSection {
 	background-image: url(../images/skin_basic/backgrounds/formBackground.gif);
