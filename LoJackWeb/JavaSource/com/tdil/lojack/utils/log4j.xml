@@ -40,12 +40,27 @@
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
 	
-	<category name="com.tdil.lojack.gis.UpdateMiddlewareJobsThread" additivity="false">
-		<priority value="debug" />
+	<category name="com.tdil.thalamus.client.core.ThalamusClient" additivity="false">
+		<priority value="error" />
 		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="FileAppenderAsync" />
 		<appender-ref ref="LoggerMonitorAppender" />
 	</category>
+	
+	<category name="com.tdil.lojack.prevent.PreventConnector" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="ConsoleAppender" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
+	
+	<category name="com.tdil.lojack.gis.LoJackServicesConnector" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="ConsoleAppender" />
+		<appender-ref ref="FileAppenderAsync" />
+		<appender-ref ref="LoggerMonitorAppender" />
+	</category>
+	
 
 	<category name="com.ibatis" additivity="false">
 		<priority value="error" />

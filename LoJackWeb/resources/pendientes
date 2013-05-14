@@ -1,11 +1,8 @@
-Ver que el log se recargue, configure adWatch?
+Manejar los permisos de los roles en los servlets
 
-Login con sleep...
+Mandar la cookie extra a medias, ver bien los dos nombres
 
-Mandar la cookie extra
 log paginado
-
-Captura de tiempos, sumarizacion por sistema externo
 
 prevent
 home
@@ -14,10 +11,6 @@ log paginado
 semana que viene
 liquidarlo parkings
 Layer de procesando
-
-General
-Agregar roles para HOME y PREVENT, que se manejen en las acciones struts
-Manejar permisos por estos accesos en cada pagina
 
 Prevent
 manejar un metodo que vuelva a pedir los vehiculos si hay mas

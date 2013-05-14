@@ -24,7 +24,7 @@ public class CameraConfigServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if (LoJackWebUtils.isUserLogged(req)) {
+		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
 			StringBuilder sb = new StringBuilder();
 			sb.append(cameraForm.getUsername()).append(",");

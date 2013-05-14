@@ -35,7 +35,7 @@ public class GetAlarmJobSatesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		configureResponse(resp);
-		if (LoJackWebUtils.isUserLogged(req)) {
+		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			WebsiteUser websiteUser = (WebsiteUser)req.getSession(false).getAttribute("user");
 			List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 			// busco los jobs que tenga en la session en estado final y los retorno,

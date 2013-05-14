@@ -45,6 +45,8 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 public class LoJackServicesConnector {
 
 	private static final String GUID = "guid";
+	private static final String EXTRA_GUID = "awselb";
+	
 	private static final String LOJACK_USER_ID = "lojackUserId";
 	private static final String TZ_OFFSET = "timezoneOffset";
 	private static final String TZ_NAME = "timezoneName";
@@ -108,6 +110,7 @@ public class LoJackServicesConnector {
 	public static Collection<Alarm> getAlarms(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
 			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
@@ -120,6 +123,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse sendPanicSignal(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
@@ -137,6 +141,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse activateAlarm(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
@@ -153,6 +158,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse deactivateAlarm(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(LOJACK_USER_ID, user.getLojackUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad));
@@ -171,6 +177,7 @@ public class LoJackServicesConnector {
 	public static Collection<ChangeLog> getAlarmLog(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
@@ -221,6 +228,7 @@ public class LoJackServicesConnector {
 	public static Collection<AlarmAgenda> getAlarmAgendas(WebsiteUser user, int idEntidad) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_AGENDAS);
@@ -235,6 +243,7 @@ public class LoJackServicesConnector {
 	public static boolean deleteAlarmAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, DELETE_ALARM_AGENDA);
@@ -248,6 +257,7 @@ public class LoJackServicesConnector {
 	public static boolean activateAlarmAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, ACTIVATE_ALARM_AGENDA);
@@ -261,6 +271,7 @@ public class LoJackServicesConnector {
 	public static boolean addAlarmAgenda(WebsiteUser user, int idEntidad, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_ALARM_AGENDA);
@@ -274,6 +285,7 @@ public class LoJackServicesConnector {
 	public static boolean saveAlarmAgenda(WebsiteUser user, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -286,6 +298,7 @@ public class LoJackServicesConnector {
 	public static Collection<Camera> getCameras(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_CAMERA);
 			Collection<Camera> resultObj = (Collection<Camera>)JSONArray.toCollection((JSONArray)response.getResult(), Camera.class);
@@ -299,6 +312,7 @@ public class LoJackServicesConnector {
 	public static Collection<Light> getLights(WebsiteUser user) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHTS);
 			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
@@ -312,6 +326,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse activateLightRandomSequence(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -328,6 +343,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse deactivateLightRandomSequence(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -344,6 +360,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse activateLight(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -359,6 +376,7 @@ public class LoJackServicesConnector {
 	public static AsyncJobResponse deactivateLight(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -375,6 +393,7 @@ public class LoJackServicesConnector {
 	public static Collection<ChangeLog> getLightLog(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -428,6 +447,7 @@ public class LoJackServicesConnector {
 	public static Collection<LightAgenda> getLightAgendas(WebsiteUser user, int idEntidad, int idLuz) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
@@ -443,6 +463,7 @@ public class LoJackServicesConnector {
 	public static boolean deleteLightAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, DELETE_LIGHT_AGENDA);
@@ -456,6 +477,7 @@ public class LoJackServicesConnector {
 	public static boolean activateLightAgenda(WebsiteUser user, String agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(AGENDA_ID, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, ACTIVATE_LIGHT_AGENDA);
@@ -469,6 +491,7 @@ public class LoJackServicesConnector {
 	public static boolean addLightAgenda(WebsiteUser user, int idLuz, LightAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeService(jsonObject, ADD_LIGHT_AGENDA);
@@ -482,6 +505,7 @@ public class LoJackServicesConnector {
 	public static boolean saveLightAgenda(WebsiteUser user, LightAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		try {
 			JSONResponse response = executeService(jsonObject, SAVE_LIGHT_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -494,6 +518,7 @@ public class LoJackServicesConnector {
 	public static Collection<JobStatus> getHistoryJobStatus(WebsiteUser user, int jobId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, user.getGuid());
+		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(JOB_ID, jobId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, get_History_Job_Status);
@@ -582,6 +607,7 @@ public class LoJackServicesConnector {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}
 			if (statusCode != HttpStatus.SC_OK) {
+				LOG.error("Remote result for " + (server + service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
 			JSON result = extractJSONObjectResponse(response);

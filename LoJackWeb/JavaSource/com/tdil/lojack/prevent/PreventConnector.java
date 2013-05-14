@@ -169,6 +169,7 @@ public class PreventConnector {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}
 			if (statusCode != HttpStatus.SC_OK) {
+				LOG.error("Remote result for " + (service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
 			Object result = PreventXMLUtils.fromXML(response);
@@ -219,6 +220,7 @@ public class PreventConnector {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}
 			if (statusCode != HttpStatus.SC_OK) {
+				LOG.error("Remote result for " + (service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
 			Object result = PreventXMLUtils.fromXML(response);

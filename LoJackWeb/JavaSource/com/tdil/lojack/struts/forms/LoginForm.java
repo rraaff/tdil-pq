@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.struts.ValidationError;
@@ -64,6 +65,13 @@ public class LoginForm extends ActionForm {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
 		}
 		try {
+			if (LoJackConfig.getFRONT_LOGIN_DELAY() != 0) {
+				try {
+					Thread.sleep(LoJackConfig.getFRONT_LOGIN_DELAY());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			return login(this.getUsername(), this.getPassword(), this.getTimezoneOffset(), this.getTimezoneName());
 		} catch (HttpStatusException e) {
 			if (e.getStatus() == HttpStatus.SC_UNAUTHORIZED) {

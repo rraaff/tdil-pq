@@ -23,6 +23,8 @@ import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.model.SystemProperty;
 import com.tdil.lojack.model.SystemPropertyExample;
 import com.tdil.lojack.prevent.PreventConnector;
+import com.tdil.lojack.roles.HomeUser;
+import com.tdil.lojack.roles.PreventUser;
 import com.tdil.lojack.roles.WebsiteUser;
 import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ThalamusClient;
@@ -35,6 +37,8 @@ import com.tdil.utils.SystemPropertyCache;
 public class LoJackConfig extends SystemConfig {
 
 	private static String FRONT_SERVER;
+	
+	private static long FRONT_LOGIN_DELAY;
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -50,6 +54,14 @@ public class LoJackConfig extends SystemConfig {
 				setFRONT_SERVER(frontserver);
 			}
 			getLog().fatal("Front server is " + frontserver);
+
+			long delay = 0;
+			try {
+				delay = Long.parseLong(SystemPropertyUtils.getSystemPropertValue("front.login.deplay"));
+			} catch (Exception e) {
+			}
+			setFRONT_LOGIN_DELAY(delay);
+			getLog().fatal("Front login delay is " + delay);
 
 			String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
 			if (thalamusserver != null) {
@@ -168,6 +180,9 @@ public class LoJackConfig extends SystemConfig {
 
 	@Override
 	protected void initRoles() {
+		Role.addRole(WebsiteUser.INSTANCE);
+		Role.addRole(HomeUser.INSTANCE);
+		Role.addRole(PreventUser.INSTANCE);
 	}
 
 	@Override
@@ -221,6 +236,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setFRONT_SERVER(String fRONT_SERVER) {
 		FRONT_SERVER = fRONT_SERVER;
+	}
+
+	public static long getFRONT_LOGIN_DELAY() {
+		return FRONT_LOGIN_DELAY;
+	}
+
+	public static void setFRONT_LOGIN_DELAY(long fRONT_LOGIN_DELAY) {
+		FRONT_LOGIN_DELAY = fRONT_LOGIN_DELAY;
 	}
 
 }

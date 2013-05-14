@@ -23,7 +23,7 @@ public class MoveCameraServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		if (LoJackWebUtils.isUserLogged(req)) {
+		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			// resp.setContentType(blobLocalData.getMimeType());
 			// TODO enviar el content type.. jpg, segun la camara
 			// TODO params de no cache
