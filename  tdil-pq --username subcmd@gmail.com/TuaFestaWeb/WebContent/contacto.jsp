@@ -81,6 +81,32 @@ function postContact(data) {
 	}
 }
 </script>
+<style>
+input[type=button].buttonContactForm,
+input[type=submit].buttonContactForm {
+	border:none;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	background:none;
+	box-shadow: none; /* FF, Chrome, Safari */
+	background-image: none;
+	background-image: none;
+	-o-box-shadow: none;
+	
+	/*end reset*/
+	background-image: url(images/skin_basic/buttons/contactFormSubmit_off.png);
+	width: 169px;
+	height: 65px;
+	margin:0 auto;
+	cursor:pointer;
+}
+input[type=button].buttonContactForm:hover,
+input[type=submit].buttonContactForm:hover {
+	background-image: url(images/skin_basic/buttons/contactFormSubmit_on.png);
+	cursor:pointer;
+}
+</style>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -105,22 +131,20 @@ function postContact(data) {
 				<html:form method="POST" action="/contact">
 					<div class="myRow">
 						<div class="myLabel width60">Nombre</div>
-						<div class="myLabel width160"><html:text name="ContactForm" property="name" styleClass="input_form"/></div>
+						<div class="myLabel width400"><html:text name="ContactForm" property="name" styleClass="input_form width400"/></div>
 					</div>
 					<div class="myRow" style="padding-bottom:2px;">
 						<div class="myLabel width60">E-Mail</div>
-						<div class="myLabel width400"><html:text name="ContactForm" property="email" styleClass="input_form"/></div>
+						<div class="myLabel width400"><html:text name="ContactForm" property="email" styleClass="input_form width400"/></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width450"><span class="comment" style="color:#333333;">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</span></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width60">Texto</div>
-						<div class="myLabel width400 height100"><html:textarea name="ContactForm" property="content" styleClass="comment_form" cols="45" rows="5" /></div>
+						<div class="myLabel width400 height100"><html:textarea name="ContactForm" property="content" styleClass="comment_form width400" cols="45" rows="5" /></div>
 					</div>
-					<div class="myRow" style="padding-bottom:2px;">
-						<div id="buttonContactForm"><html:submit property="operation">Enviar</html:submit></div>
-					</div>
+					<div class="myRow" align="center"><html:submit property="operation" styleClass="buttonContactForm">&nbsp;</html:submit></div>
 					</html:form>
 				</div>
 			</div>
