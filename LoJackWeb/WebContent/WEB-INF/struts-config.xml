@@ -106,116 +106,116 @@
   <action path="/searchStates" type="com.tdil.lojack.struts.action.SearchStatesAjaxAction"/>
   
   <!-- Home -->
-  <action path="/activateAlarm" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmAjaxAction"/>
-  <action path="/deactivateAlarm" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmAjaxAction"/>
-  <action path="/sendPanic" scope="request" type="com.tdil.lojack.struts.action.SendPanicAlarmAjaxAction"/>
+  <action path="/activateAlarm" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmAjaxAction"/>
+  <action path="/deactivateAlarm" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmAjaxAction"/>
+  <action path="/sendPanic" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.SendPanicAlarmAjaxAction"/>
   
-  <action name="AlarmsForm" parameter="WebsiteUser" path="/goToHomeAlarms" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
+  <action name="AlarmsForm" parameter="HomeUser" path="/goToHomeAlarms" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
   	<forward name="continue" path="/homeAlarmas.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/goToHomeAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
+  <action name="AlarmAgendaForm" parameter="HomeUser" path="/goToHomeAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/editAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
+  <action name="AlarmAgendaForm" parameter="HomeUser" path="/editAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/saveAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveAlarmAgendaAction">
+  <action name="AlarmAgendaForm" parameter="HomeUser" path="/saveAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/resetAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  <action name="AlarmAgendaForm" parameter="HomeUser" path="/resetAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaForm" parameter="WebsiteUser" path="/toggleActivationAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
+  <action name="AlarmAgendaForm" parameter="HomeUser" path="/toggleActivationAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
   
-  <action path="/activateAlarmEmailNotification" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction"/>
-  <action path="/deactivateAlarmEmailNotification" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction"/>
+  <action path="/activateAlarmEmailNotification" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction"/>
+  <action path="/deactivateAlarmEmailNotification" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction"/>
   
-  <action path="/activateLightEmailNotification" scope="request" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction"/>
-  <action path="/deactivateLightEmailNotification" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction"/>
+  <action path="/activateLightEmailNotification" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction"/>
+  <action path="/deactivateLightEmailNotification" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction"/>
   
-  <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAlertConfigurationAction">
+  <action name="AlarmAlertConfigurationForm" parameter="HomeUser" path="/goToHomeAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAlertConfigurationAction">
   	<forward name="continue" path="/homeConfiguracionAlertasAlarma.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAlertConfigurationForm" parameter="WebsiteUser" path="/saveAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
+  <action name="AlarmAlertConfigurationForm" parameter="HomeUser" path="/saveAlarmAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
   </action>
   
-  <action path="/renameAlarm" scope="request" type="com.tdil.lojack.struts.action.RenameAlarmAjaxAction"/>
-  <action path="/renameLight" scope="request" type="com.tdil.lojack.struts.action.RenameLightAjaxAction"/>
+  <action path="/renameAlarm" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.RenameAlarmAjaxAction"/>
+  <action path="/renameLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.RenameLightAjaxAction"/>
   
-  <action path="/turnOnLight" scope="request" type="com.tdil.lojack.struts.action.TunOnLightAjaxAction"/>
-  <action path="/turnOffLight" scope="request" type="com.tdil.lojack.struts.action.TunOffLightAjaxAction"/>
+  <action path="/turnOnLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.TunOnLightAjaxAction"/>
+  <action path="/turnOffLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.TunOffLightAjaxAction"/>
   
-  <action path="/activateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceAjaxAction"/>
-  <action path="/deactivateLightRandomSequence" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceAjaxAction"/>
+  <action path="/activateLightRandomSequence" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceAjaxAction"/>
+  <action path="/deactivateLightRandomSequence" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceAjaxAction"/>
   
-  <action name="LightsForm" parameter="WebsiteUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
+  <action name="LightsForm" parameter="HomeUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaForm" parameter="WebsiteUser" path="/goToHomeLightAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
+  <action name="LightAgendaForm" parameter="HomeUser" path="/goToHomeLightAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaForm" parameter="WebsiteUser" path="/editLightAgenda" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
+  <action name="LightAgendaForm" parameter="HomeUser" path="/editLightAgenda" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaForm" parameter="WebsiteUser" path="/saveLightAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
+  <action name="LightAgendaForm" parameter="HomeUser" path="/saveLightAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaForm" parameter="WebsiteUser" path="/resetLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  <action name="LightAgendaForm" parameter="HomeUser" path="/resetLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaForm" parameter="WebsiteUser" path="/toggleActivationLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
+  <action name="LightAgendaForm" parameter="HomeUser" path="/toggleActivationLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
   
-  <action name="LightAlertConfigurationForm" parameter="WebsiteUser" path="/goToHomeLightAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToLightAlertConfigurationAction">
+  <action name="LightAlertConfigurationForm" parameter="HomeUser" path="/goToHomeLightAlertConf" scope="session" type="com.tdil.lojack.struts.action.GoToLightAlertConfigurationAction">
   	<forward name="continue" path="/homeConfiguracionAlertasLuz.jsp" redirect="true"/>
   </action>
-  <action name="LightAlertConfigurationForm" parameter="WebsiteUser" path="/saveLightAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
+  <action name="LightAlertConfigurationForm" parameter="HomeUser" path="/saveLightAlertConf" scope="session" type="com.tdil.lojack.struts.action.ExternalServiceSaveAjaxAction">
   </action>
   
-  <action name="CameraForm" parameter="WebsiteUser" path="/goToHomeCamera" scope="session" type="com.tdil.lojack.struts.action.GoToHomeCameraAction">
+  <action name="CameraForm" parameter="HomeUser" path="/goToHomeCamera" scope="session" type="com.tdil.lojack.struts.action.GoToHomeCameraAction">
   	<forward name="continue" path="/homeCamaras.jsp" redirect="true"/>
   </action>
   
-  <action name="CameraForm" parameter="WebsiteUser" path="/selectCamera" scope="session" type="com.tdil.lojack.struts.action.SelectCameraAction">
+  <action name="CameraForm" parameter="HomeUser" path="/selectCamera" scope="session" type="com.tdil.lojack.struts.action.SelectCameraAction">
   	<forward name="continue" path="/homeCamara.jsp" redirect="true"/>
   </action>
   
-  <action name="CameraForm" parameter="WebsiteUser" path="/toggleCameraView" scope="session" type="com.tdil.lojack.struts.action.ToggleCameraViewAction">
+  <action name="CameraForm" parameter="HomeUser" path="/toggleCameraView" scope="session" type="com.tdil.lojack.struts.action.ToggleCameraViewAction">
   	<forward name="continue" path="/homeCamara.jsp" redirect="true"/>
   </action>
 
   <!-- Prevent -->
-  <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
+  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
   </action>
-  <action name="VehiclesSpeedLimitForm" parameter="WebsiteUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveSpeedLimitsAction">
+  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveSpeedLimitsAction">
   	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
   	<forward name="failure" path="/vehiculosVelocidades.jsp"/>
   </action>
-  <action name="VehiclesSecureZoneForm" parameter="WebsiteUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
+  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
   	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>
   </action>
-  <action name="VehiclesSecureZoneForm" parameter="WebsiteUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAction">
+  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAction">
   	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
   	<forward name="failure" path="/vehiculosZonasSeguras.jsp"/>
   </action>
-  <action name="SelectVehiclesForMapForm" parameter="WebsiteUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaMapa.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForMapForm" parameter="WebsiteUser" path="/locateVehicleInMap" scope="session" type="com.tdil.lojack.struts.action.LocateVehicleInMapAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/locateVehicleInMap" scope="session" type="com.tdil.lojack.struts.action.LocateVehicleInMapAction">
   	<forward name="continue" path="/mostrarVehiculoEnMapa.jsp" redirect="true"/>
   </action>
 
-  <action name="SelectVehiclesForPhonesForm" parameter="WebsiteUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaTelefonos.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForPhonesForm" parameter="WebsiteUser" path="/editVehiculePhones" scope="session" type="com.tdil.lojack.struts.action.EditVehiclePhonesAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/editVehiculePhones" scope="session" type="com.tdil.lojack.struts.action.EditVehiclePhonesAction">
   	<forward name="continue" path="/editarTelefonosVehiculo.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForPhonesForm" parameter="WebsiteUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAction">
   	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
   	<forward name="failure" path="/editarTelefonosVehiculo.jsp"/>
   </action>
