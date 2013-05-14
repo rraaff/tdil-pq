@@ -15,9 +15,24 @@
 --><%@ include file="includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %><!--
 --><%@ include file="includes/mustBeHomeUser.jspf" %>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
+<meta charset="utf-8"/>
+<title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
 <%@ include file="includes/headLogged.jsp" %>
+
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
+<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
+<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
+
 <script>
   $(function() {
     $( "#accordion" ).accordion();
@@ -97,95 +112,154 @@
 </script>
 </head>
 <body>
-Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="./logout.do">Salir</a>
-<hr> 
-Producto Home | Producto Prevent | Producto Pet | Producto Otro | Boton de panico
-<hr> 
 
-<% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
-Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%>
-
-<html:form method="POST" action="/saveAlarmAgenda">
-	Descripcion:<html:text name="AlarmAgendaForm" property="description" styleClass="normalField width120"/><br>
-	Desde el dia <html:text name="AlarmAgendaForm" property="from" styleClass="normalField width120"/> hasta el dia <html:text name="AlarmAgendaForm" property="to" styleClass="normalField width120"/><br>
-	
-	Desde las: <html:select name="AlarmAgendaForm" property="activateTimeHour">
-		<% for (String hour : DateUtils.ALL_HOURS) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select> horas y <html:select name="AlarmAgendaForm" property="activateTimeMinute">
-		<% for (String hour : DateUtils.ALL_MINUTES) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select> minutos y <html:select name="AlarmAgendaForm" property="activateTimeSeconds">
-		<% for (String hour : DateUtils.ALL_SECONDS) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select> segundos <br>
-	
-	Hasta las: <html:select name="AlarmAgendaForm" property="deactivateTimeHour">
-		<% for (String hour : DateUtils.ALL_HOURS) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select>horas y <html:select name="AlarmAgendaForm" property="deactivateTimeMinute">
-		<% for (String hour : DateUtils.ALL_MINUTES) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select> minutos y <html:select name="AlarmAgendaForm" property="deactivateTimeSeconds">
-		<% for (String hour : DateUtils.ALL_SECONDS) { %>
-			<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-		<% } %>
-	</html:select> segundos <br><br>
-	
-	<html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias<br>
-	<html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio><br>
-	<html:radio property="type" value="CUSTOM">Personalizado</html:radio><br>
-	
-	Lunes<html:checkbox name="AlarmAgendaForm" property="monday"/> | 
-	Martes<html:checkbox name="AlarmAgendaForm" property="tuesday"/> | 
-	Miercoles<html:checkbox name="AlarmAgendaForm" property="wednesday"/> | 
-	Jueves<html:checkbox name="AlarmAgendaForm" property="thursday"/> | 
-	Viernes<html:checkbox name="AlarmAgendaForm" property="friday"/> | 
-	Sabado<html:checkbox name="AlarmAgendaForm" property="saturday"/> | 
-	Domingo<html:checkbox name="AlarmAgendaForm" property="sunday"/><br>
-	
-	<%@ include file="includes/passwordLayer.jspf" %>
-	
-	<logic:equal name="AlarmAgendaForm" property="edition" value="true">
-		<input type="button" onclick="save()" value="Modificar">
-	</logic:equal>
-	<logic:equal name="AlarmAgendaForm" property="edition" value="false">
-		<input type="button" onclick="save()" value="Agregar">
-	</logic:equal>
-	<input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset">
-</html:form>
-
-<div class="myRow">
-	<%
-	java.util.List source = alarmAgendaForm.getAlarmAgendas();
-	com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
-	request.setAttribute( "alarmAgendas",  paginated);
-	%>
-	<display:table name="alarmAgendas" sort="external" pagesize="10" id="alarmAgendas" requestURI="./homeAlarmaAgenda.jsp">
-		<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable width350" property="description"></display:column>
-		<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable width350" property="from"></display:column>
-		<display:column title="Hasta" sortable="true" sortName="Hasta" headerClass="sortable width350" property="activateTime"></display:column>
-		<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="typeDescription"></display:column>
-		<display:column title="Activar" sortable="true" sortName="Acivar" headerClass="sortable width350" property="activateTime"></display:column>
-		<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable width350" property="deactivateTime"></display:column>
-		<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable width350" property="active"></display:column>
-		<display:column title="Acciones" headerClass="sortable width100">
-			<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
-				<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
-					<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
-						Desactivar
-					<% } else { %>
-						Activar
-					<% } %>
-				</a>
-			</display:column>
-	</display:table>
-	<%=DisplayTagParamHelper.getFields(request)%>
-</div>
+<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/clientMainManu.jsp" %>
+<section id="content">
+	<div class="pageWrapper">
+		<div class="col1_170">
+			<div class="tab"></div>
+			<ul class="tabServices">
+				<li class="tabAlarms active"><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
+				<li class="tabLights"><a href="./goToHomeLights.do">Mis Luces</a></li>
+				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
+			</ul>
+		</div>
+		<div class="col1_794 alarmasBG">
+			<div id="agendaWrapper">
+				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
+					Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
+				<html:form method="POST" action="/saveAlarmAgenda">
+				<form>
+					<fieldset>
+						<label>Nombre</label>
+						<html:text name="AlarmAgendaForm" property="description" styleClass="width390" />
+					</fieldset>
+					<fieldset>
+						<label>Desde</label>
+						<div style="float:left;"><html:text name="AlarmAgendaForm" property="from" /></div>
+						<label>Hasta</label>
+						<div style="float:left;"><html:text name="AlarmAgendaForm" property="to" /></div>
+					</fieldset>
+					<h4>Horarios</h4>
+					<fieldset>
+						<label>Desde</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_HOURS) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>hs y</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_MINUTES) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>min y</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="activateTimeSeconds" styleClass="width80">
+								<% for (String hour : DateUtils.ALL_SECONDS) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>Desde</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_HOURS) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>hs y</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_MINUTES) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>min y</label>
+						<div style="float:left;">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds" styleClass="width80">
+								<% for (String hour : DateUtils.ALL_SECONDS) { %>
+									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+					</fieldset>
+					<h4>Frecuencia</h4>
+					<fieldset style="border-bottom:dotted 1px #f0ece4;">
+						<label style="width:90px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
+						<label style="width:90px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
+						<label style="width:90px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="monday"/></div>
+						<label class="days">Lu</label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="tuesday"/></div>
+						<label class="days">Ma</label> 
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="wednesday"/></div>
+						<label class="days">Mi</label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="thursday"/></div>
+						<label class="days">Ju</label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="friday"/></div>
+						<label class="days">Vi</label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="saturday"/></div>
+						<label class="days">Sa</label>
+						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="sunday"/></div>
+						<label class="days">Do</label>
+					</fieldset>
+					<fieldset>
+						<logic:equal name="AlarmAgendaForm" property="edition" value="true">
+							<input type="button" onclick="save()" value="Modificar" class="indexButtonBase">
+						</logic:equal>
+						<logic:equal name="AlarmAgendaForm" property="edition" value="false">
+							<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
+						</logic:equal>
+						<!--  input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset" class="indexButtonBase"-->
+					</fieldset>
+				</form>
+				</html:form>
+				<form>
+					<fieldset>
+						<%
+						java.util.List source = alarmAgendaForm.getAlarmAgendas();
+						com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+						request.setAttribute( "alarmAgendas",  paginated);
+						%>
+					</fieldset>
+					<fieldset>
+						<display:table name="alarmAgendas" sort="external" pagesize="10" id="alarmAgendas" requestURI="./homeAlarmaAgenda.jsp">
+							<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable" property="description"></display:column>
+							<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable" property="from"></display:column>
+							<display:column title="Hasta" sortable="true" sortName="Hasta" headerClass="sortable" property="activateTime"></display:column>
+							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable" property="typeDescription"></display:column>
+							<display:column title="Activar" sortable="true" sortName="Acivar" headerClass="sortable" property="activateTime"></display:column>
+							<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
+							<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
+							<display:column title="Acciones" headerClass="sortable">
+								<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
+									<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
+										<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
+											Desactivar
+										<% } else { %>
+											Activar
+										<% } %>
+									</a>
+								</display:column>
+						</display:table>
+						<%=DisplayTagParamHelper.getFields(request)%>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<%@ include file="includes/passwordLayer.jspf" %>
 </body>
 </html>

@@ -28,6 +28,7 @@ header ul li.toRight {
 	float: right;
 }
 header ul li a {
+	color: #FFF;
 	padding-left:20px;
 	padding-top:16px;
 	padding-right:20px; 
@@ -43,7 +44,8 @@ header.menuInternas {
 	background: #000;
 }
 header.menuInternas li {
-	
+	width: auto;
+	float: left;
 }
 .userName {
 	color: #f05223;
@@ -59,11 +61,12 @@ header.menuInternas li {
 	background-repeat: repeat-x;
 	background-position: 0px 0px;
 	width: 100%;
-	height: 97px;
+	height: 91px;
 	padding: 0px;
 	margin: 0px;
 	z-index: 2;
 	position: absolute;
+	top:42px;
 }
 #productsMenu .userLoggedThalamusMenu {
 	text-transform: uppercase;
@@ -74,25 +77,19 @@ header.menuInternas li {
 	display: inline-block;
 	overflow: hidden;
 }
-#productsMenu ul li.logo {
-	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
-	background-repeat: no-repeat;
-	background-position: 0px 0px;
-	width: 173px;
-	height: 91px;
-	margin-bottom: 6px;
-	float: left;
-}
 #productsMenu ul li {
-	background: url(../images/skin_lj_rl/backs/productMenu/menu_off.png);
-	background-repeat: repeat-x;
-	background-position: 0px 0px;
 	font-size: 22px;
 	font-weight: bold;
 	line-height: 97px;
 
-	float: right;
+	float: left;
 	list-style: none;
+}
+#productsMenu ul li.toRight {
+	background: url(../images/skin_lj_rl/backs/productMenu/menu_off.png);
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	float:right;
 }
 #productsMenu ul li a {
 	color: #fff;
@@ -113,12 +110,24 @@ header.menuInternas li {
 	color: #FFF;
 	text-decoration: none;
 }
-#productsMenu ul li.optHome a:hover,
-#productsMenu ul li.optHome a:focus,
-#productsMenu ul li.optHome:active {
+#productsMenu ul li.tabHome a:hover,
+#productsMenu ul li.tabHome a:focus,
+#productsMenu ul li.tabHome:active {
 	background: url(../images/skin_lj_rl/backs/productMenu/home.png);
 	background-repeat: no-repeat;
 	background-position: 0px -1px;
+}
+
+#productsMenu ul li a.logo {
+	background-color:transparent;
+	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 173px;
+	height: 91px;
+	margin:0;
+	padding:0;
+	float: left;
 }
 /*content*/
 #content {
@@ -141,13 +150,14 @@ header.menuInternas li {
 #content .col1_170 {
 	width: 170px !important;
 	float: left;
+	overflow: hidden;
 }
 #content .col1_794 {
 	background: #f0ece4;
 	width: 714px;
 	height: 364px;
 	padding: 30px 40px;
-	overflow: hidden;
+	overflow: auto;
 	float: left;
 }
 #content .alarmasBG, #content .lucesBG, #content .camarasBG {
@@ -175,7 +185,8 @@ header.menuInternas li {
 	width: 560px;
 	height: 54px; 
 }
-#cameraTitle h1 {
+#cameraTitle h1,
+#agendaWrapper h1 {
 	color: #761617;
 	font-size: 18px;
 	font-weight: bold;
@@ -185,6 +196,43 @@ header.menuInternas li {
 	margin: 0;
 	padding: 0 0 0 40px;
 }
+#agendaWrapper h1 {
+	padding: 0;
+}
+#agendaWrapper h4 {
+	color:#f05224;
+	font-weight: lighter;
+}
+#agendaWrapper label {
+	width: 40px;
+}
+#agendaWrapper label.days {
+	width: 10px;
+}
+#agendaWrapper input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	/*width: 100px;*/
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px 20px 5px 0;
+	float: left;
+}
+#agendaWrapper table {
+	font-size: 12px;
+}
+#agendaWrapper tr {
+	border-bottom:dotted 1px #f0ece4;
+}
+#agendaWrapper td {
+	padding: 5px 15px 5px 0;
+}
 #appletHolder {
 	background: #232323;
 	width: 560px;
@@ -192,8 +240,12 @@ header.menuInternas li {
 	overflow: hidden;
 }
 #content .tab {
+	background: url(../images/skin_lj_rl/tabs/servicion.png);
+	background-position: center center;
+	background-repeat:no-repeat;
 	width: 170px;
 	height: 26px;
+	float: left;
 }
 #content ul.tabServices {
 	width: 170px;
@@ -240,39 +292,86 @@ header.menuInternas li {
 }
 #content li.active { background-color: #f0ece4; }
 /* Accordion modifiers */
-#accordion {
-	width: 714px;
-	margin: 0;
-	padding: 0;
-	text-align: left;;
+#accordion,
+#agendaWrapper {
+	background:#FFF;
+	width: 680px;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	float:left;
 }
-#accordion h3 {
+#accordion .titleContainer {
+	width: 100%;
+	overflow:hidden;
+	/*float: left;*/
+}
+#accordion .portaToggle {
+	float: left;
+}
+#accordion button.toggleAtAccordion {
+	border:none;
+	color:transparent;
+	background: url(../images/skin_lj_rl/buttons/toggle_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 27px;
+	height: 27px;
+	margin: 0 0 10px 0;
+}
+#accordion .portaTitleAndSwitch {
+	width:460px;
+	border-bottom:solid 2px #f0ece4;
+	padding-bottom:10px;
+	float: left;
+}
+#accordion .editable {
 	color: #761617;
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 21px;
 	text-transform: uppercase;
+	min-width:280px;
 	margin: 0;
 	padding: 0;
+	float:left;
 }
-#accordion .statusObject {
+#accordion .switchContainer {
+	float: right;
+}
+#alarm-status-1, #alarm-status-2, #alarm-status-3, #alarm-status-4 {
 	color: #7f9e48;
 	font-size: 9px;
 	font-weight: normal;
-	line-height: 11px;
+	line-height: 15px;
 	text-transform: uppercase;
+	float:left;
+	clear: both;
 }
-#accordion .titleContainer {
-	border:dotted 1px #0044ff;
-	width: 500px;
-	float: left;
+#switchBoard {
+	padding: 10px;
 }
-#accordion .switchContainer {
-	border:dotted 1px #000;
-	width: 200px;
-	height: 30px;
-	overflow: hidden;
-	float: left;
+#switchBoard span {
+	color:#761617;
+	font-size:15.5px;
+	line-height: 18px;
+	
+	width:100%;
+	padding:5px 0;
+	float:left;
+}
+#switchBoard .lastChange {
+	font-size: 10px;
+	line-height: 14px;
+}
+#switchBoard .lastAction {
+	
+}
+#switchBoard .changesLog,
+#switchBoard .notifyme,
+#switchBoard .linkToAgenda {
+	font-size: 12px;
+	line-height: 14px;
 }
 /* FOOTER */
 footer {
@@ -318,7 +417,7 @@ footer .btn-primary,
 	color: #fff;
 	font-size: 9px;
 	font-weight: normal;
-	font-family: "Gotham", "Helvetica Neue LT Std 67 Medium Condensed", Arial, sans-serif;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
 	line-height: 17px;
 	padding: 0px 15px;

@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- meta charset="utf-8"/-->
+<meta charset="utf-8"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,13 +31,18 @@
 <link href="css/index_social.css" rel="stylesheet" type="text/css" />
 <link href="css/copyright.css" rel="stylesheet" type="text/css" />
 
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background: url(images/skin_lj_rl/backs/productMenu/home.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+</style>
 </head>
 
 <body>
-
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
-
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
@@ -46,9 +51,9 @@
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
-			<ul>
+			</ul>
 		</div>
-		<div class="col1_794" styles="">
+		<div class="col1_794">
 			Contenido sin definir
 		</div>
 	</div>

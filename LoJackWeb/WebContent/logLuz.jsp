@@ -10,13 +10,15 @@ int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
 int idLuz = Integer.valueOf(request.getParameter("idLuz"));
 Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websiteUser, idEntidad, idLuz);
 %>
-Log de cambios <br>
-<% for (ChangeLog log : logCollection) {
-	com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUser(log.getLojackUserId()); %>
-	<% if (WebsiteUserUtils.hasAvatar(logUsr)) { %>
-		<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" width="30" height="30" align="absmiddle">
-	<% } else { %>
-		<img src="images/na.gif" width="30" height="30" align="absmiddle">
-	<% } %> -
-	<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr>
-<% } %>
+<h3>Log de cambios</h3>
+<div class="scrollable">
+	<% for (ChangeLog log : logCollection) {
+		com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUser(log.getLojackUserId()); %>
+		<% if (WebsiteUserUtils.hasAvatar(logUsr)) { %>
+			<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" width="30" height="30" align="absmiddle">
+		<% } else { %>
+			<img src="images/na.gif" width="30" height="30" align="absmiddle">
+		<% } %> -
+		<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr>
+	<% } %>
+</div>

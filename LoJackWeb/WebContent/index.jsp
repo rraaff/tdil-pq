@@ -1,4 +1,4 @@
-Ôªø<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
+<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 	if (agentInfo.detectMobileLong()) { %>
@@ -333,6 +333,7 @@ function parkingsNotLogged() {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
+<link type="text/css" href="css/laruedita_animation.css" rel="stylesheet" />
 </head>
 <body>
 <div id="menu" style="display:none;">
@@ -343,8 +344,8 @@ function parkingsNotLogged() {
 					<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"><span>Ingres√° con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"><span>Ingres√° con tu Tw</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"><span>Ingres· con tu FB</span></a></li>
+					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"><span>Ingres· con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -356,18 +357,18 @@ function parkingsNotLogged() {
 <div id="logoIndex">&nbsp;</div>
 
 <div id="socialSingleSignOn">
-	<div><span class="textInside">Ingres√° con tus cuentas</span></div>
+	<div><span class="textInside">Ingres· con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
 
 <section id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados pol√≠tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcci√≥n general de defensa y protecci√≥n al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados polÌtica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcciÛn general de defensa y protecciÛn al consumidor</p>
 	</div>
 </section>
 
@@ -376,8 +377,8 @@ function parkingsNotLogged() {
 <div id="parkingsNotLoggedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
-			<h3>Atenci√≥n</h3>
-			<p>Registrate y accede a parkings. Es gratis y podes usarlo tanto en tu pc como en cualquier dispositivo m√≥vil que soporte HTML 5 y Javascript.</p>
+			<h3>AtenciÛn</h3>
+			<p>Registrate y accede a parkings. Es gratis y podes usarlo tanto en tu pc como en cualquier dispositivo mÛvil que soporte HTML 5 y Javascript.</p>
 			<form>
 				<fieldset>
 					<button id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer" class="indexButtonBase">Cerrar</button>
@@ -390,9 +391,9 @@ function parkingsNotLogged() {
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
+			<div id="xContainer"><button id="closeregisterLayer1" style="margin-left:110px;">X</button></div>
 			<h3>Registrate</h3>
-			<div class="myRow">Los campos marcados con * son requeridos para la registraci√≥n</div>
+			<div class="myRow">Los campos marcados con * son requeridos para la registraciÛn</div>
 			<div style="width:100%; height:430px; overflow: auto;">
 				<html:form method="POST" action="/register">
 					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
@@ -458,7 +459,7 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>C√≥digo de √°rea</label>
+							<label>CÛdigo de ·rea</label>
 							<html:text name="RegisterForm" property="phoneAreaCode" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
 							<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
@@ -466,7 +467,7 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>Tel√©fono celular</label>
+							<label>TelÈfono celular</label>
 							<html:text name="RegisterForm" property="phoneNumber" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
 							<div class="errorField" style="display: none;" id="p.profile.phone.number">
@@ -474,7 +475,7 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>Pa√≠s</label>
+							<label>PaÌs</label>
 							<span><%=registerForm.getCountrySelected()%></span>
 						</fieldset>
 						<fieldset>
@@ -529,7 +530,7 @@ function parkingsNotLogged() {
 						<% } %>
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
 							<fieldset>
-								<label>C√≥digo postal</label>
+								<label>CÛdigo postal</label>
 								<html:text name="RegisterForm" property="postalCode" />
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
 								<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
@@ -578,11 +579,11 @@ function parkingsNotLogged() {
 					<fieldset>
 						<input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
 						<span>Recordarme</span>
-						<span style="float: right;"><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">(olvid√© mi clave)</a></span>
+						<span style="float: right;"><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">(olvidÈ mi clave)</a></span>
 					</fieldset>
 					<fieldset>
 						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
-						<div style="padding-top:15px; float:right;"><a href="#" title="Registrate gratis">¬øNo est√°s registrado?</div>
+						<div style="padding-top:15px; float:right;"><a href="#" title="Registrate gratis">øNo est·s registrado?</div>
 					</fieldset>
 				</form>
 			</html:form>
@@ -593,7 +594,7 @@ function parkingsNotLogged() {
 <div id="loginInvalidLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="defaultLayerStyles">
 		<div class="defaultLayerContent">
-			<h3>Atenci√≥n</h3>
+			<h3>AtenciÛn</h3>
 			<p>El usuario y/o la clave no coinciden.</p>
 			<form>
 				<fieldset>
@@ -610,12 +611,12 @@ function parkingsNotLogged() {
 		<div class="loginLayerContent">
 			<html:form method="POST" action="/requestResetPassword">
 				<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordLayer">X</button></div>
-				<h3>Recuper√° tu clave</h3>
-				<p>Ingres√° tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
+				<h3>Recuper· tu clave</h3>
+				<p>Ingres· tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 				<form>
 					<fieldset>
-						<label style="width:40px;">DNI</label>
-						<html:text name="RequestResetPasswordForm" property="username" styleClass=""/>
+						<label>DNI</label>
+						<html:text name="RequestResetPasswordForm" property="username"/>
 					</fieldset>
 					<fieldset>
 						<div  style="padding:20px 0 0 0; float:right;"><button type="submit" id="submitforgotPassword" class="indexButtonBase">Enviar</button></div>
@@ -631,8 +632,8 @@ function parkingsNotLogged() {
 	<div class="defaultLayerStyles">
 		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordEmailSentLayer">X</button></div>
-			<h3>Atenci√≥n</h3>
-			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recib√≠s un E-Mail nuestro con la clave, por favor revis√° el correo no deseado.</div>
+			<h3>AtenciÛn</h3>
+			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recibÌs un E-Mail nuestro con la clave, por favor revis· el correo no deseado.</div>
 			<form>
 				<fieldset>
 					<div style="padding:20px 0 0 0; float:right;"><button type="submit" id="closeforgotPasswordEmailSentLayer"  class="indexButtonBase">Cerrar</button></div>
@@ -645,7 +646,7 @@ function parkingsNotLogged() {
 	<div class="defaultLayerStyles">
 		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordUserNotFoundLayer">X</button></div>
-			<h3>Atenci√≥n</h3>
+			<h3>AtenciÛn</h3>
 			<div class="alert alert-block">El DNI no coincide con un usuario de Lo-Jack</div>
 			<form>
 				<fieldset>
@@ -659,7 +660,7 @@ function parkingsNotLogged() {
 	<div class="defaultLayerStyles">
 		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordUserNotFoundLayer">X</button></div>
-			<h3>Atenci√≥n</h3>
+			<h3>AtenciÛn</h3>
 			<div class="alert alert-block">Ha ocurrido un error. Por favor intentelo nuevamente.</div>
 			<form>
 				<fieldset>
@@ -674,11 +675,11 @@ function parkingsNotLogged() {
 	<div class="defaultLayerStyles">
 		<div style="width:927px; margin:0 auto;">
 			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer" cl="video1Layer">< volver</button></div>
-			<div id="videoWrapper">Insert Video (Coup√©)</div>
+			<div id="videoWrapper">Insert Video (CoupÈ)</div>
 			<div id="footerizer">
 				<div class="col1_300 marginRight_60">
 					<h3>Video Title</h3>
-					<p>Con LoJack for Laptopts sab√©s que si te roban la computadora, te la encontramos.</p>
+					<p>Con LoJack for Laptopts sabÈs que si te roban la computadora, te la encontramos.</p>
 					<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
 				</div>
 			</div>

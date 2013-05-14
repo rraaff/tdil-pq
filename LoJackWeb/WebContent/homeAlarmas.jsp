@@ -24,14 +24,21 @@
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
-<script src="js/bootstrap.min.js"></script>
-
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/alarms.js"></script>
+
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
+
+<!-- Para los switches -->
+<link rel="stylesheet" href="css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="css/bootstrapSwitch.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="js/bootstrapSwitch.js"></script>
+<script src="js/bootstrapSwitch.min.js"></script>
+<!-- Fin Switches -->
 
 <script>
   $(function() {
@@ -269,7 +276,14 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	function append(st) {
 		$('#password').attr('value', $('#password').attr('value') + st);
 	}
-  </script>
+</script>
+
+<style type="text/css">
+textarea {
+	width: 200px;
+	float:left;
+}
+</style>
 </head>
 <body>
 
@@ -279,125 +293,142 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
-			<div class="tab"><img src="images/skin_lj_rl/tabs/servicion.png"></div>
+			<div class="tab"></div>
 			<ul class="tabServices">
-				<li class="tabAlarms active" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
-				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
+				<li class="tabAlarms active"><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
+				<li class="tabLights"><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
 		<div class="col1_794 alarmasBG">
 			<% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
-			<div id="accordion">
-			<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
-					<div class="titleContainer">
-						<button id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')">+</button>
-							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
-						<!-- necesito poder meterle un class distinto a cada status -->
-				  			<% if (alarm.isTriggered()) { %>
-				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
-				  			<% } else { %>
-				  				<% if (alarm.isActive()) { %>
+				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
+					<div id="accordion">
+						<div class="titleContainer">
+							<div class="portaToggle"><button class="toggleAtAccordion" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')">&nbsp;</button></div>
+							<div class="portaTitleAndSwitch">
+								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
+
+								<div class="switchContainer">
+									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+									    <input type="checkbox">
+									</div>
+								  	<% if (alarm.isInactive() ) { %>
+								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">ON</span>
+								  	<% } else { %>
+								  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">OFF</span>
+								  	<% } %>
+							  	</div>
+
+					  			<% if (alarm.isTriggered()) { %>
 					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
 					  			<% } else { %>
-					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+					  				<% if (alarm.isActive()) { %>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+						  			<% } else { %>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+						  			<% } %>
 					  			<% } %>
-				  			<% } %>
-				  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
-				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
-				  			<% } else { %>
-				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
-				  			<% } %>
+					  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
+					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
+					  			<% } else { %>
+					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
+					  			<% } %>
+							</div>
+						</div>
+						<div id="switchBoard">
+				  			<div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
+						   		<% if (alarm.hasChangeData()) { %>
+						   			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
+						   			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
+						   			<span class="changesLog"><a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
+						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+						   		<% } %>
+							</div>
+						</div>
 					</div>
-				  	<div class="switchContainer">
-					  	<% if (alarm.isInactive() ) { %>
-					  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">Encender</span>
-					  	<% } else { %>
-					  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">Apagar</span>
-					  	<% } %>
-				  	</div>
-			  <div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
-				    <p>
-				   		<% if (alarm.hasChangeData()) { %>
-				   			Ultimo cambio: <%=alarm.getLastChangeDate() %>
-				   			- <%=alarm.getLastChangeAction() %> - <%=alarm.getLastChangeUser() %> <br>
-				   			<a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a><br>
-				   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
-				   			<a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado<br>
-				   		<% } %>
-				    </p>
-				  </div>
-			   </div>
-			  <% } %>
+				<% } %>
 			</div>
-			<div id="logLayer" style="display: none; z-index: 1500;">
-				<div id="logData">
-					Consultando datos...
-				</div>
-				<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar">
-			</div>
-
-			<div id="confAlertLayer" style="display: none; z-index: 1500;">
-				<div id="confAlert">
-					Consultando datos...
-				</div>
-			</div>
-			<div id="confSavedLayer" style="display: none; z-index: 1500;">
-				La configuracion ha sido salvada
-				<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
-			</div>
-
-			<%@ include file="includes/passwordLayer.jspf" %>
-
-			<div id="alarmActivatedLayer" style="display: none; z-index: 1500;">
-				Se ha enviado el comando de activacion la alarma
-				<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar">
-			</div>
-			<div id="alarmNotActivatedLayer" style="display: none; z-index: 1500;">
-				No ha podido activarse la alarma
-				<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
-			</div>
-			<div id="invalidPasswordLayer" style="display: none; z-index: 1500;">
-				La contrasenia no es correcta
-				<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
-			</div>
-			<div id="alarmDeactivatedLayer" style="display: none; z-index: 1500;">
-				Se ha enviado el comando de desactivacion la alarma
-				<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
-			</div>
-			<div id="alarmNotDeactivatedLayer" style="display: none; z-index: 1500;">
-				No ha podido desactivarse la alarma
-				<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
-			</div>
-			<div id="jobInProgressErrorLayer" style="display: none; z-index: 500;">
-				La alarma esta procesando una tarea, por favor espere.
-				<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
-			</div>
-
-			<!-- Inicio panic -->
-			<div id="sendPanicLayer" style="display: none; z-index: 1500;">
-				<div id="sendPanic">
-					Consultando datos...
-				</div>
-				<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
-			</div>
-			<div id="panicSentLayer" style="display: none; z-index: 1500;">
-				Se ha enviado el comando de senial de panico
-				<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
-			</div>
-			<div id="sendPanicErrorLayer" style="display: none; z-index: 1500;">
-				<div id="sendPanicError">
-					Ha occurrido un error enviando la senial de panico
-				</div>
-				<input type="button" id="retryPanic" value="Reintentar">
-				<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar">
-			</div>
-			<!-- Fin panic -->
 		</div>
 	</div>
 </section>
 <!-- a href="javascript:sendPanic()">Boton de panico</a -->
 
 <%@ include file="includes/footerProductoHome.jsp" %>
+
+<div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle">
+		<div class="modalWrapper">
+			<div id="logData" class="modalLayerContent">
+				Cargando datos...
+			</div>
+			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase">
+		</div>
+	</div>
+</div>
+
+<div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="confAlert">
+		Consultando datos...
+	</div>
+</div>
+<div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	La configuracion ha sido salvada
+	<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
+</div>
+
+<%@ include file="includes/passwordLayer.jspf" %>
+
+<div id="alarmActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div class="modalLayerContent" style="height:auto; padding:20px 0;">
+				<div class="alert">Se ha enviado el comando de activacion la alarma</div>
+			</div>
+			<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar" class="indexButtonBase">
+		</div>
+	</div>
+</div>
+<div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	No ha podido activarse la alarma
+	<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
+</div>
+<div id="invalidPasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	La contrasenia no es correcta
+	<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
+</div>
+<div id="alarmDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	Se ha enviado el comando de desactivacion la alarma
+	<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
+</div>
+<div id="alarmNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	No ha podido desactivarse la alarma
+	<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
+</div>
+<div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 500;">
+	La alarma esta procesando una tarea, por favor espere.
+	<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
+</div>
+<!-- Inicio panic -->
+<div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="sendPanic">
+		Consultando datos...
+	</div>
+	<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
+</div>
+<div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	Se ha enviado el comando de senial de panico
+	<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
+</div>
+<div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="sendPanicError">
+		Ha occurrido un error enviando la senial de panico
+	</div>
+	<input type="button" id="retryPanic" value="Reintentar">
+	<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar">
+</div>
+<!-- Fin panic -->
 </body>
 </html>
