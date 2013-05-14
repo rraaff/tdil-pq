@@ -12,6 +12,75 @@
 <meta name="keywords" content="Tua Festa">
 <meta name="description" content="Bienvenidos a Tua Festa" />
 <%@ include file="includes/head.jsp" %>
+<script>
+$(document).ready(
+	function(){
+
+		function generateTooltips() {
+			  //make sure tool tip is enabled for any new error label
+				$("img[id*='error']").tooltip({
+					showURL: false,
+					opacity: 0.99,
+					fade: 150,
+					positionRight: true ,
+					bodyHandler: function() {
+						return $("#"+this.id).attr("hovertext");
+					}
+				});
+				//make sure tool tip is enabled for any new valid label
+				$("img[src*='tick.gif']").tooltip({
+					showURL: false,
+						bodyHandler: function() {
+							return "OK";
+						}
+				});
+			}
+
+			$('form').mouseover(function(){
+				      generateTooltips();
+				    });
+
+			$("form[name='ContactForm']").validate({
+					errorPlacement: function(error, element) {
+						error.appendTo( element.parent("td").next("td") );
+					},
+					rules: { 'name': {required: true},
+							'email': {required: true, email: true},
+							'content': {required: true}
+					},
+					messages: {
+						'name': {required: "<img id='nameerror' src='images/unchecked.gif' hovertext='Ingrese el nombre.' />"},
+						'email': {required: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese el email.' />",
+								email: "<img id='emailerror' src='images/unchecked.gif' hovertext='Ingrese un email valido.' />"},
+						'content': {required: "<img id='politicserror' src='images/unchecked.gif' hovertext='Ingrese el contenido.' />"}
+					},
+					submitHandler: function() {
+			            $("form[name='ContactForm']").ajaxSubmit({
+			    			type: "POST",
+			    			url: "./contact.do",
+			    			dataType: "json",
+			    			success: postContact
+			    			});
+			        }
+				});
+		}
+	);
+
+function postContact(data) {
+	if (data.result == 'OK') {
+		$( "#dialog-modal" ).dialog({
+				height: 140,
+				modal: true,
+				close: function(event, ui) {  document.location.href='./index.jsp'; }
+			});
+	} else {
+		$( "#dialog-modal-err" ).dialog({
+				height: 140,
+				modal: true
+			});
+	}
+}
+</script>
 </head>
 <body>
 <%@ include file="includes/designHeader.jspf" %>
@@ -33,36 +102,33 @@
 			</div>
 			<div id="rightBar">
 				<div id="formWrapper">
+				<html:form method="POST" action="/contact">
 					<div class="myRow">
 						<div class="myLabel width60">Nombre</div>
-						<div class="myLabel width160"><input type="text" class="normalField width150" /></div>
-						<div class="myLabel width20">&nbsp;</div>
-						<div class="myLabel width60">Apellido</div>
-						<div class="myLabel width160"><input type="text" class="normalField width150" /></div>
+						<div class="myLabel width160"><html:text name="ContactForm" property="name" styleClass="input_form"/></div>
 					</div>
 					<div class="myRow" style="padding-bottom:2px;">
 						<div class="myLabel width60">E-Mail</div>
-						<div class="myLabel width400"><input type="text" class="normalField width390" /></div>
+						<div class="myLabel width400"><html:text name="ContactForm" property="email" styleClass="input_form"/></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width450"><span class="comment" style="color:#333333;">(Si es usuario del sitio utilice el mismo E-Mail que us&oacute; para registrarse)</span></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width60">Asunto</div>
-						<div class="myLabel width400"><input type="text" class="normalField width390" /></div>
-					</div>
-					<div class="myRow">
 						<div class="myLabel width60">Texto</div>
-						<div class="myLabel width400 height100"><textarea class="normalField width390 height100"></textarea></div>
+						<div class="myLabel width400 height100"><html:textarea name="ContactForm" property="content" styleClass="comment_form" cols="45" rows="5" /></div>
 					</div>
 					<div class="myRow" style="padding-bottom:2px;">
-						<div id="buttonContactForm"><a href="#"><img src="images/null.gif" width="169" height="65" /></a></div>
+						<div id="buttonContactForm"><html:submit property="operation">Enviar</html:submit></div>
 					</div>
+					</html:form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+	<div id="dialog-modal" class="hide" title="Contacto">Gracias por su mensaje.</div>
+	<div id="dialog-modal-err" class="hide" title="Contacto">Ha ocurrido un error, intentelo nuevamente.</div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 </body>
