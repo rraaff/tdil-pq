@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.actions.AbstractAction;
+import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 
 public class FacebookConnect extends HttpServlet {
@@ -22,6 +23,8 @@ public class FacebookConnect extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 5611834065781809280L;
+	
+	public static final String FACEBOOK_CONN_ERR = "facebook_conn_err";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,7 +33,10 @@ public class FacebookConnect extends HttpServlet {
         if (!StringUtils.isEmpty(code)) {
         	WebsiteUser user = (WebsiteUser)AbstractAction.getLoggedUser(req);
         	try {
-				ThalamusClientFacade.addFacebook(user.getToken(), code);
+        		ThalamusResponse response = ThalamusClientFacade.addFacebook(user.getToken(), code);
+        		if (response.isBadRequest()) {
+        			req.getSession().setAttribute(FACEBOOK_CONN_ERR, "1");
+        		} 
         	} catch (Exception e) {
 				getLog().error(e.getMessage(), e);
 			}

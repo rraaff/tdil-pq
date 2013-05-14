@@ -1,10 +1,5 @@
 package com.tdil.lojack.struts.action;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,7 +34,6 @@ public class LoginFacebookAction extends Action {
         	if (isNotLogged(json)) {
 	        	register.setSocialConnections(getSocialConnections(json));
 	        	setData(register, json);
-	        	System.out.println(json.toString(2));
 	        	return mapping.findForward("register");
         	} else {
         		// marcar como logueado
@@ -90,16 +84,5 @@ public class LoginFacebookAction extends Action {
 		String ref = jsonObject.getString("ref");
 		return "SingUp".equals(ref);
 	}
-
-
-	private String readURL(URL url) throws IOException {
-	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        InputStream is = url.openStream();
-	        int r;
-	        while ((r = is.read()) != -1) {
-	            baos.write(r);
-	        }
-	        return new String(baos.toByteArray());
-	    }
 
 }
