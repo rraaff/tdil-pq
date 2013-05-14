@@ -3,7 +3,8 @@
 <%@page import="java.util.Collection"%>
 <%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
 <%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %>
+--><%@ include file="includes/mustBeLogged.jspf" %><!--
+--><%@ include file="includes/mustBeHomeUser.jspf" %>
 <%
 Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
 %>

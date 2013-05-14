@@ -12,7 +12,8 @@
 --><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
 --><%@ include file="includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %>
+--><%@ include file="includes/mustBeLogged.jspf" %><!--
+--><%@ include file="includes/mustBeHomeUser.jspf" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>

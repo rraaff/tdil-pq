@@ -13,7 +13,8 @@
 --><%@ taglib uri="http://displaytag.sf.net" prefix="display" %><!--
 --><%@ include file="includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %>
+--><%@ include file="includes/mustBeLogged.jspf" %><!--
+--><%@ include file="includes/mustBeHomeUser.jspf" %>
 <html>
 <head>
 <%@ include file="includes/headLogged.jsp" %>
