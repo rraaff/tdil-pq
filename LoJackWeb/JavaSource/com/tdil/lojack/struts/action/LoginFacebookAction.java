@@ -1,5 +1,6 @@
 package com.tdil.lojack.struts.action;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +17,10 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.lojack.struts.forms.LoginForm;
 import com.tdil.lojack.struts.forms.RegisterForm;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.thalamus.client.core.ThalamusClient;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.LoginResult;
+import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public class LoginFacebookAction extends Action {
 
@@ -28,8 +31,22 @@ public class LoginFacebookAction extends Action {
 
 		String code = request.getParameter("code");
         if (!StringUtils.isEmpty(code)) {
+        	Cookie twt = getTwitterCookie(request);
+			Cookie etwt = getExtraTwitterCookie(request);
         	RegisterForm register = (RegisterForm)request.getSession().getAttribute("RegisterForm");
-        	LoginResult login = (LoginResult)ThalamusClientFacade.signInFacebook(code);
+        	
+			TokenHolder tokenHolder = new TokenHolder();
+			org.apache.commons.httpclient.Cookie cookie = new org.apache.commons.httpclient.Cookie(ThalamusClient.getTHALAMUS_HOST(),
+					"JSESSIONID", twt.getValue());
+			cookie.setPath(ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
+			tokenHolder.addCookie(cookie);
+			
+			org.apache.commons.httpclient.Cookie ecookie = new org.apache.commons.httpclient.Cookie(ThalamusClient.getTHALAMUS_HOST(),
+					"AWSELB", etwt.getValue());
+			ecookie.setPath(ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
+			tokenHolder.addCookie(ecookie);
+        	
+        	LoginResult login = (LoginResult)ThalamusClientFacade.signInFacebook(code, tokenHolder);
         	JSONObject json = (JSONObject)login.getResponse().getResult();
         	if (isNotLogged(json)) {
 	        	register.setSocialConnections(getSocialConnections(json));
@@ -46,7 +63,23 @@ public class LoginFacebookAction extends Action {
         }
 	}
 
-
+	private Cookie getTwitterCookie(HttpServletRequest request) {
+		for (Cookie co : request.getCookies()) {
+			if (co.getName().equals("twt")) {
+				return co;
+			}
+		}
+		return null;
+	}
+	
+	private Cookie getExtraTwitterCookie(HttpServletRequest request) {
+		for (Cookie co : request.getCookies()) {
+			if (co.getName().equals("etwt")) {
+				return co;
+			}
+		}
+		return null;
+	}
 
 	private void setData(RegisterForm register, JSONObject json) {
 		JSONObject data = json.getJSONObject("data");

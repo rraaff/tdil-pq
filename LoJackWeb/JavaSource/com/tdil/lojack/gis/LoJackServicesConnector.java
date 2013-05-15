@@ -619,7 +619,7 @@ public class LoJackServicesConnector {
 		} finally {
 			if (LOG.isDebugEnabled()) {
 				long end = System.currentTimeMillis();
-				LOG.debug("Execute: " + service + " took " + (end - start) + " millis");
+				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
 			}
 		}
 	}

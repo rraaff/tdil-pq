@@ -181,7 +181,7 @@ public class PreventConnector {
 		} finally {
 			if (LOG.isDebugEnabled()) {
 				long end = System.currentTimeMillis();
-				LOG.debug("Execute: " + url + " took " + (end - start) + " millis");
+				LOG.info("Execute: " + url + " took " + (end - start) + " millis");
 			}
 		}
 	}
@@ -232,7 +232,7 @@ public class PreventConnector {
 		} finally {
 			if (LOG.isDebugEnabled()) {
 				long end = System.currentTimeMillis();
-				LOG.debug("Execute: " + service + " took " + (end - start) + " millis");
+				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
 			}
 		}
 	}
