@@ -41,45 +41,30 @@
 		<div class="col1_170">
 			<div class="tab"><img src="images/skin_lj_rl/tabs/servicion.png"></div>
 			<ul class="tabServices">
-				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
-				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
+				<li class="tabAlarms"><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
+				<li class="tabLights"><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras active"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
 		<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
 		<div class="col1_794 camarasBG">
 			<div id="cameraTitle">
-				<h1>Mis C&aacute;maras</h1>
+				<h1>Mis C·maras</h1>
 			</div>
-			<% int camIndex = 0;
-				for (Camera camera : cameraForm.getAllCameras()) { %>
-				<a href="./selectCamera.do?pos=<%=camIndex%>"><%=camera.getUrl()%></a><br>
-			<% camIndex = camIndex + 1;
-				} %>
+			<div id="camerasList">
+				<h3>Seleccion· la c·mara</h3>
+				<ul class="cameraListUl">
+					<% int camIndex = 0;
+						for (Camera camera : cameraForm.getAllCameras()) { %>
+							<li class="cameraLink"><a href="./selectCamera.do?pos=<%=camIndex%>"><%=camera.getUrl()%></a></li>
+					<% camIndex = camIndex + 1;
+						} %>
+				</ul>
+			</div>
 		</div>
 	</div>
 </section>
-<footer>
-	<div class="pageWrapper">
-		<div class="col1_300 marginRight_60">
-			<h3>ENTR√Å TRANQUILO<br/>A TU CASA</h3>
-			<p>Con escolta Lojack te acompa√±amos telef√≥nicamente a tu casa cuando entr√°s.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col1_300 marginRight_60">
-			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sab√©s que si te roban la computadora, te la encontramos.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col_social">
-			<ul class="nav nav-pills nav-social">
-				<li><a href="#" class="fb"></a></li>
-				<li><a href="#" class="tw"></a></li>
-				<li><a href="#" class="ln"></a></li>
-				<li><a href="#" class="gp"></a></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+
+<%@ include file="includes/footerProductoHome.jsp" %>
 </body>
 </html>

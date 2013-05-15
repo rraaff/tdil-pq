@@ -141,7 +141,11 @@ function right() {
 					</script>
 				<% } %>
 			</div>
-			<a href="./toggleCameraView.do">Vista basica</a>
+			<div id="linksAside">
+				<a href="./toggleCameraView.do"><span>Cambiar vista >></span></a>
+				<br/>
+				<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+			</div>
 		</div>
 	</div>
 </section>

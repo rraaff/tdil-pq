@@ -159,7 +159,7 @@ header.menuInternas li {
 	background-color: #f0ece4;
 	width: 694px;
 	height: 377px;
-	padding: 40px 0 0 48px ;
+	padding: 40px 53px 0 48px;
 }
 #cameraTitle {
 	background-color: #fff;
@@ -168,6 +168,26 @@ header.menuInternas li {
 	background-position: 10px 14px;
 	width: 560px;
 	height: 54px; 
+}
+#camerasList {
+	background-color: #fff;
+	text-align:left;
+	width: 520px;
+	height: 240px;
+	padding: 20px;
+	float:left;
+}
+#camerasList h3 {
+	color: #ee5222;
+	font-size: 18px;
+	font-weight: lighter;
+}
+#camerasList ul.cameraListUl {
+	float: left !important;
+}
+#camerasList ul li.cameraLink a {
+	width: 350px;
+	float: left;
 }
 #cameraTitle h1,
 #agendaWrapper h1 {
@@ -218,10 +238,19 @@ header.menuInternas li {
 	padding: 5px 15px 5px 0;
 }
 #appletHolder {
-	background: #232323;
+	background: #fff;
 	width: 560px;
 	height: 297px;
 	overflow: hidden;
+	float:left;
+}
+#linksAside {
+	text-align:left;
+	margin:240px 0 0 10px;
+	float:left;
+}
+#linksAside span {
+	padding: 5px 0;
 }
 #content .tab {
 	background: url(../images/skin_lj_rl/tabs/servicion.png);
@@ -236,7 +265,7 @@ header.menuInternas li {
 	float: left;
 }
 #content ul li {
-	float: right;
+	/*float: right;*/
 	list-style: none;
 }
 #content ul li a {
@@ -274,7 +303,7 @@ header.menuInternas li {
 	height: 40px;
 	padding: 80px 0px 0px 0px;
 }
-#content li.active { background-color: #f0ece4; }
+#content li.active { background-color: #f0ece4; float: left; }
 /* Accordion modifiers */
 #accordion,
 #agendaWrapper {
