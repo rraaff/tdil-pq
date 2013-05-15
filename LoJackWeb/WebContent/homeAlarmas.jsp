@@ -363,19 +363,32 @@ textarea {
 			<div id="logData" class="modalLayerContent">
 				Cargando datos...
 			</div>
-			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase">
+			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="confAlert">
-		Consultando datos...
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div id="confAlert">
+				Consultando datos...
+			</div>
+		</div>
 	</div>
 </div>
+
 <div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	La configuracion ha sido salvada
-	<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">La configuracion ha sido salvada.</div>
+			</div>
+			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
 
 <%@ include file="includes/passwordLayer.jspf" %>
@@ -385,49 +398,109 @@ textarea {
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div class="modalLayerContent" style="height:auto; padding:20px 0;">
-				<div class="alert">Se ha enviado el comando de activacion la alarma</div>
+				<div class="alert alert-success">Se ha enviado el comando de activacion la alarma.</div>
 			</div>
 			<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar" class="indexButtonBase">
 		</div>
 	</div>
 </div>
+
 <div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	No ha podido activarse la alarma
-	<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido activarse la alarma.</div>
+			</div>
+			<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
+
 <div id="invalidPasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	La contrasenia no es correcta
-	<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">La contraseña no es correcta.</div>
+			</div>
+			<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
+
 <div id="alarmDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	Se ha enviado el comando de desactivacion la alarma
-	<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de desactivación la alarma.</div>
+			</div>
+			<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
+
 <div id="alarmNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	No ha podido desactivarse la alarma
-	<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido desactivarse la alarma.</div>
+			</div>
+			<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
-<div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 500;">
-	La alarma esta procesando una tarea, por favor espere.
-	<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
+
+<div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-block">La alarma esta procesando una tarea, por favor espere.</div>
+			</div>
+			<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
+
 <!-- Inicio panic -->
 <div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="sendPanic">
-		Consultando datos...
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div id="sendPanic" style="height:auto; padding:20px 0;">
+				Consultando datos...
+			</div>
+			<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
 	</div>
-	<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar">
 </div>
+
 <div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	Se ha enviado el comando de senial de panico
-	<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar">
-</div>
-<div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="sendPanicError">
-		Ha occurrido un error enviando la senial de panico
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de señal de pánico.</div>
+			</div>
+			<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
 	</div>
-	<input type="button" id="retryPanic" value="Reintentar">
-	<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar">
+</div>
+
+<div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div id="sendPanicError" style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">Ha occurrido un error enviando la señal de panico.</div>
+			</div>
+			<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>
+			<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
 </div>
 <!-- Fin panic -->
 </body>

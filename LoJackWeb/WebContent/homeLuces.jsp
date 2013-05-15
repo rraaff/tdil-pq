@@ -28,10 +28,18 @@
 
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/lights.js"></script>
+<script src="js/jQueryRotateCompressed.2.2.js"></script>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
+
+<!-- Para los switches -->
+<link rel="stylesheet" href="css/bootstrap-combined.min.css">
+<link rel="stylesheet" href="css/bootstrapSwitch.css">
+<script src="js/bootstrapSwitch.js"></script>
+<script src="js/bootstrapSwitch.min.js"></script>
+<!-- Fin Switches -->
 
 <script>
   $(function() {
@@ -261,15 +269,20 @@
 #productsMenu ul li.tabHome {
 	background:#f05224;
 }
+textarea {
+	width: 200px;
+	float:left;
+}
 </style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
+
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
-			<div class="tab"><img src="images/skin_lj_rl/tabs/servicion.png"></div>
+			<div class="tab"></div>
 			<ul class="tabServices">
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights active" ><a href="./goToHomeLights.do">Mis Luces</a></li>
@@ -278,127 +291,220 @@
 		</div>
 		<div class="col1_794 lucesBG">
 			<% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
-			<div id="accordion">
-			<% for (Light light : lightsForm.getLights()) { %>
-			  <h3>
-			  	<button id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>')">+</button>
-			  	<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
-			  	<% if (light.isInRandomMode()) { %>
-			  		<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-			  		<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-		  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-		  			<% } else { %>
-		  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-		  			<% } %>
-			  		<span onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Desactivar modo random</span>
-			  	<% } else  { %>
-			  		<% if (light.isOn()) { %>
-				  		<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-				  		<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-			  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-			  			<% } else { %>
-			  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-			  			<% } %>
-				  		<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
-			  		<% } else  { %>
-						<% if (light.isOff()) { %>
-				  			<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-				  			<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-				  			<% } else { %>
-				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-				  			<% } %>
-				  			<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
-				  			<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
-			  			<% } else  { %>
-			  				<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-			  				<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-				  			<% } else { %>
-				  				<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-				  			<% } %>
-		  					<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
-			  				<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
-			  				<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
-					    <% } %>
-				  <% } %>
-				 <% } %>
-			  </h3>
-			  <div id="cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
-			    <p>
-			    	<% if (light.hasChangeData()) { %>
-			   			Ultimo cambio: <%=light.getLastChangeDate() %>
-			   			- <%=light.getLastChangeAction() %> - <%=light.getLastChangeUser() %> <br>
-			   			<a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a><br>
-			   			<input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>>Envio de notificaciones por email<br>
-			   			<a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado<br>
-			   		<% } %>
-			    </p>
-			  </div>
-			  <% } %>
-			</div>
-			<div id="logLayer" style="display: none; z-index: 500;">
-				<div id="logData">
-					Consultando datos...
-				</div>
-				<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar">
-			</div>
-
-			<div id="confAlertLayer" style="display: none; z-index: 500;">
-				<div id="confAlert">
-					Consultando datos...
-				</div>
-			</div>
-			<div id="confSavedLayer" style="display: none; z-index: 500;">
-				La configuracion ha sido salvada
-				<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar">
-			</div>
-
-			<div id="randomActivatedLayer" style="display: none; z-index: 500;">
-				Se ha enviado el comando de activacion de secuencia random
-				<input type="button" id="closerandomActivatedLayer" cl="randomActivatedLayer" value="Cerrar">
-			</div>
-			<div id="randomNotActivatedLayer" style="display: none; z-index: 500;">
-				No ha podido enviarse el comando de activacion de secuencia random
-				<input type="button" id="closerandomNotActivatedLayer" cl="randomNotActivatedLayer" value="Cerrar">
-			</div>
-
-			<div id="randomDeactivatedLayer" style="display: none; z-index: 500;">
-				Se ha enviado el comando de desactivacion de secuencia random
-				<input type="button" id="closerandomDeactivatedLayer" cl="randomDeactivatedLayer" value="Cerrar">
-			</div>
-			<div id="randomNotDeactivatedLayer" style="display: none; z-index: 500;">
-				No ha podido enviarse el comando de desactivacion de secuencia random
-				<input type="button" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer" value="Cerrar">
-			</div>
-
-			<div id="lightTurnedOnLayer" style="display: none; z-index: 500;">
-				Se ha enviado el comando de encendido de la luz
-				<input type="button" id="closerlightTurnedOnLayer" cl="lightTurnedOnLayer" value="Cerrar">
-			</div>
-			<div id="lightNotTurnedOnLayer" style="display: none; z-index: 500;">
-				No ha podido enviarse el comando de encendido de la luz
-				<input type="button" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer" value="Cerrar">
-			</div>
-
-			<div id="jobInProgressErrorLayer" style="display: none; z-index: 500;">
-				La luz esta procesando una tarea, por favor espere.
-				<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar">
-			</div>
-
-			<div id="lightTurnedOffLayer" style="display: none; z-index: 500;">
-				Se ha enviado el comando de apagado de la luz
-				<input type="button" id="closerlightTurnedOffLayer" cl="lightTurnedOffLayer" value="Cerrar">
-			</div>
-			<div id="lightNotTurnedOffLayer" style="display: none; z-index: 500;">
-				No ha podido enviarse el comando de apagado de la luz
-				<input type="button" id="closelightNotTurnedOffLayer" cl="lightNotTurnedOffLayer" value="Cerrar">
+				<% for (Light light : lightsForm.getLights()) { %>
+					<div id="accordion">
+						<div class="titleContainer">
+							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>')"></div>
+							<div class="portaTitleAndSwitch">
+								<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
+								<div class="switchContainer">
+									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+									    <input type="checkbox">
+									</div>
+									<% if (light.isInRandomMode()) { %>
+										<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+										<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+										<% } else { %>
+											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+										<% } %>
+										<span onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Desactivar modo random</span>
+									<% } else  { %>
+										<% if (light.isOn()) { %>
+											<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+											<% } else { %>
+												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+											<% } %>
+											<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
+										<% } else  { %>
+											<% if (light.isOff()) { %>
+												<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+												<% } else { %>
+													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+												<% } %>
+												<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+												<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
+											<% } else  { %>
+												<div id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+												<% } else { %>
+													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+												<% } %>
+												<span onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Encender</span>
+												<span onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Apagar</span>
+												<span onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Activar modo random</span>
+											<% } %>
+										<% } %>
+									<% } %>
+								</div>
+							</div>
+						</div>
+						<div id="switchBoard">
+							<div id="cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+								<% if (light.hasChangeData()) { %>
+									<span class="lastChange">Último cambio: <%=light.getLastChangeDate() %></span>
+									<span class="lastAction"><%=light.getLastChangeAction() %> por: <%=light.getLastChangeUser() %></span>
+									<span class="changesLog"><a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a></span>
+									<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+									<span class="linkToAgenda"><a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				<% } %>
 			</div>
 		</div>
 	</div>
 </section>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
+
+<div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle">
+		<div class="modalWrapper">
+			<div id="logData" class="modalLayerContent">
+				Consultando datos...
+			</div>
+			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div id="confAlert" style="height:auto; padding:20px 0;">
+				Consultando datos...
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">La configuración ha sido salvada.</div>
+			</div>
+			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="randomActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de activación de secuencia aleatoria.</div>
+			</div>
+			<input type="button" id="closerandomActivatedLayer" cl="randomActivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="randomNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido enviarse el comando de activación de secuencia aleatoria.</div>
+			</div>
+			<input type="button" id="closerandomNotActivatedLayer" cl="randomNotActivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="randomDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de desactivación de secuencia aleatoria.</div>
+			</div>
+			<input type="button" id="closerandomDeactivatedLayer" cl="randomDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="randomNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido enviarse el comando de desactivación de secuencia aleatoria.</div>
+			</div>
+			<input type="button" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="lightTurnedOnLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de encendido de la luz.</div>
+			</div>
+			<input type="button" id="closerlightTurnedOnLayer" cl="lightTurnedOnLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="lightNotTurnedOnLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido enviarse el comando de encendido de la luz.</div>
+			</div>
+			<input type="button" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-block">La luz esta procesando una tarea, por favor espere.</div>
+			</div>
+			<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>			
+</div>
+
+<div id="lightTurnedOffLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-success">Se ha enviado el comando de apagado de la luz.</div>
+			</div>
+			<input type="button" id="closerlightTurnedOffLayer" cl="lightTurnedOffLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
+
+<div id="lightNotTurnedOffLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div style="height:auto; padding:20px 0;">
+				<div class="alert alert-error">No ha podido enviarse el comando de apagado de la luz.</div>
+			</div>
+			<input type="button" id="closelightNotTurnedOffLayer" cl="lightNotTurnedOffLayer" value="Cerrar" class="indexButtonBase"/>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>
