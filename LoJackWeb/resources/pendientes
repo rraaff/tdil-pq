@@ -3,6 +3,7 @@ log paginado
 prevent
 home
 log paginado
+{ "guid": "1","lojackUserId":"ase001", "idEntidad": 1, intPageSize: 10 }
 
 semana que viene
 liquidarlo parkings
@@ -12,17 +13,6 @@ Prevent
 manejar un metodo que vuelva a pedir los vehiculos si hay mas
 
 https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
-
-Tema base de datos
-Podriamos seguir usando mysql, podriamos switchear ongoing?
-Esto nos permitiria seguir con el ritmo, y poder tener mas cosas andando mas pronto.
-El impacto de switchear quizas no sea tan grande, al menos no en logica aplicativa.
-
-Tema prevent
-Una vez validados los casos de uso, para poder mostrar podriamos hacer pasar por un login o hardcodear el usuario y password.
-No hariamos el mostrado de zona porque no esta expuesto.
-Esto nos permitira mostrar casi todo prevent andando.
-
 
 *****
 

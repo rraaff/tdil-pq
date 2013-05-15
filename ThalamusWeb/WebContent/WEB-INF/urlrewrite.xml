@@ -64,13 +64,13 @@
         <note>
         </note>
         <from>/api/v1/signin/facebook</from>
-        <to>/facebook.json</to>
+        <to>/facebook.jsp</to>
     </rule>
     <rule>
         <note>
         </note>
         <from>/api/v1/signin/twitter</from>
-        <to>/twitter.json</to>
+        <to>/twitter.jsp</to>
     </rule>
     
      <rule>
