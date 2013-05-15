@@ -27,7 +27,11 @@
 <script src="js/bootstrap.min.js"></script>
 <%@ include file="includes/headLogged.jsp" %>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background:#f05224;
+}
+</style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

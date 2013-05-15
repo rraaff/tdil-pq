@@ -32,22 +32,84 @@
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
-<style>
-/**
- * Map Examples Specific
- */
+<style type="text/css">
+#productsMenu ul li.tabParking {
+	background:#f05224;
+}
 .smallmap {
-    width: 968px;
-    height: 450px;
-    border: 1px solid #ccc;
+	width: 968px;
+	height: 450px;
 }
-#tags {
-    display: none;
-}
-
+#tags { display: none; }
 #docs p {
     margin-bottom: 0.5em;
 }
+#controls {
+	background: url(images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:456px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1300;
+}
+
+button.iconEall,
+button.icon100mts,
+button.icon500mts,
+button.icon1mks,
+button.iconClear {
+	border:none;
+	background: transparent;
+	background: url(images/skin_lj_rl/webApp/parkings/control_100mts.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 62px;
+	height: 48px;
+	margin: 0 10px;
+	padding: 0;
+	cursor: pointer;
+}
+button.iconEall { background: url(images/skin_lj_rl/webApp/parkings/control_E_all.png); }
+button.icon500mts { background: url(images/skin_lj_rl/webApp/parkings/control_500mts.png); }
+button.icon1mks { background: url(images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
+button.iconClear { background: url(images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.icon_zoom_in,
+button.icon_zoom_out {
+	border:none;
+	background: transparent;
+	background: url(images/skin_lj_rl/webApp/parkings/icon_ZoomIn.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 32px;
+	height: 32px;
+	margin: 10px 0;
+	padding: 0;
+	cursor: pointer;
+}
+button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_ZoomOut.png); }
+#controls .basicControls {
+	text-align:center;
+	width:450px;
+	margin: 0 auto;
+}
+#zoomSection {
+	background: url(images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:0px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1305;
+}
+#zoomSection .zoomControls {
+	width:32px;
+	top:20px;
+	left:20px;
+	margin:0 auto;
+	position: absolute;
+}
+
 /* mobile specific */
 @media only screen and (max-width: 600px) {
     body {
@@ -98,15 +160,8 @@
     }
 }
 </style>
-    <script src="js/OpenLayers.js" type="text/javascript"></script>
-    <script src="js/MapaOSM.js" type="text/javascript"></script>
-</head>
-<body>
-<%@ include file="includes/header.jsp" %>
-<%@ include file="includes/clientMainManu.jsp" %>
-
-
-
+<script src="js/OpenLayers.js" type="text/javascript"></script>
+<script src="js/MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 		var startLat = -34.53483581543;
@@ -163,9 +218,9 @@
             if (!parkings) {
 	        	parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(21,25);
-	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/marker.png',size,offset);
+	            var size = new OpenLayers.Size(32,32);
+	            var offset = new OpenLayers.Pixel(-(size.w/1.5), -size.h);
+	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				<% List<PointOfInterest> parkings = ParkingUtils.getParkings(); %>
 				<% for (PointOfInterest poi : parkings) { %>
@@ -316,27 +371,43 @@
 
 </script>
 </head>
-
 <body>
-<section style="top:450px; position: absolute; z-index: 1300;">
-	<button onclick="showAllParkings()">Mostrar Todos</button>
-	<button onclick="showParkings(100)">100mts</button>
-	<button onclick="showParkings(500)">500mts</button>
-	<button onclick="showParkings(1000)">1000mts</button>
-	<button onclick="removeParkings()">Quitar Todos</button>
-	<input type="button" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">
-	<input type="button" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">
+<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/clientMainManu.jsp" %>
+<section id="content">
+	<div class="pageWrapper">
+		<div id="mapContainer" class="smallmap"></div>
+	</div>
+</section>
+<section id="controls">
+	<div class="basicControls">
+		<button class="iconEall" onclick="showAllParkings()">&nbsp;</button>
+		<button class="icon100mts" onclick="showParkings(100)">&nbsp;</button>
+		<button class="icon500mts" onclick="showParkings(500)">&nbsp;</button>
+		<button class="icon1mks" onclick="showParkings(1000)">&nbsp;</button>
+		<button class="iconClear" onclick="removeParkings()">&nbsp;</button>	
+	</div>
+</section>
+<section id="zoomSection">
+	<div class="zoomControls">
+		<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
+		<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
+	</div>
 </section>
 
-	<div id="mapContainer" class="smallmap">
-                </div>
+<%@ include file="includes/footerProductoHome.jsp" %>
 
-<div id="showErrorLayer" style="display: none; z-index: 500;">
-	<div id="showErrorLayerMessage">
-		...
+<div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="modalStyle" style="width:350px; margin:120px auto;">
+		<div class="modalWrapper" style="width:auto;">
+			<h3>Atención</h3>
+			<div id="showErrorLayerMessage">
+				...
+			</div>
+			<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar">
+		</div>
 	</div>
-	<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar">
 </div>
-</body>
 
+</body>
 </html>

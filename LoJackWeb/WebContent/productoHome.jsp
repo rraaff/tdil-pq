@@ -33,9 +33,7 @@
 
 <style type="text/css">
 #productsMenu ul li.tabHome {
-	background: url(images/skin_lj_rl/backs/productMenu/home.png);
-	background-repeat: no-repeat;
-	background-position: 0px 0px;
+	background:#f05224;
 }
 </style>
 </head>

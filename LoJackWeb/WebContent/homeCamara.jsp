@@ -87,6 +87,11 @@ function right() {
 });
 }
 	</script>
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background:#f05224;
+}
+</style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

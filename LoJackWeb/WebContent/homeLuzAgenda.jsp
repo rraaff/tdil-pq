@@ -74,6 +74,12 @@
     }
   });
 </script>
+
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background:#f05224;
+}
+</style>
 </head>
 <body>
 Cambiar mis datos | Cambiar mi password | hola <%=websiteUser.getName()%> | <a href="./logout.do">Salir</a>
