@@ -111,10 +111,10 @@ function right() {
 					<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
 						<param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
 						<PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
-						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201305081802.jar">
+						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201305142331.jar">
 							<comment>
 								<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-									ARCHIVE="cameraviewer-b201305081802.jar" width="561" height="297">
+									ARCHIVE="cameraviewer-b201305142331.jar" width="561" height="297">
 									<noembed>
 										No Java Support.
 									</noembed>

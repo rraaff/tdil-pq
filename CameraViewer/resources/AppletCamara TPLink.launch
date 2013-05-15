@@ -9,7 +9,7 @@
 <intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="480"/>
 <stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value=""/>
 <mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
-<mapEntry key="model" value="TPLinkSC4171G"/>
+<mapEntry key="model" value="1"/>
 <mapEntry key="password" value="lj2013"/>
 <mapEntry key="refresh" value="100"/>
 <mapEntry key="url" value="http://ljcam2.dyndns.org:8888"/>

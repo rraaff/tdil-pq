@@ -1,13 +1,31 @@
-log paginado
+if para el boton del switch
+expand solo de uno (que haga el toggle del resto)
+
+mobile?
+
+agenda con frecuencia solo hoy
+
+update de person dinamico
+
+consulta estado de prevent
+
+entrar a prevent mostrar mapa centrado en la posicion actual
+que muestre un iconito ()
+
+ver posibilidad de hacer check y mostrar varios autos
+
+prevent
+mapa fondo, todos layers, accionan sobre este mapa
+
+log paginado (nueva doc)
+Layer de procesando
+
+primer alarma expandida
 
 prevent
 home
 log paginado
 { "guid": "1","lojackUserId":"ase001", "idEntidad": 1, intPageSize: 10 }
-
-semana que viene
-liquidarlo parkings
-Layer de procesando
 
 Prevent
 manejar un metodo que vuelva a pedir los vehiculos si hay mas

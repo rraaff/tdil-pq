@@ -35,7 +35,6 @@
 <!-- Para los switches -->
 <link rel="stylesheet" href="css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script src="js/bootstrapSwitch.js"></script>
 <script src="js/bootstrapSwitch.min.js"></script>
 <!-- Fin Switches -->
