@@ -52,11 +52,6 @@ header.menuInternas li {
 }
 /* PRODUCT NAV */
 #productsMenu {
-	/*background-image: -webkit-gradient(linear, left top, left bottom, from(#761617), to(#601919)); /* Chrome, Safari 4+ /
-	background-image: -webkit-linear-gradient(top, #761617, #601919); /* Chrome 10-25, iOS 5+, Safari 5.1+ /
-	background-image:    -moz-linear-gradient(top, #761617, #601919); /* Firefox 3.6-15 /
-	background-image:      -o-linear-gradient(top, #761617, #601919); /* Opera 11.10-12.00 /
-	background-image:         linear-gradient(to bottom, #761617, #601919); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 	background: url(../images/skin_lj_rl/backs/productMenu/menu_base.png);
 	background-repeat: repeat-x;
 	background-position: 0px 0px;
@@ -80,15 +75,12 @@ header.menuInternas li {
 #productsMenu ul li {
 	font-size: 22px;
 	font-weight: bold;
-	line-height: 97px;
-
+	line-height: 91px;
 	float: left;
 	list-style: none;
 }
 #productsMenu ul li.toRight {
-	background: url(../images/skin_lj_rl/backs/productMenu/menu_off.png);
-	background-repeat: repeat-x;
-	background-position: 0px 0px;
+	background:#e51b24;
 	float:right;
 }
 #productsMenu ul li a {
@@ -100,24 +92,16 @@ header.menuInternas li {
 }
 #productsMenu ul li a:hover,
 #productsMenu ul li a:focus  {
-	background-color: #f05223;
+	background-color: #f05224;
 	color: #FFF;
 	text-decoration: none;
 }
 #productsMenu ul li a:hover,
 #productsMenu ul li a:focus  {
-	background-color: #f05223;
+	background-color: #f05224;
 	color: #FFF;
 	text-decoration: none;
 }
-#productsMenu ul li.tabHome a:hover,
-#productsMenu ul li.tabHome a:focus,
-#productsMenu ul li.tabHome:active {
-	background: url(../images/skin_lj_rl/backs/productMenu/home.png);
-	background-repeat: no-repeat;
-	background-position: 0px -1px;
-}
-
 #productsMenu ul li a.logo {
 	background-color:transparent;
 	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
