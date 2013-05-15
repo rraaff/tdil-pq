@@ -1,9 +1,12 @@
 if para el boton del switch
 expand solo de uno (que haga el toggle del resto)
 
-mobile?
+log paginado (nueva doc)
+Layer de procesando
 
-agenda con frecuencia solo hoy
+primer alarma expandida
+
+mobile?
 
 update de person dinamico
 
@@ -16,11 +19,6 @@ ver posibilidad de hacer check y mostrar varios autos
 
 prevent
 mapa fondo, todos layers, accionan sobre este mapa
-
-log paginado (nueva doc)
-Layer de procesando
-
-primer alarma expandida
 
 prevent
 home
@@ -82,5 +80,3 @@ instalar ffmpeg, documentar como y para que (avatar)
 
 
 Armar el war y deployarlo en JBoss
-
-Traerme el resource bundle de display tag

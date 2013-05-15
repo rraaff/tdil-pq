@@ -120,6 +120,7 @@
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
   <action name="AlarmAgendaForm" parameter="HomeUser" path="/saveAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveAlarmAgendaAction">
+  	<forward name="failure" path="/homeAlarmaAgenda.jsp"/>
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
   <action name="AlarmAgendaForm" parameter="HomeUser" path="/resetAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
@@ -160,6 +161,7 @@
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
   <action name="LightAgendaForm" parameter="HomeUser" path="/saveLightAgenda" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
+  	<forward name="failure" path="/homeLuzAgenda.jsp"/>
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
   </action>
   <action name="LightAgendaForm" parameter="HomeUser" path="/resetLightAgenda" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">

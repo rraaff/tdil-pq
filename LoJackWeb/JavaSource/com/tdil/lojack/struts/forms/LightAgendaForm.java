@@ -2,13 +2,18 @@ package com.tdil.lojack.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.model.AgendaType;
 import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.validations.FieldValidation;
 
 public class LightAgendaForm extends AgendaForm {
 
@@ -113,7 +118,21 @@ public class LightAgendaForm extends AgendaForm {
 	
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO Auto-generated method stub
+		if (AgendaType.ONE_DAY.equals(this.getType())) {
+			if (StringUtils.isEmpty(this.getTo())) {
+				this.setTo(this.getFrom());
+			}
+		}
+		Date from = FieldValidation.validateDate(this.getFrom(), "from", "yyyy-MM-dd", true, validationError);
+		Date to = FieldValidation.validateDate(this.getTo(), "to", "yyyy-MM-dd", true, validationError);
+		if (from != null && to != null) {
+			if (from.after(to)) {
+				validationError.setFieldError("from", "AFTER_TO");
+			}
+			if (AgendaType.ONE_DAY.equals(this.getType()) && !from.equals(to)) {
+				validationError.setFieldError("from", "one_day.DIFFERENT");
+			}
+		}
 	}
 
 	public void save() throws SQLException, ValidationException {

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.lojack.gis.model.LightAgenda"%>
@@ -84,7 +85,10 @@ Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%>
 
 <html:form method="POST" action="/saveLightAgenda">
 	Descripcion:<html:text name="LightAgendaForm" property="description" styleClass="normalField width120"/><br>
-	Desde el dia <html:text name="LightAgendaForm" property="from" styleClass="normalField width120"/> hasta el dia <html:text name="LightAgendaForm" property="to" styleClass="normalField width120"/><br>
+	Desde el dia <html:text name="LightAgendaForm" property="from" styleClass="normalField width120"/> 
+	<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
+	hasta el dia <html:text name="LightAgendaForm" property="to" styleClass="normalField width120"/>
+	<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%><br>
 	
 	Desde las: <html:select name="LightAgendaForm" property="activateTimeHour">
 		<% for (String hour : DateUtils.ALL_HOURS) { %>
@@ -113,7 +117,7 @@ Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%>
 			<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 		<% } %>
 	</html:select> segundos <br><br>
-	
+	<label style="width:90px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
 	<html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias<br>
 	<html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio><br>
 	<html:radio property="type" value="CUSTOM">Personalizado</html:radio><br>

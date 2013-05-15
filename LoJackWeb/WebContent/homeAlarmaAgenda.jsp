@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.lojack.gis.model.AlarmAgenda"%>
 <%@page import="com.tdil.web.DisplayTagParamHelper"%>
@@ -138,8 +139,10 @@
 					<fieldset>
 						<label>Desde</label>
 						<div style="float:left;"><html:text name="AlarmAgendaForm" property="from" /></div>
+						<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
 						<label>Hasta</label>
 						<div style="float:left;"><html:text name="AlarmAgendaForm" property="to" /></div>
+						<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
 					</fieldset>
 					<h4>Horarios</h4>
 					<fieldset>
@@ -196,6 +199,7 @@
 					</fieldset>
 					<h4>Frecuencia</h4>
 					<fieldset style="border-bottom:dotted 1px #f0ece4;">
+						<label style="width:90px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
 						<label style="width:90px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
 						<label style="width:90px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
 						<label style="width:90px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
