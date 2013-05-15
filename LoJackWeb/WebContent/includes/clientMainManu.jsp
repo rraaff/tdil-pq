@@ -2,7 +2,7 @@
 	<div class="userLoggedThalamusMenu">
 		<ul class="correctNav">
 			<li title="Lo-Jack, Lo tuyo es tuyo"><a href="home.jsp" class="logo" title="Volver al inicio"><img src="images/null.gif" width="173" height="91"/></a></li>
-			<li class="toRight"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA">Parking</a></li>
+			<li class="toRight tabParking"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA">Parking</a></li>
 			<% if (websiteUser.isPetUser()) { %>
 				<li class="toRight tabPet"><a href="#" title="Cuidá a tu mascota">Pets</a></li>
 			<% } else { %>
