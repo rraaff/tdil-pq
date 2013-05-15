@@ -16,52 +16,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- meta charset="utf-8"/ -->
+<meta charset="utf-8"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
 <link href="css/reset-styles" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <script src="js/bootstrap.min.js"></script>
-<%@ include file="includes/headLogged.jsp" %>
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 
-<script>
-</script>
+<%@ include file="includes/headLogged.jsp" %>
+
+
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
+<link href="css/index_social.css" rel="stylesheet" type="text/css" />
+<link href="css/copyright.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+#productsMenu ul li.tabCar {
+	background:#f05224;
+}
+button.iconBackHome,
+button.iconMaxSpeed,
+button.iconZSeguras,
+button.iconGetPosit,
+button.iconPhoneAdm {
+	border:none;
+	background: transparent;
+	background: url(images/skin_lj_rl/webApp/car/control_home_32x32.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 32px;
+	height: 32px;
+	margin: 0 10px;
+	padding: 0;
+	cursor: pointer;
+}
+button.iconMaxSpeed { background: url(images/skin_lj_rl/webApp/car/control_maxSpeed_32x32.png); }
+button.iconZSeguras { background: url(images/skin_lj_rl/webApp/car/control_zSeguras_32x32.png); }
+button.iconGetPosit { background: url(images/skin_lj_rl/webApp/car/control_getPosit_32x32.png); }
+button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phoneAdm_32x32.png); }
+</style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
-	<div class="pageWrapper">
-		<a href="./goToVehiculesSpeedLimits.do">Velocidades</a><br>
-		<a href="./goToVehiculesSecureZones.do">Zonas Seguras</a><br>
-		<a href="./goToVehiculesForMap.do">Ubicar vehiculos</a><br>
-		<a href="./goToVehiculesForPhone.do">Manejar telefonos</a><br>
+	<div class="pageWrapper" style="height:460px; background:#000;">
+	 	<span style="color:#fff;">ac� va el mapa</span>
 	</div>
 </section>
-<footer>
-	<div class="pageWrapper">
-		<div class="col1_300 marginRight_60">
-			<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
-			<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col1_300 marginRight_60">
-			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos. Engancháte ya con esta prubaaaaaáéññññññ</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col_social">
-			<ul class="nav nav-pills nav-social">
-				<li><a href="#" class="fb"></a></li>
-				<li><a href="#" class="tw"></a></li>
-				<li><a href="#" class="ln"></a></li>
-				<li><a href="#" class="gp"></a></li>
-			</ul>
-		</div>
+<section id="controls">
+	<div class="basicControls">
+		<button class="iconBackHome" href="./goToVehiculesSpeedLimits.do">&nbsp;</button>
+		<button class="iconMaxSpeed" href="./goToVehiculesSpeedLimits.do">&nbsp;</button>
+		<button class="iconZSeguras" href="./goToVehiculesSecureZones.do">&nbsp;</button>
+		<button class="iconGetPosit" href="./goToVehiculesForMap.do">&nbsp;</button>
+		<button class="iconPhoneAdm" href="./goToVehiculesForPhone.do">&nbsp;</button>
 	</div>
-</footer>
+</section>
+<section id="zoomSection">
+	<div class="zoomControls">
+		<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
+		<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
+	</div>
+</section>
+
+<%@ include file="includes/footerProductoHome.jsp" %>
+
 </body>
 </html>

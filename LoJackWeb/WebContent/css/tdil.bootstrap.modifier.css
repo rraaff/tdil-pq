@@ -389,6 +389,72 @@ header.menuInternas li {
 	font-size: 12px;
 	line-height: 14px;
 }
+/* PREVENT Y PARKINGS */
+#controls {
+	background: url(../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:456px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1300;
+}
+
+button.iconEall,
+button.icon100mts,
+button.icon500mts,
+button.icon1mks,
+button.iconClear {
+	border:none;
+	background: transparent;
+	background: url(../images/skin_lj_rl/webApp/parkings/control_100mts.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 62px;
+	height: 48px;
+	margin: 0 10px;
+	padding: 0;
+	cursor: pointer;
+}
+button.iconEall { background: url(../images/skin_lj_rl/webApp/parkings/control_E_all.png); }
+button.icon500mts { background: url(../images/skin_lj_rl/webApp/parkings/control_500mts.png); }
+button.icon1mks { background: url(../images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
+button.iconClear { background: url(../images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.icon_zoom_in,
+button.icon_zoom_out {
+	border:none;
+	background: transparent;
+	background: url(../images/skin_lj_rl/webApp/parkings/icon_ZoomIn.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 32px;
+	height: 32px;
+	margin: 10px 0;
+	padding: 0;
+	cursor: pointer;
+}
+button.icon_zoom_out { background: url(../images/skin_lj_rl/webApp/parkings/icon_ZoomOut.png); }
+#controls .basicControls {
+	text-align:center;
+	width:450px;
+	margin: 0 auto;
+}
+#zoomSection {
+	background: url(../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:0px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1305;
+}
+#zoomSection .zoomControls {
+	width:32px;
+	top:20px;
+	left:20px;
+	margin:0 auto;
+	position: absolute;
+}
 /* FOOTER */
 footer {
 	width: 100%;
