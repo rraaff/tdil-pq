@@ -44,31 +44,11 @@ No hay obtencion de la zona segura para dibujar, depende de implementacion de Ge
 
 Thalamus ******
 
-Gabriel tiene que solucionar el tema de la multicookie (JSESSIONID, AWSELB)
-
-Gabriel Error 500 en registracion con fb / twitter
-
 Add social, remove social
 Depende de definicion de uso, Pablo y LoJack
 
 *******************************
 Home
-
-Manejo de descripciones de alarmas
-Depende de base de datos
-
-Manejo de descripciones de luces
-Depende de base de datos
-
-Manejo de alertas por email (no son alertas, son avisos)
-Depende de base de datos
-Depende de MW (es necesario saber si se va a usar idEntidad y idDevice o solo uno de ambos)
-
-Activacion/Desactivacion de alarmas
-Dependen de servicio de validacion de password de Thalamus
-
-Cambio de password
-No pedir el credential, depende de cambio en thalamus
 
 Resto de home
 Depende de MW
@@ -92,11 +72,6 @@ Nuestros
 
 instalar ffmpeg, documentar como y para que (avatar)
 
-url de las cookies, deshardcodear
-Esto tiene que ver con twitter
-
-pasar servlets,actions, etc de energy a lojack
-Esto tiene que ver con los ultimos cambios de fb y twitter
 
 Armar el war y deployarlo en JBoss
 

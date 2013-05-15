@@ -33,13 +33,20 @@ public class LoginTwitterAction extends Action {
 		String oauth_verifier = request.getParameter("oauth_verifier");
 		if (!StringUtils.isEmpty(code)) {
 			Cookie twt = getTwitterCookie(request);
-			if (twt != null) {
+			Cookie etwt = getExtraTwitterCookie(request);
+			if (twt != null && etwt != null) {
 				RegisterForm register = (RegisterForm) request.getSession().getAttribute("RegisterForm");
 				TokenHolder tokenHolder = new TokenHolder();
 				org.apache.commons.httpclient.Cookie cookie = new org.apache.commons.httpclient.Cookie(ThalamusClient.getTHALAMUS_HOST(),
 						"JSESSIONID", twt.getValue());
 				cookie.setPath(ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
 				tokenHolder.addCookie(cookie);
+				
+				org.apache.commons.httpclient.Cookie ecookie = new org.apache.commons.httpclient.Cookie(ThalamusClient.getTHALAMUS_HOST(),
+						"AWSELB", etwt.getValue());
+				ecookie.setPath(ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
+				tokenHolder.addCookie(ecookie);
+				
 				LoginResult login = ThalamusClientFacade.signInTwitter(code, oauth_verifier, tokenHolder);
 				JSONObject json = (JSONObject) login.getResponse().getResult();
 				if (isNotLogged(json)) {
@@ -63,6 +70,15 @@ public class LoginTwitterAction extends Action {
 	private Cookie getTwitterCookie(HttpServletRequest request) {
 		for (Cookie co : request.getCookies()) {
 			if (co.getName().equals("twt")) {
+				return co;
+			}
+		}
+		return null;
+	}
+	
+	private Cookie getExtraTwitterCookie(HttpServletRequest request) {
+		for (Cookie co : request.getCookies()) {
+			if (co.getName().equals("etwt")) {
 				return co;
 			}
 		}
