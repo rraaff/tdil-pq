@@ -1,3 +1,4 @@
+<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
@@ -23,6 +24,16 @@
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
 	} %>
+<%
+URLHolder twitterUrl = ThalamusClientBeanFacade.getTwitterLogin();
+Cookie cookie1 = new Cookie("twt", twitterUrl.getCookie("JSESSIONID").getValue());
+cookie1.setMaxAge(24*60*60);
+response.addCookie(cookie1);
+
+Cookie ecookie1 = new Cookie("etwt", twitterUrl.getCookie("AWSELB").getValue());
+ecookie1.setMaxAge(24*60*60);
+response.addCookie(ecookie1);
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -345,7 +356,7 @@ function parkingsNotLogged() {
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
 					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con tu FB</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
+					<li><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
 				</ul>
 			</div>
 		</li>
@@ -361,7 +372,7 @@ function parkingsNotLogged() {
 	<div>
 		<ul>
 			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+			<li class="sotwitter"><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
