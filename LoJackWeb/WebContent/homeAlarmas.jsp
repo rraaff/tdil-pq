@@ -306,18 +306,17 @@ textarea {
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
-							<div class="portaToggle"><img src="images/accordion_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
+							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
 							<div class="portaTitleAndSwitch">
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
-
 								<div class="switchContainer">
 									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
 									    <input type="checkbox">
 									</div>
 								  	<% if (alarm.isInactive() ) { %>
-								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">ON</span>
+								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
 								  	<% } else { %>
-								  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">OFF</span>
+								  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">*</span>
 								  	<% } %>
 							  	</div>
 

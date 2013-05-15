@@ -320,7 +320,7 @@ header.menuInternas li {
 	text-transform: uppercase;
 	min-width:280px;
 	margin: 0;
-	padding: 0;
+	padding: 4px 0 0 0;
 	float:left;
 }
 #accordion .switchContainer {
