@@ -26,7 +26,7 @@
 
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/alarms.js"></script>
-
+<script src="js/jQueryRotateCompressed.2.2.js"></script>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
@@ -126,11 +126,11 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 
 	function toggle(idEntidad) {
 		if ($('#cont-' + idEntidad).css('display') == 'none') {
-			$('#cont-' + idEntidad).css('display', 'block');
-			$('#toggle-' + idEntidad).prop('innerHTML',"-");
+			$('#cont-' + idEntidad).slideDown();
+			$('#toggle-' + idEntidad).rotate({ animateTo:90});
 		} else {
-			$('#cont-' + idEntidad).css('display', 'none');
-			$('#toggle-' + idEntidad).prop('innerHTML',"+");
+			$('#cont-' + idEntidad).slideUp();
+			$('#toggle-' + idEntidad).rotate({ animateTo:0});
 		}
 	}
 
@@ -304,7 +304,7 @@ textarea {
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
-							<div class="portaToggle"><button class="toggleAtAccordion" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')">&nbsp;</button></div>
+							<div class="portaToggle"><img src="images/accordion_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
 							<div class="portaTitleAndSwitch">
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 
