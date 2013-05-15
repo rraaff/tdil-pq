@@ -295,11 +295,14 @@ header.menuInternas li {
 #accordion,
 #agendaWrapper {
 	background:#FFF;
-	width: 680px;
+	width: 500px;
 	margin: 10px;
 	padding: 10px;
 	text-align: left;
 	float:left;
+}
+#agendaWrapper {
+	width: 680px;
 }
 #accordion .titleContainer {
 	width: 100%;
