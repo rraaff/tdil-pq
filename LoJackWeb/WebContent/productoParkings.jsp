@@ -21,16 +21,24 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
+<!-- link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
+
 <%@ include file="includes/headLogged.jsp" %>
+
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
+<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
+<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
+
 <style>
 /**
  * Map Examples Specific
  */
 .smallmap {
-    width: 512px;
-    height: 256px;
+    width: 968px;
+    height: 450px;
     border: 1px solid #ccc;
 }
 #tags {
@@ -310,6 +318,7 @@
 </head>
 
 <body>
+<section style="top:450px; position: absolute; z-index: 1300;">
 	<button onclick="showAllParkings()">Mostrar Todos</button>
 	<button onclick="showParkings(100)">100mts</button>
 	<button onclick="showParkings(500)">500mts</button>
@@ -317,6 +326,8 @@
 	<button onclick="removeParkings()">Quitar Todos</button>
 	<input type="button" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">
 	<input type="button" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">
+</section>
+
 	<div id="mapContainer" class="smallmap">
                 </div>
 
