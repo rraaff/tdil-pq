@@ -42,6 +42,7 @@
 }
 #tags { display: none; }
 #docs p {
+	font-size:12px;
     margin-bottom: 0.5em;
 }
 #controls {
@@ -243,7 +244,7 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
        	  if (navigator.geolocation) {
        	    navigator.geolocation.getCurrentPosition(showParkingsForPos,showError);
        	  } else{
-       		showErrorLayer("Geolocation is not supported by this browser.");
+       		showErrorLayer("No está disponible la Geolocalización en su navegador.<br/>Inténtelo con otro.");
        	  }
        	}
 
@@ -266,16 +267,16 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
         switch(error.code)
           {
           case error.PERMISSION_DENIED:
-        	  showErrorLayer("User denied the request for Geolocation.");
+        	  showErrorLayer("El usuario denego el pedido de Geolocalización.");
             break;
           case error.POSITION_UNAVAILABLE:
-        	  showErrorLayer("Location information is unavailable.");
+        	  showErrorLayer("La informacción de localización inaccesible.");
             break;
           case error.TIMEOUT:
-        	  showErrorLayer("The request to get user location timed out.");
+        	  showErrorLayer("Se ha acabado el tiempo para obtener los datos.");
             break;
           case error.UNKNOWN_ERROR:
-        	  showErrorLayer("An unknown error occurred.");
+        	  showErrorLayer("Ha ocurrido un error.");
             break;
           }
         }
@@ -288,16 +289,16 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
         		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=15");
             }
         	if (isOutSideCABA(MyPos)) {
-        		showErrorLayer("NO hay datos fuera de caba");
+        		showErrorLayer("No hay datos fuera de de la Ciudad Autónoma de Buenos Aires.");
 				removeParkings();
 				parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(21,25);
+	            var size = new OpenLayers.Size(32,32);
 	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/marker.png',size,offset);
+	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/car.png',size,offset);
-				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'usted', '', proj, iconCar.clone()));
+				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar.clone()));
             } else {
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
             }
@@ -324,18 +325,18 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
 	            success: function(msg) {
             		parkings = new OpenLayers.Layer.Markers( "Parkings" );
     	            Mapa.map.addLayer(parkings);
-    	            var size = new OpenLayers.Size(21,25);
+    	            var size = new OpenLayers.Size(32,32);
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/marker.png',size,offset);
+    	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
-    				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/car.png',size,offset);
-    				parkings.addMarker(createMarker(lon,lat, 'usted', '', proj, iconCar.clone()));
+    				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+    				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
 	            	$.each(msg, function(index, item) {
 	    				parkings.addMarker(createMarker(item.lon,item.lat, item.name, item.desc, proj, icon.clone()));
 	                });
 	            },
 	            error: function() {
-	            	showErrorLayer("error consultando los estacionamientos");
+	            	showErrorLayer("Error consultando los estacionamientos.");
 	            }
 	        });
 		}
@@ -347,7 +348,7 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
 			var feature = new OpenLayers.Feature(parkings, point);
             feature.closeBox = true;
             feature.popupClass = popupClass;
-            feature.data.popupContentHTML = '<div style="background-color:#003366;color: White">' + title + '<br>' + desc +'</div>';
+            feature.data.popupContentHTML = '<div style="background-color:#000; color:#fff; padding:20px;"><span style="color:#ee5222; font-weight:bold;">' + title + '</span><br><span style="color:#fff; font-size:12px; font-weight:lighter; padding:10px 0;">' + desc +'</span></div>';
             feature.data.overflow = "auto";
 
             var markerClick = function(evt) {
@@ -401,10 +402,14 @@ button.icon_zoom_out { background: url(images/skin_lj_rl/webApp/parkings/icon_Zo
 	<div class="modalStyle" style="width:350px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
-			<div id="showErrorLayerMessage">
-				...
+			<div class="alert alert-error" style="margin:20px 0;">
+				<div>
+					<div id="showErrorLayerMessage">
+						...
+					</div>
+				</div>
 			</div>
-			<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar">
+			<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>

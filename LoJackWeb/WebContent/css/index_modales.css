@@ -68,7 +68,8 @@
 #forgotPasswordErrorLayer h3,
 #legalesLayer h3,
 #logLayer h3,
-#passwordLayer h3 {
+#passwordLayer h3,
+h3 {
 	color: #ee5222;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-weight: bold;
