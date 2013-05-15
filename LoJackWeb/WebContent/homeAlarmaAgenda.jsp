@@ -136,103 +136,105 @@
 				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
 					Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
 				<html:form method="POST" action="/saveAlarmAgenda">
-				<form>
-					<fieldset>
-						<label>Nombre</label>
-						<html:text name="AlarmAgendaForm" property="description" styleClass="width390" />
-					</fieldset>
-					<fieldset>
-						<label>Desde</label>
-						<div style="float:left;"><html:text name="AlarmAgendaForm" property="from" /></div>
-						<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
-						<label>Hasta</label>
-						<div style="float:left;"><html:text name="AlarmAgendaForm" property="to" /></div>
-						<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
-					</fieldset>
-					<h4>Horarios</h4>
-					<fieldset>
-						<label>Desde</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
-								<% for (String hour : DateUtils.ALL_HOURS) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-						<label>hs y</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
-								<% for (String hour : DateUtils.ALL_MINUTES) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-						<label>min y</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeSeconds" styleClass="width80">
-								<% for (String hour : DateUtils.ALL_SECONDS) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</fieldset>
-					<fieldset>
-						<label>Desde</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
-								<% for (String hour : DateUtils.ALL_HOURS) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-						<label>hs y</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
-								<% for (String hour : DateUtils.ALL_MINUTES) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-						<label>min y</label>
-						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds" styleClass="width80">
-								<% for (String hour : DateUtils.ALL_SECONDS) { %>
-									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-								<% } %>
-							</html:select>
-						</div>
-					</fieldset>
-					<h4>Frecuencia</h4>
-					<fieldset style="border-bottom:dotted 1px #f0ece4;">
-						<label style="width:90px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
-						<label style="width:90px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
-						<label style="width:90px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
-						<label style="width:90px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="monday"/></div>
-						<label class="days">Lu</label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="tuesday"/></div>
-						<label class="days">Ma</label> 
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="wednesday"/></div>
-						<label class="days">Mi</label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="thursday"/></div>
-						<label class="days">Ju</label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="friday"/></div>
-						<label class="days">Vi</label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="saturday"/></div>
-						<label class="days">Sa</label>
-						<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="sunday"/></div>
-						<label class="days">Do</label>
-					</fieldset>
-					<fieldset>
-						<logic:equal name="AlarmAgendaForm" property="edition" value="true">
-							<input type="button" onclick="save()" value="Modificar" class="indexButtonBase">
-						</logic:equal>
-						<logic:equal name="AlarmAgendaForm" property="edition" value="false">
-							<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
-						</logic:equal>
-						<!--  input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset" class="indexButtonBase"-->
-					</fieldset>
-				</form>
+					<form>
+						<fieldset>
+							<label>Nombre</label>
+							<html:text name="AlarmAgendaForm" property="description" styleClass="width390" />
+						</fieldset>
+						<fieldset>
+							<label>Desde</label>
+							<div style="float:left;"><html:text name="AlarmAgendaForm" property="from" /></div>
+							<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
+							<label>Hasta</label>
+							<div style="float:left;"><html:text name="AlarmAgendaForm" property="to" /></div>
+							<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
+						</fieldset>
+						<h4>Horarios</h4>
+						<fieldset>
+							<label>Desde</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
+									<% for (String hour : DateUtils.ALL_HOURS) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+							<label>hs y</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
+									<% for (String hour : DateUtils.ALL_MINUTES) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+							<label>min y</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="activateTimeSeconds" styleClass="width80">
+									<% for (String hour : DateUtils.ALL_SECONDS) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+						</fieldset>
+						<fieldset>
+							<label>Desde</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
+									<% for (String hour : DateUtils.ALL_HOURS) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+							<label>hs y</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
+									<% for (String hour : DateUtils.ALL_MINUTES) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+							<label>min y</label>
+							<div style="float:left;">
+								<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds" styleClass="width80">
+									<% for (String hour : DateUtils.ALL_SECONDS) { %>
+										<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+									<% } %>
+								</html:select>
+							</div>
+						</fieldset>
+						<h4>Frecuencia</h4>
+						<fieldset>
+							<label style="width:90px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
+							<label style="width:90px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
+							<label style="width:90px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
+						</fieldset>
+						<fieldset style="border-bottom:dotted 1px #f0ece4;">
+							<label style="width:90px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="monday"/></div>
+							<label class="days">Lu</label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="tuesday"/></div>
+							<label class="days">Ma</label> 
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="wednesday"/></div>
+							<label class="days">Mi</label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="thursday"/></div>
+							<label class="days">Ju</label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="friday"/></div>
+							<label class="days">Vi</label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="saturday"/></div>
+							<label class="days">Sa</label>
+							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="sunday"/></div>
+							<label class="days">Do</label>
+						</fieldset>
+						<fieldset>
+							<logic:equal name="AlarmAgendaForm" property="edition" value="true">
+								<input type="button" onclick="save()" value="Modificar" class="indexButtonBase">
+							</logic:equal>
+							<logic:equal name="AlarmAgendaForm" property="edition" value="false">
+								<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
+							</logic:equal>
+							<!--  input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset" class="indexButtonBase"-->
+						</fieldset>
+					</form>
 				</html:form>
 				<form>
 					<fieldset>
