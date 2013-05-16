@@ -11,11 +11,11 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 
 public class DateUtils {
-	
+
 	public static List<String> ALL_HOURS;
 	public static List<String> ALL_MINUTES;
 	public static List<String> ALL_SECONDS;
-	
+
 	static {
 		List<String> result = new ArrayList<String>(24);
 		for (int i = 0; i < 10; i++) {
@@ -25,12 +25,12 @@ public class DateUtils {
 			result.add(String.valueOf(i));
 		}
 		ALL_HOURS = Collections.unmodifiableList(result);
-		
+
 		result = new ArrayList<String>(60);
 		for (int i = 0; i < 10; i++) {
 			result.add("0" + i);
 		}
-		for (int i = 10; i < 59; i++) {
+		for (int i = 10; i < 60; i++) {
 			result.add(String.valueOf(i));
 		}
 		ALL_MINUTES = Collections.unmodifiableList(result);
@@ -49,7 +49,7 @@ public class DateUtils {
 			return new Date();
 		}
 	}
-	
+
 	public static Date date2FirstMomentOfDate(Date date) {
 		if (date == null) {
 			return null;
@@ -62,7 +62,7 @@ public class DateUtils {
 			return new Date();
 		}
 	}
-	
+
 	public static Date date2FirstMomentOfMonth(Date date) {
 		if (date == null) {
 			return null;
@@ -76,7 +76,7 @@ public class DateUtils {
 			return new Date();
 		}
 	}
-	
+
 	protected static Calendar getCalendarWith(Date date, int hour, int minutes, int seconds, int milliseconds) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
@@ -84,7 +84,7 @@ public class DateUtils {
 		calendar.set(Calendar.MINUTE, minutes);
 		calendar.set(Calendar.SECOND, seconds);
 		calendar.set(Calendar.MILLISECOND, milliseconds);
-		return calendar; 
+		return calendar;
 	}
 
 	public static String formatDate(Date fromDate2) {
@@ -108,7 +108,7 @@ public class DateUtils {
 			return null;
 		}
 	}
-	
+
 	public static String formatDateSp(Date fromDate2) {
 		if (fromDate2 == null) {
 			return "";
@@ -130,5 +130,5 @@ public class DateUtils {
 			return null;
 		}
 	}
-	
+
 }

@@ -28,15 +28,15 @@ public abstract class SystemConfig {
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(SystemConfig.class);
 	}
-	
+
 	public static DateFormat getDateFormat() {
 		return new SimpleDateFormat("dd MMM yyyy");
 	}
-	
+
 	public static DateFormat getDateFormatWithMinutes() {
 		return new SimpleDateFormat("dd MMM yyyy HH:mm");
 	}
-	
+
 	public void init(ServletContextEvent sce) {
 		Role.addRole(None.INSTANCE);
 		initRoles();
@@ -46,16 +46,16 @@ public abstract class SystemConfig {
 		initLogger();
 		initBlobCache();
 	}
-	
+
 	public void loadPropertiesFromDB() {
 		getLog().fatal("SystemConfig loading properties from db");
 		try {
 			TransactionProvider.executeInTransaction(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
-					
+
 					loadPropertiesFromDBInTransaction();
 					getLog().fatal("Using temp dir " + SystemPropertyCache.getTempPath());
-					
+
 					try {
 						File file = new File(SystemPropertyCache.getTempPath());
 						if (!file.exists()) {
@@ -95,7 +95,7 @@ public abstract class SystemConfig {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			throw new RuntimeException(e);
-		} 
+		}
 		getLog().fatal("SystemConfig loaded properties from db");
 	}
 
@@ -104,18 +104,18 @@ public abstract class SystemConfig {
 	private void initLogger() {
 		getLog().fatal("SystemConfig initializing logger");
 		String logFilePath =  SystemPropertyCache.getTempPath() + "/" + SystemConfig.this.getLogDir() +  "/log4j.xml";
-		LoggerProvider.initialize(logFilePath, LogManager.getCurrentLoggers());
+		LoggerProvider.initializeAndWatch(logFilePath, LogManager.getCurrentLoggers());
 		getLog().fatal("SystemConfig logger initialized");
 	}
 
 	protected abstract void initRoles();
-	
+
 	protected abstract void initXMLALias();
-	
+
 	protected abstract void loadProperties();
-	
+
 	protected abstract void loadPropertiesFromDBInTransaction();
-	
+
 	protected abstract void initBlobCache();
-	
+
 }

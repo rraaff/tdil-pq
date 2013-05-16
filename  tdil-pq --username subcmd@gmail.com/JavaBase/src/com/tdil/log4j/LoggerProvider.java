@@ -13,21 +13,21 @@ import org.apache.log4j.xml.DOMConfigurator;
 /**
  */
 public class LoggerProvider {
-	
+
 	private static boolean initialized = false;
-	
+
 	private static HashMap<String, Logger> loggers;
-	
+
 	/**
-	 * Constructor 
+	 * Constructor
 	 */
 	public LoggerProvider() {
 		super();
 	}
-	
+
 	/**
 	 * Returns all available loggers in a hashmap
-	 * 
+	 *
 	 * @return
 	 */
 	private static HashMap<String, Logger> getLoggers() {
@@ -36,24 +36,24 @@ public class LoggerProvider {
 		}
 		return loggers;
 	}
-	
+
 	/**
 	 * Sets the loggers
-	 * 
+	 *
 	 * @param newLoggers
 	 */
 	private static void setLoggers(HashMap<String, Logger> newLoggers) {
 		loggers = newLoggers;
 	}
-	
+
 	public static void destroy() {
 		initialized = false;
 		loggers = null;
 	}
-	
+
 	/**
 	 * Initialize the base logger with the given enumeration
-	 * 
+	 *
 	 * @param loggersEnum
 	 */
 	public static synchronized void initialize(final String logFilePath, final Enumeration<Logger> loggersEnum) {
@@ -70,30 +70,50 @@ public class LoggerProvider {
 			initialized = true;
 		}
 	}
-	
+
+	/**
+	 * Initialize the base logger with the given enumeration
+	 *
+	 * @param loggersEnum
+	 */
+	public static synchronized void initializeAndWatch(final String logFilePath, final Enumeration<Logger> loggersEnum) {
+		if (!initialized) {
+			DOMConfigurator.configureAndWatch(logFilePath);
+//			DOMConfigurator.configure(logFilePath);
+			Logger logger;
+			while (loggersEnum.hasMoreElements()) {
+				logger = loggersEnum.nextElement();
+				if (logger != null && logger.getName() != null) {
+					addLogger(logger.getName(), logger);
+				}
+			}
+			initialized = true;
+		}
+	}
+
 	/**
 	 * Add a Logger into loggers
-	 * 
+	 *
 	 * @param loggerName
 	 * @param logger
 	 */
 	private static void addLogger(String loggerName, Logger logger) {
 		getLoggers().put(loggerName, logger);
 	}
-	
+
 	/**
 	 * Returns the logger for the given logger name
-	 * 
+	 *
 	 * @param className
 	 * @return Logger
 	 */
 	public static Logger getLogger(Class<? extends Object> className) {
 		return getLogger(className.getName());
 	}
-	
+
 	/**
 	 * Returns the logger for the given logger name
-	 * 
+	 *
 	 * @param loggerName
 	 * @return Logger
 	 */
@@ -107,6 +127,6 @@ public class LoggerProvider {
 		}
 		return logger;
 	}
-	
+
 
 }
