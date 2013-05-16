@@ -135,7 +135,7 @@ header {
 	width: 100%;
 	height: 63px;
 	position: fixed;
-	z-index: 5;
+	z-index: 1005;
 	top: 0px;
 
 }
@@ -212,7 +212,7 @@ header {
 			<ul>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 				<li><a href="./goToChangePassword.do" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="javascript:updatePerson()" title="Cambiar mis datos">Cambiar mis datos</a></li>
+				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li class="userPic">
 					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
 							<a href="./goToEditProfile.do" title="Cambiar imagen"><img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="59" height="59" align="absmiddle"></a>
@@ -225,6 +225,8 @@ header {
 </header>
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
+
+<div id="logoIndex">&nbsp;</div>
 
 <div id="socialSingleSignOn">
 	<div><span class="textInside">Ingresá con tus cuentas</span></div>

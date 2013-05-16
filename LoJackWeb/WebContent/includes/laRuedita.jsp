@@ -13,7 +13,7 @@
 		<%} %>
 
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoProfile"><a href="./goToUpdatePerson.do" title="Cambiar mis datos"><img src="images/null.gif" /></a></div>
+			<div id="iconoProfile"><a href="javascript:updatePerson();" title="Modificá tus datos"><img src="images/null.gif" /></a></div>
 		<%} else { %>
 			<div id="iconoProfile"><a href="javascript:register();" id="register" title="Registrate gratis"><img src="images/null.gif" /></a></div>
 		<%} %>
