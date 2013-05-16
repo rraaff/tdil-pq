@@ -83,6 +83,12 @@
 		});
 	});
 
+	$(document).ready(
+			function(){
+	<%@ include file="includes/closeLegalesLayer.jsp" %>
+			}
+	);
+
 	function updatePerson() {
 		  $('#updatePerson').load('goToUpdatePerson.do', function() {
 			  centerLayer($(window), $( "#updatePersonLayer" ));
@@ -98,6 +104,8 @@
 				left: left + 'px'
 			}).fadeIn(500);
 		}
+
+	  <%@ include file="includes/openLegalesLayer.jsp" %>
 </script>
 <!-- End Slider -->
 <!-- script>
