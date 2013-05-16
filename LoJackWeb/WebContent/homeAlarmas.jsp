@@ -345,8 +345,8 @@ textarea {
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 								<div class="switchContainer">
 									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
 									</div>
-									    <input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
 								  	<% if (alarm.isInactive() ) { %>
 								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
 								  	<% } else { %>
