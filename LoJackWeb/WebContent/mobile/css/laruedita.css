@@ -1,0 +1,150 @@
+#laRuedita {
+	width: 100%;
+	height: 100%;
+	margin:0 auto;
+	top: 30%;
+	z-index: 999;
+	position: fixed;
+	/*overflow: hidden;*/
+}
+#laRuedita .fakeRuedita {
+	background: url(../../images/skin_lj_rl/backs/wheel_mobile.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 180px;
+	height: 180px;
+	margin: 0 auto;
+}
+#logoIndex {
+	width: 33%;
+	height: auto;
+	top: 30px;
+	z-index: 998;
+	position: fixed;
+}
+#logoIndex img {
+	width: 100%;
+	height: auto;
+}
+/* ICONOS */
+#iconoLogin {
+	/*border: dotted 1px red;*/
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_lock_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width:59px;
+	height:59px;
+	top:13px;
+	left:13px;
+	z-index: 1101;
+	position: relative;
+}
+#iconoLogin img,
+#iconoProfile img,
+#iconoCar img,
+#iconoPets img {
+	width: 59px;
+	height: 59px;
+	margin: 0;
+	padding: 0;
+}
+#iconoLogin:hover,
+#iconoLogin:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_lock_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#iconoParkings {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_parkings_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 70px;
+	height: 48px;
+	top: -55px;
+	left: 54px;
+	z-index: 1102;
+	position: relative;
+}
+#iconoParkings img {
+	width: 70px;
+	height: 48x;
+	margin: 0;
+	padding: 0;
+}
+#iconoParkings:hover,
+#iconoParkings:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_parkings_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#iconoProfile {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_profile_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 59px;
+	height: 59px;
+	top: -94px;
+	left: 109px;
+	z-index: 1103;
+	position: relative;
+}
+#iconoProfile:hover, #iconoProfile:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_profile_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#iconoCar {
+	/*border: dotted 1px yellow;*/
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_car_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 59px;
+	height: 59px;
+	top: -57px;
+	left: 13px;
+	z-index: 1104;
+	position: relative;
+}
+#iconoCar:hover, #iconoCar:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_car_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#iconoHome {
+	/*border: dotted 1px yellow;*/
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_home_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 66px;
+	height: 48px;
+	top: -97px;
+	left: 58px;
+	z-index: 1105;
+	position: relative;
+}
+#iconoHome img {
+	width: 66px;
+	height: 48px;
+}
+#iconoHome:hover, #iconoHome:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_home_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#iconoPets {
+	/*border: dotted 1px yellow;*/
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_pets_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	width: 59px;
+	height: 59px;
+	top: -165px;
+	left: 109px;
+	z-index: 1106;
+	position: relative;
+}
+#iconoPets:hover, #iconoPets:focus {
+	background: url(../../images/skin_lj_rl/buttons/mobile/wheel_pets_on.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}

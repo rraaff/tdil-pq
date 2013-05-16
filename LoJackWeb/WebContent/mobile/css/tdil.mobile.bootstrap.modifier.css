@@ -1,0 +1,617 @@
+header {
+	color: #FFF;
+	/*background: #000;*/
+	width: 100%;
+	height: 42px;
+	padding: 0px;
+	margin: 0px;
+}
+header {
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+	overflow: hidden;
+}
+.correctNav {
+	width: 964px;
+	margin: 0px auto;
+	padding: 0px;
+}
+header li {
+	line-height: 42px;
+}
+header ul li {
+	/*float: left;*/
+	list-style: none;
+}
+header ul li.toRight {
+	float: right;
+}
+header ul li a {
+	color: #FFF;
+	padding-left:20px;
+	padding-top:16px;
+	padding-right:20px; 
+	padding-bottom:16px;
+}
+header ul li a:hover,
+header ul li a:focus  {
+	background-color: #f05223;
+	color: #FFF;
+	text-decoration: none;
+}
+header.menuInternas {
+	background: #000;
+}
+header.menuInternas li {
+	width: auto;
+	float: left;
+}
+.userName {
+	color: #f05223;
+}
+/* PRODUCT NAV */
+#productsMenu {
+	background: url(../../images/skin_lj_rl/backs/productMenu/menu_base.png);
+	background-repeat: repeat-x;
+	background-position: 0px 0px;
+	width: 100%;
+	height: 91px;
+	padding: 0px;
+	margin: 0px;
+	z-index: 2;
+	position: absolute;
+	top:42px;
+}
+#productsMenu .userLoggedThalamusMenu {
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	overflow: hidden;
+}
+#productsMenu ul li {
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 91px;
+	float: left;
+	list-style: none;
+}
+#productsMenu ul li.toRight {
+	background:#e51b24;
+	float:right;
+}
+#productsMenu ul li a {
+	color: #fff;
+	padding-left:35px;
+	padding-top:34px;
+	padding-right:35px; 
+	padding-bottom:41px;
+}
+#productsMenu ul li a:hover,
+#productsMenu ul li a:focus  {
+	background-color: #f05224;
+	color: #FFF;
+	text-decoration: none;
+}
+#productsMenu ul li a:hover,
+#productsMenu ul li a:focus  {
+	background-color: #f05224;
+	color: #FFF;
+	text-decoration: none;
+}
+#productsMenu ul li a.logo {
+	background-color:transparent;
+	background: url(../../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 173px;
+	height: 91px;
+	margin:0;
+	padding:0;
+	float: left;
+}
+/*content*/
+#content {
+	width: 100%;
+	height: 426px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+	display: inline-block;
+	overflow: hidden;
+	left:0px;
+	top:133px;
+	position: absolute;
+}
+.pageWrapper, footer .pageWrapper {
+	width: 968px;
+	margin: 0 auto;
+}
+/* PRODUCTO:HOME */
+#content .col1_170 {
+	width: 170px !important;
+	float: left;
+	overflow: hidden;
+}
+#content .col1_794 {
+	background: #f0ece4;
+	width: 714px;
+	height: 364px;
+	padding: 30px 40px;
+	overflow: auto;
+	float: left;
+}
+#content .alarmasBG, #content .lucesBG, #content .camarasBG {
+	background: url(../../images/skin_lj_rl/backs/productHome_alarm.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-color: #f0ece4;
+}
+#content .lucesBG {
+	background: url(../../images/skin_lj_rl/backs/productHome_light.png);
+	background-color: #f0ece4;
+}
+#content .camarasBG {
+	background: url(../../images/skin_lj_rl/backs/productHome_camera.png);
+	background-color: #f0ece4;
+	width: 694px;
+	height: 377px;
+	padding: 40px 53px 0 48px;
+}
+#cameraTitle {
+	background-color: #fff;
+	background-image: url(../../images/skin_lj_rl/buttons/toggle_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 10px 14px;
+	width: 560px;
+	height: 54px; 
+}
+#camerasList {
+	background-color: #fff;
+	text-align:left;
+	width: 520px;
+	height: 240px;
+	padding: 20px;
+	float:left;
+}
+#camerasList h3 {
+	color: #ee5222;
+	font-size: 18px;
+	font-weight: lighter;
+}
+#camerasList ul.cameraListUl {
+	float: left !important;
+}
+#camerasList ul li.cameraLink a {
+	width: 350px;
+	float: left;
+}
+#cameraTitle h1,
+#agendaWrapper h1 {
+	color: #761617;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 54px;
+	text-align: left;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0 0 0 40px;
+}
+#agendaWrapper h1 {
+	padding: 0;
+}
+#agendaWrapper h4 {
+	color:#f05224;
+	font-weight: lighter;
+}
+#agendaWrapper label {
+	width: 40px;
+}
+#agendaWrapper label.days {
+	width: 10px;
+}
+#agendaWrapper input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	/*width: 100px;*/
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px 20px 5px 0;
+	float: left;
+}
+#agendaWrapper table {
+	font-size: 12px;
+}
+#agendaWrapper tr {
+	border-bottom:dotted 1px #f0ece4;
+}
+#agendaWrapper td {
+	padding: 5px 15px 5px 0;
+}
+#appletHolder {
+	background: #fff;
+	width: 560px;
+	height: 297px;
+	overflow: hidden;
+	float:left;
+}
+#linksAside {
+	text-align:left;
+	margin:240px 0 0 10px;
+	float:left;
+}
+#linksAside span {
+	padding: 5px 0;
+}
+#content .tab {
+	background: url(../../images/skin_lj_rl/tabs/servicion.png);
+	background-position: center center;
+	background-repeat:no-repeat;
+	width: 170px;
+	height: 26px;
+	float: left;
+}
+#content ul.tabServices {
+	width: 170px;
+	float: left;
+}
+#content ul li {
+	/*float: right;*/
+	list-style: none;
+}
+#content ul li a {
+	color: #641819;
+	font-weight: normal;
+	text-transform: uppercase;
+	line-height: 21px;
+	width: 170px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+#content ul li a:hover,
+#content ul li a:focus {
+	background-color: #f0ece4;
+}
+#content li.tabAlarms a {
+	background: url(../../images/skin_lj_rl/buttons/alarms_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 41px;
+	padding: 99px 0px 0px 0px;
+}
+#content li.tabLights a {
+	background: url(../../images/skin_lj_rl/buttons/luces_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 37px;
+	padding: 94px 0px 0px 0px;
+}
+#content li.tabCameras a {
+	background: url(../../images/skin_lj_rl/buttons/cameras_big.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	height: 40px;
+	padding: 80px 0px 0px 0px;
+}
+#content li.active { background-color: #f0ece4; float: left; }
+/* Accordion modifiers */
+#accordion,
+#agendaWrapper {
+	background:#FFF;
+	width: 500px;
+	margin: 10px;
+	padding: 10px;
+	text-align: left;
+	float:left;
+}
+#agendaWrapper {
+	width: 680px;
+}
+#accordion .titleContainer {
+	width: 100%;
+	overflow:hidden;
+	/*float: left;*/
+}
+#accordion .portaToggle {
+	float: left;
+}
+#accordion button.toggleAtAccordion {
+	border:none;
+	color:transparent;
+	background: url(../../images/skin_lj_rl/buttons/toggle_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 27px;
+	height: 27px;
+	margin: 0 0 10px 0;
+}
+#accordion .portaTitleAndSwitch {
+	width:460px;
+	border-bottom:solid 2px #f0ece4;
+	padding-bottom:10px;
+	float: left;
+}
+#accordion .editable {
+	color: #761617;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 21px;
+	text-transform: uppercase;
+	min-width:280px;
+	margin: 0;
+	padding: 4px 0 0 0;
+	float:left;
+}
+#accordion .switchContainer {
+	float: right;
+}
+#alarm-status-1, #alarm-status-2, #alarm-status-3, #alarm-status-4 {
+	color: #7f9e48;
+	font-size: 9px;
+	font-weight: normal;
+	line-height: 15px;
+	text-transform: uppercase;
+	float:left;
+	clear: both;
+}
+#switchBoard {
+	padding: 10px;
+}
+#switchBoard span {
+	color:#761617;
+	font-size:15.5px;
+	line-height: 18px;
+	
+	width:100%;
+	padding:5px 0;
+	float:left;
+}
+#switchBoard .lastChange {
+	font-size: 10px;
+	line-height: 14px;
+}
+#switchBoard .lastAction {
+	
+}
+#switchBoard .changesLog,
+#switchBoard .notifyme,
+#switchBoard .linkToAgenda {
+	font-size: 12px;
+	line-height: 14px;
+}
+/* PREVENT Y PARKINGS */
+#controls {
+	background: url(../../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:456px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1300;
+}
+
+button.iconEall,
+button.icon100mts,
+button.icon500mts,
+button.icon1mks,
+button.iconClear {
+	border:none;
+	background: transparent;
+	background: url(../../images/skin_lj_rl/webApp/parkings/control_100mts.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 62px;
+	height: 48px;
+	margin: 0 10px;
+	padding: 0;
+	cursor: pointer;
+}
+button.iconEall { background: url(../../images/skin_lj_rl/webApp/parkings/control_E_all.png); }
+button.icon500mts { background: url(../../images/skin_lj_rl/webApp/parkings/control_500mts.png); }
+button.icon1mks { background: url(../../images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
+button.iconClear { background: url(../../images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.icon_zoom_in,
+button.icon_zoom_out {
+	border:none;
+	background: transparent;
+	background: url(../../images/skin_lj_rl/webApp/parkings/icon_ZoomIn.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 32px;
+	height: 32px;
+	margin: 10px 0;
+	padding: 0;
+	cursor: pointer;
+}
+button.icon_zoom_out { background: url(../../images/skin_lj_rl/webApp/parkings/icon_ZoomOut.png); }
+#controls .basicControls {
+	text-align:center;
+	width:450px;
+	margin: 0 auto;
+}
+#zoomSection {
+	background: url(../../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	width:968px;
+	top:0px;
+	margin: 10px auto;
+	position: relative;
+	z-index: 1305;
+}
+#zoomSection .zoomControls {
+	width:32px;
+	top:20px;
+	left:20px;
+	margin:0 auto;
+	position: absolute;
+}
+/* FOOTER */
+footer {
+	width: 100%;
+	padding: 50px 0px;
+	margin: 0px;
+	display: inline-block;
+	overflow: hidden;
+	left:0px;
+	top:557px;
+	position: absolute;
+}
+footer h3 {
+	color: #551a1a;
+	font-size: 29px;
+	font-weight: lighter;
+	line-height: 34px;
+	text-transform: uppercase;
+}
+footer p {
+	color:#e51b24;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 17px;
+}
+.col1_300 {
+	width: 300px;
+	padding-left: 5px;
+	float: left;
+}
+.col_social {
+	width: 128px;
+	float: right;
+	margin-top: 104px;
+}
+.col_social ul li {
+	float: right;
+	list-style: none;
+}
+footer .btn-primary,
+#footerizer .btn-primary {
+	background-color: transparent;
+	color: #fff;
+	font-size: 9px;
+	font-weight: normal;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+	line-height: 17px;
+	padding: 0px 15px;
+
+	background-color: #f05224;
+	background-image: none;/* -moz-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*-webkit-gradient(linear,0 0,0 100%,from(#08c),to(#04c));*/
+	background-image: none;/*-webkit-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*-o-linear-gradient(top,#08c,#04c);*/
+	background-image: none;/*linear-gradient(to bottom,#08c,#04c);*/
+	background-image: url(../../images/skin_lj_rl/buttons/punta_boton.png);
+	background-repeat: no-repeat;
+	background-position: right 0px;
+	border-color: none;/* #04c #04c #002a80;
+	border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc',endColorstr='#ff0044cc',GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);*/
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border:none;
+}
+footer .btn:hover,
+footer .btn:focus,
+#footerizer .btn:hover,
+#footerizer .btn:focus {
+	background-color: #e51b24;
+	background-position: right -17px;
+}
+footer .nav-pills>li>a {
+	width: 21px;
+	height: 22px;
+	padding: 0;
+	margin: 0 9px 0 0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	border:none;
+}
+footer .nav-pills>li>a.fb {
+	background: url(../../images/skin_lj_rl/buttons/icon_grey_facebook.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a.tw {
+	background: url(../../images/skin_lj_rl/buttons/icon_grey_twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 26px;
+}
+footer .nav-pills>li>a.ln {
+	background: url(../../images/skin_lj_rl/buttons/icon_grey_in.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a.gp {
+	background: url(../../images/skin_lj_rl/buttons/icon_grey_googleplus.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+footer .nav-pills>li>a:hover, 
+footer .nav-pills>li>a:focus {
+	background-position: 0px -32px;
+}
+
+/* Layers modales */
+.layerOnTop {
+	background-image: url(../../images/skin_lj_rl/backs/topLayer.png);
+	background-repeat: repeat;
+/*	filter:alpha(opacity=80);
+	opacity:0.8;*/
+
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+}
+#legalLayerStyles  {}
+.legalLayerContent {
+	width: 967px;
+	margin: 0 auto;
+}
+#legal {}
+
+.alert-danger,
+.alert-error {
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #eed3d7;
+}
+.alert,
+.alert h4 {
+	color: #c09853;
+}
+.alert {
+	padding: 8px 35px 8px 14px;
+	margin-bottom: 20px;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+/* Mapas */
+.olPopupCloseBox {
+	background: #000;
+	background-image: url(../../images/skin_lj_rl/buttons/map_x_close.png);
+	background-repeat: no-repeat;
+}
+
+
+/* SIZERS */
+.marginRight_60 { margin-right: 60px; }
