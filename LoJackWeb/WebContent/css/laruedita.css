@@ -1,6 +1,6 @@
 #laRuedita {
 	width: 100%;
-	height: 421px;
+	height: 360px;
 	top: 100px;
 	z-index: 999;
 	position: fixed;
@@ -10,8 +10,8 @@
 	background: url(../images/skin_lj_rl/backs/wheel.png);
 	background-position: center center;
 	background-repeat: no-repeat;
-	width: 422px;
-	height: 421px;
+	width: 361px;
+	height: 360px;
 	margin: 0 auto;
 	/*opacity:0.5;
 	filter:alpha(opacity=50);*/
@@ -32,58 +32,59 @@
 	background: url(../images/skin_lj_rl/buttons/wheel_lock_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 139px;
-	height: 138px;
-	top:30px;
-	left:30px;
+	width: 117px;
+	height: 117px;
+	top:27px;
+	left:27px;
 	z-index: 1101;
 	position: relative;
 }
 #iconoLogin img,
 #iconoProfile img,
-#iconoCar img {
-	width: 139px;
-	height: 138px;
+#iconoCar img,
+#iconoPets img {
+	width: 117px;
+	height: 117px;
 	margin: 0;
 	padding: 0;
 }
-#iconoLogin:hover, #iconoLogin:focus {
+#iconoLogin:hover,
+#iconoLogin:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_lock_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoParkings {
-	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_parkings_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 155px;
-	height: 114px;
-	top: -128px;
-	left: 134px;
+	width: 139px;
+	height: 96px;
+	top: -107px;
+	left: 107px;
 	z-index: 1102;
 	position: relative;
 }
 #iconoParkings img {
-	width: 155px;
-	height: 114px;
+	width: 139px;
+	height: 96x;
 	margin: 0;
 	padding: 0;
 }
-#iconoParkings:hover, #iconoParkings:focus {
+#iconoParkings:hover,
+#iconoParkings:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_parkings_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoProfile {
-	/*border: dotted 1px yellow;*/
 	background: url(../images/skin_lj_rl/buttons/wheel_profile_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 138px;
-	height: 138px;
-	top: -222px;
-	left: 254px;
+	width: 117px;
+	height: 117px;
+	top: -186px;
+	left: 217px;
 	z-index: 1103;
 	position: relative;
 }
@@ -97,10 +98,10 @@
 	background: url(../images/skin_lj_rl/buttons/wheel_car_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 139px;
-	height: 138px;
-	top: -136px;
-	left: 29px;
+	width: 117px;
+	height: 117px;
+	top: -114px;
+	left: 27px;
 	z-index: 1104;
 	position: relative;
 }
@@ -114,16 +115,16 @@
 	background: url(../images/skin_lj_rl/buttons/wheel_home_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 155px;
-	height: 133px;
-	top: -230px;
-	left: 133px;
+	width: 131px;
+	height: 96px;
+	top: -193px;
+	left: 115px;
 	z-index: 1105;
 	position: relative;
 }
 #iconoHome img {
-	width: 155px;
-	height: 133px;
+	width: 131px;
+	height: 96px;
 }
 #iconoHome:hover, #iconoHome:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_home_on.png);
@@ -135,16 +136,12 @@
 	background: url(../images/skin_lj_rl/buttons/wheel_pets_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 138px;
-	height: 138px;
-	top: -406px;
-	left: 255px;
+	width: 117px;
+	height: 117px;
+	top: -327px;
+	left: 217px;
 	z-index: 1106;
 	position: relative;
-}
-#iconoPets img {
-	width: 138px;
-	height: 138px;
 }
 #iconoPets:hover, #iconoPets:focus {
 	background: url(../images/skin_lj_rl/buttons/wheel_pets_on.png);
