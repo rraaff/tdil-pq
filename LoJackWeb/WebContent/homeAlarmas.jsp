@@ -38,7 +38,7 @@
 <script src="js/bootstrapSwitch.js"></script>
 <script src="js/bootstrapSwitch.min.js"></script>
 <!-- Fin Switches -->
-
+<% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <script>
   $(function() {
 
@@ -124,7 +124,19 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
+  function collapseAll(idEntidad) {
+	  <% for (Alarm alarm : alarmsForm.getAlarms()) { %>
+	  if ('<%=alarm.getIdEntidad()%>' != idEntidad) {
+		  if ($('#cont-<%=alarm.getIdEntidad()%>').css('display') == 'block') {
+				$('#cont-<%=alarm.getIdEntidad()%>').slideUp();
+				$('#toggle-<%=alarm.getIdEntidad()%>').rotate({ animateTo:0});
+			}
+	  }
+	  <% } %>
+  } 
+
 	function toggle(idEntidad) {
+		collapseAll(idEntidad);
 		if ($('#cont-' + idEntidad).css('display') == 'none') {
 			$('#cont-' + idEntidad).slideDown();
 			$('#toggle-' + idEntidad).rotate({ animateTo:90});
@@ -302,7 +314,6 @@ textarea {
 			</ul>
 		</div>
 		<div class="col1_794 alarmasBG">
-			<% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
