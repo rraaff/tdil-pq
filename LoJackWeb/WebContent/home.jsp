@@ -1,4 +1,4 @@
-Ôªø<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
+<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="home"%><!--
@@ -22,7 +22,6 @@
 
 <%@ include file="includes/headLogged.jsp" %>
 
-<script src="js/jquery-latest.js"></script>
 <link href="css/slider.css" rel="stylesheet" type="text/css" />
 <script src="js/slideshow.js"></script>
 <script>
@@ -84,6 +83,21 @@
 		});
 	});
 
+	function updatePerson() {
+		  $('#updatePerson').load('goToUpdatePerson.do', function() {
+			  centerLayer($(window), $( "#updatePersonLayer" ));
+			});
+	  }
+
+	  function centerLayer(objWin, objLayer) {
+			var top = (objWin.height() / 2) - (objLayer.height() / 2);
+			var left = (objWin.width() / 2) - (objLayer.width() / 2);
+			objLayer.css({
+				position: 'absolute',
+				top: top + 'px',
+				left: left + 'px'
+			}).fadeIn(500);
+		}
 </script>
 <!-- End Slider -->
 <!-- script>
@@ -198,7 +212,7 @@ header {
 			<ul>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 				<li><a href="./goToChangePassword.do" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToUpdatePerson.do" title="Cambiar mis datos">Cambiar mis datos</a></li>
+				<li><a href="javascript:updatePerson()" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li class="userPic">
 					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
 							<a href="./goToEditProfile.do" title="Cambiar imagen"><img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="59" height="59" align="absmiddle"></a>
@@ -207,27 +221,33 @@ header {
 			</ul>
 		</div>
 	</div>
-	<div id="floatyOpener"><a href="#" title="Abrir men√∫">Menu</a></div>
+	<div id="floatyOpener"><a href="#" title="Abrir men˙">Menu</a></div>
 </header>
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="socialSingleSignOn">
-	<div><span class="textInside">Ingres√° con tus cuentas</span></div>
+	<div><span class="textInside">Ingres· con tus cuentas</span></div>
 	<div>
 		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres√° con tu cuenta de Twitter"></a></li>
+			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Facebook"></a></li>
+			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingres· con tu cuenta de Twitter"></a></li>
 		</ul>
 	</div>
 </div>
 
 <section id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados pol√≠tica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcci√≥n general de defensa y protecci√≥n al consumidor</p>
+		<p>2013 lojack - todos los derechos reservados polÌtica de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | direcciÛn general de defensa y protecciÛn al consumidor</p>
 	</div>
 </section>
 
+<!-- Inicio panic -->
+<div id="updatePersonLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="updatePerson">
+		Consultando datos...
+	</div>
+</div>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>
 </body>

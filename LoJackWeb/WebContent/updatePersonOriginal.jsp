@@ -1,15 +1,24 @@
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.CountryBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.fields.PersonFieldNames"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.PersonFields"%>
 <%@page import="com.tdil.lojack.struts.forms.RegisterForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%>
+<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
+--><%@ page info="index"%><!--
+--><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
+--><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
+--><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
+--><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
+--><%@ include file="includes/checkThalamusUp.jspf" %><!--
+--><%@ include file="includes/userLogged.jspf" %><!--
+--><%@ include file="includes/mustBeLogged.jspf" %>
+<html>
+<head>
+<%@ include file="includes/headLogged.jsp" %>
 <script>
+$(document).ready(
+	function(){
 
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
@@ -32,8 +41,22 @@
 		});
 		
 		$( "#closeregisterLayer" ).click(function() {
-			$( "#updatePersonLayer" ).fadeOut();
+			$( "#registerLayer" ).fadeOut();
 		});
+		$( "#goback" ).click(function() {
+			parent.history.back();
+	        return false;
+		});
+
+		<%@ include file="includes/closeLegalesLayer.jsp" %>
+	}
+);
+
+function register() {
+	centerLayer($(window), $( "#registerLayer" ));
+}
+
+<%@ include file="includes/openLegalesLayer.jsp" %>
 
 function clearErrors() {
 	$("div[id^='err.']").each(function(index, valor) {
@@ -53,7 +76,7 @@ function centerLayer(objWin, objLayer) {
 
 function postRegister(data) {
 	if (data.result == 'OK') {
-		$( "#updatePersonLayer" ).fadeOut();
+		window.location.replace('./home.jsp');
 	} else {
 		$.each(data, function(key, value) {
 			var obj = document.getElementById('err.' + key);
@@ -65,7 +88,10 @@ function postRegister(data) {
 }
 
 </script>
-<div id="registerLayer" class="layerOnTop" style="z-index: 500;">
+</head>
+<body onLoad="javascript:register();">
+<!-- Edit profile layer -->
+<div id="registerLayer" class="layerOnTop" style="display: none; z-index: 500;">
 	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
 			<div class="myRow">
@@ -76,7 +102,7 @@ function postRegister(data) {
 				%>
 				<div class="myRow">
 						<div class="myLabel width120">* DNI</div>
-						<div class="myLabel width270"><strong><bean:write name="UpdatePersonForm" property="document"/></strong></div>
+						<div class="myLabel width270"><html:text name="UpdatePersonForm" property="document" styleClass="normalField width250"/></div>
 					</div>
 					<div class="myRow errorField" style="display: none;" id="p.profile.document">
 						<div id="err.profile.document"></div>
@@ -191,10 +217,14 @@ function postRegister(data) {
 				<div class="myRow">
 					<div class="myLabel width100per" align="center">
 						<input type="submit" id="submitregister" value="Save">
-						<input type="button" id="closeregisterLayer" value="Cerrar">
+						<input type="button" id="goback" value="Back">
 					</div>
 				</div>
 			</html:form>
 		</div>
 	</div>
 </div>
+<!-- Layer legales -->
+<%@ include file="includes/legalesLayer.jsp" %>
+</body>
+</html>
