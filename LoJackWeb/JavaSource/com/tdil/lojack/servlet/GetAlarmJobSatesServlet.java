@@ -47,6 +47,7 @@ public class GetAlarmJobSatesServlet extends HttpServlet {
 				Map<String, Object> job = new HashMap<String, Object>();
 				job.put("idEntidad", asyncJob.getIdentidad());
 				job.put("status", alarm.getStatus());
+				job.put("armada", alarm.getStatus().equalsIgnoreCase(Alarm.ACTIVE));
 				result.add(job);
 			}
 			// escribo el json..

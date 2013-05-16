@@ -8,6 +8,11 @@ var sessionCheckIntervalID = window.setInterval(function () {
         		if ($('#alarm-status-' + item.idEntidad)) {
         			$('#alarm-status-' + item.idEntidad).prop('innerHTML', item.status);
         		}
+        		if (item.armada) {
+        			$('#alarm-switch-' + item.idEntidad).attr('checked', true);
+        		} else {
+        			$('#alarm-switch-' + item.idEntidad).attr('checked', false);
+        		}
         		if ($('#alarm-job-' + item.idEntidad)) {
         			$('#alarm-job-' + item.idEntidad).prop('innerHTML', '');
         		}

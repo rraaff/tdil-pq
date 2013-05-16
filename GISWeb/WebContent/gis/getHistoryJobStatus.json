@@ -1,5 +1,6 @@
 [
-{ "jobId": 4, jobStatus: "OK" },
+{ "jobId": 1, "jobStatus": "OK" , "armada": true},
+{ "jobId": 2, "jobStatus": "OK" , "armada": false},
 	{ "jobId": 99, jobStatus: "OK" },
 	{ "jobId": 100, jobStatus: "FAILED" }
 ]

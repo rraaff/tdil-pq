@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
+<meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,6 +194,16 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		});
   }
 
+  function toggleAlarm(objCheckbox, idEntidad) {
+		if (objCheckbox.checked) {
+			$( "#alarm-switch-" +idEntidad ).attr('checked', false);
+			activateAlarm(idEntidad);
+		} else {
+			$( "#alarm-switch-" +idEntidad ).attr('checked', true);
+			deactivateAlarm(idEntidad);
+		}
+  }
+
   function activateAlarm(alarmId) {
 	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doActivate("'+alarmId+'")');
@@ -234,6 +244,17 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
+  function check(){
+	  alert(document.getElementById('alarm-switch-1').checked);
+	  $( "#alarm-switch-1" ).attr('checked', true);
+	  alert(document.getElementById('alarm-switch-1').checked);
+  }
+  function uncheck(){
+	  alert(document.getElementById('alarm-switch-1').checked);
+	  $( "#alarm-switch-1" ).attr('checked', false);
+	  alert(document.getElementById('alarm-switch-1').checked);
+  }
+  
   function doDeactivate(idEntidad) {
 	  $.ajax({
           type: "GET",
@@ -314,6 +335,8 @@ textarea {
 			</ul>
 		</div>
 		<div class="col1_794 alarmasBG">
+			<button onclick="javascript:check()">Check</button>
+			<button onclick="javascript:uncheck()">unCheck</button>
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
@@ -322,8 +345,8 @@ textarea {
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 								<div class="switchContainer">
 									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
-									    <input type="checkbox">
 									</div>
+									    <input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
 								  	<% if (alarm.isInactive() ) { %>
 								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
 								  	<% } else { %>
