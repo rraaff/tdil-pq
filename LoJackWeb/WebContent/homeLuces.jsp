@@ -40,7 +40,7 @@
 <script src="js/bootstrapSwitch.js"></script>
 <script src="js/bootstrapSwitch.min.js"></script>
 <!-- Fin Switches -->
-
+<% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <script>
   $(function() {
 
@@ -125,13 +125,25 @@
 	    });
 	}
 
-	function toggle(idEntidad) {
-		if ($('#cont-' + idEntidad).css('display') == 'none') {
-			$('#cont-' + idEntidad).css('display', 'block');
-			$('#toggle-' + idEntidad).prop('innerHTML',"-");
+	function collapseAll(idEntidad, idLuz) {
+		  <% for (Light light : lightsForm.getLights()) { %>
+		  if ('<%=light.getIdEntidad()%>' != idEntidad || '<%=light.getIdLuz()%>' != idLuz) {
+			  if ($('#cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>').css('display') == 'block') {
+					$('#cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>').slideUp();
+					$('#toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>').rotate({ animateTo:0});
+				}
+		  }
+		  <% } %>
+	  } 
+
+	function toggle(idEntidad, idLuz) {
+		collapseAll(idEntidad, idLuz);
+		if ($('#cont-' + idEntidad + '-' + idLuz).css('display') == 'none') {
+			$('#cont-' + idEntidad + '-' + idLuz).slideDown();
+			$('#toggle-' + idEntidad + '-' + idLuz).rotate({ animateTo:90});
 		} else {
-			$('#cont-' + idEntidad).css('display', 'none');
-			$('#toggle-' + idEntidad).prop('innerHTML',"+");
+			$('#cont-' + idEntidad + '-' + idLuz).slideUp();
+			$('#toggle-' + idEntidad + '-' + idLuz).rotate({ animateTo:0});
 		}
 	}
 
@@ -287,14 +299,13 @@ textarea {
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights active" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
-			<ul>
+			</ul>
 		</div>
 		<div class="col1_794 lucesBG">
-			<% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 				<% for (Light light : lightsForm.getLights()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
-							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>')"></div>
+							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')"></div>
 							<div class="portaTitleAndSwitch">
 								<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
 								<div class="switchContainer">

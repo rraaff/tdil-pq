@@ -335,8 +335,6 @@ textarea {
 			</ul>
 		</div>
 		<div class="col1_794 alarmasBG">
-			<button onclick="javascript:check()">Check</button>
-			<button onclick="javascript:uncheck()">unCheck</button>
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
