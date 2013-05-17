@@ -355,15 +355,38 @@ header.menuInternas li {
 #accordion .switchContainer {
 	float: right;
 }
-#alarm-status-1, #alarm-status-2, #alarm-status-3, #alarm-status-4 {
+#accordion .fakeButtons {
+	background:#ffcdc0;
+}
+div[id^="alarm-status-"] {
 	color: #7f9e48;
 	font-size: 9px;
-	font-weight: normal;
+	font-weight: bold;
 	line-height: 15px;
 	text-transform: uppercase;
 	float:left;
 	clear: both;
 }
+#alarm-status-2 { color: #e51b24; }
+#alarm-status-3 { color: #f05224; }
+#alarm-status-4 { color: #666; }
+
+.status-Apagada,
+.status-Encendida,
+.status-Desconocido,
+.status {
+	color: #e2e2e2;
+	font-size: 9px;
+	font-weight: bold;
+	line-height: 15px;
+	text-transform: uppercase;
+	float:left;
+	clear: both;
+}
+.status-Apagada { color:#e51b24; }
+.status-Encendida { color: #7f9e48; }
+.status-Desconocido { color:#666; }
+
 #switchBoard {
 	padding: 10px;
 }
@@ -389,6 +412,30 @@ header.menuInternas li {
 	font-size: 12px;
 	line-height: 14px;
 }
+
+/* PANIC */
+#panicButtton {
+	color:#fff;
+	background:url(../images/skin_lj_rl/buttons/button_panic_base.png);
+	background-repeat:no-repeat;
+	background-position: center center;
+	font-size:17px;
+	font-weight:bold;
+	line-height:60px;
+	text-align:center;
+	
+	width:260px;
+	height:60px;
+	
+	margin:0 auto;
+	
+	top:570px;
+	left:350px;
+	
+	z-index:500;
+	position:relative;
+}
+#panicButtton a { color:#fff; }
 /* PREVENT Y PARKINGS */
 #controls {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);

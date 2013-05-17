@@ -61,15 +61,21 @@ function postSaveSpeedLimits(data) {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-<div class="registerLayerStyles editProfileLayer">
+	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeeditSecureZonesLayer" style="margin-left:110px;">X</button></div>
+			<div id="xContainer"><button id="closeeditSecureZonesLayer" style="margin-left:60px;">X</button></div>
+			<h3>Zonas seguras</h3>
 			<html:form method="POST" action="/saveVehiculesSecureZones">
-				<table>
+				<div id="tableStyle" style="height:220px;">
+					<form>
+						<fieldset class="tableHeader">
+							<label class="w1">Acción</label>
+							<label class="w3">Teléfono</label>
+						</fieldset>
 						<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
-							<tr>
-								<td><bean:write name="selectedSecureZone" property="vehicle.description" /></td>
-								<td><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
+							<fieldset>
+								<label class="w1"><bean:write name="selectedSecureZone" property="vehicle.description" /></label>
+								<label class="w3"><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
 									<option	value="">-</option>
 									<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
 										SecureZone selected = ssb.getZones().getActiveZone();
@@ -78,15 +84,15 @@ function postSaveSpeedLimits(data) {
 											value="<%=sl.getId()%>">
 											<%=sl.getDescription()%></option>
 									<% } %>
-								</html:select></td>
-							</tr>
+								</html:select></label>
+							</fieldset>
 						</logic:iterate>
-				</table>
-				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
+					</form>
 				</div>
+				<form>
+					<fieldset><button id="submitregister" class="indexButtonBase">Aplicar</button></fieldset>
+				</form>
 			</html:form>
-			</div>
 		</div>
 	</div>
 </div>

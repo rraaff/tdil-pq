@@ -52,31 +52,36 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-<div class="registerLayerStyles editProfileLayer">
+	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeEditVehicleForPhoneLayer" style="margin-left:110px;">X</button></div>
+			<div id="xContainer"><button id="closeEditVehicleForPhoneLayer" style="margin-left:60px;">X</button></div>
 			<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
-			Vehiculo: <%=selectVehiclesForm.getSelected().getDescription() %><br>
+			<h3>Editar teléfonos de emergencia del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
 			<html:form method="POST" action="/saveVehiculesPhones">
-				<table>
-					<tr>
-						<td>Alertas</td>
-						<td><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" styleClass="normalField width120"/></td>
-					</tr>
-					<tr>
-						<td>Choque</td>
-						<td><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" styleClass="normalField width120"/></td>
-					</tr>
-					<tr>
-						<td>Otros</td>
-						<td><html:text name="SelectVehiclesForPhonesForm" property="otherPhone" styleClass="normalField width120"/></td>
-					</tr>
-				</table>
-				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
+				<div id="tableStyle" style="height:220px;">
+					<form>
+						<fieldset class="tableHeader">
+							<label class="w1">Acción</label>
+							<label class="w3">Teléfono</label>
+						</fieldset>
+						<fieldset>
+							<label class="w1">Alertas</label>
+							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" /></label>
+						</fieldset>
+						<fieldset>
+							<label class="w1">Siniestros</label>
+							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" /></label>
+						</fieldset>
+						<fieldset>
+							<label class="w1">Otros</label>
+							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="otherPhone" /></label>
+						</fieldset>
+					</form>
 				</div>
+				<form>
+					<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
+				</form>
 			</html:form>
-			</div>
 		</div>
 	</div>
 </div>

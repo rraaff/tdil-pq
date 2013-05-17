@@ -59,29 +59,30 @@ function postChangePassword(data) {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-<div class="registerLayerStyles editProfileLayer">
-		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closechangepasswordLayer" style="margin-left:110px;">X</button></div>
-				<html:form method="POST" action="/changePassword">
-					<div class="myRow">
-						<div class="myLabel width120">Clave actual</div>
-						<div class="myLabel width270"><html:password name="ChangePasswordForm" property="oldPassword" styleClass="normalField width250"/></div>
+	<div class="loginLayerStyles">
+		<div class="loginLayerContent" style="height:250px; padding:0px 35px 35px 35px;">
+			<div id="xContainer"><button id="closechangepasswordLayer" style="margin-left:-40px;">X</button></div>
+			<h3 style="padding-bottom:20px;">Cambiar clave</h3>
+			<html:form method="POST" action="/changePassword">
+				<form>
+					<fieldset>
+						<label>Clave actual</label>
+						<html:password name="ChangePasswordForm" property="oldPassword" />
 						<div id="err.oldPassword"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">Nueva clave</div>
-						<div class="myLabel width270"><html:password name="ChangePasswordForm" property="newPassword" styleClass="normalField width250"/></div>
+					</fieldset>
+					<fieldset>
+						<label>Nueva clave</label>
+						<html:password name="ChangePasswordForm" property="newPassword" />
 						<div id="err.newPassword"></div>
-					</div>
-					<div class="myRow">
-						<div class="myLabel width120">Repetir clave</div>
-						<div class="myLabel width270"><html:password name="ChangePasswordForm" property="confirmNewPassword" styleClass="normalField width250"/></div>
+					</fieldset>
+					<fieldset>
+						<label>Repetir clave</label>
+						<html:password name="ChangePasswordForm" property="confirmNewPassword" />
 						<div id="err.confirmPassword"></div>
-					</div>	
-					<div class="myRow" align="center"><input type="submit" value="Grabar" /></div>
-			
-				</html:form>
-			</div>
+					</fieldset>
+				</form>
+				<button type="submit" class="indexButtonBase">Modificar</button>
+			</html:form>
 		</div>
 	</div>
 </div>

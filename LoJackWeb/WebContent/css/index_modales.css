@@ -5,16 +5,20 @@
 
 	font-size: 11px;
 
-	height: 100%;
 	width: 100%;
+	height: 100%;
 	padding:0;
 	margin:0;
+	
+	position: fixed;
 }
 .layerOnTop20 {
 	background: url(../images/skin_lj_rl/backs/topLayer20.png);
+	background-repeat: repeat;
 }
 .layerOnTop70 {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat: repeat;
 }
 .loginLayerStyles {}
 .loginLayerContent,
@@ -69,6 +73,7 @@
 #legalesLayer h3,
 #logLayer h3,
 #passwordLayer h3,
+#sendPanicLayer h3,
 h3 {
 	color: #ee5222;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
@@ -119,6 +124,25 @@ fieldset select {
 	z-index: 9998;
 	position: relative;
 }
+#xContainer button,
+button.buttonLink {
+	background: transparent;
+	background-color: #fff;
+
+	border: none;
+
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+
+	margin: 10px 0;
+	left:0px;
+	text-align: right;
+
+	cursor: pointer;
+}
 /* inputs */
 #loginLayer input:not([type]),
 #loginLayer input[type="color"],
@@ -146,9 +170,36 @@ fieldset select {
 #loginLayer label {
 	width: 40px;
 }
+#changePassLayer label {
+	width: 70px;
+}
 #registerLayer label {
 	width: 100px;
 }
+#changePassLayer select,
+#changePassLayer input:not([type]),
+#changePassLayer input[type="color"],
+#changePassLayer input[type="email"],
+#changePassLayer input[type="number"],
+#changePassLayer input[type="password"],
+#changePassLayer input[type="tel"],
+#changePassLayer input[type="url"],
+#changePassLayer input[type="text"]  {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 240px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+	float: left;
+}
+
 #forgotPasswordLayer input:not([type]),
 #forgotPasswordLayer input[type="color"],
 #forgotPasswordLayer input[type="email"],
@@ -191,26 +242,6 @@ fieldset select {
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
-}
-#loginLayer button,
-#registerLayer button,
-button.buttonLink {
-	background: transparent;
-	background-color: #fff;
-
-	border: none;
-
-	color: #ee5222;
-	font-family: "Gotham", "Helvetica", Arial, sans-serif;
-	font-weight: bold;
-	font-size: 20px;
-	line-height: 25px;
-
-	margin: 10px 0;
-	left:0px;
-	text-align: right;
-
-	cursor: pointer;
 }
 .indexLogin {
 	border: none;

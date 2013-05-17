@@ -23,7 +23,6 @@
 <%@ include file="includes/headLogged.jsp" %>
 
 <link href="css/slider.css" rel="stylesheet" type="text/css" />
-<script src="js/slideshow.js"></script>
 <script>
 	var t=setInterval(function(){$("#right").click()},10000);
 	$(document).ready(function()
@@ -257,6 +256,7 @@ header {
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
+<div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#">P</a></div>
 
 <!-- Update person -->
 <div id="updatePersonLayer" class="layerOnTop" style="display: none; z-index: 1500;">

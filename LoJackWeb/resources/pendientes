@@ -1,7 +1,28 @@
+*************************************************************************************************************
+index.jsp / home.jsp
+- ¿El check de recordar password, funciona?
+- Desde el layer de login agregué una llamada a una función que cree (switchToRegisterLayer()) para cerrar 
+el layer de login y abrir el de registración. Pero anda medio como el orto... ¿Le pegas una mirada?
+
+*************************************************************************************************************
+
+GENERAL
+- incluir el layer de cambiar mis datos y cambiar mi clave 
+
+*************************************************************************************************************
+
+APPLET
+- Los botones: fijate si le podes sacar ese degradé horrible que tiene sobre el boton
+- Los botones: Onpress le pone un fondo de color violeta clarito, si podes sacaselo
+- Los botones: ordenamelos si podes LEFT - Top - down - RIGHT 
+
+*************************************************************************************************************
+
 change password modal
 
 
  ahÃ­ commitiÃ© las agendas...
+
 [15:45:41] Pablo Mendoza: WebContent\images\skin_lj_rl\buttons/ te commitiÃ© unos botones para el applet
 [15:46:09] Pablo Mendoza: si podes ponele fondo blanco al applet
 

@@ -133,7 +133,7 @@ function right() {
 					<a href="javascript:down()" id="down">Down</a><br>
 					<a href="javascript:left()" id="left">Left</a><br>
 					<a href="javascript:right()" id="right">Right</a><br>
-					<a href="./toggleCameraView.do">Vista Avanzada</a>
+					<!-- a href="./toggleCameraView.do">Vista Avanzada</a -->
 					<script>
 					setInterval(function() {
 							$('#cameraImg').attr('src', './viewCamera');

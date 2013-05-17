@@ -22,23 +22,17 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/reset-styles" rel="stylesheet" media="screen">
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="js/bootstrap.min.js"></script>
+<!-- link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
 
 <%@ include file="includes/headLogged.jsp" %>
 
-
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
-<link href="css/index_social.css" rel="stylesheet" type="text/css" />
-<link href="css/copyright.css" rel="stylesheet" type="text/css" />
+<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
+<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
+<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
+<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 <style type="text/css">
-#productsMenu ul li.tabParking {
-	background:#f05224;
-}
 .smallmap {
 	width: 968px;
 	height: 450px;
@@ -130,7 +124,7 @@
 	        		var feature = new OpenLayers.Feature(parkings, point);
 	        	    feature.closeBox = true;
 	        	    feature.popupClass = popupClass;
-	        	    feature.data.popupContentHTML = '<div style="background-color:#003366;color: White">' + title + '<br>' + desc +'</div>';
+	        	    feature.data.popupContentHTML = '<div style="background-color:#000; color:#fff; padding:20px;"><span style="color:#ee5222; font-weight:bold;">' + title + '</span><br><span style="color:#fff; font-size:12px; font-weight:lighter; padding:10px 0;">' + desc +'</span></div>';
 	        	    feature.data.overflow = "auto";
 	
 	        	    var markerClick = function(evt) {
@@ -220,17 +214,19 @@
 </script>
 
 <style type="text/css">
+#controls .basicControls {
+	padding: 10px 0;
+}
 #productsMenu ul li.tabCar {
 	background:#f05224;
 }
-button.iconBackHome,
 button.iconMaxSpeed,
 button.iconZSeguras,
 button.iconGetPosit,
 button.iconPhoneAdm {
 	border:none;
 	background: transparent;
-	background: url(images/skin_lj_rl/webApp/car/control_home_32x32.png);
+	background: url(images/skin_lj_rl/webApp/car/control_maxSpeed_32x32.png);
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	width: 32px;
@@ -239,27 +235,61 @@ button.iconPhoneAdm {
 	padding: 0;
 	cursor: pointer;
 }
-button.iconMaxSpeed { background: url(images/skin_lj_rl/webApp/car/control_maxSpeed_32x32.png); }
 button.iconZSeguras { background: url(images/skin_lj_rl/webApp/car/control_zSeguras_32x32.png); }
 button.iconGetPosit { background: url(images/skin_lj_rl/webApp/car/control_getPosit_32x32.png); }
 button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phoneAdm_32x32.png); }
+
+.registerLayerContent {
+	height:400px;
+	padding: 0 20px 20px 20px;
+}
+#tableStyle {
+	width:100%;
+	height:300px;
+	padding: 20px 0;
+	overflow: auto;
+}
+fieldset.tableHeader {
+	background:#333;
+}
+fieldset label {
+	border-right:dotted 1px #999;
+	font-size:13px;
+	padding:0 10px;
+	height: auto;
+}
+fieldset.tableHeader label {
+	color:#FFF;
+}
+fieldset label.w1 {
+	width: 80px;
+}
+
+fieldset label.w2 {
+	text-align:center;
+	width: 100px;
+}
+fieldset label.w3 {
+	width: 310px;
+}
+.plateHighltd { color:#000; }
 </style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
-	<div class="pageWrapper" style="height:460px; background:#000;">
+	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
 	</div>
 </section>
 <section id="controls">
 	<div class="basicControls">
-		<button class="iconBackHome" href="./goToVehiculesSpeedLimits.do">&nbsp;</button>
-		<button class="iconMaxSpeed" onclick="editMaxSpeed();">&nbsp;</button>
-		<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
-		<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
-		<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
+		<!-- a href="home.jsp" title="Volver al inicio" style=""><img src="images/skin_lj_rl/webApp/car/control_home_32x32.png" /></a-->
+		<button class="iconMaxSpeed" onclick="editMaxSpeed();" title="Velocidades máximas">&nbsp;</button>
+		<button class="iconZSeguras" onclick="editSecureZones();" title="Zonas seguras">&nbsp;</button>
+		<button class="iconGetPosit" onclick="selectVehiclesForMap();" title="Localizar vehículos">&nbsp;</button>
+		<button class="iconPhoneAdm" onclick="selectVehiclesPhones();" title="Teléfonos">&nbsp;</button>
 	</div>
 </section>
 <section id="zoomSection">

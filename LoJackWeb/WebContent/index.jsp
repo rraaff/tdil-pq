@@ -48,9 +48,8 @@ response.addCookie(ecookie1);
 <link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" />
 <%@ include file="includes/headNotLogged.jsp" %>
 <!-- Slider -->
-<script src="js/jquery-latest.js"></script>
+<!-- script src="js/jquery-latest.js"></script -->
 <link href="css/slider.css" rel="stylesheet" type="text/css" />
-<script src="js/slideshow.js"></script>
 <script>
 	var t=setInterval(function(){$("#right").click()},10000);
 	$(document).ready(function()
@@ -234,8 +233,14 @@ function clearErrors() {
 		}
 	);
 }
-
-
+function switchToRegisterLayer() {
+	$( "#closeloginLayerAndOpenRegistration" ).click(function() {
+		$( "#loginLayer" ).fadeOut();
+		// return false;
+		
+		register();
+	});
+}
 function register() {
 	$("form[name='RegisterForm'] input[type='text']").each(function(index, param) {
 		$(param).attr('value', '');
@@ -594,7 +599,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<fieldset>
 						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
-						<div style="padding-top:15px; float:right;"><a href="#" title="Registrate gratis">¿No estás registrado?</div>
+						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate gratis">¿No estás registrado?</div>
 					</fieldset>
 				</form>
 			</html:form>

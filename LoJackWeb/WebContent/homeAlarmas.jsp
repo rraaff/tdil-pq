@@ -346,9 +346,9 @@ textarea {
 										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
 									</div>
 								  	<% if (alarm.isInactive() ) { %>
-								  		<span onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
+								  		<span class="fakeButtons" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
 								  	<% } else { %>
-								  		<span onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">*</span>
+								  		<span class="fakeButtons" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">*</span>
 								  	<% } %>
 							  	</div>
 
@@ -385,7 +385,7 @@ textarea {
 		</div>
 	</div>
 </section>
-<!-- a href="javascript:sendPanic()">Boton de panico</a -->
+<a href="javascript:sendPanic();"><div id="panicButtton">Botón de pánico</div></a>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 
