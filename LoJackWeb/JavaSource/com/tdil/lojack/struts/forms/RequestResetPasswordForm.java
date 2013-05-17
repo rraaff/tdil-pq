@@ -42,7 +42,7 @@ public class RequestResetPasswordForm extends ActionForm {
 		}
 		try {
 			RequestResetPasswordBean requestResetPasswordBean = new RequestResetPasswordBean();
-			requestResetPasswordBean.setPrincipal(this.getUsername());
+			requestResetPasswordBean.setPrincipal("1:" + this.getUsername());
 			
 			RequestResetPasswordResult result = ThalamusClientBeanFacade.requestResetPassword(requestResetPasswordBean);
 			String tokenDev = result.getTokenDev();

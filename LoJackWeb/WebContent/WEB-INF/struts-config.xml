@@ -98,7 +98,7 @@
   	<forward name="continue" path="/changePassword.jsp" redirect="true"/>
   </action>
   
-  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/changePassword" scope="session" type="com.tdil.lojack.struts.action.ThalamusSaveAction">
+  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/changePassword" scope="session" type="com.tdil.lojack.struts.action.ThalamusSaveAjaxAction">
   	<forward name="failure" path="/changePassword.jsp"/>
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   </action>

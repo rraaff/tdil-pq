@@ -53,7 +53,7 @@ public class ResetPasswordForm extends ThalamusForm {
 		try {
 			ResetPasswordBean resetPasswordBean = new ResetPasswordBean();
 			resetPasswordBean.setToken(this.getToken());
-			resetPasswordBean.setPrincipal(this.getUsername());
+			resetPasswordBean.setPrincipal("1:" + this.getUsername());
 			resetPasswordBean.setPassword(this.getPassword());
 			ThalamusResponse response = ThalamusClientBeanFacade.resetPassword(resetPasswordBean);
 			if (response.isBadRequest()) {

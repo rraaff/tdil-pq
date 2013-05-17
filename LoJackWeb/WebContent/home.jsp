@@ -95,6 +95,12 @@
 			});
 	  }
 
+	function changePassword() {
+		  $('#changePassword').load('goToChangePassword.do', function() {
+			  centerLayer($(window), $( "#changePasswordLayer" ));
+			});
+	  }
+
 	  function centerLayer(objWin, objLayer) {
 			var top = (objWin.height() / 2) - (objLayer.height() / 2);
 			var left = (objWin.width() / 2) - (objLayer.width() / 2);
@@ -219,7 +225,7 @@ header {
 		<div class="wrapper">
 			<ul>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-				<li><a href="./goToChangePassword.do" title="Cambiar mis clave">Cambiar mi clave</a></li>
+				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li class="userPic">
 					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
@@ -252,9 +258,15 @@ header {
 	</div>
 </section>
 
-<!-- Inicio panic -->
+<!-- Update person -->
 <div id="updatePersonLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="updatePerson">
+		Consultando datos...
+	</div>
+</div>
+<!-- Update person -->
+<div id="changePasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="changePassword">
 		Consultando datos...
 	</div>
 </div>

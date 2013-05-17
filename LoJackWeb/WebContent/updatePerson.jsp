@@ -41,16 +41,6 @@ function clearErrors() {
 	});
 }
 
-function centerLayer(objWin, objLayer) {
-	var top = (objWin.height() / 2) - (objLayer.height() / 2);
-	var left = (objWin.width() / 2) - (objLayer.width() / 2);
-	objLayer.css({
-		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
-	}).fadeIn(500);
-}
-
 function postRegister(data) {
 	if (data.result == 'OK') {
 		$( "#updatePersonLayer" ).fadeOut();
