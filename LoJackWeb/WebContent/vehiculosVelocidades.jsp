@@ -83,7 +83,7 @@ function postSaveSpeedLimits(data) {
 						<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
 					</div>
 				</html:form>
-				</div>
+			</div>
 		</div>
 	</div>
 </div>

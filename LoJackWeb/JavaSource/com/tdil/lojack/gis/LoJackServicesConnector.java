@@ -617,7 +617,7 @@ public class LoJackServicesConnector {
 		} catch (IOException e) {
 			throw new CommunicationException(e);
 		} finally {
-			if (LOG.isDebugEnabled()) {
+			if (LOG.isInfoEnabled()) {
 				long end = System.currentTimeMillis();
 				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
 			}

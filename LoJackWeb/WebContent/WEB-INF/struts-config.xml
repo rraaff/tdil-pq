@@ -198,15 +198,13 @@
   <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
   	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>
   </action>
-  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
-  	<forward name="failure" path="/vehiculosZonasSeguras.jsp"/>
+  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAjaxAction">
   </action>
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaMapa.jsp" redirect="true"/>
   </action>
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/locateVehicleInMap" scope="session" type="com.tdil.lojack.struts.action.LocateVehicleInMapAction">
-  	<forward name="continue" path="/mostrarVehiculoEnMapa.jsp" redirect="true"/>
+  	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   </action>
 
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">

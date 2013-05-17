@@ -179,7 +179,7 @@ public class PreventConnector {
 		} catch (IOException e) {
 			throw new CommunicationException(e);
 		} finally {
-			if (LOG.isDebugEnabled()) {
+			if (LOG.isInfoEnabled()) {
 				long end = System.currentTimeMillis();
 				LOG.info("Execute: " + url + " took " + (end - start) + " millis");
 			}
@@ -230,7 +230,7 @@ public class PreventConnector {
 		} catch (IOException e) {
 			throw new CommunicationException(e);
 		} finally {
-			if (LOG.isDebugEnabled()) {
+			if (LOG.isInfoEnabled()) {
 				long end = System.currentTimeMillis();
 				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
 			}

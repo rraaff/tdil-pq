@@ -385,14 +385,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
   PATH="/saveVehiculesSecureZones" SHAPE="32,5121,0,0"
-  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/vehiculosZonasSeguras.jsp" TARGET="page17" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToVehiculesForMap" NAME="action57"
   PATH="/goToVehiculesForMap" SHAPE="32,5489,0,0"
   TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -407,8 +400,8 @@
   PATH="/locateVehicleInMap" SHAPE="32,5937,0,0"
   TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/mostrarVehiculoEnMapa.jsp" TARGET="page19" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page19" PATH="/mostrarVehiculoEnMapa.jsp"
   SHAPE="240,5937,0,0" SUBTYPE="jsp" TITLE="mostrarVehiculoEnMapa.jsp"
