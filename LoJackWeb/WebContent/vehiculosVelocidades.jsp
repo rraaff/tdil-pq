@@ -12,83 +12,78 @@
 --><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
 --><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
 --><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="includes/checkThalamusUp.jspf" %><!--
---><%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBePreventUser.jspf" %>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
-<link rel="icon" href="favicon.ico" type="icon"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/reset-styles" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<%@ include file="includes/headLogged.jsp" %>
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-
+--><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <script>
+
+$("form[name='VehiclesSpeedLimitForm']").validate({
+	errorPlacement: function(error, element) {
+		error.appendTo( element.parent("div"));
+	},
+	rules: { 			},
+	messages: {			},
+	submitHandler: function() {
+		clearErrors();
+           $("form[name='VehiclesSpeedLimitForm']").ajaxSubmit({
+   			type: "POST",
+   			url: "./saveVehiculesSpeedLimits.do",
+   			dataType: "json",
+   			success: postSaveSpeedLimits
+   			});
+       }
+});
+
+$( "#closeeditMaxSpeedLayer" ).click(function() {
+	$( "#editMaxSpeedLayer" ).fadeOut();
+});
+		
+
+function clearErrors() {
+	$("div[id^='err.']").each(function(index, valor) {
+		$(valor).prop('innerHTML','');
+	});
+}
+
+function postSaveSpeedLimits(data) {
+	if (data.result == 'OK') {
+		$( "#editMaxSpeedLayer" ).fadeOut();
+	} else {
+		$.each(data, function(key, value) {
+			var obj = document.getElementById('err.' + key);
+			if (obj) {
+				obj.innerHTML = value;
+			}
+        });
+	}
+}
+
 </script>
-</head>
-<body>
-<%@ include file="includes/header.jsp" %>
-<%@ include file="includes/clientMainManu.jsp" %>
-<section id="content">
-	<div class="pageWrapper">
-Velocidades de los vehiculos<br>
-<br>
-
-
-<html:form method="POST" action="/saveVehiculesSpeedLimits">
-<table>
-		<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
-			<tr>
-				<td><bean:write name="selectedSpeedLimit" property="vehicle.description" /></td>
-				<td><html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
-					<option	value="">-</option>
-					<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
-						SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
-						for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
-							<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-							value="<%=sl.getId()%>">
-							<%=sl.getDescription()%></option>
-					<% } %>
-				</html:select></td>
-			</tr>
-		</logic:iterate>
-</table>
-				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
+<div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
+<div class="registerLayerStyles editProfileLayer">
+		<div class="registerLayerContent">
+			<div id="xContainer"><button id="closeeditMaxSpeedLayer" style="margin-left:110px;">X</button></div>
+				<html:form method="POST" action="/saveVehiculesSpeedLimits">
+					<table>
+							<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
+								<tr>
+									<td><bean:write name="selectedSpeedLimit" property="vehicle.description" /></td>
+									<td><html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
+										<option	value="">-</option>
+										<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
+											SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
+											for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
+												<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+												value="<%=sl.getId()%>">
+												<%=sl.getDescription()%></option>
+										<% } %>
+									</html:select></td>
+								</tr>
+							</logic:iterate>
+					</table>
+					<div class="myRow">
+						<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
+					</div>
+				</html:form>
 				</div>
-			</html:form>
-	</div>
-</section>
-<footer>
-	<div class="pageWrapper">
-		<div class="col1_300 marginRight_60">
-			<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
-			<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col1_300 marginRight_60">
-			<h3>LoJack for<br/>Laptopts</h3>
-			<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
-			<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-		</div>
-		<div class="col_social">
-			<ul class="nav nav-pills nav-social">
-				<li><a href="#" class="fb"></a></li>
-				<li><a href="#" class="tw"></a></li>
-				<li><a href="#" class="ln"></a></li>
-				<li><a href="#" class="gp"></a></li>
-			</ul>
 		</div>
 	</div>
-</footer>
-</body>
-</html>
+</div>

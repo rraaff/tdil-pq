@@ -264,7 +264,7 @@ header {
 		Consultando datos...
 	</div>
 </div>
-<!-- Update person -->
+<!-- Change password -->
 <div id="changePasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="changePassword">
 		Consultando datos...

@@ -193,9 +193,7 @@
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
   </action>
-  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveSpeedLimitsAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
-  	<forward name="failure" path="/vehiculosVelocidades.jsp"/>
+  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesSpeedLimitAjaxAction">
   </action>
   <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
   	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>

@@ -365,14 +365,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveVehiculesSpeedLimits" NAME="action54"
   PATH="/saveVehiculesSpeedLimits" SHAPE="32,4753,0,0"
-  TITLE="VehiclesSpeedLimitForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/vehiculosVelocidades.jsp" TARGET="page15" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="VehiclesSpeedLimitForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page16" PATH="/productoPrevent.jsp"
   SHAPE="240,4770,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
