@@ -439,14 +439,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveVehiculesPhones" NAME="action61"
   PATH="/saveVehiculesPhones" SHAPE="448,6850,0,0"
-  TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/editarTelefonosVehiculo.jsp" TARGET="page21" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page22" PATH="/homeCamaras.jsp"
   SHAPE="240,2177,0,0" SUBTYPE="jsp" TITLE="homeCamaras.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#selectCamera" NAME="action62" PATH="/selectCamera"

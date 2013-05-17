@@ -134,9 +134,9 @@
   			});
   	  }
 
-       function editVehiclesPhones() {
-   		  $('#editVehiclesPhones').load('goToVehiculesForPhone.do', function() {
-   			  centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
+       function selectVehiclesPhones() {
+   		  $('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function() {
+   			  centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
    			});
    	   }
     	
@@ -192,7 +192,7 @@ button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phone
 		<button class="iconMaxSpeed" onclick="editMaxSpeed();">&nbsp;</button>
 		<button class="iconZSeguras" href="./goToVehiculesSecureZones.do">&nbsp;</button>
 		<button class="iconGetPosit" href="./goToVehiculesForMap.do">&nbsp;</button>
-		<button class="iconPhoneAdm" onclick="editVehiclesPhones();">&nbsp;</button>
+		<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 	</div>
 </section>
 <section id="zoomSection">
@@ -205,6 +205,11 @@ button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phone
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="editMaxSpeed">
+		Consultando datos...
+	</div>
+</div>
+<div id="selectVehiclesPhonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="selectVehiclesPhones">
 		Consultando datos...
 	</div>
 </div>

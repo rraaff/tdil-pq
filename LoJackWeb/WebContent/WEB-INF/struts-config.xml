@@ -215,9 +215,7 @@
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/editVehiculePhones" scope="session" type="com.tdil.lojack.struts.action.EditVehiclePhonesAction">
   	<forward name="continue" path="/editarTelefonosVehiculo.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
-  	<forward name="failure" path="/editarTelefonosVehiculo.jsp"/>
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAjaxAction">
   </action>
   
 

@@ -11,8 +11,15 @@
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%>
 <script>
 
+function editPhones(vehicleId) {
+	  $('#editVehiclesPhones').load('editVehiculePhones.do?vehicleId='+vehicleId, function() {
+		  $( "#selectVehiclesPhonesLayer" ).fadeOut();
+		  centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
+		});
+  }
+
 $( "#closeSelectVehicleForPhoneLayer" ).click(function() {
-	$( "#editVehiclesPhonesLayer" ).fadeOut();
+	$( "#selectVehiclesPhonesLayer" ).fadeOut();
 });
 
 </script>
@@ -25,11 +32,11 @@ $( "#closeSelectVehicleForPhoneLayer" ).click(function() {
 						<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
 							<tr>
 								<td><%=vehicle.getDescription() %></td>
-								<td><a href="./editVehiculePhones.do?vehicleId=<%=vehicle.getId()%>">Ver Telefonos</a></td>
+								<td><a href="javascript:editPhones('<%=vehicle.getId()%>')">Ver Telefonos</a></td>
 							</tr>
 						<% } %>
 				</table>
-				</div>
+			</div>
 		</div>
 	</div>
 </div>
