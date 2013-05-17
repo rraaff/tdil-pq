@@ -114,9 +114,9 @@
 	  <%@ include file="includes/openLegalesLayer.jsp" %>
 </script>
 <!-- End Slider -->
-<!-- script>
+<script>
 $(function() {
-		$( "#accessPrevent" ).click(function() {
+		$( "#accessPreventPortal" ).click(function() {
 			 $.ajax({
 					type: "POST",
 					url: "http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx",
@@ -137,7 +137,7 @@ $(function() {
 				});
 		});
 });
-</script-->
+</script>
 
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
 <link type="text/css" href="css/index_modales.css" rel="stylesheet" />
