@@ -7,7 +7,7 @@
 			<div id="slide4" class="slide page2"><a href="#" title="">&nbsp;</a></div>
 			<div id="slide5" class="slide page2"><a href="#" title="">&nbsp;</a></div -->
 		</div>
-		<div id="sliderControl"><img src="images/front.png" width="40px;" id="right"/>
-		<img src="images/back.png" width="40px;"  id="left"/></div>
+		<div id="sliderControl"><img src="images/null.gif" width="40px;" id="right"/>
+		<img src="images/null.gif" width="40px;" id="left"/></div>
 	</div>
 </section>
