@@ -10,6 +10,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -33,8 +34,12 @@ public class DBCPoolingListener implements ServletContextListener {
 			// Look up our data source
 			DataSource ds = (DataSource) envCtx.lookup("jdbc/database");
 			DatasourceManager.setDatasource(ds);
-			IBatisManager.init("SqlMapConfig-JNDI.xml", new Properties());
-			getLog().fatal("DBCPoolingListener initialized");
+			String initParam = sce.getServletContext().getInitParameter("SqlMapConfig");
+			if (StringUtils.isEmpty(initParam)) {
+				initParam = "SqlMapConfig-JNDI.xml";
+			}
+			IBatisManager.init(initParam, new Properties());
+			getLog().fatal("DBCPoolingListener initialized with " + initParam);
 
 			ServletContext c = sce.getServletContext();
 			if (c != null) {
@@ -43,7 +48,7 @@ public class DBCPoolingListener implements ServletContextListener {
 						"DBCPoolingListener application.resources is "
 								+ (applicationResourcesParam == null ? "null" : applicationResourcesParam));
 				ApplicationResources.init(applicationResourcesParam);
-				
+
 				String systemConfigParam = c.getInitParameter("system.config");
 				getLog().fatal(
 						"DBCPoolingListener system.config is "

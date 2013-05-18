@@ -19,13 +19,13 @@ public class TimeoutCacheManager {
 
 	/** This are cache regions by name */
 	private static ConcurrentHashMap<String, TimeoutCacheAccess> caches = new ConcurrentHashMap<String, TimeoutCacheAccess>();
-	
+
 	private static final int DEFAULT_MAX_OBJECTS = 1000;
 	private static long DEFAULT_TIMEOUT = 1000 * 60 * 30; // 1 seg * 60 * 30 = 30 minutos
 	private static boolean started = false;
-	
+
 	private static final Logger logger = LoggerProvider.getLogger(TimeoutCacheManager.class);
-	
+
 	private static void startup() {
 		if (started) {
 			return;
@@ -35,7 +35,7 @@ public class TimeoutCacheManager {
 		ccm.configure(props);
 		started = true;
 	}
-	
+
 	private static Properties getDefaultProperties() {
 		Properties props = new Properties();
 		props.put("jcs.default","");
@@ -52,8 +52,8 @@ public class TimeoutCacheManager {
 	/**
 	 * This method creates the region with default values.
 	 * @param regionName
-	 * @throws CacheException 
-	 * @throws IOException 
+	 * @throws CacheException
+	 * @throws IOException
 	 */
 	public synchronized static void defineRegion(String regionName, long timeout) {
 		if (isRegionDefined(regionName)) {
@@ -73,12 +73,12 @@ public class TimeoutCacheManager {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method creates the region with default values and max objects.
 	 * @param regionName
-	 * @throws CacheException 
-	 * @throws IOException 
+	 * @throws CacheException
+	 * @throws IOException
 	 */
 	public synchronized static void defineRegion(String regionName, int maxObjects, long timeout) {
 		if (isRegionDefined(regionName)) {
@@ -98,7 +98,7 @@ public class TimeoutCacheManager {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method answers true if the region has already been defined
 	 * @param regionName
@@ -110,7 +110,7 @@ public class TimeoutCacheManager {
 		}
 		return caches.containsKey(regionName);
 	}
-	
+
 	/**
 	 * This method stores the value under key in the region named regionName.
 	 * If cache is clustered, this method notifies the other member.
@@ -128,6 +128,10 @@ public class TimeoutCacheManager {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static void basicPut(String regionName, String key,
 			Serializable value) {
+		TimeoutCacheAccess versionedCacheAccess = caches.get(regionName);
+		if (versionedCacheAccess.getTimeout() == -1) {
+			return;
+		}
 		CacheAccess ca = getCacheAccess(regionName);
 		try {
 			ca.put(key, new CacheEntry(value));
@@ -136,7 +140,7 @@ public class TimeoutCacheManager {
 			logger.error("Could not add object to cache");
 		}
 	}
-	
+
 	/**
 	 * This method answers the object cached under some key.
 	 * If the entry is null or the entry is not present, this method answers null.
@@ -163,7 +167,7 @@ public class TimeoutCacheManager {
 			return cacheEntry.getValue();
 		}
 	}
-	
+
 	/**
 	 * This method answers the object cached under key.
 	 * If the object is not present, the nullValue parameter is returned.
@@ -190,7 +194,7 @@ public class TimeoutCacheManager {
 			return cacheEntry.getValue();
 		}
 	}
-	
+
 	/**
 	 * This method answers the CacheEntry under some key.
 	 * If the entry is not found, this method answers null.
@@ -204,7 +208,7 @@ public class TimeoutCacheManager {
 		CacheAccess ca = getCacheAccess(regionName);
 		return (CacheEntry)ca.get(key);
 	}
-	
+
 	/**
 	 * This method removes all entries for the entire cache
 	 */
@@ -218,7 +222,7 @@ public class TimeoutCacheManager {
 			}
 		}
 	}
-	
+
 	private static CacheAccess getCacheAccess(String regionName) {
 		TimeoutCacheAccess versionedCacheAccess = caches.get(regionName);
 		if (versionedCacheAccess.isOutOfDate()) {
