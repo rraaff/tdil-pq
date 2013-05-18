@@ -116,7 +116,6 @@ response.addCookie(ecookie1);
 
 $(document).ready(
 	function(){
-
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
 
@@ -127,6 +126,7 @@ $(document).ready(
 			rules: { 			},
 			messages: {			},
 			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
 				clearErrors();
 	            $("form[name='RegisterForm']").ajaxSubmit({
 	    			type: "POST",
@@ -147,6 +147,7 @@ $(document).ready(
 
 			},
 			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
 	            $("form[name='LoginForm']").ajaxSubmit({
 	    			type: "POST",
 	    			url: "./login.do",
@@ -289,6 +290,7 @@ function centerLayer(objWin, objLayer) {
 }
 
 function postRegister(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		window.location.replace('./home.jsp');
 	} else {
@@ -306,6 +308,7 @@ function postRegister(data) {
 }
 
 function postLogin(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		window.location.replace('./home.jsp');
 	} else {

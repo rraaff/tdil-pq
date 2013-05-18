@@ -67,7 +67,6 @@ function postSaveSpeedLimits(data) {
 			<h3>Zonas seguras</h3>
 			<html:form method="POST" action="/saveVehiculesSecureZones">
 				<div id="tableStyle" style="height:220px;">
-					<form>
 						<fieldset class="tableHeader">
 							<label class="w1">Acción</label>
 							<label class="w3">Teléfono</label>
@@ -87,11 +86,8 @@ function postSaveSpeedLimits(data) {
 								</html:select></label>
 							</fieldset>
 						</logic:iterate>
-					</form>
 				</div>
-				<form>
-					<fieldset><button id="submitregister" class="indexButtonBase">Aplicar</button></fieldset>
-				</form>
+				<fieldset><button id="submitregister" class="indexButtonBase" >Aplicar</button></fieldset>
 			</html:form>
 		</div>
 	</div>

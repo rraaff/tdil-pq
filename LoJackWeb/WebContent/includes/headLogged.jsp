@@ -6,3 +6,4 @@
 <script type="text/javascript" src="js/jquery.jstepper.js"></script>
 <script type="text/javascript" src="js/jquery.jeditable.js"></script>
 <script type="text/javascript" src="js/session.js"></script>
+<script type="text/javascript" src="js/jquery.blockUI.js"></script>

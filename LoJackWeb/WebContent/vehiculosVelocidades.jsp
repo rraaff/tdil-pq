@@ -64,7 +64,6 @@ function postSaveSpeedLimits(data) {
 			<h3>Determinar velocidades máximas</h3>
 			<html:form method="POST" action="/saveVehiculesSpeedLimits">
 				<div id="tableStyle" style="height:220px;">
-					<form>
 						<fieldset class="tableHeader">
 							<label class="w1">Patente</label>
 							<label class="w3">Velocidad máxima</label>
@@ -84,11 +83,8 @@ function postSaveSpeedLimits(data) {
 								</html:select>
 							</fieldset>
 						</logic:iterate>
-					</form>
 				</div>
-				<form>
-					<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
-				</form>
+				<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 			</html:form>
 		</div>
 	</div>

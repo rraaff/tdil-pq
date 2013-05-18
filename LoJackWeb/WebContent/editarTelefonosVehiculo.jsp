@@ -33,6 +33,12 @@ $("form[name='SelectVehiclesForPhonesForm']").validate({
        }
 });
 
+function clearErrors() {
+	$("div[id^='err.']").each(function(index, valor) {
+		$(valor).prop('innerHTML','');
+	});
+}
+
 function postSaveVehiculesPhones(data) {
 	if (data.result == 'OK') {
 		$( "#editVehiclesPhonesLayer" ).fadeOut();
@@ -59,28 +65,24 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 			<h3>Editar teléfonos de emergencia del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
 			<html:form method="POST" action="/saveVehiculesPhones">
 				<div id="tableStyle" style="height:220px;">
-					<form>
-						<fieldset class="tableHeader">
-							<label class="w1">Acción</label>
-							<label class="w3">Teléfono</label>
-						</fieldset>
-						<fieldset>
-							<label class="w1">Alertas</label>
-							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" /></label>
-						</fieldset>
-						<fieldset>
-							<label class="w1">Siniestros</label>
-							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" /></label>
-						</fieldset>
-						<fieldset>
-							<label class="w1">Otros</label>
-							<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="otherPhone" /></label>
-						</fieldset>
-					</form>
+					<fieldset class="tableHeader">
+						<label class="w1">Acción</label>
+						<label class="w3">Teléfono</label>
+					</fieldset>
+					<fieldset>
+						<label class="w1">Alertas</label>
+						<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" /></label>
+					</fieldset>
+					<fieldset>
+						<label class="w1">Siniestros</label>
+						<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" /></label>
+					</fieldset>
+					<fieldset>
+						<label class="w1">Otros</label>
+						<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="otherPhone" /></label>
+					</fieldset>
 				</div>
-				<form>
 					<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
-				</form>
 			</html:form>
 		</div>
 	</div>
