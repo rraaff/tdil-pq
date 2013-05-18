@@ -63,7 +63,11 @@ public class AppletCamara extends javax.swing.JApplet {
 			jPanelHorizontal = new JPanel();
 			jPanelHorizontal.setForeground(Color.WHITE);
 			jButtonIzquierda = new JButton();
+			configure(jButtonIzquierda);
+			
 			jButtonDerecha = new JButton();
+			configure(jButtonDerecha);
+			
 			this.setSize(new java.awt.Dimension(350, 241));
 			this.getContentPane().setBackground(
 					Color.BLACK);
@@ -89,6 +93,7 @@ public class AppletCamara extends javax.swing.JApplet {
 				}
 			});
 			jButtonArriba = new JButton();
+			configure(jButtonArriba);
 			jPanelHorizontal.add(jButtonArriba);
 
 						jButtonArriba.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
@@ -105,6 +110,7 @@ public class AppletCamara extends javax.swing.JApplet {
 							}
 						});
 			jButtonAbajo = new JButton();
+			configure(jButtonAbajo);
 			jPanelHorizontal.add(jButtonAbajo);
 
 						jButtonAbajo.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
@@ -140,6 +146,12 @@ public class AppletCamara extends javax.swing.JApplet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void configure(JButton jButtonIzquierda) {
+		jButtonIzquierda.setOpaque(false);
+		jButtonIzquierda.setContentAreaFilled(false);
+		jButtonIzquierda.setBorderPainted(false);
 	}
 
 	public byte[] getBytesFrom(InputStream in) {
