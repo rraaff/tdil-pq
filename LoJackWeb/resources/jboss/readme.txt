@@ -1,0 +1,1 @@
+Copiar los drivers al lib de la configuracion
