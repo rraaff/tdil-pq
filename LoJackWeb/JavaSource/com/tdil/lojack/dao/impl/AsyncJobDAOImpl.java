@@ -148,10 +148,4 @@ public class AsyncJobDAOImpl implements AsyncJobDAO {
 		}
 	}
 
-	@Override
-	public int oldestMWJob() throws SQLException {
-		Integer count = (Integer) sqlMapClient.queryForObject(
-				"ASYNC_JOB.oldestMWJob");
-		return count;
-	}
 }

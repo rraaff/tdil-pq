@@ -2,11 +2,20 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  <display-name>LoJackWeb</display-name>
+ <!--context-param>
+  <param-name>SqlMapConfig</param-name>
+  <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>DAOProvider</param-name>
+  <param-value>SQLSERVER</param-value>
+ </context-param-->
+ 
  <context-param>
   <param-name>application.resources</param-name>
   <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>
  </context-param>
-  <context-param>
+ <context-param>
   <param-name>system.config</param-name>
   <param-value>com.tdil.lojack.utils.LoJackConfig</param-value>
  </context-param>
@@ -14,9 +23,6 @@
   <filter-name>NoCachingFilter</filter-name>
   <filter-class>com.tdil.web.NoCacheFilter</filter-class>
  </filter>
-  <listener>
-  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
- </listener>
  <!-- Cache static content -->
  <filter>
   <filter-name>imagesCache</filter-name>
@@ -82,6 +88,9 @@
   <filter-name>jsCache</filter-name>
   <url-pattern>*.js</url-pattern>
  </filter-mapping>
+ <listener>
+  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
+ </listener>
  <!-- Action Servlet Configuration -->
  <servlet>
   <servlet-name>action</servlet-name>
@@ -92,16 +101,10 @@
   </init-param>
   <load-on-startup>1</load-on-startup>
  </servlet>
- 
  <servlet>
   <servlet-name>DownloadServlet</servlet-name>
   <servlet-class>com.tdil.web.DownloadController</servlet-class>
  </servlet>
- <servlet-mapping>
-  <servlet-name>DownloadServlet</servlet-name>
-  <url-pattern>/download.st</url-pattern>
- </servlet-mapping>
- 
  <servlet>
   <servlet-name>ViewCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.ViewCameraServlet</servlet-class>
@@ -114,21 +117,18 @@
   <servlet-name>CameraConfigServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.CameraConfigServlet</servlet-class>
  </servlet>
- 
  <servlet>
   <servlet-name>SearchParkingsServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.SearchParkingsServlet</servlet-class>
  </servlet>
- 
-  <servlet>
+ <servlet>
   <servlet-name>GetAlarmJobSatesServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.GetAlarmJobSatesServlet</servlet-class>
  </servlet>
  <servlet>
   <servlet-name>GetLightJobSatesServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.GetLightJobSatesServlet</servlet-class>
- </servlet> 
- 
+ </servlet>
  <servlet>
   <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.FacebookSignIn</servlet-class>
@@ -145,32 +145,31 @@
   <servlet-name>TwitterConnect</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.TwitterConnect</servlet-class>
  </servlet>
+ <servlet-mapping>
+  <servlet-name>DownloadServlet</servlet-name>
+  <url-pattern>/download.st</url-pattern>
+ </servlet-mapping>
  <!-- Action Servlet Mapping -->
  <servlet-mapping>
   <servlet-name>action</servlet-name>
   <url-pattern>*.do</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>ViewCameraServlet</servlet-name>
   <url-pattern>/viewCamera</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>MoveCameraServlet</servlet-name>
   <url-pattern>/moveCamera</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>CameraConfigServlet</servlet-name>
   <url-pattern>/cameraConfig</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>SearchParkingsServlet</servlet-name>
   <url-pattern>/searchParkings</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>GetAlarmJobSatesServlet</servlet-name>
   <url-pattern>/getAlarmJobSates</url-pattern>
@@ -179,7 +178,6 @@
   <servlet-name>GetLightJobSatesServlet</servlet-name>
   <url-pattern>/getLightJobSates</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>FacebookSignIn</servlet-name>
   <url-pattern>/signin/facebook</url-pattern>

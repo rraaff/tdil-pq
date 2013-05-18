@@ -10,6 +10,7 @@ import java.util.Properties;
 import javax.servlet.ServletContextEvent;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.cache.blob.BlobLocalDiskCache;
@@ -18,6 +19,9 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.cache.blob.BlobDataType;
 import com.tdil.lojack.cache.blob.PublicBlobResolver;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.lojack.daomanager.DAOManager;
+import com.tdil.lojack.daomanager.MySQLDAOProvider;
+import com.tdil.lojack.daomanager.SQLServerDAOProvider;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.model.SystemProperty;
@@ -47,6 +51,14 @@ public class LoJackConfig extends SystemConfig {
 	@Override
 	public void init(ServletContextEvent sce) {
 		try {
+			String dAOProvider = sce.getServletContext().getInitParameter("DAOProvider");
+			if (StringUtils.isEmpty(dAOProvider) || "MYSQL".equals(dAOProvider)) {
+				DAOManager.setCurrentDao(new MySQLDAOProvider());
+			} else {
+				if ("SQLSERVER".equals(dAOProvider)) {
+					DAOManager.setCurrentDao(new SQLServerDAOProvider());
+				} 
+			}
 			super.init(sce);
 			this.loadFilteredWords();
 			String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
@@ -192,8 +204,7 @@ public class LoJackConfig extends SystemConfig {
 	@Override
 	protected void loadPropertiesFromDBInTransaction() {
 		try {
-			List<SystemProperty> list = new SystemPropertyDAOImpl(IBatisManager.getClient())
-					.selectSystemPropertyByExample(new SystemPropertyExample());
+			List<SystemProperty> list = DAOManager.getSystemPropertyDAO().selectSystemPropertyByExample(new SystemPropertyExample());
 			for (SystemProperty property : list) {
 				getLog().fatal("LOJACKConfig: " + property.getPropkey() + "=" + property.getPropvalue());
 				SystemPropertyCache.put(property.getPropkey(), property.getPropvalue());

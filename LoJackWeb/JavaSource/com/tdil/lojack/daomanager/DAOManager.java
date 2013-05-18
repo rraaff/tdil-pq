@@ -20,39 +20,48 @@ import com.tdil.lojack.dao.impl.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.lojack.dao.impl.WebsiteUserDAOImpl;
 
-public class DAOManager {
+public abstract class DAOManager {
 
+	private static DAOProvider currentDao;
 
 	public static SystemPropertyDAO getSystemPropertyDAO() throws SQLException {
-		return new SystemPropertyDAOImpl(IBatisManager.getClient());
+		return currentDao.getSystemPropertyDAO();
 	}
 
 	public static WebsiteUserDAO getWebsiteUserDAO() throws SQLException {
-		return new WebsiteUserDAOImpl(IBatisManager.getClient());
+		return currentDao.getWebsiteUserDAO();
 	}
 
 	public static AlarmConfDAO getAlarmConfDAO() throws SQLException {
-		return new AlarmConfDAOImpl(IBatisManager.getClient());
+		return currentDao.getAlarmConfDAO();
 	}
 
 	public static LightConfDAO getLightConfDAO() throws SQLException {
-		return new LightConfDAOImpl(IBatisManager.getClient());
+		return currentDao.getLightConfDAO();
 	}
 
 	public static AsyncJobDAO getAsyncJobDAO() throws SQLException {
-		return new AsyncJobDAOImpl(IBatisManager.getClient());
+		return currentDao.getAsyncJobDAO();
 	}
 
 	public static BlobDataDAO getBlobDataDAO() throws SQLException {
-		return new BlobDataDAOImpl(IBatisManager.getClient());
+		return currentDao.getBlobDataDAO();
 	}
 
 	public static CacheRegionDAO getCacheRegionDAO() throws SQLException {
-		return new CacheRegionDAOImpl(IBatisManager.getClient());
+		return currentDao.getCacheRegionDAO();
 	}
 
 	public static PointOfInterestDAO getPointOfInterestDAO() throws SQLException {
-		return new PointOfInterestDAOImpl(IBatisManager.getClient());
+		return currentDao.getPointOfInterestDAO();
 	}
 
+	public static DAOProvider getCurrentDao() {
+		return currentDao;
+	}
+
+	public static void setCurrentDao(DAOProvider currentDao) {
+		DAOManager.currentDao = currentDao;
+	}
+	
 }
