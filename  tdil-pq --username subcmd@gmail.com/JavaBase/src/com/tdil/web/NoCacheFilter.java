@@ -20,10 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 public class NoCacheFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		httpResponse.setHeader("Cache-Control", "no-cache");
-		httpResponse.setDateHeader("Expires", 0);
-		httpResponse.setHeader("Pragma", "No-cache");
+		if (response instanceof HttpServletResponse) {
+			HttpServletResponse httpResponse = (HttpServletResponse) response;
+			httpResponse.setHeader("Cache-Control", "no-cache");
+			httpResponse.setDateHeader("Expires", 0);
+			httpResponse.setHeader("Pragma", "No-cache");
+		}
 		chain.doFilter(request, response);
 	}
 
