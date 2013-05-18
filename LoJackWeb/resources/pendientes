@@ -1,3 +1,5 @@
+Pablo te falta el acceso al cambio de avatar!!!
+
 *************************************************************************************************************
 index.jsp / home.jsp
 - ¿El check de recordar password, funciona? No, lo agregaste vos, no se si es buena idea
@@ -7,7 +9,7 @@ DONE
 el layer de login y abrir el de registración. Pero anda medio como el orto... ¿Le pegas una mirada?
 
 *************************************************************************************************************
-
+DONE
 GENERAL
 - incluir el layer de cambiar mis datos y cambiar mi clave 
 
@@ -34,8 +36,6 @@ expand solo de uno (que haga el toggle del resto)
 
 log paginado (nueva doc)
 Layer de procesando
-
-primer alarma expandida
 
 mobile?
 

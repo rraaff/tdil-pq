@@ -108,6 +108,7 @@
         var MyPos;
         var SearchMeters;
 
+        	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
         	<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null) { %>
 	        	var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
@@ -202,15 +203,7 @@
    	   }
     	
 
-  	  function centerLayer(objWin, objLayer) {
-  			var top = (objWin.height() / 2) - (objLayer.height() / 2);
-  			var left = (objWin.width() / 2) - (objLayer.width() / 2);
-  			objLayer.css({
-  				position: 'absolute',
-  				top: top + 'px',
-  				left: left + 'px'
-  			}).fadeIn(500);
-  		}
+   	<%@ include file="includes/centerLayerJS.jspf" %>
 </script>
 
 <style type="text/css">
@@ -327,6 +320,6 @@ fieldset label.w3 {
 </div>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
-
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 </body>
 </html>

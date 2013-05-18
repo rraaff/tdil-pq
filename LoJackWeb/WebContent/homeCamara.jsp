@@ -34,6 +34,8 @@
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
 <script>
+<%@ include file="includes/centerLayerJS.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 function up() {
 		$.ajax({
 				type: "GET",
@@ -149,7 +151,7 @@ function right() {
 		</div>
 	</div>
 </section>
-
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 </body>

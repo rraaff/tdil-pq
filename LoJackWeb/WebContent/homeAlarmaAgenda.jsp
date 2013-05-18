@@ -35,8 +35,8 @@
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
 <script>
+	  <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
-    $( "#accordion" ).accordion();
 
     $("input[cl]").each(function(indice,valor) {
 	   $(valor).click(function() {
@@ -97,15 +97,7 @@
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
 
-  function centerLayer(objWin, objLayer) {
-		var top = (objWin.height() / 2) - (objLayer.height() / 2);
-		var left = (objWin.width() / 2) - (objLayer.width() / 2);
-		objLayer.css({
-			position: 'absolute',
-			top: top + 'px',
-			left: left + 'px'
-		}).fadeIn(500);
-	}
+  <%@ include file="includes/centerLayerJS.jspf" %>
 
   function append(st) {
 		$('#password').attr('value', $('#password').attr('value') + st);
@@ -271,6 +263,7 @@
 		</div>
 	</div>
 </section>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/passwordLayer.jspf" %>
 </body>
 </html>

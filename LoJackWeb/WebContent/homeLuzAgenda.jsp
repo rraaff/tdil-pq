@@ -35,8 +35,9 @@
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 <script>
+	  <%@ include file="includes/centerLayerJS.jspf" %>
+	  <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
-    $( "#accordion" ).accordion();
 
     $("input[cl]").each(function(indice,valor) {
 	   $(valor).click(function() {
@@ -250,5 +251,6 @@
 		</div>
 	</div>
 </section>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 </body>
 </html>

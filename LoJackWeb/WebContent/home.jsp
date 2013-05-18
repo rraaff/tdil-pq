@@ -88,27 +88,8 @@
 			}
 	);
 
-	function updatePerson() {
-		  $('#updatePerson').load('goToUpdatePerson.do', function() {
-			  centerLayer($(window), $( "#updatePersonLayer" ));
-			});
-	  }
-
-	function changePassword() {
-		  $('#changePassword').load('goToChangePassword.do', function() {
-			  centerLayer($(window), $( "#changePasswordLayer" ));
-			});
-	  }
-
-	  function centerLayer(objWin, objLayer) {
-			var top = (objWin.height() / 2) - (objLayer.height() / 2);
-			var left = (objWin.width() / 2) - (objLayer.width() / 2);
-			objLayer.css({
-				position: 'absolute',
-				top: top + 'px',
-				left: left + 'px'
-			}).fadeIn(500);
-		}
+	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+	<%@ include file="includes/centerLayerJS.jspf" %>
 
 	  <%@ include file="includes/openLegalesLayer.jsp" %>
 </script>
@@ -258,18 +239,7 @@ header {
 </section>
 <div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#">P</a></div>
 
-<!-- Update person -->
-<div id="updatePersonLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="updatePerson">
-		Consultando datos...
-	</div>
-</div>
-<!-- Change password -->
-<div id="changePasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="changePassword">
-		Consultando datos...
-	</div>
-</div>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>
 </body>

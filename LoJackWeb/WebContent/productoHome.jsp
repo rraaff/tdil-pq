@@ -36,6 +36,10 @@
 	background:#f05224;
 }
 </style>
+<script type="text/javascript">
+<%@ include file="includes/centerLayerJS.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+</script>
 </head>
 
 <body>
@@ -56,7 +60,7 @@
 		</div>
 	</div>
 </section>
-
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 </body>
