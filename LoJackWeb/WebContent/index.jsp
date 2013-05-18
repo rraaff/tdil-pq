@@ -234,12 +234,7 @@ function clearErrors() {
 	);
 }
 function switchToRegisterLayer() {
-	$( "#closeloginLayerAndOpenRegistration" ).click(function() {
-		$( "#loginLayer" ).fadeOut();
-		// return false;
-		
-		register();
-	});
+	$( "#loginLayer" ).fadeOut(400, function() {register();});
 }
 function register() {
 	$("form[name='RegisterForm'] input[type='text']").each(function(index, param) {

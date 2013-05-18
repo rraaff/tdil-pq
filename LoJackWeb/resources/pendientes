@@ -1,6 +1,8 @@
 *************************************************************************************************************
 index.jsp / home.jsp
-- ¿El check de recordar password, funciona?
+- ¿El check de recordar password, funciona? No, lo agregaste vos, no se si es buena idea
+
+DONE
 - Desde el layer de login agregué una llamada a una función que cree (switchToRegisterLayer()) para cerrar 
 el layer de login y abrir el de registración. Pero anda medio como el orto... ¿Le pegas una mirada?
 
