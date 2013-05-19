@@ -121,6 +121,7 @@
 				<exclude name="xercesImpl-2.8.0.jar" />
 				<exclude name="xml-apis-xerces-2.9.1.jar" />
 				<exclude name="servlet-api.jar" />
+				<exclude name="log4j-1.2.16.jar" />
 				<!--exclude name="yuicompressor-2.4.6.jar"/-->
 			</lib>
 		</war>
