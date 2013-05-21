@@ -6,3 +6,4 @@
 <script type="text/javascript" src="js/jquery.jstepper.js"></script>
 <script type="text/javascript" src="js/jquery.jeditable.js"></script>
 <script type="text/javascript" src="js/jquery.blockUI.js"></script>
+<link type="text/css" href="css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
