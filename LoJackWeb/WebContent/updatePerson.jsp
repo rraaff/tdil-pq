@@ -21,6 +21,7 @@
 			rules: { 			},
 			messages: {			},
 			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
 				clearErrors();
 	            $("form[name='UpdatePersonForm']").ajaxSubmit({
 	    			type: "POST",
@@ -42,6 +43,7 @@ function clearErrors() {
 }
 
 function postRegister(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#updatePersonLayer" ).fadeOut();
 	} else {

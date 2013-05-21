@@ -25,6 +25,7 @@ $("form[name='VehiclesSecureZoneForm']").validate({
 	rules: { 			},
 	messages: {			},
 	submitHandler: function() {
+		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
            $("form[name='VehiclesSecureZoneForm']").ajaxSubmit({
    			type: "POST",
@@ -47,6 +48,7 @@ function clearErrors() {
 }
 
 function postSaveSpeedLimits(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#editSecureZonesLayer" ).fadeOut();
 	} else {

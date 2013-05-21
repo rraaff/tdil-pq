@@ -1,1 +1,1 @@
-$(document).ajaxStart(function() {$.blockUI({ message: '<h1><img src="images/busy.gif" /> Just a moment...</h1>' });});
+$.blockUI({ message: '<h1><img src="images/busy.gif" /> Just a moment...</h1>' });

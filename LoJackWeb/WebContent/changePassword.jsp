@@ -21,6 +21,7 @@
 			rules: { 			},
 			messages: {			},
 			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
 				clearErrors();
 	            $("form[name='ChangePasswordForm']").ajaxSubmit({
 	    			type: "POST",
@@ -45,6 +46,7 @@ function clearErrors() {
 
 
 function postChangePassword(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#changePasswordLayer" ).fadeOut();
 	} else {

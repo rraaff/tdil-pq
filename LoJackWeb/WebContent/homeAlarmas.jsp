@@ -58,6 +58,7 @@
   });
 
   function doRenameAlarm(idEntidad, alarmDesc) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -65,12 +66,14 @@
           data: {idEntidad: idEntidad, description: alarmDesc},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result == 'OK') {
 				} else {
 					 $('#'+alarmId).prop('innerHTML', 'Error');
 				}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  $('#'+alarmId).prop('innerHTML', 'Error');
           }
       });
@@ -86,6 +89,7 @@
 	}
 
   function activateEmailNotification(objCheckbox, idEntidad) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -93,12 +97,14 @@
           data: {idEntidad: idEntidad},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result != 'OK') {
 				alert('Ha occurrido un error ejecutando la accion');
 				objCheckbox.checked = false;
 			}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  alert('Ha occurrido un error ejecutando la accion');
         	  objCheckbox.checked = false;
           }
@@ -106,6 +112,7 @@
   }
 
 function deactivateEmailNotification(objCheckbox, idEntidad) {
+	<%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -113,12 +120,14 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           data: {idEntidad: idEntidad},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result != 'OK') {
 				alert('Ha occurrido un error ejecutando la accion');
 				objCheckbox.checked = true;
 			}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  alert('Ha occurrido un error ejecutando la accion');
         	  objCheckbox.checked = true;
           }
@@ -148,18 +157,23 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	}
 
   function seeAlarmLog(idEntidad) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $('#logData').load('logAlarma.jsp?idEntidad=' + idEntidad, function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  centerLayer($(window), $( "#logLayer" ));
 		});
   }
 
   function sendPanic() {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $('#sendPanic').load('sendPanic.jsp', function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  centerLayer($(window), $( "#sendPanicLayer" ));
 		});
   }
 
   function doSendPanic(alarmDesc, idEntidad) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -167,6 +181,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           data: {idEntidad: idEntidad},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result == 'OK') {
 					$( "#sendPanicLayer" ).fadeOut();
 					$( "#sendPanicErrorLayer" ).fadeOut();
@@ -180,6 +195,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#sendPanicLayer" ).fadeOut();
         	  $( "#sendPanicErrorLayer" ).fadeOut();
 			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
@@ -190,7 +206,9 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
   }
 
   function confAlarmAlert(alarmId) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  centerLayer($(window), $( "#confAlertLayer" ));
 		});
   }
@@ -212,6 +230,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
   }
 
   function doActivate(idEntidad) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -219,6 +238,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           data: {idEntidad: idEntidad , password:  $('#password').attr('value')},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmActivatedLayer" ));
@@ -239,6 +259,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotActivatedLayer" ));
           }
@@ -257,6 +278,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
   }
   
   function doDeactivate(idEntidad) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -264,6 +286,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
           data: {idEntidad: idEntidad , password:  $('#password').attr('value')},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmDeactivatedLayer" ));
@@ -284,6 +307,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
           }

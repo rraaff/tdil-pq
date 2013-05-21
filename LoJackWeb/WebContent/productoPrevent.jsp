@@ -178,26 +178,34 @@
         });
 
     	function editMaxSpeed() {
+    		<%@ include file="includes/blockUI.jspf" %>
   		  $('#editMaxSpeed').load('goToVehiculesSpeedLimits.do', function() {
+  			<%@ include file="includes/unblockUI.jspf" %>
   			  centerLayer($(window), $( "#editMaxSpeedLayer" ));
   			});
   	  }
 
    	function editSecureZones() {
+   		<%@ include file="includes/blockUI.jspf" %>
    		  $('#editSecureZones').load('goToVehiculesSecureZones.do', function() {
+   			<%@ include file="includes/unblockUI.jspf" %>
    			  centerLayer($(window), $( "#editSecureZonesLayer" ));
    			});
    	  }
     	
 
        function selectVehiclesPhones() {
+    	   <%@ include file="includes/blockUI.jspf" %>
    		  $('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function() {
+   			<%@ include file="includes/unblockUI.jspf" %>
    			  centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
    			});
    	   }
 
    	   function selectVehiclesForMap() {
+   		<%@ include file="includes/blockUI.jspf" %>
    		 $('#selectVehiclesForMap').load('goToVehiculesForMap.do', function() {
+   			<%@ include file="includes/unblockUI.jspf" %>
  			  centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
  			});
    	   }

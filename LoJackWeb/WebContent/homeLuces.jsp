@@ -58,6 +58,7 @@
   });
 
   function doRenameLight(idEntidadIdLuz, lightDesc) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
           cache: false,
@@ -65,12 +66,14 @@
           data: {idEntidadIdLuz: idEntidadIdLuz, description: lightDesc},
           contentType: "application/json; charset=utf-8",
           success: function(data) {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  if (data.result == 'OK') {
 				} else {
 					 $('#'+lightId).prop('innerHTML', 'Error');
 				}
           },
           error: function() {
+        	  <%@ include file="includes/unblockUI.jspf" %>
         	  $('#'+lightId).prop('innerHTML', 'Error');
           }
       });
@@ -86,6 +89,7 @@
 	}
 
 	function activateEmailNotification(objCheckbox, idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	        type: "GET",
 	        cache: false,
@@ -93,12 +97,14 @@
 	        data: {idEntidad: idEntidad, idLuz: idLuz},
 	        contentType: "application/json; charset=utf-8",
 	        success: function(data) {
+	        	<%@ include file="includes/unblockUI.jspf" %>
 	      	  if (data.result != 'OK') {
 					alert('Ha occurrido un error ejecutando la accion');
 					objCheckbox.checked = false;
 				}
 	        },
 	        error: function() {
+	        	<%@ include file="includes/unblockUI.jspf" %>
 	      	  alert('Ha occurrido un error ejecutando la accion');
 	      	  objCheckbox.checked = false;
 	        }
@@ -106,6 +112,7 @@
 	}
 
 	function deactivateEmailNotification(objCheckbox, idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	        type: "GET",
 	        cache: false,
@@ -113,12 +120,14 @@
 	        data: {idEntidad: idEntidad, idLuz: idLuz},
 	        contentType: "application/json; charset=utf-8",
 	        success: function(data) {
+	        	<%@ include file="includes/unblockUI.jspf" %>
 	      	  if (data.result != 'OK') {
 					alert('Ha occurrido un error ejecutando la accion');
 					objCheckbox.checked = true;
 				}
 	        },
 	        error: function() {
+	        	<%@ include file="includes/unblockUI.jspf" %>
 	      	  alert('Ha occurrido un error ejecutando la accion');
 	      	  objCheckbox.checked = true;
 	        }
@@ -148,13 +157,17 @@
 	}
 
   function seeLightLog(idEntidad, idLuz) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $('#logData').load('logLuz.jsp?idEntidad=' + idEntidad + '&idLuz=' + idLuz, function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  centerLayer($(window), $( "#logLayer" ));
 		});
   }
 
   function confLightAlert(lightId) {
+	  <%@ include file="includes/blockUI.jspf" %>
 	  $('#confAlert').load('goToHomeLightAlertConf.do?lightId=' + lightId, function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  centerLayer($(window), $( "#confAlertLayer" ));
 		});
   }
@@ -170,6 +183,7 @@
 	}
 
 	function turnOnLight(idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
@@ -177,6 +191,7 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 				  } else {
@@ -189,12 +204,14 @@
 					}
 	          },
 	          error: function() {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
 	          }
 	      });
 	  }
 
 	function turnOffLight(idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
@@ -202,6 +219,7 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
@@ -214,12 +232,14 @@
 					}
 	          },
 	          error: function() {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
 	          }
 	      });
 	  }
 
 	function activateRandomSequence(idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
@@ -227,6 +247,7 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
@@ -239,12 +260,14 @@
 					}
 	          },
 	          error: function() {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotActivatedLayer" ));
 	          }
 	      });
 	  }
 
 	function deactivateRandomSequence(idEntidad, idLuz) {
+		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
 	          cache: false,
@@ -252,6 +275,7 @@
 	          data: {idEntidad: idEntidad, idLuz: idLuz},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
 					} else {
@@ -264,6 +288,7 @@
 					}
 	          },
 	          error: function() {
+	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 	          }
 	      });

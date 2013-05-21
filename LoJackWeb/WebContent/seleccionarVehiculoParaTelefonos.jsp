@@ -12,7 +12,9 @@
 <script>
 
 function editPhones(vehicleId) {
+	<%@ include file="includes/blockUI.jspf" %>
 	  $('#editVehiclesPhones').load('editVehiculePhones.do?vehicleId='+vehicleId, function() {
+		  <%@ include file="includes/unblockUI.jspf" %>
 		  $( "#selectVehiclesPhonesLayer" ).fadeOut();
 		  centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
 		});

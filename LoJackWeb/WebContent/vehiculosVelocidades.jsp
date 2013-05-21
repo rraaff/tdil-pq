@@ -22,6 +22,7 @@ $("form[name='VehiclesSpeedLimitForm']").validate({
 	rules: { 			},
 	messages: {			},
 	submitHandler: function() {
+		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
            $("form[name='VehiclesSpeedLimitForm']").ajaxSubmit({
    			type: "POST",
@@ -44,6 +45,7 @@ function clearErrors() {
 }
 
 function postSaveSpeedLimits(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#editMaxSpeedLayer" ).fadeOut();
 	} else {

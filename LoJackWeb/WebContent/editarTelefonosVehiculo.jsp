@@ -23,6 +23,7 @@ $("form[name='SelectVehiclesForPhonesForm']").validate({
 	rules: { 			},
 	messages: {			},
 	submitHandler: function() {
+		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
            $("form[name='SelectVehiclesForPhonesForm']").ajaxSubmit({
    			type: "POST",
@@ -40,6 +41,7 @@ function clearErrors() {
 }
 
 function postSaveVehiculesPhones(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#editVehiclesPhonesLayer" ).fadeOut();
 	} else {

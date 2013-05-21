@@ -164,6 +164,7 @@ $(document).ready(
 			rules: { 			},
 			messages: {			},
 			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
 	            $("form[name='RequestResetPasswordForm']").ajaxSubmit({
 	    			type: "POST",
 	    			url: "./requestResetPassword.do",
@@ -318,6 +319,7 @@ function postLogin(data) {
 }
 
 function postResetPassword(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
 	$( "#forgotPasswordLayer" ).fadeOut();
 	if (data.result == 'OK') {
 		centerLayer($(window), $( "#forgotPasswordEmailSentLayer" ));
