@@ -91,7 +91,7 @@
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
 
-	  <%@ include file="includes/openLegalesLayer.jsp" %>
+	<%@ include file="includes/openLegalesLayer.jsp" %>
 </script>
 <!-- End Slider -->
 <script>

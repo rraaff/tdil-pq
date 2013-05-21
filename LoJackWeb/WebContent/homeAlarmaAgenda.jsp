@@ -196,12 +196,12 @@
 						</fieldset>
 						<h4>Frecuencia</h4>
 						<fieldset>
-							<label style="width:90px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
-							<label style="width:90px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
-							<label style="width:90px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
+							<label style="width:130px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
+							<label style="width:130px;"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
+							<label style="width:130px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
 						</fieldset>
 						<fieldset style="border-bottom:dotted 1px #f0ece4;">
-							<label style="width:90px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
+							<label style="width:130px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
 							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="monday"/></div>
 							<label class="days">Lu</label>
 							<div style="float:left;"><html:checkbox name="AlarmAgendaForm" property="tuesday"/></div>

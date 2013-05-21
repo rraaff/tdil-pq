@@ -313,7 +313,7 @@ function postLogin(data) {
 	if (data.result == 'OK') {
 		window.location.replace('./home.jsp');
 	} else {
-		$('#loginerr').prop('innerHTML', 'El usuario o contrasenia son incorrectos');
+		$('#loginerr').prop('innerHTML', 'El usuario o contraseña son incorrectos');
 		$('#loginerr').css('display', 'block');
 	}
 }
@@ -407,7 +407,7 @@ function parkingsNotLogged() {
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeregisterLayer1" style="margin-left:110px;">X</button></div>
+			<div id="xContainer" style="right:-480px;"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
 			<div style="width:100%; height:430px; overflow: auto;">
@@ -585,7 +585,16 @@ function parkingsNotLogged() {
 				<div class="alert alert-error" id="loginerr" style="display: none;"></div>
 				<form>
 					<fieldset>
-						<label>DNI</label>
+						<label>Tipo doc</label>
+						<select>
+							<option value="0">Seleccione...</option>
+							<option value="dni">DNI</option>
+							<option value="ci">Cédula de identidad</option>
+							<option value="pasaporte">Pasaporte</option>
+						</select>
+					</fieldset>
+					<fieldset>
+						<label>Número</label>
 						<html:text name="LoginForm" property="username"/>
 					</fieldset>
 					<fieldset>
@@ -593,8 +602,8 @@ function parkingsNotLogged() {
 						<html:password name="LoginForm" property="password"/>
 					</fieldset>
 					<fieldset>
-						<input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
-						<span>Recordarme</span>
+						<!-- input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
+						<span>Recordarme</span -->
 						<span style="float: right;"><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">(olvidé mi clave)</a></span>
 					</fieldset>
 					<fieldset>
