@@ -32,7 +32,7 @@
 	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 	background: #fff;
 	width: 340px;
-	margin: 120px auto;
+	margin: 80px auto;
 	padding: 0 73px 0 73px;
 }
 .registerLayerContent {
@@ -74,6 +74,7 @@
 #logLayer h3,
 #passwordLayer h3,
 #sendPanicLayer h3,
+#changePassLayer h3,
 h3 {
 	color: #ee5222;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
@@ -117,10 +118,9 @@ fieldset select {
 	margin: 10px 0;
 }
 #xContainer {
-	/*width: 30px;*/
-	margin: 0 auto;
+	width: 30px;
 	top: 5px;
-	right: -370px;
+	right: -335px;
 	z-index: 9998;
 	position: relative;
 }
@@ -144,6 +144,24 @@ button.buttonLink {
 	cursor: pointer;
 }
 /* inputs */
+#loginLayer select {
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+	width: 250px;
+	height: 35px;
+	margin: 5px auto;
+	padding: 0 0 0 10px;
+}
+#loginLayer option {
+	background:#fff;
+	font-size:12px;
+	line-height:35px;
+	padding:10px;
+}
 #loginLayer input:not([type]),
 #loginLayer input[type="color"],
 #loginLayer input[type="email"],
@@ -161,20 +179,27 @@ button.buttonLink {
 	line-height: 35px;
 	text-transform: uppercase;
 
-	width: 268px;
+	width: 240px;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
 	float: left;
 }
 #loginLayer label {
-	width: 40px;
+	width: 60px;
 }
 #changePassLayer label {
-	width: 70px;
+	width: 100px;
+}
+.loginLayerContent {
+	/*height:270px;*/
+	padding:0px 35px 35px 35px;
 }
 #registerLayer label {
-	width: 100px;
+	width: 120px;
+}
+label {
+	text-transform: uppercase;
 }
 #changePassLayer select,
 #changePassLayer input:not([type]),
@@ -193,7 +218,7 @@ button.buttonLink {
 	line-height: 35px;
 	text-transform: uppercase;
 
-	width: 240px;
+	width: 210px;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
@@ -222,6 +247,24 @@ button.buttonLink {
 	margin: 5px auto;
 	float: left;
 }
+#registerLayer select {
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+	width: 290px;
+	height: 35px;
+	margin: 5px auto;
+	padding: 0 0 0 10px;
+}
+#registerLayer option {
+	background:#fff;
+	font-size:12px;
+	line-height:35px;
+	padding:10px;
+}
 #registerLayer input:not([type]),
 #registerLayer input[type="color"],
 #registerLayer input[type="email"],
@@ -236,9 +279,9 @@ button.buttonLink {
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 
-	width: 300px;
+	width: 280px;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
@@ -265,7 +308,7 @@ button.buttonLink {
 	width: 120px;
 	height: 35px;
 
-	margin-top: 5px;
+	margin-top: 15px;
 	cursor: pointer;
 
 	float: right;

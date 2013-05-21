@@ -47,6 +47,13 @@ header.menuInternas li {
 	width: auto;
 	float: left;
 }
+header ul li.userPic a,
+header ul li.userPic a:hover,
+header ul li.userPic a:focus {
+	background-color:none;
+	padding:0;
+	float: left;
+}
 .userName {
 	color: #f05223;
 }
