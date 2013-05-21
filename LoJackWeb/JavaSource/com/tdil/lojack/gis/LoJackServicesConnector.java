@@ -55,6 +55,8 @@ public class LoJackServicesConnector {
 	private static final String ID_LUZ = "idLuz";
 	private static final String JOB_ID = "jobId";
 	private static final String AGENDA_ID = "agendaId";
+	
+	private static final String INT_PAGE_SIZE = "intPageSize";
 
 	private static final String RECEIVE_NOTIFICATION = "receiveNotification";
 
@@ -179,6 +181,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, user.getGuid());
 		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
+		jsonObject.put(INT_PAGE_SIZE, 10);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
 			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
@@ -396,6 +399,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(EXTRA_GUID, user.getExtraCookie());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
+		jsonObject.put(INT_PAGE_SIZE, 10);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_LOG);
 			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
