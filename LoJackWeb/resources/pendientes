@@ -1,12 +1,21 @@
 Pablo te falta el acceso al cambio de avatar!!!
+Ayudame a recuperarlo!
 
 *************************************************************************************************************
 index.jsp / home.jsp
-- ¿El check de recordar password, funciona? No, lo agregaste vos, no se si es buena idea
+- ¿El check de recordar password, funciona? No, lo agregaste vos, no se si es buena idea. 
+Pablo: - Quedó en que por ahora no. dado que me inmolé en un mail.
 
 DONE
 - Desde el layer de login agregué una llamada a una función que cree (switchToRegisterLayer()) para cerrar 
 el layer de login y abrir el de registración. Pero anda medio como el orto... ¿Le pegas una mirada?
+
+REGISTRACIÓN
+- No muestra los errores cuando dejás vacíos los cambios obligatorios.
+- Debería pedir el tipo de documento por separado del número.
+- Los textos de los errores están en ingles. ¿Desde donde los modifico?
+- Datepicker con fechas en ingles
+- "Select an opcion" en los selects
 
 *************************************************************************************************************
 DONE
@@ -23,12 +32,14 @@ APPLET
 *************************************************************************************************************
 
 LAYER
-
 Cuando cerras algún layer, se abre la registración
 
 *************************************************************************************************************
 
 change password modal
+Pablo: - No parece estar funcionando.
+
+*************************************************************************************************************
 
 
  ahÃ­ commitiÃ© las agendas...
