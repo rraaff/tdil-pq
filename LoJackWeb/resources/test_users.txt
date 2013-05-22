@@ -1,0 +1,14 @@
+[16:12:16] Pablo Mendoza: CONSUMIDOR 1 : Facundo Cuadra (DNI 32025646 - Password temp3227 )
+Estos datos de DNI + password son los que utiliza el sitio LOAPP para hacer login a un consumidor
+
+A este consumidor, le configuramos los siguientes datos de usuarios para Prevent, Home y PET.
+PETS: pruebapets
+PREVENT: fcuadraprevent
+HOME: usuario
+
+CONSUMIDOR 2 : Erica Nacher (DNI 26932479 - temp9552)
+Este consumidor NO TIENE DATOS para Prevent, ni Home, Ni PET
+[16:16:15] Pablo Mendoza: Perdón por la preguta boluda,... pero no encuentro el contenido del cambio de password....
+[16:16:20] Pablo Mendoza: ¿en qué include está?
+[16:16:35] Pablo Mendoza: Lo encontré
+[16:16:39] Pablo Mendoza: No está en los includes

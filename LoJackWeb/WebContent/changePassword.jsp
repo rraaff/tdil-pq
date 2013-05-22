@@ -66,7 +66,6 @@ function postChangePassword(data) {
 			<div id="xContainer"><button id="closechangepasswordLayer" style="margin-left:-40px;">X</button></div>
 			<h3 style="padding-bottom:20px;">Cambiar clave</h3>
 			<html:form method="POST" action="/changePassword">
-				<form>
 					<fieldset>
 						<label class="width100">Clave actual</label>
 						<html:password name="ChangePasswordForm" property="oldPassword" />
@@ -82,7 +81,6 @@ function postChangePassword(data) {
 						<html:password name="ChangePasswordForm" property="confirmNewPassword" />
 						<div id="err.confirmPassword"></div>
 					</fieldset>
-				</form>
 				<button type="submit" class="indexButtonBase">Modificar</button>
 			</html:form>
 		</div>

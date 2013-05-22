@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSON;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
@@ -41,12 +40,15 @@ public class LoginForm extends ActionForm {
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -57,6 +59,7 @@ public class LoginForm extends ActionForm {
 		username = null;
 		password = null;
 	}
+
 	public Object executeLogin() throws SQLException, ValidationException {
 		if (StringUtils.isEmpty(this.getUsername())) {
 			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
@@ -88,16 +91,21 @@ public class LoginForm extends ActionForm {
 		}
 	}
 
-	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName) throws HttpStatusException, InvalidResponseException,
-			CommunicationException, UnauthorizedException {
+	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName)
+			throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		LoginBean loginBean = new LoginBean("1:" + username, pasword);
 		LoginResult result = ThalamusClientBeanFacade.login(loginBean);
-		return getUserLogged(/*timezoneOffset, timezoneName,*/ result);
+		return getUserLogged(/* timezoneOffset, timezoneName, */result);
 	}
-	public static WebsiteUser getUserLogged(LoginResult result/*, String timezoneOffset, String timezoneName*/) throws HttpStatusException,
-			InvalidResponseException, CommunicationException, UnauthorizedException {
-		PersonResult getProfile = ThalamusClientBeanFacade.getPerson(result.getTokenHolder());
 
+	public static WebsiteUser getUserLogged(LoginResult result/*
+															 * , String
+															 * timezoneOffset,
+															 * String
+															 * timezoneName
+															 */) throws HttpStatusException, InvalidResponseException,
+			CommunicationException, UnauthorizedException {
+		PersonResult getProfile = ThalamusClientBeanFacade.getPerson(result.getTokenHolder());
 
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
@@ -108,36 +116,36 @@ public class LoginForm extends ActionForm {
 		user.setModelUser(WebsiteUserUtils.getWebSiteUser(user.getLojackUserId()));
 		return user;
 	}
+
 	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
 		JSONObject profile = getProfile.getProfile().getJSONObject("person").getJSONObject(ProfileResponse.PROFILE);
 		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
 			JSONObject document = profile.getJSONObject("document");
 			user.setLojackUserId(document.getInt("type") + ":" + document.getString("number"));
 		}
-		if (profile.containsKey("isHomeUser") && profile.get("isHomeUser") != JSONNull.getInstance()) {
-			user.setHomeUser(profile.getBoolean("isHomeUser"));
+		if (profile.containsKey("homeIsClient") && profile.get("homeIsClient") != JSONNull.getInstance()) {
+			user.setHomeUser(profile.getBoolean("homeIsClient"));
 		}
-		if (profile.containsKey("isPreventUser") && profile.get("isPreventUser") != JSONNull.getInstance()) {
-			user.setPreventUser(profile.getBoolean("isPreventUser"));
+		if (profile.containsKey("preventIsClient") && profile.get("preventIsClient") != JSONNull.getInstance()) {
+			user.setPreventUser(profile.getBoolean("preventIsClient"));
 		}
-		if (profile.containsKey("isPetUser") && profile.get("isPetUser") != JSONNull.getInstance()) {
-			user.setPetUser(profile.getBoolean("isPetUser"));
-		}
-		if (profile.containsKey("lojackUserId") && profile.get("lojackUserId") != JSONNull.getInstance()) {
-			user.setLojackUserId(profile.getString("lojackUserId"));
+		if (profile.containsKey("petIsClient") && profile.get("petIsClient") != JSONNull.getInstance()) {
+			user.setPetUser(profile.getBoolean("petIsClient"));
 		}
 	}
-
 
 	public String getTimezoneOffset() {
 		return timezoneOffset;
 	}
+
 	public void setTimezoneOffset(String timezoneOffset) {
 		this.timezoneOffset = timezoneOffset;
 	}
+
 	public String getTimezoneName() {
 		return timezoneName;
 	}
+
 	public void setTimezoneName(String timezoneName) {
 		this.timezoneName = timezoneName;
 	}

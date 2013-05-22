@@ -29,6 +29,9 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	private int imageId;
 	private UploadData avatar;
 	
+	private int idAvatar;
+	private String extAvatar;
+	
 	public static final String avatar_key = "EditProfileForm.avatar";
 	
 	private static final int MAX_AVATAR_SIZE = 1000000;
@@ -96,8 +99,8 @@ public class EditProfileForm extends TransactionalValidationForm implements
 		websiteUserExample.createCriteria().andLojackuseridEqualTo(userId);
 		List<WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(websiteUserExample);
 
-		int idAvatar = 0;
-		String extAvatar = null;
+		idAvatar = 0;
+		extAvatar = null;
 		if (avatar != null && avatar.isModified()) {
 			if (imageId != 0) {
 				BlobHelper.deleteBlob(imageId);
@@ -143,6 +146,22 @@ public class EditProfileForm extends TransactionalValidationForm implements
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public int getIdAvatar() {
+		return idAvatar;
+	}
+
+	public void setIdAvatar(int idAvatar) {
+		this.idAvatar = idAvatar;
+	}
+
+	public String getExtAvatar() {
+		return extAvatar;
+	}
+
+	public void setExtAvatar(String extAvatar) {
+		this.extAvatar = extAvatar;
 	}
 
 }
