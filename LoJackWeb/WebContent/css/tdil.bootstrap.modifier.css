@@ -47,12 +47,26 @@ header.menuInternas li {
 	width: auto;
 	float: left;
 }
-header ul li.userPic a,
-header ul li.userPic a:hover,
-header ul li.userPic a:focus {
-	background-color:none;
+header ul li.avatarLi a,
+header ul li.avatarLi a:hover,
+header ul li.avatarLi a:focus {
+	background:none;
 	padding:0;
+	margin:0;
 	float: left;
+}
+header ul li.avatarLi img {
+	width: 32px;
+	height: 32px;
+	margin: 0 10px 0 10px;
+}
+img#avatar_img {
+	border: solid 1px #666;
+}
+fieldset.aligner label {
+	text-align:center;
+	margin:0 auto;
+	float: none;
 }
 .userName {
 	color: #f05223;

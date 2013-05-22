@@ -174,8 +174,21 @@ header {
 #floatyMenu ul li a:hover, #floatyMenu ul li a:focus {
 	background: #ee5222;
 }
-#floatyMenu ul li.userPic {
+#floatyMenu ul li.avatarLi {
 	float: left;
+}
+#floatyMenu ul li.avatarLi a,
+#floatyMenu ul li.avatarLi a:hover,
+#floatyMenu ul li.avatarLi a:focus {
+	background:none;
+	padding:0;
+	margin:0;
+	float: left;
+}
+#floatyMenu ul li.avatarLi img {
+	width: 48px;
+	height: 48px;
+	margin: 0 10px 0 10px;
 }
 #floatyOpener {
 	background: url(images/skin_lj_rl/backs/tabMenu_index.png);
@@ -194,9 +207,11 @@ header {
 #floatyOpener a {
 	color: #fff;
 }
-.userName {
+span.userName {
 	color: #f05223;
+	float: left;
 }
+span.userSaludation { float: left; }
 </style>
 </head>
 <body>
@@ -204,14 +219,17 @@ header {
 	<div id="floatyMenu">
 		<div class="wrapper">
 			<ul>
+				<li class="avatarLi">
+					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
+						<a href="./goToEditProfile.do" title="Cambiar imagen">
+							<img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" align="absmiddle">
+						</a>
+					<% } %>
+					<span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span>
+				</li>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li class="userPic">
-					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-							<a href="./goToEditProfile.do" title="Cambiar imagen"><img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="59" height="59" align="absmiddle"></a>
-					<% } %>
-				Hola: <span class="userName"><%=websiteUser.getName()%></span></li>
 			</ul>
 		</div>
 	</div>

@@ -72,29 +72,29 @@ $.each(data, function(key, value) {
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent">
-			<div id="xContainer"><button id="closeChangeAvatarLayer" style="margin-left:-40px;">X</button></div>
-			<h3 style="padding-bottom:20px;">Cambiar avatar</h3>
+			<div id="xContainer"><button id="closeChangeAvatarLayer">X</button></div>
+			<h3>Cambiar avatar</h3>
 			<html:form method="POST" action="/saveProfile">
-				<div class="myRow">
-					<div class="myLabel width80 height80">
-						<logic:notEqual name="EditProfileForm"
-							property="imageId" value="0">
-							<img id="avatar_img" src="./viewAvatar.do" width="78"
-								height="78" align="absmiddle" border="1">
-						</logic:notEqual>
+				<fieldset class="aligner">
+					<logic:notEqual name="EditProfileForm" property="imageId" value="0">
+						<label><img id="avatar_img" src="./viewAvatar.do" width="100" height="100" align="absmiddle"></label>
+					</logic:notEqual>
+					<logic:equal name="EditProfileForm" property="imageId" value="0">
+						<label><img id="avatar_img" src="images/skin_lj_rl/logos/avatarBase.png" width="100" height="100" align="absmiddle"></label>
+					</logic:equal>
+				</fieldset>
+				<fieldset class="aligner">
+					<label><input type="file" name="upload_avatar" id="upload_avatar"></label>
+				</fieldset>
+				<fieldset>
+					<label><%=LoJackErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
+				</fieldset>
+				<fieldset>
+					<div style="padding:20px 0 0 0;">
+						<button type="button" onclick="javascript:doSaveAvatar()" class="indexButtonBase" style="margin-left:20px;">Guardar</button>
+						<button type="button" onclick="./home.jsp" class="indexButtonBase">Cancelar</button>
 					</div>
-					<div class="myLabel width80 height80">
-						<logic:equal name="EditProfileForm"
-							property="imageId" value="0">
-							<img id="avatar_img" src="boImages/na.gif" width="78" height="78"
-								align="absmiddle" border="1">
-						</logic:equal>
-					</div>
-					<div class="myLabel width250 height100">
-						<input type="file" name="upload_avatar" id="upload_avatar"><br /><%=LoJackErrorFormatter.getErrorFrom(request,
-								EditProfileForm.avatar_key + ".err")%></div>
-					<div class="myRow" align="center"><a href="./home.jsp">Cancelar</a>&nbsp;<a href="javascript:doSaveAvatar()">Guardar</a></div>
-				</div>
+				</fieldset>
 			</html:form>
 		</div>
 	</div>

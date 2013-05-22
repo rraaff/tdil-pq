@@ -700,7 +700,12 @@ function parkingsNotLogged() {
 	<div class="defaultLayerStyles">
 		<div style="width:927px; margin:0 auto;">
 			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer" cl="video1Layer">< volver</button></div>
-			<div id="videoWrapper">Insert Video (Coupé)</div>
+			<div id="videoWrapper">
+				<video id="video1" width="900" height="400">
+					<source src="" type="video/mp4; codecs='avc1,mp4a'" />
+					<source src="" type="video/webm; codecs='vp8,vorbis'" />
+				</video>
+			</div>
 			<div id="footerizer">
 				<div class="col1_300 marginRight_60">
 					<h3>Video Title</h3>
