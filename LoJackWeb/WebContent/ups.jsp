@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
 <h1>Ups!</h1>
 <p>Ha ocurrido un error.</p>
 </body>

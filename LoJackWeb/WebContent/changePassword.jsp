@@ -60,10 +60,10 @@ function postChangePassword(data) {
 }
 
 </script>
-<div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
+<div id="changePassLayer" class="layerOnTop" style="z-index: 1500; top:0; left:0;">
 	<div class="loginLayerStyles">
-		<div class="loginLayerContent">
-			<div id="xContainer"><button id="closechangepasswordLayer" style="margin-left:-40px;">X</button></div>
+		<div class="loginLayerContent changePasswordLayerContent">
+			<div id="xContainer"><button id="closechangepasswordLayer">X</button></div>
 			<h3 style="padding-bottom:20px;">Cambiar clave</h3>
 			<html:form method="POST" action="/changePassword">
 					<fieldset>

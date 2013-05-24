@@ -33,8 +33,8 @@ function centerLayer(objWin, objLayer) {
 	var left = (objWin.width() / 2) - (objLayer.width() / 2);
 	objLayer.css({
 		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
+		top: '0px',
+		left: '0px'
 	}).fadeIn(500);
 }
 

@@ -124,104 +124,7 @@ $(function() {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<style>
-header {
-	background: url(images/skin_lj_rl/backs/topLayer.png);
-	background-repeat: repeat;
-	width: 100%;
-	min-height: 63px;
-	position: fixed;
-	z-index: 1005;
-	top: 0px;
-	display: inline-block;
-}
-#floatyMenu {
-	/*height: 63px;*/
-	width: 100%;
-	/*min-height: 63px;*/
-
-}
-#floatyMenu .wrapper {
-	text-align: right;
-/*	min-width: 968px;*/
-/*	height: 63px;*/
-	margin: 0 auto;
-}
-#floatyMenu ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-#floatyMenu ul li {
-	color: #fff;
-	font-size: 8px;
-	font-weight: bold;
-	text-transform: uppercase;
-	line-height: 63px;
-	display: block;
-	position: relative;	
-}
-#floatyMenu ul li a {
-	color: #fff;
-	font-size: 8px;
-	font-weight: bold;
-	text-transform: uppercase;
-	line-height: 63px;
-	margin: 0;
-	padding: 0 20px;
-	float: right;
-	display: block;
-	position: relative;
-}
-#floatyMenu ul li a:hover, #floatyMenu ul li a:focus {
-	background: #ee5222;
-}
-#floatyMenu ul li.avatarLi {
-	float: left;
-}
-#floatyMenu ul li.avatarLi a,
-#floatyMenu ul li.avatarLi a:hover,
-#floatyMenu ul li.avatarLi a:focus {
-	background:none;
-	padding:0;
-	margin:0;
-	float: left;
-}
-#floatyMenu ul li.avatarLi img {
-	width: 48px;
-	height: 48px;
-	margin: 0 10px 0 10px;
-}
-#floatyOpener {
-	background: url(images/skin_lj_rl/backs/tabMenu_index.png);
-	background-repeat: no-repeat;
-	background-position: 731px 0;
-	font-size: 10px;
-	line-height: 22px;
-	font-weight: bold;
-	text-transform: uppercase;
-	text-align: center;
-	width: 237px;
-	height: 22px;
-	padding-left: 731px;
-	margin: 0 auto;
-}
-#floatyOpener a {
-	color: #fff;
-}
-span.userName {
-	color: #f05223;
-	float: left;
-}
-span.userSaludation { float: left; }
-
-#flyingObjectContainer {
-	border:dotted 3px red;
-	max-width:1568px;
-	margin:0 auto;
-}
-</style>
-
+<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
@@ -243,7 +146,6 @@ span.userSaludation { float: left; }
 			</ul>
 		</div>
 	</div>
-	<div id="floatyOpener"><a href="#" title="Abrir menú">Menu</a></div>
 </header>
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
@@ -252,7 +154,7 @@ span.userSaludation { float: left; }
 	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
 	
 	<div id="socialSingleSignOn">
-		<div><span class="textInside">Ingresá con tus cuentas</span></div>
+		<div><span class="textInside">Ingresá con tus cuentas<!-- QUEDA PENDIENTE EL HACER QUE LEVANTE LA CUENTA DE FB Y TWITTER YA LOGUEADO... LA PARTE DE CONEXIONES. --></span></div>
 		<div>
 			<ul>
 				<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>

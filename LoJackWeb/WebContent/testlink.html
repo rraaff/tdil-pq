@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>LoJack :: Demolink</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type='text/javascript' src='js/jquery-1.8.2.min.js'></script>
+<script>
+$(function() {
+	$( "#accessPreventPortal" ).click(function() {
+		 $.ajax({
+				type: "POST",
+				url: "http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx",
+				data: {
+					SESSIONID: '<%=websiteUser.getToken().getCookie("JSESSIONID").getValue()%>',
+					TIMEZONEOFFSET: -3
+				},
+				beforeSend: function (request) {
+					request.setRequestHeader("Lojack-Token", "a5b0981a0188bb9a5b7fe44b6c32d894");
+				},
+				success: function (data) {
+					alert(data);
+					if (data.status == 200)
+						window.location = decodeURI(data.url);
+					else
+						alert(data.error);
+				}
+			});
+	});
+});
+</script>
+
+</head>
+<body>
+<header>para testear los links externos</header>
+<section>
+	<div id="accessPreventPortal"><a href="#">Click acá</a></div>
+</section>
+<footer></footer>
+</body>
+</html>

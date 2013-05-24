@@ -284,8 +284,10 @@ function centerLayer(objWin, objLayer) {
 	var left = (objWin.width() / 2) - (objLayer.width() / 2);
 	objLayer.css({
 		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
+		//top: top + 'px',
+		//left: left + 'px'
+		top: '0px',
+		left: '0px'
 	}).fadeIn(500);
 }
 
@@ -348,7 +350,8 @@ function parkingsNotLogged() {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita_animation.css" rel="stylesheet" />
+<!-- link type="text/css" href="css/laruedita_animation.css" rel="stylesheet" / -->
+<link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
@@ -409,10 +412,10 @@ function parkingsNotLogged() {
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div class="registerLayerStyles">
 		<div class="registerLayerContent">
-			<div id="xContainer" style="right:-480px;"><button id="closeregisterLayer1">X</button></div>
+			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
-			<div style="width:100%; height:430px; overflow: auto;">
+			<div>
 				<html:form method="POST" action="/register">
 					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 					registerForm.searchReferenceData();
@@ -442,7 +445,7 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 						<fieldset>
-							<label>* Sexo:</label>
+							<label class="sexLabel">* Sexo:</label>
 							<html:radio property="gender" value="Male" />
 							<span>Masculino</span>
 							<html:radio property="gender" value="Female" />

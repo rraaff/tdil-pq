@@ -58,7 +58,251 @@ and (max-height : 842px) {
 and (min-width : 321px) {
 /* Styles */
 }
-
+/* Smartphones SAMSUNG GALAXY1S (portrait) ----------- */
+@media only screen 
+and (max-width : 479px) {
+	div {
+		box-sizing:border-box;
+	}
+	#laRuedita {
+		width: 100%;
+		height: 100%;
+		margin:0 auto;
+		top: 30%;
+		z-index: 999;
+		position: fixed;
+		/*overflow: hidden;*/
+	}
+	#laRuedita .fakeRuedita {
+		background: url(../images/skin_lj_rl/backs/wheel_mobile.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 180px;
+		height: 180px;
+		margin: 0 auto;
+	}
+	#logoIndex {
+		width: 33%;
+		height: auto;
+		top:0px;;
+		z-index: 1400;
+		position: fixed;
+	}
+	#logoIndex img {
+		width: 100%;
+		height: auto;
+	}
+	/* ICONOS */
+	#iconoLogin {
+		/*border: dotted 1px red;*/
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width:59px;
+		height:59px;
+		top:13px;
+		left:13px;
+		z-index: 1101;
+		position: relative;
+	}
+	#iconoLogin img,
+	#iconoProfile img,
+	#iconoCar img,
+	#iconoPets img {
+		width: 59px;
+		height: 59px;
+		margin: 0;
+		padding: 0;
+	}
+	#iconoLogin:hover,
+	#iconoLogin:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoParkings {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_parkings_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 70px;
+		height: 48px;
+		top: -55px;
+		left: 54px;
+		z-index: 1102;
+		position: relative;
+	}
+	#iconoParkings img {
+		width: 70px;
+		height: 48x;
+		margin: 0;
+		padding: 0;
+	}
+	#iconoParkings:hover,
+	#iconoParkings:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_parkings_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoProfile {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_profile_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 59px;
+		height: 59px;
+		top: -94px;
+		left: 109px;
+		z-index: 1103;
+		position: relative;
+	}
+	#iconoProfile:hover, #iconoProfile:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_profile_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoCar {
+		/*border: dotted 1px yellow;*/
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_car_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 59px;
+		height: 59px;
+		top: -57px;
+		left: 13px;
+		z-index: 1104;
+		position: relative;
+	}
+	#iconoCar:hover, #iconoCar:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_car_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoHome {
+		/*border: dotted 1px yellow;*/
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_home_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 66px;
+		height: 48px;
+		top: -97px;
+		left: 58px;
+		z-index: 1105;
+		position: relative;
+	}
+	#iconoHome img {
+		width: 66px;
+		height: 48px;
+	}
+	#iconoHome:hover, #iconoHome:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_home_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoPets {
+		/*border: dotted 1px yellow;*/
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_pets_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		width: 59px;
+		height: 59px;
+		top: -165px;
+		left: 109px;
+		z-index: 1106;
+		position: relative;
+	}
+	#iconoPets:hover, #iconoPets:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_pets_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#xContainer {
+		width: 30px;
+		top: 0px;
+		right: 0px;
+		z-index: 9998;
+		position: relative;
+		float:right;
+	}
+	#xContainer button, button.buttonLink {
+		margin: 0;
+	}
+	.loginLayerStyles {}
+	.loginLayerContent,
+	.registerLayerContent,
+	.legalLayerContent,
+	.modalStyle {
+		border: 5px solid rgb(0, 0, 0);
+		border: 5px solid rgba(0, 0, 0, .8);
+		-webkit-background-clip: padding-box; /* for Safari */
+		border-radius: 5px;
+		background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+		background: #fff;
+		width: 90%;
+		margin: 0 auto;
+		padding: 10px;
+	}
+	#loginLayer input:not([type]),
+	#loginLayer input[type="color"],
+	#loginLayer input[type="email"],
+	#loginLayer input[type="number"],
+	#loginLayer input[type="password"],
+	#loginLayer input[type="tel"],
+	#loginLayer input[type="url"],
+	#loginLayer input[type="text"],
+	#loginLayer input[type="password"],
+	#registerLayer input:not([type]),
+	#registerLayer input[type="color"],
+	#registerLayer input[type="email"],
+	#registerLayer input[type="number"],
+	#registerLayer input[type="password"],
+	#registerLayer input[type="tel"],
+	#registerLayer input[type="url"],
+	#registerLayer input[type="text"],
+	#registerLayer input[type="password"] {
+		width: 90%;
+	}
+	#loginLayer select,
+	#registerLayer select {
+		width: 95%;
+	}
+	#registerLayer label { line-height: 25px; }
+	#registerLayer label.sexLabel { width:100%; }
+	.registerLayerContent { height: auto; }
+	.defaultLayerContent {
+		width: auto;
+		margin: 30px auto 0 auto;
+	}
+	.scrollable {
+		height: 200px;
+		margin-top:30px;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
+	/* HOME STYLES */
+	#floatyMenu ul li.avatarLi {
+		margin-right: 20px;
+		text-align: right;
+		float: right;
+		width: 100%;
+	}
+	span.userName { float: right; }
+	span.userSaludation { float: left; }
+	.changePasswordLayerContent { height: 400px; }
+	
+	.legalLayerContent {
+		height: 800px;
+	}
+	.legalLayerContentWrapper {
+		height: 660px;
+		overflow: auto;
+	}
+}
+@media only screen 
+and (max-height : 492px) {
+	/* MODALES */
+	.layerOnTop, .layerOnTop20, .layerOnTop70 {
+		height: auto;
+	}
+}
 /* Smartphones (portrait) ----------- */
 @media only screen 
 and (max-width : 320px) {
