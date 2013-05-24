@@ -126,23 +126,25 @@ $(function() {
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
 <style>
 header {
-	width: 100%;
-	height: 63px;
-	position: fixed;
-	z-index: 1005;
-	top: 0px;
-
-}
-#floatyMenu {
 	background: url(images/skin_lj_rl/backs/topLayer.png);
 	background-repeat: repeat;
 	width: 100%;
-	height: 63px;
+	min-height: 63px;
+	position: fixed;
+	z-index: 1005;
+	top: 0px;
+	display: inline-block;
+}
+#floatyMenu {
+	/*height: 63px;*/
+	width: 100%;
+	/*min-height: 63px;*/
+
 }
 #floatyMenu .wrapper {
 	text-align: right;
-	width: 968px;
-	height: 63px;
+/*	min-width: 968px;*/
+/*	height: 63px;*/
 	margin: 0 auto;
 }
 #floatyMenu ul {
@@ -212,7 +214,15 @@ span.userName {
 	float: left;
 }
 span.userSaludation { float: left; }
+
+#flyingObjectContainer {
+	border:dotted 3px red;
+	max-width:1568px;
+	margin:0 auto;
+}
 </style>
+
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
 <header>
@@ -238,15 +248,17 @@ span.userSaludation { float: left; }
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
 
-<div id="logoIndex">&nbsp;</div>
-
-<div id="socialSingleSignOn">
-	<div><span class="textInside">Ingresá con tus cuentas</span></div>
-	<div>
-		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
-		</ul>
+<div id="flyingObjectContainer"> 
+	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
+	
+	<div id="socialSingleSignOn">
+		<div><span class="textInside">Ingresá con tus cuentas</span></div>
+		<div>
+			<ul>
+				<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+				<li class="sotwitter"><a href="<%=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -255,7 +267,7 @@ span.userSaludation { float: left; }
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
 	</div>
 </section>
-<div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#">P</a></div>
+<!-- div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#" style="color:#000;">test link</a></div -->
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->

@@ -35,14 +35,13 @@
 	animation:myIconsSix 15s;
 	-webkit-animation:myIconsSix 15s; /* Safari and Chrome */
 }
-
 @keyframes myfirst {
-	from {top: -500px;}
-	to {top: 100px;}
+	from {top: -3500px;}
+	to {top: 30%;}
 }
 @-webkit-keyframes myfirst { /* Safari and Chrome */
 	from {top: -3500px;}
-	to {top: 100px;}
+	to {top: 30%;}
 }
 @keyframes mySecond {
 	from {left: -280px;}

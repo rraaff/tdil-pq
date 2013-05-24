@@ -44,12 +44,11 @@ response.addCookie(ecookie1);
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <!-- Bootstrap -->
-<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
-<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
 <%@ include file="includes/headNotLogged.jsp" %>
 <!-- Slider -->
-<!-- script src="js/jquery-latest.js"></script -->
-<link href="css/slider.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="css/slider.css"  />
 <script>
 	var t=setInterval(function(){$("#right").click()},10000);
 	$(document).ready(function()
@@ -350,6 +349,7 @@ function parkingsNotLogged() {
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita_animation.css" rel="stylesheet" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
 <div id="menu" style="display:none;">
@@ -370,15 +370,17 @@ function parkingsNotLogged() {
 <%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
 
-<div id="logoIndex">&nbsp;</div>
-
-<div id="socialSingleSignOn">
-	<div><span class="textInside">Ingresá con tus cuentas</span></div>
-	<div>
-		<ul>
-			<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-			<li class="sotwitter"><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
-		</ul>
+<div id="flyingObjectContainer"> 
+	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
+	
+	<div id="socialSingleSignOn">
+		<div><span class="textInside">Ingresá con tus cuentas</span></div>
+		<div>
+			<ul>
+				<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+				<li class="sotwitter"><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+			</ul>
+		</div>
 	</div>
 </div>
 

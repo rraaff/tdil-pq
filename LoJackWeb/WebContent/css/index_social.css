@@ -1,8 +1,7 @@
 #socialSingleSignOn {
-	right: 10px;
-	bottom: 50px;
+	right: 20px;
 	z-index: 30;
-	position: fixed;
+	position: absolute;
 	display: inline-block;
 }
 #socialSingleSignOn div {

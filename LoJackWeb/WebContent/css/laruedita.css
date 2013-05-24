@@ -17,13 +17,17 @@
 	/*opacity:0.5;
 	filter:alpha(opacity=50);*/
 }
+#flyingObjectContainer {
+	/*border:solid 3px #000;
+	background: #999;*/
+	max-width:1568px;
+	height:100%;
+	margin:0 auto;
+}
 #logoIndex {
-	background: url(../images/skin_lj_rl/logos/lo-jack_index.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	width: 243px;
-	height: 169px;
-	top: 60px;
+	max-width: 30%;
+	height: auto;
+	top: 10%;
 	z-index: 998;
 	position: fixed;
 }
