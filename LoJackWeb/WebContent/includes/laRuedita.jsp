@@ -1,7 +1,7 @@
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoLogin"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
+			<div id="iconoLogout"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
 		<%} else { %>
 			<div id="iconoLogin"><a href="#" onclick="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
 		<%} %>

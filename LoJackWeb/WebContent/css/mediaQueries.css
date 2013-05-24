@@ -93,7 +93,8 @@ and (max-width : 479px) {
 		height: auto;
 	}
 	/* ICONOS */
-	#iconoLogin {
+	#iconoLogin,
+	#iconoLogout {
 		/*border: dotted 1px red;*/
 		background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_off.png);
 		background-position: 0 0;
@@ -105,7 +106,13 @@ and (max-width : 479px) {
 		z-index: 1101;
 		position: relative;
 	}
+	#iconoLogout {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_logout_off.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
 	#iconoLogin img,
+	#iconoLogout img,
 	#iconoProfile img,
 	#iconoCar img,
 	#iconoPets img {
@@ -117,6 +124,12 @@ and (max-width : 479px) {
 	#iconoLogin:hover,
 	#iconoLogin:focus {
 		background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_on.png);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+	}
+	#iconoLogout:hover,
+	#iconoLogout:focus {
+		background: url(../images/skin_lj_rl/buttons/mobile/wheel_logout_on.png);
 		background-position: 0 0;
 		background-repeat: no-repeat;
 	}
