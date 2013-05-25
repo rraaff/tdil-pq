@@ -31,6 +31,7 @@
 				<pathelement location="../../thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" />
 			</classpath>
 			<transaction src="ddl-sqlserver.sql" />
+			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
 		</sql>
 	</target>

@@ -2,61 +2,15 @@
 HOME.JSP
 - Avatar: visualmente quedó todo como lo necesito, salvo que te manda a una pagina para cambiar el avatar en lugar de abrirlo en modal.
 
-*************************************************************************************************************
-index.jsp / home.jsp
-- ¿El check de recordar password, funciona? No, lo agregaste vos, no se si es buena idea. 
-Pablo: - Quedó en que por ahora no. dado que me inmolé en un mail.
-
-DONE
-- Desde el layer de login agregué una llamada a una función que cree (switchToRegisterLayer()) para cerrar 
-el layer de login y abrir el de registración. Pero anda medio como el orto... ¿Le pegas una mirada?
-
+************
 REGISTRACIÓN
 - No muestra los errores cuando dejás vacíos los cambios obligatorios.
 - Debería pedir el tipo de documento por separado del número.
 - Los textos de los errores están en ingles. ¿Desde donde los modifico?
 - Datepicker con fechas en ingles
-- "Select an opcion" en los selects
+DONE, le puse seleccione - "Select an opcion" en los selects
 
 *************************************************************************************************************
-DONE
-GENERAL
-- incluir el layer de cambiar mis datos y cambiar mi clave 
-
-*************************************************************************************************************
-DONE
-APPLET
-- Los botones: fijate si le podes sacar ese degradé horrible que tiene sobre el boton
-- Los botones: Onpress le pone un fondo de color violeta clarito, si podes sacaselo
-- Los botones: ordenamelos si podes LEFT - Top - down - RIGHT 
-
-*************************************************************************************************************
-
-LAYER
-Cuando cerras algún layer, se abre la registración
-
-*************************************************************************************************************
-
-change password modal
-Pablo: - No parece estar funcionando.
-
-*************************************************************************************************************
-
-
- ahÃ­ commitiÃ© las agendas...
-
-[15:45:41] Pablo Mendoza: WebContent\images\skin_lj_rl\buttons/ te commitiÃ© unos botones para el applet
-[15:46:09] Pablo Mendoza: si podes ponele fondo blanco al applet
-
-
-if para el boton del switch
-expand solo de uno (que haga el toggle del resto)
-
-log paginado (nueva doc)
-Layer de procesando
-
-mobile?
-
 update de person dinamico
 
 consulta estado de prevent
@@ -66,29 +20,9 @@ que muestre un iconito ()
 
 ver posibilidad de hacer check y mostrar varios autos
 
-prevent
-mapa fondo, todos layers, accionan sobre este mapa
-
-prevent
-home
-log paginado
-{ "guid": "1","lojackUserId":"ase001", "idEntidad": 1, intPageSize: 10 }
-
-Prevent
-manejar un metodo que vuelva a pedir los vehiculos si hay mas
-
-https://chrome.google.com/webstore/detail/manual-geolocation/mfodligkojepnddfhkbkodbamcagfhlo
-
-*****
-
 Accesos externos logueados
 
 No depende de nadie??
-
-*******************************
-Estacionamientos
-
-Depende de base de datos
 
 *******************************
 Prevent
@@ -97,35 +31,13 @@ No hay login automatico, depende de implementacion de GeoSystems
 
 No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems
 
-Thalamus ******
-
-Add social, remove social
-Depende de definicion de uso, Pablo y LoJack
-
-*******************************
-Home
-
-Resto de home
-Depende de MW
-
 Camara
 Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
 Que muestre el timestamp de la ultima actualizacion
 ancho y alto de camara
 mejora visual del applet
-Depende de MW
-
-
-*******************************
-Mobile web
-Pablo, definir casos
-Marcos, soporte a esto
-
 
 *******************************
 Nuestros
 
 instalar ffmpeg, documentar como y para que (avatar)
-
-
-Armar el war y deployarlo en JBoss

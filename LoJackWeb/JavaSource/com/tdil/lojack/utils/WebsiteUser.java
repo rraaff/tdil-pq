@@ -28,8 +28,11 @@ public class WebsiteUser extends User {
 	private String timezoneName;
 
 	private boolean isHomeUser;
+	private String homeUserId;
 	private boolean isPreventUser;
+	private String preventUserId;
 	private boolean isPetUser;
+	private String petUserId;
 
 	private UserJobCollection userJobCollection;
 
@@ -56,6 +59,10 @@ public class WebsiteUser extends User {
 
 	public String getExtraCookie() {
 		return String.valueOf(this.getToken().getCookie("AWSELB").getValue());
+	}
+	
+	public String getHomeUserId() {
+		return "xxx"; // TODO this.homeUserId;
 	}
 
 	public boolean isLogged() {
@@ -176,6 +183,26 @@ public class WebsiteUser extends User {
 
 	public boolean hasJobInProgress(Light light) {
 		return this.userJobCollection.getPendingJob(light.getIdEntidad(), light.getIdLuz()) != null;
+	}
+
+	public String getPreventUserId() {
+		return preventUserId;
+	}
+
+	public void setPreventUserId(String preventUserId) {
+		this.preventUserId = preventUserId;
+	}
+
+	public String getPetUserId() {
+		return petUserId;
+	}
+
+	public void setPetUserId(String petUserId) {
+		this.petUserId = petUserId;
+	}
+
+	public void setHomeUserId(String homeUserId) {
+		this.homeUserId = homeUserId;
 	}
 
 }

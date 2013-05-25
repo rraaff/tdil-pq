@@ -41,6 +41,8 @@ import com.tdil.utils.SystemPropertyCache;
 public class LoJackConfig extends SystemConfig {
 
 	private static String FRONT_SERVER;
+
+	private static String GUID;
 	
 	private static long FRONT_LOGIN_DELAY;
 
@@ -134,6 +136,12 @@ public class LoJackConfig extends SystemConfig {
 				getLog().error("Can not initialize caches", e);
 			}
 			Role.addRole(WebsiteUser.INSTANCE);
+			
+			String guid = SystemPropertyUtils.getSystemPropertValue("guid");
+			if (guid != null) {
+				setGUID(guid);
+			}
+			getLog().fatal("GUID is " + guid);
 
 			String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
 			if (gisserver != null) {
@@ -255,6 +263,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setFRONT_LOGIN_DELAY(long fRONT_LOGIN_DELAY) {
 		FRONT_LOGIN_DELAY = fRONT_LOGIN_DELAY;
+	}
+
+	public static String getGUID() {
+		return GUID;
+	}
+
+	public static void setGUID(String gUID) {
+		GUID = gUID;
 	}
 
 }

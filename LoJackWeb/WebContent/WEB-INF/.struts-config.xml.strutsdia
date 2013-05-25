@@ -164,11 +164,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page11" PATH="/homeConfiguracionAlertasAlarma.jsp"
   SHAPE="240,3090,0,0" SUBTYPE="jsp"
-  TITLE="homeConfiguracionAlertasAlarma.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAlarmAlertConf.do"
-   SUBTYPE="confirmed" TARGET="action19" TITLE="/saveAlarmAlertConf.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="homeConfiguracionAlertasAlarma.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#saveAlarmAlertConf" NAME="action19"
   PATH="/saveAlarmAlertConf" SHAPE="32,3409,0,0"
   TITLE="AlarmAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem"/>
@@ -212,11 +208,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page12" PATH="/homeConfiguracionAlertasLuz.jsp"
   SHAPE="240,3762,0,0" SUBTYPE="jsp"
-  TITLE="homeConfiguracionAlertasLuz.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveLightAlertConf.do"
-   SUBTYPE="confirmed" TARGET="action25" TITLE="/saveLightAlertConf.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="homeConfiguracionAlertasLuz.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#saveLightAlertConf" NAME="action25"
   PATH="/saveLightAlertConf" SHAPE="32,4081,0,0"
   TITLE="LightAlertConfigurationForm" TYPE="action" model-entity="StrutsProcessItem"/>
@@ -403,9 +395,6 @@
    PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page19" PATH="/mostrarVehiculoEnMapa.jsp"
-  SHAPE="240,5937,0,0" SUBTYPE="jsp" TITLE="mostrarVehiculoEnMapa.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToVehiculesForPhone" NAME="action59"
   PATH="/goToVehiculesForPhone" SHAPE="32,6385,0,0"
   TITLE="SelectVehiclesForPhonesForm" TYPE="action" model-entity="StrutsProcessItem">

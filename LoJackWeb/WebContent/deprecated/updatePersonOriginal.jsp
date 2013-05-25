@@ -162,7 +162,7 @@ function postRegister(data) {
 						<div class="myLabel width120">State/Province</div>
 						<div class="myLabel width270">
 							<html:select name="UpdatePersonForm" property="stateId" styleClass="normalField width250">
-								<option value="">Select an option</option>
+								<option value="">Seleccione...</option>
 								<% for (StateBean state : registerForm.getStates()) { %>
 									<option <%=	state.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=state.getId()%>">
 									<%=state.getName()%></option>

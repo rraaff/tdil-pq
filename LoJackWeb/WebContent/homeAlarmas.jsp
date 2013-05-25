@@ -36,7 +36,6 @@
 <link rel="stylesheet" href="css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
 <script src="js/bootstrapSwitch.js"></script>
-<script src="js/bootstrapSwitch.min.js"></script>
 <!-- Fin Switches -->
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>
 <script>
@@ -213,14 +212,16 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		});
   }
 
+  var bgUpdate = false;
+  
   function toggleAlarm(objCheckbox, idEntidad) {
+	  if (!bgUpdate) {
 		if (objCheckbox.checked) {
-			$( "#alarm-switch-" +idEntidad ).attr('checked', false);
 			activateAlarm(idEntidad);
 		} else {
-			$( "#alarm-switch-" +idEntidad ).attr('checked', true);
 			deactivateAlarm(idEntidad);
 		}
+	  }
   }
 
   function activateAlarm(alarmId) {
@@ -266,18 +267,22 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
+  function toggle(){
+	  $('#b-alarm-switch-1').bootstrapSwitch('toggleState');
+  }
   function check(){
-	  alert(document.getElementById('alarm-switch-1').checked);
-	  $( "#alarm-switch-1" ).attr('checked', true);
-	  alert(document.getElementById('alarm-switch-1').checked);
+	  bgUpdate = true;
+	  $('#b-alarm-switch-1').bootstrapSwitch('setState', true);
+	  bgUpdate = false;
   }
   function uncheck(){
-	  alert(document.getElementById('alarm-switch-1').checked);
-	  $( "#alarm-switch-1" ).attr('checked', false);
-	  alert(document.getElementById('alarm-switch-1').checked);
+	  bgUpdate = true;
+	  $('#b-alarm-switch-1').bootstrapSwitch('setState', false);
+	  bgUpdate = false;
   }
   
   function doDeactivate(idEntidad) {
+	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('toggleState');
 	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
@@ -359,13 +364,13 @@ textarea {
 							<div class="portaTitleAndSwitch">
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 								<div class="switchContainer">
-									<div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+									<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
 										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
 									</div>
 								  	<% if (alarm.isInactive() ) { %>
 								  		<span class="fakeButtons" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
 								  	<% } else { %>
-								  		<span class="fakeButtons" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)">*</span>
+								  		<span class="fakeButtons" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 								  	<% } %>
 							  	</div>
 
@@ -385,6 +390,9 @@ textarea {
 					  			<% } %>
 							</div>
 						</div>
+						<button onclick="toggle()">toggle</button>
+						<button onclick="check()">check</button>
+						<button onclick="uncheck()">unchek</button>
 						<div id="switchBoard">
 				  			<div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
 						   		<% if (alarm.hasChangeData()) { %>

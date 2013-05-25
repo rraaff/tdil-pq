@@ -16,10 +16,16 @@ DROP TABLE IF EXISTS VERSION;
 CREATE TABLE WEBSITEUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `lojackUserId` VARCHAR(50) NULL ,
+  `homeUserId` VARCHAR(100) NULL ,
+  `petUserId` VARCHAR(100) NULL ,
+  `preventUserId` VARCHAR(100) NULL ,
   `id_avatar` INT NULL,
   `ext_avatar` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`),
-  INDEX `IX_WEBSITEUSER_00` (`lojackUserId` ASC))
+  INDEX `IX_WEBSITEUSER_00` (`lojackUserId` ASC),
+  INDEX `IX_WEBSITEUSER_01` (`homeUserId` ASC),
+  INDEX `IX_WEBSITEUSER_02` (`petUserId` ASC),
+  INDEX `IX_WEBSITEUSER_03` (`preventUserId` ASC))
 ENGINE = InnoDB;
 
 CREATE TABLE ALARM_CONF (
@@ -80,21 +86,6 @@ CREATE TABLE SYSPROPERTIES (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UQ_SYSPROPERTIES_00` (`propKey` ASC))
 ENGINE = InnoDB;
-
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/LoJackWeb','front.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','test','thalamus.touchpoint.code',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('gis.server','http://localhost:8180/GISWeb/gis/','gis.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.server','http://localhost:8180/GISWeb/services/','services.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.server','http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc','prevent.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prop.tmp.path','/home/mgodoy/icarus/apache-tomcat-6.0.32/temp','prop.tmp.path',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.refreshTime','1000','camera.mobile.refreshTime',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.applet.refreshTime','1000','camera.applet.refreshTime',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.refresh.time','1000','job.refresh.time',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.abort.time','60000','job.abort.time',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.client.refresh.time','1000','job.client.refresh.time',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.login.deplay','100','front.login.deplay',0);
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,

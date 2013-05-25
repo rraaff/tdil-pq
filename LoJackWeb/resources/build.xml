@@ -75,6 +75,7 @@
 				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
 			<transaction src="ddl.sql" />
+			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
 		</sql>
 	</target>
@@ -145,11 +146,20 @@
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
 		</unwar>
+		<delete file="${project.name.upper}.tmp/${project.name.upper}_WEB.war"></delete>
+		
 		<copy todir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/lib" file="../../thalamusJClient/ThalamusJClient/commons-httpclient.jar"></copy>
 		<!--antcall target="js.minify"></antcall-->
-		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war"></delete>
-		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
+		<delete file="./${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war"></delete>
+		<war destfile="./${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
 		</war>
+		
+		<replaceregexp file="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml" match="!-- context-param" replace="context-param"></replaceregexp>
+		<replaceregexp file="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml" match="context-param--" replace="context-param"></replaceregexp>
+		<delete file="./${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war"></delete>
+		<war destfile="./${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war" basedir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" webxml="${project.name.upper}.tmp/${project.name.upper}_WEB.war1/WEB-INF/web.xml">
+		</war>
+		
 		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
 	</target>
 
@@ -200,12 +210,51 @@
 		<delete dir="${project.name.upper}.tmp" failonerror="false">
 		</delete>
 		<mkdir dir="${project.name.upper}.tmp" />
+		<mkdir dir="${project.name.upper}.tmp/mysql" />
+		<mkdir dir="${project.name.upper}.tmp/sqlserver" />
 		<antcall target="makeWar">
 		</antcall>
 		<copy todir="${project.name.upper}.tmp" file="Instrucciones.txt">
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
+		
+		<!-- mysql -->
+		<copy file="ddl.sql" tofile="${project.name.upper}.tmp/mysql/create-mysql.sql">
+		</copy>
+		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="sysproperties.sql"/>
+		</concat>
+		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="poi_inserts.sql"/>
+		</concat>
+		
+		<!-- sql server -->
+		<copy file="ddl-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql">
+		</copy>
+		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="sysproperties.sql"/>
+		</concat>
+		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="poi_inserts.sql"/>
+		</concat>
+		
+		<!-- datasources -->
+		<copy file="./jboss/mysql-ds.xml" todir="${project.name.upper}.tmp/mysql/">
+		</copy>
+		<copy file="./jboss/sqlserver-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
+		</copy>
+		
+		<!-- drivers -->
+		<copy file="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" todir="${project.name.upper}.tmp/mysql/">
+		</copy>
+		<copy file="../../thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" todir="${project.name.upper}.tmp/sqlserver/">
+		</copy>
+		
+		<copy file="./database.sql" tofile="${project.name.upper}.tmp/mysql/db-mysql.sql">
+		</copy>
+		<copy file="./database-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/db-sqlserver.sql">
+		</copy>
 	</target>
 
 </project>

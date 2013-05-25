@@ -128,7 +128,6 @@
 				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>
 					Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
 				<html:form method="POST" action="/saveAlarmAgenda">
-					<form>
 						<fieldset>
 							<label>Nombre</label>
 							<html:text name="AlarmAgendaForm" property="description" styleClass="width390" />
@@ -226,9 +225,7 @@
 							</logic:equal>
 							<!--  input type="button" id="" onclick="this.form.action='./resetAlarmAgenda.do';this.form.submit();" value="Reset" class="indexButtonBase"-->
 						</fieldset>
-					</form>
 				</html:form>
-				<form>
 					<fieldset>
 						<%
 						java.util.List source = alarmAgendaForm.getAlarmAgendas();
@@ -258,7 +255,6 @@
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</fieldset>
-				</form>
 			</div>
 		</div>
 	</div>

@@ -11,11 +11,9 @@
 				<p>Para contactar a la Dirección Nacional de Protección de Datos Personales:</p>
 				<p>Sarmiento 1118, 5º piso (C1041AAX)<br/>Tel. 4383-8510/12/13/15<br/>www.jus.gov.ar/datospersonalesinfodnpdp@jus.gov.ar</p>
 			</div>
-			<form>
-				<fieldset>
-					<div style="padding:20px 0 0 0; float:right;"><button type="button" id="closelegalesLayer" class="indexButtonBase">Cerrar</button></div>
-				</fieldset>
-			</form>
+			<fieldset>
+				<div style="padding:20px 0 0 0; float:right;"><button type="button" id="closelegalesLayer" class="indexButtonBase">Cerrar</button></div>
+			</fieldset>
 		</div>
 	</div>
 </div>

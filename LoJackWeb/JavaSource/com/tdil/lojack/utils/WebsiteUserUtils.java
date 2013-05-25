@@ -3,6 +3,7 @@ package com.tdil.lojack.utils;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.ibatis.TransactionProvider;
@@ -12,6 +13,7 @@ import com.tdil.lojack.model.AlarmConf;
 import com.tdil.lojack.model.AlarmConfExample;
 import com.tdil.lojack.model.LightConf;
 import com.tdil.lojack.model.LightConfExample;
+import com.tdil.lojack.model.WebsiteUser;
 import com.tdil.lojack.model.WebsiteUserExample;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
@@ -21,9 +23,16 @@ public class WebsiteUserUtils {
 	
 	private static final class InitWebSiteUser implements TransactionalAction {
 		private String lojackUserId;
-		public InitWebSiteUser(String lojackUserId) {
+		private String homeUserId;
+		private String preventUserId;
+		private String petUserId;
+		
+		public InitWebSiteUser(String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
 			super();
 			this.lojackUserId = lojackUserId;
+			this.homeUserId = homeUserId;
+			this.preventUserId = preventUserId;
+			this.petUserId = petUserId;
 		}
 		public void executeInTransaction() throws SQLException {
 			WebsiteUserExample example = new WebsiteUserExample();
@@ -32,8 +41,18 @@ public class WebsiteUserUtils {
 			if (users.isEmpty()) {
 				com.tdil.lojack.model.WebsiteUser user = new com.tdil.lojack.model.WebsiteUser();
 				user.setLojackuserid(this.lojackUserId);
+				user.setHomeuserid(this.homeUserId);
+				user.setPreventuserid(this.preventUserId);
+				user.setPetuserid(this.petUserId);
 				user.setDeleted(0);
 				DAOManager.getWebsiteUserDAO().insertWebsiteUser(user);
+			} else {
+				com.tdil.lojack.model.WebsiteUser user = users.get(0);
+				user.setHomeuserid(this.homeUserId);
+				user.setPreventuserid(this.preventUserId);
+				user.setPetuserid(this.petUserId);
+				user.setDeleted(0);
+				DAOManager.getWebsiteUserDAO().updateWebsiteUserByPrimaryKey(user);
 			}
 		}
 	}
@@ -47,7 +66,25 @@ public class WebsiteUserUtils {
 		public Object executeInTransaction() throws SQLException {
 			WebsiteUserExample example = new WebsiteUserExample();
 			example.createCriteria().andLojackuseridEqualTo(lojackUserId);
-			return DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
+			return DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
+		}
+	}
+	
+	private static final class GetWebSiteUserByHomeUserId implements TransactionalActionWithResult {
+		private String lojackUserId;
+		public GetWebSiteUserByHomeUserId(String lojackUserId) {
+			super();
+			this.lojackUserId = lojackUserId;
+		}
+		public Object executeInTransaction() throws SQLException {
+			WebsiteUserExample example = new WebsiteUserExample();
+			example.createCriteria().andHomeuseridEqualTo(lojackUserId);
+			List<WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
+			if (result.isEmpty()) {
+				return null;
+			} else {
+				return result.get(0);
+			}
 		}
 	}
 	
@@ -97,16 +134,31 @@ public class WebsiteUserUtils {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
+	public static com.tdil.lojack.model.WebsiteUser getWebSiteUserByHomeUserId(String lojackUserId) {
+		if (StringUtils.isEmpty(lojackUserId)) {
+			return null;
+		}
+		try {
+			return (com.tdil.lojack.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUserByHomeUserId(lojackUserId));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
 	public static com.tdil.lojack.model.WebsiteUser getWebSiteUser(String lojackUserId) {
 		try {
-			TransactionProvider.executeInTransaction(new InitWebSiteUser(lojackUserId));
-			List<com.tdil.lojack.model.WebsiteUser> result = (List<com.tdil.lojack.model.WebsiteUser>)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
-			if (result.size() > 0) {
-				return result.get(0);
-			} else {
-				return null;
-			}
+			return (com.tdil.lojack.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static com.tdil.lojack.model.WebsiteUser getWebSiteUserUpdatingData(String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
+		try {
+			TransactionProvider.executeInTransaction(new InitWebSiteUser(lojackUserId, homeUserId, preventUserId, petUserId));
+			return (com.tdil.lojack.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return null;

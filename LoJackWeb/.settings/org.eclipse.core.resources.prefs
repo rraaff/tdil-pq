@@ -1,3 +1,5 @@
-#Tue May 07 20:31:39 ART 2013
+#Fri May 24 23:23:18 ART 2013
 eclipse.preferences.version=1
+encoding//resources/ddl.sql=UTF-8
 encoding//resources/poi_inserts.sql=UTF-8
+encoding//resources/sysproperties.sql=UTF-8

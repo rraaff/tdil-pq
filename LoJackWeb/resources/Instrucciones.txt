@@ -3,27 +3,31 @@ Instalacion
 
 Crear a base de datos con los scripts correspondientes (mysql o sqlserver)
 
-Copiar el war directorio de deploy de la configuracion.
-El war esta preparado para usar la conexion con sql server, en caso de querer usar con mysql se debe editar
-el archivo LOJACK_WEB.war/WEB-INF/web.xml
+Copiar el war al directorio de deploy de la configuracion.
+1) mysql: mysql/LOJACK_WEB.war
+1) sqlserver: sqlserver/LOJACK_WEB.war
 
-y quitar las siguientes lineas
- <context-param>
-  <param-name>SqlMapConfig</param-name>
-  <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
- </context-param>
- <context-param>
-  <param-name>DAOProvider</param-name>
-  <param-value>SQLSERVER</param-value>
- </context-param>
- 
-En caso de no estar presentes se asume conexion con mysql.
+En los pasos de creacion de base de datos, usuario y copiado de datasources cambiar los datos de la base y
+usuario de creerlo necesario.
 
-Copiar la definicion de datasource correspondiente (mysql o sqlserver)
+Crear la base de datos y el usuario:
+1) mysql: mysql/create-mysql.sql
+2) sqlserver: sqlserver/db-sqlserver.sql
 
+Crear los objetos con el usuario:
+1) mysql: mysql/create-mysql.sql
+2) sqlserver: sqlserver/create-sqlserver.sql
+
+Copiar la definicion de datasource correspondiente al directorio de deploy:
+1) mysql: mysql/mysql-ds.xml
+2) sqlserver: sqlserver/sqlserver-ds.xml
+
+Copiar el jar del driver al directorio lib de la configuracion de jboss:
+1) mysql: mysql/mysql-connector-java-5.1.13-bin.jar
+2) sqlserver: sqlserver/sqljdbc4.jar
 
 Configuracion
-===========
+=============
 
 Toda la configuracion de la aplicacion se realiza a traves de datos de la tabla SYSPROPERTIES.
 
@@ -47,7 +51,8 @@ services.server: Ubicacion del server de servicios no GIS, por lo hablado debe s
 prevent.server: Ubicacion del server de prevent, por ejemplo 
 	http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc
 
-prop.tmp.path: Directorio temporal, aqui se extraera la configuracion del log4j y se escribira el log
+prop.tmp.path: Directorio temporal, aqui se extraera la configuracion del log4j y se escribira el log, 
+	asi como los blobs seran extraidos en dicho directorio
 
 camera.mobile.refreshTime: Tiempo de refresco de la version mobile de la camara, representa la 
 	cantidad de milisegundos de refresco entre imagen e imagen
@@ -65,3 +70,27 @@ job.client.refresh.time: Tiempo de refresco del ajax del cliente que consulta lo
 	jobs. Se expresa en milisegundos
 
 front.login.deplay: Milisegundos de retraso del login.
+
+gui: guid para usar en la comunicacion con gis
+
+Logging
+=======
+
+La configuracion del log de la aplicacion se realiza a traves de log4j.
+La aplicacion extrae automaticamente el log4j al directorio prop.tmp.path, luego puede ser editado para configurarl.
+Si bien cada clase tiene su log, existen tres clases que pueden ser particularmente importantes y son las que acceden 
+a servicios externos:
+
+com.tdil.thalamus.client.core.ThalamusClient: log de la clase que maneja la comunicacion con thalamus. 
+	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
+	En modo info muestra los tiempos de las invocaciones.
+	
+com.tdil.lojack.prevent.PreventConnector: log de la clase que maneja la comunicacion con prevent. 
+	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
+	En modo info muestra los tiempos de las invocaciones.
+	
+com.tdil.lojack.gis.LoJackServicesConnector: log de la clase que maneja la comunicacion con el middleware. 
+	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
+	En modo info muestra los tiempos de las invocaciones.
+
+Se recomienda quitar el uso de console appender en el ambiente productivo

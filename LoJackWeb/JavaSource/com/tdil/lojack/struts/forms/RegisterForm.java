@@ -52,6 +52,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	
 	private TokenHolder token;
 	
+	private int documentType; // TODO
 	private String document;
 	private String password;
 	private String firstName;
@@ -224,7 +225,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		JSONObject general = new JSONObject();
 		JSONObject profile = new JSONObject();
 		JSONObject document = new JSONObject();
-		document.put("type", 1);
+		document.put("type", this.getDocumentType());
 		document.put("number", this.getDocument());
 		profile.put("document", document);
 		if (isInUseAndEditable(PersonFieldNames.firstName)) {
@@ -460,7 +461,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		this.gender = gender;
 	}
 	public String getPrincipal() {
-		return "1:" + this.getDocument();
+		return this.getDocumentType() + ":" + this.getDocument();
 	}
 	
 	public boolean isPrincipal(String field) {
@@ -627,6 +628,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 	public void setCountrySelected(String countrySelected) {
 		this.countrySelected = countrySelected;
+	}
+	public int getDocumentType() {
+		return documentType;
+	}
+	public void setDocumentType(int documentType) {
+		this.documentType = documentType;
 	}
 	
 }

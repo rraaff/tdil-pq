@@ -114,7 +114,6 @@
 				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>
 				Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%></h1>
 				<html:form method="POST" action="/saveLightAgenda">
-					<form>
 						<fieldset>
 							<label>Nombre</label>
 							<html:text name="LightAgendaForm" property="description" styleClass="width390" />
@@ -214,9 +213,7 @@
 							</logic:equal>
 							<!--  <input type="button" id="" onclick="this.form.action='./resetLightAgenda.do';this.form.submit();" value="Reset">-->
 						</fieldset>
-					</form>
 				</html:form>
-				<form>
 					<fieldset>
 						<%
 						java.util.List source = lightAgendaForm.getLightAgendas();
@@ -246,7 +243,6 @@
 						</display:table>
 						<%=DisplayTagParamHelper.getFields(request)%>
 					</fieldset>
-				</form>
 			</div>
 		</div>
 	</div>

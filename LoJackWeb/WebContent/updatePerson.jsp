@@ -63,7 +63,7 @@ function postRegister(data) {
 			<div id="xContainer"><button id="closeregisterLayer">X</button></div>
 			<h3>Modificar mis datos</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
-			<html:form method="POST" action="/updatePerson">
+				<html:form method="POST" action="/updatePerson">
 				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("UpdatePersonForm");
 				%>
 				<div class="scrollable">

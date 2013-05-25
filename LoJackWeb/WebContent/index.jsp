@@ -1,3 +1,5 @@
+<%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
+<%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
@@ -400,11 +402,9 @@ function parkingsNotLogged() {
 		<div class="defaultLayerContent">
 			<h3>Atención</h3>
 			<p>Registrate y accede a parkings. Es gratis y podes usarlo tanto en tu pc como en cualquier dispositivo móvil que soporte HTML 5 y Javascript.</p>
-			<form>
 				<fieldset>
 					<button id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer" class="indexButtonBase">Cerrar</button>
 				</fieldset>
-			</form>
 		</div>
 	</div>
 </div>
@@ -420,9 +420,22 @@ function parkingsNotLogged() {
 					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 					registerForm.searchReferenceData();
 					%>
-					<form>
 						<fieldset>
-							<label>* DNI</label>
+							<label>* Tipo de doc</label>
+							<html:select name="RegisterForm" property="documentType" >
+								<option value="">Seleccione...</option>
+								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+									<option value="<%=codBean.getId()%>">
+										<%=codBean.getName()%></option>
+								<% } %>
+							</html:select>
+							<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
+								<div id="err.profile.documentType"></div>
+							</div>
+						</fieldset>
+							
+						<fieldset>
+							<label>* Numero</label>
 							<html:text name="RegisterForm" property="document" />
 							<div class="myRow errorField" style="display: none;" id="p.profile.document">
 								<div id="err.profile.document"></div>
@@ -502,7 +515,7 @@ function parkingsNotLogged() {
 						<fieldset>
 							<label>Provincia</label>
 							<html:select name="RegisterForm" property="stateId" >
-								<option value="">Select an option</option>
+								<option value="">Seleccione...</option>
 								<% for (StateBean stateBean : registerForm.getStates()) { %>
 									<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
 										<%=stateBean.getName()%></option>
@@ -572,7 +585,6 @@ function parkingsNotLogged() {
 						<fieldset style="padding:20px 0 0 0 ;">
 							<input type="submit" id="submitregister" value=" " class="indexLogin">
 						</fieldset>
-					</form>
 				</html:form>
 			</div>
 		</div>
@@ -588,15 +600,16 @@ function parkingsNotLogged() {
 				<html:hidden name="LoginForm" property="timezoneOffset"/>
 				<html:hidden name="LoginForm" property="timezoneName"/>
 				<div class="alert alert-error" id="loginerr" style="display: none;"></div>
-				<form>
 					<fieldset>
 						<label>Tipo doc</label>
-						<select>
-							<option value="0">Seleccione...</option>
-							<option value="dni">DNI</option>
-							<option value="ci">Cédula de identidad</option>
-							<option value="pasaporte">Pasaporte</option>
-						</select>
+						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginForm"); %>
+						<html:select name="LoginForm" property="documentType" >
+								<option value="">Seleccione...</option>
+								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+									<option value="<%=codBean.getId()%>">
+										<%=codBean.getName()%></option>
+								<% } %>
+							</html:select>
 					</fieldset>
 					<fieldset>
 						<label>Número</label>
@@ -615,7 +628,6 @@ function parkingsNotLogged() {
 						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
 						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate gratis">¿No estás registrado?</div>
 					</fieldset>
-				</form>
 			</html:form>
 		</div>
 	</div>
@@ -626,11 +638,9 @@ function parkingsNotLogged() {
 		<div class="defaultLayerContent">
 			<h3>Atención</h3>
 			<p>El usuario y/o la clave no coinciden.</p>
-			<form>
 				<fieldset>
 					<button id="closeloginInvalidLayer" cl="closeloginInvalidLayer" class="indexButtonBase">Cerrar</button>
 				</fieldset>
-			</form>
 		</div>
 	</div>
 </div>
@@ -643,7 +653,6 @@ function parkingsNotLogged() {
 				<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordLayer">X</button></div>
 				<h3>Recuperá tu clave</h3>
 				<p>Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
-				<form>
 					<fieldset>
 						<label>DNI</label>
 						<html:text name="RequestResetPasswordForm" property="username"/>
@@ -652,7 +661,6 @@ function parkingsNotLogged() {
 						<div  style="padding:20px 0 0 0; float:right;"><button type="submit" id="submitforgotPassword" class="indexButtonBase">Enviar</button></div>
 						<!-- input type="submit" id="submitforgotPassword" value="Submit" -->
 					</fieldset>
-				</form>
 			</html:form>
 		</div>
 	</div>
@@ -664,11 +672,9 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordEmailSentLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recibís un E-Mail nuestro con la clave, por favor revisá el correo no deseado.</div>
-			<form>
 				<fieldset>
 					<div style="padding:20px 0 0 0; float:right;"><button type="submit" id="closeforgotPasswordEmailSentLayer"  class="indexButtonBase">Cerrar</button></div>
 				</fieldset>
-			</form>
 		</div>
 	</div>
 </div>
@@ -678,11 +684,9 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordUserNotFoundLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">El DNI no coincide con un usuario de Lo-Jack</div>
-			<form>
 				<fieldset>
 					<div style="padding:20px 0 0 0; float:right;"><button type="submit" id="closeforgotPasswordUserNotFoundLayer" class="indexButtonBase">Cerrar</button></div>
 				</fieldset>
-			</form>
 		</div>
 	</div>
 </div>
@@ -692,11 +696,9 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordUserNotFoundLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Ha ocurrido un error. Por favor intentelo nuevamente.</div>
-			<form>
 				<fieldset>
 					<div style="padding:20px 0 0 0; float:right;"><button type="button" id="closeforgotPasswordErrorLayer" class="indexButtonBase">Cerrar</button></div>
 				</fieldset>
-			</form>
 		</div>
 	</div>
 </div>

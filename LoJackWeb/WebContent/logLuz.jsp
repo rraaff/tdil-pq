@@ -13,8 +13,8 @@ Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websit
 <h3>Log de cambios</h3>
 <div class="scrollable">
 	<% for (ChangeLog log : logCollection) {
-		com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUser(log.getLojackUserId()); %>
-		<% if (WebsiteUserUtils.hasAvatar(logUsr)) { %>
+		com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUserByHomeUserId(log.getLojackUserId()); %>
+		<% if (logUsr != null && WebsiteUserUtils.hasAvatar(logUsr)) { %>
 			<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" width="30" height="30" align="absmiddle">
 		<% } else { %>
 			<img src="images/na.gif" width="30" height="30" align="absmiddle">

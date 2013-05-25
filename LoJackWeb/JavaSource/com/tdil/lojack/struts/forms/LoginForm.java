@@ -1,6 +1,8 @@
 package com.tdil.lojack.struts.forms;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,6 +25,7 @@ import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.ProfileResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
+import com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean;
 import com.tdil.thalamus.client.facade.json.beans.LoginBean;
 import com.tdil.thalamus.client.facade.json.beans.LoginResult;
 import com.tdil.thalamus.client.facade.json.beans.PersonResult;
@@ -34,6 +37,7 @@ public class LoginForm extends ActionForm {
 
 	private String timezoneOffset;
 	private String timezoneName;
+	private int documentType; // TODO
 	private String username;
 	private String password;
 
@@ -51,6 +55,25 @@ public class LoginForm extends ActionForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public static Collection<DocumentTypeBean> getDocumentTypes() {
+		try {
+			return ThalamusClientBeanFacade.getDocumentTypes();
+		} catch (HttpStatusException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidResponseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CommunicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnauthorizedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ArrayList<DocumentTypeBean>();
 	}
 
 	@Override
@@ -75,7 +98,7 @@ public class LoginForm extends ActionForm {
 					e.printStackTrace();
 				}
 			}
-			return login(this.getUsername(), this.getPassword(), this.getTimezoneOffset(), this.getTimezoneName());
+			return login(this.getDocumentType() + ":" + this.getUsername(), this.getPassword(), this.getTimezoneOffset(), this.getTimezoneName());
 		} catch (HttpStatusException e) {
 			if (e.getStatus() == HttpStatus.SC_UNAUTHORIZED) {
 				throw new ValidationException(new ValidationError("LoginForm.HttpStatusException.401"));
@@ -93,7 +116,7 @@ public class LoginForm extends ActionForm {
 
 	public static WebsiteUser login(String username, String pasword, String timezoneOffset, String timezoneName)
 			throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		LoginBean loginBean = new LoginBean("1:" + username, pasword);
+		LoginBean loginBean = new LoginBean(username, pasword);
 		LoginResult result = ThalamusClientBeanFacade.login(loginBean);
 		return getUserLogged(/* timezoneOffset, timezoneName, */result);
 	}
@@ -113,7 +136,7 @@ public class LoginForm extends ActionForm {
 		setAccess(user, getProfile);
 
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
-		user.setModelUser(WebsiteUserUtils.getWebSiteUser(user.getLojackUserId()));
+		user.setModelUser(WebsiteUserUtils.getWebSiteUserUpdatingData(user.getLojackUserId(), user.getHomeUserId(), user.getPreventUserId(), user.getPetUserId()));
 		return user;
 	}
 
@@ -148,6 +171,14 @@ public class LoginForm extends ActionForm {
 
 	public void setTimezoneName(String timezoneName) {
 		this.timezoneName = timezoneName;
+	}
+
+	public int getDocumentType() {
+		return documentType;
+	}
+
+	public void setDocumentType(int documentType) {
+		this.documentType = documentType;
 	}
 
 }
