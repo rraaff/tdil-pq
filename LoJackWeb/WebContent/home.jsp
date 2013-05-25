@@ -164,11 +164,8 @@ $(function() {
 	</div>
 </div>
 
-<section id="copyright">
-	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
-	</div>
-</section>
+<%@ include file="includes/copyright.jsp" %>
+
 <!-- div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#" style="color:#000;">test link</a></div -->
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
