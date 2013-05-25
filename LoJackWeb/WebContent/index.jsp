@@ -276,6 +276,7 @@ function forgotPassword() {
 }
 
 <%@ include file="includes/openLegalesLayer.jsp" %>
+<%@ include file="includes/contactJS.jspf" %>
 
 function showVideo1() {
 	centerLayer($(window), $( "#video1Layer" ));
@@ -389,6 +390,7 @@ function parkingsNotLogged() {
 	</div>
 </div>
 
+<%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
 
 <!-- Los LAYERS -->

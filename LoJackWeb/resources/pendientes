@@ -1,3 +1,13 @@
+revisar block uid unblock ui en los includes
+
+traducciones de tipos de direccion y telefono
+
+index no abra en todo momento registracion
+
+*****
+
+detect mobile
+
 *************************************************************************************************************
 HOME.JSP
 - Avatar: visualmente quedó todo como lo necesito, salvo que te manda a una pagina para cambiar el avatar en lugar de abrirlo en modal.

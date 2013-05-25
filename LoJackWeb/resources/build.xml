@@ -86,7 +86,8 @@
 				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
 			<transaction src="ddl.sql" />
-			<transaction src="sysproperties_pablo.sql" />
+			<transaction src="sysproperties.sql" />
+			<transaction src="fixip_pablo.sql" />
 			<transaction src="poi_inserts.sql" />
 		</sql>
 	</target>

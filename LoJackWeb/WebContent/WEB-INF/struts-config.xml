@@ -22,7 +22,7 @@
   <form-bean id="VehiclesSecureZoneForm" name="VehiclesSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSecureZoneForm"/>
   <form-bean id="SelectVehiclesForMapForm" name="SelectVehiclesForMapForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
-  
+  <form-bean id="ContactForm" name="ContactForm" type="com.tdil.lojack.struts.forms.ContactForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -216,6 +216,10 @@
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAjaxAction">
   </action>
   
+  <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.lojack.struts.action.GoToContactAction">
+  	<forward name="continue" path="/contacto.jsp" redirect="true"/>
+  </action>
+  <action name="ContactForm" path="/contact" scope="session" type="com.tdil.lojack.struts.action.ContactAction"/>
 
  </action-mappings>
  

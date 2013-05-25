@@ -1,0 +1,5 @@
+function contactLoJack() {
+  $('#contactContentLayer').load('goToContact.do', function() {
+	  centerLayer($(window), $( "#contactLayer" ));
+	});
+}

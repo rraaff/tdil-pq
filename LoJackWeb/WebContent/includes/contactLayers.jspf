@@ -1,0 +1,6 @@
+<!-- Contact -->
+<div id="contactLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="contactContentLayer">
+		Consultando datos...
+	</div>
+</div>
