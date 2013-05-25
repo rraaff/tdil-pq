@@ -148,12 +148,15 @@ public class LoginForm extends ActionForm {
 		}
 		if (profile.containsKey("homeIsClient") && profile.get("homeIsClient") != JSONNull.getInstance()) {
 			user.setHomeUser(profile.getBoolean("homeIsClient"));
+			user.setHomeUserId(profile.getString("homeUser"));
 		}
 		if (profile.containsKey("preventIsClient") && profile.get("preventIsClient") != JSONNull.getInstance()) {
 			user.setPreventUser(profile.getBoolean("preventIsClient"));
+			user.setPreventUserId(profile.getString("preventUser"));
 		}
 		if (profile.containsKey("petIsClient") && profile.get("petIsClient") != JSONNull.getInstance()) {
 			user.setPetUser(profile.getBoolean("petIsClient"));
+			user.setPreventUserId(profile.getString("petUser"));
 		}
 	}
 
