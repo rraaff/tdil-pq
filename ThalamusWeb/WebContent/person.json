@@ -77,9 +77,12 @@
           "firstname" : "user I",
           "gender" : "Female",
           "lastname" : "lopez",
-          "isHomeUser" : true,
-          "isPreventUser" : true,
-          "isPetUser" : false,
+          "homeIsClient" : true,
+          "preventIsClient" : true,
+          "petIsClient" : false,
+          "homeUser" : "homeUser",
+          "petUser" : "petUser",
+          "preventUser" : "preventUser",
           "lojackUserId" : "aa",
           "links" : [  ]
         }

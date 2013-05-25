@@ -30,9 +30,16 @@ $("form[name='ContactForm']").validate({
 $( "#closecontactLayer" ).click(function() {
 	$( "#contactLayer" ).fadeOut();
 });
-		
+
+$( "#closecontactLayerThanks" ).click(function() {
+	$( "#contactLayerThanks" ).fadeOut();
+});
+$( "#buttonclosecontactLayerThanks" ).click(function() {
+	$( "#contactLayerThanks" ).fadeOut();
+});
 
 function clearErrors() {
+	$('#errcontact').prop('innerHTML','');
 	$("div[id^='err.']").each(function(index, valor) {
 		$(valor).prop('innerHTML','');
 	});
@@ -42,13 +49,9 @@ function postContact(data) {
 	<%@ include file="includes/unblockUI.jspf" %>
 	if (data.result == 'OK') {
 		$( "#contactLayer" ).fadeOut();
+		centerLayer($(window), $( "#contactLayerThanks" ));
 	} else {
-		$.each(data, function(key, value) {
-			var obj = document.getElementById('err.' + key);
-			if (obj) {
-				obj.innerHTML = value;
-			}
-        });
+		$('#errcontact').prop('innerHTML','Ha ocurrido un error');
 	}
 }
 
@@ -58,6 +61,8 @@ function postContact(data) {
 		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closecontactLayer" style="margin-left:60px;">X</button></div>
 			<h3>Contacto</h3>
+			<div id="errcontact"></div>
+			<html:form method="POST" action="/contact">
 			<% ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm"); %>
 			<% if (!contactForm.isRegisteredUser()) { %>
 				Nombre: <html:text name="ContactForm" property="firstname"></html:text><br>
@@ -67,9 +72,20 @@ function postContact(data) {
 				Telefono: <html:text name="ContactForm" property="phone"></html:text><br>
 			<% } %>
 			Contenido: <html:textarea name="ContactForm" property="content"></html:textarea><br>
-			<html:form method="POST" action="/contact">
 				<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 			</html:form>
+		</div>
+	</div>
+</div>
+<div id="contactLayerThanks" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div class="defaultLayerStyles">
+		<div class="loginLayerContent">
+			<div id="xContainer"><button class="buttonLink" id="closecontactLayerThanks">X</button></div>
+			<h3>Contacto</h3>
+			<div class="alert alert-block">Gracias por dejarnos su mensaje.</div>
+				<fieldset>
+					<div style="padding:20px 0 0 0; float:right;"><button type="button" id="buttonclosecontactLayerThanks" class="indexButtonBase">Cerrar</button></div>
+				</fieldset>
 		</div>
 	</div>
 </div>

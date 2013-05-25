@@ -92,6 +92,7 @@
 	<%@ include file="includes/centerLayerJS.jspf" %>
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
+	<%@ include file="includes/contactJS.jspf" %>
 </script>
 <!-- End Slider -->
 <script>
@@ -164,6 +165,7 @@ $(function() {
 	</div>
 </div>
 
+<%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
 
 <!-- div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#" style="color:#000;">test link</a></div -->
