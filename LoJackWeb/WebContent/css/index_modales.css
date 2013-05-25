@@ -63,7 +63,7 @@
 	height: 400px;
 }
 .scrollable {
-	height: 400px;
+	height: 350px;
 	margin-top:20px;
 	overflow-x:hidden;
 	overflow-y:auto;
@@ -284,27 +284,22 @@ label {
 	border: none;
 	background: url(../images/skin_lj_rl/buttons/button_ingresar.png);
 	background-repeat: no-repeat;
-	width: 132px;
-	height: 35px;
-
-	margin-top: 5px;
-
-	cursor: pointer;
+	width:132px;
+	height:35px;
+	margin:20px;
+	cursor:pointer;
+	float:right;
 }
 .indexButtonBase {
 	border: none;
 	color: #fff;
 	background: url(../images/skin_lj_rl/buttons/button_base.png);
 	background-repeat: no-repeat;
-	
 	text-transform: uppercase;
-
 	width: 120px;
 	height: 35px;
-
-	margin-top: 15px;
+	margin: 15px 0;
 	cursor: pointer;
-
 	float: right;
 }
 

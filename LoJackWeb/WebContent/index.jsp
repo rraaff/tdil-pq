@@ -389,11 +389,7 @@ function parkingsNotLogged() {
 	</div>
 </div>
 
-<section id="copyright">
-	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor</p>
-	</div>
-</section>
+<%@ include file="includes/copyright.jsp" %>
 
 <!-- Los LAYERS -->
 
@@ -415,178 +411,178 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
-			<div>
-				<html:form method="POST" action="/register">
-					<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
-					registerForm.searchReferenceData();
-					%>
+			<html:form method="POST" action="/register">
+				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
+				registerForm.searchReferenceData();
+				%>
+				<div class="scrollable">
+					<fieldset>
+						<label>* Tipo de doc</label>
+						<html:select name="RegisterForm" property="documentType" >
+							<option value="">Seleccione...</option>
+							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+								<option value="<%=codBean.getId()%>">
+									<%=codBean.getName()%></option>
+							<% } %>
+						</html:select>
+						<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
+							<div id="err.profile.documentType"></div>
+						</div>
+					</fieldset>
+						
+					<fieldset>
+						<label>* Numero</label>
+						<html:text name="RegisterForm" property="document" />
+						<div class="myRow errorField" style="display: none;" id="p.profile.document">
+							<div id="err.profile.document"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>* Nombre</label>
+						<html:text name="RegisterForm" property="firstName" />
+							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
+							<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
+								<div id="err.profile.firstName"></div>
+							</div>
+					</fieldset>
+					<fieldset>
+						<label>* Apellido</label>
+						<html:text name="RegisterForm" property="lastName" />
+						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
+							<div id="err.profile.lastName"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label class="sexLabel">* Sexo:</label>
+						<html:radio property="gender" value="Male" />
+						<span>Masculino</span>
+						<html:radio property="gender" value="Female" />
+						<span>Femenino</span>
+						<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.gender">
+							<div id="err.profile.gender"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>* E-mail</label>
+						<html:text name="RegisterForm" property="email"/>
+						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.email">
+							<div id="err.profile.email"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>* Clave</label>
+						<html:password name="RegisterForm" property="password" />
+						<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.credential.password">
+							<div id="err.credential.password"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>* Fecha de nac.</label>
+						<html:text name="RegisterForm" property="birthDate" />
+						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
+							<div id="err.profile.birthDate"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>Código de área</label>
+						<html:text name="RegisterForm" property="phoneAreaCode" />
+						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
+						<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
+							<div id="err.profile.phone.areaCode"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>Teléfono celular</label>
+						<html:text name="RegisterForm" property="phoneNumber" />
+						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
+						<div class="errorField" style="display: none;" id="p.profile.phone.number">
+							<div id="err.profile.phone.number"></div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<label>País</label>
+						<span><%=registerForm.getCountrySelected()%></span>
+					</fieldset>
+					<fieldset>
+						<label>Provincia</label>
+						<html:select name="RegisterForm" property="stateId" >
+							<option value="">Seleccione...</option>
+							<% for (StateBean stateBean : registerForm.getStates()) { %>
+								<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
+									<%=stateBean.getName()%></option>
+							<% } %>
+						</html:select>
+						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
+						<div class="errorField" style="display: none;" id="p.profile.address.stateId">
+							<div id="err.profile.address.stateId"></div>
+						</div>
+					</fieldset>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
 						<fieldset>
-							<label>* Tipo de doc</label>
-							<html:select name="RegisterForm" property="documentType" >
-								<option value="">Seleccione...</option>
-								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-									<option value="<%=codBean.getId()%>">
-										<%=codBean.getName()%></option>
+							<label>Calle 1</label>
+							<html:text name="RegisterForm" property="street1" />
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.street1">
+								<div id="err.profile.address.street1"></div>
+							</div>
+						</fieldset>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
+						<fieldset>
+							<label>Calle 2</label>
+							<html:text name="RegisterForm" property="street2" />
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.street2">
+								<div id="err.profile.address.street2"></div>
+							</div>
+						</fieldset>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
+						<fieldset>
+							<label>Tipo</label>
+							<html:select name="RegisterForm" property="addressType">
+								<option value="">Select one option</option>
+								<% for (String type : registerForm.getAddressTypes()) { %>
+									<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
+								<%=type%></option>
 								<% } %>
 							</html:select>
-							<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
-								<div id="err.profile.documentType"></div>
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.type">
+								<div id="err.profile.address.type"></div>
 							</div>
 						</fieldset>
-							
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
 						<fieldset>
-							<label>* Numero</label>
-							<html:text name="RegisterForm" property="document" />
-							<div class="myRow errorField" style="display: none;" id="p.profile.document">
-								<div id="err.profile.document"></div>
+							<label>Código postal</label>
+							<html:text name="RegisterForm" property="postalCode" />
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
+								<div id="err.profile.address.postalCode"></div>
 							</div>
 						</fieldset>
+					<% } %>
+					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
 						<fieldset>
-							<label>* Nombre</label>
-							<html:text name="RegisterForm" property="firstName" />
-								<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-								<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
-									<div id="err.profile.firstName"></div>
-								</div>
-						</fieldset>
-						<fieldset>
-							<label>* Apellido</label>
-							<html:text name="RegisterForm" property="lastName" />
-							<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
-								<div id="err.profile.lastName"></div>
+							<label>Ciudad</label>
+							<html:text name="RegisterForm" property="city" />
+							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
+							<div class="errorField" style="display: none;" id="p.profile.address.city">
+								<div id="err.profile.address.city"></div>
 							</div>
 						</fieldset>
-						<fieldset>
-							<label class="sexLabel">* Sexo:</label>
-							<html:radio property="gender" value="Male" />
-							<span>Masculino</span>
-							<html:radio property="gender" value="Female" />
-							<span>Femenino</span>
-							<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.gender">
-								<div id="err.profile.gender"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>* E-mail</label>
-							<html:text name="RegisterForm" property="email"/>
-							<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.email">
-								<div id="err.profile.email"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>* Clave</label>
-							<html:password name="RegisterForm" property="password" />
-							<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.credential.password">
-								<div id="err.credential.password"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>* Fecha de nac.</label>
-							<html:text name="RegisterForm" property="birthDate" />
-							<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
-								<div id="err.profile.birthDate"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>Código de área</label>
-							<html:text name="RegisterForm" property="phoneAreaCode" />
-							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
-								<div id="err.profile.phone.areaCode"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>Teléfono celular</label>
-							<html:text name="RegisterForm" property="phoneNumber" />
-							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
-							<div class="errorField" style="display: none;" id="p.profile.phone.number">
-								<div id="err.profile.phone.number"></div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<label>País</label>
-							<span><%=registerForm.getCountrySelected()%></span>
-						</fieldset>
-						<fieldset>
-							<label>Provincia</label>
-							<html:select name="RegisterForm" property="stateId" >
-								<option value="">Seleccione...</option>
-								<% for (StateBean stateBean : registerForm.getStates()) { %>
-									<option <%=	stateBean.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=stateBean.getId()%>">
-										<%=stateBean.getName()%></option>
-								<% } %>
-							</html:select>
-							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
-							<div class="errorField" style="display: none;" id="p.profile.address.stateId">
-								<div id="err.profile.address.stateId"></div>
-							</div>
-						</fieldset>
-						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
-							<fieldset>
-								<label>Calle 1</label>
-								<html:text name="RegisterForm" property="street1" />
-								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
-								<div class="errorField" style="display: none;" id="p.profile.address.street1">
-									<div id="err.profile.address.street1"></div>
-								</div>
-							</fieldset>
-						<% } %>
-						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
-							<fieldset>
-								<label>Calle 2</label>
-								<html:text name="RegisterForm" property="street2" />
-								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
-								<div class="errorField" style="display: none;" id="p.profile.address.street2">
-									<div id="err.profile.address.street2"></div>
-								</div>
-							</fieldset>
-						<% } %>
-						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
-							<fieldset>
-								<label>Tipo</label>
-								<html:select name="RegisterForm" property="addressType">
-									<option value="">Select one option</option>
-									<% for (String type : registerForm.getAddressTypes()) { %>
-										<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
-									<%=type%></option>
-									<% } %>
-								</html:select>
-								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
-								<div class="errorField" style="display: none;" id="p.profile.address.type">
-									<div id="err.profile.address.type"></div>
-								</div>
-							</fieldset>
-						<% } %>
-						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
-							<fieldset>
-								<label>Código postal</label>
-								<html:text name="RegisterForm" property="postalCode" />
-								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
-								<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
-									<div id="err.profile.address.postalCode"></div>
-								</div>
-							</fieldset>
-						<% } %>
-						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
-							<fieldset>
-								<label>Ciudad</label>
-								<html:text name="RegisterForm" property="city" />
-								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
-								<div class="errorField" style="display: none;" id="p.profile.address.city">
-									<div id="err.profile.address.city"></div>
-								</div>
-							</fieldset>
-						<% } %>
-						<fieldset style="padding:20px 0 0 0 ;">
-							<input type="submit" id="submitregister" value=" " class="indexLogin">
-						</fieldset>
-				</html:form>
-			</div>
+					<% } %>
+				</div>
+				<fieldset>
+					<input type="submit" id="submitregister" value=" " class="indexLogin">
+				</fieldset>
+			</html:form>
 		</div>
 	</div>
 </div>

@@ -679,7 +679,7 @@ footer .nav-pills>li>a:focus {
 	background-image: url(../images/skin_lj_rl/buttons/map_x_close.png);
 	background-repeat: no-repeat;
 }
-
+form { margin: 0; }
 
 /* SIZERS */
 .marginRight_60 { margin-right: 60px; }
