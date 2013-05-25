@@ -8,13 +8,36 @@
 --><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
 --><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
 <script>
+<% ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm"); %>
 
 $("form[name='ContactForm']").validate({
 	errorPlacement: function(error, element) {
-		error.appendTo( element.parent("div"));
+		error.appendTo( element.parent("div").next("div"));
 	},
-	rules: { 			},
-	messages: {			},
+	<% if (contactForm.isRegisteredUser()) { %>
+		rules: { 'content': {required: true}
+		},
+		messages: {
+			'content': {required: "<span>Ingrese el contenido.</span>"}
+		},
+	<% } else { %>
+		rules: { 'firstname': {required: true},
+			'lastname': {required: true},
+			'documentNumber': {required: true},
+			'email': {required: true, email: true},
+			'phone': {required: true},
+			'content': {required: true}
+		},
+		messages: {
+			'firstname': {required: "<span>Ingrese el nombre.</span>"},
+			'lastname': {required: "<span>Ingrese el apellido.</span>"},
+			'documentNumber': {required: "<span>Ingrese el numero de documento.</span>"},
+			'email': {required: "<span>Ingrese el email.</span>",
+					email: "<span>Ingrese un email valido.</span>"},
+			'phone': {required: "<span>Ingrese el teléfono.</span>"},
+			'content': {required: "<span>Ingrese el contenido.</span>"}
+		},
+	<% } %>
 	submitHandler: function() {
 		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
@@ -63,15 +86,20 @@ function postContact(data) {
 			<h3>Contacto</h3>
 			<div id="errcontact"></div>
 			<html:form method="POST" action="/contact">
-			<% ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm"); %>
 			<% if (!contactForm.isRegisteredUser()) { %>
-				Nombre: <html:text name="ContactForm" property="firstname"></html:text><br>
-				Apellido: <html:text name="ContactForm" property="lastname"></html:text><br>
-				DNI: <html:text name="ContactForm" property="documentNumber"></html:text><br>
-				Email: <html:text name="ContactForm" property="email"></html:text><br>
-				Telefono: <html:text name="ContactForm" property="phone"></html:text><br>
+				<div>Nombre: <html:text name="ContactForm" property="firstname"></html:text></div>
+				<div></div><br>
+				<div>Apellido: <html:text name="ContactForm" property="lastname"></html:text></div>
+				<div></div><br>
+				<div>DNI: <html:text name="ContactForm" property="documentNumber"></html:text></div>
+				<div></div><br>
+				<div>Email: <html:text name="ContactForm" property="email"></html:text></div>
+				<div></div><br>
+				<div>Telefono: <html:text name="ContactForm" property="phone"></html:text></div>
+				<div></div><br>
 			<% } %>
-			Contenido: <html:textarea name="ContactForm" property="content"></html:textarea><br>
+			Contenido: <div></div><html:textarea name="ContactForm" property="content"></html:textarea></div>
+			<div></div><br>
 				<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 			</html:form>
 		</div>

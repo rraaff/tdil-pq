@@ -624,7 +624,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<fieldset>
 						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
-						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate gratis">¿No estás registrado?</div>
+						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate gratis">¿No estás registrado?</a></div>
 					</fieldset>
 			</html:form>
 		</div>
