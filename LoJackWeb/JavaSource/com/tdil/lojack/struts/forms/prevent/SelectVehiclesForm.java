@@ -21,7 +21,6 @@ public class SelectVehiclesForm extends VehiclesForm {
 	 */
 	private static final long serialVersionUID = 3752656266263380512L;
 
-	private WebsiteUser user;
 	private Vehicle selected;
 	private SatellitePosition selectedVehiclePosition;
 
@@ -34,13 +33,7 @@ public class SelectVehiclesForm extends VehiclesForm {
 	public void selectVehicleForMap(WebsiteUser user, String id) {
 		setUser(user);
 		try {
-			for(Vehicle vehicle : this.getVehicles()) {
-				if (vehicle.getId().equals(id)) {
-					setSelected(vehicle);
-					setSelectedVehiclePosition((SatellitePosition)PreventConnector.getVehicleSatPosition(user.getPreventLoginResponse(), vehicle).getResult());
-					return;
-				}
-			}
+			basicselectVehicleForMap(user, id);
 		} catch (HttpStatusException e) {
 			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
@@ -48,23 +41,35 @@ public class SelectVehiclesForm extends VehiclesForm {
 		} catch (CommunicationException e) {
 			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			LOG.error(e.getMessage(), e);
+			try {
+				user.reloginPrevent();
+				basicselectVehicleForMap(user, id);
+			} catch (HttpStatusException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (InvalidResponseException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (CommunicationException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (UnauthorizedException e1) {
+				LOG.error(e.getMessage(), e);
+			}
+		}
+	}
+	
+	private void basicselectVehicleForMap(WebsiteUser user, String id) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		for(Vehicle vehicle : this.getVehicles()) {
+			if (vehicle.getId().equals(id)) {
+				setSelected(vehicle);
+				setSelectedVehiclePosition((SatellitePosition)PreventConnector.getVehicleSatPosition(user.getPreventLoginResponse(), vehicle).getResult());
+				return;
+			}
 		}
 	}
 
 	public void selectVehicleForPhone(WebsiteUser user, String id) {
 		setUser(user);
 		try {
-			for(Vehicle vehicle : this.getVehicles()) {
-				if (vehicle.getId().equals(id)) {
-					setSelected(vehicle);
-					PhoneNumbers pn = (PhoneNumbers)(PreventConnector.getVehiclePhones(user.getPreventLoginResponse(), vehicle).getResult());
-					setAlertPhone(pn.getAlert());
-					setCrashPhone(pn.getCrash());
-					setOtherPhone(pn.getOther());
-					return;
-				}
-			}
+			basicselectVehicleForPhone(user, id);
 		} catch (HttpStatusException e) {
 			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
@@ -72,7 +77,31 @@ public class SelectVehiclesForm extends VehiclesForm {
 		} catch (CommunicationException e) {
 			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			LOG.error(e.getMessage(), e);
+			try {
+				user.reloginPrevent();
+				basicselectVehicleForPhone(user, id);
+			} catch (HttpStatusException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (InvalidResponseException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (CommunicationException e1) {
+				LOG.error(e.getMessage(), e);
+			} catch (UnauthorizedException e1) {
+				LOG.error(e.getMessage(), e);
+			}
+		}
+	}
+	
+	private void basicselectVehicleForPhone(WebsiteUser user, String id) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		for(Vehicle vehicle : this.getVehicles()) {
+			if (vehicle.getId().equals(id)) {
+				setSelected(vehicle);
+				PhoneNumbers pn = (PhoneNumbers)(PreventConnector.getVehiclePhones(user.getPreventLoginResponse(), vehicle).getResult());
+				setAlertPhone(pn.getAlert());
+				setCrashPhone(pn.getCrash());
+				setOtherPhone(pn.getOther());
+				return;
+			}
 		}
 	}
 
@@ -113,33 +142,46 @@ public class SelectVehiclesForm extends VehiclesForm {
 		this.otherPhone = otherPhone;
 	}
 
-	public void savePhones() throws ValidationException {
+	public boolean savePhones() throws ValidationException {
+		try {
+			return this.basicsavePhones();
+		} catch (HttpStatusException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (InvalidResponseException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (CommunicationException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (UnauthorizedException e) {
 			try {
-				UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
-				phoneNumbers.setAlert(this.getAlertPhone());
-				phoneNumbers.setCrash(this.getCrashPhone());
-				phoneNumbers.setOther(this.getOtherPhone());
-				phoneNumbers.setVehicleID(this.getSelected().getId());
-				phoneNumbers.setUserToken(user.getPreventLoginResponse().getUserToken());
-				XMLResponse setSpeed = PreventConnector.setVehiclePhones(user.getPreventLoginResponse(), phoneNumbers);
-				System.out.println(setSpeed.getResult());
-				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
-			} catch (HttpStatusException e) {
+				this.getUser().reloginPrevent();
+				return this.basicsavePhones();
+			} catch (HttpStatusException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e) {
+			} catch (InvalidResponseException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e) {
+			} catch (CommunicationException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e) {
+			} catch (UnauthorizedException e1) {
 				LOG.error(e.getMessage(), e);
 			}
+		}
+		return false;
 	}
 
-	public WebsiteUser getUser() {
-		return user;
+	private boolean basicsavePhones() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
+		phoneNumbers.setAlert(this.getAlertPhone());
+		phoneNumbers.setCrash(this.getCrashPhone());
+		phoneNumbers.setOther(this.getOtherPhone());
+		phoneNumbers.setVehicleID(this.getSelected().getId());
+		phoneNumbers.setUserToken(this.getUser().getPreventLoginResponse().getUserToken());
+		XMLResponse setSpeed = PreventConnector.setVehiclePhones(this.getUser().getPreventLoginResponse(), phoneNumbers);
+		PhoneNumbers resp = (PhoneNumbers)setSpeed.getResult();
+		if ("OK".equals(resp.getStatus())) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public void setUser(WebsiteUser user) {
-		this.user = user;
-	}
 }

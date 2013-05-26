@@ -36,8 +36,6 @@ ver posibilidad de hacer check y mostrar varios autos
 *******************************
 Prevent
 
-No hay login automatico, depende de implementacion de GeoSystems
-
 No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems
 
 Camara

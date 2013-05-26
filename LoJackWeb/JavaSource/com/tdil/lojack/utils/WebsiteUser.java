@@ -1,17 +1,21 @@
 package com.tdil.lojack.utils;
 
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.prevent.model.LoginResponse;
+import com.tdil.lojack.struts.forms.PreventLoginForm;
 import com.tdil.lojack.web.jobs.UserJobCollection;
+import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 import com.tdil.users.User;
 
@@ -45,6 +49,8 @@ public class WebsiteUser extends User {
 	private com.tdil.lojack.model.WebsiteUser modelUser;
 
 	private Set<String> appliedActivities = new HashSet<String>();
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(WebsiteUser.class);
 
 	public WebsiteUser(String name, TokenHolder tokenHolder, String timezoneOffset, String timezoneName) {
 		super();
@@ -241,6 +247,29 @@ public class WebsiteUser extends User {
 
 	public void setPreventLoginResponse(LoginResponse preventLoginResponse) {
 		this.preventLoginResponse = preventLoginResponse;
+	}
+
+	public void reloginPrevent() {
+		PreventLoginForm login = new PreventLoginForm();
+		login.setUsername(this.getPreventUserId());
+		login.setPassword(this.getPreventPassword());
+		try {
+			boolean logged = login.executeLogin();
+			if (logged) {
+				this.setPreventAccessToken(login.getPreventAccessToken());
+				this.setPreventLoginResponse(login.getPreventLoginResponse());
+				this.setPreventLogged(true);
+			} else {
+				this.setPreventLogged(false);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+			this.setPreventLogged(false);
+		} catch (ValidationException e) {
+			LOG.error(e.getMessage(), e);
+			this.setPreventLogged(false);
+		}
+		
 	}
 
 }

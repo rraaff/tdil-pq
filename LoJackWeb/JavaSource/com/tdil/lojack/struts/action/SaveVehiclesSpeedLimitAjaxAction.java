@@ -34,9 +34,12 @@ public class SaveVehiclesSpeedLimitAjaxAction extends AjaxAction {
 
 	public ActionForward validateAndSave(final VehiclesSpeedLimitForm aForm, HttpServletRequest request, ActionMapping mapping, HttpServletResponse response) throws IOException {
 		try {
-			aForm.save();
 			HashMap<String, Object> result = new HashMap<String, Object>();
-			result.put("result", "OK");
+			if (aForm.save()) {
+				result.put("result", "OK");				
+			} else {
+				result.put("result", "ERR");
+			}
 			writeJsonResponse(result, response);
 		} catch (ValidationException ex) {
 			ValidationError error1 = ex.getError();

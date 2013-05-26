@@ -5,11 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
+import com.tdil.lojack.prevent.model.SecureZoneResponse;
 import com.tdil.lojack.prevent.model.SecureZones;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.struts.forms.beans.SecureZoneSelectionBean;
@@ -34,26 +33,41 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 	
 	@Override
 	public void initWith(WebsiteUser user) {
-		// TODO Auto-generated method stub
 		super.initWith(user);
 		vehicleIdToSecureZones = new HashMap<String, SecureZones>();
 		secureZones = new ArrayList<SecureZoneSelectionBean>();
-		for (Vehicle vehicle : this.getVehicles()) {
+		try {
+			basicinitWith(user);
+		} catch (HttpStatusException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (InvalidResponseException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (CommunicationException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (UnauthorizedException e) {
 			try {
-				SecureZones limits = (SecureZones)PreventConnector.getVehicleSecureZones(user.getPreventLoginResponse(), vehicle).getResult();
-				vehicleIdToSecureZones.put(vehicle.getId(), limits);
-				secureZones.add(new SecureZoneSelectionBean(vehicle, limits));
-			} catch (HttpStatusException e) {
+				user.reloginPrevent();
+				basicinitWith(user);
+			} catch (HttpStatusException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e) {
+			} catch (InvalidResponseException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e) {
+			} catch (CommunicationException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e) {
+			} catch (UnauthorizedException e1) {
 				LOG.error(e.getMessage(), e);
 			}
 		}
 
+	}
+
+	private void basicinitWith(WebsiteUser user) throws HttpStatusException, InvalidResponseException, CommunicationException,
+			UnauthorizedException {
+		for (Vehicle vehicle : this.getVehicles()) {
+				SecureZones limits = (SecureZones)PreventConnector.getVehicleSecureZones(user.getPreventLoginResponse(), vehicle).getResult();
+				vehicleIdToSecureZones.put(vehicle.getId(), limits);
+				secureZones.add(new SecureZoneSelectionBean(vehicle, limits));
+		}
 	}
 
 	public List<SecureZoneSelectionBean> getSecureZones() {
@@ -68,23 +82,40 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 		this.secureZones = speedLimits;
 	}
 
-	public void save() throws ValidationException {
-		for (SecureZoneSelectionBean speedSelectionBean : secureZones) {
+	public boolean save() throws ValidationException {
+		try {
+			return basicsave();
+		} catch (HttpStatusException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (InvalidResponseException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (CommunicationException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (UnauthorizedException e) {
 			try {
-				XMLResponse setSpeed = PreventConnector.setVehicleSecureZone(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSecureZone());
-				System.out.println(setSpeed.getResult());
-				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
-			} catch (HttpStatusException e) {
+				this.getUser().reloginPrevent();
+				return basicsave();
+			} catch (HttpStatusException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e) {
+			} catch (InvalidResponseException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e) {
+			} catch (CommunicationException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e) {
+			} catch (UnauthorizedException e1) {
 				LOG.error(e.getMessage(), e);
 			}
 		}
-		
+		return false;
+	}
+
+	private boolean basicsave() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		boolean result = true;
+		for (SecureZoneSelectionBean speedSelectionBean : secureZones) {
+				XMLResponse setSpeed = PreventConnector.setVehicleSecureZone(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSecureZone());
+				SecureZoneResponse resp = (SecureZoneResponse)setSpeed.getResult();
+				result = result && ("OK".equals(resp.getStatus()));
+		}
+		return result;
 	}
 
 }

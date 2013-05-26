@@ -41,16 +41,8 @@ public abstract class VehiclesForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		URLParams getVehicles = new URLParams(user.getPreventLoginResponse()).index("0");
 		try {
-			Vehicles vehicles = (Vehicles)PreventConnector.getVehicles(getVehicles).getResult();
-			List<Vehicle> toset = new ArrayList<Vehicle>();
-			for (Vehicle v : vehicles.getVehiclesCollection()) {
-				if (v.getStatus().equals("true")) {
-					toset.add(v);
-				}
-			}
- 			setVehicles(toset);
+			basicinitWith();
 		} catch (HttpStatusException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
@@ -58,8 +50,31 @@ public abstract class VehiclesForm extends ActionForm {
 		} catch (CommunicationException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			getLog().error(e.getMessage(), e);
+			try {
+				user.reloginPrevent();
+				basicinitWith();
+			} catch (HttpStatusException e1) {
+				getLog().error(e.getMessage(), e);
+			} catch (InvalidResponseException e1) {
+				getLog().error(e.getMessage(), e);
+			} catch (CommunicationException e1) {
+				getLog().error(e.getMessage(), e);
+			} catch (UnauthorizedException e1) {
+				getLog().error(e.getMessage(), e);
+			}
 		}
+	}
+
+	private void basicinitWith() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		URLParams getVehicles = new URLParams(user.getPreventLoginResponse()).index("0");
+		Vehicles vehicles = (Vehicles)PreventConnector.getVehicles(getVehicles).getResult();
+		List<Vehicle> toset = new ArrayList<Vehicle>();
+		for (Vehicle v : vehicles.getVehiclesCollection()) {
+			if (v.getStatus().equals("true")) {
+				toset.add(v);
+			}
+		}
+		setVehicles(toset);
 	}
 
 	public WebsiteUser getUser() {

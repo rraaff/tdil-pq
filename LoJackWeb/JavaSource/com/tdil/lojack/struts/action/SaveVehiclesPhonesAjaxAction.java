@@ -34,9 +34,13 @@ public class SaveVehiclesPhonesAjaxAction extends AjaxAction {
 
 	public ActionForward validateAndSave(final SelectVehiclesForm aForm, HttpServletRequest request, ActionMapping mapping, HttpServletResponse response) throws IOException {
 		try {
-			aForm.savePhones();
+			boolean ok = aForm.savePhones();
 			HashMap<String, Object> result = new HashMap<String, Object>();
-			result.put("result", "OK");
+			if (ok) {
+				result.put("result", "OK");
+			} else {
+				result.put("result", "ERR");
+			}
 			writeJsonResponse(result, response);
 		} catch (ValidationException ex) {
 			ValidationError error1 = ex.getError();

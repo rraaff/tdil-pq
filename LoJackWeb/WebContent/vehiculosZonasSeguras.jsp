@@ -27,6 +27,8 @@ $("form[name='VehiclesSecureZoneForm']").validate({
 	submitHandler: function() {
 		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
+		$('#savesz').prop('innerHTML', '');
+		$('#savesz').css('display', 'none');
            $("form[name='VehiclesSecureZoneForm']").ajaxSubmit({
    			type: "POST",
    			url: "./saveVehiculesSecureZones.do",
@@ -52,12 +54,8 @@ function postSaveSpeedLimits(data) {
 	if (data.result == 'OK') {
 		$( "#editSecureZonesLayer" ).fadeOut();
 	} else {
-		$.each(data, function(key, value) {
-			var obj = document.getElementById('err.' + key);
-			if (obj) {
-				obj.innerHTML = value;
-			}
-        });
+		$('#savesz').prop('innerHTML', 'Ha ocurrido un error');
+		$('#savesz').css('display', 'block');
 	}
 }
 
@@ -67,6 +65,7 @@ function postSaveSpeedLimits(data) {
 		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closeeditSecureZonesLayer" style="margin-left:60px;">X</button></div>
 			<h3>Zonas seguras</h3>
+			<div class="alert alert-error" id="savesz" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesSecureZones">
 				<div id="tableStyle" style="height:220px;">
 						<fieldset class="tableHeader">

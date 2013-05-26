@@ -25,6 +25,8 @@ $("form[name='SelectVehiclesForPhonesForm']").validate({
 	submitHandler: function() {
 		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
+		$('#savephones').prop('innerHTML', '');
+		$('#savephones').css('display', 'none');
            $("form[name='SelectVehiclesForPhonesForm']").ajaxSubmit({
    			type: "POST",
    			url: "./saveVehiculesPhones.do",
@@ -45,12 +47,8 @@ function postSaveVehiculesPhones(data) {
 	if (data.result == 'OK') {
 		$( "#editVehiclesPhonesLayer" ).fadeOut();
 	} else {
-		$.each(data, function(key, value) {
-			var obj = document.getElementById('err.' + key);
-			if (obj) {
-				obj.innerHTML = value;
-			}
-        });
+		$('#savephones').prop('innerHTML', 'Ha ocurrido un error');
+		$('#savephones').css('display', 'block');
 	}
 }
 
@@ -65,6 +63,7 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 			<div id="xContainer"><button id="closeEditVehicleForPhoneLayer" style="margin-left:60px;">X</button></div>
 			<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
 			<h3>Editar teléfonos de emergencia del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
+			<div class="alert alert-error" id="savephones" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesPhones">
 				<div id="tableStyle" style="height:220px;">
 					<fieldset class="tableHeader">

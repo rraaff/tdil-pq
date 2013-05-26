@@ -24,6 +24,8 @@ $("form[name='VehiclesSpeedLimitForm']").validate({
 	submitHandler: function() {
 		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
+		$('#savespeederr').prop('innerHTML', '');
+		$('#savespeederr').css('display', 'none');
            $("form[name='VehiclesSpeedLimitForm']").ajaxSubmit({
    			type: "POST",
    			url: "./saveVehiculesSpeedLimits.do",
@@ -49,12 +51,8 @@ function postSaveSpeedLimits(data) {
 	if (data.result == 'OK') {
 		$( "#editMaxSpeedLayer" ).fadeOut();
 	} else {
-		$.each(data, function(key, value) {
-			var obj = document.getElementById('err.' + key);
-			if (obj) {
-				obj.innerHTML = value;
-			}
-        });
+		$('#savespeederr').prop('innerHTML', 'Ha ocurrido un error');
+		$('#savespeederr').css('display', 'block');
 	}
 }
 
@@ -64,6 +62,7 @@ function postSaveSpeedLimits(data) {
 		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closeeditMaxSpeedLayer" style="margin-left:60px;">X</button></div>
 			<h3>Determinar velocidades máximas</h3>
+			<div class="alert alert-error" id="savespeederr" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesSpeedLimits">
 				<div id="tableStyle" style="height:220px;">
 						<fieldset class="tableHeader">

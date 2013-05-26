@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
+import com.tdil.lojack.prevent.model.SpeedLimitResponse;
 import com.tdil.lojack.prevent.model.SpeedLimits;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.struts.forms.beans.SpeedSelectionBean;
@@ -37,26 +38,41 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 
 	@Override
 	public void initWith(WebsiteUser user) {
-		// TODO Auto-generated method stub
 		super.initWith(user);
 		vehicleIdToSpeedLimit = new HashMap<String, SpeedLimits>();
 		speedLimits = new ArrayList<SpeedSelectionBean>();
-		for (Vehicle vehicle : this.getVehicles()) {
+		try {
+			basicinitWith(user);
+		} catch (HttpStatusException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (InvalidResponseException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (CommunicationException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (UnauthorizedException e) {
 			try {
-				SpeedLimits limits = (SpeedLimits)PreventConnector.getVehicleSpeedLimit(user.getPreventLoginResponse(), vehicle).getResult();
-				vehicleIdToSpeedLimit.put(vehicle.getId(), limits);
-				speedLimits.add(new SpeedSelectionBean(vehicle, limits));
-			} catch (HttpStatusException e) {
+				user.reloginPrevent();
+				basicinitWith(user);
+			} catch (HttpStatusException e1) {
 				getLog().error(e.getMessage(), e);
-			} catch (InvalidResponseException e) {
+			} catch (InvalidResponseException e1) {
 				getLog().error(e.getMessage(), e);
-			} catch (CommunicationException e) {
+			} catch (CommunicationException e1) {
 				getLog().error(e.getMessage(), e);
-			} catch (UnauthorizedException e) {
+			} catch (UnauthorizedException e1) {
 				getLog().error(e.getMessage(), e);
 			}
 		}
 
+	}
+
+	private void basicinitWith(WebsiteUser user) throws HttpStatusException, InvalidResponseException, CommunicationException,
+			UnauthorizedException {
+		for (Vehicle vehicle : this.getVehicles()) {
+				SpeedLimits limits = (SpeedLimits)PreventConnector.getVehicleSpeedLimit(user.getPreventLoginResponse(), vehicle).getResult();
+				vehicleIdToSpeedLimit.put(vehicle.getId(), limits);
+				speedLimits.add(new SpeedSelectionBean(vehicle, limits));
+		}
 	}
 
 	public List<SpeedSelectionBean> getSpeedLimits() {
@@ -71,23 +87,40 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 		this.speedLimits = speedLimits;
 	}
 
-	public void save() throws ValidationException {
-		for (SpeedSelectionBean speedSelectionBean : speedLimits) {
+	public boolean save() throws ValidationException {
+		try {
+			return basicsave();
+		} catch (HttpStatusException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (InvalidResponseException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (CommunicationException e) {
+			LOG.error(e.getMessage(), e);
+		} catch (UnauthorizedException e) {
 			try {
-				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
-				System.out.println(setSpeed.getResult());
-				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
-			} catch (HttpStatusException e) {
+				this.getUser().reloginPrevent();
+				return basicsave();
+			} catch (HttpStatusException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e) {
+			} catch (InvalidResponseException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e) {
+			} catch (CommunicationException e1) {
 				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e) {
+			} catch (UnauthorizedException e1) {
 				LOG.error(e.getMessage(), e);
 			}
 		}
-		
+		return false;
+	}
+
+	private boolean basicsave() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		boolean result = true;
+		for (SpeedSelectionBean speedSelectionBean : speedLimits) {
+				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
+				SpeedLimitResponse resp = (SpeedLimitResponse)setSpeed.getResult();
+				result = result && ("OK".equals(resp.getStatus()));
+		}
+		return result;
 	}
 
 }
