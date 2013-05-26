@@ -39,14 +39,11 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 	public void initWith(WebsiteUser user) {
 		// TODO Auto-generated method stub
 		super.initWith(user);
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
 		vehicleIdToSpeedLimit = new HashMap<String, SpeedLimits>();
 		speedLimits = new ArrayList<SpeedSelectionBean>();
 		for (Vehicle vehicle : this.getVehicles()) {
 			try {
-				SpeedLimits limits = (SpeedLimits)PreventConnector.getVehicleSpeedLimit(resp, vehicle).getResult();
+				SpeedLimits limits = (SpeedLimits)PreventConnector.getVehicleSpeedLimit(user.getPreventLoginResponse(), vehicle).getResult();
 				vehicleIdToSpeedLimit.put(vehicle.getId(), limits);
 				speedLimits.add(new SpeedSelectionBean(vehicle, limits));
 			} catch (HttpStatusException e) {
@@ -75,12 +72,9 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 	}
 
 	public void save() throws ValidationException {
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
 		for (SpeedSelectionBean speedSelectionBean : speedLimits) {
 			try {
-				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(resp, speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
+				XMLResponse setSpeed = PreventConnector.setVehicleSpeedLimit(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSpeedLimit());
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {

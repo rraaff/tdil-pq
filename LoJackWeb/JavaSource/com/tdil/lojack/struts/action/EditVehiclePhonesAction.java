@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm;
+import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.validations.ValidationErrors;
@@ -22,7 +23,7 @@ public class EditVehiclePhonesAction extends AbstractAction {
 		SelectVehiclesForm aForm = (SelectVehiclesForm)form;
 		try {
 			String vehicleId = request.getParameter("vehicleId");
-			aForm.selectVehicleForPhone(vehicleId);
+			aForm.selectVehicleForPhone((WebsiteUser)getLoggedUser(request), vehicleId);
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

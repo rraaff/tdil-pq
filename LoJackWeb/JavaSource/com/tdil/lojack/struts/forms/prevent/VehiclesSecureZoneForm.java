@@ -36,14 +36,11 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 	public void initWith(WebsiteUser user) {
 		// TODO Auto-generated method stub
 		super.initWith(user);
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
 		vehicleIdToSecureZones = new HashMap<String, SecureZones>();
 		secureZones = new ArrayList<SecureZoneSelectionBean>();
 		for (Vehicle vehicle : this.getVehicles()) {
 			try {
-				SecureZones limits = (SecureZones)PreventConnector.getVehicleSecureZones(resp, vehicle).getResult();
+				SecureZones limits = (SecureZones)PreventConnector.getVehicleSecureZones(user.getPreventLoginResponse(), vehicle).getResult();
 				vehicleIdToSecureZones.put(vehicle.getId(), limits);
 				secureZones.add(new SecureZoneSelectionBean(vehicle, limits));
 			} catch (HttpStatusException e) {
@@ -72,12 +69,9 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 	}
 
 	public void save() throws ValidationException {
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
 		for (SecureZoneSelectionBean speedSelectionBean : secureZones) {
 			try {
-				XMLResponse setSpeed = PreventConnector.setVehicleSecureZone(resp, speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSecureZone());
+				XMLResponse setSpeed = PreventConnector.setVehicleSecureZone(getUser().getPreventLoginResponse(), speedSelectionBean.getVehicle(), speedSelectionBean.getSelectedSecureZone());
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {

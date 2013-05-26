@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.URLParams;
-import com.tdil.lojack.prevent.model.LoginResponse;
 import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.lojack.prevent.model.Vehicles;
 import com.tdil.lojack.utils.WebsiteUser;
@@ -25,8 +24,6 @@ public abstract class VehiclesForm extends ActionForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
-	@Deprecated
-	protected LoginResponse resp;
 	private WebsiteUser user;
 	private List<Vehicle> vehicles;
 
@@ -44,10 +41,7 @@ public abstract class VehiclesForm extends ActionForm {
 
 	public void initWith(WebsiteUser user) {
 		setUser(user);
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
-		URLParams getVehicles = new URLParams(resp).index("0");
+		URLParams getVehicles = new URLParams(user.getPreventLoginResponse()).index("0");
 		try {
 			Vehicles vehicles = (Vehicles)PreventConnector.getVehicles(getVehicles).getResult();
 			List<Vehicle> toset = new ArrayList<Vehicle>();

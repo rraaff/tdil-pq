@@ -7,6 +7,7 @@ import com.tdil.lojack.prevent.model.PhoneNumbers;
 import com.tdil.lojack.prevent.model.SatellitePosition;
 import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.Vehicle;
+import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
@@ -20,6 +21,7 @@ public class SelectVehiclesForm extends VehiclesForm {
 	 */
 	private static final long serialVersionUID = 3752656266263380512L;
 
+	private WebsiteUser user;
 	private Vehicle selected;
 	private SatellitePosition selectedVehiclePosition;
 
@@ -29,15 +31,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SelectVehiclesForm.class);
 
-	public void selectVehicleForMap(String id) {
+	public void selectVehicleForMap(WebsiteUser user, String id) {
+		setUser(user);
 		try {
 			for(Vehicle vehicle : this.getVehicles()) {
 				if (vehicle.getId().equals(id)) {
 					setSelected(vehicle);
-					if (resp == null) {
-						resp = PreventConnector.getLogin();
-					}
-					setSelectedVehiclePosition((SatellitePosition)PreventConnector.getVehicleSatPosition(resp, vehicle).getResult());
+					setSelectedVehiclePosition((SatellitePosition)PreventConnector.getVehicleSatPosition(user.getPreventLoginResponse(), vehicle).getResult());
 					return;
 				}
 			}
@@ -52,15 +52,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 		}
 	}
 
-	public void selectVehicleForPhone(String id) {
+	public void selectVehicleForPhone(WebsiteUser user, String id) {
+		setUser(user);
 		try {
 			for(Vehicle vehicle : this.getVehicles()) {
 				if (vehicle.getId().equals(id)) {
 					setSelected(vehicle);
-					if (resp == null) {
-						resp = PreventConnector.getLogin();
-					}
-					PhoneNumbers pn = (PhoneNumbers)(PreventConnector.getVehiclePhones(resp, vehicle).getResult());
+					PhoneNumbers pn = (PhoneNumbers)(PreventConnector.getVehiclePhones(user.getPreventLoginResponse(), vehicle).getResult());
 					setAlertPhone(pn.getAlert());
 					setCrashPhone(pn.getCrash());
 					setOtherPhone(pn.getOther());
@@ -116,17 +114,14 @@ public class SelectVehiclesForm extends VehiclesForm {
 	}
 
 	public void savePhones() throws ValidationException {
-		if (resp == null) {
-			resp = PreventConnector.getLogin();
-		}
 			try {
 				UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
 				phoneNumbers.setAlert(this.getAlertPhone());
 				phoneNumbers.setCrash(this.getCrashPhone());
 				phoneNumbers.setOther(this.getOtherPhone());
 				phoneNumbers.setVehicleID(this.getSelected().getId());
-				phoneNumbers.setUserToken(resp.getUserToken());
-				XMLResponse setSpeed = PreventConnector.setVehiclePhones(resp, phoneNumbers);
+				phoneNumbers.setUserToken(user.getPreventLoginResponse().getUserToken());
+				XMLResponse setSpeed = PreventConnector.setVehiclePhones(user.getPreventLoginResponse(), phoneNumbers);
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {
@@ -138,5 +133,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 			} catch (UnauthorizedException e) {
 				LOG.error(e.getMessage(), e);
 			}
+	}
+
+	public WebsiteUser getUser() {
+		return user;
+	}
+
+	public void setUser(WebsiteUser user) {
+		this.user = user;
 	}
 }

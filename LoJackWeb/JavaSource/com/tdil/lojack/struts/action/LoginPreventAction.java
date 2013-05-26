@@ -33,6 +33,9 @@ public class LoginPreventAction extends AjaxAction {
 			if (logged) {
 				sessionUser.setPreventPassword(login.getPassword());
 				sessionUser.setPreventAccessToken(login.getPreventAccessToken());
+				sessionUser.setPreventLoginResponse(login.getPreventLoginResponse());
+				sessionUser.setPreventLogged(true);
+				request.getSession().setAttribute("user", sessionUser);
 				result.put("result", "OK");
 				writeJsonResponse(result, response);
 				return null;

@@ -25,6 +25,7 @@ public class PreventLoginForm extends ActionForm {
 	private String username;
 	private String password;
 	private String preventAccessToken;
+	private LoginResponse preventLoginResponse;
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(PreventLoginForm.class);
 
@@ -43,6 +44,7 @@ public class PreventLoginForm extends ActionForm {
 			LoginResponse loginResponse = (LoginResponse)resp.getResult();
 			if (loginResponse.getStatus().equals("OK")) {
 				setPreventAccessToken(loginResponse.getUserToken());
+				setPreventLoginResponse(loginResponse);
 				return true;
 			} else {
 				return false;
@@ -82,6 +84,14 @@ public class PreventLoginForm extends ActionForm {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public LoginResponse getPreventLoginResponse() {
+		return preventLoginResponse;
+	}
+
+	public void setPreventLoginResponse(LoginResponse preventLoginResponse) {
+		this.preventLoginResponse = preventLoginResponse;
 	}
 
 }

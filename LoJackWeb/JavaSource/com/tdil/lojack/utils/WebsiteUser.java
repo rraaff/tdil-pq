@@ -10,6 +10,7 @@ import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.model.AsyncJob;
+import com.tdil.lojack.prevent.model.LoginResponse;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 import com.tdil.users.User;
@@ -37,6 +38,7 @@ public class WebsiteUser extends User {
 	private boolean preventLogged;
 	private String preventPassword;
 	private String preventAccessToken;
+	private LoginResponse preventLoginResponse;
 
 	private UserJobCollection userJobCollection;
 
@@ -231,6 +233,14 @@ public class WebsiteUser extends User {
 
 	public void setPreventAccessToken(String preventAccessToken) {
 		this.preventAccessToken = preventAccessToken;
+	}
+
+	public LoginResponse getPreventLoginResponse() {
+		return preventLoginResponse;
+	}
+
+	public void setPreventLoginResponse(LoginResponse preventLoginResponse) {
+		this.preventLoginResponse = preventLoginResponse;
 	}
 
 }
