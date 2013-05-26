@@ -22,11 +22,15 @@ public class NoCacheFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		if (response instanceof HttpServletResponse) {
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			httpResponse.setHeader("Cache-Control", "no-cache");
-			httpResponse.setDateHeader("Expires", 0);
-			httpResponse.setHeader("Pragma", "No-cache");
+			setNoCache(httpResponse);
 		}
 		chain.doFilter(request, response);
+	}
+
+	public static void setNoCache(HttpServletResponse httpResponse) {
+		httpResponse.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		httpResponse.setDateHeader("Expires", 0);
+		httpResponse.setHeader("Pragma", "No-cache");
 	}
 
 	public void init(FilterConfig filterConfig) throws ServletException {
