@@ -14,6 +14,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.utils.WebsiteUserUtils;
@@ -37,9 +38,11 @@ public class LoginForm extends ActionForm {
 
 	private String timezoneOffset;
 	private String timezoneName;
-	private int documentType; // TODO
+	private int documentType;
 	private String username;
 	private String password;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(LoginForm.class);
 
 	public String getUsername() {
 		return username;
@@ -61,17 +64,13 @@ public class LoginForm extends ActionForm {
 		try {
 			return ThalamusClientBeanFacade.getDocumentTypes();
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 		return new ArrayList<DocumentTypeBean>();
 	}

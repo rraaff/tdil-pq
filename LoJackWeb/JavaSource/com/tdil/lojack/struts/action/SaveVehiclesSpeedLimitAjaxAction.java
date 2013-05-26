@@ -23,6 +23,8 @@ import com.tdil.validations.ValidationErrors;
 
 public class SaveVehiclesSpeedLimitAjaxAction extends AjaxAction {
 
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SaveVehiclesSpeedLimitAjaxAction.class);
+	
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -61,10 +63,8 @@ public class SaveVehiclesSpeedLimitAjaxAction extends AjaxAction {
 			try {
 				writeJsonResponse(result, response);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			}
-			// todo agregar error
 		}
 		return null;
 	}

@@ -22,6 +22,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.model.PointOfInterest;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.lojack.utils.ParkingUtils;
+import com.tdil.web.NoCacheFilter;
 
 public class SearchParkingsServlet extends HttpServlet {
 
@@ -67,7 +68,7 @@ public class SearchParkingsServlet extends HttpServlet {
 
 	private void configureResponse(HttpServletResponse resp) {
 		resp.setContentType(this.getContentType());
-		resp.setHeader("cache-control", "no-cache");
+		NoCacheFilter.setNoCache(resp);
 	}
 	protected String getContentType() {
 		return "application/json; charset=ISO-8859-1";

@@ -42,7 +42,6 @@ public class AlarmAlertConfiguration implements Serializable {
 	}
 
 	public void reset() {
-		// TODO Auto-generated method stub
 		
 	}
 }

@@ -23,6 +23,7 @@ import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.model.PointOfInterest;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.web.NoCacheFilter;
 
 public class GetAlarmJobSatesServlet extends HttpServlet {
 
@@ -72,7 +73,7 @@ public class GetAlarmJobSatesServlet extends HttpServlet {
 
 	private void configureResponse(HttpServletResponse resp) {
 		resp.setContentType(this.getContentType());
-		resp.setHeader("cache-control", "no-cache");
+		NoCacheFilter.setNoCache(resp);
 	}
 	protected String getContentType() {
 		return "application/json; charset=ISO-8859-1";

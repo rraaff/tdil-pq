@@ -32,7 +32,6 @@ public class LightAgendaForm extends AgendaForm {
 	}
 	
 	public void reset() {
-		// TODO 
 		super.reset();
 		this.id = null;
 	}

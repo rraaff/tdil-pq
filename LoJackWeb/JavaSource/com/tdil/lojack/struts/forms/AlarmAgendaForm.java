@@ -26,7 +26,6 @@ public class AlarmAgendaForm extends AgendaForm {
 	
 	private String id;
 	
-	// TODO
 	private List<AlarmAgenda> alarmAgendas;
 	
 	public boolean isEdition() {
@@ -34,7 +33,6 @@ public class AlarmAgendaForm extends AgendaForm {
 	}
 	
 	public void reset() {
-		// TODO 
 		super.reset();
 		this.id = null;
 	}

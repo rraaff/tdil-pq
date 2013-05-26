@@ -75,6 +75,14 @@ front.login.deplay: Milisegundos de retraso del login.
 
 gui: guid para usar en la comunicacion con gis
 
+contactform.email: Direccion de email a la cual se enviaran los formularios de contacto
+
+Mails
+=======
+
+La configuracion para envio de emails se encuentra en la tabla SYSPROPERTIES con el prefijo mail.
+Se provee una configuracion ejemplo que utiliza gmail para el envio (cuenta test.lojack.front@gmail.com/t3stl0j4k)
+
 Logging
 =======
 

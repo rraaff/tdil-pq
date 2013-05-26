@@ -46,6 +46,8 @@ public class ContactForm extends TransactionalValidationForm {
 	private String phone;
 	private String content;
 	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(ContactForm.class);
+	
 	@Override
 	public void reset() throws SQLException {
 		isRegisteredUser = false;
@@ -198,17 +200,13 @@ public class ContactForm extends TransactionalValidationForm {
 				}
 			}
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 		
 	}

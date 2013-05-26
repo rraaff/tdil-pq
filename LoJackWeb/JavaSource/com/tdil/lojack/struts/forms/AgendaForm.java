@@ -44,7 +44,6 @@ public abstract class AgendaForm extends ThalamusForm {
 	}
 	
 	public void reset() {
-		// TODO 
 		this.description= null;
 		this.from= null; // Fechas en formato YYYY-MM-DD
 		this.to= null;

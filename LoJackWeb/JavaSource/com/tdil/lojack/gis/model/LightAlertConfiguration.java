@@ -35,7 +35,5 @@ public class LightAlertConfiguration implements Serializable {
 	}
 
 	public void reset() {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.utils.ThalamusWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
@@ -27,6 +28,8 @@ public class ResetPasswordForm extends ThalamusForm {
 	private String username;
 	private String password;
 	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(ResetPasswordForm.class);
+	
 	public String getUsername() {
 		return username;
 	}
@@ -37,7 +40,6 @@ public class ResetPasswordForm extends ThalamusForm {
 	
 	@Override
 	public void basicValidate(ValidationError validationError) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -63,19 +65,14 @@ public class ResetPasswordForm extends ThalamusForm {
 			} else {
 				return LoginForm.login(this.getUsername(), this.getPassword(), "-3", ""); // TODO XXX
 			}
-			// TODO ver como manejo los errores
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 		return null;
 	}

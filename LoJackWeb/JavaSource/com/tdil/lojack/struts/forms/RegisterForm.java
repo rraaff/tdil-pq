@@ -52,7 +52,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	
 	private TokenHolder token;
 	
-	private int documentType; // TODO
+	private int documentType;
 	private String document;
 	private String password;
 	private String firstName;

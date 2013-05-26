@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Light;
@@ -23,6 +24,8 @@ public class LightsForm extends ActionForm {
 
 	private WebsiteUser user;
 	private Collection<Light> lights;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(LightsForm.class);
 	
 	private static final class GetLightConf implements TransactionalActionWithResult {
 		private int userId;
@@ -54,8 +57,7 @@ public class LightsForm extends ActionForm {
 				enhance(light, lightConf);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 	}
 

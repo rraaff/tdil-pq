@@ -30,10 +30,8 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 	private Map<String, SecureZones> vehicleIdToSecureZones;
 	private List<SecureZoneSelectionBean> secureZones;
 
-	private static Logger getLog() {
-		return LoggerProvider.getLogger(VehiclesSecureZoneForm.class);
-	}
-
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(VehiclesSecureZoneForm.class);
+	
 	@Override
 	public void initWith(WebsiteUser user) {
 		// TODO Auto-generated method stub
@@ -49,13 +47,13 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 				vehicleIdToSecureZones.put(vehicle.getId(), limits);
 				secureZones.add(new SecureZoneSelectionBean(vehicle, limits));
 			} catch (HttpStatusException e) {
-				getLog().error(e.getMessage(), e);
+				LOG.error(e.getMessage(), e);
 			} catch (InvalidResponseException e) {
-				getLog().error(e.getMessage(), e);
+				LOG.error(e.getMessage(), e);
 			} catch (CommunicationException e) {
-				getLog().error(e.getMessage(), e);
+				LOG.error(e.getMessage(), e);
 			} catch (UnauthorizedException e) {
-				getLog().error(e.getMessage(), e);
+				LOG.error(e.getMessage(), e);
 			}
 		}
 
@@ -83,17 +81,13 @@ public class VehiclesSecureZoneForm extends VehiclesForm {
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (InvalidResponseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (CommunicationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (UnauthorizedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			}
 		}
 		

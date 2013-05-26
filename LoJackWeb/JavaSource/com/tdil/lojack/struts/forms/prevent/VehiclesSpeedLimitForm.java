@@ -30,6 +30,7 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 	private Map<String, SpeedLimits> vehicleIdToSpeedLimit;
 	private List<SpeedSelectionBean> speedLimits;
 
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(VehiclesSpeedLimitForm.class);
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(VehiclesSpeedLimitForm.class);
 	}
@@ -83,17 +84,13 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (InvalidResponseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (CommunicationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (UnauthorizedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			}
 		}
 		

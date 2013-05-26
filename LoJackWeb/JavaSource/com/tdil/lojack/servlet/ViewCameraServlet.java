@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackWebUtils;
+import com.tdil.web.NoCacheFilter;
 
 public class ViewCameraServlet extends HttpServlet {
 
@@ -25,6 +26,7 @@ public class ViewCameraServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		NoCacheFilter.setNoCache(resp);
 		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
 			if (cameraForm == null) {

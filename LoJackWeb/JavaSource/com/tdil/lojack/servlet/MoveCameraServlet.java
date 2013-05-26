@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackWebUtils;
+import com.tdil.web.NoCacheFilter;
 
 public class MoveCameraServlet extends HttpServlet {
 
@@ -23,10 +24,8 @@ public class MoveCameraServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		NoCacheFilter.setNoCache(resp);
 		if (LoJackWebUtils.isHomeUserLogged(req)) {
-			// resp.setContentType(blobLocalData.getMimeType());
-			// TODO enviar el content type.. jpg, segun la camara
-			// TODO params de no cache
 			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
 			String direction = req.getParameter("dir");
 			if ("left".equals(direction)) {

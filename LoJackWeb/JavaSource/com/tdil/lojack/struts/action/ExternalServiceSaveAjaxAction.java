@@ -22,7 +22,7 @@ public class ExternalServiceSaveAjaxAction extends AjaxAction  {
 			ExternalServiceForm aForm = (ExternalServiceForm) form;
 		try {
 			HashMap<String, Object> result = new HashMap<String, Object>();
-			if(aForm.save()) { // TODO ver si necesito manejar porque no lo hizo
+			if(aForm.save()) {
 				result.put("result", "OK");
 			} else {
 				result.put("result", "ERR");

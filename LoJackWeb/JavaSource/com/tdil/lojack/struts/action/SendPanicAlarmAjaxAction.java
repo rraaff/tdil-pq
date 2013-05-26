@@ -23,7 +23,7 @@ public class SendPanicAlarmAjaxAction extends AjaxAction {
 		final Integer idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
 		AsyncJobResponse jobResponse = LoJackServicesConnector.sendPanicSignal(sessionUser, idEntidad);
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		if(jobResponse.getJobId() != 0) { // TODO ver si necesito manejar porque no lo hizo
+		if(jobResponse.getJobId() != 0) {
 			result.put("result", "OK");
 			result.put("jobId", jobResponse.getJobId());
 		} else {

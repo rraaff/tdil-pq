@@ -13,6 +13,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.utils.encryption.DesEncrypter;
+import com.tdil.web.NoCacheFilter;
 
 public class CameraConfigServlet extends HttpServlet {
 
@@ -20,10 +21,13 @@ public class CameraConfigServlet extends HttpServlet {
 	 *
 	 */
 	private static final long serialVersionUID = 5611834065781809280L;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(CameraConfigServlet.class);
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		NoCacheFilter.setNoCache(resp);
 		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
 			StringBuilder sb = new StringBuilder();
@@ -35,14 +39,9 @@ public class CameraConfigServlet extends HttpServlet {
 				DesEncrypter encrypter = new DesEncrypter("esta es la clave de la camara para lojack");
 				resp.getOutputStream().write(encrypter.encrypt(sb.toString().getBytes()));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			}
 		}
-	}
-
-	private static Logger getLog() {
-		return LoggerProvider.getLogger(CameraConfigServlet.class);
 	}
 
 	@Override

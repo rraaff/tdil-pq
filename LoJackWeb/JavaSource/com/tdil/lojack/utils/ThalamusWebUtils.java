@@ -15,7 +15,7 @@ import com.tdil.thalamus.client.core.ThalamusResponse;
 public class ThalamusWebUtils {
 
 	public static void loginToActivity(WebsiteUser user, String activity) {
-		/*TODO esto no se usa volarlo
+		/*
 		 * try {
 			ThalamusClientFacade.loginToActivity(user.getToken(), activity);
 		} catch (Exception e) {
@@ -24,7 +24,7 @@ public class ThalamusWebUtils {
 	}
 
 	public static void updateActivities(WebsiteUser user) {
-		/*TODO esto no se usa, volarlo
+		/*
 		 * try {
 			PersonResult getProfile = ThalamusClientBeanFacade.getPerson(user.getToken());
 			user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));

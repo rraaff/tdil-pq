@@ -22,7 +22,6 @@ public class CheckSessionAjaxAction extends AjaxAction {
 	protected ActionForward basicExecute(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

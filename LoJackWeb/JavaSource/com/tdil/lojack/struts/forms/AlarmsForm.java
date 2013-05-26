@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Alarm;
@@ -20,6 +21,8 @@ import com.tdil.struts.TransactionalActionWithResult;
 public class AlarmsForm extends ActionForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(AlarmsForm.class);
 
 	private WebsiteUser user;
 	private Collection<Alarm> alarms;
@@ -55,8 +58,7 @@ public class AlarmsForm extends ActionForm {
 				enhance(alarm, alarmConf);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 		
 	}

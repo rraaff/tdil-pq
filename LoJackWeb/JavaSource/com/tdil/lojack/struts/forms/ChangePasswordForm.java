@@ -67,13 +67,9 @@ public class ChangePasswordForm extends AbstractForm {
 	}
 	@Override
 	public void init() throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void initWith(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	

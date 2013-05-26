@@ -37,7 +37,7 @@ public class DeactivateAlarmAjaxAction extends AjaxAction {
 				result.put("result", "HAS_JOB");
 			} else {
 				AsyncJobResponse jobResponse = LoJackServicesConnector.deactivateAlarm(sessionUser, idEntidad);
-				if(jobResponse.getJobId() != 0) { // TODO ver si necesito manejar porque no lo hizo
+				if(jobResponse.getJobId() != 0) {
 					result.put("result", "OK");
 					result.put("jobId", jobResponse.getJobId());
 				} else {

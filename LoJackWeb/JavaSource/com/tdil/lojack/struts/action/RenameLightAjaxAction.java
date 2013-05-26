@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.ibatis.TransactionProvider;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.model.LightConf;
 import com.tdil.lojack.model.LightConfExample;
@@ -22,6 +23,8 @@ import com.tdil.struts.actions.AjaxAction;
 
 public class RenameLightAjaxAction extends AjaxAction {
 
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(RenameLightAjaxAction.class);
+	
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -60,7 +63,7 @@ public class RenameLightAjaxAction extends AjaxAction {
 			});
 			result.put("result", "OK");
 		} catch (Exception e) {
-			// TODO: handle exception
+			LOG.error(e.getMessage(), e);
 			result.put("result", "ERR");
 		}
 		writeJsonResponse(result, response);

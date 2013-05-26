@@ -1,12 +1,12 @@
 package com.tdil.lojack.struts.forms.prevent;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
 import com.tdil.lojack.prevent.model.PhoneNumbers;
 import com.tdil.lojack.prevent.model.SatellitePosition;
 import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.Vehicle;
-import com.tdil.lojack.struts.forms.beans.SpeedSelectionBean;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
@@ -26,6 +26,8 @@ public class SelectVehiclesForm extends VehiclesForm {
 	private String alertPhone;
 	private String crashPhone;
 	private String otherPhone;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SelectVehiclesForm.class);
 
 	public void selectVehicleForMap(String id) {
 		try {
@@ -40,17 +42,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 				}
 			}
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 	}
 
@@ -70,17 +68,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 				}
 			}
 		} catch (HttpStatusException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (InvalidResponseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (CommunicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOG.error(e.getMessage(), e);
 		}
 	}
 
@@ -136,17 +130,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 				System.out.println(setSpeed.getResult());
 				// TODO Capturar los errores SpeedLimitResponse slr = (SpeedLimitResponse)resp.getResult();
 			} catch (HttpStatusException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (InvalidResponseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (CommunicationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			} catch (UnauthorizedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOG.error(e.getMessage(), e);
 			}
 	}
 }
