@@ -1,3 +1,4 @@
+<%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
@@ -117,6 +118,7 @@ response.addCookie(ecookie1);
 
 $(document).ready(
 	function(){
+		<%@ include file="includes/datePickerES.jspf" %>
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
 
@@ -443,16 +445,16 @@ function parkingsNotLogged() {
 						<label>* Nombre</label>
 						<html:text name="RegisterForm" property="firstName" />
 							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-							<div class="myRow errorField" style="display: none;" id="p.profile.firstName">
-								<div id="err.profile.firstName"></div>
+							<div class="myRow errorField" style="display: none;" id="p.profile.firstname">
+								<div id="err.profile.firstname"></div>
 							</div>
 					</fieldset>
 					<fieldset>
 						<label>* Apellido</label>
 						<html:text name="RegisterForm" property="lastName" />
 						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-						<div class="myRow errorField" style="display: none;" id="p.profile.lastName">
-							<div id="err.profile.lastName"></div>
+						<div class="myRow errorField" style="display: none;" id="p.profile.lastname">
+							<div id="err.profile.lastname"></div>
 						</div>
 					</fieldset>
 					<fieldset>
@@ -548,10 +550,10 @@ function parkingsNotLogged() {
 						<fieldset>
 							<label>Tipo</label>
 							<html:select name="RegisterForm" property="addressType">
-								<option value="">Select one option</option>
+								<option value="">Seleccione...</option>
 								<% for (String type : registerForm.getAddressTypes()) { %>
 									<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
-								<%=type%></option>
+									<%=ApplicationResources.getMessage("address_" + type)%></option>
 								<% } %>
 							</html:select>
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>

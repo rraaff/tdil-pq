@@ -1,3 +1,4 @@
+<%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %><!--
 --><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
 --><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
@@ -10,6 +11,8 @@
 <%@page import="com.tdil.lojack.struts.forms.RegisterForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%>
 <script>
+
+<%@ include file="includes/datePickerES.jspf" %>
 
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
@@ -126,7 +129,7 @@ function postRegister(data) {
 					<fieldset>
 						<label>Provincia</label>
 						<html:select name="UpdatePersonForm" property="stateId">
-							<option value="">Select an option</option>
+							<option value="">Seleccione...</option>
 							<% for (StateBean state : registerForm.getStates()) { %>
 								<option <%=	state.getId() == registerForm.getStateId() ? "selected" : ""%> value="<%=state.getId()%>">
 								<%=state.getName()%></option>
@@ -152,10 +155,10 @@ function postRegister(data) {
 						<fieldset>
 							<label>Tipo</label>
 							<html:select name="UpdatePersonForm" property="addressType">
-								<option value="">Select one option</option>
+								<option value="">Seleccione...</option>
 									<% for (String type : registerForm.getAddressTypes()) { %>
 										<option <%=type.equals(registerForm.getAddressType()) ? "selected" : ""%> value="<%=type%>">
-										<%=type%></option>
+										<%=ApplicationResources.getMessage("address_" + type)%></option>
 									<% } %>
 							</html:select>
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "*" : ""%><div id="err.profile.address.type"></div>

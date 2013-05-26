@@ -1,6 +1,8 @@
 Instalacion
 ===========
 
+Instalar ffmpeg, sofware necesario para procesar las imagenes de los avatars
+
 Crear a base de datos con los scripts correspondientes (mysql o sqlserver)
 
 Copiar el war al directorio de deploy de la configuracion.

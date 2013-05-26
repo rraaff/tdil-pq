@@ -38,6 +38,7 @@
 	  <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
 
+	  <%@ include file="includes/datePickerES.jspf" %>
     $("input[cl]").each(function(indice,valor) {
 	   $(valor).click(function() {
 		   $( "#" + $(this).attr('cl') ).fadeOut();

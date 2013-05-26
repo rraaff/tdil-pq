@@ -1,5 +1,7 @@
 function contactLoJack() {
+<%@ include file="blockUI.jspf" %>
   $('#contactContentLayer').load('goToContact.do', function() {
+  <%@ include file="unblockUI.jspf" %>
 	  centerLayer($(window), $( "#contactLayer" ));
 	});
 }

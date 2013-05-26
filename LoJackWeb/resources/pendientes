@@ -1,44 +1,35 @@
 http://www.whatsmyuseragent.com/
 
+Ver casos excepcionales, ajax que no terminen, errores, etc
+
 Contact arreglalo visualmente, es un desastre
 
 index: Te arregle el swithToRegister, te habia quedado el tag a sin cerrar y ocupaba toda la pagina
 
-
-revisar block uid unblock ui en los includes
-
-traducciones de tipos de direccion y telefono
-
-
 *****
-
 detect mobile
 
 *************************************************************************************************************
 HOME.JSP
-- Avatar: visualmente quedó todo como lo necesito, salvo que te manda a una pagina para cambiar el avatar en lugar de abrirlo en modal.
+???? no lo pude reproducir Avatar: visualmente quedó todo como lo necesito, salvo que te manda a una pagina para cambiar el avatar en lugar de abrirlo en modal.
 
 ************
 REGISTRACIÓN
-- No muestra los errores cuando dejás vacíos los cambios obligatorios.
-- Debería pedir el tipo de documento por separado del número.
-- Los textos de los errores están en ingles. ¿Desde donde los modifico?
-- Datepicker con fechas en ingles
+DONE No muestra los errores cuando dejás vacíos los cambios obligatorios
+	Ahora esta mostrando bien los de nommbre y apellido
+
+DONE Debería pedir el tipo de documento por separado del número.
+DONE Los textos de los errores están en ingles. ¿Desde donde los modifico?
+	Esta en ApplicationResources.properties
+
+DONE  Datepicker con fechas en ingles
 DONE, le puse seleccione - "Select an opcion" en los selects
 
 *************************************************************************************************************
-update de person dinamico
-
-consulta estado de prevent
-
 entrar a prevent mostrar mapa centrado en la posicion actual
 que muestre un iconito ()
 
 ver posibilidad de hacer check y mostrar varios autos
-
-Accesos externos logueados
-
-No depende de nadie??
 
 *******************************
 Prevent
@@ -54,6 +45,3 @@ ancho y alto de camara
 mejora visual del applet
 
 *******************************
-Nuestros
-
-instalar ffmpeg, documentar como y para que (avatar)

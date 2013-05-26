@@ -33,6 +33,10 @@ public class WebsiteUser extends User {
 	private String preventUserId;
 	private boolean isPetUser;
 	private String petUserId;
+	
+	private boolean preventLogged;
+	private String preventPassword;
+	private String preventAccessToken;
 
 	private UserJobCollection userJobCollection;
 
@@ -62,7 +66,7 @@ public class WebsiteUser extends User {
 	}
 	
 	public String getHomeUserId() {
-		return "xxx"; // TODO this.homeUserId;
+		return this.homeUserId;
 	}
 
 	public boolean isLogged() {
@@ -203,6 +207,30 @@ public class WebsiteUser extends User {
 
 	public void setHomeUserId(String homeUserId) {
 		this.homeUserId = homeUserId;
+	}
+
+	public boolean isPreventLogged() {
+		return preventLogged;
+	}
+
+	public void setPreventLogged(boolean preventLogged) {
+		this.preventLogged = preventLogged;
+	}
+
+	public String getPreventPassword() {
+		return preventPassword;
+	}
+
+	public void setPreventPassword(String preventPassword) {
+		this.preventPassword = preventPassword;
+	}
+
+	public String getPreventAccessToken() {
+		return preventAccessToken;
+	}
+
+	public void setPreventAccessToken(String preventAccessToken) {
+		this.preventAccessToken = preventAccessToken;
 	}
 
 }
