@@ -23,6 +23,7 @@
   <form-bean id="SelectVehiclesForMapForm" name="SelectVehiclesForMapForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.lojack.struts.forms.ContactForm"/>
+  <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -190,6 +191,12 @@
   </action>
 
   <!-- Prevent -->
+  
+  <action parameter="PreventUser" path="/goToPrevent" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  	<forward name="continue" path="/loginPrevent.jsp" redirect="true"/>
+  </action>
+  
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
   </action>

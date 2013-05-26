@@ -5,7 +5,7 @@
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
 <%
 	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
-	if (agentInfo.detectMobileLong()) { %>
+	if (agentInfo.detectMobileLong() || agentInfo.detectAndroidPhone()) { %>
 	<jsp:forward page="./mobile/index.jsp"></jsp:forward>
 <% } else { %>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>

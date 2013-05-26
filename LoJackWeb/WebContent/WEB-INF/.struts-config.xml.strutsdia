@@ -437,5 +437,14 @@
  <PROCESS-ITEM ID="#contact" NAME="action64" PATH="/contact"
   SHAPE="240,7297,0,0" TITLE="ContactForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page19" PATH="/contacto.jsp" SHAPE="240,7393,0,0"
-  SUBTYPE="jsp" TITLE="contacto.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="contacto.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/contact.do"
+   SUBTYPE="confirmed" TARGET="action64" TITLE="/contact.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToPrevent" NAME="action65" PATH="/goToPrevent"
+  SHAPE="32,4817,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
