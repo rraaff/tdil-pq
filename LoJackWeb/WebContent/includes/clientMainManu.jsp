@@ -9,7 +9,11 @@
 				<li class="toRight tabPet"><a href="#" title="¿No tenes PET? Adquirilo acá">Pets</a></li>
 			<% } %>
 			<% if (websiteUser.isPreventUser()) { %>
-				<li class="toRight tabCar"><a href="productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
+				<% if (websiteUser.isPreventLogged()) { %>
+					<li class="toRight tabCar"><a href="./productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
+				<% } else { %>
+					<li class="toRight tabCar"><a href="javascript:loginPrevent()" title="Administrar tus autos">Car</a></li>
+				<% } %>
 			<% } else { %>
 				<li class="toRight tabCar"><a href="#" title="¿No tenes PREVENT? Adquirilo acá">Car</a></li>
 			<% } %>

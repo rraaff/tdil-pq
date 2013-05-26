@@ -441,10 +441,19 @@
   <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/contact.do"
    SUBTYPE="confirmed" TARGET="action64" TITLE="/contact.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#goToPrevent" NAME="action65" PATH="/goToPrevent"
-  SHAPE="32,4817,0,0" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ <PROCESS-ITEM ID="#goToPreventLogin" NAME="action65"
+  PATH="/goToPreventLogin" SHAPE="32,7841,0,0" TITLE="PreventLoginForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="login" NAME="forward0"
+   PATH="/loginPrevent.jsp" TARGET="page23" TITLE="login" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page23" PATH="/loginPrevent.jsp"
+  SHAPE="240,7858,0,0" SUBTYPE="jsp" TITLE="loginPrevent.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changePassword.do"
+   SUBTYPE="confirmed" TARGET="action48" TITLE="/changePassword.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#preventLogin" NAME="action66" PATH="/preventLogin"
+  SHAPE="32,7841,0,0" TITLE="PreventLoginForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

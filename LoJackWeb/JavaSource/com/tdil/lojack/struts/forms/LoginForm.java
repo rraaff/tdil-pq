@@ -155,7 +155,7 @@ public class LoginForm extends ActionForm {
 		}
 		if (profile.containsKey("petIsClient") && profile.get("petIsClient") != JSONNull.getInstance()) {
 			user.setPetUser(profile.getBoolean("petIsClient"));
-			user.setPreventUserId(profile.getString("petUser"));
+			user.setPetUserId(profile.getString("petUser"));
 		}
 	}
 

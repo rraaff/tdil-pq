@@ -192,9 +192,10 @@
 
   <!-- Prevent -->
   
-  <action parameter="PreventUser" path="/goToPrevent" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
-  	<forward name="continue" path="/loginPrevent.jsp" redirect="true"/>
+  <action name="PreventLoginForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  	<forward name="login" path="/loginPrevent.jsp" redirect="true"/>
+  </action>
+  <action name="PreventLoginForm" parameter="PreventUser" path="/preventLogin" scope="session" type="com.tdil.lojack.struts.action.LoginPreventAction">
   </action>
   
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
