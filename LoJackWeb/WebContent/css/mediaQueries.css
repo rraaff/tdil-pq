@@ -13,7 +13,7 @@ and (max-device-width : 480px) {
 		top: 750px;
 	}
 	#copyright {
-		top: 810px;
+		top: 800px;
 	}
 }
 @media only screen and (max-height : 842px) {
@@ -24,7 +24,7 @@ and (max-device-width : 480px) {
 		bottom: 50px;
 	}
 	#copyright {
-		bottom:  5px;
+		bottom:  10px;
 	}
 }
 @media only screen

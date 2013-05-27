@@ -80,27 +80,41 @@ function postContact(data) {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div class="registerLayerStyles editProfileLayer">
-		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closecontactLayer" style="margin-left:60px;">X</button></div>
+	<div class="contactLayerStyle">
+		<div class="contactLayerContent">
+			<div id="xContainer"><button id="closecontactLayer">X</button></div>
 			<h3>Contacto</h3>
 			<div id="errcontact"></div>
 			<html:form method="POST" action="/contact">
-			<% if (!contactForm.isRegisteredUser()) { %>
-				<div>Nombre: <html:text name="ContactForm" property="firstname"></html:text></div>
-				<div></div><br>
-				<div>Apellido: <html:text name="ContactForm" property="lastname"></html:text></div>
-				<div></div><br>
-				<div>DNI: <html:text name="ContactForm" property="documentNumber"></html:text></div>
-				<div></div><br>
-				<div>Email: <html:text name="ContactForm" property="email"></html:text></div>
-				<div></div><br>
-				<div>Telefono: <html:text name="ContactForm" property="phone"></html:text></div>
-				<div></div><br>
-			<% } %>
-			Contenido: <div></div><html:textarea name="ContactForm" property="content"></html:textarea></div>
-			<div></div><br>
-				<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
+				<% if (!contactForm.isRegisteredUser()) { %>
+					<fieldset>
+						<label>Nombre</label>
+						<html:text name="ContactForm" property="firstname"></html:text>
+					</fieldset>
+					<fieldset>
+						<label>Apellido</label>
+						<html:text name="ContactForm" property="lastname"></html:text>
+					</fieldset>
+					<fieldset>
+						<label>DNI</label>
+						<html:text name="ContactForm" property="documentNumber"></html:text>
+					</fieldset>
+					<fieldset>
+						<label>E-mail</label>
+						<html:text name="ContactForm" property="email"></html:text>
+					</fieldset>
+					<fieldset>
+						<label>Teléfono</label>
+						<html:text name="ContactForm" property="phone"></html:text>
+					</fieldset>
+				<% } %>
+				<fieldset>
+					<label>Contenido</label>
+					<html:textarea name="ContactForm" property="content"></html:textarea>
+				</fieldset>
+				<fieldset>
+					<button id="submitregister" class="indexButtonBase">Grabar</button>
+				</fieldset>
 			</html:form>
 		</div>
 	</div>
