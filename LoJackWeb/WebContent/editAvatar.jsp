@@ -92,7 +92,6 @@ $.each(data, function(key, value) {
 				<fieldset>
 					<div style="padding:20px 0 0 0;">
 						<button type="button" onclick="javascript:doSaveAvatar()" class="indexButtonBase" style="margin-left:20px;">Guardar</button>
-						<button type="button" onclick="./home.jsp" class="indexButtonBase">Cancelar</button>
 					</div>
 				</fieldset>
 			</html:form>

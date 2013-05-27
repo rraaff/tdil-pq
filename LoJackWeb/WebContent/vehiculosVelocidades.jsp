@@ -30,7 +30,8 @@ $("form[name='VehiclesSpeedLimitForm']").validate({
    			type: "POST",
    			url: "./saveVehiculesSpeedLimits.do",
    			dataType: "json",
-   			success: postSaveSpeedLimits
+   			success: postSaveSpeedLimits,
+   			<%@ include file="includes/openErrorLayerJS.jspf" %>
    			});
        }
 });

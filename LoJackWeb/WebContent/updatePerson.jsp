@@ -30,7 +30,8 @@
 	    			type: "POST",
 	    			url: "./updatePerson.do",
 	    			dataType: "json",
-	    			success: postRegister
+	    			success: postRegister,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});

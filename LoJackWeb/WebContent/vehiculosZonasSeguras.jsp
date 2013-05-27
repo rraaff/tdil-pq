@@ -33,7 +33,8 @@ $("form[name='VehiclesSecureZoneForm']").validate({
    			type: "POST",
    			url: "./saveVehiculesSecureZones.do",
    			dataType: "json",
-   			success: postSaveSpeedLimits
+   			success: postSaveSpeedLimits,
+   			<%@ include file="includes/openErrorLayerJS.jspf" %>
    			});
        }
 });

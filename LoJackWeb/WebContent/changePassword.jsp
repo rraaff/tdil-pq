@@ -27,7 +27,8 @@
 	    			type: "POST",
 	    			url: "./changePassword.do",
 	    			dataType: "json",
-	    			success: postChangePassword
+	    			success: postChangePassword,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});

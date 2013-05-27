@@ -31,7 +31,8 @@ $("form[name='SelectVehiclesForPhonesForm']").validate({
    			type: "POST",
    			url: "./saveVehiculesPhones.do",
    			dataType: "json",
-   			success: postSaveVehiculesPhones
+   			success: postSaveVehiculesPhones,
+   			<%@ include file="includes/openErrorLayerJS.jspf" %>
    			});
        }
 });

@@ -13,11 +13,15 @@
 
 function editPhones(vehicleId) {
 	<%@ include file="includes/blockUI.jspf" %>
-	  $('#editVehiclesPhones').load('editVehiculePhones.do?vehicleId='+vehicleId, function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
-		  $( "#selectVehiclesPhonesLayer" ).fadeOut();
-		  centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
-		});
+	  $('#editVehiclesPhones').load('editVehiculePhones.do?vehicleId='+vehicleId, function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
+		 		 $( "#selectVehiclesPhonesLayer" ).fadeOut();
+		  		centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
+			}
+	  });
   }
 
 $( "#closeSelectVehicleForPhoneLayer" ).click(function() {

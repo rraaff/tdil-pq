@@ -27,7 +27,8 @@
 	    			type: "POST",
 	    			url: "./preventLogin.do",
 	    			dataType: "json",
-	    			success: postLoginPrevent
+	    			success: postLoginPrevent,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});
