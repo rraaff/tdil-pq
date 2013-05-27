@@ -111,7 +111,7 @@
         var currentPopup;
         var MyPos;
         var SearchMeters;
-
+        <%@ include file="includes/errorAjaxJS.jspf" %>
         <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
             
@@ -368,8 +368,7 @@
 	</div>
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-
 </body>
 </html>

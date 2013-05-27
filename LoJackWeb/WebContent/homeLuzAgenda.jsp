@@ -36,6 +36,7 @@
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 <script>
 	  <%@ include file="includes/centerLayerJS.jspf" %>
+	  <%@ include file="includes/errorAjaxJS.jspf" %>
 	  <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
 	  <%@ include file="includes/datePickerES.jspf" %>
@@ -249,8 +250,7 @@
 	</div>
 </section>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-
 </body>
 </html>

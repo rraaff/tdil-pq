@@ -157,18 +157,26 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 
   function seeAlarmLog(idEntidad) {
 	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#logData').load('logAlarma.jsp?idEntidad=' + idEntidad, function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
+	  $('#logData').load('logAlarma.jsp?idEntidad=' + idEntidad, function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
 		  centerLayer($(window), $( "#logLayer" ));
-		});
+		}
+	  });
   }
 
   function sendPanic() {
 	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#sendPanic').load('sendPanic.jsp', function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
+	  $('#sendPanic').load('sendPanic.jsp', function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
 		  centerLayer($(window), $( "#sendPanicLayer" ));
-		});
+		}
+	  });
   }
 
   function doSendPanic(alarmDesc, idEntidad) {
@@ -206,10 +214,14 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 
   function confAlarmAlert(alarmId) {
 	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
+	  $('#confAlert').load('goToHomeAlarmAlertConf.do?alarmId=' + alarmId, function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
 		  centerLayer($(window), $( "#confAlertLayer" ));
-		});
+		}
+	  });
   }
 
   var bgUpdate = false;
@@ -325,6 +337,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
 
+  <%@ include file="includes/errorAjaxJS.jspf" %>
   <%@ include file="includes/centerLayerJS.jspf" %>
 
 	function append(st) {
@@ -560,6 +573,7 @@ textarea {
 	</div>
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Fin panic -->
 
 <%@ include file="includes/videoLayers.jsp" %>

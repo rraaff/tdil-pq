@@ -107,7 +107,7 @@
         var POI;
         var MyPos;
         var SearchMeters;
-
+        <%@ include file="includes/errorAjaxJS.jspf" %>
         	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
         	<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null) { %>
@@ -179,35 +179,51 @@
 
     	function editMaxSpeed() {
     		<%@ include file="includes/blockUI.jspf" %>
-  		  $('#editMaxSpeed').load('goToVehiculesSpeedLimits.do', function() {
-  			<%@ include file="includes/unblockUI.jspf" %>
+  		  $('#editMaxSpeed').load('goToVehiculesSpeedLimits.do', function(response, status, xhr) {
+  		  	<%@ include file="includes/unblockUI.jspf" %>
+  		  if (status == "error") {
+  		    errorAjax();
+  		  } else {
   			  centerLayer($(window), $( "#editMaxSpeedLayer" ));
-  			});
+  			}
+  		  });
   	  }
 
    	function editSecureZones() {
    		<%@ include file="includes/blockUI.jspf" %>
-   		  $('#editSecureZones').load('goToVehiculesSecureZones.do', function() {
-   			<%@ include file="includes/unblockUI.jspf" %>
+   		  $('#editSecureZones').load('goToVehiculesSecureZones.do', function(response, status, xhr) {
+   		  	<%@ include file="includes/unblockUI.jspf" %>
+   		  if (status == "error") {
+   		    errorAjax();
+   		  } else {
    			  centerLayer($(window), $( "#editSecureZonesLayer" ));
-   			});
+   			}
+   		  });
    	  }
     	
 
        function selectVehiclesPhones() {
     	   <%@ include file="includes/blockUI.jspf" %>
-   		  $('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function() {
-   			<%@ include file="includes/unblockUI.jspf" %>
+   		  $('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function(response, status, xhr) {
+   		  	<%@ include file="includes/unblockUI.jspf" %>
+   		  if (status == "error") {
+   		    errorAjax();
+   		  } else {
    			  centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
-   			});
+   			}
+   		  });
    	   }
 
    	   function selectVehiclesForMap() {
    		<%@ include file="includes/blockUI.jspf" %>
-   		 $('#selectVehiclesForMap').load('goToVehiculesForMap.do', function() {
-   			<%@ include file="includes/unblockUI.jspf" %>
+   		 $('#selectVehiclesForMap').load('goToVehiculesForMap.do', function(response, status, xhr) {
+   		  	<%@ include file="includes/unblockUI.jspf" %>
+   		  if (status == "error") {
+   		    errorAjax();
+   		  } else {
  			  centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
- 			});
+ 			}
+   		 });
    	   }
     	
 
@@ -329,8 +345,7 @@ fieldset label.w3 {
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-
 </body>
 </html>

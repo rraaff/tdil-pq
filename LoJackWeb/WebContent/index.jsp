@@ -135,7 +135,8 @@ $(document).ready(
 	    			type: "POST",
 	    			url: "./register.do",
 	    			dataType: "json",
-	    			success: postRegister
+	    			success: postRegister,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});
@@ -155,7 +156,8 @@ $(document).ready(
 	    			type: "POST",
 	    			url: "./login.do",
 	    			dataType: "json",
-	    			success: postLogin
+	    			success: postLogin,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});
@@ -172,7 +174,8 @@ $(document).ready(
 	    			type: "POST",
 	    			url: "./requestResetPassword.do",
 	    			dataType: "json",
-	    			success: postResetPassword
+	    			success: postResetPassword,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
 	    			});
 	        }
 		});
@@ -228,6 +231,9 @@ $(document).ready(
 	}
 );
 
+<%@ include file="includes/errorAjaxJS.jspf" %>
+<%@ include file="includes/centerLayerJS.jspf" %>
+
 function clearErrors() {
 	$("div[id^='err.']").each(function(index, valor) {
 		$(valor).prop('innerHTML','');
@@ -279,18 +285,6 @@ function forgotPassword() {
 
 <%@ include file="includes/openLegalesLayer.jsp" %>
 <%@ include file="includes/contactJS.jspf" %>
-
-function centerLayer(objWin, objLayer) {
-	var top = (objWin.height() / 2) - (objLayer.height() / 2);
-	var left = (objWin.width() / 2) - (objLayer.width() / 2);
-	objLayer.css({
-		position: 'absolute',
-		//top: top + 'px',
-		//left: left + 'px'
-		top: '0px',
-		left: '0px'
-	}).fadeIn(500);
-}
 
 function postRegister(data) {
 	<%@ include file="includes/unblockUI.jspf" %>
@@ -700,6 +694,7 @@ function parkingsNotLogged() {
 
 <%@ include file="includes/videoLayers.jsp" %>
 
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>
 </body>

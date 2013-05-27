@@ -45,7 +45,8 @@ $("form[name='ContactForm']").validate({
    			type: "POST",
    			url: "./contact.do",
    			dataType: "json",
-   			success: postContact
+   			success: postContact,
+   			<%@ include file="includes/openErrorLayerJS.jspf" %>
    			});
        }
 });

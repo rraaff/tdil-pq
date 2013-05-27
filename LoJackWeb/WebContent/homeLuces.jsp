@@ -38,7 +38,6 @@
 <link rel="stylesheet" href="css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
 <script src="js/bootstrapSwitch.js"></script>
-<script src="js/bootstrapSwitch.min.js"></script>
 <!-- Fin Switches -->
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
 <script>
@@ -158,20 +157,28 @@
 
   function seeLightLog(idEntidad, idLuz) {
 	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#logData').load('logLuz.jsp?idEntidad=' + idEntidad + '&idLuz=' + idLuz, function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
+	  $('#logData').load('logLuz.jsp?idEntidad=' + idEntidad + '&idLuz=' + idLuz, function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
 		  centerLayer($(window), $( "#logLayer" ));
-		});
+		}
+	  });
   }
 
   function confLightAlert(lightId) {
 	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#confAlert').load('goToHomeLightAlertConf.do?lightId=' + lightId, function() {
-		  <%@ include file="includes/unblockUI.jspf" %>
+	  $('#confAlert').load('goToHomeLightAlertConf.do?lightId=' + lightId, function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
 		  centerLayer($(window), $( "#confAlertLayer" ));
-		});
+		}
+	  });
   }
-
+  <%@ include file="includes/errorAjaxJS.jspf" %>
   <%@ include file="includes/centerLayerJS.jspf" %>
   
 	function toggleRandomSequence(objCheckbox, lightId) {
@@ -544,8 +551,7 @@ textarea {
 	</div>
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-
 </body>
 </html>

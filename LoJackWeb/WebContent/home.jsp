@@ -89,6 +89,7 @@
 	);
 
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
@@ -174,6 +175,7 @@ $(function() {
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/legalesLayer.jsp" %>
 </body>
 </html>

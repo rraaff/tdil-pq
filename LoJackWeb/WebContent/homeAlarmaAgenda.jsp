@@ -98,6 +98,7 @@
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
 
+  <%@ include file="includes/errorAjaxJS.jspf" %>
   <%@ include file="includes/centerLayerJS.jspf" %>
 
   function append(st) {
@@ -260,6 +261,7 @@
 		</div>
 	</div>
 </section>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/passwordLayer.jspf" %>
 

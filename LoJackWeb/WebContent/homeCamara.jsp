@@ -35,6 +35,7 @@
 
 <script>
 <%@ include file="includes/centerLayerJS.jspf" %>
+<%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 function up() {
 		$.ajax({
@@ -153,7 +154,7 @@ function right() {
 </section>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
-
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 
 </body>
