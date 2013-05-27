@@ -1,0 +1,18 @@
+function errorAjax() {
+	$.unblockUI();
+  centerLayer($(window), $( "#errorAjaxLayer" ));
+}
+function closeErrorAjax() {
+	$( "#errorAjaxLayer" ).fadeOut();
+}
+function centerLayer(objWin, objLayer) {
+	var top = (objWin.height() / 2) - (objLayer.height() / 2);
+	var left = (objWin.width() / 2) - (objLayer.width() / 2);
+	objLayer.css({
+		position: 'absolute',
+		//top: top + 'px',
+		//left: left + 'px'
+		top: '0px',
+		left: '0px'
+	}).fadeIn(500);
+}
