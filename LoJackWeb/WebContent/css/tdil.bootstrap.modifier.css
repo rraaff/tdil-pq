@@ -125,9 +125,9 @@ fieldset.aligner label {
 }
 #productsMenu ul li a.logo {
 	background-color:transparent;
-	background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
+	/*background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
 	background-repeat: no-repeat;
-	background-position: 0px 0px;
+	background-position: 0px 0px;*/
 	width: 173px;
 	height: 91px;
 	margin:0;

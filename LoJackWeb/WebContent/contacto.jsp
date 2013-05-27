@@ -109,7 +109,7 @@ function postContact(data) {
 					</fieldset>
 				<% } %>
 				<fieldset>
-					<label>Contenido</label>
+					<label>Comentario</label>
 					<html:textarea name="ContactForm" property="content"></html:textarea>
 				</fieldset>
 				<fieldset>

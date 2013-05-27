@@ -329,5 +329,8 @@ fieldset label.w3 {
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+
+<%@ include file="includes/videoLayers.jsp" %>
+
 </body>
 </html>

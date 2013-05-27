@@ -561,5 +561,8 @@ textarea {
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Fin panic -->
+
+<%@ include file="includes/videoLayers.jsp" %>
+
 </body>
 </html>

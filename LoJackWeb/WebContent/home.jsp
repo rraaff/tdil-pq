@@ -170,6 +170,8 @@ $(function() {
 
 <!-- div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#" style="color:#000;">test link</a></div -->
 
+<%@ include file="includes/videoLayers.jsp" %>
+
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>

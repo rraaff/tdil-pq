@@ -5,6 +5,7 @@
 	font-size: 11px;
 
 	width: 100%;
+	height: 100%;
 	padding:0;
 	margin:0;
 	position: fixed;
@@ -313,8 +314,12 @@ label {
 	cursor: pointer;
 	float: right;
 }
-
-#video1Layer {}
+#video1Layer button.btn-primary {
+	background-image: url(../images/skin_lj_rl/buttons/punta_boton_bg-464542.png);
+	background-repeat: no-repeat;
+	background-position: right 0px;
+	margin: 10px 0 0 0;
+}
 #video1Layer h3 {
 	color: #fff;
 	font-size: 38px;
@@ -329,6 +334,16 @@ label {
 	line-height: 18px;
 
 }
+.videoLayer {
+	width:927px;
+	margin:0 auto;
+}
+#videos {
+	background:#999;
+	width:927px;
+	height:430px;
+}
+
 .defaultLayerContent {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
@@ -351,8 +366,12 @@ label {
 	text-align: right;
 }
 .customLink {
+	background: transparent;
+	border: none;
+	color: #ee5222;
 	font-size: 11px;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 #videoWrapper {
 	background: #000;

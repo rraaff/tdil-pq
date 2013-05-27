@@ -280,10 +280,6 @@ function forgotPassword() {
 <%@ include file="includes/openLegalesLayer.jsp" %>
 <%@ include file="includes/contactJS.jspf" %>
 
-function showVideo1() {
-	centerLayer($(window), $( "#video1Layer" ));
-}
-
 function centerLayer(objWin, objLayer) {
 	var top = (objWin.height() / 2) - (objLayer.height() / 2);
 	var left = (objWin.width() / 2) - (objLayer.width() / 2);
@@ -355,7 +351,6 @@ function parkingsNotLogged() {
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<!-- link type="text/css" href="css/laruedita_animation.css" rel="stylesheet" / -->
 <link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
@@ -703,26 +698,7 @@ function parkingsNotLogged() {
 	</div>
 </div>
 
-<div id="video1Layer" class="layerOnTop70" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div style="width:927px; margin:0 auto;">
-			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer" cl="video1Layer">< volver</button></div>
-			<div id="videoWrapper">
-				<video id="video1" width="900" height="400">
-					<source src="" type="video/mp4; codecs='avc1,mp4a'" />
-					<source src="" type="video/webm; codecs='vp8,vorbis'" />
-				</video>
-			</div>
-			<div id="footerizer">
-				<div class="col1_300 marginRight_60">
-					<h3>Video Title</h3>
-					<p>Con LoJack for Laptopts sabés que si te roban la computadora, te la encontramos.</p>
-					<button class="btn btn-mini btn-primary" type="button">Mas info >></button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<%@ include file="includes/videoLayers.jsp" %>
 
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>

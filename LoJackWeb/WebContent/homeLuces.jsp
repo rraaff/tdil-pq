@@ -544,5 +544,8 @@ textarea {
 	</div>
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+
+<%@ include file="includes/videoLayers.jsp" %>
+
 </body>
 </html>
