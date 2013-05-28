@@ -2,7 +2,7 @@
 
 LOGIN
 - No está dando error en el layer de login cuando te olvidas de setear el tipo de DNI.
-- Cuando Thalamus no responde, se queda eternamente esperando respuesta. Habría que meterle un timeout que diga, "Ha ocurrido un error: Por favor intentelo de nuevo" botón, reintentar.
+DONE - Cuando Thalamus no responde, se queda eternamente esperando respuesta. Habría que meterle un timeout que diga, "Ha ocurrido un error: Por favor intentelo de nuevo" botón, reintentar.
 
 
 *************************************************************************************************************
@@ -10,14 +10,13 @@ LOGIN
 GENERAL
 - Video LAYER: Traté de hacerlo para que se vea en todo el sitio.
   Dado que lo voy a usar un montón de veces inclusive voy a necesitar pasarle parametros al layer para ver qué video muestro. y no me funciona el link de volver.
+Ahi le hice un toque, igual no existe el include con parametros, despues lo charlamos
 
 *************************************************************************************************************
 
 http://www.whatsmyuseragent.com/
 
 Ver que el formulario de contacto funcione en todas las paginas
-
-Ver casos excepcionales, ajax que no terminen, errores, etc
 
 Contact arreglalo visualmente, es un desastre
 

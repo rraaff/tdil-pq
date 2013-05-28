@@ -180,11 +180,7 @@ $(document).ready(
 	        }
 		});
 
-		$("button[cl]").each(function(indice,valor) {
-		   $(valor).click(function() {
-			   $( "#" + $(this).attr('cl') ).fadeOut();
-			});
-		});
+		<%@ include file="includes/closeLayers.jspf" %>
 
 		$( "#closeregisterLayer" ).click(function() {
 			$( "#registerLayer" ).fadeOut();

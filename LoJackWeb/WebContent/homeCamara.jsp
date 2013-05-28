@@ -34,9 +34,15 @@
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
 <script>
+$(function() {
+	<%@ include file="includes/closeLayers.jspf" %>
+});
+
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+
+
 function up() {
 		$.ajax({
 				type: "GET",

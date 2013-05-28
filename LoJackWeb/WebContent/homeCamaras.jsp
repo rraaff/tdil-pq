@@ -33,6 +33,9 @@
 }
 </style>
 <script type="text/javascript">
+$(function() {
+	<%@ include file="includes/closeLayers.jspf" %>
+});
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>

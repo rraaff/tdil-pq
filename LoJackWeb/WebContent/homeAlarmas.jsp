@@ -42,11 +42,7 @@
   <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
 	  
-    $("input[cl]").each(function(indice,valor) {
-	   $(valor).click(function() {
-		   $( "#" + $(this).attr('cl') ).fadeOut();
-		});
-	});
+	  <%@ include file="includes/closeLayers.jspf" %>
 
   $('.editable').editable(function(value, settings) {
 	     return doRenameAlarm($(this).attr('id'), value);

@@ -114,7 +114,7 @@
         <%@ include file="includes/errorAjaxJS.jspf" %>
         <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
-            
+        	<%@ include file="includes/closeLayers.jspf" %>
             var mapOptions = {
                 DataProjection: "EPSG:4326"
             };

@@ -110,6 +110,7 @@
         <%@ include file="includes/errorAjaxJS.jspf" %>
         	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
+        	<%@ include file="includes/closeLayers.jspf" %>
         	<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null) { %>
 	        	var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
 	                "autoSize": true,

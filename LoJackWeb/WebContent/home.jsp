@@ -68,7 +68,7 @@
 			{
 			next_slide="#slide"+(present-1);
 			present_slide="#slide"+present;
-			$(present_slide).css("top","842px");
+			$(present_slide).css("top","842px"); 
 			$(next_slide).css("top","0px");
 			present--;
 			next--;
@@ -85,6 +85,7 @@
 	$(document).ready(
 			function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
+	<%@ include file="includes/closeLayers.jspf" %>
 			}
 	);
 

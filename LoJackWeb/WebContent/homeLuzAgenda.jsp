@@ -41,11 +41,7 @@
   $(function() {
 	  <%@ include file="includes/datePickerES.jspf" %>
 
-    $("input[cl]").each(function(indice,valor) {
-	   $(valor).click(function() {
-		   $( "#" + $(this).attr('cl') ).fadeOut();
-		});
-	});
+	  <%@ include file="includes/closeLayers.jspf" %>
 
     $("input[name=from]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 		changeYear: true, minDate: "-0d", maxDate: "+10Y"});
