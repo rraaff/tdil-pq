@@ -41,8 +41,21 @@
 <script>
   <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
+
+	  $( "#closePasswordLayerButton" ).click(function() {
+			$( "#passwordLayer" ).fadeOut();
+			if (activating) {
+				uncheckbgVar();
+			} else {
+				checkbgVar();
+			}
+		});
 	  
 	  <%@ include file="includes/closeLayers.jspf" %>
+
+	  $( "#closeforgotPasswordLayer" ).click(function() {
+			$( "#forgotPasswordLayer" ).fadeOut();
+		});
 
   $('.editable').editable(function(value, settings) {
 	     return doRenameAlarm($(this).attr('id'), value);
@@ -221,13 +234,19 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
   }
 
   var bgUpdate = false;
+  var activating;
+  var idEntidad;
   
-  function toggleAlarm(objCheckbox, idEntidad) {
+  function toggleAlarm(objCheckbox, pidEntidad) {
 	  if (!bgUpdate) {
 		if (objCheckbox.checked) {
-			activateAlarm(idEntidad);
+			activating = true;
+			idEntidad = pidEntidad;
+			activateAlarm(pidEntidad);
 		} else {
-			deactivateAlarm(idEntidad);
+			activating = false;
+			idEntidad = pidEntidad;
+			deactivateAlarm(pidEntidad);
 		}
 	  }
   }
@@ -275,22 +294,29 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
       });
   }
 
-  function toggle(){
-	  $('#b-alarm-switch-1').bootstrapSwitch('toggleState');
-  }
-  function check(){
+  function checkbgVar(){
 	  bgUpdate = true;
-	  $('#b-alarm-switch-1').bootstrapSwitch('setState', true);
+	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('setState', true);
 	  bgUpdate = false;
   }
-  function uncheck(){
+  function uncheckbgVar(){
 	  bgUpdate = true;
-	  $('#b-alarm-switch-1').bootstrapSwitch('setState', false);
+	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('setState', false);
+	  bgUpdate = false;
+  }
+
+  function checkbg(idEntidad){
+	  bgUpdate = true;
+	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('setState', true);
+	  bgUpdate = false;
+  }
+  function uncheckbg(idEntidad){
+	  bgUpdate = true;
+	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('setState', false);
 	  bgUpdate = false;
   }
   
   function doDeactivate(idEntidad) {
-	  $('#b-alarm-switch-' + idEntidad).bootstrapSwitch('toggleState');
 	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
           type: "GET",
@@ -374,7 +400,7 @@ textarea {
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 								<div class="switchContainer">
 									<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
-										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(alarm.isInactive() ? "" : "checked=\"true\"") %>>
+										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
 									</div>
 								  	<% if (alarm.isInactive() ) { %>
 								  		<span class="fakeButtons" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)">.</span>
@@ -399,9 +425,6 @@ textarea {
 					  			<% } %>
 							</div>
 						</div>
-						<button onclick="toggle()">toggle</button>
-						<button onclick="check()">check</button>
-						<button onclick="uncheck()">unchek</button>
 						<div id="switchBoard">
 				  			<div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
 						   		<% if (alarm.hasChangeData()) { %>

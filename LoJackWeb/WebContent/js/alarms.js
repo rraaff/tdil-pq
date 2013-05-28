@@ -9,9 +9,9 @@ var sessionCheckIntervalID = window.setInterval(function () {
         			$('#alarm-status-' + item.idEntidad).prop('innerHTML', item.status);
         		}
         		if (item.armada) {
-        			$('#alarm-switch-' + item.idEntidad).attr('checked', true);
+        			checkbg(item.idEntidad);
         		} else {
-        			$('#alarm-switch-' + item.idEntidad).attr('checked', false);
+        			uncheckbg(item.idEntidad);
         		}
         		if ($('#alarm-job-' + item.idEntidad)) {
         			$('#alarm-job-' + item.idEntidad).prop('innerHTML', '');

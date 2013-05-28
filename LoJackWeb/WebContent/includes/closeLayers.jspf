@@ -3,3 +3,8 @@ $("button[cl]").each(function(indice,valor) {
 	   $( "#" + $(this).attr('cl') ).fadeOut();
 	});
 });
+$("input[cl]").each(function(indice,valor) {
+   $(valor).click(function() {
+	   $( "#" + $(this).attr('cl') ).fadeOut();
+	});
+});

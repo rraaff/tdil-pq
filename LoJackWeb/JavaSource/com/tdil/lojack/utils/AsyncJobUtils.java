@@ -55,5 +55,13 @@ public class AsyncJobUtils {
 	public static boolean hasJobInProgress(Light light, WebsiteUser websiteUser) {
 		return websiteUser.hasJobInProgress(light);
 	}
+	
+	public static boolean displayInactive(Alarm alarm, WebsiteUser websiteUser) {
+		if (alarm.isInactive()) {
+			return !hasJobInProgress(alarm, websiteUser);
+		} else {
+			return hasJobInProgress(alarm, websiteUser);
+		}
+	}
 
 }
