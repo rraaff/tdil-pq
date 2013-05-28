@@ -32,7 +32,7 @@
 	background: #fff;
 	width: 340px;
 	margin: 80px auto;
-	padding: 30px 73px 0 73px;
+	padding: 30px 53px;
 }
 .registerLayerContent {
 	width: 450px;
@@ -202,7 +202,7 @@ button.buttonLink {
 	width: 60px;
 }
 #changePassLayer label {
-	width: 100px;
+	/*width: 100px;*/
 }
 .loginLayerContent {
 	/*height:270px;*/

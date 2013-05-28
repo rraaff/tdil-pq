@@ -61,12 +61,12 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeEditVehicleForPhoneLayer" style="margin-left:60px;">X</button></div>
+			<div id="xContainer"><button id="closeEditVehicleForPhoneLayer">X</button></div>
 			<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
 			<h3>Editar teléfonos de emergencia del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
 			<div class="alert alert-error" id="savephones" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesPhones">
-				<div id="tableStyle" style="height:220px;">
+				<div id="tableStyle">
 					<fieldset class="tableHeader">
 						<label class="w1">Acción</label>
 						<label class="w3">Teléfono</label>

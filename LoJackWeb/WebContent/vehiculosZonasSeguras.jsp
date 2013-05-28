@@ -64,11 +64,11 @@ function postSaveSpeedLimits(data) {
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeeditSecureZonesLayer" style="margin-left:60px;">X</button></div>
+			<div id="xContainer"><button id="closeeditSecureZonesLayer">X</button></div>
 			<h3>Zonas seguras</h3>
 			<div class="alert alert-error" id="savesz" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesSecureZones">
-				<div id="tableStyle" style="height:220px;">
+				<div id="tableStyle">
 						<fieldset class="tableHeader">
 							<label class="w1">Acción</label>
 							<label class="w3">Teléfono</label>

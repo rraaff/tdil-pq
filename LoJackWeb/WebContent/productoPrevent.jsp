@@ -257,10 +257,6 @@ button.iconZSeguras { background: url(images/skin_lj_rl/webApp/car/control_zSegu
 button.iconGetPosit { background: url(images/skin_lj_rl/webApp/car/control_getPosit_32x32.png); }
 button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phoneAdm_32x32.png); }
 
-.registerLayerContent {
-	height:400px;
-	padding: 0 20px 20px 20px;
-}
 #tableStyle {
 	width:100%;
 	height:300px;

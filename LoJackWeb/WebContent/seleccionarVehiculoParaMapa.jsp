@@ -20,7 +20,7 @@ $( "#closeSelectVehicleForMapLayer" ).click(function() {
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeSelectVehicleForMapLayer" style="margin-left:60px;">X</button></div>
+			<div id="xContainer"><button id="closeSelectVehicleForMapLayer">X</button></div>
 			<h3>Localizar vehículo/s</h3>
 			<div id="tableStyle">
 				<fieldset class="tableHeader">

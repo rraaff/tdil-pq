@@ -61,30 +61,30 @@ function postSaveSpeedLimits(data) {
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="registerLayerStyles editProfileLayer">
 		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeeditMaxSpeedLayer" style="margin-left:60px;">X</button></div>
+			<div id="xContainer"><button id="closeeditMaxSpeedLayer">X</button></div>
 			<h3>Determinar velocidades máximas</h3>
 			<div class="alert alert-error" id="savespeederr" style="display: none;"></div>
 			<html:form method="POST" action="/saveVehiculesSpeedLimits">
-				<div id="tableStyle" style="height:220px;">
-						<fieldset class="tableHeader">
-							<label class="w1">Patente</label>
-							<label class="w3">Velocidad máxima</label>
+				<div id="tableStyle">
+					<fieldset class="tableHeader">
+						<label class="w1">Patente</label>
+						<label class="w3">Velocidad máxima</label>
+					</fieldset>
+					<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
+						<fieldset>
+							<label class="w1"><bean:write name="selectedSpeedLimit" property="vehicle.description" /></label>
+							<html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
+								<option	value="">-</option>
+								<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
+									SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
+									for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
+										<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+										value="<%=sl.getId()%>">
+										<%=sl.getDescription()%></option>
+								<% } %>
+							</html:select>
 						</fieldset>
-						<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
-							<fieldset>
-								<label class="w1"><bean:write name="selectedSpeedLimit" property="vehicle.description" /></label>
-								<html:select name="selectedSpeedLimit" property="speedLimitId" indexed="true">
-									<option	value="">-</option>
-									<% SpeedSelectionBean ssb = (SpeedSelectionBean)selectedSpeedLimit;
-										SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
-										for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
-											<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-											value="<%=sl.getId()%>">
-											<%=sl.getDescription()%></option>
-									<% } %>
-								</html:select>
-							</fieldset>
-						</logic:iterate>
+					</logic:iterate>
 				</div>
 				<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 			</html:form>
