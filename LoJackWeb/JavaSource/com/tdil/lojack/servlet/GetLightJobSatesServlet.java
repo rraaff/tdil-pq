@@ -50,6 +50,9 @@ public class GetLightJobSatesServlet extends HttpServlet {
 				job.put("idEntidad", asyncJob.getIdentidad());
 				job.put("idLuz", asyncJob.getIdluz());
 				job.put("status", light.getStatusDescription());
+				job.put("unknowm", light.isStatusUnknown());
+				job.put("ran", light.isInRandomMode());
+				job.put("on", light.isOn());
 				result.add(job);
 			}
 			// escribo el json..

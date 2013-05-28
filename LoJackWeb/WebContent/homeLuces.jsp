@@ -185,7 +185,70 @@
 		}
 	}
 
+	function setLightStatusOn(idEntidad, idLuz) {
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', 'ON');
+
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-off-" + idEntidad + "-" + idLuz).click(function() {
+			turnOffLight(idEntidad, idLuz);
+		});
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>OFF</b>');
+
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', 'MR ON');
+	}
+	function setLightStatusOff(idEntidad, idLuz) {
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-on-" + idEntidad + "-" + idLuz).click(function() {
+			turnOnLight(idEntidad, idLuz);
+		});
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>ON</b>');
+		
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', 'OFF');
+
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
+			activateRandomSequence(idEntidad, idLuz);
+		});
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR ON</b>');
+	}
+	function setLightStatusRanOn(idEntidad, idLuz) {
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', 'ON');
+		
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', 'OFF');
+
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
+			deactivateRandomSequence(idEntidad, idLuz);
+		});
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR OFF</b>');
+	}
+	function setLightStatusRanOff(idEntidad, idLuz) {
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-on-" + idEntidad + "-" + idLuz).click(function() {
+			turnOnLight(idEntidad, idLuz);
+		});
+		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>ON</b>');
+
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-off-" + idEntidad + "-" + idLuz).click(function() {
+			turnOffLight(idEntidad, idLuz);
+		});
+		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>OFF</b>');
+
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
+			activateRandomSequence(idEntidad, idLuz);
+		});
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR ON</b>');
+	}
+
 	function turnOnLight(idEntidad, idLuz) {
+		alert('turn on');
 		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
@@ -201,6 +264,7 @@
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#lightTurnedOnLayer" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+							setLightStatusOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
 						}
@@ -229,6 +293,7 @@
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#lightTurnedOffLayer" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+							setLightStatusOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
 						}
@@ -257,6 +322,7 @@
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#randomActivatedLayer" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+							setLightStatusRanOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotActivatedLayer" ));
 						}
@@ -285,6 +351,7 @@
 		        	  if (data.result == 'OK') {
 		        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
 		        		  $( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
+		        		  setLightStatusRanOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 						}
@@ -333,39 +400,44 @@ textarea {
 									<!-- div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
 									    <input type="checkbox">
 									</div-->
-									<% if (light.isInRandomMode()) { %>
+									<% if (AsyncJobUtils.displayRandom(light, websiteUser)) { %>
 										<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 										<% } else { %>
 											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 										<% } %>
-										<span class="fakeButtons" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">MR OFF</span>
+										<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
+										<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
+										<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR OFF</b></span>
 									<% } else  { %>
-										<% if (light.isOn()) { %>
+										<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 											<% } else { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 											<% } %>
-											<span class="fakeButtons" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">OFF</span>
+											<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
+											<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+											<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">MR ON</span>
 										<% } else  { %>
-											<% if (light.isOff()) { %>
+											<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
 												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 												<% } else { %>
 													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 												<% } %>
-												<span class="fakeButtons" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">ON</span>
-												<span class="fakeButtons" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">MR ON</span>
+												<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+												<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
+												<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
 											<% } else  { %>
 												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 												<% } else { %>
 													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 												<% } %>
-												<span class="fakeButtons" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">ON</span>
-												<span class="fakeButtons" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">OFF</span>
-												<span class="fakeButtons" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">MR ON</span>
+												<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+												<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</span>
+												<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
 											<% } %>
 										<% } %>
 									<% } %>

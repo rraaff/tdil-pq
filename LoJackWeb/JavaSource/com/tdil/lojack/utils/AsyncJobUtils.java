@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.model.Alarm;
+import com.tdil.lojack.gis.model.AsyncJobConstants.AsyncJobActions;
 import com.tdil.lojack.gis.model.AsyncJobConstants.AsyncJobStatus;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.model.AsyncJob;
@@ -61,6 +62,60 @@ public class AsyncJobUtils {
 			return !hasJobInProgress(alarm, websiteUser);
 		} else {
 			return hasJobInProgress(alarm, websiteUser);
+		}
+	}
+	
+	public static boolean displayRandom(Light light, WebsiteUser websiteUser) {
+		if (light.isInRandomMode()) {
+			AsyncJob asyncJob = websiteUser.getPendingJob(light.getIdEntidad(), light.getIdLuz());
+			if (asyncJob == null) {
+				return true;
+			}
+			if (asyncJob.getAction().equals(AsyncJobActions.ACTIVATE_RANDOM_LIGHT)) {
+				return true;
+			}
+			if (asyncJob.getAction().equals(AsyncJobActions.DEACTIVATE_RANDOM_LIGHT)) {
+				return true;
+			}
+			return false;
+		} else {
+			AsyncJob asyncJob = websiteUser.getPendingJob(light.getIdEntidad(), light.getIdLuz());
+			if (asyncJob == null) {
+				return false;
+			}
+			return asyncJob.getAction().equals(AsyncJobActions.ACTIVATE_RANDOM_LIGHT);
+		}
+	}
+	
+	public static boolean displayOff(Light light, WebsiteUser websiteUser) {
+		if (light.isOff()) {
+			return !hasJobInProgress(light, websiteUser);
+		} else {
+			AsyncJob asyncJob = websiteUser.getPendingJob(light.getIdEntidad(), light.getIdLuz());
+			if (asyncJob == null) {
+				return false;
+			}
+			return asyncJob.getAction().equals(AsyncJobActions.TURN_OFF_LIGHT);
+		}
+	}
+	
+	public static boolean displayOn(Light light, WebsiteUser websiteUser) {
+		if (light.isOn()) {
+			return !hasJobInProgress(light, websiteUser);
+		} else {
+			AsyncJob asyncJob = websiteUser.getPendingJob(light.getIdEntidad(), light.getIdLuz());
+			if (asyncJob == null) {
+				return false;
+			}
+			return asyncJob.getAction().equals(AsyncJobActions.TURN_ON_LIGHT);
+		}
+	}
+	
+	public static boolean displayUnknown(Light light, WebsiteUser websiteUser) {
+		if (light.isStatusUnknown()) {
+			return !hasJobInProgress(light, websiteUser);
+		} else {
+			return false;
 		}
 	}
 
