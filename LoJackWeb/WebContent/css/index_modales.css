@@ -51,18 +51,18 @@
 	overflow-x:hidden;
 }
 .modalStyle {
-	width: 450px;
+/*	width: 450px;*/
 	margin: 30px auto;
 	padding: 20px;
 }
 .modalWrapper {
-	width: 450px;
+	/*width: 450px;*/
 	height:auto;
 	display: inline-block;
 }
 .modalLayerContent {
 	width: 100%;
-	height: 400px;
+	/*height: 400px;*/
 }
 .contactLayerContent {
 	height: auto;
@@ -93,6 +93,18 @@ h3 {
 	font-size: 20px;
 	line-height: 25px;
 	padding-bottom: 20px;
+}
+h4,
+#sendPanicLayer h4 {
+	font-size: 15px;
+	font-weight: lighter;
+	padding-bottom: 20px;
+}
+#sendPanicLayer h3 {
+	padding-bottom: 5px;
+}
+#sendPanic {
+	width: 330px;
 }
 .tagsOnInputs, label, fieldset span {
 	color: #999;
@@ -170,6 +182,7 @@ button.buttonLink {
 #loginLayer input[type="tel"],
 #loginLayer input[type="url"],
 #loginLayer input[type="text"],
+#passwordLayer input[type="text"],
 #passwordLayer input[type="password"] {
 	border: 0;
 	border-radius: 5px;
@@ -193,7 +206,7 @@ button.buttonLink {
 }
 .loginLayerContent {
 	/*height:270px;*/
-	padding:30px 35px 35px 35px;
+	padding:30px 35px 30px 35px;
 }
 #registerLayer label {
 	width: 120px;
@@ -210,7 +223,9 @@ label {
 #changePassLayer input[type="tel"],
 #changePassLayer input[type="url"],
 #changePassLayer textarea,
-#changePassLayer input[type="text"]  {
+#changePassLayer input[type="text"],
+#loginPreventContentLayer input[type="text"],
+#loginPreventContentLayer input[type="password"]  {
 	border: 0;
 	border-radius: 5px;
 	background: #eaeaea;
@@ -224,6 +239,10 @@ label {
 	padding: 0 0 0 10px;
 	margin: 5px auto;
 	float: left;
+}
+#loginPreventContentLayer input[type="text"],
+#loginPreventContentLayer input[type="password"]  {
+	float: right;
 }
 #changePassLayer textarea {
 	padding: 10px 0 10px 10px;
@@ -298,7 +317,6 @@ label {
 	background-repeat: no-repeat;
 	width:132px;
 	height:35px;
-	margin:20px;
 	cursor:pointer;
 	float:right;
 }
@@ -310,7 +328,7 @@ label {
 	text-transform: uppercase;
 	width: 120px;
 	height: 35px;
-	margin: 15px 0;
+	margin: 15px 0 0 0;
 	cursor: pointer;
 	float: right;
 }

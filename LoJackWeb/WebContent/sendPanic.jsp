@@ -8,7 +8,8 @@
 <%
 Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
 %>
-Enviar senial de panico <br>
+<h4>Enviar senial de panico</h4>
+
 <% for (Alarm alarm : alarms) { %>
 <a href="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', <%= alarm.getIdEntidad() %>)"><%= alarm.getIdEntidad() %> - <%=alarm.getDescription() %></a><hr> 
 <% } %>

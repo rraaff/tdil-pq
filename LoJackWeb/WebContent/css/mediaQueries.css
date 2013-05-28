@@ -336,7 +336,7 @@ and (max-width : 479px) {
 and (max-height : 492px) {
 	/* MODALES */
 	.layerOnTop, .layerOnTop20, .layerOnTop70 {
-		height: auto;
+		/*height: auto;*/
 	}
 }
 /* Smartphones (portrait) ----------- */

@@ -62,14 +62,16 @@ function postLoginPrevent(data) {
 	<div class="loginLayerStyles">
 		<div class="loginLayerContent changePasswordLayerContent">
 			<div id="xContainer"><button id="closeLoginPreventLayer">X</button></div>
-			<h3 style="padding-bottom:20px;">Ingresar a prevent</h3>
+			<h3>Ingresar a prevent</h3>
 			<div class="alert alert-error" id="loginpreventerr" style="display: none;"></div>
 			<html:form method="POST" action="/preventLogin">
-					<fieldset>
-						<label class="width100">Clave</label>
-						<html:password name="PreventLoginForm" property="password" />
-					</fieldset>
-				<button type="submit" class="indexButtonBase">Ingresar</button>
+				<fieldset>
+					<label>Clave</label>
+					<html:password name="PreventLoginForm" property="password" />
+				</fieldset>
+				<fieldset>
+					<button type="submit" class="indexButtonBase">Ingresar</button>
+				</fieldset>
 			</html:form>
 		</div>
 	</div>

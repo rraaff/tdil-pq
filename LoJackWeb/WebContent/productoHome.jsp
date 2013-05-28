@@ -68,6 +68,5 @@ $(function() {
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-
 </body>
 </html>

@@ -82,7 +82,9 @@ function postChangePassword(data) {
 						<html:password name="ChangePasswordForm" property="confirmNewPassword" />
 						<div id="err.confirmPassword"></div>
 					</fieldset>
-				<button type="submit" class="indexButtonBase">Modificar</button>
+					<fieldset>
+						<button type="submit" class="indexButtonBase">Modificar</button>
+					</fieldset>
 			</html:form>
 		</div>
 	</div>

@@ -483,7 +483,7 @@ textarea {
 <%@ include file="includes/passwordLayer.jspf" %>
 
 <div id="alarmActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div class="modalLayerContent" style="height:auto; padding:20px 0;">
@@ -495,7 +495,7 @@ textarea {
 </div>
 
 <div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -507,7 +507,7 @@ textarea {
 </div>
 
 <div id="invalidPasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -519,7 +519,7 @@ textarea {
 </div>
 
 <div id="alarmDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -531,7 +531,7 @@ textarea {
 </div>
 
 <div id="alarmNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -543,7 +543,7 @@ textarea {
 </div>
 
 <div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -556,10 +556,10 @@ textarea {
 
 <!-- Inicio panic -->
 <div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div class="modalStyle" style="margin:120px auto;">
+		<div class="modalWrapper">
 			<h3>Atención</h3>
-			<div id="sendPanic" style="height:auto; padding:20px 0;">
+			<div id="sendPanic" style="height:auto;">
 				Consultando datos...
 			</div>
 			<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar" class="indexButtonBase"/>
@@ -568,7 +568,7 @@ textarea {
 </div>
 
 <div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
@@ -580,7 +580,7 @@ textarea {
 </div>
 
 <div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
+	<div class="modalStyle" style="width:250px; margin:120px auto;">
 		<div class="modalWrapper" style="width:auto;">
 			<h3>Atención</h3>
 			<div id="sendPanicError" style="height:auto; padding:20px 0;">
