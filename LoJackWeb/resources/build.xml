@@ -173,6 +173,9 @@
 		</war>
 		
 		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
+		
+		<war destfile="./${project.name.upper}.tmp/GIS_WEB.war" basedir="../../GISWeb/WebContent" webxml="../../GISWeb/WebContent/WEB-INF/web.xml">
+		</war>	
 	</target>
 
 	<target name="js.minify">
