@@ -91,6 +91,12 @@ public class LoJackConfig extends SystemConfig {
 				ThalamusClient.setTHALAMUS_HOST(thalamusUrl.getHost());
 			}
 			getLog().fatal("Thalamus host is " + ThalamusClient.getTHALAMUS_HOST());
+			
+			String thalamustimeout = SystemPropertyUtils.getSystemPropertValue("thalamus.timeout");
+			if (thalamustimeout != null) {
+				ThalamusClient.setTIMEOUT(Integer.parseInt(thalamustimeout));
+			}
+			getLog().fatal("Thalamus timeout is " + ThalamusClient.getTIMEOUT());
 
 			String thalamuscookiepath = SystemPropertyUtils.getSystemPropertValue("thalamus.cookiePath");
 			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamuscookiepath)) {
@@ -154,12 +160,24 @@ public class LoJackConfig extends SystemConfig {
 				LoJackServicesConnector.setServicesServer(servicesserver);
 			}
 			getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
+			
+			String servicestimeout = SystemPropertyUtils.getSystemPropertValue("services.timeout");
+			if (servicestimeout != null) {
+				LoJackServicesConnector.setTIMEOUT(Integer.parseInt(servicestimeout));
+			}
+			getLog().fatal("Services timeout is " + LoJackServicesConnector.getTIMEOUT());
 
 			String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
 			if (preventserver != null) {
 				PreventConnector.setPreventServer(preventserver);
 			}
 			getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
+			
+			String preventtimeout = SystemPropertyUtils.getSystemPropertValue("prevent.timeout");
+			if (preventtimeout != null) {
+				PreventConnector.setTIMEOUT(Integer.parseInt(preventtimeout));
+			}
+			getLog().fatal("Prevent timeout is " + PreventConnector.getTIMEOUT());
 
 			getLog().fatal("Starting middleware jobs updater");
 			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));

@@ -10,6 +10,7 @@ import net.sf.json.JSONObject;
 import net.sf.json.util.JSONTokener;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
@@ -45,6 +46,8 @@ public class LoJackServicesConnector {
 
 	private static final String GUID = "guid";
 	private static final String HOME_USER_ID = "lojackUserId";
+	
+	private static int TIMEOUT = 2000;
 	
 	//private static final String LOJACK_USER_ID = "lojackUserId";
 	private static final String TZ_OFFSET = "timezoneOffset";
@@ -593,6 +596,7 @@ public class LoJackServicesConnector {
 			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
 		}
 		HttpClient client = new HttpClient();
+		configureTimeout(client);
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + service);
 		try {
 			httpMethod.setRequestHeader("Content-type", "application/json");
@@ -624,6 +628,10 @@ public class LoJackServicesConnector {
 		}
 	}
 
+	private static void configureTimeout(HttpClient client) {
+		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
+		connectionManager.getParams().setSoTimeout(getTIMEOUT());
+	}
 	private static JSON extractJSONObjectResponse(String response)
 			throws InvalidResponseException, UnauthorizedException {
 		JSONTokener tokener = new JSONTokener(response);
@@ -638,6 +646,12 @@ public class LoJackServicesConnector {
 	}
 	public static void setServicesServer(String servicesServer) {
 		LoJackServicesConnector.servicesServer = servicesServer;
+	}
+	public static int getTIMEOUT() {
+		return TIMEOUT;
+	}
+	public static void setTIMEOUT(int tIMEOUT) {
+		TIMEOUT = tIMEOUT;
 	}
 
 }

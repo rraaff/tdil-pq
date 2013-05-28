@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
@@ -27,7 +28,7 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 public class PreventConnector {
 
-
+	private static int TIMEOUT = 2000;
 
 	// POST
 	private static final String LOGIN = "/Users/Login";
@@ -159,6 +160,7 @@ public class PreventConnector {
 			LOG.debug("Execute: " + server + url);
 		}
 		HttpClient client = new HttpClient();
+		configureTimeout(client);
 		GetMethod httpMethod = new GetMethod(server + url);
 		try {
 			httpMethod.setRequestHeader("Content-type", "text/xml");
@@ -206,6 +208,7 @@ public class PreventConnector {
 			LOG.debug("Execute: " + server + url + " xml: " + (xml == null ? "null" : xml));
 		}
 		HttpClient client = new HttpClient();
+		configureTimeout(client);
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + url);
 		try {
 			httpMethod.setRequestHeader("Content-type", "text/xml");
@@ -237,11 +240,24 @@ public class PreventConnector {
 		}
 	}
 
+	private static void configureTimeout(HttpClient client) {
+		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
+		connectionManager.getParams().setSoTimeout(getTIMEOUT());
+	}
+	
 	public static String getPreventServer() {
 		return preventServer;
 	}
 
 	public static void setPreventServer(String preventServer) {
 		PreventConnector.preventServer = preventServer;
+	}
+
+	public static int getTIMEOUT() {
+		return TIMEOUT;
+	}
+
+	public static void setTIMEOUT(int tIMEOUT) {
+		TIMEOUT = tIMEOUT;
 	}
 }
