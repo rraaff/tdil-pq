@@ -20,24 +20,17 @@ import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
-public class Main {
+public class MainGetAlarms {
 	
-	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(Main.class);
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(MainGetAlarms.class);
 	
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getCamaras xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getCamaras></s:Body></s:Envelope>");
+		executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getLights xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getLights></s:Body></s:Envelope>");
 	}
 
 	private static XMLResponse executePost(String server, String service, String param) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		long start = System.currentTimeMillis();
-		String xml = null;
-		if (param != null) {
-			if (param instanceof String) {
-				xml = (String)param;
-			} else {
-				xml = PreventXMLUtils.asXML(param);
-			}
-		}
+		String xml = param;
 		String url = service;
 		/*
 		if (urlParams != null) {
@@ -52,7 +45,7 @@ public class Main {
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + url);
 		try {
 			httpMethod.setRequestHeader("Content-type", "text/xml");
-			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/getCamaras");
+			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/getLights");
 			if (xml != null) {
 				RequestEntity requestEntity = new StringRequestEntity(xml);
 				httpMethod.setRequestEntity(requestEntity);
