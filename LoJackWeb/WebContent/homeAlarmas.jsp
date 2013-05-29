@@ -33,7 +33,7 @@
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 
 <!-- Para los switches -->
-<link rel="stylesheet" href="css/bootstrap-combined.min.css">
+<!-- link rel="stylesheet" href="css/bootstrap-combined.min.css"-->
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
 <script src="js/bootstrapSwitch.js"></script>
 <!-- Fin Switches -->
@@ -172,6 +172,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 			    errorAjax();
 			  } else {
 		  centerLayer($(window), $( "#logLayer" ));
+		  centerLayer($(window), $( "#centradorModalesLog" ));
 		}
 	  });
   }
@@ -255,6 +256,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doActivate("'+alarmId+'")');
 	  centerLayer($(window), $( "#passwordLayer" ));
+	  centerLayer($(window), $( "#centradorModalesPassword" ));
   }
 
   function doActivate(idEntidad) {
@@ -329,6 +331,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmDeactivatedLayer" ));
+				  centerLayer($(window), $( "#centradorModalesAD" ));
 				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
 					if (data.result == 'ERR_PASS') {
@@ -357,6 +360,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	  $('#password').attr('value','');
 	  $('#passwordLayerButton').attr('onclick', 'doDeactivate("'+alarmId+'")');
 	  centerLayer($(window), $( "#passwordLayer" ));
+	  centerLayer($(window), $( "#centradorModalesPassword" ));
   }
 
   <%@ include file="includes/errorAjaxJS.jspf" %>
@@ -375,7 +379,7 @@ textarea {
 	float:left;
 }
 .has-switch span.switch-warning {
-	left: -82px;
+	left: -81px;
 }
 </style>
 </head>
@@ -394,7 +398,7 @@ textarea {
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div class="col1_794 alarmasBG">
+		<div class="col1_798 alarmasBG">
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
 						<div class="titleContainer">
@@ -449,20 +453,22 @@ textarea {
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 
-<div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle">
-		<div class="modalWrapper">
-			<div id="logData" class="modalLayerContent">
+<div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500; top:0; left:0;">
+	<div id="centradorModalesLog" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeLogLayer" cl="logLayer">X</button></div>
+			<h3>Log de cambios</h3>
+			<div id="logData">
 				Cargando datos...
 			</div>
-			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/>
+			<!-- div><input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/></div -->
 		</div>
 	</div>
 </div>
 
 <div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div class="modalStyle">
+		<div class="modalWrapper">
 			<h3>Atención</h3>
 			<div id="confAlert">
 				Consultando datos...
@@ -471,14 +477,14 @@ textarea {
 	</div>
 </div>
 
-<div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+<div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500; top:0; left:0;">
+	<div id="centradorModalesConfSaved" class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
 				<div class="alert alert-success">La configuracion ha sido salvada.</div>
 			</div>
-			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar" class="indexButtonBase"/>
+			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar la ventana 1" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
@@ -486,8 +492,8 @@ textarea {
 <%@ include file="includes/passwordLayer.jspf" %>
 
 <div id="alarmActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesAA" class="modalStyle">
+		<div class="modalWrapper">
 			<h3>Atención</h3>
 			<div class="modalLayerContent" style="height:auto; padding:20px 0;">
 				<div class="alert alert-success">Se ha enviado el comando de activacion la alarma.</div>
@@ -498,8 +504,8 @@ textarea {
 </div>
 
 <div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesANA" class="modalStyle">
+		<div class="modalWrapper">
 			<h3>Atención</h3>
 			<div style="height:auto; padding:20px 0;">
 				<div class="alert alert-error">No ha podido activarse la alarma.</div>
@@ -522,13 +528,13 @@ textarea {
 </div>
 
 <div id="alarmDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesAD" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de desactivación la alarma.</div>
 			</div>
-			<input type="button" id="closeAlarmDeactivatedLayer" cl="alarmDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>

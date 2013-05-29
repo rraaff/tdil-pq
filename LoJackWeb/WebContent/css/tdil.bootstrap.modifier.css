@@ -193,14 +193,16 @@ fieldset.aligner label {
 	float: left;
 	overflow: hidden;
 }
-#content .col1_794 {
+#content .col1_794,
+#content .col1_798 {
 	background: #f0ece4;
-	width: 714px;
-	height: 364px;
+	width: 794px;
+	height: 423px;
 	padding: 30px 40px;
 	overflow: auto;
 	float: left;
 }
+#content .col1_798 { width: 796px; }
 #content .alarmasBG, #content .lucesBG, #content .camarasBG {
 	background: url(../images/skin_lj_rl/backs/productHome_alarm.png);
 	background-repeat: no-repeat;
@@ -311,15 +313,15 @@ fieldset.aligner label {
 }
 #content .tab {
 	background: url(../images/skin_lj_rl/tabs/servicion.png);
-	background-position: center center;
+	background-position: 0 0;
 	background-repeat:no-repeat;
 	width: 170px;
-	height: 26px;
+	height: 32px;
 	float: left;
 }
 #content ul.tabServices {
-	width: 170px;
-	float: left;
+/*	width: 170px;
+	float: left;*/
 }
 #content ul li {
 	/*float: right;*/
@@ -365,7 +367,7 @@ fieldset.aligner label {
 #accordion,
 #agendaWrapper {
 	background:#FFF;
-	width: 500px;
+	width: 525px;
 	margin: 10px;
 	padding: 10px;
 	text-align: left;

@@ -9,8 +9,7 @@
 int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
 Collection<ChangeLog> logCollection = LoJackServicesConnector.getAlarmLog(websiteUser, idEntidad);
 %>
-<h3>Log de cambios</h3>
-<div class="scrollable">
+<div class="logLayerContent">
 	<% for (ChangeLog log : logCollection) {
 		com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUserByHomeUserId(log.getLojackUserId()); %>
 		<% if (logUsr != null && WebsiteUserUtils.hasAvatar(logUsr)) { %>

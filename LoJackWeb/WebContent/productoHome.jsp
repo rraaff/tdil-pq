@@ -52,14 +52,14 @@ $(function() {
 <section id="content">
 	<div class="pageWrapper">
 		<div class="col1_170">
-			<div class="tab"><img src="images/skin_lj_rl/tabs/servicion.png"></div>
+			<div class="tab"></div>
 			<ul class="tabServices">
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div class="col1_794">
+		<div class="col1_798">
 			Contenido sin definir
 		</div>
 	</div>
