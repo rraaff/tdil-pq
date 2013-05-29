@@ -8,21 +8,26 @@
 	margin:0;
 	position: fixed;
 }
-.layerOnTop20 {
-	background: url(../images/skin_lj_rl/backs/topLayer20.png);
-	background-repeat: repeat;
+.layerOnTop20 { background: url(../images/skin_lj_rl/backs/topLayer20.png); background-repeat: repeat; }
+.layerOnTop70 { background: url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat: repeat; }
+.loginLayerStyles,
+.defaultLayerStyles,
+.legalLayerStyles,
+.contactLayerStyle,
+.editProfileLayer {
+	border: dotted 1px red;
+	width: auto;
+	height: auto;
+	position: relative;
+	display: inline-block;
 }
-.layerOnTop70 {
-	background: url(../images/skin_lj_rl/backs/topLayer70.png);
-	background-repeat: repeat;
-}
-.loginLayerStyles {}
 .loginLayerContent,
 .registerLayerContent,
 .legalLayerContent,
 .modalStyle,
 .contactLayerContent,
-.changePasswordLayerContent {
+.changePasswordLayerContent,
+.forgotPasswordLayerContent {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -44,15 +49,15 @@
 }
 .legalLayerContent {
 	max-width: 500px;
+	max-height: 450px;
 }
 .legalLayerContent p {
 	line-height: 18px;
 	padding-bottom: 10px;
 }
 .legalLayerContentWrapper {
-	/*height: 350px;
-	overflow-y:auto;
-	overflow-x:hidden;*/
+	max-height: 293px;
+	overflow-y: auto;
 }
 .modalStyle {
 /*	width: 450px;*/
@@ -211,6 +216,7 @@ button.buttonLink {
 	/*height:270px;*/
 	padding:30px 35px 30px 35px;
 }
+.forgotPasswordLayerContent { width: 420px; }
 #registerLayer label {
 	width: 120px;
 }
@@ -241,7 +247,7 @@ label {
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
-	float: left;
+	float: right;
 }
 #contactLayerContentID input[type="text"],
 #contactLayerContentID textarea,
@@ -255,7 +261,7 @@ label {
 	line-height: 16px;
 	height: 65px;
 }
-
+input[type="text"].width240 { width: 240px; }
 #forgotPasswordLayer input:not([type]),
 #forgotPasswordLayer input[type="color"],
 #forgotPasswordLayer input[type="email"],
@@ -271,12 +277,10 @@ label {
 	font-size: 12px;
 	line-height: 35px;
 	text-transform: uppercase;
-
-	width: 280px;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
-	float: left;
+	float: right;
 }
 #registerLayer fieldset { width: 460px; }
 #registerLayer select {
@@ -385,10 +389,7 @@ label {
 	line-height: 18px;
 	/*padding: 30px 0;*/
 }
-.closeLayerVideoLink {
-	margin-top: 30px;
-	text-align: right;
-}
+.closeLayerVideoLink { text-align: right; }
 .customLink {
 	background: transparent;
 	border: none;

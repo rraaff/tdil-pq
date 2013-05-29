@@ -1,5 +1,5 @@
 <div id="legalesLayer" class="layerOnTop" style="display: none; z-index:1600;">
-	<div class="legalLayerStyles">
+	<div id="centradorModalesLegales" class="legalLayerStyles">
 		<div id="legalesLayerID" class="legalLayerContent">
 			<h2>Legales</h2>
 			<div id="legal" class="legalLayerContentWrapper">

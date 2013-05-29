@@ -3,6 +3,7 @@
 LOGIN
 - No está dando error en el layer de login cuando te olvidas de setear el tipo de DNI.
 DONE - Cuando Thalamus no responde, se queda eternamente esperando respuesta. Habría que meterle un timeout que diga, "Ha ocurrido un error: Por favor intentelo de nuevo" botón, reintentar.
+- Cuando escribo el usuario, clave y le doy [ENTER] me toma como acción default, el close layer, en lugar del login.
 
 
 *************************************************************************************************************
@@ -40,6 +41,9 @@ DONE Los textos de los errores están en ingles. ¿Desde donde los modifico?
 
 DONE  Datepicker con fechas en ingles
 DONE, le puse seleccione - "Select an opcion" en los selects
+
+El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad.
+
 
 *************************************************************************************************************
 entrar a prevent mostrar mapa centrado en la posicion actual

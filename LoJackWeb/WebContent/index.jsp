@@ -264,7 +264,7 @@ function basicRegister() {
 		$(param).val('');
 	});
 	centerLayer($(window), $( "#registerLayer" ));
-	centerLayer($(window), $( "#registerLayerContentID" ));
+	centerLayer($(window), $( "#centradorModalesRegister" ));
 }
 
 function login() {
@@ -273,13 +273,13 @@ function login() {
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
 	centerLayer($(window), $( "#loginLayer" ));
-	centerLayer($(window), $( "#loginLayerContentID" ));
+	centerLayer($(window), $( "#centradorModalesLogin" ));
 }
 
 function forgotPassword() {
 	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
 	centerLayer($(window), $( "#forgotPasswordLayer" ));
-	centerLayer($(window), $( "#forgotPasswordLayerID" ));
+	centerLayer($(window), $( "#centradorModalesforgotPass" ));
 }
 
 <%@ include file="includes/openLegalesLayer.jsp" %>
@@ -318,14 +318,14 @@ function postResetPassword(data) {
 	$( "#forgotPasswordLayer" ).fadeOut();
 	if (data.result == 'OK') {
 		centerLayer($(window), $( "#forgotPasswordEmailSentLayer" ));
-		centerLayer($(window), $( "#forgotPasswordEmailSentLayerID" ));
+		centerLayer($(window), $( "#centradorModalesforgotPass" ));
 	} else {
 		if (data.result == '404') {
 			centerLayer($(window), $( "#forgotPasswordUserNotFoundLayer" ));
-			centerLayer($(window), $( "#forgotPasswordUserNotFoundLayerID" ));
+			centerLayer($(window), $( "#centradorModalesForgotPasswordUserNotFound" ));
 		} else {
 			centerLayer($(window), $( "#forgotPasswordErrorLayer" ));
-			centerLayer($(window), $( "#forgotPasswordErrorLayerID" ));
+			centerLayer($(window), $( "#centradorModalesForgotPasswordError" ));
 		}
 	}
 }
@@ -339,7 +339,7 @@ $(document).ready(
 );
 function parkingsNotLogged() {
 	centerLayer($(window), $( "#parkingsNotLoggedLayer" ));
-	centerLayer($(window), $( "#defaultLayerContentID" ));
+	centerLayer($(window), $( "#centradorModalesParkingNo" ));
 	return false;
 }
 </script>
@@ -390,8 +390,8 @@ function parkingsNotLogged() {
 <!-- Los LAYERS -->
 
 <div id="parkingsNotLoggedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div id="defaultLayerContentID" class="defaultLayerContent">
+	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
+		<div class="defaultLayerContent">
 			<h3>Atención</h3>
 			<p>Registrate y accede a parkings. Es gratis y podes usarlo tanto en tu pc como en cualquier dispositivo móvil que soporte HTML 5 y Javascript.</p>
 			<fieldset>
@@ -402,8 +402,8 @@ function parkingsNotLogged() {
 </div>
 
 <div id="registerLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="registerLayerStyles">
-		<div id="registerLayerContentID" class="registerLayerContent">
+	<div id="centradorModalesRegister" class="loginLayerStyles">
+		<div class="registerLayerContent">
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
@@ -582,10 +582,11 @@ function parkingsNotLogged() {
 		</div>
 	</div>
 </div>
+
 <!-- Login Form -->
 <div id="loginLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="loginLayerStyles">
-		<div id="loginLayerContentID" class="loginLayerContent">
+	<div id="centradorModalesLogin" class="loginLayerStyles">
+		<div class="loginLayerContent">
 			<html:form method="POST" action="/login">
 				<div id="xContainer"><button id="closeloginLayer">X</button></div>
 				<h3>Ingresar</h3>
@@ -624,10 +625,11 @@ function parkingsNotLogged() {
 		</div>
 	</div>
 </div>
+
 <!-- login error -->
 <div id="loginInvalidLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div id="loginInvalidLayerID" class="defaultLayerContent">
+	<div id="centradorModalesLoginInvalid" class="defaultLayerStyles">
+		<div class="defaultLayerContent">
 			<h3>Atención</h3>
 			<p>El usuario y/o la clave no coinciden.</p>
 			<fieldset>
@@ -639,15 +641,15 @@ function parkingsNotLogged() {
 
 <!-- forgot password -->
 <div id="forgotPasswordLayer" class="layerOnTop" style="display: none; z-index: 1501;">
-	<div class="defaultLayerStyles">
-		<div id="forgotPasswordLayerID" class="loginLayerContent">
+	<div id="centradorModalesforgotPass" class="defaultLayerStyles">
+		<div class="forgotPasswordLayerContent">
 			<html:form method="POST" action="/requestResetPassword">
 				<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordLayer">X</button></div>
 				<h3>Recuperá tu clave</h3>
-				<p>Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.<br/></p>
+				<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 				<fieldset>
 					<label>DNI</label>
-					<html:text name="RequestResetPasswordForm" property="username"/>
+					<html:text name="RequestResetPasswordForm" property="username" styleClass="width240" />
 				</fieldset>
 				<fieldset>
 					<button type="submit" id="submitforgotPassword" class="indexButtonBase">Enviar</button>
@@ -658,8 +660,8 @@ function parkingsNotLogged() {
 </div>
 <!-- Forgot password e-mail sent -->
 <div id="forgotPasswordEmailSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div id="forgotPasswordEmailSentLayerID" class="loginLayerContent">
+	<div id="centradorModales" class="defaultLayerStyles">
+		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordEmailSentLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recibís un E-Mail nuestro con la clave, por favor revisá el correo no deseado.</div>
@@ -670,26 +672,22 @@ function parkingsNotLogged() {
 	</div>
 </div>
 <div id="forgotPasswordUserNotFoundLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div id="loginInvalidLayerID" class="loginLayerContent">
+	<div id="centradorModalesForgotPasswordUserNotFound" class="defaultLayerStyles">
+		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordUserNotFoundLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">El DNI no coincide con un usuario de Lo-Jack</div>
-				<fieldset>
-					<div style="padding:20px 0 0 0; float:right;"><button type="submit" id="closeforgotPasswordUserNotFoundLayer" class="indexButtonBase">Cerrar</button></div>
-				</fieldset>
+			<fieldset><button type="submit" id="closeforgotPasswordUserNotFoundLayer" class="indexButtonBase">Cerrar</button></fieldset>
 		</div>
 	</div>
 </div>
 <div id="forgotPasswordErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div id="forgotPasswordErrorLayerID" class="loginLayerContent">
+	<div id="centradorModalesForgotPasswordError" class="defaultLayerStyles">
+		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordErrorLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Ha ocurrido un error. Por favor intentelo nuevamente.</div>
-			<fieldset>
-				<div style="padding:20px 0 0 0; float:right;"><button type="button" id="closeforgotPasswordErrorLayer" class="indexButtonBase">Cerrar</button></div>
-			</fieldset>
+			<fieldset><button type="button" id="closeforgotPasswordErrorLayer" class="indexButtonBase">Cerrar</button></fieldset>
 		</div>
 	</div>
 </div>

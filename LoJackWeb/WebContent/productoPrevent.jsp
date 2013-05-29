@@ -24,7 +24,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
-<!-- link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
 
 <%@ include file="includes/headLogged.jsp" %>
 
@@ -43,7 +42,7 @@
     margin-bottom: 0.5em;
 }
 /* mobile specific */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 968px) {
     body {
         height           : 100%;
         margin           : 0;
@@ -51,12 +50,12 @@
         width            : 100%;
     }
     #map {
-        background : #7391ad;
+        background : #FFF;
         width      : 100%;
     }
     #map {
         border : 0;
-        height : 250px;
+        height : 200px;
     }
     #title {
         font-size   : 1.3em;
@@ -108,7 +107,7 @@
         var MyPos;
         var SearchMeters;
         <%@ include file="includes/errorAjaxJS.jspf" %>
-        	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+        <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
         	<%@ include file="includes/closeLayers.jspf" %>
         	<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null) { %>
@@ -185,7 +184,8 @@
   		  if (status == "error") {
   		    errorAjax();
   		  } else {
-  			  centerLayer($(window), $( "#editMaxSpeedLayer" ));
+  				centerLayer($(window), $( "#editMaxSpeedLayer" ));
+  				//centerLayer($(window), $( "#centradorModalesMaxSpeed" ));
   			}
   		  });
   	  }
@@ -197,7 +197,8 @@
    		  if (status == "error") {
    		    errorAjax();
    		  } else {
-   			  centerLayer($(window), $( "#editSecureZonesLayer" ));
+   				centerLayer($(window), $( "#editSecureZonesLayer" ));
+   				//centerLayer($(window), $( "#centradorModalesSecureZones" ));
    			}
    		  });
    	  }
@@ -210,7 +211,8 @@
    		  if (status == "error") {
    		    errorAjax();
    		  } else {
-   			  centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
+   				centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
+   				//centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
    			}
    		  });
    	   }
@@ -222,7 +224,8 @@
    		  if (status == "error") {
    		    errorAjax();
    		  } else {
- 			  centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
+ 				centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
+ 				//centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
  			}
    		 });
    	   }
@@ -260,7 +263,6 @@ button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phone
 #tableStyle {
 	width:100%;
 	height:300px;
-	padding: 20px 0;
 	overflow: auto;
 }
 fieldset.tableHeader {
@@ -287,8 +289,35 @@ fieldset label.w3 {
 	width: 310px;
 }
 .plateHighltd { color:#000; }
+
+</style>
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<style type="text/css">
+@media only screen and (max-width: 968px) {
+	body { background: #e51b24; overflow: hidden; }
+	header { visibility: hidden; }
+	#productsMenu { height:auto; top:0; z-index: 2; }
+	#productsMenu .userLoggedThalamusMenu {  }
+	.correctNav { width: 100%; height: auto; }
+	#productsMenu ul li { font-size: 16px; }
+	#productsMenu ul li a { padding: 0; }
+	#productsMenu ul li.logoContainer { width:100%; text-align: center; }
+	#productsMenu ul li a.logo { width:100%; height:43px; margin: 8px 0 17px 0; }
+	#productsMenu ul li a img { width:auto; height:43px; }
+	#productsMenu ul li.toRight { line-height: 38px; width:25%; text-align:center; float: right; }
+	#productsMenu ul li.toRight:hover, #productsMenu ul li.toRight:focus { background:#f05224; }
+	#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
+	#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
+	footer { visibility: hidden; }
+	.pageWrapper { width: 100%; }
+	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align: center; display: inline-block; overflow: hidden; left: 0px; top: 0px; position: fixed; z-index:1; }
+	.smallmap, .pageWrapper { width: 100%; height: 100%; }
+	#zoomSection { width: 100%; margin: 0; }
+	#zoomSection .zoomControls { top: 50%; left: 20px; margin: 0 auto; position: fixed; }
+}
 </style>
 </head>
+
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
@@ -315,28 +344,38 @@ fieldset label.w3 {
 
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="editMaxSpeed">
-		Consultando datos...
+	<div id="centradorModalesMaxSpeed" class="defaultLayerStyles">
+		<div id="editMaxSpeed">
+			Consultando datos...
+		</div>
 	</div>
 </div>
 <div id="editSecureZonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="editSecureZones">
-		Consultando datos...
+	<div id="centradorModalesSecureZones" class="defaultLayerStyles">
+		<div id="editSecureZones">
+			Consultando datos...
+		</div>
 	</div>
 </div>
 <div id="selectVehiclesPhonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="selectVehiclesPhones">
-		Consultando datos...
+	<div id="centradorModalesVehiclesPhones" class="defaultLayerStyles">
+		<div id="selectVehiclesPhones">
+			Consultando datos...
+		</div>
 	</div>
 </div>
 <div id="editVehiclesPhonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="editVehiclesPhones">
-		Consultando datos...
+	<div id="centradorModalesPrevent" class="defaultLayerStyles">
+		<div id="editVehiclesPhones">
+			Consultando datos...
+		</div>
 	</div>
 </div>
 <div id="selectVehiclesForMapLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="selectVehiclesForMap">
-		Consultando datos...
+	<div id="centradorModalesVehiclesForMap" class="defaultLayerStyles">
+		<div id="selectVehiclesForMap">
+			Consultando datos...
+		</div>
 	</div>
 </div>
 

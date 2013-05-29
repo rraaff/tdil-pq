@@ -6,7 +6,7 @@ function contactLoJack() {
 	    errorAjax();
 	  } else {
 	  centerLayer($(window), $( "#contactLayer" ));
-	  centerLayer($(window), $( "#contactLayerContentID" ));
+	  centerLayer($(window), $( "#centradorModalesContactLayer" ));
 	}
 	});
 }

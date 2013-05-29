@@ -70,7 +70,7 @@ $.each(data, function(key, value) {
 }
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div class="loginLayerStyles">
+	<div id="centradorModalesAvatar" class="loginLayerStyles">
 		<div class="loginLayerContent">
 			<div id="xContainer"><button id="closeChangeAvatarLayer">X</button></div>
 			<h3>Cambiar avatar</h3>

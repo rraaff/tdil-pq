@@ -1,4 +1,4 @@
 function verLegales() {
 	centerLayer($(window), $( "#legalesLayer" ));
-	centerLayer($(window), $( "#legalesLayerID" ));
+	centerLayer($(window), $( "#centradorModalesLegales" ));
 }

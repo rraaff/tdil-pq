@@ -62,29 +62,29 @@ function postChangePassword(data) {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500; top:0; left:0;">
-	<div class="loginLayerStyles">
-		<div id="changePassLayerID" class="changePasswordLayerContent">
+	<div id="centradorModalesChangePass" class="loginLayerStyles">
+		<div class="changePasswordLayerContent">
 			<div id="xContainer"><button id="closechangepasswordLayer">X</button></div>
 			<h3>Cambiar clave</h3>
 			<html:form method="POST" action="/changePassword">
-					<fieldset>
-						<label class="width100">Clave actual</label>
-						<html:password name="ChangePasswordForm" property="oldPassword" />
-						<div id="err.oldPassword"></div>
-					</fieldset>
-					<fieldset>
-						<label>Nueva clave</label>
-						<html:password name="ChangePasswordForm" property="newPassword" />
-						<div id="err.newPassword"></div>
-					</fieldset>
-					<fieldset>
-						<label>Repetir clave</label>
-						<html:password name="ChangePasswordForm" property="confirmNewPassword" />
-						<div id="err.confirmPassword"></div>
-					</fieldset>
-					<fieldset>
-						<button type="submit" class="indexButtonBase">Modificar</button>
-					</fieldset>
+				<fieldset>
+					<label>Clave actual</label>
+					<html:password name="ChangePasswordForm" property="oldPassword" />
+				</fieldset>
+				<div id="err.oldPassword" class="errorText textCenter"></div>
+				<fieldset>
+					<label>Nueva clave</label>
+					<html:password name="ChangePasswordForm" property="newPassword" />
+				</fieldset>
+				<div id="err.newPassword" class="errorText textCenter"></div>
+				<fieldset>
+					<label>Repetir clave</label>
+					<html:password name="ChangePasswordForm" property="confirmNewPassword" />
+				</fieldset>
+				<div id="err.confirmPassword" class="errorText textCenter"></div>
+				<fieldset>
+					<button type="submit" class="indexButtonBase">Modificar</button>
+				</fieldset>
 			</html:form>
 		</div>
 	</div>

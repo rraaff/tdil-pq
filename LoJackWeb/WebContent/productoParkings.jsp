@@ -184,10 +184,11 @@
        	  }
        	}
 
-        function showErrorLayer(message) {
-      	  $('#showErrorLayerMessage').prop('innerHTML', message);
-      	  centerLayer($(window), $( "#showErrorLayer" ));
-        }
+		function showErrorLayer(message) {
+			$('#showErrorLayerMessage').prop('innerHTML', message);
+				centerLayer($(window), $( "#showErrorLayer" ));
+				centerLayer($(window), $( "#centradorModalesShowErrorsParking" ));
+		}
         <%@ include file="includes/centerLayerJS.jspf" %>
 
         function showError(error)
@@ -353,17 +354,19 @@
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
-			<h3>Atención</h3>
-			<div class="alert alert-error" style="margin:20px 0;">
-				<div>
-					<div id="showErrorLayerMessage">
-						...
+	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div class="modalWrapper">
+				<h3>Atención</h3>
+				<div class="alert alert-error" style="margin:20px 0;">
+					<div>
+						<div id="showErrorLayerMessage">
+							...
+						</div>
 					</div>
 				</div>
+				<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar" class="indexButtonBase"/>
 			</div>
-			<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>

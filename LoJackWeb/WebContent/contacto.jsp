@@ -81,8 +81,8 @@ function postContact(data) {
 
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div class="contactLayerStyle">
-		<div id="contactLayerContentID" class="contactLayerContent">
+	<div id="centradorModalesContactLayer" class="contactLayerStyle">
+		<div class="contactLayerContent">
 			<div id="xContainer"><button id="closecontactLayer">X</button></div>
 			<h3>Contacto</h3>
 			<div id="errcontact"></div>
