@@ -82,7 +82,7 @@ function postContact(data) {
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
 	<div class="contactLayerStyle">
-		<div class="contactLayerContent">
+		<div id="contactLayerContentID" class="contactLayerContent">
 			<div id="xContainer"><button id="closecontactLayer">X</button></div>
 			<h3>Contacto</h3>
 			<div id="errcontact"></div>
@@ -114,7 +114,7 @@ function postContact(data) {
 					<html:textarea name="ContactForm" property="content"></html:textarea>
 				</fieldset>
 				<fieldset>
-					<button id="submitregister" class="indexButtonBase">Grabar</button>
+					<button id="submitregister" class="indexButtonBase">Enviar</button>
 				</fieldset>
 			</html:form>
 		</div>

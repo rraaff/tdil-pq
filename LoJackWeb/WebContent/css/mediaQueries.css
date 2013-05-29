@@ -272,7 +272,7 @@ and (max-width : 479px) {
 		border-radius: 5px;
 		background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 		background: #fff;
-		width: 90%;
+		/*width: 90%;*/
 		margin: 0 auto;
 		padding: 10px;
 	}
@@ -325,10 +325,10 @@ and (max-width : 479px) {
 	.changePasswordLayerContent { height: 400px; }
 	
 	.legalLayerContent {
-		height: 800px;
+		/*height: 800px;*/
 	}
 	.legalLayerContentWrapper {
-		height: 660px;
+		/*height: 660px;*/
 		overflow: auto;
 	}
 }

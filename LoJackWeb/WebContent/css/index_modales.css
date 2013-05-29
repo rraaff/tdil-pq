@@ -28,7 +28,7 @@
 	border-radius: 10px;
 	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 	background: #fff;
-	width: 340px;
+	/*width: 340px;*/
 	/*margin: 80px auto;*/
 	padding: 30px 53px;
 }
@@ -37,15 +37,16 @@
 	height: auto;
 }
 .legalLayerContent {
-	height: 450px;
-	margin: 50px auto 0 auto;
-	padding: 30px;
-
+	max-width: 500px;
+}
+.legalLayerContent p {
+	line-height: 18px;
+	padding-bottom: 10px;
 }
 .legalLayerContentWrapper {
-	height: 350px;
+	/*height: 350px;
 	overflow-y:auto;
-	overflow-x:hidden;
+	overflow-x:hidden;*/
 }
 .modalStyle {
 /*	width: 450px;*/
@@ -60,8 +61,9 @@
 	width: 100%;
 }
 .contactLayerContent {
+	max-width:500px;
 	height: auto;
-	margin: 100px auto;
+/*	margin: 100px auto;*/
 }
 .scrollable {
 	height: 350px;
@@ -235,6 +237,8 @@ label {
 	margin: 5px auto;
 	float: left;
 }
+#contactLayerContentID input[type="text"],
+#contactLayerContentID textarea,
 #loginPreventContentLayer input[type="text"],
 #loginPreventContentLayer input[type="password"]  {
 	float: right;

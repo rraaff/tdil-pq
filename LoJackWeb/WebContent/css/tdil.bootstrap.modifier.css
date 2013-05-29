@@ -4,6 +4,10 @@ Pseudo ::-webkit-file-upload-button element
 Pseudo ::-webkit-slider-thumb element
 ::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); }*/
 
+div {
+	/*box-sizing: border-box;*/
+}
+
 ::-webkit-scrollbar              { /* 1 */ }
 ::-webkit-scrollbar-button       { /* 2 */ }
 ::-webkit-scrollbar-track        { /* 3 */ }
@@ -678,13 +682,6 @@ footer .nav-pills>li>a:focus {
 	padding: 0;
 
 }
-#legalLayerStyles  {}
-.legalLayerContent {
-	width: 967px;
-	margin: 0 auto;
-}
-#legal {}
-
 .alert-danger,
 .alert-error {
 	color: #b94a48;

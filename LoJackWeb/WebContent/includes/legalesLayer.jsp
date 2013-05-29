@@ -1,6 +1,6 @@
 <div id="legalesLayer" class="layerOnTop" style="display: none; z-index:1600;">
 	<div class="legalLayerStyles">
-		<div class="legalLayerContent">
+		<div id="legalesLayerID" class="legalLayerContent">
 			<h2>Legales</h2>
 			<div id="legal" class="legalLayerContentWrapper">
 				<p>La información personal para contactarnos y/o utilizar nuestros servicios, es ingresada por Ud. en forma voluntaria, incluyendo los datos relacionados con la utilización que ha hecho en el pasado de productos y servicios de la empresa. Esta información podrá ser distribuida a las sociedades asociadas y/o vinculadas a Car Security SA, según corresponda.</p>
@@ -9,11 +9,9 @@
 				<h3>Datos Personales</h3>
 				<p>La DIRECCION NACIONAL DE PROTECCION DE DATOS PERSONALES, Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que se interpongan con relación al incumplimiento de las normas sobre protección de datos personales.</p>
 				<p>Para contactar a la Dirección Nacional de Protección de Datos Personales:</p>
-				<p>Sarmiento 1118, 5º piso (C1041AAX)<br/>Tel. 4383-8510/12/13/15<br/>www.jus.gov.ar/datospersonalesinfodnpdp@jus.gov.ar</p>
+				<p>Sarmiento 1118, 5º piso (C1041AAX)<br/>Tel. 4383-8510/12/13/15<br/><a href="http://www.jus.gov.ar/datospersonales" target="_blank">www.jus.gov.ar/datospersonales</a> infodnpdp@jus.gov.ar</p>
 			</div>
-			<fieldset>
-				<div style="padding:20px 0 0 0; float:right;"><button type="button" id="closelegalesLayer" class="indexButtonBase">Cerrar</button></div>
-			</fieldset>
+			<fieldset><button type="button" id="closelegalesLayer" class="indexButtonBase">Cerrar</button></fieldset>
 		</div>
 	</div>
 </div>
