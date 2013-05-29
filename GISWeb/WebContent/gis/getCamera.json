@@ -2,7 +2,13 @@
 	{
 		"username" : "preisinger",
 		"password": "lj2013",
-		"url" : "http://ljca1.dyndns.org:8888",
+		"url" : "http://ljcam1.dyndns.org:8888",
+		"model" : "1"
+	},
+	{
+		"username" : "camara",
+		"password": "lojack",
+		"url" : "http://gomezbianchi.dvrdns.org:5001",
 		"model" : "1"
 	},
 	{
