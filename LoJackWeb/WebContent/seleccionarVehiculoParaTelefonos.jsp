@@ -20,6 +20,7 @@ function editPhones(vehicleId) {
 			  } else {
 		 		 $( "#selectVehiclesPhonesLayer" ).fadeOut();
 		  		centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
+		  		centerLayer($(window), $( "#centradorModalesEditPhones" ));
 			}
 	  });
   }
@@ -30,23 +31,17 @@ $( "#closeSelectVehicleForPhoneLayer" ).click(function() {
 
 </script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
-<div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div class="registerLayerStyles editProfileLayer">
-		<div class="registerLayerContent">
-			<div id="xContainer"><button id="closeSelectVehicleForPhoneLayer">X</button></div>
-			<h3>Teléfonos de emergencia por vehículo</h3>
-			<div id="tableStyle">
-				<fieldset class="tableHeader">
-					<label class="w1">Patente</label>
-					<label class="w2">Acciones</label>
-				</fieldset>
-				<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
-					<fieldset>
-						<label class="w1"><%=vehicle.getDescription() %></label>
-						<label class="w2"><a href="javascript:editPhones('<%=vehicle.getId()%>')" title="Ver Telefonos"><img src="images/skin_lj_rl/webApp/car/iconos_table_getPosition.png" width="24" height="24" align="absmiddle" /></a></label>
-					</fieldset>
-				<% } %>
-			</div>
-		</div>
-	</div>
+<div id="xContainer"><button id="closeSelectVehicleForPhoneLayer">X</button></div>
+<h3>Teléfonos de emergencia por vehículo</h3>
+<div id="tableStyle">
+	<fieldset class="tableHeader">
+		<label class="w1">Patente</label>
+		<label class="w2">Acciones</label>
+	</fieldset>
+	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+		<fieldset>
+			<label class="w1"><%=vehicle.getDescription() %></label>
+			<label class="w2"><a href="javascript:editPhones('<%=vehicle.getId()%>')" title="Ver Telefonos"><img src="images/skin_lj_rl/webApp/car/iconos_table_getPosition.png" width="24" height="24" align="absmiddle" /></a></label>
+		</fieldset>
+	<% } %>
 </div>

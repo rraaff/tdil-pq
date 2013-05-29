@@ -38,15 +38,9 @@
 	/*margin: 80px auto;*/
 	padding: 30px 53px;
 }
-.changePasswordLayerContent {
-	width: 466px;
-}
-#changePassLayerID form {
-	margin: 20px 0 0 0;
-}
-.registerLayerContent {
-	width: 580px;
-}
+.changePasswordLayerContent { width: 466px; }
+#changePassLayerID form { margin: 20px 0 0 0; }
+.registerLayerContent { width: 580px; }
 .legalLayerContent {
 	max-width: 500px;
 	max-height: 450px;
@@ -59,22 +53,15 @@
 	max-height: 293px;
 	overflow-y: auto;
 }
-.modalStyle {
-/*	width: 450px;*/
-	margin: 30px auto;
-	padding: 20px;
-}
+.modalStyle { padding: 20px; }
 .modalWrapper {
 	height:auto;
 	display: inline-block;
 }
-.modalLayerContent {
-	width: 100%;
-}
+.modalLayerContent { width: 100%; }
 .contactLayerContent {
 	max-width:500px;
 	height: auto;
-/*	margin: 100px auto;*/
 }
 .scrollable {
 	height: 350px;
@@ -108,12 +95,8 @@ h4,
 	font-weight: lighter;
 	padding-bottom: 20px;
 }
-#sendPanicLayer h3 {
-	padding-bottom: 5px;
-}
-#sendPanic {
-	width: 330px;
-}
+#sendPanicLayer h3 { padding-bottom: 5px; }
+#sendPanic { width: 330px; }
 .tagsOnInputs, label, fieldset span {
 	color: #999;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
@@ -133,9 +116,7 @@ fieldset input[type="checkbox"] {
 	margin: 15px 5px 0 0;
 	float: left;
 }
-fieldset select {
-	margin: 10px 0;
-}
+fieldset select { margin: 10px 0; }
 #xContainer {
 	width: 30px;
 	/*top: 5px;*/
@@ -407,5 +388,4 @@ input[type="text"].width240 { width: 240px; }
 .readOnly {
 	font-size: 14px;
 	font-weight: bold;
-	
 }

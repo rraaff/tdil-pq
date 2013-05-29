@@ -615,7 +615,7 @@ footer .btn-primary,
 	background-image: none;/*-webkit-linear-gradient(top,#08c,#04c);*/
 	background-image: none;/*-o-linear-gradient(top,#08c,#04c);*/
 	background-image: none;/*linear-gradient(to bottom,#08c,#04c);*/
-	background-image: url(../images/skin_lj_rl/buttons/punta_boton.png);
+	background-image: url(../images/skin_lj_rl/buttons/punta_boton_bg-fff.png);
 	background-repeat: no-repeat;
 	background-position: right 0px;
 	border-color: none;/* #04c #04c #002a80;

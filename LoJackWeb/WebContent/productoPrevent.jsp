@@ -185,7 +185,7 @@
 				errorAjax();
 			} else {
 				centerLayer($(window), $( "#editMaxSpeedLayer" ));
-				//centerLayer($(window), $( "#centradorModalesMaxSpeed" ));
+				centerLayer($(window), $( "#centradorModalesMaxSpeed" ));
 			}
 		});
 	}
@@ -198,7 +198,7 @@
 				errorAjax();
 			} else {
 				centerLayer($(window), $( "#editSecureZonesLayer" ));
-				//centerLayer($(window), $( "#centradorModalesSecureZones" ));
+				centerLayer($(window), $( "#centradorModalesSecureZones" ));
 			}
 		});
 	}
@@ -211,7 +211,7 @@
 				errorAjax();
 			} else {
 				centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
-				//centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
+				centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
 			}
 		});
 	}
@@ -224,7 +224,7 @@
 				errorAjax();
 			} else {
 				centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
-				//centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
+				centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
 			}
 		});
 	}
@@ -343,35 +343,35 @@ fieldset label.w3 {
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesMaxSpeed" class="defaultLayerStyles">
-		<div id="editMaxSpeed">
+		<div id="editMaxSpeed" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="editSecureZonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesSecureZones" class="defaultLayerStyles">
-		<div id="editSecureZones">
+		<div id="editSecureZones" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="selectVehiclesPhonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesVehiclesPhones" class="defaultLayerStyles">
-		<div id="selectVehiclesPhones">
+		<div id="selectVehiclesPhones" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="editVehiclesPhonesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesPrevent" class="defaultLayerStyles">
-		<div id="editVehiclesPhones">
+	<div id="centradorModalesEditPhones" class="defaultLayerStyles">
+		<div id="editVehiclesPhones" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="selectVehiclesForMapLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesVehiclesForMap" class="defaultLayerStyles">
-		<div id="selectVehiclesForMap">
+		<div id="selectVehiclesForMap" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
