@@ -197,7 +197,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 	
 	public WebsiteUser register() throws ValidationException {
-		JSONObject general = getPersonJSON();
+		JSONObject general = getPersonJSON(false);
 		try {
 			ThalamusResponse response = ThalamusClientFacade.registerPersonAndConsumer(general);
 			if (response.isBadRequest()) {
@@ -221,13 +221,15 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		}
 	}
 
-	private JSONObject getPersonJSON() {
+	private JSONObject getPersonJSON(boolean update) {
 		JSONObject general = new JSONObject();
 		JSONObject profile = new JSONObject();
 		JSONObject document = new JSONObject();
-		document.put("type", this.getDocumentType());
-		document.put("number", this.getDocument());
-		profile.put("document", document);
+		if (!update) {
+			document.put("type", this.getDocumentType());
+			document.put("number", this.getDocument());
+			profile.put("document", document);
+		}
 		if (isInUseAndEditable(PersonFieldNames.firstName)) {
 			profile.put(PersonFieldNames.firstName, this.getFirstName());
 		}
@@ -562,7 +564,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 	
 	public WebsiteUser update() throws ValidationException {
-		JSONObject general = getPersonJSON();
+		JSONObject general = getPersonJSON(true);
 		try {
 			ThalamusResponse response = ThalamusClientFacade.updatePerson(this.getToken(), general);
 			if (response.isBadRequest()) {
