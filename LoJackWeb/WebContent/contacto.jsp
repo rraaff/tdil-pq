@@ -126,9 +126,7 @@ function postContact(data) {
 			<div id="xContainer"><button class="buttonLink" id="closecontactLayerThanks">X</button></div>
 			<h3>Contacto</h3>
 			<div class="alert alert-block">Gracias por dejarnos su mensaje.</div>
-				<fieldset>
-					<div style="padding:20px 0 0 0; float:right;"><button type="button" id="buttonclosecontactLayerThanks" class="indexButtonBase">Cerrar</button></div>
-				</fieldset>
+			<fieldset><button type="button" id="buttonclosecontactLayerThanks" class="indexButtonBase">Cerrar</button></fieldset>
 		</div>
 	</div>
 </div>

@@ -248,7 +248,7 @@
 	}
 
 	function turnOnLight(idEntidad, idLuz) {
-		alert('turn on');
+		//alert('turn on');
 		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",

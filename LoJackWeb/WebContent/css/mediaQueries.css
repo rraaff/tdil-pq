@@ -265,7 +265,8 @@ and (max-width : 479px) {
 	.loginLayerContent,
 	.registerLayerContent,
 	.legalLayerContent,
-	.modalStyle {
+	.modalStyle,
+	.changePasswordLayerContent {
 		border: 5px solid rgb(0, 0, 0);
 		border: 5px solid rgba(0, 0, 0, .8);
 		-webkit-background-clip: padding-box; /* for Safari */
@@ -276,6 +277,7 @@ and (max-width : 479px) {
 		margin: 0 auto;
 		padding: 10px;
 	}
+	#registerLayer fieldset { width: auto; }
 	#loginLayer input:not([type]),
 	#loginLayer input[type="color"],
 	#loginLayer input[type="email"],
@@ -295,18 +297,21 @@ and (max-width : 479px) {
 	#registerLayer input[type="text"],
 	#registerLayer input[type="password"] {
 		width: 90%;
+		margin-right:10px;
+		float:right;
 	}
 	#loginLayer select,
 	#registerLayer select {
 		width: 95%;
+		margin-right:10px;
+		float:right;
 	}
 	#registerLayer label { line-height: 25px; }
 	#registerLayer label.sexLabel { width:100%; }
 	.registerLayerContent { height: auto; }
-	.defaultLayerContent {
-		width: auto;
-		/*margin: 30px auto 0 auto;*/
-	}
+	.defaultLayerContent { width: auto; }
+	.changePasswordLayerContent,
+	.registerLayerContent { width: auto; }
 	.scrollable {
 		height: 200px;
 		margin-top:30px;
@@ -322,15 +327,9 @@ and (max-width : 479px) {
 	}
 	span.userName { float: right; }
 	span.userSaludation { float: left; }
-	.changePasswordLayerContent { height: 400px; }
-	
-	.legalLayerContent {
-		/*height: 800px;*/
-	}
-	.legalLayerContentWrapper {
-		/*height: 660px;*/
-		overflow: auto;
-	}
+	.changePasswordLayerContent { }
+	.legalLayerContent {}
+	.legalLayerContentWrapper { overflow: auto; }
 }
 @media only screen 
 and (max-height : 492px) {

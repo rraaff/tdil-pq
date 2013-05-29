@@ -1,6 +1,10 @@
 function centerLayer(objWin, objLayer) {
+	var top = '0px';
+	var left = '0px';
+	//alert('top: ' + top + ' - Left: ' + left);
 	var top = (objWin.height() / 2) - (objLayer.height() / 2);
 	var left = (objWin.width() / 2) - (objLayer.width() / 2);
+	alert('WH: ' + objWin.height() + ' - WW' + objWin.width() + ' || LH: ' + objLayer.height() + ' - LW' + objLayer.width());
 	objLayer.css({
 		position: 'absolute',
 		top: top + 'px',

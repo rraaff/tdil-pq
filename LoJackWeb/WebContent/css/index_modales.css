@@ -21,7 +21,8 @@
 .registerLayerContent,
 .legalLayerContent,
 .modalStyle,
-.contactLayerContent {
+.contactLayerContent,
+.changePasswordLayerContent {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -32,9 +33,14 @@
 	/*margin: 80px auto;*/
 	padding: 30px 53px;
 }
+.changePasswordLayerContent {
+	width: 466px;
+}
+#changePassLayerID form {
+	margin: 20px 0 0 0;
+}
 .registerLayerContent {
-	width: 450px;
-	height: auto;
+	width: 580px;
 }
 .legalLayerContent {
 	max-width: 500px;
@@ -240,7 +246,8 @@ label {
 #contactLayerContentID input[type="text"],
 #contactLayerContentID textarea,
 #loginPreventContentLayer input[type="text"],
-#loginPreventContentLayer input[type="password"]  {
+#loginPreventContentLayer input[type="password"],
+#changePassLayerID input[type="password"] {
 	float: right;
 }
 #changePassLayer textarea {
@@ -271,6 +278,7 @@ label {
 	margin: 5px auto;
 	float: left;
 }
+#registerLayer fieldset { width: 460px; }
 #registerLayer select {
 	border-radius: 5px;
 	background: #eaeaea;

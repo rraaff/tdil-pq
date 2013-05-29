@@ -63,7 +63,7 @@ function postRegister(data) {
 </script>
 <div id="registerLayer" class="layerOnTop" style="z-index: 1500; top:0px; left:0px;">
 	<div class="registerLayerStyles editProfileLayer">
-		<div class="registerLayerContent">
+		<div id="updatePersonLayerID" class="registerLayerContent">
 			<div id="xContainer"><button id="closeregisterLayer">X</button></div>
 			<h3>Modificar mis datos</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
@@ -180,10 +180,7 @@ function postRegister(data) {
 						</fieldset>
 					<% } %>
 				</div>
-				<fieldset style="padding:20px 0;">
-					<input type="submit" id="submitregister" value="Guardar" class="indexButtonBase">
-					<!-- input type="button" id="closeregisterLayer" value="Cerrar" -->
-				</fieldset>
+				<fieldset><input type="submit" id="submitregister" value="Guardar" class="indexButtonBase"></fieldset>
 			</html:form>
 		</div>
 	</div>
