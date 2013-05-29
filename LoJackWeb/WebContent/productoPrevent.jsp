@@ -177,61 +177,59 @@
 	         <% } %>
         });
 
-    	function editMaxSpeed() {
-    		<%@ include file="includes/blockUI.jspf" %>
-  		  $('#editMaxSpeed').load('goToVehiculesSpeedLimits.do', function(response, status, xhr) {
-  		  	<%@ include file="includes/unblockUI.jspf" %>
-  		  if (status == "error") {
-  		    errorAjax();
-  		  } else {
-  				centerLayer($(window), $( "#editMaxSpeedLayer" ));
-  				//centerLayer($(window), $( "#centradorModalesMaxSpeed" ));
-  			}
-  		  });
-  	  }
+	function editMaxSpeed() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#editMaxSpeed').load('goToVehiculesSpeedLimits.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#editMaxSpeedLayer" ));
+				//centerLayer($(window), $( "#centradorModalesMaxSpeed" ));
+			}
+		});
+	}
 
-   	function editSecureZones() {
-   		<%@ include file="includes/blockUI.jspf" %>
-   		  $('#editSecureZones').load('goToVehiculesSecureZones.do', function(response, status, xhr) {
-   		  	<%@ include file="includes/unblockUI.jspf" %>
-   		  if (status == "error") {
-   		    errorAjax();
-   		  } else {
-   				centerLayer($(window), $( "#editSecureZonesLayer" ));
-   				//centerLayer($(window), $( "#centradorModalesSecureZones" ));
-   			}
-   		  });
-   	  }
-    	
+	function editSecureZones() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#editSecureZones').load('goToVehiculesSecureZones.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#editSecureZonesLayer" ));
+				//centerLayer($(window), $( "#centradorModalesSecureZones" ));
+			}
+		});
+	}
 
-       function selectVehiclesPhones() {
-    	   <%@ include file="includes/blockUI.jspf" %>
-   		  $('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function(response, status, xhr) {
-   		  	<%@ include file="includes/unblockUI.jspf" %>
-   		  if (status == "error") {
-   		    errorAjax();
-   		  } else {
-   				centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
-   				//centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
-   			}
-   		  });
-   	   }
+	function selectVehiclesPhones() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
+				//centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
+			}
+		});
+	}
 
-   	   function selectVehiclesForMap() {
-   		<%@ include file="includes/blockUI.jspf" %>
-   		 $('#selectVehiclesForMap').load('goToVehiculesForMap.do', function(response, status, xhr) {
-   		  	<%@ include file="includes/unblockUI.jspf" %>
-   		  if (status == "error") {
-   		    errorAjax();
-   		  } else {
- 				centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
- 				//centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
- 			}
-   		 });
-   	   }
-    	
+	function selectVehiclesForMap() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#selectVehiclesForMap').load('goToVehiculesForMap.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#selectVehiclesForMapLayer" ));
+				//centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
+			}
+		});
+	}
 
-   	<%@ include file="includes/centerLayerJS.jspf" %>
+<%@ include file="includes/centerLayerJS.jspf" %>
 </script>
 
 <style type="text/css">
