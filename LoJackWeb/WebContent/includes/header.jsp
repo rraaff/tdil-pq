@@ -1,4 +1,4 @@
-<header class="menuInternas" style="display:inline-block;">
+<header class="menuInternas">
 	<div class="userLoggedThanlamusMenu">
 		<ul class="correctNav">
 			<li class="avatarLi"><a href="javascript:changeAvatar();"><% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>

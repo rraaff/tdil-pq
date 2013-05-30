@@ -48,21 +48,20 @@ $(function() {
 
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
-
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<div class="col1_170">
-			<div class="tab"></div>
+		<div id="productHomeMenu" class="col1_170">
+			<div id="tab"></div>
 			<ul class="tabServices">
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div class="col1_798">
+		<div id="productHomeContent" class="col1_798">
 			Contenido sin definir
 		</div>
 	</div>

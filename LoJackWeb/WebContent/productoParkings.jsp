@@ -306,25 +306,15 @@
 <style type="text/css">
 @media only screen and (max-width: 968px) {
 	body { background: #e51b24; overflow: hidden; }
-	header { visibility: hidden; }
-	#productsMenu { height:auto; top:0; z-index: 2; }
-	#productsMenu .userLoggedThalamusMenu {  }
-	.correctNav { width: 100%; height: auto; }
-	#productsMenu ul li { font-size: 16px; }
-	#productsMenu ul li a { padding: 0; }
-	#productsMenu ul li.logoContainer { width:100%; text-align: center; }
-	#productsMenu ul li a.logo { width:100%; height:43px; margin: 8px 0 17px 0; }
-	#productsMenu ul li a img { width:auto; height:43px; }
-	#productsMenu ul li.toRight { line-height: 38px; width:25%; text-align:center; float: right; }
-	#productsMenu ul li.toRight:hover, #productsMenu ul li.toRight:focus { background:#f05224; }
+	#productsMenu ul li.logoContainer { line-height: 14px; }
 	#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
 	#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
 	footer { visibility: hidden; }
 	.pageWrapper { width: 100%; }
-	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align: center; display: inline-block; overflow: hidden; left: 0px; top: 0px; position: fixed; z-index:1; }
+	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align:center; display:inline-block; overflow:hidden; left:0px; top:83px; position:absolute; z-index:1; }
 	.smallmap, .pageWrapper { width: 100%; height: 100%; }
 	#zoomSection { width: 100%; margin: 0; }
-	#zoomSection .zoomControls { top: 50%; left: 20px; margin: 0 auto; position: fixed; }
+	#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
 }
 </style>
 </head>

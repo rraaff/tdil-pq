@@ -78,6 +78,7 @@ header ul li a:focus  {
 }
 header.menuInternas {
 	background: #000;
+	display:inline-block;
 }
 header.menuInternas li {
 	width: auto;
@@ -183,43 +184,51 @@ fieldset.aligner label {
 	top:133px;
 	position: absolute;
 }
-.pageWrapper, footer .pageWrapper {
-	width: 968px;
-	margin: 0 auto;
-}
-/* PRODUCTO:HOME */
-#content .col1_170 {
-	width: 170px !important;
-	float: left;
-	overflow: hidden;
-}
-#content .col1_794,
-#content .col1_798 {
-	background: #f0ece4;
-	width: 794px;
-	height: 423px;
-	padding: 30px 40px;
-	overflow: auto;
-	float: left;
-}
-#content .col1_798 { width: 796px; }
-#content .alarmasBG, #content .lucesBG, #content .camarasBG {
+.alarmasBG,
+.lucesBG,
+.camarasBG {
 	background: url(../images/skin_lj_rl/backs/productHome_alarm.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	background-color: #f0ece4;
 }
-#content .lucesBG {
+.lucesBG {
 	background: url(../images/skin_lj_rl/backs/productHome_light.png);
 	background-color: #f0ece4;
 }
-#content .camarasBG {
+.camarasBG {
 	background: url(../images/skin_lj_rl/backs/productHome_camera.png);
 	background-color: #f0ece4;
 	width: 796px;
 	height: 423px;
 	padding: 40px 53px 0 48px;
 }
+.pageWrapper,
+footer .pageWrapper {
+	/*border: dotted 2px black;*/
+	width: 968px;
+	margin: 0 auto;
+	display: inline-block;
+}
+footer .pageWrapper {
+	display:block;
+}
+/* PRODUCTO:HOME */
+#productHomeMenu.col1_170 {
+	width: 170px;
+	float: left;
+}
+#productHomeContent.col1_794,
+#productHomeContent.col1_798 {
+	background-color: #f0ece4;
+	width: 794px;
+	height: 423px;
+	padding: 30px 40px;
+	overflow: auto;
+	float: left;
+}
+#productHomeContent.col1_798 { width: 796px; }
+
 #cameraTitle {
 	background-color: #fff;
 	background-image: url(../images/skin_lj_rl/buttons/toggle_arrow.png);
@@ -259,6 +268,8 @@ fieldset.aligner label {
 	margin: 0;
 	padding: 0 0 0 40px;
 }
+#pictureContainer { width:561px; height:auto; margin: 0 auto; }
+.controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1600; }
 #agendaWrapper h1 {
 	padding: 0;
 }
@@ -266,12 +277,9 @@ fieldset.aligner label {
 	color:#f05224;
 	font-weight: lighter;
 }
-#agendaWrapper label {
-	width: 40px;
-}
-#agendaWrapper label.days {
-	width: 10px;
-}
+#agendaWrapper label { width: 40px; }
+#agendaWrapper label.radiosFreq { width:24%; padding:0; margin:0; }
+#agendaWrapper label.days { width: 14%; padding:0; margin:0; }
 #agendaWrapper input[type="text"] {
 	border: 0;
 	border-radius: 5px;
@@ -311,7 +319,7 @@ fieldset.aligner label {
 #linksAside span {
 	padding: 5px 0;
 }
-#content .tab {
+#tab {
 	background: url(../images/skin_lj_rl/tabs/servicion.png);
 	background-position: 0 0;
 	background-repeat:no-repeat;
@@ -319,15 +327,15 @@ fieldset.aligner label {
 	height: 32px;
 	float: left;
 }
-#content ul.tabServices {
+#productHomeMenu ul.tabServices {
 /*	width: 170px;
 	float: left;*/
 }
-#content ul li {
+#productHomeMenu ul li {
 	/*float: right;*/
 	list-style: none;
 }
-#content ul li a {
+#productHomeMenu ul li a {
 	color: #641819;
 	font-weight: normal;
 	text-transform: uppercase;
@@ -337,32 +345,32 @@ fieldset.aligner label {
 	margin: 0;
 	float: left;
 }
-#content ul li a:hover,
-#content ul li a:focus {
+#productHomeMenu ul li a:hover,
+#productHomeMenu ul li a:focus {
 	background-color: #f0ece4;
 }
-#content li.tabAlarms a {
+#productHomeMenu li.tabAlarms a {
 	background: url(../images/skin_lj_rl/buttons/alarms_big.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	height: 41px;
 	padding: 99px 0px 0px 0px;
 }
-#content li.tabLights a {
+#productHomeMenu li.tabLights a {
 	background: url(../images/skin_lj_rl/buttons/luces_big.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	height: 37px;
 	padding: 94px 0px 0px 0px;
 }
-#content li.tabCameras a {
+#productHomeMenu li.tabCameras a {
 	background: url(../images/skin_lj_rl/buttons/cameras_big.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	height: 40px;
 	padding: 80px 0px 0px 0px;
 }
-#content li.active { background-color: #f0ece4; float: left; }
+#productHomeMenu li.active { background-color: #f0ece4; float: left; }
 /* Accordion modifiers */
 #accordion,
 #agendaWrapper {

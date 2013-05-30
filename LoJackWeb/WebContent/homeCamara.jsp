@@ -96,11 +96,20 @@ function right() {
 	}
 });
 }
-	</script>
+</script>
 <style type="text/css">
 #productsMenu ul li.tabHome {
 	background:#f05224;
 }
+</style>
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<style type="text/css">
+@media only screen and (max-width: 350px) {
+	#productHomeContent.col1_798 { padding: 0; }
+}
+@media only screen and (max-width: 968px) {
+	#productHomeMenu.col1_170 { position: relative; }
+} 
 </style>
 </head>
 <body>
@@ -108,28 +117,29 @@ function right() {
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<div class="col1_170">
-			<div class="tab"></div>
+		<div id="productHomeMenu" class="col1_170">
+			<div id="tab"></div>
 			<ul class="tabServices">
 				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
 				<li class="tabLights" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras active"><a href="./goToHomeCamera.do">Mi Camara</a></li>
-			<ul>
+			</ul>
 		</div>
-		<div class="col1_794 camarasBG">
+		<div id="productHomeContent" class="col1_798 camarasBG">
 			<div id="cameraTitle">
-				<h1>Mi C&aacute;mara</h1>
+				<h1>Mi Cámara</h1>
 			</div>
 			<div id="appletHolder">
 				<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
 				<% if (cameraForm.isUseApplet()) { %>
 					<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
+						<param name="wmode" value="transparent" />
 						<param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
 						<PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
 						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201305181729.jar">
 							<comment>
 								<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-									ARCHIVE="cameraviewer-b201305181729.jar" width="561" height="297">
+									ARCHIVE="cameraviewer-b201305181729.jar" width="100%" height="100%" wmode="transparent">
 									<noembed>
 										No Java Support.
 									</noembed>
@@ -139,12 +149,14 @@ function right() {
 
 				<% } else { %>
 					
-					<img id="cameraImg" src="./viewCamera" width="561" height="297"><br>
-					<div style="background:#fff; width: 561px; margin: 0 auto; position: fixed; z-index: 1600;">
-						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
-						<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
-						<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
-						<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
+					<div id="pictureContainer">
+						<img id="cameraImg" src="./viewCamera">
+						<div class="controlsBasicView">
+							<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
+							<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
+							<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
+							<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
+						</div>
 					</div>
 					<!-- a href="./toggleCameraView.do">Vista Avanzada</a -->
 					<script>

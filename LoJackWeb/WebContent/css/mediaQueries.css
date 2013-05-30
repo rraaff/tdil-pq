@@ -357,6 +357,69 @@ and (max-height : 492px) {
 		left:0;
 	}
 }
+@media only screen and (max-width: 968px) {
+	body { background: #531a1a; }
+	header, header.menuInternas { display: none; } 
+	#productsMenu { height:83px; top:0; z-index: 2; position: relative; }
+	#productsMenu .userLoggedThalamusMenu {  }
+	.correctNav { width: 100%; height: auto; }
+	#productsMenu ul li { font-size: 16px; line-height: 43px; }
+	#productsMenu ul li a { padding: 0; }
+	#productsMenu ul li.logoContainer { width:100%; text-align: center; }
+	#productsMenu ul li a.logo { width:100%; height: auto; }
+	#productsMenu ul li a img { width:auto; height:43px; }
+	#productsMenu ul li.toRight { line-height: 38px; width:25%; text-align:center; float: right; }
+	#productsMenu ul li.toRight:hover, #productsMenu ul li.toRight:focus { background:#f05224; }
+	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align: center; display: inline-block; overflow: auto; top:0; left:0; position: relative; z-index:1; }
+	.pageWrapper { width: 100%; height: 100%; }
+	#productHomeMenu { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; z-index: 3000; }
+	#productHomeMenu.col1_170 { background:#f3f1ee; width: 100%; }
+	#productHomeMenu.tabServices {  }
+	#productHomeMenu ul li { width:33%; list-style: none; float:left; }
+	#productHomeMenu ul li a { color:#531a1a; width:100%; height:auto; }
+	#productHomeMenu li.tabAlarms a, #productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { background-image:none; height:auto; padding:5px 0; }
+	#productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { border-left:solid 1px #fff; }
+	/*.camarasBG,.lucesBG, .camarasBG { background-image:none; background:transparent; width: auto; height: auto; padding: 0px; }*/
+	#productHomeContent.col1_798 { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#tab { display: none;}
+	footer { display: none; }
+	
+	/**/
+	body { margin:0; padding:0; overflow-x: hidden; }
+	#accordion, #agendaWrapper { width:100%; margin:0; margin: 0 0 5px 0; }
+	#accordion .editable { font-size:80%; min-width:39%; }
+	#switchBoard { padding: 2px; }
+	#accordion .portaTitleAndSwitch { width:90%; padding-bottom: 5px; }
+	#accordion .switchContainer { float: left; }
+	#switchBoard { padding:0; }
+	#switchBoard span { font-size: 12px; }
+	#switchBoard .notifyme, #switchBoard .linkToAgenda { font-size: 12px; line-height: 16px; }
+	.logLayerContent { width: 100%; }
+	
+	#agendaWrapper h1 { font-size: 100%; line-height: normal; padding: 10px 0 10px 0; }
+	form { padding-top: 5px; }
+	#agendaWrapper label { min-width:60px; line-height:25px; padding:0 0 0 10px; margin: 10px 10px 10px 0; font-size: 80%; cursor: default; }
+	#agendaWrapper input[type="text"] { line-height:25px; text-transform: none; width: auto; height: 25px; margin: 10px 0; padding: 0; }
+	fieldset input[type="radio"], fieldset input[type="checkbox"] { line-height: 25px; margin: 5px 5px 0 0; }
+	#agendaWrapper table { color:#000; font-size:10px; width:100%; }
+	#cameraTitle { width:100% }
+	#appletHolder { width:100%; height: 100%; }
+	#linksAside { display: none; }
+	embed, object { width:100%; }
+	#cameraTitle h1 { font-size:100%; line-height:normal; padding:20px 0 0 40px; }
+	#pictureContainer { width:100%; height:auto; margin: 0 auto; }
+	.controlsBasicView { width:100%; background:#fff; margin: 0 auto; position: relative; top:0; }
+}
+@media only screen and (max-width: 350px) {
+	#productsMenu ul li a {
+		font-size: 60%;
+	}
+	#productHomeMenu ul li a {
+		font-size: 60%;
+	}
+	#agendaWrapper label.radiosFreq { width:100%; }
+	#agendaWrapper label.days { width:100%; margin:0 0 0 20px; float:left; }
+}
 /* Smartphones (portrait) ----------- */
 @media only screen 
 and (max-width : 320px) {

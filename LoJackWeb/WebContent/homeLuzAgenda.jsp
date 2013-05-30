@@ -93,158 +93,152 @@
 	background:#f05224;
 }
 </style>
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
-		<div class="col1_170">
-			<div class="tab"></div>
+		<div id="productHomeMenu" class="col1_170">
+			<div id="tab"></div>
 			<ul class="tabServices">
-				<li class="tabAlarms"><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
-				<li class="tabLights active"><a href="./goToHomeLights.do">Mis Luces</a></li>
+				<li class="tabAlarms" ><a href="./goToHomeAlarms.do">Mis Alarmas</a></li>
+				<li class="tabLights active" ><a href="./goToHomeLights.do">Mis Luces</a></li>
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div class="col1_794 alarmasBG">
+		<div id="productHomeContent" class="col1_798 alarmasBG">
 			<div id="agendaWrapper">
-				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>
-				Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%></h1>
+				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%></h1>
 				<html:form method="POST" action="/saveLightAgenda">
-						<fieldset>
-							<label>Nombre</label>
-							<html:text name="LightAgendaForm" property="description" styleClass="width390" />
-						</fieldset>
-						<fieldset>
-							<label>Desde</label>
-							<div style="float:left;"><html:text name="LightAgendaForm" property="from" /></div>
-							<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
-							<label>Hasta</label>
-							<div style="float:left;"><html:text name="LightAgendaForm" property="to" /></div>
-							<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
-						</fieldset>
-						<h4>Horarios</h4>
-						<fieldset>
-							<label>Desde</label>
-							<div style="float:left;">
-								<html:select name="LightAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_HOURS) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>hs y</label>
-							<div style="float:left;">
-								<html:select name="LightAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_MINUTES) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>min y</label>
-							<div style="float:left;">
-								<html:select name="LightAgendaForm" property="activateTimeSeconds" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_SECONDS) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>seg.</label>
-						</fieldset>
-						<fieldset>
-							<label>Hasta</label>
-							<div style="float:left;">
-								<html:select name="LightAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_HOURS) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>hs y</label>
-							<div style="float:left;">
-								<html:select name="LightAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_MINUTES) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>min y</label>
-							<div style="float:left;"> 
-								<html:select name="LightAgendaForm" property="deactivateTimeSeconds" styleClass="width80 mRight20">
-									<% for (String hour : DateUtils.ALL_SECONDS) { %>
-										<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
-									<% } %>
-								</html:select>
-							</div>
-							<label>seg.</label>
-						</fieldset>
-						<h4>Frecuencia</h4>
-						<fieldset>
-							<label style="width:130px;"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
-							<label style="width:130px;"><html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias</label>
-							<label style="width:130px;"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
-						</fieldset>
-						<fieldset style="border-bottom:dotted 1px #f0ece4;">
-							<label style="width:130px;"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="monday"/></div>
-							<label class="days">Lu</label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="tuesday"/></div>
-							<label class="days">Ma</label> 
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="wednesday"/></div>
-							<label class="days">Mi</label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="thursday"/></div>
-							<label class="days">Ju</label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="friday"/></div>
-							<label class="days">Vi</label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="saturday"/></div>
-							<label class="days">Sa</label>
-							<div style="float:left;"><html:checkbox name="LightAgendaForm" property="sunday"/></div>
-							<label class="days">Do</label>
-						</fieldset>
-						<fieldset>
-							<logic:equal name="LightAgendaForm" property="edition" value="true">
-								<input type="button" onclick="save()" value="Grabar" class="indexButtonBase">
-							</logic:equal>
-							<logic:equal name="LightAgendaForm" property="edition" value="false">
-								<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
-							</logic:equal>
-							<!--  <input type="button" id="" onclick="this.form.action='./resetLightAgenda.do';this.form.submit();" value="Reset">-->
-						</fieldset>
+					<fieldset>
+						<label>Nombre</label>
+						<html:text name="LightAgendaForm" property="description" styleClass="width390" />
+					</fieldset>
+					<fieldset>
+						<label>Desde</label>
+						<div style="float:left;"><html:text name="LightAgendaForm" property="from" /></div>
+						<%=LoJackErrorFormatter.getErrorFrom(request, "from.err")%>
+						<label>Hasta</label>
+						<div style="float:left;"><html:text name="LightAgendaForm" property="to" /></div>
+						<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
+					</fieldset>
+					<h4>Horarios</h4>
+					<fieldset>
+						<label>Desde</label>
+						<div style="float:left;">
+							<html:select name="LightAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_HOURS) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>hs y</label>
+						<div style="float:left;">
+							<html:select name="LightAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_MINUTES) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>min y</label>
+						<div style="float:left;">
+							<html:select name="LightAgendaForm" property="activateTimeSeconds" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_SECONDS) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>seg.</label>
+					</fieldset>
+					<fieldset>
+						<label>Hasta</label>
+						<div style="float:left;">
+							<html:select name="LightAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_HOURS) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>hs y</label>
+						<div style="float:left;">
+							<html:select name="LightAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_MINUTES) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>min y</label>
+						<div style="float:left;"> 
+							<html:select name="LightAgendaForm" property="deactivateTimeSeconds" styleClass="width80 mRight20">
+								<% for (String hour : DateUtils.ALL_SECONDS) { %>
+									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
+								<% } %>
+							</html:select>
+						</div>
+						<label>seg.</label>
+					</fieldset>
+					<h4>Frecuencia</h4>
+					<fieldset style="border-bottom:dotted 1px #f0ece4;">
+						<label class="radiosFreq"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
+						<label class="radiosFreq"><html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias</label>
+						<label class="radiosFreq"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
+						<label class="radiosFreq"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
+					</fieldset>
+					<fieldset>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="monday"/>Lu</label>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="tuesday"/>Ma</label> 
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="wednesday"/>Mi</label>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="thursday"/>Ju</label>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="friday"/>Vi</label>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="saturday"/>Sa</label>
+						<label class="days"><html:checkbox name="AlarmAgendaForm" property="sunday"/>Do</label>
+					</fieldset>
+					<fieldset>
+						<logic:equal name="LightAgendaForm" property="edition" value="true">
+							<input type="button" onclick="save()" value="Grabar" class="indexButtonBase">
+						</logic:equal>
+						<logic:equal name="LightAgendaForm" property="edition" value="false">
+							<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
+						</logic:equal>
+					</fieldset>
 				</html:form>
-					<fieldset>
-						<%
-						java.util.List source = lightAgendaForm.getLightAgendas();
-						com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
-						request.setAttribute( "lightAgendas",  paginated);
-						%>
-					</fieldset>
-					<fieldset>
-						<display:table name="lightAgendas" sort="external" pagesize="10" id="lightAgendas" requestURI="./homeLuzAgenda.jsp">
-							<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable" property="description"></display:column>
-							<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable" property="from"></display:column>
-							<display:column title="Hasta" sortable="true" sortName="Hasta" headerClass="sortable" property="activateTime"></display:column>
-							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable" property="typeDescription"></display:column>
-							<display:column title="Activar" sortable="true" sortName="Acivar" headerClass="sortable" property="activateTime"></display:column>
-							<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
-							<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
-							<display:column title="Acciones" headerClass="sortable">
-								<a class="nonelyLink" href="./editLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
-									<a class="nonelyLink" href="./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
-										<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
-											Desactivar
-										<% } else { %>
-											Activar
-										<% } %>
-									</a>
-								</display:column>
-						</display:table>
-						<%=DisplayTagParamHelper.getFields(request)%>
-					</fieldset>
+				<fieldset>
+					<%
+					java.util.List source = lightAgendaForm.getLightAgendas();
+					com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+					request.setAttribute( "lightAgendas",  paginated);
+					%>
+				</fieldset>
+				<fieldset>
+					<display:table name="lightAgendas" sort="external" pagesize="10" id="lightAgendas" requestURI="./homeLuzAgenda.jsp">
+						<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable" property="description"></display:column>
+						<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable" property="from"></display:column>
+						<display:column title="Hasta" sortable="true" sortName="Hasta" headerClass="sortable" property="activateTime"></display:column>
+						<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable" property="typeDescription"></display:column>
+						<display:column title="Activar" sortable="true" sortName="Acivar" headerClass="sortable" property="activateTime"></display:column>
+						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
+						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
+						<display:column title="Acciones" headerClass="sortable">
+							<a class="nonelyLink" href="./editLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
+							<a class="nonelyLink" href="./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
+								<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
+									Desactivar
+								<% } else { %>
+									Activar
+								<% } %>
+							</a>
+						</display:column>
+					</display:table>
+					<%=DisplayTagParamHelper.getFields(request)%>
+				</fieldset>
 			</div>
 		</div>
 	</div>
 </section>
+<%@ include file="includes/footerProductoHome.jsp" %>
+
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
