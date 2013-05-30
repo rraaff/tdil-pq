@@ -261,7 +261,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				}
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.street2)) {
-				address.put(PersonFieldNames.street2, this.getStreet2());
+				address.put(PersonFieldNames.street2, StringUtils.nullValueOf(this.getStreet2()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.street1)) {
 				address.put(PersonFieldNames.street1, StringUtils.nullValueOf(this.getStreet1()));

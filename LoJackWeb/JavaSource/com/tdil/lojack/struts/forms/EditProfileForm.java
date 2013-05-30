@@ -107,6 +107,10 @@ public class EditProfileForm extends TransactionalValidationForm implements
 			}
 			idAvatar = BlobHelper.insertBlob(this.getAvatar());
 			extAvatar = avatar.getExtension();
+		} else {
+			WebsiteUser websiteUser = result.get(0);
+			idAvatar = websiteUser.getIdAvatar();
+			extAvatar = websiteUser.getExtAvatar();
 		}
 		
 		if (result == null || result.isEmpty()) {
