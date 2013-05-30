@@ -15,7 +15,7 @@
 .legalLayerStyles,
 .contactLayerStyle,
 .editProfileLayer {
-	border: dotted 1px red;
+	border: dotted 1px blue;
 	width: auto;
 	height: auto;
 	position: relative;

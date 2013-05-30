@@ -312,7 +312,7 @@ function postResetPassword(data) {
 	$( "#forgotPasswordLayer" ).fadeOut();
 	if (data.result == 'OK') {
 		centerLayer($(window), $( "#forgotPasswordEmailSentLayer" ));
-		centerLayer($(window), $( "#centradorModalesforgotPass" ));
+		centerLayer($(window), $( "#centradorModalesFPES" ));
 	} else {
 		if (data.result == '404') {
 			centerLayer($(window), $( "#forgotPasswordUserNotFoundLayer" ));
@@ -654,7 +654,7 @@ function parkingsNotLogged() {
 </div>
 <!-- Forgot password e-mail sent -->
 <div id="forgotPasswordEmailSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModales" class="defaultLayerStyles">
+	<div id="centradorModalesFPES" class="defaultLayerStyles">
 		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordEmailSentLayer">X</button></div>
 			<h3>Atención</h3>

@@ -51,4 +51,5 @@
 			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1();" title="Más sobre PETS"><img src="images/null.gif" /></a></div>
 		<%} %>
 	</div>
+	<div id="centralRuedita">ingresar</div>
 </div>

@@ -166,3 +166,20 @@
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
+#centralRuedita {
+	color: #ee5222;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	background: url(../images/skin_lj_rl/buttons/wheel_central.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 145px;
+	padding-top: 60px;
+	margin: 0 auto;
+	z-index: 1008;
+	position: absolute;
+	top: 107px;
+}
