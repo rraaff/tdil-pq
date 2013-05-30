@@ -408,87 +408,83 @@ textarea {
 			</ul>
 		</div>
 		<div class="col1_794 lucesBG">
-				<% for (Light light : lightsForm.getLights()) { %>
-					<div id="accordion">
-						<div class="titleContainer">
-							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')"></div>
-							<div class="portaTitleAndSwitch">
-								<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
-								<div class="switchContainer">
-									<!-- div class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
-									    <input type="checkbox">
-									</div-->
-									<% if (AsyncJobUtils.displayRandom(light, websiteUser)) { %>
+			<% for (Light light : lightsForm.getLights()) { %>
+				<div id="accordion">
+					<div class="titleContainer">
+						<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="javascript:toggle('<%=light.getIdEntidad()%>', '<%=light.getIdLuz()%>')"></div>
+						<div class="portaTitleAndSwitch">
+							<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
+							<div class="switchContainer correctSwitchContainer">
+								<% if (AsyncJobUtils.displayRandom(light, websiteUser)) { %>
+									<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+										<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+									<% } else { %>
+										<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
+									<% } %>
+									<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
+									<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
+									<span class="fakeButtons mron hasButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR OFF</b></span>
+								<% } else  { %>
+									<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
 										<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 										<% } else { %>
 											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 										<% } %>
-										<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
-										<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-										<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR OFF</b></span>
+										<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
+										<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+										<span class="fakeButtons on disableButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">MR ON</span>
 									<% } else  { %>
-										<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
+										<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 											<% } else { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 											<% } %>
-											<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
-											<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-											<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">MR ON</span>
+											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+											<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
+											<span class="fakeButtons on hasButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
 										<% } else  { %>
-											<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
-												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-												<% } else { %>
-													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-												<% } %>
-												<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
-												<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-												<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
-											<% } else  { %>
-												<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
-													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
-												<% } else { %>
-													<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
-												<% } %>
-												<span class="fakeButtons" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
-												<span class="fakeButtons" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</span>
-												<span class="fakeButtons" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
+											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
+												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
+											<% } else { %>
+												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 											<% } %>
+											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+											<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+											<span class="fakeButtons on hasButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>MR ON</b></span>
 										<% } %>
 									<% } %>
-								</div>
-								<% if (light.isInRandomMode()) { %>
+								<% } %>
+							</div>
+							<% if (light.isInRandomMode()) { %>
+								<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+							<% } else  { %>
+								<% if (light.isOn()) { %>
 									<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 								<% } else  { %>
-									<% if (light.isOn()) { %>
+									<% if (light.isOff()) { %>
 										<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 									<% } else  { %>
-										<% if (light.isOff()) { %>
-											<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-										<% } else  { %>
-											<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
-										<% } %>
+										<div class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 									<% } %>
 								<% } %>
-							</div>
-						</div>
-						<div id="switchBoard">
-							<div id="cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
-								<% if (light.hasChangeData()) { %>
-									<span class="lastChange">Último cambio: <%=light.getLastChangeDate() %></span>
-									<span class="lastAction"><%=light.getLastChangeAction() %> por: <%=light.getLastChangeUser() %></span>
-									<span class="changesLog"><a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a></span>
-									<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
-									<span class="linkToAgenda"><a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
-								<% } %>
-							</div>
+							<% } %>
 						</div>
 					</div>
-				<% } %>
-			</div>
+					<div id="switchBoard">
+						<div id="cont-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+							<% if (light.hasChangeData()) { %>
+								<span class="lastChange">Último cambio: <%=light.getLastChangeDate() %></span>
+								<span class="lastAction"><%=light.getLastChangeAction() %> por: <%=light.getLastChangeUser() %></span>
+								<span class="changesLog"><a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a></span>
+								<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+								<span class="linkToAgenda"><a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+							<% } %>
+						</div>
+					</div>
+				</div>
+			<% } %>
 		</div>
 	</div>
 </section>

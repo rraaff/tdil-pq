@@ -417,9 +417,9 @@ textarea {
 										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
 									</div>
 								  	<% if (alarm.isInactive() ) { %>
-								  		<span class="fakeButtons" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)"></span>
+								  		<span class="" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 								  	<% } else { %>
-								  		<span class="fakeButtons" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
+								  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 								  	<% } %>
 							  	</div>
 
