@@ -45,6 +45,9 @@ public class CameraForm extends ActionForm {
 		List<Camera> all = new ArrayList<Camera>();
 		all.addAll(LoJackServicesConnector.getCameras(user));
 		setAllCameras(all);
+		if (all.size() == 1) {
+			this.selectCamera(0);
+		}
 	}
 
 	public WebsiteUser getUser() {

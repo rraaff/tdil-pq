@@ -27,7 +27,11 @@ public class GoToHomeCameraAction extends AbstractAction {
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			aForm.initWith(user);
 			aForm.setUseApplet(ThalamusWebUtils.useCameraApplet(request));
-			return mapping.findForward("continue");
+			if (aForm.getAllCameras().size() == 1) {
+				return mapping.findForward("viewcamera");
+			} else {
+				return mapping.findForward("continue");
+			}
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);
 			ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
