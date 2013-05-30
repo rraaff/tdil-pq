@@ -15,7 +15,7 @@
 .legalLayerStyles,
 .contactLayerStyle,
 .editProfileLayer {
-	border: dotted 1px blue;
+/*	border: dotted 1px blue;*/
 	width: auto;
 	height: auto;
 	position: relative;
@@ -40,7 +40,7 @@
 }
 .changePasswordLayerContent { width: 466px; }
 #changePassLayerID form { margin: 20px 0 0 0; }
-.registerLayerContent { width: 580px; }
+.registerLayerContent { /*width: 580px;*/ }
 .legalLayerContent {
 	max-width: 500px;
 	max-height: 450px;
