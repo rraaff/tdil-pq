@@ -133,6 +133,7 @@
 		</delete>
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
 			<classes dir="../../thalamusJClient/ThalamusJClient/bin" />
+			<classes dir="../../Camera/bin" />
 			<lib dir="../../thalamusJClient/EnvironmentLibraries/">
 				<include name="*.jar" />
 				<!--exclude name="servlet-api.jar" />
