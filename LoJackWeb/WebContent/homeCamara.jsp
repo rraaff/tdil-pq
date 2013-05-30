@@ -151,11 +151,11 @@ function right() {
 					</script>
 				<% } %>
 			</div>
-			<!-- div id="linksAside">
+			<div id="linksAside">
 				<a href="./toggleCameraView.do"><span>Cambiar vista >></span></a>
 				<br/>
 				<a href="./goToHomeCamera.do"><span><< Volver</span></a>
-			</div-->
+			</div>
 		</div>
 	</div>
 </section>
