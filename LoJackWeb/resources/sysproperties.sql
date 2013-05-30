@@ -11,6 +11,11 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('servic
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.server','http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc','prevent.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.timeout','5000','Timeout en millis',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.loginurl','http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx?','URL de prevent',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.token','a5b0981a0188bb9a5b7fe44b6c32d894','Token de prevent',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.loginurl','http://test.lojackgis.com.ar:8080/webgis/lojackpets/loginPortal.ashx?','URL de pets',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.token','a5b0981a0188bb9a5b7fe44b6c32d894','Token de pets',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prop.tmp.path','/home/mgodoy/icarus/apache-tomcat-6.0.32/temp','prop.tmp.path',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.refreshTime','1000','camera.mobile.refreshTime',0);

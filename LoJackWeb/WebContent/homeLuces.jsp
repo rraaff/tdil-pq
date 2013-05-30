@@ -44,6 +44,7 @@
 	  <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
   $(function() {
 	  <%@ include file="includes/closeLayers.jspf" %>
+	  <%@ include file="includes/externalLogins.jspf" %>
 	  $('.editable').editable(function(value, settings) {
 		     return doRenameLight($(this).attr('id'), value);
 		  }, {

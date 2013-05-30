@@ -115,6 +115,7 @@
         <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
         	<%@ include file="includes/closeLayers.jspf" %>
+        	<%@ include file="includes/externalLogins.jspf" %>
             var mapOptions = {
                 DataProjection: "EPSG:4326"
             };

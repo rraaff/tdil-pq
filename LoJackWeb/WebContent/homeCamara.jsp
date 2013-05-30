@@ -36,6 +36,7 @@
 <script>
 $(function() {
 	<%@ include file="includes/closeLayers.jspf" %>
+	<%@ include file="includes/externalLogins.jspf" %>
 });
 
 <%@ include file="includes/centerLayerJS.jspf" %>

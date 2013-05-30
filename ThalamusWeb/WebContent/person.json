@@ -79,7 +79,7 @@
           "lastname" : "lopez",
           "homeIsClient" : true,
           "preventIsClient" : true,
-          "petIsClient" : false,
+          "petIsClient" : true,
           "homeUser" : "homeUser",
           "petUser" : "petUser",
           "preventUser" : "Prevent2",

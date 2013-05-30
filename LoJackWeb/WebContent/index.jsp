@@ -218,12 +218,6 @@ $(document).ready(
 			basicRegister();
 		<% } %>
 
-		/* Seteo el offset */
-		var userDate = new Date();
-		var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-		$("form[name='LoginForm'] input[name='timezoneOffset']").attr('value', userTimeZone);
-		var tz = jstz.determine(); // Determines the time zone of the browser client
-		$("form[name='LoginForm'] input[name='timezoneName']").attr('value',  tz.name());
 	}
 );
 

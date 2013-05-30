@@ -86,6 +86,7 @@
 			function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
+	<%@ include file="includes/externalLogins.jspf" %>
 			}
 	);
 

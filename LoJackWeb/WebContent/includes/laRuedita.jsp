@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
@@ -19,12 +20,16 @@
 		<%} %>
 
 		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-			<!-- logueado y con acceso a prevent -->
-			<% if (websiteUser.isPreventLogged()) { %>
+			<% if (LoJackWebUtils.isMobile(request)) { %>
+				<!-- logueado y con acceso a prevent -->
+				<% if (websiteUser.isPreventLogged()) { %>
 					<div id="iconoCar"><a href="./productoPrevent.jsp" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
 				<% } else { %>
 					<div id="iconoCar"><a href="javascript:loginPrevent()" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
 				<% } %>
+			<% } else { %>
+				<div id="iconoCar"><a href="#" id="enterPrevent" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
+			<% }  %>
 		<%} else { %>
 			<!-- no logueado o sin acceso a prevent -->
 			<div id="iconoCar"><a href="#" onclick="javascript:showVideo1();" title="Más sobre CAR"><img src="images/null.gif" /></a></div>
@@ -40,7 +45,7 @@
 
 		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
 			<!-- logueado y con acceso a pet -->
-			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1();" title="Cuidá a tus mascostas"><img src="images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="#" id="enterPets" title="Cuidá a tus mascostas"><img src="images/null.gif" /></a></div>
 		<%} else { %>
 			<!-- no logueado o sin acceso a pet -->
 			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1();" title="Más sobre PETS"><img src="images/null.gif" /></a></div>

@@ -41,6 +41,7 @@
 	  <%@ include file="includes/datePickerES.jspf" %>
 	  
 	  <%@ include file="includes/closeLayers.jspf" %>
+	  <%@ include file="includes/externalLogins.jspf" %>
 
     $("input[name=from]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 		changeYear: true, minDate: "-0d", maxDate: "+10Y"});

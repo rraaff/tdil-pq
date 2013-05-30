@@ -52,6 +52,7 @@
 		});
 	  
 	  <%@ include file="includes/closeLayers.jspf" %>
+	  <%@ include file="includes/externalLogins.jspf" %>
 
 	  $( "#closeforgotPasswordLayer" ).click(function() {
 			$( "#forgotPasswordLayer" ).fadeOut();
