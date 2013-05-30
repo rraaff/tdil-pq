@@ -272,15 +272,18 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  if (data.result == 'OK') {
         		  $( "#passwordLayer" ).fadeOut();
 				  centerLayer($(window), $( "#alarmActivatedLayer" ));
+				  centerLayer($(window), $( "#centradorModalesAA" ));
 				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
+					  centerLayer($(window), $( "#centradorModalesIP" ));
 					} else {
 						if (data.result == 'HAS_JOB') {
 		        		  $( "#passwordLayer" ).fadeOut();
 						  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+						  centerLayer($(window), $( "#centradorModalesJIPE" ));
 						} else {
 							$( "#passwordLayer" ).fadeOut();
 							centerLayer($(window), $( "#alarmNotActivatedLayer" ));
@@ -337,13 +340,16 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
+					  centerLayer($(window), $( "#centradorModalesIP" ));
 					} else {
 						if (data.result == 'HAS_JOB') {
 		        		  $( "#passwordLayer" ).fadeOut();
 						  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+						  centerLayer($(window), $( "#centradorModalesJIPE" ));
 						} else {
 							$( "#passwordLayer" ).fadeOut();
 							centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+							centerLayer($(window), $( "#centradorModalesAND" ));
 						}
 					}
 				}
@@ -352,6 +358,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
+			  centerLayer($(window), $( "#centradorModalesAND" ));
           }
       });
   }
@@ -467,8 +474,8 @@ textarea {
 </div>
 
 <div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle">
-		<div class="modalWrapper">
+	<div  class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
 			<div id="confAlert">
 				Consultando datos...
@@ -481,7 +488,7 @@ textarea {
 	<div id="centradorModalesConfSaved" class="defaultLayerStyles">
 		<div class="modalStyle">
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">La configuracion ha sido salvada.</div>
 			</div>
 			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar la ventana 1" class="indexButtonBase"/>
@@ -492,22 +499,22 @@ textarea {
 <%@ include file="includes/passwordLayer.jspf" %>
 
 <div id="alarmActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesAA" class="modalStyle">
-		<div class="modalWrapper">
+	<div id="centradorModalesAA" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div class="modalLayerContent" style="height:auto; padding:20px 0;">
+			<div class="modalLayerContent">
 				<div class="alert alert-success">Se ha enviado el comando de activacion la alarma.</div>
 			</div>
-			<input type="button" id="closeAlarmActivatedLayer" cl="alarmActivatedLayer" value="Cerrar" class="indexButtonBase">
 		</div>
 	</div>
 </div>
 
 <div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesANA" class="modalStyle">
-		<div class="modalWrapper">
+	<div id="centradorModalesANA" class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido activarse la alarma.</div>
 			</div>
 			<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar" class="indexButtonBase"/>
@@ -516,13 +523,13 @@ textarea {
 </div>
 
 <div id="invalidPasswordLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesIP" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">La contraseña no es correcta.</div>
 			</div>
-			<input type="button" id="closeinvalidPasswordLayer" cl="invalidPasswordLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
@@ -540,33 +547,33 @@ textarea {
 </div>
 
 <div id="alarmNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesAND" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido desactivarse la alarma.</div>
 			</div>
-			<input type="button" id="closeAlarmNotDeactivatedLayer" cl="alarmNotDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesJIPE" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-block">La alarma esta procesando una tarea, por favor espere.</div>
 			</div>
-			<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <!-- Inicio panic -->
 <div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="margin:120px auto;">
-		<div class="modalWrapper">
+	<div  class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
 			<div id="sendPanic" style="height:auto;">
 				Consultando datos...
@@ -577,10 +584,10 @@ textarea {
 </div>
 
 <div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de señal de pánico.</div>
 			</div>
 			<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar" class="indexButtonBase"/>
@@ -589,10 +596,10 @@ textarea {
 </div>
 
 <div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:250px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div  class="defaultLayerStyles">
+		<div class="modalStyle">
 			<h3>Atención</h3>
-			<div id="sendPanicError" style="height:auto; padding:20px 0;">
+			<div id="sendPanicError">
 				<div class="alert alert-error">Ha occurrido un error enviando la señal de panico.</div>
 			</div>
 			<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>

@@ -159,6 +159,7 @@
 			    errorAjax();
 			  } else {
 		  centerLayer($(window), $( "#logLayer" ));
+		  centerLayer($(window), $( "#centradorModalesLog" ));
 		}
 	  });
   }
@@ -171,6 +172,7 @@
 			    errorAjax();
 			  } else {
 		  centerLayer($(window), $( "#confAlertLayer" ));
+		  centerLayer($(window), $( "#centradorModalesCAL" ));
 		}
 	  });
   }
@@ -260,19 +262,23 @@
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+					  centerLayer($(window), $( "#centradorModalesJIPE" ));
 				  } else {
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#lightTurnedOnLayer" ));
+							centerLayer($(window), $( "#centradorModalesLTO" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							setLightStatusOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+							centerLayer($(window), $( "#centradorModalesLNO" ));
 						}
 					}
 	          },
 	          error: function() {
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
+	        	  centerLayer($(window), $( "#centradorModalesLNO" ));
 	          }
 	      });
 	  }
@@ -289,19 +295,23 @@
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+					  centerLayer($(window), $( "#centradorModalesJIPE" ));
 					} else {
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#lightTurnedOffLayer" ));
+							centerLayer($(window), $( "#centradorModalesLTOL" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							setLightStatusOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+							centerLayer($(window), $( "#centradorModalesLNTOL" ));
 						}
 					}
 	          },
 	          error: function() {
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
+	        	  centerLayer($(window), $( "#centradorModalesLNTOL" ));
 	          }
 	      });
 	  }
@@ -318,19 +328,23 @@
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+					  centerLayer($(window), $( "#centradorModalesJIPE" ));
 					} else {
 		        	  if (data.result == 'OK') {
 							centerLayer($(window), $( "#randomActivatedLayer" ));
+							centerLayer($(window), $( "#centradorModalesRAL" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							setLightStatusRanOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotActivatedLayer" ));
+							centerLayer($(window), $( "#centradorModalesRNAL" ));
 						}
 					}
 	          },
 	          error: function() {
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotActivatedLayer" ));
+	        	  centerLayer($(window), $( "#centradorModalesRNAL" ));
 	          }
 	      });
 	  }
@@ -347,19 +361,23 @@
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  if (data.result == 'HAS_JOB') {
 					  centerLayer($(window), $( "#jobInProgressErrorLayer" ));
+					  centerLayer($(window), $( "#centradorModalesJIPE" ));
 					} else {
 		        	  if (data.result == 'OK') {
 		        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
+		        		  centerLayer($(window), $( "#centradorModalesRDL" ));
 		        		  $( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 		        		  setLightStatusRanOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
+							centerLayer($(window), $( "#centradorModalesRNDL" ));
 						}
 					}
 	          },
 	          error: function() {
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
+	        	  centerLayer($(window), $( "#centradorModalesRNDL" ));
 	          }
 	      });
 	  }
@@ -478,21 +496,23 @@ textarea {
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle">
-		<div class="modalWrapper">
+	<div id="centradorModalesLog" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeLogLayer" cl="logLayer">X</button></div>
+			<h3>Log de cambios</h3>
 			<div id="logData" class="modalLayerContent">
 				Consultando datos...
 			</div>
-			<input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="confAlertLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesCAL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink">X</button></div>
 			<h3>Atención</h3>
-			<div id="confAlert" style="height:auto; padding:20px 0;">
+			<div id="confAlert">
 				Consultando datos...
 			</div>
 		</div>
@@ -500,121 +520,121 @@ textarea {
 </div>
 
 <div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesCSL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeSavedConfLayer" cl="confSavedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">La configuración ha sido salvada.</div>
 			</div>
-			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="randomActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesRAL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerandomActivatedLayer" cl="randomActivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de activación de secuencia aleatoria.</div>
 			</div>
-			<input type="button" id="closerandomActivatedLayer" cl="randomActivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="randomNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesRNAL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerandomNotActivatedLayer" cl="randomNotActivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido enviarse el comando de activación de secuencia aleatoria.</div>
 			</div>
-			<input type="button" id="closerandomNotActivatedLayer" cl="randomNotActivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="randomDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesRDL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerandomDeactivatedLayer" cl="randomDeactivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de desactivación de secuencia aleatoria.</div>
 			</div>
-			<input type="button" id="closerandomDeactivatedLayer" cl="randomDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="randomNotDeactivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesRNDL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido enviarse el comando de desactivación de secuencia aleatoria.</div>
 			</div>
-			<input type="button" id="closerandomNotDeactivatedLayer" cl="randomNotDeactivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="lightTurnedOnLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesLTO" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerlightTurnedOnLayer" cl="lightTurnedOnLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de encendido de la luz.</div>
 			</div>
-			<input type="button" id="closerlightTurnedOnLayer" cl="lightTurnedOnLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="lightNotTurnedOnLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesLNO" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido enviarse el comando de encendido de la luz.</div>
 			</div>
-			<input type="button" id="closelightNotTurnedOnLayer" cl="lightNotTurnedOnLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="jobInProgressErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesJIPE" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-block">La luz esta procesando una tarea, por favor espere.</div>
 			</div>
-			<input type="button" id="closejobInProgressErrorLayer" cl="jobInProgressErrorLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>			
 </div>
 
 <div id="lightTurnedOffLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesLTOL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closerlightTurnedOffLayer" cl="lightTurnedOffLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-success">Se ha enviado el comando de apagado de la luz.</div>
 			</div>
-			<input type="button" id="closerlightTurnedOffLayer" cl="lightTurnedOffLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="lightNotTurnedOffLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="modalStyle" style="width:350px; margin:120px auto;">
-		<div class="modalWrapper" style="width:auto;">
+	<div id="centradorModalesLNTOL" class="defaultLayerStyles">
+		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closelightNotTurnedOffLayer" cl="lightNotTurnedOffLayer">X</button></div>
 			<h3>Atención</h3>
-			<div style="height:auto; padding:20px 0;">
+			<div>
 				<div class="alert alert-error">No ha podido enviarse el comando de apagado de la luz.</div>
 			</div>
-			<input type="button" id="closelightNotTurnedOffLayer" cl="lightNotTurnedOffLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
