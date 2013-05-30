@@ -12,7 +12,7 @@
 
 $("form[name='ContactForm']").validate({
 	errorPlacement: function(error, element) {
-		error.appendTo( element.parent("div").next("div"));
+		error.appendTo( element.parent("fieldset").next("div"));
 	},
 	<% if (contactForm.isRegisteredUser()) { %>
 		rules: { 'content': {required: true}
@@ -92,27 +92,33 @@ function postContact(data) {
 						<label>Nombre</label>
 						<html:text name="ContactForm" property="firstname"></html:text>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>Apellido</label>
 						<html:text name="ContactForm" property="lastname"></html:text>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>DNI</label>
 						<html:text name="ContactForm" property="documentNumber"></html:text>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>E-mail</label>
 						<html:text name="ContactForm" property="email"></html:text>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>Teléfono</label>
 						<html:text name="ContactForm" property="phone"></html:text>
 					</fieldset>
+					<div class="errorInForm"></div>
 				<% } %>
 				<fieldset>
 					<label>Comentario</label>
 					<html:textarea name="ContactForm" property="content"></html:textarea>
 				</fieldset>
+				<div class="errorInForm"></div>
 				<fieldset>
 					<button id="submitregister" class="indexButtonBase">Enviar</button>
 				</fieldset>

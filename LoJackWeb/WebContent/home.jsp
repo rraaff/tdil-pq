@@ -136,14 +136,13 @@ $(function() {
 	<div id="floatyMenu">
 		<div class="wrapper">
 			<ul>
-				<li class="avatarLi">
+				<li class="avatarLi"><a href="javascript:changeAvatar();">
 					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-						<a href="./goToEditProfile.do" title="Cambiar imagen">
-							<img src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" align="absmiddle">
-						</a>
-					<% } %>
-					<span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span>
-				</li>
+						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
+					<% } else { %>
+						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
+					<% } %></a></li>
+				<li><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
