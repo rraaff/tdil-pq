@@ -138,11 +138,14 @@ function right() {
 						</object>
 
 				<% } else { %>
+					
 					<img id="cameraImg" src="./viewCamera" width="561" height="297"><br>
-					<a href="javascript:up()" id="up">Up</a><br>
-					<a href="javascript:down()" id="down">Down</a><br>
-					<a href="javascript:left()" id="left">Left</a><br>
-					<a href="javascript:right()" id="right">Right</a><br>
+					<div style="background:#fff; width: 561px; margin: 0 auto; position: fixed; z-index: 1600;">
+						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
+						<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
+						<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
+						<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
+					</div>
 					<!-- a href="./toggleCameraView.do">Vista Avanzada</a -->
 					<script>
 					setInterval(function() {
