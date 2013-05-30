@@ -65,11 +65,11 @@ public class WebsiteUser extends User {
 		return this.getModelUser().getId();
 	}
 
-	public String getGuid() {
+	public String getJSESSIONID() {
 		return String.valueOf(this.getToken().getCookie("JSESSIONID").getValue());
 	}
 
-	public String getExtraCookie() {
+	public String getAWSELB() {
 		return String.valueOf(this.getToken().getCookie("AWSELB").getValue());
 	}
 	

@@ -14,11 +14,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.cache.blob.BlobLocalDiskCache;
-import com.tdil.ibatis.IBatisManager;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.cache.blob.BlobDataType;
 import com.tdil.lojack.cache.blob.PublicBlobResolver;
-import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.daomanager.MySQLDAOProvider;
 import com.tdil.lojack.daomanager.SQLServerDAOProvider;
@@ -26,6 +24,7 @@ import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.model.SystemProperty;
 import com.tdil.lojack.model.SystemPropertyExample;
+import com.tdil.lojack.pets.PetsConnector;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.roles.HomeUser;
 import com.tdil.lojack.roles.PreventUser;
@@ -173,11 +172,37 @@ public class LoJackConfig extends SystemConfig {
 			}
 			getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
 			
+			String preventloginurl = SystemPropertyUtils.getSystemPropertValue("prevent.loginurl");
+			if (preventloginurl != null) {
+				PreventConnector.setPreventLoginUrl(preventloginurl);
+			}
+			getLog().fatal("Prevent login url is " + (preventloginurl == null ? "null" : preventloginurl));
+			
+			String preventtoken = SystemPropertyUtils.getSystemPropertValue("prevent.token");
+			if (preventtoken != null) {
+				PreventConnector.setPreventToken(preventtoken);
+			}
+			getLog().fatal("Prevent token is " + (preventtoken == null ? "null" : preventtoken));
+			
 			String preventtimeout = SystemPropertyUtils.getSystemPropertValue("prevent.timeout");
 			if (preventtimeout != null) {
 				PreventConnector.setTIMEOUT(Integer.parseInt(preventtimeout));
 			}
 			getLog().fatal("Prevent timeout is " + PreventConnector.getTIMEOUT());
+			
+			
+			
+			String petsloginurl = SystemPropertyUtils.getSystemPropertValue("pets.loginurl");
+			if (petsloginurl != null) {
+				PetsConnector.setPetsLoginUrl(petsloginurl);
+			}
+			getLog().fatal("Pets login url is " + (petsloginurl == null ? "null" : petsloginurl));
+			String petstoken = SystemPropertyUtils.getSystemPropertValue("pets.token");
+			if (petstoken != null) {
+				PetsConnector.setPetsToken(petstoken);
+			}
+			getLog().fatal("Pets token is " + (petstoken == null ? "null" : petstoken));
+			
 
 			getLog().fatal("Starting middleware jobs updater");
 			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));

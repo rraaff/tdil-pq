@@ -34,7 +34,7 @@ public class LightAlertConfigurationForm extends ExternalServiceForm {
 		configuration.setUserId(String.valueOf(user.getId()));
 		configuration.setLightId(this.getLightId());
 		configuration.setActivateDeactivate(this.isActivateDeactivate());
-		return LoJackServicesConnector.saveLightAlertConfiguration(user.getGuid(), configuration);
+		return LoJackServicesConnector.saveLightAlertConfiguration(user.getJSESSIONID(), configuration);
 	}
 
 	public void initWith(WebsiteUser user, String lightId) {

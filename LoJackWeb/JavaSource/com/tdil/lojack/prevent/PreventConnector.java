@@ -49,6 +49,9 @@ public class PreventConnector {
 
 
 	private static String preventServer = "http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc";
+	
+	private static String preventLoginUrl = "";
+	private static String preventToken;
 
 	private static final Logger LOG = LoggerProvider.getLogger(PreventConnector.class);
 
@@ -259,5 +262,21 @@ public class PreventConnector {
 
 	public static void setTIMEOUT(int tIMEOUT) {
 		TIMEOUT = tIMEOUT;
+	}
+
+	public static String getPreventLoginUrl() {
+		return preventLoginUrl;
+	}
+
+	public static void setPreventLoginUrl(String preventLoginUrl) {
+		PreventConnector.preventLoginUrl = preventLoginUrl;
+	}
+
+	public static String getPreventToken() {
+		return preventToken;
+	}
+
+	public static void setPreventToken(String preventToken) {
+		PreventConnector.preventToken = preventToken;
 	}
 }

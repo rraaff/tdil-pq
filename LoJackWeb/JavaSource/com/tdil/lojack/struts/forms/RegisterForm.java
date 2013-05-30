@@ -43,6 +43,7 @@ import com.tdil.thalamus.client.facade.json.beans.URLHolder;
 import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
 import com.tdil.thalamus.client.utils.ThalamusUtils;
 import com.tdil.utils.DateUtils;
+import com.tdil.utils.StringUtils;
 
 public class RegisterForm extends AbstractForm implements RefreshableForm {
 
@@ -226,21 +227,23 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		JSONObject profile = new JSONObject();
 		JSONObject document = new JSONObject();
 		if (!update) {
-			document.put("type", this.getDocumentType());
-			document.put("number", this.getDocument());
+			if (this.getDocumentType() != 0) {
+				document.put("type", this.getDocumentType());
+			}
+			document.put("number", StringUtils.nullValueOf(this.getDocument()));
 			profile.put("document", document);
 		}
 		if (isInUseAndEditable(PersonFieldNames.firstName)) {
-			profile.put(PersonFieldNames.firstName, this.getFirstName());
+			profile.put(PersonFieldNames.firstName, StringUtils.nullValueOf(this.getFirstName()));
 		}
 		if (isInUseAndEditable(PersonFieldNames.lastName)) {
-			profile.put(PersonFieldNames.lastName, this.getLastName());
+			profile.put(PersonFieldNames.lastName, StringUtils.nullValueOf(this.getLastName()));
 		}
 		if (isInUseAndEditable(PersonFieldNames.gender)) {
-			profile.put(PersonFieldNames.gender, this.getGender());
+			profile.put(PersonFieldNames.gender, StringUtils.nullValueOf(this.getGender()));
 		}
 		if (isInUseAndEditable(PersonFieldNames.email)) {
-			profile.put(PersonFieldNames.email, this.getEmail());
+			profile.put(PersonFieldNames.email, StringUtils.nullValueOf(this.getEmail()));
 		}
 		if (isInUseAndEditable(PersonFieldNames.birthDate)) {
 			Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthDate());
@@ -261,10 +264,10 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				address.put(PersonFieldNames.street2, this.getStreet2());
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.street1)) {
-				address.put(PersonFieldNames.street1, this.getStreet1());
+				address.put(PersonFieldNames.street1, StringUtils.nullValueOf(this.getStreet1()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.postalCode)) {
-				address.put(PersonFieldNames.postalCode, this.getPostalCode());
+				address.put(PersonFieldNames.postalCode, StringUtils.nullValueOf(this.getPostalCode()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.stateId)) {
 				if (this.getStateId() != 0) {
@@ -272,33 +275,33 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				}
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.addressType)) {
-				address.put(PersonFieldNames.addressType, this.getAddressType());
+				address.put(PersonFieldNames.addressType, StringUtils.nullValueOf(this.getAddressType()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.city)) {
-				address.put(PersonFieldNames.city, this.getCity());
+				address.put(PersonFieldNames.city, StringUtils.nullValueOf(this.getCity()));
 			}
 			profile.put(PersonFieldNames.address, address);
 		}
 		if (isInUseAndEditable(PersonFieldNames.phone)) {
 			JSONObject phone = new JSONObject();
 			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) {
-				phone.put(PersonFieldNames.phoneNumber, this.getPhoneNumber());
+				phone.put(PersonFieldNames.phoneNumber, StringUtils.nullValueOf(this.getPhoneNumber()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) {
-				phone.put(PersonFieldNames.phoneAreaCode, this.getPhoneAreaCode());
+				phone.put(PersonFieldNames.phoneAreaCode, StringUtils.nullValueOf(this.getPhoneAreaCode()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneType)) {
-				phone.put(PersonFieldNames.phoneType, this.getPhoneType());
+				phone.put(PersonFieldNames.phoneType, StringUtils.nullValueOf(this.getPhoneType()));
 			}
 			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) {
-				phone.put(PersonFieldNames.phoneIntCode, this.getPhoneIntCode());
+				phone.put(PersonFieldNames.phoneIntCode, StringUtils.nullValueOf(this.getPhoneIntCode()));
 			}
 			profile.put(PersonFieldNames.phone, phone);
 		}
 		general.put("profile", profile);
 		JSONObject credentials = new JSONObject();
-		credentials.put(PersonFieldNames.principal, this.getPrincipal());
-		credentials.put(PersonFieldNames.password, this.getPassword());
+		credentials.put(PersonFieldNames.principal, StringUtils.nullValueOf(this.getPrincipal()));
+		credentials.put(PersonFieldNames.password, StringUtils.nullValueOf(this.getPassword()));
 		general.put("credential", credentials);
 
 		if (socialConnections != null) {

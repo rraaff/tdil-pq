@@ -36,7 +36,7 @@ public class AlarmAlertConfigurationForm extends ExternalServiceForm {
 		configuration.setAlarmId(this.getAlarmId());
 		configuration.setActivateDeactivate(this.isActivateDeactivate());
 		configuration.setAlarmActivation(this.isAlarmActivation());
-		return LoJackServicesConnector.saveAlarmAlertConfiguration(user.getGuid(), configuration);
+		return LoJackServicesConnector.saveAlarmAlertConfiguration(user.getJSESSIONID(), configuration);
 	}
 
 	public void initWith(WebsiteUser user, String alarmId) {
