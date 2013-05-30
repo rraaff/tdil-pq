@@ -186,6 +186,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 			    errorAjax();
 			  } else {
 		  centerLayer($(window), $( "#sendPanicLayer" ));
+		  centerLayer($(window), $( "#centradorModalesSendPanic" ));
 		}
 	  });
   }
@@ -204,12 +205,14 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					$( "#sendPanicLayer" ).fadeOut();
 					$( "#sendPanicErrorLayer" ).fadeOut();
 					centerLayer($(window), $( "#panicSentLayer" ));
+					centerLayer($(window), $( "#centradorModalesPanicSent" ));
 				} else {
 					$( "#sendPanicLayer" ).fadeOut();
 					$( "#sendPanicErrorLayer" ).fadeOut();
 					$('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
 					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
 					centerLayer($(window), $( "#sendPanicErrorLayer" ));
+					centerLayer($(window), $( "#centradorModalesPanicError" ));
 				}
           },
           error: function() {
@@ -219,6 +222,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
 			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
 			  centerLayer($(window), $( "#sendPanicErrorLayer" ));
+			  centerLayer($(window), $( "#centradorModalesPanicError" ));
           }
       });
   }
@@ -288,6 +292,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 						} else {
 							$( "#passwordLayer" ).fadeOut();
 							centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+							centerLayer($(window), $( "#centradorModalesANA" ));
 						}
 					}
 				}
@@ -296,6 +301,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
         	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotActivatedLayer" ));
+			  centerLayer($(window), $( "#centradorModalesANA" ));
           }
       });
   }
@@ -514,11 +520,11 @@ textarea {
 <div id="alarmNotActivatedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesANA" class="defaultLayerStyles">
 		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer">X</button></div>
 			<h3>Atención</h3>
 			<div>
 				<div class="alert alert-error">No ha podido activarse la alarma.</div>
 			</div>
-			<input type="button" id="closeAlarmNotActivatedLayer" cl="alarmNotActivatedLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
@@ -573,38 +579,41 @@ textarea {
 
 <!-- Inicio panic -->
 <div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div  class="defaultLayerStyles">
+	<div id="centradorModalesSendPanic" class="defaultLayerStyles">
 		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closePanicLayer" cl="sendPanicLayer">X</button></div>
 			<h3>Atención</h3>
-			<div id="sendPanic" style="height:auto;">
+			<div id="sendPanic">
 				Consultando datos...
 			</div>
-			<input type="button" id="closePanicLayer" cl="sendPanicLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
+	<div id="centradorModalesPanicSent" class="defaultLayerStyles">
 		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closePanicSentLayer" cl="panicSentLayer">X</button></div>
 			<h3>Atención</h3>
 			<div>
 				<div class="alert alert-success">Se ha enviado el comando de señal de pánico.</div>
 			</div>
-			<input type="button" id="closePanicSentLayer" cl="panicSentLayer" value="Cerrar" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
 
 <div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div  class="defaultLayerStyles">
+	<div id="centradorModalesPanicError" class="defaultLayerStyles">
 		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer">X</button></div>
 			<h3>Atención</h3>
 			<div id="sendPanicError">
 				<div class="alert alert-error">Ha occurrido un error enviando la señal de panico.</div>
 			</div>
-			<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>
-			<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar" class="indexButtonBase"/>
+			<div>
+				<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>
+				<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar" class="indexButtonBase"/>
+			</div>
 		</div>
 	</div>
 </div>

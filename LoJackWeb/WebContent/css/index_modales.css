@@ -102,7 +102,11 @@ h4,
 	padding-bottom: 20px;
 }
 #sendPanicLayer h3 { padding-bottom: 5px; }
-#sendPanic { width: 330px; }
+#sendPanic {
+	width:330px;
+	height:350px;
+	overflow-y:auto;
+}
 .tagsOnInputs, label, fieldset span {
 	color: #999;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
