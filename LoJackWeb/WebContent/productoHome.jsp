@@ -45,6 +45,8 @@ $(function() {
 <%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 </script>
+
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 
 <body>
