@@ -1,5 +1,6 @@
 package com.tdil.lojack.struts.action;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +11,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.lojack.utils.ThalamusWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
@@ -26,7 +28,17 @@ public class GoToHomeCameraAction extends AbstractAction {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			aForm.initWith(user);
-			aForm.setUseApplet(ThalamusWebUtils.useCameraApplet(request));
+			Cookie cameraCookie = ThalamusWebUtils.getCameraCookie(request);
+			if (cameraCookie == null) {
+				boolean isMobile = LoJackWebUtils.isMobile(request);
+				if (isMobile) {
+					aForm.setUseApplet(false);
+				} else {
+					aForm.setUseApplet(true);
+				}
+			} else {
+				aForm.setUseApplet("applet".equals(cameraCookie.getValue()));
+			}
 			if (aForm.getAllCameras().size() == 1) {
 				return mapping.findForward("viewcamera");
 			} else {
