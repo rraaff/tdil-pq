@@ -80,7 +80,7 @@
           "homeIsClient" : true,
           "preventIsClient" : true,
           "petIsClient" : true,
-          "homeUser" : "homeUser",
+          "homeUser" : "usuario",
           "petUser" : "petUser",
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
