@@ -11,6 +11,7 @@ import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.gis.CarpathiaTranslator;
 import com.tdil.lojack.prevent.PreventXMLUtils;
 import com.tdil.lojack.prevent.URLParams;
 import com.tdil.lojack.prevent.XMLResponse;
@@ -25,10 +26,12 @@ public class MainGetCamaras {
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(MainGetCamaras.class);
 	
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getCamaras xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getCamaras></s:Body></s:Envelope>");
+		String postString = CarpathiaTranslator.prepareRequest("getCamaras", "{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}");
+		String result = executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", postString);
+		System.out.println(CarpathiaTranslator.extractResponse("getCamaras", result));
 	}
 
-	private static XMLResponse executePost(String server, String service, String param) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+	private static String executePost(String server, String service, String param) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		long start = System.currentTimeMillis();
 		String xml = param;
 		String url = service;
@@ -61,7 +64,7 @@ public class MainGetCamaras {
 				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
 			}
 			System.out.println(response);
-			return null;
+			return response;
 		} catch (HttpException e) {
 			throw new CommunicationException(e);
 		} catch (IOException e) {
