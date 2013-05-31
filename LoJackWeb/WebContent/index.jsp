@@ -119,15 +119,67 @@ response.addCookie(ecookie1);
 $(document).ready(
 	function(){
 		<%@ include file="includes/datePickerES.jspf" %>
+
+		$("input[name=password]").bind("keydown", function(event) {
+		      // track enter key
+		      var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+		      if (keycode == 13) { // keycode for enter key
+		         // force the 'Enter Key' to implicitly click the Update button
+		         $('#submitlogin').click();
+		         //document.getElementById('defaultActionButton').click();
+		         return false;
+		      } else  {
+		         return true;
+		      }
+		   });
+		$("input[name=username]").bind("keydown", function(event) {
+		      // track enter key
+		      var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+		      if (keycode == 13) { // keycode for enter key
+		         // force the 'Enter Key' to implicitly click the Update button
+		         $('#submitlogin').click();
+		         //document.getElementById('defaultActionButton').click();
+		         return false;
+		      } else  {
+		         return true;
+		      }
+		   });
+		   
+		
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
 
 		$("form[name='RegisterForm']").validate({
 			errorPlacement: function(error, element) {
-				error.appendTo( element.parent("div"));
+				//error.appendTo( element.parent("fieldset").next("div"));
+				if(element.prop('name') == 'gender') {
+					error.appendTo( element.parent("fieldset").next("div"));
+				} else {
+					error.appendTo( element.next("div"));
+				}
 			},
-			rules: { 			},
-			messages: {			},
+			rules: { 
+				'documentType': {required: true},
+				'document': {required: true, digits: true},
+				'firstName': {required: true},
+				'lastName': {required: true},
+				'email': {required: true, email: true},
+				'gender': {required: true},
+				'password': {required: true},
+				'birthDate': {required: true}
+			},
+			messages: {	
+				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
+				'document': {required: "<span>Ingrese el numero de documento.</span>",
+					digits: "<span>Ingrese solo numeros.<span>"},
+				'firstName': {required: "<span>Ingrese el nombre.</span>"},
+				'lastName': {required: "<span>Ingrese el apellido.</span>"},
+				'email': {required: "<span>Ingrese el email.</span>",
+					email: "<span>Ingrese un email valido.</span>"},
+				'gender': {required: "<span>Seleccione el sexo.</span>"},
+				'password': {required: "<span>Ingrese el password.</span>"},
+				'birthDate': {required: "<span>Ingrese la fecha de nacimiento.</span>"}
+			},
 			submitHandler: function() {
 				<%@ include file="includes/blockUI.jspf" %>
 				clearErrors();
@@ -143,15 +195,23 @@ $(document).ready(
 
 		$("form[name='LoginForm']").validate({
 			errorPlacement: function(error, element) {
-				error.appendTo( element.parent("div"));
+				error.appendTo( element.parent("fieldset").next("div"));
 			},
 			rules: {
+				'documentType': {required: true},
+				'username': {required: true, digits: true},
+				'password': {required: true}
 			},
 			messages: {
+				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
+				'username': {required: "<span>Ingrese el numero de documento.</span>",
+					digits: "<span>Ingrese solo numeros.<span>"},
+				'password': {required: "<span>Ingrese el password.</span>"}
 
 			},
 			submitHandler: function() {
 				<%@ include file="includes/blockUI.jspf" %>
+				clearErrors();
 	            $("form[name='LoginForm']").ajaxSubmit({
 	    			type: "POST",
 	    			url: "./login.do",
@@ -228,6 +288,9 @@ function clearErrors() {
 	$("div[id^='err.']").each(function(index, valor) {
 		$(valor).prop('innerHTML','');
 	});
+	$(".errorInForm").each(function(index, valor) {
+		$(valor).prop('innerHTML','');
+	});
 	$(".myRow.errorField").each(
 		function (index, valor) {
 			$(valor).css("display", "none");
@@ -262,6 +325,7 @@ function basicRegister() {
 }
 
 function login() {
+	clearErrors();
 	$('#loginerr').prop('innerHTML', '');
 	$('#loginerr').css('display', 'none');
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
@@ -415,6 +479,7 @@ function parkingsNotLogged() {
 									<%=codBean.getName()%></option>
 							<% } %>
 						</html:select>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
 							<div id="err.profile.documentType"></div>
 						</div>
@@ -423,6 +488,7 @@ function parkingsNotLogged() {
 					<fieldset>
 						<label>* Numero</label>
 						<html:text name="RegisterForm" property="document" />
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.document">
 							<div id="err.profile.document"></div>
 						</div>
@@ -431,6 +497,7 @@ function parkingsNotLogged() {
 						<label>* Nombre</label>
 						<html:text name="RegisterForm" property="firstName" />
 							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="myRow errorField" style="display: none;" id="p.profile.firstname">
 								<div id="err.profile.firstname"></div>
 							</div>
@@ -439,6 +506,7 @@ function parkingsNotLogged() {
 						<label>* Apellido</label>
 						<html:text name="RegisterForm" property="lastName" />
 						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.lastname">
 							<div id="err.profile.lastname"></div>
 						</div>
@@ -454,10 +522,12 @@ function parkingsNotLogged() {
 							<div id="err.profile.gender"></div>
 						</div>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>* E-mail</label>
 						<html:text name="RegisterForm" property="email"/>
 						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.email">
 							<div id="err.profile.email"></div>
 						</div>
@@ -466,6 +536,7 @@ function parkingsNotLogged() {
 						<label>* Clave</label>
 						<html:password name="RegisterForm" property="password" />
 						<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.credential.password">
 							<div id="err.credential.password"></div>
 						</div>
@@ -474,6 +545,7 @@ function parkingsNotLogged() {
 						<label>* Fecha de nac.</label>
 						<html:text name="RegisterForm" property="birthDate" />
 						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
 							<div id="err.profile.birthDate"></div>
 						</div>
@@ -482,6 +554,7 @@ function parkingsNotLogged() {
 						<label>Código de área</label>
 						<html:text name="RegisterForm" property="phoneAreaCode" />
 						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
 							<div id="err.profile.phone.areaCode"></div>
 						</div>
@@ -490,6 +563,7 @@ function parkingsNotLogged() {
 						<label>Teléfono celular</label>
 						<html:text name="RegisterForm" property="phoneNumber" />
 						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="errorField" style="display: none;" id="p.profile.phone.number">
 							<div id="err.profile.phone.number"></div>
 						</div>
@@ -508,6 +582,7 @@ function parkingsNotLogged() {
 							<% } %>
 						</html:select>
 						<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
+						<div class="errorInForm"></div>
 						<div class="errorField" style="display: none;" id="p.profile.address.stateId">
 							<div id="err.profile.address.stateId"></div>
 						</div>
@@ -517,6 +592,7 @@ function parkingsNotLogged() {
 							<label>Calle 1</label>
 							<html:text name="RegisterForm" property="street1" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="errorField" style="display: none;" id="p.profile.address.street1">
 								<div id="err.profile.address.street1"></div>
 							</div>
@@ -527,6 +603,7 @@ function parkingsNotLogged() {
 							<label>Calle 2</label>
 							<html:text name="RegisterForm" property="street2" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="errorField" style="display: none;" id="p.profile.address.street2">
 								<div id="err.profile.address.street2"></div>
 							</div>
@@ -543,6 +620,7 @@ function parkingsNotLogged() {
 								<% } %>
 							</html:select>
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="errorField" style="display: none;" id="p.profile.address.type">
 								<div id="err.profile.address.type"></div>
 							</div>
@@ -553,6 +631,7 @@ function parkingsNotLogged() {
 							<label>Código postal</label>
 							<html:text name="RegisterForm" property="postalCode" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
 								<div id="err.profile.address.postalCode"></div>
 							</div>
@@ -563,6 +642,7 @@ function parkingsNotLogged() {
 							<label>Ciudad</label>
 							<html:text name="RegisterForm" property="city" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
+							<div class="errorInForm"></div>
 							<div class="errorField" style="display: none;" id="p.profile.address.city">
 								<div id="err.profile.address.city"></div>
 							</div>
@@ -598,14 +678,17 @@ function parkingsNotLogged() {
 								<% } %>
 							</html:select>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>Número</label>
 						<html:text name="LoginForm" property="username"/>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<label>CLAVE</label>
 						<html:password name="LoginForm" property="password"/>
 					</fieldset>
+					<div class="errorInForm"></div>
 					<fieldset>
 						<!-- input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
 						<span>Recordarme</span -->
