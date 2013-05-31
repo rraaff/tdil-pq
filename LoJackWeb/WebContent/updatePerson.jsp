@@ -19,10 +19,18 @@
 		
 		$("form[name='UpdatePersonForm']").validate({
 			errorPlacement: function(error, element) {
-				error.appendTo( element.parent("div"));
+				error.appendTo( element.next("div"));
 			},
-			rules: { 			},
-			messages: {			},
+			rules: {
+				'firstName': {required: true},
+				'lastName': {required: true},
+				'birthDate': {required: true}
+			},
+			messages: {
+				'firstName': {required: "<span>Ingrese el nombre.</span>"},
+				'lastName': {required: "<span>Ingrese el apellido.</span>"},
+				'birthDate': {required: "<span>Ingrese la fecha de nacimiento.</span>"}
+			},
 			submitHandler: function() {
 				<%@ include file="includes/blockUI.jspf" %>
 				clearErrors();
@@ -42,6 +50,9 @@
 
 function clearErrors() {
 	$("div[id^='err.']").each(function(index, valor) {
+		$(valor).prop('innerHTML','');
+	});
+	$(".errorInForm").each(function(index, valor) {
 		$(valor).prop('innerHTML','');
 	});
 }
@@ -81,11 +92,13 @@ function postRegister(data) {
 					<fieldset>
 						<label>* Nombre</label>
 						<html:text name="UpdatePersonForm" property="firstName" />
+						<div class="errorInForm"></div>
 						<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstName"></div>
 					</fieldset>
 					<fieldset>
 						<label>* Apellido</label>
 						<html:text name="UpdatePersonForm" property="lastName" />
+						<div class="errorInForm"></div>
 						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastName"></div>
 					</fieldset>
 					<fieldset>
@@ -111,6 +124,7 @@ function postRegister(data) {
 					<fieldset>
 						<label>* Fecha de nac.</label>
 						<html:text name="UpdatePersonForm" property="birthDate" />
+						<div class="errorInForm"></div>
 						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 					</fieldset>
 					<fieldset>
