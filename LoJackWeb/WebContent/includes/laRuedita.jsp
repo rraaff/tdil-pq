@@ -56,3 +56,7 @@
 		<span id="centralRueditaParkings" class="centralRueditaContent">Parkings</span>
 	</div>
 </div>
+<div id="losIconos"></div>
+<div id="elTelefono" align="center"><img src="images/skin_lj_rl/backs/phone.png" /></div>
+<div id="laSombreaT"><img src="images/skin_lj_rl/backs/sombraTelefono.png" /></div>
+<div id="welcomeText"></div>
