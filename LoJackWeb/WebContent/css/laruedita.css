@@ -167,7 +167,7 @@
 	background-repeat: no-repeat;
 }
 #centralRuedita {
-	display:none;
+	display:block;
 	color: #ee5222;
 	font-size: 20px;
 	font-weight: bold;
@@ -183,4 +183,24 @@
 	z-index: 1008;
 	position: absolute;
 	top: 107px;
+}
+
+.centralRueditaContent {
+	display: none;
+	color: #ee5222;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	background: url(../images/skin_lj_rl/buttons/wheel_central.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 145px;
+	padding-top: 30px;
+	margin: 0 auto;
+	z-index: 1008;
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }

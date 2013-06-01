@@ -1,11 +1,16 @@
 package com.tdil.lojack.struts.forms;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.io.IOUtils;
+import org.apache.struts.upload.FormFile;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.model.BlobData;
@@ -29,8 +34,14 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	private int imageId;
 	private UploadData avatar;
 	
+	private boolean mobile;
+	
+	private FormFile formFile;
+	
 	private int idAvatar;
 	private String extAvatar;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(EditProfileForm.class);
 	
 	public static final String avatar_key = "EditProfileForm.avatar";
 	
@@ -98,7 +109,27 @@ public class EditProfileForm extends TransactionalValidationForm implements
 		WebsiteUserExample websiteUserExample = new WebsiteUserExample();
 		websiteUserExample.createCriteria().andLojackuseridEqualTo(userId);
 		List<WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(websiteUserExample);
-
+		if (isMobile()) {
+			String fileName = formFile.getFileName();
+			InputStream io = null;
+			try {
+				io = formFile.getInputStream();
+				byte[] arr = IOUtils.toByteArray(io);
+				this.avatar = new UploadData(fileName, arr, true);
+			} catch (IOException e) {
+				LOG.error(e.getMessage(), e);
+			} finally {
+				if (io != null) {
+					try {
+						io.close();
+					} catch (IOException e) {
+						LOG.error(e.getMessage(), e);
+					}
+				}
+			}
+			
+		}
+		
 		idAvatar = 0;
 		extAvatar = null;
 		if (avatar != null && avatar.isModified()) {
@@ -166,6 +197,22 @@ public class EditProfileForm extends TransactionalValidationForm implements
 
 	public void setExtAvatar(String extAvatar) {
 		this.extAvatar = extAvatar;
+	}
+
+	public FormFile getFormFile() {
+		return formFile;
+	}
+
+	public void setFormFile(FormFile formFile) {
+		this.formFile = formFile;
+	}
+
+	public boolean isMobile() {
+		return mobile;
+	}
+
+	public void setMobile(boolean mobile) {
+		this.mobile = mobile;
 	}
 
 }

@@ -24,6 +24,13 @@
   <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.lojack.struts.forms.ContactForm"/>
   <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
+  
+  <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.lojack.struts.forms.LoginForm"/>
+  <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.lojack.struts.forms.RequestResetPasswordForm"/>
+  <form-bean id="RegisterFormMobile" name="RegisterFormMobile" type="com.tdil.lojack.struts.forms.RegisterForm"/>
+  <form-bean id="EditProfileFormMobile" name="EditProfileFormMobile" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
+  <form-bean id="ChangePasswordFormMobile" name="ChangePasswordFormMobile" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
+  <form-bean id="UpdatePersonFormMobile" name="UpdatePersonFormMobile" type="com.tdil.lojack.struts.forms.RegisterForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -229,6 +236,50 @@
   	<forward name="continue" path="/contacto.jsp" redirect="true"/>
   </action>
   <action name="ContactForm" path="/contact" scope="session" type="com.tdil.lojack.struts.action.ContactAction"/>
+
+
+<!-- MOBILE -->
+<action name="LoginFormMobile" path="/loginMobile" scope="request" type="com.tdil.lojack.struts.action.LoginActionMobile">
+	<forward name="failure" path="/mobile/loginModal.jsp"/>
+	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  <action path="/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
+	<forward name="continue" path="/mobile/index.jsp" redirect="true"/>
+  </action>
+  <action name="RequestResetPasswordFormMobile" path="/requestResetPasswordMobile" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
+  	<forward name="failure" path="/mobile/recuperarClaveModal.jsp"/>
+	<forward name="continue" path="/mobile/claveEnviadaModal.jsp" redirect="true"/>
+  </action>
+  <action name="RegisterFormMobile" path="/goToRegistrationMobile" type="com.tdil.lojack.struts.action.GoToRegisterAction">
+	<forward name="continue" path="/mobile/registroModal.jsp" redirect="true"/>
+  </action>
+  <action name="RegisterFormMobile" path="/registerMobile" type="com.tdil.lojack.struts.action.RegisterActionMobile">
+  	<forward name="failure" path="/mobile/registroModal.jsp"/>
+	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/goToEditProfileMobile" scope="session" type="com.tdil.lojack.struts.action.GoToEditProfileAction">
+  	<forward name="continue" path="/mobile/editAvatarModal.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/saveProfileMobile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileActionMobile">
+  	<forward name="failure" path="/mobile/editAvatarModal.jsp"/>
+  	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/viewAvatarMobile" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
+  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/goToChangePasswordMobile" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
+  	<forward name="continue" path="/mobile/changePasswordModal.jsp" redirect="true"/>
+  </action>
+  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/changePasswordMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/mobile/changePasswordModal.jsp"/>
+  	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  <action name="UpdatePersonFormMobile" path="/goToUpdatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.GoToUpdatePersonAction">
+  	<forward name="continue" path="/mobile/updatePersonModal.jsp" redirect="true"/>
+  </action>
+  <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/updatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.SavePersonActionMobile">
+  	<forward name="failure" path="/mobile/updatePersonModal.jsp"/>
+  	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  
 
  </action-mappings>
  

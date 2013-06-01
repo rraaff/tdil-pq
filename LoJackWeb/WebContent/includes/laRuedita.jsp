@@ -4,13 +4,13 @@
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
 			<div id="iconoLogout"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
 		<%} else { %>
-			<div id="iconoLogin"><a href="#" onclick="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
+			<div id="iconoLogin"><a href="#" id="rueditaLogin" onclick="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
 		<%} %>
 
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
 			<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
 		<%} else { %> 
-			<div id="iconoParkings"><a href="#" onclick="javascript:parkingsNotLogged();" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
+			<div id="iconoParkings"><a href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
 		<%} %>
 
 		<%if (websiteUser != null && websiteUser.isLogged()) { %>
@@ -51,5 +51,8 @@
 			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1();" title="Más sobre PETS"><img src="images/null.gif" /></a></div>
 		<%} %>
 	</div>
-	<div id="centralRuedita">ingresar</div>
+	<div id="centralRuedita">
+		<span id="centralRueditaLogin" class="centralRueditaContent">Ingresar</span>
+		<span id="centralRueditaParkings" class="centralRueditaContent">Parkings</span>
+	</div>
 </div>

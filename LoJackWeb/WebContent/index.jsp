@@ -116,9 +116,24 @@ response.addCookie(ecookie1);
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
 
+var lastCenter = null;
+
 $(document).ready(
 	function(){
 		<%@ include file="includes/datePickerES.jspf" %>
+
+		$('#rueditaLogin').bind("mouseenter", function(event) {
+			$('#centralRueditaLogin').fadeIn();
+		});
+		$('#rueditaLogin').bind("mouseout", function(event) {
+			$('#centralRueditaLogin').fadeOut();
+		});
+		$('#rueditaParkings').bind("mouseenter", function(event) {
+			$('#centralRueditaParkings').fadeIn();
+		});
+		$('#rueditaParkings').bind("mouseout", function(event) {
+			$('#centralRueditaParkings').fadeOut();
+		});
 
 		$("input[name=password]").bind("keydown", function(event) {
 		      // track enter key
