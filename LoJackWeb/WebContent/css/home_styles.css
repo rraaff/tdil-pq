@@ -88,8 +88,3 @@ span.userName {
 	float: left;
 }
 span.userSaludation { float: left; }
-
-#flyingObjectContainer {
-	max-width:1568px;
-	margin:0 auto;
-}

@@ -3,6 +3,7 @@
 	width: 100%;
 	z-index: 1000;
 	position: absolute;
+	bottom:20px;
 }
 #copyright .copy {
 	color: #fff;

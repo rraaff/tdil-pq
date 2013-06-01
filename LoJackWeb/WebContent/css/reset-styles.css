@@ -16,7 +16,6 @@ a:hover, a:focus { color:#000; outline:none; text-decoration:none; }
 /* END RESET */
 body, section, div, table, td, tr, header, ul, li, menu, .dir { margin: 0; padding: 0; border:0;}
 body {
-	background: #FFF;
 	color: #3F3F3F;
 	font-weight: normal;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
