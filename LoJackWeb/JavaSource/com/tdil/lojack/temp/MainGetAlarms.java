@@ -25,7 +25,13 @@ public class MainGetAlarms {
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(MainGetAlarms.class);
 	
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getLights xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getLights></s:Body></s:Envelope>");
+		
+		//{"guid":"a5b0981a0188bb9a5b7fe44b6c32d894","lojackUserId":"homeUser"}
+		
+		executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", 
+				"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getAlarms xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getAlarms></s:Body></s:Envelope>");
+		
+		//executePost("http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/", "", "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body><getLights xmlns=\"http://tempuri.org/\"><request>{\"guid\":\"2b64c399-69aa-4b8f-bd79-d5e8bf6075ee\",\"lojackUserId\":\"usuario\"}</request></getLights></s:Body></s:Envelope>");
 	}
 
 	private static XMLResponse executePost(String server, String service, String param) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
@@ -45,7 +51,7 @@ public class MainGetAlarms {
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + url);
 		try {
 			httpMethod.setRequestHeader("Content-type", "text/xml");
-			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/getLights");
+			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/getAlarms");
 			if (xml != null) {
 				RequestEntity requestEntity = new StringRequestEntity(xml);
 				httpMethod.setRequestEntity(requestEntity);
