@@ -21,67 +21,12 @@
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 
 <%@ include file="includes/headLogged.jsp" %>
-
-<link href="css/slider.css" rel="stylesheet" type="text/css" />
+<!-- Slider 
+<script src="js/js-image-slider.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="css/js-image-slider.css"  />
+<link type="text/css" rel="stylesheet" href="css/slider.css"  />
+<!-- end of Slider -->
 <script>
-	var t=setInterval(function(){$("#right").click()},10000);
-	$(document).ready(function()
-	{
-		var present=1;
-		var next=2;
-		var total_slide=document.getElementById("slider").childElementCount;
-
-		$("#right").click(function()
-		{
-
-			present_slide="#slide"+present;
-			next_slide="#slide"+next;
-			$(present_slide).css("top","842px");
-			$(next_slide).css("top","0px");
-			present++;
-			next++;
-			if(present==(total_slide+1))
-			{
-				present=1;
-				next=2;
-				for(i=1;i<=total_slide;i++)
-				{
-					$("#slide"+i).css("top","842px");
-				}
-				$("#slide1").css("top","0px");
-			}
-
-		});
-
-		$("#left").click(function()
-		{
-			if(present==1)
-			{
-			next_slide="#slide"+total_slide;
-			present_slide="#slide"+present;
-			$(present_slide).css("top","842px");
-			$(next_slide).css("top","0px");
-
-			present=total_slide;
-			next=1;
-			}else
-			{
-			next_slide="#slide"+(present-1);
-			present_slide="#slide"+present;
-			$(present_slide).css("top","842px"); 
-			$(next_slide).css("top","0px");
-			present--;
-			next--;
-			}
-			if(next==0)
-			{
-				present=(total_slide-1);
-				next=total_slide;
-
-			}
-		});
-	});
-
 	$(document).ready(
 			function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
@@ -96,9 +41,7 @@
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
-</script>
-<!-- End Slider -->
-<script>
+
 $(function() {
 		$( "#accessPreventPortal" ).click(function() {
 			 $.ajax({
@@ -129,6 +72,7 @@ $(function() {
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
 <link type="text/css" href="css/home_styles.css" rel="stylesheet" />
+<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
@@ -150,7 +94,6 @@ $(function() {
 		</div>
 	</div>
 </header>
-<%@ include file="includes/sectionSlider.jsp" %>
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="flyingObjectContainer"> 
