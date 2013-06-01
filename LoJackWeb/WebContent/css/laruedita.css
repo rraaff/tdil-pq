@@ -1,168 +1,163 @@
+#logoIndex {
+	width: 243px;
+	height: 169px;
+	top:85px;;
+	z-index: 1400;
+	position: fixed;
+}
+#logoIndex img {
+	width: 100%;
+	height: auto;
+}
 #laRuedita {
 	width: 100%;
-	height: 360px;
-	margin:0;
-	top: 100px;
+	height: 100%;
+	margin:0 auto;
+	top: 40%;
 	z-index: 999;
 	position: fixed;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 #laRuedita .fakeRuedita {
-	background: url(../images/skin_lj_rl/backs/wheel.png);
-	background-position: center center;
+	background: url(../images/skin_lj_rl/backs/wheel_mobile.png);
+	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 361px;
-	height: 360px;
+	width: 180px;
+	height: 180px;
 	margin: 0 auto;
-	/*opacity:0.5;
-	filter:alpha(opacity=50);*/
-}
-#flyingObjectContainer {
-	/*border:solid 3px #000;
-	background: #999;*/
-	max-width:1568px;
-	height:100%;
-	margin:0 auto;
-}
-#logoIndex {
-	max-width: 30%;
-	height: auto;
-	top: 10%;
-	z-index: 998;
-	position: fixed;
 }
 /* ICONOS */
 #iconoLogin,
 #iconoLogout {
 	/*border: dotted 1px red;*/
-	background: url(../images/skin_lj_rl/buttons/wheel_lock_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 117px;
-	height: 117px;
-	top:27px;
-	left:27px;
+	width:59px;
+	height:59px;
+	top:13px;
+	left:13px;
 	z-index: 1101;
 	position: relative;
+}
+#iconoLogout {
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_logout_off.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
 }
 #iconoLogin img,
 #iconoLogout img,
 #iconoProfile img,
 #iconoCar img,
 #iconoPets img {
-	width: 117px;
-	height: 117px;
+	width: 59px;
+	height: 59px;
 	margin: 0;
 	padding: 0;
 }
 #iconoLogin:hover,
 #iconoLogin:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_lock_on.png);
-	background-position: 0 0;
-	background-repeat: no-repeat;
-}
-#iconoLogout {
-	background: url(../images/skin_lj_rl/buttons/wheel_logout_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_lock_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoLogout:hover,
 #iconoLogout:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_logout_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_logout_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoParkings {
-	background: url(../images/skin_lj_rl/buttons/wheel_parkings_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_parkings_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 139px;
-	height: 96px;
-	top: -107px;
-	left: 107px;
+	width: 70px;
+	height: 48px;
+	top: -55px;
+	left: 54px;
 	z-index: 1102;
 	position: relative;
 }
 #iconoParkings img {
-	width: 139px;
-	height: 96x;
+	width: 70px;
+	height: 48px;
 	margin: 0;
 	padding: 0;
 }
 #iconoParkings:hover,
 #iconoParkings:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_parkings_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_parkings_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoProfile {
-	background: url(../images/skin_lj_rl/buttons/wheel_profile_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_profile_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 117px;
-	height: 117px;
-	top: -186px;
-	left: 217px;
+	width: 59px;
+	height: 59px;
+	top: -94px;
+	left: 109px;
 	z-index: 1103;
 	position: relative;
 }
 #iconoProfile:hover, #iconoProfile:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_profile_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_profile_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoCar {
 	/*border: dotted 1px yellow;*/
-	background: url(../images/skin_lj_rl/buttons/wheel_car_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_car_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 117px;
-	height: 117px;
-	top: -114px;
-	left: 27px;
+	width: 59px;
+	height: 59px;
+	top: -57px;
+	left: 13px;
 	z-index: 1104;
 	position: relative;
 }
 #iconoCar:hover, #iconoCar:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_car_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_car_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoHome {
 	/*border: dotted 1px yellow;*/
-	background: url(../images/skin_lj_rl/buttons/wheel_home_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_home_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 131px;
-	height: 96px;
-	top: -193px;
-	left: 115px;
+	width: 66px;
+	height: 48px;
+	top: -97px;
+	left: 58px;
 	z-index: 1105;
 	position: relative;
 }
 #iconoHome img {
-	width: 131px;
-	height: 96px;
+	width: 66px;
+	height: 48px;
 }
 #iconoHome:hover, #iconoHome:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_home_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_home_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 #iconoPets {
 	/*border: dotted 1px yellow;*/
-	background: url(../images/skin_lj_rl/buttons/wheel_pets_off.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_pets_off.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	width: 117px;
-	height: 117px;
-	top: -327px;
-	left: 217px;
+	width: 59px;
+	height: 59px;
+	top: -165px;
+	left: 109px;
 	z-index: 1106;
 	position: relative;
 }
 #iconoPets:hover, #iconoPets:focus {
-	background: url(../images/skin_lj_rl/buttons/wheel_pets_on.png);
+	background: url(../images/skin_lj_rl/buttons/mobile/wheel_pets_on.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
@@ -184,7 +179,6 @@
 	position: absolute;
 	top: 107px;
 }
-
 .centralRueditaContent {
 	display: none;
 	color: #ee5222;
@@ -203,4 +197,60 @@
 	position: absolute;
 	top: 0px;
 	left: 0px;
+}
+#losIconos {
+	background: url(../images/skin_lj_rl/backs/icons_onScreen.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	width:100%;
+	height:100%;
+	z-index: 990;
+	position: fixed;
+	vertical-align: middle;
+}
+#elTelefono {
+	width: 100%;
+	height: 90%;
+	top:10%;
+	z-index: 992;
+	position: fixed;
+	vertical-align: middle;
+}
+#elTelefono img {
+	width: auto;
+	height: 90%;
+	margin:0 auto;
+	position:relative;
+}
+#laSombreaT {
+	width: 100%;
+	height: auto;
+	bottom: 0;
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+}
+#laSombreaT img {
+	width: 50%;
+	margin: 0 auto;
+	position: relative;
+}
+#welcomeText {
+	background: url(../images/skin_lj_rl/backs/welcomeText.png);
+	background-repeat: no-repeat;
+	background-position:0 0;
+	background-size: contain;
+	-moz-background-size: contain;
+	-webkit-background-size: contain;
+	max-width: 435px;
+	width: 24%;
+	min-height: 184px;
+	z-index:980;
+	left: 67%;
+	top: 40%;
+	position: fixed;
 }
