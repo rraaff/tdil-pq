@@ -31,6 +31,9 @@
   <form-bean id="EditProfileFormMobile" name="EditProfileFormMobile" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
   <form-bean id="ChangePasswordFormMobile" name="ChangePasswordFormMobile" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
   <form-bean id="UpdatePersonFormMobile" name="UpdatePersonFormMobile" type="com.tdil.lojack.struts.forms.RegisterForm"/>
+  <form-bean id="AlarmsFormMobile" name="AlarmsFormMobile" type="com.tdil.lojack.struts.forms.AlarmsForm"/>
+  <form-bean id="ActivateAlarmFormMobile" name="ActivateAlarmFormMobile" type="com.tdil.lojack.struts.forms.ActivateAlarmForm"/>
+  <form-bean id="DeactivateAlarmFormMobile" name="DeactivateAlarmFormMobile" type="com.tdil.lojack.struts.forms.DeactivateAlarmForm"/>
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -278,6 +281,23 @@
   <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/updatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.SavePersonActionMobile">
   	<forward name="failure" path="/mobile/updatePersonModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
+  </action>
+  <action name="AlarmsFormMobile" parameter="HomeUser" path="/goToHomeAlarmsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
+  	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
+  </action>
+  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/goToActivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  	<forward name="continue" path="/mobile/activateAlarmModal.jsp" redirect="true"/>
+  </action>
+  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/activateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/mobile/activateAlarmModal.jsp"/>
+  	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
+  </action>
+  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/goToDeactivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  	<forward name="continue" path="/mobile/deactivateAlarmModal.jsp" redirect="true"/>
+  </action>
+  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/deactivateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/mobile/deactivateAlarmModal.jsp"/>
+  	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
   </action>
   
 

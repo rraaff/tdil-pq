@@ -12,6 +12,13 @@
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
+<script type="text/javascript">
+function enterPets() {
+	var userDate = new Date();
+	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl()%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
+}
+</script>
 </head>
 <body>
 Home
@@ -27,6 +34,20 @@ Home
 
 <a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar mi clave</a><br>
 <a href="../goToUpdatePersonMobile.do" title="Cambiar mis clave">Cambiar mis datos</a><br>
+
+<% if (websiteUser.isHomeUser()) { %>
+	<a href="./productoHome.jsp">Home</a><br>
+<% } %>
+<% if (websiteUser.isPetUser()) { %>
+	<a href="javascript:enterPets()">Pets</a>
+<% } %>
+<% if (websiteUser.isPreventUser()) { %>
+	<% if (websiteUser.isPreventLogged()) { %>
+		<a href="./productoPrevent.jsp" title="Administrar tus autos">Car</a>
+	<% } else { %>
+		<a href="./productoPreventLoginModal.jsp" title="Administrar tus autos">Car</a>
+	<% } %>
+<% } %>
 
 </body>
 </head>

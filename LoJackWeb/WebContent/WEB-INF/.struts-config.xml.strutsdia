@@ -603,4 +603,61 @@
    PATH="/mobile/home.jsp" TARGET="page24" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToHomeAlarmsMobile" NAME="action79"
+  PATH="/goToHomeAlarmsMobile" SHAPE="32,1649,0,0"
+  TITLE="AlarmsFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeAlarmas.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page33" PATH="/mobile/homeAlarmas.jsp"
+  SHAPE="656,1649,0,0" SUBTYPE="jsp" TITLE="homeAlarmas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToActivateAlarmMobile" NAME="action80"
+  PATH="/goToActivateAlarmMobile" SHAPE="32,2017,0,0"
+  TITLE="ActivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/activateAlarmModal.jsp" TARGET="page34"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page34" PATH="/mobile/activateAlarmModal.jsp"
+  SHAPE="240,2290,0,0" SUBTYPE="jsp" TITLE="activateAlarmModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/activateAlarmMobile.do"
+   SUBTYPE="confirmed" TARGET="action81" TITLE="/activateAlarmMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#activateAlarmMobile" NAME="action81"
+  PATH="/activateAlarmMobile" SHAPE="448,2290,0,0"
+  TITLE="ActivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/activateAlarmModal.jsp" TARGET="page34" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/mobile/homeAlarmas.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToDeactivateAlarmMobile" NAME="action82"
+  PATH="/goToDeactivateAlarmMobile" SHAPE="464,2817,0,0"
+  TITLE="DeactivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/deactivateAlarmModal.jsp" TARGET="page35"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page35" PATH="/mobile/deactivateAlarmModal.jsp"
+  SHAPE="704,2546,0,0" SUBTYPE="jsp" TITLE="deactivateAlarmModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/deactivateAlarmMobile.do"
+   SUBTYPE="confirmed" TARGET="action83"
+   TITLE="/deactivateAlarmMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deactivateAlarmMobile" NAME="action83"
+  PATH="/deactivateAlarmMobile" SHAPE="464,2529,0,0"
+  TITLE="DeactivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/deactivateAlarmModal.jsp" TARGET="page35"
+   TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/mobile/homeAlarmas.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

@@ -1,0 +1,4 @@
+<% if (!com.tdil.lojack.roles.HomeUser.INSTANCE.isValid(websiteUser)) { %>
+	<jsp:forward page="./home.jsp"></jsp:forward>
+<% return;
+	} %>
