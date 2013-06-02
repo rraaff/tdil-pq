@@ -30,7 +30,7 @@
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsFormMobile"); %>
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 
-Alarma: <%= alarm.getDescription() %><a href="../renameAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Cambiar</a><br>
+Alarma: <%= alarm.getDescription() %><a href="../goToRenameAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Cambiar</a><br>
 Estado: <%=alarm.getStatus()%><% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>*<% } %><br>
 <% if (alarm.isInactive() ) { %>
 		<a href="../goToActivateAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Activar</a>
@@ -40,8 +40,12 @@ Estado: <%=alarm.getStatus()%><% if (AsyncJobUtils.hasJobInProgress(alarm, websi
 <% if (alarm.hasChangeData()) { %>
  			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
  			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
- 			<span class="changesLog"><a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
- 			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+ 			<span class="changesLog"><a href="../goToAlarmLogMobile.do?idEntidad=<%= alarm.getIdEntidad() %>">Ver log completo</a></span>
+ 			<% if (alarm.isEmailnotification()) { %>
+ 				Email notificacion  <a href="../deactivateAlarmNotificacionMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Desactivar email</a>
+ 			<% } else { %>
+ 				No Email notificacion <a href="../activateAlarmNotificacionMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Activar email</a>
+ 			<% } %>
  			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
  		<% } %>
  		<hr>
