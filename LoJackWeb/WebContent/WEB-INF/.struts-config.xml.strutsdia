@@ -748,5 +748,78 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page38" PATH="/mobile/homeAlarmaAgenda.jsp"
   SHAPE="240,3153,0,0" SUBTYPE="jsp" TITLE="homeAlarmaAgenda.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAlarmAgendaMobile.do"
+   SUBTYPE="confirmed" TARGET="action91"
+   TITLE="/saveAlarmAgendaMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToHomeLightsMobile" NAME="action94"
+  PATH="/goToHomeLightsMobile" SHAPE="496,2529,0,0"
+  TITLE="LightsFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeLuces.jsp" TARGET="page39" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page39" PATH="/mobile/homeLuces.jsp"
+  SHAPE="704,2641,0,0" SUBTYPE="jsp" TITLE="homeLuces.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#turnOnLightMobile" NAME="action95"
+  PATH="/turnOnLightMobile" SHAPE="240,4833,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#turnOffLightMobile" NAME="action96"
+  PATH="/turnOffLightMobile" SHAPE="240,4833,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#activateRandomSequenceMobile" NAME="action97"
+  PATH="/activateRandomSequenceMobile" SHAPE="240,4833,0,0"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deactivateRandomSequenceMobile" NAME="action98"
+  PATH="/deactivateRandomSequenceMobile" SHAPE="240,4833,0,0"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#deactivateLightNotificacionMobile" NAME="action99"
+  PATH="/deactivateLightNotificacionMobile" SHAPE="240,4833,0,0"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#activateLightNotificacionMobile" NAME="action100"
+  PATH="/activateLightNotificacionMobile" SHAPE="240,4833,0,0"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToRenameLightMobile" NAME="action101"
+  PATH="/goToRenameLightMobile" SHAPE="240,5121,0,0"
+  TITLE="RenameLightFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/renameLightModal.jsp" TARGET="page40" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page40" PATH="/mobile/renameLightModal.jsp"
+  SHAPE="512,4818,0,0" SUBTYPE="jsp" TITLE="renameLightModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#renameLightMobile" NAME="action102"
+  PATH="/renameLightMobile" SHAPE="240,4833,0,0"
+  TITLE="RenameLightFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/renameLightModal.jsp" TARGET="page40" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

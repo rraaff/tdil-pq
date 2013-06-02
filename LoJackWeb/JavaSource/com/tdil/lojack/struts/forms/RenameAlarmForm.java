@@ -31,7 +31,9 @@ public class RenameAlarmForm extends AlarmForm {
 		List<AlarmConf> result = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
 		if (!result.isEmpty()) {
 			setDescription(result.get(0).getDescription());
-		} 
+		} else {
+			setDescription("");
+		}
 	}
 
 	@Override

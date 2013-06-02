@@ -37,6 +37,9 @@
   <form-bean id="RenameAlarmFormMobile" name="RenameAlarmFormMobile" type="com.tdil.lojack.struts.forms.RenameAlarmForm"/>
   <form-bean id="AlarmLogFormMobile" name="AlarmLogFormMobile" type="com.tdil.lojack.struts.forms.AlarmLogForm"/>
   <form-bean id="AlarmAgendaFormMobile" name="AlarmAgendaFormMobile" type="com.tdil.lojack.struts.forms.AlarmAgendaForm"/>
+  <form-bean id="LightsFormMobile" name="LightsFormMobile" type="com.tdil.lojack.struts.forms.LightsForm"/>
+  <form-bean id="RenameLightFormMobile" name="RenameLightFormMobile" type="com.tdil.lojack.struts.forms.RenameLightForm"/>
+  
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -335,9 +338,34 @@
   <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/toggleActivationAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-
-
-
+  <action name="LightsFormMobile" parameter="HomeUser" path="/goToHomeLightsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
+  	<forward name="continue" path="/mobile/homeLuces.jsp" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/turnOnLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOnLightActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/turnOffLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOffLightActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/activateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/deactivateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/activateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/deactivateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationActionMobile">
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action name="RenameLightFormMobile" parameter="HomeUser" path="/goToRenameLightMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLightAction">
+  	<forward name="continue" path="/mobile/renameLightModal.jsp" redirect="true"/>
+  </action>
+  <action name="RenameLightFormMobile" parameter="HomeUser" path="/renameLightMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/mobile/renameLightModal.jsp"/>
+  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
