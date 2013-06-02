@@ -4,7 +4,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalam
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.timeout','5000','Timeout en millis',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('guid','a5b0981a0188bb9a5b7fe44b6c32d894','gui',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('guid','2b64c399-69aa-4b8f-bd79-d5e8bf6075ee','gui',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('gis.server','http://localhost:8180/GISWeb/gis/','gis.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.server','http://localhost:8180/GISWeb/services/','services.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.timeout','5000','Timeout en millis',0);
