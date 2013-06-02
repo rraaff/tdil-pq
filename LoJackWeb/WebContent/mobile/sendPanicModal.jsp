@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.struts.forms.SendPanicForm"%>
 <%@ page info="index"%><!--
 --><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
@@ -27,29 +28,9 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 </head>
 <body>
-<a href="../goToSendPanicMobile.do">Enviar senial de panico</a><br>
-
-<% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsFormMobile"); %>
+<% SendPanicForm alarmsForm = (SendPanicForm)session.getAttribute("SendPanicFormMobile"); %>
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>
-
-Alarma: <%= alarm.getDescription() %><a href="../goToRenameAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Cambiar</a><br>
-Estado: <%=alarm.getStatus()%><% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>*<% } %><br>
-<% if (alarm.isInactive() ) { %>
-		<a href="../goToActivateAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Activar</a>
-	<% } else { %>
-		<a href="../goToDeactivateAlarmMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Desactivar</a>
-	<% } %>
-	<% if (alarm.hasChangeData()) { %>
-		<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
-		<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
-	<% } %>
-	<span class="changesLog"><a href="../goToAlarmLogMobile.do?idEntidad=<%= alarm.getIdEntidad() %>">Ver log completo</a></span>
-	<% if (alarm.isEmailnotification()) { %>
-		Email notificacion  <a href="../deactivateAlarmNotificacionMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Desactivar email</a>
-	<% } else { %>
-		No Email notificacion <a href="../activateAlarmNotificacionMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Activar email</a>
-	<% } %>
-	<span class="linkToAgenda"><a href="../goToHomeAlarmAgendaMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+	Alarma: <%= alarm.getDescription() %><a href="../sendPanicMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Enviar senial de panico</a><br>
 	<hr>
 <% } %>
 

@@ -40,6 +40,7 @@
   <form-bean id="LightsFormMobile" name="LightsFormMobile" type="com.tdil.lojack.struts.forms.LightsForm"/>
   <form-bean id="RenameLightFormMobile" name="RenameLightFormMobile" type="com.tdil.lojack.struts.forms.RenameLightForm"/>
   <form-bean id="LightAgendaFormMobile" name="LightAgendaFormMobile" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
+  <form-bean id="SendPanicFormMobile" name="SendPanicFormMobile" type="com.tdil.lojack.struts.forms.SendPanicForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -322,6 +323,14 @@
   <action name="AlarmLogFormMobile" parameter="HomeUser" path="/goToAlarmLogMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
   	<forward name="continue" path="/mobile/logAlarmaModal.jsp" redirect="true"/>
   </action>
+  <action name="SendPanicFormMobile" parameter="HomeUser" path="/goToSendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLoJackAction">
+  	<forward name="continue" path="/mobile/sendPanicModal.jsp" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/sendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.SendPanicAlarmActionMobile">
+  	<forward name="failure" path="/mobile/sendPanicModal.jsp"/>
+  	<forward name="continue" path="/goToHomeAlarmsMobile.do" redirect="true"/>
+  </action>
+  
   
   <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/goToHomeAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>

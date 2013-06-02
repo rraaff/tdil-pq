@@ -871,4 +871,23 @@
    PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToSendPanicMobile" NAME="action108"
+  PATH="/goToSendPanicMobile" SHAPE="32,7041,0,0"
+  TITLE="SendPanicFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/sendPanicModal.jsp" TARGET="page43" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page43" PATH="/mobile/sendPanicModal.jsp"
+  SHAPE="240,7041,0,0" SUBTYPE="jsp" TITLE="sendPanicModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#sendPanicMobile" NAME="action109"
+  PATH="/sendPanicMobile" SHAPE="80,2529,0,0" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/sendPanicModal.jsp" TARGET="page43" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/goToHomeAlarmsMobile.do" TARGET="action79" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>
