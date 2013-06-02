@@ -187,13 +187,13 @@
 						<label class="radiosFreq"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
 					</fieldset>
 					<fieldset>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="monday"/>Lu</label>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="tuesday"/>Ma</label> 
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="wednesday"/>Mi</label>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="thursday"/>Ju</label>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="friday"/>Vi</label>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="saturday"/>Sa</label>
-						<label class="days"><html:checkbox name="AlarmAgendaForm" property="sunday"/>Do</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="monday"/>Lu</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="tuesday"/>Ma</label> 
+						<label class="days"><html:checkbox name="LightAgendaForm" property="wednesday"/>Mi</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="thursday"/>Ju</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="friday"/>Vi</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="saturday"/>Sa</label>
+						<label class="days"><html:checkbox name="LightAgendaForm" property="sunday"/>Do</label>
 					</fieldset>
 					<fieldset>
 						<logic:equal name="LightAgendaForm" property="edition" value="true">

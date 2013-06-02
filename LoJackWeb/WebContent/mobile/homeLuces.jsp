@@ -64,7 +64,7 @@ Luz: <%= light.getDescription() %><a href="../goToRenameLightMobile.do?idEntidad
 	No Email notificacion <a href="../activateLightNotificacionMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Activar email</a>
 <% } %>
 
-<a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+<a href="../goToHomeLightAgendaMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
 
 
  		<hr>

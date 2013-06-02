@@ -811,7 +811,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page40" PATH="/mobile/renameLightModal.jsp"
   SHAPE="512,4818,0,0" SUBTYPE="jsp" TITLE="renameLightModal.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/renameLightMobile.do"
+   SUBTYPE="confirmed" TARGET="action102" TITLE="/renameLightMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#renameLightMobile" NAME="action102"
   PATH="/renameLightMobile" SHAPE="240,4833,0,0"
   TITLE="RenameLightFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -820,6 +824,51 @@
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/goToHomeLightsMobile.do" TARGET="action94" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToHomeLightAgendaMobile" NAME="action103"
+  PATH="/goToHomeLightAgendaMobile" SHAPE="32,5777,0,0"
+  TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page41" PATH="/mobile/homeLuzAgenda.jsp"
+  SHAPE="304,5794,0,0" SUBTYPE="jsp" TITLE="homeLuzAgenda.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveLightAgendaMobile.do"
+   SUBTYPE="confirmed" TARGET="action105"
+   TITLE="/saveLightAgendaMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editLightAgendaMobile" NAME="action104"
+  PATH="/editLightAgendaMobile" SHAPE="32,5889,0,0"
+  TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveLightAgendaMobile" NAME="action105"
+  PATH="/saveLightAgendaMobile" SHAPE="32,6001,0,0"
+  TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetLightAgendaMobile" NAME="action106"
+  PATH="/resetLightAgendaMobile" SHAPE="32,6257,0,0"
+  TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleActivationLightAgendaMobile" NAME="action107"
+  PATH="/toggleActivationLightAgendaMobile" SHAPE="32,6369,0,0"
+  TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
 </PROCESS>

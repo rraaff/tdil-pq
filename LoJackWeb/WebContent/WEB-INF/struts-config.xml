@@ -39,6 +39,7 @@
   <form-bean id="AlarmAgendaFormMobile" name="AlarmAgendaFormMobile" type="com.tdil.lojack.struts.forms.AlarmAgendaForm"/>
   <form-bean id="LightsFormMobile" name="LightsFormMobile" type="com.tdil.lojack.struts.forms.LightsForm"/>
   <form-bean id="RenameLightFormMobile" name="RenameLightFormMobile" type="com.tdil.lojack.struts.forms.RenameLightForm"/>
+  <form-bean id="LightAgendaFormMobile" name="LightAgendaFormMobile" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -366,6 +367,24 @@
   	<forward name="failure" path="/mobile/renameLightModal.jsp"/>
   	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
   </action>
+  
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/goToHomeLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
+  	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/editLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
+  	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/saveLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
+  	<forward name="failure" path="/mobile/homeLuzAgenda.jsp"/>
+  	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/resetLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/toggleActivationLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
+  	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
