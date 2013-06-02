@@ -46,7 +46,7 @@ Estado: <%=alarm.getStatus()%><% if (AsyncJobUtils.hasJobInProgress(alarm, websi
  			<% } else { %>
  				No Email notificacion <a href="../activateAlarmNotificacionMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Activar email</a>
  			<% } %>
- 			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+ 			<span class="linkToAgenda"><a href="../goToHomeAlarmAgendaMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
  		<% } %>
  		<hr>
 <% } %>

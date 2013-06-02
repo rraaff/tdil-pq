@@ -708,4 +708,45 @@
  <PROCESS-ITEM NAME="page37" PATH="/mobile/logAlarmaModal.jsp"
   SHAPE="240,4018,0,0" SUBTYPE="jsp" TITLE="logAlarmaModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToHomeAlarmAgendaMobile" NAME="action89"
+  PATH="/goToHomeAlarmAgendaMobile" SHAPE="32,3041,0,0"
+  TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#editAlarmAgendaMobile" NAME="action90"
+  PATH="/editAlarmAgendaMobile" SHAPE="32,3441,0,0"
+  TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveAlarmAgendaMobile" NAME="action91"
+  PATH="/saveAlarmAgendaMobile" SHAPE="32,3777,0,0"
+  TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resetAlarmAgendaMobile" NAME="action92"
+  PATH="/resetAlarmAgendaMobile" SHAPE="32,4033,0,0"
+  TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#toggleActivationAlarmAgendaMobile" NAME="action93"
+  PATH="/toggleActivationAlarmAgendaMobile" SHAPE="32,4145,0,0"
+  TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page38" PATH="/mobile/homeAlarmaAgenda.jsp"
+  SHAPE="240,3153,0,0" SUBTYPE="jsp" TITLE="homeAlarmaAgenda.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
