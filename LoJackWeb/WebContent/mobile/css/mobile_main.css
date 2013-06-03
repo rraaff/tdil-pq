@@ -3,33 +3,61 @@ div,
 input[type="submit"] { box-sizing: border-box; }
 h1 {
 	color:#dc2c27;
-	font-size: 130%;
+	font-size: 100%;
 	line-height:normal;
 	text-align: center;
 	padding: 10px 0;
 	text-transform:uppercase;
 }
-#loginContent {
-	border:dotted 1px yellow;
+#user {
+	color:#fff;
+	background:#000;
+	font-size:8px;
+	line-height:11px;
+	text-transform:uppercase;
+	text-align:center;
+	width:100%;
+	padding:5px 0;
+	display: inline-block;
+}
+span.userName { color:#f05224; }
+#loginContent,
+#recoverPassContent,
+#registrationContent,
+#legalesLayerID {
 	width:100%;
 	height:100%;
 	display:inline-block;
 }
-#loginContent form {
-	max-width:800px;
-	
-	margin:10px auto;
-	padding:50px 50px 0 50px;
+#legalesLayerID {
+	box-sizing: border-box; 
+	padding:20px 0;
+	font-size:80%;
+	line-height:normal;
+	text-align:left;
 }
-#loginContent fieldset { width:100%; }
-#loginContent fieldset label {
+#legalesLayerID h3 { font-weight:bold; padding:20px 0 10px; }
+#loginContent form,
+#recoverPassContent form,
+#registrationContent form {
+	max-width:800px;
+	margin:10px auto;
+	padding:0 15px 0 15px;
+}
+#loginContent fieldset,
+#recoverPassContent fieldset,
+#registrationContent fieldset { width:100%; }
+#loginContent fieldset label,
+#recoverPassContent fieldset label,
+#registrationContent fieldset label {
 	color:#dc2c27;
-	font-size: 45px;
-	line-height:65px;
+	font-size:80%;
+	line-height:normal;
 	text-align:left;
 	text-transform:uppercase;
 	width:100%; 
 }
+#registrationContent fieldset label.readOnly { color:#424242; }
 #loginContent select,
 #loginContent select option,
 #loginContent input:not([type]),
@@ -39,30 +67,53 @@ h1 {
 #loginContent input[type="password"],
 #loginContent input[type="tel"],
 #loginContent input[type="url"],
-#loginContent input[type="text"] {
+#loginContent input[type="text"],
+#recoverPassContent input[type="email"],
+#recoverPassContent input[type="text"],
+#registrationContent select,
+#registrationContent select option,
+#registrationContent input:not([type]),
+#registrationContent input[type="color"],
+#registrationContent input[type="email"],
+#registrationContent input[type="number"],
+#registrationContent input[type="password"],
+#registrationContent input[type="tel"],
+#registrationContent input[type="url"],
+#registrationContent input[type="text"] {
 	border:none;
 	background:#2c2c2c;
 	color:#fff;
-	width: 100%;
-	font-size: 45px;
-	line-height:65px;
-	margin: 30px 0;
+	font-size:80%;
+	line-height:normal;
+	width:100%;
+	padding:10px 0;
+	margin:10px 0;
 }
+#loginContent select,
+#loginContent select option,
+#recoverPassContent select,
+#recoverPassContent select option,
+#registrationContent select,
+#registrationContent select option, { line-height:18px; height:45px; }
 #loginContent a.buttonLink {
 	color:#dc2c27;
-	font-size: 45px;
-	line-height:65px;
+	font-size:60%;
+	line-height:normal;
 	text-transform:uppercase;
-	padding:20px 0;
+	padding:10px 0;
 	float: left;
 }
-#loginContent input[type="submit"].indexLogin {
+#loginContent input[type="submit"].indexLogin,
+#recoverPassContent input[type="submit"].buttonSend,
+#registrationContent input[type="submit"].buttonSend,
+#legalesLayerID a.indexButtonBase {
 	border:none;
 	background:#dc2c27;
 	color:#fff;
-	font-size: 45px;
-	line-height:65px;
+	font-size:60%;
+	line-height:normal;
 	text-transform:uppercase;
-	padding:20px 30px;
+	padding:10px 20px;
 	float: right;
 }
+#registrationContent p { font-size:8px; padding:0 10px; }

@@ -16,15 +16,15 @@
 	margin: 0 auto;
 }
 #logoIndex {
-	width: 28%;
-	height: auto;
-	top: 100px;
-	z-index: 998;
-	position: fixed;
+	width:28%;
+	height:auto;
+	top:50px;
+	z-index:998;
+	position:fixed;
 }
 #logoIndex img {
-	width: 100%;
-	height: auto;
+	width:100%;
+	height:auto;
 }
 /* ICONOS */
 #iconoLogin,
