@@ -19,37 +19,9 @@ DONE enter submit en username y password en el login
 {"profile":{"document":{},"email":"rrraa@gmail.com","address":{"countryId":1,"street2":""},"phone":{"type":"cellphone","intCode":"54"}},"credential":{"principal":"0:","password":"123456"}}
 {"errors":{"credential.principal":"CredentialAlreadyExists"}} status 400
 
-*****
-
-login
-javascript para que pida seleccion de tipo de documento
-
-
-*************************************************************************************************************
-
-LOGIN
-- Cuando escribo el usuario, clave y le doy [ENTER] me toma como acción default, el close layer, en lugar del login.
-
-
-*************************************************************************************************************
-
-GENERAL
-- Video LAYER: Traté de hacerlo para que se vea en todo el sitio.
-  Dado que lo voy a usar un montón de veces inclusive voy a necesitar pasarle parametros al layer para ver qué video muestro. y no me funciona el link de volver.
-Ahi le hice un toque, igual no existe el include con parametros, despues lo charlamos
-
 *************************************************************************************************************
 
 http://www.whatsmyuseragent.com/
-
-Ver que el formulario de contacto funcione en todas las paginas
-
-Contact arreglalo visualmente, es un desastre
-
-index: Te arregle el swithToRegister, te habia quedado el tag a sin cerrar y ocupaba toda la pagina
-
-*****
-detect mobile
 
 *************************************************************************************************************
 HOME.JSP
