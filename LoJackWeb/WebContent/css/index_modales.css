@@ -397,6 +397,10 @@ input[type="text"].width240 { width: 240px; }
 	height: 431px;
 	margin: 10px 0;
 }
+iframe#videoIframe {
+	width: 927px;
+	height: 431px;
+}
 .readOnly {
 	font-size: 14px;
 	font-weight: bold;
