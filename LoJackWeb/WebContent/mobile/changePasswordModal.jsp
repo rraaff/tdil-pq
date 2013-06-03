@@ -20,9 +20,23 @@
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
+<link href="css/internal_menu.css" rel="stylesheet" type="text/css">
+<link href="css/mobile_main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h3>Cambiar clave</h3>
+<div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
+<div id="internalHeader">
+	<ul>
+		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
+		<li><a href="home.jsp" title="Volver">< Volver</a></li>
+		<li><a href="../logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
+	</ul>
+</div>
+<div id="registrationContent">
+	<h1>Cambiar clave</h1>
 	<html:form method="POST" action="/changePasswordMobile">
 		<div class="myRow">
 			<div class="myLabel width120">Clave actual</div>
@@ -39,8 +53,8 @@
 			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="confirmNewPassword" styleClass="normalField width250"/></div>
 			<%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%>
 		</div>	
-		<div class="myRow" align="center"><input type="submit" value="Grabar" /></div>
-
+		<div class="myRow" align="center"><input type="submit" class="buttonSend" /></div>
 	</html:form>
+</div>
 </body>
 </html>

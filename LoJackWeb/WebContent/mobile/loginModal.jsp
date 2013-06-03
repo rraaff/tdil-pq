@@ -1,4 +1,4 @@
-<%@ page info="index"%><!--
+<%@ page info="loginModal"%><!--
 --><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><!--
 --><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><!--
 --><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
@@ -16,6 +16,8 @@
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/internal_menu.css" rel="stylesheet" type="text/css">
 <link href="css/mobile_main.css" rel="stylesheet" type="text/css">
@@ -24,8 +26,8 @@
 <div id="internalHeader">
 	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
 	<ul>
-		<li><a href="./goToMobileRegistration.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
-		<li><a href="legales.jsp">Legales</a></li>
+		<li><a href="../goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
+		<li><a href="legal.jsp">Legales</a></li>
 		<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
 	</ul>
 </div>
@@ -36,7 +38,7 @@
 				<label>Tipo doc</label>
 				<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginFormMobile"); %>
 				<html:select name="LoginFormMobile" property="documentType" >
-						<!-- option value="">Seleccione...</option-->
+						<option value="">Seleccione...</option>
 						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
 							<option value="<%=codBean.getId()%>">
 								<%=codBean.getName()%></option>
@@ -54,7 +56,7 @@
 			</fieldset>
 			<div class="errorInForm"></div>
 			<fieldset>
-				<a class="buttonLink" href="./recordarPasswordModal.jsp">Olvidé mi clave</a>
+				<a class="buttonLink" href="./recuperarClaveModal.jsp">Olvidé mi clave</a>
 				<input type="submit" id="submitlogin" value="Ingresar" class="indexLogin">
 			</fieldset>
 	</html:form>

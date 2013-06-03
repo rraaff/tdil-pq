@@ -12,6 +12,7 @@
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/index_menu.css" rel="stylesheet" type="text/css">
 <link href="css/laruedita.css" rel="stylesheet" type="text/css">
@@ -24,26 +25,24 @@ function enterPets() {
 }
 </script>
 <style type="text/css">
-#user {
-	color:#fff;
-	background:#000;
-	font-size:18px;
-	line-height:20px;
-	text-transform:uppercase;
-	text-align:center;
-	width:100%;
-	padding:20px 0;
-	display: inline-block;
+#logoIndex { top: 80px; }
+#laRuedita { top: 25%; }
+@media only screen and (max-height : 320px) {
+	#copyright {
+		display: none;
+	}
+	#user {
+		display: none;
+	}
+	#laRuedita { top: 15%; }
 }
-span.userName { color:#f05224; }
-#logoIndex { top: 150px; }
 </style>
 </head>
 <body>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="menu">
 	<ul>
-		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar mi clave</a></li>
+		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
 		<li><a href="../goToUpdatePersonMobile.do" title="Cambiar mis datos">Cambiar mis datos</a></li>
 		<li><a href="../logoutMobile.do" class="last" title="Salir del sistema">Salir</a></li>
 	</ul>
@@ -67,16 +66,18 @@ span.userName { color:#f05224; }
 			<% } else { %>
 				<div id="iconoCar"><a href="../productoPrevent.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 			<% } %>
+		<% } else { %>
+			<div id="iconoCar"><a href="videoPageCar.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<% if (websiteUser.isHomeUser()) { %>
 			<div id="iconoHome"><a href="../productoHome.jsp" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
-			<div id="iconoHome"><a href="#" onclick="javascript:showVideo1();" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
+			<div id="iconoHome"><a href="videoPageHome.jsp" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<% if (websiteUser.isPetUser()) { %>
 			<div id="iconoPets"><a href="javascript:enterPets()" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
-			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1();" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="videoPagePets.jsp" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
 		<% } %>
 	</div>
 </div>
@@ -85,7 +86,7 @@ span.userName { color:#f05224; }
 </div>
 <div id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="javascript:verLegales();" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="javascript:contactLoJack();" title="Envianos tu consulta">clic acá</a>.</p>
+		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="javascript:contactLoJack();" title="Envianos tu consulta">clic acá</a>.</p>
 	</div>
 </div>
 </body>
