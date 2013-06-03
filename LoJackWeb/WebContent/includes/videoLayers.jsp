@@ -1,6 +1,10 @@
 <script>
 
 function showVideo1(strVideo) {
+	// si strVideo = 'car' : http://www.youtube.com/embed/5Xe5pODPq1I; title : 'Lo Jack Car'; bajada : 'Controlá tu auto o tu flota. Podrás saber dónde están, las velocidades máximas.'
+	// si strVideo = 'home' : http://www.youtube.com/embed/Iz_VvsFwXQI; title : 'Lo Jack Home'; bajada : 'Controlá tus alarmas, luces y cámaras. Manté el control de tu casa.'
+	// si strVideo = 'Pets' : http://www.youtube.com/embed/M8VhrMM0j-Q; title : 'Lo Jack Pets'; bajada : 'Tené a tus mascotas monitoreadas.'
+	// si strVideo = 'loapp' : http://www.youtube.com/embed/G18ElDg9s-o; title : 'Lo App'; bajada : ''
 	centerLayer($(window), $( "#video1Layer" ));
 	centerLayer($(window), $( "#centradorModalesVideo1Layer" ));
 }
@@ -28,10 +32,3 @@ function showVideo1(strVideo) {
 		</div>
 	</div>
 </div>
-<!-- 
-car: http://www.youtube.com/embed/5Xe5pODPq1I
-Home: http://www.youtube.com/embed/Iz_VvsFwXQI
-Pets: http://www.youtube.com/embed/M8VhrMM0j-Q
-LOAPP: http://www.youtube.com/embed/G18ElDg9s-o
-????
--->
