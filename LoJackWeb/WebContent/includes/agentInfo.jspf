@@ -1,0 +1,10 @@
+<%
+	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
+	boolean isMobile = agentInfo.detectMobileLong();
+	boolean isAndroid = agentInfo.detectAndroid();
+	boolean isIpad = agentInfo.detectIpad();
+	boolean isIphone = agentInfo.detectIphone();
+	
+	Boolean _usingMobile = (Boolean)session.getAttribute("usingMobile");
+	boolean usingMobile = (_usingMobile == null) ? false : _usingMobile.booleanValue();
+%>
