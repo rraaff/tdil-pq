@@ -1,9 +1,28 @@
-Si tiene una sola camara, que vaya directo
+mobile
+errores
+mensajes de ok
+boton de refresh?
+selector de fechas en agendas
+prevent
 
-Links a pets y prevent
+checkthalamusup en todos lados
 
-Mobile
+Luces:
+Si esta on, switch
+Si esta off, switch + random
+Si esta random, solo desactivar random
+Si el estado es desconocido, que va? 
 
+DONE validacion cliente
+DONE enter submit en username y password en el login
+
+{"profile":{"document":{},"email":"rrraa@gmail.com","address":{"countryId":1,"street2":""},"phone":{"type":"cellphone","intCode":"54"}},"credential":{"principal":"0:","password":"123456"}}
+{"errors":{"credential.principal":"CredentialAlreadyExists"}} status 400
+
+*****
+
+login
+javascript para que pida seleccion de tipo de documento
 
 
 *************************************************************************************************************
