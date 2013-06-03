@@ -1,0 +1,68 @@
+body { background:#fff; }
+div,
+input[type="submit"] { box-sizing: border-box; }
+h1 {
+	color:#dc2c27;
+	font-size: 130%;
+	line-height:normal;
+	text-align: center;
+	padding: 10px 0;
+	text-transform:uppercase;
+}
+#loginContent {
+	border:dotted 1px yellow;
+	width:100%;
+	height:100%;
+	display:inline-block;
+}
+#loginContent form {
+	max-width:800px;
+	
+	margin:10px auto;
+	padding:50px 50px 0 50px;
+}
+#loginContent fieldset { width:100%; }
+#loginContent fieldset label {
+	color:#dc2c27;
+	font-size: 45px;
+	line-height:65px;
+	text-align:left;
+	text-transform:uppercase;
+	width:100%; 
+}
+#loginContent select,
+#loginContent select option,
+#loginContent input:not([type]),
+#loginContent input[type="color"],
+#loginContent input[type="email"],
+#loginContent input[type="number"],
+#loginContent input[type="password"],
+#loginContent input[type="tel"],
+#loginContent input[type="url"],
+#loginContent input[type="text"] {
+	border:none;
+	background:#2c2c2c;
+	color:#fff;
+	width: 100%;
+	font-size: 45px;
+	line-height:65px;
+	margin: 30px 0;
+}
+#loginContent a.buttonLink {
+	color:#dc2c27;
+	font-size: 45px;
+	line-height:65px;
+	text-transform:uppercase;
+	padding:20px 0;
+	float: left;
+}
+#loginContent input[type="submit"].indexLogin {
+	border:none;
+	background:#dc2c27;
+	color:#fff;
+	font-size: 45px;
+	line-height:65px;
+	text-transform:uppercase;
+	padding:20px 30px;
+	float: right;
+}

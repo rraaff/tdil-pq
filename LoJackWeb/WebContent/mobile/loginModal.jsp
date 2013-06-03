@@ -16,40 +16,48 @@
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
+<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
+<link href="css/internal_menu.css" rel="stylesheet" type="text/css">
+<link href="css/mobile_main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<html:form method="POST" action="/loginMobile">
-				<h3>Ingresar</h3>
-				
-				<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
-					<fieldset>
-						<label>Tipo doc</label>
-						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginFormMobile"); %>
-						<html:select name="LoginFormMobile" property="documentType" >
-								<option value="">Seleccione...</option>
-								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-									<option value="<%=codBean.getId()%>">
-										<%=codBean.getName()%></option>
-								<% } %>
-							</html:select>
-					</fieldset>
-					<fieldset>
-						<label>Número</label>
-						<html:text name="LoginFormMobile" property="username"/>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<label>CLAVE</label>
-						<html:password name="LoginFormMobile" property="password"/>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<a href="./recordarPasswordModal.jsp">No recuerdo mi contrasenia</a>
-					</fieldset>
-					<fieldset>
-						<div style="float:left;"><input type="submit" id="submitlogin" value="Login" class="indexLogin"></div>
-						<a href="./goToMobileRegistration.do">Registrarse</a>
-					</fieldset>
-			</html:form>
+<div id="internalHeader">
+	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
+	<ul>
+		<li><a href="./goToMobileRegistration.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
+		<li><a href="legales.jsp">Legales</a></li>
+		<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
+	</ul>
+</div>
+<div id="loginContent">
+	<html:form method="POST" action="/loginMobile">
+		<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
+			<fieldset>
+				<label>Tipo doc</label>
+				<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginFormMobile"); %>
+				<html:select name="LoginFormMobile" property="documentType" >
+						<!-- option value="">Seleccione...</option-->
+						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+							<option value="<%=codBean.getId()%>">
+								<%=codBean.getName()%></option>
+						<% } %>
+					</html:select>
+			</fieldset>
+			<fieldset>
+				<label>Número</label>
+				<html:text name="LoginFormMobile" property="username"/>
+			</fieldset>
+			<div class="errorInForm"></div>
+			<fieldset>
+				<label>CLAVE</label>
+				<html:password name="LoginFormMobile" property="password"/>
+			</fieldset>
+			<div class="errorInForm"></div>
+			<fieldset>
+				<a class="buttonLink" href="./recordarPasswordModal.jsp">Olvidé mi clave</a>
+				<input type="submit" id="submitlogin" value="Ingresar" class="indexLogin">
+			</fieldset>
+	</html:form>
+</div>
 </body>
 </html>

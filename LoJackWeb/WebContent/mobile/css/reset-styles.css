@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 /*   Reseteo CSS   ***************************************************/
-body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0px; padding:0px; }
+body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td { font-family: "Gotham", "Helvetica", Arial, sans-serif; margin:0px; padding:0px; }
 table { border-collapse:collapse; border-spacing:0; }
 fieldset,img { border:0; }
 address,caption,cite,code,dfn,th,var { font-style:normal; font-weight:normal; }
@@ -18,13 +18,12 @@ body, section, div, table, td, tr, header, ul, li, menu, .dir { margin: 0; paddi
 body {
 	color: #3F3F3F;
 	font-weight: normal;
-	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-size: 100%;
 	background:url(../images/backs/main.jpg);
 	background-repeat:no-repeat;
-	background-position:center top;
+	background-position:center center;
 	background-attachment:fixed;
-	/*background-size:cover;*/
+	background-size:cover;
 	background-color:#200808;
 	height:100%;
 }

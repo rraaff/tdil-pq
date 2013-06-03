@@ -6,19 +6,16 @@ div#menu {
 	height:22px;
 	margin:0 auto;
 	padding:0;
-	top:0;
-	position: absolute;
-	z-index: 5;
 	display:inline-table;
 }
 #menu ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
+} 
 #menu ul li a {
 	color:#FFFFFF;
-	font-size:150%;
+	font-size:120%;
 	text-align:center;
 	text-transform:uppercase;
 	list-style: none;
@@ -31,6 +28,9 @@ div#menu {
 #menu ul li a:hover,
 #menu ul li a:focus {
 	background-color:#ee5222;
+}
+#menu ul li a.last {
+	width:34%;
 }
 /*
 div#menu li.first {

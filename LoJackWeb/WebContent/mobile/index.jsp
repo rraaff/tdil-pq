@@ -21,7 +21,7 @@
 	<ul>
 		<li><a href="./loginModal.jsp" title="Ingresar ahora">Ingresar</a></li>
 		<li><a href="./recuperarClaveModal.jsp">Olvidé mi clave</a></li>
-		<li><a href="../goToRegistrationMobile.do">Registrarme</a></li>
+		<li><a href="../goToRegistrationMobile.do" class="last">Registrarme</a></li>
 	</ul>
 </div>
 <div id="laRuedita">
