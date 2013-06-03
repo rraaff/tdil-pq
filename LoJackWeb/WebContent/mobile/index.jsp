@@ -6,6 +6,7 @@
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %>
 <!DOCTYPE html>
+<% session.setAttribute("usingMobile", Boolean.TRUE); %>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
