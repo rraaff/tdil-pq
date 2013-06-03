@@ -116,6 +116,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		try {
+			//JSONResponse response = executeTranslation("", jsonObject, GET_ALARMS);
 			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
 			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
 			return resultObj;
@@ -588,6 +589,48 @@ public class LoJackServicesConnector {
 
 	public static JSONResponse executeService(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return execute(servicesServer, json, service);
+	}
+	
+	private static JSONResponse executeTranslation(String server1, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		String server = "http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/";
+		long start = System.currentTimeMillis();
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
+		}
+		HttpClient client = new HttpClient();
+		configureTimeout(client);
+		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server);
+		try {
+			httpMethod.setRequestHeader("Content-type", "text/xml");
+			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/" + service);
+			if (json != null) {
+				String toPost = CarpathiaTranslator.prepareRequest(service, json.toString());
+				RequestEntity requestEntity = new StringRequestEntity(toPost);
+				httpMethod.setRequestEntity(requestEntity);
+			}
+			client.executeMethod(httpMethod);
+			int statusCode = httpMethod.getStatusCode();
+			String response = httpMethod.getResponseBodyAsString();
+			if (LOG.isDebugEnabled()) {
+				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
+			}
+			if (statusCode != HttpStatus.SC_OK) {
+				LOG.error("Remote result for " + (server + service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
+				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
+			}
+			String jsonResponseString = CarpathiaTranslator.extractResponse(service, response);
+			JSON result = extractJSONObjectResponse(jsonResponseString);
+			return new JSONResponse(result, statusCode);
+		} catch (HttpException e) {
+			throw new CommunicationException(e);
+		} catch (IOException e) {
+			throw new CommunicationException(e);
+		} finally {
+			if (LOG.isInfoEnabled()) {
+				long end = System.currentTimeMillis();
+				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
+			}
+		}
 	}
 
 	private static JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {

@@ -9,7 +9,10 @@ public class CarpathiaTranslator {
 	
 	
 	public static String prepareRequest(String method, String body) {
-		return START + method + MIDDLE1 + body + MIDDLE2 + method + END;
+		StringBuilder sbBuilder = new StringBuilder();
+		sbBuilder.append(START).append(method).append(MIDDLE1);
+		sbBuilder.append(body).append(MIDDLE2).append(method).append(END);
+		return sbBuilder.toString();
 	}
 	
 	public static String extractResponse(String method, String responseString) {
