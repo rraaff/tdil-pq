@@ -270,6 +270,7 @@ footer .pageWrapper {
 }
 #pictureContainer { width:561px; height:auto; margin: 0 auto; }
 .controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1600; }
+div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper h1 {
 	padding: 0;
 }
@@ -427,7 +428,7 @@ footer .pageWrapper {
 }
 #accordion .fakeButtons {
 	color:#fff;
-	padding: 2px 5px;
+	padding: 8px;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background-color: #d14641;
 	background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
@@ -458,6 +459,11 @@ footer .pageWrapper {
 	border-color: #fbb450 #fbb450 #f89406;
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+#accordion .shuffle {
+	background-images: url(../images/skin_lj_rl/backs/icon_shuffle.png); 
+	background-repeat: repeat-x;
+	background-position: 0 0;
 }
 #accordion .disableButton { 
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";

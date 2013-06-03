@@ -1,18 +1,18 @@
 /* COPYRIGHT */
 #copyright {
 	width: 100%;
-	bottom:  -5px;
+	bottom:  25px;
 	z-index: 1000;
 	position: absolute;
 }
 #copyright .copy {
 	color: #fff;
-	font-size: 8px;
+	font-size: 15px;
 	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	font-weight: normal;
 	text-align: center;
 	text-transform: uppercase;
-	margin: 0 auto;
+	margin: 0 15px;
 }
 #copyright a, #copyright p {
 	color: #fff;

@@ -1,135 +1,42 @@
-
-body {
-	margin:0;
-	padding:0;
-}
 div#menu {
+	background:url(../../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	text-align:center;
 	width:100%;
 	height:22px;
 	margin:0 auto;
 	padding:0;
+	top:0;
 	position: absolute;
 	z-index: 5;
+	display:inline-table;
 }
-div#menu ul {
+#menu ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	float: right;
 }
-div#menu ul.menu {}
-div#menu li {
-	position: relative;
-	z-index: 9;
+#menu ul li a {
+	color:#FFFFFF;
+	font-size:150%;
+	text-align:center;
+	text-transform:uppercase;
+	list-style: none;
+	width:33%;
+	padding:30px 0;
+	_padding:30px 0;
 	margin: 0;
-	padding: 0;
-	display: block;
-	float: right;
+	float: left;
 }
+#menu ul li a:hover,
+#menu ul li a:focus {
+	background-color:#ee5222;
+}
+/*
 div#menu li.first {
 	background:url(../../images/skin_lj_rl/backs/tabMenu_index.png);
 	background-repeat:no-repeat;
 	background-position:center top;
 	width:237px;
 	height:22px;
-}
-div#menu li:hover>ul {
-	left:0;
-}
-div#menu li div {
-	list-style: none;
-	float: left;
-	position: absolute;
-	top:30px;
-	left:10px;
-	z-index: 11;
-	visibility: hidden;
-	padding: 0;
-	_padding: 0;
-	margin: 0;
-}
-div#menu li:hover>div {
-	visibility: visible;
-}
-div#menu li.current a {}
-/* menu::level1 */
-div#menu a {
-	position: relative;
-	z-index: 10;
-	width:100%;
-	height: 55px;
-	display: block;
-	float: left;	
-	padding: 0;
-	line-height: 55px;
-	text-decoration: none;
-}
-div#menu span {
-	font: normal 12px 'Lucida Sans Unicode','Lucida Grande',Helvetica,Arial,sans-serif;
-	color: #FFF;
-	text-align:center;
-	text-transform:uppercase;
-	width:100%;
-	display: block;
-	cursor: pointer;
-	background-repeat: no-repeat;		
-}
-div#menu ul a:hover span {
-	color: #ffa524;
-}
-/* menu::level2 */
-div#menu ul ul li {
-	padding: 0;
-	z-index: 9;
-}
-div#menu ul ul {
-	z-index: 12;	
-	padding: 0;
-	background-color:rgba(0,0,0,0.5);
-	margin:0px;
-}
-div#menu ul ul a {
-	width: 184px;
-	height: 25px;
-	padding: 0px 7px 3px 8px;
-	height: auto;
-	float: none;
-	display: block;
-	background:none;
-	margin-bottom: 2px;
-	z-index: -1;
-}
-div#menu ul ul a span {
-	padding: 0 10px 0px 10px;
-	line-height: 25px;
-	color: #FFF;
-	font-weight:normal;
-	text-transform: none;
-	background:none;
-}
-div#menu ul ul a:hover {
-	/*background: url(images/submenu-selected-bottom.gif) no-repeat 8px bottom;*/
-}
-div#menu ul ul a:hover span {
-	/*background: url(images/submenu-selected-top.gif) no-repeat 0px 0px;*/
-	color: #fff;
-}
-div#menu ul ul li.last { background: none; }
-div#menu ul ul li {
-	width: 100%;
-}
-/* menu::level3 */
-div#menu ul ul div {
-	/*width: 208px;*/
-	margin: -50px 0 0 150px !important;
-	height: auto;
-	_padding: 0 0 9px 3px;
-}
-div#menu ul ul ul {
-	_padding-right:1px;
-}
-/* lava lamp */
-div#menu li.back {
-}
-div#menu li.back .left {
-}
+}*/
