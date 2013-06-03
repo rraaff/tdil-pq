@@ -30,7 +30,7 @@ function showVideo1(strVideo) {
 <div id="video1Layer" class="layerOnTop70" style="display: none; z-index: 1500;">
 	<div id="centradorModalesVideo1Layer" class="defaultLayerStyles">
 		<div class="videoLayer">
-			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer" cl="video1Layer">< volver</button></div>
+			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer">< volver</button></div>
 			<div id="videoWrapper">
 				<iframe id="videoIframe" src="http://www.youtube.com/embed/5Xe5pODPq1I" frameborder="0" allowscale="false" allowfullscreen></iframe>
 			</div>

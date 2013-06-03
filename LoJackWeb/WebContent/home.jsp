@@ -30,6 +30,10 @@
 <script>
 	$(document).ready(
 			function(){
+				$('#closevideo1Layer').click(function() {
+					$('#videoIframe').prop('src', '');
+					$( "#video1Layer" ).fadeOut();
+				});
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>

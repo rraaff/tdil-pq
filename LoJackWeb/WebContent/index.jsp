@@ -74,6 +74,11 @@ $(document).ready(
 			$('#centralRueditaParkings').fadeOut();
 		});
 
+		$('#closevideo1Layer').click(function() {
+			$('#videoIframe').prop('src', '');
+			$( "#video1Layer" ).fadeOut();
+		});
+
 		$("input[name=password]").bind("keydown", function(event) {
 		      // track enter key
 		      var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
