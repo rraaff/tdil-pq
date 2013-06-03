@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.LoJackConfig"%>
 <%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
 <%@page import="java.util.List"%>

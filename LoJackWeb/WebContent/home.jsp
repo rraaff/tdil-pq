@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--

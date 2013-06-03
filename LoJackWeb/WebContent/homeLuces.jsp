@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Light"%>
 <%@page import="com.tdil.lojack.struts.forms.LightsForm"%>

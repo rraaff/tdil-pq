@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.ThalamusErrorFormatter"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="resetPassword"%><!--

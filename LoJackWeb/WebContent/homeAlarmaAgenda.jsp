@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.lojack.gis.model.AlarmAgenda"%>

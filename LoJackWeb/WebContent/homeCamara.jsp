@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
 <%@page import="com.tdil.lojack.struts.forms.CameraForm"%>

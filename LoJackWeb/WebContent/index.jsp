@@ -1,13 +1,14 @@
+<%@ include file="includes/agentInfo.jspf" %>
+<%
+	if (isMobile || isAndroid) { 
+		session.setAttribute("usingMobile", Boolean.TRUE);
+		response.sendRedirect(request.getContextPath() + "/mobile/index.jsp");
+ } else { %>
 <%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
-<%
-	com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
-	if (agentInfo.detectMobileLong() || agentInfo.detectAndroidPhone() || agentInfo.detectAndroid()) { 
-		response.sendRedirect(request.getContextPath() + "/mobile/index.jsp");
- } else { %>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.OptIn"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%>
@@ -625,12 +626,12 @@ function parkingsNotLogged() {
 						<label>Tipo doc</label>
 						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginForm"); %>
 						<html:select name="LoginForm" property="documentType" >
-							<option value="">Seleccione...</option>
-							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-								<option value="<%=codBean.getId()%>">
-									<%=codBean.getName()%></option>
-							<% } %>
-						</html:select>
+								<option value="">Seleccione...</option>
+								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+									<option value="<%=codBean.getId()%>">
+										<%=codBean.getName()%></option>
+								<% } %>
+							</html:select>
 					</fieldset>
 					<div class="errorInForm"></div>
 					<fieldset>

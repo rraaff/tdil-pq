@@ -1,3 +1,4 @@
+<%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Alarm"%>
 <%@page import="com.tdil.lojack.struts.forms.AlarmsForm"%>
