@@ -625,12 +625,12 @@ function parkingsNotLogged() {
 						<label>Tipo doc</label>
 						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginForm"); %>
 						<html:select name="LoginForm" property="documentType" >
-								<option value="">Seleccione...</option>
-								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-									<option value="<%=codBean.getId()%>">
-										<%=codBean.getName()%></option>
-								<% } %>
-							</html:select>
+							<option value="">Seleccione...</option>
+							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+								<option value="<%=codBean.getId()%>">
+									<%=codBean.getName()%></option>
+							<% } %>
+						</html:select>
 					</fieldset>
 					<div class="errorInForm"></div>
 					<fieldset>
