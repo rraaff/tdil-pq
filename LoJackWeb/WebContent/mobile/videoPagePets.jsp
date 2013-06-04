@@ -27,7 +27,7 @@
 	<div id="footerizer">
 		<h3 id="videoTitle">Lo Jack Pets</h3>
 		<p id="videoDescription">Sabé dónde están tus mascotas.</p>
-		<a href="../home.jsp" title="Volver">< Volver</a>
+		<a href="home.jsp" title="Volver">< Volver</a>
 	</div>
 </div>
 </body>
