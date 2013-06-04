@@ -52,12 +52,13 @@
 				<html:select name="RegisterFormMobile" property="documentType" >
 					<option value="">Seleccione...</option>
 					<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-						<option value="<%=codBean.getId()%>">
+						<option value="<%=codBean.getId()%>" <%=registerForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
 							<%=codBean.getName()%></option>
 					<% } %>
 				</html:select>
 				<div class="errorInForm"></div>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
+				
 			</fieldset>
 				
 			<fieldset>
@@ -72,6 +73,7 @@
 					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
 					<div class="errorInForm"></div>
 					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
@@ -79,6 +81,7 @@
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
 				<div class="errorInForm"></div>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%>
 			</fieldset>
 			<fieldset>
 				<label class="sexLabel">* Sexo:</label>
@@ -121,6 +124,7 @@
 				<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
 					<div id="err.profile.phone.areaCode"></div>
 				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Teléfono celular</label>
@@ -130,6 +134,7 @@
 				<div class="errorField" style="display: none;" id="p.profile.phone.number">
 					<div id="err.profile.phone.number"></div>
 				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
 			</fieldset>
 			<fieldset>
 				<label>País</label>
