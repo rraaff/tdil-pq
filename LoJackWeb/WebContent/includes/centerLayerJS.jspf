@@ -11,7 +11,7 @@ function centerLayer(objWin, objLayer) {
 	}
 	//alert('WH: ' + objWin.height() + ' - WW' + objWin.width() + ' || LH: ' + objLayer.height() + ' - LW' + objLayer.width());
 	objLayer.css({
-		position: 'absolute',
+		//position: 'absolute',
 		top: top + 'px',
 		left: left + 'px'
 	}).fadeIn(500);

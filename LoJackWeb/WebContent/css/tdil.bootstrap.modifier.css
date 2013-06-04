@@ -268,7 +268,13 @@ footer .pageWrapper {
 	margin: 0;
 	padding: 0 0 0 40px;
 }
-#pictureContainer { width:561px; height:auto; margin: 0 auto; }
+#pictureContainer {
+	background:#fff;
+	width:561px;
+	height: 297px;
+	overflow: hidden;
+	float:left; 
+}
 .controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1600; }
 div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper h1 {
@@ -386,11 +392,12 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	width: 680px;
 }
 #accordion .titleContainer {
-	width: 100%;
+	width: 478px;
 	overflow:hidden;
 	/*float: left;*/
 }
 #accordion .portaToggle {
+	width: 27px;
 	float: left;
 }
 #accordion button.toggleAtAccordion {
@@ -460,10 +467,18 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-#accordion .shuffle {
-	background-images: url(../images/skin_lj_rl/backs/icon_shuffle.png); 
+#accordion .randomButtonOn {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
 	background-repeat: repeat-x;
 	background-position: 0 0;
+	width:36px;
+	height:36px;
+	padding: 0;
+	margin: 0;
+	float: left;
 }
 #accordion .disableButton { 
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -529,6 +544,15 @@ div[id^="alarm-status-"] {
 }
 
 /* PANIC */
+#panicButtonContainer {
+	width: 968px;
+	height: 60px;
+	margin: 0 auto;
+	top:530px; /*570*/
+	z-index:500;
+	position:relative;
+}
+#panicButtonContainer a { float:right; }
 #panicButtton {
 	color:#fff;
 	background:url(../images/skin_lj_rl/buttons/button_panic_base.png);
@@ -538,17 +562,9 @@ div[id^="alarm-status-"] {
 	font-weight:bold;
 	line-height:60px;
 	text-align:center;
-	
 	width:260px;
 	height:60px;
-	
-	margin:0 auto;
-	
-	top:570px;
-	left:350px;
-	
-	z-index:500;
-	position:relative;
+	margin:0;
 }
 #panicButtton a { color:#fff; }
 /* PREVENT Y PARKINGS */

@@ -399,6 +399,13 @@ textarea {
 </style>
 
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<% if (usingMobile || isAndroid) { %>
+	<style type="text/css">
+		#productHomeContent.col1_798 { padding:5px 0 0 0; }
+		#accordion, #agendaWrapper { padding:3px; }
+		#accordion .portaTitleAndSwitch { width:90%; margin:0 10px 0 0; padding-bottom: 5px; }
+	</style>
+<% } %>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
@@ -416,8 +423,8 @@ textarea {
 		<div id="productHomeContent" class="col1_798 alarmasBG">
 				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
 					<div id="accordion">
+						<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
 						<div class="titleContainer">
-							<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
 							<div class="portaTitleAndSwitch">
 								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 								<div class="switchContainer">
@@ -464,7 +471,9 @@ textarea {
 		</div>
 	</div>
 </section>
-<a href="javascript:sendPanic();"><div id="panicButtton">Botón de pánico</div></a>
+<section id="panicButtonContainer">
+	<a href="javascript:sendPanic();"><div id="panicButtton">Botón de pánico</div></a>
+</section>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 

@@ -346,7 +346,7 @@ and (max-height : 550px) {
 	header, header.menuInternas { display: none; } 
 	#productsMenu { height:83px; top:0; z-index: 2; position: relative; }
 	#productsMenu .userLoggedThalamusMenu {  }
-	.correctNav { width: 100%; height: auto; }
+	.correctNav { width: 100%; }
 	#productsMenu ul li { font-size: 16px; line-height: 43px; }
 	#productsMenu ul li a { padding: 0; }
 	#productsMenu ul li.logoContainer { width:100%; text-align: center; }
@@ -365,15 +365,44 @@ and (max-height : 550px) {
 	#productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { border-left:solid 1px #fff; }
 	/*.camarasBG,.lucesBG, .camarasBG { background-image:none; background:transparent; width: auto; height: auto; padding: 0px; }*/
 	#productHomeContent.col1_798 { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#productHomeContent { overflow-x:hidden; position:relative; }
+	#productHomeMenu.col1_170 { position: relative; }
 	#tab { display: none;}
 	footer { display: none; }
-	
+	#panicButtonContainer {
+		width: 100%;
+		height: 30px;
+		margin: 0 auto;
+		top:auto; /*570*/
+		z-index:500;
+		position:relative;
+	}
+	#panicButtonContainer a { float:right; }
+	#panicButtton {
+		color:#fff;
+		background:url(../images/skin_lj_rl/buttons/button_panic_base.png);
+		background-repeat:no-repeat;
+		background-position: center center;
+		font-size:17px;
+		font-weight:bold;
+		line-height:60px;
+		text-align:center;
+		width:260px;
+		height:60px;
+		margin:0;
+	}
 	/**/
-	#accordion, #agendaWrapper { width:100%; margin:0; margin: 0 0 5px 0; }
+	#accordion, #agendaWrapper { width:100%; margin: 0 0 5px 0; }
 	#accordion .editable { font-size:80%; min-width:39%; }
+	#accordion .portaToggle { width:27px; float: left; }
+	#accordion .titleContainer { width: 95%; }
 	#switchBoard { padding: 2px; }
-	#accordion .portaTitleAndSwitch { width:90%; padding-bottom: 5px; }
-	#accordion .switchContainer { float: left; }
+	#accordion .portaTitleAndSwitch { width:100%; padding-bottom: 5px; }
+	#accordion .switchContainer { float: right; }
+	div[id^="alarm-status-"] {
+		float:right;
+		top:0;
+	}
 	#switchBoard { padding:0; }
 	#switchBoard span { font-size: 12px; }
 	#switchBoard .notifyme, #switchBoard .linkToAgenda { font-size: 12px; line-height: 16px; }
@@ -395,6 +424,7 @@ and (max-height : 550px) {
 	div.controlsBasicView img { padding:5px; margin: 0 5px; }
 }
 @media only screen and (max-width: 350px) {
+	body { overflow-x:hidden; overflow-y:auto; }
 	#productsMenu ul li a {
 		font-size: 60%;
 	}

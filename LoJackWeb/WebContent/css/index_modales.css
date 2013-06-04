@@ -50,15 +50,19 @@
 	padding-bottom: 10px;
 }
 .logLayerContent {
-	width: 550px;
-	max-height: 293px;
-	overflow-y: auto;
+	width:100%;
+	height:263px;
+	overflow:auto;
 }
+#logRow { border:dotted 1px #424242; width:100%; padding:5px 0; display:inline-block; }
+#logRow img, #logRow span, #logRow p { float:left; }
+#logRow span { width:100%; }
+#logRow p { padding: 15px 10px 0; }
 .legalLayerContentWrapper {
-	max-height: 293px;
-	overflow-y: auto;
+	height: 293px;
+	overflow: auto;
 }
-.modalStyle { padding: 20px; }
+.modalStyle { margin:10px; padding: 20px; }
 .modalWrapper {
 	height:auto;
 	display: inline-block;

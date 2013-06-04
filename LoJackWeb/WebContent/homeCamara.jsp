@@ -130,48 +130,50 @@ function right() {
 			<div id="cameraTitle">
 				<h1>Mi Cámara</h1>
 			</div>
-			<div id="appletHolder">
-				<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
-				<% if (cameraForm.isUseApplet()) { %>
+			<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
+			<% if (cameraForm.isUseApplet()) { %>
+				<div id="appletHolder">
 					<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
 						<param name="wmode" value="transparent" />
 						<param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
 						<PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
 						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201305181729.jar">
-							<comment>
-								<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-									ARCHIVE="cameraviewer-b201305181729.jar" width="100%" height="100%" wmode="transparent">
-									<noembed>
-										No Java Support.
-									</noembed>
-								</embed>
-							</comment>
-						</object>
-
-				<% } else { %>
-					
-					<div id="pictureContainer">
-						<img id="cameraImg" src="./viewCamera">
-						<div class="controlsBasicView">
-							<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
-							<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
-							<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
-							<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
-						</div>
+						<comment>
+							<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
+								ARCHIVE="cameraviewer-b201305181729.jar" width="100%" height="100%" wmode="transparent">
+								<noembed>
+									No Java Support.
+								</noembed>
+							</embed>
+						</comment>
+					</object>
+				</div>
+				<div id="linksAside">
+					<a href="./toggleCameraView.do"><span>Cambiar Simple >></span></a>
+					<br/>
+					<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+				</div>
+			<% } else { %>
+				<div id="pictureContainer">
+					<img id="cameraImg" src="./viewCamera">
+					<div class="controlsBasicView">
+						<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
+						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
+						<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
+						<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
 					</div>
-					<!-- a href="./toggleCameraView.do">Vista Avanzada</a -->
-					<script>
+				</div>
+				<script>
 					setInterval(function() {
 							$('#cameraImg').attr('src', './viewCamera');
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
-					</script>
-				<% } %>
-			</div>
-			<div id="linksAside">
-				<a href="./toggleCameraView.do"><span>Cambiar vista >></span></a>
-				<br/>
-				<a href="./goToHomeCamera.do"><span><< Volver</span></a>
-			</div>
+				</script>
+				<div id="linksAside">
+					<a href="./toggleCameraView.do">Vista Avanzada</a>
+					<br/>
+					<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+				</div>
+			<% } %>
 		</div>
 	</div>
 </section>
