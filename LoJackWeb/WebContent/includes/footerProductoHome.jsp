@@ -1,5 +1,5 @@
 <footer>
-	<div class="pageWrapper">
+	<!-- div class="pageWrapper">
 		<div class="col1_300 marginRight_60">
 			<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
 			<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
@@ -18,5 +18,5 @@
 				<li><a href="#" class="gp"></a></li>
 			</ul>
 		</div>
-	</div>
+	</div-->
 </footer>

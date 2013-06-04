@@ -11,7 +11,7 @@ function showVideo1(strVideo) {
 		$('#videoTitle').prop('innerHTML', 'Lo Jack Home');
 		$('#videoDescription').prop('innerHTML', 'Controlá tus alarmas, luces y cámaras. Mantené el control de tu casa.');
 	}
-	if (strVideo == 'Pets') {
+	if (strVideo == 'pets') {
 		$('#videoIframe').prop('src', 'http://www.youtube.com/embed/M8VhrMM0j-Q');
 		$('#videoTitle').prop('innerHTML', 'Lo Jack Pets');
 		$('#videoDescription').prop('innerHTML', 'Tené a tus mascotas monitoreadas.');
@@ -27,7 +27,7 @@ function showVideo1(strVideo) {
 
 </script>
 
-<div id="video1Layer" class="layerOnTop70" style="display: none; z-index: 1500;">
+<div id="video1Layer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesVideo1Layer" class="defaultLayerStyles">
 		<div class="videoLayer">
 			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer">< volver</button></div>
