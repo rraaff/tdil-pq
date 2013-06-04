@@ -57,36 +57,28 @@
 					<% } %>
 				</html:select>
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
-					<div id="err.profile.documentType"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
 			</fieldset>
 				
 			<fieldset>
 				<label>* Numero</label>
 				<html:text name="RegisterFormMobile" property="document" />
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.profile.document">
-					<div id="err.profile.document"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Nombre</label>
 				<html:text name="RegisterFormMobile" property="firstName" />
 					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
 					<div class="errorInForm"></div>
-					<div class="myRow errorField" style="display: none;" id="p.profile.firstname">
-						<div id="err.profile.firstname"></div>
-					</div>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
 				<html:text name="RegisterFormMobile" property="lastName" />
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.profile.lastname">
-					<div id="err.profile.lastname"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
 			</fieldset>
 			<fieldset>
 				<label class="sexLabel">* Sexo:</label>
@@ -97,9 +89,7 @@
 				<html:radio property="gender" value="Female" />
 				<span>Femenino</span>
 				<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-				<div class="myRow errorField" style="display: none;" id="p.profile.gender">
-					<div id="err.profile.gender"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
 			</fieldset>
 			<div class="errorInForm"></div>
 			<fieldset>
@@ -107,27 +97,21 @@
 				<html:text name="RegisterFormMobile" property="email"/>
 				<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.profile.email">
-					<div id="err.profile.email"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Clave</label>
 				<html:password name="RegisterFormMobile" property="password" />
 				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.credential.password">
-					<div id="err.credential.password"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Fecha de nac.</label>
 				<html:text name="RegisterFormMobile" property="birthDate" />
 				<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 				<div class="errorInForm"></div>
-				<div class="myRow errorField" style="display: none;" id="p.profile.birthDate">
-					<div id="err.profile.birthDate"></div>
-				</div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Código de área</label>

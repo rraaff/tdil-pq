@@ -44,6 +44,8 @@ import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
 import com.tdil.thalamus.client.utils.ThalamusUtils;
 import com.tdil.utils.DateUtils;
 import com.tdil.utils.StringUtils;
+import com.tdil.validations.FieldValidation;
+import com.tdil.validations.ValidationErrors;
 
 public class RegisterForm extends AbstractForm implements RefreshableForm {
 
@@ -88,11 +90,33 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private Collection<StateBean> states = new ArrayList<StateBean>();
 	
 	private PersonFields personFields;
+	
+	public static final String firstname_key = "RegisterForm.firstname";
+	public static final String lastname_key = "RegisterForm.lastname";
+	public static final String gender_key = "RegisterForm.gender";
+	public static final String birthdate_key = "RegisterForm.birthdate";
+	public static final String password_key = "RegisterForm.password";
+	public static final String documenttype_key = "RegisterForm.documenttype";
+	public static final String document_key = "RegisterForm.document";
+	public static final String email_key = "RegisterForm.email";
+	
 
 	@Override
 	public ValidationError validate() {
-		return new ValidationError();
+		ValidationError error = new ValidationError();
+		FieldValidation.validateText(this.getFirstName(), firstname_key, 150, error);
+		FieldValidation.validateText(this.getLastName(), lastname_key, 150, error);
+		if (org.apache.commons.lang.StringUtils.isEmpty(gender)) {
+			error.setFieldError(gender_key, ValidationErrors.CANNOT_BE_EMPTY);
+		}
+		Date date = FieldValidation.validateDate(this.getBirthDate(), birthdate_key, true, error);
+		FieldValidation.validateText(this.getPassword(), password_key, 20, error);
+		FieldValidation.validateId(this.getDocumentType(), documenttype_key, error);
+		FieldValidation.validateNumber(this.getDocument(), document_key, 1, Integer.MAX_VALUE, error);
+		FieldValidation.validateEmail(this.getEmail(), email_key, error);
+		return error;
 	}
+	
 	@Override
 	public void init() throws SQLException {
 		
