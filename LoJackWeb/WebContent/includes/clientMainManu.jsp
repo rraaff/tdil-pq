@@ -12,7 +12,7 @@
 			<% if (websiteUser.isPetUser()) { %>
 				<li class="toRight tabPet"><a href="#" id="enterPets" title="Cuidá a tu mascota">Pets</a></li>
 			<% } else { %>
-				<li class="toRight tabPet"><a href="#" onclick="javascript:showVideo1();" title="Más sobre PETS">Pets</a></li>
+				<li class="toRight tabPet"><a href="#" onclick="javascript:showVideo1('pets');" title="Más sobre PETS">Pets</a></li>
 			<% } %>
 			<% if (websiteUser.isPreventUser()) { %>
 				<% if (LoJackWebUtils.isMobile(request)) { %>
@@ -25,12 +25,12 @@
 					<li class="toRight tabCar"><a href="#" id="enterPrevent" title="Administrar tus autos">Car</a></li>
 				<% } %>
 			<% } else { %>
-				<li class="toRight tabCar"><a href="#" onclick="javascript:showVideo1();" title="Más sobre CAR">Car</a></li>
+				<li class="toRight tabCar"><a href="#" onclick="javascript:showVideo1('car');" title="Más sobre CAR">Car</a></li>
 			<% } %>
 			<% if (websiteUser.isHomeUser()) { %>
 				<li class="toRight tabHome"><a href="productoHome.jsp" title="Administrá tus alarmas, luces y cámaras">Home</a></li>
 			<% } else { %>
-				<li class="toRight tabHome"><a href="#" onclick="javascript:showVideo1();" title="Más sobre HOME">Home</a></li>
+				<li class="toRight tabHome"><a href="#" onclick="javascript:showVideo1('home');" title="Más sobre HOME">Home</a></li>
 			<% } %>
 		</ul>
 	</div>
