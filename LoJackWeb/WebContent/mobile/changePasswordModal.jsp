@@ -32,7 +32,7 @@
 	<ul>
 		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
 		<li><a href="home.jsp" title="Volver">< Volver</a></li>
-		<li><a href="../logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
+		<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
 	</ul>
 </div>
 <div id="registrationContent">

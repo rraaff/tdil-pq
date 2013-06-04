@@ -44,7 +44,7 @@ function enterPets() {
 	<ul>
 		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
 		<li><a href="../goToUpdatePersonMobile.do" title="Cambiar mis datos">Cambiar mis datos</a></li>
-		<li><a href="../logoutMobile.do" class="last" title="Salir del sistema">Salir</a></li>
+		<li><a href="./logoutMobile.do" class="last" title="Salir del sistema">Salir</a></li>
 	</ul>
 </div>
 <!-- 
@@ -57,7 +57,7 @@ function enterPets() {
  -->
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<div id="iconoLogout"><a href="../logoutMobile.do" title="Salir del sistema"><img src="../images/null.gif" /></a></div>
+		<div id="iconoLogout"><a href="./logoutMobile.do" title="Salir del sistema"><img src="../images/null.gif" /></a></div>
 		<div id="iconoParkings"><a href="../productoParkings.jsp" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="../images/null.gif" /></a></div>
 		<div id="iconoProfile"><a href="../goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div>
 		<% if (websiteUser.isPreventUser()) { %>

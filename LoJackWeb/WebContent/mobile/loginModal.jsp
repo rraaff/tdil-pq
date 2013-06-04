@@ -32,7 +32,7 @@
 	</ul>
 </div>
 <div id="loginContent">
-	<html:form method="POST" action="/loginMobile">
+	<html:form method="POST" action="/mobile/loginMobile">
 		<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
 			<fieldset>
 				<label>Tipo doc</label>

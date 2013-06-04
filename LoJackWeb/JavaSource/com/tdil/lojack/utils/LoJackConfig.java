@@ -20,6 +20,8 @@ import com.tdil.lojack.cache.blob.PublicBlobResolver;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.daomanager.MySQLDAOProvider;
 import com.tdil.lojack.daomanager.SQLServerDAOProvider;
+import com.tdil.lojack.gis.CarpathiaProtocol;
+import com.tdil.lojack.gis.JSONProtocol;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.UpdateMiddlewareJobsThread;
 import com.tdil.lojack.model.SystemProperty;
@@ -147,6 +149,13 @@ public class LoJackConfig extends SystemConfig {
 				setGUID(guid);
 			}
 			getLog().fatal("GUID is " + guid);
+			
+			String mwprotocol = SystemPropertyUtils.getSystemPropertValue("mw.protocol");
+			if (StringUtils.isEmpty(mwprotocol)) {
+				mwprotocol = JSONProtocol.PROTOCOL;
+			} 
+			LoJackServicesConnector.setProtocol(JSONProtocol.PROTOCOL.equalsIgnoreCase(mwprotocol) ? new JSONProtocol() : new CarpathiaProtocol());
+			getLog().fatal("MW protocol is " + mwprotocol);
 
 			String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
 			if (gisserver != null) {

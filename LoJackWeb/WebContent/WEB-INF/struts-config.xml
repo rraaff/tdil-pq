@@ -250,11 +250,11 @@
 
 
 <!-- MOBILE -->
-<action name="LoginFormMobile" path="/loginMobile" scope="request" type="com.tdil.lojack.struts.action.LoginActionMobile">
+<action name="LoginFormMobile" path="/mobile/loginMobile" scope="request" type="com.tdil.lojack.struts.action.LoginActionMobile">
 	<forward name="failure" path="/mobile/loginModal.jsp"/>
 	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action path="/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
+  <action path="/mobile/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
 	<forward name="continue" path="/mobile/index.jsp" redirect="true"/>
   </action>
   <action name="RequestResetPasswordFormMobile" path="/requestResetPasswordMobile" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">

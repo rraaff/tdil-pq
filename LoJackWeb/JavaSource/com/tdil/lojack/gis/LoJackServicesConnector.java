@@ -1,6 +1,5 @@
 package com.tdil.lojack.gis;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -11,11 +10,6 @@ import net.sf.json.util.JSONTokener;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpConnectionManager;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
-import org.apache.commons.httpclient.methods.RequestEntity;
-import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
@@ -39,7 +33,6 @@ import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
-import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 // TODO ver que datos de authenticacion hay que proveer
 public class LoJackServicesConnector {
@@ -62,8 +55,10 @@ public class LoJackServicesConnector {
 
 	private static final String RECEIVE_NOTIFICATION = "receiveNotification";
 
-	private static final Logger LOG = LoggerProvider.getLogger(LoJackServicesConnector.class);
+	public static final Logger LOG = LoggerProvider.getLogger(LoJackServicesConnector.class);
 
+	private static MiddlewareProtocol protocol = new JSONProtocol();
+	
 	private static String gisServer = "http://localhost:8180/GISWeb/";
 	private static String servicesServer = "http://localhost:8180/GISWeb/";
 
@@ -584,98 +579,18 @@ public class LoJackServicesConnector {
 	}
 
 	public static JSONResponse executeGIS(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return execute(gisServer, json, service);
+		return getProtocol().execute(gisServer, json, service);
 	}
 
 	public static JSONResponse executeService(JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		return execute(servicesServer, json, service);
-	}
-	
-	private static JSONResponse executeTranslation(String server1, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		String server = "http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/";
-		long start = System.currentTimeMillis();
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
-		}
-		HttpClient client = new HttpClient();
-		configureTimeout(client);
-		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server);
-		try {
-			httpMethod.setRequestHeader("Content-type", "text/xml");
-			httpMethod.setRequestHeader("SOAPAction", "http://tempuri.org/IService1/" + service);
-			if (json != null) {
-				String toPost = CarpathiaTranslator.prepareRequest(service, json.toString());
-				RequestEntity requestEntity = new StringRequestEntity(toPost);
-				httpMethod.setRequestEntity(requestEntity);
-			}
-			client.executeMethod(httpMethod);
-			int statusCode = httpMethod.getStatusCode();
-			String response = httpMethod.getResponseBodyAsString();
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
-			}
-			if (statusCode != HttpStatus.SC_OK) {
-				LOG.error("Remote result for " + (server + service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
-				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
-			}
-			String jsonResponseString = CarpathiaTranslator.extractResponse(service, response);
-			JSON result = extractJSONObjectResponse(jsonResponseString);
-			return new JSONResponse(result, statusCode);
-		} catch (HttpException e) {
-			throw new CommunicationException(e);
-		} catch (IOException e) {
-			throw new CommunicationException(e);
-		} finally {
-			if (LOG.isInfoEnabled()) {
-				long end = System.currentTimeMillis();
-				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
-			}
-		}
+		return getProtocol().execute(servicesServer, json, service);
 	}
 
-	private static JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		long start = System.currentTimeMillis();
-		if (LOG.isDebugEnabled()) {
-			LOG.debug("Execute: " + service + " json: " + (json == null ? "null" : json));
-		}
-		HttpClient client = new HttpClient();
-		configureTimeout(client);
-		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + service);
-		try {
-			httpMethod.setRequestHeader("Content-type", "application/json");
-			if (json != null) {
-				RequestEntity requestEntity = new StringRequestEntity(json.toString());
-				httpMethod.setRequestEntity(requestEntity);
-			}
-			client.executeMethod(httpMethod);
-			int statusCode = httpMethod.getStatusCode();
-			String response = httpMethod.getResponseBodyAsString();
-			if (LOG.isDebugEnabled()) {
-				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
-			}
-			if (statusCode != HttpStatus.SC_OK) {
-				LOG.error("Remote result for " + (server + service) + " status: " + statusCode + " and body: " + (response == null ? "null" : response));
-				throw new HttpStatusException(statusCode, HttpStatus.getStatusText(statusCode));
-			}
-			JSON result = extractJSONObjectResponse(response);
-			return new JSONResponse(result, statusCode);
-		} catch (HttpException e) {
-			throw new CommunicationException(e);
-		} catch (IOException e) {
-			throw new CommunicationException(e);
-		} finally {
-			if (LOG.isInfoEnabled()) {
-				long end = System.currentTimeMillis();
-				LOG.info("Execute: " + service + " took " + (end - start) + " millis");
-			}
-		}
-	}
-
-	private static void configureTimeout(HttpClient client) {
+	public static void configureTimeout(HttpClient client) {
 		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
 		connectionManager.getParams().setSoTimeout(getTIMEOUT());
 	}
-	private static JSON extractJSONObjectResponse(String response)
+	public static JSON extractJSONObjectResponse(String response)
 			throws InvalidResponseException, UnauthorizedException {
 		JSONTokener tokener = new JSONTokener(response);
 		Object rawResponseMessage = tokener.nextValue();
@@ -695,6 +610,12 @@ public class LoJackServicesConnector {
 	}
 	public static void setTIMEOUT(int tIMEOUT) {
 		TIMEOUT = tIMEOUT;
+	}
+	public static MiddlewareProtocol getProtocol() {
+		return protocol;
+	}
+	public static void setProtocol(MiddlewareProtocol protocol) {
+		LoJackServicesConnector.protocol = protocol;
 	}
 
 }

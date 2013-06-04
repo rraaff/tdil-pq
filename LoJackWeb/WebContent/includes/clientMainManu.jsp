@@ -2,7 +2,12 @@
 <section id="productsMenu">
 	<div class="userLoggedThalamusMenu">
 		<ul class="correctNav">
-			<li class="logoContainer"><a href="home.jsp" class="logo" title="Volver al inicio"><img src="images/skin_lj_rl/logos/lo-jack_mainLogo.png" width="173" height="91"/></a></li>
+			<li class="logoContainer">
+			<% if (usingMobile) { %>
+				<a href="./mobile/home.jsp" class="logo" title="Volver al inicio"><img src="images/skin_lj_rl/logos/lo-jack_mainLogo.png" width="173" height="91"/></a></li>
+			<% } else { %>
+				<a href="home.jsp" class="logo" title="Volver al inicio"><img src="images/skin_lj_rl/logos/lo-jack_mainLogo.png" width="173" height="91"/></a></li>
+			<% } %>
 			<li class="toRight tabParking"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA">Parking</a></li>
 			<% if (websiteUser.isPetUser()) { %>
 				<li class="toRight tabPet"><a href="#" id="enterPets" title="Cuidá a tu mascota">Pets</a></li>
