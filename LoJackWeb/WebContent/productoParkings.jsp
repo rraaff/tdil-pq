@@ -258,7 +258,7 @@
     	            Mapa.map.addLayer(parkings);
     	            var size = new OpenLayers.Size(32,32);
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
+    	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
     				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
@@ -299,8 +299,6 @@
             marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
-
-
 </script>
 
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
@@ -317,9 +315,70 @@
 	#zoomSection { width: 100%; margin: 0; }
 	#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
 }
+@media only screen and (max-height: 800px) and (max-width: 480px) {
+	button.iconEall,
+	button.icon100mts,
+	button.icon500mts,
+	button.icon1mks,
+	button.iconClear {
+		background: url(mobile/images/webApp/parkings/control_100mts.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width:31px;
+		height:24px;
+		margin:2px 6px;
+	}
+	button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
+	button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
+	button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
+	button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
+	button.icon_zoom_in,
+	button.icon_zoom_out {
+		background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width:32px;
+		height:32px;
+		padding:5px;
+		margin:5px;
+	}
+	button.icon_zoom_out {
+		background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+}
 </style>
+<% if (usingMobile || isAndroid) { %>
+	<style type="text/css">
+		#productsMenu ul li.logoContainer {
+			display:none;
+		}
+		#productsMenu {
+			height:17px;
+		}
+		#content {
+			height:100%;
+			top:0px;
+			overflow: hidden;
+		}
+		#productsMenu ul li,
+		#productsMenu ul li.toRight {
+			line-height: 16px;
+		}
+		#productsMenu ul li a {
+			font-size: 60%;
+		}
+		#productHomeMenu ul li a {
+			font-size: 60%;
+		}
+		#zoomSection .zoomControls {
+			top:40%;
+			left:5px;
+		}
+	</style>
+<% } %>
 </head>
-<body>
+<body onload="getSize();">
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">

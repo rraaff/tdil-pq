@@ -305,7 +305,77 @@ fieldset label.w3 {
 	#zoomSection { width: 100%; margin: 0; }
 	#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
 }
+@media only screen and (max-height: 800px) and (max-width: 480px) {
+	button.iconMaxSpeed,
+	button.iconZSeguras,
+	button.iconGetPosit,
+	button.iconPhoneAdm {
+		background: url(mobile/images/webApp/car/control_maxSpeed_16x16.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width:16px;
+		height:16px;
+		margin:2px 6px;
+	}
+	button.iconZSeguras { background: url(mobile/images/webApp/car/control_zSeguras_16x16.png); }
+	button.iconGetPosit { background: url(mobile/images/webApp/car/control_getPosit_16x16.png); }
+	button.iconPhoneAdm { background: url(mobile/images/webApp/car/control_phoneAdm_16x16.png); }
+	a.iconHome {
+		width:16px;
+		height:16px;
+		margin:2px 6px;
+	}
+	button.icon_zoom_in,
+	button.icon_zoom_out {
+		background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		width:32px;
+		height:32px;
+		padding:5px;
+		margin:5px;
+	}
+	button.icon_zoom_out {
+		background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+}
 </style>
+<% if (usingMobile || isAndroid) { %>
+	<style type="text/css">
+		#productsMenu ul li.logoContainer {
+			display:none;
+		}
+		#productsMenu {
+			height:17px;
+		}
+		#content {
+			height:100%;
+			top:0px;
+			overflow: hidden;
+		}
+		#productsMenu ul li,
+		#productsMenu ul li.toRight {
+			line-height: 16px;
+		}
+		#productsMenu ul li a {
+			font-size: 60%;
+		}
+		#productHomeMenu ul li a {
+			font-size: 60%;
+		}
+		#zoomSection .zoomControls {
+			top:40%;
+			left:5px;
+		}
+		a.iconHome {
+			width:16px;
+			height:16px;
+			margin:2px 6px;
+		}
+	</style>
+<% } %>
 </head>
 
 <body>
@@ -318,7 +388,7 @@ fieldset label.w3 {
 </section>
 <section id="controls">
 	<div class="basicControls">
-		<!-- a href="home.jsp" title="Volver al inicio" style=""><img src="images/skin_lj_rl/webApp/car/control_home_32x32.png" /></a-->
+		<a href="mobile/index.jsp" class="iconHome" title="Volver al inicio"><img src="mobile/images/webApp/car/control_home_16x16.png" /></a>
 		<button class="iconMaxSpeed" onclick="editMaxSpeed();" title="Velocidades máximas">&nbsp;</button>
 		<button class="iconZSeguras" onclick="editSecureZones();" title="Zonas seguras">&nbsp;</button>
 		<button class="iconGetPosit" onclick="selectVehiclesForMap();" title="Localizar vehículos">&nbsp;</button>
