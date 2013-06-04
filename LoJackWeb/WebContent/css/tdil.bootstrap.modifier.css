@@ -561,7 +561,6 @@ div[id^="alarm-status-"] {
 	position: relative;
 	z-index: 1300;
 }
-
 button.iconEall,
 button.icon100mts,
 button.icon500mts,
@@ -598,7 +597,7 @@ button.icon_zoom_out {
 button.icon_zoom_out { background: url(../images/skin_lj_rl/webApp/parkings/icon_ZoomOut.png); }
 #controls .basicControls {
 	text-align:center;
-	width:450px;
+	width:500px;
 	margin: 0 auto;
 }
 #zoomSection {

@@ -326,12 +326,17 @@
 		background-position: 0 0;
 		width:31px;
 		height:24px;
-		margin:2px 6px;
+		margin:2px 4px;
 	}
 	button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
 	button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
 	button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
 	button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
+	a.iconHome {
+		width:16px;
+		height:16px;
+		margin:2px 4px;
+	}
 	button.icon_zoom_in,
 	button.icon_zoom_out {
 		background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
@@ -388,6 +393,9 @@
 </section>
 <section id="controls">
 	<div class="basicControls">
+		<% if (usingMobile || isAndroid) { %>
+			<a href="mobile/home.jsp" class="iconHome" title="Volver al inicio"><img src="mobile/images/webApp/car/control_home_16x16.png" /></a>
+		<% } %>
 		<button class="iconEall" onclick="showAllParkings()">&nbsp;</button>
 		<button class="icon100mts" onclick="showParkings(100)">&nbsp;</button>
 		<button class="icon500mts" onclick="showParkings(500)">&nbsp;</button>
