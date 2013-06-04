@@ -15,9 +15,9 @@
 </head>
 <body>
 Home
-<a href="../goToHomeAlarmsMobile.do">Mis Alarmas</a>
-<a href="../goToHomeLightsMobile.do">Mis Luces</a>
-<a href="../goToHomeCameraMobile.do">Mi Camara</a>
+<a href="./goToHomeAlarmsMobile.do">Mis Alarmas</a>
+<a href="./goToHomeLightsMobile.do">Mis Luces</a>
+<a href="./goToHomeCameraMobile.do">Mi Camara</a>
 
 </body>
 </head>

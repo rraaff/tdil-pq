@@ -38,7 +38,7 @@
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="internalHeader">
 	<ul>
-		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
+		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
 		<li><a href="home.jsp" title="Volver">< Volver</a></li>
 		<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
 	</ul>
@@ -46,7 +46,7 @@
 <div id="registrationContent">
 	<h1>Modificar mis datos</h1>
 	<p align="center">Los campos marcados con * son requeridos</p>
-	<html:form method="POST" action="/updatePersonMobile">
+	<html:form method="POST" action="/mobile/updatePersonMobile">
 		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("UpdatePersonFormMobile");
 		%>
 		<div class="scrollable">

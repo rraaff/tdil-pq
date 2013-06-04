@@ -26,7 +26,7 @@
 <body>
 
 				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaFormMobile"); %>Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%></h1>
-				<html:form method="POST" action="/saveLightAgendaMobile">
+				<html:form method="POST" action="/mobile/saveLightAgendaMobile">
 					<fieldset>
 						<label>Nombre</label>
 						<html:text name="LightAgendaFormMobile" property="description" styleClass="width390" />
@@ -117,7 +117,7 @@
 						<logic:equal name="LightAgendaFormMobile" property="edition" value="false">
 							<input type="button" onclick="save()" value="Agregar" class="indexButtonBase">
 						</logic:equal>
-						<input type="button" id="" onclick="this.form.action='../resetLightAgendaMobile.do';this.form.submit();" value="Reset" class="indexButtonBase">
+						<input type="button" id="" onclick="this.form.action='./resetLightAgendaMobile.do';this.form.submit();" value="Reset" class="indexButtonBase">
 					</fieldset>
 				</html:form>
 				<fieldset>
@@ -137,8 +137,8 @@
 						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
 						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
 						<display:column title="Acciones" headerClass="sortable">
-							<a class="nonelyLink" href="../editLightAgendaMobile.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
-							<a class="nonelyLink" href="../toggleActivationLightAgendaMobile.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
+							<a class="nonelyLink" href="./editLightAgendaMobile.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
+							<a class="nonelyLink" href="./toggleActivationLightAgendaMobile.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
 								<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
 									Desactivar
 								<% } else { %>

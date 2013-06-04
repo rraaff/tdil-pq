@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h3>Renombrar luz</h3>
-	<html:form method="POST" action="/renameLightMobile">
+	<html:form method="POST" action="/mobile/renameLightMobile">
 		<div class="myRow">
 			<div class="myLabel width120">Descripcion</div>
 			<div class="myLabel width270"><html:text name="RenameLightFormMobile" property="description" styleClass="normalField width250"/></div>

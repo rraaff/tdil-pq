@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h3>Activar alarma</h3>
-	<html:form method="POST" action="/renameAlarmMobile">
+	<html:form method="POST" action="/mobile/renameAlarmMobile">
 		<div class="myRow">
 			<div class="myLabel width120">Descripcion</div>
 			<div class="myLabel width270"><html:text name="RenameAlarmFormMobile" property="description" styleClass="normalField width250"/></div>

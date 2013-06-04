@@ -30,14 +30,14 @@
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="internalHeader">
 	<ul>
-		<li><a href="../goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
+		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
 		<li><a href="home.jsp" title="Volver">< Volver</a></li>
 		<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
 	</ul>
 </div>
 <div id="registrationContent">
 	<h1>Cambiar clave</h1>
-	<html:form method="POST" action="/changePasswordMobile">
+	<html:form method="POST" action="/mobile/changePasswordMobile">
 		<div class="myRow">
 			<div class="myLabel width120">Clave actual</div>
 			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="oldPassword" styleClass="normalField width250"/></div>

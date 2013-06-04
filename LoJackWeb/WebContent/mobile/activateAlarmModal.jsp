@@ -16,7 +16,7 @@
 </head>
 <body>
 	<h3>Activar alarma</h3>
-	<html:form method="POST" action="/activateAlarmMobile">
+	<html:form method="POST" action="/mobile/activateAlarmMobile">
 		<div class="myRow">
 			<div class="myLabel width120">Clave</div>
 			<div class="myLabel width270"><html:password name="ActivateAlarmFormMobile" property="password" styleClass="normalField width250"/></div>

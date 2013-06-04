@@ -42,7 +42,7 @@
 <div id="registrationContent">
 	<h1>Registrate</h1>
 	<p>Los campos marcados con * son requeridos para la registración</p>
-	<html:form method="POST" action="/registerMobile">
+	<html:form method="POST" action="/mobile/registerMobile">
 		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterFormMobile");
 		registerForm.searchReferenceData();
 		%>

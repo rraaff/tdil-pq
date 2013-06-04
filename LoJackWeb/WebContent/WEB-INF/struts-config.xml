@@ -257,140 +257,140 @@
   <action path="/mobile/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
 	<forward name="continue" path="/mobile/index.jsp" redirect="true"/>
   </action>
-  <action name="RequestResetPasswordFormMobile" path="/requestResetPasswordMobile" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
+  <action name="RequestResetPasswordFormMobile" path="/mobile/requestResetPasswordMobile" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
   	<forward name="failure" path="/mobile/recuperarClaveModal.jsp"/>
 	<forward name="continue" path="/mobile/claveEnviadaModal.jsp" redirect="true"/>
   </action>
-  <action name="RegisterFormMobile" path="/goToRegistrationMobile" type="com.tdil.lojack.struts.action.GoToRegisterAction">
+  <action name="RegisterFormMobile" path="/mobile/goToRegistrationMobile" type="com.tdil.lojack.struts.action.GoToRegisterAction">
 	<forward name="continue" path="/mobile/registroModal.jsp" redirect="true"/>
   </action>
-  <action name="RegisterFormMobile" path="/registerMobile" type="com.tdil.lojack.struts.action.RegisterActionMobile">
+  <action name="RegisterFormMobile" path="/mobile/registerMobile" type="com.tdil.lojack.struts.action.RegisterActionMobile">
   	<forward name="failure" path="/mobile/registroModal.jsp"/>
 	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/goToEditProfileMobile" scope="session" type="com.tdil.lojack.struts.action.GoToEditProfileAction">
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/goToEditProfileMobile" scope="session" type="com.tdil.lojack.struts.action.GoToEditProfileAction">
   	<forward name="continue" path="/mobile/editAvatarModal.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/saveProfileMobile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileActionMobile">
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/saveProfileMobile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileActionMobile">
   	<forward name="failure" path="/mobile/editAvatarModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/viewAvatarMobile" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/viewAvatarMobile" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
   <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/goToChangePasswordMobile" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
   	<forward name="continue" path="/mobile/changePasswordModal.jsp" redirect="true"/>
   </action>
-  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/changePasswordMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/changePasswordMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/changePasswordModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="UpdatePersonFormMobile" path="/goToUpdatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.GoToUpdatePersonAction">
+  <action name="UpdatePersonFormMobile" path="/mobile/goToUpdatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.GoToUpdatePersonAction">
   	<forward name="continue" path="/mobile/updatePersonModal.jsp" redirect="true"/>
   </action>
-  <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/updatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.SavePersonActionMobile">
+  <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/mobile/updatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.SavePersonActionMobile">
   	<forward name="failure" path="/mobile/updatePersonModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="AlarmsFormMobile" parameter="HomeUser" path="/goToHomeAlarmsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
+  <action name="AlarmsFormMobile" parameter="HomeUser" path="/mobile/goToHomeAlarmsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
   	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
   </action>
-  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/goToActivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/mobile/goToActivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
   	<forward name="continue" path="/mobile/activateAlarmModal.jsp" redirect="true"/>
   </action>
-  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/activateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="ActivateAlarmFormMobile" parameter="HomeUser" path="/mobile/activateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/activateAlarmModal.jsp"/>
   	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
   </action>
-  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/goToDeactivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/mobile/goToDeactivateAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
   	<forward name="continue" path="/mobile/deactivateAlarmModal.jsp" redirect="true"/>
   </action>
-  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/deactivateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="DeactivateAlarmFormMobile" parameter="HomeUser" path="/mobile/deactivateAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/deactivateAlarmModal.jsp"/>
   	<forward name="continue" path="/mobile/homeAlarmas.jsp" redirect="true"/>
   </action>
-  <action name="RenameAlarmFormMobile" parameter="HomeUser" path="/goToRenameAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  <action name="RenameAlarmFormMobile" parameter="HomeUser" path="/mobile/goToRenameAlarmMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
   	<forward name="continue" path="/mobile/renameAlarmModal.jsp" redirect="true"/>
   </action>
-  <action name="RenameAlarmFormMobile" parameter="HomeUser" path="/renameAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="RenameAlarmFormMobile" parameter="HomeUser" path="/mobile/renameAlarmMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/renameAlarmModal.jsp"/>
-  	<forward name="continue" path="/goToHomeAlarmsMobile.do" redirect="true"/>
+  	<forward name="continue" path="/mobile/goToHomeAlarmsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/activateAlarmNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationActionMobile">
-  	<forward name="continue" path="/goToHomeAlarmsMobile.do" redirect="true"/>
+  <action parameter="HomeUser" path="/mobile/activateAlarmNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeAlarmsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/deactivateAlarmNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationActionMobile">
-  	<forward name="continue" path="/goToHomeAlarmsMobile.do" redirect="true"/>
+  <action parameter="HomeUser" path="/mobile/deactivateAlarmNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeAlarmsMobile.do" redirect="true"/>
   </action>
-  <action name="AlarmLogFormMobile" parameter="HomeUser" path="/goToAlarmLogMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
+  <action name="AlarmLogFormMobile" parameter="HomeUser" path="/mobile/goToAlarmLogMobile" scope="session" type="com.tdil.lojack.struts.action.GoToAlarmAction">
   	<forward name="continue" path="/mobile/logAlarmaModal.jsp" redirect="true"/>
   </action>
-  <action name="SendPanicFormMobile" parameter="HomeUser" path="/goToSendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLoJackAction">
+  <action name="SendPanicFormMobile" parameter="HomeUser" path="/mobile/goToSendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLoJackAction">
   	<forward name="continue" path="/mobile/sendPanicModal.jsp" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/sendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.SendPanicAlarmActionMobile">
+  <action parameter="HomeUser" path="/mobile/sendPanicMobile" scope="session" type="com.tdil.lojack.struts.action.SendPanicAlarmActionMobile">
   	<forward name="failure" path="/mobile/sendPanicModal.jsp"/>
-  	<forward name="continue" path="/goToHomeAlarmsMobile.do" redirect="true"/>
+  	<forward name="continue" path="/mobile/goToHomeAlarmsMobile.do" redirect="true"/>
   </action>
   
   
-  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/goToHomeAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
+  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/mobile/goToHomeAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/editAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
+  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/mobile/editAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/saveAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.SaveAlarmAgendaAction">
+  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/mobile/saveAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.SaveAlarmAgendaAction">
   	<forward name="failure" path="/mobile/homeAlarmaAgenda.jsp"/>
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/resetAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/mobile/resetAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/toggleActivationAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
+  <action name="AlarmAgendaFormMobile" parameter="HomeUser" path="/mobile/toggleActivationAlarmAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationAlarmAgendaAction">
   	<forward name="continue" path="/mobile/homeAlarmaAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightsFormMobile" parameter="HomeUser" path="/goToHomeLightsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
+  <action name="LightsFormMobile" parameter="HomeUser" path="/mobile/goToHomeLightsMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/mobile/homeLuces.jsp" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/turnOnLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOnLightActionMobile">
+  <action parameter="HomeUser" path="/mobile/turnOnLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOnLightActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/mobile/turnOffLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOffLightActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
+  </action>
+  <action parameter="HomeUser" path="/mobile/activateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceActionMobile">
   	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/turnOffLightMobile" scope="session" type="com.tdil.lojack.struts.action.TunOffLightActionMobile">
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  <action parameter="HomeUser" path="/mobile/deactivateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/activateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightRandomSequenceActionMobile">
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  <action parameter="HomeUser" path="/mobile/activateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/deactivateRandomSequenceMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightRandomSequenceActionMobile">
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  <action parameter="HomeUser" path="/mobile/deactivateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationActionMobile">
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
   </action>
-  <action parameter="HomeUser" path="/activateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.ActivateLightEmailNotificationActionMobile">
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
-  </action>
-  <action parameter="HomeUser" path="/deactivateLightNotificacionMobile" scope="session" type="com.tdil.lojack.struts.action.DeactivateLightEmailNotificationActionMobile">
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
-  </action>
-  <action name="RenameLightFormMobile" parameter="HomeUser" path="/goToRenameLightMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLightAction">
+  <action name="RenameLightFormMobile" parameter="HomeUser" path="/mobile/goToRenameLightMobile" scope="session" type="com.tdil.lojack.struts.action.GoToLightAction">
   	<forward name="continue" path="/mobile/renameLightModal.jsp" redirect="true"/>
   </action>
-  <action name="RenameLightFormMobile" parameter="HomeUser" path="/renameLightMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
+  <action name="RenameLightFormMobile" parameter="HomeUser" path="/mobile/renameLightMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/renameLightModal.jsp"/>
-  	<forward name="continue" path="/goToHomeLightsMobile.do" redirect="true"/>
+  	<forward name="continue" path="/mobile/goToHomeLightsMobile.do" redirect="true"/>
   </action>
   
-  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/goToHomeLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/goToHomeLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/editLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/editLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.EditLightAgendaAction">
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/saveLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/saveLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.SaveLightAgendaAction">
   	<forward name="failure" path="/mobile/homeLuzAgenda.jsp"/>
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/resetLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/resetLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ResetFormAction">
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
   </action>
-  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/toggleActivationLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
+  <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/toggleActivationLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
   </action>
   

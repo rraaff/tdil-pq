@@ -26,27 +26,27 @@
 <body>
 
 <% for (Light light : lightsForm.getLights()) { %>
-Luz: <%= light.getDescription() %><a href="../goToRenameLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Cambiar</a><br>
+Luz: <%= light.getDescription() %><a href="./goToRenameLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Cambiar</a><br>
 
 <% if (AsyncJobUtils.displayRandom(light, websiteUser)) { %>
 	RANDOM <% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>*<% } %>
-	<a href="../deactivateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM OFF</a>
+	<a href="./deactivateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM OFF</a>
 <% } else  { %>
 	<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
 		Encendida<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>*<% } %>
-		<a href="../turnOffLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Apagar</a>
-		<a href="../activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
+		<a href="./turnOffLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Apagar</a>
+		<a href="./activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
 	<% } else  { %>
 		<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
 			Apagada<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>*<% } %>
-			<a href="../turnOnLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Encender</a>
-			<a href="../activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
+			<a href="./turnOnLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Encender</a>
+			<a href="./activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
 		<% } else  { %>
 			Estado desconocido<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>*<% } %>
-			<a href="../turnOnLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Encender</a>
-			<a href="../turnOffLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Apagar</a>
-			<a href="../activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
-			<a href="../deactivateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM OFF</a>
+			<a href="./turnOnLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Encender</a>
+			<a href="./turnOffLightMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Apagar</a>
+			<a href="./activateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM ON</a>
+			<a href="./deactivateRandomSequenceMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">RANDOM OFF</a>
 		<% } %>
 	<% } %>
 <% } %>
@@ -59,12 +59,12 @@ Luz: <%= light.getDescription() %><a href="../goToRenameLightMobile.do?idEntidad
 <a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a><br>
 
 <% if (light.isEmailnotification()) { %>
-	Email notificacion  <a href="../deactivateLightNotificacionMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Desactivar email</a>
+	Email notificacion  <a href="./deactivateLightNotificacionMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Desactivar email</a>
 <% } else { %>
-	No Email notificacion <a href="../activateLightNotificacionMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Activar email</a>
+	No Email notificacion <a href="./activateLightNotificacionMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Activar email</a>
 <% } %>
 
-<a href="../goToHomeLightAgendaMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+<a href="./goToHomeLightAgendaMobile.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
 
 
  		<hr>

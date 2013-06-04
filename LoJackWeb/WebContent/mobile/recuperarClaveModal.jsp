@@ -26,13 +26,13 @@
 <div id="internalHeader">
 	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
 	<ul>
-		<li><a href="../goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
+		<li><a href="./goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
 		<li><a href="legales.jsp">Legales</a></li>
 		<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
 	</ul>
 </div>
 <div id="recoverPassContent">
-	<html:form method="POST" action="/requestResetPasswordMobile">
+	<html:form method="POST" action="/mobile/requestResetPasswordMobile">
 		<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 		<fieldset>
 			<label>DNI</label>

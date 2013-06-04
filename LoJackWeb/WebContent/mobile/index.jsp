@@ -35,14 +35,14 @@
 	<ul>
 		<li><a href="./loginModal.jsp" title="Ingresar ahora">Ingresar</a></li>
 		<li><a href="./recuperarClaveModal.jsp">Olvidé mi clave</a></li>
-		<li><a href="../goToRegistrationMobile.do" class="last">Registrarme</a></li>
+		<li><a href="./goToRegistrationMobile.do" class="last">Registrarme</a></li>
 	</ul>
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<div id="iconoLogin"><a href="./loginModal.jsp" title="Ingresar ahora"><img src="../images/null.gif" /></a></div>
 		<div id="iconoParkings"><a href="#" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="../images/null.gif" /></a></div>
-		<div id="iconoProfile"><a href="../goToRegistrationMobile.do" title="Registrate gratis"><img src="../images/null.gif" /></a></div>
+		<div id="iconoProfile"><a href="./goToRegistrationMobile.do" title="Registrate gratis"><img src="../images/null.gif" /></a></div>
 		<div id="iconoCar"><a href="videoPageCar.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 		<div id="iconoHome"><a href="videoPageHome.jsp" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
 		<div id="iconoPets"><a href="videoPagePets.jsp" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>

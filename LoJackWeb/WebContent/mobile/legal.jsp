@@ -18,7 +18,7 @@
 <div id="internalHeader">
 	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
 	<ul>
-		<li><a href="../goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
+		<li><a href="./goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
 		<li><a href="./loginModal.jsp" title="Ingresar ahora">ingresar</a></li>
 		<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
 	</ul>

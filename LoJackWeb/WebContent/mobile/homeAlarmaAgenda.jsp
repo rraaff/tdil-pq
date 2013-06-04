@@ -26,7 +26,7 @@
 <body>
 
 				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaFormMobile"); %>Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
-				<html:form method="POST" action="/saveAlarmAgendaMobile">
+				<html:form method="POST" action="/mobile/saveAlarmAgendaMobile">
 					<fieldset>
 						<label>Nombre</label>
 						<html:text name="AlarmAgendaFormMobile" property="description" styleClass="width390" />
@@ -115,7 +115,7 @@
 						<logic:equal name="AlarmAgendaFormMobile" property="edition" value="false">
 							<input type="submit" value="Salvar" />
 						</logic:equal>
-						<input type="button" id="" onclick="this.form.action='../resetAlarmAgendaMobile.do';this.form.submit();" value="Reset" class="indexButtonBase">
+						<input type="button" id="" onclick="this.form.action='./resetAlarmAgendaMobile.do';this.form.submit();" value="Reset" class="indexButtonBase">
 					</fieldset>
 				</html:form>
 				<fieldset>
@@ -135,8 +135,8 @@
 						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
 						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
 						<display:column title="Acciones" headerClass="sortable">
-							<a class="nonelyLink" href="../editAlarmAgendaMobile.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
-							<a class="nonelyLink" href="../toggleActivationAlarmAgendaMobile.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
+							<a class="nonelyLink" href="./editAlarmAgendaMobile.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
+							<a class="nonelyLink" href="./toggleActivationAlarmAgendaMobile.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
 								<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
 									Desactivar
 								<% } else { %>

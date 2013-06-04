@@ -30,7 +30,7 @@
 <body>
 <% SendPanicForm alarmsForm = (SendPanicForm)session.getAttribute("SendPanicFormMobile"); %>
 <% for (Alarm alarm : alarmsForm.getAlarms()) { %>
-	Alarma: <%= alarm.getDescription() %><a href="../sendPanicMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Enviar senial de panico</a><br>
+	Alarma: <%= alarm.getDescription() %><a href="./sendPanicMobile.do?idEntidad=<%=alarm.getIdEntidad()%>">Enviar senial de panico</a><br>
 	<hr>
 <% } %>
 

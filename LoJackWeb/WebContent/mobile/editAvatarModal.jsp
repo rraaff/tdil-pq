@@ -24,10 +24,10 @@
 editProfileForm.setMobile(true);%>
 <body>
 	<h3>Cambiar avatar</h3>
-	<html:form method="POST" action="/saveProfileMobile" enctype="multipart/form-data">
+	<html:form method="POST" action="/mobile/saveProfileMobile" enctype="multipart/form-data">
 		<fieldset class="aligner">
 			<logic:notEqual name="EditProfileFormMobile" property="imageId" value="0">
-				<label><img id="avatar_img" src="../viewAvatarMobile.do" width="100" height="100" align="absmiddle"></label>
+				<label><img id="avatar_img" src="./viewAvatarMobile.do" width="100" height="100" align="absmiddle"></label>
 			</logic:notEqual>
 			<logic:equal name="EditProfileFormMobile" property="imageId" value="0">
 				<label><img id="avatar_img" src="images/skin_lj_rl/logos/avatarBase.png" width="100" height="100" align="absmiddle"></label>
