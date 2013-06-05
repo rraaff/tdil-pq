@@ -279,6 +279,7 @@ function basicRegister() {
 	$("form[name='RegisterForm'] select").each(function(index, param) {
 		$(param).val('');
 	});
+	$("form[name='RegisterForm'] select[name=documentType]").val('1');
 	centerLayer($(window), $( "#registerLayer" ));
 	centerLayer($(window), $( "#centradorModalesRegister" ));
 }
@@ -289,6 +290,7 @@ function login() {
 	$('#loginerr').css('display', 'none');
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
+	$("form[name='LoginForm'] select[name=documentType]").val('1');
 	centerLayer($(window), $( "#loginLayer" ));
 	centerLayer($(window), $( "#centradorModalesLogin" ));
 }
@@ -435,7 +437,7 @@ function parkingsNotLogged() {
 						<html:select name="RegisterForm" property="documentType" >
 							<option value="">Seleccione...</option>
 							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-								<option value="<%=codBean.getId()%>">
+								<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
 									<%=codBean.getName()%></option>
 							<% } %>
 						</html:select>
@@ -633,7 +635,7 @@ function parkingsNotLogged() {
 						<html:select name="LoginForm" property="documentType" >
 								<option value="">Seleccione...</option>
 								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-									<option value="<%=codBean.getId()%>">
+									<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
 										<%=codBean.getName()%></option>
 								<% } %>
 							</html:select>
