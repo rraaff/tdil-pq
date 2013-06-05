@@ -3,9 +3,11 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 ************************************************************************************************************
 /////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES //////// 
 ************************************************************************************************************
+Revisar recupero de password, falta el tipo de documento, da errores al cerrar
+
 FORMULARIOS:
  - Manejo de errores en mobile
- - Foco en Número de DNi en el login
+ - Foco en Número de DNi en el login WL
  - Falta el formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
