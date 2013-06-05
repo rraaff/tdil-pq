@@ -211,9 +211,6 @@ $(document).ready(
 			$( "#loginLayer" ).fadeOut();
 			return false;
 		});
-		$( "#closeforgotPasswordLayer" ).click(function() {
-			$( "#forgotPasswordLayer" ).fadeOut();
-		});
 		$( "#closeforgotPasswordEmailSentLayer" ).click(function() {
 			$( "#forgotPasswordEmailSentLayer" ).fadeOut();
 		});
@@ -669,7 +666,7 @@ function parkingsNotLogged() {
 			<h3>Atención</h3>
 			<p>El usuario y/o la clave no coinciden.</p>
 			<fieldset>
-				<button id="closeloginInvalidLayer" cl="closeloginInvalidLayer" class="indexButtonBase">Cerrar</button>
+				<button id="closeloginInvalidLayer" cl="loginInvalidLayer" class="indexButtonBase">Cerrar</button>
 			</fieldset>
 		</div>
 	</div>
@@ -679,8 +676,8 @@ function parkingsNotLogged() {
 <div id="forgotPasswordLayer" class="layerOnTop" style="display: none; z-index: 1501;">
 	<div id="centradorModalesforgotPass" class="defaultLayerStyles">
 		<div class="forgotPasswordLayerContent">
+			<div id="xContainer"><button class="buttonLink" cl="forgotPasswordLayer">X</button></div>
 			<html:form method="POST" action="/requestResetPassword">
-				<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordLayer">X</button></div>
 				<h3>Recuperá tu clave</h3>
 				<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 				<fieldset>
