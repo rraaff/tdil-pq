@@ -428,7 +428,7 @@ function parkingsNotLogged() {
 				%>
 				<div class="scrollable">
 					<fieldset>
-						<label>* Tipo de doc</label>
+						<label class="ajuste">* Tipo de doc</label>
 						<html:select name="RegisterForm" property="documentType" >
 							<option value="">Seleccione...</option>
 							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
@@ -441,9 +441,8 @@ function parkingsNotLogged() {
 							<div id="err.profile.documentType"></div>
 						</div>
 					</fieldset>
-						
 					<fieldset>
-						<label>* Numero</label>
+						<label class="ajuste">* Numero</label>
 						<html:text name="RegisterForm" property="document" />
 						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.document">
@@ -451,7 +450,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>* Nombre</label>
+						<label class="ajuste">* Nombre</label>
 						<html:text name="RegisterForm" property="firstName" />
 							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
 							<div class="errorInForm"></div>
@@ -460,7 +459,7 @@ function parkingsNotLogged() {
 							</div>
 					</fieldset>
 					<fieldset>
-						<label>* Apellido</label>
+						<label class="ajuste">* Apellido</label>
 						<html:text name="RegisterForm" property="lastName" />
 						<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -469,7 +468,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label class="sexLabel">* Sexo:</label>
+						<label class="ajuste">* Sexo:</label>
 						<html:radio property="gender" value="Male" />
 						<span>Masculino</span>
 						<html:radio property="gender" value="Female" />
@@ -481,7 +480,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<div class="errorInForm"></div>
 					<fieldset>
-						<label>* E-mail</label>
+						<label class="ajuste">* E-mail</label>
 						<html:text name="RegisterForm" property="email"/>
 						<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -490,7 +489,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>* Clave</label>
+						<label class="ajuste">* Clave</label>
 						<html:password name="RegisterForm" property="password" />
 						<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -499,7 +498,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>* Fecha de nac.</label>
+						<label class="ajuste">* Fecha de nac.</label>
 						<html:text name="RegisterForm" property="birthDate" />
 						<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -508,7 +507,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>Código de área</label>
+						<label class="ajuste">Código de área</label>
 						<html:text name="RegisterForm" property="phoneAreaCode" />
 						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -517,7 +516,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>Teléfono celular</label>
+						<label class="ajuste">Teléfono celular</label>
 						<html:text name="RegisterForm" property="phoneNumber" />
 						<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
 						<div class="errorInForm"></div>
@@ -526,11 +525,11 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>País</label>
+						<label class="ajuste">País</label>
 						<span><%=registerForm.getCountrySelected()%></span>
 					</fieldset>
 					<fieldset>
-						<label>Provincia</label>
+						<label class="ajuste">Provincia</label>
 						<html:select name="RegisterForm" property="stateId" >
 							<option value="">Seleccione...</option>
 							<% for (StateBean stateBean : registerForm.getStates()) { %>
@@ -546,7 +545,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
 						<fieldset>
-							<label>Calle 1</label>
+							<label class="ajuste">Calle 1</label>
 							<html:text name="RegisterForm" property="street1" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
 							<div class="errorInForm"></div>
@@ -557,7 +556,7 @@ function parkingsNotLogged() {
 					<% } %>
 					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
 						<fieldset>
-							<label>Calle 2</label>
+							<label class="ajuste">Calle 2</label>
 							<html:text name="RegisterForm" property="street2" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
 							<div class="errorInForm"></div>
@@ -568,7 +567,7 @@ function parkingsNotLogged() {
 					<% } %>
 					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
 						<fieldset>
-							<label>Tipo</label>
+							<label class="ajuste">Tipo</label>
 							<html:select name="RegisterForm" property="addressType">
 								<option value="">Seleccione...</option>
 								<% for (String type : registerForm.getAddressTypes()) { %>
@@ -585,7 +584,7 @@ function parkingsNotLogged() {
 					<% } %>
 					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
 						<fieldset>
-							<label>Código postal</label>
+							<label class="ajuste">Código postal</label>
 							<html:text name="RegisterForm" property="postalCode" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
 							<div class="errorInForm"></div>
@@ -596,7 +595,7 @@ function parkingsNotLogged() {
 					<% } %>
 					<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
 						<fieldset>
-							<label>Ciudad</label>
+							<label class="ajuste">Ciudad</label>
 							<html:text name="RegisterForm" property="city" />
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
 							<div class="errorInForm"></div>

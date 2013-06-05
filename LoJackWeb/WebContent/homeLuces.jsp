@@ -507,7 +507,7 @@ textarea {
 
 <div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesLog" class="defaultLayerStyles">
-		<div class="modalStyle">
+		<div class="modalStyle logLayerStyle">
 			<div id="xContainer"><button class="buttonLink" id="closeLogLayer" cl="logLayer">X</button></div>
 			<h3>Log de cambios</h3>
 			<div id="logData" class="modalLayerContent">

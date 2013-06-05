@@ -27,7 +27,8 @@
 .modalStyle,
 .contactLayerContent,
 .changePasswordLayerContent,
-.forgotPasswordLayerContent {
+.forgotPasswordLayerContent,
+.logLayerStyle {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -38,6 +39,7 @@
 	/*margin: 80px auto;*/
 	padding: 30px 53px;
 }
+.logLayerStyle { max-width:400px; }
 .changePasswordLayerContent { width: 466px; }
 #changePassLayerID form { margin: 20px 0 0 0; }
 .registerLayerContent { /*width: 580px;*/ }
@@ -226,11 +228,11 @@ button.buttonLink {
 	padding:30px 35px 30px 35px;
 }
 .forgotPasswordLayerContent { width: 420px; }
-#registerLayer label {
+#registerLayer label.ajuste {
 	width: 120px;
 }
 label {
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 }
 #changePassLayer select,
 #changePassLayer input:not([type]),

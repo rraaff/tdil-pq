@@ -786,11 +786,12 @@ footer .nav-pills>li>a:focus {
 .textCenter { text-align: center; }
 .errorText,
 div.errorInForm label span { color: #b94a48; }
-div.errorInForm label {
+div.errorInForm label.error {
 	text-transform: none;
 	line-height: 13px;
+	width: 100%;
 }
-div.errorInForm {}
+div.errorInForm { width: 100%; }
 .alert-danger,
 .alert-error {
 	color: #b94a48;

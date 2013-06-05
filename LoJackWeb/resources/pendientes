@@ -6,6 +6,7 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 FORMULARIOS:
  - Manejo de errores en mobile
  - Foco en Número de DNi en el login
+ - Falta el formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
 - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
