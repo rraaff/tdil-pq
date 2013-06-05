@@ -22,18 +22,9 @@
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 
 <%@ include file="includes/headLogged.jsp" %>
-<!-- Slider 
-<script src="js/js-image-slider.js" type="text/javascript"></script>
-<link type="text/css" rel="stylesheet" href="css/js-image-slider.css"  />
-<link type="text/css" rel="stylesheet" href="css/slider.css"  />
-<!-- end of Slider -->
 <script>
 	$(document).ready(
 			function(){
-				$('#closevideo1Layer').click(function() {
-					$('#videoIframe').prop('src', '');
-					$( "#video1Layer" ).fadeOut();
-				});
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>

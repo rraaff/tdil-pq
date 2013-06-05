@@ -54,10 +54,11 @@
 	height:263px;
 	overflow:auto;
 }
-#logRow { border:dotted 1px #424242; width:100%; padding:5px 0; display:inline-block; }
+#logRow { background:#f0ece4; width:100%; margin:5px 0; display:inline-block; }
 #logRow img, #logRow span, #logRow p { float:left; }
+#logRow img { width:48px; height:48px; padding: 5px 0 5px 5px; }
 #logRow span { width:100%; }
-#logRow p { padding: 15px 10px 0; }
+#logRow p { padding: 25px 10px 0; }
 .legalLayerContentWrapper {
 	height: 293px;
 	overflow: auto;

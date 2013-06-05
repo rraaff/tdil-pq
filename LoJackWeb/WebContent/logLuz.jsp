@@ -13,11 +13,15 @@ Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websit
 <div class="logLayerContent">
 	<% for (ChangeLog log : logCollection) {
 		com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUserByHomeUserId(log.getLojackUserId()); %>
-		<% if (logUsr != null && WebsiteUserUtils.hasAvatar(logUsr)) { %>
-			<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" width="30" height="30" align="absmiddle">
-		<% } else { %>
-			<img src="images/na.gif" width="30" height="30" align="absmiddle">
-		<% } %> -
-		<%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %><hr>
+		<div id="logRow">
+			<span>
+				<% if (logUsr != null && WebsiteUserUtils.hasAvatar(logUsr)) { %>
+					<img src="./download.st?id=<%=logUsr.getIdAvatar()%>&type=PUBLIC&ext=<%=logUsr.getExtAvatar()%>" />
+				<% } else { %>
+					<img src="images/skin_lj_rl/logos/avatarBase.png" />
+				<% } %>
+				<p> - <%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %></p>
+			</span>
+		</div>
 	<% } %>
 </div>

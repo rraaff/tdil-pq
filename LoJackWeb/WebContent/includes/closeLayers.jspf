@@ -8,3 +8,7 @@ $("input[cl]").each(function(indice,valor) {
 	   $( "#" + $(this).attr('cl') ).fadeOut();
 	});
 });
+$('#closevideo1Layer').click(function() {
+	$('#videoIframe').prop('src', '');
+	$( "#video1Layer" ).fadeOut();
+});
