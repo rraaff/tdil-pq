@@ -5,7 +5,9 @@ Pseudo ::-webkit-slider-thumb element
 ::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); }*/
 
 div {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;   
 }
 
 ::-webkit-scrollbar              { /* 1 */ }
@@ -227,8 +229,16 @@ footer .pageWrapper {
 	overflow: auto;
 	float: left;
 }
+#productHomeContent.col1_798_noSpaces { 
+	width:796px;
+	height:425px;
+	overflow:hidden;
+	float:left;
+	padding:0;
+	margin:0;
+}
+#productHomeContent img.homeAd { width:100%; height:100%; }
 #productHomeContent.col1_798 { width: 796px; }
-
 #cameraTitle {
 	background-color: #fff;
 	background-image: url(../images/skin_lj_rl/buttons/toggle_arrow.png);
@@ -379,7 +389,15 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 }
 #productHomeMenu li.active { background-color: #f0ece4; float: left; }
 /* Accordion modifiers */
-#accordion,
+#accordion {
+	background:#FFF;
+	width:525px;
+	margin:10px;
+	padding:10px;
+	text-align:left;
+	float:left;
+	display:inline-block;
+}
 #agendaWrapper {
 	background:#FFF;
 	width: 525px;
@@ -391,11 +409,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper {
 	width: 680px;
 }
-#accordion .titleContainer {
-	width: 478px;
-	overflow:hidden;
-	/*float: left;*/
-}
+#accordion .titleContainer {  }
 #accordion .portaToggle {
 	width: 27px;
 	float: left;
@@ -411,7 +425,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	margin: 0 0 10px 0;
 }
 #accordion .portaTitleAndSwitch {
-	width:460px;
+	width:94%;
 	border-bottom:solid 2px #f0ece4;
 	padding-bottom:10px;
 	float: left;
@@ -422,20 +436,21 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	font-weight: bold;
 	line-height: 21px;
 	text-transform: uppercase;
-	min-width:280px;
+	width:50%;
 	margin: 0;
 	padding: 4px 0 0 0;
 	float:left;
 }
 #accordion .switchContainer {
-	float: right;
+	text-align:right;
+	float:right;
 }
-#accordion .correctSwitchContainer {
-	padding: 8px 0;
-}
+#accordion .correctSwitchContainer {  }
 #accordion .fakeButtons {
 	color:#fff;
-	padding: 8px;
+	padding:10px 8px 0;
+	height:26px;
+	margin:0 0 0 5px;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background-color: #d14641;
 	background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
@@ -451,6 +466,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	float:left;
 }
 #accordion .on {
 	color: #ffffff;
@@ -467,7 +483,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-#accordion .randomButtonOn {
+#accordion .randomButtonOff {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -477,8 +493,13 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	width:36px;
 	height:36px;
 	padding: 0;
-	margin: 0;
+	margin: 0 0 0 5px;
 	float: left;
+}
+#accordion .randomButtonOn {
+	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
+	background-repeat: repeat-x;
+	background-position: 0 -36px;
 }
 #accordion .disableButton { 
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -496,6 +517,9 @@ div[id^="alarm-status-"] {
 	text-transform: uppercase;
 	float:left;
 	clear: both;
+}
+div[id^="cont-"] {
+	width: 100%;
 }
 #alarm-status-2 { color: #e51b24; }
 #alarm-status-3 { color: #f05224; }
@@ -519,6 +543,7 @@ div[id^="alarm-status-"] {
 
 #switchBoard {
 	padding: 10px;
+	width: 100%;
 }
 #switchBoard span {
 	color:#761617;

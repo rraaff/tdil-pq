@@ -403,7 +403,12 @@ textarea {
 	<style type="text/css">
 		#productHomeContent.col1_798 { padding:5px 0 0 0; }
 		#accordion, #agendaWrapper { padding:3px; }
-		#accordion .portaTitleAndSwitch { width:90%; margin:0 10px 0 0; padding-bottom: 5px; }
+		#accordion .portaTitleAndSwitch { width:85%; margin:0 10px 0 0; padding:5px 0; float:right; }
+
+		.has-switch.switch-mini { min-width: 102px; }
+		.has-switch span.switch-warning { left: -52px; }
+		.has-switch span.switch-danger { left:1px; }
+		.has-switch label { left: 50px; }
 	</style>
 <% } %>
 </head>
@@ -421,53 +426,51 @@ textarea {
 			</ul>
 		</div>
 		<div id="productHomeContent" class="col1_798 alarmasBG">
-				<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
-					<div id="accordion">
-						<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
-						<div class="titleContainer">
-							<div class="portaTitleAndSwitch">
-								<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
-								<div class="switchContainer">
-									<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
-										<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
-									</div>
-								  	<% if (alarm.isInactive() ) { %>
-								  		<span class="" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)"></span>
-								  	<% } else { %>
-								  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
-								  	<% } %>
-							  	</div>
-
-					  			<% if (alarm.isTriggered()) { %>
+			<% for (Alarm alarm : alarmsForm.getAlarms()) { %>
+				<div id="accordion">
+					<div class="portaToggle"><img src="images/skin_lj_rl/buttons/toggle_arrow.png" id="toggle-<%=alarm.getIdEntidad()%>" onclick="javascript:toggle('<%=alarm.getIdEntidad()%>')"></div>
+					<div class="titleContainer">
+						<div class="portaTitleAndSwitch">
+							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
+							<div class="switchContainer">
+								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+									<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
+								</div>
+							  	<% if (alarm.isInactive() ) { %>
+							  		<span class="" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)"></span>
+							  	<% } else { %>
+							  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
+							  	<% } %>
+							</div>
+				  			<% if (alarm.isTriggered()) { %>
+				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+				  			<% } else { %>
+				  				<% if (alarm.isActive()) { %>
 					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
 					  			<% } else { %>
-					  				<% if (alarm.isActive()) { %>
-						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
-						  			<% } else { %>
-						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
-						  			<% } %>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
 					  			<% } %>
-					  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
-					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
-					  			<% } else { %>
-					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
-					  			<% } %>
-							</div>
-						</div>
-						<div id="switchBoard">
-				  			<div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
-						   		<% if (alarm.hasChangeData()) { %>
-						   			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
-						   			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
-						   			<span class="changesLog"><a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
-						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
-						   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
-						   		<% } %>
-							</div>
+				  			<% } %>
+				  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
+				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
+				  			<% } else { %>
+				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
+				  			<% } %>
 						</div>
 					</div>
-				<% } %>
-			</div>
+					<div id="switchBoard">
+			  			<div id="cont-<%=alarm.getIdEntidad()%>" style="display: none;">
+					   		<% if (alarm.hasChangeData()) { %>
+					   			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
+					   			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
+					   			<span class="changesLog"><a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
+					   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+					   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+					   		<% } %>
+						</div>
+					</div>
+				</div>
+			<% } %>
 		</div>
 	</div>
 </section>
@@ -485,7 +488,6 @@ textarea {
 			<div id="logData">
 				Cargando datos...
 			</div>
-			<!-- div><input type="button" id="closeLogLayer" cl="logLayer" value="Cerrar" class="indexButtonBase"/></div -->
 		</div>
 	</div>
 </div>
@@ -504,11 +506,11 @@ textarea {
 <div id="confSavedLayer" class="layerOnTop" style="display: none; z-index: 1500; top:0; left:0;">
 	<div id="centradorModalesConfSaved" class="defaultLayerStyles">
 		<div class="modalStyle">
+			<div id="xContainer"><button class="buttonLink" id="closeSavedConfLayer" cl="confSavedLayer">X</button></div>
 			<h3>Atención</h3>
 			<div>
 				<div class="alert alert-success">La configuracion ha sido salvada.</div>
 			</div>
-			<input type="button" id="closeSavedConfLayer" cl="confSavedLayer" value="Cerrar la ventana 1" class="indexButtonBase"/>
 		</div>
 	</div>
 </div>
@@ -622,7 +624,6 @@ textarea {
 			</div>
 			<div>
 				<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>
-				<input type="button" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer" value="Cerrar" class="indexButtonBase"/>
 			</div>
 		</div>
 	</div>

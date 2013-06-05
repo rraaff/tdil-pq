@@ -62,8 +62,10 @@ $(function() {
 				<li class="tabCameras"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div id="productHomeContent" class="col1_798">
-			Contenido sin definir
+		<div id="productHomeContent" class="col1_798_noSpaces">
+			<div class="adaptableContent">
+				<img class="homeAd" src="images/skin_lj_rl/backs/Placa-landing.jpg" />
+			</div>
 		</div>
 	</div>
 </section>

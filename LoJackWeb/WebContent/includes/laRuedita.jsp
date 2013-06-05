@@ -33,7 +33,7 @@
 		<%} else { %>
 			<!-- no logueado o sin acceso a prevent -->
 			<div id="iconoCar"><a href="#" onclick="javascript:showVideo1('car');" title="Más sobre CAR"><img src="images/null.gif" /></a></div>
-		<%} %>
+		<% } %>
 
 		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
 			<!-- logueado y con acceso a home -->

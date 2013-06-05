@@ -364,7 +364,8 @@ and (max-height : 550px) {
 	#productHomeMenu li.tabAlarms a, #productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { background-image:none; height:auto; padding:5px 0; }
 	#productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { border-left:solid 1px #fff; }
 	/*.camarasBG,.lucesBG, .camarasBG { background-image:none; background:transparent; width: auto; height: auto; padding: 0px; }*/
-	#productHomeContent.col1_798 { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#productHomeContent.col1_798, #productHomeContent.col1_798_noSpaces { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#productHomeContent.col1_798_noSpaces { padding:0; }
 	#productHomeContent { overflow-x:hidden; position:relative; }
 	#productHomeMenu.col1_170 { position: relative; }
 	#tab { display: none;}
@@ -393,19 +394,20 @@ and (max-height : 550px) {
 	}
 	/**/
 	#accordion, #agendaWrapper { width:100%; margin: 0 0 5px 0; }
-	#accordion .editable { font-size:80%; min-width:39%; }
+	#accordion .editable { font-size:80%; max-width:25%; }
 	#accordion .portaToggle { width:27px; float: left; }
 	#accordion .titleContainer { width: 95%; }
 	#switchBoard { padding: 2px; }
-	#accordion .portaTitleAndSwitch { width:100%; padding-bottom: 5px; }
+	#accordion .portaTitleAndSwitch { width: 89%; padding-bottom: 5px; float: right; }
 	#accordion .switchContainer { float: right; }
 	div[id^="alarm-status-"] {
 		float:right;
 		top:0;
 	}
-	#switchBoard { padding:0; }
+	/*#switchBoard { padding:0; }*/
 	#switchBoard span { font-size: 12px; }
-	#switchBoard .notifyme, #switchBoard .linkToAgenda { font-size: 12px; line-height: 16px; }
+	#switchBoard .notifyme,
+	#switchBoard .linkToAgenda { font-size: 12px; line-height: 16px; }
 	.logLayerContent { width: 100%; }
 	
 	#agendaWrapper h1 { font-size: 100%; line-height: normal; padding: 10px 0 10px 0; }
@@ -422,6 +424,11 @@ and (max-height : 550px) {
 	#pictureContainer { width:100%; height:auto; margin: 0 auto; }
 	.controlsBasicView { width:100%; background:#fff; margin: 0 auto; position: relative; top:0; }
 	div.controlsBasicView img { padding:5px; margin: 0 5px; }
+
+	/* switch */
+	.has-switch.switch-mini { min-width: 100px; }
+	.has-switch span.switch-warning { left: -54px; }
+	.has-switch label { left: 53px; }
 }
 @media only screen and (max-width: 350px) {
 	body { overflow-x:hidden; overflow-y:auto; }

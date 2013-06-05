@@ -724,7 +724,7 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button class="buttonLink" id="closeforgotPasswordErrorLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Ha ocurrido un error. Por favor intentelo nuevamente.</div>
-			<fieldset><button type="button" id="closeforgotPasswordErrorLayer" class="indexButtonBase">Cerrar</button></fieldset>
+			<!-- fieldset><button type="button" id="closeforgotPasswordErrorLayer" class="indexButtonBase">Cerrar</button></fieldset-->
 		</div>
 	</div>
 </div>

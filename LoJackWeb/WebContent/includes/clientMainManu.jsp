@@ -18,22 +18,20 @@
 					<li class="toRight tabPet"><a href="#" onclick="javascript:showVideo1('pets');" title="Más sobre PETS">Pets</a></li>
 				<% } %>
 			<% } %>
-			<% if (websiteUser.isPreventUser()) { %>
+			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
 				<% if (LoJackWebUtils.isMobile(request)) { %>
-					<li class="toRight tabCar"><a href="productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
-				<% } else { %>
+					<!-- logueado y con acceso a prevent -->
 					<% if (websiteUser.isPreventLogged()) { %>
-						<li class="toRight tabCar"><a href="productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
+						<li class="toRight tabCar"><a href="./productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
 					<% } else { %>
 						<li class="toRight tabCar"><a href="javascript:loginPrevent()" title="Administrar tus autos">Car</a></li>
 					<% } %>
-				<% } %>
-			<% } else { %>
-				<% if (LoJackWebUtils.isMobile(request)) { %>
-					<li class="toRight tabCar"><a href="mobile/videoPageCar.jsp" title="Más sobre CAR">Car</a></li>
-				<% } else { %>	
-					<li class="toRight tabCar"><a href="#" onclick="javascript:showVideo1('car');" title="Más sobre CAR">Car</a></li>
-				<% } %>
+				<% } else { %>
+					<li class="toRight tabCar"><a href="#" id="enterPrevent" title="Administrar tus autos">Car</a></li>
+				<% }  %>
+			<%} else { %>
+				<!-- no logueado o sin acceso a prevent -->
+				<li class="toRight tabCar"><a href="#" onclick="javascript:showVideo1('car');" title="Más sobre CAR">Car</a></li>
 			<% } %>
 			<% if (websiteUser.isHomeUser()) { %>
 				<li class="toRight tabHome"><a href="productoHome.jsp" title="Administrá tus alarmas, luces y cámaras">Home</a></li>

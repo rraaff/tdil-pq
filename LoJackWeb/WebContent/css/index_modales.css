@@ -183,7 +183,21 @@ button.buttonLink {
 #loginLayer input[type="password"],
 #loginLayer input[type="tel"],
 #loginLayer input[type="url"],
-#loginLayer input[type="text"],
+#loginLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 240px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+	float: left;
+}
 #passwordLayer input[type="text"],
 #passwordLayer input[type="password"] {
 	border: 0;
@@ -194,7 +208,7 @@ button.buttonLink {
 	line-height: 35px;
 	text-transform: uppercase;
 
-	width: 240px;
+	width: 200px;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;

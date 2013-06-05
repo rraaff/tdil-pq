@@ -200,7 +200,7 @@
 		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>OFF</b>');
 
 		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', 'MR ON');
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo.png" />');
 	}
 	function setLightStatusOff(idEntidad, idLuz) {
 		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
@@ -216,7 +216,7 @@
 		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
 			activateRandomSequence(idEntidad, idLuz);
 		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR ON</b>');
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo_bold.png" />');
 	}
 	function setLightStatusRanOn(idEntidad, idLuz) {
 		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
@@ -229,7 +229,7 @@
 		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
 			deactivateRandomSequence(idEntidad, idLuz);
 		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR OFF</b>');
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_off_solo_bold.png" />');
 	}
 	function setLightStatusRanOff(idEntidad, idLuz) {
 		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
@@ -248,7 +248,7 @@
 		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
 			activateRandomSequence(idEntidad, idLuz);
 		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>MR ON</b>');
+		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo_bold.png" />');
 	}
 
 	function turnOnLight(idEntidad, idLuz) {
@@ -399,7 +399,12 @@ textarea {
 	<style type="text/css">
 		#productHomeContent.col1_798 { padding:5px 0 0 0; }
 		#accordion, #agendaWrapper { padding:3px; }
-		#accordion .portaTitleAndSwitch { width:90%; margin:0 10px 0 0; padding-bottom: 5px; }
+		#accordion .portaTitleAndSwitch { width:80%; margin:0 10px 0 0; padding:5px 0; float:right; }
+
+		.has-switch.switch-mini { min-width: 102px; }
+		.has-switch span.switch-warning { left: -52px; }
+		.has-switch span.switch-danger { left:1px; }
+		.has-switch label { left: 50px; }
 	</style>
 <% } %>
 </head>
@@ -432,7 +437,7 @@ textarea {
 									<% } %>
 									<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
 									<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-									<span class="fakeButtons mron hasButton shuffle" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><img src="images/null.gif" width="36" height="36" /></span>
+									<span class="fakeButtons hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><img src="images/null.gif" width="36" height="36" /></span>
 								<% } else  { %>
 									<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
 										<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
@@ -442,7 +447,7 @@ textarea {
 										<% } %>
 										<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
 										<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-										<span class="randomButtonOn disableButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></span>
+										<span class="hasButton randomButtonOff disableButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></span>
 									<% } else  { %>
 										<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
@@ -452,7 +457,7 @@ textarea {
 											<% } %>
 											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 											<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-											<span class="randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
+											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
 										<% } else  { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
@@ -461,7 +466,7 @@ textarea {
 											<% } %>
 											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 											<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-											<span class="randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
+											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
 										<% } %>
 									<% } %>
 								<% } %>
