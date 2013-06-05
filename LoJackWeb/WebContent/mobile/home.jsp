@@ -64,7 +64,7 @@ function enterPets() {
 			<% if (websiteUser.isPreventLogged()) { %>
 				<div id="iconoCar"><a href="../productoPrevent.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 			<% } else { %>
-				<div id="iconoCar"><a href="../productoPrevent.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
+				<div id="iconoCar"><a href="./loginPreventModal.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 			<% } %>
 		<% } else { %>
 			<div id="iconoCar"><a href="videoPageCar.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>

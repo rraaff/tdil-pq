@@ -41,6 +41,7 @@
   <form-bean id="RenameLightFormMobile" name="RenameLightFormMobile" type="com.tdil.lojack.struts.forms.RenameLightForm"/>
   <form-bean id="LightAgendaFormMobile" name="LightAgendaFormMobile" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
   <form-bean id="SendPanicFormMobile" name="SendPanicFormMobile" type="com.tdil.lojack.struts.forms.SendPanicForm"/>
+  <form-bean id="PreventLoginFormMobile" name="PreventLoginFormMobile" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -219,6 +220,7 @@
   
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
+  	<forward name="failure" path="/exception.jsp" redirect="true"/>
   </action>
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesSpeedLimitAjaxAction">
   </action>
@@ -250,14 +252,14 @@
 
 
 <!-- MOBILE -->
-<action name="LoginFormMobile" path="/mobile/loginMobile" scope="request" type="com.tdil.lojack.struts.action.LoginActionMobile">
+<action name="LoginFormMobile" path="/mobile/loginMobile" scope="session" type="com.tdil.lojack.struts.action.LoginActionMobile">
 	<forward name="failure" path="/mobile/loginModal.jsp"/>
 	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
   <action path="/mobile/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
 	<forward name="continue" path="/mobile/index.jsp" redirect="true"/>
   </action>
-  <action name="RequestResetPasswordFormMobile" path="/mobile/requestResetPasswordMobile" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
+  <action name="RequestResetPasswordFormMobile" path="/mobile/requestResetPasswordMobile" scope="session" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
   	<forward name="failure" path="/mobile/recuperarClaveModal.jsp"/>
 	<forward name="continue" path="/mobile/claveEnviadaModal.jsp" redirect="true"/>
   </action>
@@ -392,6 +394,10 @@
   </action>
   <action name="LightAgendaFormMobile" parameter="HomeUser" path="/mobile/toggleActivationLightAgendaMobile" scope="session" type="com.tdil.lojack.struts.action.ToggleActivationLightAgendaAction">
   	<forward name="continue" path="/mobile/homeLuzAgenda.jsp" redirect="true"/>
+  </action>
+  <action name="PreventLoginFormMobile" parameter="PreventUser" path="/mobile/loginPreventMobile" scope="session" type="com.tdil.lojack.struts.action.LoginPreventActionMobile">
+  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  	<forward name="failure" path="/mobile/loginPreventModal.jsp"/>
   </action>
   
  </action-mappings>

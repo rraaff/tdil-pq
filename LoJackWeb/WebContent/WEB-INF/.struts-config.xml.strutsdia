@@ -350,6 +350,8 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/vehiculosVelocidades.jsp" TARGET="page15" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/exception.jsp" TARGET="page42" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page15" PATH="/vehiculosVelocidades.jsp"
   SHAPE="240,4402,0,0" SUBTYPE="jsp" TITLE="vehiculosVelocidades.jsp"
@@ -473,8 +475,9 @@
   SHAPE="256,1890,0,0" SUBTYPE="jsp" TITLE="recuperarClaveModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT NAME="link0"
-   PATH="/requestResetPasswordMobile.do" SUBTYPE="confirmed"
-   TARGET="action68" TITLE="/requestResetPasswordMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+   PATH="/mobile/requestResetPasswordMobile.do" SUBTYPE="confirmed"
+   TARGET="action69" TITLE="/mobile/requestResetPasswordMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page28" PATH="/mobile/claveEnviadaModal.jsp"
   SHAPE="256,2114,0,0" SUBTYPE="jsp" TITLE="claveEnviadaModal.jsp"
@@ -482,23 +485,24 @@
  <PROCESS-ITEM NAME="page29" PATH="/mobile/registroModal.jsp"
   SHAPE="448,1729,0,0" SUBTYPE="jsp" TITLE="registroModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/registerMobile.do"
-   SUBTYPE="confirmed" TARGET="action71" TITLE="/registerMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/registerMobile.do"
+   SUBTYPE="confirmed" TARGET="action111"
+   TITLE="/mobile/registerMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page31" PATH="/mobile/editAvatarModal.jsp"
   SHAPE="448,4913,0,0" SUBTYPE="jsp" TITLE="editAvatarModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveProfileMobile.do"
-   SUBTYPE="confirmed" TARGET="action73" TITLE="/saveProfileMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/saveProfileMobile.do"
+   SUBTYPE="confirmed" TARGET="action112"
+   TITLE="/mobile/saveProfileMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page30" PATH="/mobile/changePasswordModal.jsp"
   SHAPE="1376,1074,0,0" SUBTYPE="jsp" TITLE="changePasswordModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changePasswordMobile.do"
-   SUBTYPE="confirmed" TARGET="action75"
-   TITLE="/changePasswordMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/mobile/changePasswordMobile.do" SUBTYPE="confirmed"
+   TARGET="action113" TITLE="/mobile/changePasswordMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#goToChangePasswordMobile" NAME="action76"
   PATH="/goToChangePasswordMobile" SHAPE="1120,1233,0,0"
@@ -510,32 +514,33 @@
  <PROCESS-ITEM NAME="page32" PATH="/mobile/updatePersonModal.jsp"
   SHAPE="240,2658,0,0" SUBTYPE="jsp" TITLE="updatePersonModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/updatePersonMobile.do"
-   SUBTYPE="confirmed" TARGET="action78" TITLE="/updatePersonMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/updatePersonMobile.do"
+   SUBTYPE="confirmed" TARGET="action114"
+   TITLE="/mobile/updatePersonMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page33" PATH="/mobile/homeAlarmas.jsp"
   SHAPE="656,1649,0,0" SUBTYPE="jsp" TITLE="homeAlarmas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page34" PATH="/mobile/activateAlarmModal.jsp"
   SHAPE="240,2290,0,0" SUBTYPE="jsp" TITLE="activateAlarmModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/activateAlarmMobile.do"
-   SUBTYPE="confirmed" TARGET="action80" TITLE="/activateAlarmMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/mobile/activateAlarmMobile.do" SUBTYPE="confirmed"
+   TARGET="action81" TITLE="/mobile/activateAlarmMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page35" PATH="/mobile/deactivateAlarmModal.jsp"
   SHAPE="704,2546,0,0" SUBTYPE="jsp" TITLE="deactivateAlarmModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/deactivateAlarmMobile.do"
-   SUBTYPE="confirmed" TARGET="action83"
-   TITLE="/deactivateAlarmMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/mobile/deactivateAlarmMobile.do" SUBTYPE="confirmed"
+   TARGET="action115" TITLE="/mobile/deactivateAlarmMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page36" PATH="/mobile/renameAlarmModal.jsp"
   SHAPE="240,3458,0,0" SUBTYPE="jsp" TITLE="renameAlarmModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/renameAlarmMobile.do"
-   SUBTYPE="confirmed" TARGET="action85" TITLE="/renameAlarmMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/renameAlarmMobile.do"
+   SUBTYPE="confirmed" TARGET="action116"
+   TITLE="/mobile/renameAlarmMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page37" PATH="/mobile/logAlarmaModal.jsp"
   SHAPE="240,4018,0,0" SUBTYPE="jsp" TITLE="logAlarmaModal.jsp"
@@ -543,25 +548,27 @@
  <PROCESS-ITEM NAME="page38" PATH="/mobile/homeAlarmaAgenda.jsp"
   SHAPE="240,3153,0,0" SUBTYPE="jsp" TITLE="homeAlarmaAgenda.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveAlarmAgendaMobile.do"
-   SUBTYPE="confirmed" TARGET="action91"
-   TITLE="/saveAlarmAgendaMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/mobile/saveAlarmAgendaMobile.do" SUBTYPE="confirmed"
+   TARGET="action119" TITLE="/mobile/saveAlarmAgendaMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page39" PATH="/mobile/homeLuces.jsp"
   SHAPE="704,2641,0,0" SUBTYPE="jsp" TITLE="homeLuces.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page40" PATH="/mobile/renameLightModal.jsp"
   SHAPE="512,4818,0,0" SUBTYPE="jsp" TITLE="renameLightModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/renameLightMobile.do"
-   SUBTYPE="confirmed" TARGET="action101" TITLE="/renameLightMobile.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/renameLightMobile.do"
+   SUBTYPE="confirmed" TARGET="action102"
+   TITLE="/mobile/renameLightMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page41" PATH="/mobile/homeLuzAgenda.jsp"
   SHAPE="304,5794,0,0" SUBTYPE="jsp" TITLE="homeLuzAgenda.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveLightAgendaMobile.do"
-   SUBTYPE="confirmed" TARGET="action105"
-   TITLE="/saveLightAgendaMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0"
+   PATH="/mobile/saveLightAgendaMobile.do" SUBTYPE="confirmed"
+   TARGET="action120" TITLE="/mobile/saveLightAgendaMobile.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page43" PATH="/mobile/sendPanicModal.jsp"
   SHAPE="240,7041,0,0" SUBTYPE="jsp" TITLE="sendPanicModal.jsp"
@@ -582,9 +589,6 @@
    PATH="/mobile/index.jsp" TARGET="page26" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#requestResetPasswordMobile" NAME="action68"
-  PATH="/requestResetPasswordMobile" SHAPE="464,2002,0,0"
-  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#requestResetPasswordMobile" NAME="action69"
   PATH="/mobile/requestResetPasswordMobile" SHAPE="32,2129,0,0"
   TITLE="RequestResetPasswordFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -602,9 +606,6 @@
    PATH="/mobile/registroModal.jsp" TARGET="page29" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#registerMobile" NAME="action71"
-  PATH="/registerMobile" SHAPE="656,1841,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#registerMobile" NAME="action111"
   PATH="/mobile/registerMobile" SHAPE="1152,1089,0,0"
   TITLE="RegisterFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -622,9 +623,6 @@
    PATH="/mobile/editAvatarModal.jsp" TARGET="page31" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#saveProfileMobile" NAME="action73"
-  PATH="/saveProfileMobile" SHAPE="656,4913,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#saveProfileMobile" NAME="action112"
   PATH="/mobile/saveProfileMobile" SHAPE="1136,1089,0,0"
   TITLE="EditProfileFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -638,9 +636,6 @@
  <PROCESS-ITEM ID="#mobile#viewAvatarMobile" NAME="action74"
   PATH="/mobile/viewAvatarMobile" SHAPE="448,7009,0,0"
   TITLE="EditProfileFormMobile" TYPE="action" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM ID="#changePasswordMobile" NAME="action75"
-  PATH="/changePasswordMobile" SHAPE="1584,1074,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#changePasswordMobile" NAME="action113"
   PATH="/mobile/changePasswordMobile" SHAPE="1136,1089,0,0"
   TITLE="ChangePasswordFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -658,9 +653,6 @@
    PATH="/mobile/updatePersonModal.jsp" TARGET="page32" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#updatePersonMobile" NAME="action78"
-  PATH="/updatePersonMobile" SHAPE="448,2882,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#updatePersonMobile" NAME="action114"
   PATH="/mobile/updatePersonMobile" SHAPE="1120,1089,0,0"
   TITLE="UpdatePersonFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -685,9 +677,6 @@
    PATH="/mobile/activateAlarmModal.jsp" TARGET="page34"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#activateAlarmMobile" NAME="action80"
-  PATH="/activateAlarmMobile" SHAPE="448,2290,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#activateAlarmMobile" NAME="action81"
   PATH="/mobile/activateAlarmMobile" SHAPE="464,2721,0,0"
   TITLE="ActivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -705,9 +694,6 @@
    PATH="/mobile/deactivateAlarmModal.jsp" TARGET="page35"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#deactivateAlarmMobile" NAME="action83"
-  PATH="/deactivateAlarmMobile" SHAPE="912,2546,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#deactivateAlarmMobile" NAME="action115"
   PATH="/mobile/deactivateAlarmMobile" SHAPE="464,2721,0,0"
   TITLE="DeactivateAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -725,9 +711,6 @@
    PATH="/mobile/renameAlarmModal.jsp" TARGET="page36" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#renameAlarmMobile" NAME="action85"
-  PATH="/renameAlarmMobile" SHAPE="448,3458,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#renameAlarmMobile" NAME="action116"
   PATH="/mobile/renameAlarmMobile" SHAPE="32,3905,0,0"
   TITLE="RenameAlarmFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -789,9 +772,6 @@
    PATH="/mobile/homeAlarmaAgenda.jsp" TARGET="page38" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#saveAlarmAgendaMobile" NAME="action91"
-  PATH="/saveAlarmAgendaMobile" SHAPE="448,3153,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#saveAlarmAgendaMobile" NAME="action119"
   PATH="/mobile/saveAlarmAgendaMobile" SHAPE="32,4977,0,0"
   TITLE="AlarmAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -873,9 +853,6 @@
    PATH="/mobile/renameLightModal.jsp" TARGET="page40" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#renameLightMobile" NAME="action101"
-  PATH="/renameLightMobile" SHAPE="720,4818,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#renameLightMobile" NAME="action102"
   PATH="/mobile/renameLightMobile" SHAPE="240,5329,0,0"
   TITLE="RenameLightFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -900,9 +877,6 @@
    PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#saveLightAgendaMobile" NAME="action105"
-  PATH="/saveLightAgendaMobile" SHAPE="512,5794,0,0" SUBTYPE="unknown"
-  TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#saveLightAgendaMobile" NAME="action120"
   PATH="/mobile/saveLightAgendaMobile" SHAPE="32,6273,0,0"
   TITLE="LightAgendaFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -927,4 +901,19 @@
    PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page42" PATH="/exception.jsp" SHAPE="240,4497,0,0"
+  SUBTYPE="jsp" TITLE="exception.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#mobile#loginPreventMobile" NAME="action68"
+  PATH="/mobile/loginPreventMobile" SHAPE="32,5313,0,0"
+  TITLE="PreventLoginFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/loginPreventModal.jsp" TARGET="page45" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/productoPrevent.jsp" TARGET="page16" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page45" PATH="/mobile/loginPreventModal.jsp"
+  SHAPE="448,5425,0,0" SUBTYPE="jsp" TITLE="loginPreventModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
