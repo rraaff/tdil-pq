@@ -40,7 +40,7 @@
 				<html:select name="LoginFormMobile" property="documentType" >
 						<option value="">Seleccione...</option>
 						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-							<option value="<%=codBean.getId()%>">
+							<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
 								<%=codBean.getName()%></option>
 						<% } %>
 					</html:select>

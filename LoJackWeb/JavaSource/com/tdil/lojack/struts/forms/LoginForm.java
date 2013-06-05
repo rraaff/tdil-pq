@@ -38,7 +38,7 @@ public class LoginForm extends ActionForm {
 
 	private String timezoneOffset;
 	private String timezoneName;
-	private int documentType;
+	private int documentType = 1;
 	private String username;
 	private String password;
 	
@@ -78,6 +78,7 @@ public class LoginForm extends ActionForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
+		documentType = 1;
 		username = null;
 		password = null;
 	}

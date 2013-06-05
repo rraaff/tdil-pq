@@ -55,7 +55,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	
 	private TokenHolder token;
 	
-	private int documentType;
+	private int documentType = 1;
 	private String document;
 	private String password;
 	private String firstName;
@@ -200,6 +200,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	
 	@Override
 	public void reset() throws SQLException {
+		this.documentType = 1;
 		this.document = null;
 		this.firstName = null;
 		this.lastName = null;

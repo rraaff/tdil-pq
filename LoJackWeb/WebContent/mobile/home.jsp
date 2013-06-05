@@ -21,7 +21,7 @@
 function enterPets() {
 	var userDate = new Date();
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl()%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
+	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl()%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
 }
 </script>
 <style type="text/css">
