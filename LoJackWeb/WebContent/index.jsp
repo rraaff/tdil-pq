@@ -273,7 +273,7 @@ function basicRegister() {
 		$(param).val('');
 	});
 	$("form[name='RegisterForm'] select[name=documentType]").val('1');
-	centerLayer($(window), $( "#registerLayer" ));
+	centerLayerWF($(window), $( "#registerLayer" ), function() {$("form[name='RegisterForm'] input[name='document']").focus();});
 	centerLayer($(window), $( "#centradorModalesRegister" ));
 }
 
@@ -285,14 +285,14 @@ function login() {
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
 	$("form[name='LoginForm'] select[name=documentType]").val('1');
 	//$("form[name='LoginForm'] input[name='username']").focus();
-	centerLayer($(window), $( "#loginLayer" ));
+	centerLayerWF($(window), $( "#loginLayer" ), function() {$("form[name='LoginForm'] input[name='username']").focus();});
 	centerLayer($(window), $( "#centradorModalesLogin" ));
 }
 
 function forgotPassword() {
 	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
 	$("form[name='RequestResetPasswordForm'] select[name=documentType]").val('1');
-	centerLayer($(window), $( "#forgotPasswordLayer" ));
+	centerLayerWF($(window), $( "#forgotPasswordLayer" ), function() {$("form[name='RequestResetPasswordForm'] input[name='username']").focus();});
 	centerLayer($(window), $( "#centradorModalesforgotPass" ));
 }
 
