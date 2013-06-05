@@ -1,3 +1,23 @@
+NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPLO: [HECHO] , [PARA TESTEAR]
+
+************************************************************************************************************
+/////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES //////// 
+************************************************************************************************************
+FORMULARIOS:
+ - Manejo de errores en mobile
+ - Foco en Número de DNi en el login
+
+PRODUCTO HOME
+- Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
+- El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
+- Camara:
+  - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
+  - Que muestre el timestamp de la ultima actualizacion
+  - ancho y alto de camara
+  - mejora visual del applet
+- Prevent
+  - ver posibilidad de hacer check y mostrar varios autos
+
 mobile
 errores - terminar de completar, manejar los de thalamus
 mensajes de ok
@@ -7,56 +27,29 @@ prevent
 
 checkthalamusup en todos lados
 
-Luces:
-Si esta on, switch
-Si esta off, switch + random
-Si esta random, solo desactivar random
-Si el estado es desconocido, que va? 
-
-DONE validacion cliente
-DONE enter submit en username y password en el login
-
 {"profile":{"document":{},"email":"rrraa@gmail.com","address":{"countryId":1,"street2":""},"phone":{"type":"cellphone","intCode":"54"}},"credential":{"principal":"0:","password":"123456"}}
 {"errors":{"credential.principal":"CredentialAlreadyExists"}} status 400
 
-*************************************************************************************************************
 
-http://www.whatsmyuseragent.com/
+************************************************************************************************************
+/////// MEJORAS /////////////// MEJORAS /////////////// MEJORAS /////////////// MEJORAS //////// MEJORAS ///
+************************************************************************************************************
+PREVENT MOBILE
+- Al entrar a prevent mostrar mapa centrado en la posicion actual y que muestre el iconito con el rayo (images/skin_lj_rl/webApp/parkings/myPosition.png)
+- [ DEPENDE DE LOJACK ] No hay obtención de la zona segura para dibujar, depende de implementacion de GeoSystems
 
-*************************************************************************************************************
-HOME.JSP
-???? no lo pude reproducir Avatar: visualmente quedó todo como lo necesito, salvo que te manda a una pagina para cambiar el avatar en lugar de abrirlo en modal.
+************************************************************************************************************
+/////// ERRORES /////////////// ERRORES /////////////// ERRORES /////////////// ERRORES //////// ERRORES ///
+************************************************************************************************************
 
-************
 REGISTRACIÓN
-DONE No muestra los errores cuando dejás vacíos los cambios obligatorios
-	Ahora esta mostrando bien los de nommbre y apellido
+- El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad.
 
-DONE Debería pedir el tipo de documento por separado del número.
-DONE Los textos de los errores están en ingles. ¿Desde donde los modifico?
-	Esta en ApplicationResources.properties
+PREVENT MOBILE
+- Me está pidiendo el password de prevent para entrar. Eso antes andaba bien. Es raro
 
-DONE  Datepicker con fechas en ingles
-DONE, le puse seleccione - "Select an opcion" en los selects
-
-El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad.
-
-
+************************************************************************************************************
+************************************************************************************************************
 *************************************************************************************************************
-entrar a prevent mostrar mapa centrado en la posicion actual
-que muestre un iconito ()
-
-ver posibilidad de hacer check y mostrar varios autos
-
-*******************************
-Prevent
-
-No hay obtencion de la zona segura para dibujar, depende de implementacion de GeoSystems
-
-Camara
-Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
-Que muestre el timestamp de la ultima actualizacion
-ancho y alto de camara
-mejora visual del applet
-
-*******************************
+http://www.whatsmyuseragent.com/
+*************************************************************************************************************

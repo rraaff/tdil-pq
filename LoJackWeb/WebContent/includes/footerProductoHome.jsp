@@ -11,13 +11,13 @@
 			<p><a href="http://www.clublojack.com.ar" target="_blank" title="Ingresá ahora a Club LoJack">www.clublojack.com.ar</a></p>
 			<!--  button class="btn btn-mini btn-primary" type="button">clublojack.com.ar</button -->
 		</div>
-		<div class="col_social">
+		<!-- div class="col_social">
 			<ul class="nav nav-pills nav-social">
 				<li><a href="#" class="fb"></a></li>
 				<li><a href="#" class="tw"></a></li>
 				<li><a href="#" class="ln"></a></li>
 				<li><a href="#" class="gp"></a></li>
 			</ul>
-		</div>
+		</div-->
 	</div>
 </footer>

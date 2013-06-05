@@ -575,7 +575,7 @@ div[id^="cont-"] {
 	width: 968px;
 	height: 60px;
 	margin: 0 auto;
-	top:530px; /*570*/
+	top:565px;
 	z-index:500;
 	position:relative;
 }
