@@ -22,6 +22,7 @@ public class RequestResetPasswordForm extends ActionForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
+	private int documentType = 1;
 	private String username;
 	
 	public String getUsername() {
@@ -34,6 +35,7 @@ public class RequestResetPasswordForm extends ActionForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
+		documentType = 1;
 		username = null;
 	}
 	public int resetPassword() throws SQLException, ValidationException {
@@ -42,7 +44,7 @@ public class RequestResetPasswordForm extends ActionForm {
 		}
 		try {
 			RequestResetPasswordBean requestResetPasswordBean = new RequestResetPasswordBean();
-			requestResetPasswordBean.setPrincipal("1:" + this.getUsername());
+			requestResetPasswordBean.setPrincipal(this.getDocumentType() + ":" + this.getUsername());
 			
 			RequestResetPasswordResult result = ThalamusClientBeanFacade.requestResetPassword(requestResetPasswordBean);
 			String tokenDev = result.getTokenDev();
@@ -59,6 +61,12 @@ public class RequestResetPasswordForm extends ActionForm {
 		} catch (UnauthorizedException e) {
 			return -1;
 		}
+	}
+	public int getDocumentType() {
+		return documentType;
+	}
+	public void setDocumentType(int documentType) {
+		this.documentType = documentType;
 	}
 	
 }

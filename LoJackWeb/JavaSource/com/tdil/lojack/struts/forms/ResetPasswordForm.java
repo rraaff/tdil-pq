@@ -25,6 +25,7 @@ public class ResetPasswordForm extends ThalamusForm {
 	private static final long serialVersionUID = 7670249948557986182L;
 
 	private String token;
+	private int documentType = 1;
 	private String username;
 	private String password;
 	
@@ -55,7 +56,7 @@ public class ResetPasswordForm extends ThalamusForm {
 		try {
 			ResetPasswordBean resetPasswordBean = new ResetPasswordBean();
 			resetPasswordBean.setToken(this.getToken());
-			resetPasswordBean.setPrincipal("1:" + this.getUsername());
+			resetPasswordBean.setPrincipal(this.getDocumentType() + ":" + this.getUsername());
 			resetPasswordBean.setPassword(this.getPassword());
 			ThalamusResponse response = ThalamusClientBeanFacade.resetPassword(resetPasswordBean);
 			if (response.isBadRequest()) {
@@ -92,6 +93,12 @@ public class ResetPasswordForm extends ThalamusForm {
 		this.username = null;
 		this.password = null;
 		
+	}
+	public int getDocumentType() {
+		return documentType;
+	}
+	public void setDocumentType(int documentType) {
+		this.documentType = documentType;
 	}
 	
 }

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
 <%@ include file="includes/agentInfo.jspf" %>
 <%
 	if (isMobile || isAndroid) { 
@@ -99,7 +100,7 @@ $(document).ready(
 		      }
 		   });
 		   
-		
+		//showOtherMonths: true,
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
 
@@ -286,12 +287,14 @@ function login() {
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
 	$("form[name='LoginForm'] select[name=documentType]").val('1');
+	//$("form[name='LoginForm'] input[name='username']").focus();
 	centerLayer($(window), $( "#loginLayer" ));
 	centerLayer($(window), $( "#centradorModalesLogin" ));
 }
 
 function forgotPassword() {
 	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
+	$("form[name='RequestResetPasswordForm'] select[name=documentType]").val('1');
 	centerLayer($(window), $( "#forgotPasswordLayer" ));
 	centerLayer($(window), $( "#centradorModalesforgotPass" ));
 }
@@ -681,7 +684,17 @@ function parkingsNotLogged() {
 				<h3>Recuperá tu clave</h3>
 				<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 				<fieldset>
-					<label>DNI</label>
+					<label>Tipo doc</label>
+					<html:select name="RequestResetPasswordForm" property="documentType" >
+							<option value="">Seleccione...</option>
+							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+								<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
+									<%=codBean.getName()%></option>
+							<% } %>
+					</html:select>
+				</fieldset>
+				<fieldset>
+					<label>Número</label>
 					<html:text name="RequestResetPasswordForm" property="username" styleClass="width240" />
 				</fieldset>
 				<fieldset>
@@ -707,7 +720,7 @@ function parkingsNotLogged() {
 <div id="forgotPasswordUserNotFoundLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesForgotPasswordUserNotFound" class="defaultLayerStyles">
 		<div class="loginLayerContent">
-			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordUserNotFoundLayer">X</button></div>
+			<div id="xContainer"><button class="buttonLink" cl="forgotPasswordUserNotFoundLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">El DNI no coincide con un usuario de Lo-Jack</div>
 			<fieldset><button type="submit" id="closeforgotPasswordUserNotFoundLayer" class="indexButtonBase">Cerrar</button></fieldset>

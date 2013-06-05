@@ -1,3 +1,6 @@
+<%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
+<%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
+<%@page import="com.tdil.lojack.struts.forms.ResetPasswordForm"%>
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.ThalamusErrorFormatter"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
@@ -57,9 +60,20 @@ function centerLayer(objWin, objLayer) {
 		<div class="resetPassNewLayerContent">
 			<html:form method="POST" action="/resetPassword">
 				<%=ThalamusErrorFormatter.getErrorFrom(request, "token.err")%>
+				<fieldset>
+					<label>Tipo doc</label>
+					<% ResetPasswordForm loginForm = (ResetPasswordForm)session.getAttribute("ResetPasswordForm"); %>
+					<html:select name="ResetPasswordForm" property="documentType" >
+						<option value="">Seleccione...</option>
+						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+							<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
+								<%=codBean.getName()%></option>
+						<% } %>
+					</html:select>
+				</fieldset>
 				<div class="myRow">
 					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">User</div>
+					<div class="myLabel width100">Numero</div>
 					<div class="myLabel width150"><html:text name="ResetPasswordForm" property="username" styleClass="normalField width120"/></div>
 				</div>
 				<%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%>

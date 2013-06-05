@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
 <%@ page info="index"%><!--
 --><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><!--
 --><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><!--
@@ -35,7 +36,18 @@
 	<html:form method="POST" action="/mobile/requestResetPasswordMobile">
 		<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 		<fieldset>
-			<label>DNI</label>
+			<label>Tipo doc</label>
+			<% RequestResetPasswordForm loginForm = (RequestResetPasswordForm)session.getAttribute("RequestResetPasswordFormMobile"); %>
+			<html:select name="RequestResetPasswordFormMobile" property="documentType" >
+					<option value="">Seleccione...</option>
+					<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+						<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
+							<%=codBean.getName()%></option>
+					<% } %>
+				</html:select>
+		</fieldset>
+		<fieldset>
+			<label>Numero</label>
 			<html:text name="RequestResetPasswordFormMobile" property="username" styleClass="width240" />
 		</fieldset>
 		<fieldset>
