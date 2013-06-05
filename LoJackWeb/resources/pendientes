@@ -16,8 +16,10 @@ PRODUCTO HOME
   - Que muestre el timestamp de la ultima actualizacion
   - ancho y alto de camara
   - mejora visual del applet
-- Prevent
-  - ver posibilidad de hacer check y mostrar varios autos
+
+PREVENT MOBILE
+- [DEPENDEMOS DE GIS] Me está pidiendo el password de prevent para entrar.
+- ver posibilidad de hacer check y mostrar varios autos
 
 mobile
 errores - terminar de completar, manejar los de thalamus
@@ -45,9 +47,6 @@ PREVENT MOBILE
 
 REGISTRACIÓN
 - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad.
-
-PREVENT MOBILE
-- Me está pidiendo el password de prevent para entrar. Eso antes andaba bien. Es raro
 
 ************************************************************************************************************
 ************************************************************************************************************
