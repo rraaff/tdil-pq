@@ -30,11 +30,16 @@ public class GoToHomeCameraAction extends AbstractAction {
 			aForm.initWith(user);
 			Cookie cameraCookie = ThalamusWebUtils.getCameraCookie(request);
 			if (cameraCookie == null) {
-				boolean isMobile = LoJackWebUtils.isMobile(request);
-				if (isMobile) {
+				Boolean isUsingMobile = (Boolean)request.getSession().getAttribute("usingMobile");
+				if (isUsingMobile != null && isUsingMobile.equals(Boolean.TRUE)) {
 					aForm.setUseApplet(false);
 				} else {
-					aForm.setUseApplet(true);
+					boolean isMobile = LoJackWebUtils.isMobile(request);
+					if (isMobile) {
+						aForm.setUseApplet(false);
+					} else {
+						aForm.setUseApplet(true);
+					}
 				}
 			} else {
 				aForm.setUseApplet("applet".equals(cameraCookie.getValue()));

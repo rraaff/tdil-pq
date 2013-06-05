@@ -16,7 +16,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('preven
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.loginurl','http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx?','URL de prevent',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.token','a5b0981a0188bb9a5b7fe44b6c32d894','Token de prevent',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.loginurl','http://test.lojackgis.com.ar:8080/webgis/lojackpets/loginPortal.ashx?','URL de pets',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.loginurl','http://www.lojackgis.com.ar/lojackpets/forms/login.aspx?','URL de pets',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.mobile.loginurl','http://www.lojackgis.com.ar/lojackpetsmobile/login.aspx?','URL de pets mobile',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.token','a5b0981a0188bb9a5b7fe44b6c32d894','Token de pets',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prop.tmp.path','/home/mgodoy/icarus/apache-tomcat-6.0.32/temp','prop.tmp.path',0);

@@ -3,6 +3,7 @@ package com.tdil.lojack.pets;
 public class PetsConnector {
 
 	private static String petsLoginUrl = "";
+	private static String petsMobileLoginUrl = "";
 	private static String petsToken;
 
 	public static String getPetsLoginUrl() {
@@ -19,5 +20,13 @@ public class PetsConnector {
 
 	public static void setPetsToken(String petsToken) {
 		PetsConnector.petsToken = petsToken;
+	}
+
+	public static String getPetsMobileLoginUrl() {
+		return petsMobileLoginUrl;
+	}
+
+	public static void setPetsMobileLoginUrl(String petsMobileLoginUrl) {
+		PetsConnector.petsMobileLoginUrl = petsMobileLoginUrl;
 	}
 }

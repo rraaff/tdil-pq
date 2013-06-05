@@ -206,6 +206,13 @@ public class LoJackConfig extends SystemConfig {
 				PetsConnector.setPetsLoginUrl(petsloginurl);
 			}
 			getLog().fatal("Pets login url is " + (petsloginurl == null ? "null" : petsloginurl));
+			
+			String petsMobileloginurl = SystemPropertyUtils.getSystemPropertValue("pets.mobile.loginurl");
+			if (petsMobileloginurl != null) {
+				PetsConnector.setPetsMobileLoginUrl(petsMobileloginurl);
+			}
+			getLog().fatal("Pets mobile login url is " + (petsMobileloginurl == null ? "null" : petsMobileloginurl));
+			
 			String petstoken = SystemPropertyUtils.getSystemPropertValue("pets.token");
 			if (petstoken != null) {
 				PetsConnector.setPetsToken(petstoken);
