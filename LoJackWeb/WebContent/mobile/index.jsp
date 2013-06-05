@@ -34,7 +34,7 @@
 <div id="menu">
 	<ul>
 		<li><a href="./loginModal.jsp" title="Ingresar ahora">Ingresar</a></li>
-		<li><a href="./recuperarClaveModal.jsp">Olvidé mi clave</a></li>
+		<li><a href="./recuperarClaveModal.jsp">Mi clave</a></li>
 		<li><a href="./goToRegistrationMobile.do" class="last">Registrarme</a></li>
 	</ul>
 </div>

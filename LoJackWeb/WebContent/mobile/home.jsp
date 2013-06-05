@@ -25,7 +25,7 @@ function enterPets() {
 }
 </script>
 <style type="text/css">
-#logoIndex { top: 80px; }
+#logoIndex { top: 60px; }
 #laRuedita { top: 25%; }
 @media only screen and (max-height : 320px) {
 	#copyright {
@@ -42,19 +42,11 @@ function enterPets() {
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="menu">
 	<ul>
-		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
-		<li><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos">Cambiar mis datos</a></li>
+		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Mi clave</a></li>
+		<li><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos">Mis datos</a></li>
 		<li><a href="./logoutMobile.do" class="last" title="Salir del sistema">Salir</a></li>
 	</ul>
 </div>
-<!-- 
-<a href="./goToEditProfileMobile.do">
-< % if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-	<img id="avatarImg" src="../download.st?id=< %=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=< %=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-< % } else { %>
-	<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-< % } %></a>
- -->
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<div id="iconoLogout"><a href="./logoutMobile.do" title="Salir del sistema"><img src="../images/null.gif" /></a></div>
