@@ -54,6 +54,7 @@
 		 });
   });
 
+  <%@ include file="includes/panicJS.jspf" %>
   function doRenameLight(idEntidadIdLuz, lightDesc) {
 	  <%@ include file="includes/blockUI.jspf" %>
 	  $.ajax({
@@ -502,7 +503,7 @@ textarea {
 		</div>
 	</div>
 </section>
-
+<%@ include file="includes/panicButton.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">
@@ -651,5 +652,6 @@ textarea {
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
+<%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>

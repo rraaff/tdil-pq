@@ -96,7 +96,7 @@
 	  $('#password').attr('value','');
 	  centerLayer($(window), $( "#passwordLayer" ));
   }
-
+  <%@ include file="includes/panicJS.jspf" %>
   <%@ include file="includes/errorAjaxJS.jspf" %>
   <%@ include file="includes/centerLayerJS.jspf" %>
 
@@ -251,11 +251,13 @@
 		</div>
 	</div>
 </section>
+<%@ include file="includes/panicButton.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/passwordLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
+<%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>

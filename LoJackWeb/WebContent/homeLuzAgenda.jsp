@@ -87,6 +87,8 @@
    		$("input[name='sunday']").attr('disabled','disabled');
     }
   });
+
+  <%@ include file="includes/panicJS.jspf" %>
 </script>
 
 <style type="text/css">
@@ -238,10 +240,12 @@
 		</div>
 	</div>
 </section>
+<%@ include file="includes/panicButton.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
+<%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>

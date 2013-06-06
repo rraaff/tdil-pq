@@ -915,5 +915,38 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page45" PATH="/mobile/loginPreventModal.jsp"
   SHAPE="448,5425,0,0" SUBTYPE="jsp" TITLE="loginPreventModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/loginPreventMobile.do"
+   SUBTYPE="confirmed" TARGET="action68"
+   TITLE="/mobile/loginPreventMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page44" PATH="/mobile/contactoModal.jsp"
+  SHAPE="240,8097,0,0" SUBTYPE="jsp" TITLE="contactoModal.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/updatePersonMobile.do"
+   SUBTYPE="confirmed" TARGET="action114"
+   TITLE="/mobile/updatePersonMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#mobile#goToContactMobile" NAME="action71"
+  PATH="/mobile/goToContactMobile" SHAPE="32,8657,0,0"
+  TITLE="ContactFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/contactoModal.jsp" TARGET="page44" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#mobile#contactMobile" NAME="action73"
+  PATH="/mobile/contactMobile" SHAPE="32,8769,0,0"
+  TITLE="ContactFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/mobile/contactoModal.jsp" TARGET="page44" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="index" NAME="forward1"
+   PATH="/mobile/index.jsp" TARGET="page26" TITLE="index" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward2"
+   PATH="/mobile/productoPrevent.jsp" TARGET="page46" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page46" PATH="/mobile/productoPrevent.jsp"
+  SHAPE="272,8786,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

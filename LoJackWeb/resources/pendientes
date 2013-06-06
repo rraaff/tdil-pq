@@ -6,13 +6,13 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 DONE Revisar recupero de password, falta el tipo de documento, da errores al cerrar
 
 FORMULARIOS:
- - Manejo de errores en mobile
+? puntualmente que viste? - Manejo de errores en mobile
 DONE - Foco en Número de DNi en el login WL
- - Falta el formulario de contacto para la versión Mobile
+DONE (esta puesto en el index y en home) - Falta el formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
 - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
-- El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
+DONE (solo seccion home, lo necesitas en todos?) - El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
 - Camara:
   - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
   - Que muestre el timestamp de la ultima actualizacion

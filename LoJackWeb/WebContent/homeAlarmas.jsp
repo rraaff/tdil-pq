@@ -179,54 +179,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	  });
   }
 
-  function sendPanic() {
-	  <%@ include file="includes/blockUI.jspf" %>
-	  $('#sendPanic').load('sendPanic.jsp', function(response, status, xhr) {
-		  	<%@ include file="includes/unblockUI.jspf" %>
-			  if (status == "error") {
-			    errorAjax();
-			  } else {
-		  centerLayer($(window), $( "#sendPanicLayer" ));
-		  centerLayer($(window), $( "#centradorModalesSendPanic" ));
-		}
-	  });
-  }
-
-  function doSendPanic(alarmDesc, idEntidad) {
-	  <%@ include file="includes/blockUI.jspf" %>
-	  $.ajax({
-          type: "GET",
-          cache: false,
-          url: "./sendPanic.do",
-          data: {idEntidad: idEntidad},
-          contentType: "application/json; charset=utf-8",
-          success: function(data) {
-        	  <%@ include file="includes/unblockUI.jspf" %>
-        	  if (data.result == 'OK') {
-					$( "#sendPanicLayer" ).fadeOut();
-					$( "#sendPanicErrorLayer" ).fadeOut();
-					centerLayer($(window), $( "#panicSentLayer" ));
-					centerLayer($(window), $( "#centradorModalesPanicSent" ));
-				} else {
-					$( "#sendPanicLayer" ).fadeOut();
-					$( "#sendPanicErrorLayer" ).fadeOut();
-					$('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
-					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
-					centerLayer($(window), $( "#sendPanicErrorLayer" ));
-					centerLayer($(window), $( "#centradorModalesPanicError" ));
-				}
-          },
-          error: function() {
-        	  <%@ include file="includes/unblockUI.jspf" %>
-        	  $( "#sendPanicLayer" ).fadeOut();
-        	  $( "#sendPanicErrorLayer" ).fadeOut();
-			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
-			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
-			  centerLayer($(window), $( "#sendPanicErrorLayer" ));
-			  centerLayer($(window), $( "#centradorModalesPanicError" ));
-          }
-      });
-  }
+  <%@ include file="includes/panicJS.jspf" %>
 
   function confAlarmAlert(alarmId) {
 	  <%@ include file="includes/blockUI.jspf" %>
@@ -474,9 +427,7 @@ textarea {
 		</div>
 	</div>
 </section>
-<section id="panicButtonContainer">
-	<a href="javascript:sendPanic();"><div id="panicButtton">Botón de pánico</div></a>
-</section>
+<%@ include file="includes/panicButton.jspf" %>
 
 <%@ include file="includes/footerProductoHome.jsp" %>
 
@@ -589,50 +540,12 @@ textarea {
 	</div>
 </div>
 
-<!-- Inicio panic -->
-<div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesSendPanic" class="defaultLayerStyles">
-		<div class="modalStyle">
-			<div id="xContainer"><button class="buttonLink" id="closePanicLayer" cl="sendPanicLayer">X</button></div>
-			<h3>Atención</h3>
-			<div id="sendPanic">
-				Consultando datos...
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="panicSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesPanicSent" class="defaultLayerStyles">
-		<div class="modalStyle">
-			<div id="xContainer"><button class="buttonLink" id="closePanicSentLayer" cl="panicSentLayer">X</button></div>
-			<h3>Atención</h3>
-			<div>
-				<div class="alert alert-success">Se ha enviado el comando de señal de pánico.</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="sendPanicErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesPanicError" class="defaultLayerStyles">
-		<div class="modalStyle">
-			<div id="xContainer"><button class="buttonLink" id="closeSendPanicErrorLayer" cl="sendPanicErrorLayer">X</button></div>
-			<h3>Atención</h3>
-			<div id="sendPanicError">
-				<div class="alert alert-error">Ha occurrido un error enviando la señal de panico.</div>
-			</div>
-			<div>
-				<input type="button" id="retryPanic" value="Reintentar" class="indexButtonBase"/>
-			</div>
-		</div>
-	</div>
-</div>
+<%@ include file="includes/panicLayers.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Fin panic -->
 
 <%@ include file="includes/videoLayers.jsp" %>
-
+<%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>

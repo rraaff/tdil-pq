@@ -37,29 +37,6 @@
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
-
-$(function() {
-		$( "#accessPreventPortal" ).click(function() {
-			 $.ajax({
-					type: "POST",
-					url: "http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx",
-					data: {
-						SESSIONID: '<%=websiteUser.getToken().getCookie("JSESSIONID").getValue()%>',
-						TIMEZONEOFFSET: -3
-					},
-					beforeSend: function (request) {
-						request.setRequestHeader("Lojack-Token", "a5b0981a0188bb9a5b7fe44b6c32d894");
-					},
-					success: function (data) {
-						alert(data);
-						if (data.status == 200)
-							window.location = decodeURI(data.url);
-						else
-							alert(data.error);
-					}
-				});
-		});
-});
 </script>
 
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
@@ -108,8 +85,6 @@ $(function() {
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
-
-<!-- div id="accessPreventPortal" style="z-index:3000; position: fixed;"><a href="#" style="color:#000;">test link</a></div -->
 
 <%@ include file="includes/videoLayers.jsp" %>
 

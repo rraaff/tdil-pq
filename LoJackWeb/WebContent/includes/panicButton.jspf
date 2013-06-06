@@ -1,0 +1,3 @@
+<section id="panicButtonContainer">
+	<a href="javascript:sendPanic();"><div id="panicButtton">Botón de pánico</div></a>
+</section>

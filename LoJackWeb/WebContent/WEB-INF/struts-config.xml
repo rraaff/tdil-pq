@@ -42,6 +42,7 @@
   <form-bean id="LightAgendaFormMobile" name="LightAgendaFormMobile" type="com.tdil.lojack.struts.forms.LightAgendaForm"/>
   <form-bean id="SendPanicFormMobile" name="SendPanicFormMobile" type="com.tdil.lojack.struts.forms.SendPanicForm"/>
   <form-bean id="PreventLoginFormMobile" name="PreventLoginFormMobile" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
+  <form-bean id="ContactFormMobile" name="ContactFormMobile" type="com.tdil.lojack.struts.forms.ContactForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -400,6 +401,14 @@
   	<forward name="failure" path="/mobile/loginPreventModal.jsp"/>
   </action>
   
+  <action name="ContactFormMobile" path="/mobile/goToContactMobile" scope="session" type="com.tdil.lojack.struts.action.GoToContactAction">
+  	<forward name="continue" path="/mobile/contactoModal.jsp" redirect="true"/>
+  </action>
+  <action name="ContactFormMobile" path="/mobile/contactMobile" scope="session" type="com.tdil.lojack.struts.action.ContactActionMobile">
+ 	<forward name="continue" path="/mobile/productoPrevent.jsp" redirect="true"/>
+ 	<forward name="index" path="/mobile/index.jsp" redirect="true"/>
+  	<forward name="failure" path="/mobile/contactoModal.jsp"/>
+  </action>
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

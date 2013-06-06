@@ -30,6 +30,7 @@ import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
 import com.tdil.utils.EmailUtils;
+import com.tdil.validations.FieldValidation;
 
 public class ContactForm extends TransactionalValidationForm {
 
@@ -45,6 +46,13 @@ public class ContactForm extends TransactionalValidationForm {
 	private String email;
 	private String phone;
 	private String content;
+	
+	public static final String firstname_key = "ContactForm.firstname";
+	public static final String lastname_key = "ContactForm.lastname";
+	public static final String document_key = "ContactForm.document";
+	public static final String email_key = "ContactForm.email";
+	public static final String phone_key = "ContactForm.phone";
+	public static final String content_key = "ContactForm.content";
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(ContactForm.class);
 	
@@ -72,9 +80,12 @@ public class ContactForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-		//FieldValidation.validateText(this.getName(), name_key, 150, error);
-		//FieldValidation.validateEmail(this.getEmail(), email_key, error);
-		//FieldValidation.validateText(this.getContent(), content_key, 4000, error);
+		FieldValidation.validateText(this.getFirstname(), firstname_key, 150, error);
+		FieldValidation.validateText(this.getLastname(), lastname_key, 150, error);
+		FieldValidation.validateNumber(this.getDocumentNumber(), document_key, 1, Integer.MAX_VALUE, error);
+		FieldValidation.validateEmail(this.getEmail(), email_key, error);
+		FieldValidation.validateText(this.getPhone(), phone_key, 20, error);
+		FieldValidation.validateText(this.getContent(), content_key, 4000, error);
 	}
 	
 	@Override

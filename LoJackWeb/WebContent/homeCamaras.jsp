@@ -38,6 +38,7 @@ $(function() {
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
 });
+<%@ include file="includes/panicJS.jspf" %>
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
@@ -75,9 +76,11 @@ $(function() {
 		</div>
 	</div>
 </section>
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/panicButton.jspf" %>
 <%@ include file="includes/footerProductoHome.jsp" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
+<%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>

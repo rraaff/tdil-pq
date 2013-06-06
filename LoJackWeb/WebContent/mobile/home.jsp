@@ -78,7 +78,7 @@ function enterPets() {
 </div>
 <div id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="javascript:contactLoJack();" title="Envianos tu consulta">clic acá</a>.</p>
+		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="./goToContactMobile.do" title="Envianos tu consulta">clic acá</a>.</p>
 	</div>
 </div>
 </body>
