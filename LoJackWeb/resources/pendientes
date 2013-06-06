@@ -10,7 +10,8 @@ FORMULARIOS:
 - Falta el foco en número de DNI en formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
-- Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
+- Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo 
+desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
 DONE (solo seccion home, lo necesitas en todos?) - El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
 - Camara:
   - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
@@ -39,15 +40,19 @@ checkthalamusup en todos lados
 /////// MEJORAS /////////////// MEJORAS /////////////// MEJORAS /////////////// MEJORAS //////// MEJORAS ///
 ************************************************************************************************************
 PREVENT MOBILE
-- Al entrar a prevent mostrar mapa centrado en la posicion actual y que muestre el iconito con el rayo (images/skin_lj_rl/webApp/parkings/myPosition.png)
+- Al entrar a prevent mostrar mapa centrado en la posicion actual y que muestre el iconito con el rayo }
+(images/skin_lj_rl/webApp/parkings/myPosition.png)
 - [ DEPENDE DE LOJACK ] No hay obtención de la zona segura para dibujar, depende de implementacion de GeoSystems
 
 ************************************************************************************************************
 /////// ERRORES /////////////// ERRORES /////////////// ERRORES /////////////// ERRORES //////// ERRORES ///
 ************************************************************************************************************
-
+CAMARA
+- La cámara en mobile no me hace el refresh de la imagen. TEnía abierto el browser en la pc y en el teléfono 
+y ejecutaba los comandos desde el teléfono y se me refrescaba solamente en la pc.
 REGISTRACIÓN
-DONE? - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad. 
+DONE? - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO 
+(mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad. 
 Tuve que prefijar la fecha a 1/1/2012, te parece ok?
 
 ************************************************************************************************************
