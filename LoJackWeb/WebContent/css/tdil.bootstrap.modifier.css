@@ -411,7 +411,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper {
 	width: 680px;
 }
-#accordion .titleContainer {  }
+#accordion .titleContainer { height:auto; }
 #accordion .portaToggle {
 	width: 27px;
 	float: left;
@@ -546,6 +546,7 @@ div[id^="cont-"] {
 #switchBoard {
 	padding: 10px;
 	width: 100%;
+	float: left;
 }
 #switchBoard span {
 	color:#761617;
