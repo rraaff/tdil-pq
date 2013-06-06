@@ -102,7 +102,7 @@ $(document).ready(
 		   
 		//showOtherMonths: true,
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'})
+			changeYear: true, minDate: "-100Y", yearRange: '-120:-1'})
 
 		$("form[name='RegisterForm']").validate({
 			errorPlacement: function(error, element) {
