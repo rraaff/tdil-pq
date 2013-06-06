@@ -1,4 +1,4 @@
-<%@ include file="includes/tryPage.jspf" %>
+
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.LoJackConfig"%>
 <%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
@@ -435,4 +435,3 @@
 <%@ include file="includes/videoLayers.jsp" %>
 </body>
 </html>
-<%@ include file="includes/catchPage.jspf" %>

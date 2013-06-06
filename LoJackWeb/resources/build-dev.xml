@@ -15,6 +15,27 @@
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 			classpath="./ant-contrib.jar" />
 
+	<target name="createDatabase">
+		<condition property="root.pass" value="root">
+			<and>
+				<os family="unix" />
+			</and>
+		</condition>
+		<condition property="root.pass" value="">
+			<and>
+				<not>
+					<os family="unix" />
+				</not>
+			</and>
+		</condition>
+		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="database.sql" />
+		</sql>
+	</target>
+
 	<target name="create_jar_applet">
 		<tstamp>
 			<format property="hora" pattern="yyyyMMddHHmm"/>
@@ -48,16 +69,68 @@
 		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="../WebContent/homeCamara.jsp"/>
     </target>
 
+	<target name="createTables" depends="createDatabase">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl.sql" />
+			<transaction src="sysproperties.sql" />
+			<transaction src="poi_inserts.sql" />
+		</sql>
+	</target>
+	
+	<target name="createTables_Pablo" depends="createDatabase">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl.sql" />
+			<transaction src="sysproperties.sql" />
+			<transaction src="fixip_pablo.sql" />
+			<transaction src="poi_inserts.sql" />
+		</sql>
+	</target>
+
+	<target name="useThalamusTest">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="thalamus_test.sql" />
+		</sql>
+	</target>
+	
+	<target name="useThalamusFake">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="thalamus_fake.sql" />
+		</sql>
+	</target>
+	
+	<target name="useMWTest">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="use_mw_test.sql" />
+		</sql>
+	</target>
+	
+	<target name="useMWFake">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="use_mw_fake.sql" />
+		</sql>
+	</target>
+
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>
-		
-		<delete dir="../../Camera/bin" />
-		<mkdir dir="../../Camera/bin" />
-		<javac encoding="ISO-8859-1" srcdir="../../Camera/src" debug="on" destdir="../../Camera/bin">
-			<classpath path="../../Camera/commons-codec.jar"></classpath>
-		</javac>
-		
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
 			<classes dir="../../thalamusJClient/ThalamusJClient/bin" />
 			<classes dir="../../Camera/bin" />

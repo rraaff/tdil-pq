@@ -1,4 +1,4 @@
-<% } catch (Exception e) { 	
+<% } catch (Throwable e) { 	
 	com.tdil.lojack.utils.JSPLogger.LOG.error(e.getMessage() ,e); %>
 	<%@ include file="../exceptionModal.jspf" %>
 <% } %>

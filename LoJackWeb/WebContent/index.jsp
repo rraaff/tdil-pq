@@ -1,7 +1,6 @@
-<%@ include file="includes/tryPage.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
 <%@ include file="includes/agentInfo.jspf" %>
-<%
+<% 
 	if (isMobile || isAndroid) { 
 		session.setAttribute("usingMobile", Boolean.TRUE);
 		response.sendRedirect(request.getContextPath() + "/mobile/index.jsp");
@@ -746,4 +745,3 @@ function parkingsNotLogged() {
 </body>
 </html>
 <% } %>
-<%@ include file="includes/catchPage.jspf" %>

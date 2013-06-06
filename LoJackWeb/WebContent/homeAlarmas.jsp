@@ -1,4 +1,4 @@
-<%@ include file="includes/tryPage.jspf" %>
+
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Alarm"%>
@@ -551,4 +551,3 @@ textarea {
 <%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>
-<%@ include file="includes/catchPage.jspf" %>

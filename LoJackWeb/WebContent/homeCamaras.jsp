@@ -1,4 +1,4 @@
-<%@ include file="includes/tryPage.jspf" %>
+
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.gis.model.Camera"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
@@ -85,4 +85,3 @@ $(function() {
 <%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>
-<%@ include file="includes/catchPage.jspf" %>
