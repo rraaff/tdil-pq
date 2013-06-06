@@ -160,10 +160,10 @@ function right() {
 				<div id="pictureContainer">
 					<img id="cameraImg" src="./viewCamera">
 					<div class="controlsBasicView">
-						<a href="javascript:right()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
+						<a href="javascript:left()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
 						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
 						<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
-						<a href="javascript:left()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
+						<a href="javascript:right()" id="left"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_left_off.png" /></a>
 					</div>
 				</div>
 				<script>

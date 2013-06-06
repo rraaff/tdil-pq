@@ -294,6 +294,8 @@ input[type="text"].width240 { width: 240px; }
 	margin: 5px auto;
 	float: right;
 }
+#forgotPasswordLayer select { width:230px; float:right; }
+#forgotPasswordLayer input[type="text"] { width:220px; float:right; }
 #registerLayer fieldset { width: 460px; }
 #registerLayer select {
 	border-radius: 5px;

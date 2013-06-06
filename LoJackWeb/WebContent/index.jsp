@@ -685,16 +685,16 @@ function parkingsNotLogged() {
 				<fieldset>
 					<label>Tipo doc</label>
 					<html:select name="RequestResetPasswordForm" property="documentType" >
-							<option value="">Seleccione...</option>
-							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-								<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
-									<%=codBean.getName()%></option>
-							<% } %>
+						<option value="">Seleccione...</option>
+						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+							<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
+								<%=codBean.getName()%></option>
+						<% } %>
 					</html:select>
 				</fieldset>
 				<fieldset>
 					<label>Número</label>
-					<html:text name="RequestResetPasswordForm" property="username" styleClass="width240" />
+					<html:text name="RequestResetPasswordForm" property="username" />
 				</fieldset>
 				<fieldset>
 					<button type="submit" id="submitforgotPassword" class="indexButtonBase">Enviar</button>
