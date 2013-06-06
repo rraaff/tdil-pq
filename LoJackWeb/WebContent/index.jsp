@@ -101,8 +101,10 @@ $(document).ready(
 		   });
 		   
 		//showOtherMonths: true,
+		var queryDate = '2012-01-01';
+		var parsedDate = $.datepicker.parseDate('yy-mm-dd', queryDate);
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-			changeYear: true, minDate: "-100Y", yearRange: '-120:-1'})
+			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0', defaultDate: parsedDate});
 
 		$("form[name='RegisterForm']").validate({
 			errorPlacement: function(error, element) {

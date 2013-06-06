@@ -3,11 +3,11 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 ************************************************************************************************************
 /////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES /////////////// PENDIENTES //////// 
 ************************************************************************************************************
-Revisar recupero de password, falta el tipo de documento, da errores al cerrar
+DONE Revisar recupero de password, falta el tipo de documento, da errores al cerrar
 
 FORMULARIOS:
  - Manejo de errores en mobile
- - Foco en Número de DNi en el login WL
+DONE - Foco en Número de DNi en el login WL
  - Falta el formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
@@ -48,7 +48,8 @@ PREVENT MOBILE
 ************************************************************************************************************
 
 REGISTRACIÓN
-- El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad.
+DONE? - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO (mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad. 
+Tuve que prefijar la fecha a 1/1/2012, te parece ok?
 
 ************************************************************************************************************
 ************************************************************************************************************
