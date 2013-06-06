@@ -40,6 +40,7 @@
 	padding: 30px 53px;
 }
 .logLayerStyle { max-width:400px; }
+.panicLayerStyle { max-width:300px; }
 .changePasswordLayerContent { width: 466px; }
 #changePassLayerID form { margin: 20px 0 0 0; }
 .registerLayerContent { /*width: 580px;*/ }
@@ -110,7 +111,7 @@ h4,
 }
 #sendPanicLayer h3 { padding-bottom: 5px; }
 #sendPanic {
-	width:330px;
+	width:auto;
 	height:350px;
 	overflow-y:auto;
 }

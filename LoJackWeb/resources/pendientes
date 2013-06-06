@@ -6,9 +6,8 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 DONE Revisar recupero de password, falta el tipo de documento, da errores al cerrar
 
 FORMULARIOS:
-? puntualmente que viste? - Manejo de errores en mobile
-DONE - Foco en Número de DNi en el login WL
-DONE (esta puesto en el index y en home) - Falta el formulario de contacto para la versión Mobile
+- Manejo de errores en mobile. Cuando no completabas un campo no dice nada. No aparece ningún mensaje de error.
+- Falta el foco en número de DNI en formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
 - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 

@@ -1,7 +1,7 @@
 <!-- Inicio panic -->
 <div id="sendPanicLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesSendPanic" class="defaultLayerStyles">
-		<div class="modalStyle">
+		<div class="modalStyle panicLayerStyle">
 			<div id="xContainer"><button class="buttonLink" id="closePanicLayer" cl="sendPanicLayer">X</button></div>
 			<h3>Atención</h3>
 			<div id="sendPanic">

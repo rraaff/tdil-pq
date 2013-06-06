@@ -9,7 +9,7 @@ div {
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;   
 }
-
+a { color:#ee5222; }
 ::-webkit-scrollbar              { /* 1 */ }
 ::-webkit-scrollbar-button       { /* 2 */ }
 ::-webkit-scrollbar-track        { /* 3 */ }
@@ -239,7 +239,7 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 	padding:0;
 	margin:0;
 }
-#productHomeContent img.homeAd { width:100%; height:100%; }
+#productHomeContent img.homeAd { width:100%; height:auto; }
 #productHomeContent.col1_798 { width: 796px; }
 #cameraTitle {
 	background-color: #fff;

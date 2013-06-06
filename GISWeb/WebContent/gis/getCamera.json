@@ -1,8 +1,8 @@
 [
 	{
-		"username" : "camara",
-		"password": "lojack",
-		"url" : "http://gomezbianchi.dvrdns.org:5001",
+		"username" : "operator",
+		"password": "operator1",
+		"url" : "http://demo-life.dyndns.org:8980/",
 		"model" : "1"
 	}
 ]
