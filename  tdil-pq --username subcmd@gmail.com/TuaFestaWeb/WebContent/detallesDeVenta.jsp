@@ -57,7 +57,7 @@
 				<div class="myRow">
 					<% if (sellDetailsForm.hasMedia()) { %>
 						<% for (PublicImageBlobBean publicImageBlobBean : sellDetailsForm.getMedia()) { %>
-						<div class="fotoHelper" style="width:150px; height:150px; float:left; margin:10px; background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);"><a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>"><img src="images/null.gif" width="150" height="150" /></a></div>
+						<div class="fotoHelper" style="width:150px;height:150px;float:left;margin:0 10px 10px 0;background-position:center center;background-image:url(./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=150&height=150&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>);"><a href="./downloadThumb.st?id=<%=publicImageBlobBean.getBlobid()%>&width=800&height=600&type=PUBLIC&ext=<%=publicImageBlobBean.getBlobExt()%>" rel="lightbox[gal]" title="<%=sellDetailsForm.getSellValueObject().getName()%>"><img src="images/null.gif" width="150" height="150" /></a></div>
 						<% } %>
 					<% } %>
 				</div>
@@ -75,7 +75,7 @@
 						<div class="myLabel width800"><strong><bean:write name="SellDetailsForm" property="sellValueObject.geoLevelPath"/></strong></div>
 					</div>
 				<% } else { %>
-					Área de Cobertura
+					Area de Cobertura
 					<%
 					java.util.List sourceServiceAreas = sellDetailsForm.getServiceAreas();
 					com.tdil.struts.pagination.PaginatedListImpl paginatedServiceAreas = new com.tdil.struts.pagination.PaginatedListImpl(sourceServiceAreas, request, 10);

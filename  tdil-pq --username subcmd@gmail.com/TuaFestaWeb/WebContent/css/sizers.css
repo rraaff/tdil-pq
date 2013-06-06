@@ -153,6 +153,7 @@ input[type="textarea"] {
 .height800 { height:800px; }
 .height850 { height:850px; }
 .height1200 { height:1200px; }
+.height100per { height:100%; }
 
 .centering { margin:0 auto; }
 .margin100 { margin:100px; }
