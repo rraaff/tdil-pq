@@ -142,8 +142,8 @@
 							<% } else { %>
 								<img src="images/skin_basic/home/superdestacados_previewNoDisponible.gif" width="188" height="108" />
 							<% } %>
-							<span class="nameVignette"><%=adByCat.getProfesionalBusinessName() %></span><br/>
-							<span class="changeTheme"><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></span>
+							<span class="nameVignette">Profesional</span><br/>
+							<span class="changeTheme"><%=adByCat.getProfesionalBusinessName() %><%=adByCat.getCategoryName() == null ? "" : adByCat.getCategoryName()%></span>
 							<% if (!adByCat.isProfesionalAd()) { %>
 								<span class="priceTheme">Precio: <%=LocalizationUtils.formatPrice(adByCat.getSellPrice())%></span>
 							<% } %>

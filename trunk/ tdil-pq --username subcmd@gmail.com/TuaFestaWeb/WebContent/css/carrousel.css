@@ -36,6 +36,12 @@
 #slider-list a.theme span.nameVignette {
 	color:#a0a09b;
 	font-size:12px;
+	line-height:25px;
+}
+#slider-list a.theme span.nameVignetteProf {
+	color:#005a9e;
+	font-size:20px;
+	line-height:30px;
 }
 #slider-list a.theme:hover span.nameVignette, #slider-list a.theme:hover span.priceTheme {
 	color:#494947;

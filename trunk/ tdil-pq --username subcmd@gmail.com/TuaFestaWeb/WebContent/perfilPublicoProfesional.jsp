@@ -117,7 +117,7 @@ $(document).ready(function(){
 		<div id="formContent">
 			<div id="formSection" style="width:920px;">
 				<h2><bean:write name="ProfesionalProfileForm" property="profesional.businessname"/></h2>
-				<div class="fright width300">
+				<div class="fright width300 height100per">
 					<div id="muroContainer" class="fleft"><!-- style="min-height:350px;"-->
 						<h2 style="font-size:18px;">Muro de <bean:write name="ProfesionalProfileForm" property="profesional.completeName"/></h2>
 						<% if (websiteUser != null && websiteUser.isClient()) {
@@ -144,11 +144,11 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class="fleft width600">
-					<div id="myRow" style="width:86px; height:86px; background-repeat:no-repeat; background-position: center center; 
+					<div class="myRow logoProfesional" style="
 						<% if (profesional.getIdProfilePicture() != null && profesional.getIdProfilePicture() != 0) { %>
-							background-image:url(./downloadThumb.st?width=86&height=86&id=<%=profesional.getIdProfilePicture()%>&type=PUBLIC&ext=<%=profesional.getExtProfilePicture()%>);
+							background-image:url(./downloadThumb.st?width=200&height=200&id=<%=profesional.getIdProfilePicture()%>&type=PUBLIC&ext=<%=profesional.getExtProfilePicture()%>);
 						<% } %>
-					"></div>
+					background-repeat:no-repeat; background-position: center center;"></div>
 					<div class="myRow">
 						<div class="myLabel width80">Sexo</div>
 						<div class="myLabel width120"><strong><%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%></strong></div>
@@ -165,7 +165,7 @@ $(document).ready(function(){
 					</div>
 					<div class="myRow">
 						<div class="myLabel width80">Facebook</div>
-						<div class="myLabel width520"><a href="<%=profesional.getFacebook() %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
+						<div class="myLabel width520"><a href="http://www.facebook.com/<%=profesional.getFacebook() %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width80">Horario</div>
@@ -178,54 +178,49 @@ $(document).ready(function(){
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
 					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
 						<div class="myRow">
-							<h4>Video 1</h4>
 							<div><%=profesional.getVideo1() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
 						<div class="myRow">
-							<h4>Video 2</h4>
 							<div><%=profesional.getVideo2() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
 						<div class="myRow">
-							<h4>Video 3</h4>
 							<div><%=profesional.getVideo3() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
 						<div class="myRow">
-							<h4>Video 4</h4>
 							<div><%=profesional.getVideo4() %></div>
 						</div>
 					<% } %>
 					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
 						<div class="myRow">
-							<h4>Video 5</h4>
 							<div><%=profesional.getVideo5() %></div>
 						</div>
 					<% } %>
-					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
-					<div class="myRow">
-						<%
-						java.util.List source = profesionalProfileForm.getSells();
-						com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
-						request.setAttribute( "sells",  paginated);
-						%>
-						<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./perfilPublicoProfesioanl.jsp">
-							<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
-							<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
-							<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
-							<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
-								<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
-							</display:column>
-							<display:column title="acciones" headerClass="sortable width80"><a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a></display:column>
-						</display:table>
-						<%=DisplayTagParamHelper.getFields(request)%>
-					</div>
 					<div class="myRow height20" align="center" style="padding-top:20px;"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 				</div>
+			</div>
+			<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Productos y Servicios</h2>
+			<div class="myRow">
+				<%
+				java.util.List source = profesionalProfileForm.getSells();
+				com.tdil.struts.pagination.PaginatedListImpl paginated = new com.tdil.struts.pagination.PaginatedListImpl(source, request, 10);
+				request.setAttribute( "sells",  paginated);
+				%>
+				<display:table name="sells" sort="external" pagesize="10" id="sells" requestURI="./perfilPublicoProfesioanl.jsp">
+					<display:column title="Nombre" sortable="true" sortName="Producto" headerClass="sortable width350" property="name"></display:column>
+					<display:column title="Tipo" sortable="true" sortName="Tipo" headerClass="sortable width50" property="sellTypeDescription"></display:column>
+					<display:column title="Categoria" sortable="true" sortName="Categoria" headerClass="sortable width350" property="categoryText"></display:column>
+					<display:column title="Precio" sortable="true" sortName="precio" headerClass="sortable width50">
+						<%= LocalizationUtils.formatPrice(((SellValueObject)pageContext.getAttribute("sells")).getReferenceprice())%>
+					</display:column>
+					<display:column title="acciones" headerClass="sortable width80"><a href="./viewSellDetails.do?type=<%= ((SellValueObject)pageContext.getAttribute("sells")).getType()%>&id=<%= ((SellValueObject)pageContext.getAttribute("sells")).getId()%><%=DisplayTagParamHelper.getParams(request)%>">Ver detalles</a></display:column>
+				</display:table>
+				<%=DisplayTagParamHelper.getFields(request)%>
 			</div>
 		</div>
 	</div>
