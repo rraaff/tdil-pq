@@ -1,3 +1,4 @@
+<%@ include file="includes/tryPage.jspf" %>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
 <%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
 <%@page import="com.tdil.lojack.struts.forms.ResetPasswordForm"%>

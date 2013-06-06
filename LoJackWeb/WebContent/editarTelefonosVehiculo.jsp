@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%>
 <%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
@@ -83,3 +84,4 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 	</div>
 	<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 </html:form>
+<%@ include file="includes/catchModal.jspf" %>

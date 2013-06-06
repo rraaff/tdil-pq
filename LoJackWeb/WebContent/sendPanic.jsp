@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="org.apache.commons.lang.StringEscapeUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Alarm"%>
 <%@page import="java.util.Collection"%>
@@ -13,3 +14,4 @@ Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
 <% for (Alarm alarm : alarms) { %>
 <a href="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', <%= alarm.getIdEntidad() %>)"><%= alarm.getIdEntidad() %> - <%=alarm.getDescription() %></a><hr> 
 <% } %>
+<%@ include file="includes/catchModal.jspf" %>

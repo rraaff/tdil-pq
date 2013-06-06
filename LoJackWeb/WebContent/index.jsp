@@ -1,3 +1,4 @@
+<%@ include file="includes/tryPage.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
 <%@ include file="includes/agentInfo.jspf" %>
 <%
@@ -745,3 +746,4 @@ function parkingsNotLogged() {
 </body>
 </html>
 <% } %>
+<%@ include file="includes/catchPage.jspf" %>

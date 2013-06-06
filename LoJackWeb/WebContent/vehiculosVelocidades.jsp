@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
 <%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
@@ -85,3 +86,4 @@ function postSaveSpeedLimits(data) {
 	</div>
 	<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
 </html:form>
+<%@ include file="includes/catchModal.jspf" %>

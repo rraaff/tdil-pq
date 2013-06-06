@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.utils.WebsiteUserUtils"%>
 <%@page import="com.tdil.lojack.gis.model.ChangeLog"%>
 <%@page import="java.util.Collection"%>
@@ -25,3 +26,4 @@ Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websit
 		</div>
 	<% } %>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

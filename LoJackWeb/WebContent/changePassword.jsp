@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.ChangePasswordForm"%>
 <%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
 <%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%>
@@ -89,3 +90,4 @@ function postChangePassword(data) {
 		</div>
 	</div>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

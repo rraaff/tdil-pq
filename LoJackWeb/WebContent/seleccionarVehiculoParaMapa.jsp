@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%>
 <%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
@@ -31,3 +32,4 @@ $( "#closeSelectVehicleForMapLayer" ).click(function() {
 		</fieldset>
 	<% } %>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

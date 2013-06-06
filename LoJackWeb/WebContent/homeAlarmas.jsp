@@ -1,3 +1,4 @@
+<%@ include file="includes/tryPage.jspf" %>
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Alarm"%>
@@ -389,7 +390,8 @@ textarea {
 								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
 									<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
 								</div>
-							  	<% if (alarm.isInactive() ) { %>
+							  	<% alarm = null;
+							  		if (alarm.isInactive() ) { %>
 							  		<span class="" onclick="activateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 							  	<% } else { %>
 							  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
@@ -549,3 +551,4 @@ textarea {
 <%@ include file="includes/panicLayers.jspf" %>
 </body>
 </html>
+<%@ include file="includes/catchPage.jspf" %>

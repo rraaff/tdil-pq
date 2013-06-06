@@ -504,13 +504,6 @@
    TARGET="action113" TITLE="/mobile/changePasswordMobile.do"
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#goToChangePasswordMobile" NAME="action76"
-  PATH="/goToChangePasswordMobile" SHAPE="1120,1233,0,0"
-  TITLE="ChangePasswordFormMobile" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/mobile/changePasswordModal.jsp" TARGET="page30"
-   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page32" PATH="/mobile/updatePersonModal.jsp"
   SHAPE="240,2658,0,0" SUBTYPE="jsp" TITLE="updatePersonModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -923,9 +916,9 @@
  <PROCESS-ITEM NAME="page44" PATH="/mobile/contactoModal.jsp"
   SHAPE="240,8097,0,0" SUBTYPE="jsp" TITLE="contactoModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/updatePersonMobile.do"
-   SUBTYPE="confirmed" TARGET="action114"
-   TITLE="/mobile/updatePersonMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/mobile/contactMobile.do"
+   SUBTYPE="confirmed" TARGET="action73"
+   TITLE="/mobile/contactMobile.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#mobile#goToContactMobile" NAME="action71"
   PATH="/mobile/goToContactMobile" SHAPE="32,8657,0,0"
@@ -949,4 +942,11 @@
  <PROCESS-ITEM NAME="page46" PATH="/mobile/productoPrevent.jsp"
   SHAPE="272,8786,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#mobile#goToChangePasswordMobile" NAME="action75"
+  PATH="/mobile/goToChangePasswordMobile" SHAPE="1120,1201,0,0"
+  TITLE="ChangePasswordFormMobile" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/mobile/changePasswordModal.jsp" TARGET="page30"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

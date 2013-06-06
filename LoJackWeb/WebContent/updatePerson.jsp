@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %><!--
 --><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
@@ -199,3 +200,4 @@ function postRegister(data) {
 		</div>
 	</div>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

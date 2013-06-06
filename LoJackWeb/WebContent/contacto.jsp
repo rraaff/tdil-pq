@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.struts.forms.ContactForm"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
@@ -136,3 +137,4 @@ function postContact(data) {
 		</div>
 	</div>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

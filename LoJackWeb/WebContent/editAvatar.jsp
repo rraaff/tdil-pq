@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
 <%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%>
 <%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
@@ -94,3 +95,4 @@ $.each(data, function(key, value) {
 		</div>
 	</div>
 </div>
+<%@ include file="includes/catchModal.jspf" %>

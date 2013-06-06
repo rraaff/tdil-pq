@@ -279,7 +279,7 @@
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
   <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/viewAvatarMobile" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
-  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/goToChangePasswordMobile" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
+  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/goToChangePasswordMobile" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
   	<forward name="continue" path="/mobile/changePasswordModal.jsp" redirect="true"/>
   </action>
   <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/changePasswordMobile" scope="session" type="com.tdil.struts.actions.SaveAction">

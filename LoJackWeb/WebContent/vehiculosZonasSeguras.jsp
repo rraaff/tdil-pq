@@ -1,3 +1,4 @@
+<%@ include file="includes/tryModal.jspf" %>
 <%@page import="com.tdil.lojack.prevent.model.SecureZone"%>
 <%@page import="com.tdil.lojack.struts.forms.beans.SecureZoneSelectionBean"%>
 <%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
@@ -88,3 +89,4 @@ function postSaveSpeedLimits(data) {
 	</div>
 	<fieldset><button id="submitregister" class="indexButtonBase" >Aplicar</button></fieldset>
 </html:form>
+<%@ include file="includes/catchModal.jspf" %>
