@@ -47,7 +47,16 @@
 		<signjar alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore" jar="../WebContent/cameraviewer-b${hora}.jar"></signjar>
 		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="../WebContent/homeCamara.jsp"/>
     </target>
-
+	
+	<path id="environment.libraries">
+		<fileset dir="../../thalamusJClient/EnvironmentLibraries/"
+			includes="**/*.jar" />
+	</path>
+	<path id="th.environment.libraries">
+		<fileset dir="../../thalamusJClient/ThalamusJClient/"
+			includes="**/*.jar" />
+	</path>
+	
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>
@@ -56,6 +65,21 @@
 		<mkdir dir="../../Camera/bin" />
 		<javac encoding="ISO-8859-1" srcdir="../../Camera/src" debug="on" destdir="../../Camera/bin">
 			<classpath path="../../Camera/commons-codec.jar"></classpath>
+		</javac>
+		
+		<delete dir="../../CameraViewer/bin" />
+		<mkdir dir="../../CameraViewer/bin" />
+		<javac encoding="ISO-8859-1" srcdir="../../CameraViewer/src" debug="on" destdir="../../CameraViewer/bin">
+			<classpath path="../../Camera/bin/"></classpath>
+		</javac>
+		
+		<delete dir="../../${project.name.cap}Web/WebContent/WEB-INF/classes" />
+		<mkdir dir="../../${project.name.cap}Web/WebContent/WEB-INF/classes" />
+		<javac encoding="ISO-8859-1" srcdir="../JavaSource" debug="on" destdir="../../${project.name.cap}Web/WebContent/WEB-INF/classes">
+			<classpath path="../../Camera/bin/"></classpath>
+			<classpath path="../../thalamusJClient/ThalamusJClient/bin" />
+			<classpath refid="environment.libraries" />
+			<classpath refid="th.environment.libraries" />
 		</javac>
 		
 		<war destfile="./${project.name.upper}.tmp/${project.name.upper}_WEB.war" basedir="../../${project.name.cap}Web/WebContent" webxml="../../${project.name.cap}Web/WebContent/WEB-INF/web.xml">
