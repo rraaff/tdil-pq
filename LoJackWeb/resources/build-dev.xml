@@ -145,7 +145,6 @@
 				<exclude name="jakarta-oro.jar" />
 				<exclude name="jfor-0.7.2rc1.jar" />
 				<exclude name="jtidy-r938.jar" />
-				<!--exclude name="mysql-connector-java-5.1.13-bin.jar" /-->
 				<exclude name="nekohtml.jar" />
 				<exclude name="pluginibator.jar" />
 				<exclude name="poi-3.1-FINAL-20080629.jar" />
@@ -154,7 +153,9 @@
 				<exclude name="xml-apis-xerces-2.9.1.jar" />
 				<exclude name="servlet-api.jar" />
 				<exclude name="log4j-1.2.16.jar" />
-				<!--exclude name="yuicompressor-2.4.6.jar"/-->
+				<exclude name="yuicompressor-2.4.6.jar"/>
+				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
+				<exclude name="sqljdbc4.jar" />
 			</lib>
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
@@ -254,6 +255,153 @@
 		</copy>
 		<copy file="./database-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/db-sqlserver.sql">
 		</copy>
+	</target>
+	
+	<!-- build para lojack -->
+	<path id="environment.libraries">
+		<fileset dir="../../thalamusJClient/EnvironmentLibraries/"
+			includes="**/*.jar" />
+	</path>
+	<path id="th.environment.libraries">
+		<fileset dir="../../thalamusJClient/ThalamusJClient/"
+			includes="**/*.jar" />
+	</path>
+	
+	<target name="prepare_lojack_build">
+		<delete dir="${project.name.upper}.tmp" failonerror="false">
+		</delete>
+		<mkdir dir="${project.name.upper}.tmp" />
+		<mkdir dir="${project.name.upper}.tmp/mysql" />
+		<mkdir dir="${project.name.upper}.tmp/sqlserver" />
+		<mkdir dir="${project.name.upper}.tmp/libraries" />
+		<mkdir dir="${project.name.upper}.tmp/src" />
+		<mkdir dir="${project.name.upper}.tmp/src/Camera" />
+		<mkdir dir="${project.name.upper}.tmp/src/CameraViewer" />
+		<mkdir dir="${project.name.upper}.tmp/src/LoJackWeb" />
+		<copy todir="${project.name.upper}.tmp/libraries" flatten="true">
+			<fileset dir="../../thalamusJClient/EnvironmentLibraries/">
+				<include name="*.jar" />
+				<!--exclude name="servlet-api.jar" />
+				<exclude name="jsch-0.1.39.jar" /-->
+				<exclude name="cue.language.jar" />
+				<exclude name="asm-3.3.1.jar" />
+				<exclude name="cglib-2.2.2.jar" />
+				<exclude name="iText-2.0.8.jar" />
+				<exclude name="jakarta-oro.jar" />
+				<exclude name="jfor-0.7.2rc1.jar" />
+				<exclude name="jtidy-r938.jar" />
+				<exclude name="nekohtml.jar" />
+				<exclude name="pluginibator.jar" />
+				<exclude name="poi-3.1-FINAL-20080629.jar" />
+				<exclude name="urlrewrite-3.2.0.jar" />
+				<exclude name="xercesImpl-2.8.0.jar" />
+				<exclude name="xml-apis-xerces-2.9.1.jar" />
+				<!--exclude name="servlet-api.jar" /-->
+				<!--exclude name="log4j-1.2.16.jar" /-->
+				<exclude name="yuicompressor-2.4.6.jar"/>
+				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
+				<exclude name="sqljdbc4.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${project.name.upper}.tmp/libraries" flatten="true">
+			<fileset dir="../../thalamusJClient/ThalamusJClient/">
+				<include name="commons-httpclient.jar" />
+			</fileset>
+		</copy>
+		
+		<delete dir="${project.name.upper}.tmp/bin"></delete>
+		<mkdir dir="${project.name.upper}.tmp/bin" />
+		<javac encoding="ISO-8859-1" srcdir="../../thalamusJClient/ThalamusJClient/src" debug="on" destdir="${project.name.upper}.tmp/bin">
+			<classpath refid="environment.libraries" />
+			<classpath refid="th.environment.libraries" />
+		</javac>
+		<jar jarfile="${project.name.upper}.tmp/libraries/ThalamusJClient.jar" basedir="${project.name.upper}.tmp/bin"/>
+		<delete dir="${project.name.upper}.tmp/bin"></delete>
+		
+		<copy todir="${project.name.upper}.tmp" file="Instalacion.docx">
+		</copy>
+		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
+		</copy-->
+		
+		<!-- mysql -->
+		<copy file="ddl.sql" tofile="${project.name.upper}.tmp/mysql/create-mysql.sql">
+		</copy>
+		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="sysproperties.sql"/>
+		</concat>
+		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="poi_inserts.sql"/>
+		</concat>
+		
+		<!-- sql server -->
+		<copy file="ddl-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql">
+		</copy>
+		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="sysproperties.sql"/>
+		</concat>
+		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
+			<filelist dir="./" files="poi_inserts.sql"/>
+		</concat>
+		
+		<!-- datasources -->
+		<copy file="./jboss/mysql-ds.xml" todir="${project.name.upper}.tmp/mysql/">
+		</copy>
+		<copy file="./jboss/sqlserver-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
+		</copy>
+		
+		<!-- drivers -->
+		<copy file="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" todir="${project.name.upper}.tmp/mysql/">
+		</copy>
+		<copy file="../../thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" todir="${project.name.upper}.tmp/sqlserver/">
+		</copy>
+		
+		<copy file="./database.sql" tofile="${project.name.upper}.tmp/mysql/db-mysql.sql">
+		</copy>
+		<copy file="./database-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/db-sqlserver.sql">
+		</copy>
+		
+		<antcall target="makeWar"></antcall>
+		<move file="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war" tofile="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war1"></move>
+		<unwar src="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war1" dest="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src">
+		</unwar>
+		<delete file="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war1"></delete>
+		<move file="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war" tofile="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war1"></move>
+		<unwar src="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war1" dest="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src">
+		</unwar>
+		<delete file="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war1"></delete>
+		<delete dir="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src/WEB-INF/classes"></delete>
+		<mkdir dir="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src/WEB-INF/classes" />
+		<delete dir="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src/WEB-INF/classes"></delete>
+		<mkdir dir="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src/WEB-INF/classes" />
+		
+		<delete dir="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src/WEB-INF/lib"></delete>
+		<mkdir dir="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src/WEB-INF/lib" />
+		<delete dir="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src/WEB-INF/lib"></delete>
+		<mkdir dir="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src/WEB-INF/lib" />
+		
+		<delete>
+	      <fileset dir="${project.name.upper}.tmp/mysql/${project.name.upper}_WEB.war-src/" includes="cameraviewer-*.jar"/>
+	    </delete>
+		<delete>
+	      <fileset dir="${project.name.upper}.tmp/sqlserver/${project.name.upper}_WEB.war-src/" includes="cameraviewer-*.jar"/>
+	    </delete>
+			
+		<copy todir="${project.name.upper}.tmp/src/Camera">
+			<fileset dir="../../Camera/src">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${project.name.upper}.tmp/src/CameraViewer">
+			<fileset dir="../../CameraViewer/src">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${project.name.upper}.tmp/src/LoJackWeb">
+			<fileset dir="../../LoJackWeb/JavaSource">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+		<copy file="./build.xml" tofile="${project.name.upper}.tmp/build.xml"></copy>
 	</target>
 
 </project>
