@@ -83,7 +83,7 @@ public class LoJackServicesConnector {
 	private static final String SAVE_ALARM_ALERT_CONFIGURATION = "saveAlarmAlertConfiguration.json";
 
 	// Camara
-	private static final String GET_CAMERA = "getCamera.json";
+	private static final String GET_CAMERA = "getCamaras.json";
 
 	// Luces GIS
 	private static final String GET_LIGHTS = "getLights.json";
