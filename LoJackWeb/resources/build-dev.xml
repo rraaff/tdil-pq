@@ -101,6 +101,15 @@
 		</sql>
 	</target>
 	
+	<target name="usePrevent-test.lojackgis.com.ar">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="prevent.sql" />
+		</sql>
+	</target>
+	
 	<target name="useThalamusFake">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
