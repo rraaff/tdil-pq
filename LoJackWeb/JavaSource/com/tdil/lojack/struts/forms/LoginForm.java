@@ -132,7 +132,7 @@ public class LoginForm extends ActionForm {
 
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
-		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), "", ""); // TODO
+		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), -3, ""); // TODO
 		setAccess(user, getProfile);
 
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));

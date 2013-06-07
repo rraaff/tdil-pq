@@ -22,6 +22,14 @@ public class Main {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException, IOException {
+		
+		
+		String login = "{ \"jSessionID\": \""+"temp3227"+"\", \"lojackToken\": \""+"a5b0981a0188bb9a5b7fe44b6c32d894"+
+		"\", \"awselb\": \""+"59219FCD10EB10AEFCC1FD49BC63745625D275B0F0D224EB924EEDBE00AE31077EB5AB3FAEC3396F9349509FA92B474A4A0194AA8870FCD6B48062AE4C6CC3B135676ABA5AC5A8B96CDB7693C1036FA694254EFA57"+"\", \"timeZoneOffset\": -3 }";
+		XMLResponse resp1 = PreventConnector.executePost("http://test.lojackgis.com.ar:8080/webgis/preventwcfServices/GISService.svc", "/Users/LoginPortal", login, null, "application/json");
+		LoginResponse lr1 = (LoginResponse)resp1.getResult();
+		System.out.println(lr1.getStatus());
+		
 		UserLogin userLogin = new UserLogin();
 		userLogin.setUser("Prevent2");
 		userLogin.setPassword("1234");

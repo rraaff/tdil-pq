@@ -1,3 +1,19 @@
+luces
+activo
+si no conoces estado
+cuatro botones
+
+si conozco estado
+si esta random solo este activo (el otro disable)
+
+si esta encendido
+mostrar el boton de randon en off habilitado
+
+si esta apagado
+mostrar el switch de encender habilitado
+mostrar el boton de randon en off habilitado
+
+
 NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPLO: [HECHO] , [PARA TESTEAR]
 
 ************************************************************************************************************
@@ -14,8 +30,8 @@ PRODUCTO HOME
 desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
 DONE (solo seccion home, lo necesitas en todos?) - El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
 - Camara:
-  - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
-  - Que muestre el timestamp de la ultima actualizacion
+DONE (muestra el timestamp rojo si hubo error)  - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
+DONE  - Que muestre el timestamp de la ultima actualizacion
   - ancho y alto de camara
   - mejora visual del applet
 
@@ -48,7 +64,7 @@ PREVENT MOBILE
 /////// ERRORES /////////////// ERRORES /////////////// ERRORES /////////////// ERRORES //////// ERRORES ///
 ************************************************************************************************************
 CAMARA
-- La cámara en mobile no me hace el refresh de la imagen. TEnía abierto el browser en la pc y en el teléfono 
+DONE? le agregue un random a la url, seguro lo estaba cacheando- La cámara en mobile no me hace el refresh de la imagen. TEnía abierto el browser en la pc y en el teléfono 
 y ejecutaba los comandos desde el teléfono y se me refrescaba solamente en la pc.
 REGISTRACIÓN
 DONE? - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO 

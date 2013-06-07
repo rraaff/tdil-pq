@@ -21,10 +21,17 @@ public class GoToPreventAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		try {
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
+			int offset = Integer.valueOf(request.getParameter("timezone"));
+			user.setTimezoneOffset(offset);
 			if (user.isPreventLogged()) {
 				return mapping.findForward("continue");
 			} else {
-				return mapping.findForward("login");
+				user.reloginPrevent();
+				if (user.isPreventLogged()) {
+					return mapping.findForward("continue");
+				} else {
+					return mapping.findForward("failure");
+				}
 			}
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

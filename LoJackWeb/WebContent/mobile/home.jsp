@@ -23,6 +23,12 @@ function enterPets() {
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
 	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl()%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
 }
+
+function enterPrevent() {
+	var userDate = new Date();
+	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+	document.location.href = '../goToPreventLogin.do?timezone=' +userTimeZone;
+}
 </script>
 <style type="text/css">
 #logoIndex { top: 60px; }
@@ -56,7 +62,7 @@ function enterPets() {
 			<% if (websiteUser.isPreventLogged()) { %>
 				<div id="iconoCar"><a href="../productoPrevent.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 			<% } else { %>
-				<div id="iconoCar"><a href="./loginPreventModal.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
+				<div id="iconoCar"><a id="loginPreventLink" href="javascript:enterPrevent()" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 			<% } %>
 		<% } else { %>
 			<div id="iconoCar"><a href="videoPageCar.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>

@@ -28,9 +28,10 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
 public class PreventConnector {
 
-	private static int TIMEOUT = 2000;
+	private static int TIMEOUT = 5000;
 
 	// POST
+	private static final String LOGIN_JSON = "/Users/LoginPortal";
 	private static final String LOGIN = "/Users/Login";
 
 	// GET
@@ -48,7 +49,7 @@ public class PreventConnector {
 	private static final String FLOT_GET_SAT_POSITION = "/Vehicles/SatellitePositions/?userToken={userToken}";
 
 
-	private static String preventServer = "http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc";
+	private static String preventServer = "http://test.lojackgis.com.ar:8080/webgis/preventwcfServices/GISService.svc";
 	
 	private static String preventLoginUrl = "";
 	private static String preventToken;
@@ -83,6 +84,10 @@ public class PreventConnector {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static XMLResponse login(String loginJson) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), LOGIN_JSON, loginJson, null);
 	}
 
 	public static XMLResponse login(UserLogin userLogin) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
@@ -190,8 +195,12 @@ public class PreventConnector {
 			}
 		}
 	}
+	
+	public static XMLResponse executePost(String server, String service, Object param, URLParams urlParams) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(server, service, param, urlParams, "text/xml");
+	}
 
-	private static XMLResponse executePost(String server, String service, Object param, URLParams urlParams) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+	public static XMLResponse executePost(String server, String service, Object param, URLParams urlParams, String contentType) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		long start = System.currentTimeMillis();
 		String xml = null;
 		if (param != null) {
@@ -214,7 +223,9 @@ public class PreventConnector {
 		configureTimeout(client);
 		EntityEnclosingMethod httpMethod = PostMethodCreator.INSTANCE.createMethod(server + url);
 		try {
-			httpMethod.setRequestHeader("Content-type", "text/xml");
+			//httpMethod.setRequestHeader("Content-type", "text/xml");
+			//httpMethod.setRequestHeader("Content-type", "application/json");
+			httpMethod.setRequestHeader("Content-type", contentType);
 			if (xml != null) {
 				RequestEntity requestEntity = new StringRequestEntity(xml);
 				httpMethod.setRequestEntity(requestEntity);
@@ -278,5 +289,11 @@ public class PreventConnector {
 
 	public static void setPreventToken(String preventToken) {
 		PreventConnector.preventToken = preventToken;
+	}
+
+	public static XMLResponse login(String jsessionid, String awselb, int timezone) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		String login = "{ \"jSessionID\": \""+jsessionid+"\", \"lojackToken\": \""+getPreventToken()+
+		"\", \"awselb\": \""+awselb+"\", \"timeZoneOffset\": -3 }";
+		return PreventConnector.executePost(getPreventServer(), LOGIN_JSON, login, null, "application/json");
 	}
 }

@@ -14,6 +14,7 @@ import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.prevent.model.LoginResponse;
 import com.tdil.lojack.struts.forms.PreventLoginForm;
+import com.tdil.lojack.struts.forms.ThalamusPreventLoginForm;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
@@ -29,7 +30,7 @@ public class WebsiteUser extends User {
 	private TokenHolder token;
 	private String name;
 	private String lojackUserId;
-	private String timezoneOffset;
+	private int timezoneOffset;
 	private String timezoneName;
 
 	private boolean isHomeUser;
@@ -52,7 +53,7 @@ public class WebsiteUser extends User {
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(WebsiteUser.class);
 
-	public WebsiteUser(String name, TokenHolder tokenHolder, String timezoneOffset, String timezoneName) {
+	public WebsiteUser(String name, TokenHolder tokenHolder, int timezoneOffset, String timezoneName) {
 		super();
 		this.name = name;
 		this.token = tokenHolder;
@@ -112,11 +113,11 @@ public class WebsiteUser extends User {
 		this.name = name;
 	}
 
-	public String getTimezoneOffset() {
+	public int getTimezoneOffset() {
 		return timezoneOffset;
 	}
 
-	public void setTimezoneOffset(String timezoneOffset) {
+	public void setTimezoneOffset(int timezoneOffset) {
 		this.timezoneOffset = timezoneOffset;
 	}
 
@@ -248,8 +249,32 @@ public class WebsiteUser extends User {
 	public void setPreventLoginResponse(LoginResponse preventLoginResponse) {
 		this.preventLoginResponse = preventLoginResponse;
 	}
-
+	
 	public void reloginPrevent() {
+		ThalamusPreventLoginForm login = new ThalamusPreventLoginForm();
+		login.setJsessionid(this.getJSESSIONID());
+		login.setAwselb(this.getAWSELB());
+		login.setTimezone(this.getTimezoneOffset());
+		try {
+			boolean logged = login.executeLogin();
+			if (logged) {
+				this.setPreventAccessToken(login.getPreventAccessToken());
+				this.setPreventLoginResponse(login.getPreventLoginResponse());
+				this.setPreventLogged(true);
+			} else {
+				this.setPreventLogged(false);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+			this.setPreventLogged(false);
+		} catch (ValidationException e) {
+			LOG.error(e.getMessage(), e);
+			this.setPreventLogged(false);
+		}
+		
+	}
+	
+	public void reloginPrevent1() {
 		PreventLoginForm login = new PreventLoginForm();
 		login.setUsername(this.getPreventUserId());
 		login.setPassword(this.getPreventPassword());
@@ -271,5 +296,6 @@ public class WebsiteUser extends User {
 		}
 		
 	}
+	
 
 }
