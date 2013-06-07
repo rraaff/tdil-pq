@@ -1,7 +1,7 @@
 update SYSPROPERTIES set propValue = 'http://test.lojackgis.com.ar:8080/webgis/preventwcfServices/GISService.svc'
 where propKey = 'prevent.server';
 
-update SYSPROPERTIES set propValue = '1000'
+update SYSPROPERTIES set propValue = '10000'
 where propKey = 'prevent.timeout';
 
 update SYSPROPERTIES set propValue = 'http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx?'
