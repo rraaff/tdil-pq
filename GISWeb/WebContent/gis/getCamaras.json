@@ -1,0 +1,8 @@
+[
+	{
+		"username" : "operator",
+		"password": "operator1",
+		"url" : "http://demo-life.dyndns.org:8980/",
+		"model" : "1"
+	}
+]
