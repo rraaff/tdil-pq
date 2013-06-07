@@ -3,10 +3,16 @@ package com.tdil.lojack.gis.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.poi.hssf.record.formula.functions.Vlookup;
+
+import com.tdil.log4j.LoggerProvider;
+
 public class AsyncJobConstants {
 	
 	private static Map<String, Integer> mwToFrontStatusMap;
 	private static Map<Integer, String> frontToMwStatusMap;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(AsyncJobConstants.class);
 	
 	static {
 		mwToFrontStatusMap = new HashMap<String, Integer>();
@@ -62,7 +68,12 @@ public class AsyncJobConstants {
 	
 	
 	public static int getStatusId(String status) {
-		return mwToFrontStatusMap.get(status);
+		Integer value = mwToFrontStatusMap.get(status);
+		if (value == null) {
+			LOG.error("can not find status for " + (status == null ? "null" : status));
+			return 0;
+		}
+		return value;
 	}
 	
 	public static String getStatus(int statusId) {
