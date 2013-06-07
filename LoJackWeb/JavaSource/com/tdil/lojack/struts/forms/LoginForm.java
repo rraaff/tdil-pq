@@ -85,10 +85,10 @@ public class LoginForm extends ActionForm {
 
 	public Object executeLogin() throws SQLException, ValidationException {
 		if (StringUtils.isEmpty(this.getUsername())) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.emptyusername"));
 		}
 		if (StringUtils.isEmpty(this.getPassword())) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.emptypassword"));
 		}
 		try {
 			if (LoJackConfig.getFRONT_LOGIN_DELAY() != 0) {

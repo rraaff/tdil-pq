@@ -40,7 +40,7 @@ public class RequestResetPasswordForm extends ActionForm {
 	}
 	public int resetPassword() throws SQLException, ValidationException {
 		if (StringUtils.isEmpty(this.getUsername())) {
-			throw new ValidationException(new ValidationError("LoginForm.GENERAL_ERROR"));
+			throw new ValidationException(new ValidationError("LoginForm.emptyusername"));
 		}
 		try {
 			RequestResetPasswordBean requestResetPasswordBean = new RequestResetPasswordBean();

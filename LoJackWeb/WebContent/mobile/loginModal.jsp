@@ -22,7 +22,7 @@
 <link href="css/internal_menu.css" rel="stylesheet" type="text/css">
 <link href="css/mobile_main.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body onload="document.LoginFormMobile.username.focus();">
 <div id="internalHeader">
 	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
 	<ul>
@@ -33,6 +33,7 @@
 </div>
 <div id="loginContent">
 	<html:form method="POST" action="/mobile/loginMobile">
+		<div class="errorInForm"><html:errors property="general" /></div>
 		<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
 			<fieldset>
 				<label>Tipo doc</label>

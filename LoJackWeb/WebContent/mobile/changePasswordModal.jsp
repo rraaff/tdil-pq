@@ -38,6 +38,8 @@
 <div id="registrationContent">
 	<h1>Cambiar clave</h1>
 	<html:form method="POST" action="/mobile/changePasswordMobile">
+		<html:errors property="general" />
+		<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "general")%>
 		<div class="myRow">
 			<div class="myLabel width120">Clave actual</div>
 			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="oldPassword" styleClass="normalField width250"/></div>
