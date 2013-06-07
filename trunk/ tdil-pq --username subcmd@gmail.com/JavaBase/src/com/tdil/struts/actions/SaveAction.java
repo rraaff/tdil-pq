@@ -50,6 +50,8 @@ public class SaveAction extends AbstractAction {
 						form.init();
 					}
 				});
+			} catch (ValidationException ex) {
+				return redirectToFailure(ex.getError(), request, mapping);
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
 				ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);

@@ -27,6 +27,13 @@ public class StringUtils {
 		return st.substring(0, len - complete.length()) + complete;
 	}
 	
+	public static String nullValueOf(String string) {
+		if (org.apache.commons.lang.StringUtils.isEmpty(string)) {
+			return null;
+		}
+		return string;
+	}
+	
 	public static String nvl(String first, String second) {
 		if (org.apache.commons.lang.StringUtils.isEmpty(first)) {
 			return second;
