@@ -2,6 +2,8 @@ package com.tdil.web;
 
 import javax.servlet.ServletRequest;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.struts.resources.ApplicationResources;
 
 public class ErrorFormatter {
@@ -36,7 +38,12 @@ public class ErrorFormatter {
 			for (java.util.Iterator it = ae.get(error); it.hasNext();) {
 				org.apache.struts.action.ActionMessage a = (org.apache.struts.action.ActionMessage) it.next();
 				String key = a.getKey();
-				return ApplicationResources.getMessage(key);
+				String rb = ApplicationResources.getMessage(key);
+				if (StringUtils.isEmpty(rb)) {
+					return key;
+				} else {
+					return rb;
+				}
 			}
 		}
 		return "";
@@ -53,8 +60,12 @@ public class ErrorFormatter {
 				org.apache.struts.action.ActionMessage a = (org.apache.struts.action.ActionMessage) it.next();
 				String key = a.getKey();
 				result.append(start);
-				result.append(ApplicationResources.getMessage(key));
-				result.append(end);
+				String rb = ApplicationResources.getMessage(key);
+				if (StringUtils.isEmpty(rb)) {
+					result.append(key);
+				} else {
+					result.append(rb);
+				}
 			}
 		}
 		return result.toString();
