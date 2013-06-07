@@ -55,7 +55,7 @@
 			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="confirmNewPassword" styleClass="normalField width250"/></div>
 			<%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%>
 		</div>	
-		<div class="myRow" align="center"><input type="submit" class="buttonSend" /></div>
+		<div class="myRow" align="center"><input type="submit" value="Cambiar" class="buttonSend" /></div>
 	</html:form>
 </div>
 </body>
