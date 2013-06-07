@@ -109,8 +109,10 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		if (org.apache.commons.lang.StringUtils.isEmpty(gender)) {
 			error.setFieldError(gender_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
-		Date date = FieldValidation.validateDate(this.getBirthDate(), birthdate_key, true, error);
-		FieldValidation.validateText(this.getPassword(), password_key, 20, error);
+		Date date = FieldValidation.validateDate(this.getBirthDate(), birthdate_key, "yyyy-MM-dd", true, error);
+		if (!isUpdate) {
+			FieldValidation.validateText(this.getPassword(), password_key, 20, error);
+		}
 		FieldValidation.validateId(this.getDocumentType(), documenttype_key, error);
 		FieldValidation.validateNumber(this.getDocument(), document_key, 1, Integer.MAX_VALUE, error);
 		FieldValidation.validateEmail(this.getEmail(), email_key, error);
