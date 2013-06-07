@@ -6,8 +6,8 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 DONE Revisar recupero de password, falta el tipo de documento, da errores al cerrar
 
 FORMULARIOS:
-- Manejo de errores en mobile. Cuando no completabas un campo no dice nada. No aparece ningún mensaje de error.
-- Falta el foco en número de DNI en formulario de contacto para la versión Mobile
+DONE (a algunos les faltaria validaciones puntuales, pero en general esta)- Manejo de errores en mobile. Cuando no completabas un campo no dice nada. No aparece ningún mensaje de error.
+DONE - Falta el foco en número de DNI en formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
 - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo 
