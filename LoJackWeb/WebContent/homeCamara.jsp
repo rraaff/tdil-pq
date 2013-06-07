@@ -52,7 +52,7 @@ function up() {
 				cache: false,
 				url: "./moveCamera?dir=up",
 				success: function(data) {
-					$('#cameraImg').attr('src', './viewCamera');
+					$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
 			 },
 				error: function() {
 					alert('err');
@@ -65,7 +65,7 @@ function down() {
 			cache: false,
 			url: "./moveCamera?dir=down",
 			success: function(data) {
-				$('#cameraImg').attr('src', './viewCamera');
+				$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
 		 },
 			error: function() {
 				alert('err');
@@ -78,7 +78,7 @@ function left() {
 		cache: false,
 		url: "./moveCamera?dir=left",
 		success: function(data) {
-			$('#cameraImg').attr('src', './viewCamera');
+			$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
 	 },
 		error: function() {
 			alert('err');
@@ -91,7 +91,7 @@ function right() {
 	cache: false,
 	url: "./moveCamera?dir=right",
 	success: function(data) {
-		$('#cameraImg').attr('src', './viewCamera');
+		$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
  },
 	error: function() {
 		alert('err');
@@ -168,7 +168,7 @@ function right() {
 				</div>
 				<script>
 					setInterval(function() {
-							$('#cameraImg').attr('src', './viewCamera');
+							$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
 				</script>
 				<div id="linksAside">
