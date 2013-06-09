@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="com.tdil.utils.StringUtils"%>
 <%@page import="com.tdil.tuafesta.utils.LocalizationUtils"%>
 <%@page import="com.tdil.tuafesta.model.valueobjects.SellValueObject"%>
 <%@page import="com.tdil.tuafesta.struts.forms.beans.SellBean"%>
@@ -66,7 +67,11 @@
 						<div class="myLabel width210">IIBB <strong><%= profesional.getIibb() != null ? profesional.getIibb() : "" %></strong></div>
 					</div>
 					<div class="myRow">
-						<div class="myLabel width210">Facebook <strong><%= profesional.getFacebook() != null ? profesional.getFacebook() : "" %></strong></div>
+						<div class="myLabel width210">Facebook 
+							<% if (profesional.getFacebook() != null) { %>
+								<a href="<%=StringUtils.asURL(profesional.getFacebook())%>"><strong><%= profesional.getFacebook() != null ? profesional.getFacebook() : "" %></strong></a>
+							<% } %>
+						</div>
 					</div>
 					<div class="myRow">
 						<div class="myLabel width210">Website <strong><%= profesional.getWebsite() != null ? profesional.getWebsite() : "" %></strong></div>
