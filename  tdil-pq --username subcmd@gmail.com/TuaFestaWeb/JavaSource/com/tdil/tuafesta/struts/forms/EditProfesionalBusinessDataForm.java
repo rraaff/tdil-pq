@@ -175,6 +175,22 @@ public class EditProfesionalBusinessDataForm extends TransactionalValidationForm
 		setVideo4(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo4(), profesional.getVideo4()));
 		setVideo5(com.tdil.utils.StringUtils.nvl(profesionalChange.getVideo5(), profesional.getVideo5()));
 		
+		if ("DELETE".equals(this.getVideo1())) {
+			setVideo1("");
+		}
+		if ("DELETE".equals(this.getVideo2())) {
+			setVideo2("");
+		}
+		if ("DELETE".equals(this.getVideo3())) {
+			setVideo3("");
+		}
+		if ("DELETE".equals(this.getVideo4())) {
+			setVideo4("");
+		}
+		if ("DELETE".equals(this.getVideo5())) {
+			setVideo5("");
+		}
+		
 	}
 	
 	@Override

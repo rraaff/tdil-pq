@@ -57,6 +57,7 @@ public class PasswordResetForm extends TransactionalValidationForm {
 	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
+		boolean client = true;
 		ClientExample clientExample = new ClientExample();
 		clientExample.createCriteria().andEmailEqualTo(this.getEmail());
 		int count = DAOManager.getClientDAO().countClientByExample(clientExample);
@@ -67,8 +68,10 @@ public class PasswordResetForm extends TransactionalValidationForm {
 		profesionalExample.createCriteria().andEmailEqualTo(this.getEmail());
 		count = DAOManager.getProfesionalDAO().countProfesionalByExample(profesionalExample);
 		if (count == 0) {
+			client = false;
 			validationError.setFieldError(email_key, "EMAIL_NOT_FOUND");
 		}
+		
 	}
 
 	@Override
