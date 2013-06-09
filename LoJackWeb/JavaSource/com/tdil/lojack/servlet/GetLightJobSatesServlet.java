@@ -43,17 +43,19 @@ public class GetLightJobSatesServlet extends HttpServlet {
 			// busco los jobs que tenga en la session en estado final y los retorno,
 			// si paso mas de x tiempo los asumo zoombies
 			List<AsyncJob> finished = websiteUser.getAndRemoveFinishedJobs();
-			Collection<Light> lights = LoJackServicesConnector.getLights(websiteUser);
-			for (AsyncJob asyncJob : finished) {
-				Light light = getLightFor(lights, asyncJob.getIdentidad(), asyncJob.getIdluz());
-				Map<String, Object> job = new HashMap<String, Object>();
-				job.put("idEntidad", asyncJob.getIdentidad());
-				job.put("idLuz", asyncJob.getIdluz());
-				job.put("status", light.getStatusDescription());
-				job.put("unknowm", light.isStatusUnknown());
-				job.put("ran", light.isInRandomMode());
-				job.put("on", light.isOn());
-				result.add(job);
+			if (!finished.isEmpty()) {
+				Collection<Light> lights = LoJackServicesConnector.getLights(websiteUser);
+				for (AsyncJob asyncJob : finished) {
+					Light light = getLightFor(lights, asyncJob.getIdentidad(), asyncJob.getIdluz());
+					Map<String, Object> job = new HashMap<String, Object>();
+					job.put("idEntidad", asyncJob.getIdentidad());
+					job.put("idLuz", asyncJob.getIdluz());
+					job.put("status", light.getStatusDescription());
+					job.put("unknowm", light.isStatusUnknown());
+					job.put("ran", light.isInRandomMode());
+					job.put("on", light.isOn());
+					result.add(job);
+				}
 			}
 			// escribo el json..
 			JSONArray jsonArray = JSONArray.fromObject(result);

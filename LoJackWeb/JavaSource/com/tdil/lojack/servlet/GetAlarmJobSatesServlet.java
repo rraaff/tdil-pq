@@ -42,14 +42,16 @@ public class GetAlarmJobSatesServlet extends HttpServlet {
 			// busco los jobs que tenga en la session en estado final y los retorno,
 			// si paso mas de x tiempo los asumo zoombies
 			List<AsyncJob> finished = websiteUser.getAndRemoveFinishedJobs();
-			Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
-			for (AsyncJob asyncJob : finished) {
-				Alarm alarm = getAlarmFor(alarms, asyncJob.getIdentidad());
-				Map<String, Object> job = new HashMap<String, Object>();
-				job.put("idEntidad", asyncJob.getIdentidad());
-				job.put("status", alarm.getStatus());
-				job.put("armada", alarm.getStatus().equalsIgnoreCase(Alarm.ACTIVE));
-				result.add(job);
+			if (!finished.isEmpty()) {
+				Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(websiteUser);
+				for (AsyncJob asyncJob : finished) {
+					Alarm alarm = getAlarmFor(alarms, asyncJob.getIdentidad());
+					Map<String, Object> job = new HashMap<String, Object>();
+					job.put("idEntidad", asyncJob.getIdentidad());
+					job.put("status", alarm.getStatus());
+					job.put("armada", alarm.getStatus().equalsIgnoreCase(Alarm.ACTIVE));
+					result.add(job);
+				}
 			}
 			// escribo el json..
 			JSONArray jsonArray = JSONArray.fromObject(result);

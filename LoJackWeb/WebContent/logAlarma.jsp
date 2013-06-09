@@ -20,7 +20,7 @@ Collection<ChangeLog> logCollection = LoJackServicesConnector.getAlarmLog(websit
 				<% } else { %>
 					<img src="images/skin_lj_rl/logos/avatarBase.png" />
 				<% } %>
-				<p> - <%= log.getDate() %> - <%= log.getHour() %> - <%= log.getAction() %> - <%= log.getUser() %></p>
+				<p> - <%= log.getDate() %> - <%= log.getAction() %> - <%= log.getUser() %></p>
 			</span>
 		</div>
 	<% } %>

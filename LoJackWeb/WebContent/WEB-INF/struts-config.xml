@@ -133,9 +133,11 @@
   
   <action name="AlarmsForm" parameter="HomeUser" path="/goToHomeAlarms" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmsAction">
   	<forward name="continue" path="/homeAlarmas.jsp" redirect="true"/>
+  	<forward name="failure" path="/productoHome.jsp" redirect="true"/>
   </action>
   <action name="AlarmAgendaForm" parameter="HomeUser" path="/goToHomeAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
+  	<forward name="failure" path="/productoHome.jsp" redirect="true"/>
   </action>
   <action name="AlarmAgendaForm" parameter="HomeUser" path="/editAlarmAgenda" scope="session" type="com.tdil.lojack.struts.action.EditAlarmAgendaAction">
   	<forward name="continue" path="/homeAlarmaAgenda.jsp" redirect="true"/>
@@ -174,6 +176,7 @@
   
   <action name="LightsForm" parameter="HomeUser" path="/goToHomeLights" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightsAction">
   	<forward name="continue" path="/homeLuces.jsp" redirect="true"/>
+  	<forward name="failure" path="/productoHome.jsp" redirect="true"/>
   </action>
   <action name="LightAgendaForm" parameter="HomeUser" path="/goToHomeLightAgenda" scope="session" type="com.tdil.lojack.struts.action.GoToHomeLightAgendaAction">
   	<forward name="continue" path="/homeLuzAgenda.jsp" redirect="true"/>
@@ -201,6 +204,7 @@
   <action name="CameraForm" parameter="HomeUser" path="/goToHomeCamera" scope="session" type="com.tdil.lojack.struts.action.GoToHomeCameraAction">
   	<forward name="continue" path="/homeCamaras.jsp" redirect="true"/>
   	<forward name="viewcamera" path="/homeCamara.jsp" redirect="true"/>
+  	<forward name="failure" path="/productoHome.jsp" redirect="true"/>
   </action>
   
   <action name="CameraForm" parameter="HomeUser" path="/selectCamera" scope="session" type="com.tdil.lojack.struts.action.SelectCameraAction">

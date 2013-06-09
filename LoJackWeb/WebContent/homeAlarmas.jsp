@@ -235,6 +235,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				  centerLayer($(window), $( "#centradorModalesAA" ));
 				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
+					uncheckbg(idEntidad);
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
@@ -253,6 +254,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				}
           },
           error: function() {
+        	  uncheckbg(idEntidad);
         	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotActivatedLayer" ));
@@ -299,6 +301,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				  centerLayer($(window), $( "#centradorModalesAD" ));
 				  $( "#alarm-job-" +idEntidad ).prop('innerHTML', '*');
 				} else {
+					checkbg(idEntidad);
 					if (data.result == 'ERR_PASS') {
 	        		  $( "#passwordLayer" ).fadeOut();
 					  centerLayer($(window), $( "#invalidPasswordLayer" ));
@@ -317,6 +320,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 				}
           },
           error: function() {
+        	  checkbg(idEntidad);
         	  <%@ include file="includes/unblockUI.jspf" %>
         	  $( "#passwordLayer" ).fadeOut();
 			  centerLayer($(window), $( "#alarmNotDeactivatedLayer" ));
