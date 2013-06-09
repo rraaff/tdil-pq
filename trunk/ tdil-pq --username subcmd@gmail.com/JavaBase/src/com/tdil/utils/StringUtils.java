@@ -27,6 +27,14 @@ public class StringUtils {
 		return st.substring(0, len - complete.length()) + complete;
 	}
 	
+	public static String asURL(String st) {
+		if (!st.startsWith("http")) {
+			return "http://" + st;
+		} else {
+			return st;
+		}
+	}
+	
 	public static String nullValueOf(String string) {
 		if (org.apache.commons.lang.StringUtils.isEmpty(string)) {
 			return null;
