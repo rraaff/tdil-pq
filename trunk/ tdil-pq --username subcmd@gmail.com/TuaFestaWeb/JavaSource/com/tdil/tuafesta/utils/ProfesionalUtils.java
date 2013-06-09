@@ -7,6 +7,24 @@ import com.tdil.tuafesta.model.ProfesionalChange;
 
 public class ProfesionalUtils {
 
+	public static boolean hasVideos(Profesional profesional) {
+		if (!StringUtils.isEmpty(profesional.getVideo1()) && !"DELETE".equals(profesional.getVideo1())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesional.getVideo2()) && !"DELETE".equals(profesional.getVideo2())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesional.getVideo3()) && !"DELETE".equals(profesional.getVideo3())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesional.getVideo4()) && !"DELETE".equals(profesional.getVideo4())) {
+			return true;
+		}
+		if (!StringUtils.isEmpty(profesional.getVideo5()) && !"DELETE".equals(profesional.getVideo5())) {
+			return true;
+		}
+		return false;
+	}
 	
 	public static boolean mergePersonalData(Profesional profesional, ProfesionalChange profesionalChange) {
 		boolean result = false;
@@ -131,19 +149,19 @@ public class ProfesionalUtils {
 		if (!StringUtils.isEmpty(profesionalChange.getDescription())) {
 			return true;
 		}
-		if (!StringUtils.isEmpty(profesionalChange.getVideo1())) {
+		if (!StringUtils.isEmpty(profesionalChange.getVideo1()) && !"DELETE".equals(profesionalChange.getVideo1())) {
 			return true;
 		}
-		if (!StringUtils.isEmpty(profesionalChange.getVideo2())) {
+		if (!StringUtils.isEmpty(profesionalChange.getVideo2()) && !"DELETE".equals(profesionalChange.getVideo2())) {
 			return true;
 		}
-		if (!StringUtils.isEmpty(profesionalChange.getVideo3())) {
+		if (!StringUtils.isEmpty(profesionalChange.getVideo3()) && !"DELETE".equals(profesionalChange.getVideo3())) {
 			return true;
 		}
-		if (!StringUtils.isEmpty(profesionalChange.getVideo4())) {
+		if (!StringUtils.isEmpty(profesionalChange.getVideo4()) && !"DELETE".equals(profesionalChange.getVideo4())) {
 			return true;
 		}
-		if (!StringUtils.isEmpty(profesionalChange.getVideo5())) {
+		if (!StringUtils.isEmpty(profesionalChange.getVideo5()) && !"DELETE".equals(profesionalChange.getVideo5())) {
 			return true;
 		}
 		
