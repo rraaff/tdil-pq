@@ -163,10 +163,12 @@ $(document).ready(function(){
 						<div class="myLabel width80">Web</div>
 						<div class="myLabel width520"><a href="<%=profesional.getWebsite() %>" title="Ir al sitio del profesional" target="_blank"><strong><%= (profesional.getWebsite() != null) ? profesional.getWebsite() : "-" %></strong></a></div>
 					</div>
+					<% if (profesional.getFacebook() != null) { %>
 					<div class="myRow">
 						<div class="myLabel width80">Facebook</div>
-						<div class="myLabel width520"><a href="http://www.facebook.com/<%=profesional.getFacebook() %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
+						<div class="myLabel width520"><a href="<%=com.tdil.utils.StringUtils.asURL(profesional.getFacebook()) %>" title="Ir al Facebook del profesional" target="_blank"><strong><%= (profesional.getFacebook() != null) ? profesional.getFacebook() : "-" %></strong></a></div>
 					</div>
+					<% } %>
 					<div class="myRow">
 						<div class="myLabel width80">Horario</div>
 						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="profesional.businesshours"/></strong></div>
@@ -175,31 +177,33 @@ $(document).ready(function(){
 						<div class="myLabel width80">Descripci&oacute;n</div>
 						<div class="myLabel width520"><strong><bean:write name="ProfesionalProfileForm" property="profesional.description"/></strong></div>
 					</div>
+					<% if (com.tdil.tuafesta.utils.ProfesionalUtils.hasVideos(profesional)) { %>
 					<h2 style="float:left; padding-left:0; padding-bottom:0; margin-bottom:10px; margin-top:10px;">Videos</h2>
-					<% if (!StringUtils.isEmpty(profesional.getVideo1())) { %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo1()) && !"DELETE".equals(profesional.getVideo1())) { %>
 						<div class="myRow">
 							<div><%=profesional.getVideo1() %></div>
 						</div>
 					<% } %>
-					<% if (!StringUtils.isEmpty(profesional.getVideo2())) { %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo2()) && !"DELETE".equals(profesional.getVideo2())) { %>
 						<div class="myRow">
 							<div><%=profesional.getVideo2() %></div>
 						</div>
 					<% } %>
-					<% if (!StringUtils.isEmpty(profesional.getVideo3())) { %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo3()) && !"DELETE".equals(profesional.getVideo3())) { %>
 						<div class="myRow">
 							<div><%=profesional.getVideo3() %></div>
 						</div>
 					<% } %>
-					<% if (!StringUtils.isEmpty(profesional.getVideo4())) { %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo4()) && !"DELETE".equals(profesional.getVideo4())) { %>
 						<div class="myRow">
 							<div><%=profesional.getVideo4() %></div>
 						</div>
 					<% } %>
-					<% if (!StringUtils.isEmpty(profesional.getVideo5())) { %>
+					<% if (!StringUtils.isEmpty(profesional.getVideo5())&& !"DELETE".equals(profesional.getVideo5())) { %>
 						<div class="myRow">
 							<div><%=profesional.getVideo5() %></div>
 						</div>
+					<% } %>
 					<% } %>
 					<div class="myRow height20" align="center" style="padding-top:20px;"><a class="inputButtonHelper" style="color:#000000; text-decoration:none;" href="./contactProfesional.do?id=<bean:write name='ProfesionalProfileForm' property='profesional.id'/>">Contactar profesional</a></div>
 				</div>
