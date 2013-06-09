@@ -1,3 +1,50 @@
+1. Cuanto entras en ingresar en la Home, hay un link que que te dice "no recibiste el mail
+confirmando tu registración" te lleva a un lugar para que pongas tu email y te envía
+una nueva clave. No funciona porque como no estas validado, aunque te cambie la
+clave no funciona.
+Esto hay que revisar bien el circuito
+
+2. La foto de perfil de profesional queda muy chiquita, nos gustaría un poco más grande.
+? esto es tuyo o mio?
+
+3. Falta destacar el nombre de los profesionales en los superdestacados. Ya lo habíamos
+hablado.
+? esto es tuyo o mio?
+
+4. Hay que ver el tamaño o limitar con un máximo y minimo las fotos de los
+productos/servicios porque algunas salen cortadas
+? esto es tuyo o mio?
+
+5. La descripción de los destacados sale cortada
+? esto es tuyo o mio?
+Le pones un ...?
+
+6. Cuando agregamos vídeos, agregamos el 1,3,5, y aparece video 1,3,5. No se pueden
+sacar esos títulos?.
+DONE: Se los saque, ni recuerdo porque los habia puesto, supongo que como referencia
+
+7. Cuando borramos los vídeos aparece de esta forma.
+DONE
+
+8. Cuando agregamos la dirección de Facebook (en este caso sin www.) no nos deja
+cambiarla y de la manera que lo pusimos lo re dirige a tuafesta.com/Facebook...... y
+da error
+DONE: si no empieza con http, se lo agrego
+
+9. Cuando cambias la Ubicación de los datos del profesional, aparece en administración
+que hay que aprobar o desaprobar un cambio. Pero no te indica que es lo que se
+modifico
+Esto solo sucede con la ubicación.
+Y en el caso de querer desaprobar cualquier modificación, el botón no responde.
+DONE
+El tema de desaprobar es que abre un layer, que no lo estaba centrando bien
+Ahora lo centra, pero falta que le pongas estilos, ademas, si tenes videos no se muestra adelante, esto
+tenemos que vero
+
+
+
+*****************************
+
   * Formatear las unidades de precio. Formato correcto: $ X.XXX.XXX,XX.-
 HECHO
 
