@@ -24,15 +24,16 @@ $(document).ready(
 		});
 	}
 );
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
 function disapprove() {
-	$window = $(window);
-    var top = ($window.height() / 2) - ($( "#disapprovelayer" ).height() / 2);
-    var left = ($window.width() / 2) - ($( "#disapprovelayer" ).width() / 2);
-	$( "#disapprovelayer" ).css({
-		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
-	}).fadeIn(500);
+	$( "#disapprovelayer" ).center().fadeIn(500);
 }
 </script>
 <style>

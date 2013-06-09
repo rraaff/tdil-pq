@@ -24,15 +24,16 @@ $(document).ready(
 		});
 	}
 );
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
 function disapprove() {
-	$window = $(window);
-    var top = ($window.height() / 2) - ($( "#disapprovelayer" ).height() / 2);
-    var left = ($window.width() / 2) - ($( "#disapprovelayer" ).width() / 2);
-	$( "#disapprovelayer" ).css({
-		position: 'absolute',
-		top: top + 'px',
-		left: left + 'px'
-	}).fadeIn(500);
+	$( "#disapprovelayer" ).center().fadeIn(500);
 }
 </script>
 <style>
@@ -93,7 +94,9 @@ th.sorted {
 					<% } %>
 				</div>
 				<div class="label width20">&nbsp;</div>
-				<div class="label">Nombre profesional o de la empresa: <strong><%=profesional.getBusinessname()%> <%=!StringUtils.isEmpty(change.getBusinessname()) ? " -> " + change.getBusinessname() : ""%></strong><br/>CUIT: <strong><%=!StringUtils.isEmpty(profesional.getCuit()) ? profesional.getCuit() : "-"%> <%=!StringUtils.isEmpty(change.getCuit()) ? " -> " + change.getCuit() : ""%></strong> - IIBB: <strong><%=!StringUtils.isEmpty(profesional.getIibb()) ? profesional.getIibb() : "-"%> <%=!StringUtils.isEmpty(change.getIibb()) ? " -> " + change.getIibb() : ""%></strong><br/>Ubicaci&oacute;n: <strong><%=reviewProfesionalForm.getLocation().getNombre()%> <%=reviewProfesionalForm.getChangeLocation() != null ? reviewProfesionalForm.getLocation().getNombre() : ""%></strong></div>
+				<div class="label">Nombre profesional o de la empresa: <strong><%=profesional.getBusinessname()%> <%=!StringUtils.isEmpty(change.getBusinessname()) ? " -> " + change.getBusinessname() : ""%></strong><br/>
+				CUIT: <strong><%=!StringUtils.isEmpty(profesional.getCuit()) ? profesional.getCuit() : "-"%><%=!StringUtils.isEmpty(change.getCuit()) ? " -> " + change.getCuit() : ""%></strong> - IIBB: <strong><%=!StringUtils.isEmpty(profesional.getIibb()) ? profesional.getIibb() : "-"%> <%=!StringUtils.isEmpty(change.getIibb()) ? " -> " + change.getIibb() : ""%></strong>
+				<br/>Ubicaci&oacute;n: <strong><%=reviewProfesionalForm.getLocation().getNombre()%> <%=reviewProfesionalForm.getChangeLocation() != null ? " -> " + reviewProfesionalForm.getChangeLocation().getNombre() : ""%></strong></div>
 			</div>
 			<div class="renglon">Descripci&oacute;n: 
 				<strong><%=com.tdil.utils.StringUtils.nvl(profesional.getDescription(), "-")%> </strong>
@@ -124,37 +127,37 @@ th.sorted {
 					<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo1(), "-")%>Video 1:
-				<% if (!StringUtils.isEmpty(change.getVideo1())) { %>
-					-> <%=change.getVideo1()%>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo1()) ? "-" : profesional.getVideo1(), "-")%>Video 1:
+				<% if (!StringUtils.isEmpty(change.getVideo1()) && !"DELETE".equals(change.getVideo1())) { %>
+					-> <%="DELETE".equals(change.getVideo1()) ? "-" : change.getVideo1()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo2(), "-")%>Video 2:
-				<% if (!StringUtils.isEmpty(change.getVideo2())) { %>
-					-> <%=change.getVideo2()%>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo2()) ? "-" : profesional.getVideo2(), "-")%>Video 2:
+				<% if (!StringUtils.isEmpty(change.getVideo2()) && !"DELETE".equals(change.getVideo2())) { %>
+					-> <%="DELETE".equals(change.getVideo2()) ? "-" : change.getVideo2()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo3(), "-")%>Video 3:
-				<% if (!StringUtils.isEmpty(change.getVideo3())) { %>
-					-> <%=change.getVideo3()%>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo3()) ? "-" : profesional.getVideo3(), "-")%>Video 3:
+				<% if (!StringUtils.isEmpty(change.getVideo3()) && !"DELETE".equals(change.getVideo3())) { %>
+					-> <%="DELETE".equals(change.getVideo3()) ? "-" : change.getVideo3()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo4(), "-")%>>Video 4:
-				<% if (!StringUtils.isEmpty(change.getVideo4())) { %>
-					-> <%=change.getVideo4()%>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo4()) ? "-" : profesional.getVideo4(), "-")%>Video 4:
+				<% if (!StringUtils.isEmpty(change.getVideo4()) && !"DELETE".equals(change.getVideo4())) { %>
+					-> <%="DELETE".equals(change.getVideo4()) ? "-" : change.getVideo4()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
 			<div class="renglon">
-				<div class="label"><%=com.tdil.utils.StringUtils.nvl(profesional.getVideo5(), "-")%>Video 5:
-				<% if (!StringUtils.isEmpty(change.getVideo5())) { %>
-					-> <%=change.getVideo5()%>
+				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo5()) ? "-" : profesional.getVideo5(), "-")%>Video 5:
+				<% if (!StringUtils.isEmpty(change.getVideo5()) && !"DELETE".equals(change.getVideo5())) { %>
+					-> <%="DELETE".equals(change.getVideo5()) ? "-" : change.getVideo5()%>
 				<% } else { %>
 				<% } %></div>
 			</div>
