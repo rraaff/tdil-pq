@@ -52,16 +52,16 @@ and (max-width : 1200px) {
 @media only screen
 and (max-width : 1000px) {
 	#welcomeText {
-		width: 34%;
-		left: 63%;
+		width: 30%;
+		left: 69%;
 		top: 39%;
 	}
 }
 @media only screen
 and (max-width : 900px) {
 	#welcomeText {
-		width: 31%;
-		left: 65%;
+		width: 25%;
+		left: 75%;
 		top: 44%;
 	}
 }
@@ -84,7 +84,7 @@ and (max-height : 600px) {
 	}
 }
 @media only screen
-and (max-width : 650px) {
+and (max-width : 680px) {
 	#welcomeText { display: none; }
 }
 @media only screen

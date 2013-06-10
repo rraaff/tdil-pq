@@ -2,7 +2,7 @@ body {
 	background-attachment:		fixed;
 	background-color:			#333;
 	background-image:			url(../images/skin_lj_rl/backs/newBack.jpg); 
-	background-position:		top center; 
+	background-position:		center center; 
 	background-repeat:			no-repeat; 
 	
 	margin:						0;
@@ -42,7 +42,7 @@ body {
 
 @media only screen and (orientation: landscape) and (device-width: 320px), (device-width: 768px) {
 	body {
-		-webkit-background-size: 100% auto;
+		-webkit-background-size: 250% auto;
 	}
 }
 /* All of the following styles only get used when background-size isn't supported */
