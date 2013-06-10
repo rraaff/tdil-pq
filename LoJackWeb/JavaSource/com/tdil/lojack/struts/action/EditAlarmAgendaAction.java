@@ -21,7 +21,7 @@ public class EditAlarmAgendaAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		AlarmAgendaForm aForm = (AlarmAgendaForm)form;
 		try {
-			aForm.edit(request.getParameter("id"));
+			aForm.edit(Integer.valueOf(request.getParameter("id")));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

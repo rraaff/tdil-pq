@@ -236,8 +236,8 @@
 						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
 						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
 						<display:column title="Acciones" headerClass="sortable">
-							<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">Editar</a> 
-							<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getId()%>">
+							<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>">Editar</a> 
+							<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>">
 								<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
 									Desactivar
 								<% } else { %>

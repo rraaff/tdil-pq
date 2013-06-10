@@ -24,17 +24,17 @@ public class AlarmAgendaForm extends AgendaForm {
 	
 	private String password;
 	
-	private String id;
+	private int id;
 	
 	private List<AlarmAgenda> alarmAgendas;
 	
 	public boolean isEdition() {
-		return !org.apache.commons.lang.StringUtils.isEmpty(this.getId());
+		return this.getId() != 0;
 	}
 	
 	public void reset() {
 		super.reset();
-		this.id = null;
+		this.id = 0;
 	}
 
 	public void initWith(WebsiteUser user, int idEntidad) {
@@ -67,15 +67,15 @@ public class AlarmAgendaForm extends AgendaForm {
 		this.alarmAgendas = alarmAgendas;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void edit(String id) {
+	public void edit(int id) {
 		AlarmAgenda alarmAgenda = getAlarmAgenda(id);
 		if (alarmAgenda != null) {
 			this.setId(id);
@@ -89,16 +89,16 @@ public class AlarmAgendaForm extends AgendaForm {
 		}
 	}
 
-	private AlarmAgenda getAlarmAgenda(String id) {
+	private AlarmAgenda getAlarmAgenda(int id) {
 		for (AlarmAgenda agenda : this.getAlarmAgendas()) {
-			if (agenda.getId().equals(id)) {
+			if (agenda.getIdAgenda() == id) {
 				return agenda;
 			}
 		}
 		return null;
 	}
 
-	public void toggleActivation(String id) {
+	public void toggleActivation(int id) {
 		AlarmAgenda alarmAgenda = getAlarmAgenda(id);
 		if (alarmAgenda != null) {
 			if (alarmAgenda.isActive()) {
@@ -137,7 +137,7 @@ public class AlarmAgendaForm extends AgendaForm {
 
 	public void save() throws SQLException, ValidationException {
 		AlarmAgenda alarmAgenda = new AlarmAgenda();
-		alarmAgenda.setId(this.getId());
+		alarmAgenda.setIdAgenda(this.getId());
 		alarmAgenda.setFrom(this.getFrom());
 		alarmAgenda.setTo(this.getTo());
 		alarmAgenda.setType(this.getType());

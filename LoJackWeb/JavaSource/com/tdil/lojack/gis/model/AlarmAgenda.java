@@ -18,7 +18,7 @@ public class AlarmAgenda implements Serializable {
 	public static final String Sa = "Sa";
 	public static final String Do = "Do";
 
-	private String id;
+	private int idAgenda;
 	private String description;
 	
 	private String from; // Fechas en formato YYYY-MM-DD
@@ -41,12 +41,6 @@ public class AlarmAgenda implements Serializable {
 		}
 	}
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getDescription() {
 		return description;
 	}
@@ -100,5 +94,13 @@ public class AlarmAgenda implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public int getIdAgenda() {
+		return idAgenda;
+	}
+
+	public void setIdAgenda(int idAgenda) {
+		this.idAgenda = idAgenda;
 	}
 }

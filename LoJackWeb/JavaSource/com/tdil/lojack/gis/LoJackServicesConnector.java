@@ -50,6 +50,9 @@ public class LoJackServicesConnector {
 	private static final String ID_LUZ = "idLuz";
 	private static final String JOB_ID = "jobId";
 	private static final String AGENDA_ID = "agendaId";
+	private static final String ID_AGENDA = "idAgenda";
+	
+	private static final String SCHEDULE_ID = "scheduleId";
 	
 	private static final String INT_PAGE_SIZE = "intPageSize";
 
@@ -75,7 +78,7 @@ public class LoJackServicesConnector {
 	// Alarmas Services
 	private static final String GET_ALARM_AGENDAS = "getAlarmAgendas.json";
 	private static final String DELETE_ALARM_AGENDA = "deleteAlarmAgenda.json";
-	private static final String ACTIVATE_ALARM_AGENDA = "activateAlarmAgenda.json";
+	private static final String ACTIVATE_ALARM_AGENDA = "activateAgenda.json";
 	private static final String ADD_ALARM_AGENDA = "addAlarmAgenda.json";
 	private static final String SAVE_ALARM_AGENDA = "saveAlarmAgenda.json";
 
@@ -238,11 +241,11 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static boolean deleteAlarmAgenda(WebsiteUser user, String agendaId) {
+	public static boolean deleteAlarmAgenda(WebsiteUser user, int agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
-		jsonObject.put(AGENDA_ID, agendaId);
+		jsonObject.put(ID_AGENDA, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, DELETE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -252,11 +255,11 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static boolean activateAlarmAgenda(WebsiteUser user, String agendaId) {
+	public static boolean activateAlarmAgenda(WebsiteUser user, int agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
-		jsonObject.put(AGENDA_ID, agendaId);
+		jsonObject.put(ID_AGENDA, agendaId);
 		try {
 			JSONResponse response = executeService(jsonObject, ACTIVATE_ALARM_AGENDA);
 			return ((JSONObject)response.getResult()).getBoolean("result");
@@ -268,6 +271,8 @@ public class LoJackServicesConnector {
 
 	public static boolean addAlarmAgenda(WebsiteUser user, int idEntidad, AlarmAgenda alarmAgenda) {
 		JSONObject jsonObject = JSONObject.fromObject(alarmAgenda);
+		jsonObject.remove(AGENDA_ID);
+		jsonObject.remove(ID_AGENDA);
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);

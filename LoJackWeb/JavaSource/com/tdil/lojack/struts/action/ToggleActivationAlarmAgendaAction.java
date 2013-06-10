@@ -21,7 +21,7 @@ public class ToggleActivationAlarmAgendaAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		AlarmAgendaForm aForm = (AlarmAgendaForm)form;
 		try {
-			aForm.toggleActivation(request.getParameter("agendaId"));
+			aForm.toggleActivation(Integer.valueOf(request.getParameter("agendaId")));
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);
