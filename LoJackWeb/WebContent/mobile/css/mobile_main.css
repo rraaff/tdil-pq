@@ -30,13 +30,18 @@ span.userName { color:#f05224; }
 	display:inline-block;
 }
 #legalesLayerID {
-	box-sizing: border-box; 
+	box-sizing:border-box; 
 	padding:20px 0;
-	font-size:80%;
-	line-height:normal;
-	text-align:left;
+	font-size:90%;
+	line-height:130%;
+	text-align:justify;
 }
-#legalesLayerID h3 { font-weight:bold; padding:20px 0 10px; }
+#legalesLayerID p { padding: 0 20px; }
+#legalesLayerID h1 { font-size:160%; font-weight:bold; padding:20px 0; }
+#legalesLayerID h3 { font-size:140%; padding:40px 20px 20px 20px; }
+#legalesLayerID a.indexButtonBase { font-size:160%; margin-right:20px; }
+
+#recoverPassContent p { padding:20px 0; }
 #loginContent form,
 #recoverPassContent form,
 #registrationContent form {
@@ -47,15 +52,22 @@ span.userName { color:#f05224; }
 #loginContent fieldset,
 #recoverPassContent fieldset,
 #registrationContent fieldset { width:100%; }
+
 #loginContent fieldset label,
-#recoverPassContent fieldset label,
 #registrationContent fieldset label {
 	color:#dc2c27;
 	font-size:80%;
 	line-height:normal;
 	text-align:left;
 	text-transform:uppercase;
-	width:100%; 
+	width:100%;
+}
+#recoverPassContent fieldset label {
+	color:#dc2c27;
+	font-size:80%;
+	line-height:normal;
+	text-align:left;
+	text-transform:uppercase;
 }
 #registrationContent fieldset label.readOnly { color:#424242; }
 #loginContent select,
@@ -68,8 +80,10 @@ span.userName { color:#f05224; }
 #loginContent input[type="tel"],
 #loginContent input[type="url"],
 #loginContent input[type="text"],
+#recoverPassContent select,
 #recoverPassContent input[type="email"],
 #recoverPassContent input[type="text"],
+#registrationContent textarea,
 #registrationContent select,
 #registrationContent select option,
 #registrationContent input:not([type]),
@@ -88,6 +102,10 @@ span.userName { color:#f05224; }
 	width:100%;
 	padding:10px 0;
 	margin:10px 0;
+	float:right;
+}
+#registrationContent textarea {
+	height:80px;
 }
 #loginContent select,
 #loginContent select option,
@@ -97,12 +115,13 @@ span.userName { color:#f05224; }
 #registrationContent select option, { line-height:18px; height:45px; }
 #loginContent a.buttonLink {
 	color:#dc2c27;
-	font-size:60%;
+	font-size:80%;
 	line-height:normal;
 	text-transform:uppercase;
 	padding:10px 0;
 	float: left;
 }
+#registrationContent input[type="submit"].indexLogin,
 #loginContent input[type="submit"].indexLogin,
 #recoverPassContent input[type="submit"].buttonSend,
 #registrationContent input[type="submit"].buttonSend,
@@ -110,7 +129,7 @@ span.userName { color:#f05224; }
 	border:none;
 	background:#dc2c27;
 	color:#fff;
-	font-size:60%;
+	font-size:100%;
 	line-height:normal;
 	text-transform:uppercase;
 	padding:10px 20px;

@@ -28,28 +28,28 @@
 	<div id="logo"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png"></div>
 	<ul>
 		<li><a href="./goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
-		<li><a href="legales.jsp">Legales</a></li>
+		<li><a href="legal.jsp">Legales</a></li>
 		<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
 	</ul>
 </div>
 <div id="recoverPassContent">
 	<html:form method="POST" action="/mobile/requestResetPasswordMobile">
-		<p style="padding-bottom:15px;">Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
+		<p>Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
 		<div class="errorInForm"><html:errors property="general" /></div>
 		<fieldset>
 			<label>Tipo doc</label>
 			<% RequestResetPasswordForm loginForm = (RequestResetPasswordForm)session.getAttribute("RequestResetPasswordFormMobile"); %>
 			<html:select name="RequestResetPasswordFormMobile" property="documentType" >
-					<option value="">Seleccione...</option>
-					<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-						<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
-							<%=codBean.getName()%></option>
-					<% } %>
-				</html:select>
+				<option value="">Seleccione...</option>
+				<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+					<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
+						<%=codBean.getName()%></option>
+				<% } %>
+			</html:select>
 		</fieldset>
 		<fieldset>
-			<label>Numero</label>
-			<html:text name="RequestResetPasswordFormMobile" property="username" styleClass="width240" />
+			<label>Número</label>
+			<html:text name="RequestResetPasswordFormMobile" property="username" />
 		</fieldset>
 		<fieldset>
 			<input type="submit" id="submitforgotPassword" class="buttonSend" value="Enviar">

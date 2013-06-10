@@ -36,16 +36,22 @@
 </head>
 <body>
 <% if (websiteUser != null && websiteUser.isLogged()) { %>
-<div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
+	<div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
+<% } %>
 <div id="internalHeader">
 	<ul>
-		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
-		<li><a href="home.jsp" title="Volver">< Volver</a></li>
-		<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
+		<% if (websiteUser != null && websiteUser.isLogged()) { %>
+			<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
+			<li><a href="home.jsp" title="Volver">< Volver</a></li>
+			<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
+		<% } else { %>
+			<li><a href="./goToRegistrationMobile.do" title="No tengo cuenta, registrame.">Registrarme</a></li>
+			<li><a href="legal.jsp">Legales</a></li>
+			<li><a href="index.jsp" class="back" title="Volver al inicio">< volver</a></li>
+		<% } %>
 	</ul>
 </div>
-<% } else { %>
-<% } %>
+
 <% ContactForm contactForm = (ContactForm)session.getAttribute("ContactFormMobile"); %>
 <div id="registrationContent">
 	<h1>Contacto</h1>
@@ -89,7 +95,7 @@
 		<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.content.err")%>
 		<div class="errorInForm"></div>
 		<fieldset>
-			<button id="submitregister" class="indexButtonBase">Enviar</button>
+			<input type="submit" id="submitregister" class="indexLogin" value="Enviar" />
 		</fieldset>
 	</html:form>
 </div>

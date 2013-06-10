@@ -39,12 +39,12 @@
 				<label>Tipo doc</label>
 				<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginFormMobile"); %>
 				<html:select name="LoginFormMobile" property="documentType" >
-						<option value="">Seleccione...</option>
-						<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-							<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
-								<%=codBean.getName()%></option>
-						<% } %>
-					</html:select>
+					<option value="">Seleccione...</option>
+					<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+						<option value="<%=codBean.getId()%>" <%=loginForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
+							<%=codBean.getName()%></option>
+					<% } %>
+				</html:select>
 			</fieldset>
 			<fieldset>
 				<label>Número</label>
