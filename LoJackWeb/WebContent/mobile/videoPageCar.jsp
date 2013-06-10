@@ -22,7 +22,7 @@
 	<div id="footerizer">
 		<h3 id="videoTitle">Lo Jack Car</h3>
 		<p id="videoDescription">Controlá tu auto o tu flota. Podrás saber dónde están, las velocidades máximas.</p>
-		<a href="home.jsp" title="Volver">< Volver</a>
+		<a href="index.jsp" title="Volver">< Volver</a>
 	</div>
 </div>
 </body>

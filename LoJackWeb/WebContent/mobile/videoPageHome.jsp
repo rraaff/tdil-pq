@@ -22,7 +22,7 @@
 	<div id="footerizer">
 		<h3 id="videoTitle">Lo Jack Home</h3>
 		<p id="videoDescription">Controlá tus alarmas, luces y cámaras. Mantené el control de tu casa.</p>
-		<a href="home.jsp" title="Volver">< Volver</a>
+		<a href="index.jsp" title="Volver">< Volver</a>
 	</div>
 </div>
 </body>
