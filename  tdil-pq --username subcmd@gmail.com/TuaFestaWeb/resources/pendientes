@@ -1,41 +1,40 @@
 1. Cuanto entras en ingresar en la Home, hay un link que que te dice "no recibiste el mail
-confirmando tu registración" te lleva a un lugar para que pongas tu email y te envía
+confirmando tu registraciï¿½n" te lleva a un lugar para que pongas tu email y te envï¿½a
 una nueva clave. No funciona porque como no estas validado, aunque te cambie la
 clave no funciona.
 Esto hay que revisar bien el circuito
 
-2. La foto de perfil de profesional queda muy chiquita, nos gustaría un poco más grande.
-? esto es tuyo o mio?
+2. La foto de perfil de profesional queda muy chiquita, nos gustarï¿½a un poco mï¿½s grande.
+HECHO
 
-3. Falta destacar el nombre de los profesionales en los superdestacados. Ya lo habíamos
+3. Falta destacar el nombre de los profesionales en los superdestacados. Ya lo habï¿½amos
 hablado.
-? esto es tuyo o mio?
+HECHO
 
-4. Hay que ver el tamaño o limitar con un máximo y minimo las fotos de los
+4. Hay que ver el tamaï¿½o o limitar con un mï¿½ximo y minimo las fotos de los
 productos/servicios porque algunas salen cortadas
-? esto es tuyo o mio?
+HECHO
 
-5. La descripción de los destacados sale cortada
-? esto es tuyo o mio?
-Le pones un ...?
+5. La descripciï¿½n de los destacados sale cortada
+HECHO
 
-6. Cuando agregamos vídeos, agregamos el 1,3,5, y aparece video 1,3,5. No se pueden
-sacar esos títulos?.
+6. Cuando agregamos vï¿½deos, agregamos el 1,3,5, y aparece video 1,3,5. No se pueden
+sacar esos tï¿½tulos?.
 DONE: Se los saque, ni recuerdo porque los habia puesto, supongo que como referencia
 
-7. Cuando borramos los vídeos aparece de esta forma.
+7. Cuando borramos los vï¿½deos aparece de esta forma.
 DONE
 
-8. Cuando agregamos la dirección de Facebook (en este caso sin www.) no nos deja
+8. Cuando agregamos la direcciï¿½n de Facebook (en este caso sin www.) no nos deja
 cambiarla y de la manera que lo pusimos lo re dirige a tuafesta.com/Facebook...... y
 da error
 DONE: si no empieza con http, se lo agrego
 
-9. Cuando cambias la Ubicación de los datos del profesional, aparece en administración
+9. Cuando cambias la Ubicaciï¿½n de los datos del profesional, aparece en administraciï¿½n
 que hay que aprobar o desaprobar un cambio. Pero no te indica que es lo que se
 modifico
-Esto solo sucede con la ubicación.
-Y en el caso de querer desaprobar cualquier modificación, el botón no responde.
+Esto solo sucede con la ubicaciï¿½n.
+Y en el caso de querer desaprobar cualquier modificaciï¿½n, el botï¿½n no responde.
 DONE
 El tema de desaprobar es que abre un layer, que no lo estaba centrando bien
 Ahora lo centra, pero falta que le pongas estilos, ademas, si tenes videos no se muestra adelante, esto
@@ -47,11 +46,11 @@ tenemos que verlo
   * Formatear las unidades de precio. Formato correcto: $ X.XXX.XXX,XX.-
 HECHO
 
-  * cuando agregas una foto (a un producto/servicio) y esta no es compatible o algo, hace que la agrega, después no aparece y no da error alguno. Habría que ver temas de validaciones y poner un texto con los formatos y pesos permitidos.
+  * cuando agregas una foto (a un producto/servicio) y esta no es compatible o algo, hace que la agrega, despuï¿½s no aparece y no da error alguno. Habrï¿½a que ver temas de validaciones y poner un texto con los formatos y pesos permitidos.
 HECHO
 RTA: Me lo anoto, el tema de compatibilidad va por el conversor de imagen
 
-  * El precio acepta cualquier caracter. Sería bueno tener un formateador de textos en los campos de precios.
+  * El precio acepta cualquier caracter. Serï¿½a bueno tener un formateador de textos en los campos de precios.
 RTA: Veo que puedo hacer
 
 *****************
@@ -59,16 +58,16 @@ El listado de profesionales debe tener una opcion de los que tienen cambios
 
 Hola Marcos,
  
-Me vendría suuuuuper bien poder subir lo que está hasta ahora para que los chicos hagan un test el fin de semana. ¿Podrás?
+Me vendrï¿½a suuuuuper bien poder subir lo que estï¿½ hasta ahora para que los chicos hagan un test el fin de semana. ï¿½Podrï¿½s?
  
-Te preparé una lista con temas pendientes en TF. Algunas cosas son detalles que van surgiendo del uso. Avisame si me olvido de algo.
+Te preparï¿½ una lista con temas pendientes en TF. Algunas cosas son detalles que van surgiendo del uso. Avisame si me olvido de algo.
  
-B.      (Sugerencia) Página de resultados de búsqueda (sellSearchResult.jsp): Sería bueno que te recupere los parámetros 
-	de búsqueda, luego te aparezca la leyenda de los resultados y luego un botón que te permita volver a la búsqueda recuperando los mismos parámetros.
-C.      Búsqueda Avanzada (SearchWizard.jsp): El campo Precio no debería ser obligatorio
-E.       En la registración de usuarios profesionales y de clientes también: Cuando te vas a registrarte como usuario profesional,
-	 envías los datos, y te pasa a la página de tus datos fueron enviados con éxito te va a llegar un mail >> el mail no me llego, y tendría que haber un botón que diga, te llego el mail?? si no te llego reenvialo haciendo click aca! algo asi.
-F.       BACKOFFICE: Sigue pendiente poder determinar el orden de los bloques de búsqueda por zonas o rubros de la home o si aparecen o no.
+B.      (Sugerencia) Pï¿½gina de resultados de bï¿½squeda (sellSearchResult.jsp): Serï¿½a bueno que te recupere los parï¿½metros 
+	de bï¿½squeda, luego te aparezca la leyenda de los resultados y luego un botï¿½n que te permita volver a la bï¿½squeda recuperando los mismos parï¿½metros.
+C.      Bï¿½squeda Avanzada (SearchWizard.jsp): El campo Precio no deberï¿½a ser obligatorio
+E.       En la registraciï¿½n de usuarios profesionales y de clientes tambiï¿½n: Cuando te vas a registrarte como usuario profesional,
+	 envï¿½as los datos, y te pasa a la pï¿½gina de tus datos fueron enviados con ï¿½xito te va a llegar un mail >> el mail no me llego, y tendrï¿½a que haber un botï¿½n que diga, te llego el mail?? si no te llego reenvialo haciendo click aca! algo asi.
+F.       BACKOFFICE: Sigue pendiente poder determinar el orden de los bloques de bï¿½squeda por zonas o rubros de la home o si aparecen o no.
 
 *****
 
