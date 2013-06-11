@@ -25,7 +25,6 @@ $(document).ready(
 	}
 );
 jQuery.fn.center = function () {
-    this.css("position","absolute");
     this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 
                                                 $(window).scrollTop()) + "px");
     this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + 
@@ -34,6 +33,16 @@ jQuery.fn.center = function () {
 }
 function disapprove() {
 	$( "#disapprovelayer" ).center().fadeIn(500);
+	disapproveModal();
+}
+function disapproveModal() {
+	$window = $(window);
+    var top = ($window.height() / 2) - ($( "#defaultModal" ).height() / 2);
+    var left = ($window.width() / 2) - ($( "#defaultModal" ).width() / 2);
+	$( "#defaultModal" ).css({
+		top: top + 'px',
+		left: left + 'px'
+	}).fadeIn(500);
 }
 </script>
 <style>
@@ -77,14 +86,14 @@ th.sorted {
 			Profesional profesional = reviewProfesionalForm.getProfesional(); 
 			ProfesionalChange change = reviewProfesionalForm.getProfesionalChange(); %>
 		<div id="formulariosBase">
-			<div class="renglon"><span class="comment">Desde esta sección podrá revisar los datos del profesional.</span></div>
+			<div class="renglon"><span class="comment">Desde esta secciï¿½n podrï¿½ revisar los datos del profesional.</span></div>
 			
 			<div class="renglon">
 				<div class="label width50">Logo: </div>
 				<div class="label" style="border:1px solid #333;">
 					<% if (profesional.getIdProfilePicture() != null && profesional.getIdProfilePicture() != 0) { %>
 						<img src="./downloadThumb.st?id=<%=profesional.getIdProfilePicture()%>&width=78&height=78&type=PUBLIC&ext=<%=profesional.getExtProfilePicture()%>"/>
-					<% } else { %>
+		<% } else { %>
 						-
 					<% } %>
 					<% if (reviewProfesionalForm.getChangeLogo() != null) { %>
@@ -110,21 +119,21 @@ th.sorted {
 					<% if (!StringUtils.isEmpty(change.getFacebook())) { %>
 						-> <%=change.getFacebook()%>
 					<% } else { %>
-					<% } %></div>
+				<% } %></div>
 			</div>
 			<div class="renglon">
 				<div class="label">Website: <strong><%=com.tdil.utils.StringUtils.nvl(profesional.getWebsite(), "-")%> </strong>
 					<% if (!StringUtils.isEmpty(change.getWebsite())) { %>
 						-> <%=change.getWebsite()%>
 					<% } else { %>
-					<% } %></div>
+				<% } %></div>
 			</div>
 			<div class="renglon">
 				<div class="label">Horario: <strong><%=com.tdil.utils.StringUtils.nvl(profesional.getBusinesshours(), "-")%> </strong>
 					<% if (!StringUtils.isEmpty(change.getBusinesshours())) { %>
 						-> <%=change.getBusinesshours()%>
 					<% } else { %>
-					<% } %></div>
+				<% } %></div>
 			</div>
 			<div class="renglon">
 				<div class="label"><%=com.tdil.utils.StringUtils.nvl("DELETE".equals(profesional.getVideo1()) ? "-" : profesional.getVideo1(), "-")%>Video 1:
@@ -180,9 +189,16 @@ th.sorted {
 </div>
 <div id="disapprovelayer" class="hide" style="z-index: 500;">
 	<html:form method="POST" action="/disapproveProfesionalBusinessDataChange">
-		<div id="Motivo"><html:text name="ReviewProfesionalForm" property="disapproveMotive" styleClass="normalField"/></div>
-		<div id="buttonHolder" align="center"><input type="submit" value="Desaprobar"/><input type="button" id="canceldisapprove" value="Cancelar"></div>
-		<!-- div id="buttonMeArrepentiHolder"><a href="postits.jsp" title="Volver a Postits"><img src="images/experiencias/postits/boton_me-arrepenti_out.png" width="160" height="52" /></a></div-->
+		<div id="defaultModal">
+			<h3>Motivo de la desaprobaciï¿½n</h3>
+			<fieldset>
+				<label class="width100">Escriba el motivo</label>
+				<div id="Motivo"><html:textarea name="ReviewProfesionalForm" property="disapproveMotive" styleClass="normalField width100per height100"/></div>
+			</fieldset>
+			<fieldset>
+				<div id="buttonHolder" align="center"><a type="button" id="canceldisapprove">Cancelar</a> <input type="submit" value="Desaprobar"/></div>
+			</fieldset>
+		</div>
 	</html:form>
 </div>
 </body>
