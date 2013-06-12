@@ -56,6 +56,9 @@
   <form-bean id="OrganizeWizardForm" name="OrganizeWizardForm" type="com.tdil.tuafesta.struts.forms.OrganizeWizardForm"/>
   <form-bean id="CategoryNavigationForm" name="CategoryNavigationForm" type="com.tdil.tuafesta.struts.forms.CategoryNavigationForm"/>
   <form-bean id="GeoLevelNavigationForm" name="GeoLevelNavigationForm" type="com.tdil.tuafesta.struts.forms.GeoLevelNavigationForm"/>
+  
+  <form-bean id="ResendEmailForm" name="ResendEmailForm" type="com.tdil.tuafesta.struts.forms.ResendEmailForm"/>
+  
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -448,6 +451,10 @@
    <forward name="continue" path="/perfilPublicoProfesional.jsp"/>
   </action>
   <action name="ContactForm" path="/contact" scope="request" type="com.tdil.tuafesta.struts.action.ContactAction"/>
+  
+  <action name="PasswordResetForm" path="/goToPasswordReset" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/resetearPassword.jsp"/>
+  </action>
   <action name="PasswordResetForm" path="/resetPassword" scope="session" type="com.tdil.struts.actions.SaveAction">
    <forward name="failure" path="/resetearPassword.jsp"/>
    <forward name="continue" path="/passwordEnviada.jsp"/>
@@ -781,6 +788,14 @@
    <forward name="continue" path="/listadoZonas.jsp" redirect="true"/>
   </action>
   
+  
+  <action name="ResendEmailForm" path="/goToResendEmail" scope="session" type="com.tdil.struts.actions.GoToABMAction">
+   <forward name="continue" path="/reenviarEmail.jsp"/>
+  </action>
+  <action name="ResendEmailForm" scope="session" path="/resendEmail" type="com.tdil.struts.actions.SaveAction">
+   <forward name="failure" path="/reenviarEmail.jsp"/>
+   <forward name="continue" path="/emailEnviado.jsp"/>
+  </action>
   
  </action-mappings>
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

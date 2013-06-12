@@ -66,6 +66,7 @@ public class ErrorFormatter {
 				} else {
 					result.append(rb);
 				}
+				result.append(end);
 			}
 		}
 		return result.toString();
