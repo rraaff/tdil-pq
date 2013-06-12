@@ -1726,4 +1726,37 @@
    PATH="/listadoZonas.jsp" TARGET="page64" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#resendEmail" NAME="action179" PATH="/resendEmail"
+  SHAPE="32,14609,0,0" TITLE="ResendEmailForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/reenviarEmail.jsp" TARGET="page65" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/emailEnviado.jsp" TARGET="page66" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page65" PATH="/reenviarEmail.jsp"
+  SHAPE="256,14626,0,0" SUBTYPE="jsp" TITLE="reenviarEmail.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/resendEmail.do"
+   SUBTYPE="confirmed" TARGET="action179" TITLE="/resendEmail.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page66" PATH="/emailEnviado.jsp"
+  SHAPE="256,14626,0,0" SUBTYPE="jsp" TITLE="emailEnviado.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToResendEmail" NAME="action180"
+  PATH="/goToResendEmail" SHAPE="32,14609,0,0" TITLE="ResendEmailForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/reenviarEmail.jsp" TARGET="page65" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToPasswordReset" NAME="action181"
+  PATH="/goToPasswordReset" SHAPE="32,14609,0,0"
+  TITLE="PasswordResetForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/resetearPassword.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

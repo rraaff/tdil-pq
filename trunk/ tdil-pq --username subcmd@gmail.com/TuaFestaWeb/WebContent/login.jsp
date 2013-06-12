@@ -48,10 +48,10 @@
 							<div class="myLabel width280" align="center">&#191;No est&aacute;s registrado? <a href="./registroPreRegistro.jsp" title="recuper&aacute; tu clave">Registrate ahora</a></div>
 						</div>
 						<div class="myRow">
-							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
+							<div class="myLabel width280" align="center"><a href="./goToPasswordReset.do" title="recuper&aacute; tu clave">&#191;Olvidaste tu clave?</a></div>
 						</div>
 						<div class="myRow">
-							<div class="myLabel width280" align="center"><a href="./resetearPassword.jsp" title="Regener&aacute; tu clave">&#191;No recibiste el E-Mail confirmando tu registraci&oacute;n?</a></div>
+							<div class="myLabel width280" align="center"><a href="./goToResendEmail.do" title="Ped&iacute; un nuevo email">&#191;No recibiste el E-Mail confirmando tu registraci&oacute;n?</a></div>
 						</div>
 						<div class="myRow">
 							<div class="myLabel width280" align="center"><a href="index.jsp">Volver</a></div>
