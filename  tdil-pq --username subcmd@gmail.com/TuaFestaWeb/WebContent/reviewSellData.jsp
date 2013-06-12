@@ -77,7 +77,7 @@ th.sorted {
 				</display:table>
 				<%=DisplayTagParamHelper.getFields(request)%>
 			</div>
-			<div class="renglon" align="center"><a href="javascript:history.back();">Volver</a></div>
+			<div class="renglon" align="center"><a href="./reviewProfesional.jsp">Volver</a></div>
 		</div>
 	</div>
 </div>
