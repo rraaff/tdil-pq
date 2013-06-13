@@ -34,7 +34,6 @@
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/headLogged.jsp" %>
 
-
 <style type="text/css">
 #productsMenu ul li.tabParking {
 	background:#f05224;

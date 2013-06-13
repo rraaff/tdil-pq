@@ -33,8 +33,9 @@
 <link rel="stylesheet" href="css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
-<%@ include file="includes/headLogged.jsp" %>
+
 <script src="js/bootstrap.min.js"></script>
+<%@ include file="includes/headLogged.jsp" %>
 <script src="js/lights.js"></script>
 <script src="js/jQueryRotateCompressed.2.2.js"></script>
 <script src="js/bootstrapSwitch.js"></script>

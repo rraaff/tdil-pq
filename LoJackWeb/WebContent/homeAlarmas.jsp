@@ -29,14 +29,14 @@
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
-<link rel="stylesheet" href="css/bootstrapSwitch.css">
+<link href="css/bootstrapSwitch.css" rel="stylesheet">
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/alarms.js"></script>
 <script src="js/jQueryRotateCompressed.2.2.js"></script>
 
 <!-- Para los switches -->
-<!-- link rel="stylesheet" href="css/bootstrap-combined.min.css"-->
 <script src="js/bootstrapSwitch.js"></script>
 <!-- Fin Switches -->
 <% AlarmsForm alarmsForm = (AlarmsForm)session.getAttribute("AlarmsForm"); %>

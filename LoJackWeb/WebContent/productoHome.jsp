@@ -27,7 +27,7 @@
 <link href="css/index_modales.css" rel="stylesheet" type="text/css" />
 <link href="css/index_social.css" rel="stylesheet" type="text/css" />
 <link href="css/copyright.css" rel="stylesheet" type="text/css" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<link href="css/mediaQueries.css" rel="stylesheet" type="text/css" />
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/bootstrap.min.js"></script>
 

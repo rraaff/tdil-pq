@@ -9,7 +9,6 @@
 <link href="css/reset-styles" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<!-- Hay que definir cuales jqueries hacen falta y cuales no para no tener lios con bootstrap-->
 <link type='text/css' href='css/jquery-ui-1.10.2.custom.css' rel='stylesheet' media='screen' />
 <script src="js/bootstrap.min.js"></script>
 <script type='text/javascript' src='js/modernizr.js'></script>
