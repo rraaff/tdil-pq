@@ -23,6 +23,7 @@ import com.tdil.lojack.prevent.model.Vehicle;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
 
@@ -50,6 +51,7 @@ public class PreventConnector {
 
 
 	private static String preventServer = "http://test.lojackgis.com.ar:8080/webgis/preventwcfServices/GISService.svc";
+	private static ProxyConfiguration PROXY;
 	
 	private static String preventLoginUrl = "";
 	private static String preventToken;
@@ -257,6 +259,9 @@ public class PreventConnector {
 	private static void configureTimeout(HttpClient client) {
 		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
 		connectionManager.getParams().setSoTimeout(getTIMEOUT());
+		if (getPROXY() != null) {
+			client.getHostConfiguration().setProxy(getPROXY().getServer(), getPROXY().getPort());
+		}
 	}
 	
 	public static String getPreventServer() {
@@ -295,5 +300,13 @@ public class PreventConnector {
 		String login = "{ \"jSessionID\": \""+jsessionid+"\", \"lojackToken\": \""+getPreventToken()+
 		"\", \"awselb\": \""+awselb+"\", \"timeZoneOffset\": -3 }";
 		return PreventConnector.executePost(getPreventServer(), LOGIN_JSON, login, null, "application/json");
+	}
+
+	public static ProxyConfiguration getPROXY() {
+		return PROXY;
+	}
+
+	public static void setPROXY(ProxyConfiguration pROXY) {
+		PROXY = pROXY;
 	}
 }

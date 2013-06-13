@@ -1,8 +1,12 @@
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.http','localhost:9090','proxy.http',1);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.https','localhost:9091','proxy.https',1);
+
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/LoJackWeb','front.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','test','thalamus.touchpoint.code',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.timeout','5000','Timeout en millis',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.proxy','true','thalamus.proxy',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('guid','2b64c399-69aa-4b8f-bd79-d5e8bf6075ee','gui',0);
 
@@ -10,11 +14,13 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mw.pro
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('gis.server','http://localhost:8180/GISWeb/gis/','gis.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.server','http://localhost:8180/GISWeb/services/','services.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.timeout','5000','Timeout en millis',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('middleware.proxy','true','middleware.proxy',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.server','http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc','prevent.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.timeout','10000','Timeout en millis',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.loginurl','http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx?','URL de prevent',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.token','a5b0981a0188bb9a5b7fe44b6c32d894','Token de prevent',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.proxy','true','prevent.proxy',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.loginurl','http://test.lojackgis.com.ar:8080/webgis/LojackPets/loginportal.ashx?','URL de pets',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.mobile.loginurl','http://test.lojackgis.com.ar:8080/webgis/lojackpetsmobile/loginportal.ashx?','URL de pets mobile',0);

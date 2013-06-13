@@ -32,6 +32,7 @@ import com.tdil.lojack.roles.HomeUser;
 import com.tdil.lojack.roles.PreventUser;
 import com.tdil.lojack.roles.WebsiteUser;
 import com.tdil.thalamus.client.cache.ThalamusCache;
+import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.thalamus.client.core.ThalamusClient;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.users.None;
@@ -46,6 +47,9 @@ public class LoJackConfig extends SystemConfig {
 	private static String GUID;
 	
 	private static long FRONT_LOGIN_DELAY;
+	
+	private static ProxyConfiguration HTTP_PROXY;
+	private static ProxyConfiguration HTTPS_PROXY;
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -77,6 +81,24 @@ public class LoJackConfig extends SystemConfig {
 			}
 			setFRONT_LOGIN_DELAY(delay);
 			getLog().fatal("Front login delay is " + delay);
+			
+			String httpproxy = SystemPropertyUtils.getSystemPropertValue("proxy.http");
+			if (!StringUtils.isEmpty(httpproxy)) {
+				String proxyConf[] = httpproxy.split(":");
+				setHTTP_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
+				getLog().fatal("Http proxy is " + httpproxy);
+			} else {
+				getLog().fatal("No http proxy");
+			}
+			String httpsproxy = SystemPropertyUtils.getSystemPropertValue("proxy.https");
+			if (!StringUtils.isEmpty(httpsproxy)) {
+				String proxyConf[] = httpsproxy.split(":");
+				setHTTPS_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
+				getLog().fatal("Https proxy is " + httpproxy);
+			} else {
+				getLog().fatal("No https proxy");
+			}
+			
 
 			String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
 			if (thalamusserver != null) {
@@ -98,6 +120,27 @@ public class LoJackConfig extends SystemConfig {
 				ThalamusClient.setTIMEOUT(Integer.parseInt(thalamustimeout));
 			}
 			getLog().fatal("Thalamus timeout is " + ThalamusClient.getTIMEOUT());
+			
+			String thalamusproxy = SystemPropertyUtils.getSystemPropertValue("thalamus.proxy");
+			if (!StringUtils.isEmpty(thalamusproxy) && "true".equalsIgnoreCase(thalamusproxy)) {
+				if (ThalamusClient.getTHALAMUS_HOST().startsWith("https")) {
+					if (getHTTPS_PROXY() != null) {
+						ThalamusClient.setPROXY(getHTTPS_PROXY());
+						getLog().fatal("Thalamus proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+					} else {
+						getLog().fatal("No Thalamus proxy");
+					}
+				} else {
+					if (getHTTP_PROXY() != null) {
+						ThalamusClient.setPROXY(getHTTP_PROXY());
+						getLog().fatal("Thalamus proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+					} else {
+						getLog().fatal("No Thalamus proxy");
+					}
+				}
+			} else {
+				getLog().fatal("No Thalamus proxy");
+			}
 
 			String thalamuscookiepath = SystemPropertyUtils.getSystemPropertValue("thalamus.cookiePath");
 			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamuscookiepath)) {
@@ -174,6 +217,27 @@ public class LoJackConfig extends SystemConfig {
 				LoJackServicesConnector.setTIMEOUT(Integer.parseInt(servicestimeout));
 			}
 			getLog().fatal("Services timeout is " + LoJackServicesConnector.getTIMEOUT());
+			
+			String middlewareproxy = SystemPropertyUtils.getSystemPropertValue("middleware.proxy");
+			if (!StringUtils.isEmpty(middlewareproxy) && "true".equalsIgnoreCase(middlewareproxy)) {
+				if (LoJackServicesConnector.getGisServer().startsWith("https")) {
+					if (getHTTPS_PROXY() != null) {
+						LoJackServicesConnector.setPROXY(getHTTPS_PROXY());
+						getLog().fatal("Middleware proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+					} else {
+						getLog().fatal("No Middleware proxy");
+					}
+				} else {
+					if (getHTTP_PROXY() != null) {
+						LoJackServicesConnector.setPROXY(getHTTP_PROXY());
+						getLog().fatal("Middleware proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+					} else {
+						getLog().fatal("No Middleware proxy");
+					}
+				}
+			} else {
+				getLog().fatal("No Middleware proxy");
+			}
 
 			String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
 			if (preventserver != null) {
@@ -199,7 +263,26 @@ public class LoJackConfig extends SystemConfig {
 			}
 			getLog().fatal("Prevent timeout is " + PreventConnector.getTIMEOUT());
 			
-			
+			String preventproxy = SystemPropertyUtils.getSystemPropertValue("prevent.proxy");
+			if (!StringUtils.isEmpty(preventproxy) && "true".equalsIgnoreCase(preventproxy)) {
+				if (PreventConnector.getPreventServer().startsWith("https")) {
+					if (getHTTPS_PROXY() != null) {
+						PreventConnector.setPROXY(getHTTPS_PROXY());
+						getLog().fatal("Prevent proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+					} else {
+						getLog().fatal("No Prevent proxy");
+					}
+				} else {
+					if (getHTTP_PROXY() != null) {
+						PreventConnector.setPROXY(getHTTP_PROXY());
+						getLog().fatal("Prevent proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+					} else {
+						getLog().fatal("No Prevent proxy");
+					}
+				}
+			} else {
+				getLog().fatal("No Prevent proxy");
+			}
 			
 			String petsloginurl = SystemPropertyUtils.getSystemPropertValue("pets.loginurl");
 			if (petsloginurl != null) {
@@ -330,6 +413,22 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setGUID(String gUID) {
 		GUID = gUID;
+	}
+
+	public static ProxyConfiguration getHTTP_PROXY() {
+		return HTTP_PROXY;
+	}
+
+	public static void setHTTP_PROXY(ProxyConfiguration hTTP_PROXY) {
+		HTTP_PROXY = hTTP_PROXY;
+	}
+
+	public static ProxyConfiguration getHTTPS_PROXY() {
+		return HTTPS_PROXY;
+	}
+
+	public static void setHTTPS_PROXY(ProxyConfiguration hTTPS_PROXY) {
+		HTTPS_PROXY = hTTPS_PROXY;
 	}
 
 }

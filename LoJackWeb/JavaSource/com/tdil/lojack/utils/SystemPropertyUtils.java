@@ -29,10 +29,11 @@ public class SystemPropertyUtils {
 
 		public Object executeInTransaction() throws SQLException {
 			SystemPropertyExample systemPropertyExample = new SystemPropertyExample();
-			systemPropertyExample.createCriteria().andPropkeyEqualTo(key);
+			systemPropertyExample.createCriteria().andPropkeyEqualTo(key).andDeletedEqualTo(0);
 			return DAOManager.getSystemPropertyDAO().selectSystemPropertyByExample(systemPropertyExample);
 		}
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	public static String getSystemPropertValue(String key) {

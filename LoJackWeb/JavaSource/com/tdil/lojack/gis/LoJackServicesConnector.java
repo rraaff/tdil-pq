@@ -32,6 +32,7 @@ import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 
 // TODO ver que datos de authenticacion hay que proveer
@@ -61,6 +62,8 @@ public class LoJackServicesConnector {
 	public static final Logger LOG = LoggerProvider.getLogger(LoJackServicesConnector.class);
 
 	private static MiddlewareProtocol protocol = new JSONProtocol();
+	
+	private static ProxyConfiguration PROXY;
 	
 	private static String gisServer = "http://localhost:8180/GISWeb/";
 	private static String servicesServer = "http://localhost:8180/GISWeb/";
@@ -594,6 +597,9 @@ public class LoJackServicesConnector {
 	public static void configureTimeout(HttpClient client) {
 		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
 		connectionManager.getParams().setSoTimeout(getTIMEOUT());
+		if (getPROXY() != null) {
+			client.getHostConfiguration().setProxy(getPROXY().getServer(), getPROXY().getPort());
+		}
 	}
 	public static JSON extractJSONObjectResponse(String response)
 			throws InvalidResponseException, UnauthorizedException {
@@ -621,6 +627,12 @@ public class LoJackServicesConnector {
 	}
 	public static void setProtocol(MiddlewareProtocol protocol) {
 		LoJackServicesConnector.protocol = protocol;
+	}
+	public static ProxyConfiguration getPROXY() {
+		return PROXY;
+	}
+	public static void setPROXY(ProxyConfiguration pROXY) {
+		PROXY = pROXY;
 	}
 
 }
