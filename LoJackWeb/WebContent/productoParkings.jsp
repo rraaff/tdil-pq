@@ -26,14 +26,15 @@
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <!-- link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
-
-<%@ include file="includes/headLogged.jsp" %>
-
 <link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
 <link type="text/css" href="css/index_menu.css" rel="stylesheet" />
 <link type="text/css" href="css/index_modales.css" rel="stylesheet" />
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<%@ include file="includes/headLogged.jsp" %>
+
+
 <style type="text/css">
 #productsMenu ul li.tabParking {
 	background:#f05224;
@@ -302,7 +303,6 @@
 		}
 </script>
 
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <style type="text/css">
 @media only screen and (max-width: 968px) {
 	body { background: #e51b24; overflow: hidden; }

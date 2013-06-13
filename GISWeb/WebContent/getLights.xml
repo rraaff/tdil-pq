@@ -1,0 +1,7 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	<s:Body>
+		<getLightsResponse xmlns="http://tempuri.org/">
+			<getLightsResult>[]</getLightsResult>
+		</getLightsResponse>
+	</s:Body>
+</s:Envelope>

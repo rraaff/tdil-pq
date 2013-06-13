@@ -51,8 +51,15 @@ response.addCookie(ecookie1);
 <!-- Bootstrap -->
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
+<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
+<link type="text/css" href="css/index_social.css" rel="stylesheet" />
+<link type="text/css" href="css/copyright.css" rel="stylesheet" />
+<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
+<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
+<link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/headNotLogged.jsp" %>
-
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
 
@@ -359,14 +366,7 @@ function parkingsNotLogged() {
 	return false;
 }
 </script>
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+
 </head>
 <body>
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>

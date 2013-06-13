@@ -23,15 +23,13 @@
 <link href="css/reset-styles" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<script src="js/bootstrap.min.js"></script>
-
-<%@ include file="includes/headLogged.jsp" %>
-
-
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
 <link href="css/index_modales.css" rel="stylesheet" type="text/css" />
 <link href="css/index_social.css" rel="stylesheet" type="text/css" />
 <link href="css/copyright.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<%@ include file="includes/headLogged.jsp" %>
+<script src="js/bootstrap.min.js"></script>
 
 <style type="text/css">
 #productsMenu ul li.tabHome {
@@ -49,7 +47,6 @@ $(function() {
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 </script>
 
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

@@ -25,20 +25,18 @@
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-
-<script src="js/bootstrap.min.js"></script>
-
-<%@ include file="includes/headLogged.jsp" %>
-<script src="js/lights.js"></script>
-<script src="js/jQueryRotateCompressed.2.2.js"></script>
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
 <link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
 <link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
 <link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
-
 <!-- Para los switches -->
 <link rel="stylesheet" href="css/bootstrap-combined.min.css">
 <link rel="stylesheet" href="css/bootstrapSwitch.css">
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<%@ include file="includes/headLogged.jsp" %>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/lights.js"></script>
+<script src="js/jQueryRotateCompressed.2.2.js"></script>
 <script src="js/bootstrapSwitch.js"></script>
 <!-- Fin Switches -->
 <% LightsForm lightsForm = (LightsForm)session.getAttribute("LightsForm"); %>
@@ -396,7 +394,6 @@ textarea {
 	float:left;
 }
 </style>
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <% if (usingMobile || isAndroid) { %>
 	<style type="text/css">
 		#productHomeContent.col1_798 { padding:5px 0 0 0; }

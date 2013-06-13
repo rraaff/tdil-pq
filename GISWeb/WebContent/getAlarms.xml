@@ -1,0 +1,10 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	<s:Body>
+		<getAlarmsResponse xmlns="http://tempuri.org/">
+			<getAlarmsResult>[{"idEntidad":70843,"lastChangeAction":"HOME: ALARMA
+				DESARMADA","lastChangeDate":"2013-05-20 -
+				18:05","lastChangeLojackUserId":"","lastChangeUser":"san lorenzo
+				3887","status":"DESARMADA"}]</getAlarmsResult>
+		</getAlarmsResponse>
+	</s:Body>
+</s:Envelope>

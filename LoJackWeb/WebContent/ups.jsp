@@ -6,7 +6,6 @@
 <head>
 <%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
-<%@ include file="includes/errorJS.jsp"%>
 </head>
 
 <body>

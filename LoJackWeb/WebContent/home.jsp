@@ -21,7 +21,14 @@
 <link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-
+<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
+<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
+<link type="text/css" href="css/index_social.css" rel="stylesheet" />
+<link type="text/css" href="css/copyright.css" rel="stylesheet" />
+<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
+<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
+<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/headLogged.jsp" %>
 <script>
 	$(document).ready(
@@ -39,15 +46,6 @@
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
 </script>
-
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 </head>
 <body>
 <header>

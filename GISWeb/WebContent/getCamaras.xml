@@ -1,0 +1,9 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+	<s:Body>
+		<getCamarasResponse xmlns="http://tempuri.org/">
+			<getCamarasResult>[{"model":1,"password":"1234","url":"ole1230","username":"casa
+				central"},{"model":1,"password":"231","url":"eewew21","username":"sucursal
+				1"}]</getCamarasResult>
+		</getCamarasResponse>
+	</s:Body>
+</s:Envelope>

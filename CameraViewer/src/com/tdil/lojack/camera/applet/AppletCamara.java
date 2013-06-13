@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -24,6 +26,7 @@ import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.utils.encryption.DesEncrypter;
+import javax.swing.JLabel;
 
 /**
  * Class <code>AppletCamara</code> is responsible of establishing a directo connection
@@ -46,8 +49,11 @@ public class AppletCamara extends javax.swing.JApplet {
 	private JButton jButtonAbajo;
 
 	private JButton jButtonArriba;
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
 	private long refreshInterval;
+	private JLabel lblNewLabel;
 
 	public AppletCamara() {
 		initGUI();
@@ -76,6 +82,9 @@ public class AppletCamara extends javax.swing.JApplet {
 			this.getContentPane().add(
 					jPanelHorizontal, BorderLayout.SOUTH);
 			jPanelHorizontal.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+			
+			lblNewLabel = new JLabel("00:00:00");
+			jPanelHorizontal.add(lblNewLabel);
 
 			jButtonIzquierda.setIcon(new ImageIcon(getBytesFrom(AppletCamara.class
 					.getResourceAsStream("applet_left_off.png"))));
@@ -248,11 +257,14 @@ public class AppletCamara extends javax.swing.JApplet {
 							Image imagen = ImageIO.read(in);
 							panelCamara.setImage(imagen);
 							panelCamara.repaint();
+							showTimeOk();
 							sleep(refreshInterval);
 						} else {
+							showTimeErr();
 							System.out.println("null image");
 						}
 					} catch (IOException e) {
+						showTimeErr();
 						e.printStackTrace();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -270,6 +282,15 @@ public class AppletCamara extends javax.swing.JApplet {
 			}
 		};
 		thread.start();
+	}
+
+	protected void showTimeOk() {
+		lblNewLabel.setText(dateFormat.format(new Date()));
+		lblNewLabel.setForeground(Color.BLACK);
+	}
+	protected void showTimeErr() {
+		lblNewLabel.setText(dateFormat.format(new Date()));
+		lblNewLabel.setForeground(Color.RED);
 	}
 
 	/** Auto-generated event handler method */
