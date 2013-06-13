@@ -5,7 +5,7 @@
 --><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %><!--
--->--><% if (websiteUser != null && websiteUser.isLogged()) { %>
+--><% if (websiteUser != null && websiteUser.isLogged()) { %>
 	<jsp:forward page="./home.jsp"></jsp:forward>
 <% 	return;
 	} %>
