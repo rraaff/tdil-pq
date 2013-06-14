@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+/*   Reseteo CSS   ***************************************************/
+/*
+Theme Name: Thalamus Energy V2
+Description: Original theme for the Thalamus Web Demo V 2.0.
+Author: Pablo Agustín Mendoza para THAT DAY IN LONDON - Agencia Interactiva & Diseño
+Version: 1.0
+License: Thalamus
+*/
+/* Typos */
+#links {
+	font-family: 'Gill Sans MT', Genova, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	width:100%;
+	top:456px;
+	left:0px;
+	position:relative;
+	z-index:3;
+}
+#links a {
+	color:#2d0703;
+	padding-left:10px;
+	padding-right:10px;
+}
+#links a:hover {
+	color:#f1ce0b;
+}
+/* Main Structure */
+/* MENUS */
+/* Layers */
+#myAccount {
+	background-image: url(../images/skin_nrg2/mp/myAccount.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:1000px;
+	height:576px;
+	margin:0 auto;
+}
+#catalog {
+	background-image: url(../images/skin_nrg2/mp/catalog_01.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:1000px;
+	height:576px;
+	margin:0 auto;
+}
+#tradeOff {
+	background-image: url(../images/skin_nrg2/mp/tradeOff.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:1000px;
+	height:576px;
+	margin:0 auto;
+}
+#shipments {
+	background-image: url(../images/skin_nrg2/mp/shipments.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:1000px;
+	height:576px;
+	margin:0 auto;
+}
+#form {
+	color: #2d0703;
+	font-family: 'Gill Sans MT', Genova, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	background-image: url(../images/skin_nrg2/mp/code.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:506px;
+	height:294px;
+	padding-left:70px;
+	margin:100px auto;
+}
+#form a {
+	color: #2d0703;
+}
+#approved {
+	background-image: url(../images/skin_nrg2/mp/cupon_approved.png);
+	background-repeat: no-repeat;
+	background-position: center top;	
+	width:506px;
+	height:314px;
+	margin:90px auto;
+}

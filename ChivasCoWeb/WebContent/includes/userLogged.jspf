@@ -1,0 +1,13 @@
+<%@page import="com.tdil.chivas.co.utils.ThalamusWebUtils"%>
+<%@page import="com.tdil.chivas.co.utils.WebsiteUser"%>
+<% 	
+WebsiteUser websiteUser = null;
+boolean logged = false;
+if (request.getSession(false) != null) {
+	websiteUser = (WebsiteUser)request.getSession(false).getAttribute("user");
+	if (websiteUser != null && websiteUser.isLogged()) {
+		logged = true;
+		ThalamusWebUtils.updateActivities(websiteUser);
+	}
+}
+%>

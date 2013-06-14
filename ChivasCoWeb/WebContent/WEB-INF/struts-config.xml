@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+                               "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+ <data-sources/>
+ <form-beans>
+  <form-bean id="LoginForm" name="LoginForm" type="com.tdil.chivas.co.struts.forms.LoginForm"/>
+  <form-bean id="RequestResetPasswordForm" name="RequestResetPasswordForm" type="com.tdil.chivas.co.struts.forms.RequestResetPasswordForm"/>
+  <form-bean id="ResetPasswordForm" name="ResetPasswordForm" type="com.tdil.chivas.co.struts.forms.ResetPasswordForm"/>
+  <form-bean id="RegisterForm" name="RegisterForm" type="com.tdil.chivas.co.struts.forms.RegisterForm"/>
+  <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.chivas.co.struts.forms.RegisterForm"/>
+ </form-beans>
+ <global-exceptions/>
+ <global-forwards>
+  <forward name="ajaxReturn" path="/empty.jsp"/>
+  <forward name="notLogged" path="/index.jsp"/>
+  <forward name="notAuthorized" path="/index.jsp"/>
+  <forward name="invalidAction" path="/index.jsp"/>
+ </global-forwards>
+ <action-mappings>
+
+  <action name="LoginForm" path="/login" scope="request" type="com.tdil.chivas.co.struts.action.LoginAction"/>
+  
+  <action path="/facebooklogin" scope="request" type="com.tdil.chivas.co.struts.action.LoginFacebookAction">
+  	<forward name="register" path="/index.jsp?openRegister=true" redirect="true"/>
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  	<forward name="cancel" path="/index.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/facebookconnect" type="com.tdil.chivas.co.struts.action.FacebookConnectAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/facebookremove" scope="session" type="com.tdil.chivas.co.struts.action.DeleteFacebookAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/twitterlogin" scope="request" type="com.tdil.chivas.co.struts.action.LoginTwitterAction">
+  	<forward name="register" path="/index.jsp?openRegister=true" redirect="true"/>
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  	<forward name="cancel" path="/index.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/twitterconnect" type="com.tdil.chivas.co.struts.action.TwitterConnectAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action path="/twitterremove" scope="session" type="com.tdil.chivas.co.struts.action.DeleteTwitterAction">
+  	<forward name="continue" path="/social.jsp" redirect="true"/>
+  </action>
+  
+  <action name="RequestResetPasswordForm" path="/requestResetPassword" scope="request" type="com.tdil.chivas.co.struts.action.RequestResetPasswordAction"/>
+  <action name="ResetPasswordForm" path="/goToResetPassword" scope="session" type="com.tdil.chivas.co.struts.action.GoToResetPasswordAction">
+  	<forward name="continue" path="/resetPassword.jsp" redirect="true"/>
+  </action>
+  <action name="ResetPasswordForm" path="/resetPassword" scope="session" type="com.tdil.chivas.co.struts.action.ResetPasswordAction">
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  	<forward name="failure" path="/resetPassword.jsp"/>
+  </action>
+  
+  <action path="/logout" type="com.tdil.chivas.co.struts.action.LogoutAction"/>
+  
+  <action name="RegisterForm" path="/register" scope="session" type="com.tdil.chivas.co.struts.action.ThalamusRegisterAction">
+  </action>
+
+  <action name="UpdatePersonForm" path="/goToUpdatePerson" scope="session" type="com.tdil.chivas.co.struts.action.GoToUpdatePersonAction">
+  	<forward name="continue" path="/updatePerson.jsp" redirect="true"/>
+  </action>
+  <action name="UpdatePersonForm" path="/updatePerson" scope="session" type="com.tdil.chivas.co.struts.action.ThalamusUpdatePersonAction">
+  </action>
+  
+  <action path="/searchStates" type="com.tdil.chivas.co.struts.action.SearchStatesAjaxAction"/>
+  
+ </action-mappings>
+ 
+ <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
+ <message-resources parameter="com.tdil.chivas.co.struts.resources.ApplicationResources"/>
+</struts-config>

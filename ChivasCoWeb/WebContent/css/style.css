@@ -1,0 +1,378 @@
+@charset "utf-8";
+/* CSS Document */
+/*   Reseteo CSS   ***************************************************/
+/*
+Theme Name: Thalamus Energy V2
+Description: Original theme for the Thalamus Web Demo V 2.0.
+Author: Pablo Agustín Mendoza para THAT DAY IN LONDON - Agencia Interactiva & Diseño
+Version: 1.0
+License: Thalamus
+*/
+/* Typos */
+body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,td,a,a:hover,a:link,a:active,a:visited {
+	font:Arial, Helvetica, sans-serif;
+}
+/* Main Structure */
+body {
+	background-color: #333333;
+	background-image: url(../images/skin_nrg2/backs/base.gif);
+	background-repeat: repeat;
+	background-position: center top;
+	margin:0;
+	padding:0;
+}
+body {
+	height:100%;
+	overflow:hidden;
+}
+#structure {
+	background-image: url(../images/skin_nrg2/backs/home.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:1000px;
+	height:576px;
+	margin: 0px auto;
+	overflow:hidden;
+}
+#content {
+	width:972px;
+	height:447px;
+	margin:0px auto;
+	position:relative;
+	overflow:hidden;
+}
+#activities {
+	width:990px;
+	height:410px;
+	margin:0 auto;
+	float:left;
+}
+#activities #activity01 {
+	background-image: url(../images/skin_nrg2/activities/act_01.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:990px;
+	height:410px;
+	z-index:1;
+	position:absolute;
+}
+#activities #activity02 {
+	background-image: url(../images/skin_nrg2/activities/act_02.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:990px;
+	height:410px;
+	z-index:2;
+	position:absolute;
+}
+#activities #activity03 {
+	background-image: url(../images/skin_nrg2/activities/act_03.png);
+	background-repeat: no-repeat;
+	background-position: -85px -10px;
+	width:990px;
+	height:410px;
+	z-index:3;
+	position:absolute;
+}
+#activities #activityNN {
+	background-image: url(../images/skin_nrg2/activities/act_NN.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:990px;
+	height:410px;
+	z-index:4;
+	position:absolute;
+}
+/* MENUS */
+#footer {
+	width:972px;
+	height:119px;
+	margin:0px auto;
+	position:relative;
+}
+#signInButtons {
+	width:388px;
+	height:110px;
+/*	overflow:hidden;*/
+	float:left;
+}
+#signInButtons ul {
+	list-style-type:none;
+}
+#signInButtons ul li.sib_thalamus a {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_thalamus.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width:141px;
+	height:89px;
+	top:0px;
+	position:absolute;
+}
+#signInButtons ul li.sib_thalamus a:hover {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_thalamus.png);
+	background-repeat: no-repeat;
+	background-position: 0px -89px;
+}
+#signInButtons ul li.sib_facebook a {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_facebook.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width:247px;
+	height:47px;
+	top:0px;
+	left:141px;
+	position:absolute;
+}
+#signInButtons ul li.sib_facebook a:hover {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_facebook.png);
+	background-repeat: no-repeat;
+	background-position: 0px -47px;
+}
+#signInButtons ul li.sib_twitter a {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width:247px;
+	height:42px;
+	top:47px;
+	left:141px;
+	position:absolute;
+}
+#signInButtons ul li.sib_twitter a:hover {
+	background-image: url(../images/skin_nrg2/buttons/btn_register_twitter.png);
+	background-repeat: no-repeat;
+	background-position: 0px -42px;
+}
+#signInButtons ul li.sib_participate {
+	width:388px;
+	height:21px;
+	top:89px;
+	left:0px;
+	position:absolute;
+}
+#insertCodeButton {
+	width:763px;
+	height:119px;
+	float:left;
+}
+#insertCodeButton ul {
+	list-style-type:none;
+}
+#insertCodeButton ul li.icb_logoAtFooter {
+	width:449px;
+	height:119px;
+	float:left;
+}
+#insertCodeButton ul li.icb_buttonCode a {
+	background-image: url(../images/skin_nrg2/buttons/btn_cupon.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width:314px;
+	height:99px;
+	margin-top:6px;
+	float:left;
+}
+#insertCodeButton ul li.icb_buttonCode a:hover {
+	background-image: url(../images/skin_nrg2/buttons/btn_cupon.png);
+	background-repeat: no-repeat;
+	background-position: 0px -99px;
+}
+.menuNotAnUser, .menuIsAnUser {
+	width:400px;
+	margin:40px 10px 0px 10px;
+	overflow:hidden;
+	float:left;
+}
+* {
+	margin:0;
+	padding:0;
+}
+.menuNotAnUser ul, .menuIsAnUser ul {
+	list-style-type:none;
+}
+.menuNotAnUser ul li a, .menuIsAnUser ul li a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size:14px;
+	padding:0px 10px;
+	float:left;
+	
+	text-shadow: 2px 2px 8px #231f20;
+}
+.theThalamusLogo {
+	width:125px;
+	height:50px;
+	margin-top:30px;
+	margin-right:20px;
+	float:right;
+}
+#nav {
+	color:#f1ce0b;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size:15px;
+	text-shadow: 2px 2px 8px #231f20;
+	
+	width:100%;
+	height:30px;
+	padding-top:10px;
+	float:left;
+}
+/* Layers */
+.layerOnTop {
+	background-image: url(../images/skin_nrg2/backs/topLayer.png);
+	background-repeat: repeat;
+	height: 100%;
+	width: 100%;
+	padding:0;
+	margin:0;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#2d0703;
+}
+.registerLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/registrationForm.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:505px;
+	height:494px;
+	margin:27px auto 0 auto;
+}
+.registerLayerContent {
+	width:446px;
+	height:360px;
+	overflow:auto;
+	margin-top:101px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.editProfileLayer {
+	background-image: url(../images/skin_nrg2/backs/editProfile.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.loginLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/loginForm.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:506px;
+	height:294px;
+	margin:137px auto 0 auto;
+}
+.loginLayerContent {
+	width:446px;
+	height:165px;
+	overflow:hidden;
+	margin-top:125px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.resetPassLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/resetPassForm.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:506px;
+	height:294px;
+	margin:137px auto 0 auto;
+}
+.resetPassLayerContent {
+	width:446px;
+	height:165px;
+	overflow:hidden;
+	margin-top:145px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.resetPassNewLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/resetPassNew.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:506px;
+	height:294px;
+	margin:137px auto 0 auto;
+}
+.resetPassNewLayerContent {
+	width:446px;
+	height:165px;
+	overflow:hidden;
+	margin-top:115px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.socialLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/social.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width:506px;
+	height:294px;
+	padding:25px;
+	margin:90px auto 0 auto;
+}
+.socialLayerStyles a {
+	color:#81004f;
+	font-weight:bold;
+}
+.socialLayerContent {
+	font-size:12px;
+	line-height:20px;
+	width:446px;
+	height:90px;
+	overflow:auto;
+	margin-top:115px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.defaultLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/defaultScreen.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:506px;
+	height:294px;
+	margin:137px auto 0 auto;
+}
+.defaultLayerContent {
+	width:446px;
+	height:165px;
+	overflow:hidden;
+	margin-top:115px;
+	margin-left:30px;
+	position:relative;
+	float:left;
+}
+.legalLayerStyles {
+	background-image: url(../images/skin_nrg2/backs/legalScreen.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	width:716px;
+	height:544px;
+	margin:27px auto 0 auto;
+}
+.legalLayerContent {
+	width:662px;
+	height:420px;
+	overflow:hidden;
+	margin-top:97px;
+	margin-left:27px;
+	position:relative;
+	float:left;
+}
+#legal {
+	width:662px;
+	height:360px;
+	overflow:auto;
+}
+#legal p {
+	color:#000000;
+	font-size:12px;
+}
+#legal h2 {
+	color:#2d0703;
+	font-family:'Gill Sans MT', Genova, Arial, Helvetica, sans-serif;
+	font-size:18px;
+}
