@@ -1,0 +1,11 @@
+<%@page import="com.tdil.chivas.co.utils.ThalamusWebUtils"%>
+<%@page import="com.tdil.chivas.co.utils.WebsiteUser"%>
+<% 	
+if (request.getSession(false) != null) {
+	Boolean _adult = (Boolean)request.getSession(false).getAttribute("adult");
+	if (_adult == null || !_adult) { %>
+		<jsp:forward page="index.jsp"></jsp:forward>
+	<% }
+} else { %>
+	<jsp:forward page="index.jsp"></jsp:forward>
+<% }%>
