@@ -383,7 +383,7 @@ public class LoJackConfig extends SystemConfig {
 			File testCreate = File.createTempFile("test", "test", file);
 			testCreate.delete();
 		} catch (IOException e) {
-			getLog().equals("No se pudo escribir en el cache de blobs " + path);
+			getLog().error("No se pudo escribir en el cache de blobs " + path);
 			return;
 		}
 		getLog().fatal("LOJACKConfig: blob cache started at " + path);

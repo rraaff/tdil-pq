@@ -50,9 +50,9 @@ public class Test {
 	            jpgOut.write((byte)cur);
 	          }
 	          if (prev == 0xFF && cur == 0xD9) {
-	            synchronized(curFrame) {
+	            /*synchronized(curFrame) {
 	              //curFrame = jpgOut.toByteArray();
-	            }
+	            }*/
 	            //frameAvailable = true;
 	            jpgOut.close();
 	            httpIn = null;

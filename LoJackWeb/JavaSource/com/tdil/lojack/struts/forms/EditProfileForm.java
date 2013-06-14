@@ -32,11 +32,11 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	private static final long serialVersionUID = 9184547736717742618L;
 	private String userId;
 	private int imageId;
-	private UploadData avatar;
+	private transient UploadData avatar;
 	
 	private boolean mobile;
 	
-	private FormFile formFile;
+	private transient FormFile formFile;
 	
 	private int idAvatar;
 	private String extAvatar;
