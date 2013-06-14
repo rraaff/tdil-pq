@@ -3,14 +3,19 @@ package com.tdil.lojack.camera;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
 
-public abstract class IPCamera {
+public abstract class IPCamera implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9085636428871057362L;
 	private String url;
 	private String username;
 	private String password;
