@@ -11,13 +11,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.tdil.lojack.rl.R;
+
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
 public class LoginActivity extends Activity {
-    /**
+    public static final String URL_WEBSITE = "http://192.168.0.143:8180/LoJackWeb/";
+    public static final String URL_ANDROID_VERSION = "http://192.168.0.143:8180/LoJackWeb/android_version.txt";
+
+	/**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
@@ -55,7 +60,7 @@ public class LoginActivity extends Activity {
         webView1.setWebViewClient(new WebViewClient());
         try {
         	//webView1.loadUrl("http://ec2-54-234-200-17.compute-1.amazonaws.com:8080/TUAFESTA_WEB/");
-        	webView1.loadUrl("http://192.168.0.143:8180/LoJackWeb/");
+        	webView1.loadUrl(URL_WEBSITE);
         	//webView1.loadUrl("http://mgodoy-Satellite-P755:8180/TuaFestaWeb/");
         // Set up the login form.
         } catch (Exception e) {
@@ -77,7 +82,7 @@ public class LoginActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_go_home:
-            	webView1.loadUrl("http://192.168.0.143:8180/LoJackWeb/");
+            	webView1.loadUrl(URL_WEBSITE);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
