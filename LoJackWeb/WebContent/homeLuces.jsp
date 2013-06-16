@@ -1,4 +1,3 @@
-
 <%@ include file="includes/agentInfo.jspf" %>
 <%@page import="com.tdil.lojack.utils.AsyncJobUtils"%>
 <%@page import="com.tdil.lojack.gis.model.Light"%>
@@ -181,6 +180,11 @@
   }
   <%@ include file="includes/errorAjaxJS.jspf" %>
   <%@ include file="includes/centerLayerJS.jspf" %>
+
+  var bgUpdate = false;
+  var activating;
+  var idEntidad;
+  var idLuz;
   
 	function toggleRandomSequence(objCheckbox, lightId) {
 		if (objCheckbox.checked) {
@@ -191,66 +195,92 @@
 	}
 
 	function setLightStatusOn(idEntidad, idLuz) {
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', 'ON');
-
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-off-" + idEntidad + "-" + idLuz).click(function() {
-			turnOffLight(idEntidad, idLuz);
-		});
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>OFF</b>');
-
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo.png" />');
+		bgUpdate = true;
+		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
+		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', true);
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', false);
+		$('#light-ran-' + idEntidad + "-" + idLuz).attr("disabled", "disabled");
+		bgUpdate = false;
 	}
 	function setLightStatusOff(idEntidad, idLuz) {
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-on-" + idEntidad + "-" + idLuz).click(function() {
-			turnOnLight(idEntidad, idLuz);
-		});
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>ON</b>');
+		bgUpdate = true;
+		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
+		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
 		
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', 'OFF');
-
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
-			activateRandomSequence(idEntidad, idLuz);
-		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo_bold.png" />');
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-ran-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		bgUpdate = false;
 	}
 	function setLightStatusRanOn(idEntidad, idLuz) {
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', 'ON');
+		alert('ran on');
+		bgUpdate = true;
+		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
+		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
 		
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', 'OFF');
-
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
-			deactivateRandomSequence(idEntidad, idLuz);
-		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_off_solo_bold.png" />');
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', false);
+		$('#light-switch-' + idEntidad + "-" + idLuz).attr("disabled", "disabled");
+		
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', true);
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-ran-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		bgUpdate = false;
 	}
 	function setLightStatusRanOff(idEntidad, idLuz) {
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-on-" + idEntidad + "-" + idLuz).click(function() {
-			turnOnLight(idEntidad, idLuz);
-		});
-		$( "#turn-on-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>ON</b>');
-
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-off-" + idEntidad + "-" + idLuz).click(function() {
-			turnOffLight(idEntidad, idLuz);
-		});
-		$( "#turn-off-" + idEntidad + "-" + idLuz).prop('innerHTML', '<b>OFF</b>');
-
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop("onclick", null).attr("onclick", null);
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).click(function() {
-			activateRandomSequence(idEntidad, idLuz);
-		});
-		$( "#turn-ran-" + idEntidad + "-" + idLuz).prop('innerHTML', '<img src="images/skin_lj_rl/backs/icon_shuffle_on_solo_bold.png" />');
+		bgUpdate = true;
+		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
+		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
+		
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
+		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		bgUpdate = false;
 	}
+	function setLightStatusUnknown(idEntidad, idLuz) {
+		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'none');
+		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'block');
+	}
+
+	function toggleLight(objCheckbox, pidEntidad, pidLight) {
+		  if (!bgUpdate) {
+			idEntidad = pidEntidad;
+			idLuz = pidLight;
+			if (objCheckbox.checked) {
+				activating = true;
+				turnOnLight(pidEntidad, pidLight);
+			} else {
+				activating = false;
+				turnOffLight(pidEntidad, pidLight);
+			}
+		  }
+	  }
+	function toggleRandom(objCheckbox, pidEntidad, pidLight) {
+		  if (!bgUpdate) {
+			idEntidad = pidEntidad;
+			idLuz = pidLight;
+			if (objCheckbox.checked) {
+				activating = true;
+				activateRandomSequence(pidEntidad, pidLight);
+			} else {
+				activating = false;
+				deactivateRandomSequence(pidEntidad, pidLight);
+			}
+		  }
+	  }
 
 	function turnOnLight(idEntidad, idLuz) {
 		//alert('turn on');
@@ -271,7 +301,7 @@
 							centerLayer($(window), $( "#lightTurnedOnLayer" ));
 							centerLayer($(window), $( "#centradorModalesLTO" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
-							setLightStatusOn(idEntidad, idLuz);
+							//setLightStatusOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
 							centerLayer($(window), $( "#centradorModalesLNO" ));
@@ -304,7 +334,7 @@
 							centerLayer($(window), $( "#lightTurnedOffLayer" ));
 							centerLayer($(window), $( "#centradorModalesLTOL" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
-							setLightStatusOff(idEntidad, idLuz);
+							//setLightStatusOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
 							centerLayer($(window), $( "#centradorModalesLNTOL" ));
@@ -337,7 +367,7 @@
 							centerLayer($(window), $( "#randomActivatedLayer" ));
 							centerLayer($(window), $( "#centradorModalesRAL" ));
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
-							setLightStatusRanOn(idEntidad, idLuz);
+							//setLightStatusRanOn(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotActivatedLayer" ));
 							centerLayer($(window), $( "#centradorModalesRNAL" ));
@@ -370,7 +400,7 @@
 		        		  centerLayer($(window), $( "#randomDeactivatedLayer" ));
 		        		  centerLayer($(window), $( "#centradorModalesRDL" ));
 		        		  $( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
-		        		  setLightStatusRanOff(idEntidad, idLuz);
+		        		  //setLightStatusRanOff(idEntidad, idLuz);
 						} else {
 							centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 							centerLayer($(window), $( "#centradorModalesRNDL" ));
@@ -435,9 +465,20 @@ textarea {
 									<% } else { %>
 										<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 									<% } %>
-									<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
-									<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-									<span class="fakeButtons hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><img src="images/null.gif" width="36" height="36" /></span>
+									<div class="switchContainer" id="switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: block;">
+										<div id="b-light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+											<input type="checkbox" id="light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleLight(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" disabled/>
+										</div>
+										<div id="b-light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Ran On" data-off-label="Ran off">
+											<input type="checkbox" id="light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleRandom(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" checked/>
+										</div>
+									</div>
+									<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+										<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+										<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+										<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
+										<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+									</div>
 								<% } else  { %>
 									<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
 										<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
@@ -445,9 +486,20 @@ textarea {
 										<% } else { %>
 											<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 										<% } %>
-										<span class="fakeButtons on disableButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">ON</span>
-										<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-										<span class="hasButton randomButtonOff disableButton" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></span>
+										<div class="switchContainer" id="switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: block;">
+											<div id="b-light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+												<input type="checkbox" id="light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleLight(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" checked/>
+											</div>
+											<div id="b-light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Ran On" data-off-label="Ran off">
+												<input type="checkbox" id="light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleRandom(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" disabled/>
+											</div>
+										</div>
+										<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+											<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+											<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
+											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+										</div>
 									<% } else  { %>
 										<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
@@ -455,18 +507,40 @@ textarea {
 											<% } else { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 											<% } %>
-											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
-											<span class="fakeButtons off disableButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">OFF</span>
-											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
+											<div class="switchContainer" id="switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: block;">
+												<div id="b-light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+													<input type="checkbox" id="light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleLight(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"/>
+												</div>
+												<div id="b-light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Ran On" data-off-label="Ran off">
+													<input type="checkbox" id="light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleRandom(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"/>
+												</div>
+											</div>
+											<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+												<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+												<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
+												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+											</div>
 										<% } else  { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>">*</div>
 											<% } else { %>
 												<div id="light-job-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"></div>
 											<% } %>
-											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
-											<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"></span>
+											<div class="switchContainer" id="switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
+												<div id="b-light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+													<input type="checkbox" id="light-switch-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleLight(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"/>
+												</div>
+												<div id="b-light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Ran On" data-off-label="Ran off">
+													<input type="checkbox" id="light-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onchange="javascript:toggleRandom(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"/>
+												</div>
+											</div>
+											<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: block;">
+												<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
+												<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
+												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
+												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+											</div>
 										<% } %>
 									<% } %>
 								<% } %>

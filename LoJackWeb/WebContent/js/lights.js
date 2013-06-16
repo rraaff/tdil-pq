@@ -8,8 +8,8 @@ var sessionCheckIntervalID = window.setInterval(function () {
         		if ($('#light-status-' + item.idEntidad + '-' + item.idLuz)) {
         			$('#light-status-' + item.idEntidad + '-' + item.idLuz).prop('innerHTML', item.status);
         		}
-        		if (item.unknowm) {
-        			setLightStatusRanOff(item.idEntidad, item.idLuz);
+        		if (item.unknown) {
+        			setLightStatusUnknown(item.idEntidad, item.idLuz);
         		} else {
         			if (item.ran) {
             			setLightStatusRanOn(item.idEntidad, item.idLuz);
