@@ -126,14 +126,12 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 				try {
 					output.close();
 				} catch (Throwable t) {
-					;
 				}
 			}
 			if (input != null) {
 				try {
 					input.close();
 				} catch (Throwable t) {
-					;
 				}
 			}
 		}

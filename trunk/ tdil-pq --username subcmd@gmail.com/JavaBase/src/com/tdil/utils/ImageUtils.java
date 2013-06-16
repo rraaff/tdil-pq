@@ -72,8 +72,8 @@ public class ImageUtils {
 	public static VideoSize createVideoSize(float width, float height) {
 		int widthInt = (int)width;
 		int heightInt = (int)height;
-		int resultWidth = (int)(widthInt % 2 != 0 ? widthInt - 1 : widthInt);
-		int resultHeight = (int)(heightInt % 2 != 0 ? heightInt - 1 : heightInt);
+		int resultWidth = (widthInt % 2 != 0 ? widthInt - 1 : widthInt);
+		int resultHeight = (heightInt % 2 != 0 ? heightInt - 1 : heightInt);
 		return new VideoSize(resultWidth, resultHeight);
 	}
 

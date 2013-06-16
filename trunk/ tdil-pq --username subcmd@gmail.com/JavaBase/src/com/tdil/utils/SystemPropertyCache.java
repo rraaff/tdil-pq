@@ -3,7 +3,7 @@ package com.tdil.utils;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.tdil.struts.TransactionalAction;
+
 
 public class SystemPropertyCache {
 
