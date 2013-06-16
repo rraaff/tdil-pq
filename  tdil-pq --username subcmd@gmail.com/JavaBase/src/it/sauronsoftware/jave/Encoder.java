@@ -601,7 +601,6 @@ public class Encoder {
 													.parseFloat(m2.group(1));
 											video.setFrameRate(frameRate);
 										} catch (NumberFormatException e) {
-											;
 										}
 										parsed = true;
 									}
@@ -892,7 +891,7 @@ public class Encoder {
 			boolean hasErrorWhileDecoding = false;
 			while ((line = reader.readLine()) != null) {
 				sb.append(line);
-				sb.append("\n");
+				sb.append('\n');
 				String aux = line.toUpperCase();
 				if (aux.contains("ERROR WHILE DECODING")) {
 					hasErrorWhileDecoding = true;

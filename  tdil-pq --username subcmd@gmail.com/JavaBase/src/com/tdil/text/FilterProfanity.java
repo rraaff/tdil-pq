@@ -50,7 +50,7 @@ public class FilterProfanity {
 	
 	public void readAll() throws IOException {
 		InputStream input = FilterProfanity.class.getResourceAsStream("filteredword.csv");
-		List<String> lines = (List<String>)IOUtils.readLines(input);
+		List<String> lines = IOUtils.readLines(input);
 		Set<String> filterList = new HashSet<String>();
 		filterList.addAll(lines);
 		setFilterList(filterList);
@@ -174,7 +174,7 @@ public class FilterProfanity {
 	private static String getMaskString(int len) {
 		StringBuffer str = new StringBuffer(len);
 		for (int i = 0; i < len; i++) {
-			str.append("*");
+			str.append('*');
 		}
 		return str.toString();
 	}

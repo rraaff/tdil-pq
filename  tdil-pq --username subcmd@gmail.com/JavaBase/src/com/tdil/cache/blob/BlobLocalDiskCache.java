@@ -88,7 +88,7 @@ public class BlobLocalDiskCache {
 	
 	private static String makeFileName(String type, int id, int version, String ext, BlobResolver blobResolver) {
 		StringBuffer sb = new StringBuffer();
-		sb.append(diskBlobLocation).append("/");
+		sb.append(diskBlobLocation).append('/');
 		sb.append(type).append(separator);
 		sb.append(id).append('.').append(version).append('.').append(ext);
 		return sb.toString();
@@ -96,9 +96,9 @@ public class BlobLocalDiskCache {
 	
 	private static String makeFileName(String type, int id, String width, String height, String max, int version, String ext, BlobResolver blobResolver) {
 		StringBuffer sb = new StringBuffer();
-		sb.append(diskBlobLocation).append("/");
+		sb.append(diskBlobLocation).append('/');
 		sb.append(type).append(separator);
-		sb.append(id).append('.').append(version).append("-").append(width).append("x").append(height).append(".").append("true".equals(max) ? "1" : "0").append('.').append(ext);
+		sb.append(id).append('.').append(version).append('-').append(width).append('x').append(height).append('.').append("true".equals(max) ? "1" : "0").append('.').append(ext);
 		return sb.toString();
 	}
 

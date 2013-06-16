@@ -153,7 +153,6 @@ class FFMPEGExecutor {
 			try {
 				inputStream.close();
 			} catch (Throwable t) {
-				;
 			}
 			inputStream = null;
 		}
@@ -161,7 +160,6 @@ class FFMPEGExecutor {
 			try {
 				outputStream.close();
 			} catch (Throwable t) {
-				;
 			}
 			outputStream = null;
 		}
@@ -169,7 +167,6 @@ class FFMPEGExecutor {
 			try {
 				errorStream.close();
 			} catch (Throwable t) {
-				;
 			}
 			errorStream = null;
 		}

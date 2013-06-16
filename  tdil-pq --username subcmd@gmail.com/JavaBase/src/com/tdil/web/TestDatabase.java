@@ -8,6 +8,6 @@ import com.tdil.struts.TransactionalActionWithResult;
 final class TestDatabase implements TransactionalActionWithResult {
 	@Override
 	public Object executeInTransaction() throws SQLException {
-		return (Integer)IBatisManager.getClient().queryForObject("VERSION.selectVersion");
+		return IBatisManager.getClient().queryForObject("VERSION.selectVersion");
 	}
 }
