@@ -1,11 +1,17 @@
 package com.tdil.struts.forms;
 
+import java.io.Serializable;
+
 import javax.activation.MimetypesFileTypeMap;
 
 import org.apache.commons.io.FilenameUtils;
 
-public class UploadData {
+public class UploadData implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5368516427367577382L;
 	private boolean modified = false;
 	private String fileName;
 	private byte[] data;
