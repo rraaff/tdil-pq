@@ -287,7 +287,7 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 	overflow: hidden;
 	float:left; 
 }
-.controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1600; }
+.controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1400; }
 div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper h1 {
 	padding: 0;
@@ -329,6 +329,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	height: 297px;
 	overflow: hidden;
 	float:left;
+	z-index: 1400;
 }
 #linksAside {
 	text-align:left;

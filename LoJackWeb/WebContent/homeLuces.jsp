@@ -222,7 +222,7 @@
 		bgUpdate = false;
 	}
 	function setLightStatusRanOn(idEntidad, idLuz) {
-		alert('ran on');
+		///alert('ran on');
 		bgUpdate = true;
 		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
 		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
@@ -424,12 +424,15 @@ textarea {
 	width: 200px;
 	float:left;
 }
+.has-switch span.switch-warning {
+	left: -81px;
+}
 </style>
 <% if (usingMobile || isAndroid) { %>
 	<style type="text/css">
 		#productHomeContent.col1_798 { padding:5px 0 0 0; }
 		#accordion, #agendaWrapper { padding:3px; }
-		#accordion .portaTitleAndSwitch { width:80%; margin:0 10px 0 0; padding:5px 0; float:right; }
+		#accordion .portaTitleAndSwitch { width:85%; margin:0 10px 0 0; padding:5px 0; float:right; }
 
 		.has-switch.switch-mini { min-width: 102px; }
 		.has-switch span.switch-warning { left: -52px; }
@@ -437,6 +440,7 @@ textarea {
 		.has-switch label { left: 50px; }
 	</style>
 <% } %>
+
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
@@ -476,8 +480,8 @@ textarea {
 									<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
 										<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 										<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-										<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
-										<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+										<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN ON --></span>
+										<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN OFF --></span>
 									</div>
 								<% } else  { %>
 									<% if (AsyncJobUtils.displayOn(light, websiteUser)) { %>
@@ -497,8 +501,8 @@ textarea {
 										<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
 											<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 											<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-											<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
-											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+											<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN ON --></span>
+											<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN OFF --></span>
 										</div>
 									<% } else  { %>
 										<% if (AsyncJobUtils.displayOff(light, websiteUser)) { %>
@@ -518,8 +522,8 @@ textarea {
 											<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: none;">
 												<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 												<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
-												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN ON --></span>
+												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN OFF --></span>
 											</div>
 										<% } else  { %>
 											<% if (AsyncJobUtils.hasJobInProgress(light, websiteUser)) { %>
@@ -538,8 +542,8 @@ textarea {
 											<div class="switchContainer" id="buttons-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" style="display: block;">
 												<span class="fakeButtons on hasButton" id="turn-on-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOnLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>ON</b></span>
 												<span class="fakeButtons off hasButton" id="turn-off-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="turnOffLight(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><b>OFF</b></span>
-												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN ON</span>
-												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">RAN OFF</span>
+												<span class="hasButton randomButtonOn" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="activateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN ON --></span>
+												<span class="hasButton randomButtonOff" id="turn-ran-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" onclick="deactivateRandomSequence(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)"><!-- RAN OFF --></span>
 											</div>
 										<% } %>
 									<% } %>
