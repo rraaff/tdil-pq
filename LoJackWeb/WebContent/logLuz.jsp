@@ -1,12 +1,12 @@
-<%@ include file="includes/tryModal.jspf" %>
-<%@page import="com.tdil.lojack.utils.WebsiteUserUtils"%>
-<%@page import="com.tdil.lojack.gis.model.ChangeLog"%>
-<%@page import="java.util.Collection"%>
-<%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
-<%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
-<%
+<%@ include file="includes/tryModal.jspf" %><%--
+--%><%@page import="com.tdil.lojack.utils.WebsiteUserUtils"%><%--
+--%><%@page import="com.tdil.lojack.gis.model.ChangeLog"%><%--
+--%><%@page import="java.util.Collection"%><%--
+--%><%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%><%--
+--%><%@ include file="includes/userLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeHomeUser.jspf" %><%--
+--%><%
 int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
 int idLuz = Integer.valueOf(request.getParameter("idLuz"));
 Collection<ChangeLog> logCollection = LoJackServicesConnector.getLightLog(websiteUser, idEntidad, idLuz);

@@ -1,20 +1,20 @@
-<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
-<%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
-<%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="../includes/checkThalamusUp.jspf" %><!--
---><%@ include file="../includes/userLogged.jspf" %><!--
---><%@ include file="./includes/mustBeLogged.jspf" %>
-<!DOCTYPE html>
+<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="../includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="../includes/userLogged.jspf" %><%--
+--%><%@ include file="./includes/mustBeLogged.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -41,5 +41,5 @@ editProfileForm.setMobile(true);%>
 		</fieldset>
 		<fieldset><button type="submit" class="indexButtonBase" style="margin-left:20px;">Guardar</button></fieldset>
 	</html:form>
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </html>

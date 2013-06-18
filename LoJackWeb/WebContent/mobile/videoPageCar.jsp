@@ -1,9 +1,9 @@
-<%@ page info="videoPage"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-<!DOCTYPE html>
+<%@ page info="videoPage"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -25,5 +25,5 @@
 		<a href="index.jsp" title="Volver">< Volver</a>
 	</div>
 </div>
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </head>

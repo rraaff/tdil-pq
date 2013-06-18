@@ -1,21 +1,21 @@
-<%@ include file="includes/tryModal.jspf" %>
-<%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%>
-<%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
-<%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
-<%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
-<%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
-<%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-<script>
+<%@ include file="includes/tryModal.jspf" %><%--
+--%><%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%><%--
+--%><%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%><%--
+--%><%@page import="com.tdil.lojack.prevent.model.Vehicle"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><script>
 
 $("form[name='SelectVehiclesForPhonesForm']").validate({
 	errorPlacement: function(error, element) {

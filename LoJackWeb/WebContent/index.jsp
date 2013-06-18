@@ -1,35 +1,35 @@
-<%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
-<%@ include file="includes/agentInfo.jspf" %>
-<% 
+<%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%><%--
+--%><%@ include file="includes/agentInfo.jspf" %><%--
+--%><% 
 	if (isMobile || isAndroid) { 
 		session.setAttribute("usingMobile", Boolean.TRUE);
 		response.sendRedirect(request.getContextPath() + "/mobile/index.jsp");
- } else { %>
-<%@page import="com.tdil.struts.resources.ApplicationResources"%>
-<%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.lojack.struts.forms.beans.OptIn"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.CountryBean"%>
-<%@page import="com.tdil.thalamus.client.facade.json.fields.PersonFieldNames"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.PersonFields"%>
-<%@page import="com.tdil.lojack.struts.forms.RegisterForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="index"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="includes/checkThalamusUp.jspf" %><!--
---><%@ include file="includes/userLogged.jspf" %><!--
---><% if (websiteUser != null && websiteUser.isLogged()) { %>
+ } else { %><%--
+--%><%@page import="com.tdil.struts.resources.ApplicationResources"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.beans.OptIn"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.BrandBean"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.CountryBean"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.fields.PersonFieldNames"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.PersonFields"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="index"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="includes/userLogged.jspf" %><%--
+--%><% if (websiteUser != null && websiteUser.isLogged()) { %>
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
-	} %>
-<%
+	} %><%--
+--%><%
 URLHolder twitterUrl = ThalamusClientBeanFacade.getTwitterLogin();
 Cookie cookie1 = new Cookie("twt", twitterUrl.getCookie("JSESSIONID").getValue());
 cookie1.setMaxAge(24*60*60);
@@ -38,8 +38,8 @@ response.addCookie(cookie1);
 Cookie ecookie1 = new Cookie("etwt", twitterUrl.getCookie("AWSELB").getValue());
 ecookie1.setMaxAge(24*60*60);
 response.addCookie(ecookie1);
-%>
-<!DOCTYPE html>
+%><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -742,6 +742,6 @@ function parkingsNotLogged() {
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>
-</body>
+<%@ include file="includes/version.jspf" %></body>
 </html>
 <% } %>

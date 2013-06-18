@@ -1,20 +1,19 @@
-luces
-activo
-si no conoces estado
-cuatro botones
+petHome ver que pueden ser raro
 
-si conozco estado
-si esta random solo este activo (el otro disable)
+DONE, cosas pendientes a revisar por pablo
+CheckingForUpdate
+LoJack
+Fondo negro, logo centrado,
+Cargando Informacion...
 
-si esta encendido
-mostrar el boton de randon en off habilitado
+Soporte middleware
 
-si esta apagado
-mostrar el switch de encender habilitado
-mostrar el boton de randon en off habilitado
+LinkPreventMobile
 
-configuracion de proxy por servicio
+Alerts
 
+Versionado
+TDIL_RL_webApp_v-1.01_(Frankie)/desarrollado por That Day in london :: agencia interactiva & diseño
 
 NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPLO: [HECHO] , [PARA TESTEAR]
 
@@ -28,7 +27,7 @@ DONE (a algunos les faltaria validaciones puntuales, pero en general esta)- Mane
 DONE - Falta el foco en número de DNI en formulario de contacto para la versión Mobile
 
 PRODUCTO HOME
-- Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo 
+DONE - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo 
 desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
 DONE (solo seccion home, lo necesitas en todos?) - El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
 - Camara:

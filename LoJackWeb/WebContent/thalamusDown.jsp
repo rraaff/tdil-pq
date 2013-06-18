@@ -11,5 +11,5 @@
 <body>
 <h1>Ups!</h1>
 <p>Error de conexion...</p>
-</body>
+<%@ include file="includes/version.jspf" %></body>
 </html>

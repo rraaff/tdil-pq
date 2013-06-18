@@ -216,6 +216,20 @@
 	</target>
 
 	<target name="makeEntregable">
+		<property file="build.properties" />
+		<input
+		    message="Ingrese la version, anterior ${current}:"
+		    addproperty="build.version"
+		  />
+		<propertyfile
+		    file="build.properties">
+		  <entry  key="current" value="${build.version}"/>
+		</propertyfile>
+		<copy file="../WebContent/includes/version.template" tofile="../WebContent/includes/version.jspf" overwrite="true" encoding="ISO-8859-1">
+			<filterset>
+		      <filter token="VERSION" value="${build.version}"/>
+		    </filterset>
+		</copy>
 		<delete dir="${project.name.upper}.tmp" failonerror="false">
 		</delete>
 		<mkdir dir="${project.name.upper}.tmp" />

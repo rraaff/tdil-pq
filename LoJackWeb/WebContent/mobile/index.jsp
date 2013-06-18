@@ -8,10 +8,10 @@
 --><% if (websiteUser != null && websiteUser.isLogged()) { %>
 	<jsp:forward page="./home.jsp"></jsp:forward>
 <% 	return;
-	} %>
-<!DOCTYPE html>
-<% session.setAttribute("usingMobile", Boolean.TRUE); %>
-<html lang="es">
+	} %><%--
+--%><!DOCTYPE html><%--
+--%><% session.setAttribute("usingMobile", Boolean.TRUE); %><%--
+--%><html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
@@ -60,5 +60,5 @@
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="./goToContactMobile.do" title="Envianos tu consulta">clic acá</a>.</p>
 	</div>
 </div>
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </html>

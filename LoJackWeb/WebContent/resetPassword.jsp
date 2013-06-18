@@ -1,18 +1,17 @@
-
-<%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%>
-<%@page import="com.tdil.lojack.struts.forms.LoginForm"%>
-<%@page import="com.tdil.lojack.struts.forms.ResetPasswordForm"%>
-<%@ include file="includes/agentInfo.jspf" %>
-<%@page import="com.tdil.lojack.utils.ThalamusErrorFormatter"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="resetPassword"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="includes/checkThalamusUp.jspf" %><!--
---><%@ include file="includes/userLogged.jspf" %><!--
---><% if (websiteUser != null && websiteUser.isLogged()) { %> 
+<%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.ResetPasswordForm"%><%--
+--%><%@ include file="includes/agentInfo.jspf" %><%--
+--%><%@page import="com.tdil.lojack.utils.ThalamusErrorFormatter"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="resetPassword"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="includes/userLogged.jspf" %><%--
+--%><% if (websiteUser != null && websiteUser.isLogged()) { %> 
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
 	} %><html>
@@ -89,5 +88,5 @@ function centerLayer(objWin, objLayer) {
 		</div>
 	</div>
 </div>
-</body>
+<%@ include file="includes/version.jspf" %></body>
 </html>

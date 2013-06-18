@@ -45,6 +45,7 @@ public class LoJackConfig extends SystemConfig {
 	private static String FRONT_SERVER;
 
 	private static String GUID;
+	private static String DB_VERSION;
 	
 	private static long FRONT_LOGIN_DELAY;
 	
@@ -68,6 +69,15 @@ public class LoJackConfig extends SystemConfig {
 			}
 			super.init(sce);
 			this.loadFilteredWords();
+			
+			String dbversion = SystemPropertyUtils.getSystemPropertValue("dbversion");
+			if (!StringUtils.isEmpty(dbversion)) {
+				setDB_VERSION(dbversion);
+			} else {
+				setDB_VERSION("N/A");
+			}
+			getLog().fatal("DBVersion is " + getDB_VERSION());
+			
 			String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
 			if (frontserver != null) {
 				setFRONT_SERVER(frontserver);
@@ -429,6 +439,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setHTTPS_PROXY(ProxyConfiguration hTTPS_PROXY) {
 		HTTPS_PROXY = hTTPS_PROXY;
+	}
+
+	public static String getDB_VERSION() {
+		return DB_VERSION;
+	}
+
+	public static void setDB_VERSION(String dB_VERSION) {
+		DB_VERSION = dB_VERSION;
 	}
 
 }

@@ -1,32 +1,30 @@
-
-<%@ include file="includes/agentInfo.jspf" %>
-<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
-<%@page import="com.tdil.web.DisplayTagParamHelper"%>
-<%@page import="com.tdil.utils.DateUtils"%>
-<%@page import="com.tdil.lojack.gis.model.LightAgenda"%>
-<%@page import="com.tdil.lojack.struts.forms.LightAgendaForm"%>
-<%@page import="com.tdil.lojack.struts.forms.LightAgendaForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ taglib uri="http://displaytag.sf.net" prefix="display" %><!--
---><%@ include file="includes/checkThalamusUp.jspf" %><!--
---><%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
-<!DOCTYPE html>
+<%@ include file="includes/agentInfo.jspf" %><%--
+--%><%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
+--%><%@page import="com.tdil.web.DisplayTagParamHelper"%><%--
+--%><%@page import="com.tdil.utils.DateUtils"%><%--
+--%><%@page import="com.tdil.lojack.gis.model.LightAgenda"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.LightAgendaForm"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.LightAgendaForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ taglib uri="http://displaytag.sf.net" prefix="display" %><%--
+--%><%@ include file="includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="includes/userLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeHomeUser.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
 <link href="css/sizers.css" rel="stylesheet" media="screen">
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
@@ -248,5 +246,5 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/panicLayers.jspf" %>
-</body>
+<%@ include file="includes/version.jspf" %></body>
 </html>

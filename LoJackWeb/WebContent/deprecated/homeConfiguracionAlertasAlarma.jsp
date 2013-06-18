@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="includes/checkThalamusUp.jspf" %><!--
---><%@ include file="includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
+<%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="includes/userLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeHomeUser.jspf" %>
 Configuracion de las alertas 
 
 <html:form method="POST" action="/saveAlarmAlertConf">

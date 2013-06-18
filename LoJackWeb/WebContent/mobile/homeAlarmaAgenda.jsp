@@ -1,11 +1,11 @@
-<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
-<%@page import="com.tdil.utils.DateUtils"%>
-<%@page import="com.tdil.lojack.gis.model.AlarmAgenda"%>
-<%@page import="com.tdil.web.DisplayTagParamHelper"%>
-<%@page import="com.tdil.lojack.struts.forms.AlarmAgendaForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
+<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
+--%><%@page import="com.tdil.utils.DateUtils"%><%--
+--%><%@page import="com.tdil.lojack.gis.model.AlarmAgenda"%><%--
+--%><%@page import="com.tdil.web.DisplayTagParamHelper"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.AlarmAgendaForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="home"%><!--
 --><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
 --><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
@@ -15,8 +15,8 @@
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
-<!DOCTYPE html>
+--><%@ include file="includes/mustBeHomeUser.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -148,5 +148,5 @@
 					<%=DisplayTagParamHelper.getFields(request)%>
 				</fieldset>
 			
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </html>

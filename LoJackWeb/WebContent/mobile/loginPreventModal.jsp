@@ -1,14 +1,14 @@
-<%@ page info="loginModal"%><!--
---><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><!--
---><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="../includes/checkThalamusUp.jspf" %><!--
---><%@ include file="../includes/userLogged.jspf" %>
-<%@ include file="includes/mustBeLogged.jspf" %>
-<!DOCTYPE html>
+<%@ page info="loginModal"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="../includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="../includes/userLogged.jspf" %>
+<%@ include file="includes/mustBeLogged.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -32,5 +32,5 @@
 		</fieldset>
 	</html:form>
 </div>
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </html>

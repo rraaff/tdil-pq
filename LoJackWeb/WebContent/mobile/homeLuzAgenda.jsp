@@ -15,8 +15,8 @@
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %><!--
 --><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
-<!DOCTYPE html>
+--><%@ include file="includes/mustBeHomeUser.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -150,5 +150,5 @@
 					<%=DisplayTagParamHelper.getFields(request)%>
 				</fieldset>
 			
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </html>

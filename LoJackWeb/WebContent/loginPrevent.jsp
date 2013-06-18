@@ -1,19 +1,19 @@
-<%@ include file="includes/tryModal.jspf" %>
-<%@page import="com.tdil.lojack.struts.forms.ChangePasswordForm"%>
-<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%>
-<%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
-<%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-<script>
+<%@ include file="includes/tryModal.jspf" %><%--
+--%><%@page import="com.tdil.lojack.struts.forms.ChangePasswordForm"%><%--
+--%><%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><script>
 
 		$("form[name='PreventLoginForm']").validate({
 			errorPlacement: function(error, element) {

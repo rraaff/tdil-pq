@@ -1,5 +1,5 @@
 <html>
 <body>
 Ha ocurrido un error
-</body>
+<%@ include file="includes/version.jspf" %></body>
 </html>

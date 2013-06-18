@@ -1,12 +1,12 @@
-<%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><!--
---><%@ include file="../includes/checkThalamusUp.jspf" %><!--
---><%@ include file="../includes/userLogged.jspf" %><!--
---><%@ include file="./includes/mustBeLogged.jspf" %>
-<!DOCTYPE html>
+<%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><%@ include file="../includes/checkThalamusUp.jspf" %><%--
+--%><%@ include file="../includes/userLogged.jspf" %><%--
+--%><%@ include file="./includes/mustBeLogged.jspf" %><%--
+--%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -87,5 +87,5 @@ function enterPrevent() {
 		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" id="legales" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="./goToContactMobile.do" title="Envianos tu consulta">clic acá</a>.</p>
 	</div>
 </div>
-</body>
+<%@ include file="../includes/version.jspf" %></body>
 </head>

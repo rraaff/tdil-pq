@@ -1,12 +1,12 @@
-<%@page import="com.tdil.lojack.struts.forms.AlarmLogForm"%>
-<%@page import="com.tdil.lojack.utils.WebsiteUserUtils"%>
-<%@page import="com.tdil.lojack.gis.model.ChangeLog"%>
-<%@page import="java.util.Collection"%>
-<%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
-<%@ include file="../includes/userLogged.jspf" %><!--
---><%@ include file="includes/mustBeLogged.jspf" %><!--
---><%@ include file="includes/mustBeHomeUser.jspf" %>
-<%
+<%@page import="com.tdil.lojack.struts.forms.AlarmLogForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.WebsiteUserUtils"%><%--
+--%><%@page import="com.tdil.lojack.gis.model.ChangeLog"%><%--
+--%><%@page import="java.util.Collection"%><%--
+--%><%@page import="com.tdil.lojack.gis.LoJackServicesConnector"%>
+<%@ include file="../includes/userLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeLogged.jspf" %><%--
+--%><%@ include file="includes/mustBeHomeUser.jspf" %><%--
+--%><%
 AlarmLogForm alarmLogForm = (AlarmLogForm)session.getAttribute("AlarmLogFormMobile");
 Collection<ChangeLog> logCollection = alarmLogForm.getLogCollection();
 %>

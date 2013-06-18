@@ -1,16 +1,16 @@
-<%@ include file="includes/tryModal.jspf" %>
-<%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%>
-<%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%>
-<%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%>
-<%@page import="com.tdil.lojack.prevent.model.Vehicle"%>
-<%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
-<%@page import="com.tdil.lojack.struts.forms.CameraForm"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%>
-<script>
+<%@ include file="includes/tryModal.jspf" %><%--
+--%><%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%><%--
+--%><%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%><%--
+--%><%@page import="com.tdil.lojack.prevent.model.Vehicle"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><script>
 
 function editPhones(vehicleId) {
 	<%@ include file="includes/blockUI.jspf" %>

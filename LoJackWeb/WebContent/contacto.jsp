@@ -1,14 +1,14 @@
-<%@ include file="includes/tryModal.jspf" %>
-<%@page import="com.tdil.lojack.struts.forms.ContactForm"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%>
-<%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%>
-<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
---><%@ page info="home"%><!--
---><%@ page contentType="text/html; charset=ISO-8859-1" %><!--
---><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><!--
---><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %>
-<script>
+<%@ include file="includes/tryModal.jspf" %><%--
+--%><%@page import="com.tdil.lojack.struts.forms.ContactForm"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
+--%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
+--%><%@ page info="home"%><%--
+--%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
+--%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
+--%><script>
 <% ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm"); %>
 
 $("form[name='ContactForm']").validate({
