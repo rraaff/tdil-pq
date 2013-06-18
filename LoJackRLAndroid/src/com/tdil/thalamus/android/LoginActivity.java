@@ -19,8 +19,8 @@ import com.tdil.lojack.rl.R;
  * well.
  */
 public class LoginActivity extends Activity {
-    public static final String URL_WEBSITE = "http://192.168.0.143:8180/LoJackWeb/";
-    public static final String URL_ANDROID_VERSION = "http://192.168.0.143:8180/LoJackWeb/android_version.txt";
+    public static final String URL_WEBSITE = "http://23.23.84.70/LoJackWeb/";
+    public static final String URL_ANDROID_VERSION = "http://23.23.84.70/LoJackWeb/android_version.txt";
 
 	/**
      * A dummy authentication store containing known user names and passwords.
@@ -105,7 +105,7 @@ public class LoginActivity extends Activity {
     /**
      * Shows the progress UI and hides the login form.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+    @TargetApi(Build.VERSION_CODES.ECLAIR_MR1)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
