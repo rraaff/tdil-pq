@@ -59,8 +59,6 @@ public class CheckForUpdateActivity extends Activity {
                 int curVersion = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionCode;
                 int newVersion = Integer.valueOf(s);
                 
-                System.out.println(curVersion);
-                System.out.println(newVersion);
                 /* Is a higher version than the current already out? */
                 if (newVersion > curVersion) {
                     /* Post a Handler for the UI to pick up and open the Dialog */
