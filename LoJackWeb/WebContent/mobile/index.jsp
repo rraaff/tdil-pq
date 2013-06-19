@@ -22,7 +22,9 @@
 <link href="css/laruedita.css" rel="stylesheet" type="text/css">
 <link href="css/copyright.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-#laRuedita { top: 28%; }
+#laRuedita { top:25%; }
+#flyingObjectContainer { width:50%; margin:0 auto; }
+#logoIndex { width:50%; top:75%; margin:0 auto; }
 @media only screen and (max-height : 320px) {
 	#copyright {
 		display: none;
@@ -31,6 +33,8 @@
 		display: none;
 	}
 	#laRuedita { top: 15%; }
+	#flyingObjectContainer { width:25%; margin:0 auto; }
+	#logoIndex {width:25%; top:75%; margin:0 auto; }
 }
 </style>
 </head>
@@ -52,12 +56,12 @@
 		<div id="iconoPets"><a href="videoPagePets.jsp" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
 	</div>
 </div>
-<div id="flyingObjectContainer"> 
-	<div id="logoIndex"><img src="../images/skin_lj_rl/logos/lo-jack_index.png" /></div>
+<div id="flyingObjectContainer">
+	<div id="logoIndex"><img src="../images/skin_lj_rl/logos/lo-jack_mainLogo.png" /></div>
 </div>
 <div id="copyright">
 	<div class="copy">
-		<p>2013 lojack - todos los derechos reservados política de privacidad | <a href="legal.jsp" title="Legales">legales</a> | dirección general de defensa y protección al consumidor. Si queres enviarnos un mensaje hacélo <a href="./goToContactMobile.do" title="Envianos tu consulta">clic acá</a>.</p>
+		<p>2013 lojack | <a href="legal.jsp" title="Legales">legales</a> | <a href="./goToContactMobile.do" title="Envianos tu consulta">Contactanos</a></p>
 	</div>
 </div>
 <%@ include file="../includes/version.jspf" %></body>
