@@ -81,7 +81,7 @@ $(document).ready(
 		$('#rueditaParkings').bind("mouseout", function(event) {
 			$('#centralRueditaParkings').fadeOut();
 		});
-
+		
 		$("input[name=password]").bind("keydown", function(event) {
 		      // track enter key
 		      var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
@@ -737,7 +737,7 @@ function parkingsNotLogged() {
 	</div>
 </div>
 
-<%@ include file="includes/videoLayers.jsp" %>
+<%@ include file="includes/videoLayersAlt.jsp" %>
 
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Layer legales -->

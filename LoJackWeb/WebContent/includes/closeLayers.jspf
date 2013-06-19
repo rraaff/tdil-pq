@@ -9,6 +9,7 @@ $("input[cl]").each(function(indice,valor) {
 	});
 });
 $('#closevideo1Layer').click(function() {
-	$('#videoIframe').prop('src', '');
+//$('#videoIframe').prop('src', ''); original
+	$('#videoIframe').prop('innerHTML', '');
 	$( "#video1Layer" ).fadeOut();
 });
