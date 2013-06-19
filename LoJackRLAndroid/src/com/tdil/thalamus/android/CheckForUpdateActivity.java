@@ -81,8 +81,8 @@ public class CheckForUpdateActivity extends Activity {
            public void run(){
         	   new AlertDialog.Builder(CheckForUpdateActivity.this)
                .setIcon(R.drawable.ic_launcher)
-               .setTitle("Error")
-               .setMessage("La aplicacion esta momentaneamente fuera de servicio")
+               .setTitle("Atención")
+               .setMessage("No se pudo establecer correctamente la conexión")
                .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
                        public void onClick(DialogInterface dialog, int whichButton) {
                              CheckForUpdateActivity.this.finish();
@@ -96,12 +96,12 @@ public class CheckForUpdateActivity extends Activity {
            public void run(){
             new AlertDialog.Builder(CheckForUpdateActivity.this)
             .setIcon(R.drawable.ic_launcher)
-            .setTitle("Update Available")
-            .setMessage("An update for is available!\\n\\nOpen Android Market and see the details?")
+            .setTitle("Actualizar")
+            .setMessage("Hay una actualización disponible\\n\\n¿Desea actualizarla ahora?")
             .setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                             /* User clicked OK so do some stuff */
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:your.app.id"));
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
                             startActivity(intent);
                     }
             })
