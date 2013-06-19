@@ -17,7 +17,9 @@
 <body>
 <div class="videoLayer">
 	<div id="videoWrapper">
-		<iframe id="videoIframe" src="http://www.youtube.com/embed/Iz_VvsFwXQI" frameborder="0" allowscale="false" allowfullscreen></iframe>
+		<div id="videoIframe" class="homeSample">
+			<p><a href="http://youtu.be/Iz_VvsFwXQI" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
+		</div>
 	</div>
 	<div id="footerizer">
 		<h3 id="videoTitle">Lo Jack Home</h3>
