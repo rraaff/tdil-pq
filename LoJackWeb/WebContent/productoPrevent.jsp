@@ -259,7 +259,12 @@ button.iconPhoneAdm {
 button.iconZSeguras { background: url(images/skin_lj_rl/webApp/car/control_zSeguras_32x32.png); }
 button.iconGetPosit { background: url(images/skin_lj_rl/webApp/car/control_getPosit_32x32.png); }
 button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phoneAdm_32x32.png); }
-
+a.iconHome img {
+	width:32px;
+	height:32px;
+	margin: 0 10px;
+	vertical-align: middle;
+}
 #tableStyle {
 	width:100%;
 	height:300px;
@@ -320,6 +325,13 @@ fieldset label.w3 {
 	button.iconZSeguras { background: url(mobile/images/webApp/car/control_zSeguras_16x16.png); }
 	button.iconGetPosit { background: url(mobile/images/webApp/car/control_getPosit_16x16.png); }
 	button.iconPhoneAdm { background: url(mobile/images/webApp/car/control_phoneAdm_16x16.png); }
+	a.iconHome img {
+		width:16px;
+		height:16px;
+		padding:0;
+		margin:0;
+		vertical-align: bottom;
+	}
 	a.iconHome {
 		width:16px;
 		height:16px;
@@ -369,11 +381,11 @@ fieldset label.w3 {
 			top:40%;
 			left:5px;
 		}
-		a.iconHome {
+	/*	a.iconHome {
 			width:16px;
 			height:16px;
 			margin:2px 6px;
-		}
+		}*/
 	</style>
 <% } %>
 </head>

@@ -399,12 +399,12 @@ textarea {
 							  	<% } %>
 							</div>
 				  			<% if (alarm.isTriggered()) { %>
-				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 				  			<% } else { %>
 				  				<% if (alarm.isActive()) { %>
-					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 					  			<% } else { %>
-					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>"><%=alarm.getStatus()%></div>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 					  			<% } %>
 				  			<% } %>
 				  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>

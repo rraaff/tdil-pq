@@ -264,6 +264,7 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 }
 #camerasList ul.cameraListUl {
 	float: left !important;
+	list-style-type: none;
 }
 #camerasList ul li.cameraLink a {
 	width: 350px;
@@ -512,7 +513,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	opacity: 0.5;
 }
 #accordion .hasButton:hover { cursor: pointer; }
-div[id^="alarm-status-"] {
+/*div[id^="alarm-status-"] {
 	color: #7f9e48;
 	font-size: 9px;
 	font-weight: bold;
@@ -527,6 +528,22 @@ div[id^="cont-"] {
 #alarm-status-2 { color: #e51b24; }
 #alarm-status-3 { color: #f05224; }
 #alarm-status-4 { color: #666; }
+*/
+.alarm-status-DESARMADA,
+.alarm-status-DISPARADA,
+.alarm-status-ARMADA,
+.alarm-status-DESCONOCIDO {
+	font-size: 9px;
+	font-weight: bold;
+	line-height: 15px;
+	text-transform: uppercase;
+	float:left;
+	clear: both;
+}
+.alarm-status-DESARMADA { color: #f05224; }
+.alarm-status-DISPARADA { color: #e51b24; }
+.alarm-status-ARMADA { color: #7f9e48; }
+.alarm-status-DESCONOCIDO { color: #666; }
 
 .status-Apagada,
 .status-Encendida,
