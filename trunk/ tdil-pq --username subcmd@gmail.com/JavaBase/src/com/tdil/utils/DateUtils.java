@@ -12,11 +12,32 @@ import org.apache.commons.lang.StringUtils;
 
 public class DateUtils {
 
+	public static List<String> ALL_DAYS;
+	public static List<String> ALL_MONTHS;
+	
 	public static List<String> ALL_HOURS;
 	public static List<String> ALL_MINUTES;
 	public static List<String> ALL_SECONDS;
 
 	static {
+		List<String> days = new ArrayList<String>(31);
+		for (int i = 1; i < 10; i++) {
+			days.add("0" + i);
+		}
+		for (int i = 10; i <= 31; i++) {
+			days.add(String.valueOf(i));
+		}
+		ALL_DAYS = Collections.unmodifiableList(days);
+		
+		List<String> months = new ArrayList<String>(31);
+		for (int i = 1; i <= 10; i++) {
+			months.add("0" + i);
+		}
+		for (int i = 10; i <= 12; i++) {
+			months.add(String.valueOf(i));
+		}
+		ALL_MONTHS = Collections.unmodifiableList(months);
+		
 		List<String> result = new ArrayList<String>(24);
 		for (int i = 0; i < 10; i++) {
 			result.add("0" + i);
@@ -115,6 +136,17 @@ public class DateUtils {
 		}
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		return dateFormat.format(fromDate2);
+	}
+	
+	public static List<String> allYears() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int start = year - 100;
+		List<String> result = new ArrayList<String>(100);
+		for (int i = start; i <= year; i++) {
+			result.add(String.valueOf(i));
+		}
+		return result;
 	}
 
 	public static Date parseDateSp(String fromDate2) {
