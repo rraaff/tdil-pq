@@ -1,3 +1,4 @@
+<%@page import="com.tdil.utils.DateUtils"%>
 <%@ page info="index"%><%--
 --%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
 --%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
@@ -44,6 +45,7 @@
 	<p>Los campos marcados con * son requeridos para la registración</p>
 	<html:form method="POST" action="/mobile/registerMobile">
 		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterFormMobile");
+		registerForm.setMobile(true);
 		registerForm.searchReferenceData();
 		%>
 		<div class="scrollable">
@@ -111,8 +113,26 @@
 			</fieldset>
 			<fieldset>
 				<label>* Fecha de nac.</label>
-				<html:text name="RegisterFormMobile" property="birthDate" />
 				<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+				<html:select name="RegisterFormMobile" property="day" styleClass="width80">
+					<option value=""></option>
+					<% for (String day : DateUtils.ALL_DAYS) { %>
+						<option value="<%=day%>" <%=day.equals(registerForm.getDay()) ? "selected" : ""%>><%=day%></option>
+					<% } %>
+				</html:select>/
+				<html:select name="RegisterFormMobile" property="month" styleClass="width80">
+					<option value=""></option>
+					<% for (String month : DateUtils.ALL_MONTHS) { %>
+						<option value="<%=month%>" <%=month.equals(registerForm.getMonth()) ? "selected" : ""%>><%=month%></option>
+					<% } %>
+				</html:select>/
+				<html:select name="RegisterFormMobile" property="year" styleClass="width80">
+					<option value=""></option>
+					<% for (String year : registerForm.getYears()) { %>
+						<option value="<%=year%>" <%=year.equals(registerForm.getYear()) ? "selected" : ""%>><%=year%></option>
+					<% } %>
+				</html:select>
+				
 				<div class="errorInForm"></div>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%>
 			</fieldset>

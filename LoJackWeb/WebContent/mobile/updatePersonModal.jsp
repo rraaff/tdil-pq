@@ -1,3 +1,4 @@
+<%@page import="com.tdil.utils.DateUtils"%>
 <%@ page info="home"%><%--
 --%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
 --%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
@@ -48,6 +49,7 @@
 	<p align="center">Los campos marcados con * son requeridos</p>
 	<html:form method="POST" action="/mobile/updatePersonMobile">
 		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("UpdatePersonFormMobile");
+		registerForm.setMobile(true);
 		%>
 		<div class="scrollable">
 			<fieldset>
@@ -62,12 +64,16 @@
 				<html:text name="UpdatePersonFormMobile" property="firstName" />
 				<div class="errorInForm"></div>
 				<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstName"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
 				<html:text name="UpdatePersonFormMobile" property="lastName" />
 				<div class="errorInForm"></div>
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastName"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%>
 			</fieldset>
 			<fieldset>
 				<label class="sexLabel">* Sexo:</label>
@@ -77,7 +83,9 @@
 				<span>Masculino</span>
 				<html:radio property="gender" value="Female" />
 				<span>Femenino</span>
-				<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%><div id="err.profile.gender"></div>
+				<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+				<div id="err.profile.gender"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
 			</fieldset>
 			<% if (registerForm.isPrincipal(PersonFieldNames.email)) { %>
 				<fieldset>
@@ -89,23 +97,45 @@
 					<label>* E-Mail</label>
 					<html:text name="UpdatePersonFormMobile" property="email" />
 					<div id="err.profile.email"></div>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%>
 				</fieldset>
 			<% } %>
 			<fieldset>
 				<label>* Fecha de nac.</label>
-				<html:text name="UpdatePersonFormMobile" property="birthDate" />
-				<div class="errorInForm"></div>
 				<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
+				<html:select name="UpdatePersonFormMobile" property="day" styleClass="width80">
+					<option value=""></option>
+					<% for (String day : DateUtils.ALL_DAYS) { %>
+						<option value="<%=day%>" <%=day.equals(registerForm.getDay()) ? "selected" : ""%>><%=day%></option>
+					<% } %>
+				</html:select>/
+				<html:select name="UpdatePersonFormMobile" property="month" styleClass="width80">
+					<option value=""></option>
+					<% for (String month : DateUtils.ALL_MONTHS) { %>
+						<option value="<%=month%>" <%=month.equals(registerForm.getMonth()) ? "selected" : ""%>><%=month%></option>
+					<% } %>
+				</html:select>/
+				<html:select name="UpdatePersonFormMobile" property="year" styleClass="width80">
+					<option value=""></option>
+					<% for (String year : registerForm.getYears()) { %>
+						<option value="<%=year%>" <%=year.equals(registerForm.getYear()) ? "selected" : ""%>><%=year%></option>
+					<% } %>
+				</html:select>
+				
+				<div class="errorInForm"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Código de área</label>
 				<html:text name="UpdatePersonFormMobile" property="phoneAreaCode" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "*" : ""%><div id="err.profile.phone.areaCode"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Teléfono celular</label>
 				<html:text name="UpdatePersonFormMobile" property="phoneNumber" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "*" : ""%><div id="err.profile.phone.number"></div>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
 			</fieldset>
 			<fieldset>
 				<label>País</label>

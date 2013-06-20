@@ -2,6 +2,7 @@ package com.tdil.lojack.struts.forms;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -51,6 +52,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
+	private boolean isMobile;
 	private boolean isUpdate = false;
 	
 	private TokenHolder token;
@@ -63,6 +65,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private String birthDate;
 	private String gender; // Male Female
 	private String email;
+	
+	private String day;
+	private String month;
+	private String year;
+	
+	private List<String> years;
 	
 	// celular, opcional
 	private String phoneIntCode = "54"; // Argentina, hardcodeado?
@@ -110,6 +118,12 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			error.setFieldError(gender_key, ValidationErrors.CANNOT_BE_EMPTY);
 		}
 		Date date = FieldValidation.validateDate(this.getBirthDate(), birthdate_key, "yyyy-MM-dd", true, error);
+		if (!error.hasFieldError(birthdate_key)) {
+			String formatted = DateUtils.formatDate(date);
+			if (!formatted.equals(this.getBirthDate())) {
+				error.setFieldError(birthdate_key, ValidationErrors.INVALID_DATE);
+			}
+		}
 		if (!isUpdate) {
 			FieldValidation.validateText(this.getPassword(), password_key, 20, error);
 		}
@@ -370,6 +384,9 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 
 	public String getBirthDate() {
+		if (this.isMobile) {
+			birthDate = this.getYear() + "-" + this.getMonth() + "-" + this.getDay();
+		}
 		return birthDate;
 	}
 
@@ -547,7 +564,16 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			this.setGender(profile.getString(PersonFieldNames.gender));
 		}
 		if (profile.containsKey(PersonFieldNames.birthDate) && profile.get(PersonFieldNames.birthDate) != JSONNull.getInstance()) {
-			this.setBirthDate(DateUtils.formatDate(new Date(profile.getLong(PersonFieldNames.birthDate))));
+			Date date = new Date(profile.getLong(PersonFieldNames.birthDate));
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			setDay(String.valueOf(cal.get(Calendar.DATE)));
+			setMonth(String.valueOf(cal.get(Calendar.MONTH) + 1));
+			if (this.getMonth().length() == 1) {
+				this.setMonth("0" + this.getMonth());
+			}
+			setYear(String.valueOf(cal.get(Calendar.YEAR)));
+			this.setBirthDate(DateUtils.formatDate(date));
 		}
 		if (profile.containsKey(PersonFieldNames.phone)) {
 			JSONObject phone = profile.getJSONObject(PersonFieldNames.phone);
@@ -666,6 +692,49 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	}
 	public void setDocumentType(int documentType) {
 		this.documentType = documentType;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public List<String> getYears() {
+		if (years == null) {
+			years = DateUtils.allYears();
+		}
+		return years;
+	}
+
+	public void setYears(List<String> years) {
+		this.years = years;
+	}
+
+	public boolean isMobile() {
+		return isMobile;
+	}
+
+	public void setMobile(boolean isMobile) {
+		this.isMobile = isMobile;
 	}
 	
 }
