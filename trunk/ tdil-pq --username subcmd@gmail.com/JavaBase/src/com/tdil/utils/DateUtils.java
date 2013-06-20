@@ -30,7 +30,7 @@ public class DateUtils {
 		ALL_DAYS = Collections.unmodifiableList(days);
 		
 		List<String> months = new ArrayList<String>(31);
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i < 10; i++) {
 			months.add("0" + i);
 		}
 		for (int i = 10; i <= 12; i++) {
