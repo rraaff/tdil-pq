@@ -50,3 +50,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.home','http://www.youtube.com/embed/Iz_VvsFwXQI','video.home',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.pets','http://www.youtube.com/embed/M8VhrMM0j-Q','video.pets',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.loapp','http://www.youtube.com/embed/G18ElDg9s-o','video.loapp',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.mobile.car','http://youtu.be/5Xe5pODPq1I','video.mobile.car',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.mobile.home','http://youtu.be/Iz_VvsFwXQI','video.mobile.home',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.mobile.pets','http://youtu.be/M8VhrMM0j-Q','video.mobile.pets',0);

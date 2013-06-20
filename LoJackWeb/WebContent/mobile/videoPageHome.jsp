@@ -18,7 +18,7 @@
 <div class="videoLayer">
 	<div id="videoWrapper">
 		<div id="videoIframe" class="homeSample">
-			<p><a href="http://youtu.be/Iz_VvsFwXQI" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
+			<p><a href="<%=com.tdil.lojack.utils.LoJackConfig.getMobilevideohome()%>" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
 		</div>
 	</div>
 	<div id="footerizer">

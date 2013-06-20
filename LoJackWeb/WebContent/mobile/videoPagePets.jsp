@@ -19,7 +19,7 @@
 	<div id="videoWrapper">
 		<!-- iframe id="videoIframe" src="http://www.youtube.com/embed/M8VhrMM0j-Q" frameborder="0" allowscale="false" allowfullscreen></iframe-->
 		<div id="videoIframe" class="petsSample">
-			<p><a href="http://youtu.be/M8VhrMM0j-Q" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
+			<p><a href="<%=com.tdil.lojack.utils.LoJackConfig.getMobilevideopets()%>" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
 		</div>
 	</div>
 	<div id="footerizer">

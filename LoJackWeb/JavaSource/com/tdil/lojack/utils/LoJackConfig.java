@@ -56,6 +56,10 @@ public class LoJackConfig extends SystemConfig {
 	private static String videohome = "http://www.youtube.com/embed/Iz_VvsFwXQI";
 	private static String videopets = "http://www.youtube.com/embed/M8VhrMM0j-Q";
 	private static String videoloapp = "http://www.youtube.com/embed/G18ElDg9s-o";
+	
+	private static String mobilevideocar = "http://youtu.be/5Xe5pODPq1I";
+	private static String mobilevideohome = "http://youtu.be/Iz_VvsFwXQI";
+	private static String mobilevideopets = "http://youtu.be/M8VhrMM0j-Q";
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -90,29 +94,47 @@ public class LoJackConfig extends SystemConfig {
 			getLog().fatal("Front server is " + frontserver);
 			
 			String videoHome = SystemPropertyUtils.getSystemPropertValue("video.home");
-			if (videoHome != null) {
+			if (!StringUtils.isEmpty(videoHome)) {
 				setVideohome(videoHome);
 			}
 			getLog().fatal("Videohome is " + getVideohome());
 			
 			String videoCar = SystemPropertyUtils.getSystemPropertValue("video.car");
-			if (videoCar != null) {
+			if (!StringUtils.isEmpty(videoCar)) {
 				setVideocar(videoCar);
 			}
 			getLog().fatal("Videocar is " + getVideocar());
 			
 			String videopets = SystemPropertyUtils.getSystemPropertValue("video.pets");
-			if (videopets != null) {
+			if (!StringUtils.isEmpty(videopets)) {
 				setVideopets(videopets);
 			}
 			getLog().fatal("Videopets is " + getVideopets());
 			
 			String videoloapp = SystemPropertyUtils.getSystemPropertValue("video.loapp");
-			if (videoloapp != null) {
+			if (!StringUtils.isEmpty(videoloapp)) {
 				setVideoloapp(videoloapp);
 			}
 			getLog().fatal("Videoloapp is " + getVideoloapp());
 
+			String videoMobileHome = SystemPropertyUtils.getSystemPropertValue("video.mobile.home");
+			if (!StringUtils.isEmpty(videoMobileHome)) {
+				setMobilevideohome(videoMobileHome);
+			}
+			getLog().fatal("Videohome mobile is " + getMobilevideohome());
+			
+			String videoMobileCar = SystemPropertyUtils.getSystemPropertValue("video.mobile.car");
+			if (!StringUtils.isEmpty(videoMobileCar)) {
+				setMobilevideocar(videoMobileCar);
+			}
+			getLog().fatal("Videocar mobile is " + getMobilevideocar());
+			
+			String videoMobilepets = SystemPropertyUtils.getSystemPropertValue("video.mobile.pets");
+			if (!StringUtils.isEmpty(videoMobilepets)) {
+				setMobilevideopets(videoMobilepets);
+			}
+			getLog().fatal("Videopets mobile is " + getMobilevideopets());
+			
 			long delay = 0;
 			try {
 				delay = Long.parseLong(SystemPropertyUtils.getSystemPropertValue("front.login.deplay"));
@@ -508,6 +530,30 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setVideoloapp(String videoloapp) {
 		LoJackConfig.videoloapp = videoloapp;
+	}
+
+	public static String getMobilevideocar() {
+		return mobilevideocar;
+	}
+
+	public static void setMobilevideocar(String mobilevideocar) {
+		LoJackConfig.mobilevideocar = mobilevideocar;
+	}
+
+	public static String getMobilevideohome() {
+		return mobilevideohome;
+	}
+
+	public static void setMobilevideohome(String mobilevideohome) {
+		LoJackConfig.mobilevideohome = mobilevideohome;
+	}
+
+	public static String getMobilevideopets() {
+		return mobilevideopets;
+	}
+
+	public static void setMobilevideopets(String mobilevideopets) {
+		LoJackConfig.mobilevideopets = mobilevideopets;
 	}
 
 }

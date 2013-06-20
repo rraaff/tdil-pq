@@ -19,7 +19,7 @@
 	<div id="videoWrapper">
 		<!-- iframe id="videoIframe" src="http://www.youtube.com/embed/5Xe5pODPq1I" frameborder="0" allowscale="false" allowfullscreen></iframe-->
 		<div id="videoIframe" class="carSample">
-			<p><a href="http://youtu.be/5Xe5pODPq1I" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
+			<p><a href="<%=com.tdil.lojack.utils.LoJackConfig.getMobilevideocar()%>" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
 		</div>
 	</div>
 	<div id="footerizer">
