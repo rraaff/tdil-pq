@@ -51,6 +51,11 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static ProxyConfiguration HTTP_PROXY;
 	private static ProxyConfiguration HTTPS_PROXY;
+	
+	private static String videocar = "http://www.youtube.com/embed/5Xe5pODPq1I";
+	private static String videohome = "http://www.youtube.com/embed/Iz_VvsFwXQI";
+	private static String videopets = "http://www.youtube.com/embed/M8VhrMM0j-Q";
+	private static String videoloapp = "http://www.youtube.com/embed/G18ElDg9s-o";
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -83,6 +88,30 @@ public class LoJackConfig extends SystemConfig {
 				setFRONT_SERVER(frontserver);
 			}
 			getLog().fatal("Front server is " + frontserver);
+			
+			String videoHome = SystemPropertyUtils.getSystemPropertValue("video.home");
+			if (videoHome != null) {
+				setVideohome(videoHome);
+			}
+			getLog().fatal("Videohome is " + getVideohome());
+			
+			String videoCar = SystemPropertyUtils.getSystemPropertValue("video.car");
+			if (videoCar != null) {
+				setVideocar(videoCar);
+			}
+			getLog().fatal("Videocar is " + getVideocar());
+			
+			String videopets = SystemPropertyUtils.getSystemPropertValue("video.pets");
+			if (videopets != null) {
+				setVideopets(videopets);
+			}
+			getLog().fatal("Videopets is " + getVideopets());
+			
+			String videoloapp = SystemPropertyUtils.getSystemPropertValue("video.loapp");
+			if (videoloapp != null) {
+				setVideoloapp(videoloapp);
+			}
+			getLog().fatal("Videoloapp is " + getVideoloapp());
 
 			long delay = 0;
 			try {
@@ -447,6 +476,38 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setDB_VERSION(String dB_VERSION) {
 		DB_VERSION = dB_VERSION;
+	}
+
+	public static String getVideocar() {
+		return videocar;
+	}
+
+	public static void setVideocar(String videocar) {
+		LoJackConfig.videocar = videocar;
+	}
+
+	public static String getVideohome() {
+		return videohome;
+	}
+
+	public static void setVideohome(String videohome) {
+		LoJackConfig.videohome = videohome;
+	}
+
+	public static String getVideopets() {
+		return videopets;
+	}
+
+	public static void setVideopets(String videopets) {
+		LoJackConfig.videopets = videopets;
+	}
+
+	public static String getVideoloapp() {
+		return videoloapp;
+	}
+
+	public static void setVideoloapp(String videoloapp) {
+		LoJackConfig.videoloapp = videoloapp;
 	}
 
 }

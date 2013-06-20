@@ -45,3 +45,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.s
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.password','t3stl0j4k','mail.smtp.password',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','subcmd@gmail.com','Email del formulario de contacto',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.car','http://www.youtube.com/embed/5Xe5pODPq1I','video.car',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.home','http://www.youtube.com/embed/Iz_VvsFwXQI','video.home',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.pets','http://www.youtube.com/embed/M8VhrMM0j-Q','video.pets',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.loapp','http://www.youtube.com/embed/G18ElDg9s-o','video.loapp',0);
