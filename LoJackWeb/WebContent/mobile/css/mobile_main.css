@@ -112,7 +112,11 @@ span.userName { color:#f05224; }
 #recoverPassContent select,
 #recoverPassContent select option,
 #registrationContent select,
-#registrationContent select option, { line-height:18px; height:45px; }
+#registrationContent select option { line-height:18px; height:45px; }
+#registrationContent div.dateHelper { float:left; }
+#registrationContent select.day-month { width: 50px; margin-right:15px; }
+#registrationContent select.year { width: 100px; }
+
 #loginContent a.buttonLink {
 	color:#dc2c27;
 	font-size:80%;
