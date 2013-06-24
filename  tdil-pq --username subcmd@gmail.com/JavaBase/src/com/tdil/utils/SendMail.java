@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -100,13 +99,8 @@ public class SendMail {
 	 *            to COnvert
 	 * @return javax.mail.internet.InternetAddress[]
 	 */
-	private InternetAddress[] convertArrayListToInternetAddressList(ArrayList anArrayList) {
-		Object[] objectList = anArrayList.toArray();
-		InternetAddress[] IAList = new InternetAddress[objectList.length];
-		for (int i = 0; i < objectList.length; i++) {
-			IAList[i] = (InternetAddress) objectList[i];
-		}
-		return IAList;
+	private InternetAddress[] convertArrayListToInternetAddressList(ArrayList<InternetAddress> anArrayList) {
+		return anArrayList.toArray(new InternetAddress[0]);
 	}
 
 	/**
@@ -193,8 +187,8 @@ public class SendMail {
 	 *            ArrayList that contains a Associations, where key represents
 	 *            the Content ID, and Value is the file name to attach.
 	 */
-	public void sendCustomizedMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
-			boolean isHTML, String bodyContent, ArrayList fileAttachmentList, ArrayList contentAttachmentList)
+	public void sendCustomizedMail(String from, ArrayList<InternetAddress> toList, ArrayList<InternetAddress> ccList, ArrayList<InternetAddress> bccList, String subject,
+			boolean isHTML, String bodyContent, ArrayList<String> fileAttachmentList)
 			throws MessagingException {
 
 		try {
@@ -245,13 +239,11 @@ public class SendMail {
 	 *            ArrayList that contains a Associations, where key represents
 	 *            the Content ID, and Value is the file name to attach.
 	 */
-	public void sendCustomizedMailFromFile(String from, ArrayList toList, ArrayList ccList, ArrayList bccList,
-			String subject, boolean isHTML, String fileName, ArrayList fileAttachmentList,
-			ArrayList contentAttachmentList) throws MessagingException, FileNotFoundException, IOException {
+	public void sendCustomizedMailFromFile(String from, ArrayList<InternetAddress> toList, ArrayList<InternetAddress> ccList, ArrayList<InternetAddress> bccList,
+			String subject, boolean isHTML, String fileName, ArrayList<String> fileAttachmentList) throws MessagingException, FileNotFoundException, IOException {
 
 		String body = this.readPlainTextFile(fileName);
-		sendCustomizedMail(from, toList, ccList, bccList, subject, isHTML, body, fileAttachmentList,
-				contentAttachmentList);
+		sendCustomizedMail(from, toList, ccList, bccList, subject, isHTML, body, fileAttachmentList);
 	}
 
 	/**
@@ -274,18 +266,18 @@ public class SendMail {
 	public void sendCustomizedPlainTextMail(String from, String to, String subject, String body)
 			throws MessagingException {
 
-		ArrayList toList = new java.util.ArrayList();
+		ArrayList<InternetAddress> toList = new java.util.ArrayList<InternetAddress>();
 		toList.add(new InternetAddress(to));
 
-		this.sendCustomizedMail(from, toList, null, null, subject, false, body, null, null);
+		this.sendCustomizedMail(from, toList, null, null, subject, false, body, null);
 	}
 
 	public void sendCustomizedHtmlMail(String from, String to, String subject, String body) throws MessagingException {
 
-		ArrayList toList = new java.util.ArrayList();
+		ArrayList<InternetAddress> toList = new java.util.ArrayList<InternetAddress>();
 		toList.add(new InternetAddress(to));
 
-		this.sendCustomizedMail(from, toList, null, null, subject, true, body, null, null);
+		this.sendCustomizedMail(from, toList, null, null, subject, true, body, null);
 	}
 
 	/**
@@ -306,8 +298,7 @@ public class SendMail {
 	 *            ArrayList that contains Association Objects of Strings
 	 *            (Key/Value)
 	 */
-	public void sendCustomizedPlainTextMailFromFile(String from, String to, String subject, String fileName,
-			ArrayList asocList) throws FileNotFoundException, IOException, MessagingException {
+	public void sendCustomizedPlainTextMailFromFile(String from, String to, String subject, String fileName) throws FileNotFoundException, IOException, MessagingException {
 
 		String body = this.readPlainTextFile(fileName);
 
@@ -337,8 +328,8 @@ public class SendMail {
 	 *            ArrayList that contains a List of String with file names to
 	 *            attach.
 	 */
-	public void sendMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
-			MimeBodyPart mimeBodyPart, ArrayList fileAttachmentList) throws MessagingException {
+	public void sendMail(String from, ArrayList<InternetAddress> toList, ArrayList<InternetAddress> ccList, ArrayList<InternetAddress> bccList, String subject,
+			MimeBodyPart mimeBodyPart, ArrayList<String> fileAttachmentList) throws MessagingException {
 
 		try {
 			MimeMultipart mimeMultipart = new MimeMultipart();
@@ -373,7 +364,7 @@ public class SendMail {
 	 *            MimeMultiPart that contains the Mime MultiPart Object for the
 	 *            Mime Message.
 	 */
-	public void sendMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
+	public void sendMail(String from, ArrayList<InternetAddress> toList, ArrayList<InternetAddress> ccList, ArrayList<InternetAddress> bccList, String subject,
 			MimeMultipart mimeMultiPart) throws MessagingException {
 
 		Session mailSession = this.getMailSession();
@@ -386,7 +377,7 @@ public class SendMail {
 			}
 			if (toList == null || toList.isEmpty()) {
 				mailCheckDetails.append("Sending mail with TO null or empty/n");
-				toList = new ArrayList();
+				toList = new ArrayList<InternetAddress>();
 			}
 			if (subject == null) {
 				mailCheckDetails.append("Sending mail with SUBJECT null/n");
@@ -452,18 +443,15 @@ public class SendMail {
 	 *            ArrayList that contains a Associations, where key represents
 	 *            the Content ID, and Value is the file name to attach.
 	 */
-	public void sendMail(String from, ArrayList toList, ArrayList ccList, ArrayList bccList, String subject,
-			MimeMultipart mimeMultiPart, ArrayList fileAttachmentList) throws MessagingException {
+	public void sendMail(String from, ArrayList<InternetAddress> toList, ArrayList<InternetAddress> ccList, ArrayList<InternetAddress> bccList, String subject,
+			MimeMultipart mimeMultiPart, ArrayList<String> fileAttachmentList) throws MessagingException {
 
 		try {
 			// Adds File Attachments
 			if (fileAttachmentList != null && fileAttachmentList.size() > 0)
-				for (Iterator it = fileAttachmentList.iterator(); it.hasNext();) {
-					String fileName = (String) it.next();
+				for (String fileName : fileAttachmentList) {
 					FileDataSource fileDataSource = new FileDataSource(fileName);
-
 					MimeBodyPart attachmentMimeBodyPart = new MimeBodyPart();
-
 					attachmentMimeBodyPart.setDataHandler(new DataHandler(fileDataSource));
 					attachmentMimeBodyPart.setFileName(fileDataSource.getName());
 					attachmentMimeBodyPart.setDisposition(MimeBodyPart.ATTACHMENT);
@@ -507,7 +495,7 @@ public class SendMail {
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.socketFactory.fallback", "false");
 
-		SecurityManager security = System.getSecurityManager();
+		//SecurityManager security = System.getSecurityManager();
 
 		try {
 			Authenticator auth = new SMTPAuthenticator("contacto@milka.com.ar", "mil123ka");
