@@ -17,6 +17,7 @@ import com.tdil.cache.blob.BlobLocalDiskCache;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.cache.blob.BlobDataType;
 import com.tdil.lojack.cache.blob.PublicBlobResolver;
+import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.daomanager.MySQLDAOProvider;
 import com.tdil.lojack.daomanager.SQLServerDAOProvider;
@@ -363,6 +364,23 @@ public class LoJackConfig extends SystemConfig {
 			}
 			getLog().fatal("Pets token is " + (petstoken == null ? "null" : petstoken));
 			
+			String cameraproxy = SystemPropertyUtils.getSystemPropertValue("camera.proxy");
+			if (!StringUtils.isEmpty(cameraproxy ) && "true".equalsIgnoreCase(cameraproxy )) {
+				if (getHTTPS_PROXY() != null) {
+					IPCamera.setProxyConfigurationHttps(new com.tdil.lojack.camera.ProxyConfiguration(getHTTPS_PROXY().getServer(), getHTTPS_PROXY().getPort()));
+					getLog().fatal("Camera proxy for https is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("No camera proxy for https");
+				}
+				if (getHTTP_PROXY() != null) {
+					IPCamera.setProxyConfiguration(new com.tdil.lojack.camera.ProxyConfiguration(getHTTP_PROXY().getServer(), getHTTP_PROXY().getPort()));
+					getLog().fatal("Camera proxy for is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("No camera proxy for http");
+				}
+			} else {
+				getLog().fatal("No camera proxy");
+			}
 
 			getLog().fatal("Starting middleware jobs updater");
 			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));

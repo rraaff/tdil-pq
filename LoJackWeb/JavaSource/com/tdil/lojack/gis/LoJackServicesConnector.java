@@ -335,6 +335,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad, idLuz));
 		try {
 			JSONResponse response = executeGIS(jsonObject, ACTIVATE_LIGHT_RANDOM_SEQUENCE);
 			AsyncJobResponse result = new AsyncJobResponse((JSONObject)response.getResult());
@@ -352,6 +353,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad, idLuz));
 		try {
 			JSONResponse response = executeGIS(jsonObject, DEACTIVATE_LIGHT_RANDOM_SEQUENCE);
 			AsyncJobResponse result = new AsyncJobResponse((JSONObject)response.getResult());
@@ -369,6 +371,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad, idLuz));
 		try {
 			JSONResponse response = executeGIS(jsonObject, TURN_ON_LIGHT);
 			AsyncJobResponse result = new AsyncJobResponse((JSONObject)response.getResult());
@@ -385,6 +388,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		jsonObject.put(ID_LUZ, idLuz);
+		jsonObject.put(RECEIVE_NOTIFICATION, WebsiteUserUtils.wantsNotification(user.getModelUser(), idEntidad, idLuz));
 		try {
 			JSONResponse response = executeGIS(jsonObject, TURN_OFF_LIGHT);
 			AsyncJobResponse result = new AsyncJobResponse((JSONObject)response.getResult());

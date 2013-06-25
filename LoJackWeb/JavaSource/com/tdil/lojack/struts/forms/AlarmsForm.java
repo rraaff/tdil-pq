@@ -60,10 +60,22 @@ public class AlarmsForm extends ActionForm {
 		} catch (SQLException e) {
 			LOG.error(e.getMessage(), e);
 		}
-		
+	}
+	
+	public static Collection<Alarm> getAlarms(WebsiteUser user) {
+		Collection<Alarm> alarms = LoJackServicesConnector.getAlarms(user);
+		try {
+			List<AlarmConf> alarmConf = (List<AlarmConf>)new GetAlarmConf(user.getModelUser().getId()).executeInTransaction();
+			for (Alarm alarm : alarms) {
+				enhance(alarm, alarmConf);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+		}
+		return alarms;
 	}
 
-	private void enhance(Alarm alarm, List<AlarmConf> alarmConf) {
+	private static void enhance(Alarm alarm, List<AlarmConf> alarmConf) {
 		for (AlarmConf ac : alarmConf) {
 			if (ac.getIdentidad().equals(alarm.getIdEntidad())) {
 				alarm.setEmailnotification(ac.getEmailnotification() == null ? false : (ac.getEmailnotification().equals(1)));

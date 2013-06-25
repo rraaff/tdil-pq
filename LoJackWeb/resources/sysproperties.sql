@@ -29,6 +29,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.t
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prop.tmp.path','/home/mgodoy/icarus/apache-tomcat-6.0.32/temp','prop.tmp.path',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.refreshTime','1000','camera.mobile.refreshTime',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.applet.refreshTime','1000','camera.applet.refreshTime',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.proxy','false','camera.proxy',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.refresh.time','1000','job.refresh.time',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.abort.time','60000','job.abort.time',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.client.refresh.time','1000','job.client.refresh.time',0);
