@@ -5,7 +5,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
+import java.net.Proxy;
 import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
@@ -21,6 +23,9 @@ public abstract class IPCamera implements Serializable {
 	private String password;
 	
 	private String basicAuth;
+	
+	private static ProxyConfiguration proxyConfiguration;
+	private static ProxyConfiguration proxyConfigurationHttps;
 	
 	public IPCamera(String url, String username, String password) {
 		super();
@@ -74,14 +79,24 @@ public abstract class IPCamera implements Serializable {
 		HttpURLConnection conn = null;
 		BufferedInputStream httpIn = null;
 		URL url;
+		ProxyConfiguration proxyConfiguration = null;
 		try {
+			if (urlString.toLowerCase().startsWith("https")) {
+				proxyConfiguration = getProxyConfigurationHttps();
+			} else {
+				proxyConfiguration = getProxyConfiguration();
+			}
 			url = new URL(urlString);
 		} catch (MalformedURLException e) {
 			System.err.println("Invalid URL");
 			return;
 		}
 		try {
-			conn = (HttpURLConnection) url.openConnection();
+			if (proxyConfiguration != null) {
+				conn = (HttpURLConnection) url.openConnection(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyConfiguration.getServer(), proxyConfiguration.getPort())));
+			} else {
+				conn = (HttpURLConnection) url.openConnection();
+			}
 			conn.setRequestProperty("Authorization", this.getBasicAuth());
 			configureTimeout(conn);
 			httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
@@ -115,6 +130,22 @@ public abstract class IPCamera implements Serializable {
 	protected void configureTimeout(HttpURLConnection conn) {
 		conn.setConnectTimeout(1000);
 		conn.setReadTimeout(1000);
+	}
+
+	public static ProxyConfiguration getProxyConfiguration() {
+		return proxyConfiguration;
+	}
+
+	public static void setProxyConfiguration(ProxyConfiguration proxyConfiguration) {
+		IPCamera.proxyConfiguration = proxyConfiguration;
+	}
+
+	public static ProxyConfiguration getProxyConfigurationHttps() {
+		return proxyConfigurationHttps;
+	}
+
+	public static void setProxyConfigurationHttps(ProxyConfiguration proxyConfigurationHttps) {
+		IPCamera.proxyConfigurationHttps = proxyConfigurationHttps;
 	}
 
 }
