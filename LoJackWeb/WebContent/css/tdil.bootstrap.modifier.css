@@ -1,9 +1,3 @@
-/*::-webkit-scrollbar { width: 12px; }
-Pseudo ::-webkit-file-upload-button element
-::-webkit-scrollbar-thumb { background: #c1c1c1; -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8); }
-Pseudo ::-webkit-slider-thumb element
-::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); }*/
-
 div {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -24,43 +18,31 @@ a { color:#ee5222; }
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 	border-radius: 10px;
 }
- 
 ::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 }
- 
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	background: #fff;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
 }
-
 header {
-	color: #FFF;
-	/*background: #000;*/
-	width: 100%;
-/*	height: 42px;*/
-	padding: 0px;
-	margin: 0px;
+	color:#FFF;
+	width:100%;
 }
 header {
-	text-transform: uppercase;
-	font-family: Arial, sans-serif;
-	font-size: 10px;
-/*	overflow: hidden;*/
+	text-transform:uppercase;
+	font-family:Arial, sans-serif;
+	font-size:10px;
 }
 .correctNav {
-	width: 964px;
-	margin: 0px auto;
-	padding: 0px;
-}
-header li {
-	line-height: 42px;
+	width:964px;
+	display:inline-block;
 }
 header ul li {
-	/*float: left;*/
 	list-style: none;
+	line-height: 42px;
 }
 header ul li.toRight {
 	float: right;
@@ -77,6 +59,10 @@ header ul li a:focus  {
 	background-color: #f05223;
 	color: #FFF;
 	text-decoration: none;
+}
+.userLoggedThalamusMenu {
+	width: 968px;
+	margin: 0 auto;
 }
 header.menuInternas {
 	background: #000;
@@ -113,78 +99,60 @@ fieldset.aligner label {
 /* PRODUCT NAV */
 #productsMenu {
 	background: url(../images/skin_lj_rl/backs/productMenu/menu_base.png);
-	background-repeat: repeat-x;
-	background-position: 0px 0px;
-	width: 100%;
-	height: 91px;
-	padding: 0px;
-	margin: 0px;
-	z-index: 2;
-	position: absolute;
-	top:42px;
+	background-repeat:repeat;
+	background-position:0px 0px;
+	width:100%;
+	height:91px;
+	z-index:2;
+	position:relative;
 }
 #productsMenu .userLoggedThalamusMenu {
-	text-transform: uppercase;
-	font-family: Arial, sans-serif;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	display: inline-block;
-	overflow: hidden;
+	text-transform:uppercase;
+	font-family:Arial, sans-serif;
+	width:964px;
+	margin:0 auto;
 }
 #productsMenu ul li {
-	font-size: 22px;
-	font-weight: bold;
-	line-height: 91px;
-	float: left;
-	list-style: none;
+	font-size:22px;
+	font-weight:bold;
+	float:left;
+	list-style:none;
 }
 #productsMenu ul li.toRight {
 	background:#e51b24;
+	line-height:91px;
 	float:right;
 }
 #productsMenu ul li a {
-	color: #fff;
+	color:#fff;
 	padding-left:35px;
-	padding-top:34px;
-	padding-right:35px; 
-	padding-bottom:41px;
+	padding-top:32px;
+	padding-right:35px;
+	padding-bottom:33px;
 }
 #productsMenu ul li a:hover,
-#productsMenu ul li a:focus  {
-	background-color: #f05224;
-	color: #FFF;
-	text-decoration: none;
-}
-#productsMenu ul li a:hover,
-#productsMenu ul li a:focus  {
-	background-color: #f05224;
-	color: #FFF;
-	text-decoration: none;
+#productsMenu ul li a:focus {
+	background-color:#f05224;
+	color:#FFF;
+	text-decoration:none;
 }
 #productsMenu ul li a.logo {
 	background-color:transparent;
-	/*background: url(../images/skin_lj_rl/logos/lo-jack_mainLogo.png);
-	background-repeat: no-repeat;
-	background-position: 0px 0px;*/
-	width: 173px;
-	height: 91px;
+	width:173px;
+	height:91px;
 	margin:0;
 	padding:0;
 	float: left;
 }
 /*content*/
 #content {
-	width: 100%;
-	height: 426px;
-	padding: 0px;
-	margin: 0px;
-	text-align: center;
-	display: inline-block;
-	overflow: hidden;
-	left:0px;
-	top:133px;
-	position: absolute;
+	width:100%;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	display:inline-block;
+	overflow:hidden;
+	position:relative;
 }
 .alarmasBG,
 .lucesBG,
@@ -513,22 +481,6 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	opacity: 0.5;
 }
 #accordion .hasButton:hover { cursor: pointer; }
-/*div[id^="alarm-status-"] {
-	color: #7f9e48;
-	font-size: 9px;
-	font-weight: bold;
-	line-height: 15px;
-	text-transform: uppercase;
-	float:left;
-	clear: both;
-}
-div[id^="cont-"] {
-	width: 100%;
-}
-#alarm-status-2 { color: #e51b24; }
-#alarm-status-3 { color: #f05224; }
-#alarm-status-4 { color: #666; }
-*/
 .alarm-status-DESARMADA,
 .alarm-status-DISPARADA,
 .alarm-status-ARMADA,
@@ -588,7 +540,7 @@ div[id^="cont-"] {
 	font-size: 12px;
 	line-height: 14px;
 }
-
+.has-switch span.switch-warning { left:-81px; }
 /* PANIC */
 #panicButtonContainer {
 	width: 968px;
@@ -618,16 +570,16 @@ div[id^="cont-"] {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
 	background-repeat:repeat;
 	width:968px;
-	top:456px;
-	margin: 10px auto;
-	position: relative;
+	top:538px;
+	position:fixed;
 	z-index: 1300;
 }
 button.iconEall,
 button.icon100mts,
 button.icon500mts,
 button.icon1mks,
-button.iconClear {
+button.iconClear,
+button.iconHome {
 	border:none;
 	background: transparent;
 	background: url(../images/skin_lj_rl/webApp/parkings/control_100mts.png);
@@ -643,6 +595,7 @@ button.iconEall { background: url(../images/skin_lj_rl/webApp/parkings/control_E
 button.icon500mts { background: url(../images/skin_lj_rl/webApp/parkings/control_500mts.png); }
 button.icon1mks { background: url(../images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
 button.iconClear { background: url(../images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.iconHome { background: url(../images/skin_lj_rl/webApp/parkings/back_home.png); }
 button.icon_zoom_in,
 button.icon_zoom_out {
 	border:none;
@@ -665,11 +618,9 @@ button.icon_zoom_out { background: url(../images/skin_lj_rl/webApp/parkings/icon
 #zoomSection {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
 	background-repeat:repeat;
-	width:968px;
-	top:0px;
-	margin: 10px auto;
-	position: relative;
-	z-index: 1305;
+	top:120px;
+	position:absolute;
+	z-index:1305;
 }
 #zoomSection .zoomControls {
 	width:32px;

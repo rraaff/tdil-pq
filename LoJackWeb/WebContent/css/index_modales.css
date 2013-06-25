@@ -168,7 +168,6 @@ button.buttonLink {
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
 	width: 250px;
 	height: 35px;
 	margin: 5px auto;
@@ -194,8 +193,6 @@ button.buttonLink {
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
-
 	width: 240px;
 	height: 35px;
 	padding: 0 0 0 10px;
@@ -210,8 +207,6 @@ button.buttonLink {
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
-
 	width: 200px;
 	height: 35px;
 	padding: 0 0 0 10px;
@@ -232,9 +227,6 @@ button.buttonLink {
 #registerLayer label.ajuste {
 	width: 120px;
 }
-label {
-	/*text-transform: uppercase;*/
-}
 #changePassLayer select,
 #changePassLayer input:not([type]),
 #changePassLayer input[type="color"],
@@ -253,8 +245,6 @@ label {
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
-
 	width: 210px;
 	height: 35px;
 	padding: 0 0 0 10px;
@@ -288,7 +278,6 @@ input[type="text"].width240 { width: 240px; }
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
 	height: 35px;
 	padding: 0 0 0 10px;
 	margin: 5px auto;
@@ -298,12 +287,12 @@ input[type="text"].width240 { width: 240px; }
 #forgotPasswordLayer input[type="text"] { width:220px; float:right; }
 #registerLayer fieldset { width: 460px; }
 #registerLayer select {
+	border:solid 1px #eaeaea; 
 	border-radius: 5px;
 	background: #eaeaea;
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	text-transform: uppercase;
 	width: 290px;
 	height: 35px;
 	margin: 5px auto;
@@ -329,8 +318,6 @@ input[type="text"].width240 { width: 240px; }
 	color: #333;
 	font-size: 12px;
 	line-height: 35px;
-	/*text-transform: uppercase;*/
-
 	width: 280px;
 	height: 35px;
 	padding: 0 0 0 10px;

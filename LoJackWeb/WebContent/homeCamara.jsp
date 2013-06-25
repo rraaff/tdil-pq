@@ -21,19 +21,34 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-
-<script src="js/bootstrap.min.js"></script>
-
+<% if (usingMobile || isAndroid) { %>
+	<link href="css/index_modales.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/bootstrapSwitch.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/unified_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/homeProduct_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<% } else { %>
+	<link href="css/reset-styles.css" rel="stylesheet" media="screen" />
+	<link href="css/sizers.css" rel="stylesheet" media="screen" />
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link href="css/index_modales.css" rel="stylesheet"  type="text/css" />
+	<link href="css/index_social.css" rel="stylesheet"  type="text/css" />
+	<link href="css/copyright.css" rel="stylesheet"  type="text/css" />
+	<link href="css/bootstrapSwitch.css" rel="stylesheet" />
+	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<% } %>
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background:#f05224;
+}
+@media only screen and (max-width: 350px) {
+	#productHomeContent.col1_798 { padding: 0; }
+}
+@media only screen and (max-width: 968px) {
+	#productHomeMenu.col1_170 { position: relative; }
+} 
+</style>
 <%@ include file="includes/headLogged.jsp" %>
-
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
-<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
-<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
-
 <script>
 $(function() {
 	<%@ include file="includes/closeLayers.jspf" %>
@@ -100,20 +115,6 @@ function right() {
 
 <%@ include file="includes/panicJS.jspf" %>
 </script>
-<style type="text/css">
-#productsMenu ul li.tabHome {
-	background:#f05224;
-}
-</style>
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
-<style type="text/css">
-@media only screen and (max-width: 350px) {
-	#productHomeContent.col1_798 { padding: 0; }
-}
-@media only screen and (max-width: 968px) {
-	#productHomeMenu.col1_170 { position: relative; }
-} 
-</style>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
@@ -171,9 +172,12 @@ function right() {
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
 				</script>
 				<div id="linksAside">
-					<a href="./toggleCameraView.do">Vista Avanzada</a>
-					<br/>
-					<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+					<% if (usingMobile || isAndroid) { %>
+						<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+					<% } else { %>
+						<a href="./toggleCameraView.do">Vista Avanzada</a>
+						<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+					<% } %>
 				</div>
 			<% } %>
 		</div>

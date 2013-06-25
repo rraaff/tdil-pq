@@ -23,75 +23,99 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-
-<%@ include file="includes/headLogged.jsp" %>
-
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
-<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
-<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
 <style type="text/css">
-.smallmap {
-	width: 968px;
-	height: 450px;
-}
-#tags { display: none; }
-#docs p {
-	font-size:12px;
-    margin-bottom: 0.5em;
-}
-/* mobile specific */
-@media only screen and (max-width: 968px) {
-    body {
-        height           : 100%;
-        margin           : 0;
-        padding          : 0;
-        width            : 100%;
-    }
-    #map {
-        background : #FFF;
-        width      : 100%;
-    }
-    #map {
-        border : 0;
-        height : 200px;
-    }
-    #title {
-        font-size   : 1.3em;
-        line-height : 2em;
-        text-indent : 1em;
-        margin      : 0;
-        padding     : 0;
-    }
-    #docs {
-        bottom     : 0;
-        padding    : 1em;
-    }
-    #shortdesc {
-        color      : #aaa;
-        font-size  : 0.8em;
-        padding    : 1em;
-        text-align : right;
-    }
-    #tags {
-        display : none;
-    }
-}
+	.smallmap {
+		width:968px;
+		height:450px;
+	}
+	#tags { display: none; }
+	#docs p {
+		font-size:12px;
+	    margin-bottom:0.5em;
+	}
 @media only screen and (orientation: landscape) and (max-width: 600px) {
-    #shortdesc {
-       float: right;
-       width: 25%;
+	#shortdesc {
+    	float:right;
+    	width:25%;
     }
-    #map {
-        width: 70%;
-    }
-    #docs {
-        font-size: 12px;
-    }
+	#map {
+		width:100%;
+	}
+	#docs {
+		font-size:12px;
+	}
 }
 </style>
+<% if (usingMobile || isAndroid) { %>
+	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+<% } else { %>
+	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_menu.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_social.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/copyright.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+		@media only screen and (max-width: 968px) {
+			body { background: #e51b24; overflow: hidden; }
+			#productsMenu ul li.logoContainer { line-height: 14px; }
+			#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
+			#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
+			footer { display:none; }
+			.pageWrapper { width: 100%; }
+			#content { width:100%; height:90%; text-align:center; display:inline-block; overflow:hidden; left:0px; top:127px; position:absolute; z-index:1; }
+			.smallmap, .pageWrapper { width: 100%; height: 100%; }
+			#zoomSection { width: 100%; margin: 0; }
+			#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
+		}
+		@media only screen and (max-height: 800px) and (max-width: 480px) {
+			button.iconMaxSpeed,
+			button.iconZSeguras,
+			button.iconGetPosit,
+			button.iconPhoneAdm,
+			button.iconHome {
+				background: url(mobile/images/webApp/car/control_maxSpeed_16x16.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				width:16px;
+				height:16px;
+				margin:2px 6px;
+			}
+			button.iconZSeguras { background: url(mobile/images/webApp/car/control_zSeguras_16x16.png); }
+			button.iconGetPosit { background: url(mobile/images/webApp/car/control_getPosit_16x16.png); }
+			button.iconPhoneAdm { background: url(mobile/images/webApp/car/control_phoneAdm_16x16.png); }
+			button.iconHome { background: url(mobile/images/webApp/parkings/back_home.png }
+			button.icon_zoom_in,
+			button.icon_zoom_out {
+				background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				width:32px;
+				height:32px;
+				padding:5px;
+				margin:5px;
+			}
+			button.icon_zoom_out {
+				background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+			}
+		}
+		@media only screen and (max-height: 800px) and (max-width: 480px) {
+
+		}
+	</style>
+<% } %>
+<style type="text/css">
+#productsMenu ul li.tabCar {
+	background:#f05224;
+}
+</style>
+
+<%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
 <script src="js/MapaOSM.js" type="text/javascript"></script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");%>
@@ -233,187 +257,30 @@
 
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>
-
-<style type="text/css">
-#controls .basicControls {
-	padding: 10px 0;
-}
-#productsMenu ul li.tabCar {
-	background:#f05224;
-}
-button.iconMaxSpeed,
-button.iconZSeguras,
-button.iconGetPosit,
-button.iconPhoneAdm {
-	border:none;
-	background: transparent;
-	background: url(images/skin_lj_rl/webApp/car/control_maxSpeed_32x32.png);
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	width: 32px;
-	height: 32px;
-	margin: 0 10px;
-	padding: 0;
-	cursor: pointer;
-}
-button.iconZSeguras { background: url(images/skin_lj_rl/webApp/car/control_zSeguras_32x32.png); }
-button.iconGetPosit { background: url(images/skin_lj_rl/webApp/car/control_getPosit_32x32.png); }
-button.iconPhoneAdm { background: url(images/skin_lj_rl/webApp/car/control_phoneAdm_32x32.png); }
-a.iconHome img {
-	width:32px;
-	height:32px;
-	margin: 0 10px;
-	vertical-align: middle;
-}
-#tableStyle {
-	width:100%;
-	height:300px;
-	overflow: auto;
-}
-fieldset.tableHeader {
-	background:#333;
-}
-fieldset label {
-	border-right:dotted 1px #999;
-	font-size:13px;
-	padding:0 10px;
-	height: auto;
-}
-fieldset.tableHeader label {
-	color:#FFF;
-}
-fieldset label.w1 {
-	width: 80px;
-}
-
-fieldset label.w2 {
-	text-align:center;
-	width: 100px;
-}
-fieldset label.w3 {
-	width: 310px;
-}
-.plateHighltd { color:#000; }
-
-</style>
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
-<style type="text/css">
-@media only screen and (max-width: 968px) {
-	body { background: #e51b24; overflow: hidden; }
-	#productsMenu ul li.logoContainer { line-height: 14px; }
-	#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
-	#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
-	footer { visibility: hidden; }
-	.pageWrapper { width: 100%; }
-	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align:center; display:inline-block; overflow:hidden; left:0px; top:83px; position:absolute; z-index:1; }
-	.smallmap, .pageWrapper { width: 100%; height: 100%; }
-	#zoomSection { width: 100%; margin: 0; }
-	#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
-}
-@media only screen and (max-height: 800px) and (max-width: 480px) {
-	button.iconMaxSpeed,
-	button.iconZSeguras,
-	button.iconGetPosit,
-	button.iconPhoneAdm {
-		background: url(mobile/images/webApp/car/control_maxSpeed_16x16.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		width:16px;
-		height:16px;
-		margin:2px 6px;
-	}
-	button.iconZSeguras { background: url(mobile/images/webApp/car/control_zSeguras_16x16.png); }
-	button.iconGetPosit { background: url(mobile/images/webApp/car/control_getPosit_16x16.png); }
-	button.iconPhoneAdm { background: url(mobile/images/webApp/car/control_phoneAdm_16x16.png); }
-	a.iconHome img {
-		width:16px;
-		height:16px;
-		padding:0;
-		margin:0;
-		vertical-align: bottom;
-	}
-	a.iconHome {
-		width:16px;
-		height:16px;
-		margin:2px 6px;
-	}
-	button.icon_zoom_in,
-	button.icon_zoom_out {
-		background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		width:32px;
-		height:32px;
-		padding:5px;
-		margin:5px;
-	}
-	button.icon_zoom_out {
-		background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-	}
-}
-</style>
-<% if (usingMobile || isAndroid) { %>
-	<style type="text/css">
-		#productsMenu ul li.logoContainer {
-			display:none;
-		}
-		#productsMenu {
-			height:17px;
-		}
-		#content {
-			height:100%;
-			top:0px;
-			overflow: hidden;
-		}
-		#productsMenu ul li,
-		#productsMenu ul li.toRight {
-			line-height: 16px;
-		}
-		#productsMenu ul li a {
-			font-size: 60%;
-		}
-		#productHomeMenu ul li a {
-			font-size: 60%;
-		}
-		#zoomSection .zoomControls {
-			top:40%;
-			left:5px;
-		}
-	/*	a.iconHome {
-			width:16px;
-			height:16px;
-			margin:2px 6px;
-		}*/
-	</style>
-<% } %>
 </head>
-
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
-	</div>
-</section>
-<section id="controls">
-	<div class="basicControls">
-		<a href="mobile/home.jsp" class="iconHome" title="Volver al inicio"><img src="mobile/images/webApp/car/control_home_16x16.png" /></a>
-		<button class="iconMaxSpeed" onclick="editMaxSpeed();" title="Velocidades máximas">&nbsp;</button>
-		<button class="iconZSeguras" onclick="editSecureZones();" title="Zonas seguras">&nbsp;</button>
-		<button class="iconGetPosit" onclick="selectVehiclesForMap();" title="Localizar vehículos">&nbsp;</button>
-		<button class="iconPhoneAdm" onclick="selectVehiclesPhones();" title="Teléfonos">&nbsp;</button>
-	</div>
-</section>
-<section id="zoomSection">
-	<div class="zoomControls">
-		<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
-		<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
-	</div>
-</section>
 
+		<section id="controls">
+			<div class="basicControls">
+				<button class="iconMaxSpeed" onclick="editMaxSpeed();" title="Velocidades máximas">&nbsp;</button>
+				<button class="iconZSeguras" onclick="editSecureZones();" title="Zonas seguras">&nbsp;</button>
+				<button class="iconGetPosit" onclick="selectVehiclesForMap();" title="Localizar vehículos">&nbsp;</button>
+				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();" title="Teléfonos">&nbsp;</button>
+			</div>
+		</section>
+		<section id="zoomSection">
+			<div class="zoomControls">
+				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
+				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
+			</div>
+		</section>
+	</div>
+</section>
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesMaxSpeed" class="defaultLayerStyles">

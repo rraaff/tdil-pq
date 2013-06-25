@@ -18,15 +18,19 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/reset-styles" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
-<link href="css/index_social.css" rel="stylesheet" type="text/css" />
-<link href="css/copyright.css" rel="stylesheet" type="text/css" />
-<link href="css/mediaQueries.css" rel="stylesheet" type="text/css" />
+<% if (usingMobile || isAndroid) { %>
+	<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen">
+<% } else { %>
+	<link href="css/reset-styles" rel="stylesheet" media="screen">
+	<link href="css/sizers.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link href="css/index_modales.css" rel="stylesheet" type="text/css" />
+	<link href="css/index_social.css" rel="stylesheet" type="text/css" />
+	<link href="css/copyright.css" rel="stylesheet" type="text/css" />
+	<link href="css/mediaQueries.css" rel="stylesheet" type="text/css" />
+<% } %>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/bootstrap.min.js"></script>
 
@@ -62,7 +66,11 @@ $(function() {
 		</div>
 		<div id="productHomeContent" class="col1_798_noSpaces">
 			<div class="adaptableContent">
-				<img class="homeAd" src="images/skin_lj_rl/backs/Placa-landing.jpg" />
+				<% if (usingMobile || isAndroid) { %>
+					<img class="homeAd" src="mobile/images/webApp/home/Placa-landing.jpg" />
+				<% } else { %>
+					<img class="homeAd" src="images/skin_lj_rl/backs/Placa-landing.jpg" />
+				<% } %>
 			</div>
 		</div>
 	</div>

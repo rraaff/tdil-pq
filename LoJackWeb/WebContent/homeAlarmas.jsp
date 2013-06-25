@@ -21,16 +21,31 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<link href="css/index_modales.css" rel="stylesheet"  type="text/css"/>
-<link href="css/index_social.css" rel="stylesheet"  type="text/css"/>
-<link href="css/copyright.css" rel="stylesheet"  type="text/css"/>
-<link href="css/bootstrapSwitch.css" rel="stylesheet">
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
-
+<% if (usingMobile || isAndroid) { %>
+	<link href="css/index_modales.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/bootstrapSwitch.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/unified_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/homeProduct_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+<% } else { %>
+	<link href="css/reset-styles.css" rel="stylesheet" media="screen" />
+	<link href="css/sizers.css" rel="stylesheet" media="screen" />
+	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link href="css/index_modales.css" rel="stylesheet"  type="text/css" />
+	<link href="css/index_social.css" rel="stylesheet"  type="text/css" />
+	<link href="css/copyright.css" rel="stylesheet"  type="text/css" />
+	<link href="css/bootstrapSwitch.css" rel="stylesheet" />
+	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<% } %>
+<style type="text/css">
+#productsMenu ul li.tabHome {
+	background:#f05224;
+}
+textarea {
+	width: 200px;
+	float:left;
+}
+</style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/alarms.js"></script>
 <script src="js/jQueryRotateCompressed.2.2.js"></script>
@@ -342,31 +357,6 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 		$('#password').attr('value', $('#password').attr('value') + st);
 	}
 </script>
-<style type="text/css">
-#productsMenu ul li.tabHome {
-	background:#f05224;
-}
-textarea {
-	width: 200px;
-	float:left;
-}
-.has-switch span.switch-warning {
-	left: -81px;
-}
-</style>
-
-<% if (usingMobile || isAndroid) { %>
-	<style type="text/css">
-		#productHomeContent.col1_798 { padding:5px 0 0 0; }
-		#accordion, #agendaWrapper { padding:3px; }
-		#accordion .portaTitleAndSwitch { width:85%; margin:0 10px 0 0; padding:5px 0; float:right; }
-
-		.has-switch.switch-mini { min-width: 102px; }
-		.has-switch span.switch-warning { left: -52px; }
-		.has-switch span.switch-danger { left:1px; }
-		.has-switch label { left: 50px; }
-	</style>
-<% } %>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

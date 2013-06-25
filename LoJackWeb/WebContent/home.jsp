@@ -90,5 +90,6 @@
 <!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/legalesLayer.jsp" %>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+</body>
 </html>

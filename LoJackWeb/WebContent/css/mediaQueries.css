@@ -12,7 +12,16 @@ and (max-device-width : 480px) {
 }
 @media only screen and (max-height : 378px) {
 	#copyright {
-		top: 305px;
+		display:none;
+		/*top: 305px;*/
+	}
+	#laRuedita {
+		top: 30%;
+	}
+}
+@media only screen and (max-height : 320px) {
+	#elTelefono {
+		display:none;
 	}
 }
 @media only screen and (max-height : 842px) {
@@ -129,7 +138,7 @@ and (max-width : 850px) {
 	#logoIndex {
 		width: 30%;
 		height: auto;
-		top:7%;
+		top:10%;
 		z-index: 1400;
 		position: fixed;
 	}
@@ -341,11 +350,15 @@ and (max-height : 550px) {
 		-webkit-background-size: contain;
 	}
 }
+@media only screen and (max-width: 650px) {
+	header,
+	header.menuInternas { display: none; }
+}
 @media only screen and (max-width: 968px) {
 	body { background-color: #531a1a; }
-	header, header.menuInternas { display: none; } 
+	header .userLoggedThalamusMenu { width:100%; }
 	#productsMenu { height:83px; top:0; z-index: 2; position: relative; }
-	#productsMenu .userLoggedThalamusMenu {  }
+	#productsMenu .userLoggedThalamusMenu { width:100%; }
 	.correctNav { width: 100%; }
 	#productsMenu ul li { font-size: 16px; line-height: 43px; }
 	#productsMenu ul li a { padding: 0; }
@@ -427,8 +440,8 @@ and (max-height : 550px) {
 
 	/* switch */
 	.has-switch.switch-mini { min-width: 100px; }
-	.has-switch span.switch-warning { left: -54px; }
 	.has-switch label { left: 53px; }
+	.has-switch span.switch-warning { left:-54px; }
 }
 @media only screen and (max-width: 350px) {
 	body { overflow-x:hidden; overflow-y:auto; }
@@ -440,6 +453,10 @@ and (max-height : 550px) {
 	}
 	#agendaWrapper label.radiosFreq { width:100%; }
 	#agendaWrapper label.days { width:100%; margin:0 0 0 20px; float:left; }
+}
+@media only screen and (max-height: 450px) {
+	header,
+	header.menuInternas { display:none; }
 }
 /* Smartphones (portrait) ----------- */
 @media only screen 

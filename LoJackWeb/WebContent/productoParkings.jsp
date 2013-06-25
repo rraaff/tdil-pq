@@ -22,80 +22,96 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<!-- link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" /> -->
-<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
-<%@ include file="includes/headLogged.jsp" %>
-
 <style type="text/css">
-#productsMenu ul li.tabParking {
-	background:#f05224;
-}
-.smallmap {
-	width: 968px;
-	height: 450px;
-}
-#tags { display: none; }
-#docs p {
-	font-size:12px;
-    margin-bottom: 0.5em;
-}
-/* mobile specific */
-@media only screen and (max-width: 968px) {
-    body {
-        height           : 100%;
-        margin           : 0;
-        padding          : 0;
-        width            : 100%;
-    }
-    #map {
-        background : #FFF;
-        width      : 100%;
-    }
-    #map {
-        border : 0;
-        height : 200px;
-    }
-    #title {
-        font-size   : 1.3em;
-        line-height : 2em;
-        text-indent : 1em;
-        margin      : 0;
-        padding     : 0;
-    }
-    #docs {
-        bottom     : 0;
-        padding    : 1em;
-    }
-    #shortdesc {
-        color      : #aaa;
-        font-size  : 0.8em;
-        padding    : 1em;
-        text-align : right;
-    }
-    #tags {
-        display : none;
-    }
-}
+	.smallmap {
+		width:968px;
+		height:450px;
+	}
+	#tags { display: none; }
+	#docs p {
+		font-size:12px;
+	    margin-bottom:0.5em;
+	}
 @media only screen and (orientation: landscape) and (max-width: 600px) {
-    #shortdesc {
-       float: right;
-       width: 25%;
+	#shortdesc {
+    	float:right;
+    	width:25%;
     }
-    #map {
-        width: 100%;
-    }
-    #docs {
-        font-size: 12px;
-    }
+	#map {
+		width:100%;
+	}
+	#docs {
+		font-size:12px;
+	}
 }
 </style>
+<% if (usingMobile || isAndroid) { %>
+	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+<% } else { %>
+	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_menu.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/index_social.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/copyright.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+		@media only screen and (max-width: 968px) {
+			body { background: #e51b24; overflow: hidden; }
+			#productsMenu ul li.logoContainer { line-height: 14px; }
+			#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
+			#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
+			footer { display:none; }
+			.pageWrapper { width: 100%; }
+			#content { width:100%; height:90%; text-align:center; display:inline-block; overflow:hidden; left:0px; top:127px; position:absolute; z-index:1; }
+			.smallmap, .pageWrapper { width: 100%; height: 100%; }
+			#zoomSection { width: 100%; margin: 0; }
+			#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
+		}
+		@media only screen and (max-height: 800px) and (max-width: 480px) {
+			button.iconEall,
+			button.icon100mts,
+			button.icon500mts,
+			button.icon1mks,
+			button.iconClear,
+			button.iconHome {
+				background: url(mobile/images/webApp/parkings/control_100mts.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				width:50px;
+				height:42px;
+				margin:2px 4px;
+			}
+			button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
+			button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
+			button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
+			button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
+			button.iconHome { background: url(mobile/images/webApp/parkings/back_home.png }
+			button.icon_zoom_in,
+			button.icon_zoom_out {
+				background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				width:32px;
+				height:32px;
+				padding:5px;
+				margin:5px;
+			}
+			button.icon_zoom_out {
+				background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+			}
+		}
+	</style>
+<% } %>
+<style type="text/css">
+	#productsMenu ul li.tabParking {
+		background:#f05224;
+	}
+</style>
+<%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
 <script src="js/MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -148,7 +164,10 @@
             "maxSize": new OpenLayers.Size(500, 300),
             "keepInMap": true
         });
-
+        
+        function goHome(){
+        	window.location = 'mobile/home.jsp';
+        }
         function showAllParkings() {
         	removeParkings();
         	if (MyPos) {
@@ -300,87 +319,6 @@
 			return marker;
 		}
 </script>
-
-<style type="text/css">
-@media only screen and (max-width: 968px) {
-	body { background: #e51b24; overflow: hidden; }
-	#productsMenu ul li.logoContainer { line-height: 14px; }
-	#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
-	#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
-	footer { visibility: hidden; }
-	.pageWrapper { width: 100%; }
-	#content { width: 100%; height: 100%; padding: 0px; margin: 0px; text-align:center; display:inline-block; overflow:hidden; left:0px; top:83px; position:absolute; z-index:1; }
-	.smallmap, .pageWrapper { width: 100%; height: 100%; }
-	#zoomSection { width: 100%; margin: 0; }
-	#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
-}
-@media only screen and (max-height: 800px) and (max-width: 480px) {
-	button.iconEall,
-	button.icon100mts,
-	button.icon500mts,
-	button.icon1mks,
-	button.iconClear {
-		background: url(mobile/images/webApp/parkings/control_100mts.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		width:31px;
-		height:24px;
-		margin:2px 4px;
-	}
-	button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
-	button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
-	button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
-	button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
-	a.iconHome {
-		width:16px;
-		height:16px;
-		margin:2px 4px;
-	}
-	button.icon_zoom_in,
-	button.icon_zoom_out {
-		background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-		width:32px;
-		height:32px;
-		padding:5px;
-		margin:5px;
-	}
-	button.icon_zoom_out {
-		background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
-		background-repeat: no-repeat;
-		background-position: 0 0;
-}
-</style>
-<% if (usingMobile || isAndroid) { %>
-	<style type="text/css">
-		#productsMenu ul li.logoContainer {
-			display:none;
-		}
-		#productsMenu {
-			height:17px;
-		}
-		#content {
-			height:100%;
-			top:0px;
-			overflow: hidden;
-		}
-		#productsMenu ul li,
-		#productsMenu ul li.toRight {
-			line-height: 16px;
-		}
-		#productsMenu ul li a {
-			font-size: 60%;
-		}
-		#productHomeMenu ul li a {
-			font-size: 60%;
-		}
-		#zoomSection .zoomControls {
-			top:40%;
-			left:5px;
-		}
-	</style>
-<% } %>
 </head>
 <body onload="getSize();">
 <%@ include file="includes/header.jsp" %>
@@ -388,27 +326,26 @@
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
+		<section id="controls">
+			<div class="basicControls">
+				<!-- % if (usingMobile || isAndroid) { %>
+					<button class="iconHome" onclick="goHome">&nbsp;</button>
+				<  % } % -->
+				<button class="iconEall" onclick="showAllParkings()">&nbsp;</button>
+				<button class="icon100mts" onclick="showParkings(100)">&nbsp;</button>
+				<button class="icon500mts" onclick="showParkings(500)">&nbsp;</button>
+				<button class="icon1mks" onclick="showParkings(1000)">&nbsp;</button>
+				<button class="iconClear" onclick="removeParkings()">&nbsp;</button>	
+			</div>
+		</section>
+		<section id="zoomSection">
+			<div class="zoomControls">
+				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
+				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
+			</div>
+		</section>
 	</div>
 </section>
-<section id="controls">
-	<div class="basicControls">
-		<% if (usingMobile || isAndroid) { %>
-			<a href="mobile/home.jsp" class="iconHome" title="Volver al inicio"><img src="mobile/images/webApp/car/control_home_16x16.png" /></a>
-		<% } %>
-		<button class="iconEall" onclick="showAllParkings()">&nbsp;</button>
-		<button class="icon100mts" onclick="showParkings(100)">&nbsp;</button>
-		<button class="icon500mts" onclick="showParkings(500)">&nbsp;</button>
-		<button class="icon1mks" onclick="showParkings(1000)">&nbsp;</button>
-		<button class="iconClear" onclick="removeParkings()">&nbsp;</button>	
-	</div>
-</section>
-<section id="zoomSection">
-	<div class="zoomControls">
-		<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
-		<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
-	</div>
-</section>
-
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
