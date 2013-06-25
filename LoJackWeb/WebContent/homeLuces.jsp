@@ -303,12 +303,14 @@
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							//setLightStatusOn(idEntidad, idLuz);
 						} else {
+							setLightStatusOff(idEntidad, idLuz);
 							centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
 							centerLayer($(window), $( "#centradorModalesLNO" ));
 						}
 					}
 	          },
 	          error: function() {
+	        	  setLightStatusOff(idEntidad, idLuz);
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOnLayer" ));
 	        	  centerLayer($(window), $( "#centradorModalesLNO" ));
@@ -336,12 +338,14 @@
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							//setLightStatusOff(idEntidad, idLuz);
 						} else {
+							setLightStatusOn(idEntidad, idLuz);
 							centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
 							centerLayer($(window), $( "#centradorModalesLNTOL" ));
 						}
 					}
 	          },
 	          error: function() {
+	        	  setLightStatusOn(idEntidad, idLuz);
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#lightNotTurnedOffLayer" ));
 	        	  centerLayer($(window), $( "#centradorModalesLNTOL" ));
@@ -369,12 +373,14 @@
 							$( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 							//setLightStatusRanOn(idEntidad, idLuz);
 						} else {
+							setLightStatusOff(idEntidad, idLuz);
 							centerLayer($(window), $( "#randomNotActivatedLayer" ));
 							centerLayer($(window), $( "#centradorModalesRNAL" ));
 						}
 					}
 	          },
 	          error: function() {
+	        	  setLightStatusOff(idEntidad, idLuz);
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotActivatedLayer" ));
 	        	  centerLayer($(window), $( "#centradorModalesRNAL" ));
@@ -402,12 +408,14 @@
 		        		  $( "#light-job-" +idEntidad + "-" + idLuz ).prop('innerHTML', '*');
 		        		  //setLightStatusRanOff(idEntidad, idLuz);
 						} else {
+							setLightStatusRanOn(idEntidad, idLuz);
 							centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 							centerLayer($(window), $( "#centradorModalesRNDL" ));
 						}
 					}
 	          },
 	          error: function() {
+	        	  setLightStatusRanOn(idEntidad, idLuz);
 	        	  <%@ include file="includes/unblockUI.jspf" %>
 	        	  centerLayer($(window), $( "#randomNotDeactivatedLayer" ));
 	        	  centerLayer($(window), $( "#centradorModalesRNDL" ));
