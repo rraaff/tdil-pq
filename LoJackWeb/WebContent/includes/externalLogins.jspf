@@ -1,6 +1,6 @@
 <%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
-	<% if (!LoJackWebUtils.isMobile(request)){ %>
+	<% if (!usingMobile && !isAndroid){ %>
 		$( "#enterPets" ).click(function() {
 			var userDate = new Date();
 			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
@@ -15,7 +15,7 @@
 	<% } %>
 <% } %>
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-	<% if (usingMobile || isAndroid){ %>
+	<% if (!usingMobile && !isAndroid){ %>
 		$( "#enterPrevent" ).click(function() {
 			var userDate = new Date();
 			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
