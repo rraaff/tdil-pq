@@ -582,8 +582,8 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
 	background-repeat:repeat;
 	width:968px;
-	top:538px;
-	position:fixed;
+	top:403px;
+	position:absolute;
 	z-index: 1300;
 }
 button.iconEall,

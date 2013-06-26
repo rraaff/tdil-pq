@@ -264,13 +264,12 @@
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
-
 		<section id="controls">
 			<div class="basicControls">
-				<button class="iconMaxSpeed" onclick="editMaxSpeed();" title="Velocidades máximas">&nbsp;</button>
-				<button class="iconZSeguras" onclick="editSecureZones();" title="Zonas seguras">&nbsp;</button>
-				<button class="iconGetPosit" onclick="selectVehiclesForMap();" title="Localizar vehículos">&nbsp;</button>
-				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();" title="Teléfonos">&nbsp;</button>
+				<button class="iconMaxSpeed" onclick="editMaxSpeed();">&nbsp;</button>
+				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
+				<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
+				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 			</div>
 		</section>
 		<section id="zoomSection">
