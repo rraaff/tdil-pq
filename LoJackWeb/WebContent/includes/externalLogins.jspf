@@ -15,7 +15,7 @@
 	<% } %>
 <% } %>
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-	<% if (!LoJackWebUtils.isMobile(request)){ %>
+	<% if (usingMobile || isAndroid){ %>
 		$( "#enterPrevent" ).click(function() {
 			var userDate = new Date();
 			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
