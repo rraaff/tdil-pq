@@ -46,6 +46,7 @@
 }
 </style>
 <% if (usingMobile || isAndroid) { %>
+	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 <% } else { %>
 	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
@@ -320,7 +321,7 @@
 		}
 </script>
 </head>
-<body onload="getSize();">
+<body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <section id="content">
@@ -328,9 +329,6 @@
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
-				<!-- % if (usingMobile || isAndroid) { %>
-					<button class="iconHome" onclick="goHome">&nbsp;</button>
-				<  % } % -->
 				<button class="iconEall" onclick="showAllParkings()">&nbsp;</button>
 				<button class="icon100mts" onclick="showParkings(100)">&nbsp;</button>
 				<button class="icon500mts" onclick="showParkings(500)">&nbsp;</button>

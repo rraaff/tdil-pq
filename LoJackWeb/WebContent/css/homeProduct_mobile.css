@@ -188,6 +188,7 @@ body {
 
 .has-switch.switch-mini { min-width: 102px; }
 .has-switch span.switch-warning { left: -52px; }
+.random-switch { left: -66px; }
 .has-switch span.switch-danger { left:1px; }
 .has-switch label { left: 50px; }
 input,

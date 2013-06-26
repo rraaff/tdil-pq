@@ -153,7 +153,7 @@ function right() {
 				</div>
 				<div id="linksAside">
 					<a href="./toggleCameraView.do"><span>Cambiar Simple >></span></a>
-					<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+					<!--  a href="./goToHomeCamera.do"><span><< Volver</span></a> -->
 				</div>
 			<% } else { %>
 				<div id="pictureContainer">
@@ -172,10 +172,10 @@ function right() {
 				</script>
 				<div id="linksAside">
 					<% if (usingMobile || isAndroid) { %>
-						<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+						<!-- a href="./goToHomeCamera.do"><span><< Volver</span></a-->
 					<% } else { %>
 						<a href="./toggleCameraView.do">Vista Avanzada</a>
-						<a href="./goToHomeCamera.do"><span><< Volver</span></a>
+						<!-- a href="./goToHomeCamera.do"><span><< Volver</span></a-->
 					<% } %>
 				</div>
 			<% } %>

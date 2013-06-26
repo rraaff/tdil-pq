@@ -421,7 +421,6 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 	</div>
 </section>
 <%@ include file="includes/panicButton.jspf" %>
-
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500; top:0; left:0;">
