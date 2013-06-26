@@ -390,15 +390,15 @@ function parkingsNotLogged() {
 <div id="flyingObjectContainer"> 
 	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
 	
-	<!-- div id="socialSingleSignOn">
-		<div><span class="textInside">Ingresá con tus cuentas</span></div>
+	<div id="socialSingleSignOn">
+		<!-- div><span class="textInside">Ingresá con tus cuentas</span></div-->
 		<div>
 			<ul>
-				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-				<li class="sotwitter"><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+				<li class="sofacebook"><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+				<li class="sotwitter"><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
 			</ul>
 		</div>
-	</div-->
+	</div>
 </div>
 
 <%@ include file="includes/contactLayers.jspf" %>

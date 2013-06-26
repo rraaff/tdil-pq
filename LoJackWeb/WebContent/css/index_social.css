@@ -1,8 +1,8 @@
 #socialSingleSignOn {
-	right: 20px;
-	z-index: 30;
-	position: absolute;
-	display: inline-block;
+	right:20px;
+	z-index:1000;
+	position:absolute;
+	display:inline-block;
 }
 #socialSingleSignOn div {
 	float: left;
