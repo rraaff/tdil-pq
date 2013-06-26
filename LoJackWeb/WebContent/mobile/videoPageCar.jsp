@@ -1,5 +1,6 @@
 <%@ page info="videoPage"%><%--
 --%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
+--%><%@ include file="../includes/agentInfo.jspf" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
@@ -17,10 +18,13 @@
 <body>
 <div class="videoLayer">
 	<div id="videoWrapper">
-		<!-- iframe id="videoIframe" src="http://www.youtube.com/embed/5Xe5pODPq1I" frameborder="0" allowscale="false" allowfullscreen></iframe-->
-		<div id="videoIframe" class="carSample">
-			<p><a href="<%=com.tdil.lojack.utils.LoJackConfig.getMobilevideocar()%>" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
-		</div>
+		<% if (isIpad || isIphone || isIpod) { %>
+			<iframe id="videoIframe" src="<%=com.tdil.lojack.utils.LoJackConfig.getVideocar()%>" frameborder="0" allowscale="false" allowfullscreen></iframe>
+		<% } else { %>
+			<div id="videoIframe" class="carSample">
+				<p><a href="<%=com.tdil.lojack.utils.LoJackConfig.getMobilevideocar()%>" target="_blank">Su navegador no soporta FLASH.<br/>Ver video en Youtube</a></p>
+			</div>
+		<% } %>
 	</div>
 	<div id="footerizer">
 		<h3 id="videoTitle">Lo Jack Car</h3>

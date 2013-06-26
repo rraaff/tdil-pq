@@ -4,6 +4,7 @@
 	boolean isAndroid = agentInfo.detectAndroid();
 	boolean isIpad = agentInfo.detectIpad();
 	boolean isIphone = agentInfo.detectIphone();
+	boolean isIpod = agentInfo.detectIpod();
 	
 	Boolean _usingMobile = (Boolean)session.getAttribute("usingMobile");
 	boolean usingMobile = (_usingMobile == null) ? false : _usingMobile.booleanValue();
