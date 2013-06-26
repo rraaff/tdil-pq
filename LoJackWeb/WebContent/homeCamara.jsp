@@ -129,7 +129,7 @@ function right() {
 				<li class="tabCameras active"><a href="./goToHomeCamera.do">Mi Camara</a></li>
 			</ul>
 		</div>
-		<div id="productHomeContent" class="col1_798 camarasBG">
+		<div id="productHomeContent" class="camarasBG">
 			<div id="cameraTitle">
 				<h1>Mi Cámara</h1>
 			</div>
@@ -153,7 +153,6 @@ function right() {
 				</div>
 				<div id="linksAside">
 					<a href="./toggleCameraView.do"><span>Cambiar Simple >></span></a>
-					<br/>
 					<a href="./goToHomeCamera.do"><span><< Volver</span></a>
 				</div>
 			<% } else { %>

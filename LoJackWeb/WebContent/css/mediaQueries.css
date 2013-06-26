@@ -377,17 +377,21 @@ and (max-height : 550px) {
 	#productHomeMenu li.tabAlarms a, #productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { background-image:none; height:auto; padding:5px 0; }
 	#productHomeMenu li.tabLights a, #productHomeMenu li.tabCameras a { border-left:solid 1px #fff; }
 	/*.camarasBG,.lucesBG, .camarasBG { background-image:none; background:transparent; width: auto; height: auto; padding: 0px; }*/
-	#productHomeContent.col1_798, #productHomeContent.col1_798_noSpaces { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#productHomeContent.col1_798,
+	#productHomeContent.col1_798_noSpaces,
+	#productHomeContent.camarasBG { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	img#cameraImg { width:100%; height:auto; }
+	#appletHolder { width:100%; height:350px; }
 	#productHomeContent.col1_798_noSpaces { padding:0; }
 	#productHomeContent { overflow-x:hidden; position:relative; }
 	#productHomeMenu.col1_170 { position: relative; }
 	#tab { display: none;}
 	footer { display: none; }
 	#panicButtonContainer {
-		width: 100%;
-		height: 30px;
-		margin: 0 auto;
-		top:auto; /*570*/
+		width:260px;
+		height:30px;
+		margin:0 auto;
+		top:auto;
 		z-index:500;
 		position:relative;
 	}
@@ -430,7 +434,7 @@ and (max-height : 550px) {
 	fieldset input[type="radio"], fieldset input[type="checkbox"] { line-height: 25px; margin: 5px 5px 0 0; }
 	#agendaWrapper table { color:#000; font-size:10px; width:100%; }
 	#cameraTitle { width:100% }
-	#appletHolder { width:100%; height: 100%; }
+	#appletHolder { width:100%; }
 	#linksAside { display: none; }
 	embed, object { width:100%; }
 	#cameraTitle h1 { font-size:100%; line-height:normal; padding:20px 0 0 40px; }

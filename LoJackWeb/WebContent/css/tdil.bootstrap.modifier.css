@@ -251,12 +251,15 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 }
 #pictureContainer {
 	background:#fff;
-	width:561px;
-	height: 297px;
-	overflow: hidden;
+	width:560px;
+	height:297px;
 	float:left; 
 }
-.controlsBasicView { background:#fff; width: 561px; margin: 0 auto; position: fixed; top: 514px; z-index: 1400; }
+img#cameraImg {
+	width:560px;
+	height:297px;
+}
+.controlsBasicView { background:#fff; width: 561px; margin: 0 auto; top: 514px; z-index: 1400; }
 div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #agendaWrapper h1 {
 	padding: 0;
@@ -295,18 +298,27 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 #appletHolder {
 	background: #fff;
 	width: 560px;
-	height: 297px;
+	height: 330px;
 	overflow: hidden;
 	float:left;
 	z-index: 1400;
 }
 #linksAside {
-	text-align:left;
-	margin:240px 0 0 10px;
+	text-align:center;
+	width:185px;
+	margin:309px 0 0 10px;
 	float:left;
 }
 #linksAside span {
-	padding: 5px 0;
+/*	padding: 5px 0;*/
+}
+#linksAside a {
+	padding-right:10px;
+}
+.camarasBG {
+	font-size:10px;
+	padding:30px 0 0 40px;
+	overflow:hidden;
 }
 #tab {
 	background: url(../images/skin_lj_rl/tabs/servicion.png);
@@ -543,10 +555,10 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 .has-switch span.switch-warning { left:-81px; }
 /* PANIC */
 #panicButtonContainer {
-	width: 968px;
-	height: 60px;
-	margin: 0 auto;
-	top:565px;
+	width:968px;
+	height:60px;
+	margin:0 auto;
+	top:52px;
 	z-index:500;
 	position:relative;
 }
@@ -631,14 +643,14 @@ button.icon_zoom_out { background: url(../images/skin_lj_rl/webApp/parkings/icon
 }
 /* FOOTER */
 footer {
-	width: 100%;
-	padding: 50px 0px;
-	margin: 0px;
-	display: inline-block;
-	overflow: hidden;
+	width:100%;
+	padding:50px 0 0 0;
+	margin:0px;
+	display:inline-block;
+	overflow:hidden;
 	left:0px;
 	top:557px;
-	position: absolute;
+	position:absolute;
 }
 footer h3 {
 	color: #551a1a;
