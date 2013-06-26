@@ -24,6 +24,9 @@ public abstract class IPCamera implements Serializable {
 	
 	private String basicAuth;
 	
+	private int connectTimeOut = 5000;
+	private int readTimeOut = 5000;
+	
 	private static ProxyConfiguration proxyConfiguration;
 	private static ProxyConfiguration proxyConfigurationHttps;
 	
@@ -128,8 +131,8 @@ public abstract class IPCamera implements Serializable {
 	}
 
 	protected void configureTimeout(HttpURLConnection conn) {
-		conn.setConnectTimeout(1000);
-		conn.setReadTimeout(1000);
+		conn.setConnectTimeout(this.getConnectTimeOut());
+		conn.setReadTimeout(this.getReadTimeOut());
 	}
 
 	public static ProxyConfiguration getProxyConfiguration() {
@@ -146,6 +149,22 @@ public abstract class IPCamera implements Serializable {
 
 	public static void setProxyConfigurationHttps(ProxyConfiguration proxyConfigurationHttps) {
 		IPCamera.proxyConfigurationHttps = proxyConfigurationHttps;
+	}
+
+	public int getConnectTimeOut() {
+		return connectTimeOut;
+	}
+
+	public void setConnectTimeOut(int connectTimeOut) {
+		this.connectTimeOut = connectTimeOut;
+	}
+
+	public int getReadTimeOut() {
+		return readTimeOut;
+	}
+
+	public void setReadTimeOut(int readTimeOut) {
+		this.readTimeOut = readTimeOut;
 	}
 
 }

@@ -10,6 +10,10 @@ import java.net.URL;
 
 public class PanasonicBLC131 extends IPCamera {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7542741455885976217L;
 	private static final String IMAGE = "/nphMotionJpeg?Resolution=320x240&Quality=Standard";
 	private static final String LEFT = "/nphControlCamera?Direction=PanLeft";
 	private static final String RIGHT = "/nphControlCamera?Direction=PanRight";

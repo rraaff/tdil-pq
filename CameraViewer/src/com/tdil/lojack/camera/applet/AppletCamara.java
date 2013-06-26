@@ -203,6 +203,8 @@ public class AppletCamara extends javax.swing.JApplet {
 		String password = null;
 		String refreshIntervalParam = null;
 		String model = null;
+		int connectTimeOut = 5000;
+		int readTimeOut = 5000;
 		if (username == null || username.length() == 0) {
 			URL urlParams;
 			try {
@@ -216,6 +218,8 @@ public class AppletCamara extends javax.swing.JApplet {
 				password = parameters[1];
 				url = parameters[2];
 				model = parameters[3];
+				connectTimeOut = Integer.parseInt(parameters[4]);
+				readTimeOut = Integer.parseInt(parameters[5]);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -240,6 +244,8 @@ public class AppletCamara extends javax.swing.JApplet {
 		if (PanasonicBLC131.PANASONIC_BLC131.equals(model)) {
 			camera = new PanasonicBLC131(url, username, password);
 		}
+		camera.setConnectTimeOut(connectTimeOut);
+		camera.setReadTimeOut(readTimeOut);
 
 		Thread thread = new Thread() {
 			/*

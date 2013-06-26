@@ -10,6 +10,10 @@ import java.net.URL;
 
 public class TPLinkSC4171G extends IPCamera {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6077871117739337461L;
 	private static final String IMAGE = "/jpg/image.jpg";
 	private static final String LEFT = "/cgi-bin/operator/ptzset?move=left";
 	private static final String RIGHT = "/cgi-bin/operator/ptzset?move=right";
