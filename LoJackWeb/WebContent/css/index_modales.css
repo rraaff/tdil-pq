@@ -8,6 +8,7 @@
 	margin:0;
 	position: fixed;
 }
+#resetPassLayer { position:fixed; }
 .layerOnTop20 { background: url(../images/skin_lj_rl/backs/topLayer20.png); background-repeat: repeat; }
 .layerOnTop70 { background: url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat: repeat; }
 .loginLayerStyles,
@@ -213,20 +214,18 @@ button.buttonLink {
 	margin: 5px auto;
 	float: left;
 }
-#loginLayer label {
-	width: 60px;
-}
-#changePassLayer label {
-	/*width: 100px;*/
-}
-.loginLayerContent {
-	/*height:270px;*/
-	padding:30px 35px 30px 35px;
-}
+#loginLayer label { width:60px; }
+#changePassLayer label { /*width: 100px;*/ }
+
+
+.loginLayerContent { padding:30px 35px 30px 35px; }
 .forgotPasswordLayerContent { width: 420px; }
 #registerLayer label.ajuste {
 	width: 120px;
 }
+#resetPassLayer select,
+#resetPassLayer input[type="text"],
+#resetPassLayer input[type="password"],
 #changePassLayer select,
 #changePassLayer input:not([type]),
 #changePassLayer input[type="color"],

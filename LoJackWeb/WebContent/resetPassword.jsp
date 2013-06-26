@@ -16,47 +16,81 @@
 <% 	return;
 	} %><html>
 <head>
+<title>LoJack :: Lo tuyo es tuyo</title>
+<link rel="icon" href="favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/sizers.css" rel="stylesheet" media="screen">
+<link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
+<link type="text/css" href="css/index_social.css" rel="stylesheet" />
+<link type="text/css" href="css/copyright.css" rel="stylesheet" />
+<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
+<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/head.jsp" %>
+<script type="text/javascript" src="js/jstz.js"></script>
 <script>
+<%@ include file="includes/centerLayerJS.jspf" %>
 $(document).ready(
 	function(){
 	
-		$( "#closeresetPassLayer" ).click(function() {
-			$( "#resetPassLayer" ).fadeOut();
+		$( "#closeparkingsNotLoggedLayer" ).click(function() {
+			$( "#parkingsNotLoggedLayer" ).fadeOut();
 		});
 	}
 );
 
 function register() {
+	centerLayer($(window), $( "#parkingsNotLoggedLayer" ));
 	centerLayer($(window), $( "#resetPassLayer" ));
 }
-
+</script>
+<!-- /*
 function centerLayer(objWin, objLayer) {
 	var top = (objWin.height() / 2) - (objLayer.height() / 2);
 	var left = (objWin.width() / 2) - (objLayer.width() / 2);
 	objLayer.css({
-		position: 'absolute',
 		top: '0px',
 		left: '0px'
 	}).fadeIn(500);
-}
-
-</script>
+}*/ -->
+<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body onLoad="javascript:register();">
-<div id="structure">
-	<div id="content">
+<div id="menu" style="display:none;">
+	<ul class="menu">
+		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
+			<div>
+				<ul>
 
-	</div>
-	<div id="footer">
-		<div class="signInButtons"><img src="images/skin_nrg2/logos/nrg_on_footer.png"></div>
-		<div class="theThalamusLogo"><a href="http://www.thalamuscorp.com/" title="Thalamus driven" target="_blank"><img src="images/skin_nrg2/logos/thalamus_diven.png" alt="Thalamus driven"></a></div>
-	</div>
+				</ul>
+			</div>
+		</li>
+	</ul>
 </div>
+<%@ include file="includes/laRuedita.jsp" %>
+
+<div id="flyingObjectContainer"> 
+	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
+	
+	<!-- div id="socialSingleSignOn">
+		<div><span class="textInside">Ingresá con tus cuentas</span></div>
+		<div>
+			<ul>
+				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
+				<li class="sotwitter"><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+			</ul>
+		</div>
+	</div-->
+</div>
+
 <!-- Edit password layer -->
-<div id="resetPassLayer" class="layerOnTop" style="display: none; z-index: 500;">
-	<div class="resetPassNewLayerStyles editProfileLayer">
-		<div class="resetPassNewLayerContent">
+<div id="parkingsNotLoggedLayer" class="layerOnTop" style="display:none; z-index:1500;">
+	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
+		<div id="resetPassLayer" class="defaultLayerContent">
+			<h3>Crea una nueva clave</h3>
+			<div class="myRow">Completá los campos para modificar tu clave</div>
 			<html:form method="POST" action="/resetPassword">
 				<%=ThalamusErrorFormatter.getErrorFrom(request, "token.err")%>
 				<fieldset>
@@ -70,20 +104,18 @@ function centerLayer(objWin, objLayer) {
 						<% } %>
 					</html:select>
 				</fieldset>
-				<div class="myRow">
-					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">Numero</div>
-					<div class="myLabel width150"><html:text name="ResetPasswordForm" property="username" styleClass="normalField width120"/></div>
-				</div>
+				<fieldset>
+					<label>Número</label>
+					<html:text name="ResetPasswordForm" property="username"/>
+				</fieldset>
 				<%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%>
-				<div class="myRow">
-					<div class="myLabel width100">&nbsp;</div>
-					<div class="myLabel width100">Password</div>
-					<div class="myLabel width150"><html:password name="ResetPasswordForm" property="password" styleClass="normalField width120"/></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width100per" align="center"><input type="submit" id="submitregister" value="Submit"></div>
-				</div>
+				<fieldset>
+					<label>Clave</label>
+					<html:password name="ResetPasswordForm" property="password"/>
+				</fieldset>
+				<fieldset>
+					<button type="submit" id="submitregister" class="indexButtonBase">Modificar</button>
+				</fieldset>
 			</html:form>
 		</div>
 	</div>
