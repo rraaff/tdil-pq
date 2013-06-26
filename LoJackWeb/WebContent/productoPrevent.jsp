@@ -104,9 +104,6 @@
 				background-position: 0 0;
 			}
 		}
-		@media only screen and (max-height: 800px) and (max-width: 480px) {
-
-		}
 	</style>
 <% } %>
 <style type="text/css">

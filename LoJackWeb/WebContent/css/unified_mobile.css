@@ -163,7 +163,6 @@ button.icon100mts	{ background:url(../mobile/images/webApp/parkings/control_100m
 button.icon500mts	{ background:url(../mobile/images/webApp/parkings/control_500mts.png); 		background-repeat:no-repeat; background-position:center center; }
 button.icon1mks		{ background:url(../mobile/images/webApp/parkings/control_1000mts.png); 	background-repeat:no-repeat; background-position:center center; }
 button.iconClear	{ background:url(../mobile/images/webApp/parkings/control_clear.png); 		background-repeat:no-repeat; background-position:center center; }
-button.iconHome		{ background:url(../mobile/images/webApp/parkings/back_home.png; 			background-repeat:no-repeat; background-position:center center; }
 button.iconMaxSpeed { background:url(../mobile/images/webApp/car/control_maxSpeed_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
 button.iconZSeguras { background:url(../mobile/images/webApp/car/control_zSeguras_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
 button.iconGetPosit { background:url(../mobile/images/webApp/car/control_getPosit_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
