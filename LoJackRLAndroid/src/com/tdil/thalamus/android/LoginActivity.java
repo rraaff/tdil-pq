@@ -2,6 +2,8 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,8 +21,8 @@ import com.tdil.lojack.rl.R;
  * well.
  */
 public class LoginActivity extends Activity {
-    public static final String URL_WEBSITE = "http://23.23.84.70/LoJackWeb/";
-    public static final String URL_ANDROID_VERSION = "http://23.23.84.70/LoJackWeb/android_version.txt";
+    public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
+    public static final String URL_ANDROID_VERSION = "http://www.lojack-app.com.ar/android_version.txt";
 
 	/**
      * A dummy authentication store containing known user names and passwords.
@@ -57,7 +59,22 @@ public class LoginActivity extends Activity {
         webView1 = (WebView) findViewById(R.id.webView1);
         WebSettings webSettings = webView1.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView1.setWebViewClient(new WebViewClient());
+        webView1.setWebViewClient(new WebViewClient() {
+        	@Override
+        	public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        		//check if the url matched the url loaded via webview.loadUrl()
+                if (checkMatchedLoadedURL(url)) {
+                    return false;
+                } else {
+                    LoginActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    return true;
+                }
+        	}
+
+			private boolean checkMatchedLoadedURL(String url) {
+				return url.contains("www.lojack-app.com.ar");
+			}
+        });
         try {
         	//webView1.loadUrl("http://ec2-54-234-200-17.compute-1.amazonaws.com:8080/TUAFESTA_WEB/");
         	webView1.loadUrl(URL_WEBSITE);
