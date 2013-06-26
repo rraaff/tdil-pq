@@ -20,7 +20,7 @@
 		<%} %>
 
 		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-			<% if (LoJackWebUtils.isMobile(request)) { %>
+			<% if (usingMobile || isAndroid) { %>
 				<!-- logueado y con acceso a prevent -->
 				<% if (websiteUser.isPreventLogged()) { %>
 					<div id="iconoCar"><a href="./productoPrevent.jsp" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
