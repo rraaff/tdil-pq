@@ -53,6 +53,9 @@ public class LoJackConfig extends SystemConfig {
 	private static ProxyConfiguration HTTP_PROXY;
 	private static ProxyConfiguration HTTPS_PROXY;
 	
+	private static int cameraConnectTimeOut = 2000;
+	private static int cameraReadTimeOut = 2000;
+	
 	private static String videocar = "http://www.youtube.com/embed/5Xe5pODPq1I";
 	private static String videohome = "http://www.youtube.com/embed/Iz_VvsFwXQI";
 	private static String videopets = "http://www.youtube.com/embed/M8VhrMM0j-Q";
@@ -381,6 +384,18 @@ public class LoJackConfig extends SystemConfig {
 			} else {
 				getLog().fatal("No camera proxy");
 			}
+			
+			String cameraConnectTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.connectTimeOut");
+			if (!StringUtils.isEmpty(cameraConnectTimeOut )) {
+				setCameraConnectTimeOut(Integer.parseInt(cameraConnectTimeOut));
+			} 
+			getLog().fatal("Camera connect time out is " + getCameraConnectTimeOut());
+			
+			String cameraReaTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.readTimeOut");
+			if (!StringUtils.isEmpty(cameraReaTimeOut )) {
+				setCameraReadTimeOut(Integer.parseInt(cameraReaTimeOut));
+			} 
+			getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
 
 			getLog().fatal("Starting middleware jobs updater");
 			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));
@@ -572,6 +587,22 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setMobilevideopets(String mobilevideopets) {
 		LoJackConfig.mobilevideopets = mobilevideopets;
+	}
+
+	public static int getCameraConnectTimeOut() {
+		return cameraConnectTimeOut;
+	}
+
+	public static void setCameraConnectTimeOut(int cameraConnectTimeOut) {
+		LoJackConfig.cameraConnectTimeOut = cameraConnectTimeOut;
+	}
+
+	public static int getCameraReadTimeOut() {
+		return cameraReadTimeOut;
+	}
+
+	public static void setCameraReadTimeOut(int cameraReadTimeOut) {
+		LoJackConfig.cameraReadTimeOut = cameraReadTimeOut;
 	}
 
 }

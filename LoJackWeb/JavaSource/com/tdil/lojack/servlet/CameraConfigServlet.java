@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.utils.encryption.DesEncrypter;
 import com.tdil.web.NoCacheFilter;
@@ -34,7 +35,9 @@ public class CameraConfigServlet extends HttpServlet {
 			sb.append(cameraForm.getUsername()).append(",");
 			sb.append(cameraForm.getPassword()).append(",");
 			sb.append(cameraForm.getUrl()).append(",");
-			sb.append(cameraForm.getModel());
+			sb.append(cameraForm.getModel()).append(",");
+			sb.append(LoJackConfig.getCameraConnectTimeOut()).append(",");
+			sb.append(LoJackConfig.getCameraReadTimeOut());
 			try {
 				DesEncrypter encrypter = new DesEncrypter("esta es la clave de la camara para lojack");
 				resp.getOutputStream().write(encrypter.encrypt(sb.toString().getBytes()));
