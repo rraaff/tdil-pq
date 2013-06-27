@@ -25,12 +25,12 @@ body {
 }
 #agendaWrapper h1 {
 	color:#761617;
-	font-size:100%;
+	font-size:150%;
 	line-height:normal;
 	font-weight:bold;
 	text-align:left;
 	text-transform:uppercase;
-	padding:10px 0;
+	padding:10px;
 	margin:0;
 }
 #agendaWrapper form {
@@ -38,33 +38,42 @@ body {
 }
 #agendaWrapper fieldset {
 	border:0;
-	padding:0;
+	padding:0 10px;
 	margin:0;
 }
 #agendaWrapper label {
 	border:none;
-	font-size:80%;
-	line-height:25px;
+	font-size:120%;
+	line-height:normal;
 	font-weight:normal;
-	min-width:60px;
-	padding:0 0 0 10px;
-	margin:10px 10px 10px 0;
+	width:100%;
+	padding:0;
+	margin:0;
 	cursor:default;
 	display:block;
 }
+#agendaWrapper label.timeLabel {
+	font-size:100%;
+	text-align:center;
+	width:50px;
+	padding:15px 0 0 0;
+}
 #agendaWrapper input[type="text"] {
+	border:0;
 	border-radius:5px;
 	background:#EAEAEA;
 	color:#333;
 	font-size:12px;
 	line-height:25px;
 	text-transform:none;
-	width:auto;
+	width:100%;
 	height:25px;
 	margin:10px 0;
 	padding:0;
-	border:0;
 	float: left;
+}
+#agendaWrapper form fieldset label div {
+	width:100%;	
 }
 #agendaWrapper h4 {
 	color:#F05224;
@@ -95,7 +104,6 @@ body {
 	margin:0;
 }
 #agendaWrapper .tagsOnInputs,
-#agendaWrapper label,
 #agendaWrapper fieldset span {
 	color:#999;
 	font-family:"Gotham", "Helvetica", Arial, sans-serif;
@@ -105,6 +113,9 @@ body {
 	padding:0 20px 0 0;
 	float:left;
 	cursor:auto;
+}
+#agendaWrapper fieldset span {
+	width:100%;
 }
 #agendaWrapper fieldset input[type="radio"],
 #agendaWrapper fieldset input[type="checkbox"] {
@@ -119,7 +130,7 @@ body {
 #agendaWrapper table {
 	color:#000;
 	background:#fff;
-	width:350px;
+	/*width:350px;*/
 	margin:20px 0;
 }
 #agendaWrapper thead {
@@ -135,8 +146,13 @@ body {
 #agendaWrapper tr.odd {
 	background:#F0ECE4;
 }
-#agendaWrapper fieldset.tableContainer {
+#agendaWrapper th,
+#agendaWrapper td {
+	padding:2px 4px;
+}
+#agendaWrapper div.tableContainer {
 	width:100%;
+	padding:0;
 	overflow-x:scroll;
 }
 
