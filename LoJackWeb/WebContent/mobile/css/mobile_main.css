@@ -140,3 +140,4 @@ span.userName { color:#f05224; }
 	float: right;
 }
 #registrationContent p { font-size:8px; padding:0 10px; }
+.errorInForm { color:#cb2200; text-align:center; width:100%; padding:10px 0; float:left; }

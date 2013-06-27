@@ -138,7 +138,7 @@ textarea {
 					</fieldset>
 					<h4>Horarios</h4>
 					<fieldset>
-						<label>Desde</label>
+						<label class="timeLabel desdeHastaLabel">Desde</label>
 						<div style="float:left;">
 							<html:select name="LightAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
@@ -165,7 +165,7 @@ textarea {
 						<label>seg.</label>
 					</fieldset>
 					<fieldset>
-						<label>Hasta</label>
+						<label class="timeLabel desdeHastaLabel">Hasta</label>
 						<div style="float:left;">
 							<html:select name="LightAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
@@ -192,7 +192,7 @@ textarea {
 						<label>seg.</label>
 					</fieldset>
 					<h4>Frecuencia</h4>
-					<fieldset style="border-bottom:dotted 1px #f0ece4;">
+					<fieldset class="frequencyFieldset" style="border-bottom:dotted 1px #f0ece4;">
 						<label class="radiosFreq"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
 						<label class="radiosFreq"><html:radio property="type" value="ALL_DAYS"></html:radio>Todos los dias</label>
 						<label class="radiosFreq"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>

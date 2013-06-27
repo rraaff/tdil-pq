@@ -33,7 +33,9 @@
 </div>
 <div id="loginContent">
 	<html:form method="POST" action="/mobile/loginMobile">
-		<div class="errorInForm"><html:errors property="general" /></div>
+		<fieldset>
+			<div class="errorInForm"><html:errors property="general" /></div>
+		</fieldset>
 		<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
 			<fieldset>
 				<label>Tipo doc</label>

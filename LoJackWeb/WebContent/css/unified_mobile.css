@@ -196,7 +196,7 @@ fieldset.tableHeader {
 	background:#333;
 }
 fieldset label {
-	border-right:dotted 1px #999;
+	/*border-right:dotted 1px #999;*/
 	font-size:13px;
 	padding:0 10px;
 	height:auto;

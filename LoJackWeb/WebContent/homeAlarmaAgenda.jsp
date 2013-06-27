@@ -152,7 +152,7 @@ textarea {
 					</fieldset>
 					<h4>Horarios</h4>
 					<fieldset>
-						<label class="timeLabel">Desde</label>
+						<label class="timeLabel desdeHastaLabel">Desde</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="activateTimeHour">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
@@ -178,7 +178,7 @@ textarea {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label class="timeLabel">Hasta</label>
+						<label class="timeLabel desdeHastaLabel">Hasta</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="deactivateTimeHour">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
@@ -204,13 +204,13 @@ textarea {
 						</div>
 					</fieldset>
 					<h4>Frecuencia</h4>
-					<fieldset style="border-bottom:dotted 1px #f0ece4;">
+					<fieldset class="frequencyFieldset" style="border-bottom:dotted 1px #f0ece4;">
 						<label class="radiosFreq"><html:radio property="type" value="ONE_DAY">Una vez</html:radio></label>
 						<label class="radiosFreq"><html:radio property="type" value="ALL_DAYS">Todos los dias</html:radio></label>
 						<label class="radiosFreq"><html:radio property="type" value="BUSINESS_DAYS">Dias habiles</html:radio></label>
 						<label class="radiosFreq"><html:radio property="type" value="CUSTOM">Personalizado</html:radio></label>
 					</fieldset>
-					<fieldset>
+					<fieldset class="frequencyDaysFieldset">
 						<label class="days"><html:checkbox name="AlarmAgendaForm" property="monday"/>Lu</label>
 						<label class="days"><html:checkbox name="AlarmAgendaForm" property="tuesday"/>Ma</label> 
 						<label class="days"><html:checkbox name="AlarmAgendaForm" property="wednesday"/>Mi</label>

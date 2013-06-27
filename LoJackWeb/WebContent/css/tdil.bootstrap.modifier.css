@@ -375,10 +375,10 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 /* Accordion modifiers */
 #accordion {
 	background:#FFF;
+	text-align:left;
 	width:525px;
 	margin:10px;
-	padding:10px;
-	text-align:left;
+	padding:10px 10px 0;
 	float:left;
 	display:inline-block;
 }
@@ -497,12 +497,12 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 .alarm-status-DISPARADA,
 .alarm-status-ARMADA,
 .alarm-status-DESCONOCIDO {
-	font-size: 9px;
-	font-weight: bold;
-	line-height: 15px;
-	text-transform: uppercase;
-	float:left;
-	clear: both;
+	font-size:9px;
+	font-weight:bold;
+	line-height:15px;
+	text-transform:uppercase;
+	float:right;
+	padding:12px 0 0 0;
 }
 .alarm-status-DESARMADA { color: #f05224; }
 .alarm-status-DISPARADA { color: #e51b24; }

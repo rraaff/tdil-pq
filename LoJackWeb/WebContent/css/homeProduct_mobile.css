@@ -15,7 +15,7 @@ body {
 #accordion,
 #agendaWrapper {
 	width:100%;
-	margin:0 0 5px 0;
+	margin:5px 0 0 0;
 }
 #agendaWrapper {
 	background:#fff;
@@ -41,6 +41,13 @@ body {
 	padding:0 10px;
 	margin:0;
 }
+#agendaWrapper fieldset.frequencyFieldset {
+	margin:0 0 5px 0;
+	padding:0 0 15px 10px;
+}
+#agendaWrapper fieldset.frequencyDaysFieldset {
+	
+}
 #agendaWrapper label {
 	border:none;
 	font-size:120%;
@@ -57,6 +64,10 @@ body {
 	text-align:center;
 	width:50px;
 	padding:15px 0 0 0;
+}
+#agendaWrapper label.desdeHastaLabel {
+	text-align:left;
+	width:55px;
 }
 #agendaWrapper input[type="text"] {
 	border:0;
@@ -80,8 +91,7 @@ body {
 	font-size:15px;
 	font-weight:lighter;
 	text-rendering:optimizelegibility;
-	margin:10px 0;
-	padding-bottom:20px;
+	margin:10px 0 10px 10px;
 }
 .mRight20 { margin-right:20px; }
 .width80 { width:80px; }
@@ -94,15 +104,16 @@ body {
 #agendaWrapper label.radiosFreq {
 	font-size:12px;
 	width:49%;
-	padding:0;
+	padding:10px 0;
 	margin:0;
 }
 #agendaWrapper label.days {
 	font-size:12px;
-	width:24%;
-	padding:0;
-	margin:0;
+	width:20px;
+	padding:15px 0;
+	margin:5px 8px;
 }
+#agendaWrapper label [disabled] { color:red; }
 #agendaWrapper .tagsOnInputs,
 #agendaWrapper fieldset span {
 	color:#999;
@@ -117,10 +128,11 @@ body {
 #agendaWrapper fieldset span {
 	width:100%;
 }
-#agendaWrapper fieldset input[type="radio"],
+#agendaWrapper fieldset input[type="radio"] {
+	margin:0 5px 0 0;
+}
 #agendaWrapper fieldset input[type="checkbox"] {
-	line-height:25px;
-	margin:5px 5px 0 0;
+	margin: 0 0 9px 0;
 }
 .pagebanner {
 	text-align:center;
@@ -159,6 +171,8 @@ body {
 
 #accordion .portaToggle {
 	width:27px;
+	height:27px;
+	margin:5px 0 0 5px;
 	float:left;
 }
 #accordion img {
@@ -179,34 +193,37 @@ body {
 	float:right;
 }
 #accordion .editable {
-	font-size:80%;
+	font-size:100%;
 	color:#761617;
 	font-weight:bold;
 	line-height:21px;
-	text-transform:ppercase;
-	max-width:25%;
-	width:50%;
+	text-transform:uppercase;
+	/*max-width:25%;*/
+	width:100%;
 	margin:0;
-	padding:4px 0 0 0;
+	padding:4px 0;
 	float:left;
 }
 #accordion .switchContainer {
 	text-align:right;
-	float:right;
+	float:left;
+	width:100%;
+	padding:17px 0 10px 0;
 }
 .has-switch input[type="checkbox"] {
 	display:none;
 	cursor:pointer;
 }
 #productHomeContent.col1_798 { padding:5px 0 0 0; }
-#accordion, #agendaWrapper { padding:3px; }
-#accordion .portaTitleAndSwitch { width:85%; margin:0 10px 0 0; padding:5px 0; float:right; }
+#accordion { padding:15px 0 0; }
+#agendaWrapper { padding:15px 0; }
+#accordion .portaTitleAndSwitch { margin:0; padding:5px 0; float:right; }
 
-.has-switch.switch-mini { min-width: 102px; }
-.has-switch span.switch-warning { left: -52px; }
+.has-switch.switch-mini { min-width:102px; }
+.has-switch span.switch-warning { left:-70px; }
 .random-switch { left: -66px; }
 .has-switch span.switch-danger { left:1px; }
-.has-switch label { left: 50px; }
+.has-switch label { left:68px; }
 input,
 textarea,
 .uneditable-input {
@@ -238,7 +255,7 @@ textarea {
 	min-width: 100px;
 }
 .has-switch.switch-mini {
-	min-width:100px;
+	min-width:140px;
 }
 .has-switch > div.switch-on {
 	left:0%;
@@ -256,8 +273,10 @@ textarea {
 	top:0;
 }
 div[id^="alarm-status-"] {
-	float:right;
-	top:0;
+	float:left;
+}
+div[id^="alarm-job-"] {
+	float:left;
 }
 #accordion .fakeButtons {
 	color:#fff;
@@ -357,17 +376,17 @@ div[id^="alarm-status-"] {
 
 #switchBoard {
 	width:100%;
-	padding:2px;
+	padding:15px 38px 10px;
 	float:left;
 }
 #switchBoard .lastChange {
-	font-size:10px;
-	line-height:14px;
+	font-size:13px;
+	line-height:20px;
 }
 #switchBoard span {
 	color:#761617;
-	font-size:12px;
-	line-height:18px;
+	font-size:15px;
+	line-height:20px;
 	width:100%;
 	padding:5px 0;
 	float:left;
@@ -375,8 +394,34 @@ div[id^="alarm-status-"] {
 #switchBoard .changesLog,
 #switchBoard .notifyme,
 #switchBoard .linkToAgenda {
-	font-size:12px;
-	line-height:16px;
+	font-size:15px;
+	line-height:20px;
+}
+#switchBoard button.buttonFullLog,
+#switchBoard button.buttonAgendas {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color:#f9a123;
+	background-image:-moz-linear-gradient(top, #f89406, #fbb450);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
+	background-image:-webkit-linear-gradient(top, #f89406, #fbb450);
+	background-image:-o-linear-gradient(top, #f89406, #fbb450);
+	background-image:linear-gradient(to bottom, #f89406, #fbb450);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
+	border-color:#fbb450 #fbb450 #f89406;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	color:#FFF;
+	font-size:15px;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	width:100%;
+	padding: 10px 0;
+	cursor:pointer;
 }
 .camarasBG {
 	padding:0;
@@ -438,3 +483,7 @@ div[id^="alarm-status-"] {
 	float:left;
 }
 #linksAside a { width:100%; padding:10px 0; float:left; }
+
+#passwordLayer input[type="password"] { width:100%; padding:0; }
+#passwordLayer label { padding:0 10px 0 0; }
+.logLayerContent { height:auto; max-height:350px; }

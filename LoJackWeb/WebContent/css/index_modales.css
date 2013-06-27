@@ -83,6 +83,7 @@
 	overflow-x:hidden;
 	overflow-y:auto;
 }
+#invalidPasswordLayer h3,
 #loginLayer h3,
 #registerLayer h3,
 #parkingsNotLoggedLayer h3,
