@@ -62,7 +62,7 @@ body {
 #agendaWrapper label.timeLabel {
 	font-size:100%;
 	text-align:center;
-	width:50px;
+	width:35px;
 	padding:15px 0 0 0;
 }
 #agendaWrapper label.desdeHastaLabel {
@@ -109,7 +109,8 @@ body {
 }
 #agendaWrapper label.days {
 	font-size:12px;
-	width:20px;
+	text-align:center;
+	width:26px;
 	padding:15px 0;
 	margin:5px 8px;
 }
@@ -132,7 +133,7 @@ body {
 	margin:0 5px 0 0;
 }
 #agendaWrapper fieldset input[type="checkbox"] {
-	margin: 0 0 9px 0;
+	margin: 0 9px 9px;
 }
 .pagebanner {
 	text-align:center;
@@ -161,6 +162,7 @@ body {
 #agendaWrapper th,
 #agendaWrapper td {
 	padding:2px 4px;
+	white-space:nowrap;
 }
 #agendaWrapper div.tableContainer {
 	width:100%;
@@ -398,7 +400,10 @@ div[id^="alarm-job-"] {
 	line-height:20px;
 }
 #switchBoard button.buttonFullLog,
-#switchBoard button.buttonAgendas {
+#switchBoard button.buttonAgendas,
+table button.nonelyLinkEditar,
+table button.nonelyLinkOFF,
+table button.nonelyLinkON {
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
@@ -423,6 +428,36 @@ div[id^="alarm-job-"] {
 	padding: 10px 0;
 	cursor:pointer;
 }
+table button.nonelyLinkOFF {
+	background-color:#d14641;
+	background-image:-moz-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
+	background-image:-webkit-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-o-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:linear-gradient(to bottom, #bd362f, #ee5f5b);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
+	border-color:#ee5f5b #ee5f5b #e51d18;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	border-color:#d14641 #d14641 #77cf75;
+}
+table button.nonelyLinkON {
+	background-color:#266725;
+	background-image:-moz-linear-gradient(top, #318a2f, #6dc664);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#318a2f), to(#6dc664));
+	background-image:-webkit-linear-gradient(top, #318a2f, #6dc664);
+	background-image:-o-linear-gradient(top, #318a2f, #6dc664);
+	background-image:linear-gradient(to bottom, #318a2f, #6dc664);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff318a2f', endColorstr='#ff6dc664', GradientType=0);
+	border-color:#ee5f5b #ee5f5b #e51d18;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+table button.nonelyLinkEditar,
+table button.nonelyLinkOFF,
+table button.nonelyLinkON { width:auto; padding:10px; float:left; }
 .camarasBG {
 	padding:0;
 	float:left;

@@ -286,6 +286,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	margin: 5px 20px 5px 0;
 	float: left;
 }
+#agendaWrapper select { line-height:20px; margin:10px; }
 #agendaWrapper table {
 	font-size: 12px;
 }

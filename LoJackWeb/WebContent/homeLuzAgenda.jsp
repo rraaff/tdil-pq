@@ -146,7 +146,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>hs y</label>
+						<label>HH</label>
 						<div style="float:left;">
 							<html:select name="LightAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
@@ -154,7 +154,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>min y</label>
+						<label>MM</label>
 						<div style="float:left;">
 							<html:select name="LightAgendaForm" property="activateTimeSeconds" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
@@ -162,7 +162,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>seg.</label>
+						<label class="timeLabel">SS</label>
 					</fieldset>
 					<fieldset>
 						<label class="timeLabel desdeHastaLabel">Hasta</label>
@@ -173,7 +173,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>hs y</label>
+						<label>HH</label>
 						<div style="float:left;">
 							<html:select name="LightAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
@@ -181,7 +181,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>min y</label>
+						<label>MM</label>
 						<div style="float:left;"> 
 							<html:select name="LightAgendaForm" property="deactivateTimeSeconds" styleClass="width80 mRight20">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
@@ -189,7 +189,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label>seg.</label>
+						<label class="timeLabel">SS</label>
 					</fieldset>
 					<h4>Frecuencia</h4>
 					<fieldset class="frequencyFieldset" style="border-bottom:dotted 1px #f0ece4;">

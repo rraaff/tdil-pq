@@ -160,7 +160,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label class="timeLabel">hs y</label>
+						<label class="timeLabel">HH</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="activateTimeMinute">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
@@ -168,7 +168,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label class="timeLabel">min y</label>
+						<label class="timeLabel">MM</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="activateTimeSeconds">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
@@ -176,6 +176,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
+						<label class="timeLabel">SS</label>
 					</fieldset>
 					<fieldset>
 						<label class="timeLabel desdeHastaLabel">Hasta</label>
@@ -186,7 +187,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label class="timeLabel">hs y</label>
+						<label class="timeLabel">HH</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="deactivateTimeMinute">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
@@ -194,7 +195,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
-						<label class="timeLabel">min y</label>
+						<label class="timeLabel">MM</label>
 						<div style="float:left;">
 							<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
@@ -202,6 +203,7 @@ textarea {
 								<% } %>
 							</html:select>
 						</div>
+						<label class="timeLabel">SS</label>
 					</fieldset>
 					<h4>Frecuencia</h4>
 					<fieldset class="frequencyFieldset" style="border-bottom:dotted 1px #f0ece4;">
@@ -245,14 +247,12 @@ textarea {
 						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
 						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
 						<display:column title="Acciones" headerClass="sortable">
-							<a class="nonelyLink" href="./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>">Editar</a> 
-							<a class="nonelyLink" href="./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>">
-								<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
-									Desactivar
-								<% } else { %>
-									Activar
-								<% } %>
-							</a>
+							<button class="nonelyLinkEditar" onClick="location.href='./editAlarmAgenda.do?id=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>'">Editar</button>
+							<% if (((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).isActive()) { %>
+								<button class="nonelyLinkOFF" onClick="location.href='./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>'">OFF</button>
+							<% } else { %>
+								<button class="nonelyLinkON" onClick="location.href='./toggleActivationAlarmAgenda.do?agendaId=<%= ((AlarmAgenda)pageContext.getAttribute("alarmAgendas")).getIdAgenda()%>'">ON</button>
+							<% } %>
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
