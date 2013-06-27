@@ -122,7 +122,7 @@ textarea {
 		</div>
 		<div id="productHomeContent" class="col1_798 alarmasBG">
 			<div id="agendaWrapper">
-				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>Configurar agenda para la luz <%=lightAgendaForm.getIdLuz()%></h1>
+				<h1><% LightAgendaForm lightAgendaForm = (LightAgendaForm)session.getAttribute("LightAgendaForm"); %>Agenda de luz <%=lightAgendaForm.getIdLuz()%></h1>
 				<html:form method="POST" action="/saveLightAgenda">
 					<fieldset>
 						<label>Nombre</label>
@@ -223,7 +223,7 @@ textarea {
 					request.setAttribute( "lightAgendas",  paginated);
 					%>
 				</fieldset>
-				<fieldset class="tableContainer">
+				<div class="tableContainer">
 					<display:table name="lightAgendas" sort="external" pagesize="10" id="lightAgendas" requestURI="./homeLuzAgenda.jsp">
 						<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable" property="description"></display:column>
 						<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable" property="from"></display:column>
@@ -244,7 +244,7 @@ textarea {
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
-				</fieldset>
+				</div>
 			</div>
 		</div>
 	</div>

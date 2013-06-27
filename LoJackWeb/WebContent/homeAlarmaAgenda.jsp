@@ -136,7 +136,7 @@ textarea {
 		</div>
 		<div id="productHomeContent" class="col1_798 alarmasBG">
 			<div id="agendaWrapper">
-				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>Configurar agenda para la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
+				<h1><% AlarmAgendaForm alarmAgendaForm = (AlarmAgendaForm)session.getAttribute("AlarmAgendaForm"); %>Agenda de la alarma <%=alarmAgendaForm.getIdEntidad()%></h1>
 				<html:form method="POST" action="/saveAlarmAgenda">
 					<fieldset>
 						<label>Nombre</label>
@@ -152,25 +152,25 @@ textarea {
 					</fieldset>
 					<h4>Horarios</h4>
 					<fieldset>
-						<label>Desde</label>
+						<label class="timeLabel">Desde</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
+							<html:select name="AlarmAgendaForm" property="activateTimeHour">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>hs y</label>
+						<label class="timeLabel">hs y</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
+							<html:select name="AlarmAgendaForm" property="activateTimeMinute">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>min y</label>
+						<label class="timeLabel">min y</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="activateTimeSeconds" styleClass="width80">
+							<html:select name="AlarmAgendaForm" property="activateTimeSeconds">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
@@ -178,25 +178,25 @@ textarea {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label>Desde</label>
+						<label class="timeLabel">Hasta</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeHour">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>hs y</label>
+						<label class="timeLabel">hs y</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeMinute">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>min y</label>
+						<label class="timeLabel">min y</label>
 						<div style="float:left;">
-							<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds" styleClass="width80">
+							<html:select name="AlarmAgendaForm" property="deactivateTimeSeconds">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
 									<option value="<%=hour%>" <%=hour.equals(alarmAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
@@ -235,7 +235,7 @@ textarea {
 					request.setAttribute( "alarmAgendas",  paginated);
 					%>
 				</fieldset>
-				<fieldset class="tableContainer">
+				<div class="tableContainer">
 					<display:table name="alarmAgendas" sort="external" pagesize="10" id="alarmAgendas" requestURI="./homeAlarmaAgenda.jsp">
 						<display:column title="Descripcion" sortable="true" sortName="Descripcion" headerClass="sortable" property="description"></display:column>
 						<display:column title="Desde" sortable="true" sortName="Desde" headerClass="sortable" property="from"></display:column>
@@ -256,7 +256,7 @@ textarea {
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>
-				</fieldset>
+				</div>
 			</div>
 		</div>
 	</div>
