@@ -233,14 +233,12 @@ textarea {
 						<display:column title="Desactivar" sortable="true" sortName="Desactivar" headerClass="sortable" property="deactivateTime"></display:column>
 						<display:column title="Activa" sortable="true" sortName="Activa" headerClass="sortable" property="active"></display:column>
 						<display:column title="Acciones" headerClass="sortable">
-							<a class="nonelyLink" href="./editLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">Editar</a> 
-							<a class="nonelyLink" href="./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">
-								<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
-									Desactivar
-								<% } else { %>
-									Activar
-								<% } %>
-							</a>
+							<button class="nonelyLinkEditar" onClick="location.href='./editLightAgenda.do?id=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>'">Editar</a>
+							<% if (((LightAgenda)pageContext.getAttribute("lightAgendas")).isActive()) { %>
+								<button class="nonelyLinkOFF" onClick="location.href='./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">OFF</button>
+							<% } else { %>
+								<button class="nonelyLinkON" onClick="location.href='./toggleActivationLightAgenda.do?agendaId=<%= ((LightAgenda)pageContext.getAttribute("lightAgendas")).getId()%>">ON</button>
+							<% } %>
 						</display:column>
 					</display:table>
 					<%=DisplayTagParamHelper.getFields(request)%>

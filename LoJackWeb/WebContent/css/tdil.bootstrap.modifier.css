@@ -805,3 +805,11 @@ form { padding-top: 15px; margin: 0; }
 
 /* SIZERS */
 .marginRight_60 { margin-right: 60px; }
+
+
+/* ups page */
+#thalamusDown { background: url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat: repeat; width:450px; margin:300px auto 0; padding:50px; }
+#thalamusDown h1 { color:#ee5222; font-family:"Gotham", "Helvetica", Arial, sans-serif; font-weight:bold; font-size:20px; line-height:25px; padding-bottom:15px; margin:0;}
+#thalamusDown p,
+#thalamusDown p.errorCode { color:#fff; padding:5px 0; }
+#thalamusDown p.errorCode { font-size:9px; }

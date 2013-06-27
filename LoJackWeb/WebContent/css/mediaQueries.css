@@ -355,6 +355,7 @@ and (max-height : 550px) {
 }
 @media only screen and (max-width: 968px) {
 	body { background-color: #531a1a; }
+	#thalamusDown { background: url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat: repeat; width:100%; margin:0 auto; padding:20px; top:45%; position:fixed; }
 	header .userLoggedThalamusMenu { width:100%; }
 	#productsMenu { height:83px; top:0; z-index: 2; position: relative; }
 	#productsMenu .userLoggedThalamusMenu { width:100%; }
