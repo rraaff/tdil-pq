@@ -379,7 +379,7 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 						<div class="portaTitleAndSwitch">
 							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 							<div class="switchContainer">
-								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armar" data-off-label="Desarmar">
+								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armada" data-off-label="Desarmada">
 									<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
 								</div>
 							  	<% if (alarm.isInactive() ) { %>
@@ -387,21 +387,21 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 							  	<% } else { %>
 							  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 							  	<% } %>
-							</div>
-				  			<% if (alarm.isTriggered()) { %>
-				  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
-				  			<% } else { %>
-				  				<% if (alarm.isActive()) { %>
+					  			<% if (alarm.isTriggered()) { %>
 					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 					  			<% } else { %>
-					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+					  				<% if (alarm.isActive()) { %>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  			<% } else { %>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  			<% } %>
 					  			<% } %>
-				  			<% } %>
-				  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
-				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
-				  			<% } else { %>
-				  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
-				  			<% } %>
+					  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
+					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
+					  			<% } else { %>
+					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>"></div>
+					  			<% } %>
+				  			</div>
 						</div>
 					</div>
 					<div id="switchBoard">
@@ -409,9 +409,15 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					   		<% if (alarm.hasChangeData()) { %>
 					   			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
 					   			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
-					   			<span class="changesLog"><a href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
-					   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
-					   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+					   			<% if (usingMobile || isAndroid) { %>
+						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<span class="changesLog"><button class="buttonFullLog" onClick="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</button></span>
+									<span class="linkToAgenda"><button class="buttonAgendas" onClick="location.href='./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>'">Configurar agendas</button></span>
+								<% } else { %>
+									<span class="changesLog"><a class="buttonFullLog" href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
+						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+								<% } %>
 					   		<% } %>
 						</div>
 					</div>
