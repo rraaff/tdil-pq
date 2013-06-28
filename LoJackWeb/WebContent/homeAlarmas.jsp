@@ -22,20 +22,21 @@
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <% if (usingMobile || isAndroid) { %>
-	<link href="css/index_modales.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="css/bootstrapSwitch.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="css/unified_mobile.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="css/homeProduct_mobile.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/index_modales.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/bootstrapSwitch.css"		rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/unified_mobile.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/homeProduct_mobile.css"		rel="stylesheet" media="screen" type="text/css" />
 <% } else { %>
-	<link href="css/reset-styles.css" rel="stylesheet" media="screen" />
-	<link href="css/sizers.css" rel="stylesheet" media="screen" />
-	<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-	<link href="css/index_modales.css" rel="stylesheet"  type="text/css" />
-	<link href="css/index_social.css" rel="stylesheet"  type="text/css" />
-	<link href="css/copyright.css" rel="stylesheet"  type="text/css" />
-	<link href="css/bootstrapSwitch.css" rel="stylesheet" />
-	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+	<link href="css/reset-styles.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/sizers.css"					rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/bootstrap.min.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/bootstrap-combined.min.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/bootstrapSwitch.css"		rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/mediaQueries.css"			rel="stylesheet" media="screen" type="text/css"  />
+	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/index_modales.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/index_social.css"			rel="stylesheet" media="screen" type="text/css" />
+	<link href="css/copyright.css"				rel="stylesheet" media="screen" type="text/css" />
 <% } %>
 <style type="text/css">
 #productsMenu ul li.tabHome {
@@ -378,8 +379,17 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					<div class="titleContainer">
 						<div class="portaTitleAndSwitch">
 							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
-							<div class="switchContainer">
-								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="Armada" data-off-label="Desarmada">
+							<div class="switchContainer correctSwitchContainer">
+					  			<% if (alarm.isTriggered()) { %>
+					  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+					  			<% } else { %>
+					  				<% if (alarm.isActive()) { %>
+						  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  			<% } else { %>
+						  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  			<% } %>
+					  			<% } %>
+								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="ON" data-off-label="OFF">
 									<input type="checkbox" id="alarm-switch-<%=alarm.getIdEntidad()%>" onchange="javascript:toggleAlarm(this, <%=alarm.getIdEntidad()%>)" <%=(AsyncJobUtils.displayInactive(alarm, websiteUser) ? "" : "checked=\"true\"") %>>
 								</div>
 							  	<% if (alarm.isInactive() ) { %>
@@ -387,15 +397,6 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 							  	<% } else { %>
 							  		<span class="" onclick="deactivateAlarm(<%=alarm.getIdEntidad()%>)"></span>
 							  	<% } %>
-					  			<% if (alarm.isTriggered()) { %>
-					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
-					  			<% } else { %>
-					  				<% if (alarm.isActive()) { %>
-						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
-						  			<% } else { %>
-						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
-						  			<% } %>
-					  			<% } %>
 					  			<% if (AsyncJobUtils.hasJobInProgress(alarm, websiteUser)) { %>
 					  				<div id="alarm-job-<%=alarm.getIdEntidad()%>">*</div>
 					  			<% } else { %>

@@ -131,7 +131,7 @@ function right() {
 		</div>
 		<div id="productHomeContent" class="camarasBG">
 			<div id="cameraTitle">
-				<h1>Mi Cï¿½mara</h1>
+				<h1>Mi Cámara</h1>
 			</div>
 			<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
 			<% if (cameraForm.isUseApplet()) { %>
