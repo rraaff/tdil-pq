@@ -60,7 +60,6 @@
 				</html:select>
 				<div class="errorInForm"></div>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
-				
 			</fieldset>
 				
 			<fieldset>
@@ -85,12 +84,12 @@
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%>
 			</fieldset>
-			<fieldset>
+			<fieldset class="sexFieldset">
 				<label class="sexLabel">* Sexo:</label>
 			</fieldset>
-			<fieldset>
+			<fieldset class="sexOptionsFieldset">
 				<html:radio property="gender" value="Male" />
-				<span>Masculino</span>
+				<span>Masculino&nbsp;&nbsp;&nbsp;</span>
 				<html:radio property="gender" value="Female" />
 				<span>Femenino</span>
 				<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
@@ -157,9 +156,9 @@
 				</div>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
 			</fieldset>
-			<fieldset>
+			<fieldset class="countryFieldset">
 				<label>País</label>
-				<span><%=registerForm.getCountrySelected()%></span>
+				<span class="countrySelected"><%=registerForm.getCountrySelected()%></span>
 			</fieldset>
 			<fieldset>
 				<label>Provincia</label>

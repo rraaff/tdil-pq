@@ -42,8 +42,8 @@
 <div id="menu">
 	<ul>
 		<li><a href="./loginModal.jsp" title="Ingresar ahora">Ingresar</a></li>
-		<li><a href="./recuperarClaveModal.jsp">Mi clave</a></li>
-		<li><a href="./goToRegistrationMobile.do" class="last">Registrarme</a></li>
+		<li><a href="./recuperarClaveModal.jsp" title="Olvidé mi clave">Mi clave</a></li>
+		<li><a href="./goToRegistrationMobile.do" title="Registrarme" class="last">Registrarme</a></li>
 	</ul>
 </div>
 <div id="laRuedita">
