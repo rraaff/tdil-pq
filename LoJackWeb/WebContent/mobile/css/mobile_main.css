@@ -85,7 +85,6 @@ span.userName { color:#f05224; }
 #recoverPassContent input[type="text"],
 #registrationContent textarea,
 #registrationContent select,
-#registrationContent select option,
 #registrationContent input:not([type]),
 #registrationContent input[type="color"],
 #registrationContent input[type="email"],
@@ -108,11 +107,8 @@ span.userName { color:#f05224; }
 	height:80px;
 }
 #loginContent select,
-#loginContent select option,
 #recoverPassContent select,
-#recoverPassContent select option,
-#registrationContent select,
-#registrationContent select option { line-height:18px; height:45px; }
+#registrationContent select { line-height:18px; height:38px; padding:0; }
 #registrationContent div.dateHelper { float:left; }
 #registrationContent select.day-month { width: 50px; margin-right:15px; }
 #registrationContent select.year { width: 100px; }
@@ -139,5 +135,9 @@ span.userName { color:#f05224; }
 	padding:10px 20px;
 	float: right;
 }
-#registrationContent p { font-size:8px; padding:0 10px; }
-.errorInForm { color:#cb2200; text-align:center; width:100%; padding:10px 0; float:left; }
+#registrationContent p { color:#333; font-size:90%; padding:10px; }
+#registrationContent .countrySelected { font-size:80%; text-transform:uppercase; }
+#registrationContent fieldset.countryFieldset { padding:0 0 20px 0; }
+#registrationContent fieldset.sexFieldset { width:25%; float:left; }
+#registrationContent fieldset.sexOptionsFieldset { width:75%; float:left; }
+.errorInForm { color:#cb2200; text-align:center; width:100%; float:left; }
