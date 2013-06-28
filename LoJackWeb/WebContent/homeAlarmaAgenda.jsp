@@ -60,11 +60,13 @@ textarea {
 	  <%@ include file="includes/closeLayers.jspf" %>
 	  <%@ include file="includes/externalLogins.jspf" %>
 
+	  <% if (!isMobile && !isAndroid) { %>
     $("input[name=from]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 		changeYear: true, minDate: "-0d", maxDate: "+10Y"});
     $("input[name=to]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
 		changeYear: true, minDate: "-0d", maxDate: "+10Y"});
-
+	<% } %>
+    
     $("input[name='type']").click(function () {
     	if ($(this).attr('value') == 'CUSTOM') {
     		$("input[name='monday']").removeAttr('disabled');
@@ -142,6 +144,7 @@ textarea {
 						<label>Nombre</label>
 						<html:text name="AlarmAgendaForm" property="description" styleClass="width390" />
 					</fieldset>
+					<% if (!isMobile && !isAndroid) { alarmAgendaForm.setMobile(false);%>
 					<fieldset>
 						<label>Desde</label>
 						<div style="float:left;"><html:text name="AlarmAgendaForm" property="from" /></div>
@@ -150,6 +153,45 @@ textarea {
 						<div style="float:left;"><html:text name="AlarmAgendaForm" property="to" /></div>
 						<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
 					</fieldset>
+					<% } else { alarmAgendaForm.setMobile(true);%>
+						<html:select name="AlarmAgendaForm" property="fromyear" styleClass="year">
+							<option value=""></option>
+							<% for (String year : alarmAgendaForm.getYears()) { %>
+								<option value="<%=year%>" <%=year.equals(alarmAgendaForm.getFromyear()) ? "selected" : ""%>><%=year%></option>
+							<% } %>
+						</html:select>
+						<html:select name="AlarmAgendaForm" property="frommonth" styleClass="day-month">
+							<option value=""></option>
+							<% for (String month : DateUtils.ALL_MONTHS) { %>
+								<option value="<%=month%>" <%=month.equals(alarmAgendaForm.getFrommonth()) ? "selected" : ""%>><%=month%></option>
+							<% } %>
+						</html:select>
+						<html:select name="AlarmAgendaForm" property="fromday" styleClass="day-month">
+							<option value=""></option>
+							<% for (String day : DateUtils.ALL_DAYS) { %>
+								<option value="<%=day%>" <%=day.equals(alarmAgendaForm.getFromday()) ? "selected" : ""%>><%=day%></option>
+							<% } %>
+						</html:select><br/>
+						
+						<html:select name="AlarmAgendaForm" property="toyear" styleClass="year">
+							<option value=""></option>
+							<% for (String year : alarmAgendaForm.getYears()) { %>
+								<option value="<%=year%>" <%=year.equals(alarmAgendaForm.getToyear()) ? "selected" : ""%>><%=year%></option>
+							<% } %>
+						</html:select>
+						<html:select name="AlarmAgendaForm" property="tomonth" styleClass="day-month">
+							<option value=""></option>
+							<% for (String month : DateUtils.ALL_MONTHS) { %>
+								<option value="<%=month%>" <%=month.equals(alarmAgendaForm.getTomonth()) ? "selected" : ""%>><%=month%></option>
+							<% } %>
+						</html:select>
+						<html:select name="AlarmAgendaForm" property="today" styleClass="day-month">
+							<option value=""></option>
+							<% for (String day : DateUtils.ALL_DAYS) { %>
+								<option value="<%=day%>" <%=day.equals(alarmAgendaForm.getToday()) ? "selected" : ""%>><%=day%></option>
+							<% } %>
+						</html:select>
+					<% } %>
 					<h4>Horarios</h4>
 					<fieldset>
 						<label class="timeLabel desdeHastaLabel">Desde</label>
