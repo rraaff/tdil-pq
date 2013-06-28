@@ -1,5 +1,5 @@
 div {
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit commit  */
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;   
 }
@@ -421,70 +421,114 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	font-weight: bold;
 	line-height: 21px;
 	text-transform: uppercase;
-	width:50%;
+	width:100%;
 	margin: 0;
 	padding: 4px 0 0 0;
 	float:left;
 }
-#accordion .switchContainer {
+/* Status de luces */
+#portaStatus { text-align:left; float:left; width:60px; }
+#accordion .switchContainer,
+#accordion .XswitchContainer {
 	text-align:right;
 	float:right;
 }
-#accordion .correctSwitchContainer {  }
+
+#accordion .correctSwitchContainer { width:100%; }
+.has-switch.switch-mini {
+    min-width:102px;
+}
+/* random switches y porta switches normales para luces */
+#normalSwitches {
+	width:102px;
+	float:left;
+	overflow:hidden;
+}
+#randomSwitches {
+	width:102px;
+	float:left;
+	overflow:hidden;
+	margin:0 0 0 20px;
+}
+#randomSwitches .has-switch span.switch-warning {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_on.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+}
+#randomSwitches .has-switch span.switch-danger {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_off.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+}
+/* end random switches */
+.jobsStyle,
+.jobsStyleOff {
+	width:2px;
+	float:left;
+	padding:0 5px;
+}
+
 #accordion .fakeButtons {
 	color:#fff;
-	padding:10px 8px 0;
-	height:26px;
-	margin:0 0 0 5px;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #d14641;
-	background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
-	background-image: -webkit-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: -o-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: linear-gradient(to bottom, #bd362f, #ee5f5b);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
-	border-color: #ee5f5b #ee5f5b #e51d18;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	margin:0 0 0 10px;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:4px 9px;
+	font-size:10px;
+	line-height:9px;
+	background-color:#d14641;
+	background-image:-moz-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
+	background-image:-webkit-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-o-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:linear-gradient(to bottom, #bd362f, #ee5f5b);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
+	border-color:#ee5f5b #ee5f5b #e51d18;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	float:left;
+}
+#accordion .randomButtonOff {
+	background: url(../images/skin_lj_rl/backs/icon_shuffle_switch_off.png); 
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+	/*border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-color:#ee5f5b #ee5f5b #e51d18;*/
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	float:left;
+}
+#accordion .randomButtonOn {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_on.png); 
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+	/*border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-color:#fbb450 #fbb450 #f89406;*/
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	float:left;
 }
 #accordion .on {
-	color: #ffffff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #f9a123;
-	background-image: -moz-linear-gradient(top, #f89406, #fbb450);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
-	background-image: -webkit-linear-gradient(top, #f89406, #fbb450);
-	background-image: -o-linear-gradient(top, #f89406, #fbb450);
-	background-image: linear-gradient(to bottom, #f89406, #fbb450);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
-	border-color: #fbb450 #fbb450 #f89406;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-#accordion .randomButtonOff {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
-	background-repeat: repeat-x;
-	background-position: 0 0;
-	width:36px;
-	height:36px;
-	padding: 0;
-	margin: 0 0 0 5px;
-	float: left;
-}
-#accordion .randomButtonOn {
-	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
-	background-repeat: repeat-x;
-	background-position: 0 -36px;
+	background-color:#f9a123;
+	background-image:-moz-linear-gradient(top, #f89406, #fbb450);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
+	background-image:-webkit-linear-gradient(top, #f89406, #fbb450);
+	background-image:-o-linear-gradient(top, #f89406, #fbb450);
+	background-image:linear-gradient(to bottom, #f89406, #fbb450);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
+	border-color:#fbb450 #fbb450 #f89406;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 #accordion .disableButton { 
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -553,7 +597,8 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	font-size: 12px;
 	line-height: 14px;
 }
-.has-switch span.switch-warning { left:-81px; }
+.has-switch span.switch-warning { left:-51px; }
+.has-switch label { left:50px; }
 /* PANIC */
 #panicButtonContainer {
 	width:968px;

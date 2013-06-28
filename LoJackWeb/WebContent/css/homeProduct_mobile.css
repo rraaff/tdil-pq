@@ -221,11 +221,11 @@ body {
 #agendaWrapper { padding:15px 0; }
 #accordion .portaTitleAndSwitch { margin:0; padding:5px 0; float:right; }
 
-.has-switch.switch-mini { min-width:102px; }
-.has-switch span.switch-warning { left:-70px; }
+.has-switch.switch-mini { min-width:92px; }
+.has-switch span.switch-warning { left:-46px; }
 .random-switch { left: -66px; }
 .has-switch span.switch-danger { left:1px; }
-.has-switch label { left:68px; }
+.has-switch label { left:45px; }
 input,
 textarea,
 .uneditable-input {
@@ -256,9 +256,6 @@ textarea {
 	user-select: none;
 	min-width: 100px;
 }
-.has-switch.switch-mini {
-	min-width:140px;
-}
 .has-switch > div.switch-on {
 	left:0%;
 }
@@ -274,66 +271,103 @@ textarea {
 	position:relative;
 	top:0;
 }
+/* random switches y porta switches normales para luces */
+#normalSwitches,
+#randomSwitches {
+	width:92px;
+	float:left;
+	overflow:hidden;
+}
+#randomSwitches { margin:0 0 0 5px; }
+
+#randomSwitches .has-switch span.switch-warning {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_on.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+}
+#randomSwitches .has-switch span.switch-danger {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_off.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+}
+/* end random switches */
+/* Status de luces */
+#portaStatus { text-align:left; float:left; width:60px; padding:5px 0 0 0; }
+.XswitchContainer { float:right; }
 div[id^="alarm-status-"] {
 	float:left;
 }
 div[id^="alarm-job-"] {
 	float:left;
 }
+.jobsStyle,
+.jobsStyleOff {
+	width:2px;
+	float:left;
+	padding:5px;
+}
+
 #accordion .fakeButtons {
 	color:#fff;
-	padding:10px 8px 0;
-	height:26px;
-	margin:0 0 0 5px;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #d14641;
-	background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
-	background-image: -webkit-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: -o-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image: linear-gradient(to bottom, #bd362f, #ee5f5b);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
-	border-color: #ee5f5b #ee5f5b #e51d18;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	margin:0 0 0 10px;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:4px 2px;
+	font-size:10px;
+	line-height:9px;
+	background-color:#d14641;
+	background-image:-moz-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
+	background-image:-webkit-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-o-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:linear-gradient(to bottom, #bd362f, #ee5f5b);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
+	border-color:#ee5f5b #ee5f5b #e51d18;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	float:left;
+}
+#accordion .randomButtonOff {
+	background: url(../images/skin_lj_rl/backs/icon_shuffle_switch_off.png); 
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+	/*border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-color:#ee5f5b #ee5f5b #e51d18;*/
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	float:left;
+}
+#accordion .randomButtonOn {
+	background:url(../images/skin_lj_rl/backs/icon_shuffle_switch_on.png); 
+	background-repeat:no-repeat;
+	background-position:center center;
+	color:transparent;
+	text-shadow:none;
+	/*border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-color:#fbb450 #fbb450 #f89406;*/
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	float:left;
 }
 #accordion .on {
-	color: #ffffff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #f9a123;
-	background-image: -moz-linear-gradient(top, #f89406, #fbb450);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
-	background-image: -webkit-linear-gradient(top, #f89406, #fbb450);
-	background-image: -o-linear-gradient(top, #f89406, #fbb450);
-	background-image: linear-gradient(to bottom, #f89406, #fbb450);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
-	border-color: #fbb450 #fbb450 #f89406;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-#accordion .randomButtonOff {
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
-	background-repeat: repeat-x;
-	background-position: 0 0;
-	width:36px;
-	height:36px;
-	padding: 0;
-	margin: 0 0 0 5px;
-	float: left;
-}
-#accordion .randomButtonOn {
-	background: url(../images/skin_lj_rl/backs/icon_shuffle_on.png); 
-	background-repeat: repeat-x;
-	background-position: 0 -36px;
+	background-color:#f9a123;
+	background-image:-moz-linear-gradient(top, #f89406, #fbb450);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
+	background-image:-webkit-linear-gradient(top, #f89406, #fbb450);
+	background-image:-o-linear-gradient(top, #f89406, #fbb450);
+	background-image:linear-gradient(to bottom, #f89406, #fbb450);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
+	border-color:#fbb450 #fbb450 #f89406;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 #accordion .disableButton { 
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -378,7 +412,7 @@ div[id^="alarm-job-"] {
 
 #switchBoard {
 	width:100%;
-	padding:15px 38px 10px;
+	padding:15px 38px 5px;
 	float:left;
 }
 #switchBoard .lastChange {
