@@ -138,65 +138,84 @@ textarea {
 						<%=LoJackErrorFormatter.getErrorFrom(request, "to.err")%>
 					</fieldset>
 					<% } else { lightAgendaForm.setMobile(true);%>
-						<html:select name="LightAgendaForm" property="fromyear" styleClass="year">
-							<option value=""></option>
-							<% for (String year : lightAgendaForm.getYears()) { %>
-								<option value="<%=year%>" <%=year.equals(lightAgendaForm.getFromyear()) ? "selected" : ""%>><%=year%></option>
-							<% } %>
-						</html:select>
-						<html:select name="LightAgendaForm" property="frommonth" styleClass="day-month">
-							<option value=""></option>
-							<% for (String month : DateUtils.ALL_MONTHS) { %>
-								<option value="<%=month%>" <%=month.equals(lightAgendaForm.getFrommonth()) ? "selected" : ""%>><%=month%></option>
-							<% } %>
-						</html:select>
-						<html:select name="LightAgendaForm" property="fromday" styleClass="day-month">
-							<option value=""></option>
-							<% for (String day : DateUtils.ALL_DAYS) { %>
-								<option value="<%=day%>" <%=day.equals(lightAgendaForm.getFromday()) ? "selected" : ""%>><%=day%></option>
-							<% } %>
-						</html:select><br/>
-						
-						<html:select name="LightAgendaForm" property="toyear" styleClass="year">
-							<option value=""></option>
-							<% for (String year : lightAgendaForm.getYears()) { %>
-								<option value="<%=year%>" <%=year.equals(lightAgendaForm.getToyear()) ? "selected" : ""%>><%=year%></option>
-							<% } %>
-						</html:select>
-						<html:select name="LightAgendaForm" property="tomonth" styleClass="day-month">
-							<option value=""></option>
-							<% for (String month : DateUtils.ALL_MONTHS) { %>
-								<option value="<%=month%>" <%=month.equals(lightAgendaForm.getTomonth()) ? "selected" : ""%>><%=month%></option>
-							<% } %>
-						</html:select>
-						<html:select name="LightAgendaForm" property="today" styleClass="day-month">
-							<option value=""></option>
-							<% for (String day : DateUtils.ALL_DAYS) { %>
-								<option value="<%=day%>" <%=day.equals(lightAgendaForm.getToday()) ? "selected" : ""%>><%=day%></option>
-							<% } %>
-						</html:select>
+						<fieldset>
+							<div id="dateHelper">
+								<label>Desde</label>
+								<div class="comboHelper1">
+									<html:select name="LightAgendaForm" property="fromday" styleClass="day-month">
+										<option value=""></option>
+										<% for (String day : DateUtils.ALL_DAYS) { %>
+											<option value="<%=day%>" <%=day.equals(lightAgendaForm.getFromday()) ? "selected" : ""%>><%=day%></option>
+										<% } %>
+									</html:select>
+								</div>
+								<div class="comboHelper1">
+									<html:select name="LightAgendaForm" property="frommonth" styleClass="day-month">
+										<option value=""></option>
+										<% for (String month : DateUtils.ALL_MONTHS) { %>
+											<option value="<%=month%>" <%=month.equals(lightAgendaForm.getFrommonth()) ? "selected" : ""%>><%=month%></option>
+										<% } %>
+									</html:select>
+								</div>
+								<div class="comboHelper2">
+									<html:select name="LightAgendaForm" property="fromyear" styleClass="year">
+										<option value=""></option>
+										<% for (String year : lightAgendaForm.getYears()) { %>
+											<option value="<%=year%>" <%=year.equals(lightAgendaForm.getFromyear()) ? "selected" : ""%>><%=year%></option>
+										<% } %>
+									</html:select>
+								</div>
+							</div>
+							<div id="dateHelper">
+								<label>Hasta</label>
+								<div class="comboHelper1">
+									<html:select name="LightAgendaForm" property="today" styleClass="day-month">
+										<option value=""></option>
+										<% for (String day : DateUtils.ALL_DAYS) { %>
+											<option value="<%=day%>" <%=day.equals(lightAgendaForm.getToday()) ? "selected" : ""%>><%=day%></option>
+										<% } %>
+									</html:select>
+								</div>
+								<div class="comboHelper1">
+									<html:select name="LightAgendaForm" property="tomonth" styleClass="day-month">
+										<option value=""></option>
+										<% for (String month : DateUtils.ALL_MONTHS) { %>
+											<option value="<%=month%>" <%=month.equals(lightAgendaForm.getTomonth()) ? "selected" : ""%>><%=month%></option>
+										<% } %>
+									</html:select>
+								</div>
+								<div class="comboHelper2">
+									<html:select name="LightAgendaForm" property="toyear" styleClass="year">
+										<option value=""></option>
+										<% for (String year : lightAgendaForm.getYears()) { %>
+											<option value="<%=year%>" <%=year.equals(lightAgendaForm.getToyear()) ? "selected" : ""%>><%=year%></option>
+										<% } %>
+									</html:select>
+								</div>
+							</div>
+						</fieldset>
 					<% } %>
 					<h4>Horarios</h4>
 					<fieldset>
 						<label class="timeLabel desdeHastaLabel">Desde</label>
 						<div style="float:left;">
-							<html:select name="LightAgendaForm" property="activateTimeHour" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="activateTimeHour" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>HH</label>
+						<label class="timeLabel">HH</label>
 						<div style="float:left;">
-							<html:select name="LightAgendaForm" property="activateTimeMinute" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="activateTimeMinute" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>MM</label>
+						<label class="timeLabel">MM</label>
 						<div style="float:left;">
-							<html:select name="LightAgendaForm" property="activateTimeSeconds" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="activateTimeSeconds" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getActivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
@@ -207,23 +226,23 @@ textarea {
 					<fieldset>
 						<label class="timeLabel desdeHastaLabel">Hasta</label>
 						<div style="float:left;">
-							<html:select name="LightAgendaForm" property="deactivateTimeHour" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="deactivateTimeHour" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_HOURS) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeHour()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>HH</label>
+						<label class="timeLabel">HH</label>
 						<div style="float:left;">
-							<html:select name="LightAgendaForm" property="deactivateTimeMinute" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="deactivateTimeMinute" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_MINUTES) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeMinute()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>
 							</html:select>
 						</div>
-						<label>MM</label>
+						<label class="timeLabel">MM</label>
 						<div style="float:left;"> 
-							<html:select name="LightAgendaForm" property="deactivateTimeSeconds" styleClass="width80 mRight20">
+							<html:select name="LightAgendaForm" property="deactivateTimeSeconds" styleClass="day-month">
 								<% for (String hour : DateUtils.ALL_SECONDS) { %>
 									<option value="<%=hour%>" <%=hour.equals(lightAgendaForm.getDeactivateTimeSeconds()) ? "selected" : ""%>><%=hour%></option>
 								<% } %>

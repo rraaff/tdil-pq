@@ -46,7 +46,7 @@ body {
 	padding:0 0 15px 10px;
 }
 #agendaWrapper fieldset.frequencyDaysFieldset {
-	
+	padding:0;
 }
 #agendaWrapper label {
 	border:none;
@@ -101,6 +101,28 @@ body {
 	line-height:30px;
 	height:30px;	
 }
+#dateHelper { width:50%; float:left; }
+#dateHelper .comboHelper1,
+#dateHelper .comboHelper2 { float:left; }
+
+select.day-month,
+select.year  {
+	border:0;
+	border-radius:5px;
+	background:#EAEAEA;
+	color:#333;
+	font-size:12px;
+	line-height:25px;
+	text-transform:none;
+	height:25px;
+	margin:10px 0;
+	padding:0;
+}
+#dateHelper select.day-month { width:40px; padding:0; }
+#dateHelper select.year { width:60px; padding:0; }
+
+
+
 #agendaWrapper label.radiosFreq {
 	font-size:12px;
 	width:49%;
@@ -216,7 +238,12 @@ body {
 	display:none;
 	cursor:pointer;
 }
-#productHomeContent.col1_798 { padding:5px 0 0 0; }
+#productHomeContent.col1_798 { width:100%; padding:5px 0 0 0; }
+#camerasList { background:#fff; width:100%; padding:10px 0 30px 0; margin:0 0 5px 0; }
+#camerasList h3 { font-size:100%; text-align:left; text-transform:uppercase; padding:0 0 10px 20px; }
+#camerasList ul { text-align:left; list-style: inherit; padding:0 0 0 20px; margin:0 0 0 20px; }
+#camerasList ul li { padding:10px 0; }
+
 #accordion { padding:15px 0 0; }
 #agendaWrapper { padding:15px 0; }
 #accordion .portaTitleAndSwitch { margin:0; padding:5px 0; float:right; }

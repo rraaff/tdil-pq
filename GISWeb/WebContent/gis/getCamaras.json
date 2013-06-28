@@ -4,5 +4,11 @@
 		"password": "operator1",
 		"url" : "http://demo-life.dyndns.org:8980/",
 		"model" : "1"
+	},
+	{
+		"username" : "operator",
+		"password": "operator1",
+		"url" : "http://demo-life.dyndns.org:8980/",
+		"model" : "1"
 	}
 ]
