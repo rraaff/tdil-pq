@@ -14,9 +14,6 @@ LinkPreventMobile
 
 Alerts
 
-Versionado
-TDIL_RL_webApp_v-1.01_(Frankie)/desarrollado por That Day in london :: agencia interactiva & diseño
-
 NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPLO: [HECHO] , [PARA TESTEAR]
 
 ************************************************************************************************************
@@ -42,7 +39,11 @@ PREVENT MOBILE
 - [DEPENDEMOS DE GIS] Me está pidiendo el password de prevent para entrar.
 - ver posibilidad de hacer check y mostrar varios autos
 
-mobile
+MOBILE
+Los errores del formulario de registración aparecen por fuera del div con el estilo. no puedo ponerle estilo al string
+	<div class="errorInForm"></div>
+	<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
+
 errores - terminar de completar, manejar los de thalamus
 mensajes de ok
 boton de refresh?
