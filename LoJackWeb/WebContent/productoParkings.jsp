@@ -122,6 +122,10 @@
 		var endLat = -34.685211181641;
 		var endLon = -58.344268798828;
 
+		var ZOOM_ALL = 12;
+		var ZOOM_1000 = 14;
+		var ZOOM_500 = 15;
+		
         var Mapa;
         var parkings;
         var origenGeoRef;
@@ -129,6 +133,29 @@
         var currentPopup;
         var MyPos;
         var SearchMeters;
+        var currPoints = new Array(); 
+        var IconSizeForZoom = new Array(); 
+        IconSizeForZoom[0] = 8;
+        IconSizeForZoom[1] = 8;
+        IconSizeForZoom[2] = 8;
+        IconSizeForZoom[3] = 8;
+        IconSizeForZoom[4] = 8;
+        IconSizeForZoom[5] = 8;
+        IconSizeForZoom[6] = 8;
+        IconSizeForZoom[7] = 10;
+        IconSizeForZoom[8] = 10;
+        IconSizeForZoom[9] = 10;
+        IconSizeForZoom[10] = 12;
+        IconSizeForZoom[11] = 12;
+        IconSizeForZoom[12] = 12;
+        IconSizeForZoom[13] = 14;
+        IconSizeForZoom[14] = 14;
+        IconSizeForZoom[15] = 20;
+        IconSizeForZoom[16] = 24;
+        IconSizeForZoom[17] = 28;
+        IconSizeForZoom[18] = 30;
+        IconSizeForZoom[19] = 32;
+        
         <%@ include file="includes/errorAjaxJS.jspf" %>
         <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {
@@ -139,7 +166,7 @@
             };
             Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
             Mapa.UpdateConfig({ title: "Prevent" });
-            Mapa.SetParameters("toolbar=off&Lat=-34.655504&Lon=-58.471677&Width=84&LayersViewWidth=0");
+            Mapa.SetParameters("toolbar=off&Lat=-34.655504&Lon=-58.471677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
 
             $("input[cl]").each(function(indice,valor) {
          	   $(valor).click(function() {
@@ -148,6 +175,24 @@
          	});
         });
 
+        function resizeIcons(e){
+            if (parkings) {
+                if (Mapa.map) {
+	            	if (currPoints.length > 0) {
+		            	var actualSize = currPoints[0].icon.size.w;
+		            	var newSize = IconSizeForZoom[Mapa.map.zoom];
+		            	var inflateFactor = newSize / actualSize;
+		            	alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
+						if (inflateFactor != 1) {
+			            	for (var i=0;i<currPoints.length;i++) {
+			            		currPoints[i].inflate(inflateFactor);
+			                }
+						}
+		            }
+                }
+            }
+            
+        }
 
         function removeParkings() {
         	if (currentPopup != null && currentPopup.visible()) {
@@ -172,18 +217,22 @@
         function showAllParkings() {
         	removeParkings();
         	if (MyPos) {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=11");
+        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
             }
+        	currPoints = new Array(); 
             if (!parkings) {
 	        	parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(32,32);
+	            var size = new OpenLayers.Size(IconSizeForZoom[ZOOM_ALL],IconSizeForZoom[ZOOM_ALL]);
 	            var offset = new OpenLayers.Pixel(-(size.w/1.5), -size.h);
 	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
+				currPoints = new Array(); 
 				<% List<PointOfInterest> parkings = ParkingUtils.getParkings(); %>
 				<% for (PointOfInterest poi : parkings) { %>
-					parkings.addMarker(createMarker(<%=poi.getLon()%>,<%=poi.getLat()%>, '<%=poi.getName()%>', '<%=poi.getDescription()%>', proj, icon.clone()));
+					var cloned = createMarker(<%=poi.getLon()%>,<%=poi.getLat()%>, '<%=poi.getName()%>', '<%=poi.getDescription()%>', proj, icon.clone());
+					currPoints.push(cloned);
+					parkings.addMarker(cloned);
 				<% } %>
             }
 		}
@@ -234,14 +283,16 @@
 
         function showParkingsForPos(position) {
         	MyPos = position;
+        	
         	if (SearchMeters == 1000) {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=14");
+        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + ZOOM_1000);
             } else {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=15");
+        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + + ZOOM_500);
             }
         	if (isOutSideCABA(MyPos)) {
         		showErrorLayer("No hay datos fuera de de la Ciudad Autónoma de Buenos Aires.");
 				removeParkings();
+				currPoints = new Array(); 
 				parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(32,32);
@@ -249,7 +300,7 @@
 	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
-				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar.clone()));
+				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
             } else {
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
             }
@@ -276,14 +327,22 @@
 	            success: function(msg) {
             		parkings = new OpenLayers.Layer.Markers( "Parkings" );
     	            Mapa.map.addLayer(parkings);
-    	            var size = new OpenLayers.Size(32,32);
+    	            var size;
+    	            if (SearchMeters == 1000) {
+    	        		size = new OpenLayers.Size(IconSizeForZoom[ZOOM_1000],IconSizeForZoom[ZOOM_1000]);
+    	            } else {
+    	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
+    	            }
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
     	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
     				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
+    				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {
-	    				parkings.addMarker(createMarker(item.lon,item.lat, item.name, item.desc, proj, icon.clone()));
+	    				var cloned = createMarker(item.lon,item.lat, item.name, item.desc, proj, icon.clone());
+						currPoints.push(cloned);
+	    				parkings.addMarker(cloned);
 	                });
 	            },
 	            error: function() {

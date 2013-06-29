@@ -128,6 +128,9 @@
         var POI;
         var MyPos;
         var SearchMeters;
+        function resizeIcons(e){
+        }
+        
         <%@ include file="includes/errorAjaxJS.jspf" %>
         <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
         $(function () {

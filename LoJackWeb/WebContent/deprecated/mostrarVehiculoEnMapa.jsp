@@ -102,6 +102,8 @@
 var Mapa;
 var parkings;
 var currentPopup;
+function resizeIcons(e){
+}
 $(function () {
 
 	var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {

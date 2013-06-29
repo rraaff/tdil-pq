@@ -96,7 +96,10 @@ function MapaOSM(elementId, containerId, options) {
         },
         "moveend": function (evt) {
             this.isReady = true;
-        }
+        },
+        "zoomend": function (evt) {
+            resizeIcons();
+        },
     });
 
     this.measureControl.events.register("measure", this, function (evt) {
