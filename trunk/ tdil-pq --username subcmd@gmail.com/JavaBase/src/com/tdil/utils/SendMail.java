@@ -28,6 +28,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public class SendMail {
 	
+	private static final InternetAddress[] EMPTY_ARRAY = new InternetAddress[0];
 	// Represents the mail Session used to send mails
 	private Session mailSession = null;
 	private Properties properties;
@@ -100,7 +101,7 @@ public class SendMail {
 	 * @return javax.mail.internet.InternetAddress[]
 	 */
 	private InternetAddress[] convertArrayListToInternetAddressList(ArrayList<InternetAddress> anArrayList) {
-		return anArrayList.toArray(new InternetAddress[0]);
+		return anArrayList.toArray(EMPTY_ARRAY);
 	}
 
 	/**
@@ -151,7 +152,7 @@ public class SendMail {
 		FileInputStream fr = new FileInputStream(fileName);
 		BufferedInputStream dis = new BufferedInputStream(fr);
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 		int a;
 		while ((a = dis.read()) >= 0) {
 			buffer.append((char) a);
@@ -370,7 +371,7 @@ public class SendMail {
 		Session mailSession = this.getMailSession();
 
 		try {
-			StringBuffer mailCheckDetails = new StringBuffer(50);
+			StringBuilder mailCheckDetails = new StringBuilder(50);
 			if (from == null) {
 				mailCheckDetails.append("Sending mail with FROM null/n");
 				from = "";

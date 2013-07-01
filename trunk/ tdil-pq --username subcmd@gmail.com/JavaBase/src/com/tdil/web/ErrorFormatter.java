@@ -9,7 +9,7 @@ import com.tdil.struts.resources.ApplicationResources;
 public class ErrorFormatter {
 
 	public static String getErrorsFrom(ServletRequest request) {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		Object o = request.getAttribute(org.apache.struts.Globals.MESSAGE_KEY);
 		if (o != null) {
 			org.apache.struts.action.ActionMessages ae = (org.apache.struts.action.ActionMessages) o;
@@ -29,7 +29,6 @@ public class ErrorFormatter {
 	}
 
 	public static String getErrorFrom(ServletRequest request, String error) {
-		StringBuffer result = new StringBuffer();
 		Object o = request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
 		if (o != null) {
 			org.apache.struts.action.ActionMessages ae = (org.apache.struts.action.ActionMessages) o;
@@ -50,7 +49,7 @@ public class ErrorFormatter {
 	}
 	
 	public static String getErrorFrom(ServletRequest request, String error, String start, String end) {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		Object o = request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
 		if (o != null) {
 			org.apache.struts.action.ActionMessages ae = (org.apache.struts.action.ActionMessages) o;

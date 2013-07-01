@@ -6,10 +6,12 @@ import gnu.regexp.UncheckedRE;
 import it.sauronsoftware.jave.EncoderException;
 import it.sauronsoftware.jave.MultimediaInfo;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -230,7 +232,7 @@ public class FieldValidation {
 		try {
 			io = fileItem.getInputStream();
 			File file = File.createTempFile("upload", "." + FilenameUtils.getExtension(fileItem.getName()));
-			FileOutputStream fout = new FileOutputStream(file);
+			OutputStream fout = new BufferedOutputStream(new FileOutputStream(file));
 			byte content[] = IOUtils.toByteArray(io);
 			try {
 				fout.write(content);

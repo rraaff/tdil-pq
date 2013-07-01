@@ -16,7 +16,7 @@ public class ButtonGenerator {
 	
 	public static String getIndexedButtonByKey(String form, String context, String key, String index) {
 		//String rb = ResourceBundleCache.get(context, key);
-		StringBuffer onclick= new StringBuffer();
+		StringBuilder onclick= new StringBuilder();
 		onclick.append("doIndexedOperationSubmit('");
 		onclick.append(form);
 		onclick.append("','");
@@ -25,7 +25,7 @@ public class ButtonGenerator {
 		onclick.append(index);
 		onclick.append("')");
 		
-		StringBuffer button = new StringBuffer();
+		StringBuilder button = new StringBuilder();
 		button.append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" onclick=\"");
 		button.append(onclick.toString());
 		button.append("\">");
@@ -49,7 +49,7 @@ public class ButtonGenerator {
 	// TODO arreglar
 	public static String getNoOPButton(String context, String key) {
 		//String rb = ResourceBundleCache.get(context, key);
-		StringBuffer button = new StringBuffer();
+		StringBuilder button = new StringBuilder();
 		button.append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
 		button.append("<tr>");
 		button.append("<td width=\"13\" height=\"24\"><img src=\"images/buttons/buttonLeft.png\" width=\"13\" height=\"24\" border=\"0\"></td>");
@@ -64,7 +64,7 @@ public class ButtonGenerator {
 	
 	// TODO arreglar
 	public static String getNoOPButtonStart() {
-		StringBuffer button = new StringBuffer();
+		StringBuilder button = new StringBuilder();
 		button.append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
 		button.append("<tr>");
 		button.append("<td width=\"13\" height=\"24\"><img src=\"images/buttons/buttonLeft.png\" width=\"13\" height=\"24\" border=\"0\"></td>");
@@ -78,7 +78,7 @@ public class ButtonGenerator {
 	}
 
 	public static String getNoOPButtonEnd() {
-		StringBuffer button = new StringBuffer();
+		StringBuilder button = new StringBuilder();
 		button.append("</span></td>");
 		button.append("<td width=\"13\" height=\"24\"><img src=\"images/buttons/buttonRight.png\" width=\"13\" height=\"24\" border=\"0\"></td>");
 		button.append("</tr>");

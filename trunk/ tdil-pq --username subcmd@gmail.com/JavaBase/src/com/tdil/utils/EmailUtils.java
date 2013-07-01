@@ -13,6 +13,33 @@ import com.tdil.log4j.LoggerProvider;
 
 public class EmailUtils {
 	
+	private static final class SendMailRunnable implements Runnable {
+		private final String subject;
+		private final Properties properties;
+		private final String email;
+		private final String from;
+		private final String to;
+
+		private SendMailRunnable(String subject, Properties properties,
+				String email, String from, String to) {
+			this.subject = subject;
+			this.properties = properties;
+			this.email = email;
+			this.from = from;
+			this.to = to;
+		}
+
+		@Override
+		public void run() {
+			try {
+				SendMail sendMail = new SendMail(properties);
+				sendMail.sendCustomizedHtmlMail(from, to, subject, email);
+			} catch (MessagingException e) {
+				getLog().error(e.getMessage(), e);
+			}
+		}
+	}
+
 	private static final ExecutorService exec = Executors.newFixedThreadPool(10);
 
 	public static void sendEmail(String email, String to, String from, String subject, String smtpServer, String smtpPort) throws MessagingException {
@@ -21,17 +48,7 @@ public class EmailUtils {
 	}
 	
 	public static void sendEmail(final String email, final String to, final String from, final String subject, final Properties properties) throws MessagingException {
-		exec.execute(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					SendMail sendMail = new SendMail(properties);
-					sendMail.sendCustomizedHtmlMail(from, to, subject, email);
-				} catch (MessagingException e) {
-					getLog().error(e.getMessage(), e);
-				}
-			}
-		});
+		exec.execute(new SendMailRunnable(subject, properties, email, from, to));
 	}
 	
 	public static Logger getLog() {

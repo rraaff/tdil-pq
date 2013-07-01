@@ -13,7 +13,7 @@ import org.displaytag.properties.SortOrderEnum;
 public interface IExtendedPaginatedList extends PaginatedList {
  
     /** Request params as constants.  */
-    public interface IRequestParameters{
+    interface IRequestParameters{
         String SORT = "sort";
         String PAGE = "page";
         String ASC = "asc";

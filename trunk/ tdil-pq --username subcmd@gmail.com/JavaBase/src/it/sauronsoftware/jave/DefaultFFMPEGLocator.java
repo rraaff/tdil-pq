@@ -18,6 +18,7 @@
  */
 package it.sauronsoftware.jave;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -112,7 +113,7 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 		OutputStream output = null;
 		try {
 			input = getClass().getResourceAsStream(path);
-			output = new FileOutputStream(dest);
+			output = new BufferedOutputStream(new FileOutputStream(dest));
 			byte[] buffer = new byte[1024];
 			int l;
 			while ((l = input.read(buffer)) != -1) {

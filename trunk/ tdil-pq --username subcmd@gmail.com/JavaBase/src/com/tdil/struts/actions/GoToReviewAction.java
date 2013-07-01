@@ -17,16 +17,24 @@ import com.tdil.struts.forms.ApproveDisapproveForm;
 
 public class GoToReviewAction extends AbstractAction {
 
+	private static final class InitForReview implements TransactionalAction {
+		private final AbstractForm abstractForm;
+
+		private InitForReview(AbstractForm abstractForm) {
+			this.abstractForm = abstractForm;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			abstractForm.reset();
+			((ApproveDisapproveForm)abstractForm).initForReview();
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		final AbstractForm abstractForm = (AbstractForm) form;
-		TransactionProvider.executeInTransaction(new TransactionalAction() {
-			public void executeInTransaction() throws SQLException, ValidationException {
-				abstractForm.reset();
-				((ApproveDisapproveForm)abstractForm).initForReview();
-			}
-		});
+		TransactionProvider.executeInTransaction(new InitForReview(abstractForm));
 
 		return mapping.findForward("continue");
 	}

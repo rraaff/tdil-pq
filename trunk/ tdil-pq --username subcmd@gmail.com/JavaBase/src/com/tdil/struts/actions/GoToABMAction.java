@@ -16,16 +16,24 @@ import com.tdil.struts.forms.AbstractForm;
 
 public class GoToABMAction extends AbstractAction {
 
+	private static final class ResetAndInit implements TransactionalAction {
+		private final AbstractForm abstractForm;
+
+		private ResetAndInit(AbstractForm abstractForm) {
+			this.abstractForm = abstractForm;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			abstractForm.reset();
+			abstractForm.init();
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		final AbstractForm abstractForm = (AbstractForm) form;
-		TransactionProvider.executeInTransaction(new TransactionalAction() {
-			public void executeInTransaction() throws SQLException, ValidationException {
-				abstractForm.reset();
-				abstractForm.init();
-			}
-		});
+		TransactionProvider.executeInTransaction(new ResetAndInit(abstractForm));
 
 		return mapping.findForward("continue");
 	}

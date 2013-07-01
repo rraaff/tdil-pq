@@ -33,7 +33,7 @@ public interface EncoderProgressListener {
 	 * @param info
 	 *            Informations about the source multimedia stream.
 	 */
-	public void sourceInfo(MultimediaInfo info);
+	void sourceInfo(MultimediaInfo info);
 
 	/**
 	 * This method is called to notify a progress in the encoding process.
@@ -41,7 +41,7 @@ public interface EncoderProgressListener {
 	 * @param permil
 	 *            A permil value representing the encoding process progress.
 	 */
-	public void progress(int permil);
+	void progress(int permil);
 
 	/**
 	 * This method is called every time the encoder need to send a message
@@ -50,6 +50,6 @@ public interface EncoderProgressListener {
 	 * @param message
 	 *            The message sent by the encoder.
 	 */
-	public void message(String message);
+	void message(String message);
 
 }

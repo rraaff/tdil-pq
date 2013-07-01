@@ -7,7 +7,7 @@ public abstract class CriterionComparator implements Comparator<Object> {
 	private String criterion;
 	private boolean asc;
 
-	public CriterionComparator() {
+	protected CriterionComparator() {
 		super();
 	}
 

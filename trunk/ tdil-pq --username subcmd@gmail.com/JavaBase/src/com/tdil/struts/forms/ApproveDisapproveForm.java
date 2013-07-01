@@ -7,11 +7,11 @@ import com.tdil.struts.ValidationException;
 
 public interface ApproveDisapproveForm {
 
-	public ValidationError validate();
+	ValidationError validate();
 	
-	public void basicValidate(ValidationError error);
+	void basicValidate(ValidationError error);
 	
-	public String getOperation();
+	String getOperation();
 
 	void initForApprove() throws SQLException;
 	
@@ -21,8 +21,8 @@ public interface ApproveDisapproveForm {
 	
 	void disapprove() throws SQLException, ValidationException;
 
-	public void postApprove();
+	void postApprove();
 
-	public void postDisapprove();
+	void postDisapprove();
 
 }

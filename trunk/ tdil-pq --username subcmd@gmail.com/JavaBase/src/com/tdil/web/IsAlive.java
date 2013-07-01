@@ -1,7 +1,9 @@
 package com.tdil.web;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServlet;
@@ -28,10 +30,10 @@ public class IsAlive extends HttpServlet {
 
 	private void doIsAlive(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		if (appversion == -1) {
-			FileInputStream finput = null;
+			InputStream finput = null;
 			try {
 				String st = getServletContext().getRealPath("/version.txt");
-				finput = new FileInputStream(st);
+				finput = new BufferedInputStream(new FileInputStream(st));
 				appversion = Integer.valueOf(IOUtils.toString(finput));
 			} catch (Exception e) {
 				appversion = -2;

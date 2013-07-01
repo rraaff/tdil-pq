@@ -64,7 +64,7 @@ public class FilterProfanity {
 	 * Filters out bad words.
 	 */
 	public String filterProfanity(String str) {
-		StringBuffer ret_str = new StringBuffer(str.length());
+		StringBuilder ret_str = new StringBuilder(str.length());
 		Matcher matcher = pattern.matcher(str);
 		int start = 0;
 		while (matcher.find(start)) {
@@ -85,14 +85,11 @@ public class FilterProfanity {
 	
 	/** Retorna true si ninguna palabra esta entre las filtradas */
 	public boolean aproves(String str) {
-		StringBuffer ret_str = new StringBuffer(str.length());
 		Matcher matcher = pattern.matcher(str);
 		int start = 0;
 		while (matcher.find(start)) {
-			ret_str.append(str.substring(start, matcher.start(1)));
 			String word = matcher.group(1);
 			if (check(word)) {
-				ret_str.append(word);
 			} else {
 				return false;
 			}
@@ -172,7 +169,7 @@ public class FilterProfanity {
 	}
 
 	private static String getMaskString(int len) {
-		StringBuffer str = new StringBuffer(len);
+		StringBuilder str = new StringBuilder(len);
 		for (int i = 0; i < len; i++) {
 			str.append('*');
 		}

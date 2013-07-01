@@ -34,7 +34,7 @@ public class DownloadThumbnailController extends HttpServlet {
 		doGet(req, resp);
 	}
 
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// If-None-Match header should contain "*" or ETag. If so, then return 304.
 		// Prepare some variables. The ETag is an unique identifier of the file.
 		String type = req.getParameter("type");
@@ -70,21 +70,19 @@ public class DownloadThumbnailController extends HttpServlet {
 		res.setHeader("ETag", eTag);
 		res.setDateHeader("Last-Modified", lastModified);
 		res.setDateHeader("Expires", System.currentTimeMillis() + DEFAULT_EXPIRE_TIME);
-		if (blobLocalData != null) {
-			res.setContentType(blobLocalData.getMimeType());
-			InputStream inputStream = null;
-			try {
-				inputStream = blobLocalData.getInputStream();
-				IOUtils.copy(inputStream, res.getOutputStream());
-			} finally {
-				if (inputStream != null) {
-					inputStream.close();
-				}
+		res.setContentType(blobLocalData.getMimeType());
+		InputStream inputStream = null;
+		try {
+			inputStream = blobLocalData.getInputStream();
+			IOUtils.copy(inputStream, res.getOutputStream());
+		} finally {
+			if (inputStream != null) {
+				inputStream.close();
 			}
 		}
 	}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doGet(req, res);
 	}
 
