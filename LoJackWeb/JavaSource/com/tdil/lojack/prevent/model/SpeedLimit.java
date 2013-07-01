@@ -44,7 +44,7 @@ public class SpeedLimit implements Serializable {
 			builder.append("description=");
 			builder.append(description);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 

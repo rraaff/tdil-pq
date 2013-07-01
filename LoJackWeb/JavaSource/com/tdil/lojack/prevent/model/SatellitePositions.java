@@ -30,7 +30,7 @@ public class SatellitePositions implements Serializable {
 			builder.append("satellitePositionDescCollection=");
 			builder.append(satellitePositionDescCollection);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 

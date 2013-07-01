@@ -40,7 +40,7 @@ public class LoginResponse implements Serializable {
 			builder.append("status=");
 			builder.append(status);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 	

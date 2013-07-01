@@ -77,7 +77,7 @@ public class SatellitePosition implements Serializable {
 			builder.append("zoom=");
 			builder.append(zoom);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 	

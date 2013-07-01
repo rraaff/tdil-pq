@@ -67,7 +67,7 @@ public class SatellitePositionDesc extends SatellitePosition {
 			builder.append("getZoom()=");
 			builder.append(getZoom());
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 

@@ -32,11 +32,11 @@ public class CameraConfigServlet extends HttpServlet {
 		if (LoJackWebUtils.isHomeUserLogged(req)) {
 			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
 			StringBuilder sb = new StringBuilder();
-			sb.append(cameraForm.getUsername()).append(",");
-			sb.append(cameraForm.getPassword()).append(",");
-			sb.append(cameraForm.getUrl()).append(",");
-			sb.append(cameraForm.getModel()).append(",");
-			sb.append(LoJackConfig.getCameraConnectTimeOut()).append(",");
+			sb.append(cameraForm.getUsername()).append(',');
+			sb.append(cameraForm.getPassword()).append(',');
+			sb.append(cameraForm.getUrl()).append(',');
+			sb.append(cameraForm.getModel()).append(',');
+			sb.append(LoJackConfig.getCameraConnectTimeOut()).append(',');
 			sb.append(LoJackConfig.getCameraReadTimeOut());
 			try {
 				DesEncrypter encrypter = new DesEncrypter("esta es la clave de la camara para lojack");

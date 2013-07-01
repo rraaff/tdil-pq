@@ -30,7 +30,7 @@ public class SpeedLimits implements Serializable {
 			builder.append("limits=");
 			builder.append(limits);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 

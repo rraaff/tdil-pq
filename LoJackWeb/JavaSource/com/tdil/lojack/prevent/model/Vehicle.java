@@ -193,7 +193,7 @@ public class Vehicle implements Serializable {
 			builder.append("geoRef=");
 			builder.append(geoRef);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 	

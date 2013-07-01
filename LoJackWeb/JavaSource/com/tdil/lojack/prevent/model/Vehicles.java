@@ -90,7 +90,7 @@ public class Vehicles implements Serializable {
 			builder.append("previousIndex=");
 			builder.append(previousIndex);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 	

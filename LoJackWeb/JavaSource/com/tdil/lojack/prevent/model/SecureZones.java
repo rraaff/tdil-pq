@@ -30,7 +30,7 @@ public class SecureZones implements Serializable {
 			builder.append("secureZones=");
 			builder.append(secureZones);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 

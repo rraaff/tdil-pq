@@ -119,7 +119,7 @@ public class LoJackServicesConnector {
 		try {
 			//JSONResponse response = executeTranslation("", jsonObject, GET_ALARMS);
 			JSONResponse response = executeGIS(jsonObject, GET_ALARMS);
-			Collection<Alarm> resultObj = (Collection<Alarm>)JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
+			Collection<Alarm> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), Alarm.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -185,7 +185,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(INT_PAGE_SIZE, 10);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_ALARM_LOG);
-			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
+			Collection<ChangeLog> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -236,7 +236,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(ID_ENTIDAD, idEntidad);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_ALARM_AGENDAS);
-			Collection<AlarmAgenda> resultObj = (Collection<AlarmAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), AlarmAgenda.class);
+			Collection<AlarmAgenda> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), AlarmAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -307,7 +307,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_CAMERA);
-			Collection<Camera> resultObj = (Collection<Camera>)JSONArray.toCollection((JSONArray)response.getResult(), Camera.class);
+			Collection<Camera> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), Camera.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -321,7 +321,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHTS);
-			Collection<Light> resultObj = (Collection<Light>)JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
+			Collection<Light> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), Light.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -409,7 +409,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(INT_PAGE_SIZE, 10);
 		try {
 			JSONResponse response = executeGIS(jsonObject, GET_LIGHT_LOG);
-			Collection<ChangeLog> resultObj = (Collection<ChangeLog>)JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
+			Collection<ChangeLog> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), ChangeLog.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -463,7 +463,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(ID_LUZ, idLuz);
 		try {
 			JSONResponse response = executeService(jsonObject, GET_LIGHT_AGENDAS);
-			Collection<LightAgenda> resultObj = (Collection<LightAgenda>)JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
+			Collection<LightAgenda> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), LightAgenda.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -533,7 +533,7 @@ public class LoJackServicesConnector {
 		jsonObject.put(JOB_ID, jobId);
 		try {
 			JSONResponse response = executeGIS(jsonObject, get_History_Job_Status);
-			Collection<JobStatus> resultObj = (Collection<JobStatus>)JSONArray.toCollection((JSONArray)response.getResult(), JobStatus.class);
+			Collection<JobStatus> resultObj = JSONArray.toCollection((JSONArray)response.getResult(), JobStatus.class);
 			return resultObj;
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

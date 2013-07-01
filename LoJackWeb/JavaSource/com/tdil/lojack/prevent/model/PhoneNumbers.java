@@ -95,7 +95,7 @@ public class PhoneNumbers implements Serializable {
 			builder.append("other=");
 			builder.append(other);
 		}
-		builder.append("]");
+		builder.append(']');
 		return builder.toString();
 	}
 
