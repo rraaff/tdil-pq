@@ -60,7 +60,9 @@ public class IsAlive extends HttpServlet {
 		}
 		// TODO segun la version, 404 o como esta
 		PrintWriter out = res.getWriter();
-		out.println(appversion + "-" + version);
+		out.print(appversion);
+		out.print("-");
+		out.println(version);
 		out.close();
 	}
 	
