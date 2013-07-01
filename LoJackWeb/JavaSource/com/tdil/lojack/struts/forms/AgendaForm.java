@@ -141,7 +141,7 @@ public abstract class AgendaForm extends ThalamusForm {
 	}
 
 	public String getCustomDays() {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		if (this.monday) {
 			result.append("Lu,");
 		}

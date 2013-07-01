@@ -107,7 +107,7 @@ public class ContactForm extends TransactionalValidationForm {
 		destExample.createCriteria().andPropkeyEqualTo("contactform.email");
 		SystemProperty emailDest = systemPropertyDAO.selectSystemPropertyByExample(destExample).get(0);
 		
-		StringBuffer mailBody = new StringBuffer();
+		StringBuilder mailBody = new StringBuilder();
 		mailBody.append("Contacto del usuario, datos del usuario<br> ");
 		mailBody.append("Usuario registrado: ").append(this.isRegisteredUser() ? "si" : "no").append("<br>");
 		mailBody.append("Nombre: ").append(this.getFirstname()).append("<br>");

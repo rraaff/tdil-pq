@@ -46,7 +46,7 @@ public class LoginFacebookAction extends Action {
 			ecookie.setPath(ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
 			tokenHolder.addCookie(ecookie);
         	
-        	LoginResult login = (LoginResult)ThalamusClientFacade.signInFacebook(code, tokenHolder);
+        	LoginResult login = ThalamusClientFacade.signInFacebook(code, tokenHolder);
         	JSONObject json = (JSONObject)login.getResponse().getResult();
         	if (isNotLogged(json)) {
 	        	register.setSocialConnections(getSocialConnections(json));
@@ -54,7 +54,7 @@ public class LoginFacebookAction extends Action {
 	        	return mapping.findForward("register");
         	} else {
         		// marcar como logueado
-        		WebsiteUser user = (WebsiteUser)LoginForm.getUserLogged(login);
+        		WebsiteUser user = LoginForm.getUserLogged(login);
         		request.getSession().setAttribute("user", user);
         		return mapping.findForward("continue");
         	}

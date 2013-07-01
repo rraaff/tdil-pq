@@ -55,7 +55,7 @@ public class LoginTwitterAction extends Action {
 					return mapping.findForward("register");
 				} else {
 					// marcar como logueado
-					WebsiteUser user = (WebsiteUser) LoginForm.getUserLogged(login);
+					WebsiteUser user = LoginForm.getUserLogged(login);
 					request.getSession().setAttribute("user", user);
 					return mapping.findForward("continue");
 				}
