@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
 public class DisplayTagParamHelper {
 
 	public static String getParams(HttpServletRequest request) {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		if (!StringUtils.isEmpty(request.getParameter("page"))) {
 			result.append("&page=").append(request.getParameter("page"));
 		}
@@ -27,7 +27,7 @@ public class DisplayTagParamHelper {
 	}
 	
 	public static String getFields(HttpServletRequest request) {
-		StringBuffer result = new StringBuffer();
+		StringBuilder result = new StringBuilder();
 		if (!StringUtils.isEmpty(request.getParameter("page"))) {
 			result.append("<input type=\"hidden\" name=\"page\" value=\"").append(request.getParameter("page")).append("\">");
 		}

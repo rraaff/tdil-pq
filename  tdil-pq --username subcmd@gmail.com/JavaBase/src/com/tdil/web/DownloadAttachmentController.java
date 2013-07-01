@@ -35,7 +35,7 @@ public class DownloadAttachmentController extends HttpServlet {
 		doGet(req, resp);
 	}
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// If-None-Match header should contain "*" or ETag. If so, then return 304.
 		// Prepare some variables. The ETag is an unique identifier of the file.
 		String type = req.getParameter("type");
@@ -65,22 +65,20 @@ public class DownloadAttachmentController extends HttpServlet {
 		res.setHeader("ETag", eTag);
 		res.setDateHeader("Last-Modified", lastModified);
 		res.setDateHeader("Expires", System.currentTimeMillis() + DEFAULT_EXPIRE_TIME);
-		if (blobLocalData != null) {
-			// refactorizar a blobLocalData
-			res.setContentType(blobLocalData.getMimeType());
-			res.setHeader("Content-disposition", "attachment; filename=" + URLEncoder.encode("attachment-" + id + "." + ext, "UTF-8"));
-			InputStream inputStream = null;
-			try {
-				inputStream = blobLocalData.getInputStream();
-				IOUtils.copy(inputStream, res.getOutputStream());
-			} finally {
-				if (inputStream != null) {
-					inputStream.close();
-				}
+		// refactorizar a blobLocalData
+		res.setContentType(blobLocalData.getMimeType());
+		res.setHeader("Content-disposition", "attachment; filename=" + URLEncoder.encode("attachment-" + id + "." + ext, "UTF-8"));
+		InputStream inputStream = null;
+		try {
+			inputStream = blobLocalData.getInputStream();
+			IOUtils.copy(inputStream, res.getOutputStream());
+		} finally {
+			if (inputStream != null) {
+				inputStream.close();
 			}
 		}
 	}
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doGet(req, res);
 	}
 	

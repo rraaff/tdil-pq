@@ -1,5 +1,6 @@
 package com.tdil.utils;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +31,7 @@ public class UploadUtils {
 			OutputStream output = null;
 			try {
 				input = new ByteArrayInputStream(content);
-				output = new FileOutputStream(destination);
+				output = new BufferedOutputStream(new FileOutputStream(destination));
 				IOUtils.copy(input, output);
 			} catch (Exception e) {
 				getLog().error(e.getMessage(), e);
@@ -68,7 +69,7 @@ public class UploadUtils {
 				OutputStream output = null;
 				try {
 					input = uploaded.getInputStream();
-					output = new FileOutputStream(destination);
+					output = new BufferedOutputStream(new FileOutputStream(destination));
 					IOUtils.copy(input, output);
 				} finally {
 					try {

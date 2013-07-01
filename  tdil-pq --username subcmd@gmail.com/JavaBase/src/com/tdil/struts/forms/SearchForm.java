@@ -4,5 +4,5 @@ import com.tdil.struts.ValidationException;
 
 public interface SearchForm {
 
-	public void search() throws ValidationException;
+	void search() throws ValidationException;
 }

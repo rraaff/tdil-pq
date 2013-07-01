@@ -28,7 +28,7 @@ public abstract class AjaxFileUploadAction extends AjaxAction {
 		return null;
 	}
 	
-	@SuppressWarnings("unchecked")
+	@Override @SuppressWarnings("unchecked")
 	public ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		

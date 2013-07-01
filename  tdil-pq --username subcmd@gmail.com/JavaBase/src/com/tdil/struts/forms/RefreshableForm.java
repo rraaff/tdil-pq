@@ -4,5 +4,5 @@ import com.tdil.struts.ValidationException;
 
 public interface RefreshableForm {
 
-	public void refresh() throws ValidationException;
+	void refresh() throws ValidationException;
 }

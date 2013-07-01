@@ -1,5 +1,6 @@
 package com.tdil.cache.blob;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -48,7 +49,7 @@ public class BlobLocalDiskCache {
 		}
 		// TODO quizas deberia tener un margen de x bytes para mantenerlo en memoria
 		try {
-			return new BlobLocalData(ext, localDataLocation, new FileInputStream(local));
+			return new BlobLocalData(ext, localDataLocation, new BufferedInputStream(new FileInputStream(local)));
 		} catch (FileNotFoundException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
@@ -79,7 +80,7 @@ public class BlobLocalDiskCache {
 		}
 		// TODO quizas deberia tener un margen de x bytes para mantenerlo en memoria
 		try {
-			return new BlobLocalData(ext, localDataLocation, new FileInputStream(local));
+			return new BlobLocalData(ext, localDataLocation, new BufferedInputStream(new FileInputStream(local)));
 		} catch (FileNotFoundException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
@@ -87,7 +88,7 @@ public class BlobLocalDiskCache {
 	}
 	
 	private static String makeFileName(String type, int id, int version, String ext, BlobResolver blobResolver) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(diskBlobLocation).append('/');
 		sb.append(type).append(separator);
 		sb.append(id).append('.').append(version).append('.').append(ext);
@@ -95,7 +96,7 @@ public class BlobLocalDiskCache {
 	}
 	
 	private static String makeFileName(String type, int id, String width, String height, String max, int version, String ext, BlobResolver blobResolver) {
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append(diskBlobLocation).append('/');
 		sb.append(type).append(separator);
 		sb.append(id).append('.').append(version).append('-').append(width).append('x').append(height).append('.').append("true".equals(max) ? "1" : "0").append('.').append(ext);

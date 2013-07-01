@@ -21,6 +21,31 @@ import com.tdil.validations.ValidationErrors;
 
 public class SaveAction extends AbstractAction {
 
+	private static final class ResetAndInit implements TransactionalAction {
+		private final AbstractForm form;
+
+		private ResetAndInit(AbstractForm form) {
+			this.form = form;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			form.reset();
+			form.init();
+		}
+	}
+
+	private static final class Save implements TransactionalAction {
+		private final AbstractForm form;
+
+		private Save(AbstractForm form) {
+			this.form = form;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			form.save();
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -39,17 +64,8 @@ public class SaveAction extends AbstractAction {
 			return redirectToFailure(error, request, mapping);
 		} else {
 			try {
-				TransactionProvider.executeInTransaction(new TransactionalAction() {
-					public void executeInTransaction() throws SQLException, ValidationException {
-						form.save();
-					}
-				});
-				TransactionProvider.executeInTransaction(new TransactionalAction() {
-					public void executeInTransaction() throws SQLException, ValidationException {
-						form.reset();
-						form.init();
-					}
-				});
+				TransactionProvider.executeInTransaction(new Save(form));
+				TransactionProvider.executeInTransaction(new ResetAndInit(form));
 			} catch (ValidationException ex) {
 				return redirectToFailure(ex.getError(), request, mapping);
 			} catch (Exception ex) {

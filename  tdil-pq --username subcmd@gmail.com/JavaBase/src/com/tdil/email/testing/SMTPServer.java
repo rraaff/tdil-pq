@@ -196,11 +196,11 @@ public class SMTPServer {
      */
     private String parseAddress( String address ) {
 
-        int index = address.indexOf( "<" );
+        int index = address.indexOf( '<' );
         if( index != -1 ) {
             address = address.substring( index + 1 );
         }
-        index = address.indexOf( ">" );
+        index = address.indexOf( '>' );
         if( index != -1 ) {
             address = address.substring( 0, index );
         }

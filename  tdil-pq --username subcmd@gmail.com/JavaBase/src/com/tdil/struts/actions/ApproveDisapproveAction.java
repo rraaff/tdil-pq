@@ -21,6 +21,30 @@ import com.tdil.validations.ValidationErrors;
 
 public class ApproveDisapproveAction extends AbstractAction {
 
+	private static final class Dissaprove implements TransactionalAction {
+		private final ApproveDisapproveForm approveDisapproveForm;
+
+		private Dissaprove(ApproveDisapproveForm approveDisapproveForm) {
+			this.approveDisapproveForm = approveDisapproveForm;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			approveDisapproveForm.disapprove();
+		}
+	}
+
+	private static final class Approve implements TransactionalAction {
+		private final ApproveDisapproveForm approveDisapproveForm;
+
+		private Approve(ApproveDisapproveForm approveDisapproveForm) {
+			this.approveDisapproveForm = approveDisapproveForm;
+		}
+
+		public void executeInTransaction() throws SQLException, ValidationException {
+			approveDisapproveForm.approve();
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -31,11 +55,7 @@ public class ApproveDisapproveAction extends AbstractAction {
 				return redirectToFailure(error, request, mapping);
 			} else {
 				try {
-					TransactionProvider.executeInTransaction(new TransactionalAction() {
-						public void executeInTransaction() throws SQLException, ValidationException {
-							approveDisapproveForm.approve();
-						}
-					});
+					TransactionProvider.executeInTransaction(new Approve(approveDisapproveForm));
 					approveDisapproveForm.postApprove();
 				} catch (Exception ex) {
 					getLog().error(ex.getMessage(), ex);
@@ -45,11 +65,7 @@ public class ApproveDisapproveAction extends AbstractAction {
 			}
 		} else {
 			try {
-				TransactionProvider.executeInTransaction(new TransactionalAction() {
-					public void executeInTransaction() throws SQLException, ValidationException {
-						approveDisapproveForm.disapprove();
-					}
-				});
+				TransactionProvider.executeInTransaction(new Dissaprove(approveDisapproveForm));
 				approveDisapproveForm.postDisapprove();
 			} catch (Exception ex) {
 				getLog().error(ex.getMessage(), ex);
