@@ -363,7 +363,8 @@
    PATH="/vehiculosVelocidades.jsp" TARGET="page15" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/exception.jsp" TARGET="page42" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page15" PATH="/vehiculosVelocidades.jsp"
   SHAPE="240,4402,0,0" SUBTYPE="jsp" TITLE="vehiculosVelocidades.jsp"
@@ -384,6 +385,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/vehiculosZonasSeguras.jsp" TARGET="page17" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/vehiculosZonasSeguras.jsp"
   SHAPE="240,5138,0,0" SUBTYPE="jsp" TITLE="vehiculosZonasSeguras.jsp"
@@ -401,6 +405,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/seleccionarVehiculoParaMapa.jsp" TARGET="page18"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page18" PATH="/seleccionarVehiculoParaMapa.jsp"
   SHAPE="240,5489,0,0" SUBTYPE="jsp"
@@ -418,6 +425,9 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/seleccionarVehiculoParaTelefonos.jsp" TARGET="page20"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page20"
   PATH="/seleccionarVehiculoParaTelefonos.jsp" SHAPE="240,6402,0,0"
@@ -910,8 +920,6 @@
    PATH="/mobile/homeLuzAgenda.jsp" TARGET="page41" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="page42" PATH="/exception.jsp" SHAPE="240,4497,0,0"
-  SUBTYPE="jsp" TITLE="exception.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#mobile#loginPreventMobile" NAME="action68"
   PATH="/mobile/loginPreventMobile" SHAPE="32,5313,0,0"
   TITLE="PreventLoginFormMobile" TYPE="action" model-entity="StrutsProcessItem">
@@ -977,5 +985,8 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page47" PATH="/productoHome.jsp"
   SHAPE="240,1217,0,0" SUBTYPE="jsp" TITLE="productoHome.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page48" PATH="/errorAjaxModal.jsp"
+  SHAPE="240,4609,0,0" SUBTYPE="jsp" TITLE="errorAjaxModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

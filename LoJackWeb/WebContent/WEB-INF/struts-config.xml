@@ -230,17 +230,21 @@
   
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
-  	<forward name="failure" path="/exception.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
   <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesSpeedLimitAjaxAction">
   </action>
   <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
   	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
+  
   <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAjaxAction">
   </action>
+  
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaMapa.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/locateVehicleInMap" scope="session" type="com.tdil.lojack.struts.action.LocateVehicleInMapAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
@@ -248,6 +252,7 @@
 
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaTelefonos.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/editVehiculePhones" scope="session" type="com.tdil.lojack.struts.action.EditVehiclePhonesAction">
   	<forward name="continue" path="/editarTelefonosVehiculo.jsp" redirect="true"/>
