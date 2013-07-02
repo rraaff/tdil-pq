@@ -182,7 +182,7 @@
 		            	var actualSize = currPoints[0].icon.size.w;
 		            	var newSize = IconSizeForZoom[Mapa.map.zoom];
 		            	var inflateFactor = newSize / actualSize;
-		            	alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
+		            	//alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
 						if (inflateFactor != 1) {
 			            	for (var i=0;i<currPoints.length;i++) {
 			            		currPoints[i].inflate(inflateFactor);
