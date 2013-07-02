@@ -19,6 +19,7 @@ import com.tdil.thalamus.client.core.method.PostMethodCreator;
 import static com.tdil.lojack.gis.LoJackServicesConnector.LOG;
 import static com.tdil.lojack.gis.LoJackServicesConnector.configureTimeout;
 import static com.tdil.lojack.gis.LoJackServicesConnector.extractJSONObjectResponse;
+import static com.tdil.thalamus.client.core.ThalamusClient.getResponseString;
 
 public class JSONProtocol extends MiddlewareProtocol {
 
@@ -42,7 +43,7 @@ public class JSONProtocol extends MiddlewareProtocol {
 			}
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
-			String response = httpMethod.getResponseBodyAsString();
+			String response = getResponseString(httpMethod);
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}

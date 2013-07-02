@@ -1,5 +1,7 @@
 package com.tdil.lojack.prevent;
 
+import static com.tdil.thalamus.client.core.ThalamusClient.getResponseString;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -176,7 +178,7 @@ public class PreventConnector {
 			httpMethod.setRequestHeader("Content-type", "text/xml");
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
-			String response = httpMethod.getResponseBodyAsString();
+			String response = getResponseString(httpMethod);
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}
@@ -234,7 +236,7 @@ public class PreventConnector {
 			}
 			client.executeMethod(httpMethod);
 			int statusCode = httpMethod.getStatusCode();
-			String response = httpMethod.getResponseBodyAsString();
+			String response = getResponseString(httpMethod);
 			if (LOG.isDebugEnabled()) {
 				LOG.debug("Remote result is: " + response + " with status: " + statusCode);
 			}

@@ -11,4 +11,5 @@ public abstract class MiddlewareProtocol {
 
 	public abstract JSONResponse execute(String server, JSON json, String service) throws HttpStatusException, InvalidResponseException,
 			CommunicationException, UnauthorizedException;
+	
 }
