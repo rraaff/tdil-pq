@@ -142,22 +142,36 @@ public class LoginForm extends ActionForm {
 
 	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
 		JSONObject profile = getProfile.getProfile().getJSONObject("person").getJSONObject(ProfileResponse.PROFILE);
-		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
-			JSONObject document = profile.getJSONObject("document");
+		String documentKey = "document";
+		if (jsonHasValueForKey(profile, documentKey)) {
+			JSONObject document = profile.getJSONObject(documentKey);
 			user.setLojackUserId(document.getInt("type") + ":" + document.getString("number"));
 		}
-		if (profile.containsKey("homeIsClient") && profile.get("homeIsClient") != JSONNull.getInstance()) {
-			user.setHomeUser(profile.getBoolean("homeIsClient"));
-			user.setHomeUserId(profile.getString("homeUser"));
+		String homeIsClientKey = "homeIsClient";
+		if (jsonHasValueForKey(profile, homeIsClientKey)) {
+			user.setHomeUser(profile.getBoolean(homeIsClientKey));
+			if (jsonHasValueForKey(profile, "homeUser")) {
+				user.setHomeUserId(profile.getString("homeUser"));
+			}
 		}
-		if (profile.containsKey("preventIsClient") && profile.get("preventIsClient") != JSONNull.getInstance()) {
-			user.setPreventUser(profile.getBoolean("preventIsClient"));
-			user.setPreventUserId(profile.getString("preventUser"));
+		String preventIsClientKey = "preventIsClient";
+		if (jsonHasValueForKey(profile, preventIsClientKey)) {
+			user.setPreventUser(profile.getBoolean(preventIsClientKey));
+			if (jsonHasValueForKey(profile, "preventUser")) {
+				user.setPreventUserId(profile.getString("preventUser"));
+			}
 		}
-		if (profile.containsKey("petIsClient") && profile.get("petIsClient") != JSONNull.getInstance()) {
-			user.setPetUser(profile.getBoolean("petIsClient"));
-			user.setPetUserId(profile.getString("petUser"));
+		String petIsClientKey = "petIsClient";
+		if (jsonHasValueForKey(profile, petIsClientKey)) {
+			user.setPetUser(profile.getBoolean(petIsClientKey));
+			if (jsonHasValueForKey(profile, "petUser")) {
+				user.setPetUserId(profile.getString("petUser"));
+			}
 		}
+	}
+
+	private static boolean jsonHasValueForKey(JSONObject profile, String key) {
+		return profile.containsKey(key) && profile.get(key) != JSONNull.getInstance();
 	}
 
 	public String getTimezoneOffset() {
