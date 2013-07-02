@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.struts.forms.beans.OptIn;
 import com.tdil.lojack.utils.ThalamusWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
@@ -33,6 +35,8 @@ import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.BrandBean;
+import com.tdil.thalamus.client.facade.json.beans.BrandFamilyBean;
+import com.tdil.thalamus.client.facade.json.beans.ChannelBean;
 import com.tdil.thalamus.client.facade.json.beans.CountryBean;
 import com.tdil.thalamus.client.facade.json.beans.FieldDescription;
 import com.tdil.thalamus.client.facade.json.beans.LoginBean;
@@ -86,6 +90,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private String city; // opcional
 	private String postalCode; // opcional
 	private String addressType;
+	
+	private List<OptIn> optIns = new ArrayList<OptIn>();
 	
 	private JSONArray socialConnections;
 	
@@ -186,6 +192,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				this.countryId = arg.getId();
 				this.countrySelected = arg.getName();
 				setStates(ThalamusClientBeanFacade.getStates(this.getCountryId()));
+				this.buildOptIns();
 			} else {
 				states.clear();
 			}
@@ -208,6 +215,9 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
+		for (OptIn optIn : this.getOptIns()) {
+			optIn.setAccepted(false);
+		}
 	}
 	
 	@Override
@@ -345,6 +355,16 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		credentials.put(PersonFieldNames.password, StringUtils.nullValueOf(this.getPassword()));
 		general.put("credential", credentials);
 
+		JSONArray optInsArray = new JSONArray();
+		for (OptIn optIn : this.getOptIns()) {
+			JSONObject op = new JSONObject();
+			op.put("brandFamilyId", -1);
+			op.put("channel", -1);
+			op.put("accepted", optIn.isAccepted());
+			optInsArray.add(op);
+		}
+		general.put("optIns", optInsArray);
+		
 		if (socialConnections != null) {
 			general.put("socialConnections", socialConnections);
 		}
@@ -617,6 +637,17 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				this.setCity(address.getString(PersonFieldNames.city));
 			}
 		}
+		if (person.containsKey("optIns")) {
+			JSONArray optIns = person.getJSONArray("optIns");
+			Iterator iter = optIns.iterator();
+			while (iter.hasNext()) {
+				JSONObject optIn = (JSONObject)iter.next();
+				int brandFamilyId = optIn.getInt("brandFamilyId");
+				int channel = optIn.getInt("channel");
+				boolean accepted = optIn.getBoolean("accepted");
+				setOptIn(-1, -1, accepted);
+			}
+		}
 	}
 	
 	public WebsiteUser update() throws ValidationException {
@@ -736,5 +767,40 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	public void setMobile(boolean isMobile) {
 		this.isMobile = isMobile;
 	}
+
+	private void buildOptIns() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		this.getOptIns().clear();
+		Collection<BrandFamilyBean> brandFamilies = ThalamusClientBeanFacade.getBrandFamilies();
+		Collection<ChannelBean> channels = ThalamusClientBeanFacade.getChannels();
+		for (BrandFamilyBean family : brandFamilies) {
+			for (ChannelBean channel : channels) {
+				this.getOptIns().add(new OptIn(family.getId(), family.getName(), channel.getId(), channel.getName()));
+			}
+		}
+	}
 	
+	public OptIn getOptIn(int index) {  
+	      return this.getOptIns().get(index);  
+	   }  
+	   
+	public void setOptIn(int index, OptIn countryVO) {  
+		this.getOptIns().set(index, countryVO);  
+	 }
+	
+	private void setOptIn(int brandFamilyId, int channel, boolean accepted) {
+		for (OptIn optIn : this.optIns) {
+			//if (optIn.getBrandFamilyId() == brandFamilyId && optIn.getChannelId() == channel) {
+				optIn.setAccepted(accepted);
+				return;
+			//}
+		}
+	}
+
+	public List<OptIn> getOptIns() {
+		return optIns;
+	}
+
+	public void setOptIns(List<OptIn> optIns) {
+		this.optIns = optIns;
+	}
 }

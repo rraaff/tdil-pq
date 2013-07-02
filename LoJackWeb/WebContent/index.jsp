@@ -606,6 +606,15 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 					<% } %>
+					<logic:iterate id="optIn" name="RegisterForm" property="optIns">
+						<div class="myRow">
+							<div class="myLabel width100per"><h3><bean:write name="optIn" property="brandFamilyName"/></h3></div>
+						</div>
+						<div class="myRow">
+							<div class="myLabel width30"><html:checkbox name="optIn" property="accepted" indexed="true" /></div>
+							<div class="myLabel width350"><bean:write name="optIn" property="channelName"/></div>
+						</div>
+					</logic:iterate>
 				</div>
 				<fieldset>
 					<input type="submit" id="submitregister" value=" " class="indexLogin">
@@ -707,7 +716,7 @@ function parkingsNotLogged() {
 <div id="forgotPasswordEmailSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesFPES" class="defaultLayerStyles">
 		<div class="loginLayerContent">
-			<div id="xContainer"><button class="buttonLink" cl="closeforgotPasswordEmailSentLayer">X</button></div>
+			<div id="xContainer"><button class="buttonLink" cl="forgotPasswordEmailSentLayer">X</button></div>
 			<h3>Atención</h3>
 			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recibís un E-Mail nuestro con la clave, por favor revisá el correo no deseado.</div>
 			<fieldset>
