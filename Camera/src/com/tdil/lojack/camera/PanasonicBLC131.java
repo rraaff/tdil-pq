@@ -5,7 +5,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
+import java.net.Proxy;
 import java.net.URL;
 
 public class PanasonicBLC131 extends IPCamera {
@@ -35,14 +37,24 @@ public class PanasonicBLC131 extends IPCamera {
 		HttpURLConnection conn = null;
 		BufferedInputStream httpIn = null;
 		URL url;
+		ProxyConfiguration proxyConfiguration = null;
 		try {
+			if (getUrl().toLowerCase().startsWith("https")) {
+				proxyConfiguration = getProxyConfigurationHttps();
+			} else {
+				proxyConfiguration = getProxyConfiguration();
+			}
 			url = new URL(this.getUrl() + IMAGE);
 		} catch (MalformedURLException e) {
 			System.err.println("Invalid URL");
 			return null;
 		}
 		try {
-			conn = (HttpURLConnection) url.openConnection();
+			if (proxyConfiguration != null) {
+				conn = (HttpURLConnection) url.openConnection(new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyConfiguration.getServer(), proxyConfiguration.getPort())));
+			} else {
+				conn = (HttpURLConnection) url.openConnection();
+			}
 			configureTimeout(conn);
 			conn.setRequestProperty("Authorization", this.getBasicAuth());
 			httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
