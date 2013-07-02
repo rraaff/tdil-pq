@@ -194,7 +194,7 @@
 					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "*" : ""%><div id="err.profile.address.city"></div>
 				</fieldset>
 			<% } %>
-			<logic:iterate id="optIn" name="UpdatePersonForm" property="optIns">
+			<logic:iterate id="optIn" name="UpdatePersonFormMobile" property="optIns">
 				<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
 				<fieldset>
 					<html:checkbox name="optIn" property="accepted" indexed="true" />
