@@ -75,6 +75,7 @@ public class PanasonicBLC131 extends IPCamera {
 			}
 		} catch (IOException e) {
 			System.err.println("Unable to connect: " + e.getMessage());
+			handleException(e);
 			return null;
 		} finally {
 			if (httpIn != null) {

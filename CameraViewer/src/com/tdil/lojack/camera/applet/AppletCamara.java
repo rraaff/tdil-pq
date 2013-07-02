@@ -51,6 +51,8 @@ public class AppletCamara extends javax.swing.JApplet {
 	private JButton jButtonArriba;
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+	
+	private static Image noise = null;
 
 	private long refreshInterval;
 	private JLabel lblNewLabel;
@@ -257,9 +259,11 @@ public class AppletCamara extends javax.swing.JApplet {
 				super.run();
 				while (true) {
 					ByteArrayInputStream in = null;
+					boolean hasImage = false;
 					try {
 						in = camera.nextFrame();
 						if (in != null) {
+							hasImage = true;
 							Image imagen = ImageIO.read(in);
 							panelCamara.setImage(imagen);
 							panelCamara.repaint();
@@ -268,10 +272,22 @@ public class AppletCamara extends javax.swing.JApplet {
 						} else {
 							showTimeErr();
 							System.out.println("null image");
+							if (!hasImage) {
+								if (getNoise() != null) {
+									panelCamara.setImage(getNoise());
+									panelCamara.repaint();
+								}
+							}
 						}
 					} catch (IOException e) {
 						showTimeErr();
 						e.printStackTrace();
+						if (!hasImage) {
+							if (getNoise() != null) {
+								panelCamara.setImage(getNoise());
+								panelCamara.repaint();
+							}
+						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					} finally {
@@ -341,6 +357,28 @@ public class AppletCamara extends javax.swing.JApplet {
 				camera.down();
 			}
 		}.start();
+	}
+
+	public static Image getNoise() {
+		if (noise == null) {
+			InputStream in = null;
+			try {
+				in = AppletCamara.class.getResourceAsStream("noise.jpg");
+				noise = ImageIO.read(in);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (in != null) {
+					try {
+						in.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}
+		return noise;
 	}
 
 }

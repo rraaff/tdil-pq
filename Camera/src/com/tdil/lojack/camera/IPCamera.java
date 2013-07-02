@@ -2,7 +2,9 @@ package com.tdil.lojack.camera;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
@@ -12,7 +14,7 @@ import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
 
-public abstract class IPCamera implements Serializable {
+public abstract class IPCamera implements Serializable, CameraLogger {
 	
 	/**
 	 * 
@@ -29,6 +31,36 @@ public abstract class IPCamera implements Serializable {
 	
 	private static ProxyConfiguration proxyConfiguration;
 	private static ProxyConfiguration proxyConfigurationHttps;
+	private static CameraLogger logger;
+	
+	public static byte[] noise;
+	
+	static {
+		InputStream httpIn = null;
+		try {
+			ByteArrayOutputStream jpgOut = new ByteArrayOutputStream(8192);
+			httpIn = new BufferedInputStream(IPCamera.class.getResourceAsStream("noise.jpg"), 8192);
+			int cur = 0;
+			while ((cur = httpIn.read()) >= 0) {
+				if (jpgOut != null) {
+					jpgOut.write((byte) cur);
+				}
+			}
+			noise = jpgOut.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (httpIn != null) {
+				try {
+					httpIn.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	
 	public IPCamera(String url, String username, String password) {
 		super();
@@ -165,6 +197,26 @@ public abstract class IPCamera implements Serializable {
 
 	public void setReadTimeOut(int readTimeOut) {
 		this.readTimeOut = readTimeOut;
+	}
+	
+	@Override
+	public void error(Throwable e) {
+		if (e.getMessage() != null) {
+			System.err.println("IPCamera.error: " + e.getMessage());
+		}
+		e.printStackTrace();
+	}
+
+	protected void handleException(IOException e) {
+		// TODO Auto-generated method stub
+	}
+
+	public static CameraLogger getLogger() {
+		return logger;
+	}
+
+	public static void setLogger(CameraLogger logger) {
+		IPCamera.logger = logger;
 	}
 
 }
