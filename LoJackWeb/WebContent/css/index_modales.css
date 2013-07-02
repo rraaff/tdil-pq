@@ -111,6 +111,9 @@ h4,
 	font-weight: lighter;
 	padding-bottom: 20px;
 }
+#registerLayer h4 {
+	padding:15px 0 0;
+}
 #sendPanicLayer h3 { padding-bottom: 5px; }
 #sendPanic {
 	width:auto;

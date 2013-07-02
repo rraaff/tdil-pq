@@ -9,6 +9,7 @@ h1 {
 	padding: 10px 0;
 	text-transform:uppercase;
 }
+#registrationContent h4 { padding:20px 0 15px; }
 #user {
 	color:#fff;
 	background:#000;
@@ -52,6 +53,7 @@ span.userName { color:#f05224; }
 #loginContent fieldset,
 #recoverPassContent fieldset,
 #registrationContent fieldset { width:100%; }
+#registrationContent .optinStyles { padding:0 0 20px }
 
 #loginContent fieldset label,
 #registrationContent fieldset label {

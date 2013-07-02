@@ -237,13 +237,11 @@
 				</fieldset>
 			<% } %>
 			<logic:iterate id="optIn" name="RegisterFormMobile" property="optIns">
-				<div class="myRow">
-					<div class="myLabel width100per"><h3><bean:write name="optIn" property="brandFamilyName"/></h3></div>
-				</div>
-				<div class="myRow">
-					<div class="myLabel width30"><html:checkbox name="optIn" property="accepted" indexed="true" /></div>
-					<div class="myLabel width350"><bean:write name="optIn" property="channelName"/></div>
-				</div>
+				<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
+				<fieldset class="optinStyles">
+					<html:checkbox name="optIn" property="accepted" indexed="true" />
+					<label>Acepto recibir contactos de LoJack y sus comañías asociadas<!-- bean:write name="optIn" property="channelName"/ --></label>
+				</fieldset>
 			</logic:iterate>
 		</div>
 		<fieldset>
