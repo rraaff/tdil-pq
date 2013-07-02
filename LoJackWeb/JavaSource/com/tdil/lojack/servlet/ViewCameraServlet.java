@@ -1,5 +1,7 @@
 package com.tdil.lojack.servlet;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.web.NoCacheFilter;
@@ -22,6 +25,34 @@ public class ViewCameraServlet extends HttpServlet {
 	 *
 	 */
 	private static final long serialVersionUID = 5611834065781809280L;
+	
+	public static byte[] noise;
+	
+	static {
+		InputStream httpIn = null;
+		try {
+			ByteArrayOutputStream jpgOut = new ByteArrayOutputStream(8192);
+			httpIn = new BufferedInputStream(ViewCameraServlet.class.getResourceAsStream("noise.jpg"), 8192);
+			int cur = 0;
+			while ((cur = httpIn.read()) >= 0) {
+				if (jpgOut != null) {
+					jpgOut.write((byte) cur);
+				}
+			}
+			noise = jpgOut.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (httpIn != null) {
+				try {
+					httpIn.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -39,7 +70,9 @@ public class ViewCameraServlet extends HttpServlet {
 				if (inputStream != null) {
 					IOUtils.copy(inputStream, resp.getOutputStream());
 				} else {
-					// TODO enviar una imagen na ...
+					if (noise != null) {
+						resp.getOutputStream().write(noise);
+					}
 				}
 			} finally {
 				if (inputStream != null) {

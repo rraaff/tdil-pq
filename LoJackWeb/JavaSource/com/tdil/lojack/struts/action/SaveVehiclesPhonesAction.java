@@ -10,7 +10,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm;
-import com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;

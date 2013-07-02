@@ -27,9 +27,11 @@ public class GoToVehiclesSpeedLimitAction extends AbstractAction {
 			aForm.initWith(user);
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
+			response.setStatus(500);
 			getLog().error(ex.getMessage(), ex);
-			ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
-			return redirectToFailure(exError, request, mapping);
+			/*ValidationError exError = new ValidationError(ValidationErrors.GENERAL_ERROR_TRY_AGAIN);
+			return redirectToFailure(exError, request, mapping);*/
+			return null;
 		}
 	}
 
