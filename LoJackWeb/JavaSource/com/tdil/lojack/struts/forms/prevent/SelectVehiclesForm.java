@@ -30,29 +30,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SelectVehiclesForm.class);
 
-	public void selectVehicleForMap(WebsiteUser user, String id) {
+	public void selectVehicleForMap(WebsiteUser user, String id) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		setUser(user);
 		try {
 			basicselectVehicleForMap(user, id);
-		} catch (HttpStatusException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (InvalidResponseException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (CommunicationException e) {
-			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			try {
-				user.reloginPrevent();
-				basicselectVehicleForMap(user, id);
-			} catch (HttpStatusException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e1) {
-				LOG.error(e.getMessage(), e);
-			}
+			user.reloginPrevent();
+			basicselectVehicleForMap(user, id);
 		}
 	}
 	
@@ -66,29 +50,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 		}
 	}
 
-	public void selectVehicleForPhone(WebsiteUser user, String id) {
+	public void selectVehicleForPhone(WebsiteUser user, String id) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		setUser(user);
 		try {
 			basicselectVehicleForPhone(user, id);
-		} catch (HttpStatusException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (InvalidResponseException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (CommunicationException e) {
-			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			try {
-				user.reloginPrevent();
-				basicselectVehicleForPhone(user, id);
-			} catch (HttpStatusException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e1) {
-				LOG.error(e.getMessage(), e);
-			}
+			user.reloginPrevent();
+			basicselectVehicleForPhone(user, id);
 		}
 	}
 	
@@ -142,30 +110,13 @@ public class SelectVehiclesForm extends VehiclesForm {
 		this.otherPhone = otherPhone;
 	}
 
-	public boolean savePhones() throws ValidationException {
+	public boolean savePhones() throws ValidationException, HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		try {
 			return this.basicsavePhones();
-		} catch (HttpStatusException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (InvalidResponseException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (CommunicationException e) {
-			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			try {
-				this.getUser().reloginPrevent();
-				return this.basicsavePhones();
-			} catch (HttpStatusException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e1) {
-				LOG.error(e.getMessage(), e);
-			}
+			this.getUser().reloginPrevent();
+			return this.basicsavePhones();
 		}
-		return false;
 	}
 
 	private boolean basicsavePhones() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {

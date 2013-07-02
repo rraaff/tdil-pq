@@ -396,6 +396,8 @@ public class LoJackConfig extends SystemConfig {
 				setCameraReadTimeOut(Integer.parseInt(cameraReaTimeOut));
 			} 
 			getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
+			
+			IPCamera.setLogger(new CameraLog4jLogger());
 
 			getLog().fatal("Starting middleware jobs updater");
 			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));

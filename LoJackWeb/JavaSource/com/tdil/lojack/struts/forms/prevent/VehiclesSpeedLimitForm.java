@@ -37,31 +37,15 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 	}
 
 	@Override
-	public void initWith(WebsiteUser user) {
+	public void initWith(WebsiteUser user) throws CommunicationException, HttpStatusException, InvalidResponseException, UnauthorizedException {
 		super.initWith(user);
 		vehicleIdToSpeedLimit = new HashMap<String, SpeedLimits>();
 		speedLimits = new ArrayList<SpeedSelectionBean>();
 		try {
 			basicinitWith(user);
-		} catch (HttpStatusException e) {
-			getLog().error(e.getMessage(), e);
-		} catch (InvalidResponseException e) {
-			getLog().error(e.getMessage(), e);
-		} catch (CommunicationException e) {
-			getLog().error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			try {
-				user.reloginPrevent();
-				basicinitWith(user);
-			} catch (HttpStatusException e1) {
-				getLog().error(e.getMessage(), e);
-			} catch (InvalidResponseException e1) {
-				getLog().error(e.getMessage(), e);
-			} catch (CommunicationException e1) {
-				getLog().error(e.getMessage(), e);
-			} catch (UnauthorizedException e1) {
-				getLog().error(e.getMessage(), e);
-			}
+			user.reloginPrevent();
+			basicinitWith(user);
 		}
 
 	}
@@ -87,30 +71,13 @@ public class VehiclesSpeedLimitForm extends VehiclesForm {
 		this.speedLimits = speedLimits;
 	}
 
-	public boolean save() throws ValidationException {
+	public boolean save() throws ValidationException, HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		try {
 			return basicsave();
-		} catch (HttpStatusException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (InvalidResponseException e) {
-			LOG.error(e.getMessage(), e);
-		} catch (CommunicationException e) {
-			LOG.error(e.getMessage(), e);
 		} catch (UnauthorizedException e) {
-			try {
-				this.getUser().reloginPrevent();
-				return basicsave();
-			} catch (HttpStatusException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (InvalidResponseException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (CommunicationException e1) {
-				LOG.error(e.getMessage(), e);
-			} catch (UnauthorizedException e1) {
-				LOG.error(e.getMessage(), e);
-			}
+			this.getUser().reloginPrevent();
+			return basicsave();
 		}
-		return false;
 	}
 
 	private boolean basicsave() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
