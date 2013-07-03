@@ -80,11 +80,13 @@ public class ContactForm extends TransactionalValidationForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-		FieldValidation.validateText(this.getFirstname(), firstname_key, 150, error);
-		FieldValidation.validateText(this.getLastname(), lastname_key, 150, error);
-		FieldValidation.validateNumber(this.getDocumentNumber(), document_key, 1, Integer.MAX_VALUE, error);
-		FieldValidation.validateEmail(this.getEmail(), email_key, error);
-		FieldValidation.validateText(this.getPhone(), phone_key, 20, error);
+		if (!isRegisteredUser) {
+			FieldValidation.validateText(this.getFirstname(), firstname_key, 150, error);
+			FieldValidation.validateText(this.getLastname(), lastname_key, 150, error);
+			FieldValidation.validateNumber(this.getDocumentNumber(), document_key, 1, Integer.MAX_VALUE, error);
+			FieldValidation.validateEmail(this.getEmail(), email_key, error);
+			FieldValidation.validateText(this.getPhone(), phone_key, 20, error);
+		}
 		FieldValidation.validateText(this.getContent(), content_key, 4000, error);
 	}
 	
@@ -94,11 +96,25 @@ public class ContactForm extends TransactionalValidationForm {
 
 	@Override
 	public void save() throws SQLException, ValidationException {
+		Properties properties = new Properties();
 		SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
+
+		SystemPropertyExample smtpProxyExample = new SystemPropertyExample();
+		smtpProxyExample.createCriteria().andPropkeyEqualTo("mail.proxy").andDeletedEqualTo(0);
+		List<SystemProperty> proxylist = systemPropertyDAO.selectSystemPropertyByExample(smtpProxyExample);
+		if (!proxylist.isEmpty()) {
+			String proxyConf = proxylist.get(0).getPropvalue();
+			String proxyArr[] = proxyConf.split(":");
+			properties.put("proxySet","true");
+			properties.put("mail.smtp.socks.host",proxyArr[0]);
+			properties.put("mail.smtp.socks.port",proxyArr[1]);
+			properties.setProperty("proxySet","true");
+			properties.setProperty("ProxyHost",proxyArr[0]);
+			properties.setProperty("ProxyPort",proxyArr[1]);
+		}
 		SystemPropertyExample smtpExample = new SystemPropertyExample();
 		smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
 		List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
-		Properties properties = new Properties();
 		for (SystemProperty sp : list) {
 			properties.put(sp.getPropkey(), sp.getPropvalue());
 		}
