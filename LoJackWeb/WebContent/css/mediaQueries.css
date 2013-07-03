@@ -431,7 +431,10 @@ and (max-height : 550px) {
 	form { padding-top: 5px; }
 	#agendaWrapper label { min-width:60px; line-height:25px; padding:0 0 0 10px; margin: 10px 10px 10px 0; font-size: 80%; cursor: default; }
 	#agendaWrapper input[type="text"] { line-height:25px; text-transform: none; width: auto; height: 25px; margin: 10px 0; padding: 0; }
-	fieldset input[type="radio"], fieldset input[type="checkbox"] { line-height: 25px; margin: 5px 5px 0 0; }
+	fieldset input[type="radio"],
+	fieldset input[type="checkbox"] { line-height: 25px; margin: 5px 5px 0 0; }
+	#registerLayer fieldset input[type="radio"],
+	#registerLayer fieldset input[type="checkbox"] { margin:15px 5px 0 0; }
 	#agendaWrapper table { color:#000; font-size:10px; width:100%; }
 	#cameraTitle { width:100% }
 	#appletHolder { width:100%; }
