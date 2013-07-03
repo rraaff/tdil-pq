@@ -48,6 +48,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.s
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.socketFactory.fallback','false','mail.smtp.socketFactory.fallback',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.smtp.password','t3stl0j4k','mail.smtp.password',0);
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.proxy','localhost:9090','mail.proxy',0);
+
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','subcmd@gmail.com','Email del formulario de contacto',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.car','http://www.youtube.com/embed/5Xe5pODPq1I','video.car',0);
