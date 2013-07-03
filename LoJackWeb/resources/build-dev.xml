@@ -92,7 +92,7 @@
 		</sql>
 	</target>
 	
-	<target name="use-prod-conf" depends="createDatabase">
+	<target name="use-prod-conf">
 			<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 				<classpath>
 					<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
