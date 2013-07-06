@@ -124,3 +124,16 @@ ENGINE = InnoDB;
 
 INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.lojack.model.Category',0);
 COMMIT;
+
+CREATE TABLE SYSTEMUSER (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(20) NULL ,
+  `password` VARCHAR(50) NULL ,
+  `loggingAccess` INT NOT NULL,
+  `syspropAccess` INT NOT NULL,
+  `deleted` INT NOT NULL,
+  PRIMARY KEY (`id`) ,
+  INDEX `IX_SYSTEMUSER_00` (`username` ASC))
+ENGINE = InnoDB;
+
+COMMIT;

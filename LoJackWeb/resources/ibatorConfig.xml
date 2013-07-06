@@ -67,5 +67,10 @@ targetProject="LoJackWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
+<table schema="LOJACK" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
+
+
 </ibatorContext>
 </ibatorConfiguration>

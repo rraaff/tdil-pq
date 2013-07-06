@@ -145,6 +145,15 @@
 			<transaction src="use_mw_fake.sql" />
 		</sql>
 	</target>
+	
+	<target name="incremental-01">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl1.sql" />
+		</sql>
+	</target>
 
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">

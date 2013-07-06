@@ -24,6 +24,9 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'POI')
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'VERSION')
     drop table VERSION;
+    
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'SYSTEMUSER')
+    drop table SYSTEMUSER;
 
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
@@ -120,3 +123,13 @@ CREATE TABLE POI (
   PRIMARY KEY (id));
 
 CREATE INDEX IX_POI_00 ON POI (type);
+
+CREATE TABLE SYSTEMUSER (
+  id INT NOT NULL IDENTITY ,
+  username VARCHAR(20) NULL ,
+  password VARCHAR(50) NULL ,
+  loggingAccess INT NULL,
+  syspropAccess INT NULL,
+  PRIMARY KEY (id));
+  
+CREATE INDEX IX_SYSTEMUSER_00 ON SYSTEMUSER (username);

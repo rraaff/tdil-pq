@@ -1,0 +1,9 @@
+CREATE TABLE SYSTEMUSER (
+  id INT NOT NULL IDENTITY ,
+  username VARCHAR(20) NULL ,
+  password VARCHAR(50) NULL ,
+  loggingAccess INT NULL,
+  syspropAccess INT NULL,
+  PRIMARY KEY (id));
+  
+CREATE INDEX IX_SYSTEMUSER_00 ON SYSTEMUSER (username);
