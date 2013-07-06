@@ -30,7 +30,7 @@ public class TestMJpeg {
 	    
 	    try {
 	      conn = (HttpURLConnection)url.openConnection();
-	      conn.setRequestProperty("Authorization", "Basic " + base64.encode(("preisinger" + ":" + "lj2013").getBytes()));
+	      conn.setRequestProperty("Authorization", "Basic " + base64.encode(("operator" + ":" + "operator1").getBytes()));
 	      httpIn = new BufferedInputStream(conn.getInputStream(), 8192);
 	      int prev = 0;
 	      int cur = 0;
