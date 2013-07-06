@@ -1,0 +1,4 @@
+<% if (su.getLoggingaccess() == null || !su.getLoggingaccess().equals(1)) { %>
+	<jsp:forward page="./login.jsp"></jsp:forward>
+<% return;
+} %>
