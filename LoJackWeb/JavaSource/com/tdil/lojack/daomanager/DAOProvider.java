@@ -9,6 +9,7 @@ import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
+import com.tdil.lojack.dao.SystemUserDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
 
 public interface DAOProvider {
@@ -28,5 +29,7 @@ public interface DAOProvider {
 	public abstract CacheRegionDAO getCacheRegionDAO() throws SQLException;
 
 	public abstract PointOfInterestDAO getPointOfInterestDAO() throws SQLException;
+
+	public abstract SystemUserDAO getSystemUserDAO() throws SQLException;
 
 }

@@ -26,4 +26,5 @@
 	<sqlMap resource="com/tdil/lojack/dao/maps/BLOB_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/CACHE_REGION_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/POI_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/SYSTEMUSER_SqlMap.xml"/>
 </sqlMapConfig>

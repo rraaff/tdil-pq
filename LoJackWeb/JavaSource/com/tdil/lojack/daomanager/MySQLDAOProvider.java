@@ -10,6 +10,7 @@ import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
+import com.tdil.lojack.dao.SystemUserDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
 import com.tdil.lojack.dao.impl.AlarmConfDAOImpl;
 import com.tdil.lojack.dao.impl.AsyncJobDAOImpl;
@@ -18,6 +19,7 @@ import com.tdil.lojack.dao.impl.CacheRegionDAOImpl;
 import com.tdil.lojack.dao.impl.LightConfDAOImpl;
 import com.tdil.lojack.dao.impl.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
+import com.tdil.lojack.dao.impl.SystemUserDAOImpl;
 import com.tdil.lojack.dao.impl.WebsiteUserDAOImpl;
 
 public class MySQLDAOProvider implements DAOProvider {
@@ -85,5 +87,10 @@ public class MySQLDAOProvider implements DAOProvider {
 	@Override
 	public PointOfInterestDAO getPointOfInterestDAO() throws SQLException {
 		return new PointOfInterestDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public SystemUserDAO getSystemUserDAO() throws SQLException {
+		return new SystemUserDAOImpl(IBatisManager.getClient());
 	}
 }
