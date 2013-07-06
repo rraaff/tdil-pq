@@ -1,6 +1,8 @@
 package com.tdil.lojack.utils;
 
+import java.net.MalformedURLException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,7 +12,9 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.model.SystemProperty;
 import com.tdil.lojack.model.SystemPropertyExample;
+import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
+import com.tdil.struts.ValidationException;
 
 public class SystemPropertyUtils {
 
@@ -34,6 +38,62 @@ public class SystemPropertyUtils {
 		}
 	}
 	
+	private static final class ChangeSystemProperty implements TransactionalAction {
+		
+		private String key;
+		private String value;
+		
+		public ChangeSystemProperty(String key, String value) {
+			super();
+			this.key = key;
+			this.value = value;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			SystemPropertyExample systemPropertyExample = new SystemPropertyExample();
+			systemPropertyExample.createCriteria().andPropkeyEqualTo(key);
+			List<SystemProperty> list = DAOManager.getSystemPropertyDAO().selectSystemPropertyByExample(systemPropertyExample);
+			if (!list.isEmpty()) {
+				SystemProperty sp = list.get(0);
+				sp.setPropvalue(this.value);
+				DAOManager.getSystemPropertyDAO().updateSystemPropertyByPrimaryKey(sp);
+			}
+		}
+	}
+	
+	private static final class ToggleDeleteSystemProperty implements TransactionalAction {
+		
+		private int id;
+		
+		public ToggleDeleteSystemProperty(int id) {
+			super();
+			this.id = id;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			SystemProperty sp = DAOManager.getSystemPropertyDAO().selectSystemPropertyByPrimaryKey(this.id);
+			if (sp.getDeleted().equals(1)) {
+				sp.setDeleted(0);
+			} else {
+				sp.setDeleted(1);
+			}
+			DAOManager.getSystemPropertyDAO().updateSystemPropertyByPrimaryKey(sp);
+		}
+	}
+	
+	private static final class GetSystemProperties implements TransactionalActionWithResult {
+		
+		public GetSystemProperties() {
+			super();
+		}
+
+		public Object executeInTransaction() throws SQLException {
+			SystemPropertyExample systemPropertyExample = new SystemPropertyExample();
+			systemPropertyExample.setOrderByClause("propKey");
+			return DAOManager.getSystemPropertyDAO().selectSystemPropertyByExample(systemPropertyExample);
+		}
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public static String getSystemPropertValue(String key) {
@@ -47,6 +107,51 @@ public class SystemPropertyUtils {
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return "";
+		}
+	}
+	
+	public static List<SystemProperty> getSystemProperties() {
+		try {
+			List<SystemProperty> result = (List<SystemProperty>)TransactionProvider.executeInTransactionWithResult(new GetSystemProperties());
+			return result;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<SystemProperty>();
+		}
+	}
+	
+	public static void updateSystemProperty(String key, String value) {
+		try {
+			TransactionProvider.executeInTransaction(new ChangeSystemProperty(key, value));
+		} catch (SQLException e) {
+		} catch (ValidationException e) {
+		}
+	}
+	
+	public static void toggleDelete(int id) {
+		try {
+			TransactionProvider.executeInTransaction(new ToggleDeleteSystemProperty(id));
+		} catch (SQLException e) {
+		} catch (ValidationException e) {
+		}
+	}
+	
+	public static void reloadSysProperties() {
+		try {
+			TransactionProvider.executeInTransaction(new TransactionalAction() {
+				
+				@Override
+				public void executeInTransaction() throws SQLException, ValidationException {
+					try {
+						LoJackConfig.basicInitSystem();
+					} catch (MalformedURLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			});
+		} catch (SQLException e) {
+		} catch (ValidationException e) {
 		}
 	}
 	

@@ -2,6 +2,7 @@ package com.tdil.lojack.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -83,332 +84,7 @@ public class LoJackConfig extends SystemConfig {
 			super.init(sce);
 			this.loadFilteredWords();
 			
-			String dbversion = SystemPropertyUtils.getSystemPropertValue("dbversion");
-			if (!StringUtils.isEmpty(dbversion)) {
-				setDB_VERSION(dbversion);
-			} else {
-				setDB_VERSION("N/A");
-			}
-			getLog().fatal("DBVersion is " + getDB_VERSION());
-			
-			String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
-			if (frontserver != null) {
-				setFRONT_SERVER(frontserver);
-			}
-			getLog().fatal("Front server is " + frontserver);
-			
-			String videoHome = SystemPropertyUtils.getSystemPropertValue("video.home");
-			if (!StringUtils.isEmpty(videoHome)) {
-				setVideohome(videoHome);
-			}
-			getLog().fatal("Videohome is " + getVideohome());
-			
-			String videoCar = SystemPropertyUtils.getSystemPropertValue("video.car");
-			if (!StringUtils.isEmpty(videoCar)) {
-				setVideocar(videoCar);
-			}
-			getLog().fatal("Videocar is " + getVideocar());
-			
-			String videopets = SystemPropertyUtils.getSystemPropertValue("video.pets");
-			if (!StringUtils.isEmpty(videopets)) {
-				setVideopets(videopets);
-			}
-			getLog().fatal("Videopets is " + getVideopets());
-			
-			String videoloapp = SystemPropertyUtils.getSystemPropertValue("video.loapp");
-			if (!StringUtils.isEmpty(videoloapp)) {
-				setVideoloapp(videoloapp);
-			}
-			getLog().fatal("Videoloapp is " + getVideoloapp());
-
-			String videoMobileHome = SystemPropertyUtils.getSystemPropertValue("video.mobile.home");
-			if (!StringUtils.isEmpty(videoMobileHome)) {
-				setMobilevideohome(videoMobileHome);
-			}
-			getLog().fatal("Videohome mobile is " + getMobilevideohome());
-			
-			String videoMobileCar = SystemPropertyUtils.getSystemPropertValue("video.mobile.car");
-			if (!StringUtils.isEmpty(videoMobileCar)) {
-				setMobilevideocar(videoMobileCar);
-			}
-			getLog().fatal("Videocar mobile is " + getMobilevideocar());
-			
-			String videoMobilepets = SystemPropertyUtils.getSystemPropertValue("video.mobile.pets");
-			if (!StringUtils.isEmpty(videoMobilepets)) {
-				setMobilevideopets(videoMobilepets);
-			}
-			getLog().fatal("Videopets mobile is " + getMobilevideopets());
-			
-			long delay = 0;
-			try {
-				delay = Long.parseLong(SystemPropertyUtils.getSystemPropertValue("front.login.deplay"));
-			} catch (Exception e) {
-			}
-			setFRONT_LOGIN_DELAY(delay);
-			getLog().fatal("Front login delay is " + delay);
-			
-			String httpproxy = SystemPropertyUtils.getSystemPropertValue("proxy.http");
-			if (!StringUtils.isEmpty(httpproxy)) {
-				String proxyConf[] = httpproxy.split(":");
-				setHTTP_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
-				getLog().fatal("Http proxy is " + httpproxy);
-			} else {
-				getLog().fatal("No http proxy");
-			}
-			String httpsproxy = SystemPropertyUtils.getSystemPropertValue("proxy.https");
-			if (!StringUtils.isEmpty(httpsproxy)) {
-				String proxyConf[] = httpsproxy.split(":");
-				setHTTPS_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
-				getLog().fatal("Https proxy is " + httpproxy);
-			} else {
-				getLog().fatal("No https proxy");
-			}
-			
-
-			String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
-			if (thalamusserver != null) {
-				ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
-			}
-			getLog().fatal("Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
-
-			URL thalamusUrl = new URL(thalamusserver);
-			String thalamushost = SystemPropertyUtils.getSystemPropertValue("thalamus.host");
-			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamushost)) {
-				ThalamusClient.setTHALAMUS_HOST(thalamushost);
-			} else {
-				ThalamusClient.setTHALAMUS_HOST(thalamusUrl.getHost());
-			}
-			getLog().fatal("Thalamus host is " + ThalamusClient.getTHALAMUS_HOST());
-			
-			String thalamustimeout = SystemPropertyUtils.getSystemPropertValue("thalamus.timeout");
-			if (thalamustimeout != null) {
-				ThalamusClient.setTIMEOUT(Integer.parseInt(thalamustimeout));
-			}
-			getLog().fatal("Thalamus timeout is " + ThalamusClient.getTIMEOUT());
-			
-			String thalamusproxy = SystemPropertyUtils.getSystemPropertValue("thalamus.proxy");
-			if (!StringUtils.isEmpty(thalamusproxy) && "true".equalsIgnoreCase(thalamusproxy)) {
-				if (ThalamusClient.getTHALAMUS_HOST().startsWith("https")) {
-					if (getHTTPS_PROXY() != null) {
-						ThalamusClient.setPROXY(getHTTPS_PROXY());
-						getLog().fatal("Thalamus proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
-					} else {
-						getLog().fatal("No Thalamus proxy");
-					}
-				} else {
-					if (getHTTP_PROXY() != null) {
-						ThalamusClient.setPROXY(getHTTP_PROXY());
-						getLog().fatal("Thalamus proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
-					} else {
-						getLog().fatal("No Thalamus proxy");
-					}
-				}
-			} else {
-				getLog().fatal("No Thalamus proxy");
-			}
-
-			String thalamuscookiepath = SystemPropertyUtils.getSystemPropertValue("thalamus.cookiePath");
-			if (!org.apache.commons.lang.StringUtils.isEmpty(thalamuscookiepath)) {
-				ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamuscookiepath);
-			} else {
-				ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamusUrl.getPath());
-			}
-			getLog().fatal("Thalamus cookie path is " + ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
-
-			String thalamustouchpointCode = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.code");
-			if (thalamustouchpointCode != null) {
-				ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
-			}
-			getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
-
-			String thalamustouchpointToken = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.token");
-			if (thalamustouchpointToken != null) {
-				ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
-			}
-			getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
-			ThalamusCache.configureWith(new Properties());
-			// Initializes the caches
-			try {
-				getLog().fatal("About to initialize cache");
-				getLog().fatal("Initializing brand families cache");
-				ThalamusClientBeanFacade.getBrandFamilies();
-				getLog().fatal("Initializing brands cache");
-				ThalamusClientBeanFacade.getBrands();
-				getLog().fatal("Initializing channels cache");
-				ThalamusClientBeanFacade.getChannels();
-				getLog().fatal("Initializing countries cache");
-				ThalamusClientBeanFacade.getCountries();
-				getLog().fatal("Initializing document types cache");
-				ThalamusClientBeanFacade.getDocumentTypes();
-				getLog().fatal("Initializing person fields cache");
-				ThalamusClientBeanFacade.getPersonFields();
-				getLog().fatal("Initializing facebook login");
-				ThalamusClientBeanFacade.getFacebookLogin();
-				getLog().fatal("Initializing twitter login");
-				ThalamusClientBeanFacade.getTwitterLogin();
-				getLog().fatal("Cache initialized");
-			} catch (Exception e) {
-				getLog().error("Can not initialize caches", e);
-			}
-			Role.addRole(WebsiteUser.INSTANCE);
-			
-			String guid = SystemPropertyUtils.getSystemPropertValue("guid");
-			if (guid != null) {
-				setGUID(guid);
-			}
-			getLog().fatal("GUID is " + guid);
-			
-			String mwprotocol = SystemPropertyUtils.getSystemPropertValue("mw.protocol");
-			if (StringUtils.isEmpty(mwprotocol)) {
-				mwprotocol = JSONProtocol.PROTOCOL;
-			} 
-			LoJackServicesConnector.setProtocol(JSONProtocol.PROTOCOL.equalsIgnoreCase(mwprotocol) ? new JSONProtocol() : new CarpathiaProtocol());
-			getLog().fatal("MW protocol is " + mwprotocol);
-
-			String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
-			if (gisserver != null) {
-				LoJackServicesConnector.setGisServer(gisserver);
-			}
-			getLog().fatal("GIS server is " + (gisserver == null ? "null" : gisserver));
-
-			String servicesserver = SystemPropertyUtils.getSystemPropertValue("services.server");
-			if (servicesserver != null) {
-				LoJackServicesConnector.setServicesServer(servicesserver);
-			}
-			getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
-			
-			String servicestimeout = SystemPropertyUtils.getSystemPropertValue("services.timeout");
-			if (servicestimeout != null) {
-				LoJackServicesConnector.setTIMEOUT(Integer.parseInt(servicestimeout));
-			}
-			getLog().fatal("Services timeout is " + LoJackServicesConnector.getTIMEOUT());
-			
-			String middlewareproxy = SystemPropertyUtils.getSystemPropertValue("middleware.proxy");
-			if (!StringUtils.isEmpty(middlewareproxy) && "true".equalsIgnoreCase(middlewareproxy)) {
-				if (LoJackServicesConnector.getGisServer().startsWith("https")) {
-					if (getHTTPS_PROXY() != null) {
-						LoJackServicesConnector.setPROXY(getHTTPS_PROXY());
-						getLog().fatal("Middleware proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
-					} else {
-						getLog().fatal("No Middleware proxy");
-					}
-				} else {
-					if (getHTTP_PROXY() != null) {
-						LoJackServicesConnector.setPROXY(getHTTP_PROXY());
-						getLog().fatal("Middleware proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
-					} else {
-						getLog().fatal("No Middleware proxy");
-					}
-				}
-			} else {
-				getLog().fatal("No Middleware proxy");
-			}
-
-			String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
-			if (preventserver != null) {
-				PreventConnector.setPreventServer(preventserver);
-			}
-			getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
-			
-			String preventloginurl = SystemPropertyUtils.getSystemPropertValue("prevent.loginurl");
-			if (preventloginurl != null) {
-				PreventConnector.setPreventLoginUrl(preventloginurl);
-			}
-			getLog().fatal("Prevent login url is " + (preventloginurl == null ? "null" : preventloginurl));
-			
-			String preventtoken = SystemPropertyUtils.getSystemPropertValue("prevent.token");
-			if (preventtoken != null) {
-				PreventConnector.setPreventToken(preventtoken);
-			}
-			getLog().fatal("Prevent token is " + (preventtoken == null ? "null" : preventtoken));
-			
-			String preventtimeout = SystemPropertyUtils.getSystemPropertValue("prevent.timeout");
-			if (preventtimeout != null) {
-				PreventConnector.setTIMEOUT(Integer.parseInt(preventtimeout));
-			}
-			getLog().fatal("Prevent timeout is " + PreventConnector.getTIMEOUT());
-			
-			String preventproxy = SystemPropertyUtils.getSystemPropertValue("prevent.proxy");
-			if (!StringUtils.isEmpty(preventproxy) && "true".equalsIgnoreCase(preventproxy)) {
-				if (PreventConnector.getPreventServer().startsWith("https")) {
-					if (getHTTPS_PROXY() != null) {
-						PreventConnector.setPROXY(getHTTPS_PROXY());
-						getLog().fatal("Prevent proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
-					} else {
-						getLog().fatal("No Prevent proxy");
-					}
-				} else {
-					if (getHTTP_PROXY() != null) {
-						PreventConnector.setPROXY(getHTTP_PROXY());
-						getLog().fatal("Prevent proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
-					} else {
-						getLog().fatal("No Prevent proxy");
-					}
-				}
-			} else {
-				getLog().fatal("No Prevent proxy");
-			}
-			
-			String petsloginurl = SystemPropertyUtils.getSystemPropertValue("pets.loginurl");
-			if (petsloginurl != null) {
-				PetsConnector.setPetsLoginUrl(petsloginurl);
-			}
-			getLog().fatal("Pets login url is " + (petsloginurl == null ? "null" : petsloginurl));
-			
-			String petsMobileloginurl = SystemPropertyUtils.getSystemPropertValue("pets.mobile.loginurl");
-			if (petsMobileloginurl != null) {
-				PetsConnector.setPetsMobileLoginUrl(petsMobileloginurl);
-			}
-			getLog().fatal("Pets mobile login url is " + (petsMobileloginurl == null ? "null" : petsMobileloginurl));
-			
-			String petstoken = SystemPropertyUtils.getSystemPropertValue("pets.token");
-			if (petstoken != null) {
-				PetsConnector.setPetsToken(petstoken);
-			}
-			getLog().fatal("Pets token is " + (petstoken == null ? "null" : petstoken));
-			
-			String cameraproxy = SystemPropertyUtils.getSystemPropertValue("camera.proxy");
-			if (!StringUtils.isEmpty(cameraproxy ) && "true".equalsIgnoreCase(cameraproxy )) {
-				if (getHTTPS_PROXY() != null) {
-					IPCamera.setProxyConfigurationHttps(new com.tdil.lojack.camera.ProxyConfiguration(getHTTPS_PROXY().getServer(), getHTTPS_PROXY().getPort()));
-					getLog().fatal("Camera proxy for https is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
-				} else {
-					getLog().fatal("No camera proxy for https");
-				}
-				if (getHTTP_PROXY() != null) {
-					IPCamera.setProxyConfiguration(new com.tdil.lojack.camera.ProxyConfiguration(getHTTP_PROXY().getServer(), getHTTP_PROXY().getPort()));
-					getLog().fatal("Camera proxy for is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
-				} else {
-					getLog().fatal("No camera proxy for http");
-				}
-			} else {
-				getLog().fatal("No camera proxy");
-			}
-			
-			String cameraConnectTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.connectTimeOut");
-			if (!StringUtils.isEmpty(cameraConnectTimeOut )) {
-				setCameraConnectTimeOut(Integer.parseInt(cameraConnectTimeOut));
-			} 
-			getLog().fatal("Camera connect time out is " + getCameraConnectTimeOut());
-			
-			String cameraReaTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.readTimeOut");
-			if (!StringUtils.isEmpty(cameraReaTimeOut )) {
-				setCameraReadTimeOut(Integer.parseInt(cameraReaTimeOut));
-			} 
-			getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
-			
-			IPCamera.setLogger(new CameraLog4jLogger());
-
-			getLog().fatal("Starting middleware jobs updater");
-			int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));
-			int jobaborttime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.abort.time"));
-			int jobclientrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.client.refresh.time"));
-			UpdateMiddlewareJobsThread.setJobRefreshTime(jobrefreshtime);
-			UpdateMiddlewareJobsThread.setJobAbortTime(jobaborttime);
-			UpdateMiddlewareJobsThread.setJobClientRefreshTime(jobclientrefreshtime);
-			getLog().fatal("Middleware job refresh time is " + jobrefreshtime + " millis");
-			getLog().fatal("Middleware job abort time is " + jobaborttime + " millis");
-			getLog().fatal("Middleware job client refresh time is " + jobclientrefreshtime + " millis");
+			basicInitSystem();
 
 			UpdateMiddlewareJobsThread updateMiddlewareJobsThread = new UpdateMiddlewareJobsThread();
 			UpdateMiddlewareJobsThread.setUpdateMiddlewareJobsThread(updateMiddlewareJobsThread);
@@ -420,6 +96,335 @@ public class LoJackConfig extends SystemConfig {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	public static void basicInitSystem() throws MalformedURLException {
+		String dbversion = SystemPropertyUtils.getSystemPropertValue("dbversion");
+		if (!StringUtils.isEmpty(dbversion)) {
+			setDB_VERSION(dbversion);
+		} else {
+			setDB_VERSION("N/A");
+		}
+		getLog().fatal("DBVersion is " + getDB_VERSION());
+		
+		String frontserver = SystemPropertyUtils.getSystemPropertValue("front.server");
+		if (frontserver != null) {
+			setFRONT_SERVER(frontserver);
+		}
+		getLog().fatal("Front server is " + frontserver);
+		
+		String videoHome = SystemPropertyUtils.getSystemPropertValue("video.home");
+		if (!StringUtils.isEmpty(videoHome)) {
+			setVideohome(videoHome);
+		}
+		getLog().fatal("Videohome is " + getVideohome());
+		
+		String videoCar = SystemPropertyUtils.getSystemPropertValue("video.car");
+		if (!StringUtils.isEmpty(videoCar)) {
+			setVideocar(videoCar);
+		}
+		getLog().fatal("Videocar is " + getVideocar());
+		
+		String videopets = SystemPropertyUtils.getSystemPropertValue("video.pets");
+		if (!StringUtils.isEmpty(videopets)) {
+			setVideopets(videopets);
+		}
+		getLog().fatal("Videopets is " + getVideopets());
+		
+		String videoloapp = SystemPropertyUtils.getSystemPropertValue("video.loapp");
+		if (!StringUtils.isEmpty(videoloapp)) {
+			setVideoloapp(videoloapp);
+		}
+		getLog().fatal("Videoloapp is " + getVideoloapp());
+
+		String videoMobileHome = SystemPropertyUtils.getSystemPropertValue("video.mobile.home");
+		if (!StringUtils.isEmpty(videoMobileHome)) {
+			setMobilevideohome(videoMobileHome);
+		}
+		getLog().fatal("Videohome mobile is " + getMobilevideohome());
+		
+		String videoMobileCar = SystemPropertyUtils.getSystemPropertValue("video.mobile.car");
+		if (!StringUtils.isEmpty(videoMobileCar)) {
+			setMobilevideocar(videoMobileCar);
+		}
+		getLog().fatal("Videocar mobile is " + getMobilevideocar());
+		
+		String videoMobilepets = SystemPropertyUtils.getSystemPropertValue("video.mobile.pets");
+		if (!StringUtils.isEmpty(videoMobilepets)) {
+			setMobilevideopets(videoMobilepets);
+		}
+		getLog().fatal("Videopets mobile is " + getMobilevideopets());
+		
+		long delay = 0;
+		try {
+			delay = Long.parseLong(SystemPropertyUtils.getSystemPropertValue("front.login.deplay"));
+		} catch (Exception e) {
+		}
+		setFRONT_LOGIN_DELAY(delay);
+		getLog().fatal("Front login delay is " + delay);
+		
+		String httpproxy = SystemPropertyUtils.getSystemPropertValue("proxy.http");
+		if (!StringUtils.isEmpty(httpproxy)) {
+			String proxyConf[] = httpproxy.split(":");
+			setHTTP_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
+			getLog().fatal("Http proxy is " + httpproxy);
+		} else {
+			getLog().fatal("No http proxy");
+		}
+		String httpsproxy = SystemPropertyUtils.getSystemPropertValue("proxy.https");
+		if (!StringUtils.isEmpty(httpsproxy)) {
+			String proxyConf[] = httpsproxy.split(":");
+			setHTTPS_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
+			getLog().fatal("Https proxy is " + httpproxy);
+		} else {
+			getLog().fatal("No https proxy");
+		}
+		
+
+		String thalamusserver = SystemPropertyUtils.getSystemPropertValue("thalamus.server");
+		if (thalamusserver != null) {
+			ThalamusClient.setTHALAMUS_SERVER(thalamusserver);
+		}
+		getLog().fatal("Thalamus server is " + ThalamusClient.getTHALAMUS_SERVER());
+
+		URL thalamusUrl = new URL(thalamusserver);
+		String thalamushost = SystemPropertyUtils.getSystemPropertValue("thalamus.host");
+		if (!org.apache.commons.lang.StringUtils.isEmpty(thalamushost)) {
+			ThalamusClient.setTHALAMUS_HOST(thalamushost);
+		} else {
+			ThalamusClient.setTHALAMUS_HOST(thalamusUrl.getHost());
+		}
+		getLog().fatal("Thalamus host is " + ThalamusClient.getTHALAMUS_HOST());
+		
+		String thalamustimeout = SystemPropertyUtils.getSystemPropertValue("thalamus.timeout");
+		if (thalamustimeout != null) {
+			ThalamusClient.setTIMEOUT(Integer.parseInt(thalamustimeout));
+		}
+		getLog().fatal("Thalamus timeout is " + ThalamusClient.getTIMEOUT());
+		
+		String thalamusproxy = SystemPropertyUtils.getSystemPropertValue("thalamus.proxy");
+		if (!StringUtils.isEmpty(thalamusproxy) && "true".equalsIgnoreCase(thalamusproxy)) {
+			if (ThalamusClient.getTHALAMUS_HOST().startsWith("https")) {
+				if (getHTTPS_PROXY() != null) {
+					ThalamusClient.setPROXY(getHTTPS_PROXY());
+					getLog().fatal("Thalamus proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("No Thalamus proxy");
+				}
+			} else {
+				if (getHTTP_PROXY() != null) {
+					ThalamusClient.setPROXY(getHTTP_PROXY());
+					getLog().fatal("Thalamus proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("No Thalamus proxy");
+				}
+			}
+		} else {
+			getLog().fatal("No Thalamus proxy");
+		}
+
+		String thalamuscookiepath = SystemPropertyUtils.getSystemPropertValue("thalamus.cookiePath");
+		if (!org.apache.commons.lang.StringUtils.isEmpty(thalamuscookiepath)) {
+			ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamuscookiepath);
+		} else {
+			ThalamusClient.setTHALAMUS_JSESSIONID_COOKIE_PATH(thalamusUrl.getPath());
+		}
+		getLog().fatal("Thalamus cookie path is " + ThalamusClient.getTHALAMUS_JSESSIONID_COOKIE_PATH());
+
+		String thalamustouchpointCode = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.code");
+		if (thalamustouchpointCode != null) {
+			ThalamusClient.setTHALAMUS_TOUCHPOINT_CODE(thalamustouchpointCode);
+		}
+		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_CODE());
+
+		String thalamustouchpointToken = SystemPropertyUtils.getSystemPropertValue("thalamus.touchpoint.token");
+		if (thalamustouchpointToken != null) {
+			ThalamusClient.setTHALAMUS_TOUCHPOINT_TOKEN(thalamustouchpointToken);
+		}
+		getLog().fatal("Thalamus touchpoint is " + ThalamusClient.getTHALAMUS_TOUCHPOINT_TOKEN());
+		ThalamusCache.configureWith(new Properties());
+		// Initializes the caches
+		try {
+			getLog().fatal("About to initialize cache");
+			getLog().fatal("Initializing brand families cache");
+			ThalamusClientBeanFacade.getBrandFamilies();
+			getLog().fatal("Initializing brands cache");
+			ThalamusClientBeanFacade.getBrands();
+			getLog().fatal("Initializing channels cache");
+			ThalamusClientBeanFacade.getChannels();
+			getLog().fatal("Initializing countries cache");
+			ThalamusClientBeanFacade.getCountries();
+			getLog().fatal("Initializing document types cache");
+			ThalamusClientBeanFacade.getDocumentTypes();
+			getLog().fatal("Initializing person fields cache");
+			ThalamusClientBeanFacade.getPersonFields();
+			getLog().fatal("Initializing facebook login");
+			ThalamusClientBeanFacade.getFacebookLogin();
+			getLog().fatal("Initializing twitter login");
+			ThalamusClientBeanFacade.getTwitterLogin();
+			getLog().fatal("Cache initialized");
+		} catch (Exception e) {
+			getLog().error("Can not initialize caches", e);
+		}
+		Role.addRole(WebsiteUser.INSTANCE);
+		
+		String guid = SystemPropertyUtils.getSystemPropertValue("guid");
+		if (guid != null) {
+			setGUID(guid);
+		}
+		getLog().fatal("GUID is " + guid);
+		
+		String mwprotocol = SystemPropertyUtils.getSystemPropertValue("mw.protocol");
+		if (StringUtils.isEmpty(mwprotocol)) {
+			mwprotocol = JSONProtocol.PROTOCOL;
+		} 
+		LoJackServicesConnector.setProtocol(JSONProtocol.PROTOCOL.equalsIgnoreCase(mwprotocol) ? new JSONProtocol() : new CarpathiaProtocol());
+		getLog().fatal("MW protocol is " + mwprotocol);
+
+		String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
+		if (gisserver != null) {
+			LoJackServicesConnector.setGisServer(gisserver);
+		}
+		getLog().fatal("GIS server is " + (gisserver == null ? "null" : gisserver));
+
+		String servicesserver = SystemPropertyUtils.getSystemPropertValue("services.server");
+		if (servicesserver != null) {
+			LoJackServicesConnector.setServicesServer(servicesserver);
+		}
+		getLog().fatal("Services server is " + (servicesserver == null ? "null" : servicesserver));
+		
+		String servicestimeout = SystemPropertyUtils.getSystemPropertValue("services.timeout");
+		if (servicestimeout != null) {
+			LoJackServicesConnector.setTIMEOUT(Integer.parseInt(servicestimeout));
+		}
+		getLog().fatal("Services timeout is " + LoJackServicesConnector.getTIMEOUT());
+		
+		String middlewareproxy = SystemPropertyUtils.getSystemPropertValue("middleware.proxy");
+		if (!StringUtils.isEmpty(middlewareproxy) && "true".equalsIgnoreCase(middlewareproxy)) {
+			if (LoJackServicesConnector.getGisServer().startsWith("https")) {
+				if (getHTTPS_PROXY() != null) {
+					LoJackServicesConnector.setPROXY(getHTTPS_PROXY());
+					getLog().fatal("Middleware proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("No Middleware proxy");
+				}
+			} else {
+				if (getHTTP_PROXY() != null) {
+					LoJackServicesConnector.setPROXY(getHTTP_PROXY());
+					getLog().fatal("Middleware proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("No Middleware proxy");
+				}
+			}
+		} else {
+			getLog().fatal("No Middleware proxy");
+		}
+
+		String preventserver = SystemPropertyUtils.getSystemPropertValue("prevent.server");
+		if (preventserver != null) {
+			PreventConnector.setPreventServer(preventserver);
+		}
+		getLog().fatal("Prevent server is " + (preventserver == null ? "null" : preventserver));
+		
+		String preventloginurl = SystemPropertyUtils.getSystemPropertValue("prevent.loginurl");
+		if (preventloginurl != null) {
+			PreventConnector.setPreventLoginUrl(preventloginurl);
+		}
+		getLog().fatal("Prevent login url is " + (preventloginurl == null ? "null" : preventloginurl));
+		
+		String preventtoken = SystemPropertyUtils.getSystemPropertValue("prevent.token");
+		if (preventtoken != null) {
+			PreventConnector.setPreventToken(preventtoken);
+		}
+		getLog().fatal("Prevent token is " + (preventtoken == null ? "null" : preventtoken));
+		
+		String preventtimeout = SystemPropertyUtils.getSystemPropertValue("prevent.timeout");
+		if (preventtimeout != null) {
+			PreventConnector.setTIMEOUT(Integer.parseInt(preventtimeout));
+		}
+		getLog().fatal("Prevent timeout is " + PreventConnector.getTIMEOUT());
+		
+		String preventproxy = SystemPropertyUtils.getSystemPropertValue("prevent.proxy");
+		if (!StringUtils.isEmpty(preventproxy) && "true".equalsIgnoreCase(preventproxy)) {
+			if (PreventConnector.getPreventServer().startsWith("https")) {
+				if (getHTTPS_PROXY() != null) {
+					PreventConnector.setPROXY(getHTTPS_PROXY());
+					getLog().fatal("Prevent proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("No Prevent proxy");
+				}
+			} else {
+				if (getHTTP_PROXY() != null) {
+					PreventConnector.setPROXY(getHTTP_PROXY());
+					getLog().fatal("Prevent proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("No Prevent proxy");
+				}
+			}
+		} else {
+			getLog().fatal("No Prevent proxy");
+		}
+		
+		String petsloginurl = SystemPropertyUtils.getSystemPropertValue("pets.loginurl");
+		if (petsloginurl != null) {
+			PetsConnector.setPetsLoginUrl(petsloginurl);
+		}
+		getLog().fatal("Pets login url is " + (petsloginurl == null ? "null" : petsloginurl));
+		
+		String petsMobileloginurl = SystemPropertyUtils.getSystemPropertValue("pets.mobile.loginurl");
+		if (petsMobileloginurl != null) {
+			PetsConnector.setPetsMobileLoginUrl(petsMobileloginurl);
+		}
+		getLog().fatal("Pets mobile login url is " + (petsMobileloginurl == null ? "null" : petsMobileloginurl));
+		
+		String petstoken = SystemPropertyUtils.getSystemPropertValue("pets.token");
+		if (petstoken != null) {
+			PetsConnector.setPetsToken(petstoken);
+		}
+		getLog().fatal("Pets token is " + (petstoken == null ? "null" : petstoken));
+		
+		String cameraproxy = SystemPropertyUtils.getSystemPropertValue("camera.proxy");
+		if (!StringUtils.isEmpty(cameraproxy ) && "true".equalsIgnoreCase(cameraproxy )) {
+			if (getHTTPS_PROXY() != null) {
+				IPCamera.setProxyConfigurationHttps(new com.tdil.lojack.camera.ProxyConfiguration(getHTTPS_PROXY().getServer(), getHTTPS_PROXY().getPort()));
+				getLog().fatal("Camera proxy for https is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+			} else {
+				getLog().fatal("No camera proxy for https");
+			}
+			if (getHTTP_PROXY() != null) {
+				IPCamera.setProxyConfiguration(new com.tdil.lojack.camera.ProxyConfiguration(getHTTP_PROXY().getServer(), getHTTP_PROXY().getPort()));
+				getLog().fatal("Camera proxy for is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+			} else {
+				getLog().fatal("No camera proxy for http");
+			}
+		} else {
+			getLog().fatal("No camera proxy");
+		}
+		
+		String cameraConnectTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.connectTimeOut");
+		if (!StringUtils.isEmpty(cameraConnectTimeOut )) {
+			setCameraConnectTimeOut(Integer.parseInt(cameraConnectTimeOut));
+		} 
+		getLog().fatal("Camera connect time out is " + getCameraConnectTimeOut());
+		
+		String cameraReaTimeOut = SystemPropertyUtils.getSystemPropertValue("camera.readTimeOut");
+		if (!StringUtils.isEmpty(cameraReaTimeOut )) {
+			setCameraReadTimeOut(Integer.parseInt(cameraReaTimeOut));
+		} 
+		getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
+		
+		IPCamera.setLogger(new CameraLog4jLogger());
+
+		getLog().fatal("Starting middleware jobs updater");
+		int jobrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.refresh.time"));
+		int jobaborttime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.abort.time"));
+		int jobclientrefreshtime = Integer.parseInt(SystemPropertyUtils.getSystemPropertValue("job.client.refresh.time"));
+		UpdateMiddlewareJobsThread.setJobRefreshTime(jobrefreshtime);
+		UpdateMiddlewareJobsThread.setJobAbortTime(jobaborttime);
+		UpdateMiddlewareJobsThread.setJobClientRefreshTime(jobclientrefreshtime);
+		getLog().fatal("Middleware job refresh time is " + jobrefreshtime + " millis");
+		getLog().fatal("Middleware job abort time is " + jobaborttime + " millis");
+		getLog().fatal("Middleware job client refresh time is " + jobclientrefreshtime + " millis");
 	}
 
 	@Override
