@@ -11,6 +11,18 @@
   <param-value>SQLSERVER</param-value>
  </context-param-->
  
+   <servlet>
+  	<servlet-name>Jersey Web Application</servlet-name>
+  	<servlet-class>
+  		com.sun.jersey.spi.container.servlet.ServletContainer
+  	</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Jersey Web Application</servlet-name>
+  	<url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+ 
  <context-param>
   <param-name>application.resources</param-name>
   <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>

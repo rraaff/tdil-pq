@@ -2,6 +2,8 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -9,6 +11,7 @@ import org.apache.commons.lang.StringUtils;
  * @author mgodoy
  *
  */
+@XmlRootElement
 public class Alarm implements Serializable {
 
 	private static final long serialVersionUID = -1359406353418640290L;
