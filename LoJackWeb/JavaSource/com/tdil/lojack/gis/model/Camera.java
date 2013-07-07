@@ -2,6 +2,9 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Camera implements Serializable {
 
 	private static final long serialVersionUID = -6917436244277188931L;

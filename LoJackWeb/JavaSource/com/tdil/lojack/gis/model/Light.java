@@ -2,6 +2,8 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -10,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
 2: Estado desconocido
 3: Modo random habilitado
  * */
-
+@XmlRootElement
 public class Light implements Serializable {
 
 	private static final long serialVersionUID = -8954431125700653499L;

@@ -1,5 +1,8 @@
 package com.tdil.lojack.gis.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class JobStatus {
 	
 	private int jobId = 0;

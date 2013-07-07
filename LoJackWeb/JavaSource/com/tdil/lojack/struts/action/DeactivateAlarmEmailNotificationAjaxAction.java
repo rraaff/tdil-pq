@@ -24,6 +24,37 @@ import com.tdil.struts.actions.AjaxAction;
 
 public class DeactivateAlarmEmailNotificationAjaxAction extends AjaxAction {
 
+	public static final class DeactivateAlarmEmailNotification implements TransactionalAction {
+		private final WebsiteUser sessionUser;
+		private final int idEntidad;
+
+		public DeactivateAlarmEmailNotification(WebsiteUser sessionUser, int idEntidad) {
+			this.sessionUser = sessionUser;
+			this.idEntidad = idEntidad;
+		}
+
+		@Override
+		public void executeInTransaction() throws SQLException, ValidationException {
+			AlarmConfExample example = new AlarmConfExample();
+			example.createCriteria().andIdentidadEqualTo(idEntidad).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
+			List<AlarmConf> result = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
+			if (result.isEmpty()) {
+				// insert
+				AlarmConf alarmConf = new AlarmConf();
+				alarmConf.setIdentidad(idEntidad);
+				alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
+				alarmConf.setEmailnotification(0);
+				alarmConf.setDeleted(0);
+				DAOManager.getAlarmConfDAO().insertAlarmConf(alarmConf);
+			} else {
+				// update
+				AlarmConf alarmConf = result.get(0);
+				alarmConf.setEmailnotification(0);
+				DAOManager.getAlarmConfDAO().updateAlarmConfByPrimaryKeySelective(alarmConf);
+			}
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -31,28 +62,7 @@ public class DeactivateAlarmEmailNotificationAjaxAction extends AjaxAction {
 		final int idEntidad = Integer.valueOf(request.getParameter("idEntidad"));
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		try {
-			TransactionProvider.executeInTransaction(new TransactionalAction() {
-				@Override
-				public void executeInTransaction() throws SQLException, ValidationException {
-					AlarmConfExample example = new AlarmConfExample();
-					example.createCriteria().andIdentidadEqualTo(idEntidad).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
-					List<AlarmConf> result = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
-					if (result.isEmpty()) {
-						// insert
-						AlarmConf alarmConf = new AlarmConf();
-						alarmConf.setIdentidad(idEntidad);
-						alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
-						alarmConf.setEmailnotification(0);
-						alarmConf.setDeleted(0);
-						DAOManager.getAlarmConfDAO().insertAlarmConf(alarmConf);
-					} else {
-						// update
-						AlarmConf alarmConf = result.get(0);
-						alarmConf.setEmailnotification(0);
-						DAOManager.getAlarmConfDAO().updateAlarmConfByPrimaryKeySelective(alarmConf);
-					}
-				}
-			});
+			TransactionProvider.executeInTransaction(new DeactivateAlarmEmailNotification(sessionUser, idEntidad));
 			result.put("result", "OK");
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);

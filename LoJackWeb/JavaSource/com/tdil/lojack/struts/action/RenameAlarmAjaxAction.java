@@ -23,6 +23,41 @@ import com.tdil.struts.actions.AjaxAction;
 
 public class RenameAlarmAjaxAction extends AjaxAction {
 
+	public static final class RenameAlarmAction implements TransactionalAction {
+		private final int idEntidad;
+		private final WebsiteUser sessionUser;
+		private final String description;
+
+		public RenameAlarmAction(int idEntidad, WebsiteUser sessionUser, String description) {
+			this.idEntidad = idEntidad;
+			this.sessionUser = sessionUser;
+			this.description = description;
+		}
+
+		@Override
+		public void executeInTransaction() throws SQLException, ValidationException {
+			AlarmConfExample example = new AlarmConfExample();
+			example.createCriteria().andIdentidadEqualTo(idEntidad).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
+			List<AlarmConf> result = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
+			if (result.isEmpty()) {
+				// insert
+				AlarmConf alarmConf = new AlarmConf();
+				alarmConf.setIdentidad(idEntidad);
+				alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
+				alarmConf.setDescription(description);
+				alarmConf.setEmailnotification(0);
+				alarmConf.setDeleted(0);
+				DAOManager.getAlarmConfDAO().insertAlarmConf(alarmConf);
+			} else {
+				// update
+				AlarmConf alarmConf = result.get(0);
+				alarmConf.setDescription(description);
+				DAOManager.getAlarmConfDAO().updateAlarmConfByPrimaryKeySelective(alarmConf);
+			}
+			
+		}
+	}
+
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(RenameAlarmAjaxAction.class);
 	
 	@Override
@@ -33,30 +68,7 @@ public class RenameAlarmAjaxAction extends AjaxAction {
 		final String description = request.getParameter("description");
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		try {
-			TransactionProvider.executeInTransaction(new TransactionalAction() {
-				@Override
-				public void executeInTransaction() throws SQLException, ValidationException {
-					AlarmConfExample example = new AlarmConfExample();
-					example.createCriteria().andIdentidadEqualTo(idEntidad).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
-					List<AlarmConf> result = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
-					if (result.isEmpty()) {
-						// insert
-						AlarmConf alarmConf = new AlarmConf();
-						alarmConf.setIdentidad(idEntidad);
-						alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
-						alarmConf.setDescription(description);
-						alarmConf.setEmailnotification(0);
-						alarmConf.setDeleted(0);
-						DAOManager.getAlarmConfDAO().insertAlarmConf(alarmConf);
-					} else {
-						// update
-						AlarmConf alarmConf = result.get(0);
-						alarmConf.setDescription(description);
-						DAOManager.getAlarmConfDAO().updateAlarmConfByPrimaryKeySelective(alarmConf);
-					}
-					
-				}
-			});
+			TransactionProvider.executeInTransaction(new RenameAlarmAction(idEntidad, sessionUser, description));
 			result.put("result", "OK");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

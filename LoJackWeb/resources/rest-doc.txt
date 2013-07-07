@@ -24,6 +24,9 @@ http://localhost:8180/LoJackWeb/rest/alarms/1/sendPanic
 http://localhost:8180/LoJackWeb/rest/alarms/1/activate
 http://localhost:8180/LoJackWeb/rest/alarms/1/deactivate
 http://localhost:8180/LoJackWeb/rest/alarms/1/log
+http://localhost:8180/LoJackWeb/rest/alarms/1/rename?description=asas
+http://localhost:8180/LoJackWeb/rest/alarms/1/emailNotification
+http://localhost:8180/LoJackWeb/rest/alarms/1/noemailNotification
 
 /prevent
 

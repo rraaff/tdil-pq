@@ -2,6 +2,9 @@ package com.tdil.lojack.gis.model;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class AlarmAgenda implements Serializable {
 
 	private static final long serialVersionUID = -822422216180257981L;
