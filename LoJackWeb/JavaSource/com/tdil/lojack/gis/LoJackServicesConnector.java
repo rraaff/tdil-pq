@@ -471,7 +471,7 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static boolean deleteLightAgenda(WebsiteUser user, String agendaId) {
+	public static boolean deleteLightAgenda(WebsiteUser user, int agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());
@@ -485,7 +485,7 @@ public class LoJackServicesConnector {
 		}
 	}
 
-	public static boolean activateLightAgenda(WebsiteUser user, String agendaId) {
+	public static boolean activateLightAgenda(WebsiteUser user, int agendaId) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(GUID, LoJackConfig.getGUID());
 		jsonObject.put(HOME_USER_ID, user.getHomeUserId());

@@ -19,9 +19,7 @@ import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.rest.model.AlarmCollection;
-import com.tdil.lojack.rest.model.AsyncJobResponse;
 import com.tdil.lojack.rest.model.LogCollection;
-import com.tdil.lojack.rest.model.RESTResponse;
 import com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction.ActivateAlarmEmailNotification;
 import com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction.DeactivateAlarmEmailNotification;
 import com.tdil.lojack.struts.action.RenameAlarmAjaxAction.RenameAlarmAction;
@@ -57,10 +55,10 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		try {
 			TransactionProvider.executeInTransaction(new RenameAlarmAction(idEntidad, getUser(), description));
-			return Response.status(201).entity(RESTResponse.OK_RESPONSE).build();
+			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return Response.status(201).entity(RESTResponse.FAIL_RESPONSE).build();
+			return failResponse();
 		}
 	}
 	
@@ -71,9 +69,9 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		com.tdil.lojack.gis.model.AsyncJobResponse jobResponse = LoJackServicesConnector.sendPanicSignal(this.getUser(), idEntidad);
 		if(jobResponse.getJobId() != 0) {
-			return Response.status(201).entity(new AsyncJobResponse(true)).build();
+			return asyncOkResponse();
 		} else {
-			return Response.status(201).entity(new AsyncJobResponse(false)).build();
+			return asyncFailResponse();
 		}
 	}
 	
@@ -84,12 +82,12 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		com.tdil.lojack.gis.model.AsyncJobResponse jobResponse = LoJackServicesConnector.activateAlarm(this.getUser(), idEntidad);
 		if(jobResponse.getJobId() != 0) {
-			return Response.status(201).entity(new AsyncJobResponse(true)).build();
+			return asyncOkResponse();
 		} else {
-			return Response.status(201).entity(new AsyncJobResponse(false)).build();
+			return asyncFailResponse();
 		}
 	}
-	
+
 	@GET
 	@Path("/{idEntidad}/deactivate")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -97,9 +95,9 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		com.tdil.lojack.gis.model.AsyncJobResponse jobResponse = LoJackServicesConnector.deactivateAlarm(this.getUser(), idEntidad);
 		if(jobResponse.getJobId() != 0) {
-			return Response.status(201).entity(new AsyncJobResponse(true)).build();
+			return asyncOkResponse();
 		} else {
-			return Response.status(201).entity(new AsyncJobResponse(false)).build();
+			return asyncFailResponse();
 		}
 	}
 	
@@ -119,13 +117,13 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		try {
 			TransactionProvider.executeInTransaction(new ActivateAlarmEmailNotification(getUser(), idEntidad));
-			return Response.status(201).entity(RESTResponse.OK_RESPONSE).build();
+			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return Response.status(201).entity(RESTResponse.FAIL_RESPONSE).build();
+			return failResponse();
 		}
 	}
-	
+
 	@GET
 	@Path("/{idEntidad}/noemailNotification")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -133,10 +131,10 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		try {
 			TransactionProvider.executeInTransaction(new DeactivateAlarmEmailNotification(getUser(), idEntidad));
-			return Response.status(201).entity(RESTResponse.OK_RESPONSE).build();
+			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return Response.status(201).entity(RESTResponse.FAIL_RESPONSE).build();
+			return failResponse();
 		}
 	}
 

@@ -7,6 +7,9 @@ public class AsyncJobResponse {
 
 	private boolean accepted;
 	
+	public static final AsyncJobResponse OK_RESPONSE = new AsyncJobResponse(true);
+	public static final AsyncJobResponse FAIL_RESPONSE = new AsyncJobResponse(false);
+	
 	public AsyncJobResponse() {
 	}
 

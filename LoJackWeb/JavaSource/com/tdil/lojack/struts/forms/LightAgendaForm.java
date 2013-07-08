@@ -101,12 +101,12 @@ public class LightAgendaForm extends AgendaForm {
 		LightAgenda lightAgenda = getLightAgenda(id);
 		if (lightAgenda != null) {
 			if (lightAgenda.isActive()) {
-				boolean result = LoJackServicesConnector.deleteLightAgenda(user, id);
+				boolean result = LoJackServicesConnector.deleteLightAgenda(user, Integer.valueOf(id));
 				if (result) {
 					lightAgenda.setActive(false);
 				}
 			} else {
-				boolean result = LoJackServicesConnector.activateLightAgenda(user, id);
+				boolean result = LoJackServicesConnector.activateLightAgenda(user, Integer.valueOf(id));
 				if (result) {
 					lightAgenda.setActive(true);
 				}

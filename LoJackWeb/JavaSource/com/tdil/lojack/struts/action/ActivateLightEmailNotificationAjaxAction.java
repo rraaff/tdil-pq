@@ -24,6 +24,40 @@ import com.tdil.struts.actions.AjaxAction;
 
 public class ActivateLightEmailNotificationAjaxAction extends AjaxAction {
 
+	public static final class ActivateLightEmailNotification implements TransactionalAction {
+		private final int idEntidad;
+		private final int idLuz;
+		private final WebsiteUser sessionUser;
+
+		public ActivateLightEmailNotification(WebsiteUser sessionUser, int idEntidad, int idLuz) {
+			this.idEntidad = idEntidad;
+			this.idLuz = idLuz;
+			this.sessionUser = sessionUser;
+		}
+
+		@Override
+		public void executeInTransaction() throws SQLException, ValidationException {
+			LightConfExample example = new LightConfExample();
+			example.createCriteria().andIdentidadEqualTo(idEntidad).andIdluzEqualTo(idLuz).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
+			List<LightConf> result = DAOManager.getLightConfDAO().selectLightConfByExample(example);
+			if (result.isEmpty()) {
+				// insert
+				LightConf alarmConf = new LightConf();
+				alarmConf.setIdentidad(idEntidad);
+				alarmConf.setIdluz(idLuz);
+				alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
+				alarmConf.setEmailnotification(1);
+				alarmConf.setDeleted(0);
+				DAOManager.getLightConfDAO().insertLightConf(alarmConf);
+			} else {
+				// update
+				LightConf alarmConf = result.get(0);
+				alarmConf.setEmailnotification(1);
+				DAOManager.getLightConfDAO().updateLightConfByPrimaryKeySelective(alarmConf);
+			}
+		}
+	}
+
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -32,29 +66,7 @@ public class ActivateLightEmailNotificationAjaxAction extends AjaxAction {
 		final int idLuz = Integer.valueOf(request.getParameter("idLuz"));
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		try {
-			TransactionProvider.executeInTransaction(new TransactionalAction() {
-				@Override
-				public void executeInTransaction() throws SQLException, ValidationException {
-					LightConfExample example = new LightConfExample();
-					example.createCriteria().andIdentidadEqualTo(idEntidad).andIdluzEqualTo(idLuz).andIdwebsiteuserEqualTo(sessionUser.getModelUser().getId());
-					List<LightConf> result = DAOManager.getLightConfDAO().selectLightConfByExample(example);
-					if (result.isEmpty()) {
-						// insert
-						LightConf alarmConf = new LightConf();
-						alarmConf.setIdentidad(idEntidad);
-						alarmConf.setIdluz(idLuz);
-						alarmConf.setIdwebsiteuser(sessionUser.getModelUser().getId());
-						alarmConf.setEmailnotification(1);
-						alarmConf.setDeleted(0);
-						DAOManager.getLightConfDAO().insertLightConf(alarmConf);
-					} else {
-						// update
-						LightConf alarmConf = result.get(0);
-						alarmConf.setEmailnotification(1);
-						DAOManager.getLightConfDAO().updateLightConfByPrimaryKeySelective(alarmConf);
-					}
-				}
-			});
+			TransactionProvider.executeInTransaction(new ActivateLightEmailNotification(sessionUser, idEntidad, idLuz));
 			result.put("result", "OK");
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);
