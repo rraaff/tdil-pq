@@ -34,6 +34,8 @@ public abstract class IPCamera implements Serializable, CameraLogger {
 	private static CameraLogger logger;
 	
 	public static byte[] noise;
+	private HttpURLConnection conn;
+	private BufferedInputStream httpIn;
 	
 	static {
 		InputStream httpIn = null;
@@ -73,6 +75,14 @@ public abstract class IPCamera implements Serializable, CameraLogger {
 	public abstract ByteArrayInputStream nextFrame();
 	public abstract String getMimeType();
 	
+	public void cancelDownload() {
+		try {
+			httpIn.close();
+		} catch (IOException e) {
+		}
+		conn.disconnect();
+	}
+	
 	public abstract void left();
 	public abstract void right();
 	public abstract void up();
@@ -111,8 +121,8 @@ public abstract class IPCamera implements Serializable, CameraLogger {
 	}
 
 	protected void readFully(String urlString) {
-		HttpURLConnection conn = null;
-		BufferedInputStream httpIn = null;
+		conn = null;
+		httpIn = null;
 		URL url;
 		ProxyConfiguration proxyConfiguration = null;
 		try {

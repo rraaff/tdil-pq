@@ -22,6 +22,10 @@ public class TPLinkSC4171G extends IPCamera {
 	private static final String UP = "/cgi-bin/operator/ptzset?move=up";
 	private static final String DOWN = "/cgi-bin/operator/ptzset?move=down";
 	public static final String TP_LINK_SC4171G = "1";
+	
+	private transient HttpURLConnection conn;
+	private transient BufferedInputStream httpIn;
+	
 
 	public TPLinkSC4171G(String url, String username, String password) {
 		super(url, username, password);
@@ -31,11 +35,23 @@ public class TPLinkSC4171G extends IPCamera {
 	public String getMimeType() {
 		return "image/jpeg";
 	}
+	
+	@Override
+	public void cancelDownload() {
+		try {
+			httpIn.close();
+		} catch (Exception e) {
+		}
+		try {
+			conn.disconnect();
+		} catch (Exception e) {
+		}
+	}
 
 	@Override
 	public ByteArrayInputStream nextFrame() {
-		HttpURLConnection conn = null;
-		BufferedInputStream httpIn = null;
+		conn = null;
+		httpIn = null;
 		URL url;
 		ProxyConfiguration proxyConfiguration = null;
 		try {

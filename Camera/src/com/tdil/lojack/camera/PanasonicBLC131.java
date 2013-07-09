@@ -22,6 +22,8 @@ public class PanasonicBLC131 extends IPCamera {
 	private static final String UP = "/nphControlCamera?Direction=TiltUp";
 	private static final String DOWN = "/nphControlCamera?Direction=TiltDown";
 	public static final String PANASONIC_BLC131 = "2";
+	private HttpURLConnection conn;
+	private BufferedInputStream httpIn;
 
 	public PanasonicBLC131(String url, String username, String password) {
 		super(url, username, password);
@@ -31,11 +33,20 @@ public class PanasonicBLC131 extends IPCamera {
 	public String getMimeType() {
 		return "image/jpeg";
 	}
+	
+	@Override
+	public void cancelDownload() {
+		try {
+			httpIn.close();
+		} catch (IOException e) {
+		}
+		conn.disconnect();
+	}
 
 	@Override
 	public ByteArrayInputStream nextFrame() {
-		HttpURLConnection conn = null;
-		BufferedInputStream httpIn = null;
+		conn = null;
+		httpIn = null;
 		URL url;
 		ProxyConfiguration proxyConfiguration = null;
 		try {
