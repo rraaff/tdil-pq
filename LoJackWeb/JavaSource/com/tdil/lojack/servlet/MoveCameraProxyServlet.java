@@ -1,7 +1,5 @@
 package com.tdil.lojack.servlet;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -22,14 +19,12 @@ import org.apache.log4j.Logger;
 import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.LoJackWebUtils;
-import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.web.NoCacheFilter;
 
-public class ViewCameraProxyServlet extends HttpServlet {
+public class MoveCameraProxyServlet extends HttpServlet {
 
 	/**
 	 *
@@ -37,9 +32,6 @@ public class ViewCameraProxyServlet extends HttpServlet {
 	private static final long serialVersionUID = 5611834065781809280L;
 	
 	private static Map<String, HttpMethodBase> inProgress = new ConcurrentHashMap();
-	
-	private static int TIMEOUT = 2000;
-	private static ProxyConfiguration PROXY;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -60,12 +52,13 @@ public class ViewCameraProxyServlet extends HttpServlet {
 				inProgress.remove(cameraForm.getUrl());
 			}
 			try {
-				GetMethod httpMethod = new GetMethod(LoJackConfig.getCameraMobileExternalUrl() + "viewCameraStateless");
+				GetMethod httpMethod = new GetMethod(LoJackConfig.getCameraMobileExternalUrl() + "moveCameraStateless");
 				inProgress.put(cameraForm.getUrl(), httpMethod);
 				httpMethod.setQueryString(new NameValuePair[] {new NameValuePair("username", cameraForm.getUsername()),
 						new NameValuePair("password", cameraForm.getPassword()),
 						new NameValuePair("url", cameraForm.getUrl()),
-						new NameValuePair("model", cameraForm.getModel())});
+						new NameValuePair("model", cameraForm.getModel()),
+						new NameValuePair("dir", req.getParameter("dir"))});
 				HttpClient client = new HttpClient();
 				//configureTimeout(client);
 				client.executeMethod(httpMethod);
@@ -73,45 +66,19 @@ public class ViewCameraProxyServlet extends HttpServlet {
 				InputStream in = httpMethod.getResponseBodyAsStream();
 				IOUtils.copy(in, resp.getOutputStream());
 				in.close();
-			} catch (Exception e) {
-				resp.getOutputStream().write(ViewCameraServlet.noise);
 			} finally {
 				inProgress.remove(cameraForm.getUrl());
 			}
 		}
 	}
-	
-	private static void configureTimeout(HttpClient client) {
-		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
-		connectionManager.getParams().setSoTimeout(getTIMEOUT());
-		if (getPROXY() != null) {
-			client.getHostConfiguration().setProxy(getPROXY().getServer(), getPROXY().getPort());
-		}
-	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(ViewCameraProxyServlet.class);
+		return LoggerProvider.getLogger(MoveCameraProxyServlet.class);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		doGet(req, resp);
-	}
-
-	public static int getTIMEOUT() {
-		return TIMEOUT;
-	}
-
-	public static void setTIMEOUT(int tIMEOUT) {
-		TIMEOUT = tIMEOUT;
-	}
-
-	public static ProxyConfiguration getPROXY() {
-		return PROXY;
-	}
-
-	public static void setPROXY(ProxyConfiguration pROXY) {
-		PROXY = pROXY;
 	}
 }

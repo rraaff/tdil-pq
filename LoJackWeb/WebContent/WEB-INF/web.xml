@@ -143,6 +143,14 @@
   <servlet-name>MoveCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.MoveCameraServlet</servlet-class>
  </servlet>
+  <servlet>
+  <servlet-name>MoveCameraProxyServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.MoveCameraProxyServlet</servlet-class>
+ </servlet>
+   <servlet>
+  <servlet-name>MoveCameraStatelessServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.MoveCameraStatelessServlet</servlet-class>
+ </servlet>
  <servlet>
   <servlet-name>CameraConfigServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.CameraConfigServlet</servlet-class>
@@ -207,6 +215,15 @@
   <servlet-name>MoveCameraServlet</servlet-name>
   <url-pattern>/moveCamera</url-pattern>
  </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>MoveCameraProxyServlet</servlet-name>
+  <url-pattern>/moveCameraProxy</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>MoveCameraStatelessServlet</servlet-name>
+  <url-pattern>/moveCameraStateless</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>CameraConfigServlet</servlet-name>
   <url-pattern>/cameraConfig</url-pattern>

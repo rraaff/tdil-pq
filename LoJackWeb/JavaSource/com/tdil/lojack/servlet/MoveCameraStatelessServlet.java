@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
@@ -22,7 +21,7 @@ import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.web.NoCacheFilter;
 
-public class ViewCameraStatelessServlet extends HttpServlet {
+public class MoveCameraStatelessServlet extends HttpServlet {
 
 	/**
 	 *
@@ -30,7 +29,7 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 	private static final long serialVersionUID = 5611834065781809280L;
 	
 	private static Map<String, IPCamera> inProgress = new ConcurrentHashMap();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -39,6 +38,7 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		String url = req.getParameter("url");
 		String model = req.getParameter("model");
+		String dir = req.getParameter("dir");
 		IPCamera camara = inProgress.get(url);
 		if (camara != null) {
 			camara.cancelDownload();
@@ -53,18 +53,17 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 				camera = new TPLinkSC4171G(url, username, password);
 			}
 			inProgress.put(url, camera);
-			InputStream inputStream = null;
-			try {
-				inputStream = camera.nextFrame();
-				if (inputStream != null) {
-					IOUtils.copy(inputStream, resp.getOutputStream());
-				} else {
-					resp.getOutputStream().write(ViewCameraServlet.noise);
-				}
-			} finally {
-				if (inputStream != null) {
-					inputStream.close();
-				}
+			if ("left".equals(dir)) {
+				camera.left();
+			}
+			if ("right".equals(dir)) {
+				camera.right();
+			}
+			if ("up".equals(dir)) {
+				camera.up();
+			}
+			if ("down".equals(dir)) {
+				camera.down();
 			}
 		} finally {
 			inProgress.remove(url);
@@ -72,7 +71,7 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(ViewCameraStatelessServlet.class);
+		return LoggerProvider.getLogger(MoveCameraStatelessServlet.class);
 	}
 
 	@Override
