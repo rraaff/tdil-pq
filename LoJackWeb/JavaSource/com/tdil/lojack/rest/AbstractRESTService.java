@@ -13,6 +13,7 @@ import com.tdil.lojack.rest.model.AsyncJobResponse;
 import com.tdil.lojack.rest.model.RESTResponse;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public abstract class AbstractRESTService {
 
@@ -33,6 +34,10 @@ public abstract class AbstractRESTService {
 			throw new WebApplicationException(401);
 		}
 		return (WebsiteUser) session.getAttribute("user");
+	}
+	
+	public TokenHolder getTokenHolder() {
+		return this.getUser().getToken();
 	}
 
 	public abstract HttpSession getSession();

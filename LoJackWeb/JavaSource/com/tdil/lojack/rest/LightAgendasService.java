@@ -23,7 +23,7 @@ import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.LightAgenda;
 import com.tdil.lojack.rest.model.LightAgendaCollection;
 
-@Path("/alarmAgendas")
+@Path("/lightAgendas")
 public class LightAgendasService extends AbstractRESTService {
 	
 	@Context
@@ -51,20 +51,16 @@ public class LightAgendasService extends AbstractRESTService {
 	@Path("/{idEntidad}/{idLuz}")
 	@Consumes("application/json") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createAgenda(@PathParam("idEntidad") int idEntidad, String json) {
-		JSONObject obj = (JSONObject)extractJSONObjectResponse(json);
-		LightAgenda alarmAgenda = (LightAgenda)JSONObject.toBean(obj, LightAgenda.class);
-		return asResponse(LoJackServicesConnector.addLightAgenda(getUser(), idEntidad, alarmAgenda));
+	public Response createAgenda(@PathParam("idEntidad") int idEntidad, LightAgenda json) {
+		return asResponse(LoJackServicesConnector.addLightAgenda(getUser(), idEntidad, json));
 	}
 
 	@POST
 	@Path("/{idEntidad}/{idLuz}")
 	@Consumes("application/json") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response modifyAgenda(@PathParam("idEntidad") int idEntidad, String json) {
-		JSONObject obj = (JSONObject)extractJSONObjectResponse(json);
-		LightAgenda alarmAgenda = (LightAgenda)JSONObject.toBean(obj, LightAgenda.class);
-		return asResponse(LoJackServicesConnector.saveLightAgenda(getUser(), alarmAgenda));
+	public Response modifyAgenda(@PathParam("idEntidad") int idEntidad, LightAgenda json) {
+		return asResponse(LoJackServicesConnector.saveLightAgenda(getUser(), json));
 	}
 	
 	@DELETE

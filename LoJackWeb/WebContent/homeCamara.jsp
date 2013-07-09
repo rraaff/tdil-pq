@@ -59,6 +59,7 @@ $(function() {
 <%@ include file="includes/errorAjaxJS.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 
+<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
 
 function up() {
 		$.ajax({
@@ -133,17 +134,17 @@ function right() {
 			<div id="cameraTitle">
 				<h1>Mi C&aacute;mara</h1>
 			</div>
-			<% CameraForm cameraForm = (CameraForm)session.getAttribute("CameraForm"); %>
+			
 			<% if (cameraForm.isUseApplet()) { %>
 				<div id="appletHolder">
 					<object classid="clsid:CAFEEFAC-0016-0000-0000-ABCDEFFEDCBA">
 						<param name="wmode" value="transparent" />
 						<param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
 						<PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
-						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201307021443.jar">
+						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201307082335.jar">
 						<comment>
 							<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-								ARCHIVE="cameraviewer-b201307021443.jar" width="100%" height="100%" wmode="transparent">
+								ARCHIVE="cameraviewer-b201307082335.jar" width="100%" height="100%" wmode="transparent">
 								<noembed>
 									No Java Support.
 								</noembed>
@@ -157,7 +158,15 @@ function right() {
 				</div>
 			<% } else { %>
 				<div id="pictureContainer">
-					<img id="cameraImg" src="./viewCamera">
+					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
+						<img id="cameraImg" src="./viewCamera">
+					<% } %>
+					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeProxy()) { %>
+						<img id="cameraImg" src="./viewCameraProxy">
+					<% } %>
+					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
+						<img id="cameraImg" src="<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>">
+					<% } %>
 					<div class="controlsBasicView">
 						<a href="javascript:left()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
 						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
@@ -167,7 +176,16 @@ function right() {
 				</div>
 				<script>
 					setInterval(function() {
+						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 							$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
+						<% } %>
+						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeProxy()) { %>
+							$('#cameraImg').attr('src', './viewCameraProxy?img=' + Math.random());
+						<% } %>
+						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
+							$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+						<% } %>
+							
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
 				</script>
 				<div id="linksAside">

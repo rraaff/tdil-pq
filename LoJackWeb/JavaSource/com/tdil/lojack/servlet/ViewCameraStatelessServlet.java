@@ -18,11 +18,11 @@ import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
-import com.tdil.lojack.struts.forms.CameraForm;
-import com.tdil.lojack.utils.LoJackWebUtils;
+import com.tdil.lojack.camera.PanasonicBLC131;
+import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.web.NoCacheFilter;
 
-public class ViewCameraServlet extends HttpServlet {
+public class ViewCameraStatelessServlet extends HttpServlet {
 
 	/**
 	 *
@@ -37,7 +37,7 @@ public class ViewCameraServlet extends HttpServlet {
 		InputStream httpIn = null;
 		try {
 			ByteArrayOutputStream jpgOut = new ByteArrayOutputStream(8192);
-			httpIn = new BufferedInputStream(ViewCameraServlet.class.getResourceAsStream("noise.jpg"), 8192);
+			httpIn = new BufferedInputStream(ViewCameraStatelessServlet.class.getResourceAsStream("noise.jpg"), 8192);
 			int cur = 0;
 			while ((cur = httpIn.read()) >= 0) {
 				if (jpgOut != null) {
@@ -63,42 +63,46 @@ public class ViewCameraServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		NoCacheFilter.setNoCache(resp);
-		if (LoJackWebUtils.isHomeUserLogged(req)) {
-			CameraForm cameraForm = (CameraForm)req.getSession().getAttribute("CameraForm");
-			if (cameraForm == null) {
-				return;
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		String url = req.getParameter("url");
+		String model = req.getParameter("model");
+		IPCamera camara = inProgress.get(url);
+		if (camara != null) {
+			camara.cancelDownload();
+			inProgress.remove(url);
+		}
+		try {
+			IPCamera camera = null;
+			if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
+				camera = new PanasonicBLC131(url, username, password);
 			}
-			IPCamera camera = inProgress.get(cameraForm.getUrl());
-			if (camera != null) {
-				camera.cancelDownload();
-				inProgress.remove(cameraForm.getUrl());
+			if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
+				camera = new TPLinkSC4171G(url, username, password);
 			}
-			inProgress.put(cameraForm.getUrl(), cameraForm.getCamera());
+			inProgress.put(url, camera);
+			InputStream inputStream = null;
 			try {
-				resp.setContentType(cameraForm.getCamera().getMimeType());
-				InputStream inputStream = null;
-				try {
-					inputStream = cameraForm.getCamera().nextFrame();
-					if (inputStream != null) {
-						IOUtils.copy(inputStream, resp.getOutputStream());
-					} else {
-						if (noise != null) {
-							resp.getOutputStream().write(noise);
-						}
-					}
-				} finally {
-					if (inputStream != null) {
-						inputStream.close();
+				inputStream = camera.nextFrame();
+				if (inputStream != null) {
+					IOUtils.copy(inputStream, resp.getOutputStream());
+				} else {
+					if (noise != null) {
+						resp.getOutputStream().write(noise);
 					}
 				}
 			} finally {
-				inProgress.remove(cameraForm.getUrl());
+				if (inputStream != null) {
+					inputStream.close();
+				}
 			}
+		} finally {
+			inProgress.remove(url);
 		}
 	}
 
 	private static Logger getLog() {
-		return LoggerProvider.getLogger(ViewCameraServlet.class);
+		return LoggerProvider.getLogger(ViewCameraStatelessServlet.class);
 	}
 
 	@Override

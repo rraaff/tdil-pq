@@ -2,27 +2,6 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  <display-name>LoJackWeb</display-name>
- <!-- context-param>
-  <param-name>SqlMapConfig</param-name>
-  <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
- </context-param>
- <context-param>
-  <param-name>DAOProvider</param-name>
-  <param-value>SQLSERVER</param-value>
- </context-param-->
- 
-   <servlet>
-  	<servlet-name>Jersey Web Application</servlet-name>
-  	<servlet-class>
-  		com.sun.jersey.spi.container.servlet.ServletContainer
-  	</servlet-class>
-  	<load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>Jersey Web Application</servlet-name>
-  	<url-pattern>/rest/*</url-pattern>
-  </servlet-mapping>
- 
  <context-param>
   <param-name>application.resources</param-name>
   <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>
@@ -84,7 +63,6 @@
   <filter-name>NoCachingFilter</filter-name>
   <url-pattern>/moveCamera</url-pattern>
  </filter-mapping>
- 
  <filter-mapping>
   <filter-name>NoCachingFilter</filter-name>
   <url-pattern>/images/*</url-pattern>
@@ -101,7 +79,6 @@
   <filter-name>NoCachingFilter</filter-name>
   <url-pattern>*.js</url-pattern>
  </filter-mapping>
- 
  <!-- filter-mapping>
   <filter-name>imagesCache</filter-name>
   <url-pattern>/images/*</url-pattern>
@@ -121,6 +98,19 @@
  <listener>
   <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
  </listener>
+ <!-- context-param>
+  <param-name>SqlMapConfig</param-name>
+  <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>DAOProvider</param-name>
+  <param-value>SQLSERVER</param-value>
+ </context-param-->
+ <servlet>
+  <servlet-name>Jersey Web Application</servlet-name>
+  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
  <!-- Action Servlet Configuration -->
  <servlet>
   <servlet-name>action</servlet-name>
@@ -135,10 +125,20 @@
   <servlet-name>DownloadServlet</servlet-name>
   <servlet-class>com.tdil.web.DownloadController</servlet-class>
  </servlet>
+ 
  <servlet>
   <servlet-name>ViewCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.ViewCameraServlet</servlet-class>
  </servlet>
+ <servlet>
+  <servlet-name>ViewCameraProxyServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.ViewCameraProxyServlet</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>ViewCameraStatelessServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.ViewCameraStatelessServlet</servlet-class>
+ </servlet>
+ 
  <servlet>
   <servlet-name>MoveCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.MoveCameraServlet</servlet-class>
@@ -176,6 +176,10 @@
   <servlet-class>com.tdil.lojack.servlet.TwitterConnect</servlet-class>
  </servlet>
  <servlet-mapping>
+  <servlet-name>Jersey Web Application</servlet-name>
+  <url-pattern>/rest/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>
  </servlet-mapping>
@@ -188,6 +192,17 @@
   <servlet-name>ViewCameraServlet</servlet-name>
   <url-pattern>/viewCamera</url-pattern>
  </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>ViewCameraProxyServlet</servlet-name>
+  <url-pattern>/viewCameraProxy</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>ViewCameraStatelessServlet</servlet-name>
+  <url-pattern>/viewCameraStateless</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>MoveCameraServlet</servlet-name>
   <url-pattern>/moveCamera</url-pattern>
@@ -228,16 +243,14 @@
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>
  </welcome-file-list>
- 
  <error-page>
-<error-code>500</error-code>
-<location>/err_500.html</location>
-</error-page>
-<error-page>
-<error-code>404</error-code>
-<location>/err_404.html</location>
-</error-page>
-
+  <error-code>500</error-code>
+  <location>/err_500.html</location>
+ </error-page>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/err_404.html</location>
+ </error-page>
  <jsp-config>
   <taglib>
    <taglib-uri>/WEB-INF/struts-bean</taglib-uri>

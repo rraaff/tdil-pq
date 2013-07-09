@@ -44,6 +44,10 @@ import com.tdil.utils.SystemPropertyCache;
 
 public class LoJackConfig extends SystemConfig {
 
+	public static final String CAMERA_MOBILE_LOCAL = "local";
+	public static final String CAMERA_MOBILE_PROXY = "proxy";
+	public static final String CAMERA_MOBILE_EXTERNAL = "external";
+
 	private static String FRONT_SERVER;
 
 	private static String GUID;
@@ -56,6 +60,9 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static int cameraConnectTimeOut = 2000;
 	private static int cameraReadTimeOut = 2000;
+	
+	private static String cameraMobileMode;
+	private static String cameraMobileExternalUrl;
 	
 	private static String videocar = "http://www.youtube.com/embed/5Xe5pODPq1I";
 	private static String videohome = "http://www.youtube.com/embed/Iz_VvsFwXQI";
@@ -413,6 +420,21 @@ public class LoJackConfig extends SystemConfig {
 		} 
 		getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
 		
+		String cameraMobileMode = SystemPropertyUtils.getSystemPropertValue("camera.mobile.mode");
+		if (StringUtils.isEmpty(cameraMobileMode )) {
+			cameraMobileMode = CAMERA_MOBILE_LOCAL;
+		} 
+		setCameraMobileMode(cameraMobileMode);
+		getLog().fatal("Camera mobile mode is " + cameraMobileMode);
+		
+		String cameraMobileExternalUrl = SystemPropertyUtils.getSystemPropertValue("camera.mobile.external.url");
+		if (StringUtils.isEmpty(cameraMobileExternalUrl )) {
+			cameraMobileExternalUrl = "";
+		} 
+		setCameraMobileExternalUrl(cameraMobileExternalUrl);
+		getLog().fatal("Camera mobile mode external url is " + cameraMobileExternalUrl);
+		
+		
 		IPCamera.setLogger(new CameraLog4jLogger());
 
 		getLog().fatal("Starting middleware jobs updater");
@@ -610,6 +632,32 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setCameraReadTimeOut(int cameraReadTimeOut) {
 		LoJackConfig.cameraReadTimeOut = cameraReadTimeOut;
+	}
+	
+	public static boolean isCameraMobileModeLocal() {
+		return CAMERA_MOBILE_LOCAL.equals(getCameraMobileMode());
+	}
+	public static boolean isCameraMobileModeProxy() {
+		return CAMERA_MOBILE_PROXY.equals(getCameraMobileMode());
+	}
+	public static boolean isCameraMobileModeExternal() {
+		return CAMERA_MOBILE_EXTERNAL.equals(getCameraMobileMode());
+	}
+
+	public static String getCameraMobileMode() {
+		return cameraMobileMode;
+	}
+
+	public static void setCameraMobileMode(String cameraMobileMode) {
+		LoJackConfig.cameraMobileMode = cameraMobileMode;
+	}
+
+	public static String getCameraMobileExternalUrl() {
+		return cameraMobileExternalUrl;
+	}
+
+	public static void setCameraMobileExternalUrl(String cameraMobileExternalUrl) {
+		LoJackConfig.cameraMobileExternalUrl = cameraMobileExternalUrl;
 	}
 
 }
