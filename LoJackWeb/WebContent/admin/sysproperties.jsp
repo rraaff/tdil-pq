@@ -4,10 +4,13 @@
 --%><%@ include file="includes/checksyspropaccess.jsp" %><%--
 --%><html>
 <body>
-<h1>Home</h1>
+<h1>Sys Properties</h1>
 <%@ include file="includes/menu.jspf" %>
 
 <a href="doLoadProperties.jsp">Actualizar</a> el sistema con las properties<br><br>
+
+<b>Importante</b>: Los cambios realizados a las sys properties no son tomados automaticamente.<br>
+Luego de realizar los cambios cliquee actualizar para que el sistema los tome.<br><br>
 
 Cambiar sysproperty
 <form action="./doUpdateSysProperty.jsp">
@@ -22,9 +25,9 @@ Valor <input type="text" style="width: 250px;" name="propvalue" value="<%=String
 	<td>Clave</td>
 	<td>Valor</td>
 	<td>Descripcion</td>
-	<td>Editar</td>
 	<td>Borrada</td>
-	<td></td>
+	<td>Editar</td>
+	<td>Borrar</td>
 </tr>
 <% for (SystemProperty sp : com.tdil.lojack.utils.SystemPropertyUtils.getSystemProperties()) { %>
 <tr>
