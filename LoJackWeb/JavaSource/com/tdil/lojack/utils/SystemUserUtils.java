@@ -27,7 +27,7 @@ public class SystemUserUtils {
 		}
 		public Object executeInTransaction() throws SQLException {
 			SystemUserExample example = new SystemUserExample();
-			example.createCriteria().andUsernameEqualTo(this.username);
+			example.createCriteria().andUsernameEqualTo(this.username).andDeletedEqualTo(0);
 			List<SystemUser> list = DAOManager.getSystemUserDAO().selectSystemUserByExample(example);
 			if (list.isEmpty()) {
 				return null;
