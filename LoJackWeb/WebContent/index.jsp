@@ -56,6 +56,7 @@ response.addCookie(ecookie1);
 <link type="text/css" href="css/index_social.css" rel="stylesheet" />
 <link type="text/css" href="css/copyright.css" rel="stylesheet" />
 <link type="text/css" href="css/laruedita.css" rel="stylesheet" />
+<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
 <link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
 <link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
@@ -370,32 +371,30 @@ function parkingsNotLogged() {
 </head>
 <body>
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<div id="menu" style="display:none;">
-	<ul class="menu">
-		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
-			<div>
-				<ul>
-					<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
-					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
-					<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-					<li><a href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con tu FB</span></a></li>
-					<li><a href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con tu Tw</span></a></li>
-				</ul>
-			</div>
-		</li>
-	</ul>
-</div>
+<header>
+	<div id="floatyMenu">
+		<div class="wrapper">
+			<ul>
+				<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
+				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
+				<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
+				<!-- li><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con Facebook</span></a></li>
+				<li><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con Twitter</span></a></li-->
+			</ul>
+		</div>
+	</div>
+</header>
 <%@ include file="includes/laRuedita.jsp" %>
 
 <div id="flyingObjectContainer"> 
 	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
 	
 	<div id="socialSingleSignOn">
-		<!-- div><span class="textInside">Ingresá con tus cuentas</span></div->
+		<!-- div><span class="textInside">Ingresá con tus cuentas</span></div
 		<div>
 			<ul>
 				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-				<li class="sotwitter"><a href=" %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+				<li class="sotwitter"><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
 			</ul>
 		</div-->
 	</div>
