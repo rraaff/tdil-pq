@@ -37,9 +37,6 @@ public class ViewCameraProxyServlet extends HttpServlet {
 	private static final long serialVersionUID = 5611834065781809280L;
 	
 	private static Map<String, HttpMethodBase> inProgress = new ConcurrentHashMap();
-	
-	private static int TIMEOUT = 2000;
-	private static ProxyConfiguration PROXY;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -67,7 +64,7 @@ public class ViewCameraProxyServlet extends HttpServlet {
 						new NameValuePair("url", cameraForm.getUrl()),
 						new NameValuePair("model", cameraForm.getModel())});
 				HttpClient client = new HttpClient();
-				//configureTimeout(client);
+				configureTimeout(client);
 				client.executeMethod(httpMethod);
 				int statusCode = httpMethod.getStatusCode();
 				InputStream in = httpMethod.getResponseBodyAsStream();
@@ -83,9 +80,13 @@ public class ViewCameraProxyServlet extends HttpServlet {
 	
 	private static void configureTimeout(HttpClient client) {
 		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
-		connectionManager.getParams().setSoTimeout(getTIMEOUT());
-		if (getPROXY() != null) {
-			client.getHostConfiguration().setProxy(getPROXY().getServer(), getPROXY().getPort());
+		connectionManager.getParams().setSoTimeout(LoJackConfig.getCameraConnectTimeOut());
+		boolean isHttps = LoJackConfig.getCameraMobileExternalUrl().toLowerCase().startsWith("https");
+		if (isHttps && IPCamera.getProxyConfigurationHttps() != null) {
+			client.getHostConfiguration().setProxy(IPCamera.getProxyConfigurationHttps().getServer(), IPCamera.getProxyConfigurationHttps().getPort());
+		}
+		if (!isHttps && IPCamera.getProxyConfiguration() != null) {
+			client.getHostConfiguration().setProxy(IPCamera.getProxyConfiguration().getServer(), IPCamera.getProxyConfiguration().getPort());
 		}
 	}
 
@@ -99,19 +100,4 @@ public class ViewCameraProxyServlet extends HttpServlet {
 		doGet(req, resp);
 	}
 
-	public static int getTIMEOUT() {
-		return TIMEOUT;
-	}
-
-	public static void setTIMEOUT(int tIMEOUT) {
-		TIMEOUT = tIMEOUT;
-	}
-
-	public static ProxyConfiguration getPROXY() {
-		return PROXY;
-	}
-
-	public static void setPROXY(ProxyConfiguration pROXY) {
-		PROXY = pROXY;
-	}
 }

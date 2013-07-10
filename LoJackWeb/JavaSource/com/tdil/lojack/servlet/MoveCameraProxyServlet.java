@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -19,6 +20,7 @@ import org.apache.log4j.Logger;
 import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.LoJackWebUtils;
@@ -60,7 +62,7 @@ public class MoveCameraProxyServlet extends HttpServlet {
 						new NameValuePair("model", cameraForm.getModel()),
 						new NameValuePair("dir", req.getParameter("dir"))});
 				HttpClient client = new HttpClient();
-				//configureTimeout(client);
+				configureTimeout(client);
 				client.executeMethod(httpMethod);
 				int statusCode = httpMethod.getStatusCode();
 				InputStream in = httpMethod.getResponseBodyAsStream();
@@ -69,6 +71,18 @@ public class MoveCameraProxyServlet extends HttpServlet {
 			} finally {
 				inProgress.remove(cameraForm.getUrl());
 			}
+		}
+	}
+	
+	private static void configureTimeout(HttpClient client) {
+		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
+		connectionManager.getParams().setSoTimeout(LoJackConfig.getCameraConnectTimeOut());
+		boolean isHttps = LoJackConfig.getCameraMobileExternalUrl().toLowerCase().startsWith("https");
+		if (isHttps && IPCamera.getProxyConfigurationHttps() != null) {
+			client.getHostConfiguration().setProxy(IPCamera.getProxyConfigurationHttps().getServer(), IPCamera.getProxyConfigurationHttps().getPort());
+		}
+		if (!isHttps && IPCamera.getProxyConfiguration() != null) {
+			client.getHostConfiguration().setProxy(IPCamera.getProxyConfiguration().getServer(), IPCamera.getProxyConfiguration().getPort());
 		}
 	}
 

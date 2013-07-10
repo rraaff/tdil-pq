@@ -86,7 +86,6 @@ function up() {
 					<% } %>
 			 },
 				error: function() {
-					alert('err');
 				}
 		});
 }
@@ -115,7 +114,6 @@ function down() {
 				<% } %>
 		 },
 			error: function() {
-				alert('err');
 			}
 	});
 }
@@ -144,7 +142,6 @@ function left() {
 			<% } %>
 	 },
 		error: function() {
-			alert('err');
 		}
 });
 }
@@ -173,7 +170,6 @@ function right() {
 		<% } %>
  	},
 	error: function() {
-		alert('err');
 	}
 });
 }
