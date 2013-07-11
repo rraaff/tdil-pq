@@ -68,12 +68,13 @@ public class ViewCameraServlet extends HttpServlet {
 			if (cameraForm == null) {
 				return;
 			}
-			IPCamera camera = inProgress.get(cameraForm.getUrl());
+			String mapKey = req.getSession().getId() + cameraForm.getUrl();
+			IPCamera camera = inProgress.get(mapKey);
 			if (camera != null) {
 				camera.cancelDownload();
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
-			inProgress.put(cameraForm.getUrl(), cameraForm.getCamera());
+			inProgress.put(mapKey, cameraForm.getCamera());
 			try {
 				resp.setContentType(cameraForm.getCamera().getMimeType());
 				InputStream inputStream = null;
@@ -92,7 +93,7 @@ public class ViewCameraServlet extends HttpServlet {
 					}
 				}
 			} finally {
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
 		}
 	}

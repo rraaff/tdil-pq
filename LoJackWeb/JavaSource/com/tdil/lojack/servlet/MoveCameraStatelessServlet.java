@@ -25,7 +25,7 @@ public class MoveCameraStatelessServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 5611834065781809280L;
 	
-	private static Map<String, IPCamera> inProgress = new ConcurrentHashMap();
+//	private static Map<String, IPCamera> inProgress = new ConcurrentHashMap();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -36,11 +36,11 @@ public class MoveCameraStatelessServlet extends HttpServlet {
 		String url = req.getParameter("url");
 		String model = req.getParameter("model");
 		String dir = req.getParameter("dir");
-		IPCamera camara = inProgress.get(url);
-		if (camara != null) {
-			camara.cancelDownload();
-			inProgress.remove(url);
-		}
+//		IPCamera camara = inProgress.get(url);
+//		if (camara != null) {
+//			camara.cancelDownload();
+//			inProgress.remove(url);
+//		}
 		try {
 			IPCamera camera = null;
 			if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
@@ -49,7 +49,7 @@ public class MoveCameraStatelessServlet extends HttpServlet {
 			if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
 				camera = new TPLinkSC4171G(url, username, password);
 			}
-			inProgress.put(url, camera);
+//			inProgress.put(url, camera);
 			if ("left".equals(dir)) {
 				camera.left();
 			}
@@ -63,7 +63,7 @@ public class MoveCameraStatelessServlet extends HttpServlet {
 				camera.down();
 			}
 		} finally {
-			inProgress.remove(url);
+//			inProgress.remove(url);
 		}
 	}
 

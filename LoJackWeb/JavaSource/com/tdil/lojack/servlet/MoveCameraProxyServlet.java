@@ -45,17 +45,18 @@ public class MoveCameraProxyServlet extends HttpServlet {
 				return;
 			}
 			resp.setContentType(cameraForm.getCamera().getMimeType());
-			HttpMethodBase load = inProgress.get(cameraForm.getUrl());
+			String mapKey = req.getSession().getId() + cameraForm.getUrl();
+			HttpMethodBase load = inProgress.get(mapKey);
 			if (load != null) {
 				try {
 					load.abort();
 				} catch (Exception e) {
 				}
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
 			try {
 				GetMethod httpMethod = new GetMethod(LoJackConfig.getCameraMobileExternalUrl() + "moveCameraStateless");
-				inProgress.put(cameraForm.getUrl(), httpMethod);
+				inProgress.put(mapKey, httpMethod);
 				httpMethod.setQueryString(new NameValuePair[] {new NameValuePair("username", cameraForm.getUsername()),
 						new NameValuePair("password", cameraForm.getPassword()),
 						new NameValuePair("url", cameraForm.getUrl()),
@@ -69,7 +70,7 @@ public class MoveCameraProxyServlet extends HttpServlet {
 				IOUtils.copy(in, resp.getOutputStream());
 				in.close();
 			} finally {
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
 		}
 	}

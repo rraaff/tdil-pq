@@ -1,7 +1,5 @@
 package com.tdil.lojack.servlet;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -26,7 +24,6 @@ import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.LoJackWebUtils;
-import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.web.NoCacheFilter;
 
 public class ViewCameraProxyServlet extends HttpServlet {
@@ -48,17 +45,18 @@ public class ViewCameraProxyServlet extends HttpServlet {
 				return;
 			}
 			resp.setContentType(cameraForm.getCamera().getMimeType());
-			HttpMethodBase load = inProgress.get(cameraForm.getUrl());
+			String mapKey = req.getSession().getId() + cameraForm.getUrl();
+			HttpMethodBase load = inProgress.get(mapKey);
 			if (load != null) {
 				try {
 					load.abort();
 				} catch (Exception e) {
 				}
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
 			try {
 				GetMethod httpMethod = new GetMethod(LoJackConfig.getCameraMobileExternalUrl() + "viewCameraStateless");
-				inProgress.put(cameraForm.getUrl(), httpMethod);
+				inProgress.put(mapKey, httpMethod);
 				httpMethod.setQueryString(new NameValuePair[] {new NameValuePair("username", cameraForm.getUsername()),
 						new NameValuePair("password", cameraForm.getPassword()),
 						new NameValuePair("url", cameraForm.getUrl()),
@@ -73,7 +71,7 @@ public class ViewCameraProxyServlet extends HttpServlet {
 			} catch (Exception e) {
 				resp.getOutputStream().write(ViewCameraServlet.noise);
 			} finally {
-				inProgress.remove(cameraForm.getUrl());
+				inProgress.remove(mapKey);
 			}
 		}
 	}
