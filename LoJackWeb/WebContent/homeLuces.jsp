@@ -583,13 +583,21 @@ textarea {
 								<span class="lastChange">Último cambio: <%=light.getLastChangeDate() %></span>
 								<span class="lastAction"><%=light.getLastChangeAction() %> por: <%=light.getLastChangeUser() %></span>
 								<% if (usingMobile || isAndroid) { %>
-									<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+									<% if (com.tdil.lojack.utils.LoJackConfig.isShowEmailNotification()) { %>
+										<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+									<% } %>
 									<span class="changesLog"><button class="buttonFullLog" onClick="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</button></span>
-									<span class="linkToAgenda"><button class="buttonAgendas" onClick="location.href='./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>'">Configurar agendas</button></span>
+									<% if (com.tdil.lojack.utils.LoJackConfig.isShowAgenda()) { %>
+										<span class="linkToAgenda"><button class="buttonAgendas" onClick="location.href='./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>'">Configurar agendas</button></span>
+									<% } %>
 								<% } else { %>
 									<span class="changesLog"><a href="javascript:seeLightLog(<%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)">Ver log completo</a></span>
-									<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
-									<span class="linkToAgenda"><a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+									<% if (com.tdil.lojack.utils.LoJackConfig.isShowEmailNotification()) { %>
+										<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=light.getIdEntidad()%>, <%=light.getIdLuz()%>)" <%= light.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+									<% } %>
+									<% if (com.tdil.lojack.utils.LoJackConfig.isShowAgenda()) { %>
+										<span class="linkToAgenda"><a href="./goToHomeLightAgenda.do?idEntidad=<%=light.getIdEntidad()%>&idLuz=<%=light.getIdLuz()%>">Configurar horarios</a> de Encendido/Apagado</span>
+									<% } %>
 								<% } %>
 							<% } %>
 						</div>

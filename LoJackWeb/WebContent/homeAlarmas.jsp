@@ -411,13 +411,21 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 					   			<span class="lastChange">Último cambio: <%=alarm.getLastChangeDate() %></span>
 					   			<span class="lastAction"><%=alarm.getLastChangeAction() %> por: <%=alarm.getLastChangeUser() %></span>
 					   			<% if (usingMobile || isAndroid) { %>
-						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<% if (com.tdil.lojack.utils.LoJackConfig.isShowEmailNotification()) { %>
+						   				<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<% } %>
 						   			<span class="changesLog"><button class="buttonFullLog" onClick="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</button></span>
-									<span class="linkToAgenda"><button class="buttonAgendas" onClick="location.href='./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>'">Configurar agendas</button></span>
+									<% if (com.tdil.lojack.utils.LoJackConfig.isShowAgenda()) { %>
+										<span class="linkToAgenda"><button class="buttonAgendas" onClick="location.href='./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>'">Configurar agendas</button></span>
+									<% } %>
 								<% } else { %>
 									<span class="changesLog"><a class="buttonFullLog" href="javascript:seeAlarmLog(<%= alarm.getIdEntidad() %>)">Ver log completo</a></span>
-						   			<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
-						   			<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+						   			<% if (com.tdil.lojack.utils.LoJackConfig.isShowEmailNotification()) { %>
+						   				<span class="notifyme"><input type="checkbox" onchange="toggleEmailNotification(this, <%=alarm.getIdEntidad()%>)" <%= alarm.isEmailnotification() ? "checked" : ""%>> Quiero que me notifique los cambios de estado por E-Mail</span>
+						   			<% } %>
+						   			<% if (com.tdil.lojack.utils.LoJackConfig.isShowAgenda()) { %>
+						   				<span class="linkToAgenda"><a href="./goToHomeAlarmAgenda.do?idEntidad=<%=alarm.getIdEntidad()%>">Configurar horarios</a> de Armado/Desarmado</span>
+						   			<% } %>
 								<% } %>
 					   		<% } %>
 						</div>

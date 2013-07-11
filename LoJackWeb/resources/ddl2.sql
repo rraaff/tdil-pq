@@ -1,0 +1,2 @@
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mw.showAgenda','false','Mostrar agendas [true,false]',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mw.showEmailNotification','false','Mostrar email notification [true,false]',0);

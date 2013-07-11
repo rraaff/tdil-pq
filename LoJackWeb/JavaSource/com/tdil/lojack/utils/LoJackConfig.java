@@ -55,6 +55,9 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static long FRONT_LOGIN_DELAY;
 	
+	private static boolean showAgenda = true;
+	private static boolean showEmailNotification = true;
+	
 	private static ProxyConfiguration HTTP_PROXY;
 	private static ProxyConfiguration HTTPS_PROXY;
 	
@@ -287,6 +290,22 @@ public class LoJackConfig extends SystemConfig {
 		} 
 		LoJackServicesConnector.setProtocol(JSONProtocol.PROTOCOL.equalsIgnoreCase(mwprotocol) ? new JSONProtocol() : new CarpathiaProtocol());
 		getLog().fatal("MW protocol is " + mwprotocol);
+		
+		String showAgenda = SystemPropertyUtils.getSystemPropertValue("mw.showAgenda");
+		if (StringUtils.isEmpty(showAgenda)) {
+			setShowAgenda(true);
+		} else {
+			setShowAgenda("true".equals(showAgenda));
+		}
+		getLog().fatal("MW showAgenda is " + isShowAgenda());
+		
+		String showEmailNotification = SystemPropertyUtils.getSystemPropertValue("mw.showEmailNotification");
+		if (StringUtils.isEmpty(showEmailNotification)) {
+			setShowEmailNotification(true);
+		} else {
+			setShowEmailNotification("true".equals(showEmailNotification));
+		}
+		getLog().fatal("MW showEmailNotification is " + isShowEmailNotification());
 
 		String gisserver = SystemPropertyUtils.getSystemPropertValue("gis.server");
 		if (gisserver != null) {
@@ -658,6 +677,22 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setCameraMobileExternalUrl(String cameraMobileExternalUrl) {
 		LoJackConfig.cameraMobileExternalUrl = cameraMobileExternalUrl;
+	}
+
+	public static boolean isShowAgenda() {
+		return showAgenda;
+	}
+
+	public static void setShowAgenda(boolean showAgenda) {
+		LoJackConfig.showAgenda = showAgenda;
+	}
+
+	public static boolean isShowEmailNotification() {
+		return showEmailNotification;
+	}
+
+	public static void setShowEmailNotification(boolean showEmailNotification) {
+		LoJackConfig.showEmailNotification = showEmailNotification;
 	}
 
 }

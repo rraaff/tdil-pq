@@ -16,6 +16,9 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('servic
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('services.timeout','5000','Timeout en millis',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('middleware.proxy','true','middleware.proxy',0);
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mw.showAgenda','false','Mostrar agendas [true,false]',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mw.showEmailNotification','false','Mostrar email notification [true,false]',0);
+
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.server','http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc','prevent.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.timeout','10000','Timeout en millis',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.loginurl','http://test.lojackgis.com.ar:8080/webgis/Prevent_WebUI/loginportal.ashx?','URL de prevent',0);
