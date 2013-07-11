@@ -9,5 +9,5 @@ CREATE TABLE SYSTEMUSER (
   INDEX `IX_SYSTEMUSER_00` (`username` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO SYSTEMUSER(username,password,loggingAccess,syspropAccess, deleted) VALUES('Admin',SHA1('Admin'), 1, 1, 0);
+INSERT INTO SYSTEMUSER(username,password,loggingAccess,syspropAccess, deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 1, 1, 0);
 COMMIT;

@@ -130,6 +130,7 @@ CREATE TABLE SYSTEMUSER (
   password VARCHAR(50) NULL ,
   loggingAccess INT NULL,
   syspropAccess INT NULL,
+  deleted INT NOT NULL ,
   PRIMARY KEY (id));
   
 CREATE INDEX IX_SYSTEMUSER_00 ON SYSTEMUSER (username);
