@@ -546,7 +546,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	font-weight:bold;
 	line-height:15px;
 	text-transform:uppercase;
-	float:right;
+	/*float:right;*/
 	padding:12px 0 0 0;
 }
 .alarm-status-DESARMADA { color: #f05224; }

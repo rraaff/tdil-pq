@@ -381,12 +381,12 @@ function deactivateEmailNotification(objCheckbox, idEntidad) {
 							<div id="<%=alarm.getIdEntidad()%>" class="editable"><%= alarm.getDescription() %></div>
 							<div class="switchContainer correctSwitchContainer">
 					  			<% if (alarm.isTriggered()) { %>
-					  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+					  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="portaStatus alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 					  			<% } else { %>
 					  				<% if (alarm.isActive()) { %>
-						  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="portaStatus alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 						  			<% } else { %>
-						  				<div id="portaStatus" id="alarm-status-<%=alarm.getIdEntidad()%>" class="alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
+						  				<div id="alarm-status-<%=alarm.getIdEntidad()%>" class="portaStatus alarm-status-<%=alarm.getStatus()%>"><%=alarm.getStatus()%></div>
 						  			<% } %>
 					  			<% } %>
 								<div id="b-alarm-switch-<%=alarm.getIdEntidad()%>" class="switch switch-mini" data-on="warning" data-off="danger" data-animated="true" data-on-label="ON" data-off-label="OFF">
