@@ -84,18 +84,20 @@
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%>
 			</fieldset>
-			<fieldset class="sexFieldset">
-				<label class="sexLabel">* Sexo:</label>
-			</fieldset>
-			<fieldset class="sexOptionsFieldset">
-				<html:radio property="gender" value="Male" />
-				<span>Masculino&nbsp;&nbsp;&nbsp;</span>
-				<html:radio property="gender" value="Female" />
-				<span>Femenino</span>
-				<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
-			</fieldset>
-			<div class="errorInForm"></div>
+			<div class="sexWrapper">
+				<fieldset class="sexFieldset">
+					<label class="sexLabel">* Sexo:</label>
+				</fieldset>
+				<fieldset class="sexOptionsFieldset">
+					<html:radio property="gender" value="Male" />
+					<span>Masculino&nbsp;&nbsp;&nbsp;</span>
+					<html:radio property="gender" value="Female" />
+					<span>Femenino</span>
+					<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
+				</fieldset>
+				<div class="errorInForm"></div>
+			</div>
 			<fieldset>
 				<label>* E-mail</label>
 				<html:text name="RegisterFormMobile" property="email"/>

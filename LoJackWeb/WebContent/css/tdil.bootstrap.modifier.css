@@ -427,7 +427,7 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	float:left;
 }
 /* Status de luces */
-#portaStatus { text-align:left; float:left; width:60px; }
+.portaStatus { text-align:left; float:left; width:60px; }
 #accordion .switchContainer,
 #accordion .XswitchContainer {
 	text-align:right;

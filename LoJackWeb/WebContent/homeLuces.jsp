@@ -460,15 +460,15 @@ textarea {
 							<div id="<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>" class="editable"><%= light.getDescription() %></div>
 							<div class="switchContainer correctSwitchContainer">
 								<% if (light.isInRandomMode()) { %>
-									<div id="portaStatus" class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+									<div class="portaStatus status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 								<% } else  { %>
 									<% if (light.isOn()) { %>
-										<div id="portaStatus" class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+										<div class="portaStatus status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 									<% } else  { %>
 										<% if (light.isOff()) { %>
-											<div id="portaStatus" class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+											<div class="portaStatus status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 										<% } else  { %>
-											<div id="portaStatus" class="status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
+											<div class="portaStatus status status-<%=light.getStatusDescription()%>" id="light-status-<%=light.getIdEntidad()%>-<%=light.getIdLuz()%>"><%=light.getStatusDescription()%></div>
 										<% } %>
 									<% } %>
 								<% } %>

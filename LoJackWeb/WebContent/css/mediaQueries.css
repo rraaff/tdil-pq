@@ -17,6 +17,7 @@ and (max-device-width : 480px) {
 	#laRuedita {
 		top: 30%;
 	}
+	#socialSingleSignOn { display: none; }
 }
 @media only screen and (max-height : 320px) {
 	#elTelefono {
@@ -351,7 +352,11 @@ and (max-height : 550px) {
 }
 @media only screen and (max-width: 650px) {
 	header,
-	header.menuInternas { display: none; }
+	header.menuInternas,
+	#socialSingleSignOn { display: none; }
+}
+@media only screen and (max-width: 710px) {
+	#floatyMenu ul li { font-size:8px; }
 }
 @media only screen and (max-width: 968px) {
 	body { background-color: #531a1a; }
