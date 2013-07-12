@@ -9,6 +9,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.GeolocationPermissions;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -49,6 +52,19 @@ public class LoginActivity extends Activity {
 
     // UI references.
     private WebView webView1;
+    
+    private class MyChromeWebViewClient extends WebChromeClient {
+
+        @Override
+        public void onProgressChanged(WebView view, int progress) {
+            // Activities and WebViews measure progress with different scales.
+            // The progress meter will automatically disappear when we reach 100%
+        }
+
+        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+            callback.invoke(origin, true, false);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +75,24 @@ public class LoginActivity extends Activity {
         webView1 = (WebView) findViewById(R.id.webView1);
         WebSettings webSettings = webView1.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webView1.setWebChromeClient(new MyChromeWebViewClient());
+        webView1.setWebViewClient(new WebViewClient() {
+        	@Override
+        	public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        		//check if the url matched the url loaded via webview.loadUrl()
+                if (checkMatchedLoadedURL(url)) {
+                    return false;
+                } else {
+                    LoginActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    return true;
+                }
+        	}
+
+			private boolean checkMatchedLoadedURL(String url) {
+				return url.contains("www.lojack-app.com.ar");
+			}
+        });
+        
         webView1.setWebViewClient(new WebViewClient() {
         	@Override
         	public boolean shouldOverrideUrlLoading(WebView view, String url) {
