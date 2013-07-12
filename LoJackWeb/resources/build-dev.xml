@@ -205,6 +205,14 @@
 		
 		<war destfile="./${project.name.upper}.tmp/GIS_WEB.war" basedir="../../GISWeb/WebContent" webxml="../../GISWeb/WebContent/WEB-INF/web.xml">
 		</war>	
+		
+		<war destfile="./${project.name.upper}.tmp/LoJackCameraWEB.war" basedir="../../LoJackCameraWeb/WebContent" webxml="../../LoJackCameraWeb/WebContent/WEB-INF/web.xml">
+			<classes dir="../../Camera/bin" />
+			<lib dir="../../thalamusJClient/EnvironmentLibraries/">
+				<include name="commons*.jar" />
+				<include name="javabase.jar" />
+			</lib>
+		</war>
 	</target>
 
 	<target name="js.minify">
