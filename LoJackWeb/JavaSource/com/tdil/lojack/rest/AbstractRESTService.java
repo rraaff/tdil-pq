@@ -5,6 +5,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import net.sf.json.util.JSONTokener;
 
 import org.apache.commons.httpclient.HttpStatus;
@@ -13,6 +14,7 @@ import com.tdil.lojack.rest.model.AsyncJobResponse;
 import com.tdil.lojack.rest.model.RESTResponse;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public abstract class AbstractRESTService {
@@ -43,19 +45,23 @@ public abstract class AbstractRESTService {
 	public abstract HttpSession getSession();
 
 	public Response okResponse() {
-		return Response.status(201).entity(RESTResponse.OK_RESPONSE).build();
+		return Response.status(201).entity(asJSON(RESTResponse.OK_RESPONSE)).build();
 	}
 
 	public Response failResponse() {
-		return Response.status(201).entity(RESTResponse.FAIL_RESPONSE).build();
+		return Response.status(201).entity(asJSON(RESTResponse.FAIL_RESPONSE)).build();
 	}
 
 	public Response asyncFailResponse() {
-		return Response.status(201).entity(new AsyncJobResponse(false)).build();
+		return Response.status(201).entity(asJSON(new AsyncJobResponse(false))).build();
 	}
 
 	public Response asyncOkResponse() {
-		return Response.status(201).entity(new AsyncJobResponse(true)).build();
+		return Response.status(201).entity(asJSON(new AsyncJobResponse(true))).build();
+	}
+	
+	public static String asJSON(Object object) {
+		return JSONObject.fromObject(object).toString();
 	}
 
 	public Response asResponse(boolean addAlarmAgenda) {
@@ -64,6 +70,20 @@ public abstract class AbstractRESTService {
 		} else {
 			return failResponse();
 		}
+	}
+
+	protected Response failResponse(ThalamusResponse response) {
+		RESTResponse restResponse = new RESTResponse(false);
+		JSONObject jsonObject = (JSONObject)response.getResult();
+		JSONObject errorsJson = jsonObject.getJSONObject("errors");
+		for (Object o : errorsJson.keySet()) {
+			restResponse.getErrors().put(o.toString(), errorsJson.getString(o.toString()));
+		}
+		return Response.status(401).entity(restResponse).build();
+	}
+
+	public Response createResponse(int status, Object intermediate) {
+		return Response.status(status).entity(asJSON(intermediate)).build();
 	}
 
 	public static JSON extractJSONObjectResponse(String response) {

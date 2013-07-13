@@ -45,9 +45,9 @@ public class AlarmsService extends AbstractRESTService {
 	public Response list() {
 		validateLogged();
 		Collection<Alarm> intermediate = LoJackServicesConnector.getAlarms(this.getUser());
-		return Response.status(201).entity(new AlarmCollection(intermediate)).build();
+		return createResponse(201, new AlarmCollection(intermediate));
 	}
-	
+
 	@GET
 	@Path("/{idEntidad}/rename")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -107,7 +107,7 @@ public class AlarmsService extends AbstractRESTService {
 	public Response log(@PathParam("idEntidad") int idEntidad) {
 		validateLogged();
 		Collection<ChangeLog> log = LoJackServicesConnector.getAlarmLog(this.getUser(), idEntidad);
-		return Response.status(201).entity(new LogCollection(log)).build();
+		return createResponse(201, new LogCollection(log));
 	}
 	
 	@GET

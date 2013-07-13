@@ -1,7 +1,5 @@
 package com.tdil.lojack.rest;
 
-import java.util.Collection;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
@@ -17,18 +15,13 @@ import javax.ws.rs.core.Response;
 import net.sf.json.JSONObject;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.lojack.gis.LoJackServicesConnector;
-import com.tdil.lojack.gis.model.Alarm;
-import com.tdil.lojack.gis.model.LightAgenda;
-import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.rest.model.ChangePasswordBean;
+import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
 import com.tdil.lojack.utils.WebsiteUser;
-import com.tdil.thalamus.client.core.CommunicationException;
-import com.tdil.thalamus.client.core.HttpStatusException;
-import com.tdil.thalamus.client.core.InvalidResponseException;
-import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
+import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
 
 @Path("/users")
@@ -45,6 +38,10 @@ public class UsersService extends AbstractRESTService {
 	public HttpSession getSession() {
 		return request.getSession(false);
 	}
+	
+	public HttpSession getSession(boolean create) {
+		return request.getSession(create);
+	}
 
 	@GET
 	@Path("/login")
@@ -53,9 +50,10 @@ public class UsersService extends AbstractRESTService {
 		WebsiteUser user;
 		try {
 			user = LoginForm.login(documentType + ":" + documentNumber, password, "", "");
-			getSession().setAttribute("user", user);
+			getSession(true).setAttribute("user", user);
 			return okResponse();
 		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
 			return failResponse();
 		} 
 	}
@@ -84,8 +82,18 @@ public class UsersService extends AbstractRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response changePassword(ChangePasswordBean changePasswordBean) {
 		validateLogged();
-		Collection<Alarm> intermediate = LoJackServicesConnector.getAlarms(this.getUser());
-		return Response.status(201).entity(new AlarmCollection(intermediate)).build();
+		JSONObject general = ChangePasswordForm.getChangePasswordJSON(changePasswordBean.getOldpassword(), changePasswordBean.getNewPassword(), changePasswordBean.getConfirmNewPassword());
+		try {
+			ThalamusResponse response = ThalamusClientFacade.changePassword(this.getUser().getToken(), general);
+			if (response.isBadRequest()) {
+				return failResponse(response);
+			} else {
+				return okResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		} 
 	}
 	
 	@POST

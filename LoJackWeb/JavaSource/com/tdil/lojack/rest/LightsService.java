@@ -45,7 +45,7 @@ public class LightsService extends AbstractRESTService {
 	public Response list() {
 		validateLogged();
 		Collection<Light> intermediate = LoJackServicesConnector.getLights(this.getUser());
-		return Response.status(201).entity(new LightCollection(intermediate)).build();
+		return createResponse(201, new LightCollection(intermediate));
 	}
 	
 	@GET
@@ -119,7 +119,7 @@ public class LightsService extends AbstractRESTService {
 	public Response log(@PathParam("idEntidad") int idEntidad) {
 		validateLogged();
 		Collection<ChangeLog> log = LoJackServicesConnector.getAlarmLog(this.getUser(), idEntidad);
-		return Response.status(201).entity(new LogCollection(log)).build();
+		return createResponse(201, new LogCollection(log));
 	}
 	
 	@GET

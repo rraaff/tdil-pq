@@ -79,7 +79,7 @@ public class ChangePasswordForm extends AbstractForm {
 	}
 	@Override
 	public void save() throws SQLException, ValidationException {
-		JSONObject general = getChangePasswordJSON();
+		JSONObject general = getChangePasswordJSON(this.getOldPassword(), this.getNewPassword(), this.getConfirmNewPassword());
 		try {
 			ThalamusResponse response = ThalamusClientFacade.changePassword(this.getUser().getToken(), general);
 			if (response.isBadRequest()) {
@@ -97,11 +97,12 @@ public class ChangePasswordForm extends AbstractForm {
 			throw new ValidationException(new ValidationError(ApplicationResources.getMessage("ChangePasswordForm.UnauthorizedException")));
 		}
 	}
-	private JSONObject getChangePasswordJSON() {
+	
+	public static JSONObject getChangePasswordJSON(String oldpassword, String newpassword, String confirm) {
 		JSONObject result = new JSONObject();
-		result.put("oldpassword", this.getOldPassword());
-		result.put("newPassword", this.getNewPassword());
-		result.put("confirmNewPassword", this.getConfirmNewPassword());
+		result.put("oldpassword", oldpassword);
+		result.put("newPassword", newpassword);
+		result.put("confirmNewPassword", confirm);
 		return result;		
 	}
 	public WebsiteUser getUser() {
