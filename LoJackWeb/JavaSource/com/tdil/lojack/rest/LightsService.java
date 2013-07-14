@@ -17,19 +17,17 @@ import javax.ws.rs.core.Response;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.LoJackServicesConnector;
-import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
-import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.rest.model.LightCollection;
 import com.tdil.lojack.rest.model.LogCollection;
 import com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction.ActivateLightEmailNotification;
 import com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction.DeactivateLightEmailNotification;
 import com.tdil.lojack.struts.action.RenameLightAjaxAction.RenameLightAction;
-import com.tdil.lojack.struts.forms.AlarmsForm;
 import com.tdil.lojack.struts.forms.LightsForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.TransactionalActionWithResult;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 @Path("/lights")
 public class LightsService extends AbstractRESTService {
@@ -53,7 +51,7 @@ public class LightsService extends AbstractRESTService {
 		validateLogged();
 		final WebsiteUser user = getUser();
 		try {
-			Collection<Light> intermediate = TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult<Collection<Light>>() {
+			Collection<Light> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<Light>>() {
 				@Override
 				public Collection<Light> executeInTransaction() throws SQLException {
 					return LightsForm.getLights(user);
@@ -72,7 +70,7 @@ public class LightsService extends AbstractRESTService {
 	public Response rename(@PathParam("idEntidad") int idEntidad, @PathParam("idLuz") int idLuz, @QueryParam("description") String description) {
 		validateLogged();
 		try {
-			TransactionProvider.executeInTransaction(new RenameLightAction(getUser(), idEntidad, idLuz, description));
+			GenericTransactionExecutionService.getInstance().execute(new RenameLightAction(getUser(), idEntidad, idLuz, description));
 			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

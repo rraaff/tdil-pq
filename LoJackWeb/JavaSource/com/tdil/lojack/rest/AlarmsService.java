@@ -27,6 +27,7 @@ import com.tdil.lojack.struts.action.RenameAlarmAjaxAction.RenameAlarmAction;
 import com.tdil.lojack.struts.forms.AlarmsForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.TransactionalActionWithResult;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 @Path("/alarms")
 public class AlarmsService extends AbstractRESTService {
@@ -50,7 +51,7 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		final WebsiteUser user = getUser();
 		try {
-			Collection<Alarm> intermediate = TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult<Collection<Alarm>>() {
+			Collection<Alarm> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<Alarm>>() {
 				@Override
 				public Collection<Alarm> executeInTransaction() throws SQLException {
 					return AlarmsForm.getAlarms(user);
@@ -69,7 +70,7 @@ public class AlarmsService extends AbstractRESTService {
 	public Response rename(@PathParam("idEntidad") int idEntidad, @QueryParam("description") String description) {
 		validateLogged();
 		try {
-			TransactionProvider.executeInTransaction(new RenameAlarmAction(idEntidad, getUser(), description));
+			GenericTransactionExecutionService.getInstance().execute(new RenameAlarmAction(idEntidad, getUser(), description));
 			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
