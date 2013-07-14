@@ -21,7 +21,7 @@ public interface IGenericTransactionExecutionService {
 			throws SQLException, ValidationException;
 
 	@Transactional
-	public abstract <T> T executeInTransaction(
+	public abstract <T> T execute(
 			TransactionalActionWithValue<T> transactionalAction, ActionForm form)
 			throws SQLException, ValidationException;
 
