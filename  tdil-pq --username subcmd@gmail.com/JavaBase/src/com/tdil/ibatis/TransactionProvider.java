@@ -30,8 +30,8 @@ public class TransactionProvider {
 		}
 	}
 	
-	public static Object executeInTransactionWithResult(TransactionalActionWithResult transactionalAction) throws SQLException {
-		Object result = null;
+	public static <T> T executeInTransactionWithResult(TransactionalActionWithResult<T> transactionalAction) throws SQLException {
+		T result = null;
 		try {
 			IBatisManager.beginTransaction();
 			result = transactionalAction.executeInTransaction();
@@ -50,8 +50,8 @@ public class TransactionProvider {
 		return LoggerProvider.getLogger(TransactionProvider.class);
 	}
 	
-	public static Object executeInTransaction(TransactionalActionWithValue transactionalAction, ActionForm form) throws SQLException, ValidationException {
-		Object result = null;
+	public static <T> T executeInTransaction(TransactionalActionWithValue<T> transactionalAction, ActionForm form) throws SQLException, ValidationException {
+		T result = null;
 		try {
 			IBatisManager.beginTransaction();
 			result = transactionalAction.executeInTransaction(form);
