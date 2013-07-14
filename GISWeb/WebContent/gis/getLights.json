@@ -1,6 +1,6 @@
 [
 	{
-		"idEntidad": 1,
+		"idEntidad": 70843,
 		"idLuz": 1,
 		"lastChangeAction": "ENCENDER",
 		"lastChangeDate": "2013/03/19 - 20:30",
@@ -9,31 +9,13 @@
 		"status": 0
 	},
 	{
-		"idEntidad": 1,
+		"idEntidad": 70843,
 		"idLuz": 2,
 		"lastChangeAction": "APAGAR",
 		"lastChangeDate": "2013/03/19 - 20:30",
 		"lastChangeUser": "PABLO MENDOZA",
 		"lastChangeLojackUserID":"ase001",
 		"status": 1
-	},
-	{
-		"idEntidad": 2,
-		"idLuz": 1,
-		"lastChangeAction": "ENCENDER",
-		"lastChangeDate": "2013/03/19 - 20:30",
-		"lastChangeUser": "PABLO MENDOZA",
-		"lastChangeLojackUserID":"ase001",
-		"status": 2
-	},
-	{
-		"idEntidad": 2,
-		"idLuz": 2,
-		"lastChangeAction": "APAGAR",
-		"lastChangeDate": "2013/03/19 - 20:30",
-		"lastChangeUser": "PABLO MENDOZA",
-		"lastChangeLojackUserID":"ase001",
-		"status": 3
-	},
+	}
 
 ]
