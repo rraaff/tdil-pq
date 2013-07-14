@@ -37,7 +37,7 @@ public class GenericTransactionExecutionService implements IGenericTransactionEx
 	 */
 	@Override
 	@Transactional
-	public Object execute(TransactionalActionWithResult action) throws SQLException, ValidationException {
+	public <T> T execute(TransactionalActionWithResult<T> action) throws SQLException, ValidationException {
 		return action.executeInTransaction();
 	}
 	
@@ -46,7 +46,7 @@ public class GenericTransactionExecutionService implements IGenericTransactionEx
 	 */
 	@Override
 	@Transactional
-	public Object executeInTransaction(TransactionalActionWithValue transactionalAction, ActionForm form) throws SQLException, ValidationException {
+	public <T> T  executeInTransaction(TransactionalActionWithValue<T> transactionalAction, ActionForm form) throws SQLException, ValidationException {
 		return transactionalAction.executeInTransaction(form);
 	}
 }

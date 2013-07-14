@@ -17,12 +17,12 @@ public interface IGenericTransactionExecutionService {
 			throws SQLException, ValidationException;
 
 	@Transactional
-	public abstract Object execute(TransactionalActionWithResult action)
+	public abstract <T> T execute(TransactionalActionWithResult<T> action)
 			throws SQLException, ValidationException;
 
 	@Transactional
-	public abstract Object executeInTransaction(
-			TransactionalActionWithValue transactionalAction, ActionForm form)
+	public abstract <T> T executeInTransaction(
+			TransactionalActionWithValue<T> transactionalAction, ActionForm form)
 			throws SQLException, ValidationException;
 
 }
