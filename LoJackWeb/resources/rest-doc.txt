@@ -18,6 +18,9 @@ Un grupo de servicios por funcionalidad
 /home/ligths
 /home/cameras
 
+http://localhost:8180/LoJackWeb/rest/users/login?documentType=1&documentNumber=12&password=2
+http://localhost:8180/LoJackWeb/rest/users/logout
+
 
 http://localhost:8180/LoJackWeb/rest/alarms/list
 http://localhost:8180/LoJackWeb/rest/alarms/1/sendPanic

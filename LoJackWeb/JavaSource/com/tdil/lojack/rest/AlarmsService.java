@@ -1,5 +1,6 @@
 package com.tdil.lojack.rest;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,9 @@ import com.tdil.lojack.rest.model.LogCollection;
 import com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction.ActivateAlarmEmailNotification;
 import com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction.DeactivateAlarmEmailNotification;
 import com.tdil.lojack.struts.action.RenameAlarmAjaxAction.RenameAlarmAction;
+import com.tdil.lojack.struts.forms.AlarmsForm;
+import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.TransactionalActionWithResult;
 
 @Path("/alarms")
 public class AlarmsService extends AbstractRESTService {
@@ -44,8 +48,19 @@ public class AlarmsService extends AbstractRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response list() {
 		validateLogged();
-		Collection<Alarm> intermediate = LoJackServicesConnector.getAlarms(this.getUser());
-		return createResponse(201, new AlarmCollection(intermediate));
+		final WebsiteUser user = getUser();
+		try {
+			Collection<Alarm> intermediate = (Collection<Alarm>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+				@Override
+				public Object executeInTransaction() throws SQLException {
+					return AlarmsForm.getAlarms(user);
+				}
+			});
+			return createResponse(201, new AlarmCollection(intermediate));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
 	}
 
 	@GET

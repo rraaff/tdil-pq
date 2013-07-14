@@ -2,12 +2,12 @@ package com.tdil.lojack.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -16,8 +16,10 @@ import net.sf.json.JSONObject;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.rest.model.ChangePasswordBean;
+import com.tdil.lojack.rest.model.PersonBean;
 import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
+import com.tdil.lojack.struts.forms.RegisterForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
@@ -50,7 +52,8 @@ public class UsersService extends AbstractRESTService {
 		WebsiteUser user;
 		try {
 			user = LoginForm.login(documentType + ":" + documentNumber, password, "", "");
-			getSession(true).setAttribute("user", user);
+			user.createUserJobCollection(getSession(true));
+			getSession().setAttribute("user", user);
 			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
@@ -67,21 +70,51 @@ public class UsersService extends AbstractRESTService {
 	}
 	
 	@POST
+	@Path("/create")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response create(String body) {
+		validateLogged();
+		PersonBean personBean = extractObjectFromJSON(body, PersonBean.class);
+		JSONObject general = RegisterForm.getPersonJSON(false, personBean);
+		try {
+			ThalamusResponse response = ThalamusClientFacade.updatePerson(getUser().getToken(), general);
+			if (response.isBadRequest()) {
+				return failResponse(response);
+			} else {
+				return okResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
+	}
+	
+	@POST
 	@Path("/update")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update() {
+	public Response update(String body) {
 		validateLogged();
-		/*JSONObject obj = (JSONObject)extractJSONObjectResponse(json);
-		LightAgenda alarmAgenda = (LightAgenda)JSONObject.toBean(obj, LightAgenda.class);*/
-		return null;
+		PersonBean personBean = extractObjectFromJSON(body, PersonBean.class);
+		JSONObject general = RegisterForm.getPersonJSON(true, personBean);
+		try {
+			ThalamusResponse response = ThalamusClientFacade.updatePerson(getUser().getToken(), general);
+			if (response.isBadRequest()) {
+				return failResponse(response);
+			} else {
+				return okResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
 	}
 	
 	@POST
 	@Path("/password")
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response changePassword(ChangePasswordBean changePasswordBean) {
+	public Response changePassword(String body) {
 		validateLogged();
+		ChangePasswordBean changePasswordBean = extractObjectFromJSON(body, ChangePasswordBean.class);
 		JSONObject general = ChangePasswordForm.getChangePasswordJSON(changePasswordBean.getOldpassword(), changePasswordBean.getNewPassword(), changePasswordBean.getConfirmNewPassword());
 		try {
 			ThalamusResponse response = ThalamusClientFacade.changePassword(this.getUser().getToken(), general);
@@ -94,6 +127,10 @@ public class UsersService extends AbstractRESTService {
 			LOG.error(e.getMessage(), e);
 			return failResponse();
 		} 
+	}
+
+	public <T> T extractObjectFromJSON(String body, Class<T> aClass) {
+		return (T)JSONObject.toBean((JSONObject)extractJSONObject(body), aClass);
 	}
 	
 	@POST

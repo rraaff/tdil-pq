@@ -15,6 +15,7 @@ import com.tdil.lojack.rest.model.RESTResponse;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.ThalamusResponse;
+import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public abstract class AbstractRESTService {
@@ -63,7 +64,16 @@ public abstract class AbstractRESTService {
 	public static String asJSON(Object object) {
 		return JSONObject.fromObject(object).toString();
 	}
-
+	
+	public static JSON extractJSONObject(String response) {
+		JSONTokener tokener = new JSONTokener(response);
+		Object rawResponseMessage = tokener.nextValue();
+		if (rawResponseMessage == null) {
+			throw new WebApplicationException(401);
+		}
+		return (JSON) rawResponseMessage;
+	}
+	
 	public Response asResponse(boolean addAlarmAgenda) {
 		if(addAlarmAgenda) {
 			return okResponse();

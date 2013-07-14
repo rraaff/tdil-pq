@@ -52,15 +52,15 @@ import com.tdil.utils.StringUtils;
 import com.tdil.validations.FieldValidation;
 import com.tdil.validations.ValidationErrors;
 
-public class RegisterForm extends AbstractForm implements RefreshableForm {
+public class RegisterForm extends AbstractForm implements RefreshableForm, IPerson {
 
 	private static final long serialVersionUID = 7670249948557986182L;
 
 	private boolean isMobile;
 	private boolean isUpdate = false;
-	
+
 	private TokenHolder token;
-	
+
 	private int documentType = 1;
 	private String document;
 	private String password;
@@ -69,19 +69,19 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private String birthDate;
 	private String gender; // Male Female
 	private String email;
-	
+
 	private String day;
 	private String month;
 	private String year;
-	
+
 	private List<String> years;
-	
+
 	// celular, opcional
 	private String phoneIntCode = "54"; // Argentina, hardcodeado?
 	private String phoneNumber;
 	private String phoneAreaCode;
 	private String phoneType = "cellphone"; // celular, hardcodeado
-	
+
 	private String countrySelected;
 	private int countryId; // Argentina, hardcodeado
 	private int stateId;
@@ -90,21 +90,21 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	private String city; // opcional
 	private String postalCode; // opcional
 	private String addressType;
-	
+
 	private List<OptIn> optIns = new ArrayList<OptIn>();
-	
+
 	private JSONArray socialConnections;
-	
+
 	private String facebook;
 	private String twitter;
 	private URLHolder facebookLoginUrl;
-	
+
 	private Collection<CountryBean> countries = new ArrayList<CountryBean>();
 	private Collection<BrandBean> brands = new ArrayList<BrandBean>();
 	private Collection<StateBean> states = new ArrayList<StateBean>();
-	
+
 	private PersonFields personFields;
-	
+
 	public static final String firstname_key = "RegisterForm.firstname";
 	public static final String lastname_key = "RegisterForm.lastname";
 	public static final String gender_key = "RegisterForm.gender";
@@ -113,7 +113,6 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	public static final String documenttype_key = "RegisterForm.documenttype";
 	public static final String document_key = "RegisterForm.document";
 	public static final String email_key = "RegisterForm.email";
-	
 
 	@Override
 	public ValidationError validate() {
@@ -138,52 +137,52 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		FieldValidation.validateEmail(this.getEmail(), email_key, error);
 		return error;
 	}
-	
+
 	@Override
 	public void init() throws SQLException {
-		
+
 	}
-	
+
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(RegisterForm.class);
 	}
-	
+
 	public boolean isInUse(String field) {
 		return this.getPersonFields().isInUse(field);
 	}
-	
+
 	public boolean isInUse(String field, String subfield) {
 		return this.getPersonFields().isInUse(field, subfield);
 	}
-	
+
 	public boolean isInUseAndEditable(String field) {
 		return this.getPersonFields().isInUse(field) && (!this.isUpdate || this.getPersonFields().isEditable(field));
 	}
-	
+
 	public boolean isInUseAndEditable(String field, String subfield) {
 		return this.getPersonFields().isInUse(field, subfield) && (!this.isUpdate || this.getPersonFields().isEditable(field, subfield));
 	}
-	
+
 	public boolean isRequired(String field) {
 		return this.getPersonFields().isRequired(field);
 	}
-	
+
 	public boolean isRequired(String field, String subfield) {
 		return this.getPersonFields().isRequired(field, subfield);
 	}
-	
+
 	public List<String> getPhoneTypes() {
 		FieldDescription phone = this.getPersonFields().getProfileField(PersonFieldNames.phone);
 		FieldDescription type = phone.getField(PersonFieldNames.phoneType);
 		return type.getEnumValues();
 	}
-	
+
 	public List<String> getAddressTypes() {
 		FieldDescription phone = this.getPersonFields().getProfileField(PersonFieldNames.address);
 		FieldDescription type = phone.getField(PersonFieldNames.addressType);
 		return type.getEnumValues();
 	}
-	
+
 	public void searchReferenceData() throws ValidationException {
 		try {
 			countries = ThalamusClientBeanFacade.getCountries();
@@ -199,7 +198,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			brands = ThalamusClientBeanFacade.getBrands();
 			this.personFields = ThalamusClientBeanFacade.getPersonFields();
 			this.setFacebookLoginUrl(ThalamusClientBeanFacade.getFacebookLogin());
-			
+
 		} catch (HttpStatusException e) {
 			throw new ValidationException(new ValidationError("RegisterForm.HttpStatusException"));
 		} catch (InvalidResponseException e) {
@@ -209,9 +208,9 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		} catch (UnauthorizedException e) {
 			throw new ValidationException(new ValidationError("RegisterForm.UnauthorizedException"));
 		}
-		
+
 	}
-	
+
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
@@ -219,11 +218,11 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			optIn.setAccepted(false);
 		}
 	}
-	
+
 	@Override
 	public void initWith(int id) throws SQLException {
 	}
-	
+
 	@Override
 	public void reset() throws SQLException {
 		this.documentType = 1;
@@ -243,13 +242,13 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		this.phoneType = null;
 		this.password = null;
 	}
-	
+
 	@Override
 	public void save() throws SQLException, ValidationException {
 	}
-	
+
 	public WebsiteUser register() throws ValidationException {
-		JSONObject general = getPersonJSON(false);
+		JSONObject general = getPersonJSON(false, this);
 		try {
 			ThalamusResponse response = ThalamusClientFacade.registerPersonAndConsumer(general);
 			if (response.isBadRequest()) {
@@ -273,90 +272,54 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 		}
 	}
 
-	private JSONObject getPersonJSON(boolean update) {
+	public static JSONObject getPersonJSON(boolean update, IPerson iperson) {
 		JSONObject general = new JSONObject();
 		JSONObject profile = new JSONObject();
 		JSONObject document = new JSONObject();
 		if (!update) {
-			if (this.getDocumentType() != 0) {
-				document.put("type", this.getDocumentType());
+			if (iperson.getDocumentType() != 0) {
+				document.put("type", iperson.getDocumentType());
 			}
-			document.put("number", StringUtils.nullValueOf(this.getDocument()));
+			document.put("number", StringUtils.nullValueOf(iperson.getDocument()));
 			profile.put("document", document);
 		}
-		if (isInUseAndEditable(PersonFieldNames.firstName)) {
-			profile.put(PersonFieldNames.firstName, StringUtils.nullValueOf(this.getFirstName()));
+		profile.put(PersonFieldNames.firstName, StringUtils.nullValueOf(iperson.getFirstName()));
+		profile.put(PersonFieldNames.lastName, StringUtils.nullValueOf(iperson.getLastName()));
+		profile.put(PersonFieldNames.gender, StringUtils.nullValueOf(iperson.getGender()));
+		profile.put(PersonFieldNames.email, StringUtils.nullValueOf(iperson.getEmail()));
+		Date birthDate = com.tdil.utils.DateUtils.parseDate(iperson.getBirthDate());
+		if (birthDate != null) {
+			profile.put(PersonFieldNames.birthDate, birthDate.getTime());
+		} else {
+			profile.put(PersonFieldNames.birthDate, null);
 		}
-		if (isInUseAndEditable(PersonFieldNames.lastName)) {
-			profile.put(PersonFieldNames.lastName, StringUtils.nullValueOf(this.getLastName()));
+		JSONObject address = new JSONObject();
+		if (iperson.getCountryId() != 0) {
+			address.put(PersonFieldNames.countryId, iperson.getCountryId());
 		}
-		if (isInUseAndEditable(PersonFieldNames.gender)) {
-			profile.put(PersonFieldNames.gender, StringUtils.nullValueOf(this.getGender()));
+		address.put(PersonFieldNames.street2, StringUtils.nullValueOf(iperson.getStreet2()));
+		address.put(PersonFieldNames.street1, StringUtils.nullValueOf(iperson.getStreet1()));
+		address.put(PersonFieldNames.postalCode, StringUtils.nullValueOf(iperson.getPostalCode()));
+		if (iperson.getStateId() != 0) {
+			address.put(PersonFieldNames.stateId, iperson.getStateId());
 		}
-		if (isInUseAndEditable(PersonFieldNames.email)) {
-			profile.put(PersonFieldNames.email, StringUtils.nullValueOf(this.getEmail()));
-		}
-		if (isInUseAndEditable(PersonFieldNames.birthDate)) {
-			Date birthDate = com.tdil.utils.DateUtils.parseDate(this.getBirthDate());
-			if (birthDate != null) {
-				profile.put(PersonFieldNames.birthDate,birthDate.getTime());
-			} else {
-				profile.put(PersonFieldNames.birthDate,null);
-			}
-		}
-		if (isInUseAndEditable(PersonFieldNames.address)) {
-			JSONObject address = new JSONObject();
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.countryId)) {
-				if (this.getCountryId() != 0) {
-					address.put(PersonFieldNames.countryId, this.getCountryId());
-				}
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.street2)) {
-				address.put(PersonFieldNames.street2, StringUtils.nullValueOf(this.getStreet2()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.street1)) {
-				address.put(PersonFieldNames.street1, StringUtils.nullValueOf(this.getStreet1()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.postalCode)) {
-				address.put(PersonFieldNames.postalCode, StringUtils.nullValueOf(this.getPostalCode()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.stateId)) {
-				if (this.getStateId() != 0) {
-					address.put(PersonFieldNames.stateId, this.getStateId());
-				}
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.addressType)) {
-				address.put(PersonFieldNames.addressType, StringUtils.nullValueOf(this.getAddressType()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.address, PersonFieldNames.city)) {
-				address.put(PersonFieldNames.city, StringUtils.nullValueOf(this.getCity()));
-			}
-			profile.put(PersonFieldNames.address, address);
-		}
-		if (isInUseAndEditable(PersonFieldNames.phone)) {
-			JSONObject phone = new JSONObject();
-			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) {
-				phone.put(PersonFieldNames.phoneNumber, StringUtils.nullValueOf(this.getPhoneNumber()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) {
-				phone.put(PersonFieldNames.phoneAreaCode, StringUtils.nullValueOf(this.getPhoneAreaCode()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneType)) {
-				phone.put(PersonFieldNames.phoneType, StringUtils.nullValueOf(this.getPhoneType()));
-			}
-			if (isInUseAndEditable(PersonFieldNames.phone, PersonFieldNames.phoneIntCode)) {
-				phone.put(PersonFieldNames.phoneIntCode, StringUtils.nullValueOf(this.getPhoneIntCode()));
-			}
-			profile.put(PersonFieldNames.phone, phone);
-		}
+		address.put(PersonFieldNames.addressType, StringUtils.nullValueOf(iperson.getAddressType()));
+		address.put(PersonFieldNames.city, StringUtils.nullValueOf(iperson.getCity()));
+		profile.put(PersonFieldNames.address, address);
+		JSONObject phone = new JSONObject();
+		phone.put(PersonFieldNames.phoneNumber, StringUtils.nullValueOf(iperson.getPhoneNumber()));
+		phone.put(PersonFieldNames.phoneAreaCode, StringUtils.nullValueOf(iperson.getPhoneAreaCode()));
+		phone.put(PersonFieldNames.phoneType, StringUtils.nullValueOf(iperson.getPhoneType()));
+		phone.put(PersonFieldNames.phoneIntCode, StringUtils.nullValueOf(iperson.getPhoneIntCode()));
+		profile.put(PersonFieldNames.phone, phone);
 		general.put("profile", profile);
 		JSONObject credentials = new JSONObject();
-		credentials.put(PersonFieldNames.principal, StringUtils.nullValueOf(this.getPrincipal()));
-		credentials.put(PersonFieldNames.password, StringUtils.nullValueOf(this.getPassword()));
+		credentials.put(PersonFieldNames.principal, StringUtils.nullValueOf(iperson.getDocumentType() + ":" + iperson.getDocument()));
+		credentials.put(PersonFieldNames.password, StringUtils.nullValueOf(iperson.getPassword()));
 		general.put("credential", credentials);
 
 		JSONArray optInsArray = new JSONArray();
-		for (OptIn optIn : this.getOptIns()) {
+		for (OptIn optIn : iperson.getOptIns()) {
 			JSONObject op = new JSONObject();
 			op.put("brandFamilyId", -1);
 			op.put("channel", -1);
@@ -364,9 +327,9 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			optInsArray.add(op);
 		}
 		general.put("optIns", optInsArray);
-		
-		if (socialConnections != null) {
-			general.put("socialConnections", socialConnections);
+
+		if (iperson.getSocialConnections() != null) {
+			general.put("socialConnections", iperson.getSocialConnections());
 		}
 		return general;
 	}
@@ -477,100 +440,119 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void refresh() throws ValidationException {
-		/*if (states.isEmpty() || this.getCountryId() != states.get(0).getParent()) {
-			try {
-				states.clear();
-				JSONArray brandsResult = (JSONArray)ThalamusClientFacade.getStates(this.getCountryId());
-				for (int i = 0; i < brandsResult.size(); i++) {
-					JSONObject row = brandsResult.getJSONObject(i);
-					states.add(new ComboBean(row.getInt("id"), row.getString("name"), row.getInt("masterId")));
-				}
-			} catch (HttpStatusException e) {
-				throw new ValidationException(new ValidationError("RegisterForm.HttpStatusException"));
-			} catch (InvalidResponseException e) {
-				throw new ValidationException(new ValidationError("RegisterForm.InvalidResponseException"));
-			} catch (CommunicationException e) {
-				throw new ValidationException(new ValidationError("RegisterForm.CommunicationException"));
-			} catch (UnauthorizedException e) {
-				throw new ValidationException(new ValidationError("RegisterForm.UnauthorizedException"));
-			}
-		}*/
+		/*
+		 * if (states.isEmpty() || this.getCountryId() !=
+		 * states.get(0).getParent()) { try { states.clear(); JSONArray
+		 * brandsResult =
+		 * (JSONArray)ThalamusClientFacade.getStates(this.getCountryId()); for
+		 * (int i = 0; i < brandsResult.size(); i++) { JSONObject row =
+		 * brandsResult.getJSONObject(i); states.add(new
+		 * ComboBean(row.getInt("id"), row.getString("name"),
+		 * row.getInt("masterId"))); } } catch (HttpStatusException e) { throw
+		 * new ValidationException(new
+		 * ValidationError("RegisterForm.HttpStatusException")); } catch
+		 * (InvalidResponseException e) { throw new ValidationException(new
+		 * ValidationError("RegisterForm.InvalidResponseException")); } catch
+		 * (CommunicationException e) { throw new ValidationException(new
+		 * ValidationError("RegisterForm.CommunicationException")); } catch
+		 * (UnauthorizedException e) { throw new ValidationException(new
+		 * ValidationError("RegisterForm.UnauthorizedException")); } }
+		 */
 	}
 
 	public PersonFields getPersonFields() {
 		return personFields;
 	}
+
 	public void setPersonFields(PersonFields personFields) {
 		this.personFields = personFields;
 	}
+
 	public Collection<CountryBean> getCountries() {
 		return countries;
 	}
+
 	public void setCountries(Collection<CountryBean> countries) {
 		this.countries = countries;
 	}
+
 	public Collection<BrandBean> getBrands() {
 		return brands;
 	}
+
 	public void setBrands(Collection<BrandBean> brands) {
 		this.brands = brands;
 	}
+
 	public Collection<StateBean> getStates() {
 		return states;
 	}
+
 	public void setStates(Collection<StateBean> states) {
 		this.states = states;
 	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getPrincipal() {
 		return this.getDocumentType() + ":" + this.getDocument();
 	}
-	
+
 	public boolean isPrincipal(String field) {
 		return this.personFields.isPrincipal(field);
 	}
-	
+
 	public String getPhoneAreaCode() {
 		return phoneAreaCode;
 	}
+
 	public void setPhoneAreaCode(String phoneAreaCode) {
 		this.phoneAreaCode = phoneAreaCode;
 	}
+
 	public String getPhoneIntCode() {
 		return phoneIntCode;
 	}
+
 	public void setPhoneIntCode(String phoneIntCode) {
 		this.phoneIntCode = phoneIntCode;
 	}
+
 	public String getStreet2() {
 		return street2;
 	}
+
 	public void setStreet2(String street2) {
 		this.street2 = street2;
 	}
+
 	public boolean isUpdate() {
 		return isUpdate;
 	}
+
 	public void setUpdate(boolean isUpdate) {
 		this.isUpdate = isUpdate;
 	}
-	public void takeInitialData(TokenHolder tokenHolder) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+
+	public void takeInitialData(TokenHolder tokenHolder) throws HttpStatusException, InvalidResponseException, CommunicationException,
+			UnauthorizedException {
 		this.setToken(tokenHolder);
 		JSON gral = ThalamusClientFacade.getPerson(tokenHolder);
-		JSONObject person = ((JSONObject)gral).getJSONObject("person");
+		JSONObject person = ((JSONObject) gral).getJSONObject("person");
 		JSONObject profile = person.getJSONObject("profile");
 		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
 			JSONObject document = profile.getJSONObject("document");
 			this.setDocument(document.getString("number"));
 		}
-		
+
 		if (profile.containsKey(PersonFieldNames.firstName) && profile.get(PersonFieldNames.firstName) != JSONNull.getInstance()) {
 			this.setFirstName(profile.getString(PersonFieldNames.firstName));
 		}
@@ -641,7 +623,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			JSONArray optIns = person.getJSONArray("optIns");
 			Iterator iter = optIns.iterator();
 			while (iter.hasNext()) {
-				JSONObject optIn = (JSONObject)iter.next();
+				JSONObject optIn = (JSONObject) iter.next();
 				int brandFamilyId = optIn.getInt("brandFamilyId");
 				int channel = optIn.getInt("channel");
 				boolean accepted = optIn.getBoolean("accepted");
@@ -649,9 +631,9 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			}
 		}
 	}
-	
+
 	public WebsiteUser update() throws ValidationException {
-		JSONObject general = getPersonJSON(true);
+		JSONObject general = getPersonJSON(true, this);
 		try {
 			ThalamusResponse response = ThalamusClientFacade.updatePerson(this.getToken(), general);
 			if (response.isBadRequest()) {
@@ -660,7 +642,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 				throw new ValidationException(validationError);
 			} else {
 				WebsiteUser user = new WebsiteUser(this.getFirstName() + " " + this.getLastName(), this.getToken(), -3, "AA");
-				//user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom((JSONObject)response.getResult()));
+				// user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom((JSONObject)response.getResult()));
 				return user;
 			}
 		} catch (HttpStatusException e) {
@@ -673,54 +655,71 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			throw new ValidationException(new ValidationError(ApplicationResources.getMessage("RegisterForm.UnauthorizedException")));
 		}
 	}
+
 	public TokenHolder getToken() {
 		return token;
 	}
+
 	public void setToken(TokenHolder token) {
 		this.token = token;
 	}
+
 	public URLHolder getFacebookLoginUrl() {
 		return facebookLoginUrl;
 	}
+
 	public void setFacebookLoginUrl(URLHolder facebookLoginUrl) {
 		this.facebookLoginUrl = facebookLoginUrl;
 	}
+
 	public JSONArray getSocialConnections() {
 		return socialConnections;
 	}
+
 	public void setSocialConnections(JSONArray socialConnections) {
 		this.socialConnections = socialConnections;
 	}
+
 	public String getFacebook() {
 		return facebook;
 	}
+
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
 	}
+
 	public void setTwitter(String string) {
 		this.twitter = string;
 	}
+
 	public String getTwitter() {
 		return twitter;
 	}
+
 	public String getFieldNameForPrincipal() {
 		return "profile.document";
 	}
+
 	public String getDocument() {
 		return document;
 	}
+
 	public void setDocument(String dniNumber) {
 		this.document = dniNumber;
 	}
+
 	public String getCountrySelected() {
 		return countrySelected;
 	}
+
 	public void setCountrySelected(String countrySelected) {
 		this.countrySelected = countrySelected;
 	}
+
 	public int getDocumentType() {
 		return documentType;
 	}
+
 	public void setDocumentType(int documentType) {
 		this.documentType = documentType;
 	}
@@ -778,21 +777,22 @@ public class RegisterForm extends AbstractForm implements RefreshableForm {
 			}
 		}
 	}
-	
-	public OptIn getOptIn(int index) {  
-	      return this.getOptIns().get(index);  
-	   }  
-	   
-	public void setOptIn(int index, OptIn countryVO) {  
-		this.getOptIns().set(index, countryVO);  
-	 }
-	
+
+	public OptIn getOptIn(int index) {
+		return this.getOptIns().get(index);
+	}
+
+	public void setOptIn(int index, OptIn countryVO) {
+		this.getOptIns().set(index, countryVO);
+	}
+
 	private void setOptIn(int brandFamilyId, int channel, boolean accepted) {
 		for (OptIn optIn : this.optIns) {
-			//if (optIn.getBrandFamilyId() == brandFamilyId && optIn.getChannelId() == channel) {
-				optIn.setAccepted(accepted);
-				return;
-			//}
+			// if (optIn.getBrandFamilyId() == brandFamilyId &&
+			// optIn.getChannelId() == channel) {
+			optIn.setAccepted(accepted);
+			return;
+			// }
 		}
 	}
 
