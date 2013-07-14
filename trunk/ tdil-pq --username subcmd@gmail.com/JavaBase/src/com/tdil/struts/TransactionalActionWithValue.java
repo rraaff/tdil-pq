@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import org.apache.struts.action.ActionForm;
 
-public interface TransactionalActionWithValue {
+public interface TransactionalActionWithValue<T> {
 
-	Object executeInTransaction(ActionForm form) throws SQLException, ValidationException;
+	T executeInTransaction(ActionForm form) throws SQLException, ValidationException;
 }
