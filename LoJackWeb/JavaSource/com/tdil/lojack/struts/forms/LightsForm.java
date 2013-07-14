@@ -60,8 +60,21 @@ public class LightsForm extends ActionForm {
 			LOG.error(e.getMessage(), e);
 		}
 	}
+	
+	public static Collection<Light> getLights(WebsiteUser user) {
+		Collection<Light> alarms = LoJackServicesConnector.getLights(user);
+		try {
+			List<LightConf> lightConf = (List<LightConf>)new GetLightConf(user.getModelUser().getId()).executeInTransaction();
+			for (Light light : alarms) {
+				enhance(light, lightConf);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+		}
+		return alarms;
+	}
 
-	private void enhance(Light light, List<LightConf> lightConf) {
+	private static void enhance(Light light, List<LightConf> lightConf) {
 		for (LightConf lc : lightConf) {
 			if (lc.getIdentidad().equals(light.getIdEntidad())) {
 				if (lc.getIdluz().equals(light.getIdLuz())) {

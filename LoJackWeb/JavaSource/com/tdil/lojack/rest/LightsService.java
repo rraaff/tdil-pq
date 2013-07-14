@@ -1,5 +1,6 @@
 package com.tdil.lojack.rest;
 
+import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,19 @@ import javax.ws.rs.core.Response;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
+import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.rest.model.LightCollection;
 import com.tdil.lojack.rest.model.LogCollection;
 import com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction.ActivateLightEmailNotification;
 import com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction.DeactivateLightEmailNotification;
 import com.tdil.lojack.struts.action.RenameLightAjaxAction.RenameLightAction;
+import com.tdil.lojack.struts.forms.AlarmsForm;
+import com.tdil.lojack.struts.forms.LightsForm;
+import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.TransactionalActionWithResult;
 
 @Path("/lights")
 public class LightsService extends AbstractRESTService {
@@ -44,8 +51,19 @@ public class LightsService extends AbstractRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response list() {
 		validateLogged();
-		Collection<Light> intermediate = LoJackServicesConnector.getLights(this.getUser());
-		return createResponse(201, new LightCollection(intermediate));
+		final WebsiteUser user = getUser();
+		try {
+			Collection<Light> intermediate = TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult<Collection<Light>>() {
+				@Override
+				public Collection<Light> executeInTransaction() throws SQLException {
+					return LightsForm.getLights(user);
+				}
+			});
+			return createResponse(201, new LightCollection(intermediate));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
 	}
 	
 	@GET
@@ -114,7 +132,7 @@ public class LightsService extends AbstractRESTService {
 	}
 	
 	@GET
-	@Path("/{idEntidad}/log")
+	@Path("/{idEntidad}/{idLuz}/log")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response log(@PathParam("idEntidad") int idEntidad) {
 		validateLogged();

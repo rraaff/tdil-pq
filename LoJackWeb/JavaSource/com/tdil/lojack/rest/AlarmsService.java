@@ -50,9 +50,9 @@ public class AlarmsService extends AbstractRESTService {
 		validateLogged();
 		final WebsiteUser user = getUser();
 		try {
-			Collection<Alarm> intermediate = (Collection<Alarm>)TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult() {
+			Collection<Alarm> intermediate = TransactionProvider.executeInTransactionWithResult(new TransactionalActionWithResult<Collection<Alarm>>() {
 				@Override
-				public Object executeInTransaction() throws SQLException {
+				public Collection<Alarm> executeInTransaction() throws SQLException {
 					return AlarmsForm.getAlarms(user);
 				}
 			});
