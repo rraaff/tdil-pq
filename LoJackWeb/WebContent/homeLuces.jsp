@@ -216,7 +216,7 @@ textarea {
 		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
 		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
 		
-		$('#b-light-switch-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
+		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
 		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', false);
 		$('#light-ran-' + idEntidad + "-" + idLuz).attr("disabled", "disabled");
 		bgUpdate = false;
@@ -236,7 +236,6 @@ textarea {
 		bgUpdate = false;
 	}
 	function setLightStatusRanOn(idEntidad, idLuz) {
-		///alert('ran on');
 		bgUpdate = true;
 		$("#switch-" + idEntidad + "-" + idLuz).css('display', 'block');
 		$("#buttons-" + idEntidad + "-" + idLuz).css('display', 'none');
@@ -261,7 +260,7 @@ textarea {
 		
 		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setState', false);
 		$('#b-light-ran-' + idEntidad + "-" + idLuz).bootstrapSwitch('setActive', true);
-		$('#light-switch-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
+		$('#light-ran-' + idEntidad + "-" + idLuz).removeAttr("disabled", "disabled");
 		bgUpdate = false;
 	}
 	function setLightStatusUnknown(idEntidad, idLuz) {
@@ -297,7 +296,6 @@ textarea {
 	  }
 
 	function turnOnLight(idEntidad, idLuz) {
-		//alert('turn on');
 		<%@ include file="includes/blockUI.jspf" %>
 		  $.ajax({
 	          type: "GET",
