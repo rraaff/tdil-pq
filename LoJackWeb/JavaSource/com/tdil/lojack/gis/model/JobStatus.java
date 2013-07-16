@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class JobStatus {
 	
 	private int jobId = 0;
-	private String jobStatus;
+	private int jobStatus;
 	
 	public int getJobId() {
 		return jobId;
@@ -14,10 +14,10 @@ public class JobStatus {
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public String getJobStatus() {
+	public int getJobStatus() {
 		return jobStatus;
 	}
-	public void setJobStatus(String jobStatus) {
+	public void setJobStatus(int jobStatus) {
 		this.jobStatus = jobStatus;
 	}
 }
