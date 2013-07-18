@@ -1,35 +1,6 @@
-/* Smartphones (portrait and landscape) commit ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-/* Styles */
-}
-
-@media only screen and (min-height : 842px) {
-	#socialSingleSignOn {
-		top: 750px;
-	}
-}
 @media only screen and (max-height : 378px) {
 	#copyright {
 		display:none;
-	}
-	#laRuedita {
-		top: 30%;
-	}
-	#socialSingleSignOn { display: none; }
-}
-@media only screen and (max-height : 320px) {
-	#elTelefono {
-		display:none;
-	}
-}
-@media only screen and (max-height : 842px) {
-	#socialSingleSignOn {
-		bottom: 50px;
-	}
-	#copyright {
-		bottom:  10px;
 	}
 }
 @media only screen
@@ -37,64 +8,6 @@ and (min-width : 600px) {
 	#floatyMenu .wrapper {
 		min-width: 500px;
 	}
-}
-@media only screen
-and (min-width : 1568px) {
-	#socialSingleSignOn {
-		width:198px;
-		margin:0 auto;
-		padding-left:1360px;
-		left:0;
-		bottom: 50px;
-		position: absolute;
-		display: inline-block;
-	}
-}
-@media only screen
-and (max-width : 1200px) {
-	#welcomeText {
-		width: 30%;
-		left: 65%;
-		top: 40%;
-	}
-}
-@media only screen
-and (max-width : 1000px) {
-	#welcomeText {
-		width: 30%;
-		left: 69%;
-		top: 39%;
-	}
-}
-@media only screen
-and (max-width : 900px) {
-	#welcomeText {
-		width: 25%;
-		left: 75%;
-		top: 44%;
-	}
-}
-@media only screen
-and (max-width : 800px)
-and (max-height : 700px) {
-	#welcomeText {
-		width: 31%;
-		left: 67%;
-		top: 44%;
-	}
-}
-@media only screen
-and (max-width : 700px)
-and (max-height : 600px) {
-	#welcomeText {
-		width: 31%;
-		left: 68%;
-		top: 44%;
-	}
-}
-@media only screen
-and (max-width : 680px) {
-	#welcomeText { display: none; }
 }
 @media only screen
 and (max-width : 927px) {
@@ -128,54 +41,12 @@ and (max-width : 927px) {
 		padding: 0 0 20px 0;
 	}
 }
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-/* Styles */
-}
-@media only screen 
-and (max-width : 850px) {
-	#logoIndex {
-		width: 30%;
-		height: auto;
-		top:10%;
-		z-index: 1400;
-		position: fixed;
-	}
-}
 /* Smartphones SAMSUNG GALAXY1S (portrait) ----------- */
-@media only screen 
-and (max-width : 599px) {
-	#logoIndex {
-		width: 25%;
-		height: auto;
-		top:5%;
-		z-index: 1400;
-		position: fixed;
-	}
-	#logoIndex img {
-		width: 100%;
-		height: auto;
-	}
-}
 @media only screen 
 and (max-width : 479px) {
 	div {
 		box-sizing:border-box;
 	}
-	#socialSingleSignOn {
-		bottom: 80px;
-	}
-	#laRuedita {
-		top: 30%;
-	}
-	#logoIndex {
-		width: 45%;
-		top:5%;
-	}
-	#elTelefono { display:none; }
-	#elTelefono img { display:none; }
-	#losIconos { display:none; }
 	#xContainer {
 		width: 30px;
 		top: 0px;
@@ -257,106 +128,15 @@ and (max-width : 479px) {
 	.legalLayerContent {}
 	.legalLayerContentWrapper { overflow: auto; }
 }
-@media only screen 
-and (max-height : 550px) {
-	#laRuedita .fakeRuedita {
-	/*	background: url(../images/skin_lj_rl/backs/wheel_mobile_demo.png);
-		background-repeat: no-repeat;
-		background-position:0 0;*/
-		width: 110px;
-		height: 110px;
-		overflow: hidden;
-	}
-	/* ICONOS */
-	#iconoLogin,
-	#iconoLogout {
-		width:36px;
-		height:36px;
-		top:8px;
-		left:8px;
-	}
-	#iconoLogin img,
-	#iconoLogout img,
-	#iconoProfile img,
-	#iconoCar img,
-	#iconoPets img {
-		width: 36px;
-		height: 36px;
-	}
-	#iconoParkings {
-		width: 42.5px;
-		height: 29px;
-		top: -33px;
-		left: 32px;
-	}
-	#iconoParkings img {
-		width: 42.5px;
-		height: 29px;
-	}
-	#iconoProfile {
-		width: 36px;
-		height: 36px;
-		top: -57px;
-		left: 66px;
-	}
-	#iconoCar {
-		width: 36px;
-		height: 36px;
-		top: -35.5px;
-		left: 8px;
-	}
-	#iconoHome {
-		width: 40px;
-		height: 29px;
-		top: -60px;
-		left: 35px;
-	}
-	#iconoHome img {
-		width: 40px;
-		height: 29px;
-	}
-	#iconoPets {
-		width: 36px;
-		height: 36px;
-		top: -100px;
-		left: 66px;
-	}
-
-	/* proporcion imagenes bg*/
-	#laRuedita .fakeRuedita,
-	#iconoLogin,
-	#iconoLogout,
-	#iconoParkings,
-	#iconoProfile,
-	#iconoCar,
-	#iconoHome,
-	#iconoPets,
-	#iconoLogin:hover,
-	#iconoLogin:focus,
-	#iconoLogout:hover,
-	#iconoLogout:focus,
-	#iconoParkings:hover,
-	#iconoParkings:focus,
-	#iconoProfile:hover,
-	#iconoProfile:focus,
-	#iconoCar:hover,
-	#iconoCar:focus,
-	#iconoHome:hover,
-	#iconoHome:focus,
-	#iconoPets:hover,
-	#iconoPets:focus {
-		background-size: contain;
-		-moz-background-size: contain;
-		-webkit-background-size: contain;
-	}
+@media only screen and (max-width: 600px) {
+	#floatyMenu ul li.saludationAndUsername { display: none; }
+	header ul li.userTagAndName				{ display: none; }
 }
-@media only screen and (max-width: 650px) {
-	header,
-	header.menuInternas,
-	#socialSingleSignOn { display: none; }
-}
-@media only screen and (max-width: 710px) {
-	#floatyMenu ul li { font-size:8px; }
+@media only screen and (max-width: 480px) {
+	#floatyMenu ul li			{ font-size:8px; }
+	#floatyMenu ul li a			{ padding:0 5px; }
+	#floatyMenu ul li.avatarLi	{ width:auto; margin-right:5px; float:left; }
+	#floatyMenu ul li.avatarLi img { margin:0; }
 }
 @media only screen and (max-width: 968px) {
 	body { background-color: #531a1a; }
@@ -422,10 +202,7 @@ and (max-height : 550px) {
 	#switchBoard { padding: 2px; }
 	#accordion .portaTitleAndSwitch { width: 89%; padding-bottom: 5px; float: right; }
 	#accordion .switchContainer { float: right; }
-	div[id^="alarm-status-"] {
-		float:right;
-		top:0;
-	}
+	div[id^="alarm-status-"] { top:0; }
 	/*#switchBoard { padding:0; }*/
 	#switchBoard span { font-size: 12px; }
 	#switchBoard .notifyme,
@@ -445,15 +222,18 @@ and (max-height : 550px) {
 	#appletHolder { width:100%; }
 	#linksAside { display: none; }
 	embed, object { width:100%; }
-	#cameraTitle h1 { font-size:100%; line-height:normal; padding:20px 0 0 40px; }
+	#cameraTitle h1 { font-size:130%; line-height:normal; padding:21px 0 0 40px; }
 	#pictureContainer { width:100%; height:auto; margin: 0 auto; }
 	.controlsBasicView { width:100%; background:#fff; margin: 0 auto; position: relative; top:0; }
 	div.controlsBasicView img { padding:5px; margin: 0 5px; }
 
 	/* switch */
 	.has-switch.switch-mini { min-width: 100px; }
-	.has-switch label { left: 53px; }
-	.has-switch span.switch-warning { left:-54px; }
+	.has-switch label { left: 49px; }
+	.has-switch span.switch-warning { left:-50px; }
+	
+	#camerasList { width:100%; }
+	#camerasList ul li.cameraLink a { font-size:12px; line-height:20px; width:100%; }
 }
 @media only screen and (max-width: 350px) {
 	body { overflow-x:hidden; overflow-y:auto; }
@@ -469,51 +249,4 @@ and (max-height : 550px) {
 @media only screen and (max-height: 450px) {
 	header,
 	header.menuInternas { display:none; }
-}
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-/* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-/* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-/* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-/* Styles */
-}
-
-/* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-/* Styles */
-}
-
-/* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-/* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-/* Styles */
 }

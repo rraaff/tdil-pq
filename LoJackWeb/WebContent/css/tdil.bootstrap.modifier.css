@@ -33,7 +33,6 @@ header {
 }
 header {
 	text-transform:uppercase;
-	font-family:Arial, sans-serif;
 	font-size:10px;
 }
 .correctNav {
@@ -64,10 +63,7 @@ header ul li a:focus  {
 	width: 968px;
 	margin: 0 auto;
 }
-header.menuInternas {
-	background: #000;
-	display:inline-block;
-}
+header.menuInternas { background:#000; }
 header.menuInternas li {
 	width: auto;
 	float: left;
@@ -235,6 +231,8 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 	list-style-type: none;
 }
 #camerasList ul li.cameraLink a {
+	font-size:14px;
+	line-height:20px;
 	width: 350px;
 	float: left;
 }
@@ -732,7 +730,6 @@ footer .btn-primary,
 	color: #fff;
 	font-size: 9px;
 	font-weight: normal;
-	font-family: "Gotham", "Helvetica", Arial, sans-serif;
 	text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
 	line-height: 17px;
 	padding: 0px 15px;
@@ -854,7 +851,7 @@ form { padding-top: 15px; margin: 0; }
 
 /* ups page */
 #thalamusDown { background: url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat: repeat; width:450px; margin:300px auto 0; padding:50px; }
-#thalamusDown h1 { color:#ee5222; font-family:"Gotham", "Helvetica", Arial, sans-serif; font-weight:bold; font-size:20px; line-height:25px; padding-bottom:15px; margin:0;}
+#thalamusDown h1 { color:#ee5222; font-weight:bold; font-size:20px; line-height:25px; padding-bottom:15px; margin:0;}
 #thalamusDown p,
 #thalamusDown p.errorCode { color:#fff; padding:5px 0; }
 #thalamusDown p.errorCode { font-size:9px; }

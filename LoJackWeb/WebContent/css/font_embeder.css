@@ -1,0 +1,43 @@
+/* CSS Document */
+
+@font-face {
+	font-family: 'GothamBoldRegular';
+	src: url('../font/gotham-bold.eot');
+	src: url('../font/gotham-bold.eot') format('embedded-opentype'),
+	url('../font/gotham-bold.woff') format('woff'),
+	url('../font/gotham-bold.ttf') format('truetype'),
+	url('../font/gotham-bold.svg#GothamBoldRegular') format('svg');
+}
+
+@font-face {
+	font-family: 'GothamLightRegular';
+	src: url('../font/gotham-light.eot');
+	src: url('../font/gotham-light.eot') format('embedded-opentype'),
+	url('../font/gotham-light.woff') format('woff'),
+	url('../font/gotham-light.ttf') format('truetype'),
+	url('../font/gotham-light.svg#GothamLightRegular') format('svg');
+}
+
+@font-face {
+	font-family: 'GothamMediumRegular';
+	src: url('../font/gotham-medium.eot');
+	src: url('../font/gotham-medium.eot') format('embedded-opentype'),
+	url('../font/gotham-medium.woff') format('woff'),
+	url('../font/gotham-medium.ttf') format('truetype'),
+	url('../font/gotham-medium.svg#GothamMediumRegular') format('svg');
+}
+
+@font-face {
+	font-family: 'GothamExtraLightRegular';
+	src: url('../font/gotham-xlight.eot');
+	src: url('../font/gotham-xlight.eot') format('embedded-opentype'),
+	url('../font/gotham-xlight.woff') format('woff'),
+	url('../font/gotham-xlight.ttf') format('truetype'),
+	url('../font/gotham-xlight.svg#GothamExtraLightRegular') format('svg');
+}
+body { font-family: 'GothamLightRegular', Helvetica, Arial, sans-serif; font-weight:normal; text-rendering:optimizelegibility; }
+strong { font-family: 'GothamBoldRegular', Helvetica, Arial, sans-serif; font-weight:bold; text-rendering:optimizelegibility; }
+
+/*	font-family: 'GothamMediumRegular';*/
+/*	font-family: 'GothamLightRegular';*/
+/*	font-family: 'GothamBoldRegular';*/

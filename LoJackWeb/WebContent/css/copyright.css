@@ -6,22 +6,26 @@
 	bottom:20px;
 }
 #copyright .copy {
-	color: #fff;
-	font-size: 9px;
-	font-family: "Gotham", "Helvetica", Arial, sans-serif;
-	font-weight: normal;
-	text-align: center;
-	text-transform: uppercase;
-	margin: 0 auto;
+	color:#fff;
+	font-size:9px;
+	font-family:'GothamLightRegular','Gotham', 'Helvetica', Arial, sans-serif;
+	text-align:center;
+	line-height:13px;
+	text-transform:uppercase;
+	width:70%;
+	margin:0 auto;
 }
 #copyright a {
-	color: #fff;
-	font-weight: bold;
+	color:#ee5222;
+	-o-transition:color .2s ease-out;
+	-ms-transition:color .2s ease-out;
+	-moz-transition:color .2s ease-out;
+	-webkit-transition:color .2s ease-out;
+	/* ...and now override with proper CSS property */
+	transition:color .2s ease-out;
 }
 #copyright a:hover,
-#copyright a:focus {
-	color:#ee5222;
-}
+#copyright a:focus { color:#000; }
 #copyright p {
 	color: #fff;
 	padding: 0 20px;

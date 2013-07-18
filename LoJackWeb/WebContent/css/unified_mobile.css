@@ -149,8 +149,8 @@ button.icon_zoom_in,
 button.icon_zoom_out {
 	border:none;
 	background:transparent;
-	width:56px;
-	height:42px;
+	width:60px;
+	height:60px;
 	padding:0;
 	margin:5px 0;
 	cursor:pointer;
@@ -163,10 +163,10 @@ button.icon100mts	{ background:url(../mobile/images/webApp/parkings/control_100m
 button.icon500mts	{ background:url(../mobile/images/webApp/parkings/control_500mts.png); 		background-repeat:no-repeat; background-position:center center; }
 button.icon1mks		{ background:url(../mobile/images/webApp/parkings/control_1000mts.png); 	background-repeat:no-repeat; background-position:center center; }
 button.iconClear	{ background:url(../mobile/images/webApp/parkings/control_clear.png); 		background-repeat:no-repeat; background-position:center center; }
-button.iconMaxSpeed { background:url(../mobile/images/webApp/car/control_maxSpeed_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
-button.iconZSeguras { background:url(../mobile/images/webApp/car/control_zSeguras_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
-button.iconGetPosit { background:url(../mobile/images/webApp/car/control_getPosit_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
-button.iconPhoneAdm { background:url(../mobile/images/webApp/car/control_phoneAdm_32x32.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconMaxSpeed { background:url(../mobile/images/webApp/car/control_maxSpeed_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconZSeguras { background:url(../mobile/images/webApp/car/control_zSeguras_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconGetPosit { background:url(../mobile/images/webApp/car/control_getPosit_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconPhoneAdm { background:url(../mobile/images/webApp/car/control_phoneAdm_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
 button.icon_zoom_in  { background:url(../mobile/images/webApp/parkings/icon_ZoomIn.png);		background-repeat:no-repeat; background-position:center center; }
 button.icon_zoom_out { background:url(../mobile/images/webApp/parkings/icon_ZoomOut.png);		background-repeat:no-repeat; background-position:center center; }
 
