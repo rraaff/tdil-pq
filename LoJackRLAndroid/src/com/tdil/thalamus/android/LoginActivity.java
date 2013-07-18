@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.GeolocationPermissions;
-import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -24,7 +23,11 @@ import com.tdil.lojack.rl.R;
  * well.
  */
 public class LoginActivity extends Activity {
-    public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
+    
+	/*public static final String URL_WEBSITE = "http://192.168.0.143:8180/LoJackWeb/";
+    public static final String URL_ANDROID_VERSION = "http://192.168.0.143:8180/LoJackWeb/android_version.txt";*/
+	
+	public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
     public static final String URL_ANDROID_VERSION = "http://www.lojack-app.com.ar/android_version.txt";
 
 	/**
@@ -53,15 +56,16 @@ public class LoginActivity extends Activity {
     // UI references.
     private WebView webView1;
     
-    private class MyChromeWebViewClient extends WebChromeClient {
-
+    /**
+     * WebChromeClient subclass handles UI-related calls
+     * Note: think chrome as in decoration, not the Chrome browser
+     */
+    public class GeoWebChromeClient extends WebChromeClient {
         @Override
-        public void onProgressChanged(WebView view, int progress) {
-            // Activities and WebViews measure progress with different scales.
-            // The progress meter will automatically disappear when we reach 100%
-        }
-
-        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+        public void onGeolocationPermissionsShowPrompt(String origin,
+                GeolocationPermissions.Callback callback) {
+            // Always grant permission since the app itself requires location
+            // permission and the user has therefore already granted it
             callback.invoke(origin, true, false);
         }
     }
@@ -75,24 +79,9 @@ public class LoginActivity extends Activity {
         webView1 = (WebView) findViewById(R.id.webView1);
         WebSettings webSettings = webView1.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView1.setWebChromeClient(new MyChromeWebViewClient());
-        webView1.setWebViewClient(new WebViewClient() {
-        	@Override
-        	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        		//check if the url matched the url loaded via webview.loadUrl()
-                if (checkMatchedLoadedURL(url)) {
-                    return false;
-                } else {
-                    LoginActivity.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-                }
-        	}
+        webSettings.setGeolocationEnabled(true);
 
-			private boolean checkMatchedLoadedURL(String url) {
-				return url.contains("www.lojack-app.com.ar");
-			}
-        });
-        
+        webView1.setWebChromeClient(new GeoWebChromeClient());
         webView1.setWebViewClient(new WebViewClient() {
         	@Override
         	public boolean shouldOverrideUrlLoading(WebView view, String url) {
