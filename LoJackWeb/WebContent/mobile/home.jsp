@@ -31,7 +31,7 @@ function enterPrevent() {
 }
 </script>
 <style type="text/css">
-#laRuedita { top:25%; }
+#laRuedita { top:20%; }
 #flyingObjectContainer { width:50%; margin:0 auto; }
 #logoIndex { width:50%; top:75%; margin:0 auto; }
 @media only screen and (max-height : 320px) {
@@ -46,6 +46,16 @@ function enterPrevent() {
 	#logoIndex {width:25%; top:75%; margin:0 auto; }
 }
 </style>
+<script type="text/javascript">
+function chbg(title, subTitle) {
+	
+	var id = document.getElementById("title");
+	id.innerHTML=title;
+	
+	var id = document.getElementById("subTitle");
+	id.innerHTML=subTitle;
+}
+</script>
 </head>
 <body>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
@@ -58,28 +68,33 @@ function enterPrevent() {
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<div id="iconoLogout"><a href="./logoutMobile.do" title="Salir del sistema"><img src="../images/null.gif" /></a></div>
-		<div id="iconoParkings"><a href="../productoParkings.jsp" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="../images/null.gif" /></a></div>
-		<div id="iconoProfile"><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div>
+		<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<div id="iconoParkings"><a href="../productoParkings.jsp"onmouseover="chbg('Parking', 'Estacioná en CABA')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<!-- div id="iconoProfile"><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div -->
 		<% if (websiteUser.isPreventUser()) { %>
 			<% if (websiteUser.isPreventLogged()) { %>
-				<div id="iconoCar"><a href="../productoPrevent.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
+				<div id="iconoCar"><a href="../productoPrevent.jsp" onmouseover="chbg('Car', 'Ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 			<% } else { %>
-				<div id="iconoCar"><a id="loginPreventLink" href="javascript:enterPrevent()" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
+				<div id="iconoCar"><a id="loginPreventLink" href="javascript:enterPrevent()" onmouseover="chbg('Car', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 			<% } %>
 		<% } else { %>
-			<div id="iconoCar"><a href="videoPageCar.jsp" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
+			<div id="iconoCar"><a href="videoPageCar.jsp" onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<% if (websiteUser.isHomeUser()) { %>
-			<div id="iconoHome"><a href="../productoHome.jsp" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
+			<div id="iconoHome"><a href="../productoHome.jsp" onmouseover="chbg('Home', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
-			<div id="iconoHome"><a href="videoPageHome.jsp" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
+			<div id="iconoHome"><a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<% if (websiteUser.isPetUser()) { %>
-			<div id="iconoPets"><a href="javascript:enterPets()" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="javascript:enterPets()" onmouseover="chbg('Pet', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
-			<div id="iconoPets"><a href="videoPagePets.jsp" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
+			<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pet', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
+		<div id="iconoTv"><a href="#" title="Pronto"><img src="../images/null.gif" /></a></div>
+		<div id="rdCentral">
+			<h2 id="title">Seleccione</h2>
+			<h3 id="subTitle">Una Aplicación</h3>
+		</div>
 	</div>
 </div>
 <div id="flyingObjectContainer"> 

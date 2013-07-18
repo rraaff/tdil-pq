@@ -1,62 +1,116 @@
-<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
-<div id="laRuedita">
-	<div class="fakeRuedita">
-		<%if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoLogout"><a href="logout.do" title="Salir del sistema"><img src="images/null.gif" /></a></div>
-		<%} else { %>
-			<div id="iconoLogin"><a href="#" id="rueditaLogin" onclick="javascript:login();" title="Ingresar ahora"><img src="images/null.gif" /></a></div>
-		<%} %>
+<section id="nmCentral">
+	<div id="nmWrapper">
+		<div id="nmMainObjects">
+			<div id="nmLogo"><img src="images/skin_lj_rl/logos/lo-jack_2.png" /></div>
+			<div id="nmTelefono"><!--  align="center" -->
+				<div id="nmRuedita">
+					<ul>
+						<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
+						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
+							<!-- logueado y con acceso a home -->
+							<li id="liHome" class="home"><a class="rdHome" href="productoHome.jsp" onmouseover="chbg('liHome', 'home', 'over', 'home', 'ingrese ahora')" onmouseout="chbg('liHome', 'home', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} else { %>
+							<!-- no logueado o sin acceso a home -->
+							<li id="liHome" class="home"><a class="rdHome" href="#" onclick="javascript:showVideo1('home');" onmouseover="chbg('liHome', 'home', 'over', 'home', 'Mirá el aviso')" onmouseout="chbg('liHome', 'home', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} %>
+						
+						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+							<% if (usingMobile || isAndroid) { %>
+								<!-- logueado y con acceso a prevent -->
+								<% if (websiteUser.isPreventLogged()) { %>
+									<li id="liCars" class="car" ><a class="rdCar" href="./productoPrevent.jsp" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+								<% } else { %>
+									<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+								<% } %>
+							<% } else { %>
+								<li id="liCars" class="car" ><a class="rdCar" href="#" id="enterPrevent" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+							<% }  %>
+						<%} else { %>
+							<!-- no logueado o sin acceso a prevent -->
+							<li id="liCars" class="car" ><a class="rdCar" href="#" onclick="javascript:showVideo1('car');" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Mirá el aviso')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<% } %>
+						
+						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
+							<!-- logueado y con acceso a pet -->
+							<li id="liPets" class="pets"><a class="rdPets" href="#" id="enterPets" onmouseover="chbg('liPets', 'pets', 'over', 'Pets', 'ingrese ahora')" onmouseout="chbg('liPets', 'pets', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} else { %>
+							<!-- no logueado o sin acceso a pet -->
+							<li id="liPets" class="pets"><a class="rdPets" href="#" onclick="javascript:showVideo1('pets');" onmouseover="chbg('liPets', 'pets', 'over', 'Pets', 'Mirá el Aviso')" onmouseout="chbg('liPets', 'pets', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} %>
 
-		<%if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoParkings"><a href="productoParkings.jsp" title="Utilizá la App gratuita y encontrá donde estacionar en CABA"><img src="images/null.gif" /></a></div>
-		<%} else { %> 
-			<div id="iconoParkings"><a href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="images/null.gif" /></a></div>
-		<%} %>
+						<%if (websiteUser != null && websiteUser.isLogged()) { %>
+							<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp" onclick="javascript:parkingsNotLogged();" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en CABA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} else { %>
+							<li id="liPark" class="park"><a class="rdPark" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en CABA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} %>
 
-		<%if (websiteUser != null && websiteUser.isLogged()) { %>
-			<div id="iconoProfile"><a href="#" onclick="javascript:updatePerson();" title="Modificá tus datos"><img src="images/null.gif" /></a></div>
-		<%} else { %>
-			<div id="iconoProfile"><a href="#" onclick="javascript:register();" id="register" title="Registrate gratis"><img src="images/null.gif" /></a></div>
-		<%} %>
+						<li id="liTvtv" class="tv"  ><a class="rdTv" href="#"><img src="images/null.gif" /></a></li>
 
-		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-			<% if (usingMobile || isAndroid) { %>
-				<!-- logueado y con acceso a prevent -->
-				<% if (websiteUser.isPreventLogged()) { %>
-					<div id="iconoCar"><a href="./productoPrevent.jsp" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
+						<%if (websiteUser != null && websiteUser.isLogged()) { %>
+							<li id="liLogg" class="logout"><a class="rdLoginLogout" href="logout.do" onmouseover="chbg('liLogg', 'logout', 'over', 'Salir', 'del sitio')" onmouseout="chbg('liLogg', 'logout', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} else { %>
+							<li id="liLogg" class="login"><a class="rdLoginLogout" href="#" id="rueditaLogin" onclick="javascript:login();" onmouseover="chbg('liLogg', 'login', 'over', 'Ingresá', 'con tus datos')" onmouseout="chbg('liLogg', 'login', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<%} %>
+
+					</ul>
+				</div>
+				<div id="nmPhoneImgContainer"><img src="images/skin_lj_rl/backs/phone_h.png" /></div>
+			</div>
+			<div id="nmWelcomeText">
+				<h1>Viví­ LoAPP 1.1</h1>
+				<p>El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</p>
+			</div>
+		</div>
+		<div id="rdCentral">
+			<h2 id="title">Seleccione</h2>
+			<h3 id="subTitle">Una Aplicación</h3>
+		</div>
+		<div id="rdBase"><img src="images/skin_lj_rl/newWheel/base_452.png" /></div>
+		<div id="rdPhotoSlider"><img src="images/skin_lj_rl/sliders/couple_1.jpg" /></div>
+		<div id="nmSombraTel"><img src="images/skin_lj_rl/backs/sombraTelefonoH.png" /></div>
+	</div>
+</section>
+
+<section id="nmRuedaHelper">
+	<div id="rhWrapper">
+		<ul>
+			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
+				<!-- logueado y con acceso a home -->
+				<li><a class="home" href="productoHome.jsp">home</a></li>
+			<%} else { %>
+				<!-- no logueado o sin acceso a home -->
+				<li><a class="home" href="#" onclick="javascript:showVideo1('home');">home</a></li>
+			<%} %>
+
+			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+				<% if (usingMobile || isAndroid) { %>
+					<!-- logueado y con acceso a prevent -->
+					<% if (websiteUser.isPreventLogged()) { %>
+						<li><a class="car" href="./productoPrevent.jsp">car</a></li>
+					<% } else { %>
+						<li><a class="car" href="javascript:loginPrevent()">car</a></li>
+					<% } %>
 				<% } else { %>
-					<div id="iconoCar"><a href="javascript:loginPrevent()" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
-				<% } %>
-			<% } else { %>
-				<div id="iconoCar"><a href="#" id="enterPrevent" title="Administrar tus autos"><img src="images/null.gif" /></a></div>
-			<% }  %>
-		<%} else { %>
-			<!-- no logueado o sin acceso a prevent -->
-			<div id="iconoCar"><a href="#" onclick="javascript:showVideo1('car');" title="Más sobre CAR"><img src="images/null.gif" /></a></div>
-		<% } %>
+					<li><a class="car" href="#" id="enterPrevent" >car</a></li>
+				<% }  %>
+			<%} else { %>
+				<!-- no logueado o sin acceso a prevent -->
+				<li><a class="car" href="#" onclick="javascript:showVideo1('car');">car</a></li>
+			<% } %>
 
-		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
-			<!-- logueado y con acceso a home -->
-			<div id="iconoHome"><a href="productoHome.jsp" title="Administrá tus alarmas, luces y cámaras"><img src="images/null.gif" /></a></div>
-		<%} else { %>
-			<!-- no logueado o sin acceso a home -->
-			<div id="iconoHome"><a href="#" onclick="javascript:showVideo1('home');" title="Más sobre HOME"><img src="images/null.gif" /></a></div>
-		<%} %>
+			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
+				<!-- logueado y con acceso a pet -->
+				<li><a class="pets" href="#" id="enterPets" >pets</a></li>
+			<%} else { %>
+				<!-- no logueado o sin acceso a pet -->
+				<li><a class="pets" href="#" onclick="javascript:showVideo1('pets');">pets</a></li>
+			<%} %>
 
-		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
-			<!-- logueado y con acceso a pet -->
-			<div id="iconoPets"><a href="#" id="enterPets" title="Cuidá a tus mascostas"><img src="images/null.gif" /></a></div>
-		<%} else { %>
-			<!-- no logueado o sin acceso a pet -->
-			<div id="iconoPets"><a href="#" onclick="javascript:showVideo1('pets');" title="Más sobre PETS"><img src="images/null.gif" /></a></div>
-		<%} %>
+			<%if (websiteUser != null && websiteUser.isLogged()) { %>
+				<li><a class="park" href="productoParkings.jsp" onclick="javascript:parkingsNotLogged();">parking</a></li>
+			<%} else { %>
+				<li><a class="park" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();">parking</a></li>
+			<%} %>
+		</ul>
 	</div>
-	<div id="centralRuedita">
-		<span id="centralRueditaLogin" class="centralRueditaContent">Ingresar</span>
-		<span id="centralRueditaParkings" class="centralRueditaContent">Parkings</span>
-	</div>
-</div>
-<div id="losIconos"></div>
-<div id="elTelefono" align="center"><img src="images/skin_lj_rl/backs/phone.png" /></div>
-<div id="laSombreaT"><img src="images/skin_lj_rl/backs/sombraTelefono.png" /></div>
-<div id="welcomeText"></div>
+</section>
