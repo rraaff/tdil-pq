@@ -1,6 +1,7 @@
 package com.tdil.lojack.struts.action;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,12 +18,14 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.EditProfileForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.utils.WebsiteUserUtils;
+import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.actions.AjaxAction;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 import com.tdil.validations.ValidationErrors;
 
 public class SaveProfileAction extends AjaxAction {
@@ -46,7 +49,13 @@ public class SaveProfileAction extends AjaxAction {
 			// TODO retornar los errores en formato ajax
 		} else {
 			try {
-				aForm.save();
+				GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
+					@Override
+					public void executeInTransaction() throws SQLException, ValidationException {
+						aForm.save();
+						
+					}
+				});
 				HashMap<String, Object> result = new HashMap<String, Object>();
 				result.put("result", "OK");
 				EditProfileForm editProfile = (EditProfileForm)aForm;

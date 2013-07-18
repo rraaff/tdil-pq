@@ -148,7 +148,7 @@
       This element was generated on Fri Jul 05 18:45:21 ART 2013.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT @@IDENTITY
     </selectKey>
     insert into dbo.BLOB_DATA (dataType, filename, deleted, content
       )
