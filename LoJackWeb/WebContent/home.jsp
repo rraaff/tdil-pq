@@ -17,17 +17,19 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen">
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
 <%@ include file="includes/headLogged.jsp" %>
 <script>
 	$(document).ready(
@@ -44,6 +46,8 @@
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
+	
+	<%@ include file="includes/nuevaRuedita.jspf" %>
 </script>
 </head>
 <body>
@@ -57,29 +61,16 @@
 					<% } else { %>
 						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
 					<% } %></a></li>
-				<li><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
+				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
+				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
+				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 			</ul>
 		</div>
 	</div>
 </header>
-<%@ include file="includes/laRuedita.jsp" %>
 
-<div id="flyingObjectContainer"> 
-	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
-	
-	<!-- div id="socialSingleSignOn">
-		<div><span class="textInside">Ingresá con tus cuentas</span></div>
-		<div>
-			<ul>
-				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-				<li class="sotwitter"><a href="< %=ThalamusClientBeanFacade.getTwitterLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
-			</ul>
-		</div>
-	</div-->
-</div>
+<%@ include file="includes/laRuedita.jsp" %>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>

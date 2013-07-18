@@ -22,21 +22,21 @@
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <% if (usingMobile || isAndroid) { %>
-	<link href="css/index_modales.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/bootstrapSwitch.css"		rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/unified_mobile.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/homeProduct_mobile.css"		rel="stylesheet" media="screen" type="text/css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrapSwitch.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/unified_mobile.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/homeProduct_mobile.css" />
 <% } else { %>
-	<link href="css/reset-styles.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/sizers.css"					rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/bootstrap.min.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/bootstrap-combined.min.css" rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/bootstrapSwitch.css"		rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/mediaQueries.css"			rel="stylesheet" media="screen" type="text/css"  />
-	<link href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/index_modales.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/index_social.css"			rel="stylesheet" media="screen" type="text/css" />
-	<link href="css/copyright.css"				rel="stylesheet" media="screen" type="text/css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap-combined.min.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrapSwitch.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <% } %>
 <style type="text/css">
 #productsMenu ul li.tabHome {

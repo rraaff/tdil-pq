@@ -70,15 +70,15 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 			<label class="w3">Teléfono</label>
 		</fieldset>
 		<fieldset>
-			<label class="w1">Alertas</label>
+			<label class="w1">Línea 1</label>
 			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" /></label>
 		</fieldset>
 		<fieldset>
-			<label class="w1">Siniestros</label>
+			<label class="w1">Línea 2</label>
 			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" /></label>
 		</fieldset>
 		<fieldset>
-			<label class="w1">Otros</label>
+			<label class="w1">Línea 3</label>
 			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="otherPhone" /></label>
 		</fieldset>
 	</div>

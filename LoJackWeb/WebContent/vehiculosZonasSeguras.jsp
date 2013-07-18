@@ -68,7 +68,7 @@ function postSaveSpeedLimits(data) {
 	<div id="tableStyle">
 			<fieldset class="tableHeader">
 				<label class="w1">Acción</label>
-				<label class="w3">Teléfono</label>
+				<label class="w3">Nombre de zona</label>
 			</fieldset>
 			<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
 				<fieldset>

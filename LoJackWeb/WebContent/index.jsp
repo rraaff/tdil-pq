@@ -46,20 +46,19 @@ response.addCookie(ecookie1);
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/home_styles.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" media="@media only screen and (max-width : 480px) and (min-width : 1568px)" href="css/laruedita_animation.css" rel="stylesheet" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
 <%@ include file="includes/headNotLogged.jsp" %>
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
@@ -366,6 +365,8 @@ function parkingsNotLogged() {
 	centerLayer($(window), $( "#centradorModalesParkingNo" ));
 	return false;
 }
+
+	<%@ include file="includes/nuevaRuedita.jspf" %>
 </script>
 
 </head>
@@ -378,27 +379,14 @@ function parkingsNotLogged() {
 				<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
 				<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
-				<!-- li><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span>Ingresá con Facebook</span></a></li>
-				<li><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span>Ingresá con Twitter</span></a></li-->
+				<li><a class="fb" href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span></span></a></li>
+				<li><a class="tw" href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span></span></a></li>
 			</ul>
 		</div>
 	</div>
 </header>
-<%@ include file="includes/laRuedita.jsp" %>
 
-<div id="flyingObjectContainer"> 
-	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
-	
-	<!-- div id="socialSingleSignOn">
-		<div><span class="textInside">Ingresá con tus cuentas</span></div>
-		<div>
-			<ul>
-				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-				<li class="sotwitter"><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
-			</ul>
-		</div>
-	</div-->
-</div>
+<%@ include file="includes/laRuedita.jsp" %>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>

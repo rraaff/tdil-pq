@@ -22,7 +22,7 @@ $( "#closeSelectVehicleForMapLayer" ).click(function() {
 <div id="tableStyle">
 	<fieldset class="tableHeader">
 		<label class="w1">Patente</label>
-		<label class="w2">Acciones</label>
+		<label class="w2">Localizar</label>
 	</fieldset>
 	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
 		<fieldset>
