@@ -304,6 +304,27 @@
 		</copy>
 		<copy file="./database-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/db-sqlserver.sql">
 		</copy>
+		
+		<mkdir dir="${project.name.upper}.tmp/camera-server" />
+		<jar destfile="${project.name.upper}.tmp/camera-server/camera-server.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="com.tdil.lojack.camera.CameraServer"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="../../LoJackCameraStandAlone/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../LoJackCameraStandAlone/log4j-1.2.16.jar"/>
+            <fileset dir="../../Camera/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../Camera/commons-codec.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../LoJackCameraStandAlone/commons-codec.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../LoJackCameraStandAlone/commons-io-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="../../LoJackCameraStandAlone/commons-lang.jar"/>
+        </jar>
+		<copy file="../../LoJackCameraStandAlone/config.properties" tofile="${project.name.upper}.tmp/camera-server/config.properties">
+		</copy>
+		<copy file="../../LoJackCameraStandAlone/log4j.xml" tofile="${project.name.upper}.tmp/camera-server/log4j.xml">
+		</copy>
+		<copy file="../../LoJackCameraStandAlone/run.sh" tofile="${project.name.upper}.tmp/camera-server/run.sh">
+		</copy>
 	</target>
 	
 	<!-- build para lojack -->
