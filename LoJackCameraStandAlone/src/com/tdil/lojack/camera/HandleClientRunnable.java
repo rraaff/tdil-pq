@@ -39,16 +39,18 @@ public class HandleClientRunnable implements Runnable {
 	}
 	
 	private static void execute(Socket s) {
-		if (CameraServer.Log.isDebugEnabled()) {
-			CameraServer.Log.debug("handling connection for " + s.getInetAddress());
-		}
+		if (CameraServer.Log.isInfoEnabled()) {
+			CameraServer.Log.info("handling connection for " + s.getInetAddress());
+		} 
 		BufferedReader in = null;
 		OutputStream out = null;
 		ByteArrayInputStream byteArrayInputStream = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			String inputLine = in.readLine().trim();
-			
+			if (CameraServer.Log.isDebugEnabled()) {
+				CameraServer.Log.debug("received " + inputLine);
+			}
 			String parameters[] = inputLine.split(",");
 			String username = parameters[0];
 			String password = parameters[1];
@@ -66,9 +68,6 @@ public class HandleClientRunnable implements Runnable {
 			camera.setReadTimeOut(CameraServer.readTimeOut);
 			out = s.getOutputStream();
 			if (IMG_COMMAND.equals(command)) {
-				if (CameraServer.Log.isDebugEnabled()) {
-					CameraServer.Log.debug("img command");
-				}
 				byteArrayInputStream = camera.nextFrame();
 				if (byteArrayInputStream != null) {
 					IOUtils.copy(byteArrayInputStream, out);
@@ -76,32 +75,23 @@ public class HandleClientRunnable implements Runnable {
 					out.close();
 				}
 			}
+			if (CameraServer.Log.isInfoEnabled()) {
+				CameraServer.Log.info(command + " command");
+			}
 			if (LEFT_COMMAND.equals(command)) {
-				if (CameraServer.Log.isDebugEnabled()) {
-					CameraServer.Log.debug("left command");
-				}
 				camera.left();
 			}
 			if (RIGHT_COMMAND.equals(command)) {
-				if (CameraServer.Log.isDebugEnabled()) {
-					CameraServer.Log.debug("right command");
-				}
 				camera.right();
 			}
 			if (UP_COMMAND.equals(command)) {
-				if (CameraServer.Log.isDebugEnabled()) {
-					CameraServer.Log.debug("up command");
-				}
 				camera.up();
 			}
 			if (DOWN_COMMAND.equals(command)) {
-				if (CameraServer.Log.isDebugEnabled()) {
-					CameraServer.Log.debug("down command");
-				}
 				camera.down();
 			}
-			if (CameraServer.Log.isDebugEnabled()) {
-				CameraServer.Log.debug("execution finished");
+			if (CameraServer.Log.isInfoEnabled()) {
+				CameraServer.Log.info("execution finished");
 			}
 		} catch (IOException ioe) {
 			throw new RuntimeException();
