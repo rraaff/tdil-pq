@@ -73,6 +73,9 @@ function up() {
 				<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 					url: "<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>moveCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&dir=up",
 				<% } %>
+				<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+					url: "./moveCameraSocket?dir=up",
+				<% } %>
 				success: function(data) {
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 					$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
@@ -82,6 +85,9 @@ function up() {
 					<% } %>
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 						$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+					<% } %>
+					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+						$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 					<% } %>
 			 },
 				error: function() {
@@ -101,6 +107,9 @@ function down() {
 			<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 				url: "<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>moveCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&dir=down",
 			<% } %>
+			<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+				url: "./moveCameraSocket?dir=down",
+			<% } %>
 			success: function(data) {
 				<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 				$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
@@ -110,6 +119,9 @@ function down() {
 				<% } %>
 				<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 					$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+				<% } %>
+				<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+					$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 				<% } %>
 		 },
 			error: function() {
@@ -129,6 +141,9 @@ function left() {
 		<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 			url: "<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>moveCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&dir=left",
 		<% } %>
+		<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+			url: "./moveCameraSocket?dir=left",
+		<% } %>
 		success: function(data) {
 			<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 			$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
@@ -138,6 +153,9 @@ function left() {
 			<% } %>
 			<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 				$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+			<% } %>
+			<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+				$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 			<% } %>
 	 },
 		error: function() {
@@ -157,6 +175,9 @@ function right() {
 	<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 		url: "<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>moveCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&dir=right",
 	<% } %>
+	<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+		url: "./moveCameraSocket?dir=right",
+	<% } %>
 	success: function(data) {
 		<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 		$('#cameraImg').attr('src', './viewCamera?img=' + Math.random());
@@ -166,6 +187,9 @@ function right() {
 		<% } %>
 		<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 			$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+		<% } %>
+		<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+			$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 		<% } %>
  	},
 	error: function() {
@@ -226,6 +250,9 @@ function right() {
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 						<img id="cameraImg" src="<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>">
 					<% } %>
+					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+						<img id="cameraImg" src="./viewCameraSocket">
+					<% } %>
 					<div class="controlsBasicView">
 						<a href="javascript:left()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
 						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
@@ -243,6 +270,9 @@ function right() {
 						<% } %>
 						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeExternal()) { %>
 							$('#cameraImg').attr('src', '<%=com.tdil.lojack.utils.LoJackConfig.getCameraMobileExternalUrl()%>viewCameraStateless?url=<%=cameraForm.getUrl()%>&username=<%=cameraForm.getUsername()%>&password=<%=cameraForm.getPassword()%>&model=<%=cameraForm.getModel()%>&img=' + Math.random());
+						<% } %>
+						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
+							$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 						<% } %>
 							
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);

@@ -47,6 +47,7 @@ public class LoJackConfig extends SystemConfig {
 	public static final String CAMERA_MOBILE_LOCAL = "local";
 	public static final String CAMERA_MOBILE_PROXY = "proxy";
 	public static final String CAMERA_MOBILE_EXTERNAL = "external";
+	public static final String CAMERA_MOBILE_SOCKET = "socket";
 
 	private static String FRONT_SERVER;
 
@@ -60,12 +61,14 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static ProxyConfiguration HTTP_PROXY;
 	private static ProxyConfiguration HTTPS_PROXY;
+	private static ProxyConfiguration SOCKS_PROXY;
 	
 	private static int cameraConnectTimeOut = 2000;
 	private static int cameraReadTimeOut = 2000;
 	
 	private static String cameraMobileMode;
 	private static String cameraMobileExternalUrl;
+	private static ProxyConfiguration cameraMobileSocket;
 	
 	private static String videocar = "http://www.youtube.com/embed/5Xe5pODPq1I";
 	private static String videohome = "http://www.youtube.com/embed/Iz_VvsFwXQI";
@@ -188,6 +191,15 @@ public class LoJackConfig extends SystemConfig {
 			getLog().fatal("Https proxy is " + httpproxy);
 		} else {
 			getLog().fatal("No https proxy");
+		}
+		
+		String socksproxy = SystemPropertyUtils.getSystemPropertValue("proxy.socks");
+		if (!StringUtils.isEmpty(socksproxy)) {
+			String proxyConf[] = socksproxy.split(":");
+			setSOCKS_PROXY(new ProxyConfiguration(proxyConf[0], Integer.valueOf(proxyConf[1])));
+			getLog().fatal("Socks proxy is " + socksproxy);
+		} else {
+			getLog().fatal("No socks proxy");
 		}
 		
 
@@ -453,6 +465,12 @@ public class LoJackConfig extends SystemConfig {
 		setCameraMobileExternalUrl(cameraMobileExternalUrl);
 		getLog().fatal("Camera mobile mode external url is " + cameraMobileExternalUrl);
 		
+		String cameraMobileSocket = SystemPropertyUtils.getSystemPropertValue("camera.mobile.socket");
+		if (!StringUtils.isEmpty(cameraMobileSocket)) {
+			String proxyConf[] = cameraMobileSocket.split(":");
+			setCameraMobileSocket(new ProxyConfiguration(proxyConf[0], Integer.parseInt(proxyConf[1])));
+		} 
+		getLog().fatal("Camera mobile socket is " + getCameraMobileSocket());
 		
 		IPCamera.setLogger(new CameraLog4jLogger());
 
@@ -662,6 +680,9 @@ public class LoJackConfig extends SystemConfig {
 	public static boolean isCameraMobileModeExternal() {
 		return CAMERA_MOBILE_EXTERNAL.equals(getCameraMobileMode());
 	}
+	public static boolean isCameraMobileModeSocket() {
+		return CAMERA_MOBILE_SOCKET.equals(getCameraMobileMode());
+	}
 
 	public static String getCameraMobileMode() {
 		return cameraMobileMode;
@@ -693,6 +714,22 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setShowEmailNotification(boolean showEmailNotification) {
 		LoJackConfig.showEmailNotification = showEmailNotification;
+	}
+
+	public static ProxyConfiguration getCameraMobileSocket() {
+		return cameraMobileSocket;
+	}
+
+	public static void setCameraMobileSocket(ProxyConfiguration cameraMobileSocket) {
+		LoJackConfig.cameraMobileSocket = cameraMobileSocket;
+	}
+
+	public static ProxyConfiguration getSOCKS_PROXY() {
+		return SOCKS_PROXY;
+	}
+
+	public static void setSOCKS_PROXY(ProxyConfiguration sOCKS_PROXY) {
+		SOCKS_PROXY = sOCKS_PROXY;
 	}
 
 }
