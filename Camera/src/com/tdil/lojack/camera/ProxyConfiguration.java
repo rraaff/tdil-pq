@@ -23,4 +23,9 @@ public class ProxyConfiguration {
 	public void setPort(int port) {
 		this.port = port;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getServer() + ":" + this.getPort();
+	}
 }
