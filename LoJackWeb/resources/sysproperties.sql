@@ -1,5 +1,6 @@
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.http','localhost:9090','proxy.http',1);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.https','localhost:9091','proxy.https',1);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.http','localhost:9092','proxy.http',1);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.https','localhost:9092','proxy.https',1);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.socks','localhost:9090','proxy.socks',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/LoJackWeb','front.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
@@ -36,7 +37,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.connectTimeOut','2000','camera.connectTimeOut',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.readTimeOut','2000','camera.readTimeOut',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.mode','local','camera.mobile.mode [local,proxy,external]',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.mode','local','camera.mobile.mode [local,proxy,external,socket]',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.socket','localhost:8800','Server y socket de conexion',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.external.url','http://23.23.84.70/LoJackWeb/','camera.mobile.external.url',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.refresh.time','1000','job.refresh.time',0);
