@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project LoJackCameraStandAlone">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/home/mgodoy/temp/camera-server.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="com.tdil.lojack.camera.CameraServer"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="/home/mgodoy/icarus/workspace/thalamus/LoJackCameraStandAlone/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/mgodoy/icarus/workspace/thalamus/LoJackCameraStandAlone/log4j-1.2.16.jar"/>
+            <fileset dir="/home/mgodoy/icarus/workspace/thalamus/Camera/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/mgodoy/icarus/workspace/thalamus/Camera/commons-codec.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/mgodoy/icarus/workspace/thalamus/LoJackCameraStandAlone/commons-codec.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/mgodoy/icarus/workspace/thalamus/LoJackCameraStandAlone/commons-io-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="/home/mgodoy/icarus/workspace/thalamus/LoJackCameraStandAlone/commons-lang.jar"/>
+        </jar>
+    </target>
+</project>

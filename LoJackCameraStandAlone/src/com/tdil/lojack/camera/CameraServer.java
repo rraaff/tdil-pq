@@ -72,8 +72,7 @@ public class CameraServer {
 				executor.execute(new HandleClientRunnable(s));
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			CameraServer.Log.error(e.getMessage(), e);
 		}
 	}
 

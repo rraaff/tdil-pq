@@ -1,0 +1,1 @@
+nohup java -Xmx128m -jar camera-server.jar config.properties &

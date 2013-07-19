@@ -33,8 +33,7 @@ public class HandleClientRunnable implements Runnable {
 			execute(s);
 			s.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			CameraServer.Log.error(e.getMessage(), e);
 		}
 	}
 	
