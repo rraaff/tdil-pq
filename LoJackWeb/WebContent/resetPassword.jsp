@@ -107,11 +107,17 @@ function centerLayer(objWin, objLayer) {
 				<fieldset>
 					<label>Número</label>
 					<html:text name="ResetPasswordForm" property="username"/>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%>
 				</fieldset>
 				<%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%>
 				<fieldset>
 					<label>Clave</label>
 					<html:password name="ResetPasswordForm" property="password"/>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%>
+				</fieldset>
+				<fieldset>
+					<label>Repetir clave</label>
+					<html:password name="ResetPasswordForm" property="retypePassword"/>
 				</fieldset>
 				<fieldset>
 					<button type="submit" id="submitregister" class="indexButtonBase">Modificar</button>

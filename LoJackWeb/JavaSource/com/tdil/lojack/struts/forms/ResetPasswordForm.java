@@ -19,6 +19,7 @@ import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.json.beans.ResetPasswordBean;
+import com.tdil.validations.FieldValidation;
 
 public class ResetPasswordForm extends ThalamusForm {
 
@@ -28,6 +29,7 @@ public class ResetPasswordForm extends ThalamusForm {
 	private int documentType = 1;
 	private String username;
 	private String password;
+	private String retypePassword;
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(ResetPasswordForm.class);
 	
@@ -40,8 +42,14 @@ public class ResetPasswordForm extends ThalamusForm {
 	
 	
 	@Override
-	public void basicValidate(ValidationError validationError) {
-		
+	public void basicValidate(ValidationError error) {
+		FieldValidation.validateNumber(this.getUsername(), RegisterForm.document_key, 1, Integer.MAX_VALUE, error);
+		FieldValidation.validateText(this.getPassword(), RegisterForm.password_key, 20, error);
+		if (!org.apache.commons.lang.StringUtils.isEmpty(this.getPassword())) {
+			if (!this.getPassword().equals(this.getRetypePassword())) {
+				error.setFieldError(RegisterForm.password_key, RegisterForm.PASSWORDS_NOT_EQUAL);
+			}
+		}
 	}
 	
 	@Override
@@ -99,6 +107,12 @@ public class ResetPasswordForm extends ThalamusForm {
 	}
 	public void setDocumentType(int documentType) {
 		this.documentType = documentType;
+	}
+	public String getRetypePassword() {
+		return retypePassword;
+	}
+	public void setRetypePassword(String retypePassword) {
+		this.retypePassword = retypePassword;
 	}
 	
 }

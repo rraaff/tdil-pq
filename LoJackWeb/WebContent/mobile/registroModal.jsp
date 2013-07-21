@@ -113,6 +113,10 @@
 				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%>
 			</fieldset>
 			<fieldset>
+				<label>* Repetir clave</label>
+				<html:password name="RegisterFormMobile" property="retypePassword" />
+			</fieldset>
+			<fieldset>
 				<label>* Fecha de nacimiento</label>
 				<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 				<div class="dateHelper">

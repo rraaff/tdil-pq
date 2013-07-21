@@ -130,6 +130,9 @@ $(document).ready(
 				'email': {required: true, email: true},
 				'gender': {required: true},
 				'password': {required: true},
+				'retypePassword': {
+					equalTo: "input[name=password]"
+				},
 				'birthDate': {required: true}
 			},
 			messages: {	
@@ -141,7 +144,8 @@ $(document).ready(
 				'email': {required: "<span>Ingrese el email.</span>",
 					email: "<span>Ingrese un email valido.</span>"},
 				'gender': {required: "<span>Seleccione el sexo.</span>"},
-				'password': {required: "<span>Ingrese el password.</span>"},
+				'password': {required: "<span>Ingrese la clave.</span>"},
+				'retypePassword': {equalTo: "<span>Las claves no coinciden</span>"},
 				'birthDate': {required: "<span>Ingrese la fecha de nacimiento.</span>"}
 			},
 			submitHandler: function() {
@@ -485,6 +489,11 @@ function parkingsNotLogged() {
 						<div class="myRow errorField" style="display: none;" id="p.credential.password">
 							<div id="err.credential.password"></div>
 						</div>
+					</fieldset>
+					<fieldset>
+						<label class="ajuste">Repetir clave</label>
+						<html:password name="RegisterForm" property="retypePassword" />
+						<div class="errorInForm"></div>
 					</fieldset>
 					<fieldset>
 						<label class="ajuste">* Fecha de nac.</label>

@@ -64,6 +64,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 	private int documentType = 1;
 	private String document;
 	private String password;
+	private String retypePassword;
+	
 	private String firstName;
 	private String lastName;
 	private String birthDate;
@@ -113,6 +115,8 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 	public static final String documenttype_key = "RegisterForm.documenttype";
 	public static final String document_key = "RegisterForm.document";
 	public static final String email_key = "RegisterForm.email";
+	
+	public static final String PASSWORDS_NOT_EQUAL = "PASSWORDS_NOT_EQUAL";
 
 	@Override
 	public ValidationError validate() {
@@ -135,6 +139,11 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 		FieldValidation.validateId(this.getDocumentType(), documenttype_key, error);
 		FieldValidation.validateNumber(this.getDocument(), document_key, 1, Integer.MAX_VALUE, error);
 		FieldValidation.validateEmail(this.getEmail(), email_key, error);
+		if (!org.apache.commons.lang.StringUtils.isEmpty(this.getPassword())) {
+			if (!this.getPassword().equals(this.getRetypePassword())) {
+				error.setFieldError(password_key, PASSWORDS_NOT_EQUAL);
+			}
+		}
 		return error;
 	}
 
@@ -802,5 +811,13 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 
 	public void setOptIns(List<OptIn> optIns) {
 		this.optIns = optIns;
+	}
+
+	public String getRetypePassword() {
+		return retypePassword;
+	}
+
+	public void setRetypePassword(String retypePassword) {
+		this.retypePassword = retypePassword;
 	}
 }
