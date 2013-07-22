@@ -19,15 +19,20 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
-<link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/copyright.css" rel="stylesheet" />
-<link type="text/css" href="css/laruedita.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+
+<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
 <%@ include file="includes/head.jsp" %>
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
@@ -46,49 +51,31 @@ function register() {
 	centerLayer($(window), $( "#resetPassLayer" ));
 }
 </script>
-<!-- /*
-function centerLayer(objWin, objLayer) {
-	var top = (objWin.height() / 2) - (objLayer.height() / 2);
-	var left = (objWin.width() / 2) - (objLayer.width() / 2);
-	objLayer.css({
-		top: '0px',
-		left: '0px'
-	}).fadeIn(500);
-}*/ -->
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+div.errorInForm { width: 100%; float:left; }
+</style> 
 </head>
 <body onLoad="javascript:register();">
-<div id="menu" style="display:none;">
-	<ul class="menu">
-		<li class="first"><a href="#" class="parent"><span>Ingresa</span></a>
-			<div>
-				<ul>
-
-				</ul>
-			</div>
-		</li>
-	</ul>
-</div>
-<%@ include file="includes/laRuedita.jsp" %>
-
-<div id="flyingObjectContainer"> 
-	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
-	
-	<!-- div id="socialSingleSignOn">
-		<div><span class="textInside">Ingresá con tus cuentas</span></div>
-		<div>
+<header style="display:none;">
+	<div id="floatyMenu">
+		<div class="wrapper">
 			<ul>
-				<li class="sofacebook"><a href="< %=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"></a></li>
-				<li class="sotwitter"><a href="< %=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"></a></li>
+				<li></li>
 			</ul>
 		</div>
-	</div-->
-</div>
+	</div>
+</header>
+
+<%@ include file="includes/laRuedita.jsp" %>
+
+<%@ include file="includes/contactLayers.jspf" %>
+<%@ include file="includes/copyright.jsp" %>
 
 <!-- Edit password layer -->
 <div id="parkingsNotLoggedLayer" class="layerOnTop" style="display:none; z-index:1500;">
 	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
-		<div id="resetPassLayer" class="defaultLayerContent">
+		<div id="resetPassLayer" class="defaultLayerContent width380">
 			<h3>Crea una nueva clave</h3>
 			<div class="myRow">Completá los campos para modificar tu clave</div>
 			<html:form method="POST" action="/resetPassword">
@@ -107,13 +94,13 @@ function centerLayer(objWin, objLayer) {
 				<fieldset>
 					<label>Número</label>
 					<html:text name="ResetPasswordForm" property="username"/>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%>
+					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%></div>
 				</fieldset>
-				<%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%>
+				<div class="errorInForm"><%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%></div>
 				<fieldset>
 					<label>Clave</label>
 					<html:password name="ResetPasswordForm" property="password"/>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%>
+					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
 				</fieldset>
 				<fieldset>
 					<label>Repetir clave</label>
@@ -126,5 +113,6 @@ function centerLayer(objWin, objLayer) {
 		</div>
 	</div>
 </div>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+</body>
 </html>

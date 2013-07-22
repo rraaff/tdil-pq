@@ -605,7 +605,7 @@ textarea {
 		</div>
 	</div>
 </section>
-<%@ include file="includes/panicButton.jspf" %>
+<!-- % @  include file="includes/panicButton.jspf" % -->
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="logLayer" class="layerOnTop" style="display: none; z-index: 1500;">

@@ -745,6 +745,7 @@ function parkingsNotLogged() {
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+</body>
 </html>
 <% } %>

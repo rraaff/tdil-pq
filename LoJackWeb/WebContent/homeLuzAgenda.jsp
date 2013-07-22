@@ -306,7 +306,7 @@ textarea {
 		</div>
 	</div>
 </section>
-<%@ include file="includes/panicButton.jspf" %>
+<!-- % @  include file="includes/panicButton.jspf" % -->
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
