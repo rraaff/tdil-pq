@@ -112,7 +112,7 @@
       This element was generated on Fri Jul 05 18:45:21 ART 2013.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT @@IDENTITY
+      SELECT SCOPE_IDENTITY()
     </selectKey>
     insert into dbo.WEBSITEUSER (lojackUserId, homeUserId, petUserId, preventUserId, 
       id_avatar, ext_avatar)
@@ -126,7 +126,7 @@
       This element was generated on Fri Jul 05 18:45:21 ART 2013.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT @@IDENTITY
+      SELECT SCOPE_IDENTITY()
     </selectKey>
     insert into dbo.WEBSITEUSER
     <dynamic prepend="(">
