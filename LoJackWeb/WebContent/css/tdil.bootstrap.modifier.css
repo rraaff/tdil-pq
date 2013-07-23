@@ -561,6 +561,8 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	font-weight: bold;
 	line-height: 15px;
 	text-transform: uppercase;
+	width:auto;
+	padding-top:5px;
 	float:left;
 	clear: both;
 }
@@ -621,6 +623,33 @@ div.controlsBasicView img { padding:5px; margin: 0 5px; }
 	margin:0;
 }
 #panicButtton a { color:#fff; }
+
+button.panicButtons {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color:#d14641;
+	background-image:-moz-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
+	background-image:-webkit-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:-o-linear-gradient(top, #bd362f, #ee5f5b);
+	background-image:linear-gradient(to bottom, #bd362f, #ee5f5b);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
+	border-color:#ee5f5b #ee5f5b #e51d18;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	border-color:#d14641 #d14641 #cf7775;
+	color:#FFF;
+	font-size:15px;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	width:100%;
+	padding: 10px 0;
+	cursor:pointer;
+}
 /* PREVENT Y PARKINGS */
 #controls {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
