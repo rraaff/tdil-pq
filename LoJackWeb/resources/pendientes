@@ -1,3 +1,5 @@
+CBO-007 hecho
+
 tdil
 usu4r10td1l
 
@@ -28,13 +30,13 @@ NO BORRAR LOS PUNTOS DE LA LISTA: MARCALOS CUANDO ARRANCAN CON UN STATUS, EJEMPL
 DONE Revisar recupero de password, falta el tipo de documento, da errores al cerrar
 
 FORMULARIOS:
-DONE (a algunos les faltaria validaciones puntuales, pero en general esta)- Manejo de errores en mobile. Cuando no completabas un campo no dice nada. No aparece ningún mensaje de error.
-DONE - Falta el foco en número de DNI en formulario de contacto para la versión Mobile
+DONE (a algunos les faltaria validaciones puntuales, pero en general esta)- Manejo de errores en mobile. Cuando no completabas un campo no dice nada. No aparece ningï¿½n mensaje de error.
+DONE - Falta el foco en nï¿½mero de DNI en formulario de contacto para la versiï¿½n Mobile
 
 PRODUCTO HOME
 DONE - Ajustar caso de uso Luces: (Si esta on, switch / Si esta off, switch + random / Si esta random, solo 
 desactivar random / Si el estado es desconocido, que va? - los 4 botones.) 
-DONE (solo seccion home, lo necesitas en todos?) - El botón de Panico en todo el sitio. Mínimo en toda la sección HOME.
+DONE (solo seccion home, lo necesitas en todos?) - El botï¿½n de Panico en todo el sitio. Mï¿½nimo en toda la secciï¿½n HOME.
 - Camara:
 DONE (muestra el timestamp rojo si hubo error)  - Manejo de problemas de conexion con la camara, que no se freeze y muestre algun error si no puede conectarse
 DONE  - Que muestre el timestamp de la ultima actualizacion
@@ -42,11 +44,11 @@ DONE  - Que muestre el timestamp de la ultima actualizacion
   - mejora visual del applet
 
 PREVENT MOBILE
-- [DEPENDEMOS DE GIS] Me está pidiendo el password de prevent para entrar.
+- [DEPENDEMOS DE GIS] Me estï¿½ pidiendo el password de prevent para entrar.
 - ver posibilidad de hacer check y mostrar varios autos
 
 MOBILE
-Los errores del formulario de registración aparecen por fuera del div con el estilo. no puedo ponerle estilo al string
+Los errores del formulario de registraciï¿½n aparecen por fuera del div con el estilo. no puedo ponerle estilo al string
 	<div class="errorInForm"></div>
 	<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
 
@@ -68,17 +70,17 @@ checkthalamusup en todos lados
 PREVENT MOBILE
 - Al entrar a prevent mostrar mapa centrado en la posicion actual y que muestre el iconito con el rayo }
 (images/skin_lj_rl/webApp/parkings/myPosition.png)
-- [ DEPENDE DE LOJACK ] No hay obtención de la zona segura para dibujar, depende de implementacion de GeoSystems
+- [ DEPENDE DE LOJACK ] No hay obtenciï¿½n de la zona segura para dibujar, depende de implementacion de GeoSystems
 
 ************************************************************************************************************
 /////// ERRORES /////////////// ERRORES /////////////// ERRORES /////////////// ERRORES //////// ERRORES ///
 ************************************************************************************************************
 CAMARA
-DONE? le agregue un random a la url, seguro lo estaba cacheando- La cámara en mobile no me hace el refresh de la imagen. TEnía abierto el browser en la pc y en el teléfono 
-y ejecutaba los comandos desde el teléfono y se me refrescaba solamente en la pc.
-REGISTRACIÓN
+DONE? le agregue un random a la url, seguro lo estaba cacheando- La cï¿½mara en mobile no me hace el refresh de la imagen. TEnï¿½a abierto el browser en la pc y en el telï¿½fono 
+y ejecutaba los comandos desde el telï¿½fono y se me refrescaba solamente en la pc.
+REGISTRACIï¿½N
 DONE? - El combo de mes, en la fecha de nacimiento, cuando abre, arranca en ENERO y llega hasta MAYO 
-(mes corriente) de 2013. Lo que resulta lógico, pero es algo incómodo para la usabilidad. 
+(mes corriente) de 2013. Lo que resulta lï¿½gico, pero es algo incï¿½modo para la usabilidad. 
 Tuve que prefijar la fecha a 1/1/2012, te parece ok?
 
 ************************************************************************************************************

@@ -13,6 +13,6 @@ Collection<Alarm> alarms = AlarmsForm.getAlarms(websiteUser);
 --%><h4>Haga clic en la alarma en la que quiere enviar una señal de pánico</h4>
 
 <% for (Alarm alarm : alarms) { %>
-<button class="panicButtons" onClick="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', <%= alarm.getIdEntidad() %>)"><%= alarm.getIdEntidad() %> - <%=alarm.getDescription() %></button><hr> 
+<button class="panicButtons" onClick="javascript:doSendPanic('<%=StringEscapeUtils.escapeJavaScript(alarm.getDescription()) %>', <%= alarm.getIdEntidad() %>)"><%=alarm.getDescription() %></button><hr> 
 <% } %>
 <%@ include file="includes/catchModal.jspf" %>
