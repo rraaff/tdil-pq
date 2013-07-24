@@ -6,6 +6,8 @@ var sessionCheckIntervalID = window.setInterval(function () {
         success: function (result) {
         	$.each(result, function(index, item) {
         		if ($('#light-status-' + item.idEntidad + '-' + item.idLuz)) {
+        			$('#light-status-' + item.idEntidad + '-' + item.idLuz).removeClass();
+        			$('#light-status-' + item.idEntidad + '-' + item.idLuz).addClass('portaStatus status status-' + item.status);
         			$('#light-status-' + item.idEntidad + '-' + item.idLuz).prop('innerHTML', item.status);
         		}
         		if (item.unknown) {
