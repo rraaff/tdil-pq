@@ -1,6 +1,15 @@
 CBO-007 hecho
 BUG-003 colores de los estados, hecho, pasaba con las alarmas y las luces
 
+para hacer
+CBO-004
+El APK que embebe el browser vuelve a la pantalla de inicio cada vez que se cambia la orientación. Se da un ejemplo de aplicación en las referencias.
+
+CBO-005
+Debería usarse el botón “BACK” de Android para volver a la pantalla anterior dentro del APK, y no salir de la aplicación.
+
+
+
 tdil
 usu4r10td1l
 
