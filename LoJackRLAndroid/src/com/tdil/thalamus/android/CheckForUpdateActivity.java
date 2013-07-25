@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,6 +37,12 @@ public class CheckForUpdateActivity extends Activity {
 		getMenuInflater().inflate(R.menu.check_for_update, menu);
 		return true;
 	}
+	
+	@Override
+    public void onConfigurationChanged(Configuration newConfig) {
+    	// TODO Auto-generated method stub
+    	super.onConfigurationChanged(newConfig);
+    }
 
 	 /* This Thread checks for Updates in the Background */
     private Thread checkUpdate = new Thread() {
