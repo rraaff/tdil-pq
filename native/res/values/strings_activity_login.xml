@@ -1,0 +1,5 @@
+<resources>
+
+    <!-- Strings related to login -->
+    <string name="menu_go_home">Inicio</string>
+</resources>
