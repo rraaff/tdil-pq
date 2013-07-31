@@ -43,7 +43,7 @@ public class ResetPasswordForm extends ThalamusForm {
 	
 	@Override
 	public void basicValidate(ValidationError error) {
-		FieldValidation.validateNumber(this.getUsername(), RegisterForm.document_key, 1, Integer.MAX_VALUE, error);
+		FieldValidation.validateNumber(this.getUsername(), RegisterForm.document_key, 1, Long.MAX_VALUE, error);
 		FieldValidation.validateText(this.getPassword(), RegisterForm.password_key, 20, error);
 		if (!org.apache.commons.lang.StringUtils.isEmpty(this.getPassword())) {
 			if (!this.getPassword().equals(this.getRetypePassword())) {
