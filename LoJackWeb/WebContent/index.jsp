@@ -137,12 +137,12 @@ $(document).ready(
 			},
 			messages: {	
 				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
-				'document': {required: "<span>Ingrese el numero de documento.</span>",
-					digits: "<span>Ingrese solo numeros.<span>"},
+				'document': {required: "<span>Ingrese el número de documento.</span>",
+					digits: "<span>Ingrese solo números.<span>"},
 				'firstName': {required: "<span>Ingrese el nombre.</span>"},
 				'lastName': {required: "<span>Ingrese el apellido.</span>"},
-				'email': {required: "<span>Ingrese el email.</span>",
-					email: "<span>Ingrese un email valido.</span>"},
+				'email': {required: "<span>Ingrese el E-Mail.</span>",
+					email: "<span>Ingrese un E-Mail válido.</span>"},
 				'gender': {required: "<span>Seleccione el sexo.</span>"},
 				'password': {required: "<span>Ingrese la clave.</span>"},
 				'retypePassword': {equalTo: "<span>Las claves no coinciden</span>"},
@@ -172,9 +172,9 @@ $(document).ready(
 			},
 			messages: {
 				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
-				'username': {required: "<span>Ingrese el numero de documento.</span>",
-					digits: "<span>Ingrese solo numeros.<span>"},
-				'password': {required: "<span>Ingrese el password.</span>"}
+				'username': {required: "<span>Ingrese el número de documento.</span>",
+					digits: "<span>Ingrese solo números.<span>"},
+				'password': {required: "<span>Ingrese la clave.</span>"}
 
 			},
 			submitHandler: function() {
@@ -435,7 +435,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label class="ajuste">* Numero</label>
+						<label class="ajuste">* Número</label>
 						<html:text name="RegisterForm" property="document" />
 						<div class="errorInForm"></div>
 						<div class="myRow errorField" style="display: none;" id="p.profile.document">
