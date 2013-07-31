@@ -137,7 +137,7 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 			FieldValidation.validateText(this.getPassword(), password_key, 20, error);
 		}
 		FieldValidation.validateId(this.getDocumentType(), documenttype_key, error);
-		FieldValidation.validateNumber(this.getDocument(), document_key, 1, Integer.MAX_VALUE, error);
+		FieldValidation.validateNumber(this.getDocument(), document_key, 1, Long.MAX_VALUE, error);
 		FieldValidation.validateEmail(this.getEmail(), email_key, error);
 		if (!org.apache.commons.lang.StringUtils.isEmpty(this.getPassword())) {
 			if (!this.getPassword().equals(this.getRetypePassword())) {
