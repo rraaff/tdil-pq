@@ -68,7 +68,7 @@ public class FieldValidation {
 		return validateNumber(text, field, min, max, true, validation);
 	}
 	
-	public static String validateNumber(String text, String field, int min, int max, boolean required, ValidationError validation) {
+	public static String validateNumber(String text, String field, long min, long max, boolean required, ValidationError validation) {
 		String result = text;
 		if (StringUtils.isEmpty(text)) {
 			if (required) {
@@ -77,7 +77,7 @@ public class FieldValidation {
 		} else {
 			String idToValidate = text.trim();
 			try {
-				int resultTmp = Integer.parseInt(idToValidate);
+				long resultTmp = Long.parseLong(idToValidate);
 				if (resultTmp < min) {
 					validation.setFieldError(field, ValidationErrors.UNDER_MIN);
 				}
