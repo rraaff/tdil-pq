@@ -1,4 +1,4 @@
-body { background:#fff; }
+body { background:#f3f3f3; }
 div,
 input[type="submit"] { box-sizing: border-box; }
 h1 {
@@ -94,9 +94,9 @@ span.userName { color:#f05224; }
 #registrationContent input[type="tel"],
 #registrationContent input[type="url"],
 #registrationContent input[type="text"] {
-	border:none;
-	background:#2c2c2c;
-	color:#fff;
+	border:solid 1px #2c2c2c;
+	/*color:#2c2c2c;
+	background:#fff;*/
 	font-size:80%;
 	line-height:normal;
 	width:100%;

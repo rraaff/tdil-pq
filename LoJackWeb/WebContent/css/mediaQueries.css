@@ -250,3 +250,8 @@ and (max-width : 479px) {
 	header,
 	header.menuInternas { display:none; }
 }
+
+@media all and (orientation:landscape) {
+	#flyingObjectContainer { width:20%; }
+	#logoIndex { width:20%; }
+}

@@ -27,7 +27,7 @@ function showVideo1(strVideo) {
 
 </script>
 
-<div id="video1Layer" class="layerOnTop" style="display: none; z-index: 1500;">
+<div id="video1Layer" class="layerOnTop" style="display: none; z-index: 2500;">
 	<div id="centradorModalesVideo1Layer" class="defaultLayerStyles">
 		<div class="videoLayer">
 			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer">< volver</button></div>

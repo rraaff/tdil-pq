@@ -36,6 +36,15 @@
 	#flyingObjectContainer { width:25%; margin:0 auto; }
 	#logoIndex {width:25%; top:75%; margin:0 auto; }
 }
+@media all and (orientation:landscape) {
+	#flyingObjectContainer { width:20%; }
+	#logoIndex { width:20%; }
+}
+@media all and (orientation:landscape) and (max-height: 384px) {
+	#flyingObjectContainer { width:100%; top:0; position:fixed; }
+	#logoIndex { width:33%; top:42%; margin:0 auto; }
+}
+
 </style>
 <script type="text/javascript">
 function chbg(title, subTitle) {

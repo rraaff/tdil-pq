@@ -36,6 +36,7 @@
 	<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
 	<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <% } %>
+
 <style type="text/css">
 #productsMenu ul li.tabHome {
 	background:#f05224;
@@ -45,7 +46,7 @@
 }
 @media only screen and (max-width: 968px) {
 	#productHomeMenu.col1_170 { position: relative; }
-} 
+}
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script>
