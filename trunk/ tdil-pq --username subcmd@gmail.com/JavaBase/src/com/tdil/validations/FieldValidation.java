@@ -64,7 +64,7 @@ public class FieldValidation {
 		} 
 	}
 	
-	public static String validateNumber(String text, String field, int min, int max, ValidationError validation) {
+	public static String validateNumber(String text, String field, long min, long max, ValidationError validation) {
 		return validateNumber(text, field, min, max, true, validation);
 	}
 	
