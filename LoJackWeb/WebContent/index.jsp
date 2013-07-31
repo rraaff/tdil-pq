@@ -491,7 +491,7 @@ function parkingsNotLogged() {
 						</div>
 					</fieldset>
 					<fieldset>
-						<label class="ajuste">Repetir clave</label>
+						<label class="ajuste">* Repetir clave</label>
 						<html:password name="RegisterForm" property="retypePassword" />
 						<div class="errorInForm"></div>
 					</fieldset>
