@@ -5,5 +5,6 @@
     <string name="title_activity_check_for_update">LoJack</string>
     <string name="action_settings">Settings</string>
     <string name="loading">Cargando Informacion&#8230;&#8230;&#8230;</string>
+    <string name="dologin">dologin</string>
 
 </resources>

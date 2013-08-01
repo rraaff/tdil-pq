@@ -28,7 +28,10 @@ public class CheckForUpdateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_for_update);
 		mHandler = new Handler();
-		checkUpdate.start();
+		// checkUpdate.start();
+		Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
+    	startActivity(intent);
+    	finish();
 	}
 
 	@Override
