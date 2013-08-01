@@ -259,6 +259,8 @@ img#cameraImg {
 }
 .controlsBasicView { background:#fff; width: 561px; margin: 0 auto; top: 514px; z-index: 1400; }
 div.controlsBasicView img { padding:5px; margin: 0 5px; }
+#linkBackCameras { display:none; }
+
 #agendaWrapper h1 {
 	padding: 0;
 }

@@ -44,7 +44,7 @@
 							<li id="liPark" class="park"><a class="rdPark" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en CABA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 						<%} %>
 
-						<li id="liTvtv" class="tv"  ><a class="rdTv" href="#"><img src="images/null.gif" /></a></li>
+						<li id="liTvtv" class="tv"><a class="rdTv" href="http://www.lojack.tv" target="_blank" onmouseover="chbg('liTvtv', 'tv', 'over', 'LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('liTvtv', 'tv', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 
 						<%if (websiteUser != null && websiteUser.isLogged()) { %>
 							<li id="liLogg" class="logout"><a class="rdLoginLogout" href="logout.do" onmouseover="chbg('liLogg', 'logout', 'over', 'Salir', 'del sitio')" onmouseout="chbg('liLogg', 'logout', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>

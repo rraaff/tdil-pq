@@ -42,7 +42,7 @@
 }
 @media all and (orientation:landscape) and (max-height: 384px) {
 	#flyingObjectContainer { width:100%; top:0; position:fixed; }
-	#logoIndex { width:33%; top:42%; margin:0 auto; }
+	#logoIndex { width:26%; top:49%; margin:0 auto; }
 }
 
 </style>
@@ -74,7 +74,7 @@ function chbg(title, subTitle) {
 		<div id="iconoCar"><a href="videoPageCar.jsp"   onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
 		<div id="iconoHome"><a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
 		<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pets', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
-		<div id="iconoTv"><a href="#" title="Pronto"><img src="../images/null.gif" /></a></div>
+		<div id="iconoTv"><a href="http://www.lojack.tv" onmouseover="chbg('LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" target="_blank"><img src="../images/null.gif" /></a></div>
 		<div id="rdCentral">
 			<h2 id="title">Seleccione</h2>
 			<h3 id="subTitle">Una Aplicación</h3>

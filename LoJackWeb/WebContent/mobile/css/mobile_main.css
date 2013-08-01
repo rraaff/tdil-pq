@@ -110,8 +110,8 @@ span.userName { color:#f05224; }
 #loginContent option,
 #recoverPassContent option,
 #registrationContent option {
-	background:#FFF;
-	color:#000;
+	/*background:#FFF;
+	color:#000;*/
 }
 #loginContent select,
 #recoverPassContent select,

@@ -26,15 +26,15 @@
 #nmRuedita ul li.park			{ background:url(../images/skin_lj_rl/newWheel/parking_224_off.png) no-repeat 0 0; top:-438px; left:221px; z-index:1213; }
 #nmRuedita ul li img 			{ width:96px; height:96px; }
 #nmRuedita ul li a				{ color:transparent; height:96px; font-size:90px; padding:0; margin:64px; }
-#nmRuedita ul li.tv				{ background:url(../images/skin_lj_rl/newWheel/tv_224_dis.png) no-repeat 0 0; top:-859px; left:257px; z-index:1214; }
-#nmRuedita ul li.logout			{ background:url(../images/skin_lj_rl/newWheel/logout_224_off.png) no-repeat 0 0; top:-1018px; left:189px; z-index:1215; }
-#nmRuedita ul li.login			{ background:url(../images/skin_lj_rl/newWheel/login_224_off.png) no-repeat 0 0; top:-1018px; left:189px; z-index:1215; }
+#nmRuedita ul li.tv				{ background:url(../images/skin_lj_rl/newWheel/tv_224_off.png) no-repeat center center; top:-839px; left:270px; z-index:1250; }
+#nmRuedita ul li.logout			{ background:url(../images/skin_lj_rl/newWheel/logout_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
+#nmRuedita ul li.login			{ background:url(../images/skin_lj_rl/newWheel/login_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
 #nmRuedita ul li.tv,
 #nmRuedita ul li.logout,
-#nmRuedita ul li.login			{ line-height:130px; width:130px; height:130px; }
+#nmRuedita ul li.login			{ line-height:94px; width:97px; height:97px; }
 #nmRuedita ul li.tv a,
 #nmRuedita ul li.logout a,
-#nmRuedita ul li.login a		{ color:transparent; height:98px; font-size:88px; padding:0; margin:16px; }
+#nmRuedita ul li.login a		{ color:transparent; height:98px; font-size:88px; padding:0; margin:0; }
 
 #rdCentral						{ width:100%; height:66px; padding-left:227px; top:408px; position:absolute; z-index:1201; }
 #rdCentral h2					{ color:#ee5222; font-family:'GothamBoldRegular','Gotham', 'Helvetica', Arial, sans-serif; font-size:18px; line-height:30px; text-align:center; text-transform:uppercase; width:165px; margin:0 auto; overflow:hidden; }

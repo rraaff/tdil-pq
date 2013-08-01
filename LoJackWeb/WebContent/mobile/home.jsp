@@ -51,7 +51,7 @@ function enterPrevent() {
 }
 @media all and (orientation:landscape) and (max-height: 384px) {
 	#flyingObjectContainer { width:100%; top:0; position:fixed; }
-	#logoIndex { width:33%; top:42%; margin:0 auto; }
+	#logoIndex { width:26%; top:46%; margin:0 auto; }
 }
 
 </style>
@@ -99,7 +99,7 @@ function chbg(title, subTitle) {
 		<% } else { %>
 			<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pet', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
-		<div id="iconoTv"><a href="#" title="Pronto"><img src="../images/null.gif" /></a></div>
+		<div id="iconoTv"><a href="http://www.lojack.tv" onmouseover="chbg('LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" target="_blank"><img src="../images/null.gif" /></a></div>
 		<div id="rdCentral">
 			<h2 id="title">Seleccione</h2>
 			<h3 id="subTitle">Una Aplicación</h3>

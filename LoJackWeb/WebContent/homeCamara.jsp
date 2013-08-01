@@ -26,6 +26,7 @@
 	<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrapSwitch.css" />
 	<link type="text/css" rel="stylesheet" media="screen" href="css/unified_mobile.css" />
 	<link type="text/css" rel="stylesheet" media="screen" href="css/homeProduct_mobile.css" />
+	<link type="text/css" rel="stylesheet" media="screen" href="css/homeCamera_mobile_adjust.css" />
 <% } else { %>
 	<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
 	<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
@@ -238,7 +239,6 @@ function right() {
 				</div>
 				<div id="linksAside">
 					<a href="./toggleCameraView.do"><span>Cambiar Simple >></span></a>
-					<!--  a href="./goToHomeCamera.do"><span><< Volver</span></a> -->
 				</div>
 			<% } else { %>
 				<div id="pictureContainer">
@@ -280,17 +280,20 @@ function right() {
 				</script>
 				<div id="linksAside">
 					<% if (usingMobile || isAndroid) { %>
-						<!-- a href="./goToHomeCamera.do"><span><< Volver</span></a-->
+
 					<% } else { %>
 						<a href="./toggleCameraView.do">Vista Avanzada</a>
-						<!-- a href="./goToHomeCamera.do"><span><< Volver</span></a-->
 					<% } %>
 				</div>
 			<% } %>
 		</div>
 	</div>
 </section>
-<!-- % @  include file="includes/panicButton.jspf" % -->
+
+<section id="linkBackCameras">
+	<a class="especialkkk" href="./goToHomeCamera.do" title="Volver a las home"><img src="images/skin_lj_rl/buttons/AppletCamera/back_off.png" /></a>
+</section>
+
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
