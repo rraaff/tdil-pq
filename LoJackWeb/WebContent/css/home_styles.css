@@ -1,4 +1,4 @@
-header					{ width:100%; position:fixed; z-index:2005; top:0px; display:inline-block; }
+header					{ width:100%; position:fixed; z-index:1499; top:0px; display:inline-block; }
 #floatyMenu 			{ background:url(../images/skin_lj_rl/backs/topLayer70.png); width:100%; display:inline-block; }
 #floatyMenu .wrapper	{ text-align:center; }
 #floatyMenu ul			{ width:auto; display:inline-block; }

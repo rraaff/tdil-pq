@@ -520,6 +520,7 @@ table button.nonelyLinkEditar,
 table button.nonelyLinkOFF,
 table button.nonelyLinkON { width:auto; padding:10px; float:left; }
 .camarasBG {
+	width:100%;
 	padding:0;
 	float:left;
 }
