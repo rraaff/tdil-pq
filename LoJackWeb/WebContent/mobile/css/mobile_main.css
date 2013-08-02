@@ -116,7 +116,8 @@ span.userName { color:#f05224; }
 #loginContent select,
 #recoverPassContent select,
 #registrationContent select { line-height:18px; height:38px; padding:0; }
-#registrationContent div.dateHelper { float:left; }
+#registrationContent div.dateHelper,
+label.dateHelper { float:left; }
 #registrationContent select.day-month { width: 50px; margin-right:15px; }
 #registrationContent select.year { width: 100px; }
 
@@ -142,10 +143,15 @@ span.userName { color:#f05224; }
 	padding:10px 20px;
 	float: right;
 }
-#registrationContent p { color:#333; font-size:90%; padding:10px; }
+#registrationContent p { font-size:90%; padding:10px; }
 #registrationContent .countrySelected { font-size:80%; text-transform:uppercase; }
 #registrationContent fieldset.countryFieldset { padding:0 0 20px 0; }
 #registrationContent div.sexWrapper { width:100%; display:inline-block; margin:0 0 10px 0 }
 #registrationContent fieldset.sexFieldset { width:25%; float:left; }
 #registrationContent fieldset.sexOptionsFieldset { width:75%; float:left; }
-.errorInForm { color:#cb2200; text-align:center; width:100%; float:left; }
+.errorInForm { width:100%; float:left; }
+.errorInForm p { background:#ffefec; border:solid 1px #ffd7cf; border-radius:5px; color:#cb2200; text-align:center; line-height:18px; margin:10px 0; padding:8px 0; }
+
+
+
+

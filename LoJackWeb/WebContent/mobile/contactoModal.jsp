@@ -60,40 +60,34 @@
 			<fieldset>
 				<label>Nombre</label>
 				<html:text name="ContactFormMobile" property="firstname"></html:text>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.firstname.err")%></div>
 			</fieldset>
-			<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.firstname.err")%>
-			<div class="errorInForm"></div>
 			<fieldset>
 				<label>Apellido</label>
 				<html:text name="ContactFormMobile" property="lastname"></html:text>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.lastname.err")%></div>
 			</fieldset>
-			<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.lastname.err")%>
-			<div class="errorInForm"></div>
 			<fieldset>
 				<label>DNI</label>
 				<html:text name="ContactFormMobile" property="documentNumber"></html:text>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.document.err")%></div>
 			</fieldset>
-			<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.document.err")%>
-			<div class="errorInForm"></div>
 			<fieldset>
 				<label>E-mail</label>
 				<html:text name="ContactFormMobile" property="email"></html:text>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.email.err")%></div>
 			</fieldset>
-			<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.email.err")%>
-			<div class="errorInForm"></div>
 			<fieldset>
 				<label>Teléfono</label>
 				<html:text name="ContactFormMobile" property="phone"></html:text>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.phone.err")%></div>
 			</fieldset>
-			<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.phone.err")%>
-			<div class="errorInForm"></div>
 		<% } %>
 		<fieldset>
 			<label>Comentario</label>
 			<html:textarea name="ContactFormMobile" property="content"></html:textarea>
+			<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.content.err")%></div>
 		</fieldset>
-		<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.content.err")%>
-		<div class="errorInForm"></div>
 		<fieldset>
 			<input type="submit" id="submitregister" class="indexLogin" value="Enviar" />
 		</fieldset>

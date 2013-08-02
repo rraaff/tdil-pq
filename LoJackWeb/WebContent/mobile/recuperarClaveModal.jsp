@@ -35,7 +35,9 @@
 <div id="recoverPassContent">
 	<html:form method="POST" action="/mobile/requestResetPasswordMobile">
 		<p>Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
-		<div class="errorInForm"><html:errors property="general" /></div>
+		<fieldset>
+			<div class="errorInForm"><html:errors property="general" /></div>
+		</fieldset>
 		<fieldset>
 			<label>Tipo doc</label>
 			<% RequestResetPasswordForm loginForm = (RequestResetPasswordForm)session.getAttribute("RequestResetPasswordFormMobile"); %>

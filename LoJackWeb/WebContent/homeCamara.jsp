@@ -291,7 +291,7 @@ function right() {
 </section>
 
 <section id="linkBackCameras">
-	<a class="especialkkk" href="./goToHomeCamera.do" title="Volver a las home"><img src="images/skin_lj_rl/buttons/AppletCamera/back_off.png" /></a>
+	<a class="especialkkk" href="productoHome.jsp" title="Volver a las home"><img src="images/skin_lj_rl/buttons/AppletCamera/back_off.png" /></a>
 </section>
 
 <%@ include file="includes/footerProductoHome.jsp" %>

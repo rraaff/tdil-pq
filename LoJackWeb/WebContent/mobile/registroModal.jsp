@@ -58,31 +58,27 @@
 							<%=codBean.getName()%></option>
 					<% } %>
 				</html:select>
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%></div>
 			</fieldset>
 				
 			<fieldset>
 				<label>* Numero</label>
 				<html:text name="RegisterFormMobile" property="document" />
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Nombre</label>
 				<html:text name="RegisterFormMobile" property="firstName" />
 					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-					<div class="errorInForm"></div>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%>
+					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
 				<html:text name="RegisterFormMobile" property="lastName" />
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
+				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%></div>
 			</fieldset>
 			<div class="sexWrapper">
 				<fieldset class="sexFieldset">
@@ -93,24 +89,21 @@
 					<span>Masculino&nbsp;&nbsp;&nbsp;</span>
 					<html:radio property="gender" value="Female" />
 					<span>Femenino</span>
-					<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
+					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%></div>
 				</fieldset>
-				<div class="errorInForm"></div>
 			</div>
 			<fieldset>
 				<label>* E-mail</label>
 				<html:text name="RegisterFormMobile" property="email"/>
 				<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Clave</label>
 				<html:password name="RegisterFormMobile" property="password" />
 				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Repetir clave</label>
@@ -139,28 +132,25 @@
 						<% } %>
 					</html:select>
 				</div>
-				<div class="errorInForm"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>Código de área</label>
 				<html:text name="RegisterFormMobile" property="phoneAreaCode" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
-				<div class="errorInForm"></div>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%></div>
 				<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
 					<div id="err.profile.phone.areaCode"></div>
 				</div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Teléfono celular</label>
 				<html:text name="RegisterFormMobile" property="phoneNumber" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
-				<div class="errorInForm"></div>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%></div>
 				<div class="errorField" style="display: none;" id="p.profile.phone.number">
 					<div id="err.profile.phone.number"></div>
 				</div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
 			</fieldset>
 			<fieldset class="countryFieldset">
 				<label>País</label>
@@ -175,8 +165,7 @@
 							<%=stateBean.getName()%></option>
 					<% } %>
 				</html:select>
-				<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%>
-				<div class="errorInForm"></div>
+				<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "" : ""%></div>
 				<div class="errorField" style="display: none;" id="p.profile.address.stateId">
 					<div id="err.profile.address.stateId"></div>
 				</div>
@@ -185,8 +174,7 @@
 				<fieldset>
 					<label>Calle 1</label>
 					<html:text name="RegisterFormMobile" property="street1" />
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%>
-					<div class="errorInForm"></div>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "" : ""%></div>
 					<div class="errorField" style="display: none;" id="p.profile.address.street1">
 						<div id="err.profile.address.street1"></div>
 					</div>
@@ -196,8 +184,7 @@
 				<fieldset>
 					<label>Calle 2</label>
 					<html:text name="RegisterFormMobile" property="street2" />
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%>
-					<div class="errorInForm"></div>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "" : ""%></div>
 					<div class="errorField" style="display: none;" id="p.profile.address.street2">
 						<div id="err.profile.address.street2"></div>
 					</div>
@@ -213,8 +200,7 @@
 							<%=ApplicationResources.getMessage("address_" + type)%></option>
 						<% } %>
 					</html:select>
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%>
-					<div class="errorInForm"></div>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "" : ""%></div>
 					<div class="errorField" style="display: none;" id="p.profile.address.type">
 						<div id="err.profile.address.type"></div>
 					</div>
@@ -224,8 +210,7 @@
 				<fieldset>
 					<label>Código postal</label>
 					<html:text name="RegisterFormMobile" property="postalCode" />
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%>
-					<div class="errorInForm"></div>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.postalCode)) ? "" : ""%></div>
 					<div class="errorField" style="display: none;" id="p.profile.address.postalCode">
 						<div id="err.profile.address.postalCode"></div>
 					</div>
@@ -235,8 +220,7 @@
 				<fieldset>
 					<label>Ciudad</label>
 					<html:text name="RegisterFormMobile" property="city" />
-					<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%>
-					<div class="errorInForm"></div>
+					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "" : ""%></div>
 					<div class="errorField" style="display: none;" id="p.profile.address.city">
 						<div id="err.profile.address.city"></div>
 					</div>

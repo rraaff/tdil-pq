@@ -40,6 +40,7 @@ div#internalHeader {
 #internalHeader ul li a.back {
 	background:#000;
 	width:34%;
+	float:right;
 }
 #internalHeader ul li a:hover,
 #internalHeader ul li a:focus {

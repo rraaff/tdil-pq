@@ -31,7 +31,7 @@
 	#flyingObjectContainer { width:25%; margin:0 auto; }
 	#logoIndex {width:25%; top:75%; margin:0 auto; }
 }
-.alert { background:#fff; text-align:center; width:100%; top:36px; left:0px; z-index:2150; position:fixed; }
+.alert { background:#ffeea9; text-align:center; line-height:34px; width:100%; top:36px; left:0px; z-index:2150; position:fixed; }
 .alert-error {}
 </style>
 </head>

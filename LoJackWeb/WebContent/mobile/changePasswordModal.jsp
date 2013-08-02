@@ -30,7 +30,7 @@
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="internalHeader">
 	<ul>
-		<li><a href="./goToChangePasswordMobile.do" title="Cambiar mis clave">Cambiar clave</a></li>
+		<li><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos">Mis datos</a></li>
 		<li><a href="home.jsp" title="Volver">< Volver</a></li>
 		<li><a href="./logoutMobile.do" class="back" title="Salir del sistema">Salir</a></li>
 	</ul>
@@ -40,22 +40,24 @@
 	<html:form method="POST" action="/mobile/changePasswordMobile">
 		<html:errors property="general" />
 		<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "general")%>
-		<div class="myRow">
-			<div class="myLabel width120">Clave actual</div>
-			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="oldPassword" styleClass="normalField width250"/></div>
-			<%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.oldPassword_key + ".err")%>
-		</div>
-		<div class="myRow">
-			<div class="myLabel width120">Nueva clave</div>
-			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="newPassword" styleClass="normalField width250"/></div>
-			<%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.newPassword_key + ".err")%>
-		</div>
-		<div class="myRow">
-			<div class="myLabel width120">Repetir claeve</div>
-			<div class="myLabel width270"><html:password name="ChangePasswordFormMobile" property="confirmNewPassword" styleClass="normalField width250"/></div>
-			<%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%>
-		</div>	
-		<div class="myRow" align="center"><input type="submit" value="Cambiar" class="buttonSend" /></div>
+		<fieldset>
+			<label>Clave actual</label>
+			<html:password name="ChangePasswordFormMobile" property="oldPassword" />
+			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.oldPassword_key + ".err")%></div>
+		</fieldset>
+		<fieldset>
+			<label>Nueva clave</label>
+			<html:password name="ChangePasswordFormMobile" property="newPassword" />
+			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.newPassword_key + ".err")%></div>
+		</fieldset>
+		<fieldset>
+			<label>Repetir clave</label>
+			<html:password name="ChangePasswordFormMobile" property="confirmNewPassword" />
+			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%></div>
+		</fieldset>
+		<fieldset>
+			<input type="submit" value="Cambiar" class="buttonSend" />
+		</fieldset>
 	</html:form>
 </div>
 <%@ include file="../includes/version.jspf" %></body>
