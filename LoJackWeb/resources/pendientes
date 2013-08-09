@@ -1,3 +1,9 @@
+Hacer que centre parkings en donde esta el usuario
+
+******
+
+poi_inserts_gba.sql
+
 CBO-007 hecho
 BUG-003 colores de los estados, hecho, pasaba con las alarmas y las luces
 
