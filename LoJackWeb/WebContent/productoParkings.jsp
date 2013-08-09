@@ -289,7 +289,7 @@
             } else {
         		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + + ZOOM_500);
             }
-        	if (isOutSideCABA(MyPos)) {
+        	/*if (isOutSideCABA(MyPos)) {
         		showErrorLayer("No hay datos fuera de de la Ciudad Autónoma de Buenos Aires.");
 				removeParkings();
 				currPoints = new Array(); 
@@ -301,9 +301,9 @@
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
 				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
-            } else {
+            } else {*/
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
-            }
+            /*}*/
         }
 
 		function isOutSideCABA(position) {
