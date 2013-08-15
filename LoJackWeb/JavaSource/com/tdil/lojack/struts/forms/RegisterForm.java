@@ -777,12 +777,17 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 	}
 
 	private void buildOptIns() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		boolean wasEmpty = this.getOptIns().isEmpty();
 		this.getOptIns().clear();
 		Collection<BrandFamilyBean> brandFamilies = ThalamusClientBeanFacade.getBrandFamilies();
 		Collection<ChannelBean> channels = ThalamusClientBeanFacade.getChannels();
 		for (BrandFamilyBean family : brandFamilies) {
 			for (ChannelBean channel : channels) {
-				this.getOptIns().add(new OptIn(family.getId(), family.getName(), channel.getId(), channel.getName()));
+				OptIn optIn = new OptIn(family.getId(), family.getName(), channel.getId(), channel.getName());
+				if (wasEmpty) {
+					optIn.setAccepted(true);
+				}
+				this.getOptIns().add(optIn);
 			}
 		}
 	}

@@ -22,7 +22,9 @@ public class GoToRegisterAction extends AbstractAction {
 		RegisterForm registerForm = (RegisterForm)form;
 		try {
 			registerForm.reset();
+			registerForm.getOptIns().clear();
 			registerForm.searchReferenceData();
+			registerForm.getOptIns().clear();
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			getLog().error(ex.getMessage(), ex);

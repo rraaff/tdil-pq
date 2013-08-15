@@ -286,6 +286,11 @@ function basicRegister() {
 		$(param).val('');
 	});
 	$("form[name='RegisterForm'] select[name=documentType]").val('1');
+
+	$("form[name='RegisterForm'] input[name='optIn[0].accepted']").each(function(index, param){
+		$(param).prop('checked', true);
+	});
+	
 	centerLayerWF($(window), $( "#registerLayer" ), function() {$("form[name='RegisterForm'] input[name='document']").focus();});
 	centerLayer($(window), $( "#centradorModalesRegister" ));
 }
