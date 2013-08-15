@@ -25,6 +25,7 @@
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/internal_menu.css" rel="stylesheet" type="text/css">
 <link href="css/mobile_main.css" rel="stylesheet" type="text/css">
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
@@ -39,7 +40,9 @@
 	<h1>Cambiar clave</h1>
 	<html:form method="POST" action="/mobile/changePasswordMobile">
 		<html:errors property="general" />
-		<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "general")%>
+		<fieldset>
+			<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "general")%></div>
+		</fieldset>
 		<fieldset>
 			<label>Clave actual</label>
 			<html:password name="ChangePasswordFormMobile" property="oldPassword" />

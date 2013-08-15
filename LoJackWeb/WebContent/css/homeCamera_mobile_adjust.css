@@ -25,18 +25,7 @@
 		margin:10px;
 	}
 }
-@media all and (orientation:landscape) and (max-height: 384px) {
-	.tabParking,
-	.tabPet,
-	.tabCar { display:none; }
-	#productHomeMenu ul li { padding:11px 0; }
-	.controlsBasicView { width:34%; height:22%; margin:0; position:absolute; top:initial; left:-34%; }
-	#right img	{ top:20%; left:0; position:absolute; }
-	#up img		{ top:0; left:35%; margin:1px 10px; position:absolute; }
-	#down img	{ bottom:0; top:inherit; left:35%; margin:1px 10px; position:absolute; }
-	#left img	{ top:20%; left:inherit; right:0; position:absolute; }
-}
-@media all and (orientation:landscape) and (min-height: 230px) {
+/*@media all and (orientation:landscape) and (max-height: 384px) {
 	#productHomeMenu.col1_170,
 	#productsMenu .correctNav,
 	.tabParking,
@@ -47,7 +36,25 @@
 	#cameraTitle { display:none; }
 	#productHomeMenu ul li { padding:11px 0; }
 	#pictureContainer { width:100%;}
-	.controlsBasicView { border-radius:5px; background:url(../images/skin_lj_rl/backs/topLayer70.png); width:140px; height:82px; margin:-12px 0 0 0; position:absolute; bottom:0; left:0; }
+	.controlsBasicView { width:34%; height:22%; margin:0; position:absolute; top:initial; left:-34%; }
+	#right img	{ top:20%; left:0; position:absolute; }
+	#up img		{ top:0; left:35%; margin:1px 10px; position:absolute; }
+	#down img	{ bottom:0; top:inherit; left:35%; margin:1px 10px; position:absolute; }
+	#left img	{ top:20%; left:inherit; right:0; position:absolute; }
+}*/
+@media all and (orientation:landscape) {
+	/* and (min-height: 230px) */
+	#productHomeMenu.col1_170,
+	#productsMenu .correctNav,
+	.tabParking,
+	.tabPet,
+	.tabCar,
+	.tabAlarms,
+	.tabLights,
+	#cameraTitle { display:none; }
+	#productHomeMenu ul li { padding:11px 0; }
+	#pictureContainer { width:100%;}
+	.controlsBasicView { border-radius:5px; background:url(../images/skin_lj_rl/backs/topLayer70.png); width:140px; height:82px; margin:0; position:fixed; bottom:0; left:0; }
 	#right img	{ top:20%; left:0; position:absolute; }
 	#up img		{ top:0; left:35%; margin:1px 10px; position:absolute; }
 	#down img	{ bottom:0; top:inherit; left:35%; margin:1px 10px; position:absolute; }
@@ -55,7 +62,6 @@
 	#linkBackCameras { border-radius:5px; background:url(../images/skin_lj_rl/backs/topLayer70.png); width:48px; height:48px; margin:0; position:fixed; bottom:0; right:0; z-index:3600; }
 	#linkBackCameras img { padding:12px; width:24px; height:24px; }
 }
-
 @media all and (orientation:portrait) {
 /* Style adjustments for portrait mode goes here */
 	#linkBackCameras { display:none; }

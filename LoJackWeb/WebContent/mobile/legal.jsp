@@ -13,6 +13,7 @@
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/internal_menu.css" rel="stylesheet" type="text/css">
 <link href="css/mobile_main.css" rel="stylesheet" type="text/css">
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="internalHeader">

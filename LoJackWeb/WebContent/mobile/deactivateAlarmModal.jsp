@@ -13,6 +13,7 @@
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 	<h3>Desactivar alarma</h3>

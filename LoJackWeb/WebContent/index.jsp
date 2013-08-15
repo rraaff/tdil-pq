@@ -387,7 +387,7 @@ function parkingsNotLogged() {
 			<ul>
 				<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
-				<li><a href="javascript:register();" id="register" title="Registrate gratis"><span>Registrate Gratis</span></a></li>
+				<li><a href="javascript:register();" id="register" title="Registrate"><span>Registrate</span></a></li>
 				<li><a class="fb" href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span></span></a></li>
 				<li><a class="tw" href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span></span></a></li>
 			</ul>
@@ -608,10 +608,10 @@ function parkingsNotLogged() {
 						</fieldset>
 					<% } %>
 					<logic:iterate id="optIn" name="RegisterForm" property="optIns">
-						<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
+						<h4>Cláusula de contacto</h4>
 						<fieldset>
 							<html:checkbox name="optIn" property="accepted" indexed="true" />
-							<label>Acepto recibir contactos de LoJack y sus comañías asociadas<!-- bean:write name="optIn" property="channelName"/ --></label>
+							<label>Acepto recibir contactos de LoJack y sus comañías asociadas</label>
 						</fieldset>
 					</logic:iterate>
 				</div>
@@ -662,7 +662,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<fieldset>
 						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
-						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate gratis">¿No estás registrado?</a></div>
+						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate">¿No estás registrado?</a></div>
 					</fieldset>
 			</html:form>
 		</div>

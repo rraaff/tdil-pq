@@ -34,6 +34,7 @@
 	}
 }
 </style>
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>

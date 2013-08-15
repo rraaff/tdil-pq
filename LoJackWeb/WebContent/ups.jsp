@@ -21,15 +21,16 @@
 <link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
+
+<style>
+#logoIndex { width:250px; margin:0 0 0 -125PX; top:7%; left:50%; position:absolute; }
+#thalamusDown { width:450px; margin:0 0 0 -225px; padding:50px; top:30%; left:50%; position:absolute; }
+</style>
 </head>
 
 <body>
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<div id="flyingObjectContainer"> 
-	<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_index.png" /></div>
-	
-	<div id="socialSingleSignOn"></div>
-</div>
+<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_2_mobile.png" /></div>
 <div id="thalamusDown">
 	<h1>Sitio en mantenimiento</h1>
 	<p class="errorCode">Código de error (TH:isAL000001456)</p>

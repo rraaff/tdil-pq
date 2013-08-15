@@ -61,7 +61,7 @@ header { display:none; }
 .smallmap,
 .pageWrapper { width:100%; }
 .pageWrapper { display:inline-block; }
-.smallmap { min-height:560px; }
+.smallmap { }
 #productHomeMenu.col1_170 {
 	background:#F3F1EE;
 	position:relative;
@@ -205,7 +205,7 @@ fieldset.tableHeader label {
 	color:#FFF;
 }
 fieldset label.w1 {
-	width:auto;
+	width:30%;
 }
 
 fieldset label.w2 {

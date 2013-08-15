@@ -19,6 +19,7 @@
 <head>
 <meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
+<%@ include file="includes/head.jsp"%>
 </head>
 <% EditProfileForm editProfileForm = (EditProfileForm)session.getAttribute("EditProfileFormMobile");
 editProfileForm.setMobile(true);%>

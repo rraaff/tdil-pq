@@ -34,6 +34,7 @@
 .alert { background:#ffeea9; text-align:center; line-height:34px; width:100%; top:36px; left:0px; z-index:2150; position:fixed; }
 .alert-error {}
 </style>
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="menu">

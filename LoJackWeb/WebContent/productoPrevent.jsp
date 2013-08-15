@@ -26,7 +26,6 @@
 <style type="text/css">
 	.smallmap {
 		width:968px;
-		height:450px;
 	}
 	#tags { display: none; }
 	#docs p {
@@ -201,6 +200,7 @@
 	         		});
 	         	});
 	         <% } %>
+
         });
 
 	function editMaxSpeed() {
@@ -255,6 +255,15 @@
 		});
 	}
 
+//	window.onload=function() {
+//		var elemToChange = document.getElementById("mapContainer");
+//		elemToChange.style.height = $(window).height() - 125 + "px"
+//	}
+
+	window.onresize=function() {
+		var elemToChange = document.getElementById("mapContainer");
+		elemToChange.style.height = $(window).height() - 125 + "px"
+	}
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>
 </head>
@@ -266,9 +275,9 @@
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
+				<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
 				<button class="iconMaxSpeed" onclick="editMaxSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
-				<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 			</div>
 		</section>
@@ -321,5 +330,14 @@
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+<script type="text/javascript">
+	var checkHeight = function(){
+		var elemToChange = document.getElementById("mapContainer");
+		elemToChange.style.height = $(window).height() - 125 + "px"
+		setTimeout(checkHeight,500);
+	};
+	checkHeight();
+</script>
+</body>
 </html>

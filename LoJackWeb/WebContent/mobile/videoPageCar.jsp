@@ -14,6 +14,7 @@
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/index_menu.css" rel="stylesheet" type="text/css">
 <link href="css/videoPages.css" rel="stylesheet" type="text/css">
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div class="videoLayer">

@@ -30,6 +30,7 @@
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/internal_menu.css" rel="stylesheet" type="text/css">
 <link href="css/mobile_main.css" rel="stylesheet" type="text/css">
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="internalHeader">
@@ -227,10 +228,10 @@
 				</fieldset>
 			<% } %>
 			<logic:iterate id="optIn" name="RegisterFormMobile" property="optIns">
-				<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
+				<h4>Cláusula de contacto</h4>
 				<fieldset class="optinStyles">
 					<html:checkbox name="optIn" property="accepted" indexed="true" />
-					<label>Acepto recibir contactos de LoJack y sus comañías asociadas<!-- bean:write name="optIn" property="channelName"/ --></label>
+					<label>Acepto recibir contactos de LoJack y sus comañías asociadas</label>
 				</fieldset>
 			</logic:iterate>
 		</div>

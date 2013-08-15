@@ -57,6 +57,7 @@ function chbg(title, subTitle) {
 	id.innerHTML=subTitle;
 }
 </script>
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <div id="menu">

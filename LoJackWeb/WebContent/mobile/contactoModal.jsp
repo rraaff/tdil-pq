@@ -33,6 +33,7 @@
 	}
 }
 </style>
+<%@ include file="includes/head.jsp"%>
 </head>
 <body>
 <% if (websiteUser != null && websiteUser.isLogged()) { %>
