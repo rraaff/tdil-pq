@@ -9,10 +9,10 @@ set propValue = 'cpe5ohjt6y0rk1sz5r3ddy2bhcjybtgcvgz7x7b9282gyjm05p3rf1ygvc053o3
 
 
 UPDATE SYSPROPERTIES 
-set propValue = 'http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/' where propKey = 'gis.server';
+set propValue = 'http://ljwebserver01:83/CARPATHIA.WCF/service1.svc/' where propKey = 'gis.server';
 
 UPDATE SYSPROPERTIES 
-set propValue = 'http://test.lojackgis.com.ar:8181/Carpathia.Middleware/Service1.svc/' where propKey = 'services.server';
+set propValue = 'http://ljwebserver01:83/CARPATHIA.WCF/service1.svc/' where propKey = 'services.server';
 
 UPDATE SYSPROPERTIES 
 set propValue = 'soap-json' where propKey = 'mw.protocol';
