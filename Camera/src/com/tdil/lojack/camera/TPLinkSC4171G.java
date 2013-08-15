@@ -21,6 +21,9 @@ public class TPLinkSC4171G extends IPCamera {
 	private static final String RIGHT = "/cgi-bin/operator/ptzset?move=right";
 	private static final String UP = "/cgi-bin/operator/ptzset?move=up";
 	private static final String DOWN = "/cgi-bin/operator/ptzset?move=down";
+	private static final String STOP = "/cgi-bin/operator/ptzset?move=stop";
+	
+	
 	public static final String TP_LINK_SC4171G = "1";
 	
 	private transient HttpURLConnection conn;
@@ -122,20 +125,35 @@ public class TPLinkSC4171G extends IPCamera {
 	@Override
 	public void down() {
 		readFully(this.getUrl() + DOWN);
-	}
-
-	@Override
-	public void left() {
-		readFully(this.getUrl() + LEFT);
-	}
-
-	@Override
-	public void right() {
-		readFully(this.getUrl() + RIGHT);
+		stopMovement(50);
+		
 	}
 
 	@Override
 	public void up() {
 		readFully(this.getUrl() + UP);
+		stopMovement(50);
 	}
+
+	public void stopMovement(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		readFully(this.getUrl() + STOP);
+	}
+
+	@Override
+	public void left() {
+		readFully(this.getUrl() + LEFT);
+		stopMovement(200);
+	}
+
+	@Override
+	public void right() {
+		readFully(this.getUrl() + RIGHT);
+		stopMovement(200);
+	}
+
 }
