@@ -86,8 +86,6 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('server
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.api_key','3785427834','api_key de la app de facebook',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('fb.secret','63b6f58fec5dfba0cde041149e3a9255','secret de la app de facebook',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('auto.approve','FALSE','Auto aprobar cambios de profesionales',0);
-
 
 CREATE TABLE BLOB_DATA (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -486,18 +484,4 @@ CREATE TABLE HIGHLIGHTED_CAT (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   INDEX `IX_HIGHLIGHTED_CAT_01` (`fromDate` ASC, `toDate` ASC))
-ENGINE = InnoDB;
-
-CREATE TABLE PROFESIONAL_AGENDA (
-  `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_profesional` INT NOT NULL,
-  `date_` DATE NOT NULL ,
-  `busy` INT NOT NULL,
-  `deleted` INT NOT NULL ,
-  PRIMARY KEY (`id`),
-   CONSTRAINT `FK_PROFESIONAL_00`
-    FOREIGN KEY (`id_profesional` )
-    REFERENCES PROFESIONAL (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
