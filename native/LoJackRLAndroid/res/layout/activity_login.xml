@@ -25,12 +25,23 @@
             android:ems="10"
             android:hint="numero documento" />
 
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="*********"
+            android:inputType="textPassword" >
+
+            <requestFocus />
+        </EditText>
+
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@string/dologin"
-            android:text="Button" />
+            android:text="Login" />
 
     </LinearLayout>
 

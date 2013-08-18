@@ -37,7 +37,6 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	private ProgressDialog progressDialog;
 	private InputStream inputStream = null;
 	private String result = "";
-	
 	private String url;
 	private Map<String, String> urlParams;
 	private String body;
@@ -51,7 +50,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 		this.observer = observer;
 		this.progressDialog = new ProgressDialog(context);
 		this.url = url;
-		this.urlParams = restParams.getParams();
+		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
 	}
 
@@ -132,9 +131,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	protected void onPostExecute(final Boolean success) {
 		this.progressDialog.dismiss();
 		if(success) {
-			this.observer.sucess();
+			this.observer.sucess(this);
 		} else {
-			this.observer.error();
+			this.observer.error(this);
 		}
 	}
 
@@ -142,5 +141,8 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	protected void onCancelled() {
 		// TODO ver context.showProgress(false);
 	}
-	
+
+	public String getResult() {
+		return result;
+	}
 }
