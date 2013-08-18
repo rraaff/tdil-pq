@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 import net.sf.json.JSONObject;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.rest.model.BeanCollection;
 import com.tdil.lojack.rest.model.ChangePasswordBean;
 import com.tdil.lojack.rest.model.PersonBean;
 import com.tdil.lojack.struts.forms.ChangePasswordForm;
@@ -24,6 +25,7 @@ import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
+import com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean;
 import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
 
 @Path("/users")
@@ -67,6 +69,18 @@ public class UsersService extends AbstractRESTService {
 	public Response logout() {
 		getSession().invalidate();
 		return okResponse();
+	}
+	
+	@GET
+	@Path("/documentTypes")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response list() {
+		try {
+			return createResponse(201, new BeanCollection<DocumentTypeBean>(ThalamusClientBeanFacade.getDocumentTypes()));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
 	}
 	
 	@POST
