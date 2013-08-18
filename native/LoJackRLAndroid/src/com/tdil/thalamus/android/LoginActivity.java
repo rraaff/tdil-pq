@@ -15,7 +15,10 @@ import android.widget.Spinner;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.RESTClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -23,7 +26,7 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
  */
 public class LoginActivity extends Activity implements IRestClientObserver {
 
-	public static final String URL_WEBSITE = "http://192.168.0.107:8180/LoJackWeb/";
+	public static final String URL_WEBSITE = "http://192.168.0.110:8180/LoJackWeb/";
 	public static final String URL_ANDROID_VERSION = URL_WEBSITE
 			+ "android_version.txt";
 
@@ -77,7 +80,8 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		boolean cancel = false;
 		View focusView = null;
 		showProgress(true);
-		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this);
+		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.LOGIN, new RestParams(RESTConstants.P_DOCUMENT_TYPE, "1").
+				put(RESTConstants.P_DOCUMENT_NUMBER, "25270160").put(RESTConstants.P_PASSWORD, "123456"), null);
 		mAuthTask.execute((Void) null);
 	}
 

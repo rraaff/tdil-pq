@@ -6,18 +6,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.tdil.thalamus.android.IRestClientObserver;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -25,6 +26,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.tdil.thalamus.android.IRestClientObserver;
 
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -35,13 +38,21 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	private InputStream inputStream = null;
 	private String result = "";
 	
+	private String url;
+	private Map<String, String> urlParams;
+	private String body;
+	
 	private static HttpClient httpClient = new DefaultHttpClient();
 	
-	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer) {
+	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
+			String body) {
 		this.context = context;
 		this.method = method;
 		this.observer = observer;
 		this.progressDialog = new ProgressDialog(context);
+		this.url = url;
+		this.urlParams = restParams.getParams();
+		this.body = body;
 	}
 
 	protected void onPreExecute() {
@@ -56,16 +67,21 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 
 	@Override
 	protected Boolean doInBackground(Void... params) {
-		// TODO: attempt authentication against a network service.
-
-		String url_select = "http://192.168.0.107:8180/LoJackWeb/rest/users/login?documentType=1&documentNumber=12&password=12";
-
+		String url_select = RESTConstants.REST_URL + this.url;
+		if (this.urlParams != null) {
+			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
+				url_select = url_select.replace(replacements.getKey(), replacements.getValue());
+			}
+		}
 		ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
 
 		try {
 			// Set up HTTP post
 			HttpRequestBase httpPost = this.method.create(url_select);
-			// httpPost.setEntity(new UrlEncodedFormEntity(param));
+			if (this.body != null) {
+				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
+					    this.body.getBytes("UTF8")));
+			}
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
@@ -126,4 +142,5 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	protected void onCancelled() {
 		// TODO ver context.showProgress(false);
 	}
+	
 }
