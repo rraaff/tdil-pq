@@ -26,6 +26,19 @@
             android:label="@string/app_name"
             android:configChanges="orientation">
         </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.HomeActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.HomeAlarmsActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation">
+        </activity>
+        
         <activity
             android:name="com.tdil.thalamus.android.CheckForUpdateActivity"
             android:label="@string/app_name"
