@@ -2,6 +2,7 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -99,7 +100,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 				android.R.layout.simple_spinner_item, list);
 		spinner.setAdapter(adapter);*/
 
-		findViewById(R.id.button1).setOnClickListener(
+		findViewById(R.id.lights).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -158,7 +159,9 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		Gson gson = new Gson();
 		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
 		if (resp.getLogged()) {
-			System.out.println("logged");
+			Intent intent = new Intent(this, HomeActivity.class);
+        	startActivity(intent);
+        	finish();
 		} else {
 			System.out.println("not logged");
 		}
