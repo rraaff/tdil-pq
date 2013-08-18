@@ -52,6 +52,10 @@ public abstract class AbstractRESTService {
 	public Response failResponse() {
 		return Response.status(201).entity(asJSON(RESTResponse.FAIL_RESPONSE)).build();
 	}
+	
+	public Response response(Object object) {
+		return Response.status(201).entity(asJSON(object)).build();
+	}
 
 	public Response asyncFailResponse() {
 		return Response.status(201).entity(asJSON(new AsyncJobResponse(false))).build();

@@ -17,6 +17,7 @@ import net.sf.json.JSONObject;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.rest.model.BeanCollection;
 import com.tdil.lojack.rest.model.ChangePasswordBean;
+import com.tdil.lojack.rest.model.LoginResponse;
 import com.tdil.lojack.rest.model.PersonBean;
 import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
@@ -56,10 +57,21 @@ public class UsersService extends AbstractRESTService {
 			user = LoginForm.login(documentType + ":" + documentNumber, password, "", "");
 			user.createUserJobCollection(getSession(true));
 			getSession().setAttribute("user", user);
-			return okResponse();
+			
+			LoginResponse loginResponse = new LoginResponse();
+			loginResponse.setLogged(true);
+			loginResponse.setName(user.getName());
+			loginResponse.setLojackUserId(user.getLojackUserId());
+			loginResponse.setHomeUser(user.isHomeUser());
+			loginResponse.setHomeUserId(user.getHomeUserId());
+			loginResponse.setPetUser(user.isPetUser());
+			loginResponse.setPetUserId(user.getPetUserId());
+			loginResponse.setPreventUser(user.isPreventUser());
+			loginResponse.setPreventUserId(user.getPreventUserId());
+			return response(loginResponse);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return failResponse();
+			return response(LoginResponse.failed());
 		} 
 	}
 	
