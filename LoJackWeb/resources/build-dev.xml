@@ -77,6 +77,7 @@
 			<transaction src="ddl.sql" />
 			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
+			<transaction src="poi_inserts_gba.sql" />
 		</sql>
 	</target>
 	
