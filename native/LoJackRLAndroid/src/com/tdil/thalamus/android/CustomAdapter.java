@@ -16,20 +16,21 @@ import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.model.Alarm;
+import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
 public class CustomAdapter extends BaseAdapter   implements OnClickListener {
     
 	/*********** Declare Used Variables *********/
     private Activity activity;
-    private ArrayList data;
+    private ArrayList<Alarm> data;
     private static LayoutInflater inflater=null;
     public Resources res;
     Alarm tempValues=null;
     int i=0;
     
     /*************  CustomAdapter Constructor *****************/
-    public CustomAdapter(Activity a, ArrayList d,Resources resLocal) {
+    public CustomAdapter(Activity a, ArrayList<Alarm> d,Resources resLocal) {
     	
     	/********** Take passed values **********/
         activity = a;
@@ -81,8 +82,8 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
             /******** View Holder Object to contain tabitem.xml file elements ************/
             holder=new ViewHolder();
             holder.text=(TextView)vi.findViewById(R.id.alarmText);
-            holder.text1=(TextView)vi.findViewById(R.id.alarmText1);
-            holder.image=(ImageView)vi.findViewById(R.id.imageView1);
+            holder.text1=(TextView)vi.findViewById(R.id.alarmStatus);
+            holder.image=(ImageView)vi.findViewById(R.id.image1);
             
            /************  Set holder with LayoutInflater ************/
             vi.setTag(holder);
@@ -104,7 +105,8 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 	        /************  Set Model values in Holder elements ***********/
 	         holder.text.setText(tempValues.getDescription());
 	         holder.text1.setText(tempValues.getStatus());
-	         //holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
+	         new DownloadImageTask(holder.image).execute(LoginActivity.URL_WEBSITE + tempValues.getLastChangeLojackUserID());
+	        // holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 	         
 	         /******** Set Item Click Listner for LayoutInflater for each row ***********/
 	         vi.setOnClickListener(new OnItemClickListener(position));
