@@ -14,11 +14,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.ChangeLog;
+import com.tdil.lojack.model.WebsiteUserExample;
 import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.rest.model.LogCollection;
 import com.tdil.lojack.struts.action.ActivateAlarmEmailNotificationAjaxAction.ActivateAlarmEmailNotification;
@@ -26,6 +30,7 @@ import com.tdil.lojack.struts.action.DeactivateAlarmEmailNotificationAjaxAction.
 import com.tdil.lojack.struts.action.RenameAlarmAjaxAction.RenameAlarmAction;
 import com.tdil.lojack.struts.forms.AlarmsForm;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
@@ -54,7 +59,22 @@ public class AlarmsService extends AbstractRESTService {
 			Collection<Alarm> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<Alarm>>() {
 				@Override
 				public Collection<Alarm> executeInTransaction() throws SQLException {
-					return AlarmsForm.getAlarms(user);
+					Collection<Alarm> alarms = AlarmsForm.getAlarms(user);
+					for (Alarm alarm : alarms) {
+						if (StringUtils.isEmpty(alarm.getLastChangeLojackUserID())) {
+							alarm.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
+						} else {
+							WebsiteUserExample example = new WebsiteUserExample();
+							example.createCriteria().andLojackuseridEqualTo(alarm.getLastChangeLojackUserID());
+							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
+							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+								alarm.setLastChangeLojackUserID("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							} else {
+								alarm.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
+							}
+						}
+					}
+					return alarms;
 				}
 			});
 			return createResponse(201, new AlarmCollection(intermediate));
