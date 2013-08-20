@@ -255,14 +255,12 @@
 		});
 	}
 
-//	window.onload=function() {
-//		var elemToChange = document.getElementById("mapContainer");
-//		elemToChange.style.height = $(window).height() - 125 + "px"
-//	}
+	window.onload=function() {
+		checkHeight();
+	}
 
 	window.onresize=function() {
-		var elemToChange = document.getElementById("mapContainer");
-		elemToChange.style.height = $(window).height() - 125 + "px"
+		checkHeight();
 	}
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>

@@ -242,6 +242,7 @@ function right() {
 				</div>
 			<% } else { %>
 				<div id="pictureContainer">
+					<!--  div id="testerDeAltura">not set yet</div-->
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 						<img id="cameraImg" src="./viewCamera">
 					<% } %>
@@ -254,7 +255,7 @@ function right() {
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
 						<img id="cameraImg" src="./viewCameraSocket">
 					<% } %>
-					<div class="controlsBasicView">
+					<div id="controlsBasicViewId" class="controlsBasicView">
 						<a href="javascript:left()" id="right"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_right_off.png" /></a>
 						<a href="javascript:up()" id="up"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_up_off.png" /></a>
 						<a href="javascript:down()" id="down"><img src="images/skin_lj_rl/buttons/AppletCamera/applet_down_off.png" /></a>
@@ -277,6 +278,37 @@ function right() {
 						<% } %>
 							
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
+					
+					var modifyCameraSize = function(){
+						var elemToChange1 = document.getElementById("cameraImg");
+						var elemToChange2 = document.getElementById("controlsBasicViewId");
+						var winW = $(window).width();
+						var winH = $(window).height();
+						
+						if (winW > winH) {
+							//var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
+							elemToChange1.style.width = winW + "px"
+							elemToChange1.style.height = winH + "px"
+							
+							elemToChange2.style.top = winH - 82 + "px"
+							elemToChange2.style.bottom = "auto"
+						} else {
+							//var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+							elemToChange1.style.width = winW + "px"
+							elemToChange1.style.height = "auto"
+							
+							elemToChange2.style.top = "auto"
+							elemToChange2.style.bottom = "auto"
+						}
+					}
+					
+					window.onload=function() {
+						modifyCameraSize();
+					}
+	
+					window.onresize=function() {
+						modifyCameraSize();
+					}
 				</script>
 				<div id="linksAside">
 					<% if (usingMobile || isAndroid) { %>

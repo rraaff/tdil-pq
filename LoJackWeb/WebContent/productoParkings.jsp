@@ -378,6 +378,14 @@
             marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
+		
+		window.onload=function() {
+			checkHeight();
+		}
+
+		window.onresize=function() {
+			checkHeight();
+		}
 </script>
 </head>
 <body>
@@ -425,5 +433,14 @@
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+<script type="text/javascript">
+	var checkHeight = function(){
+		var elemToChange = document.getElementById("mapContainer");
+		elemToChange.style.height = $(window).height() - 125 + "px"
+		setTimeout(checkHeight,500);
+	};
+	checkHeight();
+</script>
+</body>
 </html>
