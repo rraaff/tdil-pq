@@ -24,6 +24,7 @@ import com.tdil.users.User;
 
 public abstract class AbstractAction extends Action {
 
+	@Deprecated
 	public static User getLoggedUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		if (session == null) {
@@ -36,11 +37,18 @@ public abstract class AbstractAction extends Action {
 		return user;
 	}
 	
+	public static List<User> getLoggedUsers(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			return new ArrayList<User>();
+		}
+		return Role.getUsers(request);
+	}
+	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		User user = getLoggedUser(request);
-		if (!Role.isValid(user, getPermissions(mapping))) {
-			getLog().fatal("Invalid action for " + this.getClass().getName() + " user " + user.toString());
+		if (!Role.isValid(request, getPermissions(mapping))) {
+			getLog().fatal("Invalid action for " + this.getClass().getName());
 			return mapping.findForward("invalidAction");
 		}
 		try {
