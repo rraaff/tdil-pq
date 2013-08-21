@@ -12,16 +12,15 @@ import org.apache.struts.config.ForwardConfig;
 
 import com.tdil.struts.actions.AbstractAction;
 import com.tdil.users.Role;
-import com.tdil.users.User;
 
 public class AuthorizationRequestProcessor extends RequestProcessor {
 
 	@Override
 	protected boolean processRoles(HttpServletRequest request, HttpServletResponse response, ActionMapping mapping)
 			throws IOException, ServletException {
-		User user = AbstractAction.getLoggedUser(request);
-		if (!Role.isValid(user, AbstractAction.getPermissions(mapping))) {
-			if (user == null) {
+		
+		if (!Role.isValid(request, AbstractAction.getPermissions(mapping))) {
+			if (Role.getUsers(request).isEmpty()) {
 				ForwardConfig expireForward = moduleConfig.findForwardConfig("notLogged"); 
 				processForwardConfig(request,response,expireForward); 
 			} else {

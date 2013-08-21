@@ -14,7 +14,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.users.Role;
-import com.tdil.users.User;
 
 public abstract class AjaxAction extends Action {
 
@@ -26,8 +25,7 @@ public abstract class AjaxAction extends Action {
 			response.setContentType(contentType);
 		}
 	    response.setHeader("cache-control", "no-cache");
-		User user = AbstractAction.getLoggedUser(request);
-		if (!Role.isValid(user, AbstractAction.getPermissions(mapping))) {
+		if (!Role.isValid(request, AbstractAction.getPermissions(mapping))) {
 			HashMap<String, String> result = new HashMap<String, String>();
 			result.put("error", "notLogged");
 			writeJsonResponse(result, response);
