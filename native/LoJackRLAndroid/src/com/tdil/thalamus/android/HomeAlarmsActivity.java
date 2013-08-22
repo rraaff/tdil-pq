@@ -32,44 +32,48 @@ public class HomeAlarmsActivity extends Activity {
 	private RESTClientTask mAuthTask = null;
 	ListView list;
 	CustomAdapter adapter;
-	public  HomeAlarmsActivity CustomListView = null;
-	public  ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
+	public HomeAlarmsActivity CustomListView = null;
+	public ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_home_alarms);
-		
-		 list=(ListView)findViewById(R.id.alarmList);
+
+		list = (ListView) findViewById(R.id.alarmList);
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
-				 Gson gson = new Gson();
-				
-				 AlarmCollection col = gson.fromJson(task.getResult(), AlarmCollection.class);
-				 CustomListViewValuesArr = new ArrayList<Alarm>(col.getAlarms());
-				 Resources res =getResources(); 
-				 adapter=new CustomAdapter(HomeAlarmsActivity.this, CustomListViewValuesArr, res);
-			        list.setAdapter(adapter);
-				 /*BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(HomeAlarmsActivity.this,
-					android.R.layout.simple_spinner_item, col.getList(), new BeanMappingFunction<DocumentTypeBean>() {
-			 			public String key(DocumentTypeBean t) {return String.valueOf(t.getId());};
-			 			@Override
-			 			public String value(DocumentTypeBean t) {
-			 				return t.getName();
-			 			}
-					});
-					spinner.setAdapter(adapter);*/
+				Gson gson = new Gson();
+
+				AlarmCollection col = gson.fromJson(task.getResult(),
+						AlarmCollection.class);
+				CustomListViewValuesArr = new ArrayList<Alarm>(col.getAlarms());
+				Resources res = getResources();
+				adapter = new CustomAdapter(HomeAlarmsActivity.this,
+						CustomListViewValuesArr, res);
+				list.setAdapter(adapter);
+				/*
+				 * BeanMappingListAdapter<DocumentTypeBean> adapter = new
+				 * BeanMappingListAdapter
+				 * <DocumentTypeBean>(HomeAlarmsActivity.this,
+				 * android.R.layout.simple_spinner_item, col.getList(), new
+				 * BeanMappingFunction<DocumentTypeBean>() { public String
+				 * key(DocumentTypeBean t) {return String.valueOf(t.getId());};
+				 * 
+				 * @Override public String value(DocumentTypeBean t) { return
+				 * t.getName(); } }); spinner.setAdapter(adapter);
+				 */
 			}
+
 			@Override
 			public void error(RESTClientTask task) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
-		
 
 	}
 
@@ -85,16 +89,28 @@ public class HomeAlarmsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
+
+	public void onItemClick(int mPosition) {
+		Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
+		System.out.println(tempValues);
+		/*
+		 * Toast.makeText(CustomListView,
+		 * ""+tempValues.getCompanyName()+" \nImage:"
+		 * +tempValues.getImage()+" \nUrl:"+tempValues.getUrl(),
+		 * Toast.LENGTH_LONG) .show();
+		 */
+	}
 	
-	public void onItemClick(int mPosition)
-    {
-    	Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
-    	System.out.println(tempValues);
-    	/*Toast.makeText(CustomListView, 
-    			""+tempValues.getCompanyName()+" \nImage:"+tempValues.getImage()+" \nUrl:"+tempValues.getUrl(), 
-    			Toast.LENGTH_LONG)
-    	.show();*/
-    }
+	public void toggleActivation(int mPosition) {
+		Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
+		System.out.println("toggleActivation" + tempValues);
+		/*
+		 * Toast.makeText(CustomListView,
+		 * ""+tempValues.getCompanyName()+" \nImage:"
+		 * +tempValues.getImage()+" \nUrl:"+tempValues.getUrl(),
+		 * Toast.LENGTH_LONG) .show();
+		 */
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,7 +123,6 @@ public class HomeAlarmsActivity extends Activity {
 		}
 	}
 
-	
 	/**
 	 * Shows the progress UI and hides the login form.
 	 */
@@ -118,6 +133,5 @@ public class HomeAlarmsActivity extends Activity {
 		// the progress spinner.
 
 	}
-
 
 }
