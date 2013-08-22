@@ -50,11 +50,23 @@ public abstract class Role {
 		if (session == null) {
 			return null;
 		}
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute(getSessionUserName());
 		if (user == null) {
 			return null;
 		}
 		return user;
+	}
+
+	public String getSessionUserName() {
+		return "user";
+	}
+	
+	public String getNotLogged() {
+		return "notLogged";
+	}
+	
+	public String getNotAuthorized() {
+		return "notAuthorized";
 	}
 
 	public static List<User> getUsers(HttpServletRequest request) {
