@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -17,6 +19,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 
@@ -31,7 +34,7 @@ public class HomeAlarmsActivity extends Activity {
 
 	private RESTClientTask mAuthTask = null;
 	ListView list;
-	CustomAdapter adapter;
+	AlarmListAdapter adapter;
 	public HomeAlarmsActivity CustomListView = null;
 	public ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
 
@@ -52,20 +55,9 @@ public class HomeAlarmsActivity extends Activity {
 						AlarmCollection.class);
 				CustomListViewValuesArr = new ArrayList<Alarm>(col.getAlarms());
 				Resources res = getResources();
-				adapter = new CustomAdapter(HomeAlarmsActivity.this,
+				adapter = new AlarmListAdapter(HomeAlarmsActivity.this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
-				/*
-				 * BeanMappingListAdapter<DocumentTypeBean> adapter = new
-				 * BeanMappingListAdapter
-				 * <DocumentTypeBean>(HomeAlarmsActivity.this,
-				 * android.R.layout.simple_spinner_item, col.getList(), new
-				 * BeanMappingFunction<DocumentTypeBean>() { public String
-				 * key(DocumentTypeBean t) {return String.valueOf(t.getId());};
-				 * 
-				 * @Override public String value(DocumentTypeBean t) { return
-				 * t.getName(); } }); spinner.setAdapter(adapter);
-				 */
 			}
 
 			@Override
@@ -102,14 +94,49 @@ public class HomeAlarmsActivity extends Activity {
 	}
 	
 	public void toggleActivation(int mPosition) {
-		Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
-		System.out.println("toggleActivation" + tempValues);
-		/*
-		 * Toast.makeText(CustomListView,
-		 * ""+tempValues.getCompanyName()+" \nImage:"
-		 * +tempValues.getImage()+" \nUrl:"+tempValues.getUrl(),
-		 * Toast.LENGTH_LONG) .show();
-		 */
+		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
+		System.out.println("toggleActivation" + alarm);
+		if (alarm.isActive()) {
+			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+				@Override
+				public void sucess(RESTClientTask task) {
+					Gson gson = new Gson();
+					new AlertDialog.Builder(HomeAlarmsActivity.this)
+		               .setIcon(R.drawable.ic_launcher)
+		               .setTitle("Alarms")
+		               .setMessage("Se ha enviado el comando de desactivacion")
+		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		                       public void onClick(DialogInterface dialog, int whichButton) {
+		                    	   //this.
+		                       }
+		               }).show();
+				}
+				@Override
+				public void error(RESTClientTask task) {
+					// TODO Auto-generated method stub
+				}
+			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+		} else {
+			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+				@Override
+				public void sucess(RESTClientTask task) {
+					Gson gson = new Gson();
+					new AlertDialog.Builder(HomeAlarmsActivity.this)
+		               .setIcon(R.drawable.ic_launcher)
+		               .setTitle("Alarms")
+		               .setMessage("Se ha enviado el comando de activacion")
+		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		                       public void onClick(DialogInterface dialog, int whichButton) {
+		                    	   //HomeAlarmsActivity.this.finish();
+		                       }
+		               }).show();
+				}
+				@Override
+				public void error(RESTClientTask task) {
+					// TODO Auto-generated method stub
+				}
+			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+		}
 	}
 
 	@Override

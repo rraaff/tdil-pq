@@ -20,7 +20,7 @@ import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class CustomAdapter extends BaseAdapter implements OnClickListener {
+public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
 	private Activity activity;
@@ -31,7 +31,7 @@ public class CustomAdapter extends BaseAdapter implements OnClickListener {
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public CustomAdapter(Activity a, ArrayList<Alarm> d, Resources resLocal) {
+	public AlarmListAdapter(Activity a, ArrayList<Alarm> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
