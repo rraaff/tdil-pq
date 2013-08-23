@@ -4,6 +4,7 @@
  */
 package com.tdil.log4j;
 
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -35,6 +36,10 @@ public class LoggerProvider {
 			setLoggers(new HashMap<String, Logger>());
 		}
 		return loggers;
+	}
+	
+	public static Collection<Logger> getAllLoggers() {
+		return loggers.values();
 	}
 
 	/**
