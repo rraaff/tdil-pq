@@ -31,4 +31,8 @@ public class User implements Serializable {
 		return this.getRoles().contains(role.getName());
 	}
 	
+	public String getName() {
+		return String.valueOf(this.getId());
+	}
+	
 }
