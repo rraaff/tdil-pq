@@ -38,6 +38,7 @@ public abstract class SystemConfig {
 	}
 
 	public void init(ServletContextEvent sce) {
+		migrateDatabase();
 		Role.addRole(None.INSTANCE);
 		initRoles();
 		initXMLALias();
@@ -45,6 +46,10 @@ public abstract class SystemConfig {
 		loadProperties();
 		initLogger();
 		initBlobCache();
+	}
+
+	protected void migrateDatabase() {
+		
 	}
 
 	public void loadPropertiesFromDB() {
