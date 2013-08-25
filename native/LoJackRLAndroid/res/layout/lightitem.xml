@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1"
+    android:background="@drawable/bar_bg"
+    android:paddingTop="0dip" >
+
+  <TableRow android:layout_width="fill_parent" >
+
+             <ImageView
+                 android:id="@+id/logLightAvatar"
+                 android:layout_width="110dp"
+                 android:layout_height="wrap_content"
+                 android:maxHeight="50dp"
+                 android:scaleType="centerCrop" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="fill_horizontal"
+        android:paddingTop="0dip">
+
+      <TableRow
+          android:layout_width="fill_parent"
+          android:layout_gravity="fill_horizontal" >
+
+	     <TextView
+	         android:id="@+id/logLightStatus"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_gravity="left|center_vertical"
+	         android:layout_marginLeft="10dip"
+	         android:layout_marginTop="4dip"
+	         android:layout_span="1"
+	         android:layout_weight="1"
+	         android:textColor="#000000"
+	         android:textSize="16sp" />
+
+		</TableRow>
+
+	    <TableRow android:layout_width="fill_parent" >
+
+	        <TextView
+	            android:id="@+id/logLightUser"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="left|center_vertical"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginTop="4dip"
+	            android:layout_weight="1"
+	            android:gravity="left"
+	            android:text=""
+	            android:textColor="#000000"
+	            android:textSize="16sp" />
+	    </TableRow>
+	    <TableRow android:layout_width="fill_parent" >
+
+	        <Button
+	            android:id="@+id/viewLightLogButton"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Ver log" />
+
+	    </TableRow>
+
+	  </TableLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
+
+ </TableRow>
+ 	
+     
+</TableLayout>

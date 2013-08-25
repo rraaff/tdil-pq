@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -21,53 +19,51 @@ import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.Alarm;
-import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.Light;
+import com.tdil.thalamus.android.rest.model.LightCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsActivity extends Activity {
+public class HomeLightsActivity extends Activity {
 	/**
 	 * The default email to populate the email field with.
 	 */
 
-	private RESTClientTask mAuthTask = null;
 	ListView list;
-	AlarmListAdapter adapter;
-	public HomeAlarmsActivity CustomListView = null;
-	public ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
+	LightListAdapter adapter;
+	public HomeLightsActivity CustomListView = null;
+	public ArrayList<Light> CustomListViewValuesArr = new ArrayList<Light>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_home_alarms);
+		setContentView(R.layout.activity_home_lights);
 
-		list = (ListView) findViewById(R.id.alarmsList);
+		list = (ListView) findViewById(R.id.lightsList);
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
 
-				AlarmCollection col = gson.fromJson(task.getResult(),
-						AlarmCollection.class);
-				CustomListViewValuesArr = new ArrayList<Alarm>(col.getAlarms());
+				LightCollection col = gson.fromJson(task.getResult(),
+						LightCollection.class);
+				CustomListViewValuesArr = new ArrayList<Light>(col.getLights());
 				Resources res = getResources();
-				adapter = new AlarmListAdapter(HomeAlarmsActivity.this,
+				adapter = new LightListAdapter(HomeLightsActivity.this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
 			}
 
 			@Override
 			public void error(RESTClientTask task) {
-				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+				Messages.connectionErrorMessage(HomeLightsActivity.this);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
 
 	}
 
@@ -85,7 +81,7 @@ public class HomeAlarmsActivity extends Activity {
 	}
 
 	public void onItemClick(int mPosition) {
-		Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
+		Light tempValues = (Light) CustomListViewValuesArr.get(mPosition);
 		System.out.println(tempValues);
 		/*
 		 * Toast.makeText(CustomListView,
@@ -96,14 +92,14 @@ public class HomeAlarmsActivity extends Activity {
 	}
 	
 	public void toggleActivation(int mPosition) {
-		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
+		Light alarm = (Light) CustomListViewValuesArr.get(mPosition);
 		System.out.println("toggleActivation" + alarm);
-		if (alarm.isActive()) {
+		/*if (alarm.isActive()) {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					new AlertDialog.Builder(HomeAlarmsActivity.this)
+					new AlertDialog.Builder(HomeLightsActivity.this)
 		               .setIcon(R.drawable.ic_launcher)
 		               .setTitle("Alarms")
 		               .setMessage("Se ha enviado el comando de desactivacion")
@@ -115,7 +111,7 @@ public class HomeAlarmsActivity extends Activity {
 				}
 				@Override
 				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+					Messages.connectionErrorMessage(HomeLightsActivity.this);
 				}
 			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		} else {
@@ -123,7 +119,7 @@ public class HomeAlarmsActivity extends Activity {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					new AlertDialog.Builder(HomeAlarmsActivity.this)
+					new AlertDialog.Builder(HomeLightsActivity.this)
 		               .setIcon(R.drawable.ic_launcher)
 		               .setTitle("Alarms")
 		               .setMessage("Se ha enviado el comando de activacion")
@@ -135,17 +131,18 @@ public class HomeAlarmsActivity extends Activity {
 				}
 				@Override
 				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+					Messages.connectionErrorMessage(HomeLightsActivity.this);
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
-		}
+		}*/
 	}
 	
-	public void viewAlarmLog(int mPosition) {
+	public void viewLightLog(int mPosition) {
 		System.out.println("view Alarm log" + mPosition);
-		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
-		Alarm alarm = CustomListViewValuesArr.get(mPosition);
-		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
+		Intent intent = new Intent(getBaseContext(), HomeLogLightActivity.class);
+		Light alarm = CustomListViewValuesArr.get(mPosition);
+		intent.putExtra(HomeLogLightActivity.IDENTIDAD, alarm.getIdEntidad());
+		intent.putExtra(HomeLogLightActivity.IDLUZ, alarm.getIdLuz());
 		startActivity(intent);
 	}
 

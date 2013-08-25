@@ -50,14 +50,15 @@ public class HomeActivity extends Activity {
 		        	//finish();
 				}
 			});
-	/*
+	
 		findViewById(R.id.lights).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						attemptLogin();
-					}
-				});*/
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(HomeActivity.this, HomeLightsActivity.class);
+		        	startActivity(intent);
+				}
+			});
 	}
 
 	@Override

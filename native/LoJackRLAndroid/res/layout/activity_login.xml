@@ -23,7 +23,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="numero documento" />
+            android:hint="numero documento" >
+            <requestFocus />
+        </EditText>
 
         <EditText
             android:id="@+id/password"
@@ -33,7 +35,6 @@
             android:hint="*********"
             android:inputType="textPassword" >
 
-            <requestFocus />
         </EditText>
 
         <Button

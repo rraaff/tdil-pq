@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".HomeAlarmsActivity" >
+    tools:context=".HomeLightsActivity" >
 
     <!-- Login progress -->
 
@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <ListView
-            android:id="@+id/alarmsList"
+            android:id="@+id/lightsList"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
         </ListView>
