@@ -14,18 +14,25 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
+import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.ChangeLog;
 import com.tdil.lojack.gis.model.Light;
+import com.tdil.lojack.model.WebsiteUserExample;
 import com.tdil.lojack.rest.model.LightCollection;
 import com.tdil.lojack.rest.model.LogCollection;
 import com.tdil.lojack.struts.action.ActivateLightEmailNotificationAjaxAction.ActivateLightEmailNotification;
 import com.tdil.lojack.struts.action.DeactivateLightEmailNotificationAjaxAction.DeactivateLightEmailNotification;
 import com.tdil.lojack.struts.action.RenameLightAjaxAction.RenameLightAction;
+import com.tdil.lojack.struts.forms.AlarmsForm;
 import com.tdil.lojack.struts.forms.LightsForm;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.lojack.utils.WebsiteUserUtils;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
@@ -54,7 +61,22 @@ public class LightsService extends AbstractRESTService {
 			Collection<Light> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<Light>>() {
 				@Override
 				public Collection<Light> executeInTransaction() throws SQLException {
-					return LightsForm.getLights(user);
+					Collection<Light> lights = LightsForm.getLights(user);
+					for (Light light : lights) {
+						if (StringUtils.isEmpty(light.getLastChangeLojackUserID())) {
+							light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
+						} else {
+							WebsiteUserExample example = new WebsiteUserExample();
+							example.createCriteria().andLojackuseridEqualTo(light.getLastChangeLojackUserID());
+							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
+							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+								light.setLastChangeLojackUserID("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							} else {
+								light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
+							}
+						}
+					}
+					return lights;
 				}
 			});
 			return createResponse(201, new LightCollection(intermediate));
@@ -132,10 +154,36 @@ public class LightsService extends AbstractRESTService {
 	@GET
 	@Path("/{idEntidad}/{idLuz}/log")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response log(@PathParam("idEntidad") int idEntidad) {
+	public Response log(@PathParam("idEntidad") final int idEntidad,@PathParam("idLuz") final int idLuz) {
 		validateLogged();
-		Collection<ChangeLog> log = LoJackServicesConnector.getAlarmLog(this.getUser(), idEntidad);
-		return createResponse(201, new LogCollection(log));
+		final WebsiteUser user = getUser();
+		try {
+			Collection<ChangeLog> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<ChangeLog>>() {
+				@Override
+				public Collection<ChangeLog> executeInTransaction() throws SQLException {
+					Collection<ChangeLog> logs = LoJackServicesConnector.getLightLog(user, idEntidad, idLuz);
+					for (ChangeLog alarm : logs) {
+						if (StringUtils.isEmpty(alarm.getLojackUserId())) {
+							alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
+						} else {
+							WebsiteUserExample example = new WebsiteUserExample();
+							example.createCriteria().andLojackuseridEqualTo(alarm.getLojackUserId());
+							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
+							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+								alarm.setLojackUserId("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							} else {
+								alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
+							}
+						}
+					}
+					return logs;
+				}
+			});
+			return createResponse(201, new LogCollection(intermediate));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
 	}
 	
 	@GET
