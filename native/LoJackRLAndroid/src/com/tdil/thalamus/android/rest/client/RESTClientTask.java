@@ -27,7 +27,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.tdil.thalamus.android.IRestClientObserver;
 
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 
@@ -85,46 +84,54 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
 			inputStream = httpEntity.getContent();
+			
+			// Convert response to string using String Builder
+			try {
+				BufferedReader bReader = new BufferedReader(new InputStreamReader(
+						inputStream, "iso-8859-1"), 8);
+				StringBuilder sBuilder = new StringBuilder();
+
+				String line = null;
+				while ((line = bReader.readLine()) != null) {
+					sBuilder.append(line + "\n");
+				}
+				inputStream.close();
+				result = sBuilder.toString();
+				JSONObject jObject;
+				try {
+					jObject = new JSONObject(result);
+					System.out.println(jObject.toString(2));
+					// if por ...
+					return true;
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;
+				}
+			} catch (Exception e) {
+				Log.e("StringBuilding & BufferedReader", "Error converting result "
+						+ e.toString());
+				return false;
+			}
+			
 		} catch (UnsupportedEncodingException e1) {
 			Log.e("UnsupportedEncodingException", e1.toString());
 			e1.printStackTrace();
+			return false;
 		} catch (ClientProtocolException e2) {
 			Log.e("ClientProtocolException", e2.toString());
 			e2.printStackTrace();
+			return false;
 		} catch (IllegalStateException e3) {
 			Log.e("IllegalStateException", e3.toString());
 			e3.printStackTrace();
+			return false;
 		} catch (IOException e4) {
 			Log.e("IOException", e4.toString());
 			e4.printStackTrace();
-		}
-		// Convert response to string using String Builder
-		try {
-			BufferedReader bReader = new BufferedReader(new InputStreamReader(
-					inputStream, "iso-8859-1"), 8);
-			StringBuilder sBuilder = new StringBuilder();
-
-			String line = null;
-			while ((line = bReader.readLine()) != null) {
-				sBuilder.append(line + "\n");
-			}
-			inputStream.close();
-			result = sBuilder.toString();
-		} catch (Exception e) {
-			Log.e("StringBuilding & BufferedReader", "Error converting result "
-					+ e.toString());
-		}
-		JSONObject jObject;
-		try {
-			jObject = new JSONObject(result);
-			System.out.println(jObject.toString(2));
-			// if por ...
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return false;
 		}
-		return true;
+		
 	}
 
 	@Override

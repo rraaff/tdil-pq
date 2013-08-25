@@ -18,22 +18,20 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
 public class LoginActivity extends Activity implements IRestClientObserver {
-
-	public static final String URL_WEBSITE = "http://192.168.0.110:8180/LoJackWeb/";
-	public static final String URL_ANDROID_VERSION = URL_WEBSITE
-			+ "android_version.txt";
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -88,8 +86,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			}
 			@Override
 			public void error(RESTClientTask task) {
-				// TODO Auto-generated method stub
-				
+				Messages.connectionErrorMessage(LoginActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
 		
@@ -152,6 +149,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 
 	@Override
 	public void error(RESTClientTask task) {
+		Messages.connectionErrorMessage(LoginActivity.this);
 		this.mAuthTask = null;
 	}
 	@Override

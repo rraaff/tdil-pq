@@ -18,6 +18,7 @@ import android.os.Handler;
 import android.view.Menu;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.utils.Messages;
 
 public class CheckForUpdateActivity extends Activity {
 	
@@ -51,8 +52,10 @@ public class CheckForUpdateActivity extends Activity {
     private Thread checkUpdate = new Thread() {
         public void run() {
             try {
-                URL updateURL = new URL(LoginActivity.URL_ANDROID_VERSION);                
+                URL updateURL = new URL(ApplicationConfig.URL_ANDROID_VERSION);                
                 URLConnection conn = updateURL.openConnection(); 
+                conn.setConnectTimeout(ApplicationConfig.default_timeout);
+                conn.setReadTimeout(ApplicationConfig.default_timeout);
                 InputStream is = conn.getInputStream();
                 BufferedInputStream bis = new BufferedInputStream(is);
                 ByteArrayBuffer baf = new ByteArrayBuffer(50);
@@ -89,15 +92,7 @@ public class CheckForUpdateActivity extends Activity {
     /* This Runnable creates a Dialog and asks the user to open the Market */ 
     private Runnable showError = new Runnable(){
            public void run(){
-        	   new AlertDialog.Builder(CheckForUpdateActivity.this)
-               .setIcon(R.drawable.ic_launcher)
-               .setTitle("Atención")
-               .setMessage("No se pudo establecer correctamente la conexión")
-               .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
-                       public void onClick(DialogInterface dialog, int whichButton) {
-                             CheckForUpdateActivity.this.finish();
-                       }
-               }).show();
+        	   Messages.connectionErrorMessage(CheckForUpdateActivity.this);
            }
     };    
 

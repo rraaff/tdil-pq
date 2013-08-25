@@ -1,6 +1,5 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.rest.client;
 
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
 
 public interface IRestClientObserver {
 

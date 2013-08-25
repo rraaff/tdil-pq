@@ -109,7 +109,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
 			
 			new DownloadImageTask(holder.lastChangeUserAvatar)
-					.execute(LoginActivity.URL_WEBSITE
+					.execute(ApplicationConfig.URL_WEBSITE
 							+ iterAlarm.getLastChangeLojackUserID());
 			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 

@@ -17,11 +17,13 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -62,8 +64,7 @@ public class HomeAlarmsActivity extends Activity {
 
 			@Override
 			public void error(RESTClientTask task) {
-				// TODO Auto-generated method stub
-
+				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
 
@@ -113,7 +114,7 @@ public class HomeAlarmsActivity extends Activity {
 				}
 				@Override
 				public void error(RESTClientTask task) {
-					// TODO Auto-generated method stub
+					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 				}
 			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		} else {
@@ -133,7 +134,7 @@ public class HomeAlarmsActivity extends Activity {
 				}
 				@Override
 				public void error(RESTClientTask task) {
-					// TODO Auto-generated method stub
+					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		}
