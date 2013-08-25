@@ -140,10 +140,36 @@ public class AlarmsService extends AbstractRESTService {
 	@GET
 	@Path("/{idEntidad}/log")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response log(@PathParam("idEntidad") int idEntidad) {
+	public Response log(@PathParam("idEntidad") final int idEntidad) {
 		validateLogged();
-		Collection<ChangeLog> log = LoJackServicesConnector.getAlarmLog(this.getUser(), idEntidad);
-		return createResponse(201, new LogCollection(log));
+		final WebsiteUser user = getUser();
+		try {
+			Collection<ChangeLog> intermediate = GenericTransactionExecutionService.getInstance().execute(new TransactionalActionWithResult<Collection<ChangeLog>>() {
+				@Override
+				public Collection<ChangeLog> executeInTransaction() throws SQLException {
+					Collection<ChangeLog> logs = LoJackServicesConnector.getAlarmLog(user, idEntidad);
+					for (ChangeLog alarm : logs) {
+						if (StringUtils.isEmpty(alarm.getLojackUserId())) {
+							alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
+						} else {
+							WebsiteUserExample example = new WebsiteUserExample();
+							example.createCriteria().andLojackuseridEqualTo(alarm.getLojackUserId());
+							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
+							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+								alarm.setLojackUserId("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							} else {
+								alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
+							}
+						}
+					}
+					return logs;
+				}
+			});
+			return createResponse(201, new LogCollection(intermediate));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
 	}
 	
 	@GET
