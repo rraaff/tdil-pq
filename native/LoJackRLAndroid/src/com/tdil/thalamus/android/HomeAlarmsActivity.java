@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -138,6 +139,14 @@ public class HomeAlarmsActivity extends Activity {
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		}
+	}
+	
+	public void viewAlarmLog(int mPosition) {
+		System.out.println("view Alarm log" + mPosition);
+		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
+		Alarm alarm = CustomListViewValuesArr.get(mPosition);
+		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
+		startActivity(intent);
 	}
 
 	@Override

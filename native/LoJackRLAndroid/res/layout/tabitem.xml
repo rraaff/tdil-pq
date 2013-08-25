@@ -9,7 +9,7 @@
   <TableRow android:layout_width="fill_parent" >
 
              <ImageView
-                 android:id="@+id/image1"
+                 android:id="@+id/logAlarmAvatar"
                  android:layout_width="110dp"
                  android:layout_height="wrap_content"
                  android:maxHeight="50dp"
@@ -27,7 +27,7 @@
           android:layout_gravity="fill_horizontal" >
 
 	     <TextView
-	         android:id="@+id/alarmStatus"
+	         android:id="@+id/logAlarmStatus"
 	         android:layout_width="fill_parent"
 	         android:layout_height="wrap_content"
 	         android:layout_gravity="left|center_vertical"
@@ -42,20 +42,30 @@
 
 	    <TableRow android:layout_width="fill_parent" >
 
-  	       <TextView
-  	           android:id="@+id/alarmText"
-  	           android:layout_width="wrap_content"
-  	           android:layout_height="wrap_content"
-  	           android:layout_gravity="left|center_vertical"
-  	           android:layout_marginLeft="10dip"
-  	           android:layout_marginTop="4dip"
-  	           android:layout_weight="1"
-  	           android:gravity="left"
-  	           android:text=""
-  	           android:textColor="#000000"
-  	           android:textSize="16sp" />
+	        <TextView
+	            android:id="@+id/logAlarmUser"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="left|center_vertical"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginTop="4dip"
+	            android:layout_weight="1"
+	            android:gravity="left"
+	            android:text=""
+	            android:textColor="#000000"
+	            android:textSize="16sp" />
+	    </TableRow>
+	    <TableRow android:layout_width="fill_parent" >
 
-        </TableRow>
+	        <Button
+	            android:id="@+id/viewAlarmLogButton"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Ver log" />
+
+	    </TableRow>
+
 	  </TableLayout>
 
     <ToggleButton

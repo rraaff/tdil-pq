@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -67,6 +68,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		public TextView alarmStatus;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
+		public Button viewAlarmLog;
 		public ImageView lastChangeUserAvatar;
 
 	}
@@ -84,10 +86,11 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
-			holder.alarmDescription = (TextView) vi.findViewById(R.id.alarmText);
-			holder.alarmStatus = (TextView) vi.findViewById(R.id.alarmStatus);
+			holder.alarmDescription = (TextView) vi.findViewById(R.id.logAlarmUser);
+			holder.alarmStatus = (TextView) vi.findViewById(R.id.logAlarmStatus);
 			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
-			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.image1);
+			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
+			holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
 
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);
@@ -107,6 +110,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmStatus.setText(iterAlarm.getStatus());
 			holder.activateDeactivate.setChecked(iterAlarm.isActive());
 			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
+			holder.viewAlarmLog.setOnClickListener(new ViewAlarmLogListener(position));
 			
 			new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
@@ -151,6 +155,20 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		public void onClick(View arg0) {
 			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
 			sct.toggleActivation(mPosition);
+		}
+	}
+	/********* Called when Item click in ListView ************/
+	private class ViewAlarmLogListener implements OnClickListener {
+		private int mPosition;
+		
+		ViewAlarmLogListener(int position) {
+			mPosition = position;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
+			sct.viewAlarmLog(mPosition);
 		}
 	}
 }

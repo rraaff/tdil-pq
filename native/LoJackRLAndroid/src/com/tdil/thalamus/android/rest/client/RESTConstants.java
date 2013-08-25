@@ -21,4 +21,6 @@ public interface RESTConstants {
 	public static final String ALARMS = "/alarms/list";
 	public static final String ACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/activate";
 	public static final String DEACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/deactivate";
+	
+	public static final String LOG_ALARM =  "/alarms/" + ID_ENTIDAD + "/log";
 }
