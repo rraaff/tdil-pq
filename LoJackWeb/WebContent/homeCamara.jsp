@@ -242,7 +242,7 @@ function right() {
 				</div>
 			<% } else { %>
 				<div id="pictureContainer">
-					<!--  div id="testerDeAltura">not set yet</div-->
+					<div id="testerDeAltura" style="display:none;">not set yet</div>
 					<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeLocal()) { %>
 						<img id="cameraImg" src="./viewCamera">
 					<% } %>
@@ -281,24 +281,38 @@ function right() {
 					
 					var modifyCameraSize = function(){
 						var elemToChange1 = document.getElementById("cameraImg");
+						var elemToChange3 = document.getElementById("pictureContainer");
 						var elemToChange2 = document.getElementById("controlsBasicViewId");
+						var elemToChange4 = document.getElementById("productHomeContent");
 						var winW = $(window).width();
 						var winH = $(window).height();
 						
 						if (winW > winH) {
-							//var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
+							var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
 							elemToChange1.style.width = winW + "px"
 							elemToChange1.style.height = winH + "px"
 							
 							elemToChange2.style.top = winH - 82 + "px"
 							elemToChange2.style.bottom = "auto"
+						
+							elemToChange3.style.width = winW + "px"
+							elemToChange3.style.height = winH + "px"
+							
+							elemToChange4.style.width = winW + "px"
+							elemToChange4.style.height = winH + "px"
 						} else {
-							//var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+							var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
 							elemToChange1.style.width = winW + "px"
 							elemToChange1.style.height = "auto"
 							
 							elemToChange2.style.top = "auto"
 							elemToChange2.style.bottom = "auto"
+							
+							elemToChange3.style.width = winW + "px"
+							elemToChange3.style.height = "auto"
+							
+							elemToChange4.style.width = winW + "px"
+							elemToChange4.style.height = "auto"
 						}
 					}
 					
