@@ -34,29 +34,28 @@ div {
 	box-sizing: border-box;
 }
 /* END RESET */
+#testerDeAltura { background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; position:fixed; line-height:25px; top:40px;  color:#fff; z-index:8000; }
+
 header { display:none; }
-#productsMenu {
-	background:url(../images/skin_lj_rl/backs/productMenu/menu_base.png);
-	background-repeat:repeat-x;
-	background-position:0px 0px;
-	width:100%;
-	z-index:2;
-	position:relative;
+#productsMenu { background:url(../images/skin_lj_rl/backs/productMenu/menu_base.png); background-repeat:repeat-x; background-position:0px 0px; width:100%; z-index:2; position:relative; display:inline-block; }
+@media all and (orientation:landscape) {
+	#productsMenu { position:fixed; z-index:1500; } 
 }
-#productsMenu .userLoggedThalamusMenu {
-	width:100%;
-	text-transform:uppercase;
-	font-family:Arial,sans-serif;
-}
+#productsMenu .userLoggedThalamusMenu { width:100%; text-transform:uppercase; font-family:Arial,sans-serif; }
 #productsMenu .correctNav { width:100%; }
 #productsMenu ul li.logoContainer { width:100%; height:83px; text-align:center; }
+
+@media all and (orientation:landscape) and (max-height:350px) {
+	#productsMenu ul li.logoContainer { display:none; }
+}
+
 #productsMenu ul li a { color:#FFF; }
 #productsMenu ul li a.logo { width:100%; }
 #productsMenu ul li a img { width:auto; height:80%; padding:10px; }
 #productsMenu ul li.toRight { background:#e51b24; line-height:100%; width:25%; text-align:center; padding:10px 0; float:right; }
 
-#content { width:100%; text-align:center; display:inline-block; overflow:hidden; left:0px; position:relative; z-index:1; }
-#controls { background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; width:100%; margin:0 auto; bottom:0; position:fixed; z-index:1300;}
+#content { width:100%; height:100%; text-align:center; display:inline-block; overflow:hidden; left:0px; position:fixed; z-index:1; }
+#controls { background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; width:100%; margin:0 auto; position:fixed; z-index:1300;}
 
 .smallmap,
 .pageWrapper { width:100%; }

@@ -173,6 +173,50 @@
          		   $( "#" + $(this).attr('cl') ).fadeOut();
          		});
          	});
+            
+        	var checkHeight = function(){
+        		//var elemToChange = document.getElementById("mapContainer");
+        		//elemToChange.style.height = $(window).height() - 125 + "px"
+        		//setTimeout(checkHeight,500);
+
+				var elemToChange  = document.getElementById("mapContainer");
+				var elemToChange1 = document.getElementById("content");
+				var elemToChange2 = document.getElementById("controls");
+			
+				var winW = $(window).width();
+				var winH = $(window).height();
+				
+				if (winW > winH && winW < 968) {
+					var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
+					elemToChange.style.width = winW + "px"
+					elemToChange.style.height = winH + "px"
+					
+					elemToChange1.style.width = winW + "px"
+					elemToChange1.style.height = winH + "px"
+					
+					elemToChange2.style.top = winH - 70 + "px"
+
+				} else if (winW < winH && winW < 968) {
+					var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+					elemToChange.style.width = winW + "px"
+					elemToChange.style.height = winH + "px"
+					
+					elemToChange1.style.width = winW + "px"
+					elemToChange1.style.height = winH + "px"
+				
+					elemToChange2.style.top = winH - 70 + "px"
+				}
+			}
+        	
+        	window.onload=function() {
+        		checkHeight();
+			}
+
+			window.onresize=function() {
+				checkHeight();
+			}
+        	
+        	
         });
 
         function resizeIcons(e){
@@ -378,19 +422,12 @@
             marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
-		
-		window.onload=function() {
-			checkHeight();
-		}
-
-		window.onresize=function() {
-			checkHeight();
-		}
 </script>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
+<div id="testerDeAltura" style="display:none;">not set yet</div>
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
@@ -434,13 +471,5 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/version.jspf" %>
-<script type="text/javascript">
-	var checkHeight = function(){
-		var elemToChange = document.getElementById("mapContainer");
-		elemToChange.style.height = $(window).height() - 125 + "px"
-		setTimeout(checkHeight,500);
-	};
-	checkHeight();
-</script>
 </body>
 </html>
