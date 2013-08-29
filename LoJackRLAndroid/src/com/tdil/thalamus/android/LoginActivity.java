@@ -100,7 +100,7 @@ public class LoginActivity extends Activity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setGeolocationEnabled(true);
         final ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Cargando, por favor espere...");
+        pd.setMessage("");
         
         final Activity activity = this;
         webView1.setWebChromeClient(new GeoWebChromeClient());
