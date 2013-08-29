@@ -15,6 +15,8 @@ public class UploadData implements Serializable {
 	private boolean modified = false;
 	private String fileName;
 	private byte[] data;
+	private int width;
+	private int height;
 	
 	private static final int MAX_FILE_NAME_LENGTH = 100;
 	
@@ -22,6 +24,14 @@ public class UploadData implements Serializable {
 		this.setFileName(fileName);
 		this.setData(data);
 		this.setModified(modified);
+	}
+	
+	public UploadData(String fileName, byte data[], boolean modified, int width, int height) {
+		this.setFileName(fileName);
+		this.setData(data);
+		this.setModified(modified);
+		this.setWidth(width);
+		this.setHeight(height);
 	}
 	
 	public String getExtension() {
@@ -58,6 +68,22 @@ public class UploadData implements Serializable {
 	
 	public String getContentType() {
 		return new MimetypesFileTypeMap().getContentType(this.getFileName());
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 }

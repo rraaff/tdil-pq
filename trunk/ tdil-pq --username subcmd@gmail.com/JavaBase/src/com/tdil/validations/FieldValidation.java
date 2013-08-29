@@ -234,6 +234,8 @@ public class FieldValidation {
 			File file = File.createTempFile("upload", "." + FilenameUtils.getExtension(fileItem.getName()));
 			OutputStream fout = new BufferedOutputStream(new FileOutputStream(file));
 			byte content[] = IOUtils.toByteArray(io);
+			int width = 0;
+			int height = 0;
 			try {
 				fout.write(content);
 				fout.close();
@@ -241,6 +243,9 @@ public class FieldValidation {
 				if (info.getVideo() == null) {
 					validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
 					return null;
+				} else {
+					width = info.getVideo().getSize().getWidth();
+					height = info.getVideo().getSize().getHeight();
 				}
 			} catch (EncoderException e) {
 				validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
@@ -248,7 +253,10 @@ public class FieldValidation {
 			} finally {
 				file.delete();
 			}
-			return new UploadData(fileName, content, true);
+			UploadData upload = new UploadData(fileName, content, true);
+			upload.setWidth(width);
+			upload.setHeight(height);
+			return upload;
 		} catch (IOException e) {
 			getLog().error(e.getMessage(), e);
 			validation.setGeneralError(e.getMessage());
