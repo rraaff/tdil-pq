@@ -13,15 +13,20 @@
         -->
     </style>
 
-    <!-- Application theme. -->
+	<!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <!--  item name="android:background">#000000</item>
-    	<item name="android:colorBackground">#000000</item-->
     </style>
 
     <style name="LoginFormContainer">
         <item name="android:padding">16dp</item>
     </style>
 
+
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
 </resources>
