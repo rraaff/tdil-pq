@@ -39,6 +39,7 @@
     }
 	#map {
 		width:100%;
+		height:100%;
 	}
 	#docs {
 		font-size:12px;
@@ -48,6 +49,15 @@
 <% if (usingMobile || isAndroid) { %>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+		@media all and (orientation:landscape) {
+			#productsMenu { position:fixed; z-index:1500; } 
+		}
+		@media all and (orientation:landscape) and (max-height:350px) {
+			#productsMenu ul li.logoContainer { display:none; }
+		}
+		#content { position:fixed; }
+	</style>
 <% } else { %>
 	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
@@ -205,6 +215,15 @@
 					elemToChange1.style.height = winH + "px"
 				
 					elemToChange2.style.top = winH - 70 + "px"
+				} else if (winW > 968) {
+					var testervar = document.getElementById("testerDeAltura").innerHTML="DEFAULTED > WW: " + winW + " - WH " + winH;
+					elemToChange.style.width = "968px"
+					elemToChange.style.height = "450px"
+					
+					elemToChange1.style.width = "100%"
+					elemToChange1.style.height = "auto"
+				
+					elemToChange2.style.top = "403px"
 				}
 			}
         	

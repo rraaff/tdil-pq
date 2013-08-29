@@ -287,7 +287,7 @@ function right() {
 						var winW = $(window).width();
 						var winH = $(window).height();
 						
-						if (winW > winH) {
+						if (winW > winH && winW < 968) {
 							var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
 							elemToChange1.style.width = winW + "px"
 							elemToChange1.style.height = winH + "px"
@@ -300,7 +300,7 @@ function right() {
 							
 							elemToChange4.style.width = winW + "px"
 							elemToChange4.style.height = winH + "px"
-						} else {
+						} else if (winW < winH && winW < 968) {
 							var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
 							elemToChange1.style.width = winW + "px"
 							elemToChange1.style.height = "auto"
@@ -313,6 +313,19 @@ function right() {
 							
 							elemToChange4.style.width = winW + "px"
 							elemToChange4.style.height = "auto"
+						} else if (winW > 968) {
+							var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+							elemToChange1.style.width = "560px"
+							elemToChange1.style.height = "297px"
+							
+							elemToChange2.style.top = "560px"
+							elemToChange2.style.bottom = "297px"
+							
+							elemToChange3.style.width = "560px"
+							elemToChange3.style.height = "30px"
+							
+							elemToChange4.style.width = "796px"
+							elemToChange4.style.height = "423px"
 						}
 					}
 					

@@ -164,7 +164,7 @@ and (max-width : 479px) {
 	/*.camarasBG,.lucesBG, .camarasBG { background-image:none; background:transparent; width: auto; height: auto; padding: 0px; }*/
 	#productHomeContent.col1_798,
 	#productHomeContent.col1_798_noSpaces,
-	#productHomeContent.camarasBG { color:#fff; background:#531a1a; width: 100%; height: 100%; padding: 5px; }
+	#productHomeContent.camarasBG { color:#fff; background:#531a1a; width: 100%; height: 100%; padding:0; }
 	img#cameraImg { width:100%; height:auto; }
 	#appletHolder { width:100%; height:350px; }
 	#productHomeContent.col1_798_noSpaces { padding:0; }

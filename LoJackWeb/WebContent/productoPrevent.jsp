@@ -26,6 +26,7 @@
 <style type="text/css">
 	.smallmap {
 		width:968px;
+		height:450px;
 	}
 	#tags { display: none; }
 	#docs p {
@@ -39,6 +40,7 @@
     }
 	#map {
 		width:100%;
+		height:100%;
 	}
 	#docs {
 		font-size:12px;
@@ -48,6 +50,15 @@
 <% if (usingMobile || isAndroid) { %>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+	<style type="text/css">
+		@media all and (orientation:landscape) {
+			#productsMenu { position:fixed; z-index:1500; } 
+		}
+		@media all and (orientation:landscape) and (max-height:350px) {
+			#productsMenu ul li.logoContainer { display:none; }
+		}
+		#content { position:fixed; }
+	</style>
 <% } else { %>
 	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
@@ -213,7 +224,7 @@ var currentPopup;
 			var winW = $(window).width();
 			var winH = $(window).height();
 			
-			if (winW > winH) {
+			if (winW > winH && winW < 968) {
 				var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
 				elemToChange.style.width = winW + "px"
 				elemToChange.style.height = winH + "px"
@@ -223,7 +234,7 @@ var currentPopup;
 				
 				elemToChange2.style.top = winH - 70 + "px"
 		
-			} else {
+			} else if (winW < winH && winW < 968) {
 				var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
 				elemToChange.style.width = winW + "px"
 				elemToChange.style.height = winH - 118 + "px"
@@ -233,11 +244,20 @@ var currentPopup;
 			
 				elemToChange2.style.top = winH - 70 + "px"
 
+			} else if (winW > 968) {
+				var testervar = document.getElementById("testerDeAltura").innerHTML="DEFAULTED > WW: " + winW + " - WH " + winH;
+				elemToChange.style.width = "968px"
+				elemToChange.style.height = "450px"
+				
+				elemToChange1.style.width = "100%"
+				elemToChange1.style.height = "auto"
+			
+				elemToChange2.style.top = "403px"
 			}
 		}
 		     	
-		     	window.onload=function() {
-		     		checkHeight();
+		window.onload=function() {
+			checkHeight();
 		}
 		
 		window.onresize=function() {
@@ -303,7 +323,7 @@ var currentPopup;
 <body>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
-<div id="testerDeAltura" style="display:normal;">not set yet</div>
+<div id="testerDeAltura" style="display:none;">not set yet</div>
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
