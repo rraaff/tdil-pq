@@ -42,14 +42,14 @@ public abstract class AjaxFileUploadAction extends AjaxAction {
 			if (fi.isFormField()) {
 				parsed.put(fi.getFieldName(), fi);
 			} else {
-				parsed.put(UPLOAD_NAME, fi);
+				parsed.put(getUploadFileName(), fi);
 			}
 		}
 		// TODO manejo automatica del truncado y todo eso
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		AjaxUploadHandlerForm uploadForm = getUploadForm(request, form);
 		ValidationError error = new ValidationError();
-		uploadForm.handleAjaxFileUpload(parsed, error, result);
+		handleUpload(uploadForm, parsed, result, error);
 		if(error.hasError()) {
 			this.writeJsonResponse(error.asJson(), response);
 			return null;
@@ -57,6 +57,16 @@ public abstract class AjaxFileUploadAction extends AjaxAction {
 			this.writeJsonResponse(result, response);
 			return null;
 		}
+	}
+
+	public void handleUpload(AjaxUploadHandlerForm uploadForm,
+			Map<String, FileItem> parsed, HashMap<String, Object> result,
+			ValidationError error) {
+		uploadForm.handleAjaxFileUpload(parsed, error, result);
+	}
+
+	public String getUploadFileName() {
+		return UPLOAD_NAME;
 	}
 
 	protected abstract AjaxUploadHandlerForm getUploadForm(HttpServletRequest request, ActionForm form);
