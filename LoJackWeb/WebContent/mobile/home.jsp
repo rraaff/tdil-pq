@@ -79,7 +79,7 @@ function chbg(title, subTitle) {
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<div id="iconoParkings"><a href="../productoParkings.jsp"onmouseover="chbg('Parking', 'Estacioná en CABA')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<div id="iconoParkings"><a href="../productoParkings.jsp" onmouseover="chbg('Parking', 'Estacioná en CABA y GBA')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<!-- div id="iconoProfile"><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div -->
 		<% if (websiteUser.isPreventUser()) { %>
 			<% if (websiteUser.isPreventLogged()) { %>

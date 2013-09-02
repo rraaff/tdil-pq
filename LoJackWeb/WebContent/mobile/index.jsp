@@ -71,7 +71,7 @@ function chbg(title, subTitle) {
 <div id="laRuedita">
 	<div class="fakeRuedita">
 		<div id="iconoLogin"><a href="./loginModal.jsp"    onmouseover="chbg('ingresá', 'con tus datos')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresar ahora"><img src="../images/null.gif" /></a></div>
-		<div id="iconoParkings"><a href="./loginModal.jsp" onmouseover="chbg('Parking', 'ingrese ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="../images/null.gif" /></a></div>
+		<div id="iconoParkings"><a href="./loginModal.jsp" onmouseover="chbg('Parking', 'ingrese ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresá y utilizá la App gratuita para estacionar en CABA y GBA"><img src="../images/null.gif" /></a></div>
 		<!--  div id="iconoProfile"><a href="./goToRegistrationMobile.do" title="Registrate gratis"><img src="../images/null.gif" /></a></div -->
 		<div id="iconoCar">
 		<% if (isIpad || isIphone || isIpod) { %>
