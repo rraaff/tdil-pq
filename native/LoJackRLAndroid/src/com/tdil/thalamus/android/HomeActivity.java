@@ -59,6 +59,15 @@ public class HomeActivity extends Activity {
 		        	startActivity(intent);
 				}
 			});
+		
+		findViewById(R.id.cameras).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(HomeActivity.this, HomeCamerasActivity.class);
+			        	startActivity(intent);
+					}
+				});
 	}
 
 	@Override

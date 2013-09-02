@@ -30,4 +30,6 @@ public interface RESTConstants {
 	public static final String DEACTIVATE_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/deactivate";
 	
 	public static final String LOG_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/log";
+	
+	public static final String CAMERAS = "/cameras/list";
 }

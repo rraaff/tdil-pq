@@ -17,22 +17,23 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class LightListAdapter extends BaseAdapter implements OnClickListener {
+public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
 	private Activity activity;
-	private ArrayList<Light> data;
+	private ArrayList<Camera> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
-	Light iterLight = null;
+	Camera iterCamera = null;
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public LightListAdapter(Activity a, ArrayList<Light> d, Resources resLocal) {
+	public CameraListAdapter(Activity a, ArrayList<Camera> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -62,61 +63,44 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 	}
 
 	/********* Create a holder to contain inflated xml file elements ***********/
-	public static class LightViewHolder {
-
-		public TextView alarmDescription;
-		public TextView alarmStatus;
-		public TextView textWide;
-		public ToggleButton activateDeactivate;
-		public Button viewLightLog;
-		public ImageView lastChangeUserAvatar;
-
+	public static class CameraViewHolder {
+		public TextView cameraDescription;
+		public Button viewCamera;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		View vi = convertView;
-		LightViewHolder holder;
+		CameraViewHolder holder;
 
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
-			vi = inflater.inflate(R.layout.lightitem, null);
+			vi = inflater.inflate(R.layout.cameraitem, null);
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
-			holder = new LightViewHolder();
-			holder.alarmDescription = (TextView) vi.findViewById(R.id.logLightUser);
-			holder.alarmStatus = (TextView) vi.findViewById(R.id.logLightStatus);
-			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
-			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
-			holder.viewLightLog = (Button)vi.findViewById(R.id.viewLightLogButton);
+			holder = new CameraViewHolder();
+			holder.cameraDescription = (TextView) vi.findViewById(R.id.cameraDescription);
+			holder.viewCamera = (Button)vi.findViewById(R.id.viewCameraButton);
 
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);
 		} else
-			holder = (LightViewHolder) vi.getTag();
+			holder = (CameraViewHolder) vi.getTag();
 
 		if (data.size() <= 0) {
-			holder.alarmDescription.setText("No Data");
+			holder.cameraDescription.setText("No Data");
 
 		} else {
 			/***** Get each Model object from Arraylist ********/
-			iterLight = null;
-			iterLight = (Light) data.get(position);
+			iterCamera = null;
+			iterCamera = (Camera) data.get(position);
 
 			/************ Set Model values in Holder elements ***********/
-			holder.alarmDescription.setText(iterLight.getDescription());
-			holder.alarmStatus.setText(iterLight.getStatusDescription());
-			holder.activateDeactivate.setChecked(iterLight.isOn());
-			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
-			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));
+			holder.cameraDescription.setText(iterCamera.getDescription());
+			holder.viewCamera.setOnClickListener(new ViewCameraListener(position));
 			
-			new DownloadImageTask(holder.lastChangeUserAvatar)
-					.execute(ApplicationConfig.URL_WEBSITE
-							+ iterLight.getLastChangeLojackUserID());
-			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
-
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
 			vi.setOnClickListener(new OnItemClickListener(position));
 		}
@@ -143,32 +127,19 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 		}
 	}
 	
+	
 	/********* Called when Item click in ListView ************/
-	private class ToggleActivateListener implements OnClickListener {
+	private class ViewCameraListener implements OnClickListener {
 		private int mPosition;
 		
-		ToggleActivateListener(int position) {
+		ViewCameraListener(int position) {
 			mPosition = position;
 		}
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.toggleActivation(mPosition);
-		}
-	}
-	/********* Called when Item click in ListView ************/
-	private class ViewLightLogListener implements OnClickListener {
-		private int mPosition;
-		
-		ViewLightLogListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.viewLightLog(mPosition);
+			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
+			sct.viewLightLog(mPosition);*/
 		}
 	}
 }
