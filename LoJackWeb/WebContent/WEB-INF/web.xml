@@ -274,6 +274,25 @@
   <servlet-name>TwitterConnect</servlet-name>
   <url-pattern>/connect/twitter</url-pattern>
  </servlet-mapping>
+ 
+ <servlet>
+  <servlet-name>ViewCameraServiceServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.ViewCameraServiceServlet</servlet-class>
+ </servlet>
+<servlet>
+  <servlet-name>MoveCameraServiceServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.MoveCameraServiceServlet</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+  <servlet-name>ViewCameraServiceServlet</servlet-name>
+  <url-pattern>/viewCameraService</url-pattern>
+ </servlet-mapping>
+<servlet-mapping>
+  <servlet-name>MoveCameraServiceServlet</servlet-name>
+  <url-pattern>/moveCameraService</url-pattern>
+ </servlet-mapping>
+ 
  <!-- The Usual Welcome File List -->
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>
