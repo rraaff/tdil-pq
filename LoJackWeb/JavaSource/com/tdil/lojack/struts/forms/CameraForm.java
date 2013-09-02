@@ -142,4 +142,14 @@ public class CameraForm extends ActionForm {
 		setCamera(getAllCameras().get(index));
 	}
 
+	public IPCamera getCamera(String cameraUrl) {
+		for (Camera camera : this.getAllCameras()) {
+			if (camera.getUrl().equals(cameraUrl)) {
+				setCamera(camera);
+				return this.getCamera();
+			}
+		}
+		return null;
+	}
+
 }
