@@ -217,7 +217,7 @@ function right() {
 		</div>
 		<div id="productHomeContent" class="camarasBG">
 			<div id="cameraTitle">
-				<h1>Mi C&aacute;mara</h1>
+				<h1>Mi Cámara</h1>
 			</div>
 			
 			<% if (cameraForm.isUseApplet()) { %>
@@ -276,67 +276,10 @@ function right() {
 						<% if (com.tdil.lojack.utils.LoJackConfig.isCameraMobileModeSocket()) { %>
 							$('#cameraImg').attr('src', './viewCameraSocket?img=' + Math.random());
 						<% } %>
-							
+						
 					},<%=SystemPropertyUtils.getSystemPropertValue(SystemPropertiesKeys.camera_mobile_refreshTime)%>);
-					
-					var modifyCameraSize = function(){
-						var elemToChange1 = document.getElementById("cameraImg");
-						var elemToChange3 = document.getElementById("pictureContainer");
-						var elemToChange2 = document.getElementById("controlsBasicViewId");
-						var elemToChange4 = document.getElementById("productHomeContent");
-						var winW = $(window).width();
-						var winH = $(window).height();
-						
-						if (winW > winH && winW < 968) {
-							var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
-							elemToChange1.style.width = winW + "px"
-							elemToChange1.style.height = winH + "px"
-							
-							elemToChange2.style.top = winH - 82 + "px"
-							elemToChange2.style.bottom = "auto"
-						
-							elemToChange3.style.width = winW + "px"
-							elemToChange3.style.height = winH + "px"
-							
-							elemToChange4.style.width = winW + "px"
-							elemToChange4.style.height = winH + "px"
-						} else if (winW < winH && winW < 968) {
-							var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-							elemToChange1.style.width = winW + "px"
-							elemToChange1.style.height = "auto"
-							
-							elemToChange2.style.top = "auto"
-							elemToChange2.style.bottom = "auto"
-							
-							elemToChange3.style.width = winW + "px"
-							elemToChange3.style.height = "auto"
-							
-							elemToChange4.style.width = winW + "px"
-							elemToChange4.style.height = "auto"
-						} else if (winW > 968) {
-							var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-							elemToChange1.style.width = "560px"
-							elemToChange1.style.height = "297px"
-							
-							elemToChange2.style.top = "560px"
-							elemToChange2.style.bottom = "297px"
-							
-							elemToChange3.style.width = "560px"
-							elemToChange3.style.height = "30px"
-							
-							elemToChange4.style.width = "796px"
-							elemToChange4.style.height = "423px"
-						}
-					}
-					
-					window.onload=function() {
-						modifyCameraSize();
-					}
-	
-					window.onresize=function() {
-						modifyCameraSize();
-					}
 				</script>
+
 				<div id="linksAside">
 					<% if (usingMobile || isAndroid) { %>
 
@@ -352,11 +295,63 @@ function right() {
 <section id="linkBackCameras">
 	<a class="especialkkk" href="productoHome.jsp" title="Volver a las home"><img src="images/skin_lj_rl/buttons/AppletCamera/back_off.png" /></a>
 </section>
+<% if (!cameraForm.isUseApplet()) { %>
+	<% if (usingMobile || isAndroid) { %>
+		<script>
+			var modifyCameraSize = function(){
+				var elemToChange1 = document.getElementById("cameraImg");
+				var elemToChange2 = document.getElementById("controlsBasicViewId");
+				var elemToChange3 = document.getElementById("pictureContainer");
+				var elemToChange4 = document.getElementById("productHomeContent");
+				var winW = $(window).width();
+				var winH = $(window).height();
+				
+				if (winW > winH) {
+					var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
+					elemToChange1.style.top = "0";
+					elemToChange1.style.left = "0";
+					elemToChange1.style.width = winW + "px"
+					elemToChange1.style.height = winH + "px"
+					
+					elemToChange2.style.top = winH - 82 + "px"
+					elemToChange2.style.bottom = "auto"
 
+					elemToChange3.style.top = "0";
+					elemToChange3.style.left = "0";
+					elemToChange3.style.width = winW + "px"
+					elemToChange3.style.height = winH + "px"
+
+					elemToChange4.style.top = "0";
+					elemToChange4.style.left = "0";
+					elemToChange4.style.width = winW + "px"
+					elemToChange4.style.height = winH + "px"
+				} else if (winW < winH) {
+					var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+					elemToChange1.style.width = winW + "px"
+					elemToChange1.style.height = "auto"
+					
+					elemToChange2.style.top = "auto"
+					elemToChange2.style.bottom = "auto"
+
+					elemToChange3.style.width = winW + "px"
+					elemToChange3.style.height = "auto"
+
+					elemToChange4.style.width = winW + "px"
+					elemToChange4.style.height = "auto"
+				}
+			}
+			
+			window.onresize=function() {
+				modifyCameraSize();
+			}
+		</script>
+	<% } %>
+<% } %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/panicLayers.jspf" %>
-<%@ include file="includes/version.jspf" %></body>
+<%@ include file="includes/version.jspf" %>
+</body>
 </html>

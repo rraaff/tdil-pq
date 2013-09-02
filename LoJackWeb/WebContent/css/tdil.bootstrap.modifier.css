@@ -710,9 +710,12 @@ button.icon_zoom_out { background: url(../images/skin_lj_rl/webApp/parkings/icon
 	z-index:1305;
 }
 #zoomSection .zoomControls {
-	width:32px;
+	background:url(../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	border-radius:16px;
+	width:42px;
 	top:20px;
-	left:20px;
+	left:10px;
 	margin:0 auto;
 	position: absolute;
 }

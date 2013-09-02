@@ -23,33 +23,125 @@
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
-	.smallmap {
-		width:968px;
-		height:450px;
-	}
+	.smallmap { width:968px; height:450px; }
 	#tags { display: none; }
-	#docs p {
-		font-size:12px;
-	    margin-bottom:0.5em;
-	}
+	#docs p { font-size:12px; margin-bottom:0.5em; }
+	#placaLoader { display:none; }
 @media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc {
-    	float:right;
-    	width:25%;
-    }
-	#map {
-		width:100%;
-		height:100%;
-	}
-	#docs {
-		font-size:12px;
-	}
+	#shortdesc { float:right; width:25%; }
+	#map { width:100%; height:100%; }
+	#docs { font-size:12px; }
 }
 </style>
 <% if (usingMobile || isAndroid) { %>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
+		@media all and (orientation:landscape) {
+			#productsMenu { position:fixed; z-index:1500; } 
+		}
+		
+		@media all and (orientation:landscape) and (max-height:600px) {
+			#productsMenu ul li.logoContainer { display:none; }
+		}
+		/* widths */ 
+		@media all and (min-width:240px) {
+			.smallmap { width:240px; }
+		}
+		@media all and (min-width:320px) {
+			.smallmap { width:320px; }
+		}
+		@media all and (min-width:380px) {
+			.smallmap { width:380px; }
+		}
+		@media all and (min-width:480px) {
+			.smallmap { width:480px; }
+		}
+		@media all and (min-width:568px) {
+			.smallmap { width:568px; }
+		}
+		@media all and (min-width:640px) {
+			.smallmap { width:640px; }
+		}
+		@media all and (min-width:720px) {
+			.smallmap { width:720px; }
+		}
+		@media all and (min-width:768px) {
+			.smallmap { width:768px; }
+		}
+		@media all and (min-width:960px) {
+			.smallmap { width:960px; }
+		}
+		@media all and (min-width:1024px) {
+			.smallmap { width:1024px; }
+		}
+		@media all and (min-width:1280px) {
+			.smallmap { width:1280px; }
+		}
+		@media all and (min-width:1380px) {
+			.smallmap { width:1380px; }
+		}
+		@media all and (min-width:1580px) {
+			.smallmap { width:1580px; }
+		}
+		@media all and (min-width:1600px) {
+			.smallmap { width:1600px; }
+		}
+		@media all and (min-width:1800px) {
+			.smallmap { width:1800px; }
+		}
+		@media all and (min-width:1920px) {
+			.smallmap { width:1920px; }
+		}
+		/* Heights */
+		@media all and (min-height:240px) {
+			.smallmap { height:240px; }
+		}
+		@media all and (min-height:320px) {
+			.smallmap { height:320px; }
+		}
+		@media all and (min-height:380px) {
+			.smallmap { height:380px; }
+		}
+		@media all and (min-height:480px) {
+			.smallmap { height:480px; }
+		}
+		@media all and (min-height:568px) {
+			.smallmap { height:568px; }
+		}
+		@media all and (min-height:640px) {
+			.smallmap { height:640px; }
+		}
+		@media all and (min-height:720px) {
+			.smallmap { height:720px; }
+		}
+		@media all and (min-height:768px) {
+			.smallmap { height:768px; }
+		}
+		@media all and (min-height:960px) {
+			.smallmap { height:960px; }
+		}
+		@media all and (min-height:1024px) {
+			.smallmap { height:1024px; }
+		}
+		@media all and (min-height:1280px) {
+			.smallmap { height:1280px; }
+		}
+		@media all and (min-height:1480px) {
+			.smallmap { height:1480px; }
+		}
+		@media all and (min-height:1580px) {
+			.smallmap { height:1580px; }
+		}
+		@media all and (min-height:1600px) {
+			.smallmap { height:1600px; }
+		}
+		@media all and (min-height:1800px) {
+			.smallmap { height:1800px; }
+		}
+		@media all and (min-height:1920px) {
+			.smallmap { height:1920px; }
+		}
 		@media all and (orientation:landscape) {
 			#productsMenu { position:fixed; z-index:1500; } 
 		}
@@ -126,147 +218,92 @@
 <script src="js/OpenLayers.js" type="text/javascript"></script>
 <script src="js/MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
-
-		var startLat = -34.53483581543;
-		var startLon = -58.548202514648;
-		var endLat = -34.685211181641;
-		var endLon = -58.344268798828;
-
-		var ZOOM_ALL = 12;
-		var ZOOM_1000 = 14;
-		var ZOOM_500 = 15;
-		
-        var Mapa;
-        var parkings;
-        var origenGeoRef;
-        var POI;
-        var currentPopup;
-        var MyPos;
-        var SearchMeters;
-        var currPoints = new Array(); 
-        var IconSizeForZoom = new Array(); 
-        IconSizeForZoom[0] = 8;
-        IconSizeForZoom[1] = 8;
-        IconSizeForZoom[2] = 8;
-        IconSizeForZoom[3] = 8;
-        IconSizeForZoom[4] = 8;
-        IconSizeForZoom[5] = 8;
-        IconSizeForZoom[6] = 8;
-        IconSizeForZoom[7] = 10;
-        IconSizeForZoom[8] = 10;
-        IconSizeForZoom[9] = 10;
-        IconSizeForZoom[10] = 12;
-        IconSizeForZoom[11] = 12;
-        IconSizeForZoom[12] = 12;
-        IconSizeForZoom[13] = 14;
-        IconSizeForZoom[14] = 14;
-        IconSizeForZoom[15] = 20;
-        IconSizeForZoom[16] = 24;
-        IconSizeForZoom[17] = 28;
-        IconSizeForZoom[18] = 30;
-        IconSizeForZoom[19] = 32;
+	var startLat = -34.53483581543;
+	var startLon = -58.548202514648;
+	var endLat = -34.685211181641;
+	var endLon = -58.344268798828;
+	var ZOOM_ALL = 12;
+	var ZOOM_1000 = 14;
+	var ZOOM_500 = 15;
+	var Mapa;
+	var parkings;
+	var origenGeoRef;
+	var POI;
+	var currentPopup;
+	var MyPos;
+	var SearchMeters;
+	var currPoints = new Array(); 
+	var IconSizeForZoom = new Array(); 
+	IconSizeForZoom[0] = 8;
+	IconSizeForZoom[1] = 8;
+	IconSizeForZoom[2] = 8;
+	IconSizeForZoom[3] = 8;
+	IconSizeForZoom[4] = 8;
+	IconSizeForZoom[5] = 8;
+	IconSizeForZoom[6] = 8;
+	IconSizeForZoom[7] = 10;
+	IconSizeForZoom[8] = 10;
+	IconSizeForZoom[9] = 10;
+	IconSizeForZoom[10] = 12;
+	IconSizeForZoom[11] = 12;
+	IconSizeForZoom[12] = 12;
+	IconSizeForZoom[13] = 14;
+	IconSizeForZoom[14] = 14;
+	IconSizeForZoom[15] = 20;
+	IconSizeForZoom[16] = 24;
+	IconSizeForZoom[17] = 28;
+	IconSizeForZoom[18] = 30;
+	IconSizeForZoom[19] = 32;
         
-        <%@ include file="includes/errorAjaxJS.jspf" %>
-        <%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
-        $(function () {
-        	<%@ include file="includes/closeLayers.jspf" %>
-        	<%@ include file="includes/externalLogins.jspf" %>
-            var mapOptions = {
-                DataProjection: "EPSG:4326"
-            };
-            Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
-            Mapa.UpdateConfig({ title: "Prevent" });
-            Mapa.SetParameters("toolbar=off&Lat=-34.655504&Lon=-58.471677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
+	<%@ include file="includes/errorAjaxJS.jspf" %>
+	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 
-            $("input[cl]").each(function(indice,valor) {
-         	   $(valor).click(function() {
-         		   $( "#" + $(this).attr('cl') ).fadeOut();
-         		});
-         	});
-            
-        	var checkHeight = function(){
-        		//var elemToChange = document.getElementById("mapContainer");
-        		//elemToChange.style.height = $(window).height() - 125 + "px"
-        		//setTimeout(checkHeight,500);
+	$(function () {
+		<%@ include file="includes/closeLayers.jspf" %>
+		<%@ include file="includes/externalLogins.jspf" %>
 
-				var elemToChange  = document.getElementById("mapContainer");
-				var elemToChange1 = document.getElementById("content");
-				var elemToChange2 = document.getElementById("controls");
-			
-				var winW = $(window).width();
-				var winH = $(window).height();
-				
-				if (winW > winH && winW < 968) {
-					var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
-					elemToChange.style.width = winW + "px"
-					elemToChange.style.height = winH + "px"
-					
-					elemToChange1.style.width = winW + "px"
-					elemToChange1.style.height = winH + "px"
-					
-					elemToChange2.style.top = winH - 70 + "px"
+		var mapOptions = {
+			DataProjection: "EPSG:4326"
+		};
+		Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
+		Mapa.UpdateConfig({ title: "Parkings" });
+		Mapa.SetParameters("toolbar=off&Lat=-34.630004&Lon=-58.431677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
 
-				} else if (winW < winH && winW < 968) {
-					var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-					elemToChange.style.width = winW + "px"
-					elemToChange.style.height = winH + "px"
-					
-					elemToChange1.style.width = winW + "px"
-					elemToChange1.style.height = winH + "px"
-				
-					elemToChange2.style.top = winH - 70 + "px"
-				} else if (winW > 968) {
-					var testervar = document.getElementById("testerDeAltura").innerHTML="DEFAULTED > WW: " + winW + " - WH " + winH;
-					elemToChange.style.width = "968px"
-					elemToChange.style.height = "450px"
-					
-					elemToChange1.style.width = "100%"
-					elemToChange1.style.height = "auto"
-				
-					elemToChange2.style.top = "403px"
+		$("input[cl]").each(function(indice,valor) {
+			$(valor).click(function() {
+				$( "#" + $(this).attr('cl') ).fadeOut();
+			});
+		});
+	});
+
+	function resizeIcons(e){
+		if (parkings) {
+			if (Mapa.map) {
+				if (currPoints.length > 0) {
+					var actualSize = currPoints[0].icon.size.w;
+					var newSize = IconSizeForZoom[Mapa.map.zoom];
+					var inflateFactor = newSize / actualSize;
+					//alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
+					if (inflateFactor != 1) {
+						for (var i=0;i<currPoints.length;i++) {
+							currPoints[i].inflate(inflateFactor);
+						}
+					}
 				}
 			}
-        	
-        	window.onload=function() {
-        		checkHeight();
-			}
+		}
+	}
 
-			window.onresize=function() {
-				checkHeight();
-			}
-        	
-        	
-        });
-
-        function resizeIcons(e){
-            if (parkings) {
-                if (Mapa.map) {
-	            	if (currPoints.length > 0) {
-		            	var actualSize = currPoints[0].icon.size.w;
-		            	var newSize = IconSizeForZoom[Mapa.map.zoom];
-		            	var inflateFactor = newSize / actualSize;
-		            	//alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
-						if (inflateFactor != 1) {
-			            	for (var i=0;i<currPoints.length;i++) {
-			            		currPoints[i].inflate(inflateFactor);
-			                }
-						}
-		            }
-                }
-            }
-            
-        }
-
-        function removeParkings() {
-        	if (currentPopup != null && currentPopup.visible()) {
-                currentPopup.hide();
-            }
-        	currentPopup = null;
-            if (parkings) {
-        		Mapa.map.removeLayer(parkings);
-        		parkings = null;
-            }
-        }
+	function removeParkings() {
+		if (currentPopup != null && currentPopup.visible()) {
+			currentPopup.hide();
+		}
+		currentPopup = null;
+		if (parkings) {
+			Mapa.map.removeLayer(parkings);
+			parkings = null;
+		}
+	}
         var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
             "autoSize": true,
             "minSize": new OpenLayers.Size(300, 50),
@@ -339,7 +376,7 @@
         	  showErrorLayer("Se ha acabado el tiempo para obtener los datos.");
             break;
           case error.UNKNOWN_ERROR:
-        	  showErrorLayer("Ha ocurrido un error.");
+        	  showErrorLayer("Ha ocurrido un error. Intentelo nuevamente.");
             break;
           }
         }
@@ -447,6 +484,7 @@
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
+<div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
 <section id="content">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
@@ -490,5 +528,61 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/version.jspf" %>
+<% if (usingMobile || isAndroid) { %>
+	<script>
+		var checkHeight = function() {
+			var elemToChange  = document.getElementById("mapContainer");
+			var elemToChange1 = document.getElementById("content");
+			var elemToChange2 = document.getElementById("controls");
+			var elemToChangeX = document.getElementById("placaLoader");
+		
+			var winW = $(window).width();
+			var winH = $(window).height();
+			
+			elemToChangeX.style.display = "inline-block"
+			
+			if (winW > winH) {
+				var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
+				elemToChange.style.width = winW + "px"
+				elemToChange.style.height = winH + "px"
+				
+				elemToChange1.style.width = winW + "px"
+				elemToChange1.style.height = winH + "px"
+				
+				elemToChange2.style.top = winH - 70 + "px"
+				
+			} else if (winW < winH) {
+				var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
+				elemToChange.style.width = winW + "px"
+				elemToChange.style.height = winH + "px"
+				
+				elemToChange1.style.width = winW + "px"
+				elemToChange1.style.height = winH + "px"
+			
+				elemToChange2.style.top = winH - 70 + "px"
+			}
+			elemToChangeX.style.display = "none"
+		}
+		var recheckHeight = function() {
+			var elemToChangeX = document.getElementById("placaLoader");
+			
+			var winW = $(window).width();
+			var winH = $(window).height();
+			
+			elemToChangeX.style.display = "inline-block"
+			elemToChangeX.style.width = winW + "px"
+			elemToChangeX.style.height = winH + "px"
+
+			setInterval( function(){ checkHeight(); }, 2000 );
+		}
+		
+		window.onload=function() {
+			checkHeight();
+		}		
+		window.onresize=function() {
+			recheckHeight();
+		}
+	</script>
+<% } %>
 </body>
 </html>

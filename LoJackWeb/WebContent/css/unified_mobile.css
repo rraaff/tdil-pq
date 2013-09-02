@@ -35,6 +35,7 @@ div {
 }
 /* END RESET */
 #testerDeAltura { background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; position:fixed; line-height:25px; top:40px;  color:#fff; z-index:8000; }
+#placaLoader	{ background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; position:fixed; width:100%; height:100%; top:0; left:0;  color:#fff; z-index:8001; display:inline-block; }
 
 header { display:none; }
 #productsMenu { background:url(../images/skin_lj_rl/backs/productMenu/menu_base.png); background-repeat:repeat-x; background-position:0px 0px; width:100%; z-index:2; position:relative; display:inline-block; }
@@ -161,15 +162,19 @@ button.icon_zoom_out { background:url(../mobile/images/webApp/parkings/icon_Zoom
 
 #zoomSection {
 	width:50px;
-	top:40%;
+	top:50%;
+	margin-top:-42px;
 	position:fixed;
 	z-index:1420;
 }
 #zoomSection .zoomControls {
+	background:url(../images/skin_lj_rl/backs/topLayer70.png);
+	background-repeat:repeat;
+	border-radius:16px;
 	width:32px;
 	top:0;
 	left:0;
-	margin:0;
+	margin:0 0 0 10px;
 	position:absolute;
 }
 .defaultLayerStyles {
