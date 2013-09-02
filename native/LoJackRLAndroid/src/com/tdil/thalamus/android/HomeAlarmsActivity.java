@@ -142,7 +142,6 @@ public class HomeAlarmsActivity extends Activity {
 	}
 	
 	public void viewAlarmLog(int mPosition) {
-		System.out.println("view Alarm log" + mPosition);
 		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
 		Alarm alarm = CustomListViewValuesArr.get(mPosition);
 		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());

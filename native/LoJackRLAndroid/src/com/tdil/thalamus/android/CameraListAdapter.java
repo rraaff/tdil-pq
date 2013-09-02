@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
@@ -99,7 +101,7 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 
 			/************ Set Model values in Holder elements ***********/
 			holder.cameraDescription.setText(iterCamera.getDescription());
-			holder.viewCamera.setOnClickListener(new ViewCameraListener(position));
+			holder.viewCamera.setOnClickListener(new ViewCameraListener(iterCamera.getUrl()));
 			
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
 			vi.setOnClickListener(new OnItemClickListener(position));
@@ -130,16 +132,17 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 	
 	/********* Called when Item click in ListView ************/
 	private class ViewCameraListener implements OnClickListener {
-		private int mPosition;
+		private String url;
 		
-		ViewCameraListener(int position) {
-			mPosition = position;
+		ViewCameraListener(String url) {
+			this.url = url;
 		}
 
 		@Override
 		public void onClick(View arg0) {
-			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.viewLightLog(mPosition);*/
+			Intent intent = new Intent(activity.getBaseContext(), HomeCameraActivity.class);
+			intent.putExtra(HomeCameraActivity.URL_CAMERA, this.url);
+			activity.startActivity(intent);
 		}
 	}
 }
