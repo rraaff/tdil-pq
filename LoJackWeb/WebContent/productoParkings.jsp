@@ -148,7 +148,7 @@
 		@media all and (orientation:landscape) and (max-height:350px) {
 			#productsMenu ul li.logoContainer { display:none; }
 		}
-		#content { position:fixed; }
+		#content { top:0; position:fixed; }
 	</style>
 <% } else { %>
 	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
@@ -267,7 +267,7 @@
 		};
 		Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 		Mapa.UpdateConfig({ title: "Parkings" });
-		Mapa.SetParameters("toolbar=off&Lat=-34.630004&Lon=-58.431677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
+		Mapa.SetParameters("toolbar=off&Lat=-34.605004&Lon=-58.381677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
 
 		$("input[cl]").each(function(indice,valor) {
 			$(valor).click(function() {
