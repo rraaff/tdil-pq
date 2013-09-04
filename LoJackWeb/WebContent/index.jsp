@@ -651,7 +651,7 @@ function parkingsNotLogged() {
 					</fieldset>
 					<div class="errorInForm"></div>
 					<fieldset>
-						<label>CLAVE</label>
+						<label>Clave</label>
 						<html:password name="LoginForm" property="password"/>
 					</fieldset>
 					<div class="errorInForm"></div>
