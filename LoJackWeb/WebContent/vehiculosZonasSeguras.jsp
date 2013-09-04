@@ -66,25 +66,25 @@ function postSaveSpeedLimits(data) {
 <div class="alert alert-error" id="savesz" style="display: none;"></div>
 <html:form method="POST" action="/saveVehiculesSecureZones">
 	<div id="tableStyle">
-			<fieldset class="tableHeader">
-				<label class="w1">Acción</label>
-				<label class="w3">Nombre de zona</label>
+		<fieldset class="tableHeader">
+			<label class="w1">Acción</label>
+			<label class="w2">Zona</label>
+		</fieldset>
+		<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
+			<fieldset>
+				<label class="w1"><bean:write name="selectedSecureZone" property="vehicle.description" /></label>
+				<label class="w4"><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
+					<option	value="">-</option>
+					<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
+						SecureZone selected = ssb.getZones().getActiveZone();
+						for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
+							<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+							value="<%=sl.getId()%>">
+							<%=sl.getDescription()%></option>
+					<% } %>
+				</html:select></label>
 			</fieldset>
-			<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
-				<fieldset>
-					<label class="w1"><bean:write name="selectedSecureZone" property="vehicle.description" /></label>
-					<label class="w3"><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
-						<option	value="">-</option>
-						<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
-							SecureZone selected = ssb.getZones().getActiveZone();
-							for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
-								<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-								value="<%=sl.getId()%>">
-								<%=sl.getDescription()%></option>
-						<% } %>
-					</html:select></label>
-				</fieldset>
-			</logic:iterate>
+		</logic:iterate>
 	</div>
 	<fieldset><button id="submitregister" class="indexButtonBase" >Aplicar</button></fieldset>
 </html:form>

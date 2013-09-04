@@ -61,7 +61,7 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 </script>
 <div id="xContainer"><button id="closeEditVehicleForPhoneLayer">X</button></div>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
-<h3>Editar teléfonos de emergencia del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
+<h3>Editar teléfonos del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
 <div class="alert alert-error" id="savephones" style="display: none;"></div>
 <html:form method="POST" action="/saveVehiculesPhones">
 	<div id="tableStyle">

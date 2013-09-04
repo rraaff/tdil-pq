@@ -66,7 +66,7 @@ function postSaveSpeedLimits(data) {
 	<div id="tableStyle">
 		<fieldset class="tableHeader">
 			<label class="w1">Patente</label>
-			<label class="w3">Velocidad máxima</label>
+			<label class="w2">Vel. máxima</label>
 		</fieldset>
 		<logic:iterate id="selectedSpeedLimit" name="VehiclesSpeedLimitForm" property="speedLimits">
 			<fieldset>
