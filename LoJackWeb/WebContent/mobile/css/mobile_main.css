@@ -72,7 +72,6 @@ span.userName { color:#f05224; }
 	text-transform:uppercase;
 }
 #registrationContent fieldset label.readOnly { color:#424242; }
-#loginContent select,
 #loginContent input:not([type]),
 #loginContent input[type="color"],
 #loginContent input[type="email"],
@@ -81,11 +80,9 @@ span.userName { color:#f05224; }
 #loginContent input[type="tel"],
 #loginContent input[type="url"],
 #loginContent input[type="text"],
-#recoverPassContent select,
 #recoverPassContent input[type="email"],
 #recoverPassContent input[type="text"],
 #registrationContent textarea,
-#registrationContent select,
 #registrationContent input:not([type]),
 #registrationContent input[type="color"],
 #registrationContent input[type="email"],
@@ -95,8 +92,6 @@ span.userName { color:#f05224; }
 #registrationContent input[type="url"],
 #registrationContent input[type="text"] {
 	border:solid 1px #2c2c2c;
-	/*color:#2c2c2c;
-	background:#fff;*/
 	font-size:80%;
 	line-height:normal;
 	width:100%;
@@ -107,19 +102,10 @@ span.userName { color:#f05224; }
 #registrationContent textarea {
 	height:80px;
 }
-#loginContent option,
-#recoverPassContent option,
-#registrationContent option {
-	/*background:#FFF;
-	color:#000;*/
-}
-#loginContent select,
-#recoverPassContent select,
-#registrationContent select { line-height:18px; height:38px; padding:0; }
 #registrationContent div.dateHelper,
 label.dateHelper { float:left; }
-#registrationContent select.day-month { width: 50px; margin-right:15px; }
-#registrationContent select.year { width: 100px; }
+#registrationContent select.day-month { width:55px; margin-right:10px; padding:5px 28px 5px 2px; float:right; }
+#registrationContent select.year { width:80px; padding:5px 28px 5px 2px; float:right; }
 
 #loginContent a.buttonLink {
 	color:#dc2c27;
@@ -152,6 +138,9 @@ label.dateHelper { float:left; }
 .errorInForm { width:100%; float:left; }
 .errorInForm p { background:#ffefec; border:solid 1px #ffd7cf; border-radius:5px; color:#cb2200; text-align:center; line-height:18px; margin:10px 0; padding:8px 0; }
 
+
+fieldset select { -webkit-appearance:listbox; }
+fieldset select { background-color:#fff; background-image:url(../../images/skin_lj_rl/buttons/arrow_dropdown.png); background-position:right center; background-repeat:no-repeat; width:100%; height:36px; border-radius:0px; margin:10px 0; padding:5px 34px 5px 5px; }
 
 
 
