@@ -14,7 +14,10 @@ public interface RESTConstants {
 	public static final String P_DOCUMENT_TYPE = "{documentType}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
-
+	
+	public static final String CAMERA_URL = ApplicationConfig.URL_WEBSITE + "viewCameraService?cameraUrl=";
+	public static final String CAMERA_MOVE_URL = ApplicationConfig.URL_WEBSITE + "moveCameraService?cameraUrl=";
+	
 	public static final String LOGIN = "/users/login?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER+"&password="+P_PASSWORD;
 	public static final String DOCUMENT_TYPES = "/users/documentTypes";
 	

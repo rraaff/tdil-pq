@@ -40,7 +40,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	private Map<String, String> urlParams;
 	private String body;
 	
-	private static HttpClient httpClient = new DefaultHttpClient();
+	public static HttpClient httpClient = new DefaultHttpClient();
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
