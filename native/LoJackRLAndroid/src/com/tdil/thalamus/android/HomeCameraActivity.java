@@ -2,29 +2,18 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageView;
 
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.gui.BeanMappingFunction;
-import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
-import com.tdil.thalamus.android.rest.client.HttpMethod;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.Camera;
-import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
-import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
-import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.utils.DownloadCameraImageTask;
+import com.tdil.thalamus.android.utils.MoveCameraTask;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -33,8 +22,9 @@ import com.tdil.thalamus.android.rest.model.LoginResponse;
 public class HomeCameraActivity extends Activity {
 
 	public static final String URL_CAMERA = "URL_CAMERA";
-	
+
 	private String urlCamera;
+
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -45,36 +35,39 @@ public class HomeCameraActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_home_camera);
-		
 		Bundle extras = getIntent().getExtras();
 		urlCamera = extras.getString(URL_CAMERA);
-//		findViewById(R.id.alarmas).setOnClickListener(
-//			new View.OnClickListener() {
-//				@Override
-//				public void onClick(View view) {
-//					Intent intent = new Intent(HomeCameraActivity.this, HomeAlarmsActivity.class);
-//		        	startActivity(intent);
-//		        	//finish();
-//				}
-//			});
-//	
-//		findViewById(R.id.lights).setOnClickListener(
-//			new View.OnClickListener() {
-//				@Override
-//				public void onClick(View view) {
-//					Intent intent = new Intent(HomeCameraActivity.this, HomeLightsActivity.class);
-//		        	startActivity(intent);
-//				}
-//			});
-//		
-//		findViewById(R.id.cameras).setOnClickListener(
-//				new View.OnClickListener() {
-//					@Override
-//					public void onClick(View view) {
-//						Intent intent = new Intent(HomeCameraActivity.this, HomeCamerasActivity.class);
-//			        	startActivity(intent);
-//					}
-//				});
+
+		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + urlCamera).execute();
+		findViewById(R.id.leftButton).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						// left
+						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "left").execute();
+					}
+				});
+		findViewById(R.id.upButton).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "up").execute();
+					}
+				});
+		findViewById(R.id.downButton).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "down").execute();
+					}
+				});
+		findViewById(R.id.rightButton).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "right").execute();
+					}
+				});
 	}
 
 	@Override
@@ -86,7 +79,7 @@ public class HomeCameraActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.activity_home, menu);
+		// getMenuInflater().inflate(R.menu.activity_home, menu);
 		return true;
 	}
 
@@ -100,7 +93,7 @@ public class HomeCameraActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	/**
 	 * Shows the progress UI and hides the login form.
 	 */
@@ -111,6 +104,5 @@ public class HomeCameraActivity extends Activity {
 		// the progress spinner.
 
 	}
-
 
 }
