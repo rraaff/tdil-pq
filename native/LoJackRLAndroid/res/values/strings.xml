@@ -2,9 +2,27 @@
 <resources>
 
     <string name="app_name">LoJack</string>
-    <string name="title_activity_check_for_update">LoJack</string>
-    <string name="action_settings">Settings</string>
-    <string name="loading">Cargando Informacion&#8230;&#8230;&#8230;</string>
+    <string name="action_settings">Buscando actualizaciones</string>
+    <string name="loading">Cargando Información&#8230;&#8230;&#8230;</string>
     <string name="dologin">dologin</string>
 
+    <!-- Titles -->
+    <string name="title_activity_check_for_update">LoJack</string>
+    <string name="title_activity_login">INGRESÁ</string>
+    
+    <!-- Buttons -->
+    <string name="btn_tag_alarms">Alarmas</string>
+    <string name="btn_tag_lights">Luces</string>
+    <string name="btn_tag_cameras">Cámaras</string>
+    <string name="btn_tag_camera">Cámara</string>
+    <string name="btn_tag_login">Ingresar</string>
+    <string name="btn_tag_forgotpass">Olvidé mi clave</string>
+    
+    <!-- Hints -->
+    <string name="hnt_doc_number">Número de documento</string>
+    <string name="hnt_doc_password">Clave</string>
+    
+    <!-- Checkboxes and Radiobutton titles -->
+    <string name="crt_tag_rememberme">Recordarme</string>
+    
 </resources>

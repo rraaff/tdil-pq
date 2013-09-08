@@ -6,13 +6,17 @@
     android:background="@drawable/bar_bg"
     android:paddingTop="0dip" >
 
-  <TableRow android:layout_width="fill_parent" >
+  <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="48dp" >
 
              <ImageView
                  android:id="@+id/logAlarmAvatar"
-                 android:layout_width="110dp"
-                 android:layout_height="wrap_content"
-                 android:maxHeight="50dp"
+                 android:layout_width="36dp"
+                 android:layout_height="36dp"
+                 android:layout_gravity="center_vertical|left"
+                 android:maxHeight="36dp"
+                 android:maxWidth="36dp"
                  android:scaleType="centerCrop" />
 
              <TableLayout
@@ -40,18 +44,20 @@
                  <TableRow
                      android:id="@+id/tableRow2"
                      android:layout_width="fill_parent" >
+
 	                 <TextView
-                 android:id="@+id/logAlarmStatus"
-                android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_gravity="left|center_vertical"
-	            android:layout_marginLeft="10dip"
-	            android:layout_marginTop="4dip"
-	            android:layout_weight="1"
-	            android:gravity="left"
-	            android:text=""
-	            android:textColor="#000000"
-	            android:textSize="16sp" />
+	                     android:id="@+id/logAlarmStatus"
+	                     android:layout_width="wrap_content"
+	                     android:layout_height="wrap_content"
+	                     android:layout_gravity="left|center_vertical"
+	                     android:layout_marginLeft="10dip"
+	                     android:layout_marginTop="4dip"
+	                     android:layout_weight="1"
+	                     android:gravity="left"
+	                     android:text=""
+	                     android:textColor="#BBBBBB"
+	                     android:textSize="16sp" />
+
                  </TableRow>
                  
              </TableLayout>

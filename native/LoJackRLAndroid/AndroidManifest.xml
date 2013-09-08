@@ -14,23 +14,28 @@
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="7" />
-
+        android:targetSdkVersion="17" />
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
+        
+        >
+<!--       android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.LoginActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
         
         <activity

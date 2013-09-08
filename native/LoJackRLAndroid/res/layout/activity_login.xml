@@ -6,43 +6,125 @@
 
     <!-- Login progress -->
 
+
     <!-- Login form -->
 
     <LinearLayout
+        android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_gravity="fill_vertical|fill_horizontal"
+        android:layout_margin="0dp"
+        android:background="@drawable/main_square"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:textAlignment="center" >
 
-        <Spinner
-            android:id="@+id/documentType"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/documentNumber"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="numero documento" >
-            <requestFocus />
-        </EditText>
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="*********"
-            android:inputType="textPassword" >
-
-        </EditText>
-
-        <Button
-            android:id="@+id/lights"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@string/dologin"
-            android:text="Login" />
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/toplayer85"
+            android:baselineAligned="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:measureWithLargestChild="true"
+            android:minWidth="250dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:textAlignment="center" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="@string/title_activity_login"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ef5323" />
+
+            <Spinner
+                android:id="@+id/documentType"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp" />
+
+            <EditText
+                android:id="@+id/documentNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:hint="@string/hnt_doc_number"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="normal" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:hint="@string/hnt_doc_password"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/lights"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#e51b24"
+                android:onClick="@string/dologin"
+                android:text="@string/btn_tag_login"
+                android:textColor="#ffffff" />
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crt_tag_rememberme"
+                android:textColor="#F2F2F2"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp" />
+
+            <Button
+                android:id="@+id/panic"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:minHeight="24dp"
+                android:text="@string/btn_tag_forgotpass"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/placahome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:baselineAlignBottom="true"
+            android:contentDescription="@string/loading"
+            android:maxWidth="250dp"
+            android:src="@drawable/logo_lojack" />
 
     </LinearLayout>
 

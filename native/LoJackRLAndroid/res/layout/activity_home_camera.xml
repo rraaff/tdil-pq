@@ -17,36 +17,38 @@
             android:id="@+id/cameraView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.63" />
+            android:layout_weight="0.63"
+            android:background="@drawable/main_square" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/leftButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Izquierda" />
+                android:text="←" />
 
             <Button
                 android:id="@+id/upButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arriba" />
+                android:text="↑" />
 
             <Button
                 android:id="@+id/downButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Abajo" />
+                android:text="↓" />
 
             <Button
                 android:id="@+id/rightButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Derecha" />
+                android:text="→" />
 
         </LinearLayout>
     </LinearLayout>
