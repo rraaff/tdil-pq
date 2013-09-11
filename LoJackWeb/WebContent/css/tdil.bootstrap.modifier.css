@@ -227,14 +227,67 @@ footer a:hover, a:focus, a:active { color:#f05224; }
 	font-weight: lighter;
 }
 #camerasList ul.cameraListUl {
-	float: left !important;
-	list-style-type: none;
+	width:470px;
+	float:left !important;
+	list-style-type:none;
 }
 #camerasList ul li.cameraLink a {
 	font-size:14px;
 	line-height:20px;
 	width: 350px;
 	float: left;
+}
+#camerasList ul.cameraListUl li {
+	color:#761617;
+	background:#f7f5f1;
+	background-image:url(../images/skin_lj_rl/buttons/icon_camera.png);
+	background-repeat:no-repeat;
+	line-height:36px;
+	font-size:13px;
+	width:100%;
+	padding:0 0 0 50px;
+	margin:0 0 10px 0;
+}
+#camerasList ul.cameraListUl li.cameraLink:hover,
+#camerasList ul.cameraListUl li.cameraLink a:hover {
+	color:#fff;
+	background:#691818;
+	background-image:url(../images/skin_lj_rl/buttons/icon_camera.png);
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+#camerasList ul.cameraListUl li div {
+	width:350px;
+} 
+#camerasList textarea {
+	width:350px;
+	height:20px;
+	line-height:20px;
+}
+#camerasList button {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color:#f9a123;
+	background-image:-moz-linear-gradient(top, #f89406, #fbb450);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
+	background-image:-webkit-linear-gradient(top, #f89406, #fbb450);
+	background-image:-o-linear-gradient(top, #f89406, #fbb450);
+	background-image:linear-gradient(to bottom, #f89406, #fbb450);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
+	border-color:#fbb450 #fbb450 #f89406;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	color:#FFF;
+	font-size:15px;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:10px;
+	margin:10px 0;
+	cursor:pointer;
 }
 #cameraTitle h1,
 #agendaWrapper h1 {

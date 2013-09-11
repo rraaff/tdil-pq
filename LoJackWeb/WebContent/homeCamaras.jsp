@@ -54,7 +54,7 @@ $(function() {
 		     return doRenameCamera($(this).attr('url'), value);
 		  }, {
 		     type    : 'textarea',
-		     submit  : 'OK',
+		     submit  : 'Renombrar',
 		 });
 });
 function doRenameCamera(url, alarmDesc) {
@@ -108,7 +108,7 @@ function doRenameCamera(url, alarmDesc) {
 				<ul class="cameraListUl">
 					<% int camIndex = 0;
 						for (Camera camera : cameraForm.getAllCameras()) { %>
-							<li class="cameraLink"><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div><a href="./selectCamera.do?pos=<%=camIndex%>">Ver</a></li>
+							<a href="./selectCamera.do?pos=<%=camIndex%>"><li class="cameraLink"><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div></li></a>
 					<% camIndex = camIndex + 1;
 						} %>
 				</ul>
@@ -116,7 +116,6 @@ function doRenameCamera(url, alarmDesc) {
 		</div>
 	</div>
 </section>
-<!-- % @  include file="includes/panicButton.jspf" % -->
 <%@ include file="includes/footerProductoHome.jsp" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
