@@ -1,7 +1,7 @@
 package com.tdil.lojack.struts.forms;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,12 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
+import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Camera;
+import com.tdil.lojack.model.CameraConf;
+import com.tdil.lojack.model.CameraConfExample;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.TransactionalActionWithResult;
 
 public class CameraForm extends ActionForm {
 
@@ -31,6 +36,21 @@ public class CameraForm extends ActionForm {
 	private List<Camera> allCameras;
 
 	private IPCamera camera;
+	
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(CameraForm.class);
+	
+	private static final class GetCameraConf implements TransactionalActionWithResult {
+		private int userId;
+		public GetCameraConf(int userId) {
+			super();
+			this.userId = userId;
+		}
+		public Object executeInTransaction() throws SQLException {
+			CameraConfExample example = new CameraConfExample();
+			example.createCriteria().andIdwebsiteuserEqualTo(userId);
+			return DAOManager.getCameraConfDAO().selectCameraConfByExample(example);
+		}
+	}
 
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
@@ -45,6 +65,14 @@ public class CameraForm extends ActionForm {
 		List<Camera> all = new ArrayList<Camera>();
 		all.addAll(LoJackServicesConnector.getCameras(user));
 		setAllCameras(all);
+		try {
+			List<CameraConf> alarmConf = (List<CameraConf>)new GetCameraConf(user.getModelUser().getId()).executeInTransaction();
+			for (Camera alarm : getAllCameras()) {
+				enhance(alarm, alarmConf);
+			}
+		} catch (SQLException e) {
+			LOG.error(e.getMessage(), e);
+		}
 		if (all.size() == 1) {
 			this.selectCamera(0);
 		}
@@ -132,6 +160,15 @@ public class CameraForm extends ActionForm {
 
 	public List<Camera> getAllCameras() {
 		return allCameras;
+	}
+	
+	private static void enhance(Camera camera, List<CameraConf> alarmConf) {
+		for (CameraConf ac : alarmConf) {
+			if (ac.getUrl().equals(camera.getUrl())) {
+				camera.setDescription(ac.getDescription());
+				return;
+			}
+		}
 	}
 
 	public void setAllCameras(List<Camera> allCameras) {

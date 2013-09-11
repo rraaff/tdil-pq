@@ -6,6 +6,7 @@ import com.tdil.lojack.dao.AlarmConfDAO;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
+import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
@@ -31,5 +32,7 @@ public interface DAOProvider {
 	public abstract PointOfInterestDAO getPointOfInterestDAO() throws SQLException;
 
 	public abstract SystemUserDAO getSystemUserDAO() throws SQLException;
+	
+	public abstract CameraConfDAO getCameraConfDAO() throws SQLException;
 
 }

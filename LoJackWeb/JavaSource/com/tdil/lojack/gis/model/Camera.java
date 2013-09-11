@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.lang.StringUtils;
+
 @XmlRootElement
 public class Camera implements Serializable {
 
 	private static final long serialVersionUID = -6917436244277188931L;
 
+	private String description;
 	private String username;
 	private String password;
 	private String url;
@@ -37,6 +40,15 @@ public class Camera implements Serializable {
 	}
 	public void setModel(String model) {
 		this.model = model;
+	}
+	public String getDescription() {
+		if (StringUtils.isEmpty(description)) {
+			description = this.url;
+		}
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

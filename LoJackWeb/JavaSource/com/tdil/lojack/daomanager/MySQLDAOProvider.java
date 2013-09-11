@@ -7,6 +7,7 @@ import com.tdil.lojack.dao.AlarmConfDAO;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
+import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
@@ -16,6 +17,7 @@ import com.tdil.lojack.dao.impl.AlarmConfDAOImpl;
 import com.tdil.lojack.dao.impl.AsyncJobDAOImpl;
 import com.tdil.lojack.dao.impl.BlobDataDAOImpl;
 import com.tdil.lojack.dao.impl.CacheRegionDAOImpl;
+import com.tdil.lojack.dao.impl.CameraConfDAOImpl;
 import com.tdil.lojack.dao.impl.LightConfDAOImpl;
 import com.tdil.lojack.dao.impl.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
@@ -92,5 +94,10 @@ public class MySQLDAOProvider implements DAOProvider {
 	@Override
 	public SystemUserDAO getSystemUserDAO() throws SQLException {
 		return new SystemUserDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public CameraConfDAO getCameraConfDAO() throws SQLException {
+		return new CameraConfDAOImpl(IBatisManager.getClient());
 	}
 }

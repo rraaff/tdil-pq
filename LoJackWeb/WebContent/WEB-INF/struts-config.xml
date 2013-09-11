@@ -167,6 +167,7 @@
   
   <action path="/renameAlarm" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.RenameAlarmAjaxAction"/>
   <action path="/renameLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.RenameLightAjaxAction"/>
+  <action path="/renameCamera" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.RenameCameraAjaxAction"/>
   
   <action path="/turnOnLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.TunOnLightAjaxAction"/>
   <action path="/turnOffLight" parameter="HomeUser" scope="request" type="com.tdil.lojack.struts.action.TunOffLightAjaxAction"/>

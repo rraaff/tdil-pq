@@ -989,4 +989,6 @@
  <PROCESS-ITEM NAME="page48" PATH="/errorAjaxModal.jsp"
   SHAPE="240,4609,0,0" SUBTYPE="jsp" TITLE="errorAjaxModal.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#renameCamera" NAME="action78" PATH="/renameCamera"
+  SHAPE="32,6065,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

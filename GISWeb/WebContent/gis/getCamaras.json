@@ -8,7 +8,7 @@
 	{
 		"username" : "operator",
 		"password": "operator1",
-		"url" : "http://demo-life.dyndns.org:8980/",
+		"url" : "http://demo-life.dyndns.org:8981/",
 		"model" : "1"
 	}
 ]

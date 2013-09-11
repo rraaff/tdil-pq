@@ -7,6 +7,7 @@ import com.tdil.lojack.dao.AlarmConfDAO;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
+import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
@@ -59,5 +60,10 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public SystemUserDAO getSystemUserDAO() throws SQLException {
 		return new SystemUserDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public CameraConfDAO getCameraConfDAO() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -40,7 +40,7 @@ targetProject="LoJackWeb">
   <property name="methodNameCalculator" value="extended" />
 </daoGenerator>
 <!-- SqlServer ??? -->
-<table schema="LOJACK" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
+<!--  table schema="LOJACK" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="LOJACK" tableName="ALARM_CONF" domainObjectName="AlarmConf" alias="ac">
@@ -69,8 +69,10 @@ targetProject="LoJackWeb">
 
 <table schema="LOJACK" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table-->
+<table schema="LOJACK" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-
 
 </ibatorContext>
 </ibatorConfiguration>

@@ -49,7 +49,36 @@
 $(function() {
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
+
+	  $('.editable').editable(function(value, settings) {
+		     return doRenameCamera($(this).attr('url'), value);
+		  }, {
+		     type    : 'textarea',
+		     submit  : 'OK',
+		 });
 });
+function doRenameCamera(url, alarmDesc) {
+	  <%@ include file="includes/blockUI.jspf" %>
+	  $.ajax({
+        type: "GET",
+        cache: false,
+        url: "./renameCamera.do",
+        data: {url: url, description: alarmDesc},
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+      	  <%@ include file="includes/unblockUI.jspf" %>
+      	  if (data.result == 'OK') {
+				} else {
+					 $('#'+alarmId).prop('innerHTML', 'Error');
+				}
+        },
+        error: function() {
+      	  <%@ include file="includes/unblockUI.jspf" %>
+      	  $('#'+alarmId).prop('innerHTML', 'Error');
+        }
+    });
+    return alarmDesc;
+}
 <%@ include file="includes/panicJS.jspf" %>
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/errorAjaxJS.jspf" %>
@@ -79,7 +108,7 @@ $(function() {
 				<ul class="cameraListUl">
 					<% int camIndex = 0;
 						for (Camera camera : cameraForm.getAllCameras()) { %>
-							<li class="cameraLink"><a href="./selectCamera.do?pos=<%=camIndex%>"><%=camera.getUrl()%></a></li>
+							<li class="cameraLink"><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div><a href="./selectCamera.do?pos=<%=camIndex%>">Ver</a></li>
 					<% camIndex = camIndex + 1;
 						} %>
 				</ul>
