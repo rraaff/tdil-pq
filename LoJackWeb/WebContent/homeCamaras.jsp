@@ -108,7 +108,7 @@ function doRenameCamera(url, alarmDesc) {
 				<ul class="cameraListUl">
 					<% int camIndex = 0;
 						for (Camera camera : cameraForm.getAllCameras()) { %>
-							<a href="./selectCamera.do?pos=<%=camIndex%>"><li class="cameraLink"><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div></li></a>
+							<li class="cameraLink"><a href="./selectCamera.do?pos=<%=camIndex%>" title="ver cámara: <%= camera.getDescription() %>"><img src="images/null.gif" /></a><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div> <span class="rename">(Renombrar)</span></li>
 					<% camIndex = camIndex + 1;
 						} %>
 				</ul>
