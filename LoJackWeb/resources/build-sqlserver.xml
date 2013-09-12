@@ -5,13 +5,13 @@
 	<property name="project.name.lower" value="lojack" />
 	
 	<property name="sql.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-	<property name="root.url" value="jdbc:sqlserver://192.168.56.101" />
+	<property name="root.url" value="jdbc:sqlserver://192.168.0.119:1123" />
 	<property name="root.user" value="sa" />
-	<property name="root.pass" value="password" />
+	<property name="root.pass" value="p4l0ll1n4" />
 
-	<property name="db.url" value="jdbc:sqlserver://192.168.56.101;database=LOJACK_DB;" />
+	<property name="db.url" value="jdbc:sqlserver://192.168.0.119:1123;database=LOJACK_DB;" />
 	<property name="db.user" value="${project.name.upper}_USER" />
-	<property name="db.pass" value="${project.name.upper}_USER" />
+	<property name="db.pass" value="p4l0ll1n4" />
 
 	<taskdef resource="net/sf/antcontrib/antlib.xml"
 			classpath="./ant-contrib.jar" />
@@ -33,6 +33,15 @@
 			<transaction src="ddl-sqlserver.sql" />
 			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-3">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl3-sqlserver.sql" />
 		</sql>
 	</target>
 

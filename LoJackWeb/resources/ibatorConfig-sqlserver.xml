@@ -13,8 +13,8 @@
   defaultModelType="flat">
 
 <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-			connectionURL="jdbc:sqlserver://192.168.56.101;database=LOJACK_DB;" userId="LOJACK_USER"
-			password="LOJACK_USER" />
+			connectionURL="jdbc:sqlserver://192.168.0.119:1123;database=LOJACK_DB;" userId="LOJACK_USER"
+			password="p4l0ll1n4" />
 
 <javaModelGenerator targetPackage="com.tdil.lojack.model"
   targetProject="TestSQLServer">
@@ -37,7 +37,7 @@ targetProject="LoJackWeb">
 </daoGenerator>
 
 <!-- SqlServer ??? -->
-<table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
+<!--  table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="ALARM_CONF" domainObjectName="AlarmConf" alias="ac">
@@ -66,8 +66,10 @@ targetProject="LoJackWeb">
 
 <table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
+<table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-
 
 </ibatorContext>
 </ibatorConfiguration>
