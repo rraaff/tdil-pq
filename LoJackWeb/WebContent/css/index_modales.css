@@ -423,3 +423,4 @@ iframe#videoIframe {
 	line-height:15px;
 	width:100%;
 }
+.olPopupCloseBox { background:#000; background-image:url(../images/skin_lj_rl/buttons/map_x_close.png); background-repeat:no-repeat; background-position:center center; }

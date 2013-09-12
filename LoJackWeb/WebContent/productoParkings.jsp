@@ -234,26 +234,26 @@
 	var SearchMeters;
 	var currPoints = new Array(); 
 	var IconSizeForZoom = new Array(); 
-	IconSizeForZoom[0] = 8;
-	IconSizeForZoom[1] = 8;
-	IconSizeForZoom[2] = 8;
-	IconSizeForZoom[3] = 8;
-	IconSizeForZoom[4] = 8;
-	IconSizeForZoom[5] = 8;
-	IconSizeForZoom[6] = 8;
-	IconSizeForZoom[7] = 10;
-	IconSizeForZoom[8] = 10;
-	IconSizeForZoom[9] = 10;
-	IconSizeForZoom[10] = 12;
-	IconSizeForZoom[11] = 12;
-	IconSizeForZoom[12] = 12;
-	IconSizeForZoom[13] = 14;
-	IconSizeForZoom[14] = 14;
-	IconSizeForZoom[15] = 20;
-	IconSizeForZoom[16] = 24;
-	IconSizeForZoom[17] = 28;
-	IconSizeForZoom[18] = 30;
-	IconSizeForZoom[19] = 32;
+	IconSizeForZoom[0] = 18;
+	IconSizeForZoom[1] = 18;
+	IconSizeForZoom[2] = 18;
+	IconSizeForZoom[3] = 18;
+	IconSizeForZoom[4] = 18;
+	IconSizeForZoom[5] = 18;
+	IconSizeForZoom[6] = 18;
+	IconSizeForZoom[7] = 20;
+	IconSizeForZoom[8] = 20;
+	IconSizeForZoom[9] = 20;
+	IconSizeForZoom[10] = 24;
+	IconSizeForZoom[11] = 24;
+	IconSizeForZoom[12] = 24;
+	IconSizeForZoom[13] = 26;
+	IconSizeForZoom[14] = 26;
+	IconSizeForZoom[15] = 28;
+	IconSizeForZoom[16] = 30;
+	IconSizeForZoom[17] = 32;
+	IconSizeForZoom[18] = 38;
+	IconSizeForZoom[19] = 40;
         
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
@@ -267,7 +267,7 @@
 		};
 		Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 		Mapa.UpdateConfig({ title: "Parkings" });
-		Mapa.SetParameters("toolbar=off&Lat=-34.605004&Lon=-58.381677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
+		Mapa.SetParameters("toolbar=off&Lat=-34.605004&Lon=-58.451677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
 
 		$("input[cl]").each(function(indice,valor) {
 			$(valor).click(function() {

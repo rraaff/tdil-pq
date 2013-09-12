@@ -161,6 +161,14 @@
 #productsMenu ul li.tabCar {
 	background:#f05224;
 }
+/*
+border:dotted 3px #ee5222;
+background:url(images/skin_lj_rl/backs/topLayer25_orange.png);
+width:54px;
+height:54px;
+border-radius:27px;
+
+*/
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
@@ -231,7 +239,11 @@
 			
 			parkings = new OpenLayers.Layer.Markers( "Parkings" );
 			Mapa.map.addLayer(parkings);
-			var size = new OpenLayers.Size(21,25);
+			var size = new OpenLayers.Size(54,54);
+//			var border = new OpenLayers.Border(dotted 3px #ee5222);
+	//		var background = new OpenLayers.Background(images/skin_lj_rl/backs/topLayer25_orange.png);
+		//	var border-radius = new OpenLayers.Border-radius(27);
+			var sizeIcon = new OpenLayers.Size(48,48);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
 			var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
 			var proj = new OpenLayers.Projection("EPSG:4326");

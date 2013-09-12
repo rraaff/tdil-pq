@@ -241,9 +241,37 @@ select.year  {
 #productHomeContent.col1_798 { width:100%; padding:5px 0 0 0; }
 #camerasList { background:#fff; width:100%; min-height:340px; height:100%; padding:10px 0 30px 0; margin:0 0 5px 0; }
 #camerasList h3 { font-size:100%; text-align:left; text-transform:uppercase; padding:0 0 10px 20px; }
-#camerasList ul { text-align:left; list-style: inherit; padding:0 0 0 20px; margin:0 0 0 20px; }
+#camerasList ul { text-align:left; list-style: inherit; padding:0; margin:0 20px; }
 #camerasList ul li { padding:10px 0; }
 
+
+#camerasList ul li a {
+	font-size:14px;
+	line-height:20px;
+	float:left;
+}
+#camerasList ul li {
+	color:#761617;
+	background:#f7f5f1;
+	background-image:url(../images/skin_lj_rl/buttons/icon_camera.png);
+	background-repeat:no-repeat;
+	line-height:36px;
+	font-size:13px;
+	width:100%;
+	padding:0;
+	margin:0 0 10px 0;
+	display:inline-block;
+}
+#camerasList ul li span {
+	padding:0 0 0 50px;
+}
+#camerasList ul.cameraListUl li:hover,
+#camerasList ul.cameraListUl li a:hover {
+	color:#fff;
+	background:#691818;
+	background-image:url(../images/skin_lj_rl/buttons/icon_camera.png);
+	background-repeat:no-repeat;
+}
 #accordion { padding:15px 0 0; }
 #agendaWrapper { padding:15px 0; }
 #accordion .portaTitleAndSwitch { margin:0; padding:5px 0; float:right; }
