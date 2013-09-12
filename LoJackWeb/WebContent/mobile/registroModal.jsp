@@ -65,7 +65,7 @@
 			<fieldset>
 				<label>* Numero</label>
 				<html:text name="RegisterFormMobile" property="document" />
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%></div>
+				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Nombre</label>

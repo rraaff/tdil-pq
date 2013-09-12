@@ -37,7 +37,12 @@ public class ThalamusWebUtils {
 		JSONObject jsonObject = (JSONObject)json;
 		JSONObject errorsJson = jsonObject.getJSONObject("errors");
 		for (Object o : errorsJson.keySet()) {
-			errors.setFieldError(o.toString(), errorsJson.getString(o.toString()));
+			String keyToStore = o.toString();
+			if (keyToStore.equals("credential.principal")) {
+				errors.setFieldError(keyToStore, errorsJson.getString(o.toString()));
+				keyToStore = "RegisterForm.document";
+			}
+			errors.setFieldError(keyToStore, errorsJson.getString(o.toString()));
 		}
 	}
 
