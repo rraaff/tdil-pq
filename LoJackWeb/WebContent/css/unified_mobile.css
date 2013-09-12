@@ -176,6 +176,7 @@ button.icon_zoom_out { background:url(../mobile/images/webApp/parkings/icon_Zoom
 	left:0;
 	margin:0 0 0 10px;
 	position:absolute;
+	z-index:1300;
 }
 .defaultLayerStyles {
 	width:100%;
