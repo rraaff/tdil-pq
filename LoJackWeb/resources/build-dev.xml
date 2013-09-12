@@ -289,24 +289,28 @@
 		</copy-->
 		
 		<!-- mysql -->
-		<copy file="ddl.sql" tofile="${project.name.upper}.tmp/mysql/create-mysql.sql">
+		<!--copy file="ddl.sql" tofile="${project.name.upper}.tmp/mysql/create-mysql.sql">
 		</copy>
 		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
 			<filelist dir="./" files="sysproperties.sql"/>
 		</concat>
 		<concat destfile="${project.name.upper}.tmp/mysql/create-mysql.sql" append="true" fixlastline="true" encoding="UTF-8">
 			<filelist dir="./" files="poi_inserts.sql"/>
-		</concat>
+		</concat-->
+		<copy file="ddl3.sql" tofile="${project.name.upper}.tmp/mysql/ddl3.sql">
+			</copy>
 		
 		<!-- sql server -->
-		<copy file="ddl-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql">
+		<!--copy file="ddl-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql">
 		</copy>
 		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
 			<filelist dir="./" files="sysproperties.sql"/>
 		</concat>
 		<concat destfile="${project.name.upper}.tmp/sqlserver/create-sqlserver.sql" append="true" fixlastline="true" encoding="UTF-8">
 			<filelist dir="./" files="poi_inserts.sql"/>
-		</concat>
+		</concat-->
+		<copy file="ddl3-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/ddl3-sqlserver.sql">
+			</copy>
 		
 		<!-- datasources -->
 		<copy file="./jboss/mysql-ds.xml" todir="${project.name.upper}.tmp/mysql/">
@@ -320,10 +324,10 @@
 		<copy file="../../thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" todir="${project.name.upper}.tmp/sqlserver/">
 		</copy>
 		
-		<copy file="./database.sql" tofile="${project.name.upper}.tmp/mysql/db-mysql.sql">
+		<!--copy file="./database.sql" tofile="${project.name.upper}.tmp/mysql/db-mysql.sql">
 		</copy>
 		<copy file="./database-sqlserver.sql" tofile="${project.name.upper}.tmp/sqlserver/db-sqlserver.sql">
-		</copy>
+		</copy-->
 		
 		<mkdir dir="${project.name.upper}.tmp/camera-server" />
 		<jar destfile="${project.name.upper}.tmp/camera-server/camera-server.jar" filesetmanifest="mergewithoutmain">
