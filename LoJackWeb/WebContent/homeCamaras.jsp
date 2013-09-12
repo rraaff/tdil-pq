@@ -106,11 +106,19 @@ function doRenameCamera(url, alarmDesc) {
 			<div id="camerasList">
 				<h3>Seleccioná la cámara</h3>
 				<ul class="cameraListUl">
-					<% int camIndex = 0;
-						for (Camera camera : cameraForm.getAllCameras()) { %>
-							<li class="cameraLink"><a href="./selectCamera.do?pos=<%=camIndex%>" title="ver cámara: <%= camera.getDescription() %>"><img src="images/null.gif" /></a><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div> <span class="rename">(Renombrar)</span></li>
-					<% camIndex = camIndex + 1;
-						} %>
+					<% if (usingMobile || isAndroid) { %>
+						<% int camIndex = 0;
+							for (Camera camera : cameraForm.getAllCameras()) { %>
+								<a href="./selectCamera.do?pos=<%=camIndex%>" title="ver cámara: <%= camera.getDescription() %>"><li class="cameraLink"><span><%= camera.getDescription() %></span></li></a>
+							<% camIndex = camIndex + 1;
+								} %>
+					<% } else { %>
+						<% int camIndex = 0;
+							for (Camera camera : cameraForm.getAllCameras()) { %>
+								<li class="cameraLink"><a href="./selectCamera.do?pos=<%=camIndex%>" title="ver cámara: <%= camera.getDescription() %>"><img src="images/null.gif" /></a><div url="<%=camera.getUrl()%>" class="editable"><%= camera.getDescription() %></div> <span class="rename">(Renombrar)</span></li>
+						<% camIndex = camIndex + 1;
+							} %>
+					<% } %>
 				</ul>
 			</div>
 		</div>
