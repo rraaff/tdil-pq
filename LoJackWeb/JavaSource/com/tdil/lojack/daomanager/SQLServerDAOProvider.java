@@ -13,6 +13,7 @@ import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
+import com.tdil.lojack.dao.impl.sqlserver.CameraConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.SystemUserDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.AlarmConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.AsyncJobDAOImpl;
@@ -63,7 +64,6 @@ public class SQLServerDAOProvider implements DAOProvider {
 	}
 	@Override
 	public CameraConfDAO getCameraConfDAO() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return new CameraConfDAOImpl(IBatisManager.getClient());
 	}
 }
