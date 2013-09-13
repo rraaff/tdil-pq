@@ -13,6 +13,7 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class GoToABMAction extends AbstractAction {
 
@@ -33,8 +34,7 @@ public class GoToABMAction extends AbstractAction {
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		final AbstractForm abstractForm = (AbstractForm) form;
-		TransactionProvider.executeInTransaction(new ResetAndInit(abstractForm));
-
+		GenericTransactionExecutionService.getInstance().execute(new ResetAndInit(abstractForm));
 		return mapping.findForward("continue");
 	}
 

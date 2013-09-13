@@ -20,6 +20,7 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 import com.tdil.users.None;
 import com.tdil.users.Role;
 
@@ -55,7 +56,7 @@ public abstract class SystemConfig {
 	public void loadPropertiesFromDB() {
 		getLog().fatal("SystemConfig loading properties from db");
 		try {
-			TransactionProvider.executeInTransaction(new TransactionalAction() {
+			GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
 				public void executeInTransaction() throws SQLException, ValidationException {
 
 					loadPropertiesFromDBInTransaction();

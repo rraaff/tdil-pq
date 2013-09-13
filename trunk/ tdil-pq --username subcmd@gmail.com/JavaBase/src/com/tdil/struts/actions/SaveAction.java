@@ -17,6 +17,8 @@ import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
+import com.tdil.subsystem.generic.IGenericTransactionExecutionService;
 import com.tdil.validations.ValidationErrors;
 
 public class SaveAction extends AbstractAction {
@@ -65,7 +67,7 @@ public class SaveAction extends AbstractAction {
 		} else {
 			try {
 				TransactionProvider.executeInTransaction(new Save(form));
-				TransactionProvider.executeInTransaction(new ResetAndInit(form));
+				GenericTransactionExecutionService.getInstance().execute(new ResetAndInit(form));
 			} catch (ValidationException ex) {
 				return redirectToFailure(ex.getError(), request, mapping);
 			} catch (Exception ex) {
