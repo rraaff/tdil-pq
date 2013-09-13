@@ -18,6 +18,18 @@ public class SystemPropertyCache {
 		cache.put(key, value);
 	}
 	
+	public static String get(String key) {
+		return cache.get(key);
+	}
+	
+	public static String get(String key, String defValue) {
+		if (cache.containsKey(key)) {
+			return cache.get(key);
+		} else {
+			return defValue;
+		}
+	}
+	
 	public static String getMailServer() {
 		return cache.get(MAIL_SERVER);
 	}
