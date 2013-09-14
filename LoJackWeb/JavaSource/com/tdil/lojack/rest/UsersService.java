@@ -22,6 +22,7 @@ import com.tdil.lojack.rest.model.PersonBean;
 import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
 import com.tdil.lojack.struts.forms.RegisterForm;
+import com.tdil.lojack.struts.forms.RequestResetPasswordForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
@@ -72,6 +73,25 @@ public class UsersService extends AbstractRESTService {
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return response(LoginResponse.failed());
+		} 
+	}
+	
+	@GET
+	@Path("/requestResetPassword")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response requestResetPassword(@QueryParam("documentType") String documentType, @QueryParam("documentNumber") String documentNumber) {
+		try {
+			RequestResetPasswordForm form = new RequestResetPasswordForm();
+			form.setDocumentType(Integer.valueOf(documentType));
+			form.setUsername(documentNumber);
+			if (form.resetPassword() == 201) {
+				return okResponse();
+			} else {
+				return failResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
 		} 
 	}
 	
