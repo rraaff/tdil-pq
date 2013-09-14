@@ -9,6 +9,7 @@
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
     <string name="title_activity_login">INGRESÁ</string>
+    <string name="title_request_reset">RESETEAR CONTRASEÑA</string>
     
     <!-- Buttons -->
     <string name="btn_tag_alarms">Alarmas</string>
@@ -17,6 +18,8 @@
     <string name="btn_tag_camera">Cámara</string>
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
+    <string name="btn_tag_reset_password">Resetear contraseña</string>
+    
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>

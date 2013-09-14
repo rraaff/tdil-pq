@@ -2,6 +2,8 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -25,13 +27,14 @@ import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity implements IRestClientObserver {
+public class RequestResetPasswordActivity extends Activity implements IRestClientObserver {
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -48,13 +51,12 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 	// Values for email and password at the time of the login attempt.
 	private String mDocType;
 	private String mDocNumber;
-	private String mPassword;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_login);
+		setContentView(R.layout.activity_request_reset);
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -62,7 +64,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			public void onItemSelected(AdapterView<?> arg0, View arg1,
 					int arg2, long arg3) {
 				 DocumentTypeBean item = (DocumentTypeBean)arg0.getItemAtPosition(arg2);
-				 LoginActivity.this.mDocType = String.valueOf(item.getId());
+				 RequestResetPasswordActivity.this.mDocType = String.valueOf(item.getId());
 				
 			}@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -74,7 +76,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			public void sucess(RESTClientTask task) {
 				 Gson gson = new Gson();
 				 DocumentTypeCollection col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
-				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(LoginActivity.this,
+				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(RequestResetPasswordActivity.this,
 					android.R.layout.simple_spinner_item, col.getList(), new BeanMappingFunction<DocumentTypeBean>() {
 			 			public String key(DocumentTypeBean t) {return String.valueOf(t.getId());};
 			 			@Override
@@ -86,7 +88,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			}
 			@Override
 			public void error(RESTClientTask task) {
-				Messages.connectionErrorMessage(LoginActivity.this);
+				Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
 		
@@ -97,38 +99,28 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 				android.R.layout.simple_spinner_item, list);
 		spinner.setAdapter(adapter);*/
 
-		findViewById(R.id.loginButtons).setOnClickListener(
+		findViewById(R.id.resetPasswordButton).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						attemptLogin();
-					}
-				});
-		
-		findViewById(R.id.requestResetPassword).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						Intent intent = new Intent(LoginActivity.this, RequestResetPasswordActivity.class);
-			        	startActivity(intent);
+						resetPassword();
 					}
 				});
 	}
 
-	public void attemptLogin() {
+	public void resetPassword() {
 		if (mAuthTask != null) {
 			return;
 		}
 
 		// Store values at the time of the login attempt.
 		mDocNumber = ((EditText) findViewById(R.id.documentNumber)).getText().toString();
-		mPassword = ((EditText) findViewById(R.id.password)).getText().toString();
 
 		boolean cancel = false;
 		View focusView = null;
 		showProgress(true);
-		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.LOGIN, new RestParams(RESTConstants.P_DOCUMENT_TYPE, mDocType).
-				put(RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(RESTConstants.P_PASSWORD, mPassword), null);
+		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.REQUEST_RESET_PASSWORD, new RestParams(RESTConstants.P_DOCUMENT_TYPE, mDocType).
+				put(RESTConstants.P_DOCUMENT_NUMBER, mDocNumber), null);
 		mAuthTask.execute((Void) null);
 	}
 
@@ -158,19 +150,33 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 
 	@Override
 	public void error(RESTClientTask task) {
-		Messages.connectionErrorMessage(LoginActivity.this);
+		Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 		this.mAuthTask = null;
 	}
 	@Override
 	public void sucess(RESTClientTask task) {
 		Gson gson = new Gson();
-		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
-		if (resp.getLogged()) {
-			Intent intent = new Intent(this, HomeActivity.class);
-        	startActivity(intent);
-        	finish();
+		RESTResponse resp = gson.fromJson(task.getResult(), RESTResponse.class);
+		if (resp.getOk()) {
+			new AlertDialog.Builder(RequestResetPasswordActivity.this)
+            .setIcon(R.drawable.ic_launcher)
+            .setTitle("Contraseña")
+            .setMessage("Se le ha enviado un mail para que genere una nueva contraseña")
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                 	   //this.
+                    }
+            }).show();
 		} else {
-			System.out.println("not logged");
+			new AlertDialog.Builder(RequestResetPasswordActivity.this)
+            .setIcon(R.drawable.ic_launcher)
+            .setTitle("Contraseña")
+            .setMessage("Ha ocurrido un error, verifique los datos ingresados")
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                 	   //this.
+                    }
+            }).show();
 		}
 		this.mAuthTask = null;
 	}

@@ -20,7 +20,7 @@ public interface RESTConstants {
 	
 	public static final String LOGIN = "/users/login?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER+"&password="+P_PASSWORD;
 	public static final String DOCUMENT_TYPES = "/users/documentTypes";
-	
+	public static final String REQUEST_RESET_PASSWORD = "/users/requestResetPassword?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER;
 	
 	public static final String ALARMS = "/alarms/list";
 	public static final String ACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/activate";
