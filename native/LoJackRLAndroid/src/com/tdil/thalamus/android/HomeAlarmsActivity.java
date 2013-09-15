@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -48,6 +49,16 @@ public class HomeAlarmsActivity extends Activity {
 		setContentView(R.layout.activity_home_alarms);
 
 		list = (ListView) findViewById(R.id.alarmsList);
+		
+		findViewById(R.id.goToSendPanicActivity).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(HomeAlarmsActivity.this, HomeAlarmsSendPanicActivity.class);
+			        	startActivity(intent);
+			        	//finish();
+					}
+				});
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
