@@ -1,12 +1,16 @@
 package com.tdil.lojack.pets;
 
+import com.tdil.lojack.thalamus.ThalamusLoginCache;
+import com.tdil.lojack.utils.WebsiteUser;
+
 public class PetsConnector {
 
 	private static String petsLoginUrl = "";
 	private static String petsMobileLoginUrl = "";
 	private static String petsToken;
 
-	public static String getPetsLoginUrl() {
+	public static String getPetsLoginUrl(WebsiteUser websiteUser) {
+		ThalamusLoginCache.updateCache(websiteUser);
 		return petsLoginUrl;
 	}
 
@@ -22,7 +26,8 @@ public class PetsConnector {
 		PetsConnector.petsToken = petsToken;
 	}
 
-	public static String getPetsMobileLoginUrl() {
+	public static String getPetsMobileLoginUrl(WebsiteUser websiteUser) {
+		ThalamusLoginCache.updateCache(websiteUser);
 		return petsMobileLoginUrl;
 	}
 

@@ -22,6 +22,8 @@ import com.tdil.lojack.prevent.model.SpeedLimit;
 import com.tdil.lojack.prevent.model.UpdatePhoneNumbers;
 import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.lojack.prevent.model.Vehicle;
+import com.tdil.lojack.thalamus.ThalamusLoginCache;
+import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
@@ -282,7 +284,8 @@ public class PreventConnector {
 		TIMEOUT = tIMEOUT;
 	}
 
-	public static String getPreventLoginUrl() {
+	public static String getPreventLoginUrl(WebsiteUser user) {
+		ThalamusLoginCache.updateCache(user);
 		return preventLoginUrl;
 	}
 

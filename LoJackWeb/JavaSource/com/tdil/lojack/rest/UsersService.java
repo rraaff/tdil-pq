@@ -1,5 +1,8 @@
 package com.tdil.lojack.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
@@ -23,11 +26,15 @@ import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
 import com.tdil.lojack.struts.forms.RegisterForm;
 import com.tdil.lojack.struts.forms.RequestResetPasswordForm;
+import com.tdil.lojack.utils.AddressType;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
+import com.tdil.thalamus.client.facade.json.beans.AddressTypeBean;
 import com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean;
+import com.tdil.thalamus.client.facade.json.beans.StateBean;
 import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
 
 @Path("/users")
@@ -106,9 +113,37 @@ public class UsersService extends AbstractRESTService {
 	@GET
 	@Path("/documentTypes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response list() {
+	public Response listDocumentTypes() {
 		try {
 			return createResponse(201, new BeanCollection<DocumentTypeBean>(ThalamusClientBeanFacade.getDocumentTypes()));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/states")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listStates() {
+		try {
+			return createResponse(201, new BeanCollection<StateBean>(ThalamusClientBeanFacade.getStates(1)));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/addressTypes")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listAddressTypes() {
+		try {
+			List<AddressTypeBean> result = new ArrayList<AddressTypeBean>();
+			for (String adt : AddressType.types) {
+				result.add(new AddressTypeBean(adt, ApplicationResources.getMessage(adt)));
+			}
+			return createResponse(201, new BeanCollection<AddressTypeBean>(result));
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return failResponse();
