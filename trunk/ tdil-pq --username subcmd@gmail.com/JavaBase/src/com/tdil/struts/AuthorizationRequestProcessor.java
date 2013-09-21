@@ -16,6 +16,12 @@ import com.tdil.users.Role;
 public class AuthorizationRequestProcessor extends RequestProcessor {
 
 	@Override
+	protected void processLocale(HttpServletRequest request,
+			HttpServletResponse response) {
+		//super.processLocale(request, response);
+	}
+	
+	@Override
 	protected boolean processRoles(HttpServletRequest request, HttpServletResponse response, ActionMapping mapping)
 			throws IOException, ServletException {
 		
