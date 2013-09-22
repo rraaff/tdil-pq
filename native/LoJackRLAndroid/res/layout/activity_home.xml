@@ -33,7 +33,17 @@
             android:layout_height="48dp"
             android:text="@string/btn_tag_cameras" />
 
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:text="@string/btn_tag_modify_my_data" />
 
+        <Button
+            android:id="@+id/changePassword"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:text="@string/btn_tag_change_password" />
 
         <ImageView
             android:id="@+id/placahome"

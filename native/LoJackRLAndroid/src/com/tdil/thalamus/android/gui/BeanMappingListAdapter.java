@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
 
 	private BeanMappingFunction<T> mapFunction;
+	private List<T> objects;
 
     /**
      * @param context
@@ -27,6 +28,7 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
             final int textViewResourceId,
             final List<T> objects) {
         super(context, resource, textViewResourceId, objects);
+        this.objects = objects;
     }
 
     /**
@@ -48,6 +50,7 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
     		final List<T> objects, BeanMappingFunction<T> function) {
         super(context, textViewResourceId, objects);
         this.mapFunction = function;
+        this.objects = objects;
     }
 
 
@@ -120,6 +123,28 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
      */
     public String getEntryValue(final int position) {
         return getKey(position);
+    }
+    
+    public int getPosition(final int value) {
+        int index = 0;
+        for (T o : this.objects) {
+        	if (mapFunction.key(o).equals(String.valueOf(value))) {
+        		return index;
+        	}
+        	index = index + 1;
+        }
+        return -1;
+    }
+    
+    public int getPosition(String value) {
+        int index = 0;
+        for (T o : this.objects) {
+        	if (mapFunction.key(o).equals(value)) {
+        		return index;
+        	}
+        	index = index + 1;
+        }
+        return -1;
     }
 
 }

@@ -10,6 +10,8 @@
     <string name="title_activity_check_for_update">LoJack</string>
     <string name="title_activity_login">INGRESÁ</string>
     <string name="title_request_reset">RESETEAR CONTRASEÑA</string>
+    <string name="title_activity_register">REGISTRATE</string>
+    <string name="title_activity_update">MODIFICAR</string>
     
     <!-- Buttons -->
     <string name="btn_tag_alarms">Alarmas</string>
@@ -17,13 +19,30 @@
     <string name="btn_tag_cameras">Cámaras</string>
     <string name="btn_tag_camera">Cámara</string>
     <string name="btn_tag_login">Ingresar</string>
+    <string name="btn_tag_register">Registrarme</string>
+    <string name="btn_tag_modify">Modificar</string>
+    <string name="btn_tag_modify_my_data">Modificar mis datos</string>
+    <string name="btn_tag_change_password">Cambiar mi clave</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
     <string name="btn_tag_reset_password">Resetear contraseña</string>
     
+    <string name="btn_male">M</string>
+    <string name="btn_female">F</string>
+    <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>
     <string name="hnt_doc_password">Clave</string>
+    <string name="hnt_doc_password1">Repetir clave</string>
+    <string name="hnt_firstname">Nombre</string>
+    <string name="hnt_apellido">Apellido</string>
+    <string name="hnt_email">Email</string>
+    <string name="hnt_area_code">Codigo de Area</string>
+    <string name="hnt_mobile">Celular</string>
+    <string name="hnt_calle1">Calle</string>
+    <string name="hnt_calle2">Calle 2</string>
+    <string name="hnt_postal_code">Codigo postal</string>
+    <string name="hnt_city">Ciudad</string>
     
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordarme</string>

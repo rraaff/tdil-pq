@@ -1,0 +1,219 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".LoginActivity" >
+
+    <!-- Login progress -->
+
+
+    <!-- Login form -->
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="fill_vertical|fill_horizontal"
+        android:layout_margin="0dp"
+        android:background="@drawable/main_square"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:textAlignment="center" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/toplayer85"
+            android:baselineAligned="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:measureWithLargestChild="true"
+            android:minWidth="250dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:textAlignment="center" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="@string/title_activity_register"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ef5323" />
+
+            <Spinner
+                android:id="@+id/documentType"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp" />
+
+            <EditText
+                android:id="@+id/documentNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:hint="@string/hnt_doc_number"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="normal" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_firstname" />
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_apellido" />
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_male" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_female" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:ems="10"
+                android:hint="@string/hnt_doc_password"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/retypePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_doc_password1"
+                android:inputType="textPassword" />
+
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="94dp"
+                android:layout_height="33dp" />
+
+            <EditText
+                android:id="@+id/areaCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_area_code"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_mobile"
+                android:inputType="number" />
+
+            <Spinner
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/street1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_calle1" />
+
+            <EditText
+                android:id="@+id/street2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_calle2" />
+
+            <Spinner
+                android:id="@+id/addressType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/postalCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hnt_postal_code" />
+
+            <CheckBox
+                android:id="@+id/optIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/btn_optIn"
+                android:textColor="#F2F2F2" />
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="fill_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#e51b24"
+                android:onClick="@string/dologin"
+                android:text="@string/btn_tag_register"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/placahome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:baselineAlignBottom="true"
+            android:contentDescription="@string/loading"
+            android:maxWidth="250dp"
+            android:src="@drawable/logo_lojack" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="321dp"
+        android:layout_height="500dp" >
+    </LinearLayout>
+
+</merge>
