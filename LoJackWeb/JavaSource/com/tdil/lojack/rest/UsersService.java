@@ -1,6 +1,9 @@
 package com.tdil.lojack.rest;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
 import com.tdil.log4j.LoggerProvider;
@@ -33,9 +39,13 @@ import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.AddressTypeBean;
+import com.tdil.thalamus.client.facade.json.beans.CountryBean;
 import com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean;
+import com.tdil.thalamus.client.facade.json.beans.DynamicField;
 import com.tdil.thalamus.client.facade.json.beans.StateBean;
 import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
+import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
+import com.tdil.utils.DateUtils;
 
 @Path("/users")
 public class UsersService extends AbstractRESTService {
@@ -150,6 +160,98 @@ public class UsersService extends AbstractRESTService {
 		}
 	}
 	
+	@GET
+	@Path("/get")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response get() {
+		validateLogged();
+		try {
+			JSON response = ThalamusClientFacade.getPerson(getUser().getToken());
+			return createResponse(201, getPersonBean(response));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
+	}
+	
+	private PersonBean getPersonBean(JSON gral) {
+		PersonBean result = new PersonBean();
+		JSONObject person = ((JSONObject) gral).getJSONObject("person");
+		JSONObject profile = person.getJSONObject("profile");
+		if (profile.containsKey("document") && profile.get("document") != JSONNull.getInstance()) {
+			JSONObject document = profile.getJSONObject("document");
+			result.setDocument(document.getString("number"));
+		}
+
+		if (profile.containsKey(PersonFieldNames.firstName) && profile.get(PersonFieldNames.firstName) != JSONNull.getInstance()) {
+			result.setFirstName(profile.getString(PersonFieldNames.firstName));
+		}
+		if (profile.containsKey(PersonFieldNames.lastName) && profile.get(PersonFieldNames.lastName) != JSONNull.getInstance()) {
+			result.setLastName(profile.getString(PersonFieldNames.lastName));
+		}
+		if (profile.containsKey(PersonFieldNames.email) && profile.get(PersonFieldNames.email) != JSONNull.getInstance()) {
+			result.setEmail(profile.getString(PersonFieldNames.email));
+		}
+		if (profile.containsKey(PersonFieldNames.gender) && profile.get(PersonFieldNames.gender) != JSONNull.getInstance()) {
+			result.setGender(profile.getString(PersonFieldNames.gender));
+		}
+		if (profile.containsKey(PersonFieldNames.birthDate) && profile.get(PersonFieldNames.birthDate) != JSONNull.getInstance()) {
+			Date date = new Date(profile.getLong(PersonFieldNames.birthDate));
+			result.setBirthDate(DateUtils.formatDate(date));
+		}
+		if (profile.containsKey(PersonFieldNames.phone)) {
+			JSONObject phone = profile.getJSONObject(PersonFieldNames.phone);
+			if (phone.containsKey(PersonFieldNames.phoneIntCode) && phone.get(PersonFieldNames.phoneIntCode) != JSONNull.getInstance()) {
+				result.setPhoneIntCode(phone.getString(PersonFieldNames.phoneIntCode));
+			}
+			if (phone.containsKey(PersonFieldNames.phoneAreaCode) && phone.get(PersonFieldNames.phoneAreaCode) != JSONNull.getInstance()) {
+				result.setPhoneAreaCode(phone.getString(PersonFieldNames.phoneAreaCode));
+			}
+			if (phone.containsKey(PersonFieldNames.phoneNumber) && phone.get(PersonFieldNames.phoneNumber) != JSONNull.getInstance()) {
+				result.setPhoneNumber(phone.getString(PersonFieldNames.phoneNumber));
+			}
+			if (phone.containsKey(PersonFieldNames.phoneType) && phone.get(PersonFieldNames.phoneType) != JSONNull.getInstance()) {
+				result.setPhoneType(phone.getString(PersonFieldNames.phoneType));
+			}
+		}
+		if (profile.containsKey(PersonFieldNames.address)) {
+			JSONObject address = profile.getJSONObject(PersonFieldNames.address);
+			if (address.containsKey(PersonFieldNames.countryId) && address.get(PersonFieldNames.countryId) != JSONNull.getInstance()) {
+				result.setCountryId(address.getInt(PersonFieldNames.countryId));
+			}
+			if (address.containsKey(PersonFieldNames.stateId) && address.get(PersonFieldNames.stateId) != JSONNull.getInstance()) {
+				result.setStateId(address.getInt(PersonFieldNames.stateId));
+			}
+			if (address.containsKey(PersonFieldNames.street1) && address.get(PersonFieldNames.street1) != JSONNull.getInstance()) {
+				result.setStreet1(address.getString(PersonFieldNames.street1));
+			}
+			if (address.containsKey(PersonFieldNames.street2) && address.get(PersonFieldNames.street2) != JSONNull.getInstance()) {
+				result.setStreet2(address.getString(PersonFieldNames.street2));
+			}
+			if (address.containsKey(PersonFieldNames.postalCode) && address.get(PersonFieldNames.postalCode) != JSONNull.getInstance()) {
+				result.setPostalCode(address.getString(PersonFieldNames.postalCode));
+			}
+			if (address.containsKey(PersonFieldNames.addressType) && address.get(PersonFieldNames.addressType) != JSONNull.getInstance()) {
+				result.setAddressType(address.getString(PersonFieldNames.addressType));
+			}
+			if (address.containsKey(PersonFieldNames.city) && address.get(PersonFieldNames.city) != JSONNull.getInstance()) {
+				result.setCity(address.getString(PersonFieldNames.city));
+			}
+		}
+		if (person.containsKey("optIns")) {
+			JSONArray optIns = person.getJSONArray("optIns");
+			Iterator iter = optIns.iterator();
+			while (iter.hasNext()) {
+				JSONObject optIn = (JSONObject) iter.next();
+				int brandFamilyId = optIn.getInt("brandFamilyId");
+				int channel = optIn.getInt("channel");
+				boolean accepted = optIn.getBoolean("accepted");
+				result.setOptIn(accepted);
+			}
+		}
+		return result;
+	}
+	
 	@POST
 	@Path("/create")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -175,6 +277,7 @@ public class UsersService extends AbstractRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(String body) {
 		validateLogged();
+		System.out.println(body);
 		PersonBean personBean = extractObjectFromJSON(body, PersonBean.class);
 		JSONObject general = RegisterForm.getPersonJSON(true, personBean);
 		try {
