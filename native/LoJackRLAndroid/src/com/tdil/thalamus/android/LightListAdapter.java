@@ -68,6 +68,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 		public TextView alarmStatus;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
+		public ToggleButton toggleRandom;
 		public Button viewLightLog;
 		public ImageView lastChangeUserAvatar;
 
@@ -89,6 +90,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmDescription = (TextView) vi.findViewById(R.id.logLightUser);
 			holder.alarmStatus = (TextView) vi.findViewById(R.id.logLightStatus);
 			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
+			holder.toggleRandom = (ToggleButton)vi.findViewById(R.id.toggleRandom);
 			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
 			holder.viewLightLog = (Button)vi.findViewById(R.id.viewLightLogButton);
 
@@ -108,6 +110,29 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.alarmDescription.setText(iterLight.getDescription());
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
+			if (iterLight.isStatusUnknown()) {
+				holder.activateDeactivate.setChecked(false);
+				holder.activateDeactivate.setEnabled(true);
+				holder.toggleRandom.setChecked(false);
+				holder.toggleRandom.setEnabled(true);
+			} else {
+				if (iterLight.isInRandomMode()) {
+					holder.activateDeactivate.setChecked(false);
+					holder.activateDeactivate.setEnabled(false);
+					holder.toggleRandom.setChecked(true);
+					holder.toggleRandom.setEnabled(true);
+				} else {
+					holder.activateDeactivate.setChecked(iterLight.isOn());
+					holder.activateDeactivate.setEnabled(true);
+					if (iterLight.isOn()) {
+						holder.toggleRandom.setChecked(false);
+						holder.toggleRandom.setEnabled(false);
+					} else {
+						holder.toggleRandom.setChecked(false);
+						holder.toggleRandom.setEnabled(true);
+					}
+				}
+			}
 			holder.activateDeactivate.setChecked(iterLight.isOn());
 			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
 			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));
