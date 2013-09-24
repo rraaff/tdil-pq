@@ -277,12 +277,12 @@ public class UsersService extends AbstractRESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(String body) {
 		validateLogged();
-		System.out.println(body);
 		PersonBean personBean = extractObjectFromJSON(body, PersonBean.class);
 		JSONObject general = RegisterForm.getPersonJSON(true, personBean);
 		try {
 			ThalamusResponse response = ThalamusClientFacade.updatePerson(getUser().getToken(), general);
 			if (response.isBadRequest()) {
+				response.setTokenHolder(null);
 				return failResponse(response);
 			} else {
 				return okResponse();

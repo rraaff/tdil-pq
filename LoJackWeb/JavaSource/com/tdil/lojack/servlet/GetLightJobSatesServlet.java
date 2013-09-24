@@ -64,7 +64,7 @@ public class GetLightJobSatesServlet extends HttpServlet {
 	}
 
 
-	private Light getLightFor(Collection<Light> lights, Integer identidad, Integer idLuz) {
+	public static Light getLightFor(Collection<Light> lights, Integer identidad, Integer idLuz) {
 		for (Light a : lights) {
 			if (identidad.equals(a.getIdEntidad())) {
 				if (idLuz.equals(a.getIdLuz())) {

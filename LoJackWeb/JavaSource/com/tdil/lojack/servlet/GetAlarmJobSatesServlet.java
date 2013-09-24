@@ -60,7 +60,7 @@ public class GetAlarmJobSatesServlet extends HttpServlet {
 	}
 
 
-	private Alarm getAlarmFor(Collection<Alarm> alarms, Integer identidad) {
+	public static Alarm getAlarmFor(Collection<Alarm> alarms, Integer identidad) {
 		for (Alarm a : alarms) {
 			if (identidad.equals(a.getIdEntidad())) {
 				return a;
