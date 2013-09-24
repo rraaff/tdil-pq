@@ -74,6 +74,12 @@
         android:layout_height="wrap_content"
         android:text="ToggleButton" />
 
+    <ToggleButton
+        android:id="@+id/toggleRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton" />
+
  </TableRow>
  	
      
