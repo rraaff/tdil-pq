@@ -135,6 +135,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			}
 			holder.activateDeactivate.setChecked(iterLight.isOn());
 			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
+			holder.toggleRandom.setOnClickListener(new ToggleRandomListener(position));
 			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));
 			
 			new DownloadImageTask(holder.lastChangeUserAvatar)
@@ -180,6 +181,20 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 		public void onClick(View arg0) {
 			HomeLightsActivity sct = (HomeLightsActivity) activity;
 			sct.toggleActivation(mPosition);
+		}
+	}
+	
+	private class ToggleRandomListener implements OnClickListener {
+		private int mPosition;
+		
+		ToggleRandomListener(int position) {
+			mPosition = position;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			HomeLightsActivity sct = (HomeLightsActivity) activity;
+			sct.toggleRandom(mPosition);
 		}
 	}
 	/********* Called when Item click in ListView ************/

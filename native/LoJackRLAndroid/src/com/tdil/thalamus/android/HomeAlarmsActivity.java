@@ -25,6 +25,9 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
+import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
+import com.tdil.thalamus.android.rest.model.LightJobStatusCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -59,7 +62,10 @@ public class HomeAlarmsActivity extends Activity {
 			        	//finish();
 					}
 				});
+		loadAlarms();
+	}
 
+	public void loadAlarms() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
@@ -79,7 +85,6 @@ public class HomeAlarmsActivity extends Activity {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
-
 	}
 
 	@Override
@@ -108,21 +113,35 @@ public class HomeAlarmsActivity extends Activity {
 	
 	public void toggleActivation(int mPosition) {
 		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
-		System.out.println("toggleActivation" + alarm);
 		if (alarm.isActive()) {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					new AlertDialog.Builder(HomeAlarmsActivity.this)
-		               .setIcon(R.drawable.ic_launcher)
-		               .setTitle("Alarms")
-		               .setMessage("Se ha enviado el comando de desactivacion")
-		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-		                       public void onClick(DialogInterface dialog, int whichButton) {
-		                    	   //this.
-		                       }
-		               }).show();
+					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
+							AsyncJobResponse.class);
+					if (asyncJobResponse.isAccepted()) {
+						new AlertDialog.Builder(HomeAlarmsActivity.this)
+			               .setIcon(R.drawable.ic_launcher)
+			               .setTitle("Alarms")
+			               .setMessage("Se ha enviado el comando de desactivacion")
+			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			                       public void onClick(DialogInterface dialog, int whichButton) {
+			                    	   startBackgroundJob();
+			                       }
+	
+			               }).show();
+					} else {
+						new AlertDialog.Builder(HomeAlarmsActivity.this)
+			               .setIcon(R.drawable.ic_launcher)
+			               .setTitle("Alarms")
+			               .setMessage("No ha podido enviarse el comando de desactivacion")
+			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			                       public void onClick(DialogInterface dialog, int whichButton) {
+			                       }
+	
+			               }).show();
+					}
 				}
 				@Override
 				public void error(RESTClientTask task) {
@@ -134,15 +153,28 @@ public class HomeAlarmsActivity extends Activity {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					new AlertDialog.Builder(HomeAlarmsActivity.this)
-		               .setIcon(R.drawable.ic_launcher)
-		               .setTitle("Alarms")
-		               .setMessage("Se ha enviado el comando de activacion")
-		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-		                       public void onClick(DialogInterface dialog, int whichButton) {
-		                    	   //HomeAlarmsActivity.this.finish();
-		                       }
-		               }).show();
+					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
+							AsyncJobResponse.class);
+					if (asyncJobResponse.isAccepted()) {
+						new AlertDialog.Builder(HomeAlarmsActivity.this)
+			               .setIcon(R.drawable.ic_launcher)
+			               .setTitle("Alarms")
+			               .setMessage("Se ha enviado el comando de activacion")
+			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			                       public void onClick(DialogInterface dialog, int whichButton) {
+			                    	   startBackgroundJob();
+			                       }
+			               }).show();
+					} else {
+						new AlertDialog.Builder(HomeAlarmsActivity.this)
+			               .setIcon(R.drawable.ic_launcher)
+			               .setTitle("Alarms")
+			               .setMessage("No ha podido enviarse el comando de activacion")
+			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+			                       public void onClick(DialogInterface dialog, int whichButton) {
+			                       }
+			               }).show();
+					}
 				}
 				@Override
 				public void error(RESTClientTask task) {
@@ -150,6 +182,26 @@ public class HomeAlarmsActivity extends Activity {
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		}
+	}
+	
+	private void startBackgroundJob() {
+		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(RESTClientTask task) {
+				Gson gson = new Gson();
+				AlarmJobStatusCollection col = gson.fromJson(task.getResult(),
+						AlarmJobStatusCollection.class);
+				if (!col.getStatus().isEmpty()) {
+					HomeAlarmsActivity.this.startBackgroundJob();
+				} else {
+					HomeAlarmsActivity.this.loadAlarms();
+				}
+			}
+			@Override
+			public void error(RESTClientTask task) {
+				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+			}
+		}, RESTConstants.ALARM_STATUS, new RestParams(), null).execute();
 	}
 	
 	public void viewAlarmLog(int mPosition) {

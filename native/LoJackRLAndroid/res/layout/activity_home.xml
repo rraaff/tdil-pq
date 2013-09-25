@@ -43,7 +43,8 @@
             android:id="@+id/changePassword"
             android:layout_width="fill_parent"
             android:layout_height="48dp"
-            android:text="@string/btn_tag_change_password" />
+            android:text="@string/btn_tag_change_password" 
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/placahome"

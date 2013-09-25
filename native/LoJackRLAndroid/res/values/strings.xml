@@ -25,10 +25,15 @@
     <string name="btn_tag_change_password">Cambiar mi clave</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
     <string name="btn_tag_reset_password">Resetear contraseña</string>
+    <string name="btn_SendPanic">Señal de pánico</string>
     
-    <string name="btn_male">M</string>
-    <string name="btn_female">F</string>
+    <string name="btn_male">Masculino</string>
+    <string name="btn_female">Femenino</string>
     <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
+    
+    <string name="random_on">RAN ON</string>
+    <string name="random_off">RAN OFF</string>
+    
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>

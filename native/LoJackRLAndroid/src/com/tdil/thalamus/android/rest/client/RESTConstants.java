@@ -28,6 +28,9 @@ public interface RESTConstants {
 	
 	public static final String REQUEST_RESET_PASSWORD = "/users/requestResetPassword?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER;
 	
+	public static final String LIGHT_STATUS = "/jobs/lights/list";
+	public static final String ALARM_STATUS = "/jobs/alarms/list";
+	
 	public static final String ALARMS = "/alarms/list";
 	public static final String ACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/activate";
 	public static final String DEACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/deactivate";
@@ -39,6 +42,10 @@ public interface RESTConstants {
 	public static final String LIGHTS = "/lights/list";
 	public static final String ACTIVATE_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/activate";
 	public static final String DEACTIVATE_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/deactivate";
+	
+	public static final String ACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOn";
+	public static final String DEACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOff";
+	
 	
 	public static final String LOG_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/log";
 	
