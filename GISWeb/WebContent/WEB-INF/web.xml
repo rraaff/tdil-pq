@@ -6,10 +6,21 @@
   <servlet-name>CreateAsyncJob</servlet-name>
   <servlet-class>com.gis.emulator.CreateAsyncJob</servlet-class>
  </servlet>
+ <servlet>
+  <servlet-name>HistoryJobStatus</servlet-name>
+  <servlet-class>com.gis.emulator.HistoryJobStatus</servlet-class>
+ </servlet>
+ 
  <servlet-mapping>
   <servlet-name>CreateAsyncJob</servlet-name>
   <url-pattern>/gis/activateAlarm.json</url-pattern>
  </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>HistoryJobStatus</servlet-name>
+  <url-pattern>/gis/getHistoryJobStatus.json</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>CreateAsyncJob</servlet-name>
   <url-pattern>/gis/deactivateAlarm.json</url-pattern>

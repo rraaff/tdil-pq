@@ -8,24 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CreateAsyncJob extends HttpServlet {
+public class HistoryJobStatus extends HttpServlet {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = -4822256555026476546L;
-	public static AtomicInteger nextJobId = new AtomicInteger(0);
-	
-	public static int retries = 0;
-	public static int maxretries = 60;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		int jobId = nextJobId.incrementAndGet();
-		System.out.println("job id is " + jobId);
-		retries = 0;
-		resp.getOutputStream().write(("{\"result\": true,\"jobId\": "+jobId+"}").getBytes());
+		if (CreateAsyncJob.retries >= CreateAsyncJob.maxretries) { 
+			resp.getOutputStream().write(("[{\"jobStatus\": \"OK\",\"jobId\": "+CreateAsyncJob.nextJobId.get()+"}]").getBytes());
+		} else {
+			resp.getOutputStream().write(("[{}]").getBytes());
+		}
 	}
 
 
