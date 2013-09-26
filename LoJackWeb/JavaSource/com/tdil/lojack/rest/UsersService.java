@@ -1,7 +1,6 @@
 package com.tdil.lojack.rest;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -39,9 +38,7 @@ import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
 import com.tdil.thalamus.client.facade.ThalamusClientFacade;
 import com.tdil.thalamus.client.facade.json.beans.AddressTypeBean;
-import com.tdil.thalamus.client.facade.json.beans.CountryBean;
 import com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean;
-import com.tdil.thalamus.client.facade.json.beans.DynamicField;
 import com.tdil.thalamus.client.facade.json.beans.StateBean;
 import com.tdil.thalamus.client.facade.json.beans.ValidatePasswordBean;
 import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;

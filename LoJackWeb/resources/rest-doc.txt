@@ -1,55 +1,53 @@
-Branchear apk
+com.tdil.lojack.rest.UsersService
+/rest/users/login
+/rest/users/requestResetPassword
+/rest/users/logout
+/rest/users/documentTypes
+/rest/users/states
+/rest/users/addressTypes
+/rest/users/get
+/rest/users/create
+/rest/users/update
+/rest/users/password
+/rest/users/password/validate
 
-Desarrollos nuevos en el trunk
+com.tdil.lojack.rest.AlarmsService
+/rest/alarms/list
+/rest/alarms/{idEntidad}/rename
+/rest/alarms/{idEntidad}/sendPanic
+/rest/alarms/{idEntidad}/activate
+/rest/alarms/{idEntidad}/deactivate
+/rest/alarms/{idEntidad}/log
+/rest/alarms/{idEntidad}/emailNotification
+/rest/alarms/{idEntidad}/noemailNotification
 
-Objetos de intercambio, puedo reusar los existentes agregandole las anotaciones?
+com.tdil.lojack.rest.LightsService
+/rest/lights/list
+/rest/lights/{idEntidad}/{idLuz}/rename
+/rest/lights/{idEntidad}/{idLuz}/activate
+/rest/lights/{idEntidad}/{idLuz}/deactivate
+/rest/lights/{idEntidad}/{idLuz}/randomOn
+/rest/lights/{idEntidad}/{idLuz}/randomOff
+/rest/lights/{idEntidad}/{idLuz}/log
+/rest/lights/{idEntidad}/{idLuz}/emailNotification
+/rest/lights/{idEntidad}/{idLuz}/noemailNotification
 
-Clases concretas
-login,logout,etc
+com.tdil.lojack.rest.CamerasService
+/rest/cameras/list
+Servlets
+/viewCameraService
+/moveCameraService
 
-Clase abstracta de chequeo de session/usuario logueado
+com.tdil.lojack.rest.AsyncJobsService
+/rest/jobs/lights/list
+/rest/jobs/alarms/list
 
-En la session solo voy a usar el usuario, servicios rest no mantienen estado
+com.tdil.lojack.rest.AlarmAgendasService
+/rest/alarmAgendas/{idEntidad}/list
+/rest/alarmAgendas/{idEntidad} PUT POST
+/rest/alarmAgendas/{idEntidad}/{idAgenda}  DELETE GET
 
-Un grupo de servicios por funcionalidad
-/users servicios de thalamus
-
-/home/alarms
-/home/ligths
-/home/cameras
-
-http://localhost:8180/LoJackWeb/rest/users/login?documentType=1&documentNumber=12&password=2
-http://localhost:8180/LoJackWeb/viewCameraService?cameraUrl=http://demo-life.dyndns.org:8980/
-http://localhost:8180/LoJackWeb/rest/users/logout
-
-
-http://localhost:8180/LoJackWeb/rest/alarms/list
-http://localhost:8180/LoJackWeb/rest/alarms/1/sendPanic
-http://localhost:8180/LoJackWeb/rest/alarms/1/activate
-http://localhost:8180/LoJackWeb/rest/alarms/1/deactivate
-http://localhost:8180/LoJackWeb/rest/alarms/1/log
-http://localhost:8180/LoJackWeb/rest/alarms/1/rename?description=asas
-http://localhost:8180/LoJackWeb/rest/alarms/1/emailNotification
-http://localhost:8180/LoJackWeb/rest/alarms/1/noemailNotification
-
-http://localhost:8180/LoJackWeb/viewCameraService?cameraUrl=http://demo-life.dyndns.org:8980/
-http://localhost:8180/LoJackWeb/moveCameraService?cameraUrl=http://demo-life.dyndns.org:8980/&dir=left
-
-/prevent
-
-/parkings
-
-Estos definiran
-list
-/id es get
-/id post salva buscar en google como es lo mas adecuado..
-save
-
-etc
-
-Cliente mantiene el cliente con su cookie
-Consumo con gson+httpclient
-
-Core de comunicacion por grupo de funcionalidad, tratar de pensarlo en una manera que sea language-agnostic
-
-Opcion de guardar contrasenia?
+com.tdil.lojack.rest.LightAgendasService
+/rest/lightAgendas/{idEntidad}/{idLuz}/list
+/rest/lightAgendas/{idEntidad}/{idLuz} PUT POST 
+/rest/lightAgendas//{idEntidad}/{idAgenda} DELETE GET

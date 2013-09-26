@@ -15,7 +15,6 @@ import com.tdil.lojack.rest.model.RESTResponse;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.ThalamusResponse;
-import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public abstract class AbstractRESTService {

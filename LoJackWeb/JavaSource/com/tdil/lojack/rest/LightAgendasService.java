@@ -16,8 +16,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import net.sf.json.JSONObject;
-
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.LightAgenda;
