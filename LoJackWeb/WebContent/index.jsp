@@ -59,6 +59,9 @@ response.addCookie(ecookie1);
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
+<![endif]-->
 <%@ include file="includes/headNotLogged.jsp" %>
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
