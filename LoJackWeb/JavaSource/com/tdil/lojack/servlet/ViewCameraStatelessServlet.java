@@ -20,6 +20,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.camera.PanasonicBLC131;
 import com.tdil.lojack.camera.TPLinkSC4171G;
+import com.tdil.lojack.utils.CameraCache;
 import com.tdil.web.NoCacheFilter;
 
 public class ViewCameraStatelessServlet extends HttpServlet {
@@ -45,25 +46,37 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 //			inProgress.remove(url);
 //		}
 		try {
-			IPCamera camera = null;
-			if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
-				camera = new PanasonicBLC131(url, username, password);
-			}
-			if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
-				camera = new TPLinkSC4171G(url, username, password);
-			}
-//			inProgress.put(url, camera);
-			InputStream inputStream = null;
-			try {
-				inputStream = camera.nextFrame();
-				if (inputStream != null) {
-					IOUtils.copy(inputStream, resp.getOutputStream());
-				} else {
-					resp.getOutputStream().write(ViewCameraServlet.noise);
+			
+			byte[] image = CameraCache.getImage(url);
+			if (image != null) {
+				resp.getOutputStream().write(image);
+			} else {
+			
+				IPCamera camera = null;
+				if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
+					camera = new PanasonicBLC131(url, username, password);
 				}
-			} finally {
-				if (inputStream != null) {
-					inputStream.close();
+				if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
+					camera = new TPLinkSC4171G(url, username, password);
+				}
+	//			inProgress.put(url, camera);
+				InputStream inputStream = null;
+				try {
+					inputStream = camera.nextFrame();
+					if (inputStream != null) {
+						ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+						IOUtils.copy(inputStream, byteArrayOutputStream);
+						inputStream.close();
+						byte[] cameraImage = byteArrayOutputStream.toByteArray();
+						CameraCache.putImage(url, cameraImage);
+						resp.getOutputStream().write(cameraImage);
+					} else {
+						resp.getOutputStream().write(ViewCameraServlet.noise);
+					}
+				} finally {
+					if (inputStream != null) {
+						inputStream.close();
+					}
 				}
 			}
 		} finally {

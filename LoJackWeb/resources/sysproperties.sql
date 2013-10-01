@@ -41,6 +41,9 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.socket','localhost:8800','Server y socket de conexion',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.mobile.external.url','http://23.23.84.70/LoJackWeb/','camera.mobile.external.url',0);
 
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.cache','1000','camera.cache en milisegundos',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.cacheSize','50','Tamanio del cache en imagenes',0);
+
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.refresh.time','1000','job.refresh.time',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.abort.time','60000','job.abort.time',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('job.client.refresh.time','1000','job.client.refresh.time',0);

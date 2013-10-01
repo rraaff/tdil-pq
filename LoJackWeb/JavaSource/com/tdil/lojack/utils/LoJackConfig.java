@@ -65,6 +65,8 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static int cameraConnectTimeOut = 2000;
 	private static int cameraReadTimeOut = 2000;
+	private static int cameraCache = 1000;
+	private static int cameraCacheSize = 50;
 	
 	private static String cameraMobileMode;
 	private static String cameraMobileExternalUrl;
@@ -451,6 +453,20 @@ public class LoJackConfig extends SystemConfig {
 		} 
 		getLog().fatal("Camera read time out is " + getCameraReadTimeOut());
 		
+		String cameraCache = SystemPropertyUtils.getSystemPropertValue("camera.cache");
+		if (!StringUtils.isEmpty(cameraCache )) {
+			setCameraCache(Integer.parseInt(cameraCache));
+		} 
+		getLog().fatal("Camera cache is " + getCameraCache());
+		
+		String cameraCacheSize = SystemPropertyUtils.getSystemPropertValue("camera.cacheSize");
+		if (!StringUtils.isEmpty(cameraCacheSize )) {
+			setCameraCacheSize(Integer.parseInt(cameraCacheSize));
+		} 
+		getLog().fatal("Camera cacheSize is " + getCameraCacheSize());
+		
+		CameraCache.init(getCameraCache(), getCameraCacheSize());
+		
 		String cameraMobileMode = SystemPropertyUtils.getSystemPropertValue("camera.mobile.mode");
 		if (StringUtils.isEmpty(cameraMobileMode )) {
 			cameraMobileMode = CAMERA_MOBILE_LOCAL;
@@ -730,6 +746,22 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setSOCKS_PROXY(ProxyConfiguration sOCKS_PROXY) {
 		SOCKS_PROXY = sOCKS_PROXY;
+	}
+
+	public static int getCameraCache() {
+		return cameraCache;
+	}
+
+	public static void setCameraCache(int cameraCache) {
+		LoJackConfig.cameraCache = cameraCache;
+	}
+
+	public static int getCameraCacheSize() {
+		return cameraCacheSize;
+	}
+
+	public static void setCameraCacheSize(int cameraCacheSize) {
+		LoJackConfig.cameraCacheSize = cameraCacheSize;
 	}
 
 }

@@ -19,6 +19,7 @@ import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.CameraCache;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.web.NoCacheFilter;
@@ -84,19 +85,28 @@ public class ViewCameraServiceServlet extends HttpServlet {
 			inProgress.put(mapKey, cameraForm.getCamera(cameraUrl));
 			try {
 				resp.setContentType(cameraForm.getCamera(cameraUrl).getMimeType());
-				InputStream inputStream = null;
-				try {
-					inputStream = cameraForm.getCamera(cameraUrl).nextFrame();
-					if (inputStream != null) {
-						IOUtils.copy(inputStream, resp.getOutputStream());
-					} else {
-						if (noise != null) {
-							resp.getOutputStream().write(noise);
+				byte[] image = CameraCache.getImage(cameraUrl);
+				if (image != null) {
+					resp.getOutputStream().write(image);
+				} else {
+					InputStream inputStream = null;
+					try {
+						inputStream = cameraForm.getCamera(cameraUrl).nextFrame();
+						if (inputStream != null) {
+							ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+							IOUtils.copy(inputStream, byteArrayOutputStream);
+							byte[] cameraImage = byteArrayOutputStream.toByteArray();
+							CameraCache.putImage(cameraUrl, cameraImage);
+							resp.getOutputStream().write(cameraImage);
+						} else {
+							if (noise != null) {
+								resp.getOutputStream().write(noise);
+							}
 						}
-					}
-				} finally {
-					if (inputStream != null) {
-						inputStream.close();
+					} finally {
+						if (inputStream != null) {
+							inputStream.close();
+						}
 					}
 				}
 			} finally {

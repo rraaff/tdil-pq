@@ -1,5 +1,6 @@
 package com.tdil.lojack.servlet;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,6 +25,7 @@ import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
 import com.tdil.lojack.struts.forms.CameraForm;
+import com.tdil.lojack.utils.CameraCache;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.web.NoCacheFilter;
@@ -57,29 +59,38 @@ public class ViewCameraSocketServlet extends HttpServlet {
 				inProgress.remove(mapKey);
 			}
 			try {
-				
-				// bajada via socket
-				Socket requestSocket = null;
-				if (LoJackConfig.getSOCKS_PROXY() != null) {
-					Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(LoJackConfig.getSOCKS_PROXY().getServer(), LoJackConfig.getSOCKS_PROXY().getPort()));
-					requestSocket = new Socket(proxy);
-				    InetSocketAddress socketAddress = new InetSocketAddress(LoJackConfig.getCameraMobileSocket().getServer(), LoJackConfig.getCameraMobileSocket().getPort());
-				    requestSocket.connect(socketAddress);
+				byte[] image = CameraCache.getImage(cameraForm.getUrl());
+				if (image != null) {
+					resp.getOutputStream().write(image);
+				} else {
+					// bajada via socket
+					Socket requestSocket = null;
+					if (LoJackConfig.getSOCKS_PROXY() != null) {
+						Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(LoJackConfig.getSOCKS_PROXY().getServer(), LoJackConfig.getSOCKS_PROXY().getPort()));
+						requestSocket = new Socket(proxy);
+					    InetSocketAddress socketAddress = new InetSocketAddress(LoJackConfig.getCameraMobileSocket().getServer(), LoJackConfig.getCameraMobileSocket().getPort());
+					    requestSocket.connect(socketAddress);
+					}
+					if (requestSocket == null) {
+						requestSocket = new Socket(LoJackConfig.getCameraMobileSocket().getServer(), LoJackConfig.getCameraMobileSocket().getPort());
+					}
+					OutputStream out = requestSocket.getOutputStream();
+					StringBuilder request = new StringBuilder();
+					request.append(cameraForm.getUsername()).append(",");
+					request.append(cameraForm.getPassword()).append(",");
+					request.append(cameraForm.getUrl()).append(",");
+					request.append(cameraForm.getModel()).append(",");
+					request.append("img").append("\n");
+					out.write(request.toString().getBytes());
+					InputStream in = requestSocket.getInputStream();
+					
+					ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+					IOUtils.copy(in, byteArrayOutputStream);
+					in.close();
+					byte[] cameraImage = byteArrayOutputStream.toByteArray();
+					CameraCache.putImage(cameraForm.getUrl(), cameraImage);
+					resp.getOutputStream().write(cameraImage);
 				}
-				if (requestSocket == null) {
-					requestSocket = new Socket(LoJackConfig.getCameraMobileSocket().getServer(), LoJackConfig.getCameraMobileSocket().getPort());
-				}
-				OutputStream out = requestSocket.getOutputStream();
-				StringBuilder request = new StringBuilder();
-				request.append(cameraForm.getUsername()).append(",");
-				request.append(cameraForm.getPassword()).append(",");
-				request.append(cameraForm.getUrl()).append(",");
-				request.append(cameraForm.getModel()).append(",");
-				request.append("img").append("\n");
-				out.write(request.toString().getBytes());
-				InputStream in = requestSocket.getInputStream();
-				IOUtils.copy(in, resp.getOutputStream());
-				in.close();
 			} catch (Exception e) {
 				resp.getOutputStream().write(ViewCameraServlet.noise);
 			} finally {
