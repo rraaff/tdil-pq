@@ -23,10 +23,22 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+	.smallmap { width:968px; height:450px; }
+	#tags { display: none; }
+	#docs p { font-size:12px; margin-bottom:0.5em; }
+	#placaLoader { display:none; }
+@media only screen and (orientation: landscape) and (max-width: 600px) {
+	#shortdesc { float:right; width:25%; }
+	#map { width:100%; height:100%; }
+	#docs { font-size:12px; }
+}
+</style>
 <% if (usingMobile || isAndroid) { %>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
+		
 		@media only screen and (orientation: landscape) and (max-width: 600px) {
 			#shortdesc {
 		    	float:right;
@@ -46,129 +58,20 @@
 		}
 		#tags { display: none; }
 		
+		@media all and (orientation:landscape) {
+			#productsMenu { position:fixed; z-index:1500; } 
+		}
 		
 		@media all and (orientation:landscape) and (max-height:600px) {
 			#productsMenu ul li.logoContainer { display:none; }
 		}
-		/* widths */ 
-		@media all and (min-width:240px) {
-			.smallmap { width:240px; }
-		}
-		@media all and (min-width:320px) {
-			.smallmap { width:320px; }
-		}
-		@media all and (min-width:380px) {
-			.smallmap { width:380px; }
-		}
-		@media all and (min-width:480px) {
-			.smallmap { width:480px; }
-		}
-		@media all and (min-width:568px) {
-			.smallmap { width:568px; }
-		}
-		@media all and (min-width:640px) {
-			.smallmap { width:640px; }
-		}
-		@media all and (min-width:720px) {
-			.smallmap { width:720px; }
-		}
-		@media all and (min-width:768px) {
-			.smallmap { width:768px; }
-		}
-		@media all and (min-width:960px) {
-			.smallmap { width:960px; }
-		}
-		@media all and (min-width:1024px) {
-			.smallmap { width:1024px; }
-		}
-		@media all and (min-width:1280px) {
-			.smallmap { width:1280px; }
-		}
-		@media all and (min-width:1380px) {
-			.smallmap { width:1380px; }
-		}
-		@media all and (min-width:1580px) {
-			.smallmap { width:1580px; }
-		}
-		@media all and (min-width:1600px) {
-			.smallmap { width:1600px; }
-		}
-		@media all and (min-width:1800px) {
-			.smallmap { width:1800px; }
-		}
-		@media all and (min-width:1920px) {
-			.smallmap { width:1920px; }
-		}
-		/* Heights */
-		@media all and (min-height:240px) {
-			.smallmap { height:240px; }
-		}
-		@media all and (min-height:320px) {
-			.smallmap { height:320px; }
-		}
-		@media all and (min-height:380px) {
-			.smallmap { height:380px; }
-		}
-		@media all and (min-height:480px) {
-			.smallmap { height:480px; }
-		}
-		@media all and (min-height:568px) {
-			.smallmap { height:568px; }
-		}
-		@media all and (min-height:640px) {
-			.smallmap { height:640px; }
-		}
-		@media all and (min-height:720px) {
-			.smallmap { height:720px; }
-		}
-		@media all and (min-height:768px) {
-			.smallmap { height:768px; }
-		}
-		@media all and (min-height:960px) {
-			.smallmap { height:960px; }
-		}
-		@media all and (min-height:1024px) {
-			.smallmap { height:1024px; }
-		}
-		@media all and (min-height:1280px) {
-			.smallmap { height:1280px; }
-		}
-		@media all and (min-height:1480px) {
-			.smallmap { height:1480px; }
-		}
-		@media all and (min-height:1580px) {
-			.smallmap { height:1580px; }
-		}
-		@media all and (min-height:1600px) {
-			.smallmap { height:1600px; }
-		}
-		@media all and (min-height:1800px) {
-			.smallmap { height:1800px; }
-		}
-		@media all and (min-height:1920px) {
-			.smallmap { height:1920px; }
-		}
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		@media all and (orientation:landscape) and (max-height:350px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		#content { position:fixed; }
+		body { overflow:hidden; }
 	</style>
 <% } %>
 <style type="text/css">
 #productsMenu ul li.tabCar {
 	background:#f05224;
 }
-/*
-border:dotted 3px #ee5222;
-background:url(images/skin_lj_rl/backs/topLayer25_orange.png);
-width:54px;
-height:54px;
-border-radius:27px;
-
-*/
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
