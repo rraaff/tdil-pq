@@ -55,32 +55,7 @@ public class HomeAlarmsActivity extends Activity {
 
 		list = (ListView) findViewById(R.id.alarmsList);
 		
-		findViewById(R.id.goToSendPanicActivity).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						Intent intent = new Intent(HomeAlarmsActivity.this, HomeAlarmsSendPanicActivity.class);
-			        	startActivity(intent);
-			        	//finish();
-					}
-				});
-		
-		findViewById(R.id.btnFooterPets).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						String videoId = "742NZ2Fa4I4";
-						try{
-							 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
-					         startActivity(intent);      
-						}catch (ActivityNotFoundException ex){
-							Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.youtube.com/watch?v="+videoId)); 
-							//intent.putExtra("VIDEO_ID", videoId); 
-							startActivity(intent); 
-						}
-					}
-				});
-		
+		FooterLogic.installFooterLogic(this);
 		
 		loadAlarms();
 	}

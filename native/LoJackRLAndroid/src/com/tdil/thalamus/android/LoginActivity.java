@@ -25,6 +25,7 @@ import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.utils.Login;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -166,6 +167,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		Gson gson = new Gson();
 		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
 		if (resp.getLogged()) {
+			Login.loggedUser = resp;
 			Intent intent = new Intent(this, HomeActivity.class);
         	startActivity(intent);
         	finish();
