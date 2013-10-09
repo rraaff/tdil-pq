@@ -138,17 +138,6 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.menu_go_home:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
-
-	@Override
 	public void error(RESTClientTask task) {
 		Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 		this.mAuthTask = null;

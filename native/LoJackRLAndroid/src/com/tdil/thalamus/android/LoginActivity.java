@@ -147,17 +147,6 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.menu_go_home:
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
-
-	@Override
 	public void error(RESTClientTask task) {
 		Messages.connectionErrorMessage(LoginActivity.this);
 		this.mAuthTask = null;
