@@ -27,6 +27,14 @@
     <string name="btn_tag_reset_password">Resetear contraseña</string>
     <string name="btn_SendPanic">Señal de pánico</string>
     
+    <string name="btn_panic">Señal de pánico</string>
+    
+    <string name="btn_footer_home">Home</string>
+    <string name="btn_footer_prevent">Prevent</string>
+    <string name="btn_footer_pets">Pets</string>
+    <string name="btn_footer_config">Config</string>
+    <string name="btn_footer_data">Data</string>
+    
     <string name="btn_male">Masculino</string>
     <string name="btn_female">Femenino</string>
     <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
