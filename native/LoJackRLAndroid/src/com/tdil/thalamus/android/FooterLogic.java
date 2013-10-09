@@ -23,6 +23,16 @@ public class FooterLogic {
 				}
 			});
 		
+		activity.findViewById(R.id.btnFooterHome).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(activity, HomeActivity.class); 
+						activity.startActivity(intent); 
+						activity.finish();
+					}
+				});
+		
 		activity.findViewById(R.id.btnFooterPets).setOnClickListener(
 			new View.OnClickListener() {
 				@Override
