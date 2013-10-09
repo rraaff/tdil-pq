@@ -29,6 +29,7 @@ INPUT[type='password'] { border:0; border-radius:5px; background:#eaeaea; color:
 #registerLayer INPUT[type='password'] { width:290px; }
 #forgotPasswordLayer SELECT { width:220px; }
 
-#contactContentLayer LABEL { width:50px; }
+#contactContentLayer LABEL,
+#resetPassLayerBase LABEL { width:50px; }
 #contactContentLayer INPUT[type='text'] { width:240px; }
 #contactContentLayer textarea { width:228px; }

@@ -386,8 +386,8 @@ input[type="text"].width240 { width: 240px; }
 	border-radius: 10px;
 	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 	background: #fff;
-	width: 334px;
-	padding: 20px;
+	width:360px;
+	padding:20px;
 }
 .loginLayerContent p,
 .defaultLayerContent p {

@@ -14,13 +14,15 @@
 --%><% if (websiteUser != null && websiteUser.isLogged()) { %> 
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% 	return;
-	} %><html>
+	} %><!DOCTYPE html>
+<html lang="es">
 <head>
+<meta charset="ISO-8859-1"/>
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
-
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
@@ -31,37 +33,40 @@
 <link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
-<%@ include file="includes/head.jsp" %>
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
+<![endif]-->
+<%@ include file="includes/headNotLogged.jsp" %>
 <script type="text/javascript" src="js/jstz.js"></script>
 <script>
 <%@ include file="includes/centerLayerJS.jspf" %>
 $(document).ready(
 	function(){
 	
-		$( "#closeparkingsNotLoggedLayer" ).click(function() {
-			$( "#parkingsNotLoggedLayer" ).fadeOut();
+		$( "#closeresetPassLayerBase" ).click(function() {
+			$( "#resetPassLayerBase" ).fadeOut();
 		});
 	}
 );
 
-function register() {
-	centerLayer($(window), $( "#parkingsNotLoggedLayer" ));
+function resetPasswordOpen() {
+	centerLayer($(window), $( "#resetPassLayerBase" ));
 	centerLayer($(window), $( "#resetPassLayer" ));
 }
 </script>
-<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
 <style type="text/css">
-div.errorInForm { width: 100%; float:left; }
+	div.errorInForm { width: 100%; float:left; }
+	.defaultLayerContent { width:auto; }
 </style> 
 </head>
-<body onLoad="javascript:register();">
-<header style="display:none;">
+<body onload="javascript:resetPasswordOpen();">
+<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
+<header>
 	<div id="floatyMenu">
 		<div class="wrapper">
 			<ul>
-				<li></li>
+				<li><a href="index.jsp" title="Volver al inicio"><span>Inicio</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -73,9 +78,9 @@ div.errorInForm { width: 100%; float:left; }
 <%@ include file="includes/copyright.jsp" %>
 
 <!-- Edit password layer -->
-<div id="parkingsNotLoggedLayer" class="layerOnTop" style="display:none; z-index:1500;">
+<div id="resetPassLayerBase" class="layerOnTop" style="display:none; z-index:1500;">
 	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
-		<div id="resetPassLayer" class="defaultLayerContent width380">
+		<div id="resetPassLayer" class="defaultLayerContent">
 			<h3>Crea una nueva clave</h3>
 			<div class="myRow">Completá los campos para modificar tu clave</div>
 			<html:form method="POST" action="/resetPassword">

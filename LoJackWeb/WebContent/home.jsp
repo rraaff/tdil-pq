@@ -54,6 +54,7 @@
 </script>
 </head>
 <body>
+<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
 <header>
 	<div id="floatyMenu">
 		<div class="wrapper">
