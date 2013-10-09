@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -62,6 +64,24 @@ public class HomeAlarmsActivity extends Activity {
 			        	//finish();
 					}
 				});
+		
+		findViewById(R.id.btnFooterPets).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						String videoId = "742NZ2Fa4I4";
+						try{
+							 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
+					         startActivity(intent);      
+						}catch (ActivityNotFoundException ex){
+							Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.youtube.com/watch?v="+videoId)); 
+							//intent.putExtra("VIDEO_ID", videoId); 
+							startActivity(intent); 
+						}
+					}
+				});
+		
+		
 		loadAlarms();
 	}
 
