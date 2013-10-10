@@ -14,6 +14,12 @@ public class LoginResponse {
 	private boolean petUser;
 	private String petUserId;
 	
+	private long cameraRefreshTime;
+	private String petVideo;
+	private String petUrl;
+	private String preventVideo;
+	private String preventUrl;
+	
 	public LoginResponse() {
 	}
 	
@@ -76,5 +82,45 @@ public class LoginResponse {
 	}
 	public void setPetUserId(String petUserId) {
 		this.petUserId = petUserId;
+	}
+
+	public long getCameraRefreshTime() {
+		return cameraRefreshTime;
+	}
+
+	public void setCameraRefreshTime(long cameraRefreshTime) {
+		this.cameraRefreshTime = cameraRefreshTime;
+	}
+
+	public String getPetVideo() {
+		return petVideo;
+	}
+
+	public void setPetVideo(String petVideo) {
+		this.petVideo = petVideo;
+	}
+
+	public String getPetUrl() {
+		return petUrl;
+	}
+
+	public void setPetUrl(String petUrl) {
+		this.petUrl = petUrl;
+	}
+
+	public String getPreventVideo() {
+		return preventVideo;
+	}
+
+	public void setPreventVideo(String preventVideo) {
+		this.preventVideo = preventVideo;
+	}
+
+	public String getPreventUrl() {
+		return preventUrl;
+	}
+
+	public void setPreventUrl(String preventUrl) {
+		this.preventUrl = preventUrl;
 	}
 }

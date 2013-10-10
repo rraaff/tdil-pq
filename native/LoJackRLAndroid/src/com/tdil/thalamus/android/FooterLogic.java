@@ -38,11 +38,10 @@ public class FooterLogic {
 				@Override
 				public void onClick(View view) {
 					if (Login.loggedUser.getPetUser()) {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack-app.com.ar/")); 
-						//intent.putExtra("VIDEO_ID", videoId); 
+						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPetUrl())); 
 						activity.startActivity(intent); 
 					} else {
-						String videoId = "742NZ2Fa4I4";
+						String videoId = Login.loggedUser.getPetVideo();
 						try{
 							 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
 							 activity.startActivity(intent);      
