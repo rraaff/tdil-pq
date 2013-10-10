@@ -80,7 +80,9 @@ public class LoJackConfig extends SystemConfig {
 	private static String mobilevideocar = "http://youtu.be/5Xe5pODPq1I";
 	private static String mobilevideohome = "http://youtu.be/Iz_VvsFwXQI";
 	private static String mobilevideopets = "http://youtu.be/M8VhrMM0j-Q";
-
+	
+	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
+	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
 	}
@@ -487,6 +489,40 @@ public class LoJackConfig extends SystemConfig {
 			setCameraMobileSocket(new ProxyConfiguration(proxyConf[0], Integer.parseInt(proxyConf[1])));
 		} 
 		getLog().fatal("Camera mobile socket is " + getCameraMobileSocket());
+		
+		// antive apps
+		String cameraNativeRefreshTime = SystemPropertyUtils.getSystemPropertValue("camera.native.refreshTime");
+		if (!StringUtils.isEmpty(cameraNativeRefreshTime)) {
+			nativeAppsConfig.setCameraNativeRefreshTime(Long.parseLong(cameraNativeRefreshTime));
+		} 
+		getLog().fatal("Camera Native Refresh Time is " + nativeAppsConfig.getCameraNativeRefreshTime());
+		String videoCarNative = SystemPropertyUtils.getSystemPropertValue("video.car.native");
+		if (StringUtils.isEmpty(videoCarNative )) {
+			videoCarNative = "";
+		} 
+		nativeAppsConfig.setVideoCarNative(videoCarNative);
+		getLog().fatal("Video car native is " + videoCarNative);
+		String videoPetsNative = SystemPropertyUtils.getSystemPropertValue("video.pets.native");
+		if (StringUtils.isEmpty(videoPetsNative )) {
+			videoPetsNative = "";
+		} 
+		nativeAppsConfig.setVideoPetsNative(videoPetsNative);
+		getLog().fatal("Video pets native is " + videoPetsNative);
+		
+		String preventNativeUrl = SystemPropertyUtils.getSystemPropertValue("prevent.native.url");
+		if (StringUtils.isEmpty(preventNativeUrl )) {
+			preventNativeUrl = "";
+		} 
+		nativeAppsConfig.setPreventNativeUrl(preventNativeUrl);
+		getLog().fatal("prevent native url is " + preventNativeUrl);
+		
+		String petsNativeUrl = SystemPropertyUtils.getSystemPropertValue("pets.native.url");
+		if (StringUtils.isEmpty(petsNativeUrl )) {
+			petsNativeUrl = "";
+		} 
+		nativeAppsConfig.setPetsNativeUrl(petsNativeUrl);
+		getLog().fatal("pets native url is " + petsNativeUrl);
+		
 		
 		IPCamera.setLogger(new CameraLog4jLogger());
 

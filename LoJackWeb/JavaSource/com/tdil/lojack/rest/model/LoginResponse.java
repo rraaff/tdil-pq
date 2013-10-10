@@ -1,5 +1,7 @@
 package com.tdil.lojack.rest.model;
 
+import com.tdil.lojack.utils.LoJackConfig;
+
 public class LoginResponse {
 
 	private boolean logged;
@@ -13,6 +15,12 @@ public class LoginResponse {
 	private String preventUserId;
 	private boolean petUser;
 	private String petUserId;
+	
+	private long cameraRefreshTime = LoJackConfig.nativeAppsConfig.getCameraNativeRefreshTime();
+	private String petVideo = LoJackConfig.nativeAppsConfig.getVideoPetsNative();
+	private String petUrl = LoJackConfig.nativeAppsConfig.getPetsNativeUrl();
+	private String preventVideo = LoJackConfig.nativeAppsConfig.getVideoCarNative();
+	private String preventUrl = LoJackConfig.nativeAppsConfig.getPreventNativeUrl();
 	
 	public LoginResponse() {
 	}
@@ -76,5 +84,45 @@ public class LoginResponse {
 	}
 	public void setPetUserId(String petUserId) {
 		this.petUserId = petUserId;
+	}
+
+	public long getCameraRefreshTime() {
+		return cameraRefreshTime;
+	}
+
+	public void setCameraRefreshTime(long cameraRefreshTime) {
+		this.cameraRefreshTime = cameraRefreshTime;
+	}
+
+	public String getPetVideo() {
+		return petVideo;
+	}
+
+	public void setPetVideo(String petVideo) {
+		this.petVideo = petVideo;
+	}
+
+	public String getPetUrl() {
+		return petUrl;
+	}
+
+	public void setPetUrl(String petUrl) {
+		this.petUrl = petUrl;
+	}
+
+	public String getPreventVideo() {
+		return preventVideo;
+	}
+
+	public void setPreventVideo(String preventVideo) {
+		this.preventVideo = preventVideo;
+	}
+
+	public String getPreventUrl() {
+		return preventUrl;
+	}
+
+	public void setPreventUrl(String preventUrl) {
+		this.preventUrl = preventUrl;
 	}
 }

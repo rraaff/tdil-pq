@@ -175,6 +175,15 @@
 		</sql>
 	</target>
 	
+	<target name="incremental-05">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../thalamusJClient/EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl5.sql" />
+		</sql>
+	</target>
+	
 	<target name="incremental-parkings-gba">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
@@ -233,7 +242,14 @@
 		<delete dir="${project.name.upper}.tmp/${project.name.upper}_WEB.war1" failonerror="false"></delete>
 		
 		<war destfile="./${project.name.upper}.tmp/GIS_WEB.war" basedir="../../GISWeb/WebContent" webxml="../../GISWeb/WebContent/WEB-INF/web.xml">
-		</war>	
+		</war>
+		<war destfile="./${project.name.upper}.tmp/ThalamusWeb.war" basedir="../../ThalamusWeb/WebContent" webxml="../../ThalamusWeb/WebContent/WEB-INF/web.xml">
+			<lib dir="../../thalamusJClient/EnvironmentLibraries/">
+							<include name="*.jar" />
+							<!--exclude name="servlet-api.jar" />
+							<exclude name="jsch-0.1.39.jar" /-->
+						</lib>
+		</war>
 		
 		<war destfile="./${project.name.upper}.tmp/LoJackCameraWEB.war" basedir="../../LoJackCameraWeb/WebContent" webxml="../../LoJackCameraWeb/WebContent/WEB-INF/web.xml">
 			<classes dir="../../Camera/bin" />
