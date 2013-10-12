@@ -154,7 +154,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		@Override
 		public void onClick(View arg0) {
 			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
-			sct.toggleActivation(mPosition);
+			sct.toggleAlarmActivation(mPosition);
 		}
 	}
 	/********* Called when Item click in ListView ************/

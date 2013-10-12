@@ -179,8 +179,8 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.toggleActivation(mPosition);
+			ILightsActivity sct = (ILightsActivity) activity;
+			sct.toggleLightActivation(mPosition);
 		}
 	}
 	
@@ -193,8 +193,8 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.toggleRandom(mPosition);
+			ILightsActivity sct = (ILightsActivity) activity;
+			sct.toggleLightRandom(mPosition);
 		}
 	}
 	/********* Called when Item click in ListView ************/
@@ -207,7 +207,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
+			ILightsActivity sct = (ILightsActivity) activity;
 			sct.viewLightLog(mPosition);
 		}
 	}

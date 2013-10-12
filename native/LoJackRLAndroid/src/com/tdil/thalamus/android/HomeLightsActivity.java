@@ -1,6 +1,7 @@
 package com.tdil.thalamus.android;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -17,13 +18,12 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.Alarm;
-import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
 import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.rest.model.LightCollection;
@@ -34,21 +34,20 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLightsActivity extends Activity {
+public class HomeLightsActivity extends Activity implements ILightsActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
 
-	ListView list;
-	LightListAdapter adapter;
-	public HomeLightsActivity CustomListView = null;
-	public ArrayList<Light> CustomListViewValuesArr = new ArrayList<Light>();
+	private ListView lightsList;
+	private LightListAdapter lightsListAdapter;
+	public ArrayList<Light> ligths = new ArrayList<Light>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home_lights);
-		list = (ListView) findViewById(R.id.lightsList);
+		lightsList = (ListView) findViewById(R.id.lightsList);
 		loadLights();
 	}
 
@@ -60,11 +59,11 @@ public class HomeLightsActivity extends Activity {
 
 				LightCollection col = gson.fromJson(task.getResult(),
 						LightCollection.class);
-				CustomListViewValuesArr = new ArrayList<Light>(col.getLights());
+				ligths = new ArrayList<Light>(col.getLights());
 				Resources res = getResources();
-				adapter = new LightListAdapter(HomeLightsActivity.this,
-						CustomListViewValuesArr, res);
-				list.setAdapter(adapter);
+				lightsListAdapter = new LightListAdapter(HomeLightsActivity.this,
+						ligths, res);
+				lightsList.setAdapter(lightsListAdapter);
 			}
 
 			@Override
@@ -74,24 +73,9 @@ public class HomeLightsActivity extends Activity {
 		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
 	}
 	
-	private void startBackgroundJob() {
-		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-			@Override
-			public void sucess(RESTClientTask task) {
-				Gson gson = new Gson();
-				LightJobStatusCollection col = gson.fromJson(task.getResult(),
-						LightJobStatusCollection.class);
-				if (!col.getStatus().isEmpty()) {
-					HomeLightsActivity.this.startBackgroundJob();
-				} else {
-					HomeLightsActivity.this.loadLights();
-				}
-			}
-			@Override
-			public void error(RESTClientTask task) {
-				Messages.connectionErrorMessage(HomeLightsActivity.this);
-			}
-		}, RESTConstants.LIGHT_STATUS, new RestParams(), null).execute();
+	@Override
+	public void startLightsBackgroundJob() {
+		LigthsLogic.startLightsBackgroundJob(this);
 	}
 
 	@Override
@@ -108,167 +92,22 @@ public class HomeLightsActivity extends Activity {
 	}
 
 	public void onItemClick(int mPosition) {
-		Light tempValues = (Light) CustomListViewValuesArr.get(mPosition);
-		/*
-		 * Toast.makeText(CustomListView,
-		 * ""+tempValues.getCompanyName()+" \nImage:"
-		 * +tempValues.getImage()+" \nUrl:"+tempValues.getUrl(),
-		 * Toast.LENGTH_LONG) .show();
-		 */
+		Light tempValues = (Light) ligths.get(mPosition);
 	}
 	
-	public void toggleActivation(int mPosition) {
-		Light light = (Light) CustomListViewValuesArr.get(mPosition);
-		if (light.isOn()) {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("Se ha enviado el comando de apagado")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-	
-			               }).show();
-					} else {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("No ha podido enviarse el comando de apagado")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-	
-			               }).show();
-					}
-				}
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeLightsActivity.this);
-				}
-			}, RESTConstants.DEACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
-		} else {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("Se ha enviado el comando de encendido")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-			               }).show();
-					} else {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("No ha podido enviarse el comando de encendido")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-			               }).show();
-					}
-				}
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeLightsActivity.this);
-				}
-			}, RESTConstants.ACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
-		}
+	@Override
+	public void toggleLightActivation(int mPosition) {
+		LigthsLogic.toggleLightActivation(this, mPosition);
 	}
 	
-	public void toggleRandom(int mPosition) {
-		Light light = (Light) CustomListViewValuesArr.get(mPosition);
-		if (light.isInRandomMode()) {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("Se ha enviado el comando de desactivacion de secuencia aleatoria")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-	
-			               }).show();
-					} else {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("No ha podido enviarse el comando de desactivacion de secuencia aleatoria")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-	
-			               }).show();
-					}
-				}
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeLightsActivity.this);
-				}
-			}, RESTConstants.DEACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
-		} else {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("Se ha enviado el comando de activacion de secuencia aleatoria")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-			               }).show();
-					} else {
-						new AlertDialog.Builder(HomeLightsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Luces")
-			               .setMessage("No ha podido enviarse el comando de activacion de secuencia aleatoria")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-			               }).show();
-					}
-				}
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeLightsActivity.this);
-				}
-			}, RESTConstants.ACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
-		}
+	@Override
+	public void toggleLightRandom(int mPosition) {
+		LigthsLogic.toggleLightRandom(this, mPosition);
 	}
 	
+	@Override
 	public void viewLightLog(int mPosition) {
-		Intent intent = new Intent(getBaseContext(), HomeLogLightActivity.class);
-		Light alarm = CustomListViewValuesArr.get(mPosition);
-		intent.putExtra(HomeLogLightActivity.IDENTIDAD, alarm.getIdEntidad());
-		intent.putExtra(HomeLogLightActivity.IDLUZ, alarm.getIdLuz());
-		startActivity(intent);
+		LigthsLogic.viewLightLog(this, mPosition);
 	}
 
 	@Override
@@ -285,6 +124,15 @@ public class HomeLightsActivity extends Activity {
 		// for very easy animations. If available, use these APIs to fade-in
 		// the progress spinner.
 
+	}
+
+	@Override
+	public List<Light> getLights() {
+		return ligths;
+	}
+
+	public void setLigths(ArrayList<Light> ligths) {
+		this.ligths = ligths;
 	}
 
 }

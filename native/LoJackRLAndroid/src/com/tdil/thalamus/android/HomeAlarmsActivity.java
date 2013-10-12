@@ -1,6 +1,7 @@
 package com.tdil.thalamus.android;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -20,6 +21,7 @@ import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
@@ -29,25 +31,26 @@ import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
 import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
+import com.tdil.thalamus.android.rest.model.Light;
+import com.tdil.thalamus.android.rest.model.LightCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsActivity extends Activity {
+public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
 	public static final String TAB_ALARMAS = "ALARMAS";
-	/**
-	 * The default email to populate the email field with.
-	 */
-
-	private RESTClientTask mAuthTask = null;
-	ListView list;
-	AlarmListAdapter adapter;
-	public HomeAlarmsActivity CustomListView = null;
-	public ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
+	
+	private ListView alarmsList;
+	private AlarmListAdapter alarmListAdapter;
+	public ArrayList<Alarm> alarms = new ArrayList<Alarm>();
+	
+	private ListView lightsList;
+	private LightListAdapter lightsListAdapter;
+	public ArrayList<Light> ligths = new ArrayList<Light>();
 	
 	public boolean alarmsLoaded = false;
 	public boolean lightsLoaded = false;
@@ -71,17 +74,17 @@ public class HomeAlarmsActivity extends Activity {
 		TabHost th = (TabHost) findViewById(R.id.tabhost);
 		th.setup();
 		
-		TabSpec ts = th.newTabSpec("tag1");
+		TabSpec ts = th.newTabSpec("tabAlarms");
 		ts.setContent(R.id.tabAlarms);
 		ts.setIndicator(TAB_ALARMAS);
 		th.addTab(ts);
 
-		ts = th.newTabSpec("tag2");
+		ts = th.newTabSpec("tabLights");
 		ts.setContent(R.id.tabLights);
 		ts.setIndicator(TAB_LUCES);
 		th.addTab(ts);
 
-		ts = th.newTabSpec("tag3");
+		ts = th.newTabSpec("tabCameras");
 		ts.setContent(R.id.tabCameras);
 		ts.setIndicator(TAB_CAMARAS);
 		th.addTab(ts);
@@ -89,7 +92,22 @@ public class HomeAlarmsActivity extends Activity {
 		th.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String tabId) {
-				System.out.println("tab changed" + tabId);
+				System.out.println(tabId);
+				if (tabId.equals("tabAlarms")) {
+					if (!alarmsLoaded) {
+						loadAlarms();
+					}
+				}
+				if (tabId.equals("tabLights")) {
+					if (!lightsLoaded) {
+						loadLights();
+					}
+				}
+				if (tabId.equals("tabCameras")) {
+					/*if (!lightsLoaded) {
+						loadLights();
+					}*/
+				}
 			}
 		});
 		if (TAB_CAMARAS.equals(tab)) {
@@ -97,34 +115,56 @@ public class HomeAlarmsActivity extends Activity {
 		} else {
 			if (TAB_LUCES.equals(tab)) {
 				th.setCurrentTab(1);
+				loadLights();
 			} else {
 				loadAlarms();
 			}
 		}
-		list = (ListView) findViewById(R.id.alarmsList);
+		alarmsList = (ListView) findViewById(R.id.alarmsList);
+		lightsList = (ListView) findViewById(R.id.lightsList);
 		FooterLogic.installFooterLogic(this);
 	}
 
 	public void loadAlarms() {
+		alarmsLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
-
 				AlarmCollection col = gson.fromJson(task.getResult(),
 						AlarmCollection.class);
-				CustomListViewValuesArr = new ArrayList<Alarm>(col.getAlarms());
+				alarms = new ArrayList<Alarm>(col.getAlarms());
 				Resources res = getResources();
-				adapter = new AlarmListAdapter(HomeAlarmsActivity.this,
-						CustomListViewValuesArr, res);
-				list.setAdapter(adapter);
+				alarmListAdapter = new AlarmListAdapter(HomeAlarmsActivity.this,
+						alarms, res);
+				alarmsList.setAdapter(alarmListAdapter);
 			}
-
 			@Override
 			public void error(RESTClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+	}
+	
+	public void loadLights() {
+		lightsLoaded = true;
+		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(RESTClientTask task) {
+				Gson gson = new Gson();
+				LightCollection col = gson.fromJson(task.getResult(),
+						LightCollection.class);
+				ligths = new ArrayList<Light>(col.getLights());
+				Resources res = getResources();
+				lightsListAdapter = new LightListAdapter(HomeAlarmsActivity.this,
+						ligths, res);
+				lightsList.setAdapter(lightsListAdapter);
+			}
+			@Override
+			public void error(RESTClientTask task) {
+				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+			}
+		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
 	}
 
 	@Override
@@ -141,18 +181,29 @@ public class HomeAlarmsActivity extends Activity {
 	}
 
 	public void onItemClick(int mPosition) {
-		Alarm tempValues = (Alarm) CustomListViewValuesArr.get(mPosition);
+		Alarm tempValues = (Alarm) alarms.get(mPosition);
 		System.out.println(tempValues);
-		/*
-		 * Toast.makeText(CustomListView,
-		 * ""+tempValues.getCompanyName()+" \nImage:"
-		 * +tempValues.getImage()+" \nUrl:"+tempValues.getUrl(),
-		 * Toast.LENGTH_LONG) .show();
-		 */
+	}
+	
+	
+	public void toggleLightActivation(int mPosition) {
+		LigthsLogic.toggleLightActivation(this, mPosition);
+	}
+	@Override
+	public void toggleLightRandom(int mPosition) {
+		LigthsLogic.toggleLightRandom(this, mPosition);
+	}
+	@Override
+	public void startLightsBackgroundJob() {
+		LigthsLogic.startLightsBackgroundJob(this);
+	}
+	@Override
+	public void viewLightLog(int mPosition) {
+		LigthsLogic.viewLightLog(this, mPosition);
 	}
 
-	public void toggleActivation(int mPosition) {
-		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
+	public void toggleAlarmActivation(int mPosition) {
+		Alarm alarm = (Alarm) alarms.get(mPosition);
 		if (alarm.isActive()) {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -171,7 +222,7 @@ public class HomeAlarmsActivity extends Activity {
 											public void onClick(
 													DialogInterface dialog,
 													int whichButton) {
-												startBackgroundJob();
+												startAlarmsBackgroundJob();
 											}
 
 										}).show();
@@ -217,7 +268,7 @@ public class HomeAlarmsActivity extends Activity {
 											public void onClick(
 													DialogInterface dialog,
 													int whichButton) {
-												startBackgroundJob();
+												startAlarmsBackgroundJob();
 											}
 										}).show();
 					} else {
@@ -246,7 +297,7 @@ public class HomeAlarmsActivity extends Activity {
 		}
 	}
 
-	private void startBackgroundJob() {
+	private void startAlarmsBackgroundJob() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
@@ -254,7 +305,7 @@ public class HomeAlarmsActivity extends Activity {
 				AlarmJobStatusCollection col = gson.fromJson(task.getResult(),
 						AlarmJobStatusCollection.class);
 				if (!col.getStatus().isEmpty()) {
-					HomeAlarmsActivity.this.startBackgroundJob();
+					HomeAlarmsActivity.this.startAlarmsBackgroundJob();
 				} else {
 					HomeAlarmsActivity.this.loadAlarms();
 				}
@@ -269,7 +320,7 @@ public class HomeAlarmsActivity extends Activity {
 
 	public void viewAlarmLog(int mPosition) {
 		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
-		Alarm alarm = CustomListViewValuesArr.get(mPosition);
+		Alarm alarm = alarms.get(mPosition);
 		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
 		startActivity(intent);
 	}
@@ -288,6 +339,31 @@ public class HomeAlarmsActivity extends Activity {
 		// for very easy animations. If available, use these APIs to fade-in
 		// the progress spinner.
 
+	}
+
+	public ListView getAlarmsList() {
+		return alarmsList;
+	}
+
+	public void setAlarmsList(ListView list) {
+		this.alarmsList = list;
+	}
+
+	public AlarmListAdapter getAlarmListAdapter() {
+		return alarmListAdapter;
+	}
+
+	public void setAlarmListAdapter(AlarmListAdapter adapter) {
+		this.alarmListAdapter = adapter;
+	}
+
+	@Override
+	public List<Light> getLights() {
+		return ligths;
+	}
+
+	public void setLigths(ArrayList<Light> ligths) {
+		this.ligths = ligths;
 	}
 
 }
