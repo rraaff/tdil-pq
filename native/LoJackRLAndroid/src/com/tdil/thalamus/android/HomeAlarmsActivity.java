@@ -5,19 +5,17 @@ import java.util.ArrayList;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
@@ -31,7 +29,6 @@ import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
 import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
-import com.tdil.thalamus.android.rest.model.LightJobStatusCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -39,6 +36,9 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 public class HomeAlarmsActivity extends Activity {
+	public static final String TAB_CAMARAS = "CAMARAS";
+	public static final String TAB_LUCES = "LUCES";
+	public static final String TAB_ALARMAS = "ALARMAS";
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -48,35 +48,61 @@ public class HomeAlarmsActivity extends Activity {
 	AlarmListAdapter adapter;
 	public HomeAlarmsActivity CustomListView = null;
 	public ArrayList<Alarm> CustomListViewValuesArr = new ArrayList<Alarm>();
+	
+	public boolean alarmsLoaded = false;
+	public boolean lightsLoaded = false;
+	public boolean camerasLoaded = false;
+	
+	public static final String SELECTED_TAB = "SELECTED_TAB";
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_home_alarms);
+		
+		String tab = TAB_ALARMAS;
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			tab = extras.getString(SELECTED_TAB);
+		}
 
-		TabHost th = (TabHost)findViewById(R.id.tabhost);
+		TabHost th = (TabHost) findViewById(R.id.tabhost);
 		th.setup();
-        TabSpec ts = th.newTabSpec("tag1");
-        ts.setContent(R.id.tab1);
-        ts.setIndicator("ALARMAS");
-        th.addTab(ts);
-        
-        ts = th.newTabSpec("tag2");
-        ts.setContent(R.id.tab2);
-        ts.setIndicator("LUCES");
-        th.addTab(ts);
-        
-        ts = th.newTabSpec("tag3");
-        ts.setContent(R.id.tab3);
-        ts.setIndicator("CAMARAS");
-        th.addTab(ts);
 		
+		TabSpec ts = th.newTabSpec("tag1");
+		ts.setContent(R.id.tabAlarms);
+		ts.setIndicator(TAB_ALARMAS);
+		th.addTab(ts);
+
+		ts = th.newTabSpec("tag2");
+		ts.setContent(R.id.tabLights);
+		ts.setIndicator(TAB_LUCES);
+		th.addTab(ts);
+
+		ts = th.newTabSpec("tag3");
+		ts.setContent(R.id.tabCameras);
+		ts.setIndicator(TAB_CAMARAS);
+		th.addTab(ts);
+
+		th.setOnTabChangedListener(new OnTabChangeListener() {
+			@Override
+			public void onTabChanged(String tabId) {
+				System.out.println("tab changed" + tabId);
+			}
+		});
+		if (TAB_CAMARAS.equals(tab)) {
+			
+		} else {
+			if (TAB_LUCES.equals(tab)) {
+				th.setCurrentTab(1);
+			} else {
+				loadAlarms();
+			}
+		}
 		list = (ListView) findViewById(R.id.alarmsList);
-		
 		FooterLogic.installFooterLogic(this);
-		
-		loadAlarms();
 	}
 
 	public void loadAlarms() {
@@ -124,7 +150,7 @@ public class HomeAlarmsActivity extends Activity {
 		 * Toast.LENGTH_LONG) .show();
 		 */
 	}
-	
+
 	public void toggleActivation(int mPosition) {
 		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
 		if (alarm.isActive()) {
@@ -132,72 +158,94 @@ public class HomeAlarmsActivity extends Activity {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
+					AsyncJobResponse asyncJobResponse = gson.fromJson(
+							task.getResult(), AsyncJobResponse.class);
 					if (asyncJobResponse.isAccepted()) {
 						new AlertDialog.Builder(HomeAlarmsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Alarms")
-			               .setMessage("Se ha enviado el comando de desactivacion")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-	
-			               }).show();
+								.setIcon(R.drawable.ic_launcher)
+								.setTitle("Alarms")
+								.setMessage(
+										"Se ha enviado el comando de desactivacion")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int whichButton) {
+												startBackgroundJob();
+											}
+
+										}).show();
 					} else {
 						new AlertDialog.Builder(HomeAlarmsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Alarms")
-			               .setMessage("No ha podido enviarse el comando de desactivacion")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-	
-			               }).show();
+								.setIcon(R.drawable.ic_launcher)
+								.setTitle("Alarms")
+								.setMessage(
+										"No ha podido enviarse el comando de desactivacion")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int whichButton) {
+											}
+
+										}).show();
 					}
 				}
+
 				@Override
 				public void error(RESTClientTask task) {
 					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 				}
-			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(
+					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
+							.getIdEntidad())), null).execute((Void) null);
 		} else {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(RESTClientTask task) {
 					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
-							AsyncJobResponse.class);
+					AsyncJobResponse asyncJobResponse = gson.fromJson(
+							task.getResult(), AsyncJobResponse.class);
 					if (asyncJobResponse.isAccepted()) {
 						new AlertDialog.Builder(HomeAlarmsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Alarms")
-			               .setMessage("Se ha enviado el comando de activacion")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                    	   startBackgroundJob();
-			                       }
-			               }).show();
+								.setIcon(R.drawable.ic_launcher)
+								.setTitle("Alarms")
+								.setMessage(
+										"Se ha enviado el comando de activacion")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int whichButton) {
+												startBackgroundJob();
+											}
+										}).show();
 					} else {
 						new AlertDialog.Builder(HomeAlarmsActivity.this)
-			               .setIcon(R.drawable.ic_launcher)
-			               .setTitle("Alarms")
-			               .setMessage("No ha podido enviarse el comando de activacion")
-			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-			                       public void onClick(DialogInterface dialog, int whichButton) {
-			                       }
-			               }).show();
+								.setIcon(R.drawable.ic_launcher)
+								.setTitle("Alarms")
+								.setMessage(
+										"No ha podido enviarse el comando de activacion")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int whichButton) {
+											}
+										}).show();
 					}
 				}
+
 				@Override
 				public void error(RESTClientTask task) {
 					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 				}
-			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+			}, RESTConstants.ACTIVATE_ALARM, new RestParams(
+					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
+							.getIdEntidad())), null).execute((Void) null);
 		}
 	}
-	
+
 	private void startBackgroundJob() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
@@ -211,13 +259,14 @@ public class HomeAlarmsActivity extends Activity {
 					HomeAlarmsActivity.this.loadAlarms();
 				}
 			}
+
 			@Override
 			public void error(RESTClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARM_STATUS, new RestParams(), null).execute();
 	}
-	
+
 	public void viewAlarmLog(int mPosition) {
 		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
 		Alarm alarm = CustomListViewValuesArr.get(mPosition);

@@ -91,7 +91,7 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout
-                    android:id="@+id/tab1"
+                    android:id="@+id/tabAlarms"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:orientation="vertical">
                     
@@ -117,13 +117,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab2"
+                    android:id="@+id/tabLights"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:orientation="vertical">
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab3"
+                    android:id="@+id/tabCameras"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:orientation="vertical">
                 </LinearLayout>

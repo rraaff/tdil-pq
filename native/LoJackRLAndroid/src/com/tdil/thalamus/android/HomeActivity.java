@@ -46,6 +46,7 @@ public class HomeActivity extends Activity {
 				@Override
 				public void onClick(View view) {
 					Intent intent = new Intent(HomeActivity.this, HomeAlarmsActivity.class);
+					intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_ALARMAS);
 		        	startActivity(intent);
 		        	//finish();
 				}
@@ -55,7 +56,10 @@ public class HomeActivity extends Activity {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					Intent intent = new Intent(HomeActivity.this, HomeLightsActivity.class);
+					/*Intent intent = new Intent(HomeActivity.this, HomeLightsActivity.class);
+		        	startActivity(intent);*/
+					Intent intent = new Intent(HomeActivity.this, HomeAlarmsActivity.class);
+					intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
 		        	startActivity(intent);
 				}
 			});
