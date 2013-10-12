@@ -13,15 +13,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.Camera;
-import com.tdil.thalamus.android.rest.model.Light;
-import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
 public class CameraListAdapter extends BaseAdapter implements OnClickListener {
@@ -124,8 +119,8 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.onItemClick(mPosition);
+			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
+			sct.onItemClick(mPosition);*/
 		}
 	}
 	

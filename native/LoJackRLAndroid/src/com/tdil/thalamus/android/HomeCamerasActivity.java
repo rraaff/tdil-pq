@@ -34,10 +34,9 @@ public class HomeCamerasActivity extends Activity {
 	 * The default email to populate the email field with.
 	 */
 
-	ListView list;
-	CameraListAdapter adapter;
-	public HomeCamerasActivity CustomListView = null;
-	public ArrayList<Camera> CustomListViewValuesArr = new ArrayList<Camera>();
+	private ListView cameraList;
+	private CameraListAdapter cameraListAdapter;
+	public ArrayList<Camera> cameras = new ArrayList<Camera>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,13 @@ public class HomeCamerasActivity extends Activity {
 
 		setContentView(R.layout.activity_home_cameras);
 
-		list = (ListView) findViewById(R.id.camerasList);
+		cameraList = (ListView) findViewById(R.id.camerasList);
 
+		loadCameras();
+
+	}
+
+	public void loadCameras() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
@@ -54,11 +58,11 @@ public class HomeCamerasActivity extends Activity {
 
 				CameraCollection col = gson.fromJson(task.getResult(),
 						CameraCollection.class);
-				CustomListViewValuesArr = new ArrayList<Camera>(col.getCameras());
+				cameras = new ArrayList<Camera>(col.getCameras());
 				Resources res = getResources();
-				adapter = new CameraListAdapter(HomeCamerasActivity.this,
-						CustomListViewValuesArr, res);
-				list.setAdapter(adapter);
+				cameraListAdapter = new CameraListAdapter(HomeCamerasActivity.this,
+						cameras, res);
+				cameraList.setAdapter(cameraListAdapter);
 			}
 
 			@Override
@@ -66,7 +70,6 @@ public class HomeCamerasActivity extends Activity {
 				Messages.connectionErrorMessage(HomeCamerasActivity.this);
 			}
 		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
-
 	}
 
 	@Override
@@ -83,7 +86,7 @@ public class HomeCamerasActivity extends Activity {
 	}
 
 	public void onItemClick(int mPosition) {
-		Camera tempValues = (Camera) CustomListViewValuesArr.get(mPosition);
+		Camera tempValues = (Camera) cameras.get(mPosition);
 		System.out.println(tempValues);
 		/*
 		 * Toast.makeText(CustomListView,
@@ -94,7 +97,7 @@ public class HomeCamerasActivity extends Activity {
 	}
 	
 	public void toggleActivation(int mPosition) {
-		Camera alarm = (Camera) CustomListViewValuesArr.get(mPosition);
+		Camera alarm = (Camera) cameras.get(mPosition);
 		System.out.println("toggleActivation" + alarm);
 		/*if (alarm.isActive()) {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {

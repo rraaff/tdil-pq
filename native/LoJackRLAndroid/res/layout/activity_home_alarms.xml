@@ -146,6 +146,27 @@
                     android:id="@+id/tabCameras"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:orientation="vertical">
+                    
+                    <ScrollView
+			            android:id="@+id/containerLights"
+			            android:layout_width="fill_parent"
+			            android:layout_height="wrap_content" >
+			
+			            <LinearLayout
+			                android:layout_width="fill_parent"
+			                android:layout_height="wrap_content"
+			                android:gravity="center_horizontal"
+			                android:orientation="vertical" >
+                    
+			                <ListView
+					            android:id="@+id/camerasList"
+					            android:layout_width="fill_parent"
+					            android:layout_height="wrap_content" >
+					        </ListView>
+        
+			            </LinearLayout>
+			        </ScrollView>
+                    
                 </LinearLayout>
             </FrameLayout>
 

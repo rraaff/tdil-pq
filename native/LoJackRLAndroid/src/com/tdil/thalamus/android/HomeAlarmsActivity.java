@@ -31,6 +31,8 @@ import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
 import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
+import com.tdil.thalamus.android.rest.model.Camera;
+import com.tdil.thalamus.android.rest.model.CameraCollection;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.rest.model.LightCollection;
 import com.tdil.thalamus.android.utils.Messages;
@@ -51,6 +53,10 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 	private ListView lightsList;
 	private LightListAdapter lightsListAdapter;
 	public ArrayList<Light> ligths = new ArrayList<Light>();
+	
+	private ListView cameraList;
+	private CameraListAdapter cameraListAdapter;
+	public ArrayList<Camera> cameras = new ArrayList<Camera>();
 	
 	public boolean alarmsLoaded = false;
 	public boolean lightsLoaded = false;
@@ -104,14 +110,15 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 					}
 				}
 				if (tabId.equals("tabCameras")) {
-					/*if (!lightsLoaded) {
-						loadLights();
-					}*/
+					if (!lightsLoaded) {
+						loadCameras();
+					}
 				}
 			}
 		});
 		if (TAB_CAMARAS.equals(tab)) {
-			
+			th.setCurrentTab(2);
+			loadCameras();
 		} else {
 			if (TAB_LUCES.equals(tab)) {
 				th.setCurrentTab(1);
@@ -122,6 +129,8 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 		}
 		alarmsList = (ListView) findViewById(R.id.alarmsList);
 		lightsList = (ListView) findViewById(R.id.lightsList);
+		cameraList = (ListView) findViewById(R.id.camerasList);
+		
 		FooterLogic.installFooterLogic(this);
 	}
 
@@ -165,6 +174,28 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+	}
+	
+	public void loadCameras() {
+		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(RESTClientTask task) {
+				Gson gson = new Gson();
+
+				CameraCollection col = gson.fromJson(task.getResult(),
+						CameraCollection.class);
+				cameras = new ArrayList<Camera>(col.getCameras());
+				Resources res = getResources();
+				cameraListAdapter = new CameraListAdapter(HomeAlarmsActivity.this,
+						cameras, res);
+				cameraList.setAdapter(cameraListAdapter);
+			}
+
+			@Override
+			public void error(RESTClientTask task) {
+				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
+			}
+		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
 	}
 
 	@Override

@@ -56,8 +56,6 @@ public class HomeActivity extends Activity {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					/*Intent intent = new Intent(HomeActivity.this, HomeLightsActivity.class);
-		        	startActivity(intent);*/
 					Intent intent = new Intent(HomeActivity.this, HomeAlarmsActivity.class);
 					intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
 		        	startActivity(intent);
@@ -68,7 +66,8 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(HomeActivity.this, HomeCamerasActivity.class);
+						Intent intent = new Intent(HomeActivity.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_CAMARAS);
 			        	startActivity(intent);
 					}
 				});
@@ -92,13 +91,12 @@ public class HomeActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.activity_home, menu);
+		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
 		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 	
