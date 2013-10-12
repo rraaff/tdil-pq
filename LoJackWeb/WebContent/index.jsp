@@ -290,7 +290,7 @@ function basicRegister() {
 	});
 	$("form[name='RegisterForm'] select[name=documentType]").val('1');
 
-	$("form[name='RegisterForm'] input[name='optIn[0].accepted']").each(function(index, param){
+	$("form[name='RegisterForm'] input[name='optInAccepted']").each(function(index, param){
 		$(param).prop('checked', true);
 	});
 	
@@ -610,13 +610,11 @@ function parkingsNotLogged() {
 							</div>
 						</fieldset>
 					<% } %>
-					<logic:iterate id="optIn" name="RegisterForm" property="optIns">
-						<h4>Cláusula de contacto</h4>
-						<fieldset>
-							<html:checkbox name="optIn" property="accepted" indexed="true" />
-							<label>Acepto recibir contactos de LoJack y sus comañías asociadas</label>
-						</fieldset>
-					</logic:iterate>
+					<h4>Cláusula de contacto</h4>
+					<fieldset>
+						<html:checkbox name="RegisterForm" property="optInAccepted"/>
+						<label>Acepto recibir contactos de LoJack y sus compañías asociadas</label>
+					</fieldset>
 				</div>
 				<fieldset>
 					<input type="submit" id="submitregister" value=" " class="indexLogin">

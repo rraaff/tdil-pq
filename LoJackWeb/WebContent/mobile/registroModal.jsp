@@ -227,13 +227,11 @@
 					</div>
 				</fieldset>
 			<% } %>
-			<logic:iterate id="optIn" name="RegisterFormMobile" property="optIns">
-				<h4>Cláusula de contacto</h4>
-				<fieldset class="optinStyles">
-					<html:checkbox name="optIn" property="accepted" indexed="true" />
-					<label>Acepto recibir contactos de LoJack y sus comañías asociadas</label>
-				</fieldset>
-			</logic:iterate>
+			<h4>Cláusula de contacto</h4>
+			<fieldset class="optinStyles">
+				<html:checkbox name="RegisterFormMobile" property="optInAccepted"/>
+				<label>Acepto recibir contactos de LoJack y sus compañías asociadas</label>
+			</fieldset>
 		</div>
 		<fieldset>
 			<input type="submit" id="submitregister" value="Registrarme" class="buttonSend">

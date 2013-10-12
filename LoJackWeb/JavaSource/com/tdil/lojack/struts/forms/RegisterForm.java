@@ -791,6 +791,20 @@ public class RegisterForm extends AbstractForm implements RefreshableForm, IPers
 			}
 		}
 	}
+	
+	public boolean getOptInAccepted() {
+		for (OptIn optIn : this.getOptIns()) {
+			if (optIn.isAccepted()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public void setOptInAccepted(boolean accepted) {
+		for (OptIn optIn : this.getOptIns()) {
+			optIn.setAccepted(accepted);
+		}
+	}
 
 	public OptIn getOptIn(int index) {
 		return this.getOptIns().get(index);

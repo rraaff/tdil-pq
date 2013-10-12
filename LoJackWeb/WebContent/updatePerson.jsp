@@ -194,13 +194,11 @@ function postRegister(data) {
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "*" : ""%><div id="err.profile.address.city"></div>
 						</fieldset>
 					<% } %>
-					<logic:iterate id="optIn" name="UpdatePersonForm" property="optIns">
-						<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
-						<fieldset>
-							<html:checkbox name="optIn" property="accepted" indexed="true" />
-							<label>Acepto recibir contactos de LoJack y sus comañías asociadas<!-- bean:write name="optIn" property="channelName"/ --></label>
-						</fieldset>
-					</logic:iterate>
+					<h4>Cláusula de contacto<!--  bean:write name="optIn" property="brandFamilyName"/ --></h4>
+					<fieldset>
+						<html:checkbox name="UpdatePersonForm" property="optInAccepted"/>
+						<label>Acepto recibir contactos de LoJack y sus compañías asociadas<!-- bean:write name="optIn" property="channelName"/ --></label>
+					</fieldset>
 				</div>
 				<fieldset><input type="submit" id="submitregister" value="Guardar" class="indexButtonBase"></fieldset>
 			</html:form>
