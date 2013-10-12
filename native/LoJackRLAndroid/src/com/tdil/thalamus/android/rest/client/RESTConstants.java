@@ -23,6 +23,8 @@ public interface RESTConstants {
 	public static final String STATES = "/users/states";
 	public static final String ADDRESS_TYPES = "/users/addressTypes";
 	
+	public static final String LOGOUT = "/users/logout";
+	
 	public static final String GET_USER = "/users/get";
 	public static final String SAVE_USER = "/users/update";
 	
