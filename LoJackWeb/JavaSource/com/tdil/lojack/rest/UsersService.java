@@ -113,7 +113,10 @@ public class UsersService extends AbstractRESTService {
 	@Path("/logout")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response logout() {
-		getSession().invalidate();
+		HttpSession session = getSession(false);
+		if (session != null) {
+			getSession().invalidate();
+		}
 		return okResponse();
 	}
 	

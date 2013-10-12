@@ -17,7 +17,7 @@ public class CreateAsyncJob extends HttpServlet {
 	public static AtomicInteger nextJobId = new AtomicInteger(0);
 	
 	public static int retries = 0;
-	public static int maxretries = 60;
+	public static int maxretries = 0;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
