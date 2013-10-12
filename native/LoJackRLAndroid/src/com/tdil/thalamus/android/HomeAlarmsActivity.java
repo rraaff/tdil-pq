@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -53,6 +55,23 @@ public class HomeAlarmsActivity extends Activity {
 
 		setContentView(R.layout.activity_home_alarms);
 
+		TabHost th = (TabHost)findViewById(R.id.tabhost);
+		th.setup();
+        TabSpec ts = th.newTabSpec("tag1");
+        ts.setContent(R.id.tab1);
+        ts.setIndicator("ALARMAS");
+        th.addTab(ts);
+        
+        ts = th.newTabSpec("tag2");
+        ts.setContent(R.id.tab2);
+        ts.setIndicator("LUCES");
+        th.addTab(ts);
+        
+        ts = th.newTabSpec("tag3");
+        ts.setContent(R.id.tab3);
+        ts.setIndicator("CAMARAS");
+        th.addTab(ts);
+		
 		list = (ListView) findViewById(R.id.alarmsList);
 		
 		FooterLogic.installFooterLogic(this);

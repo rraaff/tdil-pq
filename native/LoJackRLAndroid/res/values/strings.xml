@@ -29,6 +29,10 @@
     
     <string name="btn_panic">Señal de pánico</string>
     
+    <string name="btnHeaderAlarms">Alarmas</string>
+    <string name="btnHeaderLights">Luces</string>
+    <string name="btnHeaderCameras">Camaras</string>
+    
     <string name="btn_footer_home">Home</string>
     <string name="btn_footer_prevent">Prevent</string>
     <string name="btn_footer_pets">Pets</string>
