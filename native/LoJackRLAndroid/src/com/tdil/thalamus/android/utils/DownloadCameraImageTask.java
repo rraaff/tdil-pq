@@ -1,18 +1,14 @@
 package com.tdil.thalamus.android.utils;
 
-import java.io.InputStream;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-
-import com.tdil.thalamus.android.HomeCameraActivity;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import java.io.ByteArrayInputStream;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.tdil.thalamus.android.HomeCameraActivity;
 
 public class DownloadCameraImageTask extends AsyncTask<Void, Void, Bitmap> {
 	
@@ -29,11 +25,11 @@ public class DownloadCameraImageTask extends AsyncTask<Void, Void, Bitmap> {
     protected Bitmap doInBackground(Void ...a) {
         Bitmap mIcon11 = null;
         try {
-        	HttpGet get = new HttpGet(this.url);
-        	HttpResponse httpResponse = RESTClientTask.httpClient.execute(get);
-            InputStream in = httpResponse.getEntity().getContent();
-            mIcon11 = BitmapFactory.decodeStream(in);
-            in.close();
+        	ByteArrayInputStream frame = activity.getCamera().nextFrame();
+        	if (frame != null) {
+        		mIcon11 = BitmapFactory.decodeStream(frame);
+        		frame.close();
+        	}
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
@@ -42,11 +38,13 @@ public class DownloadCameraImageTask extends AsyncTask<Void, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-    	if (!activity.isFinishing()) {
-	    	if (result != null) {
-	    		bmImage.setImageBitmap(result);
+    	if (result != null) {
+	    	if (!activity.isFinishing()) {
+		    	if (result != null) {
+		    		bmImage.setImageBitmap(result);
+		    	}
+		    	new DownloadCameraImageTask(activity, bmImage, url).execute();
 	    	}
-	    	new DownloadCameraImageTask(activity, bmImage, url).execute();
     	}
     }
 }

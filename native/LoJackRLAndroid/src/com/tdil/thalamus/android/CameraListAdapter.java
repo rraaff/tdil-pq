@@ -96,7 +96,7 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 
 			/************ Set Model values in Holder elements ***********/
 			holder.cameraDescription.setText(iterCamera.getDescription());
-			holder.viewCamera.setOnClickListener(new ViewCameraListener(iterCamera.getUrl()));
+			holder.viewCamera.setOnClickListener(new ViewCameraListener(iterCamera));
 			
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
 			vi.setOnClickListener(new OnItemClickListener(position));
@@ -127,16 +127,16 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 	
 	/********* Called when Item click in ListView ************/
 	private class ViewCameraListener implements OnClickListener {
-		private String url;
+		private Camera camera;
 		
-		ViewCameraListener(String url) {
-			this.url = url;
+		ViewCameraListener(Camera camera) {
+			this.camera = camera;
 		}
 
 		@Override
 		public void onClick(View arg0) {
 			Intent intent = new Intent(activity.getBaseContext(), HomeCameraActivity.class);
-			intent.putExtra(HomeCameraActivity.URL_CAMERA, this.url);
+			intent.putExtra(HomeCameraActivity.CAMERA, this.camera);
 			activity.startActivity(intent);
 		}
 	}
