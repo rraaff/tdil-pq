@@ -1,54 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/footer"
-    android:layout_width="match_parent"
+<LinearLayout android:id="@+id/footer"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:gravity="center" 
-    android:orientation="vertical">
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    
     <Button
-            android:id="@+id/goToSendPanicActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_SendPanic" />
+        android:id="@+id/goToSendPanicActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/panic"
+        android:text="@string/btn_SendPanic" />
     
      <LinearLayout
-          android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-         android:orientation="horizontal">
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="0dp"
+         android:background="@color/bgBase"
+         android:orientation="horizontal" >
         
-        
-    <Button
-        android:id="@+id/btnFooterHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_footer_home" />
+	    <Button
+	        android:id="@+id/btnFooterHome"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/icon_main_home"
+	        android:minHeight="32dp"
+	        android:minWidth="32dp"
+	        android:text="@string/btn_footer_home" />
+	
+	    <Button
+	        android:id="@+id/btnFooterPrevent"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/icon_main_cars"
+	        android:minHeight="32dp"
+	        android:minWidth="32dp"
+	        android:text="@string/btn_footer_prevent" />
+	
+	    <Button
+	        android:id="@+id/btnFooterPets"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/icon_main_pets"
+	        android:minHeight="32dp"
+	        android:minWidth="32dp"
+	        android:text="@string/btn_footer_pets" />
+	
+	    <Button
+	        android:id="@+id/btnFooterConfig"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/icon_menu"
+	        android:minHeight="32dp"
+	        android:minWidth="32dp"
+	        android:text="@string/btn_footer_config" />
+	
+	    <Button
+	        android:id="@+id/btnFooterData"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5dp"
+	        android:text="@string/btn_footer_data" />
 
-    <Button
-        android:id="@+id/btnFooterPrevent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_footer_prevent" />
-
-    <Button
-        android:id="@+id/btnFooterPets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_footer_pets" />
-
-    <Button
-        android:id="@+id/btnFooterConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_footer_config" />
-
-    <Button
-        android:id="@+id/btnFooterData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_footer_data" />
     </LinearLayout>
 
 </LinearLayout>

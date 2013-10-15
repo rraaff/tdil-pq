@@ -21,11 +21,11 @@
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>
     <string name="btn_tag_modify">Modificar</string>
-    <string name="btn_tag_modify_my_data">Modificar mis datos</string>
-    <string name="btn_tag_change_password">Cambiar mi clave</string>
+    <string name="btn_tag_modify_my_data">Mis datos</string>
+    <string name="btn_tag_change_password">Mi clave</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
     <string name="btn_tag_reset_password">Resetear contraseña</string>
-    <string name="btn_SendPanic">Señal de pánico</string>
+    <string name="btn_SendPanic">   </string>
     
     <string name="btn_panic">Señal de pánico</string>
     
@@ -33,10 +33,10 @@
     <string name="btnHeaderLights">Luces</string>
     <string name="btnHeaderCameras">Camaras</string>
     
-    <string name="btn_footer_home">Home</string>
-    <string name="btn_footer_prevent">Prevent</string>
-    <string name="btn_footer_pets">Pets</string>
-    <string name="btn_footer_config">Config</string>
+    <string name="btn_footer_home"> </string>
+    <string name="btn_footer_prevent"> </string>
+    <string name="btn_footer_pets"> </string>
+    <string name="btn_footer_config"> </string>
     <string name="btn_footer_data">Data</string>
     
     <string name="btn_male">Masculino</string>

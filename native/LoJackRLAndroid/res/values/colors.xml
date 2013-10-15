@@ -2,5 +2,10 @@
 <resources>
 
     <color name="gray">#cacaca</color>
-
+	<color name="grayTabBase">#333333</color>
+	
+	<color name="bgCream">#F0ECE6</color>
+	<color name="bgBase">#FFFFFF</color>
+	
+	<color name="orangeTitles">#ef5323</color>
 </resources>
