@@ -44,50 +44,61 @@
       <LinearLayout
           android:layout_width="fill_parent"
           android:layout_height="69dp"
-          android:orientation="horizontal" >
+          android:orientation="vertical" >
+            
+	      <LinearLayout
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:orientation="horizontal" >
+	
+	          <TextView
+	              android:id="@+id/TextView02"
+	              android:layout_width="40dp"
+	              android:layout_height="wrap_content"
+	              android:layout_marginLeft="5dip"
+	              android:layout_marginTop="4dip"
+	              android:text="Estado:"
+	              android:textColor="#000000"
+	              android:textSize="10sp" />
+	
+		     <TextView
+		         android:id="@+id/lightStatus"
+		         android:layout_width="100dp"
+		         android:layout_height="wrap_content"
+		         android:layout_marginTop="4dip"
+		         android:text="Desarmada"
+		         android:textColor="#000000"
+		         android:textSize="10sp" />
+		 </LinearLayout>
 
-          <TextView
-              android:id="@+id/TextView02"
-              android:layout_width="40dp"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="5dip"
-              android:layout_marginTop="4dip"
-              android:text="Estado:"
-              android:textColor="#000000"
-              android:textSize="10sp" />
-
-	     <TextView
-	         android:id="@+id/lightStatus"
-	         android:layout_width="60dp"
-	         android:layout_height="wrap_content"
-	         android:layout_marginTop="4dip"
-	         android:text="Desarmada"
-	         android:textColor="#000000"
-	         android:textSize="10sp" />
-
-	     <TextView
-	         android:id="@+id/TextView03"
-	         android:layout_width="80dp"
-	         android:layout_height="wrap_content"
-	         android:layout_marginTop="4dip"
-	         android:text="- Ultimo cambio:"
-	         android:textColor="#000000"
-	         android:textSize="10sp" />
-
-	      <TextView
-	         android:id="@+id/lightLastChangeDate"
-	         android:layout_width="120dp"
-	         android:layout_height="wrap_content"
-	         android:layout_marginTop="4dip"
-	         android:text="2013-05-04 18:20"
-	         android:textColor="#000000"
-	         android:textSize="10sp" />
-	     <Button
-	            android:id="@+id/viewLightLogButton"
-	            style="?android:attr/buttonStyleSmall"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="Ver log" />
+	      <LinearLayout
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:orientation="horizontal" >
+		     <TextView
+		         android:id="@+id/TextView03"
+		         android:layout_width="80dp"
+		         android:layout_height="wrap_content"
+		         android:layout_marginTop="4dip"
+		         android:text="Ultimo cambio:"
+		         android:textColor="#000000"
+		         android:textSize="10sp" />
+	
+		      <TextView
+		         android:id="@+id/lightLastChangeDate"
+		         android:layout_width="100dp"
+		         android:layout_height="wrap_content"
+		         android:layout_marginTop="4dip"
+		         android:text="2013-05-04 18:20"
+		         android:textColor="#000000"
+		         android:textSize="10sp" />
+		     <Button
+		            android:id="@+id/viewLightLogButton"
+		            style="?android:attr/buttonStyleSmall"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="Ver log" />
+		    </LinearLayout>
 		</LinearLayout>
     
 	 </LinearLayout>
