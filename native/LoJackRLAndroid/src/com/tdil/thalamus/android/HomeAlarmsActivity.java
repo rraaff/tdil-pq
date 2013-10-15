@@ -21,6 +21,7 @@ import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.logic.AlarmsLogic;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -41,7 +42,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsActivity extends Activity implements ILightsActivity {
+public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAlarmsActivity {
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
 	public static final String TAB_ALARMAS = "ALARMAS";
@@ -81,17 +82,17 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 		th.setup();
 		
 		TabSpec ts = th.newTabSpec("tabAlarms");
-		ts.setContent(R.id.tabAlarms);
+		ts.setContent(R.id.alarmsList);
 		ts.setIndicator(TAB_ALARMAS);
 		th.addTab(ts);
 
 		ts = th.newTabSpec("tabLights");
-		ts.setContent(R.id.tabLights);
+		ts.setContent(R.id.lightsList);
 		ts.setIndicator(TAB_LUCES);
 		th.addTab(ts);
 
 		ts = th.newTabSpec("tabCameras");
-		ts.setContent(R.id.tabCameras);
+		ts.setContent(R.id.camerasList);
 		ts.setIndicator(TAB_CAMARAS);
 		th.addTab(ts);
 
@@ -110,7 +111,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 					}
 				}
 				if (tabId.equals("tabCameras")) {
-					if (!lightsLoaded) {
+					if (!camerasLoaded) {
 						loadCameras();
 					}
 				}
@@ -177,6 +178,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 	}
 	
 	public void loadCameras() {
+		camerasLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
@@ -233,102 +235,12 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 		LigthsLogic.viewLightLog(this, mPosition);
 	}
 
+	@Override
 	public void toggleAlarmActivation(int mPosition) {
-		Alarm alarm = (Alarm) alarms.get(mPosition);
-		if (alarm.isActive()) {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(
-							task.getResult(), AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeAlarmsActivity.this)
-								.setIcon(R.drawable.ic_launcher)
-								.setTitle("Alarms")
-								.setMessage(
-										"Se ha enviado el comando de desactivacion")
-								.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-											public void onClick(
-													DialogInterface dialog,
-													int whichButton) {
-												startAlarmsBackgroundJob();
-											}
-
-										}).show();
-					} else {
-						new AlertDialog.Builder(HomeAlarmsActivity.this)
-								.setIcon(R.drawable.ic_launcher)
-								.setTitle("Alarms")
-								.setMessage(
-										"No ha podido enviarse el comando de desactivacion")
-								.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-											public void onClick(
-													DialogInterface dialog,
-													int whichButton) {
-											}
-
-										}).show();
-					}
-				}
-
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
-				}
-			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(
-					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
-							.getIdEntidad())), null).execute((Void) null);
-		} else {
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(RESTClientTask task) {
-					Gson gson = new Gson();
-					AsyncJobResponse asyncJobResponse = gson.fromJson(
-							task.getResult(), AsyncJobResponse.class);
-					if (asyncJobResponse.isAccepted()) {
-						new AlertDialog.Builder(HomeAlarmsActivity.this)
-								.setIcon(R.drawable.ic_launcher)
-								.setTitle("Alarms")
-								.setMessage(
-										"Se ha enviado el comando de activacion")
-								.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-											public void onClick(
-													DialogInterface dialog,
-													int whichButton) {
-												startAlarmsBackgroundJob();
-											}
-										}).show();
-					} else {
-						new AlertDialog.Builder(HomeAlarmsActivity.this)
-								.setIcon(R.drawable.ic_launcher)
-								.setTitle("Alarms")
-								.setMessage(
-										"No ha podido enviarse el comando de activacion")
-								.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-											public void onClick(
-													DialogInterface dialog,
-													int whichButton) {
-											}
-										}).show();
-					}
-				}
-
-				@Override
-				public void error(RESTClientTask task) {
-					Messages.connectionErrorMessage(HomeAlarmsActivity.this);
-				}
-			}, RESTConstants.ACTIVATE_ALARM, new RestParams(
-					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
-							.getIdEntidad())), null).execute((Void) null);
-		}
+		AlarmsLogic.toggleAlarmActivation(this, mPosition);
 	}
 
-	private void startAlarmsBackgroundJob() {
+	public void startAlarmsBackgroundJob() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
@@ -395,6 +307,19 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity {
 
 	public void setLigths(ArrayList<Light> ligths) {
 		this.ligths = ligths;
+	}
+
+	public ArrayList<Alarm> getAlarms() {
+		return alarms;
+	}
+	
+	@Override
+	public Alarm getAlarm(int i) {
+		return getAlarms().get(i);
+	}
+
+	public void setAlarms(ArrayList<Alarm> alarms) {
+		this.alarms = alarms;
 	}
 
 }

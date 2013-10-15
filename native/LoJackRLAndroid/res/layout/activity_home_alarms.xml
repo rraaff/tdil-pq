@@ -88,40 +88,34 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="fill_parent" >
 
-                <LinearLayout
-                    android:id="@+id/tabAlarms"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:orientation="vertical">
-                    
-                    <ScrollView
-			            android:id="@+id/containerAlarms"
+                    <!--  ScrollView
+                        android:id="@+id/tabAlarms"
 			            android:layout_width="fill_parent"
-			            android:layout_height="wrap_content" >
+			            android:layout_height="fill_parent" -->
 			
-			            <LinearLayout
+			            <!--  LinearLayout
 			                android:layout_width="fill_parent"
 			                android:layout_height="wrap_content"
 			                android:gravity="center_horizontal"
-			                android:orientation="vertical" >
+			                android:orientation="vertical" -->
 			
 			                <ListView
 			                    android:id="@+id/alarmsList"
 			                    android:layout_width="fill_parent"
-			                    android:layout_height="wrap_content" >
+			                    android:layout_height="fill_parent" >
 			                </ListView>
-			            </LinearLayout>
-			        </ScrollView>
+			            <!--  LinearLayout-->
+			        <!--  /ScrollView-->
 			        
-                </LinearLayout>
 
-                <LinearLayout
+                <!-- LinearLayout
                     android:id="@+id/tabLights"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:orientation="vertical">
+                    android:layout_height="match_parent" android:orientation="vertical"-->
                     
-                     <ScrollView
+                     <!--ScrollView
 			            android:id="@+id/containerLights"
 			            android:layout_width="fill_parent"
 			            android:layout_height="wrap_content" >
@@ -130,19 +124,19 @@
 			                android:layout_width="fill_parent"
 			                android:layout_height="wrap_content"
 			                android:gravity="center_horizontal"
-			                android:orientation="vertical" >
+			                android:orientation="vertical" -->
                     
 			                    <ListView
 						            android:id="@+id/lightsList"
 						            android:layout_width="fill_parent"
 						            android:layout_height="wrap_content" >
 						        </ListView>
-			            </LinearLayout>
-			        </ScrollView>
+			            <!--  -LinearLayout>
+			        </ScrollView-->
 			        
-                </LinearLayout>
+                <!-- /LinearLayout-->
 
-                <LinearLayout
+                <!-- LinearLayout
                     android:id="@+id/tabCameras"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:orientation="vertical">
@@ -156,7 +150,7 @@
 			                android:layout_width="fill_parent"
 			                android:layout_height="wrap_content"
 			                android:gravity="center_horizontal"
-			                android:orientation="vertical" >
+			                android:orientation="vertical" -->
                     
 			                <ListView
 					            android:id="@+id/camerasList"
@@ -164,10 +158,10 @@
 					            android:layout_height="wrap_content" >
 					        </ListView>
         
-			            </LinearLayout>
+			            <!-- /LinearLayout>
 			        </ScrollView>
                     
-                </LinearLayout>
+                </LinearLayout-->
             </FrameLayout>
 
         </LinearLayout>

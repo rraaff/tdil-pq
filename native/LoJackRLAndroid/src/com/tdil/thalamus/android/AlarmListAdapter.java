@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -66,11 +69,12 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 
 		public TextView alarmDescription;
 		public TextView alarmStatus;
+		public TextView lastChangeDate;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
 		public Button viewAlarmLog;
 		public ImageView lastChangeUserAvatar;
-
+		public ImageButton goDashBoard;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -82,16 +86,17 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
-			vi = inflater.inflate(R.layout.tabitem, null);
+			vi = inflater.inflate(R.layout.alarm_list_item, null);
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
-			holder.alarmDescription = (TextView) vi.findViewById(R.id.logAlarmUser);
-			holder.alarmStatus = (TextView) vi.findViewById(R.id.logAlarmStatus);
-			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
+			holder.alarmDescription = (TextView) vi.findViewById(R.id.alarmDescription);
+			holder.alarmStatus = (TextView) vi.findViewById(R.id.alarmStatus);
+			holder.lastChangeDate = (TextView) vi.findViewById(R.id.alarmLastChangeDate);
 			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
-			holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
-
+			holder.goDashBoard = (ImageButton)vi.findViewById(R.id.goToAlarmView);
+			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
+			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);
 		} else
@@ -108,9 +113,17 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.alarmDescription.setText(iterAlarm.getDescription());
 			holder.alarmStatus.setText(iterAlarm.getStatus());
-			holder.activateDeactivate.setChecked(iterAlarm.isActive());
-			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
-			holder.viewAlarmLog.setOnClickListener(new ViewAlarmLogListener(position));
+			holder.lastChangeDate.setText(iterAlarm.getLastChangeDate());
+			if (iterAlarm.isActive()) {
+				holder.alarmStatus.setTextColor(Color.GREEN);
+			} else {
+				holder.alarmStatus.setTextColor(Color.RED);
+			}
+//			holder.activateDeactivate.setChecked(iterAlarm.isActive());
+//			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
+//			holder.viewAlarmLog.setOnClickListener(new ViewAlarmLogListener(position));
+			
+			holder.goDashBoard.setOnClickListener(new GoAlarmDashBoard(iterAlarm));
 			
 			new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
@@ -169,6 +182,22 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		public void onClick(View arg0) {
 			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
 			sct.viewAlarmLog(mPosition);
+		}
+	}
+	
+	private class GoAlarmDashBoard implements OnClickListener {
+		private Alarm alarm;
+		
+		GoAlarmDashBoard(Alarm alarm) {
+			this.alarm = alarm;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
+			Intent intent = new Intent(sct.getBaseContext(), HomeAlarmDashboard.class);
+			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
+			activity.startActivity(intent);
 		}
 	}
 }

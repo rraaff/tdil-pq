@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +67,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		public TextView alarmDescription;
 		public TextView alarmStatus;
+		public TextView lastChangeDate;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
 		public ToggleButton toggleRandom;
@@ -87,8 +89,9 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new LightViewHolder();
-			holder.alarmDescription = (TextView) vi.findViewById(R.id.logLightUser);
-			holder.alarmStatus = (TextView) vi.findViewById(R.id.logLightStatus);
+			holder.alarmDescription = (TextView) vi.findViewById(R.id.lightDescription);
+			holder.alarmStatus = (TextView) vi.findViewById(R.id.lightStatus);
+			holder.lastChangeDate = (TextView) vi.findViewById(R.id.lightLastChangeDate);
 			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
 			holder.toggleRandom = (ToggleButton)vi.findViewById(R.id.toggleRandom);
 			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
@@ -110,6 +113,12 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.alarmDescription.setText(iterLight.getDescription());
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
+			if (iterLight.isOn()) {
+				holder.alarmStatus.setTextColor(Color.GREEN);
+			} else {
+				holder.alarmStatus.setTextColor(Color.RED);
+			}
+			holder.lastChangeDate.setText(iterLight.getLastChangeDate());
 			if (iterLight.isStatusUnknown()) {
 				holder.activateDeactivate.setChecked(false);
 				holder.activateDeactivate.setEnabled(true);
@@ -164,8 +173,8 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.onItemClick(mPosition);
+			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
+			sct.onItemClick(mPosition);*/
 		}
 	}
 	
