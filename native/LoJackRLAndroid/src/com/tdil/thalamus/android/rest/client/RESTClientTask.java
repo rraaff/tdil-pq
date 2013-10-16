@@ -56,11 +56,11 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	protected void onPreExecute() {
 		progressDialog.setMessage("Por favor, espere...");
 		progressDialog.show();
-		progressDialog.setOnCancelListener(new OnCancelListener() {
+		/*progressDialog.setOnCancelListener(new OnCancelListener() {
 			public void onCancel(DialogInterface arg0) {
 				RESTClientTask.this.cancel(true);
 			}
-		});
+		});*/
 	}
 
 	@Override
