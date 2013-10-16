@@ -31,39 +31,47 @@ public class FooterLogic {
 				});
 		}
 		
-		activity.findViewById(R.id.btnFooterHome).setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					if (Login.loggedUser.getHomeUser()) {
-						Intent intent = new Intent(activity, HomeActivity.class); 
-						activity.startActivity(intent); 
-						if (finishOnExit) {
-							activity.finish();
+		View home = activity.findViewById(R.id.btnFooterHome);
+		if (home!= null) {
+			home.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						if (Login.loggedUser.getHomeUser()) {
+							Intent intent = new Intent(activity, HomeActivity.class); 
+							activity.startActivity(intent); 
+							if (finishOnExit) {
+								activity.finish();
+							}
+						} else {
+							String videoId = Login.loggedUser.getHomeVideo();
+							playVideo(activity, videoId);
 						}
-					} else {
-						String videoId = Login.loggedUser.getHomeVideo();
-						playVideo(activity, videoId);
 					}
-				}
-			});
+				});
+		}
+		View pets = activity.findViewById(R.id.btnFooterPets);
+		if (pets != null) {
+			pets.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						handlePetsAccess(activity);
+					}
+	
+				});
+		}
 		
-		activity.findViewById(R.id.btnFooterPets).setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					handlePetsAccess(activity);
-				}
-
-			});
-		
-		activity.findViewById(R.id.btnFooterPrevent).setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					handlePreventAccess(activity);
-				}
-			});
+		View prevent = activity.findViewById(R.id.btnFooterPrevent);
+		if(prevent != null) {
+			prevent.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						handlePreventAccess(activity);
+					}
+				});
+		}
 		
 		View parkings = activity.findViewById(R.id.btnFooterParkings);
 		if (parkings != null) {

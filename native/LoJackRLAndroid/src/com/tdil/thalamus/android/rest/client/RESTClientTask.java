@@ -54,7 +54,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	}
 
 	protected void onPreExecute() {
-		progressDialog.setMessage("Downloading your data...");
+		progressDialog.setMessage("Por favor, espere...");
 		progressDialog.show();
 		progressDialog.setOnCancelListener(new OnCancelListener() {
 			public void onCancel(DialogInterface arg0) {
