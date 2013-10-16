@@ -1,5 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     
+    <item android:id="@+id/menu_action_prevent"
+          android:icon="@drawable/icon_main_cars"
+           android:showAsAction="always"
+          android:title="@string/action_home"/>
+    
+    <item android:id="@+id/menu_action_parkings"
+          android:icon="@drawable/icon_main_parkings"
+           android:showAsAction="always"
+          android:title="@string/action_home"/>
+    
+    <item android:id="@+id/menu_action_pets"
+          android:icon="@drawable/icon_main_pets"
+           android:showAsAction="always"
+          android:title="@string/action_home"/>
+    
     <item
         android:id="@+id/menu_logout"
         android:title="@string/menu_logout"/>

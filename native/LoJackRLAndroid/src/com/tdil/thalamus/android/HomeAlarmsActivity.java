@@ -210,6 +210,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		getMenuInflater().inflate(R.menu.activity_login, menu);
+		
 		return true;
 	}
 

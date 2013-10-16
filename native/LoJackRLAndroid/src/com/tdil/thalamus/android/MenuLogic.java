@@ -1,23 +1,16 @@
 package com.tdil.thalamus.android;
 
-import java.util.ArrayList;
-
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.view.MenuItem;
 
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.model.Alarm;
-import com.tdil.thalamus.android.rest.model.AlarmCollection;
-import com.tdil.thalamus.android.utils.Messages;
 
 public class MenuLogic {
 
@@ -39,6 +32,15 @@ public class MenuLogic {
 			intent.putExtra("EXIT", true);
 	    	activity.startActivity(intent);
 	    	activity.finish();
+			return true;
+		case R.id.menu_action_prevent:
+			FooterLogic.handlePreventAccess(activity);
+			return true;
+		case R.id.menu_action_pets:
+			FooterLogic.handlePetsAccess(activity);
+			return true;
+		case R.id.menu_action_parkings:
+			FooterLogic.handleParkingsAccess(activity);
 			return true;
 		default:
 			return activity.onOptionsItemSelected(item);

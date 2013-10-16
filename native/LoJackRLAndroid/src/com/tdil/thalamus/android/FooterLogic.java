@@ -52,13 +52,7 @@ public class FooterLogic {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					if (Login.loggedUser.getPetUser()) {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPetUrl())); 
-						activity.startActivity(intent); 
-					} else {
-						String videoId = Login.loggedUser.getPetVideo();
-						playVideo(activity, videoId);
-					}
+					handlePetsAccess(activity);
 				}
 
 			});
@@ -67,13 +61,7 @@ public class FooterLogic {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					if (Login.loggedUser.getPreventUser()) {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPreventUrl())); 
-						activity.startActivity(intent); 
-					} else {
-						String videoId = Login.loggedUser.getPreventVideo();
-						playVideo(activity, videoId);
-					}
+					handlePreventAccess(activity);
 				}
 			});
 		
@@ -83,8 +71,7 @@ public class FooterLogic {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack-app.com.ar/")); 
-						activity.startActivity(intent); 
+						handleParkingsAccess(activity); 
 					}
 				});
 		}
@@ -98,6 +85,31 @@ public class FooterLogic {
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.youtube.com/watch?v="+videoId)); 
 			//intent.putExtra("VIDEO_ID", videoId); 
 			activity.startActivity(intent); 
+		}
+	}
+
+	public static void handlePreventAccess(final Activity activity) {
+		if (Login.loggedUser.getPreventUser()) {
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPreventUrl())); 
+			activity.startActivity(intent); 
+		} else {
+			String videoId = Login.loggedUser.getPreventVideo();
+			playVideo(activity, videoId);
+		}
+	}
+
+	public static void handleParkingsAccess(final Activity activity) {
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack-app.com.ar/")); 
+		activity.startActivity(intent);
+	}
+
+	public static void handlePetsAccess(final Activity activity) {
+		if (Login.loggedUser.getPetUser()) {
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPetUrl())); 
+			activity.startActivity(intent); 
+		} else {
+			String videoId = Login.loggedUser.getPetVideo();
+			playVideo(activity, videoId);
 		}
 	}
 }

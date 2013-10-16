@@ -27,6 +27,8 @@
     <string name="btn_tag_reset_password">Resetear contraseña</string>
     <string name="btn_SendPanic">   </string>
     
+    <string name="action_home">Home</string>
+    
     <string name="btn_home">Home</string>
     <string name="btn_prevent">Prevent</string>
     <string name="btn_pets">Pets</string>

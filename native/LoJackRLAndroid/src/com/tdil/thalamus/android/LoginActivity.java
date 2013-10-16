@@ -142,7 +142,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
+		//getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 
