@@ -15,6 +15,8 @@ public class LoginResponse {
 	private String petUserId;
 	
 	private long cameraRefreshTime;
+	
+	private String homeVideo;
 	private String petVideo;
 	private String petUrl;
 	private String preventVideo;
@@ -122,5 +124,13 @@ public class LoginResponse {
 
 	public void setPreventUrl(String preventUrl) {
 		this.preventUrl = preventUrl;
+	}
+
+	public String getHomeVideo() {
+		return homeVideo;
+	}
+
+	public void setHomeVideo(String homeVideo) {
+		this.homeVideo = homeVideo;
 	}
 }

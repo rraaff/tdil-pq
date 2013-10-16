@@ -157,7 +157,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
 		if (resp.getLogged()) {
 			Login.loggedUser = resp;
-			Intent intent = new Intent(this, HomeActivity.class);
+			Intent intent = new Intent(this, IndexActivity.class);
         	startActivity(intent);
         	finish();
 		} else {
