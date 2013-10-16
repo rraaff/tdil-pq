@@ -29,10 +29,11 @@
     
     <string name="action_home">Home</string>
     
-    <string name="btn_home">Home</string>
-    <string name="btn_prevent">Prevent</string>
-    <string name="btn_pets">Pets</string>
-    <string name="btn_parkings">Parkings</string>
+    <string name="btn_home">  </string>
+    <string name="btn_prevent">  </string>
+    <string name="btn_pets">  </string>
+    <string name="btn_parkings">  </string>
+    <string name="btn_tv">  </string>
     
     <string name="btn_panic">Señal de pánico</string>
     

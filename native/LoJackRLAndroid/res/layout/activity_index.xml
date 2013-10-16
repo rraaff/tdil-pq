@@ -13,32 +13,141 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@drawable/main_square"
+        android:gravity="center|top"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/btnFooterHome"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:text="@string/btn_home" />
+        <TableLayout
+            android:id="@+id/rdGrid"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rd_base"
+            android:minHeight="240dp"
+            android:minWidth="240dp" >
 
-        <Button
-            android:id="@+id/btnFooterPrevent"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:text="@string/btn_prevent" />
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="320dp"
+                android:layout_height="80dp" >
 
-        <Button
-            android:id="@+id/btnFooterPets"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:text="@string/btn_pets" />
+                <LinearLayout
+                    android:layout_width="320dp"
+                    android:layout_height="120dp"
+                    android:animateLayoutChanges="false"
+                    android:gravity="top" >
 
-        <Button
-            android:id="@+id/btnFooterParkings"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:text="@string/btn_parkings" />
-        
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="bottom" >
+
+                        <Button
+                            android:id="@+id/btnFooterHome"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="25dp"
+                            android:background="@drawable/rd_item_home_off"
+                            android:text="@string/btn_home" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="bottom" >
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="43dp"
+                            android:background="@drawable/rd_item_ljtv_off"
+                            android:text="@string/btn_tv" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+                
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="320dp"
+                android:layout_height="160dp" >
+
+                <LinearLayout
+                    android:layout_width="320dp"
+                    android:layout_height="160dp" >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:gravity="top|right"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/btnFooterPrevent"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginRight="57dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/rd_item_cars_off"
+                                android:text="@string/btn_prevent" />
+
+                            <Button
+                                android:id="@+id/btnFooterPets"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginRight="4dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/rd_item_pets_off"
+                                android:text="@string/btn_pets" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp" >
+
+                        <Button
+                            android:id="@+id/btnFooterParkings"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="43dp"
+                            android:layout_marginTop="59dp"
+                            android:background="@drawable/rd_item_park_off"
+                            android:text="@string/btn_parkings" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
+
     </LinearLayout>
-
+    <ImageView
+        android:id="@+id/placahome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="true"
+        android:contentDescription="@string/loading"
+        android:maxWidth="250dp"
+        android:src="@drawable/logo_lojack" />
 </merge>
