@@ -39,7 +39,7 @@
 						<%} %>
 
 						<%if (websiteUser != null && websiteUser.isLogged()) { %>
-							<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp" onclick="javascript:parkingsNotLogged();" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en<br/>CABA y GBA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+							<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en<br/>CABA y GBA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 						<%} else { %>
 							<li id="liPark" class="park"><a class="rdPark" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en<br/>CABA y GBA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 						<%} %>
