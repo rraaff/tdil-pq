@@ -2,8 +2,6 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -13,8 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TabHost;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -27,8 +26,8 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
+import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
-import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -39,6 +38,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 
 	private Alarm alarm;
 	private HomeAlarmsActivity previous;
+	private boolean ignore = true;
 	
 	public static final String ALARM = "ALARM";
 	
@@ -48,6 +48,15 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		setContentView(R.layout.activity_alarm_dashboard);
 		Bundle extras = getIntent().getExtras();
 		alarm = (Alarm)extras.getSerializable(ALARM);
+		Switch activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
+		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
+		View viewlog = findViewById(R.id.goToAlarmViewLog);
+		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
+		init();
+	}
+
+	public void init() {
+		Switch activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
 		TextView description = (TextView) findViewById(R.id.alarmDescription);
 		description.setText(alarm.getDescription());
 		
@@ -71,12 +80,8 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		TextView lastChangeUser = (TextView) findViewById(R.id.lastChangeUser);
 		lastChangeUser.setText(alarm.getLastChangeUser());
 
-		ToggleButton activateDeactivate = (ToggleButton)findViewById(R.id.btnToggleAlarm);
 		activateDeactivate.setChecked(alarm.isActive());
-		activateDeactivate.setOnClickListener(new ToggleActivateListener(this));
-		
-		ImageButton viewlog = (ImageButton)findViewById(R.id.goToAlarmView);
-		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
+		ignore = false;
 	}
 
 
@@ -100,8 +105,24 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	
 	@Override
 	public void loadAlarms() {
-		// TODO Auto-generated method stub
-		
+		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(RESTClientTask task) {
+				Gson gson = new Gson();
+				AlarmCollection col = gson.fromJson(task.getResult(),
+						AlarmCollection.class);
+				for (Alarm a : col.getAlarms()) {
+					if (a.getIdEntidad() == HomeAlarmDashboard.this.alarm.getIdEntidad()) {
+						HomeAlarmDashboard.this.alarm = a;
+						HomeAlarmDashboard.this.init();
+					}
+				}
+			}
+			@Override
+			public void error(RESTClientTask task) {
+				Messages.connectionErrorMessage(HomeAlarmDashboard.this);
+			}
+		}, RESTConstants.ALARMS, null, null).execute((Void) null);
 	}
 	
 	@Override
@@ -119,7 +140,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 				if (!col.getStatus().isEmpty()) {
 					HomeAlarmDashboard.this.startAlarmsBackgroundJob();
 				} else {
-					//HomeAlarmDashboard.this.loadAlarms();
+					HomeAlarmDashboard.this.loadAlarms();
 				}
 			}
 
@@ -152,7 +173,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 
 	}
 	
-	private class ToggleActivateListener implements OnClickListener {
+	private class ToggleActivateListener implements OnCheckedChangeListener {
 		private HomeAlarmDashboard activity;
 		
 		ToggleActivateListener(HomeAlarmDashboard activity) {
@@ -160,8 +181,12 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		}
 
 		@Override
-		public void onClick(View arg0) {
-			activity.toggleAlarmActivation(0);
+		public void onCheckedChanged(CompoundButton buttonView,
+				boolean isChecked) {
+			if (!ignore) {
+				activity.ignore = true;
+				activity.toggleAlarmActivation(0);
+			}
 		}
 	}
 	

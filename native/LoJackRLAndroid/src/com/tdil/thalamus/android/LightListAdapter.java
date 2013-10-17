@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -73,6 +75,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 		public ToggleButton toggleRandom;
 		public Button viewLightLog;
 		public ImageView lastChangeUserAvatar;
+		public ImageButton goDashBoard;
 
 	}
 
@@ -92,10 +95,11 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmDescription = (TextView) vi.findViewById(R.id.lightDescription);
 			holder.alarmStatus = (TextView) vi.findViewById(R.id.lightStatus);
 			holder.lastChangeDate = (TextView) vi.findViewById(R.id.lightLastChangeDate);
-			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
-			holder.toggleRandom = (ToggleButton)vi.findViewById(R.id.toggleRandom);
+//			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
+//			holder.toggleRandom = (ToggleButton)vi.findViewById(R.id.toggleRandom);
 			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
-			holder.viewLightLog = (Button)vi.findViewById(R.id.viewLightLogButton);
+//			holder.viewLightLog = (Button)vi.findViewById(R.id.viewLightLogButton);
+			holder.goDashBoard = (ImageButton)vi.findViewById(R.id.goToLightView);
 
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);
@@ -113,13 +117,14 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.alarmDescription.setText(iterLight.getDescription());
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
+			holder.goDashBoard.setOnClickListener(new GoLightDashBoard(iterLight));
 			if (iterLight.isOn()) {
 				holder.alarmStatus.setTextColor(Color.GREEN);
 			} else {
 				holder.alarmStatus.setTextColor(Color.RED);
 			}
 			holder.lastChangeDate.setText(iterLight.getLastChangeDate());
-			if (iterLight.isStatusUnknown()) {
+			/*if (iterLight.isStatusUnknown()) {
 				holder.activateDeactivate.setChecked(false);
 				holder.activateDeactivate.setEnabled(true);
 				holder.toggleRandom.setChecked(false);
@@ -145,7 +150,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.activateDeactivate.setChecked(iterLight.isOn());
 			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
 			holder.toggleRandom.setOnClickListener(new ToggleRandomListener(position));
-			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));
+			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));*/
 			
 			new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
@@ -218,6 +223,21 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 		public void onClick(View arg0) {
 			ILightsActivity sct = (ILightsActivity) activity;
 			sct.viewLightLog(mPosition);
+		}
+	}
+	
+	private class GoLightDashBoard implements OnClickListener {
+		private Light alarm;
+		
+		GoLightDashBoard(Light alarm) {
+			this.alarm = alarm;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
+			intent.putExtra(HomeLightDashboard.LIGHT, alarm);
+			activity.startActivity(intent);
 		}
 	}
 }

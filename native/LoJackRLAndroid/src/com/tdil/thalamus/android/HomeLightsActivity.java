@@ -126,9 +126,13 @@ public class HomeLightsActivity extends Activity implements ILightsActivity {
 
 	}
 
-	@Override
 	public List<Light> getLights() {
 		return ligths;
+	}
+	
+	@Override
+	public Light getLight(int i) {
+		return getLights().get(i);
 	}
 
 	public void setLigths(ArrayList<Light> ligths) {

@@ -5,8 +5,6 @@ import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -14,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
@@ -31,7 +30,6 @@ import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
-import com.tdil.thalamus.android.rest.model.AsyncJobResponse;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.rest.model.CameraCollection;
 import com.tdil.thalamus.android.rest.model.Light;
@@ -46,6 +44,8 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
 	public static final String TAB_ALARMAS = "ALARMAS";
+	
+	public static final String TAB_HOME = "HOME";
 	
 	private ListView alarmsList;
 	private AlarmListAdapter alarmListAdapter;
@@ -72,7 +72,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 
 		setContentView(R.layout.activity_home_alarms);
 		
-		String tab = TAB_ALARMAS;
+		String tab = null;
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			tab = extras.getString(SELECTED_TAB);
@@ -95,11 +95,16 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		ts.setContent(R.id.camerasList);
 		ts.setIndicator(TAB_CAMARAS);
 		th.addTab(ts);
+		
+		ts = th.newTabSpec("tabHome");
+		ts.setContent(R.id.homeContent);
+		ts.setIndicator(TAB_HOME);
+		th.addTab(ts);
+		th.getTabWidget().getChildAt(3).setVisibility(View.GONE);
 
 		th.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String tabId) {
-				System.out.println(tabId);
 				if (tabId.equals("tabAlarms")) {
 					if (!alarmsLoaded) {
 						loadAlarms();
@@ -125,7 +130,12 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				th.setCurrentTab(1);
 				loadLights();
 			} else {
-				loadAlarms();
+				if (TAB_ALARMAS.equals(tab)) {
+					th.setCurrentTab(0);
+					loadAlarms();
+				} else {
+					th.setCurrentTab(3);
+				}
 			}
 		}
 		alarmsList = (ListView) findViewById(R.id.alarmsList);
@@ -301,9 +311,13 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		this.alarmListAdapter = adapter;
 	}
 
-	@Override
 	public List<Light> getLights() {
 		return ligths;
+	}
+	
+	@Override
+	public Light getLight(int i) {
+		return getLights().get(i);
 	}
 
 	public void setLigths(ArrayList<Light> ligths) {

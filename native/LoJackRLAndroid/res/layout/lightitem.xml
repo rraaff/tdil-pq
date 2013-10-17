@@ -92,12 +92,6 @@
 		         android:text="2013-05-04 18:20"
 		         android:textColor="#000000"
 		         android:textSize="10sp" />
-		     <Button
-		            android:id="@+id/viewLightLogButton"
-		            style="?android:attr/buttonStyleSmall"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:text="Ver log" />
 		    </LinearLayout>
 		</LinearLayout>
     
@@ -107,19 +101,12 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:orientation="vertical" >
-	    <ToggleButton
-	        android:id="@+id/toggleLight"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="ToggleButton" />
-	
-	    <ToggleButton
-	        android:id="@+id/toggleRandom"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="ToggleButton"
-	        android:textOff="@string/random_off"
-	        android:textOn="@string/random_on" />
+
+        <ImageButton
+            android:id="@+id/goToLightView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/android_button_plus" />
 	   </LinearLayout>
 
  </TableRow>

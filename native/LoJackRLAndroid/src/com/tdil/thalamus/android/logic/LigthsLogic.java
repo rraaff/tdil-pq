@@ -24,7 +24,7 @@ public class LigthsLogic {
 
 	public static void toggleLightActivation(final Activity activity, int mPosition) {
 		final ILightsActivity lightsActivity = (ILightsActivity)activity;
-		Light light = (Light) lightsActivity.getLights().get(mPosition);
+		Light light = (Light) lightsActivity.getLight(mPosition);
 		if (light.isOn()) {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -98,7 +98,7 @@ public class LigthsLogic {
 	
 	public static void toggleLightRandom(final Activity activity, int mPosition) {
 		final ILightsActivity lightsActivity = (ILightsActivity)activity;
-		Light light = (Light) lightsActivity.getLights().get(mPosition);
+		Light light = (Light) lightsActivity.getLight(mPosition);
 		if (light.isInRandomMode()) {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -194,7 +194,7 @@ public class LigthsLogic {
 	public static void viewLightLog(Activity activity, int mPosition) {
 		final ILightsActivity lightsActivity = (ILightsActivity)activity;
 		Intent intent = new Intent(activity.getBaseContext(), HomeLogLightActivity.class);
-		Light alarm = lightsActivity.getLights().get(mPosition);
+		Light alarm = lightsActivity.getLight(mPosition);
 		intent.putExtra(HomeLogLightActivity.IDENTIDAD, alarm.getIdEntidad());
 		intent.putExtra(HomeLogLightActivity.IDLUZ, alarm.getIdLuz());
 		activity.startActivity(intent);
