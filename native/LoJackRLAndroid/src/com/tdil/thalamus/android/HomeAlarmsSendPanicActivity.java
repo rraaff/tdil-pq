@@ -48,7 +48,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 		setContentView(R.layout.activity_home_alarms_send_panic);
 
 		list = (ListView) findViewById(R.id.alarmsList);
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {

@@ -165,10 +165,11 @@
                     
                 </LinearLayout-->
                 
-                <TextView android:id="@+id/homeContent"
-					            android:layout_width="fill_parent"
-					            android:layout_height="wrap_content" 
-					            android:text="Home extra"/>
+                <RelativeLayout android:id="@+id/homeContent"
+					            android:layout_width="320dp"
+					            android:layout_height="320dp"
+					            android:layout_gravity="top|center"
+					            android:background="@drawable/placalanding" />
             </FrameLayout>
 
         </LinearLayout>

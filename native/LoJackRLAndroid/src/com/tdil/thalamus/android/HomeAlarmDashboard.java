@@ -53,6 +53,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
 		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
 		init();
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	public void init() {

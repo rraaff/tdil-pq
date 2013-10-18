@@ -56,7 +56,7 @@ public class HomeLogLightActivity extends Activity {
 		setContentView(R.layout.activity_home_light_log);
 
 		list = (ListView) findViewById(R.id.lightLogList);
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {

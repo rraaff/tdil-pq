@@ -137,11 +137,17 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	@Override
 	protected void onPostExecute(final Boolean success) {
 		this.progressDialog.dismiss();
-		if(success) {
-			this.observer.sucess(this);
-		} else {
-			this.observer.error(this);
-		}
+		try {
+			if(success) {
+				try {
+					this.observer.sucess(this);
+				} catch (Exception e) {
+					this.observer.error(this);
+				}
+			} else {
+				this.observer.error(this);
+			}
+		} catch (Exception e) {}
 	}
 
 	@Override

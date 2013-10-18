@@ -88,7 +88,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_update);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		birthDate = (TextView) findViewById(R.id.birthDate);
 		birthDate.setOnClickListener(new View.OnClickListener() {
 			@Override

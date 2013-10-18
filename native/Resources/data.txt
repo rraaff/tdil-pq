@@ -19,3 +19,7 @@ State: Ciudad Autónoma de Buenos Aires
 Country code: 54
 
 lojack.real.life
+
+Screenshots en howto
+El password es siempre 4ppsd34rg3nt1n4
+Cuando te pide el keystore, elegile el file keystore/lojack

@@ -142,6 +142,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		lightsList = (ListView) findViewById(R.id.lightsList);
 		cameraList = (ListView) findViewById(R.id.camerasList);
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		FooterLogic.installFooterLogic(this);
 	}
 

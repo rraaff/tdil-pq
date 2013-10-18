@@ -52,14 +52,14 @@ android:theme="@android:Theme.Holo.Light"-->
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmDashboard"
-            android:label="@string/app_name"
+            android:label="@string/title_dashboard_alarms"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeLightDashboard"
-            android:label="@string/app_name"
+            android:label="@string/title_dashboard_lights"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -87,31 +87,31 @@ android:theme="@android:Theme.Holo.Light"-->
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_home"
             android:configChanges="orientation">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsSendPanicActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_send_panic"
             android:configChanges="orientation">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogAlarmActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_log_alarm"
             android:configChanges="orientation">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeLightsActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_home"
             android:configChanges="orientation">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogLightActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_log_light"
             android:configChanges="orientation">
         </activity>
         
@@ -123,7 +123,7 @@ android:theme="@android:Theme.Holo.Light"-->
         
          <activity
             android:name="com.tdil.thalamus.android.HomeCameraActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_camera"
             android:configChanges="orientation">
         </activity>
         

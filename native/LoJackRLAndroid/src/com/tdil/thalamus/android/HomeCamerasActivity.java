@@ -47,7 +47,7 @@ public class HomeCamerasActivity extends Activity {
 		cameraList = (ListView) findViewById(R.id.camerasList);
 
 		loadCameras();
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	public void loadCameras() {

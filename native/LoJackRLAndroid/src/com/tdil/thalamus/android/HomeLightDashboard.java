@@ -54,6 +54,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		viewlog.setOnClickListener(new ViewLightLogListener(this));
 		light = (Light)extras.getSerializable(LIGHT);
 		init();
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 

@@ -43,7 +43,8 @@ public class MenuLogic {
 			FooterLogic.handleParkingsAccess(activity);
 			return true;
 		default:
-			return activity.onOptionsItemSelected(item);
+			activity.finish();
+			return true;
 		}
 	}
 

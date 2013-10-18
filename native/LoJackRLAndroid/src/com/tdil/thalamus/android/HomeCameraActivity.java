@@ -47,7 +47,7 @@ public class HomeCameraActivity extends Activity {
 		setContentView(R.layout.activity_home_camera);
 		Bundle extras = getIntent().getExtras();
 		Camera tmpCamera = (Camera)extras.getSerializable(CAMERA);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(tmpCamera.getModel())) {
 			camera = new TPLinkSC4171G(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
 		}
@@ -102,7 +102,7 @@ public class HomeCameraActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		// getMenuInflater().inflate(R.menu.activity_home, menu);
+		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 

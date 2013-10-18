@@ -53,7 +53,7 @@ public class HomeLogAlarmActivity extends Activity {
 		setContentView(R.layout.activity_home_alarms_log);
 
 		list = (ListView) findViewById(R.id.alarmLogList);
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
