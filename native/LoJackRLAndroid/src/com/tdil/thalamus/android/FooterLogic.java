@@ -23,7 +23,7 @@ import android.widget.Button;
 //import android.widget.TextView;
 import android.widget.Toast;
 
-public class FooterLogic extends Activity {
+public class FooterLogic  {
 
 	
 	public static void installFooterLogic(final Activity activity) {
@@ -44,24 +44,14 @@ public class FooterLogic extends Activity {
 					}
 				});
 			}
-		}
-/*		
+		
 		View home = activity.findViewById(R.id.btnFooterHome);
 		if (home!= null) {
 			home.setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						if (Login.loggedUser.getHomeUser()) {
-							Intent intent = new Intent(activity, HomeActivity.class); 
-							activity.startActivity(intent); 
-							if (finishOnExit) {
-								activity.finish();
-							}
-						} else {
-							String videoId = Login.loggedUser.getHomeVideo();
-							playVideo(activity, videoId);
-						}
+						handleHomeAccess(activity, finishOnExit);
 					}
 				});
 		}
@@ -98,109 +88,8 @@ public class FooterLogic extends Activity {
 					}
 				});
 		}
-	}*/
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_index);
-            findViewById(R.id.btnFooterHome).setOnLongClickListener(longListener);
-            findViewById(R.id.btnFooterPrevent).setOnLongClickListener(longListener);
-            findViewById(R.id.btnFooterPets).setOnLongClickListener(longListener);
-            findViewById(R.id.btnFooterParkings).setOnLongClickListener(longListener);
-            // findViewById(R.id.btnFooterTV).setOnLongClickListener(longListener);
-            
-            findViewById(R.id.dropTarget).setOnDragListener(dragListener);
-    }
-    
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) 
-    {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            return true;
-    }
-    */
-    OnLongClickListener longListener = new OnLongClickListener()
-    {
-            @Override
-            public boolean onLongClick(View v) 
-            {
-                //TextView fruit = (TextView) v;
-                Button fruit = (Button) v;    
-            	Toast.makeText(FooterLogic.this, "Text long clicked - " +fruit.getText() , Toast.LENGTH_SHORT).show();
-                    
-                    View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
-                    
-                    ClipData data = ClipData.newPlainText("", "");
-                    v.startDrag(data, myShadowBuilder, fruit, 0);
-                    
-                    return true;
-            }
-            
-    };
-    
-    OnDragListener dragListener = new OnDragListener()
-    {
-            @Override
-            public boolean onDrag(View v, DragEvent event) 
-            {
-                    int dragEvent = event.getAction();
-                    //TextView dropText = (TextView) v;
-                    Button dropButton = (Button) v;
-                    
-                    switch(dragEvent)
-                    {
-                            case DragEvent.ACTION_DRAG_ENTERED:
-                            		dropButton.setTextColor(Color.GREEN);
-                                    break;
-                                    
-                            case DragEvent.ACTION_DRAG_EXITED:
-                            		dropButton.setTextColor(Color.RED);
-                                    break;
-                                    
-                            case DragEvent.ACTION_DROP:
-                                    //TextView draggedText = (TextView)event.getLocalState();
-                                    dropButton.setTextColor(Color.BLUE);
-                                    break;
-                    }
-                    
-                    return true;
-            }
-            
-    };
-    
-    private class MyShadowBuilder extends View.DragShadowBuilder
-    {
-            private Drawable shadow;
-            
-            public MyShadowBuilder(View v)
-            {
-                    super(v);
-                    shadow = new ColorDrawable(Color.LTGRAY);
-            }
-
-            @Override
-            public void onDrawShadow(Canvas canvas) 
-            {
-                    shadow.draw(canvas);
-            }
-
-            @Override
-            public void onProvideShadowMetrics(Point shadowSize, Point shadowTouchPoint) 
-            {
-                    int height, width;
-                    height = (int) getView().getHeight()/2;
-                    width = (int) getView().getHeight()/2;
-                    
-                    shadow.setBounds(0, 0, width, height);
-                    
-                    shadowSize.set(width, height);
-                    shadowTouchPoint.set(width/2, height/2);
-            }
-            
-    }		
+	}
+    		
 
 	public static void playVideo(final Activity activity, String videoId) {
 		try{
@@ -234,6 +123,20 @@ public class FooterLogic extends Activity {
 			activity.startActivity(intent); 
 		} else {
 			String videoId = Login.loggedUser.getPetVideo();
+			playVideo(activity, videoId);
+		}
+	}
+
+	public static void handleHomeAccess(final Activity activity,
+			final boolean finishOnExit) {
+		if (Login.loggedUser.getHomeUser()) {
+			Intent intent = new Intent(activity, HomeAlarmsActivity.class); 
+			activity.startActivity(intent); 
+			if (finishOnExit) {
+				activity.finish();
+			}
+		} else {
+			String videoId = Login.loggedUser.getHomeVideo();
 			playVideo(activity, videoId);
 		}
 	}

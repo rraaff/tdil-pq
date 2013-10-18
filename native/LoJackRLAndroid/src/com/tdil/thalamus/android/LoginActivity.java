@@ -2,7 +2,11 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,8 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -50,12 +56,24 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 	private String mDocType;
 	private String mDocNumber;
 	private String mPassword;
+	private CheckBox remCheckBox;
+	
+	private DocumentTypeCollection col;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_login);
+		
+//		Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
+//		e.clear();
+//		e.commit();
+		
+		/* TODO borrar */
+		String mDocNumber = this.getPreferences(Context.MODE_PRIVATE).getString("mDocNumber", "");
+		String mPassword = this.getPreferences(Context.MODE_PRIVATE).getString("mPassword", "");
+		System.out.println(mDocNumber);
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -74,7 +92,7 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			@Override
 			public void sucess(RESTClientTask task) {
 				 Gson gson = new Gson();
-				 DocumentTypeCollection col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
+				 col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
 				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(LoginActivity.this,
 					android.R.layout.simple_spinner_item, col.getList(), new BeanMappingFunction<DocumentTypeBean>() {
 			 			public String key(DocumentTypeBean t) {return String.valueOf(t.getId());};
@@ -84,6 +102,18 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			 			}
 					});
 					spinner.setAdapter(adapter);
+				
+					String mDocTypeSt = LoginActivity.this.getPreferences(Context.MODE_PRIVATE).getString("mDocType", "-1");
+					int mDocType = Integer.valueOf(mDocTypeSt);
+					if(mDocType != -1) {
+						int index = 0;
+					 for (DocumentTypeBean bean : col.getList()) {
+						 if (bean.getId() == mDocType) {
+							 spinner.setSelection(index);
+						 }
+						 index = index + 1;
+					 }
+					}
 			}
 			@Override
 			public void error(RESTClientTask task) {
@@ -114,6 +144,12 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 			        	startActivity(intent);
 					}
 				});
+		remCheckBox = (CheckBox)findViewById(R.id.rememberPasswordCheckbox);
+		
+		EditText docNumber = (EditText)findViewById(R.id.documentNumber);
+		docNumber.setText(mDocNumber);
+		EditText password = (EditText)findViewById(R.id.password);
+		password.setText(mPassword);
 	}
 
 	public void attemptLogin() {
@@ -157,11 +193,32 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
 		if (resp.getLogged()) {
 			Login.loggedUser = resp;
+			
+			if (LoginActivity.this.remCheckBox.isChecked()) {
+				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
+				e.putString("mDocType", mDocType);
+				e.putString("mDocNumber", mDocNumber);
+				e.putString("mPassword", mPassword);
+				e.commit();
+			}
+			
 			Intent intent = new Intent(this, IndexActivity.class);
+//			Intent intent = new Intent(this, HomeAlarmsActivity.class);
         	startActivity(intent);
         	finish();
 		} else {
-			System.out.println("not logged");
+			Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
+			e.clear();
+			e.commit();
+			
+			new AlertDialog.Builder(LoginActivity.this)
+			   .setIcon(R.drawable.ic_launcher)
+			   .setTitle("Atención")
+			   .setMessage("El usuario o contraseña son incorrectos")
+			   .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int whichButton) {
+			           }
+			   }).show();
 		}
 		this.mAuthTask = null;
 	}
