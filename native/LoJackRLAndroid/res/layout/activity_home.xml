@@ -32,7 +32,8 @@
                 android:background="@drawable/transparente"
                 android:text="@string/btn_tag_alarms"
                 android:textColor="@color/bgBase"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/lights"
@@ -43,7 +44,8 @@
                 android:background="@drawable/transparente"
                 android:text="@string/btn_tag_lights"
                 android:textColor="@color/bgBase"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/cameras"
@@ -54,7 +56,8 @@
                 android:background="@drawable/transparente"
                 android:text="@string/btn_tag_cameras"
                 android:textColor="@color/bgBase"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/updateButton"
@@ -63,7 +66,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/icon_menu_gray"
                 android:text="@string/btn_tag_modify_my_data"
-                android:textColor="@color/bgBase" />
+                android:textColor="@color/bgBase"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/changePassword"
@@ -75,7 +79,8 @@
                 android:text="@string/btn_tag_change_password"
                 android:textColor="@color/bgBase"
                 android:textSize="14sp"
-                android:visibility="visible" />
+                android:visibility="visible"
+                style="@android:attr/buttonBarButtonStyle" />
 
         </LinearLayout>
 
@@ -109,7 +114,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:adjustViewBounds="true"
         android:baselineAlignBottom="true"
-        android:contentDescription="@string/loading"
+        android:contentDescription="@string/action_loading"
         android:maxWidth="200dp"
         android:src="@drawable/logo_lojack" />
 

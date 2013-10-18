@@ -3,8 +3,25 @@
 
     <string name="app_name">LoJack</string>
     <string name="action_settings">Buscando actualizaciones</string>
-    <string name="loading">Cargando Información&#8230;&#8230;&#8230;</string>
+    <string name="action_loading">Cargando Información</string>
+    <string name="action_system_loading">Cargando información del sistema</string>
     <string name="dologin">dologin</string>
+    
+    
+    <string name="empty_text_view">  </string>
+    
+    <!-- Descriptions -->
+    <string name="desc_cam_image">Imagen de la Cámara</string>
+    <string name="desc_avatar_image">Avatar</string>
+    
+    <!-- List Items strings -->
+    <string name="lst_itm_status">Estado:</string>
+    <string name="lst_itm_last_change">Último cambio:</string>
+    <string name="lst_itm_by"> por </string>
+    <string name="status_unarmed">Desarmada</string>
+    <string name="status_armed">Armada</string>
+    <string name="status_unknown">Desconocido</string>
+    <string name="lst_itm_5"></string>
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -22,7 +39,11 @@
     <string name="title_camera">CAMARA</string>
     
     <!-- comments -->
-    <string name="cmnt_home_page">Elegí una aplicación</string>
+    <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
+    
+    <!-- Ruedita -->
+    <string name="rd_default_comment">Ingresar</string>
+    
     
     
     <!-- Buttons -->
@@ -38,7 +59,9 @@
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
     <string name="btn_tag_reset_password">Resetear contraseña</string>
     <string name="btn_SendPanic">   </string>
+    <string name="btn_tag_see_log">Ver log</string>
     <string name="btn_view_log">Ver log completo</string>
+    <string name="btn_tag_go">Ir</string>
     
     <string name="action_home">Home</string>
     
@@ -48,11 +71,16 @@
     <string name="btn_parkings">  </string>
     <string name="btn_tv">  </string>
     
+    <string name="btn_cam_up">↑</string>
+    <string name="btn_cam_down">↓</string>
+    <string name="btn_cam_left">←</string>
+    <string name="btn_cam_right">→</string>
+    
     <string name="btn_panic">Señal de pánico</string>
     
     <string name="btnHeaderAlarms">Alarmas</string>
     <string name="btnHeaderLights">Luces</string>
-    <string name="btnHeaderCameras">Camaras</string>
+    <string name="btnHeaderCameras">Cámaras</string>
     
     <string name="btn_footer_home"> </string>
     <string name="btn_footer_prevent"> </string>
@@ -67,6 +95,8 @@
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>
     
+    <string name="tog_btn_default">ON/OFF</string>
+    
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>
@@ -74,15 +104,15 @@
     <string name="hnt_doc_password1">Repetir clave</string>
     <string name="hnt_firstname">Nombre</string>
     <string name="hnt_apellido">Apellido</string>
-    <string name="hnt_email">Email</string>
-    <string name="hnt_area_code">Codigo de Area</string>
+    <string name="hnt_email">E-mail</string>
+    <string name="hnt_area_code">Código de Area</string>
     <string name="hnt_mobile">Celular</string>
-    <string name="hnt_calle1">Calle</string>
+    <string name="hnt_calle1">Calle 1</string>
     <string name="hnt_calle2">Calle 2</string>
-    <string name="hnt_postal_code">Codigo postal</string>
+    <string name="hnt_postal_code">Código postal</string>
     <string name="hnt_city">Ciudad</string>
     
     <!-- Checkboxes and Radiobutton titles -->
-    <string name="crt_tag_rememberme">Recordarme</string>
+    <string name="crt_tag_rememberme">Recordarme mis datos</string>
     
 </resources>

@@ -22,7 +22,7 @@
                 android:id="@+id/alarmDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/empty_text_view"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -58,13 +58,13 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estado:" />
+                    android:text="@string/lst_itm_status" />
 
                 <TextView
                     android:id="@+id/alarmStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/empty_text_view" />
 
             </LinearLayout>
 
@@ -73,16 +73,16 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/loadingInfoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ultimo cambio:" />
+                    android:text="@string/lst_itm_last_change" />
 
                 <TextView
                     android:id="@+id/lastChangeDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/empty_text_view" />
 
             </LinearLayout>
 
@@ -94,19 +94,19 @@
                     android:id="@+id/lastChangeStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/empty_text_view" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="por" />
+                    android:text="@string/lst_itm_by" />
 
                 <TextView
                     android:id="@+id/lastChangeUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/empty_text_view" />
 
             </LinearLayout>
 

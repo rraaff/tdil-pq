@@ -38,7 +38,7 @@
             android:textAlignment="center" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/loadingInfoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -98,7 +98,7 @@
             android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:baselineAlignBottom="true"
-            android:contentDescription="@string/loading"
+            android:contentDescription="@string/action_loading"
             android:maxWidth="250dp"
             android:src="@drawable/logo_lojack" />
 </merge>

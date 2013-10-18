@@ -8,4 +8,13 @@
 	<color name="bgBase">#FFFFFF</color>
 	
 	<color name="orangeTitles">#ef5323</color>
+	<color name="orangeDark">#BC2800</color>
+	
+	
+	<!-- Item list -->
+	<color name="lst_itm_title">#222222</color>
+	<color name="lst_itm_normal">#BBBBBB</color>
+	<color name="lst_itm_off">#E31B23</color>
+	<color name="lst_itm_unk">#808080</color>
+	<color name="lst_itm_on">#236600</color>
 </resources>

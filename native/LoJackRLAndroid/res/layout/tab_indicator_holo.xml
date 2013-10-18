@@ -20,13 +20,13 @@
     style="@style/TabAppTheme"
     android:gravity="center">
 
-    <ImageView
+    <!-- ImageView
         android:id="@android:id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:visibility="gone"
-        android:contentDescription="@null" />
+        android:contentDescription="@null" /-->
 
     <TextView
         android:id="@android:id/title"

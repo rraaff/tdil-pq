@@ -1,5 +1,6 @@
 package com.tdil.thalamus.android;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
@@ -27,14 +28,15 @@ import com.tdil.lojack.rl.R;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@SuppressLint("ResourceAsColor")
 public class IndexActivity extends Activity {
 
 	private static final String HOME = "HOME";
 	private static final String PARKINGS = "PARKINGS";
 	private static final String TV = "TV";
 	private static final String PETS = "PETS";
-	private static final String PREVENT = "PREVENT";
-
+	private static final String PREVENT = "CAR";
+	
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -71,12 +73,8 @@ public class IndexActivity extends Activity {
 
 		@Override
 		public boolean onLongClick(View v) {
-			// TextView fruit = (TextView) v;
 			Button fruit = (Button) v;
-			Toast.makeText(activity,
-					"Text long clicked - " + fruit.getText(),
-					Toast.LENGTH_SHORT).show();
-
+			
 			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
 
 			ClipData data = ClipData.newPlainText("", "");
@@ -91,20 +89,21 @@ public class IndexActivity extends Activity {
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
 			int dragEvent = event.getAction();
-			// TextView dropText = (TextView) v;
 			TextView dropButton = (TextView) v;
 
 			switch (dragEvent) {
 			case DragEvent.ACTION_DRAG_ENTERED:
-				dropButton.setTextColor(Color.GREEN);
+				dropButton.setTextColor(R.color.orangeDark);
+				dropButton.setAlpha(20);
+				
 				break;
 
 			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setTextColor(Color.RED);
+				dropButton.setTextColor(R.color.orangeTitles);
+				
 				break;
 
 			case DragEvent.ACTION_DROP:
-				// TextView draggedText = (TextView)event.getLocalState();
 				if (HOME.equals(event.getLocalState())) {
 					FooterLogic.handleHomeAccess(IndexActivity.this, false);
 				}
@@ -117,7 +116,8 @@ public class IndexActivity extends Activity {
 				if (PARKINGS.equals(event.getLocalState())) {
 					FooterLogic.handleParkingsAccess(IndexActivity.this);
 				}
-				dropButton.setTextColor(Color.BLUE);
+				dropButton.setTextColor(R.color.orangeDark);
+				
 				break;
 			}
 
@@ -136,6 +136,8 @@ public class IndexActivity extends Activity {
 
 		@Override
 		public void onDrawShadow(Canvas canvas) {
+			//	Acá me gustaría meterle una imagen como shadow
+			//  Lo ideal es que sea una imágen específica para cada botón. Avisame así las preparo.
 			shadow.draw(canvas);
 		}
 
@@ -143,8 +145,8 @@ public class IndexActivity extends Activity {
 		public void onProvideShadowMetrics(Point shadowSize,
 				Point shadowTouchPoint) {
 			int height, width;
-			height = (int) getView().getHeight() / 2;
-			width = (int) getView().getHeight() / 2;
+			height = (int) getView().getHeight();
+			width = (int) getView().getHeight();
 
 			shadow.setBounds(0, 0, width, height);
 
@@ -158,6 +160,11 @@ public class IndexActivity extends Activity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
+	}
+
+	public Toast textView(View findViewById) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

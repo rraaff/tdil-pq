@@ -29,7 +29,8 @@
 	        android:background="@drawable/icon_main_home"
 	        android:minHeight="32dp"
 	        android:minWidth="32dp"
-	        android:text="@string/btn_footer_home" />
+	        android:text="@string/btn_footer_home"
+	        style="@android:attr/buttonBarButtonStyle" />
 	
 	    <Button
 	        android:id="@+id/btnFooterPrevent"
@@ -39,7 +40,8 @@
 	        android:background="@drawable/icon_main_cars"
 	        android:minHeight="32dp"
 	        android:minWidth="32dp"
-	        android:text="@string/btn_footer_prevent" />
+	        android:text="@string/btn_footer_prevent"
+	        style="@android:attr/buttonBarButtonStyle" />
 	
 	    <Button
 	        android:id="@+id/btnFooterPets"
@@ -49,7 +51,8 @@
 	        android:background="@drawable/icon_main_pets"
 	        android:minHeight="32dp"
 	        android:minWidth="32dp"
-	        android:text="@string/btn_footer_pets" />
+	        android:text="@string/btn_footer_pets"
+	        style="@android:attr/buttonBarButtonStyle" />
 	
 	    <Button
 	        android:id="@+id/btnFooterConfig"
@@ -59,14 +62,16 @@
 	        android:background="@drawable/icon_menu"
 	        android:minHeight="32dp"
 	        android:minWidth="32dp"
-	        android:text="@string/btn_footer_config" />
+	        android:text="@string/btn_footer_config"
+	        style="@android:attr/buttonBarButtonStyle" />
 	
 	    <Button
 	        android:id="@+id/btnFooterData"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_margin="5dp"
-	        android:text="@string/btn_footer_data" />
+	        android:text="@string/btn_footer_data"
+	        style="@android:attr/buttonBarButtonStyle" />
 
     </LinearLayout-->
 

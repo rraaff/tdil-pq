@@ -17,38 +17,46 @@
         <ImageView
             android:id="@+id/cameraView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.63" />
+            android:layout_height="0dip"
+            android:layout_weight="0.63"
+            android:contentDescription="@string/desc_cam_image" />
 
         <LinearLayout
+            style="@attr/tabLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:background="@color/bgCream"
+            android:gravity="center_horizontal"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/leftButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="←" />
+                android:text="@string/btn_cam_left"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/upButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="↑" />
+                android:text="@string/btn_cam_up"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/downButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="↓" />
+                android:text="@string/btn_cam_down"
+                style="@android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/rightButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="→" />
+                android:text="@string/btn_cam_right"
+                style="@android:attr/buttonBarButtonStyle" />
 
         </LinearLayout>
 
@@ -60,7 +68,7 @@
             android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:baselineAlignBottom="true"
-            android:contentDescription="@string/loading"
+            android:contentDescription="@string/action_loading"
             android:maxWidth="250dp"
             android:src="@drawable/logo_lojack" />
 
