@@ -156,8 +156,8 @@
 
     <TextView
         android:id="@+id/dropTarget"
-        android:layout_width="60dp"
-        android:layout_height="25dp"
+        android:layout_width="67dp"
+        android:layout_height="72dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:paddingTop="5dp"

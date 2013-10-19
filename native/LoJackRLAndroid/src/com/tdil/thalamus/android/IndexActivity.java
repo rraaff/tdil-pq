@@ -5,9 +5,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -50,12 +53,12 @@ public class IndexActivity extends Activity {
 		// FooterLogic.installFooterLogic(this, false);
 
 		findViewById(R.id.btnFooterPrevent)
-				.setOnLongClickListener(new StartDragListener(this, PREVENT));
-		findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS));
+				.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
 		findViewById(R.id.btnFooterParkings).setOnLongClickListener(
-				new StartDragListener(this, PARKINGS));
-		findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragListener(this, TV));
-		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME));
+				new StartDragListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+		findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener);
 	}
@@ -64,18 +67,20 @@ public class IndexActivity extends Activity {
 
 		private IndexActivity activity;
 		private String localState;
+		private Bitmap bitmap;
 
-		public StartDragListener(IndexActivity activity, String localState) {
+		public StartDragListener(IndexActivity activity, String localState, Bitmap bitmap) {
 			super();
 			this.activity = activity;
 			this.localState = localState;
+			this.bitmap = bitmap;
 		}
 
 		@Override
 		public boolean onLongClick(View v) {
 			Button fruit = (Button) v;
 			
-			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v);
+			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
 
 			ClipData data = ClipData.newPlainText("", "");
 			v.startDrag(data, myShadowBuilder, localState, 0);
@@ -99,8 +104,8 @@ public class IndexActivity extends Activity {
 				break;
 
 			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setTextColor(R.color.orangeTitles);
-				
+//				dropButton.setTextColor(R.color.);
+				dropButton.setAlpha(0);
 				break;
 
 			case DragEvent.ACTION_DROP:
@@ -129,15 +134,14 @@ public class IndexActivity extends Activity {
 	private class MyShadowBuilder extends View.DragShadowBuilder {
 		private Drawable shadow;
 
-		public MyShadowBuilder(View v) {
+		public MyShadowBuilder(View v, Bitmap bitmap) {
 			super(v);
-			shadow = new ColorDrawable(Color.LTGRAY);
+//			shadow = new ColorDrawable(Color.LTGRAY);
+			shadow = new BitmapDrawable(IndexActivity.this.getResources(), bitmap);
 		}
 
 		@Override
 		public void onDrawShadow(Canvas canvas) {
-			//	Acá me gustaría meterle una imagen como shadow
-			//  Lo ideal es que sea una imágen específica para cada botón. Avisame así las preparo.
 			shadow.draw(canvas);
 		}
 
