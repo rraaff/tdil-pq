@@ -2,6 +2,7 @@ package com.tdil.lojack.rest;
 
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -66,9 +67,14 @@ public class LightsService extends AbstractRESTService {
 						} else {
 							WebsiteUserExample example = new WebsiteUserExample();
 							example.createCriteria().andLojackuseridEqualTo(light.getLastChangeLojackUserID());
-							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
-							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
-								light.setLastChangeLojackUserID("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							List<com.tdil.lojack.model.WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
+							if (result.size() > 0) {
+								com.tdil.lojack.model.WebsiteUser user = result.get(0);
+								if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+									light.setLastChangeLojackUserID("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+								} else {
+									light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
+								}
 							} else {
 								light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
 							}
@@ -166,9 +172,14 @@ public class LightsService extends AbstractRESTService {
 						} else {
 							WebsiteUserExample example = new WebsiteUserExample();
 							example.createCriteria().andLojackuseridEqualTo(alarm.getLojackUserId());
-							com.tdil.lojack.model.WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example).get(0);
-							if (user != null && WebsiteUserUtils.hasAvatar(user)) {
-								alarm.setLojackUserId("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							List<com.tdil.lojack.model.WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
+							if (result.size() > 0) {
+								com.tdil.lojack.model.WebsiteUser user = result.get(0);
+								if (user != null && WebsiteUserUtils.hasAvatar(user)) {
+									alarm.setLojackUserId("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+								} else {
+									alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
+								}
 							} else {
 								alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
 							}
