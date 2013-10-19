@@ -26,6 +26,7 @@ public interface RESTConstants {
 	public static final String LOGOUT = "/users/logout";
 	
 	public static final String GET_USER = "/users/get";
+	public static final String CREATE_USER = "/users/create";
 	public static final String SAVE_USER = "/users/update";
 	public static final String CHANGE_PASSWORD = "/users/password";
 	

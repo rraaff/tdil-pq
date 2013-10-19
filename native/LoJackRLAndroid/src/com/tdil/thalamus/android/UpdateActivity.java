@@ -297,7 +297,6 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 				Gson gson = new Gson();
 				// TODO analizar la respuesta para mostrar un mensaje u otro
 				
-				
 				new AlertDialog.Builder(UpdateActivity.this)
 	               .setIcon(R.drawable.ic_launcher)
 	               .setTitle("Modificacion de datos")

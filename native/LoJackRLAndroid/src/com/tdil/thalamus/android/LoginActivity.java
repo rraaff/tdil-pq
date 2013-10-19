@@ -146,6 +146,15 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 				});
 		remCheckBox = (CheckBox)findViewById(R.id.rememberPasswordCheckbox);
 		
+		findViewById(R.id.requestRegistration).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+			        	startActivity(intent);
+					}
+				});
+		
 		EditText docNumber = (EditText)findViewById(R.id.documentNumber);
 		docNumber.setText(mDocNumber);
 		EditText password = (EditText)findViewById(R.id.password);

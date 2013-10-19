@@ -113,6 +113,7 @@
     <string name="hnt_calle2">Calle 2</string>
     <string name="hnt_postal_code">Código postal</string>
     <string name="hnt_city">Ciudad</string>
+    <string name="hnt_birthdate">Fecha de nacimiento</string>
     
     <string name="hnt_password">Contraseña</string>
     <string name="hnt_new_password">Nueva contraseña</string>
