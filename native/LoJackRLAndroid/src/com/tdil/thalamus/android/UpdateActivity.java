@@ -247,10 +247,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
     }
     @Override
     public void onFailure(View failedView, Rule<?> failedRule) {
-    	System.out.println(failedRule);
     	 String message = failedRule.getFailureMessage();
-    	 System.out.println(message);
-    	 System.out.println(failedView);
          if (failedView instanceof EditText) {
              failedView.requestFocus();
              ((EditText) failedView).setError(message);
@@ -348,7 +345,6 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 				try {
 					birthDate2 = (TextView)findViewById(R.id.birthDate);
 					Calendar cal=Calendar.getInstance();
-					System.out.println(person.getBirthDate());
 					cal.setTime(SIMPLE_DATE_FORMAT.parse(person.getBirthDate()));
 					mYear=cal.get(Calendar.YEAR);
 					mMonth=cal.get(Calendar.MONTH);
