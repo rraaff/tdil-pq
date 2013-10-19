@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,7 +105,12 @@ public class LightLogListAdapter extends BaseAdapter implements OnClickListener 
 			/************ Set Model values in Holder elements ***********/
 			holder.logDate.setText(iterLog.getDate() + " " + iterLog.getHour());
 			holder.logStatus.setText(iterLog.getAction());
-			holder.logUser.setText(iterLog.getUser() + iterLog.getDate() + " " + iterLog.getHour());
+			if (iterLog.getAction().toUpperCase().contains("APAGA")) {
+				holder.logStatus.setTextColor(Color.RED);
+			} else {
+				holder.logStatus.setTextColor(Color.GREEN);
+			}
+			holder.logUser.setText(iterLog.getUser());
 			new DownloadImageTask(holder.changeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
 							+ iterLog.getLojackUserId());
