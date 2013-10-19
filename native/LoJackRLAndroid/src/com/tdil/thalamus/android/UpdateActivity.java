@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import org.json.JSONObject;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,9 +25,14 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.mobsandgeeks.saripaar.Rule;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.Validator.ValidationListener;
+import com.mobsandgeeks.saripaar.annotation.Regex;
+import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
@@ -52,7 +55,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class UpdateActivity extends Activity implements IRestClientObserver {
+public class UpdateActivity extends Activity implements IRestClientObserver, ValidationListener {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -81,12 +84,16 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 	private int mYear;
     private int mMonth;
     private int mDay;
+    private Validator validator;
     static final int DATE_DIALOG_ID = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		validator = new Validator(this);
+	    validator.setValidationListener(this);
+		
 		setContentView(R.layout.activity_update);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		birthDate = (TextView) findViewById(R.id.birthDate);
@@ -230,10 +237,34 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						updatePerson();
+						validator.validate();
 					}
 				});
 	}
+
+    @Override
+    public void preValidation() {
+    }
+    @Override
+    public void onFailure(View failedView, Rule<?> failedRule) {
+    	System.out.println(failedRule);
+    	 String message = failedRule.getFailureMessage();
+    	 System.out.println(message);
+    	 System.out.println(failedView);
+         if (failedView instanceof EditText) {
+             failedView.requestFocus();
+             ((EditText) failedView).setError(message);
+         } else {
+             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+         }
+    }
+    @Override
+    public void onSuccess() {
+    	updatePerson();
+    }
+    @Override
+    public void onValidationCancelled() {
+    }
 
 	protected void updatePerson() {
 		PersonBean personBean = new PersonBean();
@@ -256,6 +287,8 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 		personBean.setStreet1(street1.getText().toString());
 		personBean.setStreet2(street2.getText().toString());
 		personBean.setCity(city.getText().toString());
+		AddressTypeBean addressType = (AddressTypeBean)addressTypes.getSelectedItem();
+		personBean.setAddressType(addressType.getName());
 		personBean.setPostalCode(postalCode.getText().toString());
 		personBean.setOptIn(optIn.isChecked());
 		
@@ -266,6 +299,8 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
 				// TODO analizar la respuesta para mostrar un mensaje u otro
+				
+				
 				new AlertDialog.Builder(UpdateActivity.this)
 	               .setIcon(R.drawable.ic_launcher)
 	               .setTitle("Modificacion de datos")
@@ -392,8 +427,12 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 
 	private Spinner addressTypes;
 
+	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese el nombre.")
+	@Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
 	private TextView firstName;
 
+	@TextRule(order = 3, minLength = 1, maxLength = 50, message = "Ingrese el apellido.")
+	@Regex(order = 4, pattern = "[A-Za-z ']+", message = "El apellido es invalido")
 	private TextView lastName;
 
 	private RadioButton male;
@@ -404,18 +443,25 @@ public class UpdateActivity extends Activity implements IRestClientObserver {
 
 	private TextView birthDate2;
 
+	@TextRule(order = 5, maxLength = 5, message = "Ingrese hasta 5 digitos.")
+	@Regex(order = 6, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView areaCode;
 
+	@TextRule(order = 7, maxLength = 11, message = "Ingrese hasta 11 digitos.")
+	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView mobile;
 
 	private Spinner state;
 
+	@TextRule(order = 9, maxLength = 50, message = "Ingrese hasta 50 caracteres.")
 	private TextView street1;
 
+	@TextRule(order = 10, maxLength = 50, message = "Ingrese hasta 50 caracteres.")
 	private TextView street2;
 
 	private Spinner addressType;
 
+	@TextRule(order = 10, maxLength = 10, message = "Ingrese hasta 10 caracteres.")
 	private TextView postalCode;
 
 	private CheckBox optIn;

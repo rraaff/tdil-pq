@@ -16,6 +16,10 @@
           android:title="@string/action_home"/>
     
     <item
+        android:id="@+id/menu_update"
+        android:title="@string/menu_update"/>
+    
+    <item
         android:id="@+id/menu_logout"
         android:title="@string/menu_logout"/>
     

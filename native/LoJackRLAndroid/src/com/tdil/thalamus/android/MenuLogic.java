@@ -42,6 +42,9 @@ public class MenuLogic {
 		case R.id.menu_action_parkings:
 			FooterLogic.handleParkingsAccess(activity);
 			return true;
+		case R.id.menu_update:
+			activity.startActivity(new Intent(activity, UpdateActivity.class));
+			return true;
 		default:
 			activity.finish();
 			return true;
