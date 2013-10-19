@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Strings related to login -->
+   <string name="menu_change_password">Cambiar contraseña</string>
     <string name="menu_update">Actualizar datos</string>
     <string name="menu_logout">Salir</string>
 </resources>

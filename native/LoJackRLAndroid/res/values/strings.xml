@@ -29,6 +29,8 @@
     <string name="title_request_reset">RESETEAR CONTRASEÑA</string>
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
+    <string name="title_activity_change_password">CAMBIAR CONTRASEÑA</string>
+    
     
     <string name="title_dashboard_alarms">ALARMAS</string>
     <string name="title_dashboard_lights">LUCES</string>
@@ -112,6 +114,10 @@
     <string name="hnt_postal_code">Código postal</string>
     <string name="hnt_city">Ciudad</string>
     
+    <string name="hnt_password">Contraseña</string>
+    <string name="hnt_new_password">Nueva contraseña</string>
+    <string name="hnt_retype_new_password">Reingrese nueva contraseña</string>
+   
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordarme mis datos</string>
     

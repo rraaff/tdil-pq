@@ -45,6 +45,9 @@ public class MenuLogic {
 		case R.id.menu_update:
 			activity.startActivity(new Intent(activity, UpdateActivity.class));
 			return true;
+		case R.id.menu_change_password:
+			activity.startActivity(new Intent(activity, ChangePasswordActivity.class));
+			return true;
 		default:
 			activity.finish();
 			return true;

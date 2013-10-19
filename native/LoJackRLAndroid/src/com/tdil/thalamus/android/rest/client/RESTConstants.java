@@ -27,6 +27,7 @@ public interface RESTConstants {
 	
 	public static final String GET_USER = "/users/get";
 	public static final String SAVE_USER = "/users/update";
+	public static final String CHANGE_PASSWORD = "/users/password";
 	
 	public static final String REQUEST_RESET_PASSWORD = "/users/requestResetPassword?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER;
 	
