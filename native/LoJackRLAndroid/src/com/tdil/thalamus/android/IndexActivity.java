@@ -61,6 +61,8 @@ public class IndexActivity extends Activity {
 		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener);
+		
+		findViewById(R.id.droptarget2).setOnDragListener(dragListener1);
 	}
 
 	public class StartDragListener implements OnLongClickListener {
@@ -109,6 +111,44 @@ public class IndexActivity extends Activity {
 				break;
 
 			case DragEvent.ACTION_DROP:
+				if (HOME.equals(event.getLocalState())) {
+					FooterLogic.handleHomeAccess(IndexActivity.this, false);
+				}
+				if (PETS.equals(event.getLocalState())) {
+					FooterLogic.handlePetsAccess(IndexActivity.this);
+				}
+				if (PREVENT.equals(event.getLocalState())) {
+					FooterLogic.handlePreventAccess(IndexActivity.this);
+				}
+				if (PARKINGS.equals(event.getLocalState())) {
+					FooterLogic.handleParkingsAccess(IndexActivity.this);
+				}
+				dropButton.setTextColor(R.color.orangeDark);
+				
+				break;
+			}
+
+			return true;
+		}
+	};
+	
+	OnDragListener dragListener1 = new OnDragListener() {
+		@Override
+		public boolean onDrag(View v, DragEvent event) {
+			int dragEvent = event.getAction();
+			TextView dropButton = (TextView) v;
+
+			switch (dragEvent) {
+			case DragEvent.ACTION_DRAG_ENTERED:
+				dropButton.setBackgroundResource(R.drawable.dropon);
+				break;
+
+			case DragEvent.ACTION_DRAG_EXITED:
+				dropButton.setBackgroundResource(R.drawable.dropoff);
+				break;
+
+			case DragEvent.ACTION_DROP:
+				dropButton.setBackgroundResource(R.drawable.dropoff);
 				if (HOME.equals(event.getLocalState())) {
 					FooterLogic.handleHomeAccess(IndexActivity.this, false);
 				}
