@@ -13,7 +13,7 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 
 public class MenuLogic {
-
+	
 	public static boolean handleOnOptionsItemSelected(Activity activity,
 			MenuItem item) {
 		switch (item.getItemId()) {

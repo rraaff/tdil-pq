@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,13 +26,8 @@ import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.tdil.lojack.rl.R;
 
-/**
- * Activity which displays a login screen to the user, offering registration as
- * well.
- */
 @SuppressLint("ResourceAsColor")
 public class IndexActivity extends Activity {
 
@@ -60,9 +57,7 @@ public class IndexActivity extends Activity {
 		findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
 		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 
-		findViewById(R.id.dropTarget).setOnDragListener(dragListener);
-		
-		findViewById(R.id.droptarget2).setOnDragListener(dragListener1);
+		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	}
 
 	public class StartDragListener implements OnLongClickListener {
@@ -106,7 +101,6 @@ public class IndexActivity extends Activity {
 				break;
 
 			case DragEvent.ACTION_DRAG_EXITED:
-//				dropButton.setTextColor(R.color.);
 				dropButton.setAlpha(0);
 				break;
 
@@ -140,15 +134,21 @@ public class IndexActivity extends Activity {
 
 			switch (dragEvent) {
 			case DragEvent.ACTION_DRAG_ENTERED:
-				dropButton.setBackgroundResource(R.drawable.dropon);
+				dropButton.setBackgroundResource(R.drawable.rd_droppon);
+				
+				// Get instance of Vibrator from current Context
+				Vibrator vv = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+				// Vibrate for 100 milliseconds
+				vv.vibrate(100);
 				break;
 
 			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setBackgroundResource(R.drawable.dropoff);
+				dropButton.setBackgroundResource(R.drawable.transparente);
 				break;
 
 			case DragEvent.ACTION_DROP:
-				dropButton.setBackgroundResource(R.drawable.dropoff);
+				dropButton.setBackgroundResource(R.drawable.transparente);
 				if (HOME.equals(event.getLocalState())) {
 					FooterLogic.handleHomeAccess(IndexActivity.this, false);
 				}

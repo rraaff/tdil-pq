@@ -26,10 +26,10 @@
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
     <string name="title_activity_login">INGRESÁ</string>
-    <string name="title_request_reset">RESETEAR CONTRASEÑA</string>
+    <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
-    <string name="title_activity_change_password">CAMBIAR CONTRASEÑA</string>
+    <string name="title_activity_change_password">CAMBIAR CLAVE</string>
     
     
     <string name="title_dashboard_alarms">ALARMAS</string>
@@ -38,13 +38,13 @@
     <string name="title_send_panic">ENVIAR PANICO</string>
     <string name="title_log_alarm">LOG ALARMA</string>
     <string name="title_log_light">LOG LUCES</string>
-    <string name="title_camera">CAMARA</string>
+    <string name="title_camera">CÁMARA</string>
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
     
     <!-- Ruedita -->
-    <string name="rd_default_comment">Ingresar</string>
+    <string name="rd_default_comment"> </string>
     
     
     
@@ -59,7 +59,7 @@
     <string name="btn_tag_modify_my_data"> </string>
     <string name="btn_tag_change_password">Mi clave</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
-    <string name="btn_tag_reset_password">Resetear contraseña</string>
+    <string name="btn_tag_reset_password">Enviar</string>
     <string name="btn_SendPanic">   </string>
     <string name="btn_tag_see_log">Ver log</string>
     <string name="btn_view_log">Ver log completo</string>
@@ -115,9 +115,9 @@
     <string name="hnt_city">Ciudad</string>
     <string name="hnt_birthdate">Fecha de nacimiento</string>
     
-    <string name="hnt_password">Contraseña</string>
-    <string name="hnt_new_password">Nueva contraseña</string>
-    <string name="hnt_retype_new_password">Reingrese nueva contraseña</string>
+    <string name="hnt_password">Clave</string>
+    <string name="hnt_new_password">Nueva Clave</string>
+    <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
    
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordarme mis datos</string>

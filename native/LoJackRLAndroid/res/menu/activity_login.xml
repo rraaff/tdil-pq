@@ -5,16 +5,16 @@
            android:showAsAction="always"
           android:title="@string/action_home"/>
     
-    <item android:id="@+id/menu_action_parkings"
-          android:icon="@drawable/icon_main_parkings"
-           android:showAsAction="always"
-          android:title="@string/action_home"/>
-    
     <item android:id="@+id/menu_action_pets"
           android:icon="@drawable/icon_main_pets"
            android:showAsAction="always"
           android:title="@string/action_home"/>
-    
+
+    <item android:id="@+id/menu_action_parkings"
+          android:icon="@drawable/icon_main_parkings"
+           android:showAsAction="always"
+          android:title="@string/action_home"/>
+
     <item
         android:id="@+id/menu_update"
         android:title="@string/menu_update"/>

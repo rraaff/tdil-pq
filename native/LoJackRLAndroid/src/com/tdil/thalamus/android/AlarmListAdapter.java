@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.lojack.rl.R.color;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
 
@@ -115,9 +116,9 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmStatus.setText(iterAlarm.getStatus());
 			holder.lastChangeDate.setText(iterAlarm.getLastChangeDate());
 			if (iterAlarm.isActive()) {
-				holder.alarmStatus.setTextColor(Color.GREEN);
+				holder.alarmStatus.setTextColor(color.lst_itm_on);
 			} else {
-				holder.alarmStatus.setTextColor(Color.RED);
+				holder.alarmStatus.setTextColor(color.lst_itm_off);
 			}
 //			holder.activateDeactivate.setChecked(iterAlarm.isActive());
 //			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));

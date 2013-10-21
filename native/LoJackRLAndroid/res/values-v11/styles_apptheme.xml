@@ -38,7 +38,7 @@
       <item name="android:background">@drawable/tab_indicator_holo</item>
       <item name="android:layout_width">0dip</item>
       <item name="android:layout_weight">1</item>
-      <item name="android:minWidth">80dip</item>
+      <item name="android:minWidth">48dip</item>
   </style>
 
   <style name="TabTextAppTheme">
