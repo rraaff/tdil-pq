@@ -34,7 +34,8 @@
                 <LinearLayout
                     android:layout_width="320dp"
                     android:layout_height="120dp"
-                    android:animateLayoutChanges="false" >
+                    android:animateLayoutChanges="false"
+                    android:gravity="top" >
 
                     <RelativeLayout
                         android:layout_width="160dp"
@@ -79,7 +80,8 @@
             <TableRow
                 android:id="@+id/tableRow2"
                 android:layout_width="320dp"
-                android:layout_height="160dp" >
+                android:layout_height="160dp"
+                android:gravity="top" >
 
                 <LinearLayout
                     android:layout_width="320dp"
@@ -140,11 +142,7 @@
 
 
         </TableLayout>
-            <!-- TextView
-                android:id="@+id/droptarget2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/dropoff" /  -->
+
 
     </LinearLayout>
 
@@ -152,9 +150,10 @@
         android:id="@+id/helpText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
+        android:paddingTop="40dp"
         android:text="@string/cmnt_home_page"
         android:textAlignment="center"
         android:textColor="@color/gray"
