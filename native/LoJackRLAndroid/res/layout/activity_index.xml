@@ -47,6 +47,7 @@
                             android:layout_height="60dp"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentRight="true"
+                            android:layout_marginBottom="22dp"
                             android:layout_marginRight="25dp"
                             android:background="@drawable/rd_item_home"
                             android:text="@string/btn_home" />
@@ -64,6 +65,7 @@
                             android:layout_height="60dp"
                             android:layout_alignParentBottom="true"
                             android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="20dp"
                             android:layout_marginLeft="43dp"
                             android:background="@drawable/rd_item_ljtv"
                             android:text="@string/btn_tv" />
@@ -97,8 +99,8 @@
                                 android:id="@+id/btnFooterPrevent"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:layout_marginRight="57dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="60dp"
+                                android:layout_marginTop="0dp"
                                 android:background="@drawable/rd_item_cars"
                                 android:text="@string/btn_prevent" />
 
@@ -106,8 +108,8 @@
                                 android:id="@+id/btnFooterPets"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:layout_marginRight="4dp"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginTop="15dp"
                                 android:background="@drawable/rd_item_pets"
                                 android:text="@string/btn_pets" />
 
@@ -125,8 +127,8 @@
                             android:layout_height="60dp"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="43dp"
-                            android:layout_marginTop="59dp"
+                            android:layout_marginLeft="48dp"
+                            android:layout_marginTop="42dp"
                             android:background="@drawable/rd_item_park"
                             android:text="@string/btn_parkings" />
 
