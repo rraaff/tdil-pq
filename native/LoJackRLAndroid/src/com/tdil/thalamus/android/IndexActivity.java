@@ -21,6 +21,7 @@ import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
@@ -50,12 +51,21 @@ public class IndexActivity extends Activity {
 		// FooterLogic.installFooterLogic(this, false);
 
 		findViewById(R.id.btnFooterPrevent)
-				.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
+findViewById(R.id.btnFooterParkings).setOnLongClickListener(
+		new StartDragListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		
+		/*findViewById(R.id.btnFooterPrevent).setOnClickListener(new StartDragOnClickListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		
 		findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnLongClickListener(
-				new StartDragListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-		findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		findViewById(R.id.btnFooterParkings).setOnClickListener(
+				new StartDragOnClickListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+		
+		findViewById(R.id.btnFooterTV).setOnClickListener(new StartDragOnClickListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		findViewById(R.id.btnFooterHome).setOnClickListener(new StartDragOnClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));*/
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	}
@@ -84,8 +94,34 @@ public class IndexActivity extends Activity {
 
 			return true;
 		}
-
 	};
+	
+	public class StartDragOnClickListener implements OnClickListener {
+
+		private IndexActivity activity;
+		private String localState;
+		private Bitmap bitmap;
+
+		public StartDragOnClickListener(IndexActivity activity, String localState, Bitmap bitmap) {
+			super();
+			this.activity = activity;
+			this.localState = localState;
+			this.bitmap = bitmap;
+		}
+
+		@Override
+		public void onClick(View v) {
+			Button fruit = (Button) v;
+			
+			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+
+			ClipData data = ClipData.newPlainText("", "");
+			v.startDrag(data, myShadowBuilder, localState, 0);
+
+//			return true;
+		}
+	};
+
 
 	OnDragListener dragListener = new OnDragListener() {
 		@Override
@@ -214,7 +250,7 @@ public class IndexActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
+		//getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 

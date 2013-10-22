@@ -55,14 +55,16 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.HomeAlarmDashboard"
             android:label="@string/title_dashboard_alarms"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeLightDashboard"
             android:label="@string/title_dashboard_lights"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
@@ -90,49 +92,57 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.HomeActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsActivity"
             android:label="@string/title_home"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsSendPanicActivity"
             android:label="@string/title_send_panic"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogAlarmActivity"
             android:label="@string/title_log_alarm"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeLightsActivity"
             android:label="@string/title_home"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogLightActivity"
             android:label="@string/title_log_light"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeCamerasActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeCameraActivity"
             android:label="@string/title_camera"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
