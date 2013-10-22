@@ -20,10 +20,12 @@ import android.os.Vibrator;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +53,10 @@ public class IndexActivity extends Activity {
 		// FooterLogic.installFooterLogic(this, false);
 
 		findViewById(R.id.btnFooterPrevent)
-		.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		.setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		
+//		findViewById(R.id.btnFooterPrevent)
+//		.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
 findViewById(R.id.btnFooterParkings).setOnLongClickListener(
 		new StartDragListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
@@ -93,6 +98,36 @@ findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragListener(th
 			v.startDrag(data, myShadowBuilder, localState, 0);
 
 			return true;
+		}
+	};
+	
+	public class StartDragOnTouchListener implements OnTouchListener {
+
+		private IndexActivity activity;
+		private String localState;
+		private Bitmap bitmap;
+
+		public StartDragOnTouchListener(IndexActivity activity, String localState, Bitmap bitmap) {
+			super();
+			this.activity = activity;
+			this.localState = localState;
+			this.bitmap = bitmap;
+		}
+
+		@Override
+		public boolean onTouch(View v, MotionEvent motionEvent) {
+			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+				Button fruit = (Button) v;
+				
+				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+	
+				ClipData data = ClipData.newPlainText("", "");
+				v.startDrag(data, myShadowBuilder, localState, 0);
+	
+				return true;
+			} else {
+			    return false;
+			}
 		}
 	};
 	

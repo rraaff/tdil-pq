@@ -41,6 +41,7 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.LoginActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
         </activity>
         
