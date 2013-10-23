@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tdil.lojack.rl"
-    android:versionCode="4"
-    android:versionName="1.4" >
+    android:versionCode="6"
+    android:versionName="1.6" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -14,19 +14,16 @@
 	<uses-permission android:name="android.permission.VIBRATE"/>
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
     
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
-        
-        
-        >
+        android:theme="@style/AppTheme">
 <!--      
-android:theme="@style/AppTheme"
+android:theme="@style/AppTheme"z
 android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
 android:theme="@android:Theme.Holo.Light"-->
 
@@ -41,7 +38,6 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.LoginActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
         </activity>
         
@@ -49,6 +45,7 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.IndexActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
+            android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
         </activity>
         
