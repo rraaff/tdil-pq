@@ -57,8 +57,7 @@ public class IndexActivity extends Activity {
 //		findViewById(R.id.btnFooterPrevent)
 //		.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnLongClickListener(
-				new StartDragListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
 		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
 		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 		
@@ -73,7 +72,7 @@ public class IndexActivity extends Activity {
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	}
-
+/*
 	public class StartDragListener implements OnLongClickListener {
 
 		private IndexActivity activity;
@@ -99,7 +98,8 @@ public class IndexActivity extends Activity {
 			return true;
 		}
 	};
-	
+	*/
+
 	public class StartDragOnTouchListener implements OnTouchListener {
 
 		private IndexActivity activity;
@@ -117,7 +117,8 @@ public class IndexActivity extends Activity {
 		public boolean onTouch(View v, MotionEvent motionEvent) {
 			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 				Button fruit = (Button) v;
-				v.setAlpha(0);
+				v.setAlpha(50);
+				// No responde
 				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
 	
 				ClipData data = ClipData.newPlainText("", "");
@@ -130,7 +131,7 @@ public class IndexActivity extends Activity {
 		}
 	};
 	
-	public class StartDragOnClickListener implements OnClickListener {
+/*	public class StartDragOnClickListener implements OnClickListener {
 
 		private IndexActivity activity;
 		private String localState;
@@ -154,9 +155,9 @@ public class IndexActivity extends Activity {
 
 //			return true;
 		}
-	};
+	};*/
 
-
+/*
 	OnDragListener dragListener = new OnDragListener() {
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
@@ -166,12 +167,12 @@ public class IndexActivity extends Activity {
 			switch (dragEvent) {
 			case DragEvent.ACTION_DRAG_ENTERED:
 				dropButton.setTextColor(R.color.orangeDark);
-				dropButton.setAlpha(20);
+				dropButton.setAlpha(50);
 				
 				break;
 
 			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setAlpha(0);
+				dropButton.setAlpha(100);
 				break;
 
 			case DragEvent.ACTION_DROP:
@@ -187,7 +188,7 @@ public class IndexActivity extends Activity {
 				if (PARKINGS.equals(event.getLocalState())) {
 					FooterLogic.handleParkingsAccess(IndexActivity.this);
 				}
-				dropButton.setTextColor(R.color.orangeDark);
+				//dropButton.setTextColor(R.color.orangeDark);
 				
 				break;
 			}
@@ -195,7 +196,8 @@ public class IndexActivity extends Activity {
 			return true;
 		}
 	};
-	
+	*/
+
 	OnDragListener dragListener1 = new OnDragListener() {
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
@@ -231,7 +233,7 @@ public class IndexActivity extends Activity {
 				if (PARKINGS.equals(event.getLocalState())) {
 					FooterLogic.handleParkingsAccess(IndexActivity.this);
 				}
-				dropButton.setTextColor(R.color.orangeDark);
+				//dropButton.setTextColor(R.color.orangeDark);
 				
 				break;
 			}
@@ -246,7 +248,6 @@ public class IndexActivity extends Activity {
 
 		public MyShadowBuilder(View v, Bitmap bitmap) {
 			super(v);
-//			shadow = new ColorDrawable(Color.LTGRAY);
 			shadow = new BitmapDrawable(IndexActivity.this.getResources(), bitmap);
 		}
 
