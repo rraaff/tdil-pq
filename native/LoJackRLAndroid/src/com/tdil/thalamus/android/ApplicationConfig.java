@@ -5,8 +5,8 @@ public class ApplicationConfig {
 	public static final String URL_ANDROID_VERSION = ApplicationConfig.URL_WEBSITE
 	+ "android_version.txt";
 	
-	public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
-//	public static final String URL_WEBSITE = "http://10.0.2.2:8180/LoJackWeb/";
+//	public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
+	public static final String URL_WEBSITE = "http://10.0.2.2:8180/LoJackWeb/";
 	
 
 	public static int default_timeout = 10000;

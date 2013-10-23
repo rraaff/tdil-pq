@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
 public class IndexActivity extends Activity {
@@ -52,6 +53,7 @@ public class IndexActivity extends Activity {
 		setContentView(R.layout.activity_index);
 		// FooterLogic.installFooterLogic(this, false);
 
+		this.getActionBar().setTitle(Login.loggedUser.getName());
 		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		
 //		findViewById(R.id.btnFooterPrevent)
@@ -117,7 +119,7 @@ public class IndexActivity extends Activity {
 		public boolean onTouch(View v, MotionEvent motionEvent) {
 			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 				Button fruit = (Button) v;
-				v.setAlpha(50);
+				v.setAlpha(0.3f);
 				// No responde
 				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
 	
@@ -126,6 +128,7 @@ public class IndexActivity extends Activity {
 	
 				return true;
 			} else {
+				System.out.println("drag end");
 			    return false;
 			}
 		}
@@ -205,6 +208,13 @@ public class IndexActivity extends Activity {
 			TextView dropButton = (TextView) v;
 
 			switch (dragEvent) {
+			case DragEvent.ACTION_DRAG_ENDED:
+				findViewById(R.id.btnFooterHome).setAlpha(1);
+				findViewById(R.id.btnFooterParkings).setAlpha(1);
+				findViewById(R.id.btnFooterPets).setAlpha(1);
+				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+				findViewById(R.id.btnFooterTV).setAlpha(1);
+				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
 				dropButton.setBackgroundResource(R.drawable.rd_droppon);
 				
