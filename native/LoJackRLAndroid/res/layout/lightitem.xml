@@ -1,115 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:stretchColumns="1"
-    android:background="@drawable/bar_bg"
-    android:paddingTop="0dip" >
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:stretchColumns="1"
+	android:background="@drawable/bar_bg"
+	android:paddingTop="0dip" >
 
-  <TableRow android:layout_width="fill_parent" 
-      android:layout_height="wrap_content">
+	<TableRow 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
 
-     <ImageView
-         android:id="@+id/logLightAvatar"
-         android:layout_width="60dp"
-         android:layout_height="wrap_content"
-         android:maxHeight="40dp"
-         android:scaleType="fitCenter" />
+		<ImageView
+			android:id="@+id/logLightAvatar"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
+			android:layout_margin="8dp"
+			android:background="@color/gray"
+			android:maxHeight="64dp"
+			android:maxWidth="64dp"
+			android:scaleType="fitCenter"
+			android:contentDescription="@string/desc_avatar_image" />
 
-     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:paddingTop="0dip"
-        android:orientation="vertical">
-    
-          <TableRow android:layout_width="fill_parent"  android:layout_height="wrap_content">
+		<LinearLayout
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_gravity="fill_horizontal"
+			android:paddingTop="0dip"
+			android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/lightDescription"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="5dip"
-                android:layout_marginTop="4dip"
-                android:layout_span="1"
-                android:layout_weight="1"
-                android:text="Alarma cochera"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+			<TableRow 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content">
 
-        </TableRow>
+				<TextView
+					android:id="@+id/lightDescription"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="left|center_vertical"
+					android:layout_marginTop="4dip"
+					android:layout_span="1"
+					android:layout_weight="1"
+					android:text="Luz cochera"
+					android:textAllCaps="true"
+					android:textColor="@color/lst_itm_title"
+					android:textSize="16sp" />
 
-      <LinearLayout
-          android:layout_width="fill_parent"
-          android:layout_height="69dp"
-          android:orientation="vertical" >
-            
-	      <LinearLayout
-	          android:layout_width="fill_parent"
-	          android:layout_height="wrap_content"
-	          android:orientation="horizontal" >
-	
-	          <TextView
-	              android:id="@+id/TextView02"
-	              android:layout_width="40dp"
-	              android:layout_height="wrap_content"
-	              android:layout_marginLeft="5dip"
-	              android:layout_marginTop="4dip"
-	              android:text="Estado:"
-	              android:textColor="#000000"
-	              android:textSize="10sp" />
-	
-		     <TextView
-		         android:id="@+id/lightStatus"
-		         android:layout_width="100dp"
-		         android:layout_height="wrap_content"
-		         android:layout_marginTop="4dip"
-		         android:text="Desarmada"
-		         android:textColor="#000000"
-		         android:textSize="10sp" />
-		 </LinearLayout>
+			</TableRow>
 
-	      <LinearLayout
-	          android:layout_width="fill_parent"
-	          android:layout_height="wrap_content"
-	          android:orientation="horizontal" >
-		     <TextView
-		         android:id="@+id/TextView03"
-		         android:layout_width="80dp"
-		         android:layout_height="wrap_content"
-		         android:layout_marginTop="4dip"
-		         android:text="Ultimo cambio:"
-		         android:textColor="#000000"
-		         android:textSize="10sp" />
-	
-		      <TextView
-		         android:id="@+id/lightLastChangeDate"
-		         android:layout_width="100dp"
-		         android:layout_height="wrap_content"
-		         android:layout_marginTop="4dip"
-		         android:text="2013-05-04 18:20"
-		         android:textColor="#000000"
-		         android:textSize="10sp" />
-		    </LinearLayout>
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal" >
+
+				<TextView
+					android:id="@+id/TextView02"
+					android:layout_width="40dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:text="@string/lst_itm_status"
+					android:textColor="@color/lst_itm_normal"
+					android:textSize="11sp" />
+				
+				<TextView
+					android:id="@+id/lightStatus"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:text="Desarmada"
+					android:textColor="@color/lst_itm_normal"
+					android:textSize="11sp" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal" >
+			    
+				<TextView
+					android:id="@+id/TextView03"
+					android:layout_width="80dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:text="@string/lst_itm_last_change"
+					android:textColor="@color/lst_itm_normal"
+					android:textSize="11sp" />
+					
+				<TextView
+					android:id="@+id/lightLastChangeDate"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:text="2013-05-04 18:20"
+					android:textColor="@color/lst_itm_normal"
+					android:textSize="11sp" />
+	     
+			</LinearLayout>
 		</LinearLayout>
-    
-	 </LinearLayout>
 
-    <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" >
+		<ImageButton
+		    android:id="@+id/goToLightView"
+		    android:layout_width="24dp"
+		    android:layout_height="24dp"
+		    android:layout_gravity="center_vertical"
+		    android:layout_margin="6dp"
+		    android:background="@drawable/btn_white_forward"
+		    android:contentDescription="@string/btn_tag_go"
+		    android:maxHeight="36dp"
+		    android:maxWidth="36dp" />
 
-        <ImageButton
-            android:id="@+id/goToLightView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/android_button_plus" />
-	   </LinearLayout>
+	</TableRow>
 
- </TableRow>
- 	
-     
 </TableLayout>

@@ -1,129 +1,164 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".HomeAlarmDashboard" >
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/main_square"
+	tools:context=".HomeAlarmDashboard" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Login progress -->
+	<LinearLayout
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
 
-    <!-- Login form -->
+	    <TableRow
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/bar_bg">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical" >
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:weightSum="6">
+	
+		        <TextView
+		            android:id="@+id/alarmDescription"
+		            android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="4"
+		            android:layout_margin="12dp"
+		            android:text="@string/action_loading"
+		            android:textAllCaps="true"
+		            android:textColor="@color/lst_itm_title"
+		            android:textSize="16sp" />
+		        
+		        <!-- hide switch -->
+			    <Switch
+					android:id="@+id/btnToggleAlarm"
+					android:layout_width="0dp"
+					android:layout_height="12sp"
+					android:layout_weight="2"
+					android:layout_marginTop="12dp"
+					android:layout_marginRight="12dp"
+					android:textOff="OFF"
+					android:textOn="ON"/>
+	
+		    </LinearLayout>
+		</TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:orientation="horizontal">
+	    <TableRow 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingBottom="6dp"
+		    android:paddingLeft="12dp"
+		    android:paddingRight="12dp"
+		    android:paddingTop="6dp"
+		    android:background="@color/bgBase">
 
-            <TextView
-                android:id="@+id/alarmDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/empty_text_view"
-                android:textSize="16sp" />
+			<TextView
+			    android:id="@+id/textView2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/lst_itm_status"
+			    android:textColor="@color/lst_itm_normal"
+			    android:textSize="12sp" />
+			
+			<TextView
+			    android:id="@+id/alarmStatus"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:paddingLeft="4dp"
+			    android:text="@string/status_unknown"
+			    android:textColor="@color/black"
+			    android:textSize="12sp" />
 
-            <LinearLayout
+		</TableRow>
+
+		<TableRow 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingBottom="6dp"
+		    android:paddingLeft="12dp"
+		    android:paddingRight="12dp"
+		    android:paddingTop="6dp"
+		    android:background="@color/bgBase">
+	
+		   <TextView
+				android:id="@+id/loadingInfoText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/lst_itm_last_change"
+			    android:textColor="@color/lst_itm_normal"
+			    android:textSize="12sp" />
+		
+		   <TextView
+				android:id="@+id/lastChangeDate"
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent"
+				android:paddingLeft="4dp"
+				android:text="2013-05-04 18:20"
+				android:textColor="@color/black"
+				android:textSize="12sp" />
+
+		</TableRow>
+			
+		<TableRow
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@color/bgBase"
+		    android:paddingBottom="6dp"
+		    android:paddingLeft="12dp"
+		    android:paddingRight="12dp"
+		    android:paddingTop="6dp" >
+
+		    <TextView
+				android:id="@+id/lastChangeStatus"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/status_armed"
+				android:textColor="@color/black"
+				android:textSize="12sp"  />
+
+		   <TextView
+				android:id="@+id/textView3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4dp"
+				android:paddingRight="4dp"
+				android:text="@string/lst_itm_by"
+				android:textColor="@color/lst_itm_normal"
+				android:textSize="12sp" />
+
+		   <TextView
+				android:id="@+id/lastChangeUser"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/status_unknown"
+				android:textColor="@color/black"
+				android:textSize="12sp" />
+		</TableRow>
+	
+		<TableRow 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:padding="12dp"
+		    android:background="@color/bgBase">
+
+		    <Button
+			    android:id="@+id/goToAlarmViewLog"
 			    android:layout_width="fill_parent"
 			    android:layout_height="wrap_content"
-			    android:gravity="right"
-			    android:orientation="horizontal" >
-			
-			    <Switch
-			        android:id="@+id/btnToggleAlarm"
-			        android:layout_width="wrap_content"
-			        android:layout_height="45dp"
-			        android:layout_gravity="right" 
-			        android:textOff="Apagada"
-			        android:textOn="Encendida"/>
-			
-			</LinearLayout>
-               
+			    android:text="@string/btn_view_log" />
+		</TableRow>
 
-        </LinearLayout>
+	    <ImageView
+	        android:id="@+id/placahome"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="50dp"
+	        android:contentDescription="@string/action_loading"
+	        android:maxWidth="250dp"
+	        android:src="@drawable/logo_lojack" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lst_itm_status" />
-
-                <TextView
-                    android:id="@+id/alarmStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty_text_view" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/loadingInfoText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lst_itm_last_change" />
-
-                <TextView
-                    android:id="@+id/lastChangeDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty_text_view" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/lastChangeStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty_text_view" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lst_itm_by" />
-
-                <TextView
-                    android:id="@+id/lastChangeUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/empty_text_view" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-	        <Button
-	            android:id="@+id/goToAlarmViewLog"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:text="@string/btn_view_log" />
-        </LinearLayout>
-
-
-    </LinearLayout>
+	</LinearLayout>
 
 </RelativeLayout>
