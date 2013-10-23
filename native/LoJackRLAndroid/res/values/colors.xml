@@ -18,4 +18,7 @@
 	<color name="lst_itm_off">#E31B23</color>
 	<color name="lst_itm_unk">#808080</color>
 	<color name="lst_itm_on">#236600</color>
+	
+	
+	<color name="pressed_example">#CCCC0000</color>
 </resources>

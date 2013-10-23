@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    
     <string name="app_name">LoJack</string>
     <string name="action_settings">Buscando actualizaciones</string>
     <string name="action_loading">Cargando Información</string>
     <string name="action_system_loading">Cargando información del sistema</string>
     <string name="dologin">dologin</string>
-    
+    <string name="user_name">{ Usuario }</string>
     
     <string name="empty_text_view">  </string>
     
@@ -30,6 +31,7 @@
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
     <string name="title_activity_change_password">CAMBIAR CLAVE</string>
+    <string name="title_activity_login_for_action_bar">LOJACK</string>
     
     
     <string name="title_dashboard_alarms">ALARMAS</string>
@@ -44,6 +46,8 @@
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
     
     <!-- Ruedita -->
+    <string name="rd_main_promo_title">Viví LoAPP 1.1</string>
+    <string name="rd_main_hookline">El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</string>
     <string name="rd_default_comment"> </string>
     
     
@@ -73,10 +77,10 @@
     <string name="btn_parkings">  </string>
     <string name="btn_tv">  </string>
     
-    <string name="btn_cam_up">↑</string>
-    <string name="btn_cam_down">↓</string>
-    <string name="btn_cam_left">←</string>
-    <string name="btn_cam_right">→</string>
+    <string name="btn_cam_up"></string>
+    <string name="btn_cam_down"></string>
+    <string name="btn_cam_left"></string>
+    <string name="btn_cam_right"></string>
     
     <string name="btn_panic">Señal de pánico</string>
     

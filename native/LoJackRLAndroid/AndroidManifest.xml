@@ -14,7 +14,7 @@
 	<uses-permission android:name="android.permission.VIBRATE"/>
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
     
     <application
@@ -31,22 +31,25 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.RequestResetPasswordActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name="com.tdil.thalamus.android.LoginActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_login_for_action_bar"
             android:configChanges="orientation"
+            android:theme="@style/AppTheme"
             android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.IndexActivity"
-            android:label="@string/app_name"
+            android:label="@string/user_name"
             android:configChanges="orientation"
-            android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_user"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
@@ -54,7 +57,8 @@ android:theme="@android:Theme.Holo.Light"-->
             android:label="@string/title_dashboard_alarms"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:icon="@drawable/icon_main_home">
+            android:icon="@drawable/icon_main_home"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
@@ -67,23 +71,29 @@ android:theme="@android:Theme.Holo.Light"-->
         
          <activity
             android:name="com.tdil.thalamus.android.RegisterActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_register"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_user"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.UpdateActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_user"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.ChangePasswordActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_user"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
@@ -91,7 +101,8 @@ android:theme="@android:Theme.Holo.Light"-->
             android:label="@string/app_name"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:icon="@drawable/icon_main_home">
+            android:icon="@drawable/icon_main_home"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
@@ -140,13 +151,15 @@ android:theme="@android:Theme.Holo.Light"-->
             android:name="com.tdil.thalamus.android.HomeCameraActivity"
             android:label="@string/title_camera"
             android:configChanges="orientation"
-            android:icon="@drawable/icon_main_home">
+            android:icon="@drawable/icon_main_home"
+            android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.CheckForUpdateActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation">
+            android:configChanges="orientation"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -4,19 +4,14 @@
     android:layout_height="fill_parent"
     tools:context=".LoginActivity" >
 
-    <!-- Login progress -->
-
-
-    <!-- Login form -->
-
     <LinearLayout
         android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="fill_vertical|fill_horizontal"
-        android:layout_margin="0dp"
-        android:background="@drawable/main_square"
-        android:gravity="center_vertical"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@color/black"
+        android:baselineAligned="false"
+        android:gravity="top|center_horizontal"
         android:orientation="vertical"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
@@ -30,12 +25,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" 
-                android:layout_marginTop="25dp"
+                android:background="@color/bgBase"
+                android:orientation="vertical"
                 android:padding="20dp"
-                 android:textAlignment="center"
-                android:background="@drawable/toplayer85">
-
+                android:textAlignment="center" >
+                
                 <TextView
                     android:id="@+id/loadingInfoText"
                     android:layout_width="wrap_content"
@@ -181,37 +175,20 @@
                     android:text="@string/btn_optIn"
                     android:textColor="#F2F2F2" />
 
-                <Button
-                    android:id="@+id/updateButton"
-                    android:layout_width="fill_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
-                    android:background="#e51b24"
-                    android:onClick="@string/dologin"
-                    android:text="@string/btn_tag_modify"
-                    android:textColor="#ffffff" />
+	            <Button
+	                android:id="@+id/updateButton"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginBottom="3dp"
+	                android:layout_marginTop="3dp"
+	                android:background="@drawable/btn_rojo_normal_holo_light"
+	                android:minHeight="40dp"
+	                android:onClick="@string/dologin"
+	                android:text="@string/btn_tag_modify"
+	                android:textColor="#ffffff"
+	                android:textSize="16sp" />
 
             </LinearLayout>
         </ScrollView>
-
-        <ImageView
-            android:id="@+id/placahome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="20dp"
-            android:adjustViewBounds="true"
-            android:baselineAlignBottom="true"
-            android:contentDescription="@string/action_loading"
-            android:maxWidth="250dp"
-            android:src="@drawable/logo_lojack" />
-
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="321dp"
-        android:layout_height="500dp" >
-    </LinearLayout>
-
 </merge>

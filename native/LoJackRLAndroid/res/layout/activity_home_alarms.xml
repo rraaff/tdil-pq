@@ -5,65 +5,6 @@
     android:background="@drawable/main_square"
     tools:context=".HomeAlarmsActivity" >
 
-    <!-- Login progress -->
-
-
-    <!-- Login form -->
-
-    <!--  LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/footer"
-        android:layout_below="@+id/header"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/btnHeaderAlarms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnHeaderAlarms" />
-
-            <Button
-                android:id="@+id/btnHeaderLights"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnHeaderLights" />
-
-            <Button
-                android:id="@+id/btnHeaderCameras"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnHeaderCameras" />
-        </LinearLayout>
-
-        <ScrollView
-            android:id="@+id/container"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical" >
-
-                <ListView
-                    android:id="@+id/alarmsList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent" >
-                </ListView>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout-->
-
-    <!-- Footer aligned to bottom -->
-
     <include layout="@layout/footer" />
 
     <TabHost
@@ -91,86 +32,33 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:background="@color/bgBase" >
 
-                    <!--  ScrollView
-                        android:id="@+id/tabAlarms"
-			            android:layout_width="fill_parent"
-			            android:layout_height="fill_parent" -->
-			
-			            <!--  LinearLayout
-			                android:layout_width="fill_parent"
-			                android:layout_height="wrap_content"
-			                android:gravity="center_horizontal"
-			                android:orientation="vertical" -->
-			
-			                <ListView
-			                    android:id="@+id/alarmsList"
-			                    android:layout_width="fill_parent"
-			                    android:layout_height="fill_parent" >
-			                </ListView>
-			            <!--  LinearLayout-->
-			        <!--  /ScrollView-->
-			        
+                <ListView
+                    android:id="@+id/alarmsList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                </ListView>
 
-                <!-- LinearLayout
-                    android:id="@+id/tabLights"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:orientation="vertical"-->
-                    
-                     <!--ScrollView
-			            android:id="@+id/containerLights"
-			            android:layout_width="fill_parent"
-			            android:layout_height="wrap_content" >
-			
-			            <LinearLayout
-			                android:layout_width="fill_parent"
-			                android:layout_height="wrap_content"
-			                android:gravity="center_horizontal"
-			                android:orientation="vertical" -->
-                    
-			                    <ListView
-						            android:id="@+id/lightsList"
-						            android:layout_width="fill_parent"
-						            android:layout_height="wrap_content" >
-						        </ListView>
-			            <!--  -LinearLayout>
-			        </ScrollView-->
-			        
-                <!-- /LinearLayout-->
+                <ListView
+		            android:id="@+id/lightsList"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content" >
+		        </ListView>
 
-                <!-- LinearLayout
-                    android:id="@+id/tabCameras"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:orientation="vertical">
-                    
-                    <ScrollView
-			            android:id="@+id/containerLights"
-			            android:layout_width="fill_parent"
-			            android:layout_height="wrap_content" >
-			
-			            <LinearLayout
-			                android:layout_width="fill_parent"
-			                android:layout_height="wrap_content"
-			                android:gravity="center_horizontal"
-			                android:orientation="vertical" -->
-                    
-			                <ListView
-					            android:id="@+id/camerasList"
-					            android:layout_width="fill_parent"
-					            android:layout_height="wrap_content" >
-					        </ListView>
-        
-			            <!-- /LinearLayout>
-			        </ScrollView>
-                    
-                </LinearLayout-->
+	            <ListView
+		            android:id="@+id/camerasList"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content" >
+		        </ListView>
                 
-                <RelativeLayout android:id="@+id/homeContent"
-					            android:layout_width="320dp"
-					            android:layout_height="320dp"
-					            android:layout_gravity="top|center"
-					            android:background="@drawable/placalanding" />
+                <RelativeLayout 
+                    android:id="@+id/homeContent"
+		            android:layout_width="320dp"
+		            android:layout_height="320dp"
+		            android:layout_gravity="top|center"
+		            android:background="@drawable/placalanding" />
             </FrameLayout>
 
         </LinearLayout>

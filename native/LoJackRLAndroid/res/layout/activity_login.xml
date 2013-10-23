@@ -44,7 +44,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp" />
+                android:layout_marginTop="3dp"
+                android:background="@color/bgBase" />
 
             <EditText
                 android:id="@+id/documentNumber"
@@ -137,12 +138,10 @@
             android:id="@+id/placahome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="bottom|center_horizontal"
             android:layout_marginTop="5dp"
-            android:adjustViewBounds="true"
-            android:baselineAlignBottom="true"
             android:contentDescription="@string/action_loading"
-            android:maxWidth="250dp"
+            android:maxWidth="200dp"
             android:src="@drawable/logo_lojack" />
 
     </LinearLayout>
