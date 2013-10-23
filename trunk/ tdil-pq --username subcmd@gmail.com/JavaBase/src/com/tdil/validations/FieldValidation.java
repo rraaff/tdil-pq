@@ -3,12 +3,16 @@ package com.tdil.validations;
 import gnu.regexp.RE;
 import gnu.regexp.UncheckedRE;
 
+import it.sauronsoftware.jave.Encoder;
 import it.sauronsoftware.jave.EncoderException;
+import it.sauronsoftware.jave.EncodingAttributes;
 import it.sauronsoftware.jave.MultimediaInfo;
+import it.sauronsoftware.jave.VideoAttributes;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -252,6 +256,87 @@ public class FieldValidation {
 				return null;
 			} finally {
 				file.delete();
+			}
+			UploadData upload = new UploadData(fileName, content, true);
+			upload.setWidth(width);
+			upload.setHeight(height);
+			return upload;
+		} catch (IOException e) {
+			getLog().error(e.getMessage(), e);
+			validation.setGeneralError(e.getMessage());
+		} finally {
+			if (io != null) {
+				try {
+					io.close();
+				} catch (IOException e) {
+					getLog().error(e.getMessage(), e);
+					validation.setGeneralError(e.getMessage());
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static UploadData validateFileItemImage(FileItem fileItem, String fieldName, boolean required, int widthX, int widthY, ValidationError validation) {
+		boolean isEmpty = fileItem.getSize() == 0;
+		if (isEmpty && required) {
+			validation.setFieldError(fieldName, ValidationErrors.CANNOT_BE_EMPTY);
+			return null;
+		}
+		if (isEmpty) {
+			return null;
+		}
+		String name = fileItem.getName();
+		String fileName = name;
+		InputStream io = null;
+		try {
+			io = fileItem.getInputStream();
+			File file = File.createTempFile("upload", "." + FilenameUtils.getExtension(fileItem.getName()));
+			File scaled = File.createTempFile("scaled", "." + FilenameUtils.getExtension(fileItem.getName()));
+			FileReader fileReader = null;
+			OutputStream fout = new BufferedOutputStream(new FileOutputStream(file));
+			byte content[] = IOUtils.toByteArray(io);
+			int width = 0;
+			int height = 0;
+			try {
+				fout.write(content);
+				fout.close();
+				MultimediaInfo info = ImageUtils.getMultimediaInfo(file.getAbsolutePath());
+				if (info.getVideo() == null) {
+					validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
+					return null;
+				} else {
+					width = info.getVideo().getSize().getWidth();
+					height = info.getVideo().getSize().getHeight();
+				}
+				Encoder encoder = new Encoder();
+				EncodingAttributes attrs = new EncodingAttributes();
+				VideoAttributes video = new VideoAttributes();
+				video.setSize(ImageUtils.getDestinationVideoSize(info, String.valueOf(widthX), String.valueOf(widthY), false));
+				attrs.setFormat("image2");
+				attrs.setVideoAttributes(video);
+				encoder.encode(file, scaled, attrs, 100);
+				fileReader = new FileReader(scaled);
+				content = IOUtils.toByteArray(fileReader);
+				info = ImageUtils.getMultimediaInfo(scaled.getAbsolutePath());
+				width = info.getVideo().getSize().getWidth();
+				height = info.getVideo().getSize().getHeight();
+			} catch (EncoderException e) {
+				validation.setFieldError(fieldName, ValidationErrors.INVALID_IMAGE);
+				return null;
+			} finally {
+				try {
+					file.delete();
+				} catch (Exception e) {	}
+				try {
+					scaled.delete();
+				} catch (Exception e) {
+				}
+				if (fileReader != null) {
+					try {
+						fileReader.close();
+					} catch (Exception e) {	}
+				}
 			}
 			UploadData upload = new UploadData(fileName, content, true);
 			upload.setWidth(width);
