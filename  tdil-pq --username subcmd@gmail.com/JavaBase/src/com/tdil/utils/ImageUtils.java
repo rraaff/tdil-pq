@@ -50,6 +50,10 @@ public class ImageUtils {
 	public static VideoSize getDestinationVideoSize(String fileName, String width, String height, boolean constrain) throws InputFormatException, EncoderException {
 		Encoder encoder = new Encoder();
 		MultimediaInfo info = encoder.getInfo(new File(fileName));
+		return getDestinationVideoSize(info, width, height, constrain);
+	}
+
+	public static VideoSize getDestinationVideoSize(MultimediaInfo info, String width, String height, boolean constrain) {
 		VideoSize original = info.getVideo().getSize();
 		return getDestinationVideoSize(original, width, height, constrain);
 	}
