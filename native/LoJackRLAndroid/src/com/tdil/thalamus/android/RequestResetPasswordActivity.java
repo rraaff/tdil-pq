@@ -106,6 +106,14 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 						resetPassword();
 					}
 				});
+		
+		findViewById(R.id.resetPasswordBack).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						RequestResetPasswordActivity.this.finish();
+					}
+				});
 	}
 
 	public void resetPassword() {
@@ -133,7 +141,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
+		//getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 

@@ -76,6 +76,19 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
+            <Button
+                android:id="@+id/resetPasswordBack"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/btn_rojo_normal_holo_light"
+                android:minHeight="40dp"
+                android:onClick="@string/dologin"
+                android:text="@string/btn_tag_reset_password_back"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
         </LinearLayout>
 
 	</LinearLayout>

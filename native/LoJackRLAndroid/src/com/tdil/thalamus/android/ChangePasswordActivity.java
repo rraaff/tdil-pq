@@ -58,7 +58,7 @@ public class ChangePasswordActivity extends Activity implements
 	private TextView oldPassword;
 
 	@TextRule(order = 2, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
-	@Password(order=3)
+	@Password(order=3, message="Contraseña")
 	private TextView newPassword;
 
 	@TextRule(order = 4, minLength = 4, maxLength = 10, message = "Ingrese la nueva contraseña.")

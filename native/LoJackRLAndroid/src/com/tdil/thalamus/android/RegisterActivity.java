@@ -17,6 +17,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -87,12 +89,15 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//Remove title bar
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//Remove notification bar
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		validator = new Validator(this);
 	    validator.setValidationListener(this);
 		
 		setContentView(R.layout.activity_register);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		document = (TextView) findViewById(R.id.documentNumber);
 		
@@ -370,7 +375,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	private TextView lastName;
 	
 	@TextRule(order = 2, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
-	@Password(order=3)
+	@Password(order=3, message="Contraseña")
 	private TextView password;
 
 	@TextRule(order = 4, minLength = 4, maxLength = 10, message = "Ingrese la nueva contraseña.")

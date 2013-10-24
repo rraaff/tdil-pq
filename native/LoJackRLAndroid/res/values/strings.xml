@@ -64,6 +64,8 @@
     <string name="btn_tag_change_password">Mi clave</string>
     <string name="btn_tag_forgotpass">Olvidé mi clave</string>
     <string name="btn_tag_reset_password">Enviar</string>
+    <string name="btn_tag_reset_password_back">Volver</string>
+    
     <string name="btn_SendPanic">   </string>
     <string name="btn_tag_see_log">Ver log</string>
     <string name="btn_view_log">Ver log completo</string>

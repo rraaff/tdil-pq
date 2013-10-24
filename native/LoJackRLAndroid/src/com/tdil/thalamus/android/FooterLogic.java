@@ -1,27 +1,15 @@
 package com.tdil.thalamus.android;
 
-import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.utils.Login;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.content.ClipData;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.DragEvent;
-//import android.view.Menu;
 import android.view.View;
-import android.view.View.OnDragListener;
-import android.view.View.OnLongClickListener;
-import android.widget.Button;
+
+import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.utils.Login;
+//import android.view.Menu;
 //import android.widget.TextView;
-import android.widget.Toast;
 
 public class FooterLogic  {
 

@@ -461,7 +461,9 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 
 	private CheckBox optIn;
 
+	@TextRule(order = 11, maxLength = 50, message = "Ingrese hasta 50 caracteres.")
 	private TextView city;
+	
     protected void onPrepareDialog(int id, Dialog dialog) {
         switch (id) {
  
