@@ -70,9 +70,9 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		System.out.println("init light ison " + light.isOn());
 		System.out.println("init light isoff " + light.isOn());
 		if (light.isOn()) {
-			status.setTextColor(Color.GREEN);
+			status.setTextColor(getResources().getColor(R.color.lst_itm_on));
 		} else {
-			status.setTextColor(Color.RED);
+			status.setTextColor(getResources().getColor(R.color.lst_itm_off));
 		}
 		TextView lastChange = (TextView) findViewById(R.id.lastChangeDate);
 		lastChange.setText(light.getLastChangeDate());
@@ -80,9 +80,9 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		TextView lastChangeAction = (TextView) findViewById(R.id.lastChangeStatus);
 		lastChangeAction.setText(light.getLastChangeAction());
 		if (light.isOn()) {
-			lastChangeAction.setTextColor(Color.GREEN);
+			lastChangeAction.setTextColor(getResources().getColor(R.color.lst_itm_on));
 		} else {
-			lastChangeAction.setTextColor(Color.RED);
+			lastChangeAction.setTextColor(getResources().getColor(R.color.lst_itm_off));
 		}
 		TextView lastChangeUser = (TextView) findViewById(R.id.lastChangeUser);
 		lastChangeUser.setText(light.getLastChangeUser());

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.lojack.rl.R.color;
 import com.tdil.thalamus.android.rest.model.ChangeLog;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
 
@@ -106,9 +107,11 @@ public class LightLogListAdapter extends BaseAdapter implements OnClickListener 
 			holder.logDate.setText(iterLog.getDate() + " " + iterLog.getHour());
 			holder.logStatus.setText(iterLog.getAction());
 			if (iterLog.getAction().toUpperCase().contains("APAGA")) {
-				holder.logStatus.setTextColor(Color.RED);
+				//holder.logStatus.setTextColor(getResources().getColor(R.color.lst_itm_off));
+				holder.logStatus.setTextColor(color.lst_itm_off);
 			} else {
-				holder.logStatus.setTextColor(Color.GREEN);
+				//holder.logStatus.setTextColor(getResources().getColor(R.color.lst_itm_on));
+				holder.logStatus.setTextColor(color.lst_itm_on);
 			}
 			holder.logUser.setText(iterLog.getUser());
 			new DownloadImageTask(holder.changeUserAvatar)

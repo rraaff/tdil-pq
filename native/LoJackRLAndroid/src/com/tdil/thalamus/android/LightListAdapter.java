@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.lojack.rl.R.color;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.utils.DownloadImageTask;
 
@@ -119,9 +120,11 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
 			holder.goDashBoard.setOnClickListener(new GoLightDashBoard(iterLight));
 			if (iterLight.isOn()) {
-				holder.alarmStatus.setTextColor(Color.GREEN);
+				//holder.alarmStatus.setTextColor(getResources().getColor(R.color.lst_itm_on));
+				holder.alarmStatus.setTextColor(color.lst_itm_on);
 			} else {
-				holder.alarmStatus.setTextColor(Color.RED);
+				//holder.alarmStatus.setTextColor(getResources().getColor(R.color.lst_itm_off));
+				holder.alarmStatus.setTextColor(color.lst_itm_off);
 			}
 			holder.lastChangeDate.setText(iterLight.getLastChangeDate());
 			/*if (iterLight.isStatusUnknown()) {
