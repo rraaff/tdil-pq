@@ -22,8 +22,8 @@
           }
         ],
       "simpleProfile" : { "email" : "user1@mail.com",
-          "firstname" : "user I",
-          "lastname" : "lopez"
+          "firstname" : "Fernando",
+          "lastname" : "Valenzuela"
         }
     },
   "person" : { "consumer" : { "activeConsumer" : true,
@@ -74,9 +74,9 @@
               "type" : 1
             },
           "email" : "user1@mail.com",
-          "firstname" : "user I",
+          "firstname" : "Fernando",
           "gender" : "Female",
-          "lastname" : "lopez",
+          "lastname" : "Valenzuela",
           "homeIsClient" : true,
           "preventIsClient" : true,
           "petIsClient" : true,
