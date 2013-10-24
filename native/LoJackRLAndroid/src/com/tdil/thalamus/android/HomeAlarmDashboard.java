@@ -64,9 +64,9 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		TextView status = (TextView) findViewById(R.id.alarmStatus);
 		status.setText(alarm.getStatus());
 		if (alarm.isActive()) {
-			status.setTextColor(Color.GREEN);
+			status.setTextColor(getResources().getColor(R.color.orangeDark));
 		} else {
-			status.setTextColor(Color.RED);
+			status.setTextColor(getResources().getColor(R.color.gray));
 		}
 		TextView lastChange = (TextView) findViewById(R.id.lastChangeDate);
 		lastChange.setText(alarm.getLastChangeDate());
