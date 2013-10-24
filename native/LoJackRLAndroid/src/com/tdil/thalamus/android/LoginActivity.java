@@ -73,7 +73,6 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		/* TODO borrar */
 		String mDocNumber = this.getPreferences(Context.MODE_PRIVATE).getString("mDocNumber", "");
 		String mPassword = this.getPreferences(Context.MODE_PRIVATE).getString("mPassword", "");
-		System.out.println(mDocNumber);
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -159,6 +158,16 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 		docNumber.setText(mDocNumber);
 		EditText password = (EditText)findViewById(R.id.password);
 		password.setText(mPassword);
+		if (!isEmpty(mDocNumber) && !isEmpty(mPassword)) {
+			remCheckBox.setChecked(true);
+		}
+	}
+
+	private boolean isEmpty(String mDocNumber2) {
+		if (mDocNumber2 == null) {
+			return true;
+		}
+		return mDocNumber2.trim().length() == 0;
 	}
 
 	public void attemptLogin() {
@@ -208,6 +217,12 @@ public class LoginActivity extends Activity implements IRestClientObserver {
 				e.putString("mDocType", mDocType);
 				e.putString("mDocNumber", mDocNumber);
 				e.putString("mPassword", mPassword);
+				e.commit();
+			} else {
+				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
+				e.putString("mDocType", "");
+				e.putString("mDocNumber", "");
+				e.putString("mPassword", "");
 				e.commit();
 			}
 			
