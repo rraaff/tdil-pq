@@ -67,6 +67,8 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		
 		TextView status = (TextView) findViewById(R.id.lightStatus);
 		status.setText(light.getStatusDescription());
+		System.out.println("init light ison " + light.isOn());
+		System.out.println("init light isoff " + light.isOn());
 		if (light.isOn()) {
 			status.setTextColor(Color.GREEN);
 		} else {
@@ -162,6 +164,12 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 				if (!col.getStatus().isEmpty()) {
 					HomeLightDashboard.this.startLightsBackgroundJob();
 				} else {
+					try {
+						Thread.sleep(20000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					HomeLightDashboard.this.loadLights();
 				}
 			}
