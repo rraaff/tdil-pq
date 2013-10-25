@@ -33,6 +33,7 @@
     <string name="title_activity_change_password">CAMBIAR CLAVE</string>
     <string name="title_activity_login_for_action_bar">LOJACK</string>
     
+    <string name="title_parkings">PARKINGS</string>
     
     <string name="title_dashboard_alarms">ALARMAS</string>
     <string name="title_dashboard_lights">LUCES</string>

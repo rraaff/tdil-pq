@@ -14,7 +14,7 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 
 public class MenuLogic {
 	
-	public static boolean handleOnOptionsItemSelected(Activity activity,
+	public static boolean handleOnOptionsItemSelected(final Activity activity,
 			MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_logout:
@@ -32,6 +32,9 @@ public class MenuLogic {
 			intent.putExtra("EXIT", true);
 	    	activity.startActivity(intent);
 	    	activity.finish();
+			return true;
+		case R.id.menu_action_home: 
+			FooterLogic.handleHomeAccess(activity, true);
 			return true;
 		case R.id.menu_action_prevent:
 			FooterLogic.handlePreventAccess(activity);
@@ -54,13 +57,16 @@ public class MenuLogic {
 		case R.id.menu_back:
 			activity.finish();
 			return true;
+		case R.id.secondaryMenu:
+			return true;
 		case R.id.menu_register:
 			Intent intent1 = new Intent(activity, RegisterActivity.class);
 			activity.startActivity(intent1);
 	    	activity.finish();
 			return true;
 		default:
-			return true;
+			activity.finish();
+			return false;
 		}
 	}
 

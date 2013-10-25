@@ -101,8 +101,7 @@ public class FooterLogic  {
 	}
 
 	public static void handleParkingsAccess(final Activity activity) {
-		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack-app.com.ar/")); 
-		activity.startActivity(intent);
+		activity.startActivity(new Intent(activity, ParkingsActivity.class));
 	}
 
 	public static void handlePetsAccess(final Activity activity) {

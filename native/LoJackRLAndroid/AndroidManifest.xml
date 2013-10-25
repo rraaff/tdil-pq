@@ -70,6 +70,14 @@ android:theme="@android:Theme.Holo.Light"-->
             android:icon="@drawable/icon_main_home">
         </activity>
         
+        <activity
+            android:name="com.tdil.thalamus.android.ParkingsActivity"
+            android:label="@string/title_parkings"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/icon_main_parkings">
+        </activity>
+        
          <activity
             android:name="com.tdil.thalamus.android.RegisterActivity"
             android:label="@string/title_activity_register"
