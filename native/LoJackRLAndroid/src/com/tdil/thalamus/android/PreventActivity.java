@@ -22,14 +22,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.rest.client.RESTClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ParkingsActivity extends Activity {
+public class PreventActivity extends Activity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -66,7 +65,7 @@ public class ParkingsActivity extends Activity {
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 			// TODO Auto-generated method stub
-			ParkingsActivity.this.setProgress(newProgress * 100);
+			PreventActivity.this.setProgress(newProgress * 100);
 			super.onProgressChanged(view, newProgress);
 		}
 	}
@@ -75,7 +74,7 @@ public class ParkingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_parkings);
+		setContentView(R.layout.activity_prevent);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
@@ -137,11 +136,12 @@ public class ParkingsActivity extends Activity {
 			}
 
 			private boolean checkMatchedLoadedURL(String url) {
-				return url.contains("www.lojack-app.com.ar");
+				//return url.contains("www.lojack-app.com.ar");
+				return true;
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PARKINGS);
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -149,7 +149,7 @@ public class ParkingsActivity extends Activity {
 	}
 	
 	public String getUrlWebsite() {
-		return ApplicationConfig.URL_PARKINGS + "";
+		return ApplicationConfig.URL_PREVENT + "";
 	}
 
 	@Override
@@ -161,7 +161,7 @@ public class ParkingsActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_parkings, menu);
+		getMenuInflater().inflate(R.menu.menu_prevent, menu);
 		return true;
 	}
 

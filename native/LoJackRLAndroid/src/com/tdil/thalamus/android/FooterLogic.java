@@ -92,8 +92,7 @@ public class FooterLogic  {
 
 	public static void handlePreventAccess(final Activity activity) {
 		if (Login.loggedUser.getPreventUser()) {
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPreventUrl())); 
-			activity.startActivity(intent); 
+			activity.startActivity(new Intent(activity, PreventActivity.class));
 		} else {
 			String videoId = Login.loggedUser.getPreventVideo();
 			playVideo(activity, videoId);
