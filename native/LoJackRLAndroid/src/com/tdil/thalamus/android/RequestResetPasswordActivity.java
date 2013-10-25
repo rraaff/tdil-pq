@@ -57,6 +57,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_request_reset);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -141,8 +142,13 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.activity_login, menu);
+		getMenuInflater().inflate(R.menu.menu_reset_password, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	@Override

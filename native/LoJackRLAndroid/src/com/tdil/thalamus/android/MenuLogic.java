@@ -48,8 +48,18 @@ public class MenuLogic {
 		case R.id.menu_change_password:
 			activity.startActivity(new Intent(activity, ChangePasswordActivity.class));
 			return true;
-		default:
+		case R.id.menu_login:
 			activity.finish();
+			return true;
+		case R.id.menu_back:
+			activity.finish();
+			return true;
+		case R.id.menu_register:
+			Intent intent1 = new Intent(activity, RegisterActivity.class);
+			activity.startActivity(intent1);
+	    	activity.finish();
+			return true;
+		default:
 			return true;
 		}
 	}

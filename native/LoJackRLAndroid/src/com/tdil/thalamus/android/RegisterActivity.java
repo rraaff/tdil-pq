@@ -98,6 +98,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	    validator.setValidationListener(this);
 		
 		setContentView(R.layout.activity_register);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		document = (TextView) findViewById(R.id.documentNumber);
 		
@@ -437,7 +438,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
+		//getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 

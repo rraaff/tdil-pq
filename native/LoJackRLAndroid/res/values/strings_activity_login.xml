@@ -4,4 +4,9 @@
 	<string name="menu_change_password">Mi contraseña</string>
 	<string name="menu_update">Mis datos</string>
 	<string name="menu_logout">Salir</string>
+	
+	<string name="menu_login">Ingresar</string>
+	<string name="menu_register">Registrarme</string>
+	<string name="menu_back">Volver</string>
+	
 </resources>
