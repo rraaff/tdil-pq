@@ -80,20 +80,19 @@
 
 				<RadioGroup android:orientation="vertical"
 				    android:layout_width="match_parent" 
-				    android:layout_height="wrap_content"
-				    >
+				    android:layout_height="wrap_content">
 
 				    <RadioButton
-                    android:id="@+id/chkMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_male" />
+	                    android:id="@+id/chkMale"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="@string/btn_male" />
 
-                <RadioButton
-                    android:id="@+id/chkFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_female" />
+	                <RadioButton
+	                    android:id="@+id/chkFemale"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:text="@string/btn_female" />
 				</RadioGroup>
                 
 
@@ -172,8 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:layout_marginTop="3dp"
-                    android:text="@string/btn_optIn"
-                    android:textColor="#F2F2F2" />
+                    android:text="@string/btn_optIn" />
 
 	            <Button
 	                android:id="@+id/updateButton"
