@@ -3,33 +3,51 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    android:background="@drawable/bar_bg"
     android:paddingTop="0dip"
     android:stretchColumns="0" >
 
+    <TextView
+		android:id="@+id/send_panic_title"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="left|center_vertical"
+		android:text="@string/title_send_panic"
+		android:textColor="@color/lst_itm_title"
+		android:textSize="16sp" />
+	
 	<TableRow
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:background="@drawable/panic" >
+	    android:paddingLeft="@drawable/bar_bg" >
 
-		<TextView
-			android:id="@+id/alarmDescription"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="left|center_vertical"
-			android:layout_marginLeft="10dip"
-			android:layout_marginTop="4dip"
-			android:layout_span="1"
-			android:layout_weight="1"
-			android:textColor="@color/lst_itm_normal"
-			android:textSize="16sp" />
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
 
-		<Button
-			android:id="@+id/sendPanicSignalButton"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/btn_SendPanic" />
+			<TextView
+			    android:id="@+id/alarmDescription"
+			    android:layout_width="wrap_content"
+			    android:layout_height="30dp"
+			    android:layout_gravity="center_vertical|center_horizontal"
+			    android:layout_marginBottom="5dp"
+			    android:layout_marginLeft="16dp"
+			    android:layout_marginRight="16dp"
+			    android:layout_marginTop="5dp"
+			    android:layout_span="1"
+			    android:layout_weight="1"
+			    android:textColor="@color/lst_itm_title"
+			    android:textSize="16sp" />
+	
+			<Button
+			    android:id="@+id/sendPanicSignalButton"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center_vertical|center_horizontal"
+			    android:background="@drawable/panic"
+			    android:text="@string/btn_SendPanic" />
 
+		</LinearLayout>
 	</TableRow>
 
 </TableLayout>

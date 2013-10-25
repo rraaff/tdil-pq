@@ -16,6 +16,8 @@
     <string name="desc_avatar_image">Avatar</string>
     
     <!-- List Items strings -->
+    <string name="lst_title_last_changes">Últimos cambios:</string>
+    
     <string name="lst_itm_status">Estado:</string>
     <string name="lst_itm_last_change">Último cambio:</string>
     <string name="lst_itm_by"> por </string>

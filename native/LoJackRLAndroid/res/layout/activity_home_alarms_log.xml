@@ -13,14 +13,14 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-        <!-- TextView
-                android:id="@+id/lastChanges"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:text="ULTIMOS CAMBIOS"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" /> -->
+        <TextView
+            android:id="@+id/lastChanges"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:text="@string/lst_title_last_changes"
+            android:textColor="@color/lst_itm_title"
+            android:textSize="16sp" />
         
         <ListView
             android:id="@+id/alarmLogList"
