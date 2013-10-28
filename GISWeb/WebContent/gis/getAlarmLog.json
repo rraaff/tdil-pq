@@ -14,56 +14,14 @@
 		"lojackUserId" : "1:111111"
 	},
 	{
-		"action": "DESACTIVAR",
+		"action": "ACTIVAR",
 		"date": "2012",
 		"hour": "22:30",
 		"user": "MARCOS",
 		"lojackUserId" : "1:111111"
 	},
 	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
-		"date": "2012",
-		"hour": "22:30",
-		"user": "MARCOS",
-		"lojackUserId" : "1:111111"
-	},
-	{
-		"action": "DESACTIVAR",
+		"action": "ACTIVAR",
 		"date": "2012",
 		"hour": "22:30",
 		"user": "MARCOS",
