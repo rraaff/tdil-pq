@@ -42,6 +42,10 @@ public class ThalamusWebUtils {
 				errors.setFieldError(keyToStore, errorsJson.getString(o.toString()));
 				keyToStore = "RegisterForm.document";
 			}
+			if (keyToStore.equals("credential.password")) {
+				errors.setFieldError(keyToStore, errorsJson.getString(o.toString()));
+				keyToStore = "RegisterForm.password";
+			}
 			errors.setFieldError(keyToStore, errorsJson.getString(o.toString()));
 		}
 	}
