@@ -168,6 +168,11 @@ public class LoginForm extends ActionForm {
 				user.setPetUserId(profile.getString("petUser"));
 			}
 		}
+		
+		String clubLoJackIsClient = "clubLoJackIsClient";
+		if (jsonHasValueForKey(profile, clubLoJackIsClient)) {
+			user.setClientClubLoJack(profile.getBoolean(clubLoJackIsClient));
+		}
 	}
 
 	private static boolean jsonHasValueForKey(JSONObject profile, String key) {

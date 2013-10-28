@@ -40,6 +40,9 @@ public class WebsiteUser extends User {
 	private boolean isPetUser;
 	private String petUserId;
 	
+	private boolean isClientClubLoJack = true;
+	private int clubLojackLevel ;
+	
 	private boolean preventLogged;
 	private String preventPassword;
 	private String preventAccessToken;
@@ -295,6 +298,22 @@ public class WebsiteUser extends User {
 			this.setPreventLogged(false);
 		}
 		
+	}
+
+	public boolean isClientClubLoJack() {
+		return isClientClubLoJack;
+	}
+
+	public void setClientClubLoJack(boolean isClientClubLoJack) {
+		this.isClientClubLoJack = isClientClubLoJack;
+	}
+
+	public int getClubLojackLevel() {
+		return clubLojackLevel;
+	}
+
+	public void setClubLojackLevel(int clubLojackLevel) {
+		this.clubLojackLevel = clubLojackLevel;
 	}
 	
 

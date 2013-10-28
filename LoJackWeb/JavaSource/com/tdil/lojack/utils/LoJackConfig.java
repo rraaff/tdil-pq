@@ -81,6 +81,8 @@ public class LoJackConfig extends SystemConfig {
 	private static String mobilevideohome = "http://youtu.be/Iz_VvsFwXQI";
 	private static String mobilevideopets = "http://youtu.be/M8VhrMM0j-Q";
 	
+	private static String clubLoJackUrl = "";
+	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
 	
 	private static Logger getLog() {
@@ -524,6 +526,12 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("pets native url is " + petsNativeUrl);
 		
 		
+		String tmpClubLoJack = SystemPropertyUtils.getSystemPropertValue("clubLoJack.url");
+		if (!StringUtils.isEmpty(tmpClubLoJack)) {
+			setClubLoJackUrl(tmpClubLoJack);
+		}
+		getLog().fatal("clubLoJack.url is " + getClubLoJackUrl());
+		
 		IPCamera.setLogger(new CameraLog4jLogger());
 
 		getLog().fatal("Starting middleware jobs updater");
@@ -798,6 +806,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setCameraCacheSize(int cameraCacheSize) {
 		LoJackConfig.cameraCacheSize = cameraCacheSize;
+	}
+
+	public static String getClubLoJackUrl() {
+		return clubLoJackUrl;
+	}
+
+	public static void setClubLoJackUrl(String clubLoJackUrl) {
+		LoJackConfig.clubLoJackUrl = clubLoJackUrl;
 	}
 
 }
