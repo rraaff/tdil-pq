@@ -40,9 +40,15 @@
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
+				
 			}
 	);
 
+	function viewClubLoJack() {
+		centerLayer($(window), $( "#clubLoJackLayer" ));
+		centerLayer($(window), $( "#centradorModalesClubLoJack" ));
+	}
+	
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
@@ -73,8 +79,21 @@
 		</div>
 	</div>
 </header>
-
 <%@ include file="includes/laRuedita.jsp" %>
+<% if (websiteUser.isClientClubLoJack()) { %>
+	<a href="javascript:viewClubLoJack();">Club lo jack</a>
+<% } %>
+
+<!-- forgot password -->
+<div id="clubLoJackLayer" class="layerOnTop" style="display: none; z-index: 1501;">
+	<div id="centradorModalesClubLoJack" class="defaultLayerStyles">
+		<div class="clubLoJackLayerContent">
+			<div id="xContainer"><button class="buttonLink" cl="clubLoJackLayer">X</button></div>
+			<a href="">Ver Tarjeta</a><br>
+			<a href="<%=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a><br>
+		</div>
+	</div>
+</div>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
