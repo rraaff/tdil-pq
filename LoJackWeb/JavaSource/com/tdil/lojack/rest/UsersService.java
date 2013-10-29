@@ -259,7 +259,7 @@ public class UsersService extends AbstractRESTService {
 		PersonBean personBean = extractObjectFromJSON(body, PersonBean.class);
 		JSONObject general = RegisterForm.getPersonJSON(false, personBean);
 		try {
-			ThalamusResponse response = ThalamusClientFacade.updatePerson(null, general);
+			ThalamusResponse response = ThalamusClientFacade.registerPersonAndConsumer(general);
 			if (response.isBadRequest()) {
 				return failResponse(response);
 			} else {

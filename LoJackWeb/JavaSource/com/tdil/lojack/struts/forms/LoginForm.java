@@ -173,6 +173,11 @@ public class LoginForm extends ActionForm {
 		if (jsonHasValueForKey(profile, clubLoJackIsClient)) {
 			user.setClientClubLoJack(profile.getBoolean(clubLoJackIsClient));
 		}
+		
+		String clubLoJackLevel = "clubLoJackLevel";
+		if (jsonHasValueForKey(profile, clubLoJackLevel)) {
+			user.setClubLoJackLevel(profile.getInt(clubLoJackLevel));
+		}
 	}
 
 	private static boolean jsonHasValueForKey(JSONObject profile, String key) {
