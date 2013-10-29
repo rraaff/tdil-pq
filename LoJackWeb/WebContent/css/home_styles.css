@@ -42,3 +42,7 @@ span.userSaludation { line-height:63px; float: left; }
 #floatyMenu ul li a.tw { background:url(../images/skin_lj_rl/buttons/icon_white_twitter.png); background-repeat:no-repeat; background-position:0px 0px; width:30px; height:30px; padding:0; margin:16px 10px; -o-transition:background-position .1s ease-out; -ms-transition:background-position .1s ease-out; -moz-transition:background-position .1s ease-out; -webkit-transition:background-position .1s ease-out; transition:background-position .1s ease-out; }
 #floatyMenu ul li a:hover.fb,
 #floatyMenu ul li a:hover.tw { background-position:0px -30px; }
+
+.clubLoJackLayerContent { background:#fff; padding:20px; }
+#tarjeta { background:url(../images/skin_lj_rl/clubLoJack/tarjeta-club-lojack_black_hi-res.jpg); width:800px; height:507px; }
+#tarjeta span.nameoncard { color:#fff; font-size:28px; text-transform:uppercase; top:360px; left:68px; position:relative; }

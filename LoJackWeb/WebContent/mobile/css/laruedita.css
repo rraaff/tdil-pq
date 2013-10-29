@@ -15,22 +15,28 @@
 #iconoLogin,
 #iconoLogout,
 #iconoTv,
+#iconoClubLJ,
 #iconoLogin img,
 #iconoLogout img,
-#iconoTv img { width:70px; height:70px; margin:0; padding:0; }
+#iconoTv img,
+#iconoClubLJ img { width:70px; height:70px; margin:0; padding:0; }
+
 
 #iconoTv,
 #iconoLogin,
 #iconoLogout		{ background:url(../images/newWheel/login_off.png); background-position:center center; background-repeat:no-repeat; top:-6px; left:128px; z-index:1101; position:relative; }
 #iconoLogout		{ background:url(../images/newWheel/logout_off.png); background-position:center center; background-repeat:no-repeat; }
 #iconoTv			{ background:url(../images/newWheel/tv_off.png); background-position:center center; background-repeat:no-repeat; top:-575px; left:178px; z-index:1099; position:relative; }
+#iconoClubLJ		{ background:url(../images/newWheel/clubLJ_off.png); background-position:center center; background-repeat:no-repeat; top:-6px; left:128px; z-index:1101; position:relative; }
+
 #iconoTv:hover,
 #iconoTv:focus		{ background:url(../images/newWheel/tv_over.png); background-position:center center; background-repeat:no-repeat; }
 #iconoLogin:hover,
 #iconoLogin:focus	{ background:url(../images/newWheel/login_over.png); background-position:center center; background-repeat:no-repeat; }
 #iconoLogout:hover,
 #iconoLogout:focus	{ background:url(../images/newWheel/logout_over.png); background-position:center center; background-repeat:no-repeat; }
-
+#iconoClubLJ:hover,
+#iconoClubLJ:focus	{ background:url(../images/newWheel/clubLJ_over.png); background-position:center center; background-repeat:no-repeat; }
 
 
 #iconoHome			{ background:url(../images/newWheel/home_off.png); background-position:0 0; background-repeat:no-repeat; top:-344px; left:6px; z-index:1105; position:relative; }

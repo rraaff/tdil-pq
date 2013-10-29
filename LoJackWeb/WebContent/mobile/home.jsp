@@ -78,7 +78,11 @@ function chbg(title, subTitle) {
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<%if (websiteUser.isHomeUser() || websiteUser.isPetUser() || websiteUser.isPreventUser()) { %>
+			<div id="iconoClubLJ"><a href="clubLoJack.jsp" onmouseover="chbg('Club', 'LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<% } else { %>
+			<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<% } %>
 		<div id="iconoParkings"><a href="../productoParkings.jsp" onmouseover="chbg('Parking', 'Estacioná en CABA y GBA')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<!-- div id="iconoProfile"><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div -->
 		<% if (websiteUser.isPreventUser()) { %>
@@ -115,5 +119,6 @@ function chbg(title, subTitle) {
 		<p>2013 lojack | <a href="legal.jsp" title="Legales">legales</a> | <a href="./goToContactMobile.do" title="Envianos tu consulta">Contactanos</a></p>
 	</div>
 </div>
-<%@ include file="../includes/version.jspf" %></body>
+<%@ include file="../includes/version.jspf" %>
+</body>
 </head>
