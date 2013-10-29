@@ -74,10 +74,10 @@
 				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<%if (websiteUser.isHomeUser() || websiteUser.isPetUser() || websiteUser.isPreventUser()) { %>
-				<!--  % if (websiteUser.isClientClubLoJack()) { % -->
+				<!-- %if (websiteUser.isHomeUser() || websiteUser.isPetUser() || websiteUser.isPreventUser()) { %>
+				<!--  % if (websiteUser.isClientClubLoJack()) { % ->
 					<li><a href="javascript:viewClubLoJack();">Club lo jack</a></li>
-				<% } %>
+				< % } %-->
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 			</ul>
 		</div>
@@ -85,18 +85,18 @@
 </header>
 <%@ include file="includes/laRuedita.jsp" %>
 
-<!-- forgot password -->
+<!-- forgot password ->
 <div id="clubLoJackLayer" class="layerOnTop" style="display: none; z-index: 1501;">
 	<div id="centradorModalesClubLoJack" class="defaultLayerStyles">
 		<div class="clubLoJackLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="clubLoJackLayer">X</button></div>
 			<div id="tarjeta">
-				<span class="nameoncard"><%=websiteUser.getName()%></span>
+				<span class="nameoncard">< %=websiteUser.getName()%></span>
 			</div>
-			<!--  a href="< %=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a><br-->
+			<!--  a href="< %=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a><br->
 		</div>
 	</div>
-</div>
+</div-->
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
