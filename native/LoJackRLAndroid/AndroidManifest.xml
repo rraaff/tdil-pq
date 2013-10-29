@@ -30,8 +30,8 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.RequestResetPasswordActivity"
             android:label="@string/title_request_reset"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_user"
             android:theme="@style/AppTheme">
         </activity>
@@ -39,16 +39,16 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.LoginActivity"
             android:label="@string/title_activity_login_for_action_bar"
-            android:configChanges="orientation"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait">
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.IndexActivity"
             android:label="@string/user_name"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_user"
             android:theme="@style/AppTheme">
         </activity>
@@ -56,8 +56,8 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmDashboard"
             android:label="@string/title_dashboard_alarms"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home"
             android:theme="@style/AppTheme">
         </activity>
@@ -65,32 +65,32 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.HomeLightDashboard"
             android:label="@string/title_dashboard_lights"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.ParkingsActivity"
             android:label="@string/title_parkings"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_parkings">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.PreventActivity"
             android:label="@string/title_prevent"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_cars">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_user"
             android:theme="@style/AppTheme">
         </activity>
@@ -98,8 +98,8 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.UpdateActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_user"
             android:theme="@style/AppTheme">
         </activity>
@@ -107,8 +107,8 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.ChangePasswordActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_user"
             android:theme="@style/AppTheme">
         </activity>
@@ -116,8 +116,8 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.HomeActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home"
             android:theme="@style/AppTheme">
         </activity>
@@ -125,57 +125,64 @@ android:theme="@android:Theme.Holo.Light"-->
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsActivity"
             android:label="@string/title_home"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeAlarmsSendPanicActivity"
             android:label="@string/title_send_panic"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogAlarmActivity"
             android:label="@string/title_log_alarm"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.HomeLightsActivity"
             android:label="@string/title_home"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeLogLightActivity"
             android:label="@string/title_log_light"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeCamerasActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:icon="@drawable/icon_main_home">
         </activity>
         
          <activity
             android:name="com.tdil.thalamus.android.HomeCameraActivity"
             android:label="@string/title_camera"
-            android:configChanges="orientation"
             android:icon="@drawable/icon_main_home"
-            android:screenOrientation="portrait">
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
         </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.CheckForUpdateActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -55,10 +55,18 @@
                 
                 <RelativeLayout 
                     android:id="@+id/homeContent"
-		            android:layout_width="320dp"
-		            android:layout_height="320dp"
-		            android:layout_gravity="top|center"
-		            android:background="@drawable/placalanding" />
+		            android:layout_width="fill_parent"
+		            android:layout_height="fill_parent"
+		            android:layout_gravity="top|center">
+		            
+                   	<ImageView
+                   	    android:id="@+id/imagePlaca"
+                   	    android:layout_width="fill_parent"
+                   	    android:layout_height="wrap_content"
+                   	    android:scaleType="center"
+                   	    android:src="@drawable/placalanding" />
+
+                </RelativeLayout>
             </FrameLayout>
 
         </LinearLayout>

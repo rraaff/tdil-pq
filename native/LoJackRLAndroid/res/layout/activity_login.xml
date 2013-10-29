@@ -16,14 +16,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center_vertical|center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@drawable/toplayer85"
+            android:gravity="center_vertical|center_horizontal"
             android:maxWidth="300dp"
             android:minWidth="250dp"
             android:orientation="vertical"
             android:padding="20dp"
-			android:textAlignment="center" >
+            android:textAlignment="center" >
 
             <TextView
                 android:id="@+id/loadingInfoText"
@@ -134,16 +134,18 @@
 
         </LinearLayout>
 
+
+    </LinearLayout>
         <ImageView
             android:id="@+id/placahome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom|center_horizontal"
+            android:layout_gravity="bottom|center_horizontal"
             android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            android:baselineAlignBottom="true"
             android:contentDescription="@string/action_loading"
-            android:maxWidth="200dp"
+            android:gravity="bottom|center_horizontal"
+            android:maxWidth="350dp"
             android:src="@drawable/logo_lojack" />
-
-    </LinearLayout>
-
 </merge>
