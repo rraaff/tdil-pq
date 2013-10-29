@@ -33,6 +33,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 	private ProgressDialog progressDialog;
 	private InputStream inputStream = null;
 	private String result = "";
+	private int statusCode;
 	private String url;
 	private Map<String, String> urlParams;
 	private String body;
@@ -81,7 +82,8 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
 			inputStream = httpEntity.getContent();
-			
+			statusCode = httpResponse.getStatusLine().getStatusCode();
+			System.out.println(statusCode);
 			// Convert response to string using String Builder
 			try {
 				BufferedReader bReader = new BufferedReader(new InputStreamReader(
@@ -139,6 +141,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 				try {
 					this.observer.sucess(this);
 				} catch (Exception e) {
+					e.printStackTrace();
 					this.observer.error(this);
 				}
 			} else {
@@ -154,5 +157,13 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> {
 
 	public String getResult() {
 		return result;
+	}
+
+	public int getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(int status) {
+		this.statusCode = status;
 	}
 }

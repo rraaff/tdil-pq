@@ -4,6 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,8 +21,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-//import android.view.Window;
-//import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -29,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
@@ -51,9 +54,12 @@ import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.PersonBean;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.rest.model.StateBean;
 import com.tdil.thalamus.android.rest.model.StateBeanCollection;
 import com.tdil.thalamus.android.utils.Messages;
+//import android.view.Window;
+//import android.view.WindowManager;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -283,6 +289,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		personBean.setDocumentType(documentTypeBean.getId());
 		personBean.setFirstName(firstName.getText().toString());
 		personBean.setLastName(lastName.getText().toString());
+		personBean.setEmail(email.getText().toString());
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, mYear);
 		cal.set(Calendar.MONTH, mMonth);
@@ -310,19 +317,42 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		new RESTClientTask(this, HttpMethod.POST, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
-				Gson gson = new Gson();
-				// TODO analizar la respuesta para mostrar un mensaje u otro
-				
-				
-				new AlertDialog.Builder(RegisterActivity.this)
-	               .setIcon(R.drawable.ic_launcher)
-	               .setTitle("Registracion")
-	               .setMessage("Se ha registrado")
-	               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-	                       public void onClick(DialogInterface dialog, int whichButton) {
-	                    	   RegisterActivity.this.finish();
-	                       }
-	               }).show();
+				try {
+					if (task.getStatusCode() != 201) {
+						JSONObject jsonObj = new JSONObject(task.getResult());
+						JSONObject errors = jsonObj.getJSONObject("errors");
+						JSONArray entry = errors.getJSONArray("entry");
+						for (int i = 0; i < entry.length(); i++) {
+							JSONObject err = entry.getJSONObject(i);
+							String key = err.getString("key");
+							String value = err.getString("value");
+							if (key.equals("credential.principal=credential.principal.CredentialAlreadyExists")) {
+								if (value.equals("profile.document=AlreadyExists")) {
+									document.setError("El numero de documento ya existe");
+								} else {
+									email.setError("El email ya existe");
+								}	
+							}
+						}
+					} else {
+						// TODO analizar la respuesta para mostrar un mensaje u otro
+						new AlertDialog.Builder(RegisterActivity.this)
+					       .setIcon(R.drawable.ic_launcher)
+					       .setTitle("Registracion")
+					       .setMessage("Se ha registrado")
+					       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					               public void onClick(DialogInterface dialog, int whichButton) {
+					            	   RegisterActivity.this.finish();
+					               }
+					       }).show();
+					}
+				} catch (JsonSyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			@Override
 			public void error(RESTClientTask task) {
@@ -375,11 +405,11 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	@Regex(order = 4, pattern = "[A-Za-z ']+", message = "El apellido es invalido")
 	private TextView lastName;
 	
-	@TextRule(order = 2, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
+	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la contraseña.")
 	@Password(order=3, message="Contraseña")
 	private TextView password;
 
-	@TextRule(order = 4, minLength = 4, maxLength = 10, message = "Ingrese la nueva contraseña.")
+	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva contraseña.")
 	@ConfirmPassword(order = 4, message= "Las contraseñas no coinciden")
 	private TextView retypePassword;
 

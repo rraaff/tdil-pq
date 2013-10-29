@@ -57,11 +57,11 @@ public class ChangePasswordActivity extends Activity implements
 	@TextRule(order = 1, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
 	private TextView oldPassword;
 
-	@TextRule(order = 2, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
+	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la contraseña.")
 	@Password(order=3, message="Contraseña")
 	private TextView newPassword;
 
-	@TextRule(order = 4, minLength = 4, maxLength = 10, message = "Ingrese la nueva contraseña.")
+	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva contraseña.")
 	@ConfirmPassword(order = 4, message= "Las contraseñas no coinciden")
 	private TextView retypePassword;
 	private Validator validator;
