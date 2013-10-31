@@ -1,0 +1,27 @@
+<SecureZones xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<SecureZone>
+		<Status>true</Status>
+		<ID>128520</ID>
+		<Description>Moreno</Description>
+	</SecureZone>
+	<SecureZone>
+		<Status>true</Status>
+		<ID>128521</ID>
+		<Description>Casa Materna</Description>
+	</SecureZone>
+	<SecureZone>
+		<Status>true</Status>
+		<ID>128522</ID>
+		<Description>Casa</Description>
+	</SecureZone>
+	<SecureZone>
+		<Status>true</Status>
+		<ID>128523</ID>
+		<Description>Moreno Centro</Description>
+	</SecureZone>
+	<SecureZone>
+		<Status>true</Status>
+		<ID>128524</ID>
+		<Description>Bouchard</Description>
+	</SecureZone>
+</SecureZones>

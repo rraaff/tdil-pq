@@ -1,0 +1,22 @@
+<SpeedLimits xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<SL>
+		<ID>1</ID>
+		<Description>70 Km/h</Description>
+	</SL>
+	<SL>
+		<ID>2</ID>
+		<Description>80 Km/h</Description>
+	</SL>
+	<SL>
+		<ID>3</ID>
+		<Description>90 Km/h</Description>
+	</SL>
+	<SL>
+		<ID>4</ID>
+		<Description>100 Km/h ACTIVA</Description>
+	</SL>
+	<SL>
+		<ID>5</ID>
+		<Description>110 Km/h</Description>
+	</SL>
+</SpeedLimits>

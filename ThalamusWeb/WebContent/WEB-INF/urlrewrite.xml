@@ -114,6 +114,46 @@
         <to>/isAlive.json</to>
     </rule>
 
+	<rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Users/LoginPortal</from>
+        <to>/LoginPortal.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81253/SatellitePosition/</from>
+        <to>../../../../../VehiclesSatellitePosition.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81253/SpeedLimit/</from>
+        <to>../../../../../SpeedLimit.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81253/SecureZones/</from>
+        <to>../../../../../SecureZones.xml</to>
+    </rule>
+    
+    
+   	<rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/[^/]*</from>
+        <to>../../../Vehicles.xml</to>
+    </rule>
+    
+    
+    
+    
+
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
@@ -186,6 +226,8 @@
     request.setAttribute("browser", "moz") will be called.
 
     -->
+
+
 
 </urlrewrite>
 

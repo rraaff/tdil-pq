@@ -1,0 +1,4 @@
+<LoginResponse xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Status>OK</Status>
+	<UserToken>7d45c45c-d389-4752-8431-e33fe160c836</UserToken>
+</LoginResponse>

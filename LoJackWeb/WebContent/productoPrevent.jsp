@@ -34,6 +34,12 @@
 	#docs { font-size:12px; }
 }
 </style>
+<% 
+Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk) {
+	isAndroid = true;
+}
+%>
 <% if (usingMobile || isAndroid) { %>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
@@ -224,8 +230,10 @@
 </script>
 </head>
 <body>
+<% if (!apk) { %>
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/clientMainManu.jsp" %>
+<% } %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
 <section id="content">
@@ -283,8 +291,9 @@
 		</div>
 	</div>
 </div>
-
+<% if (!apk) { %>
 <%@ include file="includes/footerProductoHome.jsp" %>
+<% } %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>

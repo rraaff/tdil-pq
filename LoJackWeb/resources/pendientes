@@ -1,5 +1,7 @@
 Hacer que centre parkings en donde esta el usuario
 
+http://localhost:8180/LoJackWeb/goToPreventLoginAndroid.do?timezone=-180&USING_APK=true
+geo fix -58.78599 -34.62575
 ******
 
 poi_inserts_gba.sql

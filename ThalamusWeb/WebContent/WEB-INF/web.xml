@@ -2,7 +2,6 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
  <display-name>ThalamusWeb</display-name>
- 
  <filter>
   <filter-name>UrlRewriteFilter</filter-name>
   <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
@@ -17,4 +16,8 @@
   <url-pattern>/api/*</url-pattern>
  </filter-mapping>
  
+ <filter-mapping>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <url-pattern>/PreventWCFServices/*</url-pattern>
+ </filter-mapping>
 </web-app>

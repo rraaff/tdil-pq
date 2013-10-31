@@ -20,6 +20,7 @@ public class GoToPreventAction extends AbstractAction {
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		try {
+			request.getSession().setAttribute("USING_APK", "true".equals(request.getParameter("USING_APK")));
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			int offset = Integer.valueOf(request.getParameter("timezone"));
 			user.setTimezoneOffset(offset);
