@@ -17,11 +17,7 @@
 						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
 							<% if (usingMobile || isAndroid) { %>
 								<!-- logueado y con acceso a prevent -->
-								<% if (websiteUser.isPreventLogged()) { %>
-									<li id="liCars" class="car" ><a class="rdCar" href="./productoPrevent.jsp" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-								<% } else { %>
-									<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-								<% } %>
+								<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 							<% } else { %>
 								<li id="liCars" class="car" ><a class="rdCar" href="#" id="enterPrevent" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 							<% }  %>
@@ -85,11 +81,7 @@
 			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
 				<% if (usingMobile || isAndroid) { %>
 					<!-- logueado y con acceso a prevent -->
-					<% if (websiteUser.isPreventLogged()) { %>
-						<li><a class="car" href="./productoPrevent.jsp">car</a></li>
-					<% } else { %>
-						<li><a class="car" href="javascript:loginPrevent()">car</a></li>
-					<% } %>
+					<li><a class="car" href="javascript:loginPrevent()">car</a></li>
 				<% } else { %>
 					<li><a class="car" href="#" id="enterPrevent" >car</a></li>
 				<% }  %>

@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.prevent.model.SatellitePosition"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
 --%><%@page import="com.tdil.lojack.utils.LoJackConfig"%><%--
 --%><%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%><%--
@@ -102,7 +103,7 @@ if (apk) {
 	$(function () {
 		<%@ include file="includes/closeLayers.jspf" %>
 		<%@ include file="includes/externalLogins.jspf" %>
-		<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null) { %>
+		<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null && !selectVehiclesForm.getSelectList().isEmpty()) { %>
 			var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
 				"autoSize": true,
 				"minSize": new OpenLayers.Size(300, 50),
@@ -144,7 +145,7 @@ if (apk) {
 
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 			Mapa.UpdateConfig({ title: "Prevent" });
-			Mapa.SetParameters("toolbar=off&Lat=<%=selectVehiclesForm.getSelectedVehiclePosition().getLatitude()%>&Lon=<%=selectVehiclesForm.getSelectedVehiclePosition().getLongitude()%>&Width=84&LayersViewWidth=0&zoom=15");
+			Mapa.SetParameters("toolbar=off&Lat=<%=selectVehiclesForm.getSelectedVehiclePosition().get(0).getLatitude()%>&Lon=<%=selectVehiclesForm.getSelectedVehiclePosition().get(0).getLongitude()%>&Width=84&LayersViewWidth=0&zoom=15");
 			
 			parkings = new OpenLayers.Layer.Markers( "Parkings" );
 			Mapa.map.addLayer(parkings);
@@ -157,7 +158,11 @@ if (apk) {
 			var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
 			var proj = new OpenLayers.Projection("EPSG:4326");
 			var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
-			parkings.addMarker(createMarker(<%=selectVehiclesForm.getSelectedVehiclePosition().getLongitude()%>,<%=selectVehiclesForm.getSelectedVehiclePosition().getLatitude()%>, '<%=selectVehiclesForm.getSelected().getDescription()%>', '<%=selectVehiclesForm.getSelectedVehiclePosition().getStreet()%>-<%=selectVehiclesForm.getSelectedVehiclePosition().getNumber()%>', proj, iconCar.clone()));
+			<% int index = 0;
+				for (SatellitePosition pos : selectVehiclesForm.getSelectedVehiclePosition()) { 
+					com.tdil.lojack.prevent.model.Vehicle ve1 = selectVehiclesForm.getSelectList().get(index++);%>
+					parkings.addMarker(createMarker(<%=pos.getLongitude()%>,<%=pos.getLatitude()%>, '<%=ve1.getDescription()%>', '<%=pos.getStreet()%>-<%=pos.getNumber()%>', proj, iconCar.clone()));
+			<% } %>
 		<% } else { %>
 			var mapOptions = {
 				DataProjection: "EPSG:4326"

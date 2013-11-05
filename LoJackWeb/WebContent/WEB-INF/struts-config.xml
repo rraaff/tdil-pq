@@ -218,18 +218,18 @@
 
   <!-- Prevent -->
   
-  <action name="PreventLoginForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   	<forward name="failure" path="/mobile/home.jsp" redirect="true"/>
   </action>
   
-  <action name="PreventLoginForm" parameter="PreventUser" path="/goToPreventLoginAndroid" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToPreventLoginAndroid" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   	<forward name="failure" path="/preventAndroidError.jsp" redirect="true"/>
   </action>
   
-  <action name="PreventLoginForm" parameter="PreventUser" path="/mobile/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
-  	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/mobile/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   	<forward name="failure" path="/mobile/home.jsp" redirect="true"/>
   </action>
   <action name="PreventLoginForm" parameter="PreventUser" path="/preventLogin" scope="session" type="com.tdil.lojack.struts.action.LoginPreventAction">

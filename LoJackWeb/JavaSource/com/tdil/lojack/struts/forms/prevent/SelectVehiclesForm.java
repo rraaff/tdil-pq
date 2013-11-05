@@ -1,5 +1,8 @@
 package com.tdil.lojack.struts.forms.prevent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
@@ -21,8 +24,8 @@ public class SelectVehiclesForm extends VehiclesForm {
 	 */
 	private static final long serialVersionUID = 3752656266263380512L;
 
-	private Vehicle selected;
-	private SatellitePosition selectedVehiclePosition;
+	private List<Vehicle> selectList;
+	private List<SatellitePosition> selectedVehiclePosition;
 
 	private String alertPhone;
 	private String crashPhone;
@@ -38,6 +41,14 @@ public class SelectVehiclesForm extends VehiclesForm {
 			user.reloginPrevent();
 			basicselectVehicleForMap(user, id);
 		}
+	}
+	
+	public void loadAllVehiclesPositions(WebsiteUser user) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		List<SatellitePosition> allPos = new ArrayList<SatellitePosition>();
+		for(Vehicle vehicle : this.getVehicles()) {
+			allPos.add((SatellitePosition)PreventConnector.getVehicleSatPosition(user.getPreventLoginResponse(), vehicle).getResult());
+		}
+		selectedVehiclePosition = allPos;
 	}
 	
 	private void basicselectVehicleForMap(WebsiteUser user, String id) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
@@ -74,15 +85,22 @@ public class SelectVehiclesForm extends VehiclesForm {
 	}
 
 	public Vehicle getSelected() {
-		return selected;
+		return selectList.get(0);
 	}
 	public void setSelected(Vehicle selected) {
-		this.selected = selected;
+		List<Vehicle> list = new ArrayList<Vehicle>();
+		list.add(selected);
+		this.selectList = list;
 	}
-	public SatellitePosition getSelectedVehiclePosition() {
+	public List<SatellitePosition> getSelectedVehiclePosition() {
 		return selectedVehiclePosition;
 	}
 	public void setSelectedVehiclePosition(SatellitePosition selectedVehiclePosition) {
+		List<SatellitePosition> list = new ArrayList<SatellitePosition>();
+		list.add(selectedVehiclePosition);
+		this.selectedVehiclePosition = list;
+	}
+	public void setSelectedVehiclePosition(List<SatellitePosition> selectedVehiclePosition) {
 		this.selectedVehiclePosition = selectedVehiclePosition;
 	}
 
@@ -133,6 +151,14 @@ public class SelectVehiclesForm extends VehiclesForm {
 		} else {
 			return false;
 		}
+	}
+
+	public List<Vehicle> getSelectList() {
+		return selectList;
+	}
+
+	public void setSelectList(List<Vehicle> selectList) {
+		this.selectList = selectList;
 	}
 
 }

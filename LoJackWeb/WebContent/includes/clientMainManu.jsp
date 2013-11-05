@@ -21,11 +21,7 @@
 			<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
 				<% if (usingMobile || isAndroid) { %>
 					<!-- logueado y con acceso a prevent -->
-					<% if (websiteUser.isPreventLogged()) { %>
-						<li class="toRight tabCar"><a href="./productoPrevent.jsp" title="Administrar tus autos">Car</a></li>
-					<% } else { %>
-						<li class="toRight tabCar"><a href="javascript:loginPrevent();" title="Administrar tus autos">Car</a></li>
-					<% } %>
+					<li class="toRight tabCar"><a href="javascript:loginPrevent();" title="Administrar tus autos">Car</a></li>
 				<% } else { %>
 					<li class="toRight tabCar"><a href="#" id="enterPrevent" title="Administrar tus autos">Car</a></li>
 				<% }  %>

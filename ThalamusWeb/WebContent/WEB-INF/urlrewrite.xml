@@ -131,7 +131,22 @@
     <rule>
         <note>
         </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81254/SatellitePosition/</from>
+        <to>../../../../../VehiclesSatellitePosition1.xml</to>
+    </rule>
+    
+    
+    <rule>
+        <note>
+        </note>
         <from>/PreventWCFServices/GISService.svc/Vehicles/81253/SpeedLimit/</from>
+        <to>../../../../../SpeedLimit.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81254/SpeedLimit/</from>
         <to>../../../../../SpeedLimit.xml</to>
     </rule>
     
@@ -142,6 +157,25 @@
         <to>../../../../../SecureZones.xml</to>
     </rule>
     
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81254/SecureZones/</from>
+        <to>../../../../../SecureZones.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81253/PhoneNumbers/</from>
+        <to>../../../../../PhoneNumbers.xml</to>
+    </rule>
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/Vehicles/81254/PhoneNumbers/</from>
+        <to>../../../../../PhoneNumbers.xml</to>
+    </rule>
     
    	<rule>
         <note>
