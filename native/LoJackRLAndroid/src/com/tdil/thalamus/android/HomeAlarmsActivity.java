@@ -106,19 +106,13 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			@Override
 			public void onTabChanged(String tabId) {
 				if (tabId.equals("tabAlarms")) {
-					if (!alarmsLoaded) {
-						loadAlarms();
-					}
+					loadAlarms();
 				}
 				if (tabId.equals("tabLights")) {
-					if (!lightsLoaded) {
-						loadLights();
-					}
+					loadLights();
 				}
 				if (tabId.equals("tabCameras")) {
-					if (!camerasLoaded) {
-						loadCameras();
-					}
+					loadCameras();
 				}
 			}
 		});
@@ -144,6 +138,18 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		FooterLogic.installFooterLogic(this);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		TabHost th = (TabHost) findViewById(R.id.tabhost);
+		if (th.getCurrentTab() == 0) {
+			loadAlarms();
+		}
+		if (th.getCurrentTab() == 1) {
+			loadLights();
+		}
 	}
 
 	public void loadAlarms() {

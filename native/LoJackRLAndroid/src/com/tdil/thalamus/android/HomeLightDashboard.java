@@ -26,6 +26,7 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Light;
 import com.tdil.thalamus.android.rest.model.LightCollection;
+import com.tdil.thalamus.android.rest.model.LightJobStatus;
 import com.tdil.thalamus.android.rest.model.LightJobStatusCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
@@ -40,6 +41,12 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	private HomeLightsActivity previous;
 	
 	public static final String LIGHT = "LIGHT";
+	
+	private int times = 0;
+	private static int max_times = 10;
+	private static long sleep = 2000;
+	private Switch activateDeactivateSwitch;
+	private Switch randomSwitch;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +66,9 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 
 
 	public void init() {
-		Switch activateDeactivate = (Switch)findViewById(R.id.switchActivate);
-		Switch random = (Switch)findViewById(R.id.switchRandom);
+		ignore = true;
+		activateDeactivateSwitch = (Switch)findViewById(R.id.switchActivate);
+		randomSwitch = (Switch)findViewById(R.id.switchRandom);
 		
 		TextView description = (TextView) findViewById(R.id.lightDescription);
 		description.setText(light.getDescription());
@@ -87,18 +95,18 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		TextView lastChangeUser = (TextView) findViewById(R.id.lastChangeUser);
 		lastChangeUser.setText(light.getLastChangeUser());
 
-		activateDeactivate.setChecked(light.isOn());
-		random.setChecked(light.isInRandomMode());
+		activateDeactivateSwitch.setChecked(light.isOn());
+		randomSwitch.setChecked(light.isInRandomMode());
 		
 		if (light.isInRandomMode()) {
-			activateDeactivate.setEnabled(false);
+			activateDeactivateSwitch.setEnabled(false);
 		} else {
-			activateDeactivate.setEnabled(true);
+			activateDeactivateSwitch.setEnabled(true);
 		}
 		if (light.isOn()) {
-			random.setEnabled(false);
+			randomSwitch.setEnabled(false);
 		} else {
-			random.setEnabled(true);
+			randomSwitch.setEnabled(true);
 		}
 		ignore = false;
 	}
@@ -155,22 +163,55 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	}
 
 	public void startLightsBackgroundJob() {
+		activateDeactivateSwitch.setEnabled(false);
+		randomSwitch.setEnabled(false);
+		times = 0;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
 				LightJobStatusCollection col = gson.fromJson(task.getResult(),
 						LightJobStatusCollection.class);
-				if (!col.getStatus().isEmpty()) {
-					HomeLightDashboard.this.startLightsBackgroundJob();
-				} else {
-					try {
-						Thread.sleep(20000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+				boolean found = false;
+				for (LightJobStatus jobStatus : col.getStatus()) {
+					if (jobStatus.getIdEntidad() == HomeLightDashboard.this.light.getIdEntidad()) {
+						if (jobStatus.getIdLuz() == HomeLightDashboard.this.light.getIdLuz()) {
+							System.out.println("FOUND " + task.getResult());
+							found = true;
+							if (jobStatus.isRan()) {
+								System.out.println("ran");
+								HomeLightDashboard.this.light.setStatus(Light.RANDOM);
+							} else {
+								if (jobStatus.isOn()) {
+									System.out.println("on");
+									HomeLightDashboard.this.light.setStatus(Light.ON);
+								} else {
+									if (jobStatus.isUnknown()) {
+										System.out.println("un");
+										HomeLightDashboard.this.light.setStatus(Light.UNKNOWN);
+									} else {
+										System.out.println("off");
+										HomeLightDashboard.this.light.setStatus(Light.OFF);
+									}
+								}
+							}
+						}
 					}
-					HomeLightDashboard.this.loadLights();
+				}
+				if (!found) {
+					if (times < max_times) {
+						times++;
+						try {
+							Thread.sleep(sleep);
+						} catch (InterruptedException e) {}
+						HomeLightDashboard.this.startLightsBackgroundJob();
+					} else {
+						HomeLightDashboard.this.loadLights();
+						HomeLightDashboard.this.ignore = false;
+					}
+				} else {
+					HomeLightDashboard.this.init();
+					HomeLightDashboard.this.ignore = false;
 				}
 			}
 

@@ -25,10 +25,10 @@ public class Light implements Serializable {
 	private String description;
 	private boolean emailnotification;
 
-	private static final int OFF = 0;
-	private static final int ON = 1;
-	private static final int UNKNOWN = 2;
-	private static final int RANDOM = 3;
+	public static final int OFF = 0;
+	public static final int ON = 1;
+	public static final int UNKNOWN = 2;
+	public static final int RANDOM = 3;
 
 
 	public Light() {
