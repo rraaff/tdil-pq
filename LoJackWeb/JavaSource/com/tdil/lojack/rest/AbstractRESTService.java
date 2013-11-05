@@ -53,7 +53,12 @@ public abstract class AbstractRESTService {
 	}
 	
 	public Response response(Object object) {
-		return Response.status(201).entity(asJSON(object)).build();
+		int httpStatus = 201;
+		return response(httpStatus, object);
+	}
+
+	public Response response(int httpStatus, Object object) {
+		return Response.status(httpStatus).entity(asJSON(object)).build();
 	}
 
 	public Response asyncFailResponse() {

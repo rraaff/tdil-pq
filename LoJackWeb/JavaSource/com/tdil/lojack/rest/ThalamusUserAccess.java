@@ -44,16 +44,22 @@ public class ThalamusUserAccess extends AbstractRESTService {
 				JSONObject result = ThalamusLoginCache.getHomeJSON(cacheKey);
 				if (result == null) {
 					LOG.warn("No homeUser for " + cacheKey);
-					return response(new JSONObject());
+					return response(200, new JSONObject());
 				} else {
-					return response(result);
+					if (LOG.isInfoEnabled()) {
+						LOG.info("Home user found " + cacheKey + "=" + result.toString());
+					}
+					return response(200, result);
 				}
 			} else {
-				return response(new JSONObject());
+				if (LOG.isInfoEnabled()) {
+					LOG.info("Cache key is null, user is not logged?");
+				}
+				return response(200, new JSONObject());
 			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return response(new JSONObject());
+			return response(200, new JSONObject());
 		} 
 	}
 	
@@ -67,16 +73,22 @@ public class ThalamusUserAccess extends AbstractRESTService {
 				JSONObject result = ThalamusLoginCache.getPetJSON(cacheKey);
 				if (result == null) {
 					LOG.warn("No petUser for " + cacheKey);
-					return response(new JSONObject());
+					return response(200, new JSONObject());
 				} else {
-					return response(result);
+					if (LOG.isInfoEnabled()) {
+						LOG.info("Pet user found " + cacheKey + "=" + result.toString());
+					}
+					return response(200, result);
 				}
 			} else {
-				return response(new JSONObject());
+				if (LOG.isInfoEnabled()) {
+					LOG.info("Cache key is null, user is not logged?");
+				}
+				return response(200, new JSONObject());
 			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return response(new JSONObject());
+			return response(200, new JSONObject());
 		} 
 	}
 	
@@ -90,16 +102,22 @@ public class ThalamusUserAccess extends AbstractRESTService {
 				JSONObject result = ThalamusLoginCache.getPreventJSON(cacheKey);
 				if (result == null) {
 					LOG.warn("No preventUser for " + cacheKey);
-					return response(new JSONObject());
+					return response(200, new JSONObject());
 				} else {
-					return response(result);
+					if (LOG.isInfoEnabled()) {
+						LOG.info("Prevent user found for " + cacheKey + "=" + result.toString());
+					}
+					return response(200, result);
 				}
 			} else {
-				return response(new JSONObject());
+				if (LOG.isInfoEnabled()) {
+					LOG.info("Cache key is null, user is not logged?");
+				}
+				return response(200, new JSONObject());
 			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
-			return response(new JSONObject());
+			return response(200, new JSONObject());
 		} 
 	}
 
