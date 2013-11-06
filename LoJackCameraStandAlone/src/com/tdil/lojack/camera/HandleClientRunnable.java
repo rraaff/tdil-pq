@@ -56,13 +56,7 @@ public class HandleClientRunnable implements Runnable {
 			String url = parameters[2];
 			String model = parameters[3];
 			String command = parameters[4];
-			IPCamera camera = null;
-			if (TPLinkSC4171G.TP_LINK_SC4171G.equals(model)) {
-				camera = new TPLinkSC4171G(url, username, password);
-			}
-			if (PanasonicBLC131.PANASONIC_BLC131.equals(model)) {
-				camera = new PanasonicBLC131(url, username, password);
-			}
+			IPCamera camera = IPCamera.createIPCamera(model, url, username, password);
 			camera.setConnectTimeOut(CameraServer.connectTimeOut);
 			camera.setReadTimeOut(CameraServer.readTimeOut);
 			out = s.getOutputStream();

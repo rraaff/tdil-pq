@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tdil.lojack.camera.IPCamera;
-import com.tdil.lojack.camera.PanasonicBLC131;
-import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.web.NoCacheFilter;
 
 public class MoveCameraStatelessServlet extends HttpServlet {
@@ -36,13 +34,7 @@ public class MoveCameraStatelessServlet extends HttpServlet {
 //			inProgress.remove(url);
 //		}
 		try {
-			IPCamera camera = null;
-			if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
-				camera = new PanasonicBLC131(url, username, password);
-			}
-			if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
-				camera = new TPLinkSC4171G(url, username, password);
-			}
+			IPCamera camera = IPCamera.createIPCamera(model, url, username, password);
 //			inProgress.put(url, camera);
 			if ("left".equals(dir)) {
 				camera.left();

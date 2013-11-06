@@ -19,14 +19,12 @@ import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.tdil.lojack.camera.IPCamera;
-import com.tdil.lojack.camera.PanasonicBLC131;
-import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.utils.encryption.DesEncrypter;
-import javax.swing.JLabel;
 
 /**
  * Class <code>AppletCamara</code> is responsible of establishing a directo connection
@@ -240,12 +238,7 @@ public class AppletCamara extends javax.swing.JApplet {
 
 			model = getParameter("model");
 		}
-		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(model)) {
-			camera = new TPLinkSC4171G(url, username, password);
-		}
-		if (PanasonicBLC131.PANASONIC_BLC131.equals(model)) {
-			camera = new PanasonicBLC131(url, username, password);
-		}
+		camera = IPCamera.createIPCamera(model, url, username, password);
 		camera.setConnectTimeOut(connectTimeOut);
 		camera.setReadTimeOut(readTimeOut);
 
