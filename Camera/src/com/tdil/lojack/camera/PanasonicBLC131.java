@@ -25,7 +25,7 @@ public class PanasonicBLC131 extends IPCamera {
 	private HttpURLConnection conn;
 	private BufferedInputStream httpIn;
 
-	public PanasonicBLC131(String url, String username, String password) {
+	protected PanasonicBLC131(String url, String username, String password) {
 		super(url, username, password);
 	}
 

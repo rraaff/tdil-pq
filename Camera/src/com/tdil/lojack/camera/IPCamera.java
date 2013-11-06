@@ -13,6 +13,8 @@ import java.net.Proxy;
 import java.net.URL;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
 
 public abstract class IPCamera implements Serializable, CameraLogger {
 	
@@ -63,8 +65,20 @@ public abstract class IPCamera implements Serializable, CameraLogger {
 		}
 	}
 	
+	public static IPCamera createIPCamera(String model, String url, String username, String password) {
+		if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
+			return new PanasonicBLC131(url, username, password);
+		}
+		if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
+			return new TPLinkSC4171G(url, username, password);
+		}
+		if (model.equals(TrendnetTVIP851.TrendnetTVIP851)) {
+			return new TrendnetTVIP851(url, username, password);
+		}
+		return null;
+	}
 	
-	public IPCamera(String url, String username, String password) {
+	protected IPCamera(String url, String username, String password) {
 		super();
 		this.url = url;
 		this.username = username;
@@ -175,6 +189,14 @@ public abstract class IPCamera implements Serializable, CameraLogger {
 	protected void configureTimeout(HttpURLConnection conn) {
 		conn.setConnectTimeout(this.getConnectTimeOut());
 		conn.setReadTimeout(this.getReadTimeOut());
+	}
+	
+	protected void configureTimeout(HttpClient client, ProxyConfiguration proxyConfiguration) {
+		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
+		connectionManager.getParams().setSoTimeout(connectTimeOut);
+		if (proxyConfiguration != null) {
+			client.getHostConfiguration().setProxy(proxyConfiguration.getServer(), proxyConfiguration.getPort());
+		}
 	}
 
 	public static ProxyConfiguration getProxyConfiguration() {
