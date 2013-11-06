@@ -13,15 +13,15 @@ import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
-import com.tdil.lojack.dao.impl.sqlserver.CameraConfDAOImpl;
-import com.tdil.lojack.dao.impl.sqlserver.SystemUserDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.AlarmConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.AsyncJobDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.BlobDataDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.CacheRegionDAOImpl;
+import com.tdil.lojack.dao.impl.sqlserver.CameraConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.LightConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.SystemPropertyDAOImpl;
+import com.tdil.lojack.dao.impl.sqlserver.SystemUserDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.WebsiteUserDAOImpl;
 
 public class SQLServerDAOProvider implements DAOProvider {

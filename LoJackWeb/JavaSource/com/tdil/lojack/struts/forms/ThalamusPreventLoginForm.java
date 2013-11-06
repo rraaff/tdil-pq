@@ -11,7 +11,6 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
 import com.tdil.lojack.prevent.model.LoginResponse;
-import com.tdil.lojack.prevent.model.UserLogin;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;

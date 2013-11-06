@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.AlarmConf;
-import com.tdil.lojack.model.AlarmConfExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.AlarmConf;
+import com.tdil.lojack.model.AlarmConfExample;
 
 public interface AlarmConfDAO {
 

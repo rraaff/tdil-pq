@@ -1,7 +1,8 @@
 package com.tdil.lojack.model;
 
-import com.tdil.ibatis.PersistentObject;
 import java.util.Date;
+
+import com.tdil.ibatis.PersistentObject;
 
 public class AsyncJob extends PersistentObject {
 

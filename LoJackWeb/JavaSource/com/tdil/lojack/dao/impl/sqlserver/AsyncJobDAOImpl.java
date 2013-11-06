@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl.sqlserver;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.model.AsyncJob;
 import com.tdil.lojack.model.AsyncJobExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class AsyncJobDAOImpl implements AsyncJobDAO {
 

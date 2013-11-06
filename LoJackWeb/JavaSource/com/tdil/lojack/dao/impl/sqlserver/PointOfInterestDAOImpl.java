@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl.sqlserver;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.model.PointOfInterest;
 import com.tdil.lojack.model.PointOfInterestExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class PointOfInterestDAOImpl implements PointOfInterestDAO {
 

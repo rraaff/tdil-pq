@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.LightConf;
-import com.tdil.lojack.model.LightConfExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.LightConf;
+import com.tdil.lojack.model.LightConfExample;
 
 public interface LightConfDAO {
 

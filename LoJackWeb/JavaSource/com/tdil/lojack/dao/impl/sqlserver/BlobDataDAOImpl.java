@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl.sqlserver;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.model.BlobData;
 import com.tdil.lojack.model.BlobDataExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class BlobDataDAOImpl implements BlobDataDAO {
 

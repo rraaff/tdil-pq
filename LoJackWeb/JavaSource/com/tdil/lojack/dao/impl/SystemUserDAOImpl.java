@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.SystemUserDAO;
 import com.tdil.lojack.model.SystemUser;
 import com.tdil.lojack.model.SystemUserExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class SystemUserDAOImpl implements SystemUserDAO {
 

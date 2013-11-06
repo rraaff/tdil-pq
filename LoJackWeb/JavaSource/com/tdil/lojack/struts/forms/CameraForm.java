@@ -11,8 +11,6 @@ import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
-import com.tdil.lojack.camera.PanasonicBLC131;
-import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Camera;
@@ -136,13 +134,7 @@ public class CameraForm extends ActionForm {
 			setPassword(camera2.getPassword());
 			setUrl(camera2.getUrl());
 			setModel(camera2.getModel());
-
-			if (this.getModel().equals(PanasonicBLC131.PANASONIC_BLC131)) {
-				setCamera(new PanasonicBLC131(this.getUrl(), this.getUsername(), this.getPassword()));
-			}
-			if (this.getModel().equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
-				setCamera(new TPLinkSC4171G(this.getUrl(), this.getUsername(), this.getPassword()));
-			}
+			setCamera(IPCamera.createIPCamera(model, url, username, password));
 		}
 	}
 

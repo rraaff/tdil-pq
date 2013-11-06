@@ -1,7 +1,6 @@
 package com.tdil.lojack.ipcamera;
 
 import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;

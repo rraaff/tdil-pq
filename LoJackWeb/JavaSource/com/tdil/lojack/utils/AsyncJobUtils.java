@@ -3,8 +3,6 @@ package com.tdil.lojack.utils;
 import java.sql.SQLException;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 
 import com.tdil.log4j.LoggerProvider;

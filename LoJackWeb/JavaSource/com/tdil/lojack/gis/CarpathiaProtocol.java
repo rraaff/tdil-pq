@@ -1,6 +1,13 @@
 package com.tdil.lojack.gis;
 
+import static com.tdil.lojack.gis.LoJackServicesConnector.LOG;
+import static com.tdil.lojack.gis.LoJackServicesConnector.configureTimeout;
+import static com.tdil.lojack.gis.LoJackServicesConnector.extractJSONObjectResponse;
+import static com.tdil.thalamus.client.core.ThalamusClient.getResponseString;
+
 import java.io.IOException;
+
+import net.sf.json.JSON;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -9,17 +16,11 @@ import org.apache.commons.httpclient.methods.EntityEnclosingMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
-import net.sf.json.JSON;
-
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
 import com.tdil.thalamus.client.core.method.PostMethodCreator;
-import static com.tdil.lojack.gis.LoJackServicesConnector.LOG;
-import static com.tdil.lojack.gis.LoJackServicesConnector.configureTimeout;
-import static com.tdil.lojack.gis.LoJackServicesConnector.extractJSONObjectResponse;
-import static com.tdil.thalamus.client.core.ThalamusClient.getResponseString;
 
 public class CarpathiaProtocol extends MiddlewareProtocol {
 	

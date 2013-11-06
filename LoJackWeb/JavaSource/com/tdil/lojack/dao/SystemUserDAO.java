@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.SystemUser;
-import com.tdil.lojack.model.SystemUserExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.SystemUser;
+import com.tdil.lojack.model.SystemUserExample;
 
 public interface SystemUserDAO {
 

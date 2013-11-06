@@ -1,10 +1,8 @@
 package com.tdil.lojack.servlet;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
-import EDU.oswego.cs.dl.util.concurrent.ConcurrentHashMap;
-
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.camera.IPCamera;
-import com.tdil.lojack.camera.PanasonicBLC131;
-import com.tdil.lojack.camera.TPLinkSC4171G;
 import com.tdil.lojack.utils.CameraCache;
 import com.tdil.web.NoCacheFilter;
 
@@ -52,13 +46,7 @@ public class ViewCameraStatelessServlet extends HttpServlet {
 				resp.getOutputStream().write(image);
 			} else {
 			
-				IPCamera camera = null;
-				if (model.equals(PanasonicBLC131.PANASONIC_BLC131)) {
-					camera = new PanasonicBLC131(url, username, password);
-				}
-				if (model.equals(TPLinkSC4171G.TP_LINK_SC4171G)) {
-					camera = new TPLinkSC4171G(url, username, password);
-				}
+				IPCamera camera = IPCamera.createIPCamera(model, url, username, password);
 	//			inProgress.put(url, camera);
 				InputStream inputStream = null;
 				try {

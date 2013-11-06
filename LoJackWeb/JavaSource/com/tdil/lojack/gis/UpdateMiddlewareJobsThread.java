@@ -12,7 +12,6 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.dao.AsyncJobDAO;
 import com.tdil.lojack.daomanager.DAOManager;
 import com.tdil.lojack.gis.model.JobStatus;
-import com.tdil.lojack.utils.SystemPropertyUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.web.jobs.UserJobCollection;
 import com.tdil.struts.TransactionalActionWithResult;

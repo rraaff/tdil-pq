@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.CacheRegion;
-import com.tdil.lojack.model.CacheRegionExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.CacheRegion;
+import com.tdil.lojack.model.CacheRegionExample;
 
 public interface CacheRegionDAO {
 

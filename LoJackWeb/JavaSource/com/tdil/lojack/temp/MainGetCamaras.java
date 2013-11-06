@@ -1,7 +1,6 @@
 package com.tdil.lojack.temp;
 
 import java.io.IOException;
-import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -12,9 +11,6 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.CarpathiaTranslator;
-import com.tdil.lojack.prevent.PreventXMLUtils;
-import com.tdil.lojack.prevent.URLParams;
-import com.tdil.lojack.prevent.XMLResponse;
 import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;

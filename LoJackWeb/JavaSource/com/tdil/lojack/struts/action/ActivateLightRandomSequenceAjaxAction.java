@@ -10,7 +10,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.lojack.gis.LoJackServicesConnector;
-import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.gis.model.AsyncJobResponse;
 import com.tdil.lojack.gis.model.Light;
 import com.tdil.lojack.utils.WebsiteUser;

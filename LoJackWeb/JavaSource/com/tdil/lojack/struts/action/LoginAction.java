@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 
 import com.tdil.lojack.struts.forms.LoginForm;
-import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;

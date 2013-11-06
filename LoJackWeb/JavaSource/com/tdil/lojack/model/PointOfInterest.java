@@ -1,7 +1,8 @@
 package com.tdil.lojack.model;
 
-import com.tdil.ibatis.PersistentObject;
 import java.math.BigDecimal;
+
+import com.tdil.ibatis.PersistentObject;
 
 public class PointOfInterest extends PersistentObject {
 

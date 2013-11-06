@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.WebsiteUser;
-import com.tdil.lojack.model.WebsiteUserExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.WebsiteUser;
+import com.tdil.lojack.model.WebsiteUserExample;
 
 public interface WebsiteUserDAO {
 

@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.SystemProperty;
-import com.tdil.lojack.model.SystemPropertyExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.SystemProperty;
+import com.tdil.lojack.model.SystemPropertyExample;
 
 public interface SystemPropertyDAO {
 

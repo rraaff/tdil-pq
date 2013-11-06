@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl.sqlserver;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.AlarmConfDAO;
 import com.tdil.lojack.model.AlarmConf;
 import com.tdil.lojack.model.AlarmConfExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class AlarmConfDAOImpl implements AlarmConfDAO {
 

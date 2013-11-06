@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.model.CacheRegion;
 import com.tdil.lojack.model.CacheRegionExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class CacheRegionDAOImpl implements CacheRegionDAO {
 

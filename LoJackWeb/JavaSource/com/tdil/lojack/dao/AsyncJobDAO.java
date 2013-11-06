@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.AsyncJob;
-import com.tdil.lojack.model.AsyncJobExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.AsyncJob;
+import com.tdil.lojack.model.AsyncJobExample;
 
 public interface AsyncJobDAO {
 

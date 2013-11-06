@@ -20,7 +20,6 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.gis.model.Alarm;
 import com.tdil.lojack.model.AsyncJob;
-import com.tdil.lojack.model.PointOfInterest;
 import com.tdil.lojack.utils.LoJackWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.web.NoCacheFilter;

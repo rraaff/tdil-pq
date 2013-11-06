@@ -11,9 +11,7 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm;
 import com.tdil.lojack.utils.WebsiteUser;
-import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
-import com.tdil.validations.ValidationErrors;
 
 public class GoToVehiclesSpeedLimitAction extends AbstractAction {
 

@@ -1,9 +1,10 @@
 package com.tdil.lojack.dao;
 
-import com.tdil.lojack.model.PointOfInterest;
-import com.tdil.lojack.model.PointOfInterestExample;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.tdil.lojack.model.PointOfInterest;
+import com.tdil.lojack.model.PointOfInterestExample;
 
 public interface PointOfInterestDAO {
 

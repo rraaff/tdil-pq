@@ -3,8 +3,6 @@ package com.tdil.lojack.gis.model;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.poi.hssf.record.formula.functions.Vlookup;
-
 import com.tdil.log4j.LoggerProvider;
 
 public class AsyncJobConstants {

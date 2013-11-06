@@ -1,11 +1,12 @@
 package com.tdil.lojack.dao.impl;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.model.CameraConf;
 import com.tdil.lojack.model.CameraConfExample;
-import java.sql.SQLException;
-import java.util.List;
 
 public class CameraConfDAOImpl implements CameraConfDAO {
     /**

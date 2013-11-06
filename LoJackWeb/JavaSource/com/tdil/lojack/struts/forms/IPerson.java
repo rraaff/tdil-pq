@@ -2,9 +2,9 @@ package com.tdil.lojack.struts.forms;
 
 import java.util.List;
 
-import com.tdil.lojack.struts.forms.beans.OptIn;
-
 import net.sf.json.JSONArray;
+
+import com.tdil.lojack.struts.forms.beans.OptIn;
 
 public interface IPerson {
 

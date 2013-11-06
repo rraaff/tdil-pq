@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import com.tdil.lojack.prevent.model.SecureZone;
 import com.tdil.lojack.prevent.model.SecureZones;
-import com.tdil.lojack.prevent.model.SpeedLimit;
-import com.tdil.lojack.prevent.model.SpeedLimits;
 import com.tdil.lojack.prevent.model.Vehicle;
 
 public class SecureZoneSelectionBean implements Serializable {

@@ -46,7 +46,9 @@
         <jar destfile="../WebContent/cameraviewer-b${hora}.jar" filesetmanifest="mergewithoutmain">
         	<fileset dir="../../Camera/bin"/>
             <fileset dir="../../CameraViewer/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="../../Camera/commons-codec.jar"/>
+            <zipfileset excludes="META-INF/*" src="../../Camera/commons-codec.jar"/>
+        	<zipfileset excludes="META-INF/*" src="../../thalamusJClient/EnvironmentLibraries/commons-httpclient.jar"/>
+        	<zipfileset excludes="META-INF/*" src="../../thalamusJClient/EnvironmentLibraries/commons-logging.jar"/>
         </jar>
 		<if>
 			<not>

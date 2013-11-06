@@ -9,9 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.lojack.struts.forms.CameraForm;
 import com.tdil.lojack.struts.forms.ContactForm;
-import com.tdil.lojack.utils.ThalamusWebUtils;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
