@@ -217,7 +217,7 @@ function right() {
 		</div>
 		<div id="productHomeContent" class="camarasBG">
 			<div id="cameraTitle">
-				<h1>Mi Cámara</h1>
+				<h1>Mi Cï¿½mara</h1>
 			</div>
 			
 			<% if (cameraForm.isUseApplet()) { %>
@@ -226,10 +226,10 @@ function right() {
 						<param name="wmode" value="transparent" />
 						<param name="code" value="com.tdil.lojack.camera.applet.AppletCamara.class">
 						<PARAM NAME="TYPE" VALUE="application/x-java-applet;version=1.6">
-						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201308142308.jar">
+						<PARAM NAME="ARCHIVE" VALUE="cameraviewer-b201311060032.jar">
 						<comment>
 							<embed code="com.tdil.lojack.camera.applet.AppletCamara.class" type="application/x-java-applet;jpi-version=1.6"
-								ARCHIVE="cameraviewer-b201308142308.jar" width="100%" height="100%" wmode="transparent">
+								ARCHIVE="cameraviewer-b201311060032.jar" width="100%" height="100%" wmode="transparent">
 								<noembed>
 									No Java Support.
 								</noembed>
