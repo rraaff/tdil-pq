@@ -2,24 +2,76 @@
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
 	<% if (!usingMobile && !isAndroid){ %>
 		$( "#enterPets" ).click(function() {
-			var userDate = new Date();
-			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-			window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+		<%@ include file="blockUI.jspf" %>
+		$.ajax({
+          type: "GET",
+          cache: false,
+          url: "./refreshThalamusLoginCacheServlet.st",
+          dataType: "json",
+          success: function(data) {
+        	  <%@ include file="unblockUI.jspf" %>
+        	  if (data.result == 'OK') {
+					var userDate = new Date();
+					var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+					window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+				} else {
+					errorAjax();
+				}
+       	   },
+	          error: function() {
+	        	  <%@ include file="unblockUI.jspf" %>
+	        	  errorAjax();
+	          }
+	      });
 		});
 	<% } else { %>
 		$( "#enterPets" ).click(function() {
-			var userDate = new Date();
-			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-			window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+			$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./refreshThalamusLoginCacheServlet.st",
+	          dataType: "json",
+	          success: function(data) {
+	        	  <%@ include file="unblockUI.jspf" %>
+	        	  if (data.result == 'OK') {
+						var userDate = new Date();
+						var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+						window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+					} else {
+						errorAjax();
+					}
+		          },
+		          error: function() {
+		        	  <%@ include file="unblockUI.jspf" %>
+		        	  errorAjax();
+		          }
+		      });
 		});
 	<% } %>
 <% } %>
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
 	<% if (!usingMobile && !isAndroid){ %>
 		$( "#enterPrevent" ).click(function() {
-			var userDate = new Date();
-			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-			window.open('<%=com.tdil.lojack.prevent.PreventConnector.getPreventLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.prevent.PreventConnector.getPreventToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Prevent');
+			$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./refreshThalamusLoginCacheServlet.st",
+	          dataType: "json",
+	          success: function(data) {
+	        	  <%@ include file="unblockUI.jspf" %>
+	        	  if (data.result == 'OK') {
+						var userDate = new Date();
+						var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+						window.open('<%=com.tdil.lojack.prevent.PreventConnector.getPreventLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.prevent.PreventConnector.getPreventToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Prevent');
+					} else {
+						errorAjax();
+					}
+		          },
+		          error: function() {
+		        	  <%@ include file="unblockUI.jspf" %>
+		        	  errorAjax();
+		          }
+		      });
 		});
 	<% } %>
 <% } %>

@@ -19,9 +19,9 @@ public class ThalamusLoginCache {
 	private static final String preventUser = "preventUser";
 	
 	static {
-		petsLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(24, TimeUnit.HOURS).build();
-		preventLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(24, TimeUnit.HOURS).build();
-		homeLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(24, TimeUnit.HOURS).build();
+		petsLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
+		preventLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
+		homeLoginCacheCache = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
 	}
 	
 	public static void updateCache(WebsiteUser user) {

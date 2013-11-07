@@ -17,18 +17,48 @@
 <link href="css/index_menu.css" rel="stylesheet" type="text/css">
 <link href="css/laruedita.css" rel="stylesheet" type="text/css">
 <link href="css/copyright.css" rel="stylesheet" type="text/css">
+<script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
+<script type="text/javascript" src="../js/jquery.blockUI.js"></script>
 <script type="text/javascript">
-function enterPets() {
-	var userDate = new Date();
-	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
-}
+
+$(document).ready(
+		function(){
+			$( "#enterPets" ).click(function() {
+				<%@ include file="includes/blockUI.jspf" %>
+				$.ajax({
+		          type: "GET",
+		          cache: false,
+		          url: "./refreshThalamusLoginCacheServlet.st",
+		          dataType: "json",
+		          success: function(data) {
+		        	  <%@ include file="includes/unblockUI.jspf" %>
+		        	  if (data.result == 'OK') {
+		        		  var userDate = new Date();
+		        			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
+		        			window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
+						} else {
+							errorAjax();
+						}
+		       	   },
+			          error: function() {
+			        	  <%@ include file="includes/unblockUI.jspf" %>
+			        	  errorAjax();
+			          }
+			      });
+				});
+		}
+);
+
 
 function enterPrevent() {
 	var userDate = new Date();
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
 	document.location.href = '../goToPreventLogin.do?timezone=' +userTimeZone;
 }
+<%@ include file="../includes/errorAjaxJS.jspf" %>
+<%@ include file="../includes/centerLayerJS.jspf" %>
+
+
 </script>
 <style type="text/css">
 #laRuedita { top:20%; }
@@ -68,6 +98,7 @@ function chbg(title, subTitle) {
 <%@ include file="includes/head.jsp"%>
 </head>
 <body>
+<a href="javascript:errorAjax()">ERR</a>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="menu">
 	<ul>
@@ -96,7 +127,7 @@ function chbg(title, subTitle) {
 			<div id="iconoHome"><a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<% if (websiteUser.isPetUser()) { %>
-			<div id="iconoPets"><a href="javascript:enterPets()" onmouseover="chbg('Pet', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+			<div id="iconoPets"><a id="enterPets" href="#" onmouseover="chbg('Pet', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
 			<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pet', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
@@ -115,6 +146,7 @@ function chbg(title, subTitle) {
 		<p>2013 lojack | <a href="legal.jsp" title="Legales">legales</a> | <a href="./goToContactMobile.do" title="Envianos tu consulta">Contactanos</a></p>
 	</div>
 </div>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="../includes/version.jspf" %>
 </body>
 </head>

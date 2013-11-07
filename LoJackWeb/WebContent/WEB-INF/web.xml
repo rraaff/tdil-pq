@@ -127,6 +127,11 @@
  </servlet>
  
  <servlet>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.RefreshThalamusLoginCacheServlet</servlet-class>
+ </servlet>
+ 
+ <servlet>
   <servlet-name>ViewCameraServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.ViewCameraServlet</servlet-class>
  </servlet>
@@ -200,6 +205,16 @@
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>
  </servlet-mapping>
+ 
+  <servlet-mapping>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <url-pattern>/refreshThalamusLoginCacheServlet.st</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <url-pattern>/mobile/refreshThalamusLoginCacheServlet.st</url-pattern>
+ </servlet-mapping>
+ 
  <!-- Action Servlet Mapping -->
  <servlet-mapping>
   <servlet-name>action</servlet-name>

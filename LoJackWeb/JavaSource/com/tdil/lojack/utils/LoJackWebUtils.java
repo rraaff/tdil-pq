@@ -19,6 +19,17 @@ public class LoJackWebUtils {
 		return logged;
 	}
 	
+	public static WebsiteUser getLoggedUser(HttpServletRequest request) {
+		WebsiteUser websiteUser = null;
+		if (request.getSession(false) != null) {
+			websiteUser = (WebsiteUser)request.getSession(false).getAttribute("user");
+			if (websiteUser != null && websiteUser.isLogged()) {
+				return websiteUser;
+			}
+		}
+		return null;
+	}
+	
 	public static boolean isHomeUserLogged(HttpServletRequest request) {
 		WebsiteUser websiteUser = null;
 		boolean logged = false;

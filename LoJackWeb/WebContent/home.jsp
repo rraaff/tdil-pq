@@ -60,6 +60,7 @@
 </script>
 </head>
 <body>
+<a href="javascript:errorAjax()">ERR</a>
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
 <header>
 	<div id="floatyMenu">
