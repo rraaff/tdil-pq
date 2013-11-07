@@ -1,12 +1,13 @@
 #loginLayer {}
-.layerOnTop, .layerOnTop20, .layerOnTop70 {
+.layerOnTop,
+.layerOnTop20,
+.layerOnTop70,
+#errorAjaxLayer {
 	background: url(../images/skin_lj_rl/backs/topLayer.png);
 	background-repeat: repeat;
-
 	font-size: 11px;
-
-	height: 100%;
-	width: 100%;
+	height:100%;
+	width:100%;
 	padding:0;
 	margin:0;
 }
@@ -16,6 +17,18 @@
 .layerOnTop70 {
 	background: url(../images/skin_lj_rl/backs/topLayer70.png);
 }
+#errorAjaxLayer {
+	position:absolute;
+}
+.errorAjaxInner {
+	width:100%;
+	height:100%;
+	background:#fff;
+	padding:20px;
+}
+.errorAjaxInner h3 { padding:0 0 15px 0; }
+.errorAjaxInner p { line-height:20px; }
+#errorAjaxLayer .buttonArea { text-align:center; width:100%; padding:15px 0 0 0; }
 .loginLayerStyles {}
 .loginLayerContent,
 .registerLayerContent,

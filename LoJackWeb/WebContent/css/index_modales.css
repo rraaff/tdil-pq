@@ -29,7 +29,8 @@
 .contactLayerContent,
 .changePasswordLayerContent,
 .forgotPasswordLayerContent,
-.logLayerStyle {
+.logLayerStyle,
+.ajaxErrorAccess {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -40,6 +41,8 @@
 	/*margin: 80px auto;*/
 	padding: 30px 53px;
 }
+.ajaxErrorAccess { width:450px; }
+.ajaxErrorAccess p { line-height: 20px; }
 .logLayerStyle { max-width:400px; }
 .panicLayerStyle { max-width:300px; }
 .changePasswordLayerContent { width: 466px; }

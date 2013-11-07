@@ -17,6 +17,7 @@
 <link href="css/index_menu.css" rel="stylesheet" type="text/css">
 <link href="css/laruedita.css" rel="stylesheet" type="text/css">
 <link href="css/copyright.css" rel="stylesheet" type="text/css">
+<link href="css/index_modales.css" rel="stylesheet" type="text/css">
 <script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
 <script type="text/javascript">
@@ -83,7 +84,17 @@ function enterPrevent() {
 	#flyingObjectContainer { width:100%; top:0; position:fixed; }
 	#logoIndex { width:26%; top:46%; margin:0 auto; }
 }
-
+input[type="submit"].buttonDefault,
+input[type="button"].buttonDefault,
+button.buttonDefault {
+	border:none;
+	background:#dc2c27;
+	color:#fff;
+	font-size:100%;
+	line-height:normal;
+	text-transform:uppercase;
+	padding:10px 20px;
+}
 </style>
 <script type="text/javascript">
 function chbg(title, subTitle) {
@@ -98,7 +109,6 @@ function chbg(title, subTitle) {
 <%@ include file="includes/head.jsp"%>
 </head>
 <body>
-<a href="javascript:errorAjax()">ERR</a>
 <div id="user"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></div>
 <div id="menu">
 	<ul>

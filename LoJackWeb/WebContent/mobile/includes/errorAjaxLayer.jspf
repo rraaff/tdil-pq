@@ -1,8 +1,7 @@
-<div id="errorAjaxLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesForMap" class="defaultLayerStyles">
-		<div class="modalStyle">
-			<h3>Ha ocurrido un error</h3>
-			<input type="button" id="closePasswordLayerButton" onclick="javascript:closeErrorAjax()" value="Cerrar" class="indexButtonBase" style="margin-right:20px;">
-		</div>
+<div id="errorAjaxLayer" style="top:0; left:0; display:none; z-index:1500;">
+	<div class="errorAjaxInner">
+		<h3>Ha ocurrido un error</h3>
+		<p>Por favor vuelva a intentarlo. Si el error persiste contectese con nuestro equipo de asistentes.</p>
+		<div class="buttonArea"><input type="button" id="closePasswordLayerButton" onclick="javascript:closeErrorAjax()" value="Cerrar" class="buttonDefault"></div>
 	</div>
 </div>
