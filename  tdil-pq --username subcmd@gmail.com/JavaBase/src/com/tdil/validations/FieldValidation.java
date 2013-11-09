@@ -2,7 +2,6 @@ package com.tdil.validations;
 
 import gnu.regexp.RE;
 import gnu.regexp.UncheckedRE;
-
 import it.sauronsoftware.jave.Encoder;
 import it.sauronsoftware.jave.EncoderException;
 import it.sauronsoftware.jave.EncodingAttributes;
@@ -11,6 +10,7 @@ import it.sauronsoftware.jave.VideoAttributes;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.fileupload.FileItem;
-
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -317,7 +316,7 @@ public class FieldValidation {
 				attrs.setVideoAttributes(video);
 				encoder.encode(file, scaled, attrs, 100);
 				fileReader = new FileReader(scaled);
-				content = IOUtils.toByteArray(fileReader);
+				content = IOUtils.toByteArray(new FileInputStream(scaled));
 				info = ImageUtils.getMultimediaInfo(scaled.getAbsolutePath());
 				width = info.getVideo().getSize().getWidth();
 				height = info.getVideo().getSize().getHeight();
