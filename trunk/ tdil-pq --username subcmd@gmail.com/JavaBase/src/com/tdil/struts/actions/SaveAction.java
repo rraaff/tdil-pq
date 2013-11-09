@@ -66,7 +66,7 @@ public class SaveAction extends AbstractAction {
 			return redirectToFailure(error, request, mapping);
 		} else {
 			try {
-				TransactionProvider.executeInTransaction(new Save(form));
+				GenericTransactionExecutionService.getInstance().execute(new Save(form));
 				GenericTransactionExecutionService.getInstance().execute(new ResetAndInit(form));
 			} catch (ValidationException ex) {
 				return redirectToFailure(ex.getError(), request, mapping);
