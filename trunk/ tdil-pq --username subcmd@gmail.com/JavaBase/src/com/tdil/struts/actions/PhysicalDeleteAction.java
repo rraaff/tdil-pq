@@ -13,15 +13,16 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
+import com.tdil.struts.forms.PhysicalDeleteForm;
 import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
-public class ToggleDeletedAction extends AbstractAction {
+public class PhysicalDeleteAction extends AbstractAction {
 
 	private static final class ResetAfterToggle implements TransactionalAction {
-		private final ToggleDeletedFlagForm abstractForm;
+		private final PhysicalDeleteForm abstractForm;
 
-		private ResetAfterToggle(ToggleDeletedFlagForm abstractForm) {
+		private ResetAfterToggle(PhysicalDeleteForm abstractForm) {
 			this.abstractForm = abstractForm;
 		}
 
@@ -31,14 +32,14 @@ public class ToggleDeletedAction extends AbstractAction {
 	}
 
 	private static final class ToggleDeletedFlag implements TransactionalAction {
-		private final ToggleDeletedFlagForm abstractForm;
+		private final PhysicalDeleteForm abstractForm;
 
-		private ToggleDeletedFlag(ToggleDeletedFlagForm abstractForm) {
+		private ToggleDeletedFlag(PhysicalDeleteForm abstractForm) {
 			this.abstractForm = abstractForm;
 		}
 
 		public void executeInTransaction() throws SQLException, ValidationException {
-			abstractForm.toggleDeletedFlag();
+			abstractForm.physicalDelete();
 		}
 	}
 
@@ -46,7 +47,7 @@ public class ToggleDeletedAction extends AbstractAction {
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		final ToggleDeletedFlagForm abstractForm = (ToggleDeletedFlagForm) form;
+		final PhysicalDeleteForm abstractForm = (PhysicalDeleteForm) form;
 		final int userId = Integer.parseInt(request.getParameter("id"));
 		abstractForm.initForDeleteWith(userId);
 		ValidationError validationError = new ValidationError();

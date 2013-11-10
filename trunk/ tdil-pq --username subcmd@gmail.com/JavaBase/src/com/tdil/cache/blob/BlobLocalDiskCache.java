@@ -47,6 +47,7 @@ public class BlobLocalDiskCache {
 			}
 			local = new File(localDataLocation);
 		}
+		local.setLastModified(System.currentTimeMillis());
 		// TODO quizas deberia tener un margen de x bytes para mantenerlo en memoria
 		try {
 			return new BlobLocalData(ext, localDataLocation, new BufferedInputStream(new FileInputStream(local)));
@@ -78,6 +79,7 @@ public class BlobLocalDiskCache {
 			}
 			local = new File(localDataLocation);
 		}
+		local.setLastModified(System.currentTimeMillis());
 		// TODO quizas deberia tener un margen de x bytes para mantenerlo en memoria
 		try {
 			return new BlobLocalData(ext, localDataLocation, new BufferedInputStream(new FileInputStream(local)));
