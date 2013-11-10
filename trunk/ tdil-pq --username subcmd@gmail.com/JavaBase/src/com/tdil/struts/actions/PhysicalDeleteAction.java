@@ -9,12 +9,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.ibatis.TransactionProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.PhysicalDeleteForm;
-import com.tdil.struts.forms.ToggleDeletedFlagForm;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class PhysicalDeleteAction extends AbstractAction {
@@ -57,7 +55,7 @@ public class PhysicalDeleteAction extends AbstractAction {
 			GenericTransactionExecutionService.getInstance().execute(new ResetAfterToggle(abstractForm));
 			return mapping.findForward("continue");
 		}
-		return mapping.findForward("failure");
+		return redirectToFailure(validationError, request, mapping);
 	}
 
 }
