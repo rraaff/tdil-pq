@@ -169,7 +169,7 @@ public class LoginForm extends ActionForm {
 			}
 		}
 		
-		String clubLoJackIsClient = "clubLoJackIsClient";
+		String clubLoJackIsClient = "ClubLjsClient";
 		if (jsonHasValueForKey(profile, clubLoJackIsClient)) {
 			user.setClientClubLoJack(profile.getBoolean(clubLoJackIsClient));
 		}
