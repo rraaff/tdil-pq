@@ -6,6 +6,7 @@
 		$.ajax({
           type: "GET",
           cache: false,
+          async: false,
           url: "./refreshThalamusLoginCacheServlet.st",
           dataType: "json",
           success: function(data) {
@@ -13,7 +14,7 @@
         	  if (data.result == 'OK') {
 					var userDate = new Date();
 					var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-					window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+					window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>',  '_blank');
 				} else {
 					errorAjax();
 				}
@@ -29,6 +30,7 @@
 			$.ajax({
 	          type: "GET",
 	          cache: false,
+	          async: false,
 	          url: "./refreshThalamusLoginCacheServlet.st",
 	          dataType: "json",
 	          success: function(data) {
@@ -55,6 +57,7 @@
 			$.ajax({
 	          type: "GET",
 	          cache: false,
+	          async: false,
 	          url: "./refreshThalamusLoginCacheServlet.st",
 	          dataType: "json",
 	          success: function(data) {

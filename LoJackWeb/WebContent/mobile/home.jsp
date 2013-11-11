@@ -29,6 +29,7 @@ $(document).ready(
 				$.ajax({
 		          type: "GET",
 		          cache: false,
+		          async: false,
 		          url: "./refreshThalamusLoginCacheServlet.st",
 		          dataType: "json",
 		          success: function(data) {
