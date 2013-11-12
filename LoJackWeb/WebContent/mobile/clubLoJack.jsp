@@ -15,6 +15,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/reset-styles.css" rel="stylesheet" type="text/css">
 <link href="css/index_menu.css" rel="stylesheet" type="text/css">
+<script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
 <script type="text/javascript">
 function enterPets() {
 	var userDate = new Date();
@@ -35,12 +36,12 @@ function enterPrevent() {
 @media all and (orientation:portrait) {
 	#tarjeta { background:#fff; width:100%; height:100%; padding:10px; display: inline-block; }
 	#tarjeta img { width:100%; }
-	#tarjeta span.nameoncard { color:#fff; position:absolute; z-index:1499; font-size:160%; top:38%; left:8%; }
+	#tarjeta span.nameoncard { color:#fff; text-align:left; position:absolute; z-index:1499; font-size:100%; top:40%; left:8%; width:70%; }
 }
 @media all and (orientation:landscape) {
 	#tarjeta { background:#fff; width:100%; padding:10px; margin:0 auto; text-align:center; display:inline-block; }
 	#tarjeta img { width:100%; }
-	#tarjeta span.nameoncard { color:#fff; position:absolute; z-index:1499; font-size:163%; top:85%; left:8%; }
+	#tarjeta span.nameoncard { color:#fff; text-align:left; position:absolute; z-index:1499; font-size:120%; top:85%; left:8%; width:50%; }
 }
 </style>
 <%@ include file="includes/head.jsp"%>
@@ -55,9 +56,29 @@ function enterPrevent() {
 	</ul>
 </div>
 <div id="tarjeta">
-	<span class="nameoncard"><%=websiteUser.getName()%></span>
+	<span id="tagOnCard" class="nameoncard"><%=websiteUser.getName()%></span>
 	<img src="../images/skin_lj_rl/clubLoJack/tarjeta-club-lojack_black_hi-res.jpg" />
 </div>
 <%@ include file="../includes/version.jspf" %>
+<script>
+	var checkHeight = function() {
+		var elemToChange = document.getElementById("tagOnCard");
+		var objH = elemToChange.style.width;
+		var winW = $(window).width();
+		var winH = $(window).height();
+		//var objH = $("tarjeta").height();
+	//	window.alert(winH + "  //  " + objH);
+		
+	//	elemToChange.style.width = winW + "px"
+	//	elemToChange.style.height = winH + "px"
+	}
+	
+	window.onload=function() {
+		checkHeight();
+	}		
+	window.onresize=function() {
+		recheckHeight();
+	}
+</script>
 </body>
 </head>

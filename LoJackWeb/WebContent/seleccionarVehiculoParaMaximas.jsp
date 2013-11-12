@@ -33,17 +33,15 @@ $( "#closeSelectVehicleForPhoneLayer" ).click(function() {
 </script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm");%>
 <div id="xContainer"><button id="closeSelectVehicleForPhoneLayer">X</button></div>
-<h3>Velocidades M&aacute;ximas del vehículo</h3>
+<h3>Velocidades Máximas del vehículo</h3>
 <div id="tableStyle">
 	<fieldset class="tableHeader">
 		<label class="w1">Patente</label>
-		<label class="w2">Acción</label>
 	</fieldset>
 	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
 		<a href="javascript:editMaximas('<%=vehicle.getId()%>')" title="Ver Velocidades">
 			<fieldset>
 				<label class="w1"><%=vehicle.getDescription() %></label>
-				<label class="w2">Seleccionar</label>
 			</fieldset>
 		</a>	
 	<% } %>

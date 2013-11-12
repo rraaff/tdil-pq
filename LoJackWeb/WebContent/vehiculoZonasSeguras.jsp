@@ -64,17 +64,13 @@ function postSaveSpeedLimits(data) {
 </script>
 <div id="xContainer"><button id="closeeditSecureZonesLayer">X</button></div>
 <h3>Zonas seguras</h3>
+<h4>Vehículo pantente: <bean:write name="SelectVehiclesForSecureZoneForm" property="selected.description" /></h4>
 <% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm"); %>
 <div class="alert alert-error" id="savesz" style="display: none;"></div>
 <html:form method="POST" action="/saveVehiculeSecureZones">
 	<div id="tableStyle">
-		<fieldset class="tableHeader">
-			<label class="w1">Acción</label>
-			<label class="w2">Zona</label>
-		</fieldset>
 		<fieldset>
-			<label class="w1"><bean:write name="SelectVehiclesForSecureZoneForm" property="selected.description" /></label>
-			<label class="w4"><html:select name="SelectVehiclesForSecureZoneForm" property="secureZoneSelectionBean.secureZoneId">
+			<label class="w100"><html:select name="SelectVehiclesForSecureZoneForm" property="secureZoneSelectionBean.secureZoneId">
 				<option	value="">-</option>
 				<% SecureZoneSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSecureZoneSelectionBean();
 					SecureZone selected = ssb.getZones().getActiveZone();

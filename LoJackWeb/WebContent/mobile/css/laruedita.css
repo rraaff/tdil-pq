@@ -57,5 +57,5 @@
 
 
 #rdCentral			{ width:131px; height:66px; top:-535px; left:79px; z-index: 1098; position:relative; }
-#rdCentral h2		{ color:#ee5222; font-family:"GothamBoldRegular","Gotham", "Helvetica", Arial, sans-serif; font-size:16px; text-align:center; text-transform:uppercase; }
-#rdCentral h3		{ color:#fff;   font-family:"GothamLightRegular","Gotham", "Helvetica", Arial, sans-serif; font-size:12px; text-align:center; text-transform:uppercase; }
+#rdCentral h2		{ color:#ee5222; font-family:"GothamBoldRegular","Gotham", "Helvetica", Arial, sans-serif; 	font-size:16px; text-align:center; text-transform:uppercase; }
+#rdCentral h3		{ color:#fff;	 font-family:"GothamLightRegular","Gotham", "Helvetica", Arial, sans-serif; font-size:12px; text-align:center; text-transform:uppercase; line-height:18px; }

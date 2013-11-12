@@ -61,17 +61,14 @@ function postSaveSpeedLimits(data) {
 
 </script>
 <div id="xContainer"><button id="closeeditMaxSpeedLayer">X</button></div>
-<h3>Determinar velocidades máximas</h3>
+<h3>Velocidades máximas</h3>
+<h4>Vehículo pantente: <bean:write name="SelectVehiclesForSpeedForm" property="selected.description" /></h4>
 <% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm"); %>
 <div class="alert alert-error" id="savespeederr" style="display: none;"></div>
 <html:form method="POST" action="/saveVehiculeSpeedLimit">
 	<div id="tableStyle">
-		<fieldset class="tableHeader">
-			<label class="w1">Patente</label>
-			<label class="w2">Vel. máxima</label>
-		</fieldset>
 		<fieldset>
-			<label class="w1"><bean:write name="SelectVehiclesForSpeedForm" property="selected.description" /></label>
+			<label class="w1"></label>
 			<html:select name="SelectVehiclesForSpeedForm" property="speedSelectionBean.speedLimitId">
 				<option	value="">-</option>
 				<% SpeedSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSpeedSelectionBean();

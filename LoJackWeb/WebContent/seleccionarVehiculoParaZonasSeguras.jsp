@@ -37,13 +37,11 @@ $( "#closeSelectVehicleForSecureZoneLayer" ).click(function() {
 <div id="tableStyle">
 	<fieldset class="tableHeader">
 		<label class="w1">Patente</label>
-		<label class="w2">Acción</label>
 	</fieldset>
 	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
 		<a href="javascript:editSecureZone('<%=vehicle.getId()%>')" title="Ver zonas seguras">
 			<fieldset>
 				<label class="w1"><%=vehicle.getDescription() %></label>
-				<label class="w2">Seleccionar</label>
 			</fieldset>
 		</a>	
 	<% } %>
