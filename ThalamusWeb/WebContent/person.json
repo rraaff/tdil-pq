@@ -82,7 +82,7 @@
           "petIsClient" : true,
           "homeUser" : "usuario",
           "petUser" : "petUser",
-          "clubLoJackIsClient": true,
+          "ClubLjsClient": true,
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
           "links" : [  ]

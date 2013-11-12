@@ -184,10 +184,20 @@
         <to>../../../Vehicles.xml</to>
     </rule>
     
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/SpeedLimit/</from>
+        <to>../../../SpeedLimitResp.xml</to>
+    </rule>
     
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/SecureZone/</from>
+        <to>../../../SecureZoneResp.xml</to>
+    </rule>
     
-    
-
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
