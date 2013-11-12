@@ -22,6 +22,8 @@
   <form-bean id="VehiclesSecureZoneForm" name="VehiclesSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSecureZoneForm"/>
   <form-bean id="SelectVehiclesForMapForm" name="SelectVehiclesForMapForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForSpeedForm" name="SelectVehiclesForSpeedForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForSecureZoneForm" name="SelectVehiclesForSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.lojack.struts.forms.ContactForm"/>
   <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
   
@@ -235,18 +237,26 @@
   <action name="PreventLoginForm" parameter="PreventUser" path="/preventLogin" scope="session" type="com.tdil.lojack.struts.action.LoginPreventAction">
   </action>
   
-  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
-  	<forward name="continue" path="/vehiculosVelocidades.jsp" redirect="true"/>
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesForSpeed" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  	<forward name="continue" path="/seleccionarVehiculoParaMaximas.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="VehiclesSpeedLimitForm" parameter="PreventUser" path="/saveVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesSpeedLimitAjaxAction">
-  </action>
-  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/goToVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
-  	<forward name="continue" path="/vehiculosZonasSeguras.jsp" redirect="true"/>
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
+  	<forward name="continue" path="/vehiculoVelocidades.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  </action>
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/saveVehiculeSpeedLimit" scope="session" type="com.tdil.lojack.struts.action.SaveVehicleSpeedLimitAjaxAction">
   </action>
   
-  <action name="VehiclesSecureZoneForm" parameter="PreventUser" path="/saveVehiculesSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveSecureZonesAjaxAction">
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculesForSecureZone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  	<forward name="continue" path="/seleccionarVehiculoParaZonasSeguras.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  </action>
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculeSecureZone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
+  	<forward name="continue" path="/vehiculoZonasSeguras.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  </action>
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/saveVehiculeSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveVehicleSecureZoneAjaxAction">
   </action>
   
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">

@@ -9,7 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
-import com.tdil.lojack.struts.forms.prevent.VehiclesSecureZoneForm;
+import com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.actions.AbstractAction;
 
@@ -18,11 +18,12 @@ public class GoToVehiclesSecureZoneAction extends AbstractAction {
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		VehiclesSecureZoneForm aForm = (VehiclesSecureZoneForm)form;
+		SelectVehiclesForm aForm = (SelectVehiclesForm)form;
 		try {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
-			aForm.initWith(user);
+			String vehicleId = request.getParameter("vehicleId");
+			aForm.selectVehicleForSecureZone(user, vehicleId);
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			response.setStatus(500);

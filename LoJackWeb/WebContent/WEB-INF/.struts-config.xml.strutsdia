@@ -358,9 +358,9 @@
   TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToVehiculesSpeedLimits" NAME="action53"
   PATH="/goToVehiculesSpeedLimits" SHAPE="32,4385,0,0"
-  TITLE="VehiclesSpeedLimitForm" TYPE="action" model-entity="StrutsProcessItem">
+  TITLE="SelectVehiclesForSpeedForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/vehiculosVelocidades.jsp" TARGET="page15" TITLE="continue"
+   PATH="/vehiculoVelocidades.jsp" TARGET="page51" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
    PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
@@ -373,22 +373,9 @@
    SUBTYPE="confirmed" TARGET="action54"
    TITLE="/saveVehiculesSpeedLimits.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#saveVehiculesSpeedLimits" NAME="action54"
-  PATH="/saveVehiculesSpeedLimits" SHAPE="32,4753,0,0"
-  TITLE="VehiclesSpeedLimitForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page16" PATH="/productoPrevent.jsp"
   SHAPE="240,4770,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
- <PROCESS-ITEM ID="#goToVehiculesSecureZones" NAME="action55"
-  PATH="/goToVehiculesSecureZones" SHAPE="32,5121,0,0"
-  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
-   PATH="/vehiculosZonasSeguras.jsp" TARGET="page17" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/vehiculosZonasSeguras.jsp"
   SHAPE="240,5138,0,0" SUBTYPE="jsp" TITLE="vehiculosZonasSeguras.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -396,9 +383,6 @@
    SUBTYPE="confirmed" TARGET="action56"
    TITLE="/saveVehiculesSecureZones.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
- <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
-  PATH="/saveVehiculesSecureZones" SHAPE="32,5121,0,0"
-  TITLE="VehiclesSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#goToVehiculesForMap" NAME="action57"
   PATH="/goToVehiculesForMap" SHAPE="32,5489,0,0"
   TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
@@ -1006,4 +990,67 @@
  <PROCESS-ITEM NAME="page42" PATH="/preventAndroidError.jsp"
   SHAPE="240,6177,0,0" SUBTYPE="jsp" TITLE="preventAndroidError.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculesForSpeed" NAME="action83"
+  PATH="/goToVehiculesForSpeed" SHAPE="32,5185,0,0"
+  TITLE="SelectVehiclesForSpeedForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/seleccionarVehiculoParaMaximas.jsp" TARGET="page49"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page49" PATH="/seleccionarVehiculoParaMaximas.jsp"
+  SHAPE="304,5090,0,0" SUBTYPE="jsp"
+  TITLE="seleccionarVehiculoParaMaximas.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page51" PATH="/vehiculoVelocidades.jsp"
+  SHAPE="240,4497,0,0" SUBTYPE="jsp" TITLE="vehiculoVelocidades.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehiculeSpeedLimit.do"
+   SUBTYPE="confirmed" TARGET="action85"
+   TITLE="/saveVehiculeSpeedLimit.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVehiculesSpeedLimits" NAME="action54"
+  PATH="/saveVehiculesSpeedLimits" SHAPE="448,4514,0,0"
+  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveVehiculeSpeedLimit" NAME="action85"
+  PATH="/saveVehiculeSpeedLimit" SHAPE="32,6097,0,0"
+  TITLE="SelectVehiclesForSpeedForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculesForSecureZone" NAME="action91"
+  PATH="/goToVehiculesForSecureZone" SHAPE="32,5217,0,0"
+  TITLE="SelectVehiclesForSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/seleccionarVehiculoParaZonasSeguras.jsp" TARGET="page52"
+   TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page52"
+  PATH="/seleccionarVehiculoParaZonasSeguras.jsp" SHAPE="304,5490,0,0"
+  SUBTYPE="jsp" TITLE="seleccionarVehiculoParaZonasSeguras.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiculeSecureZone" NAME="action101"
+  PATH="/goToVehiculeSecureZone" SHAPE="32,5185,0,0"
+  TITLE="SelectVehiclesForSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/vehiculoZonasSeguras.jsp" TARGET="page53" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page53" PATH="/vehiculoZonasSeguras.jsp"
+  SHAPE="304,5458,0,0" SUBTYPE="jsp" TITLE="vehiculoZonasSeguras.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehiculeSecureZones.do"
+   SUBTYPE="confirmed" TARGET="action105"
+   TITLE="/saveVehiculeSecureZones.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVehiculeSecureZones" NAME="action105"
+  PATH="/saveVehiculeSecureZones" SHAPE="512,5570,0,0"
+  TITLE="SelectVehiclesForSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
+  PATH="/saveVehiculesSecureZones" SHAPE="448,5138,0,0"
+  SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

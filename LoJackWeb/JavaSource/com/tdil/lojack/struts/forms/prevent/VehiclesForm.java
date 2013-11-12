@@ -26,7 +26,7 @@ public abstract class VehiclesForm extends ActionForm {
 
 	private WebsiteUser user;
 	private List<Vehicle> vehicles;
-
+	
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		super.reset(mapping, request);
@@ -76,5 +76,6 @@ public abstract class VehiclesForm extends ActionForm {
 	public void setVehicles(List<Vehicle> vehicles) {
 		this.vehicles = vehicles;
 	}
+
 
 }

@@ -194,12 +194,12 @@ if (apk) {
 
 	function editSecureZones() {
 		<%@ include file="includes/blockUI.jspf" %>
-		$('#editSecureZones').load('goToVehiculesSecureZones.do', function(response, status, xhr) {
+		$('#editSecureZone').load('goToVehiculesForSecureZone.do', function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
 				errorAjax();
 			} else {
-				centerLayer($(window), $( "#editSecureZonesLayer" ));
+				centerLayer($(window), $( "#editSecureZoneLayer" ));
 				centerLayer($(window), $( "#centradorModalesSecureZones" ));
 			}
 		});
@@ -214,6 +214,19 @@ if (apk) {
 			} else {
 				centerLayer($(window), $( "#selectVehiclesPhonesLayer" ));
 				centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
+			}
+		});
+	}
+
+	function selectVehiclesSpeed() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#selectVehiclesSpeed').load('goToVehiculesForSpeed.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#selectVehiclesSpeedLayer" ));
+				centerLayer($(window), $( "#centradorModalesVehiclesSpeed" ));
 			}
 		});
 	}
@@ -247,7 +260,7 @@ if (apk) {
 		<section id="controls">
 			<div class="basicControls">
 				<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
-				<button class="iconMaxSpeed" onclick="editMaxSpeed();">&nbsp;</button>
+				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 			</div>
@@ -268,9 +281,24 @@ if (apk) {
 		</div>
 	</div>
 </div>
-<div id="editSecureZonesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesSecureZones" class="defaultLayerStyles">
-		<div id="editSecureZones" class="modalStyle">
+<div id="editSecureZoneLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesSecureZone" class="defaultLayerStyles">
+		<div id="editSecureZone" class="modalStyle">
+			Consultando datos...
+		</div>
+	</div>
+</div>
+<div id="selectVehiclesSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesVehiclesSpeed" class="defaultLayerStyles">
+		<div id="selectVehiclesSpeed" class="modalStyle">
+			Consultando datos...
+		</div>
+	</div>
+</div>
+
+<div id="editVehiclesSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesEditSpeed" class="defaultLayerStyles">
+		<div id="editVehiclesSpeed" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>
