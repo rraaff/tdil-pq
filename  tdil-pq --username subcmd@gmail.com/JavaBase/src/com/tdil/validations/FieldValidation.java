@@ -311,7 +311,7 @@ public class FieldValidation {
 				Encoder encoder = new Encoder();
 				EncodingAttributes attrs = new EncodingAttributes();
 				VideoAttributes video = new VideoAttributes();
-				video.setSize(ImageUtils.getDestinationVideoSize(info, String.valueOf(widthX), String.valueOf(widthY), false));
+				video.setSize(ImageUtils.getDestinationVideoSize(info, String.valueOf(widthX), String.valueOf(widthY), true));
 				attrs.setFormat("image2");
 				attrs.setVideoAttributes(video);
 				encoder.encode(file, scaled, attrs, 100);
