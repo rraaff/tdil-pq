@@ -79,3 +79,6 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('video.
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.native.url','http://www.lojackprevent.com.ar/','prevent.native.url',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.native.url','http://www.lojackgis.com.ar/lojackpetsmobile/login.aspx','pets.native.url',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('clubLoJack.url','http://www.google.com','Url de beneficios del club lo jack',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('clubLoJack.show','false','Identifica si se activa o no la funcionalidad de club lojack',0);
