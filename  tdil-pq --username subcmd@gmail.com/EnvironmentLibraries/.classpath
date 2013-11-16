@@ -12,7 +12,6 @@
 	<classpathentry exported="true" kind="lib" path="slf4j-log4j12-1.6.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="struts.jar"/>
 	<classpathentry exported="true" kind="lib" path="activation.jar"/>
-	<classpathentry exported="true" kind="lib" path="commons-io-1.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="mail.jar"/>
 	<classpathentry exported="true" kind="lib" path="json-lib-2.3-jdk15.jar"/>
 	<classpathentry exported="true" kind="lib" path="commons-beanutils.jar"/>
@@ -48,5 +47,6 @@
 	<classpathentry exported="true" kind="lib" path="commons-codec.jar"/>
 	<classpathentry exported="true" kind="lib" path="quartz-2.2.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="quartz-jobs-2.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-io-2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
