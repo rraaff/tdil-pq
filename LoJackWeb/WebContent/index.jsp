@@ -223,6 +223,12 @@ $(document).ready(
 			clearErrors();
 			return false;
 		});
+		$( "#duplicatedErr" ).click(function() {
+			$( "#registerLayer" ).fadeOut();
+			forgotPassword();
+			return false;
+		});
+		
 		$( "#closeloginLayer" ).click(function() {
 			$( "#loginLayer" ).fadeOut();
 			return false;
@@ -326,15 +332,24 @@ function postRegister(data) {
 		window.location.replace('./home.jsp');
 	} else {
 		$.each(data, function(key, value) {
-			var obj = document.getElementById('err.' + key);
-			if (obj) {
-				var objParent = document.getElementById('p.' + key);
+			if (key == 'profile.document' && value.indexOf('Ya estás registrado en nuestra base') != -1) {
+				var obj = document.getElementById('err.duplicated');
+				var objParent = document.getElementById('duplicatedErr');
 				if (objParent) {
 					objParent.style.display='block';
 				}
 				obj.innerHTML = value;
+			} else {
+				var obj = document.getElementById('err.' + key);
+				if (obj) {
+					var objParent = document.getElementById('p.' + key);
+					if (objParent) {
+						objParent.style.display='block';
+					}
+					obj.innerHTML = value;
+				}
 			}
-	       });
+       });
 	}
 }
 
@@ -423,6 +438,10 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
+			<div id="duplicatedErr" class="myRow errorField" style="cursor: pointer;">
+				<div id="err.duplicated" style="width: 350px;"></div>
+			</div>
+			
 			<html:form method="POST" action="/register">
 				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 				registerForm.searchReferenceData();
