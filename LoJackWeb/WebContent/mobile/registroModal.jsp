@@ -44,6 +44,11 @@
 <div id="registrationContent">
 	<h1>Registrate</h1>
 	<p>Los campos marcados con * son requeridos para la registración</p>
+	<div class="errorInForm">
+		<% if (com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado en nuestra base")) { %>
+			<a href="./recuperarClaveModal.jsp"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%></a>
+		<% } %>
+	</div>
 	<html:form method="POST" action="/mobile/registerMobile">
 		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterFormMobile");
 		registerForm.setMobile(true);
@@ -65,7 +70,11 @@
 			<fieldset>
 				<label>* Numero</label>
 				<html:text name="RegisterFormMobile" property="document" />
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%></div>
+				<div class="errorInForm">
+					<% if (!com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado en nuestra base")) { %>
+						<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%>
+					<% } %>
+				</div>
 			</fieldset>
 			<fieldset>
 				<label>* Nombre</label>
