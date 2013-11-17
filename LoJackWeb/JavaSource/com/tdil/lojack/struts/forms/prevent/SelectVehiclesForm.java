@@ -3,6 +3,8 @@ package com.tdil.lojack.struts.forms.prevent;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.prevent.XMLResponse;
@@ -33,7 +35,9 @@ public class SelectVehiclesForm extends VehiclesForm {
 	private List<Vehicle> selectList;
 	private List<SatellitePosition> selectedVehiclePosition;
 
+	private String alertPhoneCode;
 	private String alertPhone;
+	private String crashPhoneCode;
 	private String crashPhone;
 	private String otherPhone;
 	
@@ -105,8 +109,42 @@ public class SelectVehiclesForm extends VehiclesForm {
 			if (vehicle.getId().equals(id)) {
 				setSelected(vehicle);
 				PhoneNumbers pn = (PhoneNumbers)(PreventConnector.getVehiclePhones(user.getPreventLoginResponse(), vehicle).getResult());
-				setAlertPhone(pn.getAlert());
-				setCrashPhone(pn.getCrash());
+				String alert = pn.getAlert();
+				if (!StringUtils.isEmpty(alert) && alert.contains("-")) {
+					String splitted[] = alert.split("-");
+					if (splitted.length == 2) { 
+						if (StringUtils.isEmpty(splitted[0])) {
+							setAlertPhoneCode("54");
+						} else {
+							setAlertPhoneCode(splitted[0]);
+						}
+						setAlertPhone(splitted[1]);
+					} else {
+						setAlertPhoneCode("54");
+						setAlertPhone("");
+					}
+				} else {
+					setAlertPhoneCode("54");
+					setAlertPhone("");
+				}
+				String crash = pn.getCrash();
+				if (!StringUtils.isEmpty(crash) && crash.contains("-")) {
+					String crashSplitted[] = crash.split("-");
+					if (crashSplitted.length == 2) {
+						if (StringUtils.isEmpty(crashSplitted[0])) {
+							setCrashPhoneCode("54");
+						} else {
+							setCrashPhoneCode(crashSplitted[0]);
+						}
+						setCrashPhone(crashSplitted[1]);
+					} else {
+						setCrashPhoneCode("54");
+						setCrashPhone("");
+					}
+				} else {
+					setCrashPhoneCode("54");
+					setCrashPhone("");
+				}
 				setOtherPhone(pn.getOther());
 				return;
 			}
@@ -208,8 +246,8 @@ public class SelectVehiclesForm extends VehiclesForm {
 
 	private boolean basicsavePhones() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
-		phoneNumbers.setAlert(this.getAlertPhone());
-		phoneNumbers.setCrash(this.getCrashPhone());
+		phoneNumbers.setAlert(this.getAlertPhoneCode() + "-" + this.getAlertPhone());
+		phoneNumbers.setCrash(this.getCrashPhoneCode() + "-" +this.getCrashPhone());
 		phoneNumbers.setOther(this.getOtherPhone());
 		phoneNumbers.setVehicleID(this.getSelected().getId());
 		phoneNumbers.setUserToken(this.getUser().getPreventLoginResponse().getUserToken());
@@ -256,6 +294,22 @@ public class SelectVehiclesForm extends VehiclesForm {
 
 	public void setSecureZoneSelectionBean(SecureZoneSelectionBean secureZoneSelectionBean) {
 		this.secureZoneSelectionBean = secureZoneSelectionBean;
+	}
+
+	public String getAlertPhoneCode() {
+		return alertPhoneCode;
+	}
+
+	public void setAlertPhoneCode(String alertPhoneCode) {
+		this.alertPhoneCode = alertPhoneCode;
+	}
+
+	public String getCrashPhoneCode() {
+		return crashPhoneCode;
+	}
+
+	public void setCrashPhoneCode(String crashPhoneCode) {
+		this.crashPhoneCode = crashPhoneCode;
 	}
 
 }
