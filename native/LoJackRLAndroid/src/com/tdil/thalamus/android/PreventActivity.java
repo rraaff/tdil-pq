@@ -23,6 +23,7 @@ import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.utils.Login;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -141,7 +142,7 @@ public class PreventActivity extends Activity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT);
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.loggedUser.getApkToken());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

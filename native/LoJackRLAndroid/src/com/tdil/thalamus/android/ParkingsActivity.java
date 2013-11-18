@@ -24,6 +24,7 @@ import android.webkit.WebViewClient;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.RESTClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.utils.Login;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -141,17 +142,13 @@ public class ParkingsActivity extends Activity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PARKINGS);
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PARKINGS + "?apkToken=" + Login.loggedUser.getApkToken());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 	
-	public String getUrlWebsite() {
-		return ApplicationConfig.URL_PARKINGS + "";
-	}
-
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub

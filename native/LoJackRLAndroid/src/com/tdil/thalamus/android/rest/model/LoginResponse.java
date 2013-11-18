@@ -14,6 +14,8 @@ public class LoginResponse {
 	private boolean petUser;
 	private String petUserId;
 	
+	private String apkToken;
+	
 	private long cameraRefreshTime;
 	
 	private String homeVideo;
@@ -132,5 +134,13 @@ public class LoginResponse {
 
 	public void setHomeVideo(String homeVideo) {
 		this.homeVideo = homeVideo;
+	}
+
+	public String getApkToken() {
+		return apkToken;
+	}
+
+	public void setApkToken(String apkToken) {
+		this.apkToken = apkToken;
 	}
 }
