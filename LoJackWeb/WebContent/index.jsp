@@ -59,6 +59,7 @@ response.addCookie(ecookie1);
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.frankie.skin.reallife.v2.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
@@ -438,10 +439,9 @@ function parkingsNotLogged() {
 			<div id="xContainer"><button id="closeregisterLayer1">X</button></div>
 			<h3>Registrate</h3>
 			<div class="myRow">Los campos marcados con * son requeridos para la registración</div>
-			<div id="duplicatedErr" class="myRow errorField" style="cursor: pointer;">
-				<div id="err.duplicated" style="width: 350px;"></div>
+			<div id="duplicatedErr">
+				<div id="err.duplicated"></div>
 			</div>
-			
 			<html:form method="POST" action="/register">
 				<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterForm");
 				registerForm.searchReferenceData();

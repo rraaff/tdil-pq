@@ -27,9 +27,10 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/internal_menu.css" rel="stylesheet" type="text/css">
-<link href="css/mobile_main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/internal_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mobile_main.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/tdil.frankie.skin.reallife.v2.css" />
 <%@ include file="includes/head.jsp"%>
 </head>
 <body>
