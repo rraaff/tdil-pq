@@ -1,5 +1,12 @@
 package com.tdil.thalamus.android;
 
+import java.io.IOException;
+
+import org.apache.http.HttpException;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -251,7 +258,7 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 	@Override
 	public void sucess(RESTClientTask task) {
 		Gson gson = new Gson();
-		LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
+		final LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
 		if (resp.getLogged()) {
 			Login.loggedUser = resp;
 			
@@ -268,7 +275,13 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 				e.putString("mPassword", "");
 				e.commit();
 			}
-			
+			RESTClientTask.httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
+				@Override
+				public void process(HttpRequest arg0, HttpContext arg1)
+						throws HttpException, IOException {
+					arg0.addHeader("apkToken", resp.getApkToken());
+				}
+			});
 			Intent intent = new Intent(this, IndexActivity.class);
 //			Intent intent = new Intent(this, HomeAlarmsActivity.class);
         	startActivity(intent);
