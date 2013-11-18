@@ -1,0 +1,13 @@
+<%@page import="com.tdil.lojack.rest.ApkLoginCache"%>
+<%@page import="com.tdil.lojack.utils.ThalamusWebUtils"%>
+<%@page import="com.tdil.lojack.utils.WebsiteUser"%><%
+WebsiteUser websiteUser = null;
+boolean logged = false;
+String apkToken = request.getParameter("apkToken");
+System.out.println(apkToken);
+websiteUser = ApkLoginCache.get(apkToken);
+if (websiteUser != null && websiteUser.isLogged()) {
+	logged = true;
+	ThalamusWebUtils.updateActivities(websiteUser);
+}
+%>

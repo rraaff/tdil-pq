@@ -83,6 +83,8 @@ public class UsersService extends AbstractRESTService {
 			loginResponse.setPetUserId(user.getPetUserId());
 			loginResponse.setPreventUser(user.isPreventUser());
 			loginResponse.setPreventUserId(user.getPreventUserId());
+			String apkToken = ApkLoginCache.add(user);
+			loginResponse.setApkToken(apkToken);
 			return response(loginResponse);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

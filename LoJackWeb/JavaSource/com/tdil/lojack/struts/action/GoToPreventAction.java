@@ -9,6 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.rest.ApkLoginCache;
 import com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
@@ -26,7 +27,8 @@ public class GoToPreventAction extends AbstractAction {
 			HttpServletResponse response) throws Exception {
 		try {
 			request.getSession().setAttribute("USING_APK", "true".equals(request.getParameter("USING_APK")));
-			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
+			String apkToken = request.getParameter("apkToken");
+			WebsiteUser user = ApkLoginCache.get(apkToken);
 			int offset = Integer.valueOf(request.getParameter("timezone"));
 			user.setTimezoneOffset(offset);
 			if (user.isPreventLogged()) {

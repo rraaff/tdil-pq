@@ -16,6 +16,8 @@ public class LoginResponse {
 	private boolean petUser;
 	private String petUserId;
 	
+	private String apkToken;
+	
 	private long cameraRefreshTime = LoJackConfig.nativeAppsConfig.getCameraNativeRefreshTime();
 	private String petVideo = LoJackConfig.nativeAppsConfig.getVideoPetsNative();
 	private String petUrl = LoJackConfig.nativeAppsConfig.getPetsNativeUrl();
@@ -124,5 +126,13 @@ public class LoginResponse {
 
 	public void setPreventUrl(String preventUrl) {
 		this.preventUrl = preventUrl;
+	}
+
+	public String getApkToken() {
+		return apkToken;
+	}
+
+	public void setApkToken(String apkToken) {
+		this.apkToken = apkToken;
 	}
 }
