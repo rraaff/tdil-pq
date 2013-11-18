@@ -42,10 +42,10 @@ header { display:none; }
 #productsMenu .userLoggedThalamusMenu { width:100%; text-transform:uppercase; font-family:Arial,sans-serif; }
 #productsMenu .correctNav { width:100%; }
 #productsMenu ul li.logoContainer { width:100%; height:83px; text-align:center; }
-#productsMenu ul li a { color:#FFF; }
-#productsMenu ul li a.logo { width:100%; }
+#productsMenu ul li a { color:#FFF; line-height:36px; margin:5px; display:inline-block; }
+#productsMenu ul li a.logo { width:100%; display:initial; }
 #productsMenu ul li a img { width:auto; height:80%; padding:10px; }
-#productsMenu ul li.toRight { background:#e51b24; line-height:100%; width:25%; text-align:center; padding:10px 0; float:right; }
+#productsMenu ul li.toRight { background:#e51b24; width:25%; text-align:center; float:right; }
 #content { width:100%; height:100%; text-align:center; display:inline-block; overflow:hidden; left:0px; position:relative; z-index:1; }
 #controls { background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; width:100%; margin:0 auto; position:fixed; z-index:1300;}
 .smallmap,
@@ -60,13 +60,8 @@ header { display:none; }
 }
 #tab { /*display:none;*/ }
 ul.tabServices {  }
-#productHomeMenu ul li {
-	list-style:none;
-	line-height:normal;
-	width:33%;
-	padding:14px 0 14px 0;
-	float:left;
-}
+#productHomeMenu ul li		{ list-style:none; line-height:normal; width:33%; float:left; }
+#productHomeMenu ul li a	{ line-height:36px; margin:5px; display:inline-block; }
 #productHomeContent.col1_798_noSpaces {
 	color:#FFF;
 	background:#531A1A;

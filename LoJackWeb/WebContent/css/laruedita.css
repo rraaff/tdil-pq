@@ -28,6 +28,7 @@
 #nmRuedita ul li a				{ color:transparent; height:96px; font-size:90px; padding:0; margin:64px; }
 #nmRuedita ul li.tv				{ background:url(../images/skin_lj_rl/newWheel/tv_224_off.png) no-repeat center center; top:-839px; left:270px; z-index:1250; }
 #nmRuedita ul li.logout			{ background:url(../images/skin_lj_rl/newWheel/logout_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
+#nmRuedita ul li.club			{ background:url(../images/skin_lj_rl/newWheel/club_224_off.png) no-repeat center center; top:-1035px; left:142px; z-index:1215; }
 #nmRuedita ul li.login			{ background:url(../images/skin_lj_rl/newWheel/login_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
 #nmRuedita ul li.tv,
 #nmRuedita ul li.logout,

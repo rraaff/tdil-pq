@@ -81,7 +81,7 @@ public class LoJackConfig extends SystemConfig {
 	private static String mobilevideohome = "http://youtu.be/Iz_VvsFwXQI";
 	private static String mobilevideopets = "http://youtu.be/M8VhrMM0j-Q";
 	
-	private static String clubLoJackUrl = "";
+	private static String clubLoJackUrl = "http://www.clublojack.com.ar/";
 	private static boolean clubLoJackShow = false;
 	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();

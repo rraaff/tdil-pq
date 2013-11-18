@@ -40,8 +40,34 @@ function enterPrevent() {
 }
 @media all and (orientation:landscape) {
 	#tarjeta { background:#fff; width:100%; padding:10px; margin:0 auto; text-align:center; display:inline-block; }
-	#tarjeta img { width:100%; }
-	#tarjeta span.nameoncard { color:#fff; text-align:left; position:absolute; z-index:1499; font-size:120%; top:85%; left:8%; width:50%; }
+	#tarjeta img { height:50px; width:auto; }
+	#tarjeta span.nameoncard { color:#fff; text-align:center; position:absolute; z-index:1499; font-size:100%; width:100%; padding:0; left:0; top:0; }
+}
+#buttonOnCard { text-align:center; width:100%; padding:20px; display:inline-block; }
+#buttonOnCard a.linkAsButton {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border:1px solid;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	background-color:#f9a123;
+	background-image:-moz-linear-gradient(top, #f89406, #fbb450);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#f89406), to(#fbb450));
+	background-image:-webkit-linear-gradient(top, #f89406, #fbb450);
+	background-image:-o-linear-gradient(top, #f89406, #fbb450);
+	background-image:linear-gradient(to bottom, #f89406, #fbb450);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff89406', endColorstr='#fffbb450', GradientType=0);
+	border-color:#fbb450 #fbb450 #f89406;
+	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	color:#FFF;
+	font-size:15px;
+	font-weight:bold;
+	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding:10px;
+	margin:10px 0 20px;
+	cursor:pointer;
 }
 </style>
 <%@ include file="includes/head.jsp"%>
@@ -57,27 +83,38 @@ function enterPrevent() {
 </div>
 <div id="tarjeta">
 	<span id="tagOnCard" class="nameoncard"><%=websiteUser.getName()%></span>
-	<img src="../images/skin_lj_rl/clubLoJack/tarjeta-club-lojack_black_hi-res.jpg" />
+	<img id="cardImage" src="../images/skin_lj_rl/clubLoJack/tarjeta-club-lojack_black_hi-res.jpg" />
+	<div id="buttonOnCard"><a class="linkAsButton" href="<%=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a></div>
 </div>
 <%@ include file="../includes/version.jspf" %>
 <script>
 	var checkHeight = function() {
-		var elemToChange = document.getElementById("tagOnCard");
-		var objH = elemToChange.style.width;
-		var winW = $(window).width();
+		var elemTagOnCard = document.getElementById("tagOnCard");
+		var elemTarjeta = document.getElementById("tarjeta");
+		var elemCardImage = document.getElementById("cardImage");
+		var objH = $(cardImage).height();
 		var winH = $(window).height();
-		//var objH = $("tarjeta").height();
-	//	window.alert(winH + "  //  " + objH);
+		var winW = $(window).width();
+		// window.alert(winH + "  //  " + objH);
 		
-	//	elemToChange.style.width = winW + "px"
-	//	elemToChange.style.height = winH + "px"
+		if (winW < winH) {
+			//window.alert("portrait");
+			elemCardImage.style.height = "auto";
+			elemTarjeta.style.height = winH + "px";
+			elemTagOnCard.style.top = (objH + 10) + "px";
+		} else {
+			//window.alert("Landscape");
+			elemCardImage.style.height = "70%";
+			elemTarjeta.style.height = (winH - 34) + "px";
+			elemTagOnCard.style.top = (objH + 10) + "px";
+		}
 	}
 	
 	window.onload=function() {
 		checkHeight();
 	}		
 	window.onresize=function() {
-		recheckHeight();
+		checkHeight();
 	}
 </script>
 </body>
