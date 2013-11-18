@@ -1,7 +1,9 @@
 package com.tdil.lojack.rest;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
 import net.sf.json.JSON;
@@ -19,23 +21,21 @@ import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
 
 public abstract class AbstractRESTService {
 
+	@Context
+    HttpServletRequest request;
+	
 	public void validateLogged() {
-		HttpSession session = getSession();
-		if (session == null) {
-			throw new WebApplicationException(401);
-		}
-		WebsiteUser user = (WebsiteUser) session.getAttribute("user");
+		String apkToken = request.getHeader("apkToken");
+		WebsiteUser user = ApkLoginCache.get(apkToken);
 		if (user == null) {
 			throw new WebApplicationException(401);
 		}
 	}
 
 	public WebsiteUser getUser() {
-		HttpSession session = getSession();
-		if (session == null) {
-			throw new WebApplicationException(401);
-		}
-		return (WebsiteUser) session.getAttribute("user");
+		String apkToken = request.getHeader("apkToken");
+		WebsiteUser user = ApkLoginCache.get(apkToken);
+		return user;
 	}
 	
 	public TokenHolder getTokenHolder() {
