@@ -3,6 +3,7 @@ package com.tdil.lojack.struts.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -28,7 +29,12 @@ public class GoToPreventAction extends AbstractAction {
 		try {
 			request.getSession().setAttribute("USING_APK", "true".equals(request.getParameter("USING_APK")));
 			String apkToken = request.getParameter("apkToken");
-			WebsiteUser user = ApkLoginCache.get(apkToken);
+			WebsiteUser user = null;
+			if (StringUtils.isEmpty(apkToken)) {
+				user = (WebsiteUser)getLoggedUser(request);
+			} else {
+				user = ApkLoginCache.get(apkToken);
+			}
 			int offset = Integer.valueOf(request.getParameter("timezone"));
 			user.setTimezoneOffset(offset);
 			if (user.isPreventLogged()) {
