@@ -76,6 +76,16 @@ public class FooterLogic  {
 					}
 				});
 		}
+		View tv = activity.findViewById(R.id.btnFooterTV);
+		if (tv != null) {
+			tv.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						handleTvAccess(activity); 
+					}
+				});
+		}
 	}
     		
 
@@ -125,6 +135,11 @@ public class FooterLogic  {
 			String videoId = Login.loggedUser.getHomeVideo();
 			playVideo(activity, videoId);
 		}
+	}
+
+	public static void handleTvAccess(final Activity activity) {
+        Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack.tv"));
+        activity.startActivity(ljtvintent); 
 	}
 }
 

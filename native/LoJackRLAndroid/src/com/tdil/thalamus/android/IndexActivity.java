@@ -48,56 +48,16 @@ public class IndexActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_index);
-		// FooterLogic.installFooterLogic(this, false);
 
 		this.getActionBar().setTitle(Login.loggedUser.getName());
 		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-		
-//		findViewById(R.id.btnFooterPrevent)
-//		.setOnLongClickListener(new StartDragListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
 		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
 		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
 		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
-		
-		/*findViewById(R.id.btnFooterPrevent).setOnClickListener(new StartDragOnClickListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-		
-		findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnClickListener(
-				new StartDragOnClickListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-		
-		findViewById(R.id.btnFooterTV).setOnClickListener(new StartDragOnClickListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-		findViewById(R.id.btnFooterHome).setOnClickListener(new StartDragOnClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));*/
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	}
-/*
-	public class StartDragListener implements OnLongClickListener {
-
-		private IndexActivity activity;
-		private String localState;
-		private Bitmap bitmap;
-
-		public StartDragListener(IndexActivity activity, String localState, Bitmap bitmap) {
-			super();
-			this.activity = activity;
-			this.localState = localState;
-			this.bitmap = bitmap;
-		}
-
-		@Override
-		public boolean onLongClick(View v) {
-			Button fruit = (Button) v;
-			v.setAlpha(0);
-			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
-
-			ClipData data = ClipData.newPlainText("", "");
-			v.startDrag(data, myShadowBuilder, localState, 0);
-
-			return true;
-		}
-	};
-	*/
 
 	public class StartDragOnTouchListener implements OnTouchListener {
 
@@ -131,73 +91,6 @@ public class IndexActivity extends Activity {
 		}
 	};
 	
-/*	public class StartDragOnClickListener implements OnClickListener {
-
-		private IndexActivity activity;
-		private String localState;
-		private Bitmap bitmap;
-
-		public StartDragOnClickListener(IndexActivity activity, String localState, Bitmap bitmap) {
-			super();
-			this.activity = activity;
-			this.localState = localState;
-			this.bitmap = bitmap;
-		}
-
-		@Override
-		public void onClick(View v) {
-			Button fruit = (Button) v;
-			v.setAlpha(0);
-			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
-
-			ClipData data = ClipData.newPlainText("", "");
-			v.startDrag(data, myShadowBuilder, localState, 0);
-
-//			return true;
-		}
-	};*/
-
-/*
-	OnDragListener dragListener = new OnDragListener() {
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			int dragEvent = event.getAction();
-			TextView dropButton = (TextView) v;
-
-			switch (dragEvent) {
-			case DragEvent.ACTION_DRAG_ENTERED:
-				dropButton.setTextColor(R.color.orangeDark);
-				dropButton.setAlpha(50);
-				
-				break;
-
-			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setAlpha(100);
-				break;
-
-			case DragEvent.ACTION_DROP:
-				if (HOME.equals(event.getLocalState())) {
-					FooterLogic.handleHomeAccess(IndexActivity.this, false);
-				}
-				if (PETS.equals(event.getLocalState())) {
-					FooterLogic.handlePetsAccess(IndexActivity.this);
-				}
-				if (PREVENT.equals(event.getLocalState())) {
-					FooterLogic.handlePreventAccess(IndexActivity.this);
-				}
-				if (PARKINGS.equals(event.getLocalState())) {
-					FooterLogic.handleParkingsAccess(IndexActivity.this);
-				}
-				//dropButton.setTextColor(R.color.orangeDark);
-				
-				break;
-			}
-
-			return true;
-		}
-	};
-	*/
-
 	OnDragListener dragListener1 = new OnDragListener() {
 		@Override
 		public boolean onDrag(View v, DragEvent event) {
@@ -240,7 +133,9 @@ public class IndexActivity extends Activity {
 				if (PARKINGS.equals(event.getLocalState())) {
 					FooterLogic.handleParkingsAccess(IndexActivity.this);
 				}
-				//dropButton.setTextColor(R.color.orangeDark);
+				if (TV.equals(event.getLocalState())) {
+					FooterLogic.handleTvAccess(IndexActivity.this);
+				}
 				
 				break;
 			}
