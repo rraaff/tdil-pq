@@ -38,6 +38,14 @@ public abstract class VehiclesForm extends ActionForm {
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(VehiclesForm.class);
 	}
+	
+	public boolean hasOnlyOne() {
+		return this.getVehicles().size() == 1;
+	}
+	
+	public String getVehicleId() {
+		return this.getVehicles().get(0).getId();
+	}
 
 	public void initWith(WebsiteUser user) throws CommunicationException, HttpStatusException, InvalidResponseException, UnauthorizedException {
 		setUser(user);

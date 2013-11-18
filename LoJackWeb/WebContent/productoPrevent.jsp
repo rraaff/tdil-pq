@@ -194,6 +194,24 @@ if (apk) {
 
 	function editSecureZones() {
 		<%@ include file="includes/blockUI.jspf" %>
+		<% if (selectVehiclesForm.hasOnlyOne()) { 
+			SelectVehiclesForm selectVehiclesForPhone = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm");
+			if (selectVehiclesForPhone == null) {
+				selectVehiclesForPhone = new SelectVehiclesForm();
+			}
+			selectVehiclesForPhone.initWith(websiteUser);
+			session.setAttribute("SelectVehiclesForSecureZoneForm",selectVehiclesForPhone);
+		%>
+		$('#editSecureZone').load('goToVehiculeSecureZone.do?vehicleId=<%=selectVehiclesForm.getVehicleId()%>', function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
+		  		centerLayer($(window), $( "#editSecureZoneLayer" ));
+		  		centerLayer($(window), $( "#centradorModalesSecureZone" ));
+			}
+	  });
+		<% } else { %>
 		$('#editSecureZone').load('goToVehiculesForSecureZone.do', function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
@@ -203,10 +221,29 @@ if (apk) {
 				centerLayer($(window), $( "#centradorModalesSecureZones" ));
 			}
 		});
+		<% } %>
 	}
 
 	function selectVehiclesPhones() {
 		<%@ include file="includes/blockUI.jspf" %>
+		<% if (selectVehiclesForm.hasOnlyOne()) { 
+			SelectVehiclesForm selectVehiclesForPhone = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");
+			if (selectVehiclesForPhone == null) {
+				selectVehiclesForPhone = new SelectVehiclesForm();
+			}
+			selectVehiclesForPhone.initWith(websiteUser);
+			session.setAttribute("SelectVehiclesForPhonesForm",selectVehiclesForPhone);
+		%>
+			$('#editVehiclesPhones').load('editVehiculePhones.do?vehicleId=<%=selectVehiclesForm.getVehicleId()%>', function(response, status, xhr) {
+			  	<%@ include file="includes/unblockUI.jspf" %>
+				  if (status == "error") {
+				    errorAjax();
+				  } else {
+			  		centerLayer($(window), $( "#editVehiclesPhonesLayer" ));
+			  		centerLayer($(window), $( "#centradorModalesEditPhones" ));
+				}
+		  });
+		<% } else { %>
 		$('#selectVehiclesPhones').load('goToVehiculesForPhone.do', function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
@@ -216,10 +253,29 @@ if (apk) {
 				centerLayer($(window), $( "#centradorModalesVehiclesPhones" ));
 			}
 		});
+		<% } %>
 	}
 
 	function selectVehiclesSpeed() {
 		<%@ include file="includes/blockUI.jspf" %>
+		<% if (selectVehiclesForm.hasOnlyOne()) { 
+			SelectVehiclesForm selectVehiclesForPhone = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm");
+			if (selectVehiclesForPhone == null) {
+				selectVehiclesForPhone = new SelectVehiclesForm();
+			}
+			selectVehiclesForPhone.initWith(websiteUser);
+			session.setAttribute("SelectVehiclesForSpeedForm",selectVehiclesForPhone);
+		%>
+		$('#editVehiclesSpeed').load('goToVehiculesSpeedLimits.do?vehicleId=<%=selectVehiclesForm.getVehicleId()%>', function(response, status, xhr) {
+		  	<%@ include file="includes/unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
+		  		centerLayer($(window), $( "#editVehiclesSpeedLayer" ));
+		  		centerLayer($(window), $( "#centradorModalesEditSpeed" ));
+			}
+	 	 });
+		<% } else { %>
 		$('#selectVehiclesSpeed').load('goToVehiculesForSpeed.do', function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
@@ -229,10 +285,21 @@ if (apk) {
 				centerLayer($(window), $( "#centradorModalesVehiclesSpeed" ));
 			}
 		});
+		<% } %>
 	}
 
 	function selectVehiclesForMap() {
 		<%@ include file="includes/blockUI.jspf" %>
+		<% if (selectVehiclesForm.hasOnlyOne()) { 
+			SelectVehiclesForm selectVehiclesForPhone = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm");
+			if (selectVehiclesForPhone == null) {
+				selectVehiclesForPhone = new SelectVehiclesForm();
+			}
+			selectVehiclesForPhone.initWith(websiteUser);
+			session.setAttribute("SelectVehiclesForSpeedForm",selectVehiclesForPhone);
+		%>
+			window.location = './locateVehicleInMap.do?vehicleId=<%=selectVehiclesForm.getVehicleId()%>'
+		<% } else { %>
 		$('#selectVehiclesForMap').load('goToVehiculesForMap.do', function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
@@ -242,6 +309,7 @@ if (apk) {
 				centerLayer($(window), $( "#centradorModalesVehiclesForMap" ));
 			}
 		});
+		<% } %>
 	}
 
 <%@ include file="includes/centerLayerJS.jspf" %>
