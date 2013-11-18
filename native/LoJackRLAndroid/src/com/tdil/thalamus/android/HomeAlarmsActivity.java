@@ -200,7 +200,6 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			@Override
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
-
 				CameraCollection col = gson.fromJson(task.getResult(),
 						CameraCollection.class);
 				cameras = new ArrayList<Camera>(col.getCameras());
@@ -208,6 +207,11 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				cameraListAdapter = new CameraListAdapter(HomeAlarmsActivity.this,
 						cameras, res);
 				cameraList.setAdapter(cameraListAdapter);
+				if (col.getCameras().size() == 1) {
+					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeCameraActivity.class);
+					intent.putExtra(HomeCameraActivity.CAMERA, col.getCameras().iterator().next());
+					HomeAlarmsActivity.this.startActivity(intent);
+				}
 			}
 
 			@Override

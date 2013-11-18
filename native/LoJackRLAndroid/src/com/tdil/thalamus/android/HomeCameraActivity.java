@@ -14,13 +14,13 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.camera.IPCamera;
 import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
+import com.tdil.thalamus.android.camera.TrendnetTVIP851;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.utils.DownloadCameraImageTask;
 import com.tdil.thalamus.android.utils.MoveCameraDownTask;
 import com.tdil.thalamus.android.utils.MoveCameraLeftTask;
 import com.tdil.thalamus.android.utils.MoveCameraRightTask;
-import com.tdil.thalamus.android.utils.MoveCameraTask;
 import com.tdil.thalamus.android.utils.MoveCameraUpTask;
 
 /**
@@ -53,6 +53,10 @@ public class HomeCameraActivity extends Activity {
 		}
 		if (PanasonicBLC131.PANASONIC_BLC131.equals(tmpCamera.getModel())) {
 			camera = new PanasonicBLC131(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
+		}
+		
+		if (TrendnetTVIP851.TrendnetTVIP851.equals(tmpCamera.getModel())) {
+			camera = new TrendnetTVIP851(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
 		}
 
 		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + "").execute();
