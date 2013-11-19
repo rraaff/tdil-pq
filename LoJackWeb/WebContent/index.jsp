@@ -465,7 +465,7 @@ function parkingsNotLogged() {
 						<label class="ajuste">* Número</label>
 						<html:text name="RegisterForm" property="document" />
 						<div class="errorInForm"></div>
-						<div class="myRow errorField" style="display: none;" id="p.profile.document">
+						<div class="errorField" style="display:none;" id="p.profile.document">
 							<div id="err.profile.document"></div>
 						</div>
 					</fieldset>
