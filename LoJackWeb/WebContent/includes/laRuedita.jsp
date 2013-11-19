@@ -43,11 +43,14 @@
 						<li id="liTvtv" class="tv"><a class="rdTv" href="http://www.lojack.tv" target="_blank" onmouseover="chbg('liTvtv', 'tv', 'over', 'LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('liTvtv', 'tv', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 
 						<%if (websiteUser != null && websiteUser.isLogged()) { %>
-							<!--  li id="liLogg" class="logout"><a class="rdLoginLogout" href="logout.do" onmouseover="chbg('liLogg', 'logout', 'over', 'Salir', 'del sitio')" onmouseout="chbg('liLogg', 'logout', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li-->
-							<li id="liLogg" class="club"><a class="rdLoginLogout" href="javascript:viewClubLoJack();" onmouseover="chbg('liLogg', 'club', 'over', 'Club', 'Lo Jack')" onmouseout="chbg('liLogg', 'club', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-						<%} else { %>
+							<% if (websiteUser.isClientClubLoJack() && LoJackConfig.isClubLoJackShow() ) { %>
+								<li id="liLogg" class="club"><a class="rdLoginLogout" href="javascript:viewClubLoJack();" onmouseover="chbg('liLogg', 'club', 'over', 'Club', 'Lo Jack')" onmouseout="chbg('liLogg', 'club', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+							<% } else { %>
+								<li id="liLogg" class="logout"><a class="rdLoginLogout" href="logout.do" onmouseover="chbg('liLogg', 'logout', 'over', 'Salir', 'del sitio')" onmouseout="chbg('liLogg', 'logout', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+							<% } %>
+						<% } else { %>
 							<li id="liLogg" class="login"><a class="rdLoginLogout" href="#" id="rueditaLogin" onclick="javascript:login();" onmouseover="chbg('liLogg', 'login', 'over', 'Ingresá', 'con tus datos')" onmouseout="chbg('liLogg', 'login', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-						<%} %>
+						<% } %>
 
 					</ul>
 				</div>

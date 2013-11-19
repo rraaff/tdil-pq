@@ -120,7 +120,7 @@ function chbg(title, subTitle) {
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<% if (websiteUser.isClientClubLoJack()) { %>
+		<% if (websiteUser.isClientClubLoJack() && LoJackConfig.isClubLoJackShow() ) { %>
 			<div id="iconoClubLJ"><a href="clubLoJack.jsp" onmouseover="chbg('Club', 'LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
 			<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>

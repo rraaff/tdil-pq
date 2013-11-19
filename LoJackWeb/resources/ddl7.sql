@@ -1,5 +1,5 @@
 DELETE FROM SYSPROPERTIES WHERE propKey = 'clubLoJack.url';
-
+DELETE FROM SYSPROPERTIES WHERE propKey = 'clubLoJack.show';
 commit;
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('clubLoJack.url','http://www.clublojack.com.ar/','Url de beneficios del club lo jack',0);
