@@ -34,6 +34,7 @@ public class GoToPreventAction extends AbstractAction {
 				user = (WebsiteUser)getLoggedUser(request);
 			} else {
 				user = ApkLoginCache.get(apkToken);
+				request.getSession().setAttribute("user", user);
 			}
 			int offset = Integer.valueOf(request.getParameter("timezone"));
 			user.setTimezoneOffset(offset);
