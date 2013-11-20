@@ -248,7 +248,8 @@ public class SelectVehiclesForm extends VehiclesForm {
 		UpdatePhoneNumbers phoneNumbers = new UpdatePhoneNumbers();
 		phoneNumbers.setAlert(this.getAlertPhoneCode() + "-" + this.getAlertPhone());
 		phoneNumbers.setCrash(this.getCrashPhoneCode() + "-" +this.getCrashPhone());
-		phoneNumbers.setOther(this.getOtherPhone());
+		phoneNumbers.setOther("54-");
+		//phoneNumbers.setOther(this.getOtherPhone());
 		phoneNumbers.setVehicleID(this.getSelected().getId());
 		phoneNumbers.setUserToken(this.getUser().getPreventLoginResponse().getUserToken());
 		XMLResponse setSpeed = PreventConnector.setVehiclePhones(this.getUser().getPreventLoginResponse(), phoneNumbers);
