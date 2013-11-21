@@ -211,7 +211,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeCameraActivity.class);
 					intent.putExtra(HomeCameraActivity.CAMERA, col.getCameras().iterator().next());
 					HomeAlarmsActivity.this.startActivity(intent);
-				}
+				} 
 			}
 
 			@Override
