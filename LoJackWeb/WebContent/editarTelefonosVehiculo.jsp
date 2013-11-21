@@ -71,11 +71,11 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 		</fieldset>
 		<fieldset>
 			<label class="w1">Línea 1</label>
-			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" styleClass="phonenum" /></label>
+			<label class="w3"></label><html:text name="SelectVehiclesForPhonesForm" property="alertPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" styleClass="phonenum" />
 		</fieldset>
 		<fieldset>
 			<label class="w1">Línea 2</label>
-			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" styleClass="phonenum" /></label>
+			<label class="w3"></label><html:text name="SelectVehiclesForPhonesForm" property="crashPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" styleClass="phonenum" />
 		</fieldset>
 	</div>
 	<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
