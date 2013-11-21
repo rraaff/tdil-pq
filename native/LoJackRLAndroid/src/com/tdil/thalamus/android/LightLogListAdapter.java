@@ -85,7 +85,7 @@ public class LightLogListAdapter extends BaseAdapter implements OnClickListener 
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new LightLogViewHolder();
-			holder.logDate = (TextView) vi.findViewById(R.id.logLightUser);
+			holder.logDate = (TextView) vi.findViewById(R.id.logLightDate);
 			holder.logStatus = (TextView) vi.findViewById(R.id.logLightStatus);
 			holder.logUser = (TextView) vi.findViewById(R.id.logLightUser);
 			holder.changeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
