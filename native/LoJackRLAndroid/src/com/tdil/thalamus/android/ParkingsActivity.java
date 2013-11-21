@@ -111,14 +111,11 @@ public class ParkingsActivity extends Activity {
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				// check if the url matched the url loaded via webview.loadUrl()
-				if (checkMatchedLoadedURL(url)) {
-					if (!pd.isShowing()) {
-						pd.show();
-					}
-					return false;
-				} else {
-					return true;
+				if (!pd.isShowing()) {
+					pd.show();
 				}
+				parkingsWebView.loadUrl(url);
+				return false;
 			}
 
 			@Override
