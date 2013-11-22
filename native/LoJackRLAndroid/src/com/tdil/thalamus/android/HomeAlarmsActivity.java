@@ -64,6 +64,8 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	public boolean camerasLoaded = false;
 	
 	public static final String SELECTED_TAB = "SELECTED_TAB";
+	private TabSpec tabCameras;
+	private TabHost tabHost;
 	
 
 	@Override
@@ -78,31 +80,31 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			tab = extras.getString(SELECTED_TAB);
 		}
 
-		TabHost th = (TabHost) findViewById(R.id.tabhost);
-		th.setup();
+		tabHost = (TabHost) findViewById(R.id.tabhost);
+		tabHost.setup();
 		
-		TabSpec ts = th.newTabSpec("tabAlarms");
+		TabSpec ts = tabHost.newTabSpec("tabAlarms");
 		ts.setContent(R.id.alarmsList);
 		ts.setIndicator(TAB_ALARMAS);
-		th.addTab(ts);
+		tabHost.addTab(ts);
 
-		ts = th.newTabSpec("tabLights");
-		ts.setContent(R.id.lightsList);
-		ts.setIndicator(TAB_LUCES);
-		th.addTab(ts);
+		TabSpec tabLights = tabHost.newTabSpec("tabLights");
+		tabLights.setContent(R.id.lightsList);
+		tabLights.setIndicator(TAB_LUCES);
+		tabHost.addTab(tabLights);
 
-		ts = th.newTabSpec("tabCameras");
-		ts.setContent(R.id.camerasList);
-		ts.setIndicator(TAB_CAMARAS);
-		th.addTab(ts);
+		tabCameras = tabHost.newTabSpec("tabCameras");
+		tabCameras.setContent(R.id.homeContent);
+		tabCameras.setIndicator(TAB_CAMARAS);
+		tabHost.addTab(tabCameras);
 		
-		ts = th.newTabSpec("tabHome");
+		ts = tabHost.newTabSpec("tabHome");
 		ts.setContent(R.id.homeContent);
 		ts.setIndicator(TAB_HOME);
-		th.addTab(ts);
-		th.getTabWidget().getChildAt(3).setVisibility(View.GONE);
+		tabHost.addTab(ts);
+		tabHost.getTabWidget().getChildAt(3).setVisibility(View.GONE);
 
-		th.setOnTabChangedListener(new OnTabChangeListener() {
+		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String tabId) {
 				if (tabId.equals("tabAlarms")) {
@@ -117,18 +119,18 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			}
 		});
 		if (TAB_CAMARAS.equals(tab)) {
-			th.setCurrentTab(2);
+			tabHost.setCurrentTab(2);
 			loadCameras();
 		} else {
 			if (TAB_LUCES.equals(tab)) {
-				th.setCurrentTab(1);
+				tabHost.setCurrentTab(1);
 				loadLights();
 			} else {
 				if (TAB_ALARMAS.equals(tab)) {
-					th.setCurrentTab(0);
+					tabHost.setCurrentTab(0);
 					loadAlarms();
 				} else {
-					th.setCurrentTab(3);
+					tabHost.setCurrentTab(3);
 				}
 			}
 		}
@@ -203,15 +205,19 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				CameraCollection col = gson.fromJson(task.getResult(),
 						CameraCollection.class);
 				cameras = new ArrayList<Camera>(col.getCameras());
-				Resources res = getResources();
-				cameraListAdapter = new CameraListAdapter(HomeAlarmsActivity.this,
-						cameras, res);
-				cameraList.setAdapter(cameraListAdapter);
 				if (col.getCameras().size() == 1) {
+					camerasLoaded = false;
+					tabHost.setCurrentTab(3);
 					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeCameraActivity.class);
 					intent.putExtra(HomeCameraActivity.CAMERA, col.getCameras().iterator().next());
 					HomeAlarmsActivity.this.startActivity(intent);
-				} 
+				}  else {
+					tabCameras.setContent(R.id.camerasList);
+					Resources res = getResources();
+					cameraListAdapter = new CameraListAdapter(HomeAlarmsActivity.this,
+							cameras, res);
+					cameraList.setAdapter(cameraListAdapter);
+				}
 			}
 
 			@Override
