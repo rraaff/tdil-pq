@@ -43,7 +43,8 @@
 		<delete>
 	      <fileset dir="../WebContent/" includes="cameraviewer-*.jar"/>
 	    </delete>
-        <jar destfile="../WebContent/cameraviewer-b${hora}.jar" filesetmanifest="mergewithoutmain">
+		
+        <jar destfile="../WebContent/cameraviewer-b${hora}.jar" filesetmanifest="mergewithoutmain" manifest="MANIFEST.MF">
         	<fileset dir="../../Camera/bin"/>
             <fileset dir="../../CameraViewer/bin"/>
             <zipfileset excludes="META-INF/*" src="../../Camera/commons-codec.jar"/>
