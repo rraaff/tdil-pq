@@ -27,7 +27,11 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.AlarmJobStatus;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
+import com.tdil.thalamus.android.rest.model.Light;
+import com.tdil.thalamus.android.rest.model.LightJobStatus;
+import com.tdil.thalamus.android.rest.model.LightJobStatusCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -40,7 +44,12 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	private HomeAlarmsActivity previous;
 	private boolean ignore = true;
 	
+	private int times = 0;
+	private static int max_times = 10;
+	private static long sleep = 2000;
+	
 	public static final String ALARM = "ALARM";
+	private Switch activateDeactivate;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		setContentView(R.layout.activity_alarm_dashboard);
 		Bundle extras = getIntent().getExtras();
 		alarm = (Alarm)extras.getSerializable(ALARM);
-		Switch activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
+		activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
 		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
@@ -82,6 +91,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		lastChangeUser.setText(alarm.getLastChangeUser());
 
 		activateDeactivate.setChecked(alarm.isActive());
+		activateDeactivate.setEnabled(true);
 		ignore = false;
 	}
 
@@ -132,16 +142,41 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	}
 
 	public void startAlarmsBackgroundJob() {
+		activateDeactivate.setEnabled(false);
+		times = 0;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(RESTClientTask task) {
 				Gson gson = new Gson();
 				AlarmJobStatusCollection col = gson.fromJson(task.getResult(),
 						AlarmJobStatusCollection.class);
-				if (!col.getStatus().isEmpty()) {
-					HomeAlarmDashboard.this.startAlarmsBackgroundJob();
+				boolean found = false;
+				for (AlarmJobStatus jobStatus : col.getStatus()) {
+					if (jobStatus.getIdEntidad() == HomeAlarmDashboard.this.alarm.getIdEntidad()) {
+						System.out.println("FOUND " + task.getResult());
+						found = true;
+						if (jobStatus.isArmada()) {
+							System.out.println("armada");
+							HomeAlarmDashboard.this.alarm.setStatus(Alarm.ACTIVE);
+						} else {
+							HomeAlarmDashboard.this.alarm.setStatus(Alarm.INACTIVE);
+						}
+					}
+				}
+				if (!found) {
+					if (times < max_times) {
+						times++;
+						try {
+							Thread.sleep(sleep);
+						} catch (InterruptedException e) {}
+						HomeAlarmDashboard.this.startAlarmsBackgroundJob();
+					} else {
+						HomeAlarmDashboard.this.loadAlarms();
+						HomeAlarmDashboard.this.ignore = false;
+					}
 				} else {
-					HomeAlarmDashboard.this.loadAlarms();
+					HomeAlarmDashboard.this.init();
+					HomeAlarmDashboard.this.ignore = false;
 				}
 			}
 

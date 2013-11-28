@@ -50,6 +50,7 @@ public class LigthsLogic {
 			               .setMessage("No ha podido enviarse el comando de apagado")
 			               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			                       public void onClick(DialogInterface dialog, int whichButton) {
+			                    	   lightsActivity.loadLights();
 			                       }
 	
 			               }).show();

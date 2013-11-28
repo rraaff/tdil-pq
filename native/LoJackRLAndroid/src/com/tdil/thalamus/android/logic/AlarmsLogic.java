@@ -54,6 +54,7 @@ public class AlarmsLogic {
 											public void onClick(
 													DialogInterface dialog,
 													int whichButton) {
+												alarmsActivity.loadAlarms();
 											}
 
 										}).show();
