@@ -225,6 +225,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	public void viewLightLog(int mPosition) {
 		Intent intent = new Intent(getBaseContext(), HomeLogLightActivity.class);
 		intent.putExtra(HomeLogLightActivity.IDENTIDAD, light.getIdEntidad());
+		intent.putExtra(HomeLogLightActivity.IDLUZ, light.getIdLuz());
 		startActivity(intent);
 	}
 
