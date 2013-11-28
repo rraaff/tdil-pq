@@ -87,7 +87,7 @@ public class AlarmLogListAdapter extends BaseAdapter implements OnClickListener 
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmLogViewHolder();
-			holder.logDate = (TextView) vi.findViewById(R.id.logAlarmUser);
+			holder.logDate = (TextView) vi.findViewById(R.id.logAlarmDate);
 			holder.logStatus = (TextView) vi.findViewById(R.id.logAlarmStatus);
 			holder.logUser = (TextView) vi.findViewById(R.id.logAlarmUser);
 			holder.changeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
