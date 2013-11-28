@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionMapping;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.rest.ApkLoginCache;
 import com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm;
+import com.tdil.lojack.thalamus.ThalamusLoginCache;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
@@ -35,6 +36,9 @@ public class GoToPreventAction extends AbstractAction {
 			} else {
 				user = ApkLoginCache.get(apkToken);
 				request.getSession().setAttribute("user", user);
+			}
+			if(user != null) {
+				ThalamusLoginCache.updateCache(user);
 			}
 			int offset = Integer.valueOf(request.getParameter("timezone"));
 			user.setTimezoneOffset(offset);
