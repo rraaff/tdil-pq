@@ -6,8 +6,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.URLResponse;
 import com.tdil.thalamus.android.utils.Login;
+import com.tdil.thalamus.android.utils.Messages;
 //import android.view.Menu;
 //import android.widget.TextView;
 
@@ -115,8 +123,27 @@ public class FooterLogic  {
 
 	public static void handlePetsAccess(final Activity activity) {
 		if (Login.loggedUser.getPetUser()) {
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.loggedUser.getPetUrl())); 
-			activity.startActivity(intent); 
+			// Pido la url de login
+			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
+				@Override
+				public void sucess(RESTClientTask task) {
+					Gson gson = new Gson();
+
+					URLResponse response = gson.fromJson(task.getResult(),
+							URLResponse.class);
+					if (response.getUrl() == null || response.getUrl().length() == 0) {
+						Messages.connectionErrorMessage(activity);
+					} else {
+						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.getUrl())); 
+						activity.startActivity(intent); 
+					}
+				}
+				@Override
+				public void error(RESTClientTask task) {
+					Messages.connectionErrorMessage(activity);
+				}
+			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);
+			
 		} else {
 			String videoId = Login.loggedUser.getPetVideo();
 			playVideo(activity, videoId);
