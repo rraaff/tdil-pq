@@ -116,9 +116,9 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmStatus.setText(iterAlarm.getStatus());
 			holder.lastChangeDate.setText(iterAlarm.getLastChangeDate());
 			if (iterAlarm.isActive()) {
-				holder.alarmStatus.setTextColor(color.lst_itm_on);
+				holder.alarmStatus.setTextColor(Color.rgb(35,102,0));
 			} else {
-				holder.alarmStatus.setTextColor(color.lst_itm_off);
+				holder.alarmStatus.setTextColor(Color.rgb(227,27,35));
 			}
 //			holder.activateDeactivate.setChecked(iterAlarm.isActive());
 //			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));

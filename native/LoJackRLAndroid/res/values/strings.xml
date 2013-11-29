@@ -131,6 +131,6 @@
     <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
    
     <!-- Checkboxes and Radiobutton titles -->
-    <string name="crt_tag_rememberme">Recordarme mis datos</string>
+    <string name="crt_tag_rememberme">Recordar mis datos</string>
     
 </resources>

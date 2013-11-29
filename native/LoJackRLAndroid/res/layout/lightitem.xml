@@ -6,20 +6,21 @@
 	android:background="@drawable/bar_bg"
 	android:paddingTop="0dip" >
 
-	<TableRow 
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
+	<TableRow
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:clickable="true" >
 
 		<ImageView
-			android:id="@+id/logLightAvatar"
-			android:layout_width="48dp"
-			android:layout_height="48dp"
-			android:layout_margin="8dp"
-			android:background="@color/gray"
-			android:maxHeight="64dp"
-			android:maxWidth="64dp"
-			android:scaleType="fitCenter"
-			android:contentDescription="@string/desc_avatar_image" />
+		    android:id="@+id/logLightAvatar"
+		    android:layout_width="0dp"
+		    android:layout_height="48dp"
+		    android:layout_marginBottom="8dp"
+		    android:layout_marginLeft="8dp"
+		    android:layout_marginTop="8dp"
+		    android:background="@color/gray"
+		    android:contentDescription="@string/desc_avatar_image"
+		    android:scaleType="fitCenter" />
 
 		<LinearLayout
 			android:layout_width="0dp"
@@ -63,13 +64,13 @@
 					android:textSize="11sp" />
 				
 				<TextView
-					android:id="@+id/lightStatus"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:text="Desarmada"
-					android:textColor="@color/lst_itm_normal"
-					android:textSize="11sp" />
+				    android:id="@+id/lightStatus"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="2dp"
+				    android:text="Desarmada"
+				    android:textSize="11sp" />
+
 			</LinearLayout>
 
 			<LinearLayout
@@ -87,13 +88,13 @@
 					android:textSize="11sp" />
 					
 				<TextView
-					android:id="@+id/lightLastChangeDate"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="2dp"
-					android:text="2013-05-04 18:20"
-					android:textColor="@color/lst_itm_normal"
-					android:textSize="11sp" />
+				    android:id="@+id/lightLastChangeDate"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="2dp"
+				    android:text="2013-05-04 18:20"
+				    android:textColor="@color/lst_itm_unk"
+				    android:textSize="11sp" />
 	     
 			</LinearLayout>
 		</LinearLayout>

@@ -120,11 +120,9 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
 			holder.goDashBoard.setOnClickListener(new GoLightDashBoard(iterLight));
 			if (iterLight.isOn()) {
-				//holder.alarmStatus.setTextColor(getResources().getColor(R.color.lst_itm_on));
-				holder.alarmStatus.setTextColor(color.lst_itm_on);
+				holder.alarmStatus.setTextColor(Color.rgb(35,102,0));
 			} else {
-				//holder.alarmStatus.setTextColor(getResources().getColor(R.color.lst_itm_off));
-				holder.alarmStatus.setTextColor(color.lst_itm_off);
+				holder.alarmStatus.setTextColor(Color.rgb(227,27,35));
 			}
 			holder.lastChangeDate.setText(iterLight.getLastChangeDate());
 			/*if (iterLight.isStatusUnknown()) {
