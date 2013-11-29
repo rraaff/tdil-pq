@@ -33,7 +33,7 @@
 <div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_2_mobile.png" /></div>
 <div id="thalamusDown">
 	<h1>Sitio en mantenimiento</h1>
-	<p class="errorCode">Código de error (TH:isAL000001456)</p>
+	<p class="errorCode">Código de error (APK:isGIS00000927)</p>
 	<p>Por favor inténtelo más tarde. Gracias por su paciencia.</p>
 </div>
 <%@ include file="includes/version.jspf" %></body>
