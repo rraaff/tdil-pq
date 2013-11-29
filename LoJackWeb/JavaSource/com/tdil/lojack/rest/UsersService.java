@@ -27,10 +27,12 @@ import com.tdil.lojack.rest.model.BeanCollection;
 import com.tdil.lojack.rest.model.ChangePasswordBean;
 import com.tdil.lojack.rest.model.LoginResponse;
 import com.tdil.lojack.rest.model.PersonBean;
+import com.tdil.lojack.rest.model.URLResponse;
 import com.tdil.lojack.struts.forms.ChangePasswordForm;
 import com.tdil.lojack.struts.forms.LoginForm;
 import com.tdil.lojack.struts.forms.RegisterForm;
 import com.tdil.lojack.struts.forms.RequestResetPasswordForm;
+import com.tdil.lojack.thalamus.ThalamusLoginCache;
 import com.tdil.lojack.utils.AddressType;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.struts.resources.ApplicationResources;
@@ -270,6 +272,24 @@ public class UsersService extends AbstractRESTService {
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			throw new WebApplicationException(401);
+		}
+	}
+	
+	@GET
+	@Path("/loginPets")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response loginPets() {
+		try {
+			WebsiteUser user = getUser();
+			if (user != null) {
+				ThalamusLoginCache.updateCache(user);
+				return response(new URLResponse(com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(user) + "SESSIONID=" + user.getJSESSIONID() +"&TIMEZONEOFFSET=-180&LOJACKTOKEN="+com.tdil.lojack.pets.PetsConnector.getPetsToken() + "&AWSELB="+ user.getAWSELB()));
+			} else {
+				return response(new URLResponse(""));
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return response(new URLResponse(""));
 		}
 	}
 	

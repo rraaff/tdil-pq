@@ -29,7 +29,7 @@ public abstract class AbstractRESTService {
 		WebsiteUser user = ApkLoginCache.get(apkToken);
 		if (user == null) {
 			throw new WebApplicationException(401);
-		}
+		} 
 	}
 
 	public WebsiteUser getUser() {
