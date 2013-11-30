@@ -212,6 +212,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
 			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
 			activity.startActivity(intent);
+			activity.finish();
 		}
 	}
 }

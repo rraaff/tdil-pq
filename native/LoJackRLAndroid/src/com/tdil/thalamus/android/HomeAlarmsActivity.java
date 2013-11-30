@@ -104,6 +104,10 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		tabHost.addTab(ts);
 		tabHost.getTabWidget().getChildAt(3).setVisibility(View.GONE);
 
+		alarmsList = (ListView) findViewById(R.id.alarmsList);
+		lightsList = (ListView) findViewById(R.id.lightsList);
+		cameraList = (ListView) findViewById(R.id.camerasList);
+		
 		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String tabId) {
@@ -127,6 +131,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				loadLights();
 			} else {
 				if (TAB_ALARMAS.equals(tab)) {
+					tabHost.setCurrentTab(1);
 					tabHost.setCurrentTab(0);
 					loadAlarms();
 				} else {
@@ -134,9 +139,6 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				}
 			}
 		}
-		alarmsList = (ListView) findViewById(R.id.alarmsList);
-		lightsList = (ListView) findViewById(R.id.lightsList);
-		cameraList = (ListView) findViewById(R.id.camerasList);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		FooterLogic.installFooterLogic(this);
