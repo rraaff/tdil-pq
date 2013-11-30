@@ -69,7 +69,9 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 	public static class LightViewHolder {
 
 		public TextView alarmDescription;
+		public TextView alarmStatusLabel;
 		public TextView alarmStatus;
+		public TextView lastChangeDateLabel;
 		public TextView lastChangeDate;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
@@ -94,11 +96,13 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new LightViewHolder();
 			holder.alarmDescription = (TextView) vi.findViewById(R.id.lightDescription);
+			holder.alarmStatusLabel = (TextView) vi.findViewById(R.id.lightStatusLabel);
 			holder.alarmStatus = (TextView) vi.findViewById(R.id.lightStatus);
+			holder.lastChangeDateLabel = (TextView) vi.findViewById(R.id.lightLastChangeDateLabel);
 			holder.lastChangeDate = (TextView) vi.findViewById(R.id.lightLastChangeDate);
 //			holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleLight);
 //			holder.toggleRandom = (ToggleButton)vi.findViewById(R.id.toggleRandom);
-			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
+//			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logLightAvatar);
 //			holder.viewLightLog = (Button)vi.findViewById(R.id.viewLightLogButton);
 			holder.goDashBoard = (ImageButton)vi.findViewById(R.id.goToLightView);
 
@@ -118,13 +122,20 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.alarmDescription.setText(iterLight.getDescription());
 			holder.alarmStatus.setText(iterLight.getStatusDescription());
-			holder.goDashBoard.setOnClickListener(new GoLightDashBoard(iterLight));
 			if (iterLight.isOn()) {
 				holder.alarmStatus.setTextColor(Color.rgb(35,102,0));
 			} else {
 				holder.alarmStatus.setTextColor(Color.rgb(227,27,35));
 			}
 			holder.lastChangeDate.setText(iterLight.getLastChangeDate());
+
+			GoLightDashBoard goLightDashBoard = new GoLightDashBoard(iterLight);
+			holder.alarmDescription.setOnClickListener(goLightDashBoard);
+			holder.alarmStatusLabel.setOnClickListener(goLightDashBoard);
+			holder.alarmStatus.setOnClickListener(goLightDashBoard);
+			holder.lastChangeDateLabel.setOnClickListener(goLightDashBoard);
+			holder.lastChangeDate.setOnClickListener(goLightDashBoard);
+			holder.goDashBoard.setOnClickListener(goLightDashBoard);
 			/*if (iterLight.isStatusUnknown()) {
 				holder.activateDeactivate.setChecked(false);
 				holder.activateDeactivate.setEnabled(true);
@@ -153,9 +164,9 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			holder.toggleRandom.setOnClickListener(new ToggleRandomListener(position));
 			holder.viewLightLog.setOnClickListener(new ViewLightLogListener(position));*/
 			
-			new DownloadImageTask(holder.lastChangeUserAvatar)
+			/*new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
-							+ iterLight.getLastChangeLojackUserID());
+							+ iterLight.getLastChangeLojackUserID());*/
 			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
@@ -179,8 +190,12 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.onItemClick(mPosition);*/
+			HomeLightsActivity sct = (HomeLightsActivity) activity;
+			sct.onItemClick(mPosition);
+			Light light = sct.getLight(mPosition);
+			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
+			intent.putExtra(HomeLightDashboard.LIGHT, light);
+			activity.startActivity(intent);
 		}
 	}
 	
