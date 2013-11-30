@@ -68,8 +68,11 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class AlarmViewHolder {
 
+		
 		public TextView alarmDescription;
+		public TextView alarmStatusLabel;
 		public TextView alarmStatus;
+		public TextView lastChangeDateLabel;
 		public TextView lastChangeDate;
 		public TextView textWide;
 		public ToggleButton activateDeactivate;
@@ -92,9 +95,11 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
 			holder.alarmDescription = (TextView) vi.findViewById(R.id.alarmDescription);
+			holder.alarmStatusLabel = (TextView) vi.findViewById(R.id.alarmStatusLabel);
 			holder.alarmStatus = (TextView) vi.findViewById(R.id.alarmStatus);
+			holder.lastChangeDateLabel = (TextView) vi.findViewById(R.id.alarmLastChangeDateLabel);
 			holder.lastChangeDate = (TextView) vi.findViewById(R.id.alarmLastChangeDate);
-			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
+//			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			holder.goDashBoard = (ImageButton)vi.findViewById(R.id.goToAlarmView);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
@@ -123,16 +128,22 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 //			holder.activateDeactivate.setChecked(iterAlarm.isActive());
 //			holder.activateDeactivate.setOnClickListener(new ToggleActivateListener(position));
 //			holder.viewAlarmLog.setOnClickListener(new ViewAlarmLogListener(position));
+			GoAlarmDashBoard goAlarmDashBoard = new GoAlarmDashBoard(iterAlarm);
 			
-			holder.goDashBoard.setOnClickListener(new GoAlarmDashBoard(iterAlarm));
+			holder.alarmDescription.setOnClickListener(goAlarmDashBoard);
+			holder.alarmStatusLabel.setOnClickListener(goAlarmDashBoard);
+			holder.alarmStatus.setOnClickListener(goAlarmDashBoard);
+			holder.lastChangeDateLabel.setOnClickListener(goAlarmDashBoard);
+			holder.lastChangeDate.setOnClickListener(goAlarmDashBoard);
+			holder.goDashBoard.setOnClickListener(goAlarmDashBoard);
 			
-			new DownloadImageTask(holder.lastChangeUserAvatar)
+			/*new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
-							+ iterAlarm.getLastChangeLojackUserID());
+							+ iterAlarm.getLastChangeLojackUserID());*/
 			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
-			vi.setOnClickListener(new OnItemClickListener(position));
+			vi.setOnClickListener(goAlarmDashBoard);
 		}
 		return vi;
 	}
@@ -153,7 +164,10 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		@Override
 		public void onClick(View arg0) {
 			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
-			sct.onItemClick(mPosition);
+			Alarm alarm = sct.getAlarm(mPosition);
+			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
+			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
+			activity.startActivity(intent);
 		}
 	}
 	
