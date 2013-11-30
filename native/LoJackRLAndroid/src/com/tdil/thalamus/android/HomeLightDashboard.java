@@ -12,8 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TabHost.TabSpec;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -36,6 +39,10 @@ import com.tdil.thalamus.android.utils.Messages;
  */
 public class HomeLightDashboard extends Activity implements ILightsActivity{
 
+	public static final String TAB_CAMARAS = "CAMARAS";
+	public static final String TAB_LUCES = "LUCES";
+	public static final String TAB_ALARMAS = "ALARMAS";
+	
 	private Light light;
 	private boolean ignore = true;
 	private HomeLightsActivity previous;
@@ -48,11 +55,35 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	private Switch activateDeactivateSwitch;
 	private Switch randomSwitch;
 	
+	private TabSpec tabCameras;
+	private TabHost tabHost;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_dashboard);
 		Bundle extras = getIntent().getExtras();
+		
+		tabHost = (TabHost) findViewById(R.id.tabhost);
+		tabHost.setup();
+		
+		TabSpec ts = tabHost.newTabSpec("tabAlarms");
+		ts.setContent(R.id.tab1);
+		ts.setIndicator(TAB_ALARMAS);
+		tabHost.addTab(ts);
+
+		TabSpec tabLights = tabHost.newTabSpec("tabLights");
+		tabLights.setContent(R.id.tab2);
+		tabLights.setIndicator(TAB_LUCES);
+		tabHost.addTab(tabLights);
+
+		tabCameras = tabHost.newTabSpec("tabCameras");
+		tabCameras.setContent(R.id.tab3);
+		tabCameras.setIndicator(TAB_CAMARAS);
+		tabHost.addTab(tabCameras);
+		
+		tabHost.setCurrentTab(1);
+		
 		Switch activateDeactivate = (Switch)findViewById(R.id.switchActivate);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
 		Switch random = (Switch)findViewById(R.id.switchRandom);
@@ -62,6 +93,36 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		light = (Light)extras.getSerializable(LIGHT);
 		init();
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		int numberOfTabs = tabHost.getTabWidget().getChildCount();
+	    for(int t=0; t<numberOfTabs; t++){
+	    	final int index = t;
+	        tabHost.getTabWidget().getChildAt(t).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					if (index == 0) {
+						Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_ALARMAS);
+			        	startActivity(intent);
+			        	HomeLightDashboard.this.finish();
+					}
+					if (index == 1) {
+						Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
+			        	startActivity(intent);
+			        	HomeLightDashboard.this.finish();
+					}
+					if (index == 2) {
+						Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_CAMARAS);
+			        	startActivity(intent);
+			        	HomeLightDashboard.this.finish();
+					}
+				}
+			});
+	    }
+		
+		FooterLogic.installFooterLogic(this);
 	}
 
 

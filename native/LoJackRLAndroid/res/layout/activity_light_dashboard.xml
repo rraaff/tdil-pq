@@ -5,7 +5,42 @@
     android:background="@drawable/main_square"
     tools:context=".HomeLightDashboard" >
 
-	<LinearLayout
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grayTabBase" >
+
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/bgBase" >
+                
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" 
+                    android:orientation="vertical" >
+                </LinearLayout>
+                
+	<LinearLayout android:id="@+id/tab2"
 	    android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
@@ -195,4 +230,12 @@
 
 	</LinearLayout>
 
+	<LinearLayout android:id="@+id/tab3" android:layout_width="match_parent"
+                    android:layout_height="match_parent" 
+                    android:orientation="vertical" >
+                </LinearLayout>
+                
+                </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </RelativeLayout>

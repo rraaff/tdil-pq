@@ -111,28 +111,15 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 			        	startActivity(intent);
 			        	HomeAlarmDashboard.this.finish();
 					}
-					
+					if (index == 2) {
+						Intent intent = new Intent(HomeAlarmDashboard.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_CAMARAS);
+			        	startActivity(intent);
+			        	HomeAlarmDashboard.this.finish();
+					}
 				}
 			});
 	    }
-		
-		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
-			@Override
-			public void onTabChanged(String tabId) {
-				if (tabId.equals("tabAlarms")) {
-					loadAlarms();
-				}
-				if (tabId.equals("tabLights")) {
-					Intent intent = new Intent(HomeAlarmDashboard.this, HomeAlarmsActivity.class);
-					intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
-		        	startActivity(intent);
-		        	HomeAlarmDashboard.this.finish();
-				}
-				if (tabId.equals("tabCameras")) {
-					//loadCameras();
-				}
-			}
-		});
 		
 		FooterLogic.installFooterLogic(this);
 	}

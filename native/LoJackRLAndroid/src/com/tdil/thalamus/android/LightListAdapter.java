@@ -254,6 +254,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
 			intent.putExtra(HomeLightDashboard.LIGHT, alarm);
 			activity.startActivity(intent);
+			activity.finish();
 		}
 	}
 }
