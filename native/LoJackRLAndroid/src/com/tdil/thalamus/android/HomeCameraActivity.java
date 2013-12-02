@@ -2,13 +2,17 @@ package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.camera.IPCamera;
@@ -29,11 +33,19 @@ import com.tdil.thalamus.android.utils.MoveCameraUpTask;
  */
 public class HomeCameraActivity extends Activity {
 
+	public static final String TAB_CAMARAS = "CAMARAS";
+	public static final String TAB_LUCES = "LUCES";
+	public static final String TAB_ALARMAS = "ALARMAS";
+	
 	public static final String CAMERA = "CAMERA";
+	
+	public static final String CAMERAS_COUNT = "CAMERAS_COUNT";
 
 	private IPCamera camera;
+	private Integer camerasCount;
 	
-	
+	private TabSpec tabCameras;
+	private TabHost tabHost;
 
 	/**
 	 * The default email to populate the email field with.
@@ -46,7 +58,30 @@ public class HomeCameraActivity extends Activity {
 
 		setContentView(R.layout.activity_home_camera);
 		Bundle extras = getIntent().getExtras();
+		
+		tabHost = (TabHost) findViewById(R.id.tabhost);
+		tabHost.setup();
+		
+		TabSpec ts = tabHost.newTabSpec("tabAlarms");
+		ts.setContent(R.id.tab1);
+		ts.setIndicator(TAB_ALARMAS);
+		tabHost.addTab(ts);
+
+		TabSpec tabLights = tabHost.newTabSpec("tabLights");
+		tabLights.setContent(R.id.tab2);
+		tabLights.setIndicator(TAB_LUCES);
+		tabHost.addTab(tabLights);
+
+		tabCameras = tabHost.newTabSpec("tabCameras");
+		tabCameras.setContent(R.id.tab3);
+		tabCameras.setIndicator(TAB_CAMARAS);
+		tabHost.addTab(tabCameras);
+		
+		tabHost.setCurrentTab(2);
+		
 		Camera tmpCamera = (Camera)extras.getSerializable(CAMERA);
+		camerasCount = (Integer)extras.getSerializable(CAMERAS_COUNT);
+		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(tmpCamera.getModel())) {
 			camera = new TPLinkSC4171G(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
@@ -95,6 +130,38 @@ public class HomeCameraActivity extends Activity {
 //						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "right").execute();
 					}
 				});
+		
+		int numberOfTabs = tabHost.getTabWidget().getChildCount();
+	    for(int t=0; t<numberOfTabs; t++){
+	    	final int index = t;
+	        tabHost.getTabWidget().getChildAt(t).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					if (index == 0) {
+						Intent intent = new Intent(HomeCameraActivity.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_ALARMAS);
+			        	startActivity(intent);
+			        	HomeCameraActivity.this.finish();
+					}
+					if (index == 1) {
+						Intent intent = new Intent(HomeCameraActivity.this, HomeAlarmsActivity.class);
+						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
+			        	startActivity(intent);
+			        	HomeCameraActivity.this.finish();
+					}
+					if (index == 2) {
+						if (camerasCount > 1) {
+							Intent intent = new Intent(HomeCameraActivity.this, HomeAlarmsActivity.class);
+							intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_CAMARAS);
+				        	startActivity(intent);
+				        	HomeCameraActivity.this.finish();
+						}
+					}
+				}
+			});
+	    }
+		
+		FooterLogic.installFooterLogic(this);
 	}
 
 	@Override

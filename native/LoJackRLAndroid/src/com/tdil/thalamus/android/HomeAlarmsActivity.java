@@ -94,7 +94,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		tabHost.addTab(tabLights);
 
 		tabCameras = tabHost.newTabSpec("tabCameras");
-		tabCameras.setContent(R.id.alarmsList);
+		tabCameras.setContent(R.id.camerasList);
 		tabCameras.setIndicator(TAB_CAMARAS);
 		tabHost.addTab(tabCameras);
 		
@@ -212,7 +212,9 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 					tabHost.setCurrentTab(3);
 					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeCameraActivity.class);
 					intent.putExtra(HomeCameraActivity.CAMERA, col.getCameras().iterator().next());
+					intent.putExtra(HomeCameraActivity.CAMERAS_COUNT, col.getCameras().size());
 					HomeAlarmsActivity.this.startActivity(intent);
+					HomeAlarmsActivity.this.finish();
 				}  else {
 					Resources res = getResources();
 					cameraListAdapter = new CameraListAdapter(HomeAlarmsActivity.this,
