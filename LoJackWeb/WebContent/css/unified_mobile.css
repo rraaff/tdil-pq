@@ -178,9 +178,7 @@ button.icon_zoom_out { background:url(../mobile/images/webApp/parkings/icon_Zoom
 	height:100%;
 }
 #tableStyle { width:100%; height:auto; overflow-y:auto; }
-fieldset.tableHeader {
-	background:#333;
-}
+fieldset.tableHeader { background:#333; }
 fieldset label {
 	color:#999;
 	font-size:16px;
@@ -191,24 +189,13 @@ fieldset label {
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;   
 }
-fieldset.tableHeader label {
-	color:#FFF;
-}
-fieldset label.w1 {
-	width:30%;
-}
-
-fieldset label.w2 {
-	text-align:center;
-	width:auto;
-}
-fieldset label.w3 {
-	width:70%;
-}
+fieldset.tableHeader label { color:#FFF; }
+fieldset label.w1 { width:30%; }
+fieldset label.w2 { text-align:center; width:auto; }
+fieldset label.w3 { width:70%; }
 fieldset label.w4,
-fieldset label.w100 {
-	width:100%;
-}
+fieldset label.w100 { width:100%; }
+fieldset span.sample { color:#666; font-size:16px; }
 a fieldset { background:#f0f0f0; margin:3px 0; }
 a fieldset:hover,
 a fieldset:active,
