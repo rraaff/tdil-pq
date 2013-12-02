@@ -48,7 +48,8 @@
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
-    
+    <string name="cmnt_camera_tooltip">Presioná las flechas para orientar la cámara</string>
+
     <!-- Ruedita -->
     <string name="rd_main_promo_title">Viví LoAPP 1.1</string>
     <string name="rd_main_hookline">El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</string>
@@ -59,7 +60,7 @@
     <!-- Buttons -->
     <string name="btn_tag_alarms">ALARMAS</string>
     <string name="btn_tag_lights">LUCES</string>
-    <string name="btn_tag_cameras">CAMARÁS</string>
+    <string name="btn_tag_cameras">CÁMARAS</string>
     <string name="btn_tag_camera">CÁMARA</string>
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>

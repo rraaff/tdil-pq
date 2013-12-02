@@ -33,8 +33,7 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/bgBase" >
+                android:layout_height="fill_parent" >
 
                 <LinearLayout  android1:id="@+id/tab1"
                     android1:layout_width="fill_parent"
