@@ -35,7 +35,7 @@
   <style name="TabAppTheme" parent="@android:style/Widget.ActionBar.TabView">
       <item name="android:paddingLeft">8dip</item>
       <item name="android:paddingRight">8dip</item>
-      <item name="android:background">@drawable/tab_indicator_ab_example</item>
+      <item name="android:background">@drawable/tab_indicator_holo</item>
       <item name="android:layout_width">0dip</item>
       <item name="android:layout_weight">1</item>
       <item name="android:minWidth">48dip</item>
@@ -119,7 +119,7 @@
     </style>
 
     <style name="ActionBarTabStyle.Example" parent="@android:style/Widget.Holo.ActionBar.TabView">
-        <item name="android:background">@drawable/tab_indicator_ab_example</item>
+        <item name="android:background">@drawable/tab_indicator_holo</item>
     </style>
 
     <style name="DropDownNav.Example" parent="@android:style/Widget.Holo.Spinner">
