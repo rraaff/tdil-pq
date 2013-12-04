@@ -212,9 +212,10 @@
         }
         function showAllParkings() {
         	removeParkings();
-        	if (MyPos) {
+        	/*if (MyPos) {
         		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
-            }
+            }*/
+            Mapa.SetParameters("toolbar=off&Lat=-34.605004&Lon=-58.451677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
         	currPoints = new Array(); 
             if (!parkings) {
 	        	parkings = new OpenLayers.Layer.Markers( "Parkings" );
