@@ -13,16 +13,13 @@
 		    android:id="@+id/cameraDescription"
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:layout_gravity="left|center_vertical"
 		    android:layout_marginBottom="6dp"
 		    android:layout_marginLeft="8dp"
 		    android:layout_marginTop="6dp"
 		    android:layout_span="1"
 		    android:layout_weight="1"
 		    android:lines="1"
-		    android:textAllCaps="true"
-		    android:textColor="@color/lst_itm_title"
-		    android:textSize="16sp" />
+		    android:textColor="@color/lst_itm_title" />
 
 	     <Button
 	         android:id="@+id/viewCameraButton"

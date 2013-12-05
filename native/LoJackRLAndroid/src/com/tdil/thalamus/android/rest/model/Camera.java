@@ -10,9 +10,10 @@ public class Camera implements Serializable {
 	private String password;
 	private String url;
 	private String model;
+	private String description;
 
 	public String getDescription() {
-		return this.url;
+		return this.description;
 	}
 	
 	public String getUsername() {
@@ -38,6 +39,10 @@ public class Camera implements Serializable {
 	}
 	public void setModel(String model) {
 		this.model = model;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
