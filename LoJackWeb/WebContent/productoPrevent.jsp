@@ -82,7 +82,7 @@ if (apk) {
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/MapaOSM.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.lojack.utils.LoJackConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");%>
 <script type="text/javascript">
 	var startLat = -34.53483581543;

@@ -112,7 +112,7 @@
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/MapaOSM.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.lojack.utils.LoJackConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var startLat = -34.53483581543;
 	var startLon = -58.548202514648;

@@ -86,6 +86,8 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static String mapsUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
 	
+	private static long startTime = System.currentTimeMillis();
+	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
 	
 	private static Logger getLog() {
@@ -847,6 +849,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setMapsUrl(String mapsUrl) {
 		LoJackConfig.mapsUrl = mapsUrl;
+	}
+
+	public static long getStartTime() {
+		return startTime;
+	}
+
+	public static void setStartTime(long startTime) {
+		LoJackConfig.startTime = startTime;
 	}
 
 }

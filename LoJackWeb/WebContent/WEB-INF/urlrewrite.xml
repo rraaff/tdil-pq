@@ -12,13 +12,12 @@
 
     <rule>
         <note>
-            Redireccion para las notas.
+            Redireccion los js
         </note>
-        <from>/([0-9]{4}-[0-9]{2}-[0-9]{2})/(.*).html</from>
-        <to>/getNote.jsp?date=$1&amp;note=$2</to>
+        <from>js/([0-9]*)_(.*)\.js</from>
+        <to>js/$2.js</to>
     </rule>
-
-
+    
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
