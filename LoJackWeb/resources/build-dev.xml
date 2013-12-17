@@ -444,7 +444,6 @@
 				<exclude name="nekohtml.jar" />
 				<exclude name="pluginibator.jar" />
 				<exclude name="poi-3.1-FINAL-20080629.jar" />
-				<exclude name="urlrewrite-3.2.0.jar" />
 				<exclude name="xercesImpl-2.8.0.jar" />
 				<exclude name="xml-apis-xerces-2.9.1.jar" />
 				<!--exclude name="servlet-api.jar" /-->
