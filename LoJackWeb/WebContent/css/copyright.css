@@ -9,8 +9,8 @@
 #copyright .android_play,
 #copyright .ios_store		{ width:200px; float:left; }
 #copyright .ios_store		{ width:80px; text-align:right; padding:13px 0 0; }
-#copyright .ios_store img	{ height:50px; -o-transition:height .2s ease-out; -ms-transition:height .2s ease-out; -moz-transition:height .2s ease-out; -webkit-transition:height .2s ease-out; transition:height .2s ease-out; }
-#copyright .ios_store img:hover	{ height:80px; }
+#copyright .ios_store img	{ height:50px; -o-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -ms-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -moz-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -webkit-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; }
+#copyright .ios_store img:hover	{ height:80px; padding:0; top:-18px; position:relative; }
 
 
 @media only screen and (max-width: 1780px) {
