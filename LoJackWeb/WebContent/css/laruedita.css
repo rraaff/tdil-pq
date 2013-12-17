@@ -74,11 +74,11 @@
 	#nmSombraTel		{ top:-653px; }
 	#rhWrapper			{ width:100%; }
 	#nmMainObjects		{ height:650px; }
-	#copyright .copy 	{ width:100%; }
 }
+/*
 @media only screen and (max-height: 860px) {
 	#copyright { top:860px; }
-}
+}*/
 @media only screen and (max-width: 1020px) {
 	#nmTelefono				{ width:100%; }
 	#nmPhoneImgContainer	{ opacity:0; }
