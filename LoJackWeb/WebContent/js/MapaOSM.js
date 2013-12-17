@@ -46,10 +46,10 @@ function MapaOSM(elementId, containerId, options) {
     };
 
     // Layers
-    // var tilesetUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
-    // var tilesetUrl = "http://c.tile.openstreetmap.org/${z}/${x}/${y}.png";
     var tilesetUrl = "http://a.tile.openstreetmap.org/${z}/${x}/${y}.png";
-    
+    if (options.tilesetUrl) {
+    	tilesetUrl = options.tilesetUrl;
+    }
     this.mainLayer = new OpenLayers.Layer.OSM("MainLayer", tilesetUrl, { transitionEffect: "resize", tileOptions: { crossOriginKeyword: null }});
     this.marcasLayer = new OpenLayers.Layer.Markers("Marcas");
     this.recorridosLayer = new OpenLayers.Layer.Markers("Recorrido");

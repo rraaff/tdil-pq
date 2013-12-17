@@ -84,6 +84,8 @@ public class LoJackConfig extends SystemConfig {
 	private static String clubLoJackUrl = "http://www.clublojack.com.ar/";
 	private static boolean clubLoJackShow = false;
 	
+	private static String mapsUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
+	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
 	
 	private static Logger getLog() {
@@ -541,6 +543,12 @@ public class LoJackConfig extends SystemConfig {
 		}
 		getLog().fatal("ClubloJack show is " + isClubLoJackShow());
 		
+		String mapsUrl = SystemPropertyUtils.getSystemPropertValue("maps.url");
+		if (!StringUtils.isEmpty(mapsUrl)) {
+			setMapsUrl(mapsUrl);
+		}
+		getLog().fatal("maps.url is " + getMapsUrl());
+		
 		IPCamera.setLogger(new CameraLog4jLogger());
 
 		getLog().fatal("Starting middleware jobs updater");
@@ -831,6 +839,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setClubLoJackShow(boolean clubLoJackShow) {
 		LoJackConfig.clubLoJackShow = clubLoJackShow;
+	}
+
+	public static String getMapsUrl() {
+		return mapsUrl;
+	}
+
+	public static void setMapsUrl(String mapsUrl) {
+		LoJackConfig.mapsUrl = mapsUrl;
 	}
 
 }

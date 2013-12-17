@@ -82,3 +82,5 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.n
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('clubLoJack.url','http://www.google.com','Url de beneficios del club lo jack',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('clubLoJack.show','false','Identifica si se activa o no la funcionalidad de club lojack',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('maps.url','http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png','Url de los mapas',0);

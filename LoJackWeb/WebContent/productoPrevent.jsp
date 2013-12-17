@@ -140,7 +140,8 @@ if (apk) {
 			}
 
 			var mapOptions = {
-				DataProjection: "EPSG:4326"
+				DataProjection: "EPSG:4326",
+				tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
 			};
 
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
@@ -165,7 +166,8 @@ if (apk) {
 			<% } %>
 		<% } else { %>
 			var mapOptions = {
-				DataProjection: "EPSG:4326"
+				DataProjection: "EPSG:4326",
+				tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
 			};
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 			Mapa.UpdateConfig({ title: "Prevent" });
