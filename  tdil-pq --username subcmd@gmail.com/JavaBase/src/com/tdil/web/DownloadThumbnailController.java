@@ -44,11 +44,6 @@ public class DownloadThumbnailController extends HttpServlet {
 		int id = Integer.parseInt(req.getParameter("id"));
 		String ext = req.getParameter("ext");
 		
-		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlobThumbnail(type, id, width, height, constrain, 0, ext, null); // TODO usuario
-		long length = blobLocalData.getFileSize();
-		Calendar cal = Calendar.getInstance();
-		cal.set(2010, 1, 1, 0, 0, 0);
-		long lastModified = cal.getTimeInMillis();
 		String eTag = type + "=" + id;
 		String ifNoneMatch = req.getHeader("If-None-Match");
 		if (ifNoneMatch != null && matches(ifNoneMatch, eTag)) {
@@ -60,11 +55,15 @@ public class DownloadThumbnailController extends HttpServlet {
 		// then return 304.
 		// This header is ignored if any If-None-Match header is specified.
 		long ifModifiedSince = req.getDateHeader("If-Modified-Since");
-		if (ifNoneMatch == null && ifModifiedSince != -1 && ifModifiedSince + 1000 > lastModified) {
+		if (ifNoneMatch == null && ifModifiedSince != -1) {
 			res.setHeader("ETag", eTag); // Required in 304.
 			res.sendError(HttpServletResponse.SC_NOT_MODIFIED);
 			return;
 		}
+		BlobLocalData blobLocalData = BlobLocalDiskCache.getBlobThumbnail(type, id, width, height, constrain, 0, ext, null); // TODO usuario
+		long length = blobLocalData.getFileSize();
+		Calendar cal = Calendar.getInstance();
+		long lastModified = cal.getTimeInMillis();
 		res.setBufferSize(DEFAULT_BUFFER_SIZE);
 		res.setHeader("Content-Length", String.valueOf(length));
 		res.setHeader("ETag", eTag);
