@@ -18,6 +18,7 @@ import com.tdil.lojack.model.WebsiteUserExample;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class WebsiteUserUtils {
 	
@@ -139,8 +140,11 @@ public class WebsiteUserUtils {
 			return null;
 		}
 		try {
-			return (com.tdil.lojack.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUserByHomeUserId(lojackUserId));
+			return (com.tdil.lojack.model.WebsiteUser)GenericTransactionExecutionService.getInstance().execute(new GetWebSiteUserByHomeUserId(lojackUserId));
 		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
 		} 

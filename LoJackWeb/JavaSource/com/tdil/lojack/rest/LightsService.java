@@ -65,13 +65,10 @@ public class LightsService extends AbstractRESTService {
 						if (StringUtils.isEmpty(light.getLastChangeLojackUserID())) {
 							light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
 						} else {
-							WebsiteUserExample example = new WebsiteUserExample();
-							example.createCriteria().andLojackuseridEqualTo(light.getLastChangeLojackUserID());
-							List<com.tdil.lojack.model.WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
-							if (result.size() > 0) {
-								com.tdil.lojack.model.WebsiteUser user = result.get(0);
-								if (user != null && WebsiteUserUtils.hasAvatar(user)) {
-									light.setLastChangeLojackUserID("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUserByHomeUserId(light.getLastChangeLojackUserID());
+							if (logUsr != null) {
+								if (user != null && WebsiteUserUtils.hasAvatar(logUsr)) {
+									light.setLastChangeLojackUserID("./download.st?id=" + logUsr.getIdAvatar() + "&type=PUBLIC&ext=" + logUsr.getExtAvatar());
 								} else {
 									light.setLastChangeLojackUserID("images/skin_lj_rl/logos/avatarBase.png");
 								}
@@ -170,13 +167,10 @@ public class LightsService extends AbstractRESTService {
 						if (StringUtils.isEmpty(alarm.getLojackUserId())) {
 							alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
 						} else {
-							WebsiteUserExample example = new WebsiteUserExample();
-							example.createCriteria().andLojackuseridEqualTo(alarm.getLojackUserId());
-							List<com.tdil.lojack.model.WebsiteUser> result = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
-							if (result.size() > 0) {
-								com.tdil.lojack.model.WebsiteUser user = result.get(0);
-								if (user != null && WebsiteUserUtils.hasAvatar(user)) {
-									alarm.setLojackUserId("./download.st?id=" + user.getIdAvatar() + "&type=PUBLIC&ext=" + user.getExtAvatar());
+							com.tdil.lojack.model.WebsiteUser logUsr = WebsiteUserUtils.getWebSiteUserByHomeUserId(alarm.getLojackUserId());
+							if (logUsr != null) {
+								if (user != null && WebsiteUserUtils.hasAvatar(logUsr)) {
+									alarm.setLojackUserId("./download.st?id=" + logUsr.getIdAvatar() + "&type=PUBLIC&ext=" + logUsr.getExtAvatar());
 								} else {
 									alarm.setLojackUserId("images/skin_lj_rl/logos/avatarBase.png");
 								}
