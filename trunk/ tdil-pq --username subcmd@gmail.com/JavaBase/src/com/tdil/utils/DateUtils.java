@@ -176,4 +176,21 @@ public class DateUtils {
 			return null;
 		}
 	}
+	
+	public static String getTimeTo(Date date) {
+		Calendar now = Calendar.getInstance();
+		long diff = date2LastMomentOfDate(date).getTime() - now.getTime().getTime();
+
+		long diffSeconds = diff / 1000 % 60;
+		long diffMinutes = diff / (60 * 1000) % 60;
+		long diffHours = diff / (60 * 60 * 1000) % 24;
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+
+		StringBuilder result = new StringBuilder();
+		result.append(diffDays + " dias ");
+		result.append(diffHours + " horas ");
+		result.append(diffMinutes + " minutos ");
+		result.append(diffSeconds + " segundos");
+		return result.toString();
+	}
 }
