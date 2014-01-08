@@ -193,4 +193,15 @@ public class DateUtils {
 		result.append(diffSeconds + " segundos");
 		return result.toString();
 	}
+	
+	public static String getDaysAndHoursFrom(Date date) {
+		Calendar now = Calendar.getInstance();
+		long diff = now.getTime().getTime() - date2LastMomentOfDate(date).getTime();
+		long diffHours = diff / (60 * 60 * 1000) % 24;
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		StringBuilder result = new StringBuilder();
+		result.append(diffDays + " dias ");
+		result.append(diffHours + " horas ");
+		return result.toString();
+	}
 }
