@@ -164,7 +164,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 			new AlertDialog.Builder(RequestResetPasswordActivity.this)
             .setIcon(R.drawable.ic_launcher)
             .setTitle("Contraseña")
-            .setMessage("Se le ha enviado un mail para que genere una nueva contraseña")
+            .setMessage("Te hemos enviado un E-Mail para que crees tu nueva clave. Si no lo recibiste, por favor revisá en correo no deseado.")
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                  	   //this.
