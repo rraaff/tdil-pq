@@ -737,7 +737,7 @@ function parkingsNotLogged() {
 		<div class="loginLayerContent">
 			<div id="xContainer"><button class="buttonLink" cl="forgotPasswordEmailSentLayer">X</button></div>
 			<h3>Atención</h3>
-			<div class="alert alert-block">Te hemos enviado una clave temporaria. <br />Si no recibís un E-Mail nuestro con la clave, por favor revisá el correo no deseado.</div>
+			<div class="alert alert-block">Te hemos enviado un E-Mail para que crees tu nueva clave.<br />Si no lo recibiste, por favor revisá en correo no deseado.</div>
 			<fieldset>
 				<button type="submit" id="closeforgotPasswordEmailSentLayer"  class="indexButtonBase">Cerrar</button>
 			</fieldset>

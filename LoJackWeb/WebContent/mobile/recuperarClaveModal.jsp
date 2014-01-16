@@ -35,7 +35,7 @@
 </div>
 <div id="recoverPassContent">
 	<html:form method="POST" action="/mobile/requestResetPasswordMobile">
-		<p>Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</p>
+		<p>Ingresá tu DNI y te enviaremos por E-Mail un link para que crees tu nueva clave. Si no lo recibiste, por favor revisá en correo no deseado.</p>
 		<fieldset>
 			<div class="errorInForm"><html:errors property="general" /></div>
 		</fieldset>
