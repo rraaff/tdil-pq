@@ -11,11 +11,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
 
@@ -28,6 +30,14 @@ public class CheckForUpdateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_for_update);
 		mHandler = new Handler();
+		try {
+			int curVersion = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionCode;
+			String curVersionName = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionName;
+			((TextView)findViewById(R.id.appVersion)).setText(curVersion + "-" + curVersionName);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		checkUpdate.start();
 	}
 
@@ -88,8 +98,8 @@ public class CheckForUpdateActivity extends Activity {
            public void run(){
         	   new AlertDialog.Builder(CheckForUpdateActivity.this)
                .setIcon(R.drawable.ic_launcher)
-               .setTitle("Atención")
-               .setMessage("No se pudo establecer correctamente la conexión")
+               .setTitle("Atenciï¿½n")
+               .setMessage("No se pudo establecer correctamente la conexiï¿½n")
                .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
                        public void onClick(DialogInterface dialog, int whichButton) {
                              CheckForUpdateActivity.this.finish();
@@ -104,7 +114,7 @@ public class CheckForUpdateActivity extends Activity {
             new AlertDialog.Builder(CheckForUpdateActivity.this)
             .setIcon(R.drawable.ic_launcher)
             .setTitle("Actualizar")
-            .setMessage("Hay una actualización disponible\\n\\n¿Desea actualizarla ahora?")
+            .setMessage("Hay una actualizaciï¿½n disponible\\n\\nï¿½Desea actualizarla ahora?")
             .setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                             /* User clicked OK so do some stuff */
