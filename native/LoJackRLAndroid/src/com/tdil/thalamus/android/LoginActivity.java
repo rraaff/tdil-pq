@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -189,6 +191,15 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 		passwordEditText.setText(mPassword);
 		if (!isEmpty(mDocNumber) && !isEmpty(mPassword)) {
 			remCheckBox.setChecked(true);
+		}
+		
+		try {
+			int curVersion = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionCode;
+			String curVersionName = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionName;
+			((TextView)findViewById(R.id.appVersion)).setText(curVersion + "-" + curVersionName);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
