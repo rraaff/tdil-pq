@@ -1,0 +1,199 @@
+{
+  "profileFields": [
+    {
+      "name": "address",
+      "description": "profile.field.address.description",
+      "type": "ADDRESS",
+      "required": false,
+      "editable": true,
+      "subfields": [
+        {
+          "name": "street1",
+          "description": "profile.field.address.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "street2",
+          "description": "profile.field.address.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "city",
+          "description": "profile.field.address.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "postalCode",
+          "description": "profile.field.address.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "stateId",
+          "description": "profile.field.address.description",
+          "type": "REFERENCE",
+          "required": false,
+          "editable": true,
+          "refEntity": "State"
+        },
+        {
+          "name": "countryId",
+          "description": "profile.field.address.description",
+          "type": "REFERENCE",
+          "required": false,
+          "editable": true,
+          "refEntity": "Country"
+        },
+        {
+          "name": "type",
+          "description": "profile.field.address.description",
+          "type": "ENUM",
+          "required": false,
+          "editable": true,
+          "enumValues": [
+            "home",
+            "work",
+            "other"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "birthday",
+      "description": "profile.field.birthday.description",
+      "type": "DATE",
+      "required": true,
+      "editable": true
+    },
+    {
+      "name": "email",
+      "description": "profile.field.email.description",
+      "type": "EMAIL",
+      "required": true,
+      "editable": true
+    },
+    {
+      "name": "firstname",
+      "description": "profile.field.firstname.description",
+      "type": "TEXT",
+      "required": true,
+      "editable": true
+    },
+    {
+      "name": "gender",
+      "description": "profile.field.gender.description",
+      "type": "ENUM",
+      "required": true,
+      "editable": true,
+      "enumValues": [
+        "Male",
+        "Female"
+      ]
+    },
+    {
+      "name": "lastname",
+      "description": "profile.field.lastname.description",
+      "type": "TEXT",
+      "required": true,
+      "editable": true
+    },
+    {
+      "name": "phone",
+      "description": "profile.field.phone.description",
+      "type": "PHONE_NUMBER",
+      "required": false,
+      "editable": true,
+      "subfields": [
+        {
+          "name": "intCode",
+          "description": "profile.field.phone.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "areaCode",
+          "description": "profile.field.phone.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "number",
+          "description": "profile.field.phone.description",
+          "type": "TEXT",
+          "required": false,
+          "editable": true
+        },
+        {
+          "name": "type",
+          "description": "profile.field.phone.description",
+          "type": "ENUM",
+          "required": false,
+          "editable": true,
+          "enumValues": [
+            "cellphone",
+            "home",
+            "work",
+            "other"
+          ]
+        }
+      ]
+    }
+  ],
+  "consumerFields": [
+    {
+      "name": "activeConsumer",
+      "description": "",
+      "type": "BOOLEAN",
+      "required": true,
+      "editable": true
+    },
+    {
+      "name": "consumtionFrecuency",
+      "description": "",
+      "type": "DECIMAL",
+      "required": false,
+      "editable": true
+    },
+    {
+      "name": "preferedBrandId",
+      "description": "",
+      "type": "REFERENCE",
+      "required": false,
+      "editable": true,
+      "refEntity": "Brand"
+    },
+    {
+      "name": "alternativeBrandId",
+      "description": "",
+      "type": "REFERENCE",
+      "required": false,
+      "editable": true,
+      "refEntity": "Brand"
+    }
+  ],
+  "credentialFields": [
+    {
+      "name": "principal",
+      "description": "",
+      "type": "DOCUMENT",
+      "required": true,
+      "editable": false
+    },
+    {
+      "name": "password",
+      "description": "",
+      "type": "PASSWORD",
+      "required": true,
+      "editable": true
+    }
+  ]
+}

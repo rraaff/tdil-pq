@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="commons-httpclient.jar" sourcepath="commons-httpclient-3.0.1-src.zip"/>
+	<classpathentry kind="lib" path="junit-4.8.2.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-codec.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-collections.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-lang.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/ezmorph-1.0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="/EnvironmentLibraries/json-lib-2.3-jdk15.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/EnvironmentLibraries"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
