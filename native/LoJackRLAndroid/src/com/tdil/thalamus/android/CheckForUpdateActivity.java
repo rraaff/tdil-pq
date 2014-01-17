@@ -18,7 +18,6 @@ import android.os.Handler;
 import android.view.Menu;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.utils.Messages;
 
 public class CheckForUpdateActivity extends Activity {
 	
@@ -29,10 +28,7 @@ public class CheckForUpdateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_for_update);
 		mHandler = new Handler();
-		// checkUpdate.start();
-		Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
-    	startActivity(intent);
-    	finish();
+		checkUpdate.start();
 	}
 
 	@Override
@@ -54,8 +50,6 @@ public class CheckForUpdateActivity extends Activity {
             try {
                 URL updateURL = new URL(ApplicationConfig.URL_ANDROID_VERSION);                
                 URLConnection conn = updateURL.openConnection(); 
-                conn.setConnectTimeout(ApplicationConfig.default_timeout);
-                conn.setReadTimeout(ApplicationConfig.default_timeout);
                 InputStream is = conn.getInputStream();
                 BufferedInputStream bis = new BufferedInputStream(is);
                 ByteArrayBuffer baf = new ByteArrayBuffer(50);
@@ -92,7 +86,15 @@ public class CheckForUpdateActivity extends Activity {
     /* This Runnable creates a Dialog and asks the user to open the Market */ 
     private Runnable showError = new Runnable(){
            public void run(){
-        	   Messages.connectionErrorMessage(CheckForUpdateActivity.this);
+        	   new AlertDialog.Builder(CheckForUpdateActivity.this)
+               .setIcon(R.drawable.ic_launcher)
+               .setTitle("Atención")
+               .setMessage("No se pudo establecer correctamente la conexión")
+               .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+                       public void onClick(DialogInterface dialog, int whichButton) {
+                             CheckForUpdateActivity.this.finish();
+                       }
+               }).show();
            }
     };    
 
@@ -102,11 +104,11 @@ public class CheckForUpdateActivity extends Activity {
             new AlertDialog.Builder(CheckForUpdateActivity.this)
             .setIcon(R.drawable.ic_launcher)
             .setTitle("Actualizar")
-            .setMessage("Hay una actualización disponible\\n\\n¿Desea actualizarla ahora?")
+            .setMessage("Hay una actualización disponible.¿Desea actualizarla ahora?")
             .setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                             /* User clicked OK so do some stuff */
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojackapp"));
                             startActivity(intent);
                     }
             })
