@@ -1,4 +1,10 @@
 [
+{
+		"username" : "admin",
+		"password": "qw123456",
+		"url" : "http://demo-trendnet.dyndns.org1:8380",
+		"model" : "3"
+	},
 
 	{
 		"username" : "admin",
