@@ -1,26 +1,11 @@
 package com.tdil.lojack.rest;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.XmlRootElement;
 
-import com.sun.jersey.api.json.JSONWithPadding;
-import com.tdil.lojack.gis.model.Alarm;
-import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.utils.WebsiteUser;
 
 @Path("/sayHello")
