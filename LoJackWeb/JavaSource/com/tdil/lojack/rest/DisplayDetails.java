@@ -1,14 +1,26 @@
 package com.tdil.lojack.rest;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.sun.jersey.api.json.JSONWithPadding;
+import com.tdil.lojack.gis.model.Alarm;
+import com.tdil.lojack.rest.model.AlarmCollection;
 import com.tdil.lojack.utils.WebsiteUser;
 
 @Path("/sayHello")
@@ -64,5 +76,56 @@ public class DisplayDetails {
 		return str.toString();
 	}
 	
+	@GET
+	 @Produces( { "application/x-javascript", MediaType.APPLICATION_JSON,
+	      MediaType.APPLICATION_XML })
+	@Path("/jsonp/orders")
+	public JSONWithPadding getOrders(@QueryParam("callback") @DefaultValue("fn") String callback) {
+		Alarm a = new Alarm();
+		a.setIdEntidad(1);
+		a.setDescription("test");
+		List<Alarm> result = new ArrayList<Alarm>();
+		result.add(a);
+	    return new JSONWithPadding(new AlarmCollection(result), callback);
+	}
+
+	@GET
+	 @Produces( { "application/x-javascript", MediaType.APPLICATION_JSON,
+	      MediaType.APPLICATION_XML })
+	@Path("/jsonp/login")
+	public JSONWithPadding login(@QueryParam("callback") @DefaultValue("fn") String callback, 
+			@QueryParam("username") String username, @QueryParam("password") String password) {
+		if ("marcos".equals(username)) {
+			return new JSONWithPadding(new LoginResult("OK"), callback);
+		} else {
+			return new JSONWithPadding(new LoginResult("ERR"), callback);
+		}
+	}
+	
+	@XmlRootElement
+	public static class LoginResult {
+		
+		private String result;
+		
+		public LoginResult() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public LoginResult(String result) {
+			super();
+			this.result = result;
+		}
+
+		public String getResult() {
+			return result;
+		}
+
+		public void setResult(String result) {
+			this.result = result;
+		}
+		
+
+	}
+
 	
 }
