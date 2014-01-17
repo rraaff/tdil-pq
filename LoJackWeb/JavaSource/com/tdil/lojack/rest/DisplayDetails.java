@@ -50,7 +50,7 @@ public class DisplayDetails {
 			throw new WebApplicationException(401);
 		}
 	}
-
+/*
 	@GET
 	public String getHtml(@QueryParam("empname") String empName, @QueryParam("empnumber") int empNumber,
 			@QueryParam("empunit") String empUnit, @QueryParam("empmail") String empMail) {
@@ -126,6 +126,6 @@ public class DisplayDetails {
 		
 
 	}
-
+*/
 	
 }
