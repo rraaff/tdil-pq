@@ -90,7 +90,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		validator = new Validator(this);
 	    validator.setValidationListener(this);
 		

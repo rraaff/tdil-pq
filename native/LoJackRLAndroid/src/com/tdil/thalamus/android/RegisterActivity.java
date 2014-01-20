@@ -95,6 +95,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		//Remove title bar
 		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//Remove notification bar

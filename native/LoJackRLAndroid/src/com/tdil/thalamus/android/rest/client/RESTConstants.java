@@ -30,6 +30,8 @@ public interface RESTConstants {
 	public static final String SAVE_USER = "/users/update";
 	public static final String CHANGE_PASSWORD = "/users/password";
 	
+	public static final String LOG_ERROR_APK = "/users/logApkError";
+	
 	public static final String LOGIN_PETS = "/users/loginPets";
 	
 	public static final String REQUEST_RESET_PASSWORD = "/users/requestResetPassword?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER;

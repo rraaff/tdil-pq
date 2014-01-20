@@ -71,7 +71,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_alarms);
 		
 		String tab = null;

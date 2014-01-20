@@ -44,7 +44,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_alarms_send_panic);
 
 		list = (ListView) findViewById(R.id.alarmsList);

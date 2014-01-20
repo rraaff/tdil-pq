@@ -46,6 +46,7 @@ public class HomeLightsActivity extends Activity implements ILightsActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_lights);
 		lightsList = (ListView) findViewById(R.id.lightsList);
 		loadLights();

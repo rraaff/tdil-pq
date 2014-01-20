@@ -63,7 +63,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_dashboard);
 		Bundle extras = getIntent().getExtras();
-		
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		tabHost = (TabHost) findViewById(R.id.tabhost);
 		tabHost.setup();
 		

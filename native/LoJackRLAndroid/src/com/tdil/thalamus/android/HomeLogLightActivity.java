@@ -48,7 +48,7 @@ public class HomeLogLightActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		Bundle extras = getIntent().getExtras();
 		identidad = extras.getInt(IDENTIDAD);
 		idluz = extras.getInt(IDLUZ);

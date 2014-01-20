@@ -64,6 +64,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_alarm_dashboard);
 		Bundle extras = getIntent().getExtras();
 		

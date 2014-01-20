@@ -91,7 +91,7 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_login);
 		
 //		Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
@@ -235,7 +235,6 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 		if (mAuthTask != null) {
 			return;
 		}
-
 		// Store values at the time of the login attempt.
 		mDocNumber = ((EditText) findViewById(R.id.documentNumber)).getText().toString();
 		mPassword = ((EditText) findViewById(R.id.password)).getText().toString();

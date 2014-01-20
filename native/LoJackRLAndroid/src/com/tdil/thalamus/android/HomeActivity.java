@@ -39,7 +39,7 @@ public class HomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home);
 		findViewById(R.id.alarmas).setOnClickListener(
 			new View.OnClickListener() {

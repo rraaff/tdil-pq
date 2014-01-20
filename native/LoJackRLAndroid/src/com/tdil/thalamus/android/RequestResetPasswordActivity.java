@@ -55,7 +55,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		

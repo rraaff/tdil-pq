@@ -55,7 +55,7 @@ public class HomeCameraActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_camera);
 		Bundle extras = getIntent().getExtras();
 		
