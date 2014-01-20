@@ -22,10 +22,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-<!--      
-android:theme="@style/AppTheme"z
-android:theme="@+id/AppTheme.NoTitleBar.Fullscreen"
-android:theme="@android:Theme.Holo.Light"-->
 
         <activity
             android:name="com.tdil.thalamus.android.RequestResetPasswordActivity"
