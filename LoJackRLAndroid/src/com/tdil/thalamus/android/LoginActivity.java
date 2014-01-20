@@ -28,8 +28,8 @@ import com.tdil.lojack.rl.R;
  */
 public class LoginActivity extends Activity {
     
-	/*public static final String URL_WEBSITE = "http://192.168.0.110:8180/LoJackWeb/";
-    public static final String URL_ANDROID_VERSION = "http://192.168.0.110:8180/LoJackWeb/android_version.txt";*/
+	//public static final String URL_WEBSITE = "http://192.168.0.100:8180/LoJackWeb/";
+    //public static final String URL_ANDROID_VERSION = "http://192.168.0.100:8180/LoJackWeb/android_version.txt";
 	
 	public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
     public static final String URL_ANDROID_VERSION = "http://www.lojack-app.com.ar/android_version.txt";
