@@ -350,4 +350,12 @@ public class UsersService extends AbstractRESTService {
 			return failResponse();
 		}
 	}
+	
+	@POST
+	@Path("/logApkError")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response logApkError(String body) {
+		LOG.error("APK Error " + body);
+		return okResponse();
+	}
 }
