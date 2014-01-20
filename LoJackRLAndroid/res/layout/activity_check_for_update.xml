@@ -14,9 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/logo_360x360" 
         android:contentDescription="@string/loading"
-        />
+        android:maxHeight="180dp"
+        android:maxWidth="180dp"
+        android:minHeight="120dp"
+        android:minWidth="120dp"
+        android:src="@drawable/logo_360x360" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,9 +30,12 @@
         android:text="@string/loading" />
 
     <TextView
-			    android:id="@+id/appVersion"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="TextView" />
+        android:id="@+id/appVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="8sp" />
     
 </RelativeLayout>
