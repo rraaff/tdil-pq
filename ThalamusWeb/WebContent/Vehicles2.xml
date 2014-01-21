@@ -1,0 +1,82 @@
+<Vehicles xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<VehiclesCollection>
+		<Vehicle>
+			<Status>true</Status>
+			<ID>81253</ID>
+			<Description>IJJ-509</Description>
+			<Brand>FIAT</Brand>
+			<Model>FIORINO</Model>
+			<Year>2009</Year>
+			<DateTime>10/22/2013 9:50:47 AM</DateTime>
+			<Latitude>-34.5771</Latitude>
+			<Longitude>-58.74297</Longitude>
+			<Speed>0</Speed>
+			<Direction>NE</Direction>
+			<GeoRef>ITALIA altura 5301/5399 esquina SAN SALVADOR - SAN MIGUEL
+				(SAN MIGUEL, BUENOS AIRES, ARGENTINA)</GeoRef>
+		</Vehicle>
+		<Vehicle>
+			<Status>true</Status>
+			<ID>81254</ID>
+			<Description>IJJ-519</Description>
+			<Brand>FIAT</Brand>
+			<Model>PALIO</Model>
+			<Year>2009</Year>
+			<DateTime>10/22/2013 9:50:47 AM</DateTime>
+			<Latitude>-35.5771</Latitude>
+			<Longitude>-59.74297</Longitude>
+			<Speed>0</Speed>
+			<Direction>NE</Direction>
+			<GeoRef>ITALIA altura 5301/5399 esquina SAN SALVADOR - SAN MIGUEL
+				(SAN MIGUEL, BUENOS AIRES, ARGENTINA)</GeoRef>
+		</Vehicle>
+		<Vehicle>
+			<Status>false</Status>
+			<ID />
+			<Description />
+			<Brand />
+			<Model />
+			<Year />
+			<DateTime />
+			<Latitude />
+			<Longitude />
+			<Speed />
+			<Direction />
+			<GeoRef />
+		</Vehicle>
+		<Vehicle>
+			<Status>false</Status>
+			<ID />
+			<Description />
+			<Brand />
+			<Model />
+			<Year />
+			<DateTime />
+			<Latitude />
+			<Longitude />
+			<Speed />
+			<Direction />
+			<GeoRef />
+		</Vehicle>
+		<Vehicle>
+			<Status>false</Status>
+			<ID />
+			<Description />
+			<Brand />
+			<Model />
+			<Year />
+			<DateTime />
+			<Latitude />
+			<Longitude />
+			<Speed />
+			<Direction />
+			<GeoRef />
+		</Vehicle>
+	</VehiclesCollection>
+	<NextStatus>false</NextStatus>
+	<NextColor>cccccc</NextColor>
+	<NextIndex>0</NextIndex>
+	<PreviousStatus>false</PreviousStatus>
+	<PreviousColor>cccccc</PreviousColor>
+	<PreviousIndex>0</PreviousIndex>
+</Vehicles>
