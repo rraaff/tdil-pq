@@ -1,2 +1,2 @@
 <%@page import="com.tdil.lojack.utils.LoJackConfig"%>
-<!--TDIL_RL_webApp_v-1.05.16_(Frankie)/DB_v-<%=LoJackConfig.getDB_VERSION()%>-Desarrollado por That Day in london :: agencia interactiva & diseño-->
+<!--TDIL_RL_webApp_v-1.05.17_(Frankie)/DB_v-<%=LoJackConfig.getDB_VERSION()%>-Desarrollado por That Day in london :: agencia interactiva & diseño-->
