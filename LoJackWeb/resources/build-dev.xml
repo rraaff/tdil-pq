@@ -214,6 +214,15 @@
 		</sql>
 	</target>
 	
+	<target name="incremental-09">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl9.sql" />
+		</sql>
+	</target>
+	
 	<target name="incremental-parkings-gba">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
@@ -450,6 +459,7 @@
 				<exclude name="yuicompressor-2.4.6.jar"/>
 				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
 				<exclude name="sqljdbc4.jar" />
+				<exclude name="*-sources.jar" />				
 			</fileset>
 		</copy>
 		<copy todir="${project.name.upper}.tmp/libraries" flatten="true">

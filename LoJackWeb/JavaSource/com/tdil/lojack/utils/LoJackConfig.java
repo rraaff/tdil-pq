@@ -33,6 +33,7 @@ import com.tdil.lojack.prevent.PreventConnector;
 import com.tdil.lojack.roles.HomeUser;
 import com.tdil.lojack.roles.PreventUser;
 import com.tdil.lojack.roles.WebsiteUser;
+import com.tdil.lojack.vlu.VLUImportThread;
 import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ProxyConfiguration;
 import com.tdil.thalamus.client.core.ThalamusClient;
@@ -89,6 +90,8 @@ public class LoJackConfig extends SystemConfig {
 	private static long startTime = System.currentTimeMillis();
 	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
+	
+	public static VLUImportThread importThread;
 	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LoJackConfig.class);
@@ -563,6 +566,9 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("Middleware job refresh time is " + jobrefreshtime + " millis");
 		getLog().fatal("Middleware job abort time is " + jobaborttime + " millis");
 		getLog().fatal("Middleware job client refresh time is " + jobclientrefreshtime + " millis");
+		
+		importThread = new VLUImportThread();
+		importThread.start();
 	}
 
 	@Override

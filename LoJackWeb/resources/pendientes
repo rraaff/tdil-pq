@@ -1,3 +1,11 @@
+tdil/usu4r10td1l
+
+mysql
+2 - demo.csv	FINISHED	500000	0	2014-01-23 00:22:55	2014-01-23 00:41:44	
+
+sql server
+1 - demo.csv	FINISHED	500000	0	2014-01-23 00:55:08	2014-01-23 01:12:40
+
 Hacer que centre parkings en donde esta el usuario
 
 http://localhost:8180/LoJackWeb/goToPreventLoginAndroid.do?timezone=-180&USING_APK=true
@@ -17,9 +25,6 @@ CBO-005
 Debería usarse el botón “BACK” de Android para volver a la pantalla anterior dentro del APK, y no salir de la aplicación.
 
 
-
-tdil
-usu4r10td1l
 
 Se necesitan dos propiedades del sistema nuevas que permitan ocultar de la pantalla correspondiente (en home y en luces) las opciones de Configurar horarios de armado y desarmado y quiero que me notifique los cambios por mail 
 Hecho

@@ -4,16 +4,16 @@
   "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
 
 <ibatorConfiguration>
-<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/sqljdbc4.jar" />
-<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/javabase.jar" />
-<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/thalamusJClient/EnvironmentLibraries/pluginibator.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/sqljdbc4.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/javabase.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/pluginibator.jar" />
 <ibatorContext
   id="ibatorContext"
   targetRuntime="Ibatis2Java5"
   defaultModelType="flat">
 
 <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-			connectionURL="jdbc:sqlserver://192.168.0.119:1123;database=LOJACK_DB;" userId="LOJACK_USER"
+			connectionURL="jdbc:sqlserver://192.168.0.132:1123;database=LOJACK_DB;" userId="LOJACK_USER"
 			password="p4l0ll1n4" />
 
 <javaModelGenerator targetPackage="com.tdil.lojack.model"
@@ -67,9 +67,20 @@ targetProject="LoJackWeb">
 <table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+<!--  table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
+
+<table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
+<table schema="dbo" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+
 
 </ibatorContext>
 </ibatorConfiguration>

@@ -11,6 +11,9 @@ import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
+import com.tdil.lojack.dao.VLUDataDAO;
+import com.tdil.lojack.dao.VLUImportDAO;
+import com.tdil.lojack.dao.VLUImportErrorDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
 
 public interface DAOProvider {
@@ -34,5 +37,13 @@ public interface DAOProvider {
 	public abstract SystemUserDAO getSystemUserDAO() throws SQLException;
 	
 	public abstract CameraConfDAO getCameraConfDAO() throws SQLException;
+	
+	public abstract VLUDataDAO getVLUDataDAO() throws SQLException;
+	public abstract VLUImportDAO getVLUImportDAO() throws SQLException;
+	public abstract VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException;
+
+	public abstract String getVLU_DATATableName();
+
+	public abstract String getVLU_IMPORTTableName();
 
 }

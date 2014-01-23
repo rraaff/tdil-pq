@@ -12,6 +12,9 @@ import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
+import com.tdil.lojack.dao.VLUDataDAO;
+import com.tdil.lojack.dao.VLUImportDAO;
+import com.tdil.lojack.dao.VLUImportErrorDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
 import com.tdil.lojack.dao.impl.sqlserver.AlarmConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.AsyncJobDAOImpl;
@@ -22,6 +25,9 @@ import com.tdil.lojack.dao.impl.sqlserver.LightConfDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.SystemPropertyDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.SystemUserDAOImpl;
+import com.tdil.lojack.dao.impl.sqlserver.VLUDataDAOImpl;
+import com.tdil.lojack.dao.impl.sqlserver.VLUImportDAOImpl;
+import com.tdil.lojack.dao.impl.sqlserver.VLUImportErrorDAOImpl;
 import com.tdil.lojack.dao.impl.sqlserver.WebsiteUserDAOImpl;
 
 public class SQLServerDAOProvider implements DAOProvider {
@@ -65,5 +71,26 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public CameraConfDAO getCameraConfDAO() throws SQLException {
 		return new CameraConfDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public VLUDataDAO getVLUDataDAO() throws SQLException {
+		return new VLUDataDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public VLUImportDAO getVLUImportDAO() throws SQLException {
+		return new VLUImportDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException {
+		return new VLUImportErrorDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public String getVLU_DATATableName() {
+		return "dbo.VLU_DATA";
+	}
+	@Override
+	public String getVLU_IMPORTTableName() {
+		return "dbo.VLU_IMPORT";
 	}
 }

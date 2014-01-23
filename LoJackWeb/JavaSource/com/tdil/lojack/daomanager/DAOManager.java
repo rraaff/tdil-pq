@@ -11,6 +11,9 @@ import com.tdil.lojack.dao.LightConfDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
+import com.tdil.lojack.dao.VLUDataDAO;
+import com.tdil.lojack.dao.VLUImportDAO;
+import com.tdil.lojack.dao.VLUImportErrorDAO;
 import com.tdil.lojack.dao.WebsiteUserDAO;
 
 public abstract class DAOManager {
@@ -56,6 +59,24 @@ public abstract class DAOManager {
 	public static CameraConfDAO getCameraConfDAO() throws SQLException {
 		return currentDao.getCameraConfDAO();
 	}
+	
+	public static VLUDataDAO getVLUDataDAO() throws SQLException {
+		return currentDao.getVLUDataDAO();
+	}
+	public static VLUImportDAO getVLUImportDAO() throws SQLException {
+		return currentDao.getVLUImportDAO();
+	}
+	public static VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException {
+		return currentDao.getVLUImportErrorDAO();
+	}
+	
+	public static String getVLU_DATATableName() throws SQLException {
+		return currentDao.getVLU_DATATableName();
+	}
+	public static String getVLU_IMPORTTableName() throws SQLException {
+		return currentDao.getVLU_IMPORTTableName();
+	}
+	
 
 	public static DAOProvider getCurrentDao() {
 		return currentDao;

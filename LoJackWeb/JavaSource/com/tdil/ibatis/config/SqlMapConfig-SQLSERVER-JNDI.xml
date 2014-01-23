@@ -28,4 +28,8 @@
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_POI_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_SYSTEMUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_CAMERA_CONF_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_DATA_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_IMPORT_ERROR_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_IMPORT_SqlMap.xml"/>
 </sqlMapConfig>
