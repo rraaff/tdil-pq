@@ -259,6 +259,7 @@
 				<exclude name="yuicompressor-2.4.6.jar"/>
 				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
 				<exclude name="sqljdbc4.jar" />
+				<exclude name="*-sources.jar" />
 			</lib>
 		</war>
 		<unwar src="${project.name.upper}.tmp/${project.name.upper}_WEB.war" dest="${project.name.upper}.tmp/${project.name.upper}_WEB.war1">
@@ -459,7 +460,7 @@
 				<exclude name="yuicompressor-2.4.6.jar"/>
 				<exclude name="mysql-connector-java-5.1.13-bin.jar" />
 				<exclude name="sqljdbc4.jar" />
-				<exclude name="*-sources.jar" />				
+				<exclude name="*-sources.jar" />
 			</fileset>
 		</copy>
 		<copy todir="${project.name.upper}.tmp/libraries" flatten="true">
