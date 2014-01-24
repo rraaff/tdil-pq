@@ -25,7 +25,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 
-public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask {
+public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask{
 
 	private HttpMethod method;
 	private Context context;
@@ -40,7 +40,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
-	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
+	public SuccessAsyncRESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
 		this.context = context;
 		this.method = method;
@@ -153,26 +153,14 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		// TODO ver context.showProgress(false);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#getResult()
-	 */
-	@Override
 	public String getResult() {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#getStatusCode()
-	 */
-	@Override
 	public int getStatusCode() {
 		return statusCode;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#setStatusCode(int)
-	 */
-	@Override
 	public void setStatusCode(int status) {
 		this.statusCode = status;
 	}

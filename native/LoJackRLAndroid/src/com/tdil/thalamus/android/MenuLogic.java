@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 
@@ -21,10 +22,10 @@ public class MenuLogic {
 			RESTClientTask.httpClient = new DefaultHttpClient();
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 				}
 			}, RESTConstants.LOGOUT, null, null).execute((Void) null);
 			Intent intent = new Intent(activity, LoginActivity.class);

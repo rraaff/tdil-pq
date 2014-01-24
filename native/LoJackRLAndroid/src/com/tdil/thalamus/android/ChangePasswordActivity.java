@@ -25,6 +25,7 @@ import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -50,7 +51,7 @@ public class ChangePasswordActivity extends Activity implements
 	 */
 	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
 
-	private RESTClientTask mAuthTask = null;
+	private IRestClientTask mAuthTask = null;
 	
 	// Values for email and password at the time of the login attempt.
 	
@@ -124,7 +125,7 @@ public class ChangePasswordActivity extends Activity implements
 		String json = gson.toJson(changePasswordBean);
 		new RESTClientTask(this, HttpMethod.POST, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				// TODO analizar la respuesta para mostrar un mensaje u otro
 
@@ -142,7 +143,7 @@ public class ChangePasswordActivity extends Activity implements
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(ChangePasswordActivity.this);
 			}
 		}, RESTConstants.CHANGE_PASSWORD, new RestParams(), json)
@@ -169,13 +170,13 @@ public class ChangePasswordActivity extends Activity implements
 	}
 
 	@Override
-	public void error(RESTClientTask task) {
+	public void error(IRestClientTask task) {
 		Messages.connectionErrorMessage(ChangePasswordActivity.this);
 		this.mAuthTask = null;
 	}
 
 	@Override
-	public void sucess(RESTClientTask task) {
+	public void sucess(IRestClientTask task) {
 		Gson gson = new Gson();
 		LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
@@ -183,9 +184,7 @@ public class ChangePasswordActivity extends Activity implements
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
 			finish();
-		} else {
-			System.out.println("not logged");
-		}
+		} 
 		this.mAuthTask = null;
 	}
 

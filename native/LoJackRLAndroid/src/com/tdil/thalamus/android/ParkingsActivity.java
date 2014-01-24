@@ -1,9 +1,5 @@
 package com.tdil.thalamus.android;
 
-import java.util.List;
-
-import org.apache.http.cookie.Cookie;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -13,8 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -22,8 +16,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.rest.client.RESTClient;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.utils.Login;
 
 /**
@@ -80,22 +72,6 @@ public class ParkingsActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
-		
-		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
-		Cookie sessionInfo;
-        if (! cookies.isEmpty()){
-            CookieSyncManager.createInstance(this);
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.removeSessionCookie();
-            //sync all the cookies in the httpclient with the webview by generating cookie string
-            for (Cookie cookie : cookies){
-                sessionInfo = cookie;
-                String cookieString = sessionInfo.getName() + "=" + sessionInfo.getValue() + "; domain=" + sessionInfo.getDomain();
-                System.out.println(cookieString);
-                cookieManager.setCookie(ApplicationConfig.APP_DOMAIN, cookieString);
-                CookieSyncManager.getInstance().sync();
-            }
-        }
 		
 		setContentView(parkingsWebView);
 		setProgressBarVisibility(true);

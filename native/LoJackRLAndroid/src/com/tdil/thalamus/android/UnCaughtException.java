@@ -20,6 +20,7 @@ import android.util.Log;
 
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -138,11 +139,11 @@ public class UnCaughtException implements UncaughtExceptionHandler {
                                     int which) {
                             	new RESTClientTask(context, HttpMethod.POST, new IRestClientObserver() {
                         			@Override
-                        			public void sucess(RESTClientTask task) {
+                        			public void sucess(IRestClientTask task) {
                         				System.exit(0);
                         			}
                         			@Override
-                        			public void error(RESTClientTask task) {
+                        			public void error(IRestClientTask task) {
                         				Messages.connectionErrorMessage(context);
                         			}
                         		}, RESTConstants.LOG_ERROR_APK, new RestParams(), errorContent.toString()).execute((Void) null);

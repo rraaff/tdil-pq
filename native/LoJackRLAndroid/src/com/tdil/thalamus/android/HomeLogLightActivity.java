@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -37,7 +38,7 @@ public class HomeLogLightActivity extends Activity {
 	 */
 	private int identidad;
 	private int idluz;
-	private RESTClientTask mAuthTask = null;
+	private IRestClientTask mAuthTask = null;
 	ListView list;
 	LightLogListAdapter adapter;
 	public HomeLogLightActivity CustomListView = null;
@@ -59,7 +60,7 @@ public class HomeLogLightActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
 				LogCollection col = gson.fromJson(task.getResult(),
@@ -72,7 +73,7 @@ public class HomeLogLightActivity extends Activity {
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLogLightActivity.this);
 			}
 		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).execute((Void) null);

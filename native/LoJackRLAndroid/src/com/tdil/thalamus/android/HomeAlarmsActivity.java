@@ -24,6 +24,7 @@ import com.tdil.thalamus.android.logic.AlarmsLogic;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -160,7 +161,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		alarmsLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AlarmCollection col = gson.fromJson(task.getResult(),
 						AlarmCollection.class);
@@ -171,7 +172,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				alarmsList.setAdapter(alarmListAdapter);
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
@@ -181,7 +182,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		lightsLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				LightCollection col = gson.fromJson(task.getResult(),
 						LightCollection.class);
@@ -192,7 +193,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				lightsList.setAdapter(lightsListAdapter);
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
@@ -202,7 +203,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		camerasLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				CameraCollection col = gson.fromJson(task.getResult(),
 						CameraCollection.class);
@@ -224,7 +225,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
@@ -246,7 +247,6 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 
 	public void onItemClick(int mPosition) {
 		Alarm tempValues = (Alarm) alarms.get(mPosition);
-		System.out.println(tempValues);
 	}
 	
 	
@@ -274,7 +274,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	public void startAlarmsBackgroundJob() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AlarmJobStatusCollection col = gson.fromJson(task.getResult(),
 						AlarmJobStatusCollection.class);
@@ -286,7 +286,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
 		}, RESTConstants.ALARM_STATUS, new RestParams(), null).execute();

@@ -9,6 +9,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.IAlarmsActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -24,7 +25,7 @@ public class AlarmsLogic {
 		if (alarm.isActive()) {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(
 							task.getResult(), AsyncJobResponse.class);
@@ -62,7 +63,7 @@ public class AlarmsLogic {
 				}
 
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(
@@ -71,7 +72,7 @@ public class AlarmsLogic {
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(
 							task.getResult(), AsyncJobResponse.class);
@@ -106,7 +107,7 @@ public class AlarmsLogic {
 				}
 
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(

@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -126,7 +127,7 @@ public class FooterLogic  {
 			// Pido la url de login
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 
 					URLResponse response = gson.fromJson(task.getResult(),
@@ -139,7 +140,7 @@ public class FooterLogic  {
 					}
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);

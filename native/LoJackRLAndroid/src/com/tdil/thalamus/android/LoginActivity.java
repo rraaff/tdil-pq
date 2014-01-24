@@ -38,6 +38,7 @@ import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -51,7 +52,8 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity implements IRestClientObserver, ValidationListener {
+public class LoginActivity extends Activity implements IRestClientObserver,
+		ValidationListener {
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -63,30 +65,34 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 	 * The default email to populate the email field with.
 	 */
 	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
+	
+	public static final String FROM_LAUNCH = "FROM_LAUNCH";
 
 	private RESTClientTask mAuthTask = null;
 	// Values for email and password at the time of the login attempt.
-	
-	@TextRule(order = 1, minLength=1, maxLength = 11, message = "Selecione el tipo de documento.")
+
+	@TextRule(order = 1, minLength = 1, maxLength = 11, message = "Selecione el tipo de documento.")
 	private Spinner docTypeSpinner;
-	
+
 	private String mDocType;
-	
-	@TextRule(order = 2, minLength=1, maxLength = 11, message = "Ingrese hasta 11 caracteres.")
+
+	@TextRule(order = 2, minLength = 1, maxLength = 11, message = "Ingrese hasta 11 caracteres.")
 	private EditText docNumberEdittext;
-	
+
 	private String mDocNumber;
-	
+
 	@TextRule(order = 3, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
-	@Password(order=4, message="Contraseña")
+	@Password(order = 4, message = "Contraseña")
 	private EditText passwordEditText;
-	
+
 	private String mPassword;
 	private CheckBox remCheckBox;
-	
+
 	private DocumentTypeCollection col;
-	
+
 	private Validator validator;
+	
+	private boolean fromLaunch = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,69 +100,97 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_login);
 		
-//		Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
-//		e.clear();
-//		e.commit();
-		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			fromLaunch = FROM_LAUNCH.equals(extras.getString(FROM_LAUNCH));
+			extras.putString(FROM_LAUNCH, "");
+		}
+
+		// Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
+		// e.clear();
+		// e.commit();
+
 		validator = new Validator(this);
-	    validator.setValidationListener(this);
-		
+		validator.setValidationListener(this);
+
 		/* TODO borrar */
-		String mDocNumber = this.getPreferences(Context.MODE_PRIVATE).getString("mDocNumber", "");
-		String mPassword = this.getPreferences(Context.MODE_PRIVATE).getString("mPassword", "");
-		
+		String mDocNumber = this.getPreferences(Context.MODE_PRIVATE)
+				.getString("mDocNumber", "");
+		String mPassword = this.getPreferences(Context.MODE_PRIVATE).getString(
+				"mPassword", "");
+
 		docTypeSpinner = (Spinner) findViewById(R.id.documentType);
-		docTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				 DocumentTypeBean item = (DocumentTypeBean)arg0.getItemAtPosition(arg2);
-				 LoginActivity.this.mDocType = String.valueOf(item.getId());
-				
-			}@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
-		});
+		docTypeSpinner
+				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						DocumentTypeBean item = (DocumentTypeBean) arg0
+								.getItemAtPosition(arg2);
+						LoginActivity.this.mDocType = String.valueOf(item
+								.getId());
+
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+					}
+				});
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
-				 Gson gson = new Gson();
-				 col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
-				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(LoginActivity.this,
-					android.R.layout.simple_spinner_item, col.getList(), new BeanMappingFunction<DocumentTypeBean>() {
-			 			public String key(DocumentTypeBean t) {return String.valueOf(t.getId());};
-			 			@Override
-			 			public String value(DocumentTypeBean t) {
-			 				return t.getName();
-			 			}
-					});
-					LoginActivity.this.docTypeSpinner.setAdapter(adapter);
-				
-					String mDocTypeSt = LoginActivity.this.getPreferences(Context.MODE_PRIVATE).getString("mDocType", "-1");
-					int mDocType = Integer.valueOf(mDocTypeSt);
-					if(mDocType != -1) {
-						int index = 0;
-					 for (DocumentTypeBean bean : col.getList()) {
-						 if (bean.getId() == mDocType) {
-							 LoginActivity.this.docTypeSpinner.setSelection(index);
-						 }
-						 index = index + 1;
-					 }
+			public void sucess(IRestClientTask task) {
+				Gson gson = new Gson();
+				col = gson.fromJson(task.getResult(),
+						DocumentTypeCollection.class);
+				BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(
+						LoginActivity.this,
+						android.R.layout.simple_spinner_item, col.getList(),
+						new BeanMappingFunction<DocumentTypeBean>() {
+							public String key(DocumentTypeBean t) {
+								return String.valueOf(t.getId());
+							};
+
+							@Override
+							public String value(DocumentTypeBean t) {
+								return t.getName();
+							}
+						});
+				LoginActivity.this.docTypeSpinner.setAdapter(adapter);
+
+				String mDocTypeSt = LoginActivity.this.getPreferences(
+						Context.MODE_PRIVATE).getString("mDocType", "-1");
+				int mDocType = Integer.valueOf(mDocTypeSt);
+				boolean found = false;
+				if (mDocType != -1) {
+					int index = 0;
+					for (DocumentTypeBean bean : col.getList()) {
+						if (bean.getId() == mDocType) {
+							LoginActivity.this.mDocType = mDocTypeSt;
+							LoginActivity.this.docTypeSpinner
+									.setSelection(index);
+							found = true;
+						}
+						index = index + 1;
 					}
+				}
+				if (found && remCheckBox.isChecked() && fromLaunch) {
+					attemptLogin();
+				}
 			}
+
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(LoginActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
-		
-		/*List<String> list = new ArrayList<String>();
-		list.add("DNI");
-		list.add("LE");
-		SpinAdapter adapter = new SpinAdapter(this,
-				android.R.layout.simple_spinner_item, list);
-		spinner.setAdapter(adapter);*/
+
+		/*
+		 * List<String> list = new ArrayList<String>(); list.add("DNI");
+		 * list.add("LE"); SpinAdapter adapter = new SpinAdapter(this,
+		 * android.R.layout.simple_spinner_item, list);
+		 * spinner.setAdapter(adapter);
+		 */
 
 		findViewById(R.id.loginButtons).setOnClickListener(
 				new View.OnClickListener() {
@@ -165,42 +199,48 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 						validator.validate();
 					}
 				});
-		
+
 		findViewById(R.id.requestResetPassword).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(LoginActivity.this, RequestResetPasswordActivity.class);
-			        	startActivity(intent);
+						Intent intent = new Intent(LoginActivity.this,
+								RequestResetPasswordActivity.class);
+						startActivity(intent);
 					}
 				});
-		remCheckBox = (CheckBox)findViewById(R.id.rememberPasswordCheckbox);
-		
+		remCheckBox = (CheckBox) findViewById(R.id.rememberPasswordCheckbox);
+
 		findViewById(R.id.requestRegistration).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-			        	startActivity(intent);
+						Intent intent = new Intent(LoginActivity.this,
+								RegisterActivity.class);
+						startActivity(intent);
 					}
 				});
-		
-		docNumberEdittext = (EditText)findViewById(R.id.documentNumber);
+
+		docNumberEdittext = (EditText) findViewById(R.id.documentNumber);
 		docNumberEdittext.setText(mDocNumber);
-		passwordEditText = (EditText)findViewById(R.id.password);
+		passwordEditText = (EditText) findViewById(R.id.password);
 		passwordEditText.setText(mPassword);
 		if (!isEmpty(mDocNumber) && !isEmpty(mPassword)) {
 			remCheckBox.setChecked(true);
 		}
-		
+
 		try {
-			int curVersion = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionCode;
-			String curVersionName = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionName;
-			((TextView)findViewById(R.id.appVersion)).setText(curVersion + "-" + curVersionName);
+			int curVersion = getPackageManager().getPackageInfo(
+					"com.tdil.lojack.rl", 0).versionCode;
+			String curVersionName = getPackageManager().getPackageInfo(
+					"com.tdil.lojack.rl", 0).versionName;
+			((TextView) findViewById(R.id.appVersion)).setText(curVersion + "-"
+					+ curVersionName);
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	private boolean isEmpty(String mDocNumber2) {
@@ -209,41 +249,50 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 		}
 		return mDocNumber2.trim().length() == 0;
 	}
-	
+
 	@Override
-    public void preValidation() {
-    }
-    @Override
-    public void onFailure(View failedView, Rule<?> failedRule) {
-    	 String message = failedRule.getFailureMessage();
-         if (failedView instanceof EditText) {
-             failedView.requestFocus();
-             ((EditText) failedView).setError(message);
-         } else {
-             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-         }
-    }
-    @Override
-    public void onSuccess() {
-    	attemptLogin();
-    }
-    @Override
-    public void onValidationCancelled() {
-    }
+	public void preValidation() {
+	}
+
+	@Override
+	public void onFailure(View failedView, Rule<?> failedRule) {
+		String message = failedRule.getFailureMessage();
+		if (failedView instanceof EditText) {
+			failedView.requestFocus();
+			((EditText) failedView).setError(message);
+		} else {
+			Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	@Override
+	public void onSuccess() {
+		attemptLogin();
+	}
+
+	@Override
+	public void onValidationCancelled() {
+	}
 
 	public void attemptLogin() {
+		fromLaunch = false;
 		if (mAuthTask != null) {
 			return;
 		}
 		// Store values at the time of the login attempt.
-		mDocNumber = ((EditText) findViewById(R.id.documentNumber)).getText().toString();
-		mPassword = ((EditText) findViewById(R.id.password)).getText().toString();
+		mDocNumber = ((EditText) findViewById(R.id.documentNumber)).getText()
+				.toString();
+		mPassword = ((EditText) findViewById(R.id.password)).getText()
+				.toString();
 
 		boolean cancel = false;
 		View focusView = null;
 		showProgress(true);
-		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.LOGIN, new RestParams(RESTConstants.P_DOCUMENT_TYPE, mDocType).
-				put(RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(RESTConstants.P_PASSWORD, mPassword), null);
+		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this,
+				RESTConstants.LOGIN, new RestParams(
+						RESTConstants.P_DOCUMENT_TYPE, mDocType).put(
+						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
+						RESTConstants.P_PASSWORD, mPassword), null);
 		mAuthTask.execute((Void) null);
 	}
 
@@ -256,22 +305,24 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.activity_login, menu);
+		// getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 
 	@Override
-	public void error(RESTClientTask task) {
+	public void error(IRestClientTask task) {
 		Messages.connectionErrorMessage(LoginActivity.this);
 		this.mAuthTask = null;
 	}
+
 	@Override
-	public void sucess(RESTClientTask task) {
+	public void sucess(IRestClientTask task) {
 		Gson gson = new Gson();
-		final LoginResponse resp = gson.fromJson(task.getResult(), LoginResponse.class);
+		final LoginResponse resp = gson.fromJson(task.getResult(),
+				LoginResponse.class);
 		if (resp.getLogged()) {
 			Login.loggedUser = resp;
-			
+
 			if (LoginActivity.this.remCheckBox.isChecked()) {
 				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
 				e.putString("mDocType", mDocType);
@@ -285,34 +336,37 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 				e.putString("mPassword", "");
 				e.commit();
 			}
-			RESTClientTask.httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
-				@Override
-				public void process(HttpRequest arg0, HttpContext arg1)
-						throws HttpException, IOException {
-					arg0.addHeader("apkToken", resp.getApkToken());
-				}
-			});
+			RESTClientTask.httpClient
+					.addRequestInterceptor(new HttpRequestInterceptor() {
+						@Override
+						public void process(HttpRequest arg0, HttpContext arg1)
+								throws HttpException, IOException {
+							arg0.addHeader("apkToken", resp.getApkToken());
+						}
+					});
 			Intent intent = new Intent(this, IndexActivity.class);
-//			Intent intent = new Intent(this, HomeAlarmsActivity.class);
-        	startActivity(intent);
-        	finish();
+			// Intent intent = new Intent(this, HomeAlarmsActivity.class);
+			startActivity(intent);
+			finish();
 		} else {
 			Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
 			e.clear();
 			e.commit();
-			
+
 			new AlertDialog.Builder(LoginActivity.this)
-			   .setIcon(R.drawable.ic_launcher)
-			   .setTitle("Atención")
-			   .setMessage("El usuario o contraseña son incorrectos")
-			   .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int whichButton) {
-			           }
-			   }).show();
+					.setIcon(R.drawable.ic_launcher)
+					.setTitle("Atención")
+					.setMessage("El usuario o contraseña son incorrectos")
+					.setPositiveButton("Ok",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int whichButton) {
+								}
+							}).show();
 		}
 		this.mAuthTask = null;
 	}
-	
+
 	/**
 	 * Shows the progress UI and hides the login form.
 	 */
@@ -323,6 +377,5 @@ public class LoginActivity extends Activity implements IRestClientObserver, Vali
 		// the progress spinner.
 
 	}
-
 
 }

@@ -24,6 +24,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -136,8 +137,6 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		
 		TextView status = (TextView) findViewById(R.id.lightStatus);
 		status.setText(light.getStatusDescription());
-		System.out.println("init light ison " + light.isOn());
-		System.out.println("init light isoff " + light.isOn());
 		if (light.isOn()) {
 			status.setTextColor(getResources().getColor(R.color.lst_itm_on));
 		} else {
@@ -199,7 +198,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	public void loadLights() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				LightCollection col = gson.fromJson(task.getResult(),
 						LightCollection.class);
@@ -213,7 +212,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 				}
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLightDashboard.this);
 			}
 		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
@@ -229,7 +228,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		times = 0;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				LightJobStatusCollection col = gson.fromJson(task.getResult(),
 						LightJobStatusCollection.class);
@@ -237,21 +236,16 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 				for (LightJobStatus jobStatus : col.getStatus()) {
 					if (jobStatus.getIdEntidad() == HomeLightDashboard.this.light.getIdEntidad()) {
 						if (jobStatus.getIdLuz() == HomeLightDashboard.this.light.getIdLuz()) {
-							System.out.println("FOUND " + task.getResult());
 							found = true;
 							if (jobStatus.isRan()) {
-								System.out.println("ran");
 								HomeLightDashboard.this.light.setStatus(Light.RANDOM);
 							} else {
 								if (jobStatus.isOn()) {
-									System.out.println("on");
 									HomeLightDashboard.this.light.setStatus(Light.ON);
 								} else {
 									if (jobStatus.isUnknown()) {
-										System.out.println("un");
 										HomeLightDashboard.this.light.setStatus(Light.UNKNOWN);
 									} else {
-										System.out.println("off");
 										HomeLightDashboard.this.light.setStatus(Light.OFF);
 									}
 								}
@@ -277,7 +271,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLightDashboard.this);
 			}
 		}, RESTConstants.LIGHT_STATUS, new RestParams(), null).execute();

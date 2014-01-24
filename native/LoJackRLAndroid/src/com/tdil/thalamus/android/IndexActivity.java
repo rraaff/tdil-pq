@@ -85,7 +85,6 @@ public class IndexActivity extends Activity {
 	
 				return true;
 			} else {
-				System.out.println("drag end");
 			    return false;
 			}
 		}

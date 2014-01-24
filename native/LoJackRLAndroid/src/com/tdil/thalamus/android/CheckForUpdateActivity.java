@@ -74,6 +74,7 @@ public class CheckForUpdateActivity extends Activity {
                 } else {
                 	// activate activity
                 	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
+                	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
                 	startActivity(intent);
                 	finish();
                 }

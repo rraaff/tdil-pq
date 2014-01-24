@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -36,7 +37,7 @@ public class HomeLogAlarmActivity extends Activity {
 	 * The default email to populate the email field with.
 	 */
 	private int identidad;
-	private RESTClientTask mAuthTask = null;
+	private IRestClientTask mAuthTask = null;
 	ListView list;
 	AlarmLogListAdapter adapter;
 	public HomeLogAlarmActivity CustomListView = null;
@@ -56,7 +57,7 @@ public class HomeLogAlarmActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
 				LogCollection col = gson.fromJson(task.getResult(),
@@ -69,7 +70,7 @@ public class HomeLogAlarmActivity extends Activity {
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLogAlarmActivity.this);
 			}
 		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).execute((Void) null);

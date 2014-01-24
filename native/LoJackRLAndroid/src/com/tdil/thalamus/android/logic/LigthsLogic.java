@@ -12,6 +12,7 @@ import com.tdil.thalamus.android.HomeLogLightActivity;
 import com.tdil.thalamus.android.ILightsActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -28,7 +29,7 @@ public class LigthsLogic {
 		if (light.isOn()) {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
 							AsyncJobResponse.class);
@@ -57,14 +58,14 @@ public class LigthsLogic {
 					}
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.DEACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
 							AsyncJobResponse.class);
@@ -90,7 +91,7 @@ public class LigthsLogic {
 					}
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.ACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
@@ -103,7 +104,7 @@ public class LigthsLogic {
 		if (light.isInRandomMode()) {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
 							AsyncJobResponse.class);
@@ -131,14 +132,14 @@ public class LigthsLogic {
 					}
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.DEACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
-				public void sucess(RESTClientTask task) {
+				public void sucess(IRestClientTask task) {
 					Gson gson = new Gson();
 					AsyncJobResponse asyncJobResponse = gson.fromJson(task.getResult(),
 							AsyncJobResponse.class);
@@ -164,7 +165,7 @@ public class LigthsLogic {
 					}
 				}
 				@Override
-				public void error(RESTClientTask task) {
+				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
 			}, RESTConstants.ACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
@@ -175,7 +176,7 @@ public class LigthsLogic {
 		final ILightsActivity lightsActivity = (ILightsActivity)activity;
 		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				LightJobStatusCollection col = gson.fromJson(task.getResult(),
 						LightJobStatusCollection.class);
@@ -186,7 +187,7 @@ public class LigthsLogic {
 				}
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(activity);
 			}
 		}, RESTConstants.LIGHT_STATUS, new RestParams(), null).execute();

@@ -38,6 +38,7 @@ import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -122,7 +123,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 		// load document types
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				DocumentTypeCollection col = gson.fromJson(task.getResult(),
 						DocumentTypeCollection.class);
@@ -147,7 +148,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
@@ -155,7 +156,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 		states = (Spinner) findViewById(R.id.state);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				StateBeanCollection col = gson.fromJson(task.getResult(),
 						StateBeanCollection.class);
@@ -179,7 +180,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateActivity.this);
 			}
 		}, RESTConstants.STATES, null, null).execute((Void) null);
@@ -187,7 +188,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 		addressTypes = (Spinner) findViewById(R.id.addressType);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AddressTypeBeanCollection col = gson.fromJson(task.getResult(),
 						AddressTypeBeanCollection.class);
@@ -211,7 +212,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateActivity.this);
 			}
 		}, RESTConstants.ADDRESS_TYPES, null, null).execute((Void) null);
@@ -219,7 +220,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 		// load personData
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				PersonBean person = gson.fromJson(task.getResult(),
 						PersonBean.class);
@@ -228,7 +229,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateActivity.this);
 			}
 		}, RESTConstants.GET_USER, null, null).execute((Void) null);
@@ -293,7 +294,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 		String json = gson.toJson(personBean);
 		new RESTClientTask(this, HttpMethod.POST, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				// TODO analizar la respuesta para mostrar un mensaje u otro
 				
@@ -308,7 +309,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 	               }).show();
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateActivity.this);
 			}
 		}, RESTConstants.SAVE_USER, new RestParams(), json).execute((Void) null);
@@ -514,13 +515,13 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 	}
 
 	@Override
-	public void error(RESTClientTask task) {
+	public void error(IRestClientTask task) {
 		Messages.connectionErrorMessage(UpdateActivity.this);
 		this.mAuthTask = null;
 	}
 
 	@Override
-	public void sucess(RESTClientTask task) {
+	public void sucess(IRestClientTask task) {
 		Gson gson = new Gson();
 		LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
@@ -528,9 +529,7 @@ public class UpdateActivity extends Activity implements IRestClientObserver, Val
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
 			finish();
-		} else {
-			System.out.println("not logged");
-		}
+		} 
 		this.mAuthTask = null;
 	}
 

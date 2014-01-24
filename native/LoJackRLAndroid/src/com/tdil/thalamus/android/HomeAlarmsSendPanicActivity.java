@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -35,7 +36,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 	 * The default email to populate the email field with.
 	 */
 
-	private RESTClientTask mAuthTask = null;
+	private IRestClientTask mAuthTask = null;
 	ListView list;
 	AlarmSendPanicListAdapter adapter;
 	public HomeAlarmsSendPanicActivity CustomListView = null;
@@ -51,7 +52,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
 				AlarmCollection col = gson.fromJson(task.getResult(),
@@ -64,7 +65,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsSendPanicActivity.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
@@ -88,7 +89,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				// TODO analizar la respuesta para mostrar un mensaje u otro
 				new AlertDialog.Builder(HomeAlarmsSendPanicActivity.this)
@@ -102,7 +103,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 	               }).show();
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsSendPanicActivity.this);
 			}
 		}, RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);

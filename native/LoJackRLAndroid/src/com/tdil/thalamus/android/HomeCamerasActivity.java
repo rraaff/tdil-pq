@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
@@ -53,7 +54,7 @@ public class HomeCamerasActivity extends Activity {
 	public void loadCameras() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
 				CameraCollection col = gson.fromJson(task.getResult(),
@@ -66,7 +67,7 @@ public class HomeCamerasActivity extends Activity {
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeCamerasActivity.this);
 			}
 		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
@@ -87,7 +88,6 @@ public class HomeCamerasActivity extends Activity {
 
 	public void onItemClick(int mPosition) {
 		Camera tempValues = (Camera) cameras.get(mPosition);
-		System.out.println(tempValues);
 		/*
 		 * Toast.makeText(CustomListView,
 		 * ""+tempValues.getCompanyName()+" \nImage:"
@@ -98,7 +98,6 @@ public class HomeCamerasActivity extends Activity {
 	
 	public void toggleActivation(int mPosition) {
 		Camera alarm = (Camera) cameras.get(mPosition);
-		System.out.println("toggleActivation" + alarm);
 		/*if (alarm.isActive()) {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override

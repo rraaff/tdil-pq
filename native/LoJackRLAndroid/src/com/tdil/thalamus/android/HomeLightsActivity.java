@@ -21,6 +21,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -55,7 +56,7 @@ public class HomeLightsActivity extends Activity implements ILightsActivity {
 	public void loadLights() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
 				LightCollection col = gson.fromJson(task.getResult(),
@@ -68,7 +69,7 @@ public class HomeLightsActivity extends Activity implements ILightsActivity {
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLightsActivity.this);
 			}
 		}, RESTConstants.LIGHTS, null, null).execute((Void) null);

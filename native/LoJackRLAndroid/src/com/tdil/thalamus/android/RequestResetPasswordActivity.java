@@ -21,6 +21,7 @@ import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -74,7 +75,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				 Gson gson = new Gson();
 				 DocumentTypeCollection col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
 				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(RequestResetPasswordActivity.this,
@@ -88,7 +89,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 					spinner.setAdapter(adapter);
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
@@ -152,12 +153,12 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 	}
 
 	@Override
-	public void error(RESTClientTask task) {
+	public void error(IRestClientTask task) {
 		Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 		this.mAuthTask = null;
 	}
 	@Override
-	public void sucess(RESTClientTask task) {
+	public void sucess(IRestClientTask task) {
 		Gson gson = new Gson();
 		RESTResponse resp = gson.fromJson(task.getResult(), RESTResponse.class);
 		if (resp.getOk()) {

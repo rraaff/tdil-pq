@@ -45,6 +45,7 @@ import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -80,7 +81,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	 */
 	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
 
-	private RESTClientTask mAuthTask = null;
+	private IRestClientTask mAuthTask = null;
 	// Values for email and password at the time of the login attempt.
 	private String mDocType;
 	private String mDocNumber;
@@ -166,7 +167,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		// load document types
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				DocumentTypeCollection col = gson.fromJson(task.getResult(),
 						DocumentTypeCollection.class);
@@ -187,7 +188,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
@@ -195,7 +196,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		states = (Spinner) findViewById(R.id.state);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				StateBeanCollection col = gson.fromJson(task.getResult(),
 						StateBeanCollection.class);
@@ -217,7 +218,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
 		}, RESTConstants.STATES, null, null).execute((Void) null);
@@ -225,7 +226,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		addressTypes = (Spinner) findViewById(R.id.addressType);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AddressTypeBeanCollection col = gson.fromJson(task.getResult(),
 						AddressTypeBeanCollection.class);
@@ -247,7 +248,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
 		}, RESTConstants.ADDRESS_TYPES, null, null).execute((Void) null);
@@ -317,7 +318,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 		String json = gson.toJson(personBean);
 		new RESTClientTask(this, HttpMethod.POST, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				try {
 					if (task.getStatusCode() != 201) {
 						JSONObject jsonObj = new JSONObject(task.getResult());
@@ -356,7 +357,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 				}
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
 		}, RESTConstants.CREATE_USER, new RestParams(), json).execute((Void) null);
@@ -479,13 +480,13 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	}
 
 	@Override
-	public void error(RESTClientTask task) {
+	public void error(IRestClientTask task) {
 		Messages.connectionErrorMessage(RegisterActivity.this);
 		this.mAuthTask = null;
 	}
 
 	@Override
-	public void sucess(RESTClientTask task) {
+	public void sucess(IRestClientTask task) {
 		Gson gson = new Gson();
 		LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
@@ -493,9 +494,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
 			finish();
-		} else {
-			System.out.println("not logged");
-		}
+		} 
 		this.mAuthTask = null;
 	}
 

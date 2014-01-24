@@ -25,6 +25,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.logic.AlarmsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
@@ -178,7 +179,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	public void loadAlarms() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AlarmCollection col = gson.fromJson(task.getResult(),
 						AlarmCollection.class);
@@ -190,7 +191,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 				}
 			}
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmDashboard.this);
 			}
 		}, RESTConstants.ALARMS, null, null).execute((Void) null);
@@ -206,17 +207,15 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		times = 0;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
-			public void sucess(RESTClientTask task) {
+			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				AlarmJobStatusCollection col = gson.fromJson(task.getResult(),
 						AlarmJobStatusCollection.class);
 				boolean found = false;
 				for (AlarmJobStatus jobStatus : col.getStatus()) {
 					if (jobStatus.getIdEntidad() == HomeAlarmDashboard.this.alarm.getIdEntidad()) {
-						System.out.println("FOUND " + task.getResult());
 						found = true;
 						if (jobStatus.isArmada()) {
-							System.out.println("armada");
 							HomeAlarmDashboard.this.alarm.setStatus(Alarm.ACTIVE);
 						} else {
 							HomeAlarmDashboard.this.alarm.setStatus(Alarm.INACTIVE);
@@ -241,7 +240,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 			}
 
 			@Override
-			public void error(RESTClientTask task) {
+			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmDashboard.this);
 			}
 		}, RESTConstants.ALARM_STATUS, new RestParams(), null).execute();
