@@ -1,2 +1,5 @@
 Codebase: *
 Permissions: all-permissions
+Application-Name: CameraViewer
+Caller-Allowable-Codebase: *
+Application-Library-Allowable-Codebase: *
