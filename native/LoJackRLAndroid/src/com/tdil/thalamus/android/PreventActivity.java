@@ -92,28 +92,35 @@ public class PreventActivity extends Activity {
 		parkingsWebView.setWebViewClient(new WebViewClient() {
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				// check if the url matched the url loaded via webview.loadUrl()
-				if (!pd.isShowing()) {
-					pd.show();
+				try {
+					// check if the url matched the url loaded via webview.loadUrl()
+					if (!pd.isShowing()) {
+						pd.show();
+					}
+					parkingsWebView.loadUrl(url);
+					return false;
+				} catch (Exception e) {
+					return false;
 				}
-				parkingsWebView.loadUrl(url);
-				return false;
 			}
 
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
-				// TODO Auto-generated method stub
-				if (!pd.isShowing()) {
-					pd.show();
-				}
-				super.onPageStarted(view, url, favicon);
+				try {
+					if (!pd.isShowing()) {
+						pd.show();
+					}
+					super.onPageStarted(view, url, favicon);
+				} catch (Exception e) {}
 			}
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
-				if (pd.isShowing()) {
-					pd.dismiss();
-				}
+				try {
+					if (pd.isShowing()) {
+						pd.dismiss();
+					}
+				} catch (Exception e) {}
 			}
 
 			private boolean checkMatchedLoadedURL(String url) {

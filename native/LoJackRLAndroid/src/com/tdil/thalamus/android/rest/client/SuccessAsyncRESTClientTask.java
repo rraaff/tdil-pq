@@ -133,8 +133,8 @@ public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> i
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
-		this.progressDialog.dismiss();
 		try {
+			this.progressDialog.dismiss();
 			if(success) {
 				try {
 					this.observer.sucess(this);
@@ -145,7 +145,9 @@ public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> i
 			} else {
 				this.observer.error(this);
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			
+		}
 	}
 
 	@Override

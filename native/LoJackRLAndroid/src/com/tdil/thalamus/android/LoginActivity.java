@@ -160,6 +160,9 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 				String mDocTypeSt = LoginActivity.this.getPreferences(
 						Context.MODE_PRIVATE).getString("mDocType", "-1");
+				if (mDocTypeSt.length() == 0) {
+					mDocTypeSt = "-1";
+				}
 				int mDocType = Integer.valueOf(mDocTypeSt);
 				boolean found = false;
 				if (mDocType != -1) {

@@ -130,11 +130,12 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		}
 		
 	}
+	
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
-		this.progressDialog.dismiss();
 		try {
+			this.progressDialog.dismiss();
 			if(success) {
 				try {
 					this.observer.sucess(this);
@@ -145,7 +146,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			} else {
 				this.observer.error(this);
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			
+		}
 	}
 
 	@Override
