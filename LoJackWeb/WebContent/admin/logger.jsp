@@ -19,28 +19,77 @@ Las categorias de logs de interfaces (Thalamus, Middleware y Prevent)  siguen el
 
 <table border="1">
 <tr>
-<td>Interfaz</td><td>Nivel</td><td>Cambiar</td></tr>
+<td>Seccion de la app</td><td>Nivel</td><td>Cambiar</td></tr>
 <tr>
-<td>Thalamus</td>
+<td>Interface con Thalamus</td>
 <td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor(com.tdil.thalamus.client.core.ThalamusClient.class)%></td>
 <td><a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=debug">debug</a>
 <a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=info">info</a>
 <a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=error">error</a></td>
 </tr>
 <tr>
-<td>Middleware</td>
-<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor(com.tdil.lojack.gis.LoJackServicesConnector.class)%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.gis.LoJackServicesConnector&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.lojack.gis.LoJackServicesConnector&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.lojack.gis.LoJackServicesConnector&level=error">error</a></td>
+<td>Thalamus completo</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.thalamus.client")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=error">error</a></td>
 </tr>
 <tr>
-<td>Prevent</td>
-<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor(com.tdil.lojack.prevent.PreventConnector.class)%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent.PreventConnector&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent.PreventConnector&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent.PreventConnector&level=error">error</a></td>
+<td>Interface con Middleware</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.gis")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.gis&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.gis&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.gis&level=error">error</a></td>
 </tr>
+<tr>
+<td>Interface con Prevent</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.prevent")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.prevent&level=error">error</a></td>
+</tr>
+
+<tr>
+<td>Servicios para apps nativas</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.rest")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.rest&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.rest&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.rest&level=error">error</a></td>
+</tr>
+
+<tr>
+<td>Servlets (camaras y servicios ajax)</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.servlet")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.servlet&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.servlet&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.servlet&level=error">error</a></td>
+</tr>
+
+<tr>
+<td>Struts (web y webmobile)</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.struts")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.struts&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.struts&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.struts&level=error">error</a></td>
+</tr>
+
+<tr>
+<td>Web utils (fachada para servicios web)</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.utils")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.utils&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.utils&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.utils&level=error">error</a></td>
+</tr>
+
+<tr>
+<td>VLU (importaciones de VLU)</td>
+<td><%=com.tdil.lojack.utils.LoggerUtils.getLevelFor("com.tdil.lojack.vlu")[1]%></td>
+<td><a href="./setLogLevel.jsp?category=com.tdil.lojack.vlu&level=debug">debug</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.vlu&level=info">info</a>
+<a href="./setLogLevel.jsp?category=com.tdil.lojack.vlu&level=error">error</a></td>
+</tr>
+
+
 </table>
 <hr>
 Setear log level

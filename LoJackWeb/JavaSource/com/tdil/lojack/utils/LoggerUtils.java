@@ -10,7 +10,7 @@ public class LoggerUtils {
 
 	public static String getLevelFor(Class aClass) {
 		Logger logger = LoggerProvider.getLogger(aClass);
-		return logger.getLevel().toString();
+		return logger.getEffectiveLevel().toString();
 	}
 	
 	public static String[] getLevelFor(String aClassName) {
@@ -21,7 +21,7 @@ public class LoggerUtils {
 			return getLevelFor(logger);
 		} catch (ClassNotFoundException e) {
 			Logger logger = Logger.getLogger(aClassName);
-			return new String[] {aClassName, logger.getLevel().toString()};
+			return new String[] {aClassName, logger.getEffectiveLevel().toString()};
 		}
 	}
 	
