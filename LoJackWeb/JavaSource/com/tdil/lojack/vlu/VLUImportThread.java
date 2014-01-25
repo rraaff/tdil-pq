@@ -174,7 +174,7 @@ public class VLUImportThread extends Thread {
 				int commitCount = 1;
 				while ((importRecord = beanReader.read(VLUImportRecord.class, header, processors)) != null) {
 					processImport(beanReader, imp, importRecord, insertVlu, deleteOldVlu, incrementImport);
-					if (commitCount >= 100) {
+					if (commitCount >= 1000) {
 						insertVlu.executeBatch();
 						deleteOldVlu.executeBatch();
 						conn.commit();
