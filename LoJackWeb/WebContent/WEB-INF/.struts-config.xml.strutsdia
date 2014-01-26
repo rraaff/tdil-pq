@@ -1053,4 +1053,17 @@
  <PROCESS-ITEM ID="#saveVehiculesSecureZones" NAME="action56"
   PATH="/saveVehiculesSecureZones" SHAPE="448,5138,0,0"
   SUBTYPE="unknown" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToVehiclesVLUMessages" NAME="action55"
+  PATH="/goToVehiclesVLUMessages" SHAPE="32,7313,0,0"
+  TITLE="VechiclesVLUMessagesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/vluMessagesPrevent.jsp" TARGET="page54" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page54" PATH="/vluMessagesPrevent.jsp"
+  SHAPE="448,7313,0,0" SUBTYPE="jsp" TITLE="vluMessagesPrevent.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

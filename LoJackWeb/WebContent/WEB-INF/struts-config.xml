@@ -46,6 +46,8 @@
   <form-bean id="PreventLoginFormMobile" name="PreventLoginFormMobile" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
   <form-bean id="ContactFormMobile" name="ContactFormMobile" type="com.tdil.lojack.struts.forms.ContactForm"/>
   
+  <form-bean id="VechiclesVLUMessagesForm" name="VechiclesVLUMessagesForm" type="com.tdil.lojack.struts.forms.prevent.VechiclesVLUMessagesForm"/>
+  
  </form-beans>
  <global-exceptions/>
  <global-forwards>
@@ -275,6 +277,11 @@
   	<forward name="continue" path="/editarTelefonosVehiculo.jsp" redirect="true"/>
   </action>
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAjaxAction">
+  </action>
+  
+   <action name="VechiclesVLUMessagesForm" parameter="PreventUser" path="/goToVehiclesVLUMessages" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesVLUMessagesAction">
+  	<forward name="continue" path="/vluMessagesPrevent.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
   
   <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.lojack.struts.action.GoToContactAction">

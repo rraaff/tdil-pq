@@ -314,6 +314,19 @@ if (apk) {
 		<% } %>
 	}
 
+	function verMensajesVlu() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#vehiclesVLUMessages').load('goToVehiclesVLUMessages.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#vehiclesVLUMessagesLayer" ));
+				centerLayer($(window), $( "#centradorModalesvehiclesVLUMessages" ));
+			}
+		});
+	}
+
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>
 </head>
@@ -333,6 +346,9 @@ if (apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
+				<% if (websiteUser.isVLUClient()) { %>
+					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
+				<% } %>
 			</div>
 		</section>
 		<section id="zoomSection">
@@ -390,6 +406,14 @@ if (apk) {
 <div id="selectVehiclesForMapLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
 	<div id="centradorModalesVehiclesForMap" class="defaultLayerStyles">
 		<div id="selectVehiclesForMap" class="modalStyle">
+			Consultando datos...
+		</div>
+	</div>
+</div>
+
+<div id="vehiclesVLUMessagesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesVehiclesVLUMessages" class="defaultLayerStyles">
+		<div id="vehiclesVLUMessages" class="modalStyle">
 			Consultando datos...
 		</div>
 	</div>

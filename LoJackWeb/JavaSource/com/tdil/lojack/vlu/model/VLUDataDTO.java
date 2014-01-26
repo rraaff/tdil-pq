@@ -15,6 +15,9 @@ public class VLUDataDTO implements Serializable {
 	private String domain;
 	private String message;
 	
+	public VLUDataDTO() {
+	}
+	
 	public VLUDataDTO(VLUData vluData) {
 		setDni(vluData.getDni());
 		setDomain(vluData.getDomain());
