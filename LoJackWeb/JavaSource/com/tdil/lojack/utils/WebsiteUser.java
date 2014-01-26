@@ -40,6 +40,7 @@ public class WebsiteUser extends User {
 	private boolean isPetUser;
 	private String petUserId;
 	private boolean isVLUClient;
+	private int vluMessages;
 	
 	private boolean isClientClubLoJack = true;
 	private int clubLoJackLevel;
@@ -324,6 +325,21 @@ public class WebsiteUser extends User {
 	public void setVLUClient(boolean isVLUClient) {
 		this.isVLUClient = isVLUClient;
 	}
+
+	public int getVluMessages() {
+		return vluMessages;
+	}
+
+	public void setVluMessages(int vluMessages) {
+		this.vluMessages = vluMessages;
+	}
 	
+	public String getDni() {
+		if (modelUser.getLojackuserid().contains(":")) {
+			return modelUser.getLojackuserid().split(":")[1];
+		} else {
+			return modelUser.getLojackuserid();
+		}
+	}
 
 }

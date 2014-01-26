@@ -18,6 +18,7 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.utils.LoJackConfig;
 import com.tdil.lojack.utils.WebsiteUser;
 import com.tdil.lojack.utils.WebsiteUserUtils;
+import com.tdil.lojack.vlu.VLUUtils;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.core.CommunicationException;
@@ -143,8 +144,9 @@ public class LoginForm extends ActionForm {
 	private static void setAccess(WebsiteUser user, PersonResult getProfile) {
 		JSONObject profile = getProfile.getProfile().getJSONObject("person").getJSONObject(ProfileResponse.PROFILE);
 		String documentKey = "document";
+		JSONObject document = null;
 		if (jsonHasValueForKey(profile, documentKey)) {
-			JSONObject document = profile.getJSONObject(documentKey);
+			document = profile.getJSONObject(documentKey);
 			user.setLojackUserId(document.getInt("type") + ":" + document.getString("number"));
 		}
 		String homeIsClientKey = "homeIsClient";
@@ -171,6 +173,13 @@ public class LoginForm extends ActionForm {
 		String vluClientKey = "isVLUClient";
 		if (jsonHasValueForKey(profile, vluClientKey)) {
 			user.setVLUClient(profile.getBoolean(vluClientKey));
+		} else {
+			user.setVLUClient(false);
+		}
+		if (user.isVLUClient()) {
+			if (document != null) {
+				user.setVluMessages(VLUUtils.countVLUMessages(document.getString("number")));
+			}
 		}
 		
 		String clubLoJackIsClient = "ClubLjsClient";

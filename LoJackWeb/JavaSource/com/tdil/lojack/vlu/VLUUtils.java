@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
+import com.tdil.lojack.model.VLUData;
 import com.tdil.lojack.model.VLUDataExample;
 import com.tdil.lojack.model.VLUImport;
 import com.tdil.lojack.model.VLUImportErrorExample;
@@ -91,6 +92,19 @@ public class VLUUtils {
 			return count;
 		}
 	}
+	
+	private static final class GetVLUData implements TransactionalActionWithResult<List<VLUData>> {
+		private String dni;
+		public GetVLUData(String dni) {
+			super();
+			this.dni = dni;
+		}
+		public List<VLUData> executeInTransaction() throws SQLException {
+			VLUDataExample vluDataExample = new VLUDataExample();
+			vluDataExample.createCriteria().andDniEqualTo(this.dni);
+			return DAOManager.getVLUDataDAO().selectVLUDataByExample(vluDataExample);
+		}
+	}
 
 	public static boolean registerNewImport(String fileName) {
 		try {
@@ -129,6 +143,14 @@ public class VLUUtils {
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return 0;
+		}
+	}
+	public static List<VLUData> getVLUData(String domain) {
+		try {
+			return TransactionProvider.executeInTransactionWithResult(new GetVLUData(domain));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<VLUData>();
 		}
 	}
 	
