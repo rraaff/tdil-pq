@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
-import com.tdil.lojack.model.VLUData;
 import com.tdil.lojack.model.VLUDataExample;
 import com.tdil.lojack.model.VLUImport;
 import com.tdil.lojack.model.VLUImportErrorExample;
@@ -64,6 +63,34 @@ public class VLUUtils {
 			return DAOManager.getVLUImportDAO().selectVLUImportByExample(importExample);
 		}
 	}
+	
+	private static final class HasVLUMessage implements TransactionalActionWithResult<Boolean> {
+		private String dni;
+		public HasVLUMessage(String dni) {
+			super();
+			this.dni = dni;
+		}
+		public Boolean executeInTransaction() throws SQLException {
+			VLUDataExample vluDataExample = new VLUDataExample();
+			vluDataExample.createCriteria().andDniEqualTo(this.dni).andMessageIsNotNull();
+			Integer count = DAOManager.getVLUDataDAO().countVLUDataByExample(vluDataExample);
+			return count > 0;
+		}
+	}
+	
+	private static final class CountVLUMessages implements TransactionalActionWithResult<Integer> {
+		private String dni;
+		public CountVLUMessages(String dni) {
+			super();
+			this.dni = dni;
+		}
+		public Integer executeInTransaction() throws SQLException {
+			VLUDataExample vluDataExample = new VLUDataExample();
+			vluDataExample.createCriteria().andDniEqualTo(this.dni).andMessageIsNotNull();
+			Integer count = DAOManager.getVLUDataDAO().countVLUDataByExample(vluDataExample);
+			return count;
+		}
+	}
 
 	public static boolean registerNewImport(String fileName) {
 		try {
@@ -84,6 +111,24 @@ public class VLUUtils {
 			getLog().error(e.getMessage(), e);
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
+		}
+	}
+	
+	public static boolean hasVLUMessage(String domain) {
+		try {
+			return TransactionProvider.executeInTransactionWithResult(new HasVLUMessage(domain));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
+	public static Integer countVLUMessages(String domain) {
+		try {
+			return TransactionProvider.executeInTransactionWithResult(new CountVLUMessages(domain));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return 0;
 		}
 	}
 	

@@ -35,6 +35,7 @@ import com.tdil.lojack.struts.forms.RequestResetPasswordForm;
 import com.tdil.lojack.thalamus.ThalamusLoginCache;
 import com.tdil.lojack.utils.AddressType;
 import com.tdil.lojack.utils.WebsiteUser;
+import com.tdil.lojack.vlu.VLUUtils;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.thalamus.client.core.ThalamusResponse;
 import com.tdil.thalamus.client.facade.ThalamusClientBeanFacade;
@@ -85,6 +86,10 @@ public class UsersService extends AbstractRESTService {
 			loginResponse.setPetUserId(user.getPetUserId());
 			loginResponse.setPreventUser(user.isPreventUser());
 			loginResponse.setPreventUserId(user.getPreventUserId());
+			loginResponse.setVluClient(user.isVLUClient());
+			if (user.isVLUClient()) {
+				loginResponse.setVluMessages(VLUUtils.countVLUMessages(documentNumber));
+			}
 			String apkToken = ApkLoginCache.add(user);
 			loginResponse.setApkToken(apkToken);
 			return response(loginResponse);

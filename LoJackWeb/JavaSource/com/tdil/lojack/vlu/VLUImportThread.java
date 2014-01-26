@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -77,7 +78,11 @@ public class VLUImportThread extends Thread {
 			PreparedStatement preparedStatement = conn.prepareStatement("insert into VLU_DATA(dni, domain, message, idvluimport) values(?,?,?,?)");
 			preparedStatement.setString(1, this.importRecord.getDni());
 			preparedStatement.setString(2, this.importRecord.getDomain());
-			preparedStatement.setString(3, this.importRecord.getMessage());
+			if (StringUtils.isEmpty(this.importRecord.getMessage())) {
+				preparedStatement.setString(3, null);
+			} else {
+				preparedStatement.setString(3, this.importRecord.getMessage());
+			}
 			preparedStatement.setInt(4, this.importId);
 			preparedStatement.executeUpdate();
 			

@@ -39,6 +39,7 @@ public class WebsiteUser extends User {
 	private String preventUserId;
 	private boolean isPetUser;
 	private String petUserId;
+	private boolean isVLUClient;
 	
 	private boolean isClientClubLoJack = true;
 	private int clubLoJackLevel;
@@ -314,6 +315,14 @@ public class WebsiteUser extends User {
 
 	public void setClubLoJackLevel(int clubLojackLevel) {
 		this.clubLoJackLevel = clubLojackLevel;
+	}
+
+	public boolean isVLUClient() {
+		return isVLUClient;
+	}
+
+	public void setVLUClient(boolean isVLUClient) {
+		this.isVLUClient = isVLUClient;
 	}
 	
 

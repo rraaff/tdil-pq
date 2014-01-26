@@ -168,6 +168,10 @@ public class LoginForm extends ActionForm {
 				user.setPetUserId(profile.getString("petUser"));
 			}
 		}
+		String vluClientKey = "isVLUClient";
+		if (jsonHasValueForKey(profile, vluClientKey)) {
+			user.setVLUClient(profile.getBoolean(vluClientKey));
+		}
 		
 		String clubLoJackIsClient = "ClubLjsClient";
 		if (jsonHasValueForKey(profile, clubLoJackIsClient)) {

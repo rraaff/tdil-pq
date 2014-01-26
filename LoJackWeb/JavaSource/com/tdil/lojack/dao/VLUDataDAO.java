@@ -74,4 +74,5 @@ public interface VLUDataDAO {
 	int updateVLUDataByPrimaryKey(VLUData record) throws SQLException;
 
 	int deleteOLDVLUData(String dni, String domain, int importId) throws SQLException;
+
 }
