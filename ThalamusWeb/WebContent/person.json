@@ -78,14 +78,14 @@
           "gender" : "Female",
           "lastname" : "Valenzuela",
           "homeIsClient" : true,
-          "preventIsClient" : false,
           "petIsClient" : true,
           "homeUser" : "usuario",
           "petUser" : "petUser",
           "ClubLjsClient": true,
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
-          "isVLUClient" : true,
+          "preventIsClient" : true,
+          "isVLUClient" : false,
           "links" : [  ]
         }
     }
