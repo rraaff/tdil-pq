@@ -24,6 +24,9 @@ public class LoginResponse {
 	private String preventVideo;
 	private String preventUrl;
 	
+	private boolean vluClient;
+	private int vluMessages;
+	
 	public LoginResponse() {
 	}
 	
@@ -143,4 +146,21 @@ public class LoginResponse {
 	public void setApkToken(String apkToken) {
 		this.apkToken = apkToken;
 	}
+	
+	public boolean getVluClient() {
+		return vluClient;
+	}
+
+	public void setVluClient(boolean vluClient) {
+		this.vluClient = vluClient;
+	}
+
+	public int getVluMessages() {
+		return vluMessages;
+	}
+
+	public void setVluMessages(int vluMessages) {
+		this.vluMessages = vluMessages;
+	}
+
 }
