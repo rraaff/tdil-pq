@@ -57,6 +57,21 @@
 	<%@ include file="includes/contactJS.jspf" %>
 	
 	<%@ include file="includes/nuevaRuedita.jspf" %>
+
+	function showVluMessages(dni) {
+		alert(dni);
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#vluMessagesLayer').load('vluMessagesNoPrevent.jsp?dni=' + dni, function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#vluMessagesLayer" ));
+				centerLayer($(window), $( "#centradorModalesVluMessages" ));
+			}
+		});
+	}
+	
 </script>
 </head>
 <body>
@@ -106,6 +121,14 @@
 <!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/legalesLayer.jsp" %>
+
+<!-- Update person -->
+<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="vluMessages">
+		Consultando datos...
+	</div>
+</div>
+
 <%@ include file="includes/version.jspf" %>
 </body>
 </html>
