@@ -39,3 +39,10 @@ CREATE TABLE VLU_DATA (
   INDEX IX_VLU_DATA_01 (idVluImport ASC, dni ASC),
   INDEX IX_VLU_DATA_02 (idVluImport ASC))
   ENGINE = InnoDB;
+  
+DELETE FROM SYSPROPERTIES WHERE propKey = 'vlu.import.range';
+commit;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('vlu.import.range','04:00-05:00','Rango de importacion de VLU (HH24:MM-HH24:MM)',0);
+
+commit;

@@ -29,6 +29,11 @@
 		<appender-ref ref="ConsoleAppender" />
 		<appender-ref ref="FileAppenderAsync" />
 	</category>
+	<category name="com.ibatis" additivity="false">
+		<priority value="error" />
+		<appender-ref ref="ConsoleAppender" />
+		<appender-ref ref="FileAppenderAsync" />
+	</category>
 
 	<category name="com.tdil" additivity="false">
 		<priority value="error" />
@@ -54,13 +59,6 @@
 		<appender-ref ref="FileAppenderAsync" />
 	</category>
 	
-
-	<category name="com.ibatis" additivity="false">
-		<priority value="error" />
-		<appender-ref ref="ConsoleAppender" />
-		<appender-ref ref="FileAppenderAsync" />
-	</category>
-
 	<root>
 		<priority value="error" />
 		<appender-ref ref="ConsoleAppender" />

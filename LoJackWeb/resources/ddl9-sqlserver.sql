@@ -37,3 +37,10 @@ CREATE TABLE VLU_DATA (
 CREATE INDEX IX_VLU_DATA_00 ON VLU_DATA (dni);
 CREATE INDEX IX_VLU_DATA_01 ON VLU_DATA (idVluImport, dni);
 CREATE INDEX IX_VLU_DATA_02 ON VLU_DATA (idVluImport);
+
+DELETE FROM SYSPROPERTIES WHERE propKey = 'vlu.import.range';
+commit;
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('vlu.import.range','04:00-05:00','Rango de importacion de VLU (HH24:MM-HH24:MM)',0);
+
+commit;

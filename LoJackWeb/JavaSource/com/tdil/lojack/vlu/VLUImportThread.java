@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,12 @@ import com.tdil.struts.ValidationException;
 import com.tdil.utils.SystemPropertyCache;
 
 public class VLUImportThread extends Thread {
+	
+	private static int startHour = 2;
+	private static int startMinutes = 0;
+	
+	private static int endHour = 6;
+	private static int endMinutes  = 0;
 
 	private static final class GetVLUImportPending implements TransactionalActionWithResult<List<VLUImport>> {
 		public GetVLUImportPending() {
@@ -128,16 +135,18 @@ public class VLUImportThread extends Thread {
 	@Override
 	public void run() {
 		boolean stopped = false;
-		while (!stopped) {
+		while (true) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000 * 60); // sleep de un minuto
 			} catch (InterruptedException e1) {
 				stopped = true;
 			}
 			try {
-				List<VLUImport> imports =  TransactionProvider.executeInTransactionWithResult(new GetVLUImportPending());
-				for(VLUImport imp : imports) {
-					processImport(imp);
+				if (inInHourRange()) {
+					List<VLUImport> imports =  TransactionProvider.executeInTransactionWithResult(new GetVLUImportPending());
+					for(VLUImport imp : imports) {
+						processImport(imp);
+					}
 				}
 			} catch (SQLException e) {
 				getLog().error(e.getMessage(), e);
@@ -145,6 +154,25 @@ public class VLUImportThread extends Thread {
 		}
 	}
 	
+	private boolean inInHourRange() {
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		int minutes = cal.get(Calendar.MINUTE);
+		if (hour < getStartHour()) {
+			return false;
+		}
+		if (hour == getStartHour() && minutes < getStartMinutes()) {
+			return false;
+		}
+		if (hour > getEndHour()) {
+			return false;
+		}
+		if (hour == getEndHour() && minutes > getEndMinutes()) {
+			return false;
+		}
+		return true;
+	}
+
 	private static CellProcessor[] getProcessors() {
 
 		final CellProcessor[] processors = new CellProcessor[] { null, // dni
@@ -248,5 +276,37 @@ public class VLUImportThread extends Thread {
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(VLUImportThread.class);
+	}
+
+	public static int getStartHour() {
+		return startHour;
+	}
+
+	public static void setStartHour(int startHour) {
+		VLUImportThread.startHour = startHour;
+	}
+
+	public static int getStartMinutes() {
+		return startMinutes;
+	}
+
+	public static void setStartMinutes(int startMinutes) {
+		VLUImportThread.startMinutes = startMinutes;
+	}
+
+	public static int getEndHour() {
+		return endHour;
+	}
+
+	public static void setEndHour(int endHour) {
+		VLUImportThread.endHour = endHour;
+	}
+
+	public static int getEndMinutes() {
+		return endMinutes;
+	}
+
+	public static void setEndMinutes(int endMinutes) {
+		VLUImportThread.endMinutes = endMinutes;
 	}
 }

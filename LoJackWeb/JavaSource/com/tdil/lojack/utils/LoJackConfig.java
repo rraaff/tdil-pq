@@ -567,6 +567,25 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("Middleware job abort time is " + jobaborttime + " millis");
 		getLog().fatal("Middleware job client refresh time is " + jobclientrefreshtime + " millis");
 		
+		String importRange = SystemPropertyUtils.getSystemPropertValue("vlu.import.range");
+		if (!StringUtils.isEmpty(importRange) && importRange.contains("-")) {
+			String ranges[] = importRange.split("-");
+			if (ranges.length == 2 && ranges[0].contains(":") && ranges[1].contains(":")) {
+				try {
+					String start[] = ranges[0].split(":");
+					VLUImportThread.setStartHour(Integer.parseInt(start[0]));
+					VLUImportThread.setStartMinutes(Integer.parseInt(start[1]));
+					String end[] = ranges[1].split(":");
+					VLUImportThread.setEndHour(Integer.parseInt(end[0]));
+					VLUImportThread.setEndMinutes(Integer.parseInt(end[1]));
+				} catch (Exception e) {
+					getLog().error(e.getMessage(), e);
+				}
+			}
+		}
+		getLog().fatal("Vlu import range is " + VLUImportThread.getStartHour() + ":" + VLUImportThread.getStartMinutes() + "-"
+				+ VLUImportThread.getEndHour() + ":" + VLUImportThread.getEndMinutes());
+		
 		importThread = new VLUImportThread();
 		importThread.start();
 	}
