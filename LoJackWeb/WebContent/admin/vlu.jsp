@@ -1,3 +1,4 @@
+<%@page import="com.tdil.lojack.vlu.VLUImportThread"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.tdil.lojack.vlu.VLUUtils"%>
 <%@page import="com.tdil.lojack.model.VLUImport"%>
@@ -27,12 +28,17 @@ for (VLUImport vluImport : imports) { %>
 <% } %>
 </table>
 <hr>
-Importar base de vlu
+Importar base de vlu <br>
+El archivo debe ser un csv con el siguiente formato:<br>
+dni,domain,message<br><br>
+
 <form action="doImportVLU.jsp" method="post"
                         enctype="multipart/form-data">
 <input type="file" name="file" size="50" />
 <br />
-<input type="submit" value="Upload File" />
+<input type="submit" value="Importar" />
+<br>Recuerde que la importacion se ejecutara entre las <%=VLUImportThread.getStartHour()%>:<%=VLUImportThread.getStartMinutes()%> y las 
+<%=VLUImportThread.getEndHour()%>:<%=VLUImportThread.getEndMinutes()%> 
 </form>
 </body>
 </html>
