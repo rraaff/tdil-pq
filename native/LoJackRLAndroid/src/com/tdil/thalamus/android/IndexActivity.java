@@ -57,7 +57,30 @@ public class IndexActivity extends Activity {
 		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
+		Button button = (Button)findViewById(R.id.vluCount);
+		if (Login.loggedUser.getVluMessages() > 0) {
+			button.setText(String.valueOf(Login.loggedUser.getVluMessages()));
+		} else {
+			button.setVisibility(View.GONE);
+		}
 	}
+	
+//	@Override
+//	protected void onStart() {
+//		// TODO Auto-generated method stub
+//		super.onStart();
+//		int []location = new int[2];
+//		Button button = (Button)findViewById(R.id.btnFooterPrevent);
+//		button.getLocationInWindow(location);
+//		System.out.println(location);
+//		
+//		Button msg = (Button)findViewById(R.id.vluCount);
+//		msg.setX(location[0]);
+//		msg.setY(location[1]);
+//		
+//		AbsoluteLayout.LayoutParams OBJ = new AbsoluteLayout.LayoutParams(35,35,location[0],location[1]);
+//		msg.setLayoutParams(OBJ);
+//	}
 
 	public class StartDragOnTouchListener implements OnTouchListener {
 

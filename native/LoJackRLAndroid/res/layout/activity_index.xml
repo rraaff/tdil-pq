@@ -97,14 +97,34 @@
                             android:gravity="top|right"
                             android:orientation="vertical" >
 
+                            <RelativeLayout
+                                android:id="@+id/vluCar"
+                                android:layout_width="75dp"
+                                android:layout_height="60dp"
+                                android:layout_marginRight="60dp"
+                                android:layout_marginTop="0dp"
+                                android:orientation="vertical" >
+
                             <Button
                                 android:id="@+id/btnFooterPrevent"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:layout_marginRight="60dp"
-                                android:layout_marginTop="0dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="0dp"
                                 android:background="@drawable/rd_item_cars"
                                 android:text="@string/btn_prevent" />
+
+                            <Button
+                                android:id="@+id/vluCount"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="45dp"
+                                android:layout_centerVertical="true"
+                                android:text="2" 
+                                android:textSize="12sp"/>
+                                
+                            </RelativeLayout>
 
                             <Button
                                 android:id="@+id/btnFooterPets"
@@ -114,6 +134,8 @@
                                 android:layout_marginTop="15dp"
                                 android:background="@drawable/rd_item_pets"
                                 android:text="@string/btn_pets" />
+
+                            
 
                         </LinearLayout>
 
