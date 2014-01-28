@@ -87,9 +87,9 @@
 
     <ImageView
          android:id="@+id/logLightAvatar"
-         android:layout_width="60dp"
-         android:layout_height="wrap_content"
-         android:maxHeight="40dp"
+          android:layout_width="60dp"
+         android:layout_height="60dp"
+         android:maxHeight="60dp"
          android:scaleType="fitCenter" />
 
  </TableRow>
