@@ -1,0 +1,20 @@
+
+
+
+/* MENSAJES DE ERROR */
+p.attention,
+p.warning,
+p.message,
+p.success,
+#duplicatedErr p		{ border-radius:10px; border:solid 2px #d2bd4b; font-size:13px !important; line-height:19px; padding:10px 10px 10px 65px !important; margin:15px 30px 15px 0; }
+
+p.attention,
+#duplicatedErr p		{ color:#5c4f05; background-color:#fcf6d2; background-image:url(../images/skin_RealLife_two/icons/ic_attention_gray.png); background-repeat:no-repeat; background-position:15px center; background-size:40px; /* Chrome, Firefox 4+, IE 9+, Opera, Safari 5+ */ -webkit-background-size:40px 40px; /* Safari 3-4 */ }
+p.warning		{  }
+p.message		{  }
+p.success		{  }
+
+
+/* //////////>>>>>>> ESPECÍFICOS */
+#duplicatedErr			{ width:350px; }
+#registrationContent p.attention	{ text-align:left !important; width:initial; padding:10px 10px 10px 65px; margin:15px !important; cursor:auto; } /* webmobile */

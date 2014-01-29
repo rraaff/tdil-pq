@@ -1,0 +1,48 @@
+function sendPanic() {
+	  <%@ include file="blockUI.jspf" %>
+	  $('#sendPanic').load('sendPanic.jsp', function(response, status, xhr) {
+		  	<%@ include file="unblockUI.jspf" %>
+			  if (status == "error") {
+			    errorAjax();
+			  } else {
+		  centerLayer($(window), $( "#sendPanicLayer" ));
+		  centerLayer($(window), $( "#centradorModalesSendPanic" ));
+		}
+	  });
+  }
+
+  function doSendPanic(alarmDesc, idEntidad) {
+	  <%@ include file="blockUI.jspf" %>
+	  $.ajax({
+          type: "GET",
+          cache: false,
+          url: "./sendPanic.do",
+          data: {idEntidad: idEntidad},
+          contentType: "application/json; charset=utf-8",
+          success: function(data) {
+        	  <%@ include file="unblockUI.jspf" %>
+        	  if (data.result == 'OK') {
+					$( "#sendPanicLayer" ).fadeOut();
+					$( "#sendPanicErrorLayer" ).fadeOut();
+					centerLayer($(window), $( "#panicSentLayer" ));
+					centerLayer($(window), $( "#centradorModalesPanicSent" ));
+				} else {
+					$( "#sendPanicLayer" ).fadeOut();
+					$( "#sendPanicErrorLayer" ).fadeOut();
+					$('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
+					$('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
+					centerLayer($(window), $( "#sendPanicErrorLayer" ));
+					centerLayer($(window), $( "#centradorModalesPanicError" ));
+				}
+          },
+          error: function() {
+        	  <%@ include file="unblockUI.jspf" %>
+        	  $( "#sendPanicLayer" ).fadeOut();
+        	  $( "#sendPanicErrorLayer" ).fadeOut();
+			  $('#retryPanic').attr('value', 'Reintentar ' + alarmDesc)
+			  $('#retryPanic').attr('onclick', 'doSendPanic("'+alarmDesc+ '",idEntidad)');
+			  centerLayer($(window), $( "#sendPanicErrorLayer" ));
+			  centerLayer($(window), $( "#centradorModalesPanicError" ));
+          }
+      });
+  }

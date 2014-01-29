@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ <display-name>PeugeotServiceWeb</display-name>
+ <context-param>
+  <param-name>application.resources</param-name>
+  <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>
+ </context-param>
+ <context-param>
+  <param-name>system.config</param-name>
+  <param-value>com.tdil.lojack.utils.LoJackConfig</param-value>
+ </context-param>
+ <filter>
+  <filter-name>NoCachingFilter</filter-name>
+  <filter-class>com.tdil.web.NoCacheFilter</filter-class>
+ </filter>
+ <!-- Cache static content -->
+ <filter>
+  <filter-name>imagesCache</filter-name>
+  <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+  <init-param>
+   <param-name>static</param-name>
+   <param-value>true</param-value>
+  </init-param>
+  <init-param>
+   <param-name>expirationTime</param-name>
+   <param-value>604800</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <filter-name>cssCache</filter-name>
+  <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+  <init-param>
+   <param-name>expirationTime</param-name>
+   <param-value>604800</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <filter-name>jsCache</filter-name>
+  <filter-class>com.samaxes.filter.CacheFilter</filter-class>
+  <init-param>
+   <param-name>private</param-name>
+   <param-value>true</param-value>
+  </init-param>
+  <init-param>
+   <param-name>expirationTime</param-name>
+   <param-value>604800</param-value>
+  </init-param>
+ </filter>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>*.jsp</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>*.do</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/viewCamera</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/moveCamera</url-pattern>
+ </filter-mapping>
+ <!-- filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/images/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/css/images/*</url-pattern>
+ </filter-mapping-->
+ <filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>/css/*</url-pattern>
+ </filter-mapping>
+ <!--filter-mapping>
+  <filter-name>NoCachingFilter</filter-name>
+  <url-pattern>*.js</url-pattern>
+ </filter-mapping-->
+ <filter-mapping>
+  <filter-name>imagesCache</filter-name>
+  <url-pattern>/images/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>imagesCache</filter-name>
+  <url-pattern>/css/images/*</url-pattern>
+ </filter-mapping>
+ <!--filter-mapping>
+  <filter-name>cssCache</filter-name>
+  <url-pattern>/css/*</url-pattern>
+ </filter-mapping-->
+ <filter-mapping>
+  <filter-name>jsCache</filter-name>
+  <url-pattern>*.js</url-pattern>
+ </filter-mapping>
+ <listener>
+  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
+ </listener>
+ 
+ <filter>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  <init-param>
+   <param-name>logLevel</param-name>
+   <param-value>DEBUG</param-value>
+  </init-param>
+ </filter>
+ 
+ <filter-mapping>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <url-pattern>/js/*</url-pattern>
+ </filter-mapping>
+ <!-- context-param>
+  <param-name>SqlMapConfig</param-name>
+  <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
+ </context-param>
+ <context-param>
+  <param-name>DAOProvider</param-name>
+  <param-value>SQLSERVER</param-value>
+ </context-param-->
+ <servlet>
+  <servlet-name>Jersey Web Application</servlet-name>
+  <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  <init-param>
+  <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+  <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+</init-param>
+<init-param>
+  <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+  <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+</init-param>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <!-- Action Servlet Configuration -->
+ <servlet>
+  <servlet-name>action</servlet-name>
+  <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+  <init-param>
+   <param-name>config</param-name>
+   <param-value>/WEB-INF/struts-config.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet>
+  <servlet-name>DownloadServlet</servlet-name>
+  <servlet-class>com.tdil.web.DownloadController</servlet-class>
+ </servlet>
+ 
+ <servlet>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.RefreshThalamusLoginCacheServlet</servlet-class>
+ </servlet>
+ 
+ 
+ <servlet>
+  <servlet-name>SearchParkingsServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.SearchParkingsServlet</servlet-class>
+ </servlet>
+ <servlet>
+   <servlet-name>FacebookSignIn</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.FacebookSignIn</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>TwitterSignIn</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.TwitterSignIn</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>FacebookConnect</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.FacebookConnect</servlet-class>
+ </servlet>
+ <servlet>
+  <servlet-name>TwitterConnect</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.TwitterConnect</servlet-class>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Jersey Web Application</servlet-name>
+  <url-pattern>/rest/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>DownloadServlet</servlet-name>
+  <url-pattern>/download.st</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet-mapping>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <url-pattern>/refreshThalamusLoginCacheServlet.st</url-pattern>
+ </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
+  <url-pattern>/mobile/refreshThalamusLoginCacheServlet.st</url-pattern>
+ </servlet-mapping>
+ 
+ <!-- Action Servlet Mapping -->
+ <servlet-mapping>
+  <servlet-name>action</servlet-name>
+  <url-pattern>*.do</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet-mapping>
+  <servlet-name>SearchParkingsServlet</servlet-name>
+  <url-pattern>/searchParkings</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>FacebookSignIn</servlet-name>
+  <url-pattern>/signin/facebook</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>TwitterSignIn</servlet-name>
+  <url-pattern>/signin/twitter</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>FacebookConnect</servlet-name>
+  <url-pattern>/connect/facebook</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>TwitterConnect</servlet-name>
+  <url-pattern>/connect/twitter</url-pattern>
+ </servlet-mapping>
+  
+ <!-- The Usual Welcome File List -->
+ <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <error-code>500</error-code>
+  <location>/err_500.html</location>
+ </error-page>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/err_404.html</location>
+ </error-page>
+ <jsp-config>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-bean</taglib-uri>
+   <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-logic</taglib-uri>
+   <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-html</taglib-uri>
+   <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  </taglib>
+  <taglib>
+   <taglib-uri>/WEB-INF/struts-nested</taglib-uri>
+   <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+  </taglib>
+ </jsp-config>
+</web-app>

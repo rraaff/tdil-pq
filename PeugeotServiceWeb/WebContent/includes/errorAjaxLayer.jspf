@@ -1,0 +1,9 @@
+<div id="errorAjaxLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesForgotPasswordError" class="defaultLayerStyles">
+		<div class="ajaxErrorAccess">
+			<div id="xContainer"><button class="buttonLink" onclick="javascript:closeErrorAjax();" id="closePasswordLayerButton">X</button></div>
+			<h3>Ha ocurrido un error</h3>
+			<p>Por favor vuelva a intentarlo. Si el error persiste contectese con nuestro equipo de asistentes.</p>
+		</div>
+	</div>
+</div>

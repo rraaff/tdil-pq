@@ -1,0 +1,35 @@
+body { font-family: 'GothamLightRegular', Helvetica, Arial, sans-serif; font-weight:bold; text-rendering:optimizelegibility; }
+
+#nmPhoneImgContainer,
+#nmWelcomeText,
+#nmSombraTel,
+#nmRuedaHelper,
+#rdPhotoSlider			{ display:none; }
+#nmCentral				{ width:100%; }
+#nmTelefono				{ width:100%; }
+#nmRuedita				{ left:0px; }
+#nmRuedita ul			{ width:452px; height:452px; display:inline-block; position:relative; z-index:1203; }
+#nmLogo					{ width:210px; top:60px; left:0px; position:relative; margin:0 auto; z-index:1400; }
+#rdBase					{ padding:0; top:168px; }
+#rdCentral				{ padding:0; top:370px; }
+#copyright				{ top:620px; }
+
+
+
+
+/* INPUTS  */
+FIELDSET span { font-weight:bold; }
+LABEL { color:#555555; font-size:11px; }
+SELECT { background:#eaeaea; font-size:16px; line-height:24px; height:24px; margin-top:11px; padding:0; }
+#loginLayer OPTION,
+#registerLayer OPTION { background-color:#eaeaea; }
+INPUT[type='text'],
+INPUT[type='password'] { border:0; border-radius:5px; background:#eaeaea; color:#333; font-size:12px; line-height:35px; width:250px; height:35px; padding:0; margin:5px auto; float:left; }
+#registerLayer INPUT[type='text'],
+#registerLayer INPUT[type='password'] { width:290px; }
+#forgotPasswordLayer SELECT { width:220px; }
+
+#contactContentLayer LABEL,
+#resetPassLayerBase LABEL { width:50px; }
+#contactContentLayer INPUT[type='text'] { width:240px; }
+#contactContentLayer textarea { width:228px; }

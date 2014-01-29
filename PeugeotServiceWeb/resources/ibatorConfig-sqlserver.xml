@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+
+<ibatorConfiguration>
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/sqljdbc4.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/javabase.jar" />
+<classPathEntry location="/home/mgodoy/icarus/workspace/thalamus/EnvironmentLibraries/pluginibator.jar" />
+<ibatorContext
+  id="ibatorContext"
+  targetRuntime="Ibatis2Java5"
+  defaultModelType="flat">
+
+<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://192.168.0.132:1123;database=LOJACK_DB;" userId="LOJACK_USER"
+			password="p4l0ll1n4" />
+
+<javaModelGenerator targetPackage="com.tdil.lojack.model"
+  targetProject="TestSQLServer">
+  <property name="enableSubPackages" value="false" />
+  <property name="trimStrings" value="true" />
+  <property name="rootClass" value="com.tdil.ibatis.PersistentObject" />
+</javaModelGenerator>
+
+<sqlMapGenerator targetPackage="com.tdil.lojack.dao.maps.sqlserver"
+  targetProject="LoJackWeb">
+  <property name="enableSubPackages" value="false" />
+</sqlMapGenerator>
+
+<daoGenerator type="GENERIC-CI"
+targetPackage="com.tdil.lojack.dao"
+implementationPackage="com.tdil.lojack.dao.impl.sqlserver"
+targetProject="LoJackWeb">
+  <property name="enableSubPackages" value="false" />
+  <property name="methodNameCalculator" value="extended" />
+</daoGenerator>
+
+<!-- SqlServer ??? -->
+<!--  table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="ALARM_CONF" domainObjectName="AlarmConf" alias="ac">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="LIGHT_CONF" domainObjectName="LightConf" alias="lc">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="ASYNC_JOB" domainObjectName="AsyncJob" alias="aj">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+
+<table schema="dbo" tableName="CACHE_REGION" domainObjectName="CacheRegion" alias="cache">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+
+<table schema="dbo" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+
+<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
+<!--  table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
+
+<table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+
+
+</ibatorContext>
+</ibatorConfiguration>

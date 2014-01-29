@@ -1,0 +1,8 @@
+function errorAjax() {
+	$.unblockUI();
+	centerLayer($(window), $( "#errorAjaxLayer" ));
+	centerLayer($(window), $( "#centradorModalesForgotPasswordError" ));
+}
+function closeErrorAjax() {
+	$( "#errorAjaxLayer" ).fadeOut();
+}

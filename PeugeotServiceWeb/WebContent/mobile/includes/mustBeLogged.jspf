@@ -1,0 +1,4 @@
+<% if (!logged) { %>
+	<jsp:forward page="../index.jsp"></jsp:forward>
+<% return;
+	} %>

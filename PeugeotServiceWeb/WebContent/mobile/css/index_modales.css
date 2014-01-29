@@ -1,0 +1,308 @@
+#loginLayer {}
+.layerOnTop,
+.layerOnTop20,
+.layerOnTop70,
+#errorAjaxLayer {
+	background: url(../images/skin_lj_rl/backs/topLayer.png);
+	background-repeat: repeat;
+	font-size: 11px;
+	height:100%;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+.layerOnTop20 {
+	background: url(../images/skin_lj_rl/backs/topLayer20.png);
+}
+.layerOnTop70 {
+	background: url(../images/skin_lj_rl/backs/topLayer70.png);
+}
+#errorAjaxLayer {
+	position:absolute;
+}
+.errorAjaxInner {
+	width:100%;
+	height:100%;
+	background:#fff;
+	padding:20px;
+}
+.errorAjaxInner h3 { padding:0 0 15px 0; }
+.errorAjaxInner p { line-height:20px; }
+#errorAjaxLayer .buttonArea { text-align:center; width:100%; padding:15px 0 0 0; }
+.loginLayerStyles {}
+.loginLayerContent,
+.registerLayerContent,
+.legalLayerContent,
+.modalStyle {
+	border: 10px solid rgb(0, 0, 0);
+	border: 10px solid rgba(0, 0, 0, .8);
+	-webkit-background-clip: padding-box; /* for Safari */
+	border-radius: 10px;
+	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	background: #fff;
+	width: 340px;
+	margin: 120px auto;
+	padding: 0 73px 0 73px;
+}
+.registerLayerContent {
+	width: 450px;
+	height: 560px;
+	margin: 30px auto;
+}
+.legalLayerContent {
+	height: 450px;
+	margin: 20px auto;
+	padding: 30px 20px 30px 30px;
+}
+.modalStyle {
+	width: 450px;
+	margin: 30px auto;
+	padding: 20px;
+}
+.modalWrapper {
+	width: 450px;
+	height:auto;
+	display: inline-block;
+}
+.modalLayerContent {
+	width: 100%;
+	height: 400px;
+}
+.scrollable {
+	height: 400px;
+	margin-top:30px;
+	overflow:auto;
+}
+#loginLayer h3,
+#registerLayer h3,
+#parkingsNotLoggedLayer h3,
+#forgotPasswordLayer h3,
+#forgotPasswordUserNotFoundLayer h3,
+#forgotPasswordErrorLayer h3,
+#legalesLayer h3,
+#logLayer h3,
+#passwordLayer h3,
+h3 {
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+/*	//-webkit-text-stroke-width: .05px;
+	//-webkit-text-stroke-color: white;
+	-webkit-font-smoothing:antialiased;*/
+}
+#legalesLayer h2 {
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 32px;
+	line-height: 35px;
+/*	//-webkit-text-stroke-width: .05px;
+	//-webkit-text-stroke-color: white;
+	-webkit-font-smoothing:antialiased;*/
+}
+.tagsOnInputs, label, fieldset span {
+	color: #999;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 45px;
+
+	margin:0;
+	padding:0 20px 0 0;
+
+	float: left;
+	cursor: auto;
+}
+fieldset input[type="radio"],
+fieldset input[type="checkbox"] {
+	line-height: 10px;
+	margin: 15px 5px 0 0;
+	float: left;
+}
+fieldset select {
+	margin: 10px 0;
+}
+#xContainer {
+	/*width: 30px;*/
+	margin: 0 auto;
+	top: 5px;
+	right: -370px;
+	z-index: 9998;
+	position: relative;
+}
+/* inputs */
+#loginLayer input:not([type]),
+#loginLayer input[type="color"],
+#loginLayer input[type="email"],
+#loginLayer input[type="number"],
+#loginLayer input[type="password"],
+#loginLayer input[type="tel"],
+#loginLayer input[type="url"],
+#loginLayer input[type="text"],
+#passwordLayer input[type="password"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 268px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+	float: left;
+}
+#loginLayer label {
+	width: 40px;
+}
+#registerLayer label {
+	width: 100px;
+}
+#forgotPasswordLayer input:not([type]),
+#forgotPasswordLayer input[type="color"],
+#forgotPasswordLayer input[type="email"],
+#forgotPasswordLayer input[type="number"],
+#forgotPasswordLayer input[type="password"],
+#forgotPasswordLayer input[type="tel"],
+#forgotPasswordLayer input[type="url"],
+#forgotPasswordLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 280px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+	float: left;
+}
+#registerLayer input:not([type]),
+#registerLayer input[type="color"],
+#registerLayer input[type="email"],
+#registerLayer input[type="number"],
+#registerLayer input[type="password"],
+#registerLayer input[type="tel"],
+#registerLayer input[type="url"],
+#registerLayer input[type="text"] {
+	border: 0;
+	border-radius: 5px;
+	background: #eaeaea;
+	color: #333;
+	font-size: 12px;
+	line-height: 35px;
+	text-transform: uppercase;
+
+	width: 300px;
+	height: 35px;
+	padding: 0 0 0 10px;
+	margin: 5px auto;
+}
+#loginLayer button,
+#registerLayer button,
+button.buttonLink {
+	background: transparent;
+	background-color: #fff;
+
+	border: none;
+
+	color: #ee5222;
+	font-family: "Gotham", "Helvetica", Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 25px;
+
+	margin: 10px 0;
+	left:0px;
+	text-align: right;
+
+	cursor: pointer;
+}
+.indexLogin {
+	border: none;
+	background: url(../images/skin_lj_rl/buttons/button_ingresar.png);
+	background-repeat: no-repeat;
+	width: 132px;
+	height: 35px;
+
+	margin-top: 5px;
+
+	cursor: pointer;
+}
+.indexButtonBase {
+	border: none;
+	color: #fff;
+	background: url(../images/skin_lj_rl/buttons/button_base.png);
+	background-repeat: no-repeat;
+	
+	text-transform: uppercase;
+
+	width: 120px;
+	height: 35px;
+
+	margin-top: 5px;
+	cursor: pointer;
+
+	float: right;
+}
+
+#video1Layer {}
+#video1Layer h3 {
+	color: #fff;
+	font-size: 38px;
+	text-transform: uppercase;
+	font-weight: lighter;
+
+}
+#video1Layer p {
+	color: #fff;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 18px;
+
+}
+.defaultLayerStyles {}
+.defaultLayerContent {
+	border: 10px solid rgb(0, 0, 0);
+	border: 10px solid rgba(0, 0, 0, .8);
+	-webkit-background-clip: padding-box; /* for Safari */
+	border-radius: 10px;
+	background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+	background: #fff;
+	width: 334px;
+	margin: 120px auto;
+	padding: 20px 20px 0 20px;
+}
+.loginLayerContent p,
+.defaultLayerContent p {
+	font-size: 13px;
+	line-height: 18px;
+	padding: 30px 0;
+}
+.closeLayerVideoLink {
+	margin-top: 30px;
+	text-align: right;
+}
+.customLink {
+	font-size: 11px;
+	text-transform: uppercase;
+}
+#videoWrapper {
+	background: #000;
+	width: 927px;
+	height: 431px;
+	margin: 10px 0;
+}
+.readOnly {
+	color: #c2c2c2;
+	font-size: 15px;
+	font-weight: bold;
+	
+}

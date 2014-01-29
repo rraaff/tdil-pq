@@ -1,0 +1,10 @@
+<jboss-web>
+
+	<context-root>/</context-root>
+
+	<resource-ref>
+		<res-ref-name>jdbc/database</res-ref-name>
+		<jndi-name>java:jdbc/database</jndi-name>
+	</resource-ref>
+
+</jboss-web>

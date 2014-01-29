@@ -1,0 +1,15 @@
+$("button[cl]").each(function(indice,valor) {
+   $(valor).click(function() {
+	   $( "#" + $(this).attr('cl') ).fadeOut();
+	});
+});
+$("input[cl]").each(function(indice,valor) {
+   $(valor).click(function() {
+	   $( "#" + $(this).attr('cl') ).fadeOut();
+	});
+});
+$('#closevideo1Layer').click(function() {
+	$('#videoIframe').prop('src', '');
+	//$('#videoIframe').prop('innerHTML', '');
+	$( "#video1Layer" ).fadeOut();
+});

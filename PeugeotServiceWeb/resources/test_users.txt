@@ -1,0 +1,25 @@
+CONSUMIDOR 1:
+Facundo Cuadra 
+DNI: 32025646
+Password: temp3227
+Estos datos de DNI + password son los que utiliza el sitio LOAPP para hacer login a un consumidor
+A este consumidor, le configuramos los siguientes datos de usuarios para Prevent, Home y PET.
+
+PETS: pruebapets
+PREVENT: fcuadraprevent
+HOME: usuario
+
+CONSUMIDOR 2:
+Erica Nacher
+DNI: 26932479
+Password: temp9552
+Este consumidor NO TIENE DATOS para Prevent, ni Home, Ni PET
+
+11111111
+123456
+
++++++++
+
+https://testa-lojack-rest.thalamuslive.com/lojack/api/v1/
+Thalamus-Header: REAL-LIFE-SMARTPHONE-APP
+Thalamus-Token: k8exyct1v6edf9q50fryuq3r02upn0m98twst4etlbjgc9cnsq585879gxlcbu11

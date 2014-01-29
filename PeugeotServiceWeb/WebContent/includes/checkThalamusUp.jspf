@@ -1,0 +1,1 @@
+<%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><% if (!ThalamusClientFacade.isAlive()) { %><jsp:forward page="thalamusDown.jsp"></jsp:forward><% return;} %>

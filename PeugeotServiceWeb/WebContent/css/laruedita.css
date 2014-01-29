@@ -1,0 +1,106 @@
+#nmCentral			{ width:100%; }
+#nmWrapper			{ width:100%; }
+#nmMainObjects		{ width:100%; height:765px; }
+#nmLogo				{ text-align:center; width:282px; top:350px; position:relative; }
+#nmLogo img 		{ width:282px; }
+#nmTelefono 		{ width:1058px; height:555px; margin:0 auto; position:relative; }
+#nmPhoneImgContainer{ width:1058px; height:555px; top:-452px; position:relative; z-index:1199; }
+#nmWelcomeText		{ color:#fff; text-align:left; width:20%; position:relative; left:1460px; top:-294px; }
+#nmWelcomeText h1	{ font-size:30px; margin:0 0 13px 0; }
+#nmWelcomeText p	{ font-size:16px; line-height:23px; padding:0 20px 0 0; }
+
+/* RUEDITA */
+#nmRuedita			{ width:452px; height:452px; margin:0 auto; top:59px; left:112px; position:relative; z-index:1209; }
+#rdBase				{ text-align:center; width:100%; height:452px; position:absolute; top:204px; padding-left:224px; z-index:1200; }
+#rdBase img			{ width:452px; important! height:452px; }
+#rdPhotoSlider		{ text-align:center; width:100%; height:385px; position:absolute; top:231px; margin:0 auto; z-index:1199; }
+#rdPhotoSlider		{ animation:myfirst 2s; -webkit-animation:myfirst 2s; /* Safari and Chrome */ animation-delay:myfirst 2s; /* W3C and Opera */ -moz-animation-delay:myfirst 2s; /* Firefox */ -webkit-animation-delay:myfirst 2s; /* Safari and Chrome */ }
+@keyframes myfirst			{ from {opacity:0;} to {opacity:1;} }
+@-webkit-keyframes myfirst	{ /* Safari and Chrome */ from {opacity:0;} to {opacity:1;} }
+
+#nmRuedita ul					{ width:452px; height:452px; display:inline-block; position:relative; z-index:1203; }
+#nmRuedita ul li				{ line-height:224px; width:224px; height:224px; overflow:hidden; position:relative; overflow:hidden; -o-transition:background 1s ease-out; -ms-transition:background 1s ease-out; -moz-transition:background 1s ease-out; -webkit-transition:background 1s ease-out; transition:background 1s ease-out; }
+#nmRuedita ul li.home			{ background:url(../images/skin_lj_rl/newWheel/home_224_off.png) no-repeat 0 0; top:-8px; left:18px; z-index:1210; }
+#nmRuedita ul li.car			{ background:url(../images/skin_lj_rl/newWheel/car_224_off.png) no-repeat 0 0; top:16px; left:25px; z-index:1211; }
+#nmRuedita ul li.pets			{ background:url(../images/skin_lj_rl/newWheel/pets_224_off.png) no-repeat 0 0; top:-341px; left:271px; z-index:1219; }
+#nmRuedita ul li.park			{ background:url(../images/skin_lj_rl/newWheel/parking_224_off.png) no-repeat 0 0; top:-438px; left:221px; z-index:1213; }
+#nmRuedita ul li img 			{ width:96px; height:96px; }
+#nmRuedita ul li a				{ color:transparent; height:96px; font-size:90px; padding:0; margin:64px; }
+#nmRuedita ul li.tv				{ background:url(../images/skin_lj_rl/newWheel/tv_224_off.png) no-repeat center center; top:-839px; left:270px; z-index:1250; }
+#nmRuedita ul li.logout			{ background:url(../images/skin_lj_rl/newWheel/logout_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
+#nmRuedita ul li.club			{ background:url(../images/skin_lj_rl/newWheel/club_224_off.png) no-repeat center center; top:-1035px; left:142px; z-index:1215; }
+#nmRuedita ul li.login			{ background:url(../images/skin_lj_rl/newWheel/login_224_off.png) no-repeat center center; top:-965px; left:207px; z-index:1215; }
+#nmRuedita ul li.tv,
+#nmRuedita ul li.logout,
+#nmRuedita ul li.login			{ line-height:94px; width:97px; height:97px; }
+#nmRuedita ul li.tv a,
+#nmRuedita ul li.logout a,
+#nmRuedita ul li.login a		{ color:transparent; height:98px; font-size:88px; padding:0; margin:0; }
+
+#rdCentral						{ width:100%; height:66px; padding-left:227px; top:408px; position:absolute; z-index:1201; }
+#rdCentral h2					{ color:#ee5222; font-family:'GothamBoldRegular','Gotham', 'Helvetica', Arial, sans-serif; font-size:18px; line-height:30px; text-align:center; text-transform:uppercase; width:165px; margin:0 auto; overflow:hidden; }
+#rdCentral h3					{ color:#fff; font-family:'GothamLightRegular','Gotham', 'Helvetica', Arial, sans-serif; font-size:12px; line-height:12px; text-align:center; text-transform:uppercase; width:165px; margin:0 auto; overflow:hidden; }
+
+/* RUEDA HELPER MENU */
+#nmSombraTel		{ text-align:center; width:100%; margin:0 auto; position:absolute; top:147px; z-index:1005; }
+#nmSombraTel img	{ width:1058px; height:555px; }
+#nmRuedaHelper				{ width:100%; padding:12px 0 0 0; position:absolute; z-index:1220; }
+#rhWrapper					{ text-align: center; width:40%; margin:0 auto; }
+#nmRuedaHelper ul			{ width:auto; display:inline-block; }
+#nmRuedaHelper ul li		{ float:left; }
+#nmRuedaHelper ul li a		{ color:#fff; font-size: 21.3px; text-transform:uppercase; padding:30px 0 30px 75px; -o-transition:color .1s ease-out, background 1s ease-out; -ms-transition:color .1s ease-out, background 1s ease-out; -moz-transition:color .1s ease-out, background 1s ease-out; -webkit-transition:color .1s ease-out, background 1s ease-out; /* ...and now override with proper CSS property */ transition:color .1s ease-out, background 1s ease-out; }
+#nmRuedaHelper ul li a:hover 		{ color:#ee5222; }
+#nmRuedaHelper ul li a.home			{ background: url(../images/skin_lj_rl/newWheel/home_92_off.png); background-repeat:no-repeat; background-position:left center; margin-right:20px; }
+#nmRuedaHelper ul li a.car			{ background: url(../images/skin_lj_rl/newWheel/car_92_off.png); background-repeat:no-repeat; background-position:left center; margin-right:20px; }
+#nmRuedaHelper ul li a.pets			{ background: url(../images/skin_lj_rl/newWheel/pets_92_off.png); background-repeat:no-repeat; background-position:left center; margin-right:20px; }
+#nmRuedaHelper ul li a.park			{ background: url(../images/skin_lj_rl/newWheel/parking_92_off.png); background-repeat:no-repeat; background-position:left center; }
+#nmRuedaHelper ul li a.home:hover	{ background: url(../images/skin_lj_rl/newWheel/home_92_over.png); background-repeat:no-repeat; background-position:left center; }
+#nmRuedaHelper ul li a.car:hover	{ background: url(../images/skin_lj_rl/newWheel/car_92_over.png); background-repeat:no-repeat; background-position:left center; }
+#nmRuedaHelper ul li a.pets:hover	{ background: url(../images/skin_lj_rl/newWheel/pets_92_over.png); background-repeat:no-repeat; background-position:left center; }
+#nmRuedaHelper ul li a.park:hover	{ background: url(../images/skin_lj_rl/newWheel/parking_92_over.png); background-repeat:no-repeat; background-position:left center; }
+
+
+/*  ADAPTANCIÓN 1  */
+@media only screen and (max-width: 1780px) {
+	body				{ overflow-x:hidden; }
+	#nmWrapper 			{ width:100%; }
+	#nmRuedaHelper		{ top:792px; }
+	#nmMainObjects 		{ width:100%; }
+	#nmLogo				{ width:210px; top:60px; left:0px; position:relative; margin:0 auto; z-index:1400; }
+	#nmWelcomeText		{ width:670px; position:static; margin:0 auto; }
+	#rdPhotoSlider		{ top:194px; }
+	#rdBase				{ top:168px; }
+	#rdCentral			{ top:370px; }
+	#nmSombraTel		{ top:-653px; }
+	#rhWrapper			{ width:100%; }
+	#nmMainObjects		{ height:650px; }
+}
+/*
+@media only screen and (max-height: 860px) {
+	#copyright { top:860px; }
+}*/
+@media only screen and (max-width: 1020px) {
+	#nmTelefono				{ width:100%; }
+	#nmPhoneImgContainer	{ opacity:0; }
+	#nmSombraTel			{ opacity:0; }
+	#rdBase					{ padding:0; }
+	#rdCentral				{ padding:0; }
+	#rdPhotoSlider			{ display:none; }
+	#nmWelcomeText			{ display:none; }
+	#nmRuedita				{ left:0px; }
+	#nmRuedaHelper			{ opacity:0; }
+	#copyright				{ top:620px; }
+}
+@media only screen and (max-width: 452px) {
+	#rdBase,
+	#rdCentral				{ width:452px; }
+}
+@media only screen and (max-height: 630px) and (max-width: 1020px) {
+	body 			{ overflow:hidden; }
+	#copyright		{ top:540px; }
+	#nmMainObjects	{ height:596px; overflow:hidden; }
+	#nmRuedita		{ top:0px; }
+	#rdBase			{ top:108px; }
+	#rdCentral		{ top:308px; }
+	
+}

@@ -1,0 +1,12 @@
+function chbg(id, image, state, title, subTitle) {
+	document.getElementById(id).style.background = "url(images/skin_lj_rl/newWheel/" + image + "_224_" + state + ".png) no-repeat center center";
+	
+	//var title = "Seleccione";
+	//var subTitle = "Una Aplicación";
+	
+	var id = document.getElementById("title");
+	id.innerHTML=title;
+	
+	var id = document.getElementById("subTitle");
+	id.innerHTML=subTitle;
+}

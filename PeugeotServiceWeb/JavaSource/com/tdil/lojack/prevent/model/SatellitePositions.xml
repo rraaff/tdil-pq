@@ -1,0 +1,13 @@
+<SatellitePositions>
+	<SatellitePositionDescCollection>
+		<SatellitePositionDesc>
+			<ID></ID>
+			<Description></Description>
+			<Longitude></Longitude>
+			<Latitude></Latitude>
+			<Street></Street>
+			<Number></Number>
+			<Zoom></Zoom>
+			</SatellitePositionDesc>
+	</SatellitePositionDescCollection>
+</SatellitePositions>

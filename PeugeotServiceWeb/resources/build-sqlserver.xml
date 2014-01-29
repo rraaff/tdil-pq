@@ -1,0 +1,101 @@
+<project name="Thalamus" basedir="." default="createTables">
+
+	<property name="project.name.cap" value="PeugeotService" />
+	<property name="project.name.upper" value="PEUGEOTSERVICE" />
+	<property name="project.name.lower" value="peugeotservice" />
+	
+	<property name="sql.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+	<property name="root.url" value="jdbc:sqlserver://192.168.0.132:1123" />
+	<property name="root.user" value="sa" />
+	<property name="root.pass" value="root" />
+
+	<property name="db.url" value="jdbc:sqlserver://192.168.0.132:1123;database=PEUGEOTSERVICE_DB;" />
+	<property name="db.user" value="${project.name.upper}_USER" />
+	<property name="db.pass" value="p4l0ll1n4" />
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml"
+			classpath="./ant-contrib.jar" />
+
+	<target name="createDatabase">
+		<sql driver="${sql.driver}" url="${root.url}" userid="${root.user}" password="${root.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="database-sqlserver.sql" />
+		</sql>
+	</target>
+
+	<target name="createTables">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl-sqlserver.sql" />
+			<transaction src="sysproperties.sql" />
+			<transaction src="poi_inserts.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-1">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl1-sqlserver.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-3">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl3-sqlserver.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-9">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl9-sqlserver.sql" />
+		</sql>
+	</target>
+
+	<target name="useThalamusTest">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="thalamus_test.sql" />
+		</sql>
+	</target>
+	
+	<target name="useThalamusFake">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="thalamus_fake.sql" />
+		</sql>
+	</target>
+
+	<target name="useMWTest">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="use_mw_test.sql" />
+		</sql>
+	</target>
+	
+	<target name="useMWFake">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="use_mw_fake.sql" />
+		</sql>
+	</target>
+</project>

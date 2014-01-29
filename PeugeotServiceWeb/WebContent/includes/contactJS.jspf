@@ -1,0 +1,12 @@
+function contactLoJack() {
+<%@ include file="blockUI.jspf" %>
+  $('#contactContentLayer').load('goToContact.do', function(response, status, xhr) {
+  	<%@ include file="unblockUI.jspf" %>
+	  if (status == "error") {
+	    errorAjax();
+	  } else {
+	  centerLayer($(window), $( "#contactLayer" ));
+	  centerLayer($(window), $( "#centradorModalesContactLayer" ));
+	}
+	});
+}

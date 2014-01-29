@@ -1,0 +1,1 @@
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('camera.proxy','false','camera.proxy',0);

@@ -1,0 +1,38 @@
+<Vehicles >
+		<VehiclesCollection>
+			<Vehicle>
+				<Status>a</Status>
+				<ID>b</ID>
+				<Description>c</Description>
+				<Brand>d</Brand>
+				<Model>d</Model>
+				<Year>1997</Year>
+				<DateTime>qw:78</DateTime>
+				<Latitude>89</Latitude>
+				<Longitude>17</Longitude>
+				<Speed>hu</Speed>
+				<Direction>norte</Direction>
+				<GeoRef>as</GeoRef>
+			</Vehicle>
+			<Vehicle>
+				<Status>a</Status>
+				<ID>b</ID>
+				<Description>c</Description>
+				<Brand>d</Brand>
+				<Model>d</Model>
+				<Year>1997</Year>
+				<DateTime>qw:78</DateTime>
+				<Latitude>89</Latitude>
+				<Longitude>17</Longitude>
+				<Speed>hu</Speed>
+				<Direction>norte</Direction>
+				<GeoRef>as</GeoRef>
+			</Vehicle>
+		</VehiclesCollection>
+		<NextStatus> </NextStatus>
+		<NextColor> </NextColor>
+		<NextIndex></NextIndex>
+		<PreviousStatus> </PreviousStatus>
+		<PreviousColor> </PreviousColor>
+		<PreviousIndex></PreviousIndex>
+</Vehicles>

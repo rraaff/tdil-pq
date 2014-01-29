@@ -1,0 +1,107 @@
+<project name="LoJack" basedir="." default="make">
+
+	<property name="project.name.cap" value="LoJack" />
+	<property name="project.name.upper" value="LOJACK" />
+	<property name="project.name.lower" value="lojack" />
+	
+	<path id="environment.libraries">
+		<fileset dir="./libraries"
+			includes="**/*.jar" />
+	</path>
+
+	<target name="create_jar_applet">
+		<tstamp>
+			<format property="hora" pattern="yyyyMMddHHmm"/>
+		</tstamp>
+		<delete>
+	      <fileset dir="./" includes="cameraviewer-*.jar"/>
+	    </delete>
+		<delete>
+	      <fileset dir="./mysql/${project.name.upper}_WEB.war-src/" includes="cameraviewer-*.jar"/>
+	    </delete>
+		<delete>
+	      <fileset dir="./sqlserver/${project.name.upper}_WEB.war-src/" includes="cameraviewer-*.jar"/>
+	    </delete>
+        <jar destfile="./cameraviewer-b${hora}.jar" filesetmanifest="mergewithoutmain">
+        	<fileset dir="./bin/Camera"/>
+            <fileset dir="./bin/CameraViewer"/>
+            <zipfileset excludes="META-INF/*.SF" src="./libraries/commons-codec.jar"/>
+        </jar>
+		<delete file="./LoJackKeyStore"></delete>
+		<echo>Generating new certificate</echo>
+		<delete file="./LoJackKeyStore"/>
+		<genkey validity="18250" alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore">
+			<dname>
+				<param name="CN" value="LoJack SA" />
+				<param name="OU" value="LoJack" />
+				<param name="O" value="LoJack" />
+				<param name="C" value="AR" />
+			</dname>
+		</genkey>
+		<signjar alias="lojackKeyStore" storepass="lojack" keystore="./LoJackKeyStore" jar="./cameraviewer-b${hora}.jar"></signjar>
+		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="./mysql/${project.name.upper}_WEB.war-src/homeCamara.jsp"/>
+		<replaceregexp flags="g" match='cameraviewer-b[0-9]{12}.jar' replace='cameraviewer-b${hora}.jar' file="./sqlserver/${project.name.upper}_WEB.war-src/homeCamara.jsp"/>
+		<copy tofile="./mysql/${project.name.upper}_WEB.war-src/cameraviewer-b${hora}.jar" file="./cameraviewer-b${hora}.jar"/>
+		<copy tofile="./sqlserver/${project.name.upper}_WEB.war-src/cameraviewer-b${hora}.jar" file="./cameraviewer-b${hora}.jar"/>
+		<delete>
+	      <fileset dir="./" includes="cameraviewer-*.jar"/>
+	    </delete>
+		<delete file="./LoJackKeyStore"/>
+    </target>
+	
+	<target name="make">
+		<delete file="./mysql/${project.name.upper}_WEB.war"></delete>
+		<delete file="./sqlserver/${project.name.upper}_WEB.war"></delete>
+		
+		<delete dir="./bin/Camera" failonerror="false"></delete>
+		<mkdir dir="./bin/Camera"/>
+		<javac encoding="ISO-8859-1" srcdir="./src/Camera" debug="on" destdir="./bin/Camera">
+			<classpath path="./libraries/commons-codec.jar"></classpath>
+		</javac>
+		
+		<delete dir="./bin/CameraViewer" failonerror="false"></delete>
+		<mkdir dir="./bin/CameraViewer"/>
+		<javac encoding="ISO-8859-1" srcdir="./src/CameraViewer" debug="on" destdir="./bin/CameraViewer">
+			<classpath path="./libraries/commons-codec.jar"></classpath>
+			<classpath path="./bin/Camera"></classpath>
+		</javac>
+		<copy todir="./bin/CameraViewer">
+			<fileset dir="./src/CameraViewer" excludes="**/*.java" />
+		</copy>
+		
+		<delete dir="./bin/LoJackWeb" failonerror="false"></delete>
+		<mkdir dir="./bin/LoJackWeb"/>
+		<javac encoding="ISO-8859-1" srcdir="./src/LoJackWeb" debug="on" destdir="./bin/LoJackWeb">
+			<classpath path="./libraries/commons-codec.jar"></classpath>
+			<classpath path="./libraries/ThalamusJClient.jar"></classpath>
+			<classpath path="./bin/Camera"></classpath>
+			<classpath refid="environment.libraries" />
+		</javac>
+		<copy todir="./bin/LoJackWeb">
+			<fileset dir="./src/LoJackWeb" excludes="**/*.java" />
+		</copy>
+		
+		<jar jarfile="./libraries/Camera.jar" basedir="./bin/Camera"/>
+		<jar jarfile="./libraries/LoJackWeb.jar" basedir="./bin/LoJackWeb"/>
+
+		<antcall target="create_jar_applet"></antcall>
+		
+		<war destfile="./mysql/${project.name.upper}_WEB.war" basedir="./mysql/${project.name.upper}_WEB.war-src/" webxml="./mysql/${project.name.upper}_WEB.war-src/WEB-INF/web.xml">
+			<lib dir="./libraries/">
+				<include name="*.jar" />
+				<exclude name="servlet-api.jar" />
+				<exclude name="log4j-1.2.16.jar" />
+			</lib>
+		</war>
+		
+		<war destfile="./sqlserver/${project.name.upper}_WEB.war" basedir="./sqlserver/${project.name.upper}_WEB.war-src/" webxml="./sqlserver/${project.name.upper}_WEB.war-src/WEB-INF/web.xml">
+			<lib dir="./libraries/">
+				<include name="*.jar" />
+				<exclude name="servlet-api.jar" />
+				<exclude name="log4j-1.2.16.jar" />
+			</lib>
+		</war>
+		<delete dir="./bin" failonerror="false"></delete>
+	</target>
+
+</project>

@@ -1,0 +1,53 @@
+com.tdil.lojack.rest.UsersService
+/rest/users/login
+/rest/users/requestResetPassword
+/rest/users/logout
+/rest/users/documentTypes
+/rest/users/states
+/rest/users/addressTypes
+/rest/users/get
+/rest/users/create
+/rest/users/update
+/rest/users/password
+/rest/users/password/validate
+
+com.tdil.lojack.rest.AlarmsService
+/rest/alarms/list
+/rest/alarms/{idEntidad}/rename
+/rest/alarms/{idEntidad}/sendPanic
+/rest/alarms/{idEntidad}/activate
+/rest/alarms/{idEntidad}/deactivate
+/rest/alarms/{idEntidad}/log
+/rest/alarms/{idEntidad}/emailNotification
+/rest/alarms/{idEntidad}/noemailNotification
+
+com.tdil.lojack.rest.LightsService
+/rest/lights/list
+/rest/lights/{idEntidad}/{idLuz}/rename
+/rest/lights/{idEntidad}/{idLuz}/activate
+/rest/lights/{idEntidad}/{idLuz}/deactivate
+/rest/lights/{idEntidad}/{idLuz}/randomOn
+/rest/lights/{idEntidad}/{idLuz}/randomOff
+/rest/lights/{idEntidad}/{idLuz}/log
+/rest/lights/{idEntidad}/{idLuz}/emailNotification
+/rest/lights/{idEntidad}/{idLuz}/noemailNotification
+
+com.tdil.lojack.rest.CamerasService
+/rest/cameras/list
+Servlets
+/viewCameraService
+/moveCameraService
+
+com.tdil.lojack.rest.AsyncJobsService
+/rest/jobs/lights/list
+/rest/jobs/alarms/list
+
+com.tdil.lojack.rest.AlarmAgendasService
+/rest/alarmAgendas/{idEntidad}/list
+/rest/alarmAgendas/{idEntidad} PUT POST
+/rest/alarmAgendas/{idEntidad}/{idAgenda}  DELETE GET
+
+com.tdil.lojack.rest.LightAgendasService
+/rest/lightAgendas/{idEntidad}/{idLuz}/list
+/rest/lightAgendas/{idEntidad}/{idLuz} PUT POST 
+/rest/lightAgendas//{idEntidad}/{idAgenda} DELETE GET
