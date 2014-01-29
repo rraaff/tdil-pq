@@ -102,7 +102,7 @@ public class VLULogListAdapter extends BaseAdapter implements OnClickListener {
 //			holder.dni.setText(iter.getDni());
 			holder.domain.setText(iter.getDomain());
 			holder.message.setText(iter.getMessage());
-			if (iter.getMessage() != null || iter.getMessage().length() > 0) {
+			if (iter.getMessage() != null && iter.getMessage().length() > 0) {
 				holder.alert.setImageResource(R.drawable.android_button_plus);
 			}
 //			holder.alert.setImageDrawable(drawable);
