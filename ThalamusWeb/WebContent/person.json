@@ -70,7 +70,7 @@
               "type" : null
             },
           "birthday" : 889747200000,
-          "document" : { "number" : "111111",
+          "document" : { "number" : "11111111",
               "type" : 1
             },
           "email" : "user1@mail.com",
@@ -85,7 +85,7 @@
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
           "preventIsClient" : true,
-          "isVLUClient" : false,
+          "isVLUClient" : true,
           "links" : [  ]
         }
     }
