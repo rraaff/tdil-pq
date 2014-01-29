@@ -185,6 +185,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.VLUMessagesActivity"
+            android:label="@string/title_vlu"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:icon="@drawable/icon_main_cars">
+        </activity>
     </application>
 
 </manifest>

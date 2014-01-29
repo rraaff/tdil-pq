@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
@@ -60,8 +62,23 @@ public class IndexActivity extends Activity {
 		Button button = (Button)findViewById(R.id.vluCount);
 		if (Login.loggedUser.getVluMessages() > 0) {
 			button.setText(String.valueOf(Login.loggedUser.getVluMessages()));
+			button.setOnClickListener(new ViewVLUMessagesListener(this));
 		} else {
 			button.setVisibility(View.GONE);
+		}
+	}
+	
+	private class ViewVLUMessagesListener implements OnClickListener {
+		private IndexActivity activity;
+		
+		ViewVLUMessagesListener(IndexActivity activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
+			startActivity(intent);
 		}
 	}
 	

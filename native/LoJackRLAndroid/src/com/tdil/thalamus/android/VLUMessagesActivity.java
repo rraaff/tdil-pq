@@ -20,56 +20,51 @@ import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.ChangeLog;
-import com.tdil.thalamus.android.rest.model.LogCollection;
+import com.tdil.thalamus.android.rest.model.VLUDataDTO;
+import com.tdil.thalamus.android.rest.model.VLUMessagesCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLogAlarmActivity extends Activity {
+public class VLUMessagesActivity extends Activity {
 	/**
 	 * The default email to populate the email field with.
 	 */
-	private int identidad;
-	private IRestClientTask mAuthTask = null;
 	ListView list;
-	AlarmLogListAdapter adapter;
-	public HomeLogAlarmActivity CustomListView = null;
-	public ArrayList<ChangeLog> CustomListViewValuesArr = new ArrayList<ChangeLog>();
-	public static final String IDENTIDAD = "IDENTIDAD";
+	VLULogListAdapter adapter;
+	public VLUMessagesActivity CustomListView = null;
+	public ArrayList<VLUDataDTO> CustomListViewValuesArr = new ArrayList<VLUDataDTO>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		Bundle extras = getIntent().getExtras();
-		identidad = extras.getInt(IDENTIDAD);
 
-		setContentView(R.layout.activity_home_alarms_log);
+		setContentView(R.layout.activity_vlu_messages);
 
-		list = (ListView) findViewById(R.id.alarmLogList);
+		list = (ListView) findViewById(R.id.vluMessagesList);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
-				LogCollection col = gson.fromJson(task.getResult(),
-						LogCollection.class);
-				CustomListViewValuesArr = new ArrayList<ChangeLog>(col.getLogs());
+				VLUMessagesCollection col = gson.fromJson(task.getResult(),
+						VLUMessagesCollection.class);
+				CustomListViewValuesArr = new ArrayList<VLUDataDTO>(col.getVluData());
 				Resources res = getResources();
-				adapter = new AlarmLogListAdapter(HomeLogAlarmActivity.this,
+				adapter = new VLULogListAdapter(VLUMessagesActivity.this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
 			}
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(HomeLogAlarmActivity.this);
+				Messages.connectionErrorMessage(VLUMessagesActivity.this);
 			}
-		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).execute((Void) null);
+		}, RESTConstants.VLU_MESSAGES, new RestParams(), null).execute((Void) null);
 
 	}
 

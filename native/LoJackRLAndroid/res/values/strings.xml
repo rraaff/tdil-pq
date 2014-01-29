@@ -45,6 +45,7 @@
     <string name="title_log_alarm">LOG ALARMA</string>
     <string name="title_log_light">LOG LUCES</string>
     <string name="title_camera">CÁMARA</string>
+    <string name="title_vlu">VLU</string>
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
