@@ -1,6 +1,6 @@
-<%@page import="com.tdil.lojack.struts.forms.RequestResetPasswordForm"%>
+<%@page import="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"%>
 <%@ page info="index"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
 --%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--

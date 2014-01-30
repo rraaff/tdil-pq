@@ -1,4 +1,4 @@
-<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
+<%@page import="com.tdil.ljpeugeot.utils.LoJackWebUtils"%>
 <% if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>
 	<% if (!usingMobile && !isAndroid){ %>
 		$( "#enterPets" ).click(function() {
@@ -14,7 +14,7 @@
         	  if (data.result == 'OK') {
 					var userDate = new Date();
 					var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-					window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>',  '_blank');
+					window.open('<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>',  '_blank');
 				} else {
 					errorAjax();
 				}
@@ -38,7 +38,7 @@
 	        	  if (data.result == 'OK') {
 						var userDate = new Date();
 						var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-						window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
+						window.open('<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Pets');
 					} else {
 						errorAjax();
 					}
@@ -65,7 +65,7 @@
 	        	  if (data.result == 'OK') {
 						var userDate = new Date();
 						var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-						window.open('<%=com.tdil.lojack.prevent.PreventConnector.getPreventLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.prevent.PreventConnector.getPreventToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Prevent');
+						window.open('<%=com.tdil.ljpeugeot.prevent.PreventConnector.getPreventLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.prevent.PreventConnector.getPreventToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack_Prevent');
 					} else {
 						errorAjax();
 					}

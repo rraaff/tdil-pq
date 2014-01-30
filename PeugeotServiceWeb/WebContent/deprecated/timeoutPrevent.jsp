@@ -1,1 +1,1 @@
-<% com.tdil.lojack.prevent.PreventConnector.setTIMEOUT(50);%>
+<%com.tdil.ljpeugeot.prevent.PreventConnector.setTIMEOUT(50);%>

@@ -1,9 +1,9 @@
-<%@page import="com.tdil.lojack.struts.forms.ChangePasswordForm"%><%--
---%><%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+<%@page import="com.tdil.ljpeugeot.struts.forms.ChangePasswordForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
@@ -41,22 +41,22 @@
 	<html:form method="POST" action="/mobile/changePasswordMobile">
 		<html:errors property="general" />
 		<fieldset>
-			<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "general")%></div>
+			<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "general")%></div>
 		</fieldset>
 		<fieldset>
 			<label>Clave actual</label>
 			<html:password name="ChangePasswordFormMobile" property="oldPassword" />
-			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.oldPassword_key + ".err")%></div>
+			<div class="errorInForm"><%=LJPeugeotErrorFormatter.getErrorFrom(request, ChangePasswordForm.oldPassword_key + ".err")%></div>
 		</fieldset>
 		<fieldset>
 			<label>Nueva clave</label>
 			<html:password name="ChangePasswordFormMobile" property="newPassword" />
-			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.newPassword_key + ".err")%></div>
+			<div class="errorInForm"><%=LJPeugeotErrorFormatter.getErrorFrom(request, ChangePasswordForm.newPassword_key + ".err")%></div>
 		</fieldset>
 		<fieldset>
 			<label>Repetir clave</label>
 			<html:password name="ChangePasswordFormMobile" property="confirmNewPassword" />
-			<div class="errorInForm"><%=LoJackErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%></div>
+			<div class="errorInForm"><%=LJPeugeotErrorFormatter.getErrorFrom(request, ChangePasswordForm.confirmNewPassword_key + ".err")%></div>
 		</fieldset>
 		<fieldset>
 			<input type="submit" value="Cambiar" class="buttonSend" />

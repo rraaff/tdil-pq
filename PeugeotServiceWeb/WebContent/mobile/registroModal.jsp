@@ -1,7 +1,7 @@
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@ page info="index"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.RegisterForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%><%--
@@ -46,50 +46,63 @@
 	<h1>Registrate</h1>
 	<p>Los campos marcados con * son requeridos para la registración</p>
 	<div class="errorInForm">
-		<% if (com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado/a en nuestra base")) { %>
-			<a href="./recuperarClaveModal.jsp"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%></a>
-		<% } %>
+		<%
+			if (com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado/a en nuestra base")) {
+		%>
+			<a href="./recuperarClaveModal.jsp"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "credential.principal.err")%></a>
+		<%
+			}
+		%>
 	</div>
 	<html:form method="POST" action="/mobile/registerMobile">
-		<% RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterFormMobile");
-		registerForm.setMobile(true);
-		registerForm.searchReferenceData();
+		<%
+			RegisterForm registerForm = (RegisterForm)session.getAttribute("RegisterFormMobile");
+				registerForm.setMobile(true);
+				registerForm.searchReferenceData();
 		%>
 		<div class="scrollable">
 			<fieldset>
 				<label>* Tipo de doc</label>
 				<html:select name="RegisterFormMobile" property="documentType" >
 					<option value="">Seleccione...</option>
-					<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+					<%
+						for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) {
+					%>
 						<option value="<%=codBean.getId()%>" <%=registerForm.getDocumentType() == codBean.getId() ? "selected" : ""%>>
 							<%=codBean.getName()%></option>
-					<% } %>
+					<%
+						}
+					%>
 				</html:select>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.documenttype.err")%></div>
 			</fieldset>
 				
 			<fieldset>
 				<label>* Numero</label>
 				<html:text name="RegisterFormMobile" property="document" />
 				<div class="errorInForm">
-					<% if (!com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado/a en nuestra base")) { %>
-						<a href="./recuperarClaveModal.jsp"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "credential.principal.err")%></a>
-					<% } %>
+					<%
+						if (!com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "credential.principal.err").contains("registrado/a en nuestra base")) {
+					%>
+						<a href="./recuperarClaveModal.jsp"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "credential.principal.err")%></a>
+					<%
+						}
+					%>
 				</div>
 			</fieldset>
 			<fieldset>
 				<label>* Nombre</label>
 				<html:text name="RegisterFormMobile" property="firstName" />
 					<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%>
-					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%></div>
+					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
+					<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.firstname.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
 				<html:text name="RegisterFormMobile" property="lastName" />
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
+				<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.lastname.err")%></div>
 			</fieldset>
 			<div class="sexWrapper">
 				<fieldset class="sexFieldset">
@@ -101,20 +114,20 @@
 					<html:radio property="gender" value="Female" />
 					<span>Femenino</span>
 					<div class="errorInForm"><%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%></div>
+					<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%></div>
 				</fieldset>
 			</div>
 			<fieldset>
 				<label>* E-mail</label>
 				<html:text name="RegisterFormMobile" property="email"/>
 				<%=(registerForm.isRequired(PersonFieldNames.email)) ? "" : ""%>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Clave</label>
 				<html:password name="RegisterFormMobile" property="password" />
 				<%=(registerForm.isRequired(PersonFieldNames.password)) ? "" : ""%>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>* Repetir clave</label>
@@ -126,30 +139,42 @@
 				<div class="dateHelper">
 					<html:select name="RegisterFormMobile" property="year" styleClass="year">
 						<option value=""></option>
-						<% for (String year : registerForm.getYears()) { %>
+						<%
+							for (String year : registerForm.getYears()) {
+						%>
 							<option value="<%=year%>" <%=year.equals(registerForm.getYear()) ? "selected" : ""%>><%=year%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 					<html:select name="RegisterFormMobile" property="month" styleClass="day-month">
 						<option value=""></option>
-						<% for (String month : DateUtils.ALL_MONTHS) { %>
+						<%
+							for (String month : DateUtils.ALL_MONTHS) {
+						%>
 							<option value="<%=month%>" <%=month.equals(registerForm.getMonth()) ? "selected" : ""%>><%=month%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 					<html:select name="RegisterFormMobile" property="day" styleClass="day-month">
 						<option value=""></option>
-						<% for (String day : DateUtils.ALL_DAYS) { %>
+						<%
+							for (String day : DateUtils.ALL_DAYS) {
+						%>
 							<option value="<%=day%>" <%=day.equals(registerForm.getDay()) ? "selected" : ""%>><%=day%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 				</div>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>Código de área</label>
 				<html:text name="RegisterFormMobile" property="phoneAreaCode" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "" : ""%>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%></div>
 				<div class="myRow errorField" style="display: none;" id="p.profile.phone.areaCode">
 					<div id="err.profile.phone.areaCode"></div>
 				</div>
@@ -158,7 +183,7 @@
 				<label>Teléfono celular</label>
 				<html:text name="RegisterFormMobile" property="phoneNumber" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "" : ""%>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%></div>
 				<div class="errorField" style="display: none;" id="p.profile.phone.number">
 					<div id="err.profile.phone.number"></div>
 				</div>

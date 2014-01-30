@@ -1,4 +1,4 @@
-<%@page import="com.tdil.lojack.vlu.VLUUtils"%><%--
+<%@page import="com.tdil.ljpeugeot.VLUUtils"%><%--
 --%><%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checklogaccess.jspf" %><%--
 --%><% 

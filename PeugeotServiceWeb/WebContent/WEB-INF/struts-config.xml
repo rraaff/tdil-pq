@@ -4,30 +4,30 @@
 <struts-config>
  <data-sources/>
  <form-beans>
-  <form-bean id="LoginForm" name="LoginForm" type="com.tdil.lojack.struts.forms.LoginForm"/>
-  <form-bean id="RequestResetPasswordForm" name="RequestResetPasswordForm" type="com.tdil.lojack.struts.forms.RequestResetPasswordForm"/>
-  <form-bean id="ResetPasswordForm" name="ResetPasswordForm" type="com.tdil.lojack.struts.forms.ResetPasswordForm"/>
-  <form-bean id="RegisterForm" name="RegisterForm" type="com.tdil.lojack.struts.forms.RegisterForm"/>
-  <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.lojack.struts.forms.RegisterForm"/>
-  <form-bean id="EditProfileForm" name="EditProfileForm" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
-  <form-bean id="ChangePasswordForm" name="ChangePasswordForm" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
-  <form-bean id="VehiclesSpeedLimitForm" name="VehiclesSpeedLimitForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"/>
-  <form-bean id="VehiclesSecureZoneForm" name="VehiclesSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.VehiclesSecureZoneForm"/>
-  <form-bean id="SelectVehiclesForMapForm" name="SelectVehiclesForMapForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
-  <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
-  <form-bean id="SelectVehiclesForSpeedForm" name="SelectVehiclesForSpeedForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
-  <form-bean id="SelectVehiclesForSecureZoneForm" name="SelectVehiclesForSecureZoneForm" type="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"/>
-  <form-bean id="ContactForm" name="ContactForm" type="com.tdil.lojack.struts.forms.ContactForm"/>
-  <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
+  <form-bean id="LoginForm" name="LoginForm" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
+  <form-bean id="RequestResetPasswordForm" name="RequestResetPasswordForm" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
+  <form-bean id="ResetPasswordForm" name="ResetPasswordForm" type="com.tdil.ljpeugeot.struts.forms.ResetPasswordForm"/>
+  <form-bean id="RegisterForm" name="RegisterForm" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
+  <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
+  <form-bean id="EditProfileForm" name="EditProfileForm" type="com.tdil.ljpeugeot.struts.forms.EditProfileForm"/>
+  <form-bean id="ChangePasswordForm" name="ChangePasswordForm" type="com.tdil.ljpeugeot.struts.forms.ChangePasswordForm"/>
+  <form-bean id="VehiclesSpeedLimitForm" name="VehiclesSpeedLimitForm" type="com.tdil.ljpeugeot.struts.forms.prevent.VehiclesSpeedLimitForm"/>
+  <form-bean id="VehiclesSecureZoneForm" name="VehiclesSecureZoneForm" type="com.tdil.ljpeugeot.struts.forms.prevent.VehiclesSecureZoneForm"/>
+  <form-bean id="SelectVehiclesForMapForm" name="SelectVehiclesForMapForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForSpeedForm" name="SelectVehiclesForSpeedForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForSecureZoneForm" name="SelectVehiclesForSecureZoneForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="ContactForm" name="ContactForm" type="com.tdil.ljpeugeot.struts.forms.ContactForm"/>
+  <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.ljpeugeot.struts.forms.PreventLoginForm"/>
   
-  <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.lojack.struts.forms.LoginForm"/>
-  <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.lojack.struts.forms.RequestResetPasswordForm"/>
-  <form-bean id="RegisterFormMobile" name="RegisterFormMobile" type="com.tdil.lojack.struts.forms.RegisterForm"/>
-  <form-bean id="EditProfileFormMobile" name="EditProfileFormMobile" type="com.tdil.lojack.struts.forms.EditProfileForm"/>
-  <form-bean id="ChangePasswordFormMobile" name="ChangePasswordFormMobile" type="com.tdil.lojack.struts.forms.ChangePasswordForm"/>
-  <form-bean id="UpdatePersonFormMobile" name="UpdatePersonFormMobile" type="com.tdil.lojack.struts.forms.RegisterForm"/>
-  <form-bean id="PreventLoginFormMobile" name="PreventLoginFormMobile" type="com.tdil.lojack.struts.forms.PreventLoginForm"/>
-  <form-bean id="ContactFormMobile" name="ContactFormMobile" type="com.tdil.lojack.struts.forms.ContactForm"/>
+  <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
+  <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
+  <form-bean id="RegisterFormMobile" name="RegisterFormMobile" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
+  <form-bean id="EditProfileFormMobile" name="EditProfileFormMobile" type="com.tdil.ljpeugeot.struts.forms.EditProfileForm"/>
+  <form-bean id="ChangePasswordFormMobile" name="ChangePasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.ChangePasswordForm"/>
+  <form-bean id="UpdatePersonFormMobile" name="UpdatePersonFormMobile" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
+  <form-bean id="PreventLoginFormMobile" name="PreventLoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.PreventLoginForm"/>
+  <form-bean id="ContactFormMobile" name="ContactFormMobile" type="com.tdil.ljpeugeot.struts.forms.ContactForm"/>
   
  </form-beans>
  <global-exceptions/>
@@ -39,16 +39,16 @@
  </global-forwards>
  <action-mappings>
 
-  <action name="LoginForm" path="/login" scope="request" type="com.tdil.lojack.struts.action.LoginAction"/>
-  <action path="/checkSession" scope="request" type="com.tdil.lojack.struts.action.CheckSessionAjaxAction"/>
+  <action name="LoginForm" path="/login" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginAction"/>
+  <action path="/checkSession" scope="request" type="com.tdil.ljpeugeot.struts.action.CheckSessionAjaxAction"/>
   
-  <action path="/facebooklogin" scope="request" type="com.tdil.lojack.struts.action.LoginFacebookAction">
+  <action path="/facebooklogin" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginFacebookAction">
   	<forward name="register" path="/index.jsp?openRegister=true" redirect="true"/>
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   	<forward name="cancel" path="/index.jsp" redirect="true"/>
   </action>
   
-  <action path="/facebookconnect" type="com.tdil.lojack.struts.action.FacebookConnectAction">
+  <action path="/facebookconnect" type="com.tdil.ljpeugeot.struts.action.FacebookConnectAction">
   	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
@@ -56,13 +56,13 @@
   	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
-  <action path="/twitterlogin" scope="request" type="com.tdil.lojack.struts.action.LoginTwitterAction">
+  <action path="/twitterlogin" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginTwitterAction">
   	<forward name="register" path="/index.jsp?openRegister=true" redirect="true"/>
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   	<forward name="cancel" path="/index.jsp" redirect="true"/>
   </action>
   
-  <action path="/twitterconnect" type="com.tdil.lojack.struts.action.TwitterConnectAction">
+  <action path="/twitterconnect" type="com.tdil.ljpeugeot.struts.action.TwitterConnectAction">
   	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
@@ -70,164 +70,164 @@
   	<forward name="continue" path="/social.jsp" redirect="true"/>
   </action>
   
-  <action name="RequestResetPasswordForm" path="/requestResetPassword" scope="request" type="com.tdil.lojack.struts.action.RequestResetPasswordAction"/>
-  <action name="ResetPasswordForm" path="/goToResetPassword" scope="session" type="com.tdil.lojack.struts.action.GoToResetPasswordAction">
+  <action name="RequestResetPasswordForm" path="/requestResetPassword" scope="request" type="com.tdil.ljpeugeot.struts.action.RequestResetPasswordAction"/>
+  <action name="ResetPasswordForm" path="/goToResetPassword" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToResetPasswordAction">
   	<forward name="continue" path="/resetPassword.jsp" redirect="true"/>
   </action>
-  <action name="ResetPasswordForm" path="/resetPassword" scope="session" type="com.tdil.lojack.struts.action.ResetPasswordAction">
+  <action name="ResetPasswordForm" path="/resetPassword" scope="session" type="com.tdil.ljpeugeot.struts.action.ResetPasswordAction">
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   	<forward name="failure" path="/resetPassword.jsp"/>
   </action>
   
-  <action path="/logout" type="com.tdil.lojack.struts.action.LogoutAction"/>
+  <action path="/logout" type="com.tdil.ljpeugeot.struts.action.LogoutAction"/>
   
-  <action name="RegisterForm" path="/register" scope="session" type="com.tdil.lojack.struts.action.ThalamusRegisterAction">
+  <action name="RegisterForm" path="/register" scope="session" type="com.tdil.ljpeugeot.struts.action.ThalamusRegisterAction">
   </action>
 
-  <action name="UpdatePersonForm" path="/goToUpdatePerson" scope="session" type="com.tdil.lojack.struts.action.GoToUpdatePersonAction">
+  <action name="UpdatePersonForm" path="/goToUpdatePerson" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToUpdatePersonAction">
   	<forward name="continue" path="/updatePerson.jsp" redirect="true"/>
   </action>
-  <action name="UpdatePersonForm" path="/updatePerson" scope="session" type="com.tdil.lojack.struts.action.ThalamusUpdatePersonAction">
+  <action name="UpdatePersonForm" path="/updatePerson" scope="session" type="com.tdil.ljpeugeot.struts.action.ThalamusUpdatePersonAction">
   </action>
   
-  <action name="EditProfileForm" parameter="WebsiteUser" path="/goToEditProfile" scope="session" type="com.tdil.lojack.struts.action.GoToEditProfileAction">
+  <action name="EditProfileForm" parameter="WebsiteUser" path="/goToEditProfile" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToEditProfileAction">
   	<forward name="continue" path="/editAvatar.jsp" redirect="true"/>
   </action>
-  <action path="/uploadAvatar" parameter="WebsiteUser" type="com.tdil.lojack.struts.action.UploadAvatarAction"/>
-  <action name="EditProfileForm" parameter="WebsiteUser" path="/viewAvatar" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
-  <action name="EditProfileForm" parameter="WebsiteUser" path="/saveProfile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileAction">
+  <action path="/uploadAvatar" parameter="WebsiteUser" type="com.tdil.ljpeugeot.struts.action.UploadAvatarAction"/>
+  <action name="EditProfileForm" parameter="WebsiteUser" path="/viewAvatar" scope="session" type="com.tdil.ljpeugeot.struts.action.ViewAvatarAction"/>
+  <action name="EditProfileForm" parameter="WebsiteUser" path="/saveProfile" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveProfileAction">
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   	<forward name="failure" path="/editAvatar.jsp"/>
   </action>
   
-  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/goToChangePassword" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
+  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/goToChangePassword" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToChangePasswordAction">
   	<forward name="continue" path="/changePassword.jsp" redirect="true"/>
   </action>
   
-  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/changePassword" scope="session" type="com.tdil.lojack.struts.action.ThalamusSaveAjaxAction">
+  <action name="ChangePasswordForm" parameter="WebsiteUser" path="/changePassword" scope="session" type="com.tdil.ljpeugeot.struts.action.ThalamusSaveAjaxAction">
   	<forward name="failure" path="/changePassword.jsp"/>
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   </action>
   
-  <action path="/searchStates" type="com.tdil.lojack.struts.action.SearchStatesAjaxAction"/>
+  <action path="/searchStates" type="com.tdil.ljpeugeot.struts.action.SearchStatesAjaxAction"/>
   
 
   <!-- Prevent -->
   
-  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToPreventAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   	<forward name="failure" path="/mobile/home.jsp" redirect="true"/>
   </action>
   
-  <action name="SelectVehiclesForMapForm" path="/goToPreventLoginAndroid" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  <action name="SelectVehiclesForMapForm" path="/goToPreventLoginAndroid" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToPreventAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1"/>
   	<forward name="failure" path="/preventAndroidError.jsp"/>
   </action>
   
-  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/mobile/goToPreventLogin" scope="session" type="com.tdil.lojack.struts.action.GoToPreventAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/mobile/goToPreventLogin" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToPreventAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   	<forward name="failure" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="PreventLoginForm" parameter="PreventUser" path="/preventLogin" scope="session" type="com.tdil.lojack.struts.action.LoginPreventAction">
+  <action name="PreventLoginForm" parameter="PreventUser" path="/preventLogin" scope="session" type="com.tdil.ljpeugeot.struts.action.LoginPreventAction">
   </action>
   
-  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesForSpeed" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesForSpeed" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaMaximas.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSpeedLimitAction">
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/goToVehiculesSpeedLimits" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSpeedLimitAction">
   	<forward name="continue" path="/vehiculoVelocidades.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/saveVehiculeSpeedLimit" scope="session" type="com.tdil.lojack.struts.action.SaveVehicleSpeedLimitAjaxAction">
+  <action name="SelectVehiclesForSpeedForm" parameter="PreventUser" path="/saveVehiculeSpeedLimit" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehicleSpeedLimitAjaxAction">
   </action>
   
-  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculesForSecureZone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculesForSecureZone" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaZonasSeguras.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculeSecureZone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSecureZoneAction">
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/goToVehiculeSecureZone" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSecureZoneAction">
   	<forward name="continue" path="/vehiculoZonasSeguras.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/saveVehiculeSecureZones" scope="session" type="com.tdil.lojack.struts.action.SaveVehicleSecureZoneAjaxAction">
+  <action name="SelectVehiclesForSecureZoneForm" parameter="PreventUser" path="/saveVehiculeSecureZones" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehicleSecureZoneAjaxAction">
   </action>
   
-  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToVehiculesForMap" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaMapa.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/locateVehicleInMap" scope="session" type="com.tdil.lojack.struts.action.LocateVehicleInMapAction">
+  <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/locateVehicleInMap" scope="session" type="com.tdil.ljpeugeot.struts.action.LocateVehicleInMapAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
   </action>
 
-  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.lojack.struts.action.GoToVehiclesSelectionAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/goToVehiculesForPhone" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesSelectionAction">
   	<forward name="continue" path="/seleccionarVehiculoParaTelefonos.jsp" redirect="true"/>
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/editVehiculePhones" scope="session" type="com.tdil.lojack.struts.action.EditVehiclePhonesAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/editVehiculePhones" scope="session" type="com.tdil.ljpeugeot.struts.action.EditVehiclePhonesAction">
   	<forward name="continue" path="/editarTelefonosVehiculo.jsp" redirect="true"/>
   </action>
-  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.lojack.struts.action.SaveVehiclesPhonesAjaxAction">
+  <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehiclesPhonesAjaxAction">
   </action>
   
-  <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.lojack.struts.action.GoToContactAction">
+  <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToContactAction">
   	<forward name="continue" path="/contacto.jsp" redirect="true"/>
   </action>
-  <action name="ContactForm" path="/contact" scope="session" type="com.tdil.lojack.struts.action.ContactAction"/>
+  <action name="ContactForm" path="/contact" scope="session" type="com.tdil.ljpeugeot.struts.action.ContactAction"/>
 
 
 <!-- MOBILE -->
-<action name="LoginFormMobile" path="/mobile/loginMobile" scope="session" type="com.tdil.lojack.struts.action.LoginActionMobile">
+<action name="LoginFormMobile" path="/mobile/loginMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.LoginActionMobile">
 	<forward name="failure" path="/mobile/loginModal.jsp"/>
 	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action path="/mobile/logoutMobile" type="com.tdil.lojack.struts.action.LogoutActionMobile">
+  <action path="/mobile/logoutMobile" type="com.tdil.ljpeugeot.struts.action.LogoutActionMobile">
 	<forward name="continue" path="/mobile/index.jsp" redirect="true"/>
   </action>
-  <action name="RequestResetPasswordFormMobile" path="/mobile/requestResetPasswordMobile" scope="session" type="com.tdil.lojack.struts.action.RequestResetPasswordActionMobile">
+  <action name="RequestResetPasswordFormMobile" path="/mobile/requestResetPasswordMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.RequestResetPasswordActionMobile">
   	<forward name="failure" path="/mobile/recuperarClaveModal.jsp"/>
 	<forward name="continue" path="/mobile/claveEnviadaModal.jsp" redirect="true"/>
   </action>
-  <action name="RegisterFormMobile" path="/mobile/goToRegistrationMobile" type="com.tdil.lojack.struts.action.GoToRegisterAction">
+  <action name="RegisterFormMobile" path="/mobile/goToRegistrationMobile" type="com.tdil.ljpeugeot.struts.action.GoToRegisterAction">
 	<forward name="continue" path="/mobile/registroModal.jsp" redirect="true"/>
   </action>
-  <action name="RegisterFormMobile" path="/mobile/registerMobile" type="com.tdil.lojack.struts.action.RegisterActionMobile">
+  <action name="RegisterFormMobile" path="/mobile/registerMobile" type="com.tdil.ljpeugeot.struts.action.RegisterActionMobile">
   	<forward name="failure" path="/mobile/registroModal.jsp"/>
 	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/goToEditProfileMobile" scope="session" type="com.tdil.lojack.struts.action.GoToEditProfileAction">
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/goToEditProfileMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToEditProfileAction">
   	<forward name="continue" path="/mobile/editAvatarModal.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/saveProfileMobile" scope="session" type="com.tdil.lojack.struts.action.SaveProfileActionMobile">
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/saveProfileMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveProfileActionMobile">
   	<forward name="failure" path="/mobile/editAvatarModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/viewAvatarMobile" scope="session" type="com.tdil.lojack.struts.action.ViewAvatarAction"/>
-  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/goToChangePasswordMobile" scope="session" type="com.tdil.lojack.struts.action.GoToChangePasswordAction">
+  <action name="EditProfileFormMobile" parameter="WebsiteUser" path="/mobile/viewAvatarMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.ViewAvatarAction"/>
+  <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/goToChangePasswordMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToChangePasswordAction">
   	<forward name="continue" path="/mobile/changePasswordModal.jsp" redirect="true"/>
   </action>
   <action name="ChangePasswordFormMobile" parameter="WebsiteUser" path="/mobile/changePasswordMobile" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/mobile/changePasswordModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
-  <action name="UpdatePersonFormMobile" path="/mobile/goToUpdatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.GoToUpdatePersonAction">
+  <action name="UpdatePersonFormMobile" path="/mobile/goToUpdatePersonMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToUpdatePersonAction">
   	<forward name="continue" path="/mobile/updatePersonModal.jsp" redirect="true"/>
   </action>
-  <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/mobile/updatePersonMobile" scope="session" type="com.tdil.lojack.struts.action.SavePersonActionMobile">
+  <action name="UpdatePersonFormMobile" parameter="WebsiteUser" path="/mobile/updatePersonMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.SavePersonActionMobile">
   	<forward name="failure" path="/mobile/updatePersonModal.jsp"/>
   	<forward name="continue" path="/mobile/home.jsp" redirect="true"/>
   </action>
 
-  <action name="PreventLoginFormMobile" parameter="PreventUser" path="/mobile/loginPreventMobile" scope="session" type="com.tdil.lojack.struts.action.LoginPreventActionMobile">
+  <action name="PreventLoginFormMobile" parameter="PreventUser" path="/mobile/loginPreventMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.LoginPreventActionMobile">
   	<forward name="continue" path="/productoPrevent.jsp" redirect="true"/>
   	<forward name="failure" path="/mobile/loginPreventModal.jsp"/>
   </action>
   
-  <action name="ContactFormMobile" path="/mobile/goToContactMobile" scope="session" type="com.tdil.lojack.struts.action.GoToContactAction">
+  <action name="ContactFormMobile" path="/mobile/goToContactMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToContactAction">
   	<forward name="continue" path="/mobile/contactoModal.jsp" redirect="true"/>
   </action>
-  <action name="ContactFormMobile" path="/mobile/contactMobile" scope="session" type="com.tdil.lojack.struts.action.ContactActionMobile">
+  <action name="ContactFormMobile" path="/mobile/contactMobile" scope="session" type="com.tdil.ljpeugeot.struts.action.ContactActionMobile">
  	<forward name="continue" path="/mobile/productoPrevent.jsp" redirect="true"/>
  	<forward name="index" path="/mobile/index.jsp" redirect="true"/>
   	<forward name="failure" path="/mobile/contactoModal.jsp"/>
@@ -235,5 +235,5 @@
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>
- <message-resources parameter="com.tdil.lojack.struts.resources.ApplicationResources"/>
+ <message-resources parameter="com.tdil.ljpeugeot.struts.resources.ApplicationResources"/>
 </struts-config>

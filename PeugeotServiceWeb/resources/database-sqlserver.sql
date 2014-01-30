@@ -1,25 +1,25 @@
-DROP USER LOJACK_USER;
-DROP LOGIN LOJACK_USER;
-DROP DATABASE LOJACK_DB;
+DROP USER PEUGEOTSVC_USER;
+DROP LOGIN PEUGEOTSVC_USER;
+DROP DATABASE PEUGEOTSVC_DB;
 
-CREATE DATABASE LOJACK_DB;
+CREATE DATABASE PEUGEOTSVC_DB;
 
-CREATE LOGIN LOJACK_USER WITH PASSWORD = 'p4l0ll1n4'
-,DEFAULT_DATABASE = LOJACK_DB;
+CREATE LOGIN PEUGEOTSVC_USER WITH PASSWORD = 'p4l0ll1n4'
+,DEFAULT_DATABASE = PEUGEOTSVC_DB;
 
-USE LOJACK_DB
+USE PEUGEOTSVC_DB
 
-CREATE USER LOJACK_USER FOR LOGIN LOJACK_USER;
+CREATE USER PEUGEOTSVC_USER FOR LOGIN PEUGEOTSVC_USER;
 
-EXEC sp_addrolemember 'db_datareader', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_datawriter', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_accessadmin', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_backupoperator', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_ddladmin', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_owner', 'LOJACK_USER'
-EXEC sp_addrolemember 'db_securityadmin', 'LOJACK_USER'
+EXEC sp_addrolemember 'db_datareader', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_datawriter', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_accessadmin', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_backupoperator', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_ddladmin', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_owner', 'PEUGEOTSVC_USER'
+EXEC sp_addrolemember 'db_securityadmin', 'PEUGEOTSVC_USER'
 
-EXEC sp_droprolemember 'db_denydatareader', 'LOJACK_USER'
-EXEC sp_droprolemember 'db_denydatawriter', 'LOJACK_USER'
+EXEC sp_droprolemember 'db_denydatareader', 'PEUGEOTSVC_USER'
+EXEC sp_droprolemember 'db_denydatawriter', 'PEUGEOTSVC_USER'
 
 USE MASTER

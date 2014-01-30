@@ -37,7 +37,7 @@ $(document).ready(
 		        	  if (data.result == 'OK') {
 		        		  var userDate = new Date();
 		        			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-		        			window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
+		        			window.open('<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
 						} else {
 							errorAjax();
 						}
@@ -120,7 +120,9 @@ function chbg(title, subTitle) {
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<% if (websiteUser.isClientClubLoJack() && LoJackConfig.isClubLoJackShow() ) { %>
+		<%
+			if (websiteUser.isClientClubLoJack() && LJPeugeotConfig.isClubLoJackShow() ) {
+		%>
 			<div id="iconoClubLJ"><a href="clubLoJack.jsp" onmouseover="chbg('Club', 'LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
 			<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>

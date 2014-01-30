@@ -1,4 +1,4 @@
-<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
+<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
 <section id="productsMenu">
 	<div class="userLoggedThalamusMenu">
 		<ul class="correctNav">

@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS VERSION;
 
 DROP TABLE IF EXISTS CAMERA_CONF;
 
+DROP TABLE IF EXISTS SYSTEMUSER;
+
 CREATE TABLE WEBSITEUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `lojackUserId` VARCHAR(50) NULL ,
@@ -124,7 +126,7 @@ CREATE TABLE POI (
   INDEX `IX_POI_00` (`type` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.lojack.model.Category',0);
+INSERT INTO CACHE_REGION(version, name, deleted) VALUES(1, 'com.tdil.ljpeugeot.model.Category',0);
 COMMIT;
 
 CREATE TABLE SYSTEMUSER (

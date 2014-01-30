@@ -1,8 +1,8 @@
 <%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.ResetPasswordForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.ResetPasswordForm"%><%--
 --%><%@ include file="includes/agentInfo.jspf" %><%--
---%><%@page import="com.tdil.lojack.utils.ThalamusErrorFormatter"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.ThalamusErrorFormatter"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
 --%><%@ page info="resetPassword"%><%--
 --%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
@@ -11,10 +11,12 @@
 --%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
---%><% if (websiteUser != null && websiteUser.isLogged()) { %> 
+--%><%if (websiteUser != null && websiteUser.isLogged()) {%> 
 	<jsp:forward page="home.jsp"></jsp:forward>
-<% 	return;
-	} %><!DOCTYPE html>
+<%
+	return;
+	}
+%><!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
@@ -99,13 +101,13 @@ function resetPasswordOpen() {
 				<fieldset>
 					<label>Número</label>
 					<html:text name="ResetPasswordForm" property="username"/>
-					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%></div>
+					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.document.err")%></div>
 				</fieldset>
 				<div class="errorInForm"><%=ThalamusErrorFormatter.getErrorFrom(request, "principal.err")%></div>
 				<fieldset>
 					<label>Clave</label>
 					<html:password name="ResetPasswordForm" property="password"/>
-					<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
+					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.password.err")%></div>
 				</fieldset>
 				<fieldset>
 					<label>Repetir clave</label>

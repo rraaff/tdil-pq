@@ -2,22 +2,22 @@
 
 function showVideo1(strVideo) {
 	if (strVideo == 'car') {
-		$('#videoIframe').prop('src', '<%=com.tdil.lojack.utils.LoJackConfig.getVideocar()%>');
+		$('#videoIframe').prop('src', '<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getVideocar()%>');
 		$('#videoTitle').prop('innerHTML', 'Lo Jack Car');
 		$('#videoDescription').prop('innerHTML', 'Controlá tu auto o tu flota. Podrás saber dónde están, las velocidades máximas.');
 	}
 	if (strVideo == 'home') {
-		$('#videoIframe').prop('src', '<%=com.tdil.lojack.utils.LoJackConfig.getVideohome()%>');
+		$('#videoIframe').prop('src', '<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getVideohome()%>');
 		$('#videoTitle').prop('innerHTML', 'Lo Jack Home');
 		$('#videoDescription').prop('innerHTML', 'Controlá tus alarmas, luces y cámaras. Mantené el control de tu casa.');
 	}
 	if (strVideo == 'pets') {
-		$('#videoIframe').prop('src', '<%=com.tdil.lojack.utils.LoJackConfig.getVideopets()%>');
+		$('#videoIframe').prop('src', '<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getVideopets()%>');
 		$('#videoTitle').prop('innerHTML', 'Lo Jack Pets');
 		$('#videoDescription').prop('innerHTML', 'Tené a tus mascotas monitoreadas.');
 	}
 	if (strVideo == 'loapp') {
-		$('#videoIframe').prop('src', '<%=com.tdil.lojack.utils.LoJackConfig.getVideoloapp()%>');
+		$('#videoIframe').prop('src', '<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getVideoloapp()%>');
 		$('#videoTitle').prop('innerHTML', 'Lo App');
 		$('#videoDescription').prop('innerHTML', '');
 	}
@@ -32,7 +32,7 @@ function showVideo1(strVideo) {
 		<div class="videoLayer">
 			<div class="closeLayerVideoLink"><button title="Cerrar video" class="btn btn-link customLink" id="closevideo1Layer">< volver</button></div>
 			<div id="videoWrapper">
-				<iframe id="videoIframe" src="<%=com.tdil.lojack.utils.LoJackConfig.getVideocar()%>" frameborder="0" allowscale="false" allowfullscreen></iframe>
+				<iframe id="videoIframe" src="<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getVideocar()%>" frameborder="0" allowscale="false" allowfullscreen></iframe>
 			</div>
 			<div id="footerizer">
 				<div class="col1_300 marginRight_60">

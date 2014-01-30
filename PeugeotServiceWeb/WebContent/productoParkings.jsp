@@ -1,11 +1,11 @@
 <%@ include file="includes/agentInfo.jspf" %><%--
---%><%@page import="com.tdil.lojack.utils.LoJackConfig"%><%--
---%><%@page import="com.tdil.lojack.utils.LoJackWebUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.LJPeugeotConfig"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%><%--
 --%><%@page import="java.util.List"%><%--
---%><%@page import="com.tdil.lojack.utils.ParkingUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.ParkingUtils"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
---%><%@page import="com.tdil.lojack.model.PointOfInterest"%><%--
+--%><%@page import="com.tdil.ljpeugeot.model.PointOfInterest"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
 --%><%@ page info="home"%><%--
 --%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
@@ -33,7 +33,9 @@
 	#docs { font-size:12px; }
 }
 </style>
-<% if (usingMobile || isAndroid) { %>
+<%
+	if (usingMobile || isAndroid) {
+%>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
@@ -46,7 +48,9 @@
 		}
 		body { overflow:hidden; }
 	</style>
-<% } else { %>
+<%
+	} else {
+%>
 	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
@@ -104,7 +108,9 @@
 			}
 		}
 	</style>
-<% } %>
+<%
+	}
+%>
 <style type="text/css">
 	#productsMenu ul li.tabParking {
 		background:#f05224;
@@ -112,7 +118,7 @@
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/<%=com.tdil.lojack.utils.LoJackConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var startLat = -34.53483581543;
 	var startLon = -58.548202514648;
@@ -160,7 +166,7 @@
 
 		var mapOptions = {
 			DataProjection: "EPSG:4326",
-			tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
+			tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
 		};
 		Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 		Mapa.UpdateConfig({ title: "Parkings" });
@@ -223,15 +229,15 @@
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(IconSizeForZoom[ZOOM_ALL],IconSizeForZoom[ZOOM_ALL]);
 	            var offset = new OpenLayers.Pixel(-(size.w/1.5), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
+	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				currPoints = new Array(); 
-				<% List<PointOfInterest> parkings = ParkingUtils.getParkings(); %>
-				<% for (PointOfInterest poi : parkings) { %>
+				<%List<PointOfInterest> parkings = ParkingUtils.getParkings();%>
+				<%for (PointOfInterest poi : parkings) {%>
 					var cloned = createMarker(<%=poi.getLon()%>,<%=poi.getLat()%>, '<%=poi.getName()%>', '<%=poi.getDescription()%>', proj, icon.clone());
 					currPoints.push(cloned);
 					parkings.addMarker(cloned);
-				<% } %>
+				<%}%>
             }
 		}
 
@@ -295,9 +301,9 @@
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(32,32);
 	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
+	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
 				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
             } else {*/
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
@@ -332,9 +338,9 @@
     	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
     	            }
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
+    	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
-    				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+    				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
     				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {

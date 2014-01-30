@@ -81,17 +81,27 @@
 		<div class="wrapper">
 			<ul>
 				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
+					<%
+						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
+					%>
 						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<% } else { %>
+					<%
+ 						} else {
+ 					%>
 						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<% } %></a></li>
+					<%
+ 						}
+ 					%></a></li>
 				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<% if (websiteUser.isClientClubLoJack() && LoJackConfig.isClubLoJackShow() ) { %>
+				<%
+					if (websiteUser.isClientClubLoJack() && LJPeugeotConfig.isClubLoJackShow() ) {
+				%>
 					<li><a href="javascript:viewClubLoJack();">Club lo jack</a></li>
-				<% } %>
+				<%
+					}
+				%>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 			</ul>
 		</div>
@@ -107,7 +117,7 @@
 			<div id="tarjeta">
 				<span class="nameoncard"><%=websiteUser.getName()%></span>
 			</div>
-			<a class="linkAsButton" href="<%=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a>
+			<a class="linkAsButton" href="<%=LJPeugeotConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a>
 		</div>
 	</div>
 </div>

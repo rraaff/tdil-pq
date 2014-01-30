@@ -1,8 +1,8 @@
-<%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+<%@page import="com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
@@ -21,8 +21,10 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <%@ include file="includes/head.jsp"%>
 </head>
-<% EditProfileForm editProfileForm = (EditProfileForm)session.getAttribute("EditProfileFormMobile");
-editProfileForm.setMobile(true);%>
+<%
+	EditProfileForm editProfileForm = (EditProfileForm)session.getAttribute("EditProfileFormMobile");
+editProfileForm.setMobile(true);
+%>
 <body>
 	<h3>Cambiar avatar</h3>
 	<html:form method="POST" action="/mobile/saveProfileMobile" enctype="multipart/form-data">
@@ -38,7 +40,7 @@ editProfileForm.setMobile(true);%>
 			<label><html:file property="formFile"/></label>
 		</fieldset>
 		<fieldset>
-			<label><%=LoJackErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
+			<label><%=LJPeugeotErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
 		</fieldset>
 		<fieldset><button type="submit" class="indexButtonBase" style="margin-left:20px;">Guardar</button></fieldset>
 	</html:form>

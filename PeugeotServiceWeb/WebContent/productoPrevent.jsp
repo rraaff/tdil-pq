@@ -1,10 +1,10 @@
-<%@page import="com.tdil.lojack.prevent.model.SatellitePosition"%>
+<%@page import="com.tdil.ljpeugeot.prevent.model.SatellitePosition"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
---%><%@page import="com.tdil.lojack.utils.LoJackConfig"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.LJPeugeotConfig"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
@@ -35,13 +35,15 @@
 	#docs { font-size:12px; }
 }
 </style>
-<% 
-Boolean apk = (Boolean)session.getAttribute("USING_APK");
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
 if (apk) {
 	isAndroid = true;
 }
 %>
-<% if (usingMobile || isAndroid) { %>
+<%
+	if (usingMobile || isAndroid) {
+%>
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
@@ -74,7 +76,9 @@ if (apk) {
 		}
 		body { overflow:hidden; }
 	</style>
-<% } %>
+<%
+	}
+%>
 <style type="text/css">
 #productsMenu ul li.tabCar {
 	background:#f05224;
@@ -82,8 +86,10 @@ if (apk) {
 </style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/<%=com.tdil.lojack.utils.LoJackConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
-<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");%>
+<script src="js/<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
+<%
+	SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");
+%>
 <script type="text/javascript">
 	var startLat = -34.53483581543;
 	var startLon = -58.548202514648;
@@ -103,7 +109,7 @@ if (apk) {
 	$(function () {
 		<%@ include file="includes/closeLayers.jspf" %>
 		<%@ include file="includes/externalLogins.jspf" %>
-		<% if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null && !selectVehiclesForm.getSelectList().isEmpty()) { %>
+		<%if ("1".equals(request.getParameter("showinmap")) && selectVehiclesForm != null && !selectVehiclesForm.getSelectList().isEmpty()) {%>
 			var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
 				"autoSize": true,
 				"minSize": new OpenLayers.Size(300, 50),
@@ -141,7 +147,7 @@ if (apk) {
 
 			var mapOptions = {
 				DataProjection: "EPSG:4326",
-				tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
+				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
 			};
 
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
@@ -156,18 +162,18 @@ if (apk) {
 		//	var border-radius = new OpenLayers.Border-radius(27);
 			var sizeIcon = new OpenLayers.Size(48,48);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-			var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+			var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
 			var proj = new OpenLayers.Projection("EPSG:4326");
-			var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
-			<% int index = 0;
+			var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+			<%int index = 0;
 				for (SatellitePosition pos : selectVehiclesForm.getSelectedVehiclePosition()) { 
-					com.tdil.lojack.prevent.model.Vehicle ve1 = selectVehiclesForm.getSelectList().get(index++);%>
+					com.tdil.ljpeugeot.prevent.model.Vehicle ve1 = selectVehiclesForm.getSelectList().get(index++);%>
 					parkings.addMarker(createMarker(<%=pos.getLongitude()%>,<%=pos.getLatitude()%>, '<%=ve1.getDescription()%>', '<%=pos.getStreet()%>-<%=pos.getNumber()%>', proj, iconCar.clone()));
-			<% } %>
-		<% } else { %>
+			<%}%>
+		<%} else {%>
 			var mapOptions = {
 				DataProjection: "EPSG:4326",
-				tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
+				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
 			};
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 			Mapa.UpdateConfig({ title: "Prevent" });

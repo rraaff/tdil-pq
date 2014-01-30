@@ -355,11 +355,11 @@
    <Resource name="jdbc/database" auth="Container"
    	type="javax.sql.DataSource" removeAbandoned="true"
    	removeAbandonedTimeout="30" maxActive="100"
-   	maxIdle="10" maxWait="10000" username="LOJACK_USER"
+   	maxIdle="10" maxWait="10000" username="PEUGEOTSVC_USER"
   	password="p4l0ll1n4"
    	driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
    	validationQuery="select 1"
-   	url="jdbc:sqlserver://192.168.0.132:1123;database=LOJACK_DB;" />
+   	url="jdbc:sqlserver://192.168.0.132:1123;database=PEUGEOTSVC_DB;" />
 </Context>
       </Host>
 

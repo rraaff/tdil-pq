@@ -95,11 +95,11 @@ com.tdil.thalamus.client.core.ThalamusClient: log de la clase que maneja la comu
 	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
 	En modo info muestra los tiempos de las invocaciones.
 	
-com.tdil.lojack.prevent.PreventConnector: log de la clase que maneja la comunicacion con prevent. 
+com.tdil.ljpeugeot.prevent.PreventConnector: log de la clase que maneja la comunicacion con prevent. 
 	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
 	En modo info muestra los tiempos de las invocaciones.
 	
-com.tdil.lojack.gis.LoJackServicesConnector: log de la clase que maneja la comunicacion con el middleware. 
+com.tdil.ljpeugeot.gis.LoJackServicesConnector: log de la clase que maneja la comunicacion con el middleware. 
 	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
 	En modo info muestra los tiempos de las invocaciones.
 

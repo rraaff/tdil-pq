@@ -1,4 +1,4 @@
-com.tdil.lojack.rest.UsersService
+com.tdil.ljpeugeot.rest.UsersService
 /rest/users/login
 /rest/users/requestResetPassword
 /rest/users/logout
@@ -11,7 +11,7 @@ com.tdil.lojack.rest.UsersService
 /rest/users/password
 /rest/users/password/validate
 
-com.tdil.lojack.rest.AlarmsService
+com.tdil.ljpeugeot.rest.AlarmsService
 /rest/alarms/list
 /rest/alarms/{idEntidad}/rename
 /rest/alarms/{idEntidad}/sendPanic
@@ -21,7 +21,7 @@ com.tdil.lojack.rest.AlarmsService
 /rest/alarms/{idEntidad}/emailNotification
 /rest/alarms/{idEntidad}/noemailNotification
 
-com.tdil.lojack.rest.LightsService
+com.tdil.ljpeugeot.rest.LightsService
 /rest/lights/list
 /rest/lights/{idEntidad}/{idLuz}/rename
 /rest/lights/{idEntidad}/{idLuz}/activate
@@ -32,22 +32,22 @@ com.tdil.lojack.rest.LightsService
 /rest/lights/{idEntidad}/{idLuz}/emailNotification
 /rest/lights/{idEntidad}/{idLuz}/noemailNotification
 
-com.tdil.lojack.rest.CamerasService
+com.tdil.ljpeugeot.rest.CamerasService
 /rest/cameras/list
 Servlets
 /viewCameraService
 /moveCameraService
 
-com.tdil.lojack.rest.AsyncJobsService
+com.tdil.ljpeugeot.rest.AsyncJobsService
 /rest/jobs/lights/list
 /rest/jobs/alarms/list
 
-com.tdil.lojack.rest.AlarmAgendasService
+com.tdil.ljpeugeot.rest.AlarmAgendasService
 /rest/alarmAgendas/{idEntidad}/list
 /rest/alarmAgendas/{idEntidad} PUT POST
 /rest/alarmAgendas/{idEntidad}/{idAgenda}  DELETE GET
 
-com.tdil.lojack.rest.LightAgendasService
+com.tdil.ljpeugeot.rest.LightAgendasService
 /rest/lightAgendas/{idEntidad}/{idLuz}/list
 /rest/lightAgendas/{idEntidad}/{idLuz} PUT POST 
 /rest/lightAgendas//{idEntidad}/{idAgenda} DELETE GET

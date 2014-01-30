@@ -1,5 +1,5 @@
 <%@ page info="loginModal"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
 --%><%@ page contentType="text/html; charset=ISO-8859-1" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
@@ -37,7 +37,7 @@
 		<fieldset>
 			<div class="errorInForm"><html:errors property="general" /></div>
 		</fieldset>
-		<%=com.tdil.lojack.web.LoJackMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
+		<%=com.tdil.ljpeugeot.web.LJPeugeotMobileErrorFormatter.getErrorFrom(request, "principal.err")%>
 			<fieldset>
 				<label>Tipo doc</label>
 				<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginFormMobile"); %>

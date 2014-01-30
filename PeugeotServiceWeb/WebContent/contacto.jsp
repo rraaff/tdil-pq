@@ -1,7 +1,7 @@
 <%@ include file="includes/tryModal.jspf" %><%--
---%><%@page import="com.tdil.lojack.struts.forms.ContactForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.ContactForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
 --%><%@ page info="home"%><%--
@@ -9,19 +9,19 @@
 --%><%@ taglib uri="/WEB-INF/struts-logic" prefix="logic" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-html" prefix="html" %><%--
 --%><script>
-<% ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm"); %>
+<%ContactForm contactForm = (ContactForm)session.getAttribute("ContactForm");%>
 
 $("form[name='ContactForm']").validate({
 	errorPlacement: function(error, element) {
 		error.appendTo( element.parent("fieldset").next("div"));
 	},
-	<% if (contactForm.isRegisteredUser()) { %>
+	<%if (contactForm.isRegisteredUser()) {%>
 		rules: { 'content': {required: true}
 		},
 		messages: {
 			'content': {required: "<span>Ingrese el contenido.</span>"}
 		},
-	<% } else { %>
+	<%} else {%>
 		rules: { 'firstname': {required: true},
 			'lastname': {required: true},
 			'documentNumber': {required: true},
@@ -38,7 +38,7 @@ $("form[name='ContactForm']").validate({
 			'phone': {required: "<span>Ingrese el teléfono.</span>"},
 			'content': {required: "<span>Ingrese el contenido.</span>"}
 		},
-	<% } %>
+	<%}%>
 	submitHandler: function() {
 		<%@ include file="includes/blockUI.jspf" %>
 		clearErrors();
@@ -88,7 +88,9 @@ function postContact(data) {
 			<h3>Contacto</h3>
 			<div id="errcontact"></div>
 			<html:form method="POST" action="/contact">
-				<% if (!contactForm.isRegisteredUser()) { %>
+				<%
+					if (!contactForm.isRegisteredUser()) {
+				%>
 					<fieldset>
 						<label>Nombre</label>
 						<html:text name="ContactForm" property="firstname"></html:text>
@@ -114,7 +116,9 @@ function postContact(data) {
 						<html:text name="ContactForm" property="phone"></html:text>
 					</fieldset>
 					<div class="errorInForm"></div>
-				<% } %>
+				<%
+					}
+				%>
 				<fieldset>
 					<label>Comentario</label>
 					<html:textarea name="ContactForm" property="content"></html:textarea>

@@ -1,7 +1,7 @@
-<%@page import="com.tdil.lojack.vlu.VLUImportThread"%>
+<%@page import="com.tdil.ljpeugeot.VLUImportThread"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.tdil.lojack.vlu.VLUUtils"%>
-<%@page import="com.tdil.lojack.model.VLUImport"%>
+<%@page import="com.tdil.ljpeugeot.VLUUtils"%>
+<%@page import="com.tdil.ljpeugeot.model.VLUImport"%>
 <%@page import="java.util.List"%>
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checklogaccess.jspf" %><%--

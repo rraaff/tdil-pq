@@ -1,7 +1,7 @@
-<%@page import="com.tdil.lojack.struts.forms.ContactForm"%><%--
+<%@page import="com.tdil.ljpeugeot.struts.forms.ContactForm"%><%--
 --%><%@ page info="home"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.RegisterForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%><%--
@@ -61,33 +61,35 @@
 			<fieldset>
 				<label>Nombre</label>
 				<html:text name="ContactFormMobile" property="firstname"></html:text>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.firstname.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.firstname.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>Apellido</label>
 				<html:text name="ContactFormMobile" property="lastname"></html:text>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.lastname.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.lastname.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>DNI</label>
 				<html:text name="ContactFormMobile" property="documentNumber"></html:text>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.document.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.document.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>E-mail</label>
 				<html:text name="ContactFormMobile" property="email"></html:text>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.email.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.email.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>Teléfono</label>
 				<html:text name="ContactFormMobile" property="phone"></html:text>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.phone.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.phone.err")%></div>
 			</fieldset>
-		<% } %>
+		<%
+			}
+		%>
 		<fieldset>
 			<label>Comentario</label>
 			<html:textarea name="ContactFormMobile" property="content"></html:textarea>
-			<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "ContactForm.content.err")%></div>
+			<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ContactForm.content.err")%></div>
 		</fieldset>
 		<fieldset>
 			<input type="submit" id="submitregister" class="indexLogin" value="Enviar" />

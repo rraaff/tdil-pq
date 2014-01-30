@@ -5,8 +5,7 @@
 --%><%@ page import="org.apache.commons.fileupload.disk.*"%><%--
 --%><%@ page import="org.apache.commons.fileupload.servlet.*"%><%--
 --%><%@ page import="org.apache.commons.io.output.*"%><%--
---%><%
-	File file;
+--%><%File file;
 	int maxFileSize = 50000 * 1024;
 	int maxMemSize = 5000 * 1024;
 	ServletContext context = pageContext.getServletContext();
@@ -48,12 +47,11 @@
 						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
 					}
 					fi.write(file);
-					com.tdil.lojack.vlu.VLUUtils.registerNewImport(file.getName());
+					com.tdil.ljpeugeot.vlu.VLUUtils.registerNewImport(file.getName());
 				}
 			}
 		} catch (Exception ex) {
-			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.lojack.vlu.VLUUtils.class).error(ex.getMessage(), ex);
+			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.ljpeugeot.vlu.VLUUtils.class).error(ex.getMessage(), ex);
 		}
 	} 
-	response.sendRedirect(request.getContextPath() + "/admin/vlu.jsp");
-%>
+	response.sendRedirect(request.getContextPath() + "/admin/vlu.jsp");%>

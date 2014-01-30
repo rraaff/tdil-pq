@@ -1,10 +1,10 @@
 <%@ include file="includes/tryModal.jspf" %><%--
---%><%@page import="com.tdil.lojack.struts.forms.ChangePasswordForm"%><%--
---%><%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.ChangePasswordForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--

@@ -1,4 +1,4 @@
-<% if (!com.tdil.lojack.roles.PreventUser.INSTANCE.isValid(websiteUser)) { %>
+<% if (!com.tdil.ljpeugeot.roles.PreventUser.INSTANCE.isValid(websiteUser)) { %>
 	<jsp:forward page="home.jsp"></jsp:forward>
 <% return;
 	} %>

@@ -20,7 +20,7 @@
 function enterPets() {
 	var userDate = new Date();
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-	window.open('<%=com.tdil.lojack.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.lojack.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
+	window.open('<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
 }
 
 function enterPrevent() {
@@ -84,7 +84,7 @@ function enterPrevent() {
 <div id="tarjeta">
 	<span id="tagOnCard" class="nameoncard"><%=websiteUser.getName()%></span>
 	<img id="cardImage" src="../images/skin_lj_rl/clubLoJack/tarjeta-club-lojack_black_hi-res.jpg" />
-	<div id="buttonOnCard"><a class="linkAsButton" href="<%=LoJackConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a></div>
+	<div id="buttonOnCard"><a class="linkAsButton" href="<%=LJPeugeotConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a></div>
 </div>
 <%@ include file="../includes/version.jspf" %>
 <script>

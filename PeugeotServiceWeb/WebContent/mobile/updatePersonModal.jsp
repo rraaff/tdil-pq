@@ -1,7 +1,7 @@
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@ page info="home"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.RegisterForm"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.LoginForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.RegisterForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.StateBean"%><%--
@@ -63,15 +63,15 @@
 			<fieldset>
 				<label>* Nombre</label>
 				<html:text name="UpdatePersonFormMobile" property="firstName" />
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.firstname.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.firstname.err")%>
+				<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.firstname.err")%></div>
 				<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstName"></div>
 			</fieldset>
 			<fieldset>
 				<label>* Apellido</label>
 				<html:text name="UpdatePersonFormMobile" property="lastName" />
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.lastname.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.lastname.err")%>
+				<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.lastname.err")%></div>
 				<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastName"></div>
 			</fieldset>
 			<div class="sexWrapper">
@@ -85,57 +85,75 @@
 					<span>Femenino</span>
 					<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%>
 					<div id="err.profile.gender"></div>
-					<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
+					<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.gender.err")%>
 				</fieldset>
 			</div>
-			<% if (registerForm.isPrincipal(PersonFieldNames.email)) { %>
+			<%
+				if (registerForm.isPrincipal(PersonFieldNames.email)) {
+			%>
 				<fieldset>
 					<label>* E-mail</label>
 					<label class="readOnly"><bean:write name="UpdatePersonFormMobile" property="email"/></label>
 				</fieldset>
-			<% } else { %>
+			<%
+				} else {
+			%>
 				<fieldset>
 					<label>* E-Mail</label>
 					<html:text name="UpdatePersonFormMobile" property="email" />
-					<div id="err.profile.email" class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%></div>
+					<div id="err.profile.email" class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.email.err")%></div>
 				</fieldset>
-			<% } %>
+			<%
+				}
+			%>
 			<fieldset>
 				<label class="dateHelper">* Fecha de nac.</label>
 				<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 				<div class="dateHelper">
 					<html:select name="UpdatePersonFormMobile" property="year" styleClass="year">
 						<option value=""></option>
-						<% for (String year : registerForm.getYears()) { %>
+						<%
+							for (String year : registerForm.getYears()) {
+						%>
 							<option value="<%=year%>" <%=year.equals(registerForm.getYear()) ? "selected" : ""%>><%=year%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 					<html:select name="UpdatePersonFormMobile" property="month" styleClass="day-month">
 						<option value=""></option>
-						<% for (String month : DateUtils.ALL_MONTHS) { %>
+						<%
+							for (String month : DateUtils.ALL_MONTHS) {
+						%>
 							<option value="<%=month%>" <%=month.equals(registerForm.getMonth()) ? "selected" : ""%>><%=month%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 					<html:select name="UpdatePersonFormMobile" property="day" styleClass="day-month">
 						<option value=""></option>
-						<% for (String day : DateUtils.ALL_DAYS) { %>
+						<%
+							for (String day : DateUtils.ALL_DAYS) {
+						%>
 							<option value="<%=day%>" <%=day.equals(registerForm.getDay()) ? "selected" : ""%>><%=day%></option>
-						<% } %>
+						<%
+							}
+						%>
 					</html:select>
 				</div>
-				<div class="errorInForm"><%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%></div>
+				<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "RegisterForm.birthdate.err")%></div>
 			</fieldset>
 			<fieldset>
 				<label>Código de área</label>
 				<html:text name="UpdatePersonFormMobile" property="phoneAreaCode" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "*" : ""%><div id="err.profile.phone.areaCode"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%>
+				<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.phone.areaCode.err")%>
 			</fieldset>
 			<fieldset>
 				<label>Teléfono celular</label>
 				<html:text name="UpdatePersonFormMobile" property="phoneNumber" />
 				<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "*" : ""%><div id="err.profile.phone.number"></div>
-				<%=com.tdil.lojack.web.LoJackErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
+				<%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "profile.phone.number.err")%>
 			</fieldset>
 			<fieldset class="countryFieldset">
 				<label>País</label>

@@ -4,11 +4,11 @@
  <display-name>PeugeotServiceWeb</display-name>
  <context-param>
   <param-name>application.resources</param-name>
-  <param-value>com.tdil.lojack.struts.resources.ApplicationResources</param-value>
+  <param-value>com.tdil.ljpeugeot.struts.resources.ApplicationResources</param-value>
  </context-param>
  <context-param>
   <param-name>system.config</param-name>
-  <param-value>com.tdil.lojack.utils.LoJackConfig</param-value>
+  <param-value>com.tdil.ljpeugeot.utils.LJPeugeotConfig</param-value>
  </context-param>
  <filter>
   <filter-name>NoCachingFilter</filter-name>
@@ -150,29 +150,29 @@
  
  <servlet>
   <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.RefreshThalamusLoginCacheServlet</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.RefreshThalamusLoginCacheServlet</servlet-class>
  </servlet>
  
  
  <servlet>
   <servlet-name>SearchParkingsServlet</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.SearchParkingsServlet</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.SearchParkingsServlet</servlet-class>
  </servlet>
  <servlet>
    <servlet-name>FacebookSignIn</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.FacebookSignIn</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.FacebookSignIn</servlet-class>
  </servlet>
  <servlet>
   <servlet-name>TwitterSignIn</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.TwitterSignIn</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.TwitterSignIn</servlet-class>
  </servlet>
  <servlet>
   <servlet-name>FacebookConnect</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.FacebookConnect</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.FacebookConnect</servlet-class>
  </servlet>
  <servlet>
   <servlet-name>TwitterConnect</servlet-name>
-  <servlet-class>com.tdil.lojack.servlet.TwitterConnect</servlet-class>
+  <servlet-class>com.tdil.ljpeugeot.servlet.TwitterConnect</servlet-class>
  </servlet>
  <servlet-mapping>
   <servlet-name>Jersey Web Application</servlet-name>

@@ -5,7 +5,7 @@
 			<div id="nmTelefono"><!--  align="center" -->
 				<div id="nmRuedita">
 					<ul>
-						<%@page import="com.tdil.lojack.utils.LoJackWebUtils"%>
+						<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
 						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isHomeUser()) { %>
 							<!-- logueado y con acceso a home -->
 							<li id="liHome" class="home"><a class="rdHome" href="productoHome.jsp" onmouseover="chbg('liHome', 'home', 'over', 'home', 'ingrese ahora')" onmouseout="chbg('liHome', 'home', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
@@ -49,7 +49,9 @@
 						<li id="liTvtv" class="tv"><a class="rdTv" href="http://www.lojack.tv" target="_blank" onmouseover="chbg('liTvtv', 'tv', 'over', 'LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('liTvtv', 'tv', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 
 						<%if (websiteUser != null && websiteUser.isLogged()) { %>
-							<% if (websiteUser.isClientClubLoJack() && LoJackConfig.isClubLoJackShow() ) { %>
+							<%
+								if (websiteUser.isClientClubLoJack() && LJPeugeotConfig.isClubLoJackShow() ) {
+							%>
 								<li id="liLogg" class="club"><a class="rdLoginLogout" href="javascript:viewClubLoJack();" onmouseover="chbg('liLogg', 'club', 'over', 'Club', 'Lo Jack')" onmouseout="chbg('liLogg', 'club', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 							<% } else { %>
 								<li id="liLogg" class="logout"><a class="rdLoginLogout" href="logout.do" onmouseover="chbg('liLogg', 'logout', 'over', 'Salir', 'del sitio')" onmouseout="chbg('liLogg', 'logout', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>

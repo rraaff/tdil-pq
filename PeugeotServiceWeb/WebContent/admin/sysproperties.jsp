@@ -1,5 +1,5 @@
 <%@page import="com.tdil.utils.StringUtils"%>
-<%@page import="com.tdil.lojack.model.SystemProperty"%>
+<%@page import="com.tdil.ljpeugeot.model.SystemProperty"%>
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checksyspropaccess.jsp" %><%--
 --%><html>
@@ -29,7 +29,9 @@ Valor <input type="text" style="width: 250px;" name="propvalue" value="<%=String
 	<td>Editar</td>
 	<td>Borrar</td>
 </tr>
-<% for (SystemProperty sp : com.tdil.lojack.utils.SystemPropertyUtils.getSystemProperties()) { %>
+<%
+	for (SystemProperty sp : com.tdil.ljpeugeot.utils.SystemPropertyUtils.getSystemProperties()) {
+%>
 <tr>
 	<td><%=sp.getPropkey()%></td>
 	<td><%=sp.getPropvalue()%></td>

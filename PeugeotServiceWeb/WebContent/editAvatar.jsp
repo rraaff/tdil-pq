@@ -1,9 +1,9 @@
 <%@ include file="includes/tryModal.jspf" %><%--
---%><%@page import="com.tdil.lojack.web.LoJackErrorFormatter"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.EditProfileForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.EditProfileForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
@@ -88,7 +88,7 @@ $.each(data, function(key, value) {
 					<label><input type="file" name="upload_avatar" id="upload_avatar"></label>
 				</fieldset>
 				<fieldset>
-					<label><%=LoJackErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
+					<label><%=LJPeugeotErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
 				</fieldset>
 				<fieldset><button type="button" onclick="javascript:doSaveAvatar()" class="indexButtonBase" style="margin-left:20px;">Guardar</button></fieldset>
 			</html:form>

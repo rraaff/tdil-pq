@@ -3,7 +3,7 @@
 <%@page import="com.tdil.thalamus.client.facade.json.beans.CountryBean"%>
 <%@page import="com.tdil.thalamus.client.facade.json.fields.PersonFieldNames"%>
 <%@page import="com.tdil.thalamus.client.facade.json.beans.PersonFields"%>
-<%@page import="com.tdil.lojack.struts.forms.RegisterForm"%>
+<%@page import="com.tdil.ljpeugeot.struts.forms.RegisterForm"%>
 <%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><!--
 --><%@ page info="index"%><!--
 --><%@ page contentType="text/html; charset=ISO-8859-1" %><!--

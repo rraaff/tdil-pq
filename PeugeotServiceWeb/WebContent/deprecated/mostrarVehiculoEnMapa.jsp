@@ -1,12 +1,12 @@
-<%@page import="com.tdil.lojack.utils.LoJackConfig"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.prevent.SelectVehiclesForm"%><%--
---%><%@page import="com.tdil.lojack.prevent.model.SpeedLimit"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.beans.SpeedSelectionBean"%><%--
---%><%@page import="com.tdil.lojack.prevent.model.Vehicle"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.prevent.VehiclesSpeedLimitForm"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertiesKeys"%><%--
---%><%@page import="com.tdil.lojack.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.lojack.struts.forms.CameraForm"%><%--
+<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotConfig"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.prevent.model.SpeedLimit"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.beans.SpeedSelectionBean"%><%--
+--%><%@page import="com.tdil.ljpeugeot.prevent.model.Vehicle"%><%--
+--%><%@page import="com.tdil.ljpeugeot.struts.forms.prevent.VehiclesSpeedLimitForm"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
+--%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
+--%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
@@ -97,7 +97,9 @@
     <script src="js/OpenLayers.js" type="text/javascript"></script>
     <script src="js/MapaOSM.js" type="text/javascript"></script>
 
-<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");%>
+<%
+	SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");
+%>
 <script type="text/javascript">
 var Mapa;
 var parkings;
@@ -143,7 +145,7 @@ $(function () {
 
     var mapOptions = {
         DataProjection: "EPSG:4326",
-        tilesetUrl: "<%=com.tdil.lojack.utils.LoJackConfig.getMapsUrl()%>"
+        tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
     };
     Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
     Mapa.UpdateConfig({ title: "Prevent" });
@@ -153,9 +155,9 @@ $(function () {
     Mapa.map.addLayer(parkings);
     var size = new OpenLayers.Size(21,25);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/marker.png',size,offset);
+    var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/marker.png',size,offset);
 	var proj = new OpenLayers.Projection("EPSG:4326");
-	var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/car.png',size,offset);
+	var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/car.png',size,offset);
 	parkings.addMarker(createMarker(<%=selectVehiclesForm.getSelectedVehiclePosition().getLongitude()%>,<%=selectVehiclesForm.getSelectedVehiclePosition().getLatitude()%>, '<%=selectVehiclesForm.getSelected().getDescription()%>', '<%=selectVehiclesForm.getSelectedVehiclePosition().getStreet()%>-<%=selectVehiclesForm.getSelectedVehiclePosition().getNumber()%>', proj, iconCar.clone()));
 });
 
