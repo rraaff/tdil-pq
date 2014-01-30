@@ -1,0 +1,48 @@
+Concesionarias
+
+Se realizara una importacion en formato csv con el siguiente formato
+provincia,localidad,nombre,email,direccion,telefono
+
+Tablas
+PROVINCIA
+LOCALIDAD
+CONCESIONARIA
+
+Modelos
+
+Se realizara una importacion de modelos de vehiculos en formato csv con el siguiente formato
+modelo,garantia(meses),descripcion
+MODELO
+
+USUARIO
+
+CONTACTO
+rel usuario
+1
+2
+3
+
+VEHICULO
+rel usuario
+rel modelo
+km 
+km ultimo service
+fecha ultimo service
+necesita aviso 1
+aviso 1 enviado
+necesita aviso 2
+aviso 2 enviado
+necesita aviso 3
+aviso 3 enviado
+garantia expirada
+
+SERVICE
+rel vehiculo
+km
+fecha
+
+importaciones
+tipo
+nombre archivo
+
+POIs
