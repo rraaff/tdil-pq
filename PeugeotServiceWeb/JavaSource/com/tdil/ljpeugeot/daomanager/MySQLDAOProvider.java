@@ -3,23 +3,27 @@ package com.tdil.ljpeugeot.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
+import com.tdil.ljpeugeot.dao.AdviceDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
+import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
 import com.tdil.ljpeugeot.dao.VehicleDAO;
 import com.tdil.ljpeugeot.dao.WebsiteUserDAO;
+import com.tdil.ljpeugeot.dao.impl.AdviceDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.BlobDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.CacheRegionDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.CityDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.DealerDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.ModelDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.PointOfInterestDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.ServiceDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.StateDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.SystemUserDAOImpl;
@@ -97,6 +101,15 @@ public class MySQLDAOProvider implements DAOProvider {
 	@Override
 	public VehicleDAO getVehicleDAO() throws SQLException {
 		return new VehicleDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public AdviceDAO getAdviceDAO() throws SQLException {
+		return new AdviceDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public ServiceDAO getServiceDAO() throws SQLException {
+		return new ServiceDAOImpl(IBatisManager.getClient());
 	}
 	
 }

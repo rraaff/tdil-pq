@@ -2,12 +2,14 @@ package com.tdil.ljpeugeot.daomanager;
 
 import java.sql.SQLException;
 
+import com.tdil.ljpeugeot.dao.AdviceDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
+import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
@@ -36,4 +38,6 @@ public interface DAOProvider {
 	
 	public abstract ModelDAO getModelDAO() throws SQLException;
 	public abstract VehicleDAO getVehicleDAO() throws SQLException;
+	public abstract AdviceDAO getAdviceDAO() throws SQLException;
+	public abstract ServiceDAO getServiceDAO() throws SQLException;
 }

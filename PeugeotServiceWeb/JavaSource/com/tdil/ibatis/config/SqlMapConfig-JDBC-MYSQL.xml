@@ -33,5 +33,7 @@
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/WEBSITEUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/MODEL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/VEHICLE_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/ADVICE_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/SERVICE_SqlMap.xml"/>
 	
 </sqlMapConfig>

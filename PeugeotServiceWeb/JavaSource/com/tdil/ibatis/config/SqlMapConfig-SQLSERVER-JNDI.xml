@@ -29,5 +29,7 @@
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_WEBSITEUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_MODEL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_VEHICLE_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_ADVICE_SqlMap.xml"/>
+	v<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_ADVICE_SqlMap.xml"/>
        
 </sqlMapConfig>
