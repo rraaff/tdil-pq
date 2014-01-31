@@ -3,23 +3,29 @@ package com.tdil.ljpeugeot.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
+import com.tdil.ljpeugeot.dao.AdviceDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
+import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
+import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
 import com.tdil.ljpeugeot.dao.VehicleDAO;
 import com.tdil.ljpeugeot.dao.WebsiteUserDAO;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.AdviceDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.BlobDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.CacheRegionDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.CityDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.ContactDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.DealerDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.ModelDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.PointOfInterestDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.ServiceDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.StateDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.SystemPropertyDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.SystemUserDAOImpl;
@@ -77,5 +83,19 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public VehicleDAO getVehicleDAO() throws SQLException {
 		return new VehicleDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public AdviceDAO getAdviceDAO() throws SQLException {
+		return new AdviceDAOImpl(IBatisManager.getClient());
+	}
+	@Override
+	public ServiceDAO getServiceDAO() throws SQLException {
+		return new ServiceDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public ContactDataDAO getContactDataDAO() throws SQLException {
+		return new ContactDataDAOImpl(IBatisManager.getClient());
 	}
 }

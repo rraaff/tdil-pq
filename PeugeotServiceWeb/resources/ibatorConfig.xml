@@ -81,6 +81,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="PEUGEOTSVC" tableName="SERVICE" domainObjectName="Service" alias="serv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<table schema="PEUGEOTSVC" tableName="CONTACTDATA" domainObjectName="ContactData" alias="cd">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

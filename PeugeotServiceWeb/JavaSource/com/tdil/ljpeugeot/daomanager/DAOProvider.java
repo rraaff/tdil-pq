@@ -6,6 +6,7 @@ import com.tdil.ljpeugeot.dao.AdviceDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
+import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
@@ -40,4 +41,6 @@ public interface DAOProvider {
 	public abstract VehicleDAO getVehicleDAO() throws SQLException;
 	public abstract AdviceDAO getAdviceDAO() throws SQLException;
 	public abstract ServiceDAO getServiceDAO() throws SQLException;
+	
+	public abstract ContactDataDAO getContactDataDAO() throws SQLException;
 }

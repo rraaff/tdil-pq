@@ -1,6 +1,3 @@
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'WEBSITEUSER')
-    drop table WEBSITEUSER;
-
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'SYSTEMUSER')
     drop table SYSTEMUSER;
 
@@ -27,16 +24,24 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CITY')
     
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'STATE')
     drop table STATE;
-    
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'MODEL')
-    drop table MODEL;
 
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'SERVICE')
+    drop table SERVICE;
+    
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'ADVICE')
     drop table ADVICE;
     
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'VEHICLE')
     drop table VEHICLE;
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'MODEL')
+    drop table MODEL;
     
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CONTACTDATA')
+    drop table CONTACTDATA;
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'WEBSITEUSER')
+    drop table WEBSITEUSER;    
     
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
@@ -171,8 +176,8 @@ CREATE TABLE VEHICLE (
   deleted INT NOT NULL,
   PRIMARY KEY (id));
   
-CREATE INDEX IX_VEHICLE_00 ON VEHICLE(id_websiteuser ASC);
-CREATE INDEX IX_VEHICLE_01 ON VEHICLE(id_model ASC);
+CREATE INDEX IX_VEHICLE_00 ON VEHICLE(id_websiteuser);
+CREATE INDEX IX_VEHICLE_01 ON VEHICLE(id_model);
 
 CREATE TABLE ADVICE (
   id INT NOT NULL IDENTITY ,
@@ -183,14 +188,33 @@ CREATE TABLE ADVICE (
   deleted INT NOT NULL,
   PRIMARY KEY (id));
 
-CREATE INDEX IX_ADVICE_00 ON ADVICE(id_vechicle ASC);
+CREATE INDEX IX_ADVICE_00 ON ADVICE(id_vechicle);
 
 CREATE TABLE SERVICE (
   id INT NOT NULL IDENTITY ,
-  id_vechicle INT NOT NULL CONSTRAINT FK_ADVICE_00 FOREIGN KEY REFERENCES VEHICLE(id),
+  id_vechicle INT NOT NULL CONSTRAINT FK_SERVICE_00 FOREIGN KEY REFERENCES VEHICLE(id),
   km INT NULL,
   serviceDate DATE NULL ,
   deleted INT NOT NULL,
   PRIMARY KEY (id));
 
-CREATE INDEX IX_SERVICE_00 ON SERVICE(id_vechicle ASC);
+CREATE INDEX IX_SERVICE_00 ON SERVICE(id_vechicle);
+
+CREATE TABLE CONTACTDATA (
+  id INT NOT NULL IDENTITY ,
+  id_websiteuser INT NOT NULL CONSTRAINT FK_CONTACTDATA_00 FOREIGN KEY REFERENCES WEBSITEUSER(id),
+  contact1Name VARCHAR(150) NULL ,
+  contact1Relation VARCHAR(150) NULL ,
+  contact1Phone VARCHAR(20) NULL ,
+  contact1SecWord VARCHAR(20) NULL ,
+  contact1HealthI VARCHAR(100) NULL ,
+  contact2Name VARCHAR(150) NULL ,
+  contact2Relation VARCHAR(150) NULL ,
+  contact2Phone VARCHAR(20) NULL ,
+  contact3Name VARCHAR(150) NULL ,
+  contact3Relation VARCHAR(150) NULL ,
+  contact3Phone VARCHAR(20) NULL ,
+  deleted INT NOT NULL,
+  PRIMARY KEY (id));
+  
+CREATE INDEX IX_CONTACTDATA_00 ON CONTACTDATA(id_websiteuser);
