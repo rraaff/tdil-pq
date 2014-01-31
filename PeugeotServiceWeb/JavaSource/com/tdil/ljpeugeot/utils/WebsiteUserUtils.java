@@ -8,10 +8,6 @@ import org.apache.log4j.Logger;
 
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.ljpeugeot.daomanager.DAOManager;
-import com.tdil.ljpeugeot.model.AlarmConf;
-import com.tdil.ljpeugeot.model.AlarmConfExample;
-import com.tdil.ljpeugeot.model.LightConf;
-import com.tdil.ljpeugeot.model.LightConfExample;
 import com.tdil.ljpeugeot.model.WebsiteUser;
 import com.tdil.ljpeugeot.model.WebsiteUserExample;
 import com.tdil.log4j.LoggerProvider;
@@ -89,52 +85,6 @@ public class WebsiteUserUtils {
 		}
 	}
 	
-	private static final class ReceiveAlarmNotification implements TransactionalActionWithResult {
-		private int idUser;
-		private int idEntidad;
-		
-		public ReceiveAlarmNotification(int idUser, int idEntidad) {
-			super();
-			this.idUser = idUser;
-			this.idEntidad = idEntidad;
-		}
-
-		public Object executeInTransaction() throws SQLException {
-			AlarmConfExample example = new AlarmConfExample();
-			example.createCriteria().andIdwebsiteuserEqualTo(idUser).andIdentidadEqualTo(idEntidad);
-			List<AlarmConf> list = DAOManager.getAlarmConfDAO().selectAlarmConfByExample(example);
-			if (list.isEmpty()) {
-				return Boolean.FALSE;
-			} else {
-				return list.get(0).getEmailnotification().equals(1);
-			}
-		}
-	}
-	
-	private static final class ReceiveLightNotification implements TransactionalActionWithResult {
-		private int idUser;
-		private int idEntidad;
-		private int idLuz;
-		
-		public ReceiveLightNotification(int idUser, int idEntidad, int idLuz) {
-			super();
-			this.idUser = idUser;
-			this.idEntidad = idEntidad;
-			this.idLuz = idLuz;
-		}
-
-		public Object executeInTransaction() throws SQLException {
-			LightConfExample example = new LightConfExample();
-			example.createCriteria().andIdwebsiteuserEqualTo(idUser).andIdentidadEqualTo(idEntidad).andIdluzEqualTo(idLuz);
-			List<LightConf> list = DAOManager.getLightConfDAO().selectLightConfByExample(example);
-			if (list.isEmpty()) {
-				return Boolean.FALSE;
-			} else {
-				return list.get(0).getEmailnotification().equals(1);
-			}
-		}
-	}
-	
 	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserByHomeUserId(String lojackUserId) {
 		if (StringUtils.isEmpty(lojackUserId)) {
 			return null;
@@ -177,24 +127,6 @@ public class WebsiteUserUtils {
 			return false;
 		}
 		return usr.getIdAvatar() != null && usr.getIdAvatar() != 0;
-	}
-	
-	public static boolean wantsNotification(com.tdil.ljpeugeot.model.WebsiteUser usr, int idEntidad) {
-		try {
-			return (Boolean)new ReceiveAlarmNotification(usr.getId(), idEntidad).executeInTransaction();
-		} catch (SQLException e) {
-			getLog().error(e.getMessage(), e);
-			return false;
-		}
-	}
-	
-	public static boolean wantsNotification(com.tdil.ljpeugeot.model.WebsiteUser usr, int idEntidad, int idLuz) {
-		try {
-			return (Boolean)new ReceiveLightNotification(usr.getId(), idEntidad, idLuz).executeInTransaction();
-		} catch (SQLException e) {
-			getLog().error(e.getMessage(), e);
-			return false;
-		}
 	}
 	
 	private static Logger getLog() {

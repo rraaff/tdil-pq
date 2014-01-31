@@ -36,17 +36,10 @@ targetProject="PeugeotServiceWeb">
   <property name="methodNameCalculator" value="extended" />
 </daoGenerator>
 
-<!-- SqlServer ??? -->
-<!--  table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
+<table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="ALARM_CONF" domainObjectName="AlarmConf" alias="ac">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
-<table schema="dbo" tableName="LIGHT_CONF" domainObjectName="LightConf" alias="lc">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
-<table schema="dbo" tableName="ASYNC_JOB" domainObjectName="AsyncJob" alias="aj">
+<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
@@ -55,32 +48,28 @@ targetProject="PeugeotServiceWeb">
 <table schema="dbo" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-
 <table schema="dbo" tableName="CACHE_REGION" domainObjectName="CacheRegion" alias="cache">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-
 <table schema="dbo" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-
-<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
-<!--  table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
-
-<table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+<table schema="dbo" tableName="DEALER" domainObjectName="Dealer" alias="deal">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
-<table schema="dbo" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
+<table schema="dbo" tableName="CITY" domainObjectName="City" alias="city">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 
+<table schema="dbo" tableName="STATE" domainObjectName="State" alias="st">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="MODEL" domainObjectName="Model" alias="mdl">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>
