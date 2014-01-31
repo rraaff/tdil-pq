@@ -185,6 +185,7 @@ CREATE TABLE ADVICE (
   km INT NULL,
   adviseDate DATE NULL ,
   adviseNumber INT NOT NULL,
+  isread INT NOT NULL,
   deleted INT NOT NULL,
   PRIMARY KEY (id));
 
