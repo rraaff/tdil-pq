@@ -7,6 +7,7 @@ import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
 import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
+import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
@@ -51,6 +52,10 @@ public abstract class DAOManager {
 	
 	public static DealerDAO getDealerDAO() throws SQLException {
 		return currentDao.getDealerDAO();
+	}
+	
+	public static ModelDAO getModelDAO() throws SQLException {
+		return currentDao.getModelDAO();
 	}
 	
 	public static DataImportDAO getDataImportDAO() throws SQLException {

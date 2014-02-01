@@ -1,3 +1,4 @@
+<%@page import="com.tdil.ljpeugeot.feeds.ImportSpec"%>
 <%@page import="com.tdil.ljpeugeot.feeds.dealer.DealerImportSpec"%>
 <%@page import="com.tdil.ljpeugeot.model.Dealer"%>
 <%@ include file="includes/checklogin.jsp"%><%--
@@ -7,7 +8,10 @@
 --%><%@ page import="org.apache.commons.fileupload.disk.*"%><%--
 --%><%@ page import="org.apache.commons.fileupload.servlet.*"%><%--
 --%><%@ page import="org.apache.commons.io.output.*"%><%--
---%><%File file;
+--%><%File file = null;
+String type = null;
+String dest = null;
+
 	int maxFileSize = 50000 * 1024;
 	int maxMemSize = 5000 * 1024;
 	ServletContext context = pageContext.getServletContext();
@@ -49,11 +53,18 @@
 						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
 					}
 					fi.write(file);
-					com.tdil.ljpeugeot.feeds.ImportUtils.registerImport(file.getName(), DealerImportSpec.TYPE, new DealerImportSpec());
+				} else {
+					if (fi.getFieldName().equals("type")) {
+						type = fi.getString();
+					}
+					if (fi.getFieldName().equals("dest")) {
+						dest = fi.getString();
+					}
 				}
 			}
+			com.tdil.ljpeugeot.feeds.ImportUtils.registerImport(file.getName(), (ImportSpec)Class.forName(type).newInstance());
 		} catch (Exception ex) {
 			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.ljpeugeot.feeds.ImportUtils.class).error(ex.getMessage(), ex);
 		}
 	} 
-	response.sendRedirect(request.getContextPath() + "/admin/dealer.jsp");%>
+	response.sendRedirect(request.getContextPath() + "/admin/" + dest);%>

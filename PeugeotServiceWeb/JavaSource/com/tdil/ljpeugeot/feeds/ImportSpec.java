@@ -8,6 +8,8 @@ public interface ImportSpec {
 
 	public Class getRecordClass();
 	
+	public String getType();
+	
 	public CellProcessor[] getCellProcessor();
 
 	public void processRow(Object importRecord, DataImport dataImport) throws Exception;

@@ -3,4 +3,4 @@
 --%><%@ include file="includes/checkadmin.jspf" %><%--
 --%><%String id = request.getParameter("id");
 	ImportUtils.deleteImport(id);
-	response.sendRedirect(request.getContextPath() + "/admin/dealer.jsp");%>
+	response.sendRedirect(request.getContextPath() + "/admin/" + request.getParameter("dest"));%>

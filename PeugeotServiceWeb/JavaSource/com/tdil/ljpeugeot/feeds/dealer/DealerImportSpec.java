@@ -31,6 +31,11 @@ public class DealerImportSpec implements ImportSpec {
 					null
 			};
 	}
+	
+	@Override
+	public String getType() {
+		return TYPE;
+	}
 
 	@Override
 	public Class getRecordClass() {

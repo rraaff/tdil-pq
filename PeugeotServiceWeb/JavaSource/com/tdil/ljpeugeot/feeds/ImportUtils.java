@@ -16,9 +16,9 @@ import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class ImportUtils {
 	
-	public static boolean registerImport(String fileName, String type, ImportSpec importSpec) {
+	public static boolean registerImport(String fileName, ImportSpec importSpec) {
 		try {
-			DataImport result = GenericTransactionExecutionService.getInstance().execute(new InsertImport(fileName, type));
+			DataImport result = GenericTransactionExecutionService.getInstance().execute(new InsertImport(fileName, importSpec.getType()));
 			new Thread(new ImportRunnable(result, importSpec)).start();
 			return true;
 		} catch (SQLException e) {
