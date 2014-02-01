@@ -59,7 +59,6 @@
 	<%@ include file="includes/nuevaRuedita.jspf" %>
 
 	function showVluMessages(dni) {
-		alert(dni);
 		<%@ include file="includes/blockUI.jspf" %>
 		$('#vluMessagesLayer').load('vluMessagesNoPrevent.jsp?dni=' + dni, function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
