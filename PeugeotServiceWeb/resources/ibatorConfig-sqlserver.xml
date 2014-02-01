@@ -13,7 +13,7 @@
   defaultModelType="flat">
 
 <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-			connectionURL="jdbc:sqlserver://192.168.0.132:1123;database=PEUGEOTSVC_DB;" userId="PEUGEOTSVC_USER"
+			connectionURL="jdbc:sqlserver://192.168.0.104:1123;database=PEUGEOTSVC_DB;" userId="PEUGEOTSVC_USER"
 			password="p4l0ll1n4" />
 
 <javaModelGenerator targetPackage="com.tdil.ljpeugeot.model"
@@ -77,6 +77,9 @@ targetProject="PeugeotServiceWeb">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="CONTACTDATA" domainObjectName="ContactData" alias="cd">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table>
+<table schema="dbo" tableName="DATA_IMPORT" domainObjectName="DataImport" alias="di">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 

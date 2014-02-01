@@ -8,6 +8,7 @@ import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
 import com.tdil.ljpeugeot.dao.ContactDataDAO;
+import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
@@ -22,6 +23,7 @@ import com.tdil.ljpeugeot.dao.impl.sqlserver.BlobDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.CacheRegionDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.CityDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.ContactDataDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.DataImportDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.DealerDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.ModelDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.PointOfInterestDAOImpl;
@@ -97,5 +99,10 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public ContactDataDAO getContactDataDAO() throws SQLException {
 		return new ContactDataDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public DataImportDAO getDataImportDAO() throws SQLException {
+		return new DataImportDAOImpl(IBatisManager.getClient());
 	}
 }

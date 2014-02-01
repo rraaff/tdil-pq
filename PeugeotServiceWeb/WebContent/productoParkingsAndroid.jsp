@@ -427,7 +427,6 @@
 </div>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/version.jspf" %>
 <% if (usingMobile || isAndroid) { %>
 	<script>

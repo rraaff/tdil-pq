@@ -4,7 +4,11 @@ import java.sql.SQLException;
 
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
+import com.tdil.ljpeugeot.dao.CityDAO;
+import com.tdil.ljpeugeot.dao.DataImportDAO;
+import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
+import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
 import com.tdil.ljpeugeot.dao.WebsiteUserDAO;
@@ -35,6 +39,22 @@ public abstract class DAOManager {
 	
 	public static SystemUserDAO getSystemUserDAO() throws SQLException {
 		return currentDao.getSystemUserDAO();
+	}
+	
+	public static StateDAO getStateDAO() throws SQLException {
+		return currentDao.getStateDAO();
+	}
+	
+	public static CityDAO getCityDAO() throws SQLException {
+		return currentDao.getCityDAO();
+	}
+	
+	public static DealerDAO getDealerDAO() throws SQLException {
+		return currentDao.getDealerDAO();
+	}
+	
+	public static DataImportDAO getDataImportDAO() throws SQLException {
+		return currentDao.getDataImportDAO();
 	}
 	
 		public static DAOProvider getCurrentDao() {

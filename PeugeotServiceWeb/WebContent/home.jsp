@@ -44,11 +44,6 @@
 			}
 	);
 
-	function viewClubLoJack() {
-		centerLayer($(window), $( "#clubLoJackLayer" ));
-		centerLayer($(window), $( "#centradorModalesClubLoJack" ));
-	}
-	
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
@@ -59,9 +54,7 @@
 	<%@ include file="includes/nuevaRuedita.jspf" %>
 
 	function showVluMessages(dni) {
-		alert(dni);
 		<%@ include file="includes/blockUI.jspf" %>
-		$('#vluMessagesLayer').load('vluMessagesNoPrevent.jsp?dni=' + dni, function(response, status, xhr) {
 			<%@ include file="includes/unblockUI.jspf" %>
 			if (status == "error") {
 				errorAjax();
@@ -95,13 +88,6 @@
 				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<%
-					if (websiteUser.isClientClubLoJack() && LJPeugeotConfig.isClubLoJackShow() ) {
-				%>
-					<li><a href="javascript:viewClubLoJack();">Club lo jack</a></li>
-				<%
-					}
-				%>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 			</ul>
 		</div>
@@ -109,23 +95,9 @@
 </header>
 <%@ include file="includes/laRuedita.jsp" %>
 
-<!-- forgot password -->
-<div id="clubLoJackLayer" class="layerOnTop" style="display: none; z-index: 1501;">
-	<div id="centradorModalesClubLoJack" class="defaultLayerStyles">
-		<div class="clubLoJackLayerContent">
-			<div id="xContainer"><button class="buttonLink" cl="clubLoJackLayer">X</button></div>
-			<div id="tarjeta">
-				<span class="nameoncard"><%=websiteUser.getName()%></span>
-			</div>
-			<a class="linkAsButton" href="<%=LJPeugeotConfig.getClubLoJackUrl()%>" target="_blank">Ver Beneficios</a>
-		</div>
-	</div>
-</div>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
-
-<%@ include file="includes/videoLayers.jsp" %>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->

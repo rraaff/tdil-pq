@@ -1,0 +1,4 @@
+<% if (!su.isAdmin()) { %><%--
+	--%><jsp:forward page="./login.jsp"></jsp:forward><%--
+--%><% return;
+} %>

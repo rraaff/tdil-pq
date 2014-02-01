@@ -32,4 +32,5 @@
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_ADVICE_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_SERVICE_SqlMap.xml"/>
     <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_CONTACTDATA_SqlMap.xml"/>
+    <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_DATA_IMPORT_SqlMap.xml"/>
 </sqlMapConfig>

@@ -50,9 +50,6 @@
 		<div id="iconoLogin"><a href="./loginModal.jsp"    onmouseover="chbg('ingresá', 'con tus datos')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresar ahora"><img src="../images/null.gif" /></a></div>
 		<div id="iconoParkings"><a href="./loginModal.jsp" onmouseover="chbg('Parking', 'ingrese ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresá y utilizá la App gratuita para estacionar en CABA"><img src="../images/null.gif" /></a></div>
 		<!--  div id="iconoProfile"><a href="./goToRegistrationMobile.do" title="Registrate gratis"><img src="../images/null.gif" /></a></div -->
-		<div id="iconoCar"><a href="videoPageCar.jsp"   onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre CAR"><img src="../images/null.gif" /></a></div>
-		<div id="iconoHome"><a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre HOME"><img src="../images/null.gif" /></a></div>
-		<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pets', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre PETS"><img src="../images/null.gif" /></a></div>
 		<div id="iconoTv"><a href="#" title="Pronto"><img src="../images/null.gif" /></a></div>
 		<div id="rdCentral">
 			<h2 id="title">Seleccione</h2>

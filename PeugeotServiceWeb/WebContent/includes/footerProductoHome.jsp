@@ -6,7 +6,6 @@
 			<div class="col1_300 marginRight_60">
 				<h3>ENTRÁ TRANQUILO<br/>A TU CASA</h3>
 				<p>Con escolta Lojack te acompañamos telefónicamente a tu casa cuando entrás.</p>
-				<button onclick="javascript:showVideo1('home');" class="btn btn-mini btn-primary" type="button">Mas info >></button>
 			</div>
 			<div class="col1_300 marginRight_60">
 				<h3>INGRESÁ AL<br/>CLUB LOJACK</h3>

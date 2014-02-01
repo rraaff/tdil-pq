@@ -6,6 +6,7 @@
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %><!--
 --><%@ include file="../includes/agentInfo.jspf" %><!--
+--><%@ include file="../includes/dataComplited.jspf" %><!--
 --><%if (websiteUser != null && websiteUser.isLogged()) {%>
 	<jsp:forward page="./home.jsp"></jsp:forward>
 <%
@@ -77,43 +78,6 @@ function chbg(title, subTitle) {
 		<div id="iconoLogin"><a href="./loginModal.jsp"    onmouseover="chbg('ingresá', 'con tus datos')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresar ahora"><img src="../images/null.gif" /></a></div>
 		<div id="iconoParkings"><a href="./loginModal.jsp" onmouseover="chbg('Parking', 'ingrese ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Ingresá y utilizá la App gratuita para estacionar en CABA y GBA"><img src="../images/null.gif" /></a></div>
 		<!--  div id="iconoProfile"><a href="./goToRegistrationMobile.do" title="Registrate gratis"><img src="../images/null.gif" /></a></div -->
-		<div id="iconoCar">
-		<%
-			if (isIpad || isIphone || isIpod) {
-		%>
-			<a href="videoPageCar.jsp"   onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre CAR"><img src="../images/null.gif" /></a>
-		<%
-			} else {
-		%>
-			<a href="<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMobilevideocar()%>" target="_blank" onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre CAR"><img src="../images/null.gif" /></a>
-		<%
-			}
-		%>
-		</div>
-		<div id="iconoHome">
-		<%
-			if (isIpad || isIphone || isIpod) {
-		%>
-			<a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre HOME"><img src="../images/null.gif" /></a>
-		<%
-			} else {
-		%>
-			<a href="<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMobilevideohome()%>" target="_blank" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre HOME"><img src="../images/null.gif" /></a>
-		<%
-			}
-		%>
-		</div>
-		<div id="iconoPets">
-		<%
-			if (isIpad || isIphone || isIpod) {
-		%>
-			<a href="videoPagePets.jsp" onmouseover="chbg('Pets', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre PETS"><img src="../images/null.gif" /></a>
-		<%
-			} else {
-		%>
-			<a href="<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMobilevideopets()%>" target="_blank" onmouseover="chbg('Pets', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')" title="Más sobre PETS"><img src="../images/null.gif" /></a>
-		<% } %>
-		</div>
 		<div id="iconoTv"><a href="http://www.lojack.tv" onmouseover="chbg('LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" target="_blank"><img src="../images/null.gif" /></a></div>
 		<div id="rdCentral">
 			<h2 id="title">Seleccione</h2>

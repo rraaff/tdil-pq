@@ -766,8 +766,6 @@ function parkingsNotLogged() {
 	</div>
 </div>
 
-<%@ include file="includes/videoLayers.jsp" %>
-
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/legalesLayer.jsp" %>

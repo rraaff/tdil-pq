@@ -1,3 +1,5 @@
+<%@page import="com.tdil.ljpeugeot.feeds.dealer.DealerImportSpec"%>
+<%@page import="com.tdil.ljpeugeot.model.Dealer"%>
 <%@ include file="includes/checklogin.jsp"%><%--
 --%><%@ page import="java.io.*,java.util.*,javax.servlet.*"%><%--
 --%><%@ page import="javax.servlet.http.*"%><%--
@@ -47,11 +49,11 @@
 						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
 					}
 					fi.write(file);
-					com.tdil.ljpeugeot.vlu.VLUUtils.registerNewImport(file.getName());
+					com.tdil.ljpeugeot.feeds.ImportUtils.registerImport(file.getName(), DealerImportSpec.TYPE, new DealerImportSpec());
 				}
 			}
 		} catch (Exception ex) {
-			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.ljpeugeot.vlu.VLUUtils.class).error(ex.getMessage(), ex);
+			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.ljpeugeot.feeds.ImportUtils.class).error(ex.getMessage(), ex);
 		}
 	} 
-	response.sendRedirect(request.getContextPath() + "/admin/vlu.jsp");%>
+	response.sendRedirect(request.getContextPath() + "/admin/dealer.jsp");%>

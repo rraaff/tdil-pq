@@ -22,36 +22,6 @@
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
 <script type="text/javascript">
 
-$(document).ready(
-		function(){
-			$( "#enterPets" ).click(function() {
-				<%@ include file="includes/blockUI.jspf" %>
-				$.ajax({
-		          type: "GET",
-		          cache: false,
-		          async: false,
-		          url: "./refreshThalamusLoginCacheServlet.st",
-		          dataType: "json",
-		          success: function(data) {
-		        	  <%@ include file="includes/unblockUI.jspf" %>
-		        	  if (data.result == 'OK') {
-		        		  var userDate = new Date();
-		        			var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
-		        			window.open('<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsMobileLoginUrl(websiteUser)%>SESSIONID=<%=websiteUser.getJSESSIONID()%>&TIMEZONEOFFSET=' +userTimeZone+ '&LOJACKTOKEN=<%=com.tdil.ljpeugeot.pets.PetsConnector.getPetsToken()%>&AWSELB=<%=websiteUser.getAWSELB()%>', 'Lojack Pets');
-						} else {
-							errorAjax();
-						}
-		       	   },
-			          error: function() {
-			        	  <%@ include file="includes/unblockUI.jspf" %>
-			        	  errorAjax();
-			          }
-			      });
-				});
-		}
-);
-
-
 function enterPrevent() {
 	var userDate = new Date();
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
@@ -120,29 +90,11 @@ function chbg(title, subTitle) {
 </div>
 <div id="laRuedita">
 	<div class="fakeRuedita">
-		<%
-			if (websiteUser.isClientClubLoJack() && LJPeugeotConfig.isClubLoJackShow() ) {
-		%>
-			<div id="iconoClubLJ"><a href="clubLoJack.jsp" onmouseover="chbg('Club', 'LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } %>
+		<div id="iconoLogout"><a href="./logoutMobile.do" onmouseover="chbg('Salir', 'del sistema')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<div id="iconoParkings"><a href="../productoParkings.jsp" onmouseover="chbg('Parking', 'Estacioná en CABA y GBA')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<!-- div id="iconoProfile"><a href="./goToUpdatePersonMobile.do" title="Cambiar mis datos"><img src="../images/null.gif" /></a></div -->
 		<% if (websiteUser.isPreventUser()) { %>
 			<div id="iconoCar"><a id="loginPreventLink" href="javascript:enterPrevent()" onmouseover="chbg('Car', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoCar"><a href="videoPageCar.jsp" onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } %>
-		<% if (websiteUser.isHomeUser()) { %>
-			<div id="iconoHome"><a href="../productoHome.jsp" onmouseover="chbg('Home', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoHome"><a href="videoPageHome.jsp" onmouseover="chbg('home', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } %>
-		<% if (websiteUser.isPetUser()) { %>
-			<div id="iconoPets"><a id="enterPets" href="#" onmouseover="chbg('Pet', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
-		<% } else { %>
-			<div id="iconoPets"><a href="videoPagePets.jsp" onmouseover="chbg('Pet', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
 		<div id="iconoTv"><a href="http://www.lojack.tv" onmouseover="chbg('LOJACK TV', 'Ingresar ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')" target="_blank"><img src="../images/null.gif" /></a></div>
 		<div id="rdCentral">

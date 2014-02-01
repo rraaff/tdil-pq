@@ -5,11 +5,11 @@
 	<property name="project.name.lower" value="peugeotservice" />
 	
 	<property name="sql.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-	<property name="root.url" value="jdbc:sqlserver://192.168.0.132:1123" />
+	<property name="root.url" value="jdbc:sqlserver://192.168.0.104:1123" />
 	<property name="root.user" value="sa" />
 	<property name="root.pass" value="root" />
 
-	<property name="db.url" value="jdbc:sqlserver://192.168.0.132:1123;database=PEUGEOTSVC_DB;" />
+	<property name="db.url" value="jdbc:sqlserver://192.168.0.104:1123;database=PEUGEOTSVC_DB;" />
 	<property name="db.user" value="PEUGEOTSVC_USER" />
 	<property name="db.pass" value="p4l0ll1n4" />
 

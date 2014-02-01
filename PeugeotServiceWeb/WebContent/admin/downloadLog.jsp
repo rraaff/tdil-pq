@@ -1,5 +1,5 @@
 <%@ include file="includes/checklogin.jsp" %><%--
---%><%@ include file="includes/checklogaccess.jspf" %><%--
+--%><%@ include file="includes/checkadmin.jspf" %><%--
 --%><%
 java.io.FileInputStream inputStream = null;
 		try {
