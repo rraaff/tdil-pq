@@ -88,6 +88,10 @@ public class KMImportSpec implements ImportSpec {
 			}
 		}
 		public boolean needsFirstAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+			if(vehicle.getNeedsadvice1() == 1 ) {
+				return false;
+			}
+			
 			// si pasaron 10 meses, aviso
 			Calendar today = Calendar.getInstance();
 			Calendar lastService = Calendar.getInstance();
@@ -101,9 +105,7 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.MONTH, 11);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					if(vehicle.getNeedsadvice1() == 0 ) {
-						return true;
-					}
+					return true;
 				}
 			}
 			
@@ -113,15 +115,16 @@ public class KMImportSpec implements ImportSpec {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 8000 && kmFromLastServiceNew < 10000) {
 					// Y los km nuevos son menores a 10000
-					if(vehicle.getNeedsadvice1() == 0 ) {
-						return true;
-					}
+					return true;
 				}
 			}
 			return false;
 		}
 		
 		public boolean needsSecondAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+			if(vehicle.getNeedsadvice2() == 1) {
+				return false;
+			}
 			// si pasaron 11 meses a , aviso
 			Calendar today = Calendar.getInstance();
 			Calendar lastService = Calendar.getInstance();
@@ -136,9 +139,7 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.DATE, 15);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					if(vehicle.getNeedsadvice2() == 0) {
-						return true;
-					}
+					return true;
 				}
 			}
 			
@@ -148,15 +149,16 @@ public class KMImportSpec implements ImportSpec {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 10000 && kmFromLastServiceNew < 11500) {
 					// Y los km nuevos son menores a 10000
-					if(vehicle.getNeedsadvice2() == 0 ) {
-						return true;
-					}
+					return true;
 				}
 			}
 			return false;
 		}
 
 		public boolean needsThirdAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+			if(vehicle.getNeedsadvice3() == 1) {
+				return false;
+			}
 			// si pasaron 11 meses, aviso
 			Calendar today = Calendar.getInstance();
 			Calendar lastService = Calendar.getInstance();
@@ -171,9 +173,7 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.MONTH, 12);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					if(vehicle.getNeedsadvice3() == 0) {
-						return true;
-					}
+					return true;
 				}
 			}
 			
@@ -183,9 +183,7 @@ public class KMImportSpec implements ImportSpec {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 11500 && kmFromLastServiceNew < 12000) {
 					// Y los km nuevos son menores a 10000
-					if(vehicle.getNeedsadvice3() == 0 ) {
-						return true;
-					}
+					return true;
 				}
 			}
 			return false;

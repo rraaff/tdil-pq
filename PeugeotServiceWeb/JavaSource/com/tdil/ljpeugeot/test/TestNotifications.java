@@ -117,6 +117,25 @@ public class TestNotifications extends TestCase {
 		assertTrue("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
 		
 	}
+	public void testAdvice2Processed() {
+		Vehicle v = new Vehicle();
+		v.setDomain("PEPE");
+		v.setKm(7500);
+		v.setLastservicekm(0);
+		v.setLastservicedate(new Date());
+		v.setAdvice1sent(0);
+		v.setNeedsadvice1(1);
+		v.setNeedsadvice2(1);
+		v.setNeedsadvice3(0);
+		
+		KMImportRecord rec = new KMImportRecord();
+		
+		rec.setKm("10900");
+		// paso a 11, deberia tener aviso
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+	}
+	
 	
 	public void testAdvice3() {
 		Vehicle v = new Vehicle();
@@ -153,5 +172,25 @@ public class TestNotifications extends TestCase {
 		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
 		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
 		
+	}
+	
+	public void testAdvice3AlreadyProcessed() {
+		Vehicle v = new Vehicle();
+		v.setDomain("PEPE");
+		v.setKm(7500);
+		v.setLastservicekm(0);
+		v.setLastservicedate(new Date());
+		v.setAdvice1sent(0);
+		v.setNeedsadvice1(1);
+		v.setNeedsadvice2(0);
+		v.setNeedsadvice3(1);
+		
+		KMImportRecord rec = new KMImportRecord();
+		
+		rec.setKm("11500");
+		// paso a 11, deberia tener aviso
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertFalse("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
 	}
 }
