@@ -34,6 +34,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('mail.p
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contactform.email','subcmd@gmail.com','Email del formulario de contacto',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.native.url','http://www.lojackprevent.com.ar/','prevent.native.url',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('pets.native.url','http://www.lojackgis.com.ar/lojackpetsmobile/login.aspx','pets.native.url',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('maps.url','http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png','Url de los mapas',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('import.range.km','04:00-05:00','Rango de importacion de kms (HH24:MM-HH24:MM)',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('email.send.range','10:00-18:00','Rango de envio de notificaciones (HH24:MM-HH24:MM)',0);

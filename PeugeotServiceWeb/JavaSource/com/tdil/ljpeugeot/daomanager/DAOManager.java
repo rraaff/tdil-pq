@@ -12,6 +12,7 @@ import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
+import com.tdil.ljpeugeot.dao.VehicleDAO;
 import com.tdil.ljpeugeot.dao.WebsiteUserDAO;
 
 public abstract class DAOManager {
@@ -62,7 +63,11 @@ public abstract class DAOManager {
 		return currentDao.getDataImportDAO();
 	}
 	
-		public static DAOProvider getCurrentDao() {
+	public static VehicleDAO getVehicleDAO() throws SQLException {
+		return currentDao.getVehicleDAO();
+	}
+	
+	public static DAOProvider getCurrentDao() {
 		return currentDao;
 	}
 
