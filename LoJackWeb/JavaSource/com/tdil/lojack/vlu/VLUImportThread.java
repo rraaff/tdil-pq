@@ -150,6 +150,8 @@ public class VLUImportThread extends Thread {
 				}
 			} catch (SQLException e) {
 				getLog().error(e.getMessage(), e);
+			} catch (Exception e) {
+				getLog().error(e.getMessage(), e);
 			}
 		}
 	}
