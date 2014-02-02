@@ -28,6 +28,7 @@ CREATE TABLE WEBSITEUSER (
   `homeUserId` VARCHAR(100) NULL ,
   `petUserId` VARCHAR(100) NULL ,
   `preventUserId` VARCHAR(100) NULL ,
+  `email` VARCHAR(150) NULL ,
   `id_avatar` INT NULL,
   `ext_avatar` VARCHAR(10) NULL ,
   PRIMARY KEY (`id`),
@@ -143,7 +144,7 @@ CREATE TABLE DEALER (
   `id_data_import` INT NOT NULL,
   `name` VARCHAR(200) NOT NULL ,
   `address` VARCHAR(200) NOT NULL ,
-  `email` VARCHAR(100) NOT NULL ,
+  `email` VARCHAR(150) NOT NULL ,
   `phone` VARCHAR(200) NOT NULL ,
   `id_city` INT NOT NULL ,
   `lat` DECIMAL (10,8) NULL ,
@@ -182,6 +183,7 @@ CREATE TABLE VEHICLE (
   `km` INT NULL,
   `lastServiceKm` INT NULL,
   `lastServiceDate` DATE NULL ,
+  `needsAdvice` INT NOT NULL,
   `needsAdvice1` INT NOT NULL,
   `advice1sent` INT NOT NULL,
   `needsAdvice2` INT NOT NULL,
@@ -193,6 +195,7 @@ CREATE TABLE VEHICLE (
   PRIMARY KEY (`id`),
   INDEX `IX_VEHICLE_00` (`id_websiteuser` ASC),
   INDEX `IX_VEHICLE_01` (`id_model` ASC),
+  INDEX `IX_VEHICLE_02` (`needsAdvice` ASC),
   CONSTRAINT `FK_VEHICLE_00`
     FOREIGN KEY (`id_websiteuser` )
     REFERENCES WEBSITEUSER (`id` )

@@ -20,6 +20,7 @@ import com.tdil.ljpeugeot.cache.blob.PublicBlobResolver;
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.daomanager.MySQLDAOProvider;
 import com.tdil.ljpeugeot.daomanager.SQLServerDAOProvider;
+import com.tdil.ljpeugeot.feeds.KMImportThread;
 import com.tdil.ljpeugeot.model.SystemProperty;
 import com.tdil.ljpeugeot.model.SystemPropertyExample;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
@@ -55,7 +56,7 @@ public class LJPeugeotConfig extends SystemConfig {
 	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
 	
-//	public static VLUImportThread importThread;
+	public static KMImportThread importThread;
 	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LJPeugeotConfig.class);
@@ -286,28 +287,28 @@ public class LJPeugeotConfig extends SystemConfig {
 		}
 		getLog().fatal("maps.url is " + getMapsUrl());
 		
-/*
-		String importRange = SystemPropertyUtils.getSystemPropertValue("vlu.import.range");
+
+		String importRange = SystemPropertyUtils.getSystemPropertValue("import.range.km");
 		if (!StringUtils.isEmpty(importRange) && importRange.contains("-")) {
 			String ranges[] = importRange.split("-");
 			if (ranges.length == 2 && ranges[0].contains(":") && ranges[1].contains(":")) {
 				try {
 					String start[] = ranges[0].split(":");
-					VLUImportThread.setStartHour(Integer.parseInt(start[0]));
-					VLUImportThread.setStartMinutes(Integer.parseInt(start[1]));
+					KMImportThread.setStartHour(Integer.parseInt(start[0]));
+					KMImportThread.setStartMinutes(Integer.parseInt(start[1]));
 					String end[] = ranges[1].split(":");
-					VLUImportThread.setEndHour(Integer.parseInt(end[0]));
-					VLUImportThread.setEndMinutes(Integer.parseInt(end[1]));
+					KMImportThread.setEndHour(Integer.parseInt(end[0]));
+					KMImportThread.setEndMinutes(Integer.parseInt(end[1]));
 				} catch (Exception e) {
 					getLog().error(e.getMessage(), e);
 				}
 			}
 		}
-		getLog().fatal("Vlu import range is " + VLUImportThread.getStartHour() + ":" + VLUImportThread.getStartMinutes() + "-"
-				+ VLUImportThread.getEndHour() + ":" + VLUImportThread.getEndMinutes());
+		getLog().fatal("KM import range is " + KMImportThread.getStartHour() + ":" + KMImportThread.getStartMinutes() + "-"
+				+ KMImportThread.getEndHour() + ":" + KMImportThread.getEndMinutes());
 		
-		importThread = new VLUImportThread();
-		importThread.start();*/
+		importThread = new KMImportThread();
+		importThread.start();
 	}
 
 	@Override

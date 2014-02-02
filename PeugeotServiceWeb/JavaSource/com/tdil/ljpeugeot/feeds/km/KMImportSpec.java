@@ -2,12 +2,14 @@ package com.tdil.ljpeugeot.feeds.km;
 
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.ImportSpec;
+import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.DataImport;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
@@ -75,13 +77,13 @@ public class KMImportSpec implements ImportSpec {
 			if (!vehicles.isEmpty()) {
 				Vehicle vehicle = vehicles.get(0);
 				if (needsFirstAdvice(vehicle, importRecord)) {
-//					sendFirstAdvice(vehicle);
+					sendFirstAdvice(vehicle, importRecord);
 				} else {
 					if (needsSecondAdvice(vehicle, importRecord)) {
-//						sendSecondAdvice(vehicle);
+						sendSecondAdvice(vehicle, importRecord);
 					} else {
 						if (needsThirdAdvice(vehicle, importRecord)) {
-//							sendThirdAdvice(vehicle);
+							sendThirdAdvice(vehicle, importRecord);
 						} 
 					}
 				}
@@ -190,5 +192,37 @@ public class KMImportSpec implements ImportSpec {
 		}
 		
 	}
+
+	private static void sendFirstAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice1(1);
+		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+		int adviceNumber = 1;
+		createAdvice(vehicle, importRecord, adviceNumber);
+	}
+	
+	private static void sendSecondAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice2(1);
+		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+		int adviceNumber = 2;
+		createAdvice(vehicle, importRecord, adviceNumber);
+	}
+	private static void sendThirdAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice3(1);
+		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+		int adviceNumber = 3;
+		createAdvice(vehicle, importRecord, adviceNumber);
+	}
+
+	private static void createAdvice(Vehicle vehicle, KMImportRecord importRecord, int adviceNumber) throws SQLException {
+		Advice advice = new Advice();
+		advice.setAdvisedate(new Date());
+		advice.setAdvisenumber(adviceNumber);
+		advice.setDeleted(0);
+		advice.setIdVechicle(vehicle.getId());
+		advice.setIsread(0);
+		advice.setKm(Integer.valueOf(importRecord.getKm()));
+		DAOManager.getAdviceDAO().insertAdvice(advice);
+	}
+	
 
 }
