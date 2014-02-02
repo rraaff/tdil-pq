@@ -72,4 +72,6 @@ public interface VehicleDAO {
 	 * @mbggenerated  Sun Feb 02 17:26:57 ART 2014
 	 */
 	int updateVehicleByPrimaryKey(Vehicle record) throws SQLException;
+
+	List<Vehicle> selectVehicleForAdvise() throws SQLException;
 }

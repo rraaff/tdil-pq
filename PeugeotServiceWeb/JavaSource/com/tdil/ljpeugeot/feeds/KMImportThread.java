@@ -57,6 +57,8 @@ public class KMImportThread extends Thread {
 				getLog().error(e.getMessage(), e);
 			} catch (ValidationException e) {
 				getLog().error(e.getMessage(), e);
+			} catch (Exception e) {
+				getLog().error(e.getMessage(), e);
 			}
 		}
 	}

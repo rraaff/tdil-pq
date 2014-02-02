@@ -453,4 +453,13 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="selectForAdvise" resultMap="BaseResultMap">
+  	 select
+    <include refid="VEHICLE.Base_Column_List" />
+    from VEHICLE vhcl
+    where vhcl.needsAdvice = 1
+    LIMIT 100
+  </select>
+  
 </sqlMap>

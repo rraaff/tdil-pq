@@ -29,8 +29,7 @@ public class SendEmailsAdviceThread extends Thread {
 			super();
 		}
 		public List<Vehicle> executeInTransaction() throws SQLException {
-			//return DAOManager.getVehicleDAO().selectVehicleForAdvise(); // user TOP
-			return null;
+			return DAOManager.getVehicleDAO().selectVehicleForAdvise(); // user TOP
 		}
 	}
 	
@@ -39,16 +38,18 @@ public class SendEmailsAdviceThread extends Thread {
 		
 		public SendAdvise(Vehicle vehicle) {
 			super();
+			this.vehicle = vehicle;
 		}
 		public void executeInTransaction() throws SQLException {
 			if (vehicle.getNeedsadvice3() == 1) {
-				
+				// mando email
 				vehicle.setAdvice3sent(1);
 			} else {
 				if (vehicle.getNeedsadvice2() == 1) {
-				
+					// mando email
 					vehicle.setAdvice2sent(1);
 				} else {
+					// mando email
 					vehicle.setAdvice1sent(1);
 				}
 			}
@@ -76,6 +77,8 @@ public class SendEmailsAdviceThread extends Thread {
 			} catch (SQLException e) {
 				getLog().error(e.getMessage(), e);
 			} catch (ValidationException e) {
+				getLog().error(e.getMessage(), e);
+			} catch (Exception e) {
 				getLog().error(e.getMessage(), e);
 			}
 		}

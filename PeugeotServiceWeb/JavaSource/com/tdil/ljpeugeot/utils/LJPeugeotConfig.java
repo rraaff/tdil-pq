@@ -21,6 +21,7 @@ import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.daomanager.MySQLDAOProvider;
 import com.tdil.ljpeugeot.daomanager.SQLServerDAOProvider;
 import com.tdil.ljpeugeot.feeds.KMImportThread;
+import com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread;
 import com.tdil.ljpeugeot.model.SystemProperty;
 import com.tdil.ljpeugeot.model.SystemPropertyExample;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
@@ -57,6 +58,7 @@ public class LJPeugeotConfig extends SystemConfig {
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
 	
 	public static KMImportThread importThread;
+	public static SendEmailsAdviceThread emailsThread;
 	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(LJPeugeotConfig.class);
@@ -307,8 +309,34 @@ public class LJPeugeotConfig extends SystemConfig {
 		getLog().fatal("KM import range is " + KMImportThread.getStartHour() + ":" + KMImportThread.getStartMinutes() + "-"
 				+ KMImportThread.getEndHour() + ":" + KMImportThread.getEndMinutes());
 		
-		importThread = new KMImportThread();
-		importThread.start();
+		if (importThread == null) {
+			importThread = new KMImportThread();
+			importThread.start();
+		}
+		
+		String sendRange = SystemPropertyUtils.getSystemPropertValue("email.send.range");
+		if (!StringUtils.isEmpty(sendRange) && sendRange.contains("-")) {
+			String ranges[] = sendRange.split("-");
+			if (ranges.length == 2 && ranges[0].contains(":") && ranges[1].contains(":")) {
+				try {
+					String start[] = ranges[0].split(":");
+					SendEmailsAdviceThread.setStartHour(Integer.parseInt(start[0]));
+					SendEmailsAdviceThread.setStartMinutes(Integer.parseInt(start[1]));
+					String end[] = ranges[1].split(":");
+					SendEmailsAdviceThread.setEndHour(Integer.parseInt(end[0]));
+					SendEmailsAdviceThread.setEndMinutes(Integer.parseInt(end[1]));
+				} catch (Exception e) {
+					getLog().error(e.getMessage(), e);
+				}
+			}
+		}
+		getLog().fatal("Send emails range is " + SendEmailsAdviceThread.getStartHour() + ":" + SendEmailsAdviceThread.getStartMinutes() + "-"
+				+ SendEmailsAdviceThread.getEndHour() + ":" + SendEmailsAdviceThread.getEndMinutes());
+		
+		if (emailsThread == null) {
+			emailsThread = new SendEmailsAdviceThread();
+			emailsThread.start();
+		}
 	}
 
 	@Override

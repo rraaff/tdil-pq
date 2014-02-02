@@ -146,4 +146,10 @@ public class VehicleDAOImpl implements VehicleDAO {
 			return record;
 		}
 	}
+	
+	@Override
+	public List<Vehicle> selectVehicleForAdvise() throws SQLException {
+		List<Vehicle> list = sqlMapClient.queryForList("dbo_VEHICLE.selectForAdvise");
+		return list;
+	}
 }

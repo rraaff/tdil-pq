@@ -453,4 +453,11 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="selectForAdvise" resultMap="BaseResultMap">
+  	 select top 100
+    <include refid="dbo_VEHICLE.Base_Column_List" />
+    from VEHICLE vhcl
+    where vhcl.needsAdvice = 1
+  </select>
 </sqlMap>
