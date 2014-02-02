@@ -586,8 +586,10 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("Vlu import range is " + VLUImportThread.getStartHour() + ":" + VLUImportThread.getStartMinutes() + "-"
 				+ VLUImportThread.getEndHour() + ":" + VLUImportThread.getEndMinutes());
 		
-		importThread = new VLUImportThread();
-		importThread.start();
+		if (importThread == null) {
+			importThread = new VLUImportThread();
+			importThread.start();
+		}
 	}
 
 	@Override
