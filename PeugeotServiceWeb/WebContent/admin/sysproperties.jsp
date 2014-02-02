@@ -1,7 +1,7 @@
 <%@page import="com.tdil.utils.StringUtils"%>
 <%@page import="com.tdil.ljpeugeot.model.SystemProperty"%>
 <%@ include file="includes/checklogin.jsp" %><%--
---%><%@ include file="includes/checksyspropaccess.jsp" %><%--
+--%><%@ include file="includes/checkadmin.jspf" %><%--
 --%><html>
 <body>
 <h1>Sys Properties</h1>

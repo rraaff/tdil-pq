@@ -11,6 +11,7 @@ import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.ImportSpec;
 import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.DataImport;
+import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
 import com.tdil.struts.TransactionalAction;
@@ -157,10 +158,22 @@ public class KMImportSpec implements ImportSpec {
 			return false;
 		}
 
-		public boolean needsThirdAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+		public boolean needsThirdAdvice(Vehicle vehicle, KMImportRecord importRecord2) throws SQLException {
 			if(vehicle.getNeedsadvice3() == 1) {
 				return false;
 			}
+			// me fijo si la garantia expiro
+			Model model = DAOManager.getModelDAO().selectModelByPrimaryKey(vehicle.getIdModel());
+			Calendar expiration = Calendar.getInstance();
+			expiration.setTime(vehicle.getPurchasedate());
+			
+			expiration.add(Calendar.MONTH, model.getMonthwarranty());
+			if (Calendar.getInstance().after(expiration)) {
+				vehicle.setWarrantyexpired(1);
+				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+				return false;
+			}
+			
 			// si pasaron 11 meses, aviso
 			Calendar today = Calendar.getInstance();
 			Calendar lastService = Calendar.getInstance();
@@ -194,6 +207,7 @@ public class KMImportSpec implements ImportSpec {
 	}
 
 	private static void sendFirstAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice1(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 1;
@@ -201,12 +215,14 @@ public class KMImportSpec implements ImportSpec {
 	}
 	
 	private static void sendSecondAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice2(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 2;
 		createAdvice(vehicle, importRecord, adviceNumber);
 	}
 	private static void sendThirdAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice3(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 3;

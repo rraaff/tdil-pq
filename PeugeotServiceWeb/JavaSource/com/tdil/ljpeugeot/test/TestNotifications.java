@@ -1,12 +1,18 @@
 package com.tdil.ljpeugeot.test;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import junit.framework.TestCase;
 
+import com.tdil.ibatis.IBatisManager;
+import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.km.KMImportRecord;
 import com.tdil.ljpeugeot.feeds.km.KMImportSpec;
+import com.tdil.ljpeugeot.model.Model;
+import com.tdil.ljpeugeot.model.ModelExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 
 public class TestNotifications extends TestCase {
@@ -137,9 +143,27 @@ public class TestNotifications extends TestCase {
 	}
 	
 	
-	public void testAdvice3() {
+	public void testAdvice3() throws SQLException {
+		ModelExample modelExample = new ModelExample();
+		modelExample.createCriteria().andNameEqualTo("24m");
+		List<Model> models = DAOManager.getModelDAO().selectModelByExample(modelExample);
+		Model model = null;
+		if (models.size() > 0) {
+			model = models.get(0);
+		} else {
+			model = new Model();
+			model.setName("24m");
+			model.setDescription("Modelo de auto con 24 meses de garantia");
+			model.setMonthwarranty(24);
+			model.setDeleted(0);
+			int id = DAOManager.getModelDAO().insertModel(model);
+			model.setId(id);
+		}
+		
 		Vehicle v = new Vehicle();
 		v.setDomain("PEPE");
+		v.setIdModel(model.getId());
+		v.setPurchasedate(new Date());
 		v.setKm(7500);
 		v.setLastservicekm(0);
 		v.setLastservicedate(new Date());
@@ -172,9 +196,15 @@ public class TestNotifications extends TestCase {
 		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
 		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
 		
+		// si pasaron mas de 24 meses, no hay tercer aviso
+		Calendar oldDate = Calendar.getInstance();
+		oldDate.add(Calendar.MONTH, -25);
+		v.setPurchasedate(oldDate.getTime());
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		
 	}
 	
-	public void testAdvice3AlreadyProcessed() {
+	public void testAdvice3AlreadyProcessed() throws SQLException {
 		Vehicle v = new Vehicle();
 		v.setDomain("PEPE");
 		v.setKm(7500);

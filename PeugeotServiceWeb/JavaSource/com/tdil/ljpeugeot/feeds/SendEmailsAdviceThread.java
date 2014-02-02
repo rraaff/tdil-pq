@@ -7,7 +7,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
-import com.tdil.ljpeugeot.feeds.km.KMImportSpec;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
@@ -30,7 +29,8 @@ public class SendEmailsAdviceThread extends Thread {
 			super();
 		}
 		public List<Vehicle> executeInTransaction() throws SQLException {
-			return DAOManager.getVehicleDAO().selectVehicleForAdvise(); // user TOP
+			//return DAOManager.getVehicleDAO().selectVehicleForAdvise(); // user TOP
+			return null;
 		}
 	}
 	

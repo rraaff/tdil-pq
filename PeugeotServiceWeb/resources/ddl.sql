@@ -178,6 +178,7 @@ CREATE TABLE VEHICLE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_websiteuser` INT NOT NULL,
   `id_model` INT NOT NULL,
+  `purchaseDate` DATE NULL ,
   `domain` VARCHAR(20) NULL ,
   `description` VARCHAR(100) NULL ,
   `km` INT NULL,
