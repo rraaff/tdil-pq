@@ -95,6 +95,10 @@ public abstract class AbstractRESTService {
 		return Response.status(status).entity(asJSON(intermediate)).build();
 	}
 
+	public <T> T extractObjectFromJSON(String body, Class<T> aClass) {
+		return (T)JSONObject.toBean((JSONObject)extractJSONObject(body), aClass);
+	}
+
 	public static JSON extractJSONObjectResponse(String response) {
 		try {
 			JSONTokener tokener = new JSONTokener(response);

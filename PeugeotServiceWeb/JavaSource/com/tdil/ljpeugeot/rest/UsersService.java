@@ -378,10 +378,6 @@ public class UsersService extends AbstractRESTService {
 		} 
 	}
 
-	public <T> T extractObjectFromJSON(String body, Class<T> aClass) {
-		return (T)JSONObject.toBean((JSONObject)extractJSONObject(body), aClass);
-	}
-	
 	@POST
 	@Path("/password/validate")
 	@Produces(MediaType.APPLICATION_JSON)

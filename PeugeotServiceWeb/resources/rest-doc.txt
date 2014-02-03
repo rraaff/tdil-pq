@@ -57,6 +57,9 @@ Services de un vehiculo
 /rest/vehicles/{vehicleId}/services
 {"list":[{"idVechicle":0,"km":10000,"serviceDate":"2014-02-03"},{"idVechicle":0,"km":20000,"serviceDate":"2014-02-03"}]}
 
+Agregado POST
+/rest/vehicles/{vehicleId}/service
+{"idVechicle":0,"km":10000,"serviceDate":"2014-02-03"}
 
 
 http://localhost:8180/PeugeotServiceWeb/rest/users/login?documentType=1&documentNumber=11111111&password=123123

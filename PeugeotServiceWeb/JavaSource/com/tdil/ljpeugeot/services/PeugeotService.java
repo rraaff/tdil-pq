@@ -133,6 +133,17 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class InsertService implements TransactionalAction {
+		private Service service;
+		public InsertService(Service service) {
+			super();
+			this.service = service;
+		}
+		public void executeInTransaction() throws SQLException {
+			DAOManager.getServiceDAO().insertService(this.service);
+		}
+	}
+	
 	public static ContactData getContactData(int idUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetContactData(idUser));
@@ -207,6 +218,19 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static boolean insertService(Service contactData) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new InsertService(contactData));
+			return true;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
 	public static List<Service> getServices(int idVehicle) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetServices(idVehicle));
@@ -219,7 +243,7 @@ public class PeugeotService {
 		} 
 	}
 	
-	public static boolean udpateService(Service service) {
+	public static boolean updateService(Service service) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new UpdateService(service));
 			return true;
