@@ -23,11 +23,13 @@ import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
 import com.tdil.ljpeugeot.model.ContactData;
+import com.tdil.ljpeugeot.model.Relation;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.ChangePasswordBean;
 import com.tdil.ljpeugeot.rest.model.ContactDataBean;
 import com.tdil.ljpeugeot.rest.model.LoginResponse;
 import com.tdil.ljpeugeot.rest.model.PersonBean;
+import com.tdil.ljpeugeot.rest.model.RelationBean;
 import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.ljpeugeot.struts.forms.ChangePasswordForm;
 import com.tdil.ljpeugeot.struts.forms.LoginForm;
@@ -73,7 +75,7 @@ public class UsersService extends AbstractRESTService {
 		WebsiteUser user;
 		try {
 			user = LoginForm.login(documentType + ":" + documentNumber, password, "", "");
-			getSession().setAttribute("user", user);
+			getSession(true).setAttribute("user", user);
 			
 			LoginResponse loginResponse = new LoginResponse();
 			loginResponse.setLogged(true);
@@ -166,6 +168,22 @@ public class UsersService extends AbstractRESTService {
 	}
 	
 	@GET
+	@Path("/relations")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listRelations() {
+		try {
+			List<RelationBean> result = new ArrayList<RelationBean>();
+			for (Relation adt : Relation.values()) {
+				result.add(new RelationBean(adt.name(), ApplicationResources.getMessage("relation_" + adt.name())));
+			}
+			return createResponse(201, new BeanCollection<RelationBean>(result));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response get() {
@@ -186,7 +204,11 @@ public class UsersService extends AbstractRESTService {
 		validateLogged();
 		try {
 			ContactData contactData = PeugeotService.getContactData(getUser().getId());
-			return createResponse(201, new ContactDataBean(contactData));
+			if (contactData == null) {
+				return createResponse(201, new ContactDataBean());
+			} else {
+				return createResponse(201, new ContactDataBean(contactData));
+			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			throw new WebApplicationException(401);
@@ -200,7 +222,11 @@ public class UsersService extends AbstractRESTService {
 		validateLogged();
 		try {
 			ContactDataBean personBean = extractObjectFromJSON(body, ContactDataBean.class);
-			ContactData contactData = personBean.getContactData();
+			ContactData contactData = ContactDataBean.asContactData(personBean);
+			ContactData original = PeugeotService.getContactData(getUser().getId());
+			contactData.setIdWebsiteuser(getUser().getId());
+			contactData.setId(original.getId());
+			contactData.setDeleted(0);
 			PeugeotService.udpateContactData(contactData);
 			if (PeugeotService.udpateContactData(contactData)) {
 				return okResponse();

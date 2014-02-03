@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.model.ContactData;
@@ -25,6 +26,8 @@ public class ContactDataBean {
 	private String contact3relation;
 	private String contact3phone;
 	
+	public ContactDataBean() {
+	}
 	public ContactDataBean(ContactData contactData) {
 		try {
 			BeanUtils.copyProperties(this, contactData);
@@ -35,10 +38,10 @@ public class ContactDataBean {
 		}
 	}
 	
-	public ContactData getContactData() {
+	public static ContactData asContactData(ContactDataBean contactDataBean) {
 		try {
 			ContactData result = new ContactData();
-			BeanUtils.copyProperties(result, this);
+			BeanUtils.copyProperties(result, contactDataBean);
 			return result;
 		} catch (IllegalAccessException e) {
 			getLog().error(e.getMessage(), e);

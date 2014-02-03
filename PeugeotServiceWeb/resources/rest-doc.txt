@@ -21,7 +21,36 @@ Lista las ciudades de una provincia para seleccion de concesionarias
 
 Lista las concesionarias de una ciudad
 /rest/dealers/dealers/{cityId}
-
 {"list":[{"address":"32 nro 2323","email":"galiadoros@peugeot.com","id":3,"name":"PeugeotRos","phone":"02224513521"},
 {"address":"44 nro 3434","email":"galiaros2@peugeot.com","id":4,"name":"PeugeotRos 2","phone":"022214513521"}]}
 
+Listado de las relaciones
+/rest/users/relations
+{"list":[{"description":"Familiar","name":"RELATIVE"},{"description":"Amigo","name":"FRIEND"},{"description":"Trabajo","name":"COWORKER"}]}
+
+Datos de contacto GET
+/rest/users/contactData
+{"contact1healthi":"OSDE 310","contact1name":"Marcos Godoy","contact1phone":"02216412772","contact1relation":"RELATIVE",
+"contact1secword":"pajaroslocos","contact2name":"Marcela Cioma","contact2phone":"02215346997","contact2relation":"RELATIVE",
+"contact3name":"Vicky","contact3phone":"34343434","contact3relation":"COWORKER"}
+
+Mismo JSON para post
+respuesta
+{"errors":{},"ok":true}
+
+Vehiculos
+/rest/vehicles/list
+{"list":[{"description":"","domain":"CZP075","id":1,"idDealer":1,"idModel":1,"km":0,"lastServiceDate":"2014-02-02","lastservicekm":0,"purchaseDate":"2014-02-02"}]}
+Fecha en formato YYYY-MM-DD
+
+Cambia el concesionario
+/rest/vehicles/{vehicleId}/changeDealer/{dealerId}
+{"errors":{},"ok":true}
+
+/rest/vehicles/models
+{"list":[{"description":"Modelo de auto con 24 meses de garantia","monthwarranty":24,"name":"24m"},
+{"description":"Peugeot 206","monthwarranty":24,"name":"206"},
+{"description":"Peugeot 408","monthwarranty":60,"name":"408"}]}
+
+
+http://localhost:8180/PeugeotServiceWeb/rest/users/login?documentType=1&documentNumber=11111111&password=123123

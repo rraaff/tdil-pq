@@ -8,6 +8,9 @@ import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.ContactData;
+import com.tdil.ljpeugeot.model.ContactDataExample;
+import com.tdil.ljpeugeot.model.Model;
+import com.tdil.ljpeugeot.model.ModelExample;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.ServiceExample;
 import com.tdil.ljpeugeot.model.Vehicle;
@@ -28,7 +31,25 @@ public class PeugeotService {
 			this.id = id;
 		}
 		public ContactData executeInTransaction() throws SQLException {
-			return DAOManager.getContactDataDAO().selectContactDataByPrimaryKey(this.id);
+			ContactDataExample contactDataExample = new ContactDataExample();
+			contactDataExample.createCriteria().andIdWebsiteuserEqualTo(this.id);
+			List<ContactData> result = DAOManager.getContactDataDAO().selectContactDataByExample(contactDataExample);
+			if (result.size() > 0) {
+				return result.get(0);
+			} else {
+				return null;
+			}
+		}
+	}
+	
+	private static final class GetVehicle implements TransactionalActionWithResult<Vehicle> {
+		private int id;
+		public GetVehicle(int id) {
+			super();
+			this.id = id;
+		}
+		public Vehicle executeInTransaction() throws SQLException {
+			return DAOManager.getVehicleDAO().selectVehicleByPrimaryKey(this.id);
 		}
 	}
 	
@@ -53,6 +74,27 @@ public class PeugeotService {
 			VehicleExample vehicleExample = new VehicleExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
 			return DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetModels implements TransactionalActionWithResult<List<Model>> {
+		public GetModels() {
+			super();
+		}
+		public List<Model> executeInTransaction() throws SQLException {
+			ModelExample vehicleExample = new ModelExample();
+			return DAOManager.getModelDAO().selectModelByExample(vehicleExample);
+		}
+	}
+	
+	private static final class UpdateVehicle implements TransactionalAction {
+		private Vehicle service;
+		public UpdateVehicle(Vehicle service) {
+			super();
+			this.service = service;
+		}
+		public void executeInTransaction() throws SQLException {
+			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(this.service);
 		}
 	}
 	
@@ -125,6 +167,43 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<Vehicle>();
+		} 
+	}
+	
+	public static List<Model> getModels() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetModels());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<Model>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<Model>();
+		} 
+	}
+	
+	public static Vehicle getVehicle(int idUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetVehicle(idUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static boolean udpateVehicle(Vehicle contactData) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new UpdateVehicle(contactData));
+			return true;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
 		} 
 	}
 	
