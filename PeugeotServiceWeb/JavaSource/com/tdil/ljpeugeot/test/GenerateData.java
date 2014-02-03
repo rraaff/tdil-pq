@@ -18,6 +18,7 @@ import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.DealerExample;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.ModelExample;
+import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.State;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.WebsiteUser;
@@ -46,6 +47,7 @@ public class GenerateData extends TestCase {
 				} else {
 					wu = new WebsiteUser();
 					wu.setEmail("mgodoy@mgodoy.com");
+					wu.setLojackuserid("1:11111111");
 					wu.setDeleted(0);
 					int id_wu = DAOManager.getWebsiteUserDAO().insertWebsiteUser(wu);
 					wu.setId(id_wu);
@@ -140,7 +142,16 @@ public class GenerateData extends TestCase {
 					v.setAdvice3sent(0);
 					v.setWarrantyexpired(0);
 					v.setDeleted(0);
-					DAOManager.getVehicleDAO().insertVehicle(v);
+					int idVehicle = DAOManager.getVehicleDAO().insertVehicle(v);
+					
+					Service s = new Service();
+					s.setDeleted(0);
+					s.setIdVehicle(idVehicle);
+					s.setKm(10000);
+					s.setServicedate(new Date());
+					DAOManager.getServiceDAO().insertService(s);
+					s.setKm(20000);
+					DAOManager.getServiceDAO().insertService(s);
 				}
 			}
 		});

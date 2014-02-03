@@ -235,14 +235,14 @@ ENGINE = InnoDB;
 
 CREATE TABLE SERVICE (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_vechicle` INT NOT NULL,
+  `id_vehicle` INT NOT NULL,
   `km` INT NULL,
   `serviceDate` DATE NULL ,
   `deleted` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `IX_SERVICE_00` (`id_vechicle` ASC),
+  INDEX `IX_SERVICE_00` (`id_vehicle` ASC),
   CONSTRAINT `FK_SERVICE_00`
-    FOREIGN KEY (`id_vechicle` )
+    FOREIGN KEY (`id_vehicle` )
     REFERENCES VEHICLE (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

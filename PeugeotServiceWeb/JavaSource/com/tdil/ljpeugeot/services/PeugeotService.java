@@ -77,6 +77,19 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class GetServices implements TransactionalActionWithResult<List<Service>> {
+		private int idVehicle;
+		public GetServices(int Vehicle) {
+			super();
+			this.idVehicle = Vehicle;
+		}
+		public List<Service> executeInTransaction() throws SQLException {
+			ServiceExample serviceExample = new ServiceExample();
+			serviceExample.createCriteria().andIdVehicleEqualTo(this.idVehicle);
+			return DAOManager.getServiceDAO().selectServiceByExample(serviceExample);
+		}
+	}
+	
 	private static final class GetModels implements TransactionalActionWithResult<List<Model>> {
 		public GetModels() {
 			super();
@@ -95,19 +108,6 @@ public class PeugeotService {
 		}
 		public void executeInTransaction() throws SQLException {
 			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(this.service);
-		}
-	}
-	
-	private static final class GetServices implements TransactionalActionWithResult<List<Service>> {
-		private int idVehicle;
-		public GetServices(int idVehicle) {
-			super();
-			this.idVehicle = idVehicle;
-		}
-		public List<Service> executeInTransaction() throws SQLException {
-			ServiceExample vehicleExample = new ServiceExample();
-			vehicleExample.createCriteria().andIdVechicleEqualTo(this.idVehicle);
-			return DAOManager.getServiceDAO().selectServiceByExample(vehicleExample);
 		}
 	}
 	

@@ -15,10 +15,12 @@ import javax.ws.rs.core.Response;
 
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
+import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.DealerBean;
 import com.tdil.ljpeugeot.rest.model.ModelBean;
+import com.tdil.ljpeugeot.rest.model.ServiceBean;
 import com.tdil.ljpeugeot.rest.model.VehicleBean;
 import com.tdil.ljpeugeot.services.DealersService;
 import com.tdil.ljpeugeot.services.PeugeotService;
@@ -70,6 +72,23 @@ public class VehiclesRestService extends AbstractRESTService {
 			vehicle.setIdDealer(Integer.parseInt(dealerId));
 			PeugeotService.udpateVehicle(vehicle);
 			return okResponse();
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/{vehicleId}/services")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getServices(@PathParam("vehicleId") String vehicleId) {
+//		validateLogged();
+		try {
+			Collection<ServiceBean> result = new ArrayList<ServiceBean>();
+			for (Service state : PeugeotService.getServices(Integer.valueOf(vehicleId))) {
+				result.add(new ServiceBean(state));
+			}
+			return createResponse(201, new BeanCollection<ServiceBean>(result));
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return failResponse();

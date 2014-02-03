@@ -34,7 +34,7 @@ Datos de contacto GET
 "contact1secword":"pajaroslocos","contact2name":"Marcela Cioma","contact2phone":"02215346997","contact2relation":"RELATIVE",
 "contact3name":"Vicky","contact3phone":"34343434","contact3relation":"COWORKER"}
 
-Mismo JSON para post
+Mismo json POST modifica
 respuesta
 {"errors":{},"ok":true}
 
@@ -47,10 +47,16 @@ Cambia el concesionario
 /rest/vehicles/{vehicleId}/changeDealer/{dealerId}
 {"errors":{},"ok":true}
 
+Modelos de vehiculos
 /rest/vehicles/models
 {"list":[{"description":"Modelo de auto con 24 meses de garantia","monthwarranty":24,"name":"24m"},
 {"description":"Peugeot 206","monthwarranty":24,"name":"206"},
 {"description":"Peugeot 408","monthwarranty":60,"name":"408"}]}
+
+Services de un vehiculo
+/rest/vehicles/{vehicleId}/services
+{"list":[{"idVechicle":0,"km":10000,"serviceDate":"2014-02-03"},{"idVechicle":0,"km":20000,"serviceDate":"2014-02-03"}]}
+
 
 
 http://localhost:8180/PeugeotServiceWeb/rest/users/login?documentType=1&documentNumber=11111111&password=123123
