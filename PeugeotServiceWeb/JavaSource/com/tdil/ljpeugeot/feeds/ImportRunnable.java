@@ -1,6 +1,8 @@
 package com.tdil.ljpeugeot.feeds;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
@@ -32,31 +34,7 @@ public class ImportRunnable implements Runnable {
 	public void run() {
 		boolean error = false;
 		try {
-			changeStatus(dataImport.getId(), "PROCESSING");
-			CsvBeanReader beanReader = null;
-			try {
-				beanReader = new CsvBeanReader(new FileReader(SystemPropertyCache.getTempPath() + "/" + dataImport.getFilename()),CsvPreference.STANDARD_PREFERENCE);
-
-				// the header elements are used to map the values to the bean (names
-				// must match)
-				final String[] header = beanReader.getHeader(true);
-				final CellProcessor[] processors = importSpec.getCellProcessor();
-
-				Object importRecord;
-				while ((importRecord = beanReader.read(importSpec.getRecordClass(), header, processors)) != null) {
-					try {
-						importSpec.processRow(importRecord, dataImport);
-						incrementProcess(dataImport);
-					} catch (Exception e) {
-						getLog().error(e.getMessage(), e);
-						incrementError(dataImport);
-					}
-				}
-			} finally {
-				if (beanReader != null) {
-					beanReader.close();
-				}
-			}
+			processImport();
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);
 			changeStatus(dataImport.getId(), "ERROR");
@@ -72,6 +50,34 @@ public class ImportRunnable implements Runnable {
 			}
 		}
 
+	}
+
+	public void processImport() throws FileNotFoundException, IOException {
+		changeStatus(dataImport.getId(), "PROCESSING");
+		CsvBeanReader beanReader = null;
+		try {
+			beanReader = new CsvBeanReader(new FileReader(SystemPropertyCache.getTempPath() + "/" + dataImport.getFilename()),CsvPreference.STANDARD_PREFERENCE);
+
+			// the header elements are used to map the values to the bean (names
+			// must match)
+			final String[] header = beanReader.getHeader(true);
+			final CellProcessor[] processors = importSpec.getCellProcessor();
+
+			Object importRecord;
+			while ((importRecord = beanReader.read(importSpec.getRecordClass(), header, processors)) != null) {
+				try {
+					importSpec.processRow(importRecord, dataImport);
+					incrementProcess(dataImport);
+				} catch (Exception e) {
+					getLog().error(e.getMessage(), e);
+					incrementError(dataImport);
+				}
+			}
+		} finally {
+			if (beanReader != null) {
+				beanReader.close();
+			}
+		}
 	}
 	
 	private void incrementProcess(DataImport dataImport2) {

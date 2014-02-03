@@ -7,8 +7,12 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.ContactData;
+import com.tdil.ljpeugeot.model.Dealer;
+import com.tdil.ljpeugeot.model.DealerExample;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.ModelExample;
+import com.tdil.ljpeugeot.model.State;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.WebsiteUser;
 import com.tdil.ljpeugeot.model.WebsiteUserExample;
@@ -39,6 +43,22 @@ public class GenerateData extends TestCase {
 					int id_wu = DAOManager.getWebsiteUserDAO().insertWebsiteUser(wu);
 					wu.setId(id_wu);
 					create = true;
+					
+					ContactData contactData = new ContactData();
+					contactData.setIdWebsiteuser(wu.getId());
+					contactData.setContact1healthi("OSDE");
+					contactData.setContact1name("Marcos Godoy");
+					contactData.setContact1phone("02216412772");
+					contactData.setContact1relation("RELATIVE");
+					contactData.setContact1secword("pajaroslocos");
+					contactData.setContact2name("Marcela Cioma");
+					contactData.setContact2phone("02215346997");
+					contactData.setContact2relation("RELATIVE");
+					contactData.setContact3name("Vicky");
+					contactData.setContact3phone("34343434");
+					contactData.setContact3relation("COWORKER");
+					contactData.setDeleted(0);
+					DAOManager.getContactDataDAO().insertContactData(contactData);
 				}
 				
 				ModelExample modelExample = new ModelExample();
@@ -58,10 +78,16 @@ public class GenerateData extends TestCase {
 				}
 				
 				if (create) {
+//					xxx;
+					
+					DealerExample dealerExample = new DealerExample();
+					List<Dealer> dealers = DAOManager.getDealerDAO().selectDealerByExample(dealerExample);
+					
 					Vehicle v = new Vehicle();
 					v.setDomain("CZP075");
 					v.setIdWebsiteuser(wu.getId());
 					v.setIdModel(model.getId());
+					v.setIdDealer(dealers.get(0).getId());
 					v.setPurchasedate(new Date());
 					v.setKm(0);
 					v.setLastservicekm(0);

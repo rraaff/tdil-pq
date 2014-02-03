@@ -6,10 +6,12 @@ import com.tdil.ljpeugeot.dao.AdviceDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
+import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
+import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
 import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
@@ -72,6 +74,14 @@ public abstract class DAOManager {
 		return currentDao.getAdviceDAO();
 	}
 	
+	public static ContactDataDAO getContactDataDAO() throws SQLException {
+		return currentDao.getContactDataDAO();
+	}
+	
+	public static ServiceDAO getServiceDAO() throws SQLException {
+		return currentDao.getServiceDAO();
+	}
+
 	public static DAOProvider getCurrentDao() {
 		return currentDao;
 	}
@@ -79,5 +89,6 @@ public abstract class DAOManager {
 	public static void setCurrentDao(DAOProvider currentDao) {
 		DAOManager.currentDao = currentDao;
 	}
+
 	
 }

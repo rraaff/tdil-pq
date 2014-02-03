@@ -16,15 +16,6 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CACHE_REG
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'POI')
     drop table POI;
 	
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'DEALER')
-    drop table DEALER;
-
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CITY')
-    drop table CITY;
-    
-if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'STATE')
-    drop table STATE;
-
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'SERVICE')
     drop table SERVICE;
     
@@ -33,6 +24,15 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'ADVICE')
     
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'VEHICLE')
     drop table VEHICLE;
+    
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'DEALER')
+    drop table DEALER;
+
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CITY')
+    drop table CITY;
+    
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'STATE')
+    drop table STATE;
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'MODEL')
     drop table MODEL;
@@ -181,6 +181,7 @@ CREATE TABLE VEHICLE (
   id INT NOT NULL IDENTITY ,
   id_websiteuser INT NOT NULL CONSTRAINT FK_VEHICLE_00 FOREIGN KEY REFERENCES WEBSITEUSER(id),
   id_model INT NOT NULL CONSTRAINT FK_VEHICLE_01 FOREIGN KEY REFERENCES MODEL(id),
+  id_dealer INT NOT NULL CONSTRAINT FK_VEHICLE_02 FOREIGN KEY REFERENCES DEALER(id),
   purchaseDate DATE NULL ,
   domain VARCHAR(20) NULL ,
   description VARCHAR(100) NULL ,
@@ -201,6 +202,7 @@ CREATE TABLE VEHICLE (
 CREATE INDEX IX_VEHICLE_00 ON VEHICLE(id_websiteuser);
 CREATE INDEX IX_VEHICLE_01 ON VEHICLE(id_model);
 CREATE INDEX IX_VEHICLE_02 ON VEHICLE(needsAdvice);
+CREATE INDEX IX_VEHICLE_03 ON VEHICLE(id_dealer);
 
 CREATE TABLE ADVICE (
   id INT NOT NULL IDENTITY ,

@@ -22,10 +22,13 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONNull;
 import net.sf.json.JSONObject;
 
+import com.tdil.ljpeugeot.model.ContactData;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.ChangePasswordBean;
+import com.tdil.ljpeugeot.rest.model.ContactDataBean;
 import com.tdil.ljpeugeot.rest.model.LoginResponse;
 import com.tdil.ljpeugeot.rest.model.PersonBean;
+import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.ljpeugeot.struts.forms.ChangePasswordForm;
 import com.tdil.ljpeugeot.struts.forms.LoginForm;
 import com.tdil.ljpeugeot.struts.forms.RegisterForm;
@@ -175,6 +178,41 @@ public class UsersService extends AbstractRESTService {
 			throw new WebApplicationException(401);
 		}
 	}
+	
+	@GET
+	@Path("/contactData")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response contactData() {
+		validateLogged();
+		try {
+			ContactData contactData = PeugeotService.getContactData(getUser().getId());
+			return createResponse(201, new ContactDataBean(contactData));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
+	}
+	
+	@POST
+	@Path("/contactData")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response saveContactData(String body) {
+		validateLogged();
+		try {
+			ContactDataBean personBean = extractObjectFromJSON(body, ContactDataBean.class);
+			ContactData contactData = personBean.getContactData();
+			PeugeotService.udpateContactData(contactData);
+			if (PeugeotService.udpateContactData(contactData)) {
+				return okResponse();
+			} else {
+				return failResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
+	}
+	
 	
 	private PersonBean getPersonBean(JSON gral) {
 		PersonBean result = new PersonBean();

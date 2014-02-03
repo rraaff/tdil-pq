@@ -11,43 +11,17 @@ com.tdil.ljpeugeot.rest.UsersService
 /rest/users/password
 /rest/users/password/validate
 
-com.tdil.ljpeugeot.rest.AlarmsService
-/rest/alarms/list
-/rest/alarms/{idEntidad}/rename
-/rest/alarms/{idEntidad}/sendPanic
-/rest/alarms/{idEntidad}/activate
-/rest/alarms/{idEntidad}/deactivate
-/rest/alarms/{idEntidad}/log
-/rest/alarms/{idEntidad}/emailNotification
-/rest/alarms/{idEntidad}/noemailNotification
+Lista las provincias para seleccion de concesionarias
+/rest/dealers/states
+{"list":[{"id":1,"name":"Buenos Aires"},{"id":2,"name":"Santa Fe"}]}
 
-com.tdil.ljpeugeot.rest.LightsService
-/rest/lights/list
-/rest/lights/{idEntidad}/{idLuz}/rename
-/rest/lights/{idEntidad}/{idLuz}/activate
-/rest/lights/{idEntidad}/{idLuz}/deactivate
-/rest/lights/{idEntidad}/{idLuz}/randomOn
-/rest/lights/{idEntidad}/{idLuz}/randomOff
-/rest/lights/{idEntidad}/{idLuz}/log
-/rest/lights/{idEntidad}/{idLuz}/emailNotification
-/rest/lights/{idEntidad}/{idLuz}/noemailNotification
+Lista las ciudades de una provincia para seleccion de concesionarias
+/rest/dealers/cities/{stateId}
+{"list":[{"id":1,"name":"La Plata"},{"id":2,"name":"Dolores"}]}
 
-com.tdil.ljpeugeot.rest.CamerasService
-/rest/cameras/list
-Servlets
-/viewCameraService
-/moveCameraService
+Lista las concesionarias de una ciudad
+/rest/dealers/dealers/{cityId}
 
-com.tdil.ljpeugeot.rest.AsyncJobsService
-/rest/jobs/lights/list
-/rest/jobs/alarms/list
+{"list":[{"address":"32 nro 2323","email":"galiadoros@peugeot.com","id":3,"name":"PeugeotRos","phone":"02224513521"},
+{"address":"44 nro 3434","email":"galiaros2@peugeot.com","id":4,"name":"PeugeotRos 2","phone":"022214513521"}]}
 
-com.tdil.ljpeugeot.rest.AlarmAgendasService
-/rest/alarmAgendas/{idEntidad}/list
-/rest/alarmAgendas/{idEntidad} PUT POST
-/rest/alarmAgendas/{idEntidad}/{idAgenda}  DELETE GET
-
-com.tdil.ljpeugeot.rest.LightAgendasService
-/rest/lightAgendas/{idEntidad}/{idLuz}/list
-/rest/lightAgendas/{idEntidad}/{idLuz} PUT POST 
-/rest/lightAgendas//{idEntidad}/{idAgenda} DELETE GET
