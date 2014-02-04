@@ -81,6 +81,8 @@ public class SendEmailsAdviceThread extends Thread {
 		Map<String, String> replacements = new HashMap<String, String>();
 		replacements.put(EmailService.DEALER_KEY, dealer.getName());
 		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
+		replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
+		replacements.put(EmailService.LAST_NAME_KEY, wu.getLastname());
 		EmailService.sendEmail(wu.getEmail(), replacements, advice);
 	}
 	

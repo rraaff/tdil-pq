@@ -46,7 +46,9 @@ public class GenerateData extends TestCase {
 					wu = wus.get(0);
 				} else {
 					wu = new WebsiteUser();
-					wu.setEmail("mgodoy@mgodoy.com");
+					wu.setFirstname("Marcos");
+					wu.setLastname("Godoy");
+					wu.setEmail("subcmd@gmail.com");
 					wu.setLojackuserid("1:11111111");
 					wu.setDeleted(0);
 					int id_wu = DAOManager.getWebsiteUserDAO().insertWebsiteUser(wu);

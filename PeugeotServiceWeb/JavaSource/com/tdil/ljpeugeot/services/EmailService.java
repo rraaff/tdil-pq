@@ -43,16 +43,12 @@ public class EmailService {
 				properties.put(sp.getPropkey(), sp.getPropvalue());
 			}
 
-			SystemPropertyExample serverExample = new SystemPropertyExample();
-			serverExample.createCriteria().andPropkeyEqualTo(LJPeugeotConfig.getFRONT_SERVER());
-			SystemProperty server = systemPropertyDAO.selectSystemPropertyByExample(serverExample).get(0);
-
 			NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
 			notificationEmailExample.createCriteria().andNotificationtypeEqualTo(notificationtype);
 			NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO()
 					.selectNotificationEmailByExample(notificationEmailExample).get(0);
 			String content = notificationEmail.getContent();
-			content = StringUtils.replace(content, SERVER_NAME_KEY, server.getPropvalue());
+			content = StringUtils.replace(content, SERVER_NAME_KEY, LJPeugeotConfig.getFRONT_SERVER());
 			
 			for (Map.Entry<String, String> entry : replacements.entrySet()) {
 				content = StringUtils.replace(content, entry.getKey(), entry.getValue());
