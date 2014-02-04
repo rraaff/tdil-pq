@@ -87,6 +87,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="PEUGEOTSVC" tableName="DATA_IMPORT" domainObjectName="DataImport" alias="di">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<!--  table schema="PEUGEOTSVC" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>

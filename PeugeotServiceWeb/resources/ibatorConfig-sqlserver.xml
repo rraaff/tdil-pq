@@ -82,6 +82,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="dbo" tableName="DATA_IMPORT" domainObjectName="DataImport" alias="di">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
+<!--  table schema="dbo" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>

@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS DATA_IMPORT;
 
 DROP TABLE IF EXISTS WEBSITEUSER;
 
+DROP TABLE IF EXISTS NOTIFICATION_EMAIL;
 
 CREATE TABLE WEBSITEUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -271,3 +272,20 @@ CREATE TABLE CONTACTDATA (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+CREATE TABLE NOTIFICATION_EMAIL (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `notificationType` VARCHAR(50) NOT NULL ,
+  `description` VARCHAR(300) NOT NULL ,
+  `subject` VARCHAR(50) NOT NULL ,
+  `from_` VARCHAR(100) NOT NULL ,
+  `replacements` TEXT NULL ,
+  `content` TEXT NOT NULL ,
+  `deleted` INT NOT NULL ,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
+COMMIT;

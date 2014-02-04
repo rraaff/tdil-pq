@@ -46,6 +46,9 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'DATA_IMPO
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'WEBSITEUSER')
     drop table WEBSITEUSER;    
     
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'NOTIFICATION_EMAIL')
+    drop table NOTIFICATION_EMAIL;    
+    
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
   lojackUserId VARCHAR(50) NULL ,
@@ -244,3 +247,19 @@ CREATE TABLE CONTACTDATA (
   PRIMARY KEY (id));
   
 CREATE INDEX IX_CONTACTDATA_00 ON CONTACTDATA(id_websiteuser);
+
+CREATE TABLE NOTIFICATION_EMAIL (
+  id INT NOT NULL IDENTITY ,
+  notificationType VARCHAR(50) NOT NULL ,
+  description VARCHAR(300) NOT NULL ,
+  subject VARCHAR(50) NOT NULL ,
+  from_ VARCHAR(100) NOT NULL ,
+  replacements VARCHAR(max) NULL ,
+  content VARCHAR(max) NOT NULL ,
+  deleted INT NOT NULL ,
+  PRIMARY KEY (id));
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
+COMMIT;

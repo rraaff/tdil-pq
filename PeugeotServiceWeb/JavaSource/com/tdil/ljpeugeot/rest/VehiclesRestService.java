@@ -120,7 +120,7 @@ public class VehiclesRestService extends AbstractRESTService {
 	}
 	
 	@POST
-	@Path("/{vehicleId}/service/")
+	@Path("/{vehicleId}/updateService/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateService(@PathParam("serviceId") String serviceId, String body) {
 		validateLogged();
