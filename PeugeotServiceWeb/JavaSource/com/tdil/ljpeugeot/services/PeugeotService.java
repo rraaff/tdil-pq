@@ -11,6 +11,8 @@ import com.tdil.ljpeugeot.model.ContactData;
 import com.tdil.ljpeugeot.model.ContactDataExample;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.ModelExample;
+import com.tdil.ljpeugeot.model.NotificationEmail;
+import com.tdil.ljpeugeot.model.NotificationEmailExample;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.ServiceExample;
 import com.tdil.ljpeugeot.model.Vehicle;
@@ -39,6 +41,17 @@ public class PeugeotService {
 			} else {
 				return null;
 			}
+		}
+	}
+	
+	private static final class GetNotificationEmail implements TransactionalActionWithResult<NotificationEmail> {
+		private int id;
+		public GetNotificationEmail(int id) {
+			super();
+			this.id = id;
+		}
+		public NotificationEmail executeInTransaction() throws SQLException {
+			return DAOManager.getNotificationEmailDAO().selectNotificationEmailByPrimaryKey(this.id);
 		}
 	}
 	
@@ -100,6 +113,16 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class GetNotificationEmails implements TransactionalActionWithResult<List<NotificationEmail>> {
+		public GetNotificationEmails() {
+			super();
+		}
+		public List<NotificationEmail> executeInTransaction() throws SQLException {
+			NotificationEmailExample vehicleExample = new NotificationEmailExample();
+			return DAOManager.getNotificationEmailDAO().selectNotificationEmailByExample(vehicleExample);
+		}
+	}
+	
 	private static final class UpdateVehicle implements TransactionalAction {
 		private Vehicle service;
 		public UpdateVehicle(Vehicle service) {
@@ -108,6 +131,17 @@ public class PeugeotService {
 		}
 		public void executeInTransaction() throws SQLException {
 			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(this.service);
+		}
+	}
+	
+	private static final class UpdateNotificationEmail implements TransactionalAction {
+		private NotificationEmail service;
+		public UpdateNotificationEmail(NotificationEmail service) {
+			super();
+			this.service = service;
+		}
+		public void executeInTransaction() throws SQLException {
+			DAOManager.getNotificationEmailDAO().updateNotificationEmailByPrimaryKey(this.service);
 		}
 	}
 	
@@ -156,9 +190,46 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static NotificationEmail getNotificationEmail(int id) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetNotificationEmail(id));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static List<NotificationEmail> getNotificationEmails() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetNotificationEmails());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<NotificationEmail>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<NotificationEmail>();
+		} 
+	}
+	
 	public static boolean udpateContactData(ContactData contactData) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new UpdateContactData(contactData));
+			return true;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
+	public static boolean udpateNotificationEmail(NotificationEmail contactData) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new UpdateNotificationEmail(contactData));
 			return true;
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);

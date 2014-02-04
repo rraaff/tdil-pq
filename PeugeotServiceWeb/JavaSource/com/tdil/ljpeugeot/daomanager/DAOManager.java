@@ -10,6 +10,7 @@ import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
+import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
@@ -80,6 +81,10 @@ public abstract class DAOManager {
 	
 	public static ServiceDAO getServiceDAO() throws SQLException {
 		return currentDao.getServiceDAO();
+	}
+	
+	public static NotificationEmailDAO getNotificationEmailDAO() throws SQLException {
+		return currentDao.getNotificationEmailDAO();
 	}
 
 	public static DAOProvider getCurrentDao() {

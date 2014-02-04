@@ -10,6 +10,7 @@ import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
+import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.ServiceDAO;
 import com.tdil.ljpeugeot.dao.StateDAO;
@@ -46,4 +47,6 @@ public interface DAOProvider {
 	public abstract ContactDataDAO getContactDataDAO() throws SQLException;
 	
 	public abstract DataImportDAO getDataImportDAO() throws SQLException;
+
+	public abstract NotificationEmailDAO getNotificationEmailDAO() throws SQLException;
 }

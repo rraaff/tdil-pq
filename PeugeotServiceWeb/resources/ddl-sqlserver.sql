@@ -51,6 +51,8 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'NOTIFICAT
     
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
+  firstName VARCHAR(150) NULL ,
+  lastName VARCHAR(150) NULL ,
   lojackUserId VARCHAR(50) NULL ,
   peugeotUserId VARCHAR(100) NULL ,
   homeUserId VARCHAR(100) NULL ,

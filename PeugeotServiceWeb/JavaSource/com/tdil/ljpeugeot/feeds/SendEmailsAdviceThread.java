@@ -2,12 +2,17 @@ package com.tdil.ljpeugeot.feeds;
 
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Vehicle;
+import com.tdil.ljpeugeot.model.WebsiteUser;
+import com.tdil.ljpeugeot.services.EmailService;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
@@ -42,20 +47,41 @@ public class SendEmailsAdviceThread extends Thread {
 		}
 		public void executeInTransaction() throws SQLException {
 			if (vehicle.getNeedsadvice3() == 1) {
-				// mando email
+				if (getLog().isInfoEnabled()) {
+					getLog().info("enviando tercer aviso a " + vehicle.getDomain());
+				}
+				sendEmail(vehicle, EmailService.THIRD_ADVICE);
 				vehicle.setAdvice3sent(1);
 			} else {
 				if (vehicle.getNeedsadvice2() == 1) {
+					if (getLog().isInfoEnabled()) {
+						getLog().info("enviando segundo aviso a " + vehicle.getDomain());
+					}
 					// mando email
+					sendEmail(vehicle, EmailService.SECOND_ADVICE);
 					vehicle.setAdvice2sent(1);
 				} else {
+					if (getLog().isInfoEnabled()) {
+						getLog().info("enviando primer aviso a " + vehicle.getDomain());
+					}
 					// mando email
+					sendEmail(vehicle, EmailService.FIRST_ADVICE);
 					vehicle.setAdvice1sent(1);
 				}
 			}
 			vehicle.setNeedsadvice(0);
 			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		}
+	}
+
+	
+	public static void sendEmail(Vehicle vehicle, String advice) throws SQLException {
+		WebsiteUser wu = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(vehicle.getIdWebsiteuser());
+		Dealer dealer = DAOManager.getDealerDAO().selectDealerByPrimaryKey(vehicle.getIdDealer());
+		Map<String, String> replacements = new HashMap<String, String>();
+		replacements.put(EmailService.DEALER_KEY, dealer.getName());
+		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
+		EmailService.sendEmail(wu.getEmail(), replacements, advice);
 	}
 	
 	@Override
@@ -83,7 +109,7 @@ public class SendEmailsAdviceThread extends Thread {
 			}
 		}
 	}
-	
+
 	private boolean inInHourRange() {
 		Calendar cal = Calendar.getInstance();
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
