@@ -81,7 +81,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 	private String mDocNumber;
 
-	@TextRule(order = 3, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
+	@TextRule(order = 3, minLength = 4, message = "Ingrese la contraseña.")
 	@Password(order = 4, message = "Contraseña")
 	private EditText passwordEditText;
 
