@@ -20,6 +20,9 @@
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.ljpeugeot.struts.forms.ContactForm"/>
   <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.ljpeugeot.struts.forms.PreventLoginForm"/>
   
+  <form-bean id="EditContactDataForm" name="EditContactDataForm" type="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"/>
+  
+  
   <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
   <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
   <form-bean id="RegisterFormMobile" name="RegisterFormMobile" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
@@ -232,6 +235,15 @@
  	<forward name="index" path="/mobile/index.jsp" redirect="true"/>
   	<forward name="failure" path="/mobile/contactoModal.jsp"/>
   </action>
+ 
+ <action name="EditContactDataForm" parameter="WebsiteUser" path="/goToEditContactData" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToEditContactDataAction">
+  	<forward name="continue" path="/editContactData.jsp" redirect="true"/>
+  </action>
+  <action name="EditContactDataForm" parameter="WebsiteUser" path="/saveContactData" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/editContactData.jsp"/>
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  </action>
+  
  </action-mappings>
  
  <controller processorClass="com.tdil.struts.AuthorizationRequestProcessor"/>

@@ -1,60 +1,18 @@
 tdil/usu4r10td1l
 
-VEHICULO
-rel usuario
-rel modelo
-km 
-km ultimo service
-fecha ultimo service
+paginas
+cambiar datos de contactos
 
-necesita aviso 1
-aviso 1 enviado
-necesita aviso 2
-aviso 2 enviado
-necesita aviso 3
-aviso 3 enviado
-garantia expirada
+cambio de email debe ser distinto
 
-CONTACTO
-rel vehiculo
-1
-2
-3
-
-SERVICE
-rel vehiculo
-km
-fecha
-
-importaciones
-tipo
-nombre archivo
-
-POIs
-
-servicios para nativas
-
-
-****************************************
-
+pagina seleccion de vechiculo is hay mas de uno
+pagina del vehiculo
+	de aca puedo ir a cambiarle la concesionaria
+	ver todos los services hechos
+		de aca puedo agregar un nuevo service
 
 Usuarios
 Tipo website
 	  callcenter
 	  admin
 
-Concesionarias
-
-Se realizara una importacion en formato csv con el siguiente formato
-provincia,localidad,nombre,email,direccion,telefono
-
-Tablas
-PROVINCIA
-LOCALIDAD
-CONCESIONARIA
-
-Modelos
-
-Se realizara una importacion de modelos de vehiculos en formato csv con el siguiente formato
-modelo,garantia(meses),descripcion
-MODELO

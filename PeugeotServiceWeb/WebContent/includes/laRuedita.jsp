@@ -14,11 +14,6 @@
 								<li id="liCars" class="car" ><a class="rdCar" href="#" id="enterPrevent" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 							<% }  %>
 						<%} else { %>
-							<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
-								<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
-								<li id="liVluMessages" class="car" ><a class="rdCar" href="#" onclick="javascript:showVluMessages('<%=websiteUser.%>');" onmouseover="chbg('liVluMessages', 'car', 'over', 'Car', 'Ver avisos de VLU')" onmouseout="chbg('liVluMessages', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-							<% } %>
-						
 						<%if (websiteUser != null && websiteUser.isLogged()) { %>
 							<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp" onmouseover="chbg('liPark', 'parking', 'over', 'Parking', 'Estacioná en<br/>CABA y GBA')" onmouseout="chbg('liPark', 'parking', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 						<%} else { %>

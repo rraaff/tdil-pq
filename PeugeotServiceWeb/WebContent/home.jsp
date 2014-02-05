@@ -88,6 +88,7 @@
 				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
 				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
 				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
+				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
 				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
 			</ul>
 		</div>

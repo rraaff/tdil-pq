@@ -4,7 +4,6 @@
 --%><%@page import="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"%><%--
 --%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertiesKeys"%><%--
 --%><%@page import="com.tdil.ljpeugeot.utils.SystemPropertyUtils"%><%--
---%><%@page import="com.tdil.ljpeugeot.CameraForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
