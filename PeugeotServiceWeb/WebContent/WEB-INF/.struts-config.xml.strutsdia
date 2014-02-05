@@ -577,4 +577,40 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
    TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#selectVehicleForEditData" NAME="action15"
+  PATH="/selectVehicleForEditData" SHAPE="32,2545,0,0"
+  TITLE="EditVehicleDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="onlyOne" NAME="forward0"
+   PATH="/editVehicleData.jsp" TARGET="page4" TITLE="onlyOne"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/selectVehicleForEditData.jsp" TARGET="page8" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page4" PATH="/editVehicleData.jsp"
+  SHAPE="256,2562,0,0" SUBTYPE="jsp" TITLE="editVehicleData.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehicleData.do"
+   SUBTYPE="confirmed" TARGET="action17" TITLE="/saveVehicleData.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page8" PATH="/selectVehicleForEditData.jsp"
+  SHAPE="256,2706,0,0" SUBTYPE="jsp"
+  TITLE="selectVehicleForEditData.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#editVehicleData" NAME="action16"
+  PATH="/editVehicleData" SHAPE="32,2689,0,0"
+  TITLE="EditVehicleDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/editVehicleData.jsp" TARGET="page4" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#saveVehicleData" NAME="action17"
+  PATH="/saveVehicleData" SHAPE="464,2674,0,0"
+  TITLE="EditVehicleDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
+   PATH="/editVehicleData.jsp" TARGET="page4" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

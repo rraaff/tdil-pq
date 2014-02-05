@@ -21,8 +21,8 @@
   <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.ljpeugeot.struts.forms.PreventLoginForm"/>
   
   <form-bean id="EditContactDataForm" name="EditContactDataForm" type="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"/>
-  
-  
+  <form-bean id="EditVehicleDataForm" name="EditVehicleDataForm" type="com.tdil.ljpeugeot.struts.forms.prevent.EditVehicleDataForm"/>
+    
   <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
   <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
   <form-bean id="RegisterFormMobile" name="RegisterFormMobile" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
@@ -236,6 +236,7 @@
   	<forward name="failure" path="/mobile/contactoModal.jsp"/>
   </action>
  
+ <!-- Peugeot -->
  <action name="EditContactDataForm" parameter="WebsiteUser" path="/goToEditContactData" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToEditContactDataAction">
   	<forward name="continue" path="/editContactData.jsp" redirect="true"/>
   </action>
@@ -243,6 +244,20 @@
   	<forward name="failure" path="/editContactData.jsp"/>
   	<forward name="continue" path="/home.jsp" redirect="true"/>
   </action>
+  
+  <action name="EditVehicleDataForm" parameter="WebsiteUser" path="/selectVehicleForEditData" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToSelectVehicleForEditDataAction">
+  	<forward name="onlyOne" path="/editVehicleData.jsp"/>
+  	<forward name="continue" path="/selectVehicleForEditData.jsp"/>
+  </action>
+  <action name="EditVehicleDataForm" parameter="WebsiteUser" path="/editVehicleData" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToEditVehicleDataAction">
+  	<forward name="continue" path="/editVehicleData.jsp"/>
+  </action>
+  <action name="EditVehicleDataForm" parameter="WebsiteUser" path="/saveVehicleData" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehicleData">
+  	<forward name="failure" path="/editVehicleData.jsp"/>
+  	<forward name="continue" path="/home.jsp"/>
+  </action>
+  
+  
   
  </action-mappings>
  

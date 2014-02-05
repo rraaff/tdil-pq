@@ -7,14 +7,19 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.City;
+import com.tdil.ljpeugeot.model.CityExample;
 import com.tdil.ljpeugeot.model.ContactData;
 import com.tdil.ljpeugeot.model.ContactDataExample;
+import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.ModelExample;
 import com.tdil.ljpeugeot.model.NotificationEmail;
 import com.tdil.ljpeugeot.model.NotificationEmailExample;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.ServiceExample;
+import com.tdil.ljpeugeot.model.State;
+import com.tdil.ljpeugeot.model.StateExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
 import com.tdil.log4j.LoggerProvider;
@@ -66,6 +71,48 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class GetDealer implements TransactionalActionWithResult<Dealer> {
+		private int id;
+		public GetDealer(int id) {
+			super();
+			this.id = id;
+		}
+		public Dealer executeInTransaction() throws SQLException {
+			return DAOManager.getDealerDAO().selectDealerByPrimaryKey(this.id);
+		}
+	}
+	
+	private static final class GetCity implements TransactionalActionWithResult<City> {
+		private int id;
+		public GetCity(int id) {
+			super();
+			this.id = id;
+		}
+		public City executeInTransaction() throws SQLException {
+			return DAOManager.getCityDAO().selectCityByPrimaryKey(id);
+		}
+	}
+	
+	private static final class GetVehicleByUserAndDomain implements TransactionalActionWithResult<Vehicle> {
+		private int idUser;
+		private String domain;
+		public GetVehicleByUserAndDomain(int idUser, String domain) {
+			super();
+			this.idUser = idUser;
+			this.domain = domain;
+		}
+		public Vehicle executeInTransaction() throws SQLException {
+			VehicleExample vehicleExample = new VehicleExample();
+			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(this.idUser).andDomainEqualTo(this.domain);
+			List<Vehicle> result = DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+			if (result.size() > 0) {
+				return result.get(0);
+			} else {
+				return null;
+			}
+		}
+	}
+	
 	private static final class UpdateContactData implements TransactionalAction {
 		private ContactData contactData;
 		public UpdateContactData(ContactData contactData) {
@@ -90,6 +137,16 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class GetStates implements TransactionalActionWithResult<List<State>> {
+		public GetStates() {
+			super();
+		}
+		public List<State> executeInTransaction() throws SQLException {
+			StateExample vehicleExample = new StateExample();
+			return DAOManager.getStateDAO().selectStateByExample(vehicleExample);
+		}
+	}
+	
 	private static final class GetServices implements TransactionalActionWithResult<List<Service>> {
 		private int idVehicle;
 		public GetServices(int Vehicle) {
@@ -100,6 +157,19 @@ public class PeugeotService {
 			ServiceExample serviceExample = new ServiceExample();
 			serviceExample.createCriteria().andIdVehicleEqualTo(this.idVehicle);
 			return DAOManager.getServiceDAO().selectServiceByExample(serviceExample);
+		}
+	}
+	
+	private static final class GetCities implements TransactionalActionWithResult<List<City>> {
+		private int idState;
+		public GetCities(int Vehicle) {
+			super();
+			this.idState = Vehicle;
+		}
+		public List<City> executeInTransaction() throws SQLException {
+			CityExample serviceExample = new CityExample();
+			serviceExample.createCriteria().andIdStateEqualTo(this.idState);
+			return DAOManager.getCityDAO().selectCityByExample(serviceExample);
 		}
 	}
 	
@@ -276,6 +346,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static Vehicle getVehicle(int idUser, String domain) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetVehicleByUserAndDomain(idUser, domain));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
 	public static boolean udpateVehicle(Vehicle contactData) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new UpdateVehicle(contactData));
@@ -314,6 +396,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static List<City> getCities(int idState) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetCities(idState));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<City>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<City>();
+		} 
+	}
+	
 	public static boolean updateService(Service service) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new UpdateService(service));
@@ -343,6 +437,43 @@ public class PeugeotService {
 	
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(PeugeotService.class);
+	}
+
+	public static Dealer getDealer(Integer idDealer) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetDealer(idDealer));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static City getCity(Integer idDealer) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetCity(idDealer));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	
+	public static List<State> getStates() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetStates());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<State>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<State>();
+		} 
 	}
 	
 }
