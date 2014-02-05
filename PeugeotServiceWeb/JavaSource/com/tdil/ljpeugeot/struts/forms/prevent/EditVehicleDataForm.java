@@ -1,11 +1,17 @@
 package com.tdil.ljpeugeot.struts.forms.prevent;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
+import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.City;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.State;
+import com.tdil.ljpeugeot.model.Vehicle;
+import com.tdil.ljpeugeot.services.DealersService;
 import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
@@ -21,13 +27,14 @@ public class EditVehicleDataForm extends VehiclesForm {
 	 */
 	private static final long serialVersionUID = -4103112336985471907L;
 
+	private com.tdil.ljpeugeot.prevent.model.Vehicle selectedVehicle;
 	private com.tdil.ljpeugeot.model.Vehicle vehicle;
 	private int idState;
 	private int idCity;
 	private int idDealer;
 	private List<State> states;
 	private List<City> cities;
-	private List<Dealer> dealers;
+	private Collection<Dealer> dealers;
 
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(EditVehicleDataForm.class);
 	
@@ -45,6 +52,7 @@ public class EditVehicleDataForm extends VehiclesForm {
 	private void basicinitWith(WebsiteUser user) throws HttpStatusException, InvalidResponseException, CommunicationException,
 			UnauthorizedException {
 		if (hasOnlyOne()) {
+			selectedVehicle = getVehicles().get(0);
 			// busco los datos del vehiculo
 			vehicle = PeugeotService.getVehicle(this.getUser().getId(), getVehicles().get(0).getDescription());
 			if (vehicle == null) {
@@ -58,6 +66,7 @@ public class EditVehicleDataForm extends VehiclesForm {
 		if (this.getVehicle().getId() != null) {
 			Dealer dealer = PeugeotService.getDealer(this.vehicle.getIdDealer());
 			this.idDealer = dealer.getId(); 
+			this.dealers = DealersService.getDealers(dealer.getIdCity());
 			City city = PeugeotService.getCity(dealer.getIdCity());
 			this.idCity = city.getId();
 			this.idState = city.getIdState();
@@ -72,6 +81,7 @@ public class EditVehicleDataForm extends VehiclesForm {
 	public void selectVehicle(String id) {
 		for(com.tdil.ljpeugeot.prevent.model.Vehicle itervehicle : getVehicles()) {
 			if (itervehicle.getId().equals(id)) {
+				selectedVehicle = itervehicle;
 				vehicle = PeugeotService.getVehicle(this.getUser().getId(), itervehicle.getDescription());
 				if (vehicle == null) {
 					vehicle = new com.tdil.ljpeugeot.model.Vehicle();
@@ -83,8 +93,31 @@ public class EditVehicleDataForm extends VehiclesForm {
 		}
 	}
 	
-	public void save() {
-		
+	public void save() throws SQLException {
+		if (this.getVehicle().getId() != null) {
+			vehicle.setIdDealer(getIdDealer());
+			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+		} else {
+			Vehicle vehicle = new Vehicle();
+			vehicle.setIdWebsiteuser(getUser().getId());
+			vehicle.setDomain(selectedVehicle.getDescription());
+			vehicle.setAdvice1sent(0);
+			vehicle.setAdvice2sent(0);
+			vehicle.setAdvice3sent(0);
+			vehicle.setDeleted(0);
+			vehicle.setIdDealer(getIdDealer());
+			vehicle.setKm(0); // TODO ESTo tiene que venir de prevent
+			vehicle.setIdModel(PeugeotService.getModels().get(0).getId()); // IDEM
+			vehicle.setLastservicedate(new Date()); // TODO ESTO debe ir con el de laconcecionaria
+			vehicle.setLastservicekm(0);
+			vehicle.setNeedsadvice(0);
+			vehicle.setNeedsadvice1(0);
+			vehicle.setNeedsadvice2(0);
+			vehicle.setNeedsadvice3(0);
+			vehicle.setPurchasedate(new Date()); // idem
+			vehicle.setWarrantyexpired(0);
+			DAOManager.getVehicleDAO().insertVehicle(vehicle);
+		}
 	}
 
 	public List<State> getStates() {
@@ -103,11 +136,11 @@ public class EditVehicleDataForm extends VehiclesForm {
 		this.cities = cities;
 	}
 
-	public List<Dealer> getDealers() {
+	public Collection<Dealer> getDealers() {
 		return dealers;
 	}
 
-	public void setDealers(List<Dealer> dealers) {
+	public void setDealers(Collection<Dealer> dealers) {
 		this.dealers = dealers;
 	}
 

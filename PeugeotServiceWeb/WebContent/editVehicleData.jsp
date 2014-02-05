@@ -39,6 +39,7 @@
 	#docs { font-size:12px; }
 }
 </style>
+
 <%
 	Boolean apk = (Boolean)session.getAttribute("USING_APK");
 if (apk != null && apk) {
@@ -89,6 +90,78 @@ if (apk != null && apk) {
 }
 </style>
 <%@ include file="includes/headLogged.jsp" %>
+<script>
+$(document).ready(
+		function(){
+			$('select[name=idState]').change(
+				function() {
+					var selectToLoad = $('select[name=idCity]');
+					selectToLoad.empty();
+		        	$('<option>Loading</option>').appendTo(selectToLoad);
+					var countrySelected = Number($(this).attr('value'));
+					if (countrySelected > 0) {
+						$.ajax({
+				            type: "GET",
+				            cache: false,
+				            url: "./searchCities.do",
+				            data: {stateId: countrySelected },
+				            contentType: "application/json; charset=utf-8",
+				            success: function(msg) {
+				            	var select = $('select[name=idCity]');
+				            	select.empty();
+				            	$('<option>Select one option</option>').appendTo(select);
+				            	$.each(msg, function(index, item) {
+					                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+				                });
+				            },
+				            error: function() {
+				                alert("error consultando las ciudades");
+				            }
+				        });
+					} else {
+						var select = $('select[name=idCity]');
+		            	select.empty();
+		            	$('<option>Select one option</option>').appendTo(select);
+					}
+				}
+			);
+			$('select[name=idCity]').change(
+				function() {
+					var selectToLoad = $('select[name=idDealer]');
+					selectToLoad.empty();
+		        	$('<option>Loading</option>').appendTo(selectToLoad);
+					var countrySelected = Number($(this).attr('value'));
+					if (countrySelected > 0) {
+						$.ajax({
+				            type: "GET",
+				            cache: false,
+				            url: "./searchDealers.do",
+				            data: {cityId: countrySelected },
+				            contentType: "application/json; charset=utf-8",
+				            success: function(msg) {
+				            	var select = $('select[name=idDealer]');
+				            	select.empty();
+				            	$('<option>Select one option</option>').appendTo(select);
+				            	$.each(msg, function(index, item) {
+					                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+				                });
+				            },
+				            error: function() {
+				                alert("error consultando las concesionarias");
+				            }
+				        });
+					} else {
+						var select = $('select[name=idDealer]');
+		            	select.empty();
+		            	$('<option>Select one option</option>').appendTo(select);
+					}
+				}
+			);
+});
+</script>
+
+</head>
+<body>
 
 <html:form method="POST" action="/saveVehicleData">
 <% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>

@@ -257,7 +257,8 @@
   	<forward name="continue" path="/home.jsp"/>
   </action>
   
-  
+  <action path="/searchCities" type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
+  <action path="/searchDealers" type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
   
  </action-mappings>
  
