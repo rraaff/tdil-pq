@@ -53,6 +53,7 @@ ENGINE = InnoDB;
 
 INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 0);
 INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('admin',SHA1('admin'), 0, 0);
+INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('cc',SHA1('cc'), 1, 0);
 COMMIT;
 
 CREATE TABLE SYSPROPERTIES (

@@ -623,7 +623,11 @@
    PATH="/services.jsp" TARGET="page9" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page9" PATH="/services.jsp" SHAPE="240,2562,0,0"
-  SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveService.do"
+   SUBTYPE="confirmed" TARGET="action21" TITLE="/saveService.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM ID="#saveService" NAME="action21" PATH="/saveService"
   SHAPE="32,2913,0,0" TITLE="ServicesForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/services.jsp"
@@ -631,4 +635,19 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/services.jsp" TARGET="page9" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#cc#login" NAME="action22" PATH="/cc/login"
+  SHAPE="32,3425,0,0" TITLE="LoginCCForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/cc/login.jsp"
+   TARGET="page10" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/cc/home.jsp"
+   TARGET="page11" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page10" PATH="/cc/login.jsp" SHAPE="256,3442,0,0"
+  SUBTYPE="jsp" TITLE="login.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/cc/login.do"
+   SUBTYPE="confirmed" TARGET="action22" TITLE="/cc/login.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page11" PATH="/cc/home.jsp" SHAPE="240,3537,0,0"
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
