@@ -324,7 +324,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		final LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
 		if (resp.getLogged()) {
-			Login.loggedUser = resp;
+			Login.setLoggedUser(this, resp);
 
 			if (LoginActivity.this.remCheckBox.isChecked()) {
 				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();

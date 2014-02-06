@@ -110,10 +110,10 @@ public class FooterLogic  {
 	}
 
 	public static void handlePreventAccess(final Activity activity) {
-		if (Login.loggedUser.getPreventUser()) {
+		if (Login.getLoggedUser(activity).getPreventUser()) {
 			activity.startActivity(new Intent(activity, PreventActivity.class));
 		} else {
-			String videoId = Login.loggedUser.getPreventVideo();
+			String videoId = Login.getLoggedUser(activity).getPreventVideo();
 			playVideo(activity, videoId);
 		}
 	}
@@ -123,7 +123,7 @@ public class FooterLogic  {
 	}
 
 	public static void handlePetsAccess(final Activity activity) {
-		if (Login.loggedUser.getPetUser()) {
+		if (Login.getLoggedUser(activity).getPetUser()) {
 			// Pido la url de login
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -146,21 +146,21 @@ public class FooterLogic  {
 			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);
 			
 		} else {
-			String videoId = Login.loggedUser.getPetVideo();
+			String videoId = Login.getLoggedUser(activity).getPetVideo();
 			playVideo(activity, videoId);
 		}
 	}
 
 	public static void handleHomeAccess(final Activity activity,
 			final boolean finishOnExit) {
-		if (Login.loggedUser.getHomeUser()) {
+		if (Login.getLoggedUser(activity).getHomeUser()) {
 			Intent intent = new Intent(activity, HomeAlarmsActivity.class); 
 			activity.startActivity(intent); 
 			if (finishOnExit) {
 				activity.finish();
 			}
 		} else {
-			String videoId = Login.loggedUser.getHomeVideo();
+			String videoId = Login.getLoggedUser(activity).getHomeVideo();
 			playVideo(activity, videoId);
 		}
 	}

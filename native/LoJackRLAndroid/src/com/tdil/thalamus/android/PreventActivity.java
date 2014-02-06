@@ -128,7 +128,7 @@ public class PreventActivity extends Activity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.loggedUser.getApkToken());
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.getLoggedUser(this).getApkToken());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -122,7 +122,7 @@ public class ParkingsActivity extends Activity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PARKINGS + "?apkToken=" + Login.loggedUser.getApkToken());
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PARKINGS + "?apkToken=" + Login.getLoggedUser(this).getApkToken());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

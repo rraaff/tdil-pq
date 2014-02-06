@@ -51,7 +51,7 @@ public class IndexActivity extends Activity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
 
-		this.getActionBar().setTitle(Login.loggedUser.getName());
+		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
 		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
 		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
@@ -60,8 +60,8 @@ public class IndexActivity extends Activity {
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 		Button button = (Button)findViewById(R.id.vluCount);
-		if (Login.loggedUser.getVluMessages() > 0) {
-			button.setText(String.valueOf(Login.loggedUser.getVluMessages()));
+		if (Login.getLoggedUser(this).getVluMessages() > 0) {
+			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
 			button.setOnClickListener(new ViewVLUMessagesListener(this));
 		} else {
 			button.setVisibility(View.GONE);
