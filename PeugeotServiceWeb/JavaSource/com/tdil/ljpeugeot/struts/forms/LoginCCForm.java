@@ -61,7 +61,7 @@ public class LoginCCForm extends ActionForm {
 			}
 		}
 		SystemUser user = SystemUserUtils.getSystemUser(this.username, this.password);
-		if (user == null || user.getType() != 1) {
+		if (user == null || !user.isCallCenter()) {
 			throw new ValidationException(new ValidationError("LoginForm.invalid"));
 		}
 		return user;
