@@ -624,4 +624,11 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page9" PATH="/services.jsp" SHAPE="240,2562,0,0"
   SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#saveService" NAME="action21" PATH="/saveService"
+  SHAPE="32,2913,0,0" TITLE="ServicesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/services.jsp"
+   TARGET="page9" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/services.jsp" TARGET="page9" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

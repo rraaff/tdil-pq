@@ -102,5 +102,23 @@ if (apk != null && apk) {
 	<%=service.getKm()%> - <%=DateUtils.formatDateSp(service.getServicedate())%><br> 
 <% } %>
 
+<html:form method="POST" action="/saveService">
+	<div class="scrollable">
+		<fieldset>
+			<label>km</label>
+			<html:text name="ServicesForm" property="km" />
+			<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ServicesForm.km.err")%>
+		</fieldset>
+		<fieldset>
+			<label>fecha</label>
+			<html:text name="ServicesForm" property="date" />
+			<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "ServicesForm.date.err")%>
+		</fieldset>
+	</div>
+	<fieldset>
+		<input type="submit" id="submitregister" value="Guardar" class="buttonSend">
+	</fieldset>
+</html:form>
+
 </body>
 </html>

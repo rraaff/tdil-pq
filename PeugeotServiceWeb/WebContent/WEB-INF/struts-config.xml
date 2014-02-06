@@ -260,6 +260,10 @@
   <action name="ServicesForm" parameter="WebsiteUser" path="/viewServices" scope="session" type="com.tdil.ljpeugeot.struts.action.ViewServicesAction">
   	<forward name="continue" path="/services.jsp"/>
   </action>
+  <action name="ServicesForm" parameter="WebsiteUser" path="/saveService" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveAction">
+  	<forward name="failure" path="/services.jsp"/>
+  	<forward name="continue" path="/services.jsp"/>
+  </action>
   
   <action path="/searchCities" type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
   <action path="/searchDealers" type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
