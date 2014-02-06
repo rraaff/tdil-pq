@@ -617,4 +617,11 @@
   SHAPE="32,2545,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#searchDealers" NAME="action19" PATH="/searchDealers"
   SHAPE="240,2561,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#viewServices" NAME="action20" PATH="/viewServices"
+  SHAPE="32,2545,0,0" TITLE="ServicesForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
+   PATH="/services.jsp" TARGET="page9" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page9" PATH="/services.jsp" SHAPE="240,2562,0,0"
+  SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

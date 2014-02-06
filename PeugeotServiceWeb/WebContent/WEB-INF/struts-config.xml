@@ -22,6 +22,7 @@
   
   <form-bean id="EditContactDataForm" name="EditContactDataForm" type="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"/>
   <form-bean id="EditVehicleDataForm" name="EditVehicleDataForm" type="com.tdil.ljpeugeot.struts.forms.prevent.EditVehicleDataForm"/>
+  <form-bean id="ServicesForm" name="ServicesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.ServicesForm"/>
     
   <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
   <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
@@ -255,6 +256,9 @@
   <action name="EditVehicleDataForm" parameter="WebsiteUser" path="/saveVehicleData" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehicleData">
   	<forward name="failure" path="/editVehicleData.jsp"/>
   	<forward name="continue" path="/home.jsp"/>
+  </action>
+  <action name="ServicesForm" parameter="WebsiteUser" path="/viewServices" scope="session" type="com.tdil.ljpeugeot.struts.action.ViewServicesAction">
+  	<forward name="continue" path="/services.jsp"/>
   </action>
   
   <action path="/searchCities" type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>

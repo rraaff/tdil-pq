@@ -176,5 +176,13 @@ public class EditVehicleDataForm extends VehiclesForm {
 		this.idDealer = idDealer;
 	}
 
+	public com.tdil.ljpeugeot.prevent.model.Vehicle getSelectedVehicle() {
+		return selectedVehicle;
+	}
+
+	public void setSelectedVehicle(com.tdil.ljpeugeot.prevent.model.Vehicle selectedVehicle) {
+		this.selectedVehicle = selectedVehicle;
+	}
+
 
 }

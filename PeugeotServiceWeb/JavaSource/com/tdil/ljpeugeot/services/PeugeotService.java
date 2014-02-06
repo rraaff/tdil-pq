@@ -143,6 +143,7 @@ public class PeugeotService {
 		}
 		public List<State> executeInTransaction() throws SQLException {
 			StateExample vehicleExample = new StateExample();
+			vehicleExample.setOrderByClause("name");
 			return DAOManager.getStateDAO().selectStateByExample(vehicleExample);
 		}
 	}
@@ -156,6 +157,7 @@ public class PeugeotService {
 		public List<Service> executeInTransaction() throws SQLException {
 			ServiceExample serviceExample = new ServiceExample();
 			serviceExample.createCriteria().andIdVehicleEqualTo(this.idVehicle);
+			serviceExample.setOrderByClause("km desc");
 			return DAOManager.getServiceDAO().selectServiceByExample(serviceExample);
 		}
 	}
@@ -169,6 +171,7 @@ public class PeugeotService {
 		public List<City> executeInTransaction() throws SQLException {
 			CityExample serviceExample = new CityExample();
 			serviceExample.createCriteria().andIdStateEqualTo(this.idState);
+			serviceExample.setOrderByClause("name");
 			return DAOManager.getCityDAO().selectCityByExample(serviceExample);
 		}
 	}

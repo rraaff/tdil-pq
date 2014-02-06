@@ -27,6 +27,7 @@ public class DealersService {
 		}
 		public Collection<State> executeInTransaction() throws SQLException {
 			StateExample stateExample = new StateExample();
+			stateExample.setOrderByClause("name");
 			return DAOManager.getStateDAO().selectStateByExample(stateExample);
 		}
 	}
@@ -40,6 +41,7 @@ public class DealersService {
 		public Collection<City> executeInTransaction() throws SQLException {
 			CityExample stateExample = new CityExample();
 			stateExample.createCriteria().andIdStateEqualTo(this.idState);
+			stateExample.setOrderByClause("name");
 			return DAOManager.getCityDAO().selectCityByExample(stateExample);
 		}
 	}
@@ -53,6 +55,7 @@ public class DealersService {
 		public Collection<Dealer> executeInTransaction() throws SQLException {
 			DealerExample dealerExample = new DealerExample();
 			dealerExample.createCriteria().andIdCityEqualTo(this.idCity);
+			dealerExample.setOrderByClause("name");
 			return DAOManager.getDealerDAO().selectDealerByExample(dealerExample);
 		}
 	}

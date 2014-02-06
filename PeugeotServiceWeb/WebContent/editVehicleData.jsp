@@ -163,8 +163,8 @@ $(document).ready(
 </head>
 <body>
 
-<html:form method="POST" action="/saveVehicleData">
 <% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>
+<html:form method="POST" action="/saveVehicleData">
 	<div class="scrollable">
 		<fieldset>
 			<label class="ajuste">Provincia</label>
@@ -201,5 +201,6 @@ $(document).ready(
 		<input type="submit" id="submitregister" value="Guardar" class="buttonSend">
 	</fieldset>
 </html:form>
+<a href="./viewServices.do?id=<%=editVehicleDataForm.getSelectedVehicle().getId()%>">Services</a>
 </body>
 </html>
