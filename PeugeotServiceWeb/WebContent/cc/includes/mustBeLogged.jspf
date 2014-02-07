@@ -1,0 +1,4 @@
+<% if (!logged || !com.tdil.ljpeugeot.roles.CallCenterRole.INSTANCE.isValid(websiteUser)) { %>
+	<jsp:forward page="/cc/login.jsp"></jsp:forward>
+<% return;
+	} %>

@@ -25,6 +25,7 @@
   <form-bean id="ServicesForm" name="ServicesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.ServicesForm"/>
   
   <form-bean id="LoginCCForm" name="LoginCCForm" type="com.tdil.ljpeugeot.struts.forms.LoginCCForm"/>
+  <form-bean id="SearchUserForm" name="SearchUserForm" type="com.tdil.ljpeugeot.struts.forms.SearchUserForm"/>
     
   <form-bean id="LoginFormMobile" name="LoginFormMobile" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
   <form-bean id="RequestResetPasswordFormMobile" name="RequestResetPasswordFormMobile" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
@@ -275,6 +276,13 @@
   	<forward name="continue" path="/cc/home.jsp"/>
   </action>
   
+  <action name="SearchUserForm" parameter="CC" path="/cc/searchUser" scope="session" type="com.tdil.struts.actions.SearchAction">
+  	<forward name="continue" path="/cc/home.jsp"/>
+  </action>
+  
+  <action path="/cc/logout" type="com.tdil.ljpeugeot.struts.action.LogoutAction">
+  	<forward name="notLogged" path="/cc/login.jsp"/>
+  </action>
   
  </action-mappings>
  

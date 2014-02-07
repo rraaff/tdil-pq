@@ -11,13 +11,12 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 
+import com.tdil.ljpeugeot.model.SystemUser;
 import com.tdil.ljpeugeot.struts.forms.LoginCCForm;
-import com.tdil.ljpeugeot.struts.forms.LoginForm;
-import com.tdil.ljpeugeot.utils.WebsiteUser;
+import com.tdil.ljpeugeot.utils.CallCenterUser;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.ValidationException;
 import com.tdil.struts.actions.AbstractAction;
-import com.tdil.struts.actions.AjaxAction;
 
 public class LoginCCAction extends AbstractAction  {
 
@@ -26,7 +25,9 @@ public class LoginCCAction extends AbstractAction  {
 			HttpServletResponse response) throws Exception {
 			LoginCCForm login = (LoginCCForm) form;
 		try {
-			login.executeLogin();
+			SystemUser systemUser = login.executeLogin();
+			HttpSession session = request.getSession();
+			session.setAttribute("user", new CallCenterUser(systemUser));
 			return mapping.findForward("continue");
 		} catch (ValidationException e) {
 			ValidationError error = e.getError();

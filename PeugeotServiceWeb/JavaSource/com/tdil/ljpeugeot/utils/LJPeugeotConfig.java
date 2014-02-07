@@ -25,6 +25,7 @@ import com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread;
 import com.tdil.ljpeugeot.model.SystemProperty;
 import com.tdil.ljpeugeot.model.SystemPropertyExample;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
+import com.tdil.ljpeugeot.roles.CallCenterRole;
 import com.tdil.ljpeugeot.roles.HomeUser;
 import com.tdil.ljpeugeot.roles.PreventUser;
 import com.tdil.ljpeugeot.roles.WebsiteUser;
@@ -358,6 +359,7 @@ public class LJPeugeotConfig extends SystemConfig {
 		Role.addRole(WebsiteUser.INSTANCE);
 		Role.addRole(HomeUser.INSTANCE);
 		Role.addRole(PreventUser.INSTANCE);
+		Role.addRole(CallCenterRole.INSTANCE);
 	}
 
 	@Override

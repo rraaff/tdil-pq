@@ -10,6 +10,7 @@ import com.tdil.ibatis.TransactionProvider;
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.WebsiteUser;
 import com.tdil.ljpeugeot.model.WebsiteUserExample;
+import com.tdil.ljpeugeot.model.WebsiteUserExample.Criteria;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
@@ -67,6 +68,37 @@ public class WebsiteUserUtils {
 		}
 	}
 	
+	private static final class GetWebSiteUserByDniAndEmail implements TransactionalActionWithResult<WebsiteUser> {
+		private String dni;
+		private String email;
+		
+		public GetWebSiteUserByDniAndEmail(String dni, String email) {
+			super();
+			this.dni = dni;
+			this.email = email;
+		}
+		public WebsiteUser executeInTransaction() throws SQLException {
+			WebsiteUserExample example = new WebsiteUserExample();
+			Criteria criteria = example.createCriteria();
+			if (!StringUtils.isEmpty(this.dni) || !StringUtils.isEmpty(this.email)) {
+				if (!StringUtils.isEmpty(this.dni)) {
+					// TODO ...
+				}
+				if (!StringUtils.isEmpty(this.email)) {
+					criteria.andEmailEqualTo(this.email);
+				}
+				List<WebsiteUser> users = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
+				if (users.size() > 0) {
+					return users.get(0);
+				} else {
+					return null;
+				}
+			} else {
+				return null;
+			}
+		}
+	}
+	
 	private static final class GetWebSiteUserByHomeUserId implements TransactionalActionWithResult {
 		private String lojackUserId;
 		public GetWebSiteUserByHomeUserId(String lojackUserId) {
@@ -83,6 +115,18 @@ public class WebsiteUserUtils {
 				return result.get(0);
 			}
 		}
+	}
+	
+	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserByDniAndEmail(String dni, String email) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetWebSiteUserByDniAndEmail(dni, email));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
 	}
 	
 	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserByHomeUserId(String lojackUserId) {
