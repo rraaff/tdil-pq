@@ -51,6 +51,7 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'NOTIFICAT
     
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
+  dni VARCHAR(20) NULL ,
   firstName VARCHAR(150) NULL ,
   lastName VARCHAR(150) NULL ,
   lojackUserId VARCHAR(50) NULL ,
@@ -81,7 +82,7 @@ CREATE TABLE SYSTEMUSER (
 CREATE INDEX IX_SYSTEMUSER_00 ON SYSTEMUSER (username);
 
 INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 0);
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('cc',SHA1('bdb480de655aa6ec75ca058c849c4faf3c0f75b1'), 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('cc','bdb480de655aa6ec75ca058c849c4faf3c0f75b1', 1, 0);
 COMMIT;
 
 CREATE TABLE SYSPROPERTIES (

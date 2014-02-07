@@ -29,7 +29,7 @@
 		<html:text name="LoginCCForm" property="username" />
 	</fieldset>
 	<fieldset>
-		<label>usuario</label>
+		<label>contraseña</label>
 		<html:password name="LoginCCForm" property="password" />
 	</fieldset>
 	<fieldset>

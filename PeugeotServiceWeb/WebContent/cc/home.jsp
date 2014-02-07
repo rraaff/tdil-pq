@@ -1,3 +1,5 @@
+<%@page import="com.tdil.utils.StringUtils"%>
+<%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@page import="com.tdil.ljpeugeot.struts.forms.SearchUserForm"%>
 <%@ page contentType="text/html; charset=ISO-8859-1" %><%--
 --%><%@ taglib uri="/WEB-INF/struts-bean" prefix="bean" %><%--
@@ -29,15 +31,15 @@
 <html:form method="POST" action="/cc/searchUser">
 <% SearchUserForm searchUserForm = (SearchUserForm)session.getAttribute("SearchUserForm"); %>
 <fieldset>
-		<label>usuario</label>
+		<label>DNI</label>
 		<html:text name="SearchUserForm" property="dni" />
 	</fieldset>
 	<fieldset>
-		<label>email</label>
+		<label>Email</label>
 		<html:text name="SearchUserForm" property="email" />
 	</fieldset>
 	<fieldset>
-		<input type="submit" id="submitregister" value="Login" class="buttonSend">
+		<input type="submit" id="submitregister" value="Buscar" class="buttonSend">
 	</fieldset>
 	<% if (searchUserForm.isSearchEmpty()) { %>
 		No se ha encontrado el usuario
@@ -46,11 +48,19 @@
 			<% if (searchUserForm.getContactData() == null) { %>
 				El usuario no ha definido sus datos de contacto
 			<% } else { %>
-				Primer contacto: <%=searchUserForm.getContactData().getContact1name()%><br>
-				Relacion: <%=searchUserForm.getContactData().getContact1relation()%><br>
-				Te: <%=searchUserForm.getContactData().getContact1phone()%><br>
-				Palabra clave: <%=searchUserForm.getContactData().getContact1secword()%><br>
-				Obra Social: <%=searchUserForm.getContactData().getContact1healthi()%><br>
+				Primer contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1name())%><br>
+				Relacion: <%=searchUserForm.getContactData().getContact1relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact1relation()) : ""%><br>
+				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1phone())%><br>
+				Palabra clave: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1secword())%><br>
+				Obra Social: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1healthi())%><br>
+				
+				segundo contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2name())%><br>
+				Relacion: <%=searchUserForm.getContactData().getContact2relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact2relation()) : ""%><br>
+				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2phone())%><br>
+				
+				tercer contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3name())%><br>
+				Relacion: <%=searchUserForm.getContactData().getContact3relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact3relation()) : ""%><br>
+				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3phone())%><br>
 			<% } %>
 		<% } %>
 	<% } 
