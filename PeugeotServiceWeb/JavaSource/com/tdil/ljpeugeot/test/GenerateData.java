@@ -46,6 +46,7 @@ public class GenerateData extends TestCase {
 					wu = wus.get(0);
 				} else {
 					wu = new WebsiteUser();
+					wu.setDni("25270160");
 					wu.setFirstname("Marcos");
 					wu.setLastname("Godoy");
 					wu.setEmail("subcmd@gmail.com");

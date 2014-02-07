@@ -82,7 +82,7 @@ public class WebsiteUserUtils {
 			Criteria criteria = example.createCriteria();
 			if (!StringUtils.isEmpty(this.dni) || !StringUtils.isEmpty(this.email)) {
 				if (!StringUtils.isEmpty(this.dni)) {
-					// TODO ...
+					criteria.andDniEqualTo(this.dni);
 				}
 				if (!StringUtils.isEmpty(this.email)) {
 					criteria.andEmailEqualTo(this.email);
