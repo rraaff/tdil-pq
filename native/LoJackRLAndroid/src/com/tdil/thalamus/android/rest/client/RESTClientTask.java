@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -28,9 +29,9 @@ import android.util.Log;
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask {
 
 	private HttpMethod method;
-	private Context context;
-	private IRestClientObserver observer;
-	private ProgressDialog progressDialog;
+	private WeakReference<Context> contextRef;
+	private WeakReference<IRestClientObserver> observerRef;
+	private WeakReference<ProgressDialog> progressDialogRef;
 	private InputStream inputStream = null;
 	private String result = "";
 	private int statusCode;
@@ -42,23 +43,27 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
-		this.context = context;
+		this.contextRef = new WeakReference<Context>(context);
 		this.method = method;
-		this.observer = observer;
-		this.progressDialog = new ProgressDialog(context);
+		this.observerRef = new WeakReference<IRestClientObserver>(observer);
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
 	}
 
 	protected void onPreExecute() {
-		progressDialog.setMessage("Por favor, espere...");
-		progressDialog.show();
-		/*progressDialog.setOnCancelListener(new OnCancelListener() {
-			public void onCancel(DialogInterface arg0) {
-				RESTClientTask.this.cancel(true);
-			}
-		});*/
+		Context context = contextRef.get();
+		if (context != null) {
+			ProgressDialog progressDialog = new ProgressDialog(context);
+			progressDialog.setMessage("Por favor, espere...");
+			progressDialog.show();
+			progressDialogRef = new WeakReference<ProgressDialog>(progressDialog);
+			/*progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface arg0) {
+					RESTClientTask.this.cancel(true);
+				}
+			});*/
+		}
 	}
 
 	@Override
@@ -66,7 +71,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		String url_select = RESTConstants.REST_URL + this.url;
 		if (this.urlParams != null) {
 			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
-				url_select = url_select.replace(replacements.getKey(), replacements.getValue());
+				if (replacements.getValue() != null) {
+					url_select = url_select.replace(replacements.getKey(), replacements.getValue());
+				}
 			}
 		}
 		ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
@@ -135,16 +142,24 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	@Override
 	protected void onPostExecute(final Boolean success) {
 		try {
-			this.progressDialog.dismiss();
-			if(success) {
-				try {
-					this.observer.sucess(this);
-				} catch (Exception e) {
-					e.printStackTrace();
-					this.observer.error(this);
+			if (this.progressDialogRef != null) {
+				ProgressDialog progressDialog = progressDialogRef.get();
+				if (progressDialog != null) {
+					progressDialog.dismiss();
 				}
-			} else {
-				this.observer.error(this);
+			}
+			IRestClientObserver observer = this.observerRef.get();
+			if (observer != null) {
+				if(success) {
+					try {
+						observer.sucess(this);
+					} catch (Exception e) {
+						e.printStackTrace();
+						observer.error(this);
+					}
+				} else {
+					observer.error(this);
+				}
 			}
 		} catch (Exception e) {
 			

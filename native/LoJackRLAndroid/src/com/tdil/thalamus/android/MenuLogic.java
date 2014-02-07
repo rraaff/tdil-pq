@@ -23,16 +23,22 @@ public class MenuLogic {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(IRestClientTask task) {
+					Intent intent = new Intent(activity, LoginActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.putExtra("EXIT", true);
+			    	activity.startActivity(intent);
+			    	activity.finish();
 				}
 				@Override
 				public void error(IRestClientTask task) {
+					Intent intent = new Intent(activity, LoginActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.putExtra("EXIT", true);
+			    	activity.startActivity(intent);
+			    	activity.finish();
 				}
 			}, RESTConstants.LOGOUT, null, null).execute((Void) null);
-			Intent intent = new Intent(activity, LoginActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.putExtra("EXIT", true);
-	    	activity.startActivity(intent);
-	    	activity.finish();
+
 			return true;
 		case R.id.menu_action_home: 
 			FooterLogic.handleHomeAccess(activity, true);

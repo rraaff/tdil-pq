@@ -51,6 +51,9 @@ public class IndexActivity extends Activity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
 
+//		BitmapFactory.Options options = new BitmapFactory.Options();
+//		options.inSampleSize = 4;
+		
 		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
 		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));

@@ -4,21 +4,18 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TabHost.OnTabChangeListener;
-import android.widget.TabHost.TabSpec;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -33,9 +30,6 @@ import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatus;
 import com.tdil.thalamus.android.rest.model.AlarmJobStatusCollection;
-import com.tdil.thalamus.android.rest.model.Light;
-import com.tdil.thalamus.android.rest.model.LightJobStatus;
-import com.tdil.thalamus.android.rest.model.LightJobStatusCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**

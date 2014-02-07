@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -22,8 +21,6 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.rest.model.CameraCollection;
-import com.tdil.thalamus.android.rest.model.Light;
-import com.tdil.thalamus.android.rest.model.LightCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**

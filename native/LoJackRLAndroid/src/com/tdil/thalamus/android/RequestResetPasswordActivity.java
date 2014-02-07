@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +26,6 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
-import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.utils.Messages;
 

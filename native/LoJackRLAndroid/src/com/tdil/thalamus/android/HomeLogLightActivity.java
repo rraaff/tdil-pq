@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -22,8 +20,6 @@ import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.Alarm;
-import com.tdil.thalamus.android.rest.model.AlarmCollection;
 import com.tdil.thalamus.android.rest.model.ChangeLog;
 import com.tdil.thalamus.android.rest.model.LogCollection;
 import com.tdil.thalamus.android.utils.Messages;

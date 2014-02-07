@@ -9,21 +9,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.Spinner;
 
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.gui.BeanMappingFunction;
-import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
-import com.tdil.thalamus.android.rest.client.HttpMethod;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
-import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
-import com.tdil.thalamus.android.rest.model.LoginResponse;
 
 /**
  * Activity which displays a login screen to the user, offering registration as

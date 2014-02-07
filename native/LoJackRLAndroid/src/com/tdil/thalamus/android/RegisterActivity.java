@@ -55,7 +55,6 @@ import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.PersonBean;
-import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.rest.model.StateBean;
 import com.tdil.thalamus.android.rest.model.StateBeanCollection;
 import com.tdil.thalamus.android.utils.Messages;

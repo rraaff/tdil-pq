@@ -113,22 +113,6 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 	}
 
 	/********* Called when Item click in ListView ************/
-	private class OnItemClickListener implements OnClickListener {
-		private int mPosition;
-
-		OnItemClickListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			/*HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.onItemClick(mPosition);*/
-		}
-	}
-	
-	
-	/********* Called when Item click in ListView ************/
 	private class ViewCameraListener implements OnClickListener {
 		private Camera camera;
 		private Integer size;

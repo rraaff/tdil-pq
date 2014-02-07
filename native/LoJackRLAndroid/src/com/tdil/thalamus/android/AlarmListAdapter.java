@@ -20,9 +20,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.lojack.rl.R.color;
 import com.tdil.thalamus.android.rest.model.Alarm;
-import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
 public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
@@ -153,53 +151,6 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 		Log.v("CustomAdapter", "=====Row button clicked");
 	}
 
-	/********* Called when Item click in ListView ************/
-	private class OnItemClickListener implements OnClickListener {
-		private int mPosition;
-
-		OnItemClickListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
-			Alarm alarm = sct.getAlarm(mPosition);
-			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
-			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
-			activity.startActivity(intent);
-		}
-	}
-	
-	/********* Called when Item click in ListView ************/
-	private class ToggleActivateListener implements OnClickListener {
-		private int mPosition;
-		
-		ToggleActivateListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
-			sct.toggleAlarmActivation(mPosition);
-		}
-	}
-	/********* Called when Item click in ListView ************/
-	private class ViewAlarmLogListener implements OnClickListener {
-		private int mPosition;
-		
-		ViewAlarmLogListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			HomeAlarmsActivity sct = (HomeAlarmsActivity) activity;
-			sct.viewAlarmLog(mPosition);
-		}
-	}
-	
 	private class GoAlarmDashBoard implements OnClickListener {
 		private Alarm alarm;
 		

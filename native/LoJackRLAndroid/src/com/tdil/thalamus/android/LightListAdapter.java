@@ -20,9 +20,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.lojack.rl.R.color;
 import com.tdil.thalamus.android.rest.model.Light;
-import com.tdil.thalamus.android.utils.DownloadImageTask;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
 public class LightListAdapter extends BaseAdapter implements OnClickListener {
@@ -196,49 +194,6 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
 			intent.putExtra(HomeLightDashboard.LIGHT, light);
 			activity.startActivity(intent);
-		}
-	}
-	
-	/********* Called when Item click in ListView ************/
-	private class ToggleActivateListener implements OnClickListener {
-		private int mPosition;
-		
-		ToggleActivateListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			ILightsActivity sct = (ILightsActivity) activity;
-			sct.toggleLightActivation(mPosition);
-		}
-	}
-	
-	private class ToggleRandomListener implements OnClickListener {
-		private int mPosition;
-		
-		ToggleRandomListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			ILightsActivity sct = (ILightsActivity) activity;
-			sct.toggleLightRandom(mPosition);
-		}
-	}
-	/********* Called when Item click in ListView ************/
-	private class ViewLightLogListener implements OnClickListener {
-		private int mPosition;
-		
-		ViewLightLogListener(int position) {
-			mPosition = position;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			ILightsActivity sct = (ILightsActivity) activity;
-			sct.viewLightLog(mPosition);
 		}
 	}
 	
