@@ -6,12 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -36,8 +34,11 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	private String result = "";
 	private int statusCode;
 	private String url;
+	private String urlToExecute;
 	private Map<String, String> urlParams;
 	private String body;
+	
+	private boolean incomplete = false;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
@@ -52,6 +53,20 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	}
 
 	protected void onPreExecute() {
+		urlToExecute = RESTConstants.REST_URL + this.url;
+		if (this.urlParams != null) {
+			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
+				if (replacements.getValue() != null) {
+					urlToExecute = urlToExecute.replace(replacements.getKey(), replacements.getValue());
+				}
+			}
+		}
+		if (urlToExecute.indexOf("{") != -1) {
+			incomplete = true;
+		}
+		if (incomplete) {
+			return;
+		}
 		Context context = contextRef.get();
 		if (context != null) {
 			ProgressDialog progressDialog = new ProgressDialog(context);
@@ -68,19 +83,12 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 
 	@Override
 	protected Boolean doInBackground(Void... params) {
-		String url_select = RESTConstants.REST_URL + this.url;
-		if (this.urlParams != null) {
-			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
-				if (replacements.getValue() != null) {
-					url_select = url_select.replace(replacements.getKey(), replacements.getValue());
-				}
-			}
+		if (incomplete) {
+			return Boolean.FALSE;
 		}
-		ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
-
 		try {
 			// Set up HTTP post
-			HttpRequestBase httpPost = this.method.create(url_select);
+			HttpRequestBase httpPost = this.method.create(urlToExecute);
 			if (this.body != null) {
 				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
 					    this.body.getBytes("UTF8")));
@@ -141,6 +149,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
+		if (incomplete) {
+			return;
+		}
 		try {
 			if (this.progressDialogRef != null) {
 				ProgressDialog progressDialog = progressDialogRef.get();

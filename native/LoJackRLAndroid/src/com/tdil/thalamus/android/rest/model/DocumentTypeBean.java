@@ -6,6 +6,17 @@ public class DocumentTypeBean {
 	private String name;
 	private int countryId;
 	
+	public DocumentTypeBean() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public DocumentTypeBean(int id, String name, int countryId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.countryId = countryId;
+	}
+
 	public int getId() {
 		return id;
 	}

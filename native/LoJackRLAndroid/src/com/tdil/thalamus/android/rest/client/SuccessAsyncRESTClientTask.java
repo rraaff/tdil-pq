@@ -5,12 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -28,52 +27,68 @@ import android.util.Log;
 public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask{
 
 	private HttpMethod method;
-	private Context context;
-	private IRestClientObserver observer;
-	private ProgressDialog progressDialog;
+	private WeakReference<Context> contextRef;
+	private WeakReference<IRestClientObserver> observerRef;
+	private WeakReference<ProgressDialog> progressDialogRef;
 	private InputStream inputStream = null;
 	private String result = "";
 	private int statusCode;
 	private String url;
+	private String urlToExecute;
 	private Map<String, String> urlParams;
 	private String body;
+	
+	private boolean incomplete = false;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
 	public SuccessAsyncRESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
-		this.context = context;
+		this.contextRef = new WeakReference<Context>(context);
 		this.method = method;
-		this.observer = observer;
-		this.progressDialog = new ProgressDialog(context);
+		this.observerRef = new WeakReference<IRestClientObserver>(observer);
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
 	}
 
 	protected void onPreExecute() {
-		progressDialog.setMessage("Por favor, espere...");
-		progressDialog.show();
-		/*progressDialog.setOnCancelListener(new OnCancelListener() {
-			public void onCancel(DialogInterface arg0) {
-				RESTClientTask.this.cancel(true);
+		urlToExecute = RESTConstants.REST_URL + this.url;
+		if (this.urlParams != null) {
+			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
+				if (replacements.getValue() != null) {
+					urlToExecute = urlToExecute.replace(replacements.getKey(), replacements.getValue());
+				}
 			}
-		});*/
+		}
+		if (urlToExecute.indexOf("{") != -1) {
+			incomplete = true;
+		}
+		if (incomplete) {
+			return;
+		}
+		Context context = contextRef.get();
+		if (context != null) {
+			ProgressDialog progressDialog = new ProgressDialog(context);
+			progressDialog.setMessage("Por favor, espere...");
+			progressDialog.show();
+			progressDialogRef = new WeakReference<ProgressDialog>(progressDialog);
+			/*progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface arg0) {
+					RESTClientTask.this.cancel(true);
+				}
+			});*/
+		}
 	}
 
 	@Override
 	protected Boolean doInBackground(Void... params) {
-		String url_select = RESTConstants.REST_URL + this.url;
-		if (this.urlParams != null) {
-			for (Map.Entry<String, String> replacements : this.urlParams.entrySet()) {
-				url_select = url_select.replace(replacements.getKey(), replacements.getValue());
-			}
+		if (incomplete) {
+			return Boolean.FALSE;
 		}
-		ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
-
 		try {
 			// Set up HTTP post
-			HttpRequestBase httpPost = this.method.create(url_select);
+			HttpRequestBase httpPost = this.method.create(urlToExecute);
 			if (this.body != null) {
 				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
 					    this.body.getBytes("UTF8")));
@@ -133,17 +148,28 @@ public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> i
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
+		if (incomplete) {
+			return;
+		}
 		try {
-			this.progressDialog.dismiss();
-			if(success) {
-				try {
-					this.observer.sucess(this);
-				} catch (Exception e) {
-					e.printStackTrace();
-					this.observer.error(this);
+			if (this.progressDialogRef != null) {
+				ProgressDialog progressDialog = progressDialogRef.get();
+				if (progressDialog != null) {
+					progressDialog.dismiss();
 				}
-			} else {
-				this.observer.error(this);
+			}
+			IRestClientObserver observer = this.observerRef.get();
+			if (observer != null) {
+				if(success) {
+					try {
+						observer.sucess(this);
+					} catch (Exception e) {
+						e.printStackTrace();
+						observer.error(this);
+					}
+				} else {
+					observer.error(this);
+				}
 			}
 		} catch (Exception e) {
 			

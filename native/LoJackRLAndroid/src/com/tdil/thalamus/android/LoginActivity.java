@@ -1,6 +1,8 @@
 package com.tdil.thalamus.android;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
@@ -88,7 +90,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 	private String mPassword;
 	private CheckBox remCheckBox;
 
-	private DocumentTypeCollection col;
+//	private DocumentTypeCollection col;
 
 	private Validator validator;
 	
@@ -137,6 +139,47 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 					}
 				});
 
+		List<DocumentTypeBean> documentTypeBeans = new ArrayList<DocumentTypeBean>();
+		documentTypeBeans.add(new DocumentTypeBean(1, "DNI",1));
+		documentTypeBeans.add(new DocumentTypeBean(2, "Pasaporte",1));
+		documentTypeBeans.add(new DocumentTypeBean(3, "Libreta Civica",1));
+		documentTypeBeans.add(new DocumentTypeBean(4, "Libreta Enrolamiento",1));
+		documentTypeBeans.add(new DocumentTypeBean(5, "Cedula Identidad",1));
+		
+		BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(
+				LoginActivity.this,
+				android.R.layout.simple_spinner_item, documentTypeBeans,
+				new BeanMappingFunction<DocumentTypeBean>() {
+					public String key(DocumentTypeBean t) {
+						return String.valueOf(t.getId());
+					};
+
+					@Override
+					public String value(DocumentTypeBean t) {
+						return t.getName();
+					}
+				});
+		LoginActivity.this.docTypeSpinner.setAdapter(adapter);
+		String mDocTypeSt = LoginActivity.this.getPreferences(
+				Context.MODE_PRIVATE).getString("mDocType", "-1");
+		if (mDocTypeSt.length() == 0) {
+			mDocTypeSt = "-1";
+		}
+		int mDocType = Integer.valueOf(mDocTypeSt);
+		boolean found = false;
+		if (mDocType != -1) {
+			int index = 0;
+			for (DocumentTypeBean bean : documentTypeBeans) {
+				if (bean.getId() == mDocType) {
+					LoginActivity.this.mDocType = mDocTypeSt;
+					LoginActivity.this.docTypeSpinner
+							.setSelection(index);
+					found = true;
+				}
+				index = index + 1;
+			}
+		}
+		/*
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
@@ -186,7 +229,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(LoginActivity.this);
 			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);*/
 
 		/*
 		 * List<String> list = new ArrayList<String>(); list.add("DNI");
@@ -242,6 +285,10 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		if (found && remCheckBox.isChecked() && fromLaunch) {
+			attemptLogin();
 		}
 
 	}
