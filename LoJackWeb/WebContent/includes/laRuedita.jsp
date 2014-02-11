@@ -22,14 +22,14 @@
 								<li id="liCars" class="car" ><a class="rdCar" href="#" id="enterPrevent" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Ingresá ahora')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 							<% }  %>
 						<%} else { %>
-							<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
-								<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
-								<li id="liVluMessages" class="car" ><a class="rdCar" href="#" onclick="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('liVluMessages', 'car', 'over', 'Car', 'Ver avisos de VLU')" onmouseout="chbg('liVluMessages', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-								<li id="liCars" class="car" ><a class="rdCar" href="#" onclick="javascript:showVideo1('car');" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Mirá el aviso')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-							<% } else { %>
-								<!-- caso no logueado, o no usuario de prevent ni vlu -->
-								<li id="liCars" class="car" ><a class="rdCar" href="#" onclick="javascript:showVideo1('car');" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Mirá el aviso')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
-							<% }  %>
+							<li id="liCars" class="car" ><a class="rdCar" href="#" onclick="javascript:showVideo1('car');" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Mirá el aviso')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
+						<% } %>
+						
+						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>								
+							<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
+							<li id="liVluMessages" class="vlu"><a class="rdCar" href="#" onclick="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'Mensaje de LoJack')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')">!</a></li>
+						<% } else { %>
+							<li id="liVluMessages" class="vlu" style="opacity:0;"><a class="rdCar" href="#" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'No hay mensajes')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')">!</a></li>
 						<% } %>
 						
 						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPetUser()) { %>

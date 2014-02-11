@@ -13,11 +13,13 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/index_menu.css" rel="stylesheet" type="text/css">
-<link href="css/laruedita.css" rel="stylesheet" type="text/css">
-<link href="css/copyright.css" rel="stylesheet" type="text/css">
-<link href="css/index_modales.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/ws_modal.css" />
 <script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
 <script type="text/javascript">
@@ -50,7 +52,7 @@ $(document).ready(
 				});
 		}
 );
-
+// div.wsmodal
 
 function enterPrevent() {
 	var userDate = new Date();
@@ -60,7 +62,20 @@ function enterPrevent() {
 <%@ include file="../includes/errorAjaxJS.jspf" %>
 <%@ include file="../includes/centerLayerJS.jspf" %>
 
-
+	function showVluMessages(dni) {
+		//alert(dni);
+		<%@ include file="../includes/blockUI.jspf" %>
+		$('#vluMessagesLayer').load('../vluMessagesNoPrevent.jsp?dni=' + dni, function(response, status, xhr) {
+			<%@ include file="../includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#vluMessagesLayer" ));
+				centerLayer($(window), $( "#centradorModalesVluMessages" ));
+			}
+			adjustModalHeight();
+		});
+	}
 </script>
 <style type="text/css">
 #laRuedita { top:20%; }
@@ -96,6 +111,15 @@ button.buttonDefault {
 	text-transform:uppercase;
 	padding:10px 20px;
 }
+
+#iconoTv			{ top:-622px; left:178px; }
+#iconoClubLJ		{ top:-6px; left:128px; }
+#iconoHome			{ top:-385px; left:6px; }
+#iconoParkings		{ top:91px; left:156px; }
+#iconoPets			{ top:-433px; left:196px; }
+#rdCentral			{ top:-584px; left:77px; }
+
+
 </style>
 <script type="text/javascript">
 function chbg(title, subTitle) {
@@ -105,6 +129,18 @@ function chbg(title, subTitle) {
 	
 	var id = document.getElementById("subTitle");
 	id.innerHTML=subTitle;
+}
+var adjustModalHeight = function() {
+	var elemToChangeX = document.getElementById("vluMessages");
+	var winH = $(window).height();
+	elemToChangeX.style.height = winH + "px"
+
+}
+window.onload=function() {
+	adjustModalHeight();
+}		
+window.onresize=function() {
+	adjustModalHeight();
 }
 </script>
 <%@ include file="includes/head.jsp"%>
@@ -131,6 +167,12 @@ function chbg(title, subTitle) {
 			<div id="iconoCar"><a id="loginPreventLink" href="javascript:enterPrevent()" onmouseover="chbg('Car', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } else { %>
 			<div id="iconoCar"><a href="videoPageCar.jsp" onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
+		<% } %>
+		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
+			<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
+			<div id="liVluMessages"><a href="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('Car', 'Mensaje de LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')">!</a></div>
+		<% } else { %>
+			<div id="liVluMessages" style="opacity:0;"><a href="#" onmouseover="chbg('Car', 'No hay mensajes')" onmouseout="chbg('Seleccione', 'Una Aplicación')">!</a></div>
 		<% } %>
 		<% if (websiteUser.isHomeUser()) { %>
 			<div id="iconoHome"><a href="../productoHome.jsp" onmouseover="chbg('Home', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
@@ -159,5 +201,11 @@ function chbg(title, subTitle) {
 </div>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="../includes/version.jspf" %>
+
+<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="vluMessages">
+		Consultando datos...
+	</div>
+</div>
 </body>
 </head>

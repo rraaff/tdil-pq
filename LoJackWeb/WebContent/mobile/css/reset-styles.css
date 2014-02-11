@@ -32,3 +32,6 @@ body, section, div, table, td, tr, header, ul, li, menu, .dir, p, span {
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;   
 }
+ul, li { list-style:none; }
+
+p.information	{ border:solid 1px #4493b0; border-radius:10px; color:#154658; font-size:15px; line-height:22px; background-color:#c3e4f1; background-image:url("../../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:0 0 20px; }
