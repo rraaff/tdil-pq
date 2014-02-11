@@ -5,40 +5,67 @@
 <%@page import="java.util.List"%>
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checklogaccess.jspf" %><%--
---%><html>
+--%>
+
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>LoJack :: Real Life :: Backdoor Application - VLU Config</title>
+<link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" media="screen" href="../css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/backdoor.css" />
+</head>
 <body>
-<h1>VLU</h1>
+<%@ include file="includes/header.jsp" %>
 <%@ include file="includes/menu.jspf" %>
+<section id="titles">
+	<h1>LoJack Real Life BackDoor Application</h1>
+	<h2>VLU</h2>
+</section>
+<section id="content">
+	<article>
+		<div class="portaTable">
+			<ul class="thead">
+				<li class="value">Importación</li>
+				<li class="erased">Estado</li>
+				<li class="key">Procesados</li>
+				<li class="key">Inicio</li>
+				<li class="key">Última modif</li>
+				<li class="delete">Borrar</li>
+			</ul>
+			<% List<VLUImport> imports = VLUUtils.getImports();
+			for (VLUImport vluImport : imports) { %>
+				<ul class="tbody">
+					<li class="value"><%=vluImport.getId()%> - <%=vluImport.getFilename()%></li>
+					<li class="erased"><%=vluImport.getStatus()%></li>
+					<li class="key"><%=vluImport.getProcessed()%></li>
+					<li class="key"><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></li>
+					<li class="key"><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></li>
+					<li class="delete"><a href="./doDeleteVLU.jsp?id=<%=vluImport.getId()%>">Borrar</a></li>
+				</ul>
+			<% } %>
+		</div>
 
-<table border="1">
-<tr>
-<td>Importacion</td><td>Estado</td><td>Procesados</td><td>Inicio</td><td>Ultima modif</td><td>Borrar</td></tr>
-<% List<VLUImport> imports = VLUUtils.getImports();
-for (VLUImport vluImport : imports) { %>
+		<hr>
 
-<tr>
-<td><%=vluImport.getId()%> - <%=vluImport.getFilename()%></td>
-<td><%=vluImport.getStatus()%></td>
-<td><%=vluImport.getProcessed()%></td>
-<td><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></td>
-<td><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></td>
-<td><a href="./doDeleteVLU.jsp?id=<%=vluImport.getId()%>">Borrar</a></td>
-</tr>
+		<h3>Importar base de VLU</h3>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: dni,domain,message</p>
 
-<% } %>
-</table>
-<hr>
-Importar base de vlu <br>
-El archivo debe ser un csv con el siguiente formato:<br>
-dni,domain,message<br><br>
-
-<form action="doImportVLU.jsp" method="post"
-                        enctype="multipart/form-data">
-<input type="file" name="file" size="50" />
-<br />
-<input type="submit" value="Importar" />
-<br>Recuerde que la importacion se ejecutara entre las <%=VLUImportThread.getStartHour()%>:<%=VLUImportThread.getStartMinutes()%> y las 
-<%=VLUImportThread.getEndHour()%>:<%=VLUImportThread.getEndMinutes()%> 
-</form>
+		<form action="doImportVLU.jsp" method="post" enctype="multipart/form-data" class="fullSize">
+			<fieldset class="allinone">
+				<label class="longer">Buscar archivo</label>
+				<input type="file" name="file" />
+			</fieldset>
+			<fieldset class="botonera">
+				<input type="submit" value="Importar" />
+			</fieldset>			
+		</form>
+		
+		<p class="attention">Recuerde que la importacion se ejecutara entre las <%=VLUImportThread.getStartHour()%>:<%=VLUImportThread.getStartMinutes()%> y las <%=VLUImportThread.getEndHour()%>:<%=VLUImportThread.getEndMinutes()%></p>
+	</article>
+</section>
 </body>
 </html>

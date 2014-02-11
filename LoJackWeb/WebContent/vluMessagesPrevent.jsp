@@ -16,30 +16,23 @@ $( "#closevluMessagesLayer" ).click(function() {
 <div id="xContainer"><button id="closevluMessagesLayer">X</button></div>
 <h3>Mensaje de LoJack</h3>
 <div id="tableStyle">
+	<p class="information">Si el rastreador de su vehículo requiere mantenimiento, comuníquese al 0800-122-5652</p>
 	<fieldset class="tableHeader">
 		<label class="w1">Patente</label>
-		<label class="w1"></label>
-		<label class="w1">Mensaje</label>
-	</fieldset>
+		<!--  label class="w5"></label> -->
+		<label class="w5">Mensaje</label>
+	</fieldset>	
 	<% for (VLUDataDTO vluData : selectVehiclesForm.getVlDataDTOs()) { %>
 		<fieldset>
 			<label class="w1"><%=vluData.getDomain() %></label>
-		</fieldset>
 		<% if (StringUtils.isEmpty(vluData.getMessage())) { %>
-			<fieldset>
-				<label class="w1"></label>
-			</fieldset>
-			<fieldset>
-				<label class="w1"></label>
-			</fieldset>
+			<!--  label class="w5"></label>  -->
+			<label class="w5"></label>
 		<% } else { %>
-			<fieldset>
-				<label class="w1">X</label>
-			</fieldset>
-			<fieldset>
-				<label class="w1"><%=vluData.getMessage() %></label>
-			</fieldset>
+			<!--  label class="w5">X</label> -->
+			<label class="w5"><span class="textintable"><%=vluData.getMessage() %></span></label>
 		<% } %>
+		</fieldset>
 	<% } %>
 </div>
 <%@ include file="includes/catchModal.jspf" %>

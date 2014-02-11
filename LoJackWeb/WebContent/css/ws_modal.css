@@ -1,0 +1,23 @@
+div.wsmodal				{ width:30%; display:inline-block; box-shadow:0 0 10px 1px #000; position:relative; }
+div.wsmHeader			{ background-color:#000; padding:30px; width:100%; display:inline-block; }
+div.wsmHeader span		{ color:#fff; font-size:14px; line-height:36px; text-transform:uppercase; float:left; }
+div.wsmBody				{ background-color:#fff; font-size:14px; width:100%; padding:0; display:inline-block; }
+
+div.table							{ width:100%; margin:0; display:inline-block; }
+div.table ul.thead					{ background-color:#8B9298; width:100%; display:inline-block; }
+div.table ul.tbody					{ background-color:#e8e9ea; width:100%; display:inline-block; }
+div.table ul.tbody:first-child		{ background-color:#e8e9ea; }
+div.table ul.tbody:nth-child(2n+3)	{ background-color:#f3f4f4; }
+
+div.table ul li.thcel				{ font-family:'GothamLightRegular', Helvetica, Arial, sans-serif; font-size:20px; }
+div.table ul.thead li.thcell		{ font-family:'GothamMediumRegular', Helvetica, Arial, sans-serif; font-size:14px; line-height:48px; text-align:center; text-transform:uppercase; float:left; padding:0 10px; }
+div.table ul.tbody li.thcell		{ text-align:center; padding:10px 0; float:left; }		
+
+span.ajuteMensaje					{ margin:30px 30px 10px; display:inline-block; }
+
+button.wsmButtonBack	{ border:none; background:transparent; background-image:url("../images/skin_RealLife_two/icons/ws_modal/ic_back_btn_off.png"); background-repeat:no-repeat; width:36px; height:36px; float:left; }
+button.wsmButtonClose	{ border:none; background:transparent; background-image:url("../images/skin_RealLife_two/icons/ws_modal/ic_close_btn_off.png"); background-repeat:no-repeat; width:36px; height:36px; float:right; }
+
+@media only screen and (max-width:800px) {
+	div.wsmodal { background:#fff; width:100%; top:0; left:0; position:absolute; z-index:10000; }
+}

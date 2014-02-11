@@ -342,12 +342,12 @@ if (apk) {
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
-				<button class="iconGetPosit" onclick="selectVehiclesForMap();">&nbsp;</button>
-				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
-				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
-				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
+				<button class="iconGetPosit" onclick="selectVehiclesForMap();">Ubicar</button>
+				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">Máximas</button>
+				<button class="iconZSeguras" onclick="editSecureZones();">Zonas</button>
+				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">Teléfonos</button>
 				<% if (websiteUser.isVLUClient()) { %>
-					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
+					<button class="iconVLUAlert" onclick="verMensajesVlu();">Services</button>
 				<% } %>
 			</div>
 		</section>

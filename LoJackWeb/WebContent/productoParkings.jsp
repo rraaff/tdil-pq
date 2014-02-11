@@ -388,11 +388,11 @@
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
-				<button class="iconEall" onclick="showAllParkings();">&nbsp;</button>
-				<button class="icon100mts" onclick="showParkings(100);">&nbsp;</button>
-				<button class="icon500mts" onclick="showParkings(500);">&nbsp;</button>
-				<button class="icon1mks" onclick="showParkings(1000);">&nbsp;</button>
-				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>	
+				<button class="iconEall" onclick="showAllParkings();">Ver todos</button>
+				<button class="icon100mts" onclick="showParkings(100);">Metros</button>
+				<button class="icon500mts" onclick="showParkings(500);">Metros</button>
+				<button class="icon1mks" onclick="showParkings(1000);">Metros</button>
+				<button class="iconClear" onclick="removeParkings();">Ocultar</button>	
 			</div>
 		</section>
 		<section id="zoomSection">
