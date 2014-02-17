@@ -39,7 +39,7 @@ public class WebsiteUser extends User {
 	private String preventUserId;
 	private boolean isPetUser;
 	private String petUserId;
-	private boolean isVLUClient;
+	private boolean vluIsClient;
 	private int vluMessages;
 	
 	private boolean isClientClubLoJack = true;
@@ -318,12 +318,12 @@ public class WebsiteUser extends User {
 		this.clubLoJackLevel = clubLojackLevel;
 	}
 
-	public boolean isVLUClient() {
-		return isVLUClient;
+	public boolean vluIsClient() {
+		return vluIsClient;
 	}
 
-	public void setVLUClient(boolean isVLUClient) {
-		this.isVLUClient = isVLUClient;
+	public void setVLUClient(boolean vluIsClient) {
+		this.vluIsClient = vluIsClient;
 	}
 
 	public int getVluMessages() {

@@ -170,13 +170,13 @@ public class LoginForm extends ActionForm {
 				user.setPetUserId(profile.getString("petUser"));
 			}
 		}
-		String vluClientKey = "isVLUClient";
+		String vluClientKey = "vluIsClient";
 		if (jsonHasValueForKey(profile, vluClientKey)) {
 			user.setVLUClient(profile.getBoolean(vluClientKey));
 		} else {
 			user.setVLUClient(false);
 		}
-		if (user.isVLUClient()) {
+		if (user.vluIsClient()) {
 			if (document != null) {
 				user.setVluMessages(VLUUtils.countVLUMessages(document.getString("number")));
 			}
