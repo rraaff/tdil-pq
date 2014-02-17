@@ -19,16 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
@@ -95,7 +86,7 @@
 		</div>
 	</div>
 </header>
-<%@ include file="includes/laRuedita.jsp" %>
+
 
 
 <%@ include file="includes/contactLayers.jspf" %>

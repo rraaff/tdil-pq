@@ -40,32 +40,27 @@ Cookie ecookie1 = new Cookie("etwt", twitterUrl.getCookie("AWSELB").getValue());
 ecookie1.setMaxAge(24*60*60);
 response.addCookie(ecookie1);
 %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: </title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
+
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.frankie.skin.reallife.v2.css" />
+
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
+
 <%@ include file="includes/headNotLogged.jsp" %>
+
 <script type="text/javascript" src="js/jstz.js"></script>
+
 <script>
 
 var lastCenter = null;
@@ -401,21 +396,37 @@ function parkingsNotLogged() {
 </head>
 <body>
 <script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
+
 <header>
 	<div id="floatyMenu">
 		<div class="wrapper">
 			<ul>
 				<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
 				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
-				<li><a href="javascript:register();" id="register" title="Registrate"><span>Registrate</span></a></li>
-				<li><a class="fb" href="<%=ThalamusClientBeanFacade.getFacebookLogin().getUrl()%>" id="fb" title="Ingresá con tu cuenta de Facebook"><span></span></a></li>
-				<li><a class="tw" href="<%=twitterUrl.getUrl()%>" id="fb" title="Ingresá con tu cuenta de Twitter"><span></span></a></li>
+				<!-- li><a href="javascript:register();" id="register" title="Registrate"><span>Registrate</span></a></li-->
 			</ul>
 		</div>
 	</div>
 </header>
-
-<%@ include file="includes/laRuedita.jsp" %>
+<% if (usingMobile || isAndroid) { %>
+android or mobile
+<% }  %>
+<div id="nmRuedita">
+	<ul>
+		<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
+		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+			<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()">CAR</a></li>
+		<%} else { %>
+			<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()">CAR</a></li>
+			<%if (websiteUser != null && websiteUser.isLogged()) { %>
+				<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp">POI</a></li>
+			<%} else { %>
+				<li id="liPark" class="park"><a class="rdPark" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();">POI</a></li>
+			<% } %>
+			<li id="liLogg" class="login"><a class="rdLoginLogout" href="#" id="rueditaLogin" onclick="javascript:login();">Login</a></li>
+		<% } %>
+	</ul>
+</div>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>

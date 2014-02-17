@@ -351,7 +351,7 @@ if (apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
-				<% if (websiteUser.isVLUClient()) { %>
+				<% if (websiteUser.vluIsClient()) { %>
 					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
 				<% } %>
 			</div>
