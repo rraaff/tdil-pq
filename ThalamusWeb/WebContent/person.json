@@ -81,11 +81,11 @@
           "petIsClient" : true,
           "homeUser" : "usuario",
           "petUser" : "petUser",
-          "ClubLjsClient": true,
+          "ClubLjsClient": false,
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
           "preventIsClient" : true,
-          "isVLUClient" : true,
+          "vluIsClient" : true,
           "links" : [  ]
         }
     }
