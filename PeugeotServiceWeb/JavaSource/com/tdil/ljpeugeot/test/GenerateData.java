@@ -91,7 +91,7 @@ public class GenerateData extends TestCase {
 				
 				if (create) {
 					String oldTemp = SystemPropertyCache.getTempPath();
-					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "/home/mgodoy/icarus/workspace/thalamus/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/model");
+					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/model");
 					DataImport dataImport = new DataImport();
 					dataImport.setProcessed(0);
 					dataImport.setErrors(0);
@@ -114,7 +114,7 @@ public class GenerateData extends TestCase {
 					dataImport.setFilename("dealer.csv");
 					id = DAOManager.getDataImportDAO().insertDataImport(dataImport);
 					dataImport.setId(id);
-					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "/home/mgodoy/icarus/workspace/thalamus/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/dealer");
+					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/dealer");
 					try {
 						new ImportRunnable(dataImport, new DealerImportSpec()).processImport();
 					} catch (FileNotFoundException e) {

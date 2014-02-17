@@ -87,7 +87,7 @@ public class UsersService extends AbstractRESTService {
 			loginResponse.setPetUserId(user.getPetUserId());
 			loginResponse.setPreventUser(user.isPreventUser());
 			loginResponse.setPreventUserId(user.getPreventUserId());
-			loginResponse.setVluClient(user.isVLUClient());
+			loginResponse.setVluClient(user.vluIsClient());
 			String apkToken = ApkLoginCache.add(user);
 			loginResponse.setApkToken(apkToken);
 			return response(loginResponse);
