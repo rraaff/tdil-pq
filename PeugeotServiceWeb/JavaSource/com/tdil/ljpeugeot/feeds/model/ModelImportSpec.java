@@ -2,6 +2,7 @@ package com.tdil.ljpeugeot.feeds.model;
 
 import java.sql.SQLException;
 
+import org.apache.commons.lang.StringUtils;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
@@ -19,9 +20,10 @@ public class ModelImportSpec implements ImportSpec {
 	private CellProcessor[] processors;
 	
 	public ModelImportSpec() {
-		processors = new CellProcessor[] { null, // state
-					null, // city
-					null // name
+		processors = new CellProcessor[] { null, // name
+					null, // desc
+					null, // months
+					null // kms
 			};
 	}
 
@@ -66,8 +68,17 @@ public class ModelImportSpec implements ImportSpec {
 				Model model = new Model();
 				model.setDeleted(0);
 				model.setName(importRecord.getName());
-				model.setDescription(importRecord.getDescription());
+				if (StringUtils.isEmpty(importRecord.getDescription())) {
+					model.setDescription(importRecord.getName());
+				} else {
+					model.setDescription(importRecord.getDescription());
+				}
 				model.setMonthwarranty(Integer.parseInt(importRecord.getMonthwarranty()));
+				if (StringUtils.isEmpty(importRecord.getKmwarranty())) {
+					model.setKmwarranty(0);
+				} else {
+					model.setKmwarranty(Integer.parseInt(importRecord.getKmwarranty()));
+				}
 				DAOManager.getModelDAO().insertModel(model);
 			}
 		}

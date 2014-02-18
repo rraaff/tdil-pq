@@ -1,3 +1,22 @@
-name,description,monthwarranty
-206,Peugeot 206,24
-408,Peugeot 408,60
+name,description,monthwarranty,kmwarranty
+207 Compact,,24,0
+208,,36,100000
+308,,36,100000
+408,,36,100000
+508,,36,100000
+Partner VP,,24,0
+Partner VU,,12,0
+207 CC,,24,0
+208 XY,,24,0
+208 GTI,,24,0
+308 CC,,36,0
+308 GTI,,36,0
+RCZ,,36,100000
+3008,,36,100000
+4008,,36,100000
+5008,,36,100000
+Hoggar,,12,0
+Expert,,12,0
+Boxer,,12,0
+206,,24,0
+807,,24,0

@@ -155,6 +155,7 @@ public class TestNotifications extends TestCase {
 			model.setName("24m");
 			model.setDescription("Modelo de auto con 24 meses de garantia");
 			model.setMonthwarranty(24);
+			model.setKmwarranty(0);
 			model.setDeleted(0);
 			int id = DAOManager.getModelDAO().insertModel(model);
 			model.setId(id);
@@ -200,6 +201,66 @@ public class TestNotifications extends TestCase {
 		Calendar oldDate = Calendar.getInstance();
 		oldDate.add(Calendar.MONTH, -25);
 		v.setPurchasedate(oldDate.getTime());
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		
+	}
+	
+	public void testAdvice3KMLimit() throws SQLException {
+		ModelExample modelExample = new ModelExample();
+		modelExample.createCriteria().andNameEqualTo("24m100000");
+		List<Model> models = DAOManager.getModelDAO().selectModelByExample(modelExample);
+		Model model = null;
+		if (models.size() > 0) {
+			model = models.get(0);
+		} else {
+			model = new Model();
+			model.setName("24m100000");
+			model.setDescription("Modelo de auto con 24 meses de garantia");
+			model.setMonthwarranty(24);
+			model.setKmwarranty(100000);
+			model.setDeleted(0);
+			int id = DAOManager.getModelDAO().insertModel(model);
+			model.setId(id);
+		}
+		
+		Vehicle v = new Vehicle();
+		v.setDomain("PEPE");
+		v.setIdModel(model.getId());
+		v.setPurchasedate(new Date());
+		v.setKm(7500);
+		v.setLastservicekm(0);
+		v.setLastservicedate(new Date());
+		v.setAdvice1sent(0);
+		v.setNeedsadvice1(1);
+		v.setNeedsadvice2(0);
+		v.setNeedsadvice3(0);
+		
+		KMImportRecord rec = new KMImportRecord();
+		
+		rec.setKm("11500");
+		// paso a 11, deberia tener aviso
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		
+		//si me fui
+		rec.setKm("12000");
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		
+		rec.setKm("8200");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -11);
+		cal.add(Calendar.DATE, -17);
+		v.setLastservicedate(cal.getTime());
+		// no tiene el km pero si paso el tiempo
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		
+		// si pasaron mas de 100000, no hay aviso
+		rec.setKm("100010");
 		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
 		
 	}

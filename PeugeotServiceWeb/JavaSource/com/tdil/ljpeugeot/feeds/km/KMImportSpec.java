@@ -173,6 +173,12 @@ public class KMImportSpec implements ImportSpec {
 				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 				return false;
 			}
+			// si expiro por km
+			if (model.getKmwarranty()!= 0 && Integer.parseInt(importRecord2.getKm()) >= model.getKmwarranty()) {
+				vehicle.setWarrantyexpired(1);
+				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+				return false;
+			}
 			
 			// si pasaron 11 meses, aviso
 			Calendar today = Calendar.getInstance();

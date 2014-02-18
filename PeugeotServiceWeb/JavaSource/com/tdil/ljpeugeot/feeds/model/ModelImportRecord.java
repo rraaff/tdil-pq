@@ -5,6 +5,8 @@ public class ModelImportRecord {
 	private String name;
 	private String description;
 	private String monthwarranty;
+	private String kmwarranty;
+	
 	public String getName() {
 		return name;
 	}
@@ -22,6 +24,12 @@ public class ModelImportRecord {
 	}
 	public void setMonthwarranty(String monthwarranty) {
 		this.monthwarranty = monthwarranty;
+	}
+	public String getKmwarranty() {
+		return kmwarranty;
+	}
+	public void setKmwarranty(String kmwarranty) {
+		this.kmwarranty = kmwarranty;
 	}
 	
 }
