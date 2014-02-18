@@ -1,0 +1,24 @@
+Los service son PARA TODOS LOS MODELOS cada 12000km o 12 meses (las notificaciones tienen que realizarse según 
+el esquema que figura en el requerimiento), y todos los service son cada ese mismo esquema.
+
+Modelo	Garantía
+207 Compact    	2 años
+208	3 años o 100.000 km
+308	3 años o 100.000 km
+408	3 años o 100.000 km
+508	3 años o 100.000 km
+Partner VP     	2 años
+Partner VU       	1 año
+207 CC     	2 años
+208 XY y GTI    	2 años
+308 CC       	3 años
+308 GTI       	2 años (legalmente) pero comercialmente se vendio a 3 años y se reconoció 3 años
+RCZ       	3 años o 100.000 km
+3008	3 años o 100.000 km
+4008	3 años o 100.000 km
+5008	3 años o 100.000 km
+Hoggar      	1 año
+Expert      	1 año
+Boxer          	1 año
+206	2 años
+807	2 años
