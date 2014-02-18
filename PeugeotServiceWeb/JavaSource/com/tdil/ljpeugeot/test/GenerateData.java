@@ -30,6 +30,7 @@ import com.tdil.utils.SystemPropertyCache;
 
 public class GenerateData extends TestCase {
 	
+	private static String OS = System.getProperty("os.name").toLowerCase();
 	
 	public void testGenerate() throws SQLException, ValidationException {
 		GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
@@ -91,7 +92,11 @@ public class GenerateData extends TestCase {
 				
 				if (create) {
 					String oldTemp = SystemPropertyCache.getTempPath();
-					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/model");
+					if(OS.indexOf("win") >= 0) {
+						SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/model");
+					} else {
+					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "/home/mgodoy/icarus/workspace/thalamus/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/model");
+					}
 					DataImport dataImport = new DataImport();
 					dataImport.setProcessed(0);
 					dataImport.setErrors(0);
@@ -114,7 +119,11 @@ public class GenerateData extends TestCase {
 					dataImport.setFilename("dealer.csv");
 					id = DAOManager.getDataImportDAO().insertDataImport(dataImport);
 					dataImport.setId(id);
-					SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/dealer");
+					if(OS.indexOf("win") >= 0) {
+						SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "C:/Thalamus/Workspace/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/dealer");
+					} else {
+						SystemPropertyCache.put(com.tdil.utils.SystemPropertyCache.TEMP_PATH , "/home/mgodoy/icarus/workspace/thalamus/PeugeotServiceWeb/JavaSource/com/tdil/ljpeugeot/feeds/dealer");
+					}
 					try {
 						new ImportRunnable(dataImport, new DealerImportSpec()).processImport();
 					} catch (FileNotFoundException e) {

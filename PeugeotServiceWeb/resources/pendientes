@@ -1,3 +1,28 @@
+Definiciones pendientes
+
+Faltan los datos de los servicios de prevent para obtener la fecha de retiro de la concesionaria
+
+Falta definir como va a ser el matcheo de vehiculo que viene de prevent con el modelo del mismo que 
+ya fue importado. 
+
+Proceso de importacion de kilometrajes, hoy hay una importacion manual.
+
+Falta diseño de las pantallas
+
+Falta diseño de las pantallas de android
+
+*********************
+desarrollo pendiente
+
+retornar el isPeugeot.. en el login y la cantidad de mensajes pendientes
+agregar pantalla de test de emails
+
+path relativo en el junit
+pantalla de avisos y dismiss de los mismos
+mismo para los servicios rest
+
+*********************
+
 tdil/usu4r10td1l
 
 arreglar pagina de seleccion de concesionaria, debe limpiar bien los datos
