@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="black">#000000</color>
+    
+    <color name="gray">#cacaca</color>
+	<color name="grayTabBase">#333333</color>
+	
+	<color name="bgCream">#F0ECE6</color>
+	<color name="bgBase">#FFFFFF</color>
+	
+	<color name="orangeTitles">#ef5323</color>
+	<color name="orangeDark">#BC2800</color>
+	
+	
+	<!-- Item list -->
+	<color name="lst_itm_title">#222222</color>
+	<color name="lst_itm_normal">#BBBBBB</color>
+	<color name="lst_itm_off">#E31B23</color>
+	<color name="lst_itm_unk">#808080</color>
+	<color name="lst_itm_on">#236600</color>
+	
+	
+	<color name="pressed_example">#CCCC0000</color>
+</resources>

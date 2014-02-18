@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <string name="app_name">LoJack</string>
+    <string name="action_settings">Buscando actualizaciones</string>
+    <string name="action_loading">Cargando Información</string>
+    <string name="action_system_loading">Cargando información del sistema</string>
+    <string name="dologin">dologin</string>
+    <string name="user_name">{ Usuario }</string>
+    
+    <string name="empty_text_view">  </string>
+    
+    <!-- Descriptions -->
+    <string name="desc_cam_image">Imagen de la Cámara</string>
+    <string name="desc_avatar_image">Avatar</string>
+    
+    <!-- List Items strings -->
+    <string name="lst_title_last_changes">Últimos cambios:</string>
+    
+    <string name="lst_itm_status">Estado:</string>
+    <string name="lst_itm_last_change">Último cambio:</string>
+    <string name="lst_itm_by"> por </string>
+    <string name="status_unarmed">Desarmada</string>
+    <string name="status_armed">Armada</string>
+    <string name="status_unknown">Desconocido</string>
+    <string name="lst_itm_5"></string>
+
+    <!-- Titles -->
+    <string name="title_activity_check_for_update">LoJack</string>
+    <string name="title_activity_login">INGRESÁ</string>
+    <string name="title_request_reset">RECUPERAR CLAVE</string>
+    <string name="title_activity_register">REGISTRATE</string>
+    <string name="title_activity_update">MODIFICAR</string>
+    <string name="title_activity_change_password">CAMBIAR CLAVE</string>
+    <string name="title_activity_login_for_action_bar">LOJACK</string>
+    
+    <string name="title_parkings">PARKING</string>
+    <string name="title_prevent">CAR</string>
+    
+    <string name="title_dashboard_alarms">ALARMAS</string>
+    <string name="title_dashboard_lights">LUCES</string>
+    <string name="title_home">HOME</string>
+    <string name="title_send_panic">ENVIAR PANICO</string>
+    <string name="title_log_alarm">LOG ALARMA</string>
+    <string name="title_log_light">LOG LUCES</string>
+    <string name="title_camera">CÁMARA</string>
+    <string name="title_vlu">VLU</string>
+    
+    <!-- comments -->
+    <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
+    <string name="cmnt_camera_tooltip">Presioná las flechas para orientar la cámara</string>
+
+    <!-- Ruedita -->
+    <string name="rd_main_promo_title">Viví LoAPP 1.1</string>
+    <string name="rd_main_hookline">El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</string>
+    <string name="rd_default_comment"> </string>
+    
+    
+    
+    <!-- Buttons -->
+    <string name="btn_tag_alarms">ALARMAS</string>
+    <string name="btn_tag_lights">LUCES</string>
+    <string name="btn_tag_cameras">CÁMARAS</string>
+    <string name="btn_tag_camera">CÁMARA</string>
+    <string name="btn_tag_login">Ingresar</string>
+    <string name="btn_tag_register">Registrarme</string>
+    <string name="btn_tag_modify">Modificar</string>
+    <string name="btn_tag_modify_my_data"> </string>
+    <string name="btn_tag_change_password">Mi clave</string>
+    <string name="btn_tag_forgotpass">Olvidé mi clave</string>
+    <string name="btn_tag_reset_password">Enviar</string>
+    <string name="btn_tag_reset_password_back">Volver</string>
+    
+    <string name="btn_SendPanic">   </string>
+    <string name="btn_tag_see_log">Ver log</string>
+    <string name="btn_view_log">Ver log completo</string>
+    <string name="btn_tag_go">Ir</string>
+    
+    <string name="action_home">Home</string>
+    
+    <string name="btn_home">  </string>
+    <string name="btn_prevent">  </string>
+    <string name="btn_pets">  </string>
+    <string name="btn_parkings">  </string>
+    <string name="btn_tv">  </string>
+    
+    <string name="btn_cam_up"></string>
+    <string name="btn_cam_down"></string>
+    <string name="btn_cam_left"></string>
+    <string name="btn_cam_right"></string>
+    
+    <string name="btn_panic">Señal de pánico</string>
+    
+    <string name="btnHeaderAlarms">Alarmas</string>
+    <string name="btnHeaderLights">Luces</string>
+    <string name="btnHeaderCameras">Cámaras</string>
+    
+    <string name="btn_footer_home"> </string>
+    <string name="btn_footer_prevent"> </string>
+    <string name="btn_footer_pets"> </string>
+    <string name="btn_footer_config"> </string>
+    <string name="btn_footer_data">Data</string>
+    
+    <string name="btn_male">Masculino</string>
+    <string name="btn_female">Femenino</string>
+    <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
+    
+    <string name="random_on">RAN ON</string>
+    <string name="random_off">RAN OFF</string>
+    
+    <string name="tog_btn_default">ON/OFF</string>
+    
+    
+    <!-- Hints -->
+    <string name="hnt_doc_number">Número de documento</string>
+    <string name="hnt_doc_password">Clave</string>
+    <string name="hnt_doc_password1">Repetir clave</string>
+    <string name="hnt_firstname">Nombre</string>
+    <string name="hnt_apellido">Apellido</string>
+    <string name="hnt_email">E-mail</string>
+    <string name="hnt_area_code">Código de Area</string>
+    <string name="hnt_mobile">Celular</string>
+    <string name="hnt_calle1">Calle 1</string>
+    <string name="hnt_calle2">Calle 2</string>
+    <string name="hnt_postal_code">Código postal</string>
+    <string name="hnt_city">Ciudad</string>
+    <string name="hnt_birthdate">Fecha de nacimiento</string>
+    
+    <string name="hnt_password">Clave</string>
+    <string name="hnt_actual_password">Clave actual</string>
+    <string name="hnt_new_password">Nueva Clave</string>
+    <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
+   
+    <!-- Checkboxes and Radiobutton titles -->
+    <string name="crt_tag_rememberme">Recordar mis datos</string>
+    
+</resources>
