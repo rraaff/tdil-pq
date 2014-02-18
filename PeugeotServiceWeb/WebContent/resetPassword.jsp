@@ -74,7 +74,6 @@ function resetPasswordOpen() {
 	</div>
 </header>
 
-<%@ include file="includes/laRuedita.jsp" %>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>

@@ -6,7 +6,6 @@
 --><%@ include file="../includes/checkThalamusUp.jspf" %><!--
 --><%@ include file="../includes/userLogged.jspf" %><!--
 --><%@ include file="../includes/agentInfo.jspf" %><!--
---><%@ include file="../includes/dataComplited.jspf" %><!--
 --><%if (websiteUser != null && websiteUser.isLogged()) {%>
 	<jsp:forward page="./home.jsp"></jsp:forward>
 <%

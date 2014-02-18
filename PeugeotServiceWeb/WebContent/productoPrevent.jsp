@@ -337,7 +337,7 @@ if (apk) {
 </head>
 <body>
 <% if (!apk) { %>
-<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/header.jspf" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <% } %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
@@ -424,7 +424,7 @@ if (apk) {
 	</div>
 </div>
 <% if (!apk) { %>
-<%@ include file="includes/footerProductoHome.jsp" %>
+<%@ include file="includes/footerProductoHome.jspf" %>
 <% } %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>

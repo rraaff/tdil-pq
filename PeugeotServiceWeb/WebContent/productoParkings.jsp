@@ -385,7 +385,7 @@
 </script>
 </head>
 <body>
-<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/header.jspf" %>
 <%@ include file="includes/clientMainManu.jsp" %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
@@ -409,7 +409,7 @@
 		</section>
 	</div>
 </section>
-<%@ include file="includes/footerProductoHome.jsp" %>
+<%@ include file="includes/footerProductoHome.jspf" %>
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">

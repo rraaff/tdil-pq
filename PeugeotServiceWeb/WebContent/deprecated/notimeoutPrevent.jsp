@@ -1,1 +1,0 @@
-<%com.tdil.ljpeugeot.prevent.PreventConnector.setTIMEOUT(5000);%>
