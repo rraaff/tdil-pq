@@ -176,6 +176,7 @@ CREATE TABLE MODEL (
   `name` VARCHAR(20) NULL ,
   `description` VARCHAR(100) NULL ,
   `monthWarranty` INT NOT NULL,
+  `kmWarranty` INT NOT NULL,
   `deleted` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

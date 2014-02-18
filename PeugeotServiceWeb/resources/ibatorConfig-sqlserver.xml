@@ -36,7 +36,7 @@ targetProject="PeugeotServiceWeb">
   <property name="methodNameCalculator" value="extended" />
 </daoGenerator>
 
-<table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
+<!-- table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
@@ -63,11 +63,11 @@ targetProject="PeugeotServiceWeb">
 
 <table schema="dbo" tableName="STATE" domainObjectName="State" alias="st">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <table schema="dbo" tableName="MODEL" domainObjectName="Model" alias="mdl">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
+<!-- table schema="dbo" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="ADVICE" domainObjectName="Advice" alias="adv">
@@ -81,7 +81,7 @@ targetProject="PeugeotServiceWeb">
 </table>
 <table schema="dbo" tableName="DATA_IMPORT" domainObjectName="DataImport" alias="di">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <!--  table schema="dbo" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
