@@ -99,7 +99,6 @@
         <from>/api/v1/connect/facebook</from>
         <to>/connectfacebook.json</to>
     </rule>
-    /api/v1/connect/twitter
     <rule>
         <note>
         </note>
