@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tdil.peugeotservice.R;
+import com.tdil.peugeotservice.R.color;
 import com.tdil.peugeotservice.android.rest.model.ChangeLog;
 import com.tdil.peugeotservice.android.utils.DownloadImageTask;
 
