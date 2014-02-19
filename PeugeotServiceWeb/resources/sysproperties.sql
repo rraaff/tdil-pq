@@ -2,7 +2,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.https','localhost:9092','proxy.https',1);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.socks','localhost:9090','proxy.socks',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/LoJackWeb','front.server',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/PeugeotServiceWeb','front.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','test','thalamus.touchpoint.code',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
@@ -35,7 +35,7 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('contac
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('prevent.native.url','http://www.lojackprevent.com.ar/','prevent.native.url',0);
 
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('maps.url','http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png','Url de los mapas',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('maps.url','http://a.tile.openstreetmap.org/${z}/${x}/${y}.png','Url de los mapas',0);
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('import.range.km','04:00-05:00','Rango de importacion de kms (HH24:MM-HH24:MM)',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('email.send.range','10:00-18:00','Rango de envio de notificaciones (HH24:MM-HH24:MM)',0);

@@ -15,4 +15,7 @@ set propValue = 'http://localhost:8280/ThalamusWeb/PreventWCFServices/GISService
 UPDATE SYSPROPERTIES 
 set propValue = 'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png' where propKey = 'maps.url';
 
+UPDATE SYSPROPERTIES 
+set propValue = 'http://localhost:8180/PeugeotServiceWeb' where propKey = 'front.server';
+
 commit;
