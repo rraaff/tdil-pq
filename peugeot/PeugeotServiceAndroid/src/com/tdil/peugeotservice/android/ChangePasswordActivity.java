@@ -1,13 +1,13 @@
 package com.tdil.peugeotservice.android;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +37,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ChangePasswordActivity extends Activity implements
+public class ChangePasswordActivity extends ActionBarActivity implements
 		IRestClientObserver, ValidationListener {
 
 	/*
@@ -78,7 +78,8 @@ public class ChangePasswordActivity extends Activity implements
 		validator.setValidationListener(this);
 
 		setContentView(R.layout.activity_change_password);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+//		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		oldPassword = (EditText)findViewById(R.id.oldPassword);
 		newPassword = (EditText)findViewById(R.id.new_password);
 		retypePassword = (EditText)findViewById(R.id.retype_new_password);

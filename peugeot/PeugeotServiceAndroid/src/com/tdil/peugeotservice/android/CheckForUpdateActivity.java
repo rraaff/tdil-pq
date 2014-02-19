@@ -64,7 +64,7 @@ public class CheckForUpdateActivity extends Activity {
                 final String s = new String(baf.toByteArray());         
                 
                 /* Get current Version Number */
-                int curVersion = getPackageManager().getPackageInfo("com.tdil.lojack.rl", 0).versionCode;
+                int curVersion = getPackageManager().getPackageInfo("com.tdil.peugeotservice", 0).versionCode;
                 int newVersion = Integer.valueOf(s);
                 
                 /* Is a higher version than the current already out? */

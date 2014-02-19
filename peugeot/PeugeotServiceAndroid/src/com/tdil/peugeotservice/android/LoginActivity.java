@@ -276,9 +276,9 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 		try {
 			int curVersion = getPackageManager().getPackageInfo(
-					"com.tdil.lojack.rl", 0).versionCode;
+					"com.tdil.peugeotservice", 0).versionCode;
 			String curVersionName = getPackageManager().getPackageInfo(
-					"com.tdil.lojack.rl", 0).versionName;
+					"com.tdil.peugeotservice", 0).versionName;
 			((TextView) findViewById(R.id.appVersion)).setText(curVersion + "-"
 					+ curVersionName);
 		} catch (NameNotFoundException e) {
