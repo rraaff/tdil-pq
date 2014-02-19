@@ -12,4 +12,7 @@ commit;
 UPDATE SYSPROPERTIES 
 set propValue = 'http://localhost:8280/ThalamusWeb/PreventWCFServices/GISService.svc' where propKey = 'prevent.server';
 
+UPDATE SYSPROPERTIES 
+set propValue = 'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png' where propKey = 'maps.url';
+
 commit;
