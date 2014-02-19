@@ -182,7 +182,7 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 		LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
 		if (resp.getLogged()) {
-			Intent intent = new Intent(this, HomeActivity.class);
+			Intent intent = new Intent(this, IndexActivity.class);
 			startActivity(intent);
 			finish();
 		} 

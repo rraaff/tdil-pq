@@ -40,9 +40,9 @@ public class MenuLogic {
 			}, RESTConstants.LOGOUT, null, null).execute((Void) null);
 
 			return true;
-		case R.id.menu_action_home: 
-			FooterLogic.handleHomeAccess(activity, true);
-			return true;
+//		case R.id.menu_action_home: 
+//			FooterLogic.handleHomeAccess(activity, true);
+//			return true;
 		case R.id.menu_action_prevent:
 			FooterLogic.handlePreventAccess(activity);
 			return true;

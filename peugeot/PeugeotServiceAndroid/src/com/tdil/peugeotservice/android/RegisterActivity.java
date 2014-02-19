@@ -489,7 +489,7 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 		LoginResponse resp = gson.fromJson(task.getResult(),
 				LoginResponse.class);
 		if (resp.getLogged()) {
-			Intent intent = new Intent(this, HomeActivity.class);
+			Intent intent = new Intent(this, IndexActivity.class);
 			startActivity(intent);
 			finish();
 		} 

@@ -53,12 +53,12 @@ public class IndexActivity extends ActionBarActivity {
 				FooterLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
-		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FooterLogic.handleHomeAccess(IndexActivity.this, false);
-			}
-		});
+//		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				FooterLogic.handleHomeAccess(IndexActivity.this, false);
+//			}
+//		});
 
 		Button button = (Button)findViewById(R.id.vluCount);
 		if (Login.getLoggedUser(this).getVluMessages() > 0) {

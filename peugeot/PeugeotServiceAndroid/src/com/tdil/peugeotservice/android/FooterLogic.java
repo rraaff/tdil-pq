@@ -27,41 +27,17 @@ public class FooterLogic  {
 	
 	public static void installFooterLogic(final Activity activity, final boolean finishOnExit) {
 		
-		View sendPanic = activity.findViewById(R.id.goToSendPanicActivity);
-		if (sendPanic != null) {
-			sendPanic.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						Intent intent = new Intent(activity, HomeAlarmsSendPanicActivity.class);
-						activity.startActivity(intent);
-			        	//finish();
-					}
-				});
-			}
-		
-		View home = activity.findViewById(R.id.btnFooterHome);
-		if (home!= null) {
-			home.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						handleHomeAccess(activity, finishOnExit);
-					}
-				});
-		}
-		View pets = activity.findViewById(R.id.btnFooterPets);
-		if (pets != null) {
-			pets.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						handlePetsAccess(activity);
-					}
+//		View home = activity.findViewById(R.id.btnFooterHome);
+//		if (home!= null) {
+//			home.setOnClickListener(
+//				new View.OnClickListener() {
+//					@Override
+//					public void onClick(View view) {
+//						handleHomeAccess(activity, finishOnExit);
+//					}
+//				});
+//		}
 	
-				});
-		}
-		
 		View prevent = activity.findViewById(R.id.btnFooterPrevent);
 		if(prevent != null) {
 			prevent.setOnClickListener(
@@ -80,16 +56,6 @@ public class FooterLogic  {
 					@Override
 					public void onClick(View view) {
 						handleParkingsAccess(activity); 
-					}
-				});
-		}
-		View tv = activity.findViewById(R.id.btnFooterTV);
-		if (tv != null) {
-			tv.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						handleTvAccess(activity); 
 					}
 				});
 		}
@@ -148,20 +114,20 @@ public class FooterLogic  {
 			playVideo(activity, videoId);
 		}
 	}
-
-	public static void handleHomeAccess(final Activity activity,
-			final boolean finishOnExit) {
-		if (Login.getLoggedUser(activity).getHomeUser()) {
-			Intent intent = new Intent(activity, HomeAlarmsActivity.class); 
-			activity.startActivity(intent); 
-			if (finishOnExit) {
-				activity.finish();
-			}
-		} else {
-			String videoId = Login.getLoggedUser(activity).getHomeVideo();
-			playVideo(activity, videoId);
-		}
-	}
+//
+//	public static void handleHomeAccess(final Activity activity,
+//			final boolean finishOnExit) {
+//		if (Login.getLoggedUser(activity).getHomeUser()) {
+//			Intent intent = new Intent(activity, HomeAlarmsActivity.class); 
+//			activity.startActivity(intent); 
+//			if (finishOnExit) {
+//				activity.finish();
+//			}
+//		} else {
+//			String videoId = Login.getLoggedUser(activity).getHomeVideo();
+//			playVideo(activity, videoId);
+//		}
+//	}
 
 	public static void handleTvAccess(final Activity activity) {
         Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack.tv"));
