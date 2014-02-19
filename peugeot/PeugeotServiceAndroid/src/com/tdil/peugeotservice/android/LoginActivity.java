@@ -386,13 +386,13 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 				e.commit();
 			}
 			RESTClientTask.httpClient
-					.addRequestInterceptor(new HttpRequestInterceptor() {
-						@Override
-						public void process(HttpRequest arg0, HttpContext arg1)
-								throws HttpException, IOException {
-							arg0.addHeader("apkToken", resp.getApkToken());
-						}
-					});
+			.addRequestInterceptor(new HttpRequestInterceptor() {
+				@Override
+				public void process(HttpRequest arg0, HttpContext arg1)
+						throws HttpException, IOException {
+					arg0.addHeader("apkToken", resp.getApkToken());
+				}
+			});
 			Intent intent = new Intent(this, IndexActivity.class);
 			// Intent intent = new Intent(this, HomeAlarmsActivity.class);
 			startActivity(intent);

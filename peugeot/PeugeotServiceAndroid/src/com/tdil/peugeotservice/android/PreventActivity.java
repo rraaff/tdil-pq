@@ -79,7 +79,6 @@ public class PreventActivity extends ActionBarActivity {
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		
-		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
 		setContentView(parkingsWebView);
 		setProgressBarVisibility(true);
 		WebSettings webSettings = parkingsWebView.getSettings();

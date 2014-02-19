@@ -1,7 +1,5 @@
 package com.tdil.peugeotservice.android;
 
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.view.MenuItem;
@@ -19,7 +17,6 @@ public class MenuLogic {
 			MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_logout:
-			RESTClientTask.httpClient = new DefaultHttpClient();
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(IRestClientTask task) {
