@@ -2,37 +2,23 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Vibrator;
-import android.view.DragEvent;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tdil.peugeotservice.R;
 import com.tdil.peugeotservice.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
-public class IndexActivity extends Activity {
+public class IndexActivity extends ActionBarActivity {
 
 	private static final String HOME = "HOME";
 	private static final String PARKINGS = "PARKINGS";
@@ -54,14 +40,26 @@ public class IndexActivity extends Activity {
 //		BitmapFactory.Options options = new BitmapFactory.Options();
 //		options.inSampleSize = 4;
 		
-		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
-		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handlePreventAccess(IndexActivity.this);
+			}
+		});
+		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handleParkingsAccess(IndexActivity.this);
+			}
+		});
+		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handleHomeAccess(IndexActivity.this, false);
+			}
+		});
 
-		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 		Button button = (Button)findViewById(R.id.vluCount);
 		if (Login.getLoggedUser(this).getVluMessages() > 0) {
 			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
@@ -102,118 +100,7 @@ public class IndexActivity extends Activity {
 //		msg.setLayoutParams(OBJ);
 //	}
 
-	public class StartDragOnTouchListener implements OnTouchListener {
 
-		private IndexActivity activity;
-		private String localState;
-		private Bitmap bitmap;
-
-		public StartDragOnTouchListener(IndexActivity activity, String localState, Bitmap bitmap) {
-			super();
-			this.activity = activity;
-			this.localState = localState;
-			this.bitmap = bitmap;
-		}
-
-		@Override
-		public boolean onTouch(View v, MotionEvent motionEvent) {
-			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-				Button fruit = (Button) v;
-				v.setAlpha(0.3f);
-				// No responde
-				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
-	
-				ClipData data = ClipData.newPlainText("", "");
-				v.startDrag(data, myShadowBuilder, localState, 0);
-	
-				return true;
-			} else {
-			    return false;
-			}
-		}
-	};
-	
-	OnDragListener dragListener1 = new OnDragListener() {
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			int dragEvent = event.getAction();
-			TextView dropButton = (TextView) v;
-
-			switch (dragEvent) {
-			case DragEvent.ACTION_DRAG_ENDED:
-				findViewById(R.id.btnFooterHome).setAlpha(1);
-				findViewById(R.id.btnFooterParkings).setAlpha(1);
-				findViewById(R.id.btnFooterPets).setAlpha(1);
-				findViewById(R.id.btnFooterPrevent).setAlpha(1);
-				findViewById(R.id.btnFooterTV).setAlpha(1);
-				break;
-			case DragEvent.ACTION_DRAG_ENTERED:
-				dropButton.setBackgroundResource(R.drawable.rd_droppon);
-				
-				// Get instance of Vibrator from current Context
-				Vibrator vv = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-				// Vibrate for 100 milliseconds
-				vv.vibrate(100);
-				break;
-
-			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setBackgroundResource(R.drawable.transparente);
-				break;
-
-			case DragEvent.ACTION_DROP:
-				dropButton.setBackgroundResource(R.drawable.transparente);
-				if (HOME.equals(event.getLocalState())) {
-					FooterLogic.handleHomeAccess(IndexActivity.this, false);
-				}
-				if (PETS.equals(event.getLocalState())) {
-					FooterLogic.handlePetsAccess(IndexActivity.this);
-				}
-				if (PREVENT.equals(event.getLocalState())) {
-					FooterLogic.handlePreventAccess(IndexActivity.this);
-				}
-				if (PARKINGS.equals(event.getLocalState())) {
-					FooterLogic.handleParkingsAccess(IndexActivity.this);
-				}
-				if (TV.equals(event.getLocalState())) {
-					FooterLogic.handleTvAccess(IndexActivity.this);
-				}
-				
-				break;
-			}
-
-			return true;
-		}
-
-	};
-
-	private class MyShadowBuilder extends View.DragShadowBuilder {
-		private Drawable shadow;
-
-		public MyShadowBuilder(View v, Bitmap bitmap) {
-			super(v);
-			shadow = new BitmapDrawable(IndexActivity.this.getResources(), bitmap);
-		}
-
-		@Override
-		public void onDrawShadow(Canvas canvas) {
-			shadow.draw(canvas);
-		}
-
-		@Override
-		public void onProvideShadowMetrics(Point shadowSize,
-				Point shadowTouchPoint) {
-			int height, width;
-			height = (int) getView().getHeight();
-			width = (int) getView().getHeight();
-
-			shadow.setBounds(0, 0, width, height);
-
-			shadowSize.set(width, height);
-			shadowTouchPoint.set(width / 2, height / 2);
-		}
-
-	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {

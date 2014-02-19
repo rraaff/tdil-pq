@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +34,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RequestResetPasswordActivity extends Activity implements IRestClientObserver {
+public class RequestResetPasswordActivity extends ActionBarActivity implements IRestClientObserver {
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -56,7 +57,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

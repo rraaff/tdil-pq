@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Switch;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -36,7 +36,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLightDashboard extends Activity implements ILightsActivity{
+public class HomeLightDashboard extends ActionBarActivity implements ILightsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -51,8 +51,6 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	private int times = 0;
 	private static int max_times = 10;
 	private static long sleep = 2000;
-	private Switch activateDeactivateSwitch;
-	private Switch randomSwitch;
 	
 	private TabSpec tabCameras;
 	private TabHost tabHost;
@@ -87,7 +85,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		viewlog.setOnClickListener(new ViewLightLogListener(this));
 		light = (Light)extras.getSerializable(LIGHT);
 		init();
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		int numberOfTabs = tabHost.getTabWidget().getChildCount();
 	    for(int t=0; t<numberOfTabs; t++){
@@ -117,8 +115,6 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 
 	public void init() {
 		ignore = true;
-		activateDeactivateSwitch = (Switch)findViewById(R.id.switchActivate);
-		randomSwitch = (Switch)findViewById(R.id.switchRandom);
 		
 		TextView description = (TextView) findViewById(R.id.lightDescription);
 		description.setText(light.getDescription());

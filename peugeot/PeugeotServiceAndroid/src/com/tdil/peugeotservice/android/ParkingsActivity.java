@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.GeolocationPermissions;
@@ -22,7 +23,7 @@ import com.tdil.peugeotservice.android.utils.Login;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ParkingsActivity extends Activity {
+public class ParkingsActivity extends ActionBarActivity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -69,7 +70,7 @@ public class ParkingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_parkings);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		

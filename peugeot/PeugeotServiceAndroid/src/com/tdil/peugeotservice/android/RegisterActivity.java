@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +64,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RegisterActivity extends Activity implements IRestClientObserver, ValidationListener {
+public class RegisterActivity extends ActionBarActivity implements IRestClientObserver, ValidationListener {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -103,7 +104,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	    validator.setValidationListener(this);
 		
 		setContentView(R.layout.activity_register);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		document = (TextView) findViewById(R.id.documentNumber);
 		

@@ -78,7 +78,7 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 		validator.setValidationListener(this);
 
 		setContentView(R.layout.activity_change_password);
-//		getActionBar().setDisplayHomeAsUpEnabled(true);
+//		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		oldPassword = (EditText)findViewById(R.id.oldPassword);
 		newPassword = (EditText)findViewById(R.id.new_password);

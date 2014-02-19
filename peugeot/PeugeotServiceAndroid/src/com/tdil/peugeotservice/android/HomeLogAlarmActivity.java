@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -28,7 +29,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLogAlarmActivity extends Activity {
+public class HomeLogAlarmActivity extends ActionBarActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -50,7 +51,7 @@ public class HomeLogAlarmActivity extends Activity {
 		setContentView(R.layout.activity_home_alarms_log);
 
 		list = (ListView) findViewById(R.id.alarmLogList);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {

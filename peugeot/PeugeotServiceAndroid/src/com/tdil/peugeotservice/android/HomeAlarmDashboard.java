@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +36,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
+public class HomeAlarmDashboard extends ActionBarActivity implements IAlarmsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -83,7 +84,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
 		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
 		init();
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		int numberOfTabs = tabHost.getTabWidget().getChildCount();
 	    for(int t=0; t<numberOfTabs; t++){
