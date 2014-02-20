@@ -47,7 +47,10 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'WEBSITEUS
     drop table WEBSITEUSER;    
     
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'NOTIFICATION_EMAIL')
-    drop table NOTIFICATION_EMAIL;    
+    drop table NOTIFICATION_EMAIL; 
+    
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'KM_DATA')
+    drop table KM_DATA;    
     
 CREATE TABLE WEBSITEUSER (
   id INT NOT NULL IDENTITY ,
@@ -270,3 +273,21 @@ INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
 COMMIT;
+
+CREATE TABLE KM_DATA (
+  id INT NOT NULL IDENTITY ,
+  dominio VARCHAR(20) NOT NULL ,
+  km INT NOT NULL ,
+  fechareporte DATE NOT NULL ,
+  marca VARCHAR(100) NOT NULL ,
+  modelo VARCHAR(100) NOT NULL ,
+  fechaalta DATE NOT NULL ,
+  identidad INT NOT NULL ,
+  idequipo INT NOT NULL ,
+  userlogin VARCHAR(100) NOT NULL ,
+  cliente_nombre VARCHAR(200) NOT NULL ,
+  cliente_cuit VARCHAR(100) NOT NULL ,
+  deleted INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id));
+
+CREATE INDEX IX_KM_DATA_00 ON KM_DATA(dominio);

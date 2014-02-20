@@ -68,9 +68,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="PEUGEOTSVC" tableName="STATE" domainObjectName="State" alias="st">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="MODEL" domainObjectName="Model" alias="mdl">
+<!-- table schema="PEUGEOTSVC" tableName="MODEL" domainObjectName="Model" alias="mdl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!--  able schema="PEUGEOTSVC" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -90,6 +90,9 @@ targetProject="PeugeotServiceWeb">
 <!--  table schema="PEUGEOTSVC" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
+<table schema="PEUGEOTSVC" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

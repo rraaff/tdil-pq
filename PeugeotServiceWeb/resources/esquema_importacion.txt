@@ -1,0 +1,17 @@
+NOMBRE	DESCRIPCIÓN	NOTAS
+dominio,	DOMINIO	 
+km,	KILOMETRAJE ACUMULADO	 
+fechareporte,	FECHA DE ÚLTIMA ACTUALIZACIÓN DE KILOMETRAJE	 
+marca,	MARCA	 
+modelo,	MODELO	 
+fechaalta,	FECHA DE ALTA DEL EQUIPO EN EL SISTEMA	tomar como fecha que se sacó del concesionario
+identidad,	IDENTIFICADOR DEL EQUIPO	 
+idequipo,	IDENTIFICADOR DE LA ENTIDAD	este valor se recibe de los webservices de Prevent como Vehicle ID
+userlogin,	USERLOGIN	 
+'cliente_nombre',	NOMBRE DE CLIENTE	se importará solo con fines informativos, no utilizar estos datos. 
+Utilizar los valores de Thalamus
+'cliente_cuit'	CUIT DE CLIENTE	se importará solo con fines informativos, no utilizar estos datos. Utilizar 
+los valores de Thalamus
+ 		
+Esta tabla se estará actualizando periódicamente en un horario a definir, seguramente en horas de la noche.
+Cuando este proceso de importación termine, ahí podés disparar el proceso de cálculo de service para los vehículos.		

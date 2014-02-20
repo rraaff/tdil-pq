@@ -21,6 +21,8 @@ DROP TABLE IF EXISTS WEBSITEUSER;
 
 DROP TABLE IF EXISTS NOTIFICATION_EMAIL;
 
+DROP TABLE IF EXISTS KM_DATA;
+
 CREATE TABLE WEBSITEUSER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `dni` VARCHAR(20) NULL ,
@@ -291,6 +293,25 @@ CREATE TABLE NOTIFICATION_EMAIL (
   `deleted` INT NOT NULL ,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+CREATE TABLE KM_DATA (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `dominio` VARCHAR(20) NOT NULL ,
+  `km` INT NOT NULL ,
+  `fechareporte` DATE NOT NULL ,
+  `marca` VARCHAR(100) NOT NULL ,
+  `modelo` VARCHAR(100) NOT NULL ,
+  `fechaalta` DATE NOT NULL ,
+  `identidad` INT NOT NULL ,
+  `idequipo` INT NOT NULL ,
+  `userlogin` VARCHAR(100) NOT NULL ,
+  `cliente_nombre` VARCHAR(200) NOT NULL ,
+  `cliente_cuit` VARCHAR(100) NOT NULL ,
+  `deleted` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `IX_KM_DATA_00` (`dominio` ASC))
+ENGINE = InnoDB;
+
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
