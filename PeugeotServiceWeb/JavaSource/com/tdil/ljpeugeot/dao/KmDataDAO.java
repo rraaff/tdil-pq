@@ -72,4 +72,6 @@ public interface KmDataDAO {
 	 * @mbggenerated  Thu Feb 20 14:42:30 ART 2014
 	 */
 	int updateKmDataByPrimaryKey(KmData record) throws SQLException;
+
+	List<KmData> selectKmDataToProcess(int startId) throws SQLException;
 }

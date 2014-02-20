@@ -371,4 +371,12 @@
       deleted = #deleted:INTEGER#
     where id = #id:INTEGER#
   </update>
+  
+  <select id="selectKmDataToProcess" parameterClass="java.lang.Integer" resultMap="BaseResultMap">
+    select top 100
+    <include refid="dbo_KM_DATA.Base_Column_List" />
+    from dbo.KM_DATA kmd
+    where kmd.id > #startId:INTEGER#
+    order by kmd.id
+	</select>
 </sqlMap>

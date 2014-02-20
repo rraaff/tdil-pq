@@ -10,6 +10,7 @@ import com.tdil.ljpeugeot.dao.CityDAO;
 import com.tdil.ljpeugeot.dao.ContactDataDAO;
 import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
+import com.tdil.ljpeugeot.dao.KmDataDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
 import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
@@ -26,6 +27,7 @@ import com.tdil.ljpeugeot.dao.impl.CityDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.ContactDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.DataImportDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.DealerDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.KmDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.ModelDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.NotificationEmailDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.PointOfInterestDAOImpl;
@@ -130,5 +132,10 @@ public class MySQLDAOProvider implements DAOProvider {
 	@Override
 	public NotificationEmailDAO getNotificationEmailDAO() throws SQLException {
 		return new NotificationEmailDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public KmDataDAO getKmDataDAO() throws SQLException {
+		return new KmDataDAOImpl(IBatisManager.getClient());
 	}
 }

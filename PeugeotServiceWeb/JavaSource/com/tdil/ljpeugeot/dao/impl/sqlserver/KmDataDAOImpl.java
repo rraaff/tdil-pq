@@ -173,4 +173,9 @@ public class KmDataDAOImpl implements KmDataDAO {
             return record;
         }
     }
+    
+    @Override
+    public List<KmData> selectKmDataToProcess(int startId) throws SQLException {
+    	return sqlMapClient.queryForList("dbo_KM_DATA.selectKmDataToProcess", startId);
+    }
 }

@@ -21,6 +21,10 @@ import com.tdil.utils.SystemPropertyCache;
 
 public class ImportRunnable implements Runnable {
 
+	public static final String PROCESSING = "PROCESSING";
+	public static final String ERROR = "ERROR";
+	public static final String FINISHED = "FINISHED";
+	
 	private DataImport dataImport;
 	private ImportSpec importSpec;
 	
@@ -37,7 +41,7 @@ public class ImportRunnable implements Runnable {
 			processImport();
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);
-			changeStatus(dataImport.getId(), "ERROR");
+			changeStatus(dataImport.getId(), ERROR);
 			error = true;
 		} finally {
 			if (!error) {
@@ -46,14 +50,14 @@ public class ImportRunnable implements Runnable {
 				} catch (Exception e) {
 					getLog().error(e.getMessage(), e);
 				}
-				changeStatus(dataImport.getId(), "FINISHED");
+				changeStatus(dataImport.getId(), FINISHED);
 			}
 		}
 
 	}
 
 	public void processImport() throws FileNotFoundException, IOException {
-		changeStatus(dataImport.getId(), "PROCESSING");
+		changeStatus(dataImport.getId(), PROCESSING);
 		CsvBeanReader beanReader = null;
 		try {
 			beanReader = new CsvBeanReader(new FileReader(SystemPropertyCache.getTempPath() + "/" + dataImport.getFilename()),CsvPreference.STANDARD_PREFERENCE);
@@ -80,7 +84,7 @@ public class ImportRunnable implements Runnable {
 		}
 	}
 	
-	private void incrementProcess(DataImport dataImport2) {
+	protected void incrementProcess(DataImport dataImport2) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new IncrementProcessed(dataImport2.getId()));
 		} catch (SQLException e) {
@@ -90,7 +94,7 @@ public class ImportRunnable implements Runnable {
 		}
 	}
 	
-	private void incrementError(DataImport dataImport2) {
+	protected void incrementError(DataImport dataImport2) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new IncrementError(dataImport2.getId()));
 		} catch (SQLException e) {
@@ -110,7 +114,7 @@ public class ImportRunnable implements Runnable {
 		}
 	}
 	
-	private static Logger getLog() {
+	protected static Logger getLog() {
 		return LoggerProvider.getLogger(ImportRunnable.class);
 	}
 

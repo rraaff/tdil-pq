@@ -5,7 +5,9 @@ import com.tdil.ljpeugeot.dao.KmDataDAO;
 import com.tdil.ljpeugeot.model.KmData;
 import com.tdil.ljpeugeot.model.KmDataExample;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class KmDataDAOImpl implements KmDataDAO {
     /**
@@ -172,5 +174,10 @@ public class KmDataDAOImpl implements KmDataDAO {
         public Object getRecord() {
             return record;
         }
+    }
+    
+    @Override
+    public List<KmData> selectKmDataToProcess(int startId) throws SQLException {
+    	return sqlMapClient.queryForList("KM_DATA.selectKmDataToProcess", startId);
     }
 }

@@ -2,18 +2,20 @@ package com.tdil.ljpeugeot.feeds;
 
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.km.KMImportSpec;
+import com.tdil.ljpeugeot.feeds.km.KmImportRunnable;
 import com.tdil.ljpeugeot.model.DataImport;
 import com.tdil.ljpeugeot.model.DataImportExample;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
+import com.tdil.utils.DateUtils;
 
 public class KMImportThread extends Thread {
 	
@@ -25,15 +27,31 @@ public class KMImportThread extends Thread {
 	private static int endHour = 6;
 	private static int endMinutes  = 0;
 
-	private static final class GetKMImportPending implements TransactionalActionWithResult<List<DataImport>> {
-		public GetKMImportPending() {
+	private static final class CreateDataImport implements TransactionalActionWithResult<DataImport> {
+		public CreateDataImport() {
 			super();
 		}
-		public List<DataImport> executeInTransaction() throws SQLException {
+		public DataImport executeInTransaction() throws SQLException {
+			DataImport vluImport = new DataImport();
+			vluImport.setFilename(DateUtils.formatDateSp(new Date()));
+			vluImport.setType(TYPE);
+			vluImport.setStatus("PENDING");
+			vluImport.setProcessed(0);
+			vluImport.setErrors(0);
+			int result = DAOManager.getDataImportDAO().insertDataImport(vluImport);
+			vluImport.setId(result);
+			return vluImport;
+		}
+	}
+	
+	private static final class AreKMImportFinishedToday implements TransactionalActionWithResult<Boolean> {
+		public AreKMImportFinishedToday() {
+			super();
+		}
+		public Boolean executeInTransaction() throws SQLException {
 			DataImportExample example = new DataImportExample();
-			example.createCriteria().andStatusEqualTo("PENDING").andTypeEqualTo(TYPE);
-			example.setOrderByClause("id");
-			return DAOManager.getDataImportDAO().selectDataImportByExample(example);
+			example.createCriteria().andStatusEqualTo(ImportRunnable.FINISHED).andTypeEqualTo(TYPE).andStarttimeGreaterThanOrEqualTo(DateUtils.date2FirstMomentOfDate(new Date()));
+			return DAOManager.getDataImportDAO().countDataImportByExample(example) > 0;
 		}
 	}
 	
@@ -46,23 +64,41 @@ public class KMImportThread extends Thread {
 			} catch (InterruptedException e1) {
 				stopped = true;
 			}
-			try {
-				if (inInHourRange()) {
-					List<DataImport> imports =  GenericTransactionExecutionService.getInstance().execute(new GetKMImportPending());
-					for(DataImport imp : imports) {
-						new Thread(new ImportRunnable(imp, new KMImportSpec())).start();
+			if (inInHourRange()) {
+				if (!thereAreImportsToday()) {
+					DataImport todayImport = generateDataImport();
+					if (todayImport != null) {
+						new Thread(new KmImportRunnable(todayImport, new KMImportSpec())).start();
 					}
 				}
-			} catch (SQLException e) {
-				getLog().error(e.getMessage(), e);
-			} catch (ValidationException e) {
-				getLog().error(e.getMessage(), e);
-			} catch (Exception e) {
-				getLog().error(e.getMessage(), e);
 			}
 		}
 	}
 	
+	private boolean thereAreImportsToday() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new AreKMImportFinishedToday());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
+	private DataImport generateDataImport() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new CreateDataImport());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+
 	private boolean inInHourRange() {
 		Calendar cal = Calendar.getInstance();
 		int hour = cal.get(Calendar.HOUR_OF_DAY);

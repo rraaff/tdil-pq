@@ -15,3 +15,7 @@ los valores de Thalamus
  		
 Esta tabla se estará actualizando periódicamente en un horario a definir, seguramente en horas de la noche.
 Cuando este proceso de importación termine, ahí podés disparar el proceso de cálculo de service para los vehículos.		
+
+Proceso
+1) thread que importa busca si ya hubo una importacion terminada el dia de hoy, si hay, termina
+2) Si no hay, genera la importacion y comienza

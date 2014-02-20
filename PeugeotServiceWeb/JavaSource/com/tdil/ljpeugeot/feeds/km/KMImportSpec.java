@@ -11,6 +11,7 @@ import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.ImportSpec;
 import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.DataImport;
+import com.tdil.ljpeugeot.model.KmData;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
@@ -19,7 +20,7 @@ import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class KMImportSpec implements ImportSpec {
 	
-	public static final String TYPE = "DEALER";
+	public static final String TYPE = "KM";
 	
 	private CellProcessor[] processors;
 	
@@ -51,7 +52,7 @@ public class KMImportSpec implements ImportSpec {
 
 	@Override
 	public void processRow(Object importRecord, DataImport dataImport) throws Exception {
-		GenericTransactionExecutionService.getInstance().execute(new ImportKM((KMImportRecord)importRecord, dataImport));
+		GenericTransactionExecutionService.getInstance().execute(new ImportKM((KmData)importRecord, dataImport));
 	}
 	
     @Override
@@ -61,22 +62,21 @@ public class KMImportSpec implements ImportSpec {
 	
 	public static final class ImportKM implements TransactionalAction {
 		private DataImport dataImport;
-		private KMImportRecord importRecord;
+		private KmData importRecord;
 		
 		public ImportKM() {
 		}
 		
-		public ImportKM(KMImportRecord importRecord, DataImport dataImport) {
+		public ImportKM(KmData importRecord, DataImport dataImport) {
 			super();
 			this.importRecord = importRecord;
 			this.dataImport = dataImport;
 		}
 		public void executeInTransaction() throws SQLException {
 			VehicleExample vehicleExample = new VehicleExample();
-			vehicleExample.createCriteria().andDomainEqualTo(importRecord.getDomain());
+			vehicleExample.createCriteria().andDomainEqualTo(importRecord.getDominio());
 			List<Vehicle> vehicles = DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
-			if (!vehicles.isEmpty()) {
-				Vehicle vehicle = vehicles.get(0);
+			for (Vehicle vehicle : vehicles) {
 				if (needsFirstAdvice(vehicle, importRecord)) {
 					sendFirstAdvice(vehicle, importRecord);
 				} else {
@@ -90,7 +90,7 @@ public class KMImportSpec implements ImportSpec {
 				}
 			}
 		}
-		public boolean needsFirstAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+		public boolean needsFirstAdvice(Vehicle vehicle, KmData importRecord2) {
 			if(vehicle.getNeedsadvice1() == 1 ) {
 				return false;
 			}
@@ -113,7 +113,7 @@ public class KMImportSpec implements ImportSpec {
 			}
 			
 			int kmFromLastServiceActual = vehicle.getKm() - vehicle.getLastservicekm();
-			int kmFromLastServiceNew = Integer.parseInt(importRecord2.getKm()) - vehicle.getLastservicekm();
+			int kmFromLastServiceNew = importRecord2.getKm() - vehicle.getLastservicekm();
 			if (kmFromLastServiceActual < 8000) {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 8000 && kmFromLastServiceNew < 10000) {
@@ -124,7 +124,7 @@ public class KMImportSpec implements ImportSpec {
 			return false;
 		}
 		
-		public boolean needsSecondAdvice(Vehicle vehicle, KMImportRecord importRecord2) {
+		public boolean needsSecondAdvice(Vehicle vehicle, KmData importRecord2) {
 			if(vehicle.getNeedsadvice2() == 1) {
 				return false;
 			}
@@ -147,7 +147,7 @@ public class KMImportSpec implements ImportSpec {
 			}
 			
 			int kmFromLastServiceActual = vehicle.getKm() - vehicle.getLastservicekm();
-			int kmFromLastServiceNew = Integer.parseInt(importRecord2.getKm()) - vehicle.getLastservicekm();
+			int kmFromLastServiceNew = importRecord2.getKm() - vehicle.getLastservicekm();
 			if (kmFromLastServiceActual < 10000) {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 10000 && kmFromLastServiceNew < 11500) {
@@ -158,7 +158,7 @@ public class KMImportSpec implements ImportSpec {
 			return false;
 		}
 
-		public boolean needsThirdAdvice(Vehicle vehicle, KMImportRecord importRecord2) throws SQLException {
+		public boolean needsThirdAdvice(Vehicle vehicle, KmData importRecord2) throws SQLException {
 			if(vehicle.getNeedsadvice3() == 1) {
 				return false;
 			}
@@ -174,7 +174,7 @@ public class KMImportSpec implements ImportSpec {
 				return false;
 			}
 			// si expiro por km
-			if (model.getKmwarranty()!= 0 && Integer.parseInt(importRecord2.getKm()) >= model.getKmwarranty()) {
+			if (model.getKmwarranty()!= 0 && importRecord2.getKm() >= model.getKmwarranty()) {
 				vehicle.setWarrantyexpired(1);
 				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 				return false;
@@ -199,7 +199,7 @@ public class KMImportSpec implements ImportSpec {
 			}
 			
 			int kmFromLastServiceActual = vehicle.getKm() - vehicle.getLastservicekm();
-			int kmFromLastServiceNew = Integer.parseInt(importRecord2.getKm()) - vehicle.getLastservicekm();
+			int kmFromLastServiceNew = importRecord2.getKm() - vehicle.getLastservicekm();
 			if (kmFromLastServiceActual < 11500) {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 11500 && kmFromLastServiceNew < 12000) {
@@ -212,7 +212,7 @@ public class KMImportSpec implements ImportSpec {
 		
 	}
 
-	private static void sendFirstAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+	private static void sendFirstAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice1(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
@@ -220,14 +220,14 @@ public class KMImportSpec implements ImportSpec {
 		createAdvice(vehicle, importRecord, adviceNumber);
 	}
 	
-	private static void sendSecondAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+	private static void sendSecondAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice2(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 2;
 		createAdvice(vehicle, importRecord, adviceNumber);
 	}
-	private static void sendThirdAdvice(Vehicle vehicle, KMImportRecord importRecord) throws SQLException {
+	private static void sendThirdAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice3(1);
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
@@ -235,7 +235,7 @@ public class KMImportSpec implements ImportSpec {
 		createAdvice(vehicle, importRecord, adviceNumber);
 	}
 
-	private static void createAdvice(Vehicle vehicle, KMImportRecord importRecord, int adviceNumber) throws SQLException {
+	private static void createAdvice(Vehicle vehicle, KmData importRecord, int adviceNumber) throws SQLException {
 		Advice advice = new Advice();
 		advice.setAdvisedate(new Date());
 		advice.setAdvisenumber(adviceNumber);
