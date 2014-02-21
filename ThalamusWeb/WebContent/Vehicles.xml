@@ -16,7 +16,7 @@
 				(SAN MIGUEL, BUENOS AIRES, ARGENTINA)</GeoRef>
 		</Vehicle>
 		<Vehicle>
-			<Status>false</Status>
+			<Status>true</Status>
 			<ID>81254</ID>
 			<Description>IJJ-519</Description>
 			<Brand>FIAT</Brand>
