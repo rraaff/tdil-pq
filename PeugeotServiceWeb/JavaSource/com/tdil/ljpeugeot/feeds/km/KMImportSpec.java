@@ -77,6 +77,7 @@ public class KMImportSpec implements ImportSpec {
 			vehicleExample.createCriteria().andDomainEqualTo(importRecord.getDominio());
 			List<Vehicle> vehicles = DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
 			for (Vehicle vehicle : vehicles) {
+				boolean modified = completeVehicleData(vehicle, importRecord);
 				if (needsFirstAdvice(vehicle, importRecord)) {
 					sendFirstAdvice(vehicle, importRecord);
 				} else {
@@ -85,11 +86,36 @@ public class KMImportSpec implements ImportSpec {
 					} else {
 						if (needsThirdAdvice(vehicle, importRecord)) {
 							sendThirdAdvice(vehicle, importRecord);
-						} 
+						} else {
+							if (modified) {
+								DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+							}
+						}
 					}
 				}
 			}
 		}
+		private boolean completeVehicleData(Vehicle vehicle, KmData importRecord2) {
+			boolean modified = false;
+			if (vehicle.getIdModel() == null || vehicle.getIdModel() == 0) {
+				vehicle.setIdModel(Integer.parseInt(importRecord2.getModelo()));
+				modified = true;
+			}
+			if (vehicle.getPurchasedate() == null) {
+				vehicle.setPurchasedate(importRecord2.getFechaalta());
+				modified = true;
+			}
+			if (vehicle.getLastservicedate() == null) {
+				vehicle.setLastservicedate(importRecord2.getFechaalta());
+				modified = true;
+			}
+			if (vehicle.getKm() == null) {
+				vehicle.setKm(0);
+				modified = true;
+			}
+			return modified;
+		}
+
 		public boolean needsFirstAdvice(Vehicle vehicle, KmData importRecord2) {
 			if(vehicle.getNeedsadvice1() == 1 ) {
 				return false;

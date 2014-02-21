@@ -186,8 +186,8 @@ ENGINE = InnoDB;
 CREATE TABLE VEHICLE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_websiteuser` INT NOT NULL,
-  `id_model` INT NOT NULL,
-  `id_dealer` INT NOT NULL,
+  `id_model` INT NULL,
+  `id_dealer` INT NULL,
   `purchaseDate` DATE NULL ,
   `domain` VARCHAR(20) NULL ,
   `description` VARCHAR(100) NULL ,
