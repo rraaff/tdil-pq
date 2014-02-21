@@ -18,4 +18,11 @@ set propValue = 'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png' where propK
 UPDATE SYSPROPERTIES 
 set propValue = 'http://localhost:8180/PeugeotServiceWeb' where propKey = 'front.server';
 
+UPDATE SYSPROPERTIES 
+set propValue = '00:00-23:59' where propKey = 'import.range.km';
+
+UPDATE SYSPROPERTIES 
+set propValue = '00:00-23:59' where propKey = 'email.send.range';
+
+
 commit;

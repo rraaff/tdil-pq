@@ -29,6 +29,7 @@ public class KmImportRunnable extends ImportRunnable {
 		while (!importWindow.isEmpty()) {
 			for (KmData kmData : importWindow) {
 				try {
+					startId = kmData.getId();
 					getImportSpec().processRow(kmData, getDataImport());
 					incrementProcess(getDataImport());
 				} catch (Exception e) {
@@ -36,6 +37,7 @@ public class KmImportRunnable extends ImportRunnable {
 					incrementError(getDataImport());
 				}
 			}
+			importWindow = getKmDataToProcess(startId);
 		}
 	}
 
