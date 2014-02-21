@@ -46,6 +46,8 @@
 			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
 			<transaction src="poi_inserts_gba.sql" />
+			
+			<transaction src="thalamus_fake.sql" />
 		</sql>
 	</target>
 	
