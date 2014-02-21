@@ -95,7 +95,7 @@ public class KMImportSpec implements ImportSpec {
 				}
 			}
 		}
-		private boolean completeVehicleData(Vehicle vehicle, KmData importRecord2) {
+		public boolean completeVehicleData(Vehicle vehicle, KmData importRecord2) {
 			boolean modified = false;
 			if (vehicle.getIdModel() == null || vehicle.getIdModel() == 0) {
 				vehicle.setIdModel(Integer.parseInt(importRecord2.getModelo()));
@@ -111,6 +111,10 @@ public class KMImportSpec implements ImportSpec {
 			}
 			if (vehicle.getKm() == null) {
 				vehicle.setKm(0);
+				modified = true;
+			}
+			if (vehicle.getLastservicekm() == null) {
+				vehicle.setLastservicekm(0);
 				modified = true;
 			}
 			return modified;

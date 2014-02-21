@@ -17,12 +17,9 @@ import com.tdil.ljpeugeot.model.Vehicle;
 public class TestNotifications extends TestCase {
 	
 	
-	public void testAdvice1() {
+	public void testAdvice1() throws SQLException {
 		Vehicle v = new Vehicle();
 		v.setDomain("PEPE");
-		v.setKm(7500);
-		v.setLastservicekm(0);
-		v.setLastservicedate(new Date());
 		v.setAdvice1sent(0);
 		v.setNeedsadvice1(0);
 		v.setNeedsadvice2(0);
@@ -32,6 +29,10 @@ public class TestNotifications extends TestCase {
 		
 		// no paso de 8k
 		rec.setKm(7900);
+		rec.setFechaalta(Calendar.getInstance().getTime());
+		Model model = getOrCreateModel();
+		rec.setModelo(String.valueOf(model.getId()));
+		new KMImportSpec.ImportKM().completeVehicleData(v, rec);
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
 		
 		// paso de menos de 8k a mas
@@ -69,7 +70,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(0);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(7900);
 		// no paso de 8k
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
@@ -106,7 +107,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(0);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(10900);
 		// paso a 11, deberia tener aviso
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
@@ -134,7 +135,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(0);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(10900);
 		// paso a 11, deberia tener aviso
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
@@ -143,22 +144,7 @@ public class TestNotifications extends TestCase {
 	
 	
 	public void testAdvice3() throws SQLException {
-		ModelExample modelExample = new ModelExample();
-		modelExample.createCriteria().andNameEqualTo("24m");
-		List<Model> models = DAOManager.getModelDAO().selectModelByExample(modelExample);
-		Model model = null;
-		if (models.size() > 0) {
-			model = models.get(0);
-		} else {
-			model = new Model();
-			model.setName("24m");
-			model.setDescription("Modelo de auto con 24 meses de garantia");
-			model.setMonthwarranty(24);
-			model.setKmwarranty(0);
-			model.setDeleted(0);
-			int id = DAOManager.getModelDAO().insertModel(model);
-			model.setId(id);
-		}
+		Model model = getOrCreateModel();
 		
 		Vehicle v = new Vehicle();
 		v.setDomain("PEPE");
@@ -173,7 +159,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(0);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
@@ -202,6 +188,26 @@ public class TestNotifications extends TestCase {
 		v.setPurchasedate(oldDate.getTime());
 		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
 		
+	}
+
+	public Model getOrCreateModel() throws SQLException {
+		ModelExample modelExample = new ModelExample();
+		modelExample.createCriteria().andNameEqualTo("24m");
+		List<Model> models = DAOManager.getModelDAO().selectModelByExample(modelExample);
+		Model model = null;
+		if (models.size() > 0) {
+			model = models.get(0);
+		} else {
+			model = new Model();
+			model.setName("24m");
+			model.setDescription("Modelo de auto con 24 meses de garantia");
+			model.setMonthwarranty(24);
+			model.setKmwarranty(0);
+			model.setDeleted(0);
+			int id = DAOManager.getModelDAO().insertModel(model);
+			model.setId(id);
+		}
+		return model;
 	}
 	
 	public void testAdvice3KMLimit() throws SQLException {
@@ -235,7 +241,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(0);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
@@ -276,7 +282,7 @@ public class TestNotifications extends TestCase {
 		v.setNeedsadvice3(1);
 		
 		KmData rec = new KmData();
-		
+		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
 		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
