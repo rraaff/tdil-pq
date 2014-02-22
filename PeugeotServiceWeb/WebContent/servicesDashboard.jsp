@@ -44,18 +44,6 @@
 	
 	<%@ include file="includes/nuevaRuedita.jspf" %>
 
-	function showVluMessages(dni) {
-		<%@ include file="includes/blockUI.jspf" %>
-			<%@ include file="includes/unblockUI.jspf" %>
-			if (status == "error") {
-				errorAjax();
-			} else {
-				centerLayer($(window), $( "#vluMessagesLayer" ));
-				centerLayer($(window), $( "#centradorModalesVluMessages" ));
-			}
-		});
-	}
-	
 </script>
 </head>
 <body>
@@ -87,7 +75,10 @@
 	</div>
 </header>
 
-<a href="./servicesDashboard.jsp">servicesDashboard</a>
+Mis Services<br>
+Mis Vehiculos<br>
+Ver services oficiales<br>
+Agencias/Service autorizados<br>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
@@ -96,13 +87,6 @@
 <!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/legalesLayer.jsp" %>
-
-<!-- Update person -->
-<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="vluMessages">
-		Consultando datos...
-	</div>
-</div>
 
 <%@ include file="includes/version.jspf" %>
 </body>

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
@@ -79,11 +80,16 @@ public class SendEmailsAdviceThread extends Thread {
 		WebsiteUser wu = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(vehicle.getIdWebsiteuser());
 		Dealer dealer = DAOManager.getDealerDAO().selectDealerByPrimaryKey(vehicle.getIdDealer());
 		Map<String, String> replacements = new HashMap<String, String>();
-		replacements.put(EmailService.DEALER_KEY, dealer.getName());
+		if (dealer != null) {
+			replacements.put(EmailService.DEALER_KEY, dealer.getName());
+		}
 		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
 		replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
 		replacements.put(EmailService.LAST_NAME_KEY, wu.getLastname());
-		EmailService.sendEmail(wu.getEmail(), replacements, advice);
+		if (!StringUtils.isEmpty(wu.getEmail())) {
+			EmailService.sendEmail(wu.getEmail(), replacements, advice);
+		}
+		// TODO enviar el email a la concesionaria
 	}
 	
 	@Override

@@ -39,6 +39,11 @@ public class EditVehicleDataForm extends VehiclesForm {
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(EditVehicleDataForm.class);
 	
 	@Override
+	public void reset() {
+		super.reset();
+	}
+	
+	@Override
 	public void initWith(WebsiteUser user) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		super.initWith(user);
 		try {
@@ -63,18 +68,23 @@ public class EditVehicleDataForm extends VehiclesForm {
 	}
 
 	private void initCombos() {
-		if (this.getVehicle().getId() != null) {
+		this.cities = new ArrayList<City>();
+		this.dealers = new ArrayList<Dealer>();
+		if (this.getVehicle() != null && this.getVehicle().getId() != null) {
 			Dealer dealer = PeugeotService.getDealer(this.vehicle.getIdDealer());
-			this.idDealer = dealer.getId(); 
-			this.dealers = DealersService.getDealers(dealer.getIdCity());
-			City city = PeugeotService.getCity(dealer.getIdCity());
-			this.idCity = city.getId();
-			this.idState = city.getIdState();
-			this.cities = PeugeotService.getCities(city.getIdState());
-		} else {
-			this.cities = new ArrayList<City>();
-			this.dealers = new ArrayList<Dealer>();
-		}
+			if(dealer != null) {
+				this.idDealer = dealer.getId(); 
+			} else {
+				this.idDealer = 0;
+			}
+			if(dealer != null) {
+				this.dealers = DealersService.getDealers(dealer.getIdCity());
+				City city = PeugeotService.getCity(dealer.getIdCity());
+				this.idCity = city.getId();
+				this.idState = city.getIdState();
+				this.cities = PeugeotService.getCities(city.getIdState());
+			}
+		} 
 		this.states = PeugeotService.getStates();
 	}
 

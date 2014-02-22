@@ -21,6 +21,7 @@ public class GoToSelectVehicleForEditDataAction extends AbstractAction {
 		EditVehicleDataForm aForm = (EditVehicleDataForm)form;
 		try {
 			aForm.reset();
+			aForm.setVehicle(null);
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			if (!user.isPreventLogged()) {
 				user.reloginPrevent();
