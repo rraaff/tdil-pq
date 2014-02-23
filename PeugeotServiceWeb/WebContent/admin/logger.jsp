@@ -1,112 +1,137 @@
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checkadmin.jspf" %><%--
---%><html>
+--%>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>LoJack :: Real Life :: Backdoor Application - Logger</title>
+<link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" media="screen" href="../css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/backdoor.css" />
+</head>
 <body>
-<h1>Logging</h1>
+<%@ include file="includes/header.jsp" %>
 <%@ include file="includes/menu.jspf" %>
+<section id="titles">
+	<h1>LoJack Real Life BackDoor Application</h1>
+	<h2>Loggin</h2>
+</section>
+<section id="content">
+	<article>
+		<p class="attention"><strong>Importante:</strong> Los cambios realizados al esquema de logging no persisten luego de un restart.<br>Para hacer estos cambios persistentes modifique el archivo log4j.xml del servidor.</p>
+		<p style="text-align:center;">Baje el log completo haciendo <a href="./downloadLog.jsp">clic en bajar</a></p>
+		<p class="information">Las categorías de logs de interfaces (Thalamus y Prevent) responden al siquiente esquema</p>
+		
+		<div class="nota">
+			<ul>
+				<li><strong>DEBUG</strong> muestra invocaciones, respuestas, tiempos y errores</li>
+				<li><strong>INFO</strong> muestra tiempos y errores</li>
+				<li><strong>ERROR</strong> muestra solo errores</li>
+			</ul>
+		</div>
+		
+		<div class="portaTable">
+			<ul class="thead">
+				<li class="Seventyper">Seccion de la app</li>
+				<li class="Tenper">Nivel</li>
+				<li class="Twentyper">Cambiar</li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Interface con Thalamus</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor(com.tdil.thalamus.client.core.ThalamusClient.class)%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=debug">debug</a>
+				<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=info">info</a>
+				<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Thalamus completo</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.thalamus.client")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Interface con Prevent</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.prevent")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Servicios para apps nativas</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.rest")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Servlets (camaras y servicios ajax)</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.servlet")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Struts (web y webmobile)</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.struts")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">Web utils (fachada para servicios web)</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.utils")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
+				<li class="Seventyper">VLU (importaciones de VLU)</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.vlu")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=error">error</a></li>
+			</ul>
+		</div>
 
-<b>Importante</b>: Los cambios realizados al esquema de logging no persisten luego de un restart.<br>
-Para hacer estos cambios persistentes modifique el archivo log4j.xml del servidor.<br><br>
+		<hr>
+		
+		<h3>Setear log level</h3>
+		
+		<form action="./setLogLevel.jsp" class="fullSize">
+			<fieldset class="allinone">
+				<label>Categoría</label>
+				<input type="text" name="category">
+				<label class="spacer">&nbsp;</label>
+				<label>Nivel</label>
+				<select name="level">
+					<option value="debug">debug</option>
+					<option value="info">info</option>
+					<option value="error">error</option> 
+				</select>
+			</fieldset>
+			<fieldset class="botonera">
+				<input type="submit" value="Grabar">
+			</fieldset>
+		</form>
 
-Baje el log completo cliqueando <a href="./downloadLog.jsp">bajar</a><br><br>
-
-Las categorias de logs de interfaces (Thalamus, Middleware y Prevent)  siguen el siquiente esquema
-<ul>
-<li>debug muestra invocaciones, respuestas, tiempos y errores</li>
-<li>info muestra tiempos y errores</li>
-<li>error muestra solo errores</li>
-</ul>
-
-<table border="1">
-<tr>
-<td>Seccion de la app</td><td>Nivel</td><td>Cambiar</td></tr>
-<tr>
-<td>Interface con Thalamus</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor(com.tdil.thalamus.client.core.ThalamusClient.class)%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client.core.ThalamusClient&level=error">error</a></td>
-</tr>
-<tr>
-<td>Thalamus completo</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.thalamus.client")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.thalamus.client&level=error">error</a></td>
-</tr>
-<tr>
-<td>Interface con Middleware</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.gis")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.gis&level=error">error</a></td>
-</tr>
-<tr>
-<td>Interface con Prevent</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.prevent")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=error">error</a></td>
-</tr>
-
-<tr>
-<td>Servicios para apps nativas</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.rest")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=error">error</a></td>
-</tr>
-
-<tr>
-<td>Servlets (camaras y servicios ajax)</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.servlet")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=error">error</a></td>
-</tr>
-
-<tr>
-<td>Struts (web y webmobile)</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.struts")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.struts&level=error">error</a></td>
-</tr>
-
-<tr>
-<td>Web utils (fachada para servicios web)</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.utils")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=error">error</a></td>
-</tr>
-
-<tr>
-<td>VLU (importaciones de VLU)</td>
-<td><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.vlu")[1]%></td>
-<td><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=debug">debug</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=info">info</a>
-<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=error">error</a></td>
-</tr>
-
-
-</table>
-<hr>
-Setear log level
-<form action="./setLogLevel.jsp">
-Categoria <input type="text" name="category">
-Nivel <select name="level">
-	<option value="debug">debug</option>
-	<option value="info">info</option>
-	<option value="error">error</option> 
-</select>
-<input type="submit">
-</form>
-<hr>
-Ver log level
-<form action="./viewLogLevel.jsp">
-Categoria <input type="text" name="category">
-<input type="submit">
-</form>
+		<hr>
+		
+		<h3>Ver log level</h3>
+		
+		<form action="./viewLogLevel.jsp">
+			<fieldset>
+				<label>Categoría</label>
+				<input type="text" name="category">
+			</fieldset>
+			<fieldset class="botonera">
+				<input type="submit" value="Ver">
+			</fieldset>
+		</form>
+	</article>
+</section>
 </body>
 </html>

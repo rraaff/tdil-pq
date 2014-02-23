@@ -4,42 +4,66 @@
 <%@page import="java.util.List"%>
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checkadmin.jspf" %><%--
---%><html>
+--%>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>LoJack :: Peugeot :: Backdoor Application - Modelos</title>
+<link rel="icon" href="../favicon.ico" type="icon"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" media="screen" href="../css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/backdoor.css" />
+</head>
 <body>
-<h1>Modelos</h1>
+<%@ include file="includes/header.jsp" %>
 <%@ include file="includes/menu.jspf" %>
+<section id="titles">
+	<h1>LoJack Peugeot BackDoor Application</h1>
+	<h2>Modelos</h2>
+</section>
+<section id="content">
+	<article>
+		<div class="portaTable">
+			<ul class="thead">
+				<li class="Twentyper">Importación</li>
+				<li class="Twentyper">Estado</li>
+				<li class="Tenper">Procesados</li>
+				<li class="Twentyper">Inicio</li>
+				<li class="Twentyper">Última Modif.</li>
+				<li class="Tenper">Borrar</li>
+			</ul>
+			<% List<DataImport> imports = ImportUtils.getImports(com.tdil.ljpeugeot.feeds.model.ModelImportSpec.TYPE);
+				for (DataImport vluImport : imports) { %>
+				<ul class="tbody">
+					<li class="Twentyper"><%=vluImport.getId()%> - <%=vluImport.getFilename()%></li>
+					<li class="Twentyper"><%=vluImport.getStatus()%></li>
+					<li class="Tenper"><%=vluImport.getProcessed()%></li>
+					<li class="Twentyper"><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></li>
+					<li class="Twentyper"><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></li>
+					<li class="Tenper"><a href="./doDelete.jsp?dest=model.jsp&id=<%=vluImport.getId()%>">Borrar</a></li>
+				</ul>
+			<% } %>
+		</div>
+		<p class="attention"><strong>Importar base de modelos</strong></p>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: name,description,monthwarranty</p>
+		
+		<hr>
+		
+		<h3>Important</h3>
 
-<table border="1">
-<tr>
-<td>Importacion</td><td>Estado</td><td>Procesados</td><td>Inicio</td><td>Ultima modif</td><td>Borrar</td></tr>
-<%
-	List<DataImport> imports = ImportUtils.getImports(com.tdil.ljpeugeot.feeds.model.ModelImportSpec.TYPE);
-for (DataImport vluImport : imports) {
-%>
-
-<tr>
-<td><%=vluImport.getId()%> - <%=vluImport.getFilename()%></td>
-<td><%=vluImport.getStatus()%></td>
-<td><%=vluImport.getProcessed()%></td>
-<td><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></td>
-<td><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></td>
-<td><a href="./doDelete.jsp?dest=model.jsp&id=<%=vluImport.getId()%>">Borrar</a></td>
-</tr>
-
-<% } %>
-</table>
-<hr>
-Importar base de modelos <br>
-El archivo debe ser un csv con el siguiente formato:<br>
-name,description,monthwarranty<br><br>
-
-<form action="doImport.jsp" method="post"
-                        enctype="multipart/form-data">
-<input type="hidden" name="type" value="com.tdil.ljpeugeot.feeds.model.ModelImportSpec">
-<input type="hidden" name="dest" value="model.jsp">
-<input type="file" name="file" size="50" />
-<br />
-<input type="submit" value="Importar" />
-</form>
+		<form action="doImport.jsp" method="post" enctype="multipart/form-data">
+			<fieldset>
+				<input type="hidden" name="type" value="com.tdil.ljpeugeot.feeds.model.ModelImportSpec">
+				<input type="hidden" name="dest" value="model.jsp">
+				<input type="file" name="file" />
+			</fieldset>
+			<fieldset>
+				<input type="submit" value="Importar" />
+			</fieldset>
+		</form>
+	</article>
+</section>
 </body>
 </html>
