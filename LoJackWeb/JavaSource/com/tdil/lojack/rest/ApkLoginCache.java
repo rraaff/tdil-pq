@@ -22,6 +22,10 @@ public class ApkLoginCache {
 		return hash;
 	}
 	
+	public static void remove(String hash) {
+		apkLoginCache.invalidate(hash);
+	}
+	
 	private static String createCacheKey() {
 		String uuid = UUID.randomUUID().toString();
 		return uuid;
