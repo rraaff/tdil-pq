@@ -15,7 +15,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.tdil.ljpeugeot.model.ContactData;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
 import com.tdil.ljpeugeot.prevent.URLParams;
 import com.tdil.ljpeugeot.prevent.model.PhoneNumbers;
@@ -30,12 +29,10 @@ import com.tdil.ljpeugeot.prevent.model.UpdatePhoneNumbers;
 import com.tdil.ljpeugeot.prevent.model.Vehicle;
 import com.tdil.ljpeugeot.prevent.model.Vehicles;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
-import com.tdil.ljpeugeot.rest.model.ContactDataBean;
 import com.tdil.ljpeugeot.rest.prevent.model.PhoneNumbersBean;
 import com.tdil.ljpeugeot.rest.prevent.model.SecureZoneBean;
 import com.tdil.ljpeugeot.rest.prevent.model.SpeedLimitBean;
 import com.tdil.ljpeugeot.rest.prevent.model.VehicleBean;
-import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.log4j.LoggerProvider;
 
 @Path("/prevent")

@@ -18,6 +18,9 @@ public class SatellitePositionBean implements Serializable {
 	private String number;
 	private String zoom;
 	
+	public SatellitePositionBean() {
+	}
+	
 	public SatellitePositionBean(SatellitePosition vehicle) {
 		try {
 			BeanUtils.copyProperties(this, vehicle);

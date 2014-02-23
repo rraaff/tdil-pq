@@ -26,6 +26,9 @@ public class VehicleBean implements Serializable {
 	private String direction;
 	private String geoRef;
 
+	public VehicleBean() {
+	}
+	
 	public VehicleBean(Vehicle vehicle) {
 		try {
 			BeanUtils.copyProperties(this, vehicle);

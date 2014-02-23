@@ -30,6 +30,9 @@ public class PhoneNumbersBean implements Serializable {
 	private String status;
 
 
+	public PhoneNumbersBean() {
+	}
+	
 	public PhoneNumbersBean(PhoneNumbers vehicle) {
 		try {
 			BeanUtils.copyProperties(this, vehicle);
@@ -42,7 +45,7 @@ public class PhoneNumbersBean implements Serializable {
 	public static UpdatePhoneNumbers asPhoneNumbers(PhoneNumbersBean personBean) {
 		try {
 			UpdatePhoneNumbers result = new UpdatePhoneNumbers();
-			BeanUtils.copyProperties(result, result);
+			BeanUtils.copyProperties(result, personBean);
 			return result;
 		} catch (IllegalAccessException e) {
 			getLog().error(e.getMessage(), e);

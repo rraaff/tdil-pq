@@ -17,6 +17,9 @@ public class SpeedLimitBean implements Serializable {
 	
 	private String description;
 	
+	public SpeedLimitBean() {
+	}
+	
 	public SpeedLimitBean(SpeedLimit vehicle) {
 		try {
 			BeanUtils.copyProperties(this, vehicle);
@@ -29,7 +32,7 @@ public class SpeedLimitBean implements Serializable {
 	public static SpeedLimit asSpeedLimit(SpeedLimitBean personBean) {
 		try {
 			SpeedLimit result = new SpeedLimit();
-			BeanUtils.copyProperties(result, result);
+			BeanUtils.copyProperties(result, personBean);
 			return result;
 		} catch (IllegalAccessException e) {
 			getLog().error(e.getMessage(), e);

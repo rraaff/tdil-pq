@@ -17,6 +17,9 @@ public class SecureZoneBean implements Serializable {
 	private String description;
 	private String status;
 	
+	public SecureZoneBean() {
+	}
+	
 	public SecureZoneBean(SecureZone state) {
 		try {
 			BeanUtils.copyProperties(this, state);
@@ -29,7 +32,7 @@ public class SecureZoneBean implements Serializable {
 	public static SecureZone asSecureZone(SecureZoneBean personBean) {
 		try {
 			SecureZone result = new SecureZone();
-			BeanUtils.copyProperties(result, result);
+			BeanUtils.copyProperties(result, personBean);
 			return result;
 		} catch (IllegalAccessException e) {
 			getLog().error(e.getMessage(), e);
