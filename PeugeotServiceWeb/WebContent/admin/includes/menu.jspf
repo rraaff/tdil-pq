@@ -1,11 +1,11 @@
 <section id="menu">
 	<% if (su.isAdmin()) { %>
 		<a href="sysproperties.jsp">Configuracion de sysproperties</a> | 
-		<a href="logger.jsp">Configuracion del logging</a>| 
-		<a href="dealer.jsp">Concesionarios</a>|
-		<a href="model.jsp">Modelos</a>|
-		<a href="km.jsp">KM</a>|
-		<a href="notificationEmails.jsp">Emails</a>
-	<% } %> |
-	<a href="dologout.jsp">Salir</a>
+		<a href="logger.jsp">Configuracion del logging</a> | 
+		<a href="dealer.jsp">Concesionarios</a> |
+		<a href="model.jsp">Modelos</a> |
+		<a href="km.jsp">KM</a> |
+		<a href="notificationEmails.jsp">E-mails</a>
+	<% } %>
+	 | <a href="dologout.jsp">Salir</a>
 </section>
