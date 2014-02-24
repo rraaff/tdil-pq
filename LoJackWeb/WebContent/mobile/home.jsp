@@ -19,7 +19,7 @@
 <link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="../css/ws_modal.css" />
+<!-- link type="text/css" rel="stylesheet" media="screen" href="../css/ws_modal.css" /> -->
 <script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
 <script type="text/javascript">
@@ -202,7 +202,7 @@ window.onresize=function() {
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="../includes/version.jspf" %>
 
-<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index:3000; position:fixed;">
 	<div id="vluMessages">
 		Consultando datos...
 	</div>

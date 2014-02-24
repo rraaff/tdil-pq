@@ -13,7 +13,7 @@ $( "#closevluMessagesLayer" ).click(function() {
 
 </script>
 <% VechiclesVLUMessagesForm selectVehiclesForm = (VechiclesVLUMessagesForm)session.getAttribute("VechiclesVLUMessagesForm");%>
-<div id="xContainer"><button id="closevluMessagesLayer">X</button></div>
+<div id="xContainer"><button class="buttonLink" id="closevluMessagesLayer">X</button></div>
 <h3>Mensaje de LoJack</h3>
 <div id="tableStyle">
 	<p class="information">Si el rastreador de su vehículo requiere mantenimiento, comuníquese al 0800-122-5652</p>

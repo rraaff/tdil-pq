@@ -30,7 +30,6 @@
 <link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/ws_modal.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->

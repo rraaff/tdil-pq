@@ -12,27 +12,19 @@ $( "#closevluMessagesLayer" ).click(function() {
 });
 </script>
 <% List<VLUData> vluDataList = VLUUtils.getVLUData(request.getParameter("dni"));%>
-<div id="vluMessages" class="wsmodal">
-	<div class="wsmHeader">
-		<button id="backvluMessagesLayer" class="wsmButtonBack">&nbsp;</button>
-		<span>Mensaje de LoJack</span>
-		<button id="closevluMessagesLayer" class="wsmButtonClose">&nbsp;</button>
+<div class="vluMessages">
+	<div id="xContainer"><button class="buttonLink" id="closevluMessagesLayer">X</button></div>
+	<h3>Mensaje de LoJack</h3>
+	<p class="">Tu equipo LoJack requiere mantenimiento, comunicate al 0800-122-5652</p>
+	<div id="tableStyle">
+		<fieldset class="tableHeader">
+			<label class="w100 monoColumna">Patente</label>
+		</fieldset>
+		<% for (VLUData vluData : vluDataList) { %>
+			<fieldset class="tableBody">
+				<label class="w100 monoColumna"><%=vluData.getDomain() %></label>
+			</fieldset>
+		<% } %>
 	</div>
-	<div class="wsmBody">
-		<span class="ajuteMensaje">
-			<p class="information">Si el rastreador de su vehículo requiere mantenimiento, comuníquese al 0800-122-5652</p>
-		</span>
-		<div class="table">
-			<ul class="thead">
-				<li class="thcell width50per">Patente</li>
-				<li class="thcell width50per">Mensaje</li>
-			</ul>
-			<% for (VLUData vluData : vluDataList) { %>
-				<ul class="tbody">
-					<li class="thcell width50per"><%=vluData.getDomain() %></li>
-				</ul>
-			<% } %>
-		</div>
-	</div>
-	<%@ include file="includes/catchModal.jspf" %>
+<%@ include file="includes/catchModal.jspf" %>
 </div>
