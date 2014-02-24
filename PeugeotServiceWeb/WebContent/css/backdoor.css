@@ -25,7 +25,8 @@ header img { height:100%; margin:0 auto 8px; }
 #content label					{ text-align:left; width:50%; display:inline-block; }
 #content input[type="text"],
 #content input[type="password"],
-#content select { border:solid 1px #aeaeae; border-radius:5px; text-align:left; width:50%; padding:8px 5px; box-shadow:0 0 8px 1px #aeaeae; } 
+#content select,
+textarea						{ border:solid 1px #aeaeae; border-radius:5px; text-align:left; width:50%; padding:8px 5px; box-shadow:0 0 8px 1px #aeaeae; } 
 #content p						{ text-align:left; line-height:24px; padding: 10px 0; }
 #content article h3				{ font-size:24px; padding:40px 0 20px; border-bottom:dotted 1px #aeaeae; }
 
@@ -54,6 +55,8 @@ ul li.delete,
 ul li.delete					{ width:65px; }
 ul.thead li.Seventyper,
 ul.tbody li.Seventyper			{ width:70%; }
+ul.thead li.Thirtyper,
+ul.tbody li.Thirtyper			{ width:30%; }
 ul.thead li.Twentyper,
 ul.tbody li.Twentyper			{ width:20%; }
 ul.thead li.Tenper,
