@@ -4,7 +4,7 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Real Life :: Backdoor Application - Logger</title>
+<title>LoJack :: Peugeot :: Backdoor Application - Logger</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="../css/reset-styles.css" />
@@ -16,7 +16,7 @@
 <%@ include file="includes/header.jsp" %>
 <%@ include file="includes/menu.jspf" %>
 <section id="titles">
-	<h1>LoJack Real Life BackDoor Application</h1>
+	<h1>LoJack Peugeot BackDoor Application</h1>
 	<h2>Loggin</h2>
 </section>
 <section id="content">

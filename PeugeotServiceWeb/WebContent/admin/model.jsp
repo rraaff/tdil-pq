@@ -59,7 +59,7 @@
 				<input type="hidden" name="dest" value="model.jsp">
 				<input type="file" name="file" />
 			</fieldset>
-			<fieldset>
+			<fieldset class="botonera">
 				<input type="submit" value="Importar" />
 			</fieldset>
 		</form>
