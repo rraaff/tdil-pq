@@ -48,6 +48,7 @@ public class VechiclesVLUMessagesForm extends VehiclesForm {
 				VLUDataDTO vluDataDTO = new VLUDataDTO();
 				vluDataDTO.setDni(user.getDni());
 				vluDataDTO.setDomain(ve.getDescription());
+				vluDataDTO.setMessage("-");
 				vlDataDTOs.add(vluDataDTO);
 				added.add(ve.getDescription());
 			}

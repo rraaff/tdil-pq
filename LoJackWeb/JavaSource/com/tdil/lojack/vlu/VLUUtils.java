@@ -73,7 +73,7 @@ public class VLUUtils {
 		}
 		public Boolean executeInTransaction() throws SQLException {
 			VLUDataExample vluDataExample = new VLUDataExample();
-			vluDataExample.createCriteria().andDniEqualTo(this.dni).andMessageIsNotNull();
+			vluDataExample.createCriteria().andDniEqualTo(this.dni);
 			Integer count = DAOManager.getVLUDataDAO().countVLUDataByExample(vluDataExample);
 			return count > 0;
 		}
@@ -87,7 +87,7 @@ public class VLUUtils {
 		}
 		public Integer executeInTransaction() throws SQLException {
 			VLUDataExample vluDataExample = new VLUDataExample();
-			vluDataExample.createCriteria().andDniEqualTo(this.dni).andMessageIsNotNull();
+			vluDataExample.createCriteria().andDniEqualTo(this.dni);
 			Integer count = DAOManager.getVLUDataDAO().countVLUDataByExample(vluDataExample);
 			return count;
 		}

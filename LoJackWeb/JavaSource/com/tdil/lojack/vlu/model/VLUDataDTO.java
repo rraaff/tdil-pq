@@ -3,6 +3,7 @@ package com.tdil.lojack.vlu.model;
 import java.io.Serializable;
 
 import com.tdil.lojack.model.VLUData;
+import com.tdil.struts.resources.ApplicationResources;
 
 public class VLUDataDTO implements Serializable {
 
@@ -21,7 +22,7 @@ public class VLUDataDTO implements Serializable {
 	public VLUDataDTO(VLUData vluData) {
 		setDni(vluData.getDni());
 		setDomain(vluData.getDomain());
-		setMessage(vluData.getMessage());
+		setMessage(ApplicationResources.getMessage("vlu.vluMessage"));
 	}
 	public String getDni() {
 		return dni;
