@@ -62,7 +62,7 @@
 </div>
 <div id="copyright">
 	<div class="copy">
-		<p>2013 lojack | <a href="legal.jsp" title="Legales">legales</a> | <a href="./goToContactMobile.do" title="Envianos tu consulta">Contactanos</a></p>
+		<p>2014 lojack | <a href="legal.jsp" title="Legales">legales</a> | <a href="./goToContactMobile.do" title="Envianos tu consulta">Contactanos</a></p>
 	</div>
 </div>
 <div class="alert alert-error">Se le ha enviado la clave</div>
