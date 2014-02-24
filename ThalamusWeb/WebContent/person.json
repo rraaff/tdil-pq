@@ -81,7 +81,7 @@
           "petIsClient" : true,
           "homeUser" : "usuario",
           "petUser" : "petUser",
-          "ClubLjsClient": false,
+          "ClubLjsClient": true,
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
           "preventIsClient" : true,
