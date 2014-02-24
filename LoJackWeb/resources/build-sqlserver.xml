@@ -5,11 +5,11 @@
 	<property name="project.name.lower" value="lojack" />
 	
 	<property name="sql.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-	<property name="root.url" value="jdbc:sqlserver://192.168.0.132:1123" />
+	<property name="root.url" value="jdbc:sqlserver://192.168.0.104:1123" />
 	<property name="root.user" value="sa" />
 	<property name="root.pass" value="root" />
 
-	<property name="db.url" value="jdbc:sqlserver://192.168.0.132:1123;database=LOJACK_DB;" />
+	<property name="db.url" value="jdbc:sqlserver://192.168.0.104:1123;database=LOJACK_DB;" />
 	<property name="db.user" value="${project.name.upper}_USER" />
 	<property name="db.pass" value="p4l0ll1n4" />
 
@@ -60,6 +60,15 @@
 				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
 			</classpath>
 			<transaction src="ddl9-sqlserver.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-10">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl10-sqlserver.sql" />
 		</sql>
 	</target>
 

@@ -4,7 +4,7 @@
 <%@page import="com.tdil.lojack.model.VLUImport"%>
 <%@page import="java.util.List"%>
 <%@ include file="includes/checklogin.jsp" %><%--
---%><%@ include file="includes/checklogaccess.jspf" %><%--
+--%><%@ include file="includes/checkvluaccess.jspf" %><%--
 --%>
 
 <html lang="es">

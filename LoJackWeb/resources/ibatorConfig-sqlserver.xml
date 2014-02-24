@@ -13,7 +13,7 @@
   defaultModelType="flat">
 
 <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-			connectionURL="jdbc:sqlserver://192.168.0.132:1123;database=LOJACK_DB;" userId="LOJACK_USER"
+			connectionURL="jdbc:sqlserver://192.168.0.104:1123;database=LOJACK_DB;" userId="LOJACK_USER"
 			password="p4l0ll1n4" />
 
 <javaModelGenerator targetPackage="com.tdil.lojack.model"
@@ -62,16 +62,16 @@ targetProject="LoJackWeb">
 
 <table schema="dbo" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 
 <table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
+</table>
 <!--  table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
 
-<table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+<!-- table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
@@ -79,7 +79,7 @@ targetProject="LoJackWeb">
 </table>
 <table schema="dbo" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 
 
 </ibatorContext>

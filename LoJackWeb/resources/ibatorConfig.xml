@@ -65,16 +65,16 @@ targetProject="LoJackWeb">
 
 <table schema="LOJACK" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 
 <table schema="LOJACK" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="LOJACK" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
+<!-- table schema="LOJACK" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
 
-<table schema="LOJACK" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+<!-- table schema="LOJACK" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="LOJACK" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
@@ -82,7 +82,7 @@ targetProject="LoJackWeb">
 </table>
 <table schema="LOJACK" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>

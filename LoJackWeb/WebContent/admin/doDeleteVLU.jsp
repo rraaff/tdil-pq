@@ -1,6 +1,6 @@
 <%@page import="com.tdil.lojack.vlu.VLUUtils"%><%--
 --%><%@ include file="includes/checklogin.jsp" %><%--
---%><%@ include file="includes/checklogaccess.jspf" %><%--
+--%><%@ include file="includes/checkvluaccess.jspf" %><%--
 --%><% 
 	String id = request.getParameter("id");
 	VLUUtils.deleteVLUImport(id);
