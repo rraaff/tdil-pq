@@ -30,11 +30,6 @@ $( "#closevluMessagesLayer" ).click(function() {
 			<% for (VLUData vluData : vluDataList) { %>
 				<ul class="tbody">
 					<li class="thcell width50per"><%=vluData.getDomain() %></li>
-					<% if (StringUtils.isEmpty(vluData.getMessage())) { %>
-						<li class="thcell width50per">&nbsp;</li>
-					<% } else { %>
-						<li class="thcell width50per"><%=vluData.getMessage() %></li>
-					<% } %>
 				</ul>
 			<% } %>
 		</div>
