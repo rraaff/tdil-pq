@@ -42,11 +42,11 @@ targetProject="PeugeotServiceWeb">
 
 <!-- table schema="PEUGEOTSVC" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <table schema="PEUGEOTSVC" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="PEUGEOTSVC" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
+<!-- table schema="PEUGEOTSVC" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="PEUGEOTSVC" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
@@ -57,11 +57,11 @@ targetProject="PeugeotServiceWeb">
 </table>
 <table schema="PEUGEOTSVC" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <table schema="PEUGEOTSVC" tableName="DEALER" domainObjectName="Dealer" alias="deal">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="PEUGEOTSVC" tableName="CITY" domainObjectName="City" alias="city">
+<!-- table schema="PEUGEOTSVC" tableName="CITY" domainObjectName="City" alias="city">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
@@ -90,7 +90,10 @@ targetProject="PeugeotServiceWeb">
 <!--  table schema="PEUGEOTSVC" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
+<!-- table schema="PEUGEOTSVC" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table-->
+<table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 

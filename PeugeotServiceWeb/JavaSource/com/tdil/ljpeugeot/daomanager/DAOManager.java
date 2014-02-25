@@ -3,6 +3,7 @@ package com.tdil.ljpeugeot.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.ljpeugeot.dao.AdviceDAO;
+import com.tdil.ljpeugeot.dao.AlertDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
@@ -90,6 +91,10 @@ public abstract class DAOManager {
 	
 	public static KmDataDAO getKmDataDAO() throws SQLException {
 		return currentDao.getKmDataDAO();
+	}
+	
+	public static AlertDAO getAlertDAO() throws SQLException {
+		return currentDao.getAlertDAO();
 	}
 
 	public static DAOProvider getCurrentDao() {

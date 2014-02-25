@@ -11,6 +11,7 @@ import com.tdil.ljpeugeot.model.City;
 import com.tdil.ljpeugeot.model.CityExample;
 import com.tdil.ljpeugeot.model.DataImport;
 import com.tdil.ljpeugeot.model.Dealer;
+import com.tdil.ljpeugeot.model.DealerExample;
 import com.tdil.ljpeugeot.model.State;
 import com.tdil.ljpeugeot.model.StateExample;
 import com.tdil.struts.TransactionalAction;
@@ -26,6 +27,11 @@ public class DealerImportSpec implements ImportSpec {
 		processors = new CellProcessor[] { null, // state
 					null, // city
 					null, // name
+					null,
+					null,
+					null,
+					null,
+					null,
 					null,
 					null,
 					null
@@ -67,17 +73,34 @@ public class DealerImportSpec implements ImportSpec {
 			this.dataImport = dataImport;
 		}
 		public void executeInTransaction() throws SQLException {
+			DealerExample dealerExample = new DealerExample();
+			dealerExample.createCriteria().andCodeEqualTo(importRecord.getCode());
+			List<Dealer> dealers = DAOManager.getDealerDAO().selectDealerByExample(dealerExample);
+			if (dealers.isEmpty()) {
+				Dealer dealer = new Dealer();
+				setDealerData(dealer);
+				DAOManager.getDealerDAO().insertDealer(dealer);
+			} else {
+				Dealer dealer = dealers.get(0);
+				setDealerData(dealer);
+				DAOManager.getDealerDAO().updateDealerByPrimaryKey(dealer);
+			}
+		}
+		public void setDealerData(Dealer dealer) throws SQLException {
 			int id_state = getStateId(importRecord);
 			int id_city = getCityId(importRecord, id_state);
-			Dealer dealer = new Dealer();
 			dealer.setIdCity(id_city);
-			dealer.setAddress(importRecord.getAddress());
-			dealer.setDeleted(0);
-			dealer.setEmail(importRecord.getEmail());
-			dealer.setIdDataImport(dataImport.getId());
+			dealer.setCode(importRecord.getCode());
 			dealer.setName(importRecord.getName());
+			dealer.setAddress(importRecord.getAddress());
+			dealer.setPostalcode(importRecord.getPostalCode());
+			dealer.setEmail(importRecord.getEmail());
 			dealer.setPhone(importRecord.getPhone());
-			DAOManager.getDealerDAO().insertDealer(dealer);
+			dealer.setFax(importRecord.getFax());
+			dealer.setCategory(importRecord.getCategory());
+			dealer.setLocationtype(importRecord.getLocationtype());
+			dealer.setIdDataImport(dataImport.getId());
+			dealer.setDeleted(0);
 		}
 		private int getStateId(DealerImportRecord importRecord2) throws SQLException {
 			StateExample stateExample = new StateExample();

@@ -39,4 +39,5 @@
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/DATA_IMPORT_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/NOTIFICATION_EMAIL_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/KM_DATA_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/ljpeugeot/dao/maps/ALERT_SqlMap.xml"/>
 </sqlMapConfig>

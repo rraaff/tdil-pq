@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.tdil.ibatis.IBatisManager;
 import com.tdil.ljpeugeot.dao.AdviceDAO;
+import com.tdil.ljpeugeot.dao.AlertDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
@@ -20,6 +21,7 @@ import com.tdil.ljpeugeot.dao.SystemPropertyDAO;
 import com.tdil.ljpeugeot.dao.SystemUserDAO;
 import com.tdil.ljpeugeot.dao.VehicleDAO;
 import com.tdil.ljpeugeot.dao.WebsiteUserDAO;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.AlertDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.KmDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.AdviceDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.BlobDataDAOImpl;
@@ -118,5 +120,10 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public KmDataDAO getKmDataDAO() throws SQLException {
 		return new KmDataDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public AlertDAO getAlertDAO() throws SQLException {
+		return new AlertDAOImpl(IBatisManager.getClient());
 	}
 }

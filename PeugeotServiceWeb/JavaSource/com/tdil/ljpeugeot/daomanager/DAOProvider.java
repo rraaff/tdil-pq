@@ -3,6 +3,7 @@ package com.tdil.ljpeugeot.daomanager;
 import java.sql.SQLException;
 
 import com.tdil.ljpeugeot.dao.AdviceDAO;
+import com.tdil.ljpeugeot.dao.AlertDAO;
 import com.tdil.ljpeugeot.dao.BlobDataDAO;
 import com.tdil.ljpeugeot.dao.CacheRegionDAO;
 import com.tdil.ljpeugeot.dao.CityDAO;
@@ -52,4 +53,6 @@ public interface DAOProvider {
 	public abstract NotificationEmailDAO getNotificationEmailDAO() throws SQLException;
 
 	public abstract KmDataDAO getKmDataDAO() throws SQLException;
+	
+	public abstract AlertDAO getAlertDAO() throws SQLException;
 }

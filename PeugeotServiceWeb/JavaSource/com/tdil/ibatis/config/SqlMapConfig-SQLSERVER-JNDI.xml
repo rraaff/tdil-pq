@@ -35,4 +35,5 @@
     <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_DATA_IMPORT_SqlMap.xml"/>
     <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_NOTIFICATION_EMAIL_SqlMap.xml"/>
     <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_KM_DATA_SqlMap.xml"/>
+    <sqlMap resource="com/tdil/ljpeugeot/dao/maps/sqlserver/dbo_ALERT_SqlMap.xml"/>
 </sqlMapConfig>

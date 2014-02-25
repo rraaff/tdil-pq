@@ -48,7 +48,7 @@
 		</div>
 		
 		<p class="attention"><strong>Importar base de concesionarios</strong></p>
-		<p class="information">El archivo debe ser un csv con el siguiente formato: state,city,name,address,email,phone</p>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: code,name,address,city,state,postalCode,phone,fax,email,category,locationtype</p>
 
 		<hr>
 		

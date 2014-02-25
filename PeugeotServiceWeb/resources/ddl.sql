@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS CONTACTDATA;
 
 DROP TABLE IF EXISTS DATA_IMPORT;
 
+DROP TABLE IF EXISTS ALERT;
+
 DROP TABLE IF EXISTS WEBSITEUSER;
 
 DROP TABLE IF EXISTS NOTIFICATION_EMAIL;
@@ -51,14 +53,19 @@ CREATE TABLE SYSTEMUSER (
   `username` VARCHAR(20) NULL ,
   `password` VARCHAR(50) NULL ,
   `type` INT NOT NULL,
+  `loggingAccess` INT NOT NULL,
+  `syspropAccess` INT NOT NULL,
+  `modelImportAccess` INT NOT NULL,
+  `dealerImportAccess` INT NOT NULL,
+  `emailTemplateAccess` INT NOT NULL,
   `deleted` INT NOT NULL,
   PRIMARY KEY (`id`) ,
   INDEX `IX_SYSTEMUSER_00` (`username` ASC))
 ENGINE = InnoDB;
 
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 0);
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('admin',SHA1('admin'), 0, 0);
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('cc',SHA1('cc'), 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,loggingAccess,syspropAccess,modelImportAccess,dealerImportAccess,emailTemplateAccess,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 1, 1, 1, 1, 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,loggingAccess,syspropAccess,modelImportAccess,dealerImportAccess,emailTemplateAccess,deleted) VALUES('admin',SHA1('admin'), 0, 1, 1, 1, 1, 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,loggingAccess,syspropAccess,modelImportAccess,dealerImportAccess,emailTemplateAccess,deleted) VALUES('cc',SHA1('cc'), 1, 0, 0, 0, 0, 0, 0);
 COMMIT;
 
 CREATE TABLE SYSPROPERTIES (
@@ -150,10 +157,15 @@ CREATE TABLE DATA_IMPORT (
 CREATE TABLE DEALER (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_data_import` INT NOT NULL,
+  `code` VARCHAR(20) NOT NULL ,
   `name` VARCHAR(200) NOT NULL ,
   `address` VARCHAR(200) NOT NULL ,
+  `postalCode` VARCHAR(20) NULL ,
   `email` VARCHAR(150) NOT NULL ,
   `phone` VARCHAR(200) NOT NULL ,
+  `fax` VARCHAR(200) NULL ,
+  `category` VARCHAR(200) NULL ,
+  `locationType` VARCHAR(200) NULL ,
   `id_city` INT NOT NULL ,
   `lat` DECIMAL (10,8) NULL ,
   `lon` DECIMAL (10,8) NULL ,
@@ -312,8 +324,36 @@ CREATE TABLE KM_DATA (
   INDEX `IX_KM_DATA_00` (`dominio` ASC))
 ENGINE = InnoDB;
 
+CREATE TABLE ALERT (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id_websiteuser` INT NOT NULL,
+  `id_systemuser` INT NULL,
+  `creationDate` DATETIME NOT NULL ,
+  `modificationDate` DATETIME NULL ,
+  `phoneNumber` VARCHAR(20) NULL ,
+  `lat` DECIMAL (10,8) NULL ,
+  `lon` DECIMAL (10,8) NULL ,
+  `status` INT NOT NULL,
+  `deleted` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `IX_ALERT_00` (`id_websiteuser` ASC),
+  INDEX `IX_ALERT_01` (`status` ASC, `creationDate` ASC ),
+  INDEX `IX_ALERT_02` (`id_systemuser` ASC),
+  CONSTRAINT `FK_ALERT_00`
+    FOREIGN KEY (`id_websiteuser` )
+    REFERENCES WEBSITEUSER (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_ALERT_01`
+    FOREIGN KEY (`id_systemuser` )
+    REFERENCES SYSTEMUSER (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0);
 COMMIT;

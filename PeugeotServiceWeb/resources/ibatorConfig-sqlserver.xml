@@ -38,11 +38,11 @@ targetProject="PeugeotServiceWeb">
 
 <!-- table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
+<!-- table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="BLOB_DATA" domainObjectName="BlobData" alias="bd">
@@ -53,11 +53,11 @@ targetProject="PeugeotServiceWeb">
 </table>
 <table schema="dbo" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <table schema="dbo" tableName="DEALER" domainObjectName="Dealer" alias="deal">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="CITY" domainObjectName="City" alias="city">
+<!-- table schema="dbo" tableName="CITY" domainObjectName="City" alias="city">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 
@@ -84,8 +84,11 @@ targetProject="PeugeotServiceWeb">
 </table-->
 <!--  table schema="dbo" tableName="NOTIFICATION_EMAIL" domainObjectName="NotificationEmail" alias="ne">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
+</table>
 <table schema="dbo" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
+	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
+</table-->
+<table schema="dbo" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 

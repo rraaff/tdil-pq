@@ -47,7 +47,7 @@
 			<% } %>
 		</div>
 		<p class="attention"><strong>Importar base de modelos</strong></p>
-		<p class="information">El archivo debe ser un csv con el siguiente formato: name,description,monthwarranty</p>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: name,description,monthwarranty,kmwarranty</p>
 		
 		<hr>
 		

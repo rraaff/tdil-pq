@@ -41,7 +41,10 @@ if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'CONTACTDA
     drop table CONTACTDATA;
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'DATA_IMPORT')
-    drop table DATA_IMPORT;  
+    drop table DATA_IMPORT;
+    
+if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'ALERT')
+    drop table ALERT;  
 
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'WEBSITEUSER')
     drop table WEBSITEUSER;    
@@ -81,13 +84,18 @@ CREATE TABLE SYSTEMUSER (
   username VARCHAR(20) NULL ,
   password VARCHAR(50) NULL ,
   type INT NOT NULL,
+  loggingAccess INT NOT NULL,
+  syspropAccess INT NOT NULL,
+  modelImportAccess INT NOT NULL,
+  dealerImportAccess INT NOT NULL,
+  emailTemplateAccess INT NOT NULL,
   deleted INT NOT NULL ,
   PRIMARY KEY (id));
   
 CREATE INDEX IX_SYSTEMUSER_00 ON SYSTEMUSER (username);
 
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 0);
-INSERT INTO SYSTEMUSER(username,password,type,deleted) VALUES('cc','bdb480de655aa6ec75ca058c849c4faf3c0f75b1', 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,loggingAccess,syspropAccess,modelImportAccess,dealerImportAccess,emailTemplateAccess,deleted) VALUES('tdil','f5314a8a0b0a34239a8bf78104f2ff4754a7a890', 0, 1, 1, 1, 1, 1, 0);
+INSERT INTO SYSTEMUSER(username,password,type,loggingAccess,syspropAccess,modelImportAccess,dealerImportAccess,emailTemplateAccess,deleted) VALUES('cc','bdb480de655aa6ec75ca058c849c4faf3c0f75b1', 1, 0, 0, 0, 0, 0, 0);
 COMMIT;
 
 CREATE TABLE SYSPROPERTIES (
@@ -168,10 +176,15 @@ CREATE INDEX IX_DATA_IMPORT_00 ON DATA_IMPORT(type);
 CREATE TABLE DEALER (
   id INT NOT NULL IDENTITY ,
   id_data_import INT NOT NULL CONSTRAINT FK_DEALER_01 FOREIGN KEY REFERENCES DATA_IMPORT(id),
+  code VARCHAR(20) NOT NULL ,
   name VARCHAR(200) NOT NULL ,
   address VARCHAR(200) NOT NULL ,
+  postalCode VARCHAR(20) NULL ,
   email VARCHAR(150) NOT NULL ,
   phone VARCHAR(200) NOT NULL ,
+  fax VARCHAR(200) NULL ,
+  category VARCHAR(200) NULL ,
+  locationType VARCHAR(200) NULL ,
   id_city INT NOT NULL CONSTRAINT FK_DEALER_00 FOREIGN KEY REFERENCES CITY(id),
   lat DECIMAL (10,8) NULL ,
   lon DECIMAL (10,8) NULL ,
@@ -272,6 +285,7 @@ CREATE TABLE NOTIFICATION_EMAIL (
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0);
 COMMIT;
 
 CREATE TABLE KM_DATA (
@@ -291,3 +305,20 @@ CREATE TABLE KM_DATA (
   PRIMARY KEY (id));
 
 CREATE INDEX IX_KM_DATA_00 ON KM_DATA(dominio);
+
+CREATE TABLE ALERT (
+  id INT NOT NULL IDENTITY ,
+  id_websiteuser INT NOT NULL CONSTRAINT FK_ALERT_00 FOREIGN KEY REFERENCES WEBSITEUSER(id),
+  id_systemuser INT NULL CONSTRAINT FK_ALERT_01 FOREIGN KEY REFERENCES SYSTEMUSER(id),
+  creationDate DATETIME NOT NULL ,
+  modificationDate DATETIME NULL ,
+  phoneNumber VARCHAR(20) NULL ,
+  lat DECIMAL (10,8) NULL ,
+  lon DECIMAL (10,8) NULL ,
+  status INT NOT NULL,
+  deleted INT NOT NULL,
+  PRIMARY KEY (id));
+
+CREATE INDEX IX_ALERT_00 ON ALERT(id_websiteuser);
+CREATE INDEX IX_ALERT_01 ON ALERT(status,creationDate);
+CREATE INDEX IX_ALERT_02 ON ALERT(id_systemuser);
