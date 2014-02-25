@@ -7,7 +7,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
-import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.City;
 import com.tdil.ljpeugeot.model.CityExample;
 import com.tdil.ljpeugeot.model.ContactData;
@@ -91,6 +90,17 @@ public class PeugeotService {
 		}
 		public City executeInTransaction() throws SQLException {
 			return DAOManager.getCityDAO().selectCityByPrimaryKey(id);
+		}
+	}
+	
+	private static final class GetModel implements TransactionalActionWithResult<Model> {
+		private int id;
+		public GetModel(int id) {
+			super();
+			this.id = id;
+		}
+		public Model executeInTransaction() throws SQLException {
+			return DAOManager.getModelDAO().selectModelByPrimaryKey(id);
 		}
 	}
 	
@@ -464,6 +474,21 @@ public class PeugeotService {
 				return null;
 			}
 			return GenericTransactionExecutionService.getInstance().execute(new GetCity(idDealer));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static Model getModel(Integer idDealer) {
+		try {
+			if (idDealer == null) {
+				return null;
+			}
+			return GenericTransactionExecutionService.getInstance().execute(new GetModel(idDealer));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
