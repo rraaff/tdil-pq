@@ -2,11 +2,15 @@ package com.tdil.ljpeugeot.services;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.Advice;
+import com.tdil.ljpeugeot.model.AdviceExample;
 import com.tdil.ljpeugeot.model.City;
 import com.tdil.ljpeugeot.model.CityExample;
 import com.tdil.ljpeugeot.model.ContactData;
@@ -22,6 +26,7 @@ import com.tdil.ljpeugeot.model.State;
 import com.tdil.ljpeugeot.model.StateExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
+import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
@@ -145,6 +150,37 @@ public class PeugeotService {
 			VehicleExample vehicleExample = new VehicleExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
 			return DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetAdvices implements TransactionalActionWithResult<List<AdviceValueObject>> {
+		private int idUser;
+		public GetAdvices(int idUser) {
+			super();
+			this.idUser = idUser;
+		}
+		public List<AdviceValueObject> executeInTransaction() throws SQLException {
+			AdviceExample adviceExample = new AdviceExample();
+			List<Vehicle> vehicles = getVehicles(idUser);
+			if (vehicles.isEmpty()) {
+				return new ArrayList<AdviceValueObject>();
+			}
+			List<Integer> vehiclesIds = new ArrayList<Integer>();
+			Map<Integer, Vehicle> idsToVehicles = new HashMap<Integer, Vehicle>();
+			for (Vehicle v : vehicles) {
+				vehiclesIds.add(v.getId());
+				idsToVehicles.put(v.getId(), v);
+			}
+			adviceExample.createCriteria().andIdVechicleIn(vehiclesIds).andIsreadEqualTo(0);
+			List<Advice> advices = DAOManager.getAdviceDAO().selectAdviceByExample(adviceExample);
+			
+			List<AdviceValueObject> result = new ArrayList<AdviceValueObject>();
+			for (Advice advice : advices) {
+				result.add(new AdviceValueObject(advice, idsToVehicles.get(advice.getIdVechicle())));
+				advice.setIsread(1);
+				DAOManager.getAdviceDAO().updateAdviceByPrimaryKey(advice);
+			}
+			return result;
 		}
 	}
 	
@@ -407,6 +443,18 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<Service>();
+		} 
+	}
+	
+	public static List<AdviceValueObject> getAdvices(int idWebsiteUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetAdvices(idWebsiteUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<AdviceValueObject>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<AdviceValueObject>();
 		} 
 	}
 	

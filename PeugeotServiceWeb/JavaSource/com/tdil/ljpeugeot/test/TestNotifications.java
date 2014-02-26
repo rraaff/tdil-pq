@@ -33,20 +33,20 @@ public class TestNotifications extends TestCase {
 		Model model = getOrCreateModel();
 		rec.setModelo(String.valueOf(model.getId()));
 		new KMImportSpec.ImportKM().completeVehicleData(v, rec);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		// paso de menos de 8k a mas
 		rec.setKm(8000);
-		assertTrue("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertTrue("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		// si ya paso, no deberia necesitar mas el aviso
 		v.setKm(8200);
 		rec.setKm(8500);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		// si no llego, deberia dar false
 		v.setLastservicekm(8000);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		rec.setKm(7900);
 		Calendar cal = Calendar.getInstance();
@@ -54,7 +54,7 @@ public class TestNotifications extends TestCase {
 		cal.add(Calendar.DATE, -1);
 		v.setLastservicedate(cal.getTime());
 		// no tiene el km pero si paso el tiempo
-		assertTrue("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertTrue("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 	}
 	
@@ -73,16 +73,16 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(7900);
 		// no paso de 8k
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		rec.setKm(8000);
 		// paso de menos de 8k a mas
-		assertFalse("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 
 		// si ya paso, no deberia necesitar mas el aviso
 		v.setKm(8200);
 		rec.setKm(8500);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 		v.setKm(7500);
 		rec.setKm(7900);
@@ -91,7 +91,7 @@ public class TestNotifications extends TestCase {
 		cal.add(Calendar.DATE, -1);
 		v.setLastservicedate(cal.getTime());
 		// no tiene el km pero si paso el tiempo
-		assertFalse("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
+		assertFalse("Deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
 		
 	}
 	
@@ -110,8 +110,8 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(10900);
 		// paso a 11, deberia tener aviso
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertTrue("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
 		
 		rec.setKm(8200);
 		Calendar cal = Calendar.getInstance();
@@ -119,8 +119,8 @@ public class TestNotifications extends TestCase {
 		cal.add(Calendar.DATE, -1);
 		v.setLastservicedate(cal.getTime());
 		// no tiene el km pero si paso el tiempo
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertTrue("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
 		
 	}
 	public void testAdvice2Processed() {
@@ -138,8 +138,8 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(10900);
 		// paso a 11, deberia tener aviso
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
 	}
 	
 	
@@ -162,15 +162,15 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		//si me fui
 		rec.setKm(12000);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		rec.setKm(8200);
 		Calendar cal = Calendar.getInstance();
@@ -178,15 +178,15 @@ public class TestNotifications extends TestCase {
 		cal.add(Calendar.DATE, -17);
 		v.setLastservicedate(cal.getTime());
 		// no tiene el km pero si paso el tiempo
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		// si pasaron mas de 24 meses, no hay tercer aviso
 		Calendar oldDate = Calendar.getInstance();
 		oldDate.add(Calendar.MONTH, -25);
 		v.setPurchasedate(oldDate.getTime());
-		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 	}
 
@@ -244,15 +244,15 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		//si me fui
 		rec.setKm(12000);
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		rec.setKm(8200);
 		Calendar cal = Calendar.getInstance();
@@ -260,13 +260,13 @@ public class TestNotifications extends TestCase {
 		cal.add(Calendar.DATE, -17);
 		v.setLastservicedate(cal.getTime());
 		// no tiene el km pero si paso el tiempo
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertTrue("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 		// si pasaron mas de 100000, no hay aviso
 		rec.setKm(100010);
-		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("no Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 		
 	}
 	
@@ -285,8 +285,8 @@ public class TestNotifications extends TestCase {
 		rec.setFechaalta(Calendar.getInstance().getTime());
 		rec.setKm(11500);
 		// paso a 11, deberia tener aviso
-		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec));
-		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec));
-		assertFalse("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec));
+		assertFalse("No deberia necesitar el primer aviso", new KMImportSpec.ImportKM().needsFirstAdvice(v, rec).needsAdvice());
+		assertFalse("no Deberia necesitar el segundo aviso", new KMImportSpec.ImportKM().needsSecondAdvice(v, rec).needsAdvice());
+		assertFalse("Deberia necesitar el tercer aviso", new KMImportSpec.ImportKM().needsThirdAdvice(v, rec).needsAdvice());
 	}
 }

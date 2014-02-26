@@ -67,13 +67,13 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="dbo" tableName="MODEL" domainObjectName="Model" alias="mdl">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<!-- table schema="dbo" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
+<table schema="dbo" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="ADVICE" domainObjectName="Advice" alias="adv">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
-<table schema="dbo" tableName="SERVICE" domainObjectName="Service" alias="serv">
+<!-- table schema="dbo" tableName="SERVICE" domainObjectName="Service" alias="serv">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="CONTACTDATA" domainObjectName="ContactData" alias="cd">
@@ -88,9 +88,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="dbo" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<table schema="dbo" tableName="ALERT" domainObjectName="Alert" alias="al">
+<!-- table schema="dbo" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>

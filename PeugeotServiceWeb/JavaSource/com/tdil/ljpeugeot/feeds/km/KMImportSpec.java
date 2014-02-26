@@ -78,14 +78,17 @@ public class KMImportSpec implements ImportSpec {
 			List<Vehicle> vehicles = DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
 			for (Vehicle vehicle : vehicles) {
 				boolean modified = completeVehicleData(vehicle, importRecord);
-				if (needsFirstAdvice(vehicle, importRecord)) {
-					sendFirstAdvice(vehicle, importRecord);
+				AdviceEvaluationResult first = needsFirstAdvice(vehicle, importRecord);
+				if (first.needsAdvice()) {
+					sendFirstAdvice(vehicle, importRecord, first);
 				} else {
-					if (needsSecondAdvice(vehicle, importRecord)) {
-						sendSecondAdvice(vehicle, importRecord);
+					AdviceEvaluationResult second = needsSecondAdvice(vehicle, importRecord);
+					if (second.needsAdvice()) {
+						sendSecondAdvice(vehicle, importRecord, second);
 					} else {
-						if (needsThirdAdvice(vehicle, importRecord)) {
-							sendThirdAdvice(vehicle, importRecord);
+						AdviceEvaluationResult third = needsThirdAdvice(vehicle, importRecord);
+						if (third.needsAdvice()) {
+							sendThirdAdvice(vehicle, importRecord, third);
 						} else {
 							if (modified) {
 								DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
@@ -120,9 +123,9 @@ public class KMImportSpec implements ImportSpec {
 			return modified;
 		}
 
-		public boolean needsFirstAdvice(Vehicle vehicle, KmData importRecord2) {
+		public AdviceEvaluationResult needsFirstAdvice(Vehicle vehicle, KmData importRecord2) {
 			if(vehicle.getNeedsadvice1() == 1 ) {
-				return false;
+				return new AdviceEvaluationResult(false, null, 0);
 			}
 			
 			// si pasaron 10 meses, aviso
@@ -138,25 +141,27 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.MONTH, 11);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					return true;
+					// dejo la fecha en 12 meses para avisar hasta que dia debe realizar el service
+					limitSecond.add(Calendar.MONTH, 1); 
+					return new AdviceEvaluationResult(true, limitFirst.getTime(), 0);
 				}
 			}
 			
 			int kmFromLastServiceActual = vehicle.getKm() - vehicle.getLastservicekm();
 			int kmFromLastServiceNew = importRecord2.getKm() - vehicle.getLastservicekm();
 			if (kmFromLastServiceActual < 8000) {
-				// Si los km actuales eran menores a 800
+				// Si los km actuales eran menores a 8000
 				if (kmFromLastServiceNew >= 8000 && kmFromLastServiceNew < 10000) {
 					// Y los km nuevos son menores a 10000
-					return true;
+					return new AdviceEvaluationResult(true, null, vehicle.getLastservicekm() + 12000);
 				}
 			}
-			return false;
+			return new AdviceEvaluationResult(false, null, 0);
 		}
 		
-		public boolean needsSecondAdvice(Vehicle vehicle, KmData importRecord2) {
+		public AdviceEvaluationResult needsSecondAdvice(Vehicle vehicle, KmData importRecord2) {
 			if(vehicle.getNeedsadvice2() == 1) {
-				return false;
+				return new AdviceEvaluationResult(false, null, 0);
 			}
 			// si pasaron 11 meses a , aviso
 			Calendar today = Calendar.getInstance();
@@ -172,7 +177,10 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.DATE, 15);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					return true;
+					// dejo la fecha en 12 meses para avisar hasta que dia debe realizar el service
+					limitSecond.add(Calendar.DATE, -15);
+					limitSecond.add(Calendar.MONTH, 1); 
+					return new AdviceEvaluationResult(true, limitSecond.getTime(), 0);
 				}
 			}
 			
@@ -182,15 +190,15 @@ public class KMImportSpec implements ImportSpec {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 10000 && kmFromLastServiceNew < 11500) {
 					// Y los km nuevos son menores a 10000
-					return true;
+					return new AdviceEvaluationResult(true, null, vehicle.getLastservicekm() + 12000);
 				}
 			}
-			return false;
+			return new AdviceEvaluationResult(false, null, 0);
 		}
 
-		public boolean needsThirdAdvice(Vehicle vehicle, KmData importRecord2) throws SQLException {
+		public AdviceEvaluationResult needsThirdAdvice(Vehicle vehicle, KmData importRecord2) throws SQLException {
 			if(vehicle.getNeedsadvice3() == 1) {
-				return false;
+				return new AdviceEvaluationResult(false, null, 0);
 			}
 			// me fijo si la garantia expiro
 			Model model = DAOManager.getModelDAO().selectModelByPrimaryKey(vehicle.getIdModel());
@@ -201,13 +209,13 @@ public class KMImportSpec implements ImportSpec {
 			if (Calendar.getInstance().after(expiration)) {
 				vehicle.setWarrantyexpired(1);
 				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
-				return false;
+				return new AdviceEvaluationResult(false, null, 0);
 			}
 			// si expiro por km
 			if (model.getKmwarranty()!= 0 && importRecord2.getKm() >= model.getKmwarranty()) {
 				vehicle.setWarrantyexpired(1);
 				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
-				return false;
+				return new AdviceEvaluationResult(false, null, 0);
 			}
 			
 			// si pasaron 11 meses, aviso
@@ -224,7 +232,7 @@ public class KMImportSpec implements ImportSpec {
 			limitSecond.add(Calendar.MONTH, 12);
 			if (today.after(limitFirst)) {
 				if (limitSecond.after(today)) {
-					return true;
+					return new AdviceEvaluationResult(true, limitSecond.getTime(), 0);
 				}
 			}
 			
@@ -234,45 +242,49 @@ public class KMImportSpec implements ImportSpec {
 				// Si los km actuales eran menores a 800
 				if (kmFromLastServiceNew >= 11500 && kmFromLastServiceNew < 12000) {
 					// Y los km nuevos son menores a 10000
-					return true;
+					return new AdviceEvaluationResult(true, null, vehicle.getLastservicekm() + 12000);
 				}
 			}
-			return false;
+			return new AdviceEvaluationResult(false, null, 0);
 		}
 		
 	}
 
-	private static void sendFirstAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
+	private static void sendFirstAdvice(Vehicle vehicle, KmData importRecord, AdviceEvaluationResult adviceEvaluationResult) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice1(1);
+		vehicle.setNeedsadvice1date(adviceEvaluationResult.getDate());
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 1;
-		createAdvice(vehicle, importRecord, adviceNumber);
+		createAdvice(vehicle, importRecord, adviceNumber, adviceEvaluationResult);
 	}
 	
-	private static void sendSecondAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
+	private static void sendSecondAdvice(Vehicle vehicle, KmData importRecord, AdviceEvaluationResult adviceEvaluationResult) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice2(1);
+		vehicle.setNeedsadvice2date(adviceEvaluationResult.getDate());
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 2;
-		createAdvice(vehicle, importRecord, adviceNumber);
+		createAdvice(vehicle, importRecord, adviceNumber, adviceEvaluationResult);
 	}
-	private static void sendThirdAdvice(Vehicle vehicle, KmData importRecord) throws SQLException {
+	private static void sendThirdAdvice(Vehicle vehicle, KmData importRecord, AdviceEvaluationResult adviceEvaluationResult) throws SQLException {
 		vehicle.setNeedsadvice(1);
 		vehicle.setNeedsadvice3(1);
+		vehicle.setNeedsadvice3date(adviceEvaluationResult.getDate());
 		DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		int adviceNumber = 3;
-		createAdvice(vehicle, importRecord, adviceNumber);
+		createAdvice(vehicle, importRecord, adviceNumber, adviceEvaluationResult);
 	}
 
-	private static void createAdvice(Vehicle vehicle, KmData importRecord, int adviceNumber) throws SQLException {
+	private static void createAdvice(Vehicle vehicle, KmData importRecord, int adviceNumber, AdviceEvaluationResult adviceEvaluationResult) throws SQLException {
 		Advice advice = new Advice();
 		advice.setAdvisedate(new Date());
 		advice.setAdvisenumber(adviceNumber);
 		advice.setDeleted(0);
 		advice.setIdVechicle(vehicle.getId());
 		advice.setIsread(0);
-		advice.setKm(Integer.valueOf(importRecord.getKm()));
+		advice.setKm(adviceEvaluationResult.getKm());
+		advice.setServicedate(adviceEvaluationResult.getDate());
 		DAOManager.getAdviceDAO().insertAdvice(advice);
 	}
 	

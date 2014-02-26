@@ -71,14 +71,14 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="MODEL" domainObjectName="Model" alias="mdl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<!--  able schema="PEUGEOTSVC" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
+<table schema="PEUGEOTSVC" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
 <table schema="PEUGEOTSVC" tableName="ADVICE" domainObjectName="Advice" alias="adv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="PEUGEOTSVC" tableName="SERVICE" domainObjectName="Service" alias="serv">
+<!-- table schema="PEUGEOTSVC" tableName="SERVICE" domainObjectName="Service" alias="serv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="PEUGEOTSVC" tableName="CONTACTDATA" domainObjectName="ContactData" alias="cd">
@@ -93,9 +93,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
+<!-- table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>

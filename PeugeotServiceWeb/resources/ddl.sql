@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS ALERT;
 DROP TABLE IF EXISTS SYSTEMUSER;
 DROP TABLE IF EXISTS SYSPROPERTIES;
 DROP TABLE IF EXISTS BLOB_DATA;
@@ -16,8 +17,6 @@ DROP TABLE IF EXISTS MODEL;
 DROP TABLE IF EXISTS CONTACTDATA;
 
 DROP TABLE IF EXISTS DATA_IMPORT;
-
-DROP TABLE IF EXISTS ALERT;
 
 DROP TABLE IF EXISTS WEBSITEUSER;
 
@@ -208,10 +207,13 @@ CREATE TABLE VEHICLE (
   `lastServiceDate` DATE NULL ,
   `needsAdvice` INT NOT NULL,
   `needsAdvice1` INT NOT NULL,
+  `needsAdvice1Date` DATE NULL,
   `advice1sent` INT NOT NULL,
   `needsAdvice2` INT NOT NULL,
+  `needsAdvice2Date` DATE NULL,
   `advice2sent` INT NOT NULL,
   `needsAdvice3` INT NOT NULL,
+  `needsAdvice3Date` DATE NULL,
   `advice3sent` INT NOT NULL,
   `warrantyExpired` INT NOT NULL,
   `deleted` INT NOT NULL,
@@ -242,6 +244,7 @@ CREATE TABLE ADVICE (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `id_vechicle` INT NOT NULL,
   `km` INT NULL,
+  `serviceDate` DATE NULL,
   `adviseDate` DATE NULL ,
   `adviseNumber` INT NOT NULL,
   `isread` INT NOT NULL,
