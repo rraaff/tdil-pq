@@ -1,3 +1,8 @@
+<%@page import="com.tdil.utils.DateUtils"%>
+<%@page import="com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject"%>
+<%@page import="com.tdil.ljpeugeot.services.PeugeotService"%>
+<%@page import="com.tdil.ljpeugeot.model.Advice"%>
+<%@page import="java.util.List"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
@@ -25,13 +30,19 @@
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
+<% List<AdviceValueObject> advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());%>
 <script>
 	$(document).ready(
 			function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-				
+				<% if (!advices.isEmpty()) { %>
+				centerLayer($(window), $( "#advicesLayer" ));
+				$( "#closeadvicesLayer" ).click(function() {
+					$( "#advicesLayer" ).fadeOut();
+				});
+				<% } %>
 			}
 	);
 
@@ -82,6 +93,25 @@ Agencias/Service autorizados<br>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
+
+<!-- Layer de muestra de avisos -->
+<% StringBuilder sb = new StringBuilder();
+	if (!advices.isEmpty()) { %>
+<div id="advicesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="advices">
+		Aviso <div id="xContainer"><button id="closeadvicesLayer">X</button></div>
+		<% for (AdviceValueObject adviceValueObject : advices) { %>
+			<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
+				Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km<br>
+			<% } else { %>
+			Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%><br>
+			<% } %>
+		<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
+			} %>
+		<a href="javascript:rememberLater('<%=sb.toString()%>')">Recordar Luego</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
+	</div>
+</div>
+<% } %>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
