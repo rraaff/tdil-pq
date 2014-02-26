@@ -17,6 +17,7 @@
     
     <!-- List Items strings -->
     <string name="lst_title_last_changes">Últimos cambios:</string>
+    <string name="lst_title_last_news">Últimas novedades:</string>
     
     <string name="lst_itm_status">Estado:</string>
     <string name="lst_itm_last_change">Último cambio:</string>
