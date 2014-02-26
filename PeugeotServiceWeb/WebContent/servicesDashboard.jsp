@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.tdil.ljpeugeot.struts.action.RememberAdvicesAjaxAction"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject"%>
 <%@page import="com.tdil.ljpeugeot.services.PeugeotService"%>
@@ -30,7 +32,13 @@
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
-<% List<AdviceValueObject> advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());%>
+<% 
+List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
+Boolean rememberClicked = (Boolean)session.getAttribute(RememberAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
+if (rememberClicked == null) {
+	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
+}
+%>
 <script>
 	$(document).ready(
 			function(){
@@ -45,6 +53,22 @@
 				<% } %>
 			}
 	);
+	function rememberLater(idAdvices) {
+		$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./rememberAdvices.do",
+	          data: {idAdvices: idAdvices},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  $( "#advicesLayer" ).fadeOut();
+	          },
+	          error: function() {
+	        	  $( "#advicesLayer" ).fadeOut();
+	        	  errorAjax();
+	          }
+	      });
+	}
 
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>

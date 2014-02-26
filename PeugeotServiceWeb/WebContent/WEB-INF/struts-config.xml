@@ -270,6 +270,7 @@
   
   <action path="/searchCities" type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
   <action path="/searchDealers" type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
+  <action path="/rememberAdvices" type="com.tdil.ljpeugeot.struts.action.RememberAdvicesAjaxAction"/>
   
   <action name="LoginCCForm"  path="/cc/login" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginCCAction">
   	<forward name="failure" path="/cc/login.jsp"/>

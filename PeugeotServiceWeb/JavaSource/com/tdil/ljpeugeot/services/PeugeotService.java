@@ -3,8 +3,10 @@ package com.tdil.ljpeugeot.services;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -181,6 +183,31 @@ public class PeugeotService {
 				DAOManager.getAdviceDAO().updateAdviceByPrimaryKey(advice);
 			}
 			return result;
+		}
+	}
+	
+	private static final class RememberAdvices implements TransactionalAction {
+		private int idUser;
+		private String idsAdvices;
+		public RememberAdvices(String idsAdvices, int idUser) {
+			super();
+			this.idUser = idUser;
+			this.idsAdvices = idsAdvices;
+		}
+		public void executeInTransaction() throws SQLException {
+			List<Vehicle> vehicles = getVehicles(idUser);
+			Set<Integer> vehiclesIds = new HashSet<Integer>();
+			for (Vehicle v : vehicles) {
+				vehiclesIds.add(v.getId());
+			}
+			String splitted[] = this.idsAdvices.split(",");
+			for (String id : splitted) {
+				Advice advice = DAOManager.getAdviceDAO().selectAdviceByPrimaryKey(Integer.valueOf(id));
+				if (vehiclesIds.contains(advice.getIdVechicle())) {
+					advice.setIsread(0);
+					DAOManager.getAdviceDAO().updateAdviceByPrimaryKey(advice);
+				}
+			}
 		}
 	}
 	
@@ -557,6 +584,10 @@ public class PeugeotService {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<State>();
 		} 
+	}
+
+	public static void rememberAdvices(String idAdvices, Integer id) throws SQLException, ValidationException {
+		GenericTransactionExecutionService.getInstance().execute(new RememberAdvices(idAdvices, id));
 	}
 	
 }
