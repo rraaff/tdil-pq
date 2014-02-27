@@ -14,11 +14,11 @@ import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.actions.AjaxAction;
 
-public class RememberAdvicesAjaxAction extends AjaxAction {
+public class DismissAdvicesAjaxAction extends AjaxAction {
 
 	public static final String ADVICES_ALREADY_SHOWN = "ADVICES_ALREADY_SHOWN";
 	
-	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(RememberAdvicesAjaxAction.class);
+	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(DismissAdvicesAjaxAction.class);
 	
 	@Override
 	protected ActionForward basicExecute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
@@ -27,8 +27,7 @@ public class RememberAdvicesAjaxAction extends AjaxAction {
 		final String idAdvices = request.getParameter("idAdvices");
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		try {
-			request.getSession().setAttribute(ADVICES_ALREADY_SHOWN, Boolean.TRUE);
-			PeugeotService.rememberAdvices(idAdvices, sessionUser.getModelUser().getId());
+			PeugeotService.dismissAdvices(idAdvices, sessionUser.getModelUser().getId());
 			result.put("result", "OK");
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

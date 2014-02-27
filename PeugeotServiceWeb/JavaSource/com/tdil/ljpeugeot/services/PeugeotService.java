@@ -179,17 +179,15 @@ public class PeugeotService {
 			List<AdviceValueObject> result = new ArrayList<AdviceValueObject>();
 			for (Advice advice : advices) {
 				result.add(new AdviceValueObject(advice, idsToVehicles.get(advice.getIdVechicle())));
-				advice.setIsread(1);
-				DAOManager.getAdviceDAO().updateAdviceByPrimaryKey(advice);
 			}
 			return result;
 		}
 	}
 	
-	private static final class RememberAdvices implements TransactionalAction {
+	private static final class DismissAdvices implements TransactionalAction {
 		private int idUser;
 		private String idsAdvices;
-		public RememberAdvices(String idsAdvices, int idUser) {
+		public DismissAdvices(String idsAdvices, int idUser) {
 			super();
 			this.idUser = idUser;
 			this.idsAdvices = idsAdvices;
@@ -204,7 +202,7 @@ public class PeugeotService {
 			for (String id : splitted) {
 				Advice advice = DAOManager.getAdviceDAO().selectAdviceByPrimaryKey(Integer.valueOf(id));
 				if (vehiclesIds.contains(advice.getIdVechicle())) {
-					advice.setIsread(0);
+					advice.setIsread(1);
 					DAOManager.getAdviceDAO().updateAdviceByPrimaryKey(advice);
 				}
 			}
@@ -586,8 +584,8 @@ public class PeugeotService {
 		} 
 	}
 
-	public static void rememberAdvices(String idAdvices, Integer id) throws SQLException, ValidationException {
-		GenericTransactionExecutionService.getInstance().execute(new RememberAdvices(idAdvices, id));
+	public static void dismissAdvices(String idAdvices, Integer id) throws SQLException, ValidationException {
+		GenericTransactionExecutionService.getInstance().execute(new DismissAdvices(idAdvices, id));
 	}
 	
 }

@@ -1,13 +1,9 @@
-recordar luego, se cambia por no recordar
-
-if para los modelos, no lo voy a hacer con ifs...
-
 pantallas:
 
-/home/mgodoy/freelance/lojack/peugeot/web/11-Services-Dashboard.png
-
 /home/mgodoy/freelance/lojack/peugeot/web/12-Alerta-de-service.png
-cambia la pantalla
+hecho
+
+/home/mgodoy/freelance/lojack/peugeot/web/11-Services-Dashboard.png
 
 /home/mgodoy/freelance/lojack/peugeot/web/13-Vehicle-Slection.png
 /home/mgodoy/freelance/lojack/peugeot/web/14-Vehicle-selected.png
@@ -21,9 +17,6 @@ cambia la pantalla
 /home/mgodoy/freelance/lojack/peugeot/web/22-Config-emergencias.png
 
 Definiciones pendientes
-
-Falta definir como va a ser el matcheo de vehiculo que viene de prevent con el modelo del mismo que 
-ya fue importado. 
 
 Falta diseño de las pantallas
 

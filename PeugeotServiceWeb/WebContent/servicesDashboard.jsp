@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.tdil.ljpeugeot.struts.action.RememberAdvicesAjaxAction"%>
+<%@page import="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"%>
 <%@page import="com.tdil.utils.DateUtils"%>
 <%@page import="com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject"%>
 <%@page import="com.tdil.ljpeugeot.services.PeugeotService"%>
@@ -34,9 +34,10 @@
 <%@ include file="includes/headLogged.jsp" %>
 <% 
 List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
-Boolean rememberClicked = (Boolean)session.getAttribute(RememberAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
+Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
 if (rememberClicked == null) {
 	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
+	request.getSession().setAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN, Boolean.TRUE);
 }
 %>
 <script>
@@ -53,11 +54,11 @@ if (rememberClicked == null) {
 				<% } %>
 			}
 	);
-	function rememberLater(idAdvices) {
+	function dismiss(idAdvices) {
 		$.ajax({
 	          type: "GET",
 	          cache: false,
-	          url: "./rememberAdvices.do",
+	          url: "./dismissAdvices.do",
 	          data: {idAdvices: idAdvices},
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
@@ -132,7 +133,7 @@ Agencias/Service autorizados<br>
 			<% } %>
 		<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
 			} %>
-		<a href="javascript:rememberLater('<%=sb.toString()%>')">Recordar Luego</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
+		<a href="javascript:dismiss('<%=sb.toString()%>')">Dismiss</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
 	</div>
 </div>
 <% } %>
