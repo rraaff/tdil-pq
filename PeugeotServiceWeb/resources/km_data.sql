@@ -1,3 +1,4 @@
+DELETE from DATA_IMPORT where type = 'KM';
 INSERT INTO `KM_DATA`
 (`dominio`,
 `km`,
