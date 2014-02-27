@@ -1,3 +1,6 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DecimalFormatSymbols"%>
+<%@page import="com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"%>
 <%@page import="com.tdil.utils.DateUtils"%>
@@ -33,12 +36,7 @@
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
 <% 
-List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
-Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
-if (rememberClicked == null) {
-	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
-	request.getSession().setAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN, Boolean.TRUE);
-}
+
 %>
 <script>
 	$(document).ready(
@@ -46,31 +44,10 @@ if (rememberClicked == null) {
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-				<% if (!advices.isEmpty()) { %>
-				centerLayer($(window), $( "#advicesLayer" ));
-				$( "#closeadvicesLayer" ).click(function() {
-					$( "#advicesLayer" ).fadeOut();
-				});
-				<% } %>
+				
 			}
 	);
-	function dismiss(idAdvices) {
-		$.ajax({
-	          type: "GET",
-	          cache: false,
-	          url: "./dismissAdvices.do",
-	          data: {idAdvices: idAdvices},
-	          contentType: "application/json; charset=utf-8",
-	          success: function(data) {
-	        	  $( "#advicesLayer" ).fadeOut();
-	          },
-	          error: function() {
-	        	  $( "#advicesLayer" ).fadeOut();
-	        	  errorAjax();
-	          }
-	      });
-	}
-
+	
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
@@ -111,31 +88,49 @@ if (rememberClicked == null) {
 	</div>
 </header>
 
-Mis Services<br>
-<a href="misVehiculos.jsp">Mis Vehiculos</a><br>
-<a href="servicesYGarantia.jsp">Ver services oficiales</a><br>
-Agencias/Service autorizados<br>
 
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
 
-<!-- Layer de muestra de avisos -->
-<% StringBuilder sb = new StringBuilder();
-	if (!advices.isEmpty()) { %>
-<div id="advicesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="advices">
-		Aviso <div id="xContainer"><button id="closeadvicesLayer">X</button></div>
-		<% for (AdviceValueObject adviceValueObject : advices) { %>
-			<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
-				Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km<br>
-			<% } else { %>
-			Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%><br>
-			<% } %>
-		<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
-			} %>
-		<a href="javascript:dismiss('<%=sb.toString()%>')">Dismiss</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
-	</div>
-</div>
+<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
+DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+simbolos.setPerMill('.');
+DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
+%>
+<% if (myVehicles.isEmpty()) { %>
+	Usted no tiene ningun vehiculo asociado
+<% } else { %>
+	Vehiculo (Dominio) | KMs | Requiere Service | Ultimo Service KM | Fecha de ultimo service | En garantia | Garantia <br>
+	<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+		<%if (vehicleValueObject.getModel() !=  null) { %>
+			<%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)
+		<% } else { %>
+			<%=vehicleValueObject.getVehicle().getDomain() %>
+		<% } %> |
+		<%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%> |
+		<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
+			Si
+		<% } else { %>
+			No
+		<% } %> |
+		<%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%> |
+		<%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%> |
+		<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 1) { %>
+			No
+		<% } else { %>
+			Si
+		<% } %> | 
+		<%if (vehicleValueObject.getModel() != null) { 
+			int years = vehicleValueObject.getModel().getMonthwarranty() / 12;%>
+			<%=years %> <%=years == 1 ? "año" : "años" %>
+			<%if (vehicleValueObject.getModel().getKmwarranty() != 0) { %>
+				o <%=formateador.format(vehicleValueObject.getModel().getKmwarranty())%>  km
+			<% }  %>
+		<% } else { %>
+			-
+		<% } %>
+		<br>
+	<% } %>
 <% } %>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>

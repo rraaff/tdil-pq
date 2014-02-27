@@ -139,7 +139,43 @@ public class KMImportSpec implements ImportSpec {
 				vehicle.setLastservicekm(0);
 				modified = true;
 			}
+			// si tiene modelo
+			if (vehicle.getIdModel() != 0) {
+				// Si aun o expiro
+				if (vehicle.getWarrantyexpired() == 0) {
+					String lookup = importRecord2.getModelo().toLowerCase().trim();
+					calculateWarrantyExpired(vehicle, importSpec.getModelsTable().get(lookup));
+					if (vehicle.getWarrantyexpired() == 1) {
+						modified = true;
+					}
+				}
+			}
 			return modified;
+		}
+
+		private void calculateWarrantyExpired(Vehicle vehicle, Model model) {
+			if (model.getKmwarranty() != null && model.getKmwarranty() != 0) {
+				if (vehicle.getKm() > model.getKmwarranty()) {
+					vehicle.setWarrantyexpired(1);
+					return;
+				}
+			}
+			if (model.getMonthwarranty() != null && model.getMonthwarranty() != 0) {
+				if (vehicle.getPurchasedate() != null) { 
+					Calendar dateLimitWarranty = Calendar.getInstance();
+					dateLimitWarranty.setTime(vehicle.getPurchasedate());
+					dateLimitWarranty.add(Calendar.MONTH, model.getMonthwarranty());
+					Calendar today = Calendar.getInstance();
+					today.set(Calendar.HOUR_OF_DAY, 0);
+					today.set(Calendar.MINUTE, 0);
+					today.set(Calendar.SECOND, 0);
+					today.set(Calendar.MILLISECOND, 0);
+					if (dateLimitWarranty.before(today)) {
+						vehicle.setWarrantyexpired(1);
+						return;
+					}
+				}
+			}
 		}
 
 		public AdviceEvaluationResult needsFirstAdvice(Vehicle vehicle, KmData importRecord2) {
