@@ -45,26 +45,20 @@ response.addCookie(ecookie1);
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>Peugeot AXS :: </title>
+<title>Peugeot AXS :: Ingrese al sitio</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
-
-<link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
-
+<link type="text/css" rel="stylesheet" media="screen" href="fonts/peugeot/fonts.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
 
 <%@ include file="includes/headNotLogged.jsp" %>
-
-<script type="text/javascript" src="js/jstz.js"></script>
-
 <script>
-
 var lastCenter = null;
-
 $(document).ready(
 	function(){
 		<%@ include file="includes/datePickerES.jspf" %>
@@ -390,7 +384,6 @@ function parkingsNotLogged() {
 	return false;
 }
 
-	<%@ include file="includes/nuevaRuedita.jspf" %>
 </script>
 
 </head>
