@@ -26,3 +26,4 @@ CURDATE(),
 '1',
 0
 );
+commit;
