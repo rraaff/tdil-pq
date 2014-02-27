@@ -59,11 +59,6 @@ public class KMImportThread extends Thread {
 	public void run() {
 		boolean stopped = false;
 		while (true) {
-			try {
-				Thread.sleep(1000 * 60); // sleep de un minuto
-			} catch (InterruptedException e1) {
-				stopped = true;
-			}
 			if (inInHourRange()) {
 				if (!thereAreImportsToday()) {
 					DataImport todayImport = generateDataImport();
@@ -71,6 +66,12 @@ public class KMImportThread extends Thread {
 						new Thread(new KmImportRunnable(todayImport, new KMImportSpec())).start();
 					}
 				}
+			}
+			try {
+//				Thread.sleep(1000 * 60); // sleep de un minuto
+				Thread.sleep(5000);
+			} catch (InterruptedException e1) {
+				stopped = true;
 			}
 		}
 	}
