@@ -1,3 +1,0 @@
-$("#iconoLogin").mouseover(function() {
-	
-}
