@@ -131,6 +131,10 @@ public class KMImportSpec implements ImportSpec {
 				vehicle.setKm(0);
 				modified = true;
 			}
+			if (importRecord2.getKm() != null) {
+				vehicle.setKm(importRecord2.getKm());
+				modified = true;
+			}
 			if (vehicle.getLastservicekm() == null) {
 				vehicle.setLastservicekm(0);
 				modified = true;

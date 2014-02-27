@@ -17,15 +17,8 @@ public class AdviceValueObject {
 	public Advice getAdvice() {
 		return advice;
 	}
-	public void setAdvice(Advice advice) {
-		this.advice = advice;
-	}
 	public Vehicle getVehicle() {
 		return vehicle;
 	}
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
-	
 	
 }

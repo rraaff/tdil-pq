@@ -465,4 +465,17 @@ public class Vehicle extends PersistentObject {
 	public void setWarrantyexpired(Integer warrantyexpired) {
 		this.warrantyexpired = warrantyexpired;
 	}
+	
+	public boolean getNeedsService() {
+		if (getAdvice1sent() != null && getAdvice1sent() != 0) {
+			return true;
+		}
+		if (getAdvice2sent() != null && getAdvice2sent() != 0) {
+			return true;
+		}
+		if (getAdvice3sent() != null && getAdvice3sent() != 0) {
+			return true;
+		}
+		return false;
+	}
 }

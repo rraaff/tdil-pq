@@ -29,6 +29,7 @@ import com.tdil.ljpeugeot.model.StateExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
 import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
+import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
@@ -152,6 +153,24 @@ public class PeugeotService {
 			VehicleExample vehicleExample = new VehicleExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
 			return DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetMyVehicles implements TransactionalActionWithResult<List<VehicleValueObject>> {
+		private int idUser;
+		public GetMyVehicles(int idUser) {
+			super();
+			this.idUser = idUser;
+		}
+		public List<VehicleValueObject> executeInTransaction() throws SQLException {
+			VehicleExample vehicleExample = new VehicleExample();
+			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
+			List<Vehicle> vehicles = DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+			List<VehicleValueObject> result = new ArrayList<VehicleValueObject>();
+			for (Vehicle vehicle : vehicles) {
+				result.add(new VehicleValueObject(vehicle, getModel(vehicle.getIdModel())));
+			}
+			return result;
 		}
 	}
 	
@@ -483,6 +502,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static List<VehicleValueObject> getMyVehicles(int idWebsiteUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetMyVehicles(idWebsiteUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<VehicleValueObject>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<VehicleValueObject>();
+		} 
+	}
+	
 	public static List<City> getCities(int idState) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetCities(idState));
@@ -556,12 +587,12 @@ public class PeugeotService {
 		} 
 	}
 	
-	public static Model getModel(Integer idDealer) {
+	public static Model getModel(Integer idModel) {
 		try {
-			if (idDealer == null) {
+			if (idModel == null) {
 				return null;
 			}
-			return GenericTransactionExecutionService.getInstance().execute(new GetModel(idDealer));
+			return GenericTransactionExecutionService.getInstance().execute(new GetModel(idModel));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
