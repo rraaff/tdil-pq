@@ -18,7 +18,7 @@ VALUES
 8100,
 CURDATE(),
 'Peugeot',
-'1',
+'208 GTI',
 CURDATE(),
 '1',
 '1',

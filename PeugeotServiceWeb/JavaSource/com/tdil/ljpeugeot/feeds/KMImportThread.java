@@ -3,6 +3,7 @@ package com.tdil.ljpeugeot.feeds;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -11,6 +12,8 @@ import com.tdil.ljpeugeot.feeds.km.KMImportSpec;
 import com.tdil.ljpeugeot.feeds.km.KmImportRunnable;
 import com.tdil.ljpeugeot.model.DataImport;
 import com.tdil.ljpeugeot.model.DataImportExample;
+import com.tdil.ljpeugeot.model.Model;
+import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
@@ -62,8 +65,10 @@ public class KMImportThread extends Thread {
 			if (inInHourRange()) {
 				if (!thereAreImportsToday()) {
 					DataImport todayImport = generateDataImport();
+					KMImportSpec importSpec = new KMImportSpec();
+					fillModelLookup(importSpec);
 					if (todayImport != null) {
-						new Thread(new KmImportRunnable(todayImport, new KMImportSpec())).start();
+						new Thread(new KmImportRunnable(todayImport, importSpec)).start();
 					}
 				}
 			}
@@ -76,6 +81,13 @@ public class KMImportThread extends Thread {
 		}
 	}
 	
+	private void fillModelLookup(KMImportSpec importSpec) {
+		List<Model> models = PeugeotService.getModels();
+		for (Model model : models) {
+			importSpec.getModelsTable().put(model.getName().toLowerCase().trim(), model);
+		}
+	}
+
 	private boolean thereAreImportsToday() {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new AreKMImportFinishedToday());

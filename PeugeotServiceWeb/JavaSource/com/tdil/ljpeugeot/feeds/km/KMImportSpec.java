@@ -3,18 +3,24 @@ package com.tdil.ljpeugeot.feeds.km;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.feeds.ImportSpec;
+import com.tdil.ljpeugeot.feeds.KMImportThread;
 import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.DataImport;
 import com.tdil.ljpeugeot.model.KmData;
 import com.tdil.ljpeugeot.model.Model;
+import com.tdil.ljpeugeot.model.ModelExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
+import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
@@ -23,6 +29,8 @@ public class KMImportSpec implements ImportSpec {
 	public static final String TYPE = "KM";
 	
 	private CellProcessor[] processors;
+	
+	private Map<String, Model> modelsTable = new HashMap<String, Model>();
 	
 	public KMImportSpec(CellProcessor[] processors) {
 		super();
@@ -52,7 +60,7 @@ public class KMImportSpec implements ImportSpec {
 
 	@Override
 	public void processRow(Object importRecord, DataImport dataImport) throws Exception {
-		GenericTransactionExecutionService.getInstance().execute(new ImportKM((KmData)importRecord, dataImport));
+		GenericTransactionExecutionService.getInstance().execute(new ImportKM((KmData)importRecord, dataImport, this));
 	}
 	
     @Override
@@ -63,14 +71,16 @@ public class KMImportSpec implements ImportSpec {
 	public static final class ImportKM implements TransactionalAction {
 		private DataImport dataImport;
 		private KmData importRecord;
+		private KMImportSpec importSpec;
 		
 		public ImportKM() {
 		}
 		
-		public ImportKM(KmData importRecord, DataImport dataImport) {
+		public ImportKM(KmData importRecord, DataImport dataImport, KMImportSpec importSpec) {
 			super();
 			this.importRecord = importRecord;
 			this.dataImport = dataImport;
+			this.importSpec = importSpec;
 		}
 		public void executeInTransaction() throws SQLException {
 			VehicleExample vehicleExample = new VehicleExample();
@@ -101,8 +111,13 @@ public class KMImportSpec implements ImportSpec {
 		public boolean completeVehicleData(Vehicle vehicle, KmData importRecord2) {
 			boolean modified = false;
 			if (vehicle.getIdModel() == null || vehicle.getIdModel() == 0) {
-				vehicle.setIdModel(Integer.parseInt(importRecord2.getModelo()));
-				modified = true;
+				String lookup = importRecord2.getModelo().toLowerCase().trim();
+				if (importSpec.getModelsTable().containsKey(lookup)) {
+					vehicle.setIdModel(importSpec.getModelsTable().get(lookup).getId());
+					modified = true;
+				} else {
+					getLog().error("KMImport no se pudo encontrar el model para " + importRecord2.getModelo());
+				}
 			}
 			if (vehicle.getPurchasedate() == null) {
 				vehicle.setPurchasedate(importRecord2.getFechaalta());
@@ -200,22 +215,24 @@ public class KMImportSpec implements ImportSpec {
 			if(vehicle.getNeedsadvice3() == 1) {
 				return new AdviceEvaluationResult(false, null, 0);
 			}
-			// me fijo si la garantia expiro
-			Model model = DAOManager.getModelDAO().selectModelByPrimaryKey(vehicle.getIdModel());
-			Calendar expiration = Calendar.getInstance();
-			expiration.setTime(vehicle.getPurchasedate());
-			
-			expiration.add(Calendar.MONTH, model.getMonthwarranty());
-			if (Calendar.getInstance().after(expiration)) {
-				vehicle.setWarrantyexpired(1);
-				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
-				return new AdviceEvaluationResult(false, null, 0);
-			}
-			// si expiro por km
-			if (model.getKmwarranty()!= 0 && importRecord2.getKm() >= model.getKmwarranty()) {
-				vehicle.setWarrantyexpired(1);
-				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
-				return new AdviceEvaluationResult(false, null, 0);
+			if (vehicle.getIdModel() != null) {
+				// me fijo si la garantia expiro
+				Model model = DAOManager.getModelDAO().selectModelByPrimaryKey(vehicle.getIdModel());
+				Calendar expiration = Calendar.getInstance();
+				expiration.setTime(vehicle.getPurchasedate());
+				
+				expiration.add(Calendar.MONTH, model.getMonthwarranty());
+				if (Calendar.getInstance().after(expiration)) {
+					vehicle.setWarrantyexpired(1);
+					DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+					return new AdviceEvaluationResult(false, null, 0);
+				}
+				// si expiro por km
+				if (model.getKmwarranty()!= 0 && importRecord2.getKm() >= model.getKmwarranty()) {
+					vehicle.setWarrantyexpired(1);
+					DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+					return new AdviceEvaluationResult(false, null, 0);
+				}
 			}
 			
 			// si pasaron 11 meses, aviso
@@ -287,6 +304,17 @@ public class KMImportSpec implements ImportSpec {
 		advice.setServicedate(adviceEvaluationResult.getDate());
 		DAOManager.getAdviceDAO().insertAdvice(advice);
 	}
+
+	public Map<String, Model> getModelsTable() {
+		return modelsTable;
+	}
+
+	public void setModelsTable(Map<String, Model> modelsTable) {
+		this.modelsTable = modelsTable;
+	}
 	
 
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(KMImportSpec.class);
+	}
 }
