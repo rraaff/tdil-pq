@@ -5,7 +5,6 @@
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="js/jquery.tooltip.js"></script>
 <script type="text/javascript" src="js/jquery.jstepper.js"></script>
-<script type="text/javascript" src="js/jquery.jeditable.js"></script>
 <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 

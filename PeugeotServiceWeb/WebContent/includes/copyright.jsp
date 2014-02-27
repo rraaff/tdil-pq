@@ -1,3 +1,4 @@
+BORRAR
 <section id="copyright">
 <!-- IOS store -->
 <!-- Android store -->

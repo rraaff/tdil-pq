@@ -1,3 +1,4 @@
+BORRAR
 <% if (usingMobile || isAndroid) { %>
 	
 <% } else { %>
