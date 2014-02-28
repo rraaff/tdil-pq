@@ -42,7 +42,6 @@
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
 	
-	<%@ include file="includes/nuevaRuedita.jspf" %>
 
 	function showVluMessages(dni) {
 		<%@ include file="includes/blockUI.jspf" %>
@@ -90,7 +89,6 @@
 <a href="./servicesDashboard.jsp">servicesDashboard</a>
 
 <%@ include file="includes/contactLayers.jspf" %>
-<%@ include file="includes/copyright.jsp" %>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->

@@ -55,7 +55,6 @@
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
 	
-	<%@ include file="includes/nuevaRuedita.jspf" %>
 
 </script>
 </head>
@@ -90,7 +89,6 @@
 
 
 <%@ include file="includes/contactLayers.jspf" %>
-<%@ include file="includes/copyright.jsp" %>
 
 <% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
 DecimalFormatSymbols simbolos = new DecimalFormatSymbols();

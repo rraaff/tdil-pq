@@ -285,7 +285,7 @@ public class PreventConnector {
 	}
 
 	public static String getPreventLoginUrl(WebsiteUser user) {
-		ThalamusLoginCache.updateCache(user);
+//		ThalamusLoginCache.updateCache(user);
 		return preventLoginUrl;
 	}
 

@@ -78,7 +78,6 @@ if (rememberClicked == null) {
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
 	
-	<%@ include file="includes/nuevaRuedita.jspf" %>
 
 </script>
 </head>
@@ -117,7 +116,6 @@ Mis Services<br>
 Agencias/Service autorizados<br>
 
 <%@ include file="includes/contactLayers.jspf" %>
-<%@ include file="includes/copyright.jsp" %>
 
 <!-- Layer de muestra de avisos -->
 <% StringBuilder sb = new StringBuilder();
