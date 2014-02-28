@@ -1,0 +1,35 @@
+<!-- layer_parking_not_logged -->
+<div id="parkingsNotLoggedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesParkingNo" class="layerModal">
+		<section class="modal_header">
+			<h2>Información importante</h2>
+			<h3>Para acceder a las funcionalidades de la aplicación deberás ingresar usando tu dni y clave.</h3>
+			<h4>Tu clave deberían habertela proporcionado al instalarte el equipo. si no la recuerda, haga clic en "recuperar clave"</h4>
+			<button class="close">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span>
+			<form class="modal_wrapper">
+				<fieldset>
+					<label>Documento</label>
+					<input type="text" placeholder="Ej.: 11223344" />
+				</fieldset>
+				<fieldset>
+					<label>Clave</label>
+					<input type="password" placeholder="ingrese su clave" />
+				</fieldset>
+				<fieldset>
+					<input type="checkbox" checked="checked" />
+					<label>Recordar mis datos</label>
+				</fieldset>
+				<fieldset>
+					<label><a href="">¿Olvidó su clave?</a></label>
+				</fieldset>
+				<fieldset class="button_bar">
+					<button class="link_back" id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer"><span></span>Cerrar</button>
+					<button class="botton_ahead">Iniciar sesión<span></span></button>
+				</fieldset>
+			</form>
+		</section>
+	</div>
+</div>

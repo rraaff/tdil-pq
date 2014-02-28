@@ -1,0 +1,57 @@
+<div id="loginLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesLogin" class="loginLayerStyles">
+		<div class="loginLayerContent">
+			<html:form method="POST" action="/login">
+				<div id="xContainer"><button id="closeloginLayer">X</button></div>
+				<h3>Ingresar</h3>
+				<html:hidden name="LoginForm" property="timezoneOffset"/>
+				<html:hidden name="LoginForm" property="timezoneName"/>
+				<div class="alert alert-error" id="loginerr" style="display: none;"></div>
+					<fieldset>
+						<label>Tipo doc</label>
+						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginForm"); %>
+						<html:select name="LoginForm" property="documentType" >
+								<option value="">Seleccione...</option>
+								<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
+									<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
+										<%=codBean.getName()%></option>
+								<% } %>
+							</html:select>
+					</fieldset>
+					<div class="errorInForm"></div>
+					<fieldset>
+						<label>Número</label>
+						<html:text name="LoginForm" property="username"/>
+					</fieldset>
+					<div class="errorInForm"></div>
+					<fieldset>
+						<label>Clave</label>
+						<html:password name="LoginForm" property="password"/>
+					</fieldset>
+					<div class="errorInForm"></div>
+					<fieldset>
+						<!-- input type="Checkbox" style="float:left; margin: 15px 5px 0 0;" />
+						<span>Recordarme</span -->
+						<span style="float: right;"><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">(olvidé mi clave)</a></span>
+					</fieldset>
+					<fieldset>
+						<div style="float:left;"><input type="submit" id="submitlogin" value=" " class="indexLogin"></div>
+						<div style="padding-top:15px; float:right;"><a href="javascript:switchToRegisterLayer();" id="closeloginLayerAndOpenRegistration" title="Registrate">¿No estás registrado?</a></div>
+					</fieldset>
+			</html:form>
+		</div>
+	</div>
+</div>
+
+<!-- login error -->
+<div id="loginInvalidLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesLoginInvalid" class="defaultLayerStyles">
+		<div class="defaultLayerContent">
+			<h3>Atención</h3>
+			<p>El usuario y/o la clave no coinciden.</p>
+			<fieldset>
+				<button id="closeloginInvalidLayer" cl="loginInvalidLayer" class="indexButtonBase">Cerrar</button>
+			</fieldset>
+		</div>
+	</div>
+</div>

@@ -122,7 +122,7 @@ DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/legalesLayer.jsp" %>
+<%@ include file="includes/layer_legales.jspf" %>
 
 <%@ include file="includes/version.jspf" %>
 </body>

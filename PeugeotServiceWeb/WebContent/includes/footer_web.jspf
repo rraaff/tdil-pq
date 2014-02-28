@@ -1,0 +1,151 @@
+<footer>
+	<div class="pgt_wrapper main_site" id="pgt_wrapper_footer">
+		<div>
+			<div id="footer_main_row">
+				<div class="pgt_inwrapper">
+					<div class="footer_top">
+						<div id="pgt_footer_top_left">
+							<ul>
+								<li><a class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Configurateur', 'main');" href="/configurer/"><span class="button_light_left"></span><span class="button_light_middle">Configurateur</span><span class="button_light_right"></span></a></li>
+								<li><a target="_blank" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Les Occasions du Lion', 'main');" href="http://www.occasionsdulion.com/"><span class="button_light_left"></span><span class="button_light_middle">Les Occasions du Lion</span><span class="button_light_right"></span></a></li>
+								<li><a target="_blank" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Peugeot webStore', 'main');" href="http://www.peugeotwebstore.com/?s3path=footerauto"><span class="button_light_left"></span><span class="button_light_middle">Peugeot webStore</span><span class="button_light_right"></span></a></li>
+								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'HUB Social', 'main');" href="/hub-social/"><span class="button_light_left"></span><span class="button_light_middle">HUB Social</span><span class="button_light_right"></span></a></li>
+								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Contact', 'main');" href="/contactez-nous/"><span class="button_light_left"></span><span class="button_light_middle">Contact</span><span class="button_light_right"></span></a></li>
+								<li><a class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Devenir agent', 'main');" href="/devenir-agent-peugeot/"><span class="button_light_left"></span><span class="button_light_middle">Devenir agent</span><span class="button_light_right"></span></a></li>
+								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Actualités', 'main');" href="/actualites/"><span class="button_light_left"></span><span class="button_light_middle">Actualités</span><span class="button_light_right"></span></a></li>
+							</ul>
+						</div>
+						<div id="pgt_footer_top_right">
+							<!--  div class="social"><a target="_blank" onclick="kpp_tracking_event('footer/social_top_right_links', 'Facebook', 'main');" href="https://www.facebook.com/PeugeotFrance"><span class="external_btn" style="background-image: url('/media/deliacms/media/40/4029-dbc81f.png'); no-repeat;"></span></a></div>
+							<div class="social"><a target="_blank" onclick="kpp_tracking_event('footer/social_top_right_links', 'Twitter', 'main');" href="https://twitter.com/Peugeot"><span class="external_btn" style="background-image: url('/media/deliacms/media/40/4030-69bb8e.png'); no-repeat;"></span></a></div>
+							<div class="social"><a target="_blank" onclick="kpp_tracking_event('footer/social_top_right_links', 'Youtube', 'main');" href="http://www.youtube.com/PeugeotFrance"><span class="external_btn" style="background-image: url('/media/deliacms/media/40/4031-beae0a.png'); no-repeat;"></span></a></div>
+							<div class="social"><a target="_blank" onclick="kpp_tracking_event('footer/social_top_right_links', 'Google+', 'main');" href="https://plus.google.com/u/0/109166981615944968590"><span class="external_btn" style="background-image: url('/media/deliacms/media/41/4120-a76201.png'); no-repeat;"></span></a></div>
+							<!-- AddThis Button BEGIN -
+							<div id="share" class="addthis_toolbox addthis_default_style "><a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4e70cf90786ea27f" class="addthis_button_compact at300m"><span class="at16nc at300bs at15nc at15t_compact at16t_compact"><span class="at_a11y">More Sharing Services</span></span></a><div class="atclear"></div></div>
+							<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e70cf90786ea27f">
+							</script>
+							<div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;">
+								<iframe id="_atssh313" title="AddThis utility frame" src="//ct1.addthis.com/static/r07/sh150.html#iit=1393611599711&amp;tmr=load%3D1393611593759%26core%3D1393611595797%26main%3D1393611599705%26ifr%3D1393611599715&amp;cb=0&amp;cdn=1&amp;chr=UTF-8&amp;kw=&amp;ab=-&amp;dh=www.peugeot.fr&amp;dr=&amp;du=http%3A%2F%2Fwww.peugeot.fr%2Fplan-du-site%2F&amp;dt=Plan%20du%20site&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D0&amp;inst=1&amp;vcl=1&amp;jsl=32&amp;prod=undefined&amp;lng=en-US&amp;ogt=image%2Ctitle&amp;pc=men&amp;pub=xa-4e70cf90786ea27f&amp;ssl=0&amp;sid=5310d34b610ee5df&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=0&amp;xtr=0&amp;og=title%3DPlan%2520du%2520site%26image%3Dhttp%253A%252F%252Fwww.peugeot.fr%252FdefaultSites%252Fpeugeot_main%252Fimages%252Fmain%252Ffb-logo.png&amp;aa=0&amp;rev=126722&amp;ct=1&amp;xld=1&amp;xd=1" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;"></iframe>
+							</div>
+							<script type="text/javascript" src="http://ct1.addthis.com/static/r07/core124.js">
+							</script>
+							<!-- AddThis Button END -->
+						</div>
+					</div>
+					<div class="footer_bottom">
+						<div id="pgt_footer_bottom_left">
+							<ul>
+								<li>
+									<div class="liste_footer">
+										<div class="liste_footer_liste " style="display: none;">
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Histoire', 'main');" href="/histoire/">Histoire</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Web TV', 'main');" href="/webtv/">Web TV</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Sport', 'main');" href="http://www.peugeot-sport.com/fr/accueil.html">Sport</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Rejoindre le groupe PSA Peugeot Citroën', 'main');" href="http://www.psa-peugeot-citroen.com/candidat/index.php?page=home&amp;rub=1&amp;lang=fr">Rejoindre le groupe PSA Peugeot Citroën</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Presse', 'main');" href="http://www.peugeot-pressepro.com/login.php">Presse</a></li>
+											</ul>
+											<ul>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Investisseurs', 'main');" href="http://www.psa-peugeot-citroen.com/fr/psa_espace/actionnaire_f.php">Investisseurs</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Design', 'main');" href="/design-driving-campagne/">Design</a></li>
+											</ul>
+										</div>
+										<div class="liste_footer_button"><span>La marque<span class="arrow down"></span></span></div>
+									</div>
+								</li>
+								<li>
+									<div class="liste_footer">
+										<div class="liste_footer_liste " style="display: none;">
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Nouvelle 308', 'main');" href="/decouvrir/nouvelle-308/5-portes/">Nouvelle 308</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'iOn', 'main');" href="/modeles/ion/">iOn</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '107', 'main');" href="/modeles/107/">107</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '207', 'main');" href="/modeles/207/">207</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '208', 'main');" href="/modeles/208/">208</a></li>
+											</ul>
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'RCZ', 'main');" href="/modeles/rcz/">RCZ</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '508', 'main');" href="/modeles/508/">508</a></li>
+												<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', '508 RXH', 'main');" href="/decouvrir/508/rxh/">508 RXH</a></li>
+												<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', '508 HYbrid4', 'main');" href="/decouvrir/508/hybrid/">508 HYbrid4</a></li>
+												<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', '2008', 'main');" href="/decouvrir/2008/crossover/">2008</a></li>
+											</ul>
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '3008', 'main');" href="/modeles/3008/">3008</a></li>
+												<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', '3008 HYbrid4', 'main');" href="/decouvrir/3008/hybrid/">3008 HYbrid4</a></li>
+												<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', '4008', 'main');" href="/decouvrir/4008/suv/">4008</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '5008', 'main');" href="/modeles/5008/">5008</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', '807', 'main');" href="/modeles/807/">807</a></li>
+											</ul>
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Partner Tepee', 'main');" href="/modeles/partner-tepee/">Partner Tepee</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Bipper Tepee', 'main');" href="/modeles/bipper-tepee/">Bipper Tepee</a></li>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Expert Tepee', 'main');" href="/modeles/expert-tepee/">Expert Tepee</a></li>
+											</ul>
+										</div>
+										<div class="liste_footer_button"><span>Modèles Peugeot<span class="arrow down"></span></span></div>
+									</div>
+								</li>
+								<li>
+									<div class="liste_footer">
+										<div class="liste_footer_liste " style="display: none;">
+											<ul>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Voitures de collaborateurs', 'main');" href="http://www.clicpeugeot.com/">Voitures de collaborateurs</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Vente aux diplomates', 'main');" href="http://www.peugeot-diplomates.com/diplomate-69/">Vente aux diplomates</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Vente aux ressortissants non européens', 'main');" href="http://www.peugeot-diplomates.com/expatries-128/">Vente aux ressortissants non européens</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Groupe PSA', 'main');" href="http://www.psa-peugeot-citroen.com/fr/hp1.php">Groupe PSA</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Peugeot.com', 'main');" href="http://www.peugeot.com/">Peugeot.com</a></li>
+											</ul>
+											<ul>
+												<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Musée Peugeot', 'main');" href="http://www.musee-peugeot.fr/">Musée Peugeot</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Peugeot Open Europe', 'main');" href="http://www.peugeot-openeurope.fr">Peugeot Open Europe</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Peugeot webStore', 'main');" href="http://www.peugeotwebstore.com/Accueil?s3path=hub">Peugeot webStore</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Peugeot webStore pro', 'main');" href="http://www.peugeotwebstore.com/pro/Accueil?s3path=hub">Peugeot webStore pro</a></li>
+												<li><a target="_blank" onclick="kpp_tracking_event('footer/bottom_left_links', 'Ma future Peugeot', 'main');" href="http://www.mafuturepeugeot.fr/?s3path=hub">Ma future Peugeot</a></li>
+											</ul>
+											<ul>
+											</ul>
+										</div>
+										<div class="liste_footer_button"><span>Nos Autres sites<span class="arrow down"></span></span></div>
+									</div>
+								</li>
+								<li><span class="separator"></span></li>
+								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'FAQ', 'main');" href="/faq/">FAQ</a></li>
+								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Crédits', 'main');" href="/credits/">Crédits</a></li>
+								<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', 'Vie Privée', 'main');" href="/vie-privee/">Vie privée</a></li>
+								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Plan du site', 'main');" href="/plan-du-site/">Plan du site</a></li>
+								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Infos légales', 'main');" href="/infos-legales/">Légal</a></li>
+								<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', 'Contact', 'main');" href="http://www.peugeot.fr/contactez-nous/">Contact</a></li>
+								<li><span class="separator"></span></li>
+							</ul>
+						</div>
+						<div id="pgt_footer_bottom_right">
+							<div id="find_dealer">
+								<form id="find_dealer_form" name="find_dealer_form" method="get" action="/trouver-un-concessionnaire/" target="">
+									<input type="hidden" name="pdvmode" value="no">
+									<input type="hidden" name="new_window" value="no">
+									<input type="hidden" name="url" value="">
+									<label for="find_dealer">Trouver un point de vente</label>
+									<input id="find_dealer" type="text" name="address" value="Code postal ou ville" onfocus="if(this.value=='Code postal ou ville'){this.value='';}" onblur="if(this.value==''){this.value='Code postal ou ville';}">
+									<input id="find_dealer" type="hidden" name="range" value="30">
+									<input type="submit" value="">
+								</form>
+								<script type="text/javascript">
+									window.addEvent('domready', function() {
+										$('find_dealer_form').getElement('input[type=submit]').addEvent('mousedown', function() {
+											var textField = this.getParent().getElement('input[name=address]').get('value');
+											
+											if(textField == 'Code postal ou ville' || !textField) {
+												this.getParent().set('action', '/trouver-un-concessionnaire/');
+											}
+										});
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

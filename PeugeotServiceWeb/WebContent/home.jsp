@@ -95,7 +95,7 @@
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/legalesLayer.jsp" %>
+<%@ include file="includes/layer_legales.jspf" %>
 
 <!-- Update person -->
 <div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
