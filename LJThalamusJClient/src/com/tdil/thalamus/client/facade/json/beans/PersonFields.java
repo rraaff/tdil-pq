@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
-
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+
+import org.apache.log4j.Logger;
+
+import com.tdil.log4j.LoggerProvider;
+import com.tdil.thalamus.client.facade.json.fields.PersonFieldNames;
 
 public class PersonFields implements Serializable {
 
@@ -21,6 +24,8 @@ public class PersonFields implements Serializable {
 	private List<FieldDescription> credentialFields = new ArrayList<FieldDescription>();
 	
 	private List<FieldDescription> dynamicFields = new ArrayList<FieldDescription>();
+	
+	private static final Logger LOG = LoggerProvider.getLogger(PersonFields.class);
 
 	public PersonFields(JSON json) {
 		JSONObject jsonObject = (JSONObject)json;
@@ -41,17 +46,22 @@ public class PersonFields implements Serializable {
 	protected static void parseFields(JSONArray profile,
 			List<FieldDescription> profileFields2, List<FieldDescription> dynamic) {
 		for (Object obj : profile) {
-			FieldDescription fieldDescription = new FieldDescription((JSONObject)obj);
-			if (PersonFieldNames.ALL_FIELDS_SET.contains(fieldDescription.getName())) {
-				profileFields2.add(fieldDescription);
-			} else {
-				if (FieldType.DOCUMENT.equals(fieldDescription.getType())) {
-					for (FieldDescription subfield : fieldDescription.getSubfields()) {
-						dynamic.add(subfield);
-					}
+			try {
+				FieldDescription fieldDescription = new FieldDescription((JSONObject)obj);
+				if (PersonFieldNames.ALL_FIELDS_SET.contains(fieldDescription.getName())) {
+					profileFields2.add(fieldDescription);
 				} else {
-					dynamic.add(fieldDescription);
+					if (FieldType.DOCUMENT.equals(fieldDescription.getType())) {
+						for (FieldDescription subfield : fieldDescription.getSubfields()) {
+							dynamic.add(subfield);
+						}
+					} else {
+						dynamic.add(fieldDescription);
+					}
 				}
+			} catch (Exception e) {
+				LOG.error("Error parsing " + obj);
+				LOG.error(e.getMessage(), e);
 			}
 		}
 	}
