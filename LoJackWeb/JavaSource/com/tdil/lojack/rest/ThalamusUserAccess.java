@@ -4,8 +4,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,6 +15,7 @@ import javax.ws.rs.core.Response;
 import net.sf.json.JSONObject;
 
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.lojack.gis.LoJackServicesConnector;
 import com.tdil.lojack.thalamus.ThalamusLoginCache;
 
 @Path("/lojack")
@@ -119,6 +122,20 @@ public class ThalamusUserAccess extends AbstractRESTService {
 			LOG.error(e.getMessage(), e);
 			return response(200, new JSONObject());
 		} 
+	}
+	
+	@POST
+	@Path("/peugeot/add")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPeugeot(String body) {
+		try {
+			JSONObject json = (JSONObject)LoJackServicesConnector.extractJSONObjectResponse(body);
+			ThalamusLoginCache.updateCache(json, request.getHeader("signHeader"));
+			return okResponse();
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw new WebApplicationException(401);
+		}
 	}
 
 	private String getCacheKey() {

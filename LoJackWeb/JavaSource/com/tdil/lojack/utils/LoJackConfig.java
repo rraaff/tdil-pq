@@ -87,6 +87,8 @@ public class LoJackConfig extends SystemConfig {
 	
 	private static String mapsUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
 	
+	private static String peugeotSign = "";
+	
 	private static long startTime = System.currentTimeMillis();
 	
 	public static NativeAppsConfig nativeAppsConfig = new NativeAppsConfig();
@@ -554,6 +556,12 @@ public class LoJackConfig extends SystemConfig {
 		}
 		getLog().fatal("maps.url is " + getMapsUrl());
 		
+		String peugeotSign = SystemPropertyUtils.getSystemPropertValue("peugeot.sign");
+		if (!StringUtils.isEmpty(peugeotSign)) {
+			setPeugeotSign(peugeotSign);
+		}
+		getLog().fatal("peugeotSign is " + getPeugeotSign());
+		
 		IPCamera.setLogger(new CameraLog4jLogger());
 
 		getLog().fatal("Starting middleware jobs updater");
@@ -884,6 +892,14 @@ public class LoJackConfig extends SystemConfig {
 
 	public static void setStartTime(long startTime) {
 		LoJackConfig.startTime = startTime;
+	}
+
+	public static String getPeugeotSign() {
+		return peugeotSign;
+	}
+
+	public static void setPeugeotSign(String peugeotSign) {
+		LoJackConfig.peugeotSign = peugeotSign;
 	}
 
 }
