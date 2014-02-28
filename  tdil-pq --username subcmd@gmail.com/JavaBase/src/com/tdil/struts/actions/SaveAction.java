@@ -10,7 +10,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationError;
@@ -18,7 +17,6 @@ import com.tdil.struts.ValidationException;
 import com.tdil.struts.forms.AbstractForm;
 import com.tdil.struts.resources.ApplicationResources;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
-import com.tdil.subsystem.generic.IGenericTransactionExecutionService;
 import com.tdil.validations.ValidationErrors;
 
 public class SaveAction extends AbstractAction {
