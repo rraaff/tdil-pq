@@ -1,0 +1,34 @@
+<section id="wheel">
+
+	<div id="content_wrapper">
+		<div id="app_logo">
+			<img src="images/skn_peugeot/logos/app_logo_wheel_central.png" />
+		</div>
+	</div>
+	<div id="wheel_container">
+		<div id="wheel_structure">
+			<div class="wrapper">
+				<%if (websiteUser != null && websiteUser.isLogged()) { %>
+					<button onclick="javascript:loginPrevent();" id="pointsin">[Points of Interest]</button>
+				<% } else { %>
+					<button onclick="javascript:parkingsNotLogged();" id="pointsin">[Points of Interest]</button>				
+				<% } %>
+				<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
+				<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
+					<button id="carsecur">[Car Security]</button>
+				<% } else { %>
+					<button onclick="javascript:parkingsNotLogged();" id="carsecur">[Car Security]</button>
+				<% } %>
+				<%if (websiteUser != null && websiteUser.isLogged()) { %>
+					<button id="services">[Services]</button>
+				<% } else { %>
+					<button onclick="javascript:parkingsNotLogged();" id="services">[Services]</button>
+				<% } %>
+			</div>
+		</div>
+		<div id="wheel_animation_container">
+			
+		</div>
+	</div>
+	
+</section>

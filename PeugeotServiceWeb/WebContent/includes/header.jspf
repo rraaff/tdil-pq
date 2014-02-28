@@ -1,12 +1,30 @@
-		<ul>
-			<li class="avatarLi"><a href="javascript:changeAvatar();">
-				<% if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-					<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
+<header>
+
+	<section id="barre_transversale">
+		 <ul class="barre_transversale">
+		 	<li><a class="hub" href="http://www.peugeot.fr" title="Hub">hub</a></li>
+		 	<li><a href="javascript:verLegales();" id="legales" title="Ingrese a las políticas del sitio">Legales</a></li>
+		 	<li><a href="javascript:contactLoJack();" title="Envienos una consulta">Contacto</a></li>
+		 </ul>
+	</section>
+	
+	<section id="header_all">
+		<div class="logo"></div>
+		<div class="signature"></div>
+		<div id="main_menu">
+			<ul class="main_menu_ul">
+				<%if (websiteUser != null && websiteUser.isLogged()) { %>
+					<li class="user">Hola: <span><%=websiteUser.getName()%></span></li>
+					<li><a href="javascript:changePassword();" title="Cambiar mi clave">Cambiar mi clave</a></li>
+					<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
+					<li><a href="logout.do" title="Salir">Salir</a></li>
 				<% } else { %>
-				<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-				<% } %></a></li>
-			<li class="userTagAndName">Usuario: <span class="userName"><%=websiteUser.getName()%></span></li>
-			<li class="toRight"><a href="logout.do" title="Salir">Salir</a></li>
-			<li class="toRight"><a href="javascript:changePassword();" title="Cambiar mi clave">Cambiar mi clave</a></li>
-			<li class="toRight"><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-		</ul>
+					<li class="right"><a class="special" href="javascript:login();" id="login" title="Ingresar ahora">Ingresar</a></li>
+					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave">Recuperar clave</a></li>
+				<% } %>
+				<li><a href="#">Sobre este sitio</a></li>
+			</ul>
+		</div>
+	</section>
+	
+</header>
