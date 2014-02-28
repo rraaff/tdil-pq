@@ -39,3 +39,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('maps.u
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('import.range.km','04:00-05:00','Rango de importacion de kms (HH24:MM-HH24:MM)',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('email.send.range','10:00-18:00','Rango de envio de notificaciones (HH24:MM-HH24:MM)',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('peugeot.sign','p3ug30t','Clave de firma del mensaje de acceso peugeot',0);
+
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('lojack.server.url','http://localhost:8180/LoJackWeb/','Servidor del front de LoJack',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('lojack.server.proxy','false','Usar proxy para acceder a front de LoJack',0);

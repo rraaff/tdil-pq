@@ -22,6 +22,7 @@ import com.tdil.ljpeugeot.daomanager.MySQLDAOProvider;
 import com.tdil.ljpeugeot.daomanager.SQLServerDAOProvider;
 import com.tdil.ljpeugeot.feeds.KMImportThread;
 import com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread;
+import com.tdil.ljpeugeot.lojack.LoJackConnector;
 import com.tdil.ljpeugeot.model.SystemProperty;
 import com.tdil.ljpeugeot.model.SystemPropertyExample;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
@@ -29,6 +30,7 @@ import com.tdil.ljpeugeot.roles.CallCenterRole;
 import com.tdil.ljpeugeot.roles.HomeUser;
 import com.tdil.ljpeugeot.roles.PreventUser;
 import com.tdil.ljpeugeot.roles.WebsiteUser;
+import com.tdil.ljpeugeot.thalamus.ThalamusLoginCache;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ProxyConfiguration;
@@ -53,6 +55,8 @@ public class LJPeugeotConfig extends SystemConfig {
 	private static ProxyConfiguration SOCKS_PROXY;
 	
 	private static String mapsUrl = "http://tms.lojackgis.com.ar/osm_tiles2/${z}/${x}/${y}.png";
+	
+	private static String peugeotSign = "";
 	
 	private static long startTime = System.currentTimeMillis();
 	
@@ -290,6 +294,40 @@ public class LJPeugeotConfig extends SystemConfig {
 		}
 		getLog().fatal("maps.url is " + getMapsUrl());
 		
+		String peugeotSign = SystemPropertyUtils.getSystemPropertValue("peugeot.sign");
+		if (!StringUtils.isEmpty(peugeotSign)) {
+			setPeugeotSign(peugeotSign);
+		}
+		getLog().fatal("peugeotSign is " + getPeugeotSign());
+		
+		// Acceso remoto a front
+		String lojackServerUrl = SystemPropertyUtils.getSystemPropertValue("lojack.server.url");
+		if (lojackServerUrl != null) {
+			LoJackConnector.setLojackServerUrl(lojackServerUrl);
+		}
+		getLog().fatal("lojackServerUrl is " + (lojackServerUrl == null ? "null" : lojackServerUrl));
+		
+		String lojackServerProxy = SystemPropertyUtils.getSystemPropertValue("lojack.server.proxy");
+		if (!StringUtils.isEmpty(lojackServerProxy) && "true".equalsIgnoreCase(lojackServerProxy)) {
+			if (LoJackConnector.getLojackServerUrl().startsWith("https")) {
+				if (getHTTPS_PROXY() != null) {
+					LoJackConnector.setLojackServerProxy(getHTTPS_PROXY());
+					getLog().fatal("lojack.server.proxy is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("No lojack.server.proxy");
+				}
+			} else {
+				if (getHTTP_PROXY() != null) {
+					LoJackConnector.setLojackServerProxy(getHTTP_PROXY());
+					getLog().fatal("lojack.server.proxy is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("No lojack.server.proxy");
+				}
+			}
+		} else {
+			getLog().fatal("No lojack.server.proxy");
+		}
+		
 
 		String importRange = SystemPropertyUtils.getSystemPropertValue("import.range.km");
 		if (!StringUtils.isEmpty(importRange) && importRange.contains("-")) {
@@ -477,6 +515,14 @@ public class LJPeugeotConfig extends SystemConfig {
 
 	public static void setStartTime(long startTime) {
 		LJPeugeotConfig.startTime = startTime;
+	}
+
+	public static String getPeugeotSign() {
+		return peugeotSign;
+	}
+
+	public static void setPeugeotSign(String peugeotSign) {
+		LJPeugeotConfig.peugeotSign = peugeotSign;
 	}
 
 }
