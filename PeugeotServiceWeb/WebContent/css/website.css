@@ -49,7 +49,7 @@ section.modal_header h2				{ color:#00aad5; font-size:20px; font-family:'Peugeot
 section.modal_header h3				{ color:#373743; font-size:13px; font-weight:bold; padding:6px 0; }
 section.modal_header h4				{ color:#595a67; font-size:13px; font-weight:normal; padding:4px 0; }
 section.modal_content				{ width:100%; display:inline-block; }
-span.modal_subtitle					{ color:#373743; font-size:20px; font-weight:normal; font-family:'Peugeot'; line-height:20px; padding:0 0 25px 0; }
+span.modal_subtitle					{ color:#373743; font-size:20px; font-weight:normal; font-family:'Peugeot'; line-height:20px; padding:0 0 25px 0; display:inline-block; }
 
 
 /* FORMS */

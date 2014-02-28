@@ -3,12 +3,12 @@
 	<div id="centradorModalesParkingNo" class="layerModal width600">
 		<section class="modal_header">
 			<h2>Información importante</h2>
-			<h3>Para acceder a las funcionalidades de la aplicación deberás ingresar usando tu dni y clave.</h3>
+			<h3>Para acceder a las funcionalidades de la aplicación deberás ingresar usando tu DNI y clave.</h3>
 			<h4>Tu clave deberían habertela proporcionado al instalarte el equipo. si no la recuerda, haga clic en "recuperar clave"</h4>
 			<button class="close" cl="parkingsNotLoggedLayer">Cerrar <span></span></button>
 		</section>
 		<section class="modal_content">
-			<!-- span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span-->
+			<span class="modal_subtitle">Elegí una opción</span>
 			<form class="modal_wrapper">
 				<fieldset class="button_bar">
 					<button class="link_back" id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer"><span></span>Cerrar</button>
