@@ -388,53 +388,49 @@ function parkingsNotLogged() {
 
 </head>
 <body>
-<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
-
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li><a href="javascript:login();" id="login" title="Ingresar ahora"><span>Ingresar</span></a></li>
-				<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave"><span>Recuperar clave</span></a></li>
-				<!-- li><a href="javascript:register();" id="register" title="Registrate"><span>Registrate</span></a></li-->
-			</ul>
-		</div>
-	</div>
-</header>
 <% if (usingMobile || isAndroid) { %>
-android or mobile
-<% }  %>
-<div id="nmRuedita">
-	<ul>
-		<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
-		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-			<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()">CAR</a></li>
-		<%} else { %>
-			<li id="liCars" class="car" ><a class="rdCar" href="javascript:loginPrevent()">CAR</a></li>
-			<%if (websiteUser != null && websiteUser.isLogged()) { %>
-				<li id="liPark" class="park"><a class="rdPark" href="productoParkings.jsp">POI</a></li>
-			<%} else { %>
-				<li id="liPark" class="park"><a class="rdPark" href="#" id="rueditaParkings" onclick="javascript:parkingsNotLogged();">POI</a></li>
-			<% } %>
-			<li id="liLogg" class="login"><a class="rdLoginLogout" href="#" id="rueditaLogin" onclick="javascript:login();">Login</a></li>
-		<% } %>
-	</ul>
-</div>
-
+<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% } %>
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/wheel_menu.jspf" %>
 <%@ include file="includes/contactLayers.jspf" %>
 <%@ include file="includes/copyright.jsp" %>
 
 <!-- Los LAYERS -->
 
 <div id="parkingsNotLoggedLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
-		<div class="defaultLayerContent">
-			<h3>Atención</h3>
-			<p>Registrate y accede a parkings. Es gratis y podes usarlo tanto en tu pc como en cualquier dispositivo móvil que soporte HTML 5 y Javascript.</p>
-			<fieldset>
-				<button id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer" class="indexButtonBase">Cerrar</button>
-			</fieldset>
-		</div>
+	<div id="centradorModalesParkingNo" class="layerModal">
+		<section class="modal_header">
+			<h2>Información importante</h2>
+			<h3>Para acceder a las funcionalidades de la aplicación deberás ingresar usando tu dni y clave.</h3>
+			<h4>Tu clave deberían habertela proporcionado al instalarte el equipo. si no la recuerda, haga clic en "recuperar clave"</h4>
+			<button class="close">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span>
+			<form class="modal_wrapper">
+				<fieldset>
+					<label>Documento</label>
+					<input type="text" placeholder="Ej.: 11223344" />
+				</fieldset>
+				<fieldset>
+					<label>Clave</label>
+					<input type="password" placeholder="ingrese su clave" />
+				</fieldset>
+				<fieldset>
+					<input type="checkbox" checked="checked" />
+					<label>Recordar mis datos</label>
+				</fieldset>
+				<fieldset>
+					<label><a href="">¿Olvidó su clave?</a></label>
+				</fieldset>
+				<fieldset class="button_bar">
+					<button class="link_back" id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer">Cerrar</button>
+					<button class="botton_ahead">Iniciar sesión</button>
+				</fieldset>
+			</form>
+		</section>
 	</div>
 </div>
 
