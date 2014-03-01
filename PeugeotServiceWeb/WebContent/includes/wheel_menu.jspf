@@ -20,7 +20,7 @@
 					<button onclick="javascript:parkingsNotLogged();" id="carsecur">[Car Security]</button>
 				<% } %>
 				<%if (websiteUser != null && websiteUser.isLogged()) { %>
-					<button id="services">[Services]</button>
+					<button id="services" onclick="window.location='./servicesDashboard.jsp';">[Services]</button>
 				<% } else { %>
 					<button onclick="javascript:parkingsNotLogged();" id="services">[Services]</button>
 				<% } %>

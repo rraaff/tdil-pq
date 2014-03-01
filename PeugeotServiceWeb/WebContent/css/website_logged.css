@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* THIS IS ONLY TO OVERWRITE THOSE CLASES WHICH CAN COUSE TROUBLE AFTER LOGIN */
+/* GENERAL */
+
+/* HEADER */
+div#main_menu ul.main_menu_ul li a			{ padding:0px 20px; }
+
+/* PAGE TITLE */
+#page_title div.avatar_container			{ padding-left:401px!important; }
+
+/* MODAL WINDOWS */
+
+/* FORMS */
+
+/* BUTTONS */
+
+/* WHEEL MENU */
+
+/* FOOTER */
+
+/* /////////////// taken from peugeot.fr */
