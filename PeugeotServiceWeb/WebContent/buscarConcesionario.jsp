@@ -1,3 +1,7 @@
+<%@page import="com.tdil.ljpeugeot.model.State"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DecimalFormatSymbols"%>
+<%@page import="com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"%>
 <%@page import="com.tdil.utils.DateUtils"%>
@@ -33,44 +37,63 @@
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
 <% 
-List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
-Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
-if (rememberClicked == null) {
-	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
-	request.getSession().setAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN, Boolean.TRUE);
-}
+
 %>
 <script>
 	$(document).ready(
-			function(){
+		function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-				<% if (!advices.isEmpty()) { %>
-				centerLayer($(window), $( "#advicesLayer" ));
-				$( "#closeadvicesLayer" ).click(function() {
-					$( "#advicesLayer" ).fadeOut();
-				});
-				<% } %>
-			}
-	);
-	function dismiss(idAdvices) {
-		$.ajax({
-	          type: "GET",
-	          cache: false,
-	          url: "./dismissAdvices.do",
-	          data: {idAdvices: idAdvices},
-	          contentType: "application/json; charset=utf-8",
-	          success: function(data) {
-	        	  $( "#advicesLayer" ).fadeOut();
-	          },
-	          error: function() {
-	        	  $( "#advicesLayer" ).fadeOut();
-	        	  errorAjax();
-	          }
-	      });
-	}
 
+	$('select[name=idState]').change(
+			function() {
+				var selectToLoad = $('select[name=idCity]');
+				selectToLoad.empty();
+	        	$('<option>Cargando...</option>').appendTo(selectToLoad);
+				var countrySelected = Number($(this).attr('value'));
+				if (countrySelected > 0) {
+					$.ajax({
+			            type: "GET",
+			            cache: false,
+			            url: "./searchCities.do",
+			            data: {stateId: countrySelected },
+			            contentType: "application/json; charset=utf-8",
+			            success: function(msg) {
+			            	var select = $('select[name=idCity]');
+			            	select.empty();
+			            	$('<option value="0">Seleccione...</option>').appendTo(select);
+			            	$.each(msg, function(index, item) {
+				                $('<option value="'+item.id+'">'+item.name+'</option>').appendTo(select);
+			                });
+			            },
+			            error: function() {
+			                alert("error consultando las ciudades");
+			            }
+			        });
+				} else {
+					var select = $('select[name=idCity]');
+	            	select.empty();
+	            	$('<option value="0">Seleccione...</option>').appendTo(select);
+				}
+			}
+		);
+		}
+	);
+
+	function searchDealers() {
+		var idCity = $('select[name=idCity]').val();
+		if (idCity != 0) {
+			<%@ include file="includes/blockUI.jspf" %>
+			$('#dealersLayer').load('searchDealers.jsp?idCity=' + idCity, function(response, status, xhr) {
+				<%@ include file="includes/unblockUI.jspf" %>
+				if (status == "error") {
+					errorAjax();
+				} 
+			});
+		}
+	}
+	
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/centerLayerJS.jspf" %>
@@ -110,31 +133,31 @@ if (rememberClicked == null) {
 	</div>
 </header>
 
-<a href="misServices.jsp">Mis Services</a><br>
-<a href="misVehiculos.jsp">Mis Vehiculos</a><br>
-<a href="servicesYGarantia.jsp">Ver services oficiales</a><br>
-<a href="buscarConcesionario.jsp">Agencias/Service autorizados</a><br>
 
 <%@ include file="includes/layer_contact.jspf" %>
 
-<!-- Layer de muestra de avisos -->
-<% StringBuilder sb = new StringBuilder();
-	if (!advices.isEmpty()) { %>
-<div id="advicesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="advices">
-		Aviso <div id="xContainer"><button id="closeadvicesLayer">X</button></div>
-		<% for (AdviceValueObject adviceValueObject : advices) { %>
-			<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
-				Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km<br>
-			<% } else { %>
-			Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%><br>
+<div class="scrollable">
+	<fieldset>
+		<label class="ajuste">Provincia</label>
+		<select name="idState" id="idState">
+			<option value="">Seleccione...</option>
+			<% for (State state : PeugeotService.getStates()) { %>
+				<option value="<%=state.getId()%>">
+				<%=state.getName()%></option>
 			<% } %>
-		<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
-			} %>
-		<a href="javascript:dismiss('<%=sb.toString()%>')">Dismiss</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
-	</div>
+		</select>
+	</fieldset>
+	<fieldset>
+		<label class="ajuste">Ciudades</label>
+		<select name="idCity" id="idCity">
+			<option value="0">Seleccione...</option>
+		</select>
+	</fieldset>
 </div>
-<% } %>
+<input type="button" onclick="searchDealers()" Value="Buscar"><br>
+<div id="dealersLayer">
+</div>
+
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
