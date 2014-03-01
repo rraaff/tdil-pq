@@ -16,7 +16,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
@@ -25,6 +24,8 @@ import com.tdil.users.None;
 import com.tdil.users.Role;
 
 public abstract class SystemConfig {
+	
+	public static String STATIC_RESOURCES_VERSION;
 
 	private static Logger getLog() {
 		return LoggerProvider.getLogger(SystemConfig.class);
@@ -47,6 +48,22 @@ public abstract class SystemConfig {
 		loadProperties();
 		initLogger();
 		initBlobCache();
+		
+		if ("true".equals(System.getProperty("dev"))) {
+			STATIC_RESOURCES_VERSION = String.valueOf(System.currentTimeMillis());
+		} else {
+			String buildnumberFilePath = sce.getServletContext().getRealPath("buildnumber");
+			try {
+				File file = new File(buildnumberFilePath);
+				if (!file.exists()) {
+					STATIC_RESOURCES_VERSION = String.valueOf(System.currentTimeMillis());
+				} else {
+					STATIC_RESOURCES_VERSION = FileUtils.readFileToString(file);
+				}
+			} catch (Exception e) {
+				STATIC_RESOURCES_VERSION = String.valueOf(System.currentTimeMillis());
+			}
+		}
 	}
 
 	protected void migrateDatabase() {
