@@ -137,7 +137,6 @@
 </header>
 
 
-<%@ include file="includes/contactLayers.jspf" %>
 
 <% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
 DecimalFormatSymbols simbolos = new DecimalFormatSymbols();

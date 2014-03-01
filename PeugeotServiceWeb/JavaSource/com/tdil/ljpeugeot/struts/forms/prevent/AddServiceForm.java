@@ -3,11 +3,16 @@ package com.tdil.ljpeugeot.struts.forms.prevent;
 import java.sql.SQLException;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.AdviceExample;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.Vehicle;
+import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
+import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.forms.TransactionalValidationForm;
 import com.tdil.utils.DateUtils;
 
@@ -21,6 +26,7 @@ public class AddServiceForm extends TransactionalValidationForm {
 	private int idVehicle;
 	private String serviceKm;
 	private String serviceDate;
+	private WebsiteUser user;
 
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(AddServiceForm.class);
 	
@@ -45,8 +51,14 @@ public class AddServiceForm extends TransactionalValidationForm {
 		this.idVehicle = 0;
 		this.serviceKm = null;
 		this.serviceDate = null;
+	}
+	
+	@Override
+	public void takeValuesFrom(HttpServletRequest request) {
+		this.user = (WebsiteUser)AbstractAction.getLoggedUser(request);
 		
 	}
+	
 	@Override
 	public void validateInTransaction(ValidationError validationError) throws SQLException {
 		// TODO Auto-generated method stub
@@ -62,6 +74,9 @@ public class AddServiceForm extends TransactionalValidationForm {
 		service.setDeleted(0);
 		service.setIdVehicle(this.idVehicle);
 		Vehicle vehicle = DAOManager.getVehicleDAO().selectVehicleByPrimaryKey(this.idVehicle);
+		if (!vehicle.getIdWebsiteuser().equals(this.user.getModelUser().getId())) {
+			throw new RuntimeException("invalid data");
+		}
 		if (vehicle.getLastservicekm() == null || serviceKm2 > vehicle.getLastservicekm()) {
 			vehicle.setLastservicedate(serviceDateObj);
 			vehicle.setLastservicekm(serviceKm2);
@@ -78,6 +93,9 @@ public class AddServiceForm extends TransactionalValidationForm {
 			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		}
 		DAOManager.getServiceDAO().insertService(service);
+		AdviceExample adviceExample = new AdviceExample();
+		adviceExample.createCriteria().andIdVechicleEqualTo(this.idVehicle);
+		DAOManager.getAdviceDAO().deleteAdviceByExample(adviceExample);
 	}
 
 	public int getIdVehicle() {
@@ -102,6 +120,14 @@ public class AddServiceForm extends TransactionalValidationForm {
 
 	public void setServiceDate(String serviceDate) {
 		this.serviceDate = serviceDate;
+	}
+
+	public WebsiteUser getUser() {
+		return user;
+	}
+
+	public void setUser(WebsiteUser user) {
+		this.user = user;
 	}
 
 }
