@@ -115,7 +115,7 @@ Mis Services<br>
 <a href="servicesYGarantia.jsp">Ver services oficiales</a><br>
 Agencias/Service autorizados<br>
 
-<%@ include file="includes/contactLayers.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
 
 <!-- Layer de muestra de avisos -->
 <% StringBuilder sb = new StringBuilder();

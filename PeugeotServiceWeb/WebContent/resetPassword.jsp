@@ -75,7 +75,7 @@ function resetPasswordOpen() {
 </header>
 
 
-<%@ include file="includes/contactLayers.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
 
 <!-- Edit password layer -->
 <div id="resetPassLayerBase" class="layerOnTop" style="display:none; z-index:1500;">
