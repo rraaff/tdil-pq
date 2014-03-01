@@ -86,6 +86,8 @@
           "lojackUserId" : "aa",
           "preventIsClient" : true,
           "vluIsClient" : true,
+          "PeugeotIsClient":true,
+          "peugeotUser":"userlogin",
           "links" : [  ]
         }
     }

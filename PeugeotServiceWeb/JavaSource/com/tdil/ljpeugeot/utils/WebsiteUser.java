@@ -31,6 +31,10 @@ public class WebsiteUser extends User {
 	private String preventUserId;
 	private boolean isPetUser;
 	private String petUserId;
+	
+	private boolean peugeotIsClient;
+	private String peugeotUser;
+	
 	private boolean vluIsClient;
 	private int vluMessages;
 	
@@ -305,6 +309,22 @@ public class WebsiteUser extends User {
 		} else {
 			return modelUser.getLojackuserid();
 		}
+	}
+
+	public boolean getPeugeotIsClient() {
+		return peugeotIsClient;
+	}
+
+	public void setPeugeotIsClient(boolean peugeotIsClient) {
+		this.peugeotIsClient = peugeotIsClient;
+	}
+
+	public String getPeugeotUser() {
+		return peugeotUser;
+	}
+
+	public void setPeugeotUser(String peugeotUser) {
+		this.peugeotUser = peugeotUser;
 	}
 
 }

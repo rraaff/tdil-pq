@@ -252,6 +252,14 @@ public class LoginForm extends ActionForm {
 		if (jsonHasValueForKey(profile, clubLoJackLevel)) {
 			user.setClubLoJackLevel(profile.getInt(clubLoJackLevel));
 		}
+		
+		String peugeotIsClientKey = "PeugeotIsClient";
+		if (jsonHasValueForKey(profile, peugeotIsClientKey)) {
+			user.setPeugeotIsClient(profile.getBoolean(peugeotIsClientKey));
+			if (jsonHasValueForKey(profile, "peugeotUser")) {
+				user.setPeugeotUser(profile.getString("peugeotUser"));
+			}
+		}
 	}
 
 	private static boolean jsonHasValueForKey(JSONObject profile, String key) {

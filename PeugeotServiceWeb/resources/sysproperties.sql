@@ -4,8 +4,8 @@ INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('proxy.
 
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('front.server','http://localhost:8180/PeugeotServiceWeb','front.server',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.server','http://localhost:8280/ThalamusWeb/','thalamus.server',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','test','thalamus.touchpoint.code',0);
-INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest','thalamus.touchpoint.token',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.code','PEUGEOT-SMARTPHONE-APP','thalamus.touchpoint.code',0);
+INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.touchpoint.token','3870s6wox7dizomqkd6ngz5k6fw6bk5zx1yrh2dv7lqpggkey3ibo8q6w0u8uocx','thalamus.touchpoint.token',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.timeout','5000','Timeout en millis',0);
 INSERT INTO SYSPROPERTIES (propKey,propValue,description,deleted) VALUES('thalamus.proxy','true','thalamus.proxy',0);
 
