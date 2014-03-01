@@ -61,6 +61,7 @@ public class SaveAjaxAction extends AjaxAction {
 	public ActionForward validateAndSave(final AbstractForm aForm, HttpServletRequest request, ActionMapping mapping, HttpServletResponse response) throws IOException {
 		try {
 			HashMap<String, Object> result = new HashMap<String, Object>();
+			aForm.takeValuesFrom(request);
 			ValidationError error = aForm.validate();
 			if(error.hasError()) {
 				return addErrorsToResponse(response, error);
