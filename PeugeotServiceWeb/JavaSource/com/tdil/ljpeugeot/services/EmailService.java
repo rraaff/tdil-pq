@@ -4,6 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.mail.MessagingException;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -33,7 +37,12 @@ public class EmailService {
 	public static final String LAST_SERVICE_KM_KEY = "[LAST_SERVICE_KM]";
 	public static final String NEXT_SERVICE_KM_KEY = "[NEXT_SERVICE_KM]";
 	public static final String NEXT_SERVICE_DATE_KEY = "[NEXT_SERVICE_DATE]";
-	public static final String DEALER_KEY = "[DEALER]";
+	
+	public static final String DEALER_SECTION_KEY = "[DEALER_SECTION]";
+	public static final String DEALER_NAME_KEY = "[DEALER_NAME]";
+	public static final String DEALER_ADDRESS_KEY = "[DEALER_ADDRESS]";
+	public static final String DEALER_PHONE_KEY = "[DEALER_PHONE]";
+	public static final String DEALER_EMAIL_KEY = "[DEALER_EMAIL]";
 	
 	public static class GetSMTPProperties implements TransactionalActionWithResult<Properties> {
 		@Override
@@ -50,7 +59,7 @@ public class EmailService {
 		}
 	}
 
-	public static void sendEmail(String to, Map<String, String> replacements, String notificationtype) throws SQLException {
+	public static void sendEmail(String to, Map<String, String> replacements, List<String> sectionsToRemove, String notificationtype) throws SQLException {
 		try {
 			Properties props = GenericTransactionExecutionService.getInstance().execute(new GetSMTPProperties());
 			
@@ -58,15 +67,38 @@ public class EmailService {
 			notificationEmailExample.createCriteria().andNotificationtypeEqualTo(notificationtype);
 			NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO()
 					.selectNotificationEmailByExample(notificationEmailExample).get(0);
+			String from = notificationEmail.getFrom();
 			String content = notificationEmail.getContent();
-			content = StringUtils.replace(content, SERVER_NAME_KEY, LJPeugeotConfig.getFRONT_SERVER());
+			String subject = notificationEmail.getSubject();
 			
-			for (Map.Entry<String, String> entry : replacements.entrySet()) {
-				content = StringUtils.replace(content, entry.getKey(), entry.getValue());
-			}
-			com.tdil.utils.EmailUtils.sendEmail(content, to, notificationEmail.getFrom(), notificationEmail.getSubject(), props);
+			sendEmail(from, to, subject, content, replacements, sectionsToRemove, props);
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);
+		}
+	}
+
+	public static void sendEmail(String from, String to, String subject, String content, Map<String, String> replacements,
+			List<String> sectionsToRemove, Properties props) throws MessagingException {
+		content = StringUtils.replace(content, SERVER_NAME_KEY, LJPeugeotConfig.getFRONT_SERVER());
+		
+		for (Map.Entry<String, String> entry : replacements.entrySet()) {
+			content = StringUtils.replace(content, entry.getKey(), entry.getValue());
+		}
+		for (String section : sectionsToRemove) {
+			int indexStart = content.indexOf("[" + section + "]");
+			while(indexStart != -1) {
+				String endSecton = "[/" + section + "]";
+				int indexEnd = content.indexOf(endSecton);
+				content = content.substring(0, indexStart) + content.substring(indexEnd + endSecton.length());
+				indexStart = content.indexOf("[" + section + "]");
+			}
+		}
+		Pattern pattern = Pattern.compile("\\[[^\\]]*\\]");
+		Matcher matcher = pattern.matcher(content);
+		if (matcher.find()) {
+			getLog().error("No puede enviarse el email para " + to + " porque hay variables sin reemplazar " + content);
+		} else {
+			com.tdil.utils.EmailUtils.sendEmail(content, to, from, subject, props);
 		}
 	}
 	

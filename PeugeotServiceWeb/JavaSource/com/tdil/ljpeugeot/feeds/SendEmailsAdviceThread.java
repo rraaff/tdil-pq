@@ -1,6 +1,7 @@
 package com.tdil.ljpeugeot.feeds;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -81,8 +82,14 @@ public class SendEmailsAdviceThread extends Thread {
 		WebsiteUser wu = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(vehicle.getIdWebsiteuser());
 		Dealer dealer = DAOManager.getDealerDAO().selectDealerByPrimaryKey(vehicle.getIdDealer());
 		Map<String, String> replacements = new HashMap<String, String>();
+		List<String> sectionsToRemove = new ArrayList<String>();
 		if (dealer != null) {
-			replacements.put(EmailService.DEALER_KEY, dealer.getName());
+			replacements.put(EmailService.DEALER_NAME_KEY, dealer.getName());
+			replacements.put(EmailService.DEALER_ADDRESS_KEY, com.tdil.utils.StringUtils.nvl(dealer.getAddress(), "-"));
+			replacements.put(EmailService.DEALER_PHONE_KEY, com.tdil.utils.StringUtils.nvl(dealer.getPhone(), "-"));
+			replacements.put(EmailService.DEALER_EMAIL_KEY, com.tdil.utils.StringUtils.nvl(dealer.getName(), "-"));
+		} else {
+			sectionsToRemove.add(EmailService.DEALER_SECTION_KEY);
 		}
 		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
 		replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
@@ -95,8 +102,9 @@ public class SendEmailsAdviceThread extends Thread {
 		cal.setTime(vehicle.getLastservicedate());
 		cal.add(Calendar.MONTH, 12);
 		replacements.put(EmailService.NEXT_SERVICE_DATE_KEY, DateUtils.formatDateSp(cal.getTime()));
+		
 		if (!StringUtils.isEmpty(wu.getEmail())) {
-			EmailService.sendEmail(wu.getEmail(), replacements, advice);
+			EmailService.sendEmail(wu.getEmail(), replacements, sectionsToRemove, advice);
 		}
 		// TODO enviar el email a la concesionaria
 	}

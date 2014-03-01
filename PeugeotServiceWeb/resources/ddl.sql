@@ -354,13 +354,39 @@ CREATE TABLE ALERT (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.km', 'Primer aviso de service por KM','Este es el primer aviso [LINK]','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.km', 'Segundo aviso de service por KM','Este es el segundo aviso [LINK]','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.km', 'Tercer aviso de service por KM','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('first.advice.km', 'Primer aviso de service por KM','Este es el primer aviso [LINK]','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.date', 'Primer aviso de service por fecha','Este es el primer aviso [LINK]','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.date', 'Segundo aviso de service por fecha','Este es el segundo aviso [LINK]','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.date', 'Tercer aviso de service por fecha','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('second.advice.km', 'Segundo aviso de service por KM','Este es el segundo aviso [LINK]','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements)
+VALUES('third.advice.km', 'Tercer aviso de service por KM','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('first.advice.date', 'Primer aviso de service por fecha','Este es el primer aviso [LINK]','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('second.advice.date', 'Segundo aviso de service por fecha','Este es el segundo aviso [LINK]','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('third.advice.date', 'Tercer aviso de service por fecha','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
 COMMIT;
