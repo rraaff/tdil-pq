@@ -29,7 +29,10 @@ public class EmailService {
 	public static final String FIRST_NAME_KEY = "[FIRST_NAME]";
 	public static final String LAST_NAME_KEY = "[LAST_NAME]";
 	public static final String DOMAIN_KEY = "[DOMAIN]";
-	public static final String KM_KEY = "[KM]";
+	public static final String ACTUAL_KM_KEY = "[ACTUAL_KM]";
+	public static final String LAST_SERVICE_KM_KEY = "[LAST_SERVICE_KM]";
+	public static final String NEXT_SERVICE_KM_KEY = "[NEXT_SERVICE_KM]";
+	public static final String NEXT_SERVICE_DATE_KEY = "[NEXT_SERVICE_DATE]";
 	public static final String DEALER_KEY = "[DEALER]";
 	
 	public static class GetSMTPProperties implements TransactionalActionWithResult<Properties> {

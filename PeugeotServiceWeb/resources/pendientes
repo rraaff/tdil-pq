@@ -1,11 +1,14 @@
-configuracion de logging de peugeot, agregar LoJackConnector...
+cambio de email debe ser distinto
 
-cuando se carga el service, restear todos los needs advice, ...sent y borrar advices
+
+configuracion de logging de peugeot, agregar LoJackConnector...
 
 Cuando llega a la pagina por primera vez, cookie de remember..
 
 6 mails reemplazos
 mail concesionaria, reemplazos
+Tambien va a haber un mail mas para la concesionaria, anda pensando que variables de reemplazo vas a querer en cada uno.
+{NOMBRE DE LA AGENCIA}, {DIRECCIÓN + LOCALIDAD}, {TELÉFONO}, {NOMBRE DEL CLIENTE}. No se me ocurre más nada. Pero lo consulto
 
 verificar el is peugeot...
 agregar tokens y etc de thalamus
@@ -56,7 +59,6 @@ no gardar las listas en el bean, consultarlo cada vez en la pagina
 paginas
 cambiar datos de contactos
 
-cambio de email debe ser distinto
 
 pagina seleccion de vechiculo is hay mas de uno
 pagina del vehiculo

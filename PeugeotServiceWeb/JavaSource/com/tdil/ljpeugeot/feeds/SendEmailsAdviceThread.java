@@ -19,6 +19,7 @@ import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
+import com.tdil.utils.DateUtils;
 
 public class SendEmailsAdviceThread extends Thread {
 	
@@ -51,7 +52,7 @@ public class SendEmailsAdviceThread extends Thread {
 				if (getLog().isInfoEnabled()) {
 					getLog().info("enviando tercer aviso a " + vehicle.getDomain());
 				}
-				sendEmail(vehicle, EmailService.THIRD_ADVICE);
+				sendEmail(vehicle, EmailService.THIRD_ADVICE + (vehicle.getNeedsadvice3date() == null ? ".km" : ".date"));
 				vehicle.setAdvice3sent(1);
 			} else {
 				if (vehicle.getNeedsadvice2() == 1) {
@@ -59,14 +60,14 @@ public class SendEmailsAdviceThread extends Thread {
 						getLog().info("enviando segundo aviso a " + vehicle.getDomain());
 					}
 					// mando email
-					sendEmail(vehicle, EmailService.SECOND_ADVICE);
+					sendEmail(vehicle, EmailService.SECOND_ADVICE + (vehicle.getNeedsadvice2date() == null ? ".km" : ".date"));
 					vehicle.setAdvice2sent(1);
 				} else {
 					if (getLog().isInfoEnabled()) {
 						getLog().info("enviando primer aviso a " + vehicle.getDomain());
 					}
 					// mando email
-					sendEmail(vehicle, EmailService.FIRST_ADVICE);
+					sendEmail(vehicle, EmailService.FIRST_ADVICE + (vehicle.getNeedsadvice1date() == null ? ".km" : ".date"));
 					vehicle.setAdvice1sent(1);
 				}
 			}
@@ -86,6 +87,14 @@ public class SendEmailsAdviceThread extends Thread {
 		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
 		replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
 		replacements.put(EmailService.LAST_NAME_KEY, wu.getLastname());
+		replacements.put(EmailService.ACTUAL_KM_KEY, String.valueOf(vehicle.getKm()));
+		replacements.put(EmailService.LAST_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm()));
+		replacements.put(EmailService.NEXT_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm() + 12000));
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(vehicle.getLastservicedate());
+		cal.add(Calendar.MONTH, 12);
+		replacements.put(EmailService.NEXT_SERVICE_DATE_KEY, DateUtils.formatDateSp(cal.getTime()));
 		if (!StringUtils.isEmpty(wu.getEmail())) {
 			EmailService.sendEmail(wu.getEmail(), replacements, advice);
 		}
