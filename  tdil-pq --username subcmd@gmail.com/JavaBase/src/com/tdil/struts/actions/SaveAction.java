@@ -59,6 +59,7 @@ public class SaveAction extends AbstractAction {
 	}
 
 	public ActionForward validateAndSave(final AbstractForm form, HttpServletRequest request, ActionMapping mapping) {
+		form.takeValuesFrom(request);
 		ValidationError error = form.validate();
 		if(error.hasError()) {
 			return redirectToFailure(error, request, mapping);

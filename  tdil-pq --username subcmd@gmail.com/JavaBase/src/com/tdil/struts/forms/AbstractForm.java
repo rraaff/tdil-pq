@@ -2,6 +2,8 @@ package com.tdil.struts.forms;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionForm;
 
 import com.tdil.struts.ValidationError;
@@ -32,5 +34,9 @@ public abstract class AbstractForm extends ActionForm {
 	public abstract ValidationError validate();
 	
 	public abstract void save() throws SQLException, ValidationException;
+	
+	public void takeValuesFrom(HttpServletRequest request) {
+		
+	}
 	
 }
