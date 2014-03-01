@@ -158,6 +158,12 @@
   <servlet-name>SearchParkingsServlet</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.SearchParkingsServlet</servlet-class>
  </servlet>
+ 
+  <servlet>
+  <servlet-name>LogJSErrorServlet</servlet-name>
+  <servlet-class>com.tdil.ljpeugeot.servlet.LogJSErrorServlet</servlet-class>
+ </servlet>
+ 
  <servlet>
    <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.FacebookSignIn</servlet-class>
@@ -178,6 +184,12 @@
   <servlet-name>Jersey Web Application</servlet-name>
   <url-pattern>/rest/*</url-pattern>
  </servlet-mapping>
+ 
+  <servlet-mapping>
+  <servlet-name>LogJSErrorServlet</servlet-name>
+  <url-pattern>/logJsErr.st</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>
