@@ -36,8 +36,8 @@
 <%
 	if (usingMobile || isAndroid) {
 %>
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
 		@media all and (orientation:landscape) {
 			#productsMenu { position:fixed; z-index:1500; } 
@@ -51,14 +51,14 @@
 <%
 	} else {
 %>
-	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_menu.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_social.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/copyright.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_social.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mediaQueries.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
 		@media only screen and (max-width: 968px) {
 			body { background: #e51b24; overflow: hidden; }
@@ -117,8 +117,8 @@
 	}
 </style>
 <%@ include file="includes/headLogged.jsp" %>
-<script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_OpenLayers.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_MapaOSM.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var startLat = -34.53483581543;
 	var startLon = -58.548202514648;

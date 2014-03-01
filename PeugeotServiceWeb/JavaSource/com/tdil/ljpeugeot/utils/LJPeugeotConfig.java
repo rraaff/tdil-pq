@@ -30,7 +30,6 @@ import com.tdil.ljpeugeot.roles.CallCenterRole;
 import com.tdil.ljpeugeot.roles.HomeUser;
 import com.tdil.ljpeugeot.roles.PreventUser;
 import com.tdil.ljpeugeot.roles.WebsiteUser;
-import com.tdil.ljpeugeot.thalamus.ThalamusLoginCache;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.thalamus.client.cache.ThalamusCache;
 import com.tdil.thalamus.client.core.ProxyConfiguration;
@@ -84,6 +83,8 @@ public class LJPeugeotConfig extends SystemConfig {
 			this.loadFilteredWords();
 			
 			basicInitSystem();
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace(System.out);

@@ -13,13 +13,13 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/index_menu.css" rel="stylesheet" type="text/css">
-<link href="css/laruedita.css" rel="stylesheet" type="text/css">
-<link href="css/copyright.css" rel="stylesheet" type="text/css">
-<link href="css/index_modales.css" rel="stylesheet" type="text/css">
-<script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
-<script type="text/javascript" src="../js/jquery.blockUI.js"></script>
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_laruedita.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" type="text/css">
+<script type='text/javascript' src='../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery-1.8.2.min.js'></script>
+<script type="text/javascript" src="../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery.blockUI.js"></script>
 <script type="text/javascript">
 
 function enterPrevent() {

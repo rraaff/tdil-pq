@@ -9,16 +9,16 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" media="screen">
-<link href="css/sizers.css" rel="stylesheet" media="screen">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" media="screen">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" rel="stylesheet" media="screen">
 <!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" href="css/index_menu.css" rel="stylesheet" />
-<link type="text/css" href="css/index_modales.css" rel="stylesheet" />
-<link type="text/css" href="css/index_social.css" rel="stylesheet" />
-<link type="text/css" href="css/flexi-background.css" rel="stylesheet" media="screen" />
-<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_tdil.bootstrap.modifier.css" />
+<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" />
+<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" />
+<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_social.css" rel="stylesheet" />
+<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mediaQueries.css" rel="stylesheet" />
 <%@ include file="includes/userLogged.jspf" %>
 <%@ include file="includes/head.jsp"%>
 
@@ -29,7 +29,7 @@
 </head>
 
 <body>
-<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
 <div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_2_mobile.png" /></div>
 <div id="thalamusDown">
 	<h1>Sitio en mantenimiento</h1>

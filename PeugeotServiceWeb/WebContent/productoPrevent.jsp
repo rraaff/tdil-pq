@@ -43,8 +43,8 @@ if (apk) {
 <%
 	if (usingMobile || isAndroid) {
 %>
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
+	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
 		
 		@media only screen and (orientation: landscape) and (max-width: 600px) {
@@ -84,8 +84,8 @@ if (apk) {
 }
 </style>
 <%@ include file="includes/headLogged.jsp" %>
-<script src="js/OpenLayers.js" type="text/javascript"></script>
-<script src="js/<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_OpenLayers.js" type="text/javascript"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_MapaOSM.js" type="text/javascript"></script>
 <%
 	SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForMapForm");
 %>

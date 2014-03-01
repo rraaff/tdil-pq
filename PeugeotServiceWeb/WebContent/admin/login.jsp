@@ -4,10 +4,10 @@
 <title>LoJack :: Peugeot :: Backdoor Application</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link type="text/css" rel="stylesheet" media="screen" href="../css/reset-styles.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="../css/font_embeder.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="../css/backdoor.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_backdoor.css" />
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>

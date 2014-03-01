@@ -14,8 +14,15 @@
         <note>
             Redireccion los js
         </note>
-        <from>js/([0-9]*)_(.*)\.js</from>
-        <to>js/$2.js</to>
+        <from>js/[0-9]*_(.*)</from>
+        <to>js/$1</to>
+    </rule>
+    <rule>
+        <note>
+            Redireccion los css
+        </note>
+        <from>css/[0-9]*_(.*)</from>
+        <to>css/$1</to>
     </rule>
     
     <!--  outbound-rule>

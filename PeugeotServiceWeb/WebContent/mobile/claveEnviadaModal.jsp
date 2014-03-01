@@ -12,10 +12,10 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/index_menu.css" rel="stylesheet" type="text/css">
-<link href="css/laruedita.css" rel="stylesheet" type="text/css">
-<link href="css/copyright.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_laruedita.css" rel="stylesheet" type="text/css">
+<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 #laRuedita { top:20%; }
 #flyingObjectContainer { width:50%; margin:0 auto; }

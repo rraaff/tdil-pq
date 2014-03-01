@@ -23,24 +23,24 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_menu.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/laruedita.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/home_styles.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_laruedita.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_home_styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
 <!--[if lt IE 9]>
-	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headNotLogged.jsp" %>
-<script type="text/javascript" src="js/jstz.js"></script>
+<script type="text/javascript" src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jstz.js"></script>
 <script>
 <%@ include file="includes/centerLayerJS.jspf" %>
 $(document).ready(
@@ -63,7 +63,7 @@ function resetPasswordOpen() {
 </style> 
 </head>
 <body onload="javascript:resetPasswordOpen();">
-<script src="js/flexi-background.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
 <header>
 	<div id="floatyMenu">
 		<div class="wrapper">

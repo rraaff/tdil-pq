@@ -112,6 +112,10 @@
   <filter-name>UrlRewriteFilter</filter-name>
   <url-pattern>/js/*</url-pattern>
  </filter-mapping>
+ <filter-mapping>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <url-pattern>/css/*</url-pattern>
+ </filter-mapping>
  <!-- context-param>
   <param-name>SqlMapConfig</param-name>
   <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>

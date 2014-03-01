@@ -197,6 +197,16 @@
 		    file="build.properties">
 		  <entry  key="current" value="${build.version}"/>
 		</propertyfile>
+		
+		<tstamp>
+			<format property="hora" pattern="yyyyMMddHHmm"/>
+		</tstamp>
+		<copy file="../WebContent/includes/buildnumber.template" tofile="../WebContent/buildnumber" overwrite="true" encoding="ISO-8859-1">
+			<filterset>
+		      <filter token="BUILDNUMBER" value="${hora}"/>
+		    </filterset>
+		</copy>
+		
 		<copy file="../WebContent/includes/version.template" tofile="../WebContent/includes/version.jspf" overwrite="true" encoding="ISO-8859-1">
 			<filterset>
 		      <filter token="VERSION" value="${build.version}"/>
