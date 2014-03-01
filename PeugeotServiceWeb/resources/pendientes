@@ -2,17 +2,29 @@ configuracion de logging de peugeot, agregar LoJackConnector...
 
 cuando se carga el service, restear todos los needs advice, ...sent y borrar advices
 
+Cuando llega a la pagina por primera vez, cookie de remember..
+
+6 mails reemplazos
+mail concesionaria, reemplazos
+
+verificar el is peugeot...
+agregar tokens y etc de thalamus
+
 pantallas:
 
 /home/mgodoy/freelance/lojack/peugeot/web/12-Alerta-de-service.png
 hecho
 
 /home/mgodoy/freelance/lojack/peugeot/web/11-Services-Dashboard.png
+hecho
 
 /home/mgodoy/freelance/lojack/peugeot/web/13-Vehicle-Slection.png
 /home/mgodoy/freelance/lojack/peugeot/web/14-Vehicle-selected.png
 /home/mgodoy/freelance/lojack/peugeot/web/15-Service-creation.png
 /home/mgodoy/freelance/lojack/peugeot/web/16-Mis-Vehiculos.png
+Hecho
+Ver si no hace falta una de listado de todos los services de un auto
+
 /home/mgodoy/freelance/lojack/peugeot/web/17-Services-y-garantia.png
 /home/mgodoy/freelance/lojack/peugeot/web/18-Buscar-Concesionario.png
 /home/mgodoy/freelance/lojack/peugeot/web/19-Resultados-busqueda.png

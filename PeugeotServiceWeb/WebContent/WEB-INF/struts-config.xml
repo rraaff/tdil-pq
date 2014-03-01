@@ -23,6 +23,7 @@
   <form-bean id="EditContactDataForm" name="EditContactDataForm" type="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"/>
   <form-bean id="EditVehicleDataForm" name="EditVehicleDataForm" type="com.tdil.ljpeugeot.struts.forms.prevent.EditVehicleDataForm"/>
   <form-bean id="ServicesForm" name="ServicesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.ServicesForm"/>
+  <form-bean id="AddServiceForm" name="AddServiceForm" type="com.tdil.ljpeugeot.struts.forms.prevent.AddServiceForm"/>
   
   <form-bean id="LoginCCForm" name="LoginCCForm" type="com.tdil.ljpeugeot.struts.forms.LoginCCForm"/>
   <form-bean id="SearchUserForm" name="SearchUserForm" type="com.tdil.ljpeugeot.struts.forms.SearchUserForm"/>
@@ -268,9 +269,11 @@
   	<forward name="continue" path="/services.jsp"/>
   </action>
   
-  <action path="/searchCities" type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
-  <action path="/searchDealers" type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
-  <action path="/dismissAdvices" type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>
+  <action name="AddServiceForm" scope="request" parameter="WebsiteUser" path="/addService" type="com.tdil.struts.actions.SaveAjaxAction"/>
+  
+  <action path="/searchCities" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
+  <action path="/searchDealers" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
+  <action path="/dismissAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>
   
   <action name="LoginCCForm"  path="/cc/login" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginCCAction">
   	<forward name="failure" path="/cc/login.jsp"/>

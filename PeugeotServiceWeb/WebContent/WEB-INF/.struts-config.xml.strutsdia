@@ -3,15 +3,7 @@
  <PROCESS-ITEM ID="#login" NAME="action0" PATH="/login"
   SHAPE="32,17,0,0" TITLE="LoginForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page0" PATH="/index.jsp" SHAPE="256,34,0,0"
-  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/register.do"
-   SUBTYPE="confirmed" TARGET="action3" TITLE="/register.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/requestResetPassword.do"
-   SUBTYPE="confirmed" TARGET="action6" TITLE="/requestResetPassword.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT NAME="link2" PATH="/login.do" SUBTYPE="confirmed"
-   TARGET="action0" TITLE="/login.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SUBTYPE="jsp" TITLE="index.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="ajaxReturn" NAME="forward0" PATH="/empty.jsp"
   SHAPE="32,497,0,0" TARGET="page3" TITLE="ajaxReturn" TYPE="forward" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page3" PATH="/empty.jsp" SHAPE="240,514,0,0"
@@ -666,4 +658,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#dismissAdvices" NAME="action25"
   PATH="/dismissAdvices" SHAPE="32,4465,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addService" NAME="action26" PATH="/addService"
+  SHAPE="32,4401,0,0" TITLE="AddServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
