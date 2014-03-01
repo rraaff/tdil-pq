@@ -22,7 +22,7 @@
 					<li class="right"><a class="special" href="javascript:login();" id="login" title="Ingresar ahora">Ingresar</a></li>
 					<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave">Recuperar clave</a></li>
 				<% } %>
-				<li><a href="#">Sobre este sitio</a></li>
+				<li><a href="peugeot_app.jsp">Sobre este sitio</a></li>
 			</ul>
 		</div>
 	</section>

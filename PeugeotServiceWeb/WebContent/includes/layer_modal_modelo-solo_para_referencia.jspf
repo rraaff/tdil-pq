@@ -34,7 +34,7 @@
 				<fieldset>
 					<label><a href="">¿Olvidó su clave?</a></label>
 				</fieldset>
-				<fieldset class="button_bar">
+				<fieldset class="button_bar pOnlyTop25">
 					<button class="link_back" id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead">Iniciar sesión<span></span></button>
 				</fieldset>
