@@ -61,6 +61,13 @@
 					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.prevent&level=error">error</a></li>
 			</ul>
 			<ul class="tbody">
+				<li class="Seventyper">Interface con LoJack (login prevent automatico)</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor(com.tdil.ljpeugeot.lojack.LoJackConnector.class)%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.lojack.LoJackConnector&level=debug">debug</a>
+				<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.lojack.LoJackConnector&level=info">info</a>
+				<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.lojack.LoJackConnector&level=error">error</a></li>
+			</ul>
+			<ul class="tbody">
 				<li class="Seventyper">Servicios para apps nativas</li>
 				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.rest")[1]%></li>
 				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=debug">debug</a>

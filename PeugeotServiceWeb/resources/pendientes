@@ -1,14 +1,6 @@
 cambio de email debe ser distinto
 
-
-configuracion de logging de peugeot, agregar LoJackConnector...
-
 Cuando llega a la pagina por primera vez, cookie de remember..
-
-6 mails reemplazos
-mail concesionaria, reemplazos
-Tambien va a haber un mail mas para la concesionaria, anda pensando que variables de reemplazo vas a querer en cada uno.
-{NOMBRE DE LA AGENCIA}, {DIRECCIÓN + LOCALIDAD}, {TELÉFONO}, {NOMBRE DEL CLIENTE}. No se me ocurre más nada. Pero lo consulto
 
 verificar el is peugeot...
 agregar tokens y etc de thalamus
@@ -45,7 +37,6 @@ Falta diseño de las pantallas de android
 desarrollo pendiente
 
 retornar el isPeugeot.. en el login y la cantidad de mensajes pendientes
-agregar pantalla de test de emails
 
 mismo para los servicios rest
 
@@ -53,12 +44,8 @@ mismo para los servicios rest
 
 tdil/usu4r10td1l
 
-arreglar pagina de seleccion de concesionaria, debe limpiar bien los datos
-no gardar las listas en el bean, consultarlo cada vez en la pagina
-
 paginas
 cambiar datos de contactos
-
 
 pagina seleccion de vechiculo is hay mas de uno
 pagina del vehiculo
