@@ -10,14 +10,23 @@
 		<section class="modal_content">
 			<span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span>
 			<form class="modal_wrapper">
-				<fieldset>
-					<label>Documento</label>
-					<input type="text" placeholder="Ej.: 11223344" />
-				</fieldset>
-				<fieldset>
-					<label>Clave</label>
-					<input type="password" placeholder="ingrese su clave" />
-				</fieldset>
+				<div class="column">
+					<fieldset>
+						<label>Documento</label>
+						<input type="text" placeholder="Ej.: 11223344" />
+					</fieldset>
+						
+				</div>
+				<div class="column">
+					<fieldset>
+						<label>Clave</label>
+						<input type="password" placeholder="ingrese su clave" />
+					</fieldset>
+						
+					
+				</div>
+				
+
 				<fieldset>
 					<input type="checkbox" checked="checked" />
 					<label>Recordar mis datos</label>

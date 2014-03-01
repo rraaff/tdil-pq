@@ -126,5 +126,7 @@
 
 .pRight25	{ padding-right:25px!important; }
 .pLeft25	{ padding-left:25px!important; }
+.pTop25		{ padding-top:25px!important; }
+.pOnlyTop25	{ padding:25px 0 0 0!important; }
 
 .overHidden { overflow:hidden!important; }

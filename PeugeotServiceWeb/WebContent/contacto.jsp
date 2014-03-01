@@ -81,64 +81,76 @@ function postContact(data) {
 }
 
 </script>
-<div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div id="centradorModalesContactLayer" class="contactLayerStyle">
-		<div class="contactLayerContent">
-			<div id="xContainer"><button id="closecontactLayer">X</button></div>
-			<h3>Contacto</h3>
+<!-- contacto -->
+<div id="changePassLayer" class="layerOnTop" style="z-index:1502;">
+	<div id="centradorModalesContactLayer" class="layerModal width600">
+		<section class="modal_header">
+			<h2>Contacto</h2>
+			<button class="close" id="closecontactLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Complete el formulario con los datos requeridos</span>
 			<div id="errcontact"></div>
-			<html:form method="POST" action="/contact">
-				<%
-					if (!contactForm.isRegisteredUser()) {
-				%>
+			<html:form method="POST" action="/contact" styleClass="modal_wrapper">
+				<% if (!contactForm.isRegisteredUser()) { %>
+					<div class="column">
+						<fieldset>
+							<label>Nombre</label>
+							<html:text name="ContactForm" property="firstname"></html:text>
+						</fieldset>
+						<div class="errorInForm"></div>
+						<fieldset>
+							<label>DNI</label>
+							<html:text name="ContactForm" property="documentNumber"></html:text>
+						</fieldset>
+						<div class="errorInForm"></div>
+						<fieldset>
+							<label>Teléfono</label>
+							<html:text name="ContactForm" property="phone"></html:text>
+						</fieldset>
+						<div class="errorInForm"></div>
+					</div>
+					<div class="column">
+						<fieldset>
+							<label>Apellido</label>
+							<html:text name="ContactForm" property="lastname"></html:text>
+						</fieldset>
+						<div class="errorInForm"></div>
+						<fieldset>
+							<label>E-mail</label>
+							<html:text name="ContactForm" property="email"></html:text>
+						</fieldset>
+						<div class="errorInForm"></div>
+
+				<% } %>
 					<fieldset>
-						<label>Nombre</label>
-						<html:text name="ContactForm" property="firstname"></html:text>
+						<label>Comentario</label>
+						<html:textarea name="ContactForm" property="content"></html:textarea>
 					</fieldset>
 					<div class="errorInForm"></div>
-					<fieldset>
-						<label>Apellido</label>
-						<html:text name="ContactForm" property="lastname"></html:text>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<label>DNI</label>
-						<html:text name="ContactForm" property="documentNumber"></html:text>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<label>E-mail</label>
-						<html:text name="ContactForm" property="email"></html:text>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<label>Teléfono</label>
-						<html:text name="ContactForm" property="phone"></html:text>
-					</fieldset>
-					<div class="errorInForm"></div>
-				<%
-					}
-				%>
-				<fieldset>
-					<label>Comentario</label>
-					<html:textarea name="ContactForm" property="content"></html:textarea>
-				</fieldset>
-				<div class="errorInForm"></div>
-				<fieldset>
-					<button id="submitregister" class="indexButtonBase">Enviar</button>
+				</div>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="link_back" cl="contactLayer"><span></span>Cerrar</button>
+					<button class="botton_ahead" id="submitregister">Enviar</button>
 				</fieldset>
 			</html:form>
-		</div>
+		</section>
 	</div>
 </div>
-<div id="contactLayerThanks" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div class="defaultLayerStyles">
-		<div class="loginLayerContent">
-			<div id="xContainer"><button class="buttonLink" id="closecontactLayerThanks">X</button></div>
-			<h3>Contacto</h3>
-			<div class="alert alert-block">Gracias por dejarnos su mensaje.</div>
-			<fieldset><button type="button" id="buttonclosecontactLayerThanks" class="indexButtonBase">Cerrar</button></fieldset>
-		</div>
+<div id="contactLayerThanks" class="layerOnTop" style="display:none; z-index:1502;">
+	<div class="layerModal width400">
+		<section class="modal_header">
+			<h2>Contacto</h2>
+			<button class="close" id="closecontactLayerThanks">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Gracias por su mensaje</span>
+			<form>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="link_back" cl="contactLayerThanks"><span></span>Cerrar</button>
+				</fieldset>
+			</form>
+		</section>
 	</div>
 </div>
 <%@ include file="includes/catchModal.jspf" %>

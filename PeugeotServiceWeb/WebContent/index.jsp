@@ -396,7 +396,7 @@ function parkingsNotLogged() {
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/wheel_menu.jspf" %>
-<%@ include file="includes/contactLayers.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/copyright.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
 

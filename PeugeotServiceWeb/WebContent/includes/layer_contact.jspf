@@ -1,6 +1,6 @@
-<!-- Contact -->
+<!-- layer_contact -->
 <div id="contactLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="contactContentLayer">
+	<div id="contactContentLayer" class="layerOnTopInternal">
 		Consultando datos...
 	</div>
 </div>
