@@ -84,7 +84,7 @@
           "ClubLjsClient": true,
           "preventUser" : "Prevent2",
           "lojackUserId" : "aa",
-          "preventIsClient" : false,
+          "preventIsClient" : true,
           "vluIsClient" : true,
           "links" : [  ]
         }
