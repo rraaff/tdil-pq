@@ -271,6 +271,9 @@
   
   <action name="AddServiceForm" scope="request" parameter="WebsiteUser" path="/addService" type="com.tdil.struts.actions.SaveAjaxAction"/>
   
+  
+  <action path="/doTestEmail" type="com.tdil.ljpeugeot.struts.action.TestEmailAjaxAction"/>
+  
   <action path="/searchCities" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
   <action path="/searchDealers" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
   <action path="/dismissAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>

@@ -660,4 +660,6 @@
   PATH="/dismissAdvices" SHAPE="32,4465,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addService" NAME="action26" PATH="/addService"
   SHAPE="32,4401,0,0" TITLE="AddServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#doTestEmail" NAME="action27" PATH="/doTestEmail"
+  SHAPE="32,4401,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

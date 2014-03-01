@@ -286,11 +286,15 @@ CREATE TABLE NOTIFICATION_EMAIL (
   deleted INT NOT NULL ,
   PRIMARY KEY (id));
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice', 'Primer aviso','Este es el primer aviso [LINK]','Primer aviso', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice', 'Segundo aviso','Este es el segundo aviso [LINK]','Segundo aviso', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice', 'Tercer aviso','Este es el tercer aviso [LINK]','Tercer aviso aviso', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.km', 'Primer aviso de service por KM','Este es el primer aviso [LINK]','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.km', 'Segundo aviso de service por KM','Este es el segundo aviso [LINK]','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.km', 'Tercer aviso de service por KM','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.date', 'Primer aviso de service por fecha','Este es el primer aviso [LINK]','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.date', 'Segundo aviso de service por fecha','Este es el segundo aviso [LINK]','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.date', 'Tercer aviso de service por fecha','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
+
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0);
-COMMIT;
 
 CREATE TABLE KM_DATA (
   id INT NOT NULL IDENTITY ,

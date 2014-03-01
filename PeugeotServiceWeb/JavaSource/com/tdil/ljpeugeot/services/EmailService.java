@@ -16,6 +16,8 @@ import com.tdil.ljpeugeot.model.SystemProperty;
 import com.tdil.ljpeugeot.model.SystemPropertyExample;
 import com.tdil.ljpeugeot.utils.LJPeugeotConfig;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.TransactionalActionWithResult;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 public class EmailService {
 
@@ -29,12 +31,11 @@ public class EmailService {
 	public static final String DOMAIN_KEY = "[DOMAIN]";
 	public static final String KM_KEY = "[KM]";
 	public static final String DEALER_KEY = "[DEALER]";
-
-	public static void sendEmail(String to, Map<String, String> replacements, String notificationtype) throws SQLException {
-		try {
-
+	
+	public static class GetSMTPProperties implements TransactionalActionWithResult<Properties> {
+		@Override
+		public Properties executeInTransaction() throws SQLException {
 			SystemPropertyDAO systemPropertyDAO = DAOManager.getSystemPropertyDAO();
-
 			SystemPropertyExample smtpExample = new SystemPropertyExample();
 			smtpExample.createCriteria().andPropkeyLike("mail.smtp%").andDeletedEqualTo(0);
 			List<SystemProperty> list = systemPropertyDAO.selectSystemPropertyByExample(smtpExample);
@@ -42,7 +43,14 @@ public class EmailService {
 			for (SystemProperty sp : list) {
 				properties.put(sp.getPropkey(), sp.getPropvalue());
 			}
+			return properties;
+		}
+	}
 
+	public static void sendEmail(String to, Map<String, String> replacements, String notificationtype) throws SQLException {
+		try {
+			Properties props = GenericTransactionExecutionService.getInstance().execute(new GetSMTPProperties());
+			
 			NotificationEmailExample notificationEmailExample = new NotificationEmailExample();
 			notificationEmailExample.createCriteria().andNotificationtypeEqualTo(notificationtype);
 			NotificationEmail notificationEmail = DAOManager.getNotificationEmailDAO()
@@ -53,7 +61,7 @@ public class EmailService {
 			for (Map.Entry<String, String> entry : replacements.entrySet()) {
 				content = StringUtils.replace(content, entry.getKey(), entry.getValue());
 			}
-			com.tdil.utils.EmailUtils.sendEmail(content, to, notificationEmail.getFrom(), notificationEmail.getSubject(), properties);
+			com.tdil.utils.EmailUtils.sendEmail(content, to, notificationEmail.getFrom(), notificationEmail.getSubject(), props);
 		} catch (Exception e) {
 			getLog().error(e.getMessage(), e);
 		}

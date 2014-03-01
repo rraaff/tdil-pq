@@ -17,6 +17,32 @@
 <link type="text/css" rel="stylesheet" media="screen" href="../css/sizers.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/font_embeder.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/backdoor.css" />
+<script type='text/javascript' src='../js/jquery-1.8.2.min.js'></script>
+<script>
+function doTestEmail() {
+	var to = $('#testEmail').val();
+	var from = $('#from').val();
+	var subject = $('#subject').val();
+	var content = $('#emailBody').val();
+	$.ajax({
+        type: "POST",
+        cache: false,
+        async: false,
+        url: "../doTestEmail.do",
+        data: {to: to, from: from, subject: subject, content: content },
+        success: function(data) {
+     	  if (data.result == 'OK') {
+				alert("Se ha ejecutado el test");
+			} else {
+				alert("El test no ha sido ejecutado, revise los logs");
+			}
+          },
+          error: function() {
+        	  alert("El test no ha sido ejecutado, revise los logs");
+          }
+      });
+}
+</script>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
@@ -43,11 +69,11 @@
 			</fieldset>
 			<fieldset class="width50per fleft pLeft25">
 				<label class="width100per">Subject</label>
-				<input type="text" name="subject" class="width100per" value="<%=notificationEmail.getSubject()%>">
+				<input type="text" name="subject" id="subject" class="width100per" value="<%=notificationEmail.getSubject()%>">
 			</fieldset>
 			<fieldset class="width50per fleft pRight25">
 				<label class="width100per">From</label>
-				<input type="text" name="from" class="width100per" value="<%=notificationEmail.getFrom()%>">
+				<input type="text" name="from" id="from" class="width100per" value="<%=notificationEmail.getFrom()%>">
 			</fieldset>
 			<fieldset class="width50per fleft pLeft25">
 				<label class="width100per">Replacements</label>
@@ -55,10 +81,13 @@
 			</fieldset>
 			<fieldset class="fleft">
 				<label class="width100per">Contenido del E-Mail</label>
-				<textarea name="content" class="width100per height200"><%=notificationEmail.getContent()%></textarea>
+				<textarea name="content" id="emailBody" class="width100per height200"><%=notificationEmail.getContent()%></textarea>
 			</fieldset>
 			<fieldset class="botonera">
 				<input type="submit" value="Guardar">
+				
+				<input type="text" name="testEmail" id="testEmail">
+				<input type="button" value="Testear" onclick="javascript:doTestEmail()">
 			</fieldset>
 		</form>
 		<% } %>
