@@ -58,6 +58,7 @@ response.addCookie(ecookie1);
 <![endif]-->
 
 <%@ include file="includes/headNotLogged.jsp" %>
+<script type='text/javascript' src='./js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery.cookie.js'></script>
 <script>
 var lastCenter = null;
 $(document).ready(
@@ -199,6 +200,24 @@ $(document).ready(
 	        }
 		});
 
+		$("form[name='GeneratePasswordForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.parent("div"));
+			},
+			rules: { 			},
+			messages: {			},
+			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
+	            $("form[name='GeneratePasswordForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./generatePassword.do",
+	    			dataType: "json",
+	    			success: postGeneratePassword,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
+	    			});
+	        }
+		});
+
 		<%@ include file="includes/closeLayers.jspf" %>
 
 		$( "#closeregisterLayer" ).click(function() {
@@ -245,6 +264,13 @@ $(document).ready(
 		<%if ("true".equals(request.getParameter("openRegister"))) {%>
 			basicRegister();
 		<%}%>
+
+		if (!$.cookie('primerAcceso')) {
+			$("form[name='GeneratePasswordForm'] input[name='username']").attr('value', '');
+			centerLayerWF($(window), $( "#firstAccessLayer" ), function() {$("form[name='GeneratePasswordForm'] input[name='username']").focus();});
+			centerLayer($(window), $( "#centradorModalesfirstAccess" ));
+			$.cookie('primerAcceso', "set", { expires: 20*365, path: "/" });
+		}
 
 	}
 );
@@ -370,6 +396,24 @@ function postResetPassword(data) {
 		}
 	}
 }
+
+function postGeneratePassword(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
+	$( "#firstAccessLayer" ).fadeOut();
+	if (data.result == 'OK') {
+		centerLayer($(window), $( "#firstAccessEmailSentLayer" ));
+		centerLayer($(window), $( "#centradorModalesfirstAccessEmailSent" ));
+	} else {
+		if (data.result == '404') {
+			centerLayer($(window), $( "#firstAccessUserNotFoundLayer" ));
+			centerLayer($(window), $( "#centradorModalesfirstAccessUserNotFound" ));
+		} else {
+			centerLayer($(window), $( "#firstAccessErrorLayer" ));
+			centerLayer($(window), $( "#centradorModalesfirstAccessError" ));
+		}
+	}
+}
+
 $(document).ready(
 	function(){
 		$( "#closeparkingsNotLoggedLayer" ).click(function() {
@@ -407,6 +451,7 @@ function parkingsNotLogged() {
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/layer_first_access.jspf" %>
 
 </body>
 </html>

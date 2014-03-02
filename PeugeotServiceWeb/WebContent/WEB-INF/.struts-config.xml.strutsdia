@@ -688,4 +688,7 @@
  <PROCESS-ITEM NAME="page12" PATH="/servicesDashboard.jsp"
   SHAPE="240,2961,0,0" SUBTYPE="jsp" TITLE="servicesDashboard.jsp"
   TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#generatePassword" NAME="action29"
+  PATH="/generatePassword" SHAPE="32,3393,0,0"
+  TITLE="GeneratePasswordForm" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

@@ -3,7 +3,9 @@ En qué dirección te gustaría recibir el aviso de service y le precargamos el mai
 pero el input editable por si lo quiere modificar?
 
 Como era el tema de la cookie para el primer acceso?
-Antre el primer acceso levantamos un modal que tenga un textito y un botón generar contraseña que haga lo mismo que el paso uno del recupero de password.
+Antre el primer acceso levantamos un modal que tenga un textito y un botón generar contraseña que haga lo 
+mismo que el paso uno del recupero de password.
+HECHO
 
 listado de los services de un auto (pendiente de pablo)
 

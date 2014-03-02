@@ -1,0 +1,58 @@
+<!-- forgot password -->
+<div id="firstAccessLayer" class="layerOnTop" style="display:none; z-index:1500;">
+	<div id="centradorModalesfirstAccess" class="layerModal width600">
+		<section class="modal_header">
+			<h2>Primer accesso</h2>
+			<h3>Es tu primer acceso? Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</h3>
+			<button class="close" cl="firstAccessLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span>
+			<html:form method="POST" action="/generatePassword" styleClass="modal_wrapper">
+				<div class="column">
+					<fieldset>
+						<label>Número</label>
+						<html:text name="GeneratePasswordForm" property="username" />
+					</fieldset>
+				</div>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="link_back" ><span></span>Cerrar</button>
+					<button class="botton_ahead" id="submitfirstAccess">Generar clave<span></span></button>
+				</fieldset>
+			</html:form>
+		</section>
+	</div>
+</div>
+<!-- Forgot password e-mail sent -->
+<div id="firstAccessEmailSentLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesfirstAccessEmailSent" class="defaultLayerStyles">
+		<div class="loginLayerContent">
+			<div id="xContainer"><button class="buttonLink" cl="firstAccessEmailSentLayer">X</button></div>
+			<h3>Atención</h3>
+			<div class="alert alert-block">Te hemos enviado un E-Mail para que crees tu nueva clave.<br />Si no lo recibiste, por favor revisá en correo no deseado.</div>
+			<fieldset>
+				<button type="submit" id="closefirstAccessEmailSentLayer"  class="indexButtonBase">Cerrar</button>
+			</fieldset>
+		</div>
+	</div>
+</div>
+<div id="firstAccessUserNotFoundLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesfirstAccessUserNotFound" class="defaultLayerStyles">
+		<div class="loginLayerContent">
+			<div id="xContainer"><button class="buttonLink" cl="firstAccessUserNotFoundLayer">X</button></div>
+			<h3>Atención</h3>
+			<div class="alert alert-block">El DNI no coincide con un usuario de Lo-Jack</div>
+			<fieldset><button type="submit" id="closefirstAccessUserNotFoundLayer" class="indexButtonBase">Cerrar</button></fieldset>
+		</div>
+	</div>
+</div>
+<div id="firstAccessErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
+	<div id="centradorModalesfirstAccessError" class="defaultLayerStyles">
+		<div class="loginLayerContent">
+			<div id="xContainer"><button class="buttonLink" id="closefirstAccessErrorLayer">X</button></div>
+			<h3>Atención</h3>
+			<div class="alert alert-block">Ha ocurrido un error. Por favor intentelo nuevamente.</div>
+			<!-- fieldset><button type="button" id="closefirstAccessErrorLayer" class="indexButtonBase">Cerrar</button></fieldset-->
+		</div>
+	</div>
+</div>

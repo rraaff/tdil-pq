@@ -6,6 +6,7 @@
  <form-beans>
   <form-bean id="LoginForm" name="LoginForm" type="com.tdil.ljpeugeot.struts.forms.LoginForm"/>
   <form-bean id="RequestResetPasswordForm" name="RequestResetPasswordForm" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
+  <form-bean id="GeneratePasswordForm" name="GeneratePasswordForm" type="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"/>
   <form-bean id="ResetPasswordForm" name="ResetPasswordForm" type="com.tdil.ljpeugeot.struts.forms.ResetPasswordForm"/>
   <form-bean id="RegisterForm" name="RegisterForm" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
   <form-bean id="UpdatePersonForm" name="UpdatePersonForm" type="com.tdil.ljpeugeot.struts.forms.RegisterForm"/>
@@ -80,6 +81,8 @@
   </action>
   
   <action name="RequestResetPasswordForm" path="/requestResetPassword" scope="request" type="com.tdil.ljpeugeot.struts.action.RequestResetPasswordAction"/>
+  <action name="GeneratePasswordForm" path="/generatePassword" scope="request" type="com.tdil.ljpeugeot.struts.action.RequestResetPasswordAction"/>
+  
   <action name="ResetPasswordForm" path="/goToResetPassword" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToResetPasswordAction">
   	<forward name="continue" path="/resetPassword.jsp" redirect="true"/>
   </action>
