@@ -1,3 +1,14 @@
+No estoy seguro.
+
+¿Se puede poner un input de texto en la pantalla donde elegís la concesionaria con la leyenda 
+En qué dirección te gustaría recibir el aviso de service y le precargamos el mail de la cuenta en Thalamus, 
+pero el input editable por si lo quiere modificar?
+
+Como era el tema de la cookie para el primer acceso?
+Antre el primer acceso levantamos un modal que tenga un textito y un botón generar contraseña que haga lo mismo que el paso uno del recupero de password.
+
+hardcodear dni server side
+
 cambio de email debe ser distinto
 
 Cuando llega a la pagina por primera vez, cookie de remember..
@@ -11,7 +22,7 @@ Definiciones pendientes
 
 Falta diseño de las pantallas de android
 
-testing general, usando sqlserver
+testing general, usando sqlserver y jboss
 
 *********************
 desarrollo pendiente

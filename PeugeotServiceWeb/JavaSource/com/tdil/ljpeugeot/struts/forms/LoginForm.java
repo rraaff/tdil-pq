@@ -154,6 +154,9 @@ public class LoginForm extends ActionForm {
 				}
 			}
 		}
+		if (!user.getPeugeotIsClient()) {
+			throw new HttpStatusException(HttpStatus.SC_UNAUTHORIZED, "No es peugeot user");
+		}
 		return user;
 	}
 	
