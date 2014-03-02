@@ -277,7 +277,7 @@
   </action>
   <action name="ChangeDealerForm" parameter="WebsiteUser" path="/changeDealer" scope="session" type="com.tdil.struts.actions.SaveAction">
   	<forward name="failure" path="/cambiarConcesionario.jsp"/>
-  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  	<forward name="continue" path="/servicesDashboard.jsp" redirect="true"/>
   </action>
   
   
