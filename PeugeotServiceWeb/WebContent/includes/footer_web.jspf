@@ -10,7 +10,7 @@
 								<li><a target="_blank" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Les Occasions du Lion', 'main');" href="http://www.occasionsdulion.com/"><span class="button_light_left"></span><span class="button_light_middle">Les Occasions du Lion</span><span class="button_light_right"></span></a></li>
 								<li><a target="_blank" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Peugeot webStore', 'main');" href="http://www.peugeotwebstore.com/?s3path=footerauto"><span class="button_light_left"></span><span class="button_light_middle">Peugeot webStore</span><span class="button_light_right"></span></a></li>
 								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'HUB Social', 'main');" href="/hub-social/"><span class="button_light_left"></span><span class="button_light_middle">HUB Social</span><span class="button_light_right"></span></a></li>
-								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Contact', 'main');" href="/contactez-nous/"><span class="button_light_left"></span><span class="button_light_middle">Contact</span><span class="button_light_right"></span></a></li>
+								<!-- li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Contact', 'main');" href="/contactez-nous/"><span class="button_light_left"></span><span class="button_light_middle">Contact</span><span class="button_light_right"></span></a></li-->
 								<li><a class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Devenir agent', 'main');" href="/devenir-agent-peugeot/"><span class="button_light_left"></span><span class="button_light_middle">Devenir agent</span><span class="button_light_right"></span></a></li>
 								<li><a target="_self" class="button_light" onclick="kpp_tracking_event('footer/top_left_links', 'Actualités', 'main');" href="/actualites/"><span class="button_light_left"></span><span class="button_light_middle">Actualités</span><span class="button_light_right"></span></a></li>
 							</ul>
@@ -115,7 +115,7 @@
 								<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', 'Vie Privée', 'main');" href="/vie-privee/">Vie privée</a></li>
 								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Plan du site', 'main');" href="/plan-du-site/">Plan du site</a></li>
 								<li><a onclick="kpp_tracking_event('footer/bottom_left_links', 'Infos légales', 'main');" href="/infos-legales/">Légal</a></li>
-								<li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', 'Contact', 'main');" href="http://www.peugeot.fr/contactez-nous/">Contact</a></li>
+								<!--li><a target="_self" onclick="kpp_tracking_event('footer/bottom_left_links', 'Contact', 'main');" href="http://www.peugeot.fr/contactez-nous/">Contact</a></li-->
 								<li><span class="separator"></span></li>
 							</ul>
 						</div>

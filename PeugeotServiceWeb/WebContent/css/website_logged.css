@@ -6,7 +6,7 @@
 div#main_menu ul.main_menu_ul li a			{ padding:0px 20px; }
 
 /* PAGE TITLE */
-#page_title div.avatar_container			{ padding-left:401px!important; }
+#page_title div.avatar_container			{ padding-left:401px!important; display:inline-block; }
 
 /* MODAL WINDOWS */
 

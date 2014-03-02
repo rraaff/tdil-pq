@@ -39,7 +39,7 @@ div#main_menu ul.main_menu_ul li.home a:active	{ background:url(../images/skn_pe
 #page_title div.breadcrumb span		{  }
 #page_title div.title				{  }
 #page_title div.title h1			{ color:#fff;font:32px/32px 'PeugeotLight',Arial, sans-serif; font-smooth:always!important; -webkit-font-smoothing:antialiased!important; text-shadow:1px 1px 1px rgba(0,0,0,0.004); margin:8px 0 0 0; padding:0 145px; }
-#page_title div.avatar_container	{ background:url(../images/skn_peugeot/bgs/base_avatar.png) no-repeat right center; top:-70px; left:50%; padding-left:389px; position:relative; z-index:2; display:inline-block; }
+#page_title div.avatar_container	{ background:url(../images/skn_peugeot/bgs/base_avatar.png) no-repeat right center; top:-70px; left:50%; padding-left:389px; position:relative; z-index:2; display:none; }
 div.avatar_container ul				{ display:inline-block; }
 div.avatar_container ul li.avatarLi	{ padding:20px 16px 16px; display:inline-block; }
 img#avatarImg						{ width:48px; height:48px; }
