@@ -662,4 +662,26 @@
   SHAPE="32,4401,0,0" TITLE="AddServiceForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#doTestEmail" NAME="action27" PATH="/doTestEmail"
   SHAPE="32,4401,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#goToChangeDealer" NAME="action28"
+  PATH="/goToChangeDealer" SHAPE="32,2849,0,0" TITLE="ChangeDealerForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/cambiarConcesionario.jsp" TARGET="page22" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page22" PATH="/cambiarConcesionario.jsp"
+  SHAPE="448,2849,0,0" SUBTYPE="jsp" TITLE="cambiarConcesionario.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/changeDealer.do"
+   SUBTYPE="confirmed" TARGET="action30" TITLE="/changeDealer.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#changeDealer" NAME="action30" PATH="/changeDealer"
+  SHAPE="32,2849,0,0" TITLE="ChangeDealerForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/cambiarConcesionario.jsp" TARGET="page22" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

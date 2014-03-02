@@ -24,6 +24,7 @@
   <form-bean id="EditVehicleDataForm" name="EditVehicleDataForm" type="com.tdil.ljpeugeot.struts.forms.prevent.EditVehicleDataForm"/>
   <form-bean id="ServicesForm" name="ServicesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.ServicesForm"/>
   <form-bean id="AddServiceForm" name="AddServiceForm" type="com.tdil.ljpeugeot.struts.forms.prevent.AddServiceForm"/>
+  <form-bean id="ChangeDealerForm" name="ChangeDealerForm" type="com.tdil.ljpeugeot.struts.forms.prevent.ChangeDealerForm"/>
   
   <form-bean id="LoginCCForm" name="LoginCCForm" type="com.tdil.ljpeugeot.struts.forms.LoginCCForm"/>
   <form-bean id="SearchUserForm" name="SearchUserForm" type="com.tdil.ljpeugeot.struts.forms.SearchUserForm"/>
@@ -270,6 +271,14 @@
   </action>
   
   <action name="AddServiceForm" scope="request" parameter="WebsiteUser" path="/addService" type="com.tdil.struts.actions.SaveAjaxAction"/>
+
+  <action name="ChangeDealerForm" parameter="WebsiteUser" path="/goToChangeDealer" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToChangeDealerAction">
+  	<forward name="continue" path="/cambiarConcesionario.jsp"/>
+  </action>
+  <action name="ChangeDealerForm" parameter="WebsiteUser" path="/changeDealer" scope="session" type="com.tdil.struts.actions.SaveAction">
+  	<forward name="failure" path="/cambiarConcesionario.jsp"/>
+  	<forward name="continue" path="/home.jsp" redirect="true"/>
+  </action>
   
   
   <action path="/doTestEmail" type="com.tdil.ljpeugeot.struts.action.TestEmailAjaxAction"/>

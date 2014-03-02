@@ -22,14 +22,11 @@
 <script>
 
 function selectDealer(dealerId) {
-	$('#selectedDealer').val(dealerId);
-}
-
-function selectForService() {
-	alert("selected " + $('#selectedDealer').val());
+	$('#idDealer').val(dealerId);
 }
 
 </script>
+<form action="./goToChangeDealer.do">
 <% int idCity = Integer.parseInt(request.getParameter("idCity"));
 Collection<Dealer> dealers = DealersService.getDealers(idCity);
 %>
@@ -40,7 +37,8 @@ Collection<Dealer> dealers = DealersService.getDealers(idCity);
 	- <%=StringUtils.notNullValueOf(dealer.getPhone())%>
 	- <%=StringUtils.notNullValueOf(dealer.getEmail())%><br>
 <% } %>
-<input type="hidden" id="selectedDealer" name="selectedDealer">
-<input type="button" onclick="selectForService()" Value="Seleccionar para mis service"><br>
+<input type="hidden" id="idDealer" name="idDealer">
+<input type="submit" Value="Seleccionar para mis service"><br>
+</form>
 
 <%@ include file="includes/catchModal.jspf" %>
