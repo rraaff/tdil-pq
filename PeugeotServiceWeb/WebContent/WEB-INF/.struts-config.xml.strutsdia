@@ -681,7 +681,11 @@
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
    PATH="/cambiarConcesionario.jsp" TARGET="page22" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/home.jsp"
-   TARGET="page7" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/servicesDashboard.jsp" TARGET="page12" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page12" PATH="/servicesDashboard.jsp"
+  SHAPE="240,2961,0,0" SUBTYPE="jsp" TITLE="servicesDashboard.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>
