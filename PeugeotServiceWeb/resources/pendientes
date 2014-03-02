@@ -38,3 +38,19 @@ Tipo website
 	  callcenter
 	  admin
 
+****************************************************
+CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
+****************************************************
+- Hardcodear DNI como tipo de doc en todos lados 
+  (login, recupero, cambio de pass y mis datos
+  
+- Revisar que no me funcionan los botones del 
+  recupero de password
+
+- Revisar la manera en la que está hecho el link al 
+  homepage desde <li class="home"><a href="home.jsp...
+
+- En layer_parking_not_logged.jspf hay que ponerle al
+  boton <button class="botton_ahead">Recuperar clave...
+  Una action que cierre ese layer y abra el de recupero
+****************************************************

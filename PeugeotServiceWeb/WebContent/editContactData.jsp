@@ -78,17 +78,17 @@ if (apk != null && apk) {
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1relation.err")%>
 				</fieldset>
 				<fieldset>
-					<label>1 phone</label>
+					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact1phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1phone.err")%>
 				</fieldset>
 				<fieldset>
-					<label>contact1secword</label>
+					<label>Palabra de seguridad</label>
 					<html:text name="EditContactDataForm" property="contact1secword" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1secword.err")%>
 				</fieldset>
 				<fieldset>
-					<label>contact1healthi</label>
+					<label>Cobertura médica</label>
 					<html:text name="EditContactDataForm" property="contact1healthi" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1healthi.err")%>
 				</fieldset>
@@ -98,12 +98,12 @@ if (apk != null && apk) {
 			<h3>Segundo contacto</h3>
 			<div class="mini_form_wrapper">
 				<fieldset>
-					<label>contact2name</label>
+					<label>Nombre</label>
 					<html:text name="EditContactDataForm" property="contact2name" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2name.err")%>
 				</fieldset>
 				<fieldset>
-					<label>2 relacion</label>
+					<label>Relación</label>
 					<html:select name="EditContactDataForm" property="contact2relation">
 						<option value="">Seleccione...</option>
 						<option <%="RELATIVE".equals(editContactDataForm.getContact2relation()) ? "selected" : ""%> value="RELATIVE">
@@ -116,7 +116,7 @@ if (apk != null && apk) {
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2relation.err")%>
 				</fieldset>
 				<fieldset>
-					<label>contact2phone</label>
+					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact2phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2phone.err")%>
 				</fieldset>
@@ -126,12 +126,12 @@ if (apk != null && apk) {
 			<h3>Segundo contacto</h3>
 			<div class="mini_form_wrapper">
 				<fieldset>
-					<label>contact3name</label>
+					<label>Nombre</label>
 					<html:text name="EditContactDataForm" property="contact3name" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3name.err")%>
 				</fieldset>
 				<fieldset>
-					<label>3 relacion</label>
+					<label>Relación</label>
 					<html:select name="EditContactDataForm" property="contact3relation">
 						<option value="">Seleccione...</option>
 						<option <%="RELATIVE".equals(editContactDataForm.getContact3relation()) ? "selected" : ""%> value="RELATIVE">
@@ -144,7 +144,7 @@ if (apk != null && apk) {
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3relation.err")%>
 				</fieldset>
 				<fieldset>
-					<label>contact3phone</label>
+					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact3phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3phone.err")%>
 				</fieldset>
