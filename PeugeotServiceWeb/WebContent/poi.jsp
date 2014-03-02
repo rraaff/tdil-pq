@@ -409,7 +409,6 @@
 		</section>
 	</div>
 </section>
-<%@ include file="includes/footerProductoHome.jspf" %>
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">

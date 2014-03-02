@@ -423,9 +423,6 @@ if (apk) {
 		</div>
 	</div>
 </div>
-<% if (!apk) { %>
-<%@ include file="includes/footerProductoHome.jspf" %>
-<% } %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/version.jspf" %>

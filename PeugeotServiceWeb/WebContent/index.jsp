@@ -118,7 +118,6 @@ $(document).ready(
 				}
 			},
 			rules: { 
-				'documentType': {required: true},
 				'document': {required: true, digits: true},
 				'firstName': {required: true},
 				'lastName': {required: true},
@@ -131,7 +130,6 @@ $(document).ready(
 				'birthDate': {required: true}
 			},
 			messages: {	
-				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
 				'document': {required: "<span>Ingrese el número de documento.</span>",
 					digits: "<span>Ingrese solo números.<span>"},
 				'firstName': {required: "<span>Ingrese el nombre.</span>"},
@@ -161,12 +159,10 @@ $(document).ready(
 				error.appendTo( element.parent("fieldset").next("div"));
 			},
 			rules: {
-				'documentType': {required: true},
 				'username': {required: true, digits: true},
 				'password': {required: true}
 			},
 			messages: {
-				'documentType': {required: "<span>Seleccione el tipo de documento.</span>"},
 				'username': {required: "<span>Ingrese el número de documento.</span>",
 					digits: "<span>Ingrese solo números.<span>"},
 				'password': {required: "<span>Ingrese la clave.</span>"}
@@ -238,6 +234,12 @@ $(document).ready(
 			$( "#loginInvalidLayer" ).fadeOut();
 		});
 
+		$( "#recoverPasswordFromPois" ).click(function() {
+			$( "#parkingsNotLoggedLayer" ).fadeOut();
+			forgotPassword();
+			return false;
+		});
+
 		<%@ include file="includes/closeLegalesLayer.jsp" %>
 
 		<%if ("true".equals(request.getParameter("openRegister"))) {%>
@@ -286,7 +288,6 @@ function basicRegister() {
 	$("form[name='RegisterForm'] select").each(function(index, param) {
 		$(param).val('');
 	});
-	$("form[name='RegisterForm'] select[name=documentType]").val('1');
 
 	$("form[name='RegisterForm'] input[name='optInAccepted']").each(function(index, param){
 		$(param).prop('checked', true);
@@ -302,7 +303,6 @@ function login() {
 	$('#loginerr').css('display', 'none');
 	$("form[name='LoginForm'] input[name='username']").attr('value', '');
 	$("form[name='LoginForm'] input[name='password']").attr('value', '');
-	$("form[name='LoginForm'] select[name=documentType]").val('1');
 	//$("form[name='LoginForm'] input[name='username']").focus();
 	centerLayerWF($(window), $( "#loginLayer" ), function() {$("form[name='LoginForm'] input[name='username']").focus();});
 	centerLayer($(window), $( "#centradorModalesLogin" ));
@@ -310,7 +310,6 @@ function login() {
 
 function forgotPassword() {
 	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
-	$("form[name='RequestResetPasswordForm'] select[name=documentType]").val('1');
 	centerLayerWF($(window), $( "#forgotPasswordLayer" ), function() {$("form[name='RequestResetPasswordForm'] input[name='username']").focus();});
 	centerLayer($(window), $( "#centradorModalesforgotPass" ));
 }

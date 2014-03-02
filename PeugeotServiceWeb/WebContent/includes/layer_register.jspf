@@ -13,20 +13,6 @@
 				%>
 				<div class="scrollable">
 					<fieldset>
-						<label class="ajuste">* Tipo de doc</label>
-						<html:select name="RegisterForm" property="documentType" >
-							<option value="">Seleccione...</option>
-							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-								<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
-									<%=codBean.getName()%></option>
-							<% } %>
-						</html:select>
-						<div class="errorInForm"></div>
-						<div class="myRow errorField" style="display: none;" id="p.profile.documentType">
-							<div id="err.profile.documentType"></div>
-						</div>
-					</fieldset>
-					<fieldset>
 						<label class="ajuste">* Número</label>
 						<html:text name="RegisterForm" property="document" />
 						<div class="errorInForm"></div>

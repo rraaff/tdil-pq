@@ -1,20 +1,9 @@
-No estoy seguro.
-
 ¿Se puede poner un input de texto en la pantalla donde elegís la concesionaria con la leyenda 
 En qué dirección te gustaría recibir el aviso de service y le precargamos el mail de la cuenta en Thalamus, 
 pero el input editable por si lo quiere modificar?
 
 Como era el tema de la cookie para el primer acceso?
 Antre el primer acceso levantamos un modal que tenga un textito y un botón generar contraseña que haga lo mismo que el paso uno del recupero de password.
-
-hardcodear dni server side
-
-cambio de email debe ser distinto
-
-Cuando llega a la pagina por primera vez, cookie de remember..
-
-verificar el is peugeot...
-agregar tokens y etc de thalamus
 
 listado de los services de un auto (pendiente de pablo)
 
@@ -25,47 +14,32 @@ Falta diseño de las pantallas de android
 testing general, usando sqlserver y jboss
 
 *********************
-desarrollo pendiente
-
-retornar el isPeugeot.. en el login y la cantidad de mensajes pendientes
-
-mismo para los servicios rest
-
-*********************
 
 tdil/usu4r10td1l
-
-paginas
-cambiar datos de contactos
-
-pagina seleccion de vechiculo is hay mas de uno
-pagina del vehiculo
-	de aca puedo ir a cambiarle la concesionaria
-	ver todos los services hechos
-		de aca puedo agregar un nuevo service
-
-Usuarios
-Tipo website
-	  callcenter
-	  admin
 
 ****************************************************
 CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
 ****************************************************
 - Hardcodear DNI como tipo de doc en todos lados 
   (login, recupero, cambio de pass y mis datos
+HECHO
   
 - Revisar que no me funcionan los botones del 
   recupero de password
+HECHO
 
 - Revisar la manera en la que está hecho el link al 
   homepage desde <li class="home"><a href="home.jsp...
+No se entiende que hay que hacer
 
 - En selectVehicleForEditData.jsp le puse a mano
   la opción TODOS. <li><a href="#">Todos</a></li>
   en los casos que aplique debería venir en el for
+Esta pagina no tenias que usarla, esa fue el primer demo!!!!
+Lo que tenes que ver es servicesDashboard.jsp, esa tiene los links a las paginas quue corresponden
 
 - En layer_parking_not_logged.jspf hay que ponerle al
   boton <button class="botton_ahead">Recuperar clave...
   Una action que cierre ese layer y abra el de recupero
+HECHO
 ****************************************************

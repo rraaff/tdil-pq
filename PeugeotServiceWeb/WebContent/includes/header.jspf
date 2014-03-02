@@ -7,7 +7,6 @@
 		 	<li><a href="javascript:contactLoJack();" title="Envienos una consulta">Contacto</a></li>
 		 </ul>
 	</section>
-	
 	<section id="header_all">
 		<div class="logo"></div>
 		<div class="signature"></div>

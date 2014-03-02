@@ -20,7 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="fonts/peugeot/fonts.css" />
+<!-- link type="text/css" rel="stylesheet" media="screen" href="fonts/peugeot/fonts.css" /-->
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
@@ -45,19 +45,9 @@
 	<%@ include file="includes/contactJS.jspf" %>
 	
 
-	function showVluMessages(dni) {
-		<%@ include file="includes/blockUI.jspf" %>
-			<%@ include file="includes/unblockUI.jspf" %>
-			if (status == "error") {
-				errorAjax();
-			} else {
-				centerLayer($(window), $( "#vluMessagesLayer" ));
-				centerLayer($(window), $( "#centradorModalesVluMessages" ));
-			}
-		});
-	}
-	
 </script>
+	<script>
+		</script>
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>

@@ -15,18 +15,6 @@
 				<div class="alert alert-error" id="loginerr" style="display: none;"></div>
 				<div class="column">
 					<fieldset>
-						<label>Tipo doc</label>
-						<% LoginForm loginForm = (LoginForm)session.getAttribute("LoginForm"); %>
-						<html:select name="LoginForm" property="documentType" >
-							<option value="">Seleccione...</option>
-							<% for (DocumentTypeBean codBean : LoginForm.getDocumentTypes()) { %>
-								<option value="<%=codBean.getId()%>" <%=1 == codBean.getId() ? "selected" : ""%>>
-									<%=codBean.getName()%></option>
-							<% } %>
-						</html:select>
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
 						<label>Clave</label>
 						<html:password name="LoginForm" property="password"/>
 					</fieldset>
