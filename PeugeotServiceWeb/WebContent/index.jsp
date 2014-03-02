@@ -397,7 +397,6 @@ function parkingsNotLogged() {
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/wheel_menu.jspf" %>
-<%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/copyright.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
 
@@ -406,8 +405,8 @@ function parkingsNotLogged() {
 <%@ include file="includes/layer_register.jspf" %>
 <%@ include file="includes/layer_login.jspf" %>
 <%@ include file="includes/layer_password_recovery.jspf" %>
-<%@ include file="includes/layer_parking_not_logged.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
 
 </body>

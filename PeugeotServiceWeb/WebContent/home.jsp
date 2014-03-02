@@ -10,11 +10,12 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Inicio</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
@@ -57,51 +58,28 @@
 	
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
-		</div>
-	</div>
-</header>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/wheel_menu.jspf" %>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-<a href="./servicesDashboard.jsp">servicesDashboard</a>
-
-<%@ include file="includes/layer_contact.jspf" %>
-
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_parking_not_logged.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
 <%@ include file="includes/errorAjaxLayer.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
-
-<!-- Update person -->
 <div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="vluMessages">
 		Consultando datos...
 	</div>
 </div>
-
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>
