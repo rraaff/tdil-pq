@@ -19,79 +19,63 @@
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
 --%><%@ include file="includes/mustBePreventUser.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Inicio</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
-}
-</style>
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="fonts/peugeot/fonts.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
+<%@ include file="includes/headLogged.jsp" %>
+</head>
+<%@ include file="includes/version.jspf" %>
+<body>
 <%
 	Boolean apk = (Boolean)session.getAttribute("USING_APK");
 if (apk != null && apk) {
 	isAndroid = true;
 }
 %>
-<%
-	if (usingMobile || isAndroid) {
-%>
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		
-		@media only screen and (orientation: landscape) and (max-width: 600px) {
-			#shortdesc {
-		    	float:right;
-		    	width:25%;
-		    }
-			#map {
-				width:100%;
-				height:100%;
-			}
-			#docs {
-				font-size:12px;
-			}
-		}
-		#docs p {
-			font-size:12px;
-		    margin-bottom:0.5em;
-		}
-		#tags { display: none; }
-		
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<%
-	}
-%>
-<style type="text/css">
-#productsMenu ul li.tabCar {
-	background:#f05224;
-}
-</style>
-<%@ include file="includes/headLogged.jsp" %>
-
-<% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>
-<% for (Vehicle vehicle : editVehicleDataForm.getVehicles()) { %>
-	<a href="./editVehicleData.do?id=<%=vehicle.getId() %>"><%=vehicle.getDescription() %></a><br>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="page_header">
+		<h2>Seleccione el vehículo</h2>
+		<p></p>
+	</div>
+	<div class="template_baratleft">
+		<div class="bar">
+			<ul class="selection_module">
+				<li><a href="#">Todos</a></li>
+				<% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>
+				<% for (Vehicle vehicle : editVehicleDataForm.getVehicles()) { %>
+					<li><a href="./editVehicleData.do?id=<%=vehicle.getId() %>"><%=vehicle.getDescription() %></a></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
+
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_parking_not_logged.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
+<%@ include file="includes/layer_legales.jspf" %>
 
 </body>
 </html>

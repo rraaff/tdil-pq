@@ -21,74 +21,22 @@
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
 --%><%@ include file="includes/mustBePreventUser.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Inicio</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
-}
-</style>
-
-<%
-	Boolean apk = (Boolean)session.getAttribute("USING_APK");
-if (apk != null && apk) {
-	isAndroid = true;
-}
-%>
-<%
-	if (usingMobile || isAndroid) {
-%>
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		
-		@media only screen and (orientation: landscape) and (max-width: 600px) {
-			#shortdesc {
-		    	float:right;
-		    	width:25%;
-		    }
-			#map {
-				width:100%;
-				height:100%;
-			}
-			#docs {
-				font-size:12px;
-			}
-		}
-		#docs p {
-			font-size:12px;
-		    margin-bottom:0.5em;
-		}
-		#tags { display: none; }
-		
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<%
-	}
-%>
-<style type="text/css">
-#productsMenu ul li.tabCar {
-	background:#f05224;
-}
-</style>
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="fonts/peugeot/fonts.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
 <script>
 $(document).ready(
@@ -161,46 +109,78 @@ $(document).ready(
 </script>
 
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-
-<% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>
-<html:form method="POST" action="/saveVehicleData">
-	<div class="scrollable">
-		<fieldset>
-			<label class="ajuste">Provincia</label>
-			<html:select name="EditVehicleDataForm" property="idState">
-				<option value="">Seleccione...</option>
-				<% for (State state : editVehicleDataForm.getStates()) { %>
-					<option <%=	state.getId() == editVehicleDataForm.getIdState()? "selected" : ""%> value="<%=state.getId()%>">
-					<%=state.getName()%></option>
-				<% } %>
-			</html:select>
-		</fieldset>
-		<fieldset>
-			<label class="ajuste">Ciudades</label>
-			<html:select name="EditVehicleDataForm" property="idCity">
-				<option value="">Seleccione...</option>
-				<% for (City city : editVehicleDataForm.getCities()) { %>
-					<option <%=	city.getId() == editVehicleDataForm.getIdCity()? "selected" : ""%> value="<%=city.getId()%>">
-					<%=city.getName()%></option>
-				<% } %>
-			</html:select>
-		</fieldset>
-		<fieldset>
-			<label class="ajuste">Concesionarias</label>
-			<html:select name="EditVehicleDataForm" property="idDealer">
-				<option value="">Seleccione...</option>
-				<% for (Dealer dealer : editVehicleDataForm.getDealers()) { %>
-					<option <%=	dealer.getId() == editVehicleDataForm.getIdDealer()? "selected" : ""%> value="<%=dealer.getId()%>">
-					<%=dealer.getName()%></option>
-				<% } %>
-			</html:select>
-		</fieldset>
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+}
+%>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<div class="illustration">
+			<img src="images/skn_peugeot/bgs/photos/locations.png" />
+		</div>
+		<div class="content_template">
+			<h2>Seleccione la agencia o service oficial donde desea realizar el próximo service</h2>
+			<p>Determine la provincia, luego localidad y seleccione de la lista que aparecerá a continuación.</p>
+			<% EditVehicleDataForm editVehicleDataForm = (EditVehicleDataForm)session.getAttribute("EditVehicleDataForm");%>
+			<html:form method="POST" action="/saveVehicleData" styleClass="template_form_page">
+				<div class="template_form_wrapper">
+					<fieldset>
+						<label>Provincia</label>
+						<html:select name="EditVehicleDataForm" property="idState">
+							<option value="">Seleccione...</option>
+							<% for (State state : editVehicleDataForm.getStates()) { %>
+								<option <%=	state.getId() == editVehicleDataForm.getIdState()? "selected" : ""%> value="<%=state.getId()%>">
+								<%=state.getName()%></option>
+							<% } %>
+						</html:select>
+					</fieldset>
+					<fieldset>
+						<label>Ciudades</label>
+						<html:select name="EditVehicleDataForm" property="idCity">
+							<option value="">Seleccione...</option>
+							<% for (City city : editVehicleDataForm.getCities()) { %>
+								<option <%=	city.getId() == editVehicleDataForm.getIdCity()? "selected" : ""%> value="<%=city.getId()%>">
+								<%=city.getName()%></option>
+							<% } %>
+						</html:select>
+					</fieldset>
+					<fieldset>
+						<label>Concesionarias</label>
+						<html:select name="EditVehicleDataForm" property="idDealer">
+							<option value="">Seleccione...</option>
+							<% for (Dealer dealer : editVehicleDataForm.getDealers()) { %>
+								<option <%=	dealer.getId() == editVehicleDataForm.getIdDealer()? "selected" : ""%> value="<%=dealer.getId()%>">
+								<%=dealer.getName()%></option>
+							<% } %>
+						</html:select>
+					</fieldset>
+				</div>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" type="submit" id="submitregister">Guardar<span></span></button>
+				</fieldset>
+			</html:form>			
+			<a href="./viewServices.do?id=<%=editVehicleDataForm.getSelectedVehicle().getId()%>">Services</a>
+		</div>
 	</div>
-	<fieldset>
-		<input type="submit" id="submitregister" value="Guardar" class="buttonSend">
-	</fieldset>
-</html:form>
-<a href="./viewServices.do?id=<%=editVehicleDataForm.getSelectedVehicle().getId()%>">Services</a>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
+
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_parking_not_logged.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
+<%@ include file="includes/layer_legales.jspf" %>
+
 </body>
 </html>

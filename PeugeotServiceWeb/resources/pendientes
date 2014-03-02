@@ -50,6 +50,10 @@ CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
 - Revisar la manera en la que está hecho el link al 
   homepage desde <li class="home"><a href="home.jsp...
 
+- En selectVehicleForEditData.jsp le puse a mano
+  la opción TODOS. <li><a href="#">Todos</a></li>
+  en los casos que aplique debería venir en el for
+
 - En layer_parking_not_logged.jspf hay que ponerle al
   boton <button class="botton_ahead">Recuperar clave...
   Una action que cierre ese layer y abra el de recupero

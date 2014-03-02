@@ -88,6 +88,16 @@ div.mini_form_wrapper select,
 div.mini_form_wrapper textarea						{ border:solid 1px #d9d9d9; color:#595a67; font-size:13px; font-family:Arial; padding:8px; margin:7px 0; width:150px; }
 div.mini_form_wrapper select						{ width:169px; }
 
+form.template_form_page								{ width:100%; margin:0 auto; }
+div.template_form_wrapper							{ background:#f0f0f0; width:100%; padding:10px 25px; display:inline-block; }
+
+div.template_half div.content_template fieldset					{ width:100%; float:left; display:inline-block; }
+div.template_half div.content_template label					{ color:#595a67; font-size:13px; width:50%; display:inline-block; padding:15px 25px 15px 0; vertical-align:top; }
+div.template_half div.content_template input[type="text"],
+div.template_half div.content_template input[type="password"],
+div.template_half div.content_template select,
+div.template_half div.content_template textarea					{ border:solid 1px #d9d9d9; color:#595a67; font-size:13px; font-family:Arial; padding:8px; margin:7px 0; width:150px; }
+div.template_half div.content_template select					{ width:48%; }
 
 /* BUTTONS */
 button.link_back			{ color:#555562; border:none; background:transparent; font-size:13px; font-family:'Peugeot'; text-transform:uppercase; padding:10px; margin:0; cursor:pointer; float:left; }
@@ -123,15 +133,44 @@ button#services:focus		{ outline:none; }
 
 div#wheel_animation_container		{ background:url(../images/skn_peugeot/bgs/wheel_whole.png); background-position:50% 0; background-repeat:no-repeat; width:100%; min-width:1250px; height:800px; top:-603px;; left:0px; position:relative; z-index:11; }
 
+
+/* SERVICE SECTTION MENU */
+section#service_section_menu								{ background-color:#fff;background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_base.png); background-repeat:repeat-x; background-position:center top; width:100%; height:53px; }
+section#service_section_menu ul.subproduc_menu				{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:left center; width:1000px; margin:0 auto; }
+section#service_section_menu ul.subproduc_menu li			{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:right center; color:#373743; font-size:13px; font-family:'PeugeotStyle'; display:inline-block; }
+section#service_section_menu ul.subproduc_menu li a			{ color:#373743; line-height:13px; text-decoration:none; padding:20px 30px; display:inline-block; }
+section#service_section_menu ul.subproduc_menu li a:hover	{ color:#00aad5; }
+section#service_section_menu ul.subproduc_menu li a:active	{}
+
 /* CENTRAL CONTENT WHITE */
-section#main_content_regular_page								{ background-color:#fff; background-image:url(../images/skn_peugeot/bgs/regular_page_degrade.png); background-repeat:repeat-x; background-position:center top; width:100%; padding:25px 0; display:inline-block; }
+section#main_content_regular_page								{ background-color:#fff; background-image:url(../images/skn_peugeot/bgs/regular_page_degrade.png); background-repeat:repeat-x; background-position:center top; text-align:center; width:100%; padding:50px 0 25px; display:inline-block; }
 section#main_content_regular_page div.page_header				{ width:1000px; margin:0 auto; padding:10px 0; }
-section#main_content_regular_page div.page_header h2			{ color:#2caed6; font-size:20px; font-family:'PeugeotLight'; line-height:30px; }
-section#main_content_regular_page div.page_header p				{ color:#595a67; font-size:13px; font-family:Arial; line-height:18px; padding:6px 0; }
+section#main_content_regular_page div.page_header h2			{ color:#2caed6; font-size:20px; font-family:'PeugeotLight'; line-height:30px; text-align:left; }
+section#main_content_regular_page div.page_header p				{ color:#595a67; font-size:13px; font-family:Arial; line-height:18px; text-align:left; padding:6px 0; }
 
 div.column1of3					{ width:313px; margin:0 0 0 30px; float:left; }
 div.column1of3:first-of-type	{ margin:0; }
 div.column1of3 h3				{ color:#3b3a48; font-size:20px; font-family:'PeugeotLight'; line-height:30px; margin:0 0 20px; display:inline-block; }
+
+/* PAGE TEMPLATES */
+div.template_baratleft,
+div.template_half								{ width:1000px; display:inline-block; }
+div.template_baratleft div.bar					{ width:200px; margin:0 25px 0 0; float:left; }
+div.template_baratleft div.content_template		{ width:775px; margin:42px 0 0; float:left; }
+
+div.template_half div.illustration				{ width:500px; float:left; }
+div.template_half div.illustration img			{ width:479px; }
+div.content_template							{ text-align:left; width:479px; margin:0 0 0 21px; float:left; }
+div.content_template h2							{ color: #373743; font-size: 20px; font-family: 'Peugeot'; padding: 4px 80px 10px 0; }
+div.content_template p							{ color: #595a67; font-size: 13px; padding: 0 100px 18px 0; }
+
+ul.selection_module						{ border:solid 1px #cdcdcd; border-radius:5px; background:#fff; }
+ul.selection_module li					{ background:#ffffff; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background:-moz-linear-gradient(top, #ffffff 0%, #e8e8e8 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e8e8e8)); background:-webkit-linear-gradient(top, #ffffff 0%,#e8e8e8 100%); background:-o-linear-gradient(top, #ffffff 0%,#e8e8e8 100%); background:-ms-linear-gradient(top, #ffffff 0%,#e8e8e8 100%); background:linear-gradient(to bottom, #ffffff 0%,#e8e8e8 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 ); border-bottom:solid 1px #cdcdcd; color:#373743; font-size:12px; font-family:'Peugeot'; font-weight:600; line-height:12px; text-align:left; text-transform:uppercase; }
+ul.selection_module li a				{ color:#373743; font-size:12px; font-family:'Peugeot'; font-weight:600; line-height:12px; text-decoration:none; width:100%; padding:14px; display:inline-block; }
+ul.selection_module li a:hover			{ color:#00aad5; }
+ul.selection_module li a.active			{ color:#00aad5; }
+ul.selection_module li:first-of-type	{ border-top-right-radius:5px; border-top-left-radius:5px; }
+ul.selection_module li:last-of-type		{ border-bottom-right-radius:5px; border-bottom-left-radius:5px;  }
 
 /* FOOTER */
 footer						{ color:#fff; }
