@@ -88,9 +88,15 @@
 		});
 	}
 	
-	function addService(idVehicle) {
+	function addService(domain, idVehicle) {
+		$('#addServiceDomain').prop('innerHTML', domain);
+		$('#addServiceLayer').fadeIn(500);
 		$("input[name=idVehicle]").val(idVehicle);
 	}
+	function cancelAddService(idVehicle) {
+		$('#addServiceLayer').fadeOut(500);
+	}
+	
 	function postAdd(data) {
 		<%@ include file="includes/unblockUI.jspf" %>
 		if (data.result == 'OK') {
@@ -147,8 +153,9 @@ DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
 	Usted no tiene ningun vehiculo asociado
 <% } else { %>
 	Vehiculo (Dominio) | KMs | Requiere Service | Ultimo Service KM | Fecha de ultimo service <br>
+	<ul>
 	<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-		<input type="radio" name="selectradio" onclick="addService(<%=vehicleValueObject.getVehicle().getId()%>)">
+		<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)">
 		<%if (vehicleValueObject.getModel() !=  null) { %>
 			<%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)
 		<% } else { %>
@@ -163,14 +170,19 @@ DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
 		<%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%> |
 		<%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%> |
 		<a href="./verServicesDeVehiculo.jsp?idVehicle=<%=vehicleValueObject.getVehicle().getId()%>">Ver services</a>
-		<br>
+		</li>
 	<% } %>
+	</ul>
 <% } %>
 
-<div id="addServiceLayer">
+<div id="addServiceLayer" style="display: none;">
 <html:form method="POST" action="/addService">
 	<div class="scrollable">
 		<html:hidden name="AddServiceForm" property="idVehicle" />
+		<fieldset>
+			<label>dominio</label>
+			<span id="addServiceDomain"></span>
+		</fieldset>
 		<fieldset>
 			<label>km</label>
 			<html:text name="AddServiceForm" property="serviceKm" />
@@ -184,6 +196,7 @@ DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
 	</div>
 	<fieldset>
 		<input type="submit" id="addServiceButton" value="Agregar" class="buttonSend">
+		<input type="button" id="cancelAddServiceButton" onclick="javascript:cancelAddService()" value="Cancelar" class="buttonSend">
 	</fieldset>
 </html:form>
 </div>
