@@ -19,6 +19,7 @@ Hacer que la carga del service sea con seleccion sobre la tabla y oculto en prin
 del service.
 HECHO, quedo con ul li y fade in y fade out
 
+Agregarle un class al li cuando esta seleccionado
 
 Definiciones pendientes
 
@@ -39,6 +40,7 @@ CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
   metés el dni, porque si le das cerrar te quedas sin
   acceso y habría que ponerle el action para que funcione.
   Lo mismo aplica en layer_password_recovery.jspf
+no usar reintentar sino no cerrar la pagina actual y mostrar el error
 
 - Revisar la manera en la que está hecho el link al 
   homepage desde <li class="home"><a href="home.jsp...

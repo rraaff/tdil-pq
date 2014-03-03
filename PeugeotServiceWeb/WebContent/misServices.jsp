@@ -90,11 +90,12 @@
 	}
 	
 	function addService(domain, idVehicle) {
+		clearErrors();
 		$('#addServiceDomain').prop('innerHTML', domain);
 		$('#addServiceLayer').fadeIn(500);
 		$("input[name=idVehicle]").val(idVehicle);
 	}
-	function cancelAddService(idVehicle) {
+	function cancelAddService() {
 		$('#addServiceLayer').fadeOut(500);
 	}
 	
@@ -144,7 +145,6 @@ if (apk != null && apk) {
 			<% } else { %>
 				<div class="table_services">
 					<ul class="table_header">
-						<li class="radio"></li>
 						<li class="cardesc">Vehículo (Dominio)</li>
 						<li class="kilometers">Kilometraje</li>
 						<li class="services">Requiere Service</li>
@@ -153,31 +153,34 @@ if (apk != null && apk) {
 					</ul>
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
 						<ul class="table_body">
-							<li class="radio"><input type="radio" name="selectradio" onclick="addService(<%=vehicleValueObject.getVehicle().getId()%>)"></li>
 							<%if (vehicleValueObject.getModel() !=  null) { %>
-								<li class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
-								<li class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
 							<% } %>
-							<li class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-								<li class="service_required services">Si</li>
+								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_required services">Si</li>
 							<% } else { %>
-								<li class="service_not_required services">No</li>
+								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_not_required services">No</li>
 							<% } %>
-							<li class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
-							<li class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
 						</ul>
 					<% } %>
 				</div>
 			<% } %>
 		</div>
-		<div id="addServiceLayer" class="add_services_info">
+		<div id="addServiceLayer" class="add_services_info" style="display: none;">
 			<h2>Cargar información de un service</h2>
 			<div class="form_with_car_image" style="background-image: url(images/skn_peugeot/vehicles/408.jpg)!important;"><!-- acá le meto a la fuerza la imagen del auto como background-image: url(../images/skn_peugeot/vehicles/408.jpg); -->
 				<html:form method="POST" action="/addService" styleClass="add_service_form">
 					<div class="add_service_form_wrapper">
 						<html:hidden name="AddServiceForm" property="idVehicle" />
+						<fieldset>
+							<label>Dominio</label>
+							<span id="addServiceDomain"></span>
+						</fieldset>
 						<fieldset>
 							<label>Kilometros recorridos totales al service</label>
 							<html:text name="AddServiceForm" property="serviceKm" />
@@ -190,7 +193,7 @@ if (apk != null && apk) {
 						</fieldset>
 					</div>
 					<fieldset class="button_bar pOnlyTop25">
-						<button class="link_back" ><span></span>Cancelar</button>
+						<button class="link_back" onclick="cancelAddService()"><span></span>Cancelar</button>
 						<button class="botton_ahead" type="submit" id="addServiceButton" >Agregar<span></span></button>
 					</fieldset>
 				</html:form>
