@@ -101,13 +101,13 @@ if (apk != null && apk) {
 		<div class="column width450">
 			<div class="dashboard_item">
 				<img class="icon" src="images/skn_peugeot/icons/icon_my_services_dashboard.png" />
-				<h3><a href="misServices.jsp">Mis Services</a></h3>
+				<h3><a href="misServices.jsp" title="Ingresar a Mis Services">Mis Services</a></h3>
 				<p>En esta sección podés cargar los services que hayas realizado a tus vehículos. Te recomendamos mantener actualizada esta lista.</p>
 				<button class="link" onclick="window.location='misServices.jsp';"><span></span>Ingresar</button>
 			</div>
 			<div class="dashboard_item">
 				<img class="icon" src="images/skn_peugeot/icons/icon_my_vehicles_dashboard.png" />
-				<h3><a href="misVehiculos.jsp">Mis Vehiculos</a></h3>
+				<h3><a href="misVehiculos.jsp" title="Ingresar a Mis Vehículos">Mis Vehiculos</a></h3>
 				<p>Aquí te proporcionamos la información actualizada respecto al estado de tus vehículos, services, kilometrajes.</p>
 				<button class="link" onclick="window.location='misVehiculos.jsp';"><span></span>Ingresar</button>
 			</div>
@@ -115,13 +115,13 @@ if (apk != null && apk) {
 		<div class="column width550 pLeft100">
 			<div class="dashboard_item">
 				<img class="icon" src="images/skn_peugeot/icons/icon_official_services_dashboard.png" />
-				<h3><a href="servicesYGarantia.jsp">Ver services oficiales</a></h3>
+				<h3><a href="servicesYGarantia.jsp" title="Ingresar a la información de services oficiales">Ver services oficiales</a></h3>
 				<p>Accedé a una lista completa de la información de services para cada uno de tus vehículos.</p>
 				<button class="link" onclick="window.location='servicesYGarantia.jsp';"><span></span>Ingresar</button>
 			</div>
 			<div class="dashboard_item">
 				<img class="icon" src="images/skn_peugeot/icons/icon_services_locations_dashboard.png" />
-				<h3><a href="buscarConcesionario.jsp">Agencias/Service autorizados</a></h3>
+				<h3><a href="buscarConcesionario.jsp" title="Ingresar a Services autorizados para sus vehículos">Agencias/Service autorizados</a></h3>
 				<p>Seleccioná la agencia o service autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo.</p>
 				<button class="link" onclick="window.location='buscarConcesionario.jsp';"><span></span>Ingresar</button>
 			</div>
