@@ -1,3 +1,4 @@
+<%@page import="com.tdil.ljpeugeot.utils.ModelUtils"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject"%>
@@ -94,7 +95,7 @@ background-color: green;
 		});
 	}
 	
-	function addService(domain, idVehicle) {
+	function addService(domain, idVehicle, modelName) {
 		clearErrors();
 		$('#vehicleTable').find('li').each(function() {
 		    $(this).removeClass("vehicleRowSelected");
@@ -103,9 +104,9 @@ background-color: green;
 		    $(this).addClass("vehicleRowSelected");
 		});
 		$('#addServiceDomain').prop('innerHTML', domain);
+		$('#addServiceBgCar').css("background-image", "url(images/skn_peugeot/vehicles/" + modelName + ".jpg)");
 		$('#addServiceLayer').fadeIn(500);
 		$("input[name=idVehicle]").val(idVehicle);
-		
 	}
 	function cancelAddService() {
 		$('#addServiceLayer').fadeOut(500);
@@ -165,20 +166,22 @@ if (apk != null && apk) {
 						<li class="lastservdate">Fecha de último service</li>
 					</ul>
 					<ul class="table_body" id="vehicleTable">
-					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { 
+						String modelName = ModelUtils.getImageUrlPath(vehicleValueObject.getModel());
+					%>
 							<%if (vehicleValueObject.getModel() !=  null) { %>
-								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
-								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
 							<% } %>
-							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_required services">Si</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="service_required services">Si</li>
 							<% } else { %>
-								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_not_required services">No</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="service_not_required services">No</li>
 							<% } %>
-							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
-							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
 					<% } %>
 					</ul>
 				</div>
@@ -186,7 +189,7 @@ if (apk != null && apk) {
 		</div>
 		<div id="addServiceLayer" class="add_services_info" style="display: none;">
 			<h2>Cargar información de un service</h2>
-			<div class="form_with_car_image" style="background-image: url(images/skn_peugeot/vehicles/408.jpg)!important;"><!-- acá le meto a la fuerza la imagen del auto como background-image: url(../images/skn_peugeot/vehicles/408.jpg); -->
+			<div class="form_with_car_image" id="addServiceBgCar" ><!-- acá le meto a la fuerza la imagen del auto como background-image: url(../images/skn_peugeot/vehicles/408.jpg); -->
 				<html:form method="POST" action="/addService" styleClass="add_service_form">
 					<div class="add_service_form_wrapper">
 						<html:hidden name="AddServiceForm" property="idVehicle" />

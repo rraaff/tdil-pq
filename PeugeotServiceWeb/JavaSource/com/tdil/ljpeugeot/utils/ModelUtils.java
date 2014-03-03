@@ -13,8 +13,12 @@ public class ModelUtils {
 	
 	public static String getImageUrlPath(int modelId) {
 		Model model = PeugeotService.getModel(modelId);
+		return getImageUrlPath(model);
+	}
+
+	public static String getImageUrlPath(Model model) {
 		if (model == null) {
-			return "";
+			return "na";
 		}
 		String imageName = model.getName().replace(" ", "_");
 		imageName = imageName.toLowerCase();
