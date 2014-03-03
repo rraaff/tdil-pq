@@ -108,7 +108,11 @@ button:hover.botton_ahead	{ background:#00557f; background:url(data:image/svg+xm
 button.link_back:hover,
 button.link_back:active,
 button:hover,
-button:active				{ outline:none; }
+button:active,
+button.link:hover,
+button.link:active			{ outline:none; }
+
+button.link					{ border: none; background: none; color: #4d4f5b; font-size: 12px; font-weight: bold; text-align: left; padding: 0 0 0 25px; float: left; cursor: pointer; }
 
 /* WHEEL MENU */
 #wheel						{ background-color:#060c0f; background-image:url(../images/skn_peugeot/bgs/ws_wheel_halo_blue.jpg); background-position:top center; background-repeat:no-repeat; width:100%; min-width:1250px; height:500px; overflow:hidden; }
@@ -171,6 +175,18 @@ ul.selection_module li a:hover			{ color:#00aad5; }
 ul.selection_module li a.active			{ color:#00aad5; }
 ul.selection_module li:first-of-type	{ border-top-right-radius:5px; border-top-left-radius:5px; }
 ul.selection_module li:last-of-type		{ border-bottom-right-radius:5px; border-bottom-left-radius:5px;  }
+
+div.template_half div.column				{ /* width using sizers */ background-image:url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat:no-repeat; background-position:left center; background-size:100px 100%; float:left; }
+div.template_half div.column:first-of-type	{ background-image:none; }
+
+div.dashboard_item						{ width:350px; margin:0 auto 50px; display:inline-block; }
+div.dashboard_item img.icon				{ padding:0 0 110px; float: left; vertical-align: top; display: inline-block; }
+div.dashboard_item h3					{ text-align: left; float: left; width: 285px; padding: 25px 0 10px 25px; }
+div.dashboard_item h3 a					{ color: #00aad5; font-size: 14px; font-family: 'Peugeot'; text-transform: uppercase; text-decoration: none; }
+div.dashboard_item p					{ color: #595a67; font-size: 13px; line-height: 18px; font-weight: 600; text-align: left; width: 285px; float: left; padding: 5px 0 15px 25px; }
+div.dashboard_item button.link span		{ background-image: url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat: no-repeat; background-position: 0 1px; width: 11px; height: 11px; margin: 0 5px 0 0; display: inline-block; }
+
+
 
 /* FOOTER */
 footer						{ color:#fff; }

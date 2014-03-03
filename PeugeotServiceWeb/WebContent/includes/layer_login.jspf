@@ -15,33 +15,23 @@
 				<div class="alert alert-error" id="loginerr" style="display: none;"></div>
 				<div class="column">
 					<fieldset>
+						<label>Documento</label>
+						<html:text name="LoginForm" property="username"/>
+					</fieldset>
+					<div class="errorInForm"></div>
+				</div>
+				<div class="column">
+					<fieldset>
 						<label>Clave</label>
 						<html:password name="LoginForm" property="password"/>
 					</fieldset>
 					<div class="errorInForm"></div>
-					<fieldset>
-						<label>
-							<input type="Checkbox" />
-							<span>Recordarme</span>
-						</label>
-					</fieldset>
 				</div>
-				<div class="column">
-					<fieldset>
-						<label>Número</label>
-						<html:text name="LoginForm" property="username"/><!-- TODO: ¿cómo se pone el placeholder="Ej.: 11223344" en java -->
-					</fieldset>
-					<div class="errorInForm"></div>
-					<fieldset>
-						<label>&nbsp;</label>
-						<input type="text" value="" style="opacity:0;" />
-					</fieldset>
-					<fieldset class="width100per">
-						<label><span><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">Recuperar clave</a></span></label>
-					</fieldset>
-				</div>
+				<fieldset class="width100per">
+					<label><span><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">Recuperar clave</a></span></label>
+				</fieldset>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" cl="loginLayer"><span></span>Cerrar</button>
+					<button class="link_back" id="login_link_back" cl="loginLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitlogin">Iniciar sesión<span></span></button>
 				</fieldset>
 			</html:form>
@@ -55,15 +45,13 @@
 		<section class="modal_header">
 			<h2>Atención</h2>
 			<h3>El usuario y/o la clave no coinciden.</h3>
-			<button class="close"  id="closeloginInvalidLayer">Cerrar <span></span></button>
+			<button class="close" cl="loginInvalidLayer">Cerrar <span></span></button>
 		</section>
 		<section class="modal_content">
 			<span class="modal_subtitle">Cierre esta ventana y vuelva a intentarlo.</span>
-			<form>
-				<fieldset class="button_bar">
-					<button class="link_back" cl="loginInvalidLayer"><span></span>Cerrar</button>
-				</fieldset>
-			</form>
+			<fieldset class="button_bar">
+				<button class="link_back" cl="loginInvalidLayer"><span></span>Cerrar</button>
+			</fieldset>
 		</section>
 	</div>
 </div>

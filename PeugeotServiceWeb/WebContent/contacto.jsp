@@ -100,7 +100,7 @@ function postContact(data) {
 						</fieldset>
 						<div class="errorInForm"></div>
 						<fieldset>
-							<label>DNI</label>
+							<label>Documento</label>
 							<html:text name="ContactForm" property="documentNumber"></html:text>
 						</fieldset>
 						<div class="errorInForm"></div>
@@ -123,7 +123,7 @@ function postContact(data) {
 						<div class="errorInForm"></div>
 
 				<% } %>
-					<fieldset>
+					<fieldset class="width100per">
 						<label>Comentario</label>
 						<html:textarea name="ContactForm" property="content"></html:textarea>
 					</fieldset>

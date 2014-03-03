@@ -26,26 +26,15 @@ tdil/usu4r10td1l
 ****************************************************
 CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
 ****************************************************
-- Hardcodear DNI como tipo de doc en todos lados 
-  (login, recupero, cambio de pass y mis datos
-HECHO
-  
-- Revisar que no me funcionan los botones del 
-  recupero de password
-HECHO
+- Recupero del password en el inicio sin cookie: en 
+  los modales de error, le agregué un boton REINTENTAR
+  para que te vuelva a abrir el layer en el que le 
+  metés el dni, porque si le das cerrar te quedas sin
+  acceso y habría que ponerle el action para que funcione.
+  Lo mismo aplica en layer_password_recovery.jspf
 
 - Revisar la manera en la que está hecho el link al 
   homepage desde <li class="home"><a href="home.jsp...
 No se entiende que hay que hacer
 
-- En selectVehicleForEditData.jsp le puse a mano
-  la opción TODOS. <li><a href="#">Todos</a></li>
-  en los casos que aplique debería venir en el for
-Esta pagina no tenias que usarla, esa fue el primer demo!!!!
-Lo que tenes que ver es servicesDashboard.jsp, esa tiene los links a las paginas quue corresponden
-
-- En layer_parking_not_logged.jspf hay que ponerle al
-  boton <button class="botton_ahead">Recuperar clave...
-  Una action que cierre ese layer y abra el de recupero
-HECHO
 ****************************************************

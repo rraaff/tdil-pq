@@ -17,21 +17,21 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Services</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
-<![endif]-->
-<%@ include file="includes/headLogged.jsp" %>
+<![endif]--><%@ include file="includes/headLogged.jsp" %>
 <% 
 List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
 Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
@@ -81,41 +81,61 @@ if (rememberClicked == null) {
 
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+}
+%>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<div class="column width450">
+			<div class="dashboard_item">
+				<img class="icon" src="images/skn_peugeot/icons/icon_my_services_dashboard.png" />
+				<h3><a href="misServices.jsp">Mis Services</a></h3>
+				<p>En esta sección podés cargar los services que hayas realizado a tus vehículos. Te recomendamos mantener actualizada esta lista.</p>
+				<button class="link" onclick="window.location='misServices.jsp';"><span></span>Ingresar</button>
+			</div>
+			<div class="dashboard_item">
+				<img class="icon" src="images/skn_peugeot/icons/icon_my_vehicles_dashboard.png" />
+				<h3><a href="misVehiculos.jsp">Mis Vehiculos</a></h3>
+				<p>Aquí te proporcionamos la información actualizada respecto al estado de tus vehículos, services, kilometrajes.</p>
+				<button class="link" onclick="window.location='misVehiculos.jsp';"><span></span>Ingresar</button>
+			</div>
+		</div>
+		<div class="column width550 pLeft100">
+			<div class="dashboard_item">
+				<img class="icon" src="images/skn_peugeot/icons/icon_official_services_dashboard.png" />
+				<h3><a href="servicesYGarantia.jsp">Ver services oficiales</a></h3>
+				<p>Accedé a una lista completa de la información de services para cada uno de tus vehículos.</p>
+				<button class="link" onclick="window.location='servicesYGarantia.jsp';"><span></span>Ingresar</button>
+			</div>
+			<div class="dashboard_item">
+				<img class="icon" src="images/skn_peugeot/icons/icon_services_locations_dashboard.png" />
+				<h3><a href="buscarConcesionario.jsp">Agencias/Service autorizados</a></h3>
+				<p>Seleccioná la agencia o service autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo.</p>
+				<button class="link" onclick="window.location='buscarConcesionario.jsp';"><span></span>Ingresar</button>
+			</div>
 		</div>
 	</div>
-</header>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-<a href="misServices.jsp">Mis Services</a><br>
-<a href="misVehiculos.jsp">Mis Vehiculos</a><br>
-<a href="servicesYGarantia.jsp">Ver services oficiales</a><br>
-<a href="buscarConcesionario.jsp">Agencias/Service autorizados</a><br>
-
+<!-- ALL LAYERS -->
 <%@ include file="includes/layer_contact.jspf" %>
+<%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 
 <!-- Layer de muestra de avisos -->
 <% StringBuilder sb = new StringBuilder();
@@ -136,11 +156,5 @@ if (rememberClicked == null) {
 </div>
 <% } %>
 
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
-<%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/layer_legales.jspf" %>
-
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>
