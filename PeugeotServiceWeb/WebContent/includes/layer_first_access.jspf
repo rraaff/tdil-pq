@@ -1,20 +1,19 @@
 <!-- forgot password -->
 <div id="firstAccessLayer" class="layerOnTop" style="display:none; z-index:1500;">
-	<div id="centradorModalesfirstAccess" class="layerModal width600">
+	<div id="centradorModalesfirstAccess" class="layerModal width500">
 		<section class="modal_header">
 			<h2>Primer accesso</h2>
-			<h3>Es tu primer acceso? Ingresá tu DNI y te enviaremos por E-Mail un link de acceso exclusivo, para generar tu nueva clave.</h3>
+			<h3>Si es la primera vez que accede al sitio, genere su clave</h3>
+			<h4>Ingrese su documento y le enviaremos por E-Mail un acceso exclusivo, para generar una nueva clave</h4>
 			<button class="close" cl="firstAccessLayer">Cerrar <span></span></button>
 		</section>
 		<section class="modal_content">
-			<span class="modal_subtitle">Subtítulo Nombre del form por ejemplo</span>
+			<span class="modal_subtitle">Complete los datos</span>
 			<html:form method="POST" action="/generatePassword" styleClass="modal_wrapper">
-				<div class="column">
-					<fieldset>
-						<label>Número</label>
-						<html:text name="GeneratePasswordForm" property="username" />
-					</fieldset>
-				</div>
+				<fieldset class="width100per textCenter">
+					<label>Documento</label>
+					<html:text name="GeneratePasswordForm" property="username" styleClass="" />
+				</fieldset>
 				<fieldset class="button_bar pOnlyTop25">
 					<button class="link_back" ><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitfirstAccess">Generar clave<span></span></button>
