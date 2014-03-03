@@ -20,17 +20,18 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>trdtrfgfhffg</title>
+<title>Peugeot AXS :: Mis vehículos</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
@@ -58,69 +59,73 @@
 
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+}
+%>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+	</ul>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<h1>Mis vehículos</h1>
+		<div class="table_container">
+
+			<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
+			DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+			simbolos.setPerMill('.');
+			DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
+			%>
+			<% if (myVehicles.isEmpty()) { %>
+				<h2>No posee ningún vehículo asociado</h2>
+			<% } else { %>
+				<div class="table_services">
+					<ul class="table_header">
+						<li class="cardesc">Vehículo (Dominio)</li>
+						<li class="kilometers">Kilometraje</li>
+						<li class="services">Requiere Service</li>
+						<li class="lastservkm">Kilometraje del último service</li>
+						<li class="lastservdate">Fecha de último service</li>
+					</ul>
+					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+						<ul class="table_body">
+							<%if (vehicleValueObject.getModel() !=  null) { %>
+								<li class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+							<% } else { %>
+								<li class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+							<% } %>
+							<li class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
+								<li class="service_required services">Si</li>
+							<% } else { %>
+								<li class="service_not_required services">No</li>
+							<% } %>
+							<li class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+						</ul>
+					<% } %>
+				</div>
+			<% } %>
 		</div>
 	</div>
-</header>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-
+<!-- ALL LAYERS -->
 <%@ include file="includes/layer_contact.jspf" %>
-
-<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
-DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
-simbolos.setPerMill('.');
-DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
-%>
-<% if (myVehicles.isEmpty()) { %>
-	Usted no tiene ningun vehiculo asociado
-<% } else { %>
-	Vehiculo (Dominio) | KMs | Requiere Service | Ultimo Service KM | Fecha de ultimo service <br>
-	<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-		<%if (vehicleValueObject.getModel() !=  null) { %>
-			<%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)
-		<% } else { %>
-			<%=vehicleValueObject.getVehicle().getDomain() %>
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%> |
-		<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-			Si
-		<% } else { %>
-			No
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%> |
-		<%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%>
-		<br>
-	<% } %>
-<% } %>
-
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
-<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 
 <%@ include file="includes/version.jspf" %>
 </body>
