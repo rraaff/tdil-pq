@@ -4,7 +4,7 @@ pero el input editable por si lo quiere modificar?
 HECHO
 Mas alla de cambiarlo en algun momento, yo le pondria una tabla en la primer pagina la lista de vehiculos con sus concesionarios elegidos
 La pagina es buscarConcesionario.jsp
-
+HECHO
 
 Como era el tema de la cookie para el primer acceso?
 Antre el primer acceso levantamos un modal que tenga un textito y un botón generar contraseña que haga lo 
@@ -41,6 +41,9 @@ CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM
   acceso y habría que ponerle el action para que funcione.
   Lo mismo aplica en layer_password_recovery.jspf
 no usar reintentar sino no cerrar la pagina actual y mostrar el error
+HECHO, se carga en el mismo.
+	Para el fist access y recover password podes tocar el jsp
+	requestreset.jsp en ThalamusFake y hacer que le mande status 404, ese va por camino del error
 
 - Revisar la manera en la que está hecho el link al 
   homepage desde <li class="home"><a href="home.jsp...
@@ -53,5 +56,6 @@ No se entiende que hay que hacer
    los submenús
 
 - Habilité el avatar, pero no anda bien el cambio al menos.
+HECHO A mi me anduvo joya, si podes pasame el error
 
 ****************************************************
