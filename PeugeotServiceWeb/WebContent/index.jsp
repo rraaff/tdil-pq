@@ -335,6 +335,8 @@ function login() {
 }
 
 function forgotPassword() {
+	$('#forgotPassworderr').prop('innerHTML', '');
+	$('#forgotPassworderr').css('display', 'none');
 	$("form[name='RequestResetPasswordForm'] input[name='username']").attr('value', '');
 	centerLayerWF($(window), $( "#forgotPasswordLayer" ), function() {$("form[name='RequestResetPasswordForm'] input[name='username']").focus();});
 	centerLayer($(window), $( "#centradorModalesforgotPass" ));
@@ -382,34 +384,34 @@ function postLogin(data) {
 
 function postResetPassword(data) {
 	<%@ include file="includes/unblockUI.jspf" %>
-	$( "#forgotPasswordLayer" ).fadeOut();
 	if (data.result == 'OK') {
+		$( "#forgotPasswordLayer" ).fadeOut();
 		centerLayer($(window), $( "#forgotPasswordEmailSentLayer" ));
 		centerLayer($(window), $( "#centradorModalesFPES" ));
 	} else {
 		if (data.result == '404') {
-			centerLayer($(window), $( "#forgotPasswordUserNotFoundLayer" ));
-			centerLayer($(window), $( "#centradorModalesForgotPasswordUserNotFound" ));
+			$('#forgotPassworderr').prop('innerHTML', 'El DNI no coincide con un usuario de Lo-Jack');
+			$('#forgotPassworderr').css('display', 'block');
 		} else {
-			centerLayer($(window), $( "#forgotPasswordErrorLayer" ));
-			centerLayer($(window), $( "#centradorModalesForgotPasswordError" ));
+			$('#forgotPassworderr').prop('innerHTML', 'Ha ocurrido un error. Por favor intentelo nuevamente.');
+			$('#forgotPassworderr').css('display', 'block');
 		}
 	}
 }
 
 function postGeneratePassword(data) {
 	<%@ include file="includes/unblockUI.jspf" %>
-	$( "#firstAccessLayer" ).fadeOut();
 	if (data.result == 'OK') {
+		$( "#firstAccessLayer" ).fadeOut();
 		centerLayer($(window), $( "#firstAccessEmailSentLayer" ));
 		centerLayer($(window), $( "#centradorModalesfirstAccessEmailSent" ));
 	} else {
 		if (data.result == '404') {
-			centerLayer($(window), $( "#firstAccessUserNotFoundLayer" ));
-			centerLayer($(window), $( "#centradorModalesfirstAccessUserNotFound" ));
+			$('#firstacesserr').prop('innerHTML', 'El DNI no coincide con un usuario de Lo-Jack');
+			$('#firstacesserr').css('display', 'block');
 		} else {
-			centerLayer($(window), $( "#firstAccessErrorLayer" ));
-			centerLayer($(window), $( "#centradorModalesfirstAccessError" ));
+			$('#firstacesserr').prop('innerHTML', 'Ha ocurrido un error. Por favor intentelo nuevamente.');
+			$('#firstacesserr').css('display', 'block');
 		}
 	}
 }

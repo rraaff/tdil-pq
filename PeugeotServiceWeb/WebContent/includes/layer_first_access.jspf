@@ -10,6 +10,7 @@
 		<section class="modal_content">
 			<span class="modal_subtitle">Complete los datos</span>
 			<html:form method="POST" action="/generatePassword" styleClass="modal_wrapper">
+				<div class="alert alert-error" id="firstacesserr" style="display: none;"></div>
 				<fieldset class="width100per textCenter">
 					<label>Documento</label>
 					<html:text name="GeneratePasswordForm" property="username" styleClass="" />
@@ -35,38 +36,6 @@
 			<p>Si no lo recibiste, por favor revisá en correo no deseado.</p>
 			<fieldset class="button_bar pOnlyTop25">
 				<button class="link_back" cl="firstAccessEmailSentLayer" ><span></span>Cerrar</button>
-			</fieldset>
-		</section>
-	</div>
-</div>
-<div id="firstAccessUserNotFoundLayer" class="layerOnTop" style="display:none; z-index:1500;">
-	<div id="centradorModalesfirstAccessUserNotFound" class="layerModal width500">
-		<section class="modal_header">
-			<h2>Atención</h2>
-			<h3>Primer acceso / creación de clave</h3>
-			<button class="close" cl=firstAccessUserNotFoundLayer>Cerrar <span></span></button>
-		</section>
-		<section class="modal_content">
-			<span class="modal_subtitle">El DNI no coincide con un usuario de Lo-Jack</span>
-			<fieldset class="button_bar pOnlyTop25">
-				<button class="link_back" type="submit" id="closefirstAccessUserNotFoundLayer" ><span></span>Cerrar</button>
-				<button class="botton_ahead" >Reintentar<span></span></button>
-			</fieldset>
-		</section>
-	</div>
-</div>
-<div id="firstAccessErrorLayer" class="layerOnTop" style="display:none; z-index:1500;">
-	<div id="centradorModalesfirstAccessError" class="layerModal width500">
-		<section class="modal_header">
-			<h2>Atención</h2>
-			<h3>Primer acceso / creación de clave</h3>
-			<button class="close" cl="firstAccessErrorLayer">Cerrar <span></span></button>
-		</section>
-		<section class="modal_content">
-			<span class="modal_subtitle">Ha ocurrido un error. Por favor intentelo nuevamente.</span>
-			<fieldset class="button_bar pOnlyTop25">
-				<button class="link_back" cl="firstAccessErrorLayer" ><span></span>Cerrar</button>
-				<button class="botton_ahead" >Reintentar<span></span></button>
 			</fieldset>
 		</section>
 	</div>
