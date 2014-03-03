@@ -16,73 +16,22 @@
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
 --%><%@ include file="includes/mustBePreventUser.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Car Security</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
-}
-</style>
-<%
-	Boolean apk = (Boolean)session.getAttribute("USING_APK");
-if (apk) {
-	isAndroid = true;
-}
-%>
-<%
-	if (usingMobile || isAndroid) {
-%>
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		
-		@media only screen and (orientation: landscape) and (max-width: 600px) {
-			#shortdesc {
-		    	float:right;
-		    	width:25%;
-		    }
-			#map {
-				width:100%;
-				height:100%;
-			}
-			#docs {
-				font-size:12px;
-			}
-		}
-		#docs p {
-			font-size:12px;
-		    margin-bottom:0.5em;
-		}
-		#tags { display: none; }
-		
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<%
-	}
-%>
-<style type="text/css">
-#productsMenu ul li.tabCar {
-	background:#f05224;
-}
-</style>
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_maps.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_OpenLayers.js" type="text/javascript"></script>
 <script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_MapaOSM.js" type="text/javascript"></script>
@@ -335,14 +284,19 @@ if (apk) {
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<% if (!apk) { %>
-<%@ include file="includes/header.jspf" %>
-<%@ include file="includes/clientMainManu.jsp" %>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<!-- WEBSITE CONTENT -->
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
-<section id="content">
+
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
@@ -351,16 +305,17 @@ if (apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
+				<button class="iconPathTour" onclick="#">&nbsp;</button>
 				<% if (websiteUser.vluIsClient()) { %>
 					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
 				<% } %>
 			</div>
-		</section>
-		<section id="zoomSection">
-			<div class="zoomControls">
-				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
-				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
-			</div>
+			<section id="zoomSection">
+				<div class="zoomControls">
+					<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
+					<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
+				</div>
+			</section>
 		</section>
 	</div>
 </section>
@@ -423,9 +378,16 @@ if (apk) {
 		</div>
 	</div>
 </div>
+
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
+
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_parking_not_logged.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/version.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
+<%@ include file="includes/layer_legales.jspf" %>
 
 <% if (usingMobile || isAndroid) { %>
 	<script>

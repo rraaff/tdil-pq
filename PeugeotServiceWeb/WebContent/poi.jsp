@@ -15,107 +15,22 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Points of Interest</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
-}
-</style>
-<%
-	if (usingMobile || isAndroid) {
-%>
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<%
-	} else {
-%>
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_social.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mediaQueries.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		@media only screen and (max-width: 968px) {
-			body { background: #e51b24; overflow: hidden; }
-			#productsMenu ul li.logoContainer { line-height: 14px; }
-			#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
-			#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
-			footer { display:none; }
-			.pageWrapper { width: 100%; }
-			#content { width:100%; height:90%; text-align:center; display:inline-block; overflow:hidden; left:0px; top:127px; position:absolute; z-index:1; }
-			.smallmap, .pageWrapper { width: 100%; height: 100%; }
-			#zoomSection { width: 100%; margin: 0; }
-			#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
-		}
-		@media only screen and (max-height: 800px) and (max-width: 480px) {
-			button.iconEall,
-			button.icon100mts,
-			button.icon500mts,
-			button.icon1mks,
-			button.iconClear,
-			button.iconHome {
-				background: url(mobile/images/webApp/parkings/control_100mts.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-				width:50px;
-				height:42px;
-				margin:2px 4px;
-			}
-			button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
-			button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
-			button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
-			button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
-			button.iconHome { background: url(mobile/images/webApp/parkings/back_home.png }
-			button.icon_zoom_in,
-			button.icon_zoom_out {
-				background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-				width:32px;
-				height:32px;
-				padding:5px;
-				margin:5px;
-			}
-			button.icon_zoom_out {
-				background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-			}
-		}
-	</style>
-<%
-	}
-%>
-<style type="text/css">
-	#productsMenu ul li.tabParking {
-		background:#f05224;
-	}
-</style>
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_maps.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_OpenLayers.js" type="text/javascript"></script>
 <script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_MapaOSM.js" type="text/javascript"></script>
@@ -384,12 +299,18 @@
 		}
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<%@ include file="includes/header.jspf" %>
-<%@ include file="includes/clientMainManu.jsp" %>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% } %>
+<!-- WEBSITE CONTENT -->
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
-<section id="content">
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
@@ -400,15 +321,30 @@
 				<button class="icon1mks" onclick="showParkings(1000);">&nbsp;</button>
 				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>	
 			</div>
-		</section>
-		<section id="zoomSection">
-			<div class="zoomControls">
-				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();">&nbsp;</button><!-- value="ZoomIn" -->
-				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();">&nbsp;</button><!--  value="ZoomOut" -->
-			</div>
+			<section id="zoomSection">
+				<div class="zoomControls">
+					<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();">&nbsp;</button><!-- value="ZoomIn" -->
+					<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();">&nbsp;</button><!--  value="ZoomOut" -->
+				</div>
+			</section>
 		</section>
 	</div>
 </section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
+
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_parking_not_logged.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
+<%@ include file="includes/layer_contact.jspf" %>
+<%@ include file="includes/layer_legales.jspf" %>
+
+
+
+
+
+
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">
