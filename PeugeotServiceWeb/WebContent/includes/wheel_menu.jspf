@@ -9,18 +9,18 @@
 		<div id="wheel_structure">
 			<div class="wrapper">
 				<%if (websiteUser != null && websiteUser.isLogged()) { %>
-					<button onclick="javascript:loginPrevent();" id="pointsin">[Points of Interest]</button>
+					<button onclick="window.location='./poi.jsp';" id="pointsin">[Points of Interest]</button>
 				<% } else { %>
 					<button onclick="javascript:parkingsNotLogged();" id="pointsin">[Points of Interest]</button>				
 				<% } %>
 				<%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%>
 				<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.isPreventUser()) { %>
-					<button id="carsecur">[Car Security]</button>
+					<button onclick="javascript:loginPrevent();" id="carsecur">[Car Security]</button>
 				<% } else { %>
 					<button onclick="javascript:parkingsNotLogged();" id="carsecur">[Car Security]</button>
 				<% } %>
 				<%if (websiteUser != null && websiteUser.isLogged()) { %>
-					<button id="services" onclick="window.location='./servicesDashboard.jsp';">[Services]</button>
+					<button onclick="window.location='./servicesDashboard.jsp';" id="services">[Services]</button>
 				<% } else { %>
 					<button onclick="javascript:parkingsNotLogged();" id="services">[Services]</button>
 				<% } %>

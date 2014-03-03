@@ -5,3 +5,4 @@
 		<li><a href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
 	 </ul>
 </section>
+<div id="under_shade"></div>
