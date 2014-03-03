@@ -72,8 +72,10 @@
 .width850 { width:850px!important; }
 .width860 { width:860px!important; }
 .width920 { width:920px!important; }
-.width100per { width:100%!important; }
-.width50per  { width:50%!important; }
+.width100per	{ width:100%!important; }
+.width70per		{ width:70%!important; }
+.width50per		{ width:50%!important; }
+.width25per		{ width:25%!important; }
 
 .height25 { height:25px!important; }
 .height30 { height:30px!important; }

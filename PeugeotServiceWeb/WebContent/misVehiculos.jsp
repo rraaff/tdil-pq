@@ -127,6 +127,5 @@ if (apk != null && apk) {
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>

@@ -27,18 +27,31 @@ function selectDealer(dealerId) {
 
 </script>
 <form action="./goToChangeDealer.do">
-<% int idCity = Integer.parseInt(request.getParameter("idCity"));
-Collection<Dealer> dealers = DealersService.getDealers(idCity);
-%>
-<% for (Dealer dealer : dealers) { %>
-	<input type="radio" name="selectradio" onclick="selectDealer(<%=dealer.getId()%>)">
-	<%=dealer.getName()%> 
-	- <%=StringUtils.notNullValueOf(dealer.getAddress())%> 
-	- <%=StringUtils.notNullValueOf(dealer.getPhone())%>
-	- <%=StringUtils.notNullValueOf(dealer.getEmail())%><br>
-<% } %>
-<input type="hidden" id="idDealer" name="idDealer">
-<input type="submit" Value="Seleccionar para mis service"><br>
+	<% int idCity = Integer.parseInt(request.getParameter("idCity"));
+	Collection<Dealer> dealers = DealersService.getDealers(idCity);
+	%>
+	<div class="table_services">
+		<ul class="table_header">
+			<li class="fixed50"></li>
+			<li class="dealer">Concesionaria/Service</li>
+			<li class="dealer_address">Dirección</li>
+			<li class="dealer_phone">Teléfonos</li>
+			<li class="dealer_email">E-Mails</li>
+		</ul>
+		<% for (Dealer dealer : dealers) { %>
+			<ul class="table_body">
+				<li class="fixed50"><input type="radio" name="selectradio" onclick="selectDealer(<%=dealer.getId()%>)"></li>
+				<li class="dealer"><%=dealer.getName()%></li>
+				<li class="dealer_address"><%=StringUtils.notNullValueOf(dealer.getAddress())%></li> 
+				<li class="dealer_phone"><%=StringUtils.notNullValueOf(dealer.getPhone())%></li>
+				<li class="dealer_email"><%=StringUtils.notNullValueOf(dealer.getEmail())%></li>
+			</ul>
+		<% } %>
+	</div>
+	<input type="hidden" id="idDealer" name="idDealer">
+	<fieldset class="button_bar pOnlyTop25">
+		<button class="botton_ahead" type="submit" >Selectionar para service<span></span></button>
+	</fieldset>
 </form>
 
 <%@ include file="includes/catchModal.jspf" %>

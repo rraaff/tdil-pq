@@ -134,6 +134,7 @@ if (apk != null && apk) {
 <section id="main_content_regular_page">
 	<div class="template_half">
 		<h1>Mis services</h1>
+		<p class="bajada">Seleccione un vehículo de la lista para agregar un service en esa unidad</p>
 		<div class="table_container">
 			<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
 			DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
@@ -179,7 +180,7 @@ if (apk != null && apk) {
 						<html:hidden name="AddServiceForm" property="idVehicle" />
 						<fieldset>
 							<label>Dominio</label>
-							<span id="addServiceDomain"></span>
+							<label class="string_domain"><span id="addServiceDomain"></span></label>
 						</fieldset>
 						<fieldset>
 							<label>Kilometros recorridos totales al service</label>

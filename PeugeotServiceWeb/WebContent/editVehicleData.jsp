@@ -135,7 +135,7 @@ if (apk != null && apk) {
 			<html:form method="POST" action="/saveVehicleData" styleClass="template_form_page">
 				<div class="template_form_wrapper">
 					<fieldset>
-						<label>Provincia</label>
+						<label class="width25per">Provincia</label>
 						<html:select name="EditVehicleDataForm" property="idState">
 							<option value="">Seleccione...</option>
 							<% for (State state : editVehicleDataForm.getStates()) { %>
@@ -145,7 +145,7 @@ if (apk != null && apk) {
 						</html:select>
 					</fieldset>
 					<fieldset>
-						<label>Ciudades</label>
+						<label class="width25per">Ciudades</label>
 						<html:select name="EditVehicleDataForm" property="idCity">
 							<option value="">Seleccione...</option>
 							<% for (City city : editVehicleDataForm.getCities()) { %>
@@ -155,7 +155,7 @@ if (apk != null && apk) {
 						</html:select>
 					</fieldset>
 					<fieldset>
-						<label>Concesionarias</label>
+						<label class="width25per">Concesionarias</label>
 						<html:select name="EditVehicleDataForm" property="idDealer">
 							<option value="">Seleccione...</option>
 							<% for (Dealer dealer : editVehicleDataForm.getDealers()) { %>
@@ -166,7 +166,7 @@ if (apk != null && apk) {
 					</fieldset>
 				</div>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="botton_ahead" type="submit" id="submitregister">Guardar<span></span></button>
+					<button class="botton_ahead" type="submit" id="submitregister">Buscar<span></span></button>
 				</fieldset>
 			</html:form>			
 			<a href="./viewServices.do?id=<%=editVehicleDataForm.getSelectedVehicle().getId()%>">Services</a>

@@ -20,17 +20,18 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Información de services oficiales y garantía</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
@@ -58,84 +59,90 @@
 
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+}
+%>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+	</ul>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<h1>Información de services y garantía</h1>
+		<div class="table_container">
+
+			<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
+			DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
+			simbolos.setPerMill('.');
+			DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
+			%>
+			<% if (myVehicles.isEmpty()) { %>
+				<h2>No posee ningún vehículo en garantía</h2>
+			<% } else { %>
+				<div class="table_services">
+					<ul class="table_header">
+						<li class="cardesc2">Vehículo (Dominio)</li>
+						<li class="kilometers2">Kilometraje</li>
+						<li class="services2">Requiere Service</li>
+						<li class="lastservkm2">Kilometraje del último service</li>
+						<li class="lastservdate2">Fecha de último service</li>
+						<li class="waranty">En garantía</li>
+						<li class="waranty_kms">Garantía en KM</li>
+					</ul>
+					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+						<ul class="table_body">
+							<%if (vehicleValueObject.getModel() !=  null) { %>
+								<li class="cardesc2"><%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+							<% } else { %>
+								<li class="cardesc2"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+							<% } %>
+							<li class="kilometers2"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
+								<li class="service_required services2">Si</li>
+							<% } else { %>
+								<li class="service_not_required services2">No</li>
+							<% } %>
+							<li class="lastservkm2"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li class="lastservdate2"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+							<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 1) { %>
+								<li class="service_required waranty">Si</li>
+							<% } else { %>
+								<li class="service_not_required waranty">No</li>
+							<% } %>
+							<%if (vehicleValueObject.getModel() != null) { 
+								int years = vehicleValueObject.getModel().getMonthwarranty() / 12;%>
+								<li class="waranty_kms"><%=years %> <%=years == 1 ? "año" : "años" %>
+								<%if (vehicleValueObject.getModel().getKmwarranty() != 0) { %>
+									o <%=formateador.format(vehicleValueObject.getModel().getKmwarranty())%>  km
+								<% } %>
+								</li>
+							<% } else { %>
+								<li class="waranty_kms"> - </li>
+							<% } %>
+						</ul>
+					<% } %>
+				</div>
+			<% } %>
 		</div>
 	</div>
-</header>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-
+<!-- ALL LAYERS -->
 <%@ include file="includes/layer_contact.jspf" %>
-
-<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
-DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
-simbolos.setPerMill('.');
-DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
-%>
-<% if (myVehicles.isEmpty()) { %>
-	Usted no tiene ningun vehiculo asociado
-<% } else { %>
-	Vehiculo (Dominio) | KMs | Requiere Service | Ultimo Service KM | Fecha de ultimo service | En garantia | Garantia <br>
-	<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-		<%if (vehicleValueObject.getModel() !=  null) { %>
-			<%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)
-		<% } else { %>
-			<%=vehicleValueObject.getVehicle().getDomain() %>
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%> |
-		<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-			Si
-		<% } else { %>
-			No
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%> |
-		<%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%> |
-		<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 1) { %>
-			No
-		<% } else { %>
-			Si
-		<% } %> | 
-		<%if (vehicleValueObject.getModel() != null) { 
-			int years = vehicleValueObject.getModel().getMonthwarranty() / 12;%>
-			<%=years %> <%=years == 1 ? "año" : "años" %>
-			<%if (vehicleValueObject.getModel().getKmwarranty() != 0) { %>
-				o <%=formateador.format(vehicleValueObject.getModel().getKmwarranty())%>  km
-			<% }  %>
-		<% } else { %>
-			-
-		<% } %>
-		<br>
-	<% } %>
-<% } %>
-
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
-<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>

@@ -21,17 +21,18 @@
 --%><%@ include file="includes/checkThalamusUp.jspf" %><%--
 --%><%@ include file="includes/userLogged.jspf" %><%--
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
---%><!DOCTYPE html>
+--%>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Concesionarios oficiales</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
@@ -104,66 +105,69 @@
 
 </script>
 </head>
+<%@ include file="includes/version.jspf" %>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+}
+%>
+<% if (usingMobile || isAndroid) { %>
+	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+	</ul>
+<% } %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<div class="illustration">
+			<img src="images/skn_peugeot/bgs/photos/locations.png" />
+		</div>
+		<div class="content_template">
+			<h2>Seleccione la agencia o service oficial donde desea realizar el próximo service</h2>
+			<p>Determine la provincia, luego localidad y seleccione de la lista que aparecerá a continuación.</p>
+			<div class="template_form_wrapper">
+				<fieldset>
+					<label class="width25per">Provincia</label>
+					<select class="width70per" name="idState" id="idState">
+						<option value="">Seleccione...</option>
+						<% for (State state : PeugeotService.getStates()) { %>
+							<option value="<%=state.getId()%>">
+							<%=state.getName()%></option>
+						<% } %>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label class="width25per">Ciudades</label>
+					<select class="width70per" name="idCity" id="idCity">
+						<option value="0">Seleccione...</option>
+					</select>
+				</fieldset>
+			</div>
+			<fieldset class="button_bar pOnlyTop25">
+				<button class="botton_ahead" onclick="searchDealers()">Buscar<span></span></button>
+			</fieldset>
 		</div>
 	</div>
-</header>
+	<div id="resultsFullTable" class="results_content">
+		<h3>Resultados » <span>Service oficial</span></h3>
+		<button class="print">Imprimir</button>
+		<div class="table_container">
+			<div id="dealersLayer"></div>
+		</div>
+	</div>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-
+<!-- ALL LAYERS -->
 <%@ include file="includes/layer_contact.jspf" %>
-
-<div class="scrollable">
-	<fieldset>
-		<label class="ajuste">Provincia</label>
-		<select name="idState" id="idState">
-			<option value="">Seleccione...</option>
-			<% for (State state : PeugeotService.getStates()) { %>
-				<option value="<%=state.getId()%>">
-				<%=state.getName()%></option>
-			<% } %>
-		</select>
-	</fieldset>
-	<fieldset>
-		<label class="ajuste">Ciudades</label>
-		<select name="idCity" id="idCity">
-			<option value="0">Seleccione...</option>
-		</select>
-	</fieldset>
-</div>
-<input type="button" onclick="searchDealers()" Value="Buscar"><br>
-<div id="dealersLayer">
-</div>
-
-
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
-<%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>
