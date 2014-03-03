@@ -131,7 +131,7 @@
 									<input type="submit" value="">
 								</form>
 								<script type="text/javascript">
-									window.addEvent('domready', function() {
+									/*window.addEvent('domready', function() {
 										$('find_dealer_form').getElement('input[type=submit]').addEvent('mousedown', function() {
 											var textField = this.getParent().getElement('input[name=address]').get('value');
 											
@@ -139,7 +139,7 @@
 												this.getParent().set('action', '/trouver-un-concessionnaire/');
 											}
 										});
-									});
+									});*/
 								</script>
 							</div>
 						</div>
