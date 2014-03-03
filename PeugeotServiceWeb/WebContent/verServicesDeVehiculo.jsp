@@ -1,3 +1,4 @@
+<%@page import="com.tdil.ljpeugeot.model.Service"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
 <%@page import="com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject"%>
@@ -44,34 +45,6 @@
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-			$("input[name=serviceDate]").datepicker({dateFormat: 'dd-mm-yy', changeMonth: true,
-				changeYear: true, minDate: "-100Y", maxDate: "+0D"});
-
-			$("form[name='AddServiceForm']").validate({
-				errorPlacement: function(error, element) {
-					error.appendTo( element.next("div"));
-				},
-				rules: {
-					'serviceKm': {required: true,digits: true},
-					'serviceDate': {required: true}
-				},
-				messages: {
-					'serviceKm': {required: "<span>Ingrese los kms.</span>",
-						digits: "<span>Ingrese solo números.<span>"},
-					'serviceDate': {required: "<span>Ingresa la fecha de service.</span>"}
-				},
-				submitHandler: function() {
-					<%@ include file="includes/blockUI.jspf" %>
-					clearErrors();
-		            $("form[name='AddServiceForm']").ajaxSubmit({
-		    			type: "POST",
-		    			url: "./addService.do",
-		    			dataType: "json",
-		    			success: postAdd,
-		    			<%@ include file="includes/openErrorLayerJS.jspf" %>
-		    			});
-		        }
-			});
 		}
 	);
 	
@@ -81,29 +54,6 @@
 
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
-
-	function clearErrors() {
-		$("div[id^='err.']").each(function(index, valor) {
-			$(valor).prop('innerHTML','');
-		});
-	}
-	
-	function addService(idVehicle) {
-		$("input[name=idVehicle]").val(idVehicle);
-	}
-	function postAdd(data) {
-		<%@ include file="includes/unblockUI.jspf" %>
-		if (data.result == 'OK') {
-			window.location.replace('./misServices.jsp');
-		} else {
-			$.each(data, function(key, value) {
-				var obj = document.getElementById('err.' + key);
-				if (obj) {
-					obj.innerHTML = value;
-				}
-	        });
-		}
-	}
 
 </script>
 </head>
@@ -138,55 +88,24 @@
 
 
 
-<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); 
+<% 
+Integer vehicleId = Integer.parseInt(request.getParameter("idVehicle"));
+List<Service> services = PeugeotService.getServices(vehicleId);
 DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
 simbolos.setPerMill('.');
 DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
 %>
-<% if (myVehicles.isEmpty()) { %>
-	Usted no tiene ningun vehiculo asociado
+<% if (services.isEmpty()) { %>
+	Su vehiculo no tiene ningun service
 <% } else { %>
-	Vehiculo (Dominio) | KMs | Requiere Service | Ultimo Service KM | Fecha de ultimo service <br>
-	<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-		<input type="radio" name="selectradio" onclick="addService(<%=vehicleValueObject.getVehicle().getId()%>)">
-		<%if (vehicleValueObject.getModel() !=  null) { %>
-			<%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)
-		<% } else { %>
-			<%=vehicleValueObject.getVehicle().getDomain() %>
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%> |
-		<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-			Si
-		<% } else { %>
-			No
-		<% } %> |
-		<%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%> |
-		<%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%> |
-		<a href="./verServicesDeVehiculo.jsp?idVehicle=<%=vehicleValueObject.getVehicle().getId()%>">Ver services</a>
+	KMs | Fecha<br>
+	<% for (Service service : services)  { %>
+		<%=formateador.format(service.getKm())%> |
+		<%=DateUtils.formatDateSp(service.getServicedate())%>
 		<br>
 	<% } %>
 <% } %>
 
-<div id="addServiceLayer">
-<html:form method="POST" action="/addService">
-	<div class="scrollable">
-		<html:hidden name="AddServiceForm" property="idVehicle" />
-		<fieldset>
-			<label>km</label>
-			<html:text name="AddServiceForm" property="serviceKm" />
-			<div id="err.serviceKm" class="errorText textCenter"></div>
-		</fieldset>
-		<fieldset>
-			<label>fecha</label>
-			<html:text name="AddServiceForm" property="serviceDate" />
-			<div id="err.serviceDate" class="errorText textCenter"></div>
-		</fieldset>
-	</div>
-	<fieldset>
-		<input type="submit" id="addServiceButton" value="Agregar" class="buttonSend">
-	</fieldset>
-</html:form>
-</div>
 
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <!-- Layer legales -->
