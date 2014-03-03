@@ -68,6 +68,17 @@ public class WebsiteUserUtils {
 		}
 	}
 	
+	private static final class GetWebSiteUserByid implements TransactionalActionWithResult {
+		private int id;
+		public GetWebSiteUserByid(int lojackUserId) {
+			super();
+			this.id = lojackUserId;
+		}
+		public WebsiteUser executeInTransaction() throws SQLException {
+			return DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(this.id);
+		}
+	}
+	
 	private static final class GetWebSiteUserByDniAndEmail implements TransactionalActionWithResult<WebsiteUser> {
 		private String dni;
 		private String email;
@@ -147,6 +158,15 @@ public class WebsiteUserUtils {
 	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUser(String lojackUserId) {
 		try {
 			return (com.tdil.ljpeugeot.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserById(int id) {
+		try {
+			return (com.tdil.ljpeugeot.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUserByid(id));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return null;

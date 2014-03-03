@@ -46,6 +46,19 @@
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
 
+	$("form[name='ChangeDealerForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.next("div"));
+		},
+		rules: { 
+			'email': {required: true, email: true}
+		},
+		messages: {	
+			'email': {required: "<span>Ingrese el E-Mail.</span>",
+				email: "<span>Ingrese un E-Mail válido.</span>"}
+		}
+	});
+
 		}
 	);
 
@@ -98,6 +111,7 @@
 		<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
 		<input type="radio" name="idVehicle" id="idVehicle" value="<%=vehicleValueObject.getVehicle().getId()%>"><%=vehicleValueObject.getVehicle().getDomain()%>
 		<% } %>
+		recibir el aviso en: <html:text name="ChangeDealerForm" property="email" />
 	</div>
 	<fieldset>
 		<input type="submit" id="addServiceButton" value="Cambiar" class="buttonSend">

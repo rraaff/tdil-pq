@@ -8,6 +8,7 @@ import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.ljpeugeot.utils.WebsiteUser;
+import com.tdil.ljpeugeot.utils.WebsiteUserUtils;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
 import com.tdil.struts.actions.AbstractAction;
@@ -22,6 +23,7 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 
 	private int idVehicle;
 	private int idDealer;
+	private String email;
 	private WebsiteUser user;
 
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(ChangeDealerForm.class);
@@ -74,6 +76,9 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 			vehicle.setIdDealer(this.idDealer);
 			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		}
+		com.tdil.ljpeugeot.model.WebsiteUser edit = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(this.user.getModelUser().getId());
+		edit.setEmail(this.email);
+		DAOManager.getWebsiteUserDAO().updateWebsiteUserByPrimaryKey(edit);
 	}
 
 	public int getIdVehicle() {
@@ -90,6 +95,7 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 
 	public void setUser(WebsiteUser user) {
 		this.user = user;
+		this.email = WebsiteUserUtils.getWebSiteUserById(user.getModelUser().getId()).getEmail();
 	}
 
 	public int getIdDealer() {
@@ -98,6 +104,14 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 
 	public void setIdDealer(int idDealer) {
 		this.idDealer = idDealer;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
