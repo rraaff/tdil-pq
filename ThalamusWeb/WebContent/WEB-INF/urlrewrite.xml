@@ -16,6 +16,14 @@
         <from>/api/v1/person/password/passwordvalid</from>
         <to>/validatePassword.json</to>
     </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/api/v1/person/password/requestreset</from>
+        <to>/requestreset.json</to>
+    </rule>
+    
 
     <rule>
         <note>
