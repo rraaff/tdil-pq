@@ -21,7 +21,7 @@
         <note>
         </note>
         <from>/api/v1/person/password/requestreset</from>
-        <to>/requestreset.json</to>
+        <to>/requestreset.jsp</to>
     </rule>
     
 
