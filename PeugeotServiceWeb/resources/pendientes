@@ -20,6 +20,8 @@ del service.
 HECHO, quedo con ul li y fade in y fade out
 
 Agregarle un class al li cuando esta seleccionado
+HECHO
+Pablo, le agregue el class vehicleRowSelected cuando lo elegis, fijate que se lo deje clavado en la pagina
 
 Definiciones pendientes
 

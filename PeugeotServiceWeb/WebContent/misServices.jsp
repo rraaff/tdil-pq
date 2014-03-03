@@ -35,6 +35,11 @@
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
+<style>
+.vehicleRowSelected {
+background-color: green;
+}
+</style>
 <%@ include file="includes/headLogged.jsp" %>
 <% 
 
@@ -91,9 +96,16 @@
 	
 	function addService(domain, idVehicle) {
 		clearErrors();
+		$('#vehicleTable').find('li').each(function() {
+		    $(this).removeClass("vehicleRowSelected");
+		});
+		$('li[rel="ve-'+idVehicle+'"]').each(function() {
+		    $(this).addClass("vehicleRowSelected");
+		});
 		$('#addServiceDomain').prop('innerHTML', domain);
 		$('#addServiceLayer').fadeIn(500);
 		$("input[name=idVehicle]").val(idVehicle);
+		
 	}
 	function cancelAddService() {
 		$('#addServiceLayer').fadeOut(500);
@@ -152,23 +164,23 @@ if (apk != null && apk) {
 						<li class="lastservkm">Kilometraje del último service</li>
 						<li class="lastservdate">Fecha de último service</li>
 					</ul>
+					<ul class="table_body" id="vehicleTable">
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-						<ul class="table_body">
 							<%if (vehicleValueObject.getModel() !=  null) { %>
-								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
-								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
 							<% } %>
-							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_required services">Si</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_required services">Si</li>
 							<% } else { %>
-								<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_not_required services">No</li>
+								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="service_not_required services">No</li>
 							<% } %>
-							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
-							<li onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
-						</ul>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>)" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
 					<% } %>
+					</ul>
 				</div>
 			<% } %>
 		</div>
