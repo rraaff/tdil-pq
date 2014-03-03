@@ -66,7 +66,12 @@ section.modal_content div.content_at_layer p:last-of-type { padding:0; }
 form.modal_wrapper									{ background:#f0f0f0; width:100%; display:inline-block; }
 form.modal_wrapper div.column						{ width:50%; padding:17px 0; float:left; }
 form.modal_wrapper fieldset							{ float:left; display:inline-block; }
+label,
 form.modal_wrapper label							{ color:#595a67; font-size:13px; min-width:110px; display:inline-block; padding:15px 0 15px 25px; vertical-align:top; overflow:hidden; }
+input[type="text"],
+input[type="password"],
+select,
+textarea,
 form.modal_wrapper input[type="text"],
 form.modal_wrapper input[type="password"],
 form.modal_wrapper select,
@@ -186,7 +191,38 @@ div.dashboard_item h3 a					{ color: #00aad5; font-size: 14px; font-family: 'Peu
 div.dashboard_item p					{ color: #595a67; font-size: 13px; line-height: 18px; font-weight: 600; text-align: left; width: 285px; float: left; padding: 5px 0 15px 25px; }
 div.dashboard_item button.link span		{ background-image: url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat: no-repeat; background-position: 0 1px; width: 11px; height: 11px; margin: 0 5px 0 0; display: inline-block; }
 
+div.template_half h1											{ color: #3b3a48; font-size: 20px; font-family: 'PeugeotLight'; text-align: left; text-transform: uppercase; padding: 0 0 25px; }
+div.table_container												{}
+div.table_container h2											{}
+div.table_services												{ vertical-align:top; }
+div.table_services ul.table_header								{ border: solid 1px #419fbe; background: #46b7db; background: -moz-linear-gradient(top, #46b7db 0%, #0b5a86 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#46b7db), color-stop(100%,#0b5a86)); background: -webkit-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background: -o-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background: -ms-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background: linear-gradient(to bottom, #46b7db 0%,#0b5a86 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46b7db', endColorstr='#0b5a86',GradientType=0 ); width: 100%; display: inline-block; margin: 0; vertical-align:top; }
+div.table_services ul.table_header li							{ border-left: solid 1px #419fbe; color: #fff; font-size: 13px; font-family: Arial; font-weight: bold; padding: 15px 10px; vertical-align: middle; float: left; }
+div.table_services ul.table_body								{ border-bottom: solid 1px #cfcfcf; border-right: solid 1px #cfcfcf; width: 100%; display: inline-block; vertical-align:top; }
+div.table_services ul.table_body li								{ border-left: solid 1px #cfcfcf; color:#3b3a48; font-size: 13px; line-height: 24px; font-family: Arial; font-weight: bold; padding:6px 10px; vertical-align: middle; float: left; }
+div.table_services ul.table_body li.service_required	 		{  }
+div.table_services ul.table_body li.service_not_required		{  }
 
+div.table_services ul.table_header li.radio,
+div.table_services ul.table_body li.radio						{ width:50px; }
+div.table_services ul.table_header li.cardesc,
+div.table_services ul.table_body li.cardesc						{ width:150px; }
+div.table_services ul.table_header li.kilometers,
+div.table_services ul.table_body li.kilometers					{ width: 150px; }
+div.table_services ul.table_header li.services,
+div.table_services ul.table_body li.services					{ width: 150px; }
+div.table_services ul.table_header li.lastservkm,
+div.table_services ul.table_body li.lastservkm					{ width: 250px; }
+div.table_services ul.table_header li.lastservdate,
+div.table_services ul.table_body li.lastservdate				{ width: 245px; }
+
+div.add_services_info								{ text-align: left; width: 1000px; margin: 50px 0; display: inline-block; }
+div.add_services_info h2							{ color: #373743; font-size: 20px; font-family: 'PeugeotLight'; font-weight: bold; margin: 0 0 25px; display: inline-block; }
+div.form_with_car_image								{ background-image: url(../images/skn_peugeot/logos/iso.png); background-repeat: no-repeat; background-position: right; background-size: 50%; }
+form.add_service_form								{  }
+form.add_service_form div.add_service_form_wrapper	{ background-color: #f0f0f0; width: 50%; padding: 25px 0; }
+form.add_service_form label							{ padding: 15px 25px; width: 230px; }
+form.add_service_form input[type="text"],
+form.add_service_form select						{ width: 224px; }
 
 /* FOOTER */
 footer						{ color:#fff; }

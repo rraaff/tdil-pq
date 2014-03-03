@@ -31,7 +31,8 @@
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
-<![endif]--><%@ include file="includes/headLogged.jsp" %>
+<![endif]-->
+<%@ include file="includes/headLogged.jsp" %>
 <% 
 List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
 Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
