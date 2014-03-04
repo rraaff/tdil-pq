@@ -15,6 +15,14 @@ public class GetPMHistory implements Serializable {
 
 	private static final long serialVersionUID = 8760240826905090226L;
 	
+	public static String OK = "0";
+	public static String INVALID_ID_ERROR = "1";
+	public static String TOKEN_VALIDATION_ERROR = "2";
+	public static String CONNECTION_ERROR = "3";
+	public static String DATA_ERROR = "4";
+	public static String TIMEOUT_ERROR = "5";
+	public static String GENERAL_ERROR = "6";
+	
 	@XStreamImplicit
 	private List<PositionHistory> item;
 	

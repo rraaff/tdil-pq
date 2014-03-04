@@ -2,6 +2,7 @@ package com.tdil.ljpeugeot.prevent.model;
 
 import java.io.Serializable;
 
+import com.tdil.ljpeugeot.prevent.PreventXMLUtils;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias(value="CircularSecureZone")
 public class CircularSecureZone implements Serializable {
@@ -42,6 +43,13 @@ public class CircularSecureZone implements Serializable {
 		this.radio = radio;
 	}
 
-	
+	public static void main(String[] args) {
+		CircularSecureZone circularSecureZone = new CircularSecureZone();
+		circularSecureZone.setDescription("a2");
+		circularSecureZone.setLatitude("1");
+		circularSecureZone.setLongitude("3");
+		circularSecureZone.setRadio("4");
+		System.out.println(PreventXMLUtils.asXML(circularSecureZone));
+	}
 	
 }
