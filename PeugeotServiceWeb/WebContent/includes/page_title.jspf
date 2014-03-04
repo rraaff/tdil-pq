@@ -7,7 +7,8 @@
 		</div-->
 	
 		<div class="breadcrumb">
-			<% for (com.tdil.web.breadcrum.BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
+			<% String lasttitle = "";
+				for (com.tdil.web.breadcrum.BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
 				<% if (breadcrumItem.hasPage()) { %>
 					<a href="<%=breadcrumItem.getPage()%>"><%=breadcrumItem.getTitle()%></a>
 				<% } else { %>
@@ -15,11 +16,13 @@
 				<% } %>
 				<% if (!breadcrumItem.isLast()) { %>
 					&nbsp;&gt;&nbsp;
-				<% } %>
+				<% } else {
+					lasttitle = breadcrumItem.getTitle();
+				} %>
 			<% } %>
 		</div>
 		<div class="title">
-			<h1>Título</h1>
+			<h1><%=lasttitle %></h1>
 		</div>
 
 		<div class="avatar_container">
