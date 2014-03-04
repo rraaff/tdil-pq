@@ -95,7 +95,7 @@ $.each(data, function(key, value) {
 					<label><%=LJPeugeotErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
 				</fieldset>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="botton_ahead" onclick="javascript:doSaveAvatar();">Guardar<span></span></button>
+					<button type="button" class="botton_ahead" onclick="javascript:doSaveAvatar();">Guardar<span></span></button>
 				</fieldset>
 			</html:form>
 		</section>

@@ -33,6 +33,16 @@ public class URLParams {
 		return this;
 	}
 	
+	public URLParams startDate(String param) {
+		params.put(PreventConnector.startDate, param);
+		return this;
+	}
+	
+	public URLParams endDate(String param) {
+		params.put(PreventConnector.endDate, param);
+		return this;
+	}
+	
 	public Map<String, String> getParams() {
 		return params;
 	}

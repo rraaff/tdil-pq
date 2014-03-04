@@ -21,7 +21,6 @@ import com.tdil.ljpeugeot.prevent.model.SpeedLimit;
 import com.tdil.ljpeugeot.prevent.model.UpdatePhoneNumbers;
 import com.tdil.ljpeugeot.prevent.model.UserLogin;
 import com.tdil.ljpeugeot.prevent.model.Vehicle;
-import com.tdil.ljpeugeot.thalamus.ThalamusLoginCache;
 import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.thalamus.client.core.CommunicationException;
@@ -47,6 +46,8 @@ public class PreventConnector {
 	private static final String VEHICLE_GET_SPEED_LIMIT = "/Vehicles/{vehicleID}/SpeedLimit/?userToken={userToken}";
 	private static final String VEHICLE_SET_SPEED_LIMIT = "/SpeedLimit/?SpeedLimitID={speedLimitID}&VehicleID={vehicleID}&userToken={userToken}";
 	private static final String VEHICLE_GET_PHONES = "/Vehicles/{vehicleID}/PhoneNumbers/?userToken={userToken}";
+	
+	private static final String VEHICLE_GET_HISTORIC_PATH = "/Vehicles/{vehicleID}/GetPositions/?userToken={userToken}&startDate={startDate}&endDate={endDate}";
 	// POST
 	private static final String VEHICLE_SET_PHONES = "/{userToken}/Vehicles/{vehicleID}/PhoneNumbers";
 	// get
@@ -67,6 +68,9 @@ public class PreventConnector {
 	public static final String vehicleID = "{vehicleID}";
 	public static final String secureZoneID = "{secureZoneID}";
 	public static final String speedLimitID = "{speedLimitID}";
+	
+	public static final String startDate = "{startDate}";
+	public static final String endDate = "{endDate}";
 
 	@Deprecated
 	public static LoginResponse getLogin() {
@@ -138,6 +142,15 @@ public class PreventConnector {
 
 	public static XMLResponse getVehiclePhones(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_GET_PHONES, params);
+	}
+	
+	public static XMLResponse getHistoricPath(URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executeGet(getPreventServer(), VEHICLE_GET_HISTORIC_PATH, params);
+	}
+	
+	public static XMLResponse getHistoricPath(LoginResponse loginResponse, Vehicle vehicle, String fromDate, String toDate) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		URLParams params = new URLParams(loginResponse).vehicleID(vehicle.getId()).startDate(fromDate).endDate(toDate);
+		return executeGet(getPreventServer(), VEHICLE_GET_HISTORIC_PATH, params);
 	}
 
 	public static XMLResponse setVehiclePhones(LoginResponse loginResponse, UpdatePhoneNumbers phoneNumbers) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {

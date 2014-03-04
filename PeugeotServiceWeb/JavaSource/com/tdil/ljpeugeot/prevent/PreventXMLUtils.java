@@ -2,9 +2,11 @@ package com.tdil.ljpeugeot.prevent;
 
 import java.io.ByteArrayOutputStream;
 
+import com.tdil.ljpeugeot.prevent.model.GetPMHistory;
 import com.tdil.ljpeugeot.prevent.model.LoginResponse;
 import com.tdil.ljpeugeot.prevent.model.PhoneNumbers;
 import com.tdil.ljpeugeot.prevent.model.PhoneNumbersReponse;
+import com.tdil.ljpeugeot.prevent.model.PositionHistory;
 import com.tdil.ljpeugeot.prevent.model.SatellitePosition;
 import com.tdil.ljpeugeot.prevent.model.SatellitePositionDesc;
 import com.tdil.ljpeugeot.prevent.model.SatellitePositions;
@@ -43,6 +45,9 @@ public class PreventXMLUtils {
 		xstream.processAnnotations(SatellitePositionDesc.class);
 		xstream.processAnnotations(SatellitePositions.class);
 		xstream.processAnnotations(SpeedLimitResponse.class);
+		
+		xstream.processAnnotations(GetPMHistory.class);
+		xstream.processAnnotations(PositionHistory.class);
 
 		xstreamUpdatePhone = new XStream();
 		xstreamUpdatePhone.processAnnotations(UpdatePhoneNumbers.class);
