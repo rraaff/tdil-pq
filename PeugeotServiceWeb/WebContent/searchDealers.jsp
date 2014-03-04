@@ -24,7 +24,7 @@
 function selectDealer(dealerId) {
 	$('#idDealer').val(dealerId);
 	$('#goToChangeAction').prop('disabled', false);
-	$('#dealersTable').find('li').each(function() {
+	$('#dealersTableContainer').find('li').each(function() {
 	    $(this).removeClass("rowSelected");
 	});
 	$('li[rel="ve-'+dealerId+'"]').each(function() {
@@ -37,7 +37,7 @@ function selectDealer(dealerId) {
 	<% int idCity = Integer.parseInt(request.getParameter("idCity"));
 	Collection<Dealer> dealers = DealersService.getDealers(idCity);
 	%>
-	<div class="table_services">
+	<div class="table_services" id="dealersTableContainer">
 		<ul class="table_header">
 			<li class="dealer">Concesionaria/Service</li>
 			<li class="dealer_address">Dirección</li>
@@ -45,7 +45,7 @@ function selectDealer(dealerId) {
 			<li class="dealer_email">E-Mails</li>
 		</ul>
 		<% for (Dealer dealer : dealers) { %>
-			<ul class="table_body" id="dealersTable">
+			<ul class="table_body">
 				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer"><%=dealer.getName()%></li>
 				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer_address"><%=StringUtils.notNullValueOf(dealer.getAddress())%></li> 
 				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer_phone"><%=StringUtils.notNullValueOf(dealer.getPhone())%></li>
