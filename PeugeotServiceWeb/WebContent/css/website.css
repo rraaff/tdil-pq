@@ -132,7 +132,7 @@ button.print:active			{ outline:none; }
 
 
 /* WHEEL MENU */
-#wheel						{ background-color:#060c0f; background-image:url(../images/skn_peugeot/bgs/ws_wheel_halo_blue.jpg); background-position:top center; background-repeat:no-repeat; width:100%; min-width:1250px; height:500px; overflow:hidden; }
+#wheel						{ background-color:#060c0f; background-image:url(../images/skn_peugeot/bgs/ws_wheel_halo_blue.jpg); background-position:top center; background-repeat:no-repeat; width:100%; min-width:1250px; height:500px; top:-20px; position:relative; overflow:hidden; }
 div#content_wrapper			{ width:1250px; height:500px; margin:0 auto; }
 div#app_logo				{ width:400px; position:relative; top:150px; left:780px; z-index:10; }
 div#app_logo img			{ width:100%; }

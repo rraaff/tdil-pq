@@ -1,3 +1,5 @@
+<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
+<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
@@ -51,9 +53,15 @@
 <% if (usingMobile || isAndroid) { %>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<%
+	Breadcrum breadcrums = new Breadcrum()
+	.titles("Inicio","Peugeot App")
+	.pages("","");
+%>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/under_shade.jspf" %>
 <%@ include file="includes/wheel_menu.jspf" %>
 <%@ include file="includes/copyright.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>

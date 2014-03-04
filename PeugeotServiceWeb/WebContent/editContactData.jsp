@@ -1,3 +1,5 @@
+<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
+<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@page import="com.tdil.struts.resources.ApplicationResources"%>
 <%@page import="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"%>
 <%@page import="com.tdil.ljpeugeot.prevent.model.SatellitePosition"%>
@@ -46,9 +48,15 @@ if (apk != null && apk) {
 <% if (usingMobile || isAndroid) { %>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<%
+	Breadcrum breadcrums = new Breadcrum()
+	.titles("Inicio","Peugeot App","Configuración de emergencias")
+	.pages("home.jsp","home.jsp", "");
+%>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/under_shade.jspf" %>
 <section id="main_content_regular_page">
 	<div class="page_header">
 		<h2>Determinar contactos de emergencia</h2>
