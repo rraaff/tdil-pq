@@ -438,6 +438,11 @@ function parkingsNotLogged() {
 <% if (usingMobile || isAndroid) { %>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<%
+	Breadcrum breadcrums = new Breadcrum()
+	.titles("Inicio","Ingreso")
+	.pages("","");
+%>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
