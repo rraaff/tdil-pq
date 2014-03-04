@@ -77,5 +77,7 @@ HECHO A mi me anduvo joya, si podes pasame el error
 HECHO, afectivamente habia que ponerle el display block
    
 -  saveContactData.do necesitaría un modal de error u OK con mensaje
+HECHO, no es ajax asi que no puedo poner modal, podria mandarlo a una de ok, hoy va a la home (esttaba pinchando, por eso quedaba ahi)
+Esa pagina tiene cero validaciones, si me decis le pongo alguna, sino, lo que pone pasa.
 
 ****************************************************

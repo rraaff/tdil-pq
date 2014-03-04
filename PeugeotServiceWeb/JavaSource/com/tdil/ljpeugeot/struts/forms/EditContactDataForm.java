@@ -49,6 +49,7 @@ public class EditContactDataForm extends TransactionalValidationForm {
 			this.setContactData(result.get(0));
 		} else {
 			this.setContactData(new ContactData());
+			this.getContactData().setDeleted(0);
 		}
 	}
 	
