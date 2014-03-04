@@ -38,7 +38,7 @@ public class EditProfileForm extends TransactionalValidationForm implements
 	
 	private transient FormFile formFile;
 	
-	private int idAvatar;
+	private Integer idAvatar;
 	private String extAvatar;
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(EditProfileForm.class);
