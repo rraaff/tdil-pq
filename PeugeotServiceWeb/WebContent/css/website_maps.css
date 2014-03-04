@@ -58,4 +58,12 @@ button.icon_zoom_out		{ background-image:url(../images/skn_peugeot/icons/apps/ic
 button.icon_zoom_in:hover	{ background-image:url(../images/skn_peugeot/icons/apps/ic_zoomin_on.png); }
 button.icon_zoom_out:hover	{ background-image:url(../images/skn_peugeot/icons/apps/ic_zoomout_on.png); }
 
+
+div.sign_at_map							{ background-image:url(../images/skn_peugeot/modal/trans_80.png); padding:25px; display:inline-block; }
+div.sign_at_map h5						{ color:#2ba4c9; font-size:18px; font-family:'Peugeot'; width:80%; padding:0 0 15px; display:inline-block; }
+div.sign_at_map span.sign_content		{ color:#fff; display:inline-block; }
+div.olPopupCloseBox						{ background-image:url(../images/skn_peugeot/modal/close_openMap.png); background-position:0 0; background-repeat:no-repeat; right:16px!important; cursor:pointer; }
+div.olFramedCloudPopupContent			{ left:0!important; border:none!important; }
+div.olPopup								{  }
+
 footer { color: #fff; top: -20px; position: relative; }

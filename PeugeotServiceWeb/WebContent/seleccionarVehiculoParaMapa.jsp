@@ -18,20 +18,15 @@ $( "#closeSelectVehicleForMapLayer" ).click(function() {
 document.documentElement.className += 
 (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
 </script>
-<div id="xContainer"><button id="closeSelectVehicleForMapLayer">X</button></div>
-<h3>Localizar vehículo/s</h3>
-<div id="tableStyle">
-	<fieldset class="tableHeader">
-		<label class="w1">Patente</label>
-		<label class="w2">Localizar</label>
-	</fieldset>
-	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
-		<a href="./locateVehicleInMap.do?vehicleId=<%=vehicle.getId()%>" title="Ver Ubicación">
-			<fieldset>
-				<label class="w1"><%=vehicle.getDescription() %></label>
-				<label class="w2"><img src="images/skn_peugeot/icons/apps/ic_getposit_off.png" width="36" height="36" align="absmiddle" /></label>
-			</fieldset>
-		</a>
-	<% } %>
-</div>
+		<section class="modal_header">
+			<h2>Localizar vehículos</h2>
+			<button class="close" id="closeSelectVehicleForMapLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content apps_listing">
+			<ul>
+				<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+					<li><a href="./locateVehicleInMap.do?vehicleId=<%=vehicle.getId()%>" title="Ver Ubicación"><%=vehicle.getDescription() %></a></li>
+				<% } %>
+			</ul>
+		</section>
 <%@ include file="includes/catchModal.jspf" %>

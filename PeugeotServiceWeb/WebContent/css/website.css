@@ -71,6 +71,8 @@ div.scrollable				{ overflow:auto; }
 /* ERROR S */
 div.alert 						{ border-radius:3px; text-align:center; padding:10px; margin:0 0 15px; }
 div.alert-error					{ background-color:#ffe9e9; border:solid 1px #faacac; color:#6b1f1f; }
+.errorText,
+label.error						{ color:#FF5500; }
 
 /* FORMS */
 form.modal_wrapper									{ background:#f0f0f0; width:100%; display:inline-block; }
@@ -166,6 +168,8 @@ section#service_section_menu								{ background-color:#fff;background-image:url
 section#service_section_menu ul.subproduc_menu				{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:left center; width:1000px; margin:0 auto; }
 section#service_section_menu ul.subproduc_menu li			{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:right center; color:#373743; font-size:13px; font-family:'PeugeotStyle'; display:inline-block; }
 section#service_section_menu ul.subproduc_menu li a			{ color:#373743; line-height:13px; text-decoration:none; padding:20px 30px; display:inline-block; }
+section#service_section_menu ul.subproduc_menu li a.active	{ color:#2caed6; }
+section#service_section_menu ul.subproduc_menu li span		{ color:#2caed6; line-height:13px; text-decoration:none; padding:20px 30px; display:inline-block; }
 section#service_section_menu ul.subproduc_menu li a:hover	{ color:#00aad5; }
 section#service_section_menu ul.subproduc_menu li a:active	{}
 div#under_shade												{ background-image: url(../images/skn_peugeot/bgs/under_shade.png); height:20px; position:relative; top:0; left:0; z-index:1401; }
@@ -220,11 +224,11 @@ div.table_services ul.table_header								{ border:solid 1px #419fbe; background
 div.table_services ul.table_header li							{ border-left:solid 1px #419fbe; color:#fff; font-size:13px; font-family:Arial; font-weight:bold; padding:15px 10px; vertical-align:middle; float:left; }
 div.table_services ul.table_body								{ border-bottom:solid 1px #cfcfcf; border-right:solid 1px #cfcfcf; width:100%; display:inline-block; vertical-align:top; }
 div.table_services ul.table_body:nth-child(2n+3)				{ background-color:#f7f7f7; }
-div.table_services ul.table_body li								{ border-left:solid 1px #cfcfcf; color:#3b3a48; font-size:13px; line-height:24px; font-family:Arial; font-weight:bold; padding:6px 10px; vertical-align:middle; float:left; cursor:pointer; }
+div.table_services ul.table_body li								{ border-left:solid 1px #cfcfcf; border-top:solid 1px #cfcfcf; color:#3b3a48; font-size:13px; line-height:24px; font-family:Arial; font-weight:bold; padding:6px 10px; vertical-align:middle; float:left; cursor:pointer; }
 div.table_services ul.table_body li.service_required	 		{ background-color:#ddf7ff; }
 div.table_services ul.table_body li.service_not_required		{  }
 
-.rowSelected													{ background: #ccf3ff; /* Old browsers */ background: -moz-linear-gradient(top,  #ccf3ff 0%, #a5e0ff 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ccf3ff), color-stop(100%,#a5e0ff)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* IE10+ */ background: linear-gradient(to bottom,  #ccf3ff 0%,#a5e0ff 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccf3ff', endColorstr='#a5e0ff',GradientType=0 ); /* IE6-9 */ }
+.vehicleRowSelected													{ background: #ccf3ff; /* Old browsers */ background: -moz-linear-gradient(top,  #ccf3ff 0%, #a5e0ff 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ccf3ff), color-stop(100%,#a5e0ff)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* IE10+ */ background: linear-gradient(to bottom,  #ccf3ff 0%,#a5e0ff 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccf3ff', endColorstr='#a5e0ff',GradientType=0 ); /* IE6-9 */ }
 
 div.table_services ul.table_header li.cardesc,
 div.table_services ul.table_body li.cardesc						{ width:150px; }

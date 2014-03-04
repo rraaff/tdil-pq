@@ -36,11 +36,6 @@
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
-<style>
-.vehicleRowSelected {
-background-color: green;
-}
-</style>
 <%@ include file="includes/headLogged.jsp" %>
 <script>
 	$(document).ready(
@@ -126,7 +121,6 @@ background-color: green;
 </script>
 </head>
 <%@ include file="includes/version.jspf" %>
-<% MENU_ACTIVE_SECTION = "SERVICES";	%>
 <body>
 <%
 	Boolean apk = (Boolean)session.getAttribute("USING_APK");
@@ -143,14 +137,15 @@ if (apk != null && apk) {
 %>
 <%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
-	.titles("Inicio","Peugeot","Mis services")
-	.pages("home.jsp","","");
+	.titles("Inicio","Services","Mis services")
+	.pages("home.jsp","servicesDashboard.jsp","");
 %>
+<% MENU_ACTIVE_SECTION = "SERVICES"; %>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
-
+<%@ include file="includes/under_shade.jspf" %>
 <section id="main_content_regular_page">
 	<div class="template_half">
 		<h1>Mis services</h1>

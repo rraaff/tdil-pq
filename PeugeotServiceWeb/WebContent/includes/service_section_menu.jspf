@@ -11,7 +11,7 @@
 			<li><a href="javascript:loginPrevent();" title="Ingresar a la aplicación Car Security">Car Security</a></li>
 		<% } %>
 		<% if ("SERVICES".equals(MENU_ACTIVE_SECTION)) { %>
-			<li><span>Services</span></li>
+			<li><a class="active" href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
 		<% } else { %>
 			<li><a href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
 		<% } %>

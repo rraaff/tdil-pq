@@ -44,6 +44,7 @@
 	var ZOOM_ALL = 12;
 	var ZOOM_1000 = 14;
 	var ZOOM_500 = 15;
+	var ZOOM_CAR = 20;
 	var Mapa;
 	var parkings;
 	var origenGeoRef;
@@ -73,6 +74,7 @@
 	IconSizeForZoom[17] = 32;
 	IconSizeForZoom[18] = 38;
 	IconSizeForZoom[19] = 40;
+	IconSizeForZoom[20] = 64;
         
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
@@ -216,11 +218,12 @@
 				currPoints = new Array(); 
 				parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(32,32);
+	            var size = new OpenLayers.Size(64,64);
+	            var sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
 	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
 	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_position.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
+				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',sizeCar,offset);
 				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
             } else {*/
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
@@ -249,15 +252,18 @@
             		parkings = new OpenLayers.Layer.Markers( "Parkings" );
     	            Mapa.map.addLayer(parkings);
     	            var size;
+    	            var sizeCar;
     	            if (SearchMeters == 1000) {
     	        		size = new OpenLayers.Size(IconSizeForZoom[ZOOM_1000],IconSizeForZoom[ZOOM_1000]);
+    	        		sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
     	            } else {
     	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
+    	            	sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
     	            }
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
     	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_parking.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
-    				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
+    				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',sizeCar,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
     				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {
@@ -279,7 +285,7 @@
 			var feature = new OpenLayers.Feature(parkings, point);
             feature.closeBox = true;
             feature.popupClass = popupClass;
-            feature.data.popupContentHTML = '<div style="background-color:#000; color:#fff; padding:20px;"><span style="color:#ee5222; font-weight:bold;">' + title + '</span><br><span style="color:#fff; font-size:12px; font-weight:lighter; padding:10px 0;">' + desc +'</span></div>';
+            feature.data.popupContentHTML = '<div class="sign_at_map"><h5>' + title + '</h5><span class="sign_content">' + desc +'</span></div>';
             feature.data.overflow = "auto";
 
             var markerClick = function(evt) {
@@ -315,6 +321,7 @@
 	.titles("Inicio","Peugeot App","Points of Interest")
 	.pages("home.jsp","home.jsp", "");
 %>
+<% MENU_ACTIVE_SECTION = "POIS"; %>
 <!-- WEBSITE CONTENT -->
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
@@ -351,12 +358,6 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
-
-
-
-
-
-
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
 	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">

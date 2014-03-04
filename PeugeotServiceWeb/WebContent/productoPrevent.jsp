@@ -298,6 +298,7 @@
 	.titles("Inicio","Peugeot App","Car Security")
 	.pages("home.jsp","home.jsp", "");
 %>
+<% MENU_ACTIVE_SECTION = "PREVENT"; %>
 <!-- WEBSITE CONTENT -->
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
@@ -331,59 +332,59 @@
 </section>
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesMaxSpeed" class="defaultLayerStyles">
-		<div id="editMaxSpeed" class="modalStyle">
+	<div id="centradorModalesMaxSpeed" class="layerModal width300">
+		<div id="editMaxSpeed">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="editSecureZoneLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesSecureZone" class="defaultLayerStyles">
-		<div id="editSecureZone" class="modalStyle">
+	<div id="centradorModalesSecureZone" class="layerModal width300">
+		<div id="editSecureZone">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="selectVehiclesSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesSpeed" class="defaultLayerStyles">
-		<div id="selectVehiclesSpeed" class="modalStyle">
+	<div id="centradorModalesVehiclesSpeed" class="layerModal width300">
+		<div id="selectVehiclesSpeed">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 
 <div id="editVehiclesSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesEditSpeed" class="defaultLayerStyles">
-		<div id="editVehiclesSpeed" class="modalStyle">
+	<div id="centradorModalesEditSpeed" class="layerModal width300">
+		<div id="editVehiclesSpeed">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="selectVehiclesPhonesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesPhones" class="defaultLayerStyles">
-		<div id="selectVehiclesPhones" class="modalStyle">
+	<div id="centradorModalesVehiclesPhones" class="layerModal width300">
+		<div id="selectVehiclesPhones">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="editVehiclesPhonesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesEditPhones" class="defaultLayerStyles">
-		<div id="editVehiclesPhones" class="modalStyle">
+	<div id="centradorModalesEditPhones" class="layerModal width300">
+		<div id="editVehiclesPhones">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 <div id="selectVehiclesForMapLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesForMap" class="defaultLayerStyles">
-		<div id="selectVehiclesForMap" class="modalStyle">
+	<div id="centradorModalesVehiclesForMap" class="layerModal width300">
+		<div id="selectVehiclesForMap">
 			Consultando datos...
 		</div>
 	</div>
 </div>
 
 <div id="vehiclesVLUMessagesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesVLUMessages" class="defaultLayerStyles">
-		<div id="vehiclesVLUMessages" class="modalStyle">
+	<div id="centradorModalesVehiclesVLUMessages" class="layerModal width300">
+		<div id="vehiclesVLUMessages">
 			Consultando datos...
 		</div>
 	</div>
