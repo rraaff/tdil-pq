@@ -53,10 +53,6 @@ HECHO, se carga en el mismo.
 	Para el fist access y recover password podes tocar el jsp
 	requestreset.jsp en ThalamusFake y hacer que le mande status 404, ese va por camino del error
 
-- Revisar la manera en la que está hecho el link al 
-  homepage desde <li class="home"><a href="home.jsp...
-No se entiende que hay que hacer
-
 -  Me tenes que dar una mano para programar el breadcrumb
    y los titulos de las páginas con variables. Despuées 
    conectate y te explico mi idea. También necesito algo 
@@ -74,5 +70,12 @@ Segun la seccion que quieras que este activa
 
 - Habilité el avatar, pero no anda bien el cambio al menos.
 HECHO A mi me anduvo joya, si podes pasame el error
+
+-  contacto.jsp Le puse el display:none; al error, pero no 
+   pude ver si aparece cuando hay un error. ¿Como hago que 
+   aparezca el error general?
+   
+   
+-  saveContactData.do necesitaría un modal de error u OK con mensaje
 
 ****************************************************
