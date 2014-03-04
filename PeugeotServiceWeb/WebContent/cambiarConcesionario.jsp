@@ -36,9 +36,11 @@
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
-<% 
-
-%>
+<style>
+.rowSelected {
+background-color: green;
+}
+</style>
 <script>
 	$(document).ready(
 		function(){
@@ -70,6 +72,17 @@
 	<%@ include file="includes/contactJS.jspf" %>
 	
 
+	function selectVehicle(vehicleId) {
+		$("[name='idVehicle']").val(vehicleId);
+		$('#addServiceButton').prop('disabled', false);
+		$('#vehicleTable').find('li').each(function() {
+		    $(this).removeClass("rowSelected");
+		});
+		$('li[rel="ve-'+vehicleId+'"]').each(function() {
+		    $(this).addClass("rowSelected");
+		});
+	}
+	
 </script>
 </head>
 <body>
@@ -106,15 +119,18 @@
 
 <% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); %>
 <html:form method="POST" action="/changeDealer">
-	<div class="scrollable">
-		<input type="radio" name="idVehicle" id="idVehicle" value="0"> Todos<br>
+	<html:hidden name="ChangeDealerForm" property="idVehicle"/>
+	<ul id="vehicleTable">
+		<li rel="ve-0" onclick="selectVehicle(0)">Todos</li>
 		<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-		<input type="radio" name="idVehicle" id="idVehicle" value="<%=vehicleValueObject.getVehicle().getId()%>"><%=vehicleValueObject.getVehicle().getDomain()%>
+			<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="selectVehicle(<%=vehicleValueObject.getVehicle().getId()%>)"><%=vehicleValueObject.getVehicle().getDomain()%></li>
 		<% } %>
+	</ul>
+	<div class="scrollable">
 		recibir el aviso en: <html:text name="ChangeDealerForm" property="email" />
 	</div>
 	<fieldset>
-		<input type="submit" id="addServiceButton" value="Cambiar" class="buttonSend">
+		<input type="submit" disabled id="addServiceButton" value="Cambiar" class="buttonSend">
 	</fieldset>
 </html:form>
 
