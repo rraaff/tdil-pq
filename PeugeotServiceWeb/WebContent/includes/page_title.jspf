@@ -7,7 +7,7 @@
 		</div-->
 	
 		<div class="breadcrumb">
-			<% for (BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
+			<% for (com.tdil.web.breadcrum.BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
 				<% if (breadcrumItem.hasPage()) { %>
 					<a href="<%=breadcrumItem.getPage()%>"><%=breadcrumItem.getTitle()%></a>
 				<% } else { %>
