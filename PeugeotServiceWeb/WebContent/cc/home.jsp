@@ -49,18 +49,18 @@
 				El usuario no ha definido sus datos de contacto
 			<% } else { %>
 				Primer contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1name())%><br>
-				Relacion: <%=searchUserForm.getContactData().getContact1relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact1relation()) : ""%><br>
+				Relacion: <%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact1relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact1relation()) : "-"%><br>
 				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1phone())%><br>
 				Palabra clave: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1secword())%><br>
-				Obra Social: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1healthi())%><br>
+				Obra Social: <%=StringUtils.nvl(searchUserForm.getContactData().getContact1healthi(),"-")%><br>
 				
 				segundo contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2name())%><br>
-				Relacion: <%=searchUserForm.getContactData().getContact2relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact2relation()) : ""%><br>
-				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2phone())%><br>
+				Relacion: <%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact2relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact2relation()) : "-"%><br>
+				Te: <%=StringUtils.nvl(searchUserForm.getContactData().getContact2phone(),"-")%><br>
 				
 				tercer contacto: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3name())%><br>
-				Relacion: <%=searchUserForm.getContactData().getContact3relation() != null ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact3relation()) : ""%><br>
-				Te: <%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3phone())%><br>
+				Relacion: <%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact3relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact3relation()) : "-"%><br>
+				Te: <%=StringUtils.nvl(searchUserForm.getContactData().getContact3phone(),"-")%><br>
 			<% } %>
 		<% } %>
 	<% } 
