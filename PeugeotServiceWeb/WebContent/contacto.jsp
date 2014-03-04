@@ -122,14 +122,13 @@ function postContact(data) {
 							<html:text name="ContactForm" property="email"></html:text>
 						</fieldset>
 						<div class="errorInForm"></div>
-
+					</div>
 				<% } %>
-					<fieldset class="width100per">
-						<label>Comentario</label>
-						<html:textarea name="ContactForm" property="content"></html:textarea>
-					</fieldset>
-					<div class="errorInForm"></div>
-				</div>
+				<fieldset class="width100per">
+					<label>Comentario</label>
+					<html:textarea name="ContactForm" property="content" styleClass="comment"></html:textarea>
+				</fieldset>
+				<div class="errorInForm"></div>
 				<fieldset class="button_bar pOnlyTop25">
 					<button class="link_back" cl="contactLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitregister">Enviar</button>
