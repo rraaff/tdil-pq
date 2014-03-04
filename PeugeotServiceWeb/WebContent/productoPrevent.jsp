@@ -108,13 +108,13 @@
 			Mapa.map.addLayer(parkings);
 			var size = new OpenLayers.Size(54,54);
 //			var border = new OpenLayers.Border(dotted 3px #ee5222);
-	//		var background = new OpenLayers.Background(images/skin_lj_rl/backs/topLayer25_orange.png);
+	//		var background = new OpenLayers.Background();
 		//	var border-radius = new OpenLayers.Border-radius(27);
 			var sizeIcon = new OpenLayers.Size(48,48);
 			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-			var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+			var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
 			var proj = new OpenLayers.Projection("EPSG:4326");
-			var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+			var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
 			<%int index = 0;
 				for (SatellitePosition pos : selectVehiclesForm.getSelectedVehiclePosition()) { 
 					com.tdil.ljpeugeot.prevent.model.Vehicle ve1 = selectVehiclesForm.getSelectList().get(index++);%>

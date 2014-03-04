@@ -146,7 +146,7 @@
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(IconSizeForZoom[ZOOM_ALL],IconSizeForZoom[ZOOM_ALL]);
 	            var offset = new OpenLayers.Pixel(-(size.w/1.5), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
+	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_parking.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				currPoints = new Array(); 
 				<%List<PointOfInterest> parkings = ParkingUtils.getParkings();%>
@@ -218,9 +218,9 @@
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(32,32);
 	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
+	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_position.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
 				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
             } else {*/
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
@@ -255,9 +255,9 @@
     	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
     	            }
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
+    	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_parking.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
-    				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+    				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',size,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
     				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {

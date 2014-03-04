@@ -58,34 +58,6 @@
 </script>
 </head>
 <body>
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<%
-						if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) {
-					%>
-						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar()%>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" width="30" height="30" align="absmiddle"> 
-					<%
- 						} else {
- 					%>
-						<img id="avatarImg" src="images/skin_lj_rl/logos/avatarBase.png" width="32" height="32" align="absmiddle"> 
-					<%
- 						}
- 					%></a></li>
-				<li class="saludationAndUsername"><span class="userSaludation">Hola:&nbsp;</span><span class="userName"><%=websiteUser.getName()%></span></li>
-				<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Cambiar mis datos</a></li>
-				<li><a href="javascript:changePassword();" title="Cambiar mis clave">Cambiar mi clave</a></li>
-				<li><a href="./goToEditContactData.do" title="Datos de contacto">Datos de contacto</a></li>
-				<li><a href="./selectVehicleForEditData.do" title="Vehiculos">Vehiculos</a></li>
-				<li><a href="logout.do" title="Salir del sistema">Salir</a></li>
-			</ul>
-		</div>
-	</div>
-</header>
-
 
 
 <% 

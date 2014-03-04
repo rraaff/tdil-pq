@@ -8,7 +8,7 @@
 	 	<% if ("PREVENT".equals(MENU_ACTIVE_SECTION)) { %>
 			<li><span>Car Security</span></li>
 		<% } else { %>
-			<li><a href="productoPrevent.jsp" title="Ingresar a la aplicación Car Security">Car Security</a></li>
+			<li><a href="javascript:loginPrevent();" title="Ingresar a la aplicación Car Security">Car Security</a></li>
 		<% } %>
 		<% if ("SERVICES".equals(MENU_ACTIVE_SECTION)) { %>
 			<li><span>Services</span></li>

@@ -48,6 +48,8 @@
 			<transaction src="poi_inserts_gba.sql" />
 			
 			<transaction src="thalamus_fake.sql" />
+			<transaction src="fixip_pablo.sql" />
+			
 		</sql>
 	</target>
 	

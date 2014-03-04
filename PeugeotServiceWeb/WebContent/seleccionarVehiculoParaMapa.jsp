@@ -29,7 +29,7 @@ document.documentElement.className +=
 		<a href="./locateVehicleInMap.do?vehicleId=<%=vehicle.getId()%>" title="Ver Ubicación">
 			<fieldset>
 				<label class="w1"><%=vehicle.getDescription() %></label>
-				<label class="w2"><img src="images/skin_lj_rl/webApp/car/iconos_table_getPosition.png" width="36" height="36" align="absmiddle" /></label>
+				<label class="w2"><img src="images/skn_peugeot/icons/apps/ic_getposit_off.png" width="36" height="36" align="absmiddle" /></label>
 			</fieldset>
 		</a>
 	<% } %>

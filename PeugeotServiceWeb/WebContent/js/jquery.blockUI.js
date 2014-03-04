@@ -104,8 +104,8 @@
 				left:		'35%',
 				textAlign:	'center',
 				color:		'#000',
-				border:		'3px solid #aaa',
-				backgroundColor:'#fff',
+				border:		'none',
+				backgroundColor:'transparent',
 				cursor:		'wait'
 			},
 

@@ -30,7 +30,7 @@
 
 <body>
 <script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<div id="logoIndex"><img src="images/skin_lj_rl/logos/lo-jack_2_mobile.png" /></div>
+<div id="logoIndex"></div>
 <div id="thalamusDown">
 	<h1>Sitio en mantenimiento</h1>
 	<p class="errorCode">Código de error (APK:isGIS00000927)</p>
