@@ -31,18 +31,15 @@ $( "#closeSelectVehicleForSecureZoneLayer" ).click(function() {
 
 </script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm");%>
-<div id="xContainer"><button id="closeSelectVehicleForSecureZoneLayer">X</button></div>
-<h3>Zonas Seguras del vehículo</h3>
-<div id="tableStyle">
-	<fieldset class="tableHeader">
-		<label class="w1">Patente</label>
-	</fieldset>
-	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
-		<a href="javascript:editSecureZone('<%=vehicle.getId()%>')" title="Ver zonas seguras">
-			<fieldset>
-				<label class="w1"><%=vehicle.getDescription() %></label>
-			</fieldset>
-		</a>	
-	<% } %>
-</div>
+		<section class="modal_header">
+			<h2>Localizar vehículos</h2>
+			<button class="close" id="closeSelectVehicleForSecureZoneLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content apps_listing">
+			<ul>
+				<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+					<li><a href="javascript:editSecureZone('<%=vehicle.getId()%>')" title="Ver zonas seguras"><%=vehicle.getDescription() %></a></li>
+				<% } %>
+			</ul>
+		</section>
 <%@ include file="includes/catchModal.jspf" %>

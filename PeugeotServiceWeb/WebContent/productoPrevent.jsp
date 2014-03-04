@@ -74,7 +74,7 @@
 				var feature = new OpenLayers.Feature(parkings, point);
 				feature.closeBox = true;
 				feature.popupClass = popupClass;
-				feature.data.popupContentHTML = '<div style="background-color:#000; color:#fff; padding:20px;"><span style="color:#ee5222; font-weight:bold;">' + title + '</span><br><span style="color:#fff; font-size:12px; font-weight:lighter; padding:10px 0;">' + desc +'</span></div>';
+				feature.data.popupContentHTML = '<div class="sign_at_map"><h5>' + title + '</h5><span class="sign_content">' + desc +'</span></div>';
 				feature.data.overflow = "auto";
 
 				var markerClick = function(evt) {
@@ -287,6 +287,9 @@
 <%@ include file="includes/openLegalesLayer.jsp" %>
 <%@ include file="includes/contactJS.jspf" %>
 </script>
+<style>
+	div.basicControls { padding:60px 0 0; }
+</style>
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>
@@ -316,7 +319,7 @@
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
-				<button class="iconPathTour" onclick="#">&nbsp;</button>
+				<!--  button class="iconPathTour" onclick="#">&nbsp;</button-->
 				<% if (websiteUser.vluIsClient()) { %>
 					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
 				<% } %>

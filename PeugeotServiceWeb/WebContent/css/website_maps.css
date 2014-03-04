@@ -10,8 +10,8 @@ section#map_insert						{ background-color:#000; position:relative; top:-20px; l
 section#map_insert div.pageWrapper		{  }
 section#map_insert div.smallmap			{  }
 
-section#controls 		{ background-image: url(../images/skn_peugeot/modal/trans_80.png); width: 200px; height: 448px; position: relative; top: -448px; z-index: 1400; }
-div.basicControls		{ width: 100%; text-align: center; display: inline-block; }
+section#controls 		{ background-image:url(../images/skn_peugeot/modal/trans_80.png); width:200px; height:448px; position:relative; top:-448px; z-index:1400; }
+div.basicControls		{ text-align:center; width:100%; padding:30px 0 0; display:inline-block; }
 
 button.icon_zoom_in,
 button.icon_zoom_out,
@@ -48,8 +48,8 @@ button.iconZSeguras:hover	{ background-image:url(../images/skn_peugeot/icons/app
 button.iconPathTour:hover	{ background-image:url(../images/skn_peugeot/icons/apps/ic_pathtour_on.png); }
 button.iconPhoneAdm:hover	{ background-image:url(../images/skn_peugeot/icons/apps/ic_phones_on.png); }
 
-section#zoomSection			{text-align: center; width: 200px; display: inline-block; }
-div.zoomControls			{  background-image: url(../images/skn_peugeot/icons/apps/zoom_bar.png); background-position: center center; background-repeat: no-repeat; background-size: 56%; display: inline-block; }
+section#zoomSection			{text-align:center; width:200px; display:inline-block; }
+div.zoomControls			{  background-image:url(../images/skn_peugeot/icons/apps/zoom_bar.png); background-position:center center; background-repeat:no-repeat; background-size:56%; display:inline-block; }
 button.icon_zoom_in,
 button.icon_zoom_out		{ float:left; margin:15px; }
 button.icon_zoom_in			{ background-image:url(../images/skn_peugeot/icons/apps/ic_zoomin_off.png); }
@@ -66,4 +66,4 @@ div.olPopupCloseBox						{ background-image:url(../images/skn_peugeot/modal/clos
 div.olFramedCloudPopupContent			{ left:0!important; border:none!important; }
 div.olPopup								{  }
 
-footer { color: #fff; top: -20px; position: relative; }
+footer { color:#fff; top:-20px; position:relative; }

@@ -65,6 +65,12 @@ section.modal_content div.content_at_layer	{ background:#f0f0f0; color:#595a67; 
 section.modal_content div.content_at_layer p { padding:0 0 15px; }
 section.modal_content div.content_at_layer p:last-of-type { padding:0; }
 
+section.apps_listing						{}
+section.apps_listing ul						{}
+section.apps_listing ul li					{}
+section.apps_listing ul li a				{ background: #ffffff; background: -moz-linear-gradient(top, #ffffff 0%, #dddddd 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#dddddd)); background: -webkit-linear-gradient(top, #ffffff 0%,#dddddd 100%); background: -o-linear-gradient(top, #ffffff 0%,#dddddd 100%); background: -ms-linear-gradient(top, #ffffff 0%,#dddddd 100%); background: linear-gradient(to bottom, #ffffff 0%,#dddddd 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 ); display: inline-block; font-size: 24px; font-family: 'PeugeotLight'; color: #43434e; width: 100%; margin: 5px 0; text-align: center; padding: 18px 0; border-radius: 5px; -webkit-box-shadow: 0 0 5px 1px #B5B5B5; box-shadow: 0 0 5px 1px #B5B5B5; text-decoration: none; text-shadow: 1px 1px 1px #C9C9C9; }
+section.apps_listing ul li a:hover			{ color:#00aad5; }
+
 div.scrollable				{ overflow:auto; }
 
 

@@ -31,18 +31,15 @@ $( "#closeSelectVehicleForPhoneLayer" ).click(function() {
 
 </script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm");%>
-<div id="xContainer"><button id="closeSelectVehicleForPhoneLayer">X</button></div>
-<h3>Velocidades Máximas del vehículo</h3>
-<div id="tableStyle">
-	<fieldset class="tableHeader">
-		<label class="w1">Patente</label>
-	</fieldset>
-	<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
-		<a href="javascript:editMaximas('<%=vehicle.getId()%>')" title="Ver Velocidades">
-			<fieldset>
-				<label class="w1"><%=vehicle.getDescription() %></label>
-			</fieldset>
-		</a>	
-	<% } %>
-</div>
+		<section class="modal_header">
+			<h2>Seleccionar vehículos</h2>
+			<button class="close" id="closeSelectVehicleForPhoneLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content apps_listing">
+			<ul>
+				<% for (Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+					<li><a href="javascript:editMaximas('<%=vehicle.getId()%>')" title="Ver Velocidades"><%=vehicle.getDescription() %></a></li>
+				<% } %>
+			</ul>
+		</section>
 <%@ include file="includes/catchModal.jspf" %>
