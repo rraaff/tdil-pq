@@ -440,14 +440,15 @@ function parkingsNotLogged() {
 <% if (usingMobile || isAndroid) { %>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
-<!-- WEBSITE CONTENT -->
-<%@ include file="includes/header.jspf" %>
 <%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
 	.titles("Inicio","Peugeot App")
 	.pages("","");
 %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/under_shade.jspf" %>
 <%@ include file="includes/wheel_menu.jspf" %>
 <%@ include file="includes/copyright.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
