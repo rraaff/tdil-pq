@@ -30,9 +30,14 @@ Falta diseño de las pantallas de android
 
 testing general, usando sqlserver y jboss
 
+
 *********************
 
 tdil/usu4r10td1l
+
+pablo
+searchDealers.jsp a esa le agregue  la seleccion usando li, el boton arranca disabled, pero el estilo
+no se muestra disabled 
 
 ****************************************************
 CAPA DE PRESENTACIÓN - UPDATED: 02/03/2014 - 12.50PM

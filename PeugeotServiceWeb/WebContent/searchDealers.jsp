@@ -23,6 +23,13 @@
 
 function selectDealer(dealerId) {
 	$('#idDealer').val(dealerId);
+	$('#goToChangeAction').prop('disabled', false);
+	$('#dealersTable').find('li').each(function() {
+	    $(this).removeClass("rowSelected");
+	});
+	$('li[rel="ve-'+dealerId+'"]').each(function() {
+	    $(this).addClass("rowSelected");
+	});
 }
 
 </script>
@@ -32,25 +39,23 @@ function selectDealer(dealerId) {
 	%>
 	<div class="table_services">
 		<ul class="table_header">
-			<li class="fixed50"></li>
 			<li class="dealer">Concesionaria/Service</li>
 			<li class="dealer_address">Dirección</li>
 			<li class="dealer_phone">Teléfonos</li>
 			<li class="dealer_email">E-Mails</li>
 		</ul>
 		<% for (Dealer dealer : dealers) { %>
-			<ul class="table_body">
-				<li class="fixed50"><input type="radio" name="selectradio" onclick="selectDealer(<%=dealer.getId()%>)"></li>
-				<li class="dealer"><%=dealer.getName()%></li>
-				<li class="dealer_address"><%=StringUtils.notNullValueOf(dealer.getAddress())%></li> 
-				<li class="dealer_phone"><%=StringUtils.notNullValueOf(dealer.getPhone())%></li>
-				<li class="dealer_email"><%=StringUtils.notNullValueOf(dealer.getEmail())%></li>
+			<ul class="table_body" id="dealersTable">
+				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer"><%=dealer.getName()%></li>
+				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer_address"><%=StringUtils.notNullValueOf(dealer.getAddress())%></li> 
+				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer_phone"><%=StringUtils.notNullValueOf(dealer.getPhone())%></li>
+				<li onclick="selectDealer(<%=dealer.getId()%>)" rel="ve-<%=dealer.getId()%>" class="dealer_email"><%=StringUtils.notNullValueOf(dealer.getEmail())%></li>
 			</ul>
 		<% } %>
 	</div>
 	<input type="hidden" id="idDealer" name="idDealer">
 	<fieldset class="button_bar pOnlyTop25">
-		<button class="botton_ahead" type="submit" >Selectionar para service<span></span></button>
+		<button disabled id="goToChangeAction" class="botton_ahead" type="submit" >Selectionar para service<span></span></button>
 	</fieldset>
 </form>
 
