@@ -25,17 +25,19 @@
 			<h1><%=lasttitle %></h1>
 		</div>
 
+		<% if (websiteUser != null) {%>
 		<div class="avatar_container">
 			<ul>
 				<li class="avatarLi"><a href="javascript:changeAvatar();">
-					<!--  %!-  if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
-						<img id="avatarImg" src="./download.st?id=< %=websiteUser.getModelUser().getIdAvatar() %>&type=PUBLIC&ext=< %=websiteUser.getModelUser().getExtAvatar()%>" align="absmiddle"> 
-					< % } else { % -->
+					<%if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
+						<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar() %>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" align="absmiddle"> 
+					<% } else { %>
 						<img id="avatarImg" src="images/skn_peugeot/icons/avatarBase.png" align="absmiddle">
-					<!--  % } %-->
+					<% } %>
 				</a></li>
 			</ul>
 		</div>
+		<% } %>
 	</div>
 
 </section>

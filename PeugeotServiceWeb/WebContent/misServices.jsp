@@ -1,5 +1,3 @@
-<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
-<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@page import="com.tdil.ljpeugeot.utils.ModelUtils"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
@@ -144,7 +142,7 @@ if (apk != null && apk) {
 	}
 %>
 <%
-	Breadcrum breadcrums = new Breadcrum()
+com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
 	.titles("Inicio","Peugeot","Mis services")
 	.pages("home.jsp","","");
 %>
