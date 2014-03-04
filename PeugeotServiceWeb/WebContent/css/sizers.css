@@ -108,6 +108,7 @@
 .height800 { height:800px!important; }
 .height850 { height:850px!important; }
 .height1200 { height:1200px!important; }
+.heightAuto	{ height:auto!important; min-height:0px!important; }
 
 .bordePunteado { margin-top:20px; padding-top:20px; border-top:dotted 1px #a6a6a6!important; }
 .bordePunteadoBottom { margin-bottom:5px; padding-bottom:15px; border-bottom:dotted 1px #a6a6a6!important; }
@@ -135,5 +136,6 @@
 .pOnlyTopRight25	{ padding:25px 25px 0 0!important; }
 
 .textCenter	{ text-align:center; }
+.textLeft	{ text-align:left; }
 
 .overHidden { overflow:hidden!important; }

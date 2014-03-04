@@ -26,13 +26,13 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Seleccionar locación para services</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
@@ -86,34 +86,62 @@ background-color: green;
 	
 </script>
 </head>
-<body>
-
-
-
-<%@ include file="includes/layer_contact.jspf" %>
-
-<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); %>
-<html:form method="POST" action="/changeDealer">
-	<html:hidden name="ChangeDealerForm" property="idVehicle"/>
-	<ul id="vehicleTable">
-		<li rel="ve-0" onclick="selectVehicle(0)">Todos</li>
-		<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
-			<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="selectVehicle(<%=vehicleValueObject.getVehicle().getId()%>)"><%=vehicleValueObject.getVehicle().getDomain()%></li>
-		<% } %>
-	</ul>
-	<div class="scrollable">
-		recibir el aviso en: <html:text name="ChangeDealerForm" property="email" />
+<%
+com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
+	.titles("Inicio","Services","Seleccionar service", "Determinar vehículo")
+	.pages("home.jsp","servicesDashboard.jsp","buscarConscesionario.jsp","");
+%>
+<% MENU_ACTIVE_SECTION = "SERVICES"; %>
+<!-- WEBSITE CONTENT -->
+<%@ include file="includes/header.jspf" %>
+<%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/service_section_menu.jspf" %>
+<%@ include file="includes/under_shade.jspf" %>
+<section id="main_content_regular_page">
+	<div class="template_half">
+		<div class="table_container">
+			<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); %>
+			<html:form method="POST" action="/changeDealer" styleClass="add_service_form">
+				<html:hidden name="ChangeDealerForm" property="idVehicle"/>
+				<div class="table_services width650 fleft">
+					<h1>Determinar el vehículo para la locación elegida</h1>
+					<p class="bajada">Una vez seleccionada la locación del service, en este paso, determine el vehículo al que relacionará con dicha locación</p> 
+					<ul class="table_header">
+						<li class="cardesc width100per">Seleccionar Vehículo/s</li>
+					</ul>
+					<ul id="vehicleTable" class="table_body">
+						<li class="cardesc width100per" rel="ve-0" onclick="selectVehicle(0)">Todos</li>
+					</ul>
+					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+						<ul class="table_body">
+							<li class="cardesc width100per" rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="selectVehicle(<%=vehicleValueObject.getVehicle().getId()%>)"><%=vehicleValueObject.getVehicle().getDomain()%></li>
+						</ul>
+					<% } %>
+				</div>
+				<div class="add_cartoservices_info width300 fright">
+					<h2>Cargar E-Mail de contacto</h2>
+					<p class="bajada">Los avisos de service serán enviados a esta casilla</p>
+					<div class="add_service_form_wrapper width100per heightAuto">
+						<fieldset class="textLeft">
+							<label class="width100">E-mail</label>
+							<html:text name="ChangeDealerForm" property="email" styleClass="width150"/>
+						</fieldset>
+					</div>
+				</div>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" type="submit" disabled id="addServiceButton">Determinar<span></span></button>
+				</fieldset>
+			</html:form>
+		</div>
 	</div>
-	<fieldset>
-		<input type="submit" disabled id="addServiceButton" value="Cambiar" class="buttonSend">
-	</fieldset>
-</html:form>
+</section>
+<%@ include file="includes/copyright.jspf" %>
+<%@ include file="includes/footer_web.jspf" %>
 
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<!-- Layer legales -->
-<%@ include file="includes/errorAjaxLayer.jspf" %>
+<!-- ALL LAYERS -->
+<%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
-
-<%@ include file="includes/version.jspf" %>
+<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<%@ include file="includes/errorAjaxLayer.jspf" %>
 </body>
 </html>

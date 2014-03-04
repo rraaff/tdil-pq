@@ -191,7 +191,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 		</div>
 		<div id="addServiceLayer" class="add_services_info" style="display: none;">
 			<h2>Cargar información de un service</h2>
-			<div class="form_with_car_image" id="addServiceBgCar" ><!-- acá le meto a la fuerza la imagen del auto como background-image: url(../images/skn_peugeot/vehicles/408.jpg); -->
+			<div class="form_with_car_image" id="addServiceBgCar" >
 				<html:form method="POST" action="/addService" styleClass="add_service_form">
 					<div class="add_service_form_wrapper">
 						<html:hidden name="AddServiceForm" property="idVehicle" />
