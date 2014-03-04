@@ -76,6 +76,7 @@ function postContact(data) {
 		$( "#contactLayer" ).fadeOut();
 		centerLayer($(window), $( "#contactLayerThanks" ));
 	} else {
+		$('#errcontact').css('display', 'block');
 		$('#errcontact').prop('innerHTML','Ha ocurrido un error');
 	}
 }

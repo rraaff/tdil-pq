@@ -74,7 +74,7 @@ HECHO A mi me anduvo joya, si podes pasame el error
 -  contacto.jsp Le puse el display:none; al error, pero no 
    pude ver si aparece cuando hay un error. ¿Como hago que 
    aparezca el error general?
-   
+HECHO, afectivamente habia que ponerle el display block
    
 -  saveContactData.do necesitaría un modal de error u OK con mensaje
 
