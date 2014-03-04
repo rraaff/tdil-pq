@@ -1,11 +1,27 @@
 <section id="page_title">
 	<div class="page_title_wrapper">
-		<div class="breadcrumb">Inicio > <span>Paugeot App (AXS)</span></div>
+		<!-- div class="breadcrumb">Inicio > <span>Paugeot App (AXS)</span></div-->
 		
-		<div class="title">
+		<!-- div class="title">
 			<h1>Peugeot App</h1>
-		</div>
+		</div-->
 	
+		<div class="breadcrumb">
+			<% for (BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
+				<% if (breadcrumItem.hasPage()) { %>
+					<a href="<%=breadcrumItem.getPage()%>"><%=breadcrumItem.getTitle()%></a>
+				<% } else { %>
+					<%=breadcrumItem.getTitle()%>
+				<% } %>
+				<% if (!breadcrumItem.isLast()) { %>
+					&nbsp;&gt;&nbsp;
+				<% } %>
+			<% } %>
+		</div>
+		<div class="title">
+			<h1>Título</h1>
+		</div>
+
 		<div class="avatar_container">
 			<ul>
 				<li class="avatarLi"><a href="javascript:changeAvatar();">

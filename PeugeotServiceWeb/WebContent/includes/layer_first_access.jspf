@@ -9,8 +9,10 @@
 		</section>
 		<section class="modal_content">
 			<span class="modal_subtitle">Complete los datos</span>
+			
+			<div class="alert alert-error" id="firstacesserr" style="display:none;"></div>
+			
 			<html:form method="POST" action="/generatePassword" styleClass="modal_wrapper">
-				<div class="alert alert-error" id="firstacesserr" style="display: none;"></div>
 				<fieldset class="width100per textCenter">
 					<label>Documento</label>
 					<html:text name="GeneratePasswordForm" property="username" styleClass="" />

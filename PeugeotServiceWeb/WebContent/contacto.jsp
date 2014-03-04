@@ -90,7 +90,7 @@ function postContact(data) {
 		</section>
 		<section class="modal_content">
 			<span class="modal_subtitle">Complete el formulario con los datos requeridos</span>
-			<div id="errcontact"></div>
+			<div class="alert alert-error" id="errcontact" style="display:none;"></div>
 			<html:form method="POST" action="/contact" styleClass="modal_wrapper">
 				<% if (!contactForm.isRegisteredUser()) { %>
 					<div class="column">
