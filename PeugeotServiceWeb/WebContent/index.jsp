@@ -1,3 +1,5 @@
+<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
+<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@page import="com.tdil.utils.SystemConfig"%>
 <%@page import="com.tdil.ljpeugeot.struts.forms.RequestResetPasswordForm"%><%--
 --%><%@ include file="includes/agentInfo.jspf" %><%--
@@ -440,7 +442,7 @@ function parkingsNotLogged() {
 <% } %>
 <%
 	Breadcrum breadcrums = new Breadcrum()
-	.titles("Inicio","Ingreso")
+	.titles("Inicio","Peugeot App")
 	.pages("","");
 %>
 <!-- WEBSITE CONTENT -->
