@@ -42,6 +42,24 @@ if (apk != null && apk) {
 }
 %>
 <%@ include file="includes/headLogged.jsp" %>
+<script>
+	$(document).ready(
+			function(){
+	<%@ include file="includes/closeLegalesLayer.jsp" %>
+	<%@ include file="includes/closeLayers.jspf" %>
+				
+			}
+	);
+
+	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
+	<%@ include file="includes/errorAjaxJS.jspf" %>
+	<%@ include file="includes/centerLayerJS.jspf" %>
+
+	<%@ include file="includes/openLegalesLayer.jsp" %>
+	<%@ include file="includes/contactJS.jspf" %>
+	
+
+</script>
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>
@@ -171,5 +189,6 @@ if (apk != null && apk) {
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+
 </body>
 </html>

@@ -59,21 +59,25 @@ function postLoginPrevent(data) {
 
 </script>
 <div id="loginPreventContentLayer" class="layerOnTop" style="z-index: 1500;">
-	<div id="centradorModalesLoginPrevent" class="loginLayerStyles">
-		<div class="loginLayerContent">
-			<div id="xContainer"><button id="closeLoginPreventLayer">X</button></div>
-			<h3>Ingresar a prevent</h3>
-			<html:form method="POST" action="/preventLogin">
+	<div id="centradorModalesLoginPrevent" class="layerModal width300">
+		<section class="modal_header">
+			<h2>Ingreso a Car Security</h2>
+			<h3>Para acceder a las funcionalidades Car Security deberás ingresar la clave.</h3>
+			<button class="close"  id="closeLoginPreventLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Completá los datos</span>
+			<html:form method="POST" action="/preventLogin" styleClass="modal_wrapper">
 				<fieldset>
 					<label>Clave</label>
 					<html:password name="PreventLoginForm" property="password" />
 				</fieldset>
 				<div class="alert alert-error" id="loginpreventerr" style="display: none;"></div>
-				<fieldset>
-					<button type="submit" class="indexButtonBase">Ingresar</button>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" type="submit">Iniciar sesión<span></span></button>
 				</fieldset>
 			</html:form>
-		</div>
+		</section>
 	</div>
 </div>
 <%@ include file="includes/catchModal.jspf" %>

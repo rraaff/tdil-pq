@@ -1,17 +1,17 @@
 <section id="service_section_menu">
 	 <ul class="subproduc_menu">
 	 	<% if ("POIS".equals(MENU_ACTIVE_SECTION)) { %>
-			<li><b>Points of Interest</b></li>
+			<li><span>Points of Interest</span></li>
 		<% } else { %>
 			<li><a href="poi.jsp" title="Ingresar a la aplicación Points of Interest">Points of Interest</a></li>
 		<% } %>
 	 	<% if ("PREVENT".equals(MENU_ACTIVE_SECTION)) { %>
-			<li><b>Car Security</b></li>
+			<li><span>Car Security</span></li>
 		<% } else { %>
 			<li><a href="productoPrevent.jsp" title="Ingresar a la aplicación Car Security">Car Security</a></li>
 		<% } %>
 		<% if ("SERVICES".equals(MENU_ACTIVE_SECTION)) { %>
-			<li><b>Services</b></li>
+			<li><span>Services</span></li>
 		<% } else { %>
 			<li><a href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
 		<% } %>

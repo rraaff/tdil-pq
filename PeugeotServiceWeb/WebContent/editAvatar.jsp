@@ -70,17 +70,22 @@ $.each(data, function(key, value) {
 }
 </script>
 <div id="changePassLayer" class="layerOnTop" style="z-index: 1500;">
-	<div id="centradorModalesAvatar" class="loginLayerStyles">
-		<div class="loginLayerContent">
-			<div id="xContainer"><button id="closeChangeAvatarLayer">X</button></div>
-			<h3>Cambiar avatar</h3>
-			<html:form method="POST" action="/saveProfile">
+	<div id="centradorModalesAvatar" class="layerModal width600">
+		<section class="modal_header">
+			<h2>Editar avatar</h2>
+			<button class="close" id="closeChangeAvatarLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Cambiar la imagen</span>
+			<p class="pBottom25">Busque una imagen que lo represente dentro de su disco rígido</p>
+			
+			<html:form method="POST" action="/saveProfile" styleClass="modal_wrapper">
 				<fieldset class="aligner">
 					<logic:notEqual name="EditProfileForm" property="imageId" value="0">
 						<label><img id="avatar_img" src="./viewAvatar.do" width="100" height="100" align="absmiddle"></label>
 					</logic:notEqual>
 					<logic:equal name="EditProfileForm" property="imageId" value="0">
-						<label><img id="avatar_img" src="images/skin_lj_rl/logos/avatarBase.png" width="100" height="100" align="absmiddle"></label>
+						<label><img id="avatar_img" class="avatar_base" src="images/skn_peugeot/icons/avatarBase.png" width="100" height="100" align="absmiddle"></label>
 					</logic:equal>
 				</fieldset>
 				<fieldset class="aligner">
@@ -89,9 +94,11 @@ $.each(data, function(key, value) {
 				<fieldset>
 					<label><%=LJPeugeotErrorFormatter.getErrorFrom(request,EditProfileForm.avatar_key + ".err")%></label>
 				</fieldset>
-				<fieldset><button type="button" onclick="javascript:doSaveAvatar()" class="indexButtonBase" style="margin-left:20px;">Guardar</button></fieldset>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" onclick="javascript:doSaveAvatar();">Guardar<span></span></button>
+				</fieldset>
 			</html:form>
-		</div>
+		</section>
 	</div>
 </div>
 <%@ include file="includes/catchModal.jspf" %>

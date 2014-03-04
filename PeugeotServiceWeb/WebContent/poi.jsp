@@ -1,3 +1,5 @@
+<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
+<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
 --%><%@page import="com.tdil.ljpeugeot.utils.LJPeugeotConfig"%><%--
 --%><%@page import="com.tdil.ljpeugeot.utils.LJPeugeotWebUtils"%><%--
@@ -297,19 +299,29 @@
             marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
+		
+	<%@ include file="includes/openLegalesLayer.jsp" %>
+	<%@ include file="includes/contactJS.jspf" %>
 </script>
+
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>
 <% if (usingMobile || isAndroid) { %>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 <% } %>
+<%
+	Breadcrum breadcrums = new Breadcrum()
+	.titles("Inicio","Peugeot App","Points of Interest")
+	.pages("home.jsp","home.jsp", "");
+%>
 <!-- WEBSITE CONTENT -->
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
+<%@ include file="includes/under_shade.jspf" %>
 <section id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
