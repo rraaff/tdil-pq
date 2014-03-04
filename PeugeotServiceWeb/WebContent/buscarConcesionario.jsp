@@ -36,11 +36,6 @@
 <!--[if lt IE 9]>
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
-<style>
-.rowSelected {
-background-color: green;
-}
-</style>
 <%@ include file="includes/headLogged.jsp" %>
 <% 
 
