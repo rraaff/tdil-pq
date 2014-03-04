@@ -121,26 +121,7 @@
 						</div>
 						<div id="pgt_footer_bottom_right">
 							<div id="find_dealer">
-								<form id="find_dealer_form" name="find_dealer_form" method="get" action="/trouver-un-concessionnaire/" target="">
-									<input type="hidden" name="pdvmode" value="no">
-									<input type="hidden" name="new_window" value="no">
-									<input type="hidden" name="url" value="">
-									<label for="find_dealer">Trouver un point de vente</label>
-									<input id="find_dealer" type="text" name="address" value="Code postal ou ville" onfocus="if(this.value=='Code postal ou ville'){this.value='';}" onblur="if(this.value==''){this.value='Code postal ou ville';}">
-									<input id="find_dealer" type="hidden" name="range" value="30">
-									<input type="submit" value="">
-								</form>
-								<script type="text/javascript">
-									/*window.addEvent('domready', function() {
-										$('find_dealer_form').getElement('input[type=submit]').addEvent('mousedown', function() {
-											var textField = this.getParent().getElement('input[name=address]').get('value');
-											
-											if(textField == 'Code postal ou ville' || !textField) {
-												this.getParent().set('action', '/trouver-un-concessionnaire/');
-											}
-										});
-									});*/
-								</script>
+								
 							</div>
 						</div>
 					</div>
