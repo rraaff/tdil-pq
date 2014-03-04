@@ -1,11 +1,16 @@
 <%@page import="com.tdil.ljpeugeot.utils.ThalamusWebUtils"%><%@page import="com.tdil.ljpeugeot.utils.WebsiteUser"%><%
+com.tdil.users.User testUser = (com.tdil.users.User)request.getSession(false).getAttribute("user");
 WebsiteUser websiteUser = null;
 boolean logged = false;
 if (request.getSession(false) != null) {
-	websiteUser = (WebsiteUser)request.getSession(false).getAttribute("user");
-	if (websiteUser != null && websiteUser.isLogged()) {
-		logged = true;
-		ThalamusWebUtils.updateActivities(websiteUser);
+	if (testUser != null) {
+		if (testUser instanceof WebsiteUser) {
+			websiteUser = (WebsiteUser)testUser;
+			if (websiteUser.isLogged()) {
+				logged = true;
+				ThalamusWebUtils.updateActivities(websiteUser);
+			}
+		}
 	}
 }
 %>

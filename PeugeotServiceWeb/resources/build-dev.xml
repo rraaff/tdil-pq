@@ -48,9 +48,26 @@
 			<transaction src="poi_inserts_gba.sql" />
 			
 			<transaction src="thalamus_fake.sql" />
-			<transaction src="fixip_pablo.sql" />
 			
 		</sql>
+		<condition property="os.pablo" value="true">
+			<and>
+				<not>
+					<os family="unix" />
+				</not>
+			</and>
+		</condition>
+		<if>
+		 <equals arg1="${os.pablo}" arg2="true" />
+		 <then>
+		 	<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+ 				<classpath>
+ 					<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+ 				</classpath>
+		 		<transaction src="fixip_pablo.sql" />
+		 	</sql>
+		 </then>
+		</if>
 	</target>
 	
 	<target name="generateKmData">

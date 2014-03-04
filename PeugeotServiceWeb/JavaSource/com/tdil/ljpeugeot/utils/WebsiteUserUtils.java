@@ -24,13 +24,15 @@ public class WebsiteUserUtils {
 		private String homeUserId;
 		private String preventUserId;
 		private String petUserId;
+		private String dni;
 		
-		public InitWebSiteUser(String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
+		public InitWebSiteUser(String dni, String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
 			super();
 			this.lojackUserId = lojackUserId;
 			this.homeUserId = homeUserId;
 			this.preventUserId = preventUserId;
 			this.petUserId = petUserId;
+			this.dni = dni;
 		}
 		public void executeInTransaction() throws SQLException {
 			WebsiteUserExample example = new WebsiteUserExample();
@@ -38,6 +40,7 @@ public class WebsiteUserUtils {
 			List<com.tdil.ljpeugeot.model.WebsiteUser> users = DAOManager.getWebsiteUserDAO().selectWebsiteUserByExample(example);
 			if (users.isEmpty()) {
 				com.tdil.ljpeugeot.model.WebsiteUser user = new com.tdil.ljpeugeot.model.WebsiteUser();
+				user.setDni(this.dni);
 				user.setLojackuserid(this.lojackUserId);
 				user.setHomeuserid(this.homeUserId);
 				user.setPreventuserid(this.preventUserId);
@@ -46,6 +49,7 @@ public class WebsiteUserUtils {
 				DAOManager.getWebsiteUserDAO().insertWebsiteUser(user);
 			} else {
 				com.tdil.ljpeugeot.model.WebsiteUser user = users.get(0);
+				user.setDni(this.dni);
 				user.setHomeuserid(this.homeUserId);
 				user.setPreventuserid(this.preventUserId);
 				user.setPetuserid(this.petUserId);
@@ -173,9 +177,9 @@ public class WebsiteUserUtils {
 		} 
 	}
 	
-	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserUpdatingData(String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
+	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserUpdatingData(String dni, String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
 		try {
-			TransactionProvider.executeInTransaction(new InitWebSiteUser(lojackUserId, homeUserId, preventUserId, petUserId));
+			TransactionProvider.executeInTransaction(new InitWebSiteUser(dni, lojackUserId, homeUserId, preventUserId, petUserId));
 			return (com.tdil.ljpeugeot.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);

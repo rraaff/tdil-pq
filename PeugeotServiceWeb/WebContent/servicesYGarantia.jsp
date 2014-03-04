@@ -120,8 +120,12 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 							<% } %>
 							<li class="lastservkm2"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
 							<li class="lastservdate2"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
-							<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 1) { %>
-								<li class="service_required waranty">Si</li>
+							<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 0) { %>
+								<%if (vehicleValueObject.getModel() != null) {%>
+									<li class="service_required waranty">Si</li>
+								<% } else { %>
+									<li class="service_not_required waranty">-</li>
+								<% } %>
 							<% } else { %>
 								<li class="service_not_required waranty">No</li>
 							<% } %>

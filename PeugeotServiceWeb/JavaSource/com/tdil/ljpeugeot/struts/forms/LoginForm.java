@@ -206,13 +206,14 @@ public class LoginForm extends ActionForm {
 			CommunicationException, UnauthorizedException {
 		PersonResult getProfile = ThalamusClientBeanFacade.getPerson(result.getTokenHolder());
 
+		String dni = getProfile.getDocumentNumber();
 		String firstName = getProfile.getFirstName();
 		String lastName = getProfile.getLastName();
 		WebsiteUser user = new WebsiteUser(firstName + " " + lastName, result.getTokenHolder(), -3, ""); // TODO
 		setAccess(user, getProfile);
 
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
-		user.setModelUser(WebsiteUserUtils.getWebSiteUserUpdatingData(user.getLojackUserId(), user.getHomeUserId(), user.getPreventUserId(), user.getPetUserId()));
+		user.setModelUser(WebsiteUserUtils.getWebSiteUserUpdatingData(dni, user.getLojackUserId(), user.getHomeUserId(), user.getPreventUserId(), user.getPetUserId()));
 		return user;
 	}
 

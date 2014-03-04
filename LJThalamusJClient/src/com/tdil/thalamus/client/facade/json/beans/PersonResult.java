@@ -20,6 +20,11 @@ public class PersonResult implements Serializable {
 	public JSONObject getProfile() {
 		return profile;
 	}
+	
+	public String getDocumentNumber() {
+		JSONObject data = getProfile().getJSONObject("person");
+		return (data).getJSONObject(ProfileResponse.PROFILE).getJSONObject("document").getString("number");
+	}
 
 	public String getFirstName() {
 		JSONObject data = getProfile().getJSONObject("person");

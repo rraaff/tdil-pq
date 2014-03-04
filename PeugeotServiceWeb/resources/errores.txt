@@ -1,0 +1,15 @@
+peugeot_app.jsp da 404
+
+contacto cuando muestra los errores de jquery (se agranda verticalmente)
+ en mi maquina se me va el boton de submit de la pantalla
+ 
+ No se estan mostrando los general error en cambio de password y edicion de datos
+ 
+ Faltan las validaciones para configuracion de emergencias
+ 
+ Estilos para prevent localizar vehiculos no coincide con el resto
+ 
+ Icono de camino da error de js (igual no esta hecho)
+ 
+ Faltan todos los estilos del cc
+ http://localhost:8380/PeugeotServiceWeb/cc/login.jsp
