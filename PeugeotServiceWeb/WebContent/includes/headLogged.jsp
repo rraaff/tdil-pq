@@ -15,3 +15,4 @@
 	ga('create', 'UA-42967549-1', 'lojack-app.com.ar');
 	ga('send', 'pageview');
 </script>
+<% String MENU_ACTIVE_SECTION = ""; %>

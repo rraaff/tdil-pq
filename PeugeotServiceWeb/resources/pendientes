@@ -57,6 +57,15 @@ No se entiende que hay que hacer
    conectate y te explico mi idea. También necesito algo 
    parecido para marcar como activas las secciones en 
    los submenús
+BREADCRUM HECHO, te deje un ejemplo en misServices.jsp
+Sorporta reemplazos y parametros, vemos los que necesitas asi te explico como usarlo.
+
+MENU HECHO
+Te agregue los ifs, tenes que definir en el body de cada pagina lo que sigue
+<% MENU_ACTIVE_SECTION = "SERVICES";	%>
+<% MENU_ACTIVE_SECTION = "POIS";	%>
+<% MENU_ACTIVE_SECTION = "PREVENT";	%>
+Segun la seccion que quieras que este activa
 
 - Habilité el avatar, pero no anda bien el cambio al menos.
 HECHO A mi me anduvo joya, si podes pasame el error

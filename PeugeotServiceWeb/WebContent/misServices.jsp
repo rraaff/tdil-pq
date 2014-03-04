@@ -1,3 +1,5 @@
+<%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
+<%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@page import="com.tdil.ljpeugeot.utils.ModelUtils"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.text.DecimalFormatSymbols"%>
@@ -42,9 +44,6 @@ background-color: green;
 }
 </style>
 <%@ include file="includes/headLogged.jsp" %>
-<% 
-
-%>
 <script>
 	$(document).ready(
 		function(){
@@ -129,6 +128,7 @@ background-color: green;
 </script>
 </head>
 <%@ include file="includes/version.jspf" %>
+<% MENU_ACTIVE_SECTION = "SERVICES";	%>
 <body>
 <%
 	Boolean apk = (Boolean)session.getAttribute("USING_APK");
@@ -136,14 +136,34 @@ if (apk != null && apk) {
 	isAndroid = true;
 }
 %>
-<% if (usingMobile || isAndroid) { %>
+<%
+	if (usingMobile || isAndroid) {
+%>
 	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
 	</ul>
-<% } %>
+<%
+	}
+%>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
+
+<%
+	Breadcrum breadcrums = new Breadcrum()
+	.titles("Inicio","Peugeot","Mis services")
+	.pages("home.jsp","","");
+%>
+<% for (BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
+	<% if (breadcrumItem.hasPage()) { %>
+		<a href="<%=breadcrumItem.getPage()%>"><%=breadcrumItem.getTitle()%></a>
+	<% } else { %>
+		<%=breadcrumItem.getTitle()%>
+	<% } %>
+	<% if (!breadcrumItem.isLast()) { %>
+		&nbsp;&gt;&nbsp;
+	<% } %>
+<% } %>
 <section id="main_content_regular_page">
 	<div class="template_half">
 		<h1>Mis services</h1>
