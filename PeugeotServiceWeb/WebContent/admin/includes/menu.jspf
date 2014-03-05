@@ -1,21 +1,21 @@
 <section id="menu">
-	<a href="home.jsp">Inicio</a> | 
+	<a href="home.jsp">Inicio</a>
 	<% if (su.isAdmin()) { %>
 		<% if (su.getSyspropaccess() != null && su.getSyspropaccess().equals(1)) { %>
-			<a href="sysproperties.jsp">Configuracion de sysproperties</a> | 
+			<a href="sysproperties.jsp">Configuracion de sysproperties</a>
 		<% } %>
 		<% if (su.getLoggingaccess() != null && su.getLoggingaccess().equals(1)) { %>
-			<a href="logger.jsp">Configuracion del logging</a> | 
+			<a href="logger.jsp">Configuracion del logging</a>
 		<% } %>
 		<% if (su.getDealerimportaccess() != null && su.getDealerimportaccess().equals(1)) { %>
-			<a href="dealer.jsp">Concesionarios</a> | 
+			<a href="dealer.jsp">Concesionarios</a>
 		<% } %>
 		<% if (su.getModelimportaccess() != null && su.getModelimportaccess().equals(1)) { %>
-			<a href="model.jsp">Modelos</a> | 
+			<a href="model.jsp">Modelos</a>
 		<% } %>
 		<% if (su.getEmailtemplateaccess() != null && su.getEmailtemplateaccess().equals(1)) { %>
-			<a href="notificationEmails.jsp">E-mails</a> | 
+			<a href="notificationEmails.jsp">E-mails</a>
 		<% } %>
 	<% } %>
-	<a href="dologout.jsp">Salir</a>
+	<a href="dologout.jsp">Salir</a><a href="#">&nbsp;</a>
 </section>

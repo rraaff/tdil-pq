@@ -55,7 +55,7 @@ function doTestEmail() {
 	<article>
 		<h3>Cambiar notificación</h3>
 		
-		<form action="./doUpdateEmail.jsp" class="width100per">
+		<form action="./doUpdateEmail.jsp">
 		<% String id =  request.getParameter("id");
 			NotificationEmail notificationEmail = null;
 			if (!StringUtils.isEmpty(id)) {
@@ -63,35 +63,44 @@ function doTestEmail() {
 			}
 			if (notificationEmail != null && !("1".equals(request.getParameter("test")))) { %>
 			<input type="hidden" name="id" value="<%=id%>">
-			<fieldset class="width50per fleft pRight25">
-				<label class="width100per">Tipo de notificación</label>
-				<input type="text" readonly="true" class="width100per" name="notificationtype" value="<%=notificationEmail.getNotificationtype()%>">
+			<fieldset>
+				<label>Tipo de notificación</label>
+				<input type="text" readonly="true" name="notificationtype" value="<%=notificationEmail.getNotificationtype()%>">
 			</fieldset>
-			<fieldset class="width50per fleft pLeft25">
-				<label class="width100per">Subject</label>
-				<input type="text" name="subject" id="subject" class="width100per" value="<%=notificationEmail.getSubject()%>">
+			<fieldset>
+				<label>Subject</label>
+				<input type="text" name="subject" id="subject" value="<%=notificationEmail.getSubject()%>">
 			</fieldset>
-			<fieldset class="width50per fleft pRight25">
-				<label class="width100per">From</label>
-				<input type="text" name="from" id="from" class="width100per" value="<%=notificationEmail.getFrom()%>">
+			<fieldset>
+				<label>From</label>
+				<input type="text" name="from" id="from" value="<%=notificationEmail.getFrom()%>">
 			</fieldset>
-			<fieldset class="width50per fleft pLeft25">
-				<label class="width100per">Replacements</label>
-				<label class="width100per" style="padding:8px 0;"><i><strong><%=notificationEmail.getReplacements()%></strong></i></label>
+			<fieldset>
+				<label>Replacements</label>
+				<label style="word-break: break-all;"><strong><%=notificationEmail.getReplacements()%></strong></label>
 			</fieldset>
-			<fieldset class="fleft">
-				<label class="width100per">Contenido del E-Mail</label>
+			<fieldset class="width100per">
+				<label>Contenido del E-Mail</label>
 				<textarea name="content" id="emailBody" class="width100per height200"><%=notificationEmail.getContent()%></textarea>
 			</fieldset>
 			<fieldset class="botonera">
 				<input type="submit" value="Guardar">
-				
+			</fieldset>
+			
+			<hr/>
+			
+			<fieldset>
+				<label>Enviar prueba a</label>
 				<input type="text" name="testEmail" id="testEmail">
-				<input type="button" value="Testear" onclick="javascript:doTestEmail()">
+			</fieldset>
+			<fieldset class="botonera">
+				<button type="button" onclick="javascript:doTestEmail()">Testear</button>
 			</fieldset>
 		</form>
 		<% } %>
-
+		
+		<hr/>
+		
 		<div class="portaTable">
 			<ul class="thead">
 				<li class="Thirtyper">Tipo</li>

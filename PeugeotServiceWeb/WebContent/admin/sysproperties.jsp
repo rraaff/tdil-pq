@@ -31,11 +31,11 @@
 		<form action="./doUpdateSysProperty.jsp">
 			<fieldset>
 				<label>Clave</label>
-				<input type="text" style="width: 250px;" name="propkey" value="<%=StringUtils.notNullValueOf(request.getParameter("propkey"))%>">				
+				<input type="text" name="propkey" value="<%=StringUtils.notNullValueOf(request.getParameter("propkey"))%>">				
 			</fieldset>
 			<fieldset>
 				<label>Valor</label>
-				<input type="text" style="width: 250px;" name="propvalue" value="<%=StringUtils.notNullValueOf(request.getParameter("propvalue"))%>">
+				<input type="text" name="propvalue" value="<%=StringUtils.notNullValueOf(request.getParameter("propvalue"))%>">
 			</fieldset>
 			<fieldset class="botonera">
 				<input type="submit">

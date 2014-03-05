@@ -108,11 +108,12 @@
 		
 		<h3>Setear log level</h3>
 		
-		<form action="./setLogLevel.jsp" class="fullSize">
-			<fieldset class="allinone">
+		<form action="./setLogLevel.jsp" class="">
+			<fieldset class="">
 				<label>Categoría</label>
 				<input type="text" name="category">
-				<label class="spacer">&nbsp;</label>
+			</fieldset>
+			<fieldset>
 				<label>Nivel</label>
 				<select name="level">
 					<option value="debug">debug</option>
