@@ -58,33 +58,42 @@ $( "#closeEditVehicleForPhoneLayer" ).click(function() {
 });
 
 </script>
-<div id="xContainer"><button id="closeEditVehicleForPhoneLayer">X</button></div>
-<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
-<h3>Editar teléfonos del vehículo: <span class="plateHighltd"><%=selectVehiclesForm.getSelected().getDescription() %></span></h3>
-<div class="alert alert-error" id="savephones" style="display: none;"></div>
-<html:form method="POST" action="/saveVehiculesPhones">
-	<div id="tableStyle">
-		<fieldset class="tableHeader">
-			<label class="w1">Acción</label>
-			<label class="w3">Teléfono</label>
-		</fieldset>
-		<fieldset>
-			<label class="w1">Línea 1</label>
-			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="alertPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="alertPhone" styleClass="phonenum" /></label>
-		</fieldset>
-		<fieldset>
-			<label class="w1"><span class="sample">Ejemplo:</span></label>
-			<label class="w3"><span class="sample">54 - 1141234568</span></label>
-		</fieldset>
-		<fieldset>
-			<label class="w1">Línea 2</label>
-			<label class="w3"><html:text name="SelectVehiclesForPhonesForm" property="crashPhoneCode" styleClass="areacode" /><html:text name="SelectVehiclesForPhonesForm" property="crashPhone" styleClass="phonenum" /></label>
-		</fieldset>
-		<fieldset>
-			<label class="w1"><span class="sample">Ejemplo:</span></label>
-			<label class="w3"><span class="sample">54 - 1141234567</span></label>
-		</fieldset>
-	</div>
-	<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
-</html:form>
+		<section class="modal_header">
+			<h2>Editar teléfonos</h2>
+			<h3>Complete los datos</h3>
+			<button class="close" id="closeEditVehicleForPhoneLayer">Cerrar <span></span></button>
+		</section>
+		<div class="alert alert-error" id="savephones" style="display: none;"></div>
+		<section class="modal_content apps_listing">
+			<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForPhonesForm");%>
+			<span class="modal_subtitle">Vehículo: <%=selectVehiclesForm.getSelected().getDescription() %></span>
+
+			<% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm"); %>
+			<div class="alert alert-error" id="savesz" style="display: none;"></div>
+			<html:form method="POST" action="/saveVehiculesPhones" styleClass="modal_wrapper">
+				<fieldset class="width100per">
+					<label class="min-width75">Línea 1</label>
+					<html:text name="SelectVehiclesForPhonesForm" property="alertPhoneCode" styleClass="width30" />
+					<html:text name="SelectVehiclesForPhonesForm" property="alertPhone" styleClass="width100" />
+				</fieldset>
+				<fieldset class="width100per">
+					<label><span class="sample">Ejemplo:</span></label>
+					<label><span class="sample">54 - 1141234568</span></label>
+				</fieldset>
+				<fieldset class="width100per">
+					<label class="min-width75">Línea 2</label>
+					<html:text name="SelectVehiclesForPhonesForm" property="crashPhoneCode" styleClass="width30" />
+					<html:text name="SelectVehiclesForPhonesForm" property="crashPhone" styleClass="width100" />
+				</fieldset>
+				<fieldset class="width100per">
+					<label><span class="sample">Ejemplo:</span></label>
+					<label><span class="sample">54 - 1141234567</span></label>
+				</fieldset>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" id="submitregister" type="submit">Aplicar<span></span></button>
+				</fieldset>
+			</html:form>
+
+		</section>
+
 <%@ include file="includes/catchModal.jspf" %>

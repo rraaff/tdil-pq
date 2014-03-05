@@ -72,10 +72,5 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
-<div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="vluMessages">
-		Consultando datos...
-	</div>
-</div>
 </body>
 </html>

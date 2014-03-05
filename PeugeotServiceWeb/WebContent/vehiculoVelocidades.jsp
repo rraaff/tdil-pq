@@ -59,27 +59,34 @@ function postSaveSpeedLimits(data) {
 }
 
 </script>
-<div id="xContainer"><button id="closeeditMaxSpeedLayer">X</button></div>
-<h3>Velocidades máximas</h3>
-<h4>Vehículo pantente: <bean:write name="SelectVehiclesForSpeedForm" property="selected.description" /></h4>
-<% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm"); %>
-<div class="alert alert-error" id="savespeederr" style="display: none;"></div>
-<html:form method="POST" action="/saveVehiculeSpeedLimit">
-	<div id="tableStyle">
-		<fieldset>
-			<label class="w1"></label>
-			<html:select name="SelectVehiclesForSpeedForm" property="speedSelectionBean.speedLimitId">
-				<option	value="">-</option>
-				<% SpeedSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSpeedSelectionBean();
-					SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
-					for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
-						<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-						value="<%=sl.getId()%>">
-						<%=sl.getDescription()%></option>
-				<% } %>
-			</html:select>
-		</fieldset>
-	</div>
-	<fieldset><button id="submitregister" class="indexButtonBase">Grabar</button></fieldset>
-</html:form>
+		<section class="modal_header">
+			<h2>Velocidades máximas</h2>
+			<h3>Seleccione la velocidad máxima</h3>
+			<button class="close" id="closeeditMaxSpeedLayer">Cerrar <span></span></button>
+		</section>
+		<div class="alert alert-error" id="savesz" style="display: none;"></div>
+		<section class="modal_content apps_listing">
+			<span class="modal_subtitle">Vehículo: <bean:write name="SelectVehiclesForSpeedForm" property="selected.description" /></span>
+
+			<% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSpeedForm"); %>
+			<div class="alert alert-error" id="savespeederr" style="display: none;"></div>
+			<html:form method="POST" action="/saveVehiculeSpeedLimit" styleClass="modal_wrapper">
+				<fieldset class="width100per padding25">
+					<html:select name="SelectVehiclesForSpeedForm" property="speedSelectionBean.speedLimitId" styleClass="full">
+						<option	value="">-</option>
+						<% SpeedSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSpeedSelectionBean();
+							SpeedLimit selected = ssb.getLimits().getActiveSpeedLimit();
+							for (SpeedLimit sl : ssb.getLimits().getLimits()) { %>	
+								<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+								value="<%=sl.getId()%>">
+								<%=sl.getDescription()%></option>
+						<% } %>
+					</html:select>
+				</fieldset>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" id="submitregister" type="submit">Grabar<span></span></button>
+				</fieldset>
+			</html:form>
+
+		</section>
 <%@ include file="includes/catchModal.jspf" %>

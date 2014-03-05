@@ -60,31 +60,32 @@ function postSaveSpeedLimits(data) {
 }
 
 </script>
-<div id="xContainer"><button id="closeeditSecureZonesLayer">X</button></div>
-<h3>Zonas seguras</h3>
-<div class="alert alert-error" id="savesz" style="display: none;"></div>
-<html:form method="POST" action="/saveVehiculesSecureZones">
-	<div id="tableStyle">
-		<fieldset class="tableHeader">
-			<label class="w1">Acción</label>
-			<label class="w2">Zona</label>
-		</fieldset>
-		<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
-			<fieldset>
-				<label class="w1"><bean:write name="selectedSecureZone" property="vehicle.description" /></label>
-				<label class="w4"><html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
-					<option	value="">-</option>
-					<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
-						SecureZone selected = ssb.getZones().getActiveZone();
-						for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
-							<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-							value="<%=sl.getId()%>">
-							<%=sl.getDescription()%></option>
-					<% } %>
-				</html:select></label>
-			</fieldset>
-		</logic:iterate>
-	</div>
-	<fieldset><button id="submitregister" class="indexButtonBase" >Aplicar</button></fieldset>
-</html:form>
+		<section class="modal_header">
+			<h2>Zonas seguras</h2>
+			<button class="close" id="closeeditSecureZonesLayer">Cerrar <span></span></button>
+		</section>
+		<div class="alert alert-error" id="savesz" style="display: none;"></div>
+		<section class="modal_content apps_listing">
+			<span class="modal_subtitle">Seleccione la zona segura</span>
+			<html:form method="POST" action="/saveVehiculesSecureZones" styleClass="modal_wrapper">
+				<logic:iterate id="selectedSecureZone" name="VehiclesSecureZoneForm" property="secureZones">
+					<fieldset class="width100per">
+						<label><bean:write name="selectedSecureZone" property="vehicle.description" /></label>
+						<html:select name="selectedSecureZone" property="secureZoneId" indexed="true">
+							<option	value="">-</option>
+							<% SecureZoneSelectionBean ssb = (SecureZoneSelectionBean)selectedSecureZone;
+								SecureZone selected = ssb.getZones().getActiveZone();
+								for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
+									<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+									value="<%=sl.getId()%>">
+									<%=sl.getDescription()%></option>
+							<% } %>
+						</html:select>
+					</fieldset>
+					<fieldset class="button_bar pOnlyTop25">
+						<button class="botton_ahead" id="submitregister" type="submit">Aplicar<span></span></button>
+					</fieldset>
+				</logic:iterate>
+			</html:form>
+		</section>
 <%@ include file="includes/catchModal.jspf" %>

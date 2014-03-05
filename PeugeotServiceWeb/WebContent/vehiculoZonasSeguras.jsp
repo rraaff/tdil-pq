@@ -61,26 +61,34 @@ function postSaveSpeedLimits(data) {
 }
 
 </script>
-<div id="xContainer"><button id="closeeditSecureZonesLayer">X</button></div>
-<h3>Zonas seguras</h3>
-<h4>Vehículo pantente: <bean:write name="SelectVehiclesForSecureZoneForm" property="selected.description" /></h4>
-<% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm"); %>
-<div class="alert alert-error" id="savesz" style="display: none;"></div>
-<html:form method="POST" action="/saveVehiculeSecureZones">
-	<div id="tableStyle">
-		<fieldset>
-			<label class="w100"><html:select name="SelectVehiclesForSecureZoneForm" property="secureZoneSelectionBean.secureZoneId">
-				<option	value="">-</option>
-				<% SecureZoneSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSecureZoneSelectionBean();
-					SecureZone selected = ssb.getZones().getActiveZone();
-					for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
-						<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
-						value="<%=sl.getId()%>">
-						<%=sl.getDescription()%></option>
-				<% } %>
-			</html:select></label>
-		</fieldset>
-	</div>
-	<fieldset><button id="submitregister" class="indexButtonBase" >Aplicar</button></fieldset>
-</html:form>
+		<section class="modal_header">
+			<h2>Zonas seguras</h2>
+			<h3>Seleccione la zona segura</h3>
+			<button class="close" id="closeeditSecureZonesLayer">Cerrar <span></span></button>
+		</section>
+		<div class="alert alert-error" id="savesz" style="display: none;"></div>
+		<section class="modal_content apps_listing">
+			<span class="modal_subtitle">Vehículo: <bean:write name="SelectVehiclesForSecureZoneForm" property="selected.description" /></span>
+
+			<% SelectVehiclesForm  selectVehiclesForSpeedForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm"); %>
+			<div class="alert alert-error" id="savesz" style="display: none;"></div>
+			<html:form method="POST" action="/saveVehiculeSecureZones" styleClass="modal_wrapper">
+				<fieldset class="width100per padding25">
+					<html:select name="SelectVehiclesForSecureZoneForm" property="secureZoneSelectionBean.secureZoneId" styleClass="full">
+						<option	value="">-</option>
+						<% SecureZoneSelectionBean ssb = ((SelectVehiclesForm)selectVehiclesForSpeedForm).getSecureZoneSelectionBean();
+							SecureZone selected = ssb.getZones().getActiveZone();
+							for (SecureZone sl : ssb.getZones().getSecureZones()) { %>	
+								<option	<%=	selected == null ? "" : (selected.getId().equals(sl.getId())) ? "selected" : ""%>
+								value="<%=sl.getId()%>">
+								<%=sl.getDescription()%></option>
+						<% } %>
+					</html:select>
+				</fieldset>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" id="submitregister" type="submit">Aplicar<span></span></button>
+				</fieldset>
+			</html:form>
+
+		</section>
 <%@ include file="includes/catchModal.jspf" %>

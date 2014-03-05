@@ -270,19 +270,6 @@
 		<% } %>
 	}
 
-	function verMensajesVlu() {
-		<%@ include file="includes/blockUI.jspf" %>
-		$('#vehiclesVLUMessages').load('goToVehiclesVLUMessages.do', function(response, status, xhr) {
-			<%@ include file="includes/unblockUI.jspf" %>
-			if (status == "error") {
-				errorAjax();
-			} else {
-				centerLayer($(window), $( "#vehiclesVLUMessagesLayer" ));
-				centerLayer($(window), $( "#centradorModalesvehiclesVLUMessages" ));
-			}
-		});
-	}
-
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/openLegalesLayer.jsp" %>
 <%@ include file="includes/contactJS.jspf" %>
@@ -320,9 +307,6 @@
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 				<!--  button class="iconPathTour" onclick="#">&nbsp;</button-->
-				<% if (websiteUser.vluIsClient()) { %>
-					<button class="iconPhoneAdm" onclick="verMensajesVlu();">&nbsp;</button>
-				<% } %>
 			</div>
 			<section id="zoomSection">
 				<div class="zoomControls">
@@ -380,14 +364,6 @@
 <div id="selectVehiclesForMapLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
 	<div id="centradorModalesVehiclesForMap" class="layerModal width300">
 		<div id="selectVehiclesForMap">
-			Consultando datos...
-		</div>
-	</div>
-</div>
-
-<div id="vehiclesVLUMessagesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
-	<div id="centradorModalesVehiclesVLUMessages" class="layerModal width300">
-		<div id="vehiclesVLUMessages">
 			Consultando datos...
 		</div>
 	</div>
