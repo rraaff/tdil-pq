@@ -113,7 +113,7 @@
       This element was generated on Mon Feb 03 23:15:53 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.NOTIFICATION_EMAIL')
     </selectKey>
     insert into dbo.NOTIFICATION_EMAIL (notificationType, description, subject, from_, 
       replacements, content, deleted)
@@ -127,7 +127,7 @@
       This element was generated on Mon Feb 03 23:15:53 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.NOTIFICATION_EMAIL')
     </selectKey>
     insert into dbo.NOTIFICATION_EMAIL
     <dynamic prepend="(">

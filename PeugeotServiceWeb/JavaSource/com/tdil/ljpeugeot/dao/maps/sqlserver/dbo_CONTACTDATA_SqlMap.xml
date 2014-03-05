@@ -122,7 +122,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.CONTACTDATA')
     </selectKey>
     insert into dbo.CONTACTDATA (id_websiteuser, contact1Name, contact1Relation, 
       contact1Phone, contact1SecWord, contact1HealthI, 
@@ -140,7 +140,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.CONTACTDATA')
     </selectKey>
     insert into dbo.CONTACTDATA
     <dynamic prepend="(">

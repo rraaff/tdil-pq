@@ -116,7 +116,7 @@
       This element was generated on Tue Feb 25 23:48:36 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.SYSTEMUSER')
     </selectKey>
     insert into dbo.SYSTEMUSER (username, password, type, loggingAccess, 
       syspropAccess, modelImportAccess, dealerImportAccess, 
@@ -132,7 +132,7 @@
       This element was generated on Tue Feb 25 23:48:36 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.SYSTEMUSER')
     </selectKey>
     insert into dbo.SYSTEMUSER
     <dynamic prepend="(">

@@ -133,7 +133,7 @@
       This element was generated on Tue Feb 25 23:48:36 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.VEHICLE')
     </selectKey>
     insert into dbo.VEHICLE (id_websiteuser, id_model, id_dealer, purchaseDate, 
       domain, description, km, lastServiceKm, 
@@ -155,7 +155,7 @@
       This element was generated on Tue Feb 25 23:48:36 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.VEHICLE')
     </selectKey>
     insert into dbo.VEHICLE
     <dynamic prepend="(">

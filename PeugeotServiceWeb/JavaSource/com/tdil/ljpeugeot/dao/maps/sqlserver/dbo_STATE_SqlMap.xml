@@ -106,7 +106,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.STATE')
     </selectKey>
     insert into dbo.STATE (name, deleted)
     values (#name:VARCHAR#, #deleted:INTEGER#)
@@ -118,7 +118,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.STATE')
     </selectKey>
     insert into dbo.STATE
     <dynamic prepend="(">

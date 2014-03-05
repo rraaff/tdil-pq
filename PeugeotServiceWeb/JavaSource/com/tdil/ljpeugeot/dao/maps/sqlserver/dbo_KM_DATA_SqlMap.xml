@@ -119,7 +119,7 @@
       This element was generated on Thu Feb 20 14:42:30 ART 2014.
     -->
     <selectKey resultClass="java.lang.Integer" keyProperty="id" type="post" >
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.KM_DATA')
     </selectKey>
     insert into dbo.KM_DATA (dominio, km, fechareporte, marca, modelo, 
       fechaalta, identidad, idequipo, userlogin, 
@@ -135,7 +135,7 @@
       This element was generated on Thu Feb 20 14:42:30 ART 2014.
     -->
     <selectKey resultClass="java.lang.Integer" keyProperty="id" type="post" >
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.KM_DATA')
     </selectKey>
     insert into dbo.KM_DATA
     <dynamic prepend="(" >

@@ -111,7 +111,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.POI')
     </selectKey>
     insert into dbo.POI (type, subtype, name, description, 
       lat, lon)
@@ -125,7 +125,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.POI')
     </selectKey>
     insert into dbo.POI
     <dynamic prepend="(">

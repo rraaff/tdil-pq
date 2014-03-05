@@ -115,7 +115,7 @@
       This element was generated on Mon Feb 24 23:21:35 ART 2014.
     -->
     <selectKey resultClass="java.lang.Integer" keyProperty="id" type="post" >
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.ALERT')
     </selectKey>
     insert into dbo.ALERT (id_websiteuser, id_systemuser, creationDate, 
       modificationDate, phoneNumber, lat, lon, 
@@ -131,7 +131,7 @@
       This element was generated on Mon Feb 24 23:21:35 ART 2014.
     -->
     <selectKey resultClass="java.lang.Integer" keyProperty="id" type="post" >
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.ALERT')
     </selectKey>
     insert into dbo.ALERT
     <dynamic prepend="(" >

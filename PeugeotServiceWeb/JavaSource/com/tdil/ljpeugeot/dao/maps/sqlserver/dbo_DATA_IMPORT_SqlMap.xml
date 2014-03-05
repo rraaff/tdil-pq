@@ -113,7 +113,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.DATA_IMPORT')
     </selectKey>
     insert into dbo.DATA_IMPORT (type, filename, status, processed, 
       errors, startTime, endTime)
@@ -127,7 +127,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.DATA_IMPORT')
     </selectKey>
     insert into dbo.DATA_IMPORT
     <dynamic prepend="(">

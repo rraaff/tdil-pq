@@ -110,7 +110,7 @@
       This element was generated on Tue Feb 18 00:20:23 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.MODEL')
     </selectKey>
     insert into dbo.MODEL (name, description, monthWarranty, kmWarranty, 
       deleted)
@@ -124,7 +124,7 @@
       This element was generated on Tue Feb 18 00:20:23 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.MODEL')
     </selectKey>
     insert into dbo.MODEL
     <dynamic prepend="(">

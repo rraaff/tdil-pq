@@ -148,7 +148,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.BLOB_DATA')
     </selectKey>
     insert into dbo.BLOB_DATA (dataType, filename, deleted, content
       )
@@ -162,7 +162,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.BLOB_DATA')
     </selectKey>
     insert into dbo.BLOB_DATA
     <dynamic prepend="(">

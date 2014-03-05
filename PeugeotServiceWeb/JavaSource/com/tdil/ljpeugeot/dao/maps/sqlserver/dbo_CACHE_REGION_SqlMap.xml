@@ -107,7 +107,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.CACHE_REGION')
     </selectKey>
     insert into dbo.CACHE_REGION (version, name, deleted)
     values (#version:INTEGER#, #name:VARCHAR#, #deleted:INTEGER#)
@@ -119,7 +119,7 @@
       This element was generated on Fri Feb 07 00:40:03 ART 2014.
     -->
     <selectKey keyProperty="id" resultClass="java.lang.Integer" type="post">
-      SELECT SCOPE_IDENTITY()
+      SELECT IDENT_CURRENT('dbo.CACHE_REGION')
     </selectKey>
     insert into dbo.CACHE_REGION
     <dynamic prepend="(">
