@@ -2,10 +2,12 @@ package com.tdil.ljpeugeot.struts.forms.prevent;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.tdil.ljpeugeot.daomanager.DAOManager;
+import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.AdviceExample;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.Vehicle;
@@ -95,7 +97,10 @@ public class AddServiceForm extends TransactionalValidationForm {
 		DAOManager.getServiceDAO().insertService(service);
 		AdviceExample adviceExample = new AdviceExample();
 		adviceExample.createCriteria().andIdVechicleEqualTo(this.idVehicle);
-		DAOManager.getAdviceDAO().deleteAdviceByExample(adviceExample);
+		List<Advice> advices = DAOManager.getAdviceDAO().selectAdviceByExample(adviceExample);
+		for (Advice advice : advices) {
+			DAOManager.getAdviceDAO().deleteAdviceByPrimaryKey(advice.getId());
+		}
 	}
 
 	public int getIdVehicle() {

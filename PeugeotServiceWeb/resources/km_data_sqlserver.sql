@@ -58,3 +58,6 @@ GETDATE(),
 0
 );
 commit;
+
+delete from dbo.ADVICE AS ppp where ppp.id_vechicle = 1;
+commit;
