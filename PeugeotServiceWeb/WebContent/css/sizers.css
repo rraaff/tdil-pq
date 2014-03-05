@@ -18,6 +18,8 @@
 .width50 { width:50px!important; }
 .width60 { width:60px!important; }
 .width70 { width:70px!important; }
+.width75 { width:75px!important; }
+.min-width75 { min-width:75px!important; }
 .width80 { width:80px!important; }
 .width90 { width:90px!important; }
 .width100 { width:100px!important; }
@@ -134,6 +136,7 @@
 .pTop25				{ padding-top:25px!important; }
 .pOnlyTop25			{ padding:25px 0 0 0!important; }
 .pOnlyTopRight25	{ padding:25px 25px 0 0!important; }
+.padding25			{ padding:25px!important; }
 
 .textCenter	{ text-align:center; }
 .textLeft	{ text-align:left; }

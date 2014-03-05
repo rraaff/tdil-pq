@@ -97,6 +97,7 @@ form.modal_wrapper select,
 form.modal_wrapper textarea							{ border:solid 1px #d9d9d9; color:#595a67; font-size:13px; font-family:Arial; padding:8px; margin:7px 0; width:125px; }
 form.modal_wrapper textarea							{ height:120px; }
 form.modal_wrapper select							{ width:143px!important; }
+form.modal_wrapper select.full						{ width:100%!important; }
 fieldset.button_bar									{ background:#fff!important; width:100%!important; padding:0; }
 div.errorInForm										{  }
 div.errorInForm	label								{ color:#FF5500; }
