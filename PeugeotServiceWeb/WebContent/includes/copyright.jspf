@@ -1,11 +1,27 @@
-
+<!-- copyright -->
 <section id="copyright">
-<!-- IOS store -->
-<!-- Android store -->
-<!-- Windows store -->
-<!-- BB 7 y 10 store ->
-BORRAR
-	<div class="copy">
-		<p>2014 lojack - todos los derechos reservados política de privacidad | dirección general de defensa y protección al consumidor.</p>
-	</div-->
+	<div><img src="images/skn_peugeot/logos/app_logo_webmobile.png" /></div>
 </section>
+<script>
+	var checkHeight = function() {
+		var logoObject		= document.getElementById("header_all");
+		var logoHeight		= $(logoObject).height();
+		
+		var referenceObject = document.getElementById("centradorModalesLogin");
+		var referenceHeight	= $(referenceObject).height();
+		
+		referenceObject.style.top = logoHeight + 100 + "px";
+		
+		var elementCopyright  = document.getElementById("copyright");
+		
+		// alert('referenceHeight: ' + referenceHeight + ', logoHeight: ' + logoHeight + ', New Position: ' + referenceHeight + logoHeight + 100 + 'px');
+		
+		elementCopyright.style.top = referenceHeight + logoHeight + 160 + "px";
+	}
+	window.onload=function() {
+		checkHeight();
+	}		
+	window.onresize=function() {
+		checkHeight();
+	}
+</script>

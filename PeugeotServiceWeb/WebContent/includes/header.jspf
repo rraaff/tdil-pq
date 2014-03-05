@@ -10,7 +10,9 @@
 	<section id="header_all">
 		<div class="logo">
 			<% if (websiteUser != null && websiteUser.isLogged()) { %>
-				<a href="home.jsp" title="Volver al inicio"></a>
+				<a href="home.jsp" title="Volver al inicio"><img src="images/null.png" /></a>
+			<% } else { %>
+				<img src="images/null.png" />
 			<% } %>
 		</div>
 		<div class="signature"></div>

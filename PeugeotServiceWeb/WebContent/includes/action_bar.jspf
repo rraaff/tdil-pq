@@ -1,0 +1,93 @@
+<header id="action_bar">
+
+	<section class="action_bar">
+		<div class="ac_link_back"><a href="#" title="Volver"><</a></div>
+		<div class="ac_logo_mobile">
+			<% if (websiteUser != null && websiteUser.isLogged()) { %>
+				<a href="home.jsp" title="Volver al inicio"><img src="images/skn_peugeot/logos/iso.png" /></a>
+			<% } else { %>
+				<img src="images/skn_peugeot/logos/iso.png" />
+			<% } %>
+		</div>
+		<div class="breadcrumb">
+			<!--  % String lasttitle = "";
+				for (com.tdil.web.breadcrum.BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
+				< % if (breadcrumItem.hasPage()) { %>
+					<a href="< %=breadcrumItem.getPage()%>">< %=breadcrumItem.getTitle()%></a>
+				< % } else { %>
+					< %=breadcrumItem.getTitle()%>
+				< % } %>
+				< % if (!breadcrumItem.isLast()) { %>
+					&nbsp;&gt;&nbsp;
+				< % } else {
+					lasttitle = breadcrumItem.getTitle();
+				} %>
+			< % } % -->
+		</div>
+		<div class="ac_page_title">
+			<h1>DEmo title<!-- %=lasttitle %--></h1>
+		</div>
+		<div class="ac_button_menu"><a href="javascript:openFullMenu();" title="Opciones">=</a></div>
+	</section>
+	
+	<section class="secondary_bar">
+		<div class="signature"></div>
+		<% if (websiteUser != null) {%>
+			<div class="avatar_container">
+				<ul>
+					<li class="avatarLi"><a href="javascript:changeAvatar();">
+						<%if (websiteUser.getModelUser().getIdAvatar() != null && !websiteUser.getModelUser().getIdAvatar().equals(0)) { %>
+							<img id="avatarImg" src="./download.st?id=<%=websiteUser.getModelUser().getIdAvatar() %>&type=PUBLIC&ext=<%=websiteUser.getModelUser().getExtAvatar()%>" align="absmiddle"> 
+						<% } else { %>
+							<img id="avatarImg" src="images/skn_peugeot/icons/avatarBase.png" align="absmiddle">
+						<% } %>
+					</a></li>
+				</ul>
+			</div>
+		<% } %>
+	</section>
+	
+</header>
+
+
+<!-- layer -->
+<div id="full_menu" style="display:none;">
+	<div>
+		<button class="close dark" id="closeFullMenu" >Cerrar <span></span></button>
+	</div>
+	<ul class="">
+ 		<% if (websiteUser != null && websiteUser.isLogged()) { %>
+			<li class="home"><a href="home.jsp" title="Volver al inicio"></a></li>
+			<li class="user"><span><%=websiteUser.getName()%></span></li>
+			<li><a href="./goToEditContactData.do" title="Datos de contacto">Config. Emergencias</a></li>
+			<!-- li><a href="./selectVehicleForEditData.do" title="Vehiculos">Mis Vehículos</a></li-->
+			<li><a href="javascript:changePassword();" title="Cambiar mi clave">Mi clave</a></li>
+			<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Mis datos</a></li>
+			<li class="right"><a class="special" href="logout.do" title="Salir">Salir</a></li>
+		<% } else { %>
+			<li class="right"><a class="special" href="javascript:login();" id="login" title="Ingresar ahora">Ingresar</a></li>
+			<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave">Recuperar clave</a></li>
+		<% } %>
+		<li><a href="peugeot_app.jsp">Sobre este sitio</a></li>
+	 	<li><a class="hub" href="http://www.peugeot.fr" title="Hub">hub</a></li>
+	 	<li><a href="javascript:verLegales();" id="legales" title="Ingrese a las políticas del sitio">Legales</a></li>
+	 	<li><a href="javascript:contactLoJack();" title="Envienos una consulta">Contacto</a></li>
+	 </ul>
+</div>
+
+
+<script>
+function openFullMenu() {
+	centerLayer($(window), $( "#full_menu" ));
+}
+
+$( "#closeFullMenu" ).click(function() {
+	$( "#full_menu" ).fadeOut();
+});
+</script>
+
+
+
+
+
+<!-- fin -->

@@ -27,7 +27,7 @@
 					</fieldset>
 					<div class="errorInForm"></div>
 				</div>
-				<fieldset class="width100per">
+				<fieldset class="width100per" id="forgotPasswordLink">
 					<label><span><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar tu clave">Recuperar clave</a></span></label>
 				</fieldset>
 				<fieldset class="button_bar pOnlyTop25">
