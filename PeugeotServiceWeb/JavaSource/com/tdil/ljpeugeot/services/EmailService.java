@@ -28,6 +28,7 @@ public class EmailService {
 	public static final String FIRST_ADVICE = "first.advice";
 	public static final String SECOND_ADVICE = "second.advice";
 	public static final String THIRD_ADVICE = "third.advice";
+	public static final String DEALER_ADVICE = "dealer.advice";
 	
 	public static final String SERVER_NAME_KEY = "[SERVER_NAME]";
 	public static final String FIRST_NAME_KEY = "[FIRST_NAME]";

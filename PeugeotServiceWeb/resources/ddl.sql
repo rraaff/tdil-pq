@@ -356,37 +356,37 @@ ENGINE = InnoDB;
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('first.advice.km', 'Primer aviso de service por KM','Este es el primer aviso [LINK]','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+VALUES('first.advice.km', 'Primer aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('second.advice.km', 'Segundo aviso de service por KM','Este es el segundo aviso [LINK]','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+VALUES('second.advice.km', 'Segundo aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements)
-VALUES('third.advice.km', 'Tercer aviso de service por KM','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+VALUES('third.advice.km', 'Tercer aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('first.advice.date', 'Primer aviso de service por fecha','Este es el primer aviso [LINK]','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+VALUES('first.advice.date', 'Primer aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('second.advice.date', 'Segundo aviso de service por fecha','Este es el segundo aviso [LINK]','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+VALUES('second.advice.date', 'Segundo aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('third.advice.date', 'Tercer aviso de service por fecha','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+VALUES('third.advice.date', 'Tercer aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
 replacements) 
-VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0,
+VALUES('dealer.advice', 'Aviso a la concesionaria','Estimado [DEALER_NAME], el vehiculo [DOMAIN] perteneciente a [FIRST_NAME] [LAST_NAME] debe realizar el service','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0,
 'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
 
 COMMIT;

@@ -213,7 +213,7 @@ public class LoginForm extends ActionForm {
 		setAccess(user, getProfile);
 
 		user.setAppliedActivities(ThalamusUtils.getAppliedActivitiesFrom(getProfile));
-		user.setModelUser(WebsiteUserUtils.getWebSiteUserUpdatingData(dni, user.getLojackUserId(), user.getHomeUserId(), user.getPreventUserId(), user.getPetUserId()));
+		user.setModelUser(WebsiteUserUtils.getWebSiteUserUpdatingData(dni, user.getLojackUserId(), firstName, lastName, user.getPreventUserId()));
 		return user;
 	}
 

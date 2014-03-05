@@ -286,16 +286,6 @@ CREATE TABLE NOTIFICATION_EMAIL (
   deleted INT NOT NULL ,
   PRIMARY KEY (id));
 
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.km', 'Primer aviso de service por KM','Este es el primer aviso [LINK]','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.km', 'Segundo aviso de service por KM','Este es el segundo aviso [LINK]','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.km', 'Tercer aviso de service por KM','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0);
-
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('first.advice.date', 'Primer aviso de service por fecha','Este es el primer aviso [LINK]','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('second.advice.date', 'Segundo aviso de service por fecha','Este es el segundo aviso [LINK]','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('third.advice.date', 'Tercer aviso de service por fecha','Este es el tercer aviso [LINK]','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0);
-
-INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted) VALUES('dealer.advice', 'Aviso a la concesionaria','Este es el aviso para la concesionaria','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0);
-
 CREATE TABLE KM_DATA (
   id INT NOT NULL IDENTITY ,
   dominio VARCHAR(20) NOT NULL ,
@@ -330,3 +320,40 @@ CREATE TABLE ALERT (
 CREATE INDEX IX_ALERT_00 ON ALERT(id_websiteuser);
 CREATE INDEX IX_ALERT_01 ON ALERT(status,creationDate);
 CREATE INDEX IX_ALERT_02 ON ALERT(id_systemuser);
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('first.advice.km', 'Primer aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Primer aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('second.advice.km', 'Segundo aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Segundo aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements)
+VALUES('third.advice.km', 'Tercer aviso de service por KM','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Tercer aviso aviso de service por KM', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('first.advice.date', 'Primer aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Primer aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('second.advice.date', 'Segundo aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Segundo aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('third.advice.date', 'Tercer aviso de service por fecha','Estimado [FIRST_NAME] [LAST_NAME], le recordamos que su vehiculo [DOMAIN] debe realizar el service','Tercer aviso aviso de service por fecha', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+INSERT INTO NOTIFICATION_EMAIL(notificationType,description,content,subject,from_,deleted,
+replacements) 
+VALUES('dealer.advice', 'Aviso a la concesionaria','Estimado [DEALER_NAME], el vehiculo [DOMAIN] perteneciente a [FIRST_NAME] [LAST_NAME] debe realizar el service','Aviso para la concesionaria', 'test.lojack.front@gmail.com', 0,
+'SERVER_NAME,FIRST_NAME,LAST_NAME,DOMAIN,ACTUAL_KM,LAST_SERVICE_KM,NEXT_SERVICE_KM,NEXT_SERVICE_DATE,HAS_DEALER,DEALER_NAME,DEALER_ADDRESS,DEALER_PHONE,DEALER_EMAIL');
+
+COMMIT;

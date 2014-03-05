@@ -20,18 +20,18 @@ import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 public class WebsiteUserUtils {
 	
 	private static final class InitWebSiteUser implements TransactionalAction {
-		private String lojackUserId;
-		private String homeUserId;
-		private String preventUserId;
-		private String petUserId;
 		private String dni;
+		private String lojackUserId;
+		private String firstname;
+		private String lastname;
+		private String preventUserId;
 		
-		public InitWebSiteUser(String dni, String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
+		public InitWebSiteUser(String dni, String lojackUserId, String firstname, String lastname, String preventUserId) {
 			super();
 			this.lojackUserId = lojackUserId;
-			this.homeUserId = homeUserId;
+			this.firstname = firstname;
+			this.lastname = lastname;
 			this.preventUserId = preventUserId;
-			this.petUserId = petUserId;
 			this.dni = dni;
 		}
 		public void executeInTransaction() throws SQLException {
@@ -42,17 +42,17 @@ public class WebsiteUserUtils {
 				com.tdil.ljpeugeot.model.WebsiteUser user = new com.tdil.ljpeugeot.model.WebsiteUser();
 				user.setDni(this.dni);
 				user.setLojackuserid(this.lojackUserId);
-				user.setHomeuserid(this.homeUserId);
+				user.setFirstname(this.firstname);
+				user.setLastname(this.lastname);
 				user.setPreventuserid(this.preventUserId);
-				user.setPetuserid(this.petUserId);
 				user.setDeleted(0);
 				DAOManager.getWebsiteUserDAO().insertWebsiteUser(user);
 			} else {
 				com.tdil.ljpeugeot.model.WebsiteUser user = users.get(0);
 				user.setDni(this.dni);
-				user.setHomeuserid(this.homeUserId);
+				user.setFirstname(this.firstname);
+				user.setLastname(this.lastname);
 				user.setPreventuserid(this.preventUserId);
-				user.setPetuserid(this.petUserId);
 				user.setDeleted(0);
 				DAOManager.getWebsiteUserDAO().updateWebsiteUserByPrimaryKey(user);
 			}
@@ -177,9 +177,9 @@ public class WebsiteUserUtils {
 		} 
 	}
 	
-	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserUpdatingData(String dni, String lojackUserId, String homeUserId, String preventUserId, String petUserId) {
+	public static com.tdil.ljpeugeot.model.WebsiteUser getWebSiteUserUpdatingData(String dni, String lojackUserId, String firstname, String lastname, String preventUserId) {
 		try {
-			TransactionProvider.executeInTransaction(new InitWebSiteUser(dni, lojackUserId, homeUserId, preventUserId, petUserId));
+			TransactionProvider.executeInTransaction(new InitWebSiteUser(dni, lojackUserId, firstname, lastname, preventUserId));
 			return (com.tdil.ljpeugeot.model.WebsiteUser)TransactionProvider.executeInTransactionWithResult(new GetWebSiteUser(lojackUserId));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);

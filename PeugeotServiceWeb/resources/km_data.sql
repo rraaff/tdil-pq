@@ -16,7 +16,7 @@ INSERT INTO `KM_DATA`
 VALUES
 (
 'CZP075',
-8100,
+8200,
 CURDATE(),
 'Peugeot',
 '208 GTI',
@@ -45,7 +45,7 @@ INSERT INTO `KM_DATA`
 VALUES
 (
 'IJJ-519',
-153000,
+2000,
 CURDATE(),
 'Peugeot',
 'RCZ',

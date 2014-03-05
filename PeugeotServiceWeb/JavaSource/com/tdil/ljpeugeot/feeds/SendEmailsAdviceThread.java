@@ -80,33 +80,40 @@ public class SendEmailsAdviceThread extends Thread {
 	
 	public static void sendEmail(Vehicle vehicle, String advice) throws SQLException {
 		WebsiteUser wu = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(vehicle.getIdWebsiteuser());
-		Dealer dealer = DAOManager.getDealerDAO().selectDealerByPrimaryKey(vehicle.getIdDealer());
-		Map<String, String> replacements = new HashMap<String, String>();
-		List<String> sectionsToRemove = new ArrayList<String>();
-		if (dealer != null) {
-			replacements.put(EmailService.DEALER_NAME_KEY, dealer.getName());
-			replacements.put(EmailService.DEALER_ADDRESS_KEY, com.tdil.utils.StringUtils.nvl(dealer.getAddress(), "-"));
-			replacements.put(EmailService.DEALER_PHONE_KEY, com.tdil.utils.StringUtils.nvl(dealer.getPhone(), "-"));
-			replacements.put(EmailService.DEALER_EMAIL_KEY, com.tdil.utils.StringUtils.nvl(dealer.getName(), "-"));
-		} else {
-			sectionsToRemove.add(EmailService.DEALER_SECTION_KEY);
-		}
-		replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
-		replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
-		replacements.put(EmailService.LAST_NAME_KEY, wu.getLastname());
-		replacements.put(EmailService.ACTUAL_KM_KEY, String.valueOf(vehicle.getKm()));
-		replacements.put(EmailService.LAST_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm()));
-		replacements.put(EmailService.NEXT_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm() + 12000));
-		
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(vehicle.getLastservicedate());
-		cal.add(Calendar.MONTH, 12);
-		replacements.put(EmailService.NEXT_SERVICE_DATE_KEY, DateUtils.formatDateSp(cal.getTime()));
-		
 		if (!StringUtils.isEmpty(wu.getEmail())) {
+			Dealer dealer = DAOManager.getDealerDAO().selectDealerByPrimaryKey(vehicle.getIdDealer());
+			Map<String, String> replacements = new HashMap<String, String>();
+			List<String> sectionsToRemove = new ArrayList<String>();
+			if (dealer != null) {
+				replacements.put(EmailService.DEALER_NAME_KEY, dealer.getName());
+				replacements.put(EmailService.DEALER_ADDRESS_KEY, com.tdil.utils.StringUtils.nvl(dealer.getAddress(), "-"));
+				replacements.put(EmailService.DEALER_PHONE_KEY, com.tdil.utils.StringUtils.nvl(dealer.getPhone(), "-"));
+				replacements.put(EmailService.DEALER_EMAIL_KEY, com.tdil.utils.StringUtils.nvl(dealer.getName(), "-"));
+			} else {
+				sectionsToRemove.add(EmailService.DEALER_SECTION_KEY);
+			}
+			replacements.put(EmailService.DOMAIN_KEY, vehicle.getDomain());
+			replacements.put(EmailService.FIRST_NAME_KEY, wu.getFirstname());
+			replacements.put(EmailService.LAST_NAME_KEY, wu.getLastname());
+			replacements.put(EmailService.ACTUAL_KM_KEY, String.valueOf(vehicle.getKm()));
+			replacements.put(EmailService.LAST_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm()));
+			replacements.put(EmailService.NEXT_SERVICE_KM_KEY, String.valueOf(vehicle.getLastservicekm() + 12000));
+			
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(vehicle.getLastservicedate());
+			cal.add(Calendar.MONTH, 12);
+			replacements.put(EmailService.NEXT_SERVICE_DATE_KEY, DateUtils.formatDateSp(cal.getTime()));
 			EmailService.sendEmail(wu.getEmail(), replacements, sectionsToRemove, advice);
+			if (dealer != null) {
+				// enviar el email a la concesionaria
+				getLog().info("Enviando email a la concesionaria " + dealer.getEmail() + " por usuario" + wu.getDni() + " y el vehiculo " + vehicle.getDomain());
+				EmailService.sendEmail(dealer.getEmail(), replacements, sectionsToRemove, EmailService.DEALER_ADVICE);
+			} else {
+				getLog().info("No se envia a la concesionaria del usuario" + wu.getDni() + " por el vehiculo " + vehicle.getDomain()+" ya que no tiene configurada la misma");
+			}
+		} else {
+			getLog().info("No se envia el email al usuario  " + wu.getDni() + " por el vehiculo " + vehicle.getDomain()+ " ya que no tiene configurado su email");
 		}
-		// TODO enviar el email a la concesionaria
 	}
 	
 	@Override

@@ -9,7 +9,13 @@ contacto cuando muestra los errores de jquery (se agranda verticalmente)
  
  Estilos para prevent localizar vehiculos no coincide con el resto
  
+ falta el estilo del layer de alerta de service
+ 
  Icono de camino da error de js (igual no esta hecho)
  
  Faltan todos los estilos del cc
  http://localhost:8380/PeugeotServiceWeb/cc/login.jsp
+ 
+ el backdoor sigue sin tener los labels en un estilo visible, y el label de arriba apunta al logo de lojack
+ 
+ 

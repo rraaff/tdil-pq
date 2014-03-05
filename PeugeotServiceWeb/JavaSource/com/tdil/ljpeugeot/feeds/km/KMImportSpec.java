@@ -90,17 +90,21 @@ public class KMImportSpec implements ImportSpec {
 				boolean modified = completeVehicleData(vehicle, importRecord);
 				AdviceEvaluationResult first = needsFirstAdvice(vehicle, importRecord);
 				if (first.needsAdvice()) {
+					vehicle.setKm(importRecord.getKm());
 					sendFirstAdvice(vehicle, importRecord, first);
 				} else {
 					AdviceEvaluationResult second = needsSecondAdvice(vehicle, importRecord);
 					if (second.needsAdvice()) {
+						vehicle.setKm(importRecord.getKm());
 						sendSecondAdvice(vehicle, importRecord, second);
 					} else {
 						AdviceEvaluationResult third = needsThirdAdvice(vehicle, importRecord);
 						if (third.needsAdvice()) {
+							vehicle.setKm(importRecord.getKm());
 							sendThirdAdvice(vehicle, importRecord, third);
 						} else {
 							if (modified) {
+								vehicle.setKm(importRecord.getKm());
 								DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 							}
 						}
@@ -132,8 +136,9 @@ public class KMImportSpec implements ImportSpec {
 				modified = true;
 			}
 			if (importRecord2.getKm() != null) {
-				vehicle.setKm(importRecord2.getKm());
-				modified = true;
+				if (importRecord2.getKm() != vehicle.getKm()) {
+					modified = true;
+				}
 			}
 			if (vehicle.getLastservicekm() == null) {
 				vehicle.setLastservicekm(0);

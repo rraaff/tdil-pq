@@ -75,7 +75,7 @@
 					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.rest&level=error">error</a></li>
 			</ul>
 			<ul class="tbody">
-				<li class="Seventyper">Servlets (camaras y servicios ajax)</li>
+				<li class="Seventyper">Servlets (servicios ajax)</li>
 				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.servlet")[1]%></li>
 				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=debug">debug</a>
 					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.servlet&level=info">info</a>
@@ -96,11 +96,11 @@
 					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.utils&level=error">error</a></li>
 			</ul>
 			<ul class="tbody">
-				<li class="Seventyper">VLU (importaciones de VLU)</li>
-				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.vlu")[1]%></li>
-				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=debug">debug</a>
-					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=info">info</a>
-					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.vlu&level=error">error</a></li>
+				<li class="Seventyper">Envio de emails de aviso</li>
+				<li class="Tenper"><%=com.tdil.ljpeugeot.utils.LoggerUtils.getLevelFor("com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread")[1]%></li>
+				<li class="Twentyper"><a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread&level=debug">debug</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread&level=info">info</a>
+					<a href="./setLogLevel.jsp?category=com.tdil.ljpeugeot.feeds.SendEmailsAdviceThread&level=error">error</a></li>
 			</ul>
 		</div>
 
