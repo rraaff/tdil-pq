@@ -50,55 +50,55 @@
 						<h3>El usuario no ha definido sus datos de contacto</h3>
 					<% } else { %>
 						<h3>Información de contacto</h3>
-						<fieldset>
-							<label>Primer contacto</label>
-							<label><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1name())%></label>
+						<fieldset class="width100per">
+							<label class="dato">Primer contacto</label>
+							<label class="resultado"><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1name())%></label>
 						</fieldset>
-						<fieldset>
-							<label>Relación</label>
-							<label><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact1relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact1relation()) : "-"%></label>
+						<fieldset class="width100per">
+							<label class="dato">Relación</label>
+							<label class="resultado"><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact1relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact1relation()) : "-"%></label>
 						</fieldset>
-						<fieldset>
-							<label>Teléfono</label>
-							<label><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1phone())%></label>
+						<fieldset class="width100per">
+							<label class="dato">Teléfono</label>
+							<label class="resultado"><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1phone())%></label>
 						</fieldset>
-						<fieldset>
-							<label>Palabra clave</label>
-							<label><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1secword())%></label>
+						<fieldset class="width100per">
+							<label class="dato">Palabra clave</label>
+							<label class="resultado"><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact1secword())%></label>
 						</fieldset>
-						<fieldset>
-							<label>Obra Social</label>
-							<label><%=StringUtils.nvl(searchUserForm.getContactData().getContact1healthi(),"-")%></label>
-						</fieldset>
-						
-						<hr/>
-						
-						<fieldset>
-							<label>Segundo contacto</label>
-							<label><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2name())%></label>
-						</fieldset>
-						<fieldset>
-							<label>Relación</label>
-							<label><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact2relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact2relation()) : "-"%></label>
-						</fieldset>
-						<fieldset>
-							<label>Teléfono</label>
-							<label><%=StringUtils.nvl(searchUserForm.getContactData().getContact2phone(),"-")%></label>
+						<fieldset class="width100per">
+							<label class="dato">Obra Social</label>
+							<label class="resultado"><%=StringUtils.nvl(searchUserForm.getContactData().getContact1healthi(),"-")%></label>
 						</fieldset>
 						
 						<hr/>
 						
-						<fieldset>
-							<label>Tercer contacto</label>
-							<label><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3name())%></label>
+						<fieldset class="width100per">
+							<label class="dato">Segundo contacto</label>
+							<label class="resultado"><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact2name())%></label>
 						</fieldset>
-						<fieldset>
-							<label>Relación</label>
-							<label><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact3relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact3relation()) : "-"%></label>
+						<fieldset class="width100per">
+							<label class="dato">Relación</label>
+							<label class="resultado"><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact2relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact2relation()) : "-"%></label>
 						</fieldset>
-						<fieldset>
-							<label>Teléfono</label>
-							<label><%=StringUtils.nvl(searchUserForm.getContactData().getContact3phone(),"-")%></label>
+						<fieldset class="width100per">
+							<label class="dato">Teléfono</label>
+							<label class="resultado"><%=StringUtils.nvl(searchUserForm.getContactData().getContact2phone(),"-")%></label>
+						</fieldset>
+						
+						<hr/>
+						
+						<fieldset class="width100per">
+							<label class="dato">Tercer contacto</label>
+							<label class="resultado"><%=StringUtils.notNullValueOf(searchUserForm.getContactData().getContact3name())%></label>
+						</fieldset>
+						<fieldset class="width100per">
+							<label class="dato">Relación</label>
+							<label class="resultado"><%=!org.apache.commons.lang.StringUtils.isEmpty(searchUserForm.getContactData().getContact3relation()) ? ApplicationResources.getMessage("relation_" + searchUserForm.getContactData().getContact3relation()) : "-"%></label>
+						</fieldset>
+						<fieldset class="width100per">
+							<label class="dato">Teléfono</label>
+							<label class="resultado"><%=StringUtils.nvl(searchUserForm.getContactData().getContact3phone(),"-")%></label>
 						</fieldset>
 					<% } %>
 				<% } %>
