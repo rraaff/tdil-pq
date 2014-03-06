@@ -1,6 +1,9 @@
 <header id="action_bar">
 
 	<section class="action_bar">
+		<div class="ac_page_title">
+			<h1><%=breadcrums.last().getTitle()%></h1>
+		</div>
 		<div class="ac_link_back">
 			<%com.tdil.web.breadcrum.BreadcrumItem previousItem = breadcrums.previous();
 			if (previousItem != null && previousItem.hasPage()) { %>
@@ -13,24 +16,6 @@
 			<% } else { %>
 				<img src="images/skn_peugeot/logos/iso.png" />
 			<% } %>
-		</div>
-		<div class="breadcrumb">
-			<!--  % String lasttitle = "";
-				for (com.tdil.web.breadcrum.BreadcrumItem breadcrumItem : breadcrums.finish()) { %>
-				< % if (breadcrumItem.hasPage()) { %>
-					<a href="< %=breadcrumItem.getPage()%>">< %=breadcrumItem.getTitle()%></a>
-				< % } else { %>
-					< %=breadcrumItem.getTitle()%>
-				< % } %>
-				< % if (!breadcrumItem.isLast()) { %>
-					&nbsp;&gt;&nbsp;
-				< % } else {
-					lasttitle = breadcrumItem.getTitle();
-				} %>
-			< % } % -->
-		</div>
-		<div class="ac_page_title">
-			<h1><%=breadcrums.last().getTitle()%></h1>
 		</div>
 		<div class="ac_button_menu"><a href="javascript:openFullMenu();" title="Opciones">=</a></div>
 	</section>
@@ -63,6 +48,21 @@
 	<ul class="">
 		<li class="home"><a href="home.jsp" title="Volver al inicio"></a></li>
 		<li class="user"><span><%=websiteUser.getName()%></span></li>
+		<% if ("POIS".equals(MENU_ACTIVE_SECTION)) { %>
+			<li class="selected">Points of Interest</li>
+		<% } else { %>
+			<li><a href="poi.jsp" title="Ingresar a la aplicación Points of Interest">Points of Interest</a></li>
+		<% } %>
+	 	<% if ("PREVENT".equals(MENU_ACTIVE_SECTION)) { %>
+			<li class="selected">Car Security</li>
+		<% } else { %>
+			<li><a href="javascript:loginPrevent();" title="Ingresar a la aplicación Car Security">Car Security</a></li>
+		<% } %>
+		<% if ("SERVICES".equals(MENU_ACTIVE_SECTION)) { %>
+			<li><a class="active" href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
+		<% } else { %>
+			<li><a href="servicesDashboard.jsp" title="Ir al inicio de la sección Services">Services</a></li>
+		<% } %>
 		<li><a href="./goToEditContactData.do" title="Datos de contacto">Config. Emergencias</a></li>
 		<!-- li><a href="./selectVehicleForEditData.do" title="Vehiculos">Mis Vehículos</a></li-->
 		<li><a href="javascript:changePassword();" title="Cambiar mi clave">Mi clave</a></li>

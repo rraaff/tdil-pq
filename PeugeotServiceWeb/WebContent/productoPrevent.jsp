@@ -287,9 +287,6 @@
 %>
 <% MENU_ACTIVE_SECTION = "PREVENT"; %>
 <!-- WEBSITE CONTENT -->
-<div id="testerDeAltura" style="display:none;">not set yet</div>
-<div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
-
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/action_bar.jspf" %>

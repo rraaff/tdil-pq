@@ -59,3 +59,33 @@
 }
 
 
+
+@media only screen and (max-height:500px) {
+	section.modal_header		{ padding: 0 0 22px 0; margin: 0 0 6px; }
+	div#centradorModalesLogin	{ /*padding:10px;*/ }
+	div#centradorModalesLogin button.link_back	{ display:none; }
+	section.modal_header h2		{ font-size: 20px; text-align: center; padding: 0; }
+	section.modal_header h4		{ display:none; }
+	span.modal_subtitle			{ display:none; }
+	form.modal_wrapper div.column	{ padding:0; }
+	form.modal_wrapper fieldset label span a { padding: 5px 0 20px; }
+	
+	div.errorInForm label.error		{ padding:5px 0 0!important; }
+	
+	div#forgotPasswordLayer,
+	div#centradorModalesforgotPass	{ left:0!important; }	
+	div#centradorModalesforgotPass	{ width: 100%!important; top:auto!important; bottom:0px!important;  }
+	div#centradorModalesforgotPass section.modal_header h2	{ text-align:left; } 
+	
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -50,7 +50,7 @@ response.addCookie(ecookie1);
 <meta charset="ISO-8859-1"/>
 <title>Peugeot AXS :: Ingrese al sitio</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
@@ -437,8 +437,8 @@ function parkingsNotLogged() {
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>
-<% if (usingMobile || isAndroid) { %>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+<% if (isAndroid) { %>
+	
 <% } %>
 <%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()

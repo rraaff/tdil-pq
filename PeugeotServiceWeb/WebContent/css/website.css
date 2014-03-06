@@ -51,7 +51,7 @@ img.avatar_base						{ background-color:#fff; }
 
 
 /* MODAL WINDOWS */
-div.layerOnTop								{ background-image:url(../images/skn_peugeot/modal/trans_40.png); width:100%; height:100%; position:fixed; }
+div.layerOnTop								{ background-image:url(../images/skn_peugeot/modal/trans_40.png); width:100%; height:100%; position:fixed; left:0!important; }
 div.layerOnTopInternal						{ width:100%; height:100%; top:0; left:0; position:fixed; z-index:1510; }
 div.layerModal								{ border-radius:2px; background:#fff; width:60%; padding:18px; position:fixed; display:inline-block; -webkit-box-shadow:0 0 10px 2px rgba(0,0,0,0.5); box-shadow:0 0 10px 2px rgba(0,0,0,0.5); }
 section.modal_header						{ background-image:url(../images/skn_peugeot/modal/divider_horizontal.png); background-repeat:no-repeat; background-position:center bottom; background-size:100% 11px; width:100%; padding:0 0 30px 0; margin:0 0 30px; }
@@ -174,7 +174,7 @@ div#wheel_animation_container		{ background:url(../images/skn_peugeot/bgs/wheel_
 
 
 /* SERVICE SECTTION MENU */
-section#service_section_menu								{ background-color:#fff;background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_base.png); background-repeat:repeat-x; background-position:center top; width:100%; height:53px; }
+section#service_section_menu								{ background-color:#fff;background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_base.png); background-repeat:repeat-x; background-position:center top; width:100%; height:53px; z-index:1425; position:relative; }
 section#service_section_menu ul.subproduc_menu				{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:left center; width:1000px; margin:0 auto; }
 section#service_section_menu ul.subproduc_menu li			{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:right center; color:#373743; font-size:13px; font-family:'PeugeotStyle'; display:inline-block; }
 section#service_section_menu ul.subproduc_menu li a			{ color:#373743; line-height:13px; text-decoration:none; padding:20px 30px; display:inline-block; }
@@ -370,25 +370,27 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	header										{ display:none; }
 	section#page_title							{ display:none; }
 	
-	div#under_shade								{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar_halo.png); background-size: 100%; background-repeat: no-repeat; }
+	div#under_shade								{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar_halo.png); background-size:100%; background-repeat:no-repeat; }
+	
+	#barre_transversale							{ display:none; }
 	
 	#wheel										{ min-width:inherit; }
 	div#content_wrapper							{ width:100% }
-	div#app_logo								{ display: none; }
-	div#wheel_container							{ width: 100%; }
+	div#app_logo								{ display:none; }
+	div#wheel_container							{ width:100%; }
 	div#wheel_structure							{ min-width:inherit; }
-	div.wrapper									{ width:100%; display:inline-block; text-align: center; }
+	div.wrapper									{ width:100%; display:inline-block; text-align:center; }
 	div#wheel_animation_container				{ min-width:inherit; }
-	button#pointsin								{ left: 183px; }
-	button#carsecur								{ left: 28px;}
-	button#services								{ left: -206px; }
+	button#pointsin								{ left:183px; }
+	button#carsecur								{ left:28px;}
+	button#services								{ left:-206px; }
 	
 	#pgt_wrapper_footer										{ min-width:inherit; }
-	#pgt_wrapper_footer #footer_main_row .pgt_inwrapper 	{ display: none; }
+	#pgt_wrapper_footer #footer_main_row .pgt_inwrapper 	{ display:none; }
 
 	/* Exclusive web mobile */
-	header#action_bar							{ background:none; height:auto; display:inline-block; }
-	section.action_bar							{ background:#373641; line-height:0px; width:100%; display:inline-block; vertical-align:top; }
+	header#action_bar							{ background:none; height:auto; display:inline-block; position:relative; z-index:1450; }
+	section.action_bar							{ background:#373641; line-height:0px; width:100%; height:48px; display:inline-block; vertical-align:top; }
 	section.action_bar div.ac_link_back			{ display:inline-block; vertical-align:top; }
 	section.action_bar div.ac_link_back a		{ color:transparent; background-image:url(../images/skn_peugeot/icons/mobile/ic_ac_back_white.png); background-position:center center; background-repeat:no-repeat; background-size:100% 50%; width:24px; line-height:48px; display:inline-block; }
 	section.action_bar div.ac_logo_mobile		{ display:inline-block; vertical-align:top; }
@@ -396,37 +398,38 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	section.action_bar div.ac_logo_mobile img	{ width:48px; padding:10px;}
 	section.action_bar div.breadcrumb			{ display:none; }
 	section.action_bar div.breadcrumb a			{ display:inline-block; }
-	section.action_bar div.ac_page_title		{ text-align:center; width:90%; padding: 0 48px 0 0; display:inline-block; position:absolute; vertical-align:top; }
-	section.action_bar div.ac_page_title h1		{ color:#2caed6; font-size:180%; font-family:'Peugeot'; text-transform:uppercase; line-height:48px; margin-right: 16px; display:inline-block;  }
-	section.action_bar div.ac_button_menu 		{ position:absolute; right:0; margin-left:24px; display:inline-block; vertical-align:top; }
+	section.action_bar div.ac_page_title		{ text-align:center; width:100%; display:inline-block; position:absolute; vertical-align:top; top:0; left:0; }
+	section.action_bar div.ac_page_title h1		{ color:#2caed6; font-size:180%; font-family:'Peugeot'; text-transform:uppercase; line-height:48px; display:inline-block;  }
+	section.action_bar div.ac_button_menu 		{ position:absolute; right:0; display:inline-block; vertical-align:top; }
 	section.action_bar div.ac_button_menu a		{ color:transparent; background-image:url(../images/skn_peugeot/icons/mobile/ic_ac_menu_white.png); background-position:center center; background-repeat:no-repeat; background-size:50% 50%; width:48px; line-height:48px; display:inline-block; }
 	section.action_bar div.ac_logo_mobile a:hover,
 	section.action_bar div.ac_link_back a:hover,
 	section.action_bar div.ac_button_menu a:hover { background-color:#6b6b6f; }
 	
-	section.secondary_bar						{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar.png); background-repeat:repeat-x; background-size:100% 100%; text-align:center; width:100%; height:84px; display:inline-block; }
+	section.secondary_bar						{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar.png); background-repeat:repeat-x; background-size:100% 100%; text-align:center; width:100%; display:inline-block; }
 	section.secondary_bar div.signature			{ background:url(../images/skn_peugeot/logos/signature.png); background-repeat:no-repeat; background-position:center center; width:175px; height:18px; margin:33px 0; display:inline-block; }
-	div.avatar_container						{ background: url(../images/skn_peugeot/bgs/base_avatar.png) no-repeat center center; top:49px; right: 5px; position: absolute; z-index: 2; }
+	div.avatar_container						{ background:url(../images/skn_peugeot/bgs/base_avatar.png) no-repeat center center; top:49px; right:5px; position:absolute; z-index:2; }
 	div.avatar_container ul						{ display:inline-block; }
 	div.avatar_container ul li.avatarLi			{ padding:20px 16px 16px; display:inline-block; }
 	img#avatarImg								{ width:48px; height:48px; }
 	img.avatar_base								{ background-color:#fff; }
 	
-	div#full_menu								{ position: fixed; position: fixed; top:15px!important; right:15px!important; left: inherit!important; display: inline-block; background: #4c4c58; padding: 25px; border-radius: 2px; z-index: 1500; -webkit-box-shadow: 0 0 15px 5px rgba(0,0,0,0.5); box-shadow: 0 0 15px 5px rgba(0,0,0,0.5); }
+	div#full_menu								{ border-radius:2px; z-index:1500; background:#4c4c58; padding:25px; top:15px!important; right:15px!important; left:inherit!important; position:absolute; display:inline-block; -webkit-box-shadow:0 0 15px 5px rgba(0,0,0,0.5); box-shadow:0 0 15px 5px rgba(0,0,0,0.5); }
 	div#full_menu ul							{}
 	div#full_menu ul li							{}
-	div#full_menu ul li.home					{ display: none; }
-	div#full_menu ul li.user					{ font-size: 15px; font-family: 'Peugeot'; padding: 0 0 18px; }
-	div#full_menu ul li a						{ color: #fff; background: #9b9aaa; background: -moz-linear-gradient(top, #9b9aaa 0%, #8e8d9f 6%, #5d5c6a 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9b9aaa), color-stop(6%,#8e8d9f), color-stop(100%,#5d5c6a)); background: -webkit-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); background: -o-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); background: -ms-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%);  background: linear-gradient(to bottom, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b9aaa', endColorstr='#5d5c6a',GradientType=0 ); text-transform: uppercase; font-size: 15px; font-family: 'Peugeot';  text-decoration: none; width: 100%; padding: 13px 18px; margin: 4px 0; display: inline-block; -webkit-box-shadow: 0 0 15px 5px rgba(0,0,0,0.5); box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);}
-	div#full_menu ul li a:hover					{ color: #abadbd; background: #8e8d9f; /* Old browsers */ background: -moz-linear-gradient(top,  #8e8d9f 0%, #5d5c6a 5%, #9b9aaa 99%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8d9f), color-stop(5%,#5d5c6a), color-stop(99%,#9b9aaa)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* IE10+ */ background: linear-gradient(to bottom,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8d9f', endColorstr='#9b9aaa',GradientType=0 ); /* IE6-9 */ }
+	div#full_menu ul li.home					{ display:none; }
+	div#full_menu ul li.user					{ font-size:15px; font-family:'Peugeot'; padding:0 0 18px; }
+	div#full_menu ul li.selected				{ color:#8BE4FF; background:#8e8d9f; background:-moz-linear-gradient(top, #8e8d9f 0%, #5d5c6a 5%, #9b9aaa 99%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8d9f), color-stop(5%,#5d5c6a), color-stop(99%,#9b9aaa)); background:-webkit-linear-gradient(top, #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); background:-o-linear-gradient(top, #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); background:-ms-linear-gradient(top, #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); background:linear-gradient(to bottom, #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8d9f', endColorstr='#9b9aaa',GradientType=0 ); text-transform:uppercase; font-size:15px; font-family:'Peugeot'; text-decoration:none; width:100%; padding:13px 18px; margin:4px 0; display:inline-block; -webkit-box-shadow:0 0 15px 5px rgba(0,0,0,0.5); box-shadow:0 0 3px 1px rgba(0,0,0,0.3); }
+	div#full_menu ul li a						{ color:#fff; background:#9b9aaa; background:-moz-linear-gradient(top, #9b9aaa 0%, #8e8d9f 6%, #5d5c6a 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#9b9aaa), color-stop(6%,#8e8d9f), color-stop(100%,#5d5c6a)); background:-webkit-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); background:-o-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); background:-ms-linear-gradient(top, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%);  background:linear-gradient(to bottom, #9b9aaa 0%,#8e8d9f 6%,#5d5c6a 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b9aaa', endColorstr='#5d5c6a',GradientType=0 ); text-transform:uppercase; font-size:15px; font-family:'Peugeot';  text-decoration:none; width:100%; padding:13px 18px; margin:4px 0; display:inline-block; -webkit-box-shadow:0 0 15px 5px rgba(0,0,0,0.5); box-shadow:0 0 3px 1px rgba(0,0,0,0.3);}
+	div#full_menu ul li a:hover					{ color:#abadbd; background:#8e8d9f; /* Old browsers */ background:-moz-linear-gradient(top,  #8e8d9f 0%, #5d5c6a 5%, #9b9aaa 99%); /* FF3.6+ */ background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8d9f), color-stop(5%,#5d5c6a), color-stop(99%,#9b9aaa)); /* Chrome,Safari4+ */ background:-webkit-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* Chrome10+,Safari5.1+ */ background:-o-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* Opera 11.10+ */ background:-ms-linear-gradient(top,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* IE10+ */ background:linear-gradient(to bottom,  #8e8d9f 0%,#5d5c6a 5%,#9b9aaa 99%); /* W3C */ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8d9f', endColorstr='#9b9aaa',GradientType=0 ); /* IE6-9 */ }
 
-	button.dark									{ background-image: url(../images/skn_peugeot/buttons/btn_modal_close_dark.png); }
+	button.dark									{ background-image:url(../images/skn_peugeot/buttons/btn_modal_close_dark.png); }
 
 	/* */
 	div.template_baratleft, 
 	div.template_half							{ width:100%; }
-	div.template_half div.column				{ background-image: url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat: no-repeat; background-position: -45px center; background-size: 100px 100%; float: left; width: 50%!important; padding: 0px!important; }
-	div.template_half div.column:first-of-type	{ width: 50%!important; background-image: none; }
+	div.template_half div.column				{ background-image:url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat:no-repeat; background-position:-45px center; background-size:100px 100%; float:left; width:50%!important; padding:0px!important; }
+	div.template_half div.column:first-of-type	{ width:50%!important; background-image:none; }
 
 }
 
@@ -434,10 +437,65 @@ footer						{ color:#fff; position:relative; top:-20px; }
 
 @media only screen and (max-width:750px) {
 	div.template_baratleft, 
-	div.template_half							{ width:100%; }
-	div.template_half div.column				{ float: left; width:100%!important; padding: 0px!important; }
+	div.template_half,
+	div.template_half div.column:first-of-type	{ width:100%!important; }
+	div.template_half div.column				{ float:left; width:100%!important; padding:0px!important; }
+	
+	div.dashboard_item,
+	div.dashboard_item h3						{ width:100%!important; }
+	div.dashboard_item img.icon					{ padding:0; }
+}
+@media only screen and (max-width:550px) {
+	section#service_section_menu				{ display:none; }
+	
 }
 
+@media only screen and (max-width:625px) {
+	button#pointsin { left:96px; }
+	button#carsecur { left:-62px; }
+	button#services { left:19px; top:333px; }
+}
 
+@media only screen and (max-width:448px) {
+	button#pointsin { left:-7px; }
+	button#carsecur { left:149px; top:146px; }
+	button#services { left:-83px; }
+}
 
+@media only screen and (max-width:420px) {
+	div.avatar_container		{ display:none; }
+}
 
+@media only screen and (max-width:380px) {
+	button#carsecur { left:61px; }
+	button#services { left:20px; top:268px; }
+	
+	div#full_menu	{ width:100%; top:0!important; right:0!important; }
+	
+	div.layerModal	{ width:100%!important; left:0!important; }
+}
+
+@media only screen and (max-height:600px) {
+	
+	section.action_bar								{ height:36px; }
+	section.action_bar div.ac_logo_mobile img		{ width:36px; padding:2px; }
+	section.action_bar div.ac_page_title			{ position:absolute; vertical-align:top; top:0; left:0; z-index:12; }
+	section.action_bar div.ac_link_back				{ position:absolute; top:0; left:0; z-index:13; }
+	section.action_bar div.ac_logo_mobile			{ position:absolute; top:0; left:17px; z-index:14; }
+	section.action_bar div.ac_button_menu			{ z-index:15; }
+	
+	section.action_bar div.ac_page_title h1			{ font-size:120%; line-height:36px; }
+	section.action_bar div.ac_link_back a			{ width:18px; line-height:36px; }
+	section.action_bar div.ac_button_menu a			{ width:36px; line-height:36px; } 
+	
+	section.secondary_bar div.signature				{ margin:21px 0; }
+	div.avatar_container							{ display:none; }
+
+	footer											{ display:none; }
+	
+	div#full_menu ul li.user					{ font-size:13px; }
+	div#full_menu ul li.selected,
+	div#full_menu ul li a						{ font-size:13px; padding:10px 18px; }
+	
+	
+}

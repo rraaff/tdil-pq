@@ -7,8 +7,12 @@
 <script>
 	var checkHeight = function() {
 		var winWidth = $(window).width();
+		var winHeight = $(window).height();
 		
-		if (winWidth < 1024) {
+		var referenceObject = document.getElementById("centradorModalesLogin");
+		var referenceHeight	= $(referenceObject).height();
+		
+		if (winWidth < 1024 && winHeight > referenceHeight) {
 			openFullMenu();
 			
 			/* necesito saber window hight*/
@@ -26,11 +30,19 @@
 			referenceObject.style.left = ((winWidth - referenceWidth) * 0.5) + "px";
 	
 			/* resto uno y otro y el diferencial lo divido en dos, para calcular la altura y posición del logo  */
-			var deltaHeight = (winHeight - referenceHeight) / 2;
-			var heightForLogo = deltaHeight * 0.6;
-			var widthForLogo  = deltaHeight * 1.3207547169811320754716981132075;
-			var widthForAppLogo = deltaHeight * 2.3214285714285714285714285714286;
-			var positionLogo  = deltaHeight * 0.2;
+			if (winHeight > 500) {
+				var deltaHeight = (winHeight - referenceHeight) / 2;
+				var heightForLogo = deltaHeight * 0.6;
+				var widthForLogo  = deltaHeight * 1.3207547169811320754716981132075;
+				var widthForAppLogo = deltaHeight * 2.3214285714285714285714285714286;
+				var positionLogo  = deltaHeight * 0.2;
+			} else {
+				//alert('Es muy chica');
+				var deltaHeight = winHeight - referenceHeight;
+				var heightForLogo = deltaHeight * 0.6;
+				var widthForLogo  = deltaHeight * 1.3207547169811320754716981132075;
+				var positionLogo  = deltaHeight * 0.1;
+			}
 			
 			/* le seteo la altura y la posición al logo */
 			var logoObject = document.getElementById("index_mobile_logo");
@@ -42,14 +54,38 @@
 			/* le doy tamaño y posición al logo de la app */
 			var applogoObject = document.getElementById("copyright");
 			var appLogoIntObject = document.getElementById("inter");
+
+			if (winHeight > 500) {
+				applogoObject.style.height = heightForLogo + "px";
+				applogoObject.style.bottom = positionLogo + "px";
+				appLogoIntObject.style.height = heightForLogo + "px";
+				appLogoIntObject.style.width = widthForAppLogo + "px";
+			} else {
+				//alert('Es muy muy chica');
+				referenceObject.style.top = "auto";
+				referenceObject.style.bottom = "0px";
+				applogoObject.style.display = "none";
+				
+				
+			}
+		} else if (winHeight <= referenceHeight) {
+			//alert('Pantalla muy chica');
+			//openFullMenu();
+			$('input[type="text"]').focus(function() {
+				//alert('Focused');
+				referenceObject.style.bottom = "auto";
+				referenceObject.style.top = "20px";
+			});
+			$('input[type="password"]').focus(function() {
+				//alert('Focused');
+				referenceObject.style.top = "auto";
+				referenceObject.style.bottom = "0px";
+			});			
 			
-			applogoObject.style.height = heightForLogo + "px";
-			applogoObject.style.bottom = positionLogo + "px";
-			appLogoIntObject.style.height = heightForLogo + "px";
-			appLogoIntObject.style.width = widthForAppLogo + "px";
 		} else {
 			/* le seteo la altura y la posición ORIGINAL (ver css) al logo */
 			var logoObject = document.getElementById("index_mobile_logo");
+			openFullMenu();
 			logoObject.style.width = "101px";
 			logoObject.style.height = "80px";
 			logoObject.style.top = "6px";

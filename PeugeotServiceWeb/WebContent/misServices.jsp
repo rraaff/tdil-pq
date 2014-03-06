@@ -129,13 +129,6 @@ if (apk != null && apk) {
 }
 %>
 <%
-	if (usingMobile || isAndroid) {
-%>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
-<%
-	}
-%>
-<%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
 	.titles("Inicio","Services","Mis services")
 	.pages("home.jsp","servicesDashboard.jsp","");
