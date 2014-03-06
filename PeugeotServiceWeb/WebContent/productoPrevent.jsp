@@ -368,8 +368,6 @@
 		</div>
 	</div>
 </div>
-
-<%@ include file="includes/copyright.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
 
 <!-- ALL LAYERS -->
