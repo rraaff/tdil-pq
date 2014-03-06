@@ -112,10 +112,16 @@ function MapaOSM(elementId, containerId, options) {
 
     this.pointDigitizer.events.register("featureadded", this, function (evt) {
         this.pointDigitizer.deactivate();
-        var point = this.GetDataPoint(evt.feature.geometry.x, evt.feature.geometry.y);
-        if (options.PointDigitizedHandler) {
-            options.PointDigitizedHandler(point.x, point.y);
-        }
+        //var center = evt.feature.geometry.getCentroid();
+    	//var point1 = evt.feature.geometry.components[0].components[1];
+    	//alert(center);
+    	//alert(point1);
+    	//var p = new OpenLayers.Geometry.Point(center.x, center.y);
+    	//alert(p.transform(new OpenLayers.Projection("EPSG:900913"),new OpenLayers.Projection("EPSG:4326"))); 
+        //var point = this.GetDataPoint(evt.feature.geometry.x, evt.feature.geometry.y);
+        //if (options.PointDigitizedHandler) {
+        //    options.PointDigitizedHandler(point.x, point.y);
+        //}
     });
 
     this.polygonDigitizer.events.register("featureadded", this, function (evt) {
