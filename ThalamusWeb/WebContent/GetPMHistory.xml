@@ -1,0 +1,18 @@
+<GetPMHistory>
+	<item>
+		<fecha></fecha>
+		<latitude></latitude>
+		<longitude></longitude>
+		<street></street>
+		<number></number>
+	</item>
+	<item>
+		<fecha></fecha>
+		<latitude></latitude>
+		<longitude></longitude>
+		<street></street>
+		<number></number>
+	</item>
+
+	<status></status>
+</GetPMHistory>

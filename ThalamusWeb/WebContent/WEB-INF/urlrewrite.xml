@@ -205,6 +205,27 @@
         <to>../../../SecureZoneResp.xml</to>
     </rule>
     
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/SecureZone/AddCircular.*</from>
+        <to>../../../CircularResponse.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/PreventWCFServices/GISService.svc/SecureZone/AddPolygonal.*</from>
+        <to>../../../PolygonalResponse.xml</to>
+    </rule>
+    
+    <rule>
+        <note>
+        </note>
+        <from>/Vehicles/[^/]*/GetPositions/.*</from>
+        <to>../../../GetPMHistory.xml</to>
+    </rule>
+    
     <!--  outbound-rule>
         <note>
             The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)

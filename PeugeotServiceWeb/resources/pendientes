@@ -7,6 +7,10 @@ Click en zonas seguras abre layer donde se pregunta si quiere elegir para vehicu
 	Cuando termina la creacion abro un popup donde podes poner el nombre de la zona y un boton ok y otro de cancelar
 	Cualquiera que cliquea, cierra el modal y despinta la zona en el mapa
 	
+circulo	
+var center = vectorLayer.features[i].geometry.getCentroid();
+var point1 = vectorLayer.features[i].geometry.components[0].components[1];
+	
 Recorrido historico
 	Nuevo item de recorrido
 	Click en el mismo abre una pantalla con 
