@@ -15,7 +15,9 @@ import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.log4j.Logger;
 
+import com.tdil.ljpeugeot.prevent.model.CircularSecureZone;
 import com.tdil.ljpeugeot.prevent.model.LoginResponse;
+import com.tdil.ljpeugeot.prevent.model.PolygonalSecureZone;
 import com.tdil.ljpeugeot.prevent.model.SecureZone;
 import com.tdil.ljpeugeot.prevent.model.SpeedLimit;
 import com.tdil.ljpeugeot.prevent.model.UpdatePhoneNumbers;
@@ -42,6 +44,9 @@ public class PreventConnector {
 	private static final String VEHICLES = "/Vehicles/?index={index}&userToken={userToken}";
 	private static final String VEHICLE_GET_SECURE_ZONES = "/Vehicles/{vehicleID}/SecureZones/?userToken={userToken}";
 	private static final String VEHICLE_SET_SECURE_ZONE = "/SecureZone/?secureZoneID={secureZoneID}&vehicleID={vehicleID}&userToken={userToken}";
+
+	private static final String ADD_CIRCULAR_SECURE_ZONE = "/SecureZone/AddCircular?userToken={userToken}";
+	private static final String ADD_POLYGONAL_SECURE_ZONE = "/SecureZone/AddPolygonal?userToken={userToken}";
 
 	private static final String VEHICLE_GET_SPEED_LIMIT = "/Vehicles/{vehicleID}/SpeedLimit/?userToken={userToken}";
 	private static final String VEHICLE_SET_SPEED_LIMIT = "/SpeedLimit/?SpeedLimitID={speedLimitID}&VehicleID={vehicleID}&userToken={userToken}";
@@ -118,6 +123,20 @@ public class PreventConnector {
 
 	public static XMLResponse setVehicleSecureZone(LoginResponse loginResponse, Vehicle vehicle, SecureZone sl) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
 		return executeGet(getPreventServer(), VEHICLE_SET_SECURE_ZONE, new URLParams(loginResponse).vehicleID(vehicle.getId()).secureZoneID(sl == null ? "0" : sl.getId()));
+	}
+	
+	public static XMLResponse addCircularSecureZone(Object body, URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), ADD_CIRCULAR_SECURE_ZONE, body, params);
+	}
+	public static XMLResponse addCircularSecureZone(LoginResponse loginResponse, CircularSecureZone circularSecureZone) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), ADD_CIRCULAR_SECURE_ZONE, PreventXMLUtils.asXML(circularSecureZone), new URLParams(loginResponse));
+	}
+	
+	public static XMLResponse addPolygonalSecureZone(Object body, URLParams params) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), ADD_POLYGONAL_SECURE_ZONE, body, params);
+	}
+	public static XMLResponse addPolygonalSecureZone(LoginResponse loginResponse, PolygonalSecureZone secureZone) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		return executePost(getPreventServer(), ADD_POLYGONAL_SECURE_ZONE, PreventXMLUtils.asXML(secureZone), new URLParams(loginResponse));
 	}
 
 	public static XMLResponse getVehicleSpeedLimit(LoginResponse loginResponse, Vehicle vehicle) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
