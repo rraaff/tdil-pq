@@ -125,6 +125,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/action_bar.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
 <%@ include file="includes/under_shade.jspf" %>
 <section id="main_content_regular_page">
