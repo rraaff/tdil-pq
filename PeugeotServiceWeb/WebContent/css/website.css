@@ -423,15 +423,20 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	button.dark									{ background-image: url(../images/skn_peugeot/buttons/btn_modal_close_dark.png); }
 
 	/* */
-
+	div.template_baratleft, 
+	div.template_half							{ width:100%; }
+	div.template_half div.column				{ background-image: url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat: no-repeat; background-position: -45px center; background-size: 100px 100%; float: left; width: 50%!important; padding: 0px!important; }
+	div.template_half div.column:first-of-type	{ width: 50%!important; background-image: none; }
 
 }
 
 
 
-
-
-
+@media only screen and (max-width:750px) {
+	div.template_baratleft, 
+	div.template_half							{ width:100%; }
+	div.template_half div.column				{ float: left; width:100%!important; padding: 0px!important; }
+}
 
 
 
