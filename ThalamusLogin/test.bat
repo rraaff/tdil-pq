@@ -1,0 +1,1 @@
+java -jar getcookies.jar https://testa-lojack-rest.thalamuslive.com/lojack/api/v1/signin?touchpoint=REAL-LIFE-SMARTPHONE-APP&token=k8exyct1v6edf9q50fryuq3r02upn0m98twst4etlbjgc9cnsq585879gxlcbu11 32025646 temp3227
