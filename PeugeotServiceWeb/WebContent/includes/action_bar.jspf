@@ -1,7 +1,12 @@
 <header id="action_bar">
 
 	<section class="action_bar">
-		<div class="ac_link_back"><a href="#" title="Volver"><</a></div>
+		<div class="ac_link_back">
+			<%com.tdil.web.breadcrum.BreadcrumItem previousItem = breadcrums.previous();
+			if (previousItem != null && previousItem.hasPage()) { %>
+			<a href="<%=previousItem.getPage()%>" title="Volver"><</a>
+			<% } %>
+		</div>
 		<div class="ac_logo_mobile">
 			<% if (websiteUser != null && websiteUser.isLogged()) { %>
 				<a href="home.jsp" title="Volver al inicio"><img src="images/skn_peugeot/logos/iso.png" /></a>
