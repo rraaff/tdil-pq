@@ -176,7 +176,7 @@
 				errorAjax();
 			} else {
 				centerLayer($(window), $( "#editSecureZoneLayer" ));
-				centerLayer($(window), $( "#centradorModalesSecureZones" ));
+				centerLayer($(window), $( "#centradorModalesSecureZone" ));
 			}
 		});
 		<% } %>
@@ -307,6 +307,8 @@
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
 				<!--  button class="iconPathTour" onclick="#">&nbsp;</button-->
+				<!--button class="iconPhoneAdm" onclick="Mapa.DigitalizarPunto();">Punto</button>
+				<button class="iconPhoneAdm" onclick="Mapa.DigitalizarPoligono();">Poligono</button-->
 			</div>
 			<section id="zoomSection">
 				<div class="zoomControls">

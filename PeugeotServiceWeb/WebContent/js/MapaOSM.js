@@ -85,7 +85,7 @@ function MapaOSM(elementId, containerId, options) {
     this.translateData = (this.dataProjection.projCode != this.map.getProjectionObject().projCode);
 
     // Digitizers
-    this.pointDigitizer = new OpenLayers.Control.DrawFeature(this.areasControlLayer, OpenLayers.Handler.Point);
+    this.pointDigitizer = new OpenLayers.Control.DrawFeature(this.areasControlLayer,  OpenLayers.Handler.RegularPolygon,{handlerOptions: {sides: 40}});
     this.polygonDigitizer = new OpenLayers.Control.DrawFeature(this.areasControlLayer, OpenLayers.Handler.Polygon);
 
     this.map.addControl(this.pointDigitizer);
