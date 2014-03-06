@@ -3,6 +3,8 @@ package com.tdil.web.breadcrum;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.AbstractDocument.BranchElement;
+
 import org.apache.commons.lang.StringUtils;
 
 
@@ -42,6 +44,18 @@ public class Breadcrum {
 			}
 		}
 		return this;
+	}
+	
+	public BreadcrumItem previous() {
+		if (this.titles.length > 1) {
+			return new BreadcrumItem(this.titles[this.titles.length - 2], this.pages[this.titles.length - 2]);
+		} else {
+			return null;
+		}
+	}
+	
+	public BreadcrumItem last() {
+		return new BreadcrumItem(this.titles[this.titles.length - 1], this.pages[this.titles.length - 1]);
 	}
 	
 	public List<BreadcrumItem> finish() {
