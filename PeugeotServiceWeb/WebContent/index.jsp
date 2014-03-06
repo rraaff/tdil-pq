@@ -6,7 +6,7 @@
 --%><%if (isMobile || isAndroid) { 
 		session.setAttribute("usingMobile", Boolean.TRUE);
 		// response.sendRedirect(request.getContextPath() + "/index.jsp");
- } else {%><%--
+ } %><%--
 --%><%@page import="com.tdil.struts.resources.ApplicationResources"%><%--
 --%><%@page import="com.tdil.ljpeugeot.struts.forms.LoginForm"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.DocumentTypeBean"%><%--
@@ -465,4 +465,3 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 
 </body>
 </html>
-<% } %>
