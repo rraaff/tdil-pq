@@ -56,22 +56,17 @@
 		<button class="close dark" id="closeFullMenu" >Cerrar <span></span></button>
 	</div>
 	<ul class="">
- 		<% if (websiteUser != null && websiteUser.isLogged()) { %>
-			<li class="home"><a href="home.jsp" title="Volver al inicio"></a></li>
-			<li class="user"><span><%=websiteUser.getName()%></span></li>
-			<li><a href="./goToEditContactData.do" title="Datos de contacto">Config. Emergencias</a></li>
-			<!-- li><a href="./selectVehicleForEditData.do" title="Vehiculos">Mis Vehículos</a></li-->
-			<li><a href="javascript:changePassword();" title="Cambiar mi clave">Mi clave</a></li>
-			<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Mis datos</a></li>
-			<li class="right"><a class="special" href="logout.do" title="Salir">Salir</a></li>
-		<% } else { %>
-			<li class="right"><a class="special" href="javascript:login();" id="login" title="Ingresar ahora">Ingresar</a></li>
-			<li><a href="javascript:forgotPassword();" id="forgotPassword" title="Recuperar clave">Recuperar clave</a></li>
-		<% } %>
+		<li class="home"><a href="home.jsp" title="Volver al inicio"></a></li>
+		<li class="user"><span><%=websiteUser.getName()%></span></li>
+		<li><a href="./goToEditContactData.do" title="Datos de contacto">Config. Emergencias</a></li>
+		<!-- li><a href="./selectVehicleForEditData.do" title="Vehiculos">Mis Vehículos</a></li-->
+		<li><a href="javascript:changePassword();" title="Cambiar mi clave">Mi clave</a></li>
+		<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Mis datos</a></li>
 		<li><a href="peugeot_app.jsp">Sobre este sitio</a></li>
 	 	<li><a class="hub" href="http://www.peugeot.fr" title="Hub">hub</a></li>
 	 	<li><a href="javascript:verLegales();" id="legales" title="Ingrese a las políticas del sitio">Legales</a></li>
 	 	<li><a href="javascript:contactLoJack();" title="Envienos una consulta">Contacto</a></li>
+	 	<li class="right"><a class="special" href="logout.do" title="Salir">Salir</a></li>
 	 </ul>
 </div>
 
