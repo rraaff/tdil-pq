@@ -1,3 +1,27 @@
+Pendientes prevent
+Creacion de zonas seguras
+Click en zonas seguras abre layer donde se pregunta si quiere elegir para vehiculo o crear
+	Click en elegir hace lo de ahora
+	Click en crear pregunta si quiere circular o poligonal
+	De ahi se habilita la creacion en el mapa
+	Cuando termina la creacion abro un popup donde podes poner el nombre de la zona y un boton ok y otro de cancelar
+	Cualquiera que cliquea, cierra el modal y despinta la zona en el mapa
+	
+Recorrido historico
+	Nuevo item de recorrido
+	Click en el mismo abre una pantalla con 
+	1) un campo fecha desde
+	2) campo fecha hasta
+	3) listado de vehiculos
+	Boton ok y cancelar
+	Boton ok consulta recorrido y lo muestra en el mapa
+	Boton cancelar ciera la ventana
+	
+Pensar en que casos deberiamos limpiar el mapa, es decir, en que caso se borra este recorrido
+	
+
+******************
+
 ¿Se puede poner un input de texto en la pantalla donde elegís la concesionaria con la leyenda 
 En qué dirección te gustaría recibir el aviso de service y le precargamos el mail de la cuenta en Thalamus, 
 pero el input editable por si lo quiere modificar?
