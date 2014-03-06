@@ -1,22 +1,51 @@
 <!-- copyright -->
 <section id="copyright">
-	<div><img src="images/skn_peugeot/logos/app_logo_webmobile.png" /></div>
+	<div id="inter">
+		<img src="images/skn_peugeot/logos/app_logo_webmobile.png" />
+	</div>
 </section>
 <script>
 	var checkHeight = function() {
-		var logoObject		= document.getElementById("header_all");
-		var logoHeight		= $(logoObject).height();
+		openFullMenu();
 		
+		/* necesito saber window hight*/
+		var winWidth  = $(window).width() - 36;
+		//alert('winWidth: ' + winWidth)
+		
+		var winHeight = $(window).height();
+		
+		/* luego necesito saber la altuda del layer de login */
 		var referenceObject = document.getElementById("centradorModalesLogin");
 		var referenceHeight	= $(referenceObject).height();
+		var referenceWidth	= $(referenceObject).width();
 		
-		referenceObject.style.top = logoHeight + 100 + "px";
+		/* Acomodo la ventana de login que se trula */
+		referenceObject.style.left = ((winWidth - referenceWidth) * 0.5) + "px";
+
+		/* resto uno y otro y el diferencial lo divido en dos, para calcular la altura y posición del logo  */
+		var deltaHeight = (winHeight - referenceHeight) / 2;
+		var heightForLogo = deltaHeight * 0.6;
+		var widthForLogo  = deltaHeight * 1.3207547169811320754716981132075;
+		var widthForAppLogo = deltaHeight * 2.3214285714285714285714285714286;
+		var positionLogo  = deltaHeight * 0.2;
 		
-		var elementCopyright  = document.getElementById("copyright");
+		/* le seteo la altura y la posición al logo */
+		var logoObject = document.getElementById("index_mobile_logo");
 		
-		// alert('referenceHeight: ' + referenceHeight + ', logoHeight: ' + logoHeight + ', New Position: ' + referenceHeight + logoHeight + 100 + 'px');
+		logoObject.style.height = heightForLogo + "px";
+		logoObject.style.width = widthForLogo + "px";
+		logoObject.style.top = positionLogo + "px";
 		
-		elementCopyright.style.top = referenceHeight + logoHeight + 160 + "px";
+		/* le doy tamaño y posición al logo de la app */
+		var applogoObject = document.getElementById("copyright");
+		var appLogoIntObject = document.getElementById("inter");
+		
+		applogoObject.style.height = heightForLogo + "px";
+		//applogoObject.style.width = widthForAppLogo + "px";
+		applogoObject.style.bottom = positionLogo + "px";
+		appLogoIntObject.style.height = heightForLogo + "px";
+		appLogoIntObject.style.width = widthForAppLogo + "px";
+		
 	}
 	window.onload=function() {
 		checkHeight();
@@ -24,4 +53,9 @@
 	window.onresize=function() {
 		checkHeight();
 	}
+	
+	function openFullMenu() {
+		centerLayer($(window), $( "#centradorModalesLogin" ));
+	}
+	
 </script>
