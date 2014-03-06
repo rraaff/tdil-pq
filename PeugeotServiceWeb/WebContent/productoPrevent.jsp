@@ -280,9 +280,6 @@
 </head>
 <%@ include file="includes/version.jspf" %>
 <body>
-<% if (usingMobile || isAndroid) { %>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
-<% } %>
 <%
 	Breadcrum breadcrums = new Breadcrum()
 	.titles("Inicio","Peugeot App","Car Security")
@@ -295,6 +292,7 @@
 
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/action_bar.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
 <%@ include file="includes/under_shade.jspf" %>
 <section id="map_insert">
