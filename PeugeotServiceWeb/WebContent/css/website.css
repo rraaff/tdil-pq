@@ -392,13 +392,17 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	section.action_bar div.ac_link_back			{ display:inline-block; vertical-align:top; }
 	section.action_bar div.ac_link_back a		{ color:transparent; background-image:url(../images/skn_peugeot/icons/mobile/ic_ac_back_white.png); background-position:center center; background-repeat:no-repeat; background-size:100% 50%; width:24px; line-height:48px; display:inline-block; }
 	section.action_bar div.ac_logo_mobile		{ display:inline-block; vertical-align:top; }
+	section.action_bar div.ac_logo_mobile a		{ display:inline-block; }
 	section.action_bar div.ac_logo_mobile img	{ width:48px; padding:10px;}
 	section.action_bar div.breadcrumb			{ display:none; }
 	section.action_bar div.breadcrumb a			{ display:inline-block; }
 	section.action_bar div.ac_page_title		{ text-align:center; width:90%; padding: 0 48px 0 0; display:inline-block; position:absolute; vertical-align:top; }
-	section.action_bar div.ac_page_title h1		{ color:#2caed6; font-size:180%; font-family:'Peugeot'; text-transform:uppercase; line-height:48px; display:inline-block;  }
+	section.action_bar div.ac_page_title h1		{ color:#2caed6; font-size:180%; font-family:'Peugeot'; text-transform:uppercase; line-height:48px; margin-right: 16px; display:inline-block;  }
 	section.action_bar div.ac_button_menu 		{ position:absolute; right:0; margin-left:24px; display:inline-block; vertical-align:top; }
 	section.action_bar div.ac_button_menu a		{ color:transparent; background-image:url(../images/skn_peugeot/icons/mobile/ic_ac_menu_white.png); background-position:center center; background-repeat:no-repeat; background-size:50% 50%; width:48px; line-height:48px; display:inline-block; }
+	section.action_bar div.ac_logo_mobile a:hover,
+	section.action_bar div.ac_link_back a:hover,
+	section.action_bar div.ac_button_menu a:hover { background-color:#6b6b6f; }
 	
 	section.secondary_bar						{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar.png); background-repeat:repeat-x; background-size:100% 100%; text-align:center; width:100%; height:84px; display:inline-block; }
 	section.secondary_bar div.signature			{ background:url(../images/skn_peugeot/logos/signature.png); background-repeat:no-repeat; background-position:center center; width:175px; height:18px; margin:33px 0; display:inline-block; }
