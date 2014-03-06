@@ -4,7 +4,7 @@ User websiteUser = null;
 boolean logged = false;
 if (request.getSession(false) != null) {
 	websiteUser = (User)request.getSession(false).getAttribute("user");
-	if (websiteUser != null && websiteUser.getId() != null) {
+	if (websiteUser != null && websiteUser instanceof CallCenterUser && websiteUser.getId() != null) {
 		logged = true;
 	}
 }
