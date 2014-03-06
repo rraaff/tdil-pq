@@ -32,7 +32,7 @@ $( "#closeSelectVehicleForSecureZoneLayer" ).click(function() {
 </script>
 <% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForSecureZoneForm");%>
 		<section class="modal_header">
-			<h2>Localizar vehículos</h2>
+			<h2>Seleccionar vehículo</h2>
 			<button class="close" id="closeSelectVehicleForSecureZoneLayer">Cerrar <span></span></button>
 		</section>
 		<section class="modal_content apps_listing">

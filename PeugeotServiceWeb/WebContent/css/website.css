@@ -17,6 +17,7 @@ ul.barre_transversale li a:hover,
 ul.barre_transversale li a.current		{ color:#2ba4c9; }
 
 #header_all										{ background:url(../images/skn_peugeot/bgs/pgt-bg_header_central-transversal.png) no-repeat 0 0; width:1250px; height:100px; margin:0 auto; }
+div#index_mobile_logo img						{ opacity:0; }
 #header_all div.logo							{ background:url(../images/skn_peugeot/logos/main_bar_logo.png); width:101px; height:80px; top:6px; left:190px; position:relative; }
 #header_all div.logo a							{ width:101px; height:80px; display:inline-block; }
 #header_all div.signature						{ background:url(../images/skn_peugeot/logos/signature.png); background-repeat:no-repeat; background-position:0 0; width:175px; height:18px; top:-54px; left:315px; position:relative; }

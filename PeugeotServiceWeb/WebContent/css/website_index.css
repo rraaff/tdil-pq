@@ -9,6 +9,7 @@
 	body							{ background-image:url(../images/skn_peugeot/bgs/wm_halo_blue.jpg); background-repeat:no-repeat; background-position:center top; }
 	header							{ background:none; display:inline-block; }
 	#barre_transversale				{ display:none; }
+	div#index_mobile_logo img		{ opacity:1; }
 	#header_all						{ text-align:center; background:none; width:100%; display:inline-block; }
 	#header_all div.logo			{ background:none; height:150px; top:0; left:0; display:inline-block; }
 	#header_all div.logo img		{ width:auto; height:100%; }
