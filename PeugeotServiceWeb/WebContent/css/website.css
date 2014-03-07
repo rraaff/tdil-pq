@@ -68,6 +68,9 @@ section.modal_content div.content_at_layer	{ background:#f0f0f0; color:#595a67; 
 section.modal_content div.content_at_layer p { padding:0 0 15px; }
 section.modal_content div.content_at_layer p:last-of-type { padding:0; }
 
+div.service_alert							{ background:#f0f0f0; color:#595a67; font-size:13px; line-height:18px; width:100%; padding:25px; display:inline-block; }
+div.service_alert p							{  }
+
 section.apps_listing						{}
 section.apps_listing ul						{}
 section.apps_listing ul li					{}

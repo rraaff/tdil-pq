@@ -49,6 +49,7 @@ if (rememberClicked == null) {
 	<%@ include file="includes/externalLogins.jspf" %>
 				<% if (!advices.isEmpty()) { %>
 				centerLayer($(window), $( "#advicesLayer" ));
+				centerLayer($(window), $( "#advices" ));
 				$( "#closeadvicesLayer" ).click(function() {
 					$( "#advicesLayer" ).fadeOut();
 				});
@@ -145,18 +146,33 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 <!-- Layer de muestra de avisos -->
 <% StringBuilder sb = new StringBuilder();
 	if (!advices.isEmpty()) { %>
-<div id="advicesLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="advices">
-		Aviso <div id="xContainer"><button id="closeadvicesLayer">X</button></div>
-		<% for (AdviceValueObject adviceValueObject : advices) { %>
-			<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
-				Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km<br>
-			<% } else { %>
-			Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%><br>
-			<% } %>
-		<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
-			} %>
-		<a href="javascript:dismiss('<%=sb.toString()%>')">Dismiss</a> Ya los hizo? <a href="./goToMyServices.do">Ver mis services</a>
+<div id="advicesLayer" class="layerOnTop" style="display:none; z-index:1500;">
+	<div id="advices" class="layerModal width600">
+		<section class="modal_header">
+			<h2>Información importante</h2>
+			<h3>Aviso de service</h3>
+			<button class="close" id="closeadvicesLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Service requerido</span>
+			
+			<div class="service_alert">
+			<% for (AdviceValueObject adviceValueObject : advices) { %>
+				<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
+					<p>Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km</p>
+				<% } else { %>
+					<p>Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%></p>
+				<% } %>
+			<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
+				} %>
+			</div>
+			<fieldset class="button_bar pOnlyTop25">
+				<button class="link_back" onclick="este debería ser un snooze y que me lo muestro en el próximo login"><span></span>Ocultar aviso</button>
+				
+				<button class="link_back" onclick="javascript:dismiss('<%=sb.toString()%>');">No volver a mostrar</button>
+				<button class="botton_ahead" onclick="window.location='./goToMyServices.do';">Ir a Mis Services<span></span></button>
+			</fieldset>
+		</section>
 	</div>
 </div>
 <% } %>
