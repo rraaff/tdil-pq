@@ -1,106 +1,104 @@
-Instalacion
-===========
+Instalación
 
-Instalar ffmpeg, sofware necesario para procesar las imagenes de los avatars
+Instalar ffmpeg, software necesario para procesar las imágenes de los avatars.
+Crear la base de datos con los scripts correspondientes (mysql o sqlserver).
+Crear los wars con el build provisto.
+Copiar el war al directorio de deploy de la configuración.
+Copiar el datasource correspondiente al directorio de deploy de la configuracion.
+Generacion de los wars
+1) Ejecutar el build.xml
 
-Crear a base de datos con los scripts correspondientes (mysql o sqlserver)
+Esto compilara los fuentes y generara los archivos mysql/LOJACK_WEB.war y sqlserver/LOJACK_WEB.war
 
-Copiar el war al directorio de deploy de la configuracion.
-1) mysql: mysql/LOJACK_WEB.war
-1) sqlserver: sqlserver/LOJACK_WEB.war
-
-En los pasos de creacion de base de datos, usuario y copiado de datasources cambiar los datos de la base y
-usuario de creerlo necesario.
-
+En los pasos de creación de base de datos, usuario y copiado de datasources cambiar los datos de la base y usuario de creerlo necesario.
 Crear la base de datos y el usuario:
-1) mysql: mysql/create-mysql.sql
-2) sqlserver: sqlserver/db-sqlserver.sql
-
+1) Sqlserver: sqlserver/db-sqlserver.sql
 Crear los objetos con el usuario:
-1) mysql: mysql/create-mysql.sql
-2) sqlserver: sqlserver/create-sqlserver.sql
+1) Sqlserver: sqlserver/create-sqlserver.sql
+Copiar la definición de datasource correspondiente al directorio de deploy:
+1) sqlserver: sqlserver/sqlserver-ds.xml
+Copiar el jar del driver al directorio lib de la configuración de jboss:
+1) sqlserver: sqlserver/sqljdbc4.jar
 
-Copiar la definicion de datasource correspondiente al directorio de deploy:
-1) mysql: mysql/mysql-ds.xml
-2) sqlserver: sqlserver/sqlserver-ds.xml
+Configuración
+Toda la configuración de la aplicación se realiza a través de datos de la tabla SYSPROPERTIES.
 
-Copiar el jar del driver al directorio lib de la configuracion de jboss:
-1) mysql: mysql/mysql-connector-java-5.1.13-bin.jar
-2) sqlserver: sqlserver/sqljdbc4.jar
+A continuación se listan las propiedades y su uso:
 
-Configuracion
-=============
+proxy.http: Configuracion del proxy a usar para requerimientos http. Esta configuracion es global, luego puede activar o desactivarse para cada servicio. Debe configurarse como server:port, ejemplo, localhost:9090.
 
-Toda la configuracion de la aplicacion se realiza a traves de datos de la tabla SYSPROPERTIES.
+proxy.https: Configuracion del proxy a usar para requerimientos https. Esta configuracion es global, luego puede activar o desactivarse para cada servicio. Debe configurarse como server:port, ejemplo, localhost:9090.
+proxy.socks: Configuracion del proxy a usar para requerimientos socks. Debe configurarse como server:port, ejemplo, localhost:9090.
 
-A continuacion se listan las propiedades y su uso:
+front.server: Se usa para generar links a la aplicación que son absolutos, debe tener el nombre con el cual el server que hostea el front se ve desde otros equipos, por ejemplo: www.lojackhome.com
 
-front.server: Se usa para generar links a la aplicacion que son absolutos, debe tener el nombre con el 
-	cual el server que hostea el front se ve desde otros equipos, por ejemplo: www.lojackhome.com
-
-thalamus.server: url del server  de thalamus, por ejemplo http://localhost:8280/ThalamusWeb/ o 
-	https://testa-lojack-rest.thalamuslive.com/lojack
-
-thalamus.touchpoint.code: codigo asignado para thalamus (REAL-LIFE-SMARTPHONE-APP)
-
+thalamus.server: url del server de thalamus, por ejemplo http://localhost:8280/ThalamusWeb/ o https://testa-lojack-rest.thalamuslive.com/lojack
+thalamus.touchpoint.code: código asignado para thalamus (REAL-LIFE-SMARTPHONE-APP)
 thalamus.touchpoint.token: token asignado para thalamus 
-	(k8exyct1v6edf9q50fryuq3r02upn0m98twst4etlbjgc9cnsq585879gxlcbu11)
+(k8exyct1v6edf9q50fryuq3r02upn0m98twst4etlbjgc9cnsq585879gxlcbu11)
+thalamus.timeout: timeout en milisegundos para la comunicacion con Thalamus
 
-gis.server: Ubicacion del server de GIS, por ejemplo http://localhost:8180/GISWeb/gis/
+thalamus.proxy: Activa o desactiva el uso de proxy en la comunicacion con Thalamus. Si la url de thalamus es https usara la property de proxy.https, caso contrario usara proxy.http. Este valor debe ser true o false.
 
-services.server: Ubicacion del server de servicios no GIS, por lo hablado debe ser el mismo.
+guid: Token para la comunicación con el middleware
+gis.server: Ubicación del server de GIS, por ejemplo http://localhost:8180/GISWeb/gis/
+services.server: Ubicación del server de servicios no GIS, por lo hablado debe ser el mismo.
+services.timeout: Timeout para la comunicación con el middleware.
 
-prevent.server: Ubicacion del server de prevent, por ejemplo 
-	http://www.lojackgis.com.ar/PreventWCFServices/GISService.svc
+middleware.proxy: Activa o desactiva el uso de proxy en la comunicacion con el middleware. Si la url del middleware es https usara la property de proxy.https, caso contrario usara proxy.http. Este valor debe ser true o false.
 
-prop.tmp.path: Directorio temporal, aqui se extraera la configuracion del log4j y se escribira el log, 
-	asi como los blobs seran extraidos en dicho directorio
+mw.protocol: Valor json para emulador de middleware,soap-json para Carpathia.
 
-camera.mobile.refreshTime: Tiempo de refresco de la version mobile de la camara, representa la 
-	cantidad de milisegundos de refresco entre imagen e imagen
+prevent.server: Ubicación del server de prevent, por ejemplo http://www.lojackgis.com.ar/PreventWCFServices/GIS
+prevent.timeout: Timeout para la comunicación con prevent
 
-camera.applet.refreshTime: Tiempo de refresco de la version applet de la camara, representa la 
-	cantidad de milisegundos de refresco entre imagen e imagen
+prevent.proxy: Activa o desactiva el uso de proxy en la comunicacion con el prevent. Si la url de prevent es https usara la property de proxy.https, caso contrario usara proxy.http. Este valor debe ser true o false.
 
-job.refresh.time: Tiempo de refresco del proceso del front que consulta los estados de los jobs 
-	asincronicos. Se expresa en milisegundos
+prevent.loginurl: Url para hacer el login automatico a prevent
+prevent.token: Token de seguridad de prevent
 
-job.abort.time: Tiempo pasado el cual se asume que un job no terminara. Pasado ese tiempo no se 
-	consultara mas dicho job. Se expresa en milisegundos
+prevent.loginurl : Url para hacer el login automatico a pets
+prevent.mobile.loginurl : Url para hacer el login automatico a pets mobile
 
-job.client.refresh.time: Tiempo de refresco del ajax del cliente que consulta los estados de los 
-	jobs. Se expresa en milisegundos
+prop.tmp.path: Directorio temporal, aquí se extraerá la configuración del log4j y se escribirá el log, así como los blobs serán extraídos en dicho directorio.
 
 front.login.deplay: Milisegundos de retraso del login.
+contactform.email: Dirección de email a la cual se enviaran los formularios de contacto
 
-gui: guid para usar en la comunicacion con gis
+prevent.native.url: URL de redireccion si el usuario es usuario de prevent
+maps.url: URL de los tiles de open street
 
-contactform.email: Direccion de email a la cual se enviaran los formularios de contacto
+import.range.km: Rango horario de ejecuciones de importaciones de tabla KM_DATA. El formato es HH24:MM-HH24:MM
+email.send.range: Rango horario de ejecuciones de envios de emails. El formato es HH24:MM-HH24:MM
+
+peugeot.sign: Clave de firma de authenticacion con lojack
+
+lojack.server.url: Url del front de lojack (para authenticacion con prevent)
+lojack.server.proxy: Valor que identifica si debe usarse un proxy para acceder al front de LoJack
+
+
 
 Mails
-=======
-
-La configuracion para envio de emails se encuentra en la tabla SYSPROPERTIES con el prefijo mail.
-Se provee una configuracion ejemplo que utiliza gmail para el envio (cuenta test.lojack.front@gmail.com/t3stl0j4k)
+La configuración para envío de emails se encuentra en la tabla SYSPROPERTIES con el prefijo mail.
+Se provee una configuración ejemplo que utiliza gmail para el envío (cuenta test.lojack.front@gmail.com/t3stl0j4k)
 
 Logging
-=======
+La configuración del log de la aplicación se realiza a través de log4j. La aplicación extrae automáticamente el log4j al directorio prop.tmp.path, luego puede ser editado para configurarlo.
+Si bien cada clase tiene su log, existen tres clases que pueden ser particularmente importantes y son las que acceden a servicios externos:
 
-La configuracion del log de la aplicacion se realiza a traves de log4j.
-La aplicacion extrae automaticamente el log4j al directorio prop.tmp.path, luego puede ser editado para configurarl.
-Si bien cada clase tiene su log, existen tres clases que pueden ser particularmente importantes y son las que acceden 
-a servicios externos:
+com.tdil.thalamus.client.core.
+ThalamusClient: log de la clase que maneja la comunicación con thalamus. En modo debug muestra todas las invocaciones, incluyendo parámetros y resultados. En modo info muestra los tiempos de las invocaciones.
 
-com.tdil.thalamus.client.core.ThalamusClient: log de la clase que maneja la comunicacion con thalamus. 
-	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
-	En modo info muestra los tiempos de las invocaciones.
-	
-com.tdil.ljpeugeot.prevent.PreventConnector: log de la clase que maneja la comunicacion con prevent. 
-	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
-	En modo info muestra los tiempos de las invocaciones.
-	
-com.tdil.ljpeugeot.gis.LoJackServicesConnector: log de la clase que maneja la comunicacion con el middleware. 
-	En modo debug muestra todas las invocaciones, incluyendo parametros y resultados.
-	En modo info muestra los tiempos de las invocaciones.
+com.tdil.lojack.prevent.PreventConnector: log de la clase que maneja la comunicación con prevent. En modo debug muestra todas las invocaciones, incluyendo parámetros y resultados. En modo info muestra los tiempos de las invocaciones.
 
-Se recomienda quitar el uso de console appender en el ambiente productivo
+com.tdil.lojack.gis.LoJackServicesConnector: log de la clase que maneja la comunicación con el middleware. En modo debug muestra todas las invocaciones, incluyendo parámetros y resultados. En modo info muestra los tiempos de las invocaciones. Se recomienda quitar el uso de console appender en el ambiente productivo. 
+
+Administracion
+La web app expone casos de uso de administrarla desde el website.
+El acceso a la misma es traves de la pagina /admin/login.jsp
+Desde esta pagina, dado un usuario autorizado, se puede acceder a ver, modificar y recargar las sys properties asi como a la configuracion del sistema de logging y bajado del log completo.
+Los usuarios de estas funcionalidades de administracion residen en la tabla SYSTEMUSER y tienen el flag type = 0.
+Se provee un usuario de base cuyo login es tdil y su clave es usu4r10td1l
+Dicha tabla debe ser mantenida por fuera del sistema.
+Cada registro tiene el username, el password (este campos es el sha1 del password), y si tiene acceso a la configuracion de logs y/o de system properties (loggingAccess 0 o 1, syspropAccess 0 o 1).
+Pantallas

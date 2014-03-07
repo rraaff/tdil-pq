@@ -48,6 +48,10 @@
 		$( "#closeregisterLayer" ).click(function() {
 			$( "#updatePersonLayer" ).fadeOut();
 		});
+		
+		$( "#linkBackUpdatePersonLayer" ).click(function() {
+			$( "#updatePersonLayer" ).fadeOut();
+		});
 
 function clearErrors() {
 	$("div[id^='err.']").each(function(index, valor) {
@@ -229,6 +233,7 @@ function postRegister(data) {
 					</fieldset>
 				</div>
 				<fieldset class="button_bar pOnlyTop25">
+					<button class="link_back" id="linkBackUpdatePersonLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitregister">Guardar<span></span></button>
 				</fieldset>
 			</html:form>

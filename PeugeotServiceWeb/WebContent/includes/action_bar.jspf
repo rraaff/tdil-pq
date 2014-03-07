@@ -84,6 +84,7 @@ function openFullMenu() {
 $( "#closeFullMenu" ).click(function() {
 	$( "#full_menu" ).fadeOut();
 });
+
 </script>
 
 

@@ -37,6 +37,10 @@
 			$( "#changePasswordLayer" ).fadeOut();
 		});
 		
+		$( "#linkBackchangePasswordLayer" ).click(function() {
+			$( "#changePasswordLayer" ).fadeOut();
+		});
+		
 		
 
 function clearErrors() {
@@ -87,7 +91,7 @@ function postChangePassword(data) {
 				</fieldset>
 				<div id="err.confirmPassword" class="errorText textCenter"></div>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" cl="changePassLayer"><span></span>Cerrar</button>
+					<button class="link_back" id="linkBackchangePasswordLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" type="submit">Modificar<span></span></button>
 				</fieldset>
 			</html:form>
