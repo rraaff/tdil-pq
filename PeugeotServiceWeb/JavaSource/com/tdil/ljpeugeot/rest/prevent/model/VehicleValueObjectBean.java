@@ -16,12 +16,12 @@ import com.tdil.log4j.LoggerProvider;
 public class VehicleValueObjectBean {
 
 	// vehicle
-	private Date purchasedate;
+	private String purchasedateString;
 	private String domain;
 	private String description;
 	private Integer km;
 	private Integer lastservicekm;
-	private Date lastservicedate;
+	private String lastservicedateString;
 	private Integer warrantyexpired;
 	private boolean needsService;
 	
@@ -33,6 +33,8 @@ public class VehicleValueObjectBean {
 			if (vehicleValueObject.getModel() != null) {
 				this.vehicleModel = new ModelBean(vehicleValueObject.getModel());
 			}
+			this.setPurchasedateString(vehicleValueObject.getVehicle().getPurchasedate() == null ? "" : vehicleValueObject.getVehicle().getPurchasedate().toString()); // TODO
+			this.setLastservicedateString(vehicleValueObject.getVehicle().getLastservicedate() == null ? "" : vehicleValueObject.getVehicle().getLastservicedate().toString()); // TODO
 		} catch (IllegalAccessException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (InvocationTargetException e) {
@@ -44,12 +46,12 @@ public class VehicleValueObjectBean {
 		return LoggerProvider.getLogger(VehicleValueObjectBean.class);
 	}
 
-	public Date getPurchasedate() {
-		return purchasedate;
+	public String getPurchasedateString() {
+		return purchasedateString;
 	}
 
-	public void setPurchasedate(Date purchasedate) {
-		this.purchasedate = purchasedate;
+	public void setPurchasedateString(String purchasedate) {
+		this.purchasedateString = purchasedate;
 	}
 
 	public String getDomain() {
@@ -84,12 +86,12 @@ public class VehicleValueObjectBean {
 		this.lastservicekm = lastservicekm;
 	}
 
-	public Date getLastservicedate() {
-		return lastservicedate;
+	public String getLastservicedateString() {
+		return lastservicedateString;
 	}
 
-	public void setLastservicedate(Date lastservicedate) {
-		this.lastservicedate = lastservicedate;
+	public void setLastservicedateString(String lastservicedate) {
+		this.lastservicedateString = lastservicedate;
 	}
 
 	public Integer getWarrantyexpired() {
