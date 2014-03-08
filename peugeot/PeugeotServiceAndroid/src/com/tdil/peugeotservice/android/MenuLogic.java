@@ -43,9 +43,6 @@ public class MenuLogic {
 		case R.id.menu_action_prevent:
 			FooterLogic.handlePreventAccess(activity);
 			return true;
-		case R.id.menu_action_pets:
-			FooterLogic.handlePetsAccess(activity);
-			return true;
 		case R.id.menu_action_parkings:
 			FooterLogic.handleParkingsAccess(activity);
 			return true;

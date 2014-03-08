@@ -90,34 +90,6 @@ public class FooterLogic  {
 		activity.startActivity(new Intent(activity, ParkingsActivity.class));
 	}
 
-	public static void handlePetsAccess(final Activity activity) {
-		if (Login.getLoggedUser(activity).getPetUser()) {
-			// Pido la url de login
-			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(IRestClientTask task) {
-					Gson gson = new Gson();
-
-					URLResponse response = gson.fromJson(task.getResult(),
-							URLResponse.class);
-					if (response.getUrl() == null || response.getUrl().length() == 0) {
-						Messages.connectionErrorMessage(activity);
-					} else {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.getUrl())); 
-						activity.startActivity(intent); 
-					}
-				}
-				@Override
-				public void error(IRestClientTask task) {
-					Messages.connectionErrorMessage(activity);
-				}
-			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);
-			
-		} else {
-			String videoId = Login.getLoggedUser(activity).getPetVideo();
-			playVideo(activity, videoId);
-		}
-	}
 //
 //	public static void handleHomeAccess(final Activity activity,
 //			final boolean finishOnExit) {
