@@ -106,6 +106,7 @@
 			
 			parkings = new OpenLayers.Layer.Markers( "Parkings" );
 			Mapa.map.addLayer(parkings);
+			//alert(Mapa.polygonDigitizer);
 			var size = new OpenLayers.Size(54,54);
 //			var border = new OpenLayers.Border(dotted 3px #ee5222);
 	//		var background = new OpenLayers.Background();

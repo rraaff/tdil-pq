@@ -2,6 +2,7 @@ package com.tdil.ljpeugeot.rest;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,17 +16,17 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.tdil.ljpeugeot.model.ContactData;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.Vehicle;
+import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
-import com.tdil.ljpeugeot.rest.model.ContactDataBean;
 import com.tdil.ljpeugeot.rest.model.DealerBean;
 import com.tdil.ljpeugeot.rest.model.ModelBean;
 import com.tdil.ljpeugeot.rest.model.ServiceBean;
 import com.tdil.ljpeugeot.rest.model.VehicleBean;
+import com.tdil.ljpeugeot.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.ljpeugeot.services.DealersService;
 import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.log4j.LoggerProvider;
@@ -55,11 +56,12 @@ public class VehiclesRestService extends AbstractRESTService {
 	public Response listVehicles() {
 //		validateLogged();
 		try {
-			Collection<VehicleBean> result = new ArrayList<VehicleBean>();
-			for (Vehicle state : PeugeotService.getVehicles(getUser().getId())) {
-				result.add(new VehicleBean(state));
+			List<VehicleValueObject> vehicleValueObjects = PeugeotService.getMyVehicles(getUser().getModelUser().getId());
+			Collection<VehicleValueObjectBean> result = new ArrayList<VehicleValueObjectBean>();
+			for (VehicleValueObject vehicle : vehicleValueObjects) {
+				result.add(new VehicleValueObjectBean(vehicle));
 			}
-			return createResponse(201, new BeanCollection<VehicleBean>(result));
+			return createResponse(201, new BeanCollection<VehicleValueObjectBean>(result));
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return failResponse();
