@@ -79,7 +79,7 @@ public class DealersRestService extends AbstractRESTService {
 	}
 	
 	@GET
-	@Path("/dealers/{cityId}")
+	@Path("/list/{cityId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listDealers(@PathParam("cityId") String cityId) {
 //		validateLogged();
