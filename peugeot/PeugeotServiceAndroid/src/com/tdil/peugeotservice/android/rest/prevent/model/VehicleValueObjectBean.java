@@ -4,13 +4,13 @@ package com.tdil.peugeotservice.android.rest.prevent.model;
 public class VehicleValueObjectBean {
 
 	// vehicle
-	private String purchasedateString;
 	private String domain;
 	private String description;
-	private Integer km;
-	private Integer lastservicekm;
-	private String lastservicedateString;
-	private Integer warrantyexpired;
+	private String km;
+	private String purchasedate;
+	private String lastservicekm;
+	private String lastservicedate;
+	private boolean warrantyexpired;
 	private boolean needsService;
 	
 	private ModelBean vehicleModel;
@@ -18,13 +18,6 @@ public class VehicleValueObjectBean {
 	public VehicleValueObjectBean() {
 	}
 	
-	public String getPurchasedateString() {
-		return purchasedateString;
-	}
-
-	public void setPurchasedateString(String purchasedate) {
-		this.purchasedateString = purchasedate;
-	}
 
 	public String getDomain() {
 		return domain;
@@ -42,37 +35,6 @@ public class VehicleValueObjectBean {
 		this.description = description;
 	}
 
-	public Integer getKm() {
-		return km;
-	}
-
-	public void setKm(Integer km) {
-		this.km = km;
-	}
-
-	public Integer getLastservicekm() {
-		return lastservicekm;
-	}
-
-	public void setLastservicekm(Integer lastservicekm) {
-		this.lastservicekm = lastservicekm;
-	}
-
-	public String getLastservicedateString() {
-		return lastservicedateString;
-	}
-
-	public void setLastservicedateString(String lastservicedate) {
-		this.lastservicedateString = lastservicedate;
-	}
-
-	public Integer getWarrantyexpired() {
-		return warrantyexpired;
-	}
-
-	public void setWarrantyexpired(Integer warrantyexpired) {
-		this.warrantyexpired = warrantyexpired;
-	}
 
 	public boolean getNeedsService() {
 		return needsService;
@@ -88,6 +50,56 @@ public class VehicleValueObjectBean {
 
 	public void setVehicleModel(ModelBean model) {
 		this.vehicleModel = model;
+	}
+
+
+	public String getKm() {
+		return km;
+	}
+
+
+	public void setKm(String km) {
+		this.km = km;
+	}
+
+
+	public String getPurchasedate() {
+		return purchasedate;
+	}
+
+
+	public void setPurchasedate(String purchasedate) {
+		this.purchasedate = purchasedate;
+	}
+
+
+	public String getLastservicekm() {
+		return lastservicekm;
+	}
+
+
+	public void setLastservicekm(String lastservicekm) {
+		this.lastservicekm = lastservicekm;
+	}
+
+
+	public String getLastservicedate() {
+		return lastservicedate;
+	}
+
+
+	public void setLastservicedate(String lastservicedate) {
+		this.lastservicedate = lastservicedate;
+	}
+
+
+	public boolean isWarrantyexpired() {
+		return warrantyexpired;
+	}
+
+
+	public void setWarrantyexpired(boolean warrantyexpired) {
+		this.warrantyexpired = warrantyexpired;
 	}
 	
 }

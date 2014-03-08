@@ -127,7 +127,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			// Convert response to string using String Builder
 			try {
 				BufferedReader bReader = new BufferedReader(new InputStreamReader(
-						inputStream, "iso-8859-1"), 8);
+						inputStream), 8);
 				StringBuilder sBuilder = new StringBuilder();
 
 				String line = null;

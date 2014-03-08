@@ -7,6 +7,7 @@ public class ModelBean {
 	private String description;
 	private Integer monthwarranty;
 	private Integer kmwarranty;
+	private String warrantyDescription;
 	
 	public ModelBean() {
 	}
@@ -36,6 +37,14 @@ public class ModelBean {
 
 	public void setKmwarranty(Integer kmwarranty) {
 		this.kmwarranty = kmwarranty;
+	}
+
+	public String getWarrantyDescription() {
+		return warrantyDescription;
+	}
+
+	public void setWarrantyDescription(String warrantyDescription) {
+		this.warrantyDescription = warrantyDescription;
 	}
 	
 }

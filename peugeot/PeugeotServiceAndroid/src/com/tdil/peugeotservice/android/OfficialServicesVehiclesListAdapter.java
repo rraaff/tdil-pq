@@ -23,7 +23,7 @@ import com.tdil.peugeotservice.R;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClickListener {
+public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
 	private Activity activity;
@@ -34,7 +34,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public MyServicesVehiclesListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
+	public OfficialServicesVehiclesListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -72,6 +72,9 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 		public TextView needsService;
 		public TextView lastServiceDate;
 		public TextView lastServiceKm;
+		
+		public TextView inWarranty;
+		public TextView warrantyDescription;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -83,7 +86,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
-			vi = inflater.inflate(R.layout.my_services_vehicles_item, null);
+			vi = inflater.inflate(R.layout.official_services_vehicles_item, null);
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
@@ -92,6 +95,8 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
 			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
 			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			holder.inWarranty = (TextView) vi.findViewById(R.id.is_in_warranty);
+			holder.warrantyDescription = (TextView) vi.findViewById(R.id.model_warranty_text);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
@@ -110,15 +115,24 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 
 			/************ Set Model values in Holder elements ***********/
 			holder.vehicleDescription.setText(iterAlarm.getDescription());
-			holder.actualKm.setText(iterAlarm.getKm()); // TODO formatear con ,
+			holder.actualKm.setText(iterAlarm.getKm());
 			holder.needsService.setText(iterAlarm.getNeedsService() ? "SI" : "NO");
 			if (iterAlarm.getNeedsService()) {
 				holder.needsService.setTextColor(Color.rgb(227,27,35));
 			} else {
 				holder.needsService.setTextColor(Color.rgb(35,102,0));
 			}
-			holder.lastServiceDate.setText(iterAlarm.getLastservicedate()); // TODO que esto vaya como String
-			holder.lastServiceKm.setText(iterAlarm.getLastservicekm()); // TODO formatear con ,
+			holder.lastServiceDate.setText(iterAlarm.getLastservicedate());
+			holder.lastServiceKm.setText(iterAlarm.getLastservicekm());
+			
+			holder.inWarranty.setText(iterAlarm.isWarrantyexpired() ? "SI" : "NO");
+			if (iterAlarm.isWarrantyexpired()) {
+				holder.inWarranty.setTextColor(Color.rgb(227,27,35));
+			} else {
+				holder.inWarranty.setTextColor(Color.rgb(35,102,0));
+			}
+			holder.warrantyDescription.setText(iterAlarm.getVehicleModel() != null ? iterAlarm.getVehicleModel().getWarrantyDescription() : "-");
+			
 //			holder.vehicleDescription.setOnClickListener(goAlarmDashBoard);
 //			holder.actualKm.setOnClickListener(goAlarmDashBoard);
 //			holder.alarmStatus.setOnClickListener(goAlarmDashBoard);
