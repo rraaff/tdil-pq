@@ -100,7 +100,7 @@ public class VehicleValueObjectBean {
 		this.warrantyexpired = warrantyexpired;
 	}
 
-	public boolean isNeedsService() {
+	public boolean getNeedsService() {
 		return needsService;
 	}
 
