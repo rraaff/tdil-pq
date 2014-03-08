@@ -59,6 +59,15 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, MyVehiclesActivity.class));
 				}
 			});
+		
+		View search = findViewById(R.id.searchDealersButton);
+		search.setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, SearchDealersActivity.class));
+				}
+			});
 	}
 	
 	

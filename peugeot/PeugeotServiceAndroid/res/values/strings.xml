@@ -29,7 +29,7 @@
     <string name="title_activity_change_password">CAMBIAR CLAVE</string>
     <string name="title_activity_login_for_action_bar">LOJACK</string>
     
-    
+    <string name="title_activity_search_dealers">Buscar concesionarios</string>
     
     <string name="title_parkings">PARKING</string>
     <string name="title_prevent">CAR</string>
@@ -87,6 +87,8 @@
     <string name="btn_my_vehicles">Mis Vehiculos</string>
     <string name="btn_official_services">Services Oficial</string>
     <string name="btn_services_locations">Agencias/Service autorizados</string>
+    
+    <string name="btn_search_dealers">Buscar</string>
     
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>

@@ -9,6 +9,8 @@ public interface RESTConstants {
 	public static final String P_DOCUMENT_NUMBER = "{documentNumber}";
 
 	public static final String P_DOCUMENT_TYPE = "{documentType}";
+	
+	public static final String P_DEALER_STATE = "{stateId}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -29,4 +31,8 @@ public interface RESTConstants {
 	public static final String REQUEST_RESET_PASSWORD = "/users/requestResetPassword?documentType=" +P_DOCUMENT_TYPE+"&documentNumber="+P_DOCUMENT_NUMBER;
 	
 	public static final String MY_VEHICLES = "/vehicles/list";
+	
+	public static final String DEALERS_STATES = "/dealers/states";
+	public static final String DEALERS_CITIES = "/dealers/cities/{stateId}";
+	public static final String DEALERS = "/dealers/list/{cityId}";
 }
