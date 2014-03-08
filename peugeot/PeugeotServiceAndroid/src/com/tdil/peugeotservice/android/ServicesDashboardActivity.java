@@ -2,7 +2,6 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,21 +9,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.tdil.peugeotservice.R;
 import com.tdil.peugeotservice.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
-public class IndexActivity extends ActionBarActivity {
+public class ServicesDashboardActivity extends ActionBarActivity {
 
-	private static final String HOME = "HOME";
-	private static final String PARKINGS = "PARKINGS";
-	private static final String TV = "TV";
-	private static final String PETS = "PETS";
-	private static final String PREVENT = "CAR";
 	
 	/**
 	 * The default email to populate the email field with.
@@ -35,36 +27,10 @@ public class IndexActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		setContentView(R.layout.activity_index);
+		setContentView(R.layout.activity_services_dashboard);
 
-//		BitmapFactory.Options options = new BitmapFactory.Options();
-//		options.inSampleSize = 4;
-		
+	
 		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
-		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FooterLogic.handlePreventAccess(IndexActivity.this);
-			}
-		});
-		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FooterLogic.handleParkingsAccess(IndexActivity.this);
-			}
-		});
-		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FooterLogic.handlePeugeotAccess(IndexActivity.this);
-			}
-		});
-//		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//				FooterLogic.handleHomeAccess(IndexActivity.this, false);
-//			}
-//		});
 
 	}
 	

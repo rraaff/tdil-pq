@@ -114,15 +114,6 @@
                                 android:layout_marginRight="0dp"
                                 android:background="@drawable/rd_item_cars"
                                 android:text="@string/btn_prevent" />
-
-                            <Button
-                                android:id="@+id/vluCount"
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_marginRight="45dp"
-                                android:layout_centerVertical="true"
-                                android:text="2" 
-                                android:textSize="12sp"/>
                                 
                             </RelativeLayout>
 

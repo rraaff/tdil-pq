@@ -111,6 +111,12 @@
     
     <string name="tog_btn_default">ON/OFF</string>
     
+    <string name="btn_config_emergencias">Configuración emergencias</string>
+    <string name="btn_my_services">Mis Services</string>
+    <string name="btn_my_vehicles">Mis Vehiculos</string>
+    <string name="btn_official_services">Mis Services</string>
+    <string name="btn_services_locations">Agencias/Service autorizados</string>
+    
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>

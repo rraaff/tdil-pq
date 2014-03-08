@@ -81,7 +81,11 @@ public class FooterLogic  {
 			playVideo(activity, videoId);
 		}
 	}
-
+	
+	public static void handlePeugeotAccess(final Activity activity) {
+		activity.startActivity(new Intent(activity, ServicesDashboardActivity.class));
+	}
+	
 	public static void handleParkingsAccess(final Activity activity) {
 		activity.startActivity(new Intent(activity, ParkingsActivity.class));
 	}
