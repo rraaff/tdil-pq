@@ -16,7 +16,9 @@
     <string name="desc_avatar_image">Avatar</string>
     
     <!-- List Items strings -->
-    <string name="lst_title_last_changes">Últimos cambios:</string>
+    <string name="lst_title_my_services">Mis services:</string>
+    <string name="lst_title_my_vehicles">Mis vehiculos:</string>
+    <string name="lst_title_official_services">Agencias/Service autorizados:</string>
     
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -26,6 +28,8 @@
     <string name="title_activity_update">MODIFICAR</string>
     <string name="title_activity_change_password">CAMBIAR CLAVE</string>
     <string name="title_activity_login_for_action_bar">LOJACK</string>
+    
+    
     
     <string name="title_parkings">PARKING</string>
     <string name="title_prevent">CAR</string>

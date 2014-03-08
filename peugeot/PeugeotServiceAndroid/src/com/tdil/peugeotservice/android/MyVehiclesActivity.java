@@ -1,23 +1,39 @@
 package com.tdil.peugeotservice.android;
 
+import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.tdil.peugeotservice.R;
+import com.tdil.peugeotservice.android.rest.client.HttpMethod;
+import com.tdil.peugeotservice.android.rest.client.IRestClientObserver;
+import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
+import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
+import com.tdil.peugeotservice.android.rest.client.RESTConstants;
+import com.tdil.peugeotservice.android.rest.client.RestParams;
+import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
+import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBeanCollection;
 import com.tdil.peugeotservice.android.utils.Login;
+import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class ServicesDashboardActivity extends ActionBarActivity {
+public class MyVehiclesActivity extends ActionBarActivity {
 
+	ListView list;
+	MyVehiclesListAdapter adapter;
+	public ArrayList<VehicleValueObjectBean> CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>();
 	
 	/**
 	 * The default email to populate the email field with.
@@ -28,37 +44,33 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		setContentView(R.layout.activity_services_dashboard);
+		setContentView(R.layout.my_services_activity);
 
 	
 		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
 
-		View myServices = findViewById(R.id.myServicesButton);
-		myServices.setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, MyServicesActivity.class));
-				}
-			});
-		
-		View officialServices = findViewById(R.id.officialServicesButton);
-		officialServices.setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, OfficialServicesActivity.class));
-				}
-			});
-		
-		View myVehicles = findViewById(R.id.myVehiclesButton);
-		myVehicles.setOnClickListener(
-			new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, MyVehiclesActivity.class));
-				}
-			});
+
+		list = (ListView) findViewById(R.id.myServices);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(IRestClientTask task) {
+				Gson gson = new Gson();
+
+				VehicleValueObjectBeanCollection col = gson.fromJson(task.getResult(),
+						VehicleValueObjectBeanCollection.class);
+				CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>(col.getList());
+				Resources res = getResources();
+				adapter = new MyVehiclesListAdapter(MyVehiclesActivity.this,
+						CustomListViewValuesArr, res);
+				list.setAdapter(adapter);
+			}
+
+			@Override
+			public void error(IRestClientTask task) {
+				Messages.connectionErrorMessage(MyVehiclesActivity.this);
+			}
+		}, RESTConstants.MY_VEHICLES, new RestParams(), null).execute((Void) null);
 	}
 	
 	

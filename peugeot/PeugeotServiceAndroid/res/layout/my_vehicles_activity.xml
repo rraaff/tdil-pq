@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".OfficialServicesActivity" >
+    tools:context=".MyServicesActivity" >
 
     <!-- Login progress -->
 
@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:text="@string/lst_title_official_services"
+            android:text="@string/lst_title_my_vehicles"
             android:textColor="@color/lst_itm_title"
             android:textSize="16sp" />
         
