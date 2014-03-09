@@ -19,8 +19,17 @@ public class RestParams {
 		params.put(key, value);
 	}
 	
+	public RestParams(String key, int value) {
+		params.put(key, String.valueOf(value));
+	}
+	
 	public RestParams put(String key, String value) {
 		params.put(key, value);
+		return this;
+	}
+	
+	public RestParams put(String key, int value) {
+		params.put(key, String.valueOf(value));
 		return this;
 	}
 }

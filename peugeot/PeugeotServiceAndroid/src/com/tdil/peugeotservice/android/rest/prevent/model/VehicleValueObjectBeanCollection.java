@@ -21,6 +21,10 @@ public class VehicleValueObjectBeanCollection {
 	public void setList(List<VehicleValueObjectBean> list) {
 		this.list = list;
 	}
+
+	public void addFirst(VehicleValueObjectBean all) {
+		this.list.add(0, all);
+	}
 	
 	
 }

@@ -4,6 +4,7 @@ package com.tdil.peugeotservice.android.rest.prevent.model;
 public class VehicleValueObjectBean {
 
 	// vehicle
+	private int id;
 	private String domain;
 	private String description;
 	private String km;
@@ -100,6 +101,16 @@ public class VehicleValueObjectBean {
 
 	public void setWarrantyexpired(boolean warrantyexpired) {
 		this.warrantyexpired = warrantyexpired;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

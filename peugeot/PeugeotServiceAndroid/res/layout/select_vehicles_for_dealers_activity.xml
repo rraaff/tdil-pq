@@ -14,19 +14,59 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/lastChanges"
+            android:id="@+id/TextView01"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
             android:text="@string/lst_title_my_vehicles"
             android:textColor="@color/lst_itm_title"
             android:textSize="16sp" />
-        
-        <ListView
-            android:id="@+id/myServices"
+
+        <TextView
+            android:id="@+id/dealerNameTextView"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-        </ListView>
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:text="sasas"
+            android:textColor="@color/lst_itm_title"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dealerAddressTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="sasas"
+            android:textColor="@color/lst_itm_title"
+            android:textSize="16sp" />
+        
+        <Spinner
+             android:id="@+id/vehiclesForDealersSpinner"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/emailForServiceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ems="10"
+            android:hint="@string/hnt_email"
+            android:inputType="textEmailAddress" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/updateVehiclesDealersButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/btn_rojo_normal_holo_light"
+            android:minHeight="40dp"
+            android:onClick="@string/dologin"
+            android:text="@string/btn_select_for_my_services"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

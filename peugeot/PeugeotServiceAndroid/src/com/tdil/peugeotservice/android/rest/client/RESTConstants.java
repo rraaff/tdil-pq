@@ -13,6 +13,9 @@ public interface RESTConstants {
 	public static final String P_DEALER_STATE = "{stateId}";
 	public static final String P_DEALER_CITY = "{cityId}";
 	
+	public static final String P_VEHICLE = "{vehicleId}";
+	public static final String P_DEALER = "{dealerId}";
+	public static final String P_EMAIL = "{email}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -37,4 +40,8 @@ public interface RESTConstants {
 	public static final String DEALERS_STATES = "/dealers/states";
 	public static final String DEALERS_CITIES = "/dealers/cities/{stateId}";
 	public static final String DEALERS = "/dealers/list/{cityId}";
+	
+	public static final String CHANGE_DEALER = "/vehicles/{vehicleId}/changeDealer/{dealerId}/{email}";
+	
+	public static final String GET_EMAIL_FOR_ADVICE = "/vehicles/emailForAdvice";
 }
