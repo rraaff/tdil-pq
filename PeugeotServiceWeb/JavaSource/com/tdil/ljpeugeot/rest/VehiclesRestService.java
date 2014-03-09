@@ -29,12 +29,14 @@ import com.tdil.ljpeugeot.rest.model.ServiceBean;
 import com.tdil.ljpeugeot.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.ljpeugeot.services.DealersService;
 import com.tdil.ljpeugeot.services.PeugeotService;
+import com.tdil.ljpeugeot.struts.forms.prevent.AddServiceForm;
 import com.tdil.ljpeugeot.struts.forms.prevent.ChangeDealerForm;
 import com.tdil.ljpeugeot.utils.WebsiteUserUtils;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
+import com.tdil.utils.DateUtils;
 
 @Path("/vehicles")
 public class VehiclesRestService extends AbstractRESTService {
@@ -128,20 +130,24 @@ public class VehiclesRestService extends AbstractRESTService {
 		}
 	}
 	
-	@POST
-	@Path("/{vehicleId}/service")
+	@GET
+	@Path("/{vehicleId}/addservice/{date}/{km}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addService(String body) {
+	public Response addService(@PathParam("vehicleId") String vehicleId, @PathParam("date") String date, @PathParam("km") String km) {
 		validateLogged();
 		try {
-			ServiceBean personBean = extractObjectFromJSON(body, ServiceBean.class);
-			Service service = ServiceBean.asService(personBean);
-			service.setDeleted(0);
-			if (PeugeotService.insertService(service)) {
-				return okResponse();
-			} else {
-				return failResponse();
-			}
+			final AddServiceForm addServiceForm = new AddServiceForm();
+			addServiceForm.setUser(this.getUser());
+			addServiceForm.setIdVehicle(Integer.parseInt(vehicleId));
+			addServiceForm.setServiceKm(km);
+			addServiceForm.setServiceDate(date);
+			GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
+				@Override
+				public void executeInTransaction() throws SQLException, ValidationException {
+					addServiceForm.save();
+				}
+			});
+			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			throw new WebApplicationException(401);
