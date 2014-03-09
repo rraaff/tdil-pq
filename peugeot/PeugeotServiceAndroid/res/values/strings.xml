@@ -39,6 +39,10 @@
     
     <string name="title_home">HOME</string>
   
+    <string name="title_contact1">Primer contacto</string>
+    <string name="title_contact2">Segundo contacto</string>
+    <string name="title_contact3">Tercer contacto</string>
+    
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
     <string name="cmnt_camera_tooltip">Presioná las flechas para orientar la cámara</string>
@@ -96,6 +100,7 @@
     <string name="btn_search_dealers">Buscar</string>
     
     <string name="btn_select_for_my_services">Seleccionar para mis services</string>
+    <string name="btn_send_emergency">Enviar emergencia</string>
     
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>
@@ -129,6 +134,17 @@
     <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
    
     <string name="hnt_service_km">Kilometraje recorrido</string>
+    
+    <string name="hnt_contact1name">Nombre</string>
+    <string name="hnt_contact1phone">Telefono</string>
+    <string name="hnt_security_word">Palabra de seguridad</string>
+    <string name="hnt_health_insurance">Cobertura médica</string>
+    
+    <string name="hnt_contact2name">Nombre</string>
+    <string name="hnt_contact2phone">Telefono</string>
+    
+    <string name="hnt_contact3name">Nombre</string>
+    <string name="hnt_contact3phone">Telefono</string>
     
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordar mis datos</string>

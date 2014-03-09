@@ -47,4 +47,7 @@ public interface RESTConstants {
 	
 	public static final String GET_EMAIL_FOR_ADVICE = "/vehicles/emailForAdvice";
 	public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}";
+	
+	public static final String GET_CONTACT_DATA = "/users/contactData";
+	public static final String POST_CONTACT_DATA = "/users/contactData";
 }

@@ -2,6 +2,8 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -33,6 +35,33 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	
 		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
 
+		View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
+		sendEmergencyButton.setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					new AlertDialog.Builder(ServicesDashboardActivity.this)
+					.setIcon(R.drawable.ic_launcher)
+					.setTitle("TODO")
+					.setMessage("Funcionalidad pendiente de definicion")
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+						}
+					}).show();
+				}
+			});
+		
+		View configEmergencyButton = findViewById(R.id.configEmergencyButton);
+		configEmergencyButton.setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					ServicesDashboardActivity.this.startActivity(new Intent(ServicesDashboardActivity.this, UpdateEmergencyConfigActivity.class));
+				}
+			});
+		
 		View myServices = findViewById(R.id.myServicesButton);
 		myServices.setOnClickListener(
 			new View.OnClickListener() {
