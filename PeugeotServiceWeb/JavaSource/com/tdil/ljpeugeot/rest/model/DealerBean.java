@@ -1,24 +1,41 @@
 package com.tdil.ljpeugeot.rest.model;
 
+import java.lang.reflect.InvocationTargetException;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
+
 import com.tdil.ljpeugeot.model.Dealer;
+import com.tdil.log4j.LoggerProvider;
 
 @XmlRootElement
 public class DealerBean {
 
 	private int id;
+	private String code;
 	private String name;
 	private String address;
+	private String postalcode;
 	private String email;
 	private String phone;
+	private String fax;
+	private String category;
+	private String locationtype;
 	
 	public DealerBean(Dealer dealer) {
-		this.id = dealer.getId();
-		this.name = dealer.getName();
-		this.address = dealer.getAddress();
-		this.email= dealer.getEmail();
-		this.phone = dealer.getPhone();
+		try {
+			BeanUtils.copyProperties(this, dealer);
+		} catch (IllegalAccessException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (InvocationTargetException e) {
+			getLog().error(e.getMessage(), e);
+		}
+	}
+	
+	private static Logger getLog() {
+		return LoggerProvider.getLogger(DealerBean.class);
 	}
 	
 	public int getId() {
@@ -50,5 +67,45 @@ public class DealerBean {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getPostalcode() {
+		return postalcode;
+	}
+
+	public void setPostalcode(String postalcode) {
+		this.postalcode = postalcode;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getLocationtype() {
+		return locationtype;
+	}
+
+	public void setLocationtype(String locationtype) {
+		this.locationtype = locationtype;
 	}
 }
