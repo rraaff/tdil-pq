@@ -1,7 +1,6 @@
 package com.tdil.peugeotservice.android;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;

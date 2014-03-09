@@ -23,17 +23,21 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
-import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBeanCollection;
+import com.tdil.peugeotservice.android.rest.prevent.model.CityBean;
+import com.tdil.peugeotservice.android.rest.prevent.model.DealerBean;
+import com.tdil.peugeotservice.android.rest.prevent.model.DealerBeanCollection;
 import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class OfficialServicesActivity extends ActionBarActivity {
+public class DealersListActivity extends ActionBarActivity {
 
+	public static final String CITY = "CITY";
+	
+	private CityBean city;
 	ListView list;
-	OfficialServicesVehiclesListAdapter adapter;
-	public ArrayList<VehicleValueObjectBean> CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>();
+	DealersListAdapter adapter;
+	public ArrayList<DealerBean> CustomListViewValuesArr = new ArrayList<DealerBean>();
 	
 	/**
 	 * The default email to populate the email field with.
@@ -44,33 +48,33 @@ public class OfficialServicesActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		setContentView(R.layout.official_services_activity);
-
-	
+		setContentView(R.layout.dealers_activity);
 		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
 
+		Bundle extras = getIntent().getExtras();
+		city = (CityBean)extras.getSerializable(CITY);
 
-		list = (ListView) findViewById(R.id.myServices);
+		list = (ListView) findViewById(R.id.dealers);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
-				VehicleValueObjectBeanCollection col = gson.fromJson(task.getResult(),
-						VehicleValueObjectBeanCollection.class);
-				CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>(col.getList());
+				DealerBeanCollection col = gson.fromJson(task.getResult(),
+						DealerBeanCollection.class);
+				CustomListViewValuesArr = new ArrayList<DealerBean>(col.getList());
 				Resources res = getResources();
-				adapter = new OfficialServicesVehiclesListAdapter(OfficialServicesActivity.this,
+				adapter = new DealersListAdapter(DealersListActivity.this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
 			}
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(OfficialServicesActivity.this);
+				Messages.connectionErrorMessage(DealersListActivity.this);
 			}
-		}, RESTConstants.MY_VEHICLES, new RestParams(), null).execute((Void) null);
+		}, RESTConstants.DEALERS, new RestParams(RESTConstants.P_DEALER_CITY, String.valueOf(city.getId())), null).execute((Void) null);
 	}
 	
 	

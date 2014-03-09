@@ -1,9 +1,5 @@
 package com.tdil.peugeotservice.android;
 
-import java.util.List;
-
-import org.apache.http.cookie.Cookie;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -21,7 +17,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.utils.Login;
 
 /**

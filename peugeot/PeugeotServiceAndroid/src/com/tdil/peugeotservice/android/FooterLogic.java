@@ -6,17 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.rest.client.HttpMethod;
-import com.tdil.peugeotservice.android.rest.client.IRestClientObserver;
-import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
-import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
-import com.tdil.peugeotservice.android.rest.client.RESTConstants;
-import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.URLResponse;
 import com.tdil.peugeotservice.android.utils.Login;
-import com.tdil.peugeotservice.android.utils.Messages;
 
 public class FooterLogic  {
 

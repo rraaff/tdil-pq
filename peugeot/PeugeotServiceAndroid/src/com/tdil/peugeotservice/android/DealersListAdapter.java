@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,21 +14,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
+import com.tdil.peugeotservice.android.rest.prevent.model.DealerBean;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClickListener {
+public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
 	private Activity activity;
-	private ArrayList<VehicleValueObjectBean> data;
+	private ArrayList<DealerBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
-	VehicleValueObjectBean iterAlarm = null;
+	DealerBean iterAlarm = null;
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public MyServicesVehiclesListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
+	public DealersListAdapter(Activity a, ArrayList<DealerBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -60,13 +59,10 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class AlarmViewHolder {
-
-		
-		public TextView vehicleDescription;
-		public TextView actualKm;
-		public TextView needsService;
-		public TextView lastServiceDate;
-		public TextView lastServiceKm;
+		public TextView name;
+		public TextView address;
+		public TextView phone;
+		public TextView email;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -78,15 +74,14 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
-			vi = inflater.inflate(R.layout.my_services_vehicles_item, null);
+			vi = inflater.inflate(R.layout.dealer_item, null);
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
-			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
-			holder.actualKm = (TextView) vi.findViewById(R.id.kmActual);
-			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
-			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
-			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			holder.name = (TextView) vi.findViewById(R.id.dealerName);
+			holder.address = (TextView) vi.findViewById(R.id.dealerAddress);
+			holder.phone = (TextView) vi.findViewById(R.id.dealerPhone);
+			holder.email = (TextView) vi.findViewById(R.id.dealerEmail);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
@@ -96,24 +91,18 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 			holder = (AlarmViewHolder) vi.getTag();
 
 		if (data.size() <= 0) {
-			holder.vehicleDescription.setText("No Data");
+			holder.name.setText("No Data");
 
 		} else {
 			/***** Get each Model object from Arraylist ********/
 			iterAlarm = null;
-			iterAlarm = (VehicleValueObjectBean) data.get(position);
+			iterAlarm = (DealerBean) data.get(position);
 
 			/************ Set Model values in Holder elements ***********/
-			holder.vehicleDescription.setText(iterAlarm.getDescription());
-			holder.actualKm.setText(iterAlarm.getKm()); // TODO formatear con ,
-			holder.needsService.setText(iterAlarm.getNeedsService() ? "SI" : "NO");
-			if (iterAlarm.getNeedsService()) {
-				holder.needsService.setTextColor(Color.rgb(227,27,35));
-			} else {
-				holder.needsService.setTextColor(Color.rgb(35,102,0));
-			}
-			holder.lastServiceDate.setText(iterAlarm.getLastservicedate()); // TODO que esto vaya como String
-			holder.lastServiceKm.setText(iterAlarm.getLastservicekm()); // TODO formatear con ,
+			holder.name.setText(iterAlarm.getName());
+			holder.address.setText(iterAlarm.getAddress());
+			holder.phone.setText(iterAlarm.getPhone());
+			holder.email.setText(iterAlarm.getEmail());
 //			holder.vehicleDescription.setOnClickListener(goAlarmDashBoard);
 //			holder.actualKm.setOnClickListener(goAlarmDashBoard);
 //			holder.alarmStatus.setOnClickListener(goAlarmDashBoard);

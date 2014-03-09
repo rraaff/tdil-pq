@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;

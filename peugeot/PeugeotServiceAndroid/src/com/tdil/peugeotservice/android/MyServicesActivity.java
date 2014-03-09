@@ -23,7 +23,6 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.ChangeLog;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBeanCollection;
 import com.tdil.peugeotservice.android.utils.Login;

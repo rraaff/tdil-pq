@@ -11,6 +11,8 @@ public interface RESTConstants {
 	public static final String P_DOCUMENT_TYPE = "{documentType}";
 	
 	public static final String P_DEALER_STATE = "{stateId}";
+	public static final String P_DEALER_CITY = "{cityId}";
+	
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	

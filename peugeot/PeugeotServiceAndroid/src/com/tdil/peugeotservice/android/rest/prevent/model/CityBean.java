@@ -1,7 +1,9 @@
 package com.tdil.peugeotservice.android.rest.prevent.model;
 
+import java.io.Serializable;
 
-public class CityBean {
+
+public class CityBean implements Serializable {
 
 	private int id;
 	private String name;

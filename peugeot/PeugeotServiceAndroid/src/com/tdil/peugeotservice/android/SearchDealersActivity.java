@@ -2,6 +2,7 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,8 +24,6 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeBean;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeCollection;
 import com.tdil.peugeotservice.android.rest.prevent.model.CityBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.CityBeanCollection;
 import com.tdil.peugeotservice.android.rest.prevent.model.StateBean;
@@ -37,6 +36,7 @@ public class SearchDealersActivity extends ActionBarActivity {
 
 	
 	private Spinner citiesSpinner;
+	private CityBean selectedCity;
 
 	/**
 	 * The default email to populate the email field with.
@@ -53,6 +53,19 @@ public class SearchDealersActivity extends ActionBarActivity {
 
 		final Spinner statesSpinner = (Spinner) findViewById(R.id.dealersStatesSpinner);
 		citiesSpinner = (Spinner) findViewById(R.id.dealersCitiesSpinner);
+		citiesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				final CityBean item = (CityBean) arg0
+						.getItemAtPosition(arg2);
+				selectedCity = item;
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
 		
 		statesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
@@ -101,6 +114,18 @@ public class SearchDealersActivity extends ActionBarActivity {
 				Messages.connectionErrorMessage(SearchDealersActivity.this);
 			}
 		}, RESTConstants.DEALERS_STATES, null, null).executeSerial((Void) null);
+		
+		findViewById(R.id.searchDealersButton).setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					if (selectedCity != null) {
+						Intent intent = new Intent(SearchDealersActivity.this, DealersListActivity.class);
+						intent.putExtra(DealersListActivity.CITY, selectedCity);
+						SearchDealersActivity.this.startActivity(intent);
+					}
+				}
+			});
 	}
 	
 	

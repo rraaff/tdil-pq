@@ -19,6 +19,8 @@
     <string name="lst_title_my_services">Mis services:</string>
     <string name="lst_title_my_vehicles">Mis vehiculos:</string>
     <string name="lst_title_official_services">Agencias/Service autorizados:</string>
+    <string name="lst_title_dealers">Concesionarios:</string>
+    
     
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -90,12 +92,18 @@
     
     <string name="btn_search_dealers">Buscar</string>
     
+    <string name="btn_select_for_my_services">Seleccionar para mis services</string>
+    
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>
     <string name="lst_itm_last_service">Ultimo service</string>
     
     <string name="lst_itm_in_warranty">En garantía</string>
     <string name="lst_itm_model_warranty">Garantía</string>
+    
+    <string name="lst_itm_address">Dirección</string>
+    <string name="lst_itm_email">Email</string>
+    <string name="lst_itm_phone">Telefono</string>
     
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>
