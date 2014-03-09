@@ -1,7 +1,9 @@
 package com.tdil.peugeotservice.android.rest.prevent.model;
 
+import java.io.Serializable;
 
-public class DealerBean {
+
+public class DealerBean implements Serializable{
 
 	private int id;
 	private String code;

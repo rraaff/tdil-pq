@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,21 +15,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.rest.prevent.model.DealerBean;
+import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
-public class DealersListAdapter extends BaseAdapter implements OnClickListener {
+public class SelectVehiclesForDealerListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
 	private Activity activity;
-	private ArrayList<DealerBean> data;
+	private ArrayList<VehicleValueObjectBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
-	DealerBean iterAlarm = null;
+	VehicleValueObjectBean iterAlarm = null;
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public DealersListAdapter(Activity a, ArrayList<DealerBean> d, Resources resLocal) {
+	public SelectVehiclesForDealerListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -60,10 +60,13 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class AlarmViewHolder {
-		public TextView name;
-		public TextView address;
-		public TextView phone;
-		public TextView email;
+
+		
+		public TextView vehicleDescription;
+		public TextView actualKm;
+		public TextView needsService;
+		public TextView lastServiceDate;
+		public TextView lastServiceKm;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -75,14 +78,15 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
-			vi = inflater.inflate(R.layout.dealer_item, null);
+			vi = inflater.inflate(R.layout.select_vehicles_for_dealers_item, null);
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
-			holder.name = (TextView) vi.findViewById(R.id.dealerName);
-			holder.address = (TextView) vi.findViewById(R.id.dealerAddress);
-			holder.phone = (TextView) vi.findViewById(R.id.dealerPhone);
-			holder.email = (TextView) vi.findViewById(R.id.dealerEmail);
+			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
+			holder.actualKm = (TextView) vi.findViewById(R.id.kmActual);
+			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
+			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
+			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
@@ -92,24 +96,30 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 			holder = (AlarmViewHolder) vi.getTag();
 
 		if (data.size() <= 0) {
-			holder.name.setText("No Data");
+			holder.vehicleDescription.setText("No Data");
 
 		} else {
 			/***** Get each Model object from Arraylist ********/
 			iterAlarm = null;
-			iterAlarm = (DealerBean) data.get(position);
+			iterAlarm = (VehicleValueObjectBean) data.get(position);
 
 			/************ Set Model values in Holder elements ***********/
-			holder.name.setText(iterAlarm.getName());
-			holder.address.setText(iterAlarm.getAddress());
-			holder.phone.setText(iterAlarm.getPhone());
-			holder.email.setText(iterAlarm.getEmail());
-			
-			GoChangeDealer goChangeDealer = new GoChangeDealer(iterAlarm);
-			holder.name.setOnClickListener(goChangeDealer);
-			holder.address.setOnClickListener(goChangeDealer);
-			holder.phone.setOnClickListener(goChangeDealer);
-			holder.email.setOnClickListener(goChangeDealer);
+			holder.vehicleDescription.setText(iterAlarm.getDescription());
+			holder.actualKm.setText(iterAlarm.getKm()); // TODO formatear con ,
+			holder.needsService.setText(iterAlarm.getNeedsService() ? "SI" : "NO");
+			if (iterAlarm.getNeedsService()) {
+				holder.needsService.setTextColor(Color.rgb(227,27,35));
+			} else {
+				holder.needsService.setTextColor(Color.rgb(35,102,0));
+			}
+			holder.lastServiceDate.setText(iterAlarm.getLastservicedate()); // TODO que esto vaya como String
+			holder.lastServiceKm.setText(iterAlarm.getLastservicekm()); // TODO formatear con ,
+//			holder.vehicleDescription.setOnClickListener(goAlarmDashBoard);
+//			holder.actualKm.setOnClickListener(goAlarmDashBoard);
+//			holder.alarmStatus.setOnClickListener(goAlarmDashBoard);
+//			holder.lastChangeDateLabel.setOnClickListener(goAlarmDashBoard);
+//			holder.lastChangeDate.setOnClickListener(goAlarmDashBoard);
+//			holder.goDashBoard.setOnClickListener(goAlarmDashBoard);
 			
 			/*new DownloadImageTask(holder.lastChangeUserAvatar)
 					.execute(ApplicationConfig.URL_WEBSITE
@@ -127,19 +137,19 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 		Log.v("CustomAdapter", "=====Row button clicked");
 	}
 
-	private class GoChangeDealer implements OnClickListener {
-		private DealerBean dealerBean;
-		
-		GoChangeDealer(DealerBean alarm) {
-			this.dealerBean = alarm;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), SelectVehiclesForDealerActivity.class);
-			intent.putExtra(SelectVehiclesForDealerActivity.DEALER, dealerBean);
-			activity.startActivity(intent);
-			activity.finish();
-		}
-	}
+//	private class GoAlarmDashBoard implements OnClickListener {
+//		private Alarm alarm;
+//		
+//		GoAlarmDashBoard(Alarm alarm) {
+//			this.alarm = alarm;
+//		}
+//
+//		@Override
+//		public void onClick(View arg0) {
+//			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
+//			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
+//			activity.startActivity(intent);
+//			activity.finish();
+//		}
+//	}
 }
