@@ -1,5 +1,6 @@
 package com.tdil.ljpeugeot.rest;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,17 +20,21 @@ import javax.ws.rs.core.Response;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Service;
-import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.DealerBean;
+import com.tdil.ljpeugeot.rest.model.EmailBean;
 import com.tdil.ljpeugeot.rest.model.ModelBean;
 import com.tdil.ljpeugeot.rest.model.ServiceBean;
-import com.tdil.ljpeugeot.rest.model.VehicleBean;
 import com.tdil.ljpeugeot.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.ljpeugeot.services.DealersService;
 import com.tdil.ljpeugeot.services.PeugeotService;
+import com.tdil.ljpeugeot.struts.forms.prevent.ChangeDealerForm;
+import com.tdil.ljpeugeot.utils.WebsiteUserUtils;
 import com.tdil.log4j.LoggerProvider;
+import com.tdil.struts.TransactionalAction;
+import com.tdil.struts.ValidationException;
+import com.tdil.subsystem.generic.GenericTransactionExecutionService;
 
 @Path("/vehicles")
 public class VehiclesRestService extends AbstractRESTService {
@@ -51,6 +56,20 @@ public class VehiclesRestService extends AbstractRESTService {
 	}
 	
 	@GET
+	@Path("/emailForAdvice")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response emailForAdvice() {
+//		validateLogged();
+		try {
+			String email = WebsiteUserUtils.getWebSiteUserById(this.getUser().getModelUser().getId()).getEmail();
+			return createResponse(201, new EmailBean(email));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listVehicles() {
@@ -69,14 +88,22 @@ public class VehiclesRestService extends AbstractRESTService {
 	}
 	
 	@GET
-	@Path("/{vehicleId}/changeDealer/{dealerId}")
+	@Path("/{vehicleId}/changeDealer/{dealerId}/{email}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response changeDealer(@PathParam("vehicleId") String vehicleId, @PathParam("dealerId") String dealerId) {
+	public Response changeDealer(@PathParam("vehicleId") String vehicleId, @PathParam("dealerId") String dealerId, @PathParam("email") String email) {
 //		validateLogged();
 		try {
-			Vehicle vehicle = PeugeotService.getVehicle(Integer.parseInt(vehicleId));
-			vehicle.setIdDealer(Integer.parseInt(dealerId));
-			PeugeotService.udpateVehicle(vehicle);
+			final ChangeDealerForm changeDealerForm = new ChangeDealerForm();
+			changeDealerForm.setUser(this.getUser());
+			changeDealerForm.setEmail(email);
+			changeDealerForm.setIdDealer(Integer.parseInt(dealerId));
+			changeDealerForm.setIdVehicle(Integer.parseInt(vehicleId));
+			GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
+				@Override
+				public void executeInTransaction() throws SQLException, ValidationException {
+					changeDealerForm.save();
+				}
+			});
 			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);

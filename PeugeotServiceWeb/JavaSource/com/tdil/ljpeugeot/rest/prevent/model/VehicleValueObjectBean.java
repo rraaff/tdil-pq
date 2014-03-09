@@ -16,6 +16,7 @@ import com.tdil.utils.DateUtils;
 public class VehicleValueObjectBean {
 
 	// vehicle
+	private int id;
 	private String domain;
 	private String description;
 	private String km;
@@ -31,6 +32,7 @@ public class VehicleValueObjectBean {
 		DecimalFormatSymbols simbolos = new DecimalFormatSymbols();
 		simbolos.setPerMill('.');
 		DecimalFormat formateador = new DecimalFormat("###,###,###",simbolos);
+		this.setId(vehicleValueObject.getVehicle().getId());
 		this.setDomain(vehicleValueObject.getVehicle().getDomain());
 		this.setDescription(vehicleValueObject.getVehicle().getDomain() + (vehicleValueObject.getModel() != null ? "(" + vehicleValueObject.getModel().getName()+")" : ""));
 		this.setKm(vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-");
@@ -118,6 +120,14 @@ public class VehicleValueObjectBean {
 
 	public void setVehicleModel(ModelBean model) {
 		this.vehicleModel = model;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

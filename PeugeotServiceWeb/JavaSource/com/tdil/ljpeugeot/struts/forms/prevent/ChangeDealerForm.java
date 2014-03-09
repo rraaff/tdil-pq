@@ -11,7 +11,6 @@ import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.ljpeugeot.utils.WebsiteUserUtils;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
-import com.tdil.struts.actions.AbstractAction;
 import com.tdil.struts.forms.TransactionalValidationForm;
 
 public class ChangeDealerForm extends TransactionalValidationForm {
