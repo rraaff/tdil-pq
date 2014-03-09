@@ -36,7 +36,6 @@ import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.ValidationException;
 import com.tdil.subsystem.generic.GenericTransactionExecutionService;
-import com.tdil.utils.DateUtils;
 
 @Path("/vehicles")
 public class VehiclesRestService extends AbstractRESTService {
