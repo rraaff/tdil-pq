@@ -5,6 +5,10 @@ import java.io.Serializable;
 
 public class CityBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8640164363064069561L;
 	private int id;
 	private String name;
 	

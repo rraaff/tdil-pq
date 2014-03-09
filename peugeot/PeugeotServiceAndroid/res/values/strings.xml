@@ -32,6 +32,7 @@
     <string name="title_activity_login_for_action_bar">LOJACK</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
+    <string name="title_activity_add_service">Agregar service</string>
     
     <string name="title_parkings">PARKING</string>
     <string name="title_prevent">CAR</string>
@@ -60,6 +61,8 @@
     <string name="btn_tag_reset_password_back">Volver</string>
     
     <string name="btn_tag_go">Ir</string>
+    
+    <string name="btn_tag_add">Agregar</string>
     
     <string name="action_home">Home</string>
     
@@ -125,6 +128,8 @@
     <string name="hnt_new_password">Nueva Clave</string>
     <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
    
+    <string name="hnt_service_km">Kilometraje recorrido</string>
+    
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordar mis datos</string>
     

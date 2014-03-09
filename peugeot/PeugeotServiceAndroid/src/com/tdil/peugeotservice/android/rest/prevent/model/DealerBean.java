@@ -5,6 +5,10 @@ import java.io.Serializable;
 
 public class DealerBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8217134269292146634L;
 	private int id;
 	private String code;
 	private String name;

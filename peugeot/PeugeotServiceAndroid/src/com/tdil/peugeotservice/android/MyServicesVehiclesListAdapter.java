@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.Log;
@@ -105,29 +106,24 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 
 			/************ Set Model values in Holder elements ***********/
 			holder.vehicleDescription.setText(iterAlarm.getDescription());
-			holder.actualKm.setText(iterAlarm.getKm()); // TODO formatear con ,
+			holder.actualKm.setText(iterAlarm.getKm());
 			holder.needsService.setText(iterAlarm.getNeedsService() ? "SI" : "NO");
 			if (iterAlarm.getNeedsService()) {
 				holder.needsService.setTextColor(Color.rgb(227,27,35));
 			} else {
 				holder.needsService.setTextColor(Color.rgb(35,102,0));
 			}
-			holder.lastServiceDate.setText(iterAlarm.getLastservicedate()); // TODO que esto vaya como String
-			holder.lastServiceKm.setText(iterAlarm.getLastservicekm()); // TODO formatear con ,
-//			holder.vehicleDescription.setOnClickListener(goAlarmDashBoard);
-//			holder.actualKm.setOnClickListener(goAlarmDashBoard);
-//			holder.alarmStatus.setOnClickListener(goAlarmDashBoard);
-//			holder.lastChangeDateLabel.setOnClickListener(goAlarmDashBoard);
-//			holder.lastChangeDate.setOnClickListener(goAlarmDashBoard);
-//			holder.goDashBoard.setOnClickListener(goAlarmDashBoard);
+			holder.lastServiceDate.setText(iterAlarm.getLastservicedate());
+			holder.lastServiceKm.setText(iterAlarm.getLastservicekm());
 			
-			/*new DownloadImageTask(holder.lastChangeUserAvatar)
-					.execute(ApplicationConfig.URL_WEBSITE
-							+ iterAlarm.getLastChangeLojackUserID());*/
-			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
-
+			GoAddService goAddService = new GoAddService(iterAlarm);
+			holder.vehicleDescription.setOnClickListener(goAddService);
+			holder.actualKm.setOnClickListener(goAddService);
+			holder.needsService.setOnClickListener(goAddService);
+			holder.lastServiceDate.setOnClickListener(goAddService);
+			holder.lastServiceKm.setOnClickListener(goAddService);
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
-//			vi.setOnClickListener(goAlarmDashBoard);
+			vi.setOnClickListener(goAddService);
 		}
 		return vi;
 	}
@@ -137,19 +133,19 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 		Log.v("CustomAdapter", "=====Row button clicked");
 	}
 
-//	private class GoAlarmDashBoard implements OnClickListener {
-//		private Alarm alarm;
-//		
-//		GoAlarmDashBoard(Alarm alarm) {
-//			this.alarm = alarm;
-//		}
-//
-//		@Override
-//		public void onClick(View arg0) {
-//			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
-//			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
-//			activity.startActivity(intent);
-//			activity.finish();
-//		}
-//	}
+	private class GoAddService implements OnClickListener {
+		private VehicleValueObjectBean vehicle;
+		
+		GoAddService(VehicleValueObjectBean vehicle) {
+			this.vehicle = vehicle;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(activity.getBaseContext(), AddServiceActivity.class);
+			intent.putExtra(AddServiceActivity.VEHICLE, vehicle);
+			activity.startActivity(intent);
+			activity.finish();
+		}
+	}
 }

@@ -1,8 +1,14 @@
 package com.tdil.peugeotservice.android.rest.prevent.model;
 
+import java.io.Serializable;
 
-public class ModelBean {
 
+public class ModelBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7529184442931160637L;
 	private String name;
 	private String description;
 	private Integer monthwarranty;

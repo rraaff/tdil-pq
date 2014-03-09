@@ -1,0 +1,69 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".LoginActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@color/black"
+        android:baselineAligned="false"
+        android:gravity="top|center_horizontal"
+        android:orientation="vertical"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bgBase"
+                android:orientation="vertical"
+                android:padding="20dp">
+                
+                <TextView
+                    android:id="@+id/loadingInfoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/title_activity_add_service"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ef5323" />
+
+                <TextView
+                    android:id="@+id/serviceDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/serviceKmEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/hnt_service_km"
+                    android:inputType="number" />
+
+	            <Button
+		            android:id="@+id/addServiceButton"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="3dp"
+		            android:layout_marginTop="3dp"
+		            android:background="@drawable/btn_rojo_normal_holo_light"
+		            android:minHeight="40dp"
+		            android:onClick="@string/dologin"
+		            android:text="@string/btn_tag_add"
+		            android:textColor="#ffffff"
+		            android:textSize="16sp" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</merge>
