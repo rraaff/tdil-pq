@@ -74,7 +74,7 @@ public class DealersListActivity extends ActionBarActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(DealersListActivity.this);
 			}
-		}, RESTConstants.DEALERS, new RestParams(RESTConstants.P_DEALER_CITY, String.valueOf(city.getId())), null).execute((Void) null);
+		}, RESTConstants.DEALERS, new RestParams(RESTConstants.P_DEALER_CITY, String.valueOf(city.getId())), null).executeSerial((Void) null);
 	}
 	
 	

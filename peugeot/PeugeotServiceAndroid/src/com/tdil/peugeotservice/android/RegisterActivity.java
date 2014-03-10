@@ -188,7 +188,7 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);
 
 		states = (Spinner) findViewById(R.id.state);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -218,7 +218,7 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
-		}, RESTConstants.STATES, null, null).execute((Void) null);
+		}, RESTConstants.STATES, null, null).executeSerial((Void) null);
 
 		addressTypes = (Spinner) findViewById(R.id.addressType);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -248,7 +248,7 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
-		}, RESTConstants.ADDRESS_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.ADDRESS_TYPES, null, null).executeSerial((Void) null);
 
 		findViewById(R.id.updateButton).setOnClickListener(
 				new View.OnClickListener() {
@@ -357,7 +357,7 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RegisterActivity.this);
 			}
-		}, RESTConstants.CREATE_USER, new RestParams(), json).execute((Void) null);
+		}, RESTConstants.CREATE_USER, new RestParams(), json).executeSerial((Void) null);
 	}
 	
 	@Override

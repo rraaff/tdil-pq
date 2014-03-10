@@ -148,7 +148,7 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 				Messages.connectionErrorMessage(ChangePasswordActivity.this);
 			}
 		}, RESTConstants.CHANGE_PASSWORD, new RestParams(), json)
-				.execute((Void) null);
+				.executeSerial((Void) null);
 	}
 
 

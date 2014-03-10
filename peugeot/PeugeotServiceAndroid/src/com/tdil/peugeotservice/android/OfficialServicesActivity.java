@@ -70,7 +70,7 @@ public class OfficialServicesActivity extends ActionBarActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(OfficialServicesActivity.this);
 			}
-		}, RESTConstants.MY_VEHICLES, new RestParams(), null).execute((Void) null);
+		}, RESTConstants.MY_VEHICLES, new RestParams(), null).executeSerial((Void) null);
 	}
 	
 	

@@ -493,7 +493,7 @@ public class UpdateActivity extends ActionBarActivity implements IRestClientObse
 						RESTConstants.P_DOCUMENT_TYPE, mDocType).put(
 						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
 						RESTConstants.P_PASSWORD, mPassword), null);
-		mAuthTask.execute((Void) null);
+		mAuthTask.executeSerial((Void) null);
 	}
 
 	@Override
