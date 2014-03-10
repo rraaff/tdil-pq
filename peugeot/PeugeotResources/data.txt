@@ -1,0 +1,30 @@
+
+
+Alias: tdil
+
+Password: 4ppsd34rg3nt1n4
+
+¿validity years?
+
+First and Last name: Pablo Mendoza
+
+Organizational unit: Diseño
+
+Organization: That Day in London
+
+City: Ciudad Autónoma de Buenos Aires
+
+State: Ciudad Autónoma de Buenos Aires
+
+Country code: 54
+
+lojack.real.life
+
+Screenshots en howto
+El password es siempre 4ppsd34rg3nt1n4
+Cuando te pide el keystore, elegile el file keystore/lojack
+
+
+VBoxManage guestproperty enumerate
+VBoxManage guestproperty get androVM_vbox86p_4.1.1_r4-20121002 "/VirtualBox/GuestInfo/Net/0/V4/IP"
+adb connect 192.168.0.117
