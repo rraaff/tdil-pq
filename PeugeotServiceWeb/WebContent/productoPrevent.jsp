@@ -288,11 +288,21 @@
 %>
 <% MENU_ACTIVE_SECTION = "PREVENT"; %>
 <!-- WEBSITE CONTENT -->
+<%
+	Boolean apk = (Boolean)session.getAttribute("USING_APK");
+if (apk != null && apk) {
+	isAndroid = true;
+} else {
+	apk = Boolean.FALSE;
+}
+%>
+<% if (!apk) { %>
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
 <%@ include file="includes/action_bar.jspf" %>
 <%@ include file="includes/service_section_menu.jspf" %>
 <%@ include file="includes/under_shade.jspf" %>
+<% } %>
 <section id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>

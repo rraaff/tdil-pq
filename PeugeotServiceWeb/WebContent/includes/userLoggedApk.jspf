@@ -4,7 +4,6 @@
 WebsiteUser websiteUser = null;
 boolean logged = false;
 String apkToken = request.getParameter("apkToken");
-System.out.println(apkToken);
 websiteUser = ApkLoginCache.get(apkToken);
 if (websiteUser != null && websiteUser.isLogged()) {
 	request.getSession().setAttribute("user", websiteUser);
