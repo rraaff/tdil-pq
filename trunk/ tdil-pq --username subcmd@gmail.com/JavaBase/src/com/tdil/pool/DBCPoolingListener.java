@@ -32,7 +32,11 @@ public class DBCPoolingListener implements ServletContextListener {
 			// Obtain our environment naming context
 			Context envCtx = (Context) new InitialContext().lookup("java:comp/env");
 			// Look up our data source
-			DataSource ds = (DataSource) envCtx.lookup("jdbc/database");
+			String datasourceName = sce.getServletContext().getInitParameter("datasourceName");
+			if (StringUtils.isEmpty(datasourceName)) {
+				datasourceName = "jdbc/database";
+			}
+			DataSource ds = (DataSource) envCtx.lookup(datasourceName);
 			DatasourceManager.setDatasource(ds);
 			String initParam = sce.getServletContext().getInitParameter("SqlMapConfig");
 			if (StringUtils.isEmpty(initParam)) {
