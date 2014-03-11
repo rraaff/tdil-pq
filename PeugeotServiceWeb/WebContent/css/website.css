@@ -460,13 +460,15 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div.template_half div.column:first-of-type	{ width:100%!important; }
 	div.template_half div.column				{ float:left; width:100%!important; padding:0px!important; }
 	
-	div.dashboard_item,
-	div.dashboard_item h3						{ width:100%!important; }
+	div.dashboard_item							{ width:100%!important; }
+	div.dashboard_item h3						{ width:auto!important; position: relative; top: 0px; left:4px; padding: 25px 0 10px; }
 	div.dashboard_item img.icon					{ padding:0; }
 }
+
 @media only screen and (max-width:550px) {
 	section#service_section_menu				{ display:none; }
-	
+	section#zoomSection							{ width:100px!important; left: -30px; top: -417%; position: absolute; z-index: 999999; background-image: url(../images/skn_peugeot/modal/trans_80.png); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg); }
+	button.icon_zoom_out						{ -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg); }
 }
 
 @media only screen and (max-width:625px) {
@@ -485,6 +487,11 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div.avatar_container		{ display:none; }
 }
 
+@media only screen and (max-width:395px) {
+	button#carsecur		{ left:61px; }
+	button#services		{ left:20px; top:269px; }	
+}
+
 @media only screen and (max-width:380px) {
 	button#carsecur { left:61px; }
 	button#services { left:20px; top:268px; }
@@ -492,6 +499,15 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div#full_menu	{ width:100%; top:0!important; right:0!important; }
 	
 	div.layerModal	{ width:100%!important; left:0!important; }
+}
+
+@media only screen and (max-width:340px) {
+	button#pointsin,
+	button#carsecur,
+	button#services			{ font-size:15px; padding:0 0 0 90px; }
+	button#pointsin			{ left:-23px; }
+	button#carsecur			{ left:47px; }
+	button#services			{ left:9px; }
 }
 
 @media only screen and (max-height:600px) {
@@ -516,5 +532,9 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div#full_menu ul li.selected,
 	div#full_menu ul li a						{ font-size:13px; padding:10px 18px; }
 	
-	
+	section.secondary_bar						{ display:none; }
+}
+
+@media only screen and (max-height:320px) {
+	section#zoomSection							{ top:-210%; }
 }

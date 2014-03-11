@@ -12,7 +12,8 @@
 			<% if (websiteUser != null && websiteUser.isLogged()) { %>
 				<a href="home.jsp" title="Volver al inicio"><img src="images/null.png" /></a>
 			<% } else { %>
-				<img src="images/skn_peugeot/logos/main_logo_mobile.png" />
+				<img src="images/null.png" />
+				<!--  img src="images/skn_peugeot/logos/main_logo_mobile.png" / -->
 			<% } %>
 		</div>
 		<div class="signature"></div>
