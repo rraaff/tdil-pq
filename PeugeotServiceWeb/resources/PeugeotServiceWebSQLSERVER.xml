@@ -352,7 +352,7 @@
 </Context>
 <Context path="/PeugeotServiceWeb" reloadable="true" docBase="PeugeotServiceWeb/WebContent/" workDir="PeugeotServiceWeb/work" >
    <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
-   <Resource name="jdbc/database" auth="Container"
+   <Resource name="jdbc/peugeotDatabase" auth="Container"
    	type="javax.sql.DataSource" removeAbandoned="true"
    	removeAbandonedTimeout="30" maxActive="100"
    	maxIdle="10" maxWait="10000" username="PEUGEOTSVC_USER"
