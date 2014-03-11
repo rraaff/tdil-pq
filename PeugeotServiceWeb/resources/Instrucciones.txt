@@ -16,7 +16,7 @@ Crear la base de datos y el usuario:
 Crear los objetos con el usuario:
 1) Sqlserver: sqlserver/create-sqlserver.sql
 Copiar la definición de datasource correspondiente al directorio de deploy:
-1) sqlserver: sqlserver/sqlserver-ds.xml
+1) sqlserver: sqlserver/sqlserver-peugeot-ds.xml
 Copiar el jar del driver al directorio lib de la configuración de jboss:
 1) sqlserver: sqlserver/sqljdbc4.jar
 

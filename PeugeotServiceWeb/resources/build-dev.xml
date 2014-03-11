@@ -241,7 +241,7 @@
 		</copy>
 		<!--copy todir="${project.name.upper}.tmp" file="${project.name.upper}_WEB.xml">
 		</copy-->
-		<copy file="./jboss/sqlserver-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
+		<copy file="./jboss/sqlserver-peugeot-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
 		</copy>
 		
 		<!-- drivers -->
@@ -337,7 +337,7 @@
 		<!-- datasources -->
 		<copy file="./jboss/mysql-ds.xml" todir="${project.name.upper}.tmp/mysql/">
 		</copy>
-		<copy file="./jboss/sqlserver-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
+		<copy file="./jboss/sqlserver-peugeot-ds.xml" todir="${project.name.upper}.tmp/sqlserver/">
 		</copy>
 		
 		<!-- drivers -->
