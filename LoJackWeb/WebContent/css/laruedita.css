@@ -25,6 +25,7 @@
 #nmRuedita ul li.vlu			{ background:none; font-size:12px; line-height:12px; width:auto; height:auto; top:-119px; left:68px; z-index:1233; display:inline-block; }
 #nmRuedita ul li.pets			{ background:url(../images/skin_lj_rl/newWheel/pets_224_off.png) no-repeat 0 0; top:-385px; left:271px; z-index:1219; }
 #nmRuedita ul li.park			{ background:url(../images/skin_lj_rl/newWheel/parking_224_off.png) no-repeat 0 0; top:-482px; left:221px; z-index:1213; }
+#nmRuedita ul li.allRight		{ top:-116px; left:69px; }
 #nmRuedita ul li img 			{ width:96px; height:96px; }
 #nmRuedita ul li a				{ color:transparent; height:96px; font-size:90px; padding:0; margin:64px; }
 #nmRuedita ul li.tv				{ background:url(../images/skin_lj_rl/newWheel/tv_224_off.png) no-repeat center center; top:-885px; left:270px; z-index:1250; }
@@ -37,7 +38,10 @@
 #nmRuedita ul li.tv a,
 #nmRuedita ul li.logout a,
 #nmRuedita ul li.login a		{ color:transparent; height:98px; font-size:88px; padding:0; margin:0; }
-#nmRuedita ul li.vlu a			{ border-radius:10px; background:#f5c531!important; color:#000; font-weight:bold; font-size:14px; text-align:center; width:auto; height:auto; margin:10px; padding:5px 9px; display:inline-block; box-shadow:0 0 10px 1px #000; }
+#nmRuedita ul li.vlu a			{ width:42px; height:41px; margin:0; display:inline-block; }
+#nmRuedita ul li.vlu a img		{ width:42px; height:41px; }
+#nmRuedita ul li.allRight a		{ width:42px; height:41px; }
+#nmRuedita ul li.allRight a img { width:42px; height:41px; } 
 
 #rdCentral						{ width:100%; height:66px; padding-left:227px; top:408px; position:absolute; z-index:1201; }
 #rdCentral h2					{ color:#ee5222; font-family:'GothamBoldRegular','Gotham', 'Helvetica', Arial, sans-serif; font-size:18px; line-height:30px; text-align:center; text-transform:uppercase; width:165px; margin:0 auto; overflow:hidden; }

@@ -2,7 +2,8 @@
 .layerOnTop,
 .layerOnTop20,
 .layerOnTop70,
-#errorAjaxLayer {
+#errorAjaxLayer,
+#vluNoMessagesLayer {
 	background: url(../images/skin_lj_rl/backs/topLayer.png);
 	background-repeat: repeat;
 	font-size: 11px;
@@ -34,7 +35,8 @@
 .registerLayerContent,
 .legalLayerContent,
 .modalStyle,
-.vluMessages {
+.vluMessages,
+#vluMessages {
 	border: 10px solid rgb(0, 0, 0);
 	border: 10px solid rgba(0, 0, 0, .8);
 	-webkit-background-clip: padding-box; /* for Safari */
@@ -69,7 +71,8 @@
 	width: 100%;
 	height: 400px;
 }
-div.vluMessages {
+div.vluMessages,
+div#vluMessages {
 	padding: 20px!important;
 	margin: 0!important;
 	height: 100%!important;

@@ -21,9 +21,7 @@ body {
 	font-size: 100%;
 	background:url(../images/backs/main.jpg);
 	background-repeat:no-repeat;
-	background-position:center center;
-	background-attachment:fixed;
-	background-size:cover;
+
 	background-color:#210808;
 	height:100%;
 }
@@ -34,4 +32,4 @@ body, section, div, table, td, tr, header, ul, li, menu, .dir, p, span {
 }
 ul, li { list-style:none; }
 
-p.information	{ border:solid 1px #4493b0; border-radius:10px; color:#154658; font-size:15px; line-height:22px; background-color:#c3e4f1; background-image:url("../../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:0 0 20px; }
+p.information	{ border:solid 1px #4493b0; border-radius:10px; color:#154658; font-size:15px; line-height:22px; background-color:#c3e4f1; background-image:url("../../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:20px 0; }

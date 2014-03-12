@@ -25,10 +25,11 @@
 							<li id="liCars" class="car" ><a class="rdCar" href="#" onclick="javascript:showVideo1('car');" onmouseover="chbg('liCars', 'car', 'over', 'Car', 'Mirá el aviso')" onmouseout="chbg('liCars', 'car', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/null.gif" /></a></li>
 						<% } %>
 						
-						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>								
-							<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
-							<li id="liVluMessages" class="vlu"><a class="rdCar" href="#" onclick="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'Mensaje de LoJack')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')">!</a></li>
-						<% } else { %>
+						<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.vluIsClient() && websiteUser.getVluMessages() == 0) { %>
+							<li id="liVluMessages" class="vlu allRight"><a class="rdCar" href="#" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'Tu equipo Lojack funciona correctamente')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/skin_lj_rl/vlu/badge_ok.png" /></a></li>
+						<% } else if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
+							<li id="liVluMessages" class="vlu"><a class="rdCar" href="#" onclick="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'Mensaje de LoJack')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')"><img src="images/skin_lj_rl/vlu/badge_alert.png" /></a></li>
+       					<% } else { %>
 							<li id="liVluMessages" class="vlu" style="opacity:0;"><a class="rdCar" href="#" onmouseover="chbg('liVluMessages', 'vlu', 'over', 'Car', 'No hay mensajes')" onmouseout="chbg('liVluMessages', 'vlu', 'off', 'Seleccione', 'Una Aplicación')">!</a></li>
 						<% } %>
 						

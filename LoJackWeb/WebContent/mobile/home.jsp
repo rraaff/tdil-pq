@@ -59,6 +59,7 @@ function enterPrevent() {
 	var userTimeZone = ( userDate.getTimezoneOffset()/60 )*( -1 );
 	document.location.href = '../goToPreventLogin.do?timezone=' +userTimeZone;
 }
+
 <%@ include file="../includes/errorAjaxJS.jspf" %>
 <%@ include file="../includes/centerLayerJS.jspf" %>
 
@@ -75,6 +76,11 @@ function enterPrevent() {
 			}
 			adjustModalHeight();
 		});
+	}
+	function showVluNoMessages() {
+		centerLayer($(window), $( "#vluNoMessagesLayer" ));
+		centerLayer($(window), $( "#vluMessages" ));
+		adjustModalHeight();
 	}
 </script>
 <style type="text/css">
@@ -143,6 +149,15 @@ window.onresize=function() {
 	adjustModalHeight();
 }
 </script>
+<script>
+function hideVluNoMessages() {
+	$( "#vluNoMessagesLayer" ).fadeOut();
+	
+}
+$( "#closevluNoMessagesLayer" ).click(function() {
+	$( "#vluNoMessagesLayer" ).fadeOut();
+});
+</script>
 <%@ include file="includes/head.jsp"%>
 </head>
 <body>
@@ -168,11 +183,12 @@ window.onresize=function() {
 		<% } else { %>
 			<div id="iconoCar"><a href="videoPageCar.jsp" onmouseover="chbg('Car', 'mirá el video')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
 		<% } %>
-		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
-			<!-- esta logueado, no es usuario de prevent y tiene mensajes asociados -->
-			<div id="liVluMessages"><a href="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('Car', 'Mensaje de LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')">!</a></div>
+		<%if (websiteUser != null && websiteUser.isLogged() && websiteUser.vluIsClient() && websiteUser.getVluMessages() == 0) { %>
+			<div id="liVluMessages"><a href="javascript:showVluNoMessages();" onmouseover="chbg('Car', 'Mensaje de LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/skin_lj_rl/vlu/badge_ok.png" /></a></div>
+		<% } else if (websiteUser != null && websiteUser.isLogged() && websiteUser.getVluMessages() > 0) { %>
+			<div id="liVluMessages"><a href="javascript:showVluMessages('<%=websiteUser.getDni()%>');" onmouseover="chbg('Car', 'Mensaje de LoJack')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/skin_lj_rl/vlu/badge_alert.png" /></a></div>
 		<% } else { %>
-			<div id="liVluMessages" style="opacity:0;"><a href="#" onmouseover="chbg('Car', 'No hay mensajes')" onmouseout="chbg('Seleccione', 'Una Aplicación')">!</a></div>
+			<div id="liVluMessages" style="opacity:0;"><a href="#" onmouseover="chbg('Car', 'No hay mensajes')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/skin_lj_rl/vlu/badge_ok.png" /></a></div>
 		<% } %>
 		<% if (websiteUser.isHomeUser()) { %>
 			<div id="iconoHome"><a href="../productoHome.jsp" onmouseover="chbg('Home', 'ingresá ahora')" onmouseout="chbg('Seleccione', 'Una Aplicación')"><img src="../images/null.gif" /></a></div>
@@ -205,6 +221,15 @@ window.onresize=function() {
 <div id="vluMessagesLayer" class="layerOnTop" style="display: none; z-index:3000; position:fixed;">
 	<div id="vluMessages">
 		Consultando datos...
+	</div>
+</div>
+<div id="vluNoMessagesLayer" class="layerOnTop" style="display: none; z-index:3000; position:fixed;">
+	<div id="vluMessages">
+		<div id="xContainer"><button class="buttonLink" onclick="javascript:hideVluNoMessages();">X</button></div>
+		<h3>Mensaje de LoJack</h3>
+		<div id="tableStyle">
+			<p class="information">Tu equipo Lojack funciona correctamente</p>
+		</div>
 	</div>
 </div>
 </body>
