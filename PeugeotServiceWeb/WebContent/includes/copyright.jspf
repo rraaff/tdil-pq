@@ -85,7 +85,7 @@
 			});			
 			
 		} else {
-			alert('Pantalla alta: ' + winWidth);
+			//alert('Pantalla alta: ' + winWidth);
 			/* le seteo la altura y la posición ORIGINAL (ver css) al logo */
 			var logoObject = document.getElementById("index_mobile_logo");
 			openFullMenu();

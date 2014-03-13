@@ -96,7 +96,7 @@
 		    $(this).addClass("vehicleRowSelected");
 		});
 		$('#addServiceDomain').prop('innerHTML', domain);
-		$('#addServiceBgCar').css("background-image", "url(images/skn_peugeot/vehicles/" + modelName + ".jpg)");
+		$('#addServiceBgCar').css("background-image", "url(./images/skn_peugeot/vehicles/" + modelName + ".jpg)");
 		$('#addServiceLayer').fadeIn(500);
 		$("input[name=idVehicle]").val(idVehicle);
 	}
@@ -161,10 +161,11 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 						<li class="lastservkm">Kilometraje del último service</li>
 						<li class="lastservdate">Fecha de último service</li>
 					</ul>
-					<ul class="table_body" id="vehicleTable">
+					
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { 
 						String modelName = ModelUtils.getImageUrlPath(vehicleValueObject.getModel());
 					%>
+						<ul class="table_body" id="vehicleTable">
 							<%if (vehicleValueObject.getModel() !=  null) { %>
 								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
@@ -178,8 +179,8 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 							<% } %>
 							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
 							<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+						</ul>
 					<% } %>
-					</ul>
 				</div>
 			<% } %>
 		</div>
