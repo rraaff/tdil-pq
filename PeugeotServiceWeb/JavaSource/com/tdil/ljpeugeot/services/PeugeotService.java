@@ -1,7 +1,9 @@
 package com.tdil.ljpeugeot.services;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +15,9 @@ import org.apache.log4j.Logger;
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.Advice;
 import com.tdil.ljpeugeot.model.AdviceExample;
+import com.tdil.ljpeugeot.model.Alert;
+import com.tdil.ljpeugeot.model.AlertExample;
+import com.tdil.ljpeugeot.model.AlertStatus;
 import com.tdil.ljpeugeot.model.City;
 import com.tdil.ljpeugeot.model.CityExample;
 import com.tdil.ljpeugeot.model.ContactData;
@@ -153,6 +158,19 @@ public class PeugeotService {
 			VehicleExample vehicleExample = new VehicleExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
 			return DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetAlerts implements TransactionalActionWithResult<List<Alert>> {
+		private int idUser;
+		public GetAlerts(int idUser) {
+			super();
+			this.idUser = idUser;
+		}
+		public List<Alert> executeInTransaction() throws SQLException {
+			AlertExample vehicleExample = new AlertExample();
+			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
+			return DAOManager.getAlertDAO().selectAlertByExample(vehicleExample);
 		}
 	}
 	
@@ -331,6 +349,33 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class AddAlert implements TransactionalAction {
+		private int idUser;
+		private String phone;
+		private BigDecimal lat;
+		private BigDecimal lon;
+		
+		public AddAlert(int idUser, String phone, BigDecimal lat, BigDecimal lon) {
+			super();
+			this.idUser = idUser;
+			this.phone = phone;
+			this.lat = lat;
+			this.lon = lon;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			Alert alert = new Alert();
+			alert.setCreationdate(new Date());
+			alert.setDeleted(0);
+			alert.setIdWebsiteuser(idUser);
+			alert.setLat(lat);
+			alert.setLon(lon);
+			alert.setPhonenumber(phone);
+			alert.setStatus(AlertStatus.PENDING.code());
+			DAOManager.getAlertDAO().insertAlert(alert);
+		}
+	}
+	
 	public static ContactData getContactData(int idUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetContactData(idUser));
@@ -487,6 +532,31 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<VehicleValueObject>();
+		} 
+	}
+	
+	public static boolean addAlert(int idWebsiteUser, String phone, BigDecimal lat, BigDecimal lon) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new AddAlert(idWebsiteUser, phone, lat, lon));
+			return true;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
+	public static List<Alert> getAlerts(int idWebsiteUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetAlerts(idWebsiteUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<Alert>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<Alert>();
 		} 
 	}
 	

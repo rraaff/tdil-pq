@@ -1,5 +1,6 @@
 package com.tdil.ljpeugeot.rest;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -105,6 +106,20 @@ public class VehiclesRestService extends AbstractRESTService {
 					changeDealerForm.save();
 				}
 			});
+			return okResponse();
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/addAlert/{phone}/{lat}/{lon}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addAlert(@PathParam("phone") String phone, @PathParam("lat") String lat, @PathParam("lon") String lon) {
+//		validateLogged();
+		try {
+			PeugeotService.addAlert(this.getUser().getModelUser().getId(), phone, new BigDecimal(Long.valueOf(lat)), new BigDecimal(Long.valueOf(lon)));
 			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
