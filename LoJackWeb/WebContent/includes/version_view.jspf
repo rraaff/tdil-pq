@@ -1,0 +1,2 @@
+<%@page import="com.tdil.lojack.utils.LoJackConfig"%>
+TDIL_RL_webApp_v-1.06.04_(Frankie)/DB_v-<%=LoJackConfig.getDB_VERSION()%>
