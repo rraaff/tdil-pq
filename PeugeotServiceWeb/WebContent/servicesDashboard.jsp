@@ -168,7 +168,6 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 			</div>
 			<fieldset class="button_bar pOnlyTop25">
 				<button class="link_back" onclick="este debería ser un snooze y que me lo muestro en el próximo login"><span></span>Ocultar aviso</button>
-				
 				<button class="link_back" onclick="javascript:dismiss('<%=sb.toString()%>');">No volver a mostrar</button>
 				<button class="botton_ahead" onclick="window.location='./goToMyServices.do';">Ir a Mis Services<span></span></button>
 			</fieldset>

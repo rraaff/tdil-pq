@@ -68,7 +68,7 @@
 		<li><a href="javascript:changePassword();" title="Cambiar mi clave">Mi clave</a></li>
 		<li><a href="javascript:updatePerson();" title="Cambiar mis datos">Mis datos</a></li>
 		<li><a href="peugeot_app.jsp">Sobre este sitio</a></li>
-	 	<li><a class="hub" href="http://www.peugeot.fr" title="Hub">hub</a></li>
+	 	<!--  li><a class="hub" href="http://www.peugeot.fr" title="Hub">hub</a></li-->
 	 	<li><a href="javascript:verLegales();" id="legales" title="Ingrese a las políticas del sitio">Legales</a></li>
 	 	<li><a href="javascript:contactLoJack();" title="Envienos una consulta">Contacto</a></li>
 	 	<li class="right"><a class="special" href="logout.do" title="Salir">Salir</a></li>

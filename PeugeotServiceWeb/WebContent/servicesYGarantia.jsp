@@ -68,8 +68,7 @@ if (apk != null && apk) {
 }
 %>
 <% if (usingMobile || isAndroid) { %>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
-	</ul>
+
 <% } %>
 <%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
@@ -104,31 +103,31 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 						<li class="lastservkm2">Kilometraje del último service</li>
 						<li class="lastservdate2">Fecha de último service</li>
 						<li class="waranty">En garantía</li>
-						<li class="waranty_kms">Garantía en KM</li>
+						<li class="waranty_kms">Garantía en KM/años</li>
 					</ul>
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
 						<ul class="table_body">
 							<%if (vehicleValueObject.getModel() !=  null) { %>
-								<li class="cardesc2"><%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+								<li class="cardesc2"><span class="tag_for_mmobile">Vehículo (Dominio): </span><%=vehicleValueObject.getModel().getName() %>(<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
-								<li class="cardesc2"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+								<li class="cardesc2"><span class="tag_for_mmobile">Dominio: </span><%=vehicleValueObject.getVehicle().getDomain() %></li>
 							<% } %>
-							<li class="kilometers2"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<li class="kilometers2"><span class="tag_for_mmobile">Kilometraje: </span><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-								<li class="service_required services2">Si</li>
+								<li class="service_required services2"><span class="tag_for_mmobile">Requiere Service</span><span class="hidden_in_mobile">Si</span></li>
 							<% } else { %>
-								<li class="service_not_required services2">No</li>
+								<li class="service_not_required services2"><span class="tag_for_mmobile">No Requiere Service</span><span class="hidden_in_mobile">No</span></li>
 							<% } %>
-							<li class="lastservkm2"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
-							<li class="lastservdate2"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+							<li class="lastservkm2"><span class="tag_for_mmobile">Kilometraje del último service: </span><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li class="lastservdate2"><span class="tag_for_mmobile">Fecha de último service: </span><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getWarrantyexpired() == 0) { %>
 								<%if (vehicleValueObject.getModel() != null) {%>
-									<li class="service_required waranty">Si</li>
+									<li class="service_required waranty"><span class="tag_for_mmobile">En Garantía</span><span class="hidden_in_mobile">Si</span></li>
 								<% } else { %>
-									<li class="service_not_required waranty">-</li>
+									<li class="service_not_required waranty empty_for_mobile">-</li>
 								<% } %>
 							<% } else { %>
-								<li class="service_not_required waranty">No</li>
+								<li class="service_not_required waranty"><span class="tag_for_mmobile">Garantía finalizada</span><span class="hidden_in_mobile">No</span></li>
 							<% } %>
 							<%if (vehicleValueObject.getModel() != null) { 
 								int years = vehicleValueObject.getModel().getMonthwarranty() / 12;%>
@@ -136,9 +135,9 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 								<%if (vehicleValueObject.getModel().getKmwarranty() != 0) { %>
 									o <%=formateador.format(vehicleValueObject.getModel().getKmwarranty())%>  km
 								<% } %>
-								</li>
+								<span class="tag_for_mmobile"> de Garantía</span></li>
 							<% } else { %>
-								<li class="waranty_kms"> - </li>
+								<li class="waranty_kms empty_for_mobile"> - </li>
 							<% } %>
 						</ul>
 					<% } %>

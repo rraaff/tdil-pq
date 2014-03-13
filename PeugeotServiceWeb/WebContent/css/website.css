@@ -139,7 +139,7 @@ button.botton_ahead			{ border:none; border-radius:4px; color:#fff; font-size:13
 button.botton_ahead span	{ background:url(../images/skn_peugeot/buttons/btn_arrow_forward_inbutton_normal.png); background-repeat:no-repeat; background-position:0 1px; width:10px; height:10px; display:inline-block; margin:0 0 0 6px; }
 button:hover.botton_ahead	{ background:#00557f; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNTU3ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZGI1ZGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background:-moz-linear-gradient(top,  #00557f 0%, #1db5dc 100%); /* FF3.6+ */ background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#00557f), color-stop(100%,#1db5dc)); /* Chrome,Safari4+ */ background:-webkit-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* Chrome10+,Safari5.1+ */ background:-o-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* Opera 11.10+ */ background:-ms-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* IE10+ */ background:linear-gradient(to bottom,  #00557f 0%,#1db5dc 100%); /* W3C */ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00557f', endColorstr='#1db5dc',GradientType=0 ); /* IE6-8 */  }
 button.link					{ border:none; background:none; color:#4d4f5b; font-size:12px; font-weight:bold; text-align:left; padding:0 0 0 25px; float:left; cursor:pointer; }
-button.print				{ border:none; background:transparent; background-image:url(../images/skn_peugeot/icons/icon_print.png); color:#3b3a48; background-repeat:no-repeat; background-position:0; padding:0 0 0 22px; margin:0; position:relative; top:-48px; right:0; z-index:999; float:right; }
+button.print				{ border:none; background:transparent; background-image:url(../images/skn_peugeot/icons/icon_print.png); color:#3b3a48; background-repeat:no-repeat; background-position:0; padding:0 0 0 22px; margin:0; position:relative; top:-48px; right:0; z-index:999; float:right; display:none; }
 
 button.link_back:hover,
 button.link_back:active,
@@ -220,7 +220,7 @@ ul.selection_module li:last-of-type		{ border-bottom-right-radius:5px; border-bo
 div.template_half div.column				{ /* width using sizers */ background-image:url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat:no-repeat; background-position:left center; background-size:100px 100%; float:left; }
 div.template_half div.column:first-of-type	{ background-image:none; }
 
-div.dashboard_item						{ width:350px; margin:0 auto 50px; display:inline-block; }
+div.dashboard_item						{ width:350px; margin:0 auto 50px; display:inline-block; vertical-align:top; }
 div.dashboard_item img.icon				{ padding:0 0 110px; float:left; vertical-align:top; display:inline-block; }
 div.dashboard_item h3					{ text-align:left; float:left; width:285px; padding:25px 0 10px 25px; }
 div.dashboard_item h3 a					{ color:#00aad5; font-size:14px; font-family:'Peugeot'; text-transform:uppercase; text-decoration:none; }
@@ -249,13 +249,14 @@ div.template_half p.bajada_light								{ color:#3b3a48; font-size:13px; line-he
 div.table_container												{}
 div.table_container h2											{}
 div.table_services												{ vertical-align:top; }
-div.table_services ul.table_header								{ border:solid 1px #419fbe; background:#46b7db; background:-moz-linear-gradient(top, #46b7db 0%, #0b5a86 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#46b7db), color-stop(100%,#0b5a86)); background:-webkit-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:-o-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:-ms-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:linear-gradient(to bottom, #46b7db 0%,#0b5a86 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#46b7db', endColorstr='#0b5a86',GradientType=0 ); display:inline-block; margin:0; vertical-align:top; }
+div.table_services ul.table_header								{ border:solid 1px #419fbe; background:#46b7db; background:-moz-linear-gradient(top, #46b7db 0%, #0b5a86 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#46b7db), color-stop(100%,#0b5a86)); background:-webkit-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:-o-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:-ms-linear-gradient(top, #46b7db 0%,#0b5a86 100%); background:linear-gradient(to bottom, #46b7db 0%,#0b5a86 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#46b7db', endColorstr='#0b5a86',GradientType=0 ); display:inline-block; width:100%; margin:0; vertical-align:top; }
 div.table_services ul.table_header li							{ border-left:solid 1px #419fbe; color:#fff; font-size:13px; font-family:Arial; font-weight:bold; padding:15px 10px; vertical-align:middle; float:left; }
-div.table_services ul.table_body								{ border-bottom:solid 1px #cfcfcf; border-right:solid 1px #cfcfcf; display:inline-block; vertical-align:top; }
+div.table_services ul.table_body								{ border-bottom:solid 1px #cfcfcf; border-right:solid 1px #cfcfcf; display:inline-block; vertical-align:top; width:100%; }
 div.table_services ul.table_body:nth-child(2n+3)				{ background-color:#f7f7f7; }
 div.table_services ul.table_body li								{ border-left:solid 1px #cfcfcf; border-top:solid 1px #cfcfcf; color:#3b3a48; font-size:13px; line-height:24px; font-family:Arial; font-weight:bold; padding:6px 10px; vertical-align:middle; float:left; cursor:pointer; }
 div.table_services ul.table_body li.service_required	 		{ background-color:#ddf7ff; }
 div.table_services ul.table_body li.service_not_required		{  }
+span.tag_for_mmobile											{ display:none; }
 
 .vehicleRowSelected,
 .rowSelected													{ background:#ccf3ff; /* Old browsers */ background:-moz-linear-gradient(top,  #ccf3ff 0%, #a5e0ff 100%); /* FF3.6+ */ background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ccf3ff), color-stop(100%,#a5e0ff)); /* Chrome,Safari4+ */ background:-webkit-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Chrome10+,Safari5.1+ */ background:-o-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* Opera 11.10+ */ background:-ms-linear-gradient(top,  #ccf3ff 0%,#a5e0ff 100%); /* IE10+ */ background:linear-gradient(to bottom,  #ccf3ff 0%,#a5e0ff 100%); /* W3C */ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccf3ff', endColorstr='#a5e0ff',GradientType=0 ); /* IE6-9 */ }
@@ -297,6 +298,8 @@ div.table_services ul.table_body li.dealer_email				{ width:290px; line-height:1
 
 div.table_services ul.table_header li.fixed50					{ width:50px; }
 div.table_services ul.table_body li.fixed50						{ width:50px; line-height:18px; min-height:49px; vertical-align:middle; }
+div.table_services ul.table_body li.empty_for_mobile 			{ display:block; }
+
 
 
 div.results_content					{ border-top:solid 1px #d9d9d9; width:1000px; margin-bottom:50px; padding:20px 0 0 0; display:inline-block; }
@@ -377,14 +380,22 @@ footer						{ color:#fff; position:relative; top:-20px; }
 
 
 
-
-
-
 /* *************************************************************************************** */
 /* ***************************** MEDIA QUERIES PARA WEBMOBILE **************************** */
 /* *************************************************************************************** */
 
 /* IPAD 2; */
+@media only screen and (max-width:1250px) {
+	#header_all											{ background-position:center 0; }
+	#header_all,
+	div.pgt_wrapper										{ width:100%; min-width:100%; }
+	#header_all div.logo								{ background-repeat: no-repeat; left: 50%; margin-left: -432px;  }
+	#header_all div.signature							{ left: 50%; margin-left: -300px; }
+	#header_all div#main_menu							{ left: 50%; margin-left: -300px; }
+	#page_title div.page_title_wrapper					{ width:100%; }
+	#page_title div.title h1							{ width: 966px; margin:8px auto 0; padding: 0; }
+}
+
 @media only screen and (max-width:1024px) {
 	header										{ display:none; }
 	section#page_title							{ display:none; }
@@ -450,16 +461,61 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div.template_half div.column				{ background-image:url(../images/skn_peugeot/modal/divider_vertical.png); background-repeat:no-repeat; background-position:-45px center; background-size:100px 100%; float:left; width:50%!important; padding:0px!important; }
 	div.template_half div.column:first-of-type	{ width:50%!important; background-image:none; }
 
-}
-@media only screen and (max-width:1024px) {
 	div.template_baratleft, 
 	div.template_half,
+	div.template_half div.column,
 	div.template_half div.column:first-of-type			{ width:100%!important; padding:0 25px; }
+	div.template_half div.column						{ background-image:none; }
+	
+	div.dashboard_item									{ width:49%; padding:0 25px; }
 	
 	div.table_services ul.table_header li.kilometers,
 	div.table_services ul.table_body li.kilometers		{ width:95px; }
 	div.table_services ul.table_header li.lastservkm,
 	div.table_services ul.table_body li.lastservkm		{ width:250px; }
+	
+	div.template_half div.illustration					{ display:none; }
+	div.content_template,
+	div.results_content									{ width:100%; margin:0; }
+	div.content_template p								{ padding:15px 0; display:inline-block; }
+
+	div.table_services									{ width:55%!important; }
+	div.add_cartoservices_info							{ width:45%!important; padding-left:25px; }
+}
+
+@media only screen and (max-width:999px) {
+	section#service_section_menu ul.subproduc_menu		{ width:100%; min-width:100%; }
+}
+
+@media only screen and (max-width:950px) {
+	div.table_services ul.table_header						{ display:none; }
+	div.table_services ul.table_body li						{ width:100%!important; }
+	div.table_services ul.table_body li.empty_for_mobile 	{ display:none; }
+	span.tag_for_mmobile									{ color:#2caed6; display:block; }
+	span.hidden_in_mobile									{ display:none; }
+	div.table_services ul.table_body						{ width:100%; }
+	div.add_services_info									{ width:100%; }
+		
+	div.form_with_car_image									{ background-color:#f0f0f0; background-position:center top; background-size:100%; width:100%; padding:165px 0 0 0; }
+	div.add_service_form_wrapper							{ width:100%!important; min-height:0!important; padding:25px 0 0;}
+	div.form_with_car_image fieldset						{ width:100%; padding:15px 15px 0; }
+	div.form_with_car_image	label,
+	form.add_service_form label.string_domain				{ width:auto!important; padding:0; }
+	form.add_service_form input[type="text"],
+	form.add_service_form select							{ width:100%; }
+	div.template_baratleft,
+	div.template_half										{ /*margin-bottom:0;*/ }
+	div.results_content										{ width:100%; padding:25px 10px 0; }
+	div.results_content h3									{ font-size:18px; }
+	
+	div.template_half h1									{ font-size:18px; padding:0 0 10px; }
+	div.table_services										{ width:100%!important; }
+	div.add_cartoservices_info								{ width:100%!important; padding:25px 0 0; }
+	div.add_cartoservices_info h2							{ font-size:16px; }
+	div.template_half p.bajada								{ padding:10px 0; }
+	
+	div.faq_item											{ width:100%; padding:0 15px; }
+	div.download_item										{ margin:25px 0 0; }
 }
 
 @media only screen and (max-width:750px) {
@@ -468,27 +524,51 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div.template_half div.column:first-of-type	{ width:100%!important; padding:0 10px; }
 	div.template_half div.column				{ float:left; width:100%!important; padding:0px!important; }
 	
-	div.dashboard_item							{ width:100%!important; }
-	div.dashboard_item h3						{ width:auto!important; position: relative; top: 0px; left:4px; padding: 25px 0 10px; }
+	div.dashboard_item							{ width:45%!important; vertical-align:top; }
+	div.dashboard_item h3						{ width:auto!important; position:relative; top:0px; left:4px; padding:25px 0 10px; }
 	div.dashboard_item img.icon					{ padding:0; }
+}
+
+@media only screen and (max-width:650px) {
+	div#registerLayer section.modal_header h2,
+	div#legalesLayer  section.modal_header h2			{ font-size:17px; padding:3px 85px 9px 0; }
+	div#registerLayer span.modal_subtitle				{ display:none; }
+	div#registerLayer section.modal_header,
+	div#legalesLayer  section.modal_header				{ margin:0 0 17px; }
+	div#registerLayer form.modal_wrapper div.column		{ width:100%; }
+	div#registerLayer form.modal_wrapper label			{ padding:10px 0 10px 10px!important; min-width:90px; }
+	
+	div#registerLayer form.modal_wrapper h4				{ padding:0 10px 5px; }
+}
+
+@media only screen and (max-width:625px) {
+	div.dashboard_item							{ width:100%!important; }
+	div.dashboard_item h3						{ width:80%!important; }
+	div.dashboard_item p						{ width:100%; padding:5px 0 15px 70px; }
+	div.dashboard_item button.link				{ padding:5px 0 15px 70px; }
+	
+	button#pointsin { left:96px; }
+	button#carsecur { left:-62px; }
+	button#services { left:19px; top:333px; }
+	
+	div#advices button.link_back,
+	div#advices button.botton_ahead		{ width:100%; margin:0 0 10px; float:none; }
+	div#advices section.modal_header h2	{ font-size:16px; }
+	
 }
 
 @media only screen and (max-width:550px) {
 	section#service_section_menu				{ display:none; }
-	section#zoomSection							{ width:100px!important; left: -30px; top: -417%; position: absolute; z-index: 999999; background-image: url(../images/skn_peugeot/modal/trans_80.png); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg); }
-	button.icon_zoom_out						{ -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -o-transform: rotate(90deg); -ms-transform: rotate(90deg); transform: rotate(90deg); }
-}
-
-@media only screen and (max-width:625px) {
-	button#pointsin { left:96px; }
-	button#carsecur { left:-62px; }
-	button#services { left:19px; top:333px; }
+	section#zoomSection							{ width:100px!important; left:-30px; top:-417%; position:absolute; z-index:999999; background-image:url(../images/skn_peugeot/modal/trans_80.png); -webkit-transform:rotate(90deg); -moz-transform:rotate(90deg); -o-transform:rotate(90deg); -ms-transform:rotate(90deg); transform:rotate(90deg); }
+	button.icon_zoom_out						{ -webkit-transform:rotate(90deg); -moz-transform:rotate(90deg); -o-transform:rotate(90deg); -ms-transform:rotate(90deg); transform:rotate(90deg); }
 }
 
 @media only screen and (max-width:448px) {
 	button#pointsin { left:-7px; }
 	button#carsecur { left:149px; top:146px; }
 	button#services { left:-83px; }
+	
+	section.action_bar div.ac_page_title h1		{ font-size:120%; }
 }
 
 @media only screen and (max-width:420px) {
@@ -509,6 +589,15 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div.layerModal	{ width:100%!important; left:0!important; }
 }
 
+@media only screen and (max-width:355px) {
+	div.dashboard_item 					{ height:190px; }
+	div.dashboard_item img.icon			{ position:relative; top:0; }
+	div.dashboard_item h3				{ width:100%!important; position:relative; top:-63px; padding-left:65px; }
+	div.dashboard_item p				{ position:relative; top:-50px; }
+	div.dashboard_item button.link		{ position:relative; top:-50px; }
+	
+}
+
 @media only screen and (max-width:340px) {
 	button#pointsin,
 	button#carsecur,
@@ -519,7 +608,6 @@ footer						{ color:#fff; position:relative; top:-20px; }
 }
 
 @media only screen and (max-height:600px) {
-	
 	section.action_bar								{ height:36px; }
 	section.action_bar div.ac_logo_mobile img		{ width:36px; padding:2px; }
 	section.action_bar div.ac_page_title			{ position:absolute; vertical-align:top; top:0; left:0; z-index:12; }
@@ -541,6 +629,19 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	div#full_menu ul li a						{ font-size:13px; padding:10px 18px; }
 	
 	section.secondary_bar						{ display:none; }
+	
+	div#advices section.modal_header h3			{ display:none; }
+}
+@media only screen and (max-height:570px) {
+	div.layerOnTop,
+	div#updatePerson,
+	div#registerLayer,
+	div#centradorModalesEditProfile,
+	div#centradorModalesLegales					{ position:absolute!important; top:0!important; left:0!important; width:100%!important; display:inline-block; }
+	
+}
+@media only screen and (max-height:536px) {
+	footer		{ display:none; }
 }
 
 @media only screen and (max-height:320px) {

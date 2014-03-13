@@ -68,8 +68,7 @@ if (apk != null && apk) {
 }
 %>
 <% if (usingMobile || isAndroid) { %>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
-	</ul>
+
 <% } %>
 <%
 com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcrum()
@@ -107,18 +106,18 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
 						<ul class="table_body">
 							<%if (vehicleValueObject.getModel() !=  null) { %>
-								<li class="cardesc"><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
+								<li class="cardesc"><span class="tag_for_mmobile">Vehículo (Dominio): </span><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
-								<li class="cardesc"><%=vehicleValueObject.getVehicle().getDomain() %></li>
+								<li class="cardesc"><span class="tag_for_mmobile">Dominio: </span><%=vehicleValueObject.getVehicle().getDomain() %></li>
 							<% } %>
-							<li class="kilometers"><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
+							<li class="kilometers"><span class="tag_for_mmobile">Kilometraje: </span><%=vehicleValueObject.getVehicle().getKm() != null ? formateador.format(vehicleValueObject.getVehicle().getKm()) : "-"%></li>
 							<%if (vehicleValueObject.getVehicle().getNeedsService()) { %>
-								<li class="service_required services">Si</li>
+								<li class="service_required services"><span class="tag_for_mmobile">Requiere Service</span><span class="hidden_in_mobile">Si</span></li>
 							<% } else { %>
-								<li class="service_not_required services">No</li>
+								<li class="service_not_required services"><span class="tag_for_mmobile">No Requiere Service</span><span class="hidden_in_mobile">No</span></li>
 							<% } %>
-							<li class="lastservkm"><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
-							<li class="lastservdate"><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
+							<li class="lastservkm"><span class="tag_for_mmobile">Kilometraje del último service: </span><%=vehicleValueObject.getVehicle().getLastservicekm() != null ? formateador.format(vehicleValueObject.getVehicle().getLastservicekm()) : "-"%></li>
+							<li class="lastservdate"><span class="tag_for_mmobile">Fecha de último service: </span><%=vehicleValueObject.getVehicle().getLastservicedate() != null ? DateUtils.formatDateSp(vehicleValueObject.getVehicle().getLastservicedate()) : "-"%></li>
 						</ul>
 					<% } %>
 				</div>

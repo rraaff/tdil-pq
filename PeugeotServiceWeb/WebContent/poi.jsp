@@ -348,87 +348,28 @@
 <%@ include file="includes/footer_web.jspf" %>
 
 <!-- ALL LAYERS -->
-<%@ include file="includes/layer_parking_not_logged.jspf" %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
 
-<div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
-	<div id="centradorModalesShowErrorsParking" class="defaultLayerStyles">
-		<div class="modalStyle">
-			<div class="modalWrapper">
-				<h3>Atención</h3>
-				<div class="alert alert-error" style="margin:20px 0;">
-					<div>
-						<div id="showErrorLayerMessage">
-							...
-						</div>
+<div id="showErrorLayer" class="layerOnTop" style="display:none; z-index:1500;">
+	<div id="centradorModalesShowErrorsParking" class="layerModal">
+		<section class="modal_header">
+			<h2>¡Atención!</h2>
+			<button class="close" cl="showErrorLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Descripción del error</span>
+			<div class="alert alert-error" style="margin:20px 0;">
+				<div>
+					<div id="showErrorLayerMessage">
+						...
 					</div>
 				</div>
-				<input type="button" id="closeshowErrorLayer" cl="showErrorLayer" value="Cerrar" class="indexButtonBase"/>
 			</div>
-		</div>
+		</section>
 	</div>
 </div>
-<%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
-<%@ include file="includes/errorAjaxLayer.jspf" %>
-<%@ include file="includes/version.jspf" %>
-<% if (usingMobile || isAndroid) { %>
-	<script>
-		var checkHeight = function() {
-			var elemToChange  = document.getElementById("mapContainer");
-			var elemToChange1 = document.getElementById("content");
-			var elemToChange2 = document.getElementById("controls");
-			var elemToChangeX = document.getElementById("placaLoader");
-		
-			var winW = $(window).width();
-			var winH = $(window).height();
-			
-			elemToChangeX.style.display = "inline-block"
-			
-			if (winW > winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-				
-				elemToChange2.style.top = winH - 70 + "px"
-				
-			} else if (winW < winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-			
-				elemToChange2.style.top = winH - 70 + "px"
-			}
-			elemToChangeX.style.display = "none"
-		}
-		var recheckHeight = function() {
-			var elemToChangeX = document.getElementById("placaLoader");
-			
-			var winW = $(window).width();
-			var winH = $(window).height();
-			
-			elemToChangeX.style.display = "inline-block"
-			elemToChangeX.style.width = winW + "px"
-			elemToChangeX.style.height = winH + "px"
-
-			setInterval( function(){ checkHeight(); }, 2000 );
-		}
-		
-		window.onload=function() {
-			checkHeight();
-		}		
-		window.onresize=function() {
-			recheckHeight();
-		}
-	</script>
-<% } %>
 </body>
 </html>
