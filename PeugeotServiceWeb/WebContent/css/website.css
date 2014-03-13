@@ -394,15 +394,6 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	#header_all div#main_menu							{ left: 50%; margin-left: -300px; }
 	#page_title div.page_title_wrapper					{ width:100%; }
 	#page_title div.title h1							{ width: 966px; margin:8px auto 0; padding: 0; }
-}
-
-@media only screen and (max-width:1024px) {
-	header										{ display:none; }
-	section#page_title							{ display:none; }
-	
-	div#under_shade								{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar_halo.png); background-size:100%; background-repeat:no-repeat; }
-	
-	#barre_transversale							{ display:none; }
 	
 	#wheel										{ min-width:inherit; }
 	div#content_wrapper							{ width:100% }
@@ -414,7 +405,19 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	button#pointsin								{ left:183px; }
 	button#carsecur								{ left:28px;}
 	button#services								{ left:-206px; }
+}
+
+@media only screen and (max-width:1024px) {
+	header										{ display:none; }
 	
+	#header_all div.logo						{ margin-left:0; }
+	
+	section#page_title							{ display:none; }
+	
+	div#under_shade								{ background-image:url(../images/skn_peugeot/bgs/ac_secondary_bar_halo.png); background-size:100%; background-repeat:no-repeat; }
+	
+	#barre_transversale							{ display:none; }
+
 	#pgt_wrapper_footer										{ min-width:inherit; }
 	#pgt_wrapper_footer #footer_main_row .pgt_inwrapper 	{ display:none; }
 
