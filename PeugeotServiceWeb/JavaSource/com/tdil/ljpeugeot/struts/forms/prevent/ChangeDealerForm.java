@@ -4,6 +4,8 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.tdil.ljpeugeot.daomanager.DAOManager;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.services.PeugeotService;
@@ -20,7 +22,7 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 	 */
 	private static final long serialVersionUID = -4103112336985471907L;
 
-	private int idVehicle;
+	private String idVehicle;
 	private int idDealer;
 	private String email;
 	private WebsiteUser user;
@@ -45,7 +47,7 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 	}
 	@Override
 	public void reset() throws SQLException {
-		this.idVehicle = 0;
+		this.idVehicle = "";
 		this.idDealer = 0;
 	}
 	
@@ -61,30 +63,35 @@ public class ChangeDealerForm extends TransactionalValidationForm {
 	}
 	@Override
 	public void save() throws SQLException {
-		if (this.idVehicle == 0) {
+		if (this.idVehicle.equals("0")) {
 			// cambio todos
 			for(Vehicle v : PeugeotService.getVehicles(this.user.getModelUser().getId())) {
 				v.setIdDealer(this.idDealer);
 				DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(v);
 			}
 		} else {
-			Vehicle vehicle = DAOManager.getVehicleDAO().selectVehicleByPrimaryKey(this.idVehicle);
-			if (!vehicle.getIdWebsiteuser().equals(this.user.getModelUser().getId())) {
-				throw new RuntimeException("invalid data");
+			String ids[] = this.idVehicle.split(",");
+			for (String id : ids) {
+				if (!StringUtils.isEmpty(id)) {
+					Vehicle vehicle = DAOManager.getVehicleDAO().selectVehicleByPrimaryKey(Integer.parseInt(id));
+					if (!vehicle.getIdWebsiteuser().equals(this.user.getModelUser().getId())) {
+						throw new RuntimeException("invalid data");
+					}
+					vehicle.setIdDealer(this.idDealer);
+					DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
+				}
 			}
-			vehicle.setIdDealer(this.idDealer);
-			DAOManager.getVehicleDAO().updateVehicleByPrimaryKey(vehicle);
 		}
 		com.tdil.ljpeugeot.model.WebsiteUser edit = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(this.user.getModelUser().getId());
 		edit.setEmail(this.email);
 		DAOManager.getWebsiteUserDAO().updateWebsiteUserByPrimaryKey(edit);
 	}
 
-	public int getIdVehicle() {
+	public String getIdVehicle() {
 		return idVehicle;
 	}
 
-	public void setIdVehicle(int idVehicle) {
+	public void setIdVehicle(String idVehicle) {
 		this.idVehicle = idVehicle;
 	}
 

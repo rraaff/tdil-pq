@@ -42,6 +42,7 @@
 background-color: green;
 }
 </style>
+<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); %>
 <script>
 	$(document).ready(
 		function(){
@@ -61,7 +62,10 @@ background-color: green;
 				email: "<span>Ingrese un E-Mail válido.</span>"}
 		}
 	});
-
+			<% if (myVehicles.size() == 1) { %>
+			$("[name='idVehicle']").val("0");
+			<% } %>
+			
 		}
 	);
 
@@ -72,17 +76,60 @@ background-color: green;
 	<%@ include file="includes/openLegalesLayer.jsp" %>
 	<%@ include file="includes/contactJS.jspf" %>
 	
+	var selectedVehicle = -1;
 
-	function selectVehicle(vehicleId) {
-		$("[name='idVehicle']").val(vehicleId);
-		$('#addServiceButton').prop('disabled', false);
-		$('#vehicleTable').find('li').each(function() {
-		    $(this).removeClass("rowSelected");
-		});
-		$('li[rel="ve-'+vehicleId+'"]').each(function() {
-		    $(this).addClass("rowSelected");
-		});
+	function toggleAll(vehicleId) {
+		if (selectedVehicle == -1) {
+			selectedVehicle = vehicleId;
+			$("[name='idVehicle']").val(vehicleId);
+			$('#addServiceButton').prop('disabled', false);
+			$('#vehicleTable').find('li').each(function() {
+			    $(this).addClass("rowSelected");
+			});
+			$('li[rel="ve-'+vehicleId+'"]').each(function() {
+			    $(this).addClass("rowSelected");
+			});
+		} else {
+			selectedVehicle = -1;
+			$("[name='idVehicle']").val(vehicleId);
+			$('#addServiceButton').prop('disabled', true);
+			$('#vehicleTable').find('li').each(function() {
+			    $(this).removeClass("rowSelected");
+			});
+			$('#addServiceButton').prop('disabled', true);
+			$("[name='idVehicle']").val("");
+		}
 	}
+
+	function toggleSelectVehicle(vehicleId) {
+		selectedVehicle = -1
+		var someSelected = false;
+		var selection ="";
+		$('li[rel="ve-'+vehicleId+'"]').each(function() {
+			if ($(this).hasClass("rowSelected")) {
+		   		$(this).removeClass("rowSelected");
+			} else {
+				$(this).addClass("rowSelected");
+			}
+		});
+		$('#vehicleTable').find('li').each(function() {
+			if ($(this).hasClass("rowSelected")) {
+				var selected = $(this).attr("id").substring(7);
+				if ("0" != selected) {
+					someSelected = true;
+					selection = selection + selected + ",";
+				}
+			} 
+		});
+		if(someSelected) {
+			$('#addServiceButton').prop('disabled', false);
+			$("[name='idVehicle']").val(selection);
+		} else {
+			$('#addServiceButton').prop('disabled', true);
+			$("[name='idVehicle']").val("");
+		}
+	}
+	
 	
 </script>
 </head>
@@ -100,7 +147,6 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 <section id="main_content_regular_page">
 	<div class="template_half">
 		<div class="table_container">
-			<% List<VehicleValueObject> myVehicles = PeugeotService.getMyVehicles(websiteUser.getModelUser().getId()); %>
 			<html:form method="POST" action="/changeDealer" styleClass="add_service_form">
 				<html:hidden name="ChangeDealerForm" property="idVehicle"/>
 				<div class="table_services width650 fleft">
@@ -109,14 +155,22 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 					<ul class="table_header">
 						<li class="cardesc width100per">Seleccionar Vehículo/s</li>
 					</ul>
-					<ul id="vehicleTable" class="table_body">
-						<li class="cardesc width100per" rel="ve-0" onclick="selectVehicle(0)">Todos</li>
-					</ul>
-					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+					<div id="vehicleTable">
+					<% if (myVehicles.size() > 1) { %>
 						<ul class="table_body">
-							<li class="cardesc width100per" rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="selectVehicle(<%=vehicleValueObject.getVehicle().getId()%>)"><%=vehicleValueObject.getVehicle().getDomain()%></li>
+							<li class="cardesc width100per" id="vehicle0" rel="ve-0" onclick="toggleAll(0)">Todos</li>
 						</ul>
 					<% } %>
+					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { %>
+						<ul class="table_body">
+							<% if (myVehicles.size() == 1) { %>
+								<li class="cardesc width100per rowSelected"><%=vehicleValueObject.getVehicle().getDomain()%></li>
+							<% } else { %>
+								<li class="cardesc width100per" id="vehicle<%=vehicleValueObject.getVehicle().getId()%>" rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="toggleSelectVehicle(<%=vehicleValueObject.getVehicle().getId()%>)"><%=vehicleValueObject.getVehicle().getDomain()%></li>
+							<% } %>
+						</ul>
+					<% } %>
+					</div>
 				</div>
 				<div class="add_cartoservices_info width300 fright">
 					<h2>Cargar E-Mail de contacto</h2>

@@ -99,7 +99,7 @@ public class VehiclesRestService extends AbstractRESTService {
 			changeDealerForm.setUser(this.getUser());
 			changeDealerForm.setEmail(email);
 			changeDealerForm.setIdDealer(Integer.parseInt(dealerId));
-			changeDealerForm.setIdVehicle(Integer.parseInt(vehicleId));
+			changeDealerForm.setIdVehicle(vehicleId);
 			GenericTransactionExecutionService.getInstance().execute(new TransactionalAction() {
 				@Override
 				public void executeInTransaction() throws SQLException, ValidationException {
