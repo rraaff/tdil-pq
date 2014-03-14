@@ -64,6 +64,7 @@ background-color: green;
 	});
 			<% if (myVehicles.size() == 1) { %>
 			$("[name='idVehicle']").val("0");
+			$('#addServiceButton').prop('disabled', false);
 			<% } %>
 			
 		}
@@ -92,7 +93,6 @@ background-color: green;
 		} else {
 			selectedVehicle = -1;
 			$("[name='idVehicle']").val(vehicleId);
-			$('#addServiceButton').prop('disabled', true);
 			$('#vehicleTable').find('li').each(function() {
 			    $(this).removeClass("rowSelected");
 			});
