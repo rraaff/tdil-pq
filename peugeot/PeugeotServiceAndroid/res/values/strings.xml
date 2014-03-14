@@ -24,7 +24,7 @@
     
     <!-- Titles -->
     <string name="title_activity_check_for_update">Peugeot AXS</string>
-    <string name="title_activity_login">INGRESÁ</string>
+    <string name="title_activity_login">INGRESO DE USUARIOS</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
@@ -52,15 +52,19 @@
     <string name="rd_main_hookline">El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</string>
     <string name="rd_default_comment"> </string>
     
-    
+    <!-- labels -->
+    <string name="lbl_docType">Tipo doc.</string>
+    <string name="lbl_idNumber">Documento</string>
+    <string name="lbl_idNumberSample">Ej:12123123</string>
+    <string name="lbl_password">Clave</string>
     
     <!-- Buttons -->
-    <string name="btn_tag_login">Ingresar</string>
+    <string name="btn_tag_login">Ingresar   ></string>
     <string name="btn_tag_register">Registrarme</string>
     <string name="btn_tag_modify">Modificar</string>
     <string name="btn_tag_modify_my_data"> </string>
     <string name="btn_tag_change_password">Mi clave</string>
-    <string name="btn_tag_forgotpass">Olvidé mi clave</string>
+    <string name="btn_tag_forgotpass">Recordar clave</string>
     <string name="btn_tag_reset_password">Enviar</string>
     <string name="btn_tag_reset_password_back">Volver</string>
     

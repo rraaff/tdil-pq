@@ -12,7 +12,6 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/main_square"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical" >
         
@@ -21,13 +20,12 @@
             android:layout_width="320dp"
             android:layout_height="320dp"
             android:layout_gravity="center"
-            android:background="@drawable/rd_base"
             android:gravity="center"
             android:minHeight="240dp"
             android:minWidth="240dp" >
 
             <TableRow
-                android:id="@+id/tableRow1"
+                android:id="@+id/tableIDType"
                 android:layout_width="320dp"
                 android:layout_height="160dp" >
 
@@ -78,7 +76,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/tableRow2"
+                android:id="@+id/tableIDNumber"
                 android:layout_width="320dp"
                 android:layout_height="160dp"
                 android:gravity="top" >
@@ -205,17 +203,5 @@
         android:text="@string/rd_default_comment"
         android:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/placahome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:baselineAlignBottom="true"
-        android:contentDescription="@string/action_loading"
-        android:src="@drawable/logo_lojack" />
 
 </merge>

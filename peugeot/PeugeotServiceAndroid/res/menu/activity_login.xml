@@ -2,22 +2,22 @@
     xmlns:peugeot="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_action_home"
-          android:icon="@drawable/icon_main_home"
+          android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="never"
           android:title="@string/action_home"/>
     
     <item android:id="@+id/menu_action_prevent"
-          android:icon="@drawable/icon_main_cars"
+          android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
           android:title="@string/action_home"/>
     
     <item android:id="@+id/menu_action_pets"
-          android:icon="@drawable/icon_main_pets"
+          android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
           android:title="@string/action_home"/>
 
     <item android:id="@+id/menu_action_parkings"
-          android:icon="@drawable/icon_main_parkings"
+          android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
           android:title="@string/action_home"/>
 

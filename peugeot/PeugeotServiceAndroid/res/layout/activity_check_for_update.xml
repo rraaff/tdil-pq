@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/main_square"
     android:clickable="false"
     android:clipChildren="true"
     android:contentDescription="@string/action_system_loading"
@@ -28,7 +27,7 @@
         android:baselineAlignBottom="true"
         android:contentDescription="@string/action_loading"
         android:maxWidth="300dp"
-        android:src="@drawable/logo_lojack" />
+        android:src="@drawable/app_logo" />
 
     <ProgressBar
         android:id="@+id/progressBar1"

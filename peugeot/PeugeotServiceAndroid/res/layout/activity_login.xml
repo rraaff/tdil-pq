@@ -7,114 +7,138 @@
         android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/main_square"
+        android:background="@drawable/bg_ondas"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/main_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_margin="20dp"
+            android:layout_weight="5"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/main_logo" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_margin="30dp"
-            android:background="@drawable/toplayer85"
+            android:layout_margin="25dp"
+            android:layout_weight="10"
+            android:background="@color/bgBase"
             android:gravity="center_vertical|center_horizontal"
             android:maxWidth="300dp"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="0dp" >
 
             <TextView
                 android:id="@+id/loadingInfoText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
                 android:text="@string/title_activity_login"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/orangeTitles" />
+                style="@style/MainTitles" />"
 
             <!--                 android:spinnerMode="dropdown"
                 tools:listitem="@android:layout/simple_spinner_item"  
                 @android:style/Widget.Holo.Light.Spinner
                 -->
-            
-            <Spinner
-                android:id="@+id/documentType"
-                android:layout_width="fill_parent"
+
+            <TableLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/bgBase" />
+                android:layout_margin="25dp"
+                android:background="@color/grayTabBase"
+                android:padding="25dp" >
 
-            <EditText
-                android:id="@+id/documentNumber"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:ems="10"
-                android:hint="@string/hnt_doc_number"
-                android:inputType="number"
-                android:textColor="@color/bgBase"
-                android:textColorLink="@color/orangeTitles"
-                android:textSize="14sp"
-                android:textStyle="normal" >
+                <TableRow
+                    android:id="@+id/tableIDType"
+					style="fieldsetLike">
 
-                <requestFocus />
-            </EditText>
+                    <TextView
+                        android:id="@+id/labelIDType"
+                        style="@style/Label"
+                        android:text="@string/lbl_docType" />
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:ems="10"
-                android:hint="@string/hnt_doc_password"
-                android:inputType="textPassword"
-                android:textColor="@color/bgBase"
-                android:textColorLink="@color/orangeTitles"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                    <Spinner
+                        android:id="@+id/documentType"
+						style="@style/textFieldsOne" />
+                </TableRow>
 
-            <Button
-                android:id="@+id/loginButtons"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/btn_rojo_normal_holo_light"
-                android:minHeight="40dp"
-                android:onClick="@string/dologin"
-                android:text="@string/btn_tag_login"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
+                <TableRow
+                    android:id="@+id/tableIDNumber"
+                    style="fieldsetLike">
 
-            <CheckBox
-                android:id="@+id/rememberPasswordCheckbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:paddingRight="30dp"
-                android:text="@string/crt_tag_rememberme"
-                android:textColor="#F2F2F2"
-                android:textSize="12sp"
-                android:visibility="visible" />
+                    <TextView
+                        android:id="@+id/labelIdNumber"
+						style="@style/Label"
+                        android:text="@string/lbl_idNumber" />
 
-            <Button
-                android:id="@+id/requestResetPassword"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:focusable="false"
-                android:minHeight="24dp"
-                android:text="@string/btn_tag_forgotpass"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:visibility="visible" />
+                    <EditText
+                        android:id="@+id/documentNumber"
+                        android:hint="@string/lbl_idNumberSample"
+                        android:inputType="number"
+                        style="@style/textFieldsOne" />
 
-			<Button
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tablePassword"
+                    style="fieldsetLike" >
+
+                    <TextView
+                        android:id="@+id/labelPassword"
+                        style="@style/Label"
+                        android:text="@string/lbl_password" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:hint="@string/hnt_doc_password"
+                        android:inputType="textPassword"
+                        style="@style/textFieldsOne" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRememberMe"
+                    style="@style/fieldsetLike" >
+
+                    <CheckBox
+                        android:id="@+id/rememberPasswordCheckbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|fill_horizontal"
+                        android:maxLines="1"
+                        android:paddingRight="30dp"
+                        android:text="@string/crt_tag_rememberme"
+                        android:textAlignment="center"
+                        android:textColor="@color/labels"
+                        android:textSize="20sp"
+                        android:visibility="visible" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TableRow
+                android:id="@+id/buttonWrapper"
+                style="@style/buttonWrapper" >
+
+                <Button
+                    android:id="@+id/requestResetPassword"
+                    style="@style/ButtonBackward"
+                    android:text="@string/btn_tag_forgotpass" />
+
+                <Button
+                    android:id="@+id/loginButtons"
+                    style="@style/ButtonForward"
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_tag_login" />
+
+            </TableRow>
+
+			<!--  Button
 			    android:id="@+id/requestRegistration"
 			    style="?android:attr/buttonStyleSmall"
 			    android:layout_width="fill_parent"
@@ -126,16 +150,19 @@
 			    android:text="@string/btn_tag_register"
 			    android:textColor="#ffffff"
 			    android:textSize="14sp"
-			    android:visibility="visible" />
-
-			<TextView
-			    android:id="@+id/appVersion"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:text="TextView"
-			    android:textSize="8sp" />
+			    android:visibility="visible" / -->
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/appVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/bgBase"
+            android:textSize="8sp" />
 
 	    <ImageView
 	        android:id="@+id/placahome"
@@ -144,11 +171,12 @@
 	        android:layout_gravity="bottom|center_horizontal"
 	        android:layout_marginLeft="50dp"
 	        android:layout_marginRight="50dp"
+	        android:layout_weight="1"
 	        android:adjustViewBounds="true"
 	        android:contentDescription="@string/action_loading"
 	        android:gravity="bottom|center_horizontal"
 	        android:maxWidth="240dp"
-	        android:src="@drawable/logo_lojack" />
+	        android:src="@drawable/app_logo" />
 
     </LinearLayout>
 </merge>
