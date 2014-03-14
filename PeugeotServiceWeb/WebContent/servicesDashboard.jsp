@@ -35,10 +35,9 @@
 <%@ include file="includes/headLogged.jsp" %>
 <% 
 List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
-Boolean rememberClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
-if (rememberClicked == null) {
+Boolean snoozeClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
+if (snoozeClicked == null) {
 	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
-	request.getSession().setAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN, Boolean.TRUE);
 }
 %>
 <script>
@@ -62,6 +61,22 @@ if (rememberClicked == null) {
 	          cache: false,
 	          url: "./dismissAdvices.do",
 	          data: {idAdvices: idAdvices},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  $( "#advicesLayer" ).fadeOut();
+	          },
+	          error: function() {
+	        	  $( "#advicesLayer" ).fadeOut();
+	        	  errorAjax();
+	          }
+	      });
+	}
+
+	function snooze() {
+		$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./snoozeAdvices.do",
 	          contentType: "application/json; charset=utf-8",
 	          success: function(data) {
 	        	  $( "#advicesLayer" ).fadeOut();
@@ -167,7 +182,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 				} %>
 			</div>
 			<fieldset class="button_bar pOnlyTop25">
-				<button class="link_back" onclick="este debería ser un snooze y que me lo muestro en el próximo login"><span></span>Ocultar aviso</button>
+				<button class="link_back" onclick="javascript:snooze()"><span></span>Ocultar aviso</button>
 				<button class="link_back" onclick="javascript:dismiss('<%=sb.toString()%>');">No volver a mostrar</button>
 				<button class="botton_ahead" onclick="window.location='./goToMyServices.do';">Ir a Mis Services<span></span></button>
 			</fieldset>

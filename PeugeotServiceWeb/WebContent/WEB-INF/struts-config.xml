@@ -289,6 +289,7 @@
   <action path="/searchCities" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchCitiesAjaxAction"/>
   <action path="/searchDealers" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SearchDealersAjaxAction"/>
   <action path="/dismissAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>
+  <action path="/snoozeAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SnoozeAdvicesAjaxAction"/>
   
   <action name="LoginCCForm"  path="/cc/login" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginCCAction">
   	<forward name="failure" path="/cc/login.jsp"/>

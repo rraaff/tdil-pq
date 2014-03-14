@@ -581,11 +581,7 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page4" PATH="/editVehicleData.jsp"
   SHAPE="256,2562,0,0" SUBTYPE="jsp" TITLE="editVehicleData.jsp"
-  TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveVehicleData.do"
-   SUBTYPE="confirmed" TARGET="action17" TITLE="/saveVehicleData.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page8" PATH="/selectVehicleForEditData.jsp"
   SHAPE="256,2706,0,0" SUBTYPE="jsp"
   TITLE="selectVehicleForEditData.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
@@ -615,11 +611,7 @@
    PATH="/services.jsp" TARGET="page9" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page9" PATH="/services.jsp" SHAPE="240,2562,0,0"
-  SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/saveService.do"
-   SUBTYPE="confirmed" TARGET="action21" TITLE="/saveService.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SUBTYPE="jsp" TITLE="services.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#saveService" NAME="action21" PATH="/saveService"
   SHAPE="32,2913,0,0" TITLE="ServicesForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0" PATH="/services.jsp"
@@ -691,4 +683,6 @@
  <PROCESS-ITEM ID="#generatePassword" NAME="action29"
   PATH="/generatePassword" SHAPE="32,3393,0,0"
   TITLE="GeneratePasswordForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#snoozeAdvices" NAME="action31" PATH="/snoozeAdvices"
+  SHAPE="32,3393,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>
