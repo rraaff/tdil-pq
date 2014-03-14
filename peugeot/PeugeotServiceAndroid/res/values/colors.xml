@@ -5,11 +5,10 @@
     <color name="gray">#cacaca</color>
 	<color name="grayTabBase">#333333</color>
 	
-	<color name="bgCream">#F0ECE6</color>
 	<color name="bgBase">#FFFFFF</color>
 	
-	<color name="orangeTitles">#ef5323</color>
-	<color name="orangeDark">#BC2800</color>
+	<color name="MainTitles">#00aad5</color>
+	<color name="SecondayTitles">#595a67</color>
 	
 	
 	<!-- Item list -->

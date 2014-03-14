@@ -2,7 +2,7 @@
 <resources>
 
     
-    <string name="app_name">LoJack</string>
+    <string name="app_name">Peugeot AXS</string>
     <string name="action_settings">Buscando actualizaciones</string>
     <string name="action_loading">Cargando Información</string>
     <string name="action_system_loading">Cargando información del sistema</string>
@@ -23,13 +23,13 @@
     
     
     <!-- Titles -->
-    <string name="title_activity_check_for_update">LoJack</string>
+    <string name="title_activity_check_for_update">Peugeot AXS</string>
     <string name="title_activity_login">INGRESÁ</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
     <string name="title_activity_change_password">CAMBIAR CLAVE</string>
-    <string name="title_activity_login_for_action_bar">LOJACK</string>
+    <string name="title_activity_login_for_action_bar">Peugeot AXS</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
     <string name="title_activity_add_service">Agregar service</string>
@@ -84,7 +84,7 @@
     
     <string name="btn_male">Masculino</string>
     <string name="btn_female">Femenino</string>
-    <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
+    <string name="btn_optIn">Acepto recibir contactos de Peugeot AXS y sus compañías asociadas</string>
     
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>
