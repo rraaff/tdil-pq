@@ -44,6 +44,8 @@
 		
 
 function clearErrors() {
+	$('#changePassErr').prop('innerHTML', '');
+	$('#changePassErr').css('display', 'none');
 	$("div[id^='err.']").each(function(index, valor) {
 		$(valor).prop('innerHTML','');
 	});
@@ -55,6 +57,10 @@ function postChangePassword(data) {
 	if (data.result == 'OK') {
 		$( "#changePasswordLayer" ).fadeOut();
 	} else {
+		if(data.general) {
+			$('#changePassErr').prop('innerHTML', data.general);
+			$('#changePassErr').css('display', 'block');
+		}
 		$.each(data, function(key, value) {
 			var obj = document.getElementById('err.' + key);
 			if (obj) {
@@ -73,7 +79,7 @@ function postChangePassword(data) {
 		</section>
 		<section class="modal_content">
 			<span class="modal_subtitle">Complete los datos requeridos</span>
-
+			<div class="alert alert-error" id="changePassErr" style="display: none;"></div>
 			<html:form method="POST" action="/changePassword" styleClass="modal_wrapper">
 				<fieldset class="width100per">
 					<label>Clave actual</label>
