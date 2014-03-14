@@ -115,7 +115,7 @@ div.mini_form_wrapper label							{ color:#595a67; font-size:13px; width:91px; d
 div.mini_form_wrapper input[type="text"],
 div.mini_form_wrapper input[type="password"],
 div.mini_form_wrapper select,
-div.mini_form_wrapper textarea						{ border:solid 1px #d9d9d9; color:#595a67; font-size:13px; font-family:Arial; padding:8px; margin:7px 0; width:150px; }
+div.mini_form_wrapper textarea						{ border:solid 1px #d9d9d9; color:#595a67; font-size:13px; font-family:Arial; padding:8px; margin:7px 0; width:169px; }
 div.mini_form_wrapper select						{ width:169px; }
 textarea.comment									{ width:410px!important; }
 
@@ -389,11 +389,11 @@ footer						{ color:#fff; position:relative; top:-20px; }
 	#header_all											{ background-position:center 0; }
 	#header_all,
 	div.pgt_wrapper										{ width:100%; min-width:100%; }
-	#header_all div.logo								{ background-repeat: no-repeat; left: 50%; margin-left: -432px;  }
-	#header_all div.signature							{ left: 50%; margin-left: -300px; }
-	#header_all div#main_menu							{ left: 50%; margin-left: -300px; }
+	#header_all div.logo								{ background-repeat:no-repeat; left:50%; margin-left:-432px;  }
+	#header_all div.signature							{ left:50%; margin-left:-300px; }
+	#header_all div#main_menu							{ left:50%; margin-left:-300px; }
 	#page_title div.page_title_wrapper					{ width:100%; }
-	#page_title div.title h1							{ width: 966px; margin:8px auto 0; padding: 0; }
+	#page_title div.title h1							{ width:966px; margin:8px auto 0; padding:0; }
 	
 	#wheel										{ min-width:inherit; }
 	div#content_wrapper							{ width:100% }
@@ -484,6 +484,20 @@ footer						{ color:#fff; position:relative; top:-20px; }
 
 	div.table_services									{ width:55%!important; }
 	div.add_cartoservices_info							{ width:45%!important; padding-left:25px; }
+	
+	
+	section#main_content_regular_page								{ padding:50px 15px 25px; }
+	section#main_content_regular_page div.page_header				{ width:100%; }
+	section#main_content_regular_page form.regular_form_page		{ width:100%; }
+	section#main_content_regular_page div.column1of3				{ width:100%; margin:0; }
+	section#main_content_regular_page div.column1of3 h3				{ margin:40px 0 20px; }
+	section#main_content_regular_page div.mini_form_wrapper			{ width:100%; }
+	section#main_content_regular_page div.mini_form_wrapper label	{ width:inherit; padding:15px 0 0 15px; }
+	section#main_content_regular_page div.mini_form_wrapper input[type="text"],
+	section#main_content_regular_page div.mini_form_wrapper input[type="password"],
+	section#main_content_regular_page div.mini_form_wrapper select, 
+	section#main_content_regular_page div.mini_form_wrapper textarea	{ width:inherit; margin:0 0 7px }
+	
 }
 
 @media only screen and (max-width:999px) {

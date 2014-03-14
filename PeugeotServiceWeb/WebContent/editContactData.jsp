@@ -64,7 +64,7 @@ if (apk != null && apk) {
 <%@ include file="includes/version.jspf" %>
 <body>
 <% if (usingMobile || isAndroid) { %>
-	<div style="background:#99ECD6; line-height:20px; text-align:center; color:#000;">android or mobile</div>
+
 <% } %>
 <%
 	Breadcrum breadcrums = new Breadcrum()
@@ -74,6 +74,7 @@ if (apk != null && apk) {
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>
+<%@ include file="includes/action_bar.jspf" %>
 <%@ include file="includes/under_shade.jspf" %>
 <section id="main_content_regular_page">
 	<div class="page_header">
@@ -149,7 +150,7 @@ if (apk != null && apk) {
 			</div>
 		</div>
 		<div class="column1of3">
-			<h3>Segundo contacto</h3>
+			<h3>Tercer contacto</h3>
 			<div class="mini_form_wrapper">
 				<fieldset>
 					<label>Nombre</label>
