@@ -1,0 +1,13 @@
+<% 
+java.util.List<com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject> advices = new java.util.ArrayList<com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject>();
+Boolean snoozeClicked = (Boolean)session.getAttribute(com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
+if (snoozeClicked == null) {
+	advices = com.tdil.ljpeugeot.services.PeugeotService.getAdvices(websiteUser.getModelUser().getId());
+}
+if (!advices.isEmpty()) { %>
+centerLayer($(window), $( "#advicesLayer" ));
+centerLayer($(window), $( "#advices" ));
+$( "#closeadvicesLayer" ).click(function() {
+	$( "#advicesLayer" ).fadeOut();
+});
+<% } %>

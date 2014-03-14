@@ -34,9 +34,11 @@
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-				
+
+	<%@ include file="includes/advicesQueryAndOpen.jspf" %>
 			}
 	);
+	<%@ include file="includes/advicesJS.jspf" %>
 
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
@@ -69,5 +71,6 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/layer_contact.jspf" %>
 <%@ include file="includes/layer_legales.jspf" %>
+<%@ include file="includes/advicesLayers.jspf" %>
 </body>
 </html>

@@ -1,0 +1,32 @@
+	function dismiss(idAdvices) {
+		$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./dismissAdvices.do",
+	          data: {idAdvices: idAdvices},
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  $( "#advicesLayer" ).fadeOut();
+	          },
+	          error: function() {
+	        	  $( "#advicesLayer" ).fadeOut();
+	        	  errorAjax();
+	          }
+	      });
+	}
+
+	function snooze() {
+		$.ajax({
+	          type: "GET",
+	          cache: false,
+	          url: "./snoozeAdvices.do",
+	          contentType: "application/json; charset=utf-8",
+	          success: function(data) {
+	        	  $( "#advicesLayer" ).fadeOut();
+	          },
+	          error: function() {
+	        	  $( "#advicesLayer" ).fadeOut();
+	        	  errorAjax();
+	          }
+	      });
+	}

@@ -33,60 +33,17 @@
 	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headLogged.jsp" %>
-<% 
-List<AdviceValueObject> advices = new ArrayList<AdviceValueObject>();
-Boolean snoozeClicked = (Boolean)session.getAttribute(DismissAdvicesAjaxAction.ADVICES_ALREADY_SHOWN);
-if (snoozeClicked == null) {
-	advices = PeugeotService.getAdvices(websiteUser.getModelUser().getId());
-}
-%>
 <script>
 	$(document).ready(
 			function(){
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 	<%@ include file="includes/externalLogins.jspf" %>
-				<% if (!advices.isEmpty()) { %>
-				centerLayer($(window), $( "#advicesLayer" ));
-				centerLayer($(window), $( "#advices" ));
-				$( "#closeadvicesLayer" ).click(function() {
-					$( "#advicesLayer" ).fadeOut();
-				});
-				<% } %>
+
+	<%@ include file="includes/advicesQueryAndOpen.jspf" %>
 			}
 	);
-	function dismiss(idAdvices) {
-		$.ajax({
-	          type: "GET",
-	          cache: false,
-	          url: "./dismissAdvices.do",
-	          data: {idAdvices: idAdvices},
-	          contentType: "application/json; charset=utf-8",
-	          success: function(data) {
-	        	  $( "#advicesLayer" ).fadeOut();
-	          },
-	          error: function() {
-	        	  $( "#advicesLayer" ).fadeOut();
-	        	  errorAjax();
-	          }
-	      });
-	}
-
-	function snooze() {
-		$.ajax({
-	          type: "GET",
-	          cache: false,
-	          url: "./snoozeAdvices.do",
-	          contentType: "application/json; charset=utf-8",
-	          success: function(data) {
-	        	  $( "#advicesLayer" ).fadeOut();
-	          },
-	          error: function() {
-	        	  $( "#advicesLayer" ).fadeOut();
-	        	  errorAjax();
-	          }
-	      });
-	}
+	<%@ include file="includes/advicesJS.jspf" %>
 
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
@@ -158,38 +115,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 
-<!-- Layer de muestra de avisos -->
-<% StringBuilder sb = new StringBuilder();
-	if (!advices.isEmpty()) { %>
-<div id="advicesLayer" class="layerOnTop" style="display:none; z-index:1500;">
-	<div id="advices" class="layerModal width600">
-		<section class="modal_header">
-			<h2>Información importante</h2>
-			<h3>Aviso de service</h3>
-			<button class="close" id="closeadvicesLayer">Cerrar <span></span></button>
-		</section>
-		<section class="modal_content">
-			<span class="modal_subtitle">Service requerido</span>
-			
-			<div class="service_alert">
-			<% for (AdviceValueObject adviceValueObject : advices) { %>
-				<% if (adviceValueObject.getAdvice().getServicedate() == null) { %>
-					<p>Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service a los <%=adviceValueObject.getAdvice().getKm() %> km</p>
-				<% } else { %>
-					<p>Su vehiculo <%=adviceValueObject.getVehicle().getDomain()%> debe realizar el service antes de la fecha <%=DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate())%></p>
-				<% } %>
-			<% sb.append(adviceValueObject.getAdvice().getId()).append(",");
-				} %>
-			</div>
-			<fieldset class="button_bar pOnlyTop25">
-				<button class="link_back" onclick="javascript:snooze()"><span></span>Ocultar aviso</button>
-				<button class="link_back" onclick="javascript:dismiss('<%=sb.toString()%>');">No volver a mostrar</button>
-				<button class="botton_ahead" onclick="window.location='./goToMyServices.do';">Ir a Mis Services<span></span></button>
-			</fieldset>
-		</section>
-	</div>
-</div>
-<% } %>
+<%@ include file="includes/advicesLayers.jspf" %>
 
 </body>
 </html>
