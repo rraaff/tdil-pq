@@ -3,7 +3,7 @@
 --%><%
 java.io.FileInputStream inputStream = null;
 		try {
-			String fileName = com.tdil.utils.SystemPropertyCache.getTempPath() + "/lojacklogs/server.log";
+			String fileName = com.tdil.utils.SystemPropertyCache.getTempPath() + "/ljpeugeotlogs/server.log";
 			response.setContentType("application/octet-stream");
 			response.setHeader("Content-Disposition", "attachment; filename=".concat(fileName));
 			inputStream = new java.io.FileInputStream(new java.io.File(fileName));
