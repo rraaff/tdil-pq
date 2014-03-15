@@ -1,8 +1,6 @@
 package com.tdil.peugeotservice.android;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
@@ -22,10 +20,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,15 +32,12 @@ import com.mobsandgeeks.saripaar.Validator.ValidationListener;
 import com.mobsandgeeks.saripaar.annotation.Password;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.gui.BeanMappingFunction;
-import com.tdil.peugeotservice.android.gui.BeanMappingListAdapter;
 import com.tdil.peugeotservice.android.rest.client.HttpMethod;
 import com.tdil.peugeotservice.android.rest.client.IRestClientObserver;
 import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeBean;
 import com.tdil.peugeotservice.android.rest.model.LoginResponse;
 import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
@@ -71,11 +64,6 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 	private RESTClientTask mAuthTask = null;
 	// Values for email and password at the time of the login attempt.
-
-	@TextRule(order = 1, minLength = 1, maxLength = 11, message = "Selecione el tipo de documento.")
-	private Spinner docTypeSpinner;
-
-	private String mDocType;
 
 	@TextRule(order = 2, minLength = 1, maxLength = 11, message = "Ingrese hasta 11 caracteres.")
 	private EditText docNumberEdittext;
@@ -120,64 +108,6 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		String mPassword = this.getPreferences(Context.MODE_PRIVATE).getString(
 				"mPassword", "");
 
-		docTypeSpinner = (Spinner) findViewById(R.id.documentType);
-		docTypeSpinner
-				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-					@Override
-					public void onItemSelected(AdapterView<?> arg0, View arg1,
-							int arg2, long arg3) {
-						DocumentTypeBean item = (DocumentTypeBean) arg0
-								.getItemAtPosition(arg2);
-						LoginActivity.this.mDocType = String.valueOf(item
-								.getId());
-
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> arg0) {
-					}
-				});
-
-		List<DocumentTypeBean> documentTypeBeans = new ArrayList<DocumentTypeBean>();
-		documentTypeBeans.add(new DocumentTypeBean(1, "DNI",1));
-		documentTypeBeans.add(new DocumentTypeBean(2, "Pasaporte",1));
-		documentTypeBeans.add(new DocumentTypeBean(3, "Libreta Civica",1));
-		documentTypeBeans.add(new DocumentTypeBean(4, "Libreta Enrolamiento",1));
-		documentTypeBeans.add(new DocumentTypeBean(5, "Cedula Identidad",1));
-		
-		BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(
-				LoginActivity.this,
-				android.R.layout.simple_spinner_item, documentTypeBeans,
-				new BeanMappingFunction<DocumentTypeBean>() {
-					public String key(DocumentTypeBean t) {
-						return String.valueOf(t.getId());
-					};
-
-					@Override
-					public String value(DocumentTypeBean t) {
-						return t.getName();
-					}
-				});
-		LoginActivity.this.docTypeSpinner.setAdapter(adapter);
-		String mDocTypeSt = LoginActivity.this.getPreferences(
-				Context.MODE_PRIVATE).getString("mDocType", "-1");
-		if (mDocTypeSt.length() == 0) {
-			mDocTypeSt = "-1";
-		}
-		int mDocType = Integer.valueOf(mDocTypeSt);
-		boolean found = false;
-		if (mDocType != -1) {
-			int index = 0;
-			for (DocumentTypeBean bean : documentTypeBeans) {
-				if (bean.getId() == mDocType) {
-					LoginActivity.this.mDocType = mDocTypeSt;
-					LoginActivity.this.docTypeSpinner
-							.setSelection(index);
-					found = true;
-				}
-				index = index + 1;
-			}
-		}
 		/*
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
@@ -256,7 +186,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 				});
 		remCheckBox = (CheckBox) findViewById(R.id.rememberPasswordCheckbox);
 
-		findViewById(R.id.requestRegistration).setOnClickListener(
+		/*findViewById(R.id.requestRegistration).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -264,7 +194,10 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 								RegisterActivity.class);
 						startActivity(intent);
 					}
-				});
+				});*/
+		
+		mDocNumber = "11111111";
+		mPassword = "123123";
 
 		docNumberEdittext = (EditText) findViewById(R.id.documentNumber);
 		docNumberEdittext.setText(mDocNumber);
@@ -286,7 +219,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 			e.printStackTrace();
 		}
 		
-		if (found && remCheckBox.isChecked() && fromLaunch) {
+		if (remCheckBox.isChecked() && fromLaunch) {
 			attemptLogin();
 		}
 
@@ -339,7 +272,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		showProgress(true);
 		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this,
 				RESTConstants.LOGIN, new RestParams(
-						RESTConstants.P_DOCUMENT_TYPE, mDocType).put(
+						RESTConstants.P_DOCUMENT_TYPE, 1).put(
 						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
 						RESTConstants.P_PASSWORD, mPassword), null);
 		mAuthTask.execute((Void) null);
@@ -374,13 +307,11 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 			if (LoginActivity.this.remCheckBox.isChecked()) {
 				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
-				e.putString("mDocType", mDocType);
 				e.putString("mDocNumber", mDocNumber);
 				e.putString("mPassword", mPassword);
 				e.commit();
 			} else {
 				Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();
-				e.putString("mDocType", "");
 				e.putString("mDocNumber", "");
 				e.putString("mPassword", "");
 				e.commit();

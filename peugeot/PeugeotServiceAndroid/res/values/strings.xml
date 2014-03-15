@@ -20,6 +20,7 @@
     <string name="lst_title_my_vehicles">Mis vehiculos:</string>
     <string name="lst_title_official_services">Agencias/Service autorizados:</string>
     <string name="lst_title_dealers">Concesionarios:</string>
+    <string name="lst_title_advices">Avisos</string>
     
     
     <!-- Titles -->
@@ -42,6 +43,7 @@
     <string name="title_contact1">Primer contacto</string>
     <string name="title_contact2">Segundo contacto</string>
     <string name="title_contact3">Tercer contacto</string>
+    
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
@@ -90,6 +92,9 @@
     <string name="btn_female">Femenino</string>
     <string name="btn_optIn">Acepto recibir contactos de Peugeot AXS y sus compañías asociadas</string>
     
+    <string name="btn_dismiss_advices">Dismiss</string>
+    <string name="btn_snooze_advices">Snooze</string>
+    
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>
     
@@ -117,6 +122,9 @@
     <string name="lst_itm_email">Email</string>
     <string name="lst_itm_phone">Telefono</string>
     
+    <string name="lst_itm_service_before_km">Antes del kilometraje</string>
+    <string name="lst_itm_service_before_date">Antes de la fecha</string>
+
     <!-- Hints -->
     <string name="hnt_doc_number">Número de documento</string>
     <string name="hnt_doc_password">Clave</string>

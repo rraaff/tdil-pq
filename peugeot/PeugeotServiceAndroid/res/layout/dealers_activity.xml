@@ -14,6 +14,14 @@
         android:orientation="vertical" >
 
         <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lst_title_dealers"
+            android:textColor="@color/lst_itm_title"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/lastChanges"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

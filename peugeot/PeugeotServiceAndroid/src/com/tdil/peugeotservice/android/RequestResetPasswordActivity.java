@@ -10,22 +10,16 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.gui.BeanMappingFunction;
-import com.tdil.peugeotservice.android.gui.BeanMappingListAdapter;
 import com.tdil.peugeotservice.android.rest.client.HttpMethod;
 import com.tdil.peugeotservice.android.rest.client.IRestClientObserver;
 import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeBean;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeCollection;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.utils.Messages;
 
@@ -48,7 +42,6 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 
 	private RESTClientTask mAuthTask = null;
 	// Values for email and password at the time of the login attempt.
-	private String mDocType;
 	private String mDocNumber;
 
 	@Override
@@ -57,40 +50,6 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
-		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
-		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				 DocumentTypeBean item = (DocumentTypeBean)arg0.getItemAtPosition(arg2);
-				 RequestResetPasswordActivity.this.mDocType = String.valueOf(item.getId());
-				
-			}@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
-		});
-
-		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-			@Override
-			public void sucess(IRestClientTask task) {
-				 Gson gson = new Gson();
-				 DocumentTypeCollection col = gson.fromJson(task.getResult(), DocumentTypeCollection.class);
-				 BeanMappingListAdapter<DocumentTypeBean> adapter = new BeanMappingListAdapter<DocumentTypeBean>(RequestResetPasswordActivity.this,
-					android.R.layout.simple_spinner_item, col.getList(), new BeanMappingFunction<DocumentTypeBean>() {
-			 			public String key(DocumentTypeBean t) {return String.valueOf(t.getId());};
-			 			@Override
-			 			public String value(DocumentTypeBean t) {
-			 				return t.getName();
-			 			}
-					});
-					spinner.setAdapter(adapter);
-			}
-			@Override
-			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
-			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);
 		
 		/*List<String> list = new ArrayList<String>();
 		list.add("DNI");
@@ -127,7 +86,7 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 		boolean cancel = false;
 		View focusView = null;
 		showProgress(true);
-		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.REQUEST_RESET_PASSWORD, new RestParams(RESTConstants.P_DOCUMENT_TYPE, mDocType).
+		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.REQUEST_RESET_PASSWORD, new RestParams(RESTConstants.P_DOCUMENT_TYPE, 1).
 				put(RESTConstants.P_DOCUMENT_NUMBER, mDocNumber), null);
 		mAuthTask.executeSerial((Void) null);
 	}

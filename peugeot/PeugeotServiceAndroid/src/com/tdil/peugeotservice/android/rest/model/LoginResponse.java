@@ -7,25 +7,10 @@ public class LoginResponse {
 	private String name;
 	private String lojackUserId;
 	
-	private boolean homeUser;
-	private String homeUserId;
-	private boolean preventUser;
-	private String preventUserId;
-	private boolean petUser;
-	private String petUserId;
-	
 	private String apkToken;
 	
-	private long cameraRefreshTime;
+	private boolean servicesAdvices;
 	
-	private String homeVideo;
-	private String petVideo;
-	private String petUrl;
-	private String preventVideo;
-	private String preventUrl;
-	
-	private boolean vluClient;
-	private int vluMessages;
 	
 	public LoginResponse() {
 	}
@@ -54,90 +39,6 @@ public class LoginResponse {
 	public void setLojackUserId(String lojackUserId) {
 		this.lojackUserId = lojackUserId;
 	}
-	public boolean getHomeUser() {
-		return homeUser;
-	}
-	public void setHomeUser(boolean isHomeUser) {
-		this.homeUser = isHomeUser;
-	}
-	public String getHomeUserId() {
-		return homeUserId;
-	}
-	public void setHomeUserId(String homeUserId) {
-		this.homeUserId = homeUserId;
-	}
-	public boolean getPreventUser() {
-		return preventUser;
-	}
-	public void setPreventUser(boolean isPreventUser) {
-		this.preventUser = isPreventUser;
-	}
-	public String getPreventUserId() {
-		return preventUserId;
-	}
-	public void setPreventUserId(String preventUserId) {
-		this.preventUserId = preventUserId;
-	}
-	public boolean getPetUser() {
-		return petUser;
-	}
-	public void setPetUser(boolean isPetUser) {
-		this.petUser = isPetUser;
-	}
-	public String getPetUserId() {
-		return petUserId;
-	}
-	public void setPetUserId(String petUserId) {
-		this.petUserId = petUserId;
-	}
-
-	public long getCameraRefreshTime() {
-		return cameraRefreshTime;
-	}
-
-	public void setCameraRefreshTime(long cameraRefreshTime) {
-		this.cameraRefreshTime = cameraRefreshTime;
-	}
-
-	public String getPetVideo() {
-		return petVideo;
-	}
-
-	public void setPetVideo(String petVideo) {
-		this.petVideo = petVideo;
-	}
-
-	public String getPetUrl() {
-		return petUrl;
-	}
-
-	public void setPetUrl(String petUrl) {
-		this.petUrl = petUrl;
-	}
-
-	public String getPreventVideo() {
-		return preventVideo;
-	}
-
-	public void setPreventVideo(String preventVideo) {
-		this.preventVideo = preventVideo;
-	}
-
-	public String getPreventUrl() {
-		return preventUrl;
-	}
-
-	public void setPreventUrl(String preventUrl) {
-		this.preventUrl = preventUrl;
-	}
-
-	public String getHomeVideo() {
-		return homeVideo;
-	}
-
-	public void setHomeVideo(String homeVideo) {
-		this.homeVideo = homeVideo;
-	}
 
 	public String getApkToken() {
 		return apkToken;
@@ -146,21 +47,14 @@ public class LoginResponse {
 	public void setApkToken(String apkToken) {
 		this.apkToken = apkToken;
 	}
+
+	public boolean getServicesAdvices() {
+		return servicesAdvices;
+	}
+
+	public void setServicesAdvices(boolean servicesAdvices) {
+		this.servicesAdvices = servicesAdvices;
+	}
 	
-	public boolean getVluClient() {
-		return vluClient;
-	}
-
-	public void setVluClient(boolean vluClient) {
-		this.vluClient = vluClient;
-	}
-
-	public int getVluMessages() {
-		return vluMessages;
-	}
-
-	public void setVluMessages(int vluMessages) {
-		this.vluMessages = vluMessages;
-	}
 
 }

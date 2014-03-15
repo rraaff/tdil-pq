@@ -65,12 +65,7 @@ public class FooterLogic  {
 	}
 
 	public static void handlePreventAccess(final Activity activity) {
-		if (Login.getLoggedUser(activity).getPreventUser()) {
-			activity.startActivity(new Intent(activity, PreventActivity.class));
-		} else {
-			String videoId = Login.getLoggedUser(activity).getPreventVideo();
-			playVideo(activity, videoId);
-		}
+		activity.startActivity(new Intent(activity, PreventActivity.class));
 	}
 	
 	public static void handlePeugeotAccess(final Activity activity) {
