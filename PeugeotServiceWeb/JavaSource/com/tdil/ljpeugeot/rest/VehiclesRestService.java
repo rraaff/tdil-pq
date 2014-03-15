@@ -21,7 +21,9 @@ import javax.ws.rs.core.Response;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Service;
+import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
 import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
+import com.tdil.ljpeugeot.rest.model.AdviceBean;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.DealerBean;
 import com.tdil.ljpeugeot.rest.model.EmailBean;
@@ -217,6 +219,41 @@ public class VehiclesRestService extends AbstractRESTService {
 				result.add(new ModelBean(dealer));
 			}
 			return createResponse(201, new BeanCollection<ModelBean>(result));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/advices")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listAdvices() {
+//		validateLogged();
+		try {
+			Collection<AdviceBean> result = new ArrayList<AdviceBean>();
+			for (AdviceValueObject dealer : PeugeotService.getAdvices(this.getUser().getModelUser().getId())) {
+				result.add(new AdviceBean(dealer));
+			}
+			return createResponse(201, new BeanCollection<AdviceBean>(result));
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return failResponse();
+		}
+	}
+	
+	@GET
+	@Path("/dismissAdvices")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response dismissAdvices() {
+//		validateLogged();
+		try {
+			StringBuilder advices = new StringBuilder();
+			for (AdviceValueObject dealer : PeugeotService.getAdvices(this.getUser().getModelUser().getId())) {
+				advices.append(dealer.getAdvice().getId()).append(",");
+			}
+			PeugeotService.dismissAdvices(advices.toString(), getUser().getModelUser().getId());
+			return okResponse();
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return failResponse();

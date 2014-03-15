@@ -81,13 +81,7 @@ public class UsersService extends AbstractRESTService {
 			loginResponse.setLogged(true);
 			loginResponse.setName(user.getName());
 			loginResponse.setLojackUserId(user.getLojackUserId());
-			loginResponse.setHomeUser(user.isHomeUser());
-			loginResponse.setHomeUserId(user.getHomeUserId());
-			loginResponse.setPetUser(user.isPetUser());
-			loginResponse.setPetUserId(user.getPetUserId());
-			loginResponse.setPreventUser(user.isPreventUser());
-			loginResponse.setPreventUserId(user.getPreventUserId());
-			loginResponse.setVluClient(user.vluIsClient());
+			loginResponse.setServicesAdvices(PeugeotService.getAdvices(user.getModelUser().getId()).size() > 0);
 			String apkToken = ApkLoginCache.add(user);
 			loginResponse.setApkToken(apkToken);
 			return response(loginResponse);
