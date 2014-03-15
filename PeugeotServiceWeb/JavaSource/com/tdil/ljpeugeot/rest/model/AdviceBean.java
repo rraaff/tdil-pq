@@ -2,7 +2,9 @@ package com.tdil.ljpeugeot.rest.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
+import com.tdil.ljpeugeot.services.PeugeotService;
 import com.tdil.utils.DateUtils;
 
 @XmlRootElement
@@ -17,7 +19,16 @@ public class AdviceBean {
 	public AdviceBean(AdviceValueObject adviceValueObject) {
 		this.id = adviceValueObject.getAdvice().getId();
 		this.domain = adviceValueObject.getVehicle().getDomain();
-		this.description = adviceValueObject.getVehicle().getDescription();
+		if (adviceValueObject.getVehicle().getIdModel() != null && adviceValueObject.getVehicle().getIdModel() != 0) {
+			Model model = PeugeotService.getModel(adviceValueObject.getVehicle().getIdModel());
+			if (model != null) {
+				this.setDescription(adviceValueObject.getVehicle().getDomain() + "(" + model.getName()+")");
+			} else {
+				this.description = adviceValueObject.getVehicle().getDomain();
+			}
+		} else {
+			this.description = adviceValueObject.getVehicle().getDomain();
+		}
 		this.km = adviceValueObject.getAdvice().getKm();
 		if (adviceValueObject.getAdvice().getServicedate() != null) {
 			this.servicedate = DateUtils.formatDateSp(adviceValueObject.getAdvice().getServicedate());
