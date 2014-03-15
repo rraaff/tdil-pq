@@ -324,9 +324,15 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 					arg0.addHeader("apkToken", resp.getApkToken());
 				}
 			});
-			Intent intent = new Intent(this, IndexActivity.class);
-			// Intent intent = new Intent(this, HomeAlarmsActivity.class);
-			startActivity(intent);
+			if (resp.getServicesAdvices()) {
+				Intent intent = new Intent(this, AdvicesActivity.class);
+				// Intent intent = new Intent(this, HomeAlarmsActivity.class);
+				startActivity(intent);
+			} else {
+				Intent intent = new Intent(this, IndexActivity.class);
+				// Intent intent = new Intent(this, HomeAlarmsActivity.class);
+				startActivity(intent);
+			}
 			finish();
 		} else {
 			Editor e = this.getPreferences(Context.MODE_PRIVATE).edit();

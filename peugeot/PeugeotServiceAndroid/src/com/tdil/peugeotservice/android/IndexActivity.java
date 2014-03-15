@@ -18,11 +18,6 @@ import com.tdil.peugeotservice.android.utils.Login;
 @SuppressLint("ResourceAsColor")
 public class IndexActivity extends ActionBarActivity {
 
-	private static final String HOME = "HOME";
-	private static final String PARKINGS = "PARKINGS";
-	private static final String TV = "TV";
-	private static final String PETS = "PETS";
-	private static final String PREVENT = "CAR";
 	
 	/**
 	 * The default email to populate the email field with.
