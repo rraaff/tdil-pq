@@ -78,7 +78,7 @@ public class AdvicesActivity extends ActionBarActivity {
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					new RESTClientTask(AdvicesActivity.this, HttpMethod.POST, new IRestClientObserver() {
+					new RESTClientTask(AdvicesActivity.this, HttpMethod.GET, new IRestClientObserver() {
 						@Override
 						public void sucess(IRestClientTask task) {
 							Gson gson = new Gson();
@@ -104,7 +104,7 @@ public class AdvicesActivity extends ActionBarActivity {
 						public void error(IRestClientTask task) {
 							Messages.connectionErrorMessage(AdvicesActivity.this);
 						}
-					}, RESTConstants.CHANGE_PASSWORD, new RestParams(), null)
+					}, RESTConstants.DISMISS_ADVICES, new RestParams(), null)
 							.executeSerial((Void) null);
 				}
 			});
