@@ -3,9 +3,8 @@
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <style name="AppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+  <style name="AppTheme" parent="@style/Theme.Base.AppCompat.Light.DarkActionBar">
 
- 
   </style>
 
 </resources>

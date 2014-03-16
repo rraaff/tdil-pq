@@ -196,8 +196,8 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 					}
 				});*/
 		
-		mDocNumber = "11111111";
-		mPassword = "123123";
+//		mDocNumber = "11111111";
+//		mPassword = "123123";
 
 		docNumberEdittext = (EditText) findViewById(R.id.documentNumber);
 		docNumberEdittext.setText(mDocNumber);
