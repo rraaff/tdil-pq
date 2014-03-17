@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
+import com.tdil.lojack.model.ImportType;
 import com.tdil.lojack.model.VLUData;
 import com.tdil.lojack.model.VLUDataExample;
 import com.tdil.lojack.model.VLUImport;
@@ -22,10 +23,12 @@ public class VLUUtils {
 
 	private static final class InsertVLUImport implements TransactionalAction {
 		private String filename;
+		private int type;
 		
-		public InsertVLUImport(String filename) {
+		public InsertVLUImport(String filename,int type) {
 			super();
 			this.filename = filename;
+			this.type = type;
 		}
 		public void executeInTransaction() throws SQLException {
 			VLUImport vluImport = new VLUImport();
@@ -33,6 +36,7 @@ public class VLUUtils {
 			vluImport.setStatus("PENDING");
 			vluImport.setProcessed(0);
 			vluImport.setErrors(0);
+			vluImport.setImporttype(this.type);
 			DAOManager.getVLUImportDAO().insertVLUImport(vluImport);
 		}
 	}
@@ -105,10 +109,29 @@ public class VLUUtils {
 			return DAOManager.getVLUDataDAO().selectVLUDataByExample(vluDataExample);
 		}
 	}
+	
+	private static final class GetVLUImportPending implements TransactionalActionWithResult<VLUImport> {
+		private String fileName;
+		public GetVLUImportPending(String fileName) {
+			super();
+			this.fileName = fileName;
+		}
+		public VLUImport executeInTransaction() throws SQLException {
+			VLUImportExample example = new VLUImportExample();
+			example.createCriteria().andStatusEqualTo("PENDING").andFilenameEqualTo(fileName).andImporttypeEqualTo(ImportType.VLU_DELETE_REPAIRED.getType());
+			example.setOrderByClause("id");
+			List<VLUImport> result = DAOManager.getVLUImportDAO().selectVLUImportByExample(example);
+			if (result.size() > 0) {
+				return result.get(0);
+			} else {
+				return null;
+			}
+		}
+	}
 
 	public static boolean registerNewImport(String fileName) {
 		try {
-			TransactionProvider.executeInTransaction(new InsertVLUImport(fileName));
+			TransactionProvider.executeInTransaction(new InsertVLUImport(fileName, ImportType.VLU_COMPLETE.getType()));
 			return true;
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
@@ -118,6 +141,23 @@ public class VLUUtils {
 			return false;
 		}
 	}
+	
+	public static boolean registerNewImportRepairedDomains(String fileName) {
+		try {
+			TransactionProvider.executeInTransaction(new InsertVLUImport(fileName, ImportType.VLU_DELETE_REPAIRED.getType()));
+			
+			VLUImport importVlu =  TransactionProvider.executeInTransactionWithResult(new GetVLUImportPending(fileName));
+			new DeleteRepairedDomainsThread(importVlu).start();
+			return true;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		}
+	}
+	
 	public static void deleteVLUImport(String id) {
 		try {
 			TransactionProvider.executeInTransaction(new DeleteVLUImport(id));

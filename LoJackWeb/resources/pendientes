@@ -3,6 +3,12 @@ tdil/usu4r10td1l
 111111,IJJ-509,alerta: 1
 111111,IJJ-519,alerta XXX
 
+java -cp lib/jisql-2.0.11.jar:lib/jopt-simple-3.2.jar:
+          <jar for native driver>
+          com.xigole.util.sql.Jisql
+          -user scott -password blah -driver postgresql
+          -cstring jdbc:postgresql://localhost:5432/scott -c \;
+
 mysql
 2 - demo.csv	FINISHED	500000	0	2014-01-23 00:22:55	2014-01-23 00:41:44	
 

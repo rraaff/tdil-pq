@@ -64,7 +64,25 @@
 			</fieldset>			
 		</form>
 		
-		<p class="attention">Recuerde que la importacion se ejecutara entre las <%=VLUImportThread.getStartHour()%>:<%=VLUImportThread.getStartMinutes()%> y las <%=VLUImportThread.getEndHour()%>:<%=VLUImportThread.getEndMinutes()%></p>
+		<p class="attention">Recuerde que la importación se ejecutará entre las <%=VLUImportThread.getStartHour()%>:<%=VLUImportThread.getStartMinutes()%> y las <%=VLUImportThread.getEndHour()%>:<%=VLUImportThread.getEndMinutes()%></p>
+		
+		
+		<hr>
+
+		<h3>Borrado de dominios reparados VLU</h3>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: dni,domain</p>
+
+		<form action="doDeleteRepairedDomainsVLU.jsp" method="post" enctype="multipart/form-data" class="fullSize">
+			<fieldset class="allinone">
+				<label class="longer">Buscar archivo</label>
+				<input type="file" name="file" />
+			</fieldset>
+			<fieldset class="botonera">
+				<input type="submit" value="Importar" />
+			</fieldset>			
+		</form>
+		
+		<p class="attention">Recuerde que la importación se ejecutará en el acto</p>
 	</article>
 </section>
 </body>

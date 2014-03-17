@@ -67,17 +67,17 @@ targetProject="LoJackWeb">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
 
-<table schema="LOJACK" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+<!-- table schema="LOJACK" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="LOJACK" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
 
-<!-- table schema="LOJACK" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+<table schema="LOJACK" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
-<table schema="LOJACK" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
+<!-- table schema="LOJACK" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 <table schema="LOJACK" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">

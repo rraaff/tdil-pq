@@ -18,8 +18,7 @@ import com.tdil.ibatis.IBatisManager;
 import com.tdil.ibatis.TransactionProvider;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.lojack.daomanager.DAOManager;
-import com.tdil.lojack.model.VLUData;
-import com.tdil.lojack.model.VLUDataExample;
+import com.tdil.lojack.model.ImportType;
 import com.tdil.lojack.model.VLUImport;
 import com.tdil.lojack.model.VLUImportExample;
 import com.tdil.pool.DatasourceManager;
@@ -42,7 +41,7 @@ public class VLUImportThread extends Thread {
 		}
 		public List<VLUImport> executeInTransaction() throws SQLException {
 			VLUImportExample example = new VLUImportExample();
-			example.createCriteria().andStatusEqualTo("PENDING");
+			example.createCriteria().andStatusEqualTo("PENDING").andImporttypeEqualTo(ImportType.VLU_COMPLETE.getType());
 			example.setOrderByClause("id");
 			return DAOManager.getVLUImportDAO().selectVLUImportByExample(example);
 		}
@@ -195,6 +194,10 @@ public class VLUImportThread extends Thread {
 			PreparedStatement insertVlu = conn.prepareStatement("insert into " + DAOManager.getVLU_DATATableName()+ "(dni, domain, message, idvluimport) values(?,?,?,?)");
 			PreparedStatement deleteOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where dni = ? and domain = ? and idvluimport != ?");
 			PreparedStatement incrementImport = conn.prepareStatement("update " + DAOManager.getVLU_IMPORTTableName()+ " set processed = processed + 1 where id = ?");
+
+			PreparedStatement deleteALLOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where idvluimport != ?");
+			deleteALLOldVlu.setInt(1, imp.getId());
+			
 			incrementImport.setInt(1, imp.getId());
 			CsvBeanReader beanReader = null;
 			try {
@@ -225,6 +228,7 @@ public class VLUImportThread extends Thread {
 			}
 			insertVlu.executeBatch();
 			deleteOldVlu.executeBatch();
+			deleteALLOldVlu.execute();
 			conn.commit();
 		} catch (Exception e) {
 			try {

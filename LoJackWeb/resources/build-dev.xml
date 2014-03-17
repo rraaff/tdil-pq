@@ -241,6 +241,16 @@
 		</sql>
 	</target>
 	
+
+	<target name="incremental-12">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl12.sql" />
+		</sql>
+	</target>
+	
 	<target name="incremental-parkings-gba">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
