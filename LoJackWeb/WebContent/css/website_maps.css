@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+div#placaLoader							{ display:none; }
+
+div#map_insert						{ background-color:#f0f0f0; }
+div#map_insert,
+div#map_insert div.pageWrapper,
+div#map_insert div.smallmap			{ width:100%; height:500px; }
+
+div#map_insert						{ position:relative; left:0; top:-2px; z-index:10; overflow:hidden; }
+div#map_insert div.pageWrapper		{  }
+div#map_insert div.smallmap			{  }
+
+section#controls 						{ background-image:url(../images/skin_lj_rl/backs/topLayer70.png); width:100%; height:68px; position:relative; top:-68px; z-index:1400; display:inline-block; }
+div.basicControls						{ text-align:center; width:1024px; margin:0 auto!important; padding:0!important; }
+
+section#zoomSection						{text-align:center; top:-325px; width:200px; position:relative; display:inline-block; }
+
+div.sign_at_map							{ background-image:url(../images/skin_lj_rl/backs/topLayer70.png); padding:25px; display:inline-block; }
+div.sign_at_map h5						{ color:#2ba4c9; font-size:18px; font-family:'Peugeot'; width:80%; padding:0 0 15px; display:inline-block; }
+div.sign_at_map span.sign_content		{ color:#fff; display:inline-block; }
+div.olPopupCloseBox						{ background-image:url(../images/skin_lj_rl/backs/close_openMap.png); background-position:6px; background-repeat:no-repeat; right:16px!important; cursor:pointer; }
+div.olFramedCloudPopupContent			{ left:0!important; border:none!important; }
+div.olPopup								{  }
+
+div#placaLoader							{ background-image:url(../images/skin_lj_rl/backs/topLayer70.png); color:#fff; font-size:11px; text-align:center; width:100%; z-index:9998; position:fixed; top:90px; left:0px; padding:8px 0; display:inline-block; }
+
+
+/* PREVENT Y PARKINGS */
+button.iconEall,
+button.icon100mts,
+button.icon500mts,
+button.icon1mks,
+button.iconClear,
+button.iconHome 						{ border:none; background:transparent; background:url(../images/skin_lj_rl/webApp/parkings/control_100mts.png); background-repeat:no-repeat; background-position:0 0; width:62px; height:48px; margin:10px; padding:0; cursor:pointer; }
+button.iconEall							{ background:url(../images/skin_lj_rl/webApp/parkings/control_E_all.png); }
+button.icon500mts						{ background:url(../images/skin_lj_rl/webApp/parkings/control_500mts.png); }
+button.icon1mks							{ background:url(../images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
+button.iconClea							{ background:url(../images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.iconHome							{ background:url(../images/skin_lj_rl/webApp/parkings/back_home.png); }
+button.icon_zoom_in,
+button.icon_zoom_out					{ border:none; background:transparent; background:url(../images/skin_lj_rl/webApp/parkings/icon_ZoomIn.png); background-repeat:no-repeat; background-position:0 0; width:32px; height:32px; margin:10px 0; padding:0; cursor:pointer; }
+button.icon_zoom_out					{ background:url(../images/skin_lj_rl/webApp/parkings/icon_ZoomOut.png); }
+#controls .basicControls				{ text-align:center; margin:0 auto; }
+#zoomSection							{ background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; top:120px; position:absolute; z-index:1305; }
+#zoomSection .zoomControls				{ background:url(../images/skin_lj_rl/backs/topLayer70.png); background-repeat:repeat; width:42px; left:10px; top:-30px; margin:0 auto; position:absolute; }
+
+
+footer { color:#fff; top:-20px; position:relative; }
+
+
+
+
+/* *************************************************************************************** */
+/* ***************************** MEDIA QUERIES PARA WEBMOBILE **************************** */
+/* *************************************************************************************** */
+/* WIDTHS */
+@media only screen and (max-width:1024px) {
+	section#controls							{ width:100%; }
+	div.basicControls							{ width:100%; }
+}
+
+@media only screen and (max-width:420px) {
+	button.iconEall,
+	button.icon100mts,
+	button.icon500mts,
+	button.icon1mks,
+	button.iconClear,
+	button.iconHome																			{ background-size:cover; width:48px; height:38px; margin:16px 3px; }
+}
+
+/* HEIGHTS */
+@media only screen and (max-height:588px) {
+	section#controls					{ width:100%; bottom:0; top:inherit; position:fixed; }
+	section#zoomSection					{ top:50%; position:fixed; }
+}
+
+@media only screen and (max-height:320px) {
+	section#zoomSection					{ top:39%; }
+}

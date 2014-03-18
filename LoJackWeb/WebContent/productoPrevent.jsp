@@ -24,15 +24,19 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website_maps.css" />
 <style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabCar a,
+#productsMenu ul li.tabCar {
+	background:#f05224;
 }
 </style>
 <% 
@@ -41,45 +45,6 @@ if (apk) {
 	isAndroid = true;
 }
 %>
-<% if (usingMobile || isAndroid) { %>
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		
-		@media only screen and (orientation: landscape) and (max-width: 600px) {
-			#shortdesc {
-		    	float:right;
-		    	width:25%;
-		    }
-			#map {
-				width:100%;
-				height:100%;
-			}
-			#docs {
-				font-size:12px;
-			}
-		}
-		#docs p {
-			font-size:12px;
-		    margin-bottom:0.5em;
-		}
-		#tags { display: none; }
-		
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<% } %>
-<style type="text/css">
-#productsMenu ul li.tabCar {
-	background:#f05224;
-}
-</style>
 <%@ include file="includes/headLogged.jsp" %>
 <script src="js/OpenLayers.js" type="text/javascript"></script>
 <script src="js/<%=com.tdil.lojack.utils.LoJackConfig.getStartTime()%>_MapaOSM.js" type="text/javascript"></script>
@@ -337,7 +302,7 @@ if (apk) {
 <% } %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
-<section id="content">
+<div id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
@@ -350,15 +315,16 @@ if (apk) {
 					<button class="iconVLUAlert" onclick="verMensajesVlu();">Services</button>
 				<% } %>
 			</div>
-		</section>
-		<section id="zoomSection">
-			<div class="zoomControls">
-				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();" value="ZoomIn">&nbsp;</button>
-				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();" value="ZoomOut">&nbsp;</button>
-			</div>
+			<section id="zoomSection">
+				<div class="zoomControls">
+					<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();">&nbsp;</button><!-- value="ZoomIn" -->
+					<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();">&nbsp;</button><!--  value="ZoomOut" -->
+				</div>
+			</section>
 		</section>
 	</div>
-</section>
+</div>
+
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
 	<div id="centradorModalesMaxSpeed" class="defaultLayerStyles">
@@ -420,73 +386,53 @@ if (apk) {
 </div>
 <% if (!apk) { %>
 <%@ include file="includes/footerProductoHome.jsp" %>
-<% } %>
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
+<% } %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/version.jspf" %>
-
-<% if (usingMobile || isAndroid) { %>
-	<script>
+<script>
+	<% if (!apk) { %>
 		var checkHeight = function(){
-			var elemToChange  = document.getElementById("mapContainer");
-			var elemToChange1 = document.getElementById("content");
-			var elemToChange2 = document.getElementById("controls");
-			var elemToChangeX = document.getElementById("placaLoader");
+			var el_mapinsert = document.getElementById("map_insert");
+			var el_placaLoader = document.getElementById("placaLoader");
 			
 			var winW = $(window).width();
 			var winH = $(window).height();
 			
-			$('.smallmap').css({ width: winW + 'px', height: winH + 'px' });
-			elemToChangeX.style.display = "inline-block"
+			el_placaLoader.style.display = "inline-block";
 			
-			if (winW > winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-				
-				elemToChange2.style.top = winH - 70 + "px"
-		
-			} else if (winW < winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				elemToChange.style.top = "0"
-				elemToChange.style.left = "0"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-				elemToChange1.style.top = "0"
-				elemToChange1.style.left = "0"
-			
-				elemToChange2.style.top = winH - 70 + "px"
-
+			if (winW < 1024 && winH < 621 && winH >= 320) {
+				el_mapinsert.style.height =  winH - 93 + "px";
+			} else if (winW < 1024 && winH < 320) {
+				el_mapinsert.style.height =  winH - 43 + "px";
+			} else {
+				el_mapinsert.style.height =  "500px";
 			}
-			elemToChangeX.style.display = "none"
+			
+			el_placaLoader.style.display = "none";
 		}
-		var recheckHeight = function() {
-			var elemToChangeX = document.getElementById("placaLoader");
+	<% } else { %>
+		var checkHeight = function(){
+			var el_mapinsert = document.getElementById("map_insert");
+			var el_placaLoader = document.getElementById("placaLoader");
 			
 			var winW = $(window).width();
 			var winH = $(window).height();
 			
-			elemToChangeX.style.display = "inline-block"
-			elemToChangeX.style.width = winW + "px"
-			elemToChangeX.style.height = winH + "px"
-
-			setInterval( function(){ checkHeight(); }, 2000 );
+			//el_placaLoader.style.display = "inline-block";
+			
+			el_mapinsert.style.height =  winH + "px";
+			
+			el_placaLoader.style.display = "none";
 		}
-		
-		window.onload=function() {
-			checkHeight();
-		}		
-		window.onresize=function() {
-			recheckHeight();
-		}
-	</script>
-<% } %>
+	<% } %>
+	window.onload=function() {
+		checkHeight();
+	}		
+	window.onresize=function() {
+		checkHeight();
+	}
+</script>
 </body>
 </html>

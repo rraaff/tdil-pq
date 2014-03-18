@@ -22,90 +22,17 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/tdil.bootstrap.modifier.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_modales.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/index_social.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/copyright.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/mediaQueries.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website_maps.css" />
 <style type="text/css">
-	.smallmap { width:968px; height:450px; }
-	#tags { display: none; }
-	#docs p { font-size:12px; margin-bottom:0.5em; }
-	#placaLoader { display:none; }
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-	#shortdesc { float:right; width:25%; }
-	#map { width:100%; height:100%; }
-	#docs { font-size:12px; }
-}
-</style>
-<% if (usingMobile || isAndroid) { %>
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		@media all and (orientation:landscape) {
-			#productsMenu { position:fixed; z-index:1500; } 
-		}
-		
-		@media all and (orientation:landscape) and (max-height:600px) {
-			#productsMenu ul li.logoContainer { display:none; }
-		}
-		body { overflow:hidden; }
-	</style>
-<% } else { %>
-	<link type="text/css" href="css/reset-styles.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/sizers.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/tdil.bootstrap.modifier.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_menu.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/index_social.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/copyright.css" rel="stylesheet" media="screen" />
-	<link type="text/css" href="css/mediaQueries.css" rel="stylesheet" media="screen" />
-	<style type="text/css">
-		@media only screen and (max-width: 968px) {
-			body { background: #e51b24; overflow: hidden; }
-			#productsMenu ul li.logoContainer { line-height: 14px; }
-			#controls { width: 100%; margin: 0px auto; top:auto; bottom: 0px; position: fixed; }
-			#controls .basicControls { text-align: center; width:100%; margin: 0 auto; }
-			footer { display:none; }
-			.pageWrapper { width: 100%; }
-			#content { width:100%; height:90%; text-align:center; display:inline-block; overflow:hidden; left:0px; top:127px; position:absolute; z-index:1; }
-			.smallmap, .pageWrapper { width: 100%; height: 100%; }
-			#zoomSection { width: 100%; margin: 0; }
-			#zoomSection .zoomControls { top: 40%; left: 20px; margin: 0 auto; position: fixed; }
-		}
-		@media only screen and (max-height: 800px) and (max-width: 480px) {
-			button.iconEall,
-			button.icon100mts,
-			button.icon500mts,
-			button.icon1mks,
-			button.iconClear,
-			button.iconHome {
-				background: url(mobile/images/webApp/parkings/control_100mts.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-				width:50px;
-				height:42px;
-				margin:2px 4px;
-			}
-			button.iconEall { background: url(mobile/images/webApp/parkings/control_E_all.png); }
-			button.icon500mts { background: url(mobile/images/webApp/parkings/control_500mts.png); }
-			button.icon1mks { background: url(mobile/images/webApp/parkings/control_1000mts.png); }
-			button.iconClear { background: url(mobile/images/webApp/parkings/control_clear.png); }
-			button.iconHome { background: url(mobile/images/webApp/parkings/back_home.png }
-			button.icon_zoom_in,
-			button.icon_zoom_out {
-				background: url(mobile/images/webApp/parkings/icon_ZoomIn.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-				width:32px;
-				height:32px;
-				padding:5px;
-				margin:5px;
-			}
-			button.icon_zoom_out {
-				background: url(mobile/images/webApp/parkings/icon_ZoomOut.png);
-				background-repeat: no-repeat;
-				background-position: 0 0;
-			}
-		}
-	</style>
-<% } %>
-<style type="text/css">
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabParking a,
 	#productsMenu ul li.tabParking {
 		background:#f05224;
 	}
@@ -121,6 +48,7 @@
 	var ZOOM_ALL = 12;
 	var ZOOM_1000 = 14;
 	var ZOOM_500 = 15;
+	var ZOOM_CAR = 20;
 	var Mapa;
 	var parkings;
 	var origenGeoRef;
@@ -150,6 +78,7 @@
 	IconSizeForZoom[17] = 32;
 	IconSizeForZoom[18] = 38;
 	IconSizeForZoom[19] = 40;
+	IconSizeForZoom[20] = 64;
         
 	<%@ include file="includes/errorAjaxJS.jspf" %>
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
@@ -226,12 +155,12 @@
 	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
 				currPoints = new Array(); 
-				<% List<PointOfInterest> parkings = ParkingUtils.getParkings(); %>
-				<% for (PointOfInterest poi : parkings) { %>
+				<%List<PointOfInterest> parkings = ParkingUtils.getParkings(); %>
+				<%for (PointOfInterest poi : parkings) {%>
 					var cloned = createMarker(<%=poi.getLon()%>,<%=poi.getLat()%>, '<%=poi.getName()%>', '<%=poi.getDescription()%>', proj, icon.clone());
 					currPoints.push(cloned);
 					parkings.addMarker(cloned);
-				<% } %>
+				<%}%>
             }
 		}
 
@@ -294,10 +223,11 @@
 				parkings = new OpenLayers.Layer.Markers( "Parkings" );
 	            Mapa.map.addLayer(parkings);
 	            var size = new OpenLayers.Size(32,32);
+	            var sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
 	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
 	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/myPosition.png',size,offset);
 				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',sizeCar,offset);
 				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
             } else {*/
         		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
@@ -326,15 +256,18 @@
             		parkings = new OpenLayers.Layer.Markers( "Parkings" );
     	            Mapa.map.addLayer(parkings);
     	            var size;
+    	            var sizeCar;
     	            if (SearchMeters == 1000) {
     	        		size = new OpenLayers.Size(IconSizeForZoom[ZOOM_1000],IconSizeForZoom[ZOOM_1000]);
+    	        		sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
     	            } else {
     	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
+    	            	sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
     	            }
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
     	            var icon = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/icon_e.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
-    				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',size,offset);
+    				var iconCar = new OpenLayers.Icon('<%=LoJackConfig.getFRONT_SERVER()%>/images/skin_lj_rl/webApp/parkings/car.png',sizeCar,offset);
     				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
     				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {
@@ -376,6 +309,9 @@
             marker.events.register("mousedown", feature, markerClick);
 			return marker;
 		}
+
+	<%@ include file="includes/openLegalesLayer.jsp" %>
+	<%@ include file="includes/contactJS.jspf" %>
 </script>
 </head>
 <body>
@@ -383,26 +319,27 @@
 <%@ include file="includes/clientMainManu.jsp" %>
 <div id="testerDeAltura" style="display:none;">not set yet</div>
 <div id="placaLoader">Cargando datos en el mapa. Aguarde por favor...</div>
-<section id="content">
+<div id="map_insert">
 	<div class="pageWrapper">
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
-				<button class="iconEall" onclick="showAllParkings();">Ver todos</button>
-				<button class="icon100mts" onclick="showParkings(100);">Metros</button>
-				<button class="icon500mts" onclick="showParkings(500);">Metros</button>
-				<button class="icon1mks" onclick="showParkings(1000);">Metros</button>
-				<button class="iconClear" onclick="removeParkings();">Ocultar</button>	
+				<button class="iconEall" onclick="showAllParkings();">&nbsp;</button>
+				<button class="icon100mts" onclick="showParkings(100);">&nbsp;</button>
+				<button class="icon500mts" onclick="showParkings(500);">&nbsp;</button>
+				<button class="icon1mks" onclick="showParkings(1000);">&nbsp;</button>
+				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>	
 			</div>
-		</section>
-		<section id="zoomSection">
-			<div class="zoomControls">
-				<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();">&nbsp;</button><!-- value="ZoomIn" -->
-				<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();">&nbsp;</button><!--  value="ZoomOut" -->
-			</div>
+			<section id="zoomSection">
+				<div class="zoomControls">
+					<button class="icon_zoom_in" onclick="javascript:Mapa.ZoomIn();">&nbsp;</button><!-- value="ZoomIn" -->
+					<button class="icon_zoom_out" onclick="javascript:Mapa.ZoomOut();">&nbsp;</button><!--  value="ZoomOut" -->
+				</div>
+			</section>
 		</section>
 	</div>
-</section>
+</div>
+
 <%@ include file="includes/footerProductoHome.jsp" %>
 
 <div id="showErrorLayer" class="layerOnTop" style="display: none; z-index: 1500;">
@@ -426,61 +363,33 @@
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
 <%@ include file="includes/version.jspf" %>
-<% if (usingMobile || isAndroid) { %>
-	<script>
-		var checkHeight = function() {
-			var elemToChange  = document.getElementById("mapContainer");
-			var elemToChange1 = document.getElementById("content");
-			var elemToChange2 = document.getElementById("controls");
-			var elemToChangeX = document.getElementById("placaLoader");
+<script>
+	var checkHeight = function(){
+		var el_mapinsert = document.getElementById("map_insert");
+		//var elemToChange2 = document.getElementById("controls");
+		var el_placaLoader = document.getElementById("placaLoader");
 		
-			var winW = $(window).width();
-			var winH = $(window).height();
-			
-			elemToChangeX.style.display = "inline-block"
-			
-			if (winW > winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="LANDSCAPE > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-				
-				elemToChange2.style.top = winH - 70 + "px"
-				
-			} else if (winW < winH) {
-				var testervar = document.getElementById("testerDeAltura").innerHTML="PORTRAIT > WW: " + winW + " - WH " + winH;
-				elemToChange.style.width = winW + "px"
-				elemToChange.style.height = winH + "px"
-				
-				elemToChange1.style.width = winW + "px"
-				elemToChange1.style.height = winH + "px"
-			
-				elemToChange2.style.top = winH - 70 + "px"
-			}
-			elemToChangeX.style.display = "none"
-		}
-		var recheckHeight = function() {
-			var elemToChangeX = document.getElementById("placaLoader");
-			
-			var winW = $(window).width();
-			var winH = $(window).height();
-			
-			elemToChangeX.style.display = "inline-block"
-			elemToChangeX.style.width = winW + "px"
-			elemToChangeX.style.height = winH + "px"
-
-			setInterval( function(){ checkHeight(); }, 2000 );
+		var winW = $(window).width();
+		var winH = $(window).height();
+		
+		el_placaLoader.style.display = "inline-block";
+		
+		if (winW < 1024 && winH < 621 && winH >= 320) {
+			el_mapinsert.style.height =  winH - 93 + "px";
+		} else if (winW < 1024 && winH < 320) {
+			el_mapinsert.style.height =  winH - 43 + "px";
+		} else {
+			el_mapinsert.style.height =  "500px";
 		}
 		
-		window.onload=function() {
-			checkHeight();
-		}		
-		window.onresize=function() {
-			recheckHeight();
-		}
-	</script>
-<% } %>
+		el_placaLoader.style.display = "none";
+	}
+	window.onload=function() {
+		checkHeight();
+	}		
+	window.onresize=function() {
+		checkHeight();
+	}
+</script>
 </body>
 </html>

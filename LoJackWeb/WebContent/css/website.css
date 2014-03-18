@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+
+
+/* *** HEADER *** */
+
+header.menuInternas								{ background:#000; line-height:0; }
+div.userLoggedThalamusMenu						{ width:1024px; margin:0 auto; }
+ul.correctNav									{ width:100%; padding:0; margin:0; line-height:32px; display:inline-block; }
+ul.correctNav li								{ color:#fff; font-size:11px; float:left; line-height:32px; display:inline-block; }
+ul.correctNav li.avatarLi						{ color:#fff; width:32px; height:32px; }
+ul.correctNav li.avatarLi a						{ width:32px; height:32px; line-height:32px; }
+ul.correctNav li.avatarLi a img#avatarImg		{ margin:0; }
+ul.correctNav li.userTagAndName					{ margin:0 0 0 10px; }
+ul.correctNav li.userTagAndName span.userName	{ color:#ffc431; }
+ul.correctNav li.toRight						{ float:right; }
+ul.correctNav li.toRight a						{ color:#fff; padding:13px 15px; }
+ul.correctNav li.toRight a:hover,
+ul.correctNav li.toRight a:active				{ background:#f05224; }
+
+/* *** CLIENT MAIN MENU *** */
+section#productsMenu																				{ background:url('../images/skin_lj_rl/backs/productMenu/menu_base.png'); background-repeat:repeat-x; line-height:0; width:100%; display:inline-block; }
+section#productsMenu div.userLoggedThalamusMenu														{ width:1024px; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav										{ overflow:hidden; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer						{ height:91px; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a					{ height:91px; display:inline-block; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a img				{ height:91px; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight							{ line-height:0px; } 
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a							{ background-color:#E51B24; padding:46px 30px 45px; font-size:22px; text-transform:uppercase; display:inline-block;}
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a:hover,
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a:active					{ background-color:#f05224; }
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabParking a						{}
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabPet a							{}
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabCar a							{}
+section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.tabHome a							{}
+
+
+/* *************************************************************************************** */
+/* ***************************** MEDIA QUERIES PARA WEBMOBILE **************************** */
+/* *************************************************************************************** */
+
+@media only screen and (max-width:1024px) {
+	div.userLoggedThalamusMenu															{ width:100%!important; }
+	section#productsMenu div.userLoggedThalamusMenu										{ width:100%!important; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer		{ height:83px; }
+}
+
+@media only screen and (max-width:968px) {
+	section#productsMenu																	{ height:123px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a				{ background-color:transparent; padding: 20px 0; font-size: 14px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer			{ /*height:50px;*/ }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a		{ /*height:50px;*/ }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a img	{ /*height:40px; padding-top:5px;*/ }
+}
+@media only screen and (max-width:420px) {
+	section#productsMenu																	{ height:93px; }
+	header.menuInternas																		{ display:none; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a				{ background-color:transparent; padding: 20px 0; font-size: 14px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer			{ height:50px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a		{ height:50px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a img	{ height:40px; padding-top:5px; }
+}
+
+@media only screen and (max-height:320px) {
+	section#productsMenu																	{ height:41px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer			{ display:none; }
+	header.menuInternas																		{ display:none; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight a				{ background-color:transparent; padding: 20px 0; font-size: 14px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer			{ height:50px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a		{ height:50px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.logoContainer a img	{ height:40px; padding-top:5px; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight				{ width:25%; text-align:center; }
+	section#productsMenu div.userLoggedThalamusMenu ul.correctNav li.toRight:hover			{ background-color:#f05224; }
+	
+}

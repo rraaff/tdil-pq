@@ -5,6 +5,7 @@
 	<% if (su.getLoggingaccess() != null && su.getLoggingaccess().equals(1)) { %>
 	<a href="logger.jsp">Configuracion del logging</a> | <% } %> 
 	<% if (su.getVluaccess() != null && su.getVluaccess().equals(1)) { %>
-	<a href="vlu.jsp">Importaciones vlu</a> | <% } %>
+		<a href="vlu.jsp">Importaciones vlu</a> | 
+	<% } %>
 	<a href="dologout.jsp">Salir</a>
  </section>
