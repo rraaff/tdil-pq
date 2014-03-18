@@ -130,7 +130,7 @@
         });
         
         function goHome(){
-        	window.location = 'mobile/home.jsp';
+        	window.location = 'home.jsp';
         }
         function showAllParkings() {
         	removeParkings();

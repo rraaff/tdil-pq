@@ -10,14 +10,16 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Inicio</title>
 <link rel="icon" href="../favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_laruedita.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
 <script type='text/javascript' src='../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery-1.8.2.min.js'></script>
 <script type="text/javascript" src="../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery.blockUI.js"></script>
 <script type="text/javascript">

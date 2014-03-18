@@ -12,12 +12,16 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
-<link rel="icon" href="../favicon.ico" type="icon"/>
+<title>Peugeot AXS :: Inicio</title>
+<link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_internal_menu.css" rel="stylesheet" type="text/css">
-<link href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mobile_main.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website_logged.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+<![endif]-->
 <%@ include file="includes/head.jsp"%>
 </head>
 <body>

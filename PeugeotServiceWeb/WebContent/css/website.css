@@ -63,6 +63,8 @@ section.modal_header h3						{ color:#373743; font-size:13px; font-weight:bold; 
 section.modal_header h4						{ color:#595a67; font-size:13px; font-weight:normal; padding:4px 0; }
 section.modal_content						{ width:100%; display:inline-block; }
 section.modal_content p						{ color:#373743; font-size:13px; }
+
+
 span.modal_subtitle							{ color:#373743; font-size:20px; font-weight:normal; font-family:'Peugeot'; line-height:20px; padding:0 0 25px 0; display:inline-block; }
 section.modal_content div.content_at_layer	{ background:#f0f0f0; color:#595a67; font-size:13px; line-height:18px; padding:25px; margin:0 0 25px; }
 section.modal_content div.content_at_layer p { padding:0 0 15px; }
@@ -81,10 +83,12 @@ div.scrollable				{ overflow:auto; }
 
 
 /* ERROR S */
-div.alert 						{ border-radius:3px; text-align:center; padding:10px; margin:0 0 15px; }
-div.alert-error					{ background-color:#ffe9e9; border:solid 1px #faacac; color:#6b1f1f; }
+div.alert 									{ border-radius:3px; text-align:center; padding:10px; margin:0 0 15px; }
+div.alert-error								{ background-color:#ffe9e9; border:solid 1px #faacac; color:#6b1f1f; }
 .errorText,
-label.error						{ color:#FF5500; }
+label.error									{ color:#FF5500; }
+div.errorInForm p							{ color:#FF5500!important; font-size:13px; padding:0 22px!important; }
+div.errorInForm div							{ color:#FF5500!important; font-size:13px; padding:15px 22px!important; }
 
 /* FORMS */
 form.modal_wrapper									{ background:#f0f0f0; width:100%; display:inline-block; }

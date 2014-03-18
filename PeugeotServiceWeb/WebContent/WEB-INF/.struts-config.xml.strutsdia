@@ -250,7 +250,7 @@
    PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/mobile/home.jsp" TARGET="page24" TITLE="failure"
+   PATH="/home.jsp" TARGET="page24" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page23" PATH="/loginPrevent.jsp"
@@ -459,7 +459,7 @@
   PATH="/mobile/goToPreventLogin" SHAPE="1152,1089,0,0"
   TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/mobile/home.jsp" TARGET="page24" TITLE="failure"
+   PATH="/home.jsp" TARGET="page24" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"

@@ -128,7 +128,7 @@
   
   <action name="SelectVehiclesForMapForm" parameter="PreventUser" path="/goToPreventLogin" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToPreventAction">
   	<forward name="continue" path="/productoPrevent.jsp?showinmap=1" redirect="true"/>
-  	<forward name="failure" path="/mobile/home.jsp" redirect="true"/>
+  	<forward name="failure" path="/home.jsp" redirect="true"/>
   </action>
   
   <action name="SelectVehiclesForMapForm" path="/goToPreventLoginAndroid" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToPreventAction">

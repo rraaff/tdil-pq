@@ -20,27 +20,17 @@
 <html lang="es">
 <head>
 <meta charset="ISO-8859-1"/>
-<title>LoJack :: Lo tuyo es tuyo</title>
+<title>Peugeot AXS :: Recupero de Clave</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_bootstrap.min.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_tdil.bootstrap.modifier.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_menu.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_modales.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_index_social.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_copyright.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_laruedita.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_home_styles.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_mediaQueries.css" />
-<link type="text/css" rel="stylesheet" media="screen" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/reset-styles.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="css/website_logged.css" />
 <!--[if lt IE 9]>
-	<link type="text/css" rel="stylesheet" href="css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_ie8-fixes.css" />
+	<link type="text/css" rel="stylesheet" href="css/ie8-fixes.css" />
 <![endif]-->
 <%@ include file="includes/headNotLogged.jsp" %>
-<script type="text/javascript" src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jstz.js"></script>
 <script>
 <%@ include file="includes/centerLayerJS.jspf" %>
 $(document).ready(
@@ -48,6 +38,7 @@ $(document).ready(
 	
 		$( "#closeresetPassLayerBase" ).click(function() {
 			$( "#resetPassLayerBase" ).fadeOut();
+			window.location = './index.jsp';
 		});
 	}
 );
@@ -57,34 +48,21 @@ function resetPasswordOpen() {
 	centerLayer($(window), $( "#resetPassLayer" ));
 }
 </script>
-<style type="text/css">
-	div.errorInForm { width: 100%; float:left; }
-	.defaultLayerContent { width:auto; }
-</style> 
 </head>
+<%@ include file="includes/version.jspf" %>
 <body onload="javascript:resetPasswordOpen();">
-<script src="js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_flexi-background.js" type="text/javascript" charset="utf-8"></script>
-<header>
-	<div id="floatyMenu">
-		<div class="wrapper">
-			<ul>
-				<li><a href="index.jsp" title="Volver al inicio"><span>Inicio</span></a></li>
-			</ul>
-		</div>
-	</div>
-</header>
-
-
-<%@ include file="includes/layer_contact.jspf" %>
-
 <!-- Edit password layer -->
 <div id="resetPassLayerBase" class="layerOnTop" style="display:none; z-index:1500;">
-	<div id="centradorModalesParkingNo" class="defaultLayerStyles">
-		<div id="resetPassLayer" class="defaultLayerContent">
+	<div id="resetPassLayer" class="layerModal width400">
+		<section class="modal_header">
+			<h2>Información importante</h2>
 			<h3>Crea una nueva clave</h3>
-			<div class="myRow">Completá los campos para modificar tu clave</div>
-			<html:form method="POST" action="/resetPassword">
-				<%=ThalamusErrorFormatter.getErrorFrom(request, "token.err")%>
+			<button class="close" id="closeresetPassLayerBase">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content">
+			<span class="modal_subtitle">Completá los campos para modificar tu clave</span>
+			<html:form method="POST" action="/resetPassword" styleClass="modal_wrapper">
+				<div class="errorInForm"><%=ThalamusErrorFormatter.getErrorFrom(request, "token.err")%></div>
 				<fieldset>
 					<label>Tipo doc</label>
 					<% ResetPasswordForm loginForm = (ResetPasswordForm)session.getAttribute("ResetPasswordForm"); %>
@@ -111,13 +89,12 @@ function resetPasswordOpen() {
 					<label>Repetir clave</label>
 					<html:password name="ResetPasswordForm" property="retypePassword"/>
 				</fieldset>
-				<fieldset>
-					<button type="submit" id="submitregister" class="indexButtonBase">Modificar</button>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" id="submitregister" type="submit">Modificar<span></span></button>
 				</fieldset>
 			</html:form>
-		</div>
+		</section>
 	</div>
 </div>
-<%@ include file="includes/version.jspf" %>
 </body>
 </html>

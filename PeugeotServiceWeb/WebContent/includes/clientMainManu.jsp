@@ -4,7 +4,7 @@
 		<ul class="correctNav">
 			<li class="logoContainer">
 			<% if (usingMobile) { %>
-				<a href="./mobile/home.jsp" class="logo" title="Volver al inicio">home</a></li>
+				<a href="./home.jsp" class="logo" title="Volver al inicio">home</a></li>
 			<% } else { %>
 				<a href="home.jsp" class="logo" title="Volver al inicio">home</a></li>
 			<% } %>
