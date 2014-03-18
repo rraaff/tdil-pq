@@ -5,8 +5,8 @@
 
     <LinearLayout
         android:id="@+id/loginObjects"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/bg_ondas"
         android:gravity="center_vertical"
         android:orientation="vertical" >
@@ -14,29 +14,26 @@
         <ImageView
             android:id="@+id/main_logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:layout_margin="20dp"
-            android:layout_weight="5"
+            android:layout_height="82dp"
+            android:layout_margin="10dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/main_logo" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_margin="25dp"
-            android:layout_weight="10"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:background="@color/bgBase"
             android:gravity="center_vertical|center_horizontal"
-            android:maxWidth="300dp"
-            android:orientation="vertical"
-            android:padding="0dp" >
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/loadingInfoText"
-                android:text="@string/title_activity_login"
-                style="@style/MainTitles" />"
+                style="@style/MainTitles"
+                android:text="@string/title_activity_login" />
+
 
             <!--                 android:spinnerMode="dropdown"
                 tools:listitem="@android:layout/simple_spinner_item"  
@@ -46,13 +43,16 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:background="@color/grayTabBase"
-                android:padding="25dp" >
+                android:padding="15dp" >
 
                 <TableRow
                     android:id="@+id/tableIDType"
-					style="fieldsetLike">
+                    style="@style/fieldsetLike"
+                    android:layout_height="0dp"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/labelIDType"
@@ -61,16 +61,17 @@
 
                     <Spinner
                         android:id="@+id/documentType"
-						style="@style/textFieldsOne" />
+                        style="@style/textFieldsOne" />
+
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/tableIDNumber"
-                    style="fieldsetLike">
+                    style="@style/fieldsetLike">
 
                     <TextView
                         android:id="@+id/labelIdNumber"
-						style="@style/Label"
+                        style="@style/Label"
                         android:text="@string/lbl_idNumber" />
 
                     <EditText
@@ -83,7 +84,7 @@
 
                 <TableRow
                     android:id="@+id/tablePassword"
-                    style="fieldsetLike" >
+                    style="@style/fieldsetLike" >
 
                     <TextView
                         android:id="@+id/labelPassword"
@@ -110,11 +111,11 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical|fill_horizontal"
                         android:maxLines="1"
-                        android:paddingRight="30dp"
+                        android:paddingRight="15dp"
                         android:text="@string/crt_tag_rememberme"
                         android:textAlignment="center"
                         android:textColor="@color/labels"
-                        android:textSize="20sp"
+                        android:textSize="12sp"
                         android:visibility="visible" />
 
                 </TableRow>
@@ -167,11 +168,10 @@
 	    <ImageView
 	        android:id="@+id/placahome"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="80dp"
 	        android:layout_gravity="bottom|center_horizontal"
 	        android:layout_marginLeft="50dp"
 	        android:layout_marginRight="50dp"
-	        android:layout_weight="1"
 	        android:adjustViewBounds="true"
 	        android:contentDescription="@string/action_loading"
 	        android:gravity="bottom|center_horizontal"

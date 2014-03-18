@@ -14,6 +14,8 @@
 	
 	<color name="lightBlue">#00aad5</color>
 	
+	<color name="ActionBarBG">#373641</color>
+	
 	<!-- Item list -->
 	<color name="lst_itm_title">#222222</color>
 	<color name="lst_itm_normal">#BBBBBB</color>
