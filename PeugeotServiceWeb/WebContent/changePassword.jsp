@@ -90,14 +90,14 @@ function postChangePassword(data) {
 					<label>Nueva clave</label>
 					<html:password name="ChangePasswordForm" property="newPassword" />
 				</fieldset>
-				<div id="err.newPassword" class="errorText textCenter"></div>
+				<div id="err.newpassword" class="errorText textCenter"></div>
 				<fieldset class="width100per">
 					<label>Repetir clave</label>
 					<html:password name="ChangePasswordForm" property="confirmNewPassword" />
 				</fieldset>
 				<div id="err.confirmPassword" class="errorText textCenter"></div>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" id="linkBackchangePasswordLayer"><span></span>Cerrar</button>
+					<button type="button" class="link_back" id="linkBackchangePasswordLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" type="submit">Modificar<span></span></button>
 				</fieldset>
 			</html:form>
