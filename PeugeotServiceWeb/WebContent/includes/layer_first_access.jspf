@@ -18,7 +18,6 @@
 					<html:text name="GeneratePasswordForm" property="username" styleClass="" />
 				</fieldset>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" cl="firstAccessLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitfirstAccess">Generar clave<span></span></button>
 				</fieldset>
 			</html:form>
@@ -37,7 +36,7 @@
 			<span class="modal_subtitle">Le enviamos un E-Mail para generar su clave</span>
 			<p>Si no lo recibiste, por favor revisá en correo no deseado.</p>
 			<fieldset class="button_bar pOnlyTop25">
-				<button class="link_back" cl="firstAccessEmailSentLayer" ><span></span>Cerrar</button>
+				<button class="botton_ahead" cl="firstAccessEmailSentLayer" >Finalizar<span></span></button>
 			</fieldset>
 		</section>
 	</div>

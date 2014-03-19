@@ -11,7 +11,6 @@
 			<span class="modal_subtitle">Elegí una opción</span>
 			<form class="modal_wrapper">
 				<fieldset class="button_bar">
-					<button class="link_back" id="closeparkingsNotLoggedLayer" cl="parkingsNotLoggedLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="recoverPasswordFromPois">Recuperar clave<span></span></button>
 				</fieldset>
 			</form>
