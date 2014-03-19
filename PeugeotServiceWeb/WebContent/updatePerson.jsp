@@ -120,7 +120,7 @@ function postRegister(data) {
 						<% } else { %>
 							<fieldset>
 								<label class="">* E-Mail</label>
-								<html:text name="UpdatePersonForm" property="email" />
+								<html:text name="UpdatePersonForm" property="email"/>
 								<div id="err.profile.email"></div>
 							</fieldset>
 						<% } %>
@@ -166,14 +166,14 @@ function postRegister(data) {
 							<label class="">* Nombre</label>
 							<html:text name="UpdatePersonForm" property="firstName" />
 							<div class="errorInForm"></div>
-							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstName"></div>
+							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstname"></div>
 						</fieldset>
 	<!-- 2 -->
 						<fieldset>
 							<label class="">* Apellido</label>
 							<html:text name="UpdatePersonForm" property="lastName" />
 							<div class="errorInForm"></div>
-							<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastName"></div>
+							<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastname"></div>
 						</fieldset>
 	<!-- 3 -->
 						<fieldset>
