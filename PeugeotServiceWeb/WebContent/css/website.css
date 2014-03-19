@@ -85,8 +85,9 @@ div.scrollable				{ overflow:auto; }
 /* ERROR S */
 div.alert 									{ border-radius:3px; text-align:center; padding:10px; margin:0 0 15px; }
 div.alert-error								{ background-color:#ffe9e9; border:solid 1px #faacac; color:#6b1f1f; }
+div.errorText p,
 .errorText,
-label.error									{ color:#FF5500; }
+label.error									{ color:#FF5500!important; }
 div.errorInForm p							{ color:#FF5500!important; font-size:13px; padding:0 22px!important; }
 div.errorInForm div							{ color:#FF5500!important; font-size:13px; padding:15px 22px!important; }
 
@@ -382,6 +383,13 @@ footer						{ color:#fff; position:relative; top:-20px; }
 #stats													{ display:none; }
 #stats													{ line-height:0; font-size:0; }
 
+
+body.errorPage				{ background-color:#000; background-image: url(../images/skn_peugeot/bgs/ws_wheel_halo_blue.jpg); background-position: center top; background-repeat: no-repeat; font-weight: normal; text-rendering: optimizelegibility; }
+#logoIndex 					{ background-image: url(../images/skn_peugeot/logos/main_logo_mobile.png); background-position:center top; background-size:contain; background-repeat:no-repeat; width:250px; height:150px; margin:0 0 0 -125px; top:7%; left:50%; position:absolute; }
+#thalamusDown 				{ color:#fff; width:450px; margin:0 0 0 -225px; padding:50px; top:30%; left:50%; position:absolute; }
+#thalamusDown h1			{ color:#00aad5; font-size:20px; font-family:'PeugeotLight'; text-align:left; text-transform:uppercase; padding:0 0 25px; }
+#thalamusDown p				{ line-height:18px; }
+#thalamusDown p.errorCode	{ color:#00aad5; }
 
 
 /* *************************************************************************************** */
