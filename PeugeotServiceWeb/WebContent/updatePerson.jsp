@@ -92,7 +92,6 @@ function postRegister(data) {
 				%>
 				<div class="scrollable height300">
 					<div class="column">
-	<!-- 1 -->
 						<fieldset>
 							<label class="">* DNI</label>
 							<label class="readOnly"><bean:write name="UpdatePersonForm" property="document"/></label>
@@ -100,7 +99,6 @@ function postRegister(data) {
 								<div id="err.profile.document"></div>
 							</div>
 						</fieldset>
-	<!-- 2 -->
 						<fieldset>
 							<label class="">* Sexo:</label>
 							<label class="readOnly">
@@ -111,7 +109,6 @@ function postRegister(data) {
 								<%=(registerForm.isRequired(PersonFieldNames.gender)) ? "" : ""%><div id="err.profile.gender"></div>
 							</label>
 						</fieldset>
-	<!-- 3 -->
 						<% if (registerForm.isPrincipal(PersonFieldNames.email)) { %>
 							<fieldset>
 								<label class="">* E-mail</label>
@@ -124,19 +121,16 @@ function postRegister(data) {
 								<div id="err.profile.email"></div>
 							</fieldset>
 						<% } %>
-	<!-- 4 -->
 						<fieldset>
 							<label class="">Cód. área</label>
 							<html:text name="UpdatePersonForm" property="phoneAreaCode" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneAreaCode)) ? "*" : ""%><div id="err.profile.phone.areaCode"></div>
 						</fieldset>
-	<!-- 5 -->
 						<fieldset>
 							<label class="">Celular</label>
 							<html:text name="UpdatePersonForm" property="phoneNumber" />
 							<%=(registerForm.isRequired(PersonFieldNames.phone, PersonFieldNames.phoneNumber)) ? "*" : ""%><div id="err.profile.phone.number"></div>
 						</fieldset>
-	<!-- 6 -->
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street1)) { %>
 							<fieldset>
 								<label class="">Calle 1</label>
@@ -144,7 +138,6 @@ function postRegister(data) {
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street1)) ? "*" : ""%><div id="err.profile.address.street1"></div>
 							</fieldset>
 						<% } %>
-	<!-- 7 -->
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.addressType)) { %>
 							<fieldset>
 								<label class="">Tipo</label>
@@ -158,36 +151,30 @@ function postRegister(data) {
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.addressType)) ? "*" : ""%><div id="err.profile.address.type"></div>
 							</fieldset>
 						<% } %>
-	<!-- 8 -->
 					</div>
 					<div class="column">
-	<!-- 1 -->
 						<fieldset>
 							<label class="">* Nombre</label>
 							<html:text name="UpdatePersonForm" property="firstName" />
 							<div class="errorInForm"></div>
 							<%=(registerForm.isRequired(PersonFieldNames.firstName)) ? "" : ""%><div id="err.profile.firstname"></div>
 						</fieldset>
-	<!-- 2 -->
 						<fieldset>
 							<label class="">* Apellido</label>
 							<html:text name="UpdatePersonForm" property="lastName" />
 							<div class="errorInForm"></div>
 							<%=(registerForm.isRequired(PersonFieldNames.lastName)) ? "" : ""%><div id="err.profile.lastname"></div>
 						</fieldset>
-	<!-- 3 -->
 						<fieldset>
 							<label class="">* Fecha nac.</label>
 							<html:text name="UpdatePersonForm" property="birthDate" />
 							<div class="errorInForm"></div>
 							<%=(registerForm.isRequired(PersonFieldNames.birthDate)) ? "" : ""%>
 						</fieldset>
-	<!-- 4 -->
 						<fieldset>
 							<label class="">País</label>
 							<label class="readOnly"><%=registerForm.getCountrySelected()%></label>
 						</fieldset>
-	<!-- 5 -->
 						<fieldset>
 							<label class="">Provincia</label>
 							<html:select name="UpdatePersonForm" property="stateId">
@@ -199,7 +186,6 @@ function postRegister(data) {
 							</html:select>
 							<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.stateId)) ? "*" : ""%><div id="err.profile.address.stateId"></div>
 						</fieldset>
-	<!-- 6 -->
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.city)) { %>
 							<fieldset>
 								<label class="">Ciudad</label>
@@ -207,7 +193,6 @@ function postRegister(data) {
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.city)) ? "*" : ""%><div id="err.profile.address.city"></div>
 							</fieldset>
 						<% } %>
-	<!-- 7 -->
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.street2)) { %>
 							<fieldset>
 								<label class="">Calle 2</label>
@@ -215,7 +200,6 @@ function postRegister(data) {
 								<%=(registerForm.isRequired(PersonFieldNames.address, PersonFieldNames.street2)) ? "*" : ""%><div id="err.profile.address.street2"></div>
 							</fieldset>
 						<% } %>
-	<!-- 8 -->
 						<% if (registerForm.isInUse(PersonFieldNames.address, PersonFieldNames.postalCode)) { %>
 							<fieldset>
 								<label class="">C. postal</label>
@@ -233,7 +217,6 @@ function postRegister(data) {
 					</fieldset>
 				</div>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" id="linkBackUpdatePersonLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitregister">Guardar<span></span></button>
 				</fieldset>
 			</html:form>

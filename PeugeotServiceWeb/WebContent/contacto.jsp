@@ -130,7 +130,6 @@ function postContact(data) {
 				</fieldset>
 				<div class="errorInForm"></div>
 				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" cl="contactLayer"><span></span>Cerrar</button>
 					<button class="botton_ahead" id="submitregister">Enviar</button>
 				</fieldset>
 			</html:form>
@@ -145,11 +144,9 @@ function postContact(data) {
 		</section>
 		<section class="modal_content">
 			<span class="modal_subtitle">Gracias por su mensaje</span>
-			<form>
-				<fieldset class="button_bar pOnlyTop25">
-					<button class="link_back" cl="contactLayerThanks"><span></span>Cerrar</button>
-				</fieldset>
-			</form>
+			<fieldset class="button_bar pOnlyTop25">
+				<button class="botton_ahead" cl="contactLayerThanks">Finalizar<span></span></button>
+			</fieldset>
 		</section>
 	</div>
 </div>
