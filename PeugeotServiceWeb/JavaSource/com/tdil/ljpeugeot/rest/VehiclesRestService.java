@@ -18,12 +18,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.tdil.ljpeugeot.model.Alert;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.Service;
 import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
 import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
 import com.tdil.ljpeugeot.rest.model.AdviceBean;
+import com.tdil.ljpeugeot.rest.model.AlertBean;
+import com.tdil.ljpeugeot.rest.model.AlertResponseBean;
 import com.tdil.ljpeugeot.rest.model.BeanCollection;
 import com.tdil.ljpeugeot.rest.model.DealerBean;
 import com.tdil.ljpeugeot.rest.model.EmailBean;
@@ -121,8 +124,31 @@ public class VehiclesRestService extends AbstractRESTService {
 	public Response addAlert(@PathParam("phone") String phone, @PathParam("lat") String lat, @PathParam("lon") String lon) {
 //		validateLogged();
 		try {
-			PeugeotService.addAlert(this.getUser().getModelUser().getId(), phone, new BigDecimal(Long.valueOf(lat)), new BigDecimal(Long.valueOf(lon)));
-			return okResponse();
+			PeugeotService.addAlert(this.getUser().getModelUser().getId(), phone, new BigDecimal(lat), new BigDecimal(lon));
+			Alert alert = PeugeotService.getLastAlertPending(this.getUser().getModelUser().getId());
+			if (alert != null) {
+				return createResponse(201, new AlertResponseBean(alert));
+			} else {
+				return errorResponse();
+			}
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			return errorResponse();
+		}
+	}
+	
+	@GET
+	@Path("/updateAlert/{alertId}/{lat}/{lon}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateAlert(@PathParam("phone") String alertId, @PathParam("lat") String lat, @PathParam("lon") String lon) {
+//		validateLogged();
+		try {
+			boolean updated = PeugeotService.updateAlert(this.getUser().getModelUser().getId(), alertId, new BigDecimal(lat), new BigDecimal(lon));
+			if (updated) {
+				return okResponse();
+			} else {
+				return failResponse();
+			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			return failResponse();

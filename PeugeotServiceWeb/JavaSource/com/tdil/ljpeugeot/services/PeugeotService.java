@@ -170,7 +170,27 @@ public class PeugeotService {
 		public List<Alert> executeInTransaction() throws SQLException {
 			AlertExample vehicleExample = new AlertExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
+			vehicleExample.setOrderByClause("id desc");
 			return DAOManager.getAlertDAO().selectAlertByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetAlertsPending implements TransactionalActionWithResult<Alert> {
+		private int idUser;
+		public GetAlertsPending(int idUser) {
+			super();
+			this.idUser = idUser;
+		}
+		public Alert executeInTransaction() throws SQLException {
+			AlertExample vehicleExample = new AlertExample();
+			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser).andStatusEqualTo(AlertStatus.PENDING.code());
+			vehicleExample.setOrderByClause("id desc");
+			List<Alert> alerts = DAOManager.getAlertDAO().selectAlertByExample(vehicleExample);
+			if (alerts.size() > 0) {
+				return alerts.get(0);
+			} else {
+				return null;
+			}
 		}
 	}
 	
@@ -376,6 +396,35 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class UpdateAlert implements TransactionalActionWithResult<Boolean> {
+		private int idUser;
+		private String alertId;
+		private BigDecimal lat;
+		private BigDecimal lon;
+		
+		public UpdateAlert(int idUser, String alertId, BigDecimal lat, BigDecimal lon) {
+			super();
+			this.idUser = idUser;
+			this.alertId = alertId;
+			this.lat = lat;
+			this.lon = lon;
+		}
+
+		public Boolean executeInTransaction() throws SQLException {
+			Alert alert = DAOManager.getAlertDAO().selectAlertByPrimaryKey(Integer.valueOf(alertId));
+			if (alert == null) {
+				return false;
+			}
+			if (alert.getIdWebsiteuser() != this.idUser) {
+				return false;
+			}
+			alert.setLat(lat);
+			alert.setLon(lon);
+			DAOManager.getAlertDAO().updateAlertByPrimaryKey(alert);
+			return true;
+		}
+	}
+	
 	public static ContactData getContactData(int idUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetContactData(idUser));
@@ -548,6 +597,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static boolean updateAlert(int idWebsiteUser, String alertId, BigDecimal lat, BigDecimal lon) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new UpdateAlert(idWebsiteUser, alertId, lat, lon));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return false;
+		} 
+	}
+	
 	public static List<Alert> getAlerts(int idWebsiteUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetAlerts(idWebsiteUser));
@@ -557,6 +618,18 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<Alert>();
+		} 
+	}
+	
+	public static Alert getLastAlertPending(int idWebsiteUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetAlertsPending(idWebsiteUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
 		} 
 	}
 	

@@ -51,6 +51,10 @@ public abstract class AbstractRESTService {
 		return Response.status(201).entity(asJSON(RESTResponse.FAIL_RESPONSE)).build();
 	}
 	
+	public Response errorResponse() {
+		return Response.status(401).entity(asJSON(RESTResponse.FAIL_RESPONSE)).build();
+	}
+	
 	public Response response(Object object) {
 		int httpStatus = 201;
 		return response(httpStatus, object);
