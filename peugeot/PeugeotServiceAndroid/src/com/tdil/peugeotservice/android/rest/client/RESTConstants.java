@@ -4,6 +4,7 @@ import com.tdil.peugeotservice.android.ApplicationConfig;
 
 public interface RESTConstants {
 
+
 	public static final String P_PASSWORD = "{password}";
 
 	public static final String P_DOCUMENT_NUMBER = "{documentNumber}";
@@ -18,6 +19,10 @@ public interface RESTConstants {
 	public static final String P_EMAIL = "{email}";
 	public static final String P_DATE = "{date}";
 	public static final String P_KM = "{km}";
+	public static final String P_LAT = "{lat}";
+	public static final String P_LON = "{lon}";
+	public static final String P_PHONE = "{phone}";
+	public static final String P_ALERTID = "{alertId}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -49,6 +54,9 @@ public interface RESTConstants {
 	public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}";
 	public static final String GET_ADVICES = "/vehicles/advices";
 	public static final String DISMISS_ADVICES = "/vehicles/dismissAdvices";
+	
+	public static final String ADD_ALERT = "/vehicles/addAlert/" + P_PHONE + "/" + P_LAT + "/" + P_LON;
+	public static final String UPDATE_ALERT = "/vehicles/updateAlert/" + P_ALERTID + "/" + P_LAT + "/" + P_LON;
 	
 	public static final String GET_CONTACT_DATA = "/users/contactData";
 	public static final String POST_CONTACT_DATA = "/users/contactData";
