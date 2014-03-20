@@ -106,12 +106,21 @@
 		</sql>
 	</target>
 	
+	<target name="usePrevent-fake">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="prevent_fake.sql" />
+		</sql>
+	</target>
+	
 	<target name="usePrevent-test.peugeotservicegis.com.ar">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
 			<classpath>
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
-			<transaction src="prevent.sql" />
+			<transaction src="prevent_test.sql" />
 		</sql>
 	</target>
 	

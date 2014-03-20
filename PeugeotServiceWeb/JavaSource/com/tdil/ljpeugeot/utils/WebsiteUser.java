@@ -7,6 +7,7 @@ import java.util.Set;
 import com.tdil.ljpeugeot.prevent.model.LoginResponse;
 import com.tdil.ljpeugeot.struts.forms.PreventLoginForm;
 import com.tdil.ljpeugeot.struts.forms.ThalamusPreventLoginForm;
+import com.tdil.ljpeugeot.thalamus.ThalamusLoginCache;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationException;
 import com.tdil.thalamus.client.facade.json.beans.TokenHolder;
@@ -225,33 +226,11 @@ public class WebsiteUser extends User {
 	}
 	
 	public void reloginPrevent() {
+		ThalamusLoginCache.updateCache(this);
 		ThalamusPreventLoginForm login = new ThalamusPreventLoginForm();
 		login.setJsessionid(this.getJSESSIONID());
 		login.setAwselb(this.getAWSELB());
 		login.setTimezone(this.getTimezoneOffset());
-		try {
-			boolean logged = login.executeLogin();
-			if (logged) {
-				this.setPreventAccessToken(login.getPreventAccessToken());
-				this.setPreventLoginResponse(login.getPreventLoginResponse());
-				this.setPreventLogged(true);
-			} else {
-				this.setPreventLogged(false);
-			}
-		} catch (SQLException e) {
-			LOG.error(e.getMessage(), e);
-			this.setPreventLogged(false);
-		} catch (ValidationException e) {
-			LOG.error(e.getMessage(), e);
-			this.setPreventLogged(false);
-		}
-		
-	}
-	
-	public void reloginPrevent1() {
-		PreventLoginForm login = new PreventLoginForm();
-		login.setUsername(this.getPreventUserId());
-		login.setPassword(this.getPreventPassword());
 		try {
 			boolean logged = login.executeLogin();
 			if (logged) {

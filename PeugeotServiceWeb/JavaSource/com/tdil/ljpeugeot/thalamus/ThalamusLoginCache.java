@@ -48,7 +48,7 @@ public class ThalamusLoginCache {
 			putPreventUser(user);
 			JSONObject jsonObject1 = new JSONObject();
 			jsonObject1.put(preventUser, user.getPreventUserId());
-			jsonObject.put(petUser, jsonObject1);
+			jsonObject.put(preventUser, jsonObject1);
 		}
 		// Llamo al LoJackFront y paso el json
 		LoJackConnector.addToRemoteCache(jsonObject);
