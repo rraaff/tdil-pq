@@ -29,23 +29,23 @@
 	<article>
 		<div class="portaTable">
 			<ul class="thead">
-				<li class="value">Importación</li>
-				<li class="key">Tipo</li>
-				<li class="erased">Estado</li>
-				<li class="key">Procesados</li>
-				<li class="key">Inicio</li>
-				<li class="key">Última modif</li>
+				<li class="width280">Importación</li>
+				<li class="width120">Tipo</li>
+				<li class="width110">Estado</li>
+				<li class="width110">Procesados</li>
+				<li class="dates">Inicio</li>
+				<li class="dates">Última modif</li>
 				<li class="delete">Borrar</li>
 			</ul>
 			<% List<VLUImport> imports = VLUUtils.getImports();
 			for (VLUImport vluImport : imports) { %>
 				<ul class="tbody">
-					<li class="value"><%=vluImport.getId()%> - <%=vluImport.getFilename()%></li>
-					<li class="value"><%=vluImport.getImporttype().equals(0) ? "VLU" : "REPARADOS"%></li>
-					<li class="erased"><%=vluImport.getStatus()%></li>
-					<li class="key"><%=vluImport.getProcessed()%></li>
-					<li class="key"><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></li>
-					<li class="key"><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></li>
+					<li class="width280"><%=vluImport.getId()%> - <%=vluImport.getFilename()%></li>
+					<li class="width120"><%=vluImport.getImporttype().equals(0) ? "VLU" : "REPARADOS"%></li>
+					<li class="width110"><%=vluImport.getStatus()%></li>
+					<li class="width110"><%=vluImport.getProcessed()%></li>
+					<li class="dates"><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></li>
+					<li class="dates"><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></li>
 					<li class="delete"><% if(vluImport.getImporttype().equals(1)) {%><a href="./doDeleteVLU.jsp?id=<%=vluImport.getId()%>">Borrar</a><% } else { %>-<%} %></li>
 				</ul>
 			<% } %>

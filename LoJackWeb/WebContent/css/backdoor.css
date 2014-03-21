@@ -49,9 +49,11 @@ ul li.description				{ width:300px; }
 ul li.erased,
 ul li.erased					{ width:80px; }
 ul li.edit,
-ul li.edit						{ width:55px; }
+ul li.edit						{ width:60px; }
 ul li.delete,
 ul li.delete					{ width:65px; }
+ul li.dates,
+ul li.dates						{ width:140px; }
 ul.thead li.Seventyper,
 ul.tbody li.Seventyper			{ width:70%; }
 ul.thead li.Twentyper,
