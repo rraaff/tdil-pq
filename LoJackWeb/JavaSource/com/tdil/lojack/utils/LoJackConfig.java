@@ -594,6 +594,53 @@ public class LoJackConfig extends SystemConfig {
 		getLog().fatal("Vlu import range is " + VLUImportThread.getStartHour() + ":" + VLUImportThread.getStartMinutes() + "-"
 				+ VLUImportThread.getEndHour() + ":" + VLUImportThread.getEndMinutes());
 		
+		String importRangeRepaired = SystemPropertyUtils.getSystemPropertValue("vlu.deleteRepaired.range");
+		if (!StringUtils.isEmpty(importRangeRepaired) && importRangeRepaired.contains("-")) {
+			String ranges[] = importRangeRepaired.split("-");
+			if (ranges.length == 2 && ranges[0].contains(":") && ranges[1].contains(":")) {
+				try {
+					String start[] = ranges[0].split(":");
+					VLUImportThread.setStartRepairedHour(Integer.parseInt(start[0]));
+					VLUImportThread.setStartRepairedMinutes(Integer.parseInt(start[1]));
+					String end[] = ranges[1].split(":");
+					VLUImportThread.setEndRepairedHour(Integer.parseInt(end[0]));
+					VLUImportThread.setEndRepairedMinutes(Integer.parseInt(end[1]));
+				} catch (Exception e) {
+					getLog().error(e.getMessage(), e);
+				}
+			}
+		}
+		getLog().fatal("Vlu import repaired domains range is " + VLUImportThread.getStartRepairedHour() + ":" + VLUImportThread.getStartRepairedMinutes() + "-"
+				+ VLUImportThread.getEndRepairedHour() + ":" + VLUImportThread.getEndRepairedMinutes());
+		
+		String repairedDomainsUrl = SystemPropertyUtils.getSystemPropertValue("vlu.deleteRepaired.url");
+		if (!StringUtils.isEmpty(repairedDomainsUrl)) {
+			VLUImportThread.setRepairedDomainURL(repairedDomainsUrl);
+		}
+		getLog().fatal("Vlu import repaired domains url is " + VLUImportThread.getRepairedDomainURL());
+		
+		String repairedDomainsProxy = SystemPropertyUtils.getSystemPropertValue("vlu.deleteRepaired.proxy");
+		if (!StringUtils.isEmpty(repairedDomainsProxy ) && "true".equalsIgnoreCase(repairedDomainsProxy )) {
+			if (repairedDomainsProxy.startsWith("https")) {
+				if (getHTTPS_PROXY() != null) {
+					VLUImportThread.setPROXY(new ProxyConfiguration(getHTTPS_PROXY().getServer(), getHTTPS_PROXY().getPort()));
+					getLog().fatal("Vlu import repaired domains proxy for https is " + getHTTPS_PROXY().getServer() + ":" + getHTTPS_PROXY().getPort());
+				} else {
+					getLog().fatal("Vlu import repaired domains proxy https not configured");
+				}
+			} else {
+				if (getHTTP_PROXY() != null) {
+					VLUImportThread.setPROXY(new ProxyConfiguration(getHTTP_PROXY().getServer(), getHTTP_PROXY().getPort()));
+					getLog().fatal("Vlu import repaired domains proxy for http is " + getHTTP_PROXY().getServer() + ":" + getHTTP_PROXY().getPort());
+				} else {
+					getLog().fatal("Vlu import repaired domains proxy http not configured");
+				}
+			}
+		} else {
+			getLog().fatal("Vlu import repaired domains not using proxy");
+		}
+		
+		
 		if (importThread == null) {
 			importThread = new VLUImportThread();
 			importThread.start();

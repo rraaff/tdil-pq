@@ -27,13 +27,18 @@ public class DeleteRepairedDomainsThread extends Thread {
 	
 	@Override
 	public void run() {
+		processImport(this.imp);
+		
+	}
+
+	public static void processImport(VLUImport imp) {
 		Connection conn = null;
 		boolean error = false;
 		try {
 			VLUImportThread.changeStatus(imp.getId(), "PROCESSING");
 			conn = DatasourceManager.getConnection();
 			conn.setAutoCommit(false);
-			PreparedStatement deleteOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where dni = ? and domain = ?");
+			PreparedStatement deleteOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where domain = ?");
 			PreparedStatement incrementImport = conn.prepareStatement("update " + DAOManager.getVLU_IMPORTTableName()+ " set processed = processed + 1 where id = ?");
 
 			incrementImport.setInt(1, imp.getId());
@@ -46,12 +51,11 @@ public class DeleteRepairedDomainsThread extends Thread {
 				final String[] header = beanReader.getHeader(true);
 				final CellProcessor[] processors = getProcessors();
 
-				VLUImportRecord importRecord;
+				DeleteRepairedDomainRecord importRecord;
 				int commitCount = 1;
-				while ((importRecord = beanReader.read(VLUImportRecord.class, header, processors)) != null) {
+				while ((importRecord = beanReader.read(DeleteRepairedDomainRecord.class, header, processors)) != null) {
 					deleteOldVlu.clearParameters();
-					deleteOldVlu.setString(1, importRecord.getDni());
-					deleteOldVlu.setString(2, importRecord.getDomain());
+					deleteOldVlu.setString(1, importRecord.getDominio());
 					deleteOldVlu.addBatch();
 					incrementImport.executeUpdate();
 					if (commitCount >= 100) {
@@ -90,13 +94,11 @@ public class DeleteRepairedDomainsThread extends Thread {
 				VLUImportThread.changeStatus(imp.getId(), "FINISHED");
 			}
 		}
-		
 	}
 	
 	private static CellProcessor[] getProcessors() {
 
-		final CellProcessor[] processors = new CellProcessor[] { null, // dni
-				null // domain
+		final CellProcessor[] processors = new CellProcessor[] { null // domain
 		};
 
 		return processors;

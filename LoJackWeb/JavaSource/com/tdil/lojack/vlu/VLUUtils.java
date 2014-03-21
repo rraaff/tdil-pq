@@ -1,9 +1,18 @@
 package com.tdil.lojack.vlu;
 
+import java.io.Closeable;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpConnectionManager;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import com.tdil.ibatis.TransactionProvider;
@@ -18,6 +27,10 @@ import com.tdil.lojack.model.VLUImportExample;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
+import com.tdil.thalamus.client.core.CommunicationException;
+import com.tdil.thalamus.client.core.HttpStatusException;
+import com.tdil.thalamus.client.core.InvalidResponseException;
+import com.tdil.thalamus.client.core.UnauthorizedException;
 
 public class VLUUtils {
 
@@ -201,6 +214,64 @@ public class VLUUtils {
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 			return new ArrayList<VLUImport>();
+		}
+	}
+	
+	public static void download(String url, String fileName) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		long start = System.currentTimeMillis();
+		if (getLog().isDebugEnabled()) {
+			getLog().debug("Download: " + url + " as " + fileName);
+		}
+		HttpClient client = new HttpClient();
+		configureTimeout(client);
+		GetMethod httpMethod = new GetMethod(url);
+		try {
+			client.executeMethod(httpMethod);
+			int statusCode = httpMethod.getStatusCode();
+			if (getLog().isDebugEnabled()) {
+				getLog().debug("Remote result status: " + statusCode);
+			}
+			InputStream inputStream = null;
+			FileOutputStream outputStream = null;
+			try {
+				inputStream = httpMethod.getResponseBodyAsStream();
+				outputStream = new FileOutputStream(fileName);
+				IOUtils.copy(inputStream, outputStream);
+				if (getLog().isDebugEnabled()) {
+					getLog().debug("URL: " + url + " downloaded as " + fileName);
+				}
+			} finally {
+				closeStream(inputStream);
+				closeStream(outputStream);
+			}
+		} catch (HttpException e) {
+			throw new CommunicationException(e);
+		} catch (IOException e) {
+			throw new CommunicationException(e);
+		} finally {
+			if (getLog().isInfoEnabled()) {
+				long end = System.currentTimeMillis();
+				getLog().info("Execute: " + url + " took " + (end - start) + " millis");
+			}
+		}
+	}
+	
+	private static void closeStream(Closeable inputStream) {
+		try {
+			if (inputStream != null) {
+				inputStream.close();
+			}
+		} catch (IOException e) {
+			getLog().error(e.getMessage(), e);
+		}
+	}
+
+	private static void configureTimeout(HttpClient client) {
+		HttpConnectionManager connectionManager = client.getHttpConnectionManager();
+		connectionManager.getParams().setConnectionTimeout(60000);
+		connectionManager.getParams().setSoTimeout(60000);
+		if (VLUImportThread.getPROXY() != null) {
+			client.getHostConfiguration().setProxy(VLUImportThread.getPROXY().getServer(), VLUImportThread.getPROXY().getPort());
 		}
 	}
 	

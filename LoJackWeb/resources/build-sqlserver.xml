@@ -89,6 +89,15 @@
 			<transaction src="ddl12-sqlserver.sql" />
 		</sql>
 	</target>
+	
+	<target name="incremental-13">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl13-sqlserver.sql" />
+		</sql>
+	</target>
 
 	<target name="useThalamusTest">
 		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">

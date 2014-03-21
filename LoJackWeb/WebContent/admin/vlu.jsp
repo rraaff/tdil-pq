@@ -30,6 +30,7 @@
 		<div class="portaTable">
 			<ul class="thead">
 				<li class="value">Importación</li>
+				<li class="key">Tipo</li>
 				<li class="erased">Estado</li>
 				<li class="key">Procesados</li>
 				<li class="key">Inicio</li>
@@ -40,11 +41,12 @@
 			for (VLUImport vluImport : imports) { %>
 				<ul class="tbody">
 					<li class="value"><%=vluImport.getId()%> - <%=vluImport.getFilename()%></li>
+					<li class="value"><%=vluImport.getImporttype().equals(0) ? "VLU" : "REPARADOS"%></li>
 					<li class="erased"><%=vluImport.getStatus()%></li>
 					<li class="key"><%=vluImport.getProcessed()%></li>
 					<li class="key"><%=vluImport.getStarttime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getStarttime())%></li>
 					<li class="key"><%=vluImport.getEndtime() == null ? "-" : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(vluImport.getEndtime())%></li>
-					<li class="delete"><a href="./doDeleteVLU.jsp?id=<%=vluImport.getId()%>">Borrar</a></li>
+					<li class="delete"><% if(vluImport.getImporttype().equals(1)) {%><a href="./doDeleteVLU.jsp?id=<%=vluImport.getId()%>">Borrar</a><% } else { %>-<%} %></li>
 				</ul>
 			<% } %>
 		</div>
@@ -70,7 +72,7 @@
 		<hr>
 
 		<h3>Borrado de dominios reparados VLU</h3>
-		<p class="information">El archivo debe ser un csv con el siguiente formato: dni,domain</p>
+		<p class="information">El archivo debe ser un csv con el siguiente formato: dominio</p>
 
 		<form action="doDeleteRepairedDomainsVLU.jsp" method="post" enctype="multipart/form-data" class="fullSize">
 			<fieldset class="allinone">

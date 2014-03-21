@@ -4,12 +4,14 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.omg.CORBA.StringHolder;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
@@ -25,15 +27,26 @@ import com.tdil.pool.DatasourceManager;
 import com.tdil.struts.TransactionalAction;
 import com.tdil.struts.TransactionalActionWithResult;
 import com.tdil.struts.ValidationException;
+import com.tdil.thalamus.client.core.ProxyConfiguration;
+import com.tdil.utils.DateUtils;
 import com.tdil.utils.SystemPropertyCache;
 
 public class VLUImportThread extends Thread {
 	
+	private static final String FINISHED = "FINISHED";
 	private static int startHour = 2;
 	private static int startMinutes = 0;
 	
 	private static int endHour = 6;
 	private static int endMinutes  = 0;
+	
+	/* Variables para importacion de dominios reparados */
+	private static int startRepairedHour = 0;
+	private static int startRepairedMinutes = 0;
+	private static int endRepairedHour = 23;
+	private static int endRepairedMinutes  = 59;
+	private static String repairedDomainURL = "";
+	private static ProxyConfiguration PROXY = null;
 
 	private static final class GetVLUImportPending implements TransactionalActionWithResult<List<VLUImport>> {
 		public GetVLUImportPending() {
@@ -44,6 +57,28 @@ public class VLUImportThread extends Thread {
 			example.createCriteria().andStatusEqualTo("PENDING").andImporttypeEqualTo(ImportType.VLU_COMPLETE.getType());
 			example.setOrderByClause("id");
 			return DAOManager.getVLUImportDAO().selectVLUImportByExample(example);
+		}
+	}
+	
+	private static final class GetVLURepairedPending implements TransactionalActionWithResult<List<VLUImport>> {
+		public GetVLURepairedPending() {
+			super();
+		}
+		public List<VLUImport> executeInTransaction() throws SQLException {
+			VLUImportExample example = new VLUImportExample();
+			example.createCriteria().andStatusEqualTo("PENDING").andImporttypeEqualTo(ImportType.VLU_DELETE_REPAIRED.getType());
+			example.setOrderByClause("id");
+			return DAOManager.getVLUImportDAO().selectVLUImportByExample(example);
+		}
+	}
+	private static final class AreRepairedImportToday implements TransactionalActionWithResult<Boolean> {
+		public AreRepairedImportToday() {
+			super();
+		}
+		public Boolean executeInTransaction() throws SQLException {
+			VLUImportExample example = new VLUImportExample();
+			example.createCriteria().andImporttypeEqualTo(ImportType.VLU_DELETE_REPAIRED.getType()).andStarttimeGreaterThanOrEqualTo(DateUtils.date2FirstMomentOfDate(new Date()));
+			return DAOManager.getVLUImportDAO().countVLUImportByExample(example) > 0;
 		}
 	}
 	
@@ -69,74 +104,12 @@ public class VLUImportThread extends Thread {
 		}
 	}
 	
-	private static final class InsertVLUData implements TransactionalAction {
-		private int importId;
-		private VLUImportRecord importRecord;
-		
-		public InsertVLUData(int importId, VLUImportRecord importRecord) {
-			super();
-			this.importId = importId;
-			this.importRecord = importRecord;
-		}
-
-		public void executeInTransaction() throws SQLException {
-			Connection conn = IBatisManager.getClient().getCurrentConnection();
-			PreparedStatement preparedStatement = conn.prepareStatement("insert into VLU_DATA(dni, domain, message, idvluimport) values(?,?,?,?)");
-			preparedStatement.setString(1, this.importRecord.getDni());
-			preparedStatement.setString(2, this.importRecord.getDomain());
-			if (StringUtils.isEmpty(this.importRecord.getMessage())) {
-				preparedStatement.setString(3, null);
-			} else {
-				preparedStatement.setString(3, this.importRecord.getMessage());
-			}
-			preparedStatement.setInt(4, this.importId);
-			preparedStatement.executeUpdate();
-			
-			preparedStatement = conn.prepareStatement("delete from VLU_DATA where dni = ? and domain = ? and idvluimport != ?");
-			preparedStatement.setString(1, this.importRecord.getDni());
-			preparedStatement.setString(2, this.importRecord.getDomain());
-			preparedStatement.setInt(3, this.importId);
-			preparedStatement.executeUpdate();
-			
-			preparedStatement = conn.prepareStatement("update VLU_IMPORT set processed = processed + 1 where id = ?");
-			preparedStatement.setInt(1, this.importId);
-			preparedStatement.executeUpdate();
-			conn.commit();
-			
-			//DAOManager.getVLUDataDAO().deleteOLDVLUData(this.importRecord.getDni(), this.importRecord.getDomain(), this.importId);
-			/*VLUData vluData = new VLUData();
-			vluData.setIdvluimport(this.importId);
-			vluData.setDni(this.importRecord.getDni());
-			vluData.setDomain(this.importRecord.getDomain());
-			vluData.setMessage(this.importRecord.getMessage());
-			vluData.setDeleted(0);
-			DAOManager.getVLUDataDAO().insertVLUData(vluData);*/
-//			DAOManager.getVLUImportDAO().incrementProcessed(this.importId);
-		}
-	}
-	
-	private static final class IncrementError implements TransactionalAction {
-		private int importId;
-		
-		public IncrementError(int importId) {
-			super();
-			this.importId = importId;
-		}
-
-		public void executeInTransaction() throws SQLException {
-			VLUImport vluImport = DAOManager.getVLUImportDAO().selectVLUImportByPrimaryKey(this.importId);
-			vluImport.setProcessed(vluImport.getProcessed() + 1);
-			vluImport.setErrors(vluImport.getErrors() + 1);
-			DAOManager.getVLUImportDAO().updateVLUImportByPrimaryKey(vluImport);
-		}
-	}
-	
 	@Override
 	public void run() {
 		boolean stopped = false;
 		while (true) {
 			try {
-				Thread.sleep(1000 * 60); // sleep de un minuto
+				Thread.sleep(1000 /** 60*/); // sleep de un minuto
 			} catch (InterruptedException e1) {
 				stopped = true;
 			}
@@ -147,6 +120,17 @@ public class VLUImportThread extends Thread {
 						processImport(imp);
 					}
 				}
+				if (inInHourRangeForRepairedDomains()) {
+					if (!StringUtils.isEmpty(getRepairedDomainURL())) {
+						if (!TransactionProvider.executeInTransactionWithResult(new AreRepairedImportToday())) {
+							downloadCSVAndImport();
+							List<VLUImport> imports =  TransactionProvider.executeInTransactionWithResult(new GetVLURepairedPending());
+							for(VLUImport imp : imports) {
+								DeleteRepairedDomainsThread.processImport(imp);
+							}
+						}
+					}
+				}
 			} catch (SQLException e) {
 				getLog().error(e.getMessage(), e);
 			} catch (Exception e) {
@@ -155,6 +139,26 @@ public class VLUImportThread extends Thread {
 		}
 	}
 	
+	private void downloadCSVAndImport() {
+		String filePath = com.tdil.utils.SystemPropertyCache.getTempPath() + "/";
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+		String fileName = "importRepaired_" + dateFormat.format(new Date()) + ".csv";
+		filePath = filePath + fileName;
+		if(getLog().isInfoEnabled()) {
+			getLog().info("Start to download " + getRepairedDomainURL() + " as " + filePath);
+		}
+		try {
+			VLUUtils.download(getRepairedDomainURL(), filePath);
+			if(getLog().isInfoEnabled()) {
+				getLog().info("End download of " + getRepairedDomainURL());
+			}
+			VLUUtils.registerNewImportRepairedDomains(fileName);
+			
+		} catch (Exception e) {
+			getLog().error(e.getMessage(), e);
+		} 
+	}
+
 	private boolean inInHourRange() {
 		Calendar cal = Calendar.getInstance();
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
@@ -169,6 +173,25 @@ public class VLUImportThread extends Thread {
 			return false;
 		}
 		if (hour == getEndHour() && minutes > getEndMinutes()) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean inInHourRangeForRepairedDomains() {
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		int minutes = cal.get(Calendar.MINUTE);
+		if (hour < getStartRepairedHour()) {
+			return false;
+		}
+		if (hour == getStartRepairedHour() && minutes < getStartRepairedMinutes()) {
+			return false;
+		}
+		if (hour > getEndRepairedHour()) {
+			return false;
+		}
+		if (hour == getEndRepairedHour() && minutes > getEndRepairedMinutes()) {
 			return false;
 		}
 		return true;
@@ -248,7 +271,7 @@ public class VLUImportThread extends Thread {
 				}
 			}
 			if (!error) {
-				changeStatus(imp.getId(), "FINISHED");
+				changeStatus(imp.getId(), FINISHED);
 			}
 		}
 		
@@ -314,5 +337,116 @@ public class VLUImportThread extends Thread {
 
 	public static void setEndMinutes(int endMinutes) {
 		VLUImportThread.endMinutes = endMinutes;
+	}
+	
+	/***************************** NO USADOS *****************************/
+	private static final class InsertVLUData implements TransactionalAction {
+		private int importId;
+		private VLUImportRecord importRecord;
+		
+		public InsertVLUData(int importId, VLUImportRecord importRecord) {
+			super();
+			this.importId = importId;
+			this.importRecord = importRecord;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			Connection conn = IBatisManager.getClient().getCurrentConnection();
+			PreparedStatement preparedStatement = conn.prepareStatement("insert into VLU_DATA(dni, domain, message, idvluimport) values(?,?,?,?)");
+			preparedStatement.setString(1, this.importRecord.getDni());
+			preparedStatement.setString(2, this.importRecord.getDomain());
+			if (StringUtils.isEmpty(this.importRecord.getMessage())) {
+				preparedStatement.setString(3, null);
+			} else {
+				preparedStatement.setString(3, this.importRecord.getMessage());
+			}
+			preparedStatement.setInt(4, this.importId);
+			preparedStatement.executeUpdate();
+			
+			preparedStatement = conn.prepareStatement("delete from VLU_DATA where dni = ? and domain = ? and idvluimport != ?");
+			preparedStatement.setString(1, this.importRecord.getDni());
+			preparedStatement.setString(2, this.importRecord.getDomain());
+			preparedStatement.setInt(3, this.importId);
+			preparedStatement.executeUpdate();
+			
+			preparedStatement = conn.prepareStatement("update VLU_IMPORT set processed = processed + 1 where id = ?");
+			preparedStatement.setInt(1, this.importId);
+			preparedStatement.executeUpdate();
+			conn.commit();
+			
+			//DAOManager.getVLUDataDAO().deleteOLDVLUData(this.importRecord.getDni(), this.importRecord.getDomain(), this.importId);
+			/*VLUData vluData = new VLUData();
+			vluData.setIdvluimport(this.importId);
+			vluData.setDni(this.importRecord.getDni());
+			vluData.setDomain(this.importRecord.getDomain());
+			vluData.setMessage(this.importRecord.getMessage());
+			vluData.setDeleted(0);
+			DAOManager.getVLUDataDAO().insertVLUData(vluData);*/
+//			DAOManager.getVLUImportDAO().incrementProcessed(this.importId);
+		}
+	}
+	
+	private static final class IncrementError implements TransactionalAction {
+		private int importId;
+		
+		public IncrementError(int importId) {
+			super();
+			this.importId = importId;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			VLUImport vluImport = DAOManager.getVLUImportDAO().selectVLUImportByPrimaryKey(this.importId);
+			vluImport.setProcessed(vluImport.getProcessed() + 1);
+			vluImport.setErrors(vluImport.getErrors() + 1);
+			DAOManager.getVLUImportDAO().updateVLUImportByPrimaryKey(vluImport);
+		}
+	}
+
+	public static int getStartRepairedHour() {
+		return startRepairedHour;
+	}
+
+	public static void setStartRepairedHour(int startRepairedHour) {
+		VLUImportThread.startRepairedHour = startRepairedHour;
+	}
+
+	public static int getStartRepairedMinutes() {
+		return startRepairedMinutes;
+	}
+
+	public static void setStartRepairedMinutes(int startRepairedMinutes) {
+		VLUImportThread.startRepairedMinutes = startRepairedMinutes;
+	}
+
+	public static int getEndRepairedHour() {
+		return endRepairedHour;
+	}
+
+	public static void setEndRepairedHour(int endRepairedHour) {
+		VLUImportThread.endRepairedHour = endRepairedHour;
+	}
+
+	public static int getEndRepairedMinutes() {
+		return endRepairedMinutes;
+	}
+
+	public static void setEndRepairedMinutes(int endRepairedMinutes) {
+		VLUImportThread.endRepairedMinutes = endRepairedMinutes;
+	}
+
+	public static String getRepairedDomainURL() {
+		return repairedDomainURL;
+	}
+
+	public static void setRepairedDomainURL(String repairedDomainURL) {
+		VLUImportThread.repairedDomainURL = repairedDomainURL;
+	}
+
+	public static ProxyConfiguration getPROXY() {
+		return PROXY;
+	}
+
+	public static void setPROXY(ProxyConfiguration pROXY) {
+		PROXY = pROXY;
 	}
 }

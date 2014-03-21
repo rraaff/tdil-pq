@@ -2,20 +2,15 @@ package com.tdil.lojack.vlu;
 
 public class DeleteRepairedDomainRecord {
 
-	private String dni;
-	private String domain;
+	private String dominio;
+
+	public String getDominio() {
+		return dominio;
+	}
+
+	public void setDominio(String dominio) {
+		this.dominio = dominio;
+	}
 	
-	public String getDni() {
-		return dni;
-	}
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	public String getDomain() {
-		return domain;
-	}
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
 	
 }
