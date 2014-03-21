@@ -109,7 +109,7 @@ public class VLUImportThread extends Thread {
 		boolean stopped = false;
 		while (true) {
 			try {
-				Thread.sleep(1000 /** 60*/); // sleep de un minuto
+				Thread.sleep(10000 /** 60*/); // sleep de un 10 minutos
 			} catch (InterruptedException e1) {
 				stopped = true;
 			}
