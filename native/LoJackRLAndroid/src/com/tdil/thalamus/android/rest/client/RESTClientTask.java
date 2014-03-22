@@ -42,6 +42,10 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
+	public static void recreateClient() {
+		httpClient = new DefaultHttpClient();
+	}
+	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
 		this.contextRef = new WeakReference<Context>(context);
