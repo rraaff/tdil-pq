@@ -16,7 +16,7 @@ deleted)
 VALUES
 (
 'CZP075',
-10200,
+19200,
 CURDATE(),
 'Peugeot',
 '208 GTI',

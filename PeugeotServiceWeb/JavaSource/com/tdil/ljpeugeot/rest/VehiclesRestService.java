@@ -140,7 +140,7 @@ public class VehiclesRestService extends AbstractRESTService {
 	@GET
 	@Path("/updateAlert/{alertId}/{lat}/{lon}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAlert(@PathParam("phone") String alertId, @PathParam("lat") String lat, @PathParam("lon") String lon) {
+	public Response updateAlert(@PathParam("alertId") String alertId, @PathParam("lat") String lat, @PathParam("lon") String lon) {
 //		validateLogged();
 		try {
 			boolean updated = PeugeotService.updateAlert(this.getUser().getModelUser().getId(), alertId, new BigDecimal(lat), new BigDecimal(lon));

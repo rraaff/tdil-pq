@@ -1,65 +1,73 @@
-com.tdil.ljpeugeot.rest.UsersService
 /rest/users/login
-/rest/users/requestResetPassword
-/rest/users/logout
-/rest/users/documentTypes
-/rest/users/states
-/rest/users/addressTypes
-/rest/users/get
-/rest/users/create
-/rest/users/update
-/rest/users/password
-/rest/users/password/validate
+{"apkToken":"8b401a5a-ab8a-4857-bb1e-a1b98b768746","logged":true,"lojackUserId":"1:11111111","name":"Fernando Valenzuela","servicesAdvices":false}
+Services advices si viene true es que tenes que sacar un alerta de aviso
 
+public static final String GET_ADVICES = "/vehicles/advices";
+Obtiene las alertas de avisos
+{"list":[{"description":"CZP075(208 GTI)","domain":"CZP075","id":2,"km":23000,"servicedate":""}]}
+
+public static final String DISMISS_ADVICES = "/vehicles/dismissAdvices";
+Hace dismiss de los avisos de service
+{"errors":{},"ok":true}
+	
+public static final String DEALERS_STATES = "/dealers/states";
 Lista las provincias para seleccion de concesionarias
-/rest/dealers/states
 {"list":[{"id":1,"name":"Buenos Aires"},{"id":2,"name":"Santa Fe"}]}
 
+public static final String DEALERS_CITIES = "/dealers/cities/{stateId}";
 Lista las ciudades de una provincia para seleccion de concesionarias
-/rest/dealers/cities/{stateId}
 {"list":[{"id":1,"name":"La Plata"},{"id":2,"name":"Dolores"}]}
 
+public static final String DEALERS = "/dealers/list/{cityId}";
 Lista las concesionarias de una ciudad
-/rest/dealers/dealers/{cityId}
 {"list":[{"address":"32 nro 2323","email":"galiadoros@peugeot.com","id":3,"name":"PeugeotRos","phone":"02224513521"},
 {"address":"44 nro 3434","email":"galiaros2@peugeot.com","id":4,"name":"PeugeotRos 2","phone":"022214513521"}]}
+
+public static final String CHANGE_DEALER = "/vehicles/{vehicleId}/changeDealer/{dealerId}/{email}";
+Cambia la concesionaria y el email asociado de un vehiculo
+{"errors":{},"ok":true}
+
+public static final String GET_EMAIL_FOR_ADVICE = "/vehicles/emailForAdvice";
+Obtiene el email asociado 
+{"email":"pepe@pepe.com"}
+
+public static final String ADD_ALERT = "/vehicles/addAlert/" + P_PHONE + "/" + P_LAT + "/" + P_LON;
+Agrega una alerta
+{"alertId":11}
+Si viene un codigo de status != 201 es que dio error
+
+public static final String UPDATE_ALERT = "/vehicles/updateAlert/" + P_ALERTID + "/" + P_LAT + "/" + P_LON;
+Cambia lat y lon de una alerta
+{"errors":{},"ok":false}
+
+public static final String GET_CONTACT_DATA = "/users/contactData";
+Obtiene los datos de contacto ante emergencias
+{"contact1healthi":"","contact1name":"","contact1phone":"","contact1relation":"","contact1secword":"","contact2name":"","contact2phone":"","contact2relation":"","contact3name":"","contact3phone":"","contact3relation":""}
+
+public static final String POST_CONTACT_DATA = "/users/contactData";
+Mismo json que el anterior pero post, modifica los datos
+{"errors":{},"ok":true}
 
 Listado de las relaciones
 /rest/users/relations
 {"list":[{"description":"Familiar","name":"RELATIVE"},{"description":"Amigo","name":"FRIEND"},{"description":"Trabajo","name":"COWORKER"}]}
+Esta yo las hardcodee en la pantalla, no las pido
 
-Datos de contacto GET
-/rest/users/contactData
-{"contact1healthi":"OSDE 310","contact1name":"Marcos Godoy","contact1phone":"02216412772","contact1relation":"RELATIVE",
-"contact1secword":"pajaroslocos","contact2name":"Marcela Cioma","contact2phone":"02215346997","contact2relation":"RELATIVE",
-"contact3name":"Vicky","contact3phone":"34343434","contact3relation":"COWORKER"}
-
-Mismo json POST modifica
-respuesta
-{"errors":{},"ok":true}
-
-Vehiculos
 /rest/vehicles/list
-{"list":[{"description":"","domain":"CZP075","id":1,"idDealer":1,"idModel":1,"km":0,"lastServiceDate":"2014-02-02","lastservicekm":0,"purchaseDate":"2014-02-02"}]}
+{"list":[{"description":"CZP075(208 GTI)","domain":"CZP075","id":1,"km":"10,200","lastservicedate":"14-03-2014","lastservicekm":"0","needsService":true,"purchasedate":"14-03-2014","vehicleModel":{"description":"208 GTI","kmwarranty":0,"monthwarranty":24,"name":"208 GTI","warrantyDescription":"2años"},"warrantyexpired":false},{"description":"IJJ-519(RCZ)","domain":"IJJ-519","id":2,"km":"2,000","lastservicedate":"04-01-2012","lastservicekm":"0","needsService":false,"purchasedate":"04-01-2012","vehicleModel":{"description":"RCZ","kmwarranty":100000,"monthwarranty":36,"name":"RCZ","warrantyDescription":"3años o 100,000km"},"warrantyexpired":false}]}
+Lista los vehiculos del usuario
 Fecha en formato YYYY-MM-DD
 
-Cambia el concesionario
-/rest/vehicles/{vehicleId}/changeDealer/{dealerId}
+public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}";
+Agrega un service, formato de fecha dd-MM-yyyy
+/rest/vehicles/1/addservice/22-3-2014/11000
 {"errors":{},"ok":true}
 
-Modelos de vehiculos
-/rest/vehicles/models
-{"list":[{"description":"Modelo de auto con 24 meses de garantia","monthwarranty":24,"name":"24m"},
-{"description":"Peugeot 206","monthwarranty":24,"name":"206"},
-{"description":"Peugeot 408","monthwarranty":60,"name":"408"}]}
+
 
 Services de un vehiculo
 /rest/vehicles/{vehicleId}/services
 {"list":[{"idVechicle":0,"km":10000,"serviceDate":"2014-02-03"},{"idVechicle":0,"km":20000,"serviceDate":"2014-02-03"}]}
-
-Agregado POST
-/rest/vehicles/{vehicleId}/service
-{"idVechicle":0,"km":10000,"serviceDate":"2014-02-03"}
-
+Este todavia no lo estoy usando, y ademos veo que esta mas escrito, espera un update de este
 
 http://localhost:8180/PeugeotServiceWeb/rest/users/login?documentType=1&documentNumber=11111111&password=123123

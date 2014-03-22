@@ -133,25 +133,6 @@
 		</sql>
 	</target>
 	
-	<target name="useMWTest">
-		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
-			<classpath>
-				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
-			</classpath>
-			<transaction src="use_mw_test.sql" />
-		</sql>
-	</target>
-	
-	<target name="useMWFake">
-		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
-			<classpath>
-				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
-			</classpath>
-			<transaction src="use_mw_fake.sql" />
-		</sql>
-	</target>
-	
-		
 	<target name="makeWar">
 		<delete file="./${project.name.upper}.tmp/${project.name.upper}_WEB.war">
 		</delete>

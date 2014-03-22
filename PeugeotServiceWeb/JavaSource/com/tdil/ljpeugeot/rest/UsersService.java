@@ -219,7 +219,10 @@ public class UsersService extends AbstractRESTService {
 		try {
 			ContactDataBean personBean = extractObjectFromJSON(body, ContactDataBean.class);
 			ContactData contactData = ContactDataBean.asContactData(personBean);
-			ContactData original = PeugeotService.getContactData(getUser().getId());
+			ContactData original = PeugeotService.getContactData(getUser().getId()); 
+			if (original == null) {
+				original = new ContactData();
+			}
 			contactData.setIdWebsiteuser(getUser().getId());
 			contactData.setId(original.getId());
 			contactData.setDeleted(0);
