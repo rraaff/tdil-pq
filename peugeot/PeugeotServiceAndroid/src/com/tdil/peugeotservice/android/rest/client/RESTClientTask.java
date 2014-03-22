@@ -52,6 +52,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	
 	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
 	
+	public static void recreateClient() {
+		httpClient = new DefaultHttpClient();
+	}
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {

@@ -23,6 +23,7 @@ public class MenuLogic {
 					Intent intent = new Intent(activity, LoginActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.putExtra("EXIT", true);
+					RESTClientTask.recreateClient();
 			    	activity.startActivity(intent);
 			    	activity.finish();
 				}
