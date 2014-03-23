@@ -153,7 +153,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 			<% if (myVehicles.isEmpty()) { %>
 				<h2>No posee ningún vehículo asociado</h2>
 			<% } else { %>
-				<div class="table_services">
+				<div class="table_services" id="vehicleTable">
 					<ul class="table_header">
 						<li class="cardesc">Vehículo (Dominio)</li>
 						<li class="kilometers">Kilometraje</li>
@@ -165,7 +165,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 					<% for (VehicleValueObject vehicleValueObject : myVehicles)  { 
 						String modelName = ModelUtils.getImageUrlPath(vehicleValueObject.getModel());
 					%>
-						<ul class="table_body" id="vehicleTable">
+						<ul class="table_body">
 							<%if (vehicleValueObject.getModel() !=  null) { %>
 								<li rel="ve-<%=vehicleValueObject.getVehicle().getId()%>" onclick="addService('<%=vehicleValueObject.getVehicle().getDomain()%>',<%=vehicleValueObject.getVehicle().getId()%>,'<%=modelName%>')" class="cardesc"><span class="tag_for_mmobile">Vehículo (Dominio): </span><%=vehicleValueObject.getModel().getName() %> (<%=vehicleValueObject.getVehicle().getDomain() %>)</li>
 							<% } else { %>
