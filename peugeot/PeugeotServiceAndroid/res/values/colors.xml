@@ -25,4 +25,6 @@
 	
 	
 	<color name="pressed_example">#CCCC0000</color>
+	
+	<color name="new_wheel_link">#00d8ff</color>
 </resources>

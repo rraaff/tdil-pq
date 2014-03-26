@@ -8,6 +8,25 @@
       
   </style>
 
+  	<style name="LoginScreen">
+  	    <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:background">@color/bgBase</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+  	</style>
+  	
+    <style name="mainLogoAtLogin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">82dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_gravity">top|center_horizontal</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+  
   	<style name="MainTitles">
 		<item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -68,15 +87,14 @@
         <item name="android:visibility">visible</item>
 	    <item name="android:background">@drawable/gr_degrade_for_forward_buttons</item>
 	    <!--  item name="android:src">@drawable/app_logo</item -->
-	    <item name="android:gravity">left|center_vertical</item>
 	    <item name="android:layout_gravity">center_horizontal</item>
 	    <item name="android:lines">1</item>
-	    <item name="android:layout_weight">1</item>
 	    <item name="android:layout_marginLeft">8dp</item>
 	    <item name="android:paddingLeft">8dp</item>
 	    <item name="android:paddingRight">8dp</item>
 	    <item name="android:paddingTop">4dp</item>
 	    <item name="android:paddingBottom">4dp</item>
+	    <item name="android:minHeight">0dp</item>
 	</style>
 	
 	<style name="ButtonBackward">
@@ -90,15 +108,14 @@
         <item name="android:visibility">visible</item>
 	    <item name="android:background">@drawable/gr_degrade_for_backward_buttons</item>
 	    <!--  item name="android:src">@drawable/app_logo</item -->
-	    <item name="android:gravity">left|center_vertical</item>
 	    <item name="android:layout_gravity">center_horizontal</item>
-	    <item name="android:lines">1</item>
-	    <item name="android:layout_weight">1</item>
+	    <item name="android:lines">2</item>
 	    <item name="android:layout_marginRight">8dp</item>
 	    <item name="android:paddingLeft">8dp</item>
 	    <item name="android:paddingRight">8dp</item>
 	    <item name="android:paddingTop">4dp</item>
 	    <item name="android:paddingBottom">4dp</item>
+		<item name="android:minHeight">0dp</item>
 	</style>
 	
 </resources>

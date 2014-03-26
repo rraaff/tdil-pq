@@ -1,5 +1,6 @@
 <resources>
 	<!-- Strings related to login -->
+	<string name="menu_main_title">Ingreso de usuarios</string>
 	<string name="menu_secondary_title">Más</string>
 	<string name="menu_change_password">Mi contraseña</string>
 	<string name="menu_update">Mis datos</string>

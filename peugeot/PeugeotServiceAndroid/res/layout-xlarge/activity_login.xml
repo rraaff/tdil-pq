@@ -9,40 +9,26 @@
         android:layout_height="fill_parent"
         android:background="@drawable/bg_ondas"
         android:gravity="center_vertical"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="100dp" >
 
         <ImageView
             android:id="@+id/main_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:layout_margin="20dp"
-            android:layout_weight="5"
+            style="@style/mainLogoAtLogin"
+            android:layout_weight="1"
             android:contentDescription="@string/app_name"
             android:src="@drawable/main_logo" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_margin="25dp"
-            android:layout_weight="10"
-            android:background="@color/bgBase"
-            android:gravity="center_vertical|center_horizontal"
-            android:maxWidth="300dp"
-            android:orientation="vertical"
-            android:padding="0dp" >
+            style="@style/LoginScreen"
+            android:layout_marginTop="100dp" >
 
             <TextView
                 android:id="@+id/loadingInfoText"
                 style="@style/MainTitles"
-                android:text="XLARGE Ingreso de usuarios" />
-"
+                android:text="@string/menu_main_title" />
 
-            <!--                 android:spinnerMode="dropdown"
-                tools:listitem="@android:layout/simple_spinner_item"  
-                @android:style/Widget.Holo.Light.Spinner
-                -->
+
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -105,17 +91,14 @@
 
                     <CheckBox
                         android:id="@+id/rememberPasswordCheckbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|center_horizontal"
+                        style="@style/Label"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|fill_horizontal"
-                        android:maxLines="1"
+                        
+						android:maxLines="1"
                         android:paddingRight="30dp"
                         android:text="@string/crt_tag_rememberme"
                         android:textAlignment="center"
                         android:textColor="@color/labels"
-                        android:textSize="20sp"
                         android:visibility="visible" />
 
                 </TableRow>
@@ -138,20 +121,6 @@
                     android:text="@string/btn_tag_login" />
 
             </TableRow>
-
-			<!--  Button
-			    android:id="@+id/requestRegistration"
-			    style="?android:attr/buttonStyleSmall"
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:layout_marginBottom="3dp"
-			    android:layout_marginTop="3dp"
-			    android:focusable="false"
-			    android:minHeight="24dp"
-			    android:text="@string/btn_tag_register"
-			    android:textColor="#ffffff"
-			    android:textSize="14sp"
-			    android:visibility="visible" / -->
 
         </LinearLayout>
 

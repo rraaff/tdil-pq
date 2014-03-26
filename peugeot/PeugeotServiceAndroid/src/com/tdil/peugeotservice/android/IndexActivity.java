@@ -46,12 +46,12 @@ public class IndexActivity extends ActionBarActivity {
 				FooterLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
-		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				FooterLogic.handlePeugeotAccess(IndexActivity.this);
-			}
-		});
+//		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//				FooterLogic.handlePeugeotAccess(IndexActivity.this);
+//			}
+//		});
 //		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 //			@Override
 //			public void onClick(View arg0) {

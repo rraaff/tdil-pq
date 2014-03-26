@@ -61,7 +61,7 @@
     <string name="lbl_password">Clave</string>
     
     <!-- Buttons -->
-    <string name="btn_tag_login">Ingresar   ></string>
+    <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>
     <string name="btn_tag_modify">Modificar</string>
     <string name="btn_tag_modify_my_data"> </string>
@@ -76,16 +76,16 @@
     
     <string name="action_home">Home</string>
     
-    <string name="btn_home">  </string>
-    <string name="btn_prevent">  </string>
-    <string name="btn_pets">  </string>
-    <string name="btn_parkings">  </string>
-    <string name="btn_tv">  </string>
+    <string name="btn_home">[Home Deprecated]</string>
+    <string name="btn_prevent">[Car Security]</string>
+    <string name="btn_pets">[PETS deprecated]</string>
+    <string name="btn_parkings">[Points of Interest]</string>
+    <string name="btn_tv">[TV Deprecated]</string>
     
-    <string name="btn_footer_home"> </string>
-    <string name="btn_footer_prevent"> </string>
-    <string name="btn_footer_pets"> </string>
-    <string name="btn_footer_config"> </string>
+    <string name="btn_footer_home">[Home Deprecated]</string>
+    <string name="btn_footer_prevent">[Car Security]</string>
+    <string name="btn_footer_pets">[PETS deprecated]</string>
+    <string name="btn_footer_config">[Points of Interest]</string>
     <string name="btn_footer_data">Data</string>
     
     <string name="btn_male">Masculino</string>
