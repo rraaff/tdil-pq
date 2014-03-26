@@ -45,7 +45,7 @@
         <item name="dividerHorizontal">@drawable/abc_list_divider_holo_dark</item>
 
         <item name="listPreferredItemHeight">?android:attr/listPreferredItemHeight</item>
-        <item name="listPreferredItemHeightSmall">48dp</item>
+        <item name="listPreferredItemHeightSmall">0dp</item>
         <item name="listPreferredItemHeightLarge">80dp</item>
         <item name="listPreferredItemPaddingLeft">8dip</item>
         <item name="listPreferredItemPaddingRight">8dip</item>
@@ -103,7 +103,7 @@
         <item name="dividerHorizontal">@drawable/abc_list_divider_holo_light</item>
 
         <item name="listPreferredItemHeight">?android:attr/listPreferredItemHeight</item>
-        <item name="listPreferredItemHeightSmall">48dp</item>
+        <item name="listPreferredItemHeightSmall">0dp</item>
         <item name="listPreferredItemHeightLarge">80dp</item>
         <item name="listPreferredItemPaddingLeft">8dip</item>
         <item name="listPreferredItemPaddingRight">8dip</item>
