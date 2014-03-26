@@ -160,6 +160,7 @@ public class VLUUtils {
 			TransactionProvider.executeInTransaction(new InsertVLUImport(fileName, ImportType.VLU_DELETE_REPAIRED.getType()));
 			
 			VLUImport importVlu =  TransactionProvider.executeInTransactionWithResult(new GetVLUImportPending(fileName));
+			VLUImportThread.changeStatus(importVlu.getId(), "PROCESSING");
 			new DeleteRepairedDomainsThread(importVlu).start();
 			return true;
 		} catch (SQLException e) {
