@@ -218,9 +218,6 @@ public class VLUImportThread extends Thread {
 			PreparedStatement deleteOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where dni = ? and domain = ? and idvluimport != ?");
 			PreparedStatement incrementImport = conn.prepareStatement("update " + DAOManager.getVLU_IMPORTTableName()+ " set processed = processed + 1 where id = ?");
 
-			PreparedStatement deleteALLOldVlu = conn.prepareStatement("delete from " + DAOManager.getVLU_DATATableName()+ " where idvluimport != ?");
-			deleteALLOldVlu.setInt(1, imp.getId());
-			
 			incrementImport.setInt(1, imp.getId());
 			CsvBeanReader beanReader = null;
 			try {
@@ -251,7 +248,6 @@ public class VLUImportThread extends Thread {
 			}
 			insertVlu.executeBatch();
 			deleteOldVlu.executeBatch();
-			deleteALLOldVlu.execute();
 			conn.commit();
 		} catch (Exception e) {
 			try {
