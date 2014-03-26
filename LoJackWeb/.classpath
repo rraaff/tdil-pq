@@ -7,5 +7,6 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ThalamusJClient"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EnvironmentLibraries"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Camera"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/pluginibator.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
