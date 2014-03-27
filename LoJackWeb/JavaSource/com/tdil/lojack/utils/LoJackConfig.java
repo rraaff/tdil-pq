@@ -126,6 +126,11 @@ public class LoJackConfig extends SystemConfig {
 		}
 
 	}
+	
+	@Override
+	protected boolean overwriteLog4jOnStart() {
+		return true;
+	}
 
 	public static void basicInitSystem() throws MalformedURLException {
 		String dbversion = SystemPropertyUtils.getSystemPropertValue("dbversion");
