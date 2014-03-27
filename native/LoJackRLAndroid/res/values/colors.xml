@@ -21,4 +21,6 @@
 	
 	
 	<color name="pressed_example">#CCCC0000</color>
+	
+	<color name="color_transparent">#00000000</color>
 </resources>
