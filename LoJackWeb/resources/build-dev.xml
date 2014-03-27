@@ -377,6 +377,11 @@
 		      <filter token="VERSION" value="${build.version}"/>
 		    </filterset>
 		</copy>
+		<copy file="../WebContent/includes/version_view.template" tofile="../WebContent/includes/version_view.jspf" overwrite="true" encoding="ISO-8859-1">
+			<filterset>
+		      <filter token="VERSION" value="${build.version}"/>
+		    </filterset>
+		</copy>
 		<delete dir="${project.name.upper}.tmp" failonerror="false">
 		</delete>
 		<mkdir dir="${project.name.upper}.tmp" />
