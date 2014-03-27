@@ -121,8 +121,8 @@
                                 android:layout_height="30dp"
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="45dp"
-                                android:background="@drawable/badge"
-                                android:text="!"
+                                android:background="@drawable/badge_alert"
+                                android:textColor="@color/color_transparent"
                                 android:textSize="12sp" />
                                 
                             </RelativeLayout>
