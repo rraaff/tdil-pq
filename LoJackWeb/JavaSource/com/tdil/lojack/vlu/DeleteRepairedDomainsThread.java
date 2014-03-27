@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -48,7 +49,8 @@ public class DeleteRepairedDomainsThread extends Thread {
 
 				// the header elements are used to map the values to the bean (names
 				// must match)
-				final String[] header = beanReader.getHeader(true);
+				String[] header = beanReader.getHeader(true);
+				header[0] = "dominio";
 				final CellProcessor[] processors = getProcessors();
 
 				DeleteRepairedDomainRecord importRecord;

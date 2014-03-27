@@ -109,7 +109,7 @@ public class VLUImportThread extends Thread {
 		boolean stopped = false;
 		while (true) {
 			try {
-				Thread.sleep(1000 * 60 * 10); // sleep de un 10 minutos
+				Thread.sleep(1000 /* 60 * 10*/); // sleep de un 10 minutos
 			} catch (InterruptedException e1) {
 				stopped = true;
 			}
@@ -226,6 +226,9 @@ public class VLUImportThread extends Thread {
 				// the header elements are used to map the values to the bean (names
 				// must match)
 				final String[] header = beanReader.getHeader(true);
+				if (!header[0].startsWith("d")) {
+					header[0] = "dni";
+				}
 				final CellProcessor[] processors = getProcessors();
 
 				VLUImportRecord importRecord;
