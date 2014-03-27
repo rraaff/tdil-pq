@@ -130,7 +130,7 @@
 
     </LinearLayout>
     
-    <TextView
+    <!-- TextView
         android:id="@+id/dropTarget"
         android:layout_width="124dp"
         android:layout_height="124dp"
@@ -139,7 +139,7 @@
         android:gravity="center"
         android:paddingTop="5dp"
         android:text="@string/rd_default_comment"
-        android:visibility="visible" />
+        android:visibility="visible" / -->
 
 
 </merge>
