@@ -36,7 +36,7 @@ button.iconHome 						{ border:none; background:transparent; background:url(../i
 button.iconEall							{ background:url(../images/skin_lj_rl/webApp/parkings/control_E_all.png); }
 button.icon500mts						{ background:url(../images/skin_lj_rl/webApp/parkings/control_500mts.png); }
 button.icon1mks							{ background:url(../images/skin_lj_rl/webApp/parkings/control_1000mts.png); }
-button.iconClea							{ background:url(../images/skin_lj_rl/webApp/parkings/control_clear.png); }
+button.iconClear						{ background:url(../images/skin_lj_rl/webApp/parkings/control_clear.png); }
 button.iconHome							{ background:url(../images/skin_lj_rl/webApp/parkings/back_home.png); }
 button.icon_zoom_in,
 button.icon_zoom_out					{ border:none; background:transparent; background:url(../images/skin_lj_rl/webApp/parkings/icon_ZoomIn.png); background-repeat:no-repeat; background-position:0 0; width:32px; height:32px; margin:10px 0; padding:0; cursor:pointer; }

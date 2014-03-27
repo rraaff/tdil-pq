@@ -120,8 +120,6 @@ ul.tabServices {  }
 	}
 }
 
-div.basicControls { height:70px; }
-
 button.iconEall,
 button.icon100mts,
 button.icon500mts,
@@ -137,32 +135,27 @@ button.icon_zoom_in,
 button.icon_zoom_out {
 	border:none;
 	background:transparent;
-	background-size:36px 36px!important;
-	background-position:center top !important;
-	width:12%;
-	cursor:pointer;
-	color:#fff;
-	font-size:10px;
-	text-align:center;
-	margin:10px 10px 0;
-	padding:40px 0 0 0;
+	width:55px;
+	height:60px;
+	padding:0;
+	margin:5px 0;
 	cursor:pointer;
 }
 button.icon_zoom_in,
-button.icon_zoom_out { width:36px; height:36px; margin:4px!important; padding:0; }
+button.icon_zoom_out { border:1px #000; width:32px; height:32px; }
 
-button.iconEall		{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_parkings.png); 		background-repeat:no-repeat; background-position:center center; }
-button.icon100mts	{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_hundred.png); 		background-repeat:no-repeat; background-position:center center; }
-button.icon500mts	{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_fivehundred.png); 	background-repeat:no-repeat; background-position:center center; }
-button.icon1mks		{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_thousand.png); 		background-repeat:no-repeat; background-position:center center; }
-button.iconClear	{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_clear_map.png); 		background-repeat:no-repeat; background-position:center center; }
-button.iconMaxSpeed { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_maxspeeds.png);	 	background-repeat:no-repeat; background-position:center center; }
-button.iconZSeguras { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_zones.png); 			background-repeat:no-repeat; background-position:center center; }
-button.iconGetPosit { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_position.png); 		background-repeat:no-repeat; background-position:center center; }
-button.iconPhoneAdm { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_phones.png); 			background-repeat:no-repeat; background-position:center center; }
-button.iconVLUAlert	{ background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_yellow_vlu_alert.png); 		background-repeat:no-repeat; background-position:center center; }
-button.icon_zoom_in  { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_zoom_in.png);		background-repeat:no-repeat; background-position:center center; }
-button.icon_zoom_out { background:url(../images/skin_RealLife_two/icons/cars_parkings/ic_white_zoom_out.png);		background-repeat:no-repeat; background-position:center center; }
+button.iconEall		{ background:url(../mobile/images/webApp/parkings/control_E_all.png); 		background-repeat:no-repeat; background-position:center center; }
+button.icon100mts	{ background:url(../mobile/images/webApp/parkings/control_100mts.png); 		background-repeat:no-repeat; background-position:center center; }
+button.icon500mts	{ background:url(../mobile/images/webApp/parkings/control_500mts.png); 		background-repeat:no-repeat; background-position:center center; }
+button.icon1mks		{ background:url(../mobile/images/webApp/parkings/control_1000mts.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconClear	{ background:url(../mobile/images/webApp/parkings/control_clear.png); 		background-repeat:no-repeat; background-position:center center; }
+button.iconMaxSpeed { background:url(../mobile/images/webApp/car/control_maxSpeed_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconZSeguras { background:url(../mobile/images/webApp/car/control_zSeguras_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconGetPosit { background:url(../mobile/images/webApp/car/control_getPosit_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconPhoneAdm { background:url(../mobile/images/webApp/car/control_phoneAdm_60x60.png); 	background-repeat:no-repeat; background-position:center center; }
+button.iconVLUAlert	{ background:url(../images/skin_lj_rl/vlu/badge_ok.png); 					background-repeat:no-repeat; background-position:center center; }
+button.icon_zoom_in  { background:url(../mobile/images/webApp/parkings/icon_ZoomIn.png);		background-repeat:no-repeat; background-position:center center; }
+button.icon_zoom_out { background:url(../mobile/images/webApp/parkings/icon_ZoomOut.png);		background-repeat:no-repeat; background-position:center center; }
 
 #zoomSection {
 	width:50px;
