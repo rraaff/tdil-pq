@@ -16,7 +16,7 @@
 <%@ include file="includes/datePickerES.jspf" %>
 
 		$("input[name=birthDate]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
-			changeYear: true, minDate: "-100Y", maxDate: "+0D"});
+			changeYear: true, minDate: "-100Y", maxDate: "+0D", yearRange: '-120:+0'});
 		
 		$("form[name='UpdatePersonForm']").validate({
 			errorPlacement: function(error, element) {
