@@ -139,7 +139,7 @@ public class ParkingsActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_parkings, menu);
+		getMenuInflater().inflate(R.menu.menu_full, menu);
 		return true;
 	}
 

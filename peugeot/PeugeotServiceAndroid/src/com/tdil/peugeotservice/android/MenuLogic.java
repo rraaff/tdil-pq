@@ -53,6 +53,12 @@ public class MenuLogic {
 		case R.id.menu_change_password:
 			activity.startActivity(new Intent(activity, ChangePasswordActivity.class));
 			return true;
+		case R.id.menu_action_services:
+			activity.startActivity(new Intent(activity, ServicesDashboardActivity.class));
+			return true;
+		case R.id.menu_action_emergency:
+			activity.startActivity(new Intent(activity, UpdateEmergencyConfigActivity.class));
+			return true;
 		case R.id.menu_login:
 			activity.finish();
 			return true;

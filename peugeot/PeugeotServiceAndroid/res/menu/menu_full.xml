@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:peugeot="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/secondaryMenu"
+	    android:icon="@drawable/ic_navigation_options"
+	    peugeot:showAsAction="always"
+	    android:title="@string/menu_secondary_title">
+    	<menu>
+    	    <item
+		          android:id="@+id/menu_action_parkings"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_pois"/>
+    	    <item
+		          android:id="@+id/menu_action_prevent"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_prevent"/>
+    	    <item
+		          android:id="@+id/menu_action_services"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_services"/>
+    	    <item
+		          android:id="@+id/menu_action_emergency"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_emergency"/>
+    	    
+		    <item
+		          android:id="@+id/menu_update"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_update"/>
+		    <item
+		          android:id="@+id/menu_change_password"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_change_password"/>
+		    
+		    <item
+		          android:id="@+id/menu_logout"
+		          peugeot:showAsAction="always|withText"
+		          android:title="@string/menu_logout"/>
+		</menu>
+	</item>
+</menu>

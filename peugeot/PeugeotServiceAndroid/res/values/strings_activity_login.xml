@@ -9,5 +9,10 @@
 	<string name="menu_login">Ingresar</string>
 	<string name="menu_register">Registrarme</string>
 	<string name="menu_back">Volver</string>
+	<string name="menu_pois">POINTS OF INTEREST</string>
+	<string name="menu_prevent">CAR SECURITY</string>
+	<string name="menu_services">SERVICES</string>
+	<string name="menu_emergency">CONFIG. EMERGENCIAS</string>
+	
 	
 </resources>

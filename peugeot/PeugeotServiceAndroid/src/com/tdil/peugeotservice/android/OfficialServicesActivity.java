@@ -107,7 +107,7 @@ public class OfficialServicesActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_without_apps, menu);
+		getMenuInflater().inflate(R.menu.menu_full, menu);
 		return true;
 	}
 
