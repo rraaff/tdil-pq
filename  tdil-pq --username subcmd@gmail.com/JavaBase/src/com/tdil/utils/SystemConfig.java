@@ -91,7 +91,7 @@ public abstract class SystemConfig {
 							FileUtils.forceMkdir(log);
 						}
 						File log4j = new File(logDir + "/log4j.xml");
-						if(log4j.exists() && log4j.length() < 1400) {
+						if(log4j.exists() && (log4j.length() < 1400 || overwriteLog4jOnStart())) {
 							log4j.delete();
 							InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
 							String log4jContent = IOUtils.toString(io);
@@ -120,6 +120,10 @@ public abstract class SystemConfig {
 			throw new RuntimeException(e);
 		}
 		getLog().fatal("SystemConfig loaded properties from db");
+	}
+
+	protected boolean overwriteLog4jOnStart() {
+		return false;
 	}
 
 	protected abstract String getLogDir();
