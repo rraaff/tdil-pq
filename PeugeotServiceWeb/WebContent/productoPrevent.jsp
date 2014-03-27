@@ -52,6 +52,8 @@
 	var POI;
 	var MyPos;
 	var SearchMeters;
+	var circleToAddCenter;
+	var circleToAddOtherPoint;
 	function resizeIcons(e){ }
 
 	<%@ include file="includes/errorAjaxJS.jspf" %>
@@ -97,7 +99,9 @@
 
 			var mapOptions = {
 				DataProjection: "EPSG:4326",
-				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
+				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>",
+				PointDigitizedHandler: function(center,other) {circleAdded(center,other);},
+				PolygonDigitizedHandler: function(points) {polygonAdded(points);}
 			};
 
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
@@ -124,7 +128,9 @@
 		<%} else {%>
 			var mapOptions = {
 				DataProjection: "EPSG:4326",
-				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>"
+				tilesetUrl: "<%=com.tdil.ljpeugeot.utils.LJPeugeotConfig.getMapsUrl()%>",
+				PointDigitizedHandler: function(center,other) {circleAdded(center,other);},
+				PolygonDigitizedHandler: function(points) {polygonAdded(points);}
 			};
 			Mapa = new MapaOSM("mapObject", "mapContainer", mapOptions);
 			Mapa.UpdateConfig({ title: "Prevent" });
@@ -136,7 +142,106 @@
 				});
 			});
 		<% } %>
+
+		$("form[name='AddCircularSecureZoneForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.next("div"));
+			},
+			rules: {
+				'name': {required: true}
+			},
+			messages: {
+				'name': {required: "<span>Ingrese el nombre de la zona.</span>"}
+			},
+			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
+				//clearErrors();
+				$('#savecsz').prop('innerHTML', '');
+				$('#savecsz').css('display', 'none');
+	            $("form[name='AddCircularSecureZoneForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./addCircularSecureZone.do",
+	    			dataType: "json",
+	    			success: postAddCircular,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
+	    			});
+	        }
+		});
+
+		$("form[name='AddPolygonalSecureZoneForm']").validate({
+			errorPlacement: function(error, element) {
+				error.appendTo( element.next("div"));
+			},
+			rules: {
+				'name': {required: true}
+			},
+			messages: {
+				'name': {required: "<span>Ingrese el nombre de la zona.</span>"}
+			},
+			submitHandler: function() {
+				<%@ include file="includes/blockUI.jspf" %>
+				//clearErrors();
+				$('#savecsz').prop('innerHTML', '');
+				$('#savecsz').css('display', 'none');
+	            $("form[name='AddPolygonalSecureZoneForm']").ajaxSubmit({
+	    			type: "POST",
+	    			url: "./addPolygonalSecureZone.do",
+	    			dataType: "json",
+	    			success: postAddPolygonal,
+	    			<%@ include file="includes/openErrorLayerJS.jspf" %>
+	    			});
+	        }
+		});
 	});
+
+	function postAddCircular(data) {
+		<%@ include file="includes/unblockUI.jspf" %>
+		if (data.result == 'OK') {
+			//window.location.replace('./home.jsp');
+			//console.log('OK');
+			$( "#secureZoneStep2CircularLayer" ).fadeOut();
+		} else {
+			$('#savesz').prop('innerHTML', 'Ha ocurrido un error');
+			$('#savesz').css('display', 'block');
+		}
+	}
+
+	function postAddPolygonal(data) {
+		<%@ include file="includes/unblockUI.jspf" %>
+		if (data.result == 'OK') {
+			//window.location.replace('./home.jsp');
+			//console.log('OK');
+			$( "#secureZoneStep2PolygonalLayer" ).fadeOut();
+		} else {
+			$('#savesz').prop('innerHTML', 'Ha ocurrido un error');
+			$('#savesz').css('display', 'block');
+		}
+	}
+
+	function circleAdded(center, other) {
+		circleToAddCenter = center;
+		circleToAddOtherPoint = other;
+		$("form[name='AddCircularSecureZoneForm'] input[name='centerLat']").val(center.y);
+		$("form[name='AddCircularSecureZoneForm'] input[name='centerLon']").val(center.x);
+		$("form[name='AddCircularSecureZoneForm'] input[name='otherLat']").val(other.y);
+		$("form[name='AddCircularSecureZoneForm'] input[name='otherLon']").val(other.x);
+		centerLayer($(window), $( "#secureZoneStep2CircularLayer" ));
+		centerLayer($(window), $( "#centradorModalesSecureStep2CircularZone" ));
+	}
+
+	function polygonAdded(points) {
+		var pointsString = "";
+		for (var i = 0; i < points.length; i++) {
+			pointsString = pointsString + points[i].Y + "," + points[i].X;
+			if (i + 1 < points.length){
+				pointsString = pointsString + ",";
+			}
+		}
+		//debugger;
+		$("form[name='AddPolygonalSecureZoneForm'] input[name='points']").val(pointsString);
+		centerLayer($(window), $( "#secureZoneStep2PolygonalLayer" ));
+		centerLayer($(window), $( "#centradorModalesSecureStep2PolygonalZone" ));
+	}
 
 	function editMaxSpeed() {
 		<%@ include file="includes/blockUI.jspf" %>
@@ -269,7 +374,48 @@
 			}
 		});
 		<% } %>
+
 	}
+
+	function selectVehicleForHistoricPath() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#selectVehiclesForHP').load('goToVehicleHistoricPath.do', function(response, status, xhr) {
+			<%@ include file="includes/unblockUI.jspf" %>
+			if (status == "error") {
+				errorAjax();
+			} else {
+				centerLayer($(window), $( "#selectVehiclesForHPLayer" ));
+				centerLayer($(window), $( "#centradorModalesVehiclesForHP" ));
+			}
+		});
+	}
+
+		function secureZoneStep1() {
+			centerLayer($(window), $( "#secureZoneStep1Layer" ));
+			centerLayer($(window), $( "#centradorModalesSecureStep1Zone" ));
+		}
+		
+		function continueToDrawCircularSecureZone() {
+			$( "#secureZoneStep1Layer" ).fadeOut();
+			Mapa.DigitalizarPunto();
+		}
+		function continueToDrawPolygonalSecureZone() {
+			$( "#secureZoneStep1Layer" ).fadeOut();
+			Mapa.DigitalizarPoligono();
+		}
+		function continueToEditSecureZone() {
+			$( "#secureZoneStep1Layer" ).fadeOut();
+			editSecureZones();
+		}
+
+		function cancelAddCircularSecureZone() {
+			$( "#secureZoneStep2CircularLayer" ).fadeOut();
+		}
+
+		function cancelAddPolygonalSecureZone() {
+			$( "#secureZoneStep2PolygonalLayer" ).fadeOut();
+		}
+	
 
 <%@ include file="includes/centerLayerJS.jspf" %>
 <%@ include file="includes/openLegalesLayer.jsp" %>
@@ -312,9 +458,9 @@ if (apk != null && apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
-				<!--  button class="iconPathTour" onclick="#">&nbsp;</button-->
-				<!--button class="iconPhoneAdm" onclick="Mapa.DigitalizarPunto();">Punto</button>
-				<button class="iconPhoneAdm" onclick="Mapa.DigitalizarPoligono();">Poligono</button-->
+				<!--button class="iconPathTour" onclick="selectVehicleForHistoricPath();">&nbsp;</button>
+				<button class="iconPhoneAdm" onclick="secureZoneStep1();">Punto</button-->
+				<!-- button class="iconPhoneAdm" onclick="Mapa.DigitalizarPoligono();">Poligono</button-->
 			</div>
 			<section id="zoomSection">
 				<div class="zoomControls">
@@ -376,6 +522,60 @@ if (apk != null && apk) {
 		</div>
 	</div>
 </div>
+
+<div id="selectVehiclesForHPLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesVehiclesForHP" class="layerModal width300">
+		<div id="selectVehiclesForHP">
+			Consultando datos...
+		</div>
+	</div>
+</div>
+
+<!-- este layer pregunta si quiere agregar zonas seguras o cambiar las de un auto -->
+<div id="secureZoneStep1Layer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesSecureStep1Zone" class="layerModal width300">
+		<div id="secureZoneStep1">
+			<button onclick="continueToDrawCircularSecureZone();">Agregar zona segura circular</button>
+			<button onclick="continueToDrawPolygonalSecureZone();">Agregar zona segura poligonal</button>
+			<button onclick="continueToEditSecureZone()">Cambiar zonas seguras de mis vehiculos</button>
+		</div>
+	</div>
+</div>
+
+centerLayer($(window), $( "#" ));
+		centerLayer($(window), $( "#" ));
+
+<div id="secureZoneStep2CircularLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesSecureStep2CircularZone" class="layerModal width300">
+		<div class="alert alert-error" id="savecsz" style="display: none;"></div>
+		<div id="secureZoneStep2Circular">
+			<html:form method="POST" action="/addCircularSecureZone">
+				<input type="hidden" name="centerLat" id="centerLat">
+				<input type="hidden" name="centerLon" id="centerLon">
+				<input type="hidden" name="otherLat" id="otherLat">
+				<input type="hidden" name="otherLon" id="otherLon">
+				Nombre <input type="text" name="name" id="name">
+				<button type="button" class="link_back" onclick="cancelAddCircularSecureZone()"><span></span>Cancelar</button>
+				<button class="botton_ahead" type="submit" id="addServiceButton" >Agregar<span></span></button>
+			</html:form>
+		</div>
+	</div>
+</div>
+
+<div id="secureZoneStep2PolygonalLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesSecureStep2PolygonalZone" class="layerModal width300">
+		<div class="alert alert-error" id="savepsz" style="display: none;"></div>
+		<div id="secureZoneStep2Polygonal">
+			<html:form method="POST" action="/addPolygonalSecureZone">
+				<input type="hidden" name="points" id="points">
+				Nombre <input type="text" name="name" id="name">
+				<button type="button" class="link_back" onclick="cancelAddPolygonalSecureZone()"><span></span>Cancelar</button>
+				<button class="botton_ahead" type="submit" id="addServiceButton" >Agregar<span></span></button>
+			</html:form>
+		</div>
+	</div>
+</div>
+
 <%@ include file="includes/footer_web.jspf" %>
 
 <!-- ALL LAYERS -->

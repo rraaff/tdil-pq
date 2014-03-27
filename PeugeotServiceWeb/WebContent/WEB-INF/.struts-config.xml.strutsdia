@@ -173,7 +173,14 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page16" PATH="/productoPrevent.jsp"
   SHAPE="240,4770,0,0" SUBTYPE="jsp" TITLE="productoPrevent.jsp"
-  TYPE="page" model-entity="StrutsProcessItem"/>
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/addCircularSecureZone.do"
+   SUBTYPE="confirmed" TARGET="action32"
+   TITLE="/addCircularSecureZone.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT NAME="link1" PATH="/addPolygonalSecureZone.do"
+   SUBTYPE="confirmed" TARGET="action33"
+   TITLE="/addPolygonalSecureZone.do" TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page17" PATH="/vehiculosZonasSeguras.jsp"
   SHAPE="240,5138,0,0" SUBTYPE="jsp" TITLE="vehiculosZonasSeguras.jsp"
   TYPE="page" model-entity="StrutsProcessItem">
@@ -249,9 +256,8 @@
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward0"
    PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"
    TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1"
-   PATH="/home.jsp" TARGET="page24" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward1" PATH="/home.jsp"
+   TARGET="page7" TITLE="failure" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page23" PATH="/loginPrevent.jsp"
   SHAPE="240,7858,0,0" SUBTYPE="jsp" TITLE="loginPrevent.jsp"
@@ -459,7 +465,7 @@
   PATH="/mobile/goToPreventLogin" SHAPE="1152,1089,0,0"
   TITLE="SelectVehiclesForMapForm" TYPE="action" model-entity="StrutsProcessItem">
   <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/home.jsp" TARGET="page24" TITLE="failure"
+   PATH="/mobile/home.jsp" TARGET="page24" TITLE="failure"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
   <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
    PATH="/productoPrevent.jsp?showinmap=1" TARGET="page16"
@@ -685,4 +691,37 @@
   TITLE="GeneratePasswordForm" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#snoozeAdvices" NAME="action31" PATH="/snoozeAdvices"
   SHAPE="32,3393,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addCircularSecureZone" NAME="action32"
+  PATH="/addCircularSecureZone" SHAPE="32,3393,0,0"
+  TITLE="AddCircularSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#addPolygonalSecureZone" NAME="action33"
+  PATH="/addPolygonalSecureZone" SHAPE="448,4770,0,0"
+  TITLE="AddPolygonalSecureZoneForm" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page33" PATH="/vehiculoHistoricPath.jsp"
+  SHAPE="304,5330,0,0" SUBTYPE="jsp" TITLE="vehiculoHistoricPath.jsp"
+  TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/viewHistoricPath.do"
+   SUBTYPE="confirmed" TARGET="action35" TITLE="/viewHistoricPath.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#goToVehicleHistoricPath" NAME="action34"
+  PATH="/goToVehicleHistoricPath" SHAPE="32,5025,0,0"
+  TITLE="SelectVehiclesForHistoricPath" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/vehiculoHistoricPath.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#viewHistoricPath" NAME="action35"
+  PATH="/viewHistoricPath" SHAPE="512,5330,0,0"
+  TITLE="SelectVehiclesForHistoricPath" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
+   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/vehiculoHistoricPath.jsp" TARGET="page33" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

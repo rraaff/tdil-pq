@@ -18,8 +18,11 @@
   <form-bean id="SelectVehiclesForPhonesForm" name="SelectVehiclesForPhonesForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="SelectVehiclesForSpeedForm" name="SelectVehiclesForSpeedForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="SelectVehiclesForSecureZoneForm" name="SelectVehiclesForSecureZoneForm" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
+  <form-bean id="SelectVehiclesForHistoricPath" name="SelectVehiclesForHistoricPath" type="com.tdil.ljpeugeot.struts.forms.prevent.SelectVehiclesForm"/>
   <form-bean id="ContactForm" name="ContactForm" type="com.tdil.ljpeugeot.struts.forms.ContactForm"/>
   <form-bean id="PreventLoginForm" name="PreventLoginForm" type="com.tdil.ljpeugeot.struts.forms.PreventLoginForm"/>
+  <form-bean id="AddCircularSecureZoneForm" name="AddCircularSecureZoneForm" type="com.tdil.ljpeugeot.struts.forms.prevent.AddCircularSecureZoneForm"/>
+  <form-bean id="AddPolygonalSecureZoneForm" name="AddPolygonalSecureZoneForm" type="com.tdil.ljpeugeot.struts.forms.prevent.AddPolygonalSecureZoneForm"/>
   
   <form-bean id="EditContactDataForm" name="EditContactDataForm" type="com.tdil.ljpeugeot.struts.forms.EditContactDataForm"/>
   <form-bean id="EditVehicleDataForm" name="EditVehicleDataForm" type="com.tdil.ljpeugeot.struts.forms.prevent.EditVehicleDataForm"/>
@@ -182,6 +185,16 @@
   </action>
   <action name="SelectVehiclesForPhonesForm" parameter="PreventUser" path="/saveVehiculesPhones" scope="session" type="com.tdil.ljpeugeot.struts.action.SaveVehiclesPhonesAjaxAction">
   </action>
+
+  <action name="SelectVehiclesForHistoricPath" parameter="PreventUser" path="/goToVehicleHistoricPath" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesForHistoricPathAction">
+  	<forward name="continue" path="/vehiculoHistoricPath.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  </action>
+  
+  <action name="SelectVehiclesForHistoricPath" parameter="PreventUser" path="/viewHistoricPath" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesForHistoricPathAction">
+  	<forward name="continue" path="/vehiculoHistoricPath.jsp" redirect="true"/>
+  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  </action>
   
   <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToContactAction">
   	<forward name="continue" path="/contacto.jsp" redirect="true"/>
@@ -291,6 +304,9 @@
   <action path="/dismissAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>
   <action path="/snoozeAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SnoozeAdvicesAjaxAction"/>
   
+  <action name="AddCircularSecureZoneForm" scope="request" parameter="WebsiteUser" path="/addCircularSecureZone" type="com.tdil.struts.actions.SaveAjaxAction"/>
+  <action name="AddPolygonalSecureZoneForm" scope="request" parameter="WebsiteUser" path="/addPolygonalSecureZone" type="com.tdil.struts.actions.SaveAjaxAction"/>
+
   <action name="LoginCCForm"  path="/cc/login" scope="request" type="com.tdil.ljpeugeot.struts.action.LoginCCAction">
   	<forward name="failure" path="/cc/login.jsp"/>
   	<forward name="continue" path="/cc/home.jsp"/>

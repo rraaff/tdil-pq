@@ -16,6 +16,15 @@ public class PolygonalPoint implements Serializable {
 	@XStreamAlias(value="latitude")
 	private String latitude;
 	
+	public PolygonalPoint() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public PolygonalPoint(String latitude, String longitude) {
+		super();
+		this.longitude = longitude;
+		this.latitude = latitude;
+	}
 	public String getLongitude() {
 		return longitude;
 	}

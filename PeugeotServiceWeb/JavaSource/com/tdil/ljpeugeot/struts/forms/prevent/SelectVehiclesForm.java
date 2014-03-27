@@ -7,6 +7,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.tdil.ljpeugeot.prevent.PreventConnector;
 import com.tdil.ljpeugeot.prevent.XMLResponse;
+import com.tdil.ljpeugeot.prevent.model.GetPMHistory;
 import com.tdil.ljpeugeot.prevent.model.PhoneNumbers;
 import com.tdil.ljpeugeot.prevent.model.SatellitePosition;
 import com.tdil.ljpeugeot.prevent.model.SecureZoneResponse;
@@ -43,6 +44,10 @@ public class SelectVehiclesForm extends VehiclesForm {
 	
 	private SpeedSelectionBean speedSelectionBean;
 	private SecureZoneSelectionBean secureZoneSelectionBean;
+	
+	private String dateStart;
+	private String dateEnd;
+	private GetPMHistory selectedVehicleHistoricPath;
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SelectVehiclesForm.class);
 
@@ -311,6 +316,37 @@ public class SelectVehiclesForm extends VehiclesForm {
 
 	public void setCrashPhoneCode(String crashPhoneCode) {
 		this.crashPhoneCode = crashPhoneCode;
+	}
+
+	public GetPMHistory getSelectedVehicleHistoricPath() {
+		return selectedVehicleHistoricPath;
+	}
+
+	public void setSelectedVehicleHistoricPath(GetPMHistory selectedVehicleHistoricPath) {
+		this.selectedVehicleHistoricPath = selectedVehicleHistoricPath;
+	}
+	
+	public String getSelectedVehicleId() {
+		return "2";
+	}
+	public void setSelectedVehicleId(String id) {
+		
+	}
+
+	public String getDateStart() {
+		return dateStart;
+	}
+
+	public void setDateStart(String dateStart) {
+		this.dateStart = dateStart;
+	}
+
+	public String getDateEnd() {
+		return dateEnd;
+	}
+
+	public void setDateEnd(String dateEnd) {
+		this.dateEnd = dateEnd;
 	}
 
 }

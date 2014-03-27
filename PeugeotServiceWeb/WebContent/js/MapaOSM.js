@@ -112,16 +112,17 @@ function MapaOSM(elementId, containerId, options) {
 
     this.pointDigitizer.events.register("featureadded", this, function (evt) {
         this.pointDigitizer.deactivate();
-        //var center = evt.feature.geometry.getCentroid();
+        var center = evt.feature.geometry.getCentroid();
     	//var point1 = evt.feature.geometry.components[0].components[1];
     	//alert(center);
     	//alert(point1);
-    	//var p = new OpenLayers.Geometry.Point(center.x, center.y);
-    	//alert(p.transform(new OpenLayers.Projection("EPSG:900913"),new OpenLayers.Projection("EPSG:4326"))); 
-        //var point = this.GetDataPoint(evt.feature.geometry.x, evt.feature.geometry.y);
-        //if (options.PointDigitizedHandler) {
-        //    options.PointDigitizedHandler(point.x, point.y);
-        //}
+        var point = this.GetDataPoint(center.x, center.y);
+        var pointY = this.GetDataPoint(evt.feature.geometry.components[0].components[1].x, evt.feature.geometry.components[0].components[1].y);
+        //circleDrawn(point, pointY);
+        if (options.PointDigitizedHandler) {
+            options.PointDigitizedHandler(point, pointY);
+        }
+        evt.feature.destroy();
     });
 
     this.polygonDigitizer.events.register("featureadded", this, function (evt) {
@@ -137,6 +138,7 @@ function MapaOSM(elementId, containerId, options) {
         if (options.PolygonDigitizedHandler) {
             options.PolygonDigitizedHandler(points);
         }
+        evt.feature.destroy();
     });
 }
 

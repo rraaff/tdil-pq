@@ -1,3 +1,17 @@
+<CircularSecureZone>
+  <description>test</description>
+  <longitude>-58.29853083639649</longitude>
+  <latitude>-34.718923772755765</latitude>
+  <radio>160.05467910830978</radio>
+</CircularSecureZone>
+
+Esta respuesta
+
+<CircularSecureZoneResponse xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<secureZoneID/>
+<status>7</status>
+</CircularSecureZoneResponse>
+
 tdil/usu4r10td1l
 
 27768647 / 123456
@@ -27,6 +41,21 @@ Recorrido historico
 	
 Pensar en que casos deberiamos limpiar el mapa, es decir, en que caso se borra este recorrido
 	
+Alerta desde la web
+	
+CC
+pagina home chequea alerta en atencion
+si no tiene, queda en esa y recarga un div con las alertas pendientes
+un boton permite atender una alerta
+
+una vez que tiene alerta, va a la pagina donde se ven los datos de contacto de la persona y 
+el mapa con la ubicacion
+aca tiene un boton terminar atencion, que termina la misma marcandola como finalizada
+liberar atencion?, la vuelve a la lista desasignando el usuario
+	
+android
+fijarse si el gps esta activo, si es asi lanzo el location update
+sino, aviso que no esta activo y si no pregunto si lo quiere activar
 
 ******************
 
