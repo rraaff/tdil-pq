@@ -57,6 +57,7 @@
 	.titles("Inicio","Peugeot App")
 	.pages("","");
 %>
+<a href="javascript:openEmergencyLayer()">OPEN</a>
 <!-- WEBSITE CONTENT -->
 <%@ include file="includes/header.jspf" %>
 <%@ include file="includes/page_title.jspf" %>

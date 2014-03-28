@@ -1,4 +1,5 @@
 <section id="menu">
 	<a href="home.jsp">Inicio</a>
+	<a href="userSearch.jsp">Busqueda de usuarios</a>
 	<a href="./logout.do">Salir</a><a href="#">&nbsp;</a>
 </section>

@@ -33,7 +33,9 @@ import com.tdil.ljpeugeot.model.State;
 import com.tdil.ljpeugeot.model.StateExample;
 import com.tdil.ljpeugeot.model.Vehicle;
 import com.tdil.ljpeugeot.model.VehicleExample;
+import com.tdil.ljpeugeot.model.WebsiteUser;
 import com.tdil.ljpeugeot.model.valueobjects.AdviceValueObject;
+import com.tdil.ljpeugeot.model.valueobjects.AlertValueObject;
 import com.tdil.ljpeugeot.model.valueobjects.VehicleValueObject;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.TransactionalAction;
@@ -191,6 +193,23 @@ public class PeugeotService {
 			} else {
 				return null;
 			}
+		}
+	}
+	
+	private static final class GetAlertsPendingCC implements TransactionalActionWithResult<List<AlertValueObject>> {
+		public GetAlertsPendingCC() {
+			super();
+		}
+		public List<AlertValueObject> executeInTransaction() throws SQLException {
+			AlertExample vehicleExample = new AlertExample();
+			vehicleExample.createCriteria().andStatusEqualTo(AlertStatus.PENDING.code());
+			vehicleExample.setOrderByClause("id desc");
+			List<Alert> alerts = DAOManager.getAlertDAO().selectAlertByExample(vehicleExample);
+			List<AlertValueObject> result = new ArrayList<AlertValueObject>();
+			for (Alert alert : alerts) {
+				result.add(new AlertValueObject(alert, DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(alert.getIdWebsiteuser())));
+			}
+			return result;
 		}
 	}
 	
@@ -425,6 +444,60 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class GetAlertInProgress implements TransactionalActionWithResult<AlertValueObject> {
+		private int ccUserId;
+		public GetAlertInProgress(int idccUserId) {
+			super();
+			this.ccUserId = idccUserId;
+		}
+		public AlertValueObject executeInTransaction() throws SQLException {
+			AlertExample alertExample = new AlertExample();
+			alertExample.createCriteria().andIdSystemuserEqualTo(this.ccUserId).andStatusEqualTo(AlertStatus.IN_PROGRESS.code());
+			List<Alert> alerts = DAOManager.getAlertDAO().selectAlertByExample(alertExample);
+			if (alerts.size() > 0) {
+				Alert alert = alerts.get(0);
+				WebsiteUser user = DAOManager.getWebsiteUserDAO().selectWebsiteUserByPrimaryKey(alert.getIdWebsiteuser());
+				return new AlertValueObject(alert, user, getContactData(user.getId()));
+			} else {
+				return null;
+			}
+		}
+	}
+	
+	private static final class TakeAlert implements TransactionalActionWithResult<Boolean> {
+		private int alertId;
+		private int ccUserId;
+		public TakeAlert(int alertId, int idccUserId) {
+			super();
+			this.alertId = alertId;
+			this.ccUserId = idccUserId;
+		}
+		public Boolean executeInTransaction() throws SQLException {
+			Alert alert = new Alert();
+			alert.setStatus(AlertStatus.IN_PROGRESS.code());
+			alert.setIdSystemuser(this.ccUserId);
+			AlertExample alertExample = new AlertExample();
+			alertExample.createCriteria().andIdEqualTo(this.alertId).andStatusEqualTo(AlertStatus.PENDING.code());
+			DAOManager.getAlertDAO().updateAlertByExampleSelective(alert, alertExample);
+			return Boolean.TRUE;
+		}
+	}
+	
+	private static final class FinishAlertProgress implements TransactionalActionWithResult<Boolean> {
+		private int alertId;
+		public FinishAlertProgress(int alertId) {
+			super();
+			this.alertId = alertId;
+		}
+		public Boolean executeInTransaction() throws SQLException {
+			Alert alert = DAOManager.getAlertDAO().selectAlertByPrimaryKey(this.alertId);
+			alert.setStatus(AlertStatus.FINISHED.code());
+			alert.setModificationdate(new Date());
+			DAOManager.getAlertDAO().updateAlertByPrimaryKey(alert);
+			return Boolean.TRUE;
+		}
+	}
+	
 	public static ContactData getContactData(int idUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetContactData(idUser));
@@ -621,6 +694,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static List<AlertValueObject> getAlertsPending() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetAlertsPendingCC());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<AlertValueObject>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<AlertValueObject>();
+		} 
+	}
+	
 	public static Alert getLastAlertPending(int idWebsiteUser) {
 		try {
 			return GenericTransactionExecutionService.getInstance().execute(new GetAlertsPending(idWebsiteUser));
@@ -630,6 +715,41 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
+		} 
+	}
+	
+	public static AlertValueObject getAlertInProgress(int idSystemUser) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetAlertInProgress(idSystemUser));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static AlertValueObject takeAlert(int idAlert, int idSystemUser) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new TakeAlert(idAlert, idSystemUser));
+			return getAlertInProgress(idSystemUser);
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} 
+	}
+	
+	public static void finishAlertProgress(int idAlert) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new FinishAlertProgress(idAlert));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
 		} 
 	}
 	

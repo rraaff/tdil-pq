@@ -724,4 +724,6 @@
    PATH="/vehiculoHistoricPath.jsp" TARGET="page33" TITLE="continue"
    TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#addAlert" NAME="action36" PATH="/addAlert"
+  SHAPE="32,3393,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
 </PROCESS>

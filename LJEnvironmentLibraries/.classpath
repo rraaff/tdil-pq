@@ -51,7 +51,7 @@
 	<classpathentry exported="true" kind="lib" path="simplelatlng-1.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="jersey-bundle-1.17.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="guava-15.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="super-csv-2.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="super-csv-2.1.0.jar" sourcepath="super-csv-2.1.0-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="junit-3.8.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

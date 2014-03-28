@@ -304,6 +304,8 @@
   <action path="/dismissAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.DismissAdvicesAjaxAction"/>
   <action path="/snoozeAdvices" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.SnoozeAdvicesAjaxAction"/>
   
+  <action path="/addAlert" parameter="WebsiteUser"  type="com.tdil.ljpeugeot.struts.action.AddAlertAjaxAction"/>
+  
   <action name="AddCircularSecureZoneForm" scope="request" parameter="WebsiteUser" path="/addCircularSecureZone" type="com.tdil.struts.actions.SaveAjaxAction"/>
   <action name="AddPolygonalSecureZoneForm" scope="request" parameter="WebsiteUser" path="/addPolygonalSecureZone" type="com.tdil.struts.actions.SaveAjaxAction"/>
 

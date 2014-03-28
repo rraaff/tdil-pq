@@ -197,6 +197,10 @@
   <servlet-name>LogJSErrorServlet</servlet-name>
   <url-pattern>/logJsErr.st</url-pattern>
  </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>LogJSErrorServlet</servlet-name>
+  <url-pattern>/cc/logJsErr.st</url-pattern>
+ </servlet-mapping>
  
  <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>
