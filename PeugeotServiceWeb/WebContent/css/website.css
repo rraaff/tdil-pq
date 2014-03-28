@@ -329,6 +329,18 @@ form.add_service_form select						{ width:224px; }
 
 label.readOnly										{ color:#2ba4c9!important; font-weight:bold; padding:15px 0!important; }
 
+
+/* EMERGENCY SECTION */
+div#emergency_cover										{ display:none; }
+div#emergency_button_container							{ display:none; }
+div#emergency_button_container							{ -webkit-box-shadow: 0 0 10px 1px #000000; box-shadow: 0 0 10px 1px #000000; border-top:solid 2px #ff921d; border-radius:2px; vertical-align: top; padding:10px; background: #ff8400; /* Old browsers */ background: -moz-linear-gradient(top,  #ff8400 0%, #ec4f11 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8400), color-stop(100%,#ec4f11)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  #ff8400 0%,#ec4f11 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  #ff8400 0%,#ec4f11 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  #ff8400 0%,#ec4f11 100%); /* IE10+ */ background: linear-gradient(to bottom,  #ff8400 0%,#ec4f11 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8400', endColorstr='#ec4f11',GradientType=0 ); /* IE6-9 */ position:fixed; top:50%; right:-174px; z-index:1460; }
+div#emergency_button_container.emergency_move			{}
+div#emergency_button_container a.emergency_bell			{ border-right: solid 1px #fff; vertical-align: top; background-image: url(../images/skn_peugeot/icons/icon_emergency_bell.png); background-repeat: no-repeat; background-size: contain; background-position: 0 0; color: transparent; width: 40px; margin: 0 10px 0 0; display: inline-block; line-height: 30px; }
+div#emergency_button_container a.emergency_link			{ color: #fff; font-size: 12px; text-transform: uppercase; text-decoration: none; display: inline-block; vertical-align: top; }
+div#emergency_button_container a.emergency_close		{ border-left: solid 1px #fff; vertical-align: top; background-image: url(../images/skn_peugeot/buttons/btn_modal_close_white_bgt.png); background-repeat: no-repeat; background-position:center center; color: transparent; width: 30px; margin: 0 0 0 10px; display: inline-block; line-height: 30px; }
+div#emergency_button_container a.emergency_bell div,
+div#emergency_button_container a.emergency_close div	{ cursor:pointer; }
+
 /* COPYRIGHT */
 section#copyright			{ display:none; }
 
@@ -510,6 +522,8 @@ body.errorPage				{ background-color:#000; background-image: url(../images/skn_p
 	section#main_content_regular_page div.mini_form_wrapper select, 
 	section#main_content_regular_page div.mini_form_wrapper textarea	{ width:inherit; margin:0 0 7px }
 	
+	/* EMERGENCY SECTION */
+	div#emergency_button_container					{ display:block; }
 }
 
 @media only screen and (max-width:999px) {
@@ -598,6 +612,8 @@ body.errorPage				{ background-color:#000; background-image: url(../images/skn_p
 	button#services { left:-83px; }
 	
 	section.action_bar div.ac_page_title h1		{ font-size:120%; }
+	
+	div#emergency_button_container				{ top:140px; }
 }
 
 @media only screen and (max-width:420px) {
@@ -660,6 +676,8 @@ body.errorPage				{ background-color:#000; background-image: url(../images/skn_p
 	section.secondary_bar						{ display:none; }
 	
 	div#advices section.modal_header h3			{ display:none; }
+	
+	div#emergency_button_container				{ top:40px; }
 }
 @media only screen and (max-height:570px) {
 	div.layerOnTop,

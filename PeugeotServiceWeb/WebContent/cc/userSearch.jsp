@@ -48,7 +48,7 @@
 			<% } else { %>
 				<% if (searchUserForm.getUser() != null) { %>
 					<% if (searchUserForm.getContactData() == null) { %>
-						<h3>El usuario no ha definido sus datos de contacto</h3>
+						<p class="attention">El usuario no ha definido sus datos de contacto</p>
 					<% } else { %>
 						<h3>Información de contacto</h3>
 						<fieldset class="width100per">

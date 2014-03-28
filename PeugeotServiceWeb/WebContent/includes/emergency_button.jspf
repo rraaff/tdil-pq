@@ -1,0 +1,16 @@
+<div id="emergency_cover" class="layerOnTop" style="display:none; z-index:1450;"></div>
+<div id="emergency_button_container" class="emergency_move">
+	<a class="emergency_bell"><div id="openEmergencyButton">!</div></a>
+	<a class="emergency_link" href="javascript:sendEmergency();">Reportar<br/>una emergencia</a>
+	<a class="emergency_close"><div id="closeEmergencyButton">X</div></a>
+</div>
+<script>
+$('#openEmergencyButton').click(function() {
+	centerLayer($(window), $( "#emergency_cover" ));
+	$("#emergency_button_container").animate({right:'-8px'}, 1500 ); //esta no anda
+});
+$('#closeEmergencyButton').click(function() {
+	$( "#emergency_cover" ).fadeOut();
+	$("#emergency_button_container").animate({right:'-174px'}, 1500 ); //esta no anda
+});
+</script>
