@@ -20,6 +20,7 @@ if (alert!= null) { %><jsp:forward page="alertInProgress.jsp"></jsp:forward><%}%
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_reset-styles.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_website.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_backdoor.css" />
 <%@ include file="includes/headLogged.jsp" %>
@@ -30,15 +31,20 @@ if (alert!= null) { %><jsp:forward page="alertInProgress.jsp"></jsp:forward><%}%
 <section id="titles">
 	<h1>LoJack Peugeot CallCenter Application</h1>
 	<h2>Atencion de alertas</h2>
+	<h3>Versión: <%@ include file="../includes/version_view.jspf" %></h3>
 </section>
-<div id="alertContent">
+<section id="content">
+	<article>
+		<div id="alertContent"></div>
+		<!--  p class="information"><strong>Importante: </strong></p -->
+	</article>
+</section>
 
-</div>
 <script type="text/javascript">
 $('#alertContent').load('getAlerts.jsp').fadeIn("slow");
 var auto_refresh = setInterval(
 function () {
-$('#alertContent').load('getAlerts.jsp').fadeIn("slow");
+	$('#alertContent').load('getAlerts.jsp').fadeIn("slow");
 }, 10000); // refresh every 10000 milliseconds
 </script>
 </body>

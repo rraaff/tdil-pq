@@ -4,37 +4,50 @@ body,div,dl,dt,dd,ul,ol,li,h1,pre,form,fieldset,input,textarea,p,blockquote,th,t
 	-moz-box-sizing:border-box;    /* Firefox, other Gecko */
 	box-sizing:border-box;   
 }
-
+body	{ color:#333; }
 a		{ color:#2ba4c9; }
 a:hover	{ color:#fff; }
 
 header	{ text-align:center; width:100%; height:150px; display:inline-block; }
-header	{ background-image:url("../images/backdoor/backgrounds/bg_header.png"); background-repeat:repeat-x; }
+header	{ background:none!important; }
 header img { height:100%; margin:0 auto; padding:25px; }
 
 /* menú */
 #menu			{ background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_base.png); border-bottom:solid 2px #aeaeae; display:inline-block; width:100%; text-align:center; padding:0; }
-#menu a			{ color: #333; font-size: 13px; padding: 17px; display: inline-block; text-decoration: none; background-image: url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat: no-repeat; background-position: 0 0; }
+#menu a			{ color:#333; font-size:13px; padding:17px; display:inline-block; text-decoration:none; background-image:url(../images/skn_peugeot/bgs/subproduct_section_menu_separator.png); background-repeat:no-repeat; background-position:0 0; }
 #menu a:hover	{ color:#2ba4c9; }
 
-#titles			{ text-align:center; width:100%; margin:20px 0; display:inline-block; }
-#titles h1		{ font-size:20px; padding:10px 0 20px; }
+#titles			{ text-align:center; width:100%; margin:20px 0 0; display:inline-block; }
+#titles h1		{ color:#fff; font-size:20px; padding:10px 0 20px; }
 #titles h2		{ color:#2ba4c9; font-size:18px; padding:0 0 20px }
+#titles h3		{ color:#fff; font-size:14px; }
 
-#content						{ width:980px; margin:40px auto; text-align:center; }
-#content article				{ border-radius:20px; background:#1a1a22; text-align:center; margin:0 auto; padding:25px; display:inline-block; box-shadow:0 0 8px 1px #000; }
+#content						{ width:980px; margin:25px auto; text-align:center; }
+#content article				{ border-radius:20px; background-color:#fcfcfc; text-align:center; width:100%; padding:25px; margin:0 auto; display:inline-block; box-shadow:0 0 8px 1px #000; }
+#content article div.data_group	{ background-color:#fff; display:inline-block; width:100%; margin-bottom:30px; }
 #content form					{ width:100%; margin:0; display:inline-block; }
 #content fieldset				{ width:50%; padding:10px; float:left; display:inline-block; }
 #content fieldset.botonera		{ width:100%; padding:25px 10px 25px 0; }
-#content label					{ text-align:left; width:100%; display:inline-block; }
+#content label					{ color:#333; font-size:16px; text-align:left; width:100%; display:inline-block; }
 #content label.dato				{ color:#2ba4c9; font-size:16px; text-align:left; width:20%; float:left; }
-#content label.resultado		{ text-align: left; font-size:16px; width:80%; float:left; }
+#content label.resultado		{ text-align:left; font-size:16px; width:80%; float:left; }
 #content input[type="text"],
 #content input[type="password"],
 #content select,
-textarea						{ border:solid 1px #aeaeae; border-radius:5px; text-align:left; width:100%; padding:8px 5px; box-shadow:0 0 8px 1px #000; } 
+textarea						{ border:solid 1px #aeaeae; border-radius:5px; text-align:left; width:100%; padding:8px 5px; box-shadow:0 0 8px 1px #eaeaea; } 
 #content p						{ text-align:left; line-height:24px; padding:10px 0; }
-#content article h3				{ font-size:24px; padding:40px 0 20px; border-bottom:dotted 1px #aeaeae; }
+#content article h3				{ color:#2ba4c9; font-size:24px; padding:10px 0; border-bottom:dotted 1px #aeaeae; }
+
+div#alertContent										{ display:inline-block; width:100%; }
+div#alertContent h3										{ color:#2ba4c9; padding:0 0 20px 0; border:none; width:100%; text-align:left; }
+div#alertContent ul.alert_row							{ border-top:solid 1px #eaeaea; border-bottom:solid 1px #eaeaea; width:100%; background:#fff; display:inline-block; }
+div#alertContent ul.alert_row li						{ border-left:solid 1px #eaeaea; color:#000; font-size:16px; line-height:38px; float:left; padding:8px 12px; vertical-align:middle; }
+div#alertContent ul.alert_row li.alert_id				{ width:5%; }
+div#alertContent ul.alert_row li.alert_userfirstname	{ width:45%; text-align:left; }
+div#alertContent ul.alert_row li.alert_userlassname		{ width:40%; text-align:left; }
+div#alertContent ul.alert_row li.alert_actions			{ border-right:solid 1px #eaeaea; width:10%; }
+div#alertContent span.no_alerts							{ border:solid 1px #4493b0; border-radius:10px; color:#154658; background-color:#c3e4f1; background-image:url("../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; text-align:left; width:100%; padding:20px 20px 20px 60px!important; display:inline-block; }
+
 
 div.portaTable,
 div.nota						{ width:100%; display:inline-block; }
@@ -85,29 +98,9 @@ p.information	{ border:solid 1px #4493b0; border-radius:10px; color:#154658; bac
 p.attention		{ border:solid 1px #b69b00; border-radius:10px; color:#000; background-color:#ebe1a8; background-image:url("../images/backdoor/icons/attention.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:20px; }
 
 input[type="submit"],
-button					{ border:none; border-radius:4px; color:#fff; font-size:13px; font-family:'Peugeot'; text-transform:uppercase; background:#1db5dc; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background:-moz-linear-gradient(top, #1db5dc 0%, #00557f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#1db5dc), color-stop(100%,#00557f)); background:-webkit-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-o-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-ms-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:linear-gradient(to bottom, #1db5dc 0%,#00557f 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#1db5dc', endColorstr='#00557f',GradientType=0 ); padding:10px; margin:0; cursor:pointer; float:right; }
-	/* -webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	border:1px solid;
-	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	background-color:#d14641;
-	background-image:-moz-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
-	background-image:-webkit-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image:-o-linear-gradient(top, #bd362f, #ee5f5b);
-	background-image:linear-gradient(to bottom, #bd362f, #ee5f5b);
-	background-repeat:repeat-x;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
-	border-color:#ee5f5b #ee5f5b #e51d18;
-	border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	filter:progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	border-color:#d14641 #d14641 #cf7775;
-	color:#FFF;
-	font-size:15px;
-	font-weight:bold;
-	text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);
-	padding:10px 30px;
-	margin:20px 0 0;
-	cursor:pointer;
-}*/
+button,
+a.link_as_button					{ border:none; border-radius:4px; color:#fff; font-size:13px; font-family:'Peugeot'; text-transform:uppercase; background:#1db5dc; background:-moz-linear-gradient(top, #1db5dc 0%, #00557f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#1db5dc), color-stop(100%,#00557f)); background:-webkit-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-o-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-ms-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:linear-gradient(to bottom, #1db5dc 0%,#00557f 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#1db5dc', endColorstr='#00557f',GradientType=0 ); padding:10px; margin:0; cursor:pointer; float:right; }
+a.link_as_button					{ text-decoration:none; line-height:18px; }
+a.link_as_button:hover				{ background:#00557f; background:-moz-linear-gradient(top, #00557f 0%, #1db5dc 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#00557f), color-stop(100%,#1db5dc)); background:-webkit-linear-gradient(top, #00557f 0%,#1db5dc 100%); background:-o-linear-gradient(top, #00557f 0%,#1db5dc 100%); background:-ms-linear-gradient(top, #00557f 0%,#1db5dc 100%); background:linear-gradient(to bottom, #00557f 0%,#1db5dc 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00557f', endColorstr='#1db5dc',GradientType=0 ); }
+
+
