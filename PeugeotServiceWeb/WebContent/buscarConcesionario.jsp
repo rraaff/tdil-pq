@@ -167,6 +167,7 @@ com.tdil.web.breadcrum.Breadcrum breadcrums = new com.tdil.web.breadcrum.Breadcr
 		</div>
 	</div>
 </section>
+<%@ include file="includes/emergency_button.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
 
 <!-- ALL LAYERS -->

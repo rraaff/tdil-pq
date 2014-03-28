@@ -340,6 +340,7 @@
 		</section>
 	</div>
 </section>
+<%@ include file="includes/emergency_button.jspf" %>
 <%@ include file="includes/footer_web.jspf" %>
 
 <!-- ALL LAYERS -->

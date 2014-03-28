@@ -471,6 +471,7 @@ if (apk != null && apk) {
 		</section>
 	</div>
 </section>
+<%@ include file="includes/emergency_button.jspf" %>
 <!-- edit max speed -->
 <div id="editMaxSpeedLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
 	<div id="centradorModalesMaxSpeed" class="layerModal width300">
@@ -541,9 +542,6 @@ if (apk != null && apk) {
 		</div>
 	</div>
 </div>
-
-centerLayer($(window), $( "#" ));
-		centerLayer($(window), $( "#" ));
 
 <div id="secureZoneStep2CircularLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
 	<div id="centradorModalesSecureStep2CircularZone" class="layerModal width300">
