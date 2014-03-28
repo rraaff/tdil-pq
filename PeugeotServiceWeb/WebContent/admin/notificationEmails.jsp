@@ -50,6 +50,7 @@ function doTestEmail() {
 <section id="titles">
 	<h1>LoJack Peugeot BackDoor Application</h1>
 	<h2>Notificaciones por E-Mail</h2>
+	<h3>Versión: <%@ include file="../includes/version_view.jspf" %></h3>
 </section>
 <section id="content">
 	<article>

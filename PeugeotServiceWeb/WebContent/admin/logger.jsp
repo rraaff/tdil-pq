@@ -18,6 +18,7 @@
 <section id="titles">
 	<h1>LoJack Peugeot BackDoor Application</h1>
 	<h2>Loggin</h2>
+	<h3>Versión: <%@ include file="../includes/version_view.jspf" %></h3>
 </section>
 <section id="content">
 	<article>
