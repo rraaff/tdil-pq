@@ -95,6 +95,7 @@ public abstract class SystemConfig {
 							log4j.delete();
 							InputStream io = SystemConfig.this.getClass().getResourceAsStream("log4j.xml");
 							String log4jContent = IOUtils.toString(io);
+							log4jContent = updateLog4j(log4jContent);
 							log4jContent = StringUtils.replace(log4jContent, "LOG_FILE_DIR", logDir);
 							IOUtils.write(log4jContent, new FileOutputStream(logDir + "/log4j.xml"));
 							io.close();
@@ -120,6 +121,10 @@ public abstract class SystemConfig {
 			throw new RuntimeException(e);
 		}
 		getLog().fatal("SystemConfig loaded properties from db");
+	}
+
+	protected String updateLog4j(String log4jContent) {
+		return log4jContent;
 	}
 
 	protected boolean overwriteLog4jOnStart() {
