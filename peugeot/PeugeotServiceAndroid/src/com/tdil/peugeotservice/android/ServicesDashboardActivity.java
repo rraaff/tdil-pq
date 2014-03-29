@@ -35,11 +35,14 @@ import com.tdil.peugeotservice.android.utils.Messages;
 @SuppressLint("ResourceAsColor")
 public class ServicesDashboardActivity extends ActionBarActivity {
 
+	private UpdateLocationListener locListener = null;
+
 	private final class UpdateLocationListener implements LocationListener {
 		private final AlertResponseBean resp;
 		private final LocationManager lm;
 		private final ServicesDashboardActivity activity;
 		private boolean alreadySent = false;
+		
 
 		private UpdateLocationListener(AlertResponseBean resp,
 				LocationManager lm, ServicesDashboardActivity activity) {
@@ -53,9 +56,13 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 				alreadySent = true;
 				double updatedLongitude = location.getLongitude();
 				double updatedLatitude = location.getLatitude();
-				lm.removeUpdates(this);
-				activity.updateAlertLocation(resp, updatedLatitude, updatedLongitude);
+				destroy();
+				activity.updateAlertLocation(resp, updatedLatitude, updatedLongitude, false);
 			}
+		}
+
+		public void destroy() {
+			lm.removeUpdates(this);
 		}
 
 		public void onProviderDisabled(String provider) {}
@@ -95,7 +102,18 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 				if (mPhoneNumber == null || mPhoneNumber.equals("")) {
 					mPhoneNumber = "-";
 				}
-				sendAlert(longitude, latitude, mPhoneNumber);
+				final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+				Location lastKnownLocation = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		    	if (lastKnownLocation != null) {
+		    		sendAlert(lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber);
+		    	} else {
+		    		Location lastKnownLocation1 = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+			    	if (lastKnownLocation1 != null) {
+			    		sendAlert(lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber);
+			    	} else {
+			    		sendAlert(0, 0, mPhoneNumber);
+			    	}
+		    	}
 			}
 		});
 
@@ -169,38 +187,40 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	// }
 
 	public void updateAlertLocation(AlertResponseBean resp,
-			double updatedLatitude, double updatedLongitude) {
+			double updatedLatitude, double updatedLongitude, final boolean silent) {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
-				Gson gson = new Gson();
-				if (task.getStatusCode() == 201) {
-					new AlertDialog.Builder(ServicesDashboardActivity.this)
-					.setIcon(R.drawable.ic_launcher)
-					.setTitle("Envio de alerta")
-					.setMessage(
-							"Se ha enviado el mensaje de alerta")
-					.setPositiveButton("OK",
-							new DialogInterface.OnClickListener() {
-								public void onClick(
-										DialogInterface dialog,
-										int whichButton) {
-								}
-							}).show();
-					
-				} else {
-					new AlertDialog.Builder(ServicesDashboardActivity.this)
-							.setIcon(R.drawable.ic_launcher)
-							.setTitle("Envio de alerta")
-							.setMessage(
-									"Ha occurrido un error, por favor intentelo nuevamente")
-							.setPositiveButton("OK",
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog,
-												int whichButton) {
-										}
-									}).show();
+				if (!silent) {
+					Gson gson = new Gson();
+					if (task.getStatusCode() == 201) {
+						new AlertDialog.Builder(ServicesDashboardActivity.this)
+						.setIcon(R.drawable.ic_launcher)
+						.setTitle("Envio de alerta")
+						.setMessage(
+								"Se ha enviado el mensaje de alerta")
+						.setPositiveButton("OK",
+								new DialogInterface.OnClickListener() {
+									public void onClick(
+											DialogInterface dialog,
+											int whichButton) {
+									}
+								}).show();
+						
+					} else {
+						new AlertDialog.Builder(ServicesDashboardActivity.this)
+								.setIcon(R.drawable.ic_launcher)
+								.setTitle("Envio de alerta")
+								.setMessage(
+										"Ha occurrido un error, por favor intentelo nuevamente")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(
+													DialogInterface dialog,
+													int whichButton) {
+											}
+										}).show();
+					}
 				}
 			}
 
@@ -222,27 +242,68 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				if (task.getStatusCode() == 201) {
-					final AlertResponseBean resp = gson.fromJson(task.getResult(),
-							AlertResponseBean.class);
-					final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-					Criteria criteria = new Criteria();
-					String bestProvider = lm.getBestProvider(criteria, false);
-					lm.requestLocationUpdates(bestProvider, 1, 0,
-				            new UpdateLocationListener(resp, lm, ServicesDashboardActivity.this));
-					
-				} else {
+					if (longitude != 0) {
+						new AlertDialog.Builder(ServicesDashboardActivity.this)
+						.setIcon(R.drawable.ic_launcher)
+						.setTitle("Envio de alerta")
+						.setMessage(
+								"Se ha enviado el mensaje de alerta")
+								.setPositiveButton("OK",
+										new DialogInterface.OnClickListener() {
+									public void onClick(
+											DialogInterface dialog,
+											int whichButton) {
+									}
+								}).show();
+					} else {
+						final AlertResponseBean resp = gson.fromJson(task.getResult(),
+								AlertResponseBean.class);
+						
+						final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+	
+					    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER )) {
+					    	if ( manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER )) {
+					    		// pido la ubicacion basada en wifi o antena
+					    		manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0,
+					    				locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    	} else {
+					    		final AlertDialog.Builder builder = new AlertDialog.Builder(ServicesDashboardActivity.this);
+					    	    builder.setMessage("Se ha enviado el alerta pero su ubicacion no pudo ser determinada. " +
+					    	    		"Desea encender el GPS para enviar una informacion mas precisa?")
+					    	           .setCancelable(false)
+					    	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+					    	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+					    	                   startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+					    	                   manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
+					    	                		   locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    	               }
+					    	           })
+					    	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
+					    	               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+					    	                    dialog.cancel();
+					    	               }
+					    	           });
+					    	    final AlertDialog alert = builder.create();
+					    	    alert.show();
+					    	}
+					    } else {
+					    	manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
+					    			locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    }
+					} 
+				}else {
 					new AlertDialog.Builder(ServicesDashboardActivity.this)
-							.setIcon(R.drawable.ic_launcher)
-							.setTitle("Envio de alerta")
-							.setMessage(
-									"Ha occurrido un error, por favor intentelo nuevamente")
-							.setPositiveButton("OK",
-									new DialogInterface.OnClickListener() {
-										public void onClick(
-												DialogInterface dialog,
-												int whichButton) {
-										}
-									}).show();
+					.setIcon(R.drawable.ic_launcher)
+					.setTitle("Envio de alerta")
+					.setMessage(
+							"Ha occurrido un error, por favor intentelo nuevamente")
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+								public void onClick(
+										DialogInterface dialog,
+										int whichButton) {
+								}
+							}).show();
 				}
 			}
 
@@ -255,6 +316,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 				String.valueOf(longitude)).put(RESTConstants.P_PHONE,
 				mPhoneNumber), null).executeSerial((Void) null);
 	}
+	
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -262,6 +324,15 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		super.onConfigurationChanged(newConfig);
 	}
 
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (locListener != null) {
+			locListener.destroy();
+		}
+	}
+	
 	public Toast textView(View findViewById) {
 		// TODO Auto-generated method stub
 		return null;
