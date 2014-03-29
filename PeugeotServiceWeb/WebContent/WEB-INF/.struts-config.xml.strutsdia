@@ -639,15 +639,12 @@
    TYPE="link" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="page11" PATH="/cc/home.jsp" SHAPE="240,3537,0,0"
-  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/cc/searchUser.do"
-   SUBTYPE="confirmed" TARGET="action23" TITLE="/cc/searchUser.do"
-   TYPE="link" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#cc#searchUser" NAME="action23" PATH="/cc/searchUser"
   SHAPE="448,3537,0,0" TITLE="SearchUserForm" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1" PATH="/cc/home.jsp"
-   TARGET="page11" TITLE="continue" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
+   PATH="/cc/userSearch.jsp" TARGET="page34" TITLE="continue"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#cc#logout" NAME="action24" PATH="/cc/logout"
   SHAPE="32,4017,0,0" TYPE="action" model-entity="StrutsProcessItem">
@@ -726,4 +723,6 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#addAlert" NAME="action36" PATH="/addAlert"
   SHAPE="32,3393,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page34" PATH="/cc/userSearch.jsp"
+  SHAPE="656,3537,0,0" SUBTYPE="jsp" TITLE="userSearch.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
 </PROCESS>

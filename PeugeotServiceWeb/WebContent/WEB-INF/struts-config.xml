@@ -315,7 +315,7 @@
   </action>
   
   <action name="SearchUserForm" parameter="CC" path="/cc/searchUser" scope="session" type="com.tdil.struts.actions.SearchAction">
-  	<forward name="continue" path="/cc/home.jsp"/>
+  	<forward name="continue" path="/cc/userSearch.jsp"/>
   </action>
   
   <action path="/cc/logout" type="com.tdil.ljpeugeot.struts.action.LogoutAction">
