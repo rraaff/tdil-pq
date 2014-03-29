@@ -12,6 +12,9 @@
   targetRuntime="Ibatis2Java5"
   defaultModelType="flat">
 
+<ibatorPlugin type="com.tdil.ibatis.plugin.sqlserver.SQLServerInsertPlugin">
+</ibatorPlugin>
+
 <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 			connectionURL="jdbc:sqlserver://192.168.0.104:1123;database=PEUGEOTSVC_DB;" userId="PEUGEOTSVC_USER"
 			password="p4l0ll1n4" />
@@ -39,9 +42,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+<!-- table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>
@@ -54,9 +57,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="dbo" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<table schema="dbo" tableName="DEALER" domainObjectName="Dealer" alias="deal">
+<!-- table schema="dbo" tableName="DEALER" domainObjectName="Dealer" alias="deal">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="dbo" tableName="CITY" domainObjectName="City" alias="city">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>

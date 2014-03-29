@@ -6,5 +6,6 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/servlet-api.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ThalamusJClient"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EnvironmentLibraries"/>
+	<classpathentry kind="lib" path="/EnvironmentLibraries/pluginibator.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
