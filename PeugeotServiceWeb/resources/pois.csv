@@ -1,0 +1,174 @@
+code,name,addres,city,state,cp,phone,fax,email,type,subtype,lat,lon
+1010,AUTO ASIST,Avda de los Constituyentes 5750,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1431,4571-3557,4571-3557,autoasist@autoasist.com.ar,TADI Excl. Post Venta,Principal,-34.5738192,-58.5026321
+1017,AMITIÉ AUTO S.A.,Avda. La Plata 218,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1184,4982-1483 / 84 / 85,4982-1483 / 84 / 85,info@amitie.com.ar,Excl. Ventas,Principal,-34.6173717,-58.42871899999999
+1017,AMITIÉ AUTO S.A.,Avda. La Plata 767,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1235,4926-2604 al 06,4926-2604 al 06,info@amitie.com.ar,Excl. Post Venta,Principal,-34.624634,-58.42730160000001
+1019,BREST de Carullo S.A.,Gascón 1445,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1181,4862-2797,4862-2797,info@serviciobrest.com,TADI Excl. Post Venta,Principal,-34.5934917,-58.42276949999999
+1030,L'EXPRES S.A.,Carlos Pellegrini  1526,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1011,4325-2004/05,4325-2004/05,pellegrini@lexpres.com.ar,Excl. Ventas,Secundaria,-34.5900909,-58.38132
+1030,L'EXPRES S.A.,Rincón 720,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1227,4308-2455/56/57,-,rincon@lexpres.com.ar,Integral,Secundaria,-34.6174227,-58.39603429999999
+1030,L'EXPRES S.A.,Av. Córdoba 3113,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1187,4963-6206,-,-,Excl. Ventas,Secundaria,-34.5980589,-58.41048430000001
+1030,L'EXPRES S.A.,"Estac. Plaza Mitre, 1º Subsuelo, Av. Las Heras 2282",Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1127,5368-0066,-,-,Peugeot Rapide,Secundaria,-34.58766910000001,-58.39699090000001
+1030,L'EXPRES S.A.,Av. del Libertador 1.800 esq. Tagle (Pizza Cero),Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1425,5368-1182 / 4807-0216,-,-,Excl. Ventas,Secundaria,XXX,XXX
+1041,SVA SACI,Av Pte Figueroa Alcorta 3472,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1425,4801-6323,4801-1794,sva@interar.com.ar,Excl. Ventas,Principal,-34.5768768,-58.40447260000001
+1041,SVA SACI,Av. Warnes 400,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1414,4801-6323,4801-1794,sva@interar.com.ar,Peugeot Rapide,Secundaria,-34.6026331,-58.441509
+1041,SVA SACI,Scalabrini Ortiz 950,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1414,4801-6323,4801-1794,sva@interar.com.ar,Integral,Secundaria,-34.5953792,-58.4317579
+1041,SVA SACI,Av. Gaona 1237,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1416,4581-8490,-,sva@interar.com.ar,Excl. Ventas,Secundaria,-34.6079206,-58.44700750000001
+1051,SIRO SA,Av. Alvarez Thomas 1020/1032,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1427,4551-0074,4551-0074,siro@acara.org.ar,Excl. Post Venta,Principal,-34.5788712,-58.4562067
+1051,SIRO SA,Av. Alvarez Thomas 1166,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1427,4514-6300,4514-6300,siro@acara.org.ar,Excl. Ventas,Secundaria,-34.5784444,-58.45798229999999
+1051,SIRO SA,Av. Libertador 1875,Vicente López,Buenos Aires,1683,4791-1001,4791-1001,siro@acara.org.ar,Integral,Secundaria,-34.5155382,-58.4762894
+1051,SIRO SA,Av. Santa Fe 1101,San Isidro,Buenos Aires,1641,4798-0802,4798-0802,siro@acara.org.ar,Excl. Ventas,Secundaria,-34.4829364,-58.5048597
+1051,SIRO SA,Av. Triunvirato 3565,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1427,4508-1150,4508-1150,siro@acara.org.ar,Excl. Ventas,Secundaria,-34.5823732,-58.4716293
+1051,SIRO SA,Av. Triunvirato 3565,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1427,4508-1150,4508-1150,siro@acara.org.ar,Peugeot Rapide,Secundaria,-34.5823732,-58.4716293
+1051,SIRO SA,Av.Cabildo 1411,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1426,4783-7722,4783-7722 int. 107,siro@acara.org.ar,Excl. Ventas,Principal,-34.56732,-58.4500109
+1051,SIRO SA,Cuyo 2579,Martinez,Buenos Aires,1641,4513-8050,4513-8050,siro@acara.org.ar,Excl. Post Venta,Secundaria,-34.4977148,-58.5314213
+1055,D'ARC LIBERTADOR S.A,Av del Libertador 4402,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1428,4511-4000,4511-4000,peugeot@grupodarc.com.ar,Excl. Ventas,Secundaria,-34.5673967,-58.43019719999999
+1055,D'ARC LIBERTADOR S.A,Av. San Martín 6792 y Gabriela Mistral,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1416,4580-2222,4580-2222,peugeot@grupodarc.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1055,D'ARC LIBERTADOR S.A,Av.del Libertador 6388 esq.Monroe,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1428,4511-1111,4511-1111,peugeot@grupodarc.com.ar,Excl. Ventas,Principal,XXX,XXX
+1055,D'ARC LIBERTADOR S.A,Av.Francisco Beiró  3836 / 40,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1419,4580-2580,4580-2580,peugeot@grupodarc.com.ar,Excl. Post Venta,Secundaria,-34.6026727,-58.50661939999999
+1055,D'ARC LIBERTADOR S.A,Av.Francisco Beiró  4755,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1419,4567-2002,-,peugeot@grupodarc.com.ar,Excl. Ventas,Secundaria,-34.6093546,-58.51752859999999
+1055,D'ARC LIBERTADOR S.A,M. Ugarte 1549,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1428,4511-1122,4511-1122,peugeot@grupodarc.com.ar,Excl. Post Venta,Principal,-34.5516486,-58.4529322
+1055,D'ARC LIBERTADOR S.A,Av. Libertador y Udaondo,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1428,4511-1111,4511-1111,peugeot@grupodarc.com.ar,Selección del León,Secundaria,XXX,XXX
+1090,ROSEDAL AUTOMOTORES S.R.L.,Ortega y Gasset 1770,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1426,4776-6033,4776-6033,rosedal3@fibertel.com.ar,TADI Excl. Post Venta,Principal,-34.5697445,-58.4321746
+1090,ROSEDAL AUTOMOTORES S.R.L.,Arce 465,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1426,4772-8138 / 4777-2302,4776-6033,rosedal3@fibertel.com.ar,Peugeot Rapide,Secundaria,-34.5701839,-58.4321042
+1104,AUTOFRANCE S.A.,A. J.D.Perón 2827,Victoria,Buenos Aires,1644,4549-0300,4549-0300,autofrance@acara.org.ar,Excl. Post Venta,Secundaria,-34.4510207,-58.5418326
+1104,AUTOFRANCE S.A.,Av. Centenario 1545 - Beccar,San Isidro,Buenos Aires,1643,4732-3332,4732-3331,autofrance@acara.org.ar,Excl. Ventas,Secundaria,-34.4631781,-58.5247723
+1104,AUTOFRANCE S.A.,Av. del Libertador 2897,Punta Chica,Buenos Aires,1646,4575-3500,4575-3500,autofrance@acara.org.ar,Excl. Ventas,Secundaria,-34.4489353,-58.5357134
+1104,AUTOFRANCE S.A.,M.T.de Alvear 1014 (Ruta 202),Don Torcuato,Buenos Aires,1648,4741-5225,4741-5225,autofrance@acara.org.ar,Integral,Principal,XXX,XXX
+1104,AUTOFRANCE S.A.,Av. del Libertador 2897,Punta Chica,Buenos Aires,1646,4575-3500,4575-3500,autofrance@acara.org.ar,Selección del León,Secundaria,-34.4489353,-58.5357134
+1140,DRAGO Y BERETTA Y CIA S.A.C.I.F.,Av. Rivadavia 9851,Capital Ferderal,Ciudad Autónoma de Buenos Aires,1407,4016-1200,4016-1200,villaluro@dragoberetta.com,Integral,Principal,-34.6378892,-58.50277380000001
+1140,DRAGO Y BERETTA Y CIA S.A.C.I.F.,Rivadavia 17172,Morón,Buenos Aires,1708,4483-2170,4483-2170,info@dragoberetta.com,Peugeot Rapide,Secundaria,-34.6493122,-58.6148635
+1140,DRAGO Y BERETTA Y CIA S.A.C.I.F.,"S:Av Rivadavia 17438, T: Güemes Torino 158",Morón,Buenos Aires,1708,4483-2170,4483-2170,ventasmoron@dragoberetta.com,Integral,Secundaria,-34.6510539,-58.57882670000001
+1146,LESBLEUS S.A.,Av. Mitre 346/64/90,Villa Martelli,Buenos Aires,1638,4760-1534,4760-1534,eacevedo@lesbleus.com.ar,Integral,Principal,-34.5458053,-58.5004445
+1148,AUTOMOVILES EIFFEL S.A.,Rivadavia 12456,Ciudadela,Buenos Aires,1702,4647-1230 al 34,4647-1230 al 34,info@eifellsa.com,Integral,Principal,-34.6401642,-58.5394203
+1148,AUTOMOVILES EIFFEL S.A.,Bartolomé Mitre 3760,Caseros,Buenos Aires,1678,4716-4168 / 4759-5744,-,info@eifellsa.com,Peugeot Rapide,Secundaria,-34.6143293,-58.5514422
+1161,LE MERIDIEN S.A.,Av. Rivadavia 6160,Caballito,Ciudad Autónoma de Buenos Aires,1406,4105-3000,-,info@lemeridien.com.ar,Integral,Principal,-34.6253172,-58.4531827
+1161,LE MERIDIEN S.A.,Av.Julio A.Roca1189,Hurlingham,Buenos Aires,1686,4452-5800,4452-5800,admhur@lemeridien.com.ar,Excl. Ventas,Secundaria,-34.6070393,-58.7187296
+1161,LE MERIDIEN S.A.,Av.Ricardo Balbín 2669,San Martín,Buenos Aires,1650,4752-1444,4755-6720,ventassm@lemeridien.com.ar,Integral,Secundaria,-34.5753156,-58.5484819
+1164,BELCASTEL S A,Presidente Perón 9177,Parque Leloir,Buenos Aires,1713,4621-7770,4621-7770,belcastel@acara.org.ar,Excl. Ventas,Secundaria,-34.6166667,-58.68333329999999
+1164,BELCASTEL S A,"S:Avda Rivadavia 21396, T:Gomensoro 48",Ituzaingó,Buenos Aires,1714,4623-1006,4623-5714,belcastel@acara.org.ar,Integral,Principal,XXX,XXX
+1195,L. GUILLON S.A.,Hipólito Yrigoyen 8302,Lomas de Zamora,Buenos Aires,1832,4292-8183,4292-8183,info@guillonsa.com.ar,Integral,Principal,-34.7532648,-58.40100629999999
+1201,ALBENS S.A.,Hipólito Irigoyen 95,Quilmes,Buenos Aires,1878,4350-9700,4350-9700,ventas@albens.com.ar,Integral,Principal,-34.7153841,-58.2663405
+1201,ALBENS S.A.,Juana Manso 1314,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1107,5775-0245 / 0280,-,ventas@albens.com.ar,Sitio Premium Ventas,Secundaria,-34.6127093,-58.36233439999999
+1201,ALBENS S.A.,Av. Mitre 1425,Avellaneda,Buenos Aires,1870,4205-4197 / 4203-1218,-,ventas@albens.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1201,ALBENS S.A.,Av. Mitre y Madariaga,Avellaneda,Buenos Aires,1870,4253-5816,4253-5816,ventas@albens.com.ar,Peugeot Rapide,Secundaria,XXX,XXX
+1201,ALBENS S.A.,Av. Mitre 6678 esq. Caviglia,Bernal,Buenos Aires,1875,6841-4900,-,ventas@albens.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1230,CHATELL S.A.,Av. Victorica 403 esq. Mármol,Moreno,Buenos Aires,1744,0237-4639179,0237-4639179,chatell@ciudad.com.ar,Excl. Ventas,Principal,XXX,XXX
+1230,CHATELL S.A.,Mármol 343,Moreno,Buenos Aires,1744,0237-4639179,0237-4639179,chatell@ciudad.com.ar,Excl. Post Venta,Principal,-34.6362255,-58.79127279999999
+1230,CHATELL S.A.,"Colectora Gaona 4857, Km. 35,3 Acceso Oeste",Moreno,Buenos Aires,1744,0237-4681822 / 1976,-,chatell@ciudad.com.ar,Integral,Secundaria,XXX,XXX
+1230,CHATELL S.A.,Avda. Constitución 1850 (ex ruta 7),Luján,Buenos Aires,6700,02323-490087 / 0810-999-9482,-,chatell@ciudad.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1262,BLOIS S.A.,Ruta Nacional 205 y Avda. Hipólito Irigoyen,Lobos,Buenos Aires,7240,02227-430457,02227-430457,info@bloissa.com.ar,Integral,Principal,XXX,XXX
+1265,LE MONT S.A.,Aristóbulo del valle 3879,Olavarría,Buenos Aires,7400,02284-428711,-,info@lemont.com.ar,Integral,Secundaria,XXX,XXX
+1265,LE MONT S.A.,Av. España 37,Tandil,Buenos Aires,7000,02293-436000,02293-436000,info@lemont.com.ar,Integral,Principal,-37.3256991,-59.14674840000001
+1265,LE MONT S.A.,Avda. Piazza 1479,Azul,Buenos Aires,7300,02281-435686,02281-435686,info@lemont.com.ar,Excl. Ventas,Secundaria,-36.78906,-59.844352
+1270,BELCHAMP S.A.,Alvear 4726,Mar del Plata,Buenos Aires,7602,0223 - 4109000,0223 - 4109000,ventas@belchamp.com.ar,Excl. Post Venta,Secundaria,-38.0306876,-57.5523708
+1270,BELCHAMP S.A.,Av. Independencia 2265,Mar del Plata,Buenos Aires,7600,0223 - 4109000,0223 - 4109000,ventas@belchamp.com.ar,Integral,Principal,-38.0009738,-57.5565684
+1270,BELCHAMP S.A.,Ruta 11 km 396,General Madariaga,Buenos Aires,7167,02254-492300,02254-492300,pinamar@belchamp.com.ar,Integral,Secundaria,XXX,XXX
+1270,BELCHAMP S.A.,Juan B. Justo 4368,Mar del Plata,Buenos Aires,7608,0223-4109000 int. 100,0223 - 4109000,ventas@belchamp.com.ar,Peugeot Rapide,Secundaria,-37.9722786,-57.63309289999999
+1298,AUTOMOTORES DEL SUR S.A.,Juan M.de Rosas 705,Chascomús,Buenos Aires,7130,02241-431402/4,02241-431402/4,automotores@automotoresdelsur.com,Integral,Principal,XXX,XXX
+1298,AUTOMOTORES DEL SUR S.A.,Moreno 351,Dolores,Buenos Aires,7100,02245-447417,02245-447417,dolores@automotoresdelsur.com,Integral,Secundaria,-36.317797,-57.68326349999999
+1299,GALIA S A,Calle 49 N° 690 (entre 8 y 9),La Plata,Buenos Aires,1900,0221-4233700,-,info@galiapeugeot.com.ar,Excl. Ventas,Principal,XXX,XXX
+1299,GALIA S A,Taller: Calle 4 Nro. 1565   -    Rtos.: Calle 64  Nº474,La Plata,Buenos Aires,1900,0221-4259541,-,info@galiapeugeot.com.ar,Excl. Post Venta,Principal,XXX,XXX
+1299,GALIA S A,Av. 44 2518,La Plata,Buenos Aires,1900,0221-47907397,-,galia@acara.org.ar,Excl. Ventas,Secundaria,XXX,XXX
+1300,LYON S.A.,Av.25 de Mayo 1175,Formosa,FORMOSA,3600,03717-437429 ,03717-435811,lyon@arnet.com.ar,Integral,Principal,-25.288062,-57.7117207
+1325,PLACE ROUEN S.A.,14 de Febrero 644,Villa Constitución,SANTA FE,2919,03400- 475664,-,placerouen@placerouen.com.ar,Excl. Ventas,Secundaria,-33.2259384,-60.33540410000001
+1325,PLACE ROUEN S.A.,Av. Perón 985,San Nicolás,Buenos Aires,2900,0336- 4487400,0336-4487435,placerouen@placerouen.com.ar,Integral,Principal,XXX,XXX
+1330,LUCIO V LOPEZ SACIFI,Lucio V Lopez 350,Tres Arroyos,Buenos Aires,7500,02983-427076/77,02983-431717,lvlopez@lvlopez.com.ar,Integral,Principal,-38.3750186,-60.27162729999999
+1330,LUCIO V LOPEZ SACIFI,Lamadrid 805,Coronel Suarez,Buenos Aires,7540,02926-430999,-,lvlopez@lvlopez.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1330,LUCIO V LOPEZ SACIFI,Baigorria 1082,Coronel Suarez,Buenos Aires,7540,02923-418755,-,lvlopez@lvlopez.com.ar,Excl. Post Venta,Secundaria,XXX,XXX
+1337,GRANVILLE S.A.,Hernandez 465,Pergamino,Buenos Aires,2700,02477-426633,-,posventa@granville.com.ar,Excl. Post Venta,Principal,-33.9002244,-60.5523178
+1337,GRANVILLE S.A.,"R.N.No.8 km. 222,300esq.D.Colodrero (Tte.Asúa 1193)",Pergamino,Buenos Aires,2700,02477-442721/38,-,granville@granville.com.ar,Excl. Ventas,Principal,XXX,XXX
+1342,SAN FIOR AUTOMOTORES S.A.,Comandante Cuitiño 27 esq. Mayor Lopez,Junín,Buenos Aires,6000,02362-433802,02362-430431,sanfior@acara.org.ar,Integral,Principal,XXX,XXX
+1342,SAN FIOR AUTOMOTORES S.A.,Avenida 25 de Mayo 437,Lincoln,Buenos Aires,6070,02355- 432452,-,lincoln@sanfior.com.ar,Excl. Ventas,Secundaria,-34.8639541,-61.5347177
+1342,SAN FIOR AUTOMOTORES S.A.,Avda. Benito de Miguel 938,Junín,Buenos Aires,6000,02362-440268,-,sanfiorsucursal@sanfior.com.ar,Excl. Ventas,Secundaria,-34.6029963,-60.963482
+1352,LENS S.A.,Av. Mitre 3410,Nueve de Julio,Buenos Aires,6500,02392-433515,02392-433515,lens@speedy.com.ar,Integral,Secundaria,XXX,XXX
+1352,LENS S.A.,Av.García Salinas 1270,Trenque Lauquen,Buenos Aires,6400,02392-433515,02392-433515,lens@speedy.com.ar,Integral,Principal,XXX,XXX
+1352,LENS S.A.,Avellaneda 430,Chivilcoy,Buenos Aires,6620,02346-420232,02346-420232,lens@speedy.com.ar,Integral,Secundaria,-34.908544,-60.0181794
+1370,CORCEL AUTOMOTORES S.A.,Roca  esq.Viamonte,Bahía Blanca,Buenos Aires,8000,0291-4564456,0291-4564456,info@corcelsa.com.ar,Excl. Ventas,Principal,XXX,XXX
+1370,CORCEL AUTOMOTORES S.A.,Roca 362,Bahía Blanca,Buenos Aires,8000,0291-4564456,0291-4564456,info@corcelsa.com.ar,Excl. Post Venta,Principal,-38.71898729999999,-62.2757671
+1370,CORCEL AUTOMOTORES S.A.,Sarmiento 3850,Bahía Blanca,Buenos Aires,8000,0291-4564456,0291-4564456,info@corcelsa.com.ar,Excl. Ventas,Secundaria,-38.6977117,-62.24295660000001
+1370,CORCEL AUTOMOTORES S.A.,Avenida Zatti 1028,Viedma,RIO NEGRO,8500,02920-430962,02920-430962,info@corcelsa.com.ar,Excl. Ventas,Secundaria,-40.8218268,-62.9884726
+1370,CORCEL AUTOMOTORES S.A.,Bv. Ayacucho 768,Viedma,RIO NEGRO,8500,02920-421661,-,info@corcelsa.com.ar,Excl. Post Venta,Secundaria,-40.8036104,-63.00219730000001
+1375,MIGUEL ROBAYNA S.A.,Av.Lavalle 1655,Zárate,Buenos Aires,2800,03487-445085,03487-445085,ventas@gruporobayna.com.ar,Integral,Principal,-34.1110441,-59.02057790000001
+1375,MIGUEL ROBAYNA S.A.,Rawson 451,Campana,Buenos Aires,2804,03489-448054,03489-448054,ventas@grupoarnet.com.ar,Excl. Ventas,Secundaria,-34.16505,-58.96156010000001
+1375,MIGUEL ROBAYNA S.A.,Ruta 25 n° 1819,Escobar,Buenos Aires,1625,03488-514888,03488-514888,grupo@gruporobayna.com.ar,Integral,Secundaria,-34.3697258,-58.81044259999999
+1388,CHAMONIX S.A.,Acceso Norte - Ramal Pilar km 47,Pilar,Buenos Aires,1629,02322-300200,02322-300200,chamonix@telviso.com.ar,Integral,Principal,XXX,XXX
+1389,GAULOIS AUTOMOTORES S.A.,"Ruta Panamericana (Ramal Pilar) km 35,5",Tortuguitas,Buenos Aires,1667,03327-453512/19,03327-453502,hsole@carone.com.ar,Excl. Post Venta,Principal,XXX,XXX
+1389,GAULOIS AUTOMOTORES S.A.,"Ruta Panamericana (Ramal Pilar) km 35,5",Tortuguitas,Buenos Aires,1667,03327-453512/19,03327-453502,hsole@carone.com.ar,Excl. Ventas,Principal,XXX,XXX
+1390,ESPRIT POURTAU S.A.,Av 32 n° 1219 entre 20 y 21 ,La Plata,Buenos Aires,1900,0221-4277885,0221-4277885,info@epourtau.com.ar,Integral,Principal,XXX,XXX
+1390,ESPRIT POURTAU S.A.,Ruta 210 intersección Ruta 215,Cnel. Brandsen,Buenos Aires,1980,02223-445422/23,02223-445422/23,info@epourtau.com.ar,Integral,Secundaria,XXX,XXX
+1390,ESPRIT POURTAU S.A.,M. Castex 689,Canning,Buenos Aires,1804,0221-4277885,0221-4277885,info@epourtau.com.ar,Excl. Ventas,Secundaria,-34.8026068,-58.4648011
+1400,ANCASTI S.R.L.,Esquiú 786,Catamarca,CATAMARCA,4700,03833-435838,03833-432856,ancastiventas@acara.org.ar,Integral,Principal,-28.4667613,-65.77579039999999
+1415,BURDEOS S.A.,Av. Angel Vicente Peñaloza 650,La Rioja,LA RIOJA,5300,03822-460880,03822-460880,zboggio@burdeossa.com.ar,Integral,Principal,XXX,XXX
+1415,BURDEOS S.A.,Av. Rivadavia 599,La Rioja,LA RIOJA,5300,03822-204376,03822-204376,zboggio@burdeossa.com.ar,Excl. Ventas,Secundaria,-29.4146001,-66.85630449999999
+1528,AVANT S.A.,Av. Circunvalación esq. Santa Ana,Córdoba,CORDOBA,5008,0810-555-28268,0810-555-28268,marketing@avantpeugeot.com.ar,Integral,Principal,XXX,XXX
+1528,AVANT S.A.,Ruta 36 A005 km 4,Río Cuarto,CORDOBA,5800,0358-4655750,0358-4655750,avantr4@avantpeugeot.com.ar,Integral,Secundaria,XXX,XXX
+1534,LE PARC S.A.,Av. Pte. Perón 1373 - Barrio San Justo,Villa María ,CORDOBA,5900,0353-4521111,0353-4521111,gcaula@infovia.com.ar,Excl. Post Venta,Secundaria,XXX,XXX
+1534,LE PARC S.A.,Ruta Nacional Nº 9 km 554,Villa María ,CORDOBA,5900,0353-4521111,0353-4521111,ventas@leparc.com.ar,Excl. Ventas,Principal,-32.4135652,-63.2345197
+1534,LE PARC S.A.,Ruta Nacional Nº 9 km 554,Villa María,CORDOBA,5900,0353-4521111,0353-4521111,ventas@leparc.com.ar,Selección del León,Secundaria,-32.4135652,-63.2345197
+1534,LE PARC S.A.,Arturo Illia 225,Río Tercero,CORDOBA,5850,03571-430093,-,leparc@leparcsa.com.ar,Integral,Secundaria,XXX,XXX
+1550,VESUBIO S.A.,Av Pte.Peròn 1718,Monte Maíz,CORDOBA,2659,03472-444110,03468-471882,concesionario@vesubio.com.ar,Integral,Principal,XXX,XXX
+1550,VESUBIO S.A.,Francisco Beiró y Pasaje Chacabuco,Marcos Juárez,CORDOBA,2580,03472-444110,-,vesubiomj@vesubio.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1554,JORGE ANTUN S.A.,Juán Bautista Alberdi 639 (Ruta N9 y Ruta N13),Pilar,CORDOBA,5972,03572-472250,03572-472250,peugeot@grupoantun.com.ar,Integral,Secundaria,XXX,XXX
+1554,JORGE ANTUN S.A.,Urquiza 381 ,San Francisco ,CORDOBA,2400,03564-420439,-,peugeot@grupoantun.com.ar,Integral,Principal,-31.4241105,-62.0961064
+1554,JORGE ANTUN S.A.,Avda. Libertador 960,Alta Gracia,CORDOBA,5186,03547-434008 / 0810-888-26886,-,peugeot@grupoantun.com.ar,Excl. Ventas,Secundaria,-31.3744073,-64.18764539999999
+1554,JORGE ANTUN S.A.,Avda. Libertador 960,Alta Gracia,CORDOBA,5186,03547-434008 / 0810-888-26886,-,peugeot@grupoantun.com.ar,Peugeot Rapide,Secundaria,-31.3744073,-64.18764539999999
+1614,D´AZUR S.A.,Av. Independencia 4450,Corrientes,CORRIENTES,3408,03783-471700,03783-471700,info@dazur.com.ar,Integral,Principal,XXX,XXX
+1615,LA CONCORDE S.A.,Urdinarrain 322,Concordia,ENTRE RIOS,3200,0345-4218238,0345-4221694,administracion@laconcorde.com.ar,Integral,Principal,-31.3938328,-58.0248734
+1616,METZ S.A.,Av. 25 de Mayo 1033,Resistencia,CHACO,3500,03722 - 438500,-,INFO@PEUGEOTMETZ.COM.AR,Integral,Principal,-27.4429569,-58.9956446
+1616,METZ S.A.,Comandante Fernández 718,Pte. Roque Sáenz Peña,CHACO,3700,0364 4420251,-,INFO@PEUGEOTMETZ.COM.AR,Excl. Ventas,Secundaria,XXX,XXX
+1620,EUROFRANCIA S.A.,Guemes 286 esquina Warnes,Tartagal,SALTA,4560,(0387) 4270994 ,(0387) 4270994 ,info@eurofrancia.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1620,EUROFRANCIA S.A.,Av. Paraguay 2552,Salta,SALTA,4400,(0387) 4270994 ,(0387) 4270994 ,info@eurofrancia.com.ar,Integral,Principal,XXX,XXX
+1621,AUTOCIEL S.A.,Alvear esquina Otero,San Salvador de Jujuy,JUJUY,4600,0388-4244962,0388-4244962,info@autociel.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+1621,AUTOCIEL S.A.,"Colectora s/n 2227 (Ruta 9), Acceso Sur",San Salvador de Jujuy,JUJUY,4600,0388-4983211,-,info@autociel.com.ar,Integral,Principal,XXX,XXX
+1902,LEON BANCHIK SACIFIAG Y M,9 de Julio 1616,Cpción del Uruguay,ENTRE RIOS,3260,03442-422070,03442-432036,leonbanchik@acara.org.ar,Integral,Principal,XXX,XXX
+2214,VERNON S.A.,Avellaneda 65,Santa Rosa,LA PAMPA,6500,02954-424670,02954-424670,patricia.olguin@gruporesasco.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+2214,VERNON S.A.,Avellaneda 70,Santa Rosa,LA PAMPA,6500,02954-424670,02954-424670,patricia.olguin@gruporesasco.com.ar,Excl. Post Venta,Secundaria,XXX,XXX
+2214,VERNON S.A.,Calle 9 n° 855 Oeste,General Pico,LA PAMPA,6360,02954-424670,02954-424670,jimena.calcavecchia@gruporesasco.com.ar,Integral,Principal,XXX,XXX
+2401,AUTOMOTORES GRAL. SAN MARTIN S.A.,L. N. Alem 551/7,San Martín,MENDOZA,5570,02623-420330,02623-420330,ventas@peugeotsanmartin.com.ar,Integral,Principal,-33.086256,-68.4648471
+2401,AUTOMOTORES GRAL. SAN MARTIN S.A.,San Martìn 501/5,Mendoza,MENDOZA,5500,0261-4234700,0261-4234700,ventas@peugeotsanmartin.com.ar,Integral,Secundaria,-32.8964371,-68.8409556
+2401,AUTOMOTORES GRAL. SAN MARTIN S.A.,"Av. 25 de Mayo 5555 (Lateral Sur, Acceso Este)",Guaymallén,MENDOZA,5521,-,-,ventas@peugeotsanmartin.com.ar,Integral,Secundaria,XXX,XXX
+2421,ROMA AUTOMOTORES S.A,Av. Alvear Este 441,General Alvear,MENDOZA,5620,02625-424561,02625-424561,romaautomotores@infovia.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+2421,ROMA AUTOMOTORES S.A,Cuarta División Este 135,Malargue,MENDOZA,5613,02627-472348,02627-472348,romaautomotores@infovia.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+2421,ROMA AUTOMOTORES S.A,Av.Mitre 251,San Rafael,MENDOZA,5600,02627-437327,02627-437327,romaautomotores@infovia.com.ar,Integral,Principal,-34.6171129,-68.326984
+2500,SUR FRANCE S.A.,Av.San Martín 540,Godoy Cruz,MENDOZA,5501,0261-4240400,0261-4240400,carsur@supernet.com.ar  ,Integral,Principal,-32.9185981,-68.84691819999999
+2507,VITACAR S.A.,Lavalle 3135,Posadas,MISIONES,3300,03752-441000,03752-441000,vitacarsa@arnet.com.ar,Integral,Principal,-27.3779697,-55.9067825
+2510,SEEWALD Y CIA S.A.,Av. San Martín 2860,Puerto Rico,MISIONES,3334,03743-421336,03743-421336,titos@prico.com.ar,Excl. Ventas,Principal,XXX,XXX
+2510,SEEWALD Y CIA S.A.,Gervasio Posadas Nº 100,Puerto Rico,MISIONES,3334,03743-421336,03743-421336,titos@prico.com.ar,Excl. Post Venta,Principal,XXX,XXX
+2700,MARCEJO J. SAGARIA,Almirante Brown 56,San Carlos de Bariloche,RIO NEGRO,8400,02944-435679,-,-,TADI Excl. Post Venta,Principal,-41.1469367,-71.31191389999999
+2720,ARMORIQUE MOTORS S.A,Av. Independencia 70,Neuquen,NEUQUEN,8300,0299-4422307,0299-4422307,ventas@armorique.com.ar,Integral,Secundaria,-38.9551861,-68.05756479999999
+2720,ARMORIQUE MOTORS S.A,"Colectora Fortín 1° división 421, Ruta 22 km 1215",Cipolletti,RIO NEGRO,8324,0299-4781011,0299-4781011,ventas@armorique.com.ar,Integral,Principal,XXX,XXX
+2720,ARMORIQUE MOTORS S.A,Gral.Roca 466,Gral.Roca,RIO NEGRO,8332,02941-42200,02941-42200,ventas@armorique.com.ar,Integral,Secundaria,-38.9393261,-67.99541169999999
+2910,BOULEVARD PARIS,Av. Ignacio de la Roza 1665 OESTE,San Juan,SAN JUAN,5400,0264-4264888,0264-4265333,boulevardparis@sinectis.com.ar,Integral,Principal,XXX,XXX
+2910,BOULEVARD PARIS,Av. Ignacio de la Roza 1665 OESTE,San Juan,SAN JUAN,5400,0264-4264888,0264-4265333,boulevardparis@sinectis.com.ar,Peugeot Rapide,Secundaria,XXX,XXX
+3007,FIORASI E HIJOS S.A.,9 de Julio 119 esquina Belgrano,Trelew,CHUBUT,9100,02965-431400,-,info@fiorasiehijossa.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+3007,FIORASI E HIJOS S.A.,Hipolito Yrigoyen 1906 esq. Ladvocat,Cdro. Rivadavia,CHUBUT,9000,0297-4443303,-,info@fiorasiehijossa.com.ar,Integral,Principal,XXX,XXX
+3007,FIORASI E HIJOS S.A.,J. A.Roca 931,Trelew,CHUBUT,9100,02965-429380,-,info@fiorasiehijossa.com.ar,Excl. Post Venta,Secundaria,-43.2585219,-65.3175061
+3007,FIORASI E HIJOS S.A.,Mitre 310 esq. Belgrano,Pto.Madryn,CHUBUT,9120,02965-454795,-,info@fiorasiehijossa.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+3007,FIORASI E HIJOS S.A.,Corrientes 660 esq. Pasaje Payro,Pto.Madryn,CHUBUT,9120,02804-15-581096,-,info@fiorasiehijossa.com.ar,TACE / Peugeot Rapide,Secundaria,XXX,XXX
+3010,GLAMOUR,Av. Santos Ortiz (ex ruta 7) y Predio Ferial,San Luis,SAN LUIS,5700,02657-427700,02657-427700,anrober@ciudad.com.ar,Integral,Principal,XXX,XXX
+3010,GLAMOUR,Avda. Mitre 688 - esq. Sarmiento,Villa Mercedes,SAN LUIS,5732,02657-427700,02657-427700,anrober@ciudad.com.ar,Integral,Secundaria,XXX,XXX
+3105,EXPO SUD S.A.,Angel Vicente Peñaloza 3608,Río Gallegos,SANTA CRUZ,9400,02966-457542/43,02966-457542/43,info@expogroup.com.ar,Excl. Ventas,Principal,XXX,XXX
+3105,EXPO SUD S.A.,Paseo de los Arrieros 2310,Río Gallegos,SANTA CRUZ,9400,02966-457766,-,info@expogroup.com.ar,Excl. Post Venta,Secundaria,-51.6222485,-69.2594632
+3230,NATION S.A.,Almafuerte 617,Paraná,ENTRE RIOS,3100,0343-4342030,,info@nation.com.ar,Excl. Ventas,Secundaria,-31.7471299,-60.51098949999999
+3230,NATION S.A.,Belgrano 2663/77,Santa Fé,SANTA FE,3000,0342-4560065,0342-4534040,info@nation.com.ar,Integral,Principal,XXX,XXX
+3230,NATION S.A.,Juan del Campillo esquina Pedro Seguí,Paraná,ENTRE RIOS,3100,0343-4342030,-,info@nation.com.ar,Excl. Post Venta,Secundaria,XXX,XXX
+3230,NATION S.A.,Bv. Roca 649,Rafaela,SANTA FE,2300,03492-578882 / 83 / 84,-,info@nation.com.ar,Integral,Secundaria,-31.2515084,-61.4984626
+3238,PROST S.A.,Av.Eva Perón (ex Córdoba) 4199 esq.Río de Janeiro 801,Rosario,SANTA FE,2000,0341-4352002,0341-4352002,ventas@prostsa.com.ar,Excl. Ventas,Principal,-32.9388124,-60.6805799
+3238,PROST S.A.,Río de Janeiro 770,Rosario,SANTA FE,2000,0341-4352002,0341-4352002,prost@datafull.com,Excl. Post Venta,Principal,-32.9384078,-60.68050789999999
+3251,AUTOSUR S.A.,Av.12 de Octubre 1276 (ruta 8),Venado Tuerto,SANTA FE,2600,03462-439239,03462-439444,autosursavenado@arnet.com.ar,Integral,Secundaria,XXX,XXX
+3251,AUTOSUR S.A.,Ovidio Lagos 1063,Casilda,SANTA FE,2170,03464-424043,03464-424043,autosurventas@arnet.com.ar,Integral,Principal,-33.0529459,-61.1576883
+3303,LE MANS AUTOMOTORES S.A.,Av. Belgrano Sur 1385,Santiago del Estero,STGO. DEL ESTERO,4200,0385-4217943,0385-4222413,lemansadministracion@arnetbiz.com.ar,Integral,Principal,-27.7982736,-64.25419099999999
+3402,INDIANA S.A.C.I.F.I.,Italia 2945,Tucumán ,TUCUMAN,4001,0381-4347700 / 4851970 / 4851997,-,indiana@indiana.com.ar,Excl. Post Venta,Secundaria,-26.808714,-65.2380998
+3402,INDIANA S.A.C.I.F.I.,Shipton esq. Rivadavia,Concepción de Tucumán,TUCUMAN,4146,03865-426200,-,indiana@indiana.com.ar,Excl. Ventas,Secundaria,XXX,XXX
+3402,INDIANA S.A.C.I.F.I.,Salta 160,Tucumán ,TUCUMAN,4000,0381-4212000,0381-4300738,indiana@indiana.com.ar,Excl. Ventas,Principal,-26.8117885,-65.29001029999999
+3500,AUPE S.A. (SUC. ROSARIO),Av. San Martín 2756 esq.Virasoro,Rosario,SANTA FE,2000,0341-4856000,0341-4856544,aupesa.rosario@mpsa.com,Integral,Principal,XXX,XXX
+3500,AUPE S.A. (SUC. ROSARIO),Irigoyen 885 y Ruta 9,Cañada de Gómez,SANTA FE,2500,03471-428896,0341-4856544,aupesa.rosario@mpsa.com,Integral,Secundaria,XXX,XXX
+3505,EXPO AUTO S.A.,Av.San Martín 1587,Rio Grande,TIERRA DEL FUEGO,9420,02964-430240,02964-430240,info@expogroup.com.ar,Integral,Secundaria,-53.7789635,-67.715249
+3505,EXPO AUTO S.A.,Gobernador Deloqui 1163 y Belgrano,Ushuaia,TIERRA DEL FUEGO,9410,02901-421000,02901-431762,info@expogroup.com.ar,Integral,Principal,XXX,XXX
+3510,AUPE S.A. (SUC. CORDOBA),Av.Castro Barros 1155,Córdoba,CORDOBA,5008,0351-4409000,0351-4409000,aupesa.cordoba@mpsa.com,Integral,Principal,XXX,XXX
+3510,AUPE S.A. (SUC. CORDOBA),"Pedro J. Frias (Norte) 15, Esquina Bv. Agüero",Jesus María,CORDOBA,5220,03525-425594 / 424184,-,aupesa.cordoba@mpsa.com,Excl. Ventas,Secundaria,XXX,XXX
+3520,AUPE S.A. (SUC. Buenos Aires),Agrelo 4050,Almagro,Ciudad Autónoma de Buenos Aires,1224,4303-3400,4303-3400,aupesa.buenosaires@mpsa.com,Excl. Post Venta,Secundaria,-34.6190819,-58.4233504
+3520,AUPE S.A. (SUC. Buenos Aires),Av. Independencia 2838,Almagro,Ciudad Autónoma de Buenos Aires,1225,4932-9555,4932-9555,aupesa.buenosaires@mpsa.com,Excl. Ventas,Secundaria,-34.6192734,-58.40551869999999
+3520,AUPE S.A. (SUC. Buenos Aires),Av. Independencia 2838,Almagro,Ciudad Autónoma de Buenos Aires,1225,4932-9555,4932-9555,aupesa.buenosaires@mpsa.com,Selección del León,Secundaria,-34.6192734,-58.40551869999999
+3520,AUPE S.A. (SUC. Buenos Aires),Ituzaingó 555,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1141,4303-3400,4303-3400,aupesa.buenosaires@mpsa.com,Excl. Post Venta,Secundaria,-34.6293858,-58.3729467
+3520,AUPE S.A. (SUC. Buenos Aires),Montes de Oca 1102,Barracas,Ciudad Autónoma de Buenos Aires,1270,4303-3400,4303-3400,aupesa.buenosaires@mpsa.com,Excl. Ventas,Principal,-34.640565,-58.37419740000001
+3520,AUPE S.A. (SUC. Buenos Aires),Alicia Moreau de Justo 152,Ciudad Autónoma de Buenos Aires,Ciudad Autónoma de Buenos Aires,1107,4314-4904 / 4314-7706,-,aupesa.buenosaires@mpsa.com,Excl. Ventas,Secundaria,-34.640565,-58.37419740000001
