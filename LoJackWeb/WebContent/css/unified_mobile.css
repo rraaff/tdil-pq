@@ -180,7 +180,7 @@ button.icon_zoom_out 	{ background:url(../mobile/images/webApp/parkings/icon_Zoo
 }
 #tableStyle { width:100%; height:auto; overflow-y:auto; }
 fieldset label {
-	color:#999;
+	color:#000;
 	font-size:16px;
 	padding:0 5px;
 	margin:0;

@@ -16,17 +16,14 @@ $( "#closevluMessagesLayer" ).click(function() {
 <div id="xContainer"><button class="buttonLink" id="closevluMessagesLayer">X</button></div>
 <h3>Mensaje de LoJack</h3>
 <div id="tableStyle">
-	<p class="information">Si el rastreador de su vehículo requiere mantenimiento, comuníquese al 0800-122-5652</p>
+	<p class="">Si el rastreador de su vehículo requiere mantenimiento, comuníquese al 0800-122-5652</p>
 	<fieldset class="tableHeader">
-		<label class="w1">Patente</label>
-		<!--  label class="w5"></label> -->
-		<label class="w5">Mensaje</label>
+		<label class="w100 monoColumna">Patente</label>
 	</fieldset>	
 	<% for (VLUDataDTO vluData : selectVehiclesForm.getVlDataDTOs()) { %>
 		<% if (!"-".equals(vluData.getMessage())) { %>
-			<fieldset>
-				<label class="w1"><%=vluData.getDomain() %></label>
-				<!--  label class="w5"></label>  -->
+			<fieldset class="tableBody">
+				<label class="w100 monoColumna"><%=vluData.getDomain() %></label>
 			</fieldset>
 		<% } %>
 	<% } %>
