@@ -43,6 +43,7 @@ if (apk) {
 }
 %>
 <% if (usingMobile || isAndroid) { %>
+	<link type="text/css" href="mobile/css/reset-styles.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
@@ -327,6 +328,16 @@ if (apk) {
 			}
 		});
 	}
+	
+	function verNoMensajesVlu(){
+		centerLayer($(window), $( "#vehiclesNoVLUMessagesLayer" ));
+		centerLayer($(window), $( "#centradorModalesNoVehiclesVLUMessages" ));
+	}
+	
+	function hideVluNoMessages() {
+		$( "#vehiclesNoVLUMessagesLayer" ).fadeOut();
+		
+	}
 
 <%@ include file="includes/centerLayerJS.jspf" %>
 </script>
@@ -347,8 +358,10 @@ if (apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
-				<% if (websiteUser.vluIsClient()) { %>
+				<% if (websiteUser.vluIsClient() && websiteUser.getVluMessages() > 0) { %>
 					<button class="iconVLUAlert" onclick="verMensajesVlu();">&nbsp;</button>
+				<% } else if (websiteUser.vluIsClient() && websiteUser.getVluMessages() == 0) { %>
+					<button class="iconNoVLUAlert" onclick="verNoMensajesVlu();">&nbsp;</button>
 				<% } %>
 			</div>
 		</section>
@@ -419,6 +432,17 @@ if (apk) {
 		</div>
 	</div>
 </div>
+
+<div id="vehiclesNoVLUMessagesLayer" class="layerOnTop" style="top:0; left:0; display:none; z-index:1500;">
+	<div id="centradorModalesNoVehiclesVLUMessages" class="vluMessages">
+		<div id="xContainer"><button class="buttonLink" onclick="javascript:hideVluNoMessages();">X</button></div>
+		<h3>Mensaje de LoJack</h3>
+		<div id="tableStyle">
+			<p class="information">Tu equipo Lojack funciona correctamente</p>
+		</div>
+	</div>
+</div>
+
 <% if (!apk) { %>
 <%@ include file="includes/footerProductoHome.jsp" %>
 <% } %>

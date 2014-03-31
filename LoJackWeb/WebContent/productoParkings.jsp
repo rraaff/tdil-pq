@@ -22,6 +22,7 @@
 <title>LoJack :: Lo tuyo es tuyo</title>
 <link rel="icon" href="favicon.ico" type="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style type="text/css">
 	.smallmap { width:968px; height:450px; }
 	#tags { display: none; }
@@ -35,6 +36,7 @@
 </style>
 <!-- rolled back -->
 <% if (usingMobile || isAndroid) { %>
+	<link type="text/css" href="mobile/css/reset-styles.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/index_modales.css" rel="stylesheet" media="screen" />
 	<link type="text/css" href="css/unified_mobile.css" rel="stylesheet" media="screen" />
 	<style type="text/css">
@@ -393,7 +395,7 @@
 				<button class="icon100mts" onclick="showParkings(100);">&nbsp;</button>
 				<button class="icon500mts" onclick="showParkings(500);">&nbsp;</button>
 				<button class="icon1mks" onclick="showParkings(1000);">&nbsp;</button>
-				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>	
+				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>
 			</div>
 		</section>
 		<section id="zoomSection">
@@ -423,6 +425,7 @@
 		</div>
 	</div>
 </div>
+
 <%@ include file="includes/updatePersonChangePasswordLayers.jspf" %>
 <%@ include file="includes/errorAjaxLayer.jspf" %>
 <%@ include file="includes/videoLayers.jsp" %>
