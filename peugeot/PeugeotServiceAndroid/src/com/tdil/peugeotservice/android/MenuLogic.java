@@ -67,11 +67,11 @@ public class MenuLogic {
 			return true;
 		case R.id.secondaryMenu:
 			return true;
-		case R.id.menu_register:
-			Intent intent1 = new Intent(activity, RegisterActivity.class);
-			activity.startActivity(intent1);
-	    	activity.finish();
-			return true;
+//		case R.id.menu_register:
+//			Intent intent1 = new Intent(activity, RegisterActivity.class);
+//			activity.startActivity(intent1);
+//	    	activity.finish();
+//			return true;
 		default:
 			activity.finish();
 			return false;

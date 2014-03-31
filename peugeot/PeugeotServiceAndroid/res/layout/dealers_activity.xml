@@ -11,24 +11,21 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_degrade" >
 
-        <TextView
+        <!-- TextView
             android:id="@+id/TextView01"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/lst_title_dealers"
             android:textColor="@color/lst_itm_title"
-            android:textSize="16sp" />
+            android:textSize="16sp" / -->
 
         <TextView
             android:id="@+id/lastChanges"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
             android:text="@string/lst_title_dealers"
-            android:textColor="@color/lst_itm_title"
-            android:textSize="16sp" />
+            style="@style/MainTitles" />
         
         <ListView
             android:id="@+id/dealers"

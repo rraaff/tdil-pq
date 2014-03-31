@@ -70,8 +70,8 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 
 	private String mDocNumber;
 
-	@TextRule(order = 3, minLength = 4, message = "Ingrese la contraseña.")
-	@Password(order = 4, message = "Contraseña")
+	@TextRule(order = 3, minLength = 4, message = "Ingrese la clave.")
+	@Password(order = 4, message = "clave")
 	private EditText passwordEditText;
 
 	private String mPassword;
@@ -342,7 +342,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 			new AlertDialog.Builder(LoginActivity.this)
 					.setIcon(R.drawable.ic_launcher)
 					.setTitle("Atención")
-					.setMessage("El usuario o contraseña son incorrectos")
+					.setMessage("El usuario o clave son incorrectos")
 					.setPositiveButton("Ok",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,

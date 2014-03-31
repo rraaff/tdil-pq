@@ -404,12 +404,12 @@ public class RegisterActivity extends ActionBarActivity implements IRestClientOb
 	@Regex(order = 4, pattern = "[A-Za-z ']+", message = "El apellido es invalido")
 	private TextView lastName;
 	
-	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la contraseña.")
-	@Password(order=3, message="Contraseña")
+	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la clave.")
+	@Password(order=3, message="clave")
 	private TextView password;
 
-	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva contraseña.")
-	@ConfirmPassword(order = 4, message= "Las contraseñas no coinciden")
+	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva clave.")
+	@ConfirmPassword(order = 4, message= "Las claves no coinciden")
 	private TextView retypePassword;
 
 	private RadioButton male;

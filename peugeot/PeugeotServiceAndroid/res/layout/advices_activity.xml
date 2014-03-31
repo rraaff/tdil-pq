@@ -11,15 +11,14 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_degrade" >
 
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
             android:text="@string/lst_title_advices"
-            android:textColor="@color/lst_itm_title"
-            android:textSize="16sp" />
+            style="@style/MainTitles" />
 
         <ListView
             android:id="@+id/advices"
@@ -29,31 +28,26 @@
 
         </ListView>
 
-        <Button
-            android:id="@+id/dismissAdvicesButton"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/btn_rojo_normal_holo_light"
-            android:minHeight="40dp"
-            android:onClick="@string/dologin"
-            android:text="@string/btn_dismiss_advices"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+		<TableRow
+			android:id="@+id/buttonWrapper"
+			style="@style/buttonWrapper" >
+			
+	        <Button
+	            android:id="@+id/dismissAdvicesButton"
+	            style="@style/ButtonBackward"
+	            android:layout_weight="1"
+	            android:onClick="@string/dologin"
+	            android:text="@string/btn_dismiss_advices" />
+	
+	        <Button
+	            android:id="@+id/snoozeAdvicesButton"
+	            style="@style/ButtonForward"
+	            android:layout_weight="1"
+	            android:onClick="@string/dologin"
+	            android:text="@string/btn_snooze_advices" />
+	        
+		</TableRow>
 
-        <Button
-            android:id="@+id/snoozeAdvicesButton"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/btn_rojo_normal_holo_light"
-            android:minHeight="40dp"
-            android:onClick="@string/dologin"
-            android:text="@string/btn_snooze_advices"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
     </LinearLayout>
 
 </merge>

@@ -4,11 +4,6 @@
     android:layout_height="wrap_content"
     tools:context=".HomeActivity" >
 
-    <!-- Login progress -->
-
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -64,23 +59,6 @@
 
             </TableRow>
 
-            <!-- TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow  -->
         </TableLayout>
         
         <TableLayout
@@ -129,17 +107,5 @@
         </TableLayout>
 
     </LinearLayout>
-    
-    <!-- TextView
-        android:id="@+id/dropTarget"
-        android:layout_width="124dp"
-        android:layout_height="124dp"
-        android:layout_gravity="center"
-        android:background="@drawable/transparente"
-        android:gravity="center"
-        android:paddingTop="5dp"
-        android:text="@string/rd_default_comment"
-        android:visibility="visible" / -->
-
 
 </merge>

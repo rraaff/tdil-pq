@@ -1,37 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:peugeot="http://schemas.android.com/apk/res-auto">
     
-    <item android:id="@+id/menu_action_home"
-          android:icon="@drawable/android_button_plus"
-         peugeot:showAsAction="always"
-          android:title="@string/action_home"/>
-    
     <item android:id="@+id/menu_action_prevent"
           android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
           android:title="@string/action_home"/>
-    
-    <item android:id="@+id/menu_action_pets"
-          android:icon="@drawable/android_button_plus"
-          peugeot:showAsAction="always"
-          android:title="@string/action_home"/>
 
-    <!-- item
-	    android:id="@+id/secondaryMenu"
-	    android:icon="@drawable/ic_menu_moreoverflow_normal_holo_dark"
-	    peugeot:showAsAction="always|withText"
-	    android:title="@string/menu_secondary_title">
-    	<menu-->
-		    <item
-		          android:id="@+id/menu_update"
-		          android:title="@string/menu_update"/>
-		    <item
-		          android:id="@+id/menu_change_password"
-		          android:title="@string/menu_change_password"/>
-		    
-		    <item
-		          android:id="@+id/menu_logout"
-		          android:title="@string/menu_logout"/>
-		<!--/menu>
-	</item -->
+    <item
+          android:id="@+id/menu_update"
+          android:title="@string/menu_update"/>
+    <item
+          android:id="@+id/menu_change_password"
+          android:title="@string/menu_change_password"/>
+    
+    <item
+          android:id="@+id/menu_logout"
+          android:title="@string/menu_logout"/>
 </menu>

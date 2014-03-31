@@ -35,8 +35,8 @@
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
     <string name="title_activity_add_service">Agregar service</string>
     
-    <string name="title_parkings">PARKING</string>
-    <string name="title_prevent">CAR</string>
+    <string name="title_parkings">Points of Interest</string>
+    <string name="title_prevent">Car Security</string>
     
     <string name="title_home">HOME</string>
   
@@ -59,6 +59,10 @@
     <string name="lbl_idNumber">Documento</string>
     <string name="lbl_idNumberSample">Ej:12123123</string>
     <string name="lbl_password">Clave</string>
+    
+    <string name="lbl_actualPass">Clave actual</string>
+    <string name="lbl_newPass">Nueva clave</string>
+    <string name="lbl_newPassRep">Repetir nueva</string>
     
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
@@ -92,8 +96,8 @@
     <string name="btn_female">Femenino</string>
     <string name="btn_optIn">Acepto recibir contactos de Peugeot AXS y sus compañías asociadas</string>
     
-    <string name="btn_dismiss_advices">Dismiss</string>
-    <string name="btn_snooze_advices">Snooze</string>
+    <string name="btn_dismiss_advices">No recordar</string>
+    <string name="btn_snooze_advices">Mas tarde</string>
     
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>

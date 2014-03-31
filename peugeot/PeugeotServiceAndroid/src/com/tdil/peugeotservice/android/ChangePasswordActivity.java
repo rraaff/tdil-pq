@@ -55,15 +55,15 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 	
 	// Values for email and password at the time of the login attempt.
 	
-	@TextRule(order = 1, minLength = 4, maxLength = 10, message = "Ingrese la contraseña.")
+	@TextRule(order = 1, minLength = 4, maxLength = 10, message = "Ingrese la clave.")
 	private TextView oldPassword;
 
-	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la contraseña.")
-	@Password(order=3, message="Contraseña")
+	@TextRule(order = 2, minLength = 6, maxLength = 10, message = "Ingrese la clave.")
+	@Password(order=3, message="clave")
 	private TextView newPassword;
 
-	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva contraseña.")
-	@ConfirmPassword(order = 4, message= "Las contraseñas no coinciden")
+	@TextRule(order = 4, minLength = 6, maxLength = 10, message = "Ingrese la nueva clave.")
+	@ConfirmPassword(order = 4, message= "Las claves no coinciden")
 	private TextView retypePassword;
 	private Validator validator;
 	static final int DATE_DIALOG_ID = 1;
@@ -132,8 +132,8 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 
 				new AlertDialog.Builder(ChangePasswordActivity.this)
 						.setIcon(R.drawable.ic_launcher)
-						.setTitle("Cambio de contraseña")
-						.setMessage("Se ha cambiado la contraseña")
+						.setTitle("Cambio de clave")
+						.setMessage("Se ha cambiado la clave")
 						.setPositiveButton("OK",
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,

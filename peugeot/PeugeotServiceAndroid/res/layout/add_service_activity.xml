@@ -8,13 +8,10 @@
         android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="top|center_horizontal"
-        android:background="@color/black"
-        android:baselineAligned="false"
-        android:gravity="top|center_horizontal"
         android:orientation="vertical"
         android:scrollbarStyle="insideOverlay"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:background="@drawable/bg_white_degrade" >
 
         <ScrollView
             android:id="@+id/scrollView1"
@@ -30,16 +27,15 @@
                 
                 <TextView
                     android:id="@+id/loadingInfoText"
-                    android:layout_width="wrap_content"
+                    style="@style/MainTitles"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
-                    android:text="@string/title_activity_add_service"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#ef5323" />
+                    android:text="@string/title_activity_add_service" />
 
                 <TextView
                     android:id="@+id/serviceDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content" />
 
                 <EditText
@@ -51,17 +47,10 @@
                     android:inputType="number" />
 
 	            <Button
-		            android:id="@+id/addServiceButton"
-		            android:layout_width="fill_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_marginBottom="3dp"
-		            android:layout_marginTop="3dp"
-		            android:background="@drawable/btn_rojo_normal_holo_light"
-		            android:minHeight="40dp"
-		            android:onClick="@string/dologin"
-		            android:text="@string/btn_tag_add"
-		            android:textColor="#ffffff"
-		            android:textSize="16sp" />
+	                android:id="@+id/addServiceButton"
+	                style="@style/ButtonListItems"
+	                android:onClick="@string/dologin"
+	                android:text="@string/btn_tag_add" />
 
             </LinearLayout>
         </ScrollView>

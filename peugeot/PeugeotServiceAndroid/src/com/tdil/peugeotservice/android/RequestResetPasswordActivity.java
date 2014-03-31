@@ -121,7 +121,7 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 		if (resp.getOk()) {
 			new AlertDialog.Builder(RequestResetPasswordActivity.this)
             .setIcon(R.drawable.ic_launcher)
-            .setTitle("Contraseña")
+            .setTitle("Clave")
             .setMessage("Te hemos enviado un E-Mail para que crees tu nueva clave. Si no lo recibiste, por favor revisá en correo no deseado.")
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
@@ -131,7 +131,7 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 		} else {
 			new AlertDialog.Builder(RequestResetPasswordActivity.this)
             .setIcon(R.drawable.ic_launcher)
-            .setTitle("Contraseña")
+            .setTitle("Clave")
             .setMessage("Ha ocurrido un error, verifique los datos ingresados")
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

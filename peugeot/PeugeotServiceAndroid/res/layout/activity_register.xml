@@ -30,12 +30,8 @@
 
                 <TextView
                     android:id="@+id/loadingInfoText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
                     android:text="@string/title_activity_register"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#ef5323" />
+                    style="@style/MainTitles" />
 
                 <Spinner
                     android:id="@+id/documentType"
@@ -191,16 +187,9 @@
 
 	            <Button
 	                android:id="@+id/updateButton"
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                android:layout_marginBottom="3dp"
-	                android:layout_marginTop="3dp"
-	                android:background="@drawable/btn_rojo_normal_holo_light"
-	                android:minHeight="40dp"
 	                android:onClick="@string/dologin"
 	                android:text="@string/btn_tag_register"
-	                android:textColor="#ffffff"
-	                android:textSize="16sp" />
+	                style="@style/ButtonListItems" />
 
             </LinearLayout>
         </ScrollView>

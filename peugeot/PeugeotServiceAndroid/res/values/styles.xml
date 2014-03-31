@@ -28,8 +28,9 @@
     </style>
   
   	<style name="MainTitles">
-		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">15dp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:textColor">@color/MainTitles</item>
@@ -89,6 +90,7 @@
 	    <!--  item name="android:src">@drawable/app_logo</item -->
 	    <item name="android:layout_gravity">center_horizontal</item>
 	    <item name="android:lines">1</item>
+	    <item name="android:layout_height">40dp</item>
 	    <item name="android:layout_marginLeft">8dp</item>
 	    <item name="android:paddingLeft">8dp</item>
 	    <item name="android:paddingRight">8dp</item>
@@ -110,12 +112,34 @@
 	    <!--  item name="android:src">@drawable/app_logo</item -->
 	    <item name="android:layout_gravity">center_horizontal</item>
 	    <item name="android:lines">2</item>
+	    <item name="android:layout_height">40dp</item>
 	    <item name="android:layout_marginRight">8dp</item>
 	    <item name="android:paddingLeft">8dp</item>
 	    <item name="android:paddingRight">8dp</item>
 	    <item name="android:paddingTop">4dp</item>
 	    <item name="android:paddingBottom">4dp</item>
 		<item name="android:minHeight">0dp</item>
+	</style>
+	
+	<style name="ButtonListItems">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/bgBase</item>
+        <item name="android:textColorHint">@color/lightBlue</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:visibility">visible</item>
+	    <item name="android:background">@drawable/gr_degrade_for_forward_buttons</item>
+	    <item name="android:layout_gravity">center_horizontal</item>
+	    <item name="android:lines">1</item>
+	    <item name="android:layout_height">40dp</item>
+		<item name="android:layout_marginBottom">4dp</item>
+		<item name="android:layout_marginLeft">8dp</item>
+		<item name="android:layout_marginRight">8dp</item>
+		<item name="android:layout_marginTop">4dp</item>
+	    <item name="android:paddingTop">4dp</item>
+	    <item name="android:paddingBottom">4dp</item>
 	</style>
 	
 </resources>

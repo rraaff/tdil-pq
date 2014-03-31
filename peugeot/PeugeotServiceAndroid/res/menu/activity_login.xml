@@ -1,20 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:peugeot="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menu_action_home"
+    <!-- item android:id="@+id/menu_action_home"
           android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="never"
-          android:title="@string/action_home"/>
+          android:title="@string/action_home"/ -->
     
     <item android:id="@+id/menu_action_prevent"
           android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
           android:title="@string/action_home"/>
     
-    <item android:id="@+id/menu_action_pets"
+    <!-- item android:id="@+id/menu_action_pets"
           android:icon="@drawable/android_button_plus"
           peugeot:showAsAction="always"
-          android:title="@string/action_home"/>
+          android:title="@string/action_home"/-->
 
     <item android:id="@+id/menu_action_parkings"
           android:icon="@drawable/android_button_plus"
