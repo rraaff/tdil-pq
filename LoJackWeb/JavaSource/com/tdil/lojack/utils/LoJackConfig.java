@@ -131,6 +131,15 @@ public class LoJackConfig extends SystemConfig {
 	protected boolean overwriteLog4jOnStart() {
 		return true;
 	}
+	
+	@Override
+	protected String updateLog4j(String log4jContent) {
+		if ("true".equals(System.getProperty("dev"))) {
+			return StringUtils.replace(log4jContent, "ref=\"FileAppender\"", "ref=\"ConsoleAppender\"");
+		} else {
+			return log4jContent;
+		}
+	}
 
 	public static void basicInitSystem() throws MalformedURLException {
 		String dbversion = SystemPropertyUtils.getSystemPropertValue("dbversion");
