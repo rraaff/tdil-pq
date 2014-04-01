@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -55,11 +56,55 @@ public class IndexActivity extends Activity {
 //		options.inSampleSize = 4;
 		
 		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
-		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		
+//		Pablo, este pedazo era el viejo on drag
+//		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+//		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
+//		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+//		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+//		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		
+//		Pablo, este es el nuevo onclick y on long click
+		findViewById(R.id.btnFooterPrevent).setOnLongClickListener(new StartDragOnLongClickListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handlePreventAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterPets).setOnLongClickListener(new StartDragOnLongClickListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
+		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handlePetsAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterParkings).setOnLongClickListener(new StartDragOnLongClickListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleParkingsAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterTV).setOnLongClickListener(new StartDragOnLongClickListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleTvAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragOnLongClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleHomeAccess(IndexActivity.this, false);
+			}
+		});
+		
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 		Button button = (Button)findViewById(R.id.vluCount);
@@ -67,7 +112,21 @@ public class IndexActivity extends Activity {
 			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
 			button.setOnClickListener(new ViewVLUMessagesListener(this));
 		} else {
-			button.setVisibility(View.GONE);
+			if (Login.getLoggedUser(this).getVluClient()) {
+				button.setBackgroundResource(R.drawable.badge_ok);
+				button.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Context context = getApplicationContext();
+						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, text, duration);
+						toast.show();
+					}
+				});
+			} else {
+				button.setVisibility(View.GONE);
+			}
 		}
 	}
 	
@@ -101,6 +160,34 @@ public class IndexActivity extends Activity {
 //		AbsoluteLayout.LayoutParams OBJ = new AbsoluteLayout.LayoutParams(35,35,location[0],location[1]);
 //		msg.setLayoutParams(OBJ);
 //	}
+	
+	
+	public class StartDragOnLongClickListener implements OnLongClickListener {
+
+		private IndexActivity activity;
+		private String localState;
+		private Bitmap bitmap;
+
+		public StartDragOnLongClickListener(IndexActivity activity, String localState, Bitmap bitmap) {
+			super();
+			this.activity = activity;
+			this.localState = localState;
+			this.bitmap = bitmap;
+		}
+		
+		@Override
+		public boolean onLongClick(View v) {
+			Button fruit = (Button) v;
+			v.setAlpha(0.3f);
+			// No responde
+			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+
+			ClipData data = ClipData.newPlainText("", "");
+			v.startDrag(data, myShadowBuilder, localState, 0);
+
+			return true;
+		}
+	};
 
 	public class StartDragOnTouchListener implements OnTouchListener {
 
