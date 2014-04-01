@@ -31,7 +31,6 @@ if (alert!= null) { %><jsp:forward page="alertInProgress.jsp"></jsp:forward><%}%
 <section id="titles">
 	<h1>LoJack Peugeot CallCenter Application</h1>
 	<h2>Atencion de alertas</h2>
-	<h3>Versión: <%@ include file="../includes/version_view.jspf" %></h3>
 </section>
 <section id="content">
 	<article>
