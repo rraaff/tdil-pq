@@ -110,8 +110,9 @@ public class CheckForUpdateActivity extends Activity {
             .setPositiveButton("Actualizar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                             /* User clicked OK so do some stuff */
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojackapp"));
-                            startActivity(intent);
+                    	
+                    	Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.tdil.peugeotservice"));
+                        startActivity(intent);
                     }
             })
             .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
