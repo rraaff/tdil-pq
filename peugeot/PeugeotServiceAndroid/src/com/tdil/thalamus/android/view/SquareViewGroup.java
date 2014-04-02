@@ -37,19 +37,33 @@ public class SquareViewGroup extends ViewGroup {
 		
 		MathContext context = new MathContext(10,RoundingMode.FLOOR);
 		
+		
+/*
+widthAndHeightBoton = 6.964420 % del ancho de la pantalla
+
+topPrimerBoton		= 17.78955 % del ancho de la pantalla
+leftPrimerBoton		= 55.86677 % del ancho de la pantalla
+
+topSegundoBoton		= 42.39712 % del ancho de la pantalla
+leftSegundoBoton	= 68.50870 % del ancho de la pantalla
+
+topTercerBoton		= 69.03860 % del ancho de la pantalla
+leftTercerBoton		= 64.42089 % del ancho de la pantalla
+
+*/	
 		// Posicion item 1
 		View v = getChildAt(0);
-		int firstDivide = 200;
-		int firstMultiply = 142;
-		int substractDivide = 28;
+		double firstDivide = 100;
+		double firstMultiply = 55.86677;
+		double substractDivide = 6.96442 / 2;
 		BigDecimal leftBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(firstDivide), context).multiply(BigDecimal.valueOf(firstMultiply));
 		leftBD = leftBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(substractDivide), context));
 		
 		int left = leftBD.intValue();
 		
-		int secondDivide = 200;
-		int secondMultiply = 45;
-		int secondsubstractDivide = 28;
+		double secondDivide = 100;
+		double secondMultiply = 17.78955;
+		double secondsubstractDivide = 6.96442 / 2;
 		BigDecimal topBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(secondDivide), context).multiply(BigDecimal.valueOf(secondMultiply));
 		topBD = topBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(secondsubstractDivide), context));
 		
