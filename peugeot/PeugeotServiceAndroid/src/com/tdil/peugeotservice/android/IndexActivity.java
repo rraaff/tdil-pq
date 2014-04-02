@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.tdil.peugeotservice.R;
@@ -40,12 +43,26 @@ public class IndexActivity extends ActionBarActivity {
 				FooterLogic.handlePreventAccess(IndexActivity.this);
 			}
 		});
+		
 		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				FooterLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
+		
+		findViewById(R.id.btnFooterServices).setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				Animation rotate = AnimationUtils.loadAnimation(IndexActivity.this, R.anim.rotate_picture);
+				IndexActivity.this.findViewById(R.id.gr_iso).startAnimation(rotate);
+				return true;
+			}
+		});
+		
+		
+		
 //		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
 //			@Override
 //			public void onClick(View arg0) {
