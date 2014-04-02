@@ -1,5 +1,9 @@
 package com.tdil.thalamus.android.view;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -30,10 +34,21 @@ public class SquareViewGroup extends ViewGroup {
 
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		
+		MathContext context = new MathContext(10,RoundingMode.FLOOR);
+		
 		// Posicion item 1
 		View v = getChildAt(0);
-		int left = (width / 200 * 142) - (width / 28);
-		int top = (width / 200 * 45) - (width / 28);
+		BigDecimal leftBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(200), context).multiply(BigDecimal.valueOf(142));
+		leftBD = leftBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(28), context));
+		
+		int left = leftBD.intValue();
+		
+		BigDecimal topBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(200), context).multiply(BigDecimal.valueOf(45));
+		topBD = topBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(28), context));
+		
+		int top = topBD.intValue();
+		
 		int buttonWidth = width / 14;
 		v.layout(left, top, left + buttonWidth, top + buttonWidth);
 		
