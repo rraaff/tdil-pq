@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -71,6 +73,18 @@ public class MyServicesActivity extends ActionBarActivity {
 				Messages.connectionErrorMessage(MyServicesActivity.this);
 			}
 		}, RESTConstants.MY_VEHICLES, new RestParams(), null).executeSerial((Void) null);
+		
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				VehicleValueObjectBean vehicle = (VehicleValueObjectBean)adapter.getItem(arg2);
+				Intent intent = new Intent(MyServicesActivity.this.getBaseContext(), AddServiceActivity.class);
+				intent.putExtra(AddServiceActivity.VEHICLE, vehicle);
+				MyServicesActivity.this.startActivity(intent);
+				MyServicesActivity.this.finish();
+			}
+		});
 	}
 	
 	
