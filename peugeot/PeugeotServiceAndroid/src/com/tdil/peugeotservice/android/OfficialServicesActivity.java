@@ -45,10 +45,9 @@ public class OfficialServicesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.official_services_activity);
-
-	
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
-
+		
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		list = (ListView) findViewById(R.id.myServices);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

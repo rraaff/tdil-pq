@@ -84,8 +84,8 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_services_dashboard);
 
-		this.getSupportActionBar()
-				.setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
 		sendEmergencyButton.setOnClickListener(new View.OnClickListener() {

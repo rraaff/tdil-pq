@@ -70,6 +70,7 @@ public class PreventActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_prevent);
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);

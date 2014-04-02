@@ -49,8 +49,8 @@ public class AdvicesActivity extends ActionBarActivity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.advices_activity);
 
-	
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		final ListView list = (ListView) findViewById(R.id.advices);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {

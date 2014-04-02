@@ -49,7 +49,9 @@ public class DealersListActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.dealers_activity);
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		Bundle extras = getIntent().getExtras();
 		city = (CityBean)extras.getSerializable(CITY);

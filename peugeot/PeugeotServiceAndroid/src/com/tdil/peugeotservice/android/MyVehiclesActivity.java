@@ -46,7 +46,8 @@ public class MyVehiclesActivity extends ActionBarActivity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.my_vehicles_activity);
 
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		list = (ListView) findViewById(R.id.myServices);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

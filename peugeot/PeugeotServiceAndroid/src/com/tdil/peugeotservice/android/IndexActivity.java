@@ -2,6 +2,7 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -37,7 +38,11 @@ public class IndexActivity extends ActionBarActivity {
 //		BitmapFactory.Options options = new BitmapFactory.Options();
 //		options.inSampleSize = 4;
 		
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		this.getSupportActionBar().setDisplayShowHomeEnabled(false);
+//		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); 
+//		getSupportActionBar().setCustomView(R.layout.actionbar);
+		
 		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

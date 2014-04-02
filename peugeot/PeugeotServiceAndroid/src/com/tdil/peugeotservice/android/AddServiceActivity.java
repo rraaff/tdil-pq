@@ -69,6 +69,8 @@ public class AddServiceActivity extends ActionBarActivity implements ValidationL
 		vehicleValueObjectBean = (VehicleValueObjectBean)extras.getSerializable(VEHICLE);
 		
 		setContentView(R.layout.add_service_activity);
+		
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);

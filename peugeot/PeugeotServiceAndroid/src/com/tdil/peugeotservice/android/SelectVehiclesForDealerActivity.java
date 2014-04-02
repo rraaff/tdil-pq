@@ -80,7 +80,8 @@ public class SelectVehiclesForDealerActivity extends ActionBarActivity implement
 		Bundle extras = getIntent().getExtras();
 		dealer = (DealerBean)extras.getSerializable(DEALER);
 	
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		vehiclesSpinner = (Spinner) findViewById(R.id.vehiclesForDealersSpinner);
 		email = (TextView) findViewById(R.id.emailForServiceEditText);

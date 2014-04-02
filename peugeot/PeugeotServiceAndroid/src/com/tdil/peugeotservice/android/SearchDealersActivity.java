@@ -49,7 +49,8 @@ public class SearchDealersActivity extends ActionBarActivity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.search_dealers_activity);
 
-		this.getSupportActionBar().setTitle(Login.getLoggedUser(this).getName());
+		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		final Spinner statesSpinner = (Spinner) findViewById(R.id.dealersStatesSpinner);
 		citiesSpinner = (Spinner) findViewById(R.id.dealersCitiesSpinner);
