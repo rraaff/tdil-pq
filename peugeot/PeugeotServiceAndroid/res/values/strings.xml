@@ -17,7 +17,7 @@
     
     <!-- List Items strings -->
     <string name="lst_title_my_services">Mis services:</string>
-    <string name="lst_title_my_vehicles">Mis vehiculos:</string>
+    <string name="lst_title_my_vehicles">Mis vehículos:</string>
     <string name="lst_title_official_services">Agencias/Service autorizados:</string>
     <string name="lst_title_dealers">Concesionarios:</string>
     <string name="lst_title_advices">Avisos</string>
