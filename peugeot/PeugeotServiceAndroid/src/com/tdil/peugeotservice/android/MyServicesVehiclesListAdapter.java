@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tdil.peugeotservice.R;
@@ -68,6 +69,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 		public TextView needsService;
 		public TextView lastServiceDate;
 		public TextView lastServiceKm;
+		public ImageView go;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -88,6 +90,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
 			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
 			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			holder.go = (ImageView)vi.findViewById(R.id.goToAddService);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);
@@ -122,6 +125,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 			holder.needsService.setOnClickListener(goAddService);
 			holder.lastServiceDate.setOnClickListener(goAddService);
 			holder.lastServiceKm.setOnClickListener(goAddService);
+			holder.go.setOnClickListener(goAddService);
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
 			vi.setOnClickListener(goAddService);
 		}
