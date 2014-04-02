@@ -2,7 +2,6 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -10,11 +9,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tdil.peugeotservice.R;
@@ -63,6 +60,10 @@ public class IndexActivity extends ActionBarActivity {
 				IndexActivity.this.startActivity(new Intent(IndexActivity.this, ServicesDashboardActivity.class));
 			}
 		});
+		new com.tdil.peugeotservice.android.utils.DownloadImageTask((ImageView)findViewById(R.id.gr_userIcon))
+		.execute(ApplicationConfig.URL_WEBSITE
+				+ Login.getLoggedUser(IndexActivity.this).getAvatar());
+		
 		
 		/* EJEMPLO DE ANIMACION findViewById(R.id.btnFooterServices).setOnTouchListener(new View.OnTouchListener() {
 			

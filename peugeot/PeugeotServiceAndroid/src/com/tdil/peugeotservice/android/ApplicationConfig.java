@@ -25,7 +25,7 @@ public class ApplicationConfig {
 	
 	public static final String URL_PARKINGS = URL_WEBSITE + "productoPoiAndroid.jsp";
 	public static final String URL_PREVENT = URL_WEBSITE + "goToPreventLoginAndroid.do?timezone=-180&USING_APK=true";
-
+	
 	public static int default_timeout = 10000;
 	
 	public static int thalamus_timeout = 10000;

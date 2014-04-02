@@ -11,6 +11,8 @@ public class LoginResponse {
 	
 	private boolean servicesAdvices;
 	
+	private String avatar;
+	
 	
 	public LoginResponse() {
 	}
@@ -54,6 +56,14 @@ public class LoginResponse {
 
 	public void setServicesAdvices(boolean servicesAdvices) {
 		this.servicesAdvices = servicesAdvices;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 
