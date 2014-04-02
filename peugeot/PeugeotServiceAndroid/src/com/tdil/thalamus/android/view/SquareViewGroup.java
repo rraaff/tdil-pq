@@ -32,9 +32,9 @@ public class SquareViewGroup extends ViewGroup {
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		// Posicion item 1
 		View v = getChildAt(0);
-		int left = width / 2;
-		int top = width / 8;
-		int buttonWidth = width / 8;
+		int left = (width / 200 * 142) - (width / 28);
+		int top = (width / 200 * 45) - (width / 28);
+		int buttonWidth = width / 14;
 		v.layout(left, top, left + buttonWidth, top + buttonWidth);
 		
 		// Posicion item 2

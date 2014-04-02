@@ -81,9 +81,10 @@
     <string name="action_home">Home</string>
     
     <string name="btn_home">[Home Deprecated]</string>
-    <string name="btn_prevent">[Car Security]</string>
+    <string name="btn_prevent"> </string>
     <string name="btn_pets">[PETS deprecated]</string>
-    <string name="btn_parkings">[Points of Interest]</string>
+    <string name="btn_parkings"> </string>
+    <string name="btn_services"> </string>
     <string name="btn_tv">[TV Deprecated]</string>
     
     <string name="btn_footer_home">[Home Deprecated]</string>

@@ -70,21 +70,22 @@
             android:background="@drawable/bg_base_rueda"
             android:baselineAligned="false"
             android:gravity="center"
-            android:minHeight="240dp"
-            android:minWidth="240dp" >
-
+            >
+<!-- android:minHeight="240dp"
+            android:minWidth="240dp"  -->
             <Button
                 android:id="@+id/btnFooterParkings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_poi"
                 android:text="@string/btn_parkings"
-                android:textColor="@color/new_wheel_link"
                 android:visibility="visible" />
 
             <Button
                 android:id="@+id/btnFooterPrevent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/ic_carsecurity"
                 android:text="@string/btn_prevent"
                 android:textColor="@color/new_wheel_link" />
             
@@ -92,7 +93,8 @@
                 android:id="@+id/btnFooterServices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_prevent"
+                android:background="@drawable/ic_services"
+                android:text="@string/btn_services"
                 android:textColor="@color/new_wheel_link" />
 
         </com.tdil.thalamus.android.view.SquareViewGroup>
