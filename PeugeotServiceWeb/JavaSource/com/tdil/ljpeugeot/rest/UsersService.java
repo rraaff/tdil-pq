@@ -82,6 +82,13 @@ public class UsersService extends AbstractRESTService {
 			loginResponse.setName(user.getName());
 			loginResponse.setLojackUserId(user.getLojackUserId());
 			loginResponse.setServicesAdvices(PeugeotService.getAdvices(user.getModelUser().getId()).size() > 0);
+			
+			if (com.tdil.ljpeugeot.utils.WebsiteUserUtils.hasAvatar(user.getModelUser())) {
+				loginResponse.setAvatar("./download.st?id=" + user.getModelUser().getIdAvatar() + "&type=PUBLIC&ext=" + user.getModelUser().getExtAvatar());
+			} else {
+				loginResponse.setAvatar("images/skn_peugeot/icons/avatarBase.png");
+			}
+			
 			String apkToken = ApkLoginCache.add(user);
 			loginResponse.setApkToken(apkToken);
 			return response(loginResponse);
