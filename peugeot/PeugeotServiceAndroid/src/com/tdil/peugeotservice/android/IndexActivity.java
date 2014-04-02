@@ -2,6 +2,7 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -51,7 +52,14 @@ public class IndexActivity extends ActionBarActivity {
 			}
 		});
 		
-		findViewById(R.id.btnFooterServices).setOnTouchListener(new View.OnTouchListener() {
+		findViewById(R.id.btnFooterServices).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				IndexActivity.this.startActivity(new Intent(IndexActivity.this, ServicesDashboardActivity.class));
+			}
+		});
+		
+		/* EJEMPLO DE ANIMACION findViewById(R.id.btnFooterServices).setOnTouchListener(new View.OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View arg0, MotionEvent arg1) {
@@ -59,8 +67,7 @@ public class IndexActivity extends ActionBarActivity {
 				IndexActivity.this.findViewById(R.id.gr_iso).startAnimation(rotate);
 				return true;
 			}
-		});
-		
+		});*/
 		
 		
 //		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
