@@ -39,13 +39,19 @@ public class SquareViewGroup extends ViewGroup {
 		
 		// Posicion item 1
 		View v = getChildAt(0);
-		BigDecimal leftBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(200), context).multiply(BigDecimal.valueOf(142));
-		leftBD = leftBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(28), context));
+		int firstDivide = 200;
+		int firstMultiply = 142;
+		int substractDivide = 28;
+		BigDecimal leftBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(firstDivide), context).multiply(BigDecimal.valueOf(firstMultiply));
+		leftBD = leftBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(substractDivide), context));
 		
 		int left = leftBD.intValue();
 		
-		BigDecimal topBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(200), context).multiply(BigDecimal.valueOf(45));
-		topBD = topBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(28), context));
+		int secondDivide = 200;
+		int secondMultiply = 45;
+		int secondsubstractDivide = 28;
+		BigDecimal topBD = BigDecimal.valueOf(width).divide(BigDecimal.valueOf(secondDivide), context).multiply(BigDecimal.valueOf(secondMultiply));
+		topBD = topBD.subtract(BigDecimal.valueOf(width).divide(BigDecimal.valueOf(secondsubstractDivide), context));
 		
 		int top = topBD.intValue();
 		
