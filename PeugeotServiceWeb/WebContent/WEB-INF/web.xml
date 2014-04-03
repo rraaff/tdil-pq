@@ -172,6 +172,11 @@
   <servlet-class>com.tdil.ljpeugeot.servlet.LogJSErrorServlet</servlet-class>
  </servlet>
  
+   <servlet>
+  <servlet-name>GetNativeAppVersionServlet</servlet-name>
+  <servlet-class>com.tdil.ljpeugeot.servlet.GetNativeAppVersionServlet</servlet-class>
+ </servlet>
+ 
  <servlet>
    <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.FacebookSignIn</servlet-class>
@@ -201,6 +206,12 @@
   <servlet-name>LogJSErrorServlet</servlet-name>
   <url-pattern>/cc/logJsErr.st</url-pattern>
  </servlet-mapping>
+ 
+ <servlet-mapping>
+ <servlet-name>GetNativeAppVersionServlet</servlet-name>
+  <url-pattern>/getNativeAppVersion.st</url-pattern>
+ </servlet-mapping>
+ 
  
  <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>

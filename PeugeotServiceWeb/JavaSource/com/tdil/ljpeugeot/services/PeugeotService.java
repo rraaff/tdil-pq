@@ -25,6 +25,8 @@ import com.tdil.ljpeugeot.model.ContactDataExample;
 import com.tdil.ljpeugeot.model.Dealer;
 import com.tdil.ljpeugeot.model.Model;
 import com.tdil.ljpeugeot.model.ModelExample;
+import com.tdil.ljpeugeot.model.NativeApp;
+import com.tdil.ljpeugeot.model.NativeAppExample;
 import com.tdil.ljpeugeot.model.NotificationEmail;
 import com.tdil.ljpeugeot.model.NotificationEmailExample;
 import com.tdil.ljpeugeot.model.Service;
@@ -116,6 +118,24 @@ public class PeugeotService {
 		}
 		public Model executeInTransaction() throws SQLException {
 			return DAOManager.getModelDAO().selectModelByPrimaryKey(id);
+		}
+	}
+	
+	private static final class GetNativeApp implements TransactionalActionWithResult<NativeApp> {
+		private String code;
+		public GetNativeApp(String code) {
+			super();
+			this.code = code;
+		}
+		public NativeApp executeInTransaction() throws SQLException {
+			NativeAppExample example = new NativeAppExample();
+			example.createCriteria().andCodeEqualTo(this.code);
+			List<NativeApp> nativeApps = DAOManager.getNativeAppDAO().selectNativeAppByExample(example);
+			if (nativeApps.size() > 0) {
+				return nativeApps.get(0);
+			} else {
+				return null;
+			}
 		}
 	}
 	
@@ -557,6 +577,18 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return false;
+		} 
+	}
+	
+	public static NativeApp getNativeAppByCode(String code) {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetNativeApp(code));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return null;
 		} 
 	}
 	
