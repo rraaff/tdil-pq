@@ -42,9 +42,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="dbo" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
-<!-- table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
+<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+	<generatedKey column="id" sqlStatement="select IDENT_CURRENT('dbo.SYSTEMUSER')" identity="true" type="post"/>
+</table>
 <!-- table schema="dbo" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table>

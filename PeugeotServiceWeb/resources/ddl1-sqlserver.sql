@@ -15,3 +15,7 @@ CREATE INDEX IX_NATIVE_APP_00 ON NATIVE_APP (code);
 insert into NATIVE_APP(code,title,version,url,deleted)
 values('android','Peugeot Service Android','1.0.0','http://www.google.com',0);
 commit;
+
+ALTER TABLE SYSTEMUSER ADD nativeAppAccess INT NULL;
+update SYSTEMUSER set nativeAppAccess = 1;
+commit;
