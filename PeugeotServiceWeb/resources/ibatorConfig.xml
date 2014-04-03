@@ -43,9 +43,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+<!-- table schema="PEUGEOTSVC" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="PEUGEOTSVC" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -58,9 +58,9 @@ targetProject="PeugeotServiceWeb">
 <table schema="PEUGEOTSVC" tableName="POI" domainObjectName="PointOfInterest" alias="poi">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="DEALER" domainObjectName="Dealer" alias="deal">
+<!-- table schema="PEUGEOTSVC" tableName="DEALER" domainObjectName="Dealer" alias="deal">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="PEUGEOTSVC" tableName="CITY" domainObjectName="City" alias="city">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -71,13 +71,13 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="MODEL" domainObjectName="Model" alias="mdl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
+<!-- table schema="PEUGEOTSVC" tableName="VEHICLE" domainObjectName="Vehicle" alias="vhcl">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
 
 <table schema="PEUGEOTSVC" tableName="ADVICE" domainObjectName="Advice" alias="adv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="PEUGEOTSVC" tableName="SERVICE" domainObjectName="Service" alias="serv">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
@@ -96,6 +96,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
+<table schema="PEUGEOTSVC" tableName="NATIVE_APP" domainObjectName="NativeApp" alias="napp">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table>
 
 </ibatorContext>
 </ibatorConfiguration>

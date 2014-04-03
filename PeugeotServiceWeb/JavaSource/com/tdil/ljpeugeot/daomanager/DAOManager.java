@@ -12,6 +12,7 @@ import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.KmDataDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
+import com.tdil.ljpeugeot.dao.NativeAppDAO;
 import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.ServiceDAO;
@@ -95,6 +96,10 @@ public abstract class DAOManager {
 	
 	public static AlertDAO getAlertDAO() throws SQLException {
 		return currentDao.getAlertDAO();
+	}
+	
+	public static NativeAppDAO getNativeAppDAO() throws SQLException {
+		return currentDao.getNativeAppDAO();
 	}
 
 	public static DAOProvider getCurrentDao() {

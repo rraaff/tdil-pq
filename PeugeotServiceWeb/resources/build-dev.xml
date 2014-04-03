@@ -47,6 +47,7 @@
 			<transaction src="poi_inserts.sql" />
 			<transaction src="thalamus_fake.sql" />
 			
+			<transaction src="ddl1.sql" />
 		</sql>
 		<condition property="os.pablo" value="true">
 			<and>
@@ -66,6 +67,15 @@
 		 	</sql>
 		 </then>
 		</if>
+	</target>
+	
+	<target name="incremental-1">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl1.sql" />
+		</sql>
 	</target>
 
 	<target name="run_fix_pablo">

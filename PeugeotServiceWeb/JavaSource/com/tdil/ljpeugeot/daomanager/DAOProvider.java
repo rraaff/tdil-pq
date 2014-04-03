@@ -12,6 +12,7 @@ import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.KmDataDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
+import com.tdil.ljpeugeot.dao.NativeAppDAO;
 import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.ServiceDAO;
@@ -55,4 +56,6 @@ public interface DAOProvider {
 	public abstract KmDataDAO getKmDataDAO() throws SQLException;
 	
 	public abstract AlertDAO getAlertDAO() throws SQLException;
+	
+	public abstract NativeAppDAO getNativeAppDAO() throws SQLException;
 }

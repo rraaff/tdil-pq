@@ -13,6 +13,7 @@ import com.tdil.ljpeugeot.dao.DataImportDAO;
 import com.tdil.ljpeugeot.dao.DealerDAO;
 import com.tdil.ljpeugeot.dao.KmDataDAO;
 import com.tdil.ljpeugeot.dao.ModelDAO;
+import com.tdil.ljpeugeot.dao.NativeAppDAO;
 import com.tdil.ljpeugeot.dao.NotificationEmailDAO;
 import com.tdil.ljpeugeot.dao.PointOfInterestDAO;
 import com.tdil.ljpeugeot.dao.ServiceDAO;
@@ -31,6 +32,7 @@ import com.tdil.ljpeugeot.dao.impl.sqlserver.ContactDataDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.DataImportDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.DealerDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.ModelDAOImpl;
+import com.tdil.ljpeugeot.dao.impl.sqlserver.NativeAppDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.NotificationEmailDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.PointOfInterestDAOImpl;
 import com.tdil.ljpeugeot.dao.impl.sqlserver.ServiceDAOImpl;
@@ -125,5 +127,10 @@ public class SQLServerDAOProvider implements DAOProvider {
 	@Override
 	public AlertDAO getAlertDAO() throws SQLException {
 		return new AlertDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public NativeAppDAO getNativeAppDAO() throws SQLException {
+		return new NativeAppDAOImpl(IBatisManager.getClient());
 	}
 }
