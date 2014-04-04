@@ -1,5 +1,6 @@
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checkadmin.jspf" %><%--
+--%><%@ include file="includes/checklogaccess.jspf" %><%--
 --%><html>
 <body>
 <%

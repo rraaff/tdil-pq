@@ -1,0 +1,4 @@
+<% if (su.getDealerimportaccess() == null || !su.getDealerimportaccess().equals(1)) { %><%--
+	--%><jsp:forward page="./login.jsp"></jsp:forward><%--
+--%><% return;
+} %>

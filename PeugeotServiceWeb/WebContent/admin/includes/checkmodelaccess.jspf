@@ -1,0 +1,4 @@
+<% if (su.getModelimportaccess() == null || !su.getModelimportaccess().equals(1)) { %><%--
+	--%><jsp:forward page="./login.jsp"></jsp:forward><%--
+--%><% return;
+} %>

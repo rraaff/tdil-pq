@@ -7,6 +7,9 @@
 		<% if (su.getLoggingaccess() != null && su.getLoggingaccess().equals(1)) { %>
 			<a href="logger.jsp">Configuracion del logging</a>
 		<% } %>
+		<% if (su.getNativeappaccess() != null && su.getNativeappaccess().equals(1)) { %>
+			<a href="nativeApps.jsp">Apps nativas</a>
+		<% } %>
 		<% if (su.getDealerimportaccess() != null && su.getDealerimportaccess().equals(1)) { %>
 			<a href="dealer.jsp">Concesionarios</a>
 		<% } %>

@@ -139,6 +139,44 @@ public class PeugeotService {
 		}
 	}
 	
+	private static final class UpdateNativeApp implements TransactionalAction {
+		private String id;
+		private String title;
+		private String version;
+		private String url;
+
+		public UpdateNativeApp(String id, String title, String version, String url) {
+			super();
+			this.id = id;
+			this.title = title;
+			this.version = version;
+			this.url = url;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			NativeApp app = DAOManager.getNativeAppDAO().selectNativeAppByPrimaryKey(Integer.valueOf(this.id));
+			app.setTitle(this.title);
+			app.setVersion(this.version);
+			app.setUrl(this.url);
+			DAOManager.getNativeAppDAO().updateNativeAppByPrimaryKey(app);
+		}
+	}
+	
+	private static final class ToggleDeleteNativeApp implements TransactionalAction {
+		private String id;
+
+		public ToggleDeleteNativeApp(String id) {
+			super();
+			this.id = id;
+		}
+
+		public void executeInTransaction() throws SQLException {
+			NativeApp app = DAOManager.getNativeAppDAO().selectNativeAppByPrimaryKey(Integer.valueOf(this.id));
+			app.setDeleted(app.getDeleted() == 1 ? 0 : 1);
+			DAOManager.getNativeAppDAO().updateNativeAppByPrimaryKey(app);
+		}
+	}
+	
 	private static final class GetVehicleByUserAndDomain implements TransactionalActionWithResult<Vehicle> {
 		private int idUser;
 		private String domain;
@@ -180,6 +218,15 @@ public class PeugeotService {
 			VehicleExample vehicleExample = new VehicleExample();
 			vehicleExample.createCriteria().andIdWebsiteuserEqualTo(idUser);
 			return DAOManager.getVehicleDAO().selectVehicleByExample(vehicleExample);
+		}
+	}
+	
+	private static final class GetNativeApps implements TransactionalActionWithResult<List<NativeApp>> {
+		public GetNativeApps() {
+			super();
+		}
+		public List<NativeApp> executeInTransaction() throws SQLException {
+			return DAOManager.getNativeAppDAO().selectNativeAppByExample(new NativeAppExample());
 		}
 	}
 	
@@ -554,6 +601,18 @@ public class PeugeotService {
 		} 
 	}
 	
+	public static List<NativeApp> getNativeApps() {
+		try {
+			return GenericTransactionExecutionService.getInstance().execute(new GetNativeApps());
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<NativeApp>();
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<NativeApp>();
+		} 
+	}
+	
 	public static boolean udpateContactData(ContactData contactData) {
 		try {
 			GenericTransactionExecutionService.getInstance().execute(new UpdateContactData(contactData));
@@ -589,6 +648,26 @@ public class PeugeotService {
 		} catch (ValidationException e) {
 			getLog().error(e.getMessage(), e);
 			return null;
+		} 
+	}
+	
+	public static void updateNativeApp(String idST, String title, String version, String url) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new UpdateNativeApp(idST, title, version, url));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
+		} 
+	}
+	
+	public static void toggleDeleteNativeApp(String idST) {
+		try {
+			GenericTransactionExecutionService.getInstance().execute(new ToggleDeleteNativeApp(idST));
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+		} catch (ValidationException e) {
+			getLog().error(e.getMessage(), e);
 		} 
 	}
 	

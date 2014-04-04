@@ -2,6 +2,7 @@
 <%@page import="com.tdil.ljpeugeot.model.NotificationEmail"%>
 <%@ include file="includes/checklogin.jsp" %><%--
 --%><%@ include file="includes/checkadmin.jspf" %><%--
+--%><%@ include file="includes/checkemailaccess.jsp" %><%--
 --%><%
 NotificationEmail notificationEmail = PeugeotService.getNotificationEmail(Integer.parseInt(request.getParameter("id")));
 notificationEmail.setContent(request.getParameter("content"));
