@@ -81,6 +81,11 @@
 			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
 			<transaction src="poi_inserts_gba.sql" />
+			
+			<transaction src="ddl9.sql" />
+			<transaction src="ddl10.sql" />
+			<transaction src="ddl12.sql" />
+			<transaction src="ddl13.sql" />
 		</sql>
 	</target>
 	
@@ -93,6 +98,12 @@
 			<transaction src="sysproperties.sql" />
 			<transaction src="fixip_pablo.sql" />
 			<transaction src="poi_inserts.sql" />
+			<transaction src="poi_inserts_gba.sql" />
+			
+			<transaction src="ddl9.sql" />
+			<transaction src="ddl10.sql" />
+			<transaction src="ddl12.sql" />
+			<transaction src="ddl13.sql" />
 		</sql>
 	</target>
 	

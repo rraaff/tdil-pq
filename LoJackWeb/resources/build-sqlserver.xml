@@ -33,6 +33,11 @@
 			<transaction src="ddl-sqlserver.sql" />
 			<transaction src="sysproperties.sql" />
 			<transaction src="poi_inserts.sql" />
+			
+			<transaction src="ddl9-sqlserver.sql" />
+			<transaction src="ddl10-sqlserver.sql" />
+			<transaction src="ddl12-sqlserver.sql" />
+			<transaction src="ddl13-sqlserver.sql" />
 		</sql>
 	</target>
 	
