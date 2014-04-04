@@ -58,13 +58,20 @@ public class IndexActivity extends Activity {
 		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
 		
 //		Pablo, este pedazo era el viejo on drag
-//		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-//		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-//		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-//		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-//		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
+		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 		
-//		Pablo, este es el nuevo onclick y on long click
+		findViewById(R.id.btnFooterPrevent).setOnDragListener(new ButtonDragListener(PREVENT));
+		findViewById(R.id.btnFooterPets).setOnDragListener(new ButtonDragListener(PETS));
+		findViewById(R.id.btnFooterParkings).setOnDragListener(new ButtonDragListener(PARKINGS));
+		findViewById(R.id.btnFooterTV).setOnDragListener(new ButtonDragListener(TV));
+		findViewById(R.id.btnFooterHome).setOnDragListener(new ButtonDragListener(HOME));
+		
+//		Pablo, este es el nuevo onclick y on long clic
+		/*
 		findViewById(R.id.btnFooterPrevent).setOnLongClickListener(new StartDragOnLongClickListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
 		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
 			@Override
@@ -104,6 +111,7 @@ public class IndexActivity extends Activity {
 				FooterLogic.handleHomeAccess(IndexActivity.this, false);
 			}
 		});
+		*/
 		
 
 		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
@@ -218,6 +226,64 @@ public class IndexActivity extends Activity {
 			    return false;
 			}
 		}
+	};
+	
+	public class ButtonDragListener implements OnDragListener {
+		
+		private String buttonTarget;
+		
+		public ButtonDragListener(String buttonTarget) {
+			super();
+			this.buttonTarget = buttonTarget;
+		}
+
+		@Override
+		public boolean onDrag(View v, DragEvent event) {
+			int dragEvent = event.getAction();
+			TextView dropButton = (TextView) v;
+
+			switch (dragEvent) {
+			case DragEvent.ACTION_DRAG_ENDED:
+				findViewById(R.id.btnFooterHome).setAlpha(1);
+				findViewById(R.id.btnFooterParkings).setAlpha(1);
+				findViewById(R.id.btnFooterPets).setAlpha(1);
+				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+				findViewById(R.id.btnFooterTV).setAlpha(1);
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				break;
+
+			case DragEvent.ACTION_DRAG_EXITED:
+				break;
+
+			case DragEvent.ACTION_DROP:
+				findViewById(R.id.btnFooterHome).setAlpha(1);
+				findViewById(R.id.btnFooterParkings).setAlpha(1);
+				findViewById(R.id.btnFooterPets).setAlpha(1);
+				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+				findViewById(R.id.btnFooterTV).setAlpha(1);
+				if (HOME.equals(event.getLocalState()) && HOME.equals(this.buttonTarget)) {
+					FooterLogic.handleHomeAccess(IndexActivity.this, false);
+				}
+				if (PETS.equals(event.getLocalState()) && PETS.equals(this.buttonTarget)) {
+					FooterLogic.handlePetsAccess(IndexActivity.this);
+				}
+				if (PREVENT.equals(event.getLocalState()) && PREVENT.equals(this.buttonTarget)) {
+					FooterLogic.handlePreventAccess(IndexActivity.this);
+				}
+				if (PARKINGS.equals(event.getLocalState()) && PARKINGS.equals(this.buttonTarget)) {
+					FooterLogic.handleParkingsAccess(IndexActivity.this);
+				}
+				if (TV.equals(event.getLocalState()) && TV.equals(this.buttonTarget)) {
+					FooterLogic.handleTvAccess(IndexActivity.this);
+				}
+				
+				break;
+			}
+
+			return true;
+		}
+
 	};
 	
 	OnDragListener dragListener1 = new OnDragListener() {
