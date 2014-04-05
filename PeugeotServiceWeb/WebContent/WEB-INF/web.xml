@@ -120,14 +120,14 @@
   <param-name>datasourceName</param-name>
   <param-value>jdbc/peugeotDatabase</param-value>
  </context-param>
- <context-param>
+ <!-- context-param>
   <param-name>SqlMapConfig</param-name>
   <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
  </context-param>
  <context-param>
   <param-name>DAOProvider</param-name>
   <param-value>SQLSERVER</param-value>
- </context-param>
+ </context-param-->
  <servlet>
   <servlet-name>Jersey Web Application</servlet-name>
   <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
