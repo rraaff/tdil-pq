@@ -8,7 +8,8 @@
 	String title = request.getParameter("title");
 	String version = request.getParameter("version");
 	String url = request.getParameter("url");
+	String image = request.getParameter("image");
 	String summary = request.getParameter("summary");
 	
-	PeugeotService.updateNativeApp(idST, code, title, version, url, summary);
+	PeugeotService.updateNativeApp(idST, code, title, version, url, image, summary);
 response.sendRedirect(request.getContextPath() + "/admin/nativeApps.jsp");%>

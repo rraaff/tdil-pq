@@ -6,6 +6,7 @@ CREATE TABLE NATIVE_APP (
   `title` VARCHAR(100) NULL ,
   `version` VARCHAR(100) NULL ,
   `url` VARCHAR(400) NULL ,
+  `image` VARCHAR(400) NULL ,
   `summary` VARCHAR(4000) NULL ,
   `deleted` INT NOT NULL,
   PRIMARY KEY (`id`),

@@ -145,9 +145,10 @@ public class PeugeotService {
 		private String title;
 		private String version;
 		private String url;
+		private String image;
 		private String summary;
 
-		public UpdateNativeApp(String id, String code, String title, String version, String url, String summary) {
+		public UpdateNativeApp(String id, String code, String title, String version, String url, String image, String summary) {
 			super();
 			this.id = id;
 			this.code = code;
@@ -155,6 +156,7 @@ public class PeugeotService {
 			this.version = version;
 			this.url = url;
 			this.summary = summary;
+			this.image = image;
 		}
 
 		public void executeInTransaction() throws SQLException {
@@ -165,6 +167,7 @@ public class PeugeotService {
 				app.setTitle(this.title);
 				app.setVersion(this.version);
 				app.setUrl(this.url);
+				app.setImage(image);
 				app.setSummary(this.summary);
 				app.setDeleted(0);
 				DAOManager.getNativeAppDAO().insertNativeApp(app);
@@ -173,6 +176,7 @@ public class PeugeotService {
 				app.setTitle(this.title);
 				app.setVersion(this.version);
 				app.setUrl(this.url);
+				app.setImage(image);
 				app.setSummary(this.summary);
 				DAOManager.getNativeAppDAO().updateNativeAppByPrimaryKey(app);
 			}
@@ -668,9 +672,9 @@ public class PeugeotService {
 		} 
 	}
 	
-	public static void updateNativeApp(String idST, String code, String title, String version, String url, String summary) {
+	public static void updateNativeApp(String idST, String code, String title, String version, String url, String image, String summary) {
 		try {
-			GenericTransactionExecutionService.getInstance().execute(new UpdateNativeApp(idST, code, title, version, url, summary));
+			GenericTransactionExecutionService.getInstance().execute(new UpdateNativeApp(idST, code, title, version, url, image, summary));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (ValidationException e) {

@@ -1,3 +1,5 @@
+<%@page import="com.tdil.ljpeugeot.services.PeugeotService"%>
+<%@page import="com.tdil.ljpeugeot.model.NativeApp"%>
 <%@page import="com.tdil.web.breadcrum.BreadcrumItem"%>
 <%@page import="com.tdil.web.breadcrum.Breadcrum"%>
 <%@ include file="includes/agentInfo.jspf" %><%--
@@ -68,36 +70,16 @@
 		
 		<h2>Versiones de la aplicación</h2>
 		
-		<div class="faq_item download_item">
-			<h3><a href="#" title="Descargar APP para Android">Peugeot AXS v # para Android 2.3+</a></h3>
-			<img src="images/skn_peugeot/logos/get_it_on_google_play.png" />
-			<p>Aplicación especialmente diseñada y preparada para Android.</p>
-			<button class="link" onclick="window.location='#';"><span></span>Descargar ahora</button>
-		</div>
-		<div class="faq_item download_item">
-			<h3><a href="#" title="Descargar APP para iOS de Apple">Peugeot AXS v # para iOS 6+</a></h3>
-			<img src="images/skn_peugeot/logos/available_on_the_appstore.png" />
-			<p>Aplicación especialmente diseñada y preparada para iOS de Apple.</p>
-			<button class="link" onclick="window.location='#';"><span></span>Descargar ahora</button>
-		</div>
-		<div class="faq_item download_item">
-			<h3><a href="#" title="Descargar APP para Windos Phone">Peugeot AXS v # para Windows Phone</a></h3>
-			<img src="images/skn_peugeot/logos/WPS_Download_Badge.png" />
-			<p>Aplicación especialmente diseñada y preparada para Windows Phone.</p>
-			<button class="link" onclick="window.location='#';"><span></span>Descargar ahora</button>
-		</div>
-		<div class="faq_item download_item">
-			<h3><a href="#" title="Descargar APP para BlackBerry">Peugeot AXS v # para BlackBerry OS 10</a></h3>
-			<img src="images/skn_peugeot/logos/blackberry_world.png" />
-			<p>Aplicación preparada para cargar el sitio en BlackBerry OS 10.</p>
-			<button class="link" onclick="window.location='download_bb_app.jsp';"><span></span>Descargar ahora</button>
-		</div>
-		<div class="faq_item download_item">
-			<h3><a href="#" title="Descargar APP para BlackBerry">Peugeot AXS v # para BlackBerry OS 7</a></h3>
-			<img src="images/skn_peugeot/logos/blackberry_world.png" />
-			<p>Aplicación preparada para cargar el sitio en BlackBerry OS 7.</p>
-			<button class="link" onclick="window.location='download_bb_app.jsp';"><span></span>Descargar ahora</button>
-		</div>
+		<% for (NativeApp sp : PeugeotService.getNativeApps()) { %>
+			<% if (sp.getDeleted().equals(0)) { %>
+			<div class="faq_item download_item">
+				<h3><a href="<%=sp.getUrl()%>" title="Descargar APP para Android"><%=sp.getTitle()%></a></h3>
+				<img src="<%=sp.getImage()%>" />
+				<p><%=sp.getSummary()%></p>
+				<button class="link" onclick="window.location='<%=sp.getUrl()%>';"><span></span>Descargar ahora</button>
+			</div>
+			<% } %>
+		<% } %>
 	</div>
 </section>
 <%@ include file="includes/emergency_button.jspf" %>

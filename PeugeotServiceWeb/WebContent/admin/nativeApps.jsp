@@ -29,6 +29,7 @@ $(document).ready(
 					'title': {required: true, maxlength: 100},
 					'version': {required: true, maxlength: 100},
 					'url': {required: true, maxlength: 400},
+					'image': {required: true, maxlength: 400},
 					'summary': {required: true, maxlength: 4000}
 				},
 				messages: {	
@@ -39,6 +40,8 @@ $(document).ready(
 					'version': {required: "<span>Ingrese la version.</span>",
 						maxlength: "<span>Ingrese hasta 100 caracteres.</span>"},
 					'url': {required: "<span>Ingrese la url.</span>",
+						maxlength: "<span>Ingrese hasta 400 caracteres.</span>"},
+					'image': {required: "<span>Ingrese la imagen.</span>",
 						maxlength: "<span>Ingrese hasta 400 caracteres.</span>"},
 					'summary': {required: "<span>Ingrese la bajada.</span>",
 						maxlength: "<span>Ingrese hasta 4000 caracteres.</span>"}
@@ -101,6 +104,11 @@ $(document).ready(
 			<fieldset>
 				<label>URL</label>
 				<input type="text" name="url" value="<%=app != null ? app.getUrl() : ""%>">
+				<div></div>
+			</fieldset>
+			<fieldset>
+				<label>Imagen</label>
+				<input type="text" name="image" value="<%=app != null ? app.getImage() : ""%>">
 				<div></div>
 			</fieldset>
 			<fieldset class="botonera">
