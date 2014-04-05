@@ -15,6 +15,38 @@
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_sizers.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_backdoor.css" />
+<script type='text/javascript' src='../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery-1.8.2.min.js'></script>
+<script type="text/javascript" src="../js/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_jquery.validate.min.js"></script>
+<script>
+$(document).ready(
+		function(){
+			$("form[name='napp']").validate({
+				errorPlacement: function(error, element) {
+					error.appendTo( element.next("div"));
+				},
+				rules: { 
+					'code': {required: true, maxlength: 20},
+					'title': {required: true, maxlength: 100},
+					'version': {required: true, maxlength: 100},
+					'url': {required: true, maxlength: 400},
+					'summary': {required: true, maxlength: 4000}
+				},
+				messages: {	
+					'code': {required: "<span>Ingrese el codigo.</span>",
+						maxlength: "<span>Ingrese hasta 20 caracteres.</span>"},
+					'title': {required: "<span>Ingrese el titulo.</span>",
+						maxlength: "<span>Ingrese hasta 100 caracteres.</span>"},
+					'version': {required: "<span>Ingrese la version.</span>",
+						maxlength: "<span>Ingrese hasta 100 caracteres.</span>"},
+					'url': {required: "<span>Ingrese la url.</span>",
+						maxlength: "<span>Ingrese hasta 400 caracteres.</span>"},
+					'summary': {required: "<span>Ingrese la bajada.</span>",
+						maxlength: "<span>Ingrese hasta 4000 caracteres.</span>"}
+				}
+			});
+	}
+);
+</script>
 </head>
 <body>
 <%@ include file="includes/header.jsp" %>
@@ -36,22 +68,43 @@
 		
 		<h3>Cambiar app nativa</h3>
 
-		<form action="./doUpdateNativeApp.jsp">
-			<input type="hidden" name="id" value="<%=app != null ? app.getId() : ""%>">
+		<form name="napp" action="./doUpdateNativeApp.jsp">
+			<input type="hidden" name="id" value="<%=app != null ? app.getId() : "0"%>">
+			<% if (app != null) { %>
+			<fieldset>
+				<label>Codigo</label>
+				<input type="text" name="code" value="<%=app.getCode()%>" readonly>	
+				<div></div>
+				</fieldset>
+			<% } else { %>
+				<fieldset>
+					<label>Codigo</label>
+					<input type="text" name="code" value="">
+					<div></div>	
+				</fieldset>
+			<% } %>
 			<fieldset>
 				<label>Titulo</label>
-				<input type="text" name="title" value="<%=app != null ? app.getTitle() : ""%>">				
+				<input type="text" name="title" value="<%=app != null ? app.getTitle() : ""%>">
+				<div></div>
 			</fieldset>
 			<fieldset>
 				<label>Version</label>
 				<input type="text" name="version" value="<%=app != null ? app.getVersion() : ""%>">
+				<div></div>
+			</fieldset>
+			<fieldset>
+				<label>Bajada</label>
+				<textarea name="summary"><%=app != null ? app.getSummary() : ""%></textarea>
+				<div></div>
 			</fieldset>
 			<fieldset>
 				<label>URL</label>
 				<input type="text" name="url" value="<%=app != null ? app.getUrl() : ""%>">
+				<div></div>
 			</fieldset>
 			<fieldset class="botonera">
-				<input type="submit" <%=app == null ? "disabled" : ""%>>
+				<input type="submit">
 			</fieldset>
 		</form>
 		

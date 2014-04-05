@@ -141,24 +141,41 @@ public class PeugeotService {
 	
 	private static final class UpdateNativeApp implements TransactionalAction {
 		private String id;
+		private String code;
 		private String title;
 		private String version;
 		private String url;
+		private String summary;
 
-		public UpdateNativeApp(String id, String title, String version, String url) {
+		public UpdateNativeApp(String id, String code, String title, String version, String url, String summary) {
 			super();
 			this.id = id;
+			this.code = code;
 			this.title = title;
 			this.version = version;
 			this.url = url;
+			this.summary = summary;
 		}
 
 		public void executeInTransaction() throws SQLException {
-			NativeApp app = DAOManager.getNativeAppDAO().selectNativeAppByPrimaryKey(Integer.valueOf(this.id));
-			app.setTitle(this.title);
-			app.setVersion(this.version);
-			app.setUrl(this.url);
-			DAOManager.getNativeAppDAO().updateNativeAppByPrimaryKey(app);
+			int id = Integer.valueOf(this.id);
+			if (id == 0) {
+				NativeApp app = new NativeApp();
+				app.setCode(this.code);
+				app.setTitle(this.title);
+				app.setVersion(this.version);
+				app.setUrl(this.url);
+				app.setSummary(this.summary);
+				app.setDeleted(0);
+				DAOManager.getNativeAppDAO().insertNativeApp(app);
+			} else {
+				NativeApp app = DAOManager.getNativeAppDAO().selectNativeAppByPrimaryKey(id);
+				app.setTitle(this.title);
+				app.setVersion(this.version);
+				app.setUrl(this.url);
+				app.setSummary(this.summary);
+				DAOManager.getNativeAppDAO().updateNativeAppByPrimaryKey(app);
+			}
 		}
 	}
 	
@@ -651,9 +668,9 @@ public class PeugeotService {
 		} 
 	}
 	
-	public static void updateNativeApp(String idST, String title, String version, String url) {
+	public static void updateNativeApp(String idST, String code, String title, String version, String url, String summary) {
 		try {
-			GenericTransactionExecutionService.getInstance().execute(new UpdateNativeApp(idST, title, version, url));
+			GenericTransactionExecutionService.getInstance().execute(new UpdateNativeApp(idST, code, title, version, url, summary));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (ValidationException e) {

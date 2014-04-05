@@ -6,9 +6,10 @@ CREATE TABLE NATIVE_APP (
   `title` VARCHAR(100) NULL ,
   `version` VARCHAR(100) NULL ,
   `url` VARCHAR(400) NULL ,
+  `summary` VARCHAR(4000) NULL ,
   `deleted` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `IX_NATIVE_APP_00` (`code` ASC))
+  UNIQUE INDEX `IX_NATIVE_APP_00` (`code` ASC))
 ENGINE = InnoDB;
 
 insert into NATIVE_APP(code,title,version,url,deleted)

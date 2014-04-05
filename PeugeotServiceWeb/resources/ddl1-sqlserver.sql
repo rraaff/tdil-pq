@@ -7,10 +7,11 @@ CREATE TABLE NATIVE_APP (
   title VARCHAR(100) NULL ,
   version VARCHAR(100) NULL ,
   url VARCHAR(400) NULL ,
+  summary VARCHAR(4000) NULL ,
   deleted INT NOT NULL,
   PRIMARY KEY (id));
   
-CREATE INDEX IX_NATIVE_APP_00 ON NATIVE_APP (code);
+CREATE UNIQUE INDEX IX_NATIVE_APP_00 ON NATIVE_APP (code);
 
 insert into NATIVE_APP(code,title,version,url,deleted)
 values('android','Peugeot Service Android','1.0.0','http://www.google.com',0);

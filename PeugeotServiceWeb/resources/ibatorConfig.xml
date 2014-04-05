@@ -43,9 +43,9 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="WEBSITEUSER" domainObjectName="WebsiteUser" alias="su">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<table schema="PEUGEOTSVC" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+<!-- table schema="PEUGEOTSVC" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table>
+</table-->
 <!-- table schema="PEUGEOTSVC" tableName="SYSPROPERTIES" domainObjectName="SystemProperty" alias="sp">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
