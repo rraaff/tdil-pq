@@ -9,6 +9,7 @@ import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
+import com.tdil.lojack.dao.NativeAppDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
@@ -22,6 +23,7 @@ import com.tdil.lojack.dao.impl.BlobDataDAOImpl;
 import com.tdil.lojack.dao.impl.CacheRegionDAOImpl;
 import com.tdil.lojack.dao.impl.CameraConfDAOImpl;
 import com.tdil.lojack.dao.impl.LightConfDAOImpl;
+import com.tdil.lojack.dao.impl.NativeAppDAOImpl;
 import com.tdil.lojack.dao.impl.PointOfInterestDAOImpl;
 import com.tdil.lojack.dao.impl.SystemPropertyDAOImpl;
 import com.tdil.lojack.dao.impl.SystemUserDAOImpl;
@@ -118,6 +120,11 @@ public class MySQLDAOProvider implements DAOProvider {
 	@Override
 	public VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException {
 		return new VLUImportErrorDAOImpl(IBatisManager.getClient());
+	}
+	
+	@Override
+	public NativeAppDAO getNativeAppDAO() throws SQLException {
+		return new NativeAppDAOImpl(IBatisManager.getClient());
 	}
 	
 	@Override

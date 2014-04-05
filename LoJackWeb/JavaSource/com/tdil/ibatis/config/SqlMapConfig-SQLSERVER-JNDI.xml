@@ -32,4 +32,6 @@
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_IMPORT_ERROR_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_VLU_IMPORT_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tdil/lojack/dao/maps/sqlserver/dbo_NATIVE_APP_SqlMap.xml"/>
 </sqlMapConfig>

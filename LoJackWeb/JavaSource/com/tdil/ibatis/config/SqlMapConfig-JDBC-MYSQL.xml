@@ -22,7 +22,7 @@
 
   <!-- List the SQL Map XML files. They can be loaded from the
        classpath, as they are here (com.domain.data...) -->
-	<sqlMap resource="com/tdil/lojack/dao/maps/WEBSITEUSER_SqlMap.xml"/>
+		<sqlMap resource="com/tdil/lojack/dao/maps/WEBSITEUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/ALARM_CONF_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/LIGHT_CONF_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/ASYNC_JOB_SqlMap.xml"/>
@@ -30,9 +30,10 @@
 	<sqlMap resource="com/tdil/lojack/dao/maps/BLOB_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/CACHE_REGION_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/POI_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/SYSTEMUSER_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/CAMERA_CONF_SqlMap.xml"/>
-	
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_IMPORT_ERROR_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_IMPORT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/NATIVE_APP_SqlMap.xml"/>
 </sqlMapConfig>

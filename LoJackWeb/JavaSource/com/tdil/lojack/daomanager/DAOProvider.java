@@ -8,6 +8,7 @@ import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
+import com.tdil.lojack.dao.NativeAppDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
@@ -41,9 +42,11 @@ public interface DAOProvider {
 	public abstract VLUDataDAO getVLUDataDAO() throws SQLException;
 	public abstract VLUImportDAO getVLUImportDAO() throws SQLException;
 	public abstract VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException;
+	public abstract NativeAppDAO getNativeAppDAO() throws SQLException;
 
 	public abstract String getVLU_DATATableName();
 
 	public abstract String getVLU_IMPORTTableName();
+	
 
 }

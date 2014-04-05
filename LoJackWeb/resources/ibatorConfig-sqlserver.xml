@@ -67,14 +67,14 @@ targetProject="LoJackWeb">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
 
-<!-- table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
-	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
-</table-->
+<table schema="dbo" tableName="SYSTEMUSER" domainObjectName="SystemUser" alias="siu">
+	<generatedKey column="id" sqlStatement="select IDENT_CURRENT('dbo.SYSTEMUSER')" identity="true" type="post"/>
+</table>
 <!--  table schema="dbo" tableName="CAMERA_CONF" domainObjectName="CameraConf" alias="cc">
 	<generatedKey column="id" sqlStatement="SqlServer" identity="true" type="post"/>
 </table-->
 
-<table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
+<!-- table schema="dbo" tableName="VLU_IMPORT" domainObjectName="VLUImport" alias="vlui">
 	<generatedKey column="id" sqlStatement="select IDENT_CURRENT('dbo.VLU_IMPORT')" identity="true" type="post"/>
 </table>
 <table schema="dbo" tableName="VLU_IMPORT_ERROR" domainObjectName="VLUImportError" alias="vluie">
@@ -82,8 +82,10 @@ targetProject="LoJackWeb">
 </table>
 <table schema="dbo" tableName="VLU_DATA" domainObjectName="VLUData" alias="vlud">
 	<generatedKey column="id" sqlStatement="select IDENT_CURRENT('dbo.VLU_DATA')" identity="true" type="post"/>
+</table-->
+<table schema="dbo" tableName="NATIVE_APP" domainObjectName="NativeApp" alias="napp">
+	<generatedKey column="id" sqlStatement="select IDENT_CURRENT('dbo.NATIVE_APP')" identity="true" type="post"/>
 </table>
-
 
 </ibatorContext>
 </ibatorConfiguration>

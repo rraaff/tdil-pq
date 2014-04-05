@@ -31,4 +31,5 @@
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_DATA_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_IMPORT_ERROR_SqlMap.xml"/>
 	<sqlMap resource="com/tdil/lojack/dao/maps/VLU_IMPORT_SqlMap.xml"/>
+	<sqlMap resource="com/tdil/lojack/dao/maps/NATIVE_APP_SqlMap.xml"/>
 </sqlMapConfig>

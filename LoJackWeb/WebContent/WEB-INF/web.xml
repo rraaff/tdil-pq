@@ -203,6 +203,12 @@
   <servlet-name>GetLightJobSatesServlet</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.GetLightJobSatesServlet</servlet-class>
  </servlet>
+ 
+    <servlet>
+  <servlet-name>GetNativeAppVersionServlet</servlet-name>
+  <servlet-class>com.tdil.lojack.servlet.GetNativeAppVersionServlet</servlet-class>
+ </servlet>
+ 
  <servlet>
   <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.lojack.servlet.FacebookSignIn</servlet-class>
@@ -223,6 +229,12 @@
   <servlet-name>Jersey Web Application</servlet-name>
   <url-pattern>/rest/*</url-pattern>
  </servlet-mapping>
+ 
+  <servlet-mapping>
+ <servlet-name>GetNativeAppVersionServlet</servlet-name>
+  <url-pattern>/getNativeAppVersion.st</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>

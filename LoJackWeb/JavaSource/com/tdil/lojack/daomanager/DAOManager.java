@@ -8,6 +8,7 @@ import com.tdil.lojack.dao.BlobDataDAO;
 import com.tdil.lojack.dao.CacheRegionDAO;
 import com.tdil.lojack.dao.CameraConfDAO;
 import com.tdil.lojack.dao.LightConfDAO;
+import com.tdil.lojack.dao.NativeAppDAO;
 import com.tdil.lojack.dao.PointOfInterestDAO;
 import com.tdil.lojack.dao.SystemPropertyDAO;
 import com.tdil.lojack.dao.SystemUserDAO;
@@ -68,6 +69,10 @@ public abstract class DAOManager {
 	}
 	public static VLUImportErrorDAO getVLUImportErrorDAO() throws SQLException {
 		return currentDao.getVLUImportErrorDAO();
+	}
+	
+	public static NativeAppDAO getNativeAppDAO() throws SQLException {
+		return currentDao.getNativeAppDAO();
 	}
 	
 	public static String getVLU_DATATableName() throws SQLException {
