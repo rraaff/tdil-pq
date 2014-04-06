@@ -4,7 +4,7 @@ public class ApplicationConfig {
 
 
 	public static final String URL_ANDROID_VERSION = ApplicationConfig.URL_WEBSITE
-	+ "android_version_native.txt";
+	+ "getNativeAppVersion.st?code=android";
 	
 //	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
