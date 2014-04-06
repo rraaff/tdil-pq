@@ -4,14 +4,12 @@ public class ApplicationConfig {
 
 
 	public static final String URL_ANDROID_VERSION = ApplicationConfig.URL_WEBSITE
-	+ "android_version_native.txt";
+	+ "getNativeAppVersion.st?code=android";
 	
-	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
-//	public static final String APP_DOMAIN = "www.lojack-app.com.ar:81";
+//	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
-//	public static final String APP_DOMAIN = "192.168.252.100:8180";
-//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
+	public static final String APP_DOMAIN = "192.168.0.117:8180";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
