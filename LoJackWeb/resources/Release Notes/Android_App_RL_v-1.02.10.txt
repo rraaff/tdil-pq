@@ -1,0 +1,9 @@
+Android_App_RL_v-1.02.10 RELEASE NOTES
+======================================
+
+NOTAS DEL RELEASE
+LJRL-180 [https://thatdayinlondon.atlassian.net/browse/LJRL-180]
+Desarrollo: [Android APP] Modificar la Rueda para que tome el evento onTap y onDrag en el centro como está ahora.
+
+LJRL-185 [https://thatdayinlondon.atlassian.net/browse/LJRL-185]
+Desarrollo: Igualar comportamiento VLU en APK a WebMobile
