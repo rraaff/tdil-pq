@@ -143,7 +143,9 @@ button.link_back span		{ background:url(../images/skn_peugeot/buttons/btn_arrow_
 button.botton_ahead			{ border:none; border-radius:4px; color:#fff; font-size:13px; font-family:'Peugeot'; text-transform:uppercase; background:#1db5dc; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background:-moz-linear-gradient(top, #1db5dc 0%, #00557f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#1db5dc), color-stop(100%,#00557f)); background:-webkit-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-o-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:-ms-linear-gradient(top, #1db5dc 0%,#00557f 100%); background:linear-gradient(to bottom, #1db5dc 0%,#00557f 100%); filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#1db5dc', endColorstr='#00557f',GradientType=0 ); padding:10px; margin:0; cursor:pointer; float:right; }
 button.botton_ahead span	{ background:url(../images/skn_peugeot/buttons/btn_arrow_forward_inbutton_normal.png); background-repeat:no-repeat; background-position:0 1px; width:10px; height:10px; display:inline-block; margin:0 0 0 6px; }
 button:hover.botton_ahead	{ background:#00557f; background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNTU3ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZGI1ZGMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background:-moz-linear-gradient(top,  #00557f 0%, #1db5dc 100%); /* FF3.6+ */ background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#00557f), color-stop(100%,#1db5dc)); /* Chrome,Safari4+ */ background:-webkit-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* Chrome10+,Safari5.1+ */ background:-o-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* Opera 11.10+ */ background:-ms-linear-gradient(top,  #00557f 0%,#1db5dc 100%); /* IE10+ */ background:linear-gradient(to bottom,  #00557f 0%,#1db5dc 100%); /* W3C */ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00557f', endColorstr='#1db5dc',GradientType=0 ); /* IE6-8 */  }
-button.link					{ border:none; background:none; color:#4d4f5b; font-size:12px; font-weight:bold; text-align:left; padding:0 0 0 25px; float:left; cursor:pointer; }
+button.link,
+a.link						{ border:none; background:none; color:#4d4f5b; font-size:12px; font-weight:bold; text-align:left; padding:0 0 0 25px; float:left; cursor:pointer; }
+a.link						{ padding:0; }
 button.print				{ border:none; background:transparent; background-image:url(../images/skn_peugeot/icons/icon_print.png); color:#3b3a48; background-repeat:no-repeat; background-position:0; padding:0 0 0 22px; margin:0; position:relative; top:-48px; right:0; z-index:999; float:right; display:none; }
 
 button.link_back:hover,
@@ -230,14 +232,16 @@ div.dashboard_item img.icon				{ padding:0 0 110px; float:left; vertical-align:t
 div.dashboard_item h3					{ text-align:left; float:left; width:285px; padding:25px 0 10px 25px; }
 div.dashboard_item h3 a					{ color:#00aad5; font-size:14px; font-family:'Peugeot'; text-transform:uppercase; text-decoration:none; }
 div.dashboard_item p					{ color:#595a67; font-size:13px; line-height:18px; font-weight:600; text-align:left; width:285px; float:left; padding:5px 0 15px 25px; }
-div.dashboard_item button.link span		{ background-image:url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat:no-repeat; background-position:0 1px; width:11px; height:11px; margin:0 5px 0 0; display:inline-block; }
+div.dashboard_item button.link span,
+div.dashboard_item a.link span			{ background-image:url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat:no-repeat; background-position:0 1px; width:11px; height:11px; margin:0 5px 0 0; display:inline-block; }
 
 
 div.faq_item							{ width:50%; padding:0 50px; text-align:left; float:left; }
 div.faq_item h3							{ text-align:left; width:100%; padding:25px 0 10px; display:inline-block; }
 div.faq_item h3 a						{ color:#00aad5; font-size:14px; font-family:'Peugeot'; text-transform:uppercase; text-decoration:none; display:inline-block; }
 div.faq_item p							{ color:#595a67; font-size:13px; line-height:18px; font-weight:600; text-align:left; padding:5px 0 15px; display:inline-block; }
-div.faq_item button.link span			{ background-image:url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat:no-repeat; background-position:0 1px; width:11px; height:11px; margin:0 5px 0 0; display:inline-block; }
+div.faq_item button.link span,
+div.faq_item a.link span				{ background-image:url(../images/skn_peugeot/icons/icon_arrow_in_text_button_gray.png); background-repeat:no-repeat; background-position:0 1px; width:11px; height:11px; margin:0 5px 0 0; display:inline-block; }
 div.faq_item ul							{ width:100%; display:inline-block; }
 div.faq_item ul li						{ color:#3b3a48; width:100%; padding:5px 0; display:inline-block;}
 div.faq_item ul li strong				{ color:#00aad5; }

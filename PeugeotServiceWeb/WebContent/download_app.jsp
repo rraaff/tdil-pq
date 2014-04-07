@@ -72,12 +72,12 @@
 		
 		<% for (NativeApp sp : PeugeotService.getNativeApps()) { %>
 			<% if (sp.getDeleted().equals(0)) { %>
-			<div class="faq_item download_item">
-				<h3><a href="<%=sp.getUrl()%>" title="Descargar APP para Android"><%=sp.getTitle()%></a></h3>
-				<img src="<%=sp.getImage()%>" />
-				<p><%=sp.getSummary()%></p>
-				<button class="link" onclick="window.location='<%=sp.getUrl()%>';"><span></span>Descargar ahora</button>
-			</div>
+				<div class="faq_item download_item">
+					<h3><a href="<%=sp.getUrl()%>" title="Descargar APP" target="_blank"><%=sp.getTitle()%> <%=sp.getVersion()%></a></h3>
+					<a href="<%=sp.getUrl()%>" title="Descargar APP" target="_blank"><img src="<%=sp.getImage()%>" /></a>
+					<p><%=sp.getSummary()%></p>
+					<a class="link" href="<%=sp.getUrl()%>"  target="_blank"><span></span>Descargar ahora</a>
+				</div>
 			<% } %>
 		<% } %>
 	</div>
