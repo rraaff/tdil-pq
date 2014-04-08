@@ -43,8 +43,9 @@ div#alertContent h3										{ color:#2ba4c9; padding:0 0 20px 0; border:none; w
 div#alertContent ul.alert_row							{ border-top:solid 1px #eaeaea; border-bottom:solid 1px #eaeaea; width:100%; background:#fff; display:inline-block; }
 div#alertContent ul.alert_row li						{ border-left:solid 1px #eaeaea; color:#000; font-size:16px; line-height:38px; float:left; padding:8px 12px; vertical-align:middle; }
 div#alertContent ul.alert_row li.alert_id				{ width:5%; }
-div#alertContent ul.alert_row li.alert_userfirstname	{ width:45%; text-align:left; }
-div#alertContent ul.alert_row li.alert_userlassname		{ width:40%; text-align:left; }
+div#alertContent ul.alert_row li.alert_date	{ width:20%; text-align:left; }
+div#alertContent ul.alert_row li.alert_userfirstname	{ width:35%; text-align:left; }
+div#alertContent ul.alert_row li.alert_userlassname		{ width:30%; text-align:left; }
 div#alertContent ul.alert_row li.alert_actions			{ border-right:solid 1px #eaeaea; width:10%; }
 div#alertContent span.no_alerts							{ border:solid 1px #4493b0; border-radius:10px; color:#154658; background-color:#c3e4f1; background-image:url("../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; text-align:left; width:100%; padding:20px 20px 20px 60px!important; display:inline-block; }
 
