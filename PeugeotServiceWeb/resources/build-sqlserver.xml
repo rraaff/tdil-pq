@@ -37,6 +37,7 @@
 			<transaction src="thalamus_fake.sql" />
 			
 			<transaction src="ddl1-sqlserver.sql" />
+			<transaction src="ddl2-sqlserver.sql" />
 		</sql>
 	</target>
 	
@@ -46,6 +47,15 @@
 				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
 			</classpath>
 			<transaction src="ddl1-sqlserver.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-2">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/sqljdbc4.jar" />
+			</classpath>
+			<transaction src="ddl2-sqlserver.sql" />
 		</sql>
 	</target>
 	

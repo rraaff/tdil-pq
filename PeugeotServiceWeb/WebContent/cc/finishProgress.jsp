@@ -5,6 +5,7 @@
 --%><%@ include file="includes/mustBeLogged.jspf" %><%--
 --%><%
 	Integer idAlert =  Integer.parseInt(request.getParameter("alertId"));
-	PeugeotService.finishAlertProgress(idAlert);
+	String comment =  request.getParameter("comment");
+	PeugeotService.finishAlertProgress(idAlert, comment);
 	response.sendRedirect(request.getContextPath() + "/cc/home.jsp");
 %>

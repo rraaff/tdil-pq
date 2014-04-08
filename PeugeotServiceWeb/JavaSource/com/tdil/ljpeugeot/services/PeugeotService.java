@@ -573,14 +573,17 @@ public class PeugeotService {
 	
 	private static final class FinishAlertProgress implements TransactionalActionWithResult<Boolean> {
 		private int alertId;
-		public FinishAlertProgress(int alertId) {
+		private String comment;
+		public FinishAlertProgress(int alertId, String comment) {
 			super();
 			this.alertId = alertId;
+			this.comment = comment;
 		}
 		public Boolean executeInTransaction() throws SQLException {
 			Alert alert = DAOManager.getAlertDAO().selectAlertByPrimaryKey(this.alertId);
 			alert.setStatus(AlertStatus.FINISHED.code());
 			alert.setModificationdate(new Date());
+			alert.setComments(this.comment);
 			DAOManager.getAlertDAO().updateAlertByPrimaryKey(alert);
 			return Boolean.TRUE;
 		}
@@ -875,9 +878,9 @@ public class PeugeotService {
 		} 
 	}
 	
-	public static void finishAlertProgress(int idAlert) {
+	public static void finishAlertProgress(int idAlert, String comment) {
 		try {
-			GenericTransactionExecutionService.getInstance().execute(new FinishAlertProgress(idAlert));
+			GenericTransactionExecutionService.getInstance().execute(new FinishAlertProgress(idAlert, comment));
 		} catch (SQLException e) {
 			getLog().error(e.getMessage(), e);
 		} catch (ValidationException e) {

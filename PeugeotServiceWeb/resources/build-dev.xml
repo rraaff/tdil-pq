@@ -48,6 +48,7 @@
 			<transaction src="thalamus_fake.sql" />
 			
 			<transaction src="ddl1.sql" />
+			<transaction src="ddl2.sql" />
 		</sql>
 		<condition property="os.pablo" value="true">
 			<and>
@@ -75,6 +76,15 @@
 				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
 			</classpath>
 			<transaction src="ddl1.sql" />
+		</sql>
+	</target>
+	
+	<target name="incremental-2">
+		<sql driver="${sql.driver}" url="${db.url}" userid="${db.user}" password="${db.pass}">
+			<classpath>
+				<pathelement location="../../EnvironmentLibraries/mysql-connector-java-5.1.13-bin.jar" />
+			</classpath>
+			<transaction src="ddl2.sql" />
 		</sql>
 	</target>
 

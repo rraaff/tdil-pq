@@ -144,7 +144,7 @@ if (alert== null) { %><jsp:forward page="home.jsp"></jsp:forward><%}%>
 				</script>
 			<% } %>
 			<fieldset class="width100per">
-				<a class="link_as_button" href="finishProgress.jsp?alertId=<%=alert.getAlert().getId()%>">Finalizar</a>
+				<a class="link_as_button" href="finishAlert.jsp?alertId=<%=alert.getAlert().getId()%>">Finalizar</a>
 			</fieldset>
 		</div>
 	</article>

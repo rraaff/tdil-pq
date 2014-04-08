@@ -93,12 +93,12 @@ targetProject="PeugeotServiceWeb">
 <!-- table schema="PEUGEOTSVC" tableName="KM_DATA" domainObjectName="KmData" alias="kmd">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table-->
-<!-- table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
-	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
-</table-->
-<table schema="PEUGEOTSVC" tableName="NATIVE_APP" domainObjectName="NativeApp" alias="napp">
+<table schema="PEUGEOTSVC" tableName="ALERT" domainObjectName="Alert" alias="al">
 	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
 </table>
+<!-- table schema="PEUGEOTSVC" tableName="NATIVE_APP" domainObjectName="NativeApp" alias="napp">
+	<generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+</table-->
 
 </ibatorContext>
 </ibatorConfiguration>
