@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.tdil.ljpeugeot.model.ContactData"%>
 <%@page import="com.tdil.ljpeugeot.model.valueobjects.AlertValueObject"%><%--
 --%><%@page import="com.tdil.ljpeugeot.services.PeugeotService"%><%--
@@ -25,6 +26,7 @@ if (alert== null) { %><jsp:forward page="home.jsp"></jsp:forward><%}%>
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_font_embeder.css" />
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_backdoor.css" />
 <%@ include file="includes/headLogged.jsp" %>
+<%SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); %>
 </head>
 <body>
 <%@ include file="../admin/includes/header.jsp" %>
@@ -101,6 +103,10 @@ if (alert== null) { %><jsp:forward page="home.jsp"></jsp:forward><%}%>
 		<% } %>
 		<h3>Información de alerta</h3>
 		<div class="data_group">
+			<fieldset class="width100per">
+				<label class="dato">Fecha de generacion</label>
+				<label class="resultado"><%=dateFormat.format(alert.getAlert().getCreationdate())%></label>
+			</fieldset>
 			<fieldset class="width100per">
 				<label class="dato">Telefono</label>
 				<label class="resultado"><%=StringUtils.notNullValueOf(alert.getAlert().getPhonenumber())%></label>
