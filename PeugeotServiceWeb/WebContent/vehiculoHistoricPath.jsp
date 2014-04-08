@@ -13,7 +13,50 @@
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientBeanFacade"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.json.beans.URLHolder"%><%--
 --%><%@page import="com.tdil.thalamus.client.facade.ThalamusClientFacade"%><%--
---%><script>
+--%>
+<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForHistoricPath");%>
+		<section class="modal_header">
+			<h2>Seleccionar vehículos</h2>
+			<button class="close" id="closeSelectVehicleForHPLayer">Cerrar <span></span></button>
+		</section>
+		<section class="modal_content apps_listing">
+			<html:form method="POST" action="/viewHistoricPath" styleClass="modal_wrapper">
+				<html:radio name="SelectVehiclesForHistoricPath" property="historicPathLimit" onclick="changeHPSelection()" value="TODAY">HOY</html:radio><br>
+				<html:radio name="SelectVehiclesForHistoricPath" property="historicPathLimit" onclick="changeHPSelection()" value="YESTERDAY">AYER</html:radio><br>
+				<html:radio name="SelectVehiclesForHistoricPath" property="historicPathLimit" onclick="changeHPSelection()" value="FREE">Entre</html:radio>
+				<html:text name="SelectVehiclesForHistoricPath" property="dateStart"/> 
+				<html:text name="SelectVehiclesForHistoricPath" property="dateEnd"/> 
+				<fieldset class="width100per">
+					<html:select name="SelectVehiclesForHistoricPath" property="selectedVehicleId">
+						<option	value="">-</option>
+						<% for (com.tdil.ljpeugeot.prevent.model.Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
+								<option	value="<%=vehicle.getId()%>">
+								<%=vehicle.getDescription()%></option>
+						<% } %>
+					</html:select>
+				</fieldset>
+				<fieldset class="button_bar pOnlyTop25">
+					<button class="botton_ahead" id="submitregister" type="submit">Aplicar<span></span></button>
+				</fieldset>
+			</html:form>
+		</section>
+		
+<script>
+
+function changeHPSelection() {
+	var selectedHP = $('input[name=historicPathLimit]:checked').val();
+	if (selectedHP != 'FREE') {
+		$("form[name='SelectVehiclesForHistoricPath'] input[name='dateStart']").prop('disabled', true);
+		$("form[name='SelectVehiclesForHistoricPath'] input[name='dateEnd']").prop('disabled', true);
+	} else {
+		$("form[name='SelectVehiclesForHistoricPath'] input[name='dateStart']").prop('disabled', false);
+		$("form[name='SelectVehiclesForHistoricPath'] input[name='dateEnd']").prop('disabled', false);
+	}
+}
+
+$( "#closeSelectVehicleForHPLayer" ).click(function() {
+	$( "#selectVehiclesForHPLayer" ).fadeOut();
+});
 
 function editMaximas(vehicleId) {
 	<%@ include file="includes/blockUI.jspf" %>
@@ -33,28 +76,6 @@ $( "#closeSelectVehicleForHPLayer" ).click(function() {
 	$( "#selectVehiclesForHPLayer" ).fadeOut();
 });
 
+
 </script>
-<% SelectVehiclesForm selectVehiclesForm = (SelectVehiclesForm)session.getAttribute("SelectVehiclesForHistoricPath");%>
-		<section class="modal_header">
-			<h2>Seleccionar vehículos</h2>
-			<button class="close" id="closeSelectVehicleForHPLayer">Cerrar <span></span></button>
-		</section>
-		<section class="modal_content apps_listing">
-			<html:form method="POST" action="/viewHistoricPath" styleClass="modal_wrapper">
-				<html:text name="SelectVehiclesForHistoricPath" property="dateStart"/> 
-				<html:text name="SelectVehiclesForHistoricPath" property="dateEnd"/> 
-				<fieldset class="width100per">
-					<html:select name="SelectVehiclesForHistoricPath" property="selectedVehicleId">
-						<option	value="">-</option>
-						<% for (com.tdil.ljpeugeot.prevent.model.Vehicle vehicle : selectVehiclesForm.getVehicles()) { %>
-								<option	value="<%=vehicle.getId()%>">
-								<%=vehicle.getDescription()%></option>
-						<% } %>
-					</html:select>
-				</fieldset>
-				<fieldset class="button_bar pOnlyTop25">
-					<button class="botton_ahead" id="submitregister" type="submit">Aplicar<span></span></button>
-				</fieldset>
-			</html:form>
-		</section>
 <%@ include file="includes/catchModal.jspf" %>

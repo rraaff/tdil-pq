@@ -126,7 +126,9 @@ public class UsersService extends AbstractRESTService {
 			getSession().invalidate();
 		}
 		String apkToken = request.getHeader("apkToken");
-		ApkLoginCache.remove(apkToken);
+		if (apkToken != null) {
+			ApkLoginCache.remove(apkToken);
+		}
 		return okResponse();
 	}
 	

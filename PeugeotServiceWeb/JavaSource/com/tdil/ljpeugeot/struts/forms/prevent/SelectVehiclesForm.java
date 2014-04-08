@@ -45,9 +45,14 @@ public class SelectVehiclesForm extends VehiclesForm {
 	private SpeedSelectionBean speedSelectionBean;
 	private SecureZoneSelectionBean secureZoneSelectionBean;
 	
+	private String historicPathLimit;
 	private String dateStart;
 	private String dateEnd;
 	private GetPMHistory selectedVehicleHistoricPath;
+	
+	public static String FREE = "FREE";
+	public static String TODAY = "TODAY";
+	public static String YESTERDAY = "YESTERDAY";
 	
 	private static final org.apache.log4j.Logger LOG = LoggerProvider.getLogger(SelectVehiclesForm.class);
 
@@ -347,6 +352,14 @@ public class SelectVehiclesForm extends VehiclesForm {
 
 	public void setDateEnd(String dateEnd) {
 		this.dateEnd = dateEnd;
+	}
+
+	public String getHistoricPathLimit() {
+		return historicPathLimit;
+	}
+
+	public void setHistoricPathLimit(String historicPathLimit) {
+		this.historicPathLimit = historicPathLimit;
 	}
 
 }
