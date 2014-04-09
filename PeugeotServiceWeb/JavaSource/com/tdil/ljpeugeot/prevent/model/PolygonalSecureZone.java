@@ -12,7 +12,7 @@ public class PolygonalSecureZone implements Serializable {
 	@XStreamAlias(value="description")
 	private String description;
 	
-	@XStreamAlias(value="poins")
+	@XStreamAlias(value="points")
 	private List<PolygonalPoint> points;
 	
 	public String getDescription() {

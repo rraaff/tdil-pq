@@ -11,10 +11,10 @@ public class CircularSecureZone implements Serializable {
 
 	@XStreamAlias(value="description")
 	private String description;
-	@XStreamAlias(value="longitude")
-	private String longitude;
 	@XStreamAlias(value="latitude")
 	private String latitude;
+	@XStreamAlias(value="longitude")
+	private String longitude;
 	@XStreamAlias(value="radio")
 	private String radio;
 	

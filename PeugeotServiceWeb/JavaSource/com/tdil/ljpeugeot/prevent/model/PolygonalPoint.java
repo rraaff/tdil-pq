@@ -12,10 +12,10 @@ public class PolygonalPoint implements Serializable {
 	 */
 	private static final long serialVersionUID = 6777155349639214902L;
 	
-	@XStreamAlias(value="longitude")
-	private String longitude;
 	@XStreamAlias(value="latitude")
 	private String latitude;
+	@XStreamAlias(value="longitude")
+	private String longitude;
 	
 	public PolygonalPoint() {
 		// TODO Auto-generated constructor stub
