@@ -48,7 +48,9 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
+		/** START ALERTA */
 		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
 		sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));

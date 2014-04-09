@@ -156,6 +156,7 @@
 	
     </LinearLayout>
 
+<!-- START ALERTA -->
 <Button
     android:id="@+id/openSendAlertView"
     android:layout_width="wrap_content"
@@ -185,5 +186,6 @@
               android:layout_margin="5dip" 
               />
  </LinearLayout>
- 
+<!-- END ALERTA --> 
+
 </merge>
