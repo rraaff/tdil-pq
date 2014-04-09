@@ -276,7 +276,7 @@ public class VehiclesRestService extends AbstractRESTService {
 		try {
 			StringBuilder advices = new StringBuilder();
 			for (AdviceValueObject dealer : PeugeotService.getAdvices(this.getUser().getModelUser().getId())) {
-				advices.append(dealer.getAdvice().getId()).append(",");
+				advices.append(dealer.getAdvice().getId()).append(',');
 			}
 			PeugeotService.dismissAdvices(advices.toString(), getUser().getModelUser().getId());
 			return okResponse();

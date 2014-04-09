@@ -61,7 +61,6 @@ public class LJPeugeotWebUtils {
 	public static boolean isMobile(HttpServletRequest request) {
 		com.tdil.mobile.UAgentInfo agentInfo = new com.tdil.mobile.UAgentInfo(request.getHeader("User-Agent"), request.getHeader("Accept"));
 		boolean mobile = agentInfo.detectMobileLong();
-		System.out.println("mobile = " + mobile);
 		return mobile;
 	}
 
