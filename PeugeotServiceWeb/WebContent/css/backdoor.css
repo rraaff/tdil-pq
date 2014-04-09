@@ -35,7 +35,7 @@ header img { height:100%; margin:0 auto; padding:25px; }
 #content input[type="password"],
 #content select,
 textarea						{ border:solid 1px #aeaeae; border-radius:5px; text-align:left; width:100%; padding:8px 5px; box-shadow:0 0 8px 1px #eaeaea; } 
-#content p						{ text-align:left; line-height:24px; padding:10px 0; }
+#content p						{ text-align:left; line-height:24px; display:inline-block; width:100%; padding:10px 0; }
 #content article h3				{ color:#2ba4c9; font-size:24px; padding:10px 0; border-bottom:dotted 1px #aeaeae; }
 
 div#alertContent										{ display:inline-block; width:100%; }
@@ -96,7 +96,7 @@ ul:nth-child(2n+3)				{ background:#eaeaea; }
 #content fieldset.allinone select		{ width:25%; }
 
 p.information	{ border:solid 1px #4493b0; border-radius:10px; color:#154658; background-color:#c3e4f1; background-image:url("../images/backdoor/icons/information.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:20px; }
-p.attention		{ border:solid 1px #b69b00; border-radius:10px; color:#000; background-color:#ebe1a8; background-image:url("../images/backdoor/icons/attention.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; margin:20px; }
+p.attention		{ border:solid 1px #b69b00; border-radius:10px; color:#000; background-color:#ebe1a8; background-image:url("../images/backdoor/icons/attention.png"); background-repeat:no-repeat; background-size:40px 40px; background-position:10px 10px; padding:20px 20px 20px 60px !important; }
 
 input[type="submit"],
 button,

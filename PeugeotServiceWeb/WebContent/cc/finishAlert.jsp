@@ -65,10 +65,14 @@ $(document).ready(
 		</div>
 		<form action="finishProgress.jsp" name="finisha">
 			<input type="hidden" name="alertId" value="<%=alert.getAlert().getId()%>">
-			Comentario<br>
-			<textarea name="comment" maxlength='4000'></textarea>
+			<fieldset class="width100per">
+				<label class="dato width100per">Comentario sobre la resolución</label>
+				<textarea name="comment" maxlength='4000'></textarea>
+			</fieldset>
 			<div></div>
-			<input type="submit">
+			<fieldset class="width100per">
+				<input type="submit">
+			</fieldset>
 		</form>
 	</article>
 </section>

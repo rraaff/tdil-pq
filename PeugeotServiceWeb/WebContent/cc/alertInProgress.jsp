@@ -104,11 +104,11 @@ if (alert== null) { %><jsp:forward page="home.jsp"></jsp:forward><%}%>
 		<h3>Información de alerta</h3>
 		<div class="data_group">
 			<fieldset class="width100per">
-				<label class="dato">Fecha de generacion</label>
+				<label class="dato">Fecha de generación</label>
 				<label class="resultado"><%=dateFormat.format(alert.getAlert().getCreationdate())%></label>
 			</fieldset>
 			<fieldset class="width100per">
-				<label class="dato">Telefono</label>
+				<label class="dato">Teléfono</label>
 				<label class="resultado"><%=StringUtils.notNullValueOf(alert.getAlert().getPhonenumber())%></label>
 			</fieldset>
 			<% if (alert.getAlert().getLat().intValue() == 0) { %>
