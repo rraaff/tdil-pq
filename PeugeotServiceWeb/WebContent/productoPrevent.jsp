@@ -538,7 +538,6 @@ if (apk != null && apk) {
 		<div id="secureZoneStep1">
 			<button onclick="continueToDrawCircularSecureZone();">Agregar zona segura circular</button>
 			<button onclick="continueToDrawPolygonalSecureZone();">Agregar zona segura poligonal</button>
-			<button onclick="continueToEditSecureZone()">Cambiar zonas seguras de mis vehiculos</button>
 		</div>
 	</div>
 </div>
