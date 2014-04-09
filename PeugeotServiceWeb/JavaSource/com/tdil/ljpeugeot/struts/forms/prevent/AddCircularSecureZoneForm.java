@@ -10,7 +10,9 @@ import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
+import com.tdil.ljpeugeot.prevent.XMLResponse;
 import com.tdil.ljpeugeot.prevent.model.CircularSecureZone;
+import com.tdil.ljpeugeot.prevent.model.CircularSecureZoneResponse;
 import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
@@ -67,12 +69,17 @@ public class AddCircularSecureZoneForm extends AbstractForm {
 	}
 	
 	public void save() throws SQLException, ValidationException {
+		ValidationError validationError = new ValidationError();
 		try {
-			basicsave();
+			if(!basicsave()) {
+				throw new ValidationException(validationError);
+			}
 		} catch (UnauthorizedException e) {
 			this.getUser().reloginPrevent();
 			try {
-				basicsave();
+				if(!basicsave()) {
+					throw new ValidationException(validationError);
+				}
 			} catch (HttpStatusException e1) {
 				throw new ValidationException(new ValidationError("STATUS." + e1.getStatus()));
 			} catch (InvalidResponseException e1) {
@@ -92,7 +99,6 @@ public class AddCircularSecureZoneForm extends AbstractForm {
 	}
 
 	private boolean basicsave() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		boolean result = true;
 		CircularSecureZone circularSecureZone = new CircularSecureZone();
 		circularSecureZone.setLatitude(this.getCenterLat());
 		circularSecureZone.setLongitude(this.getCenterLon());
@@ -101,8 +107,9 @@ public class AddCircularSecureZoneForm extends AbstractForm {
 		LatLng point2 = new LatLng(Double.parseDouble(this.getOtherLat()), Double.parseDouble(this.getOtherLon()));
 		long distance = Math.round(LatLngTool.distance(point1, point2, LengthUnit.METER));
 		circularSecureZone.setRadio(Long.toString(distance)); // Calcular el radio y mandarlo
-		PreventConnector.addCircularSecureZone(this.getUser().getPreventLoginResponse(), circularSecureZone);
-		return result;
+		XMLResponse res = PreventConnector.addCircularSecureZone(this.getUser().getPreventLoginResponse(), circularSecureZone);
+		CircularSecureZoneResponse resp = (CircularSecureZoneResponse)res.getResult();
+		return !resp.hasError();
 	}
 
 	public WebsiteUser getUser() {

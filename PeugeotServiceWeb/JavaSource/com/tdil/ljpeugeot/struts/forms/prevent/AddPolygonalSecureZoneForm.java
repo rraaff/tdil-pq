@@ -12,9 +12,12 @@ import com.javadocmd.simplelatlng.LatLng;
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
 import com.tdil.ljpeugeot.prevent.PreventConnector;
+import com.tdil.ljpeugeot.prevent.XMLResponse;
 import com.tdil.ljpeugeot.prevent.model.CircularSecureZone;
+import com.tdil.ljpeugeot.prevent.model.CircularSecureZoneResponse;
 import com.tdil.ljpeugeot.prevent.model.PolygonalPoint;
 import com.tdil.ljpeugeot.prevent.model.PolygonalSecureZone;
+import com.tdil.ljpeugeot.prevent.model.PolygonalSecureZoneResponse;
 import com.tdil.ljpeugeot.utils.WebsiteUser;
 import com.tdil.log4j.LoggerProvider;
 import com.tdil.struts.ValidationError;
@@ -67,12 +70,17 @@ public class AddPolygonalSecureZoneForm extends AbstractForm {
 	}
 	
 	public void save() throws SQLException, ValidationException {
+		ValidationError validationError = new ValidationError();
 		try {
-			basicsave();
+			if(!basicsave()) {
+				throw new ValidationException(validationError);
+			}
 		} catch (UnauthorizedException e) {
 			this.getUser().reloginPrevent();
 			try {
-				basicsave();
+				if(!basicsave()) {
+					throw new ValidationException(validationError);
+				}
 			} catch (HttpStatusException e1) {
 				throw new ValidationException(new ValidationError("STATUS." + e1.getStatus()));
 			} catch (InvalidResponseException e1) {
@@ -92,7 +100,6 @@ public class AddPolygonalSecureZoneForm extends AbstractForm {
 	}
 
 	private boolean basicsave() throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
-		boolean result = true;
 		PolygonalSecureZone secureZone = new PolygonalSecureZone();
 		secureZone.setDescription(this.name);
 		String points[] = this.points.split(",");
@@ -101,8 +108,9 @@ public class AddPolygonalSecureZoneForm extends AbstractForm {
 			ppoints.add(new PolygonalPoint(points[i],points[i+1]));
 		}
 		secureZone.setPoints(ppoints);
-		PreventConnector.addPolygonalSecureZone(this.getUser().getPreventLoginResponse(), secureZone);
-		return result;
+		XMLResponse res = PreventConnector.addPolygonalSecureZone(this.getUser().getPreventLoginResponse(), secureZone);
+		PolygonalSecureZoneResponse resp = (PolygonalSecureZoneResponse)res.getResult();
+		return !resp.hasError();
 	}
 
 	public WebsiteUser getUser() {

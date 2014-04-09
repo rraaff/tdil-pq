@@ -201,8 +201,8 @@
 			//console.log('OK');
 			$( "#secureZoneStep2CircularLayer" ).fadeOut();
 		} else {
-			$('#savesz').prop('innerHTML', 'Ha ocurrido un error');
-			$('#savesz').css('display', 'block');
+			$('#savecsz').prop('innerHTML', 'Ha ocurrido un error');
+			$('#savecsz').css('display', 'block');
 		}
 	}
 
@@ -213,8 +213,8 @@
 			//console.log('OK');
 			$( "#secureZoneStep2PolygonalLayer" ).fadeOut();
 		} else {
-			$('#savesz').prop('innerHTML', 'Ha ocurrido un error');
-			$('#savesz').css('display', 'block');
+			$('#savepsz').prop('innerHTML', 'Ha ocurrido un error');
+			$('#savepsz').css('display', 'block');
 		}
 	}
 
@@ -391,6 +391,12 @@
 	}
 
 		function secureZoneStep1() {
+			$("form[name='AddCircularSecureZoneForm'] input[name='name']").val('');
+			$("form[name='AddPolygonalSecureZoneForm'] input[name='name']").val('');
+			$("#savecsz").prop('innerHTML','');
+			$("#savecsz").css("display", "none");
+			$("#savepsz").prop('innerHTML','');
+			$("#savepsz").css("display", "none");
 			centerLayer($(window), $( "#secureZoneStep1Layer" ));
 			centerLayer($(window), $( "#centradorModalesSecureStep1Zone" ));
 		}
@@ -458,7 +464,7 @@ if (apk != null && apk) {
 				<button class="iconMaxSpeed" onclick="selectVehiclesSpeed();">&nbsp;</button>
 				<button class="iconZSeguras" onclick="editSecureZones();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="selectVehiclesPhones();">&nbsp;</button>
-				<!--button class="iconPathTour" onclick="selectVehicleForHistoricPath();">&nbsp;</button>
+				<!-- button class="iconPathTour" onclick="selectVehicleForHistoricPath();">&nbsp;</button>
 				<button class="iconPhoneAdm" onclick="secureZoneStep1();">Punto</button-->
 				<!-- button class="iconPhoneAdm" onclick="Mapa.DigitalizarPoligono();">Poligono</button-->
 			</div>

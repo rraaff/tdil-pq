@@ -39,4 +39,7 @@ public class PolygonalSecureZoneResponse implements Serializable {
 		this.status = status;
 	}
 
+	public boolean hasError() {
+		return !OK.equals(this.getStatus());
+	}
 }
