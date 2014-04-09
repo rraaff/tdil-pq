@@ -156,4 +156,34 @@
 	
     </LinearLayout>
 
+<Button
+    android:id="@+id/openSendAlertView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right|center"
+    android:layout_margin="5dip"
+    android:padding="5dip"
+    android:text="Alerta" />
+
+<LinearLayout android:id="@+id/sendAlertView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center"
+                    android:visibility="gone">
+	<Button android:id="@+id/sendAlertButton" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content" 
+              android:text="Enviar Alerta" 
+              android:padding="5dip" 
+              android:layout_margin="5dip" 
+              />
+	<Button android:id="@+id/closeSendAlertButton" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content" 
+              android:text="Cerrar" 
+              android:padding="5dip" 
+              android:layout_margin="5dip" 
+              />
+ </LinearLayout>
+ 
 </merge>

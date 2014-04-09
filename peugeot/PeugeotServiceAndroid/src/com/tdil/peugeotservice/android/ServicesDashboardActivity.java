@@ -2,19 +2,16 @@ package com.tdil.peugeotservice.android;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +26,6 @@ import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
 import com.tdil.peugeotservice.android.rest.model.AlertResponseBean;
-import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
@@ -37,41 +33,6 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 
 	private UpdateLocationListener locListener = null;
 
-	private final class UpdateLocationListener implements LocationListener {
-		private final AlertResponseBean resp;
-		private final LocationManager lm;
-		private final ServicesDashboardActivity activity;
-		private boolean alreadySent = false;
-		
-
-		private UpdateLocationListener(AlertResponseBean resp,
-				LocationManager lm, ServicesDashboardActivity activity) {
-			this.resp = resp;
-			this.lm = lm;
-			this.activity = activity;
-		}
-
-		public void onLocationChanged(Location location) {
-			if (!alreadySent) {
-				alreadySent = true;
-				double updatedLongitude = location.getLongitude();
-				double updatedLatitude = location.getLatitude();
-				destroy();
-				activity.updateAlertLocation(resp, updatedLatitude, updatedLongitude, false);
-			}
-		}
-
-		public void destroy() {
-			lm.removeUpdates(this);
-		}
-
-		public void onProviderDisabled(String provider) {}
-
-		public void onProviderEnabled(String provider) {}
-
-		public void onStatusChanged(String provider, int status,
-		        Bundle extras) {}
-	}
 
 	/**
 	 * The default email to populate the email field with.
@@ -86,36 +47,11 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		AlertLogic.installLogic(this);
 
 		View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
-		sendEmergencyButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				double longitude = 0;
-				double latitude = 0;
-				String mPhoneNumber = "-";
-				TelephonyManager tMgr = (TelephonyManager) ServicesDashboardActivity.this
-						.getSystemService(Context.TELEPHONY_SERVICE);
-				if (tMgr != null) {
-					mPhoneNumber = tMgr.getLine1Number();
-				}
-				if (mPhoneNumber == null || mPhoneNumber.equals("")) {
-					mPhoneNumber = "-";
-				}
-				final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
-				Location lastKnownLocation = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		    	if (lastKnownLocation != null) {
-		    		sendAlert(lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber);
-		    	} else {
-		    		Location lastKnownLocation1 = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-			    	if (lastKnownLocation1 != null) {
-			    		sendAlert(lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber);
-			    	} else {
-			    		sendAlert(0, 0, mPhoneNumber);
-			    	}
-		    	}
-			}
-		});
+		sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));
 
 		View configEmergencyButton = findViewById(R.id.configEmergencyButton);
 		configEmergencyButton.setOnClickListener(new View.OnClickListener() {
@@ -186,15 +122,15 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	// msg.setLayoutParams(OBJ);
 	// }
 
-	public void updateAlertLocation(AlertResponseBean resp,
+	public static void updateAlertLocation(final Activity activity, AlertResponseBean resp,
 			double updatedLatitude, double updatedLongitude, final boolean silent) {
-		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				if (!silent) {
 					Gson gson = new Gson();
 					if (task.getStatusCode() == 201) {
-						new AlertDialog.Builder(ServicesDashboardActivity.this)
+						new AlertDialog.Builder(activity)
 						.setIcon(R.drawable.ic_launcher)
 						.setTitle("Envio de alerta")
 						.setMessage(
@@ -208,7 +144,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 								}).show();
 						
 					} else {
-						new AlertDialog.Builder(ServicesDashboardActivity.this)
+						new AlertDialog.Builder(activity)
 								.setIcon(R.drawable.ic_launcher)
 								.setTitle("Envio de alerta")
 								.setMessage(
@@ -226,7 +162,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(ServicesDashboardActivity.this);
+				Messages.connectionErrorMessage(activity);
 			}
 		}, RESTConstants.UPDATE_ALERT, new RestParams(RESTConstants.P_LAT, String
 				.valueOf(updatedLatitude)).put(RESTConstants.P_LON,
@@ -235,15 +171,15 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		
 	}
 
-	protected void sendAlert(final double longitude, final double latitude,
+	public static void sendAlert(final Activity activity, final double longitude, final double latitude,
 			final String mPhoneNumber) {
-		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
+		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				if (task.getStatusCode() == 201) {
 					if (longitude != 0) {
-						new AlertDialog.Builder(ServicesDashboardActivity.this)
+						new AlertDialog.Builder(activity)
 						.setIcon(R.drawable.ic_launcher)
 						.setTitle("Envio de alerta")
 						.setMessage(
@@ -259,23 +195,23 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 						final AlertResponseBean resp = gson.fromJson(task.getResult(),
 								AlertResponseBean.class);
 						
-						final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+						final LocationManager manager = (LocationManager) activity.getSystemService( Context.LOCATION_SERVICE );
 	
 					    if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER )) {
 					    	if ( manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER )) {
 					    		// pido la ubicacion basada en wifi o antena
 					    		manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0,
-					    				locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    				new UpdateLocationListener(resp, manager, activity));
 					    	} else {
-					    		final AlertDialog.Builder builder = new AlertDialog.Builder(ServicesDashboardActivity.this);
+					    		final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 					    	    builder.setMessage("Se ha enviado el alerta pero su ubicacion no pudo ser determinada. " +
 					    	    		"Desea encender el GPS para enviar una informacion mas precisa?")
 					    	           .setCancelable(false)
 					    	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 					    	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-					    	                   startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+					    	            	   activity.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 					    	                   manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    	                		   locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    	                		   new UpdateLocationListener(resp, manager, activity));
 					    	               }
 					    	           })
 					    	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -288,11 +224,11 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 					    	}
 					    } else {
 					    	manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    			locListener = new UpdateLocationListener(resp, manager, ServicesDashboardActivity.this));
+					    			new UpdateLocationListener(resp, manager, activity));
 					    }
 					} 
 				}else {
-					new AlertDialog.Builder(ServicesDashboardActivity.this)
+					new AlertDialog.Builder(activity)
 					.setIcon(R.drawable.ic_launcher)
 					.setTitle("Envio de alerta")
 					.setMessage(
@@ -309,7 +245,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(ServicesDashboardActivity.this);
+				Messages.connectionErrorMessage(activity);
 			}
 		}, RESTConstants.ADD_ALERT, new RestParams(RESTConstants.P_LAT, String
 				.valueOf(latitude)).put(RESTConstants.P_LON,
