@@ -48,34 +48,34 @@ public class UpdateEmergencyConfigActivity extends ActionBarActivity implements 
     private Validator validator;
     static final int DATE_DIALOG_ID = 1;
     
-    @TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese el nombre.")
+    @TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
     @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
     private TextView contact1name;
 	private Spinner contact1relationSpinner;
-	@TextRule(order = 7, maxLength = 11, message = "Ingrese hasta 11 digitos.")
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
 	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView contact1phone;
 
-	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese la palabra de seguridad.")
+	@TextRule(order = 1, minLength = 1, maxLength = 20, message = "Ingrese la palabra de seguridad.")
     @Regex(order = 2, pattern = "[A-Za-z ']+", message = "La palabra de seguridad es inválida")
     private TextView securityWord;
 	
-	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese su cobertura médica.")
+	@TextRule(order = 1, minLength = 1, maxLength = 100, message = "Ingrese su cobertura médica.")
     private TextView healthInsurance;
 
-	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese el nombre.")
+	@TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
     @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
     private TextView contact2name;
 	private Spinner contact2relationSpinner;
-	@TextRule(order = 7, maxLength = 11, message = "Ingrese hasta 11 digitos.")
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
 	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView contact2phone;
 	
-	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese el nombre.")
+	@TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
     @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
     private TextView contact3name;
 	private Spinner contact3relationSpinner;
-	@TextRule(order = 7, maxLength = 11, message = "Ingrese hasta 11 digitos.")
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
 	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView contact3phone;
 	
