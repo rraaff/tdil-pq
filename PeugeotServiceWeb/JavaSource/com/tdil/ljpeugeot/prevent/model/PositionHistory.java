@@ -18,6 +18,10 @@ public class PositionHistory implements Serializable {
 	private String street;
 	@XStreamAlias(value="number")
 	private String number;
+	@XStreamAlias(value="direction")
+	private String direction;
+	@XStreamAlias(value="speed")
+	private String speed;
 	
 	public String getLongitude() {
 		return longitude;
@@ -75,6 +79,18 @@ public class PositionHistory implements Serializable {
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+	public String getDirection() {
+		return direction;
+	}
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+	public String getSpeed() {
+		return speed;
+	}
+	public void setSpeed(String speed) {
+		this.speed = speed;
 	}
 	
 	

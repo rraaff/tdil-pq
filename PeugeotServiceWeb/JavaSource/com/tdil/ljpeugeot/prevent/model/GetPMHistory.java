@@ -23,7 +23,7 @@ public class GetPMHistory implements Serializable {
 	public static String TIMEOUT_ERROR = "5";
 	public static String GENERAL_ERROR = "6";
 	
-	@XStreamImplicit
+	@XStreamAlias(value="PMHistoryCollection")
 	private List<PositionHistory> item;
 	
 	@XStreamAlias(value="status")

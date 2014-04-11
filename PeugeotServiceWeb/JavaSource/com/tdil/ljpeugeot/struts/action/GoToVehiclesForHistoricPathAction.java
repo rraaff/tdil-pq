@@ -23,6 +23,7 @@ public class GoToVehiclesForHistoricPathAction extends AbstractAction {
 			aForm.reset();
 			WebsiteUser user = (WebsiteUser)getLoggedUser(request);
 			aForm.initWith(user);
+			//aForm.searchHistoricPath();
 			return mapping.findForward("continue");
 		} catch (Exception ex) {
 			response.setStatus(500);

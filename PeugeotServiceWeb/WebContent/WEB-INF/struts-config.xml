@@ -191,9 +191,7 @@
   	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
   </action>
   
-  <action name="SelectVehiclesForHistoricPath" parameter="PreventUser" path="/viewHistoricPath" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToVehiclesForHistoricPathAction">
-  	<forward name="continue" path="/vehiculoHistoricPath.jsp" redirect="true"/>
-  	<forward name="failure" path="/errorAjaxModal.jsp" redirect="true"/>
+  <action name="SelectVehiclesForHistoricPath" parameter="PreventUser" path="/viewHistoricPath" scope="session" type="com.tdil.ljpeugeot.struts.action.SearchVehiclesForHistoricPathAction">
   </action>
   
   <action name="ContactForm" path="/goToContact" scope="session" type="com.tdil.ljpeugeot.struts.action.GoToContactAction">

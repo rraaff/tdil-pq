@@ -1,6 +1,9 @@
 package com.tdil.ljpeugeot.struts.forms.prevent;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -25,6 +28,7 @@ import com.tdil.thalamus.client.core.CommunicationException;
 import com.tdil.thalamus.client.core.HttpStatusException;
 import com.tdil.thalamus.client.core.InvalidResponseException;
 import com.tdil.thalamus.client.core.UnauthorizedException;
+import com.tdil.utils.DateUtils;
 
 public class SelectVehiclesForm extends VehiclesForm {
 
@@ -282,6 +286,40 @@ public class SelectVehiclesForm extends VehiclesForm {
 		SecureZoneResponse resp = (SecureZoneResponse)setSpeed.getResult();
 		return "OK".equals(resp.getStatus());
 	}
+	
+	public void searchHistoricPath() throws ValidationException, HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		String dateStartP = "";
+		String dateEndP = "";
+		if (TODAY.equals(this.getHistoricPathLimit())) {
+			Date start = DateUtils.date2FirstMomentOfDate(cal.getTime());
+			Date end = DateUtils.date2LastMomentOfDate(cal.getTime());
+			dateStartP = dateFormat.format(start) + "000000";
+			dateEndP = dateFormat.format(end) + "235959";
+		}
+		if (YESTERDAY.equals(this.getHistoricPathLimit())) {
+			cal.add(Calendar.DATE, -1);
+			Date start = DateUtils.date2FirstMomentOfDate(cal.getTime());
+			Date end = DateUtils.date2LastMomentOfDate(cal.getTime());
+			dateStartP = dateFormat.format(start) + "000000";
+			dateEndP = dateFormat.format(end) + "235959";
+		}
+		if (FREE.equals(this.getHistoricPathLimit())) {
+			dateStartP = dateFormat.format(DateUtils.parseDate(getDateStart())) + "000000";
+			dateEndP = dateFormat.format(DateUtils.parseDate(getDateEnd())) + "235959";
+		}
+		try {
+			this.basicsearchHistoricPath(dateStartP, dateEndP);
+		} catch (UnauthorizedException e) {
+			this.getUser().reloginPrevent();
+			this.basicsearchHistoricPath(dateStartP, dateEndP);
+		}
+	}
+
+	private void basicsearchHistoricPath(String dateStartP, String dateEndP) throws HttpStatusException, InvalidResponseException, CommunicationException, UnauthorizedException {
+		selectedVehicleHistoricPath = (GetPMHistory)(PreventConnector.getHistoricPath(getUser().getPreventLoginResponse(), getSelected(), dateStartP, dateEndP)).getResult();
+	}
 
 	public List<Vehicle> getSelectList() {
 		return selectList;
@@ -335,7 +373,12 @@ public class SelectVehiclesForm extends VehiclesForm {
 		return "2";
 	}
 	public void setSelectedVehicleId(String id) {
-		
+		for(Vehicle vehicle : this.getVehicles()) {
+			if (vehicle.getId().equals(id)) {
+				setSelected(vehicle);
+				return;
+			}
+		}
 	}
 
 	public String getDateStart() {

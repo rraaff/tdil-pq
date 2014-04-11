@@ -713,16 +713,13 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM ID="#viewHistoricPath" NAME="action35"
   PATH="/viewHistoricPath" SHAPE="512,5330,0,0"
-  TITLE="SelectVehiclesForHistoricPath" TYPE="action" model-entity="StrutsProcessItem">
-  <PROCESS-ITEM-OUTPUT ID="failure" NAME="forward0"
-   PATH="/errorAjaxModal.jsp" TARGET="page48" TITLE="failure"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
-  <PROCESS-ITEM-OUTPUT ID="continue" NAME="forward1"
-   PATH="/vehiculoHistoricPath.jsp" TARGET="page33" TITLE="continue"
-   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
- </PROCESS-ITEM>
+  TITLE="SelectVehiclesForHistoricPath" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM ID="#addAlert" NAME="action36" PATH="/addAlert"
   SHAPE="32,3393,0,0" TYPE="action" model-entity="StrutsProcessItem"/>
  <PROCESS-ITEM NAME="page34" PATH="/cc/userSearch.jsp"
-  SHAPE="656,3537,0,0" SUBTYPE="jsp" TITLE="userSearch.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+  SHAPE="656,3537,0,0" SUBTYPE="jsp" TITLE="userSearch.jsp" TYPE="page" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT NAME="link0" PATH="/cc/searchUser.do"
+   SUBTYPE="confirmed" TARGET="action23" TITLE="/cc/searchUser.do"
+   TYPE="link" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
 </PROCESS>

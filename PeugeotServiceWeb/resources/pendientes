@@ -16,6 +16,10 @@ tdil/usu4r10td1l
 
 27768647 / 123456
 
+Hablando con Geosystems me dicen que otro método de posiciones de flota devuelve el sentido tipificado por N, NE, NO, S, SE, SO, E, O. Así que para que todos los métodos sean consistentes, van a estar devolviendo el rumbo en este formato.
+Luego para mapearlo tenes 8 flechas distintas y le pones la q corresponda según el sentido.
+
+
 Pendientes prevent
 Creacion de zonas seguras
 Click en zonas seguras abre layer donde se pregunta si quiere elegir para vehiculo o crear

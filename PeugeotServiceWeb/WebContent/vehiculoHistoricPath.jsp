@@ -19,6 +19,7 @@
 			<h2>Seleccionar vehículos</h2>
 			<button class="close" id="closeSelectVehicleForHPLayer">Cerrar <span></span></button>
 		</section>
+		<div class="alert alert-error" id="searchHPerr" style="display: none;"></div>
 		<section class="modal_content apps_listing">
 			<html:form method="POST" action="/viewHistoricPath" styleClass="modal_wrapper">
 				<html:radio name="SelectVehiclesForHistoricPath" property="historicPathLimit" onclick="changeHPSelection()" value="TODAY">HOY</html:radio><br>
@@ -58,19 +59,38 @@ $( "#closeSelectVehicleForHPLayer" ).click(function() {
 	$( "#selectVehiclesForHPLayer" ).fadeOut();
 });
 
-function editMaximas(vehicleId) {
-	<%@ include file="includes/blockUI.jspf" %>
-	  $('#editVehiclesSpeed').load('goToVehiculesSpeedLimits.do?vehicleId='+vehicleId, function(response, status, xhr) {
-		  	<%@ include file="includes/unblockUI.jspf" %>
-			  if (status == "error") {
-			    errorAjax();
-			  } else {
-		 		 $( "#selectVehiclesSpeedLayer" ).fadeOut();
-		  		centerLayer($(window), $( "#editVehiclesSpeedLayer" ));
-		  		centerLayer($(window), $( "#centradorModalesEditSpeed" ));
-			}
-	  });
-  }
+$("input[name=dateStart]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+	changeYear: true, minDate: "-5Y", maxDate: "+0D", yearRange: '-5:+0'});
+$("input[name=dateEnd]").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true,
+	changeYear: true, minDate: "-5Y", maxDate: "+0D", yearRange: '-5:+0'});
+
+$("form[name='SelectVehiclesForHistoricPath']").validate({
+	errorPlacement: function(error, element) {
+		error.appendTo( element.parent("fieldset").next("div"));
+	},
+	submitHandler: function() {
+		<%@ include file="includes/blockUI.jspf" %>
+		$('#searchHPerr').prop('innerHTML', '');
+		$('#searchHPerr').css('display', 'none');
+        $("form[name='SelectVehiclesForHistoricPath']").ajaxSubmit({
+			type: "POST",
+			url: "./viewHistoricPath.do",
+			dataType: "json",
+			success: postSearch,
+			<%@ include file="includes/openErrorLayerJS.jspf" %>
+			});
+    }
+});
+
+function postSearch(data) {
+	<%@ include file="includes/unblockUI.jspf" %>
+	if (data.result == 'OK') {
+		alert('OK');
+	} else {
+		$('#searchHPerr').prop('innerHTML', 'Ha ocurrido un error');
+		$('#searchHPerr').css('display', 'block');
+	}
+}
 
 $( "#closeSelectVehicleForHPLayer" ).click(function() {
 	$( "#selectVehiclesForHPLayer" ).fadeOut();
