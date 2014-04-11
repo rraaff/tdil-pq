@@ -24,6 +24,22 @@ public class ParkingUtils {
 			return DAOManager.getPointOfInterestDAO().selectPointOfInterestByExample(pointOfInterestExample);
 		}
 	}
+	
+	private static final class GetPois implements TransactionalActionWithResult {
+		
+		private String poiType;
+		
+		public GetPois(String poiType) {
+			super();
+			this.poiType = poiType;
+		}
+
+		public Object executeInTransaction() throws SQLException {
+			PointOfInterestExample pointOfInterestExample = new PointOfInterestExample();
+			pointOfInterestExample.createCriteria().andTypeEqualTo(Integer.valueOf(poiType));
+			return DAOManager.getPointOfInterestDAO().selectPointOfInterestByExample(pointOfInterestExample);
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public static List<PointOfInterest> getParkings() {
@@ -42,6 +58,16 @@ public class ParkingUtils {
 
 	public static LatLng getLatLng(PointOfInterest poi) {
 		return new LatLng(poi.getLat().doubleValue(), poi.getLon().doubleValue());
+	}
+
+	public static List<PointOfInterest> getPois(String type) {
+		try {
+			List<PointOfInterest> result = (List<PointOfInterest>)TransactionProvider.executeInTransactionWithResult(new GetPois(type));
+			return result;
+		} catch (SQLException e) {
+			getLog().error(e.getMessage(), e);
+			return new ArrayList<PointOfInterest>();
+		}
 	}
 
 }

@@ -7,6 +7,10 @@
   <param-value>com.tdil.ljpeugeot.struts.resources.ApplicationResources</param-value>
  </context-param>
  <context-param>
+  <param-name>datasourceName</param-name>
+  <param-value>jdbc/peugeotDatabase</param-value>
+ </context-param>
+ <context-param>
   <param-name>system.config</param-name>
   <param-value>com.tdil.ljpeugeot.utils.LJPeugeotConfig</param-value>
  </context-param>
@@ -45,6 +49,14 @@
   <init-param>
    <param-name>expirationTime</param-name>
    <param-value>604800</param-value>
+  </init-param>
+ </filter>
+ <filter>
+  <filter-name>UrlRewriteFilter</filter-name>
+  <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  <init-param>
+   <param-name>logLevel</param-name>
+   <param-value>DEBUG</param-value>
   </init-param>
  </filter>
  <filter-mapping>
@@ -95,19 +107,6 @@
   <filter-name>jsCache</filter-name>
   <url-pattern>*.js</url-pattern>
  </filter-mapping>
- <listener>
-  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
- </listener>
- 
- <filter>
-  <filter-name>UrlRewriteFilter</filter-name>
-  <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-  <init-param>
-   <param-name>logLevel</param-name>
-   <param-value>DEBUG</param-value>
-  </init-param>
- </filter>
- 
  <filter-mapping>
   <filter-name>UrlRewriteFilter</filter-name>
   <url-pattern>/js/*</url-pattern>
@@ -116,10 +115,9 @@
   <filter-name>UrlRewriteFilter</filter-name>
   <url-pattern>/css/*</url-pattern>
  </filter-mapping>
- <context-param>
-  <param-name>datasourceName</param-name>
-  <param-value>jdbc/peugeotDatabase</param-value>
- </context-param>
+ <listener>
+  <listener-class>com.tdil.pool.DBCPoolingListener</listener-class>
+ </listener>
  <!-- context-param>
   <param-name>SqlMapConfig</param-name>
   <param-value>SqlMapConfig-SQLSERVER-JNDI.xml</param-value>
@@ -132,13 +130,13 @@
   <servlet-name>Jersey Web Application</servlet-name>
   <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
   <init-param>
-  <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-  <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
-</init-param>
-<init-param>
-  <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-  <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
-</init-param>
+   <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+   <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+  </init-param>
+  <init-param>
+   <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+   <param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
+  </init-param>
   <load-on-startup>1</load-on-startup>
  </servlet>
  <!-- Action Servlet Configuration -->
@@ -155,30 +153,28 @@
   <servlet-name>DownloadServlet</servlet-name>
   <servlet-class>com.tdil.web.DownloadController</servlet-class>
  </servlet>
- 
  <servlet>
   <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.RefreshThalamusLoginCacheServlet</servlet-class>
  </servlet>
- 
- 
  <servlet>
   <servlet-name>SearchParkingsServlet</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.SearchParkingsServlet</servlet-class>
  </servlet>
- 
-  <servlet>
+ <servlet>
+  <servlet-name>SearchPOIsServlet</servlet-name>
+  <servlet-class>com.tdil.ljpeugeot.servlet.SearchPOIsServlet</servlet-class>
+ </servlet>
+ <servlet>
   <servlet-name>LogJSErrorServlet</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.LogJSErrorServlet</servlet-class>
  </servlet>
- 
-   <servlet>
+ <servlet>
   <servlet-name>GetNativeAppVersionServlet</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.GetNativeAppVersionServlet</servlet-class>
  </servlet>
- 
  <servlet>
-   <servlet-name>FacebookSignIn</servlet-name>
+  <servlet-name>FacebookSignIn</servlet-name>
   <servlet-class>com.tdil.ljpeugeot.servlet.FacebookSignIn</servlet-class>
  </servlet>
  <servlet>
@@ -197,46 +193,45 @@
   <servlet-name>Jersey Web Application</servlet-name>
   <url-pattern>/rest/*</url-pattern>
  </servlet-mapping>
- 
-  <servlet-mapping>
+ <servlet-mapping>
   <servlet-name>LogJSErrorServlet</servlet-name>
   <url-pattern>/logJsErr.st</url-pattern>
  </servlet-mapping>
-   <servlet-mapping>
+ <servlet-mapping>
   <servlet-name>LogJSErrorServlet</servlet-name>
   <url-pattern>/cc/logJsErr.st</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
- <servlet-name>GetNativeAppVersionServlet</servlet-name>
+  <servlet-name>GetNativeAppVersionServlet</servlet-name>
   <url-pattern>/getNativeAppVersion.st</url-pattern>
  </servlet-mapping>
- 
- 
  <servlet-mapping>
   <servlet-name>DownloadServlet</servlet-name>
   <url-pattern>/download.st</url-pattern>
  </servlet-mapping>
- 
-  <servlet-mapping>
+ <servlet-mapping>
   <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
   <url-pattern>/refreshThalamusLoginCacheServlet.st</url-pattern>
  </servlet-mapping>
-   <servlet-mapping>
+ <servlet-mapping>
   <servlet-name>RefreshThalamusLoginCacheServlet</servlet-name>
   <url-pattern>/mobile/refreshThalamusLoginCacheServlet.st</url-pattern>
  </servlet-mapping>
- 
  <!-- Action Servlet Mapping -->
  <servlet-mapping>
   <servlet-name>action</servlet-name>
   <url-pattern>*.do</url-pattern>
  </servlet-mapping>
- 
  <servlet-mapping>
   <servlet-name>SearchParkingsServlet</servlet-name>
   <url-pattern>/searchParkings</url-pattern>
  </servlet-mapping>
+ 
+  <servlet-mapping>
+  <servlet-name>SearchPOIsServlet</servlet-name>
+  <url-pattern>/searchPois</url-pattern>
+ </servlet-mapping>
+ 
  <servlet-mapping>
   <servlet-name>FacebookSignIn</servlet-name>
   <url-pattern>/signin/facebook</url-pattern>
@@ -253,7 +248,6 @@
   <servlet-name>TwitterConnect</servlet-name>
   <url-pattern>/connect/twitter</url-pattern>
  </servlet-mapping>
-  
  <!-- The Usual Welcome File List -->
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

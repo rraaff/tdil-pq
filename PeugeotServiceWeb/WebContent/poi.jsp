@@ -46,12 +46,19 @@
 	var ZOOM_500 = 15;
 	var ZOOM_CAR = 20;
 	var Mapa;
-	var parkings;
+	var parkings = new Array();
 	var origenGeoRef;
 	var POI;
 	var currentPopup;
 	var MyPos;
-	var SearchMeters;
+	var poiTypeToShow;
+	var poiTypeToggle = new Array();
+	poiTypeToggle[0] = false;
+	poiTypeToggle[1] = false;
+	poiTypeToggle[2] = false;
+	poiTypeToggle[3] = false;
+	poiTypeToggle[4] = false;
+	poiTypeToggle[5] = false;
 	var currPoints = new Array(); 
 	var IconSizeForZoom = new Array(); 
 	IconSizeForZoom[0] = 18;
@@ -99,31 +106,28 @@
 	});
 
 	function resizeIcons(e){
-		if (parkings) {
-			if (Mapa.map) {
-				if (currPoints.length > 0) {
-					var actualSize = currPoints[0].icon.size.w;
-					var newSize = IconSizeForZoom[Mapa.map.zoom];
-					var inflateFactor = newSize / actualSize;
-					//alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
-					if (inflateFactor != 1) {
-						for (var i=0;i<currPoints.length;i++) {
-							currPoints[i].inflate(inflateFactor);
-						}
+		if (Mapa.map) {
+			if (currPoints.length > 0) {
+				var actualSize = currPoints[0].icon.size.w;
+				var newSize = IconSizeForZoom[Mapa.map.zoom];
+				var inflateFactor = newSize / actualSize;
+				//alert('zoom ' + Mapa.map.zoom + ', old size' + actualSize + ', new size ' + newSize + ', factor ' + inflateFactor);
+				if (inflateFactor != 1) {
+					for (var i=0;i<currPoints.length;i++) {
+						currPoints[i].inflate(inflateFactor);
 					}
 				}
 			}
 		}
 	}
 
-	function removeParkings() {
+	function removeParkings(poiType) {
 		if (currentPopup != null && currentPopup.visible()) {
 			currentPopup.hide();
 		}
 		currentPopup = null;
-		if (parkings) {
-			Mapa.map.removeLayer(parkings);
-			parkings = null;
+		if (parkings[poiType]) {
+			Mapa.map.removeLayer(parkings[poiType]);
 		}
 	}
         var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
@@ -136,38 +140,20 @@
         function goHome(){
         	window.location = 'home.jsp';
         }
-        function showAllParkings() {
-        	removeParkings();
-        	/*if (MyPos) {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
-            }*/
-            Mapa.SetParameters("toolbar=off&Lat=-34.605004&Lon=-58.451677&Width=84&LayersViewWidth=0&zoom=" + ZOOM_ALL);
-        	currPoints = new Array(); 
-            if (!parkings) {
-	        	parkings = new OpenLayers.Layer.Markers( "Parkings" );
-	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(IconSizeForZoom[ZOOM_ALL],IconSizeForZoom[ZOOM_ALL]);
-	            var offset = new OpenLayers.Pixel(-(size.w/1.5), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_parking.png',size,offset);
-				var proj = new OpenLayers.Projection("EPSG:4326");
-				currPoints = new Array(); 
-				<%List<PointOfInterest> parkings = ParkingUtils.getParkings();%>
-				<%for (PointOfInterest poi : parkings) {%>
-					var cloned = createMarker(<%=poi.getLon()%>,<%=poi.getLat()%>, '<%=poi.getName()%>', '<%=poi.getDescription()%>', proj, icon.clone());
-					currPoints.push(cloned);
-					parkings.addMarker(cloned);
-				<%}%>
-            }
-		}
 
-        function showParkings(meters) {
-        	SearchMeters = meters;
-        	removeParkings();
-            if (!MyPos) { // si no le pedi la posicion, voy por el circuito de pedido de posicion
-				getLocationAndShowParkings();
-            } else {
-            	showParkingsForPos(MyPos);
-            }
+        function toggleParkings(poiType) {
+        	poiTypeToShow = poiType;
+        	if (poiTypeToggle[poiType]) {
+        		poiTypeToggle[poiType] = false;
+        		removeParkings(poiType);
+        	} else {
+        		poiTypeToggle[poiType] = true;
+	            if (!MyPos) { // si no le pedi la posicion, voy por el circuito de pedido de posicion
+					getLocationAndShowParkings();
+	            } else {
+	            	showParkingsForPos(MyPos);
+	            }
+        	}
 		}
 
         function getLocationAndShowParkings() {
@@ -206,28 +192,8 @@
 
         function showParkingsForPos(position) {
         	MyPos = position;
-        	
-        	if (SearchMeters == 1000) {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + ZOOM_1000);
-            } else {
-        		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + + ZOOM_500);
-            }
-        	/*if (isOutSideCABA(MyPos)) {
-        		showErrorLayer("No hay datos fuera de de la Ciudad Autónoma de Buenos Aires.");
-				removeParkings();
-				currPoints = new Array(); 
-				parkings = new OpenLayers.Layer.Markers( "Parkings" );
-	            Mapa.map.addLayer(parkings);
-	            var size = new OpenLayers.Size(64,64);
-	            var sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
-	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_position.png',size,offset);
-				var proj = new OpenLayers.Projection("EPSG:4326");
-				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',sizeCar,offset);
-				parkings.addMarker(createMarker(MyPos.coords.longitude,MyPos.coords.latitude, 'Mi posición', '', proj, iconCar));
-            } else {*/
-        		searchParkings(MyPos.coords.longitude, MyPos.coords.latitude, SearchMeters);
-            /*}*/
+       		Mapa.SetParameters("toolbar=off&Lat="+MyPos.coords.latitude+"&Lon="+MyPos.coords.longitude+"&Width=84&LayersViewWidth=0&zoom=" + + ZOOM_500);
+       		searchParkings(poiTypeToShow);
         }
 
 		function isOutSideCABA(position) {
@@ -241,39 +207,34 @@
 			return false;
 		}
 
-		function searchParkings(lon, lat, rad) {
+		function searchParkings(poiTypeToShow) {
 			$.ajax({
 	            type: "GET",
 	            cache: false,
-	            url: "./searchParkings",
-	            data: {lon: lon, lat: lat, rad: rad },
+	            url: "./searchPois",
+	            data: {poiType: poiTypeToShow },
 	            contentType: "application/json; charset=utf-8",
 	            success: function(msg) {
-            		parkings = new OpenLayers.Layer.Markers( "Parkings" );
-    	            Mapa.map.addLayer(parkings);
+            		parkings[poiTypeToShow] = new OpenLayers.Layer.Markers( poiTypeToShow );
+    	            Mapa.map.addLayer(parkings[poiTypeToShow]);
     	            var size;
     	            var sizeCar;
-    	            if (SearchMeters == 1000) {
-    	        		size = new OpenLayers.Size(IconSizeForZoom[ZOOM_1000],IconSizeForZoom[ZOOM_1000]);
-    	        		sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
-    	            } else {
-    	            	size = new OpenLayers.Size(IconSizeForZoom[ZOOM_500],IconSizeForZoom[ZOOM_500]);
-    	            	sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
-    	            }
+   	        		size = new OpenLayers.Size(IconSizeForZoom[ZOOM_1000],IconSizeForZoom[ZOOM_1000]);
+   	        		sizeCar = new OpenLayers.Size(IconSizeForZoom[ZOOM_CAR],IconSizeForZoom[ZOOM_CAR]);
     	            var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
     	            var icon = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_parking.png',size,offset);
     				var proj = new OpenLayers.Projection("EPSG:4326");
     				var iconCar = new OpenLayers.Icon('<%=LJPeugeotConfig.getFRONT_SERVER()%>/images/skn_peugeot/icons/apps/icon_carinmap.png',sizeCar,offset);
-    				parkings.addMarker(createMarker(lon,lat, 'Mi posición', '', proj, iconCar.clone()));
+    				parkings[poiTypeToShow].addMarker(createMarker(MyPos.lon,MyPos.lat, 'Mi posición', '', proj, iconCar.clone()));
     				currPoints = new Array(); 
 	            	$.each(msg, function(index, item) {
 	    				var cloned = createMarker(item.lon,item.lat, item.name, item.desc, proj, icon.clone());
 						currPoints.push(cloned);
-	    				parkings.addMarker(cloned);
+	    				parkings[poiTypeToShow].addMarker(cloned);
 	                });
 	            },
 	            error: function() {
-	            	showErrorLayer("Error consultando los estacionamientos.");
+	            	showErrorLayer("Error consultando los pois.");
 	            }
 	        });
 		}
@@ -330,11 +291,11 @@
 		<div id="mapContainer" class="smallmap"></div>
 		<section id="controls">
 			<div class="basicControls">
-				<button class="iconEall" onclick="showAllParkings();">&nbsp;</button>
-				<button class="icon100mts" onclick="showParkings(100);">&nbsp;</button>
-				<button class="icon500mts" onclick="showParkings(500);">&nbsp;</button>
-				<button class="icon1mks" onclick="showParkings(1000);">&nbsp;</button>
-				<button class="iconClear" onclick="removeParkings();">&nbsp;</button>	
+				<button class="iconEall" onclick="toggleParkings(0);">&nbsp;</button>
+				<button class="icon100mts" onclick="toggleParkings(1);">&nbsp;</button>
+				<button class="icon500mts" onclick="toggleParkings(2);">&nbsp;</button>
+				<button class="icon1mks" onclick="toggleParkings(3);">&nbsp;</button>
+				<button class="iconClear" onclick="toggleParkings(4);">&nbsp;</button>	
 			</div>
 			<section id="zoomSection">
 				<div class="zoomControls">
