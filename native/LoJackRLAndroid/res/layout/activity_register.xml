@@ -52,8 +52,7 @@
                     android:id="@+id/documentNumber"
                     android:layout_width="fill_parent"
                     android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_doc_number"
                     android:inputType="number"
@@ -65,6 +64,7 @@
                     android:id="@+id/firstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_firstname" >
 
@@ -74,13 +74,15 @@
                     android:id="@+id/lastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_apellido" />
 
-				<RadioGroup android:orientation="vertical"
-				    android:layout_width="match_parent" 
+				<RadioGroup
+				    android:layout_width="match_parent"
 				    android:layout_height="wrap_content"
-				    >
+				    android:layout_marginTop="8dp"
+				    android:orientation="vertical" >
 
 				    <RadioButton
                     android:id="@+id/chkMale"
@@ -95,37 +97,40 @@
                     android:text="@string/btn_female" />
 				</RadioGroup>
                 
-
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_email"
                     android:inputType="textEmailAddress" />
 
                 <TextView
                     android:id="@+id/birthDate"
-                     android:layout_width="wrap_content"
-       				 android:layout_height="wrap_content" 
-       				 android:hint="@string/hnt_birthdate"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/hnt_birthdate"
+                    android:textSize="20sp" />
 
                 <EditText
-	                android:id="@+id/password"
-	                android:layout_width="fill_parent"
-	                android:layout_height="32dp"
-	                android:layout_marginBottom="3dp"
-	                android:layout_marginTop="3dp"
-	                android:ems="10"
-	                android:hint="@string/hnt_doc_password"
-	                android:inputType="textPassword"
-	                android:textSize="16sp"
-	                android:textStyle="normal" />
+                    android:id="@+id/password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="@string/hnt_doc_password"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
 
             <EditText
                 android:id="@+id/retypePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="@string/hnt_doc_password1"
                 android:inputType="textPassword" />
@@ -134,6 +139,7 @@
                     android:id="@+id/areaCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_area_code"
                     android:inputType="number" />
@@ -142,6 +148,7 @@
                     android:id="@+id/mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_mobile"
                     android:inputType="number" />
@@ -149,12 +156,14 @@
                 <Spinner
                     android:id="@+id/state"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
 
                 <EditText
                     android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_city" />
                 
@@ -162,6 +171,7 @@
                     android:id="@+id/street1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_calle1" />
 
@@ -169,18 +179,21 @@
                     android:id="@+id/street2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_calle2" />
 
                 <Spinner
                     android:id="@+id/addressType"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
 
                 <EditText
                     android:id="@+id/postalCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/hnt_postal_code" />
 
@@ -188,8 +201,7 @@
                     android:id="@+id/optIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/btn_optIn" />
 
 	            <Button
@@ -197,7 +209,7 @@
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:layout_marginBottom="3dp"
-	                android:layout_marginTop="3dp"
+	                android:layout_marginTop="8dp"
 	                android:background="@drawable/btn_rojo_normal_holo_light"
 	                android:minHeight="40dp"
 	                android:onClick="@string/dologin"
