@@ -48,8 +48,34 @@ if (apk != null && apk) {
 	<%@ include file="includes/closeLegalesLayer.jsp" %>
 	<%@ include file="includes/closeLayers.jspf" %>
 				
+	$("form[name='EditContactDataForm']").validate({
+		errorPlacement: function(error, element) {
+			error.appendTo( element.parent("fieldset").next("div"));
+		},
+		rules: { 
+			'contact1name': {maxlength: 150},
+			'contact1phone': {maxlength: 20},
+			'contact1secword': {maxlength: 20},
+			'contact1healthi': {maxlength: 100},
+			'contact2name': {maxlength: 150},
+			'contact2phone': {maxlength: 20},
+			'contact3name': {maxlength: 150},
+			'contact3phone': {maxlength: 20}
+		},
+		messages: {
+			'contact1name': {maxlength: "<span>Ingrese hasta 150 caracteres.</span>"},
+			'contact1phone': {maxlength: "<span>Ingrese hasta 20 caracteres.</span>"},
+			'contact1secword': {maxlength: "<span>Ingrese hasta 20 caracteres.</span>"},
+			'contact1healthi': {maxlength: "<span>Ingrese hasta 100 caracteres.</span>"},
+			'contact2name': {maxlength: "<span>Ingrese hasta 150 caracteres.</span>"},
+			'contact2phone': {maxlength: "<span>Ingrese hasta 20 caracteres.</span>"},
+			'contact3name': {maxlength: "<span>Ingrese hasta 150 caracteres.</span>"},
+			'contact3phone': {maxlength: "<span>Ingrese hasta 20 caracteres.</span>"}
+		}
+	});
 			}
 	);
+
 
 	<%@ include file="includes/updatePersonChangePasswordJS.jspf" %>
 	<%@ include file="includes/errorAjaxJS.jspf" %>
@@ -91,6 +117,7 @@ if (apk != null && apk) {
 					<html:text name="EditContactDataForm" property="contact1name" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1name.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Relación</label>
 					<html:select name="EditContactDataForm" property="contact1relation">
@@ -104,21 +131,25 @@ if (apk != null && apk) {
 					</html:select>
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1relation.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact1phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1phone.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Palabra de seguridad</label>
 					<html:text name="EditContactDataForm" property="contact1secword" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1secword.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Cobertura médica</label>
 					<html:text name="EditContactDataForm" property="contact1healthi" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact1healthi.err")%>
 				</fieldset>
+				<div></div>
 			</div>
 		</div>
 		<div class="column1of3">
@@ -129,6 +160,7 @@ if (apk != null && apk) {
 					<html:text name="EditContactDataForm" property="contact2name" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2name.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Relación</label>
 					<html:select name="EditContactDataForm" property="contact2relation">
@@ -142,11 +174,13 @@ if (apk != null && apk) {
 					</html:select>
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2relation.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact2phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact2phone.err")%>
 				</fieldset>
+				<div></div>
 			</div>
 		</div>
 		<div class="column1of3">
@@ -157,6 +191,7 @@ if (apk != null && apk) {
 					<html:text name="EditContactDataForm" property="contact3name" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3name.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Relación</label>
 					<html:select name="EditContactDataForm" property="contact3relation">
@@ -170,11 +205,13 @@ if (apk != null && apk) {
 					</html:select>
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3relation.err")%>
 				</fieldset>
+				<div></div>
 				<fieldset>
 					<label>Teléfono</label>
 					<html:text name="EditContactDataForm" property="contact3phone" />
 					<div class="errorInForm"><%=com.tdil.ljpeugeot.web.LJPeugeotErrorFormatter.getErrorFrom(request, "EditContactDataForm.contact3phone.err")%>
 				</fieldset>
+				<div></div>
 			</div>
 		</div>
 		<fieldset class="button_bar pOnlyTop25">
