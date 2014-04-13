@@ -49,12 +49,12 @@
 						file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
 					}
 					fi.write(file);
-					com.tdil.lojack.vlu.VLUUtils.registerNewImport(file.getName());
+					com.tdil.lojack.vlu.VLUUtils.registerNewImportRepairedDomains(file.getName());
 				}
 			}
 		} catch (Exception ex) {
 			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.lojack.vlu.VLUUtils.class).error(ex.getMessage(), ex);
 		}
 	} 
-	response.sendRedirect(request.getContextPath() + "/admin/vlu.jsp");
+	response.sendRedirect(request.getContextPath() + "/lojackadm/vlu.jsp");
 %>

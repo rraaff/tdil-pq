@@ -4,5 +4,5 @@
 --%><% 
 	String id = request.getParameter("id");
 	VLUUtils.deleteVLUImport(id);
-	response.sendRedirect(request.getContextPath() + "/admin/vlu.jsp");
+	response.sendRedirect(request.getContextPath() + "/lojackadm/vlu.jsp");
 %>
