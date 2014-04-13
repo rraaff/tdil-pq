@@ -14,7 +14,6 @@
 <section id="titles">
 	<h1>LoJack Peugeot BackDoor Application</h1>
 	<h2>Ingreso de usuarios</h2>
-	<h3>Versión: <%@ include file="../includes/version_view.jspf" %></h3>
 </section>
 <section id="content">
 	<article>
@@ -27,6 +26,14 @@
 				<label>Clave</label>
 				<input type="password" name="password">
 			</fieldset>
+			<fieldset>
+				<label>Codigo</label>
+				<img src="../Captcha.jpg" align="middle" alt="Ingrese los caracteres" border="1"/><a href="login.jsp">Regenerar</a>
+				<input type="text" name="code">
+			</fieldset>
+			<% if ("invalidCode".equals(request.getParameter("err"))) { %>
+				El codigo ingresado es incorrecto
+			<% } %>
 			<fieldset class="botonera">
 				<input type="submit" value="Ingresar">
 			</fieldset>

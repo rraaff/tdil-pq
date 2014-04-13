@@ -95,7 +95,7 @@ com.tdil.lojack.gis.LoJackServicesConnector: log de la clase que maneja la comun
 
 Administracion
 La web app expone casos de uso de administrarla desde el website.
-El acceso a la misma es traves de la pagina /admin/login.jsp
+El acceso a la misma es traves de la pagina /lojackadm/login.jsp
 Desde esta pagina, dado un usuario autorizado, se puede acceder a ver, modificar y recargar las sys properties asi como a la configuracion del sistema de logging y bajado del log completo.
 Los usuarios de estas funcionalidades de administracion residen en la tabla SYSTEMUSER y tienen el flag type = 0.
 Se provee un usuario de base cuyo login es tdil y su clave es usu4r10td1l

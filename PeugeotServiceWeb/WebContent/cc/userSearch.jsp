@@ -20,7 +20,7 @@
 <link type="text/css" rel="stylesheet" media="screen" href="../css/<%=com.tdil.utils.SystemConfig.STATIC_RESOURCES_VERSION%>_backdoor.css" />
 </head>
 <body>
-<%@ include file="../admin/includes/header.jsp" %>
+<%@ include file="../lojackadm/includes/header.jsp" %>
 <%@ include file="includes/menu.jspf" %>
 <section id="titles">
 	<h1>LoJack Peugeot CallCenter Application</h1>

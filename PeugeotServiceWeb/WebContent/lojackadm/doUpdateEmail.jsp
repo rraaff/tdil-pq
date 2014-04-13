@@ -9,4 +9,4 @@ notificationEmail.setContent(request.getParameter("content"));
 notificationEmail.setFrom(request.getParameter("from"));
 notificationEmail.setSubject(request.getParameter("subject"));
 PeugeotService.udpateNotificationEmail(notificationEmail);
-response.sendRedirect(request.getContextPath() + "/admin/notificationEmails.jsp");%>
+response.sendRedirect(request.getContextPath() + "/lojackadm/notificationEmails.jsp");%>

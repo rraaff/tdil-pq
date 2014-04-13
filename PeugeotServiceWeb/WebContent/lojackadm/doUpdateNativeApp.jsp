@@ -12,4 +12,4 @@
 	String summary = request.getParameter("summary");
 	
 	PeugeotService.updateNativeApp(idST, code, title, version, url, image, summary);
-response.sendRedirect(request.getContextPath() + "/admin/nativeApps.jsp");%>
+response.sendRedirect(request.getContextPath() + "/lojackadm/nativeApps.jsp");%>

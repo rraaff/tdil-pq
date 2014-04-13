@@ -67,4 +67,4 @@ String dest = null;
 			com.tdil.log4j.LoggerProvider.getLogger(com.tdil.ljpeugeot.feeds.ImportUtils.class).error(ex.getMessage(), ex);
 		}
 	} 
-	response.sendRedirect(request.getContextPath() + "/admin/" + dest);%>
+	response.sendRedirect(request.getContextPath() + "/lojackadm/" + dest);%>

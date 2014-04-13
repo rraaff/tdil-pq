@@ -4,4 +4,4 @@
 --%><%String category = request.getParameter("category");
 	String level = request.getParameter("level");
 	com.tdil.ljpeugeot.utils.LoggerUtils.setLogLevel(category, level);
-	response.sendRedirect(request.getContextPath() + "/admin/logger.jsp");%>
+	response.sendRedirect(request.getContextPath() + "/lojackadm/logger.jsp");%>
