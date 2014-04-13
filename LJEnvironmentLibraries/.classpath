@@ -53,5 +53,6 @@
 	<classpathentry exported="true" kind="lib" path="guava-15.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="super-csv-2.1.0.jar" sourcepath="super-csv-2.1.0-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="junit-3.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="jcaptcha-1.0-all.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
