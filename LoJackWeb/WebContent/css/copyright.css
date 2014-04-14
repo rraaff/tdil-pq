@@ -12,25 +12,22 @@
 #copyright .ios_store img	{ height:74px; }
 
 
-@media only screen and (max-width: 1780px) {
+@media only screen and (max-width:1780px) {
 	#copyright { top:860px; }
 }
-@media only screen and (max-width: 1000px) {
-	#copyright .wrapper { width:580px; height:74px; }
-	#copyright .copy { width:280px; margin:12px 10px 0; }
-}
-@media only screen and (max-width: 700px) {
-	#copyright .wrapper			{ width:100%; }
-	#copyright .android_play,
-	#copyright .ios_store		{ width:200px; float:right; position:absolute; top:80px; }
-	#copyright .copy			{ width:100%; margin:12px 0 0; }
+@media only screen and (max-width:1000px) {
+	#copyright .wrapper 		{ width:100%; display:inline-block; }
+	#copyright .android_play	{ width:200px; float:none; position:absolute; top:0; right:10px; }
+	#copyright .ios_store		{ top:0; left:10px; position:absolute; }
+	#copyright .copy			{ width:100%; margin:0; padding:0 220px; top:20px; left:0; position:absolute; }
 	#copyright p				{ padding:0 43px; }
-	#copyright .android_play	{ text-align:center; width:100%; top:29px; right:initial; position:relative; }
-	/*#copyright .android_play	{ right:30px; }*/
-	#copyright .ios_store		{ /*left:30px;*/ display:none; }
 }
-@media only screen and (max-width: 459px) {
-	/*#copyright					{ top:520px!important; }*/
-	/*#copyright .android_play	{ right:25%; top:29px; position:relative; }
-	#copyright .ios_store		{ left:-25%; top:267px; position:relative; }*/
+@media only screen and (max-width:850px) {
+	#copyright .copy			{ padding:0 20px; top:100px; }
+}
+@media only screen and (max-width:450px) {
+	#copyright .ios_store,
+	#copyright .android_play	{ width: 100%; float: none; left:0px; text-align: center; }
+	#copyright .android_play	{ top: 90px; }
+	#copyright .copy			{ top: 185px; }
 }
