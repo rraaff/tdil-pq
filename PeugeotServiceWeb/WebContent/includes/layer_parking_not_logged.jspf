@@ -8,7 +8,6 @@
 			<button class="close" cl="parkingsNotLoggedLayer">Cerrar <span></span></button>
 		</section>
 		<section class="modal_content">
-			<span class="modal_subtitle">Elegí una opción</span>
 			<form class="modal_wrapper">
 				<fieldset class="button_bar">
 					<button class="botton_ahead" id="recoverPasswordFromPois">Recuperar clave<span></span></button>
