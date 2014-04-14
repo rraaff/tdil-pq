@@ -322,17 +322,30 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 					if (task.getStatusCode() != 201) {
 						JSONObject jsonObj = new JSONObject(task.getResult());
 						JSONObject errors = jsonObj.getJSONObject("errors");
-						JSONArray entry = errors.getJSONArray("entry");
-						for (int i = 0; i < entry.length(); i++) {
-							JSONObject err = entry.getJSONObject(i);
-							String key = err.getString("key");
-							String value = err.getString("value");
-							if (key.equals("credential.principal=credential.principal.CredentialAlreadyExists")) {
-								if (value.equals("profile.document=AlreadyExists")) {
+						JSONObject entryErrors = errors.optJSONObject("entry");
+						if (entryErrors != null) {
+							String key = entryErrors.getString("key");
+							String value = entryErrors.getString("value");
+							if (key.equals("credential.principal")) {
+								if (value.equals("CredentialAlreadyExists")) {
 									document.setError("El numero de documento ya existe");
 								} else {
 									email.setError("El email ya existe");
 								}	
+							}
+						} else {
+							JSONArray entry = errors.getJSONArray("entry");
+							for (int i = 0; i < entry.length(); i++) {
+								JSONObject err = entry.getJSONObject(i);
+								String key = err.getString("key");
+								String value = err.getString("value");
+								if (key.equals("credential.principal=credential.principal.CredentialAlreadyExists")) {
+									if (value.equals("profile.document=AlreadyExists")) {
+										document.setError("El numero de documento ya existe");
+									} else {
+										email.setError("El email ya existe");
+									}	
+								}
 							}
 						}
 					} else {
