@@ -124,17 +124,19 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			}
 		});
 		if (TAB_CAMARAS.equals(tab)) {
+			tabHost.setCurrentTab(3);
 			tabHost.setCurrentTab(2);
-			loadCameras();
+//			loadCameras();
 		} else {
 			if (TAB_LUCES.equals(tab)) {
+				tabHost.setCurrentTab(3);
 				tabHost.setCurrentTab(1);
-				loadLights();
+//				loadLights();
 			} else {
 				if (TAB_ALARMAS.equals(tab)) {
-					tabHost.setCurrentTab(1);
+					tabHost.setCurrentTab(3);
 					tabHost.setCurrentTab(0);
-					loadAlarms();
+//					loadAlarms();
 				} else {
 					tabHost.setCurrentTab(3);
 				}
@@ -150,15 +152,18 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		super.onResume();
 		TabHost th = (TabHost) findViewById(R.id.tabhost);
 		if (th.getCurrentTab() == 0) {
-			loadAlarms();
+			if (alarmsLoaded) {
+				loadAlarms();
+			}
 		}
 		if (th.getCurrentTab() == 1) {
-			loadLights();
+			if (lightsLoaded) {
+				loadLights();
+			}
 		}
 	}
 
 	public void loadAlarms() {
-		alarmsLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
@@ -166,10 +171,24 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				AlarmCollection col = gson.fromJson(task.getResult(),
 						AlarmCollection.class);
 				alarms = new ArrayList<Alarm>(col.getAlarms());
-				Resources res = getResources();
-				alarmListAdapter = new AlarmListAdapter(HomeAlarmsActivity.this,
-						alarms, res);
-				alarmsList.setAdapter(alarmListAdapter);
+				
+				if (col.getAlarms().size() == 1) {
+					alarmsLoaded = false;
+					tabHost.setCurrentTab(0);
+					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeAlarmDashboard.class);
+					intent.putExtra(HomeAlarmDashboard.ALARM, col.getAlarms().iterator().next());
+					intent.putExtra(HomeAlarmDashboard.HAS_MORE, "FALSE");
+//					intent.putExtra(HomeLightDashboard.LI, col.getCameras().size());
+					HomeAlarmsActivity.this.startActivity(intent);
+					HomeAlarmsActivity.this.finish();
+				}  else {
+					alarmsLoaded = true;
+					Resources res = getResources();
+					alarmListAdapter = new AlarmListAdapter(HomeAlarmsActivity.this,
+							alarms, res);
+					alarmsList.setAdapter(alarmListAdapter);
+				}
+				
 			}
 			@Override
 			public void error(IRestClientTask task) {
@@ -179,7 +198,6 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 	}
 	
 	public void loadLights() {
-		lightsLoaded = true;
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
@@ -187,10 +205,21 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 				LightCollection col = gson.fromJson(task.getResult(),
 						LightCollection.class);
 				ligths = new ArrayList<Light>(col.getLights());
-				Resources res = getResources();
-				lightsListAdapter = new LightListAdapter(HomeAlarmsActivity.this,
-						ligths, res);
-				lightsList.setAdapter(lightsListAdapter);
+				if (col.getLights().size() == 1) {
+					lightsLoaded = false;
+					tabHost.setCurrentTab(1);
+					Intent intent = new Intent(HomeAlarmsActivity.this.getBaseContext(), HomeLightDashboard.class);
+					intent.putExtra(HomeLightDashboard.LIGHT, col.getLights().iterator().next());
+//					intent.putExtra(HomeLightDashboard.LI, col.getCameras().size());
+					HomeAlarmsActivity.this.startActivity(intent);
+					HomeAlarmsActivity.this.finish();
+				}  else {
+					lightsLoaded = true;
+					Resources res = getResources();
+					lightsListAdapter = new LightListAdapter(HomeAlarmsActivity.this,
+							ligths, res);
+					lightsList.setAdapter(lightsListAdapter);
+				}
 			}
 			@Override
 			public void error(IRestClientTask task) {

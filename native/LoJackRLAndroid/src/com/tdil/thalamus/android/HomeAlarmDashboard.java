@@ -43,6 +43,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	public static final String TAB_ALARMAS = "ALARMAS";
 	
 	private Alarm alarm;
+	private boolean hasMore;
 	private HomeAlarmsActivity previous;
 	private boolean ignore = true;
 	
@@ -51,6 +52,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	private static long sleep = 2000;
 	
 	public static final String ALARM = "ALARM";
+	public static final String HAS_MORE = "HAS_MORE";
 	private Switch activateDeactivate;
 	
 	private TabSpec tabCameras;
@@ -82,6 +84,9 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		tabHost.addTab(tabCameras);
 		
 		alarm = (Alarm)extras.getSerializable(ALARM);
+		
+		hasMore = !"FALSE".equals((String)extras.getSerializable(HAS_MORE));
+		
 		activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
@@ -96,10 +101,12 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 				@Override
 				public void onClick(View arg0) {
 					if (index == 0) {
-						Intent intent = new Intent(HomeAlarmDashboard.this, HomeAlarmsActivity.class);
-						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_ALARMAS);
-			        	startActivity(intent);
-			        	HomeAlarmDashboard.this.finish();
+						if (hasMore) {
+							Intent intent = new Intent(HomeAlarmDashboard.this, HomeAlarmsActivity.class);
+							intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_ALARMAS);
+							startActivity(intent);
+							HomeAlarmDashboard.this.finish();
+						}
 					}
 					if (index == 1) {
 						Intent intent = new Intent(HomeAlarmDashboard.this, HomeAlarmsActivity.class);

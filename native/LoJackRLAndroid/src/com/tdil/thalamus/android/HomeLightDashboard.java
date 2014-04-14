@@ -43,10 +43,12 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	public static final String TAB_ALARMAS = "ALARMAS";
 	
 	private Light light;
+	private boolean hasMore;
 	private boolean ignore = true;
 	private HomeLightsActivity previous;
 	
 	public static final String LIGHT = "LIGHT";
+	public static final String HAS_MORE = "HAS_MORE";
 	
 	private int times = 0;
 	private static int max_times = 10;
@@ -90,6 +92,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		View viewlog = findViewById(R.id.goToViewLightLog);
 		viewlog.setOnClickListener(new ViewLightLogListener(this));
 		light = (Light)extras.getSerializable(LIGHT);
+		hasMore = !"FALSE".equals((String)extras.getSerializable(HAS_MORE));
 		init();
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -106,10 +109,12 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 			        	HomeLightDashboard.this.finish();
 					}
 					if (index == 1) {
-						Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
-						intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
-			        	startActivity(intent);
-			        	HomeLightDashboard.this.finish();
+						if (hasMore) {
+							Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
+							intent.putExtra(HomeAlarmsActivity.SELECTED_TAB, HomeAlarmsActivity.TAB_LUCES);
+				        	startActivity(intent);
+				        	HomeLightDashboard.this.finish();
+						}
 					}
 					if (index == 2) {
 						Intent intent = new Intent(HomeLightDashboard.this, HomeAlarmsActivity.class);
