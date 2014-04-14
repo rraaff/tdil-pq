@@ -52,8 +52,8 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		AlertLogic.installLogic(this);
 		/** END ALERTA */
 
-		View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
-		sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));
+		//View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
+		//sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));
 
 		View configEmergencyButton = findViewById(R.id.configEmergencyButton);
 		configEmergencyButton.setOnClickListener(new View.OnClickListener() {
