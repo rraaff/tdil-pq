@@ -658,7 +658,9 @@ body.errorPage				{ background-color:#000; background-image: url(../images/skn_p
 	button#carsecur			{ left:47px; }
 	button#services			{ left:9px; }
 }
-
+@media only screen and (max-height:700px) {
+	#page_title		{ display:none; }
+}
 @media only screen and (max-height:600px) {
 	section.action_bar								{ height:36px; }
 	section.action_bar div.ac_logo_mobile img		{ width:36px; padding:2px; }
