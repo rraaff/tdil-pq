@@ -1,6 +1,6 @@
 /* COPYRIGHT */
 #copyright					{ width:100%; bottom:20px; position:absolute; z-index:1000; }
-#copyright .wrapper 		{ width:880px; margin:0 auto; }
+#copyright .wrapper 		{ width:1000px; margin:0 auto; }
 #copyright .copy			{ color:#fff; font-size:9px; font-family:'GothamLightRegular','Gotham', 'Helvetica', Arial, sans-serif; text-align:center; line-height:13px; text-transform:uppercase; width:580px; margin:23px 10px 0; float:left; }
 #copyright a				{ color:#ee5222; -o-transition:color .2s ease-out; -ms-transition:color .2s ease-out; -moz-transition:color .2s ease-out; -webkit-transition:color .2s ease-out; /* ...and now override with proper CSS property */ transition:color .2s ease-out; }
 #copyright a:hover,
@@ -8,9 +8,8 @@
 #copyright p 				{ color:#fff; }
 #copyright .android_play,
 #copyright .ios_store		{ width:200px; float:left; }
-#copyright .ios_store		{ width:80px; text-align:right; padding:13px 0 0; }
-#copyright .ios_store img	{ height:50px; -o-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -ms-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -moz-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; -webkit-transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; transition:height .2s ease-out, top .2s ease-out, padding .2s ease-out; }
-#copyright .ios_store img:hover	{ height:80px; padding:0; top:-18px; position:relative; }
+#copyright .ios_store		{ text-align:right; }
+#copyright .ios_store img	{ height:74px; }
 
 
 @media only screen and (max-width: 1780px) {

@@ -1,9 +1,8 @@
 <section id="copyright">
 	<div class="wrapper">
 		<div class="ios_store">
-			<a href="https://play.google.com/store/apps/details?id=com.tdil.lojack.rl" title="Descargar ahora de Google Play" target="_blank">
-			<!-- img src="images/skin_RealLife_two/external/ios_store.png" title="Pronto disponible en Apple Store" /-->
-				<img src="images/skin_RealLife_two/external/QRLojackAPPAndroid.png" />
+			<a href="https://itunes.apple.com/ar/app/loapp/id824165674?mt=8&ign-mpt=uo%3D4" title="Descargar ahora de Google Play" target="_blank">
+				<img src="images/skin_RealLife_two/external/ios_store.png" />
 			</a>
 		</div>
 		<div class="copy">
