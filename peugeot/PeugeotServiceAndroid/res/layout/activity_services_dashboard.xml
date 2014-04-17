@@ -172,11 +172,20 @@
 	    android:id="@+id/sendAlertView"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
-	    android:layout_gravity="center_vertical|center_horizontal"
+	    android:layout_gravity="right"
 	    android:background="@drawable/toplayer85"
-	    android:gravity="center_vertical|center_horizontal"
+	    android:gravity="right"
 	    android:visibility="gone" >
 	
+	    <LinearLayout
+	        android:id="@+id/sendAlertButtonContainer"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:background="@drawable/toplayer85"
+	        android:gravity="center_horizontal|center_vertical|right"
+	        android:visibility="visible" >
+
 		<Button
 		    android:id="@+id/sendAlertButton"
 		    android:layout_width="131dp"
@@ -196,6 +205,7 @@
 		    android:layout_height="44dp"
 		    android:background="@drawable/bg_emergency_button_close"
 		    android:gravity="center_vertical|right" />
+		</LinearLayout>
 	 
 	</LinearLayout>
 <!-- END ALERTA -->

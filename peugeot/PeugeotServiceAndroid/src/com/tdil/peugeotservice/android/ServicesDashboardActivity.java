@@ -125,7 +125,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	// }
 
 	public static void updateAlertLocation(final Activity activity, AlertResponseBean resp,
-			double updatedLatitude, double updatedLongitude, final boolean silent) {
+			double updatedLatitude, double updatedLongitude, final boolean silent, final SendAlertOnClickListener listener) {
 		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
@@ -142,6 +142,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 									public void onClick(
 											DialogInterface dialog,
 											int whichButton) {
+										listener.alertSent();
 									}
 								}).show();
 						
@@ -174,7 +175,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 	}
 
 	public static void sendAlert(final Activity activity, final double longitude, final double latitude,
-			final String mPhoneNumber) {
+			final String mPhoneNumber, final SendAlertOnClickListener listener) {
 		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
@@ -191,6 +192,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 									public void onClick(
 											DialogInterface dialog,
 											int whichButton) {
+										listener.alertSent();
 									}
 								}).show();
 					} else {
@@ -203,7 +205,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 					    	if ( manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER )) {
 					    		// pido la ubicacion basada en wifi o antena
 					    		manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0,
-					    				new UpdateLocationListener(resp, manager, activity));
+					    				new UpdateLocationListener(resp, manager, activity, listener));
 					    	} else {
 					    		final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 					    	    builder.setMessage("Se ha enviado el alerta pero su ubicacion no pudo ser determinada. " +
@@ -213,12 +215,13 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 					    	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
 					    	            	   activity.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 					    	                   manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    	                		   new UpdateLocationListener(resp, manager, activity));
+					    	                		   new UpdateLocationListener(resp, manager, activity, listener));
 					    	               }
 					    	           })
 					    	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
 					    	               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
 					    	                    dialog.cancel();
+					    	                    listener.alertSent();
 					    	               }
 					    	           });
 					    	    final AlertDialog alert = builder.create();
@@ -226,7 +229,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 					    	}
 					    } else {
 					    	manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    			new UpdateLocationListener(resp, manager, activity));
+					    			new UpdateLocationListener(resp, manager, activity, listener));
 					    }
 					} 
 				}else {

@@ -13,13 +13,15 @@ public class UpdateLocationListener implements LocationListener {
 	private final LocationManager lm;
 	private final Activity activity;
 	private boolean alreadySent = false;
+	private SendAlertOnClickListener listener;
 	
 
 	public UpdateLocationListener(AlertResponseBean resp,
-			LocationManager lm, Activity activity) {
+			LocationManager lm, Activity activity, SendAlertOnClickListener listener) {
 		this.resp = resp;
 		this.lm = lm;
 		this.activity = activity;
+		this.listener = listener;
 	}
 
 	public void onLocationChanged(Location location) {
@@ -28,7 +30,7 @@ public class UpdateLocationListener implements LocationListener {
 			double updatedLongitude = location.getLongitude();
 			double updatedLatitude = location.getLatitude();
 			destroy();
-			ServicesDashboardActivity.updateAlertLocation(activity, resp, updatedLatitude, updatedLongitude, false);
+			ServicesDashboardActivity.updateAlertLocation(activity, resp, updatedLatitude, updatedLongitude, false, listener);
 		}
 	}
 

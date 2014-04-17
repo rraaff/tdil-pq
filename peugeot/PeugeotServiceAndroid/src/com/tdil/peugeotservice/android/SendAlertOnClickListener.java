@@ -10,10 +10,20 @@ import android.view.View;
 public class SendAlertOnClickListener implements View.OnClickListener {
 	
 	private Activity activity;
+	private View openSendAlertView;
+	private View sendAlertView;
 	
-	public SendAlertOnClickListener(Activity activity) {
+	public SendAlertOnClickListener(Activity activity, View openSendAlertView,
+			View sendAlertView) {
 		super();
 		this.activity = activity;
+		this.openSendAlertView = openSendAlertView;
+		this.sendAlertView = sendAlertView;
+	}
+	
+	public void alertSent() {
+		openSendAlertView.setVisibility(View.VISIBLE);
+		sendAlertView.setVisibility(View.GONE);
 	}
 
 	@Override
@@ -32,13 +42,13 @@ public class SendAlertOnClickListener implements View.OnClickListener {
 		final LocationManager manager = (LocationManager) activity.getSystemService( Context.LOCATION_SERVICE );
 		Location lastKnownLocation = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if (lastKnownLocation != null) {
-			ServicesDashboardActivity.sendAlert(activity, lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber);
+			ServicesDashboardActivity.sendAlert(activity, lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber, this);
 		} else {
 			Location lastKnownLocation1 = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 	    	if (lastKnownLocation1 != null) {
-	    		ServicesDashboardActivity.sendAlert(activity, lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber);
+	    		ServicesDashboardActivity.sendAlert(activity, lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber, this);
 	    	} else {
-	    		ServicesDashboardActivity.sendAlert(activity, 0, 0, mPhoneNumber);
+	    		ServicesDashboardActivity.sendAlert(activity, 0, 0, mPhoneNumber, this);
 	    	}
 		}
 	}
