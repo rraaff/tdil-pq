@@ -11,6 +11,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -73,6 +75,8 @@ public class CheckForUpdateActivity extends Activity {
                     mHandler.post(showUpdate);
                 } else {
                 	// activate activity
+                	AppStart appStart = checkAppStart();
+//                	if (appStart == AppStart.FIRST_TIME)
                 	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
                 	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
                 	startActivity(intent);
@@ -123,5 +127,79 @@ public class CheckForUpdateActivity extends Activity {
             })
             .show();
            }
-    };    
+    }; 
+    
+    /**
+     * Distinguishes different kinds of app starts: <li>
+     * <ul>
+     * First start ever ({@link #FIRST_TIME})
+     * </ul>
+     * <ul>
+     * First start in this version ({@link #FIRST_TIME_VERSION})
+     * </ul>
+     * <ul>
+     * Normal app start ({@link #NORMAL})
+     * </ul>
+     * 
+     * @author schnatterer
+     * 
+     */
+    public enum AppStart {
+        FIRST_TIME, FIRST_TIME_VERSION, NORMAL;
+    }
+
+    /**
+     * The app version code (not the version name!) that was used on the last
+     * start of the app.
+     */
+    private static final String LAST_APP_VERSION = "last_app_version";
+
+    /**
+     * Caches the result of {@link #checkAppStart()}. To allow idempotent method
+     * calls.
+     */
+    private static AppStart appStart = null;
+
+    /**
+     * Finds out started for the first time (ever or in the current version).
+     * 
+     * @return the type of app start
+     */
+    public AppStart checkAppStart() {
+        if (appStart == null) {
+            try {
+            	final String PREFS_NAME = "RLPrefsFile";
+            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            	int currentVersionCode = getPackageManager().getPackageInfo(
+    					"com.tdil.lojack.rl", 0).versionCode;
+                int lastVersionCode = settings.getInt(
+                        LAST_APP_VERSION, -1);
+                // String versionName = pInfo.versionName;
+                appStart = checkAppStart(currentVersionCode, lastVersionCode);
+                // Update version in preferences
+                settings.edit()
+                        .putInt(LAST_APP_VERSION, currentVersionCode).commit();
+            } catch (NameNotFoundException e) {
+            	e.printStackTrace();
+            	appStart = AppStart.NORMAL;
+            }
+        }
+        return appStart;
+    }
+
+    public AppStart checkAppStart(int currentVersionCode, int lastVersionCode) {
+        if (lastVersionCode == -1) {
+            return AppStart.FIRST_TIME;
+        } else if (lastVersionCode < currentVersionCode) {
+            return AppStart.FIRST_TIME_VERSION;
+        } else if (lastVersionCode > currentVersionCode) {
+//            Log.w(Constants.LOG, "Current version code (" + currentVersionCode
+//                    + ") is less then the one recognized on last startup ("
+//                    + lastVersionCode
+//                    + "). Defenisvely assuming normal app start.");
+            return AppStart.NORMAL;
+        } else {
+            return AppStart.NORMAL;
+        }
+    }
 }
