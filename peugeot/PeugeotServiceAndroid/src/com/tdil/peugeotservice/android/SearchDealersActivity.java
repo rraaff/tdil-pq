@@ -51,6 +51,9 @@ public class SearchDealersActivity extends ActionBarActivity {
 
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		final Spinner statesSpinner = (Spinner) findViewById(R.id.dealersStatesSpinner);
 		citiesSpinner = (Spinner) findViewById(R.id.dealersCitiesSpinner);

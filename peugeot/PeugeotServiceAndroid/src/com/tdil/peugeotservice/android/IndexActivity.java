@@ -32,15 +32,15 @@ public class IndexActivity extends ActionBarActivity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
 
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
 
 //		BitmapFactory.Options options = new BitmapFactory.Options();
 //		options.inSampleSize = 4;
 		
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		this.getSupportActionBar().setDisplayShowHomeEnabled(false);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 //		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); 
 //		getSupportActionBar().setCustomView(R.layout.actionbar);
 		

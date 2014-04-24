@@ -72,10 +72,13 @@ public class PreventActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_prevent);
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		
-		setContentView(parkingsWebView);
+		//setContentView(parkingsWebView);
 		setProgressBarVisibility(true);
 		WebSettings webSettings = parkingsWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);

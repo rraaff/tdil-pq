@@ -72,6 +72,10 @@ public class AddServiceActivity extends ActionBarActivity implements ValidationL
 		
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);
 		

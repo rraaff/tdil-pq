@@ -97,6 +97,9 @@ public class UpdateActivity extends ActionBarActivity implements IRestClientObse
 		
 		setContentView(R.layout.activity_update);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 		birthDate = (TextView) findViewById(R.id.birthDate);
 		birthDate.setOnClickListener(new View.OnClickListener() {
 			@Override

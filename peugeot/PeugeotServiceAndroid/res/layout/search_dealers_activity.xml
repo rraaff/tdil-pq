@@ -38,5 +38,56 @@
 		    style="@style/ButtonListItems" />
 
     </LinearLayout>
+<!-- START ALERTA -->
+	
+	<Button
+	    android:id="@+id/openSendAlertView"
+	    android:layout_width="35dp"
+	    android:layout_height="44dp"
+	    android:minHeight="35dp"
+	    android:minWidth="44dp"
+	    android:layout_gravity="right|center"
+	    android:background="@drawable/bg_emergency_button_init" />
+	
+	<LinearLayout
+	    android:id="@+id/sendAlertView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_gravity="right"
+	    android:background="@drawable/toplayer85"
+	    android:gravity="right"
+	    android:visibility="gone" >
+	
+	    <LinearLayout
+	        android:id="@+id/sendAlertButtonContainer"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:background="@drawable/toplayer85"
+	        android:gravity="center_horizontal|center_vertical|right"
+	        android:visibility="visible" >
 
+		<Button
+		    android:id="@+id/sendAlertButton"
+		    android:layout_width="131dp"
+		    android:layout_height="44dp"
+		    android:background="@drawable/bg_emergency_button_center"
+		    android:gravity="center_vertical|left"
+		    android:minHeight="44dp"
+		    android:minWidth="131dp"
+		    android:paddingLeft="44dp"
+		    android:text="REPORTAR\nUNA EMERGENCIA"
+		    android:textColor="@color/bgBase"
+		    android:textSize="8sp" />
+		
+		<Button
+		    android:id="@+id/closeSendAlertButton"
+		    android:layout_width="22dp"
+		    android:layout_height="44dp"
+		    android:background="@drawable/bg_emergency_button_close"
+		    android:gravity="center_vertical|right" />
+		</LinearLayout>
+	 
+	</LinearLayout>
+<!-- END ALERTA -->
 </merge>

@@ -92,6 +92,9 @@ public class UpdateEmergencyConfigActivity extends ActionBarActivity implements 
 	    
 		setContentView(R.layout.update_contact_data_activity);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		contact1name = (TextView) findViewById(R.id.contact1NameEditText);
 		contact1relationSpinner = (Spinner) findViewById(R.id.contact1RelationSpinner);

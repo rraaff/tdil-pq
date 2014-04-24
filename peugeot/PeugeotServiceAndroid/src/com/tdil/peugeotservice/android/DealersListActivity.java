@@ -52,6 +52,9 @@ public class DealersListActivity extends ActionBarActivity {
 		
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		Bundle extras = getIntent().getExtras();
 		city = (CityBean)extras.getSerializable(CITY);

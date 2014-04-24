@@ -51,6 +51,10 @@ public class AdvicesActivity extends ActionBarActivity {
 
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		final ListView list = (ListView) findViewById(R.id.advices);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {

@@ -82,6 +82,9 @@ public class SelectVehiclesForDealerActivity extends ActionBarActivity implement
 	
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 		
 		vehiclesSpinner = (Spinner) findViewById(R.id.vehiclesForDealersSpinner);
 		email = (TextView) findViewById(R.id.emailForServiceEditText);

@@ -72,10 +72,13 @@ public class ParkingsActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_parkings);
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		/** START ALERTA */
+		AlertLogic.installLogic(this);
+		/** END ALERTA */
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		
-		setContentView(parkingsWebView);
+//		setContentView(parkingsWebView);
 		setProgressBarVisibility(true);
 		WebSettings webSettings = parkingsWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
