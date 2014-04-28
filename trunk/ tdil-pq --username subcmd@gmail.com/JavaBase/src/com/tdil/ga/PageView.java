@@ -3,7 +3,9 @@ package com.tdil.ga;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.Proxy;
@@ -53,6 +55,9 @@ public class PageView implements Runnable {
 	@Override
 	public void run() {
 		BufferedReader in = null;
+		InputStream conIn = null;
+		DataOutputStream wr = null;
+		OutputStream conOut = null;
 		try {
 			String url = null;
 			String payload = asPayload();
@@ -70,15 +75,15 @@ public class PageView implements Runnable {
 			}
 			con.setRequestProperty("User-Agent", ua);
 			con.setDoOutput(true);
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			conOut = con.getOutputStream();
+			wr = new DataOutputStream(conOut);
 			wr.writeBytes(this.asPayload());
 			wr.flush();
-			wr.close();
+			conIn = con.getInputStream();
 			in = new BufferedReader(
-			        new InputStreamReader(con.getInputStream()));
+			        new InputStreamReader(conIn));
 			String inputLine;
 			StringBuffer response = new StringBuffer();
- 
 			while ((inputLine = in.readLine()) != null) {
 				response.append(inputLine);
 			}
@@ -90,9 +95,22 @@ public class PageView implements Runnable {
 			if (in != null) {
 				try {
 					in.close();
-				} catch (IOException e) {
-					logger.error(e.getMessage(), e);
-				}
+				} catch (IOException e) {}
+			}
+			if (conIn != null) {
+				try {
+					conIn.close();
+				} catch (IOException e) {}
+			}
+			if (wr != null) {
+				try {
+					wr.close();
+				} catch (IOException e) {}
+			}
+			if (conOut != null) {
+				try {
+					conOut.close();
+				} catch (IOException e) {}
 			}
 		}
  
