@@ -20,13 +20,13 @@ import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.HttpContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 
 import com.tdil.peugeotservice.android.utils.Login;
@@ -52,8 +52,13 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	
 	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
 	
+	static {
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
+	}
+	
 	public static void recreateClient() {
 		httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
 	}
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
