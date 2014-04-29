@@ -15,6 +15,7 @@ import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreProtocolPNames;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,9 +42,13 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	private boolean incomplete = false;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
+	static {
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
+	}
 	
 	public static void recreateClient() {
 		httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
 	}
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
