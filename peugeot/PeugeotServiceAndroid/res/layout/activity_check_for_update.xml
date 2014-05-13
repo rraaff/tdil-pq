@@ -48,6 +48,6 @@
         android:layout_marginBottom="66dp"
         android:text="@string/action_loading"
         android:textColor="@color/bgBase"
-        android:textSize="12sp" />
+        android:textSize="13sp" />
 
 </RelativeLayout>

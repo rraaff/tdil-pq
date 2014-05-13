@@ -14,45 +14,97 @@
         android:orientation="vertical"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
-        android:background="@drawable/bg_white_degrade" >
+        android:background="@color/bgBaseGray" >
 
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="81dp"
+            android:background="@color/black"
+            android:gravity="top" >
+
+            <TableRow
+                android:id="@+id/signatureBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ac_secondary_bar" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="81dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/gr_iso"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/gr_signature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/signature" />
+
+                    <ImageView
+                        android:id="@+id/gr_userIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+        
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:layout_marginTop="0dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:padding="20dp" >
 
                 <TextView
                     android:id="@+id/loadingInfoText"
+                    style="@style/MainTitles"
+                    android:layout_marginTop="0dp"
                     android:text="@string/title_contact1"
-                    style="@style/MainTitles" />
+                    android:textColor="@color/bgBase" />
 
                 <EditText
                     android:id="@+id/contact1NameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/hnt_contact1name" />
+                    android:hint="@string/hnt_contact1name"
+                    style="@style/FormsElements_editText" />
 
                 <Spinner
                     android:id="@+id/contact1RelationSpinner"
                     android:layout_width="fill_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/bgFormFieldsLight" />
 
                 <EditText
                     android:id="@+id/contact1PhoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:hint="@string/hnt_contact1phone"
-                    android:inputType="number" >
+                    android:inputType="number"
+                    style="@style/FormsElements_editText" >
 
                     <requestFocus />
                 </EditText>
@@ -61,79 +113,77 @@
                     android:id="@+id/securityWordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/hnt_security_word" />
+                    android:hint="@string/hnt_security_word"
+                    style="@style/FormsElements_editText" />
 
                 <EditText
                     android:id="@+id/healthInsuranceEditText"
                     android:layout_width="fill_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp"
-                    android:ems="10"
+                    android:layout_height="wrap_content"
                     android:hint="@string/hnt_health_insurance"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
+                    style="@style/FormsElements_editText" />
 
                 <TextView
                     android:id="@+id/TextView01"
+                    style="@style/MainTitles"
                     android:text="@string/title_contact2"
-					style="@style/MainTitles" />
+                    android:textColor="@color/bgBase" />
 
                 <EditText
                     android:id="@+id/contact2NameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/hnt_contact2name" />
+                    android:hint="@string/hnt_contact2name"
+                    style="@style/FormsElements_editText" />
 
                 <Spinner
                     android:id="@+id/contact2RelationSpinner"
                     android:layout_width="fill_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp" />
+                    android:layout_height="wrap_content"
+					android:background="@color/bgFormFieldsLight" />
 
                 <EditText
                     android:id="@+id/contact2PhoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:hint="@string/hnt_contact1phone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    style="@style/FormsElements_editText" />
 
                 <TextView
                     android:id="@+id/TextView02"
+                    style="@style/MainTitles"
                     android:text="@string/title_contact3"
-					style="@style/MainTitles" />
+                    android:textColor="@color/bgBase" />
 
                 <EditText
                     android:id="@+id/contact3NameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/hnt_contact3name" />
+                    android:hint="@string/hnt_contact3name"
+                    style="@style/FormsElements_editText" />
 
                 <Spinner
                     android:id="@+id/contact3RelationSpinner"
                     android:layout_width="fill_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginTop="3dp" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/bgFormFieldsLight" />
 
                 <EditText
                     android:id="@+id/contact3PhoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:hint="@string/hnt_contact3phone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    style="@style/FormsElements_editText" />
 
                 <Button
                     android:id="@+id/updateEmergenccyConfigButton"
+                    style="@style/ButtonDarkForward"
+                    android:layout_width="fill_parent"
                     android:onClick="@string/dologin"
-                    android:text="@string/btn_tag_modify"
-                    style="@style/ButtonListItems" />
+                    android:text="@string/btn_tag_modify" />
+
             </LinearLayout>
 
         </ScrollView>

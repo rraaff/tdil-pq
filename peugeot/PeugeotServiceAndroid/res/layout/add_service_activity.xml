@@ -11,8 +11,64 @@
         android:orientation="vertical"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
-        android:background="@drawable/bg_white_degrade" >
+        android:background="@color/bgBaseGray" >
 
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="81dp"
+            android:background="@color/black"
+            android:gravity="top" >
+
+            <TableRow
+                android:id="@+id/signatureBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ac_secondary_bar" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="81dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/gr_iso"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/gr_signature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/signature" />
+
+                    <ImageView
+                        android:id="@+id/gr_userIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+        
+		<TextView
+			android:id="@+id/loadingInfoText"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/title_activity_add_service"
+			style="@style/FormTitles"  />
+        
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
@@ -21,34 +77,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/bgBase"
                 android:orientation="vertical"
-                android:padding="20dp">
-                
-                <TextView
-                    android:id="@+id/loadingInfoText"
-                    style="@style/MainTitles"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:text="@string/title_activity_add_service" />
+                android:padding="20dp" >
 
-                <TextView
-                    android:id="@+id/serviceDate"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginRight="3dp"
+                        android:text="Fecha del service"
+                        android:textColor="@color/bgBase"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/serviceDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        style="@style/FormsElements_editText" />
+
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/serviceKmEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
                     android:hint="@string/hnt_service_km"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    style="@style/FormsElements_editText" />
 
 	            <Button
 	                android:id="@+id/addServiceButton"
-	                style="@style/ButtonListItems"
+	                style="@style/ButtonDarkForward"
+	                android:layout_width="fill_parent"
+	                android:layout_marginLeft="0dp"
+	                android:layout_marginRight="0dp"
+	                android:layout_marginTop="25dp"
 	                android:onClick="@string/dologin"
 	                android:text="@string/btn_tag_add" />
 

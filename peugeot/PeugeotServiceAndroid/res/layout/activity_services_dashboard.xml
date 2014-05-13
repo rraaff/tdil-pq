@@ -40,7 +40,8 @@
                         android:layout_height="48dp"
                         android:layout_gravity="left|center_vertical"
                         android:layout_margin="10dp"
-                        android:src="@drawable/iso" />
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
 
                     <ImageView
                         android:id="@+id/gr_signature"
@@ -58,7 +59,8 @@
                         android:layout_height="48dp"
                         android:layout_gravity="center_vertical|right"
                         android:layout_margin="10dp"
-                        android:src="@drawable/icon_user" />
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
 
                 </LinearLayout>
 
@@ -94,11 +96,11 @@
 				            android:text="@string/btn_send_emergency" 
 				            android:visibility=""/ -->
 	
-				        <Button
+				        <!-- Button
 				            android:id="@+id/configEmergencyButton"
 				            android:onClick="@string/dologin"
 				            android:text="@string/btn_config_emergencias"
-				            style="@style/ButtonListItems" />
+				            style="@style/ButtonListItems" /-->
 	
 				        <Button
 				            android:id="@+id/myServicesButton"

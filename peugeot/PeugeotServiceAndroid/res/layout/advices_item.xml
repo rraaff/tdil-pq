@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/bar_bg"
-	android:paddingTop="0dip"
-	android:stretchColumns="1" >
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="0dip"
+    android:stretchColumns="1" >
 
 	<TableRow
 	    android:layout_width="fill_parent"
@@ -29,29 +28,31 @@
 				    android:layout_width="fill_parent"
 				    android:layout_height="wrap_content"
 				    android:layout_gravity="left|center_vertical"
-				    android:layout_marginTop="4dip"
+				    android:layout_margin="8dp"
 				    android:layout_span="1"
 				    android:layout_weight="1"
 				    android:text="CZP075 (RCZ)"
 				    android:textAllCaps="true"
-				    android:textColor="@color/lst_itm_title"
-				    android:textSize="16sp" />
+				    android:textColor="@color/bgBase"
+				    android:textSize="24sp" />
 
 			</TableRow>
 
 			<LinearLayout
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="8dp"
 			    android:orientation="horizontal" >
 				
 				<TextView
 				    android:id="@+id/kmLabel"
-				    android:layout_width="40dp"
+				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
+				    android:layout_marginRight="2dp"
 				    android:layout_marginTop="2dp"
 				    android:text="@string/lst_itm_service_before_km"
-				    android:textColor="@color/lst_itm_normal"
-				    android:textSize="11sp" />
+				    android:textColor="@color/bgBase"
+				    android:textSize="13sp" />
 				
 				<TextView
 				    android:id="@+id/serviceBeforeKm"
@@ -59,7 +60,8 @@
 				    android:layout_height="wrap_content"
 				    android:layout_marginTop="2dp"
 				    android:text="100,000"
-				    android:textSize="11sp" />
+				    android:textColor="@color/bgBase"
+				    android:textSize="13sp" />
 
 			</LinearLayout>
 
@@ -67,16 +69,18 @@
 			    android:id="@+id/beforeDateSection"
 			    android:layout_width="fill_parent"
 			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="8dp"
 			    android:orientation="horizontal" >
 			    
 				<TextView
 				    android:id="@+id/beforeDateServiceLabel"
-				    android:layout_width="80dp"
+				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
+				    android:layout_marginRight="2dp"
 				    android:layout_marginTop="2dp"
 				    android:text="@string/lst_itm_service_before_date"
-				    android:textColor="@color/lst_itm_normal"
-				    android:textSize="11sp" />
+				    android:textColor="@color/bgBase"
+				    android:textSize="13sp" />
 					
 				<TextView
 				    android:id="@+id/serviceBeforeDate"
@@ -84,8 +88,8 @@
 				    android:layout_height="wrap_content"
 				    android:layout_marginTop="2dp"
 				    android:text="2013-05-04"
-				    android:textColor="@color/lst_itm_unk"
-				    android:textSize="11sp" />
+				    android:textColor="@color/bgBase"
+				    android:textSize="13sp" />
 	     
 			</LinearLayout>
 		</LinearLayout>
@@ -93,6 +97,7 @@
 		<LinearLayout
 		    android:layout_width="0dp"
 		    android:layout_height="fill_parent"
+		    android:layout_marginRight="8dp"
 		    android:layout_weight="1"
 		    android:gravity="center_vertical"
 		    android:orientation="vertical" >
@@ -102,7 +107,7 @@
 			    android:layout_width="24dp"
 			    android:layout_height="24dp"
 			    android:layout_gravity="center_vertical|center_horizontal"
-			    android:background="@drawable/btn_white_forward"
+			    android:background="@drawable/ic_ac_forward_white"
 			    android:contentDescription="@string/btn_tag_go" />
 
 		</LinearLayout>

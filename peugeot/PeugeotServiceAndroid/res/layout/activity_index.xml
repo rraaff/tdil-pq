@@ -35,7 +35,8 @@
                         android:layout_height="48dp"
                         android:layout_gravity="left|center_vertical"
                         android:layout_margin="10dp"
-                        android:src="@drawable/iso" />
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
 
                     <ImageView
                         android:id="@+id/gr_signature"
@@ -53,7 +54,8 @@
                         android:layout_height="48dp"
                         android:layout_gravity="center_vertical|right"
                         android:layout_margin="10dp"
-                        android:src="@drawable/icon_user" />
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
 
                 </LinearLayout>
 
@@ -130,10 +132,10 @@
 	    android:id="@+id/openSendAlertView"
 	    android:layout_width="35dp"
 	    android:layout_height="44dp"
+	    android:layout_gravity="right|bottom"
+	    android:background="@drawable/bg_emergency_button_init"
 	    android:minHeight="35dp"
-	    android:minWidth="44dp"
-	    android:layout_gravity="right|center"
-	    android:background="@drawable/bg_emergency_button_init" />
+	    android:minWidth="44dp" />
 	
 	<LinearLayout
 	    android:id="@+id/sendAlertView"
