@@ -55,7 +55,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		//View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
 		//sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));
 
-		View configEmergencyButton = findViewById(R.id.configEmergencyButton);
+		/*View configEmergencyButton = findViewById(R.id.configEmergencyButton);
 		configEmergencyButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -63,7 +63,7 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 						ServicesDashboardActivity.this,
 						UpdateEmergencyConfigActivity.class));
 			}
-		});
+		});*/
 
 		View myServices = findViewById(R.id.myServicesButton);
 		myServices.setOnClickListener(new View.OnClickListener() {

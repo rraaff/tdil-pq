@@ -6,6 +6,9 @@
 	<color name="grayTabBase">#f0f0f0</color>
 	
 	<color name="bgBase">#FFFFFF</color>
+	<color name="bgBaseGray">#4c4c58</color>
+	<color name="bgFormFields">#706f7e</color>
+	<color name="bgFormFieldsLight">#cfcfda</color>
 	
 	<color name="MainTitles">#00aad5</color>
 	<color name="SecondayTitles">#595a67</color>

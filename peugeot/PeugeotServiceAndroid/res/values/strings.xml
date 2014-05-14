@@ -27,9 +27,9 @@
     <string name="title_activity_check_for_update">Peugeot AXS</string>
     <string name="title_activity_login">INGRESO DE USUARIOS</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
-    <string name="title_activity_register">REGISTRATE</string>
-    <string name="title_activity_update">MODIFICAR</string>
-    <string name="title_activity_change_password">CAMBIAR CLAVE</string>
+    <string name="title_activity_register">Registrate</string>
+    <string name="title_activity_update">Mis datos</string>
+    <string name="title_activity_change_password">Mi clave</string>
     <string name="title_activity_login_for_action_bar">Peugeot AXS</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
@@ -63,6 +63,8 @@
     <string name="lbl_actualPass">Clave actual</string>
     <string name="lbl_newPass">Nueva clave</string>
     <string name="lbl_newPassRep">Repetir nueva</string>
+
+    <string name="lbl_birth_date">Fecha de nac.</string>
     
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
