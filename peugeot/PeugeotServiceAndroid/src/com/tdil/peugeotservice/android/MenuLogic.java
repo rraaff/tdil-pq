@@ -63,7 +63,9 @@ public class MenuLogic {
 			activity.finish();
 			return true;
 		case R.id.menu_back:
-			activity.finish();
+			if (!(activity instanceof IndexActivity)) {
+				activity.finish();
+			}
 			return true;
 		case R.id.secondaryMenu:
 			return true;
@@ -73,7 +75,9 @@ public class MenuLogic {
 //	    	activity.finish();
 //			return true;
 		default:
-			activity.finish();
+			if (!(activity instanceof IndexActivity)) {
+				activity.finish();
+			}
 			return false;
 		}
 	}

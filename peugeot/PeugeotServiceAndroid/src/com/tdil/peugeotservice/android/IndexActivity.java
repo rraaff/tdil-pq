@@ -37,7 +37,7 @@ public class IndexActivity extends ActionBarActivity {
 //		options.inSampleSize = 4;
 		
 		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		this.getSupportActionBar().setDisplayShowHomeEnabled(false);
+		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 		/** START ALERTA */
 		AlertLogic.installLogic(this);
 		/** END ALERTA */
