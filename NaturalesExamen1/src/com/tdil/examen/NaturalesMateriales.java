@@ -44,7 +44,7 @@ public class NaturalesMateriales {
 				createList("Naturales", "Manufacturados", "Sinteticos"), 
 				createList("Sinteticos")));
 		
-		result.addQuestion(new OptionQuestion("Los metales, segun sus propiedades, se pueden clasificar en:", 
+		result.addQuestion(new OptionQuestion("Los materiales, segun sus propiedades, se pueden clasificar en:", 
 				createList("Buenos y malos conductores del calor", "Buenos y malos conductores de la electricidad", "Duros o blandos, flexibles o rigidos", "Claros u oscuros", "Negros o de color"), 
 				createList("Buenos y malos conductores del calor", "Buenos y malos conductores de la electricidad", "Duros o blandos, flexibles o rigidos")));
 		
