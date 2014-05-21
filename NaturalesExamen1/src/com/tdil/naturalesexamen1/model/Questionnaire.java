@@ -15,7 +15,7 @@ public class Questionnaire implements Serializable {
 
 	private List<Question> questions = new ArrayList<Question>();
 	
-	private int currentQuestion = 0;
+	private int currentQuestion = -1;
 	private int correct = 0;
 
 	public void random() {

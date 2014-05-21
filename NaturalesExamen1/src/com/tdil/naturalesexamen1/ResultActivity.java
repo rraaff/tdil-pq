@@ -1,5 +1,7 @@
 package com.tdil.naturalesexamen1;
 
+import java.text.DecimalFormat;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -24,6 +26,9 @@ public class ResultActivity extends ActionBarActivity {
 		Questionnaire questionnaire = (Questionnaire) extras.getSerializable(QuestionActivity.QUESTIONNAIRE);
 		
 		((TextView)findViewById(R.id.resultText)).setText("Resultado " + questionnaire.getCorrect() + "/" + questionnaire.getQuestions().size());
+		double result = questionnaire.getCorrect() / questionnaire.getQuestions().size() * 10;
+		
+		((TextView)findViewById(R.id.finalNumber)).setText(new DecimalFormat("##.##").format(result));
 		
 		findViewById(R.id.redoButton).setOnClickListener(
 			new View.OnClickListener() {
