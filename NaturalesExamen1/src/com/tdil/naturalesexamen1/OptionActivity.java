@@ -36,6 +36,12 @@ public class OptionActivity extends QuestionActivity {
 		((CheckBox)findViewById(R.id.opt4)).setText(question.getOpt4());
 		((CheckBox)findViewById(R.id.opt5)).setText(question.getOpt5());
 		
+		hideShowOption(R.id.opt1, question.getOpt1());
+		hideShowOption(R.id.opt2, question.getOpt2());
+		hideShowOption(R.id.opt3, question.getOpt3());
+		hideShowOption(R.id.opt4, question.getOpt4());
+		hideShowOption(R.id.opt5, question.getOpt5());
+		
 		findViewById(R.id.continueButton).setOnClickListener(
 			new View.OnClickListener() {
 				@Override
@@ -70,6 +76,14 @@ public class OptionActivity extends QuestionActivity {
 				}
 			});
 		
+	}
+
+	private void hideShowOption(int id, String opt) {
+		if (opt == null || opt.length() == 0) {
+			((CheckBox)findViewById(id)).setVisibility(View.GONE);
+		} else {
+			((CheckBox)findViewById(id)).setVisibility(View.VISIBLE);
+		}
 	}
 
 	@Override
