@@ -27,6 +27,11 @@ public class LoginResponse {
 	private boolean vluClient;
 	private int vluMessages;
 	
+	private boolean clubLoJackUser;
+	private int clubLoJackLevel;
+	private String dni;
+	private String clubLoJackUrlDestination;
+	
 	public LoginResponse() {
 	}
 	
@@ -161,6 +166,38 @@ public class LoginResponse {
 
 	public void setVluMessages(int vluMessages) {
 		this.vluMessages = vluMessages;
+	}
+
+	public boolean setClubLoJackUser() {
+		return clubLoJackUser;
+	}
+
+	public void setClubLoJackUser(boolean clubLoJackUser) {
+		this.clubLoJackUser = clubLoJackUser;
+	}
+
+	public int getClubLoJackLevel() {
+		return clubLoJackLevel;
+	}
+
+	public void setClubLoJackLevel(int clubLoJackLevel) {
+		this.clubLoJackLevel = clubLoJackLevel;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getClubLoJackUrlDestination() {
+		return clubLoJackUrlDestination;
+	}
+
+	public void setClubLoJackUrlDestination(String urlDestination) {
+		this.clubLoJackUrlDestination = urlDestination;
 	}
 
 }

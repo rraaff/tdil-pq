@@ -169,6 +169,10 @@ public class FooterLogic  {
         Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack.tv"));
         activity.startActivity(ljtvintent); 
 	}
+
+	public static void handleClubLoJackAccess(final Activity activity) {
+		activity.startActivity(new Intent(activity, ClubLJActivity.class));
+	}
 }
 
 

@@ -1,0 +1,63 @@
+<merge xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ClubLJActivity" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Login progress -->
+
+
+    <!-- Login form -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/main_square"
+        android:gravity="top"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_gravity="top|center"
+            android:background="@drawable/tarjeta_club_lojack_nueva" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="122dp"
+                android:layout_marginLeft="32dp"
+                android:text="Usuario (DNI):" />
+
+            <TextView
+                android:id="@+id/userDNITextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView1"
+                android:layout_alignBottom="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/clubLJNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView1"
+                android:layout_alignRight="@+id/userDNITextView"
+                android:layout_below="@+id/userDNITextView"
+                android:layout_marginTop="24dp"
+                android:text="TextView" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/viewClubLJBenefits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+    </LinearLayout>
+
+</merge>

@@ -50,6 +50,15 @@
         </activity>
         
         <activity
+            android:name="com.tdil.thalamus.android.ClubLJActivity"
+            android:label="@string/user_name"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:icon="@drawable/icon_user"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
             android:name="com.tdil.thalamus.android.HomeAlarmDashboard"
             android:label="@string/title_dashboard_alarms"
 	        android:configChanges="orientation"

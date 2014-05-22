@@ -71,6 +71,15 @@
                             android:background="@drawable/rd_item_ljtv"
                             android:text="@string/btn_tv" />
 
+                        <Button
+                            android:id="@+id/btnClubLJ"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/rd_item_ljtv"
+                            android:text="@string/btn_tv" />
+
                     </RelativeLayout>
 
                 </LinearLayout>

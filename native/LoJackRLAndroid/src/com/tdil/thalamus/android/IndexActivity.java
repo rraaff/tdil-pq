@@ -41,6 +41,8 @@ public class IndexActivity extends Activity {
 	private static final String PETS = "PETS";
 	private static final String PREVENT = "CAR";
 	
+	private static final String CLUB_LJ = "CLUB_LJ";
+	
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -64,11 +66,16 @@ public class IndexActivity extends Activity {
 		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
 		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 		
+		findViewById(R.id.btnClubLJ).setOnTouchListener(new StartDragOnTouchListener(this, CLUB_LJ, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		
+		
 		findViewById(R.id.btnFooterPrevent).setOnDragListener(new ButtonDragListener(PREVENT));
 		findViewById(R.id.btnFooterPets).setOnDragListener(new ButtonDragListener(PETS));
 		findViewById(R.id.btnFooterParkings).setOnDragListener(new ButtonDragListener(PARKINGS));
 		findViewById(R.id.btnFooterTV).setOnDragListener(new ButtonDragListener(TV));
 		findViewById(R.id.btnFooterHome).setOnDragListener(new ButtonDragListener(HOME));
+		
+		findViewById(R.id.btnClubLJ).setOnDragListener(new ButtonDragListener(CLUB_LJ));
 		
 //		Pablo, este es el nuevo onclick y on long clic
 		/*
@@ -249,6 +256,7 @@ public class IndexActivity extends Activity {
 				findViewById(R.id.btnFooterPets).setAlpha(1);
 				findViewById(R.id.btnFooterPrevent).setAlpha(1);
 				findViewById(R.id.btnFooterTV).setAlpha(1);
+				findViewById(R.id.btnClubLJ).setAlpha(1);
 				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
 				break;
@@ -262,6 +270,7 @@ public class IndexActivity extends Activity {
 				findViewById(R.id.btnFooterPets).setAlpha(1);
 				findViewById(R.id.btnFooterPrevent).setAlpha(1);
 				findViewById(R.id.btnFooterTV).setAlpha(1);
+				findViewById(R.id.btnClubLJ).setAlpha(1);
 				if (HOME.equals(event.getLocalState()) && HOME.equals(this.buttonTarget)) {
 					FooterLogic.handleHomeAccess(IndexActivity.this, false);
 				}
@@ -276,6 +285,9 @@ public class IndexActivity extends Activity {
 				}
 				if (TV.equals(event.getLocalState()) && TV.equals(this.buttonTarget)) {
 					FooterLogic.handleTvAccess(IndexActivity.this);
+				}
+				if (CLUB_LJ.equals(event.getLocalState()) && CLUB_LJ.equals(this.buttonTarget)) {
+					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
 				}
 				
 				break;
@@ -330,6 +342,9 @@ public class IndexActivity extends Activity {
 				}
 				if (TV.equals(event.getLocalState())) {
 					FooterLogic.handleTvAccess(IndexActivity.this);
+				}
+				if (CLUB_LJ.equals(event.getLocalState())) {
+					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
 				}
 				
 				break;
