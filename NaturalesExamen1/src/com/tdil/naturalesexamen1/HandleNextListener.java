@@ -1,6 +1,6 @@
 package com.tdil.naturalesexamen1;
 
-import com.tdil.naturalesexamen1.model.Questionnaire;
+import com.tdil.examen.model.Questionnaire;
 
 import android.content.DialogInterface;
 import android.content.Intent;

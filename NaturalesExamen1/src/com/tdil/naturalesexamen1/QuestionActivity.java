@@ -2,7 +2,7 @@ package com.tdil.naturalesexamen1;
 
 import android.support.v7.app.ActionBarActivity;
 
-import com.tdil.naturalesexamen1.model.Questionnaire;
+import com.tdil.examen.model.Questionnaire;
 
 public abstract class QuestionActivity extends ActionBarActivity {
 

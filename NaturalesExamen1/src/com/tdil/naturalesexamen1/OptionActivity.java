@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import com.tdil.examen.Messages;
-import com.tdil.naturalesexamen1.model.OptionQuestion;
-import com.tdil.naturalesexamen1.model.Questionnaire;
-import com.tdil.naturalesexamen1.model.TrueFalseQuestion;
+import com.tdil.examen.model.OptionQuestion;
+import com.tdil.examen.model.Questionnaire;
+import com.tdil.examen.model.TrueFalseQuestion;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -100,7 +100,7 @@ public class OptionActivity extends QuestionActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_about) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

@@ -3,9 +3,9 @@ package com.tdil.examen;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tdil.naturalesexamen1.model.OptionQuestion;
-import com.tdil.naturalesexamen1.model.Questionnaire;
-import com.tdil.naturalesexamen1.model.TrueFalseQuestion;
+import com.tdil.examen.model.OptionQuestion;
+import com.tdil.examen.model.Questionnaire;
+import com.tdil.examen.model.TrueFalseQuestion;
 
 public class NaturalesMateriales {
 
