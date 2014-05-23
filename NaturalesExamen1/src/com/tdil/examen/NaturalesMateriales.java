@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 import com.tdil.examen.model.MultipleWordQuestion;
+import com.tdil.examen.model.OptionQuestion;
 import com.tdil.examen.model.Questionnaire;
 import com.tdil.examen.model.SimpleWordQuestion;
+import com.tdil.examen.model.TrueFalseQuestion;
 
 public class NaturalesMateriales {
 
@@ -20,10 +22,12 @@ public class NaturalesMateriales {
 		result.addQuestion(new MultipleWordQuestion("Nombre los estados de la materia:", 
 				createSet("Solido", "Liquido", "Gaseoso")));
 		
-		/*result.addQuestion(new OptionQuestion("Cuales son los estados de la materia:", 
+		result.addQuestion(new OptionQuestion("Cuales son los estados de la materia:", 
 				createList("Solido", "Liquido", "Gaseoso","Semi solido","Semi liquido"), 
 				createList("Solido", "Liquido", "Gaseoso")));
 		
+		result.addQuestion(new TrueFalseQuestion("Los materiales que NO SE DEGRADAN on el paso del tiempo son NO BIODEGRADABLES", true));
+		/*
 		result.addQuestion(new OptionQuestion("Cual es el estado de una roca:", 
 				createList("Solido", "Liquido", "Gaseoso"), 
 				createList("Solido")));
