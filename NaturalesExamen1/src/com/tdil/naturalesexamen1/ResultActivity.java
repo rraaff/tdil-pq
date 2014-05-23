@@ -26,7 +26,10 @@ public class ResultActivity extends ActionBarActivity {
 		Questionnaire questionnaire = (Questionnaire) extras.getSerializable(QuestionActivity.QUESTIONNAIRE);
 		
 		((TextView)findViewById(R.id.resultText)).setText("Resultado " + questionnaire.getCorrect() + "/" + questionnaire.getQuestions().size());
-		double result = questionnaire.getCorrect() / questionnaire.getQuestions().size() * 10;
+		
+		float correct = questionnaire.getCorrect();
+		float total = questionnaire.getQuestions().size();
+		float result = correct / total * 10;
 		
 		((TextView)findViewById(R.id.finalNumber)).setText(new DecimalFormat("##.##").format(result));
 		
@@ -64,6 +67,8 @@ public class ResultActivity extends ActionBarActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_about) {
+			Intent intent = new Intent(this.getBaseContext(), AboutActivity.class);
+			this.startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

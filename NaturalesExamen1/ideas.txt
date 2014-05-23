@@ -1,0 +1,5 @@
+valor de aprobacion para el examen
+color para el numero final
+idea de progreso, 1/x
+
+titulo y descripcion para el examen

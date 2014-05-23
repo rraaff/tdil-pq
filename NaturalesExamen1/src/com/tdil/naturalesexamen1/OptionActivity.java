@@ -101,6 +101,8 @@ public class OptionActivity extends QuestionActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_about) {
+			Intent intent = new Intent(this.getBaseContext(), AboutActivity.class);
+			this.startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
