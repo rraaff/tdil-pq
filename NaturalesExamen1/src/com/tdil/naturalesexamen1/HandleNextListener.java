@@ -45,10 +45,17 @@ public class HandleNextListener implements DialogInterface.OnClickListener {
 					activity.startActivity(intent);
 					activity.finish();
 				} else {
-					Intent intent = new Intent(activity.getBaseContext(), OptionActivity.class);
-					intent.putExtra(QuestionActivity.QUESTIONNAIRE, questionnaire);
-					activity.startActivity(intent);
-					activity.finish();
+					if (questionnaire.nextQuestionIsMultipleWord()) {
+						Intent intent = new Intent(activity.getBaseContext(), MultipleWordActivity.class);
+						intent.putExtra(QuestionActivity.QUESTIONNAIRE, questionnaire);
+						activity.startActivity(intent);
+						activity.finish();
+					} else {
+						Intent intent = new Intent(activity.getBaseContext(), OptionActivity.class);
+						intent.putExtra(QuestionActivity.QUESTIONNAIRE, questionnaire);
+						activity.startActivity(intent);
+						activity.finish();
+					}
 				}
 			}
 		}

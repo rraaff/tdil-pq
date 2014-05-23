@@ -45,6 +45,9 @@ public class Questionnaire implements Serializable {
 	public boolean nextQuestionIsSimpleWord() {
 		return questions.get(currentQuestion) instanceof SimpleWordQuestion;
 	}
+	public boolean nextQuestionIsMultipleWord() {
+		return questions.get(currentQuestion) instanceof MultipleWordQuestion;
+	}
 	
 	public void addQuestion(Question question) {
 		this.getQuestions().add(question);

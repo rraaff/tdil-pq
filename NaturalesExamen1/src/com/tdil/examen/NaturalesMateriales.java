@@ -5,10 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.tdil.examen.model.OptionQuestion;
+import com.tdil.examen.model.MultipleWordQuestion;
 import com.tdil.examen.model.Questionnaire;
 import com.tdil.examen.model.SimpleWordQuestion;
-import com.tdil.examen.model.TrueFalseQuestion;
 
 public class NaturalesMateriales {
 
@@ -16,6 +15,9 @@ public class NaturalesMateriales {
 		Questionnaire result = new Questionnaire();
 		
 		result.addQuestion(new SimpleWordQuestion("Nombre un estado de la materia:", 
+				createSet("Solido", "Liquido", "Gaseoso")));
+		
+		result.addQuestion(new MultipleWordQuestion("Nombre los estados de la materia:", 
 				createSet("Solido", "Liquido", "Gaseoso")));
 		
 		/*result.addQuestion(new OptionQuestion("Cuales son los estados de la materia:", 
