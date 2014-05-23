@@ -1,10 +1,13 @@
 package com.tdil.examen;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.tdil.examen.model.OptionQuestion;
 import com.tdil.examen.model.Questionnaire;
+import com.tdil.examen.model.SimpleWordQuestion;
 import com.tdil.examen.model.TrueFalseQuestion;
 
 public class NaturalesMateriales {
@@ -12,7 +15,10 @@ public class NaturalesMateriales {
 	public static final Questionnaire createExamen() {
 		Questionnaire result = new Questionnaire();
 		
-		result.addQuestion(new OptionQuestion("Cuales son los estados de la materia:", 
+		result.addQuestion(new SimpleWordQuestion("Nombre un estado de la materia:", 
+				createSet("Solido", "Liquido", "Gaseoso")));
+		
+		/*result.addQuestion(new OptionQuestion("Cuales son los estados de la materia:", 
 				createList("Solido", "Liquido", "Gaseoso","Semi solido","Semi liquido"), 
 				createList("Solido", "Liquido", "Gaseoso")));
 		
@@ -161,6 +167,7 @@ public class NaturalesMateriales {
 		result.addQuestion(new OptionQuestion("Esqueleto de barras de hierro que se rellena con hormigon:", 
 				createList("Yeso", "Cemento", "Hormigon", "Hormigon armado"), 
 				createList("Hormigon armado")));
+		*/
 		
 		result.random();
 		return result;
@@ -168,6 +175,14 @@ public class NaturalesMateriales {
 
 	private static List<String> createList(String... args) {
 		List<String> result = new ArrayList<String>();
+		for (String s : args) {
+			result.add(s);
+		}
+		return result;
+	}
+	
+	private static Set<String> createSet(String... args) {
+		HashSet<String> result = new HashSet<String>();
 		for (String s : args) {
 			result.add(s);
 		}

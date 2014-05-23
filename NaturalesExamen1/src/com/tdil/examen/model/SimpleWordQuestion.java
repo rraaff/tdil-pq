@@ -33,7 +33,7 @@ public class SimpleWordQuestion extends Question {
 	public boolean correctResult(String result) {
 		String test = result.trim();
 		test = test.toLowerCase();
-		return this.posibleCorrectAnswers.equals(test);
+		return this.posibleCorrectAnswers.contains(test);
 	}
 
 }
