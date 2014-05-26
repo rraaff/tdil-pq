@@ -107,6 +107,8 @@
     <string name="btn_female">Femenino</string>
     <string name="btn_optIn">Acepto recibir contactos de LoJack y sus compañías asociadas</string>
     
+    <string name="btn_club_benefits">Ver beneficios</string>
+    
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>
     
