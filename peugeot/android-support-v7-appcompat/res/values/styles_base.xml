@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Like in themes_base.xml, the namespace "*.AppCompat.Base" is used to
          define base styles for the platform version. The "*.AppCompat"
@@ -249,7 +249,8 @@
         <item name="android:dropDownWidth">wrap_content</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:clickable">true</item>
-        <item name="android:background">@drawable/abc_spinner_ab_holo_dark</item>
+        <item name="android:textColor">#ffffff</item>
+        <!-- item name="android:background">@drawable/abc_spinner_ab_holo_dark</item -->
     </style>
 
     <style name="Widget.AppCompat.Light.Base.Spinner" parent="Widget.AppCompat.Base.Spinner">
