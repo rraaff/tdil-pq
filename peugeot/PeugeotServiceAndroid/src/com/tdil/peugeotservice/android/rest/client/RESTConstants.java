@@ -57,6 +57,7 @@ public interface RESTConstants {
 	
 	public static final String ADD_ALERT = "/vehicles/addAlert/" + P_PHONE + "/" + P_LAT + "/" + P_LON;
 	public static final String UPDATE_ALERT = "/vehicles/updateAlert/" + P_ALERTID + "/" + P_LAT + "/" + P_LON;
+	public static final String GET_CURRENT_MONTH_ALERTS = "/vehicles/alerts/currentMonth";
 	
 	public static final String GET_CONTACT_DATA = "/users/contactData";
 	public static final String POST_CONTACT_DATA = "/users/contactData";
