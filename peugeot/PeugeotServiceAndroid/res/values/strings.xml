@@ -21,6 +21,7 @@
     <string name="lst_title_official_services">Agencias/Service autorizados:</string>
     <string name="lst_title_dealers">Concesionarios:</string>
     <string name="lst_title_advices">Avisos</string>
+    <string name="lst_title_alerts">Alertas</string>
     
     
     <!-- Titles -->
@@ -117,6 +118,7 @@
     
     <string name="btn_select_for_my_services">Seleccionar para mis services</string>
     <string name="btn_send_emergency">Enviar emergencia</string>
+    <string name="btn_close_historic">Cerrar</string>
     
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>
