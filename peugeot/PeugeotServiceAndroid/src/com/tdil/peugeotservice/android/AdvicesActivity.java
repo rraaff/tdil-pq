@@ -29,9 +29,6 @@ import com.tdil.peugeotservice.android.rest.client.RestParams;
 import com.tdil.peugeotservice.android.rest.model.AdviceBean;
 import com.tdil.peugeotservice.android.rest.model.AdviceBeanCollection;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
-import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
-import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBeanCollection;
-import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
