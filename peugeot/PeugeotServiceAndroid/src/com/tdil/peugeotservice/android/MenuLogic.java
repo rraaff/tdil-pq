@@ -59,6 +59,9 @@ public class MenuLogic {
 		case R.id.menu_action_emergency:
 			activity.startActivity(new Intent(activity, UpdateEmergencyConfigActivity.class));
 			return true;
+		case R.id.menu_action_historic_emergency:
+			activity.startActivity(new Intent(activity, HistoricAlertsActivity.class));
+			return true;
 		case R.id.menu_login:
 			activity.finish();
 			return true;
