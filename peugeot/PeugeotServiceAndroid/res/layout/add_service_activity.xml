@@ -119,7 +119,7 @@
 	                android:layout_marginRight="0dp"
 	                android:layout_marginTop="25dp"
 	                android:onClick="@string/dologin"
-	                android:text="@string/btn_tag_add" />
+	                android:text="@string/btn_tag_add_service" />
 
             </LinearLayout>
         </ScrollView>

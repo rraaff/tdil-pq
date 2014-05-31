@@ -34,7 +34,7 @@
     <string name="title_activity_login_for_action_bar">Peugeot AXS</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
-    <string name="title_activity_add_service">Agregar service</string>
+    <string name="title_activity_add_service">Registrar service</string>
     
     <string name="title_parkings">Points of Interest</string>
     <string name="title_prevent">Car Security</string>
@@ -123,6 +123,7 @@
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>
     <string name="lst_itm_last_service">Ultimo service</string>
+    <string name="btn_tag_add_service">Registrar</string>
     
     <string name="lst_itm_in_warranty">En garantía</string>
     <string name="lst_itm_model_warranty">Garantía</string>
