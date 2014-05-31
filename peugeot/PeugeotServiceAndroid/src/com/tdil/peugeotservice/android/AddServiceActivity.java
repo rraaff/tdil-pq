@@ -11,6 +11,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,6 +79,11 @@ public class AddServiceActivity extends ActionBarActivity implements ValidationL
 		/** END ALERTA */
 		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);
+		if ("-".equals(vehicleValueObjectBean.getKm())) {
+			serviceKmEditText.setText("");
+		} else {
+			serviceKmEditText.setText(TextUtils.replace(vehicleValueObjectBean.getKm(), new String[]{"."}, new String[]{""}));
+		}
 		
 		serviceDate = (TextView) findViewById(R.id.serviceDate);
 		Calendar cal = Calendar.getInstance();
