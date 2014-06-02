@@ -66,7 +66,7 @@ public class IndexActivity extends Activity {
 		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
 		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 		
-		findViewById(R.id.btnClubLJ).setOnTouchListener(new StartDragOnTouchListener(this, CLUB_LJ, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+		findViewById(R.id.btnClubLJ).setOnTouchListener(new StartDragOnTouchListener(this, CLUB_LJ, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_club_on)));
 		
 		
 		findViewById(R.id.btnFooterPrevent).setOnDragListener(new ButtonDragListener(PREVENT));
