@@ -43,7 +43,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class UpdateEmergencyConfigActivity extends ActionBarActivity implements ValidationListener {
+public class UpdateEmergencyConfigActivity extends PeugeotActivity implements ValidationListener {
 
     private Validator validator;
     static final int DATE_DIALOG_ID = 1;
@@ -91,10 +91,21 @@ public class UpdateEmergencyConfigActivity extends ActionBarActivity implements 
 	    validator.setValidationListener(this);
 	    
 		setContentView(R.layout.update_contact_data_activity);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.contact1NameEditText);
+		setTypeface(this, R.id.contact1PhoneEditText);
+		setTypeface(this, R.id.securityWordEditText);
+		setTypeface(this, R.id.	healthInsuranceEditText);
+		setTypeface(this, R.id.	TextView01);
+		setTypeface(this, R.id.contact2NameEditText);
+		setTypeface(this, R.id.contact2PhoneEditText);
+		setTypeface(this, R.id.TextView02);
+		setTypeface(this, R.id.contact3NameEditText);
+		setTypeface(this, R.id.contact3PhoneEditText);
+		setTypeface(this, R.id.	updateEmergenccyConfigButton);
+		setTypeface(this, R.id.sendAlertButton);
+		
+		customizeActionBar();
 
 		contact1name = (TextView) findViewById(R.id.contact1NameEditText);
 		contact1relationSpinner = (Spinner) findViewById(R.id.contact1RelationSpinner);

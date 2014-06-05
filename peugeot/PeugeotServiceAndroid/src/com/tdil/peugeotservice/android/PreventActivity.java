@@ -23,7 +23,7 @@ import com.tdil.peugeotservice.android.utils.Login;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class PreventActivity extends ActionBarActivity {
+public class PreventActivity extends PeugeotActivity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -70,11 +70,8 @@ public class PreventActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_prevent);
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		setTypeface(this, R.id.sendAlertButton);
+		customizeActionBar();
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		

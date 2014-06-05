@@ -42,7 +42,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class AddServiceActivity extends ActionBarActivity implements ValidationListener {
+public class AddServiceActivity extends PeugeotActivity implements ValidationListener {
 
 	public static final String VEHICLE = "VEHICLE";
 	private VehicleValueObjectBean vehicleValueObjectBean;
@@ -70,13 +70,14 @@ public class AddServiceActivity extends ActionBarActivity implements ValidationL
 		vehicleValueObjectBean = (VehicleValueObjectBean)extras.getSerializable(VEHICLE);
 		
 		setContentView(R.layout.add_service_activity);
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.textView1);
+		setTypeface(this, R.id.serviceDate);
+		setTypeface(this, R.id.serviceKmEditText);
+		setTypeface(this, R.id.addServiceButton);
+		setTypeface(this, R.id.sendAlertButton);
 		
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);
 		if ("-".equals(vehicleValueObjectBean.getKm())) {

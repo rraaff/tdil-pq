@@ -63,7 +63,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RegisterActivity extends ActionBarActivity implements IRestClientObserver, ValidationListener {
+public class RegisterActivity extends PeugeotActivity implements IRestClientObserver, ValidationListener {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 

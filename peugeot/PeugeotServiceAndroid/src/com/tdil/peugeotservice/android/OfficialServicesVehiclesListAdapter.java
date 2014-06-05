@@ -21,7 +21,7 @@ import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean
 public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<VehicleValueObjectBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -29,7 +29,7 @@ public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements 
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public OfficialServicesVehiclesListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
+	public OfficialServicesVehiclesListAdapter(PeugeotActivity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -61,6 +61,14 @@ public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements 
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class AlarmViewHolder {
 
+		public TextView kmLabel;
+		public TextView TextView01;
+		public TextView lastServiceLabel;
+		public TextView TextView02;
+		public TextView TextView05;
+		public TextView is_in_warranty;
+		public TextView TextView06;
+		public TextView model_warranty_text;
 		
 		public TextView vehicleDescription;
 		public TextView actualKm;
@@ -85,13 +93,40 @@ public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements 
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
+			
+			holder.kmLabel = (TextView) vi.findViewById(R.id.kmLabel);
+			PeugeotActivity.setTypeface(activity, holder.kmLabel);
+			holder.TextView01 = (TextView) vi.findViewById(R.id.TextView01);
+			PeugeotActivity.setTypeface(activity, holder.TextView01);
+			holder.lastServiceLabel = (TextView) vi.findViewById(R.id.lastServiceLabel);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceLabel);
+			
+			
+			holder.TextView02 = (TextView) vi.findViewById(R.id.TextView02);
+			PeugeotActivity.setTypeface(activity, holder.TextView02);
+			holder.TextView05 = (TextView) vi.findViewById(R.id.TextView05);
+			PeugeotActivity.setTypeface(activity, holder.TextView05);
+			holder.is_in_warranty = (TextView) vi.findViewById(R.id.is_in_warranty);
+			PeugeotActivity.setTypeface(activity, holder.is_in_warranty);
+			holder.TextView06 = (TextView) vi.findViewById(R.id.TextView06);
+			PeugeotActivity.setTypeface(activity, holder.TextView06);
+			holder.model_warranty_text = (TextView) vi.findViewById(R.id.model_warranty_text);
+			PeugeotActivity.setTypeface(activity, holder.model_warranty_text);
+			
 			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
+			PeugeotActivity.setTypeface(activity, holder.vehicleDescription);
 			holder.actualKm = (TextView) vi.findViewById(R.id.kmActual);
+			PeugeotActivity.setTypeface(activity, holder.actualKm);
 			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
+			PeugeotActivity.setTypeface(activity, holder.needsService);
 			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceDate);
 			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceKm);
 			holder.inWarranty = (TextView) vi.findViewById(R.id.is_in_warranty);
+			PeugeotActivity.setTypeface(activity, holder.inWarranty);
 			holder.warrantyDescription = (TextView) vi.findViewById(R.id.model_warranty_text);
+			PeugeotActivity.setTypeface(activity, holder.warrantyDescription);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);

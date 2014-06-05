@@ -32,7 +32,7 @@ import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class AdvicesActivity extends ActionBarActivity {
+public class AdvicesActivity extends PeugeotActivity {
 
 	
 	/**
@@ -45,13 +45,12 @@ public class AdvicesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.advices_activity);
+		setTypeface(this, R.id.TextView01);
+		setTypeface(this, R.id.dismissAdvicesButton);
+		setTypeface(this, R.id.snoozeAdvicesButton);
+		setTypeface(this, R.id.sendAlertButton);
 
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		final ListView list = (ListView) findViewById(R.id.advices);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {

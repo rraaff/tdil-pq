@@ -9,7 +9,7 @@ import com.tdil.peugeotservice.R;
 
 public class AlertLogic {
 
-	public static void installLogic(final Activity activity) {
+	public static void installLogic(final PeugeotActivity activity) {
 		
 //		View home = activity.findViewById(R.id.btnFooterHome);
 //		if (home!= null) {
@@ -43,6 +43,16 @@ public class AlertLogic {
 		}
 		if (sendAlertButton != null) {
 			sendAlertButton.setOnClickListener(new SendAlertOnClickListener(activity, openSendAlertView, sendAlertView));
+		}
+		if (sendAlertView != null) {
+			sendAlertView.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						openSendAlertView.setVisibility(View.VISIBLE);
+						sendAlertView.setVisibility(View.GONE);
+					}
+				});
 		}
 		if(closeSendAlertButton != null) {
 			closeSendAlertButton.setOnClickListener(

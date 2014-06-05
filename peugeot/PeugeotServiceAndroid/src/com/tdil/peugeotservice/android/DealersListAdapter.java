@@ -21,7 +21,7 @@ import com.tdil.peugeotservice.android.rest.prevent.model.DealerBean;
 public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<DealerBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -29,7 +29,7 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public DealersListAdapter(Activity a, ArrayList<DealerBean> d, Resources resLocal) {
+	public DealersListAdapter(PeugeotActivity a, ArrayList<DealerBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -80,9 +80,13 @@ public class DealersListAdapter extends BaseAdapter implements OnClickListener {
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
 			holder.name = (TextView) vi.findViewById(R.id.dealerName);
+			PeugeotActivity.setTypeface(activity, holder.name);
 			holder.address = (TextView) vi.findViewById(R.id.dealerAddress);
+			PeugeotActivity.setTypeface(activity, holder.address);
 			holder.phone = (TextView) vi.findViewById(R.id.dealerPhone);
+			PeugeotActivity.setTypeface(activity, holder.phone);
 			holder.email = (TextView) vi.findViewById(R.id.dealerEmail);
+			PeugeotActivity.setTypeface(activity, holder.email);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);

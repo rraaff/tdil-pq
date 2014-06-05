@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/actionBarIconBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_white_back" />
+    
+    <ImageView
+        android:id="@+id/actionBarIcon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/iso" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -17,10 +29,16 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:text="PEUGEOT AXS"
-            android:textColor="@color/white"
+            android:textColor="@color/lightBlue"
             android:textSize="24sp" 
             android:layout_width="0dp"
              android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/actionBarIconMenu"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/iso" />
 
     </LinearLayout>
 

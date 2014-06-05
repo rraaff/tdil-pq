@@ -44,7 +44,7 @@ import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class SelectVehiclesForDealerActivity extends ActionBarActivity implements ValidationListener {
+public class SelectVehiclesForDealerActivity extends PeugeotActivity implements ValidationListener {
 
 	public static final String DEALER = "DEALER";
 	private DealerBean dealer;
@@ -73,6 +73,12 @@ public class SelectVehiclesForDealerActivity extends ActionBarActivity implement
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.select_vehicles_for_dealers_activity);
+		setTypeface(this, R.id.TextView01);
+		setTypeface(this, R.id.dealerNameTextView);
+		setTypeface(this, R.id.dealerAddressTextView);
+		setTypeface(this, R.id.	emailForServiceEditText);
+		setTypeface(this, R.id.	updateVehiclesDealersButton);
+		setTypeface(this, R.id.	sendAlertButton);
 
 		validator = new Validator(this);
 		validator.setValidationListener(this);
@@ -80,11 +86,7 @@ public class SelectVehiclesForDealerActivity extends ActionBarActivity implement
 		Bundle extras = getIntent().getExtras();
 		dealer = (DealerBean)extras.getSerializable(DEALER);
 	
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 		
 		vehiclesSpinner = (Spinner) findViewById(R.id.vehiclesForDealersSpinner);
 		email = (TextView) findViewById(R.id.emailForServiceEditText);

@@ -20,7 +20,7 @@ import com.tdil.peugeotservice.android.rest.model.AlertBean;
 public class HistoricAlertsListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<AlertBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -28,7 +28,7 @@ public class HistoricAlertsListAdapter extends BaseAdapter implements OnClickLis
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public HistoricAlertsListAdapter(Activity a, ArrayList<AlertBean> d, Resources resLocal) {
+	public HistoricAlertsListAdapter(PeugeotActivity a, ArrayList<AlertBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -78,6 +78,7 @@ public class HistoricAlertsListAdapter extends BaseAdapter implements OnClickLis
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
 			holder.alertDescription = (TextView) vi.findViewById(R.id.alertText);
+			PeugeotActivity.setTypeface(activity, holder.alertDescription);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);

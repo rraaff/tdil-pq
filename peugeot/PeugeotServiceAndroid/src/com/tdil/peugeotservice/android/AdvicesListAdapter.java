@@ -23,7 +23,7 @@ import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean
 public class AdvicesListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<AdviceBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -31,7 +31,7 @@ public class AdvicesListAdapter extends BaseAdapter implements OnClickListener {
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public AdvicesListAdapter(Activity a, ArrayList<AdviceBean> d, Resources resLocal) {
+	public AdvicesListAdapter(PeugeotActivity a, ArrayList<AdviceBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -84,9 +84,13 @@ public class AdvicesListAdapter extends BaseAdapter implements OnClickListener {
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
 			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
+			PeugeotActivity.setTypeface(activity, holder.vehicleDescription);
 			holder.serviceBeforeKm = (TextView) vi.findViewById(R.id.serviceBeforeKm);
+			PeugeotActivity.setTypeface(activity, holder.serviceBeforeKm);
 			holder.serviceBeforeDate = (TextView) vi.findViewById(R.id.serviceBeforeDate);
+			PeugeotActivity.setTypeface(activity, holder.serviceBeforeDate);
 			holder.beforeDateSection = (View) vi.findViewById(R.id.beforeDateSection);
+			PeugeotActivity.setTypeface(activity, holder.serviceBeforeDate);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);

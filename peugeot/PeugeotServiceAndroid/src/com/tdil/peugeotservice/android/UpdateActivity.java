@@ -56,7 +56,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class UpdateActivity extends ActionBarActivity implements IRestClientObserver, ValidationListener {
+public class UpdateActivity extends PeugeotActivity implements IRestClientObserver, ValidationListener {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -96,6 +96,25 @@ public class UpdateActivity extends ActionBarActivity implements IRestClientObse
 	    validator.setValidationListener(this);
 		
 		setContentView(R.layout.activity_update);
+		
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.documentNumber);
+		setTypeface(this, R.id.firstName);
+		setTypeface(this, R.id.lastName);
+		setTypeface(this, R.id.chkMale);
+		setTypeface(this, R.id.chkFemale);
+		setTypeface(this, R.id.email);
+		setTypeface(this, R.id.birthDate);
+		setTypeface(this, R.id.	areaCode);
+		setTypeface(this, R.id.	mobile);
+		setTypeface(this, R.id.city);
+		setTypeface(this, R.id.street1);
+		setTypeface(this, R.id.street2);
+		setTypeface(this, R.id.postalCode);
+		setTypeface(this, R.id.optIn);
+		setTypeface(this, R.id.updateButton);
+		setTypeface(this, R.id.sendAlertButton);
+		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		/** START ALERTA */
 		AlertLogic.installLogic(this);

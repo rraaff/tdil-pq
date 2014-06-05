@@ -21,7 +21,7 @@ import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean
 public class SelectVehiclesForDealerListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<VehicleValueObjectBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -29,7 +29,7 @@ public class SelectVehiclesForDealerListAdapter extends BaseAdapter implements O
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public SelectVehiclesForDealerListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
+	public SelectVehiclesForDealerListAdapter(PeugeotActivity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -83,10 +83,15 @@ public class SelectVehiclesForDealerListAdapter extends BaseAdapter implements O
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
 			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
+			PeugeotActivity.setTypeface(activity, holder.vehicleDescription);
 			holder.actualKm = (TextView) vi.findViewById(R.id.kmActual);
+			PeugeotActivity.setTypeface(activity, holder.actualKm);
 			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
+			PeugeotActivity.setTypeface(activity, holder.needsService);
 			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceDate);
 			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceKm);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);
 			//holder.viewAlarmLog = (Button)vi.findViewById(R.id.viewAlarmLogButton);

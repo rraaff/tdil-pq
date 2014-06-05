@@ -29,7 +29,7 @@ import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class MyVehiclesActivity extends ActionBarActivity {
+public class MyVehiclesActivity extends PeugeotActivity {
 
 	ListView list;
 	MyVehiclesListAdapter adapter;
@@ -45,12 +45,10 @@ public class MyVehiclesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.my_vehicles_activity);
+		setTypeface(this, R.id.lastChanges);
+		setTypeface(this, R.id.sendAlertButton);
 
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		list = (ListView) findViewById(R.id.myServices);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

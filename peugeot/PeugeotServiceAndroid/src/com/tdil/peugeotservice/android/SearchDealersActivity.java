@@ -32,7 +32,7 @@ import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class SearchDealersActivity extends ActionBarActivity {
+public class SearchDealersActivity extends PeugeotActivity {
 
 	
 	private Spinner citiesSpinner;
@@ -48,12 +48,11 @@ public class SearchDealersActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.search_dealers_activity);
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.searchDealersButton);
+		setTypeface(this, R.id.sendAlertButton);
 
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		final Spinner statesSpinner = (Spinner) findViewById(R.id.dealersStatesSpinner);
 		citiesSpinner = (Spinner) findViewById(R.id.dealersCitiesSpinner);

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,7 @@ import com.tdil.peugeotservice.R;
 import com.tdil.peugeotservice.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
-public class IndexActivity extends ActionBarActivity {
+public class IndexActivity extends PeugeotActivity {
 
 	
 	/**
@@ -31,18 +30,9 @@ public class IndexActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
+		setTypeface(this, R.id.sendAlertButton);
 
-
-//		BitmapFactory.Options options = new BitmapFactory.Options();
-//		options.inSampleSize = 4;
-		
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
-//		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); 
-//		getSupportActionBar().setCustomView(R.layout.actionbar);
+		customizeActionBar();
 		
 		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
 			@Override
@@ -94,6 +84,9 @@ public class IndexActivity extends ActionBarActivity {
 //		});
 
 	}
+
+
+	
 	
 	
 //	@Override
@@ -132,6 +125,80 @@ public class IndexActivity extends ActionBarActivity {
 		getMenuInflater().inflate(R.menu.menu_full, menu);
 		return true;
 	}
+	/*
+	public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//
+//            case R.id.action_settings:
+            Dialog dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.options_menu);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+            dialog.show();
+
+
+            Button buttonMyAccount = (Button) dialog.findViewById(R.id.buttonMyAccount);
+            Typeface font = getNormalFont(this);
+            buttonMyAccount.setTypeface(font);
+            buttonMyAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent itMyAccount = new Intent(getBaseContext(), AccountActivity.class);
+//                    startActivity(itMyAccount);
+                }
+            });
+
+
+            Button buttonHelp = (Button) dialog.findViewById(R.id.buttonHelp);
+            buttonHelp.setTypeface(font);
+            buttonHelp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent itAssistant = new Intent(getBaseContext(), AssistantPagerActivity.class);
+//                    startActivity(itAssistant);
+                }
+            });
+
+
+            Button buttonContact = (Button) dialog.findViewById(R.id.buttonContact);
+            buttonContact.setTypeface(font);
+            buttonContact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent itContact = new Intent(getBaseContext(), ContactActivity.class);
+//                    startActivity(itContact);
+                }
+            });
+
+            Button buttonAbout = (Button) dialog.findViewById(R.id.buttonAbout);
+            buttonAbout.setTypeface(font);
+            buttonAbout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Intent itAbout = new Intent(getBaseContext(), AboutActivity.class);
+//                    startActivity(itAbout);
+                }
+            });
+
+
+            Window window = dialog.getWindow();
+            WindowManager.LayoutParams wlp = window.getAttributes();
+            wlp.gravity = Gravity.RIGHT | Gravity.TOP;
+            wlp.y = getSupportActionBar().getHeight();
+            wlp.width = 300;
+            wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            window.setAttributes(wlp);
+
+
+            return true;
+
+//        default:
+//            return super.onOptionsItemSelected(item);
+//        }
+
+    }
+    */
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

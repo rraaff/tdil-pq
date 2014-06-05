@@ -28,7 +28,7 @@ import com.tdil.peugeotservice.android.rest.model.AlertBeanCollection;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class HistoricAlertsActivity extends ActionBarActivity {
+public class HistoricAlertsActivity extends PeugeotActivity {
 
 	
 	/**
@@ -41,13 +41,11 @@ public class HistoricAlertsActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.historic_alerts_activity);
+		setTypeface(this, R.id.TextView01);
+		setTypeface(this, R.id.closeHistoricAlertasButton);
+		setTypeface(this, R.id.sendAlertButton);
 
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		final ListView list = (ListView) findViewById(R.id.alerts);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {

@@ -46,7 +46,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity implements IRestClientObserver,
+public class LoginActivity extends PeugeotActivity implements IRestClientObserver,
 		ValidationListener {
 
 	/*
@@ -88,6 +88,16 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_login);
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.labelIdNumber);
+		setTypeface(this, R.id.documentNumber);
+		setTypeface(this, R.id.labelPassword);
+		setTypeface(this, R.id.rememberPasswordCheckbox);
+		setTypeface(this, R.id.appVersion);
+		
+		setTypeface(this, R.id.requestResetPassword);
+		setTypeface(this, R.id.loginButtons);
+		customizeActionBar();
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {

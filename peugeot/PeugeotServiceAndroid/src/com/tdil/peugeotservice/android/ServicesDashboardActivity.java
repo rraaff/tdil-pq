@@ -29,7 +29,7 @@ import com.tdil.peugeotservice.android.rest.model.AlertResponseBean;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class ServicesDashboardActivity extends ActionBarActivity {
+public class ServicesDashboardActivity extends PeugeotActivity {
 
 	private UpdateLocationListener locListener = null;
 
@@ -44,13 +44,13 @@ public class ServicesDashboardActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_services_dashboard);
+		setTypeface(this, R.id.myServicesButton);
+		setTypeface(this, R.id.myVehiclesButton);
+		setTypeface(this, R.id.officialServicesButton);
+		setTypeface(this, R.id.searchDealersButton);
+		setTypeface(this, R.id.sendAlertButton);
 
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		//View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
 		//sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));

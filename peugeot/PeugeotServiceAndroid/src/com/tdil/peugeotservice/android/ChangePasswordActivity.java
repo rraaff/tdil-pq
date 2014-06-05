@@ -37,7 +37,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ChangePasswordActivity extends ActionBarActivity implements
+public class ChangePasswordActivity extends PeugeotActivity implements
 		IRestClientObserver, ValidationListener {
 
 	/*
@@ -78,10 +78,17 @@ public class ChangePasswordActivity extends ActionBarActivity implements
 		validator.setValidationListener(this);
 
 		setContentView(R.layout.activity_change_password);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.labelActualPass);
+		setTypeface(this, R.id.oldPassword);
+		setTypeface(this, R.id.labelNewPass);
+		setTypeface(this, R.id.new_password);
+		setTypeface(this, R.id.labelIdNumber);
+		setTypeface(this, R.id.retype_new_password);
+		setTypeface(this, R.id.updateButton);
+		setTypeface(this, R.id.sendAlertButton);
+		
+		customizeActionBar();
 		
 		oldPassword = (EditText)findViewById(R.id.oldPassword);
 		newPassword = (EditText)findViewById(R.id.new_password);

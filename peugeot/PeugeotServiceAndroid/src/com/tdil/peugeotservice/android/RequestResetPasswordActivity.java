@@ -27,7 +27,7 @@ import com.tdil.peugeotservice.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RequestResetPasswordActivity extends ActionBarActivity implements IRestClientObserver {
+public class RequestResetPasswordActivity extends PeugeotActivity implements IRestClientObserver {
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -49,6 +49,11 @@ public class RequestResetPasswordActivity extends ActionBarActivity implements I
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
+		setTypeface(this, R.id.loadingInfoText);
+		setTypeface(this, R.id.labelIdNumber);
+		setTypeface(this, R.id.documentNumber);
+		setTypeface(this, R.id.resetPasswordBack);
+		setTypeface(this, R.id.resetPasswordButton);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		/*List<String> list = new ArrayList<String>();

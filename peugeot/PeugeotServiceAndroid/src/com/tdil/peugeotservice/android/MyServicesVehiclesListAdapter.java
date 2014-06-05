@@ -23,7 +23,7 @@ import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean
 public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClickListener {
 
 	/*********** Declare Used Variables *********/
-	private Activity activity;
+	private PeugeotActivity activity;
 	private ArrayList<VehicleValueObjectBean> data;
 	private static LayoutInflater inflater = null;
 	public Resources res;
@@ -31,7 +31,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 	int i = 0;
 
 	/************* CustomAdapter Constructor *****************/
-	public MyServicesVehiclesListAdapter(Activity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
+	public MyServicesVehiclesListAdapter(PeugeotActivity a, ArrayList<VehicleValueObjectBean> d, Resources resLocal) {
 
 		/********** Take passed values **********/
 		activity = a;
@@ -54,6 +54,7 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 
 	public Object getItem(int position) {
 		return position;
+		
 	}
 
 	public long getItemId(int position) {
@@ -63,6 +64,11 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class AlarmViewHolder {
 
+		
+		public TextView kmLabel;
+		public TextView TextView01;
+		public TextView lastServiceLabel;
+		public TextView TextView02;
 		
 		public TextView vehicleDescription;
 		public TextView actualKm;
@@ -85,11 +91,25 @@ public class MyServicesVehiclesListAdapter extends BaseAdapter implements OnClic
 
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new AlarmViewHolder();
+			holder.kmLabel = (TextView) vi.findViewById(R.id.kmLabel);
+			PeugeotActivity.setTypeface(activity, holder.kmLabel);
+			holder.TextView01 = (TextView) vi.findViewById(R.id.TextView01);
+			PeugeotActivity.setTypeface(activity, holder.TextView01);
+			holder.lastServiceLabel = (TextView) vi.findViewById(R.id.lastServiceLabel);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceLabel);
+			holder.TextView02 = (TextView) vi.findViewById(R.id.TextView02);
+			PeugeotActivity.setTypeface(activity, holder.TextView02);
+			
 			holder.vehicleDescription = (TextView) vi.findViewById(R.id.vehicleDescription);
+			PeugeotActivity.setTypeface(activity, holder.vehicleDescription);
 			holder.actualKm = (TextView) vi.findViewById(R.id.kmActual);
+			PeugeotActivity.setTypeface(activity, holder.actualKm);
 			holder.needsService = (TextView) vi.findViewById(R.id.needsService);
+			PeugeotActivity.setTypeface(activity, holder.needsService);
 			holder.lastServiceDate = (TextView) vi.findViewById(R.id.lastServiceDate);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceDate);
 			holder.lastServiceKm = (TextView) vi.findViewById(R.id.lastServiceKm);
+			PeugeotActivity.setTypeface(activity, holder.lastServiceKm);
 			holder.go = (ImageView)vi.findViewById(R.id.goToAddService);
 //			holder.lastChangeUserAvatar = (ImageView) vi.findViewById(R.id.logAlarmAvatar);
 			//holder.activateDeactivate = (ToggleButton)vi.findViewById(R.id.toggleAlarmActivation);

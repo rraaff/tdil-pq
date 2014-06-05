@@ -21,7 +21,7 @@ import android.view.Menu;
 
 import com.tdil.peugeotservice.R;
 
-public class CheckForUpdateActivity extends Activity {
+public class CheckForUpdateActivity extends PeugeotActivity {
 	
 	private Handler mHandler;
 
@@ -30,6 +30,8 @@ public class CheckForUpdateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_check_for_update);
+		setTypeface(this, R.id.loadingInfoText);
+		customizeActionBar();
 		mHandler = new Handler();
 		checkUpdate.start();
 	}

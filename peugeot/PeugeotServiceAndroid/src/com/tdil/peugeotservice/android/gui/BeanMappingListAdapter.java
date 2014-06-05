@@ -2,6 +2,8 @@ package com.tdil.peugeotservice.android.gui;
 
 import java.util.List;
 
+import com.tdil.peugeotservice.android.PeugeotActivity;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.TextView;
  */
 public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
 
+	private PeugeotActivity activity;
 	private BeanMappingFunction<T> mapFunction;
 	private List<T> objects;
 
@@ -24,10 +27,11 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
      * @param textViewResourceId
      * @param objects
      */
-    public BeanMappingListAdapter(final Context context, final int resource,
+    public BeanMappingListAdapter(final PeugeotActivity context, final int resource,
             final int textViewResourceId,
             final List<T> objects) {
         super(context, resource, textViewResourceId, objects);
+        this.activity = context;
         this.objects = objects;
     }
 
@@ -36,9 +40,10 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
      * @param resource
      * @param textViewResourceId
      */
-    public BeanMappingListAdapter(final Context context, final int resource,
+    public BeanMappingListAdapter(final PeugeotActivity context, final int resource,
             final int textViewResourceId) {
         super(context, resource, textViewResourceId);
+        this.activity = context;
     }
 
     /**
@@ -46,9 +51,10 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
      * @param textViewResourceId
      * @param objects
      */
-    public BeanMappingListAdapter(final Context context, final int textViewResourceId,
+    public BeanMappingListAdapter(final PeugeotActivity context, final int textViewResourceId,
     		final List<T> objects, BeanMappingFunction<T> function) {
         super(context, textViewResourceId, objects);
+        this.activity = context;
         this.mapFunction = function;
         this.objects = objects;
     }
@@ -58,8 +64,9 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
      * @param context
      * @param textViewResourceId
      */
-    public BeanMappingListAdapter(final Context context, final int textViewResourceId) {
+    public BeanMappingListAdapter(final PeugeotActivity context, final int textViewResourceId) {
         super(context, textViewResourceId);
+        this.activity = context;
     }
 
     /**
@@ -70,6 +77,7 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
         final TextView view = (TextView) super.getView(position, convertView, parent);
 
         view.setText(mapFunction.value(getItem(position)));
+        PeugeotActivity.setTypeface(this.activity, view);
         return view;
     }
 
@@ -81,6 +89,7 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
         final TextView view = (TextView) super.getDropDownView(position, convertView, parent);
 
         view.setText(mapFunction.value(getItem(position)));
+        PeugeotActivity.setTypeface(this.activity, view);
         return view;
     }
 

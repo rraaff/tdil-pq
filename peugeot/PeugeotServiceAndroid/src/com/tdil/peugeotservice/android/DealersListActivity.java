@@ -30,7 +30,7 @@ import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
-public class DealersListActivity extends ActionBarActivity {
+public class DealersListActivity extends PeugeotActivity {
 
 	public static final String CITY = "CITY";
 	
@@ -49,12 +49,10 @@ public class DealersListActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.dealers_activity);
+		setTypeface(this, R.id.lastChanges);
+		setTypeface(this, R.id.sendAlertButton);
 		
-		this.getSupportActionBar().setTitle(ApplicationConfig.APP_NAME);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		/** START ALERTA */
-		AlertLogic.installLogic(this);
-		/** END ALERTA */
+		customizeActionBar();
 
 		Bundle extras = getIntent().getExtras();
 		city = (CityBean)extras.getSerializable(CITY);
