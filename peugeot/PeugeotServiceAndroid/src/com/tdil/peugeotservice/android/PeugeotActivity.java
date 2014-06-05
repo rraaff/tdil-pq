@@ -19,6 +19,8 @@ public class PeugeotActivity extends ActionBarActivity {
 	private static Typeface normalFont;
 	private static Typeface boldFont;
 	
+	private AlertBackHandler backHandler;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,6 +63,15 @@ public class PeugeotActivity extends ActionBarActivity {
 		
     }
 	
+	@Override
+	public void onBackPressed() {
+		if (backHandler.isOpened()) {
+			backHandler.close();
+		} else {
+			super.onBackPressed();
+		}
+	}
+	
 	public static void setTypeface(PeugeotActivity context, View view) {
 		if (view instanceof TextView) {
 			((TextView)view).setTypeface(getNormalFont(context));
@@ -89,4 +100,12 @@ public class PeugeotActivity extends ActionBarActivity {
         }
         return boldFont;
     }
+
+	public AlertBackHandler getBackHandler() {
+		return backHandler;
+	}
+
+	public void setBackHandler(AlertBackHandler backHandler) {
+		this.backHandler = backHandler;
+	}
 }

@@ -12,18 +12,21 @@ public class SendAlertOnClickListener implements View.OnClickListener {
 	private Activity activity;
 	private View openSendAlertView;
 	private View sendAlertView;
+private AlertBackHandler alertBackHandler;
 	
 	public SendAlertOnClickListener(Activity activity, View openSendAlertView,
-			View sendAlertView) {
+			View sendAlertView, AlertBackHandler alertBackHandler) {
 		super();
 		this.activity = activity;
 		this.openSendAlertView = openSendAlertView;
 		this.sendAlertView = sendAlertView;
+		this.alertBackHandler = alertBackHandler;
 	}
 	
 	public void alertSent() {
 		openSendAlertView.setVisibility(View.VISIBLE);
 		sendAlertView.setVisibility(View.GONE);
+		alertBackHandler.setOpened(false);
 	}
 
 	@Override

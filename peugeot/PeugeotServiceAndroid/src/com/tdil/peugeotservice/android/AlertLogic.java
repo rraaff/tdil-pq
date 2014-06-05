@@ -1,6 +1,5 @@
 package com.tdil.peugeotservice.android;
 
-import android.app.Activity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -28,11 +27,14 @@ public class AlertLogic {
 		
 		final View sendAlertButton = activity.findViewById(R.id.sendAlertButton);
 		final View closeSendAlertButton = activity.findViewById(R.id.closeSendAlertButton);
+		final AlertBackHandler alertBackHandler = new AlertBackHandler(openSendAlertView, sendAlertView);
+		activity.setBackHandler(alertBackHandler);
 		if(openSendAlertView != null) {
 			openSendAlertView.setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
+						 alertBackHandler.setOpened(true);
 						openSendAlertView.setVisibility(View.GONE);
 //						sendAlertView.setVisibility(View.VISIBLE);
 						Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
@@ -42,13 +44,14 @@ public class AlertLogic {
 				});
 		}
 		if (sendAlertButton != null) {
-			sendAlertButton.setOnClickListener(new SendAlertOnClickListener(activity, openSendAlertView, sendAlertView));
+			sendAlertButton.setOnClickListener(new SendAlertOnClickListener(activity, openSendAlertView, sendAlertView, alertBackHandler));
 		}
 		if (sendAlertView != null) {
 			sendAlertView.setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
+						alertBackHandler.setOpened(false);
 						openSendAlertView.setVisibility(View.VISIBLE);
 						sendAlertView.setVisibility(View.GONE);
 					}
@@ -59,6 +62,7 @@ public class AlertLogic {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
+						alertBackHandler.setOpened(false);
 						openSendAlertView.setVisibility(View.VISIBLE);
 						sendAlertView.setVisibility(View.GONE);
 					}
