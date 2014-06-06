@@ -11,6 +11,10 @@ public class LoginResponse {
 	
 	private boolean servicesAdvices;
 	
+	private String guardPhone;
+	private boolean mustChangePassword;
+	private boolean mustCompleteEmergencyData;
+	
 	private String avatar;
 	
 	
@@ -64,6 +68,30 @@ public class LoginResponse {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	public String getGuardPhone() {
+		return guardPhone;
+	}
+
+	public void setGuardPhone(String guardPhone) {
+		this.guardPhone = guardPhone;
+	}
+
+	public boolean isMustChangePassword() {
+		return mustChangePassword;
+	}
+
+	public void setMustChangePassword(boolean mustChangePassword) {
+		this.mustChangePassword = mustChangePassword;
+	}
+
+	public boolean isMustCompleteEmergencyData() {
+		return mustCompleteEmergencyData;
+	}
+
+	public void setMustCompleteEmergencyData(boolean mustCompleteEmergencyData) {
+		this.mustCompleteEmergencyData = mustCompleteEmergencyData;
 	}
 	
 
